@@ -77,7 +77,13 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_biograp
     page.kind = NativeHistoryPageKind::FigureBiography;
     auto &data = page.data;
     data.actor_id = id;
-    if (!native_history_copy(figure + 0x10, data.year)) return std::nullopt;
+    int32_t mode = -1;
+    if (!native_history_copy(figure + 0x10, data.year) ||
+        !native_history_copy(native_history_page_address(NativeHistoryPageSymbol::Mode), mode))
+        return std::nullopt;
+    // c2b870 chooses myths, hearsay and its historical-account qualifier
+    // only in Legends. Adventure describes the same being's current nature.
+    data.fields["legends_mode"] = {mode == 3};
     data.fields["sex"] = {sex};
     data.fields["child_relation"] = {42};
     data.fields["confidence"] = {0};

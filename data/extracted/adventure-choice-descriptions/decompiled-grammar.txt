@@ -1,0 +1,215 @@
+Adventure performance chooser: every selected-choice description card
+
+This directory contains native source extraction, not an observed game result.
+Both configured Windows PE images were read offline. Ghidra 12.1.4 produced
+the actual C. Existing same-image actual C is retained where already complete;
+retained-decompilation-sources.tsv records each original source path. Missing
+site/type and knowledge suppliers were newly decompiled with
+tools/DecompileAdventureChoiceDescriptions.java. native-functions.tsv records
+all 65 functions per image, their code bounds, native extents and assembly.
+native-literals.tsv retains every referenced literal and inline string piece;
+native-branches.tsv and native-switches.tsv retain the original conditions and
+actual indexed destinations. Dynamic names and RAW strings are source fields,
+not a finite list recoverable from an executable.
+
+Native image identities
+  reference PE:6a70a6d9:02711000
+  classic   PE:6a70b91c:0270a000
+
+Entry, payloads and complete card range
+  reference chooser 0x870260, selected-option dispatch 0x870f64,
+    indexed table 0x872be0; classic chooser 0x86dae0, dispatch 0x86e7e4,
+    indexed table 0x870460.
+  The dispatch input is option+0 DWORD minus 8; bound is 31, so the actual
+  table covers every ID 8..39. IDs outside this range do not construct a card.
+  All 40 named-enum positions, including inactive IDs, are listed in
+  choice-description-branches.tsv with native branch destinations.
+  Card-producing IDs are exactly 8,9,10,11,12,13,14,15,16,17,18,19,25,
+  31,33,35,39. All other IDs use the shared no-description continuation.
+  The option payload is the DWORD at +0x68. IDs 8/9/10/11/25 set one field
+  of the native history context, initialize remaining focus IDs to -1,
+  keep speaker/identity pointers zero and context+0x44 = 1, then call
+  history::describe(history,context,brief=true,output).
+  Context fields, established from actual stores rather than enum spelling:
+    ID8  site:       context+0x28 = selected payload; history focus 14.
+    ID9  figure:     context+0x20 = selected payload; history focus 13.
+    ID10 entity:     context+0x1c = selected payload; history focus 8.
+    ID11 subregion:  context+0x2c = selected payload; history focus 20.
+    ID25 worship HF: context+0x20 = selected payload; history focus 13.
+  All begin with [C:6:0:1]. Brief=true returns immediately after the
+  introductory text, confidence text and [B], before event/relation loops.
+  The complete shared function is saved, including nonbrief/other-focus code;
+  those extra branches are not reachable from these five context stores.
+
+ID11: the screenshot's region card
+  Require a resolved subregion and its language_name +0x72 named byte.
+  Output: region-name + " could be found within " + world-name(mode 1)
+    + ".  " + knowledge-confidence + "[B]".
+  Name lookup and knowledge tier are in subregion-name.c and
+  subregion-knowledge-tier.c. The language formatter is world-name.c.
+  A failed lookup or unnamed subregion adds no introduction.
+  The screenshot's "The Alchemical Dunes" and
+  "The Enchanted Plane of Forever" are generated region/world names.
+  No custom squad.alias is inspected, translated or inferred here.
+
+ID8: complete site identity
+  Require a resolved site with its language_name +0x72 named byte.
+  site-name + " was a " + optional capitalized site adjective + space
+    + site-type + ".  " + confidence + "[B]".
+  site-adjective: site type +0x80 WORD == 1 gives "dark"; other types empty.
+  site-type (complete native switch; its 11 actual destinations are saved):
+    type 0: +0x348 > 0 -> "mountain halls"; +0x348 == 0 and +0x34c > 0
+      -> "fortress"; otherwise "hillocks".
+    type 1: site flags +0x2a0 first byte bit 8 and +0x2a8 > 0
+      -> "fortress"; otherwise "pits".
+    type 2: "cave". Type 3 shares type 0's destination.
+    type 4: "forest retreat".
+    type 5: same first-byte flag predicate -> "town", otherwise "hamlet".
+    type 6: "important location".
+    type 7: site+0x310 extra record WORD+4 == 2 -> "labyrinth",
+      ==3 -> "shrine"; absent/0/1/other -> "lair".
+    type 8: absent extra record -> "fortress". Extra record WORD+0:
+      1 -> "tower", 2 -> "monastery", 3 -> "fort", other -> "castle".
+    type 9: "camp".
+    type 10: extra record WORD+2 ==0 -> "tomb", ==1 -> "vault";
+      ==2 and site+0x228 >=100 -> "mysterious palace";
+      ==2 and site+0x228 >=15 -> "mysterious dungeon";
+      ==2 otherwise -> "mysterious lair";
+      absent/other -> "monument".
+    outside 0..10: "site".
+
+ID9 and ID25: complete historical figure biography
+  Both invoke figure-description.c through the same history focus.
+  Subject is figure identity or "This nameless being", with is/was tense
+  selected by native global game mode==3. Identity predicates cover forces
+  and their region, deities and myths/civilization, animation and named curse,
+  ordinary/ghostly species and birth. Subsequent paragraphs cover parentage,
+  child order, first/only-of-kind, destiny, deity appearance/spheres, and
+  force membership. No deity-only shortcut is justified for ID25.
+  Complete branch-by-branch source explanation and native literal tables:
+    ../symbol-picker-descriptions/figure-decompiled.txt
+    ../symbol-picker-descriptions/figure-native-literals.tsv
+    ../symbol-picker-descriptions/figure-enumerated-text.tsv
+  Its actual C and all enumerated helpers are also retained locally.
+
+ID10: complete historical entity introduction
+  Uses entity name, optional species, entity type, world name and confidence.
+  Types include civilization, religion, bandit gang, military company/band/
+  order, performance troupe, outcasts, merchant company, profession guild,
+  and generic group. Military paragraphs contain all adjective, religion,
+  weapons and mastery/known-for branches. Religion includes deity count,
+  deity species/sex, 130 spheres, and force/region clauses.
+  Complete production derivation:
+    ../legends-entity-introduction/decompiled-grammar.txt
+  The actual shared C, profession RAW selectors, sphere/article switches,
+  language names, figure names, and confidence helpers are retained locally.
+
+Confidence suffix shared by these introductions
+  Event knowledge tiers count eligible history events matching the subject;
+  subject predicates are virtual +0x88 HF, +0x90 site, +0xc0 entity,
+  +0xa8 subregion. Eligible event+0x18 >0 and event+0x10 first-byte mask 1.
+  All these suppliers: count0 -> tier0; 1..4 ->1; 5..9 ->2; >=100 ->5.
+  Entity/subregion: 10..49 ->3; 50..99 ->4.
+  Figure/site: 10..49 ->4; 50..99 ->3 (the native tier3/tier4 ordering differs).
+  Actual knowledge-confidence-paragraph text switch:
+    0/other: empty.
+    1: "A few issues still trouble scholars, but the picture is fairly clear.  "
+    2: "Many facts are still unclear to historians.  "
+    3: "It is still shrouded in mystery.  "
+    4: "Its nature is still an intriguing puzzle to the learned.  "
+    5: "Only the barest fragments of this amazing story have been uncovered.  It is one of the great untold tales of our times.  "
+
+ID12: every native event paragraph, not its caption
+  Selected event ID resolves in history. A native context is initialized and
+  virtual +0xd0 generates the complete paragraph, with the original true
+  brief argument and false additional flag from this chooser's call site.
+  All actual history-event and collection RTTI roots and helpers are saved in:
+    ../adventure-story-narrative/native-ghidra-functions.tsv
+    ../adventure-story-narrative/reference-ghidra-decompiled.c
+    ../adventure-story-narrative/classic-ghidra-decompiled.c
+    ../adventure-story-event/native-ghidra-functions.tsv
+  The +0xd8 option caption is a separate generator. It cannot substitute for
+  the +0xd0 description source.
+
+IDs13/15/18 and IDs31/33/35: entire form document
+  13/15/18 look up native poetic/musical/dance form IDs. 31/33/35 select form
+  pointers from menu+0xd8/+0xf0/+0x108 using payload as index.
+  Each calls the same complete form producer, retained locally as
+  knowledge-poetic-form.c / knowledge-musical-form.c / knowledge-dance-form.c.
+  Every form paragraph/section/role/rule is part of this card.
+
+IDs14/16/19: poem/composition/choreography
+  Native work lookup by ID. Start with title + " is an example of ".
+  Known form -> generated form name; missing form -> respectively "poetry",
+  "musical composition", "choreography". Append ".  " and complete
+  written-work-content. Known form additionally appends "[B]" and the
+  complete form document. These paths do not add an authored-by clause.
+
+ID17: instrument role description
+  Parent menu+0x64 kind 15 obtains form directly; kind16 obtains its work's
+  form ID first. Resolve the selected performer role and its instrument ID.
+  Valid instrument RAW with description length+0x288 nonzero emits its
+  description string+0x278. Other predicates produce no card.
+  This is RAW descriptive prose rather than the menu's Play/Simulate caption.
+  For generated instruments, the stored DESCRIPTION is constructed by the
+  actual PE writer reference 0xebe8a0..0xecc30c (code ends 0xecc2f0), classic
+  0xeb9810..0xec727c (code ends 0xec7260). Each entry was independently
+  discovered from the actual mallet-literal owning PE unwind record.
+  instrument-stored-description-writer.c retains the complete actual writer;
+  instrument-helper-*.c retain all 12 directly/recursively called adjacent
+  instrument suppliers, including pitch, range, materials and timbre.
+  instrument-timbre-qualities-*.c additionally retain the two out-of-line
+  63-case enum formatters (English adjectives and uppercase RAW tokens).
+  Their whole native instructions, literals, conditions and indexed choices
+  are in the local source TSVs and ASM, including every DESCRIPTION append
+  and INSTRUMENT_PIECE noun/part branch in the creation-time writer.
+  The complete shared production derivation is retained at
+    ../instrument-descriptions/native-text-productions.tsv
+  with ELF actual C at ../instrument-descriptions/elf-decompiled.c and
+  corresponding native PE text/RAW productions at
+    ../item-description-sources.tsv
+    ../adventure-item-tool/native-literals.tsv
+    ../adventure-item-tool/native-selectors.tsv
+    ../adventure-item-tool/native-piece-fields.tsv
+  These sources cover air/water/keyboard/reed/string/percussion mechanisms,
+  all striking/scraping/plucking/shaking/lip-rubbing and implements, tuning,
+  material and size, pitch bands and octave/half/nearly ranges, 63 timbre
+  adjectives and every register count/low/middle/high/top paragraph.
+  A mod may supply arbitrary authored RAW DESCRIPTION instead of the native
+  generated string. The native card copies that field; arbitrary mod prose
+  is not a finite executable text enumeration.
+
+ID39: memorized written content
+  Work pointer comes from menu+0x160[payload]. Genre is work+0x68 (0..25).
+  Nonempty title -> title + " is " + a/an + genre.
+  Empty title -> "This is an untitled" + space + genre.
+  Author ID work+0xa0 != -1 and resolved figure -> ", authored by ", then
+  optional native named author. An existing but unnamed author leaves the
+  clause with no name, as in actual native code. Append ".  ".
+  Poem/music/choreography genre with known form -> "It is an example of "
+  + generated form name + ".  ", complete content, "[B]", complete form.
+  All other cases -> complete written content only.
+  All 26 genre branches and a/an remapping are present in the local actual
+  chooser C and native-switches.tsv. Existing finite word table:
+    ../adventure-performance-menu/steam-enumerated-text.tsv
+    ../adventure-performance-menu/steam-book-articles.tsv
+  Complete content includes subjects/reference virtual +0x90 paragraphs,
+  counterfactuals, lineage, moral lesson, emphasis, lyrics/accompaniment,
+  prose style, all 30 quality clauses, chapter counts and every chapter.
+  The actual local written-work-content.c/style.c and ordinal/cardinal C
+  retain all of those branches. Complete nested reference suppliers are in:
+    ../adventure-reading-popup/reference-suppliers-decompiled.c
+    ../adventure-reading-popup/classic-suppliers-decompiled.c
+    ../adventure-reading-popup/native-functions.tsv
+
+Non-card surrounding text
+  Actual chooser C also preserves Done; What would you like to do?;
+  Choose a poetic/musical form for the composition.; Choose a dance form
+  for the choreography.; Select memorized content or a form of prose.;
+  all empty-state messages; search placeholder/underscore; (etc.).
+  Complete finite option/state names and sphere/value list derive from:
+    ../adventure-performance-menu/steam-decompiled.txt
+    ../adventure-performance-menu/classic-decompiled-menu.cpp
+    ../adventure-performance-menu/steam-unique-text.tsv
+  These are separate UI text suppliers, fully included in the existing
+  performance-menu extraction and this local chooser's actual C.

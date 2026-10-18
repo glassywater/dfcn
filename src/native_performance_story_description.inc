@@ -1,5 +1,5 @@
-// The story preview keeps only its colored rows after its producer returns.
-// Recover the selected event/entity by the chooser's actual ID, then require the
+// The preview keeps only its colored rows after its producer returns.
+// Recover each selected subject/form/work by its native ID or index, then require the
 // original rich wrapper to reproduce every retained row before attaching it.
 // The native preview and its row vector are never changed by this recovery.
 struct NativePerformanceStoryColoredScratch {
@@ -83,8 +83,46 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
                 !native_history_copy(native_history_object_member(perform,
                     "adventure_interface_performst", "color_box_choice", sizeof(choice)), choice) ||
                 !choice || choice > UINTPTR_MAX - 0x70 ||
-                !native_history_copy(choice, type) || (type != 10 && type != 12) ||
+                !native_history_copy(choice, type) ||
                 !native_history_copy(choice + 0x68, id) || id < 0) {
+            reset_cache();
+            return;
+        }
+        // The complete native preview switch has five subject arms and an
+        // event arm. Each subject writes one focus ID in history::describe's
+        // context; the sermon deity arm uses the same figure biography as a
+        // person/creature story. Form/work arms use their original formatters.
+        size_t focus_offset = 0;
+        bool form_preview = false;
+        NativeHistoryObjectKind subject_kind = NativeHistoryObjectKind::Figure;
+        NativeHistoryPageKind page_kind = NativeHistoryPageKind::FigureBiography;
+        switch (type) {
+        case 8:
+            focus_offset = 0x28;
+            subject_kind = NativeHistoryObjectKind::Site;
+            page_kind = NativeHistoryPageKind::SiteIntroduction;
+            break;
+        case 9:
+        case 25:
+            focus_offset = 0x20;
+            break;
+        case 10:
+            focus_offset = 0x1c;
+            subject_kind = NativeHistoryObjectKind::Entity;
+            page_kind = NativeHistoryPageKind::EntityIntroduction;
+            break;
+        case 11:
+            focus_offset = 0x2c;
+            subject_kind = NativeHistoryObjectKind::Region;
+            page_kind = NativeHistoryPageKind::RegionIntroduction;
+            break;
+        case 12:
+            break;
+        case 13: case 14: case 15: case 16: case 17: case 18: case 19:
+        case 31: case 33: case 35: case 39:
+            form_preview = true;
+            break;
+        default:
             reset_cache();
             return;
         }
@@ -132,11 +170,13 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
             reset_cache();
             return;
         }
-        if (type == 10)
-            event = native_history_find_subject(base, NativeHistoryObjectKind::Entity, id);
+        if (form_preview)
+            event = native_performance_form_subject(base, perform, type, id);
+        else if (type != 12)
+            event = native_history_find_subject(base, subject_kind, id);
         else if (!native_history_find_structure_id(native_history_global(0x24f9cb8),
                 0x20, id, event)) event = 0;
-        if (!event || (type == 10 && !g_real_native_history_describe)) {
+        if (!event || (!form_preview && type != 12 && !g_real_native_history_describe)) {
             reset_cache();
             return;
         }
@@ -202,11 +242,20 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
         NativeMissionReportScratch sentence(base);
         std::string_view source;
         std::string rich_source;
-        auto story = std::make_shared<NativeHistoryDocument>();
-        if (type == 10) {
-            // PE 87121a..8712e4 supplies flags=0, entity focus +1c and
-            // brief=true. The shared producer owns every organization type,
-            // optional deity/weapon description and actual confidence text.
+        std::shared_ptr<NativeHistoryDocument> story;
+        if (form_preview) {
+            const uintptr_t assign = native_history_page_address(NativeHistoryPageSymbol::AssignLiteral);
+            if (!assign) return;
+            reinterpret_cast<NativeHistoryLiteralFn>(assign)(&sentence.source, "[C:6:0:1]");
+            if (!recover_native_performance_form_source(base, event, type, &sentence.source) ||
+                    !native_string_view(&sentence.source, &source, kNativeHistorySourceLimit) ||
+                    source.size() <= 9) return;
+            rich_source.assign(source);
+        } else if (type != 12) {
+            // PE 871052/87116f/8712c8/871421/87157a supplies flags=0,
+            // the corresponding focus above and brief=true. The shared
+            // producer owns the whole introduction and confidence suffix,
+            // including every figure, site, organization and region branch.
             // Preserve any unrelated in-flight Legends capture around it.
             struct LegendsScope {
                 NativeHistoryLegendsState previous = std::move(native_history_legends_state());
@@ -216,7 +265,7 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
             const uintptr_t assign = native_history_page_address(NativeHistoryPageSymbol::AssignLiteral);
             const uintptr_t history = native_history_global(0x24f9cb8);
             if (!assign || !history) return;
-            std::memcpy(context.data() + 0x1c, &id, sizeof(id));
+            std::memcpy(context.data() + focus_offset, &id, sizeof(id));
             reinterpret_cast<NativeHistoryLiteralFn>(assign)(&sentence.source, "[C:6:0:1]");
             capture_native_history_describe(reinterpret_cast<void *>(history),
                 context.data(), true, &sentence.source);
@@ -226,12 +275,27 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
                     !native_string_view(&sentence.source, &source, kNativeHistorySourceLimit) ||
                     source != page.complete_source) return;
             auto &span = page.spans.front();
-            if (!span.page || span.page->kind != NativeHistoryPageKind::EntityIntroduction ||
-                    span.page->data.entity_id != id || span.begin != 9 || span.end < span.begin ||
+            if (!span.page || span.page->kind != page_kind || span.begin != 9 || span.end < span.begin ||
                     source.substr(0, span.begin) != "[C:6:0:1]" ||
                     source.substr(span.end) != "[B]" ||
                     !native_history_tree_within_limits(span.page->data, true)) return;
+            const auto &data = span.page->data;
+            int32_t captured_id = -1;
+            switch (subject_kind) {
+            case NativeHistoryObjectKind::Site: captured_id = data.site_id; break;
+            case NativeHistoryObjectKind::Entity: captured_id = data.entity_id; break;
+            case NativeHistoryObjectKind::Figure: captured_id = data.actor_id; break;
+            case NativeHistoryObjectKind::Region: {
+                const auto region = data.fields.find("region");
+                if (region != data.fields.end() && region->second.size() == 1)
+                    captured_id = region->second.front();
+                break;
+            }
+            default: return;
+            }
+            if (captured_id != id) return;
             rich_source.assign(source);
+            story = std::make_shared<NativeHistoryDocument>();
             story->native_source = span.source;
             story->page = std::move(span.page);
         } else {
@@ -247,6 +311,7 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
                     !native_history_tree_within_limits(*captured.event)) return;
             rich_source = "[C:6:0:1]";
             rich_source.append(source);
+            story = std::make_shared<NativeHistoryDocument>();
             story->native_source.assign(source);
             story->event = std::move(*captured.event);
         }
@@ -300,8 +365,9 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
 
         auto document = read_native_reading_box(&current, &rich, false, false, false);
         if (!document || document->rows.size() != rows.size()) return;
-        story->owner = owner;
-        {
+        document->performance_choice_type = type;
+        if (story) {
+            story->owner = owner;
             std::lock_guard<std::mutex> lock(g_native_history_mutex);
             g_native_history_sequence = g_native_history_sequence == UINT64_MAX
                 ? 1 : g_native_history_sequence + 1;

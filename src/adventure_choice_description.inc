@@ -92,9 +92,10 @@
             std::optional<NativeParagraphViewport> source_viewport = native
                 ? std::optional(viewport) : std::nullopt;
             int complete_layout_rows = 0;
+            int32_t performance_choice_type = -1;
             std::shared_ptr<const NativeHistoryDocument> story_event;
-            // The performance renderer wraps the complete selected-subject
-            // source at 0x8712e4 -> 0x858550 and draws its colored rows through
+            // The performance renderer wraps every complete selected-subject
+            // source through 0x858550 and draws its colored rows through
             // 0x872b3d -> 0xad9790. These are rich documents, separate from
             // add_paragraph's plain registry. Bind every visible source row
             // to one document's actual draws before using its hidden tail.
@@ -163,6 +164,7 @@
                             })) continue;
                     source = document->source;
                     story_event = document->story_event;
+                    performance_choice_type = document->performance_choice_type;
                     complete_layout_rows = static_cast<int>(document->rows.size());
                     // This fixed preview has no native scrolling offset. Lay
                     // out the complete translation and clip it to its frame.
@@ -260,7 +262,9 @@
                         complete += paragraphs[part];
                     }
                     std::optional<std::string> translated;
-                    if (is_written_work_description(complete))
+                    if (performance_choice_type == 17)
+                        translated = translate_instrument_description(complete, true, true);
+                    else if (is_written_work_description(complete))
                         translated = translate_written_work_paragraph(complete);
                     else if (complete.find(" poetic ") != std::string::npos)
                         translated = translate_poetic_form_description(complete);
@@ -290,9 +294,10 @@
             };
             std::optional<std::string> target;
             if (story_event) {
-                // STORY_EVENT and STORY_ENTITY carry the selected native
-                // record. Entity pages include their real world/name/race,
-                // organization branches, worship and confidence semantics.
+                // Story sites, figures, entities, regions, sermon deities
+                // and events carry their selected native records. The page
+                // grammar owns the complete introduction and confidence;
+                // names come from those records, including the real world.
                 if (const auto pieces = translate_history_event(*story_event, false)) {
                     std::string complete;
                     for (const auto &piece : *pieces) complete += piece.target;

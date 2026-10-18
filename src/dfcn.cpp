@@ -3372,6 +3372,7 @@ struct NativeKnowledgeDocument {
     std::vector<uintptr_t> row_addresses;
     std::vector<NativeKnowledgeBoxBoundary> box_boundaries;
     std::shared_ptr<const NativeHistoryDocument> story_event;
+    int32_t performance_choice_type = -1;
 };
 
 static void prepare_native_performance_story_document(const char *drawn_row);
