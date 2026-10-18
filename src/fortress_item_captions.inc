@@ -105,8 +105,14 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
     bool typed_description_complete = false;
     try {
         TranslationWorkFrame work_frame("complete item caption", source);
+        // Item headings can be just a work's complete title. Use the same
+        // grammar as the writing document before ordinary item/name senses.
+        if (!relationship && !building_material) {
+            target = translate_written_item_caption(source);
+            typed_description_complete = target.has_value();
+        }
         const bool artwork_subject = !relationship && item_caption_has_art_subject(source);
-        if (artwork_subject && config_.compositional_rules) {
+        if (!target && artwork_subject && config_.compositional_rules) {
             target = translate_item_description_term(source);
             typed_description_complete =
                 translation_complete_with_native_nicknames(target, source);
@@ -164,7 +170,6 @@ std::optional<std::string> Overlay::translate_fortress_item_caption(
             if (!target) target = translate_coin_item_name(source);
             if (!target) target = translate_arena_equipment_source_phrase(source);
             if (!target) target = translate_embark_equipment_item(source, -1, -1, source);
-            if (!target) target = translate_written_item_caption(source);
             // Detail headings and item records can contain only an artifact's
             // native name. Share inventory's same-language root validation for
             // its compound/title groups before generic item composition.

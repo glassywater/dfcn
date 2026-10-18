@@ -31,6 +31,9 @@ std::optional<std::string> Overlay::translate_inventory_item_name(
         if (target) return designation.prefix + *target + designation.suffix;
         return std::nullopt;
     }
+    // A complete written-title production owns its subject meanings before
+    // generic equipment/description segmentation can reinterpret its words.
+    if (auto target = translate_written_item_caption(source); complete(target)) return target;
     if (auto target = translate_wood_item_caption(source)) return target;
     if (auto target = translate_item_caption_grammar(source)) return target;
     if (auto target = translate_arena_equipment_source_phrase(source); complete(target))
@@ -44,7 +47,6 @@ std::optional<std::string> Overlay::translate_inventory_item_name(
             translation_complete_with_native_nicknames(target, source) &&
             target->find("[C:") == std::string::npos &&
             target->find_first_of("\r\n") == std::string::npos) return target;
-    if (auto target = translate_written_item_caption(source); complete(target)) return target;
     if (auto target = translate_procedural_fragment(std::string(source), false, false, {},
             ProceduralFragmentContext::native_item_name); complete(target)) return target;
     if (auto target = translate_compositional(std::string(source)); complete(target)) return target;

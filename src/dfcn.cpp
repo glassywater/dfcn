@@ -18358,8 +18358,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_color_picker_rows(screen_rows, result, only_y, screen_override != nullptr);
     }
 
-    // Item selections and actions must claim complete captions before the
-    // generic UI-message/word passes can consume only part of an item name.
+    // Inventory records, item selections and actions must claim complete
+    // captions before UI messages can consume a word inside an item name.
     // Early glyph suppression reads one raw layer; recover the same current
     // composed context used by the final draw, then project source spans.
     if (!announcement_panel_only && !local_fortress_hud && config_.compositional_rules) {
@@ -18376,6 +18376,16 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         }
         retain_native_text_cells(action_rows, map_text_cells);
         mask_native_knowledge(action_rows);
+        // The adventure inventory has no character tabs. Reserve its whole
+        // item/location fields now: UI literals such as Sleep can also be
+        // subjects inside a written title, and would destroy the complete
+        // native caption before the later character-inventory pass sees it.
+        for (Match &match : capture_inventory_rows(action_rows, action_rows, -1)) {
+            if (screen_rows[match.y].compare(match.x, match.length, match.source) != 0)
+                continue;
+            std::fill_n(screen_rows[match.y].begin() + match.x, match.length, ' ');
+            if (only_y < 0 || only_y == match.y) result.push_back(std::move(match));
+        }
         for (Match &match : capture_adventure_item_modal(action_rows)) {
             std::fill_n(screen_rows[match.y].begin() + match.x, match.length, ' ');
             if (only_y < 0 || only_y == match.y) result.push_back(std::move(match));
