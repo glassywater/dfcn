@@ -813,6 +813,74 @@ static std::vector<LogicalTextField> workshop_task_tab_fields(const std::string 
 std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
         const std::vector<std::string> &rows) const {
     std::vector<WorkshopTaskCard> choices;
+    const auto drawn = captured_native_drawn_text_view();
+    bool queued_jobs = false;
+    for (const auto &draw : drawn) {
+        if (!draw.workshop_task_caption) continue;
+        queued_jobs = true;
+        const auto &caption = *draw.workshop_task_caption;
+        const auto &box = caption.box;
+        if (draw.editable_text || draw.source.empty() || box.w <= 0 || box.h != 3 ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                !draw.draw_grid ||
+                box.x < 0 || box.x + box.w > gps_->dimx ||
+                draw.x != box.x || draw.y != box.y + 1 ||
+                draw.y < 0 || draw.y >= static_cast<int>(rows.size()) ||
+                (draw.draw_clip && (draw.y < draw.draw_clip->y ||
+                    draw.y >= draw.draw_clip->y + draw.draw_clip->h))) continue;
+        NativeTextCard card;
+        card.interior = box;
+        card.button_box = box;
+        card.workshop_task_queue = true;
+        constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
+        bool split = false;
+        for (int y = draw.y; y <= draw.y + (split ? 1 : 0); ++y) {
+            if (y < 0 || y >= gps_->dimy || y >= static_cast<int>(rows.size())) break;
+            // Read only this native string's surviving writes. The optional
+            // worker icon can overwrite its last two abbreviated bytes;
+            // neither that icon nor any other row becomes part of the text.
+            int right = std::min<int64_t>(gps_->dimx,
+                int64_t(draw.x) + draw.source.size());
+            if (draw.draw_clip) right = std::min(right,
+                draw.draw_clip->x + draw.draw_clip->w);
+            NativeTextCardRow row{draw.x, y, {}, {}};
+            bool half = true, ink = false, covered = false;
+            for (int x = draw.x; x < right; ++x) {
+                const size_t byte = static_cast<size_t>(x - draw.x);
+                bool top = false;
+                const auto *cell = cell_at(x, y, &top);
+                const size_t at = static_cast<size_t>(x) * gps_->dimy + y;
+                const auto origin = native_text_grid_origin(*gps_, at, top);
+                const unsigned char expected = static_cast<unsigned char>(draw.source[byte]);
+                if (!cell || (expected != ' ' && (origin.grid != draw.draw_grid ||
+                        origin.top_layer != draw.top_layer)) ||
+                        (cell[0] ? cell[0] : ' ') != expected ||
+                        x >= static_cast<int>(rows[y].size()) ||
+                        rows[y][x] != static_cast<char>(expected)) {
+                    covered = x < box.x + box.w;
+                    break;
+                }
+                row.source += static_cast<char>(expected);
+                row.foregrounds.push_back((cell[1] << 16) | (cell[2] << 8) | cell[3]);
+                if (expected != ' ') {
+                    const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                    half = half && flags && (flags[at] & (upper | lower)) ==
+                        (y == draw.y ? upper : lower);
+                    ink = true;
+                }
+            }
+            if (covered) { card.rows.clear(); break; }
+            if (!ink || (y != draw.y && (!half ||
+                    row.source != card.rows.front().source))) break;
+            row.complete_source = caption.complete_source;
+            card.rows.push_back(std::move(row));
+            if (y == draw.y) split = half;
+        }
+        if (!card.rows.empty()) choices.emplace_back(std::move(card));
+    }
+    // An object-owned queue never falls back to artwork discovery, including
+    // when a foreground page covers every visible job caption.
+    if (queued_jobs) return choices;
     const NativePanelBorders borders(*gps_);
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
@@ -829,7 +897,6 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
                 std::string_view(rows[row.y]).substr(row.x, row.source.size()) == row.source;
         });
     };
-    const auto drawn = captured_native_drawn_text_view();
     const auto capture_button = [&](const SDL_Rect &box) {
         SDL_Rect source = box;
         if (classic) {
@@ -1240,27 +1307,6 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
             const int panel_left = panel ? panel->x : 0;
             const int right = panel ? panel->x + panel->w : gps_->dimx;
             const int bottom = panel ? panel->y + panel->h : gps_->dimy;
-
-            // Queued jobs have no search field or Cancel/Back action. Their
-            // complete native action strip identifies each three-row record,
-            // including repeat/quota and suspended state variants.
-            for (int y = tabs_y + 1; panel && y + 3 <= bottom; ++y) {
-                const auto bounds = native_workshop_task_bounds(*gps_, *panel, y);
-                if (!bounds) continue;
-                auto card = capture_panel_text_card(bounds->source, true);
-                if (!card || std::any_of(card->rows.begin(), card->rows.end(),
-                        [&](const NativeTextCardRow &row) {
-                            return !current(row.x, row.y, row.source) ||
-                                std::string_view(rows[row.y]).substr(row.x, row.source.size()) != row.source;
-                        })) continue;
-                // Source ownership includes the entire original caption;
-                // placement uses frame-left + 2, one cell inside this
-                // already border-free panel.
-                ++card->interior.x;
-                card->interior.w = bounds->text_right - card->interior.x;
-                if (card->interior.w > 0) choices.push_back(std::move(*card));
-            }
-            if (!choices.empty()) return choices;
 
             std::optional<SDL_Rect> search;
             // The building selector opens the right edge beside these tabs.
@@ -1687,7 +1733,7 @@ void Overlay::layout_workshop_task_rows(SDL_Renderer *renderer) {
                 match.layout_native_clip = SDL_Rect{origin_x + box.x * tile_w,
                     origin_y + box.y * tile_h, box.w * tile_w, box.h * tile_h};
             }
-            if (!settings || !settings->classic) continue;
+            if (match.native_workshop_task_row || !settings || !settings->classic) continue;
             std::array<int32_t, 9> skin{};
             const auto button = native_button_text_rect(*gps_, match.x, match.x + 1,
                 match.y, false, &skin, false, true);

@@ -282,6 +282,10 @@ public:
             value(caption.kind); value(caption.right); value(caption.authored);
             text(caption.complete_source);
         });
+        optional(input.workshop_task_caption, [&](const auto &caption) {
+            address(caption.building); address(caption.job);
+            rect(caption.box); text(caption.complete_source);
+        });
         // Vector traversal preserves relative native draw order. Absolute
         // sequence/epoch numbers are scheduling, not semantic content.
     }

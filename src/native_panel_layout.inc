@@ -567,44 +567,6 @@ static std::optional<SDL_Rect> native_work_order_record_rect(
     return SDL_Rect{left, top, right - left, 3};
 }
 
-// Workshop job controls are seven fixed three-cell slots. Slot zero is an
-// optional active-worker icon; repeat/quota, do-now, suspend and remove stay
-// in slots 1, 2, 5 and 6. Read complete live skins, not the first occupied
-// texture, so changing job state cannot change the caption's width.
-struct NativeWorkshopTaskBounds {
-    SDL_Rect source;
-    int text_right;
-};
-
-static std::optional<NativeWorkshopTaskBounds> native_workshop_task_bounds(
-        const graphicst &gps, const SDL_Rect &panel, int top) {
-    if (top < panel.y || top + 3 > panel.y + panel.h) return std::nullopt;
-    const auto button = [&](int x, const int32_t (*skin)[3]) {
-        for (int dx = 0; dx < 3; ++dx)
-            for (int dy = 0; dy < 3; ++dy)
-                if (!native_ui_texture_at(gps, x + dx, top + dy, skin[dx][dy])) return false;
-        return true;
-    };
-    for (int repeat = panel.x + 4; repeat + 18 <= panel.x + panel.w; ++repeat) {
-        if (!(button(repeat, native_texture_building_jobs_repeat(gps)) ||
-              button(repeat, native_texture_building_jobs_repeat_active(gps)) ||
-              button(repeat, native_texture_building_jobs_quota(gps)))) continue;
-        if (!(button(repeat + 3, native_texture_building_jobs_do_now(gps)) ||
-              button(repeat + 3, native_texture_building_jobs_do_now_active(gps))) ||
-            !(button(repeat + 12, native_texture_building_jobs_suspended(gps)) ||
-              button(repeat + 12, native_texture_building_jobs_suspended_active(gps))) ||
-            !button(repeat + 15, native_texture_building_jobs_remove(gps))) continue;
-        const int text_right = repeat - 3;
-        // Native caption clipping can leave its last two source glyphs in
-        // the unused worker slot. Own those bytes too, while the translation
-        // always stops before the slot, including when its icon is absent.
-        const int source_right = button(text_right, native_texture_building_jobs_active(gps))
-            ? text_right : repeat;
-        return NativeWorkshopTaskBounds{{panel.x, top, source_right - panel.x, 3}, text_right};
-    }
-    return std::nullopt;
-}
-
 // ViewBase::draw_sort_widget uses init's current four-cell strips, not the
 // legacy sort handles on graphicst. The full strip establishes a column.
 static std::vector<int> native_sort_columns(const graphicst &gps, int y,

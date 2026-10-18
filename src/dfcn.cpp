@@ -705,6 +705,8 @@ struct Match {
     // overwritten borders. Source spans still own only the original glyphs.
     std::optional<SDL_Rect> native_picture_caption_box{};
     bool native_labor_control = false;
+    // The queued job's native objects and row allocation own this caption.
+    bool native_workshop_task_row = false;
     std::string native_picture_caption_source{};
     // Complete source and group role recovered by the native item reader.
     std::string native_item_caption_source{};
@@ -1100,6 +1102,7 @@ struct NativeTextCard {
     bool character_group_civilization = false;
     std::optional<std::pair<int, int>> civilization_official_columns{};
     bool workshop_task_detail = false;
+    bool workshop_task_queue = false;
     bool trade_request_commodity = false;
 };
 struct WorkshopTaskCard : NativeTextCard {
@@ -2305,6 +2308,14 @@ static bool native_farm_crop_caller(uintptr_t caller);
 static std::shared_ptr<const NativeHistoryName> capture_native_caravan_entity_name(
     uintptr_t caller, uintptr_t source);
 
+struct NativeWorkshopTaskCaption {
+    uintptr_t building = 0, job = 0;
+    SDL_Rect box{};
+    std::string complete_source;
+};
+static std::optional<NativeWorkshopTaskCaption> capture_native_workshop_task_caption(
+    uintptr_t caller, uintptr_t source);
+
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
     std::string source;
@@ -2385,6 +2396,7 @@ struct NativeDrawnTextRow {
     // The work-order producer owns this complete workshop restriction/name.
     std::optional<NativeWorkOrderShopCaption> work_order_shop_caption{};
     std::optional<NativeFortressZoneCaption> fortress_zone_caption{};
+    std::optional<NativeWorkshopTaskCaption> workshop_task_caption{};
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
@@ -2763,6 +2775,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         capture_native_work_order_shop_caption(native_caller, address);
     auto fortress_zone_caption = character ? std::nullopt :
         capture_native_fortress_zone_caption(native_caller, address);
+    auto workshop_task_caption = character ? std::nullopt :
+        capture_native_workshop_task_caption(native_caller, address);
     auto caravan_entity_name = character ? std::shared_ptr<const NativeHistoryName>{} :
         capture_native_caravan_entity_name(native_caller, address);
     // Identity translation acquires TranslationStateScope before any native
@@ -2828,6 +2842,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
             is_native_prose_source(source) || short_caption};
         row.work_order_shop_caption = std::move(work_order_shop_caption);
         row.fortress_zone_caption = std::move(fortress_zone_caption);
+        row.workshop_task_caption = std::move(workshop_task_caption);
+        if (row.workshop_task_caption) row.caption_source = true;
         row.sequence = ++g_native_drawn_text_sequence;
         row.editable_text = NativeEditableTextScope::active;
         row.top_layer = top_layer;
@@ -2933,7 +2949,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
             complete_source.find('\0') == std::string_view::npos &&
             complete_source.find_first_of("\r\n") == std::string_view::npos)
             row.complete_source.assign(complete_source);
-        if (row.caption_source && graphics && !top_layer && !character)
+        if (row.caption_source && graphics && !top_layer && !character &&
+                !row.workshop_task_caption)
             row.picture_frame = capture_native_picture_caption_frame(*graphics, x, y);
         positions.insert(position);
         try {
