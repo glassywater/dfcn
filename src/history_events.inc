@@ -938,6 +938,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
 #include "history_item_writing_semantics.inc"
 #include "history_item_slab_semantics.inc"
 #include "history_page_semantics.inc"
+#include "history_story_title_semantics.inc"
     auto date = history_date(event.year, event.seconds);
     if (!date) return std::nullopt;
     Pieces result = std::move(*date);

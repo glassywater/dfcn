@@ -30912,6 +30912,7 @@ the end of the master-apprentice of {a} over {a} in {p}.	在{p1}，{a1}不再担
 the end of the romantic relationship between {a} and {a}	{a1}与{a2}恋情的终结	htEi
 the failed attempt by {a} to frame {a} for in the wilds.	在荒野中，{a1}试图诬陷{a2}却未得逞。	htEi
 the failure to secure {a}'s {s} tribute from {p} by {a}.	{a2}未能迫使{a1}从{p1}缴纳{s1}贡品。	htEi
+the flight of {a} into the area around {p} in the wilds.	在荒野中，{a1}逃入{p1}周边地区。	htEi
 the forcible creation of the position of {s} during {e}.	在{e1}期间，强行设立{s1}一职。	htEi
 the forcible creation of the position of {s} within {p}.	在{p1}，强行设立{s1}一职。	htEi
 the former apprenticeship of {a} under {a} in the wilds.	在荒野中，{a1}昔日师从{a2}。	htEi
@@ -31944,6 +31945,7 @@ the failure to secure {a}'s {s} tribute from {p} by {a}	{a2}未能迫使{a1}从{
 the fall of {a} from the position of {s} of {p} at {p}.	在{p2}，{a1}失去{p1}的{s1}职位。	htEi
 the fall of {a} from the position of {s} of {p} in {d}.	{d1}年的{a1}失去{p1}的{s1}职位。	htEi
 the fall of {a} from the position of {s} of {p} in {p}.	在{p2}，{a1}失去{p1}的{s1}职位。	htEi
+the flight of {a} into the area around {p} in the wilds	在荒野中，{a1}逃入{p1}周边地区	htEi
 the forcible creation of the position of {s} during {e}	在{e1}期间，强行设立{s1}一职	htEi
 the forcible creation of the position of {s} within {p}	在{p1}，强行设立{s1}一职	htEi
 the former apprenticeship of {a} under {a} in the wilds	在荒野中，{a1}昔日师从{a2}	htEi
@@ -33061,6 +33063,8 @@ the failed attempt by {a} to frame {a} for {s} in {p}.	在{p1}，{a1}试图诬�
 the fall of {a} from the position of {s} of {p} at {p}	在{p2}，{a1}失去{p1}的{s1}职位	htEi
 the fall of {a} from the position of {s} of {p} in {d}	{d1}年的{a1}失去{p1}的{s1}职位	htEi
 the fall of {a} from the position of {s} of {p} in {p}	在{p2}，{a1}失去{p1}的{s1}职位	htEi
+the flight of {a} into the area around {p} during {e}.	在{e1}期间，{a1}逃入{p1}周边地区。	htEi
+the flight of {a} into the area around {p} within {p}.	在{p2}，{a1}逃入{p1}周边地区。	htEi
 the forcible creation of the position of in the wilds.	在荒野中，强行设立职位。	hEi
 the former apprenticeship of {a} under {a} during {e}.	在{e1}期间，{a1}昔日师从{a2}。	htEi
 the former apprenticeship of {a} under {a} within {p}.	在{p1}，{a1}昔日师从{a2}。	htEi
@@ -34246,6 +34250,8 @@ the failed attempt by {a} to frame {a} for within {p}	在{p1}，{a1}试图诬陷
 the failed attempt by {a} to frame {a} for {s} at {p}	在{p1}，{a1}试图诬陷{a2}犯有{s1}却未得逞	htEi
 the failed attempt by {a} to frame {a} for {s} in {d}	{d1}年的{a1}试图诬陷{a2}犯有{s1}却未得逞	htEi
 the failed attempt by {a} to frame {a} for {s} in {p}	在{p1}，{a1}试图诬陷{a2}犯有{s1}却未得逞	htEi
+the flight of {a} into the area around {p} during {e}	在{e1}期间，{a1}逃入{p1}周边地区	htEi
+the flight of {a} into the area around {p} within {p}	在{p2}，{a1}逃入{p1}周边地区	htEi
 the forcible creation of the position of in the wilds	在荒野中，强行设立职位	hEi
 the former apprenticeship of {a} under {a} during {e}	在{e1}期间，{a1}昔日师从{a2}	htEi
 the former apprenticeship of {a} under {a} within {p}	在{p1}，{a1}昔日师从{a2}	htEi
@@ -38137,6 +38143,9 @@ the failed attempt by {a} to frame {a} for in {d}.	{d1}年的{a1}试图诬陷{a2
 the failed attempt by {a} to frame {a} for in {p}.	在{p1}，{a1}试图诬陷{a2}却未得逞。	htEi
 the failure to secure tribute from {p} during {e}.	在{e1}期间，未能迫使{p1}进贡。	htEi
 the failure to secure tribute from {p} within {p}.	在{p2}，未能迫使{p1}进贡。	htEi
+the flight of {a} into the area around {p} at {p}.	在{p2}，{a1}逃入{p1}周边地区。	htEi
+the flight of {a} into the area around {p} in {d}.	{d1}年的{a1}逃入{p1}周边地区。	htEi
+the flight of {a} into the area around {p} in {p}.	在{p2}，{a1}逃入{p1}周边地区。	htEi
 the formation of a corrupt agreement in the wilds.	在荒野中，一项腐败协议的形成。	hEi
 the former apprenticeship of {a} under {a} at {p}.	在{p1}，{a1}昔日师从{a2}。	htEi
 the former apprenticeship of {a} under {a} in {d}.	{d1}年的{a1}昔日师从{a2}。	htEi
@@ -39557,6 +39566,9 @@ the failed attempt by {a} to frame {a} for in {p}	在{p1}，{a1}试图诬陷{a2}
 the failure to secure tribute from {p} during {e}	在{e1}期间，未能迫使{p1}进贡	htEi
 the failure to secure tribute from {p} within {p}	在{p2}，未能迫使{p1}进贡	htEi
 the false friendship of {a} and {a} in the wilds.	在荒野中，{a1}与{a2}的虚假友谊。	htEi
+the flight of {a} into the area around {p} at {p}	在{p2}，{a1}逃入{p1}周边地区	htEi
+the flight of {a} into the area around {p} in {d}	{d1}年的{a1}逃入{p1}周边地区	htEi
+the flight of {a} into the area around {p} in {p}	在{p2}，{a1}逃入{p1}周边地区	htEi
 the formation of a corrupt agreement in the wilds	在荒野中，一项腐败协议的形成	hEi
 the former apprenticeship of {a} under {a} at {p}	在{p1}，{a1}昔日师从{a2}	htEi
 the former apprenticeship of {a} under {a} in {d}	{d1}年的{a1}昔日师从{a2}	htEi
@@ -45604,6 +45616,8 @@ the addition of a gated courtyard within {p}.	在{p1}，有门庭院的增建。
 the agreement between {a} and {a} during {e}.	在{e1}期间，{a1}与{a2}的协议。	htEi
 the agreement between {a} and {a} within {p}.	在{p1}，{a1}与{a2}的协议。	htEi
 the alliance between {p} and {p} in the wilds	在荒野中，{p1}与{p2}之间的联盟	htEi
+the attack of {a} on {a} at {p} in the wilds.	在荒野中，{a1}在{p1}攻击了{a2}。	htEi
+the attack on {a} at {p} by {a} in the wilds.	在荒野中，{a2}在{p1}攻击了{a1}。	htEi
 the audacious creation of the position of {s}	大胆设立{s1}一职	htEi
 the bestowal of the title of in {p} upon {a}.	{p1}向{a1}授予头衔。	htEi
 the bestowal of the title of upon {a} at {p}.	在{p1}，向{a1}授予头衔。	htEi
@@ -45790,6 +45804,7 @@ the transformation of {a} into an {s} in {p}.	在{p1}，{a1}变为{s1}。	htEi
 the use of shadows to tell direction and time	利用影子判断方向与时间	h
 the voiding of agreements with {p} during {e}	在{e1}期间，与{p1}的协议作废	htEi
 the voiding of agreements with {p} within {p}	在{p2}，与{p1}的协议作废	htEi
+the wandering of {a} around {p} in the wilds.	在荒野中，{a1}在{p1}一带游荡。	htEi
 the withdrawal from society of {a} during {e}	在{e1}期间，{a1}不再与外界来往	htEi
 the withdrawal from society of {a} within {p}	在{p1}，{a1}不再与外界来往	htEi
 the wrongful conviction of {a} for during {e}	在{e1}期间，{a1}被错判有罪	htEi
@@ -47300,6 +47315,8 @@ the alliance between {p} and several groups.	{p1}与若干团体之间的联盟�
 the alliance between {p} and {p} during {e}.	在{e1}期间，{p1}与{p2}之间的联盟。	htEi
 the alliance between {p} and {p} within {p}.	在{p3}，{p1}与{p2}之间的联盟。	htEi
 the bestowal of the title of in {p} upon {a}	{p1}向{a1}授予头衔	htEi
+the attack of {a} on {a} at {p} in the wilds	在荒野中，{a1}在{p1}攻击了{a2}	htEi
+the attack on {a} at {p} by {a} in the wilds	在荒野中，{a2}在{p1}攻击了{a1}	htEi
 the bestowal of the title of upon {a} at {p}	在{p1}，向{a1}授予头衔	htEi
 the bestowal of the title of upon {a} in {d}	{d1}年的向{a1}授予头衔	htEi
 the bestowal of the title of upon {a} in {p}	在{p1}，向{a1}授予头衔	htEi
@@ -47470,6 +47487,7 @@ the unsatisfactory conclusion of {s} at {p}.	在{p1}，{s1}令人不满的结局
 the unsatisfactory conclusion of {s} in {d}.	{d1}年的{s1}令人不满的结局。	htEi
 the unsatisfactory conclusion of {s} in {p}.	在{p1}，{s1}令人不满的结局。	htEi
 the wrongful conviction of {a} in the wilds.	在荒野中，{a1}被错判有罪。	htEi
+the wandering of {a} around {p} in the wilds	在荒野中，{a1}在{p1}一带游荡	htEi
 threw {a} into a pit of spikes in the wilds.	在荒野中将{a1}扔进了尖刺坑。	ht
 to provide opportunities for courage to rise	为了让勇气有机会展现	h
 tried to secure tribute from {a} during {e}.	在{e1}期间试图迫使{a1}进贡。	ht
@@ -48952,6 +48970,10 @@ the arrest and interrogation of {a} in {p}.	在{p1}，对{a1}的逮捕和审讯�
 the bestowal of the title of {s} during {e}	在{e1}期间，{s1}头衔的授予	htEi
 the bestowal of the title of {s} within {p}	在{p1}，{s1}头衔的授予	htEi
 the bodies of {a} were buried in {p} at {p}	在{p2}，{a1}的遗体被埋葬在了{p1}	ht
+the attack of {a} on {a} at {p} during {e}.	在{e1}期间，{a1}在{p1}攻击了{a2}。	htEi
+the attack of {a} on {a} at {p} within {p}.	在{p2}，{a1}在{p1}攻击了{a2}。	htEi
+the attack on {a} at {p} by {a} during {e}.	在{e1}期间，{a2}在{p1}攻击了{a1}。	htEi
+the attack on {a} at {p} by {a} within {p}.	在{p2}，{a2}在{p1}攻击了{a1}。	htEi
 the bodies of {a} were buried in {p} in {p}	在{p2}，{a1}的遗体被埋葬在了{p1}	ht
 the body of {a} was animated in {p} at {p}.	在{p2}，{a1}的尸体在{p1}被复活了。	ht
 the body of {a} was animated in {p} in {p}.	在{p2}，{a1}的尸体在{p1}被复活了。	ht
@@ -49017,6 +49039,7 @@ the first contact of {a} and {a} within {p}	在{p1}，{a1}与{a2}的首次接触
 the foraging behavior and diet of creatures	生物的觅食行为与食性	h
 the formation of a corrupt agreement at {p}	在{p1}，一项腐败协议的形成	htEi
 the formation of a corrupt agreement in {d}	{d1}年的一项腐败协议的形成	htEi
+the flight of {a} into the area around {p}.	{a1}逃入{p1}周边地区。	htEi
 the formation of a corrupt agreement in {p}	在{p1}，一项腐败协议的形成	htEi
 the former apprenticeship of {a} under {a}.	{a1}昔日师从{a2}。	htEi
 the friendship of {a} and {a} in the wilds.	在荒野中，{a1}与{a2}的友谊。	htEi
@@ -49114,6 +49137,7 @@ the status of {a} as an enemy of {p} in {p}	在{p2}，{a1}与{p1}为敌的身份
 the subordination of {p} to {p} during {e}.	在{e1}期间，{p1}归附{p2}。	htEi
 the subordination of {p} to {p} within {p}.	在{p3}，{p1}归附{p2}。	htEi
 the taming of the {s} and {s} in the wilds.	在荒野中，驯服{s1}与{s2}。	htEi
+the studies of {a} around {p} in the wilds.	在荒野中，{a1}在{p1}一带求学。	htEi
 the termination of {a} as the child of {a}.	{a1}不再是{a2}的孩子。	htEi
 the termination of {a} as the parent of {a}	{a1}不再是{a2}的父母	htEi
 the transformation of {a} into a {s} at {p}	在{p1}，{a1}变为{s1}	htEi
@@ -49127,6 +49151,8 @@ the use of water-based devices to tell time	使用水力装置计时	h
 the wrongful conviction of {a} in the wilds	在荒野中，{a1}被错判有罪	htEi
 threw {a} into a pit of spikes in the wilds	在荒野中将{a1}扔进了尖刺坑	ht
 toppled the government of {a} in the wilds.	在荒野中推翻了{a1}的政府。	ht
+the wandering of {a} around {p} during {e}.	在{e1}期间，{a1}在{p1}一带游荡。	htEi
+the wandering of {a} around {p} within {p}.	在{p2}，{a1}在{p1}一带游荡。	htEi
 toppled the government of {p} in the wilds.	在荒野中推翻了{p1}的政府。	ht
 tried to secure tribute from {a} during {e}	在{e1}期间试图迫使{a1}进贡	ht
 tried to secure tribute from {a} within {p}	在{p1}试图迫使{a1}进贡	ht
@@ -50786,6 +50812,10 @@ the body of {a} was animated in {p} in {p}	在{p2}，{a1}的尸体在{p1}被复�
 the body of {a} was hung from a {s} by {a}	{a2}将{a1}的尸体悬挂在{s1}上	ht
 the body of {a} was hung from a {s} on {i}	{a1}的尸体被用{i1}悬挂在{s1}上	ht
 the body of {a} was impaled on {i} at {p}.	在{p1}，{a1}的尸体被刺穿在{i1}上。	ht
+the attack of {a} on {a} at {p} during {e}	在{e1}期间，{a1}在{p1}攻击了{a2}	htEi
+the attack of {a} on {a} at {p} within {p}	在{p2}，{a1}在{p1}攻击了{a2}	htEi
+the attack on {a} at {p} by {a} during {e}	在{e1}期间，{a2}在{p1}攻击了{a1}	htEi
+the attack on {a} at {p} by {a} within {p}	在{p2}，{a2}在{p1}攻击了{a1}	htEi
 the body of {a} was impaled on {i} by {a}.	{a2}将{a1}的尸体刺穿在{i1}上。	ht
 the body of {a} was impaled on {i} in {p}.	在{p1}，{a1}的尸体被刺穿在{i1}上。	ht
 the body of {n} was animated by {a} in {p}	{n1}的尸体在{p1}被{a1}复活了	ht
@@ -50857,6 +50887,7 @@ the general suspicion of {a} in the wilds.	在荒野中，对{a1}的普遍怀疑
 the giving up on being a {s} in the wilds.	在荒野中，放弃{s1}的身份。	htEi
 the giving up on being a {s} of {a} at {p}	在{p1}，{a1}放弃{s1}的身份	htEi
 the giving up on being a {s} of {a} in {d}	{d1}年的{a1}放弃{s1}的身份	htEi
+the flight of {a} into the area around {p}	{a1}逃入{p1}周边地区	htEi
 the giving up on being a {s} of {a} in {p}	在{p1}，{a1}放弃{s1}的身份	htEi
 the giving up on being an {s} in the wilds	在荒野中，放弃{s1}的身份	htEi
 the hacking of {a} to pieces in the wilds.	在荒野中，{a1}被砍成碎块。	htEi
@@ -50954,6 +50985,7 @@ the taming of the {s} and {s} in the wilds	在荒野中，驯服{s1}与{s2}	htEi
 the termination of {a} as the child of {a}	{a1}不再是{a2}的孩子	htEi
 the voiding of agreements with {p} at {p}.	在{p2}，与{p1}的协议作废。	htEi
 the voiding of agreements with {p} in {d}.	{d1}年的与{p1}的协议作废。	htEi
+the studies of {a} around {p} in the wilds	在荒野中，{a1}在{p1}一带求学	htEi
 the voiding of agreements with {p} in {p}.	在{p2}，与{p1}的协议作废。	htEi
 the withdrawal from society of {a} at {p}.	在{p1}，{a1}不再与外界来往。	htEi
 the withdrawal from society of {a} in {d}.	{d1}年的{a1}不再与外界来往。	htEi
@@ -50961,6 +50993,8 @@ the withdrawal from society of {a} in {p}.	在{p1}，{a1}不再与外界来往�
 the wrongful conviction of {a} during {e}.	在{e1}期间，{a1}被错判有罪。	htEi
 the wrongful conviction of {a} for at {p}.	在{p1}，{a1}被错判有罪。	htEi
 the wrongful conviction of {a} for in {d}.	{d1}年的{a1}被错判有罪。	htEi
+the wandering of {a} around {p} during {e}	在{e1}期间，{a1}在{p1}一带游荡	htEi
+the wandering of {a} around {p} within {p}	在{p2}，{a1}在{p1}一带游荡	htEi
 the wrongful conviction of {a} for in {p}.	在{p1}，{a1}被错判有罪。	htEi
 the wrongful conviction of {a} within {p}.	在{p1}，{a1}被错判有罪。	htEi
 the {p} in {p} in {p} by {a} in the wilds.	在荒野中，{a1}在{p3}的{p2}涉及{p1}的历史事件。	htEi
@@ -52789,6 +52823,8 @@ the voiding of agreements with {p} at {p}	在{p2}，与{p1}的协议作废	htEi
 the voiding of agreements with {p} in {d}	{d1}年的与{p1}的协议作废	htEi
 the voiding of agreements with {p} in {p}	在{p2}，与{p1}的协议作废	htEi
 the withdrawal from society of {a} at {p}	在{p1}，{a1}不再与外界来往	htEi
+the studies of {a} around {p} during {e}.	在{e1}期间，{a1}在{p1}一带求学。	htEi
+the studies of {a} around {p} within {p}.	在{p2}，{a1}在{p1}一带求学。	htEi
 the withdrawal from society of {a} in {d}	{d1}年的{a1}不再与外界来往	htEi
 the withdrawal from society of {a} in {p}	在{p1}，{a1}不再与外界来往	htEi
 the wrongful conviction of {a} during {e}	在{e1}期间，{a1}被错判有罪	htEi
@@ -52798,6 +52834,7 @@ the wrongful conviction of {a} for in {p}	在{p1}，{a1}被错判有罪	htEi
 the wrongful conviction of {a} within {p}	在{p1}，{a1}被错判有罪	htEi
 the {p} in {p} in {p} by {a} in the wilds	在荒野中，{a1}在{p3}的{p2}涉及{p1}的历史事件	htEi
 threw {a} into a pit of spikes during {e}	在{e1}期间将{a1}扔进了尖刺坑	ht
+the wandering of {a} in {p} in the wilds.	在荒野中，{a1}在{p1}游荡。	htEi
 threw {a} into a pit of spikes within {p}	在{p1}将{a1}扔进了尖刺坑	ht
 title screen, with their own active save.	归为一组，并拥有独立的当前存档。	w
 toppled the government of {a} during {e}.	在{e1}期间推翻了{a1}的政府。	ht
@@ -54622,6 +54659,7 @@ the giving up on being an {s} within {p}	在{p1}，放弃{s1}的身份	htEi
 the hacking of {a} to pieces during {e}.	在{e1}期间，{a1}被砍成碎块。	htEi
 the hacking of {a} to pieces within {p}.	在{p1}，{a1}被砍成碎块。	htEi
 the hanging-out of {a} at{p} during {e}.	在{e1}期间，{a1}在{p1}消磨时光。	htEi
+the flight of {a} into {p} in the wilds.	在荒野中，{a1}逃入{p1}。	htEi
 the hanging-out of {a} at{p} within {p}.	在{p2}，{a1}在{p1}消磨时光。	htEi
 the heat-induced death of {a} during {e}	在{e1}期间，{a1}因高温而死	htEi
 the heat-induced death of {a} within {p}	在{p1}，{a1}因高温而死	htEi
@@ -54713,14 +54751,18 @@ the {p} in {p} in {p} by {a} during {e}.	在{e1}期间，{a1}在{p3}的{p2}涉�
 the {p} in {p} in {p} by {a} within {p}.	在{p4}，{a1}在{p3}的{p2}涉及{p1}的历史事件。	htEi
 toppled the government of {a} during {e}	在{e1}期间推翻了{a1}的政府	ht
 toppled the government of {a} within {p}	在{p1}推翻了{a1}的政府	ht
+the settling of {a} in {p} in the wilds.	在荒野中，{a1}在{p1}安顿下来。	htEi
 toppled the government of {p} during {e}	在{e1}期间推翻了{p1}的政府	ht
 toppled the government of {p} within {p}	在{p2}推翻了{p1}的政府	ht
 tried to secure tribute from {a} at {p}.	在{p1}试图迫使{a1}进贡。	ht
 tried to secure tribute from {a} in {p}.	在{p1}试图迫使{a1}进贡。	ht
+the studies of {a} around {p} during {e}	在{e1}期间，{a1}在{p1}一带求学	htEi
+the studies of {a} around {p} within {p}	在{p2}，{a1}在{p1}一带求学	htEi
 tried to secure tribute from {p} at {p}.	在{p2}试图迫使{p1}进贡。	ht
 tried to secure tribute from {p} in {p}.	在{p2}试图迫使{p1}进贡。	ht
 unfavorable gambling of {a} in the wilds	在荒野中，{a1}不利的赌博	htEi
 unfavorable trading of {a} in the wilds.	在荒野中，{a1}不利的交易。	htEi
+the wandering of {a} in {p} in the wilds	在荒野中，{a1}在{p1}游荡	htEi
 unfavorable trading of {s} in the wilds.	在荒野中，{s1}的不利交易。	htEi
 unfortunate gambling of {a} in the wilds	在荒野中，{a1}不幸的赌博	htEi
 unfortunate trading of {a} in the wilds.	在荒野中，{a1}不幸的交易。	htEi
@@ -56415,6 +56457,12 @@ the burning of {a} in a {s} fire at {p}	在{p1}，{a1}被{s1}的火焰烧死	htE
 the burning of {a} in a {s} fire in {d}	{d1}年的{a1}被{s1}的火焰烧死	htEi
 the burning of {a} in a {s} fire in {p}	在{p1}，{a1}被{s1}的火焰烧死	htEi
 the burning of {a} in magma during {e}.	在{e1}期间，{a1}在岩浆中烧死。	htEi
+the attack of {a} on {a} at {p} at {p}.	在{p2}，{a1}在{p1}攻击了{a2}。	htEi
+the attack of {a} on {a} at {p} in {d}.	{d1}年的{a1}在{p1}攻击了{a2}。	htEi
+the attack of {a} on {a} at {p} in {p}.	在{p2}，{a1}在{p1}攻击了{a2}。	htEi
+the attack on {a} at {p} by {a} at {p}.	在{p2}，{a2}在{p1}攻击了{a1}。	htEi
+the attack on {a} at {p} by {a} in {d}.	{d1}年的{a2}在{p1}攻击了{a1}。	htEi
+the attack on {a} at {p} by {a} in {p}.	在{p2}，{a2}在{p1}攻击了{a1}。	htEi
 the burning of {a} in magma within {p}.	在{p1}，{a1}在岩浆中烧死。	htEi
 the burning of {a} in {n}'s dragon fire	{a1}被{n1}的龙焰烧死	htEi
 the burning of {a} in {n}'s fire at {p}	在{p1}，{a1}被{n1}的火焰烧死	htEi
@@ -56485,6 +56533,7 @@ the horrible experiments of {a} in {d}.	{d1}年的{a1}的可怕实验。	htEi
 the horrible experiments of {a} in {p}.	在{p1}，{a1}的可怕实验。	htEi
 the hunting of great beasts during {e}.	在{e1}期间，猎杀巨兽。	htEi
 the hunting of great beasts within {p}.	在{p1}，猎杀巨兽。	htEi
+the flight of {a} into {p} in the wilds	在荒野中，{a1}逃入{p1}	htEi
 the impalement of {a} on spikes at {p}.	在{p1}，{a1}被尖刺刺穿。	htEi
 the impalement of {a} on spikes in {d}.	{d1}年的{a1}被尖刺刺穿。	htEi
 the impalement of {a} on spikes in {p}.	在{p1}，{a1}被尖刺刺穿。	htEi
@@ -56589,13 +56638,20 @@ the {p} in {p} in {p} by {a} within {p}	在{p4}，{a1}在{p3}的{p2}涉及{p1}�
 tragic visit of merchants in the wilds.	在荒野中，酿成悲剧的商人来访。	hEi
 tried to secure tribute from {a} at {p}	在{p1}试图迫使{a1}进贡	ht
 tried to secure tribute from {a} in {p}	在{p1}试图迫使{a1}进贡	ht
+the settling of {a} in {p} in the wilds	在荒野中，{a1}在{p1}安顿下来	htEi
 tried to secure tribute from {p} at {p}	在{p2}试图迫使{p1}进贡	ht
 tried to secure tribute from {p} in {p}	在{p2}试图迫使{p1}进贡	ht
 tries to do things correctly each time.	每次都会努力把事情做对。	l
+the studies of {a} in {p} in the wilds.	在荒野中，{a1}在{p1}求学。	htEi
 unfavorable gambling of {a} during {e}.	在{e1}期间，{a1}不利的赌博。	htEi
 unfavorable gambling of {a} within {p}.	在{p1}，{a1}不利的赌博。	htEi
 unfavorable trading of {a} in the wilds	在荒野中，{a1}不利的交易	htEi
 unfavorable trading of {s} in the wilds	在荒野中，{s1}的不利交易	htEi
+the wandering of {a} around {p} at {p}.	在{p2}，{a1}在{p1}一带游荡。	htEi
+the wandering of {a} around {p} in {d}.	{d1}年的{a1}在{p1}一带游荡。	htEi
+the wandering of {a} around {p} in {p}.	在{p2}，{a1}在{p1}一带游荡。	htEi
+the wandering of {a} in {p} during {e}.	在{e1}期间，{a1}在{p1}游荡。	htEi
+the wandering of {a} in {p} within {p}.	在{p2}，{a1}在{p1}游荡。	htEi
 unfortunate gambling of {a} during {e}.	在{e1}期间，{a1}不幸的赌博。	htEi
 unfortunate gambling of {a} within {p}.	在{p1}，{a1}不幸的赌博。	htEi
 unfortunate trading of {a} in the wilds	在荒野中，{a1}不幸的交易	htEi
@@ -58539,6 +58595,12 @@ the burning of {a} in {s} fire at {p}.	在{p1}，{a1}被{s1}的火焰烧死。	h
 the burning of {a} in {s} fire in {d}.	{d1}年的{a1}被{s1}的火焰烧死。	htEi
 the burning of {a} in {s} fire in {p}.	在{p1}，{a1}被{s1}的火焰烧死。	htEi
 the cease of occupation of {a} at {p}.	在{p1}，{a1}停止占领。	htEi
+the attack of {a} on {a} at {p} at {p}	在{p2}，{a1}在{p1}攻击了{a2}	htEi
+the attack of {a} on {a} at {p} in {d}	{d1}年的{a1}在{p1}攻击了{a2}	htEi
+the attack of {a} on {a} at {p} in {p}	在{p2}，{a1}在{p1}攻击了{a2}	htEi
+the attack on {a} at {p} by {a} at {p}	在{p2}，{a2}在{p1}攻击了{a1}	htEi
+the attack on {a} at {p} by {a} in {d}	{d1}年的{a2}在{p1}攻击了{a1}	htEi
+the attack on {a} at {p} by {a} in {p}	在{p2}，{a2}在{p1}攻击了{a1}	htEi
 the cease of occupation of {a} in {d}.	{d1}年的{a1}停止占领。	htEi
 the cease of occupation of {a} in {p}.	在{p1}，{a1}停止占领。	htEi
 the classification of alkali and acids	碱与酸的分类	h
@@ -58607,6 +58669,9 @@ the imprisonment by {a} of {a} in {d}.	{d1}年的{a1}对{a2}的囚禁。	htEi
 the imprisonment by {a} of {a} in {p}.	在{p1}，{a1}对{a2}的囚禁。	htEi
 the imprisonment of {a} by {a} at {p}.	在{p1}，{a2}对{a1}的囚禁。	htEi
 the imprisonment of {a} by {a} in {d}.	{d1}年的{a2}对{a1}的囚禁。	htEi
+the flight of {a} into {p} during {e}.	在{e1}期间，{a1}逃入{p1}。	htEi
+the flight of {a} into {p} within {p}.	在{p2}，{a1}逃入{p1}。	htEi
+the flight of {a} to {p} in the wilds.	在荒野中，{a1}逃往{p1}。	htEi
 the imprisonment of {a} by {a} in {p}.	在{p1}，{a2}对{a1}的囚禁。	htEi
 the incorporation of {p} in the wilds.	在荒野中，{p1}的并入。	htEi
 the initial discovery of in the wilds.	在荒野中，首次发现。	hEi
@@ -58709,12 +58774,15 @@ the use of professional hospital staff	医院专业人员的雇用	h
 the working of {a} at{p} in the wilds.	在荒野中，{a1}在{p1}工作。	htEi
 the wrongful conviction of {a} at {p}.	在{p1}，{a1}被错判有罪。	htEi
 the wrongful conviction of {a} for {s}	{a1}被错判犯有{s1}	htEi
+the settling of {a} in {p} during {e}.	在{e1}期间，{a1}在{p1}安顿下来。	htEi
+the settling of {a} in {p} within {p}.	在{p2}，{a1}在{p1}安顿下来。	htEi
 the wrongful conviction of {a} in {d}.	{d1}年的{a1}被错判有罪。	htEi
 the wrongful conviction of {a} in {p}.	在{p1}，{a1}被错判有罪。	htEi
 threw {a} into a pit of spikes at {p}.	在{p1}将{a1}扔进了尖刺坑。	ht
 threw {a} into a pit of spikes in {p}.	在{p1}将{a1}扔进了尖刺坑。	ht
 took up residence in {p} in the wilds.	在荒野中在{p1}住了下来。	ht
 tragic visit of merchants in the wilds	在荒野中，酿成悲剧的商人来访	hEi
+the studies of {a} in {p} in the wilds	在荒野中，{a1}在{p1}求学	htEi
 unfavorable gambling of {a} during {e}	在{e1}期间，{a1}不利的赌博	htEi
 unfavorable gambling of {a} within {p}	在{p1}，{a1}不利的赌博	htEi
 unfavorable trading of {a} during {e}.	在{e1}期间，{a1}不利的交易。	htEi
@@ -58723,6 +58791,11 @@ unfavorable trading of {s} during {e}.	在{e1}期间，{s1}的不利交易。	ht
 unfavorable trading of {s} within {p}.	在{p1}，{s1}的不利交易。	htEi
 unfortunate gambling of {a} during {e}	在{e1}期间，{a1}不幸的赌博	htEi
 unfortunate gambling of {a} within {p}	在{p1}，{a1}不幸的赌博	htEi
+the wandering of {a} around {p} at {p}	在{p2}，{a1}在{p1}一带游荡	htEi
+the wandering of {a} around {p} in {d}	{d1}年的{a1}在{p1}一带游荡	htEi
+the wandering of {a} around {p} in {p}	在{p2}，{a1}在{p1}一带游荡	htEi
+the wandering of {a} in {p} during {e}	在{e1}期间，{a1}在{p1}游荡	htEi
+the wandering of {a} in {p} within {p}	在{p2}，{a1}在{p1}游荡	htEi
 unfortunate trading of {a} during {e}.	在{e1}期间，{a1}不幸的交易。	htEi
 unfortunate trading of {a} within {p}.	在{p1}，{a1}不幸的交易。	htEi
 unfortunate visit of merchants at {p}.	在{p1}，不幸的商人来访。	htEi
@@ -60729,9 +60802,13 @@ the imprisonment of {a} in the wilds.	在荒野中，{a1}遭受囚禁。	htEi
 the imprisonment of {a} in{p} at {p}.	在{p2}，{a1}被囚禁在{p1}。	htEi
 the imprisonment of {a} in{p} in {d}.	{d1}年的{a1}被囚禁在{p1}。	htEi
 the imprisonment of {a} in{p} in {p}.	在{p2}，{a1}被囚禁在{p1}。	htEi
+the exile of {a} to {p} in the wilds.	在荒野中，{a1}被流放到{p1}。	htEi
 the incorporation of {p} in the wilds	在荒野中，{p1}的并入	htEi
 the infiltration of {p} in the wilds.	在荒野中，对{p1}的渗透。	htEi
 the initial discovery of in the wilds	在荒野中，首次发现	hEi
+the flight of {a} into {p} during {e}	在{e1}期间，{a1}逃入{p1}	htEi
+the flight of {a} into {p} within {p}	在{p2}，{a1}逃入{p1}	htEi
+the flight of {a} to {p} in the wilds	在荒野中，{a1}逃往{p1}	htEi
 the insurrection in {p} in the wilds.	在荒野中，{p1}起义。	htEi
 the joining of {a} and {a} during {e}	在{e1}期间，{a1}与{a2}的联合	htEi
 the joining of {a} and {a} within {p}	在{p1}，{a1}与{a2}的联合	htEi
@@ -60824,6 +60901,8 @@ the use of practice models in surgery	外科练习模型的使用	h
 the working of {a} at{p} in the wilds	在荒野中，{a1}在{p1}工作	htEi
 the wrongful conviction of {a} at {p}	在{p1}，{a1}被错判有罪	htEi
 the wrongful conviction of {a} in {d}	{d1}年的{a1}被错判有罪	htEi
+the settling of {a} in {p} during {e}	在{e1}期间，{a1}在{p1}安顿下来	htEi
+the settling of {a} in {p} within {p}	在{p2}，{a1}在{p1}安顿下来	htEi
 the wrongful conviction of {a} in {p}	在{p1}，{a1}被错判有罪	htEi
 there was a competition in the wilds.	在荒野中，举行了一场比赛。	h
 there was a performance in the wilds.	在荒野中，举行了一场表演。	h
@@ -60834,6 +60913,11 @@ toppled the government of {a} at {p}.	在{p1}推翻了{a1}的政府。	ht
 toppled the government of {a} in {p}.	在{p1}推翻了{a1}的政府。	ht
 toppled the government of {p} at {p}.	在{p2}推翻了{p1}的政府。	ht
 toppled the government of {p} in {p}.	在{p2}推翻了{p1}的政府。	ht
+the studies of {a} around {p} at {p}.	在{p2}，{a1}在{p1}一带求学。	htEi
+the studies of {a} around {p} in {d}.	{d1}年的{a1}在{p1}一带求学。	htEi
+the studies of {a} around {p} in {p}.	在{p2}，{a1}在{p1}一带求学。	htEi
+the studies of {a} in {p} during {e}.	在{e1}期间，{a1}在{p1}求学。	htEi
+the studies of {a} in {p} within {p}.	在{p2}，{a1}在{p1}求学。	htEi
 tragic tribute delivery in the wilds.	在荒野中，酿成悲剧的贡品运送。	hEi
 tragic visit of merchants during {e}.	在{e1}期间，酿成悲剧的商人来访。	htEi
 tragic visit of merchants within {p}.	在{p1}，酿成悲剧的商人来访。	htEi
@@ -60846,6 +60930,7 @@ unfavorable trading of {s} during {e}	在{e1}期间，{s1}的不利交易	htEi
 unfavorable trading of {s} within {p}	在{p1}，{s1}的不利交易	htEi
 unfortunate trading of {a} during {e}	在{e1}期间，{a1}不幸的交易	htEi
 unfortunate trading of {a} within {p}	在{p1}，{a1}不幸的交易	htEi
+the visit of {a} to {p} in the wilds.	在荒野中，{a1}造访了{p1}。	htEi
 unfortunate visit of merchants at {p}	在{p1}，不幸的商人来访	htEi
 unfortunate visit of merchants in {d}	{d1}年的不幸的商人来访	htEi
 unfortunate visit of merchants in {p}	在{p1}，不幸的商人来访	htEi
@@ -63012,12 +63097,15 @@ the heat-induced death of {a} at {p}	在{p1}，{a1}因高温而死	htEi
 the heat-induced death of {a} in {d}	{d1}年的{a1}因高温而死	htEi
 the heat-induced death of {a} in {p}	在{p1}，{a1}因高温而死	htEi
 the impersonation of {a} during {e}.	在{e1}期间，对{a1}身份的冒用。	htEi
+the exile of {a} to {p} in the wilds	在荒野中，{a1}被流放到{p1}	htEi
 the impersonation of {a} within {p}.	在{p1}，对{a1}身份的冒用。	htEi
 the imprisonment by {a} in the wilds	在荒野中，{a1}实施的囚禁	htEi
 the imprisonment of {a} in the wilds	在荒野中，{a1}遭受囚禁	htEi
 the imprisonment of {a} in{p} at {p}	在{p2}，{a1}被囚禁在{p1}	htEi
 the imprisonment of {a} in{p} in {d}	{d1}年的{a1}被囚禁在{p1}	htEi
 the imprisonment of {a} in{p} in {p}	在{p2}，{a1}被囚禁在{p1}	htEi
+the flight of {a} to {p} during {e}.	在{e1}期间，{a1}逃往{p1}。	htEi
+the flight of {a} to {p} within {p}.	在{p2}，{a1}逃往{p1}。	htEi
 the incorporation of {p} during {e}.	在{e1}期间，{p1}的并入。	htEi
 the incorporation of {p} within {p}.	在{p2}，{p1}的并入。	htEi
 the independent discovery of at {p}.	在{p1}，独立发现。	htEi
@@ -63133,6 +63221,11 @@ tragic visit of merchants within {p}	在{p1}，酿成悲剧的商人来访	htEi
 tribute delivery to {p} in the wilds	在荒野中，向{p1}运送贡品	htEi
 tries and fails to be funny at times	有时试图逗趣却未能奏效	hv
 trusted {a} and agreed in the wilds.	在荒野中信任{a1}，答应了。	ht
+the studies of {a} around {p} at {p}	在{p2}，{a1}在{p1}一带求学	htEi
+the studies of {a} around {p} in {d}	{d1}年的{a1}在{p1}一带求学	htEi
+the studies of {a} around {p} in {p}	在{p2}，{a1}在{p1}一带求学	htEi
+the studies of {a} in {p} during {e}	在{e1}期间，{a1}在{p1}求学	htEi
+the studies of {a} in {p} within {p}	在{p2}，{a1}在{p1}求学	htEi
 trusted {a} and refused in the wilds	在荒野中信任{a1}，拒绝了对方	ht
 unfortunate tribute delivery at {p}.	在{p1}，遭遇不幸的贡品运送。	htEi
 unfortunate tribute delivery in {d}.	{d1}年的遭遇不幸的贡品运送。	htEi
@@ -63144,6 +63237,7 @@ was a civilization of {p} within {p}	在{p2}曾是{p1}的一个政权	ht
 was a mercenary band from {p} at {p}	在{p2}曾是来自{p1}的佣兵团	ht
 was a mercenary band from {p} in {p}	在{p2}曾是来自{p1}的佣兵团	ht
 was a shadowy military band from {p}	曾是来自{p1}的隐秘的军事团伙	ht
+the visit of {a} to {p} in the wilds	在荒野中，{a1}造访了{p1}	htEi
 was a {s} band from {p} in the wilds	在荒野中曾是来自{p1}的{s1}团伙	ht
 was a {s} civilization of {p} at {p}	在{p2}曾是{p1}的{s1}政权	ht
 was a {s} civilization of {p} in {p}	在{p2}曾是{p1}的{s1}政权	ht
@@ -65232,6 +65326,8 @@ the imprisonment of {a} during {e}.	在{e1}期间，{a1}遭受囚禁。	htEi
 the imprisonment of {a} within {p}.	在{p1}，{a1}遭受囚禁。	htEi
 the incorporation of {p} during {e}	在{e1}期间，{p1}的并入	htEi
 the incorporation of {p} within {p}	在{p2}，{p1}的并入	htEi
+the exile of {a} to {p} during {e}.	在{e1}期间，{a1}被流放到{p1}。	htEi
+the exile of {a} to {p} within {p}.	在{p2}，{a1}被流放到{p1}。	htEi
 the independent discovery of at {p}	在{p1}，独立发现	htEi
 the independent discovery of in {d}	{d1}年的独立发现	htEi
 the independent discovery of in {p}	在{p1}，独立发现	htEi
@@ -65241,6 +65337,8 @@ the inheritance of {p} in the wilds	在荒野中，{p1}的继承	htEi
 the initial discovery of during {e}	在{e1}期间，首次发现	htEi
 the initial discovery of within {p}	在{p1}，首次发现	htEi
 the initial discovery of {s} at {p}	在{p1}，{s1}的首次发现	htEi
+the flight of {a} to {p} during {e}	在{e1}期间，{a1}逃往{p1}	htEi
+the flight of {a} to {p} within {p}	在{p2}，{a1}逃往{p1}	htEi
 the initial discovery of {s} by {a}	{a1}首次发现{s1}	htEi
 the initial discovery of {s} in {d}	{d1}年的{s1}的首次发现	htEi
 the initial discovery of {s} in {p}	在{p1}，{s1}的首次发现	htEi
@@ -65360,7 +65458,12 @@ unfortunate tribute delivery in {d}	{d1}年的遭遇不幸的贡品运送	htEi
 unfortunate tribute delivery in {p}	在{p1}，遭遇不幸的贡品运送	htEi
 unrolled a brilliant tactical plan.	展开了出色的战术部署。	h
 visit of merchants from {p} at {p}.	在{p2}，来自{p1}的商人来访。	htEi
+the visit of {a} to {p} during {e}.	在{e1}期间，{a1}造访了{p1}。	htEi
+the visit of {a} to {p} within {p}.	在{p2}，{a1}造访了{p1}。	htEi
 visit of merchants from {p} in {d}.	{d1}年的来自{p1}的商人来访。	htEi
+the wandering of {a} in {p} at {p}.	在{p2}，{a1}在{p1}游荡。	htEi
+the wandering of {a} in {p} in {d}.	{d1}年的{a1}在{p1}游荡。	htEi
+the wandering of {a} in {p} in {p}.	在{p2}，{a1}在{p1}游荡。	htEi
 visit of merchants from {p} in {p}.	在{p2}，来自{p1}的商人来访。	htEi
 was a religion of {p} in the wilds.	在荒野中曾是{p1}的一个宗教。	ht
 was a {s} band from {p} during {e}.	在{e1}期间曾是来自{p1}的{s1}团伙。	ht
@@ -67619,6 +67722,8 @@ the joining of {a} and {a} in {p}.	在{p1}，{a1}与{a2}的联合。	htEi
 the joining of {a} with {a} at {p}	在{p1}，{a1}与{a2}的结伴	htEi
 the joining of {a} with {a} in {d}	{d1}年的{a1}与{a2}的结伴	htEi
 the joining of {a} with {a} in {p}	在{p1}，{a1}与{a2}的结伴	htEi
+the exile of {a} to {p} during {e}	在{e1}期间，{a1}被流放到{p1}	htEi
+the exile of {a} to {p} within {p}	在{p2}，{a1}被流放到{p1}	htEi
 the lair of {a} in{p} in the wilds	在荒野中，{a1}在{p1}筑巢	htEi
 the learning of {s} by {a} at {p}.	在{p1}，{a1}学会{s1}。	htEi
 the learning of {s} by {a} in {d}.	{d1}年的{a1}学会{s1}。	htEi
@@ -67628,6 +67733,9 @@ the making of {b} from {p} at {p}.	在{p2}，以{p1}制作《{b1}》。	htEi
 the making of {b} from {p} in {d}.	{d1}年的以{p1}制作《{b1}》。	htEi
 the making of {b} from {p} in {p}.	在{p2}，以{p1}制作《{b1}》。	htEi
 the making of {p} from {p} at {p}.	在{p3}，以{p2}制作{p1}。	htEi
+the flight of {a} into {p} at {p}.	在{p2}，{a1}逃入{p1}。	htEi
+the flight of {a} into {p} in {d}.	{d1}年的{a1}逃入{p1}。	htEi
+the flight of {a} into {p} in {p}.	在{p2}，{a1}逃入{p1}。	htEi
 the making of {p} from {p} in {d}.	{d1}年的以{p2}制作{p1}。	htEi
 the making of {p} from {p} in {p}.	在{p3}，以{p2}制作{p1}。	htEi
 the making of {p} into a symbol of	将{p1}定为职位的象征	htEi
@@ -67721,6 +67829,9 @@ trusted {a} and agreed within {p}.	在{p1}信任{a1}，答应了。	ht
 trusted {a} and refused during {e}	在{e1}期间信任{a1}，拒绝了对方	ht
 trusted {a} and refused within {p}	在{p1}信任{a1}，拒绝了对方	ht
 unfavorable gambling of {a} at {p}	在{p1}，{a1}不利的赌博	htEi
+the settling of {a} in {p} at {p}.	在{p2}，{a1}在{p1}安顿下来。	htEi
+the settling of {a} in {p} in {d}.	{d1}年的{a1}在{p1}安顿下来。	htEi
+the settling of {a} in {p} in {p}.	在{p2}，{a1}在{p1}安顿下来。	htEi
 unfavorable gambling of {a} in {d}	{d1}年的{a1}不利的赌博	htEi
 unfavorable gambling of {a} in {p}	在{p1}，{a1}不利的赌博	htEi
 unfavorable trading of {a} at {p}.	在{p1}，{a1}不利的交易。	htEi
@@ -67734,8 +67845,13 @@ unfortunate gambling of {a} in {d}	{d1}年的{a1}不幸的赌博	htEi
 unfortunate gambling of {a} in {p}	在{p1}，{a1}不幸的赌博	htEi
 unfortunate trading of {a} at {p}.	在{p1}，{a1}不幸的交易。	htEi
 unfortunate trading of {a} in {d}.	{d1}年的{a1}不幸的交易。	htEi
+the visit of {a} to {p} during {e}	在{e1}期间，{a1}造访了{p1}	htEi
+the visit of {a} to {p} within {p}	在{p2}，{a1}造访了{p1}	htEi
 unfortunate trading of {a} in {p}.	在{p1}，{a1}不幸的交易。	htEi
 unknown boiling creature substance	未知沸腾生物质	wi
+the wandering of {a} in {p} at {p}	在{p2}，{a1}在{p1}游荡	htEi
+the wandering of {a} in {p} in {d}	{d1}年的{a1}在{p1}游荡	htEi
+the wandering of {a} in {p} in {p}	在{p2}，{a1}在{p1}游荡	htEi
 unrolled a brilliant tactical plan	展开了出色的战术部署	h
 valued the law and refused at {p}.	在{p1}因尊重法律而拒绝了对方。	ht
 valued the law and refused in {p}.	在{p1}因尊重法律而拒绝了对方。	ht
@@ -69883,6 +69999,9 @@ the moving out of {a} within {p}.	在{p1}，{a1}的迁出。	htEi
 the offering of {p} in the wilds.	在荒野中，献出{p1}。	htEi
 the overthrow of {p} in the wilds	在荒野中，{p1}政权倾覆事件	htEi
 the performance of {b} during {e}	在{e1}期间，《{b1}》的表演	htEi
+the flight of {a} into {p} at {p}	在{p2}，{a1}逃入{p1}	htEi
+the flight of {a} into {p} in {d}	{d1}年的{a1}逃入{p1}	htEi
+the flight of {a} into {p} in {p}	在{p2}，{a1}逃入{p1}	htEi
 the performance of {b} within {p}	在{p1}，《{b1}》的表演	htEi
 the persecution of {a} during {e}	在{e1}期间，对{a1}的迫害	htEi
 the persecution of {a} within {p}	在{p1}，对{a1}的迫害	htEi
@@ -69928,7 +70047,10 @@ the scouting of {a} in the wilds.	在荒野中，{a1}的侦察活动。	htEi
 the scuttling of {a} in the wilds	在荒野中，{a1}被凿沉	htEi
 the securing of tribute from {p}.	迫使{p1}进贡。	htEi
 the selection of {a} in the wilds	在荒野中，对{a1}的选任	htEi
-the settling of {a} in the wilds.	在荒野中，{a1}的定居。	htEi
+the settling of {a} in the wilds.	在荒野中，{a1}安顿下来。	htEi
+the settling of {a} in {p} at {p}	在{p2}，{a1}在{p1}安顿下来	htEi
+the settling of {a} in {p} in {d}	{d1}年的{a1}在{p1}安顿下来	htEi
+the settling of {a} in {p} in {p}	在{p2}，{a1}在{p1}安顿下来	htEi
 the shooting of {a} in the wilds.	在荒野中，{a1}被射杀。	htEi
 the slaughter of {a} in the wilds	在荒野中，{a1}遭屠杀	htEi
 the start as a {s} of {a} at {p}.	在{p1}，{a1}开始担任{s1}。	htEi
@@ -69983,6 +70105,9 @@ unfavorable trading of {s} in {d}	{d1}年的{s1}的不利交易	htEi
 unfavorable trading of {s} in {p}	在{p1}，{s1}的不利交易	htEi
 unfortunate trading of {a} at {p}	在{p1}，{a1}不幸的交易	htEi
 unfortunate trading of {a} in {d}	{d1}年的{a1}不幸的交易	htEi
+the studies of {a} in {p} at {p}.	在{p2}，{a1}在{p1}求学。	htEi
+the studies of {a} in {p} in {d}.	{d1}年的{a1}在{p1}求学。	htEi
+the studies of {a} in {p} in {p}.	在{p2}，{a1}在{p1}求学。	htEi
 unfortunate trading of {a} in {p}	在{p1}，{a1}不幸的交易	htEi
 unknown frozen creature substance	未知冻结生物质	wi
 valued the law and refused at {p}	在{p1}因尊重法律而拒绝了对方	ht
@@ -72051,6 +72176,8 @@ the creation of {b} in the wilds	在荒野中，《{b1}》的创作	htEi
 the creation of {p} in the wilds	在荒野中，创造{p1}	htEi
 the dark brooding of {a} at {p}.	在{p1}，{a1}的阴森沉思。	htEi
 the dark brooding of {a} in {d}.	{d1}年的{a1}的阴森沉思。	htEi
+the attack of {a} on {a} at {p}.	{a1}在{p1}攻击了{a2}。	htEi
+the attack on {a} at {p} by {a}.	{a2}在{p1}攻击了{a1}。	htEi
 the dark brooding of {a} in {p}.	在{p1}，{a1}的阴森沉思。	htEi
 the defeat of {a} by {a} at {p}.	在{p1}，「{a2}」击败了「{a1}」。	htEi
 the defeat of {a} by {a} in {d}.	{d1}年的「{a2}」击败了「{a1}」。	htEi
@@ -72141,6 +72268,9 @@ the offering of {p} in the wilds	在荒野中，献出{p1}	htEi
 the overthrow of {p} during {e}.	在{e1}期间，{p1}政权倾覆事件。	htEi
 the overthrow of {p} within {p}.	在{p2}，{p1}政权倾覆事件。	htEi
 the passing of {a} in the wilds.	在荒野中，{a1}寿终正寝。	htEi
+the flight of {a} to {p} at {p}.	在{p2}，{a1}逃往{p1}。	htEi
+the flight of {a} to {p} in {d}.	{d1}年的{a1}逃往{p1}。	htEi
+the flight of {a} to {p} in {p}.	在{p2}，{a1}逃往{p1}。	htEi
 the peace-making of {a} and {a}.	{a1}与{a2}的讲和。	htEi
 the plot of {a} to abduct at {p}	在{p1}，{a1}的绑架阴谋	htEi
 the plot of {a} to abduct in {d}	{d1}年的{a1}的绑架阴谋	htEi
@@ -72191,7 +72321,7 @@ the selection of {a} within {p}.	在{p1}，对{a1}的选任。	htEi
 the selection of {a} {p} at {p}.	在{p2}，{p1}对{a1}的选任。	htEi
 the selection of {a} {p} in {d}.	{d1}年的{p1}对{a1}的选任。	htEi
 the selection of {a} {p} in {p}.	在{p2}，{p1}对{a1}的选任。	htEi
-the settling of {a} in the wilds	在荒野中，{a1}的定居	htEi
+the settling of {a} in the wilds	在荒野中，{a1}安顿下来	htEi
 the shooting of {a} in the wilds	在荒野中，{a1}被射杀	htEi
 the slaughter of {a} during {e}.	在{e1}期间，{a1}遭屠杀。	htEi
 the slaughter of {a} within {p}.	在{p1}，{a1}遭屠杀。	htEi
@@ -72253,6 +72383,9 @@ visit of merchants in the wilds.	在荒野中，商人来访。	hEi
 was a civilization of {p} at {p}	在{p2}曾是{p1}的一个政权	ht
 was a civilization of {p} in {p}	在{p2}曾是{p1}的一个政权	ht
 was a force which permeates {p}.	曾是遍及{p}的自然之灵。	ht
+the studies of {a} in {p} at {p}	在{p2}，{a1}在{p1}求学	htEi
+the studies of {a} in {p} in {d}	{d1}年的{a1}在{p1}求学	htEi
+the studies of {a} in {p} in {p}	在{p2}，{a1}在{p1}求学	htEi
 was a group from {p} during {e}.	在{e1}期间曾是来自{p1}的势力。	ht
 was a group from {p} within {p}.	在{p2}曾是来自{p1}的势力。	ht
 was a mercenary company from {p}	曾是来自{p1}的佣兵队伍	ht
@@ -72274,6 +72407,7 @@ was beheaded by {a} in the wilds	在荒野中被{a1}斩首了	ht
 was burned to death by {s} fire.	被{s1}的火焰烧死了。	ht
 was convicted by {a} during {e}.	在{e1}期间被{a1}定罪了。	ht
 was convicted by {a} within {p}.	在{p1}被{a1}定罪了。	ht
+the wandering of {a} around {p}.	{a1}在{p1}一带游荡。	htEi
 was convicted of {s} during {e}.	在{e1}期间被判定犯有{s1}。	ht
 was convicted of {s} within {p}.	在{p1}被判定犯有{s1}。	ht
 was crucified by {a} during {e}.	在{e1}期间被{a1}钉死在十字架上。	ht
@@ -74386,6 +74520,8 @@ the confiscation of {i} in {p}.	在{p1}，没收{i1}。	htEi
 the confiscation of {p} at {p}.	在{p2}，没收{p1}。	htEi
 the confiscation of {p} in {d}.	{d1}年的没收{p1}。	htEi
 the confiscation of {p} in {p}.	在{p2}，没收{p1}。	htEi
+the attack of {a} on {a} at {p}	{a1}在{p1}攻击了{a2}	htEi
+the attack on {a} at {p} by {a}	{a2}在{p1}攻击了{a1}	htEi
 the construction of {p} at {p}.	在{p2}，建造{p1}。	htEi
 the construction of {p} in {d}.	{d1}年的建造{p1}。	htEi
 the construction of {p} in {p}.	在{p2}，建造{p1}。	htEi
@@ -74486,6 +74622,9 @@ the learning of {s} during {e}.	在{e1}期间，学会{s1}。	htEi
 the learning of {s} within {p}.	在{p1}，学会{s1}。	htEi
 the looting of {i} in the wilds	在荒野中，劫掠{i1}	htEi
 the looting of {p} in the wilds	在荒野中，劫掠{p1}	htEi
+the exile of {a} to {p} at {p}.	在{p2}，{a1}被流放到{p1}。	htEi
+the exile of {a} to {p} in {d}.	{d1}年的{a1}被流放到{p1}。	htEi
+the exile of {a} to {p} in {p}.	在{p2}，{a1}被流放到{p1}。	htEi
 the loss of faith of {a} in {a}	{a1}不再信奉{a2}	htEi
 the making of {b} in the wilds.	在荒野中，《{b1}》的制作。	htEi
 the making of {p} in the wilds.	在荒野中，{p1}的制作。	htEi
@@ -74498,6 +74637,9 @@ the melting of {a} in the wilds	在荒野中，{a1}的熔化	htEi
 the mercenary operation at {p}.	在{p1}，佣兵活动。	htEi
 the mercenary operation in {d}.	{d1}年的佣兵活动。	htEi
 the mercenary operation in {p}.	在{p1}，佣兵活动。	htEi
+the flight of {a} to {p} at {p}	在{p2}，{a1}逃往{p1}	htEi
+the flight of {a} to {p} in {d}	{d1}年的{a1}逃往{p1}	htEi
+the flight of {a} to {p} in {p}	在{p2}，{a1}逃往{p1}	htEi
 the mercenary operation of {a}.	{a1}的佣兵活动。	htEi
 the murder of {a} in the wilds.	在荒野中，{a1}的遇害。	htEi
 the naming of {p} in the wilds.	在荒野中，为{p1}命名。	htEi
@@ -74563,8 +74705,8 @@ the selection of {a} {p} at {p}	在{p2}，{p1}对{a1}的选任	htEi
 the selection of {a} {p} in {d}	{d1}年的{p1}对{a1}的选任	htEi
 the selection of {a} {p} in {p}	在{p2}，{p1}对{a1}的选任	htEi
 the sermon of {a} in the wilds.	在荒野中，{a1}的布道。	htEi
-the settling of {a} during {e}.	在{e1}期间，{a1}的定居。	htEi
-the settling of {a} within {p}.	在{p1}，{a1}的定居。	htEi
+the settling of {a} during {e}.	在{e1}期间，{a1}安顿下来。	htEi
+the settling of {a} within {p}.	在{p1}，{a1}安顿下来。	htEi
 the shooting of {a} during {e}.	在{e1}期间，{a1}被射杀。	htEi
 the shooting of {a} within {p}.	在{p1}，{a1}被射杀。	htEi
 the slaughter of {a} during {e}	在{e1}期间，{a1}遭屠杀	htEi
@@ -74647,6 +74789,10 @@ was a {s} guild from {p} in {p}	在{p2}曾是来自{p1}的{s1}行会	ht
 was a {s} order from {p} at {p}	在{p2}曾是来自{p1}的{s1}团体	ht
 was a {s} order from {p} in {p}	在{p2}曾是来自{p1}的{s1}团体	ht
 was abducted by {a} during {e}.	在{e1}期间被{a1}绑架了。	ht
+the visit of {a} to {p} at {p}.	在{p2}，{a1}造访了{p1}。	htEi
+the visit of {a} to {p} in {d}.	{d1}年的{a1}造访了{p1}。	htEi
+the visit of {a} to {p} in {p}.	在{p2}，{a1}造访了{p1}。	htEi
+the wandering of {a} around {p}	{a1}在{p1}一带游荡	htEi
 was abducted by {a} within {p}.	在{p1}被{a1}绑架了。	ht
 was arrested by {a} during {e}.	在{e1}期间被{a1}逮捕了。	ht
 was arrested by {a} within {p}.	在{p1}被{a1}逮捕了。	ht
@@ -77043,6 +77189,9 @@ the making of {s} in the wilds	在荒野中，提出{s1}	htEi
 the masterful engraving at {p}	在{p1}，杰作级雕刻	htEi
 the masterful engraving in {d}	{d1}年的杰作级雕刻	htEi
 the masterful engraving in {p}	在{p1}，杰作级雕刻	htEi
+the exile of {a} to {p} at {p}	在{p2}，{a1}被流放到{p1}	htEi
+the exile of {a} to {p} in {d}	{d1}年的{a1}被流放到{p1}	htEi
+the exile of {a} to {p} in {p}	在{p2}，{a1}被流放到{p1}	htEi
 the masterful {i} in the wilds	在荒野中，杰作级的{i1}	htEi
 the melting of {a} during {e}.	在{e1}期间，{a1}的熔化。	htEi
 the melting of {a} within {p}.	在{p1}，{a1}的熔化。	htEi
@@ -77108,8 +77257,8 @@ the scouting of {a} within {p}	在{p1}，{a1}的侦察活动	htEi
 the search of {p} in the wilds	在荒野中，对{p1}的搜寻	htEi
 the seat of power of {a} at{p}	{a1}以{p1}为统治中心	htEi
 the sermon of {a} in the wilds	在荒野中，{a1}的布道	htEi
-the settling of {a} during {e}	在{e1}期间，{a1}的定居	htEi
-the settling of {a} within {p}	在{p1}，{a1}的定居	htEi
+the settling of {a} during {e}	在{e1}期间，{a1}安顿下来	htEi
+the settling of {a} within {p}	在{p1}，{a1}安顿下来	htEi
 the shooting of {a} during {e}	在{e1}期间，{a1}被射杀	htEi
 the shooting of {a} within {p}	在{p1}，{a1}被射杀	htEi
 the start as a {s} during {e}.	在{e1}期间，开始担任{s1}。	htEi
@@ -77180,6 +77329,7 @@ voided all agreements with {p}	废除了与{p1}的所有协议	ht
 was a mercenary band from {p}.	曾是来自{p1}的佣兵团。	ht
 was a mercenary order from {p}	曾是来自{p1}的佣兵团体	ht
 was a {s} band from {p} at {p}	在{p2}曾是来自{p1}的{s1}团伙	ht
+the studies of {a} around {p}.	{a1}在{p1}一带求学。	htEi
 was a {s} band from {p} in {p}	在{p2}曾是来自{p1}的{s1}团伙	ht
 was a {s} bandit gang from {p}	曾是来自{p1}的{s1}匪帮	ht
 was a {s} civilization of {p}.	曾是{p1}的{s1}政权。	ht
@@ -77199,6 +77349,9 @@ was buried alive in the wilds.	在荒野中被活埋了。	h
 was buried in {p} in the wilds	在荒野中被埋葬在了{p1}	ht
 was burned alive by {a} at {p}	在{p1}被{a1}活活烧死了	ht
 was burned alive by {a} in {p}	在{p1}被{a1}活活烧死了	ht
+the visit of {a} to {p} at {p}	在{p2}，{a1}造访了{p1}	htEi
+the visit of {a} to {p} in {d}	{d1}年的{a1}造访了{p1}	htEi
+the visit of {a} to {p} in {p}	在{p2}，{a1}造访了{p1}	htEi
 was burned alive in the wilds.	在荒野中被活活烧死了。	h
 was caught up in a new romance	陷入新的恋情	wi
 was defeated by {a} during {e}	在{e1}期间败给了{a1}	ht
@@ -79636,6 +79789,7 @@ was born to {n} in the wilds.	在荒野中出生了，其母为{n1}。	ht
 was buried alive in the wilds	在荒野中被活埋了	h
 was buried in {p} during {e}.	在{e1}期间被埋葬在了{p1}。	ht
 was buried in {p} within {p}.	在{p2}被埋葬在了{p1}。	ht
+the studies of {a} around {p}	{a1}在{p1}一带求学	htEi
 was burned alive in the wilds	在荒野中被活活烧死了	h
 was drowned by {a} during {e}	在{e1}期间被{a1}溺死了	ht
 was drowned by {a} within {p}	在{p1}被{a1}溺死了	ht
@@ -81936,7 +82090,7 @@ the visit of {a} during {e}.	在{e1}期间，{a1}的造访。	htEi
 the visit of {a} within {p}.	在{p1}，{a1}的造访。	htEi
 the wandering of {a} at {p}.	在{p1}，{a1}的游荡。	htEi
 the wandering of {a} in {d}.	{d1}年的{a1}的游荡。	htEi
-the wandering of {a} in {p}.	在{p1}，{a1}的游荡。	htEi
+the wandering of {a} in {p}.	{a1}在{p1}游荡。	htEi
 the withering of {p} at {p}.	在{p2}，{p1}的衰亡。	htEi
 the withering of {p} in {d}.	{d1}年的{p1}的衰亡。	htEi
 the withering of {p} in {p}.	在{p2}，{p1}的衰亡。	htEi
@@ -84226,6 +84380,7 @@ the residence of {a} in {d}	{d1}年的{a1}的居住	htEi
 the residence of {a} in {p}	在{p1}，{a1}的居住	htEi
 the residence of {a} in{p}.	{a1}居住在{p1}。	htEi
 the reunion of {a} with {a}	{a1}与{a2}的重聚	htEi
+the flight of {a} into {p}.	{a1}逃入{p1}。	htEi
 the rise of {a} during {e}.	在{e1}期间，{a1}的崛起。	htEi
 the rise of {a} within {p}.	在{p1}，{a1}的崛起。	htEi
 the rout of {a} during {e}.	在{e1}期间，{a1}的溃败。	htEi
@@ -84245,9 +84400,9 @@ the scuttling of {a} in {p}	在{p1}，{a1}被凿沉	htEi
 the selection of {a} at {p}	在{p1}，对{a1}的选任	htEi
 the selection of {a} in {d}	{d1}年的对{a1}的选任	htEi
 the selection of {a} in {p}	在{p1}，对{a1}的选任	htEi
-the settling of {a} at {p}.	在{p1}，{a1}的定居。	htEi
-the settling of {a} in {d}.	{d1}年的{a1}的定居。	htEi
-the settling of {a} in {p}.	在{p1}，{a1}的定居。	htEi
+the settling of {a} at {p}.	在{p1}，{a1}安顿下来。	htEi
+the settling of {a} in {d}.	{d1}年的{a1}安顿下来。	htEi
+the settling of {a} in {p}.	{a1}在{p1}安顿下来。	htEi
 the shooting of {a} at {p}.	在{p1}，{a1}被射杀。	htEi
 the shooting of {a} in {d}.	{d1}年的{a1}被射杀。	htEi
 the shooting of {a} in {p}.	在{p1}，{a1}被射杀。	htEi
@@ -84282,7 +84437,7 @@ the visit of {a} within {p}	在{p1}，{a1}的造访	htEi
 the wandering in the wilds.	在荒野中，游荡。	hEi
 the wandering of {a} at {p}	在{p1}，{a1}的游荡	htEi
 the wandering of {a} in {d}	{d1}年的{a1}的游荡	htEi
-the wandering of {a} in {p}	在{p1}，{a1}的游荡	htEi
+the wandering of {a} in {p}	{a1}在{p1}游荡	htEi
 the withering of {p} at {p}	在{p2}，{p1}的衰亡	htEi
 the withering of {p} in {d}	{d1}年的{p1}的衰亡	htEi
 the withering of {p} in {p}	在{p2}，{p1}的衰亡	htEi
@@ -86516,6 +86671,7 @@ the rampage of {a} in {p}.	在{p1}，{a1}的肆虐。	htEi
 the recovery of {i} at {p}	在{p1}，找回{i1}	htEi
 the recovery of {i} in {d}	{d1}年的找回{i1}	htEi
 the recovery of {i} in {p}	在{p1}，找回{i1}	htEi
+the flight of {a} into {p}	{a1}逃入{p1}	htEi
 the recovery of {p} at {p}	在{p2}，找回{p1}	htEi
 the recovery of {p} in {d}	{d1}年的找回{p1}	htEi
 the recovery of {p} in {p}	在{p2}，找回{p1}	htEi
@@ -86541,9 +86697,9 @@ the scouting in the wilds.	在荒野中，侦察活动。	hEi
 the scouting of {a} at {p}	在{p1}，{a1}的侦察活动	htEi
 the scouting of {a} in {d}	{d1}年的{a1}的侦察活动	htEi
 the scouting of {a} in {p}	在{p1}，{a1}的侦察活动	htEi
-the settling of {a} at {p}	在{p1}，{a1}的定居	htEi
-the settling of {a} in {d}	{d1}年的{a1}的定居	htEi
-the settling of {a} in {p}	在{p1}，{a1}的定居	htEi
+the settling of {a} at {p}	在{p1}，{a1}安顿下来	htEi
+the settling of {a} in {d}	{d1}年的{a1}安顿下来	htEi
+the settling of {a} in {p}	{a1}在{p1}安顿下来	htEi
 the shooting of {a} at {p}	在{p1}，{a1}被射杀	htEi
 the shooting of {a} in {d}	{d1}年的{a1}被射杀	htEi
 the shooting of {a} in {p}	在{p1}，{a1}被射杀	htEi
@@ -86561,7 +86717,7 @@ the storing of {p} in {p}.	在{p2}，对{p1}的存放。	htEi
 the story of in the wilds.	在荒野中，历史故事。	hEi
 the studies of {a} at {p}.	在{p1}，{a1}的求学。	htEi
 the studies of {a} in {d}.	{d1}年的{a1}的求学。	htEi
-the studies of {a} in {p}.	在{p1}，{a1}的求学。	htEi
+the studies of {a} in {p}.	{a1}在{p1}求学。	htEi
 the study of reaction time	反应时间的研究	h
 the subduing of {a} at {p}	在{p1}，制服{a1}	htEi
 the subduing of {a} in {d}	{d1}年的制服{a1}	htEi
@@ -88591,6 +88747,7 @@ the razing of {p} in {p}.	在{p2}，夷平{p1}。	htEi
 the removal of {a} at {p}	在{p1}，对{a1}的免职	htEi
 the removal of {a} in {d}	{d1}年的对{a1}的免职	htEi
 the removal of {a} in {p}	在{p1}，对{a1}的免职	htEi
+the flight of {a} to {p}.	{a1}逃往{p1}。	htEi
 the return of {a} at {p}.	在{p1}，{a1}的归来。	htEi
 the return of {a} in {d}.	{d1}年的{a1}的归来。	htEi
 the return of {a} in {p}.	在{p1}，{a1}的归来。	htEi
@@ -88620,7 +88777,7 @@ the storing of {p} in {p}	在{p2}，对{p1}的存放	htEi
 the story of in the wilds	在荒野中，历史故事	hEi
 the studies of {a} at {p}	在{p1}，{a1}的求学	htEi
 the studies of {a} in {d}	{d1}年的{a1}的求学	htEi
-the studies of {a} in {p}	在{p1}，{a1}的求学	htEi
+the studies of {a} in {p}	{a1}在{p1}求学	htEi
 the subordination of {p}.	{p1}的归附。	htEi
 the tactics of {a} at {p}	在{p1}，{a1}的战术	htEi
 the tactics of {a} in {d}	{d1}年的{a1}的战术	htEi
@@ -90721,10 +90878,12 @@ the story of during {e}.	在{e1}期间，历史故事。	htEi
 the story of within {p}.	在{p1}，历史故事。	htEi
 the story of {e} at {p}.	在{p1}，{e1}的故事。	htEi
 the story of {e} in {d}.	{d1}年的{e1}的故事。	htEi
+the exile of {a} to {p}.	{a1}被流放到{p1}。	htEi
 the story of {e} in {p}.	在{p1}，{e1}的故事。	htEi
 the subordination of {p}	{p1}的归附	htEi
 the theft of {i} at {p}.	在{p1}，对{i1}的盗窃。	htEi
 the theft of {i} in {d}.	{d1}年的对{i1}的盗窃。	htEi
+the flight of {a} to {p}	{a1}逃往{p1}	htEi
 the theft of {i} in {p}.	在{p1}，对{i1}的盗窃。	htEi
 the theft of {p} at {p}.	在{p2}，对{p1}的盗窃。	htEi
 the theft of {p} in {d}.	{d1}年的对{p1}的盗窃。	htEi
@@ -90804,6 +90963,7 @@ was killed by a vehicle.	被车辆撞死了。	h
 was killed by {a} at {p}	在{p1}被{a1}杀害了	ht
 was killed by {a} in {p}	在{p1}被{a1}杀害了	ht
 was left out in the air.	被丢在空气中窒息而死。	h
+the visit of {a} to {p}.	{a1}造访了{p1}。	htEi
 was murdered during {e}.	在{e1}期间被谋杀了。	ht
 was murdered within {p}.	在{p1}被谋杀了。	ht
 was possessed during {e}	在{e1}期间被附身了	ht
@@ -92900,6 +93060,7 @@ the work of {a} in {p}.	在{p1}，{a1}的工作。	htEi
 there was a competition	举行了一场比赛	h
 there was a performance	举行了一场表演	h
 there was a procession.	举行了一场游行。	h
+the exile of {a} to {p}	{a1}被流放到{p1}	htEi
 to have clothes rot off	衣服烂掉	wi
 to make fuel from wood 	有些则需要设置在岩浆上方以代	w
 to think before acting.	在行动前思考。	l
@@ -92965,6 +93126,7 @@ was released during {e}	在{e1}期间被释放了	ht
 was released within {p}	在{p1}被释放了	ht
 was scuttled during {e}	在{e1}期间被凿沉了	ht
 was scuttled within {p}	在{p1}被凿沉了	ht
+the visit of {a} to {p}	{a1}造访了{p1}	htEi
 was sent to {p} at {p}.	在{p2}被送到了{p1}。	ht
 was sent to {p} in {p}.	在{p2}被送到了{p1}。	ht
 was sired by {n} at {p}	在{p1}的生父是{n1}	ht
@@ -100302,7 +100464,7 @@ the scouting in {p}.	在{p1}，侦察活动。	htEi
 the scouting of {a}.	{a1}的侦察活动。	htEi
 the scuttling of {a}	{a1}被凿沉	htEi
 the selection of {a}	对{a1}的选任	htEi
-the settling of {a}.	{a1}的定居。	htEi
+the settling of {a}.	{a1}安顿下来。	htEi
 the shooting of {a}.	{a1}被射杀。	htEi
 the slaughter of {a}	{a1}遭屠杀	htEi
 the start as an {s}.	开始担任{s1}。	htEi
@@ -103745,7 +103907,7 @@ the scouting at {p}	在{p1}，侦察活动	htEi
 the scouting in {d}	{d1}年的侦察活动	htEi
 the scouting in {p}	在{p1}，侦察活动	htEi
 the scouting of {a}	{a1}的侦察活动	htEi
-the settling of {a}	{a1}的定居	htEi
+the settling of {a}	{a1}安顿下来	htEi
 the shooting of {a}	{a1}被射杀	htEi
 the start as a {s}.	开始担任{s1}。	htEi
 the start as an {s}	开始担任{s1}	htEi

@@ -1224,7 +1224,8 @@ std::optional<std::string> Overlay::translate_legends_nested(
                         else if (const auto term = legends_terms_ci_.find(lower(std::string(part)));
                                 term != legends_terms_ci_.end()) accept_reference(term->second);
                     }
-                    if (!target) accept_reference(exact_literal_translation(part));
+                    // A native reference is a name or a scoped history term.
+                    // Global UI captions such as Name cannot supply its sense.
                     if (!target && !entity_owner)
                         accept_reference(translate_legends_name(part, false));
                     // An unresolved bound entity must not be returned again

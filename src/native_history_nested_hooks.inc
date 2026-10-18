@@ -9,27 +9,67 @@ static NativeHistoryNestedState &native_history_nested_state() {
     return reloadable_thread_state<NativeHistoryNestedState, struct HistoryNestedStateTag>();
 }
 
-// These six +d8 titles have existing typed productions for native malformed
-// joins or different selectors. Other titles use the original complete text.
+// Capture the fields owned by each reviewed +d8 production. Its title can
+// omit records that +d0 narration reads, so those records cannot be required.
 static bool capture_native_history_subject_title_fields(const void *event,
         const void *context, NativeHistoryEventData &title) {
     const int32_t type = title.native_type;
-    if (type == 95 || type == 98) {
+    const auto field = [&](const char *name, size_t offset, size_t width = 4) {
+        int32_t value = -1;
+        if (width == 2) {
+            int16_t short_value = -1;
+            if (!native_history_copy(native_history_event_field(event, type, offset, 2), short_value))
+                return false;
+            value = short_value;
+        } else if (!native_history_copy(native_history_event_field(event, type, offset, sizeof(value)), value))
+            return false;
+        title.fields[name] = {value};
+        return true;
+    };
+    const auto reference = [&](const char *name, NativeHistoryObjectKind kind) {
+        const int32_t id = title.fields.at(name).front();
+        if (id >= 0) title.references.emplace_back(kind, id);
+    };
+    if (type == 44 || type == 95 || type == 98) {
         auto fields = snapshot_native_history_event(event, context);
         if (!fields || fields->fields.contains("snapshot.incomplete")) return false;
         title = std::move(*fields);
+    } else if (type == 0 || type == 50 || type == 80) {
+        // b65eb0/b67370/b67d00 read these four IDs independently. General,
+        // mercenary and new-government records belong only to +d0 prose.
+        const bool takeover = type == 50;
+        const char *attacker = type == 0 ? "attacker" :
+            type == 50 ? "attacker_civ" : "attacker_hf";
+        if (!field(attacker, 0x28) || !field("defender_civ", takeover ? 0x30 : 0x2c) ||
+                !field("site_civ", takeover ? 0x34 : 0x30) ||
+                !field("site", takeover ? 0x38 : 0x34)) return false;
+        reference(attacker, type == 80 ? NativeHistoryObjectKind::Figure :
+            NativeHistoryObjectKind::Entity);
+        reference("site_civ", NativeHistoryObjectKind::Entity);
+        if (title.fields.at("defender_civ").front() != title.fields.at("site_civ").front())
+            reference("defender_civ", NativeHistoryObjectKind::Entity);
+        reference("site", NativeHistoryObjectKind::Site);
+    } else if (type == 66) {
+        // b732f0 never reads the reviver at +0x40. Preserve the visible form
+        // selector, including its independent once-more bit and RAW name.
+        if (!field("histfig", 0x28) || !field("site", 0x2c) ||
+                !field("region", 0x30) || !field("layer", 0x34) ||
+                !field("ghost", 0x38, 2) || !field("revival_flags", 0x3c) ||
+                !field("interaction", 0x44) || !field("effect", 0x48)) return false;
+        reference("histfig", NativeHistoryObjectKind::Figure);
+        if (title.fields.at("site").front() != -1)
+            reference("site", NativeHistoryObjectKind::Site);
+        else if (title.fields.at("layer").front() != -1)
+            reference("layer", NativeHistoryObjectKind::Underground);
+        else reference("region", NativeHistoryObjectKind::Region);
+        if (title.fields.at("ghost").front() == -1) {
+            std::string form;
+            if (!capture_native_history_revival_form(native_history_profile_base(),
+                    title.fields.at("interaction").front(),
+                    title.fields.at("effect").front(), form)) return false;
+            title.texts["revival_form"] = std::move(form);
+        }
     } else if (type == 99 || type == 105 || type == 128 || type == 129) {
-        const auto field = [&](const char *name, size_t offset) {
-            int32_t value = -1;
-            if (!native_history_copy(native_history_event_field(event, type, offset, sizeof(value)), value))
-                return false;
-            title.fields[name] = {value};
-            return true;
-        };
-        const auto reference = [&](const char *name, NativeHistoryObjectKind kind) {
-            const int32_t id = title.fields.at(name).front();
-            if (id >= 0) title.references.emplace_back(kind, id);
-        };
         if (type == 105) {
             NativeBorrowedVector<int32_t> people;
             if (!native_history_copy(native_history_event_field(event, type, 0x28, sizeof(people)), people) ||

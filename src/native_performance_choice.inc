@@ -1,5 +1,8 @@
 // The performance chooser's enum owns each caption's semantic kind. Borrow
 // the original list_name before print_name is shortened for the native view.
+static bool capture_native_history_subject_title_fields(const void *event,
+    const void *context, NativeHistoryEventData &title);
+
 static std::optional<NativePerformanceChoice> capture_native_performance_choice(
         uintptr_t caption_address) {
     const uintptr_t base = native_history_profile_base();
@@ -35,74 +38,27 @@ static std::optional<NativePerformanceChoice> capture_native_performance_choice(
             result.type < 0 || result.type > 39 || result.source.empty())
         return std::nullopt;
     if (result.type == 12) {
-        // These +d8 producers concatenate fields without a delimiter or
-        // select different title branches from +d0's narrative. The actual
-        // menu event ID establishes their fields and discriminators.
+        // The actual menu event ID establishes title fields and selectors,
+        // without splitting their generated names at prose connectors.
         try {
             uintptr_t address = 0;
             int32_t native_type = -1;
             if (result.id >= 0 &&
                     native_history_find_structure_id(native_history_global(0x24f9cb8),
                         0x20, result.id, address) && address &&
-                    capture_native_history_event_identity(reinterpret_cast<void *>(address), native_type) &&
-                    (native_type == 95 || native_type == 98 || native_type == 99 ||
-                     native_type == 105 || native_type == 128 || native_type == 129)) {
+                    capture_native_history_event_identity(reinterpret_cast<void *>(address), native_type)) {
                 alignas(16) std::array<unsigned char, 0xc8> context{};
                 initialize_native_history_context(context.data());
                 // The performance constructor supplies a neutral context,
                 // unlike Legends' English-gloss flag in the same ABI.
                 std::fill_n(context.begin(), sizeof(uint32_t), 0);
-                const bool direct_title = native_type == 99 || native_type == 128 || native_type == 129;
-                auto snapshot = direct_title
-                    ? snapshot_native_history_event_header(
-                        reinterpret_cast<void *>(address), context.data())
-                    : snapshot_native_history_event(
-                        reinterpret_cast<void *>(address), context.data());
-                if (snapshot && direct_title) {
-                    // +d8 never reads the assumed identities or corruption
-                    // support used by +d0. Capture just its actual fields so
-                    // an absent unrelated record cannot hide this title.
-                    struct TitleField {
-                        const char *name;
-                        size_t offset;
-                        NativeHistoryObjectKind kind;
-                    };
-                    const size_t location = native_type == 129 ? 0x38 : 0x40;
-                    for (const auto &field : std::array<TitleField, 5>{{
-                            {"corruptor", 0x28, NativeHistoryObjectKind::Figure},
-                            {"target", 0x30, NativeHistoryObjectKind::Figure},
-                            {"site", location, NativeHistoryObjectKind::Site},
-                            {"region", location + 4, NativeHistoryObjectKind::Region},
-                            {"layer", location + 8, NativeHistoryObjectKind::Underground}}}) {
-                        int32_t id = -1;
-                        if (!native_history_copy(native_history_event_field(
-                                reinterpret_cast<void *>(address), native_type,
-                                field.offset, sizeof(id)), id)) {
-                            snapshot.reset();
-                            break;
-                        }
-                        snapshot->fields[field.name] = {id};
-                        if (id >= 0) snapshot->references.emplace_back(field.kind, id);
-                    }
-                    if (snapshot && native_type == 99) {
-                        for (const auto &[name, offset] : {
-                                std::pair{"first_relationship", size_t{0x38}},
-                                std::pair{"second_relationship", size_t{0x3c}}}) {
-                            int32_t relationship = -1;
-                            if (!native_history_copy(native_history_event_field(
-                                    reinterpret_cast<void *>(address), native_type,
-                                    offset, sizeof(relationship)), relationship)) {
-                                snapshot.reset();
-                                break;
-                            }
-                            snapshot->fields[name] = {relationship};
-                        }
-                    }
-                }
+                auto snapshot = snapshot_native_history_event_header(
+                    reinterpret_cast<void *>(address), context.data());
+                if (snapshot && !capture_native_history_subject_title_fields(
+                        reinterpret_cast<void *>(address), context.data(), *snapshot))
+                    snapshot.reset();
                 if (snapshot && snapshot->id == result.id &&
                         !snapshot->fields.contains("snapshot.incomplete")) {
-                    snapshot->fields["native_title"] = {1};
-                    snapshot->fields["native_story_title"] = {1};
                     if (populate_native_history_subjects(*snapshot) &&
                             capture_native_history_subject_item_labels(*snapshot) &&
                             native_history_tree_within_limits(*snapshot)) {

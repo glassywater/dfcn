@@ -1635,6 +1635,8 @@ destruction of {p}	{p}的毁灭	title
 the attack on {a}	对{a}的攻击	title
 the attack by {a}	{a}发起的攻击	title
 the attack of {a}	{a}发起的攻击	title
+the attack on {a} at {p} by {a}	{a2}在{p}攻击了{a1}	title
+the attack of {a} on {a} at {p}	{a1}在{p}攻击了{a2}	title
 the infiltration of {p}	对{p}的渗透	title
 the defeat of {a}	「{a}」战败	title
 # Keep the victor, defeated force, its civilization and the captured site in
@@ -2121,10 +2123,20 @@ the mercenary operation of {a}	{a}的佣兵活动	title
 the baby-snatching of {a}	{a}的劫婴活动	title
 the wandering of {a}	{a}的游荡	title
 the studies of {a}	{a}的求学	title
-the settling of {a}	{a}的定居	title
+the settling of {a}	{a}安顿下来	title
 the visit of {a}	{a}的造访	title
 the exile of {a}	{a}的流放	title
 the flight of {a}	{a}的逃亡	title
+the settling of {a} in {p}	{a}在{p}安顿下来	title
+the wandering of {a} around {p}	{a}在{p}一带游荡	title
+the wandering of {a} in {p}	{a}在{p}游荡	title
+the studies of {a} in {p}	{a}在{p}求学	title
+the studies of {a} around {p}	{a}在{p}一带求学	title
+the visit of {a} to {p}	{a}造访了{p}	title
+the flight of {a} to {p}	{a}逃往{p}	title
+the flight of {a} into {p}	{a}逃入{p}	title
+the flight of {a} into the area around {p}	{a}逃入{p}周边地区	title
+the exile of {a} to {p}	{a}被流放到{p}	title
 
 # Offices and organizations. Profession/weapon vocabulary is taken from the
 # existing rulesets, with the weapon sense of pike kept separate from fish.
