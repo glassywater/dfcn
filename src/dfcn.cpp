@@ -19190,6 +19190,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             // conversation records that require captured keywords/identity.
             for (std::string_view action_title : {"What do you want to do?",
                     "What would you like to do?", "Where would you like to move?",
+                    "Would you like to take an action?",
                     "Who or what would you like to shoot?",
                     "At whom or what would you like to throw?",
                     "Select corpses.", "Select creature.", "Select recipient.",

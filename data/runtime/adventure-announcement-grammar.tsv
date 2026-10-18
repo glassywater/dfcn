@@ -982,7 +982,7 @@ adventure-announcement	The {s} is too salty.	{s1}太咸了。	$announcement-item
 adventure-announcement	The {s} is too hot.	{s1}太烫了。	$announcement-item	PE 0x140895fd0; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	The {s} is too cold.	{s1}太冷了。	$announcement-item	PE 0x140895fd0; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	You pack the {s} on to {s}.	你将{s1}装到{s2}身上。	$announcement-item,$unit	PE 0x140899df0; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
-adventure-announcement	You fail to grab the {s}!	你没能抓住{s1}！	$announcement-item	PE 0x1408a6e70; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
+adventure-announcement	You fail to grab the {s}!	你没能抓住{s1}！	$announcement-terrain	PE Steam 8a78df / classic 8a515f -> e7d330/e782a0; data/extracted/adventure-interrupt; complete terrain field
 adventure-announcement	You struggle for {s}.	你争夺着{s1}。	$announcement-item	PE 0x14082fd20;0x14088a2b0; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	You prepare to shoot {s} in {s}.	你准备发射装在{s2}里的{s1}。	$announcement-item,$announcement-item	PE 0x14088d130;0x1408a4a00;0x1408a5640; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action
 adventure-announcement	You prepare to shoot {s} nocked in {s}.	你准备射出搭在{s2}上的{s1}。	$announcement-item,$announcement-item	PE 0x14088d130;0x1408a4a00;0x1408a5640; ELF native submission owners, elf-source-*.c and native-calls.tsv; complete typed action

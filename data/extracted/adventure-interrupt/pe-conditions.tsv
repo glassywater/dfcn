@@ -1,0 +1,441 @@
+edition	owner	instruction_rva	condition
+steam	interrupt-populate	0x84ef63	cmp    rdx,QWORD PTR [r14+0x18]
+steam	interrupt-populate	0x84ef8b	test   DWORD PTR [rsi+0x110],0x10000
+steam	interrupt-populate	0x84efe7	cmp    edx,DWORD PTR [r14+0x28]
+steam	interrupt-populate	0x84efed	cmp    r13d,DWORD PTR [r14+0x2c]
+steam	interrupt-populate	0x84eff3	cmp    eax,DWORD PTR [r14+0x30]
+steam	interrupt-populate	0x84f020	cmp    rbx,rdi
+steam	interrupt-populate	0x84f030	test   bp,bp
+steam	interrupt-populate	0x84f04b	cmp    rdx,rax
+steam	interrupt-populate	0x84f058	cmp    DWORD PTR [rax+0x50],0x1
+steam	interrupt-populate	0x84f062	test   BYTE PTR [rax+0x1],0x2
+steam	interrupt-populate	0x84f06e	test   al,al
+steam	interrupt-populate	0x84f08b	cmp    BYTE PTR [rcx+rax*1],r15b
+steam	interrupt-populate	0x84f0a2	cmp    rax,rcx
+steam	interrupt-populate	0x84f0aa	cmp    WORD PTR [rdx+0x8],0x1
+steam	interrupt-populate	0x84f0b5	cmp    edx,ebp
+steam	interrupt-populate	0x84f0d0	cmp    rax,rcx
+steam	interrupt-populate	0x84f0d8	cmp    DWORD PTR [rdx+0x4],ebp
+steam	interrupt-populate	0x84f0e3	test   r8b,r8b
+steam	interrupt-populate	0x84f109	test   di,di
+steam	interrupt-populate	0x84f112	cmp    edi,DWORD PTR [rip+0x1c98fc4]        # 0x1424e80dc
+steam	interrupt-populate	0x84f121	test   cx,cx
+steam	interrupt-populate	0x84f12a	cmp    ecx,DWORD PTR [rip+0x1c98fb0]        # 0x1424e80e0
+steam	interrupt-populate	0x84f135	test   r10w,r10w
+steam	interrupt-populate	0x84f13b	cmp    r10d,DWORD PTR [rip+0x1c98fa2]        # 0x1424e80e4
+steam	interrupt-populate	0x84f156	test   r11,r11
+steam	interrupt-populate	0x84f16f	test   rdx,rdx
+steam	interrupt-populate	0x84f1b5	test   r15b,0x1
+steam	interrupt-populate	0x84f1ce	cmp    eax,ecx
+steam	interrupt-populate	0x84f1f0	cmp    eax,ecx
+steam	interrupt-populate	0x84f207	cmp    ax,bp
+steam	interrupt-populate	0x84f20c	cmp    ax,di
+steam	interrupt-populate	0x84f211	cmp    WORD PTR [rsi+0x4ce],bx
+steam	interrupt-populate	0x84f221	cmp    WORD PTR [rsi+0x4d0],ax
+steam	interrupt-populate	0x84f25a	test   al,al
+steam	interrupt-populate	0x84f31c	cmp    rdx,QWORD PTR [r14+0x18]
+steam	interrupt-populate	0x84f353	cmp    eax,ecx
+steam	interrupt-populate	0x84f36a	cmp    eax,ecx
+steam	interrupt-populate	0x84f379	cmp    ax,bp
+steam	interrupt-populate	0x84f37e	cmp    ax,WORD PTR [rsi+0xa8]
+steam	interrupt-populate	0x84f38e	cmp    WORD PTR [rsi+0x4ce],ax
+steam	interrupt-populate	0x84f3a7	cmp    eax,ecx
+steam	interrupt-populate	0x84f3df	test   al,al
+steam	interrupt-populate	0x84f4c0	cmp    rdx,QWORD PTR [r14+0x18]
+steam	interrupt-renderer	0x8a68df	cmp    BYTE PTR [rip+0x1ae9cef],0x0        # 0x1423905d5
+steam	interrupt-renderer	0x8a6932	cmp    eax,ecx
+steam	interrupt-renderer	0x8a693b	cmp    eax,ecx
+steam	interrupt-renderer	0x8a694b	cmp    r15d,r14d
+steam	interrupt-renderer	0x8a6957	cmp    r13d,edi
+steam	interrupt-renderer	0x8a697d	cmp    esi,r15d
+steam	interrupt-renderer	0x8a6982	cmp    ebx,r13d
+steam	interrupt-renderer	0x8a6996	cmp    ebx,edi
+steam	interrupt-renderer	0x8a69aa	cmp    esi,r14d
+steam	interrupt-renderer	0x8a69af	cmp    ebx,r13d
+steam	interrupt-renderer	0x8a69c3	cmp    ebx,edi
+steam	interrupt-renderer	0x8a69d7	cmp    ebx,r13d
+steam	interrupt-renderer	0x8a69e4	cmp    ebx,edi
+steam	interrupt-renderer	0x8a6a02	cmp    ebx,edi
+steam	interrupt-renderer	0x8a6a0c	cmp    esi,r14d
+steam	interrupt-renderer	0x8a6ad1	cmp    ecx,edx
+steam	interrupt-renderer	0x8a6ae0	cmp    DWORD PTR [rbx+0x20],ecx
+steam	interrupt-renderer	0x8a6aeb	test   ecx,ecx
+steam	interrupt-renderer	0x8a6afe	cmp    edi,eax
+steam	interrupt-renderer	0x8a6b2f	cmp    rcx,rax
+steam	interrupt-renderer	0x8a6b45	cmp    r8d,r15d
+steam	interrupt-renderer	0x8a6b62	cmp    ecx,r14d
+steam	interrupt-renderer	0x8a6b6b	cmp    esi,eax
+steam	interrupt-renderer	0x8a6b90	cmp    r15,r12
+steam	interrupt-renderer	0x8a6ba5	cmp    DWORD PTR [rip+0x1b26bcc],0x0        # 0x1423cd778
+steam	interrupt-renderer	0x8a6bb5	test   BYTE PTR [rax],0x1
+steam	interrupt-renderer	0x8a6bd1	cmp    ebx,r14d
+steam	interrupt-renderer	0x8a6bf0	cmp    r15,r12
+steam	interrupt-renderer	0x8a6c05	cmp    DWORD PTR [rip+0x1b26b6c],0x0        # 0x1423cd778
+steam	interrupt-renderer	0x8a6c15	test   BYTE PTR [rax],0x1
+steam	interrupt-renderer	0x8a6c31	cmp    ebx,r14d
+steam	interrupt-renderer	0x8a6c42	cmp    esi,eax
+steam	interrupt-renderer	0x8a6cb7	test   rdx,rdx
+steam	interrupt-renderer	0x8a6d0e	cmp    rcx,rax
+steam	interrupt-renderer	0x8a6d1f	cmp    rbx,rcx
+steam	interrupt-renderer	0x8a6d2c	cmp    QWORD PTR [rbp+0xf],0xf
+steam	interrupt-renderer	0x8a6d4e	cmp    rbx,0x3
+steam	interrupt-renderer	0x8a6d58	cmp    QWORD PTR [rbp+0xf],0xf
+steam	interrupt-renderer	0x8a6d6b	cmp    QWORD PTR [rbp+0xf],0xf
+steam	interrupt-renderer	0x8a6d7e	cmp    QWORD PTR [rbp+0xf],0xf
+steam	interrupt-renderer	0x8a6dbe	cmp    edi,DWORD PTR [rbp-0x1d]
+steam	interrupt-renderer	0x8a6de0	cmp    ecx,edx
+steam	interrupt-input	0x8a6ef9	cmp    ecx,edx
+steam	interrupt-input	0x8a6f02	cmp    eax,edx
+steam	interrupt-input	0x8a6f3c	cmp    r10d,r14d
+steam	interrupt-input	0x8a6f53	test   r8b,r8b
+steam	interrupt-input	0x8a6f5b	cmp    r10,rax
+steam	interrupt-input	0x8a6f60	cmp    r9d,DWORD PTR [rsp+0x4c]
+steam	interrupt-input	0x8a6f67	cmp    r9d,DWORD PTR [rsp+0x40]
+steam	interrupt-input	0x8a6f6e	cmp    r12d,r13d
+steam	interrupt-input	0x8a6f73	cmp    r12d,r11d
+steam	interrupt-input	0x8a6fc3	test   al,al
+steam	interrupt-input	0x8a6fdf	cmp    eax,r14d
+steam	interrupt-input	0x8a700e	cmp    BYTE PTR [rdi+0x24],sil
+steam	interrupt-input	0x8a7018	test   r8b,r8b
+steam	interrupt-input	0x8a7021	cmp    BYTE PTR [rip+0x1ae95a6],sil        # 0x1423905ce
+steam	interrupt-input	0x8a7071	cmp    r12d,eax
+steam	interrupt-input	0x8a707f	cmp    r12d,r10d
+steam	interrupt-input	0x8a7092	cmp    eax,ecx
+steam	interrupt-input	0x8a709b	cmp    r10d,eax
+steam	interrupt-input	0x8a70d2	cmp    eax,ecx
+steam	interrupt-input	0x8a70d7	cmp    eax,r9d
+steam	interrupt-input	0x8a7135	cmp    r9d,DWORD PTR [rsp+0x4c]
+steam	interrupt-input	0x8a713c	cmp    r9d,DWORD PTR [rsp+0x40]
+steam	interrupt-input	0x8a7143	cmp    r12d,r13d
+steam	interrupt-input	0x8a7148	cmp    r12d,DWORD PTR [rsp+0x48]
+steam	interrupt-input	0x8a714f	test   r8b,r8b
+steam	interrupt-input	0x8a7154	test   r10b,r10b
+steam	interrupt-input	0x8a7173	cmp    rcx,rax
+steam	interrupt-input	0x8a7191	cmp    r9d,edx
+steam	interrupt-input	0x8a719d	cmp    r9d,eax
+steam	interrupt-input	0x8a71a6	cmp    r12d,r15d
+steam	interrupt-input	0x8a71b3	cmp    r12d,eax
+steam	interrupt-input	0x8a71bc	test   r8b,r8b
+steam	interrupt-input	0x8a71c5	test   r10b,r10b
+steam	interrupt-input	0x8a7211	cmp    r12d,eax
+steam	interrupt-input	0x8a721b	cmp    ecx,DWORD PTR [rbp-0x3c]
+steam	interrupt-input	0x8a722f	cmp    r12d,eax
+steam	interrupt-input	0x8a7241	cmp    ecx,eax
+steam	interrupt-input	0x8a724e	cmp    r12d,DWORD PTR [rbp-0x28]
+steam	interrupt-input	0x8a7254	cmp    r12d,DWORD PTR [rbp-0x24]
+steam	interrupt-input	0x8a7271	cmp    edx,eax
+steam	interrupt-input	0x8a7284	cmp    ecx,DWORD PTR [rbp-0x3c]
+steam	interrupt-input	0x8a7296	cmp    DWORD PTR [rdi+0x20],ecx
+steam	interrupt-input	0x8a729f	test   ecx,ecx
+steam	interrupt-input	0x8a72b4	cmp    edx,r11d
+steam	interrupt-input	0x8a72cf	cmp    r14,rax
+steam	interrupt-input	0x8a72e7	cmp    BYTE PTR [rax+0x19],sil
+steam	interrupt-input	0x8a72f0	cmp    DWORD PTR [rax+0x1c],edx
+steam	interrupt-input	0x8a7301	cmp    BYTE PTR [rax+0x19],sil
+steam	interrupt-input	0x8a7307	cmp    BYTE PTR [rcx+0x19],sil
+steam	interrupt-input	0x8a730d	cmp    edx,DWORD PTR [rcx+0x1c]
+steam	interrupt-input	0x8a7318	cmp    r9d,DWORD PTR [rsp+0x60]
+steam	interrupt-input	0x8a731f	cmp    r9d,DWORD PTR [rsp+0x44]
+steam	interrupt-input	0x8a7326	cmp    r12d,r15d
+steam	interrupt-input	0x8a732f	cmp    r12d,eax
+steam	interrupt-input	0x8a7334	test   bl,bl
+steam	interrupt-input	0x8a733a	test   bl,bl
+steam	interrupt-input	0x8a7362	test   r8b,r8b
+steam	interrupt-input	0x8a7367	test   r10b,r10b
+steam	interrupt-input	0x8a736c	test   bl,bl
+steam	interrupt-input	0x8a7377	cmp    r13d,r11d
+steam	interrupt-input	0x8a73bd	test   rax,rax
+steam	interrupt-input	0x8a73f6	cmp    rax,rdx
+steam	interrupt-input	0x8a73ff	cmp    QWORD PTR [rax+r14*8],rsi
+steam	interrupt-input	0x8a7473	cmp    rax,rcx
+steam	interrupt-input	0x8a747e	cmp    edx,0x1b
+steam	interrupt-input	0x8a74b6	cmp    DWORD PTR [r14],0x3
+steam	interrupt-input	0x8a74d4	test   al,al
+steam	interrupt-input	0x8a74e3	test   DWORD PTR [r10+0x110],0x10000
+steam	interrupt-input	0x8a74fb	test   rbx,rbx
+steam	interrupt-input	0x8a7526	cmp    eax,0x1
+steam	interrupt-input	0x8a7532	cmp    QWORD PTR [rcx+0x98],r10
+steam	interrupt-input	0x8a7554	cmp    edx,0x1f3
+steam	interrupt-input	0x8a75b6	test   rbx,rbx
+steam	interrupt-input	0x8a75c6	cmp    rax,QWORD PTR [r10+0xd0]
+steam	interrupt-input	0x8a75e4	cmp    rax,QWORD PTR [r10+0xe8]
+steam	interrupt-input	0x8a7602	cmp    rax,QWORD PTR [r10+0x100]
+steam	interrupt-input	0x8a7643	test   r8w,r8w
+steam	interrupt-input	0x8a764d	cmp    r8d,DWORD PTR [rip+0x1c40a88]        # 0x1424e80dc
+steam	interrupt-input	0x8a765a	test   r9w,r9w
+steam	interrupt-input	0x8a7660	cmp    r9d,DWORD PTR [rip+0x1c40a79]        # 0x1424e80e0
+steam	interrupt-input	0x8a7669	test   cx,cx
+steam	interrupt-input	0x8a766e	cmp    ecx,DWORD PTR [rip+0x1c40a70]        # 0x1424e80e4
+steam	interrupt-input	0x8a767d	test   r11,r11
+steam	interrupt-input	0x8a769c	test   rdx,rdx
+steam	interrupt-input	0x8a76e3	cmp    WORD PTR [r10+0xa8],ax
+steam	interrupt-input	0x8a76f2	cmp    WORD PTR [r10+0xaa],ax
+steam	interrupt-input	0x8a7701	cmp    WORD PTR [r10+0xac],ax
+steam	interrupt-input	0x8a771d	test   rax,rax
+steam	interrupt-input	0x8a7795	cmp    r10d,0xffffffff
+steam	interrupt-input	0x8a77b4	test   r8d,r8d
+steam	interrupt-input	0x8a77ce	cmp    DWORD PTR [r11+0x1c],r10d
+steam	interrupt-input	0x8a77e4	cmp    edx,r8d
+steam	interrupt-input	0x8a77ec	test   r11,r11
+steam	interrupt-input	0x8a7836	cmp    DWORD PTR [rip+0xff4a5c],esi        # 0x14189c298
+steam	interrupt-input	0x8a783e	test   BYTE PTR [rip+0x1ae96fb],0x70        # 0x142390f40
+steam	interrupt-input	0x8a784c	test   BYTE PTR [rip+0x1ae96ed],0x8        # 0x142390f40
+steam	interrupt-input	0x8a78e8	cmp    QWORD PTR [rbp-0x28],0xf
+steam	interrupt-input	0x8a79a8	cmp    rdx,0xf
+steam	interrupt-input	0x8a79b8	cmp    rdx,0x1000
+steam	interrupt-input	0x8a79d0	cmp    rax,0x1f
+steam	interrupt-input	0x8a79f6	cmp    rdx,0xf
+steam	interrupt-input	0x8a7a06	cmp    rdx,0x1000
+steam	interrupt-input	0x8a7a1e	cmp    rax,0x1f
+steam	interrupt-input	0x8a7a50	cmp    rbx,rdi
+steam	interrupt-input	0x8a7a58	test   rcx,rcx
+steam	interrupt-input	0x8a7a74	cmp    rax,QWORD PTR [rip+0x1da1c8d]        # 0x142649708
+steam	interrupt-input	0x8a7ad3	cmp    BYTE PTR [rbx+0x19],0x0
+steam	interrupt-input	0x8a7aff	cmp    BYTE PTR [rbx+0x19],0x0
+steam	interrupt-scroll	0x8a7b70	test   r11b,r11b
+steam	interrupt-scroll	0x8a7b95	cmp    ecx,r9d
+steam	interrupt-scroll	0x8a7ba0	cmp    eax,r9d
+steam	interrupt-scroll	0x8a7bad	cmp    BYTE PTR [rbx+0x24],0x0
+steam	interrupt-scroll	0x8a7bb7	test   r11b,r11b
+steam	interrupt-scroll	0x8a7bc0	cmp    BYTE PTR [rip+0x1ae8a07],0x0        # 0x1423905ce
+steam	interrupt-scroll	0x8a7c1d	cmp    edi,eax
+steam	interrupt-scroll	0x8a7c2a	cmp    edi,r10d
+steam	interrupt-scroll	0x8a7c3d	cmp    eax,ecx
+steam	interrupt-scroll	0x8a7c46	cmp    r10d,eax
+steam	interrupt-scroll	0x8a7c7b	cmp    eax,ecx
+steam	interrupt-scroll	0x8a7c80	cmp    eax,r9d
+steam	interrupt-option-caption	0x13ea916	cmp    DWORD PTR [rdx],0x3
+steam	interrupt-option-caption	0x13ea95c	cmp    bx,r14w
+steam	interrupt-option-caption	0x13ea9c5	cmp    QWORD PTR [rsp+0x60],0xf
+steam	interrupt-option-caption	0x13eaa20	cmp    di,r12w
+steam	interrupt-option-caption	0x13eaa26	cmp    r13w,r15w
+steam	interrupt-option-caption	0x13eaa2c	cmp    bx,r14w
+steam	interrupt-option-caption	0x13eaa96	cmp    ecx,0x7
+steam	interrupt-option-caption	0x13eaab3	cmp    al,0x6
+steam	interrupt-option-caption	0x13eaacb	cmp    al,0x6
+steam	interrupt-option-caption	0x13eaafc	test   al,al
+steam	interrupt-option-caption	0x13eab2d	test   al,al
+steam	interrupt-option-caption	0x13eab61	bt     eax,0xf
+steam	interrupt-option-caption	0x13eaba3	cmp    rdx,0xf
+steam	interrupt-option-caption	0x13eabb4	cmp    rdx,0x1000
+steam	interrupt-option-caption	0x13eabcc	cmp    rax,0x1f
+classic	interrupt-populate	0x84c7e3	cmp    rdx,QWORD PTR [r14+0x18]
+classic	interrupt-populate	0x84c80b	test   DWORD PTR [rsi+0x110],0x10000
+classic	interrupt-populate	0x84c867	cmp    edx,DWORD PTR [r14+0x28]
+classic	interrupt-populate	0x84c86d	cmp    r13d,DWORD PTR [r14+0x2c]
+classic	interrupt-populate	0x84c873	cmp    eax,DWORD PTR [r14+0x30]
+classic	interrupt-populate	0x84c8a0	cmp    rbx,rdi
+classic	interrupt-populate	0x84c8b0	test   bp,bp
+classic	interrupt-populate	0x84c8cb	cmp    rdx,rax
+classic	interrupt-populate	0x84c8d8	cmp    DWORD PTR [rax+0x50],0x1
+classic	interrupt-populate	0x84c8e2	test   BYTE PTR [rax+0x1],0x2
+classic	interrupt-populate	0x84c8ee	test   al,al
+classic	interrupt-populate	0x84c90b	cmp    BYTE PTR [rcx+rax*1],r15b
+classic	interrupt-populate	0x84c922	cmp    rax,rcx
+classic	interrupt-populate	0x84c92a	cmp    WORD PTR [rdx+0x8],0x1
+classic	interrupt-populate	0x84c935	cmp    edx,ebp
+classic	interrupt-populate	0x84c950	cmp    rax,rcx
+classic	interrupt-populate	0x84c958	cmp    DWORD PTR [rdx+0x4],ebp
+classic	interrupt-populate	0x84c963	test   r8b,r8b
+classic	interrupt-populate	0x84c989	test   di,di
+classic	interrupt-populate	0x84c992	cmp    edi,DWORD PTR [rip+0x1c95634]        # 0x1424e1fcc
+classic	interrupt-populate	0x84c9a1	test   cx,cx
+classic	interrupt-populate	0x84c9aa	cmp    ecx,DWORD PTR [rip+0x1c95620]        # 0x1424e1fd0
+classic	interrupt-populate	0x84c9b5	test   r10w,r10w
+classic	interrupt-populate	0x84c9bb	cmp    r10d,DWORD PTR [rip+0x1c95612]        # 0x1424e1fd4
+classic	interrupt-populate	0x84c9d6	test   r11,r11
+classic	interrupt-populate	0x84c9ef	test   rdx,rdx
+classic	interrupt-populate	0x84ca35	test   r15b,0x1
+classic	interrupt-populate	0x84ca4e	cmp    eax,ecx
+classic	interrupt-populate	0x84ca70	cmp    eax,ecx
+classic	interrupt-populate	0x84ca87	cmp    ax,bp
+classic	interrupt-populate	0x84ca8c	cmp    ax,di
+classic	interrupt-populate	0x84ca91	cmp    WORD PTR [rsi+0x4ce],bx
+classic	interrupt-populate	0x84caa1	cmp    WORD PTR [rsi+0x4d0],ax
+classic	interrupt-populate	0x84cada	test   al,al
+classic	interrupt-populate	0x84cb9c	cmp    rdx,QWORD PTR [r14+0x18]
+classic	interrupt-populate	0x84cbd3	cmp    eax,ecx
+classic	interrupt-populate	0x84cbea	cmp    eax,ecx
+classic	interrupt-populate	0x84cbf9	cmp    ax,bp
+classic	interrupt-populate	0x84cbfe	cmp    ax,WORD PTR [rsi+0xa8]
+classic	interrupt-populate	0x84cc0e	cmp    WORD PTR [rsi+0x4ce],ax
+classic	interrupt-populate	0x84cc27	cmp    eax,ecx
+classic	interrupt-populate	0x84cc5f	test   al,al
+classic	interrupt-populate	0x84cd40	cmp    rdx,QWORD PTR [r14+0x18]
+classic	interrupt-renderer	0x8a415f	cmp    BYTE PTR [rip+0x1ae635f],0x0        # 0x14238a4c5
+classic	interrupt-renderer	0x8a41b2	cmp    eax,ecx
+classic	interrupt-renderer	0x8a41bb	cmp    eax,ecx
+classic	interrupt-renderer	0x8a41cb	cmp    r15d,r14d
+classic	interrupt-renderer	0x8a41d7	cmp    r13d,edi
+classic	interrupt-renderer	0x8a41fd	cmp    esi,r15d
+classic	interrupt-renderer	0x8a4202	cmp    ebx,r13d
+classic	interrupt-renderer	0x8a4216	cmp    ebx,edi
+classic	interrupt-renderer	0x8a422a	cmp    esi,r14d
+classic	interrupt-renderer	0x8a422f	cmp    ebx,r13d
+classic	interrupt-renderer	0x8a4243	cmp    ebx,edi
+classic	interrupt-renderer	0x8a4257	cmp    ebx,r13d
+classic	interrupt-renderer	0x8a4264	cmp    ebx,edi
+classic	interrupt-renderer	0x8a4282	cmp    ebx,edi
+classic	interrupt-renderer	0x8a428c	cmp    esi,r14d
+classic	interrupt-renderer	0x8a4351	cmp    ecx,edx
+classic	interrupt-renderer	0x8a4360	cmp    DWORD PTR [rbx+0x20],ecx
+classic	interrupt-renderer	0x8a436b	test   ecx,ecx
+classic	interrupt-renderer	0x8a437e	cmp    edi,eax
+classic	interrupt-renderer	0x8a43af	cmp    rcx,rax
+classic	interrupt-renderer	0x8a43c5	cmp    r8d,r15d
+classic	interrupt-renderer	0x8a43e2	cmp    ecx,r14d
+classic	interrupt-renderer	0x8a43eb	cmp    esi,eax
+classic	interrupt-renderer	0x8a4410	cmp    r15,r12
+classic	interrupt-renderer	0x8a4425	cmp    DWORD PTR [rip+0x1b2323c],0x0        # 0x1423c7668
+classic	interrupt-renderer	0x8a4435	test   BYTE PTR [rax],0x1
+classic	interrupt-renderer	0x8a4451	cmp    ebx,r14d
+classic	interrupt-renderer	0x8a4470	cmp    r15,r12
+classic	interrupt-renderer	0x8a4485	cmp    DWORD PTR [rip+0x1b231dc],0x0        # 0x1423c7668
+classic	interrupt-renderer	0x8a4495	test   BYTE PTR [rax],0x1
+classic	interrupt-renderer	0x8a44b1	cmp    ebx,r14d
+classic	interrupt-renderer	0x8a44c2	cmp    esi,eax
+classic	interrupt-renderer	0x8a4537	test   rdx,rdx
+classic	interrupt-renderer	0x8a458e	cmp    rcx,rax
+classic	interrupt-renderer	0x8a459f	cmp    rbx,rcx
+classic	interrupt-renderer	0x8a45ac	cmp    QWORD PTR [rbp+0xf],0xf
+classic	interrupt-renderer	0x8a45ce	cmp    rbx,0x3
+classic	interrupt-renderer	0x8a45d8	cmp    QWORD PTR [rbp+0xf],0xf
+classic	interrupt-renderer	0x8a45eb	cmp    QWORD PTR [rbp+0xf],0xf
+classic	interrupt-renderer	0x8a45fe	cmp    QWORD PTR [rbp+0xf],0xf
+classic	interrupt-renderer	0x8a463e	cmp    edi,DWORD PTR [rbp-0x1d]
+classic	interrupt-renderer	0x8a4660	cmp    ecx,edx
+classic	interrupt-input	0x8a4779	cmp    ecx,edx
+classic	interrupt-input	0x8a4782	cmp    eax,edx
+classic	interrupt-input	0x8a47bc	cmp    r10d,r14d
+classic	interrupt-input	0x8a47d3	test   r8b,r8b
+classic	interrupt-input	0x8a47db	cmp    r10,rax
+classic	interrupt-input	0x8a47e0	cmp    r9d,DWORD PTR [rsp+0x4c]
+classic	interrupt-input	0x8a47e7	cmp    r9d,DWORD PTR [rsp+0x40]
+classic	interrupt-input	0x8a47ee	cmp    r12d,r13d
+classic	interrupt-input	0x8a47f3	cmp    r12d,r11d
+classic	interrupt-input	0x8a4843	test   al,al
+classic	interrupt-input	0x8a485f	cmp    eax,r14d
+classic	interrupt-input	0x8a488e	cmp    BYTE PTR [rdi+0x24],sil
+classic	interrupt-input	0x8a4898	test   r8b,r8b
+classic	interrupt-input	0x8a48a1	cmp    BYTE PTR [rip+0x1ae5c16],sil        # 0x14238a4be
+classic	interrupt-input	0x8a48f1	cmp    r12d,eax
+classic	interrupt-input	0x8a48ff	cmp    r12d,r10d
+classic	interrupt-input	0x8a4912	cmp    eax,ecx
+classic	interrupt-input	0x8a491b	cmp    r10d,eax
+classic	interrupt-input	0x8a4952	cmp    eax,ecx
+classic	interrupt-input	0x8a4957	cmp    eax,r9d
+classic	interrupt-input	0x8a49b5	cmp    r9d,DWORD PTR [rsp+0x4c]
+classic	interrupt-input	0x8a49bc	cmp    r9d,DWORD PTR [rsp+0x40]
+classic	interrupt-input	0x8a49c3	cmp    r12d,r13d
+classic	interrupt-input	0x8a49c8	cmp    r12d,DWORD PTR [rsp+0x48]
+classic	interrupt-input	0x8a49cf	test   r8b,r8b
+classic	interrupt-input	0x8a49d4	test   r10b,r10b
+classic	interrupt-input	0x8a49f3	cmp    rcx,rax
+classic	interrupt-input	0x8a4a11	cmp    r9d,edx
+classic	interrupt-input	0x8a4a1d	cmp    r9d,eax
+classic	interrupt-input	0x8a4a26	cmp    r12d,r15d
+classic	interrupt-input	0x8a4a33	cmp    r12d,eax
+classic	interrupt-input	0x8a4a3c	test   r8b,r8b
+classic	interrupt-input	0x8a4a45	test   r10b,r10b
+classic	interrupt-input	0x8a4a91	cmp    r12d,eax
+classic	interrupt-input	0x8a4a9b	cmp    ecx,DWORD PTR [rbp-0x3c]
+classic	interrupt-input	0x8a4aaf	cmp    r12d,eax
+classic	interrupt-input	0x8a4ac1	cmp    ecx,eax
+classic	interrupt-input	0x8a4ace	cmp    r12d,DWORD PTR [rbp-0x28]
+classic	interrupt-input	0x8a4ad4	cmp    r12d,DWORD PTR [rbp-0x24]
+classic	interrupt-input	0x8a4af1	cmp    edx,eax
+classic	interrupt-input	0x8a4b04	cmp    ecx,DWORD PTR [rbp-0x3c]
+classic	interrupt-input	0x8a4b16	cmp    DWORD PTR [rdi+0x20],ecx
+classic	interrupt-input	0x8a4b1f	test   ecx,ecx
+classic	interrupt-input	0x8a4b34	cmp    edx,r11d
+classic	interrupt-input	0x8a4b4f	cmp    r14,rax
+classic	interrupt-input	0x8a4b67	cmp    BYTE PTR [rax+0x19],sil
+classic	interrupt-input	0x8a4b70	cmp    DWORD PTR [rax+0x1c],edx
+classic	interrupt-input	0x8a4b81	cmp    BYTE PTR [rax+0x19],sil
+classic	interrupt-input	0x8a4b87	cmp    BYTE PTR [rcx+0x19],sil
+classic	interrupt-input	0x8a4b8d	cmp    edx,DWORD PTR [rcx+0x1c]
+classic	interrupt-input	0x8a4b98	cmp    r9d,DWORD PTR [rsp+0x60]
+classic	interrupt-input	0x8a4b9f	cmp    r9d,DWORD PTR [rsp+0x44]
+classic	interrupt-input	0x8a4ba6	cmp    r12d,r15d
+classic	interrupt-input	0x8a4baf	cmp    r12d,eax
+classic	interrupt-input	0x8a4bb4	test   bl,bl
+classic	interrupt-input	0x8a4bba	test   bl,bl
+classic	interrupt-input	0x8a4be2	test   r8b,r8b
+classic	interrupt-input	0x8a4be7	test   r10b,r10b
+classic	interrupt-input	0x8a4bec	test   bl,bl
+classic	interrupt-input	0x8a4bf7	cmp    r13d,r11d
+classic	interrupt-input	0x8a4c3d	test   rax,rax
+classic	interrupt-input	0x8a4c76	cmp    rax,rdx
+classic	interrupt-input	0x8a4c7f	cmp    QWORD PTR [rax+r14*8],rsi
+classic	interrupt-input	0x8a4cf3	cmp    rax,rcx
+classic	interrupt-input	0x8a4cfe	cmp    edx,0x1b
+classic	interrupt-input	0x8a4d36	cmp    DWORD PTR [r14],0x3
+classic	interrupt-input	0x8a4d54	test   al,al
+classic	interrupt-input	0x8a4d63	test   DWORD PTR [r10+0x110],0x10000
+classic	interrupt-input	0x8a4d7b	test   rbx,rbx
+classic	interrupt-input	0x8a4da6	cmp    eax,0x1
+classic	interrupt-input	0x8a4db2	cmp    QWORD PTR [rcx+0x98],r10
+classic	interrupt-input	0x8a4dd4	cmp    edx,0x1f3
+classic	interrupt-input	0x8a4e36	test   rbx,rbx
+classic	interrupt-input	0x8a4e46	cmp    rax,QWORD PTR [r10+0xd0]
+classic	interrupt-input	0x8a4e64	cmp    rax,QWORD PTR [r10+0xe8]
+classic	interrupt-input	0x8a4e82	cmp    rax,QWORD PTR [r10+0x100]
+classic	interrupt-input	0x8a4ec3	test   r8w,r8w
+classic	interrupt-input	0x8a4ecd	cmp    r8d,DWORD PTR [rip+0x1c3d0f8]        # 0x1424e1fcc
+classic	interrupt-input	0x8a4eda	test   r9w,r9w
+classic	interrupt-input	0x8a4ee0	cmp    r9d,DWORD PTR [rip+0x1c3d0e9]        # 0x1424e1fd0
+classic	interrupt-input	0x8a4ee9	test   cx,cx
+classic	interrupt-input	0x8a4eee	cmp    ecx,DWORD PTR [rip+0x1c3d0e0]        # 0x1424e1fd4
+classic	interrupt-input	0x8a4efd	test   r11,r11
+classic	interrupt-input	0x8a4f1c	test   rdx,rdx
+classic	interrupt-input	0x8a4f63	cmp    WORD PTR [r10+0xa8],ax
+classic	interrupt-input	0x8a4f72	cmp    WORD PTR [r10+0xaa],ax
+classic	interrupt-input	0x8a4f81	cmp    WORD PTR [r10+0xac],ax
+classic	interrupt-input	0x8a4f9d	test   rax,rax
+classic	interrupt-input	0x8a5015	cmp    r10d,0xffffffff
+classic	interrupt-input	0x8a5034	test   r8d,r8d
+classic	interrupt-input	0x8a504e	cmp    DWORD PTR [r11+0x1c],r10d
+classic	interrupt-input	0x8a5064	cmp    edx,r8d
+classic	interrupt-input	0x8a506c	test   r11,r11
+classic	interrupt-input	0x8a50b6	cmp    DWORD PTR [rip+0xff11ac],esi        # 0x141896268
+classic	interrupt-input	0x8a50be	test   BYTE PTR [rip+0x1ae5d6b],0x70        # 0x14238ae30
+classic	interrupt-input	0x8a50cc	test   BYTE PTR [rip+0x1ae5d5d],0x8        # 0x14238ae30
+classic	interrupt-input	0x8a5168	cmp    QWORD PTR [rbp-0x28],0xf
+classic	interrupt-input	0x8a5228	cmp    rdx,0xf
+classic	interrupt-input	0x8a5238	cmp    rdx,0x1000
+classic	interrupt-input	0x8a5250	cmp    rax,0x1f
+classic	interrupt-input	0x8a5276	cmp    rdx,0xf
+classic	interrupt-input	0x8a5286	cmp    rdx,0x1000
+classic	interrupt-input	0x8a529e	cmp    rax,0x1f
+classic	interrupt-input	0x8a52d0	cmp    rbx,rdi
+classic	interrupt-input	0x8a52d8	test   rcx,rcx
+classic	interrupt-input	0x8a52f4	cmp    rax,QWORD PTR [rip+0x1d9e2fd]        # 0x1426435f8
+classic	interrupt-input	0x8a5353	cmp    BYTE PTR [rbx+0x19],0x0
+classic	interrupt-input	0x8a537f	cmp    BYTE PTR [rbx+0x19],0x0
+classic	interrupt-scroll	0x8a53f0	test   r11b,r11b
+classic	interrupt-scroll	0x8a5415	cmp    ecx,r9d
+classic	interrupt-scroll	0x8a5420	cmp    eax,r9d
+classic	interrupt-scroll	0x8a542d	cmp    BYTE PTR [rbx+0x24],0x0
+classic	interrupt-scroll	0x8a5437	test   r11b,r11b
+classic	interrupt-scroll	0x8a5440	cmp    BYTE PTR [rip+0x1ae5077],0x0        # 0x14238a4be
+classic	interrupt-scroll	0x8a549d	cmp    edi,eax
+classic	interrupt-scroll	0x8a54aa	cmp    edi,r10d
+classic	interrupt-scroll	0x8a54bd	cmp    eax,ecx
+classic	interrupt-scroll	0x8a54c6	cmp    r10d,eax
+classic	interrupt-scroll	0x8a54fb	cmp    eax,ecx
+classic	interrupt-scroll	0x8a5500	cmp    eax,r9d
+classic	interrupt-option-caption	0x13e5886	cmp    DWORD PTR [rdx],0x3
+classic	interrupt-option-caption	0x13e58cc	cmp    bx,r14w
+classic	interrupt-option-caption	0x13e5935	cmp    QWORD PTR [rsp+0x60],0xf
+classic	interrupt-option-caption	0x13e5990	cmp    di,r12w
+classic	interrupt-option-caption	0x13e5996	cmp    r13w,r15w
+classic	interrupt-option-caption	0x13e599c	cmp    bx,r14w
+classic	interrupt-option-caption	0x13e5a06	cmp    ecx,0x7
+classic	interrupt-option-caption	0x13e5a23	cmp    al,0x6
+classic	interrupt-option-caption	0x13e5a3b	cmp    al,0x6
+classic	interrupt-option-caption	0x13e5a6c	test   al,al
+classic	interrupt-option-caption	0x13e5a9d	test   al,al
+classic	interrupt-option-caption	0x13e5ad1	bt     eax,0xf
+classic	interrupt-option-caption	0x13e5b13	cmp    rdx,0xf
+classic	interrupt-option-caption	0x13e5b24	cmp    rdx,0x1000
+classic	interrupt-option-caption	0x13e5b3c	cmp    rax,0x1f

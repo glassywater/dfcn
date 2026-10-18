@@ -334,6 +334,22 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
          0xc6,0x04,0x18,0x00},
         // rcx = &caption (rbp-0x80), rdx = width (rbx), r8b = zero fill.
         {0x48,0x8d,0x4d,0x80, 0x48,0x89,0xda, 0x45,0x31,0xc0}},
+        // The independent action-interruption popup uses 13ea8f0's complete
+        // Hold/Hang-from terrain caption, then shortens rbp-9 inline before
+        // addst at 8a6d9f. Preserve the whole terrain and both directions.
+        // No branch enters these five instructions; cmp rbx,3 replaces flags
+        // and the dot stores reload their volatile registers. Seven pushes
+        // and sub rsp,0x90 retain aligned calls and the native shadow space.
+        // Both configured PE bodies are in data/extracted/adventure-interrupt.
+        {0x8a6d24,
+         {0x48,0x89,0x5d,0x07,0x48,0x8d,0x45,0xf7,
+          0x48,0x83,0x7d,0x0f,0x0f,0x48,0x0f,0x47,0x45,0xf7,
+          0xc6,0x04,0x18,0x00},
+         {0x48,0x8d,0x4d,0xf7,0x48,0x89,0xda,0x45,0x31,0xc0}},
+        // The same length guard also admits width-1 and appends one NUL
+        // before writing the dots. Convert its append count to total width.
+        {0x8a6d49, {0xe8,0x62,0xa5,0x83,0xff},
+         {0x48,0x03,0x51,0x10}, true},
         // The abilities renderer independently shortens its complete CDI
         // or pronoun-expanded body-action caption inline. Preserve the same
         // rbp-0x28 owner before the dots and addst at 0x8aa822. No branch

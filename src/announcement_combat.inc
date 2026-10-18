@@ -833,6 +833,12 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             if (!is_written_work_description(normalized)) return finish(std::nullopt);
             return finish(translate_written_work_paragraph(input));
         }
+        if (scope == "$announcement-terrain") {
+            // The interruption input's failed-grab message appends the same
+            // complete e7d330 terrain field as its Hold/Hang-from captions.
+            // Its material and construction grammar belongs to a tile.
+            return finish(RULESETS.translate_tile_description(native_text_to_utf8(input)));
+        }
         if (scope == "$announcement-building") {
             // 1168910 obtains a discovered building's entire caption from
             // virtual +0x188. Reuse that exact hover-caption grammar, keeping

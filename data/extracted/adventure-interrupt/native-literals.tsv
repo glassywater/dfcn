@@ -1,0 +1,41 @@
+edition	image	owner	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+steam	PE:6a70a6d9:02711000	interrupt-renderer	0x8a68a0	0x8a6a48	rip-relative	0x178b330	numeric-string-layout-vector	!
+steam	PE:6a70a6d9:02711000	interrupt-renderer	0x8a68a0	0x8a6a55	rip-relative	0x16b4960	finite-text-operand-or-substring	Would you like to take an action?
+steam	PE:6a70a6d9:02711000	interrupt-renderer	0x8a68a0	0x8a6a5f	rip-relative	0x16b4970	finite-text-operand-or-substring	o take an action?
+steam	PE:6a70a6d9:02711000	interrupt-renderer	0x8a68a0	0x8a6a6a	rip-relative	0x16b4980	finite-text-operand-or-substring	?
+steam	PE:6a70a6d9:02711000	interrupt-renderer	0x8a68a0	0x8a6cd6	rip-relative	0x16b48f0	finite-text-operand-or-substring	Do not alter actions
+steam	PE:6a70a6d9:02711000	interrupt-renderer	0x8a68a0	0x8a6ce0	rip-relative	0x16b4900	finite-text-operand-or-substring	ions
+steam	PE:6a70a6d9:02711000	interrupt-input	0x8a6e70	0x8a7883	rip-relative	0x16b48d8	finite-text-operand-or-substring	You fail to grab the 
+steam	PE:6a70a6d9:02711000	interrupt-input	0x8a6e70	0x8a788d	rip-relative	0x16b48e8	finite-text-operand-or-substring	 the 
+steam	PE:6a70a6d9:02711000	interrupt-input	0x8a6e70	0x8a7896	rip-relative	0x16b48ec	separator	 
+steam	PE:6a70a6d9:02711000	interrupt-input	0x8a6e70	0x8a7905	rip-relative	0x15ee438	finite-text-operand-or-substring	!
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13ea964	rip-relative	0x16b1390	finite-text-operand-or-substring	Hold 
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13ea96b	rip-relative	0x16b13e0	finite-text-operand-or-substring	Hang from 
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13ea9e4	rip-relative	0x1615540	separator	 (
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13eaa38	rip-relative	0x15ed97c	finite-text-operand-or-substring	 from 
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13eaad5	rip-relative	0x16b1338	finite-text-operand-or-substring	/Air
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13eab06	rip-relative	0x16b1354	finite-text-operand-or-substring	/Water
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13eab37	rip-relative	0x15eb514	separator	/
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13eab6d	rip-relative	0x16b134c	finite-text-operand-or-substring	Lava
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13eab7c	rip-relative	0x15f73a4	finite-text-operand-or-substring	Magma
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13eab8e	rip-relative	0x1615580	separator	)
+classic	PE:6a70b91c:0270a000	interrupt-renderer	0x8a4120	0x8a42c8	rip-relative	0x1785c30	numeric-string-layout-vector	!
+classic	PE:6a70b91c:0270a000	interrupt-renderer	0x8a4120	0x8a42d5	rip-relative	0x16af968	finite-text-operand-or-substring	Would you like to take an action?
+classic	PE:6a70b91c:0270a000	interrupt-renderer	0x8a4120	0x8a42df	rip-relative	0x16af978	finite-text-operand-or-substring	o take an action?
+classic	PE:6a70b91c:0270a000	interrupt-renderer	0x8a4120	0x8a42ea	rip-relative	0x16af988	finite-text-operand-or-substring	?
+classic	PE:6a70b91c:0270a000	interrupt-renderer	0x8a4120	0x8a4556	rip-relative	0x16afa48	finite-text-operand-or-substring	Do not alter actions
+classic	PE:6a70b91c:0270a000	interrupt-renderer	0x8a4120	0x8a4560	rip-relative	0x16afa58	finite-text-operand-or-substring	ions
+classic	PE:6a70b91c:0270a000	interrupt-input	0x8a46f0	0x8a5103	rip-relative	0x16afa30	finite-text-operand-or-substring	You fail to grab the 
+classic	PE:6a70b91c:0270a000	interrupt-input	0x8a46f0	0x8a510d	rip-relative	0x16afa40	finite-text-operand-or-substring	 the 
+classic	PE:6a70b91c:0270a000	interrupt-input	0x8a46f0	0x8a5116	rip-relative	0x16afa44	separator	 
+classic	PE:6a70b91c:0270a000	interrupt-input	0x8a46f0	0x8a5185	rip-relative	0x15e942c	finite-text-operand-or-substring	!
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e58d4	rip-relative	0x16ac320	finite-text-operand-or-substring	Hold 
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e58db	rip-relative	0x16abc60	finite-text-operand-or-substring	Hang from 
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e5954	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e59a8	rip-relative	0x15e8984	finite-text-operand-or-substring	 from 
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e5a45	rip-relative	0x16abc80	finite-text-operand-or-substring	/Air
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e5a76	rip-relative	0x16abc9c	finite-text-operand-or-substring	/Water
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e5aa7	rip-relative	0x15e64cc	separator	/
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e5add	rip-relative	0x16abc94	finite-text-operand-or-substring	Lava
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e5aec	rip-relative	0x15f234c	finite-text-operand-or-substring	Magma
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e5afe	rip-relative	0x16102d8	separator	)

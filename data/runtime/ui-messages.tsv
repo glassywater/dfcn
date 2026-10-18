@@ -1161,6 +1161,7 @@ Where will you jump?	你要跳到哪里？
 Delay warning: Ammo will be loaded/nocked before firing.	延迟提示：发射前需要先装填弹药或搭箭。
 Where will you aim?	你要瞄准哪里？
 Would you like to take an action?	你要采取行动吗？
+Do not alter actions	保持当前行动不变
 You cannot jump while prone.	俯卧时无法跳跃。
 You cannot jump while swimming.	游泳时无法跳跃。
 You are too injured to jump.	你的伤势太重，无法跳跃。

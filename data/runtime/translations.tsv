@@ -11848,6 +11848,7 @@ Although my own insignificant beliefs lie elsewhere, you needn't indulge my triv
 Announcement combat activity-detail-sentence [work-reference]: The topic being taught is {s}.	正在讲授的主题是{s1}。	l
 Announcement combat adventure-announcement [$announcement-item]: {s} is already loaded with .	{s1}已经装好了。	l
 Announcement combat adventure-announcement [$announcement-item]: {s} is already nocked with .	{s1}已经搭好了。	l
+Announcement combat adventure-announcement [$announcement-terrain]: You fail to grab the {s}!	你没能抓住{s1}！	l
 Announcement combat adventure-announcement [$unit]: {s} is knocked over and tumbles backward!	{s1}被撞倒，向后翻滚！	l
 Announcement combat adventure-announcement []: A migrant has arrived at this miserable place.	一名移民来到了这个悲惨的地方。	l
 Announcement combat adventure-announcement []: It has always been my dream to start a family.	组建家庭一直是我的梦想。	l
@@ -12800,7 +12801,6 @@ Alternatively, you can reduce the number of high, medium or low savagery squares
 Alternatively, you can reduce the number of non-mountain caves required by the parameters.	也可以减少参数要求的非山地洞穴数量。	l
 Announcement combat activity-detail-sentence [activity-detail-form]: is an example of {s}.	这部未命名的作品属于{s1}。	l
 Announcement combat adventure-announcement [$announcement-item]: It won't fit in your {s}.	你的{s1}装不下它。	l
-Announcement combat adventure-announcement [$announcement-item]: You fail to grab the {s}!	你没能抓住{s1}！	l
 Announcement combat adventure-announcement [$announcement-item]: You lose hold of the {s}!	你没能抓住{s1}！	l
 Announcement combat adventure-announcement [$announcement-item]: You lose hold of the {s}.	你没能抓住{s1}。	l
 Announcement combat adventure-announcement [$announcement-item]: Your {s} is already full.	你的{s1}已经装满了。	l
@@ -98363,6 +98363,7 @@ Disdains competition	轻视竞争	w
 Disdains cooperation	轻视合作	w
 Disdains tranquility	轻视宁静	w
 Dismiss minor doubts	不在意些许疑虑	hP
+Do not alter actions	保持当前行动不变	hP
 Do not automate kiln	黏土窑不自动加工	wi
 Don't waste my time.	别浪费我的时间。	hPD
 Drowning in sadness!	沉浸在悲伤之中！	hP

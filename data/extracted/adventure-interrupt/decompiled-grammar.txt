@@ -1,0 +1,101 @@
+Native Adventure action-interruption popup source grammar, DF 53.16
+
+Actual Ghidra 12.1.4 C output is retained in pe-steam-ghidra-decompiled.c and
+pe-classic-ghidra-decompiled.c, plus one C file per native owner. Original
+instructions, bytes, finite literal operands, condition edges, switches and
+CHAININFO fragments are retained alongside those sources. pe-images.tsv records
+the actual configured PE identities, SHA-256 values and image paths. These are
+offline source materials, not game observations or test results. This semantic
+grammar describes those original sources; it is not itself Ghidra-generated C.
+
+OWNER AND REACHABILITY
+
+Steam PE:6a70a6d9:02711000; classic PE:6a70b91c:0270a000.
+Steam populate 0x84ef40..0x84f51e; classic 0x84c7c0..0x84cd9e.
+All five CHAININFO fragments of each populate owner are included. The vector
+begins with a literal null pointer. Both native allocation sites then write
+integer action type 3, never an adventure_optionst virtual table. They enumerate
+eligible tiles in the 3-by-3 same-z neighborhood and directly above at z+1,
+excluding the already held coordinate. Original availability predicates and
+cached-position branches remain in the complete populate C and assembly.
+
+The activation caller is Steam owner 0x7eed80..0x7f3ca2 at call 0x7f30d0;
+it activates this popup only when the vector contains at least two entries.
+The popup therefore has null plus one or more type-3 choices. The separate
+77-class Adventure action chooser is not this popup's option hierarchy.
+
+Renderer: Steam 0x8a68a0..0x8a6e61; classic 0x8a4120..0x8a46e1.
+Input: Steam 0x8a6e70..0x8a7b1c; classic 0x8a46f0..0x8a539c.
+Native switch/remap bytes follow input code and are retained by pe-switches.tsv,
+not decoded as instructions. Every selector 0..27 has the native mapped target
+that invalidates the matching old action. Ghidra legitimately folds this into
+one destination. Scroll drag/update: Steam 0x8a7b40..0x8a7cc2; classic
+0x8a53c0..0x8a5542. That owner supplies no prose.
+
+FINITE TEXT AND FULL CAPTION GRAMMAR
+
+TITLE := "Would you like to take an action?"
+NULL_CHOICE := "Do not alter actions"
+
+Each type-3 option stores signed 16-bit coordinate groups:
+CURRENT := option+0x8/+0xa/+0xc
+SOURCE := option+0xe/+0x10/+0x12
+TARGET := option+0x14/+0x16/+0x18
+
+TYPE3_CHOICE := VERB TILE " (" DIR(CURRENT,TARGET)
+                [" from " DIR(CURRENT,SOURCE)] MEDIA ")"
+VERB := "Hold " when TARGET.z <= SOURCE.z; otherwise "Hang from ".
+The " from " group exists only when CURRENT and SOURCE differ in x, y or z.
+The current populate owner writes CURRENT=SOURCE, but the caption supplier's
+complete conditional branch is retained and its grammar must remain supported.
+Non-null types other than 3 leave the output empty; populate cannot create them.
+
+MEDIA := ["/Air"] ["/Water"] ["/Lava" | "/Magma"]
+These three gates are independent, in this fixed order, and use SOURCE.
+Air requires tile type in {1,32,35,42}, water depth<=6 and magma depth<=6.
+Water requires water depth>0. Lava/Magma requires magma depth>0; tile flag bit
+15 selects "Magma" when set and "Lava" otherwise. All gates and branches are
+present in each complete interrupt-option-caption C and assembly.
+
+TILE is the complete native terrain description at TARGET, with growth=false:
+Steam supplier 0xe7d330; classic supplier 0xe782a0. The existing real Ghidra
+sources and complete material suppliers are retained under
+data/extracted/adventure-action-terrain, referenced by native-supplier-sources.tsv.
+Terrain names contain material, construction, plant, feature and mod RAW fields;
+they are semantic fields rather than a finite enumeration of generated names.
+
+DIR := NW | SW | West | NE | SE | East | North | South,
+       each optionally followed by /Below or /Above; or pure Below | Above | Here.
+These are exactly 27 native direction outputs. Steam supplier 0x74f220 and
+classic 0x74cc40 are already retained in the actual Ghidra sources under
+data/extracted/adventure-action-menu; native-supplier-sources.tsv links them.
+
+INPUT FAILURE ANNOUNCEMENT
+
+FAILED_GRAB := "You fail to grab the " TILE "!"
+Input builds it at Steam literal site 0x8a7883 and terrain call 0x8a78df;
+classic sites are 0x8a5103 and 0x8a515f. This field is the same native terrain
+description at the option's TARGET, growth=false. It is not an item caption.
+All remaining input branches handle selection, pointer/key input, scroll,
+action cancellation/commit, and successful or failed grabbing without adding
+another finite text production in this popup's complete native owners.
+
+NATIVE BYTE CLIPPING BEFORE DRAW
+
+The renderer creates every complete caption, then compares its byte length
+against available row cells. This is a separate clipping site from the 77-class
+chooser. On the clipping path it resizes the std::string, inserts a NUL and,
+when the retained length exceeds 3, overwrites the final three bytes with "...".
+There is no native text wrapping in this path.
+
+Steam compare 0x8a6d0e; branch 0x8a6d11 (72 7e) skips to 0x8a6d91.
+The string-size/NUL block begins 0x8a6d24 and is 22 bytes; append-padding
+call is 0x8a6d49. Dot writes are 0x8a6d62, 0x8a6d75 and 0x8a6d88.
+List draw addst call 0x8a6d9f returns to 0x8a6da4; title addst call
+0x8a6a86 returns to 0x8a6a8b.
+
+Classic compare 0x8a458e; branch 0x8a4591 (72 7e) skips to 0x8a4611.
+String-size/NUL block 0x8a45a4; append-padding call 0x8a45c9; dot writes
+0x8a45e2, 0x8a45f5 and 0x8a4608. List draw addst call 0x8a461f returns
+to 0x8a4624; title addst call 0x8a4306 returns to 0x8a430b.
+pe-instruction-bytes.tsv preserves the exact original bytes for every instruction.

@@ -1,0 +1,11 @@
+edition	image	role	start_rva	code_end_rva	assembly_file	source_path
+steam	PE:6a70a6d9:02711000	interrupt-populate	0x84ef40	0x84f51e	pe-steam-interrupt-populate.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+steam	PE:6a70a6d9:02711000	interrupt-renderer	0x8a68a0	0x8a6e61	pe-steam-interrupt-renderer.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+steam	PE:6a70a6d9:02711000	interrupt-input	0x8a6e70	0x8a7b1c	pe-steam-interrupt-input.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+steam	PE:6a70a6d9:02711000	interrupt-scroll	0x8a7b40	0x8a7cc2	pe-steam-interrupt-scroll.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+steam	PE:6a70a6d9:02711000	interrupt-option-caption	0x13ea8f0	0x13eac03	pe-steam-interrupt-option-caption.asm	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	interrupt-populate	0x84c7c0	0x84cd9e	pe-classic-interrupt-populate.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	interrupt-renderer	0x8a4120	0x8a46e1	pe-classic-interrupt-renderer.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	interrupt-input	0x8a46f0	0x8a539c	pe-classic-interrupt-input.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	interrupt-scroll	0x8a53c0	0x8a5542	pe-classic-interrupt-scroll.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	interrupt-option-caption	0x13e5860	0x13e5b73	pe-classic-interrupt-option-caption.asm	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
