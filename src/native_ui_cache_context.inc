@@ -218,6 +218,7 @@ public:
             ? fps_marker : std::string_view(input.complete_source));
         optional(input.performance_choice, [&](const auto &choice) {
             value(choice.type); value(choice.id); value(choice.unnamed);
+            value(bool(choice.story_event));
             text(choice.source); text(choice.species);
         });
         optional(input.picture_frame, [&](const auto &frame) {

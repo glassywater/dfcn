@@ -696,6 +696,9 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         if (entry.field == 'e') {
             // This field is a history-event COLLECTION ID, whose native
             // title interface is independent of an event's d8 title call.
+            if (event.fields.contains("native_story_title") &&
+                    !event.fields.contains("collection." + std::to_string(data) + ".type"))
+                return apply("during", {}); // Native keeps this word after a missing lookup.
             const auto event_title = collection_title(data);
             return event_title ? apply(entry.source, {*event_title}) : std::nullopt;
         }
@@ -792,7 +795,13 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             return std::pair<Pieces, Pieces>{std::move(*motivation), Pieces{}};
         }
         auto reason = history_event_reason_clause(event.reason);
-        const auto circumstance = history_event_circumstance_clause(event.circumstance);
+        auto circumstance = history_event_circumstance_clause(event.circumstance);
+        if (event.fields.contains("native_story_title")) {
+            // Out-of-range reason selectors append only their separator in
+            // the native title. Preserve the event's remaining fields.
+            if (!reason) reason = HistoryEventClause{event.reason, "", 0};
+            if (!circumstance) circumstance = HistoryEventClause{event.circumstance, "", 0};
+        }
         if (!reason || !circumstance) return std::nullopt;
         if (event.reason == 4 && event.reason_data == -1)
             reason = HistoryEventClause{4, "due to their cosmic similarity", 0};

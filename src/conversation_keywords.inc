@@ -242,8 +242,24 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
             return uniform_colors(translate_legends_name(source, false));
         case 14: case 16: case 19: case 39: // Memorized written compositions.
             return uniform_colors(translate_legends_book(source));
-        case 12: // STORY_EVENT is the complete native history-event caption.
-            return uniform_colors(translate_legends_text(source, false, false));
+        case 12: { // STORY_EVENT is the complete native history-event caption.
+            if (native_choice->story_event) {
+                if (const auto pieces = translate_history_event(*native_choice->story_event, false)) {
+                    std::string target;
+                    for (const auto &piece : *pieces) target += piece.target;
+                    if (!target.empty()) return uniform_colors(std::move(target));
+                }
+            }
+            // The chooser capitalizes virtual +d8's title and keeps its
+            // unshortened value in list_name. Its participant/location/date
+            // fields need the complete title parser's typed backtracking;
+            // paragraph scanning cannot establish those field boundaries.
+            // Display and Chinese search share this same bound enum/ID.
+            // A native nickname is authored text; keep its exact spacing.
+            return uniform_colors(translate_legends_event(
+                source.find('`') == std::string_view::npos
+                    ? std::string_view(normalized) : trim_view(source), 0, false));
+        }
         case 37: { // WRITE_TARGET: the actual writable item's designation.
             auto target = translate_item_description_term(source);
             if (!target) target = translate_inventory_item_name(source, -1, -1);
@@ -310,6 +326,7 @@ bool Overlay::translated_adventure_action_matches(std::string_view source,
         std::string key = std::to_string(native_choice->type) + '\x1f' +
             std::to_string(native_choice->id);
         key.push_back(native_choice->unnamed ? '\1' : '\0');
+        key.push_back(native_choice->story_event ? '\1' : '\0');
         key.append(native_choice->source).push_back('\0');
         key.append(native_choice->species).push_back('\0');
         key.append(source);
