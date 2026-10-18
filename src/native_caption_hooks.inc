@@ -214,6 +214,10 @@ static void capture_native_announcement_popup_draw(
         if (const auto *gps = native_graphics())
             if (const auto bounds = native_notification_visible_bounds(*gps, left, 4, left + 93, 38))
                 isolated = native_notification_begin_draw(*bounds);
+        if (isolated) {
+            g_native_notification_source_kind = NativeFortressAlertSourceKind::Popup;
+            g_native_notification_source_owner = owner;
+        }
     } catch (...) {}
     struct Restore {
         bool isolated;
@@ -266,7 +270,18 @@ static size_t capture_native_announcement_page_rows(const void *paragraph) {
             if (width >= 0 && width <= 1000) {
                 if (const auto bounds = native_notification_visible_bounds(
                         *gps, left, top, left + width + 4, bottom)) {
-                    if (native_notification_begin_draw(*bounds)) {
+                    const auto source_kind = native_fortress_alert_hover_source_kind(
+                        reinterpret_cast<uintptr_t>(paragraph));
+                    // Read before begin_draw swaps the page's capture bundle.
+                    // This version advances only when native actually wraps
+                    // this exact hover box, independently of live report IDs.
+                    const auto wrap_generation = native_fortress_alert_hover_wrap_generation(
+                        reinterpret_cast<uintptr_t>(paragraph));
+                    if (source_kind != NativeFortressAlertSourceKind::None &&
+                            native_notification_begin_draw(*bounds)) {
+                        g_native_notification_source_kind = source_kind;
+                        g_native_notification_source_owner = reinterpret_cast<uintptr_t>(paragraph);
+                        g_native_notification_source_wrap_generation = wrap_generation;
                         // Offscreen rows still call addst. The original count
                         // keeps the output redirected until the final body row.
                         g_native_announcement_hover_rows = rows;

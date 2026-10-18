@@ -5,6 +5,7 @@ static NativeUiLayerTarget g_native_map_target;
 static NativeUiLayerTarget g_native_map_glyph_target;
 static NativeUiLayerGrid g_native_ui_input;
 static NativeEntryHook g_native_map_ui_draw_hook;
+static NativeEntryHook g_native_map_clear_hook;
 static uint64_t g_native_map_target_serial = 0;
 static uint64_t g_native_map_target_layout = 0;
 
@@ -58,6 +59,7 @@ public:
         // unavailable. Its SDL copies must never enter text glyph discovery.
         g_drawing_overlay = true;
         auto *gps = native_graphics();
+        bind_native_map_display_frame(gps);
         if (!native_map_background_view(gps) ||
                 g_native_map_layer.foreground.dimx != gps->dimx ||
                 g_native_map_layer.foreground.dimy != gps->dimy) {
@@ -98,6 +100,8 @@ public:
                 // once; subsequent frames retain native incremental drawing.
                 gps->force_full_display_count = std::max<int16_t>(
                     gps->force_full_display_count, 2);
+                SDL_SetRenderDrawBlendMode(renderer_, state_->blend);
+                SDL_SetRenderDrawColor(renderer_, state_->r, state_->g, state_->b, state_->a);
             }
         } else if (!bound_) {
             state_->restore();
@@ -110,6 +114,43 @@ public:
             // Its next usable private target must receive a complete redraw.
             g_native_map_target_serial = g_native_map_target_layout = 0;
         }
+    }
+
+    template<typename Clear>
+    static bool clear_native_target(void *renderer, Clear &&clear) {
+        auto *frame = active_;
+        if (!frame || !frame->bound_ || frame->native_renderer_ != renderer ||
+                !frame->state_) return false;
+        // renderer::display's full-redraw clear belongs to the game target.
+        // Keeping its opaque black background in the retained map texture
+        // would let later map composition repaint the screen's outer margins.
+        frame->state_->restore();
+        if (SDL_GetRenderTarget(frame->renderer_) != frame->state_->target) {
+            frame->bound_ = false;
+            g_native_map_target_serial = g_native_map_target_layout = 0;
+            return false;
+        }
+        clear();
+        // Capture the native clear's resulting state, rather than restoring
+        // the state from before display began. Its map pass follows next.
+        frame->state_.emplace(frame->renderer_);
+        frame->bound_ = frame->state_->bind(g_native_map_target.texture,
+            frame->width_, frame->height_);
+        if (frame->bound_) {
+            SDL_SetRenderDrawBlendMode(frame->renderer_, SDL_BLENDMODE_NONE);
+            SDL_SetRenderDrawColor(frame->renderer_, 0, 0, 0, 0);
+            frame->bound_ = SDL_RenderClear(frame->renderer_) == 0;
+            SDL_SetRenderDrawBlendMode(frame->renderer_, frame->state_->blend);
+            SDL_SetRenderDrawColor(frame->renderer_, frame->state_->r,
+                frame->state_->g, frame->state_->b, frame->state_->a);
+        }
+        if (!frame->bound_) {
+            frame->state_->restore();
+            g_native_map_target_serial = g_native_map_target_layout = 0;
+        }
+        // The original clear ran exactly once. Ordinary incremental displays
+        // never enter here and retain their existing map pixels unchanged.
+        return true;
     }
 
     void finish() {
@@ -142,6 +183,15 @@ public:
     NativeMapGpuFrame(const NativeMapGpuFrame &) = delete;
     NativeMapGpuFrame &operator=(const NativeMapGpuFrame &) = delete;
 };
+
+static void native_map_clear(void *renderer) {
+    NativeInputCallbackScope callback;
+    TranslationStateScope translation;
+    const auto original = reinterpret_cast<void (*)(void *)>(g_native_map_clear_hook.original);
+    if (!original) return;
+    const auto clear = [&] { callback.call_native([&] { original(renderer); }); };
+    if (!NativeMapGpuFrame::clear_native_target(renderer, clear)) clear();
+}
 
 static void native_map_ui_draw(void *renderer) {
     NativeInputCallbackScope callback;
@@ -181,21 +231,28 @@ static void native_map_ui_draw(void *renderer) {
 
 static bool install_native_map_layer_hook() {
     if (!install_native_map_producer_hook()) return false;
-    if (g_native_map_ui_draw_hook.installed) return true;
-    constexpr const char *label = "Native map/interface raster boundary";
     const auto base = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
-    auto *entry = reinterpret_cast<unsigned char *>(native_pe_address(base, 0x8e1c80));
-    std::vector<unsigned char> prefix{0x48,0x89,0x5c,0x24,0x10};
-    return entry && native_pe_bytes(0x8e1c80, prefix) &&
-        g_native_map_ui_draw_hook.prepare(entry, prefix,
-        reinterpret_cast<const void *>(&native_map_ui_draw), {}, label) &&
-        g_native_map_ui_draw_hook.install(label);
+    const auto install = [&](NativeEntryHook &hook, uintptr_t coordinate,
+            std::vector<unsigned char> prefix, const void *callback, const char *label) {
+        if (hook.installed) return true;
+        auto *entry = reinterpret_cast<unsigned char *>(native_pe_address(base, coordinate));
+        return entry && native_pe_bytes(coordinate, prefix) &&
+            hook.prepare(entry, prefix, callback, {}, label) && hook.install(label);
+    };
+    return install(g_native_map_clear_hook, 0x8e1c40,
+            {0x40,0x53,0x48,0x83,0xec,0x30},
+            reinterpret_cast<const void *>(&native_map_clear), "Native map clear ownership") &&
+        install(g_native_map_ui_draw_hook, 0x8e1c80,
+            {0x48,0x89,0x5c,0x24,0x10},
+            reinterpret_cast<const void *>(&native_map_ui_draw), "Native map/interface raster boundary");
 }
 
 static void uninstall_native_map_layer_hook() {
     uninstall_native_map_producer_hook();
     g_native_map_ui_draw_hook.uninstall("Native map/interface raster restore");
-    if (!g_native_map_ui_draw_hook.active() && !native_map_producer_hook_active()) {
+    g_native_map_clear_hook.uninstall("Native map clear ownership restore");
+    if (!g_native_map_ui_draw_hook.active() && !g_native_map_clear_hook.active() &&
+            !native_map_producer_hook_active()) {
         g_native_map_target.release();
         g_native_map_glyph_target.release();
         g_native_map_target_serial = g_native_map_target_layout = 0;
@@ -205,7 +262,8 @@ static void uninstall_native_map_layer_hook() {
     }
 }
 static bool native_map_layer_hook_active() {
-    return native_map_producer_hook_active() || g_native_map_ui_draw_hook.active();
+    return native_map_producer_hook_active() || g_native_map_ui_draw_hook.active() ||
+        g_native_map_clear_hook.active();
 }
 #else
 static bool install_native_map_layer_hook() { return true; }

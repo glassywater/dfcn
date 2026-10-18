@@ -117,7 +117,10 @@ static void dfcn_capture_native_paragraph(void *box, const NativeString *source,
     } catch (...) { before = SIZE_MAX; }
     {
         auto native_timing = timing.phase(NativeWrapTiming::Stage::Native);
-        if (g_real_native_paragraph) g_real_native_paragraph(box, source, width);
+        if (g_real_native_paragraph) {
+            remember_native_fortress_alert_hover_wrap(reinterpret_cast<uintptr_t>(box));
+            g_real_native_paragraph(box, source, width);
+        }
     }
     try {
         auto capture_timing = timing.phase(NativeWrapTiming::Stage::Capture);
@@ -156,7 +159,10 @@ static void dfcn_capture_native_paragraph_vector(void *box, const void *source, 
     } catch (...) { before = SIZE_MAX; }
     {
         auto native_timing = timing.phase(NativeWrapTiming::Stage::Native);
-        if (g_real_native_paragraph_vector) g_real_native_paragraph_vector(box, source, width);
+        if (g_real_native_paragraph_vector) {
+            remember_native_fortress_alert_hover_wrap(reinterpret_cast<uintptr_t>(box));
+            g_real_native_paragraph_vector(box, source, width);
+        }
     }
     try {
         auto capture_timing = timing.phase(NativeWrapTiming::Stage::Capture);

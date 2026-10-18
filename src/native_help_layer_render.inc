@@ -152,9 +152,27 @@ static void native_help_produce_frame() {
     // either the previous completed output or this complete frame, including
     // an empty frame when the native component closes.
     native_help_reset_frame(g_native_help_frame_renderer);
-    callback.call_native([&] { original(); });
+    {
+        // A hover's native early return can submit fewer body rows than its
+        // initial count. Finish its output and release its retained translation
+        // scope before this producer returns to the native display handshake.
+        struct FinishNotifications {
+            ~FinishNotifications() {
+                native_notification_end_draw();
+                reset_native_announcement_notification_capture();
+            }
+        } finish_notifications;
+        callback.call_native([&] { original(); });
+    }
     try { native_announcement_log_preheat(4, false); }
     catch (...) {}
+    // Dependency completion can replace a document after the hover draw.
+    // Publish that same version before SDL requests its result, so the old
+    // snapshot cannot cancel the newly supplied dependency job again.
+    try {
+        if (g_native_notification_layer.ready)
+            native_notification_bind_report_documents(g_native_notification_paragraphs);
+    } catch (...) {}
     native_settings_menu_prepare();
 }
 #endif
@@ -546,7 +564,9 @@ static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTa
     std::optional<std::string> context;
     try { context = native_ui_layer_cache_context(layer); }
     catch (...) { /* Rendering remains available without a retained source. */ }
-    if (context && target.frame_cache.matches(layer, renderer, width, height, draw_layer, *context)) {
+    const bool owned_frames = &layer == &g_native_notification_layer;
+    if (context && target.frame_cache.matches(layer, renderer, width, height,
+            draw_layer, *context, owned_frames)) {
         // Only this private UI is retained. Composite it on the current native
         // map/background every time, preserving animation beneath the panel.
         if (!state.bind_composite(width, height)) return;
@@ -558,7 +578,8 @@ static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTa
     bool captured = false;
     if (context) {
         try {
-            target.frame_cache.capture(layer, renderer, width, height, draw_layer, *context);
+            target.frame_cache.capture(layer, renderer, width, height,
+                draw_layer, *context, owned_frames);
             captured = true;
         } catch (...) { /* An allocation failure must not prevent native painting. */ }
     }

@@ -109,7 +109,7 @@ void Overlay::append_adventure_personality_matches(std::vector<std::string> &row
         }
     }
 
-    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    const auto epoch = captured_native_drawn_text_epoch();
     static constexpr std::string_view value_names[] = {
         "Law", "Loyalty", "Family", "Friendship", "Power", "Truth", "Cunning",
         "Eloquence", "Fairness", "Decorum", "Tradition", "Artwork", "Cooperation",

@@ -424,6 +424,115 @@ native_announcement_log_reuse_content_version(NativeAnnouncementLogPreheatDirect
     }
     return entry.document;
 }
+static void native_notification_bind_report_documents(
+        std::vector<NativeAnnouncementParagraph> &paragraphs) {
+    if (g_native_announcement_log_worker_active) return;
+    for (auto &paragraph : paragraphs) paragraph.report_document.reset();
+    struct VisibleRow { uintptr_t address; std::string source; };
+    std::vector<VisibleRow> visible_rows;
+    const auto &layer = g_native_notification_layer;
+    const auto *gps = const_cast<NativeUiLayerStorage &>(layer).foreground.graphics();
+    if (!gps || gps->dimx <= 0 || gps->dimy <= 0 || layer.frames.empty()) {
+        paragraphs.clear(); return;
+    }
+    {
+        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        const auto capture = [&](const std::vector<NativeDrawnTextRow> &draws) {
+            for (const auto &draw : draws) {
+                const auto *grid = draw.top_layer ? gps->screen_top : gps->screen;
+                if (!draw.address || draw.source.empty() || !grid || draw.draw_grid != grid ||
+                        draw.draw_dimx != gps->dimx || draw.draw_dimy != gps->dimy ||
+                        draw.x < 0 || draw.x >= gps->dimx || draw.y < 0 || draw.y >= gps->dimy)
+                    continue;
+                bool visible = false;
+                for (const auto &frame : layer.frames) {
+                    if (draw.y < frame.y || int64_t(draw.y) >= int64_t(frame.y) + frame.h) continue;
+                    int64_t left = std::max<int64_t>(draw.x, frame.x);
+                    int64_t right = std::min<int64_t>({gps->dimx,
+                        int64_t(frame.x) + frame.w,
+                        int64_t(draw.x) + int64_t(std::min(draw.source.size(), size_t(gps->dimx)))});
+                    if (draw.draw_clip) {
+                        const auto &clip = *draw.draw_clip;
+                        if (draw.y < clip.y || int64_t(draw.y) >= int64_t(clip.y) + clip.h) continue;
+                        left = std::max<int64_t>(left, clip.x);
+                        right = std::min<int64_t>(right, int64_t(clip.x) + clip.w);
+                    }
+                    bool ink = false, intact = true;
+                    for (int64_t x = left; x < right; ++x) {
+                        const auto ch = static_cast<unsigned char>(draw.source[size_t(x - draw.x)]);
+                        if (ch == ' ') continue;
+                        const size_t tile = size_t(x) * gps->dimy + draw.y;
+                        const bool top = gps->screen_top && native_ui_top_layer_at(*gps, tile);
+                        if (top != draw.top_layer || grid[tile * 8] != ch) { intact = false; break; }
+                        ink = true;
+                    }
+                    if (ink && intact) { visible = true; break; }
+                }
+                if (visible) visible_rows.push_back({draw.address, draw.source});
+            }
+        };
+        // end_draw still owns the installed capture scope. Producer-tail
+        // adoption runs after that scope has returned these same draws.
+        if (g_native_notification_captions) {
+            capture(g_native_drawn_text_rows);
+            capture(g_native_drawn_top_text_rows);
+        } else for (const auto &draws : g_native_notification_text.rows) capture(draws);
+    }
+    if (visible_rows.empty()) { paragraphs.clear(); return; }
+    std::unordered_multimap<uintptr_t, const std::string *> by_address;
+    for (const auto &row : visible_rows) by_address.emplace(row.address, &row.source);
+    std::vector<size_t> visible_paragraphs;
+    for (size_t index = 0; index < paragraphs.size(); ++index) {
+        const auto &paragraph = paragraphs[index];
+        const bool visible = std::any_of(paragraph.rows.begin(), paragraph.rows.end(),
+            [&](const auto &row) {
+                const auto [first, last] = by_address.equal_range(row.address);
+                return std::any_of(first, last,
+                    [&](const auto &entry) { return *entry.second == row.source; });
+            });
+        if (visible) visible_paragraphs.push_back(index);
+    }
+    // This is the current submission's copy, never the retained native hover
+    // source cache. Keep complete rows for every partially visible paragraph.
+    size_t kept = 0;
+    for (const size_t index : visible_paragraphs) {
+        if (kept != index) paragraphs[kept] = std::move(paragraphs[index]);
+        ++kept;
+    }
+    paragraphs.resize(kept);
+    if (std::none_of(paragraphs.begin(), paragraphs.end(),
+            [](const auto &paragraph) { return paragraph.parent != 0; })) return;
+    uintptr_t world = 0;
+    NativeBorrowedVector<uintptr_t> reports;
+    if (!native_announcement_log_preheat_domain(world, reports)) return;
+    auto &directory = g_native_announcement_log_preheat_directory;
+    for (auto &paragraph : paragraphs) {
+        if (!paragraph.parent) continue;
+        NativeAnnouncementLogParentVersion version;
+        if (!native_announcement_log_read_version(paragraph.parent, version, true) ||
+                version.id < 0) continue;
+        std::shared_ptr<const NativeAnnouncementLogDocument> document;
+        if (auto found = directory.records.find(version.id); found != directory.records.end())
+            document = native_announcement_log_reuse_content_version(
+                found->second, paragraph.parent, version);
+        if (!document) {
+            // Only this visible parent is frozen. Retain the publication until
+            // its own native fields change; unrelated aliases on later frames
+            // must not create competing service versions of the same report.
+            document = native_announcement_log_freeze_document(paragraph.parent, world, version);
+            if (!document || document->report.source != paragraph.source) continue;
+            directory.records.insert_or_assign(version.id,
+                NativeAnnouncementLogPreheatDirectory::Entry{paragraph.parent, version, document});
+        }
+        if (document->parent != paragraph.parent || document->world != world ||
+                document->report.source != paragraph.source) continue;
+        // The retained wrap owns its displayed repeat suffix. A completed
+        // dependency may replace the directory document without rebuilding it.
+        paragraph.report_document = document;
+        if (const auto foreground = native_announcement_log_preheat_foreground(*document))
+            native_announcement_log_translation_request(std::move(document), *foreground, true);
+    }
+}
 static void native_announcement_log_preheat_record(uintptr_t parent, uintptr_t world, bool urgent) {
     NativeAnnouncementLogParentVersion version;
     if (!native_announcement_log_read_version(parent, version, true) || version.id < 0) return;

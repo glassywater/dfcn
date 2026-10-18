@@ -20810,7 +20810,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             const auto paragraphs = captured_native_paragraphs();
             const std::array draws{captured_native_drawn_text_view(false),
                 captured_native_drawn_text_view(true)};
-            const uint64_t draw_epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+            const uint64_t draw_epoch = captured_native_drawn_text_epoch();
             std::unordered_map<uintptr_t, std::vector<const NativeDrawnTextRow *>> footer_draws;
             for (const auto &batch : draws) {
                 for (auto at = batch.rbegin(); at != batch.rend(); ++at) {
@@ -43012,6 +43012,10 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
     native_knowledge_frame_matches_.reset();
     native_knowledge_frame_transition_ = false;
     native_border_repairs_.clear();
+    // Select retained caption ownership for the pinned native display before
+    // either semantic cache keys or any page/layout reader sees the records.
+    // Private components install their own captured-text registries separately.
+    bind_native_drawn_text_frame(*gps_);
     const auto read_cache_context = []() -> std::optional<std::string> {
         try { return native_main_ui_cache_context(); }
         catch (...) { return std::nullopt; }

@@ -11,7 +11,8 @@ class NativeUiCacheContextWriter {
     std::unordered_map<const NativeHistoryDocument *, size_t> history_documents_;
     std::unordered_map<const NativeDrawnTextRow *, NativeDrawnTextRow> resolved_rows_;
     std::unordered_map<size_t, std::optional<std::pair<size_t, size_t>>> fps_spans_;
-    bool character_ = false, tooltip_ = false;
+    bool character_ = false, tooltip_ = false, notification_ = false;
+    std::unordered_map<uintptr_t, size_t> notification_addresses_;
     static void order_ranks(std::vector<uint64_t> &values) {
         std::sort(values.begin(), values.end());
         values.erase(std::unique(values.begin(), values.end()), values.end());
@@ -120,6 +121,15 @@ public:
     template<typename T> void pointer(const T *input) {
         value(reinterpret_cast<uintptr_t>(input));
     }
+    void address(uintptr_t input) {
+        if (!notification_ || !input) { value(input); return; }
+        // Notification wrapping can allocate identical rows at new addresses.
+        // Preserve the exact ownership links between captured draws and their
+        // complete sources without making allocation addresses pixel inputs.
+        const auto [entry, inserted] = notification_addresses_.try_emplace(
+            input, notification_addresses_.size() + 1);
+        value(entry->second);
+    }
     void text(std::string_view input) {
         if (!complete) return;
         if (key_.size() > 1024 * 1024 - 8 ||
@@ -212,7 +222,7 @@ public:
         const bool fps = !tooltip_ && fps_counter_row(input);
         constexpr std::string_view fps_marker = "native FPS counter";
         value(input.x); value(input.y); value(fps);
-        text(fps ? fps_marker : std::string_view(input.source)); value(input.address);
+        text(fps ? fps_marker : std::string_view(input.source)); address(input.address);
         value(input.caption_source);
         text(fps && !input.complete_source.empty()
             ? fps_marker : std::string_view(input.complete_source));
@@ -289,12 +299,12 @@ public:
         optional(input.unit_identity_target, [&](const auto &target) { text(target); });
     }
     void paragraph(const NativeParagraphCapture &input) {
-        value(input.owner); value(input.paragraph_width); text(input.source);
+        address(input.owner); value(input.paragraph_width); text(input.source);
         range(input.wrapped_lines, [&](const auto &line) { text(line); });
         value(input.first_line);
         value(rank(paragraph_sequence_ranks_, input.sequence));
         value(rank(paragraph_order_ranks_, input.registry_order));
-        range(input.row_addresses, [&](auto address) { value(address); });
+        range(input.row_addresses, [&](auto input_address) { address(input_address); });
         optional(input.display_source, [&](const auto &source) { text(source); });
     }
     template<typename Paragraphs> void paragraph_range(const Paragraphs &input) {
@@ -332,7 +342,7 @@ public:
         range(overwritten, [&](const auto &draw) { row(draw, epoch); });
         for (const auto &plane : dates)
             range(plane, [&](const auto &draw) {
-                value(draw.x); value(draw.y); text(draw.source); value(draw.address);
+                value(draw.x); value(draw.y); text(draw.source); address(draw.address);
             });
         optional(tooltip, [&](const auto &frame) { widget(frame, epoch); });
         optional(tooltip_toolbar, [&](const auto &frame) { toolbar(frame); });
@@ -388,6 +398,70 @@ public:
         value(g_overlay.translation_enabled());
         value(RULESETS.resource_revision());
         value(g_overlay.native_identity_translation_catalog_generation());
+    }
+    void notification() {
+        notification_ = true;
+        tooltip();
+        // Only the typed unit/category summaries use the live identity
+        // registry. Complete reports own their immutable worker publication.
+        const bool identity_summary = std::any_of(g_native_notification_paragraphs.begin(),
+            g_native_notification_paragraphs.end(), [](const auto &paragraph) {
+                return !paragraph.parent && paragraph.fortress_alert &&
+                    (paragraph.unit || !paragraph.name_source.empty() || paragraph.category >= 0);
+            });
+        value(identity_summary);
+        if (identity_summary) value(native_identity_translation_context());
+        uintptr_t world = 0;
+        if (!native_history_copy(native_history_global(0x24ebb58), world)) complete = false;
+        value(world);
+        optional(native_ui_classic(), [&](bool classic) { value(classic); });
+    }
+    void notification_sources() {
+        range(g_native_notification_paragraphs, [&](const auto &paragraph) {
+            value(paragraph.parent); text(paragraph.source);
+            value(paragraph.centered); value(paragraph.fortress_alert);
+            value(paragraph.width); value(paragraph.repeats);
+            value(paragraph.unit); value(paragraph.category); text(paragraph.name_source);
+            optional(paragraph.report_document, [&](const auto &document) {
+                text(native_announcement_log_document_key(document));
+                // A finished result for another report cannot invalidate this
+                // target. Probe only colors used by this parent's submitted
+                // rows, using the same private cells as the paragraph matcher.
+                std::vector<int> foregrounds;
+                if (graphics_) for (const auto &plane : g_native_notification_text.rows)
+                    for (const auto &draw : plane) {
+                        if (draw.x < 0 || draw.y < 0 || draw.x >= graphics_->dimx ||
+                                draw.y >= graphics_->dimy ||
+                                std::none_of(paragraph.rows.begin(), paragraph.rows.end(),
+                                    [&](const auto &row) {
+                                        return row.address == draw.address && row.source == draw.source;
+                                    })) continue;
+                        const size_t tile = static_cast<size_t>(draw.x) * graphics_->dimy + draw.y;
+                        const bool top = graphics_->screen_top && native_ui_top_layer_at(*graphics_, tile);
+                        const auto *screen = top ? graphics_->screen_top : graphics_->screen;
+                        if (!screen) continue;
+                        const auto *cell = screen + tile * 8;
+                        foregrounds.push_back((cell[1] << 16) | (cell[2] << 8) | cell[3]);
+                    }
+                std::sort(foregrounds.begin(), foregrounds.end());
+                foregrounds.erase(std::unique(foregrounds.begin(), foregrounds.end()), foregrounds.end());
+                if (foregrounds.empty()) { complete = false; return; }
+                range(foregrounds, [&](int foreground) {
+                    value(foreground);
+                    const auto translated = native_announcement_log_translation_request(
+                        paragraph.report_document, foreground, true);
+                    value(bool(translated));
+                    if (translated) {
+                        value(translated->needs_owned_dependency);
+                        optional(translated->target, [&](const auto &target) { text(target); });
+                        range(translated->colors, [&](int color) { value(color); });
+                    }
+                });
+            });
+            range(paragraph.rows, [&](const auto &row) {
+                address(row.address); text(row.source);
+            });
+        });
     }
     void current() {
         std::scoped_lock lock(g_native_drawn_text_mutex, g_clipped_caption_mutex,
@@ -701,6 +775,18 @@ public:
 
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    if (&layer == &g_native_notification_layer) {
+        // Only the submitted notification and its complete parents can change
+        // this target. Other panels, historical registries and formatter scopes
+        // must neither disable this cache nor force a full repaint every frame.
+        NativeUiCacheContextWriter key;
+        key.notification();
+        key.graphics(const_cast<NativeUiLayerStorage &>(layer).foreground.graphics());
+        key.bundle(g_native_notification_text);
+        key.value(g_native_notification_sources_valid);
+        key.notification_sources();
+        return key.finish();
+    }
     if (&layer == &g_native_tooltip_layer) {
         NativeUiCacheContextWriter key;
         key.tooltip();

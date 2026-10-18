@@ -1,3 +1,43 @@
+// Resolve retained main-page captions against the pinned display buffers once,
+// before cache keys, source matching and layout borrow the same registry.
+static void bind_native_drawn_text_frame(const graphicst &graphics) {
+    if (!graphics.screen || graphics.dimx <= 0 || graphics.dimx > 1000 ||
+            graphics.dimy <= 0 || graphics.dimy > 1000) return;
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    bool changed = false;
+    const auto bind = [&](NativeDrawnTextRow &row) {
+        const auto *grid = row.top_layer ? graphics.screen_top : graphics.screen;
+        if (!grid || !row.draw_grid || row.draw_grid == grid ||
+                row.draw_dimx != graphics.dimx || row.draw_dimy != graphics.dimy ||
+                row.x < 0 || row.x >= graphics.dimx || row.y < 0 ||
+                row.y >= graphics.dimy || row.source.empty() ||
+                row.source.size() > static_cast<size_t>(graphics.dimx - row.x)) return;
+        // Native display rotates its buffers independently of retained addst
+        // records. Bind the record to this display only while its ENTIRE source
+        // remains at the same coordinates on the same logical plane. Never read
+        // the old buffer, infer another owner from its spelling, or change the
+        // captured caller, epoch, order, or typed identity/name metadata.
+        for (size_t byte = 0; byte < row.source.size(); ++byte) {
+            const size_t tile = (static_cast<size_t>(row.x) + byte) * graphics.dimy + row.y;
+            const auto ch = grid[tile * 8];
+            if ((ch ? ch : static_cast<unsigned char>(' ')) !=
+                    static_cast<unsigned char>(row.source[byte])) return;
+        }
+        row.draw_grid = grid;
+        changed = true;
+    };
+    for (auto &row : g_native_drawn_text_rows) bind(row);
+    for (auto &row : g_native_drawn_top_text_rows) bind(row);
+    if (changed) ++g_native_drawn_text_revision;
+}
+
+static uint64_t captured_native_drawn_text_epoch() {
+    // Present advances the next writer's generation even while display keeps
+    // the last native page. Readers belong to the last actual caption batch.
+    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+    return g_native_drawn_text_epoch;
+}
+
 // Share owned captures only during one discovery/layout pass. Native producers
 // can replace a layer without advancing its epoch, so mutations have their own
 // revision and every reader validates both before reusing a snapshot.

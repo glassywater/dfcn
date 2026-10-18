@@ -132,16 +132,138 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
         int only_y, const unsigned char *screen_override, bool announcements_only) const {
     if (ui_message_trie_.size() <= 1 && ui_message_template_rules_.empty()) return;
     if (!announcements_only) {
-        // This pass has no screen-only fallback: every result below needs
-        // a retained paragraph with a possible current draw or wrap prefix.
-        // Consult that existing necessary-condition index before copying
-        // draw metadata, building position maps or refreshing report history.
         std::scoped_lock lock(g_native_paragraph_mutex, g_native_drawn_text_mutex);
         const std::vector<NativeDrawnTextRow> no_occluded_draws;
         if (native_paragraph_candidates(screen_rows, g_native_drawn_text_rows,
                 no_occluded_draws).empty()) return;
     }
-    const NativePanelBorders borders(*gps_);
+    std::optional<NativePanelBorders> source_borders;
+    const auto announcement_first_row_matches = [&](std::string_view source, int left, int y) {
+        size_t cursor = 0;
+        int x = left;
+        while (cursor < source.size() && x < gps_->dimx) {
+            if (source[cursor] == ' ') {
+                if (screen_rows[y][x] != ' ') break;
+                // Padding can end a wrapped line or separate widgets.
+                // Leave either case to the complete frame matcher.
+                if (x + 1 < gps_->dimx && screen_rows[y][x + 1] == ' ') return true;
+                ++x;
+            } else {
+                if (screen_rows[y][x] != source[cursor]) break;
+                ++x;
+            }
+            ++cursor;
+        }
+        if (cursor == source.size() || x == gps_->dimx) return true;
+        // Only a mismatch needs any border work. A texture-only right
+        // edge may retain a matching glyph earlier in this prefix, so
+        // reject only when no possible edge could have ended the row.
+        // A single-cell encoding context keeps ambiguous CP437 edges
+        // for the definitive full-frame/wrap proof below.
+        if (!source_borders) source_borders.emplace(*gps_);
+        for (int column = left; column <= x; ++column)
+            if (source_borders->at(column, y, 5, std::nullopt,
+                    std::pair{column, column + 1})) return true;
+        return false;
+    };
+    const bool notification_background = announcements_only &&
+        g_native_notification_layer.ready && native_map_background_view(gps_);
+    if (notification_background) {
+        // The map beneath an isolated alert needs evidence of its own message before it
+        // refreshes report history on behalf of the independent foreground.
+        bool captured_candidate = false;
+        {
+            std::scoped_lock lock(g_native_paragraph_mutex, g_native_drawn_text_mutex);
+            const std::vector<NativeDrawnTextRow> no_occluded_draws;
+            captured_candidate = !native_paragraph_candidates(screen_rows,
+                g_native_drawn_text_rows, no_occluded_draws).empty();
+            if (!captured_candidate && announcements_only &&
+                    (!screen_override || screen_override != gps_->screen_top)) {
+                const std::vector<NativeDateOccludedTextRow> no_dates;
+                captured_candidate = !native_paragraph_candidates(screen_rows,
+                    g_native_date_occluded_text_rows[0], no_dates).empty();
+            }
+        }
+        if (!captured_candidate) {
+            // The isolated alert list supplies no main-grid paragraphs.
+            // Preserve screen-only recovery for a real non-isolated message:
+            // use the existing owned history/recent-source indices to prove
+            // that a possible opening is present before refreshing history.
+            // An absent/incomplete snapshot or a changed world keeps the
+            // ordinary path, including pages built before capture began.
+            uintptr_t world = 0;
+            bool source_candidate = true;
+            if (native_announcement_current_world(world)) {
+                std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
+                apply_native_announcement_recent_changes_locked();
+                if (g_native_announcement_snapshot &&
+                        !g_native_announcement_history_full_refresh &&
+                        world == g_native_announcement_history_world) {
+                    source_candidate = std::any_of(screen_rows.begin(), screen_rows.end(),
+                        [&](const auto &row) {
+                            return std::any_of(native_announcement_instructions.begin(),
+                                native_announcement_instructions.end(), [&](const auto instruction) {
+                                    return row.find(instruction) != std::string::npos;
+                                });
+                        });
+                    const auto visible_opening = [&](const auto &anchors, auto source_at) {
+                        for (int y = 0; y < gps_->dimy; ++y) {
+                            const auto &row = screen_rows[y];
+                            for (size_t left = 0; left < row.size(); ++left) {
+                                const auto first = anchors[0].next.find(
+                                    static_cast<unsigned char>(row[left]));
+                                if (first == anchors[0].next.end()) continue;
+                                size_t node = first->second, at = left;
+                                while (true) {
+                                    for (const size_t index : anchors[node].records)
+                                        if (announcement_first_row_matches(source_at(index),
+                                                static_cast<int>(left), y)) return true;
+                                    if (++at == row.size()) break;
+                                    const auto next = anchors[node].next.find(
+                                        static_cast<unsigned char>(row[at]));
+                                    if (next == anchors[node].next.end()) break;
+                                    node = next->second;
+                                }
+                            }
+                        }
+                        return false;
+                    };
+                    if (!source_candidate)
+                        source_candidate = visible_opening(g_native_announcement_snapshot->anchors,
+                            [&](size_t index) -> std::string_view {
+                                return g_native_announcement_snapshot->records[index].source;
+                            });
+                    if (!source_candidate && !g_native_announcement_recent_changes.empty()) {
+                        // An active snapshot reader can defer publication.
+                        // Its coalesced delta stays bounded by the old/live
+                        // recent caches, independently of submission count.
+                        std::vector<NativeAnnouncementSnapshot::AnchorNode> pending(1);
+                        for (size_t index = 0; index < g_native_announcement_recent_changes.size(); ++index) {
+                            const auto &change = g_native_announcement_recent_changes[index];
+                            if (!change.add || change.source.empty() ||
+                                    g_native_announcement_snapshot->originals.contains(change.source)) continue;
+                            const auto opening = std::string_view(change.source).substr(
+                                0, change.source.find(' '));
+                            size_t node = 0;
+                            for (const unsigned char ch : opening) {
+                                const auto [next, inserted] = pending[node].next.emplace(ch, pending.size());
+                                node = next->second;
+                                if (inserted) pending.emplace_back();
+                            }
+                            pending[node].records.push_back(index);
+                        }
+                        source_candidate = visible_opening(pending,
+                            [&](size_t index) -> std::string_view {
+                                return g_native_announcement_recent_changes[index].source;
+                            });
+                    }
+                }
+            }
+            if (!source_candidate) return;
+        }
+    }
+    if (!source_borders) source_borders.emplace(*gps_);
+    const auto &borders = *source_borders;
     const auto visible_layer = [&](int x, int y) {
         if (!screen_override) return true;
         bool top = false;
@@ -781,33 +903,6 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
             if (a.order != b.order) return a.order < b.order;
             return left < right;
         });
-    const auto announcement_first_row_matches = [&](std::string_view source, int left, int y) {
-        size_t cursor = 0;
-        int x = left;
-        while (cursor < source.size() && x < gps_->dimx) {
-            if (source[cursor] == ' ') {
-                if (screen_rows[y][x] != ' ') break;
-                // Padding can end a wrapped line or separate widgets.
-                // Leave either case to the complete frame matcher.
-                if (x + 1 < gps_->dimx && screen_rows[y][x + 1] == ' ') return true;
-                ++x;
-            } else {
-                if (screen_rows[y][x] != source[cursor]) break;
-                ++x;
-            }
-            ++cursor;
-        }
-        if (cursor == source.size() || x == gps_->dimx) return true;
-        // Only a mismatch needs any border work. A texture-only right
-        // edge may retain a matching glyph earlier in this prefix, so
-        // reject only when no possible edge could have ended the row.
-        // A single-cell encoding context keeps ambiguous CP437 edges
-        // for the definitive full-frame/wrap proof below.
-        for (int column = left; column <= x; ++column)
-            if (borders.at(column, y, 5, std::nullopt,
-                    std::pair{column, column + 1})) return true;
-        return false;
-    };
     for (const auto &[index, node] : announcement_candidates) {
         const auto &source = announcements->records[index].source;
         const auto first_space = source.find(' ');

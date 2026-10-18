@@ -65,9 +65,13 @@ static std::string native_announcement_log_kinship_dependency(const NativeAnnoun
 struct NativeAnnouncementDisplayRow {
     uintptr_t address = 0;
     std::string source;
+    bool operator==(const NativeAnnouncementDisplayRow &) const = default;
 };
+enum class NativeFortressAlertSourceKind { None, Popup, ButtonHover, AlertHover };
+struct NativeAnnouncementLogDocument;
 struct NativeAnnouncementParagraph {
     uintptr_t parent = 0;
+    std::shared_ptr<const NativeAnnouncementLogDocument> report_document;
     std::string source;
     bool centered = false;
     std::vector<NativeAnnouncementDisplayRow> rows;
@@ -80,6 +84,8 @@ struct NativeAnnouncementParagraph {
     int16_t category = -1;
     std::string name_source;
 };
+static void native_notification_bind_report_documents(
+    std::vector<NativeAnnouncementParagraph> &paragraphs);
 // These are real report fields, not an inferred action/item payload. A report
 // ID names the report table and never implies a Legends history-event ID.
 struct NativeAnnouncementLogNativeFields {
@@ -312,6 +318,12 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
     uintptr_t owner, size_t first, size_t end);
 static void clear_native_announcement_log_documents();
 static std::vector<NativeAnnouncementParagraph> native_fortress_alert_paragraphs();
+static NativeFortressAlertSourceKind native_fortress_alert_hover_source_kind(uintptr_t box);
+static void remember_native_fortress_alert_hover_wrap(uintptr_t box);
+static uint64_t native_fortress_alert_hover_wrap_generation(uintptr_t box);
+static bool native_paragraph_capture_installed();
+static std::vector<NativeAnnouncementParagraph> native_fortress_alert_source_paragraphs(
+    NativeFortressAlertSourceKind kind, uintptr_t owner, uint64_t wrap_generation);
 static std::optional<std::string> native_fortress_alert_unit_name(uintptr_t unit);
 static std::optional<std::string> translate_native_unit_identity_reference(
     uintptr_t unit, uintptr_t name, std::string_view expected, bool capitalized_reference = false);
@@ -642,6 +654,23 @@ static std::optional<std::string> native_original_speech_source(std::string_view
     return std::nullopt;
 }
 
+static void queue_native_announcement_recent_change(std::string_view source,
+        NativeAnnouncementOrder order, size_t length, bool add) {
+    if (source.empty()) return;
+    // A reference added and removed before snapshot publication has no net
+    // effect. Keep only the delta from its last published state to the live
+    // cache, bounded by the two sets of at most 256 recent references.
+    const auto previous = std::find_if(g_native_announcement_recent_changes.begin(),
+        g_native_announcement_recent_changes.end(), [&](const auto &change) {
+            return change.source == source && change.order == order && change.length == length;
+        });
+    if (previous != g_native_announcement_recent_changes.end()) {
+        if (previous->add != add) g_native_announcement_recent_changes.erase(previous);
+        return;
+    }
+    g_native_announcement_recent_changes.push_back({std::string(source), order, length, add});
+}
+
 static void remember_native_announcement(int type, std::string_view source) {
     if (type < 0 || source.empty()) return;
     std::lock_guard<std::mutex> lock(g_native_announcement_mutex);
@@ -649,12 +678,11 @@ static void remember_native_announcement(int type, std::string_view source) {
     const auto normalized = native_announcement_display_source(source);
     // Add before removing a previous reference to the same display text.
     // A repeated submit then changes only two small reference counters.
-    g_native_announcement_recent_changes.push_back(
-        {normalized, {2, sequence}, source.size(), true});
+    queue_native_announcement_recent_change(normalized, {2, sequence}, source.size(), true);
     std::erase_if(g_native_announcement_sources, [&](const auto &record) {
         if (record.source != source) return false;
-        g_native_announcement_recent_changes.push_back(
-            {normalized, {2, record.sequence}, record.source.size(), false});
+        queue_native_announcement_recent_change(normalized, {2, record.sequence},
+            record.source.size(), false);
         return true;
     });
     g_native_announcement_sources.push_back({type, std::string(source), sequence});
@@ -662,10 +690,42 @@ static void remember_native_announcement(int type, std::string_view source) {
     // log pages still use the same complete catalogue and paragraph grammar.
     while (g_native_announcement_sources.size() > 256) {
         const auto &record = g_native_announcement_sources.front();
-        g_native_announcement_recent_changes.push_back({native_announcement_display_source(record.source),
-            {2, record.sequence}, record.source.size(), false});
+        queue_native_announcement_recent_change(native_announcement_display_source(record.source),
+            {2, record.sequence}, record.source.size(), false);
         g_native_announcement_sources.pop_front();
     }
+}
+
+// The caller holds g_native_announcement_mutex. Updating owned live sources
+// must not require reading native history, or copying it for an active reader.
+static void apply_native_announcement_recent_changes_locked() {
+    if (g_native_announcement_snapshot &&
+            (g_native_announcement_recent_changes.empty() ||
+             !g_native_announcement_snapshot.unique())) return;
+    struct CommitGuard {
+        bool complete = false;
+        ~CommitGuard() {
+            if (!complete) {
+                g_native_announcement_snapshot.reset();
+                g_native_announcement_history_full_refresh = true;
+            }
+        }
+    } commit;
+    if (!g_native_announcement_snapshot) {
+        auto snapshot = std::make_shared<NativeAnnouncementSnapshot>();
+        for (const auto &record : g_native_announcement_sources)
+            native_announcement_snapshot_change(*snapshot,
+                native_announcement_display_source(record.source), {2, record.sequence},
+                record.source.size(), true);
+        g_native_announcement_snapshot = std::move(snapshot);
+    } else {
+        for (const auto &change : g_native_announcement_recent_changes)
+            native_announcement_snapshot_change(*g_native_announcement_snapshot,
+                change.source, change.order, change.length, change.add);
+        native_announcement_compact_snapshot();
+    }
+    g_native_announcement_recent_changes.clear();
+    commit.complete = true;
 }
 
 static void finish_native_announcement_submission(int type, std::string_view source) {
@@ -874,19 +934,7 @@ static std::shared_ptr<const NativeAnnouncementSnapshot> native_announcement_sou
         // Failed borrowed reads do not publish half of a history update. Live
         // captured sources are still useful, and a later call retries in full.
         g_native_announcement_history_full_refresh = true;
-        if (!g_native_announcement_snapshot || !g_native_announcement_recent_changes.empty()) {
-            const bool rebuild_recent = !g_native_announcement_snapshot;
-            auto &snapshot = native_announcement_writable_snapshot();
-            if (rebuild_recent) {
-                for (const auto &record : g_native_announcement_sources)
-                    native_announcement_snapshot_change(snapshot,
-                        native_announcement_display_source(record.source), {2, record.sequence},
-                        record.source.size(), true);
-            } else for (const auto &change : g_native_announcement_recent_changes)
-                native_announcement_snapshot_change(snapshot, change.source,
-                    change.order, change.length, change.add);
-            g_native_announcement_recent_changes.clear();
-        }
+        apply_native_announcement_recent_changes_locked();
     }
     return g_native_announcement_snapshot;
 }
