@@ -6775,7 +6775,21 @@ bool Overlay::load_compositional_rules() {
             // The actor grammar also validates explicitly quoted nicknames
             // and preserves their authored spelling. Latin letters inside a
             // valid nickname must not reject the entire material/deposit.
-            if (kind == "person") return translate_legends_actor(*native);
+            if (kind == "person") {
+                // A single-target kill order appends 1330c30's complete unit
+                // identity, including its comma-delimited role and status.
+                // Resolve the formatter binding before the actor grammar's
+                // prose-punctuation guard can reject that complete field.
+                if (const auto identity = native_unit_identity_source_target(*native))
+                    return identity;
+                auto person = translate_legends_actor(*native);
+                // Stored order titles can outlive the formatter publication.
+                // Parse the same complete identity without treating unknown
+                // English text as an authored name or dropping its suffix.
+                if (!person && native->find(',') != std::string::npos)
+                    person = translate_unit_identity(*native, false);
+                return person;
+            }
             if (kind == "topic") {
                 // Native knowledge references use this finite academic
                 // vocabulary, including articles such as "the ampoule".
