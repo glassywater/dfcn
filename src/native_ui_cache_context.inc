@@ -11,7 +11,7 @@ class NativeUiCacheContextWriter {
     std::unordered_map<const NativeHistoryDocument *, size_t> history_documents_;
     std::unordered_map<const NativeDrawnTextRow *, NativeDrawnTextRow> resolved_rows_;
     std::unordered_map<size_t, std::optional<std::pair<size_t, size_t>>> fps_spans_;
-    bool character_ = false;
+    bool character_ = false, tooltip_ = false;
     static void order_ranks(std::vector<uint64_t> &values) {
         std::sort(values.begin(), values.end());
         values.erase(std::unique(values.begin(), values.end()), values.end());
@@ -209,7 +209,7 @@ public:
         // adventure HUD above its toolbar. Each complete or separately drawn
         // run must agree with a complete counter in its actual native grid;
         // adjacent text and divergent shortened sources stay exact.
-        const bool fps = fps_counter_row(input);
+        const bool fps = !tooltip_ && fps_counter_row(input);
         constexpr std::string_view fps_marker = "native FPS counter";
         value(input.x); value(input.y); value(fps);
         text(fps ? fps_marker : std::string_view(input.source)); value(input.address);
@@ -350,7 +350,8 @@ public:
         for (const auto &entry : sources) positions.push_back(entry.first);
         std::sort(positions.begin(), positions.end());
         value(positions.size());
-        const uint64_t current = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        const uint64_t current = tooltip_ ? epoch :
+            g_embark_item_capture_epoch.load(std::memory_order_acquire);
         std::vector<std::chrono::steady_clock::time_point> time_order;
         time_order.reserve(sources.size() + fields.size());
         for (const auto &entry : sources) time_order.push_back(entry.second.captured_at);
@@ -377,6 +378,16 @@ public:
             input.toolbar_tooltip, input.epoch, input.clipped, input.clipped_epoch != 0,
             input.choosers, input.chooser_epoch != 0, input.item_sources,
             input.item_fields, input.paragraphs);
+    }
+    void tooltip() {
+        // Tooltip dependencies are its submitted writers and frames. Do not
+        // visit the underlying viewscreen or another component's registries,
+        // and never inspect a full native row to recognize its FPS counter.
+        tooltip_ = true;
+        value(g_native_ui_render_generation);
+        value(g_overlay.translation_enabled());
+        value(RULESETS.resource_revision());
+        value(g_overlay.native_identity_translation_catalog_generation());
     }
     void current() {
         std::scoped_lock lock(g_native_drawn_text_mutex, g_clipped_caption_mutex,
@@ -690,6 +701,16 @@ public:
 
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    if (&layer == &g_native_tooltip_layer) {
+        NativeUiCacheContextWriter key;
+        key.tooltip();
+        key.graphics(const_cast<NativeUiLayerStorage &>(layer).foreground.graphics());
+        key.bundle(g_native_tooltip_text);
+        key.range(g_native_tooltip_frames, [&](const auto &frame) {
+            key.widget(frame, g_native_tooltip_text.epoch);
+        });
+        return key.finish();
+    }
     if (&layer == &g_native_map_layer) return std::nullopt;
     // These already-translated Match graphs keep the ordinary path. Avoid
     // constructing a semantic key only to reject it after all serialization.
@@ -712,7 +733,6 @@ static std::optional<std::string> native_ui_layer_cache_context(
     else if (&layer == &g_native_reports_layer) captured = &g_native_reports_text;
     else if (&layer == &g_native_notification_layer) captured = &g_native_notification_text;
     else if (&layer == &g_native_pause_layer) captured = &g_native_pause_text;
-    else if (&layer == &g_native_tooltip_layer) captured = &g_native_tooltip_text;
     else if (&layer == &g_native_worldgen_layer) captured = &g_native_worldgen_text;
     else if (&layer != &g_native_help_layer && &layer != &g_native_resolution_layer)
         return std::nullopt;
@@ -721,10 +741,6 @@ static std::optional<std::string> native_ui_layer_cache_context(
     if (!key.complete) return std::nullopt;
     if (character) key.character_sources(g_native_character_sources);
     else key.other_sources();
-    if (&layer == &g_native_tooltip_layer)
-        key.range(g_native_tooltip_frames, [&](const auto &frame) {
-            key.widget(frame, g_native_tooltip_text.epoch);
-        });
     if (&layer == &g_native_squads_layer) {
         // Extra producer geometry is independent of the submitted glyphs.
         key.range(g_native_squads_member_columns, [&](const auto &box) { key.rect(box); });

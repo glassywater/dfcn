@@ -2704,94 +2704,10 @@ static std::optional<NativeTooltipWidgetFrame> captured_native_tooltip_widget(co
     const auto &frame = *g_native_tooltip_widget_frame;
     // Private tooltip output has no underlying page to recover. Only its
     // own translation pass can read this producer's rows and bounds.
-    if (frame.isolated) {
-        if (frame.grid_identity != gps.screen || frame.dimx != gps.dimx ||
-                frame.dimy != gps.dimy ||
-                frame.rows.size() != static_cast<size_t>(frame.bounds.h)) return std::nullopt;
-        return frame;
-    }
-    // Present can repeat without another native UI draw. Retain the document
-    // with that actual draw batch. Background ownership below is independent
-    // of foreground glyphs and pictures which may cover the document.
-    if (frame.epoch != g_native_drawn_text_epoch ||
-        frame.dimx != gps.dimx || frame.dimy != gps.dimy ||
-        frame.rows.size() != static_cast<size_t>(frame.bounds.h)) return std::nullopt;
-    if (!frame.document || !frame.page) return std::nullopt;
-    auto current = frame;
-    current.occlusions.clear();
-    size_t visible_ink = 0, base_ink = 0, top_ink = 0;
-    const auto value = [](const auto &v, size_t at) { return v.empty() ? 0 : v[at]; };
-    const auto background_ownership = [&](const auto *lower) {
-        size_t count = 0;
-        if (!lower) return count;
-        for (int x = frame.bounds.x; x < frame.bounds.x + frame.bounds.w; ++x)
-            for (int y = frame.bounds.y; y < frame.bounds.y + frame.bounds.h; ++y) {
-                const size_t at = static_cast<size_t>(x) * gps.dimy + y;
-                const auto own = value(frame.document->lower, at);
-                if (own && own != value(frame.page->lower, at) && lower[at] == own) ++count;
-            }
-        return count;
-    };
-    const bool document_top = gps.top_in_use && gps.screen_top &&
-        background_ownership(gps.screentexpos_top_lower) > background_ownership(gps.screentexpos_lower);
-    for (int y = 0; y < frame.bounds.h; ++y) {
-        for (int x = 0; x < frame.bounds.w; ++x) {
-            const size_t at = static_cast<size_t>(frame.bounds.x + x) * gps.dimy + frame.bounds.y + y;
-            // Follow the layer carrying the tooltip background. A retained
-            // top-layer picture must not switch source reading to the old
-            // list bytes in that same cell.
-            const bool top = document_top;
-            const auto *screen = top ? gps.screen_top : gps.screen;
-            const auto *texture = top ? gps.screentexpos_top : gps.screentexpos;
-            const auto *lower = top ? gps.screentexpos_top_lower : gps.screentexpos_lower;
-            const auto *anchored = top ? gps.screentexpos_top_anchored : gps.screentexpos_anchored;
-            const auto &doc = *frame.document;
-            const auto &page = *frame.page;
-            const bool same_text = screen && screen[at * 8] == doc.screen[at * 8];
-            const bool same_texture = (texture ? texture[at] : 0) == value(doc.texture, at) &&
-                (lower ? lower[at] : 0) == value(doc.lower, at) &&
-                (anchored ? anchored[at] : 0) == value(doc.anchored, at);
-            // Native anchored pictures can survive the tooltip background
-            // draw itself. They still cover the document at presentation.
-            const bool retained_picture = (value(doc.anchored, at) != 0 &&
-                value(doc.anchored, at) == value(page.anchored, at)) ||
-                (value(doc.texture, at) != 0 &&
-                 value(doc.texture, at) == value(page.texture, at) &&
-                 value(doc.texture, at) != value(doc.lower, at) &&
-                 value(doc.lower, at) != value(page.lower, at));
-            const auto intended = static_cast<unsigned char>(frame.rows[y][x]);
-            const bool clipped_write = intended > ' ' && doc.screen[at * 8] != intended;
-            const bool top_picture = !document_top && gps.top_in_use &&
-                ((gps.screentexpos_top_anchored && gps.screentexpos_top_anchored[at]) ||
-                 (gps.screentexpos_top && gps.screentexpos_top[at]));
-            const bool covered = !same_text || !same_texture || retained_picture || clipped_write || top_picture;
-            const bool painted = std::memcmp(doc.screen.data() + at * 8,
-                page.screen.data() + at * 8, 8) != 0 ||
-                value(doc.texture, at) != value(page.texture, at) ||
-                value(doc.lower, at) != value(page.lower, at);
-            const bool own_background = lower && value(doc.lower, at) != 0 &&
-                lower[at] == value(doc.lower, at) &&
-                value(doc.lower, at) != value(page.lower, at);
-            if (own_background || (same_text && painted &&
-                    screen && screen[at * 8] > ' ' && !retained_picture)) {
-                ++visible_ink;
-                ++(top ? top_ink : base_ink);
-            }
-            if (covered) {
-                const int column = frame.bounds.x + x, row = frame.bounds.y + y;
-                if (!current.occlusions.empty() && current.occlusions.back().y == row &&
-                    current.occlusions.back().x + current.occlusions.back().w == column)
-                    ++current.occlusions.back().w;
-                else current.occlusions.push_back({column, row, 1, 1});
-            }
-        }
-    }
-    // Identity comes from this native widget's draw, not an intact rectangle.
-    // A foreground picture does not cancel the lower tooltip background.
-    // Requiring uncovered text here sent covered cards into word matching.
-    if (!visible_ink) return std::nullopt;
-    current.top_layer = top_ink > base_ink;
-    return current;
+    if (!frame.isolated || frame.grid_identity != gps.screen ||
+            frame.dimx != gps.dimx || frame.dimy != gps.dimy ||
+            frame.rows.size() != static_cast<size_t>(frame.bounds.h)) return std::nullopt;
+    return frame;
 }
 static std::array<std::unordered_set<uint64_t>, 2> g_native_drawn_text_positions;
 struct NativeDateOccludedTextRow {
@@ -4916,13 +4832,10 @@ private:
     std::string translate_toolbar_tooltip(std::string_view source, bool catalog_only = false) const;
     TranslationResult translate_toolbar_tooltip_result(std::string_view source, bool catalog_only = false) const;
     bool translate_deity_tooltip_fields(NativeToolbarTooltip &card) const;
-    std::optional<NativeToolbarTooltip> find_toolbar_tooltip(
-        const std::vector<std::string> &rows) const;
-    void capture_toolbar_tooltip(
-        const std::vector<std::string> &rows, bool raw_layer) const;
+    void capture_toolbar_tooltip() const;
     std::optional<SDL_Rect> native_toolbar_tooltip_frame() const;
-    void append_toolbar_tooltip_matches(std::vector<std::string> &rows,
-        std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void append_toolbar_tooltip_matches(const NativeTooltipWidgetFrame &frame,
+        std::vector<Match> &matches, bool preserve_body = false) const;
     void layout_toolbar_tooltip(SDL_Renderer *renderer);
     std::vector<Match *> fortress_text_row(int left, int y);
     void layout_fortress_text_rows(SDL_Renderer *renderer,
@@ -18271,7 +18184,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // this work buffer. Those readers otherwise consume tooltip words using
     // the background page's grammar, leaving no body for the tooltip pass.
     std::vector<Match> hover_matches;
-    append_toolbar_tooltip_matches(screen_rows, hover_matches, only_y, screen_override != nullptr);
     append_fortress_justice_tabs(screen_rows, hover_matches, only_y);
     // The barter producer owns its complete dialogue and independent fields
     // before caption recovery can reinterpret a wrapped reply as names/items.

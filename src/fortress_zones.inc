@@ -22,7 +22,7 @@ std::optional<SDL_Rect> Overlay::capture_fortress_places_panel(
             // rectangles over the row skin. Share the current closed tooltip
             // frame; never infer hidden edges from old geometry. The ordinary
             // intact panel needs no extra whole-screen tooltip scan.
-            capture_toolbar_tooltip(context, false);
+            capture_toolbar_tooltip();
             if (const auto occluding_frame = native_toolbar_tooltip_frame())
                 panel = native_panel_interior(borders, *gps_, static_cast<int>(zones),
                     static_cast<int>(workshops + std::string_view("Workshops").size()), y,

@@ -160,7 +160,7 @@ static bool install_sdl_hooks() {
         {"Trade item memory capture", install_native_trade_item_hooks},
         {"Complete workshop requirement capture", install_native_workshop_recipe_hooks},
         {"Rich-text capture", install_native_rich_hooks},
-        {"Adventure hover background capture", install_native_adventure_hover_hook},
+        {"Native attribute and skill tooltip layer", install_native_adventure_hover_hook},
         {"Complete announcement capture", install_native_announcement_hook},
         {"Native history event capture", install_native_history_hooks},
         {"Native tutorials and help layer", install_native_help_layer_hook},

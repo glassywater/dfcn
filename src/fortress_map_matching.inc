@@ -108,7 +108,6 @@ bool Overlay::find_fortress_map_matches(int only_y,
     append_fortress_site_name(rows, matches, -1, screen_override != nullptr);
     append_native_fortress_status_rows(rows, matches, -1, screen_override != nullptr);
     append_native_map_hover_phrases(rows, matches, -1, NativeMapHoverKind::Terrain);
-    append_toolbar_tooltip_matches(rows, matches, -1, screen_override != nullptr);
 
 #ifdef _WIN32
     // ALERT has one fixed producer. A zero Food/Drink/Seeds/Meat/Fish/Plant/

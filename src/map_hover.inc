@@ -236,11 +236,8 @@ std::optional<NativeTextCard> Overlay::capture_map_hover_card(
 
     std::optional<NativeToolbarTooltip> tooltip;
     if (!fortress) {
-        std::vector<std::string> context;
-        context.reserve(gps_->dimy);
-        for (int y = 0; y < gps_->dimy; ++y)
-            context.push_back(current_row(y));
-        tooltip = find_toolbar_tooltip(context);
+        capture_toolbar_tooltip();
+        tooltip = g_native_toolbar_tooltip;
     }
 
     const NativePanelBorders borders(*gps_);
