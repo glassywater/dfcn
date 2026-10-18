@@ -3997,6 +3997,9 @@ and	并	clause
 {n}'s {s}	{n}的{s}	participant
 unknown material	未知材料	term
 recruited from {p}	从{p}进行了招募	action
+recruited into {p}	为{p}进行了招募	action
+recruited {s} into {p}	为{p}招募了{s}	action
+Native artifact claim without action: {p} by {a}	{p}，由{a}	event
 {p} was confiscated from {p} by {a}	{a}从{p2}没收了{p1}	event
 {p} was looted from {p} by {a}	{a}从{p2}掠走了{p1}	event
 {p} was recovered from {p} by {a}	{a}从{p2}找回了{p1}	event
@@ -4500,3 +4503,4 @@ Native history office: priest	祭司	term
 Native history office: priests	祭司	term
 Native history office: militia-dwarf	民兵	term
 Native history office: militia-dwarves	民兵	term
+out of {p}	从{p}	clause

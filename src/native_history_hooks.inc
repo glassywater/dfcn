@@ -640,6 +640,7 @@ struct NativeHistoryProfile {
 };
 #include "native_history_legends.inc"
 #include "native_mission_report.inc"
+#include "native_performance_story_description.inc"
 #include "native_history_frame.inc"
 #include "native_history_profile.inc"
 

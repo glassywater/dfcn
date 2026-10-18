@@ -25357,6 +25357,7 @@ It has {s} and it seems eager to pronounce judgment on others.	它长有{s1}，�
 It has {s} and its outer surface seems to flow about its body.	它长有{s1}，它的外表似乎在绕着身体流动。	ht
 It started at {p} and returned there after following its route	从{p1}出发，沿游行路线行进后返回起点	ht
 Make sure your woodcutter can walk to the designated location.	确保樵夫能走到指定地点。	hq
+Native artifact claim without action: {p} by {a} in the wilds.	在荒野中，{p1}，由{a1}。	ht
 Native history intrigue concession {a} response {a} during {e}	在{e1}期间，虽然{a1}，但{a2}	ht
 Native history intrigue concession {a} response {a} within {p}	在{p1}，虽然{a1}，但{a2}	ht
 Overview sentence: I brought up the lack of jobs in a meeting.	开会时，我提了没活可干的问题。	l
@@ -26094,6 +26095,7 @@ It has {s} and nearby vegetation seem to shrink away from it.	它长有{s1}，�
 It was created by an unknown deity and is of a part with {r}.	它由一位不知名的神祇创造，与{r1}相连。	ht
 Maximum interface percentage (not counting minimap/elevation)	最大界面百分比 (不包括小地图/高程)	w
 Mods install automatically when chosen during world creation.	在创建世界时选中的模组会自动安装。	l
+Native artifact claim without action: {p} by {a} in the wilds	在荒野中，{p1}，由{a1}	ht
 Overview sentence: A criminal could not be properly punished.	有个罪犯没能受到应有的惩罚。	l
 Overview sentence: I guess that could have given me a fright.	我想，那本来可能会吓我一跳。	l
 Overview sentence: I had a nightmare about my deceased child.	做了个噩梦，梦见了死去的孩子。	l
@@ -26817,6 +26819,8 @@ It has {s} and it whirls, skips and jumps whenever it moves.	它长有{s1}，它
 Its whole body appears to be faceted in a symmetric fashion.	它全身仿佛布满对称的切面。	h
 Make agitated wildlife and cavern invasions less persistent.	减少激动的野生动物和洞穴入侵的持久性.	w
 Make charcoal and ash from wood here. Does not require fuel.	在这里用木材烧制木炭和灰。不需要额外燃料。	hj
+Native artifact claim without action: {p} by {a} during {e}.	在{e1}期间，{p1}，由{a1}。	ht
+Native artifact claim without action: {p} by {a} within {p}.	在{p2}，{p1}，由{a1}。	ht
 Oh, no, it would amaze me if somebody actually thought that.	哎，别说了，如果真有人这么想，我可真要大吃一惊了。	hPD
 Once the worker is done, click on the building to select it.	工人完工后，点击建筑选中它。	hq
 Our needs exceed your allowances. Relax. They're only trees.	我们的需求超出了你们的限额。放轻松，不过是些树罢了。	hP
@@ -27649,6 +27653,8 @@ I'll need to see something impressive before I consider it.	你得先拿出点�
 Invader construction aversion (smaller = more construction)	入侵者建造规避度（越低越倾向建造）
 It has {s} and it inspects the ground intently as it moves.	它长有{s1}，它边走边专注地察看地面。	ht
 It makes those around it want to give up their possessions.	它使周围的生灵想要舍弃自己的财物。	h
+Native artifact claim without action: {p} by {a} during {e}	在{e1}期间，{p1}，由{a1}	ht
+Native artifact claim without action: {p} by {a} within {p}	在{p2}，{p1}，由{a1}	ht
 Native history intrigue concession {a} response {a} at {p}.	在{p1}，虽然{a1}，但{a2}。	ht
 Native history intrigue concession {a} response {a} in {p}.	在{p1}，虽然{a1}，但{a2}。	ht
 Non-interactive help will be available whatever you decide.	无论如何选择，都可以查阅非交互式帮助。	hq
@@ -30562,6 +30568,8 @@ Interact with this item in a different way (opens menu.)	以其他方式与此�
 It has {s} and it always seems to be counting something.	它长有{s1}，它似乎总在数着什么。	ht
 It pays attention carefully to anybody that is speaking.	它会仔细聆听每一个说话者。	h
 Its nature is still an intriguing puzzle to the learned.	其本质对学者而言仍是一个引人入胜的谜。	h
+Native artifact claim without action: {p} by {a} at {p}.	在{p2}，{p1}，由{a1}。	ht
+Native artifact claim without action: {p} by {a} in {p}.	在{p2}，{p1}，由{a1}。	ht
 Note that some Livestock must eat vegetation to survive.	[C:7:0:0]请注意，有些[C:2:0:0]牲畜[C:7:0:0]必须吃植物才能存活。	hq
 Oh, no, really, I've been over all this nonsense before.	哎，别说了，说真的，这些废话我早就听过了。	hPD
 Oh, no, you should keep your weird thoughts to yourself.	哎，别说了，你那些怪念头还是留在心里吧。	hPD
@@ -31630,6 +31638,8 @@ Libraries are a location that can be created at a zone.	图书馆是一种可以
 Make the appropriate workshop with Workshops -> Crafts.	[C:7:0:0]通过“[C:5:0:1]工坊[C:7:0:0] → [C:5:0:1]工艺品工坊[C:7:0:0]”建造相应工坊。	hq
 Migrants were too wary to make the journey this season.	本季移民因太过警惕，未敢踏上旅途。	hP
 Must the lyrics of the accompaniment be so off-putting?	伴奏的歌词非得这么令人反感吗？	hPD
+Native artifact claim without action: {p} by {a} at {p}	在{p2}，{p1}，由{a1}	ht
+Native artifact claim without action: {p} by {a} in {p}	在{p2}，{p1}，由{a1}	ht
 Overall, this is a terrible compilation of information.	总体而言，这份资料汇编非常糟糕。	h
 Overview sentence: A criminal's punishment was delayed.	有个罪犯的刑罚迟迟没有执行。	l
 Overview sentence: I live to serve... my dear master...	我活着就是为了侍奉您……我亲爱的主人……	l
@@ -39051,6 +39061,7 @@ It is one of the great untold tales of our times.	这是我们时代尚未讲述
 It repeatedly makes threats of torture and death.	它不断以折磨和死亡相威胁。	h
 Join me and we'll bring this poor soul back home!	加入我，我们一起把这个可怜人带回家！	hPD
 Last track: Dwarf Fortress - Dabu & Simon Swerwer	上一首曲目：Dwarf Fortress — Dabu & Simon Swerwer
+Native artifact claim without action: {p} by {a}.	{p1}，由{a1}。	ht
 Native history collection title of {p} during {e}	在{e1}期间，{p1}争夺事件	htEi
 Native history collection title of {p} within {p}	在{p2}，{p1}争夺事件	htEi
 Native history collection {s} of {p} in the wilds	在荒野中，{p1}的{s1}	htEi
@@ -40532,6 +40543,7 @@ Its movements sound like the rattling of chains.	它行动时发出锁链碰撞�
 Justice detail: Saw that the object was missing.	发现物品失踪。	l
 Native Legends civilized races peopled the world	各个文明种族遍布世界	h
 Native Legends war religious association {n} {s}	{n1}从宗教上反对敌方与{s1}的内在联系	ht
+Native artifact claim without action: {p} by {a}	{p1}，由{a1}	ht
 Native history collection {s} Race in the wilds.	在荒野中，{s1}赛跑。	htEi
 Native history collection {s} of {p} during {e}.	在{e1}期间，{p1}的{s1}。	htEi
 Native history collection {s} of {p} within {p}.	在{p2}，{p1}的{s1}。	htEi
@@ -54260,6 +54272,7 @@ and put forth a sound plan in the wilds.	并在荒野中提出了稳妥的计划
 and rampaged throughout {p} in the wilds	并在荒野中在{p1}肆虐	ht
 and received the title of {s} during {e}	并在{e1}期间获得了{s1}的头衔	ht
 and received the title of {s} within {p}	并在{p1}获得了{s1}的头衔	ht
+and recruited {s} into {p} in the wilds.	并在荒野中为{p1}招募了{s1}。	ht
 and rejected an offer of peace from {p}.	并拒绝了{p1}的和平提议。	ht
 and rejected contact with {p} during {e}	并在{e1}期间拒绝与{p1}接触	ht
 and rejected contact with {p} within {p}	并在{p2}拒绝与{p1}接触	ht
@@ -54939,6 +54952,7 @@ wove a masterful sewn image in the wilds	在荒野中织出了一幅杰作级的
 {a} rampaged throughout {p} in the wilds	{a1}在荒野中在{p1}肆虐	ht
 {a} received the title of {s} during {e}	{a1}在{e1}期间获得了{s1}的头衔	ht
 {a} received the title of {s} within {p}	{a1}在{p1}获得了{s1}的头衔	ht
+{a} recruited {s} into {p} in the wilds.	{a1}在荒野中为{p1}招募了{s1}。	ht
 {a} rejected an offer of peace from {p}.	{a1}拒绝了{p1}的和平提议。	ht
 {a} rejected contact with {p} during {e}	{a1}在{e1}期间拒绝与{p1}接触	ht
 {a} rejected contact with {p} within {p}	{a1}在{p2}拒绝与{p1}接触	ht
@@ -56091,6 +56105,7 @@ and rampaged throughout {p} during {e}.	并在{e1}期间在{p1}肆虐。	ht
 and rampaged throughout {p} within {p}.	并在{p2}在{p1}肆虐。	ht
 and received the worship of {a} at {p}.	并在{p1}受到了{a1}的崇拜。	ht
 and received the worship of {a} in {p}.	并在{p1}受到了{a1}的崇拜。	ht
+and recruited {s} into {p} in the wilds	并在荒野中为{p1}招募了{s1}	ht
 and rejected an offer of peace from {p}	并拒绝了{p1}的和平提议	ht
 and replaced {p} with {p} in the wilds.	并在荒野中以{p2}取代了{p1}。	ht
 and respected {a} and agreed during {e}	并在{e1}期间尊重{a1}，答应了	ht
@@ -56841,6 +56856,7 @@ wrongfully convicted {n} of {s} in {p}.	在{p1}错误地判定{n1}犯有{s1}。	
 {a} rampaged throughout {p} within {p}.	{a1}在{p2}在{p1}肆虐。	ht
 {a} received the worship of {a} at {p}.	{a1}在{p1}受到了{a2}的崇拜。	ht
 {a} received the worship of {a} in {p}.	{a1}在{p1}受到了{a2}的崇拜。	ht
+{a} recruited {s} into {p} in the wilds	{a1}在荒野中为{p1}招募了{s1}	ht
 {a} rejected an offer of peace from {p}	{a1}拒绝了{p1}的和平提议	ht
 {a} replaced {p} with {p} in the wilds.	{a1}在荒野中以{p2}取代了{p1}。	ht
 {a} respected {a} and agreed during {e}	{a1}在{e1}期间尊重{a2}，答应了	ht
@@ -58176,6 +58192,8 @@ and rampaged throughout {p} during {e}	并在{e1}期间在{p1}肆虐	ht
 and rampaged throughout {p} within {p}	并在{p2}在{p1}肆虐	ht
 and received the worship of {a} at {p}	并在{p1}受到了{a1}的崇拜	ht
 and received the worship of {a} in {p}	并在{p1}受到了{a1}的崇拜	ht
+and recruited {s} into {p} during {e}.	并在{e1}期间为{p1}招募了{s1}。	ht
+and recruited {s} into {p} within {p}.	并在{p2}为{p1}招募了{s1}。	ht
 and repealed numerous oppressive laws.	并废除了众多苛法。	h
 and replaced {p} with {p} in the wilds	并在荒野中以{p2}取代了{p1}	ht
 and ruled from {p} of {p} in the wilds	并在荒野中以{p2}的{p1}为统治中心	ht
@@ -58976,6 +58994,8 @@ wrongfully convicted {n} of {s} in {p}	在{p1}错误地判定{n1}犯有{s1}	ht
 {a} rampaged throughout {p} within {p}	{a1}在{p2}在{p1}肆虐	ht
 {a} received the worship of {a} at {p}	{a1}在{p1}受到了{a2}的崇拜	ht
 {a} received the worship of {a} in {p}	{a1}在{p1}受到了{a2}的崇拜	ht
+{a} recruited {s} into {p} during {e}.	{a1}在{e1}期间为{p1}招募了{s1}。	ht
+{a} recruited {s} into {p} within {p}.	{a1}在{p2}为{p1}招募了{s1}。	ht
 {a} repealed numerous oppressive laws.	{a1}废除了众多苛法。	ht
 {a} replaced {p} with {p} in the wilds	{a1}在荒野中以{p2}取代了{p1}	ht
 {a} ruled from {p} of {p} in the wilds	{a1}在荒野中以{p2}的{p1}为统治中心	ht
@@ -60280,6 +60300,8 @@ and put forth a sound plan within {p}	并在{p1}提出了稳妥的计划	ht
 and ransomed {n} to {a} in the wilds.	并在荒野中收取赎金后将{n1}交还给了{a1}。	ht
 and received the title of {s} at {p}.	并在{p1}获得了{s1}的头衔。	ht
 and received the title of {s} in {p}.	并在{p1}获得了{s1}的头衔。	ht
+and recruited {s} into {p} during {e}	并在{e1}期间为{p1}招募了{s1}	ht
+and recruited {s} into {p} within {p}	并在{p2}为{p1}招募了{s1}	ht
 and rejected contact with {p} at {p}.	并在{p2}拒绝与{p1}接触。	ht
 and rejected contact with {p} in {p}.	并在{p2}拒绝与{p1}接触。	ht
 and repealed numerous oppressive laws	并废除了众多苛法	h
@@ -61064,6 +61086,8 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {a} ransomed {n} to {a} in the wilds.	{a1}在荒野中收取赎金后将{n1}交还给了{a2}。	ht
 {a} received the title of {s} at {p}.	{a1}在{p1}获得了{s1}的头衔。	ht
 {a} received the title of {s} in {p}.	{a1}在{p1}获得了{s1}的头衔。	ht
+{a} recruited {s} into {p} during {e}	{a1}在{e1}期间为{p1}招募了{s1}	ht
+{a} recruited {s} into {p} within {p}	{a1}在{p2}为{p1}招募了{s1}	ht
 {a} rejected contact with {p} at {p}.	{a1}在{p2}拒绝与{p1}接触。	ht
 {a} rejected contact with {p} in {p}.	{a1}在{p2}拒绝与{p1}接触。	ht
 {a} repealed numerous oppressive laws	{a1}废除了众多苛法	ht
@@ -62532,6 +62556,7 @@ and ransomed {n} to {a} in the wilds	并在荒野中收取赎金后将{n1}交还
 and received the title of {s} at {p}	并在{p1}获得了{s1}的头衔	ht
 and received the title of {s} in {p}	并在{p1}获得了{s1}的头衔	ht
 and recruited from {p} in the wilds.	并在荒野中从{p1}进行了招募。	ht
+and recruited into {p} in the wilds.	并在荒野中为{p1}进行了招募。	ht
 and rejected contact with {p} at {p}	并在{p2}拒绝与{p1}接触	ht
 and rejected contact with {p} in {p}	并在{p2}拒绝与{p1}接触	ht
 and replaced {p} with {p} during {e}	并在{e1}期间以{p2}取代了{p1}	ht
@@ -62829,6 +62854,7 @@ put forth a sound plan in the wilds.	在荒野中提出了稳妥的计划。	h
 rampaged throughout {p} in the wilds	在荒野中在{p1}肆虐	ht
 received the title of {s} during {e}	在{e1}期间获得了{s1}的头衔	ht
 received the title of {s} within {p}	在{p1}获得了{s1}的头衔	ht
+recruited {s} into {p} in the wilds.	在荒野中为{p1}招募了{s1}。	ht
 rejected an offer of peace from {p}.	拒绝了{p1}的和平提议。	ht
 rejected contact with {p} during {e}	在{e1}期间拒绝与{p1}接触	ht
 rejected contact with {p} within {p}	在{p2}拒绝与{p1}接触	ht
@@ -63347,6 +63373,7 @@ you will need to unretire or recruit	但你需要让这个角色复出或将其	
 {a} received the title of {s} at {p}	{a1}在{p1}获得了{s1}的头衔	ht
 {a} received the title of {s} in {p}	{a1}在{p1}获得了{s1}的头衔	ht
 {a} recruited from {p} in the wilds.	{a1}在荒野中从{p1}进行了招募。	ht
+{a} recruited into {p} in the wilds.	{a1}在荒野中为{p1}进行了招募。	ht
 {a} rejected contact with {p} at {p}	{a1}在{p2}拒绝与{p1}接触	ht
 {a} rejected contact with {p} in {p}	{a1}在{p2}拒绝与{p1}接触	ht
 {a} replaced {p} with {p} during {e}	{a1}在{e1}期间以{p2}取代了{p1}	ht
@@ -64699,6 +64726,7 @@ and rampaged throughout {p} in {p}.	并在{p2}在{p1}肆虐。	ht
 and ransomed {n} to {a} during {e}.	并在{e1}期间收取赎金后将{n1}交还给了{a1}。	ht
 and ransomed {n} to {a} within {p}.	并在{p1}收取赎金后将{n1}交还给了{a1}。	ht
 and recruited from {p} in the wilds	并在荒野中从{p1}进行了招募	ht
+and recruited into {p} in the wilds	并在荒野中为{p1}进行了招募	ht
 and respected {a} and agreed at {p}	并在{p1}尊重{a1}，答应了	ht
 and respected {a} and agreed in {p}	并在{p1}尊重{a1}，答应了	ht
 and sabotaged activities during {e}	并在{e1}期间破坏了活动	ht
@@ -65033,6 +65061,7 @@ rampaged throughout {p} within {p}.	在{p2}在{p1}肆虐。	ht
 received the worship of {a} at {p}.	在{p1}受到了{a1}的崇拜。	ht
 received the worship of {a} in {p}.	在{p1}受到了{a1}的崇拜。	ht
 receiving a higher rank of nobility	获得更高爵位的贵族身份	wi
+recruited {s} into {p} in the wilds	在荒野中为{p1}招募了{s1}	ht
 rejected an offer of peace from {p}	拒绝了{p1}的和平提议	ht
 replaced {p} with {p} in the wilds.	在荒野中以{p2}取代了{p1}。	ht
 respected {a} and agreed during {e}	在{e1}期间尊重{a1}，答应了	ht
@@ -65587,6 +65616,7 @@ you were caught up in a new romance	你陷入新的恋情	wi
 {a} ransomed {n} to {a} during {e}.	{a1}在{e1}期间收取赎金后将{n1}交还给了{a2}。	ht
 {a} ransomed {n} to {a} within {p}.	{a1}在{p1}收取赎金后将{n1}交还给了{a2}。	ht
 {a} recruited from {p} in the wilds	{a1}在荒野中从{p1}进行了招募	ht
+{a} recruited into {p} in the wilds	{a1}在荒野中为{p1}进行了招募	ht
 {a} respected {a} and agreed at {p}	{a1}在{p1}尊重{a2}，答应了	ht
 {a} respected {a} and agreed in {p}	{a1}在{p1}尊重{a2}，答应了	ht
 {a} sabotaged activities during {e}	{a1}在{e1}期间破坏了活动	ht
@@ -67096,6 +67126,10 @@ and ransomed {n} to {a} during {e}	并在{e1}期间收取赎金后将{n1}交还�
 and ransomed {n} to {a} within {p}	并在{p1}收取赎金后将{n1}交还给了{a1}	ht
 and recruited from {p} during {e}.	并在{e1}期间从{p1}进行了招募。	ht
 and recruited from {p} within {p}.	并在{p2}从{p1}进行了招募。	ht
+and recruited into {p} during {e}.	并在{e1}期间为{p1}进行了招募。	ht
+and recruited into {p} within {p}.	并在{p2}为{p1}进行了招募。	ht
+and recruited {s} into {p} at {p}.	并在{p2}为{p1}招募了{s1}。	ht
+and recruited {s} into {p} in {p}.	并在{p2}为{p1}招募了{s1}。	ht
 and scared {a} to death during {e}	并在{e1}期间吓死了{a1}	ht
 and scared {a} to death within {p}	并在{p1}吓死了{a1}	ht
 and shot and killed {a} during {e}	并在{e1}期间射杀了{a1}	ht
@@ -67391,6 +67425,8 @@ rampaged throughout {p} during {e}	在{e1}期间在{p1}肆虐	ht
 rampaged throughout {p} within {p}	在{p2}在{p1}肆虐	ht
 received the worship of {a} at {p}	在{p1}受到了{a1}的崇拜	ht
 received the worship of {a} in {p}	在{p1}受到了{a1}的崇拜	ht
+recruited {s} into {p} during {e}.	在{e1}期间为{p1}招募了{s1}。	ht
+recruited {s} into {p} within {p}.	在{p2}为{p1}招募了{s1}。	ht
 repealed numerous oppressive laws.	废除了众多苛法。	h
 replaced {p} with {p} in the wilds	在荒野中以{p2}取代了{p1}	ht
 ruled from {p} of {p} in the wilds	在荒野中以{p2}的{p1}为统治中心	ht
@@ -67963,6 +67999,10 @@ wove a masterful sewn image in {p}	在{p1}织出了一幅杰作级的刺绣图�
 {a} ransomed {n} to {a} within {p}	{a1}在{p1}收取赎金后将{n1}交还给了{a2}	ht
 {a} recruited from {p} during {e}.	{a1}在{e1}期间从{p1}进行了招募。	ht
 {a} recruited from {p} within {p}.	{a1}在{p2}从{p1}进行了招募。	ht
+{a} recruited into {p} during {e}.	{a1}在{e1}期间为{p1}进行了招募。	ht
+{a} recruited into {p} within {p}.	{a1}在{p2}为{p1}进行了招募。	ht
+{a} recruited {s} into {p} at {p}.	{a1}在{p2}为{p1}招募了{s1}。	ht
+{a} recruited {s} into {p} in {p}.	{a1}在{p2}为{p1}招募了{s1}。	ht
 {a} scared {a} to death during {e}	{a1}在{e1}期间吓死了{a2}	ht
 {a} scared {a} to death within {p}	{a1}在{p1}吓死了{a2}	ht
 {a} shot and killed {a} during {e}	{a1}在{e1}期间射杀了{a2}	ht
@@ -69355,6 +69395,10 @@ and put forth a sound plan at {p}	并在{p1}提出了稳妥的计划	ht
 and put forth a sound plan in {p}	并在{p1}提出了稳妥的计划	ht
 and recruited from {p} during {e}	并在{e1}期间从{p1}进行了招募	ht
 and recruited from {p} within {p}	并在{p2}从{p1}进行了招募	ht
+and recruited into {p} during {e}	并在{e1}期间为{p1}进行了招募	ht
+and recruited into {p} within {p}	并在{p2}为{p1}进行了招募	ht
+and recruited {s} into {p} at {p}	并在{p2}为{p1}招募了{s1}	ht
+and recruited {s} into {p} in {p}	并在{p2}为{p1}招募了{s1}	ht
 and replaced {p} with {p} at {p}.	并在{p3}以{p2}取代了{p1}。	ht
 and replaced {p} with {p} in {p}.	并在{p3}以{p2}取代了{p1}。	ht
 and returned to {p} in the wilds.	并在荒野中返回了{p1}。	ht
@@ -69627,6 +69671,8 @@ put forth a sound plan within {p}	在{p1}提出了稳妥的计划	ht
 ransomed {n} to {a} in the wilds.	在荒野中收取赎金后将{n1}交还给了{a1}。	ht
 received the title of {s} at {p}.	在{p1}获得了{s1}的头衔。	ht
 received the title of {s} in {p}.	在{p1}获得了{s1}的头衔。	ht
+recruited {s} into {p} during {e}	在{e1}期间为{p1}招募了{s1}	ht
+recruited {s} into {p} within {p}	在{p2}为{p1}招募了{s1}	ht
 rejected contact with {p} at {p}.	在{p2}拒绝与{p1}接触。	ht
 rejected contact with {p} in {p}.	在{p2}拒绝与{p1}接触。	ht
 repealed numerous oppressive laws	废除了众多苛法	h
@@ -70180,6 +70226,10 @@ withdrew from society within {p}.	在{p1}退出了社会交往。	ht
 {a} put forth a sound plan in {p}	{a1}在{p1}提出了稳妥的计划	ht
 {a} recruited from {p} during {e}	{a1}在{e1}期间从{p1}进行了招募	ht
 {a} recruited from {p} within {p}	{a1}在{p2}从{p1}进行了招募	ht
+{a} recruited into {p} during {e}	{a1}在{e1}期间为{p1}进行了招募	ht
+{a} recruited into {p} within {p}	{a1}在{p2}为{p1}进行了招募	ht
+{a} recruited {s} into {p} at {p}	{a1}在{p2}为{p1}招募了{s1}	ht
+{a} recruited {s} into {p} in {p}	{a1}在{p2}为{p1}招募了{s1}	ht
 {a} replaced {p} with {p} at {p}.	{a1}在{p3}以{p2}取代了{p1}。	ht
 {a} replaced {p} with {p} in {p}.	{a1}在{p3}以{p2}取代了{p1}。	ht
 {a} returned to {p} in the wilds.	{a1}在荒野中返回了{p1}。	ht
@@ -71896,6 +71946,7 @@ ransomed {n} to {a} in the wilds	在荒野中收取赎金后将{n1}交还给了{
 received the title of {s} at {p}	在{p1}获得了{s1}的头衔	ht
 received the title of {s} in {p}	在{p1}获得了{s1}的头衔	ht
 recruited from {p} in the wilds.	在荒野中从{p1}进行了招募。	ht
+recruited into {p} in the wilds.	在荒野中为{p1}进行了招募。	ht
 rejected contact with {p} at {p}	在{p2}拒绝与{p1}接触	ht
 rejected contact with {p} in {p}	在{p2}拒绝与{p1}接触	ht
 replaced {p} with {p} during {e}	在{e1}期间以{p2}取代了{p1}	ht
@@ -74223,6 +74274,7 @@ ransomed {n} to {a} during {e}.	在{e1}期间收取赎金后将{n1}交还给了{
 ransomed {n} to {a} within {p}.	在{p1}收取赎金后将{n1}交还给了{a1}。	ht
 reading an untitled composition	阅读无题作品	wi
 recruited from {p} in the wilds	在荒野中从{p1}进行了招募	ht
+recruited into {p} in the wilds	在荒野中为{p1}进行了招募	ht
 red-winged blackbird hatchlings	红翅黑鹂幼崽	wi
 relocation of {a} in the wilds.	在荒野中，{a1}的迁移。	htEi
 respected {a} and agreed at {p}	在{p1}尊重{a1}，答应了	ht
@@ -76465,6 +76517,8 @@ and ransomed {n} to {a} in {p}	并在{p1}收取赎金后将{n1}交还给了{a1}	
 and received the title of {s}.	并获得了{s1}的头衔。	ht
 and recruited from {p} at {p}.	并在{p2}从{p1}进行了招募。	ht
 and recruited from {p} in {p}.	并在{p2}从{p1}进行了招募。	ht
+and recruited into {p} at {p}.	并在{p2}为{p1}进行了招募。	ht
+and recruited into {p} in {p}.	并在{p2}为{p1}进行了招募。	ht
 and recruited {a} in the wilds	并在荒野中招募了{a1}	ht
 and rejected contact with {p}.	并拒绝与{p1}接触。	ht
 and respected {a} and refused.	并尊重{a1}，拒绝了对方。	ht
@@ -76756,6 +76810,10 @@ ransomed {n} to {a} within {p}	在{p1}收取赎金后将{n1}交还给了{a1}	ht
 realizing the worthlessness of	认识到毫无价值	wi
 recruited from {p} during {e}.	在{e1}期间从{p1}进行了招募。	ht
 recruited from {p} within {p}.	在{p2}从{p1}进行了招募。	ht
+recruited into {p} during {e}.	在{e1}期间为{p1}进行了招募。	ht
+recruited into {p} within {p}.	在{p2}为{p1}进行了招募。	ht
+recruited {s} into {p} at {p}.	在{p2}为{p1}招募了{s1}。	ht
+recruited {s} into {p} in {p}.	在{p2}为{p1}招募了{s1}。	ht
 red-winged blackbird hatchling	红翅黑鹂幼崽	wi
 relocation of {a} in the wilds	在荒野中，{a1}的迁移	htEi
 remedies prepared from animals	用动物制备的药物	h
@@ -77352,6 +77410,8 @@ with the hall designated for a	并将大厅指定给以下行会：	hP
 {a} received the title of {s}.	{a1}获得了{s1}的头衔。	ht
 {a} recruited from {p} at {p}.	{a1}在{p2}从{p1}进行了招募。	ht
 {a} recruited from {p} in {p}.	{a1}在{p2}从{p1}进行了招募。	ht
+{a} recruited into {p} at {p}.	{a1}在{p2}为{p1}进行了招募。	ht
+{a} recruited into {p} in {p}.	{a1}在{p2}为{p1}进行了招募。	ht
 {a} recruited {a} in the wilds	{a1}在荒野中招募了{a2}	ht
 {a} rejected contact with {p}.	{a1}拒绝与{p1}接触。	ht
 {a} respected {a} and refused.	{a1}尊重{a2}，拒绝了对方。	ht
@@ -78949,6 +79009,8 @@ and rebuilt {p} in the wilds.	并在荒野中重建了{p1}。	ht
 and received the title of {s}	并获得了{s1}的头衔	ht
 and recruited from {p} at {p}	并在{p2}从{p1}进行了招募	ht
 and recruited from {p} in {p}	并在{p2}从{p1}进行了招募	ht
+and recruited into {p} at {p}	并在{p2}为{p1}进行了招募	ht
+and recruited into {p} in {p}	并在{p2}为{p1}进行了招募	ht
 and recruited {a} during {e}.	并在{e1}期间招募了{a1}。	ht
 and recruited {a} within {p}.	并在{p1}招募了{a1}。	ht
 and rejected contact with {p}	并拒绝与{p1}接触	ht
@@ -79216,6 +79278,10 @@ put forth a sound plan in {p}	在{p1}提出了稳妥的计划	ht
 rapidly shifts between topics	在话题间快速跳转	hv
 recruited from {p} during {e}	在{e1}期间从{p1}进行了招募	ht
 recruited from {p} within {p}	在{p2}从{p1}进行了招募	ht
+recruited into {p} during {e}	在{e1}期间为{p1}进行了招募	ht
+recruited into {p} within {p}	在{p2}为{p1}进行了招募	ht
+recruited {s} into {p} at {p}	在{p2}为{p1}招募了{s1}	ht
+recruited {s} into {p} in {p}	在{p2}为{p1}招募了{s1}	ht
 relocation of {a} during {e}.	在{e1}期间，{a1}的迁移。	htEi
 relocation of {a} within {p}.	在{p1}，{a1}的迁移。	htEi
 replaced {p} with {p} at {p}.	在{p3}以{p2}取代了{p1}。	ht
@@ -79774,6 +79840,8 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {a} received the title of {s}	{a1}获得了{s1}的头衔	ht
 {a} recruited from {p} at {p}	{a1}在{p2}从{p1}进行了招募	ht
 {a} recruited from {p} in {p}	{a1}在{p2}从{p1}进行了招募	ht
+{a} recruited into {p} at {p}	{a1}在{p2}为{p1}进行了招募	ht
+{a} recruited into {p} in {p}	{a1}在{p2}为{p1}进行了招募	ht
 {a} recruited {a} during {e}.	{a1}在{e1}期间招募了{a2}。	ht
 {a} recruited {a} within {p}.	{a1}在{p1}招募了{a2}。	ht
 {a} rejected contact with {p}	{a1}拒绝与{p1}接触	ht
@@ -83631,6 +83699,7 @@ and ransomed {n} within {p}	并在{p1}赎回了{n1}	ht
 and razed {p} in the wilds.	并在荒野中夷平了{p1}。	ht
 and rebuilt {p} during {e}.	并在{e1}期间重建了{p1}。	ht
 and rebuilt {p} within {p}.	并在{p2}重建了{p1}。	ht
+and recruited {s} into {p}.	并为{p1}招募了{s1}。	ht
 and returned to {p} at {p}.	并在{p2}返回了{p1}。	ht
 and returned to {p} in {p}.	并在{p2}返回了{p1}。	ht
 and routed {a} in the wilds	并在荒野中击溃了{a1}	ht
@@ -84482,6 +84551,7 @@ wove a masterful sewn image	织出了一幅杰作级的刺绣图像	h
 {a} razed {p} in the wilds.	{a1}在荒野中夷平了{p1}。	ht
 {a} rebuilt {p} during {e}.	{a1}在{e1}期间重建了{p1}。	ht
 {a} rebuilt {p} within {p}.	{a1}在{p2}重建了{p1}。	ht
+{a} recruited {s} into {p}.	{a1}为{p1}招募了{s1}。	ht
 {a} returned to {p} at {p}.	{a1}在{p2}返回了{p1}。	ht
 {a} returned to {p} in {p}.	{a1}在{p2}返回了{p1}。	ht
 {a} routed {a} in the wilds	{a1}在荒野中击溃了{a2}	ht
@@ -85927,6 +85997,7 @@ and raided {p} within {p}.	并在{p2}袭击了{p1}。	ht
 and razed {p} in the wilds	并在荒野中夷平了{p1}	ht
 and rebuilt {p} during {e}	并在{e1}期间重建了{p1}	ht
 and rebuilt {p} within {p}	并在{p2}重建了{p1}	ht
+and recruited {s} into {p}	并为{p1}招募了{s1}	ht
 and replaced {p} with {p}.	并以{p2}取代了{p1}。	ht
 and returned to {p} at {p}	并在{p2}返回了{p1}	ht
 and returned to {p} in {p}	并在{p2}返回了{p1}	ht
@@ -86260,6 +86331,8 @@ realistic-melting (global)	逼真熔化(全局)	w
 received the title of {s}.	获得了{s1}的头衔。	ht
 recruited from {p} at {p}.	在{p2}从{p1}进行了招募。	ht
 recruited from {p} in {p}.	在{p2}从{p1}进行了招募。	ht
+recruited into {p} at {p}.	在{p2}为{p1}进行了招募。	ht
+recruited into {p} in {p}.	在{p2}为{p1}进行了招募。	ht
 recruited {a} in the wilds	在荒野中招募了{a1}	ht
 red spinach inflorescences	红菠菜花序	wi
 red-winged blackbird woman	红翅黑鹂人	wi
@@ -86725,6 +86798,7 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {a} razed {p} in the wilds	{a1}在荒野中夷平了{p1}	ht
 {a} rebuilt {p} during {e}	{a1}在{e1}期间重建了{p1}	ht
 {a} rebuilt {p} within {p}	{a1}在{p2}重建了{p1}	ht
+{a} recruited {s} into {p}	{a1}为{p1}招募了{s1}	ht
 {a} replaced {p} with {p}.	{a1}以{p2}取代了{p1}。	ht
 {a} returned to {p} at {p}	{a1}在{p2}返回了{p1}	ht
 {a} returned to {p} in {p}	{a1}在{p2}返回了{p1}	ht
@@ -88332,6 +88406,8 @@ rebuilt {p} in the wilds.	在荒野中重建了{p1}。	ht
 received the title of {s}	获得了{s1}的头衔	ht
 recruited from {p} at {p}	在{p2}从{p1}进行了招募	ht
 recruited from {p} in {p}	在{p2}从{p1}进行了招募	ht
+recruited into {p} at {p}	在{p2}为{p1}进行了招募	ht
+recruited into {p} in {p}	在{p2}为{p1}进行了招募	ht
 recruited {a} during {e}.	在{e1}期间招募了{a1}。	ht
 recruited {a} within {p}.	在{p1}招募了{a1}。	ht
 red spinach inflorescence	红菠菜花序	wi
@@ -91970,6 +92046,7 @@ and ransomed {n} to {a}	并收取赎金后将{n1}交还给了{a1}	ht
 and rebuilt {p} at {p}.	并在{p2}重建了{p1}。	ht
 and rebuilt {p} in {p}.	并在{p2}重建了{p1}。	ht
 and recruited from {p}.	并从{p1}进行了招募。	ht
+and recruited into {p}.	并为{p1}进行了招募。	ht
 and scared {a} to death	并吓死了{a1}	ht
 and searched {p} at {p}	并在{p2}搜寻了{p1}	ht
 and searched {p} in {p}	并在{p2}搜寻了{p1}	ht
@@ -92653,6 +92730,7 @@ ransomed {n} within {p}	在{p1}赎回了{n1}	ht
 razed {p} in the wilds.	在荒野中夷平了{p1}。	ht
 rebuilt {p} during {e}.	在{e1}期间重建了{p1}。	ht
 rebuilt {p} within {p}.	在{p2}重建了{p1}。	ht
+recruited {s} into {p}.	为{p1}招募了{s1}。	ht
 rendition of {a} in {i}	以{i1}制作、描绘{a1}的作品	hIit
 returned to {p} at {p}.	在{p2}返回了{p1}。	ht
 returned to {p} in {p}.	在{p2}返回了{p1}。	ht
@@ -92999,6 +93077,7 @@ wounded {a} within {p}.	在{p1}击伤了{a1}。	ht
 {a} rebuilt {p} at {p}.	{a1}在{p2}重建了{p1}。	ht
 {a} rebuilt {p} in {p}.	{a1}在{p2}重建了{p1}。	ht
 {a} recruited from {p}.	{a1}从{p1}进行了招募。	ht
+{a} recruited into {p}.	{a1}为{p1}进行了招募。	ht
 {a} scared {a} to death	{a1}吓死了{a2}	ht
 {a} searched {p} at {p}	{a1}在{p2}搜寻了{p1}	ht
 {a} searched {p} in {p}	{a1}在{p2}搜寻了{p1}	ht
@@ -94018,6 +94097,7 @@ and raided {p} in {p}.	并在{p2}袭击了{p1}。	ht
 and rebuilt {p} at {p}	并在{p2}重建了{p1}	ht
 and rebuilt {p} in {p}	并在{p2}重建了{p1}	ht
 and recruited from {p}	并从{p1}进行了招募	ht
+and recruited into {p}	并为{p1}进行了招募	ht
 and routed {a} at {p}.	并在{p1}击溃了{a1}。	ht
 and routed {a} in {p}.	并在{p1}击溃了{a1}。	ht
 and sentenced to death	并被判处死刑	h
@@ -94891,6 +94971,7 @@ razed {p} in the wilds	在荒野中夷平了{p1}	ht
 realizing the value of	认识到价值所在	wi
 rebuilt {p} during {e}	在{e1}期间重建了{p1}	ht
 rebuilt {p} within {p}	在{p2}重建了{p1}	ht
+recruited {s} into {p}	为{p1}招募了{s1}	ht
 replaced {p} with {p}.	以{p2}取代了{p1}。	ht
 returned to {p} at {p}	在{p2}返回了{p1}	ht
 returned to {p} in {p}	在{p2}返回了{p1}	ht
@@ -95147,6 +95228,7 @@ wounded {a} within {p}	在{p1}击伤了{a1}	ht
 {a} rebuilt {p} at {p}	{a1}在{p2}重建了{p1}	ht
 {a} rebuilt {p} in {p}	{a1}在{p2}重建了{p1}	ht
 {a} recruited from {p}	{a1}从{p1}进行了招募	ht
+{a} recruited into {p}	{a1}为{p1}进行了招募	ht
 {a} routed {a} at {p}.	{a1}在{p1}击溃了{a2}。	ht
 {a} routed {a} in {p}.	{a1}在{p1}击溃了{a2}。	ht
 {a} solidified at {p}.	{a1}在{p1}凝固而死。	ht
@@ -103525,6 +103607,7 @@ ransomed {n} to {a}	收取赎金后将{n1}交还给了{a1}	ht
 rebuilt {p} at {p}.	在{p2}重建了{p1}。	ht
 rebuilt {p} in {p}.	在{p2}重建了{p1}。	ht
 recruited from {p}.	从{p1}进行了招募。	ht
+recruited into {p}.	为{p1}进行了招募。	ht
 rhamphorhynchus man	喙嘴龙人	wi
 rhamphorhynchus men	喙嘴龙人	wi
 right front flipper	右前脚蹼	h
@@ -107485,6 +107568,7 @@ rambutan wood logs	红毛果树原木	wi
 rebuilt {p} at {p}	在{p2}重建了{p1}	ht
 rebuilt {p} in {p}	在{p2}重建了{p1}	ht
 recruited from {p}	从{p1}进行了招募	ht
+recruited into {p}	为{p1}进行了招募	ht
 red spinach leaves	红菠菜叶	wi
 red squirrel woman	红松鼠人	wi
 red squirrel women	红松鼠人	wi
@@ -142171,6 +142255,7 @@ orthoclase	正长石	wi
 osprey man	鱼鹰人	wi
 osprey men	鱼鹰人	wi
 other hair	其他毛发	wi
+out of {p}	从{p1}	ht
 pale brown	淡棕色	wi
 pale metal	苍白金属	hMi
 pale metal	苍白金属	wim

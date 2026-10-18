@@ -532,6 +532,7 @@ public:
         range(input->box_boundaries, [&](const auto &boundary) {
             value(boundary.source_end); value(boundary.native_row_end);
         });
+        history_document(input->story_event);
     }
     void knowledge_sources() {
         const uint64_t published = g_overlay.native_knowledge_frame_revision();

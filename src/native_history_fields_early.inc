@@ -50,8 +50,10 @@ case 2: { // created_site: RVA b69a10
     const uintptr_t site = native_history_find_subject(native_history_profile_base(),
         NativeHistoryObjectKind::Site, fields.at("site").front());
     int16_t type = -1, subtype = -1;
-    if (!site || site > UINTPTR_MAX - 0x318 ||
-        !native_history_copy(site + 0x80, type)) { captured = false; break; }
+    // b69a10 keeps the default "founded" predicate when the site lookup
+    // has no record; only an existing record supplies a site type.
+    if (site && (site > UINTPTR_MAX - 0x318 ||
+        !native_history_copy(site + 0x80, type))) { captured = false; break; }
     // Site type 10 stores typed site data at +0x310; subtype 1 uses
     // "created". Its other subtypes and type 8 use "constructed".
     if (type == 10) {
@@ -93,16 +95,22 @@ case 5: { // remove_hf_entity_link: RVA b7eff0
     if (type == 10 || type == 12 || type == 13) {
         int variant = type == 13 ? 3 : 0;
         const uintptr_t image = native_history_profile_base();
+        bool resolve_position = true;
         if (type != 13) {
             const uintptr_t figure = native_history_find_subject(image,
                 NativeHistoryObjectKind::Figure, fields.at("histfig").front());
             int8_t sex = -1;
-            if (!figure || figure > UINTPTR_MAX - 7 ||
-                !native_history_copy(figure + 6, sex)) { captured = false; break; }
-            variant = sex == 0 ? 1 : sex == 1 ? 2 : 0;
+            // The native office/claimant arms skip their title when the
+            // historical figure is absent, retaining the remaining names.
+            if (!figure) resolve_position = false;
+            else {
+                if (figure > UINTPTR_MAX - 7 ||
+                    !native_history_copy(figure + 6, sex)) { captured = false; break; }
+                variant = sex == 0 ? 1 : sex == 1 ? 2 : 0;
+            }
         }
         std::string title;
-        if (!native_history_position_name(image, fields.at("entity").front(),
+        if (resolve_position && !native_history_position_name(image, fields.at("entity").front(),
                 fields.at("position").front(), variant, title)) { captured = false; break; }
         result.texts.emplace("position", std::move(title));
     }
@@ -410,9 +418,10 @@ case 43: { // masterpiece_lost: RVA b638f0; linked creation title is typed.
             reinterpret_cast<const void *>(creation_address), type)) { captured = false; break; }
     fields.emplace("creation.type", std::vector<int32_t>{type});
     if (!creation_address) break;
-    // Creation references are only these six concrete types; rejecting any
-    // other type prevents recursion and avoids substituting a vague title.
-    if (type < 37 || type > 42) { captured = false; break; }
+    // The native formatter accepts any event's +d8 title. The six creation
+    // types have direct fields below; other types arrive through the existing
+    // nested-title capture, which retains its tree depth and cycle limits.
+    if (type < 37 || type > 42) break;
     NativeHistoryEventData creation;
     creation.native_type = type;
     if (!native_history_copy(creation_address + 8, creation.year) ||

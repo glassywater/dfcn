@@ -677,6 +677,22 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         nested.event = *found->second;
         nested.event.fields["native_title"] = {1};
         nested.tokens = document.tokens;
+        if (event.native_type == 43 &&
+                (nested.event.native_type < 37 || nested.event.native_type > 42)) {
+            const auto source = nested.event.texts.find("native.subject-title");
+            if (source == nested.event.texts.end()) return std::nullopt;
+            if (source->second.empty()) return Pieces{};
+            // +d0 narration is not a substitute for this child's +d8 title.
+            // The six malformed/native-selector title families have dedicated
+            // typed productions; every other child uses the complete original
+            // title and the same grammar as STORY_EVENT menu captions.
+            if (nested.event.fields.contains("native_story_title")) {
+                nested.native_source = source->second;
+                if (auto title = translate_history_event(nested, use_translation_cache)) return title;
+            }
+            const auto title = translate_legends_event(source->second, 0, false);
+            return title ? std::optional<Pieces>{Pieces{piece(*title, neutral)}} : std::nullopt;
+        }
         return translate_history_event(nested, use_translation_cache);
     };
     (void)story;
@@ -696,15 +712,19 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         if (entry.field == 'e') {
             // This field is a history-event COLLECTION ID, whose native
             // title interface is independent of an event's d8 title call.
-            if (event.fields.contains("native_story_title") &&
-                    !event.fields.contains("collection." + std::to_string(data) + ".type"))
+            if (!event.fields.contains("collection." + std::to_string(data) + ".type"))
                 return apply("during", {}); // Native keeps this word after a missing lookup.
             const auto event_title = collection_title(data);
             return event_title ? apply(entry.source, {*event_title}) : std::nullopt;
         }
         if (entry.field == 'r') {
-            auto key = history_event_sphere_key(data);
-            if (!key) return std::nullopt;
+            // The native sphere helper truncates the data to a WORD and
+            // prints "no sphere" for values outside its 130 named entries.
+            auto key = history_event_sphere_key(static_cast<uint16_t>(data));
+            if (!key) {
+                const auto missing = exact_literal_translation("no sphere");
+                return missing ? apply(entry.source, {Pieces{piece(*missing, neutral)}}) : std::nullopt;
+            }
             const auto found = deity_sphere_translations_.find(std::string(*key));
             return found == deity_sphere_translations_.end() ? std::nullopt :
                 apply(entry.source, {Pieces{piece(found->second, neutral)}});
@@ -796,13 +816,11 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         }
         auto reason = history_event_reason_clause(event.reason);
         auto circumstance = history_event_circumstance_clause(event.circumstance);
-        if (event.fields.contains("native_story_title")) {
-            // Out-of-range reason selectors append only their separator in
-            // the native title. Preserve the event's remaining fields.
-            if (!reason) reason = HistoryEventClause{event.reason, "", 0};
-            if (!circumstance) circumstance = HistoryEventClause{event.circumstance, "", 0};
-        }
-        if (!reason || !circumstance) return std::nullopt;
+        // The native shared supplier omits unknown selectors independently
+        // in both +d0 paragraphs and +d8 titles. Keep the main event and the
+        // other clause; a missing selector is not a missing translation.
+        if (!reason) reason = HistoryEventClause{event.reason, "", 0};
+        if (!circumstance) circumstance = HistoryEventClause{event.circumstance, "", 0};
         if (event.reason == 4 && event.reason_data == -1)
             reason = HistoryEventClause{4, "due to their cosmic similarity", 0};
         auto motivation = clause(*reason, event.reason_data);
@@ -958,7 +976,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         case 2: predicate = "collaborated to create the position of {s}"; break;
         case 3: predicate = "created the position of {s}, pushed by a wave of popular support"; break;
         case 4: predicate = "created the position of {s} as a matter of course"; break;
-        default: return std::nullopt;
+        default: predicate = "created the position of {s}"; break;
         }
         auto action = apply(predicate, {position});
         if (!action) return std::nullopt;

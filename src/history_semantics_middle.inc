@@ -157,9 +157,10 @@ case 88: { // hf_relationship_denied
                 key = candidate.key;
                 break;
             }
-        if (!key) return std::nullopt;
         const auto person = subject(NativeHistoryObjectKind::Figure, number("histfig"));
-        const auto discovery = term(key);
+        // Unrecognized native knowledge selectors leave their description
+        // string empty while preserving the person and discovery predicate.
+        const auto discovery = key ? term(key) : std::optional<Pieces>{Pieces{}};
         if (!person || !discovery) return std::nullopt;
         const auto body = apply(number("discovery_flags") & 1 ?
             "{a} was the very first to discover {s}" : "{a} independently discovered {s}",
@@ -198,10 +199,13 @@ case 88: { // hf_relationship_denied
             "a restless haunt", "a forlorn haunt",
         }; // Native jump table b70840, not presentation order in the glossary.
         std::optional<Pieces> form;
-        if (ghost >= 0) {
-            if (static_cast<size_t>(ghost) >= std::size(ghosts)) return std::nullopt;
-            form = term(ghosts[ghost]);
-            if (!form) return std::nullopt;
+        if (ghost != -1) {
+            // The native default leaves the form after "as" empty, while
+            // preserving the revival, its actor and its location.
+            if (ghost >= 0 && static_cast<size_t>(ghost) < std::size(ghosts)) {
+                form = term(ghosts[ghost]);
+                if (!form) return std::nullopt;
+            }
         } else if (!text("revival_form").empty()) {
             form = creature(text("revival_form"));
             if (!form) form = term(text("revival_form"));
@@ -224,7 +228,7 @@ case 88: { // hf_relationship_denied
         join(result, *body);
         if (once_more) {
             if (!clause(form ? apply("once more, this time as {s}", {*form}) :
-                apply("once more", {}))) return std::nullopt;
+                apply("once more, this time", {}))) return std::nullopt;
         } else if (form && has_actor) {
             const auto actor = subject(NativeHistoryObjectKind::Figure, number("actor"));
             if (!actor || !clause(apply("by {a}", {*actor}))) return std::nullopt;
@@ -237,7 +241,10 @@ case 88: { // hf_relationship_denied
         break;
     }
     case 51: {
-        const auto people = figures(numbers("bodies"), true);
+        // Unlike the travel/reunion producers, this formatter still emits
+        // its body/action/location words when the body-ID vector is empty.
+        const auto people = numbers("bodies").empty()
+            ? std::optional<Pieces>{Pieces{}} : figures(numbers("bodies"), true);
         if (!people) return std::nullopt;
         const bool plural = numbers("bodies").size() > 1;
         std::string key = plural ? "the bodies of {a} were " : "the body of {a} was ";
@@ -269,10 +276,11 @@ case 88: { // hf_relationship_denied
                 number("abuse_data") == 1 ? "added to a grotesque pillar" : "added to a gruesome sculpture";
             else if (type == 4) description = "horribly mutilated";
             else if (type == 5) description = "animated";
-            if (!description) return std::nullopt;
             if (located_animation) key += description;
             else {
-                const auto action = term(description);
+                // An unrecognized abuse kind emits no action words, but
+                // the native body/actor/location fields still follow.
+                const auto action = description ? term(description) : std::optional<Pieces>{Pieces{}};
                 if (!action) return std::nullopt;
                 key += "{s}";
                 values.push_back(*action);
@@ -359,15 +367,14 @@ case 88: { // hf_relationship_denied
     }
     case 56: {
         const int32_t injury = number("injury");
-        if (injury < 0 || injury > 4) return std::nullopt;
         static constexpr const char *intact[] = {"smashed", "slashed", "stabbed", "ripped", "burned"};
         static constexpr const char *external[] = {"broken away", "slashed off", "ripped off", "torn off", "burned away"};
         static constexpr const char *internal[] = {"broken away", "slashed out", "stabbed out", "torn out", "burned out"};
-        const char *caption = number("part_lost") ?
+        const char *caption = injury < 0 || injury > 4 ? nullptr : number("part_lost") ?
             (number("internal") ? internal[injury] : external[injury]) : intact[injury];
         const auto woundee = subject(NativeHistoryObjectKind::Figure, number("woundee"));
         const auto anatomy = translate_legends_anatomy(text("body_part"));
-        const auto action = term(caption);
+        const auto action = caption ? term(caption) : std::optional<Pieces>{Pieces{}};
         if (!woundee || !anatomy || !action) return std::nullopt;
         std::string key = "{n}'s {t} was {s}";
         std::vector<Pieces> values{*woundee, Pieces{piece(*anatomy, neutral)}, *action};
@@ -384,6 +391,31 @@ case 88: { // hf_relationship_denied
         break;
     }
     case 45: {
+        const bool missing_figure = event.fields.contains("histfig_present") &&
+            number("histfig_present") == 0;
+        if (missing_figure) {
+            const auto actor = subject(NativeHistoryObjectKind::Figure, -1);
+            const auto lost = apply("lost a hist fig entry", {});
+            if (!actor || !lost) return std::nullopt;
+            join(result, *actor);
+            join(result, *lost);
+            const int32_t job = number("new_job");
+            if (number("site") >= 0 || number("region") >= 0 || number("layer") >= 0) {
+                const auto location = place();
+                if (!location) return std::nullopt;
+                const char *key = number("site") >= 0 && (job == 101 || job == 109 || job == 110)
+                    ? "out of {p}" : number("site") >= 0 && job == 106
+                    ? "around {p}" : "in {p}";
+                const auto located = apply(key, {*location});
+                if (!located) return std::nullopt;
+                append_clause(result, *located);
+            } else {
+                const auto wilds = apply(job == 106 ? "the wilds" : "in the wilds", {});
+                if (!wilds) return std::nullopt;
+                append_clause(result, *wilds);
+            }
+            break;
+        }
         const auto actor = subject(NativeHistoryObjectKind::Figure, number("histfig"));
         if (!actor) return std::nullopt;
         const int32_t new_job = number("new_job"), old_job = number("old_job");
@@ -624,7 +656,13 @@ case 88: { // hf_relationship_denied
             action = apply("{a} fought with and subdued {a}", {*first, *second});
         else if (subtype == 11)
             action = apply("{a} got into a brawl with {a}", {*first, *second});
-        else return std::nullopt;
+        else {
+            // The native default skips only the verb, keeping the first
+            // participant from each group and the common date/punctuation.
+            action = *first;
+            action->push_back(piece(" ", neutral));
+            join(*action, *second);
+        }
         if (!action) return std::nullopt;
         join(result, *action);
         if (subtype == 0) {
@@ -674,8 +712,12 @@ case 88: { // hf_relationship_denied
     }
     case 59: {
         const auto &missing = numbers("missing");
-        const auto first = figures(missing, false);
-        const auto second = figures(numbers("reunited_with"), false);
+        const auto &reunited = numbers("reunited_with");
+        // Both native list loops run from the last stored HF to the first.
+        const std::vector<int32_t> missing_order(missing.rbegin(), missing.rend());
+        const std::vector<int32_t> reunited_order(reunited.rbegin(), reunited.rend());
+        const auto first = figures(missing_order, false);
+        const auto second = figures(reunited_order, false);
         if (!first || !second) return std::nullopt;
         std::string key = missing.size() == 1 ? "{a} was reunited with {a}" : "{a} were reunited with {a}";
         std::vector<Pieces> fields{*first, *second};
@@ -856,16 +898,18 @@ case 88: { // hf_relationship_denied
         break;
     }
     case 71: {
-        if (number("situation") != 0) return std::nullopt;
         const auto target = subject(NativeHistoryObjectKind::Figure, number("target"));
         const auto location = number("site") >= 0 || number("region") >= 0 || number("layer") >= 0
             ? place() : apply("the wilds", {});
         if (!target || !location) return std::nullopt;
-        const auto suspicion = apply("{a} aroused general suspicion in {p}", {*target, *location});
+        const auto suspicion = number("situation") == 0
+            ? apply("{a} aroused general suspicion in {p}", {*target, *location})
+            : apply("{a} in {p}", {*target, *location});
         if (!suspicion) return std::nullopt;
         join(result, *suspicion);
         for (int32_t reason : numbers("suspicion_reasons")) {
-            if (reason != 0 && reason != 1) return std::nullopt;
+            // Unknown reasons add no words in the native list loop.
+            if (reason != 0 && reason != 1) continue;
             const auto cause = apply(reason == 0 ? "after appearing not to age" : "after a murder", {});
             if (!cause) return std::nullopt;
             append_clause(result, *cause);
@@ -939,14 +983,21 @@ case 88: { // hf_relationship_denied
         break;
     }
     case 88: {
-        if (number("relationship") != 40) return std::nullopt;
         const auto seeker = subject(NativeHistoryObjectKind::Figure, number("seeker"));
         const auto target = subject(NativeHistoryObjectKind::Figure, number("target"));
         const auto location = number("site") >= 0 || number("region") >= 0 || number("layer") >= 0
             ? place() : apply("the wilds", {});
         if (!seeker || !target || !location) return std::nullopt;
-        const auto denial = apply("{a} was denied an apprenticeship under {n} in {p}",
-            {*seeker, *target, *location});
+        std::optional<Pieces> denial;
+        if (number("relationship") == 40)
+            denial = apply("{a} was denied an apprenticeship under {n} in {p}",
+                {*seeker, *target, *location});
+        else {
+            Pieces participants = *seeker;
+            participants.push_back(piece(" ", neutral));
+            join(participants, *target);
+            denial = apply("{a} in {p}", {participants, *location});
+        }
         if (!denial) return std::nullopt;
         join(result, *denial);
         const int32_t reason = number("denial_reason");
@@ -1080,13 +1131,23 @@ case 80: { // hf_attacked_site
 case 72: { // entity_law; only bit 0 adds words in RVA b68d50.
     const bool enact = (number("add_flags") & 1) != 0;
     const bool repeal = (number("remove_flags") & 1) != 0;
-    if (!enact && !repeal) return std::nullopt;
     const auto entity = subject(NativeHistoryObjectKind::Entity, number("entity"));
     if (!entity) return std::nullopt;
     std::optional<Pieces> actor;
     if (number("histfig") >= 0) {
         actor = subject(NativeHistoryObjectKind::Figure, number("histfig"));
         if (!actor) return std::nullopt;
+    }
+    if (!enact && !repeal) {
+        // Both native branches still print their participants when neither
+        // law flag supplies an action; the HF branch also prints its entity.
+        if (actor) {
+            join(result, *actor);
+            result.push_back(piece(" ", neutral));
+        }
+        join(result, *entity);
+        translated = true;
+        break;
     }
     bool first = true;
     for (bool adding : {true, false}) {
@@ -1108,10 +1169,10 @@ case 72: { // entity_law; only bit 0 adds words in RVA b68d50.
 }
 case 76: { // site_dispute; native switch at RVA b833ee.
     const int32_t type = number("dispute_type");
-    if (type < 0 || type > 5) return std::nullopt;
     static constexpr const char *disputes[] = {"territory", "water rights", "grazing rights",
         "fishing rights", "rights-of-way", "livestock ownership"};
-    const auto topic = apply(disputes[type], {});
+    const auto topic = type < 0 || type > 5
+        ? std::optional<Pieces>{Pieces{}} : apply(disputes[type], {});
     const auto party = [&](std::string_view entity_key, std::string_view site_key)
             -> std::optional<Pieces> {
         auto entity = subject(NativeHistoryObjectKind::Entity, number(entity_key));
@@ -1150,7 +1211,11 @@ case 78: { // insurrection_started
 }
 case 79: { // insurrection_ended: 0 overthrow, 1 population vanishes, 2 crushed.
     const int32_t outcome = number("outcome");
-    if (outcome < 0 || outcome > 2) return std::nullopt;
+    if (outcome < 0 || outcome > 2) {
+        // Its native default has only the already composed date and stop.
+        translated = true;
+        break;
+    }
     const auto site = subject(NativeHistoryObjectKind::Site, number("site"));
     const auto government = number("target_civ") >= 0
         ? government_subject(number("target_civ"))

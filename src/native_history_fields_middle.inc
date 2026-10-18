@@ -1,17 +1,23 @@
 // Reviewed native event fields, types 45..88.
 // DFHack 53.16-r1 field order, checked against each installed getSentence.
 case 45: { // change_hf_job, RVA b75660
-    captured = field("histfig", 0x28, 'n') && field("new_job", 0x2c, 0, 2) &&
+    captured = field("histfig", 0x28) && field("new_job", 0x2c, 0, 2) &&
         field("old_job", 0x2e, 0, 2) && field("site", 0x30, 's') &&
         field("region", 0x34, 'r') && field("layer", 0x38, 'u');
     if (!captured) break;
+    const uintptr_t image = native_history_profile_base();
+    const int32_t figure_id = fields.at("histfig").front();
+    const uintptr_t figure = native_history_find_subject(image,
+        NativeHistoryObjectKind::Figure, figure_id);
+    fields.emplace("histfig_present", std::vector<int32_t>{figure != 0});
+    // b75660 prints the explicit missing-record diagnostic before continuing
+    // through its location branches; no profession RAW is read on that path.
+    if (!figure) break;
+    reference('n', figure_id);
     const int32_t new_job = fields.at("new_job").front();
     // These native branches supply their complete predicate without asking
     // the race/caste profession formatter for either profession caption.
     if (new_job == 101 || (new_job >= 106 && new_job <= 110)) break;
-    const uintptr_t image = native_history_profile_base();
-    const uintptr_t figure = native_history_find_subject(image,
-        NativeHistoryObjectKind::Figure, fields.at("histfig").front());
     int16_t race = -1, caste_id = -1;
     captured = figure && native_history_copy(figure + 2, race) &&
         native_history_copy(figure + 4, caste_id);
@@ -89,7 +95,7 @@ case 51: { // body_abused, RVA b83d10; six-way table at b84460
         captured = plant && plant <= UINTPTR_MAX - 0x50 &&
             native_history_copy_string(plant + 0x50, name) && !name.empty();
         if (captured) result.texts.emplace("tree", std::move(name));
-    } else if (type < 0 || type > 5) captured = false;
+    }
     break;
 }
 case 53: { // item_stolen, RVA b8b080
@@ -157,7 +163,7 @@ case 66: { // hist_figure_revived, RVA b70360
         field("region", 0x30, 'r') && field("layer", 0x34, 'u') &&
         field("ghost", 0x38, 0, 2) && field("revival_flags", 0x3c) &&
         field("actor", 0x40, 'n') && field("interaction", 0x44) && field("effect", 0x48);
-    if (!captured || fields.at("ghost").front() >= 0) break;
+    if (!captured || fields.at("ghost").front() != -1) break;
     std::string form;
     captured = capture_native_history_revival_form(native_history_profile_base(),
         fields.at("interaction").front(), fields.at("effect").front(), form);
@@ -396,10 +402,15 @@ case 76: // site_dispute, RVA b83300
 case 78: // insurrection_started, RVA b6a480
     captured = field("target_civ", 0x28, 'p') && field("site", 0x2c, 's');
     break;
-case 79: // insurrection_ended, RVA b6a600
-    captured = field("target_civ", 0x28, 'p') && field("site", 0x2c, 's') &&
+case 79: { // insurrection_ended, RVA b6a600
+    captured = field("target_civ", 0x28) && field("site", 0x2c) &&
         field("outcome", 0x30);
+    if (captured && fields.at("outcome").front() >= 0 && fields.at("outcome").front() <= 2) {
+        reference('p', fields.at("target_civ").front());
+        reference('s', fields.at("site").front());
+    }
     break;
+}
 case 80: // hf_attacked_site, RVA b67bf0
     captured = field("attacker_hf", 0x28, 'n') &&
         field("defender_civ", 0x2c, 'p') && field("site_civ", 0x30, 'p') &&
@@ -434,9 +445,13 @@ case 86: { // artifact_transformed, RVA b8a2d0
     if (captured) fields.emplace("source_artifacts_have_items", std::move(sources));
     break;
 }
-case 88: // hf_relationship_denied, RVA b76550
+case 88: { // hf_relationship_denied, RVA b76550
     captured = field("seeker", 0x28, 'n') && field("target", 0x2c, 'n') &&
         field("relationship", 0x30) && field("denial_reason", 0x34) &&
-        field("denial_reason_data", 0x38, 'n') && field("site", 0x3c, 's') &&
+        field("denial_reason_data", 0x38) && field("site", 0x3c, 's') &&
         field("region", 0x40, 'r') && field("layer", 0x44, 'u');
+    if (captured && (fields.at("denial_reason").front() == 49 ||
+            fields.at("denial_reason").front() == 50))
+        reference('n', fields.at("denial_reason_data").front());
     break;
+}

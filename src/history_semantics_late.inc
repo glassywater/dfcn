@@ -215,19 +215,22 @@ case 95: { // artifact_claim_formed
     case 1: key = "{p} was made a family heirloom"; break;
     case 2: key = "{p} was claimed"; break;
     case 3: key = "{p} was sanctified"; break;
-    default: return std::nullopt;
+    // +d0 b886dc still emits the artifact, optional owner and context when
+    // claim has no native action arm. Do not invent a claim predicate.
+    default: break;
     }
     if (number("histfig") != -1 || number("entity") != -1) {
         auto actor = number("histfig") != -1 ? subject(NativeHistoryObjectKind::Figure, number("histfig")) :
             subject(NativeHistoryObjectKind::Entity, number("entity"));
         if (!actor) return std::nullopt;
-        key += " by {a}";
+        if (key.empty()) key = "Native artifact claim without action: {p} by {a}";
+        else key += " by {a}";
         values.push_back(*actor);
     }
     const bool distant_claim = number("claim") == 2 && event.circumstance == 251;
     // Remoteness modifies the claim itself, before the Chinese predicate.
     if (distant_claim) key += " from afar";
-    auto action = apply(key, values);
+    auto action = key.empty() ? std::optional<Pieces>{*artifact} : apply(key, values);
     auto clauses = event_clauses();
     if (!action || !clauses) return std::nullopt;
     join(result, *action);
@@ -348,7 +351,9 @@ case 98: { // hf_recruited_unit_type_for_entity
         return result;
     }
     std::optional<Pieces> action;
-    if (text("profession").empty()) action = apply("recruited from {p}", {*entity});
+    // Native +d0 b7a150 appends "into" before this entity. The entity is
+    // the organization receiving recruits, not the source of recruits.
+    if (text("profession").empty()) action = apply("recruited into {p}", {*entity});
     else {
         auto profession = term(text("profession"));
         if (!profession) {
@@ -356,9 +361,7 @@ case 98: { // hf_recruited_unit_type_for_entity
             if (exact) profession = Pieces{piece(*exact, neutral)};
         }
         if (!profession) return std::nullopt;
-        auto recruits = apply("{a} from {p}", {*profession, *entity});
-        if (!recruits) return std::nullopt;
-        action = apply("recruited {a}", {*recruits});
+        action = apply("recruited {s} into {p}", {*profession, *entity});
     }
     if (!action) return std::nullopt;
     const int32_t site_id = number("site"), region_id = number("region"), layer_id = number("layer");

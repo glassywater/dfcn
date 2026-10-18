@@ -92,6 +92,7 @@
             std::optional<NativeParagraphViewport> source_viewport = native
                 ? std::optional(viewport) : std::nullopt;
             int complete_layout_rows = 0;
+            std::shared_ptr<const NativeHistoryDocument> story_event;
             // The performance renderer wraps the complete selected-subject
             // source at 0x8712e4 -> 0x858550 and draws its colored rows through
             // 0x872b3d -> 0xad9790. These are rich documents, separate from
@@ -161,6 +162,7 @@
                                 return !trim_view(row).empty();
                             })) continue;
                     source = document->source;
+                    story_event = document->story_event;
                     complete_layout_rows = static_cast<int>(document->rows.size());
                     // This fixed preview has no native scrolling offset. Lay
                     // out the complete translation and clip it to its frame.
@@ -237,7 +239,7 @@
                 at = end + 1;
             }
             flush();
-            if (!supported_markup || paragraphs.empty()) {
+            if (!story_event && (!supported_markup || paragraphs.empty())) {
                 retain_description_source();
                 continue;
             }
@@ -286,7 +288,17 @@
                 }
                 return memo[begin];
             };
-            const auto target = translate_card(0);
+            std::optional<std::string> target;
+            if (story_event) {
+                // STORY_EVENT is identified by the native selected entry,
+                // not by English predicates or the shorter +d8 list title.
+                // All +d0 event families use the same complete semantics.
+                if (const auto pieces = translate_history_event(*story_event, false)) {
+                    std::string complete;
+                    for (const auto &piece : *pieces) complete += piece.target;
+                    if (!complete.empty()) target = std::move(complete);
+                }
+            } else target = translate_card(0);
             if (!target) {
                 retain_description_source();
                 continue;

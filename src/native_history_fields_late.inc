@@ -251,11 +251,15 @@ case 119: { // building_profile_acquired: RVA b7b230
     if (captured) fields.emplace("resolved_structure", std::vector<int32_t>{building});
     break;
 }
-case 120: // hf_preach: RVA b7b540
+case 120: { // hf_preach: RVA b7b540
     captured = field("speaker", 0x28, 'n') && field("site", 0x2c, 's') &&
-        field("topic", 0x30, 0, 2) && field("audience", 0x34, 'p') &&
-        field("target", 0x38, 'p');
+        field("topic", 0x30, 0, 2);
+    // Only these two native branches read either entity. Other meeting
+    // topics emit the date/speaker/site without consulting unrelated IDs.
+    if (captured && (fields.at("topic").front() == 11 || fields.at("topic").front() == 12))
+        captured = field("audience", 0x34, 'p') && field("target", 0x38, 'p');
     break;
+}
 case 122: // entity_breach_feature_layer: RVA b7c0d0
     captured = field("site", 0x28, 's') && field("site_civ", 0x2c, 'p') &&
         field("civ", 0x30, 'p') && field("layer", 0x34, 'u');

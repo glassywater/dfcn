@@ -731,6 +731,9 @@ static void dfcn_capture_native_overview_thoughts_wrap(
 
 static void dfcn_capture_native_knowledge_draw(
         graphicst *graphics, const char *text, const char *colors) {
+    // The story preview retains its colored rows across core replacement.
+    // Recover their selected event before the shared writer publishes them.
+    if (graphics && text) prepare_native_performance_story_document(text);
     // The native draw advances the cursor. Preserve its input position, but
     // publish row ownership only after the corresponding grid write exists.
     // Otherwise the renderer can consume a new scroll capture against the
