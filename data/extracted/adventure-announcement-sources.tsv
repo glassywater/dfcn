@@ -136,6 +136,7 @@ adventure.announcement.control	0x140895fd0:0x14089708e@0x16b3e70	It's too much! 
 adventure.announcement.control	0x140895fd0:0x140897098@0x16b3e80	You might not be able to keep it down.
 adventure.announcement.control	0x140895fd0:0x140897191@0x16b3ef8	You feel really full.
 adventure.announcement.control	0x140895fd0:0x1408971ea@0x16b3ed8	You are starting to feel full.
+adventure.announcement.control	PE reference 0x140895fd0:0x140896e60; classic 0x140893850:0x1408946e0; adventure-consumption/*-consume.c	You just can't fit any more.
 adventure.announcement.control	0x140833df0	You read {s}.
 adventure.announcement.control	0x140834410	You pull out {s}.
 adventure.announcement.control	0x140834eb0	You cease nocking {s}.

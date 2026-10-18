@@ -1,0 +1,25 @@
+owner	production	fields	translation_owner
+consume	You eat the {item}.	complete physical item caption	$announcement-item
+consume	You drink the {item}.	complete physical item caption	$announcement-item
+consume	You lick the {item}.	complete physical item caption	$announcement-item
+consume	The {item} is too salty.	complete physical item caption	$announcement-item
+consume	The {item} is too hot.	complete physical item caption	$announcement-item
+consume	The {item} is too cold.	complete physical item caption	$announcement-item
+consume	No.  That's disgusting.		adventure-announcements.tsv
+consume	You just can't fit any more.		adventure-announcements.tsv; ui-messages.tsv shared complete literal
+consume	It's too much!  You feel even more sick.		adventure-announcements.tsv
+consume	It's too much!  You might not be able to keep it down.		adventure-announcements.tsv
+consume	You feel really full.		adventure-announcements.tsv
+consume	You are starting to feel full.		adventure-announcements.tsv
+fill-item;fill-liquid	You fill your {item} with {substance}.	container; complete item or material with contaminants/stagnant/salt flags	$announcement-item,$announcement-substance
+fill-item;fill-liquid	Your {item} is already full.	complete container caption	$announcement-item
+fill-item;fill-liquid	It won't fit in your {item}.	complete container caption	$announcement-item
+fill-item	{item} is empty.	complete source-container caption	$announcement-item
+heat-liquid	The {substance} is hot enough already.	complete substance caption	$announcement-substance
+heat-liquid	You heat the {substance}.	complete substance caption	$announcement-substance
+heat-liquid	You heat the {substance} to no effect.	complete substance caption	$announcement-substance
+empty-item	You empty {item}.	complete physical item caption	$announcement-item
+empty-item	You drop {item}.	complete physical item caption	$announcement-item
+remove-empty-item	You empty the {item}.	complete physical item caption	$announcement-item
+remove-empty-item	You take out the {item}.	complete physical item caption	$announcement-item
+remove-empty-item	You take off {item}.	complete physical item caption	$announcement-item

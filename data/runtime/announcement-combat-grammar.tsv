@@ -27,25 +27,25 @@ layer	{s}'s {s}	{s1}的{s2}	layer,$term	0x1400e7732+0x1400e7a26+0x1400e8158
 layer	{s}	{s1}	$body	0x1413345d0; RAW body names
 layer	{s}	{s1}	$term	0x1400e7768+0x1400e79b5; RAW tissue/material display names
 object	{s}	{s1}	$body	0x1400e5b17+0x141361868; anatomical semantics precede homonymous item nouns
-object	{s}	{s1}	$item	0x1400e5afa+0x1413617c3
+object	{s}	{s1}	$combat-item	0x1400e5afa+0x1413617c3; complete c65450 caption includes its virtual article and designation wrappers
 object	body part	身体部位		0x141361885+0x141361c5a
 # Grip records supply one complete owner followed by either a RAW body name or a complete item caption. Resolve all anatomical splits before any item split: a corpse unit owns its teeth; "corpse's teeth" must not become a detached item owned by the literal word corpse.
 owned-object	{s} {s}	{s1}{s2}	owner,$body	PE reference 0x1413617cd..0x141361a9a+0x141361ba2..0x141361e6d; classic 0x14135c73d..0x14135ca0a+0x14135cb12..0x14135cddd; whole owner plus RAW singular/plural body name or body part(s)
-owned-object	{s} {s}	{s1}{s2}	owner,$item	PE reference 0x14136175a..0x1413617c8+0x141361b2b..0x141361b9d; classic 0x14135c6ca..0x14135c738+0x14135ca9b..0x14135cb0d; native item-id branch calls complete item caption after whole owner
+owned-object	{s} {s}	{s1}{s2}	owner,$combat-item	PE reference 0x14136175a..0x1413617c8+0x141361b2b..0x141361b9d; classic 0x14135c6ca..0x14135c738+0x14135ca9b..0x14135cb0d; native item-id branch calls complete item caption after whole owner
 owned-object	{s}	{s1}物品	owner	PE reference 0x141361772+0x1413617ad+0x141361b43+0x141361b88; classic 0x14135c6e2+0x14135c71d+0x14135cab3+0x14135caf8; item-id lookup failure leaves owner and separator; retain its proved item meaning separately from body part(s) fallback
 equipment	{s} {s}	{s1}{s2}	owner,$body	0x14064b736..0x14064b7b3; anatomy before homonymous item instrument
 equipment	{s}	{s1}	owned-object	0x14064b736..0x14064b7b3; unarmed owner and full body part
 equipment	{s}	{s1}	$body	0x14064b7a0; unarmed anatomical instrument
-equipment	{s}	{s1}	$item	0x14064af07..0x14064b736; item helper 0x140c65450
-equipment	{s} {s}	{s1}{s2}	owner,$item	0x14064afdc+0x14064b736
+equipment	{s}	{s1}	$combat-item	0x14064af07..0x14064b736; complete item helper 0x140c65450 includes article before quality/wear/ownership wrappers
+equipment	{s} {s}	{s1}{s2}	owner,$combat-item	0x14064afdc+0x14064b736
 equipment	the {s} of {s}	{s2}的{s1}	weapon-part,equipment	0x14064af91+0x14064afb7
 weapon-part	shaft	杆		RAW ATTACK subpart; data/runtime/rulesets/zh-Hans/adv/attack.toml hitway
 weapon-part	flat	平面		RAW ATTACK subpart; data/runtime/rulesets/zh-Hans/adv/attack.toml hitway
 weapon-part	pommel	圆头		RAW ATTACK subpart; data/runtime/rulesets/zh-Hans/adv/attack.toml hitway
 actor	{s}	{s1}	unit	0x1400e57f2
-actor	the spinning {s}	旋转着的{s1}	$item	0x1400e5887+0x1400e58e0+0x1400e5911
-actor	the flying {s}	飞来的{s1}	$item	0x1400e5887+0x1400e58e9+0x1400e5911
-actor	the {s}	{s1}	$item	0x1400e58de+0x1400e5911
+actor	the spinning {s}	旋转着的{s1}	$combat-item	0x1400e5887+0x1400e58e0+0x1400e5911
+actor	the flying {s}	飞来的{s1}	$combat-item	0x1400e5887+0x1400e58e9+0x1400e5911
+actor	the {s}	{s1}	$combat-item	0x1400e58de+0x1400e5911
 attack-verb	bite	咬		active vanilla ATTACK_VERB / item_weapon.txt ATTACK; native 0x14064a9e6+0x14064af07+0x14064b97a; existing data/runtime/rulesets/zh-Hans/adv/attack.toml terminology
 attack-verb	bites	咬		active vanilla ATTACK_VERB / item_weapon.txt ATTACK; native 0x14064a9e6+0x14064af07+0x14064b97a; existing data/runtime/rulesets/zh-Hans/adv/attack.toml terminology
 attack-verb	snatch at	扑抓		active vanilla ATTACK_VERB / item_weapon.txt ATTACK; native 0x14064a9e6+0x14064af07+0x14064b97a; existing data/runtime/rulesets/zh-Hans/adv/attack.toml terminology

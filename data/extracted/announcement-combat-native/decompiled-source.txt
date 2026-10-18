@@ -18,6 +18,12 @@ The C keeps Ghidra's original diagnostics and inferred types; these are recovere
 source expressions, not original developer variable names or complete C++ types.
 Native selector destinations are supplied from native-switches.tsv, and complete
 unwind owner boundaries prevent tail transfers from swallowing unrelated owners.
+The 2026-10-18 shot/defense follow-up re-decompiles the complete melee/projectile,
+item-caption, unit-caption and body-part owners directly from both configured
+PEs, using the same DecompileCombatAnnouncements.java and their retained native
+owner/call/literal/selector operands. These are complete owner C exports, not
+just the string sites shown by the screenshots. The other existing owner C
+exports remain the source graph for shared damage, projectiles and item subtypes.
 The std::basic_string overflow throw is nonreturning at reference 0x140065890 and
 classic 0x140065820; the selector bytes following that call are data, not extra
 English productions or reachable x86 instruction branches.
@@ -494,6 +500,22 @@ ordinary:
     // slab, statue/figurine, food, corpse and tool captions enter those methods.
     // Custom named cages/designations are authored fields, not adjective lists.
     // Artifact-name and written-title early returns bypass the ordinary title.
+The shot block/parry/deflection sites pass count=1 to this entire supplier:
+reference 0x14064dbf3, 0x14064f22f, 0x14064f300, 0x14064f9e7,
+0x14064fad4; their classic counterparts are retained independently in the
+classic-647d70 C/assembly and native-calls.tsv. The article is outside the
+paired quality/designation span. A combat item's strict leaf must consume
+that article and the complete marked noun together; matching a bare ::items
+noun alone does not cover this producer. The scoped $combat-item path reuses
+translate_inventory_item_name, which owns the same native article, decimal
+suffix and designation grammar, then the existing announcement item grammar.
+Anatomical equipment and all five possessive pronouns plus named-owner 's
+remain separate equipment/owner branches before that item leaf.
+All native shot-result literals remain semantic syntax: parried/deflected,
+their respective finite adverbs, blocked, strike/strikes at, and the optional
+by/with equipment clauses. Display composition may preserve an unknown typed
+item or person field, but it cannot preserve a whole unresolved SHOT,
+SHOT_RESULT, attack, evasion, damage or injury clause as an opaque name.
 Quality/wear wrappers are whole item decorations, not ownership delimiters.
 The finite dispatch branches are unchanged when an arbitrary item is wielded as
 an improvised weapon; translating only material/type nouns omits bare names.

@@ -167,7 +167,10 @@ static std::string native_announcement_display_source(std::string_view source,
     bool pending_space = false;
     size_t pending_origin = 0;
     const auto append = [&](unsigned char ch, size_t origin) {
-        if (std::isspace(ch)) {
+        // Native fish captions use CP437 0x0b/0x0c for sex. Their exact
+        // glyphs belong to the item field, including before a [quantity];
+        // treating them as C vertical-tab/form-feed destroys that field.
+        if (native_prose_space(ch)) {
             if (!pending_space) pending_origin = origin;
             pending_space = !result.empty();
             return;

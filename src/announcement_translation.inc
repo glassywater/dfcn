@@ -123,21 +123,23 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
             return native;
         }
-        // Unknown adventure items retain their native action and field
+        // Unknown typed fields retain their native action and field
         // boundaries after complete combat productions have had first choice.
         // Only the full record admits partial display composition; sentence
         // partitioning below continues to require strict translations.
         if (owned_result) {
-            auto native = translate_announcement_combat_result(block, "adventure-announcement");
-            if (native.usable()) {
-                for (size_t at = 0; at < native.target.size(); ++at) {
-                    if ((static_cast<unsigned char>(native.target[at]) & 0xc0) == 0x80) continue;
-                    const size_t origin = at < native.origins.size()
-                        ? native.origins[at] : std::string::npos;
-                    translated_colors.push_back(colors[origin < colors.size() ? origin : 0]);
+            for (const std::string_view scope : {"sentence", "adventure-announcement"}) {
+                auto native = translate_announcement_combat_result(block, scope);
+                if (native.usable()) {
+                    for (size_t at = 0; at < native.target.size(); ++at) {
+                        if ((static_cast<unsigned char>(native.target[at]) & 0xc0) == 0x80) continue;
+                        const size_t origin = at < native.origins.size()
+                            ? native.origins[at] : std::string::npos;
+                        translated_colors.push_back(colors[origin < colors.size() ? origin : 0]);
+                    }
+                    *owned_result = std::move(native);
+                    return owned_result->target;
                 }
-                *owned_result = std::move(native);
-                return owned_result->target;
             }
         }
         // The native growth constructor has a single typed result field.

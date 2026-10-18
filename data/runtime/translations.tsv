@@ -7300,11 +7300,13 @@ DFHack help: keybinding add Ctrl-Shift-S@dwarfmode/ViewSheets/UNIT|dwarfmode/Vie
 DFHack help: modtools/spawn-flow --material <TOKEN> --flowType <type> --location [ <x> <y> <z> ] [--flowSize <size>]	modtools/spawn-flow --material <TOKEN> --flowType <type> --location [ <x> <y> <z> ] [--flowSize <size>]	l
 DFHack help: thread/silk/ thread/plant/ thread/yarn/ thread/metal/ cloth/silk/ cloth/plant/ cloth/yarn/ cloth/metal/	thread/silk/ thread/plant/ thread/yarn/ thread/metal/ cloth/silk/ cloth/plant/ cloth/yarn/ cloth/metal/	l
 Generally, almost every task will be available for every citizen, but you can both restrict both citizens and tasks.	通常，几乎所有居民都可以执行几乎所有任务，但你可以同时对居民和任务施加限制。	hq
+I think people should hone their skills, but it's possible to take it too far and lose sight of the breadth of life.	人应当磨炼技艺，但太过投入，也会忽略生活的广阔。	hPD
 If a gait has two numbers, the first number is the starting speed for the gait, and the second is the maximum speed.	如果一种步态显示两个数值，第一个是起始速度，第二个是最高速度。	hq
 It can be useful to assign all of your civilians to a safe emergency Burrow which you activate in case of intruders.	[C:7:0:0]可以把所有平民分配到一个安全的紧急避难[C:1:0:0]活动区[C:7:0:0]，在入侵者出现时将其启用。	hq
 It has {s} and it always tries to embolden any fighting in its presence with exhortations of bravery, even its foes.	它长有{s1}，它总会呼喊着鼓舞眼前所有交战者的勇气，连敌人也不例外。	ht
 The army is commanded by {n}, an ancient and horrible demon escaped from the underworld before the dawn of time. {v}	{n1}统领着这支军队。这远古恶魔恐怖至极，早在时间诞生之前就逃出了地下世界。{v1}	hPt
 The high priest of {e} is ready to be recognized (from the temple's location menu.) This will satisfy the agreement.	{e1}的大祭司已准备好获得认可（可在神殿的地点菜单中操作）。这将履行协议。	hPt
+The whole idea of loyalty is pointless. Acting purely out of loyalty implies acting against one's own best interest.	忠诚这个念头毫无意义。只凭忠诚行事，就意味着违背自己的最大利益。	hPD
 There you can select which Animals to slaughter. You may need to minimize the tutorial to see the Slaughter buttons.	[C:7:0:0]在这里可以选择要屠宰的[C:2:0:0]动物[C:7:0:0]。你可能需要将教程最小化，才能看到“[C:5:0:1]屠宰[C:7:0:0]”按钮。	hq
 This night creature was first created by {n} of {p} after horrible experiments on multitudes in {p} in the year {d}.	第{d1}年，来自{p1}的{n1}在{p2}对大批生物进行了可怕的实验后，首次创造出了这种夜行生物。	ht
 Track stops are used in conjunction with the hauling menu. They can also be used to add friction to minecart tracks.	轨道站点配合搬运菜单使用，也可增加矿车轨道的摩擦力。	hj
@@ -7463,6 +7465,7 @@ In the midautumn of {d}, the hydra Delado Puschanted the Superior Gall was struc
 Tactical mode is on. You control everybody manually. Click to control only this character (others will follow you.)	战术模式已开启，你需要手动控制所有成员。点击后仅控制此角色，其他人会跟随你。	hj
 The easiest way to move is to left click in the play area. Your character will path to the target tile if possible.	最简单的移动方式是左键点击游戏区域。只要路径可达，角色就会前往目标地块。	hq
 The priesthood of {e} is ready to be recognized (from the temple's location menu.) This will satisfy the agreement.	{e1}的祭司团已准备好获得认可（可在神殿的地点菜单中操作）。这将履行协议。	hPt
+The world isn't always safe. I can see the value in martial training, the beauty even, but it shouldn't be exalted.	这世界并不总是安全的。我明白习武的价值，甚至它的美，但不该将它奉为至高。	hPD
 There are several types of quests or quest-adjacent tasks that can be received during conversation or from a deity.	你可以在交谈中或从神祇那里接到几种不同类型的任务及相关事务。	hq
 This night creature was first created accidentally by {n} of {p} through the fiend's chaotic power in the year {d}.	第{d1}年，来自{p1}的{n1}释放邪魔的混沌力量后，首次意外创造出了这种夜行生物。	ht
 This night creature was first created accidentally by {n} of {p} through the fiend's twisted power in the year {d}.	第{d1}年，来自{p1}的{n1}释放邪魔的扭曲力量后，首次意外创造出了这种夜行生物。	ht
@@ -7636,11 +7639,13 @@ In the early spring of {d}, the dwarf Catten Glenmansions's tongue was torn off 
 Legends speak of an ancient vault, {e}, where {p} wrested her power from the Underworld by invoking her true name.	传说中有一座古老的秘库{e1}，{p1}曾在那里呼唤自己的真名，由此从冥界夺得了自身的力量。	hqt
 Legends speak of an ancient vault, {e}, where {p} wrested his power from the Underworld by invoking his true name.	传说中有一座古老的秘库{e1}，{p1}曾在那里呼唤自己的真名，由此从冥界夺得了自身的力量。	hqt
 Legends speak of an ancient vault, {e}, where {p} wrested its power from the Underworld by invoking its true name.	传说中有一座古老的秘库{e1}，{p1}曾在那里呼唤自己的真名，由此从冥界夺得了自身的力量。	hqt
+Life isn't fair, and sometimes you have to do what you have to do, but working toward a balance isn't a bad thing.	生活并不公平，有时也不得不如此，但尽力求个公道总不是坏事。	hPD
 Make sure your parameters and presets can support mid-elevation, high rainfall, high drainage, non-freezing areas.	请确保参数和预设支持中等海拔、高降雨量、高排水且不冻结的区域。	l
 Really retire? The world will be saved but you will need to unretire or recruit this character to play them again.	确定要退役吗？世界将会保存，但若想再次操控这个角色，你需要先让其复出，或将其招入队伍。	P
 The view is dark underground. You can recenter on yourself with the {k} hotkey or by clicking the recenter button.	地下视野是黑暗的。要将视角重新对准自己，可以按{k1}热键，或点击重新居中按钮。	hqt
 This night creature was first created by {n} through the fiend's chaotic power unleashed upon {s} in the year {d}.	第{d1}年，{n1}对{s1}释放邪魔的混沌力量后，首次创造出了这种夜行生物。	ht
 This night creature was first created by {n} through the fiend's twisted power unleashed upon {s} in the year {d}.	第{d1}年，{n1}对{s1}释放邪魔的扭曲力量后，首次创造出了这种夜行生物。	ht
+You should think carefully before embarking on a joint enterprise, though there is some value in working together.	合作虽有益处，但与人共事之前，还是应当仔细考虑。	hPD
 and received the title of {s} after attaining sufficient skill with {s} and being a member for a year in the wilds	并在荒野中在{s2}方面达到足够的技艺水平及入会满一年后，获得了{s1}头衔	ht
 and received the title of {s} after participating in {d} battles, slaying an enemy, and being a member for a year.	并参加{d1}场战斗、杀死一名敌人及入会满一年后，获得了{s1}头衔。	ht
 and received the title of {s} after participating in {d} battles, slaying {d} enemies, and {d} years of membership	并参加{d1}场战斗、杀死{d2}名敌人及拥有{d3}年会龄后，获得了{s1}头衔	ht
@@ -7799,6 +7804,7 @@ DFHack help: devel/clear-script-env ====================== Clears the environmen
 Digging a ramp into a wall on the same level will create a connection to the higher level and remove the ceiling.	在同层墙体上开挖斜坡，会移除顶层，并建立通向上一层的连接。	hq
 If this is your first time playing, please heed the embark warnings about aquifers, saltwater, and other hazards.	如果这是你第一次游玩，请留意启程时关于含水层、咸水和其他危险的警告。	hq
 Most terrain-altering constructions can be found here, from walls and floors to bridges, ramps, stairs, and more.	大多数改变地形的建造选项都在这里，包括墙壁、地板、桥梁、斜坡和楼梯等。	hj
+There's something to be said for trade as a necessity, but there are better things in life to do with one's time.	贸易确有必要，但人生还有更值得花时间的事。	hPD
 This night creature was first created by {n} of {p} after horrible experiments on the {n} in {p} in the year {d}.	第{d1}年，来自{p1}的{n1}在{p2}对{n2}进行了可怕的实验后，首次创造出了这种夜行生物。	ht
 and received the title of {s} after attaining sufficient skill with {s} and being a member for a year during {e}.	并在{e1}期间在{s2}方面达到足够的技艺水平及入会满一年后，获得了{s1}头衔。	ht
 and received the title of {s} after attaining sufficient skill with {s} and being a member for a year within {p}.	并在{p1}在{s2}方面达到足够的技艺水平及入会满一年后，获得了{s1}头衔。	ht
@@ -7978,7 +7984,9 @@ DFHack help: and trg.target._type._union and " [union structure]" or "" self.sub
 DFHack help: export-world-map export-world-map <topic> export-world-map <topic> <topic> ... export-world-map all	导出世界地图导出世界地图 <topic> 导出世界地图 <topic> <topic> ... 导出世界地图全部	l
 Dwarves, for example, require non-evil, non-good, unsavage mountain squares that aren't surrounded by the ocean.	例如，矮人需要既非善良也非邪恶、非野蛮且不被海洋包围的山地方格。	l
 Here you'll see a list of party members, companions, and pets, along with their general location if you know it.	这里会列出队员、同伴和宠物，以及你所知的他们的大致位置。	hq
+Is there ever a time when honesty by itself overrides other considerations? Say what is right, not what is true.	难道诚实就能凌驾于一切考量之上？要说合适的话，而不只是真话。	hPD
 Make sure your parameters and presets allow as many border mountain squares as you are requiring mountain caves.	请确保参数和预设提供的边缘山地方格不少于所需山地洞穴数量。	l
+Nature can be enjoyed and used for myriad purposes, but there must always be respect and even fear of its power.	自然可供欣赏，也有无数用途，但对它的力量，始终要怀有尊重，乃至畏惧。	hPD
 The Judge of Intent skill can help you keep tabs on the other speaker's mood. The people you are conversing with	[C:3:0:1]意图判断[C:7:0:0]技能有助于了解对方的情绪。与你交谈的人	hq
 The army is commanded by {n}, an ancient and horrible demon escaped from the underworld before the dawn of time.	{n1}统领着这支军队。这远古恶魔恐怖至极，早在时间诞生之前就逃出了地下世界。	hPt
 There is a random element to outcomes and some body parts will be easier or harder to hit from moment to moment.	结果包含随机因素，各身体部位在不同时刻的命中难度也会变化。	hq
@@ -8661,6 +8669,7 @@ Here you can view your nobles, as well as assign your administrators, military l
 I'm returning to my home in {e} in search of a thrilling adventure, and wealth and pleasures beyond measure!	我正返回{e1}的家，寻一场惊险刺激的冒险，还想挣下数不尽的钱财，享尽人间的乐趣！	hPtD
 Make metal bars from ore here. Can also refine coal into usable fuel or make alloys. All tasks require fuel.	在这里将矿石熔炼成金属锭，也可将煤加工成可用燃料或制造合金。所有任务都需要燃料。	hj
 More complicated buildings from wells to powered machine components to levers and floodgates are found here.	这里包含较复杂的建筑，如水井、动力机械部件、控制杆和闸门。	hj
+Sometimes the blunt truth just does more damage. Think about how the situation will unfold before you speak.	有时直言实情只会造成更大伤害。开口之前，先想想后果。	hPD
 The system is reasonably powerful and you can eventually automate almost all of your production if you wish.	这套系统功能相当强大，只要愿意，最终几乎可以让所有生产自动进行。	hq
 This night creature was first created accidentally by {n} through the fiend's chaotic power in the year {d}.	第{d1}年，{n1}释放邪魔的混沌力量后，首次意外创造出了这种夜行生物。	ht
 This night creature was first created accidentally by {n} through the fiend's twisted power in the year {d}.	第{d1}年，{n1}释放邪魔的扭曲力量后，首次意外创造出了这种夜行生物。	ht
@@ -8957,6 +8966,7 @@ Announcement combat spoken-sentence [speech-service-person]: I do not know! My i
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-emotion]: {s} were {s}.	{s1}曾{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} burns {s}.	{s1}焚烧{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} flood {s}.	{s1}淹没{s2}。	l
+Building friendships is a waste. There is no bond that can withstand distance or a change of circumstance.	结交朋友是白费心力。没有哪份情谊经得起相隔遥远或境遇变迁。	hPD
 DFHack help: "--resetall" Forget which dwarves have been optimized and remove the saved optimization data.	"--resetall" 忘记哪个矮人已经优化过，并删除保存的优化数据。	l
 DFHack help: "allneeds --sort strength" Sort the list of needs by how strongly the people feel about them.	"allneeds --sort strength" 根据人们对需求的感受有多强烈对需求列表进行排序。	l
 DFHack help: "exterminate BIRD_RAVEN:MALE" Kill the ravens flying around the map (but only the male ones).	"exterminate BIRD_RAVEN:MALE" 杀死在地图上飞来飞去的乌鸦（但仅限雄性乌鸦）。	l
@@ -9729,7 +9739,9 @@ DFHack help: unusable-parts: Non-entombed body parts that can't be used for manu
 Designate items for dumping and melting, claim forbidden items and buildings, and set item visibility.	指定倾倒或熔化物品、解除物品和建筑的禁用状态，以及设置物品可见性。	hj
 Haulers will also drop Wood in your All Stockpile unless you turn it off in the Custom Stockpile Menu.	[C:2:0:0]搬运工[C:7:0:0]也会把[C:6:0:1]木头[C:7:0:0]放进[C:6:0:0]接收全部物品的储物堆[C:7:0:0]，除非你在“[C:5:0:1]自定义储物堆[C:7:0:0]”菜单中禁用了这一项。	hq
 Once they are assigned, you can create work orders, run a Hospital, and count and appraise your hoard.	[C:7:0:0]任命他们后，就可以创建工单、运营[C:1:0:1]医院[C:7:0:0]，并清点和估价你的财富。	hq
+People should be able to control themselves, but it's fine to follow impulses that aren't too harmful.	人应当懂得自制，但顺从一些无伤大雅的冲动也无妨。	hPD
 Plump Helmets are edible and the default Wagon comes with Plump Helmet Spawn, which are their "seeds".	[C:6:0:1]肉盔菇[C:7:0:0]可以食用，默认的[C:6:0:0]货车[C:7:0:0]还带有[C:6:0:1]肉盔菇菌种[C:7:0:0]，也就是它们的“种子”。	hq
+There is no value in telling the truth thoughtlessly. Consider the circumstances and say what is best.	不假思索地说实话没有意义。要看清情形，说最合适的话。	hPD
 This is the movement options menu. Here you can choose your gait and see your current stealth profile.	这是移动选项菜单。在这里可以选择步态，并查看当前的潜行状况。	hq
 This night creature was first created by {n} after horrible experiments on multitudes in the year {d}.	第{d1}年，{n1}对大批生物进行了可怕的实验后，首次创造出了这种夜行生物。	ht
 This night creature was first created by {n} after horrible experiments on {s} in {p} in the year {d}.	第{d1}年，{n1}在{p1}对{s1}进行了可怕的实验后，首次创造出了这种夜行生物。	ht
@@ -10388,6 +10400,7 @@ From the Tavern Info Menu you can choose to assign Performers or a Tavern Keeper
 I engaged {n} to infiltrate {e} in order to steal treasures, initiate sabotage, and instill terror.	我雇{n1}渗透{e1}，以窃取宝藏、开展破坏活动和制造恐慌。	hPtD
 I engaged {n} to infiltrate {e} in order to steal treasures, initiate sabotage, and prepare a coup.	我雇{n1}渗透{e1}，以窃取宝藏、开展破坏活动和策划政变。	hPtD
 Join me and we can shake off the yoke of {e} from the weary shoulders of the people of {e} forever!	加入我，我们就能让{e2}饱受压迫的人民永远摆脱{e1}的枷锁！	hPtD
+There are times when it is best to keep your feelings to yourself, but I wouldn't want to force it.	有时把感受留在心里更好，但我不愿勉强。	hPD
 This night creature was first created by {n} after horrible experiments on the {n} in the year {d}.	第{d1}年，{n1}对{n2}进行了可怕的实验后，首次创造出了这种夜行生物。	ht
 To have a fully functioning Tavern you must have a Stockpile with Booze in it, preferably close by.	[C:7:0:0]要让[C:1:0:1]酒馆[C:7:0:0]正常运作，必须有一个存放[C:6:0:1]酒[C:7:0:0]的[C:6:0:0]储物堆[C:7:0:0]，最好就在附近。	hq
 Vanilla mod description: The default Dwarf Fortress graphics for the interface buttons, icons, etc.	《矮人要塞》中界面按钮、图标等元素的默认图像。	l
@@ -10595,6 +10608,7 @@ Announcement combat spoken-sentence [description-institution,$name]: There is {s
 Announcement combat spoken-sentence [dialogue-query-person]: Can you tell me where I can find {s}?	能告诉我到哪里能找到{s1}吗？	l
 Announcement combat travel-role-main [travel-squad-role,$travel-site]: You are a {s} based in {s}.	你是一名{s1}，驻地在{s2}。	l
 As the guild grows in power they may demand a Guildhall of greater value. This can be increased by	[C:7:0:0]随着行会势力增长，他们可能要求提高[C:1:0:1]行会大厅[C:7:0:0]的价值。你可以通过	hq
+Consider your loyalties carefully, adhere to them while they last, and abandon them when you must.	慎重选择效忠的对象，该坚守时坚守，必须放弃时就放弃。	hPD
 DFHack GUI Confirmation prompt: Are you sure you want to convict {n}? This action is irreversible.	确定要将{n}定罪吗？此操作无法撤销。	l
 DFHack GUI Journal tutorial: Welcome to gui/journal, the adventurer's notebook for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的冒险笔记！	l
 DFHack GUI Notification settings: Reports missing nemesis records, indicating savegame corruption.	报告缺失的人物关联记录，提示存档可能损坏。	l
@@ -10656,6 +10670,7 @@ Meeting Areas are Zones where your citizens gather when not working or taking ca
 Note that if you have a Broker the value of each good with be shown if their skill is high enough.	[C:7:0:0]请注意，如果[C:5:0:0]交易员[C:7:0:0]的技能足够高，就能显示每件商品的价值。	hq
 Process plants and work with livestock here. Milk and shear animals, make cheese, and spin thread.	在这里加工植物和照料牲畜：挤奶、剪毛、制作奶酪和纺线。	hj
 Some migrants have decided to brave this terrifying place, knowing it may be their miserable tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们悲惨的坟墓。	hP
+Some self-sacrifice is worthy, but do not forget yourself in devotion to the well-being of others.	适当牺牲自己值得敬重，但为他人谋福祉，也别忘了自己。	hPD
 Strike somebody adjacent with a melee attack. Also allows available parry, block, and dodge moves.	近战打击相邻目标。也可选择当前可用的招架、格挡和闪避动作。	hj
 The world generator is having trouble setting volcanism in the manner specified by the parameters.	世界生成器无法按参数要求设置火山活动度。	l
 There's some food on the embark Wagon, and you can trade for food, but you can also grow your own.	[C:7:0:0]启程时的[C:6:0:0]货车[C:7:0:0]上有一些食物，你也可以通过交易获得食物，但还可以自己种植。	hq
@@ -11138,6 +11153,7 @@ Some migrants have decided to brave this terrifying unhappy place, knowing it ma
 Some surfaces like walls can be also climbed, but these require climbing skill to hold reliably.	墙壁等某些表面也能攀爬，但需要攀爬技能才能稳稳抓住。	hq
 Stolen Artifacts and kidnapped citizens can be recovered by preparing missions from this screen.	[C:7:0:0]可以在此界面安排任务，找回被盗的[C:6:0:1]造物[C:7:0:0]和遭绑架的居民。	hq
 The Wagon comes with some Seeds, but as you might expect, these crops must be grown underground!	[C:6:0:0]货车[C:7:0:0]带有一些[C:6:0:1]种子[C:7:0:0]，不过正如你可能想到的，这些作物必须种在地下！	hq
+There's more to life than becoming great at just one thing, but being good at several isn't bad!	人生不只有精通一件事，多擅长几样也不错！	hPD
 Through {n}, I told {n} to ask {n} to grant an important position to me when one came available.	我通过{n1}转告{n2}，要求{n3}在职位出现空缺时，将一个重要职位授予我。	hPtD
 Toggle the visibility of the item. Hidden items cannot be seen but citizens will still use them.	切换物品的可见性。隐藏物品不可见，但居民仍会使用。	hj
 Use options in this category to place furniture that has already been constructed in a workshop.	使用此类别中的选项，放置已在工坊制作好的家具。	hj
@@ -11716,6 +11732,7 @@ DFHack help: with all caved in tiles, but I can confirm that they do in at least
 Despite the interrogation by {a}, {a} refused to reveal anything and was released in the wilds	在荒野中，尽管受到{a1}审讯，{a2}仍拒绝交代任何事情，随后被释放了	ht
 I engaged {n} to infiltrate in order to initiate sabotage, instill terror, and prepare a coup.	我雇{n1}渗透，以开展破坏活动、制造恐慌和策划政变。	hPtD
 I'm returning to my home in {e} in search of excitement. Perhaps I'll finally make my fortune!	我正返回{e1}的家，寻求刺激。说不定这回我总算能发财了！	hPtD
+It's good to keep pushing forward, but sometimes you just have to know when it's time to stop.	不断向前固然好，但有时也要懂得适可而止。	hPD
 Let's make a safe place to work. Select Regular Mining mode, to the left of Stair Mining mode.	[C:7:0:0]我们来开辟一个安全的工作场所。在“[C:5:0:1]楼梯开采[C:7:0:0]”模式左侧选择“[C:5:0:1]常规采矿[C:7:0:0]”模式。	hq
 Meet their needs by providing Meeting Areas and Locations for socializing, worship, and study.	[C:7:0:0]提供用于社交、祈祷和学习的[C:3:0:0]集会区[C:7:0:0]与[C:1:0:1]场所[C:7:0:0]，满足他们的需求。	hq
 Mining tasks are designated on the play area. Begin by clicking the highlighted Mining button.	[C:7:0:0]在游戏区域中划定采矿任务。首先点击已高亮的“[C:5:0:1]挖掘[C:7:0:0]”按钮。	hq
@@ -12276,9 +12293,11 @@ DFHack help: runonce: Run the safety procedures once to set the marker mode of d
 DFHack help: where ``data-type`` is a primitive type (int32_t, uint8_t, long, etc.) and each	其中 ``data-type`` 是原始类型（int32_t、uint8_t、long 等），并且每个	l
 Despite the interrogation by {a}, {a} refused to reveal anything and was released during {e}	在{e1}期间，尽管受到{a1}审讯，{a2}仍拒绝交代任何事情，随后被释放了	ht
 Despite the interrogation by {a}, {a} refused to reveal anything and was released within {p}	在{p1}，尽管受到{a1}审讯，{a2}仍拒绝交代任何事情，随后被释放了	ht
+Everyone should broaden their horizons. Any work beyond learning the basics is just a waste.	人人都应拓宽眼界。掌握基础之后再花功夫，只是浪费。	hPD
 I engaged {n} to infiltrate in order to steal treasures, instill terror, and prepare a coup.	我雇{n1}渗透，以窃取宝藏、制造恐慌和策划政变。	hPtD
 I'm returning to my home in {e} in search of adventure and maybe something to drink as well!	我正返回{e1}的家，找些冒险的机会，也许还能找点酒喝！	hPtD
 It has {s} and it rocks back and forth whenever somebody changes their mind in its presence.	它长有{s1}，每当有谁在它面前改变主意，它便前后摇晃。	ht
+It is best not to complicate your life with lies, sure, but the truth also has its problems.	最好别让谎言把生活弄复杂，但实话也有实话的麻烦。	hPD
 It tenses up throughout its entire body whenever somebody tells a falsehood in its presence.	每当有谁在它面前说谎，它便全身紧绷。	h
 Members of the nobility have required rooms and can make demands. They cannot be reassigned.	贵族需要配备相应的房间，还可能提出要求。贵族职位不能重新指派。	hP
 No one even considered making the journey to such a cursed miserable death-trap this season.	本季无人有意前往这样一个受诅咒、悲惨的死亡陷阱。	hP
@@ -13542,6 +13561,7 @@ Despite some minor reservations... we can both agree you are by far the most per
 Despite the interrogation by {a}, {a} refused to reveal anything and was released at {p}	在{p1}，尽管受到{a1}审讯，{a2}仍拒绝交代任何事情，随后被释放了	ht
 Despite the interrogation by {a}, {a} refused to reveal anything and was released in {p}	在{p1}，尽管受到{a1}审讯，{a2}仍拒绝交代任何事情，随后被释放了	ht
 Despite the interrogation, {a} refused to reveal anything and was released in the wilds.	在荒野中，尽管受到了审讯，{a1}仍拒绝交代任何事情，随后被释放了。	ht
+Family is complicated and those ties be both a boon and a curse. Sometimes both at once!	家庭关系复杂，可能是福，也可能是祸，有时两者兼有！	hPD
 For adventure. Information and followers are easier to obtain, and a compass guides you.	适合冒险。更容易获得信息、招募追随者，并有指南针指引方向。	l
 I am so nearly swayed by your greatness alone that we can simply assign you the victory!	单凭你这非凡的气度，我就快服了，不如干脆算你赢吧！	hPD
 I have sought fortune and glory by offering my skill at arms in {e} for {u} of my years.	我在{e1}凭借武艺谋求财富与荣耀，已有{u1}年。	hPtD
@@ -13890,6 +13910,7 @@ DFHack help: script with `repeat` is recommended. For example, to run this scrip
 DFHack help: the value of tradition and sees guile and cunning as indirect and somewhat	传统的价值，认为狡猾和狡猾是间接的和某种程度上的	l
 DFHack help: | Traveling | The target is traveling around the world map like an army. |	|旅游 |目标像一支军队一样在世界地图上行驶。 |	l
 Despite the interrogation, {a} refused to reveal anything and was released in the wilds	在荒野中，尽管受到了审讯，{a1}仍拒绝交代任何事情，随后被释放了	ht
+I hold the relationships I've forged myself over family ties I had no part in creating.	比起生来就有的亲缘，我更看重自己建立的关系。	hPD
 I know you've seen your share of adventure, but be careful or the bogeyman may get you.	我知道你历经过不少冒险，但还是小心些，否则夜魔可能会抓走你。	hPD
 I'm returning to my home in {e} in search of work and maybe something to drink as well!	我正返回{e1}的家，寻找工作，也许还能找点酒喝！	hPtD
 It's very important to note that only one creature can be standing in a tile at a time.	请牢记，同一时间每格只能有一个生物站立。	hq
@@ -13903,6 +13924,7 @@ Though I cannot agree fully on a slight technicality, you are so clever I must c
 Use dyes here to color thread and cloth. Requires a barrel and bucket for construction.	在这里使用染料为线和布染色。建造需要圆桶和水桶。	hj
 Use the Zones menu to select Garbage Dump and draw a rectangle over a cliff or hole and	[C:7:0:0]在“[C:5:0:1]区域[C:7:0:0]”菜单中选择“[C:3:0:0]物品倾倒区[C:7:0:0]”，在悬崖或洞口上划出矩形，	hq
 Wells require a Bucket, Blocks, a Rope or Chain, and Mechanisms. They can be built over	[C:6:0:0]水井[C:7:0:0]需要[C:6:0:1]水桶[C:7:0:0]、[C:6:0:1]块材[C:7:0:0]、[C:6:0:1]绳索[C:7:0:0]或[C:6:0:1]锁链[C:7:0:0]，以及[C:6:0:1]机件[C:7:0:0]。它们可以建在	hq
+You can be powerful or powerless. The choice is yours, until somebody makes it for you.	你可以掌握权力，也可以任人摆布。在别人替你决定之前，选择权在你手中。	hPD
 You cannot see the sky clearly from here, but the available sunlight indicates the day.	从这里无法看清天空，但根据光照可以判断，现在是白天。	hP
 You cannot see the sky clearly from here, but the available sunlight indicates the day.	从这里看不清天空，但可见的天光表明现在是白天。	hj
 and compelled the creation of the position of {s} with threats of violence in the wilds	并在荒野中以暴力威胁，强行设立了{s1}一职	ht
@@ -14225,6 +14247,7 @@ Despite the interrogation, {a} refused to reveal anything and was released withi
 Don't you know that {p} is a jealous deity? Why consult another? Let another day pass.	难道你不知道{p1}是位善妒的神祇吗？为什么要向别的神问卜？再等一天。	hPt
 For {u} of my years, I have been rescuing lost children and bringing them back to {e}.	我解救迷路的孩子并把他们带回{e1}，已经做了{u1}年。	hPtD
 Fortress temple detail: You can recognize a high priest when this is a temple complex.	此处成为神殿建筑群后，即可认可高阶祭司。	l
+How can society function without loyalty? We must be able to have faith in each other.	没有忠诚，社会如何维系？我们必须彼此信任。	hPD
 If you haven't suffered any casualties, you should have these labors assigned already.	如果尚无人员伤亡，这些工作应该已经有人负责。	hq
 Officers may opt for physical punishment if they cannot carry out custodial sentences.	如果无法执行拘禁刑罚，执法人员可能改用体罚。	hq
 Praise {p} for ignoring your hubris. Freedom is allowed even in this. Let a week pass.	赞美{p1}，宽恕了你的狂妄。即使在此事上，你也享有自由。等上一周。	hPt
@@ -14233,6 +14256,7 @@ Praise {p} for ignoring your hubris. Your happiness is still desired. Let a week
 Select a squad or squad member to give orders, change equipment, and assign schedules.	选择一支小队或一名队员，以便下达命令、更换装备和分配日程。	hP
 Select animals to be placed in this pasture zone. They will stay after being led here.	选择安置在此畜栏／牧场的动物。动物被牵到这里后会留在区域内。	hj
 Select this option and any unassigned deceased pets will be buried here automatically.	选中后，尚未分配墓地的已故宠物会自动安葬在这里。	hj
+Some time spent in reflection is admirable, but you must not forget to live your life.	花些时间自省值得称道，但也别忘了好好生活。	hPD
 The glowing barrier has disappeared, replaced by terrible shrieks from the underworld!	发光的屏障消失了，地下世界随即传来可怕的尖叫声！	hP
 The group could afford to learn a lesson or two, though open conflict would be unwise.	可以给这个势力一些教训，不过公开冲突并不明智。	hPD
 Unhappy citizens can act out and cause trouble, and fewer people will risk travel to a	不快乐的居民可能发泄情绪、制造麻烦，也更少有人愿意冒险前往	hq
@@ -14566,11 +14590,14 @@ Praise {p} for ignoring your hubris. You have been granted mercy. Let some days 
 Remember, your workers do not eat raw fish! You must build a Fishery to prepare them.	[C:7:0:0]记住，工人不吃生鱼！你必须建造[C:6:0:0]渔业工坊[C:7:0:0]来处理它们。	hq
 Set plant gathering orders. Some plants require fruit or other growths to be present.	设置植物采集命令。某些植物需要长有果实或其他生长物才能采集。	hj
 Taverns are where your residents gather to drink, socialize, tell stories, and dance.	[C:7:0:0]居民会在[C:1:0:1]酒馆[C:7:0:0]里喝酒、社交、讲故事和跳舞。	hq
+There's some value in leisure, but one also has to engage with other aspects of life.	闲暇有其益处，但生活的其他方面也不能荒废。	hPD
 This is an example urgent alert! These are very important. Ignore them at your peril.	这是一条紧急警报示例！此类警报非常重要，无视它们可能造成严重后果。	hq
 Though I cannot agree fully on a slight technicality, I admire how brilliant you are!	虽说有个小细节我还不赞同，但我佩服你的聪明才智！	hPD
 To easily see which ramps go up or down, click the Ramp Vision button by the minimap.	[C:7:0:0]点击小地图旁的“[C:5:0:1]斜坡视图[C:7:0:0]”按钮，可更方便地辨别斜坡通向上层还是下层。	hq
 Vanilla mod description: These are the graphics for the default Dwarf Fortress items.	这些是《矮人要塞》默认物品的图像。	l
 Would you agree to become someone of {e}, taking over my duties and responsibilities?	你愿意加入{e1}，接手我的职务、承担我的职责吗？	hPtD
+Wouldn't it be grand to just take my life off and do nothing for the rest of my days?	若能从此歇下，余生什么也不做，岂不美好？	hPD
+You should only maintain loyalty so long as something more important is not at stake.	忠诚应当坚守，但不能为此危及更重要的事。	hPD
 and became obsessed with her own mortality and sought to extend her life by any means	并开始执着于自身终将死亡的命运，并不择手段地寻求延寿	h
 and became obsessed with his own mortality and sought to extend his life by any means	并开始执着于自身终将死亡的命运，并不择手段地寻求延寿	h
 and became obsessed with its own mortality and sought to extend its life by any means	并开始执着于自身终将死亡的命运，并不择手段地寻求延寿	h
@@ -14950,6 +14977,7 @@ DFHack help: | Underground | The target is somewhere in the caverns not in a sit
 Deep within this strange place, we've uncovered what must be a treasure of the gods!	我们在这片奇异之地的深处发现了宝藏——这一定是诸神的宝藏！	hP
 Don't you know that {p} is a jealous deity? Why consult another? Let some days pass.	难道你不知道{p1}是位善妒的神祇吗？为什么要向别的神问卜？等上几天。	hPt
 From there, you can build your wealth, export goods, and attract more migrants until	之后，积累财富、出口商品、吸引更多移民，直到	hq
+I can take or leave merrymaking myself, but I don't begrudge people their enjoyment.	我对玩乐可有可无，但也不反对别人享受快乐。	hPD
 I told {n} to ask {n} to grant an important position to {n} when one came available.	我让{n1}要求{n2}在职位出现空缺时，将一个重要职位授予{n3}。	hPtD
 It has {s} and it reminds those that look upon it of their most unpleasant memories.	它长有{s1}，看见它的生灵会想起自己最痛苦的回忆。	ht
 It is recommended that you prepare a squad and get them training as soon as you can.	建议尽早组建小队并开始训练。	hq
@@ -15683,6 +15711,7 @@ This visitor has come {s}. She heard this was a good place to search for monster
 This visitor has come {s}. She heard this was the place for long-term scholarship.	这位访客前来{s1}。她听说这里适合长期从事学术研究。	hPt
 This visitor has come {s}. She heard {e} was the place to look for long-term work.	这位访客前来{s1}。她听说可以在{e1}找到长期工作。	hPt
 Though I cannot agree fully on a slight technicality, no one can deny your genius!	虽说有个小细节我还不赞同，但谁也不能否认你是个天才！	hPD
+War is sometimes necessary, but peace must be valued as well, when we can have it.	战争有时不可避免，但能享有和平时，也应当珍惜。	hPD
 You can then build Walls around the stairs until the leaking water is blocked off.	[C:7:0:0]然后在楼梯周围建[C:6:0:0]墙[C:7:0:0]，直到堵住渗水。	hq
 a group calling itself {p} founded {p} after a long journey from the lands of {p}.	自称{p1}的势力从{p3}的领土长途跋涉而来，建立了{p2}。	ht
 a triangular configuration of numbers relating to the successive powers of any sum	与两数之和的各次幂有关的三角形数阵	h
@@ -16087,6 +16116,7 @@ More likely, your dwarves will starve, unless you read the first few guides here
 Most require Mechanisms made at the Mechanic's Shop, using Workshops -> Mechanic.	[C:7:0:0]大多数陷阱需要[C:6:0:1]机件[C:7:0:0]。通过“[C:5:0:1]工坊[C:7:0:0] → [C:5:0:1]机械师[C:7:0:0]”建造[C:6:0:0]机械师工坊[C:7:0:0]，即可制作。	hq
 No one else even considered making the journey to this cursed unhappy death-trap.	其他人连前往这个受诅咒、不幸的死亡陷阱的念头都没有。	hP
 Not useful unless you retire and subsequently become a resident in Fortress mode.	只有在退役后成为要塞模式居民时才有用。	w
+Some discord is a healthy part of society, but we must also try to live together.	社会中有些分歧未必是坏事，但我们也得努力相处。	hPD
 The artwork relates to the ascension of {n} to the position of {s} of {p} in {d}.	图案描绘了{n1}于第{d1}年就任「{p1}」的{s1}的情景。	hHt
 The location must be built and furnished, with the new position appointed by you.	必须建好并布置该地点，并由你任命新职位的人员。	hP
 This visitor has come . She heard this was the place to admire fine architecture.	这位访客已经到来。她听说这里能欣赏精美的建筑。	hP
@@ -16461,6 +16491,7 @@ DFHack help: | | Your target's local coordinates are displayed when nearby and |
 DFHack help: | | army disbanded. If they're dead, the location wasn't recorded |	| |军队解散。如果他们死了，位置就不会被记录|	l
 Dig a rectangle underground big enough for a large Stockpile and some Workshops.	[C:7:0:0]在地下挖出一块矩形区域，要足够容纳一个大型[C:6:0:0]储物堆[C:7:0:0]和几座[C:6:0:0]工坊[C:7:0:0]。	hq
 I asked {n} to grant an important position in {e} to me when one came available.	我要求{n1}在职位出现空缺时，将{e1}的一个重要职位授予我。	hPtD
+I can see a place for maintaining decorum, but it's exhausting to live that way.	我明白守礼有它的道理，但那样生活实在太累。	hPD
 In order to hold Scrolls and Codices you will need Bookcases. You will also need	[C:7:0:0]要存放[C:6:0:1]卷轴[C:7:0:0]和[C:6:0:1]书册[C:7:0:0]，需要[C:6:0:0]书柜[C:7:0:0]。你还需要	hq
 It alternates from instant to instant between sluggishness and extreme vibrancy.	它时而迟缓，时而活力四射，瞬息变化。	h
 Join me and we can shake off the yoke of the oppressors from this place forever!	加入我，我们就能让这里永远摆脱压迫者的枷锁！	hPD
@@ -16717,6 +16748,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} floods .	
 Announcement combat visitor-statement [visitor-statement-subject]: {s} reward .	{s1}施予奖赏。	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} rewards.	{s1}施予奖赏。	l
 Announcement combat visitor-statement-object [visitor-statement-reference]: {s}	{s1}	l
+Anybody that sticks to something a moment longer than they have to is an idiot.	没必要再坚持，却还多耗一刻的人，都是傻子。	hPD
 Barrels, and Bags. Barrels are used to store Food. Bags are used to store Seeds	[C:6:0:1]桶[C:7:0:0]和[C:6:0:1]袋子[C:7:0:0]来腾出空间。[C:6:0:1]桶[C:7:0:0]用来储存[C:6:0:1]食物[C:7:0:0]，[C:6:0:1]袋子[C:7:0:0]用来储存[C:6:0:1]种子[C:7:0:0]	hq
 DFHack GUI Mass remove: Designate buildings or constructions to cancel removal.	指定建筑或构筑物，取消其移除安排。	l
 DFHack help: "--years <num>", "--months <num>", "--days <num>", "--hours <num>"	"--years <num>"、"--months <num>"、"--days <num>"、"--hours <num>"	l
@@ -16820,6 +16852,7 @@ DFHack help: the following may be added to appropriate commands where relevant:	
 DFHack help: tile-material: Functions to help retrieve the material for a tile.	tile-material：帮助检索图块材质的函数。	l
 DFHack help: when you give this command to prevent almost certain interference.	当您发出此命令时可以防止几乎肯定的干扰。	l
 Even if I don't change my mind, I confess your stunning argument overwhelms me!	就算我还是原来的想法，我承认，你这番精彩的论辩让我心服口服！	hPD
+Friends are future enemies. I don't see the difference. People do as they must.	朋友终会成为敌人，两者并无区别。人各有不得已。	hPD
 I engaged {n} to infiltrate {e} in order to steal treasures and instill terror.	我雇{n1}渗透{e1}，以窃取宝藏和制造恐慌。	hPtD
 I engaged {n} to infiltrate {e} in order to steal treasures and prepare a coup.	我雇{n1}渗透{e1}，以窃取宝藏和策划政变。	hPtD
 I'm going to {e} in search of excitement. Perhaps I'll finally make my fortune!	我正前往{e1}，寻求刺激。说不定这回我总算能发财了！	hPtD
@@ -17185,6 +17218,7 @@ DFHack help: with the system default. This causes incorrect display of special	�
 DFHack help: workflow count POWDER_MISC/SAND 20 workflow count BOULDER/CLAY 20	工作流程计数 POWDER_MISC/SAND 20 工作流程计数 BOULDER/CLAY 20	l
 DFHack help: | | correct area and outside fast travel, then the target isn't |	| |正确的区域和外部快速旅行，则目标不是 |	l
 DFHack help: | | will be displayed. If you don't see this when you're in the |	| |将显示。如果您在 | 时没有看到此内容	l
+Don't think about the truth, whatever that is. Just say what needs to be said.	不必琢磨什么才是真相，说该说的话就好。	hPD
 However, the {s} not be able to guide you personally. It is the best I can do.	不过，这位{s1}无法亲自为你带路。我能做的只有这些了。	hPtD
 I engaged {n} to infiltrate in order to steal treasures and initiate sabotage.	我雇{n1}渗透，以窃取宝藏和开展破坏活动。	hPtD
 I engaged {n} to infiltrate {e} in order to instill terror and prepare a coup.	我雇{n1}渗透{e1}，以制造恐慌和策划政变。	hPtD
@@ -17197,12 +17231,14 @@ It always seems to have its attention on the most valuable object in the area.	�
 It has {s} and it never appears to be perturbed or surprised by any happening.	它长有{s1}，无论发生何事，它似乎都不会感到困扰或惊讶。	ht
 It has {s} and it returns surrounding light with a new vibrance and intensity.	它长有{s1}，它将周围的光反射得更加鲜亮强烈。	ht
 It is said that the {s} of {e} can bring one near to {r} for the glory of {p}.	据说，{e1}的{s1}能让人接近{r1}，以彰显{p1}的荣耀。	hPtD
+It's better to work alone when possible, I think. Cooperation breeds weakness.	我觉得能独自做事就独自做，合作只会让人软弱。	hPD
 Note: This character's appearance is governed by local population information.	注意：该角色的外貌受当地人口特征影响。	l
 Overview sentence: I've been out in the sunshine again after a long time away.	隔了好久，才又见到阳光。	l
 Overview sentence: My family received justice when the criminal was convicted.	罪犯定了罪，家里也讨回了公道。	l
 Praise {p} for ignoring your hubris. Peace is cherished. Let another day pass.	赞美{p1}，宽恕了你的狂妄。和平备受珍视。再等一天。	hPt
 Praise {p} for ignoring your hubris. {r} without bounds. Let another day pass.	赞美{p1}，宽恕了你的狂妄。无边的{r1}。再等一天。	hPt
 Set your values and personality here.  [C] denotes the default cultural value.	在此设置价值观与人格。[C] 表示所属文化的默认值。	wlP
+Some traditions are worth keeping, but we should consider their overall value.	有些传统值得保留，但也应衡量它们整体的价值。	hPD
 Stockpiles can be placed using the stockpile menu at the bottom of the screen.	可通过屏幕底部的储物堆菜单放置储物堆。	hP
 The details of its form are easily forgotten without deliberate concentration.	若不刻意集中注意力，它的外形细节很容易被遗忘。	h
 The gang has even sent some troublemakers to harass people right here in town.	这伙强盗甚至派了些暴徒，就在镇上骚扰居民。	hq
@@ -17220,6 +17256,7 @@ This visitor has come . She heard {e} was the place for long-term scholarship.	�
 Water wheels are 1x3 or 3x1. The long side should align with the water's flow.	水车占地为 1×3 或 3×1 格，长边应与水流方向一致。	hP
 With a subterranean soil floor exposed, you can place an underground Farmplot.	[C:7:0:0]露出地下土壤地面后，就可以设置地下[C:6:0:0]农田[C:7:0:0]。	hq
 You can look at trade information once you have a broker with appraisal skill.	任命一名拥有估价技能的交易员后，即可查看贸易信息。	hP
+You can't always rely on your family, but it's good to know somebody is there.	家人未必总能靠得住，但知道有人在，总是好的。	hPD
 You have been cursed to assume the form of a {s}-like monster every fool moon!	你受到诅咒，每逢满月就会化身为形似{s1}的怪物！	hPt
 accepted in admiration of power, despite being swayed by the emotional appeal.	虽然被动情的劝说打动，但崇拜权力，因此答应了。	h
 and aided {a} in becoming a permanent part of the living world {s} during {e}.	并在{e1}期间协助{a1}永久留在生者的世界，{s1}。	ht
@@ -17643,6 +17680,7 @@ This visitor has come . It heard this would make a good base for a mercenary.	�
 This visitor has come . It heard {e} was the place for long-term scholarship.	这位访客已经到来。它听说{e1}适合长期从事学术研究。	hPt
 This visitor has come . She heard {e} would make a good base for a mercenary.	这位访客已经到来。她听说{e1}适合作为佣兵的基地。	hPt
 This visitor has come . She is seeking information about the location of {b}.	这位访客已经到来。她正在打听{b1}的下落。	hPt
+You shouldn't get too carried away with romance, but it's fine in moderation.	别为爱情过于忘形，适度就好。	hPD
 You will need to assign a Doctor to the Hospital from the Hospital Info Menu.	[C:7:0:0]你需要在“[C:5:0:1]医院信息[C:7:0:0]”菜单中为[C:1:0:1]医院[C:7:0:0]指派[C:5:0:0]医生[C:7:0:0]。	hq
 You'll begin by creating your world and watching the region's history unfold.	你首先要创建世界，见证这片土地的历史徐徐展开。	hq
 accepted out of loyalty to {a}, despite being swayed by the emotional appeal.	虽然被动情的劝说打动，但忠于{a1}，因此答应了。	ht
@@ -18464,6 +18502,7 @@ This visitor has come {s}. It heard this was the place to perform research.	这�
 This visitor has come {s}. She believes this would be a safe place to stay.	这位访客前来{s1}。她相信这里可以安全居留。	hPt
 This visitor has come {s}. She heard {e} was the place to entertain people.	这位访客前来{s1}。她听说可以在{e1}为人们表演。	hPt
 This visitor has come {s}. She heard {e} was the place to perform research.	这位访客前来{s1}。她听说{e1}适合开展研究。	hPt
+Why this obsession with weapons and battle? I don't understand some people.	为什么如此痴迷武器与战斗？有些人真让我不理解。	hPD
 You've found {p}! My chosen, you must speak to them and offer your service.	你找到了{p1}！我的天选者，你必须与其交谈，表示愿意效劳。	hqt
 Your archers can train in this zone if there is an archery target included.	此区域若包含射箭靶，弓弩手就可以在这里训练。	hj
 aided {a} in becoming a permanent part of the living world {s} in the wilds	在荒野中协助{a1}永久留在生者的世界，{s1}	ht
@@ -18641,6 +18680,7 @@ A small mammal noted for its tenacity. It has long ears and flashing eyes.	一�
 A small, nocturnal mammal. It has a long tongue with which to eat insects.	一种小型夜行哺乳动物。它有一条用来捕食昆虫的长舌头。	lP
 A tiny diurnal monkey. It spends its time in the trees searching for food.	一只白天活动的小猴子。它花时间在树上寻找食物。	lP
 A tiny reptile, running on two legs. It has a horn on the end of its nose.	一种用两条腿奔跑的小型爬行动物.在他的鼻子末端带附有一只角.	lP
+A tool should get the job done, but one shouldn't obsess over the details.	工具能把活干好就行，不必执着于细枝末节。	hPD
 A very large dinosaur person with a ferocious jaw, short arms, and a sail.	一种体型很大的恐龙类人形生物，颌部凶猛有力，手臂短小，背上长有帆状结构。	lP
 A {s} caravan from {e} has arrived. Overall trade sentiments are cautious.	来自{e1}的{s1}商队已抵达。总体贸易意愿偏于谨慎。	hPt
 A {s} caravan from {e} has arrived. Overall trade sentiments are lukewarm.	来自{e1}的{s1}商队已抵达。总体贸易意愿不冷不热。	hPt
@@ -18881,6 +18921,7 @@ It is said that the {s} of {e} can remind one of {r} for the glory of {p}.	据�
 It started at {p} and returned there after following its route during {e}.	在{e1}期间，从{p1}出发，沿游行路线行进后返回起点。	ht
 It started at {p} and returned there after following its route within {p}.	在{p2}，从{p1}出发，沿游行路线行进后返回起点。	ht
 Like others in her culture, she holds craftsdwarfship to be of the highest	与同族人一样，她将矮人工艺奉为最高	l
+Loyalty has value, but you should always keep the broader picture in mind.	忠诚固然可贵，但也要顾全大局。	hPD
 Night is falling. You'd better stay indoors, or the bogeyman will get you.	天快黑了。你最好待在屋里，否则夜魔会抓走你。	hPD
 No one else even considered making the journey to this miserable hellhole.	其他人连前往这个悲惨的鬼地方的念头都没有。	hP
 Overview sentence: I requested that more weapons be produced in a meeting.	开会时，我请他们多造些武器。	l
@@ -19331,6 +19372,8 @@ Praise {p} for ignoring your hubris. Peace is cherished. Let a week pass.	赞美
 Praise {p} for ignoring your hubris. You are loved. Let another day pass.	赞美{p1}，宽恕了你的狂妄。你被爱着。再等一天。	hPt
 Praise {p} for ignoring your hubris. {r} without bounds. Let a week pass.	赞美{p1}，宽恕了你的狂妄。无边的{r1}。等上一周。	hPt
 Stone-fall traps drop a stone on intruders. Must be loaded with boulders.	落石陷阱会向入侵者投下石头。必须装填巨石。	hj
+Surround yourself with friends you can trust and you will be unstoppable.	有值得信赖的朋友相伴，就没有什么能阻挡你。	hPD
+The amount of practice that goes into mastering a skill is so impressive.	精通一门技艺所付出的磨炼，实在令人敬佩。	hPD
 The army is commanded by {n}, a competent commander and middling warrior.	这支军队的统领是{n1}，是一位称职的统帅，也是武艺平平的战士。	hPt
 The army is commanded by {n}, a competent commander and true warrior. {v}	这支军队的统领是{n1}，是一位称职的统帅，也是真正的勇士。{v1}	hPt
 The performers are in the middle of a sermon on the worthlessness of {s}.	表演者们正在布道，宣讲{s1}毫无价值。	hPt
@@ -19763,12 +19806,14 @@ Give up this childish errand. We do not part with our treasures lightly.	放弃�
 He personally values peace over war and doesn't value eloquence so much.	他本人重视和平胜过战争，也不太看重雄辩。	l
 I'm going to {e} in search of work and maybe something to drink as well!	我正前往{e1}，寻找工作，也许还能找点酒喝！	hPtD
 It has {s} and it moves its will in accordance with the truth of things.	它长有{s1}，它的意志遵循万物的真理。	ht
+Knowledge can be useful, but it can also be pointless or even dangerous.	知识可以有用，也可能毫无意义，甚至带来危险。	hPD
 Like others in his culture, he strongly values tranquility and quiet, is	与其文化中的其他人一样，他十分重视宁静与安详，	l
 Overview sentence: I was misinformed about a room during tax collection.	收税时，有人把房间的情况报错了。	l
 Overview sentence: If I thought about it more, I guess I'd be apathetic.	再多想想，我大概也会无动于衷吧。	l
 Praise {p} for ignoring your hubris. Infinite {r}! Let another day pass.	赞美{p1}，宽恕了你的狂妄。无穷的{r1}！再等一天。	hPt
 Praise {p} for ignoring your hubris. Oh sweet {r}! Let another day pass.	赞美{p1}，宽恕了你的狂妄。啊，甘美的{r1}！再等一天。	hPt
 Praise {p} for ignoring your hubris. {r} without bound. Let a week pass.	赞美{p1}，宽恕了你的狂妄。无边的{r1}。等上一周。	hPt
+Rules are there to be bent, but they shouldn't be flouted thoughtlessly.	规矩可以变通，却不该不加思索地违背。	hPD
 Suspend this task. This removes the worker. The task can be unsuspended.	暂停此任务，同时移除已分配的工人。之后可以恢复任务。	hj
 The army is commanded by {n}, a competent commander and skilled warrior.	这支军队的统领是{n1}，是一位称职的统帅，也是武艺高强的战士。	hPt
 The army is commanded by {n}, a seasoned commander and middling warrior.	这支军队的统领是{n1}，是一位久经沙场的统帅，也是武艺平平的战士。	hPt
@@ -20232,6 +20277,7 @@ The army is commanded by {n}, a talented commander and skilled warrior.	这支�
 The enemy have come and are preparing to lay siege. They seek a parley!	敌军已到达，正在准备围城。他们要求谈判！	hP
 The sky above you is nearly black, ripped through with towering clouds.	你头顶的天空近乎漆黑，高耸的云层从中穿过。	hP
 The sky above you is nearly black, ripped through with towering clouds.	你头顶的天空近乎漆黑，高耸的云层从中穿过。	hj
+There is a time for artful speech, and a time for blunt speech as well.	有时说话需要技巧，有时也该直言不讳。	hPD
 This ferocious wild animal threatens our people with its very presence.	这凶猛的野生动物只要还在，我们的百姓就不得安宁。	hPD
 This visitor has come . He believes this would be a safe place to stay.	这位访客已经到来。他相信这里可以安全居留。	hP
 This visitor has come . He heard {e} was the place to entertain people.	这位访客已经到来。他听说可以在{e1}为人们表演。	hPt
@@ -20748,8 +20794,10 @@ DFHack help: | Green-----------------+Light Green----------+ | ... | |	|绿色--
 DFHack hotkeys hint: In-game quickstart guide for new users of DFHack.	供 DFHack 新用户阅读的游戏内快速入门指南。	l
 DFHack hotkeys hint: List and zoom to people, locations, or artifacts.	列出人物、场所和神器，并定位查看。	l
 Despite some minor reservations... I am overmastered by your presence!	尽管我还有些许保留……你的气势真让我服气！	hPD
+Hard work is great. Finding a way to work half as hard is even better.	勤劳固然好，找到省一半力气的办法更好。	hPD
 However, skill is the most important determiner of hits versus misses.	不过，技能是决定命中与否的最重要因素。	hq
 I am {n}, once of the Underworld. By {n}, I bind myself to this place.	我是{n1}，曾来自地下世界。凭借{n2}之力，我将自身束缚于此地。	hHt
+I only work so hard, but sometimes you have to do what you have to do.	我干活只肯出这么多力，但有些事该做还是得做。	hPD
 I would be honored if you would become a {s}. Will you have me as {s}?	若你愿意成为{s1}，我会深感荣幸。你愿意认我为{s2}吗？	hPtD
 If you climb atop certain large branches, you can walk on them freely.	爬到某些粗大的树枝上后，就可以自由行走。	hq
 If your Refuse Stockpile starts to fill up you can create a Dump Zone.	[C:7:0:0]如果[C:6:0:0]垃圾储物堆[C:7:0:0]快满了，可以创建[C:3:0:0]物品倾倒区[C:7:0:0]。	hq
@@ -21769,6 +21817,7 @@ Despite some minor reservations... you are so clever I must concede!	尽管我�
 Flattering, but we'd rather maintain our distance from the homeland.	承蒙厚爱，但我们更愿意与故土保持距离。	hP
 Forgive me, but it would amaze me if somebody actually thought that.	恕我直言，如果真有人这么想，我可真要大吃一惊了。	hPD
 Hide an item or building from your view. Citizens will still use it.	隐藏物品或建筑。居民仍会使用它。	hj
+I could do without all of those creatures and that tangled greenery.	那些生物和纠缠的草木，我宁可都不要。	hPD
 If you survive until the caravan comes you may also trade for Drinks	[C:7:0:0]如果能坚持到商队到来，也可以交易获得[C:6:0:1]饮料[C:7:0:0]	hq
 In {d}, the goblin Aslot Speckwraith assumed the identity "The Feral	在{d}年, 哥布林 Aslot Speckwraith 假扮为 "野性	wt
 It appears to have sharp shimmering edges on many parts of its body.	它身体多处似乎都有闪亮的锋利棱缘。	h
@@ -22301,6 +22350,7 @@ Left click for recenter and expand options. Right click to dismiss.	左键点击
 Make sure your parameters and raw objects have adequate vegetation.	请确保参数和原始对象提供足够的植被。	l
 Most Workshops require building material, such as Wood or Boulders.	[C:7:0:0]大多数[C:6:0:0]工坊[C:7:0:0]都需要[C:6:0:1]木头[C:7:0:0]或[C:6:0:1]石材[C:7:0:0]等建筑材料。	hq
 Needs: Blunt small rock [consumed], Blunt small rock [not consumed]	需求：无刃小石块［消耗］、无刃小石块［不消耗］	hP
+Never lose yourself in loyalty. You know what is best for yourself.	不要因忠诚迷失自己。你自己知道什么对你最好。	hPD
 Now we'll unpause the game and let the miner finish the task. Press	现在解除暂停，让矿工完成任务。按	hq
 Others refused to journey to this dangerous and miserable fortress.	其他人拒绝前往这座危险而悲惨的要塞。	hP
 Overview sentence: I formed a bond with my animal training partner.	我跟一起训练的动物处出感情了。	l
@@ -22319,6 +22369,7 @@ The written portion consists of a {d} page untitled , authored by .	文字部分
 This person is one of the {s} of {p} and your military subordinate.	此人是{p}的{s}之一，也是你的军事下属。	ht
 This visitor has come {s}. She heard this was the place for prayer.	这位访客前来{s1}。她听说这里适合祈祷。	hPt
 You can also click on details to customize each individual soldier.	还可以点击“详情”，分别调整每位士兵的装备。	hq
+You can always rely on your family when everything else falls away.	纵然失去一切，你仍然可以依靠家人。	hPD
 You can learn more about this visitor after they chat with a local.	这位访客与当地居民交谈后，你就能了解更多关于他们的信息。	hP
 Zones can be added using the zone menu at the bottom of the screen.	可通过屏幕底部的区域菜单添加区域。	hP
 a work was authored by {n} in {p} in order to glorify {a} after {s}	在{p1}，{n1}{s1}，为了颂扬{a1}而撰写了一部作品	ht
@@ -22598,6 +22649,7 @@ A tiny insect which uses its powerful legs to leap and make noise.	一种利用�
 A very large dinosaur person with thumb spikes and a beaked mouth.	一种体型很大的恐龙类人形生物，嘴呈喙状，拇指上长有尖刺。	lP
 A very large herbivorous bipedal dinosaur with a thick domed head.	一种体型很大的双足食草恐龙，头骨厚重而隆起。	lP
 A very small bipedal herbivorous dinosaur with a thick domed head.	一种很小的双足食草恐龙，头骨厚重而隆起。	lP
+An earnest effort at any required tasks. That's all that's needed.	把该做的事认真做完，就够了。	hPD
 Announcement combat adventure-announcement [$unit]: You mount {s}.	你骑上了{s1}。	l
 Announcement combat adventure-announcement [$unit]: {s} dismounts.	{s1}从坐骑上下来了。	l
 Announcement combat adventure-announcement [$unit]: {s} flounders!	{s1}挣扎着！	l
@@ -22754,6 +22806,7 @@ Announcement distance: nearly a day's travel to the east-southeast	距此近一�
 Announcement distance: nearly a day's travel to the west-northwest	距此近一天路程的西西北方	l
 Announcement distance: nearly a day's travel to the west-southwest	距此近一天路程的西西南方	l
 Announcement music passage: the exposition of the previous passage	前一乐段呈示部	w
+Art is complicated. I know what I like, but some I can do without.	艺术很复杂。我知道自己喜欢什么，有些则有也好，没有也罢。	hPD
 Cage traps capture intruders in cages. Must be loaded with a cage.	笼陷阱会将入侵者关进笼子。必须装填笼子。	hj
 Conversation prompt: How will you respond to the adoption request?	你将如何回应收养请求？	l
 Conversation prompt: How will you respond to the offer of service?	你将如何回应效力的提议？	l
@@ -23418,6 +23471,7 @@ It has {s} and it never misses an opportunity to jump in puddles.	它长有{s1}�
 It has {s} and it only looks comfortable when it is in the water.	它长有{s1}，它似乎只有待在水中才感到自在。	ht
 It has {s} and it seems most content when a fair wind is blowing.	它长有{s1}，顺风吹拂时，它似乎最为满足。	ht
 It has {s} and its moans seem to echo no matter where it resides.	它长有{s1}，无论身处何地，它的呻吟似乎总有回声。	ht
+It's a competitive world, and you'd be a fool to think otherwise.	这世界处处都是竞争，不承认这一点才是愚蠢。	hPD
 Magma moving in the shape of a man. It has a cracked black crust.	岩浆以人的形状移动。它有一个破裂的黑色外壳。	lP
 Migrants refused to journey to this unhappy fortress this season.	本季移民拒绝前往这座不幸的要塞。	hP
 Native history intrigue concession {a} response {a} in the wilds.	在荒野中，虽然{a1}，但{a2}。	ht
@@ -23949,6 +24003,7 @@ Make sharp rock: select tool stone (Blunt small rock, consumed).	制作尖石：
 Native history intrigue concession {a} response {a} in the wilds	在荒野中，虽然{a1}，但{a2}	ht
 Oh, no, there's just no way you can believe something so stupid.	哎，别说了，你不可能相信这么愚蠢的东西。	hPD
 Once the pile is placed, click Accept and select the All option.	[C:7:0:0]划定储物堆后，点击“[C:5:0:1]接受[C:7:0:0]”，再选择“[C:5:0:1]全部[C:7:0:0]”。	hq
+One must always be loyal to their cause and the ones they serve.	忠于自己的事业，也忠于自己追随的人。	hPD
 Overall, the composition is not awful, but not very good either.	总体而言，乐曲不算糟糕，但也不太好。	h
 Overview sentence: I conducted an official meeting in a bedroom.	在卧室里开了场正式的会。	l
 Overview sentence: I discussed my problems with an acquaintance.	跟一个熟人聊了聊自己的烦恼。	l
@@ -23956,6 +24011,7 @@ Overview sentence: I have been away from people for a long time.	好久没跟人
 Overview sentence: I received a cut of corruptly-obtained funds.	贪来的钱，我也分到了一份。	l
 Overview sentence: My sibling shared a personal insight with me.	兄弟姐妹跟我讲了讲自己的体会。	l
 Thank you. I will take excellent care of this majestic creature.	谢谢。这头威风凛凛的生物，我一定会好好照顾。	hPD
+The best way to get what you want out of life is to work for it.	想过上自己要的生活，最好的办法就是为之努力。	hPD
 The hatch is operated by a remote mechanism. You cannot proceed.	这个舱盖由远程机关控制，无法继续操作。	hP
 The moon is directly above you hardly visible behind the clouds.	月亮就在你的头顶正上方，在云后几乎不可见。	hP
 The moon is directly above you hardly visible behind the clouds.	月亮就在你的头顶正上方，在云后几乎不可见。	hj
@@ -23969,8 +24025,10 @@ The moon is rising in the west hardly visible behind the clouds.	月亮正从西
 The moon is rising in the west hardly visible behind the clouds.	月亮正从西方升起，在云后几乎不可见。	hj
 The performers are in the middle of the musical composition {b}.	表演者们正在演奏乐曲《{b1}》。	hPt
 The steam around the vegetation stops you from setting the fire.	植被周围的蒸汽使你无法点火。	hP
+The struggle for power must be balanced by other considerations.	争取权力时，也必须顾及其他事情。	hPD
 The {s} of {e} are now quite knowledgeable {s} training methods.	{e1}的{s1}已相当熟悉{s2}的驯养方法。	hPt
 Their strength has been challenged, and their hold has loosened.	他们遭到挑战，对这里的控制已经松动了。	hPD
+These people carrying on about romance should be more practical.	这些满口爱情的人，该实际一点。	hPD
 They consider you an infamous villain among those opposing them.	他们把你视为反对者中臭名昭著的恶人。	hPD
 This creeping thing threatens our people with its very presence.	这爬行怪物只要还在，我们的百姓就不得安宁。	hPD
 This fearsome beast threatens our people with its very presence.	这可怕的野兽只要还在，我们的百姓就不得安宁。	hPD
@@ -24545,6 +24603,8 @@ DFHack hotkeys hint: Adventure as any living historical figure.	扮演任意仍�
 Despite some minor reservations... no one can deny your genius!	尽管我还有些许保留……谁也不能否认你是个天才！	hPD
 Dodge away from charging opponents to avoid being knocked over.	躲开冲锋的对手，以免被撞倒。	hj
 Even if I don't change my mind, I admire how brilliant you are!	就算我还是原来的想法，我佩服你的聪明才智！	hPD
+Friends are nice, but you should keep your priorities straight.	有朋友是好事，但也要分清轻重。	hPD
+Hard work is bested by luck, connections and wealth every time.	苦干从来比不上运气、人脉与财富。	hPD
 I decided to frame {n} for attempted kidnapping by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下绑架未遂罪。	hPtD
 I decided to frame {n} for building destruction by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下毁坏建筑罪。	hPtD
 I engaged {n} to frame {n} for attempted murder by fooling {n}.	我雇{n1}通过欺骗{n3}，诬陷{n2}犯下谋杀未遂罪。	hPtD
@@ -24576,10 +24636,12 @@ The agreement to establish a temple for {e} has been abandoned.	为{e1}建立神
 The door is operated by a remote mechanism. You cannot proceed.	这扇门由远程机关控制，无法继续操作。	hP
 The world generator couldn't find any civilization definitions.	世界生成器找不到任何政权定义。	l
 There are five types of Locations, which we'll go over in turn.	[C:1:0:1]场所[C:7:0:0]分为五类，下面逐一介绍。	hq
+There are times when it is alright not to tell the whole truth.	有时候，不把实情全说出来也无妨。	hPD
 This visitor has come . He heard this was the place for prayer.	这位访客已经到来。他听说这里适合祈祷。	hP
 This visitor has come . It heard this was the place for prayer.	这位访客已经到来。它听说这里适合祈祷。	hP
 This visitor has come . She heard {e} was the place for prayer.	这位访客已经到来。她听说{e1}适合祈祷。	hPt
 Vanilla mod description: Various text strings used by the game.	游戏使用的各种文本。	l
+We cannot choose our families, but we can choose to avoid them.	我们无法选择家人，却可以选择远离他们。	hPD
 You begin loading {s} into {s} with intentions of shooting {n}.	你开始将{s1}装入{s2}，准备射击{n1}。	hPt
 You can prepare in advance with {k} or from the inventory menu.	可以按 {k1} 提前准备，也可以通过物品栏菜单准备。	hPt
 You do not have a free grasp and your quiver and pack are full.	你没有空闲的抓握部位，而且箭筒和背包都已装满。	hP
@@ -25040,6 +25102,7 @@ Announcement combat memory-sentence [memory-made]: I made {s}.	交到了{s1}。	
 Announcement combat memory-sentence [memory-performance]: {s}.	{s1}。	l
 Announcement combat memory-sentence [memory-work]: I read {s}.	读了{s1}。	l
 Announcement combat negotiation-opening []: argue persuasively	据理说服对方	l
+Announcement combat owned-object [owner,$combat-item]: {s} {s}	{s1}{s2}	l
 Announcement combat quest-destination [quest-building]: {s} in	{s1}（地点未记载）	l
 Announcement combat quest-sentence []: Last I heard, I had it.	我最后听说，它由我保管。	l
 Announcement combat quest-sentence []: Last I saw, it was in .	我最后见到它时，它在某处（地点未记载）。	l
@@ -26014,6 +26077,7 @@ The squad leader is traveling or otherwise occupied off-site.	小队队长正在
 The track stop's vehicle will take items from this stockpile.	轨道站点的车辆会从此储物堆取货。	hj
 The world generator is having trouble placing mountain caves.	世界生成器无法放置山地洞穴。	l
 The world generator is having trouble placing tundra regions.	世界生成器无法放置苔原区域。	l
+There is nothing so important that it is worth telling a lie.	没有什么事重要到值得为它说谎。	hPD
 This great beast threatens our people with its very presence.	这巨兽只要还在，我们的百姓就不得安宁。	hPD
 To recenter, press wasd or hold+drag the middle mouse button.	要重新居中，请按 WASD，或按住鼠标中键拖动。	l
 To slaughter an Animal you must first build a Butcher's Shop.	[C:7:0:0]要屠宰[C:2:0:0]动物[C:7:0:0]，必须先建造[C:6:0:0]屠夫工坊[C:7:0:0]。	hq
@@ -26733,6 +26797,7 @@ The written portion consists of a {d} page {s} entitled {b}.	文字部分为{s1}
 This evil being threatens our people with its very presence.	这邪恶生物只要还在，我们的百姓就不得安宁。	hPD
 To recenter, press {k} or hold+drag the middle mouse button.	要重新居中，请按 {k1}，或按住鼠标中键拖动。	hPt
 Use tallow (rendered fat) or oil here with lye to make soap.	在这里用脂油（熬制的脂肪）或油与碱液制作肥皂。	hj
+We grow through debate and struggle, even chaos and discord.	我们在辩论与抗争中成长，甚至混乱与不和也能促人成长。	hPD
 Written on the item is an {s} entitled {b}, authored by {n}.	物品上写有{n1}撰写的{s1}《{b1}》。	ht
 You have are injured. View your status for more information.	你受伤了。打开状态页查看详情。	hj
 You have been cursed, for one week, to know life as a beast!	你受到诅咒，将化身野兽生活一周！	hP
@@ -27212,6 +27277,7 @@ Announcement combat dialogue-family []: younger half-sister	同父异母或同�
 Announcement combat dialogue-judgement-achiever []: She has	她	l
 Announcement combat dialogue-judgement-predicate []: a hero	英雄	l
 Announcement combat diplomacy-cause []: a previous conquest	此前的一次征服	l
+Announcement combat equipment [owner,$combat-item]: {s} {s}	{s1}{s2}	l
 Announcement combat guard-building []: a bone carver's shop	骨雕店	l
 Announcement combat guard-building []: a food imports store	进口食品店	l
 Announcement combat guard-building []: a leather goods shop	皮具店	l
@@ -28072,6 +28138,7 @@ Allows insight into emotional states during conversations.	使你能在交谈时
 An orange person with the head and tail of a lion tamarin.	一种橙色的人形生物，有着美洲狮的头和尾巴。	lP
 Announcement combat activity-detail-section []: exposition	呈示部	l
 Announcement combat activity-detail-section []: two themes	双主题	l
+Announcement combat actor [$combat-item]: the spinning {s}	旋转着的{s1}	l
 Announcement combat adventure-announcement []: Be patient.	耐心一些。	l
 Announcement combat adventure-announcement []: Distracted!	注意力分散！	l
 Announcement combat adventure-announcement []: I disagree.	我不同意。	l
@@ -28415,7 +28482,9 @@ DFHack help: thread adamantinethread cloth adamantinecloth	线金刚线布金刚
 DFHack help: tools for registering callbacks periodically.	用于定期注册回调的工具。	l
 DFHack help: trg.target[trg_key] = not trg.target[trg_key]	trg.target[trg_key] = 不是 trg.target[trg_key]	l
 DFHack hotkeys hint: Apply layout blueprints to your fort.	将布局蓝图应用到你的要塞。	l
+Don't be afraid to do anything to get ahead in this world.	要在这世上出人头地，就别怕不择手段。	hPD
 Don't travel alone at night, or the bogeyman will get you.	别在夜间独自旅行，否则夜魔会抓走你。	hPD
+Everything is so much easier when you just tell the truth.	坦诚相待，事情就简单多了。	hPD
 Flashes of energy pulse across its surface intermittently.	它的体表不时闪过能量的脉动。	h
 Fortress temple detail: High priest: {d} worshipper needed	高阶祭司：需要{d}名信徒	wtli
 I am escaping from danger which threatened my former home.	我原来的家遭遇了危险，我是出来避难的。	hPD
@@ -28448,6 +28517,7 @@ Overview sentence: It is drinking the blood of the living.	它正在吸活物的
 Overview sentence: Somebody dead was convicted of a crime.	给一个死者定了罪。	l
 Overview sentence: The tax collection did not go smoothly.	税收得不顺利。	l
 Partially used in place of low musical performance skills.	可部分弥补音乐表演技能的不足。	w
+Personal freedom must be tempered by other considerations.	个人自由也必须有所节制，兼顾其他事情。	hPD
 Please be patient. I'll have your order ready in a moment.	请耐心等候。你点的东西马上就好。	hPD
 Prepare writing material and assign scholars to a library.	请准备书写材料，并为图书馆指派学者。	hP
 Push off {s} in {d} day when at most {d}% of desired items	等待{d1}天且所需物品装载量不高于{d2}%时，向{s1}推出矿车	hPt
@@ -28471,6 +28541,8 @@ The moon is low in the western sky pale behind the clouds.	月亮位于西方低
 The performers are in the middle of improvised music, {e}.	表演者们正在以{e1}的形式即兴演奏。	hPt
 The performers are in the middle of reciting the poem {b}.	表演者们正在朗诵诗歌《{b1}》。	hPt
 The performers begin a sermon on the worthlessness of {s}.	表演者们开始布道，宣讲{s1}毫无价值。	hPt
+There is value in a good rivalry, but such danger as well.	有个好对手固然可贵，但竞争也暗藏危险。	hPD
+There's no value in all of this scheming I see these days.	眼下这些勾心斗角，在我看来毫无价值。	hPD
 This event occurred on the {d}nd Hematite in the year {d}.	第{d2}年赤铁矿月{d1}日发生了这件事。	wtl
 This event occurred on the {d}nd Obsidian in the year {d}.	第{d2}年黑曜石月{d1}日发生了这件事。	wtl
 This event occurred on the {d}rd Hematite in the year {d}.	第{d2}年赤铁矿月{d1}日发生了这件事。	wtl
@@ -29345,6 +29417,7 @@ DFHack help: triggers scripts when a syndrome is applied.	在应用综合症时�
 DFHack help: }, initial_option=self.phases.auto_phase and	}，initial_option=self.phases.auto_phase 和	l
 DFHack hotkeys hint: Clean the map tile under the cursor.	清理光标所在的地图格子。	l
 Default attack is a strike without charging or wrestling.	默认使用普通打击，不冲锋或摔跤。	hj
+Don't serve anyone blindly. You'll only get into trouble.	不要盲目效忠任何人，那只会惹祸上身。	hPD
 First you need building materials, like Wood or Boulders.	[C:7:0:0]首先，你需要[C:6:0:1]木头[C:7:0:0]或[C:6:0:1]石材[C:7:0:0]等建筑材料。	hq
 For instance, you can create an order to Make Wooden Bins	例如，你可以创建“制作木箱”命令，	wl
 Gladly. May this new age of harmony last a thousand year.	乐意之至。愿这太平盛世延续千年。	hPD
@@ -29352,6 +29425,7 @@ Go to the previous zone overlapping the tile you clicked.	切换到与所点击�
 Guide {s} immediately when at least {d}% of desired items	所需物品装载量不低于{d1}%时，立即引导矿车向{s1}行驶	hPt
 Guide {s} in {d} days when at least {d}% of desired items	等待{d1}天且所需物品装载量不低于{d2}%时，引导矿车向{s1}行驶	hPt
 How will you respond to the request to cease hostilities?	你将如何回应停止敌对行动的请求？	hP
+I consider laws to be more of a suggestion than anything.	在我看来，法律更像是一种建议。	hPD
 I decided to frame {n} for blood-drinking by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下吸血罪。	hPtD
 I engaged {n} to frame {n} for kidnapping by fooling {n}.	我雇{n1}通过欺骗{n3}，诬陷{n2}犯下绑架罪。	hPtD
 I know you can handle yourself, but be careful out there.	我知道你能照顾好自己，但在外面还是要小心。	hPD
@@ -29362,8 +29436,10 @@ It has {s} and it appears very deliberate in its actions.	它长有{s1}，它的
 It has {s} and it is impossible to hold a grudge near it.	它长有{s1}，在它身边，任何怨恨都无法留存。	ht
 It has {s} and it seems most at ease when it is outdoors.	它长有{s1}，它在户外似乎最为自在。	ht
 It moves its will in accordance with the truth of things.	它的意志遵循万物的真理。	h
+It's great when we all get a chance to be merry together.	大家能聚在一起欢乐，真是美好！	hPD
 Native Legends fantastic creatures mere travelers stories	奇幻生物已成为旅人口中虚无缥缈的故事	h
 Needs: Plant branch [consumed], Edged item [not consumed]	需求：植物树枝［消耗］、有刃物品［不消耗］	hP
+Nobody is free, and it is pointless to act as if you are.	没有人是自由的，装作自由也毫无意义。	hPD
 Now that you have a Bed you can place in it the fortress.	[C:7:0:0]现在你有了一张[C:6:0:1]床[C:7:0:0]，可以将它放进要塞。	hq
 Only organized religions can have recognized priesthoods.	只有有组织的宗教才能获得祭司团认可。	hP
 Overview sentence: I crawl with such unbearable loathing!	我浑身都充满了憎恶，简直无法忍受！	l
@@ -29979,7 +30055,9 @@ After enduring an interrogation by {a}, {a} was released	忍受{a1}的审讯后�
 After enduring an interrogation, {a} was released at {p}	在{p1}，忍受审讯后，{a1}被释放了	ht
 After enduring an interrogation, {a} was released in {p}	在{p1}，忍受审讯后，{a1}被释放了	ht
 An aquatic arthropod with a wide head and tapering body.	一种水生节肢动物，头部宽阔，躯体向尾端逐渐变细。	lP
+An artisan, their materials and the tools to shape them!	工匠、材料，还有将材料塑造成形的工具，多么美妙！	hPD
 Announcement combat activity-detail-heading []: Simulate	模拟演奏	l
+Announcement combat actor [$combat-item]: the flying {s}	飞来的{s1}	l
 Announcement combat adventure-announcement []: Be happy!	开心一点！	l
 Announcement combat adventure-announcement []: Intruder!	入侵者！	l
 Announcement combat adventure-announcement []: Murderer!	凶手！	l
@@ -30420,6 +30498,7 @@ Select creature ({d} of {d}, range {d}, disturber only).	选择生物（{d1}/{d2
 Select target ({d} selected, range {d}, disturber only).	选择目标（已选{d1}个，距离{d2}，仅限惊扰者）。	hPt
 Select victim ({d} selected, range {d}, disturber only).	选择受害者（已选{d1}个，距离{d2}，仅限惊扰者）。	hPt
 Set the details of this task, such as the material used.	设置此任务的详细信息，例如使用的材料。	hj
+Some laws are just, while others were made to be broken.	有些法律公正合理，有些却注定要被打破。	hPD
 Some patients will need Crutches after they are treated.	[C:7:0:0]某些病人在治疗后仍需要[C:6:0:1]拐杖[C:7:0:0]。	hq
 Spread rumor of {e}'s acceptance of {e}'s offer of peace	传播{e1}接受{e2}的和平提议的传闻	hPt
 State opinion that it must be stopped with violent force	认为必须用武力制止此事	hP
@@ -31051,6 +31130,7 @@ Adventurer log reputation: legendary information source	传奇情报来源	h
 Adventurer log reputation: noted preserver of knowledge	著名的博学大师	h
 After being interrogated, {a} implicated {a} during {e}	在{e1}期间，经过审讯后，{a1}供出了{a2}	ht
 After being interrogated, {a} implicated {a} within {p}	在{p1}，经过审讯后，{a1}供出了{a2}	ht
+All of this striving against one another is so foolish.	这些相互争胜的举动，实在愚蠢。	hPD
 An important decision awaits your careful deliberation.	一项重要决定等待你仔细斟酌。	hP
 Announcement combat activity-detail-heading []: Discuss	讨论	l
 Announcement combat activity-detail-heading []: Pray to	祈祷（对象未注明）	l
@@ -31107,7 +31187,6 @@ Announcement combat merchant-advert-origin [$name]: {s}	{s1}	l
 Announcement combat merchant-origin []: the settlements	那些定居点	l
 Announcement combat merchant-people []: some of my kind	我的一些同族	l
 Announcement combat owned-object [owner,$body]: {s} {s}	{s1}{s2}	l
-Announcement combat owned-object [owner,$item]: {s} {s}	{s1}{s2}	l
 Announcement combat quest-building []: a counting house	账房	l
 Announcement combat reference-building-type []: dungeon	地牢	l
 Announcement combat reference-building-type []: library	图书馆	l
@@ -32571,6 +32650,7 @@ Toggle whether the task will be repeated indefinitely.	切换此任务是否无�
 We checked that stone for heat! What devilry is this?!	我们明明检查过那块石头的温度！这是什么邪术？！	hP
 What will you say about the refusal to accept tribute?	关于拒收贡品，你想说些什么？	hP
 When unpaused, a worker should now build the Workshop.	[C:7:0:0]解除暂停后，工人应该就会开始建造[C:6:0:0]工坊[C:7:0:0]。	hq
+Who are these mealy-mouthed cowards trying to impress?	这些说话拐弯抹角的懦夫，究竟想讨好谁？	hPD
 Workshop recipe: format at least available leather/dye	可用皮革／染料：至少{d}	l
 World artifact claim: Claimed by your local government	你所在地区的政府宣称拥有	h
 You are considered an integral part of the opposition.	你被视为反对者中不可或缺的一员。	hPD
@@ -33193,6 +33273,7 @@ Adventurer log agreement field: Complete: report back	已完成：返回汇报	h
 Adventurer log reputation: legendary training partner	传奇训练伙伴	h
 Adventurer log reputation: rumored information source	传闻中的情报来源	h
 Alcohol, good food, and personal rooms go a long way.	酒、美食和私人房间都能起到很大作用。	hq
+All of that so-called knowledge doesn't mean a thing.	那些所谓的知识，全都毫无意义。	hPD
 Although accounts vary, it is universally agreed that	虽然记载各不相同，但人们普遍认为，	h
 An elusive medium-sized fish found in coastal waters.	一种罕见的中等尺寸鱼类，生活在沿海水域。	lP
 Announcement combat activity-detail-form [$name]: {s}	{s1}体	l
@@ -33602,6 +33683,7 @@ I ask that {e} be made {s} for {e}. Will you have us?	我请求让{e1}为{e2}担
 I decided to frame {n} for kidnapping by fooling {n}.	我决定通过欺骗{n2}，诬陷{n1}犯下绑架罪。	hPtD
 I engaged {n} to frame {n} for murder by fooling {n}.	我雇{n1}通过欺骗{n3}，诬陷{n2}犯下谋杀罪。	hPtD
 I hate the self-absorbed lyrics of the accompaniment.	我讨厌伴奏中自我陶醉的歌词。	hPD
+I like a balance of tranquility and commotion myself.	我喜欢宁静与热闹各占几分。	hPD
 I love the riddle in the lyrics of the accompaniment.	我喜欢伴奏歌词里的谜语。	hPD
 If you don't have a Bookkeeper, or they don't have an	如果没有记账员，或记账员没有	wl
 It has {s} and it always seems to be deep in thought.	它长有{s1}，它似乎总在沉思。	ht
@@ -33615,6 +33697,7 @@ Mounds of clouds are clustered through a striped sky.	成堆的云团聚集在�
 Mounds of clouds are clustered through a striped sky.	成堆的云团聚集在布满条纹的天空中。	hj
 Native Legends fantastic creatures no longer numerous	奇幻生物已不再大量存在	h
 Native Legends living gods and beasts still held sway	活着的神灵与强大的野兽仍主宰着世界	h
+Nothing gives them the right to establish these laws.	他们根本无权制定这些法律。	hPD
 Others refused to journey to this dangerous fortress.	其他人拒绝前往这座危险的要塞。	hP
 Overview sentence: I am in complete accord with this!	我完全赞同！	l
 Overview sentence: I brought somebody to rest in bed.	我把人送到床上休息去了。	l
@@ -33671,6 +33754,7 @@ This visitor has come {s}. It is seeking information.	这位访客前来{s1}。�
 This visitor has come {s}. She was curious about {e}.	这位访客前来{s1}。她对{e1}感到好奇。	hPt
 Visitor overview purpose: seeking work as a mercenary	寻找佣兵的工作	hl
 Visitor overview purpose: seeking work as a performer	寻找表演者的工作	hl
+We should all be so lucky as to truly master a skill.	但愿我们都能有幸真正精通一门技艺。	hPD
 With singular purpose it seeks to destroy the living.	它一心要毁灭生者。	h
 Workshop recipe: format at least available thread/dye	可用线材／染料：至少{d}	l
 Workshop recipe: state extract-bearing small creature	含可提取物	l
@@ -33695,6 +33779,7 @@ You have selected an area near a necromancer's tower.	你选择的区域临近�
 You insult me with your derision, but let us move on.	你的嘲弄侮辱了我，不过我们还是换个话题吧。	hPD
 You insult me with your flattery, but let us move on.	你的奉承侮辱了我，不过我们还是换个话题吧。	hPD
 You might want to check your maximum volcanism value.	请检查最高火山活动度。	l
+You must never forget true loyalty. Repay it in full.	真正的忠诚不可辜负，应当全心回报。	hPD
 You need to select the crops to be grown each season.	你需要选择每个季节种植的作物。	hq
 You ought to be rewarded for returning our treasures.	你归还了我们的宝藏，应当得到奖赏。	hPD
 accepted in admiration of power, despite fear of {a}.	虽然惧怕{a1}，但崇拜权力，因此答应了。	ht
@@ -34411,7 +34496,6 @@ Announcement combat dialogue-trouble []: occupations	多处占领	l
 Announcement combat diplomacy-cause []: a procession	一次游行	l
 Announcement combat diplomacy-cause []: an abduction	一次绑架	l
 Announcement combat equipment [owner,$body]: {s} {s}	{s1}{s2}	l
-Announcement combat equipment [owner,$item]: {s} {s}	{s1}{s2}	l
 Announcement combat guard-building []: the mead hall	蜜酒厅	l
 Announcement combat historical-artifact [$item]: {s}	{s1}	l
 Announcement combat injury-subject []: a motor nerve	一条运动神经	l
@@ -34841,6 +34925,7 @@ DFHack help: your changes each time the world loads.	每次世界加载时你都
 DFHack help: | 1 | Unhappy | ":C" | COLOR_LIGHTRED |	| 1 |不开心| "：C" | COLOR_LIGHTRED |	l
 DFHack help: | 5 | Happy | ":D" | COLOR_LIGHTGREEN |	| 5 |快乐| "：D" | COLOR_LIGHTGREEN |	l
 Does anybody else still have a stake in these lands?	还有谁在这片土地上保有权益？	hPD
+Family is the true bond that keeps society thriving.	家庭才是维系社会兴盛的纽带。	hPD
 Forbid your citizens from using an item or building.	禁止居民使用某件物品或建筑。	hj
 Forbidding of death objects occurs at time of death.	尸体和遗物的禁用状态在死亡时决定。	wil
 Fortress activity: Make trifle pewter bars (use ore)	制作廉白锡锭（使用矿石）	li
@@ -34890,6 +34975,7 @@ Overview sentence: I was on an infiltration mission.	出去执行潜入任务了
 Overview sentence: I'm terribly bitter about this...	这件事让我心里怨恨极了……	l
 Overview sentence: There is no need for celebration.	没什么好庆祝的。	l
 Path to here (no climbing/jumping) ({d} levels down)	寻路至此（不攀爬或跳跃）（下方{d1}层）	hPt
+Power over others is the only true measure of worth.	能支配多少人，才是衡量价值的唯一标准。	hPD
 Push off {s} immediately when empty of desired items	未装载所需物品时，立即向{s1}推出矿车	hPt
 Push off {s} in {d} days when empty of desired items	等待{d1}天且未装载所需物品时，向{s1}推出矿车	hPt
 Repeat this pattern until you get below the aquifer.	重复这一过程，直到穿过含水层。	hq
@@ -34965,6 +35051,7 @@ Verbally struggle against looming existential crisis	说出你与迫近的存在
 Villains! The seizure of {b} will not go unanswered.	恶徒！你们强征{b1}的行为必将遭到报复。	hPt
 What will you say about the end of the insurrection?	关于起义结束，你想说些什么？	hP
 What will you say about the refusal to give tribute?	关于拒绝进贡，你想说些什么？	hP
+When all other bonds wither, friendship will remain.	纵使其他情分都淡去，友谊仍会长存。	hPD
 Where are their forces? Are there patrols or guards?	他们的军队在哪里？有巡逻队或守卫吗？	hPD
 Why is there a riddle in the lyrics? I hate riddles.	为什么歌词里有谜语？我讨厌谜语。	hPD
 Work orders are used to automate Tasks in Workshops.	[C:7:0:0]工单用于自动安排[C:6:0:0]工坊[C:3:0:1]任务[C:7:0:0]。	hq
@@ -35676,7 +35763,6 @@ After being interrogated, {a} implicated {a} at {p}	在{p1}，经过审讯后，
 After being interrogated, {a} implicated {a} in {p}	在{p1}，经过审讯后，{a1}供出了{a2}	ht
 And remember: Losing is fun, and now it's personal!	记住：[C:2:0:1]输了才好玩，而这次轮到你亲身体验！[C:7:0:0]	hq
 Announcement combat activity-detail-form []: poetry	诗歌	l
-Announcement combat actor [$item]: the spinning {s}	旋转着的{s1}	l
 Announcement combat adventure-announcement []: Ack!	啊！	l
 Announcement combat adventure-announcement []: Huh?	嗯？	l
 Announcement combat adventure-announcement []: Who?	谁？	l
@@ -37430,6 +37516,7 @@ Push off {s} in {d} day when full of desired items	等待{d1}天且所需物品�
 Quick movement and other actions decrease stealth.	快速移动和其他动作会降低隐蔽程度。	hP
 Randomize appearance, respecting local populations	依据当地人口特征随机生成外貌	l
 Ride {s} in {d} day when at most {d}% of any items	等待{d1}天且总装载量不高于{d2}%时，乘坐矿车向{s1}行驶	hPt
+Society flourishes when law breakers are punished.	违法者受到惩罚，社会才能兴盛。	hPD
 Spread rumor of {e}'s march to found a site in {e}	传播{e1}进军{e2}建立新据点的传闻	hPt
 Spread rumor of {p}'s export prohibition violation	传播{p1}违反出口禁令的传闻	hPt
 State nuances of martial prowess (not your values)	阐述武艺的复杂之处（并非你的价值观）	hP
@@ -37483,6 +37570,8 @@ This visitor has come . She was curious about {e}.	这位访客已经到来。�
 This work order has been validated by the manager.	此工单已由经理人批准。	hj
 Victory was spread among {c} winners in the wilds.	在荒野中，共有{c1}名参赛者共同获得了胜利。	ht
 Water might need to be pumped out or carried away.	可能需要把水抽出或运走。	l
+We must be ready to sacrifice when the time comes.	到了需要的时候，我们必须甘愿牺牲。	hPD
+We need to find a better way than those of before.	我们需要找到比前人更好的办法。	hPD
 Workshop mood sketch: pictures of stacked leather.	画着堆叠的皮革。	l
 Written on the item is an untitled , authored by .	物品上写有无题作品，类型及作者姓名未注明。	h
 You already know the will of {p}. Let a week pass.	你已经知晓{p1}的意志。等上一周。	hPt
@@ -38248,6 +38337,7 @@ A person with the head and legs of a grasshopper.	一种长着蝗虫脑袋和跳
 A person with the head and quills of a porcupine.	一种长着豪猪的头和羽毛的人形生物。	lP
 A person with the head and wings of an albatross.	一种长着信天翁脑袋和翅膀的人形生物。	lP
 A person with the long body and head of an otter.	长着水獭一样长的身体和头的人形生物。	lP
+A skilled warrior is a beautiful sight to behold.	武艺高强的战士，令人赏心悦目。	hPD
 A small flightless bird person with a large beak.	一种不会飞的小型鸟类人形生物，长有硕大的喙。	lP
 A small person with a head bearing ten tentacles.	一个头上有十只触角小型人.	lP
 A small person with the head and wings of a crow.	一种长着乌鸦脑袋和翅膀的小型人形生物。	lP
@@ -38273,8 +38363,9 @@ Adventurer log reputation: infamous enemy fighter	臭名昭著的斗士	h
 Adventurer log reputation: noted training partner	著名的训练伙伴	h
 Affects the quality of writing aside from poetry.	影响诗歌以外的写作质量。	w
 After enduring an interrogation, {a} was released	忍受审讯后，{a1}被释放了	ht
+All of this buying and selling isn't honest work.	这些买进卖出的营生，算不上踏实劳动。	hPD
 Announcement combat ability []: Spray jet of fire	喷射火焰	l
-Announcement combat actor [$item]: the flying {s}	飞来的{s1}	l
+Announcement combat actor [$combat-item]: the {s}	{s1}	l
 Announcement combat agreement-crime []: espionage	间谍活动	l
 Announcement combat agreement-crime []: vandalism	破坏公物	l
 Announcement combat agreement-target [$name]: {s}	{s1}	l
@@ -38297,6 +38388,7 @@ Announcement combat dialogue-trouble []: ruffians	暴徒	l
 Announcement combat diplomacy-cause []: a journey	一段旅程	l
 Announcement combat diplomacy-group []: The group	这个势力	l
 Announcement combat diplomacy-groups [$name]: {s}	{s1}	l
+Announcement combat equipment [$combat-item]: {s}	{s1}	l
 Announcement combat equipment [owned-object]: {s}	{s1}	l
 Announcement combat historical-squad [$name]: {s}	{s1}	l
 Announcement combat injury-condition []: sprained	扭伤	l
@@ -38728,6 +38820,7 @@ Feel free to pause and check out the information.	你随时可以暂停，仔细
 Fortress activity: Carve wooden helve from branch	用树枝雕刻木制斧柄	li
 Fortress activity: Make coke from bituminous coal	使用烟煤制作焦炭	li
 Fortress activity: Make enormous wooden corkscrew	制作大号木制螺杆	li
+Give me the bustle and noise over all that quiet!	比起一片寂静，我更喜欢喧闹与忙碌！	hPD
 Guide {s} immediately when empty of desired items	未装载所需物品时，立即引导矿车向{s1}行驶	hPt
 Guide {s} in {d} days when empty of desired items	等待{d1}天且未装载所需物品时，引导矿车向{s1}行驶	hPt
 How will you respond to the tribute cancellation?	你将如何回应停止进贡的决定？	hP
@@ -40185,6 +40278,7 @@ I decided to frame {n} for theft by fooling {n}.	我决定通过欺骗{n2}，诬
 I deign to favor you with my little pretty, {n}.	我愿恩赐你我的小宝贝——{n1}。	hPtD
 I engaged {n} to sabotage the activities of {e}.	我雇{n1}破坏{e1}的活动。	hPtD
 I engaged {n} to sabotage the activities of {n}.	我雇{n1}破坏{n2}的活动。	hPtD
+In life, you should work hard. Then work harder.	人生在世，应当努力，再更加努力。	hPD
 Invoke true name to compel service from listener	念出真名，强令对方效力	hP
 It has a slowly shifting pattern on its surface.	它的体表有缓缓变化的图案。	h
 It has {s} and it is crazed for blood and flesh.	它长有{s1}，它对血肉的渴望近乎疯狂。	ht
@@ -40194,6 +40288,7 @@ It has {s} and it never abandons its companions.	它长有{s1}，它从不抛弃
 It has {s} and it never stops moving completely.	它长有{s1}，它从未完全停止移动。	ht
 It has {s} and it radiates an aura of welcoming.	它长有{s1}，它散发着热情好客的气息。	ht
 It has {s} and it spouts gibberish periodically.	它长有{s1}，它不时口吐胡言。	ht
+It is abhorrent to seek power over other people.	谋求支配他人的权力，令人不齿。	hPD
 It is amazing how far you've come. Welcome home.	你的成就真令人惊叹。欢迎回家。	hPD
 It is surrounded by an everpresent rush of wind.	它周围始终有疾风环绕。	h
 It might be very difficult to obtain stone here.	在这里获取石材可能会非常困难。	l
@@ -40210,6 +40305,7 @@ Native history collection {s} of {p} during {e}.	在{e1}期间，{p1}的{s1}。	
 Native history collection {s} of {p} within {p}.	在{p2}，{p1}的{s1}。	htEi
 No charge attack: target's location inaccessible	无法冲锋攻击：无法抵达目标位置。	hP
 No charge attack: you are in uncontrolled flight	无法冲锋攻击：你正不受控制地在空中飞行。	hP
+No law can do justice to the complexity of life.	生活如此复杂，没有哪条法律能面面俱到。	hPD
 No temple location currently assigned to a zone.	目前没有区域被指定为神殿地点。	hP
 Oh, no, I'm having trouble taking you seriously.	哎，别说了，我实在难以把你的话当真。	hPD
 On the front of the coin is an {s} image of {a}.	硬币正面图案{s1}，描绘了{a1}。	hHt
@@ -40321,10 +40417,12 @@ There is nothing to catch in the northern ocean.	北部的海洋中没有可捕�
 There is nothing to catch in the southern ocean.	南部的海洋中没有可捕捉的东西。	hP
 There is nothing to catch in the western cavern.	西部的洞穴中没有可捕捉的东西。	hP
 There is nothing to catch in the western swamps.	西部的沼泽中没有可捕捉的东西。	hP
+There's nothing admirable about bullying others.	欺凌他人，没有什么值得称道的。	hPD
 This chanter. How can I even describe the skill?	这位吟唱者的技艺，我简直不知该如何形容！	hPD
 Vanilla mod description: For save compatibility.	用于保持存档兼容性。	l
 Victory was spread among {c} winners during {e}.	在{e1}期间，共有{c1}名参赛者共同获得了胜利。	ht
 Victory was spread among {c} winners within {p}.	在{p1}，共有{c1}名参赛者共同获得了胜利。	ht
+We should all be as one. Why all the struggling?	我们本应同心同德，何必争斗不休？	hPD
 What will you say about the artifact's location?	关于造物的下落，你想说些什么？	hP
 What will you say about your plots and scheming?	关于你的阴谋与谋划，你想说些什么？	hP
 Work orders cannot be assigned to this building.	无法为此建筑分配工单。	hP
@@ -40343,6 +40441,7 @@ You have been ordered to drive these forces out.	你受命驱逐这些势力。	
 You need to be holding an axe with a sharp edge.	你需要手持一把刃口锋利的斧头。	hP
 You prepare to shoot {n} with {s} nocked in {s}.	你准备朝{n1}射出搭在{s2}上的{s1}。	hPt
 You should keep your weird thoughts to yourself.	你那些怪念头还是留在心里吧。	hPD
+You shouldn't whittle your life away on working.	不该把一生都消磨在劳作上。	hPD
 Your workers will rarely make them on their own.	你的工人偶尔会自行制作造物。	hP
 accepted an offer of peace from {p} in the wilds	在荒野中接受了{p1}的和平提议	ht
 added a masterful covering to a {i} in the wilds	在荒野中为{i1}添加了杰作级的覆盖层	ht
@@ -41657,6 +41756,7 @@ The defenders hired {a} as scouts in {p} at {p}	在{p2}，防守方在{p1}雇佣
 The defenders hired {a} as scouts in {p} in {p}	在{p2}，防守方在{p1}雇佣{a1}担任斥候	ht
 The fortress attracted no migrants this season.	本季要塞没有吸引到移民。	hP
 The guildhall petition by {e} has been ignored.	{e1}的行会大厅申请未获理会。	hPt
+The mind thinks best when the world is at rest.	周遭安静时，头脑最清明。	hPD
 The poetry enters the eleventh verse paragraph.	诗歌朗诵到了第11段。	hP
 The residency petition of {e} has been ignored.	{e1}的居留申请未获理会。	hPt
 The residency petition of {n} has been ignored.	{n1}的居留申请未获理会。	hPt
@@ -42731,6 +42831,7 @@ Announcement combat memory-value []: merriment	欢庆	l
 Announcement combat memory-value []: sacrifice	牺牲	l
 Announcement combat memory-value []: tradition	传统	l
 Announcement combat merchant-town [$name]: {s}	{s1}	l
+Announcement combat object [$combat-item]: {s}	{s1}	l
 Announcement combat quest-building []: a tower	高塔	l
 Announcement combat quest-sentence []: wants .	有人想要这件神器。	l
 Announcement combat reference-building []: the	类型和名称未注明的建筑	l
@@ -43086,6 +43187,7 @@ Desired Good Square Count in Medium Subregions	中型子区域的善良方格目
 Desired grid width for scaling (default = {d})	缩放的目标网格宽度 (默认 = {d})	wt
 Directly control a single individual or party.	可直接操控单个角色或是一支冒险小队。	hP
 Directly control a single individual or party.	可直接操控单个角色或是一支冒险小队。	w
+Do not hide yourself behind an unfeeling mask.	不要把自己藏在冷漠的面具后面。	hPD
 Fortress activity: Make billon bars (use bars)	制作毕朗合金锭（使用金属锭）	li
 Fortress activity: Make bronze bars (use bars)	制作青铜锭（使用金属锭）	li
 Fortress activity: suffix (activity cancelled)	（活动已取消）	li
@@ -43094,6 +43196,7 @@ Greatly respected for preserving the knowledge	因博学多才而备受崇敬	w
 He can easily fall in love or develop positive	他很容易坠入爱河或产生正面	l
 Here's something you might be interested in...	有件事你也许会感兴趣……	hPD
 Horizontal keyboard scroll tiles (world, fast)	水平键盘滚动图块(世界,快速)	w
+How I long for the beautiful spectacle of war!	我多么向往战争那壮美的景象！	hPD
 I engaged {n} to induce a war of {e} upon {e}.	我雇{n1}挑起{e1}对{e2}的战争。	hPtD
 I love the ribald lyrics of the accompaniment.	我喜欢伴奏里那些带荤段子的歌词。	hPD
 I love the solemn lyrics of the accompaniment.	我喜欢伴奏中庄严的歌词。	hPD
@@ -43106,6 +43209,7 @@ It has {s} and its body is bent and misshapen.	它长有{s1}，它的身体扭�
 It lumbers along steadily from place to place.	它迈着笨重的步子，不停地四处走动。	h
 It started at {p} and ended at {p} during {e}.	在{e1}期间，从{p1}出发，在{p2}结束。	ht
 It started at {p} and ended at {p} within {p}.	在{p3}，从{p1}出发，在{p2}结束。	ht
+It's admirable when the traditions are upheld.	坚守传统，值得敬重。	hPD
 Leave this menu and recenter on this creature.	离开此菜单，并将视图重新居中到此生物。	hj
 Leave this menu and recenter on this creature.	离开该菜单并重定位至该生物.	w
 Milliseconds interface shutdown after recenter	重新定位后接口关闭毫秒数	w
@@ -43122,6 +43226,7 @@ Native history collection {s} Race within {p}.	在{p1}，{s1}赛跑。	htEi
 Native history occasion {a} {s} as part of {e}	{a1}在{e1}中{s1}	ht
 Nearby vegetation seem to shrink away from it.	附近的草木似乎都在退缩，躲避它。	h
 Office to work in, numbers may be approximate.	办公室可供工作，数量可能只是估算值。	wl
+One should not complain or betray any feeling.	人不应抱怨，也不应流露任何情绪。	hPD
 Overall, this is a good source of information.	总体而言，这是良好的资料来源。	h
 Overview sentence: Everything is coming apart!	全乱套了！	l
 Overview sentence: How incredibly interesting!	太有意思了！	l
@@ -43222,6 +43327,7 @@ There is nothing to catch in the central lake.	中部的湖泊中没有可捕捉
 There is nothing to catch in the eastern lake.	东部的湖泊中没有可捕捉的东西。	hP
 There is nothing to catch in the western lake.	西部的湖泊中没有可捕捉的东西。	hP
 This item is a tool assigned by a work detail.	此物品是由劳动分组分配的工具。	hj
+Trade is the life-blood of a thriving society.	贸易是繁荣社会的命脉。	hPD
 Unlike Stockpiles, multiple Zones can overlap.	[C:7:0:0]与[C:6:0:0]储物堆[C:7:0:0]不同，多个[C:3:0:0]区域[C:7:0:0]可以重叠。	hq
 Unrotten non-pressed oil-bearing leaf or fruit	未腐烂的含油果实/叶子	wi
 Well, there must be something else to discuss.	好吧，总还有别的事情可谈。	hPD
@@ -44336,6 +44442,8 @@ Argue the value of fairness (not your values)	争辩公道的价值（并非你�
 Argue the value of stoicism (not your values)	争辩克制情感的价值（并非你的价值观）	hP
 Ask about the position of this group's forces	询问这个势力的部队位置	hP
 Ask listener to come to the trade depot later	请对方稍后到贸易站来	hP
+Bah! I hope you aren't celebrating something.	哼！但愿你不是在庆祝什么。	hPD
+Be shrewd, but do not lose yourself in guile.	处世要精明，却别迷失于算计。	hPD
 Book title phrase: It Laughs In The Beginning	起初，它欢笑	hi
 Book title phrase: It Mourns In The Beginning	起初，它哀悼	hi
 Book title phrase: Nobody Foretells Afterward	此后，无人预言	hi
@@ -44654,6 +44762,7 @@ I do not know! My instructions come from {n}.	我不知道！我的指令来自{
 I engaged {n} to sabotage the activities of .	我雇{n1}实施破坏活动。	hPtD
 I love the light lyrics of the accompaniment.	我喜欢伴奏中轻快的歌词。	hPD
 I sought great treasures for {u} of my years.	我曾花了{u1}年寻找大宝藏。	hPtD
+I think self-control is key. Master yourself.	我认为自制最为关键，要能掌控自己。	hPD
 Invader construction speed (smaller = slower)	入侵者建造速度（越低越慢）
 It changes between two colors intermittently.	它不时在两种颜色之间变换。	h
 It changes color with the phases of the moon.	它的颜色随月相变化。	h
@@ -44666,6 +44775,7 @@ It is the symbol of {p}, an {s} civilization.	它是{s1}政权「{p1}」的象�
 It started at {p} and ended at {p} during {e}	在{e1}期间，从{p1}出发，在{p2}结束	ht
 It started at {p} and ended at {p} within {p}	在{p3}，从{p1}出发，在{p2}结束	ht
 It whirls, skips and jumps whenever it moves.	它一动起来便旋转、蹦跳。	h
+It's wonderful to be out exploring the wilds!	到野外探索，真是美妙！	hPD
 Justice case: Violation of export prohibition	违反出口禁令	l
 Justice plot: Start War between {e1} and {e2}	挑起{e1}与{e2}之间的战争	l
 Leave menu and recenter the view on the time.	离开菜单，并将视图重新居中到此物品。	hj
@@ -44781,6 +44891,8 @@ What will you say about the surrounding area?	关于周围区域，你想说些�
 What will you say about the tribute stoppage?	关于停止进贡，你想说些什么？	hP
 While defeated, the former escaped unscathed.	前者虽被击败，却毫发无伤地逃脱了。	h
 While defeated, the latter escaped unscathed.	后者虽被击败，却毫发无伤地逃脱了。	h
+Why harm yourself for anybody else's benefit?	何必为了别人的好处损害自己？	hPD
+Why would I waste time thinking about myself?	我为什么要浪费时间琢磨自己？	hPD
 Wilderness irritation minimum (less = sooner)	荒野激怒值下限（越低越早来袭）
 Window is resizable (takes effect on restart)	窗口可调整大小 (重启后生效)	w
 Workshop mood sketch: pictures of rough gems.	画着粗糙宝石。	l
@@ -47867,6 +47979,7 @@ Her slightly hooked nose is somewhat short.	她略带弯钩的鼻子稍短。	l
 Here you can test mods or just play around.	你可以在此测试模组，也可以随意游玩。	wiP
 His slightly hooked nose is somewhat short.	他略带弯钩的鼻子稍短。	l
 Hotkey: Building, Trap, Upright Spear/Spike	热键：建筑，陷阱，竖矛/尖刺	w
+How great it is to be surrounded by family!	家人在身边，真是幸福！	hPD
 How will you respond about your profession?	你将如何回答关于你职业的问题？	hP
 How will you respond to the offer of peace?	你将如何回应和平提议？	hP
 How will you respond to the position offer?	你将如何回应职位邀请？	hP
@@ -48002,6 +48115,7 @@ Travel building: Fruit and vegetable market	果蔬市场	wi
 Victory was spread among {c} winners at {p}	在{p1}，共有{c1}名参赛者共同获得了胜利	ht
 Victory was spread among {c} winners in {p}	在{p1}，共有{c1}名参赛者共同获得了胜利	ht
 Visitor overview purpose: seeking sanctuary	寻求庇护	hl
+What do you care how I speak or how I live?	我怎么说话、怎么生活，关你什么事？	hPD
 What will you say about the new leadership?	关于新的领导者，你想说些什么？	hP
 Workshop mood material: cloth... thread..."	布料……线……	l
 Workshop mood material: gems... shining..."	宝石……闪耀……	l
@@ -49138,7 +49252,6 @@ Announcement combat ability []: Cause pain	引发疼痛	l
 Announcement combat ability []: Pet animal	抚摸动物	l
 Announcement combat ability []: Spray dust	喷出粉尘	l
 Announcement combat ability []: Squirt ink	喷出墨汁	l
-Announcement combat actor [$item]: the {s}	{s1}	l
 Announcement combat attack-verb []: bashes	猛击	l
 Announcement combat attack-verb []: drills	钻刺	l
 Announcement combat attack-verb []: lashes	鞭打	l
@@ -49150,7 +49263,6 @@ Announcement combat attack-verb []: stings	蜇刺	l
 Announcement combat attack-verb []: strike	打击	l
 Announcement combat dialogue-stock []: and	酒水	l
 Announcement combat equipment [$body]: {s}	{s1}	l
-Announcement combat equipment [$item]: {s}	{s1}	l
 Announcement combat layer []: injured part	受伤部位	l
 Announcement combat layer []: severed part	断肢	l
 Announcement combat memory-poem []: a poem	一首诗	l
@@ -49607,6 +49719,7 @@ Guide {s} in {d} days always (at least 0%)	等待{d1}天后引导矿车向{s1}�
 Hotkey: Building, Construction, Track Stop	热键：建筑，建造，轨道停车点	w
 Hotkey: Building, Workshops, Cloth/Leather	热键：建筑，工坊，布料/皮革	w
 I am sorry. There is no room for you here.	抱歉，这里没有你的容身之处。	hPD
+I can appreciate the right turn of phrase.	恰到好处的措辞，我是懂得欣赏的。	hPD
 I engaged {n} to induce a war of upon {e}.	我雇{n1}挑起对{e1}的战争。	hPtD
 I hope you find what you are seeking here.	希望你能在这里找到你所追寻的东西。	hPD
 I wonder what the weather is like outside.	不知道外面的天气怎么样。	hPD
@@ -52840,6 +52953,7 @@ Adventurer log reputation: trade partner	贸易伙伴	h
 Affects healing rate of damaged tissues.	影响受损组织的愈合速度。	w
 Age of the {s} and the {s} in the wilds.	在荒野中，{s1}与{s2}的时代。	htEi
 Agree to have {e} accept homage from {e}	同意让{e1}接受{e2}的臣服	hPt
+All of that practice is misspent effort.	那些练习全是白费力气。	hPD
 Announcement combat ability []: Paralyze	引发麻痹	l
 Announcement combat attack-verb []: bash	猛击	l
 Announcement combat attack-verb []: bite	咬	l
@@ -53274,6 +53388,7 @@ Fortress activity: suffix (not in squad)	（不在小队中）	li
 Game frames-per-second cap (default 100)	游戏FPS上限（默认100）	w
 Game frames-per-second cap (default {d})	游戏每秒帧数上限(默认{d})	wt
 Give a sermon inveighing against a value	发表反对某种价值观的布道	hP
+Hard work is the true sign of character.	勤勉才是真正品格的体现。	hPD
 Has revealed the presence of {b} to {n}.	向{n1}透露了{b1}的存在。	hPt
 Have faith and all shall be rejuvenated.	心怀信念，一切都将重获生机。	hP
 He was one of the only ones of his kind.	他是同类中仅有的少数个体之一。	h
@@ -53303,6 +53418,7 @@ It might be difficult to find resources.	在这里可能很难找到资源。	l
 It was one of the only ones of its kind.	它是同类中仅有的少数个体之一。	h
 Justice intelligence tab: Interrogations	审讯记录	l
 Justice plot: Attempted Espionage in {d}	间谍活动未遂（第{d}年）	l
+Let there be peace throughout the world.	愿世界处处安宁。	hPD
 Loading world and continuing active game	加载世界并继续可用游戏	w
 Minimum Number of High-Elevation Squares	高海拔方格最少数量
 Minimum Number of High-Volcanism Squares	高火山活动度方格最少数量
@@ -53457,6 +53573,7 @@ There is a vague {s} imprint in the {s}.	{s2}中有一个{s1}留下的模糊压�
 There is a {s}'s {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的压痕。	hPt
 There must be something else to discuss.	总还有别的事情可谈。	hPD
 There were {c} competitors in the wilds.	在荒野中，共有{c1}名参赛者。	ht
+They are so full of all those big words.	他们满口都是装腔作势的大词。	hPD
 They tangle together and tumble forward!	双方纠缠在一起，向前翻滚！	hP
 They were greatly offended by the locals	当地人的行为极大地冒犯了他们	h
 This artwork appears on the back of {i}.	这件艺术品位于{i1}的背面。	hHt
@@ -54714,7 +54831,6 @@ Announcement combat layer []: main part	主要部分	l
 Announcement combat layer-phrase []: it	它	l
 Announcement combat memory-person []: I	我	l
 Announcement combat object [$body]: {s}	{s1}	l
-Announcement combat object [$item]: {s}	{s1}	l
 Announcement combat owner [unit]: {s}'s	{s1}的	l
 Announcement combat quest-holder []: me	我	l
 Announcement combat quest-holder []: of	身份未记载的请求者	l
@@ -55112,6 +55228,7 @@ It concerns the important location {p}.	内容涉及重要地点{p1}。	ht
 It has {s} and it crackles with energy.	它长有{s1}，它身上的能量噼啪作响。	ht
 It has {s} and its joints are backward.	它长有{s1}，它的关节反向弯曲。	ht
 It is one of the only ones of its kind.	它是同类中仅有的少数个体之一。	h
+It's foolish to work hard for anything.	为任何事辛苦劳作，都是愚蠢的。	hPD
 It's too much! You feel even more sick.	太多了！你感到更加恶心了。	hP
 Its limbs jut out at asymmetric angles.	它的四肢以不对称的角度伸出。	h
 Its {q} scales are oval-shaped and {s}.	它的{q1}鳞片呈椭圆形，{s1}。	ht
@@ -57138,6 +57255,7 @@ It has {s} and it shambles sluggishly.	它长有{s1}，它拖着步子缓慢蹒�
 It has {s} and it squirms and fidgets.	它长有{s1}，它扭动着，躁动不安。	ht
 It seems to glow brightly from within.	它似乎从体内放射出耀眼的光芒。	h
 It spins wildly, lurching and howling.	它疯狂地旋转、踉跄并嚎叫。	h
+It's best to slow down and just relax.	最好放慢脚步，好好放松。	hPD
 Join me and we'll bring {p} back home!	加入我，我们一起把{p1}带回家！	hPtD
 Justice case: Conspiracy to alow labor	合谋怠工	l
 Justice plot: Attempted Bribery in {d}	贿赂未遂（第{d}年）	l
@@ -57288,6 +57406,7 @@ This is an untitled , authored by {n}.	这是{n}创作的无题作品，体裁�
 This is an untitled {s}, authored by .	这是一部无题{s}，作者不详。	ht
 This storyteller is really quite good!	这位讲故事的人真的相当出色！	hPD
 This storyteller? Unbelievable talent!	这位讲故事的人的天赋，简直让人不敢相信！	hPD
+Time spent in leisure is such a waste.	闲暇实在是浪费光阴。	hPD
 Travel building: Imported goods market	进口杂货市场	wi
 Travel building: Leather clothing shop	皮制服装店	wi
 Unit custom profession: Banner Captain	旗队长	l
@@ -57303,6 +57422,7 @@ Werebeast Attack Created Wealth Rating	狂化生物来袭创造财富阈值
 What will you say about the abduction?	关于这次绑架，你想说些什么？	hP
 What will you say about the agreement?	关于这项约定，你想说些什么？	hP
 What will you say about the structure?	关于这座建筑，你想说些什么？	hP
+Why deny yourself your heart's desire?	何必压抑自己心中的渴望？	hPD
 Wilderness sensitivity (less = sooner)	荒野敏感度（越低越早来袭）
 Workshop mood requirement: "{s}" needs	“{s}”需要：	l
 Workshop mood working artifact: {s}...	{s}……	l
@@ -58812,6 +58932,7 @@ Announcement music passage: the theme	主题	w
 Argue the worthlessness of friendship	争辩友谊毫无价值	hP
 Ask me when I've returned to my home!	等我回家后再问我！	hPD
 Associated Organization: Unidentified	关联组织：尚未查明	hP
+Be careful of your so-called friends.	要提防那些所谓的朋友。	hPD
 Bolts nearby but assigned to hunters:	附近已分配给猎人的弩箭：	wl
 Bolts nearby but assigned to squads: 	附近被军队占用的弩箭数: 	wi
 Book title phrase: It Foretells There	在那里，它预言	hi
@@ -59210,6 +59331,7 @@ It has {s} and it has a bloated body.	它长有{s1}，它身躯臃肿。	ht
 It has {s} and it is hard to disobey.	它长有{s1}，它令人难以违抗。	ht
 It has {s} and it moves deliberately.	它长有{s1}，它行动从容。	ht
 It has {s} and it moves very stiffly.	它长有{s1}，它的动作十分僵硬。	ht
+It is important to discover yourself.	认识自己，是件重要的事。	hPD
 It moves with uneven jerking motions.	它行动时不规则地抽动。	h
 It's great to have a friend like you!	有你这样的朋友真好！	hPD
 Justice detail: Implicates: somebody.	牵涉对象：某人。	l
@@ -59360,6 +59482,7 @@ The {s} suspended a linkage from {s}.	{s1}暂停了从{s2}接出的联动连接�
 There used to be writing on the item.	这件物品上曾有文字。	h
 There were {c} competitors during {e}	在{e1}期间，共有{c1}名参赛者	ht
 There were {c} competitors within {p}	在{p1}，共有{c1}名参赛者	ht
+There's nothing like a great romance!	没有什么比得上一场美好的爱情！	hPD
 These lyrics are simply unacceptable.	这些歌词简直无法接受。	hPD
 They suspected the involvement of {a}	他们怀疑{a1}参与其中	ht
 This artwork was commissioned by {n}.	这件艺术品由{n1}委托创作。	hHt
@@ -61360,6 +61483,7 @@ Hotkey: Building, Construction, Ramp	热键：建筑，建造，坡道	w
 Hotkey: Building, Construction, Wall	热键：建筑，建造，墙	w
 Hotkey: Building, Workshops, Farming	热键：建筑，工坊，农牧业	w
 I am honored to be in your presence.	能见到你，我倍感荣幸。	hPD
+I do admire a clever turn of phrase.	我欣赏巧妙的措辞。	hPD
 I have confidence in your abilities.	我相信你的能力。	hPD
 I sent {n} to engage {n} to abduct .	我派{n1}雇{n2}绑架。	hPtD
 Interrogate suspects for wrongdoing.	审讯涉嫌违法行为的人。	hj
@@ -61542,6 +61666,7 @@ The Rampage of {n} in in {p} at {p}.	在{p2}，{n1}在{p1}的肆虐事件。	htE
 The Rampage of {n} in in {p} in {d}.	{d1}年的{n1}在{p1}的肆虐事件。	htEi
 The Rampage of {n} in in {p} in {p}.	在{p2}，{n1}在{p1}的肆虐事件。	htEi
 The artwork was commissioned by {n}.	这件艺术品由{n1}委托创作。	hHt
+The creative impulse is so valuable.	创作的冲动如此珍贵。	hPD
 The defenders hired {a} in the wilds	在荒野中，防守方雇佣了{a1}	ht
 The defenders were led by {a} at {p}	在{p1}，{a1}率领防守	ht
 The defenders were led by {a} in {p}	在{p1}，{a1}率领防守	ht
@@ -63656,6 +63781,7 @@ The poetry enters the {d}nd stanza.	诗歌朗诵到了第{d1}节。	hPt
 The poetry enters the {d}rd stanza.	诗歌朗诵到了第{d1}节。	hPt
 The poetry enters the {d}st stanza.	诗歌朗诵到了第{d1}节。	hPt
 The poetry enters the {d}th stanza.	诗歌朗诵到了第{d1}节。	hPt
+The quest for knowledge never ends.	求知永无止境。	hPD
 The squad can be customized and you	你可以自定义小队，并且	hq
 The sun is high in the eastern sky.	太阳位于东方高空。	hP
 The sun is high in the eastern sky.	太阳位于东方高空。	hj
@@ -63666,6 +63792,7 @@ The work has no particular subject.	这部作品没有特定主题。	h
 The {s} remains stuck in {n}'s {t}.	{s1}仍卡在{n1}的{t1}中。	hPt
 There are two sides to every story.	每件事都有两面。	hP
 There is a deep imprint in the {s}.	{s1}中有一个深压痕。	hPt
+There's nothing like a good friend.	没有什么比得上一个好朋友。	hPD
 They do not feel challenged at all.	他们觉得没人能撼动自己的地位。	hPD
 They tangle together and fall over!	双方纠缠在一起，摔倒了！	hP
 This Version of DF uses FMOD Studio	本版本《矮人要塞》使用 FMOD Studio	wl
@@ -65289,6 +65416,7 @@ Argue the worthlessness of decorum	争辩礼仪毫无价值	hP
 Argue the worthlessness of harmony	争辩和谐毫无价值	hP
 Argue the worthlessness of loyalty	争辩忠诚毫无价值	hP
 Argue the worthlessness of romance	争辩爱情毫无价值	hP
+Art? More like wasted opportunity.	艺术？倒不如说是在浪费大好机会。	hPD
 Ask about the bone-chilling horror	询问骇人的恐怖之物	hP
 Ask about the structure you are in	询问你所在的建筑	hP
 Ask if anybody fled from this site	询问是否有人逃离此地	hP
@@ -65864,6 +65992,7 @@ Nearest site: A day's travel north	最近地点：向北，约一天路程	w
 Nearest site: A day's travel south	最近地点：向南，约一天路程	w
 Nearest site: {d} days' travel {s}	最近地点：约{d}天路程，向{s}	wtx
 No charge attack: you are climbing	无法冲锋攻击：你正在攀爬。	hP
+One should always respect the law.	人应当始终尊重法律。	hPD
 Open the citizen information menu.	打开居民信息菜单。	hj
 Overall, the composition is great.	总体而言，乐曲优秀。	h
 Overview sentence: How disgusting!	真恶心！	l
@@ -66056,6 +66185,7 @@ Visitor overview purpose: to relax	放松	hl
 Visitor overview purpose: to study	学习	hl
 Volcanism Weighted Range ({d}-{d})	火山活动度加权范围（{d}-{d}）	wt
 Walking spreads spatter (adv mode)	行走传播飞溅(冒险模式)	w
+We need to move beyond traditions.	我们需要走出传统的束缚。	hPD
 We rent out rooms for {d} a night.	我们出租客房，每晚{d1}。	hPtD
 Well, I believe... something else.	嗯，我相信……别的东西。	hPD
 Werebeast Attack Population Rating	狂化生物来袭人口阈值
@@ -68051,6 +68181,7 @@ I don't know anything about that.	我对此一无所知。	hPD
 I engaged {n} to assassinate {n}.	我雇{n1}刺杀{n2}。	hPtD
 I engaged {n} to obtain Untitled.	我雇{n1}取得《无题》。	hPtD
 I visited {e} in {f} to view {b}.	我于{f1}到访{e1}，瞻仰了{b1}。	hPtD
+I was always irritated by family.	家人总让我心烦。	hPD
 I'm curious.  Tell me everything!	我很好奇. 告诉我一切!	w
 I'm traveling to {e} to view {b}.	我正在前往{e1}瞻仰{b1}。	hPtD
 Insurrection in {p} in the wilds.	在荒野中，{p1}起义。	htEi
@@ -68365,6 +68496,7 @@ You have finished working on {s}.	你完成了{s1}的加工。	hPt
 You have forgotten your training!	你忘掉了所受的训练！	hP
 You must reflect on your actions.	你必须反思自己的行为。	hP
 You recite the words evocatively.	你朗诵的诗句引人遐想。	hP
+You should always tell the truth.	无论何时，都应当说实话。	hPD
 Your song is absolutely flawless.	你的歌唱完美无瑕。	hP
 a ceremony held by {a} during {e}	在{e1}期间，{a1}举办的仪式	htEi
 a ceremony held by {a} within {p}	在{p1}，{a1}举办的仪式	htEi
@@ -70424,6 +70556,7 @@ Selected tiles are low priority.	将选中地格设为低优先级。	hj
 She does not often feel lustful.	她不常产生情欲。	l
 She is the only one of her kind.	她是同类中唯一的个体。	h
 Smoothing rough floors and walls	打磨粗糙地板与墙壁	wo
+Some things should never change.	有些东西永远不该改变。	hPD
 Sort by distance from the depot.	按距离贸易站的远近排序。	hj
 Spread rumor of the insurrection	传播起义的传闻	hP
 Start new game in existing world	在已有世界开始新游戏
@@ -75101,6 +75234,7 @@ Loud grinding (heard recently)	响亮机械摩擦声（刚刚听到）	wl
 Loud movement (heard recently)	响亮移动声（刚刚听到）	wl
 Main Ceremony of in the wilds.	在荒野中，主要仪式。	hEi
 Make coke from bituminous coal	使用烟煤制作焦炭	wi
+Masterwork? Why should I care?	杰作？我为什么要在意？	hPD
 Mod dependency label: Requires	依赖：	l
 Mod details label: Description	说明：	l
 Most property was confiscated.	大部分财产被没收。	h
@@ -77629,6 +77763,7 @@ Path to here ({d} level down)	寻路至此（下方{d1}层）	hPt
 Persecution of {p} during {e}	在{e1}期间，对{p1}的迫害	htEi
 Persecution of {p} within {p}	在{p2}，对{p1}的迫害	htEi
 Pillaging of {p} in the wilds	在荒野中，{p1}劫掠事件	htEi
+Please maintain your dignity.	做人要守住尊严。	hPD
 Poetry Competition during {e}	在{e1}期间，诗歌比赛	htEi
 Poetry Competition of at {p}.	在{p1}，诗歌比赛。	htEi
 Poetry Competition of in {d}.	{d1}年的诗歌比赛。	htEi
@@ -80149,9 +80284,11 @@ Very Large Non-Prone Profile	身形很大（未卧倒）	hP
 Very high analytical ability	分析能力很高	wil
 Very high disease resistance	抗病能力很高	wil
 Very high linguistic ability	语言能力很高	wil
+We should all work together.	大家应当齐心协力。	hPD
 What do you want to aim for?	你想瞄准哪个部位？	hP
 What do you want to butcher?	你想屠宰什么？	hP
 What have you been scheming?	你在谋划什么？	hPD
+What's so special about art?	艺术有什么特别的？	hPD
 Where is your identity from?	你所采用的身份来自哪里？	hP
 Workshop mood material: ..."	……	l
 Workshop recipe: meat boning	剔骨用具	l
@@ -80196,7 +80333,7 @@ You have missed your chance.	你已错失良机。	hP
 You have not read this book.	你还没有读过这本书。	h
 You have not read this book.	你尚未读过这本书。	hH
 You have nothing to examine.	你没有可查看的物品。	hP
-You just can't fit any more.	你实在吃不下更多东西了。	hP
+You just can't fit any more.	你实在吃喝不下更多了。	hP
 You leap at {n} from behind!	你从背后扑向{n1}！	hPt
 You play the {s} with skill.	你娴熟地演奏着{s1}。	hPt
 You retract into your shell.	你缩进自己的壳里。	hP
@@ -84475,6 +84612,7 @@ Hotkey: Building, Bookcase	热键：建筑，书柜	w
 Hotkey: Building, Military	热键：建筑，军事	w
 Hotkey: Building, Nest Box	热键：建筑，巢箱	w
 Hotkey: Building, Workshop	热键：建筑，工坊	w
+I do admire a clever trap.	我欣赏巧妙的圈套。	hPD
 I love the raunchy lyrics!	我喜欢粗俗的歌词！	hPD
 I once wandered the wilds.	我曾经游历荒野。	hPD
 I will not bow before you.	我不会向你低头。	hPD
@@ -84515,6 +84653,7 @@ Journey of {a} within {p}.	在{p1}，{a1}的旅程。	htEi
 Justice case: Embezzlement	挪用资金	l
 Justice person: Implicates	牵涉对象	l
 Justice plot: Sabotage {t}	破坏{t}	l
+Keep going and never quit.	坚持下去，永不放弃。	hPD
 Labor caption: Animal Care	动物护理	wi
 Labor caption: Bee Keeping	养蜂	wi
 Labor caption: Bookbinding	书籍装订	wi
@@ -88707,6 +88846,7 @@ The {d}th {e} during {e}	在{e2}期间，第{d1}次{e1}	htEi
 The {d}th {e} within {p}	在{p1}，第{d1}次{e1}	htEi
 There is a mist outside.	外面有薄雾。	hPD
 There will be no reward.	你将得不到回报。	hP
+There's work to be done!	还有事要做！	hPD
 They look sick suddenly.	其突然显得很恶心。	hP
 This chanter is alright!	这位吟唱者还不错！	hPD
 This chanter is alright.	这位吟唱者还不错。	hPD
@@ -90556,6 +90696,7 @@ Make bolt thrower parts	制作弩箭投射器部件	wi
 Make sugar, flour, and 	在此制作糖、面粉和各种有用的	w
 Max Semimegabeast Caves	半巨兽洞穴数量上限
 Maximum number of sites	最大地点数量	w
+Merriment is worthless.	玩乐毫无意义。	hPD
 Monster Rampage at {p}.	在{p1}，怪物肆虐事件。	htEi
 Monster Rampage in {d}.	{d1}年的怪物肆虐事件。	htEi
 Monster Rampage in {p}.	在{p1}，怪物肆虐事件。	htEi
@@ -92555,6 +92696,7 @@ Huge Non-Prone Profile	身形巨大（未卧倒）	hP
 I am sort of confused.	我有些困惑。	hPD
 I don't want to argue.	我不想争论。	hPD
 I love raunchy poetry!	我喜欢粗俗的诗歌！	hPD
+I treasure my freedom.	我珍视自由。	hPD
 I'm a true {s} of {s}.	我才是{s2}的真正{s1}。	hPtD
 I'm walking my patrol.	我正在巡逻。	hPD
 I've heard it all now!	我现在真是什么荒唐话都听过了！	hPD
@@ -99566,6 +99708,7 @@ All counts accurate	所有数量均准确	wi
 Allocating space...	正在分配空间……	w
 Allow trap cleaning	允许清洁陷阱	wi
 Allow trap rearming	允许重装陷阱	wi
+Always deal fairly.	待人处事，要讲公道。	hPD
 And She Sang '{b}!'	而她唱道：“{b}！”	hbti
 And You Sang '{b}!'	而你唱道：“{b}！”	hbti
 Approve of the joke	称赞这个笑话	hP
@@ -107266,6 +107409,7 @@ Stream: Pustakers	溪流: 脓液索取者	w
 Stream: Tribeapex	溪流:部落顶点	w
 Strike the earth!	开山掘地！	wl
 String: Backspace	字符串：退格键
+Strive for power.	权力要靠争取。	hPD
 Superior patience	上等耐心	wil
 Superior strength	上等力量	wil
 Surrender of {p}.	{p1}的投降。	htEi
@@ -130226,6 +130370,7 @@ Air Race of.	飞行竞赛。	hEi
 Animal birth	动物出生	w
 Animal traps	动物陷阱	w
 Arctic Ocean	寒带海洋
+Art is life.	艺术就是生活。	hPD
 Astonishment	惊讶	w
 At least {d}	至少 {d}	wtl
 Attack error	攻击错误	hP
@@ -141596,6 +141741,7 @@ Astronomy	天文学	wi
 Automatic	自动	w
 Autostart	自动启动	w
 Axe Lords	战斧之主	wi
+Be merry!	尽情欢乐吧！	hPD
 Beekeeper	养蜂人	wi
 Bind book	装订书籍	wi
 Bowmaking	制弓	wi

@@ -1,0 +1,37 @@
+edition	text_set	source_file	line	raw_text
+reference	GREET	data/vanilla/vanilla_text/objects/text_greet.txt	7	Greetings.  My name is [SPEAKER:TRANS_NAME].
+reference	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	7	Hellooo!
+reference	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	8	Look at you!
+reference	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	9	A baby!  How adorable!
+reference	GREET_REPLY	data/vanilla/vanilla_text/objects/text_greet_reply.txt	7	Ah, hello.  I'm [SPEAKER:TRANS_NAME].
+reference	GREET_REPLY_AFTER_HERO	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	7	I am [SPEAKER:TRANS_NAME].  Can I be of some help?
+reference	GREET_REPLY_AFTER_HERO	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	8	I am [SPEAKER:TRANS_NAME].  How can I be of service?
+reference	GREET_REPLY_DIFF_LANGUAGE	data/vanilla/vanilla_text/objects/text_greet_reply_diff_language.txt	7	Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME].
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	7	[AUDIENCE:FIRST_NAME]...  your parents must have been interesting!
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	8	You know, you don't meet many people with the name [AUDIENCE:FIRST_NAME].
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	9	So, [AUDIENCE:FIRST_NAME]...   [AUDIENCE:FIRST_NAME], was it?
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	10	[AUDIENCE:FIRST_NAME].  Does that mean something?
+reference	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	11	[AUDIENCE:FIRST_NAME].  I can't say I've heard that before.
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	7	Praise be to [SPEAKER:HF_LINK:DEITY:TRANS_NAME].
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	8	Praise [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	9	Life is, in a word, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	10	This servant of [SPEAKER:HF_LINK:DEITY:TRANS_NAME] greets you.
+reference	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	11	This servant of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] greets you.
+classic	GREET	data/vanilla/vanilla_text/objects/text_greet.txt	7	Greetings.  My name is [SPEAKER:TRANS_NAME].
+classic	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	7	Hellooo!
+classic	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	8	Look at you!
+classic	GREET_BABY	data/vanilla/vanilla_text/objects/text_greet_baby.txt	9	A baby!  How adorable!
+classic	GREET_REPLY	data/vanilla/vanilla_text/objects/text_greet_reply.txt	7	Ah, hello.  I'm [SPEAKER:TRANS_NAME].
+classic	GREET_REPLY_AFTER_HERO	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	7	I am [SPEAKER:TRANS_NAME].  Can I be of some help?
+classic	GREET_REPLY_AFTER_HERO	data/vanilla/vanilla_text/objects/text_greet_reply_after_hero.txt	8	I am [SPEAKER:TRANS_NAME].  How can I be of service?
+classic	GREET_REPLY_DIFF_LANGUAGE	data/vanilla/vanilla_text/objects/text_greet_reply_diff_language.txt	7	Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME].
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	7	[AUDIENCE:FIRST_NAME]...  your parents must have been interesting!
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	8	You know, you don't meet many people with the name [AUDIENCE:FIRST_NAME].
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	9	So, [AUDIENCE:FIRST_NAME]...   [AUDIENCE:FIRST_NAME], was it?
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	10	[AUDIENCE:FIRST_NAME].  Does that mean something?
+classic	GREET_REPLY_UNUSUAL_FIRST	data/vanilla/vanilla_text/objects/text_greet_reply_unusual_first.txt	11	[AUDIENCE:FIRST_NAME].  I can't say I've heard that before.
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	7	Praise be to [SPEAKER:HF_LINK:DEITY:TRANS_NAME].
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	8	Praise [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	9	Life is, in a word, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	10	This servant of [SPEAKER:HF_LINK:DEITY:TRANS_NAME] greets you.
+classic	GREET_WORSHIP	data/vanilla/vanilla_text/objects/text_greet_worship.txt	11	This servant of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] greets you.

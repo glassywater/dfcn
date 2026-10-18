@@ -1,0 +1,103 @@
+Windows adventure report greeting and complete personal-field source
+
+Source extraction: tools/extract_announcement_greeting_sources.py.
+Decompiler: tools/DecompileAnnouncementConversation.java, Ghidra 12.1.4.
+Both configured PE images were read and decompiled directly. The C bodies,
+original instructions, literal operands, every branch edge and decoded switch
+destination are retained separately for reference and classic. These files are
+native source material; no game process or translated display is represented.
+
+Complete source owners (Steam / official RVA):
+  greeting                         67d390 / 67adb0
+  speech-wrapper                   684a10 / 682430
+  speech-parameters                685d00 / 683720
+  speech-person-parameter          685900 / 683320
+  speech-unit-parameters           13a0bd0 / 139bb40
+  speech-historical-parameters     bb13e0 / bae420
+  speech-historical-link-parameters bb1c80 / baecc0
+  language-name                    a946e0 / a91760
+  text-set-selector                131e4c0 / 1319430
+  speech-transform                 67b6c0 / 6790e0
+
+Each owner uses its complete native unwind/source regions, rather than a slice
+around the supplied example. In particular, greeting is the whole 67d390..
+680970 function, not just the GREET_REPLY call. The complete current dispatcher
+and all remaining speech/body suppliers are retained in the existing sibling
+announcement-conversation source inventory and corresponding runtime catalogs.
+
+The greeting's actual TEXT_SET alternatives are in text-sets.tsv, read from
+each installation's CP437 RAW tree. Both installations supply all 18 forms:
+
+  GREET: Greetings.  My name is [SPEAKER:TRANS_NAME].
+  GREET_REPLY: Ah, hello.  I'm [SPEAKER:TRANS_NAME].
+  GREET_REPLY_AFTER_HERO:
+    I am [SPEAKER:TRANS_NAME].  Can I be of some help?
+    I am [SPEAKER:TRANS_NAME].  How can I be of service?
+  GREET_REPLY_DIFF_LANGUAGE:
+    Hello, [AUDIENCE:RACE].  I am [SPEAKER:TRANS_NAME].
+  GREET_REPLY_UNUSUAL_FIRST:
+    [AUDIENCE:FIRST_NAME]...  your parents must have been interesting!
+    You know, you don't meet many people with the name [AUDIENCE:FIRST_NAME].
+    So, [AUDIENCE:FIRST_NAME]...   [AUDIENCE:FIRST_NAME], was it?
+    [AUDIENCE:FIRST_NAME].  Does that mean something?
+    [AUDIENCE:FIRST_NAME].  I can't say I've heard that before.
+  GREET_BABY:
+    Hellooo!
+    Look at you!
+    A baby!  How adorable!
+  GREET_WORSHIP:
+    Praise be to [SPEAKER:HF_LINK:DEITY:TRANS_NAME].
+    Praise [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+    Life is, in a word, [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE].
+    This servant of [SPEAKER:HF_LINK:DEITY:TRANS_NAME] greets you.
+    This servant of [SPEAKER:HF_LINK:DEITY:RANDOM_DEF_SPHERE] greets you.
+
+The native greeting also retains the named and nameless Salutations/Greetings/
+Hello/Hey arms, remembered identity disagreement, true profession and entity,
+family relationship, legendary recognition and its bracketed reaction, temple/
+home/library/location welcomes, friendship and role-specific follow-up lines,
+memory/emotion statements and the no-additional-sentence arms. Their actual
+conditions, inline fragments and typed supplier calls remain in *-greeting.c
+and *-greeting.asm. Runtime ownership is spoken-greeting and spoken-sentence in
+announcement-dialogue-extra-grammar.tsv plus the complete fixed speech catalog
+announcement-dialogue-translations.tsv; independently appended utterances are
+partitioned only when every resulting sentence resolves through those owners.
+
+Personal field reconstruction
+
+speech-wrapper obtains the speaker caption, substitutes You for the player,
+conditionally appends " (to " + recipient + ")", expands parameters and
+capitalizes the initial body. A nonempty heading gets ": " even for an empty
+body. Missing speaker/recipient and a resolved recipient with empty caption
+are distinct branches. The retained complete wrapper includes report routing
+and the separate stops-and-pays-attention announcement.
+
+TRANS_NAME in speech-unit-parameters resolves the native name record and calls
+language-name(name, output, true, false). FIRST_NAME instead copies only the
+literal language_name.first_name string. Both have the separate nameless arm.
+Historical parameters provide the same full-name/first-name distinction;
+HF_LINK can recurse through a selected deity and choose a definite sphere.
+Missing concrete person/place parameters instead use something/the wilds;
+missing race and sphere use creature/some vague concept. These are already
+separate finite grammar leaves, never generated-name spelling guesses.
+
+language-name owns literal first_name, nickname and generated WORD surname/
+title groups. Its output is an open field, not a finite name list. Authored
+Chinese given names and authored nicknames retain their own bytes; generated
+English surnames and titles still pass through their complete name grammar.
+No character-name handling grants translation permission to a squad alias.
+
+The report and screen paths can hand the typed person renderer either native
+CP437 or the UTF-8 representation of the same field. The runtime leaf first
+uses captured native identity, then reverses a complete UTF-8 CP437 view while
+preserving authored CJK sequences. Complete first-name + English surname/title
+composition precedes the generic personal-name fallback. Thus a translated
+given name cannot make a trailing generated surname such as Riddleheads an
+authored string, and UTF-8 bytes of an accented given name cannot be rejected
+as individual CP437 nonletters. The entire surname/title must resolve before
+the enclosing greeting can succeed; no shortened successful match is used.
+
+speech-transform is a distinct complete source: S and s are temporarily marked
+([LIP])/([lip]), then expanded into native randomized repetitions. The runtime
+uses its captured original speech before that transformation, preserving real
+double letters and authored names rather than guessing by collapsing letters.

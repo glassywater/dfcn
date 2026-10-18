@@ -103,9 +103,8 @@ LAB_14132f03a:
         }
         uStack_100 = 0;
         pppppuStack_108 = (undefined8 *****)((ulonglong)pppppuStack_108 & 0xffffffffffffff00);
-        cVar5 = combat_source_creature_profession_description_132e0c0
-                          (&pppppuStack_88,sVar8,*(undefined2 *)(param_1 + 0xa4),
-                           *(undefined2 *)(param_1 + 300));
+        cVar5 = FUN_14132e0c0(&pppppuStack_88,sVar8,*(undefined2 *)(param_1 + 0xa4),
+                              *(undefined2 *)(param_1 + 300));
         if ((lVar14 == 0) || (*(short *)(lVar14 + 0xac) == -1)) {
           lVar14 = FUN_140b530b0(0x1424f9cb8,*(undefined4 *)(param_1 + 0xc30),param_1 + 0x1274);
           if (lVar14 != 0) {
@@ -357,7 +356,7 @@ LAB_14132f6e3:
 LAB_14132f715:
           if (_DAT_14189c298 == 1) {
             if (*(longlong *)(param_1 + 0x13f8) == 0) {
-              combat_source_creature_appearance_717d30(param_1);
+              FUN_140717d30(param_1);
             }
             plVar23 = (longlong *)(param_1 + 0x13e8);
             lVar13 = *(longlong *)(param_1 + 0x13f8);
@@ -663,7 +662,7 @@ LAB_14132e712:
         if (*piVar15 != *(int *)(param_1 + 0xc30)) goto code_r0x00014132e71c;
         if ((int)((longlong)piVar15 - (longlong)_DAT_142649620 >> 2) != -1) {
           for (puVar24 = _DAT_142649608; puVar24 < puVar12; puVar24 = puVar24 + 1) {
-            lVar13 = FUN_1413cc4d0(&DAT_1423e50b0,*puVar24);
+            lVar13 = FUN_1413cc4d0(0x1423e50b0,*puVar24);
             if (((lVar13 != 0) && (*(int *)(lVar13 + 0x3d0) == iVar11)) &&
                (bVar30 = bVar3, iVar10 == *(int *)(lVar13 + 0x130))) {
               bVar3 = true;
@@ -687,9 +686,8 @@ LAB_14132e712:
       }
       uStack_100 = 0;
       pppppuStack_108 = (undefined8 *****)((ulonglong)pppppuStack_108 & 0xffffffffffffff00);
-      combat_source_creature_profession_description_132e0c0
-                (&pppppuStack_a8,*(undefined2 *)(param_1 + 0xa0),*(undefined2 *)(param_1 + 0xa4),
-                 *(undefined2 *)(param_1 + 300));
+      FUN_14132e0c0(&pppppuStack_a8,*(undefined2 *)(param_1 + 0xa0),*(undefined2 *)(param_1 + 0xa4),
+                    *(undefined2 *)(param_1 + 300));
       if ((puStack_d0 == (undefined4 *)0x0) ||
          (ppppppuVar20 = (undefined8 ******)pppppuStack_a8, *(short *)(puStack_d0 + 0x2b) == -1)) {
         lVar13 = FUN_140b530b0(0x1424f9cb8,*(undefined4 *)(param_1 + 0xc30),param_1 + 0x1274);

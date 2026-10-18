@@ -45,6 +45,17 @@ void Overlay::rebuild_announcement_combat_rules() {
             if (a.second.template_kinds.empty() != b.second.template_kinds.empty())
                 return a.second.template_kinds.empty();
             if (scope == "sentence") {
+                // The melee/projectile producer owns the whole SHOT and
+                // its block/parry/deflection result. Resolve those complete
+                // productions before generic damage: "strikes at YOU ...
+                // by the ITEM" otherwise also fits attack-verb=strikes,
+                // unit="at YOU ...", object=ITEM in the by-the attack rule.
+                // Native COMBAT_PARRY 15 reaches this exact overlap at
+                // reference 64f904..64fa1f / classic 64d324..64d43f.
+                const auto shot_tree = [](const auto &entry) {
+                    return entry.first == "shot" || entry.first.starts_with("shot,");
+                };
+                if (shot_tree(a) != shot_tree(b)) return shot_tree(a);
                 const auto damage_tree = [](const auto &entry) {
                     return entry.first == "head" || entry.first.starts_with("head,");
                 };
@@ -333,16 +344,16 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // producer's complete EnglishName/FIRST_NAME grammar instead.
             if (!result && spoken_scope)
                 result = translate_announcement_combat(input, "$speech-person");
-            // An unbound authored name is the last alternative. A native
-            // identity or a fully parsed profession/animation above may own
-            // punctuation; an arbitrary incident or damage clause may not
-            // establish a unit merely by occupying an extension's capture.
-            // A standalone leaf has no enclosing native production to prove
-            // that arbitrary text is an authored unit name. Display fields
-            // recover their report-bound identities before entering here.
+            // A textual capture alone does not establish an authored name.
+            // The broad damage head can otherwise steal a complete shot:
+            // "strikes [at you but the shot is deflected] by the [item]".
+            // Native-bound identities above retain authored bytes; this last
+            // unbound alternative must resolve a real name/identity grammar.
+            // A display production may preserve an unknown noun only after
+            // its complete native clause boundaries have been established.
             if (!result && !spoken_scope && initial_scope != "unit" && initial_scope != "$unit" &&
                     !spoken_identity_has_prose_boundary(input, true))
-                result = translate_unit_identity(input, true);
+                result = translate_unit_identity(input, false);
             return finish(std::move(result));
         }
         if (scope == "$historical-actor") {
@@ -534,6 +545,19 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return finish(translation_complete_with_native_nicknames(result, input)
                 ? std::move(result) : std::nullopt);
         }
+        if (scope == "$combat-item") {
+            // Shot block/parry/deflection calls pass c65450 count=1.
+            // The virtual +0x5f0
+            // article precedes every quality/wear/ownership wrapper, while
+            // +0x5e8 supplies the complete noun inside them. Inventory owns
+            // that same full caption grammar, including article and marks;
+            // a bare ::items lookup does not own the leading article.
+            auto result = translate_inventory_item_name(input, -1, -1);
+            if (!translation_complete_with_native_nicknames(result, input))
+                result = translate_announcement_combat(input, "$announcement-item");
+            return finish(translation_complete_with_native_nicknames(result, input)
+                ? std::move(result) : std::nullopt);
+        }
         if (scope == "$read-item") {
             // READ_ITEM owns this whole e68020/c65450 field. Native title
             // productions precede ordinary item parsing here, including
@@ -669,31 +693,54 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // proof scoped to speech rather than widening ordinary names.
             auto result = native_announcement_unit_identity_target(raw_source, input);
             if (!result) result = native_unit_identity_source_target(input);
-            if (!translation_complete_with_native_nicknames(result, input))
-                result = translate_legends_name(input, true);
             if (translation_complete_with_native_nicknames(result, input))
+                return finish(std::move(result));
+            // Report captures own native CP437 bytes, while paragraph callers
+            // can supply the same field as UTF-8. Invert only a complete UTF-8
+            // representation before handing it to the native name renderer;
+            // authored CJK stays UTF-8. Testing individual UTF-8 bytes as CP437
+            // letters rejected accented given names and left entire greetings
+            // untranslated, or sent them through the legacy generic template.
+            const auto native = utf8_to_cp437(input, true);
+            const std::string_view name = native ? std::string_view(*native) : input;
+            const auto given = name.substr(0, name.find(' '));
+            bool valid_given = !given.empty();
+            for (size_t at = 0; valid_given && at < given.size();) {
+                const auto decoded = decode_utf8_at(given, at);
+                if (decoded && is_cjk_display_codepoint(decoded->first)) {
+                    at += decoded->second;
+                    continue;
+                }
+                const unsigned char ch = static_cast<unsigned char>(given[at++]);
+                valid_given = (ch >= 'A' && ch <= 'Z') ||
+                    (ch >= 'a' && ch <= 'z') || is_cp437_latin_letter_byte(ch) ||
+                    ch == '-' || ch == '\'';
+            }
+            // TRANS_NAME is the complete English name, including generated
+            // surname/title groups. Render those groups before a permissive
+            // personal-name path can keep a CJK given name plus English tail.
+            if (scope == "$speech-person" && valid_given && given.size() < name.size()) {
+                result = translate_english_character_name(name, given);
+                if (translation_complete_with_native_nicknames(result, name))
+                    return finish(std::move(result));
+            }
+            result = translate_legends_name(name, true);
+            if (translation_complete_with_native_nicknames(result, name))
                 return finish(std::move(result));
             // FIRST_NAME is copied directly from the native string, so an
             // authored Chinese name needs neither Latin letters nor WORD
             // roots. Do not let this name span cross a prose sentence: the
             // greeting may append several independently complete messages.
-            if (scope == "$speech-first-name" && contains_cjk_utf8(input)) {
-                if (input.find_first_of(".!?,;:\"`[]()\r\n") != std::string_view::npos)
+            if (scope == "$speech-first-name" && contains_cjk_utf8(name)) {
+                if (name.find_first_of(".!?,;:\"`[]()\r\n") != std::string_view::npos)
                     return finish(std::nullopt);
-                return finish(native_text_to_utf8(input));
+                return finish(native_text_to_utf8(name));
             }
-            const auto letter = [](unsigned char ch) {
-                return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
-                    is_cp437_latin_letter_byte(ch);
-            };
-            const auto given = input.substr(0, input.find(' '));
-            if (given.empty() || !letter(static_cast<unsigned char>(given.front())) ||
-                    !std::all_of(given.begin(), given.end(), [&](unsigned char ch) {
-                        return letter(ch) || ch == '-' || ch == '\'';
-                    }) || (scope == "$speech-first-name" && given.size() != input.size()))
+            if (!valid_given ||
+                    (scope == "$speech-first-name" && given.size() != name.size()))
                 return finish(std::nullopt);
-            result = translate_english_character_name(input, given);
-            return finish(translation_complete_with_native_nicknames(result, input)
+            result = translate_english_character_name(name, given);
+            return finish(translation_complete_with_native_nicknames(result, name)
                 ? std::move(result) : std::nullopt);
         }
         if (scope == "$memory-entity") {
@@ -1069,6 +1116,16 @@ dfcn::TranslationResult Overlay::translate_announcement_combat_result(
             dfcn::TranslationResult{};
         if (!result.usable() && !work_limited && !scope.starts_with('$') && native.size() < raw_source.size())
             result = translate_announcement_combat_result(native, scope);
+        // These children are native syntax, not open names/materials. A
+        // failed child must not survive as an opaque English clause inside
+        // an otherwise translated combat sentence. In particular SHOT owns
+        // both "strikes at" fields and SHOT_RESULT owns its finite adverb
+        // and parry/deflection verb, independently of an unknown item noun.
+        if (!result.usable() && (scope == "shot" || scope == "shot-result" ||
+                scope == "defense-adverb" || scope == "assault" || scope == "evasion" ||
+                scope == "attack" || scope == "attack-verb" || scope == "head" ||
+                scope == "damage" || scope == "damage-verb" || scope == "damage-list" ||
+                scope == "body-result" || scope == "injury-list")) return finish(no_match);
         if (!result.usable()) result = preserve_native_translation(native, scope, false, work_limited ?
             dfcn::TranslationStatus::WorkLimited : dfcn::TranslationStatus::Untranslated);
         fields.push_back(std::move(result));
