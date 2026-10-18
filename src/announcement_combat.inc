@@ -39,7 +39,7 @@ void Overlay::rebuild_announcement_combat_rules() {
     // Resolve that structure before extension messages with one open unit
     // field: e.g. an ability named Guts must not claim the final tissue in
     // "... tearing the fat and bruising the guts!" as an activation report.
-    // Stable ties preserve intentional type precedence (anatomy before item).
+    // Anatomy must precede item/name fallbacks independently of dictionary order.
     for (auto &[scope, entries] : announcement_combat_rules_) {
         std::stable_sort(entries.begin(), entries.end(), [&](const auto &a, const auto &b) {
             if (a.second.template_kinds.empty() != b.second.template_kinds.empty())
@@ -64,7 +64,17 @@ void Overlay::rebuild_announcement_combat_rules() {
             const auto literal_size = [](const Rule &r) {
                 return r.source.size() - r.template_kinds.size() * 3;
             };
-            return literal_size(a.second) > literal_size(b.second);
+            if (literal_size(a.second) != literal_size(b.second))
+                return literal_size(a.second) > literal_size(b.second);
+            // The merged dictionary sorts synthetic keys by length, placing
+            // $combat-item before $body. Stable ties would then parse a RAW
+            // right hand as an item and give right its unrelated name sense.
+            const auto anatomy = [](const auto &entry) {
+                const std::string_view fields = entry.first;
+                return fields == "$body" || fields.starts_with("$body,") ||
+                    fields.ends_with(",$body") || fields.find(",$body,") != std::string_view::npos;
+            };
+            return anatomy(a) && !anatomy(b);
         });
         auto &syntax = announcement_combat_syntax_[scope];
         for (size_t index = 0; index < entries.size(); ++index) {
