@@ -135,6 +135,20 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
         return base ? std::optional<std::string>(status_target + *base) : std::nullopt;
     }
 
+    // The native deity form (PE c2b870 / c288b0) places independent
+    // skeletal/rotting/ghostly flags before its optional sex and caste noun.
+    // Resolve sex here, after status recursion, so every native combination
+    // reaches the same complete RAW/generated species grammar.
+    for (const auto &[sex, marker] : {
+            std::pair<std::string_view, std::string_view>{"female ", "（♀）"},
+            {"male ", "（♂）"}}) {
+        if (!folded_status.starts_with(sex)) continue;
+        if (auto known = species(normalized)) return known;
+        const auto base = translate_creature_descriptor(
+            std::string_view(normalized).substr(sex.size()), true);
+        return base ? std::optional<std::string>(*base + std::string(marker)) : std::nullopt;
+    }
+
     // Installed RAW names may contain punctuation (e.g. Mr. Rime). Their
     // complete identity, including the training/status wrappers above, is
     // licensed by the scoped species table. Keep punctuation out of the

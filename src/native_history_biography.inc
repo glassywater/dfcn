@@ -104,10 +104,12 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_biograp
         if (!native_history_read_vector(creature + 0x178, castes)) return std::nullopt;
         caste = native_history_vector_at(castes, static_cast<size_t>(caste_id));
     }
-    std::string species;
-    if ((caste && !native_history_copy_string(caste + 0x20, species)) ||
-        (species.empty() && creature && !native_history_copy_string(creature + 0x20, species)))
+    std::string caste_species, race_species;
+    if ((caste && !native_history_copy_string(caste + 0x20, caste_species)) ||
+        (caste_species.empty() && creature &&
+            !native_history_copy_string(creature + 0x20, race_species)))
         return std::nullopt;
+    const std::string species = caste_species.empty() ? race_species : caste_species;
     data.texts["species"] = species;
     int32_t animated_id = -1, animation = -1;
     uint8_t named_curse = 0;
@@ -143,13 +145,17 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_page_biograp
                 break;
             }
         }
-        std::string form = species;
-        if (ghost) form = "ghostly " + form;
-        if (rotting) form = "rotting " + form;
-        if (skeletal) form = "skeletal " + form;
+        std::string form;
+        if (skeletal) form += "skeletal ";
+        if (rotting) form += "rotting ";
+        if (ghost) form += "ghostly ";
         bool gendered = false;
         if (!native_history_page_flag(creature, 0x1a8, 0x1b0, 66, gendered)) return std::nullopt;
-        if (gendered && (sex == 0 || sex == 1)) form = (sex == 0 ? "female " : "male ") + form;
+        // Native c2c957 compares the caste against the selected display noun,
+        // not against the race noun: a nonempty caste therefore matches itself.
+        if (gendered && (caste_species.empty() || caste_species == species) &&
+                (sex == 0 || sex == 1)) form += sex == 0 ? "female " : "male ";
+        form += species;
         data.texts["form"] = std::move(form);
     }
     bool raw_parent = false, raw_female = false, raw_male = false;

@@ -738,6 +738,27 @@ static bool journal_site_entity_capture(const Rule &rule, size_t field) {
          rule.source == "This site is a fortress of {p}.");
 }
 
+enum class LegendsBiographyReference { None, Entity, Region };
+
+static LegendsBiographyReference legends_biography_reference_capture(
+        const Rule &rule, size_t field) {
+    if (field >= rule.template_kinds.size() || rule.template_kinds[field] != 'p' ||
+            rule.template_literals.size() != rule.template_kinds.size() + 1)
+        return LegendsBiographyReference::None;
+    const auto &before = rule.template_literals[field];
+    // c2b870 formats an actual entity language_name for a deity's owner,
+    // and an English region language_name for a force's territory. Neither
+    // slot is the standalone place field that may preserve native spelling.
+    // The same literals cover named subjects and separately drawn predicates.
+    if (before.ends_with("a deity of ") ||
+            before.ends_with("a deity that occurs in the myths of "))
+        return LegendsBiographyReference::Entity;
+    if (before.ends_with("a force which permeates ") ||
+            before.ends_with("a force which was said to permeate "))
+        return LegendsBiographyReference::Region;
+    return LegendsBiographyReference::None;
+}
+
 std::optional<std::string> Overlay::translate_legends_color(std::string_view value) const {
     // Reuse data/runtime/rulesets/zh-Hans/color.toml's generated color namespace, not the global species,
     // material or proper-name senses of cardinal, bronze, indigo, etc.
@@ -963,6 +984,12 @@ std::optional<std::string> Overlay::translate_legends_nested(
         case 'p':
             if (written_work_form_rule(rule))
                 mode += ":art-form";
+            else if (legends_biography_reference_capture(rule, field) ==
+                    LegendsBiographyReference::Entity)
+                mode += ":biography-entity";
+            else if (legends_biography_reference_capture(rule, field) ==
+                    LegendsBiographyReference::Region)
+                mode += ":biography-region";
             else if (field > 0 && legends_office_capture(rule, field - 1))
                 mode += ":office-owner";
             else if (journal_site_entity_capture(rule, field))
@@ -1054,6 +1081,15 @@ std::optional<std::string> Overlay::translate_legends_nested(
                     // Share their semantic title grammar with preferences;
                     // a place field can legitimately preserve English text.
                     target = translate_character_preference_term(part, true);
+                } else if (mode == "p:biography-entity" || mode == "p:biography-region") {
+                    // Deity lookup scans every entity type, rather than only
+                    // civilizations and local governments. Its real WORD/POS
+                    // identity owns political/religious naming and nicknames.
+                    target = mode == "p:biography-entity"
+                        ? translate_civilization_reference(part, true)
+                        : translate_world_region_heading(part);
+                    if (!translation_complete_with_native_nicknames(target, part))
+                        target = translate_legends_name(part, false, false);
                 } else if (mode == "p:reference" || mode == "p:office-owner" ||
                         mode == "p:entity-owner") {
                     // Native +d8 subjects share this reference slot across
@@ -1649,7 +1685,18 @@ std::optional<std::string> Overlay::translate_legends_text(
                     continue;
                 }
                 std::vector<std::optional<std::string>> translated(captures.size());
-                const auto translate_place = [&](std::string_view value) {
+                const auto translate_place = [&](size_t field, std::string_view value)
+                        -> std::optional<std::string> {
+                    const auto biography = legends_biography_reference_capture(rule, field);
+                    if (biography != LegendsBiographyReference::None) {
+                        auto target = biography == LegendsBiographyReference::Entity
+                            ? translate_civilization_reference(value, true)
+                            : translate_world_region_heading(value);
+                        if (!translation_complete_with_native_nicknames(target, value))
+                            target = translate_legends_name(value, false, false);
+                        return translation_complete_with_native_nicknames(target, value)
+                            ? target : std::nullopt;
+                    }
                     return rule.source == "World artifact: Last in {p}"
                         ? translate_world_artifact_location(value)
                         : translate_legends_place(value);
@@ -1673,7 +1720,9 @@ std::optional<std::string> Overlay::translate_legends_text(
                             translated[i] = translate_journal_habitat_places(captures[i]);
                             break;
                         }
-                        if (i + 1 == captures.size() &&
+                        if (legends_biography_reference_capture(rule, i) ==
+                                LegendsBiographyReference::None &&
+                            i + 1 == captures.size() &&
                             rule.source.ends_with(" of {p}")) {
                             // An unlinked owner may share gray with the
                             // following location connector. It is not part of
@@ -1687,7 +1736,7 @@ std::optional<std::string> Overlay::translate_legends_text(
                                 captures[i].resize(stop);
                             }
                         }
-                        translated[i] = translate_place(captures[i]);
+                        translated[i] = translate_place(i, captures[i]);
                         // A final name capture can share gray with the next
                         // connective or punctuation. Stop at the longest
                         // complete name, then let the scoped grammar handle
@@ -1698,7 +1747,7 @@ std::optional<std::string> Overlay::translate_legends_text(
                             for (size_t stop = value.size(); stop-- > 1;) {
                                 if (value[stop] != ' ' && value[stop] != '.' &&
                                     value[stop] != ',' && value[stop] != ';') continue;
-                                const auto name = translate_place(
+                                const auto name = translate_place(i,
                                     std::string_view(value).substr(0, stop));
                                 if (!name) continue;
                                 end -= value.size() - stop;

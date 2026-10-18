@@ -1,0 +1,119 @@
+Current Windows PE deity / historical-figure paragraph source
+===========================================================
+
+On 2026-10-18 both configured Windows PE disk images were imported into the
+installed Ghidra 12.1.4 with JDK 25.0.4.1+1 and decompiled, without opening or
+operating the running game. This directory now contains actual Ghidra C for
+16 original source owners per image, alongside the original instructions.
+
+Input images and identities:
+  reference: data/runtime/native-pe-images.json reference
+             PE:6a70a6d9:02711000
+  classic:   data/runtime/native-pe-images.json classic
+             PE:6a70b91c:0270a000
+
+Source artifacts:
+  reference-figure-ghidra-decompiled.c / classic-figure-ghidra-decompiled.c
+    Actual Ghidra C collections for every owner in figure-native-functions.tsv.
+  {edition}-figure-native-{role}.c / .asm
+    Individual actual Ghidra C and original native instruction bodies.
+  {edition}-figure-native-sources.asm
+    Combined native instruction inputs for targeted Ghidra disassembly.
+  figure-native-functions.tsv
+    Exact owner starts, executable extent ends, disk-source extent ends and
+    image identity. Unwind owners use the original PE unwind chains. The
+    leaf sphere-label / english-word selectors have no unwind record; their
+    executable extents stop at the decoded original trailing DWORD table.
+  figure-native-calls.tsv / figure-native-literals.tsv
+    All direct / indirect calls, external tail destinations and RIP literals
+    in these source instruction bodies, retaining owner and operand RVAs.
+  figure-native-branches.tsv
+    Every direct conditional / unconditional jump and indirect jump, with
+    its preceding native instructions. These are original source operands.
+  figure-native-switches.tsv
+    Every bounded selector of each decoded native DWORD jump table, including
+    every original BYTE remap entry and aliases. Ghidra receives each unique
+    destination as a JumpTable override. Default edges remain in the original
+    guarded instructions; folded C case labels are not an enum inventory.
+  figure-enumerated-text.tsv
+    Existing 130 domain labels and 39 caller-eligible child-rank labels per
+    image, now also retaining the actual sphere default "no sphere".
+
+The producer is reference RVA 0xc2b870..0xc2cea8 (unwind source ends 0xc2ced3),
+classic 0xc288b0..0xc29ee8 (unwind source ends 0xc29f13). Its conditional family
+includes named / nameless subjects, is / was, force and named force-place,
+deity and matching entity, animated identity, ordinary species / curse / ghost,
+birth, mother / father / unknown parentage, child order, missing-parent identity,
+four initial / rare-kind predicates, three destiny predicates and myth qualifier,
+deity form, optional generated caste DESCRIPTION, and sphere association.
+figure-decompiled.txt documents those conditions with original addresses;
+the actual C and assembly are authoritative for recovered operands.
+
+The 16 owners are description, identity, species-title, birth-year,
+subject-pronoun, possessive-pronoun, child-relation, sphere, language-name,
+child-order, sphere-label, creature-noun, picker-description-dispatch,
+force-place, english-word, capitalize-name.
+
+Typed entity / force names
+-------------------------
+
+The deity entity search iterates the entire global historical_entity vector
+reference 0x1423d17f8..0x1423d1800. It compares the historical figure id with
+each entity's +0xfc8..+0xfd0 deity-id vector and takes the first matching entity.
+There is no historical_entity type filter in this branch. The emitted field
+therefore cannot be assumed to be only a civilization, site or religion name.
+
+At reference 0xc2bc34 / classic 0xc28c74 it passes entity+0x20 to the
+language-name formatter with third argument 1 and fourth argument 0.
+At reference 0xc2bad3 / classic 0xc28b13 the force branch passes the named
+region object returned by force-place to that same formatter, also (1,0).
+Reference language-name is 0xa946e0; classic is 0xa91760.
+
+The language-name C does not read language_name+0x6c (language id). Its third
+argument capitalizes name fragments and selects leading "The " rather than
+"the "; its fourth argument suppresses additional name portions after an
+existing portion when nonzero. Both callers explicitly allow the complete
+name. Stored first name / nickname fields and each native word index + word
+form are processed separately. The english-word supplier is reference
+0xd2cb50 / classic 0xd29b90: it reads the global language-word table, accepts
+word-form selectors 0..8 and appends the corresponding stored word form;
+invalid word id / form appends no bytes. It does not select a native-language
+translation table. These two fields are semantic English generated names,
+requiring their own typed name translation, rather than personal-name phonetics.
+
+Deity form and sphere defaults
+-----------------------------
+
+The native deity-form output first adds skeletal, rotting, ghostly in that
+order according to figure flag bits 4, 5, 7. The selected form noun is nonempty
+caste+0x20 when available, otherwise race+0x20. Raw creature flag 66 then permits
+female (sex 0) / male (sex 1). The actual comparison is caste noun against the
+already selected form noun, OR caste noun empty. It is not caste against race.
+A valid nonempty caste therefore compares equal to the selected caste noun;
+an empty caste takes the empty branch after the race fallback. The native
+visible order is status prefixes, sex prefix, selected caste/race noun.
+
+Sphere ids are visited in reverse vector order, joined with comma / and, and
+the sphere wrapper selects an optional "the " before each noun. The label
+supplier's actual out-of-range/default is "no sphere" (length 9), at reference
+instruction RVA 0x75715f, literal RVA 0x16a1310; classic instruction 0x754b7f,
+literal 0x169c1e0. It is not an empty-label branch.
+
+Reproducing the source extraction
+--------------------------------
+
+Use the fixed workspace Python only to execute
+  tools/extract_deity_introduction_sources.py
+Then import each configured PE into the installed Ghidra analyzeHeadless.bat
+with -noanalysis -scriptPath D:/workspace/dfcn/tools and
+  -postScript DecompileDeityIntroduction.java SOURCE_DIRECTORY EDITION
+EDITION is reference or classic. Supply the installed JDK via JAVA_HOME.
+An isolated application.settingsdir avoids the pre-existing user OSGi cache's
+Felix startup error; it does not modify the shared Ghidra settings or game.
+The Java script uses the exact source extents, every decoded native instruction,
+external supplier boundaries, original literal addresses and jump destinations.
+Ghidra's warnings and inferred types remain in C; assembly retains the original
+ABI operands where no native type information is present.
+
+These files are offline executable-source material, not generated example
+paragraphs, runtime tests, a verification report or an observed in-game result.

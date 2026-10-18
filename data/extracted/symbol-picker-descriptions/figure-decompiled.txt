@@ -15,6 +15,15 @@ need them. No dependency installation or alternative toolchain was used.
 Reference identity: PE:6a70a6d9:02711000.
 Classic identity:   PE:6a70b91c:0270a000.
 
+Actual Ghidra 12.1.4 C is retained in
+reference-figure-ghidra-decompiled.c and classic-figure-ghidra-decompiled.c,
+with one native-ROLE.c file per function. figure-native-functions.tsv records
+the code/unwind boundaries; figure-native-literals.tsv, -branches.tsv,
+-switches.tsv and -calls.tsv retain the executable source operands. The
+decompiler setup and language-name argument details are in
+figure-ghidra-source-notes.txt. This narrative describes those native sources;
+it is not itself decompiler output.
+
 Actual picker call chain
 ------------------------
 
@@ -165,8 +174,10 @@ Complete text-producing branches
    Optional prefixes occur in exactly this native order, independently:
      flag bit 4 -> "skeletal ", bit 5 -> "rotting ", bit 7 -> "ghostly ".
    Resolve caste singular [+0x20] and fall back to race singular [+0x20].
-   Raw flag bit 66 and a caste name that is empty or identical to the race
-   noun permits sex 0 -> "female ", sex 1 -> "male ", other -> no sex prefix.
+   Raw flag bit 66 and a caste name that is empty or identical to the selected
+   displayed noun permits sex 0 -> "female ", sex 1 -> "male ", other -> no
+   sex prefix. A nonempty caste was selected above, so it compares to itself;
+   this is not a caste-versus-race comparison.
    These prefix and caste combinations are grammar, not a finite race list.
    Keep this sentence open for optional sphere association below.
 
@@ -186,7 +197,8 @@ Complete text-producing branches
     prefixes "the " and delegates to 0x140756690 for enum values 0..129.
     figure-enumerated-text.tsv preserves all 130 complete displayed domain
     noun forms per image, including those article choices and addresses.
-    Invalid sphere enum assigns no label. The data table is a source enum
+    Invalid sphere enum assigns "no sphere", translated by the existing
+    scoped sphere entry ("无神域"). The data table is a source enum
     inventory, not a list of hypothetical generated biographies.
     Close the deity form / association sentence with ".  ". With no domains,
     still close an open deity-form sentence. No domains and no deity form
@@ -252,12 +264,12 @@ the existing creature and raw-description vocabularies own dynamic species.
 translate_deity_spheres strips native "the " per element and uses the existing
 sphere namespace, keeping every listed domain and its order.
 
-Manual source reading did not expose a finite biography production requiring
-a new dictionary entry. The screenshot's whole current biography, including
-"She is one of the first of her kind.", already has the full relevant grammar.
-The renderer's footer-region ownership must deliver the complete source to
-that grammar; a tail FPS row outside the pane is not the hovered biography.
-This source reconstruction does not claim an observed final game display.
+The finite biography productions have existing dictionary entries. The native
+field consumers also matter: the deity's entity and the force's region are
+not standalone site fields, and a deity form can contain status prefixes
+followed by sex followed by the caste/race noun. These source distinctions
+must survive full-paragraph translation. This source reconstruction does
+not claim an observed final game display.
 
 Final source-to-consumer correspondence
 --------------------------------------
@@ -266,18 +278,22 @@ The following correspondence is from the actual instruction/literal sources
 above and manual reading of the final source. It records translation ownership,
 not executed paragraphs, assertions, a test result or a game-display observation.
 Addresses below are reference VAs; paired classic addresses remain in the
-adjacent extracted source files. TSV line references identify the current
-source rows, not a promise that later edits cannot move them.
+adjacent extracted source files. The historical TSV line references predate
+later catalog additions; the quoted rule keys and named functions identify
+their maintained consumers. The native source tables retain exact RVAs.
 
 Entry and typed captures:
   src/symbol_picker_descriptions.inc:4 dispatches the complete original footer;
   its biography handoff is translate_legends_text(source, false, false).
-  src/legends_detail.inc:900 owns that complete h-namespace paragraph. Capture
-  dispatch at :971/:972/:1012/:1018 sends actual figure, place, descriptor and
-  sphere fields respectively to translate_legends_actor, translate_legends_name,
-  translate_legends_term and translate_deity_spheres. The paragraph fails as a
-  whole if a source clause remains unconsumed; it does not declare individual
-  translated words a successful biography.
+  src/legends_detail.inc owns that complete h-namespace paragraph. The shared
+  legends_biography_reference_capture classifier distinguishes deity entities
+  and force regions in both nested and full-text consumers. Entity fields use
+  translate_civilization_reference with the native all-entity scope; region
+  fields use translate_world_region_heading. Complete generated-name grammar
+  handles unresolved source names without borrowing site provenance or
+  accepting an unchanged English result. Actor, descriptor and sphere fields
+  use translate_legends_actor, translate_legends_term and
+  translate_deity_spheres. A source clause must be fully consumed.
 
   0x140c2b9af..0x140c2b9ed, named/nameless subject:
     The literal "This nameless being" is local-overrides.tsv:7802. The explicit
@@ -290,7 +306,10 @@ Entry and typed captures:
     with the typed creature-kind term force in src/creature_vocabulary.inc:65.
     Known region current "which permeates" has full rules at
     local-overrides.tsv:7384..7387. Actual past "which was said to permeate"
-    has separate full rules at :7811..7812. Region remains a {p} name field.
+    has separate full rules at :7811..7812. Region remains a {p} name field,
+    with a region-specific role instead of translate_legends_place's native
+    site-name preservation. The language-name call is reference 0x140c2bad3
+    with r8b=1 and r9d=0.
 
   0x140c2bb43..0x140c2bc63, deity identity:
     Bare "a deity" uses the same ordinary identity templates and the typed
@@ -298,7 +317,11 @@ Entry and typed captures:
     local-overrides.tsv:7379..7380; past "a deity that occurs in the myths of"
     is :7356..7357. Those latter native strings have a separate punctuation
     append; the h namespace also has the complete "." literal, so the full
-    sentence and its next clause remain consumable.
+    sentence and its next clause remain consumable. The matching entity is
+    selected by its deity-id vector, with no entity-type filter. Its name is
+    formatted at reference 0x140c2bc34 with r8b=1 and r9d=0. The scoped entity
+    resolver keeps its actual WORD/POS and entity type rather than preserving
+    a capitalized English title as an unresolved place.
 
   0x140c2bc68..0x140c2bd62, animation:
     Actual suffix ", animated by unknown forces" is owned by
@@ -348,9 +371,16 @@ Entry and typed captures:
     are :7815..7817 (also :7361..7363 for linked clause boundaries). The
     skeletal/rotting/ghostly prefixes are independent recursive
     creature-status rows in data/runtime/legends-creature-descriptions.tsv.
-    src/legends_detail.inc:450 recursively consumes the complete form before
-    :393 handles female/male+species. All three native prefix flags therefore
-    retain their order and can coexist; no species-by-species list is needed.
+    src/creature_descriptors.inc recursively consumes the status prefixes,
+    then female/male plus a complete RAW/generated species. This supports
+    every independent flag combination in the native status -> sex -> noun
+    order. Whole RAW caste wording retains priority. The typed snapshot in
+    src/native_history_biography.inc uses that same order and only adds sex
+    when raw flag 66 is set and the caste noun is empty or equals the selected
+    display noun, as the actual comparison does. A nonempty selected caste
+    compares to itself; the original producer can therefore add sex even when
+    the caste noun differs from the race noun.
+    No species-by-species list is needed.
 
   0x140c2ccee..0x140c2ce83, sphere association:
     Independent is/was associated-with clauses and the joined form clauses

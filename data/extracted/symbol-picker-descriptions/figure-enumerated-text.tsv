@@ -337,3 +337,5 @@ classic	child-relation	41	0x14075868c	0x140758322	0x140758322	0x14169ccf0	tenth 
 classic	child-relation	42	0x140758690	0x140758334	0x140758334	0x1416416fc	child
 classic	child-relation	43	0x140758694	0x140758346	0x140758346	0x14169cd08	youngest child
 classic	child-relation	44	0x140758698	0x140758358	0x140758358	0x14169d4c8	only child
+reference	sphere	default		0x14075715f	0x14075715f	0x1416a1310	no sphere
+classic	sphere	default		0x140754b7f	0x140754b7f	0x14169c1e0	no sphere
