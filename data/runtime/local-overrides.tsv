@@ -1880,6 +1880,7 @@ At least {d}	至少 {d}	wtl
 # Squad status rows: match the complete phrases before generic No / Off.
 # Routine: is immediately followed by the schedule name in the native row.
 No special orders	无特殊命令	wl
+No target	无目标	wl
 Train	训练	wl
 Routine:Off duty	日程：休息	wl
 Routine:Ready	日程：待命	wl
