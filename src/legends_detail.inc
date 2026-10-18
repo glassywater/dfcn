@@ -202,9 +202,12 @@ std::optional<std::string> Overlay::translate_legends_name(
     // the complete title-word validation below still rejects ordinary prose.
     if (person && (name.starts_with("the ") || name.starts_with("of ")))
         name.front() = static_cast<char>(name.front() - ('a' - 'A'));
-    if (!person && entity_reference)
+    if (!person && entity_reference) {
+        if (const auto religion = translate_religion_reference(name))
+            return religion;
         if (const auto civilization = translate_civilization_reference(name))
             return civilization;
+    }
     if (!person) {
         const size_t open = name.find('`');
         if (open != std::string::npos) {

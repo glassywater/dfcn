@@ -4674,6 +4674,10 @@ private:
     std::optional<std::string> translate_civilization_reference(
         std::string_view source, bool polity_role = false,
         bool government_field = false) const;
+    std::optional<std::string> translate_religion_reference(std::string_view source) const;
+    std::optional<std::string> translate_entity_reference(
+        std::string_view source, bool polity_role, bool government_field,
+        int16_t entity_type) const;
     std::optional<std::string> translate_world_site_entity_fact(
         std::string_view source, const NativeWorldSiteEntityFact *fact = nullptr) const;
     bool load_procedural_name_grammar();
@@ -11841,6 +11845,10 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         // truncated title can end in three dots; ordinary sentence punctuation
         // must not be stripped to manufacture a name.
         if (!generated_title_shape(body)) return std::nullopt;
+        if (context == ProceduralFragmentContext::general_text ||
+                context == ProceduralFragmentContext::generated_name)
+            if (const auto religion = translate_religion_reference(body))
+                return "“" + *religion + "”";
         const std::string translated = translate_name(body);
         if (!translated.empty()) return "“" + translated + "”";
     }
@@ -11954,6 +11962,13 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         screen_text.size() > 4 &&
         std::isupper(static_cast<unsigned char>(screen_text[4])) &&
         generated_title_shape(screen_text)) {
+        // Bare HUD titles and typed faith fields share the real entity's
+        // WORD/POS identity; ordinary ORDER and YOUTH word senses cannot
+        // independently rename the selected religion here.
+        if (context == ProceduralFragmentContext::general_text ||
+                context == ProceduralFragmentContext::generated_name)
+            if (const auto religion = translate_religion_reference(screen_text))
+                return religion;
         const std::string translated = translate_name(screen_text);
         if (!translated.empty()) return translated;
     }

@@ -129,7 +129,8 @@ void Overlay::append_fortress_place_names(std::vector<std::string> &rows,
                 "Shrine of ", "Shrine to ", " of "}) {
             if (!source.starts_with(prefix) || source.size() <= prefix.size()) continue;
             const std::string name_source(source.substr(prefix.size()));
-            auto name = translate_legends_name(name_source, true);
+            auto name = translate_religion_reference(name_source);
+            if (!name) name = translate_legends_name(name_source, true);
             if (!name) name = translate_legends_name(name_source, false);
             if (!name) name = translate_procedural_fragment(name_source, false, false, {},
                 ProceduralFragmentContext::generated_name);

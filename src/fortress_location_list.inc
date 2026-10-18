@@ -158,7 +158,8 @@ void Overlay::append_fortress_location_list_matches(std::vector<std::string> &ro
     const auto translate_identity = [&](const std::string &source)
             -> std::optional<std::string> {
         if (contains_cjk_utf8(source)) return native_text_to_utf8(source);
-        auto name = translate_legends_name(source, true);
+        auto name = translate_religion_reference(source);
+        if (!name) name = translate_legends_name(source, true);
         if (!name) name = translate_legends_name(source, false);
         if (!name) name = translate_procedural_fragment(source, false, false, {},
             ProceduralFragmentContext::generated_name);

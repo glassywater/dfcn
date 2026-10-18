@@ -1,4 +1,4 @@
-// Resolve polity/local-government references against real entity identities.
+// Resolve polity, government and religion references against real entities.
 // The cache owns WORD/POS snapshots and source spellings, never Chinese glosses.
 struct CivilizationReferenceIdentity {
     int32_t id = -1;
@@ -146,6 +146,16 @@ static void index_civilization_reference_sources(CivilizationReferenceCache &cac
 
 std::optional<std::string> Overlay::translate_civilization_reference(
         std::string_view source, bool polity_role, bool government_field) const {
+    return translate_entity_reference(source, polity_role, government_field, -1);
+}
+
+std::optional<std::string> Overlay::translate_religion_reference(std::string_view source) const {
+    return translate_entity_reference(source, false, false, 5);
+}
+
+std::optional<std::string> Overlay::translate_entity_reference(
+        std::string_view source, bool polity_role, bool government_field,
+        int16_t entity_type) const {
     dfhack_require_world_read();
     source = trim_view(source);
     if (source.empty() || source.size() > 4096 || source.ends_with("..."))
@@ -290,6 +300,7 @@ std::optional<std::string> Overlay::translate_civilization_reference(
     // whose recorded governing residence has since been replaced. Own their
     // complete context before disabling the name's duplicate live capture.
     NativeHistoryName selected_name = selected->name;
+    if (entity_type >= 0 && selected_name.entity_type != entity_type) return std::nullopt;
     NativeSiteGovernmentContext government_context;
     bool government_role = government_field || selected_name.entity_type == 1;
     if ((!polity_role || government_role) && selected_name.entity_type >= 1 && selected_name.entity_type <= 10 &&
@@ -298,7 +309,7 @@ std::optional<std::string> Overlay::translate_civilization_reference(
             government_context, true, !government_field);
         government_role = government_role || government_context.governing_role;
     }
-    if (selected_name.entity_type != 0 && selected_name.entity_type != 1 &&
+    if (entity_type < 0 && selected_name.entity_type != 0 && selected_name.entity_type != 1 &&
             selected_name.entity_type != 4 && !government_role && !polity_role)
         return std::nullopt;
     if (government_role && selected_name.entity_type != 1 &&
