@@ -93,73 +93,8 @@ static void bind_native_drawn_text_frame(const graphicst &graphics) {
     };
     for (auto &row : g_native_drawn_text_rows) bind(row, g_native_drawn_text_rows);
     for (auto &row : g_native_drawn_top_text_rows) bind(row, g_native_drawn_top_text_rows);
-#ifdef _WIN32
-    if (g_native_adventure_background_epoch &&
-            std::any_of(g_native_adventure_background_rows.begin(),
-                g_native_adventure_background_rows.end(), [&](const auto &row) {
-                    return row.draw_grid != graphics.screen;
-                })) {
-        std::optional<NativeBitmapFontTextures> fonts;
-        const std::array atlases{graphics.screentexpos,
-            graphics.screentexpos_lower, graphics.screentexpos_anchored};
-        bool current = true, ink = false;
-        for (const auto &row : g_native_adventure_background_rows) {
-            if (!row.draw_grid || row.draw_dimx != graphics.dimx ||
-                    row.draw_dimy != graphics.dimy || row.x < 0 || row.y < 0 ||
-                    row.x >= graphics.dimx || row.y >= graphics.dimy ||
-                    row.source.size() > static_cast<size_t>(graphics.dimx - row.x)) {
-                current = false;
-                break;
-            }
-            for (size_t at = 0; current && at < row.source.size(); ++at) {
-                const size_t tile = (static_cast<size_t>(row.x) + at) * graphics.dimy + row.y;
-                const auto expected = static_cast<unsigned char>(row.source[at]);
-                const auto actual = graphics.screen[tile * 8];
-                if (expected == ' ') {
-                    current = actual == 0 || actual == ' ';
-                    continue;
-                }
-                ink = true;
-                if (actual == expected) continue;
-                if (!fonts) fonts.emplace(true);
-                current = (actual == 0 || actual == ' ') &&
-                    std::any_of(atlases.begin(), atlases.end(),
-                        [&](const auto *atlas) { return atlas && fonts->contains(atlas[tile], expected); });
-            }
-            if (!current) break;
-        }
-        // The complete newly submitted writer batch binds its blank rows
-        // together with the proven ink when display rotates native buffers.
-        if (current && ink)
-            for (auto &row : g_native_adventure_background_rows)
-                if (row.draw_grid != graphics.screen) {
-                    row.draw_grid = graphics.screen;
-                    changed = true;
-                }
-    }
-#endif
     if (changed) ++g_native_drawn_text_revision;
 }
-
-#ifdef _WIN32
-static void reset_native_adventure_background_draws() {
-    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    g_native_adventure_background_rows.clear();
-    g_native_adventure_background_epoch = 0;
-}
-
-static std::vector<NativeDrawnTextRow> captured_native_adventure_background_draws(
-        const graphicst &graphics) {
-    std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
-    if (!g_native_adventure_background_epoch) return {};
-    std::vector<NativeDrawnTextRow> rows;
-    for (const auto &row : g_native_adventure_background_rows)
-        if (row.draw_epoch == g_native_adventure_background_epoch &&
-                row.draw_grid == graphics.screen && row.draw_dimx == graphics.dimx &&
-                row.draw_dimy == graphics.dimy) rows.push_back(row);
-    return rows;
-}
-#endif
 
 // One display preparation shares these owned sources between its semantic
 // key and discovery. The next native frame always starts with fresh reads.

@@ -69,6 +69,73 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
         if (box.x < 0 || box.y < 0 || box.w <= 0 || box.h <= 0 ||
                 box.x > gps_->dimx - box.w || box.y > gps_->dimy - box.h ||
                 frame.rows.size() != static_cast<size_t>(box.h)) continue;
+        if (frame.adventure_background) {
+            // The retained native document and its private writer own this
+            // card. No border discovery, page glyph proof or generic tooltip
+            // catalogue participates in translating the background selector.
+            prepared_matches_.clear();
+            g_native_toolbar_tooltip.reset();
+            g_native_tooltip_widget_frame = frame;
+            std::string target;
+            const auto translate_document = [&](const auto &cache, auto &&translate) {
+                if (!cache || cache->paragraphs.empty()) return false;
+                for (size_t paragraph = 0; paragraph < cache->paragraphs.size(); ++paragraph) {
+                    const auto translated = translate(paragraph);
+                    if (!translated) return false;
+                    if (!target.empty()) target += "\n\n";
+                    target += *translated;
+                }
+                return !target.empty();
+            };
+            const bool translated = frame.adventure_belief
+                ? translate_document(frame.adventure_belief, [&](size_t paragraph) {
+                    return translate_adventure_belief_source(paragraph, *frame.adventure_belief);
+                })
+                : translate_document(frame.adventure_home, [&](size_t paragraph) {
+                    return translate_adventure_home_source(
+                        frame.adventure_home->paragraphs[paragraph], *frame.adventure_home);
+                });
+            if (!translated || box.w < 4 || box.h < 3) continue;
+            NativeToolbarTooltip card;
+            card.left = box.x;
+            card.top = box.y;
+            card.right = card.text_right = box.x + box.w - 1;
+            card.bottom = box.y + box.h - 1;
+            card.text_x = card.body_x = box.x + 2;
+            card.text_y = box.y + 1;
+            card.native_frame = card.whole_frame = card.widget_frame = true;
+            card.occlusions = frame.occlusions;
+            bool owner = true;
+            for (int y = card.text_y; y < card.bottom; ++y) {
+                const auto &submitted = frame.rows[static_cast<size_t>(y - box.y)];
+                if (submitted.size() != static_cast<size_t>(box.w)) continue;
+                const auto source = trim_view(std::string_view(submitted).substr(2, box.w - 3));
+                card.rows.emplace_back(source);
+                if (!card.source.empty()) card.source += '\n';
+                card.source += source;
+                if (source.empty()) continue;
+                const int x = box.x + static_cast<int>(source.data() - submitted.data());
+                Match match{x, y, static_cast<int>(source.size()),
+                    kToolbarTooltipBodyRule, owner ? target : std::string{}, std::string(source)};
+                owner = false;
+                const auto *cell = gps_->screen +
+                    (static_cast<size_t>(x) * gps_->dimy + y) * 8;
+                match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                match.layout_left = true;
+                prepared_matches_.push_back(std::move(match));
+            }
+            if (prepared_matches_.empty()) continue;
+            g_native_toolbar_tooltip = std::move(card);
+            layout_toolbar_tooltip(renderer);
+            for (auto &match : prepared_matches_) {
+                match.graphical_clear_width = match.graphical_clear_height = 0;
+                match.graphical_auto_foreground = false;
+                source_matches.push_back(match);
+            }
+            text.push_back({index, std::move(g_native_toolbar_tooltip),
+                std::move(prepared_matches_)});
+            continue;
+        }
         auto visible = frame;
         bool visible_text = false;
         for (size_t y = 0; y < visible.rows.size(); ++y) {

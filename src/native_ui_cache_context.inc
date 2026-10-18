@@ -172,6 +172,24 @@ public:
         value(input.parent_word_pos); value(input.site_id); value(input.site_type);
         value(input.site_subtype); text(input.site_label); text(input.native_name);
     }
+    void adventure_belief(const NativeAdventureBeliefCache &cache) {
+        value(cache.screen); value(cache.owner);
+        value(cache.practice); value(cache.practice_id); value(cache.figure_id);
+        value(cache.religion); value(cache.figure); value(cache.figure_flags);
+        value(cache.figure_race); value(cache.figure_sex); value(cache.character_race);
+        text(cache.creature_singular); text(cache.creature_adjective);
+        range(cache.figure_spheres, [&](auto sphere) { value(sphere); });
+        optional(cache.religion_name, [&](const auto &input) { name(input); });
+        optional(cache.figure_name, [&](const auto &input) { name(input); });
+        optional(cache.force_name, [&](const auto &input) { name(input); });
+        optional(cache.temple, [&](const auto &input) {
+            value(input.kind); value(input.id); value(input.subid); value(input.native_type);
+            name(input.name); text(input.species); text(input.label_key); text(input.raw_title);
+        });
+        value(cache.temple_ruined);
+        range(cache.rows, [&](const auto &input) { address(input.address); text(input.source); });
+        range(cache.paragraphs, [&](const auto &paragraph) { text(paragraph); });
+    }
     void widget(const NativeTooltipWidgetFrame &input, uint64_t epoch) {
         // Snapshot composition reads another full grid with its own origins.
         // It is intentionally left on the ordinary path until that dependency
@@ -182,6 +200,14 @@ public:
         grid(input.grid_identity); text(input.body_source);
         range(input.rows, [&](const auto &row) { text(row); });
         range(input.occlusions, [&](const auto &box) { rect(box); });
+        value(input.adventure_background);
+        optional(input.adventure_belief, [&](const auto &cache) { adventure_belief(cache); });
+        if (input.adventure_home) {
+            // Home still resolves live site/controller names and formatter
+            // context. Its isolated draw remains available, but cannot retain
+            // a texture until those dependencies belong to the submitted frame.
+            complete = false;
+        }
     }
     void toolbar(const NativeToolbarTooltip &input) {
         value(input.left); value(input.top); value(input.right); value(input.bottom);
@@ -511,8 +537,6 @@ public:
     }
     void adventure_background_snapshot(uintptr_t screen) {
 #ifdef _WIN32
-        const auto *native = native_graphics();
-        if (!native || !native->screen) { complete = false; return; }
         const auto screen_field = [&](std::string_view member, size_t width) {
             return native_history_object_member(screen, "viewscreen_setupadventurest", member, width);
         };
@@ -527,78 +551,22 @@ public:
         const auto field = [&](std::string_view member, size_t width) {
             return native_history_object_member(owner, "setup_character_info", member, width);
         };
-        int32_t column = -1, description = -1, native_grid_y = 0;
-        const auto *settings = native_ui_settings_source();
+        int32_t column = -1;
         if (!owner || !native_history_copy(field("active_column", sizeof(column)), column) ||
-                column != 2 ||
-                !native_history_copy(field("desc_rp_index", sizeof(description)), description) ||
-                !settings || !native_history_copy(reinterpret_cast<uintptr_t>(settings) + 0x18,
-                    native_grid_y) || native_grid_y <= 20 || native_grid_y > 1000) {
-            // Home still resolves additional live site/controller formatter
-            // context. Keep it on the ordinary path until that context is owned.
+                column != 2) {
+            // Other columns still have uncaptured page formatter inputs.
             complete = false; return;
         }
-        value(screen); value(selected); value(owner); value(column); value(description);
-        value(native_grid_y);
-        const auto beliefs = frame_native_adventure_belief_cache();
+        value(screen); value(selected); value(owner); value(column);
         const auto choices = frame_native_adventure_belief_choices();
-        if (!choices || frame_native_adventure_home_cache()) { complete = false; return; }
-        optional(beliefs, [&](const auto &cache) {
-            if (cache.screen != screen || cache.owner != owner) { complete = false; return; }
-            value(cache.screen); value(cache.owner);
-            value(cache.practice); value(cache.practice_id); value(cache.figure_id);
-            value(cache.religion); value(cache.figure); value(cache.figure_flags);
-            value(cache.figure_race); value(cache.figure_sex); value(cache.character_race);
-            text(cache.creature_singular); text(cache.creature_adjective);
-            range(cache.figure_spheres, [&](auto sphere) { value(sphere); });
-            optional(cache.religion_name, [&](const auto &input) { name(input); });
-            optional(cache.figure_name, [&](const auto &input) { name(input); });
-            optional(cache.force_name, [&](const auto &input) { name(input); });
-            optional(cache.temple, [&](const auto &input) {
-                value(input.kind); value(input.id); value(input.subid); value(input.native_type);
-                name(input.name); text(input.species); text(input.label_key); text(input.raw_title);
-            });
-            value(cache.temple_ruined);
-            range(cache.rows, [&](const auto &input) { address(input.address); text(input.source); });
-            range(cache.paragraphs, [&](const auto &paragraph) { text(paragraph); });
-        });
+        if (!choices) { complete = false; return; }
         range(*choices, [&](const auto &choice) {
             value(choice.practice); value(choice.id); value(choice.figure_flags); text(choice.species);
             optional(choice.name, [&](const auto &input) { name(input); });
         });
-        const auto submitted = captured_native_adventure_background_draws(*native);
-        range(submitted, [&](const auto &draw) {
-            value(draw.x); value(draw.y); address(draw.address); text(draw.source);
-            value(draw.draw_dimx); value(draw.draw_dimy);
-            // The getter already requires this producer's current base grid.
-            // Neither alternating native buffers nor frame counters are content.
-            value(draw.draw_grid == native->screen);
-        });
-        optional(native_hover_center_background_rgb(*native), [&](int rgb) { value(rgb); });
-        if (!submitted.empty() && !native_ui_classic().value_or(true)) {
-            // A retained solid clear also depends on the real anchored draw
-            // extents. Surface dimensions can change without changing a tile
-            // ID; the native source-array comparison alone cannot see that.
-            for (bool top_layer : {false, true}) {
-                if (top_layer && !native->top_in_use) continue;
-                const auto *textures = top_layer
-                    ? native->screentexpos_top_anchored : native->screentexpos_anchored;
-                const auto *flags = top_layer
-                    ? native->screentexpos_top_flag : native->screentexpos_flag;
-                value(top_layer); value(textures != nullptr); value(flags != nullptr);
-                if (!textures) continue;
-                for (int x = 0; x < native->dimx; ++x)
-                    for (int y = 0; y < native->dimy; ++y) {
-                        const size_t tile = static_cast<size_t>(x) * native->dimy + y;
-                        if (!textures[tile] || (flags && (flags[tile] & 4u))) continue;
-                        value(x); value(y);
-                        optional(native_anchored_tile_draw_bounds(*native,
-                            g_native_help_layer.native_renderer, x, y, top_layer),
-                            [&](const auto &bounds) { rect(bounds); });
-                    }
-                value(-1); // End of this plane's variable-length origin list.
-            }
-        }
+        // The hover card owns its source arrays and semantic snapshot in the
+        // tooltip layer. Page caching has no dependency on its native writes,
+        // covered background or anchored artwork elsewhere on the screen.
 #else
         (void)screen;
         complete = false;

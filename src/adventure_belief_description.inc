@@ -1,203 +1,13 @@
 // Home and Beliefs share the retained description row writer. Each cache
 // owns its complete source, including rows below the native screen clip.
-#ifndef _WIN32
         const auto belief_base = native_history_profile_base();
         const auto belief_writer = native_reference_address(belief_base,
             // setupadventurest draws the +0x1330 description cache built by
             // 0x10a6520; its religion producer also fills the retained IDs.
             0xd1a7cb
         );
-#endif
         const auto append_background_cache = [&](const auto &belief_cache,
                 auto &&translate_source) {
-#ifdef _WIN32
-        if (!belief_cache || belief_cache->rows.empty() || !gps_->screen ||
-                (screen_override && screen_override != gps_->screen) || gps_->dimy <= 20)
-            return;
-        const auto belief_draws = captured_native_adventure_background_draws(*gps_);
-        if (belief_draws.empty()) return;
-        int32_t native_grid_y = 0;
-        const auto *settings = native_ui_settings_source();
-        if (!settings || !native_history_copy(reinterpret_cast<uintptr_t>(settings) + 0x18,
-                native_grid_y) || native_grid_y <= 20 || native_grid_y > 1000) return;
-        const NativeBitmapFontTextures belief_fonts(true);
-        // The exact addst caller runs after all four native frame sides have
-        // been submitted. Derive that frame from its actual text origin,
-        // using init.display.grid_y just as the decompiled renderer does.
-        const int visible_rows = static_cast<int>(std::min(belief_cache->rows.size(),
-            static_cast<size_t>(native_grid_y - 20)));
-        const auto current_cell = [&](int x, int y, unsigned char expected) {
-            bool top = false;
-            const auto *cell = cell_at(x, y, &top);
-            if (!cell || top) return false;
-            const auto actual = cell[0];
-            if (actual != expected && actual != 0 && actual != ' ') return false;
-            if (expected == ' ') return actual == 0 || actual == ' ';
-            if (actual == expected) return true;
-            const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
-            bool glyph = actual == expected;
-            // addst may retain an exact font-atlas glyph after its character
-            // byte has been cleared. Neither unrelated artwork nor another
-            // letter in any active slot can stand in for this cached source.
-            for (const auto *textures : {gps_->screentexpos, gps_->screentexpos_lower,
-                    gps_->screentexpos_anchored}) {
-                if (!textures || textures[tile] <= 0) continue;
-                if (belief_fonts.contains(textures[tile], expected)) glyph = true;
-            }
-            return glyph;
-        };
-        // These records are reset at each native render_things boundary.
-        // A cache retained after mouse leave therefore supplies no anchor.
-        for (const auto &anchor : belief_draws) {
-            const auto cached_anchor = std::find_if(belief_cache->rows.begin(),
-                belief_cache->rows.end(), [&](const auto &row) {
-                    return row.address == anchor.address && row.source == anchor.source;
-                });
-            if (cached_anchor == belief_cache->rows.end() || trim_view(anchor.source).empty()) continue;
-            const int cache_top = anchor.y - static_cast<int>(cached_anchor - belief_cache->rows.begin());
-            const int bottom = cache_top + visible_rows;
-            const int frame_left = anchor.x - 2, frame_right = frame_left + 31;
-            if (cache_top <= 0 || bottom != native_grid_y - 6 || bottom >= gps_->dimy ||
-                    frame_left < 0 || frame_right >= gps_->dimx) continue;
-            bool intact = true;
-            const SDL_Rect panel{frame_left + 1, cache_top, 30, visible_rows};
-            NativeTextCard card;
-            card.interior = panel;
-            const int body_x = frame_left + 2;
-            for (int line = 0; intact && line < visible_rows; ++line) {
-                const auto &cache_row = belief_cache->rows[static_cast<size_t>(line)];
-                const auto &cached = cache_row.source;
-                if (cached.size() > 27) { intact = false; break; }
-                const int y = cache_top + line;
-                // Every visible retained line, including a blank separator,
-                // must have been submitted by this exact writer this frame.
-                if (std::none_of(belief_draws.begin(), belief_draws.end(), [&](const auto &draw) {
-                        return draw.x == body_x && draw.y == y && draw.address == cache_row.address &&
-                            draw.source == cached && draw.draw_epoch == anchor.draw_epoch;
-                    })) { intact = false; break; }
-                for (size_t at = 0; intact && at < cached.size(); ++at)
-                    intact = current_cell(body_x + static_cast<int>(at), y,
-                        static_cast<unsigned char>(cached[at]));
-                const auto ink = trim_view(cached);
-                if (!intact || ink.empty()) continue;
-                const int x = body_x + static_cast<int>(ink.data() - cached.data());
-                std::vector<int> colors;
-                colors.reserve(ink.size());
-                for (size_t at = 0; at < ink.size(); ++at) {
-                    const auto *cell = gps_->screen +
-                        (static_cast<size_t>(x + static_cast<int>(at)) * gps_->dimy + y) * 8;
-                    colors.push_back((cell[1] << 16) | (cell[2] << 8) | cell[3]);
-                }
-                card.rows.push_back({x, y, std::string(ink), std::move(colors)});
-            }
-            if (!intact || card.rows.empty()) continue;
-            std::string target;
-            for (size_t paragraph = 0; paragraph < belief_cache->paragraphs.size(); ++paragraph) {
-                const auto translated = translate_source(paragraph);
-                if (!translated) { intact = false; break; }
-                if (!target.empty()) target += "\n\n";
-                target += *translated;
-            }
-            if (!intact || target.empty()) continue;
-            const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
-            const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
-            const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
-            const SDL_Rect clip{origin_x + panel.x * tile_w, origin_y + panel.y * tile_h,
-                panel.w * tile_w, panel.h * tile_h};
-            std::vector<Match> rows;
-            for (const auto &native : card.rows) {
-                Match row{native.x, native.y, static_cast<int>(native.source.size()),
-                    kAdventureBackgroundDescriptionRule, {}, native.source};
-                row.layout_foreground_rgb = native.foregrounds.front();
-                row.layout_native_clip = clip;
-                rows.push_back(std::move(row));
-            }
-            const int left = rows.front().x, right = frame_right;
-            rows.front().graphical_clear_x = left;
-            rows.front().graphical_clear_y = panel.y;
-            rows.front().graphical_clear_width = right - left;
-            rows.front().graphical_clear_height = panel.h;
-            const auto background = native_hover_center_background_rgb(*gps_);
-            const auto classic = native_ui_classic();
-            bool flat_body = background.has_value() && classic.has_value();
-            const int32_t centre = native_texture_hover_rectangle(*gps_)[1][1];
-            for (int y = panel.y; flat_body && y < panel.y + panel.h; ++y) {
-                const auto &source = belief_cache->rows[static_cast<size_t>(y - panel.y)].source;
-                for (int x = left; flat_body && x < right; ++x) {
-                    bool top = false;
-                    const auto *cell = cell_at(x, y, &top);
-                    if (!cell || top) { flat_body = false; break; }
-                    const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
-                    const size_t offset = static_cast<size_t>(x - body_x);
-                    const unsigned char expected = offset < source.size()
-                        ? static_cast<unsigned char>(source[offset]) : ' ';
-                    if (*classic) {
-                        flat_body = ((cell[4] << 16) | (cell[5] << 8) | cell[6]) == *background;
-                        // Native classic rendering does not paint either
-                        // anchored pass. Only ordinary tile slots matter here.
-                        for (const auto *textures : {gps_->screentexpos, gps_->screentexpos_lower})
-                            if (textures && textures[tile] > 0 &&
-                                    !belief_fonts.contains(textures[tile], expected)) flat_body = false;
-                        continue;
-                    }
-                    if (!gps_->screentexpos_lower || gps_->screentexpos_lower[tile] != centre) {
-                        flat_body = false;
-                        break;
-                    }
-                    if (gps_->screentexpos && gps_->screentexpos[tile] > 0 &&
-                            !belief_fonts.contains(gps_->screentexpos[tile], expected)) flat_body = false;
-                }
-            }
-            // Anchored graphics are painted after lower/body text. Nonorigin
-            // members (flag 4) do not draw; an actual origin can be outside
-            // this card while its scaled surface extends across the body.
-            const SDL_Rect clear_clip{origin_x + left * tile_w, origin_y + panel.y * tile_h,
-                (right - left) * tile_w, panel.h * tile_h};
-            for (bool top_layer : {false, true}) {
-                if (!flat_body || *classic || (top_layer && !gps_->top_in_use)) continue;
-                const auto *textures = top_layer
-                    ? gps_->screentexpos_top_anchored : gps_->screentexpos_anchored;
-                const auto *flags = top_layer ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
-                if (!textures) continue;
-                for (int x = 0; flat_body && x < gps_->dimx; ++x)
-                    for (int y = 0; flat_body && y < gps_->dimy; ++y) {
-                        const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
-                        if (!textures[tile]) continue;
-                        if (!flags) { flat_body = false; break; }
-                        if (flags[tile] & 4u) continue;
-                        const auto bounds = native_anchored_tile_draw_bounds(*gps_,
-                            g_native_help_layer.native_renderer, x, y, top_layer);
-                        if (!bounds) { flat_body = false; break; }
-                        if (!SDL_HasIntersection(&clear_clip, &*bounds)) continue;
-                        unsigned char expected = ' ';
-                        if (!top_layer && x >= body_x && x < right &&
-                                y >= panel.y && y < panel.y + panel.h) {
-                            const auto &source = belief_cache->rows[static_cast<size_t>(y - panel.y)].source;
-                            const size_t offset = static_cast<size_t>(x - body_x);
-                            if (offset < source.size()) expected = static_cast<unsigned char>(source[offset]);
-                        }
-                        const SDL_Rect source_cell{origin_x + x * tile_w, origin_y + y * tile_h,
-                            tile_w, tile_h};
-                        if (!belief_fonts.contains(textures[tile], expected) ||
-                                bounds->x != source_cell.x || bounds->y != source_cell.y ||
-                                bounds->w != source_cell.w || bounds->h != source_cell.h)
-                            flat_body = false;
-                    }
-            }
-            if (flat_body) rows.front().graphical_clear_background_rgb = *background;
-            std::vector<Match> replacements;
-            if (!append_bounded_paragraph(std::move(rows), target, screen_rows, replacements,
-                    only_y, right, right, {}, false, left)) continue;
-            // This currently visible whole card supersedes earlier fragments,
-            // while its exclusive native interior clip preserves the frame.
-            adventure_background_cards.insert(adventure_background_cards.end(),
-                std::make_move_iterator(replacements.begin()),
-                std::make_move_iterator(replacements.end()));
-            for (const auto &row : card.rows)
-                std::fill_n(owned[row.y].begin() + row.x, row.source.size(), true);
-            return;
-        }
-#else
         if (!belief_cache || !belief_writer) return;
         const auto belief_draws = captured_native_drawn_text_view();
         const NativePanelBorders belief_borders(*gps_);
@@ -251,7 +61,7 @@
                 half = current;
             }
             return half;
-#endif
+
         };
         for (const auto &anchor : belief_draws) {
             if (!belief_draw_is_current(anchor)) continue;

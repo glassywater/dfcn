@@ -2397,13 +2397,6 @@ struct NativeDrawnTextRow {
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
-#ifdef _WIN32
-// setupadventure's retained Home/Beliefs row loop has its own lifetime.
-// Keep its submitted rows even when other captions reuse a position; readers
-// still require the current native producer frame and display grid.
-static std::vector<NativeDrawnTextRow> g_native_adventure_background_rows;
-static uint64_t g_native_adventure_background_epoch = 0;
-#endif
 static uint64_t g_native_drawn_text_sequence = 0;
 static uint64_t g_native_drawn_text_revision = 0;
 // Top-layer text is independent of base draw order. Keep its map-ownership
@@ -2714,6 +2707,9 @@ struct NativeTooltipWidgetFrame {
     std::string body_source;
     bool top_layer = false;
     bool isolated = false;
+    bool adventure_background = false;
+    std::optional<NativeAdventureBeliefCache> adventure_belief;
+    std::optional<NativeAdventureHomeCache> adventure_home;
     const unsigned char *grid_identity = nullptr;
     std::shared_ptr<NativeTooltipPage> page;
     std::shared_ptr<NativeTooltipPage> document;
@@ -3192,10 +3188,6 @@ static void clear_native_drawn_text_rows() {
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     ++g_native_drawn_text_revision;
     g_native_drawn_text_rows.clear();
-#ifdef _WIN32
-    g_native_adventure_background_rows.clear();
-    g_native_adventure_background_epoch = 0;
-#endif
     g_native_drawn_top_text_rows.clear();
     g_native_overwritten_text_rows.clear();
     g_native_drawn_text_sequence = 0;
@@ -18191,12 +18183,19 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     screen_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
-    // This native writer supplies a complete, typed document. Claim it before
-    // any help, entity-name or generic prose probe can interpret its words.
+    // Windows sends the retained hover document directly to its private
+    // tooltip layer. The parent page owns the list choices and biography;
+    // changing the hovered practice must not retranslate that parent page.
+#ifdef _WIN32
+    const std::optional<NativeAdventureBeliefCache> adventure_belief_cache;
+    const std::optional<NativeAdventureHomeCache> adventure_home_cache;
+#else
     const auto &adventure_belief_cache = frame_native_adventure_belief_cache();
-    const auto &adventure_belief_choices = frame_native_adventure_belief_choices();
     const auto &adventure_home_cache = frame_native_adventure_home_cache();
+#endif
+    const auto &adventure_belief_choices = frame_native_adventure_belief_choices();
     std::vector<std::vector<bool>> adventure_background_owned;
+#ifndef _WIN32
     if ((adventure_belief_cache || adventure_home_cache) &&
             gps_->tile_pixel_x > 0 && gps_->tile_pixel_y > 0) {
         adventure_background_owned.assign(static_cast<size_t>(gps_->dimy),
@@ -18204,6 +18203,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         auto &owned = adventure_background_owned;
 #include "adventure_belief_description.inc"
     }
+#endif
     const auto mask_adventure_background_rows = [&](std::vector<std::string> &rows) {
         for (size_t y = 0; y < adventure_background_owned.size(); ++y)
             for (size_t x = 0; x < adventure_background_owned[y].size(); ++x)
