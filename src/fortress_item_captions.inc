@@ -550,10 +550,10 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         detail_headings.emplace(key, heading);
         return heading;
     };
-    // Uniform requirements have a picture and Mat/Color controls, but no
-    // item-state action strip. Their names still own a complete left-aligned
-    // column; generic word matching would centre each translated name in its
-    // different English ink width. Establish this editor from its own save
+    // Uniform rows have requirement and assigned-item columns, followed by
+    // optional Mat/Color controls and a delete button. Both text columns
+    // need fixed insets; generic matching centres each translated item in
+    // its different English ink width. Establish the editor from its save
     // button and both footer controls before interpreting any item rows.
     const auto caption_button = [&](std::string_view source, int y,
                                     int left, int right) -> std::optional<SDL_Rect> {
@@ -600,7 +600,8 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
                                     bool display_status = false,
                                     std::optional<SDL_Rect> caption_box = std::nullopt,
                                     int layout_left = -1,
-                                    bool item_group = false) {
+                                    bool item_group = false,
+                                    bool uniform_assignment = false) {
         if (end <= left || right <= left) return;
         const std::string visible = rows[y].substr(left, end - left);
         bool top_layer = false;
@@ -622,9 +623,10 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         // after the per-frame clipping registry advances. Position, layer
         // and the complete visible bytes must all agree before restoring it.
         for (const auto &draw : top_layer ? top_drawn : drawn)
-            if (draw.x == left && draw.y == y && draw.source == visible &&
-                !draw.complete_source.empty()) {
-                complete = draw.complete_source;
+            if (draw.x == left && draw.y == y &&
+                (draw.source == visible ||
+                    (uniform_assignment && draw.source.starts_with(visible)))) {
+                complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
                 break;
             }
         if (complete == visible)
@@ -643,7 +645,18 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         // item-name phonetics or ordinary exact literals. Their native row
         // stays independent of the title even when the message is unknown.
         TranslationResult result;
-        if (display_status) {
+        constexpr std::string_view assigned_suffix = " assigned items";
+        const std::string_view assignment(complete);
+        const bool assigned_count = assignment.ends_with(assigned_suffix) &&
+            assignment.size() > assigned_suffix.size() &&
+            std::all_of(assignment.begin(), assignment.end() - assigned_suffix.size(),
+                [](char ch) { return ch >= '0' && ch <= '9'; });
+        if (uniform_assignment && (assigned_count || assignment == "No assigned items" ||
+                assignment == "Not yet assigned")) {
+            const auto target = translate_fortress_squad_field(assignment);
+            result = target ? TranslationResult::translated(complete, *target, "uniform-assignment")
+                : preserved_item_field(complete, "uniform-assignment");
+        } else if (display_status) {
             const auto target = translate_help_paragraph(complete,
                 std::vector<int>(complete.size(), foreground), target_colors, true);
             result = target ? TranslationResult::translated(complete, *target, "item-display-status")
@@ -680,6 +693,7 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         caption.layout_y = y;
         caption.layout_length = right - caption.layout_x;
         caption.layout_left = true;
+        caption.layout_ellipsize = uniform_assignment;
         caption.layout_clip_right = right;
         caption.layout_prepared = true;
         caption.layout_line_height_pixels = gps_->tile_pixel_y;
@@ -774,25 +788,42 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
                     picture_right == picture + 5 && y - 1 >= uniform_top &&
                     y + 1 < uniform_bottom) {
                     const int panel_right = uniform_panel->x + uniform_panel->w;
-                    const auto material = caption_button("Mat", y, picture_right, panel_right);
-                    const auto color = material ? caption_button("Color", y,
-                        material->x + material->w, panel_right) : std::nullopt;
-                    if (material && color && material->w == 3 && color->w == 5 &&
-                        material->h == 3 && color->h == 3 &&
-                        color->x == material->x + 6 && color->y == material->y) {
-                        // Native uniform renderer (53.16 PE 0x140451b99):
-                        // Mat's interior starts at R-16; split=(R+2*L)/3.
-                        // The name is [L+6, split-2), while assigned-item
-                        // status starts at split+6. Use the current controls,
-                        // including the scrollbar's inset, to recover R.
-                        const int row_right = material->x + 16;
+                    // PE 0x453ab2 draws the 4x3 uniform-delete main skin
+                    // (466) at R-3. It is present even for specific items and
+                    // individual weapon choices, which have no Mat/Color.
+                    constexpr int uniform_remove_button_kind = 466;
+                    int remove = -1;
+                    for (int x = panel_right - 4; x >= picture_right; --x)
+                        if (native_main_button_at(*gps_, x, y, uniform_remove_button_kind, true)) {
+                            remove = x;
+                            break;
+                        }
+                    if (remove >= 0) {
+                        // Native uniform renderer (53.16 PE 0x451b99):
+                        // split=(R+2*L)/3; requirements start at L+6, and
+                        // single-item names AND all statuses at split+6.
+                        const int row_right = remove + 3;
+                        const int split = (row_right + 2 * picture) / 3;
                         const int left = picture_right + 1;
-                        const int right = (row_right + 2 * picture) / 3 - 2;
+                        const int right = split - 2;
+                        const int assigned_left = split + 6;
+                        const auto material = caption_button("Mat", y, assigned_left, remove);
+                        const auto color = caption_button("Color", y, assigned_left, remove);
+                        const bool controls = material && color &&
+                            material->x == row_right - 16 && material->w == 3 &&
+                            color->x == row_right - 10 && color->w == 5 &&
+                            material->h == 3 && color->h == 3 &&
+                            material->y == y - 1 && color->y == y - 1;
+                        const int assigned_end = controls ? material->x - 1 : remove;
+                        // Mask the original field up to the action, but leave
+                        // a cell of padding before it when drawing Chinese.
+                        const int assigned_right = assigned_end - 1;
                         const bool top = native_ui_top_layer_at(*gps_,
                             static_cast<size_t>(picture) * gps_->dimy + y);
                         bool current = row_right < panel_right && right > left &&
-                            right < material->x;
-                        for (int x = picture; current && x <= color->x + color->w; ++x)
+                            assigned_right > assigned_left &&
+                            ((!material && !color) || controls);
+                        for (int x = picture; current && x <= row_right; ++x)
                             for (int row = y - 1; row <= y + 1; ++row)
                                 if (native_ui_top_layer_at(*gps_,
                                         static_cast<size_t>(x) * gps_->dimy + row) != top)
@@ -808,8 +839,16 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
                                 while (end > first && rows[row][end - 1] == ' ') --end;
                                 append_caption(first, end, right, row, true,
                                     false, false, std::nullopt, left);
+                                first = assigned_left;
+                                end = assigned_end;
+                                while (first < end && rows[row][first] == ' ') ++first;
+                                while (end > first && rows[row][end - 1] == ' ') --end;
+                                const SDL_Rect assigned_box{assigned_left, y - 1,
+                                    assigned_right - assigned_left, 3};
+                                append_caption(first, end, assigned_right, row, true,
+                                    false, false, assigned_box, assigned_left, false, true);
                             }
-                            picture = color->x + color->w;
+                            picture = row_right;
                             continue;
                         }
                     }
