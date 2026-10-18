@@ -602,10 +602,10 @@
                     }
                 }
                 if (best_rule < 0) continue;
-                // A short UI message such as `Show` can also prefix a complete
-                // tab caption (`Show linked buildings` / `Show items`). Leave
-                // that caption to its longer literal rule and native half-font
-                // layout instead of reflowing only the prefix as a paragraph.
+                // A UI message can equal a complete tab caption (`Trade`) or
+                // prefix one (`Show linked buildings` / `Show items`). Leave
+                // that caption to its complete literal rule and native half-font
+                // layout instead of locking it to a paragraph's source row.
                 if (caption_text_end && best_rows.size() == 1) {
                     const auto complete_literal_caption = [&](const std::vector<TrieNode> &trie,
                             bool fold_case) {
@@ -618,7 +618,7 @@
                             if (next == trie[node].next.end()) break;
                             node = next->second;
                             if (trie[node].rule < 0 ||
-                                    pos + 1 <= start_x + best_rows.front().length) continue;
+                                    pos + 1 < start_x + best_rows.front().length) continue;
                             const Rule &literal = rules_[static_cast<size_t>(trie[node].rule)];
                             const size_t end = static_cast<size_t>(pos + 1);
                             if (literal.word_follows && !native_text_word_at(first, end)) continue;
