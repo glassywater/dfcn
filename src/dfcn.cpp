@@ -8569,22 +8569,29 @@ struct LegendsFigureRecord {
     std::string_view sex;
 };
 
+static std::optional<std::pair<size_t, size_t>> legends_native_nickname_span(
+        std::string_view source) {
+    const size_t open = source.find('`');
+    if (open == std::string_view::npos || (open && source[open - 1] != ' '))
+        return std::nullopt;
+    size_t close = source.rfind('\'');
+    while (close != std::string_view::npos && close > open &&
+            close + 1 < source.size() && source[close + 1] != ' ')
+        close = source.rfind('\'', close - 1);
+    if (close == std::string_view::npos || close <= open + 1) return std::nullopt;
+    return std::pair{open, close};
+}
+
 static std::optional<LegendsFigureRecord> split_legends_figure_record(
         std::string_view source) {
     // DF emits native name, quoted English gloss, then sex/species. Parse
     // delimiters before looking up words: both names can contain spaces and
-    // accented CP437 letters, and the gloss can include an entire epithet.
-    const size_t comma = source.find(',');
-    if (comma == std::string_view::npos) return std::nullopt;
-    LegendsFigureRecord record;
-    record.native_name = trim_view(source.substr(0, comma));
-    auto tail = trim_view(source.substr(comma + 1));
-    if (tail.empty() || tail.front() != '"') return std::nullopt;
-    tail.remove_prefix(1);
-    const size_t quote = tail.find('"');
+    // accented CP437 letters, and authored nicknames can contain commas and
+    // double quotes. The final quote closes the gloss, outside either name.
+    const size_t quote = source.rfind('"');
     if (quote == std::string_view::npos) return std::nullopt;
-    record.gloss = trim_view(tail.substr(0, quote));
-    tail = trim_view(tail.substr(quote + 1));
+    LegendsFigureRecord record;
+    auto tail = trim_view(source.substr(quote + 1));
     if (tail.empty() || tail.front() != ',') return std::nullopt;
     record.species = trim_view(tail.substr(1));
     for (std::string_view sex : {"female", "male"}) {
@@ -8597,6 +8604,16 @@ static std::optional<LegendsFigureRecord> split_legends_figure_record(
         }
     }
     auto name_shape = [](std::string_view name) {
+        std::string generated;
+        if (name.find('`') != std::string_view::npos) {
+            const auto nickname = legends_native_nickname_span(name);
+            if (!nickname) return false;
+            // Only the authored body is opaque. The given/surname/title
+            // groups on either side retain the ordinary name-shape rules.
+            generated = std::string(name.substr(0, nickname->first)) + "Name" +
+                std::string(name.substr(nickname->second + 1));
+            name = generated;
+        }
         if (name.empty()) return false;
         const unsigned char first = static_cast<unsigned char>(name.front());
         if (!((first >= 'A' && first <= 'Z') ||
@@ -8606,8 +8623,7 @@ static std::optional<LegendsFigureRecord> split_legends_figure_record(
                 is_cp437_latin_letter_byte(ch) || ch == ' ' || ch == '-' || ch == '\'';
         });
     };
-    if (!name_shape(record.native_name) || !name_shape(record.gloss) ||
-        record.species.empty() ||
+    if (record.species.empty() ||
         !std::all_of(record.species.begin(), record.species.end(), [](unsigned char ch) {
             // Angels and experiments can include a capitalized creator's
             // name, including CP437 accents, in their caste description.
@@ -8617,7 +8633,15 @@ static std::optional<LegendsFigureRecord> split_legends_figure_record(
                 (ch >= '0' && ch <= '9') || is_cp437_latin_letter_byte(ch) ||
                 ch == ' ' || ch == '-' || ch == '\'';
         })) return std::nullopt;
-    return record;
+    for (size_t comma = source.find(','); comma < quote;
+         comma = source.find(',', comma + 1)) {
+        record.native_name = trim_view(source.substr(0, comma));
+        const auto gloss = trim_view(source.substr(comma + 1, quote - comma - 1));
+        if (gloss.empty() || gloss.front() != '"') continue;
+        record.gloss = trim_view(gloss.substr(1));
+        if (name_shape(record.native_name) && name_shape(record.gloss)) return record;
+    }
+    return std::nullopt;
 }
 
 static std::string_view legends_figure_identity_before_dates(std::string_view source) {
@@ -11437,6 +11461,27 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // well as an English colour adjective. A recognized full personal name
     // must keep its surname phonetic just like the individual native words.
     if (phonetic_only) {
+        if (screen_text.find('`') != std::string::npos) {
+            const auto nickname = legends_native_nickname_span(screen_text);
+            if (!nickname) return std::nullopt;
+            const auto group = [&](std::string_view value) -> std::optional<std::string> {
+                value = trim_view(value);
+                if (value.empty()) return std::string{};
+                return translate_procedural_fragment(std::string(value), true, false,
+                    {}, context, allow_native_original);
+            };
+            const auto before = group(std::string_view(screen_text).substr(0, nickname->first));
+            const auto after = group(std::string_view(screen_text).substr(nickname->second + 1));
+            if (!before || !after) return std::nullopt;
+            // Original-name fields contain the same authored nickname as
+            // their English gloss. Only surrounding generated groups have
+            // phonetics; spaces and punctuation inside the nickname are data.
+            std::string result = *before + "“" + native_text_to_utf8(
+                std::string_view(screen_text).substr(nickname->first + 1,
+                    nickname->second - nickname->first - 1)) + "”";
+            if (!after->empty()) result += "·" + *after;
+            return result;
+        }
         if (const auto native = translate_native_person_name(screen_text))
             return complete_generated_name(*native);
         if (const auto given = resolve_native_given_word(screen_text))

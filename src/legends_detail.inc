@@ -3211,8 +3211,7 @@ std::shared_ptr<LegendsTextFlow> Overlay::translate_legends_flow(
             case 'd': target = std::string(value); break;
             default: break;
             }
-            if (!target || target->empty() || std::any_of(target->begin(), target->end(),
-                    [](unsigned char ch) { return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'); }))
+            if (!translation_complete_with_native_nicknames(target, value))
                 return std::nullopt;
             return Pieces{supported_piece(*target, anchor, end)};
         };

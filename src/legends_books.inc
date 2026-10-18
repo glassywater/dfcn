@@ -134,10 +134,19 @@ std::optional<std::string> Overlay::translate_legends_detail_heading(
     if (const auto caption = native_history_legends_caption();
             caption && caption->character_name) {
         const auto record = split_legends_figure_record(source);
-        const auto pair = record ? std::optional<GeneratedNameIdentity>(
+        auto pair = record ? std::optional<GeneratedNameIdentity>(
             GeneratedNameIdentity{record->native_name, record->gloss}) :
             split_generated_name_identity(source);
         const auto &name = *caption->character_name;
+        if (!pair && !name.nickname.empty() && !name.native_name.empty()) {
+            // The tab omits sex/species. Its captured person identity owns
+            // the full native name, including commas/quotes in a nickname.
+            const std::string prefix = name.native_name + ", \"";
+            if (source.starts_with(prefix) && source.ends_with('"') &&
+                    source.size() > prefix.size() + 1)
+                pair = GeneratedNameIdentity{source.substr(0, name.native_name.size()),
+                    source.substr(prefix.size(), source.size() - prefix.size() - 1)};
+        }
         const auto same = [](std::string_view a, std::string_view b) {
             return lower(native_text_to_utf8(trim_view(a))) ==
                 lower(native_text_to_utf8(trim_view(b)));
