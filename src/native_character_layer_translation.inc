@@ -166,7 +166,7 @@ void Overlay::render_native_character_layer(SDL_Renderer *renderer) {
             overlay.frame_prepared_ = false;
             overlay.native_ui_input_read_ = true;
             overlay.native_ui_frame_ready_ = false;
-            overlay.native_prepared_ui_frame_.reset();
+            overlay.native_prepared_ui_frame_ = {};
             overlay.native_ui_layout_page_.reset();
             overlay.native_ui_toolbar_tooltip_.reset();
             overlay.native_ui_copy_passthrough_ = false;

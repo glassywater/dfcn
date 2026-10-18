@@ -521,6 +521,33 @@ public:
             value(boundary.source_end); value(boundary.native_row_end);
         });
     }
+    void knowledge_sources() {
+        const uint64_t published = g_overlay.native_knowledge_frame_revision();
+        if (published == UINT64_MAX) { complete = false; return; }
+        value(published);
+        std::lock_guard<std::mutex> lock(g_native_knowledge_mutex);
+        const uint64_t epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        const auto draws = [&](const auto &batch) {
+            range(batch, [&](const auto &draw) {
+                // Retained viewport recovery compares document identities,
+                // including when two immutable documents have equal text.
+                pointer(draw.document.get());
+                knowledge_document(draw.document);
+                value(draw.line); value(draw.x); value(draw.y);
+                // Retained rows may name an older native buffer. Preserve
+                // that identity and its current ownership separately; an
+                // unrelated old buffer is valid dependency data, not a grid
+                // that this frame must expose to the UI reader.
+                value(draw.screen);
+                value(graphics_ && draw.screen == reinterpret_cast<uintptr_t>(graphics_->screen));
+                value(graphics_ && draw.screen == reinterpret_cast<uintptr_t>(graphics_->screen_top));
+                value(draw.dimx); value(draw.dimy);
+                for (auto item : draw.clip) value(item);
+            });
+        };
+        value(g_native_knowledge_draw_epoch == epoch); draws(g_native_knowledge_draws);
+        value(g_native_knowledge_previous_draw_epoch == epoch); draws(g_native_knowledge_previous_draws);
+    }
     void character_sources(const NativeCharacterCapturedText &input) {
         optional(input.quote, [&](const auto &quote) {
             value(quote.owner); grid(quote.grid); value(quote.dimx); value(quote.dimy);
@@ -713,11 +740,6 @@ static std::optional<std::string> native_main_ui_cache_context() {
     // current grid. Their complete rich semantic graphs have no comparator
     // here, so they keep the existing rendering path.
     {
-        std::lock_guard<std::mutex> lock(g_native_knowledge_mutex);
-        if (!g_native_knowledge_draws.empty() || !g_native_knowledge_previous_draws.empty())
-            return std::nullopt;
-    }
-    {
         std::lock_guard<std::mutex> lock(g_native_overview_quote_mutex);
         if (g_native_overview_quote_draw) return std::nullopt;
     }
@@ -729,6 +751,7 @@ static std::optional<std::string> native_main_ui_cache_context() {
     NativeUiCacheContextWriter key;
     if (!key.common()) return std::nullopt;
     key.graphics(native_graphics());
+    key.knowledge_sources();
     key.text("main"); key.current();
     if (!key.complete) return std::nullopt;
     key.other_sources();

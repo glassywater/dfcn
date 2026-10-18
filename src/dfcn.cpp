@@ -3556,7 +3556,19 @@ struct NativeKnowledgeFrame {
     uint64_t source_context = 0;
     uint64_t resource_revision = 0;
     bool reusable = false;
+    uint64_t content_revision = 0;
 };
+
+static std::atomic<uint64_t> g_native_knowledge_frame_revision{0};
+static uint64_t next_native_knowledge_frame_revision() noexcept {
+    auto current = g_native_knowledge_frame_revision.load(std::memory_order_relaxed);
+    for (;;) {
+        if (current == UINT64_MAX) return current;
+        const auto next = current + 1;
+        if (g_native_knowledge_frame_revision.compare_exchange_weak(current, next,
+                std::memory_order_relaxed, std::memory_order_relaxed)) return next;
+    }
+}
 
 static void clear_embark_craft_translation_cache();
 
@@ -3670,6 +3682,9 @@ public:
     }
     uint64_t native_identity_translation_catalog_generation() const noexcept {
         return identity_translation_catalog_generation_.load(std::memory_order_acquire);
+    }
+    uint64_t native_knowledge_frame_revision() const noexcept {
+        return native_knowledge_frame_.content_revision;
     }
     graphicst *bind_render_graphics(graphicst *graphics) noexcept {
         return std::exchange(gps_, graphics);
@@ -4487,7 +4502,7 @@ private:
     // The main UI owns one match/layout result from raster entry to Present.
     bool native_ui_input_read_ = false;
     bool native_ui_frame_ready_ = false;
-    std::shared_ptr<NativePreparedUiFrame> native_prepared_ui_frame_;
+    std::array<std::shared_ptr<NativePreparedUiFrame>, 2> native_prepared_ui_frame_;
     std::shared_ptr<NativeTooltipPage> native_ui_layout_page_;
     std::optional<NativeToolbarTooltip> native_ui_toolbar_tooltip_;
     bool fortress_map_frame_ = false;
@@ -7610,7 +7625,7 @@ void Overlay::reset_render_state() {
     destroy_textures();
     frame_prepared_ = false;
     native_ui_frame_ready_ = false;
-    native_prepared_ui_frame_.reset();
+    native_prepared_ui_frame_ = {};
     native_ui_layout_page_.reset();
     native_ui_toolbar_tooltip_.reset();
     fortress_map_frame_ = false;
@@ -17080,7 +17095,8 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
     }
     native_knowledge_frame_ = {draws.front().document, logical_hash,
         left, top, first_native_line, height, geometry, result,
-        layout.source_context, layout.resource_revision, layout.reusable};
+        layout.source_context, layout.resource_revision, layout.reusable,
+        next_native_knowledge_frame_revision()};
     return result;
 }
 
@@ -42928,9 +42944,15 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
         catch (...) { return std::nullopt; }
     };
     const auto cache_context = read_cache_context();
-    if (cache_context && native_prepared_ui_frame_ &&
-            native_prepared_ui_frame_->matches_source(*gps_, renderer, *cache_context)) {
-        const auto &cached = *native_prepared_ui_frame_;
+    const auto cached_frame = cache_context
+        ? std::find_if(native_prepared_ui_frame_.begin(), native_prepared_ui_frame_.end(),
+            [&](const auto &frame) {
+                return frame && frame->matches_source(*gps_, renderer, *cache_context);
+            })
+        : native_prepared_ui_frame_.end();
+    if (cached_frame != native_prepared_ui_frame_.end()) {
+        std::iter_swap(native_prepared_ui_frame_.begin(), cached_frame);
+        const auto &cached = *native_prepared_ui_frame_.front();
         // Restore the immutable prepared result, never last Present's edited
         // clear decisions, pixel readbacks or copy/suppression observations.
         prepared_matches_ = cached.matches;
@@ -42947,7 +42969,7 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
         native_frame_drawn_ = true;
         return true;
     }
-    native_prepared_ui_frame_.reset();
+    if (!cache_context) native_prepared_ui_frame_ = {};
     // Retained frames exclude overview documents in their semantic key.
     // Discover quote ownership only when this frame needs fresh matching.
     refresh_character_overview_context(true);
@@ -42980,8 +43002,8 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
                 return match.rule == -8 ||
                     (match.graphical_clear_width > 0 && match.graphical_clear_height > 0);
             });
-    // One content cache serves the shared input boundary. Ordinary stable
-    // pages keep their prepared translation/layout and masked native arrays;
+    // Keep both native buffer variants at this shared input boundary. Each
+    // retains its exact ownership context, translation/layout and source arrays;
     // dynamic ownership or pixel recovery continues through the full path.
     const bool retain_prepared = cache_context && native_ui_copy_passthrough_ &&
         cells <= 262144 && !native_ui_layout_page_ && !native_ui_toolbar_tooltip_ &&
@@ -42998,10 +43020,14 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
                 cached->capture_source(*gps_, renderer, *completed_context);
                 cached->capture_result(input, prepared_matches_, suppress_base_, suppress_top_,
                     main_menu_frame_, settings_video_frame_, fortress_map_frame_);
-                native_prepared_ui_frame_ = std::move(cached);
-            }
-        } catch (...) { /* Keep the normal current-frame rendering result. */ }
-    }
+                native_prepared_ui_frame_[1] = std::move(native_prepared_ui_frame_[0]);
+                native_prepared_ui_frame_[0] = std::move(cached);
+            } else native_prepared_ui_frame_ = {};
+        } catch (...) {
+            native_prepared_ui_frame_ = {};
+            // Keep the normal current-frame rendering result.
+        }
+    } else native_prepared_ui_frame_ = {};
     // Even a retained UI with no changed glyph copies is a new raster input.
     // Its masked bytes participate in the renderer's native dirty comparison.
     native_frame_drawn_ = true;
