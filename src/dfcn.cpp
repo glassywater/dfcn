@@ -2302,6 +2302,7 @@ static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_cap
     uintptr_t caller, uintptr_t source);
 static bool native_farm_name_caller(uintptr_t caller);
 static bool native_farm_crop_caller(uintptr_t caller);
+static int capture_native_uniform_member_right(uintptr_t caller, uintptr_t source, int x);
 
 static std::shared_ptr<const NativeHistoryName> capture_native_caravan_entity_name(
     uintptr_t caller, uintptr_t source);
@@ -2395,6 +2396,9 @@ struct NativeDrawnTextRow {
     std::optional<NativeWorkOrderShopCaption> work_order_shop_caption{};
     std::optional<NativeFortressZoneCaption> fortress_zone_caption{};
     std::optional<NativeWorkshopTaskCaption> workshop_task_caption{};
+    // The equipment roster reserves the columns after this edge for icons.
+    // Capture it while the name writer's native frame is still alive.
+    int uniform_member_right = -1;
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
@@ -2844,6 +2848,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.work_order_shop_caption = std::move(work_order_shop_caption);
         row.fortress_zone_caption = std::move(fortress_zone_caption);
         row.workshop_task_caption = std::move(workshop_task_caption);
+        row.uniform_member_right = capture_native_uniform_member_right(native_caller, address, x);
         if (row.workshop_task_caption) row.caption_source = true;
         row.sequence = ++g_native_drawn_text_sequence;
         row.editable_text = NativeEditableTextScope::active;

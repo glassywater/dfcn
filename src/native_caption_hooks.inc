@@ -696,6 +696,27 @@ static bool native_info_title_memory_readable(const void *pointer, size_t size) 
 #endif
 }
 
+static int capture_native_uniform_member_right(uintptr_t caller, uintptr_t source, int x) {
+#ifdef _WIN32
+    const uintptr_t base = native_history_profile_base();
+    if (!base || !caller || source < 0x474 ||
+            caller != native_reference_address(base, 0x457205) + 5) return -1;
+    // Both PE equipment renderers keep the name at rbp+0x3e8, with
+    // rbp=rsp+0x100. The row's right anchor is rsp+0x74 and its name X
+    // is rbp-0x10. The anchor already includes the scrollbar adjustment.
+    // Native resize at 0x4571a7 leaves one cell before the first equipment
+    // icon (anchor-0x40); short English names own the same full column.
+    int32_t anchor = 0, name_x = -1;
+    if (!native_history_copy(source - 0x474, anchor) ||
+            !native_history_copy(source - 0x3f8, name_x) || name_x != x ||
+            anchor <= 0x41 || anchor > 1000 || anchor - 0x41 <= x) return -1;
+    return anchor - 0x41;
+#else
+    (void)caller; (void)source; (void)x;
+    return -1;
+#endif
+}
+
 static NativeAdventureCraftingRole native_adventure_crafting_role(
         uintptr_t caller, uintptr_t source) {
     for (const auto &site : g_native_adventure_crafting_sites) {
