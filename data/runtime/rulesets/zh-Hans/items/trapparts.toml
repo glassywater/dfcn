@@ -14,3 +14,5 @@ optional = true
 name = "main"
 [rulesets.rules]
 "mechanisms" = "机件"
+# DFHack getReadableDescription uses the singular form for a single mechanism.
+"mechanism" = "机件"

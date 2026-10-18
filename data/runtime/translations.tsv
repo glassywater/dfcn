@@ -73165,6 +73165,7 @@ Build placement: Track/Ramp (N)	坡道轨道（北）	wi
 Build placement: Track/Ramp (S)	坡道轨道（南）	wi
 Build placement: Track/Ramp (W)	坡道轨道（西）	wi
 Build placement: {s}'s Workshop	{s}工坊	wtlx
+Building link installation: {s}	将安装在{s}处	l
 Can you tell me the way to {e}?	你能告诉我去{e1}的路吗？	hPtD
 Change dream/goal (if possible)	更改梦想/目标（如果可以）
 Change to standard gather mode.	切换到普通采集模式。	hj
@@ -80552,6 +80553,7 @@ Build placement: Track (NSE)	轨道（北南东）	wi
 Build placement: Track (NSW)	轨道（北南西）	wi
 Build placement: Track (SEW)	轨道（南东西）	wi
 Build placement: {s}'s Forge	{s}锻造工坊	wtlx
+Building link candidate: {s}	连接到{s}	l
 Camera controls ({d} of {d})	镜头控制 ({d} of {d})	wt
 Cancel this scheduled order.	取消此日程命令。	hj
 Certainly considered a bully	被肯定地看做是一名恶霸	w
@@ -82903,6 +82905,7 @@ Build placement: Track (NW)	轨道（北西）	wi
 Build placement: Track (SE)	轨道（南东）	wi
 Build placement: Track (SW)	轨道（南西）	wi
 Build placement: {s}'s Shop	{s}工坊	wtlx
+Building link rejected: {s}	无法连接到{s}	l
 Character overview: Healthy	健康	l
 Character overview: Musical	有乐感	l
 Character room grade: Study	书房	l
@@ -87452,6 +87455,7 @@ Book title subject: Wound	伤口	hi
 Bring up the death of {p}	谈起{p1}的死亡	hPt
 Broker requested at depot	请求交易员前往贸易站	wi
 Brook: The Vale of Dances	小溪: 舞蹈之谷	w
+Building link prompt: {s}	点击一个建筑，将其连接到{s}。	l
 Building toppled by ghost	建筑被幽灵推倒	w
 Cavern Layer Openness Max	洞穴层开阔度上限
 Cavern Layer Openness Min	洞穴层开阔度下限
@@ -144669,6 +144673,7 @@ many arms	许多触手	wi
 maple log	枫树原木	wi
 marcasite	白铁矿	wi
 mastering	达到精通水平	wi
+mechanism	机件	wi
 megalania	古巨蜥	wi
 megalodon	巨齿鲨	wi
 meganeura	巨脉蜻蜓	wi

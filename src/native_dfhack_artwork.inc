@@ -28,7 +28,7 @@ struct NativeDfhackNotificationText {
 };
 static std::vector<NativeDfhackNotificationText> native_dfhack_notification_texts(
     const graphicst *gps);
-enum class NativeDfhackOverlayTextRole : unsigned char { Text, Option, Key, Material, Category };
+enum class NativeDfhackOverlayTextRole : unsigned char { Text, Option, Key, Material, Category, Item };
 struct NativeDfhackOverlayText {
     int x = 0, y = 0, full_x = 0, visible_offset = 0;
     std::string full, visible;

@@ -1,0 +1,125 @@
+Native building-link dialog: original Windows PE source
+=====================================================
+
+This is binary source provenance, not a runtime observation or a test result.
+pe-reference-*.c and pe-classic-*.c are actual Ghidra 12.1.4 C output from the
+two images configured in data/runtime/native-pe-images.json. pe-functions.tsv
+retains image identities, SHA256, original source paths and native ranges.
+The actual source scripts are tools/extract_building_link_sources.py and
+tools/DecompileBuildingLink.java. Neither attaches to or operates the game.
+
+The original parent renderer begins at reference RVA 0x14ef90 and classic RVA
+0x14ef20. Its complete exception-unwind extent ends at 0x1a01c4 / 0x1a0154.
+The complete original executable parent, including other sheet states, remains
+in pe-*-building-sheet-renderer-owner.asm. Trailing native switch data is
+separated from executable instructions and retained in pe-switches.tsv.
+
+Actual focused C covers the real prologue and the complete linking subgraph:
+reference 0x14ef90..0x15126a, classic 0x14ef20..0x1511fa. The linking flag is
+this+0x1d41. The no-linking continuation and shared renderer epilogue are named
+external boundaries in the decompiler, rather than attributed to this modal.
+Ghidra's Windows alloca_probe call fixup handles the real MSVC stack probe.
+Native bytes are not changed. Source assembly, branches and conditions retain
+the original instructions independently of these decompiler flow annotations.
+
+Complete reachable text and no-text branches
+------------------------------------------
+
+1. Renderer suppression or linking flag false: this linking subgraph emits no
+   modal text and exits through the original parent continuation/epilogue.
+2. Source building ID this+0x1d44 no longer resolves: only the already prepared
+   modal frame remains; no prompt, candidate state or mechanism text is drawn.
+3. Source building resolves: emit 'Click a building to link to ' + its virtual
+   getName(+0x188) result + '.'. The complete assembled prompt is one draw.
+4. No usable hovered candidate: emit no target status. Native mouse guards,
+   coordinate conversion, UI visibility, stockpile/zone exclusions and actual
+   footprint/extents hit tests choose whether a candidate exists.
+5. Hovered candidate exists but is ineligible: emit 'Cannot link to ' + its
+   getName result. Eligible candidate: emit 'Link to ' + its getName result.
+   These alternatives share the same complete draw field.
+6. Source mechanism ID this+0x1d48 no longer resolves: reset it to -1 and draw
+   neither item description nor installation line. A resolving item draws its
+   complete item description, followed on the next row by TWO native draws:
+   'will be installed at ' and the source building getName result. Their split
+   is part of the original renderer and caused the screenshot's partial text.
+7. Target mechanism ID this+0x1d4c has the same missing-item behavior, resetting
+   to -1. A resolving item draws its complete description followed by the
+   single fixed text 'will be installed at target'.
+8. ASCII and graphics mode select different mechanism icon paths; the item
+   descriptions and installation texts above are shared. Icon absence does not
+   introduce an additional textual message. Frame tiles likewise add no text.
+
+pe-display-fields.tsv records all seven native text draw sites and both PE
+editions. The complete literal operands in this subgraph are 'Click a building
+to link to ', '.', 'Link to ', 'Cannot link to ', 'will be installed at ' and
+'will be installed at target'. pe-literals.tsv also retains all literals in
+the original parent and the dynamic suppliers; those other parent literals
+are not inferred to belong to the linking modal.
+
+Candidate eligibility branches
+------------------------------
+
+The actual native selector subtracts 8 from building_type, bounds it by 0x20,
+reads a byte-remap table and dispatches through an RVA table. pe-switches.tsv
+retains every one of its 33 selector aliases, including all default rejections.
+pe-candidate-types.tsv gives their upstream enum names and original targets.
+
+Accepted class arms are Door, Floodgate, Bridge, Trap, Support, Chain, Cage,
+Weapon, Hatch, GrateWall, GrateFloor, BarsVertical, BarsFloor and GearAssembly.
+The Trap arm further requires native trap subtype 5 (Track Stop). Every
+accepted arm requires stored build_stage at +0x120 to equal virtual
+getMaxBuildStage(+0x120), isForbidden(+0x258) to be false,
+isInvisibleToPlayer(+0x260) to be false, and the existing/pending-link helper
+to be false. Other class arms and out-of-range types remain rejected.
+
+candidate-existing-link-and-pending-job-conflict is actual PE source for the
+shared predicate, reference 0x5726f0..0x572852 (classic target recovered from
+the original caller, not an assumed edition delta). It returns true for:
+
+* An item in candidate.contained_items has a general_ref whose type is
+  BUILDING_TRIGGER (0x20) and whose building pointer is the source trigger.
+* A job in source.jobs is LinkBuildingToTrigger (0x92), and its first
+  BUILDING_TRIGGERTARGET (0x21) general_ref points at the candidate.
+
+Thus a completed linkage and an already queued linkage both select the same
+rejected text. The helper has no independent message literal.
+
+candidate-building-footprint-contains-point is the native recursive point
+predicate at reference 0x57b770; candidate-building-extents-contains-point is
+its actual direct extents supplier. Concrete implementations of the stage,
+forbidden, invisible, hidden and UI-visible methods are retained alongside all
+building names. Shared inherited methods are decompiled once, with every
+concrete vtable/slot alias retained in pe-virtual-suppliers.tsv. The default
+forbidden predicate reads the first contained item's forbid flag. Its empty
+container return arm is preserved even though it is frameless. The invisible
+predicate delegates to the first contained item's native invisibility and
+visibility/location producers, also retained as actual C. These predicates
+select the alternatives above and do not add another text vocabulary.
+
+Dynamic names and mechanism descriptions
+---------------------------------------
+
+All concrete building getName(+0x188) implementations found through actual
+complete-object RTTI are retained, with shared implementations deduplicated.
+They include authored building names returned verbatim and generated names:
+material/roughness/owner components, trap subtypes, workshop/furnace subtypes,
+and other fixed furniture/building captions. Their exact literal stores and
+switch aliases remain in pe-literals.tsv and pe-switches.tsv. The established
+complete building translation grammar is also recorded in the neighboring
+../map-hover-building-sources.tsv. Authored names are not a finite vocabulary.
+
+The renderer's complete mechanism item description producer is reference
+0xc65450 / classic 0xc62490. Its actual C and the consumed item_trappartsst
+virtual suppliers are retained here, including material/quality/wear and
+artifact/authored-name alternatives. The generic item name/material supplier
+called by virtual +0x5e8 is reference 0xa82c10 / classic 0xa7fc90. Its complete
+existing actual PE C is retained without duplication at:
+
+  ../announcement-combat-native/reference-a82c10.c
+  ../announcement-combat-native/classic-a7fc90.c
+
+The matching full item-description C also exists there as reference-c65450.c
+and classic-c62490.c. These are shared dynamic item grammar sources, not a
+list of two screenshot item names. Material raw names and authored artifact
+names remain dynamic inputs. A single fixed dictionary entry cannot cover
+their complete combinations.

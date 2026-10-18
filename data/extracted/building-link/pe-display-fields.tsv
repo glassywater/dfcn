@@ -1,0 +1,15 @@
+edition	draw_rva	return_rva	field	production
+reference	0x14f4cf	0x14f4d4	link-prompt	'Click a building to link to ' + building.getName() + '.'
+reference	0x1506b8	0x1506bd	target-building-state	('Link to ' or 'Cannot link to ') + hovered building.getName()
+reference	0x150bf0	0x150bf5	source-mechanism-caption	selected source mechanism item description; missing sentinel does not draw a caption
+reference	0x150c5b	0x150c60	source-mechanism-installation-prefix	'will be installed at '; separate draw followed by source building caption
+reference	0x150c84	0x150c89	source-mechanism-installation-building	source building.getName(); separate continuation draw
+reference	0x1511bc	0x1511c1	target-mechanism-caption	selected target mechanism item description; missing sentinel does not draw a caption
+reference	0x151227	0x15122c	target-mechanism-installation	'will be installed at target'
+classic	0x14f45f	0x14f464	link-prompt	'Click a building to link to ' + building.getName() + '.'
+classic	0x150648	0x15064d	target-building-state	('Link to ' or 'Cannot link to ') + hovered building.getName()
+classic	0x150b80	0x150b85	source-mechanism-caption	selected source mechanism item description; missing sentinel does not draw a caption
+classic	0x150beb	0x150bf0	source-mechanism-installation-prefix	'will be installed at '; separate draw followed by source building caption
+classic	0x150c14	0x150c19	source-mechanism-installation-building	source building.getName(); separate continuation draw
+classic	0x15114c	0x151151	target-mechanism-caption	selected target mechanism item description; missing sentinel does not draw a caption
+classic	0x1511b7	0x1511bc	target-mechanism-installation	'will be installed at target'

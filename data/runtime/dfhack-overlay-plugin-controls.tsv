@@ -704,3 +704,16 @@ DFHack GUI Buildingplan category: Yarn	纱线	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/planneroverlay.lua:1035-1044 [PlannerOverlay favorites]
 DFHack GUI Overlay control: set/apply selected||I|0|-1|1	保存／应用所选收藏|	l
 DFHack GUI Overlay control: |Shift+click to edit the label of a favorite|I|0|-1|0	|Shift+单击可修改收藏名称	l
+
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/buildingplan/mechanisms.lua:24-89
+# Plate/Lever and Target safety choices retain their independent key/value tokens above.
+DFHack GUI Overlay control: |Mechanism safety:|I|0|-1|0	|机件耐热性：	l
+# Source: itemselection.lua:24-31, reached by both mechanism HotkeyLabels.
+# A missing item formats the lower-case Any/Fire/Magma option into this whole message.
+DFHack GUI Buildingplan mechanism: No any safe mechanisms available	没有可用机件	l
+DFHack GUI Buildingplan mechanism: No fire safe mechanisms available	没有可用的防火机件	l
+DFHack GUI Buildingplan mechanism: No magma safe mechanisms available	没有可用的岩浆安全机件	l
+# Source: mechanisms.lua:181-185 -> itemselection.lua:103-104 [ItemSelection header].
+DFHack GUI Overlay control: |Any mechanism|I|0|-1|0	|任意机件	l
+DFHack GUI Overlay control: |Fire safe mechanism|I|0|-1|0	|防火机件	l
+DFHack GUI Overlay control: |Magma safe mechanism|I|0|-1|0	|岩浆安全机件	l

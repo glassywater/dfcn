@@ -12629,3 +12629,10 @@ This event occurred on the {d}st in the year {d}.	第{d2}年某月{d1}日发生�
 This event occurred on the {d}nd in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
 This event occurred on the {d}rd in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
 This event occurred on the {d}th in the year {d}.	第{d2}年某月{d1}日发生了这件事。	wtl
+
+# Complete building-link fields, bound to their native addst producers.
+# The installation prefix and the building caption are separate native draws.
+Building link prompt: {s}	点击一个建筑，将其连接到{s}。	l
+Building link candidate: {s}	连接到{s}	l
+Building link rejected: {s}	无法连接到{s}	l
+Building link installation: {s}	将安装在{s}处	l

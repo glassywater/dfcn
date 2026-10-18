@@ -31,7 +31,6 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
         std::vector<Match> &result, int only_y,
         const unsigned char *screen_override) const {
     const auto &prefixes = ui_message_split_prefixes_;
-    if (prefixes.empty()) return;
     for (bool top_layer : {false, true}) {
         const auto *layer = top_layer ? gps_->screen_top : gps_->screen;
         if (!layer || (screen_override && screen_override != layer)) continue;
@@ -76,6 +75,111 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
             }
             return colors;
         };
+        // The link modal's building names come from building::getName, not
+        // from free-form UI capture slots. Its source installation sentence
+        // uses two adjacent addst calls; own them together before individual
+        // material/building words can acquire separate English-width layouts.
+        // Both PE editions and the ELF retain these exact producer boundaries.
+        const uintptr_t link_base = native_history_profile_base();
+#ifdef _WIN32
+        const uintptr_t link_prompt = native_pe_address(link_base, 0x14f4d4);
+        const uintptr_t link_candidate = native_pe_address(link_base, 0x1506bd);
+        const uintptr_t link_source_item = native_pe_address(link_base, 0x150bf5);
+        const uintptr_t link_source_prefix = native_pe_address(link_base, 0x150c60);
+        const uintptr_t link_source_name = native_pe_address(link_base, 0x150c89);
+        const uintptr_t link_target_item = native_pe_address(link_base, 0x1511c1);
+        const uintptr_t link_target_install = native_pe_address(link_base, 0x15122c);
+#else
+        const uintptr_t link_prompt = native_reference_address(link_base, 0x13c8a25);
+        const uintptr_t link_candidate = native_reference_address(link_base, 0x13ce851);
+        const uintptr_t link_source_item = native_reference_address(link_base, 0x13c94a8);
+        const uintptr_t link_source_prefix = native_reference_address(link_base, 0x13c952b);
+        const uintptr_t link_source_name = native_reference_address(link_base, 0x13c955e);
+        const uintptr_t link_target_item = native_reference_address(link_base, 0x13c92ea);
+        const uintptr_t link_target_install = native_reference_address(link_base, 0x13c937a);
+#endif
+        const auto link_template = [&](std::string_view key, std::string_view caption)
+                -> std::optional<std::string> {
+            auto target = exact_literal_translation(key);
+            if (!target) return std::nullopt;
+            const size_t slot = target->find("{s}");
+            if (slot == std::string::npos || target->find("{s}", slot + 3) != std::string::npos)
+                return std::nullopt;
+            target->replace(slot, 3, caption);
+            return target;
+        };
+        const auto link_building = [&](std::string_view source) {
+            // An unknown name remains this producer's complete building
+            // caption. It must never become a generated personal name.
+            if (auto target = translate_info_panel_title(NativeInfoTitleKind::Building, source))
+                return *target;
+            return native_text_to_utf8(source);
+        };
+        for (const auto &draw : draws) {
+            if (!link_base || !draw.native_caller) continue;
+            const bool item = draw.native_caller == link_source_item ||
+                draw.native_caller == link_target_item;
+            if (!item && draw.native_caller != link_prompt &&
+                    draw.native_caller != link_candidate &&
+                    draw.native_caller != link_source_prefix &&
+                    draw.native_caller != link_target_install) continue;
+            auto row = current_draw(draw);
+            if (!row) continue;
+            const std::string_view source = draw.complete_source.empty()
+                ? std::string_view(draw.source) : std::string_view(draw.complete_source);
+            std::optional<std::string> target;
+            std::optional<TranslationResult> item_translation;
+            if (item) {
+                item_translation = translate_fortress_item_caption_display(source);
+                if (item_translation->usable()) target = item_translation->target;
+            } else if (draw.native_caller == link_source_prefix) {
+                if (source != "will be installed at ") continue;
+                const auto name = positions.find({draw.x + static_cast<int>(draw.source.size()), draw.y});
+                if (name == positions.end() || name->second->native_caller != link_source_name)
+                    continue;
+                const auto caption = current_draw(*name->second);
+                if (!caption) continue;
+                const auto &complete = name->second->complete_source;
+                target = link_template("Building link installation: {s}", link_building(
+                    complete.empty() ? std::string_view(name->second->source) : std::string_view(complete)));
+                row->length = caption->x + caption->length - row->x;
+                row->source = screen_rows[row->y].substr(row->x, row->length);
+            } else if (draw.native_caller == link_target_install) {
+                if (source != "will be installed at target") continue;
+                target = exact_literal_translation("will be installed at target");
+            } else {
+                std::string_view prefix, suffix, key;
+                if (draw.native_caller == link_prompt) {
+                    prefix = "Click a building to link to ";
+                    suffix = ".";
+                    key = "Building link prompt: {s}";
+                } else if (source.starts_with("Cannot link to ")) {
+                    prefix = "Cannot link to ";
+                    key = "Building link rejected: {s}";
+                } else {
+                    prefix = "Link to ";
+                    key = "Building link candidate: {s}";
+                }
+                if (!source.starts_with(prefix) || !source.ends_with(suffix) ||
+                        source.size() <= prefix.size() + suffix.size()) continue;
+                target = link_template(key, link_building(source.substr(prefix.size(),
+                    source.size() - prefix.size() - suffix.size())));
+            }
+            if (!target || target->empty()) continue;
+            const int source_right = row->x + row->length;
+            int right = source_right;
+            const NativePanelBorders borders(*gps_);
+            if (const auto panel = native_building_record_panel(borders, *gps_,
+                    SDL_Rect{row->x, row->y, row->length, 1}))
+                right = std::max(right, panel->x + panel->w - (row->x - panel->x));
+            std::vector<uint32_t> codepoints;
+            if (!decode_utf8(*target, codepoints)) continue;
+            std::vector<int> colors(codepoints.size(), foregrounds(*row).front());
+            const size_t first_match = result.size();
+            if (append_bounded_paragraph({*row}, *target, screen_rows, result, only_y,
+                    right, right, colors, false, row->x) && item_translation)
+                attach_item_display_result(result, first_match, *item_translation);
+        }
         const auto append_workshop_record = [&](std::vector<Match> rows,
                 const NativeDrawnTextRow &person, int index, int left) {
             const Rule &rule = rules_[static_cast<size_t>(index)];
