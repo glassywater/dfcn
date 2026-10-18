@@ -1,0 +1,1409 @@
+edition	image	role	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f015	rip-relative	0x16df4e4	finite-text-operand-or-substring	 was a
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f035	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f121	rip-relative	0x16df530	finite-text-operand-or-substring	 was a 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f164	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f18d	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f1b2	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f207	rip-relative	0x164a6a4	finite-text-operand-or-substring	This
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f217	rip-relative	0x16df518	finite-text-operand-or-substring	 was a legendary 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f24d	rip-relative	0x16af42c	finite-text-operand-or-substring	.[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f2c8	rip-relative	0x16df558	finite-text-operand-or-substring	 could be found within 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f2fb	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f359	rip-relative	0x16df558	finite-text-operand-or-substring	 could be found within 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f38c	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f3d7	rip-relative	0x16df538	finite-text-operand-or-substring	 were a population within 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f40a	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f436	rip-relative	0x16df4d0	finite-text-operand-or-substring	 civilization of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f448	rip-relative	0x16df508	finite-text-operand-or-substring	 religion of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f45a	rip-relative	0x16df4f0	finite-text-operand-or-substring	 bandit gang from 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f470	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f480	rip-relative	0x15ec9f0	finite-text-operand-or-substring	mercenary
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f48e	rip-relative	0x16df4a8	finite-text-operand-or-substring	versatile mercenary
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f497	rip-relative	0x16df490	finite-text-operand-or-substring	shadowy military
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f4b2	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f4d9	rip-relative	0x15eddcc	finite-text-operand-or-substring	order
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f4e5	rip-relative	0x16df4c8	finite-text-operand-or-substring	company
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f4ec	rip-relative	0x16df4bc	finite-text-operand-or-substring	band
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f509	rip-relative	0x16df448	finite-text-operand-or-substring	 performance troupe from 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f51b	rip-relative	0x16df428	finite-text-operand-or-substring	 collection of outcasts from 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f52d	rip-relative	0x16df478	finite-text-operand-or-substring	 merchant company from 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f543	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f5b4	rip-relative	0x160028c	finite-text-operand-or-substring	craft
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f5c4	rip-relative	0x1600284	finite-text-operand-or-substring	 guild
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f5d4	rip-relative	0x15ed97c	finite-text-operand-or-substring	 from 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f657	rip-relative	0x16df468	finite-text-operand-or-substring	 group from 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f732	rip-relative	0x16df3d8	finite-text-operand-or-substring	 linked to 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f774	rip-relative	0x16df3c0	finite-text-operand-or-substring	 devoted to worship
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f782	rip-relative	0x16df408	finite-text-operand-or-substring	 devoted to the worship of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f813	rip-relative	0x15ee880	finite-text-operand-or-substring	 and
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f823	rip-relative	0x16df398	finite-text-operand-or-substring	 known for 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f82a	rip-relative	0x16df3e8	finite-text-operand-or-substring	 dedicated to the mastery of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f87d	rip-relative	0x16df328	finite-text-operand-or-substring	kicking
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f892	rip-relative	0x16df3a8	finite-text-operand-or-substring	striking
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f8a7	rip-relative	0x16df3b4	finite-text-operand-or-substring	biting
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f8bc	rip-relative	0x16df388	finite-text-operand-or-substring	wrestling
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f8da	rip-relative	0x16df318	finite-text-operand-or-substring	their use of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f930	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f965	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f989	rip-relative	0x162853c	finite-text-operand-or-substring	, and 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f992	rip-relative	0x15e9110	separator	 and 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8f9f6	rip-relative	0x16df358	finite-text-operand-or-substring	 centered around the worship of various beings
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fa25	rip-relative	0x16df330	finite-text-operand-or-substring	 centered around the worship of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fa77	rip-relative	0x15fd470	finite-text-operand-or-substring	, a 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8faad	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fac6	rip-relative	0x1662440	finite-text-operand-or-substring	goddess
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8facf	rip-relative	0x1661fa0	finite-text-operand-or-substring	god
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fad6	rip-relative	0x1661fa4	finite-text-operand-or-substring	deity
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fb18	rip-relative	0x15eb518	finite-text-operand-or-substring	 of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fb81	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fbb9	rip-relative	0x16df2e8	finite-text-operand-or-substring	, a force
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fbe4	rip-relative	0x1661fc0	finite-text-operand-or-substring	 which permeates 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fbeb	rip-relative	0x16df2c8	finite-text-operand-or-substring	 which was said to permeate 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fc39	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fc60	rip-relative	0x15e9110	separator	 and 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fcc5	rip-relative	0x1646cb0	finite-text-operand-or-substring	 was 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fcf1	rip-relative	0x15ecfb4	finite-text-operand-or-substring	 in 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fd15	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fd3a	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb8fee2	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9007e	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90271	rip-relative	0x15fe078	finite-text-operand-or-substring	In 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90292	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb902d1	rip-relative	0x16df308	finite-text-operand-or-substring	 was hired 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb902f5	rip-relative	0x16df290	finite-text-operand-or-substring	as part of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9031b	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9032b	rip-relative	0x16df280	finite-text-operand-or-substring	to fight in 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90334	rip-relative	0x16df2f8	finite-text-operand-or-substring	as a scout
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9034b	rip-relative	0x15ed97c	finite-text-operand-or-substring	 from 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90371	rip-relative	0x1628974	finite-text-operand-or-substring	 for 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9037a	rip-relative	0x16df2b8	finite-text-operand-or-substring	 fought in 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb903ca	rip-relative	0x16df258	finite-text-operand-or-substring	 in defense of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb903d3	rip-relative	0x16df2a0	finite-text-operand-or-substring	, an assault on 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90407	rip-relative	0x15ecfb4	finite-text-operand-or-substring	 in 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9043b	rip-relative	0x15ecfb4	finite-text-operand-or-substring	 in 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90463	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90473	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9050d	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90693	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb907f2	rip-relative	0x16df228	finite-text-operand-or-substring	[C:3:0:1]Related Historical Figures[C:7:0:0][B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90872	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb908bd	rip-relative	0x16465b0	finite-text-operand-or-substring	parent
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb908ce	rip-relative	0x1646634	finite-text-operand-or-substring	mother
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb908e9	rip-relative	0x16465b0	finite-text-operand-or-substring	parent
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb908fa	rip-relative	0x16465a8	finite-text-operand-or-substring	father
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90917	rip-relative	0x1646574	finite-text-operand-or-substring	spouse
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9092c	rip-relative	0x164657c	finite-text-operand-or-substring	wife
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9093d	rip-relative	0x1646588	finite-text-operand-or-substring	husband
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90a0b	rip-relative	0x1646ac0	finite-text-operand-or-substring	child
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90a2c	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90a48	rip-relative	0x16df130	finite-text-operand-or-substring	b. 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90a6d	rip-relative	0x15fcfe8	separator	  
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90a89	rip-relative	0x16df170	finite-text-operand-or-substring	d. 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90aab	rip-relative	0x163fca4	finite-text-operand-or-substring	[R]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90aff	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90b8c	rip-relative	0x16df148	finite-text-operand-or-substring	[C:1:0:1]Related Entities[C:7:0:0][B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90bbc	rip-relative	0x1615540	separator	 (
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90c02	rip-relative	0x16df270	finite-text-operand-or-substring	object of 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90c27	rip-relative	0x16df268	finite-text-operand-or-substring	ardent 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90c36	rip-relative	0x16df200	finite-text-operand-or-substring	faithful 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90c52	rip-relative	0x16df1f8	finite-text-operand-or-substring	casual 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90c5b	rip-relative	0x16df218	finite-text-operand-or-substring	dubious 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90c71	rip-relative	0x16df210	finite-text-operand-or-substring	worship
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90c8c	rip-relative	0x16df1c4	finite-text-operand-or-substring	lover
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90ca7	rip-relative	0x15eca30	finite-text-operand-or-substring	prisoner
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90cc2	rip-relative	0x16df1b8	finite-text-operand-or-substring	imprisoner
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90cdd	rip-relative	0x165fbb8	finite-text-operand-or-substring	master
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90cf8	rip-relative	0x16df1e8	finite-text-operand-or-substring	apprenticeship
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90d13	rip-relative	0x16df1d0	finite-text-operand-or-substring	traveling companion
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90d2e	rip-relative	0x16df190	finite-text-operand-or-substring	former master
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90d49	rip-relative	0x16df178	finite-text-operand-or-substring	former apprentice
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90d64	rip-relative	0x16df1b0	finite-text-operand-or-substring	owner
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90d7f	rip-relative	0x16df1a0	finite-text-operand-or-substring	former spouse
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90d9a	rip-relative	0x16df138	finite-text-operand-or-substring	deceased spouse
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90fc4	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90fdb	rip-relative	0x164b74c	finite-text-operand-or-substring	-
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb90fe8	rip-relative	0x16dfa68	finite-text-operand-or-substring	 until 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9118a	rip-relative	0x15ec9f0	finite-text-operand-or-substring	mercenary
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb911a5	rip-relative	0x16dfa90	finite-text-operand-or-substring	former mercenary
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb911c0	rip-relative	0x1675fb0	finite-text-operand-or-substring	enemy
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb911db	rip-relative	0x1673f48	finite-text-operand-or-substring	criminal
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb911f6	rip-relative	0x15ec9e4	finite-text-operand-or-substring	member
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91211	rip-relative	0x16dfa80	finite-text-operand-or-substring	former member
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9122c	rip-relative	0x15eca28	finite-text-operand-or-substring	slave
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91247	rip-relative	0x16dfa40	finite-text-operand-or-substring	former slave
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91262	rip-relative	0x15eca30	finite-text-operand-or-substring	prisoner
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9127d	rip-relative	0x16dfa30	finite-text-operand-or-substring	former prisoner
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91298	rip-relative	0x16dfa60	finite-text-operand-or-substring	worker
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb912b3	rip-relative	0x16dfa50	finite-text-operand-or-substring	former worker
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9135b	rip-relative	0x16df9e0	finite-text-operand-or-substring	claim to 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb913b6	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb913d1	rip-relative	0x16dfa70	finite-text-operand-or-substring	 to present
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb913e7	rip-relative	0x16df9d4	finite-text-operand-or-substring	)[R]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb915b5	rip-relative	0x16df148	finite-text-operand-or-substring	[C:1:0:1]Related Entities[C:7:0:0][B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb915e5	rip-relative	0x1615540	separator	 (
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91676	rip-relative	0x16df9d4	finite-text-operand-or-substring	)[R]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91858	rip-relative	0x16df148	finite-text-operand-or-substring	[C:1:0:1]Related Entities[C:7:0:0][B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91896	rip-relative	0x16dfa10	finite-text-operand-or-substring	 (associated civilization)[R]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb918bb	rip-relative	0x16df9f0	finite-text-operand-or-substring	 (militant worshippers)[R]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb918da	rip-relative	0x16df998	finite-text-operand-or-substring	 (religious worshippers)[R]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91984	rip-relative	0x16df148	finite-text-operand-or-substring	[C:1:0:1]Related Entities[C:7:0:0][B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb919b0	rip-relative	0x1615540	separator	 (
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb919ed	rip-relative	0x15eb548	finite-text-operand-or-substring	legendary hero
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91a04	rip-relative	0x15eb520	finite-text-operand-or-substring	famous hero
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91a1b	rip-relative	0x15eb52c	finite-text-operand-or-substring	hero
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91a36	rip-relative	0x15eb590	finite-text-operand-or-substring	greatly respected for heroic acts
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91a48	rip-relative	0x15eb5b8	finite-text-operand-or-substring	respected for heroic acts
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91a5f	rip-relative	0x15eb5f8	finite-text-operand-or-substring	legendary brawler
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91a76	rip-relative	0x15eb660	finite-text-operand-or-substring	famous brawler
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91a87	rip-relative	0x15eb670	finite-text-operand-or-substring	noted brawler
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91aa2	rip-relative	0x15eb640	finite-text-operand-or-substring	known brawler
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91ab4	rip-relative	0x15eb650	finite-text-operand-or-substring	rumored brawler
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91acb	rip-relative	0x15ec0c0	finite-text-operand-or-substring	legendary intruder
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91ae2	rip-relative	0x15ec0d8	finite-text-operand-or-substring	infamous intruder
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91af9	rip-relative	0x15ec160	finite-text-operand-or-substring	noted intruder
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91b14	rip-relative	0x15ec170	finite-text-operand-or-substring	known intruder
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91b26	rip-relative	0x15ec130	finite-text-operand-or-substring	rumored intruder
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91b3d	rip-relative	0x15ebb78	finite-text-operand-or-substring	legendary monster
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91b54	rip-relative	0x15ebb38	finite-text-operand-or-substring	infamous monster
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91b65	rip-relative	0x15ebb50	finite-text-operand-or-substring	noted monster
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91b80	rip-relative	0x15ebbc0	finite-text-operand-or-substring	known monster
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91b92	rip-relative	0x15ebbd0	finite-text-operand-or-substring	rumored monster
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91ba9	rip-relative	0x15eba58	finite-text-operand-or-substring	legendary brigand
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91bc0	rip-relative	0x15ebab0	finite-text-operand-or-substring	infamous brigand
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91bd1	rip-relative	0x15ebac8	finite-text-operand-or-substring	noted brigand
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91bec	rip-relative	0x15eba90	finite-text-operand-or-substring	known brigand
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91bfe	rip-relative	0x15ebaa0	finite-text-operand-or-substring	rumored brigand
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91c15	rip-relative	0x15eba08	finite-text-operand-or-substring	legendary bully
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91c2c	rip-relative	0x15eba18	finite-text-operand-or-substring	infamous bully
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91c43	rip-relative	0x15eba70	finite-text-operand-or-substring	noted bully
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91c5e	rip-relative	0x15eba80	finite-text-operand-or-substring	known bully
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91c70	rip-relative	0x15eba48	finite-text-operand-or-substring	rumored bully
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91c87	rip-relative	0x15eb6a0	finite-text-operand-or-substring	legendary villain
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91c9e	rip-relative	0x15eb6b8	finite-text-operand-or-substring	infamous villain
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91caf	rip-relative	0x15eb680	finite-text-operand-or-substring	noted villain
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91cca	rip-relative	0x15eb690	finite-text-operand-or-substring	known villain
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91cdc	rip-relative	0x15eb700	finite-text-operand-or-substring	rumored villain
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91cf3	rip-relative	0x15ebe10	finite-text-operand-or-substring	legendary hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91d0a	rip-relative	0x15ebe28	finite-text-operand-or-substring	great hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91d21	rip-relative	0x15ebdf0	finite-text-operand-or-substring	talented hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91d3c	rip-relative	0x15ebe00	finite-text-operand-or-substring	skilled hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91d48	rip-relative	0x15ebe78	finite-text-operand-or-substring	rumored hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91d5f	rip-relative	0x15eb788	finite-text-operand-or-substring	legendary killer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91d76	rip-relative	0x15eb7d8	finite-text-operand-or-substring	infamous killer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91d8d	rip-relative	0x15eb7e8	finite-text-operand-or-substring	noted killer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91da8	rip-relative	0x15eb7b8	finite-text-operand-or-substring	known killer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91dba	rip-relative	0x15eb7c8	finite-text-operand-or-substring	rumored killer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91dd1	rip-relative	0x15eb818	finite-text-operand-or-substring	legendary murderer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91de8	rip-relative	0x15eb830	finite-text-operand-or-substring	infamous murderer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91dff	rip-relative	0x15eb7f8	finite-text-operand-or-substring	noted murderer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91e1a	rip-relative	0x15eb808	finite-text-operand-or-substring	known murderer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91e2c	rip-relative	0x15eb868	finite-text-operand-or-substring	rumored murderer
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91e43	rip-relative	0x15eb988	finite-text-operand-or-substring	legendary enemy fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91e5a	rip-relative	0x15eb9a0	finite-text-operand-or-substring	infamous enemy fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91e71	rip-relative	0x15eb958	finite-text-operand-or-substring	noted enemy fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91e8c	rip-relative	0x15eb970	finite-text-operand-or-substring	known enemy fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91e9e	rip-relative	0x15eb9d8	finite-text-operand-or-substring	rumored enemy fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91eb5	rip-relative	0x15ebb08	finite-text-operand-or-substring	legendary loyal soldier
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91ecc	rip-relative	0x15ebb20	finite-text-operand-or-substring	famous loyal soldier
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91ee3	rip-relative	0x15ebad8	finite-text-operand-or-substring	noted loyal soldier
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91efe	rip-relative	0x15ebaf0	finite-text-operand-or-substring	known loyal soldier
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91f10	rip-relative	0x15ebb60	finite-text-operand-or-substring	rumored loyal soldier
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91f27	rip-relative	0x15eb9f0	finite-text-operand-or-substring	legendary fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91f3e	rip-relative	0x15eb9b8	finite-text-operand-or-substring	famous fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91f4f	rip-relative	0x15eb9c8	finite-text-operand-or-substring	noted fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91f6a	rip-relative	0x15eba28	finite-text-operand-or-substring	known fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91f7c	rip-relative	0x15eba38	finite-text-operand-or-substring	rumored fighter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91f93	rip-relative	0x15ebe88	finite-text-operand-or-substring	legendary protector of the weak
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91faa	rip-relative	0x15ebe38	finite-text-operand-or-substring	famous protector of the weak
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91fc1	rip-relative	0x15ebe58	finite-text-operand-or-substring	noted protector of the weak
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91fdc	rip-relative	0x15ebee0	finite-text-operand-or-substring	known protector of the weak
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb91fee	rip-relative	0x15ebf00	finite-text-operand-or-substring	rumored protector of the weak
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92005	rip-relative	0x15ec098	finite-text-operand-or-substring	legendary preserver of knowledge
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9201c	rip-relative	0x15ec038	finite-text-operand-or-substring	famous preserver of knowledge
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92033	rip-relative	0x15ec058	finite-text-operand-or-substring	noted preserver of knowledge
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9204e	rip-relative	0x15ec0f0	finite-text-operand-or-substring	known preserver of knowledge
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92060	rip-relative	0x15ec110	finite-text-operand-or-substring	rumored preserver of knowledge
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92077	rip-relative	0x15ebea8	finite-text-operand-or-substring	legendary treasure hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9208e	rip-relative	0x15ebec8	finite-text-operand-or-substring	famous treasure hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb920a5	rip-relative	0x15ebf48	finite-text-operand-or-substring	noted treasure hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb920c0	rip-relative	0x15ebf60	finite-text-operand-or-substring	known treasure hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb920cf	rip-relative	0x15ebf20	finite-text-operand-or-substring	rumored treasure hunter
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb920e3	rip-relative	0x15ebf38	finite-text-operand-or-substring	legendary thief
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb920f7	rip-relative	0x15ebf98	finite-text-operand-or-substring	infamous thief
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9210b	rip-relative	0x15ebfa8	finite-text-operand-or-substring	noted thief
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9211f	rip-relative	0x15ebf78	finite-text-operand-or-substring	known thief
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92128	rip-relative	0x15ebf88	finite-text-operand-or-substring	rumored thief
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92144	rip-relative	0x16df9d4	finite-text-operand-or-substring	)[R]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92185	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9223e	rip-relative	0x16df970	finite-text-operand-or-substring	[C:6:0:1]Related Sites[C:7:0:0][B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb9226f	rip-relative	0x1615540	separator	 (
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb922b1	rip-relative	0x16df9c8	finite-text-operand-or-substring	site occ
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb922c0	rip-relative	0x16df9b8	finite-text-operand-or-substring	seat of power
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb922cf	rip-relative	0x16df938	finite-text-operand-or-substring	hangout
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb922de	rip-relative	0x1674758	finite-text-operand-or-substring	home
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb922ed	rip-relative	0x16761e0	finite-text-operand-or-substring	lair
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb922fc	rip-relative	0x16df930	finite-text-operand-or-substring	prison
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92312	rip-relative	0x16df9d4	finite-text-operand-or-substring	)[R]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92355	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	history-describe-complete	0xb8eeb0	0xb92389	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870481	inline-immediate-fragment		finite-short-string-fragment	Done
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870530	rip-relative	0x178b3b0	numeric-string-layout-vector	)
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870540	rip-relative	0x16b3148	finite-text-operand-or-substring	Choose a poetic form for the composition.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87054a	rip-relative	0x16b3158	finite-text-operand-or-substring	form for the composition.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870555	rip-relative	0x16b3168	finite-text-operand-or-substring	position.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870562	rip-relative	0x16b3170	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8705bd	rip-relative	0x178b3c0	numeric-string-layout-vector	*
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8705cd	rip-relative	0x16b31b8	finite-text-operand-or-substring	Choose a musical form for the composition.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8705d7	rip-relative	0x16b31c8	finite-text-operand-or-substring	 form for the composition.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8705e2	rip-relative	0x16b31d8	finite-text-operand-or-substring	mposition.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8705ef	rip-relative	0x16b31e0	finite-text-operand-or-substring	n.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87064b	rip-relative	0x178b3b0	numeric-string-layout-vector	)
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87065b	rip-relative	0x16b3188	finite-text-operand-or-substring	Choose a dance form for the choreography.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870665	rip-relative	0x16b3198	finite-text-operand-or-substring	orm for the choreography.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870670	rip-relative	0x16b31a8	finite-text-operand-or-substring	eography.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87067d	rip-relative	0x16b31b0	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8706fb	rip-relative	0x16b30a0	finite-text-operand-or-substring	Select memorized content or a form of prose.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870729	rip-relative	0x16b30a0	finite-text-operand-or-substring	Select memorized content or a form of prose.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870752	rip-relative	0x16b3080	finite-text-operand-or-substring	What would you like to do?
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870ae6	rip-relative	0x16b3110	finite-text-operand-or-substring	You don't believe anything relevant, unfortunately.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870b28	rip-relative	0x16b30d0	finite-text-operand-or-substring	Assume an appropriate identity first if you'd like to pretend.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870b88	rip-relative	0x178b4b0	numeric-string-layout-vector	;
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870b98	rip-relative	0x16b3248	finite-text-operand-or-substring	You don't know anything specific about this, unfortunately.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870ba2	rip-relative	0x16b3258	finite-text-operand-or-substring	nything specific about this, unfortunately.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870bad	rip-relative	0x16b3268	finite-text-operand-or-substring	 about this, unfortunately.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870bb8	rip-relative	0x16b3278	finite-text-operand-or-substring	ortunately.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870bc5	rip-relative	0x16b3280	finite-text-operand-or-substring	ly.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870bd0	rip-relative	0x16b3282	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870c51	rip-relative	0x16b3200	finite-text-operand-or-substring	You must compose a piece first (or learn an improvisational form).
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870e4e	rip-relative	0x15ec860	finite-text-operand-or-substring	...
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870e8a	rip-relative	0x15ec82c	finite-text-operand-or-substring	_
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870f80	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x870f90	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87109f	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8710af	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8711f6	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871206	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87134f	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87135f	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8714a8	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8714b8	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871626	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871636	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871754	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87186f	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871893	rip-relative	0x161b6c8	finite-text-operand-or-substring	 is an example of 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8718f2	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87191e	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871942	rip-relative	0x161b6dc	finite-text-operand-or-substring	poetry
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871955	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871a77	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871a87	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871b9f	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871bd7	rip-relative	0x161b6c8	finite-text-operand-or-substring	 is an example of 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871c36	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871c62	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871c86	rip-relative	0x1602ef0	finite-text-operand-or-substring	musical composition
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871c99	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871d70	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x871e6d	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87201c	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87202c	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87206e	rip-relative	0x161b6c8	finite-text-operand-or-substring	 is an example of 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8720e8	rip-relative	0x1602ee0	finite-text-operand-or-substring	choreography
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8720fe	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872132	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8721c4	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8721d4	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872285	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872295	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87230c	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87231c	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8723cd	rip-relative	0x1602558	finite-text-operand-or-substring	[C:6:0:1]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8723dd	rip-relative	0x1602560	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87241c	rip-relative	0x15f71e4	finite-text-operand-or-substring	 is 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87244c	rip-relative	0x1602db8	finite-text-operand-or-substring	an
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872455	rip-relative	0x1602db4	finite-text-operand-or-substring	a
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87245e	rip-relative	0x1602da0	finite-text-operand-or-substring	This is an untitled
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872477	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8724a3	rip-relative	0x1602d94	finite-text-operand-or-substring	manual
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8724af	rip-relative	0x1602d8c	finite-text-operand-or-substring	guide
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8724bb	rip-relative	0x1602d80	finite-text-operand-or-substring	chronicle
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8724c7	rip-relative	0x1602d70	finite-text-operand-or-substring	short story
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8724d3	rip-relative	0x1602d64	finite-text-operand-or-substring	novel
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8724df	rip-relative	0x1602d58	finite-text-operand-or-substring	biography
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8724eb	rip-relative	0x1602d48	finite-text-operand-or-substring	autobiography
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8724f7	rip-relative	0x1602d3c	finite-text-operand-or-substring	poem
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872503	rip-relative	0x1602d34	finite-text-operand-or-substring	play
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87250f	rip-relative	0x1602d2c	finite-text-operand-or-substring	letter
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87251b	rip-relative	0x1602d24	finite-text-operand-or-substring	essay
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872527	rip-relative	0x1602d1c	finite-text-operand-or-substring	dialog
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872530	rip-relative	0x1602ef0	finite-text-operand-or-substring	musical composition
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872539	rip-relative	0x1602ee0	finite-text-operand-or-substring	choreography
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872542	rip-relative	0x1602ec8	finite-text-operand-or-substring	comparative biography
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87254b	rip-relative	0x1602eb0	finite-text-operand-or-substring	biographical dictionary
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872554	rip-relative	0x1602ea0	finite-text-operand-or-substring	genealogy
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87255d	rip-relative	0x1602e90	finite-text-operand-or-substring	encyclopedia
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872566	rip-relative	0x1602e78	finite-text-operand-or-substring	cultural history
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87256f	rip-relative	0x1602e60	finite-text-operand-or-substring	cultural comparison
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872578	rip-relative	0x1602e48	finite-text-operand-or-substring	alternate history
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872581	rip-relative	0x1602e20	finite-text-operand-or-substring	treatise on technological evolution
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87258a	rip-relative	0x1602e10	finite-text-operand-or-substring	dictionary
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872593	rip-relative	0x1602e00	finite-text-operand-or-substring	star chart
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87259c	rip-relative	0x1602df0	finite-text-operand-or-substring	star catalogue
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8725a5	rip-relative	0x1602de8	finite-text-operand-or-substring	atlas
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872623	rip-relative	0x1602dd8	finite-text-operand-or-substring	, authored by 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87268d	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8726d9	rip-relative	0x1602dc0	finite-text-operand-or-substring	It is an example of 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872722	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872754	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872796	rip-relative	0x1602dc0	finite-text-operand-or-substring	It is an example of 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8727df	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872811	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872853	rip-relative	0x1602dc0	finite-text-operand-or-substring	It is an example of 
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x87289c	rip-relative	0x15fd968	finite-text-operand-or-substring	.  
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x8728ce	rip-relative	0x15fd258	finite-text-operand-or-substring	[B]
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872ae1	rip-relative	0x16b32b0	finite-text-operand-or-substring	(etc.)
+reference	PE:6a70a6d9:02711000	chooser-description-producer	0x870260	0x872aed	rip-relative	0x16b32b4	finite-text-operand-or-substring	.)
+reference	PE:6a70a6d9:02711000	entity-name-and-confidence	0xb92900	0xb9296a	rip-relative	0x165e438	finite-text-operand-or-substring	[LPAGE:ENT:
+reference	PE:6a70a6d9:02711000	entity-name-and-confidence	0xb92900	0xb9298a	rip-relative	0x15fd690	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	entity-name-and-confidence	0xb92900	0xb929f4	rip-relative	0x15fda88	finite-text-operand-or-substring	[/LPAGE]
+reference	PE:6a70a6d9:02711000	entity-name-and-confidence	0xb92900	0xb92a4c	rip-relative	0x16df940	finite-text-operand-or-substring	an unknown civilization
+reference	PE:6a70a6d9:02711000	species-name	0xb94ed0	0xb94fdb	rip-relative	0x1662fa8	finite-text-operand-or-substring	creature
+reference	PE:6a70a6d9:02711000	species-name	0xb94ed0	0xb94ffa	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	knowledge-confidence-paragraph	0xb95720	0xb95746	rip-relative	0x16dfe50	finite-text-operand-or-substring	Only the barest fragments of this amazing story have been uncovered.  It is one of the great untold tales of our times.  
+reference	PE:6a70a6d9:02711000	knowledge-confidence-paragraph	0xb95720	0xb9575b	rip-relative	0x16dff10	finite-text-operand-or-substring	Its nature is still an intriguing puzzle to the learned.  
+reference	PE:6a70a6d9:02711000	knowledge-confidence-paragraph	0xb95720	0xb95770	rip-relative	0x16dfee8	finite-text-operand-or-substring	It is still shrouded in mystery.  
+reference	PE:6a70a6d9:02711000	knowledge-confidence-paragraph	0xb95720	0xb95785	rip-relative	0x16dfdd8	finite-text-operand-or-substring	Many facts are still unclear to historians.  
+reference	PE:6a70a6d9:02711000	knowledge-confidence-paragraph	0xb95720	0xb9579a	rip-relative	0x16dfd90	finite-text-operand-or-substring	A few issues still trouble scholars, but the picture is fairly clear.  
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa948a3	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa9495e	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94a3b	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94a5d	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94a78	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94af2	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94b11	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94b1a	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94b9a	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94bb9	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94bc2	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94d1f	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94d4b	rip-relative	0x15ed9bc	finite-text-operand-or-substring	The 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94d62	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94e09	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94e18	rip-relative	0x16ced90	finite-text-operand-or-substring	of 
+reference	PE:6a70a6d9:02711000	world-name	0xa946e0	0xa94e1f	rip-relative	0x16cee1c	finite-text-operand-or-substring	Of 
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cceb	rip-relative	0x1782060	finite-text-operand-or-substring	miner
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cd05	rip-relative	0x1782080	finite-text-operand-or-substring	woodworker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cd1f	rip-relative	0x1782070	finite-text-operand-or-substring	carpenter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cd39	rip-relative	0x17821f4	finite-text-operand-or-substring	bowyer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cd53	rip-relative	0x17821e8	finite-text-operand-or-substring	woodcutter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cd6d	rip-relative	0x1782210	finite-text-operand-or-substring	stoneworker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cd87	rip-relative	0x1782200	finite-text-operand-or-substring	engraver
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cda1	rip-relative	0x1782230	finite-text-operand-or-substring	stonecutter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cdbb	rip-relative	0x1782220	finite-text-operand-or-substring	stone carver
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cdd5	rip-relative	0x1782244	finite-text-operand-or-substring	mason
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cdef	rip-relative	0x178223c	finite-text-operand-or-substring	ranger
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132ce09	rip-relative	0x1782170	finite-text-operand-or-substring	animal caretaker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132ce23	rip-relative	0x1782160	finite-text-operand-or-substring	animal trainer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132ce3d	rip-relative	0x16a642c	finite-text-operand-or-substring	hunter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132ce57	rip-relative	0x17821a0	finite-text-operand-or-substring	trapper
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132ce71	rip-relative	0x1782188	finite-text-operand-or-substring	animal dissector
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132ce8b	rip-relative	0x17821c0	finite-text-operand-or-substring	metalsmith
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cea5	rip-relative	0x17821a8	finite-text-operand-or-substring	furnace operator
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cebf	rip-relative	0x17821d8	finite-text-operand-or-substring	weaponsmith
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132ced9	rip-relative	0x17821d0	finite-text-operand-or-substring	armorer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cef3	rip-relative	0x17822c8	finite-text-operand-or-substring	blacksmith
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cf0d	rip-relative	0x17822b8	finite-text-operand-or-substring	metalcrafter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cf27	rip-relative	0x17822e8	finite-text-operand-or-substring	jeweler
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cf41	rip-relative	0x17822d8	finite-text-operand-or-substring	gem cutter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cf5b	rip-relative	0x1782300	finite-text-operand-or-substring	gem setter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cf6f	rip-relative	0x162a8a8	finite-text-operand-or-substring	craftsman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cf76	rip-relative	0x172e188	finite-text-operand-or-substring	craftsmen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cf95	rip-relative	0x17822f0	finite-text-operand-or-substring	woodcrafter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cfaf	rip-relative	0x1782320	finite-text-operand-or-substring	papermaker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cfc9	rip-relative	0x1782310	finite-text-operand-or-substring	bookbinder
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cfe3	rip-relative	0x1782254	finite-text-operand-or-substring	potter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132cffd	rip-relative	0x178224c	finite-text-operand-or-substring	glazer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d017	rip-relative	0x1782270	finite-text-operand-or-substring	wax worker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d031	rip-relative	0x1782260	finite-text-operand-or-substring	stonecrafter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d04b	rip-relative	0x1782290	finite-text-operand-or-substring	leatherworker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d065	rip-relative	0x1782280	finite-text-operand-or-substring	bone carver
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d07f	rip-relative	0x17822ac	finite-text-operand-or-substring	weaver
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d099	rip-relative	0x17822a0	finite-text-operand-or-substring	clothier
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d0b3	rip-relative	0x1782398	finite-text-operand-or-substring	glassmaker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d0cd	rip-relative	0x1782380	finite-text-operand-or-substring	strand extractor
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d0e7	rip-relative	0x17823b8	finite-text-operand-or-substring	fishery worker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d0fb	rip-relative	0x17823d8	finite-text-operand-or-substring	fisherman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d102	rip-relative	0x17823a8	finite-text-operand-or-substring	fishermen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d121	rip-relative	0x17823c8	finite-text-operand-or-substring	fish dissector
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d13b	rip-relative	0x17823f0	finite-text-operand-or-substring	fish cleaner
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d155	rip-relative	0x17823e4	finite-text-operand-or-substring	farmer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d16f	rip-relative	0x1782338	finite-text-operand-or-substring	cheesemaker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d189	rip-relative	0x178232c	finite-text-operand-or-substring	milker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d1a3	rip-relative	0x1782350	finite-text-operand-or-substring	gelder
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d1bd	rip-relative	0x1782348	finite-text-operand-or-substring	shearer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d1d7	rip-relative	0x1782360	finite-text-operand-or-substring	spinner
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d1f1	rip-relative	0x1782358	finite-text-operand-or-substring	cook
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d20b	rip-relative	0x1782370	finite-text-operand-or-substring	thresher
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d225	rip-relative	0x1782368	finite-text-operand-or-substring	miller
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d23f	rip-relative	0x1736468	finite-text-operand-or-substring	butcher
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d259	rip-relative	0x1781d10	finite-text-operand-or-substring	tanner
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d273	rip-relative	0x1781d08	finite-text-operand-or-substring	dyer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d28d	rip-relative	0x1781d28	finite-text-operand-or-substring	presser
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d2a7	rip-relative	0x1781d18	finite-text-operand-or-substring	beekeeper
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d2c1	rip-relative	0x1781d40	finite-text-operand-or-substring	planter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d2db	rip-relative	0x1781d30	finite-text-operand-or-substring	herbalist
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d2f5	rip-relative	0x1781d54	finite-text-operand-or-substring	brewer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d30f	rip-relative	0x1781d48	finite-text-operand-or-substring	soap maker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d329	rip-relative	0x1781c98	finite-text-operand-or-substring	potash maker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d343	rip-relative	0x1781c88	finite-text-operand-or-substring	lye maker
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d35d	rip-relative	0x1781cb8	finite-text-operand-or-substring	wood burner
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d377	rip-relative	0x1781ca8	finite-text-operand-or-substring	engineer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d391	rip-relative	0x1781cd8	finite-text-operand-or-substring	mechanic
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d3ab	rip-relative	0x1781cc8	finite-text-operand-or-substring	siege engineer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d3c5	rip-relative	0x1781cf8	finite-text-operand-or-substring	siege operator
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d3df	rip-relative	0x1781ce8	finite-text-operand-or-substring	pump operator
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d3f9	rip-relative	0x16c1e74	finite-text-operand-or-substring	clerk
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d413	rip-relative	0x165fbf8	finite-text-operand-or-substring	administrator
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d42d	rip-relative	0x1781df8	finite-text-operand-or-substring	trader
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d447	rip-relative	0x16a65bc	finite-text-operand-or-substring	poet
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d461	rip-relative	0x16a6404	finite-text-operand-or-substring	bard
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d47b	rip-relative	0x16a640c	finite-text-operand-or-substring	dancer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d495	rip-relative	0x1642440	finite-text-operand-or-substring	performer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d4af	rip-relative	0x16423b4	finite-text-operand-or-substring	scribe
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d4c9	rip-relative	0x1642430	finite-text-operand-or-substring	tavern keeper
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d4e3	rip-relative	0x1642458	finite-text-operand-or-substring	doctor
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d4fd	rip-relative	0x16423f8	finite-text-operand-or-substring	diagnostician
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d517	rip-relative	0x1642410	finite-text-operand-or-substring	bone doctor
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d531	rip-relative	0x1781df0	finite-text-operand-or-substring	suturer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d54b	rip-relative	0x1642408	finite-text-operand-or-substring	surgeon
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d565	rip-relative	0x1781e08	finite-text-operand-or-substring	merchant
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d57f	rip-relative	0x1781e00	finite-text-operand-or-substring	drunk
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d593	rip-relative	0x1781e18	finite-text-operand-or-substring	hammerman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d59a	rip-relative	0x1781e28	finite-text-operand-or-substring	hammermen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d5b9	rip-relative	0x1781e48	finite-text-operand-or-substring	Hammer Lord
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d5d0	rip-relative	0x1781d70	finite-text-operand-or-substring	spearman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d5d7	rip-relative	0x1781e38	finite-text-operand-or-substring	spearmen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d5f3	rip-relative	0x1781d60	finite-text-operand-or-substring	Spearmaster
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d60a	rip-relative	0x1781d80	finite-text-operand-or-substring	crossbowman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d611	rip-relative	0x1781d90	finite-text-operand-or-substring	crossbowmen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d62a	rip-relative	0x1781da0	finite-text-operand-or-substring	Elite Crossbowmen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d631	rip-relative	0x1781db8	finite-text-operand-or-substring	Elite Crossbowman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d64d	rip-relative	0x1781de0	finite-text-operand-or-substring	wrestler
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d667	rip-relative	0x1781dd0	finite-text-operand-or-substring	Elite Wrestler
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d67b	rip-relative	0x1781eb8	finite-text-operand-or-substring	axeman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d682	rip-relative	0x1781ec0	finite-text-operand-or-substring	axemen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d6a1	rip-relative	0x1781ed8	finite-text-operand-or-substring	Axe Lord
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d6b5	rip-relative	0x1781ef8	finite-text-operand-or-substring	swordsman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d6bc	rip-relative	0x1781ec8	finite-text-operand-or-substring	swordsmen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d6db	rip-relative	0x1781ee8	finite-text-operand-or-substring	Swordmaster
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d6ef	rip-relative	0x1781f08	finite-text-operand-or-substring	maceman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d6f6	rip-relative	0x1781f10	finite-text-operand-or-substring	macemen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d715	rip-relative	0x1781e60	finite-text-operand-or-substring	Mace Lord
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d729	rip-relative	0x1781e80	finite-text-operand-or-substring	pikeman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d730	rip-relative	0x1781e58	finite-text-operand-or-substring	pikemen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d74f	rip-relative	0x1781e70	finite-text-operand-or-substring	Pikemaster
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d763	rip-relative	0x1781e88	finite-text-operand-or-substring	bowman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d76a	rip-relative	0x1781e90	finite-text-operand-or-substring	bowmen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d786	rip-relative	0x1781e98	finite-text-operand-or-substring	Elite Bowman
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d78d	rip-relative	0x1781ea8	finite-text-operand-or-substring	Elite Bowmen
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d7a9	rip-relative	0x1781fa0	finite-text-operand-or-substring	blowgunner
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d7c3	rip-relative	0x1781f88	finite-text-operand-or-substring	Master Blowgunner
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d7dd	rip-relative	0x1781fc0	finite-text-operand-or-substring	lasher
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d7f7	rip-relative	0x1781fb0	finite-text-operand-or-substring	Master Lasher
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d811	rip-relative	0x1781fd8	finite-text-operand-or-substring	recruit
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d82b	rip-relative	0x16a1210	finite-text-operand-or-substring	hunting
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d840	rip-relative	0x1649be4	finite-text-operand-or-substring	war
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d855	rip-relative	0x1781fc8	finite-text-operand-or-substring	Master Thief
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d86f	rip-relative	0x16a6990	finite-text-operand-or-substring	thief
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d889	rip-relative	0x1642420	finite-text-operand-or-substring	monster slayer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d8a3	rip-relative	0x1674d10	finite-text-operand-or-substring	scout
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d8bd	rip-relative	0x1781fe8	finite-text-operand-or-substring	beast hunter
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d8d7	rip-relative	0x16e67a8	finite-text-operand-or-substring	snatcher
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d8ee	rip-relative	0x1675290	finite-text-operand-or-substring	mercenaries
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d8fb	rip-relative	0x15ec9f0	finite-text-operand-or-substring	mercenary
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d91d	rip-relative	0x1781fe0	finite-text-operand-or-substring	sage
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d937	rip-relative	0x1642450	finite-text-operand-or-substring	scholar
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d951	rip-relative	0x1781f28	finite-text-operand-or-substring	philosopher
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d96b	rip-relative	0x1781f18	finite-text-operand-or-substring	mathematician
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d985	rip-relative	0x1781f48	finite-text-operand-or-substring	historian
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d99f	rip-relative	0x1781f38	finite-text-operand-or-substring	astronomer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d9b9	rip-relative	0x1781f60	finite-text-operand-or-substring	naturalist
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d9d3	rip-relative	0x1781f58	finite-text-operand-or-substring	chemist
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132d9ed	rip-relative	0x1781f78	finite-text-operand-or-substring	geographer
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132da07	rip-relative	0x1673f48	finite-text-operand-or-substring	criminal
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132da21	rip-relative	0x1781f70	finite-text-operand-or-substring	peddler
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132da3b	rip-relative	0x1782ba0	finite-text-operand-or-substring	prophet
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132da55	rip-relative	0x1782b98	finite-text-operand-or-substring	pilgrim
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132da6f	rip-relative	0x1782bb4	finite-text-operand-or-substring	monk
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132da89	rip-relative	0x1782ba8	finite-text-operand-or-substring	messenger
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132db26	rip-relative	0x16a12a8	finite-text-operand-or-substring	children
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132dc5b	rip-relative	0x1646ac0	finite-text-operand-or-substring	child
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132dcb8	rip-relative	0x1782bc8	finite-text-operand-or-substring	babies
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132dcca	rip-relative	0x167ff14	finite-text-operand-or-substring	baby
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132de26	rip-relative	0x1782bc8	finite-text-operand-or-substring	babies
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132de35	rip-relative	0x167ff14	finite-text-operand-or-substring	baby
+reference	PE:6a70a6d9:02711000	profession-title	0x132cc10	0x132de57	rip-relative	0x15e9298	finite-text-operand-or-substring	s
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb92f8a	rip-relative	0x16df900	finite-text-operand-or-substring	interrogator
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb92fa1	rip-relative	0x1674d08	finite-text-operand-or-substring	subject
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93073	rip-relative	0x16290f0	finite-text-operand-or-substring	Nameless
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb9310e	rip-relative	0x16df8e0	finite-text-operand-or-substring	an unidentified creature
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93133	rip-relative	0x15fdb08	finite-text-operand-or-substring	[LPAGE:HF:
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93153	rip-relative	0x15fd690	finite-text-operand-or-substring	]
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb9325d	rip-relative	0x1662ef8	finite-text-operand-or-substring	myself
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93266	rip-relative	0x1662efc	finite-text-operand-or-substring	lf
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb9331b	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb9333f	rip-relative	0x167db90	finite-text-operand-or-substring	zombie 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93377	rip-relative	0x15fdbb8	finite-text-operand-or-substring	ghostly 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93499	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb934c8	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93551	rip-relative	0x15e956c	finite-text-operand-or-substring	 the 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93575	rip-relative	0x167db90	finite-text-operand-or-substring	zombie 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb935ad	rip-relative	0x15fdbb8	finite-text-operand-or-substring	ghostly 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb936cd	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb9374e	rip-relative	0x15ed620	finite-text-operand-or-substring	a 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93755	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb9377d	rip-relative	0x167db90	finite-text-operand-or-substring	zombie 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb937b5	rip-relative	0x15fdbb8	finite-text-operand-or-substring	ghostly 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb9381c	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93867	rip-relative	0x15e9260	finite-text-operand-or-substring	's
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb93886	rip-relative	0x15fda88	finite-text-operand-or-substring	[/LPAGE]
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb938dc	rip-relative	0x1663cd8	finite-text-operand-or-substring	an unknown creature
+reference	PE:6a70a6d9:02711000	historical-figure-name-and-confidence	0xb92f10	0xb938f2	rip-relative	0x15e9260	finite-text-operand-or-substring	's
+reference	PE:6a70a6d9:02711000	sphere-name	0x756500	0x756568	rip-relative	0x15e8e48	finite-text-operand-or-substring	the 
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7566b5	rip-relative	0x16a1b08	finite-text-operand-or-substring	agriculture
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7566ca	rip-relative	0x16a1250	finite-text-operand-or-substring	animals
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7566df	rip-relative	0x16a1258	finite-text-operand-or-substring	art
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7566f4	rip-relative	0x16a1260	finite-text-operand-or-substring	balance
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756709	rip-relative	0x16a1268	finite-text-operand-or-substring	beauty
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75671e	rip-relative	0x16a1270	finite-text-operand-or-substring	birth
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756733	rip-relative	0x16a1278	finite-text-operand-or-substring	blight
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756748	rip-relative	0x16a1280	finite-text-operand-or-substring	boundaries
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75675d	rip-relative	0x16a1290	finite-text-operand-or-substring	caverns
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756772	rip-relative	0x16a1298	finite-text-operand-or-substring	chaos
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756787	rip-relative	0x16a12a0	finite-text-operand-or-substring	charity
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75679c	rip-relative	0x16a12a8	finite-text-operand-or-substring	children
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7567b1	rip-relative	0x16a12b4	finite-text-operand-or-substring	coasts
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7567c6	rip-relative	0x16a12c0	finite-text-operand-or-substring	consolation
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7567db	rip-relative	0x16a12d0	finite-text-operand-or-substring	courage
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7567f0	rip-relative	0x16a12d8	finite-text-operand-or-substring	crafts
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756805	rip-relative	0x16a12e0	finite-text-operand-or-substring	creation
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75681a	rip-relative	0x15edfc0	finite-text-operand-or-substring	dance
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75682f	rip-relative	0x16a1530	finite-text-operand-or-substring	darkness
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756844	rip-relative	0x16706fc	finite-text-operand-or-substring	dawn
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756859	rip-relative	0x1670704	finite-text-operand-or-substring	day
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75686e	rip-relative	0x15eddb4	finite-text-operand-or-substring	death
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756883	rip-relative	0x16a1540	finite-text-operand-or-substring	deformity
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756898	rip-relative	0x16a1550	finite-text-operand-or-substring	depravity
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7568ad	rip-relative	0x16a1560	finite-text-operand-or-substring	discipline
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7568c2	rip-relative	0x16a1570	finite-text-operand-or-substring	disease
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7568d7	rip-relative	0x16a1578	finite-text-operand-or-substring	dreams
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7568ec	rip-relative	0x16a1580	finite-text-operand-or-substring	dusk
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756901	rip-relative	0x1674c00	finite-text-operand-or-substring	duty
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756916	rip-relative	0x16a1588	finite-text-operand-or-substring	earth
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75692b	rip-relative	0x16415fc	finite-text-operand-or-substring	family
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756940	rip-relative	0x16a1590	finite-text-operand-or-substring	fame
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756955	rip-relative	0x16a1598	finite-text-operand-or-substring	fate
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75696a	rip-relative	0x16a15a0	finite-text-operand-or-substring	fertility
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75697f	rip-relative	0x16a15b0	finite-text-operand-or-substring	festivals
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756994	rip-relative	0x16a15bc	finite-text-operand-or-substring	fire
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7569a9	rip-relative	0x16a11f0	finite-text-operand-or-substring	fish
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7569be	rip-relative	0x16a15c8	finite-text-operand-or-substring	fishing
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7569d3	rip-relative	0x16a15d0	finite-text-operand-or-substring	food
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7569e8	rip-relative	0x16a15d8	finite-text-operand-or-substring	forgiveness
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7569fd	rip-relative	0x16a1470	finite-text-operand-or-substring	fortresses
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756a12	rip-relative	0x16a1480	finite-text-operand-or-substring	freedom
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756a27	rip-relative	0x16a11f8	finite-text-operand-or-substring	gambling
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756a3c	rip-relative	0x16a1488	finite-text-operand-or-substring	games
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756a51	rip-relative	0x16a1490	finite-text-operand-or-substring	generosity
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756a66	rip-relative	0x1670a58	finite-text-operand-or-substring	happiness
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756a7b	rip-relative	0x16a1208	finite-text-operand-or-substring	healing
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756a90	rip-relative	0x16a14a0	finite-text-operand-or-substring	hospitality
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756aa5	rip-relative	0x16a1210	finite-text-operand-or-substring	hunting
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756aba	rip-relative	0x16a14b0	finite-text-operand-or-substring	inspiration
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756acf	rip-relative	0x16a14c0	finite-text-operand-or-substring	jealousy
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756ae4	rip-relative	0x16a14cc	finite-text-operand-or-substring	jewels
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756af9	rip-relative	0x16a14d8	finite-text-operand-or-substring	justice
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756b0e	rip-relative	0x15ede6c	finite-text-operand-or-substring	labor
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756b23	rip-relative	0x16a14e0	finite-text-operand-or-substring	lakes
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756b38	rip-relative	0x16a14e8	finite-text-operand-or-substring	laws
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756b4d	rip-relative	0x16a14f0	finite-text-operand-or-substring	lies
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756b62	rip-relative	0x167607c	finite-text-operand-or-substring	light
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756b77	rip-relative	0x16a14f8	finite-text-operand-or-substring	lightning
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756b8c	rip-relative	0x16a1508	finite-text-operand-or-substring	longevity
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756ba1	rip-relative	0x16025ec	finite-text-operand-or-substring	love
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756bb6	rip-relative	0x16415b0	finite-text-operand-or-substring	loyalty
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756bcb	rip-relative	0x16a1514	finite-text-operand-or-substring	luck
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756be0	rip-relative	0x1670fac	finite-text-operand-or-substring	lust
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756bf5	rip-relative	0x16a1520	finite-text-operand-or-substring	marriage
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756c0a	rip-relative	0x16a13bc	finite-text-operand-or-substring	mercy
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756c1f	rip-relative	0x16a13c4	finite-text-operand-or-substring	metals
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756c34	rip-relative	0x16a13d0	finite-text-operand-or-substring	minerals
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756c49	rip-relative	0x1670f84	finite-text-operand-or-substring	misery
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756c5e	rip-relative	0x16a13dc	finite-text-operand-or-substring	mist
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756c73	rip-relative	0x16a13e4	finite-text-operand-or-substring	moon
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756c88	rip-relative	0x164c4a8	finite-text-operand-or-substring	mountains
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756c9d	rip-relative	0x16a13ec	finite-text-operand-or-substring	muck
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756cb2	rip-relative	0x15ede54	finite-text-operand-or-substring	murder
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756cc7	rip-relative	0x15eb50c	finite-text-operand-or-substring	music
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756cdc	rip-relative	0x16416ec	finite-text-operand-or-substring	nature
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756cf1	rip-relative	0x1670434	finite-text-operand-or-substring	night
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756d06	rip-relative	0x16a13f8	finite-text-operand-or-substring	nightmares
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756d1b	rip-relative	0x16a1404	finite-text-operand-or-substring	oaths
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756d30	rip-relative	0x16a140c	finite-text-operand-or-substring	oceans
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756d45	rip-relative	0x15eddcc	finite-text-operand-or-substring	order
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756d5a	rip-relative	0x16a1418	finite-text-operand-or-substring	painting
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756d6f	rip-relative	0x15ee0cc	finite-text-operand-or-substring	peace
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756d84	rip-relative	0x16a1428	finite-text-operand-or-substring	persuasion
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756d99	rip-relative	0x16a1434	finite-text-operand-or-substring	plants
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756dae	rip-relative	0x161b6dc	finite-text-operand-or-substring	poetry
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756dc3	rip-relative	0x16a1440	finite-text-operand-or-substring	pregnancy
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756dd8	rip-relative	0x164bfac	finite-text-operand-or-substring	rain
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756ded	rip-relative	0x16a1450	finite-text-operand-or-substring	rainbows
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756e02	rip-relative	0x16a1460	finite-text-operand-or-substring	rebirth
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756e17	rip-relative	0x16a1468	finite-text-operand-or-substring	revelry
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756e2c	rip-relative	0x16a1320	finite-text-operand-or-substring	revenge
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756e41	rip-relative	0x16a1328	finite-text-operand-or-substring	rivers
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756e56	rip-relative	0x16a1330	finite-text-operand-or-substring	rulership
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756e6b	rip-relative	0x16a133c	finite-text-operand-or-substring	rumors
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756e80	rip-relative	0x1641708	finite-text-operand-or-substring	sacrifice
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756e95	rip-relative	0x16a1344	finite-text-operand-or-substring	salt
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756eaa	rip-relative	0x16a1350	finite-text-operand-or-substring	scholarship
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756ebf	rip-relative	0x16a1360	finite-text-operand-or-substring	seasons
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756ed4	rip-relative	0x16a1368	finite-text-operand-or-substring	silence
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756ee9	rip-relative	0x164c52c	finite-text-operand-or-substring	sky
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756efe	rip-relative	0x15e9510	finite-text-operand-or-substring	song
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756f13	rip-relative	0x16a1370	finite-text-operand-or-substring	speech
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756f28	rip-relative	0x16a1378	finite-text-operand-or-substring	stars
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756f3d	rip-relative	0x16a1380	finite-text-operand-or-substring	storms
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756f52	rip-relative	0x1661fd8	finite-text-operand-or-substring	strength
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756f67	rip-relative	0x16a1388	finite-text-operand-or-substring	suicide
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756f7c	rip-relative	0x16a1390	finite-text-operand-or-substring	sun
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756f91	rip-relative	0x15edefc	finite-text-operand-or-substring	theft
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756fa6	rip-relative	0x16a1398	finite-text-operand-or-substring	thralldom
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756fbb	rip-relative	0x16a13a8	finite-text-operand-or-substring	thunder
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756fd0	rip-relative	0x1643a58	finite-text-operand-or-substring	torture
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756fe5	rip-relative	0x164fbc4	finite-text-operand-or-substring	trade
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x756ffa	rip-relative	0x16a13b0	finite-text-operand-or-substring	travelers
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75700f	rip-relative	0x16a1aa0	finite-text-operand-or-substring	treachery
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x757024	rip-relative	0x16a1aac	finite-text-operand-or-substring	trees
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x757039	rip-relative	0x16a1ab8	finite-text-operand-or-substring	trickery
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75704e	rip-relative	0x16415dc	finite-text-operand-or-substring	truth
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x757063	rip-relative	0x16a12f8	finite-text-operand-or-substring	twilight
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x757078	rip-relative	0x16a1ac4	finite-text-operand-or-substring	valor
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75708d	rip-relative	0x16a1ad0	finite-text-operand-or-substring	victory
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7570a2	rip-relative	0x16a1ad8	finite-text-operand-or-substring	volcanos
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7570b7	rip-relative	0x1649be4	finite-text-operand-or-substring	war
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7570cc	rip-relative	0x164b874	finite-text-operand-or-substring	water
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7570e1	rip-relative	0x16a1ae4	finite-text-operand-or-substring	wealth
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x7570f6	rip-relative	0x1674ef0	finite-text-operand-or-substring	weather
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75710b	rip-relative	0x16a1aec	finite-text-operand-or-substring	wind
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x757120	rip-relative	0x16a1af4	finite-text-operand-or-substring	wisdom
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x757135	rip-relative	0x15edca0	finite-text-operand-or-substring	writing
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75714a	rip-relative	0x16a1afc	finite-text-operand-or-substring	youth
+reference	PE:6a70a6d9:02711000	sphere-token	0x756690	0x75715f	rip-relative	0x16a1310	finite-text-operand-or-substring	no sphere
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c055	rip-relative	0x16da35c	finite-text-operand-or-substring	 was a
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c075	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c161	rip-relative	0x16da3b0	finite-text-operand-or-substring	 was a 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c1a4	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c1cd	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c1f2	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c247	rip-relative	0x16453b4	finite-text-operand-or-substring	This
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c257	rip-relative	0x16da398	finite-text-operand-or-substring	 was a legendary 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c28d	rip-relative	0x16aa644	finite-text-operand-or-substring	.[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c308	rip-relative	0x16da330	finite-text-operand-or-substring	 could be found within 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c33b	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c399	rip-relative	0x16da330	finite-text-operand-or-substring	 could be found within 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c3cc	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c417	rip-relative	0x16da310	finite-text-operand-or-substring	 were a population within 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c44a	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c476	rip-relative	0x16da348	finite-text-operand-or-substring	 civilization of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c488	rip-relative	0x16da2d0	finite-text-operand-or-substring	 religion of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c49a	rip-relative	0x16da2b8	finite-text-operand-or-substring	 bandit gang from 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c4b0	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c4c0	rip-relative	0x15e79d0	finite-text-operand-or-substring	mercenary
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c4ce	rip-relative	0x16da2f8	finite-text-operand-or-substring	versatile mercenary
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c4d7	rip-relative	0x16da2e0	finite-text-operand-or-substring	shadowy military
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c4f2	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c519	rip-relative	0x15e8db8	finite-text-operand-or-substring	order
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c525	rip-relative	0x16da270	finite-text-operand-or-substring	company
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c52c	rip-relative	0x16da264	finite-text-operand-or-substring	band
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c549	rip-relative	0x16da298	finite-text-operand-or-substring	 performance troupe from 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c55b	rip-relative	0x16da278	finite-text-operand-or-substring	 collection of outcasts from 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c56d	rip-relative	0x16da228	finite-text-operand-or-substring	 merchant company from 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c583	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c5f4	rip-relative	0x15fb360	finite-text-operand-or-substring	craft
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c604	rip-relative	0x15fb358	finite-text-operand-or-substring	 guild
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c614	rip-relative	0x15e8984	finite-text-operand-or-substring	 from 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c697	rip-relative	0x16da218	finite-text-operand-or-substring	 group from 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c772	rip-relative	0x16da258	finite-text-operand-or-substring	 linked to 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c7b4	rip-relative	0x16da240	finite-text-operand-or-substring	 devoted to worship
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c7c2	rip-relative	0x16da1d8	finite-text-operand-or-substring	 devoted to the worship of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c853	rip-relative	0x15e9830	finite-text-operand-or-substring	 and
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c863	rip-relative	0x16da208	finite-text-operand-or-substring	 known for 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c86a	rip-relative	0x16da1b8	finite-text-operand-or-substring	 dedicated to the mastery of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c8bd	rip-relative	0x16da1b0	finite-text-operand-or-substring	kicking
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c8d2	rip-relative	0x16da188	finite-text-operand-or-substring	striking
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c8e7	rip-relative	0x16da194	finite-text-operand-or-substring	biting
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c8fc	rip-relative	0x16da1f8	finite-text-operand-or-substring	wrestling
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c91a	rip-relative	0x16da1a0	finite-text-operand-or-substring	their use of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c970	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c9a5	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c9c9	rip-relative	0x1623454	finite-text-operand-or-substring	, and 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8c9d2	rip-relative	0x15e40bc	separator	 and 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ca36	rip-relative	0x16da128	finite-text-operand-or-substring	 centered around the worship of various beings
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ca65	rip-relative	0x16da100	finite-text-operand-or-substring	 centered around the worship of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cab7	rip-relative	0x15f8228	finite-text-operand-or-substring	, a 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8caed	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cb06	rip-relative	0x165d568	finite-text-operand-or-substring	goddess
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cb0f	rip-relative	0x165d570	finite-text-operand-or-substring	god
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cb16	rip-relative	0x165d508	finite-text-operand-or-substring	deity
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cb58	rip-relative	0x15e64d0	finite-text-operand-or-substring	 of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cbc1	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cbf9	rip-relative	0x16da178	finite-text-operand-or-substring	, a force
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cc24	rip-relative	0x165d520	finite-text-operand-or-substring	 which permeates 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cc2b	rip-relative	0x16da158	finite-text-operand-or-substring	 which was said to permeate 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cc79	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cca0	rip-relative	0x15e40bc	separator	 and 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cd05	rip-relative	0x1641940	finite-text-operand-or-substring	 was 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cd31	rip-relative	0x15e7f2c	finite-text-operand-or-substring	 in 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cd55	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cd7a	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8cf22	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d0be	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d2b1	rip-relative	0x15f90c0	finite-text-operand-or-substring	In 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d2d2	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d311	rip-relative	0x16da0d0	finite-text-operand-or-substring	 was hired 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d335	rip-relative	0x16da0f0	finite-text-operand-or-substring	as part of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d35b	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d36b	rip-relative	0x16da0e0	finite-text-operand-or-substring	to fight in 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d374	rip-relative	0x16da0c0	finite-text-operand-or-substring	as a scout
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d38b	rip-relative	0x15e8984	finite-text-operand-or-substring	 from 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d3b1	rip-relative	0x1623968	finite-text-operand-or-substring	 for 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d3ba	rip-relative	0x16da070	finite-text-operand-or-substring	 fought in 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d40a	rip-relative	0x16da0b0	finite-text-operand-or-substring	 in defense of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d413	rip-relative	0x16da058	finite-text-operand-or-substring	, an assault on 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d447	rip-relative	0x15e7f2c	finite-text-operand-or-substring	 in 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d47b	rip-relative	0x15e7f2c	finite-text-operand-or-substring	 in 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d4a3	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d4b3	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d54d	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d6d3	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d832	rip-relative	0x16da080	finite-text-operand-or-substring	[C:3:0:1]Related Historical Figures[C:7:0:0][B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d8b2	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d8fd	rip-relative	0x16416e4	finite-text-operand-or-substring	parent
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d90e	rip-relative	0x1641744	finite-text-operand-or-substring	mother
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d929	rip-relative	0x16416e4	finite-text-operand-or-substring	parent
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d93a	rip-relative	0x164174c	finite-text-operand-or-substring	father
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d957	rip-relative	0x1641034	finite-text-operand-or-substring	spouse
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d96c	rip-relative	0x1640fa4	finite-text-operand-or-substring	wife
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8d97d	rip-relative	0x1640fb0	finite-text-operand-or-substring	husband
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8da4b	rip-relative	0x16416fc	finite-text-operand-or-substring	child
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8da6c	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8da88	rip-relative	0x16d9f90	finite-text-operand-or-substring	b. 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8daad	rip-relative	0x15f7ff8	separator	  
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dac9	rip-relative	0x16da8d8	finite-text-operand-or-substring	d. 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8daeb	rip-relative	0x163ae74	finite-text-operand-or-substring	[R]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8db3f	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dbcc	rip-relative	0x16da8b0	finite-text-operand-or-substring	[C:1:0:1]Related Entities[C:7:0:0][B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dbfc	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dc42	rip-relative	0x16da030	finite-text-operand-or-substring	object of 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dc67	rip-relative	0x16da028	finite-text-operand-or-substring	ardent 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dc76	rip-relative	0x16da048	finite-text-operand-or-substring	faithful 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dc92	rip-relative	0x16da040	finite-text-operand-or-substring	casual 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dc9b	rip-relative	0x16da000	finite-text-operand-or-substring	dubious 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dcb1	rip-relative	0x16d9ff8	finite-text-operand-or-substring	worship
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dccc	rip-relative	0x16da01c	finite-text-operand-or-substring	lover
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dce7	rip-relative	0x15e79b8	finite-text-operand-or-substring	prisoner
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dd02	rip-relative	0x16da010	finite-text-operand-or-substring	imprisoner
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dd1d	rip-relative	0x165ae88	finite-text-operand-or-substring	master
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dd38	rip-relative	0x16d9fc0	finite-text-operand-or-substring	apprenticeship
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dd53	rip-relative	0x16d9fa8	finite-text-operand-or-substring	traveling companion
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dd6e	rip-relative	0x16d9fe8	finite-text-operand-or-substring	former master
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dd89	rip-relative	0x16d9fd0	finite-text-operand-or-substring	former apprentice
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8dda4	rip-relative	0x16d9f88	finite-text-operand-or-substring	owner
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ddbf	rip-relative	0x16d9f78	finite-text-operand-or-substring	former spouse
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ddda	rip-relative	0x16d9f98	finite-text-operand-or-substring	deceased spouse
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e004	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e01b	rip-relative	0x164667c	finite-text-operand-or-substring	-
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e028	rip-relative	0x16da8e0	finite-text-operand-or-substring	 until 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e1ca	rip-relative	0x15e79d0	finite-text-operand-or-substring	mercenary
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e1e5	rip-relative	0x16da878	finite-text-operand-or-substring	former mercenary
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e200	rip-relative	0x1671184	finite-text-operand-or-substring	enemy
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e21b	rip-relative	0x166ee18	finite-text-operand-or-substring	criminal
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e236	rip-relative	0x15e79c4	finite-text-operand-or-substring	member
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e251	rip-relative	0x16da868	finite-text-operand-or-substring	former member
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e26c	rip-relative	0x15e79ac	finite-text-operand-or-substring	slave
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e287	rip-relative	0x16da8a0	finite-text-operand-or-substring	former slave
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e2a2	rip-relative	0x15e79b8	finite-text-operand-or-substring	prisoner
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e2bd	rip-relative	0x16da890	finite-text-operand-or-substring	former prisoner
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e2d8	rip-relative	0x16da848	finite-text-operand-or-substring	worker
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e2f3	rip-relative	0x16da838	finite-text-operand-or-substring	former worker
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e39b	rip-relative	0x16da858	finite-text-operand-or-substring	claim to 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e3f6	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e411	rip-relative	0x16da8e8	finite-text-operand-or-substring	 to present
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e427	rip-relative	0x16da850	finite-text-operand-or-substring	)[R]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e5f5	rip-relative	0x16da8b0	finite-text-operand-or-substring	[C:1:0:1]Related Entities[C:7:0:0][B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e625	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e6b6	rip-relative	0x16da850	finite-text-operand-or-substring	)[R]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e898	rip-relative	0x16da8b0	finite-text-operand-or-substring	[C:1:0:1]Related Entities[C:7:0:0][B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e8d6	rip-relative	0x16da7d0	finite-text-operand-or-substring	 (associated civilization)[R]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e8fb	rip-relative	0x16da7b0	finite-text-operand-or-substring	 (militant worshippers)[R]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e91a	rip-relative	0x16da818	finite-text-operand-or-substring	 (religious worshippers)[R]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e9c4	rip-relative	0x16da8b0	finite-text-operand-or-substring	[C:1:0:1]Related Entities[C:7:0:0][B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8e9f0	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ea2d	rip-relative	0x15e64e8	finite-text-operand-or-substring	legendary hero
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ea44	rip-relative	0x15e6540	finite-text-operand-or-substring	famous hero
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ea5b	rip-relative	0x15e654c	finite-text-operand-or-substring	hero
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ea76	rip-relative	0x15e64f8	finite-text-operand-or-substring	greatly respected for heroic acts
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ea88	rip-relative	0x15e6520	finite-text-operand-or-substring	respected for heroic acts
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ea9f	rip-relative	0x15e6600	finite-text-operand-or-substring	legendary brawler
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eab6	rip-relative	0x15e65c0	finite-text-operand-or-substring	famous brawler
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eac7	rip-relative	0x15e65d0	finite-text-operand-or-substring	noted brawler
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eae2	rip-relative	0x15e6648	finite-text-operand-or-substring	known brawler
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eaf4	rip-relative	0x15e6658	finite-text-operand-or-substring	rumored brawler
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eb0b	rip-relative	0x15e70d8	finite-text-operand-or-substring	legendary intruder
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eb22	rip-relative	0x15e70f0	finite-text-operand-or-substring	infamous intruder
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eb39	rip-relative	0x15e70b8	finite-text-operand-or-substring	noted intruder
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eb54	rip-relative	0x15e70c8	finite-text-operand-or-substring	known intruder
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eb66	rip-relative	0x15e7130	finite-text-operand-or-substring	rumored intruder
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eb7d	rip-relative	0x15e6ad8	finite-text-operand-or-substring	legendary monster
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eb94	rip-relative	0x15e6b40	finite-text-operand-or-substring	infamous monster
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eba5	rip-relative	0x15e6b58	finite-text-operand-or-substring	noted monster
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ebc0	rip-relative	0x15e6b20	finite-text-operand-or-substring	known monster
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ebd2	rip-relative	0x15e6b30	finite-text-operand-or-substring	rumored monster
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ebe9	rip-relative	0x15e6a58	finite-text-operand-or-substring	legendary brigand
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ec00	rip-relative	0x15e6a20	finite-text-operand-or-substring	infamous brigand
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ec11	rip-relative	0x15e6a38	finite-text-operand-or-substring	noted brigand
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ec2c	rip-relative	0x15e6aa0	finite-text-operand-or-substring	known brigand
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ec3e	rip-relative	0x15e6ab0	finite-text-operand-or-substring	rumored brigand
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ec55	rip-relative	0x15e6a00	finite-text-operand-or-substring	legendary bully
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ec6c	rip-relative	0x15e6a10	finite-text-operand-or-substring	infamous bully
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ec83	rip-relative	0x15e69e0	finite-text-operand-or-substring	noted bully
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ec9e	rip-relative	0x15e69f0	finite-text-operand-or-substring	known bully
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ecb0	rip-relative	0x15e6a48	finite-text-operand-or-substring	rumored bully
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ecc7	rip-relative	0x15e6618	finite-text-operand-or-substring	legendary villain
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ecde	rip-relative	0x15e6630	finite-text-operand-or-substring	infamous villain
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ecef	rip-relative	0x15e6690	finite-text-operand-or-substring	noted villain
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ed0a	rip-relative	0x15e66a0	finite-text-operand-or-substring	known villain
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ed1c	rip-relative	0x15e6668	finite-text-operand-or-substring	rumored villain
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ed33	rip-relative	0x15e6d80	finite-text-operand-or-substring	legendary hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ed4a	rip-relative	0x15e6d98	finite-text-operand-or-substring	great hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ed61	rip-relative	0x15e6e00	finite-text-operand-or-substring	talented hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ed7c	rip-relative	0x15e6e10	finite-text-operand-or-substring	skilled hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ed88	rip-relative	0x15e6dd0	finite-text-operand-or-substring	rumored hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ed9f	rip-relative	0x15e6778	finite-text-operand-or-substring	legendary killer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8edb6	rip-relative	0x15e6748	finite-text-operand-or-substring	infamous killer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8edcd	rip-relative	0x15e6758	finite-text-operand-or-substring	noted killer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ede8	rip-relative	0x15e67c0	finite-text-operand-or-substring	known killer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8edfa	rip-relative	0x15e67d0	finite-text-operand-or-substring	rumored killer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ee11	rip-relative	0x15e6790	finite-text-operand-or-substring	legendary murderer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ee28	rip-relative	0x15e67a8	finite-text-operand-or-substring	infamous murderer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ee3f	rip-relative	0x15e6810	finite-text-operand-or-substring	noted murderer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ee5a	rip-relative	0x15e6820	finite-text-operand-or-substring	known murderer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ee6c	rip-relative	0x15e67e0	finite-text-operand-or-substring	rumored murderer
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ee83	rip-relative	0x15e68f0	finite-text-operand-or-substring	legendary enemy fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ee9a	rip-relative	0x15e6908	finite-text-operand-or-substring	infamous enemy fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eeb1	rip-relative	0x15e6970	finite-text-operand-or-substring	noted enemy fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eecc	rip-relative	0x15e6988	finite-text-operand-or-substring	known enemy fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eede	rip-relative	0x15e6940	finite-text-operand-or-substring	rumored enemy fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8eef5	rip-relative	0x15e6a70	finite-text-operand-or-substring	legendary loyal soldier
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ef0c	rip-relative	0x15e6a88	finite-text-operand-or-substring	famous loyal soldier
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ef23	rip-relative	0x15e6af0	finite-text-operand-or-substring	noted loyal soldier
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ef3e	rip-relative	0x15e6b08	finite-text-operand-or-substring	known loyal soldier
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ef50	rip-relative	0x15e6ac0	finite-text-operand-or-substring	rumored loyal soldier
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ef67	rip-relative	0x15e6958	finite-text-operand-or-substring	legendary fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ef7e	rip-relative	0x15e69c0	finite-text-operand-or-substring	famous fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8ef8f	rip-relative	0x15e69d0	finite-text-operand-or-substring	noted fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8efaa	rip-relative	0x15e69a0	finite-text-operand-or-substring	known fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8efbc	rip-relative	0x15e69b0	finite-text-operand-or-substring	rumored fighter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8efd3	rip-relative	0x15e6de0	finite-text-operand-or-substring	legendary protector of the weak
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8efea	rip-relative	0x15e6e60	finite-text-operand-or-substring	famous protector of the weak
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f001	rip-relative	0x15e6e80	finite-text-operand-or-substring	noted protector of the weak
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f01c	rip-relative	0x15e6e20	finite-text-operand-or-substring	known protector of the weak
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f02e	rip-relative	0x15e6e40	finite-text-operand-or-substring	rumored protector of the weak
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f045	rip-relative	0x15e6fd0	finite-text-operand-or-substring	legendary preserver of knowledge
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f05c	rip-relative	0x15e7078	finite-text-operand-or-substring	famous preserver of knowledge
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f073	rip-relative	0x15e7098	finite-text-operand-or-substring	noted preserver of knowledge
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f08e	rip-relative	0x15e7038	finite-text-operand-or-substring	known preserver of knowledge
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f0a0	rip-relative	0x15e7058	finite-text-operand-or-substring	rumored preserver of knowledge
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f0b7	rip-relative	0x15e6ed0	finite-text-operand-or-substring	legendary treasure hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f0ce	rip-relative	0x15e6ef0	finite-text-operand-or-substring	famous treasure hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f0e5	rip-relative	0x15e6ea0	finite-text-operand-or-substring	noted treasure hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f100	rip-relative	0x15e6eb8	finite-text-operand-or-substring	known treasure hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f10f	rip-relative	0x15e6f28	finite-text-operand-or-substring	rumored treasure hunter
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f123	rip-relative	0x15e6f40	finite-text-operand-or-substring	legendary thief
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f137	rip-relative	0x15e6f08	finite-text-operand-or-substring	infamous thief
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f14b	rip-relative	0x15e6f18	finite-text-operand-or-substring	noted thief
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f15f	rip-relative	0x15e6f90	finite-text-operand-or-substring	known thief
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f168	rip-relative	0x15e6fa0	finite-text-operand-or-substring	rumored thief
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f184	rip-relative	0x16da850	finite-text-operand-or-substring	)[R]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f1c5	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f27e	rip-relative	0x16da7f0	finite-text-operand-or-substring	[C:6:0:1]Related Sites[C:7:0:0][B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f2af	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f2f1	rip-relative	0x16da790	finite-text-operand-or-substring	site occ
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f300	rip-relative	0x16da780	finite-text-operand-or-substring	seat of power
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f30f	rip-relative	0x16da7a8	finite-text-operand-or-substring	hangout
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f31e	rip-relative	0x166f58c	finite-text-operand-or-substring	home
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f32d	rip-relative	0x1671674	finite-text-operand-or-substring	lair
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f33c	rip-relative	0x16da79c	finite-text-operand-or-substring	prison
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f352	rip-relative	0x16da850	finite-text-operand-or-substring	)[R]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f395	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	history-describe-complete	0xb8bef0	0xb8f3c9	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86dd01	inline-immediate-fragment		finite-short-string-fragment	Done
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ddb0	rip-relative	0x1785cb0	numeric-string-layout-vector	)
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ddc0	rip-relative	0x16ae298	finite-text-operand-or-substring	Choose a poetic form for the composition.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ddca	rip-relative	0x16ae2a8	finite-text-operand-or-substring	form for the composition.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ddd5	rip-relative	0x16ae2b8	finite-text-operand-or-substring	position.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86dde2	rip-relative	0x16ae2c0	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86de3d	rip-relative	0x1785cc0	numeric-string-layout-vector	*
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86de4d	rip-relative	0x16ae308	finite-text-operand-or-substring	Choose a musical form for the composition.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86de57	rip-relative	0x16ae318	finite-text-operand-or-substring	 form for the composition.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86de62	rip-relative	0x16ae328	finite-text-operand-or-substring	mposition.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86de6f	rip-relative	0x16ae330	finite-text-operand-or-substring	n.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86decb	rip-relative	0x1785cb0	numeric-string-layout-vector	)
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86dedb	rip-relative	0x16ae2d8	finite-text-operand-or-substring	Choose a dance form for the choreography.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86dee5	rip-relative	0x16ae2e8	finite-text-operand-or-substring	orm for the choreography.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86def0	rip-relative	0x16ae2f8	finite-text-operand-or-substring	eography.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86defd	rip-relative	0x16ae300	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86df7b	rip-relative	0x16ae448	finite-text-operand-or-substring	Select memorized content or a form of prose.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86dfa9	rip-relative	0x16ae448	finite-text-operand-or-substring	Select memorized content or a form of prose.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86dfd2	rip-relative	0x16ae428	finite-text-operand-or-substring	What would you like to do?
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e366	rip-relative	0x16ae4b8	finite-text-operand-or-substring	You don't believe anything relevant, unfortunately.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e3a8	rip-relative	0x16ae478	finite-text-operand-or-substring	Assume an appropriate identity first if you'd like to pretend.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e408	rip-relative	0x1785db0	numeric-string-layout-vector	;
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e418	rip-relative	0x16ae3b8	finite-text-operand-or-substring	You don't know anything specific about this, unfortunately.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e422	rip-relative	0x16ae3c8	finite-text-operand-or-substring	nything specific about this, unfortunately.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e42d	rip-relative	0x16ae3d8	finite-text-operand-or-substring	 about this, unfortunately.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e438	rip-relative	0x16ae3e8	finite-text-operand-or-substring	ortunately.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e445	rip-relative	0x16ae3f0	finite-text-operand-or-substring	ly.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e450	rip-relative	0x16ae3f2	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e4d1	rip-relative	0x16ae370	finite-text-operand-or-substring	You must compose a piece first (or learn an improvisational form).
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e6ce	rip-relative	0x15e77d0	finite-text-operand-or-substring	...
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e70a	rip-relative	0x15e783c	finite-text-operand-or-substring	_
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e800	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e810	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e91f	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86e92f	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ea76	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ea86	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ebcf	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ebdf	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ed28	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ed38	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86eea6	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86eeb6	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86efd4	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f0ef	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f113	rip-relative	0x1616488	finite-text-operand-or-substring	 is an example of 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f172	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f19e	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f1c2	rip-relative	0x161649c	finite-text-operand-or-substring	poetry
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f1d5	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f2f7	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f307	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f41f	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f457	rip-relative	0x1616488	finite-text-operand-or-substring	 is an example of 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f4b6	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f4e2	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f506	rip-relative	0x15fdd80	finite-text-operand-or-substring	musical composition
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f519	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f5f0	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f6ed	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f89c	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f8ac	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f8ee	rip-relative	0x1616488	finite-text-operand-or-substring	 is an example of 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f968	rip-relative	0x15fdd70	finite-text-operand-or-substring	choreography
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f97e	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86f9b2	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fa44	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fa54	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fb05	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fb15	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fb8c	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fb9c	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fc4d	rip-relative	0x15fd430	finite-text-operand-or-substring	[C:6:0:1]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fc5d	rip-relative	0x15fd438	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fc9c	rip-relative	0x15f2120	finite-text-operand-or-substring	 is 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fccc	rip-relative	0x15fdc68	finite-text-operand-or-substring	an
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fcd5	rip-relative	0x15fdc64	finite-text-operand-or-substring	a
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fcde	rip-relative	0x15fdc50	finite-text-operand-or-substring	This is an untitled
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fcf7	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd23	rip-relative	0x15fdc44	finite-text-operand-or-substring	manual
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd2f	rip-relative	0x15fdc3c	finite-text-operand-or-substring	guide
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd3b	rip-relative	0x15fddf8	finite-text-operand-or-substring	chronicle
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd47	rip-relative	0x15fdde8	finite-text-operand-or-substring	short story
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd53	rip-relative	0x15fdddc	finite-text-operand-or-substring	novel
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd5f	rip-relative	0x15fddd0	finite-text-operand-or-substring	biography
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd6b	rip-relative	0x15fddc0	finite-text-operand-or-substring	autobiography
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd77	rip-relative	0x15fddb4	finite-text-operand-or-substring	poem
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd83	rip-relative	0x15fddac	finite-text-operand-or-substring	play
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd8f	rip-relative	0x15fdda4	finite-text-operand-or-substring	letter
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fd9b	rip-relative	0x15fdd9c	finite-text-operand-or-substring	essay
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fda7	rip-relative	0x15fdd94	finite-text-operand-or-substring	dialog
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fdb0	rip-relative	0x15fdd80	finite-text-operand-or-substring	musical composition
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fdb9	rip-relative	0x15fdd70	finite-text-operand-or-substring	choreography
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fdc2	rip-relative	0x15fdd58	finite-text-operand-or-substring	comparative biography
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fdcb	rip-relative	0x15fdd40	finite-text-operand-or-substring	biographical dictionary
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fdd4	rip-relative	0x15fdd30	finite-text-operand-or-substring	genealogy
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fddd	rip-relative	0x15fdd20	finite-text-operand-or-substring	encyclopedia
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fde6	rip-relative	0x15fdec0	finite-text-operand-or-substring	cultural history
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fdef	rip-relative	0x15fdea8	finite-text-operand-or-substring	cultural comparison
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fdf8	rip-relative	0x15fde90	finite-text-operand-or-substring	alternate history
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fe01	rip-relative	0x15fde68	finite-text-operand-or-substring	treatise on technological evolution
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fe0a	rip-relative	0x15fde58	finite-text-operand-or-substring	dictionary
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fe13	rip-relative	0x15fde48	finite-text-operand-or-substring	star chart
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fe1c	rip-relative	0x15fde38	finite-text-operand-or-substring	star catalogue
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fe25	rip-relative	0x15fde30	finite-text-operand-or-substring	atlas
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86fea3	rip-relative	0x15fde20	finite-text-operand-or-substring	, authored by 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ff0d	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ff59	rip-relative	0x15fde08	finite-text-operand-or-substring	It is an example of 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ffa2	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x86ffd4	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x870016	rip-relative	0x15fde08	finite-text-operand-or-substring	It is an example of 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x87005f	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x870091	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x8700d3	rip-relative	0x15fde08	finite-text-operand-or-substring	It is an example of 
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x87011c	rip-relative	0x15f8850	finite-text-operand-or-substring	.  
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x87014e	rip-relative	0x15f8388	finite-text-operand-or-substring	[B]
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x870361	rip-relative	0x16ae420	finite-text-operand-or-substring	(etc.)
+classic	PE:6a70b91c:0270a000	chooser-description-producer	0x86dae0	0x87036d	rip-relative	0x16ae424	finite-text-operand-or-substring	.)
+classic	PE:6a70b91c:0270a000	entity-name-and-confidence	0xb8f940	0xb8f9aa	rip-relative	0x16592f8	finite-text-operand-or-substring	[LPAGE:ENT:
+classic	PE:6a70b91c:0270a000	entity-name-and-confidence	0xb8f940	0xb8f9ca	rip-relative	0x15f8664	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	entity-name-and-confidence	0xb8f940	0xb8fa34	rip-relative	0x15f8b50	finite-text-operand-or-substring	[/LPAGE]
+classic	PE:6a70b91c:0270a000	entity-name-and-confidence	0xb8f940	0xb8fa8c	rip-relative	0x16da720	finite-text-operand-or-substring	an unknown civilization
+classic	PE:6a70b91c:0270a000	species-name	0xb91f10	0xb9201b	rip-relative	0x165dd38	finite-text-operand-or-substring	creature
+classic	PE:6a70b91c:0270a000	species-name	0xb91f10	0xb9203a	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	knowledge-confidence-paragraph	0xb92760	0xb92786	rip-relative	0x16dad30	finite-text-operand-or-substring	Only the barest fragments of this amazing story have been uncovered.  It is one of the great untold tales of our times.  
+classic	PE:6a70b91c:0270a000	knowledge-confidence-paragraph	0xb92760	0xb9279b	rip-relative	0x16dac40	finite-text-operand-or-substring	Its nature is still an intriguing puzzle to the learned.  
+classic	PE:6a70b91c:0270a000	knowledge-confidence-paragraph	0xb92760	0xb927b0	rip-relative	0x16dac18	finite-text-operand-or-substring	It is still shrouded in mystery.  
+classic	PE:6a70b91c:0270a000	knowledge-confidence-paragraph	0xb92760	0xb927c5	rip-relative	0x16dacc8	finite-text-operand-or-substring	Many facts are still unclear to historians.  
+classic	PE:6a70b91c:0270a000	knowledge-confidence-paragraph	0xb92760	0xb927da	rip-relative	0x16dac80	finite-text-operand-or-substring	A few issues still trouble scholars, but the picture is fairly clear.  
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91923	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa919de	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91abb	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91add	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91af8	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91b72	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91b91	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91b9a	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91c1a	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91c39	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91c42	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91d9f	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91dcb	rip-relative	0x15e89c4	finite-text-operand-or-substring	The 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91de2	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91e89	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91e98	rip-relative	0x16cb220	finite-text-operand-or-substring	of 
+classic	PE:6a70b91c:0270a000	world-name	0xa91760	0xa91e9f	rip-relative	0x16cb2ac	finite-text-operand-or-substring	Of 
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327c5b	rip-relative	0x177c1f4	finite-text-operand-or-substring	miner
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327c75	rip-relative	0x177c1e8	finite-text-operand-or-substring	woodworker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327c8f	rip-relative	0x177c208	finite-text-operand-or-substring	carpenter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327ca9	rip-relative	0x177c1fc	finite-text-operand-or-substring	bowyer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327cc3	rip-relative	0x177c228	finite-text-operand-or-substring	woodcutter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327cdd	rip-relative	0x177c218	finite-text-operand-or-substring	stoneworker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327cf7	rip-relative	0x177c170	finite-text-operand-or-substring	engraver
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327d11	rip-relative	0x177c160	finite-text-operand-or-substring	stonecutter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327d2b	rip-relative	0x177c188	finite-text-operand-or-substring	stone carver
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327d45	rip-relative	0x177c17c	finite-text-operand-or-substring	mason
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327d5f	rip-relative	0x177c1ac	finite-text-operand-or-substring	ranger
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327d79	rip-relative	0x177c198	finite-text-operand-or-substring	animal caretaker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327d93	rip-relative	0x177c1c0	finite-text-operand-or-substring	animal trainer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327dad	rip-relative	0x16a1484	finite-text-operand-or-substring	hunter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327dc7	rip-relative	0x177c1b8	finite-text-operand-or-substring	trapper
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327de1	rip-relative	0x177c2b8	finite-text-operand-or-substring	animal dissector
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327dfb	rip-relative	0x177c2a8	finite-text-operand-or-substring	metalsmith
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327e15	rip-relative	0x177c2e0	finite-text-operand-or-substring	furnace operator
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327e2f	rip-relative	0x177c2d0	finite-text-operand-or-substring	weaponsmith
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327e49	rip-relative	0x177c308	finite-text-operand-or-substring	armorer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327e63	rip-relative	0x177c2f8	finite-text-operand-or-substring	blacksmith
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327e7d	rip-relative	0x177c318	finite-text-operand-or-substring	metalcrafter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327e97	rip-relative	0x177c310	finite-text-operand-or-substring	jeweler
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327eb1	rip-relative	0x177c248	finite-text-operand-or-substring	gem cutter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327ecb	rip-relative	0x177c238	finite-text-operand-or-substring	gem setter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327edf	rip-relative	0x1625fe8	finite-text-operand-or-substring	craftsman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327ee6	rip-relative	0x1729eb8	finite-text-operand-or-substring	craftsmen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327f05	rip-relative	0x177c268	finite-text-operand-or-substring	woodcrafter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327f1f	rip-relative	0x177c258	finite-text-operand-or-substring	papermaker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327f39	rip-relative	0x177c280	finite-text-operand-or-substring	bookbinder
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327f53	rip-relative	0x177c274	finite-text-operand-or-substring	potter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327f6d	rip-relative	0x177c29c	finite-text-operand-or-substring	glazer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327f87	rip-relative	0x177c290	finite-text-operand-or-substring	wax worker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327fa1	rip-relative	0x177c3a0	finite-text-operand-or-substring	stonecrafter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327fbb	rip-relative	0x177c390	finite-text-operand-or-substring	leatherworker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327fd5	rip-relative	0x177c3b8	finite-text-operand-or-substring	bone carver
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1327fef	rip-relative	0x177c3b0	finite-text-operand-or-substring	weaver
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328009	rip-relative	0x177c3d8	finite-text-operand-or-substring	clothier
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328023	rip-relative	0x177c3c8	finite-text-operand-or-substring	glassmaker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132803d	rip-relative	0x177c3f8	finite-text-operand-or-substring	strand extractor
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328057	rip-relative	0x177c3e8	finite-text-operand-or-substring	fishery worker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132806b	rip-relative	0x177c328	finite-text-operand-or-substring	fisherman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328072	rip-relative	0x177c338	finite-text-operand-or-substring	fishermen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328091	rip-relative	0x177c358	finite-text-operand-or-substring	fish dissector
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13280ab	rip-relative	0x177c348	finite-text-operand-or-substring	fish cleaner
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13280c5	rip-relative	0x177c374	finite-text-operand-or-substring	farmer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13280df	rip-relative	0x177c368	finite-text-operand-or-substring	cheesemaker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13280f9	rip-relative	0x177c384	finite-text-operand-or-substring	milker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328113	rip-relative	0x177c37c	finite-text-operand-or-substring	gelder
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132812d	rip-relative	0x177ccc8	finite-text-operand-or-substring	shearer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328147	rip-relative	0x177ccc0	finite-text-operand-or-substring	spinner
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328161	rip-relative	0x177ccdc	finite-text-operand-or-substring	cook
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132817b	rip-relative	0x177ccd0	finite-text-operand-or-substring	thresher
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328195	rip-relative	0x177ccec	finite-text-operand-or-substring	miller
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13281af	rip-relative	0x1730600	finite-text-operand-or-substring	butcher
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13281c9	rip-relative	0x177cce4	finite-text-operand-or-substring	tanner
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13281e3	rip-relative	0x177cd00	finite-text-operand-or-substring	dyer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13281fd	rip-relative	0x177ccf8	finite-text-operand-or-substring	presser
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328217	rip-relative	0x177cc58	finite-text-operand-or-substring	beekeeper
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328231	rip-relative	0x177cc50	finite-text-operand-or-substring	planter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132824b	rip-relative	0x177cc70	finite-text-operand-or-substring	herbalist
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328265	rip-relative	0x177cc64	finite-text-operand-or-substring	brewer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132827f	rip-relative	0x177cc90	finite-text-operand-or-substring	soap maker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328299	rip-relative	0x177cc80	finite-text-operand-or-substring	potash maker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13282b3	rip-relative	0x177ccb0	finite-text-operand-or-substring	lye maker
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13282cd	rip-relative	0x177cca0	finite-text-operand-or-substring	wood burner
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13282e7	rip-relative	0x177cd90	finite-text-operand-or-substring	engineer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328301	rip-relative	0x177cd80	finite-text-operand-or-substring	mechanic
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132831b	rip-relative	0x177cdb0	finite-text-operand-or-substring	siege engineer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328335	rip-relative	0x177cda0	finite-text-operand-or-substring	siege operator
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132834f	rip-relative	0x177cdc8	finite-text-operand-or-substring	pump operator
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328369	rip-relative	0x16bc644	finite-text-operand-or-substring	clerk
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328383	rip-relative	0x165ae68	finite-text-operand-or-substring	administrator
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132839d	rip-relative	0x177cdc0	finite-text-operand-or-substring	trader
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13283b7	rip-relative	0x16a1454	finite-text-operand-or-substring	poet
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13283d1	rip-relative	0x16a145c	finite-text-operand-or-substring	bard
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13283eb	rip-relative	0x16a1464	finite-text-operand-or-substring	dancer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328405	rip-relative	0x163cf38	finite-text-operand-or-substring	performer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132841f	rip-relative	0x163cf30	finite-text-operand-or-substring	scribe
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328439	rip-relative	0x163cfd8	finite-text-operand-or-substring	tavern keeper
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328453	rip-relative	0x163cf50	finite-text-operand-or-substring	doctor
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132846d	rip-relative	0x163cf58	finite-text-operand-or-substring	diagnostician
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328487	rip-relative	0x163cf10	finite-text-operand-or-substring	bone doctor
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13284a1	rip-relative	0x177cde8	finite-text-operand-or-substring	suturer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13284bb	rip-relative	0x163cf08	finite-text-operand-or-substring	surgeon
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13284d5	rip-relative	0x177cdd8	finite-text-operand-or-substring	merchant
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13284ef	rip-relative	0x177cd14	finite-text-operand-or-substring	drunk
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328503	rip-relative	0x177cd30	finite-text-operand-or-substring	hammerman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132850a	rip-relative	0x177cd08	finite-text-operand-or-substring	hammermen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328529	rip-relative	0x177cd20	finite-text-operand-or-substring	Hammer Lord
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328540	rip-relative	0x177cd40	finite-text-operand-or-substring	spearman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328547	rip-relative	0x177cd50	finite-text-operand-or-substring	spearmen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328563	rip-relative	0x177cd70	finite-text-operand-or-substring	Spearmaster
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132857a	rip-relative	0x177ce68	finite-text-operand-or-substring	crossbowman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328581	rip-relative	0x177cd60	finite-text-operand-or-substring	crossbowmen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132859a	rip-relative	0x177ce88	finite-text-operand-or-substring	Elite Crossbowmen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13285a1	rip-relative	0x177ce50	finite-text-operand-or-substring	Elite Crossbowman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13285bd	rip-relative	0x177ce78	finite-text-operand-or-substring	wrestler
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13285d7	rip-relative	0x177cea8	finite-text-operand-or-substring	Elite Wrestler
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13285eb	rip-relative	0x177cec4	finite-text-operand-or-substring	axeman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13285f2	rip-relative	0x177ce9c	finite-text-operand-or-substring	axemen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328611	rip-relative	0x177ceb8	finite-text-operand-or-substring	Axe Lord
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328625	rip-relative	0x177cdf0	finite-text-operand-or-substring	swordsman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132862c	rip-relative	0x177ce00	finite-text-operand-or-substring	swordsmen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132864b	rip-relative	0x177ce18	finite-text-operand-or-substring	Swordmaster
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132865f	rip-relative	0x177ce38	finite-text-operand-or-substring	maceman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328666	rip-relative	0x177ce10	finite-text-operand-or-substring	macemen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328685	rip-relative	0x177ce28	finite-text-operand-or-substring	Mace Lord
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328699	rip-relative	0x177ce40	finite-text-operand-or-substring	pikeman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13286a0	rip-relative	0x177ce48	finite-text-operand-or-substring	pikemen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13286bf	rip-relative	0x177cf48	finite-text-operand-or-substring	Pikemaster
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13286d3	rip-relative	0x177cf68	finite-text-operand-or-substring	bowman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13286da	rip-relative	0x177cf40	finite-text-operand-or-substring	bowmen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13286f6	rip-relative	0x177cf80	finite-text-operand-or-substring	Elite Bowman
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13286fd	rip-relative	0x177cf58	finite-text-operand-or-substring	Elite Bowmen
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328719	rip-relative	0x177cf70	finite-text-operand-or-substring	blowgunner
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328733	rip-relative	0x177cf98	finite-text-operand-or-substring	Master Blowgunner
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132874d	rip-relative	0x177cf90	finite-text-operand-or-substring	lasher
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328767	rip-relative	0x177ced8	finite-text-operand-or-substring	Master Lasher
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328781	rip-relative	0x177ced0	finite-text-operand-or-substring	recruit
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132879b	rip-relative	0x169c108	finite-text-operand-or-substring	hunting
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13287b0	rip-relative	0x1644b7c	finite-text-operand-or-substring	war
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13287c5	rip-relative	0x177cef8	finite-text-operand-or-substring	Master Thief
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13287df	rip-relative	0x16a13d0	finite-text-operand-or-substring	thief
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13287f9	rip-relative	0x163cf20	finite-text-operand-or-substring	monster slayer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328813	rip-relative	0x166fe1c	finite-text-operand-or-substring	scout
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132882d	rip-relative	0x177cee8	finite-text-operand-or-substring	beast hunter
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328847	rip-relative	0x16e1598	finite-text-operand-or-substring	snatcher
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132885e	rip-relative	0x1670360	finite-text-operand-or-substring	mercenaries
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132886b	rip-relative	0x15e79d0	finite-text-operand-or-substring	mercenary
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132888d	rip-relative	0x177cf14	finite-text-operand-or-substring	sage
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13288a7	rip-relative	0x163cf48	finite-text-operand-or-substring	scholar
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13288c1	rip-relative	0x177cf08	finite-text-operand-or-substring	philosopher
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13288db	rip-relative	0x177cf30	finite-text-operand-or-substring	mathematician
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13288f5	rip-relative	0x177cf20	finite-text-operand-or-substring	historian
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132890f	rip-relative	0x177c988	finite-text-operand-or-substring	astronomer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328929	rip-relative	0x177c978	finite-text-operand-or-substring	naturalist
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328943	rip-relative	0x177c9a8	finite-text-operand-or-substring	chemist
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x132895d	rip-relative	0x177c998	finite-text-operand-or-substring	geographer
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328977	rip-relative	0x166ee18	finite-text-operand-or-substring	criminal
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328991	rip-relative	0x177c9b8	finite-text-operand-or-substring	peddler
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13289ab	rip-relative	0x177c9b0	finite-text-operand-or-substring	prophet
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13289c5	rip-relative	0x177c9c8	finite-text-operand-or-substring	pilgrim
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13289df	rip-relative	0x177c9c0	finite-text-operand-or-substring	monk
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x13289f9	rip-relative	0x177c928	finite-text-operand-or-substring	messenger
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328a96	rip-relative	0x169c248	finite-text-operand-or-substring	children
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328bcb	rip-relative	0x16416fc	finite-text-operand-or-substring	child
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328c28	rip-relative	0x177c920	finite-text-operand-or-substring	babies
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328c3a	rip-relative	0x167b1e4	finite-text-operand-or-substring	baby
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328d96	rip-relative	0x177c920	finite-text-operand-or-substring	babies
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328da5	rip-relative	0x167b1e4	finite-text-operand-or-substring	baby
+classic	PE:6a70b91c:0270a000	profession-title	0x1327b80	0x1328dc7	rip-relative	0x15e4220	finite-text-operand-or-substring	s
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb8ffca	rip-relative	0x16da770	finite-text-operand-or-substring	interrogator
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb8ffe1	rip-relative	0x166fb90	finite-text-operand-or-substring	subject
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb900b3	rip-relative	0x1623ec0	finite-text-operand-or-substring	Nameless
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb9014e	rip-relative	0x16da750	finite-text-operand-or-substring	an unidentified creature
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb90173	rip-relative	0x15f8b40	finite-text-operand-or-substring	[LPAGE:HF:
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb90193	rip-relative	0x15f8664	finite-text-operand-or-substring	]
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb9029d	rip-relative	0x165df6c	finite-text-operand-or-substring	myself
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb902a6	rip-relative	0x165df70	finite-text-operand-or-substring	lf
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb9035b	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb9037f	rip-relative	0x16789f8	finite-text-operand-or-substring	zombie 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb903b7	rip-relative	0x15f8b70	finite-text-operand-or-substring	ghostly 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb904d9	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb90508	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb90591	rip-relative	0x15e4548	finite-text-operand-or-substring	 the 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb905b5	rip-relative	0x16789f8	finite-text-operand-or-substring	zombie 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb905ed	rip-relative	0x15f8b70	finite-text-operand-or-substring	ghostly 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb9070d	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb9078e	rip-relative	0x15e8618	finite-text-operand-or-substring	a 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb90795	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb907bd	rip-relative	0x16789f8	finite-text-operand-or-substring	zombie 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb907f5	rip-relative	0x15f8b70	finite-text-operand-or-substring	ghostly 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb9085c	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb908a7	rip-relative	0x15e4214	finite-text-operand-or-substring	's
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb908c6	rip-relative	0x15f8b50	finite-text-operand-or-substring	[/LPAGE]
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb9091c	rip-relative	0x165ed98	finite-text-operand-or-substring	an unknown creature
+classic	PE:6a70b91c:0270a000	historical-figure-name-and-confidence	0xb8ff50	0xb90932	rip-relative	0x15e4214	finite-text-operand-or-substring	's
+classic	PE:6a70b91c:0270a000	sphere-name	0x753f20	0x753f88	rip-relative	0x15e3e34	finite-text-operand-or-substring	the 
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7540d5	rip-relative	0x169c320	finite-text-operand-or-substring	agriculture
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7540ea	rip-relative	0x169c1f0	finite-text-operand-or-substring	animals
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7540ff	rip-relative	0x169c1f8	finite-text-operand-or-substring	art
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754114	rip-relative	0x169c200	finite-text-operand-or-substring	balance
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754129	rip-relative	0x169c208	finite-text-operand-or-substring	beauty
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75413e	rip-relative	0x169c210	finite-text-operand-or-substring	birth
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754153	rip-relative	0x169c218	finite-text-operand-or-substring	blight
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754168	rip-relative	0x169c220	finite-text-operand-or-substring	boundaries
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75417d	rip-relative	0x169c230	finite-text-operand-or-substring	caverns
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754192	rip-relative	0x169c238	finite-text-operand-or-substring	chaos
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7541a7	rip-relative	0x169c240	finite-text-operand-or-substring	charity
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7541bc	rip-relative	0x169c248	finite-text-operand-or-substring	children
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7541d1	rip-relative	0x169c254	finite-text-operand-or-substring	coasts
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7541e6	rip-relative	0x169c260	finite-text-operand-or-substring	consolation
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7541fb	rip-relative	0x169c128	finite-text-operand-or-substring	courage
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754210	rip-relative	0x169c130	finite-text-operand-or-substring	crafts
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754225	rip-relative	0x169c138	finite-text-operand-or-substring	creation
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75423a	rip-relative	0x15e8f54	finite-text-operand-or-substring	dance
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75424f	rip-relative	0x169c148	finite-text-operand-or-substring	darkness
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754264	rip-relative	0x166b540	finite-text-operand-or-substring	dawn
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754279	rip-relative	0x166b52c	finite-text-operand-or-substring	day
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75428e	rip-relative	0x15e8d48	finite-text-operand-or-substring	death
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7542a3	rip-relative	0x169c158	finite-text-operand-or-substring	deformity
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7542b8	rip-relative	0x169c168	finite-text-operand-or-substring	depravity
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7542cd	rip-relative	0x169c178	finite-text-operand-or-substring	discipline
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7542e2	rip-relative	0x169c188	finite-text-operand-or-substring	disease
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7542f7	rip-relative	0x169c190	finite-text-operand-or-substring	dreams
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75430c	rip-relative	0x169c198	finite-text-operand-or-substring	dusk
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754321	rip-relative	0x166fcd0	finite-text-operand-or-substring	duty
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754336	rip-relative	0x169c1a0	finite-text-operand-or-substring	earth
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75434b	rip-relative	0x163c2ac	finite-text-operand-or-substring	family
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754360	rip-relative	0x169c1a8	finite-text-operand-or-substring	fame
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754375	rip-relative	0x169c1b0	finite-text-operand-or-substring	fate
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75438a	rip-relative	0x169c1b8	finite-text-operand-or-substring	fertility
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75439f	rip-relative	0x169c1c8	finite-text-operand-or-substring	festivals
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7543b4	rip-relative	0x169c1d4	finite-text-operand-or-substring	fire
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7543c9	rip-relative	0x169c0e8	finite-text-operand-or-substring	fish
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7543de	rip-relative	0x169c4a8	finite-text-operand-or-substring	fishing
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7543f3	rip-relative	0x169c4b0	finite-text-operand-or-substring	food
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754408	rip-relative	0x169c4b8	finite-text-operand-or-substring	forgiveness
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75441d	rip-relative	0x169c4c8	finite-text-operand-or-substring	fortresses
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754432	rip-relative	0x169c4d8	finite-text-operand-or-substring	freedom
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754447	rip-relative	0x169c0f0	finite-text-operand-or-substring	gambling
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75445c	rip-relative	0x169c4e0	finite-text-operand-or-substring	games
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754471	rip-relative	0x169c4e8	finite-text-operand-or-substring	generosity
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754486	rip-relative	0x166ba90	finite-text-operand-or-substring	happiness
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75449b	rip-relative	0x169c100	finite-text-operand-or-substring	healing
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7544b0	rip-relative	0x169c4f8	finite-text-operand-or-substring	hospitality
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7544c5	rip-relative	0x169c108	finite-text-operand-or-substring	hunting
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7544da	rip-relative	0x169c508	finite-text-operand-or-substring	inspiration
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7544ef	rip-relative	0x169c518	finite-text-operand-or-substring	jealousy
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754504	rip-relative	0x169c524	finite-text-operand-or-substring	jewels
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754519	rip-relative	0x169c530	finite-text-operand-or-substring	justice
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75452e	rip-relative	0x15e8df8	finite-text-operand-or-substring	labor
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754543	rip-relative	0x169c538	finite-text-operand-or-substring	lakes
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754558	rip-relative	0x169c540	finite-text-operand-or-substring	laws
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75456d	rip-relative	0x169c548	finite-text-operand-or-substring	lies
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754582	rip-relative	0x1670f60	finite-text-operand-or-substring	light
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754597	rip-relative	0x169c550	finite-text-operand-or-substring	lightning
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7545ac	rip-relative	0x169c3f0	finite-text-operand-or-substring	longevity
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7545c1	rip-relative	0x15fd624	finite-text-operand-or-substring	love
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7545d6	rip-relative	0x163c2b8	finite-text-operand-or-substring	loyalty
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7545eb	rip-relative	0x169c3fc	finite-text-operand-or-substring	luck
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754600	rip-relative	0x166b9e4	finite-text-operand-or-substring	lust
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754615	rip-relative	0x169c408	finite-text-operand-or-substring	marriage
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75462a	rip-relative	0x169c414	finite-text-operand-or-substring	mercy
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75463f	rip-relative	0x169c41c	finite-text-operand-or-substring	metals
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754654	rip-relative	0x169c428	finite-text-operand-or-substring	minerals
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754669	rip-relative	0x166b9ec	finite-text-operand-or-substring	misery
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75467e	rip-relative	0x169c434	finite-text-operand-or-substring	mist
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754693	rip-relative	0x169c43c	finite-text-operand-or-substring	moon
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7546a8	rip-relative	0x1647338	finite-text-operand-or-substring	mountains
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7546bd	rip-relative	0x169c444	finite-text-operand-or-substring	muck
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7546d2	rip-relative	0x15e8e38	finite-text-operand-or-substring	murder
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7546e7	rip-relative	0x15e64c4	finite-text-operand-or-substring	music
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7546fc	rip-relative	0x163c4d0	finite-text-operand-or-substring	nature
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754711	rip-relative	0x166b538	finite-text-operand-or-substring	night
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754726	rip-relative	0x169c450	finite-text-operand-or-substring	nightmares
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75473b	rip-relative	0x169c45c	finite-text-operand-or-substring	oaths
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754750	rip-relative	0x169c464	finite-text-operand-or-substring	oceans
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754765	rip-relative	0x15e8db8	finite-text-operand-or-substring	order
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75477a	rip-relative	0x169c470	finite-text-operand-or-substring	painting
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75478f	rip-relative	0x15e904c	finite-text-operand-or-substring	peace
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7547a4	rip-relative	0x169c480	finite-text-operand-or-substring	persuasion
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7547b9	rip-relative	0x169c48c	finite-text-operand-or-substring	plants
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7547ce	rip-relative	0x161649c	finite-text-operand-or-substring	poetry
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7547e3	rip-relative	0x169c498	finite-text-operand-or-substring	pregnancy
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7547f8	rip-relative	0x1646adc	finite-text-operand-or-substring	rain
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75480d	rip-relative	0x169c358	finite-text-operand-or-substring	rainbows
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754822	rip-relative	0x169c368	finite-text-operand-or-substring	rebirth
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754837	rip-relative	0x169c370	finite-text-operand-or-substring	revelry
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75484c	rip-relative	0x169c378	finite-text-operand-or-substring	revenge
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754861	rip-relative	0x169c380	finite-text-operand-or-substring	rivers
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754876	rip-relative	0x169c388	finite-text-operand-or-substring	rulership
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75488b	rip-relative	0x169c394	finite-text-operand-or-substring	rumors
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7548a0	rip-relative	0x163c568	finite-text-operand-or-substring	sacrifice
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7548b5	rip-relative	0x169c39c	finite-text-operand-or-substring	salt
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7548ca	rip-relative	0x169c3a8	finite-text-operand-or-substring	scholarship
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7548df	rip-relative	0x169c3b8	finite-text-operand-or-substring	seasons
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7548f4	rip-relative	0x169c3c0	finite-text-operand-or-substring	silence
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754909	rip-relative	0x16473bc	finite-text-operand-or-substring	sky
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75491e	rip-relative	0x15e44f4	finite-text-operand-or-substring	song
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754933	rip-relative	0x169c3c8	finite-text-operand-or-substring	speech
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754948	rip-relative	0x169c3d0	finite-text-operand-or-substring	stars
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75495d	rip-relative	0x169c3d8	finite-text-operand-or-substring	storms
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754972	rip-relative	0x165cfc0	finite-text-operand-or-substring	strength
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754987	rip-relative	0x169c3e0	finite-text-operand-or-substring	suicide
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x75499c	rip-relative	0x169c3e8	finite-text-operand-or-substring	sun
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7549b1	rip-relative	0x15e8e84	finite-text-operand-or-substring	theft
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7549c6	rip-relative	0x169c290	finite-text-operand-or-substring	thralldom
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7549db	rip-relative	0x169c2a0	finite-text-operand-or-substring	thunder
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x7549f0	rip-relative	0x163e450	finite-text-operand-or-substring	torture
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754a05	rip-relative	0x164accc	finite-text-operand-or-substring	trade
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754a1a	rip-relative	0x169c2a8	finite-text-operand-or-substring	travelers
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754a2f	rip-relative	0x169c2b8	finite-text-operand-or-substring	treachery
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754a44	rip-relative	0x169c2c4	finite-text-operand-or-substring	trees
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754a59	rip-relative	0x169c2d0	finite-text-operand-or-substring	trickery
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754a6e	rip-relative	0x163c600	finite-text-operand-or-substring	truth
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754a83	rip-relative	0x169c278	finite-text-operand-or-substring	twilight
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754a98	rip-relative	0x169c2dc	finite-text-operand-or-substring	valor
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754aad	rip-relative	0x169c2e8	finite-text-operand-or-substring	victory
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754ac2	rip-relative	0x169c2f0	finite-text-operand-or-substring	volcanos
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754ad7	rip-relative	0x1644b7c	finite-text-operand-or-substring	war
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754aec	rip-relative	0x16467a4	finite-text-operand-or-substring	water
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754b01	rip-relative	0x169c2fc	finite-text-operand-or-substring	wealth
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754b16	rip-relative	0x166fd20	finite-text-operand-or-substring	weather
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754b2b	rip-relative	0x169c304	finite-text-operand-or-substring	wind
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754b40	rip-relative	0x169c30c	finite-text-operand-or-substring	wisdom
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754b55	rip-relative	0x15e8cc0	finite-text-operand-or-substring	writing
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754b6a	rip-relative	0x169c314	finite-text-operand-or-substring	youth
+classic	PE:6a70b91c:0270a000	sphere-token	0x7540b0	0x754b7f	rip-relative	0x169c1e0	finite-text-operand-or-substring	no sphere

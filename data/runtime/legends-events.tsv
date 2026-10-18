@@ -3475,6 +3475,8 @@ a competition	比赛	title
 # race and mercenary/order variants. Skills/items keep their shared terms.
 was a {s} group from {p}	曾是来自{p}的{s}势力	action
 was a group from {p}	曾是来自{p}的势力	action
+was a guild from {p}	曾是来自{p}的行会	action
+was a craft guild from {p}	曾是来自{p}的工艺行会	action
 was a {s} order from {p}	曾是来自{p}的{s}团体	action
 was a {s} guild from {p}	曾是来自{p}的{s}行会	action
 was a {s} craft guild from {p}	曾是来自{p}的{s}工艺行会	action
@@ -3499,6 +3501,8 @@ was a shadowy military company from {p}	曾是来自{p}的隐秘的军事队伍	
 was a shadowy military order from {p}	曾是来自{p}的隐秘的军事团体	action
 known for their use of the {i}	以运用{i}的技艺闻名	clause
 known for their use of {i}	以运用{i}的技艺闻名	clause
+known for	以……闻名	clause
+dedicated to the mastery of	致力于精通……	clause
 dedicated to the mastery of the {i}	致力于精通{i}	clause
 dedicated to the mastery of their use of the {i}	致力于精通{i}的使用	clause
 their use of the {i}	他们运用{i}的技艺	clause

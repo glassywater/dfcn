@@ -1,6 +1,36 @@
 // history::describe's entity introduction precedes the event loop. Its
 // subjects, type, race and optional worship details come from native records,
 // never from the English paragraph or the current world's proper names.
+static bool capture_native_history_entity_species(int16_t race, int16_t caste_id,
+        bool unknown_fallback, std::string &out) {
+    NativeBorrowedVector<uintptr_t> creatures;
+    if (!native_history_read_vector(native_history_page_address(
+            NativeHistoryPageSymbol::Creatures), creatures)) return false;
+    out.clear();
+    if (race < 0 || static_cast<size_t>(race) >= creatures.size()) {
+        // b94ed0 emits "creature" for an invalid entity race. The deity
+        // arm calls aa3770 directly, whose invalid-race output is empty.
+        if (unknown_fallback) out = "creature";
+        return true;
+    }
+    const uintptr_t creature = native_history_vector_at(creatures, static_cast<size_t>(race));
+    if (!creature) return false;
+    if (caste_id >= 0) {
+        NativeBorrowedVector<uintptr_t> castes;
+        if (!native_history_read_vector(native_history_object_field(
+                creature, "creature_raw", 0x178, sizeof(castes)), castes)) return false;
+        if (static_cast<size_t>(caste_id) < castes.size()) {
+            const uintptr_t caste = native_history_vector_at(castes, static_cast<size_t>(caste_id));
+            if (!caste || !native_history_copy_string(native_history_object_field(
+                    caste, "caste_raw", 0x60, sizeof(NativeString)), out)) return false;
+        }
+    }
+    // aa3770 selects the RAW adjective, including an intentionally empty
+    // creature adjective, rather than the singular creature/caste noun.
+    return !out.empty() || native_history_copy_string(native_history_object_field(
+        creature, "creature_raw", 0x60, sizeof(NativeString)), out);
+}
+
 static std::optional<NativeHistoryPageData> snapshot_native_history_entity_introduction(
         uintptr_t context) {
     int32_t id = -1;
@@ -22,9 +52,9 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_entity_intro
         return std::nullopt;
     // The native default for site governments, vessel crews and migrating
     // groups is "group from". Do not restrict this paragraph to religions.
-    // Military organizations retain their own type and all optional details;
-    // guilds have a separate profession-based producer.
-    if (type < 0 || type > 9) return std::nullopt;
+    // Military organizations retain their own type and all optional details.
+    // The same producer handles guilds and falls back to "group from" for
+    // every other signed entity kind, including negative/default values.
 
     NativeHistoryPageData page;
     page.kind = NativeHistoryPageKind::EntityIntroduction;
@@ -33,8 +63,67 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_entity_intro
     data.fields["entity_type"] = {type};
     data.references.emplace_back(NativeHistoryObjectKind::World, 0);
     data.texts["species"] = "";
-    if (!(flags & (1u << 10)) && !capture_native_history_creature_label(
-            base, race, -1, false, data.texts["species"])) return std::nullopt;
+    if (!(flags & (1u << 10)) && !capture_native_history_entity_species(
+            race, -1, true, data.texts["species"])) return std::nullopt;
+    if (type == 10) {
+        // b8f553..b8f652 selects the first profession entry of kind 0.
+        // Its caption is plural, uses the player's race (not entity.race),
+        // and is independent of the optional entity species above.
+        NativeBorrowedVector<uintptr_t> professions;
+        if (!native_history_read_vector(field(0xa0), professions)) return std::nullopt;
+        data.fields["guild_craft"] = {1};
+        data.texts["guild_profession"] = "";
+        for (size_t index = 0; index < professions.size(); ++index) {
+            const uintptr_t entry = native_history_vector_at(professions, index);
+            int32_t kind = -1;
+            int16_t profession = -1;
+            if (!entry || !native_history_copy(entry, kind)) return std::nullopt;
+            if (kind != 0) continue;
+            if (!native_history_copy(entry + 4, profession)) return std::nullopt;
+            if (profession == -1) break;
+            data.fields["guild_craft"] = {0};
+            data.fields["guild_profession_id"] = {profession};
+            // 132cc10 leaves its main output empty for an unsupported enum.
+            // HUNTING/WAR write only the separate prefix; PEASANT has no
+            // profession noun (only plural 's'). RAW names still win.
+            if (profession < 0 || profession >= static_cast<int32_t>(history_profession_keys.size())) break;
+            int16_t player_race = -1;
+            NativeBorrowedVector<uintptr_t> creatures;
+            if (!native_history_copy(native_history_global(0x239367c), player_race) ||
+                    !native_history_read_vector(native_history_global(0x24eca68), creatures))
+                return std::nullopt;
+            const uintptr_t creature = player_race >= 0
+                ? native_history_vector_at(creatures, static_cast<size_t>(player_race)) : 0;
+            std::string override;
+            const size_t slot = static_cast<size_t>(profession) * 0x20;
+            if (creature && !native_history_copy_string(native_history_object_field(
+                    creature, "creature_raw", 0x220 + slot), override)) return std::nullopt;
+            auto &caption = data.texts["guild_profession"];
+            if (!override.empty()) {
+                // An explicitly empty plural remains empty in this native
+                // main output; it does not license a fallback profession.
+                if (!native_history_copy_string(native_history_object_field(
+                        creature, "creature_raw", 0x1300 + slot), caption)) return std::nullopt;
+            } else if (profession == 103 || profession == 104) {
+                // CHILD/BABY use their own RAW names after profession-name
+                // overrides. A present singular selects its plural even
+                // when that selected plural is deliberately empty.
+                const size_t name_offset = profession == 103 ? 0xc0 : 0x80;
+                std::string single;
+                if (creature && !native_history_copy_string(native_history_object_field(
+                        creature, "creature_raw", name_offset), single)) return std::nullopt;
+                if (!single.empty()) {
+                    if (!native_history_copy_string(native_history_object_field(
+                            creature, "creature_raw", name_offset + 0x20), caption)) return std::nullopt;
+                } else caption = history_profession_keys[profession];
+            } else if (profession != 98 && profession != 99 && profession != 102 &&
+                    !capture_native_history_profession(base, profession, player_race,
+                        -1, true, caption)) return std::nullopt;
+            break;
+        }
+        if (!populate_native_history_subjects(data, true)) return std::nullopt;
+        return page;
+    }
     if (type == 6) {
         // describe a5e4bc / b8eeb0: native values choose the military
         // adjective and honors choose order/company/band. Store typed
@@ -87,7 +176,7 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_entity_intro
         }
         // The optional specialty is emitted only for <=3 weapon RAWs and
         // a nonempty proficiency vector. The no-weapon branch names its
-        // first unarmed skill; weapon names use the RAW plural fields.
+        // first unarmed skill; each weapon uses its RAW singular NAME.
         data.fields["specialty"] = {weapons.size() <= 3 && skills.size() != 0 &&
             (data.fields["skill"].front() > 10 || data.fields["tradition"].front() > 10)};
         data.fields["weapon_count"] = {static_cast<int32_t>(weapons.size())};
@@ -109,7 +198,7 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_entity_intro
                     const uintptr_t raw = native_history_vector_at(definitions, subtype);
                     auto &label = data.texts["weapon." + std::to_string(index)];
                     if (!raw || !native_history_copy_string(native_history_object_field(
-                            raw, "itemdef_weaponst", 0x88), label) || label.empty())
+                            raw, "itemdef_weaponst", 0x68), label))
                         return std::nullopt;
                 }
             }
@@ -155,8 +244,8 @@ static std::optional<NativeHistoryPageData> snapshot_native_history_entity_intro
                     !capture_native_history_figure_spheres(info, data.fields["spheres"]))
                     return std::nullopt;
                 data.fields["sex"] = {sex};
-                if (deity_race >= 0 && !capture_native_history_creature_label(
-                        base, deity_race, caste, false, data.texts["deity_species"], false))
+                if (deity_race != -1 && !capture_native_history_entity_species(
+                        deity_race, caste, false, data.texts["deity_species"]))
                     return std::nullopt;
             }
             if (force) {

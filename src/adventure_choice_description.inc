@@ -290,9 +290,9 @@
             };
             std::optional<std::string> target;
             if (story_event) {
-                // STORY_EVENT is identified by the native selected entry,
-                // not by English predicates or the shorter +d8 list title.
-                // All +d0 event families use the same complete semantics.
+                // STORY_EVENT and STORY_ENTITY carry the selected native
+                // record. Entity pages include their real world/name/race,
+                // organization branches, worship and confidence semantics.
                 if (const auto pieces = translate_history_event(*story_event, false)) {
                     std::string complete;
                     for (const auto &piece : *pieces) complete += piece.target;

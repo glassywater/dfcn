@@ -1,5 +1,5 @@
-// The story preview keeps only its colored rows after getSentence returns.
-// Recover the selected event by the chooser's actual ID, then require the
+// The story preview keeps only its colored rows after its producer returns.
+// Recover the selected event/entity by the chooser's actual ID, then require the
 // original rich wrapper to reproduce every retained row before attaching it.
 // The native preview and its row vector are never changed by this recovery.
 struct NativePerformanceStoryColoredScratch {
@@ -47,7 +47,7 @@ static bool read_native_performance_story_row(uintptr_t address,
 static void prepare_native_performance_story_document(const char *drawn_row) {
     struct Cache {
         uintptr_t world = 0, owner = 0, choice = 0, event = 0;
-        int32_t id = -1, width = 0;
+        int32_t type = -1, id = -1, width = 0;
         uint64_t generation = 0;
         size_t choice_index = SIZE_MAX;
         NativeBorrowedVector<NativeKnowledgeColoredRow *> native_rows;
@@ -83,7 +83,7 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
                 !native_history_copy(native_history_object_member(perform,
                     "adventure_interface_performst", "color_box_choice", sizeof(choice)), choice) ||
                 !choice || choice > UINTPTR_MAX - 0x70 ||
-                !native_history_copy(choice, type) || type != 12 ||
+                !native_history_copy(choice, type) || (type != 10 && type != 12) ||
                 !native_history_copy(choice + 0x68, id) || id < 0) {
             reset_cache();
             return;
@@ -128,9 +128,18 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
         if (choice_index == SIZE_MAX) { reset_cache(); return; }
 
         uintptr_t world = 0, event = 0;
-        if (!native_history_copy(native_history_global(0x24ebb58), world) || !world ||
-                !native_history_find_structure_id(native_history_global(0x24f9cb8),
-                    0x20, id, event) || !event) { reset_cache(); return; }
+        if (!native_history_copy(native_history_global(0x24ebb58), world) || !world) {
+            reset_cache();
+            return;
+        }
+        if (type == 10)
+            event = native_history_find_subject(base, NativeHistoryObjectKind::Entity, id);
+        else if (!native_history_find_structure_id(native_history_global(0x24f9cb8),
+                0x20, id, event)) event = 0;
+        if (!event || (type == 10 && !g_real_native_history_describe)) {
+            reset_cache();
+            return;
+        }
         const uint64_t generation = g_native_history_capture_generation.load(std::memory_order_acquire);
         const auto rows_agree = [&](const std::vector<NativePerformanceStoryRow> &rows,
                 const NativeKnowledgeTextBox &box) {
@@ -151,7 +160,7 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
             return true;
         };
         if (cache.world == world && cache.owner == owner && cache.choice == choice &&
-                cache.id == id && cache.event == event && cache.width == live.width &&
+                cache.type == type && cache.id == id && cache.event == event && cache.width == live.width &&
                 cache.generation == generation && cache.document &&
                 cache.native_rows.begin == live.rows.begin && cache.native_rows.end == live.rows.end &&
                 cache.native_rows.capacity == live.rows.capacity && rows_agree(cache.rows, live)) {
@@ -187,23 +196,60 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
             NativeHistoryPending previous = std::move(pending_native_history());
             ~PendingScope() { pending_native_history() = std::move(previous); }
         } pending_scope;
-        int32_t native_type = -1;
-        if (!capture_native_history_event_identity(reinterpret_cast<void *>(event), native_type)) return;
         alignas(16) std::array<unsigned char, 0xc8> context{};
         initialize_native_history_context(context.data());
         std::fill_n(context.begin(), sizeof(uint32_t), 0);
         NativeMissionReportScratch sentence(base);
-        capture_native_history_sentence_range(reinterpret_cast<void *>(event),
-            &sentence.source, context.data(), true, false, 0);
-        auto captured = std::move(pending_native_history());
-        pending_native_history() = {};
         std::string_view source;
-        if (!captured.event || captured.event->id != id || captured.generation != generation ||
-                !native_string_view(&sentence.source, &source, kNativeHistorySourceLimit) ||
-                source.empty() || source != captured.native_source ||
-                !native_history_tree_within_limits(*captured.event)) return;
-        std::string rich_source = "[C:6:0:1]";
-        rich_source.append(source);
+        std::string rich_source;
+        auto story = std::make_shared<NativeHistoryDocument>();
+        if (type == 10) {
+            // PE 87121a..8712e4 supplies flags=0, entity focus +1c and
+            // brief=true. The shared producer owns every organization type,
+            // optional deity/weapon description and actual confidence text.
+            // Preserve any unrelated in-flight Legends capture around it.
+            struct LegendsScope {
+                NativeHistoryLegendsState previous = std::move(native_history_legends_state());
+                LegendsScope() { native_history_legends_state() = {}; }
+                ~LegendsScope() { native_history_legends_state() = std::move(previous); }
+            } legends_scope;
+            const uintptr_t assign = native_history_page_address(NativeHistoryPageSymbol::AssignLiteral);
+            const uintptr_t history = native_history_global(0x24f9cb8);
+            if (!assign || !history) return;
+            std::memcpy(context.data() + 0x1c, &id, sizeof(id));
+            reinterpret_cast<NativeHistoryLiteralFn>(assign)(&sentence.source, "[C:6:0:1]");
+            capture_native_history_describe(reinterpret_cast<void *>(history),
+                context.data(), true, &sentence.source);
+            auto &page = native_history_legends_state().completed;
+            if (!page.source_complete || page.source != &sentence.source ||
+                    page.generation != generation || page.missing_snapshots || page.spans.size() != 1 ||
+                    !native_string_view(&sentence.source, &source, kNativeHistorySourceLimit) ||
+                    source != page.complete_source) return;
+            auto &span = page.spans.front();
+            if (!span.page || span.page->kind != NativeHistoryPageKind::EntityIntroduction ||
+                    span.page->data.entity_id != id || span.begin != 9 || span.end < span.begin ||
+                    source.substr(0, span.begin) != "[C:6:0:1]" ||
+                    source.substr(span.end) != "[B]" ||
+                    !native_history_tree_within_limits(span.page->data, true)) return;
+            rich_source.assign(source);
+            story->native_source = span.source;
+            story->page = std::move(span.page);
+        } else {
+            int32_t native_type = -1;
+            if (!capture_native_history_event_identity(reinterpret_cast<void *>(event), native_type)) return;
+            capture_native_history_sentence_range(reinterpret_cast<void *>(event),
+                &sentence.source, context.data(), true, false, 0);
+            auto captured = std::move(pending_native_history());
+            pending_native_history() = {};
+            if (!captured.event || captured.event->id != id || captured.generation != generation ||
+                    !native_string_view(&sentence.source, &source, kNativeHistorySourceLimit) ||
+                    source.empty() || source != captured.native_source ||
+                    !native_history_tree_within_limits(*captured.event)) return;
+            rich_source = "[C:6:0:1]";
+            rich_source.append(source);
+            story->native_source.assign(source);
+            story->event = std::move(*captured.event);
+        }
         // This const wrapper argument borrows core-owned bytes. Only the
         // isolated native sentence and colored rows own DF allocations.
 #ifdef _WIN32
@@ -243,7 +289,7 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
                     "adventure_interface_performst", "open", sizeof(current_open)), current_open) || current_open != 1 ||
                 !native_history_copy(native_history_object_member(perform,
                     "adventure_interface_performst", "color_box_choice", sizeof(current_choice)), current_choice) ||
-                current_choice != choice || !native_history_copy(choice, current_type) || current_type != 12 ||
+                current_choice != choice || !native_history_copy(choice, current_type) || current_type != type ||
                 !native_history_copy(choice + 0x68, current_id) || current_id != id ||
                 !native_history_copy(owner, current.rows) ||
                 !current.rows.valid(16384) || current.rows.begin != live.rows.begin ||
@@ -254,10 +300,7 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
 
         auto document = read_native_reading_box(&current, &rich, false, false, false);
         if (!document || document->rows.size() != rows.size()) return;
-        auto story = std::make_shared<NativeHistoryDocument>();
         story->owner = owner;
-        story->event = std::move(*captured.event);
-        story->native_source.assign(source);
         {
             std::lock_guard<std::mutex> lock(g_native_history_mutex);
             g_native_history_sequence = g_native_history_sequence == UINT64_MAX
@@ -273,6 +316,7 @@ static void prepare_native_performance_story_document(const char *drawn_row) {
         cache.owner = owner;
         cache.choice = choice;
         cache.event = event;
+        cache.type = type;
         cache.id = id;
         cache.width = live.width;
         cache.generation = generation;
