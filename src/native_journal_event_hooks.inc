@@ -82,8 +82,10 @@ static void retain_native_journal_event(void *summary) {
     std::vector<uintptr_t> title_addresses;
     std::string title;
     if (native_history_copy_string(object + 0x68, title)) {
-        if (!native_journal_event_rows(object + 0xc0, title_rows, title_addresses)) {
-            // Short titles bypass the row vector: c31d4 draws +a0 itself.
+        if (!native_journal_event_rows(object + 0xc0, title_rows, title_addresses) ||
+                title_rows.size() < 2) {
+            // c31d4 draws +a0 whenever the vector contains fewer than two
+            // rows, including a single cached wrap with a different address.
             // Bind that real std::string address to the same complete title.
             title_rows.clear();
             title_addresses.clear();

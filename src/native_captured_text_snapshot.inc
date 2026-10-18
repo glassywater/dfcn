@@ -3,9 +3,25 @@
 static void bind_native_drawn_text_frame(const graphicst &graphics) {
     if (!graphics.screen || graphics.dimx <= 0 || graphics.dimx > 1000 ||
             graphics.dimy <= 0 || graphics.dimy > 1000) return;
+    const uintptr_t journal_base = native_history_profile_base();
+#ifdef _WIN32
+    const std::array journal_title_callers{
+        native_reference_address(journal_base, 0xc3197),
+        native_reference_address(journal_base, 0xc31d9),
+    };
+    const uintptr_t journal_counter_caller = native_reference_address(journal_base, 0xc3263);
+#else
+    const std::array journal_title_callers{
+        native_reference_address(journal_base, 0x17cf93a),
+        native_reference_address(journal_base, 0x17cf972),
+        native_reference_address(journal_base, 0x17cfd0e),
+    };
+    const uintptr_t journal_counter_caller = native_reference_address(journal_base, 0x17cfa9b);
+#endif
     std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
     bool changed = false;
-    const auto bind = [&](NativeDrawnTextRow &row) {
+    const auto bind = [&](NativeDrawnTextRow &row,
+            const std::vector<NativeDrawnTextRow> &draws) {
         const auto *grid = row.top_layer ? graphics.screen_top : graphics.screen;
         if (!grid || !row.draw_grid || row.draw_grid == grid ||
                 row.draw_dimx != graphics.dimx || row.draw_dimy != graphics.dimy ||
@@ -13,21 +29,70 @@ static void bind_native_drawn_text_frame(const graphicst &graphics) {
                 row.y >= graphics.dimy || row.source.empty() ||
                 row.source.size() > static_cast<size_t>(graphics.dimx - row.x)) return;
         // Native display rotates its buffers independently of retained addst
-        // records. Bind the record to this display only while its ENTIRE source
+        // records. Bind ordinary records only while their ENTIRE source
         // remains at the same coordinates on the same logical plane. Never read
         // the old buffer, infer another owner from its spelling, or change the
         // captured caller, epoch, order, or typed identity/name metadata.
+        bool current = true;
         for (size_t byte = 0; byte < row.source.size(); ++byte) {
             const size_t tile = (static_cast<size_t>(row.x) + byte) * graphics.dimy + row.y;
             const auto ch = grid[tile * 8];
             if ((ch ? ch : static_cast<unsigned char>(' ')) !=
-                    static_cast<unsigned char>(row.source[byte])) return;
+                    static_cast<unsigned char>(row.source[byte])) {
+                current = false;
+                break;
+            }
+        }
+        if (!current) {
+            if (!journal_base || std::find(journal_title_callers.begin(),
+                    journal_title_callers.end(), row.native_caller) ==
+                        journal_title_callers.end()) return;
+            // Events paint their counter after the wrapped title. Its exact
+            // producer can overwrite the title's tail on every retained buffer;
+            // require that whole counter and every remaining title byte here.
+            current = std::any_of(draws.begin(), draws.end(), [&](const auto &counter) {
+                if (counter.native_caller != journal_counter_caller ||
+                        counter.top_layer != row.top_layer ||
+                        !counter.draw_grid || (counter.draw_grid != row.draw_grid &&
+                            counter.draw_grid != grid) ||
+                        counter.draw_dimx != row.draw_dimx || counter.draw_dimy != row.draw_dimy ||
+                        counter.draw_epoch != row.draw_epoch || counter.y != row.y ||
+                        counter.sequence <= row.sequence || counter.x <= row.x ||
+                        counter.x >= graphics.dimx || counter.source.empty() ||
+                        counter.source.size() > static_cast<size_t>(graphics.dimx - counter.x) ||
+                        static_cast<size_t>(counter.x - row.x) >= row.source.size()) return false;
+                const int counter_end = counter.x + static_cast<int>(counter.source.size());
+                if (counter.draw_clip &&
+                        (counter.x < counter.draw_clip->x || counter.y < counter.draw_clip->y ||
+                         counter_end > int64_t(counter.draw_clip->x) + counter.draw_clip->w ||
+                         counter.y >= int64_t(counter.draw_clip->y) + counter.draw_clip->h)) return false;
+                for (size_t byte = 0; byte < counter.source.size(); ++byte) {
+                    const size_t tile = (static_cast<size_t>(counter.x) + byte) * graphics.dimy + row.y;
+                    if (grid[tile * 8] != static_cast<unsigned char>(counter.source[byte])) return false;
+                }
+                bool visible_title = false;
+                for (size_t byte = 0; byte < row.source.size(); ++byte) {
+                    const int x = row.x + static_cast<int>(byte);
+                    if (x >= counter.x && x < counter_end) continue;
+                    const size_t tile = static_cast<size_t>(x) * graphics.dimy + row.y;
+                    const auto expected = static_cast<unsigned char>(row.source[byte]);
+                    const auto ch = grid[tile * 8];
+                    if ((ch ? ch : static_cast<unsigned char>(' ')) != expected) return false;
+                    if (expected != ' ' && (!row.draw_clip ||
+                            (x >= row.draw_clip->x && row.y >= row.draw_clip->y &&
+                             x < int64_t(row.draw_clip->x) + row.draw_clip->w &&
+                             row.y < int64_t(row.draw_clip->y) + row.draw_clip->h)))
+                        visible_title = true;
+                }
+                return visible_title;
+            });
+            if (!current) return;
         }
         row.draw_grid = grid;
         changed = true;
     };
-    for (auto &row : g_native_drawn_text_rows) bind(row);
-    for (auto &row : g_native_drawn_top_text_rows) bind(row);
+    for (auto &row : g_native_drawn_text_rows) bind(row, g_native_drawn_text_rows);
+    for (auto &row : g_native_drawn_top_text_rows) bind(row, g_native_drawn_top_text_rows);
     if (changed) ++g_native_drawn_text_revision;
 }
 
