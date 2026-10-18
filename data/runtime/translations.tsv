@@ -54082,6 +54082,7 @@ This. How can I even describe the skill?	这番技艺，叫我怎么形容才好
 Unit custom profession: Militia Comander	军事指挥官	l
 Verbally struggle against great distress	说出你与强烈苦恼的抗争	hP
 Visitor overview purpose: to slay beasts	猎杀野兽	hl
+Water flows from the adjacent input tile	水会从相邻的输入格流入，	hP
 Workshop mood brood: "Yes.  I need {s}."	“对。我需要{s}。”	l
 Workshop mood demand: "I must have {s}!"	“我必须得到{s}！”	l
 Workshop mood material: raw... clear..."	粗坯……透明……	l
@@ -56090,6 +56091,7 @@ and formed a grudge against {n} at {p}.	并在{p1}对{n1}怀恨在心。	ht
 and formed a grudge against {n} in {p}.	并在{p1}对{n1}怀恨在心。	ht
 and fought with and subdued {a} at {p}.	并在{p1}与{a1}交战并将其制服。	ht
 and fought with and subdued {a} in {p}.	并在{p1}与{a1}交战并将其制服。	ht
+and from the tile below the input tile.	也会从输入格下方的格子流入。	hP
 and fully incorporated into {p} at {p}.	并在{p2}完全并入了{p1}。	ht
 and fully incorporated into {p} in {p}.	并在{p2}完全并入了{p1}。	ht
 and gave in to fear of death during {e}	并在{e1}期间因惧怕死亡而屈服了	ht

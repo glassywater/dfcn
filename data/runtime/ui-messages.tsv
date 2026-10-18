@@ -211,6 +211,9 @@ A bolt thrower can be freely turned by the operator. Choose a resting orientatio
 Horizontal axles can vary in length.	水平轴可设置不同长度。
 Set the liquid flow direction below.	在下方设置液体流动方向。
 Water flows from the adjacent input tile and from the tile below the input tile.	水会从相邻的输入格及输入格下方的格子流入。
+# Pump guidance is drawn as two independent native rows, not a wrapped caption.
+Water flows from the adjacent input tile	水会从相邻的输入格流入，
+and from the tile below the input tile.	也会从输入格下方的格子流入。
 Minecart rollers can vary in length.	矿车滚轴可设置不同长度。
 Set the orientation and speed below.	在下方设置朝向和速度。
 Set the friction and auto-dump direction.	设置摩擦力和自动倾倒方向。
