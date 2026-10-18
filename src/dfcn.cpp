@@ -10984,8 +10984,17 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     if (personal_name) {
         const std::string_view person = trim_view(screen_text);
         const size_t open = person.find('`');
-        if (open == std::string_view::npos)
-            return translate_generated_person_name(screen_text);
+        if (open == std::string_view::npos) {
+            if (const auto name = translate_generated_person_name(person)) return name;
+            // The native first_name is optional: a complete English surname
+            // can be the only visible group. Keep native given names above,
+            // and require both registered roots before accepting this form
+            // in a chooser that can also contain ordinary action captions.
+            if (person.find_first_of(" \t\r\n") == std::string_view::npos &&
+                    generated_title_shape(person))
+                return english_character_names_.compound(native_text_to_utf8(person), true);
+            return std::nullopt;
+        }
         const size_t close = person.rfind('\'');
         if ((open > 0 && person[open - 1] != ' ') ||
                 close == std::string_view::npos || close <= open + 1 ||

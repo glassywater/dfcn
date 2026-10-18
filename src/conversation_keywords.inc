@@ -232,8 +232,14 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
             return uniform_colors((simulate ? "模仿" : "演奏") + *target +
                 (simulate ? "的演奏" : ""));
         }
-        case 9: // STORY_HF, with any visible assumed identity preserved.
-            return uniform_colors(translate_ui_message_capture(source, true));
+        case 9: { // STORY_HF, with any visible assumed identity preserved.
+            auto target = translate_ui_message_capture(source, true);
+            // The bound historical-figure entry also proves a bare name.
+            // Named animals can display only an English surname, without a
+            // native given word or caste prefix for the unit-label grammar.
+            if (!target) target = translate_legends_name(source, true);
+            return uniform_colors(std::move(target));
+        }
         case 25: // SERMON_HFID is the historical figure's own name.
             return uniform_colors(translate_legends_name(source, true));
         case 8: case 10: case 11: // STORY_SITE / ENTITY / SUBREGION.

@@ -80,10 +80,12 @@ public:
         return known_component(source);
     }
 
-    std::optional<std::string> compound(std::string_view source) const {
+    std::optional<std::string> compound(std::string_view source,
+        bool require_two_roots = false) const {
         if (!loaded_) return std::nullopt;
         Part p = surname_part(source);
-        if (!p.known || !p.complete) return std::nullopt;
+        if (!p.known || !p.complete || (require_two_roots && p.roots != 2))
+            return std::nullopt;
         return p.text;
     }
 
