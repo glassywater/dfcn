@@ -283,6 +283,7 @@ public:
         // when their visible English bytes happen to be identical.
         optional(input.squad_alias_target, [&](const auto &target) { text(target); });
         optional(input.squad_generated_name, [&](const auto &generated) { name(generated); });
+        value(input.squad_list_right);
         value(input.info_title_kind); value(input.info_title_authored);
         value(input.info_title_right); value(input.civilization_field);
         optional(input.caravan_entity_name, [&](const auto &entity) { name(entity); });

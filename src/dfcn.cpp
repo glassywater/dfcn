@@ -2399,6 +2399,9 @@ struct NativeDrawnTextRow {
     // The equipment roster reserves the columns after this edge for icons.
     // Capture it while the name writer's native frame is still alive.
     int uniform_member_right = -1;
+    // Squad name, order and routine share the producer's text column,
+    // which narrows when the list needs its scrollbar.
+    int squad_list_right = -1;
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;

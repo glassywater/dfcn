@@ -717,6 +717,33 @@ static int capture_native_uniform_member_right(uintptr_t caller, uintptr_t sourc
 #endif
 }
 
+static int capture_native_squad_list_right(uintptr_t caller, uintptr_t source, int x) {
+#ifdef _WIN32
+    const uintptr_t base = native_history_profile_base();
+    if (!base || !caller || !source) return -1;
+    uintptr_t anchor_offset = 0;
+    if (caller == native_reference_address(base, 0x4456b9) + 5)
+        anchor_offset = 0x1cc; // squad name at rbp+0x130
+    else if (caller == native_reference_address(base, 0x4458af) + 5)
+        anchor_offset = 0x1ac; // order at rbp+0x110
+    else if (caller == native_reference_address(base, 0x445987) + 5)
+        anchor_offset = 0x18c; // routine at rbp+0xf0
+    if (!anchor_offset || source < anchor_offset) return -1;
+    // Both PE list renderers keep the right anchor at rsp+0x64 and the
+    // text X at rsp+0x68, with rbp=rsp+0x100. The anchor already reserves
+    // the scrollbar when present. Name/order resize to anchor-X-1 cells;
+    // retain that allocation for every translated field in the same row.
+    int32_t anchor = 0, text_x = -1;
+    if (!native_history_copy(source - anchor_offset, anchor) ||
+            !native_history_copy(source - anchor_offset + 4, text_x) ||
+            text_x != x || x < 0 || anchor <= x + 1 || anchor > 1000) return -1;
+    return anchor - 1;
+#else
+    (void)caller; (void)source; (void)x;
+    return -1;
+#endif
+}
+
 static NativeAdventureCraftingRole native_adventure_crafting_role(
         uintptr_t caller, uintptr_t source) {
     for (const auto &site : g_native_adventure_crafting_sites) {
@@ -2405,6 +2432,9 @@ static void capture_native_owned_caption(graphicst *graphics,
             }
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;
+            if constexpr (!Character)
+                row.squad_list_right = capture_native_squad_list_right(
+                    native_caller, row.address, x);
             clip = {graphics->clipx[0], graphics->clipx[1],
                 graphics->clipy[0], graphics->clipy[1]};
             if (y >= 0 && y < dimy && y >= clip[2] && y <= clip[3])
