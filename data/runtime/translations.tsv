@@ -112745,6 +112745,7 @@ youngest daughter	最小的女儿	h
 (Beta) Dwarvemon	（测试版）Dwarvemon
 (Combat) Enraged	战斗：激怒	w
 (Combat) Stunned	战斗：眩晕	w
+(heard recently)	（刚刚听到）	wl
 (unnamed orders)	（未命名命令）	w
 , a deity of {r}	，即掌管{r1}的神祇	ht
 , who suffocated	，最终窒息而死	h
@@ -136321,6 +136322,7 @@ You vanish.	你消失了。	hP
 [Completed]	[已完成]	hq
 [Completed]	[完成]	w
 a ceremony.	仪式。	hEi
+a colony of	群落	wi
 a dormitory	宿舍	h
 a foot race	赛跑	hEi
 a guildhall	行会大厅	h
@@ -140183,6 +140185,7 @@ a concert.	音乐会。	hEi
 a hospital	医院	h
 a lone {a}	独自行动的{a1}	htu
 a lone {s}	独自行动的{s1}	htu
+a swarm of	一大群	wi
 a thousand	一千	wi
 a trenches	壕沟	h
 a week ago	一周前	wi
@@ -146210,6 +146213,7 @@ yourself	你自己	wi
  splint	夹板	wi
 (Rusty)	（生疏）	w
 (enemy)	（敌人）	h
+(heard)	（听到）	wl
 (minor)	（次要）	w
 , a god	，即一位男神	h
 , slain	，被杀害	h
@@ -150080,6 +150084,7 @@ lung	肺	wi
 lust	情欲	r
 lynx	猞猁	wi
 mace	钉头锤	wi
+many	许多	wi
 mask	面罩	wi
 maul	大锤	wi
 mead	蜜酒	wi

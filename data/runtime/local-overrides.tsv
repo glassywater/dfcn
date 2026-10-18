@@ -6537,6 +6537,10 @@ Floor (remembered)	地板（印象中）	wl
 Open air (remembered)	开放空间（印象中）	wl
 # RVA 0x4069a3..0x406aab: nine sound kinds, four with quiet/loud branches,
 # produce 13 labels. RVA 0x406ab0..0x406aea adds one of two heard states.
+# An out-of-range sound kind skips the label but still appends its heard
+# state; the native caption reader trims the resulting leading space.
+(heard)	（听到）	wl
+(heard recently)	（刚刚听到）	wl
 Quiet movement (heard)	轻微移动声（听到）	wl
 Quiet movement (heard recently)	轻微移动声（刚刚听到）	wl
 Loud movement (heard)	响亮移动声（听到）	wl

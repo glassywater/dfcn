@@ -103,6 +103,39 @@ name = "main"
 "{walls}" = "{walls}"
 "{pillar_fortifications}" = "{pillar_fortifications}"
 "{tracks}" = "{tracks}"
+"{missing_construction}" = "{missing_construction}"
+
+# Construction lookup (PE 0xa46f20, Classic 0xa44750) appends nothing
+# when the coordinate has no construction record. The terrain caller still
+# emits its shape, Shoddy/Unusable and any wall-quality prefix. Keep those
+# real empty-material branches separate from normal material productions.
+[[rulesets]]
+name = "missing_construction"
+[rulesets.rules]
+"{constructed::^0}{missing_construction::gap}Floor" = "{constructed::^0}地板"
+"{constructed::^0}{missing_construction::gap}{prefix::updownboth} Stairway" = "{constructed::^0}{prefix::updownboth}楼梯"
+"{prefix::may_unusable}{missing_construction::gap}{prefix::updown} Slope" = "{prefix::may_unusable}{prefix::updown}斜坡"
+"{missing_construction::gap}Track {tracks::$0}" = "轨道{tracks::$0}"
+"{prefix::may_unusable}{missing_construction::gap}{prefix::updown} Track {tracks::$0}" = "{prefix::may_unusable}{prefix::updown}轨道{tracks::$0}"
+"{walls::^0}{missing_construction::gap}{missing_construction::wall}" = "{walls::^0}{missing_construction::wall}"
+
+# The suffix starts with a space even when its material helper emits nothing:
+# e.g. "Shoddy  Floor", "Unusable  Upward Track (N)" or "Smooth  Wall".
+# Native capture trims leading padding; older card readers also collapse
+# internal spaces. Admit exactly that one remaining separator, or none.
+[[rulesets]]
+name = "missing_construction::gap"
+optional = true
+[rulesets.rules]
+" " = ""
+
+[[rulesets]]
+name = "missing_construction::wall"
+[rulesets.rules]
+"Wall" = "墙体"
+"Cluster" = "矿簇"
+"Fortification" = "垛墙"
+"Pillar" = "柱子"
 
 [[rulesets]]
 name = "plants"

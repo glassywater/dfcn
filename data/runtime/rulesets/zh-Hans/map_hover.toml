@@ -19,6 +19,15 @@ base = "map_hover"
 "{::health::contaminant}" = "{::health::contaminant}"
 
 [[rulesets]]
+name = "vermin_missing_species"
+[rulesets.rules]
+# The constructor retains these quantities when the creature RAW is absent.
+# Resolve them only after the native vermin payload selects the same prefix.
+"a colony of" = "群落"
+"many" = "许多"
+"a swarm of" = "一大群"
+
+[[rulesets]]
 name = "track_side"
 [rulesets.rules]
 # RVA 0x407dd4..0x407e4f: optional handedness of the item leaving a print.
