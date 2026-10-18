@@ -1,0 +1,27 @@
+edition	owner_rva	instruction_rva	resolved_target_rva	access	operand_bytes	overlapping_fields	instruction	basis
+reference	0x310b80	0x310b82	0x18a1818	write	1		mov    BYTE PTR [rcx],0x0	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310b85	0x18a1828	write	8		mov    QWORD PTR [rcx+0x10],rdx	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310b89	0x18a181a	write	4	multi	mov    DWORD PTR [rcx+0x2],0x10000	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310b90	0x18a1824	write	4	type	mov    DWORD PTR [rcx+0xc],0xffffffff	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310b97	0x18a181f	write	2		mov    WORD PTR [rcx+0x7],0x1	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310b9d	0x18a1830	read	8		mov    rax,QWORD PTR [rcx+0x18]	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310ba1	0x18a1838	read	8		cmp    rax,QWORD PTR [rcx+0x20]	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310ba7	0x18a1838	write	8		mov    QWORD PTR [rcx+0x20],rax	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310bab	0x18a1848	read	8		mov    rax,QWORD PTR [rcx+0x30]	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310baf	0x18a1850	read	8		cmp    rax,QWORD PTR [rcx+0x38]	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310bb5	0x18a1850	write	8		mov    QWORD PTR [rcx+0x38],rax	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310bb9	0x18a1860	write	8		mov    QWORD PTR [rcx+0x48],rdx	RCX is exact rectangle-state base passed by input owner LEA
+reference	0x310b80	0x310bbd	0x18a1868	write	1		mov    BYTE PTR [rcx+0x50],dl	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e742	0x189b7e8	write	1		mov    BYTE PTR [rcx],0x0	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e745	0x189b7f8	write	8		mov    QWORD PTR [rcx+0x10],rdx	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e749	0x189b7ea	write	4	multi	mov    DWORD PTR [rcx+0x2],0x10000	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e750	0x189b7f4	write	4	type	mov    DWORD PTR [rcx+0xc],0xffffffff	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e757	0x189b7ef	write	2		mov    WORD PTR [rcx+0x7],0x1	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e75d	0x189b800	read	8		mov    rax,QWORD PTR [rcx+0x18]	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e761	0x189b808	read	8		cmp    rax,QWORD PTR [rcx+0x20]	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e767	0x189b808	write	8		mov    QWORD PTR [rcx+0x20],rax	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e76b	0x189b818	read	8		mov    rax,QWORD PTR [rcx+0x30]	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e76f	0x189b820	read	8		cmp    rax,QWORD PTR [rcx+0x38]	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e775	0x189b820	write	8		mov    QWORD PTR [rcx+0x38],rax	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e779	0x189b830	write	8		mov    QWORD PTR [rcx+0x48],rdx	RCX is exact rectangle-state base passed by input owner LEA
+classic	0x30e740	0x30e77d	0x189b838	write	1		mov    BYTE PTR [rcx+0x50],dl	RCX is exact rectangle-state base passed by input owner LEA

@@ -59215,6 +59215,7 @@ wrongfully convicted {n} of {s} in {p}	在{p1}错误地判定{n1}犯有{s1}	ht
 {a}'s happening upon {a} in the wilds.	在荒野中，{a1}与{a2}的偶遇。	htEi
 {b} was authored by {n} in {p} at {p}.	在{p2}，{n1}在{p1}撰写了《{b1}》。	ht
 {b} was authored by {n} in {p} in {p}.	在{p2}，{n1}在{p1}撰写了《{b1}》。	ht
+{d} coffins rejected (already in use.)	{d1}具棺材未被选用（已被占用）	wtl
 {e} "{b}" in {i} to {i} by {n} at {p}.	在{p1}，{n1}以{i1}为材，为{i2}完成{e1}《{b1}》。	htEi
 {e} "{b}" in {i} to {i} by {n} in {d}.	{d1}年的{n1}以{i1}为材，为{i2}完成{e1}《{b1}》。	htEi
 {e} "{b}" in {i} to {i} by {n} in {p}.	在{p1}，{n1}以{i1}为材，为{i2}完成{e1}《{b1}》。	htEi
@@ -61324,6 +61325,8 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {b} was authored by {n} in {p} in {p}	在{p2}，{n1}在{p1}撰写了《{b1}》	ht
 {b} was created in {p} by {n} at {p}.	在{p2}，{n1}在{p1}创造了{b1}。	ht
 {b} was created in {p} by {n} in {p}.	在{p2}，{n1}在{p1}创造了{b1}。	ht
+{d} chairs rejected (already in use.)	{d1}把椅子未被选用（已被占用）	wtl
+{d} tables rejected (already in use.)	{d1}张桌子未被选用（已被占用）	wtl
 {e} "{b}" in {i} to {i} by {n} at {p}	在{p1}，{n1}以{i1}为材，为{i2}完成{e1}《{b1}》	htEi
 {e} "{b}" in {i} to {i} by {n} in {d}	{d1}年的{n1}以{i1}为材，为{i2}完成{e1}《{b1}》	htEi
 {e} "{b}" in {i} to {i} by {n} in {p}	在{p1}，{n1}以{i1}为材，为{i2}完成{e1}《{b1}》	htEi
@@ -63623,6 +63626,7 @@ you will need to unretire or recruit	但你需要让这个角色复出或将其	
 {b} was authored by {n} in the wilds	在荒野中，{n1}撰写了《{b1}》	ht
 {b} was created in {p} by {n} at {p}	在{p2}，{n1}在{p1}创造了{b1}	ht
 {b} was created in {p} by {n} in {p}	在{p2}，{n1}在{p1}创造了{b1}	ht
+{d} coffins rejected (not enclosed.)	{d1}具棺材未被选用（房间未封闭）	wtl
 {e} "{b}" to {i} by {n} in the wilds	在荒野中，{n1}为{i1}完成{e1}《{b1}》	htEi
 {e} after a scholarly lecture in {p}	在{p1}听了一场学术讲座后，{e1}	htEi
 {e} after abducting {n} in the wilds	在荒野中，在绑架{n1}后，{e1}	htEi
@@ -65900,6 +65904,9 @@ you were caught up in a new romance	你陷入新的恋情	wi
 {a}'s surprising of {a} within {p}.	在{p1}，{a1}对{a2}的突袭。	htEi
 {b} was authored by {n} during {e}.	在{e1}期间，{n1}撰写了《{b1}》。	ht
 {b} was authored by {n} within {p}.	在{p1}，{n1}撰写了《{b1}》。	ht
+{d} beds rejected (already in use.)	{d1}张床未被选用（已被占用）	wtl
+{d} chairs rejected (not enclosed.)	{d1}把椅子未被选用（房间未封闭）	wtl
+{d} tables rejected (not enclosed.)	{d1}张桌子未被选用（房间未封闭）	wtl
 {e} "{b}" to {i} by {n} during {e}.	在{e2}期间，{n1}为{i1}完成{e1}《{b1}》。	htEi
 {e} "{b}" to {i} by {n} within {p}.	在{p1}，{n1}为{i1}完成{e1}《{b1}》。	htEi
 {e} after a horrific combat at {p}.	在{p1}，在一场可怕战斗之后发生的{e1}。	htEi
@@ -70495,6 +70502,7 @@ withdrew from society within {p}.	在{p1}退出了社会交往。	ht
 {a}'s cornering of {a} during {e}	在{e1}期间，{a1}将{a2}逼入绝境	htEi
 {a}'s cornering of {a} within {p}	在{p1}，{a1}将{a2}逼入绝境	htEi
 {b} is an heirloom of our people.	{b1}是我们族人的传家宝。	hPt
+{d} beds rejected (not enclosed.)	{d1}张床未被选用（房间未封闭）	wtl
 {d}nd Hematite, early summer, {d}	第{d2}年，初夏，赤铁矿月{d1}日	wti
 {d}rd Hematite, early summer, {d}	第{d2}年，初夏，赤铁矿月{d1}日	wti
 {d}st Hematite, early summer, {d}	第{d2}年，初夏，赤铁矿月{d1}日	wti
@@ -89102,6 +89110,7 @@ writing of a masterpiece.	书写杰作。	hEi
 {b} is an example of {p}.	《{b}》采用“{p}”的形式。	ht
 {b}: A Brief Introduction	{b}简介	hbti
 {b}: The Definitive Guide	{b}：权威指南	hbti
+{d} dining halls created.	已创建{d1}间餐厅。	wtl
 {e} after a dream at {p}.	在{p1}，在做了一场梦后，{e1}。	htEi
 {e} after a dream in {d}.	{d1}年的在做了一场梦后，{e1}。	htEi
 {e} after a dream in {p}.	在{p1}，在做了一场梦后，{e1}。	htEi
@@ -98226,6 +98235,7 @@ Designate items for 	指定物品进行丢弃和熔炼，启用	w
 Designate, Free Draw	指定：自由绘制	w
 Designate, Mine Auto	指定：自动挖掘	w
 Designate, Rectangle	指定：矩形	w
+Dining hall created.	餐厅已创建。	hP
 Disdains competition	轻视竞争	w
 Disdains cooperation	轻视合作	w
 Disdains tranquility	轻视宁静	w
@@ -100735,6 +100745,7 @@ yours or companion's	你或同伴留下的	h
 {b}: My Only Mistake	{b}：我唯一的错误	hbti
 {d} cave wheat seeds	{d} 份洞穴小麦种子	wtl
 {d} dimple cup spawn	{d} 份窝杯菇菌种	wtl
+{d} offices created.	已创建{d1}间办公室。	wtl
 {d} skill picks left	剩余 {d} 个技能选择点	wt
 {d} unpicked skills!	还有 {d} 个技能选择点未分配！	wt
 {d}nd Limestone, {d}	第{d2}年，石灰岩月{d1}日	wti
@@ -108102,6 +108113,7 @@ yellow spessartine	橙榴石	wi
 {d} pig tail seeds	{d} 份猪尾草种子	wtl
 {d} points remain!	还有 {d} 点未使用！	wt
 {d} pond turtle, \x0C	{d}只池龟，♀	wtl
+{d} tombs created.	已创建{d1}处墓地。	wtl
 {d}nd Felsite, {d}	第{d2}年，霏细岩月{d1}日	wti
 {d}nd Granite, {d}	第{d2}年，花岗岩月{d1}日	wti
 {d}rd Felsite, {d}	第{d2}年，霏细岩月{d1}日	wti
@@ -117428,6 +117440,7 @@ OCEAN REJECTION	海洋不符合要求	hP
 Occasion at {p}	在{p1}，庆典	htEi
 Occasion in {d}	{d1}年的庆典	htEi
 Occasion in {p}	在{p1}，庆典	htEi
+Office created.	办公室已创建。	hP
 On this mission	已加入此任务	wliP
 Open Combat Log	打开战斗日志	w
 Open the place 	打开地点信息目录。	w
@@ -127279,6 +127292,7 @@ Thread (Yarn)	线（毛线）	wi
 Thrill-seeker	喜欢冒险	w
 To the north:	北方：	hP
 To the south:	南方：	hP
+Tomb created.	墓地已创建。	hP
 Total quality	总品质	wi
 Trees: Scarce	树木:稀少	w
 Trees: Sparse	树木:稀疏	w
