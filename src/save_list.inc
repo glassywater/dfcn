@@ -299,7 +299,7 @@ void Overlay::append_save_list_captions(std::vector<std::string> &rows,
                 ? std::string_view(draw.source) : std::string_view(draw.complete_source);
             const auto saved = capture_native_save_name_source(draw.address, complete);
             if (!saved) continue;
-            if (auto target = translate_saved_site_name(*saved)) {
+            if (auto target = translate_saved_name(*saved)) {
                 std::string source(visible);
                 // The title renderer draws fort_name, ", ", then its native
                 // game mode consecutively, without relocating the cursor.
@@ -308,6 +308,7 @@ void Overlay::append_save_list_captions(std::vector<std::string> &rows,
                 const std::string_view mode = [&]() -> std::string_view {
                     switch (saved->game_type) {
                     case 0: case 8: return "Fortress";
+                    case 1: return "Adventurer";
                     case 3: return "Reclaim Fortress";
                     case 10: return "Fortress Testing";
                     default: return {};

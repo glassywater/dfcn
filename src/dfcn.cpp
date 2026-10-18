@@ -3963,7 +3963,7 @@ private:
     std::optional<std::string> translate_site_reference(
         std::string_view source, bool english_field = false) const;
     std::optional<std::string> translate_book_site_subject(std::string_view source) const;
-    std::optional<std::string> translate_saved_site_name(const NativeSaveNameSource &source) const;
+    std::optional<std::string> translate_saved_name(const NativeSaveNameSource &source) const;
     std::optional<std::string> translate_legends_place(
         std::string_view source, bool english_field = false) const;
     std::optional<std::string> translate_world_artifact_location(std::string_view source) const;
