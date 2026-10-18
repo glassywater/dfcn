@@ -123,8 +123,7 @@ void Overlay::layout_adventure_personality_needs(SDL_Renderer *renderer) {
                     (label->native_split_text ? 2 : 1) * tile_h};
                 label->layout_ellipsize = true;
             }
-            label->layout_font_pixels = pixels;
-            label->layout_lock_font_pixels = true;
+            label->layout_prepared = true;
             label->layout_line_height_pixels = tile_h;
         }
     }

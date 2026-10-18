@@ -391,9 +391,7 @@ void Overlay::layout_character_group_rows(SDL_Renderer *renderer) {
         field->layout_box_pixel_x = origin_x + left * tile_w;
         field->layout_box_pixel_width = width;
         field->layout_clip_right = left + field->layout_length;
-        field->layout_font_pixels = pixels;
-        field->layout_lock_font_pixels = true;
-        field->layout_visual_height_pixels = 0;
+        field->layout_prepared = true;
         field->layout_line_height_pixels = tile_h;
         field->layout_left = true;
         field->layout_ellipsize = true;

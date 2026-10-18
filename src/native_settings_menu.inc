@@ -397,8 +397,7 @@ void Overlay::render_settings_menu(SDL_Renderer *renderer) {
         match.layout_native_clip = SDL_Rect{match.layout_box_pixel_x,
             origin_y + box.y * grid->tile_pixel_y, match.layout_box_pixel_width, grid->tile_pixel_y};
         match.layout_fixed_baseline = true;
-        match.layout_font_pixels = unified_font_pixels();
-        match.layout_lock_font_pixels = true;
+        match.layout_prepared = true;
         match.layout_foreground_rgb = 0xffffff;
         match.graphical_auto_foreground = false;
         labels.push_back(std::move(match));

@@ -500,9 +500,7 @@ void Overlay::append_native_info_panel_titles(std::vector<std::string> &rows,
             caption.layout_length = native_bounds ? right - draw.x : 0;
             caption.layout_left = true;
             caption.layout_clip_right = native_bounds ? right : -1;
-            caption.layout_font_pixels = std::clamp(
-                static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-            caption.layout_lock_font_pixels = true;
+            caption.layout_prepared = true;
             caption.layout_line_height_pixels = gps_->tile_pixel_y;
             matches.push_back(std::move(caption));
             std::fill(rows[draw.y].begin() + draw.x, rows[draw.y].begin() + end, ' ');
@@ -683,9 +681,7 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
         caption.layout_length = right - caption.layout_x;
         caption.layout_left = true;
         caption.layout_clip_right = right;
-        caption.layout_font_pixels = std::clamp(
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-        caption.layout_lock_font_pixels = true;
+        caption.layout_prepared = true;
         caption.layout_line_height_pixels = gps_->tile_pixel_y;
         matches.push_back(std::move(caption));
         std::fill(rows[y].begin() + left, rows[y].begin() + end, ' ');

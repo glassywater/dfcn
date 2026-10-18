@@ -408,8 +408,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 match.layout_length = chooser->panel.x + chooser->panel.w - choice_left;
                 match.layout_clip_right = chooser->panel.x + chooser->panel.w;
                 match.layout_left = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 matches.push_back(std::move(match));
                 std::fill_n(rows[choice.y].begin() + choice.x + offset, count, ' ');
             };
@@ -778,8 +777,7 @@ void Overlay::append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
                 match.layout_length = match.layout_clip_right - match.layout_x;
                 match.layout_fixed_baseline = true;
                 match.layout_left = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 bool top = false;
                 const auto *cell = cell_at(field.x, field.y, &top);
                 if (cell) match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
@@ -831,9 +829,7 @@ void Overlay::layout_fortress_unit_chooser(SDL_Renderer *renderer) {
             match.layout_left = true;
             match.layout_right = false;
             match.layout_ellipsize = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
-            match.layout_visual_height_pixels = 0;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
         }
         if (match.rule == kFortressUnitChooserRule && match.native_picture_caption_box) {
@@ -871,9 +867,7 @@ void Overlay::layout_fortress_unit_chooser(SDL_Renderer *renderer) {
             field->layout_right = false;
             field->layout_ellipsize = true;
             field->layout_left = true;
-            field->layout_font_pixels = unified_font_pixels();
-            field->layout_lock_font_pixels = true;
-            field->layout_visual_height_pixels = 0;
+            field->layout_prepared = true;
             field->layout_line_height_pixels = tile_h;
             field->layout_native_clip = SDL_Rect{origin_x + left * tile_w,
                 origin_y + box.y * tile_h, (right - left) * tile_w, box.h * tile_h};

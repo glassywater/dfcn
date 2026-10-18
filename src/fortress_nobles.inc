@@ -317,7 +317,7 @@ void Overlay::layout_fortress_nobles(SDL_Renderer *renderer) {
         const int width = (right - left) * gps_->tile_pixel_x - 2 * config_.horizontal_padding;
         if (width <= 0) continue;
         const auto fits = [&](const std::string &text) {
-            const auto *glyph = get_glyph_texture(renderer, text, width, tile_h, pixels, 0, true);
+            const auto *glyph = get_glyph_texture(renderer, text, width);
             return glyph && glyph->texture && glyph->width <= width;
         };
         for (const auto &row : column) {
@@ -406,8 +406,8 @@ void Overlay::layout_fortress_nobles(SDL_Renderer *renderer) {
         std::vector<std::vector<Match *>> grades, requirements;
         for (const auto &[y, parts] : column) {
             grades.push_back({parts.front()});
-            if (const auto *glyph = get_glyph_texture(renderer, parts.front()->target,
-                    width, gps_->tile_pixel_y, unified_font_pixels(), 0, true))
+            if (const auto *glyph = get_glyph_texture(
+                    renderer, parts.front()->target, width))
                 current_width = std::max(current_width, glyph->width);
             if (parts.size() > 1)
                 requirements.emplace_back(parts.begin() + 1, parts.end());

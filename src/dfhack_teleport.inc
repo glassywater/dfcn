@@ -127,8 +127,7 @@
                 match.layout_length = allocation_right - x;
                 match.layout_clip_right = allocation_right;
                 match.layout_left = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 dfhack_auxiliary_matches.push_back(std::move(match));
             };
             const auto readable_name = [&](std::string_view source) -> std::optional<std::string> {

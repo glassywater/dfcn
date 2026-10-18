@@ -71,7 +71,7 @@ void Overlay::render_native_pause_layer(SDL_Renderer *renderer) {
     const bool menu = layout_pause_menu(renderer);
     if (!menu) for (auto &match : prepared_matches_) {
         if (match.target.empty() || match.native_help_source_only ||
-                match.native_split_duplicate || match.layout_font_pixels > 0) continue;
+                match.native_split_duplicate || match.layout_prepared) continue;
         const int y = match.native_split_text ? match.native_split_top_y : match.y;
         if (const auto button = native_button_text_span(*gps_, match.x, match.x + match.length, y)) {
             match.layout_x = button->first;

@@ -63,8 +63,7 @@ void Overlay::append_fortress_site_name(std::vector<std::string> &rows,
                     match.layout_length = right - left;
                     match.layout_left = true;
                     match.layout_clip_right = right;
-                    match.layout_font_pixels = unified_font_pixels();
-                    match.layout_lock_font_pixels = true;
+                    match.layout_prepared = true;
                     matches.push_back(std::move(match));
                 }
                 return;
@@ -330,9 +329,7 @@ void Overlay::layout_fortress_text_rows(SDL_Renderer *renderer,
             // it while fitting the shared font; fragmented list rows still
             // use the ordinary left-to-right packing below.
             if (!preserve_alignment || row.size() != 1) part->layout_left = true;
-            part->layout_font_pixels = pixels;
-            part->layout_lock_font_pixels = true;
-            part->layout_visual_height_pixels = 0;
+            part->layout_prepared = true;
             part->layout_line_height_pixels = tile_h;
             part->layout_clip_right = part->layout_clip_right < 0 ? row_right
                 : std::min(row_right, part->layout_clip_right);
@@ -353,8 +350,7 @@ void Overlay::layout_fortress_text_rows(SDL_Renderer *renderer,
                 // native field cannot display all of its translated glyphs.
                 part->layout_glyph_foreground_rgb = colored_match_foregrounds(*part, foreground);
             }
-            const auto *glyph = get_glyph_texture(renderer, part->target,
-                width, tile_h, pixels, 0, true);
+            const auto *glyph = get_glyph_texture(renderer, part->target, width);
             if (!glyph || !glyph->texture) return;
             row_advances.push_back(glyph->width);
         }
@@ -380,9 +376,7 @@ void Overlay::layout_fortress_text_rows(SDL_Renderer *renderer,
                 : std::max(1, region_width - offset);
             part.layout_clip_right = part.layout_clip_right < 0 ? row_right
                 : std::min(row_right, part.layout_clip_right);
-            part.layout_font_pixels = pixels;
-            part.layout_lock_font_pixels = true;
-            part.layout_visual_height_pixels = 0;
+            part.layout_prepared = true;
             part.layout_line_height_pixels = tile_h;
             const bool native_baseline = part.native_split_text && !part.layout_fixed_baseline;
             const int text_y = native_baseline ? part.native_split_top_y

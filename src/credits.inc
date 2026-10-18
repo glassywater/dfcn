@@ -409,8 +409,7 @@ void Overlay::draw_main_menu_branding(SDL_Renderer *renderer) {
     for (const Match &match : prepared_matches_) {
         if (match.rule != kMainMenuCreditsRule || match.native_split_duplicate ||
                 match.target.empty()) continue;
-        auto *glyph = get_glyph_texture(renderer, match.target,
-            gps_->screen_pixel_x, tile_h);
+        auto *glyph = get_glyph_texture(renderer, match.target, gps_->screen_pixel_x);
         if (!glyph) continue;
         SDL_Rect line{origin_x + match.layout_x * tile_w,
             origin_y + match.layout_y * tile_h + match.layout_pixel_y,
@@ -468,8 +467,9 @@ void Overlay::draw_main_menu_branding(SDL_Renderer *renderer) {
         const SDL_Rect label{left, logo.y + art_height, logo.w, label_height};
         SDL_SetRenderDrawColor(renderer, 0, 174, 220, 255);
         SDL_RenderFillRect(renderer, &label);
-        if (auto *glyph = get_glyph_texture(renderer, "byayoi同人社区",
-                gps_->screen_pixel_x, tile_h); glyph && glyph->width > 0 && glyph->height > 0) {
+        if (auto *glyph = get_glyph_texture(
+                renderer, "byayoi同人社区", gps_->screen_pixel_x);
+            glyph && glyph->width > 0 && glyph->height > 0) {
             const int padding = std::max(1, label_height / 8);
             const double scale = std::min(
                 static_cast<double>(std::max(1, label.w - padding * 2)) / glyph->width,

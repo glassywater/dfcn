@@ -39,9 +39,7 @@ void Overlay::layout_fortress_help(SDL_Renderer *renderer) {
                 match.layout_box_pixel_width = 0;
                 match.layout_fixed_baseline = true;
                 match.layout_pixel_y = 0;
-                match.layout_font_pixels = pixels;
-                match.layout_lock_font_pixels = true;
-                match.layout_visual_height_pixels = 0;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = tile_h;
                 match.layout_native_clip = SDL_Rect{origin_x + left * tile_w,
                     origin_y + match.y * tile_h, (right - left) * tile_w, tile_h};

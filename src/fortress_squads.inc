@@ -865,9 +865,7 @@ void Overlay::layout_fortress_squads(SDL_Renderer *renderer) {
             name.layout_y = name.y;
             name.layout_pixel_y = 0;
             name.layout_fixed_baseline = false;
-            name.layout_font_pixels = unified_font_pixels();
-            name.layout_lock_font_pixels = true;
-            name.layout_visual_height_pixels = 0;
+            name.layout_prepared = true;
             name.layout_line_height_pixels = gps_->tile_pixel_y;
             name.layout_ellipsize = true;
         }

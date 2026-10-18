@@ -82,8 +82,7 @@ void Overlay::append_native_fortress_status_rows(std::vector<std::string> &rows,
                 match.layout_length = right - left;
                 match.layout_clip_right = right;
                 match.layout_left = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_foreground_rgb = draw.foreground_rgb;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 matches.push_back(std::move(match));

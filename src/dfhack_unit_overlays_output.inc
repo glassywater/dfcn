@@ -207,8 +207,7 @@
                     match.layout_length = end - x;
                     match.layout_left = true;
                     match.layout_clip_right = end;
-                    match.layout_font_pixels = unified_font_pixels();
-                    match.layout_lock_font_pixels = true;
+                    match.layout_prepared = true;
                     // Store each token's native pen before half-font layout
                     // normalization assigns an explicit shared baseline.
                     const auto append_colors = [&](const std::string &target, int source_x) {

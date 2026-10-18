@@ -386,8 +386,7 @@ void Overlay::append_native_message_paragraphs(std::vector<std::string> &screen_
                 caption.layout_x = caption.x;
                 caption.layout_length = caption.length;
                 caption.layout_left = true;
-                caption.layout_font_pixels = unified_font_pixels();
-                caption.layout_lock_font_pixels = true;
+                caption.layout_prepared = true;
                 caption.layout_foreground_rgb = message_foreground(caption.x, caption.y);
                 if (only_y < 0 || only_y == header_y) result.push_back(std::move(caption));
                 std::fill_n(screen_rows[header_y].begin() + title_at, heading.size(), ' ');

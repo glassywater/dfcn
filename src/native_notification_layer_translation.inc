@@ -94,7 +94,7 @@ void Overlay::render_native_announcement_layer(SDL_Renderer *renderer, bool repo
     std::erase_if(prepared_matches_, complete_report);
     if (reports) for (auto &match : prepared_matches_) {
         const int y = match.native_split_text ? match.native_split_top_y : match.y;
-        if (match.target.empty() || match.native_split_duplicate || match.layout_font_pixels > 0)
+        if (match.target.empty() || match.native_split_duplicate || match.layout_prepared)
             continue;
         if (const auto button = native_button_text_span(*gps_, match.x, match.x + match.length, y)) {
             match.layout_x = button->first;

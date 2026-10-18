@@ -164,10 +164,8 @@ bool Overlay::layout_worldgen_parameters(SDL_Renderer *renderer) {
             match.layout_ellipsize = true;
         }
         match.layout_left = !field.action;
-        match.layout_font_pixels = pixels;
-        match.layout_visual_height_pixels = 0;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = tile_h;
-        match.layout_lock_font_pixels = true;
     }
     static bool logged = false;
     if (!logged) {
@@ -308,10 +306,8 @@ bool Overlay::layout_worldgen_setup(SDL_Renderer *renderer) {
         match.layout_box_pixel_x = field.left;
         match.layout_box_pixel_width = field.width;
         match.layout_left = field.left_align;
-        match.layout_font_pixels = pixels;
-        match.layout_visual_height_pixels = 0;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = tile_h;
-        match.layout_lock_font_pixels = true;
         match.layout_native_clip = field.clip;
         match.layout_ellipsize = true;
         // Keep source spans, split-caption identity, colors, skin and native

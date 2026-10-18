@@ -81,8 +81,7 @@ void Overlay::append_color_picker_rows(std::vector<std::string> &rows,
             match.layout_length = right - left;
             match.layout_left = true;
             match.layout_clip_right = right;
-            match.layout_font_pixels = pixels;
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
             matches.push_back(std::move(match));
             std::fill(rows[choice.y].begin() + begin, rows[choice.y].begin() + end, ' ');

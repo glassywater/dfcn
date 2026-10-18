@@ -182,8 +182,7 @@ void Overlay::append_fortress_workshop_activities(std::vector<std::string> &rows
                 match.layout_left = true;
                 match.layout_foreground_rgb = draw.foreground_rgb;
                 match.layout_fixed_baseline = !split;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 if (split) {
                     match.native_split_text = true;

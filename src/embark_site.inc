@@ -386,9 +386,7 @@ void Overlay::append_embark_site_resources(NativeTextCard &card,
             line.layout_clip_right = right;
             line.layout_left = true;
             line.layout_foreground_rgb = line.layout_glyph_foreground_rgb.front();
-            line.layout_font_pixels = std::clamp(static_cast<int>(gps_->tile_pixel_y * config_.font_scale),
-                1, gps_->tile_pixel_y);
-            line.layout_lock_font_pixels = true;
+            line.layout_prepared = true;
             line.layout_line_height_pixels = gps_->tile_pixel_y;
         };
         place(resource);
@@ -518,7 +516,6 @@ void Overlay::layout_embark_site_card(SDL_Renderer *renderer) {
     struct Field { Match *line; size_t colon; std::vector<uint32_t> text; };
     std::vector<Field> fields;
     int label_width = 0;
-    const int pixels = rows.front().front()->layout_font_pixels;
     const int padding = config_.horizontal_padding;
     for (const auto &row : rows) {
         Match &match = *row.front();
@@ -534,8 +531,8 @@ void Overlay::layout_embark_site_card(SDL_Renderer *renderer) {
         const size_t end = static_cast<size_t>(colon - cps.begin()) + 1;
         std::string label;
         for (size_t i = 0; i < end; ++i) append_utf8_codepoint(label, cps[i]);
-        const auto *glyph = get_glyph_texture(renderer, label,
-            (right - left) * tile_w, tile_h, pixels, 0, true);
+        const auto *glyph = get_glyph_texture(
+            renderer, label, (right - left) * tile_w);
         if (!glyph || !glyph->texture) continue;
         label_width = std::max(label_width, glyph->width);
         fields.push_back({&match, end, std::move(cps)});

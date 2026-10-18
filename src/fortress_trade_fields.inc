@@ -140,8 +140,7 @@ void Overlay::append_fortress_trade_fields(std::vector<std::string> &rows,
                 match.layout_length = display_right - display_left;
                 match.layout_clip_right = display_right;
                 match.layout_left = !centered;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 if (complete && target) {
                     match.layout_glyph_foreground_rgb = target_colors;

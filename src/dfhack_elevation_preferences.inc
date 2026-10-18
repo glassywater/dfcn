@@ -98,8 +98,7 @@
             match.layout_clip_right = end;
             match.layout_fixed_baseline = true;
             match.layout_native_clip = auxiliary_pixels({x, y, end - x, 1});
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             // A native half-font pair repeats the entire source, not
             // merely its count or a shared item. Require opposite flags
             // and the same layer on every nonblank bracket/field glyph.

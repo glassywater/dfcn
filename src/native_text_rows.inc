@@ -296,9 +296,7 @@ void Overlay::compose_native_text_rows(const NativeTextCard &card,
         line.layout_clip_right = card.interior.x + card.interior.w;
         line.native_picture_caption_box = card.button_box;
         line.layout_foreground_rgb = row.foregrounds.front();
-        line.layout_font_pixels = std::clamp(
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-        line.layout_lock_font_pixels = true;
+        line.layout_prepared = true;
         line.layout_line_height_pixels = gps_->tile_pixel_y;
         composed.push_back(std::move(line));
     }

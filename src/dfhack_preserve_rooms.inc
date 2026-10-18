@@ -19,8 +19,7 @@
         match.layout_length = right - x;
         match.layout_left = true;
         match.layout_clip_right = right;
-        match.layout_font_pixels = unified_font_pixels();
-        match.layout_lock_font_pixels = true;
+        match.layout_prepared = true;
         match.layout_native_clip = auxiliary_pixels({x, y, right - x, 1});
         dfhack_auxiliary_matches.push_back(std::move(match));
     };
