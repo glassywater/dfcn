@@ -1,5 +1,24 @@
-# Complete native growth report, shared by hover, expanded alerts and report history.
+# Complete native status reports, shared by hover, expanded alerts and report history.
 # scope	source	target	field scopes	native provenance
+# LAND_GAINS_STATUS (254) and LAND_ELEVATED_STATUS (255) share the complete
+# NativeName(site) + fixed clause + LAND_NAME/default + period production.
+# NativeName is a site field, not an English entity name; retain its native
+# naming preferences and authored nickname through the existing site resolver.
+# Every vanilla LAND_NAME and both defaults have an explicit whole-record rule.
+# The empty-site branches retain the native clause when has_name is false.
+# Source: data/extracted/fortress-land-elevation/ (current ELF Ghidra output).
+adventure-announcement	{s} and the surrounding lands have been made a barony.	{s1}及其周边地区已晋升为男爵领。	$native-site-name	ELF 12c3370..12c58cf; submissions 12c47fa/12c4a18; LAND_NAME MOUNTAIN/BARON
+adventure-announcement	{s} and the surrounding lands have been made a county.	{s1}及其周边地区已晋升为伯爵领。	$native-site-name	ELF 12c3370..12c58cf; submissions 12c47fa/12c4a18; LAND_NAME MOUNTAIN/COUNT
+adventure-announcement	{s} and the surrounding lands have been made a duchy.	{s1}及其周边地区已晋升为公爵领。	$native-site-name	ELF 12c3370..12c58cf; submissions 12c47fa/12c4a18; LAND_NAME MOUNTAIN/DUKE
+adventure-announcement	{s} and the surrounding lands have been made an official land of the realm.	{s1}及其周边地区已被正式纳入王国领土。	$native-site-name	ELF 12c4380..12c43bf; subtype 3 default; submission 12c47fa
+adventure-announcement	{s} and the surrounding lands have been made an even more official land of the realm.	{s1}及其周边地区在王国中的领土地位进一步提升。	$native-site-name	ELF 12c3a0b..12c3a8f; subtype 4 default; submission 12c4a18
+adventure-announcement	and the surrounding lands have been made a barony.	此地及其周边地区已晋升为男爵领。		ELF 12bfe90 has_name=false/empty name; 12c46ec/12c490a still append complete clause; LAND_NAME MOUNTAIN/BARON
+adventure-announcement	and the surrounding lands have been made a county.	此地及其周边地区已晋升为伯爵领。		ELF 12bfe90 has_name=false/empty name; 12c46ec/12c490a still append complete clause; LAND_NAME MOUNTAIN/COUNT
+adventure-announcement	and the surrounding lands have been made a duchy.	此地及其周边地区已晋升为公爵领。		ELF 12bfe90 has_name=false/empty name; 12c46ec/12c490a still append complete clause; LAND_NAME MOUNTAIN/DUKE
+adventure-announcement	and the surrounding lands have been made an official land of the realm.	此地及其周边地区已被正式纳入王国领土。		ELF 12bfe90 has_name=false/empty name; subtype 3 default; submission 12c47fa
+adventure-announcement	and the surrounding lands have been made an even more official land of the realm.	此地及其周边地区在王国中的领土地位进一步提升。		ELF 12bfe90 has_name=false/empty name; subtype 4 default; submission 12c4a18
+adventure-announcement	{s} and the surrounding lands have been made {s}.	{s1}及其周边地区已晋升为{s2}。	$native-site-name,$term	ELF 12c5142/12c53cc copy nonempty position.land_name (+258, length +260); non-vanilla RAW terms use existing scoped term translation
+adventure-announcement	and the surrounding lands have been made {s}.	此地及其周边地区已晋升为{s1}。	$term	ELF 12bfe90 has_name=false/empty name; nonempty non-vanilla position.land_name; submissions 12c47fa/12c4a18
 fortress-announcement	An animal has grown to become a {s}.	一只动物长成了{s1}。	$growth-result	ELF c20a54..c20b9b; selected name absent or has_name=false; b71ba0(unit,result,true); announcement 0x116
 fortress-announcement	{s} has grown to become a {s}.	{s1}长成了{s2}。	$person,$growth-result	ELF c2963e..c29646 -> c20a81..c20b9b; b33570 selected language_name -> 12bfe90; b71ba0(unit,result,true); announcement 0x116
 

@@ -150551,3 +150551,16 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+# Complete native land status reports; source: announcement-status-grammar.tsv.
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a barony.	{s1}及其周边地区已晋升为男爵领。	l
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a county.	{s1}及其周边地区已晋升为伯爵领。	l
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a duchy.	{s1}及其周边地区已晋升为公爵领。	l
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made an official land of the realm.	{s1}及其周边地区已被正式纳入王国领土。	l
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made an even more official land of the realm.	{s1}及其周边地区在王国中的领土地位进一步提升。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made a barony.	此地及其周边地区已晋升为男爵领。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made a county.	此地及其周边地区已晋升为伯爵领。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made a duchy.	此地及其周边地区已晋升为公爵领。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made an official land of the realm.	此地及其周边地区已被正式纳入王国领土。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made an even more official land of the realm.	此地及其周边地区在王国中的领土地位进一步提升。	l
+Announcement combat adventure-announcement [$native-site-name,$term]: {s} and the surrounding lands have been made {s}.	{s1}及其周边地区已晋升为{s2}。	l
+Announcement combat adventure-announcement [$term]: and the surrounding lands have been made {s}.	此地及其周边地区已晋升为{s1}。	l

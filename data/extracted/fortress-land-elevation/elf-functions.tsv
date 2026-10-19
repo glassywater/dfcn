@@ -1,0 +1,5 @@
+image	role	start	end
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	land-elevation-producer	0x12c3370	0x12c58cf
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	site-native-name	0x12bfe90	0x12c0b46
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	site-english-name	0x12c58d0	0x12c6e5c
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c	native-word	0x1cc6140	0x1cc623a
