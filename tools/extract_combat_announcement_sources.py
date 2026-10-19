@@ -216,7 +216,10 @@ def raw_sources(config):
                             for form, value in zip(("singular", "plural"), values):
                                 anatomy_names.append((value, edition, source, number, owner, atoms[0], form,
                                                       "plural-directive" if value in ("NP", "STP") else "raw-text"))
-                        if atoms[0] not in ("ATTACK", "ATTACK_VERB"):
+                        # Retain the attack definition's behavioral inputs too.
+                        # CANLATCH, for example, is used by non-bite attacks;
+                        # its announcement cannot infer "bite" from the flag.
+                        if atoms[0] != "ATTACK" and not atoms[0].startswith("ATTACK_"):
                             continue
                         source = path.relative_to(game).as_posix()
                         row = (edition, folder, source, number, owner, atoms[0], ":".join(atoms[1:]))
@@ -234,11 +237,11 @@ def raw_sources(config):
             for number, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
                 if any("[" + token + ":" in line for token in anatomy_tokens):
                     anatomy_scripts.append((edition, path.relative_to(game).as_posix(), number, line.strip()))
-                if "[ATTACK:" not in line and "[ATTACK_VERB:" not in line:
+                if not re.search(r"\[ATTACK(?::|_)", line):
                     continue
                 source = path.relative_to(game).as_posix()
                 scripts.append((edition, source, number, line.strip()))
-                for token in re.findall(r"\[(ATTACK(?:_VERB)?:[^]]+)\]", line):
+                for token in re.findall(r"\[(ATTACK(?::|_)[^]]+)\]", line):
                     atoms = token.split(":")
                     if atoms[0] == "ATTACK_VERB" and len(atoms) == 3 and all('"' not in value for value in atoms[1:]):
                         for form, value in zip(("base", "third-person"), atoms[1:]):

@@ -26,6 +26,12 @@ the display consumers, full unit/item suppliers, and body/material suppliers.
 Four newly retained owners per edition supply body ordinal prefixes, connected
 body-name disambiguation, instantiated tissue definitions and tissue templates.
 These are complete owner C exports, not only the screenshot's string sites.
+The 2026-10-20 strike-report follow-up imported both configured original PEs
+again and re-decompiled all 45 owners per edition with the same Java extractor,
+without the optional existing-output skip. Both complete C exports finished.
+The native source trees and their original instruction/selector operands are
+unchanged. RAW extraction now additionally retains all ATTACK_* behavioral
+inputs, including non-bite CANLATCH sources described below.
 The std::basic_string overflow throw is nonreturning at reference 0x140065890 and
 classic 0x140065820; the selector bytes following that call are data, not extra
 English productions or reachable x86 instruction branches.
@@ -625,6 +631,25 @@ both base and third-person forms in raw-attack-verbs.tsv. Additional jab/jabs co
 from available Steam MOD 2925028826 (500502), item_extra_weapons.txt:152,164.
 Unknown future RAW verbs/parts are dynamically supplied strings; spelling alone
 does not provide translation or an identity-source classification.
+
+Attack behavior flags and the meaning of latching
+-----------------------------------------------
+The RAW extraction also retains every ATTACK_* field and every procedural
+ATTACK_* source expression, including CANLATCH, EDGE, WITH, attack skill,
+priority and contact/penetration parameters. These are native source inputs,
+not additional displayed English words. Retaining only ATTACK_VERB would lose
+the evidence selecting follow-up report branches.
+
+The native shared-damage kind22/kind23 branches append latch/latches on firmly
+with or without " to " + OWNED_OBJECT. They do not select a bite-specific verb.
+Both configured stock RAWs give CREATURE:SEA_MONSTER a pincer SNATCH attack:
+creature_standard.txt:5588 selects BY_CATEGORY:PINCER; :5590 supplies
+snatch/snatches; :5596 enables ATTACK_FLAG_CANLATCH. The procedural creature
+supplier generators/creatures/shared_info.lua:5473 supplies snatch/snatches
+and :5479 enables the same flag. Therefore the finite latch follow-up denotes
+holding on, including non-mouth attacks, and must not always be rendered as
+biting. Both original RAW sequences are retained in raw-attack-fields.tsv and
+raw-procedural-attack-sources.tsv beside their edition, filename and line.
 
 Connected body names and tissue fields, original native construction
 -------------------------------------------------------------------

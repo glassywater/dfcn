@@ -13334,6 +13334,12 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
         target = exact_literal_translation(caption);
         if (complete(target)) return target;
     }
+    // A unit capture must end with the unit identity. Failed identities may
+    // not become item/material phrases or a word-by-word name below: in a
+    // combat record that can swallow the following RAW attack verb. Native
+    // bindings, complete personal/role forms and literal labels above retain
+    // their usual handling; the enclosing grammar owns every other field.
+    if (unit_label) return std::nullopt;
     // e68020 passes written titles unchanged to every item action, including
     // a title's own question mark and an optional copy/designation wrapper.
     // Only complete native book productions establish this interpretation;

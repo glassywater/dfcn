@@ -274,10 +274,13 @@ sentence	{s} is ripped to shreds!	{s1}被撕成了碎片！	equipment	0x1400e8fc
 sentence	{s} breaks!	{s1}断裂了！	equipment	0x1400e8fd8+0x1400e905e
 sentence	{s} attack is interrupted!	{s1}攻击被打断了！	owner	0x1400e90f4+0x1400e917e
 sentence	The {s} has lodged firmly in the wound!	{s1}牢牢嵌在了伤口中！	$item	0x1400e929d+0x1400e92ba+0x1400e9349
-sentence	{s} latch on firmly!	{s1}牢牢咬住了！	unit	0x1400e94db+0x1400e94e4+0x1400e956f
-sentence	{s} latch on firmly to {s}!	{s1}牢牢咬住了{s2}！	unit,owned-object	0x1400e939b+0x1400e93a4+0x1400e93b4+0x1400e94a8
-sentence	{s} latches on firmly!	{s1}牢牢咬住了！	unit	0x1400e94db+0x1400e94e4+0x1400e956f
-sentence	{s} latches on firmly to {s}!	{s1}牢牢咬住了{s2}！	unit,owned-object	0x1400e939b+0x1400e93a4+0x1400e93b4+0x1400e94a8
+# CANLATCH includes both bite and pincer snatch: creature_standard.txt:5596 and
+# vanilla_procedural/scripts/generators/creatures/shared_info.lua:5479. These
+# follow-up records contain no attack verb, so do not invent a biting action.
+sentence	{s} latch on firmly!	{s1}牢牢抓住了！	unit	0x1400e94db+0x1400e94e4+0x1400e956f
+sentence	{s} latch on firmly to {s}!	{s1}牢牢抓住了{s2}！	unit,owned-object	0x1400e939b+0x1400e93a4+0x1400e93b4+0x1400e94a8
+sentence	{s} latches on firmly!	{s1}牢牢抓住了！	unit	0x1400e94db+0x1400e94e4+0x1400e956f
+sentence	{s} latches on firmly to {s}!	{s1}牢牢抓住了{s2}！	unit,owned-object	0x1400e939b+0x1400e93a4+0x1400e93b4+0x1400e94a8
 sentence	{s} have become enraged!	{s1}暴怒了！	unit	0x1400e91cc
 sentence	{s} have been knocked unconscious!	{s1}被击昏了！	unit	0x1400e9692
 sentence	{s} have been stunned again!	{s1}又被击晕了！	unit	0x1400e977a
@@ -320,8 +323,8 @@ head	The force twists the {s}	冲击力扭转了{s1}	$body	0x140653080..0x140653
 head	The force pulls the {s}	冲击力拉扯了{s1}	$body	0x140653080..0x140653164; complete prefix transferred to damage record
 assault	{s} attack {s}	{s1}攻击{s2}	actor,unit	0x14064d2d0..0x14064d348+0x14064e2ba..0x14064e30a
 assault	{s} attacks {s}	{s1}攻击{s2}	actor,unit	0x14064d2d0..0x14064d348+0x14064e2ba..0x14064e30a
-shot	{s} strike at {s}	{s1}向{s2}发动射击	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4
-shot	{s} strikes at {s}	{s1}向{s2}发动射击	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4
+shot	{s} strike at {s}	{s1}袭向{s2}	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4; actor is the flying/spinning projectile itself or a unit, never an inferred shooter
+shot	{s} strikes at {s}	{s1}袭向{s2}	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4; actor is the flying/spinning projectile itself or a unit, never an inferred shooter
 evasion	{s} scramble away	{s1}连滚带爬地躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} scramble away from {s}!	{s1}连滚带爬地躲开了{s2}！	unit,actor	0x14064e08a..0x14064e112
 evasion	{s} scrambles away	{s1}连滚带爬地躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
@@ -331,9 +334,9 @@ sentence	{s} roll away from {s}!	{s1}翻滚躲开了{s2}！	unit,actor	0x14064e0
 evasion	{s} rolls away	{s1}翻滚躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} rolls away from {s}!	{s1}翻滚躲开了{s2}！	unit,actor	0x14064e08a..0x14064e112
 evasion	{s} jump away	{s1}跳开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
-sentence	{s} jump away from {s}!	{s1}跳开了{s2}！	unit,actor	0x14064e08a..0x14064e112
+sentence	{s} jump away from {s}!	{s1}跳开，避过了{s2}！	unit,actor	0x14064e08a..0x14064e112
 evasion	{s} jumps away	{s1}跳开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
-sentence	{s} jumps away from {s}!	{s1}跳开了{s2}！	unit,actor	0x14064e08a..0x14064e112
+sentence	{s} jumps away from {s}!	{s1}跳开，避过了{s2}！	unit,actor	0x14064e08a..0x14064e112
 sentence	{s} but {s}!	{s1}，但{s2}！	assault,evasion	0x14064d327+0x14064d348+0x14064d7c5; 0x14064e2e9+0x14064e3b1
 sentence	{s} miss {s}!	{s1}未能击中{s2}！	actor,unit	0x14064e61b..0x14064e658
 sentence	{s} miss {s} badly, blocked by the divine intervention of mighty {s}!	{s1}远远偏离了{s2}，攻击被强大的{s3}以神力阻止了！	actor,unit,$person	0x140650242..0x1406502c4; native deity name helper

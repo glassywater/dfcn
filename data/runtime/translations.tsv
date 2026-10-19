@@ -16772,7 +16772,7 @@ Announcement combat sentence [boast-slain-clause]: I am the conqueror of , {s}!	
 Announcement combat sentence [boast-slain-clause]: I am the strangler of , {s}!	绞杀对方的正是我，{s1}！	l
 Announcement combat sentence [head,equipment]: {s}, but it is deflected by {s}!	{s1}，却被{s2}挡开了！	l
 Announcement combat sentence [threat-fiend,threat-killing]: This {s} fiend {s}!	这个{s1}恶徒{s2}！	l
-Announcement combat sentence [unit,owned-object]: {s} latches on firmly to {s}!	{s1}牢牢咬住了{s2}！	l
+Announcement combat sentence [unit,owned-object]: {s} latches on firmly to {s}!	{s1}牢牢抓住了{s2}！	l
 Announcement combat sentence [unit,owner]: {s} scramble out of {s} flight path!	{s1}连滚带爬地避开了{s2}飞行路线！	l
 Announcement combat sentence [unit]: {s} slam into an obstacle and blows apart!	{s1}猛撞在障碍物上，四分五裂了！	l
 Announcement combat sentence [unit]: {s} slams into an obstacle and blow apart!	{s1}猛撞在障碍物上，四分五裂了！	l
@@ -17557,7 +17557,7 @@ Announcement combat sentence [memory-person,memory-person]: {s} attacked {s}.	{s
 Announcement combat sentence [memory-person]: {s} escalated a conflict with .	{s1}升级了与未具名者的冲突。	l
 Announcement combat sentence [speech-place]: I'm returning to my home in {s}.	我正返回{s1}的家。	l
 Announcement combat sentence [unit,actor,equipment]: {s} blocks {s} with {s}!	{s1}用{s3}挡住了{s2}！	l
-Announcement combat sentence [unit,owned-object]: {s} latch on firmly to {s}!	{s1}牢牢咬住了{s2}！	l
+Announcement combat sentence [unit,owned-object]: {s} latch on firmly to {s}!	{s1}牢牢抓住了{s2}！	l
 Announcement combat spoken-greeting [speech-sphere]: Life is, in a word, {s}.	一言以蔽之，生命就是{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Great {s}, {s}.	{s2}，很棒的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-origin]: {s} is from {s}.	{s1}来自{s2}。	l
@@ -22252,7 +22252,7 @@ Announcement combat sentence [threat-name]: Knowing no mercy, {s} !	{s1}毫不�
 Announcement combat sentence [unit,$description]: {s} has come! {s}	{s1}来了！{s2}	l
 Announcement combat sentence [unit,$item]: {s} tries to remove {s}.	{s1}试图取出{s2}。	l
 Announcement combat sentence [unit,$term]: {s} skip across the {s}!	{s1}在{s2}表面弹跳着掠过！	l
-Announcement combat sentence [unit,actor]: {s} jumps away from {s}!	{s1}跳开了{s2}！	l
+Announcement combat sentence [unit,actor]: {s} jumps away from {s}!	{s1}跳开，避过了{s2}！	l
 Announcement combat sentence [unit,actor]: {s} rolls away from {s}!	{s1}翻滚躲开了{s2}！	l
 Announcement combat sentence [unit]: {s} are caught in a lava mist!	{s1}被熔岩雾笼罩了！	l
 Announcement combat sentence [unit]: {s} has fewer damaged tissues.	{s1}的一些受损组织恢复了。	l
@@ -22839,7 +22839,7 @@ Announcement combat sentence [head]: {s}, but it is deflected by !	{s1}，却被
 Announcement combat sentence [merchant-hawk]: {s}! Limited supply!	{s1}！数量有限！	l
 Announcement combat sentence [speech-place]: I'm traveling to {s}.	我正在前往{s1}。	l
 Announcement combat sentence [speech-service-person]: I serve {s}.	我为{s1}效力。	l
-Announcement combat sentence [unit,actor]: {s} jump away from {s}!	{s1}跳开了{s2}！	l
+Announcement combat sentence [unit,actor]: {s} jump away from {s}!	{s1}跳开，避过了{s2}！	l
 Announcement combat sentence [unit,actor]: {s} roll away from {s}!	{s1}翻滚躲开了{s2}！	l
 Announcement combat sentence [unit]: {s} are caught in dragonfire!	{s1}被龙焰吞没了！	l
 Announcement combat sentence [unit]: {s} are caught up in the web!	{s1}被蛛网缠住了！	l
@@ -27422,7 +27422,7 @@ Announcement combat sentence [unit]: {s} are less sluggish.	{s1}没那么迟缓�
 Announcement combat sentence [unit]: {s} has less swelling.	{s1}肿胀减轻了。	l
 Announcement combat sentence [unit]: {s} have been stunned!	{s1}被击晕了！	l
 Announcement combat sentence [unit]: {s} have fewer wounds.	{s1}的一些伤口愈合了。	l
-Announcement combat sentence [unit]: {s} latches on firmly!	{s1}牢牢咬住了！	l
+Announcement combat sentence [unit]: {s} latches on firmly!	{s1}牢牢抓住了！	l
 Announcement combat sentence [work]: You have authored {s}.	你著成了{s1}。	l
 Announcement combat sentence [work]: You have composed {s}.	你创作了{s1}。	l
 Announcement combat spoken-sentence [$item]: Excellent {s}.	上等的{s1}。	l
@@ -29272,8 +29272,8 @@ Announcement combat sentence [unit,$item]: {s} drops {s}.	{s1}丢下了{s2}。	l
 Announcement combat sentence [unit,$term]: {s} eat a {s}.	{s1}吃掉了一只{s2}。	l
 Announcement combat sentence [unit,actor]: {s} block {s}!	{s1}挡住了{s2}！	l
 Announcement combat sentence [unit]: {s} feel less dizzy.	{s1}的眩晕减轻了。	l
-Announcement combat sentence [unit]: {s} latch on firmly!	{s1}牢牢咬住了！	l
-Announcement combat shot [actor,unit]: {s} strikes at {s}	{s1}向{s2}发动射击	l
+Announcement combat sentence [unit]: {s} latch on firmly!	{s1}牢牢抓住了！	l
+Announcement combat shot [actor,unit]: {s} strikes at {s}	{s1}袭向{s2}	l
 Announcement combat speech-race [speech-race]: zombie {s}	僵尸{s1}	l
 Announcement combat spoken-sentence []: I am the foe of !	我就是对方的敌人！	l
 Announcement combat spoken-sentence []: I worship no one.	我不崇拜任何神祇。	l
@@ -30268,7 +30268,7 @@ Announcement combat sentence []: It is a gelding strike!	这一击造成了阉�
 Announcement combat sentence []: Take me away from here.	带我离开这里吧。	l
 Announcement combat sentence [actor,unit]: {s} miss {s}!	{s1}未能击中{s2}！	l
 Announcement combat sentence [owned-layer]: {s} regrows!	{s1}重新长出来了！	l
-Announcement combat shot [actor,unit]: {s} strike at {s}	{s1}向{s2}发动射击	l
+Announcement combat shot [actor,unit]: {s} strike at {s}	{s1}袭向{s2}	l
 Announcement combat speech-sphere []: some vague concept	某种模糊的概念	l
 Announcement combat spoken-sentence [$item]: Decent {s}.	不错的{s1}。	l
 Announcement combat spoken-sentence [$unit]: {s} AUGIS !	{s1} 奥吉斯！	l

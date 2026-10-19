@@ -198,11 +198,12 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     if (source.empty() || source_colors.size() != source.size()) return std::nullopt;
     dfcn::TranslationWorkScope budget;
     // A frozen announcement kind selects its semantic owner just as a
-    // Legends event kind does. Failed owners still retain the complete
-    // fallback policy, but no cold record repeats the same parse twice.
+    // Legends event kind does. Combat retains that owner through display
+    // fallback; an unresolved combat field is not a different prose kind.
     // IDs are announcement_type in df.g_src.basics.xml.
+    const bool combat_record = native_type >= 6 && native_type <= 48;
     std::string_view native_scope;
-    if (native_type >= 6 && native_type <= 48) native_scope = "sentence";
+    if (combat_record) native_scope = "sentence";
     else if (native_type == 104) native_scope = "fortress-announcement";
     else if (native_type == 233 || native_type == 234 || native_type == 258)
         native_scope = "read-announcement";
@@ -211,6 +212,16 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     const auto translate_block = [&](std::string_view block, const std::vector<int> &colors,
             std::vector<int> &translated_colors) -> std::optional<std::string> {
         translated_colors.clear();
+        // COMBAT_* is the native producer, not a hint for a prose fallback.
+        // e56a0 (classic e5630) owns the attack verb, target, equipment and
+        // every damage continuation. An unresolved field must stay in that
+        // tree; a name/item grammar must never reinterpret strike as a name.
+        if (combat_record) {
+            auto combat = translate_announcement_combat(block, "sentence");
+            if (combat) for (unsigned char ch : *combat)
+                if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+            return combat;
+        }
         // A reviewed complete message owns its entire native record before
         // recursive grammar or display composition can split it into fields.
         // Probe only literal catalogue rules here, retaining the shared
@@ -275,6 +286,14 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                     if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
                 return native;
             }
+        // Text-only map/card callers may have no report type. Resolve a
+        // complete combat production before open historical/name fields can
+        // claim its actor and dynamic RAW attack verb as one personal name.
+        if (const auto combat = translate_announcement_combat(block, "sentence")) {
+            for (unsigned char ch : *combat)
+                if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
+            return combat;
+        }
         for (const std::string_view scope : {
                 "read-announcement", "adventure-announcement", "fortress-attack", "fortress-arrival", "fortress-announcement", "fortress-embark", "historical-event-paragraph"}) {
             if (scope == native_scope) continue;
@@ -285,17 +304,6 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 ? native_announcement_display_source(block) : std::string{};
             if (const auto native = translate_announcement_combat(
                     scope == "fortress-attack" ? std::string_view(attack_source) : block, scope)) {
-                for (unsigned char ch : *native)
-                    if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
-                return native;
-            }
-        }
-        // Resolve the whole combat tree before any single-action display
-        // fallback or generic {n} suffix. "ACTOR attacks TARGET but She
-        // jumps away!" owns two clauses; the complete prefix is not the
-        // subject of the separate charge-result "UNIT jumps away!".
-        if (native_scope != "sentence") {
-            if (const auto native = translate_announcement_combat(block)) {
                 for (unsigned char ch : *native)
                     if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
                 return native;
@@ -486,7 +494,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                     display_scopes.end()) display_scopes.push_back(scope);
         };
         add_display_scope(native_scope);
-        for (const std::string_view scope : {
+        if (!combat_record) for (const std::string_view scope : {
                 "sentence", "adventure-announcement", "read-announcement", "fortress-arrival",
                 "fortress-announcement", "historical-event-paragraph"}) add_display_scope(scope);
         for (const std::string_view scope : display_scopes) {
@@ -502,7 +510,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             }
             if (display_rank(best) == 2) break;
         }
-        if (!work_limited && display_rank(best) < 2) {
+        if (!combat_record && !work_limited && display_rank(best) < 2) {
             std::vector<int> catalogue_colors;
             auto catalogue = translate_help_paragraph_result(source, source_colors, catalogue_colors, true);
             work_limited = catalogue.status == dfcn::TranslationStatus::WorkLimited;
@@ -526,7 +534,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             target_colors.clear();
         }
     }
-    if (!target && !work_limited) {
+    if (!combat_record && !target && !work_limited) {
         // A following native thought constructor proves an independent
         // reaction. Never split unknown prose merely at a period, comma,
         // quote, or a displayed wrap, and retain an unknown prefix intact.

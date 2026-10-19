@@ -176,6 +176,12 @@
                         target = translated->target;
                         colors = translated->colors;
                     }
+                } else if (paragraph.report_document) {
+                    // Popup/report panels retain the same native producer
+                    // and typed fields as notifications. Do not discard the
+                    // COMBAT_* type before selecting its grammar.
+                    target = translate_native_announcement_log_record(
+                        *paragraph.report_document, source, foreground, colors);
                 } else {
                     target = translate_complete_announcement(source,
                         std::vector<int>(source.size(), foreground), colors);
