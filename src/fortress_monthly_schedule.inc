@@ -247,10 +247,8 @@ void Overlay::layout_fortress_monthly_schedule(SDL_Renderer *renderer) {
         const int left = field->layout_x >= 0 ? field->layout_x : field->x;
         field->layout_box_pixel_x = origin_x + left * tile_w;
         field->layout_box_pixel_width = native_width;
-        field->layout_font_pixels = pixels;
-        field->layout_lock_font_pixels = true;
+        field->layout_prepared = true;
         field->layout_ellipsize = true;
-        field->layout_visual_height_pixels = 0;
         field->layout_line_height_pixels = height;
     }
 }

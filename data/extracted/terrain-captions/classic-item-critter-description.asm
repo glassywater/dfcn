@@ -1,0 +1,61 @@
+; classic; PE:6a70b91c:0270a000; item-critter-description; RVA 0xc9fac0..0xc9fbc5
+0x00c9fac0: mov    QWORD PTR [rsp+0x18],rbx
+0x00c9fac5: mov    QWORD PTR [rsp+0x20],rsi
+0x00c9faca: push   rdi
+0x00c9facb: sub    rsp,0x50
+0x00c9facf: mov    rax,QWORD PTR [rip+0xbf656a]        # 0x141896040
+0x00c9fad6: xor    rax,rsp
+0x00c9fad9: mov    QWORD PTR [rsp+0x40],rax
+0x00c9fade: movzx  esi,r8b
+0x00c9fae2: mov    rdi,rdx
+0x00c9fae5: mov    rbx,rcx
+0x00c9fae8: cmp    BYTE PTR [rcx+0x13a],0x0
+0x00c9faef: je     0x140c9fb99
+0x00c9faf5: xorps  xmm0,xmm0
+0x00c9faf8: movups XMMWORD PTR [rsp+0x20],xmm0
+0x00c9fafd: mov    QWORD PTR [rsp+0x30],0x0
+0x00c9fb06: mov    QWORD PTR [rsp+0x38],0xf
+0x00c9fb0f: mov    BYTE PTR [rsp+0x20],0x0
+0x00c9fb14: add    rcx,0xc8
+0x00c9fb1b: lea    rdx,[rsp+0x20]
+0x00c9fb20: call   0x140a910b0
+0x00c9fb25: lea    rdx,[rsp+0x20]
+0x00c9fb2a: cmp    QWORD PTR [rsp+0x38],0xf
+0x00c9fb30: cmova  rdx,QWORD PTR [rsp+0x20]
+0x00c9fb36: mov    r8,QWORD PTR [rsp+0x30]
+0x00c9fb3b: mov    rcx,rdi
+0x00c9fb3e: call   0x14006f9a0
+0x00c9fb43: mov    r8d,0x2
+0x00c9fb49: lea    rdx,[rip+0x944574]        # 0x1415e40c4 ; literal=", "
+0x00c9fb50: mov    rcx,rdi
+0x00c9fb53: call   0x14006f9a0
+0x00c9fb58: nop
+0x00c9fb59: mov    rdx,QWORD PTR [rsp+0x38]
+0x00c9fb5e: cmp    rdx,0xf
+0x00c9fb62: jbe    0x140c9fb99
+0x00c9fb64: inc    rdx
+0x00c9fb67: mov    rcx,QWORD PTR [rsp+0x20]
+0x00c9fb6c: mov    rax,rcx
+0x00c9fb6f: cmp    rdx,0x1000
+0x00c9fb76: jb     0x140c9fb94
+0x00c9fb78: add    rdx,0x27
+0x00c9fb7c: mov    rcx,QWORD PTR [rcx-0x8]
+0x00c9fb80: sub    rax,rcx
+0x00c9fb83: add    rax,0xfffffffffffffff8
+0x00c9fb87: cmp    rax,0x1f
+0x00c9fb8b: jbe    0x140c9fb94
+0x00c9fb8d: call   QWORD PTR [rip+0x940f0d]        # 0x1415e0aa0
+0x00c9fb93: int3
+0x00c9fb94: call   0x1415345f0
+0x00c9fb99: movzx  r8d,sil
+0x00c9fb9d: mov    rdx,rdi
+0x00c9fba0: mov    rcx,rbx
+0x00c9fba3: call   0x140ca2bf0
+0x00c9fba8: mov    rcx,QWORD PTR [rsp+0x40]
+0x00c9fbad: xor    rcx,rsp
+0x00c9fbb0: call   0x1415345d0
+0x00c9fbb5: mov    rbx,QWORD PTR [rsp+0x70]
+0x00c9fbba: mov    rsi,QWORD PTR [rsp+0x78]
+0x00c9fbbf: add    rsp,0x50
+0x00c9fbc3: pop    rdi
+0x00c9fbc4: ret

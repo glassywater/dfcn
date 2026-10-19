@@ -70,8 +70,7 @@ void Overlay::append_fortress_elevation_rows(std::vector<std::string> &rows,
                 match.layout_length = box.w - 1;
                 match.layout_clip_right = box.x + box.w;
                 match.layout_left = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_ellipsize = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 bool top = false;

@@ -570,9 +570,7 @@
                             }
                         }
                         entry.layout_left = true;
-                        entry.layout_font_pixels = std::clamp(
-                            static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-                        entry.layout_lock_font_pixels = true;
+                        entry.layout_prepared = true;
                         entry.layout_line_height_pixels = gps_->tile_pixel_y;
                         // Unknown entries still own one whole field. They
                         // keep the common font/margin and remain collectable,
@@ -650,9 +648,7 @@
                     caption.layout_length = caption_right - field.start;
                     caption.layout_clip_right = caption_right;
                     caption.layout_left = true;
-                    caption.layout_font_pixels = std::clamp(
-                        static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-                    caption.layout_lock_font_pixels = true;
+                    caption.layout_prepared = true;
                     caption.layout_line_height_pixels = gps_->tile_pixel_y;
                     std::fill_n(screen_rows[y].begin() + field.start, field.end - field.start, ' ');
                     if (only_y < 0 || y == only_y) result.push_back(std::move(caption));

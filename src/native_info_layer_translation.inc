@@ -108,7 +108,7 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, NativeFortres
     // Do not enter the main page's character/settings/prose layout sweeps.
     for (auto &match : prepared_matches_) {
         const int y = match.native_split_text ? match.native_split_top_y : match.y;
-        if (match.target.empty() || match.native_split_duplicate || match.layout_font_pixels > 0)
+        if (match.target.empty() || match.native_split_duplicate || match.layout_prepared)
             continue;
         // Object rows contain separate name and ownership fields inside one
         // clickable row. Keep their assigned columns when sizing the text.

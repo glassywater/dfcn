@@ -91,9 +91,36 @@ for (bool top_layer : {false, true}) {
             }
             continue;
         }
-        if (!draw.unit_identity_target || draw.source.empty() ||
+        // Vacant equipment slots can retain a historical figure's name.
+        // Their language_name formatter has no live unit identity binding,
+        // but the same roster writer still owns the name column. Translate
+        // that typed caption here before generic matching centres it in its
+        // English source span.
+        std::optional<std::string> uniform_identity;
+        const std::string *identity_target = draw.unit_identity_target
+            ? &*draw.unit_identity_target : nullptr;
+        if (!identity_target && draw.uniform_member_right > draw.x &&
+                !draw.squad_alias_target && !draw.editable_text) {
+            uniform_identity = translate_unit_identity(
+                draw.complete_source.empty() ? draw.source : draw.complete_source, true);
+            if (uniform_identity) identity_target = &*uniform_identity;
+        }
+        if (!identity_target || draw.source.empty() ||
                 draw.y < 0 || draw.y >= gps_->dimy || draw.x < 0 ||
                 draw.x >= gps_->dimx || (only_y >= 0 && draw.y != only_y)) continue;
+        const auto layout_uniform_member = [&](Match &match) {
+            if (draw.uniform_member_right <= draw.x ||
+                    draw.uniform_member_right > gps_->dimx) return;
+            match.layout_x = draw.x;
+            match.layout_length = draw.uniform_member_right - draw.x;
+            match.layout_clip_right = draw.uniform_member_right;
+            match.layout_box_pixel_x = -1;
+            match.layout_box_pixel_width = 0;
+            match.layout_left = true;
+            match.layout_right = false;
+            match.layout_ellipsize = true;
+            match.layout_prepared = true;
+        };
         // The arena hover's numbered species can arrive here as a literal
         // native name before the whole-card translator reaches its row.
         // Retain this draw's ownership and layout, changing only its target.
@@ -118,7 +145,7 @@ for (bool top_layer : {false, true}) {
                 claimed = true;
                 break;
             }
-            match.target = arena_target ? *arena_target : *draw.unit_identity_target;
+            match.target = arena_target ? *arena_target : *identity_target;
             if (match.layout_x < 0) {
                 match.layout_x = draw.x;
                 match.layout_length = match.length;
@@ -126,6 +153,7 @@ for (bool top_layer : {false, true}) {
             }
             match.native_hover_untranslated = false;
             match.native_help_review_source.clear();
+            layout_uniform_member(match);
             claimed = true;
             break;
         }
@@ -133,13 +161,14 @@ for (bool top_layer : {false, true}) {
         auto &row = screen_rows[draw.y];
         if (row.compare(draw.x, draw.source.size(), draw.source) != 0) continue;
         Match match{draw.x, draw.y, static_cast<int>(draw.source.size()),
-            kCreatureNameRule, arena_target ? *arena_target : *draw.unit_identity_target,
+            kCreatureNameRule, arena_target ? *arena_target : *identity_target,
             draw.source};
         // Formatter-owned names start at the actual addst cursor, including
         // animation labels without the ordinary name/gloss/species syntax.
         match.layout_x = draw.x;
         match.layout_length = match.length;
         match.layout_left = true;
+        layout_uniform_member(match);
         result.push_back(std::move(match));
         std::fill_n(row.begin() + draw.x, draw.source.size(), ' ');
     }

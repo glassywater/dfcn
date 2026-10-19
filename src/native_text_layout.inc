@@ -120,9 +120,8 @@ SDL_Rect Overlay::translated_text_bounds(SDL_Renderer *renderer, const Match &ma
         shortened = fitted->text;
         text = &shortened;
     }
-    const auto *glyph = get_glyph_texture(renderer, *text, layout.line.w, layout.line.h,
-        match.layout_font_pixels, match.layout_visual_height_pixels,
-        layout.lock_pixels, {}, layout.wrap_width);
+    const auto *glyph = get_glyph_texture(
+        renderer, *text, layout.line.w, {}, layout.wrap_width);
     if (!glyph || !glyph->texture) return {};
     const auto drawn = layout.destination(*glyph);
     SDL_Rect visible{};

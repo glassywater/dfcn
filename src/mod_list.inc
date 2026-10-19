@@ -201,9 +201,8 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
             name.layout_length = last - name.x;
             name.layout_clip_right = last;
             name.layout_left = true;
-            name.layout_font_pixels = unified_font_pixels();
+            name.layout_prepared = true;
             name.layout_line_height_pixels = tile_h;
-            name.layout_lock_font_pixels = true;
             name.layout_native_clip = SDL_Rect{origin_x + first * tile_w,
                 origin_y + y * tile_h, (last - first) * tile_w, tile_h};
             matches.push_back(std::move(name));
@@ -232,9 +231,8 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
         row.layout_length = right - left;
         row.layout_clip_right = right;
         row.layout_left = true;
-        row.layout_font_pixels = unified_font_pixels();
+        row.layout_prepared = true;
         row.layout_line_height_pixels = tile_h;
-        row.layout_lock_font_pixels = true;
         row.layout_ellipsize = true;
         row.layout_native_clip = SDL_Rect{origin_x + left * tile_w,
             origin_y + row.y * tile_h, (right - left) * tile_w, tile_h};
@@ -347,9 +345,8 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
             label.layout_length = length;
             label.layout_clip_right = left + length;
             label.layout_left = true;
-            label.layout_font_pixels = unified_font_pixels();
+            label.layout_prepared = true;
             label.layout_line_height_pixels = tile_h;
-            label.layout_lock_font_pixels = true;
             label.layout_ellipsize = true;
             label.layout_native_clip = SDL_Rect{origin_x + left * tile_w,
                 origin_y + y * tile_h, length * tile_w, tile_h};
@@ -376,9 +373,8 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
             row->layout_length = right - left;
             row->layout_clip_right = right;
             row->layout_left = true;
-            row->layout_font_pixels = unified_font_pixels();
+            row->layout_prepared = true;
             row->layout_line_height_pixels = tile_h;
-            row->layout_lock_font_pixels = true;
             row->layout_ellipsize = true;
             row->layout_native_clip = SDL_Rect{origin_x + left * tile_w,
                 origin_y + y * tile_h, (right - left) * tile_w, tile_h};

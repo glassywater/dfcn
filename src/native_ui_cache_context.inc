@@ -172,6 +172,24 @@ public:
         value(input.parent_word_pos); value(input.site_id); value(input.site_type);
         value(input.site_subtype); text(input.site_label); text(input.native_name);
     }
+    void adventure_belief(const NativeAdventureBeliefCache &cache) {
+        value(cache.screen); value(cache.owner);
+        value(cache.practice); value(cache.practice_id); value(cache.figure_id);
+        value(cache.religion); value(cache.figure); value(cache.figure_flags);
+        value(cache.figure_race); value(cache.figure_sex); value(cache.character_race);
+        text(cache.creature_singular); text(cache.creature_adjective);
+        range(cache.figure_spheres, [&](auto sphere) { value(sphere); });
+        optional(cache.religion_name, [&](const auto &input) { name(input); });
+        optional(cache.figure_name, [&](const auto &input) { name(input); });
+        optional(cache.force_name, [&](const auto &input) { name(input); });
+        optional(cache.temple, [&](const auto &input) {
+            value(input.kind); value(input.id); value(input.subid); value(input.native_type);
+            name(input.name); text(input.species); text(input.label_key); text(input.raw_title);
+        });
+        value(cache.temple_ruined);
+        range(cache.rows, [&](const auto &input) { address(input.address); text(input.source); });
+        range(cache.paragraphs, [&](const auto &paragraph) { text(paragraph); });
+    }
     void widget(const NativeTooltipWidgetFrame &input, uint64_t epoch) {
         // Snapshot composition reads another full grid with its own origins.
         // It is intentionally left on the ordinary path until that dependency
@@ -182,6 +200,14 @@ public:
         grid(input.grid_identity); text(input.body_source);
         range(input.rows, [&](const auto &row) { text(row); });
         range(input.occlusions, [&](const auto &box) { rect(box); });
+        value(input.adventure_background);
+        optional(input.adventure_belief, [&](const auto &cache) { adventure_belief(cache); });
+        if (input.adventure_home) {
+            // Home still resolves live site/controller names and formatter
+            // context. Its isolated draw remains available, but cannot retain
+            // a texture until those dependencies belong to the submitted frame.
+            complete = false;
+        }
     }
     void toolbar(const NativeToolbarTooltip &input) {
         value(input.left); value(input.top); value(input.right); value(input.bottom);
@@ -257,6 +283,7 @@ public:
         // when their visible English bytes happen to be identical.
         optional(input.squad_alias_target, [&](const auto &target) { text(target); });
         optional(input.squad_generated_name, [&](const auto &generated) { name(generated); });
+        value(input.squad_list_right);
         value(input.info_title_kind); value(input.info_title_authored);
         value(input.info_title_right); value(input.civilization_field);
         optional(input.caravan_entity_name, [&](const auto &entity) { name(entity); });
@@ -281,6 +308,10 @@ public:
         optional(input.work_order_shop_caption, [&](const auto &caption) {
             value(caption.kind); value(caption.right); value(caption.authored);
             text(caption.complete_source);
+        });
+        optional(input.workshop_task_caption, [&](const auto &caption) {
+            address(caption.building); address(caption.job);
+            rect(caption.box); text(caption.complete_source);
         });
         // Vector traversal preserves relative native draw order. Absolute
         // sequence/epoch numbers are scheduling, not semantic content.
@@ -505,6 +536,61 @@ public:
         });
         optional(input.index_intro, [&](const auto &box) { rect(box); });
     }
+    void adventure_background_snapshot(uintptr_t screen) {
+#ifdef _WIN32
+        const auto screen_field = [&](std::string_view member, size_t width) {
+            return native_history_object_member(screen, "viewscreen_setupadventurest", member, width);
+        };
+        int32_t selected = -1;
+        NativeBorrowedVector<uintptr_t> sheets;
+        if (!native_history_copy(screen_field("active_sheet_index", sizeof(selected)), selected) ||
+                selected < 0 || !native_history_read_vector(screen_field("csheet", sizeof(sheets)), sheets) ||
+                !sheets.valid(64) || static_cast<size_t>(selected) >= sheets.size()) {
+            complete = false; return;
+        }
+        const uintptr_t owner = native_history_vector_at(sheets, static_cast<size_t>(selected));
+        const auto field = [&](std::string_view member, size_t width) {
+            return native_history_object_member(owner, "setup_character_info", member, width);
+        };
+        int32_t column = -1;
+        if (!owner || !native_history_copy(field("active_column", sizeof(column)), column) ||
+                column != 2) {
+            // Other columns still have uncaptured page formatter inputs.
+            complete = false; return;
+        }
+        value(screen); value(selected); value(owner); value(column);
+        const auto choices = frame_native_adventure_belief_choices();
+        if (!choices) { complete = false; return; }
+        range(*choices, [&](const auto &choice) {
+            value(choice.practice); value(choice.id); value(choice.figure_flags); text(choice.species);
+            optional(choice.name, [&](const auto &input) { name(input); });
+        });
+        // The hover card owns its source arrays and semantic snapshot in the
+        // tooltip layer. Page caching has no dependency on its native writes,
+        // covered background or anchored artwork elsewhere on the screen.
+#else
+        (void)screen;
+        complete = false;
+#endif
+    }
+    bool adventure_background(uintptr_t screen) {
+        auto *snapshot = g_native_adventure_background_read;
+        if (snapshot && snapshot->context_read) {
+            if (!snapshot->context) return false;
+            text(*snapshot->context);
+            return complete;
+        }
+        NativeUiCacheContextWriter sources;
+        sources.adventure_background_snapshot(screen);
+        auto context = sources.finish();
+        if (snapshot) {
+            snapshot->context_read = true;
+            snapshot->context = context;
+        }
+        if (!context) return false;
+        text(*context);
+        return complete;
+    }
     bool common(bool character = false) {
         character_ = character;
         value(g_native_ui_render_generation);
@@ -513,6 +599,8 @@ public:
         value(g_overlay.native_identity_translation_catalog_generation());
         const uintptr_t screen = native_current_viewscreen();
         if (!screen) return false;
+        if (!character && native_history_object_is(screen, "viewscreen_setupadventurest") &&
+                !adventure_background(screen)) return false;
         value(screen);
         const auto classic = native_ui_classic();
         if (!classic) return false;

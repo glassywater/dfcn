@@ -237,9 +237,7 @@ bool Overlay::append_world_artifact_rows(std::vector<std::string> &rows,
                 const auto *cell = cell_at(row.x, row.y, &top);
                 match.layout_foreground_rgb = cell ?
                     (cell[1] << 16) | (cell[2] << 8) | cell[3] : 0xffffff;
-                match.layout_font_pixels = std::clamp(
-                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 // Raw card readers can already have queued this caption.
                 // Reserving screen_rows prevents later dictionary matches,
@@ -466,9 +464,7 @@ size_t Overlay::append_world_artifact_description(const NativeTextCard &card,
         row.layout_length = right - left;
         row.layout_clip_right = right;
         row.layout_left = true;
-        row.layout_font_pixels = std::clamp(
-            static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-        row.layout_lock_font_pixels = true;
+        row.layout_prepared = true;
         std::fill_n(rows[row.y].begin() + row.x, row.length, ' ');
         if (only_y < 0 || row.y == only_y) matches.push_back(std::move(row));
     }

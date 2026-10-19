@@ -1,0 +1,7 @@
+edition	structural_class	native_rtti	vtable_rva	slot_byte_offset	target_rva
+reference	item_critterst	.?AVitem_critterst@@	0x1656f60	0x5e8	0xca2a80
+reference	item_petst	.?AVitem_petst@@	0x16bbad0	0x5e8	0xca2a80
+reference	item_verminst	.?AVitem_verminst@@	0x165cd68	0x5e8	0xca2a80
+classic	item_critterst	.?AVitem_critterst@@	0x1651e80	0x5e8	0xc9fac0
+classic	item_petst	.?AVitem_petst@@	0x16b69c0	0x5e8	0xc9fac0
+classic	item_verminst	.?AVitem_verminst@@	0x1657c88	0x5e8	0xc9fac0

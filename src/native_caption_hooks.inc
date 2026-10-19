@@ -441,6 +441,7 @@ static bool capture_native_tooltip_caption_draw(graphicst *graphics,
     return true;
 }
 #include "native_legacy_tooltip.inc"
+#include "native_adventure_background_hooks.inc"
 
 // ViewBase::widget::render creates a container named Tooltip. Its children
 // draw the background, wrapped body and keys into screen (not screen_top).
@@ -692,6 +693,54 @@ static bool native_info_title_memory_readable(const void *pointer, size_t size) 
         cursor += span;
     }
     return true;
+#endif
+}
+
+static int capture_native_uniform_member_right(uintptr_t caller, uintptr_t source, int x) {
+#ifdef _WIN32
+    const uintptr_t base = native_history_profile_base();
+    if (!base || !caller || source < 0x474 ||
+            caller != native_reference_address(base, 0x457205) + 5) return -1;
+    // Both PE equipment renderers keep the name at rbp+0x3e8, with
+    // rbp=rsp+0x100. The row's right anchor is rsp+0x74 and its name X
+    // is rbp-0x10. The anchor already includes the scrollbar adjustment.
+    // Native resize at 0x4571a7 leaves one cell before the first equipment
+    // icon (anchor-0x40); short English names own the same full column.
+    int32_t anchor = 0, name_x = -1;
+    if (!native_history_copy(source - 0x474, anchor) ||
+            !native_history_copy(source - 0x3f8, name_x) || name_x != x ||
+            anchor <= 0x41 || anchor > 1000 || anchor - 0x41 <= x) return -1;
+    return anchor - 0x41;
+#else
+    (void)caller; (void)source; (void)x;
+    return -1;
+#endif
+}
+
+static int capture_native_squad_list_right(uintptr_t caller, uintptr_t source, int x) {
+#ifdef _WIN32
+    const uintptr_t base = native_history_profile_base();
+    if (!base || !caller || !source) return -1;
+    uintptr_t anchor_offset = 0;
+    if (caller == native_reference_address(base, 0x4456b9) + 5)
+        anchor_offset = 0x1cc; // squad name at rbp+0x130
+    else if (caller == native_reference_address(base, 0x4458af) + 5)
+        anchor_offset = 0x1ac; // order at rbp+0x110
+    else if (caller == native_reference_address(base, 0x445987) + 5)
+        anchor_offset = 0x18c; // routine at rbp+0xf0
+    if (!anchor_offset || source < anchor_offset) return -1;
+    // Both PE list renderers keep the right anchor at rsp+0x64 and the
+    // text X at rsp+0x68, with rbp=rsp+0x100. The anchor already reserves
+    // the scrollbar when present. Name/order resize to anchor-X-1 cells;
+    // retain that allocation for every translated field in the same row.
+    int32_t anchor = 0, text_x = -1;
+    if (!native_history_copy(source - anchor_offset, anchor) ||
+            !native_history_copy(source - anchor_offset + 4, text_x) ||
+            text_x != x || x < 0 || anchor <= x + 1 || anchor > 1000) return -1;
+    return anchor - 1;
+#else
+    (void)caller; (void)source; (void)x;
+    return -1;
 #endif
 }
 
@@ -2383,6 +2432,9 @@ static void capture_native_owned_caption(graphicst *graphics,
             }
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;
+            if constexpr (!Character)
+                row.squad_list_right = capture_native_squad_list_right(
+                    native_caller, row.address, x);
             clip = {graphics->clipx[0], graphics->clipx[1],
                 graphics->clipy[0], graphics->clipy[1]};
             if (y >= 0 && y < dimy && y >= clip[2] && y <= clip[3])
@@ -2652,6 +2704,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         return;
     }
     if (native_private_ui_write_active(graphics)) { draw(); return; }
+
     const auto inventory_role = native_adventure_inventory_role(
         native_caller, reinterpret_cast<uintptr_t>(source));
     const auto barter_field = native_adventure_barter_field(native_caller);
@@ -3763,6 +3816,7 @@ static bool native_caption_hooks_active() {
 #endif
     return g_native_help_top_tile_hook.active() || g_native_help_tile_hook.active() ||
         g_native_legacy_tooltip_hook.active() || g_native_tooltip_container_hook.active() ||
+        native_adventure_background_tooltip_active() ||
         g_native_multiline_arrange_hook.active() || g_native_multiline_widget_hook.active() ||
         g_native_textbox_widget_hook.active() ||
         g_native_caption_widget_hook.active() || g_native_caption_hooks.code.active() ||
@@ -4069,6 +4123,7 @@ static bool install_native_caption_hooks() {
         if (!g_native_tooltip_container_hook.install("Native tooltip document capture")) return false;
     }
     if (profile.legacy_toolbar_tooltip && !install_native_legacy_tooltip(profile.base)) return false;
+    if (!install_native_adventure_background_tooltip(profile.base)) return false;
 #ifndef _WIN32
     {
         constexpr const char *symbol = "_ZN9graphicst18add_top_lower_tileEl";
@@ -4111,6 +4166,7 @@ static bool uninstall_native_caption_hooks() {
     g_native_help_page.reset();
     // Live relays retain the native targets until restoration and release both
     // succeed, including failures during a partially completed installation.
+    if (!uninstall_native_adventure_background_tooltip()) return false;
     if (!g_native_legacy_tooltip_hook.uninstall("Native legacy tooltip restore")) return false;
     native_legacy_tooltip_state() = {};
     if (!g_native_tooltip_container_hook.uninstall("Native tooltip document restore")) return false;

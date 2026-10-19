@@ -467,9 +467,7 @@ void Overlay::append_fortress_labor_rows(std::vector<std::string> &rows,
                 match.layout_left = !match.native_labor_control;
                 match.layout_ellipsize = caption.kind == NativeFortressLaborKind::DetailName;
                 match.native_hover_untranslated = untranslated && !caption.authored;
-                match.layout_font_pixels = std::clamp(
-                    static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
                 matches.push_back(std::move(match));
             } else {
@@ -878,9 +876,7 @@ void Overlay::append_fortress_labor_rows(std::vector<std::string> &rows,
             match.layout_length = right - left;
             match.layout_clip_right = right;
             match.layout_left = true;
-            match.layout_font_pixels = std::clamp(
-                static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
             bool top = false;
             const auto *cell = cell_at(field.x, field.y, &top);
@@ -953,10 +949,8 @@ void Overlay::layout_fortress_labor(SDL_Renderer *renderer) {
             match.layout_left = true;
             match.layout_box_pixel_x = -1;
             match.layout_box_pixel_width = 0;
-            match.layout_font_pixels = pixels;
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
-            match.layout_visual_height_pixels = 0;
             continue;
         }
         if (band->header_y < 0) continue;
@@ -1021,10 +1015,8 @@ void Overlay::layout_fortress_labor(SDL_Renderer *renderer) {
         match.layout_left = detail;
         match.layout_box_pixel_x = -1;
         match.layout_box_pixel_width = 0;
-        match.layout_font_pixels = pixels;
-        match.layout_lock_font_pixels = true;
+        match.layout_prepared = true;
         match.layout_line_height_pixels = gps_->tile_pixel_y;
-        match.layout_visual_height_pixels = 0;
         match.layout_clip_right = right;
     }
 }

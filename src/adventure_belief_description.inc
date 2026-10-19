@@ -2,13 +2,9 @@
 // owns its complete source, including rows below the native screen clip.
         const auto belief_base = native_history_profile_base();
         const auto belief_writer = native_reference_address(belief_base,
-#ifdef _WIN32
-            0x62d711
-#else
             // setupadventurest draws the +0x1330 description cache built by
             // 0x10a6520; its religion producer also fills the retained IDs.
             0xd1a7cb
-#endif
         );
         const auto append_background_cache = [&](const auto &belief_cache,
                 auto &&translate_source) {
@@ -43,6 +39,14 @@
         };
         constexpr uint32_t belief_upper = 1u << 3, belief_lower = 1u << 4;
         const auto belief_row_half = [&](const NativeTextCardRow &row) {
+#ifdef _WIN32
+            // The decompiled PE writer calls base addst/addchar once per
+            // retained row and advances Y by one. It does not emit paired
+            // font halves or clear split flags inherited from older widgets.
+            // Those flags therefore cannot classify this writer's text.
+            (void)row;
+            return uint32_t{0};
+#else
             uint32_t half = UINT32_MAX;
             for (size_t i = 0; i < row.source.size(); ++i) {
                 if (row.source[i] == ' ') continue;
@@ -57,6 +61,7 @@
                 half = current;
             }
             return half;
+
         };
         for (const auto &anchor : belief_draws) {
             if (!belief_draw_is_current(anchor)) continue;
@@ -156,7 +161,7 @@
                 (belief_row_half(card->rows.back()) == belief_upper && !rows.back().native_split_text))
                 continue;
             std::string target;
-            for (const auto &paragraph : belief_cache->paragraphs) {
+            for (size_t paragraph = 0; paragraph < belief_cache->paragraphs.size(); ++paragraph) {
                 // The producer can retain a bare name/creature or an
                 // unpunctuated religion when its entity/deity is missing.
                 // The selected character sheet owns the complete cache,
@@ -204,10 +209,12 @@
             for (const auto &row : card->rows)
                 std::fill_n(owned[row.y].begin() + row.x, row.source.size(), true);
         }
+#endif
         };
-        append_background_cache(adventure_belief_cache, [&](std::string_view paragraph) {
-            return translate_adventure_belief_source(paragraph);
+        append_background_cache(adventure_belief_cache, [&](size_t paragraph) {
+            return translate_adventure_belief_source(paragraph, *adventure_belief_cache);
         });
-        append_background_cache(adventure_home_cache, [&](std::string_view paragraph) {
-            return translate_adventure_home_source(paragraph, *adventure_home_cache);
+        append_background_cache(adventure_home_cache, [&](size_t paragraph) {
+            return translate_adventure_home_source(adventure_home_cache->paragraphs[paragraph],
+                *adventure_home_cache);
         });

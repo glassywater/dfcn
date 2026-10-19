@@ -150,6 +150,34 @@ std::optional<std::string> Overlay::translate_civilization_reference(
 }
 
 std::optional<std::string> Overlay::translate_religion_reference(std::string_view source) const {
+    // The background chooser has already read every option's real kind and
+    // WORD/POS name. Speculative help/name probes on this page must not build
+    // the whole world's entity catalogue or acquire government relationships
+    // for a religion which this native sheet already owns.
+    const auto *snapshot = g_native_adventure_background_read;
+    if (!g_native_announcement_log_worker_active && snapshot &&
+            snapshot->choices_read && snapshot->choices) {
+        source = trim_view(source);
+        if (source.empty() || source.size() > 4096 || source.ends_with("..."))
+            return std::nullopt;
+        if (source.size() > 2 && source.front() == '"' && source.back() == '"')
+            source = source.substr(1, source.size() - 2);
+        const std::string key = civilization_reference_key(source);
+        std::optional<std::string> translated;
+        for (const auto &choice : *snapshot->choices) {
+            if (choice.practice != 1 || !choice.name ||
+                    choice.name->entity_type != 5 || !choice.name->has_name) continue;
+            const auto english = reconstruct_site_english_name(*choice.name);
+            const bool matches = english && civilization_reference_key(*english) == key;
+            const bool native_matches = !choice.name->native_name.empty() &&
+                civilization_reference_key(choice.name->native_name) == key;
+            if (!matches && !native_matches) continue;
+            const auto target = translate_adventure_religion_name(*choice.name);
+            if (!target || (translated && *translated != *target)) return std::nullopt;
+            translated = target;
+        }
+        return translated;
+    }
     return translate_entity_reference(source, false, false, 5);
 }
 

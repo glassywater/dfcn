@@ -22,7 +22,6 @@ static std::vector<Match> native_dfhack_trade_hint_matches(
         match.layout_length = match.length;
         match.layout_left = true;
         match.layout_clip_right = action.x + match.length;
-        match.layout_lock_font_pixels = true;
         matches.push_back(std::move(match));
     }
     return matches;

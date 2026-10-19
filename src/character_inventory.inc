@@ -1541,7 +1541,6 @@ std::vector<Match> Overlay::capture_inventory_rows(
 
 void Overlay::layout_inventory(SDL_Renderer *renderer) {
     if (!gps_ || !renderer || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
-    int pixels = gps_->tile_pixel_y;
     std::vector<Match *> rows;
     for (Match &match : prepared_matches_) {
         if ((match.rule != kCharacterInventoryItemRule &&
@@ -1563,12 +1562,11 @@ void Overlay::layout_inventory(SDL_Renderer *renderer) {
                 * gps_->tile_pixel_y / 2;
         }
         layout_fortress_text_rows(renderer, {{&match}}, left, right);
-        if (match.layout_font_pixels <= 0) continue;
-        pixels = std::min(pixels, match.layout_font_pixels);
+        if (!match.layout_prepared) continue;
         rows.push_back(&match);
     }
     if (rows.empty()) return;
-    for (Match *match : rows) match->layout_font_pixels = pixels;
+    for (Match *match : rows) match->layout_prepared = true;
     const auto settings = native_ui_settings();
     for (Match *match : rows) {
         if (!settings || !settings->classic || !match->native_picture_caption_box ||
@@ -1613,13 +1611,12 @@ void Overlay::layout_inventory(SDL_Renderer *renderer) {
             if (digit < '0' || digit > '9') continue;
             const int padding = config_.horizontal_padding;
             const auto *glyph = get_glyph_texture(renderer, match.target,
-                std::max(1, (value_x - match.x) * tile_w), tile_h, pixels, 0, true);
+                std::max(1, (value_x - match.x) * tile_w));
             if (!glyph || !glyph->texture) continue;
             const int gap = std::max(1, tile_w / 2);
             match.layout_box_pixel_x = origin_x + value_x * tile_w - gap - glyph->width - padding;
             match.layout_box_pixel_width = glyph->width + 2 * padding;
-            match.layout_font_pixels = pixels;
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = tile_h;
             match.layout_fixed_baseline = true;
             match.layout_left = true;

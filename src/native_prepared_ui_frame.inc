@@ -6,6 +6,7 @@ struct NativePreparedUiFrame {
     std::vector<Match> matches;
     std::vector<unsigned char> suppress_base, suppress_top;
     bool main_menu = false, settings_video = false, fortress_map = false;
+    bool copy_passthrough = true;
 
 private:
     using Header = std::array<unsigned char, sizeof(graphicst)>;
@@ -204,7 +205,7 @@ public:
     }
     void capture_result(const NativeUiLayerGrid &input, const std::vector<Match> &result,
             const std::vector<unsigned char> &base, const std::vector<unsigned char> &top,
-            bool menu, bool settings, bool fortress) {
+            bool menu, bool settings, bool fortress, bool passthrough) {
         valid_ = false;
         if (!source_captured_ || input.dimx != original.dimx || input.dimy != original.dimy) return;
         masked.copy_native_input(graphics(input));
@@ -214,6 +215,7 @@ public:
         main_menu = menu;
         settings_video = settings;
         fortress_map = fortress;
+        copy_passthrough = passthrough;
         valid_ = true;
     }
     void restore_input(NativeUiLayerGrid &input, const graphicst &current) const {

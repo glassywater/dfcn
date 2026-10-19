@@ -67,16 +67,65 @@ static bool native_dfhack_read_native_tile(int x, int y, bool map) noexcept {
         (map && !native_ui_classic().value_or(false)) ||
         !native_dfhack_layer_ui_written(gps, x, y);
 }
+
+// readTile dispatches through get_tile. Once the outer boundary has selected
+// its input, the inner hook must keep that selection instead of installing a
+// new private writer while the original writer is temporarily paused.
+struct NativeDfhackTileReadScope {
+    inline static thread_local unsigned depth = 0;
+    NativeDfhackTileReadScope() { ++depth; }
+    ~NativeDfhackTileReadScope() { --depth; }
+};
+
+class NativeDfhackCharacterTileReadScope {
+#ifdef _WIN32
+    std::unique_lock<std::recursive_mutex> translation_;
+    std::optional<NativeUiGridBinding> binding_;
+#endif
+public:
+    NativeDfhackCharacterTileReadScope(int x, int y, bool map)
+#ifdef _WIN32
+        : translation_(translation_state_mutex, std::defer_lock)
+#endif
+    {
+#ifdef _WIN32
+        // Screen's UI branch ignores the viewport member-field argument.
+        // Keep map reads native, including their existing Classic behavior.
+        if (map || !translation_.try_lock()) return;
+        // SDL temporarily masks English glyphs while painting this layer.
+        // Never wait for its translation lock while holding the writer lock;
+        // a busy layer leaves this read on the shared native input instead.
+        auto *gps = native_graphics_owner();
+        if (!gps || !native_character_open() || !native_character_background_view(gps)) return;
+        const auto *source = g_native_character_layer.foreground.graphics();
+        if (source->dimx != gps->dimx || source->dimy != gps->dimy ||
+                x < 0 || y < 0 || x >= gps->dimx || y >= gps->dimy) return;
+        const bool owned = std::any_of(g_native_character_layer.frames.begin(),
+            g_native_character_layer.frames.end(), [&](const SDL_Rect &frame) {
+                return x >= frame.x && y >= frame.y &&
+                    x < frame.x + frame.w && y < frame.y + frame.h;
+            });
+        if (!owned) return;
+        // The native sheet no longer writes its tabs to the shared grid.
+        // Expose its original cells so DFHack can find anchors such as the
+        // Overview tab. Its own reader still resolves pens and both planes.
+        binding_.emplace(gps, *source);
+#endif
+    }
+};
+
 static void *native_dfhack_get_tile_capture(void *result, int x, int y,
         bool map, uintptr_t member_field) {
     NativeInputCallbackScope callback;
     const auto original = g_native_dfhack_original_get_tile.load(std::memory_order_acquire);
     if (!original || original == native_dfhack_get_tile_capture) return result;
-    if (g_native_process_exiting.load(std::memory_order_acquire))
+    if (g_native_process_exiting.load(std::memory_order_acquire) || NativeDfhackTileReadScope::depth)
         return callback.call_native([&] { return original(result, x, y, map, member_field); });
+    NativeDfhackTileReadScope reading;
     NativeDfhackLayerWriteScope layer(true, false, false);
     if (native_dfhack_read_native_tile(x, y, map)) {
         NativeDfhackNativeLayerScope native(false);
+        NativeDfhackCharacterTileReadScope character(x, y, map);
         return callback.call_native([&] { return original(result, x, y, map, member_field); });
     }
     return callback.call_native([&] { return original(result, x, y, map, member_field); });
@@ -215,11 +264,13 @@ static void *native_dfhack_read_tile_capture(void *result, int x, int y,
     const auto original = reinterpret_cast<NativeDfhackReadTileFn>(
         native_dfhack_draw_entry(NativeDfhackDrawApi::ReadTile).original);
     if (!original) return result;
-    if (g_native_process_exiting.load(std::memory_order_acquire))
+    if (g_native_process_exiting.load(std::memory_order_acquire) || NativeDfhackTileReadScope::depth)
         return callback.call_native([&] { return original(result, x, y, map, member_field); });
+    NativeDfhackTileReadScope reading;
     NativeDfhackLayerWriteScope layer(true, false, false);
     if (native_dfhack_read_native_tile(x, y, map)) {
         NativeDfhackNativeLayerScope native(false);
+        NativeDfhackCharacterTileReadScope character(x, y, map);
         return callback.call_native([&] { return original(result, x, y, map, member_field); });
     }
     return callback.call_native([&] { return original(result, x, y, map, member_field); });

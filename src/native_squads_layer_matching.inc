@@ -134,12 +134,16 @@ std::vector<Match> Overlay::find_native_squads_matches() const {
                 field.equipment = static_cast<NativeSquadsEquipmentField>(index + 1);
         if (field.equipment != NativeSquadsEquipmentField::None)
             field.match.layout_ellipsize = true;
-        // Routine list rows stop before the producer's scrollbar column.
-        // Its complete source may legitimately extend across that column.
-        if (field.complete.starts_with("Routine:")) {
-            field.match.layout_clip_right = panel_right - 2;
-            field.match.layout_length = std::max(1, panel_right - 2 - first);
+        // All three squad-list fields share the native text allocation.
+        // The producer adjusts it for the scrollbar before writing even a
+        // short caption; neither its English length nor the panel edge owns
+        // the translated width. Keep long orders on their original line.
+        if (draw.squad_list_right > first) {
+            field.match.layout_clip_right = std::min(
+                field.match.layout_clip_right, draw.squad_list_right);
+            field.match.layout_length = field.match.layout_clip_right - first;
             field.match.layout_native_clip->w = field.match.layout_length * gps->tile_pixel_x;
+            field.match.layout_ellipsize = true;
         }
         if (draw.native_caller == g_native_squads_member_name_caller ||
                 draw.native_caller == g_native_squads_member_order_caller) {

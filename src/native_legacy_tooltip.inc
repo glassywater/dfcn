@@ -17,6 +17,49 @@ static NativeLegacyTooltipState &native_legacy_tooltip_state() {
 }
 
 #ifdef _WIN32
+// Fortress's compact toolbar skips the floating card's row-count call.
+// Its selected paragraph is already resolved here, before clearing the
+// fixed [right-24,right] x [0,17] panel. Body rows start at y=0 and keys
+// follow the complete row loop even when they extend below that panel.
+static bool capture_native_fortress_compact_tooltip_start(const void *paragraph,
+        int viewport_right) {
+    NativeInputCallbackScope callback;
+    const auto base = g_native_legacy_tooltip_base;
+    const bool compact = *reinterpret_cast<const unsigned char *>(
+        native_pe_address(base, 0x18a93b8)) != 0;
+    if (!compact) return compact;
+    try {
+        auto &state = native_legacy_tooltip_state();
+        if (state.frame && state.frame->isolated)
+            native_tooltip_end_draw(*state.frame);
+        state.frame.reset();
+        state.remaining_body_rows = 0;
+        state.has_keys = false;
+        auto *gps = native_graphics();
+        const size_t count = native_paragraph_row_count(paragraph);
+        const bool keys = *reinterpret_cast<const int32_t *>(
+            native_pe_address(base, 0x18a93a8)) != 0;
+        if (!paragraph || !gps || !gps->screen || gps->dimx <= 0 || gps->dimx > 1000 ||
+                gps->dimy <= 0 || gps->dimy > 1000 ||
+                count > static_cast<size_t>(gps->dimy) || (!count && !keys)) return compact;
+        const int left = viewport_right - 24;
+        const int height = std::min(gps->dimy,
+            std::max(18, static_cast<int>(count) + (keys ? 2 : 0)));
+        if (left < 0 || left > gps->dimx - 25) return compact;
+        NativeTooltipWidgetFrame frame;
+        frame.bounds = {left, 0, 25, height};
+        frame.dimx = gps->dimx;
+        frame.dimy = gps->dimy;
+        frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+        frame.rows.assign(height, std::string(25, ' '));
+        state.epoch = frame.epoch;
+        state.remaining_body_rows = count;
+        state.has_keys = keys;
+        if (native_tooltip_begin_draw(frame)) state.frame = std::move(frame);
+    } catch (...) {}
+    return compact;
+}
+
 // The floating toolbar counts its selected paragraph immediately before
 // clearing [left,left+27] x [bottom-rows-1-(keys?2:0),bottom]. The argument
 // already resolves custom RAW descriptions; capture that actual document.
@@ -235,6 +278,15 @@ static bool install_native_legacy_tooltip(uintptr_t base) {
     g_native_legacy_tooltip_base = base;
     std::vector<NativeCall> calls{
 #ifdef _WIN32
+        // R13 is the selected paragraph; [RBP-0x58] is the viewport's
+        // right limit. The next compact instructions redefine EAX, while
+        // floating mode calls the row-count helper before using it. Both
+        // continuations redefine volatile arguments before their next call;
+        // the enclosing function already supplies aligned ABI call space.
+        // TEST AL,AL preserves the native JE after this compact comparison.
+        {0x3fb0a0, 0, reinterpret_cast<const void *>(&capture_native_fortress_compact_tooltip_start),
+            {0x4c,0x89,0xe9,0x8b,0x55,0xa8},
+            {0x80,0x3d,0x11,0xe3,0x4a,0x01,0x00}, {0x84,0xc0}},
         {0x3fb149, 0x6ee50, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_rows)},
         {0x3fb318, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},
         {0x3fb3c6, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},

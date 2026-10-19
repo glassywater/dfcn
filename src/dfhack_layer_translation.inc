@@ -1,6 +1,21 @@
 // A completed submission keeps its owned source and matches together. SDL
 // can retain that whole submission while the worker prepares newer content.
 
+struct NativeDfhackTranslationGraphicsScope {
+    graphicst *&overlay_graphics;
+    graphicst *previous_overlay, *previous_present;
+    NativeDfhackTranslationGraphicsScope(graphicst *&overlay, graphicst *layer)
+        : overlay_graphics(overlay), previous_overlay(overlay),
+          previous_present(g_native_dfhack_present_graphics) {
+        overlay_graphics = layer;
+        g_native_dfhack_present_graphics = layer;
+    }
+    ~NativeDfhackTranslationGraphicsScope() {
+        g_native_dfhack_present_graphics = previous_present;
+        overlay_graphics = previous_overlay;
+    }
+};
+
 static bool native_dfhack_translation_layout_compatible(
         const NativeDfhackLayerStorage &source, const NativeDfhackLayerStorage &latest) noexcept {
     if (!source.ready || !latest.ready || !source.graphics || !latest.graphics ||
@@ -41,6 +56,7 @@ void Overlay::start_dfhack_translation_worker() {
     dfhack_translation_consumed_identity_context_.store(0, std::memory_order_release);
     dfhack_translation_consumed_catalog_.store(0, std::memory_order_release);
     dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+    dfhack_translation_world_frame_.store({}, std::memory_order_release);
     dfhack_translation_cache_.clear();
     dfhack_translation_blocked_keys_.clear();
     try {
@@ -75,6 +91,7 @@ void Overlay::stop_dfhack_translation_worker() {
     dfhack_translation_requested_frame_.store({}, std::memory_order_release);
     dfhack_translation_consumed_frame_.store({}, std::memory_order_release);
     dfhack_translation_completed_frame_.store({}, std::memory_order_release);
+    dfhack_translation_world_frame_.store({}, std::memory_order_release);
     dfhack_translation_pending_.store(false, std::memory_order_release);
     dfhack_translation_cache_.clear();
     dfhack_translation_blocked_keys_.clear();
@@ -140,6 +157,46 @@ std::shared_ptr<const NativeDfhackTranslatedFrame> Overlay::completed_dfhack_lay
     }
     if (!dfhack_translation_running_.load(std::memory_order_acquire)) return {};
     queue_dfhack_layer_frame(latest);
+    // Sitemap's civilization/location names and a few other typed fields
+    // need live-world references. Finish those owned submissions at the SDL
+    // translation boundary, before an older compatible frame can hide them.
+    if (auto pending = dfhack_translation_world_frame_.exchange({}, std::memory_order_acq_rel)) {
+        const auto current = [&] {
+            return pending->source && pending->source->ready && pending->source->graphics &&
+                pending->source->page_revision == native_dfhack_layer_page_revision() &&
+                pending->catalog_revision == dfhack_translation_catalog_revision_.load(std::memory_order_acquire) &&
+                pending->identity_context == native_identity_translation_context() &&
+                pending->catalog == g_dfhack_output_snapshot.load(std::memory_order_acquire) &&
+                native_dfhack_translation_layout_compatible(*pending->source, *latest);
+        };
+        try {
+            TranslationStateScope translation;
+            if (current()) {
+                NativeDfhackLayerFrameReadScope frame_scope(pending->source);
+                NativeDfhackTranslationGraphicsScope graphics(gps_, pending->source->graphics.get());
+                NativeDfhackForegroundScope foreground;
+                NativePanelReadScope panels(gps_);
+                CellReadCacheScope cells(*this);
+                auto completed = std::make_shared<NativeDfhackTranslatedFrame>(*pending);
+                completed->matches = std::make_shared<const std::vector<Match>>(find_dfhack_matches(-1));
+                if (current()) {
+                    std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
+                    if (!dfhack_translation_stop_) {
+                        remember_dfhack_layer_frame(completed);
+                        dfhack_translation_completed_frame_.store(std::move(completed), std::memory_order_release);
+                    }
+                } else queue_dfhack_layer_translation();
+            } else queue_dfhack_layer_translation();
+        } catch (const std::exception &error) {
+            log_line("ERROR", std::string("DFHack world-field translation failed: ") + error.what());
+            std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
+            block_dfhack_layer_frame(pending->key);
+        } catch (...) {
+            log_line("ERROR", "DFHack world-field translation failed: unknown exception");
+            std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
+            block_dfhack_layer_frame(pending->key);
+        }
+    }
     const auto compatible = [&](const auto &frame) {
         return frame && frame->source && frame->matches &&
             native_dfhack_translation_layout_compatible(*frame->source, *latest);
@@ -161,6 +218,7 @@ void Overlay::dfhack_translation_worker_loop() {
     for (;;) {
         uint64_t key = 0;
         std::shared_ptr<const NativeDfhackLayerStorage> source;
+        std::shared_ptr<NativeDfhackTranslatedFrame> completed;
         dfhack_translation_pending_.wait(false, std::memory_order_acquire);
         {
             std::unique_lock<std::mutex> lock(dfhack_translation_mutex_);
@@ -183,20 +241,7 @@ void Overlay::dfhack_translation_worker_loop() {
             if (!graphics->screen || !config_.enabled || !face_ || rules_.empty() ||
                     graphics->dimx <= 0 || graphics->dimx > 1000 ||
                     graphics->dimy <= 0 || graphics->dimy > 1000) continue;
-            struct LayerGraphicsScope {
-                graphicst *&overlay_graphics;
-                graphicst *previous_overlay, *previous_present;
-                LayerGraphicsScope(graphicst *&overlay, graphicst *layer)
-                    : overlay_graphics(overlay), previous_overlay(overlay),
-                      previous_present(g_native_dfhack_present_graphics) {
-                    overlay_graphics = layer;
-                    g_native_dfhack_present_graphics = layer;
-                }
-                ~LayerGraphicsScope() {
-                    g_native_dfhack_present_graphics = previous_present;
-                    overlay_graphics = previous_overlay;
-                }
-            } layer_graphics(gps_, graphics);
+            NativeDfhackTranslationGraphicsScope layer_graphics(gps_, graphics);
             NativeDfhackForegroundScope foreground;
             NativePanelReadScope layer_reads(gps_);
             CellReadCacheScope layer_cells(*this);
@@ -249,8 +294,14 @@ void Overlay::dfhack_translation_worker_loop() {
                     continue;
                 }
             }
+            completed = std::make_shared<NativeDfhackTranslatedFrame>();
+            completed->source = source;
+            completed->key = key;
+            completed->catalog_revision = revision;
+            completed->identity_context = context;
+            completed->catalog = catalog;
             DfhackTranslationThreadScope worker_scope;
-            auto matches = std::make_shared<const std::vector<Match>>(
+            completed->matches = std::make_shared<const std::vector<Match>>(
                 input->translation_content_ready && !input->translation_has_content
                     ? std::vector<Match>{} : find_dfhack_matches(-1));
             if (!inputs_current()) {
@@ -258,13 +309,6 @@ void Overlay::dfhack_translation_worker_loop() {
                 queue_dfhack_layer_translation();
                 continue;
             }
-            auto completed = std::make_shared<NativeDfhackTranslatedFrame>();
-            completed->source = source;
-            completed->matches = std::move(matches);
-            completed->key = key;
-            completed->catalog_revision = revision;
-            completed->identity_context = context;
-            completed->catalog = catalog;
             {
                 std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
                 if (dfhack_translation_stop_) break;
@@ -273,9 +317,10 @@ void Overlay::dfhack_translation_worker_loop() {
             }
         } catch (const DfhackTranslationNeedsWorld &) {
             std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
-            // A live-world dependency is not a completed English-only frame.
-            // Keep the last complete submission until owned inputs are ready.
-            if (!dfhack_translation_stop_) block_dfhack_layer_frame(key);
+            // World-dependent names are deferred work, not failed keys. The
+            // SDL consumer binds this exact source and completes its matches.
+            if (!dfhack_translation_stop_ && completed)
+                dfhack_translation_world_frame_.store(std::move(completed), std::memory_order_release);
         } catch (const std::exception &error) {
             log_line("ERROR", std::string("DFHack layer translation failed: ") + error.what());
             std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);

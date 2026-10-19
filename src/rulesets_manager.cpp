@@ -1168,8 +1168,13 @@ namespace Hooks {
             if (end < text.size() &&
                 (static_cast<unsigned char>(text[end]) & 0xc0) == 0x80) continue;
             if (creature) {
-                if (!name_byte(previous) && previous != ' ') break;
-                if (!name_byte(previous)) continue;
+                // Item Tagger annotates RAW species/caste names with use
+                // tags. Offer complete bracketed fields to the same strict
+                // creature resolver; it accepts only known tags following a
+                // complete species, including multiple tags in their order.
+                if (!name_byte(previous) && previous != ' ' &&
+                        previous != '[' && previous != ']') break;
+                if (!name_byte(previous) && previous != ']') continue;
                 // An outer possessive also offers a boundary for event
                 // grammar such as `seeing a <caste>'s dead body`.
                 const bool possessive = end + 1 < text.size() && text[end] == '\'' &&

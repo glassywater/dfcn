@@ -351,8 +351,7 @@ std::vector<Match> Overlay::find_native_announcement_log_matches() const {
             span->layout_clip_right = field_right;
             span->layout_native_clip = pixels(left, span->y, field_right, span->y + 1);
             span->layout_reflowed_paragraph = true;
-            span->layout_font_pixels = unified_font_pixels();
-            span->layout_lock_font_pixels = true;
+            span->layout_prepared = true;
             span->layout_line_height_pixels = tile_h;
             result.push_back(std::move(*span));
         }

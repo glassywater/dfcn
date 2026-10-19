@@ -283,13 +283,39 @@ std::string Overlay::site_name_full_transliteration(const NativeHistoryName &nam
     return transliterate_site_spelling(name.native_name);
 }
 
-std::optional<std::string> Overlay::translate_saved_site_name(
+std::optional<std::string> Overlay::translate_saved_name(
         const NativeSaveNameSource &source) const {
     if (source.original.empty()) return std::nullopt;
     if (source.authored) return native_text_to_utf8(source.original);
-    // The same header field stores an adventurer's identity in adventure
-    // saves. Only native dwarf-mode values prove a fortress-name field.
+    // The header's game type distinguishes an adventurer's personal name
+    // from a fortress name even when no world has been loaded.
     switch (source.game_type) {
+    case 1: {
+        if (const auto person = translate_legends_name(source.original, true))
+            return person;
+        // first_name may be authored UTF-8, independently of WORD0..6.
+        // Preserve that given name while translating the generated
+        // surname/title/OfX groups in their own naming language.
+        // Keep nicknames on the complete personal-name path above.
+        const std::string_view name(source.original);
+        const size_t space = name.find(' ');
+        if (space != std::string_view::npos && name.find('`') == std::string_view::npos) {
+            const auto given = name.substr(0, space);
+            const auto rest = trim_view(name.substr(space + 1));
+            const bool authored_given = contains_cjk_utf8(given);
+            if (authored_given || generated_title_shape(given))
+                if (const auto groups = translate_procedural_fragment(std::string(rest),
+                        false, false, {}, ProceduralFragmentContext::native_name_group)) {
+                    if (config_.native_language_original)
+                        return native_language_word_display(name);
+                    return (authored_given ? native_text_to_utf8(given)
+                        : native_language_word_display(given)) + "·" + *groups;
+                }
+        }
+        // Own unknown/authored text as a whole instead of translating just
+        // an incidental known word inside the saved personal name.
+        return native_text_to_utf8(source.original);
+    }
     case 0: case 3: case 8: case 10: break;
     default: return std::nullopt;
     }

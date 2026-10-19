@@ -96,6 +96,61 @@ static void bind_native_drawn_text_frame(const graphicst &graphics) {
     if (changed) ++g_native_drawn_text_revision;
 }
 
+// One display preparation shares these owned sources between its semantic
+// key and discovery. The next native frame always starts with fresh reads.
+struct NativeAdventureBackgroundReadState {
+    bool belief_read = false, choices_read = false, home_read = false;
+    bool context_read = false;
+    std::optional<NativeAdventureBeliefCache> belief;
+    std::optional<std::vector<NativeAdventureBeliefChoice>> choices;
+    std::optional<NativeAdventureHomeCache> home;
+    std::optional<std::string> context;
+};
+static thread_local NativeAdventureBackgroundReadState *g_native_adventure_background_read = nullptr;
+
+class NativeAdventureBackgroundReadScope {
+    NativeAdventureBackgroundReadState state_;
+    NativeAdventureBackgroundReadState *previous_;
+public:
+    NativeAdventureBackgroundReadScope()
+        : previous_(g_native_adventure_background_read) {
+        if (!previous_) g_native_adventure_background_read = &state_;
+    }
+    ~NativeAdventureBackgroundReadScope() {
+        g_native_adventure_background_read = previous_;
+    }
+};
+
+static std::optional<NativeAdventureBeliefCache> frame_native_adventure_belief_cache() {
+    auto *state = g_native_adventure_background_read;
+    if (!state) return native_adventure_belief_cache();
+    if (!state->belief_read) {
+        state->belief = native_adventure_belief_cache();
+        state->belief_read = true;
+    }
+    return state->belief;
+}
+
+static std::optional<std::vector<NativeAdventureBeliefChoice>> frame_native_adventure_belief_choices() {
+    auto *state = g_native_adventure_background_read;
+    if (!state) return native_adventure_belief_choices();
+    if (!state->choices_read) {
+        state->choices = native_adventure_belief_choices();
+        state->choices_read = true;
+    }
+    return state->choices;
+}
+
+static std::optional<NativeAdventureHomeCache> frame_native_adventure_home_cache() {
+    auto *state = g_native_adventure_background_read;
+    if (!state) return native_adventure_home_cache();
+    if (!state->home_read) {
+        state->home = native_adventure_home_cache();
+        state->home_read = true;
+    }
+    return state->home;
+}
+
 static uint64_t captured_native_drawn_text_epoch() {
     // Present advances the next writer's generation even while display keeps
     // the last native page. Readers belong to the last actual caption batch.

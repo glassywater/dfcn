@@ -195,8 +195,7 @@ void Overlay::layout_terrain_captions(SDL_Renderer *renderer) {
                 for (Match *part : row) {
                     part->layout_x = left;
                     part->layout_left = true;
-                    part->layout_font_pixels = unified_font_pixels();
-                    part->layout_lock_font_pixels = true;
+                    part->layout_prepared = true;
                 }
         }
     }

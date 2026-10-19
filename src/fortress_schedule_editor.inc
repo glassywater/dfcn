@@ -179,8 +179,7 @@ bool Overlay::layout_fortress_schedule_editor(SDL_Renderer *renderer) {
                 match.layout_length = button->second - button->first;
                 match.layout_clip_right = button->second;
                 match.layout_left = false;
-                match.layout_font_pixels = pixels;
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 match.layout_line_height_pixels = gps_->tile_pixel_y;
             } else if (match.y < editor->title_y && match.source == "(unnamed orders)") {
                 // The editable name has its own inset beside the pen icon.

@@ -77,8 +77,7 @@
             match.layout_length = list_right - x;
             match.layout_left = true;
             match.layout_clip_right = list_right;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             dfhack_auxiliary_matches.push_back(std::move(match));
         }
         return true;

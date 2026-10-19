@@ -90,8 +90,7 @@
             match.layout_length = right - x;
             match.layout_clip_right = right;
             match.layout_left = !centered;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             dfhack_auxiliary_matches.push_back(std::move(match));
         };
         // TabBar repeats each caption in two native half-font rows. The

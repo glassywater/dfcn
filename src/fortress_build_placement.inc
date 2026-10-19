@@ -103,8 +103,7 @@ void Overlay::append_fortress_build_placement_fields(std::vector<std::string> &r
                 match.layout_length = right - draw.x;
                 match.layout_clip_right = right;
                 match.layout_left = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 matches.push_back(std::move(match));
                 std::fill_n(rows[draw.y].begin() + draw.x, draw.source.size(), ' ');
                 break;
@@ -125,8 +124,7 @@ void Overlay::append_fortress_build_placement_fields(std::vector<std::string> &r
                 match.layout_length = right - match.x;
                 match.layout_clip_right = right;
                 match.layout_left = true;
-                match.layout_font_pixels = unified_font_pixels();
-                match.layout_lock_font_pixels = true;
+                match.layout_prepared = true;
                 matches.push_back(std::move(match));
                 std::fill_n(rows[y].begin() + at, source.size(), ' ');
             }
@@ -304,8 +302,7 @@ void Overlay::append_fortress_pressure_plate(std::vector<std::string> &rows,
             match.layout_length = right - left;
             match.layout_left = !button;
             match.layout_clip_right = right;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
             matches.push_back(std::move(match));
         }
     }
@@ -462,8 +459,7 @@ void Overlay::append_fortress_build_material_fields(std::vector<std::string> &ro
         name.native_picture_caption_box = SDL_Rect{left, draw.y, name.layout_length, 1};
         name.layout_foreground_rgb = draw.foreground_rgb;
         name.layout_left = true;
-        name.layout_font_pixels = unified_font_pixels();
-        name.layout_lock_font_pixels = true;
+        name.layout_prepared = true;
         matches.push_back(std::move(name));
         std::fill(rows[draw.y].begin() + left, rows[draw.y].begin() + end, ' ');
     }
@@ -781,8 +777,7 @@ void Overlay::layout_fortress_building_status(SDL_Renderer *renderer) {
                 for (Match *part : row) {
                     part->layout_x = left;
                     part->layout_left = true;
-                    part->layout_font_pixels = unified_font_pixels();
-                    part->layout_lock_font_pixels = true;
+                    part->layout_prepared = true;
                 }
         }
     }
@@ -912,9 +907,7 @@ void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
             // current English amount or caption into a clipping rectangle.
             match.layout_x = match.x;
             match.layout_left = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
-            match.layout_visual_height_pixels = 0;
+            match.layout_prepared = true;
             match.layout_line_height_pixels = gps_->tile_pixel_y;
         }
     }
@@ -929,8 +922,7 @@ void Overlay::layout_fortress_farm_plot(SDL_Renderer *renderer) {
     const auto fits = [&](std::string_view target, int left, int right) {
         const int width = (right - left) * gps_->tile_pixel_x - 2 * config_.horizontal_padding;
         if (width <= 0) return false;
-        const auto *glyph = get_glyph_texture(renderer, std::string(target), width,
-            gps_->tile_pixel_y, unified_font_pixels(), 0, true);
+        const auto *glyph = get_glyph_texture(renderer, std::string(target), width);
         return glyph && glyph->texture && glyph->width <= width;
     };
     for (Match *head : footer) {
@@ -1121,8 +1113,7 @@ void Overlay::layout_fortress_build_placement(SDL_Renderer *renderer) {
             layout_fortress_text_rows(renderer, {{&match}}, match.x, field.right);
         else {
             match.layout_left = true;
-            match.layout_font_pixels = unified_font_pixels();
-            match.layout_lock_font_pixels = true;
+            match.layout_prepared = true;
         }
         // draw_match retains native_split_top_y for native two-row text;
         // layout_x also keeps these independent fields out of prose reflow.

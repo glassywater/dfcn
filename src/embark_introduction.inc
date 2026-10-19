@@ -277,7 +277,7 @@ bool Overlay::layout_embark_introduction(SDL_Renderer *renderer) {
     // Wrap inside the native modal's prose area. Its Okay button and frame
     // remain fixed even when the translation needs more rows than fit.
     {
-        if (!set_font_pixel_size(pixels)) return false;
+        if (!sync_font_pixel_size()) return false;
         std::unordered_map<uint32_t, Metrics> glyphs;
         for (const auto &paragraph : codepoints) {
             for (uint32_t cp : paragraph) {
@@ -333,8 +333,7 @@ bool Overlay::layout_embark_introduction(SDL_Renderer *renderer) {
                 Match line = sections[p];
                 line.target.clear();
                 for (size_t i = start; i < end; ++i) append_utf8_codepoint(line.target, cps[i]);
-                line.layout_font_pixels = pixels;
-                line.layout_lock_font_pixels = true;
+                line.layout_prepared = true;
                 line.layout_line_height_pixels = line_height;
                 line.layout_pixel_y = offset;
                 output.push_back(std::move(line));
@@ -346,8 +345,7 @@ bool Overlay::layout_embark_introduction(SDL_Renderer *renderer) {
         // Texture ink retains the shared font size; the native modal keeps
         // its row spacing independently of each line's bitmap height.
         for (const Match &line : output) {
-            const auto *glyph = get_glyph_texture(renderer, line.target,
-                width, line_height, pixels, 0, true);
+            const auto *glyph = get_glyph_texture(renderer, line.target, width);
             if (!glyph || !glyph->texture) return false;
         }
         const int box_width = width + 2 * padding;

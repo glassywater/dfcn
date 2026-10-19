@@ -33,6 +33,29 @@ static std::optional<std::string_view> translate_vanilla_were_species(
     return std::nullopt;
 }
 
+// RAW-use annotations are separate from the species/caste noun. Consume
+// complete known tags only, retaining their order and the noun's own parser.
+template<class TranslateName>
+static std::optional<std::string> translate_raw_use_tagged_name(
+        std::string_view source, TranslateName &&translate_name) {
+    source = trim_view(source);
+    std::string tags;
+    while (source.ends_with(']')) {
+        const size_t at = source.rfind(" [");
+        if (at == std::string_view::npos) break;
+        std::vector<size_t> origins;
+        const auto tag = RULESETS.translate_with_origins(
+            native_text_to_utf8(source.substr(at + 1)),
+            "::item_tagger::tags::tag", origins);
+        if (!tag) return std::nullopt;
+        tags.insert(0, " " + *tag);
+        source = trim_view(source.substr(0, at));
+    }
+    if (tags.empty() || source.empty()) return std::nullopt;
+    if (auto name = translate_name(source)) return *name + tags;
+    return std::nullopt;
+}
+
 std::optional<std::string> Overlay::translate_creature_descriptor(
         std::string_view source, bool require_species) const {
     std::string normalized;
@@ -42,6 +65,9 @@ std::optional<std::string> Overlay::translate_creature_descriptor(
         normalized += word;
     }
     if (normalized.empty()) return std::nullopt;
+    if (auto tagged = translate_raw_use_tagged_name(normalized,
+            [&](std::string_view name) { return translate_creature_descriptor(name, true); }))
+        return tagged;
     auto complete = [](const std::optional<std::string> &value) {
         // These lookups and grammars resolve the entire source field. Their
         // reviewed output may retain form letters, e.g. 超级超梦Y; the output

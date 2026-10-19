@@ -96,9 +96,7 @@ void Overlay::append_fortress_noble_symbol_rows(std::vector<std::string> &rows,
             field.layout_clip_right = right;
             field.layout_left = true;
             field.layout_foreground_rgb = draw.foreground_rgb;
-            field.layout_font_pixels = std::clamp(
-                static_cast<int>(gps_->tile_pixel_y * config_.font_scale), 1, gps_->tile_pixel_y);
-            field.layout_lock_font_pixels = true;
+            field.layout_prepared = true;
             field.layout_line_height_pixels = gps_->tile_pixel_y;
             field.native_picture_caption_box = SDL_Rect{draw.x,
                 rule == kFortressNobleSymbolNameRule ? draw.y - 1 : draw.y,
@@ -126,7 +124,8 @@ void Overlay::layout_fortress_noble_symbols(SDL_Renderer *renderer) {
         if (width <= 0) continue;
         int pixels = std::clamp(static_cast<int>(tile_h * config_.font_scale), 1, tile_h);
         const auto measured_width = [&](const std::string &text, int size) {
-            const auto *glyph = get_glyph_texture(renderer, text, width, tile_h, size, 0, true);
+            (void)size;
+            const auto *glyph = get_glyph_texture(renderer, text, width);
             return glyph && glyph->texture ? glyph->width : 0;
         };
         const int complete_width = measured_width(match.target, pixels);
@@ -168,7 +167,7 @@ void Overlay::layout_fortress_noble_symbols(SDL_Renderer *renderer) {
             continuation.layout_y = match.y;
             continuation.layout_pixel_y = tile_h / 2;
             continuation.layout_fixed_baseline = true;
-            continuation.layout_font_pixels = pixels;
+            continuation.layout_prepared = true;
             match.target = first;
             match.layout_y = match.y - 1;
             match.layout_pixel_y = tile_h / 2;
@@ -177,7 +176,7 @@ void Overlay::layout_fortress_noble_symbols(SDL_Renderer *renderer) {
         } else if (complete_width > width) {
             while (pixels > 1 && measured_width(match.target, pixels) > width) --pixels;
         }
-        match.layout_font_pixels = pixels;
+        match.layout_prepared = true;
     }
     prepared_matches_.insert(prepared_matches_.end(),
         std::make_move_iterator(continuations.begin()), std::make_move_iterator(continuations.end()));

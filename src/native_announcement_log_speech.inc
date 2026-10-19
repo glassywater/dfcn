@@ -396,7 +396,9 @@ static bool install_native_announcement_log_speech_hook() {
         uninstall_native_announcement_log_speech_hook(); return false;
     }
 #else
-    const auto address = native_reference_address(native_history_profile_base(), 0x103a1d0);
+    // The retained ELF coordinate is a VA, while the profile base already
+    // includes the image origin. Convert it before applying edition relocation.
+    const auto address = native_elf_history_address(0x103a1d0);
     prefix = {0xf3,0x0f,0x1e,0xfa,0x55};
     if (!address || std::memcmp(reinterpret_cast<const void *>(address), prefix.data(), prefix.size()) != 0) return false;
     entry = reinterpret_cast<unsigned char *>(address);
