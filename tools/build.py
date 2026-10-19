@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import ctypes
+from datetime import datetime
 import hashlib
 import os
 from pathlib import Path
@@ -618,14 +619,15 @@ def publish(candidate: Path, destination: Path, *, keep_candidate: bool = False)
         atomic_replace(candidate, destination)
 
 
-def stamp_core_version(candidate: Path) -> None:
-    """Embed a short fingerprint without hashing its own version bytes."""
+def stamp_core_version(candidate: Path, build_hour: str) -> None:
+    """Embed the compilation hour and fingerprint, excluding their own bytes."""
     image = bytearray(candidate.read_bytes())
-    marker = b"DFCN_BINARY_VERSION[00000]\0"
+    placeholder = b"0000.00.00.00.00000"
+    marker = b"DFCN_BINARY_VERSION[" + placeholder + b"]\0"
     if image.count(marker) != 1:
         raise RuntimeError(f"Core binary must contain one version slot: {candidate}")
     version_offset = image.index(marker) + len(b"DFCN_BINARY_VERSION[")
-    image[version_offset:version_offset + 5] = b"00000"
+    image[version_offset:version_offset + len(placeholder)] = placeholder
 
     checksum_offset = None
     if sys.platform == "win32":
@@ -655,7 +657,8 @@ def stamp_core_version(candidate: Path) -> None:
         version[fingerprint[0] % 5] = ord("A") + fingerprint[1] % 26
     elif all(ord("A") <= char <= ord("Z") for char in version):
         version[fingerprint[0] % 5] = ord("0") + fingerprint[1] % 10
-    image[version_offset:version_offset + 5] = version
+    stamped_version = build_hour.encode("ascii") + b"." + version
+    image[version_offset:version_offset + len(placeholder)] = stamped_version
 
     if checksum_offset is not None:
         # Sum little-endian 16-bit words, counting an odd final byte as low.
@@ -667,7 +670,7 @@ def stamp_core_version(candidate: Path) -> None:
         image[checksum_offset:checksum_offset + 4] = checksum.to_bytes(4, "little")
 
     candidate.write_bytes(image)
-    print(f"Core version: {version.decode('ascii')}; normalized binary SHA-256: "
+    print(f"Core version: {stamped_version.decode('ascii')}; normalized binary SHA-256: "
           f"{fingerprint.hex()}", flush=True)
 
 
@@ -813,11 +816,12 @@ def main() -> int:
                     shutil.copytree(GAME / "g_src", snapshot / "g_src")
                 if rebuild_core:
                     print("Building the reloadable core...", flush=True)
+                    build_hour = datetime.now().strftime("%Y.%m.%d.%H")
                     run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
                          "src/rulesets_manager.cpp", "src/chinese_conversion.cpp",
                          *[str(path.relative_to(ROOT)) for path in sorted((ROOT / "third_party/opencc/src").glob("*.cpp"))],
                          *link_flags, *abi["core_link"]], env, cwd=snapshot)
-                    stamp_core_version(core_candidate)
+                    stamp_core_version(core_candidate, build_hour)
                 if rebuild_loader:
                     print("Building the resident loader...", flush=True)
                     run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp",
