@@ -890,6 +890,115 @@ void Overlay::append_fortress_zone_holder_matches(std::vector<std::string> &rows
     }
 }
 
+// The selected Meeting Area draws the associated location's name and guild
+// description as separate native strings. The shared resize capture retains
+// each original before the game replaces its suffix with dots; screen words
+// and those dots establish only the suppression span, never the meaning.
+void Overlay::append_fortress_zone_details(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const {
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    const NativePanelBorders borders(*gps_);
+    auto drawn = captured_native_drawn_text_rows();
+    const auto top_drawn = captured_native_drawn_text_rows(true);
+    drawn.insert(drawn.end(), top_drawn.begin(), top_drawn.end());
+    for (const auto &draw : drawn) {
+        if (!draw.fortress_zone_caption || !draw.fortress_zone_caption->detail ||
+                draw.source.empty() || draw.x < 0 || draw.y < 0 ||
+                draw.y >= gps_->dimy || draw.x >= gps_->dimx ||
+                (only_y >= 0 && only_y != draw.y) ||
+                draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x) ||
+                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy)
+            continue;
+        bool visible = true;
+        for (int offset = 0; offset < static_cast<int>(draw.source.size()); ++offset) {
+            bool top = false;
+            cell_at(draw.x + offset, draw.y, &top);
+            const auto ch = visible_char_at(draw.x + offset, draw.y);
+            if (top != draw.top_layer || (ch ? ch : ' ') !=
+                    static_cast<unsigned char>(draw.source[offset])) {
+                visible = false;
+                break;
+            }
+        }
+        if (!visible) continue;
+        const auto &caption = *draw.fortress_zone_caption;
+        using Kind = NativeFortressZoneCaption::Kind;
+        const bool description = caption.kind == Kind::LocationDescription;
+        const int middle = draw.y - (description ? 1 : 0);
+        const int length = static_cast<int>(draw.source.size());
+        const auto panel = native_panel_interior(borders, *gps_,
+            draw.x, draw.x + length, draw.y);
+        if (!panel || draw.x != panel->x + 5 || middle <= panel->y ||
+                middle + 1 >= panel->y + panel->h) continue;
+        const int right = panel->x + panel->w - 12;
+        if (right < draw.x + length ||
+                !native_main_button_at(*gps_, right, middle, 161) ||
+                !(native_main_button_at(*gps_, right + 4, middle, 164) ||
+                  native_main_button_at(*gps_, right + 4, middle, 165)) ||
+                !native_main_button_at(*gps_, right + 8, middle, 166) ||
+                !native_main_button_at(*gps_, panel->x, middle, 167, true)) continue;
+        if (draw.draw_clip && (draw.x < draw.draw_clip->x ||
+                right > draw.draw_clip->x + draw.draw_clip->w)) continue;
+        const std::string &complete = draw.complete_source.empty()
+            ? draw.source : draw.complete_source;
+        if (complete.empty() || complete.find_first_of("\r\n") != std::string::npos) continue;
+        std::optional<std::string> target;
+        if (!description && caption.location_name && caption.location_name->has_name)
+            target = translate_history_name(*caption.location_name);
+        if (description) {
+            for (const std::string_view suffix : {
+                    " grand guildhall", " guildhall", " meeting place"}) {
+                if (!complete.ends_with(suffix) || complete.size() <= suffix.size()) continue;
+                const std::string profession_source = complete.substr(0, complete.size() - suffix.size());
+                auto profession = translate_unit_profession(profession_source, true);
+                if (!profession) profession = exact_literal_translation(profession_source);
+                if (!profession) break;
+                const auto key = suffix == " meeting place" ? "{s} meeting place"
+                    : "Zone location: {s}" + std::string(suffix);
+                const auto found = history_semantic_templates_.find(key);
+                if (found == history_semantic_templates_.end()) break;
+                const auto &rule = rules_[static_cast<size_t>(found->second)];
+                if (rule.template_kinds.size() != 1) break;
+                const std::vector<std::optional<std::string>> resolved{*profession};
+                bool intact = false;
+                auto value = fill_template(rule, {profession_source}, nullptr, &intact, &resolved);
+                if (intact && !value.empty()) target = std::move(value);
+                break;
+            }
+        }
+        // A failed translation still reserves the complete native field.
+        // It must never fall back to translating its truncated word pieces.
+        if (!target) target = native_text_to_utf8(complete);
+        if (target->empty() || target->find("[C:") != std::string::npos ||
+                target->find_first_of("\r\n") != std::string::npos) continue;
+        if (rows[draw.y].compare(draw.x, length, draw.source) == 0) {
+            Match match{draw.x, draw.y, length, kFortressLocationListRule, *target, draw.source};
+            match.native_picture_caption_box = SDL_Rect{draw.x, draw.y, right - draw.x, 1};
+            match.native_picture_caption_source = complete;
+            match.layout_x = draw.x;
+            match.layout_y = draw.y;
+            match.layout_length = right - draw.x;
+            match.layout_clip_right = right;
+            match.layout_left = true;
+            match.layout_fixed_baseline = true;
+            if (draw.foreground_rgb >= 0) match.layout_foreground_rgb = draw.foreground_rgb;
+            matches.push_back(std::move(match));
+            std::fill_n(rows[draw.y].begin() + draw.x, length, ' ');
+        } else if (raw_layer) {
+            for (int offset = 0; offset < length;) {
+                while (offset < length && rows[draw.y][draw.x + offset] != draw.source[offset]) ++offset;
+                const int start = offset;
+                while (offset < length && rows[draw.y][draw.x + offset] == draw.source[offset]) ++offset;
+                if (offset == start) continue;
+                matches.push_back({draw.x + start, draw.y, offset - start,
+                    kFortressLocationListRule, {}, draw.source.substr(start, offset - start)});
+                std::fill_n(rows[draw.y].begin() + draw.x + start, offset - start, ' ');
+            }
+        }
+    }
+}
+
 // The selected zone has bare name/type rows beside its picture. They are
 // not joined picture/rectangle buttons: centering each translation in its
 // English span separates two captions that the native UI left-aligns.

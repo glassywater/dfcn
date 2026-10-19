@@ -41,7 +41,10 @@ static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_cap
     const bool location_name_draw = caller == native_reference_address(base, 0x39d2e9);
     const bool location_description_draw = caller == native_reference_address(base, 0x39d4e0);
     const bool current_location = location_name_draw || location_description_draw;
-    if (!type && !related && !current_location) return std::nullopt;
+    const bool detail_location_name = caller == native_reference_address(base, 0x3e9692);
+    const bool detail_location_description = caller == native_reference_address(base, 0x3e99e0);
+    const bool detail_location = detail_location_name || detail_location_description;
+    if (!type && !related && !current_location && !detail_location) return std::nullopt;
 
     const uintptr_t buildings = native_reference_address(base, 0x23edf10);
     const auto current_building = [&](uintptr_t candidate) {
@@ -54,6 +57,44 @@ static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_cap
     };
 
     NativeFortressZoneCaption caption;
+    if (detail_location) {
+        // The selected-zone card keeps its original zone at rbp-0x78 and
+        // its resolved location at rbp-0x70. Both complete fields use the
+        // same string at rbp+0x1a10 before the shared resize hook shortens it.
+        uintptr_t building = 0, location = 0;
+        if (source < 0x1a88 || !native_history_copy(source - 0x1a88, building) ||
+                !current_building(building) ||
+                !native_history_copy(source - 0x1a80, location) || !location)
+            return std::nullopt;
+        int32_t site_id = -1, location_id = -1;
+        if (!native_history_copy(building + 0x114, site_id) || site_id < 0 ||
+                !native_history_copy(building + 0x118, location_id) || location_id < 0)
+            return std::nullopt;
+        const uintptr_t site = native_history_find_subject(base, NativeHistoryObjectKind::Site, site_id);
+        uintptr_t actual_location = 0;
+        if (!site || site > UINTPTR_MAX - 0x2c8 ||
+                !native_history_find_structure_id(site + 0x2b0, 8, location_id, actual_location) ||
+                actual_location != location) return std::nullopt;
+        const auto *layout = native_history_dynamic_layout(location);
+        if (!layout) return std::nullopt;
+        for (const auto &profile : kNativeHistoryStructureProfiles) {
+            if (std::string_view(layout->name) != profile.name) continue;
+            // Only the guildhall branch emits this profession/tier field.
+            if (detail_location_description && profile.type != 11) return std::nullopt;
+            caption.kind = detail_location_name ? Kind::LocationName : Kind::LocationDescription;
+            caption.authored = false;
+            caption.detail = true;
+            if (detail_location_name) {
+                NativeHistoryName name;
+                if (capture_native_history_name(base, native_history_object_field(
+                        location, {}, profile.name_offset), name) && name.has_name)
+                    caption.location_name = std::make_shared<const NativeHistoryName>(
+                        std::move(name));
+            }
+            return caption;
+        }
+        return std::nullopt;
+    }
     if (current_location) {
         caption.kind = location_name_draw ? Kind::LocationName : Kind::LocationDescription;
         caption.authored = false;

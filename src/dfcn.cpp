@@ -2298,6 +2298,7 @@ struct NativeFortressZoneCaption {
     std::shared_ptr<const NativeHistoryName> squad_name;
     std::optional<std::string> squad_alias;
     std::optional<int> line_offset;
+    bool detail = false;
 };
 static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_caption(
     uintptr_t caller, uintptr_t source);
@@ -4963,6 +4964,8 @@ private:
     std::optional<SDL_Rect> capture_fortress_zone_menu(
         const std::vector<std::string> &rows, int &prompt_y) const;
     void append_fortress_zone_types(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void append_fortress_zone_details(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_stockpile_types(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
@@ -18707,6 +18710,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         // Zone drawing can retain the ordinary map HUD state. Its fixed
         // addst callers own these controls independently of that page gate.
         append_fortress_zone_drawing_matches(screen_rows, result, only_y);
+        append_fortress_zone_details(screen_rows, result, only_y,
+            screen_override != nullptr);
         if (!local_fortress_hud) {
             append_fortress_petition_site_names(screen_rows, result, only_y,
                 screen_override != nullptr);
