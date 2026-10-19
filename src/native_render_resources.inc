@@ -26,6 +26,8 @@ static void native_reset_render_resources() {
     reset_layer(g_native_reports_target, g_native_reports_layer);
     native_announcement_log_release_layer();
     reset_layer(g_native_pause_target, g_native_pause_layer);
+    native_topbar_begin_frame();
+    reset_layer(g_native_topbar_target, g_native_topbar_layer);
     reset_layer(g_native_resolution_target, g_native_resolution_layer);
     reset_layer(g_native_worldgen_target, g_native_worldgen_layer);
     native_worldgen_begin_frame();

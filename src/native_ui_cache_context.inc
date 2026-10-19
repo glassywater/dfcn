@@ -861,8 +861,24 @@ public:
     }
 };
 
+std::optional<std::string> Overlay::native_topbar_cache_context() const {
+    // Only this producer's submitted captions, site identity and style
+    // affect its target. Other pages and layers have no top-bar meaning.
+    NativeUiCacheContextWriter key;
+    key.tooltip();
+    key.graphics(g_native_topbar_layer.foreground.graphics());
+    key.bundle(g_native_topbar_text);
+    NativeHistoryName site;
+    std::string english;
+    if (!capture_current_fortress_site_name(site, english)) return std::nullopt;
+    key.name(site);
+    key.text(english);
+    return key.finish();
+}
+
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    if (&layer == &g_native_topbar_layer) return g_overlay.native_topbar_cache_context();
     if (&layer == &g_native_notification_layer) {
         // Only the submitted notification and its complete parents can change
         // this target. Other panels, historical registries and formatter scopes
@@ -957,5 +973,6 @@ static std::optional<std::string> native_main_ui_cache_context() {
     key.layer(g_native_tooltip_layer); key.layer(g_native_help_layer);
     key.layer(g_native_resolution_layer); key.layer(g_native_worldgen_layer);
     key.layer(g_native_character_layer);
+    key.layer(g_native_topbar_layer);
     return key.finish();
 }

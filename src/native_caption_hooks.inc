@@ -1815,6 +1815,9 @@ struct NativeClippedPending {
     bool busy = false;
     std::unordered_map<const NativeString *, PendingNativeField> fields;
 };
+static NativeClippedPending &native_topbar_clipped_pending() {
+    return reloadable_thread_state<NativeClippedPending, struct TopbarClippedCaptionTag>();
+}
 static NativeClippedPending &native_squads_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct SquadsClippedCaptionTag>();
 }
@@ -1827,6 +1830,9 @@ static NativeClippedPending &native_character_clipped_pending() {
 static NativeClippedPending &native_clipped_pending() {
     // Native temporary strings from the sidebar must never consume or
     // replace a pending resize belonging to the background page.
+    if (g_native_topbar_write_graphics &&
+            native_graphics() == g_native_topbar_write_graphics)
+        return native_topbar_clipped_pending();
     if (g_native_squads_write_graphics &&
             native_graphics() == g_native_squads_write_graphics)
         return native_squads_clipped_pending();
@@ -1907,7 +1913,8 @@ static void capture_native_roster_shorten(NativeString *source, int width) {
 static void remember_native_clipped_resize(NativeString *source, size_t width, char fill,
         bool zero_pad_one = false, bool plain_shrink = false) {
     if (g_native_tooltip_write || (native_private_ui_write_active(native_graphics()) &&
-            native_graphics() != g_native_worldgen_write_graphics) ||
+            native_graphics() != g_native_worldgen_write_graphics &&
+            native_graphics() != g_native_topbar_write_graphics) ||
             native_caption_separate_output(native_graphics())) return;
     auto &state = native_clipped_pending();
     if (!state.busy) {
@@ -2668,6 +2675,8 @@ static void capture_native_announcement_log_caption(graphicst *graphics,
     } catch (...) {}
 }
 
+#include "native_topbar_caption_capture.inc"
+
 template<typename Draw>
 static void capture_native_limited_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, Draw &&draw, bool top_layer = false,
@@ -2682,6 +2691,11 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
         uintptr_t native_caller = 0,
         std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
+    if (graphics && graphics == g_native_topbar_write_graphics) {
+        capture_native_topbar_caption(graphics, source, width, top_layer,
+            native_caller, std::forward<Draw>(draw));
+        return;
+    }
     if (capture_native_tooltip_caption_draw(graphics, source, draw, top_layer)) return;
     if (graphics && graphics == g_native_announcement_log_write_graphics) {
         capture_native_announcement_log_caption(graphics, source, top_layer,
@@ -3420,6 +3434,14 @@ static void capture_native_world_site_entity_fact(graphicst *graphics,
 
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
+    if (graphics && graphics == g_native_topbar_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_topbar_caption(graphics, source, width, false, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.draw)
+                original(graphics, source, just, width);
+        });
+        return;
+    }
     if (capture_native_tooltip_caption_draw(graphics, source, [&] {
             if (const auto original = g_native_clipped_caption_hooks.draw)
                 original(graphics, source, just, width);
@@ -3517,6 +3539,14 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
 
 static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, uint32_t flags) {
+    if (graphics && graphics == g_native_topbar_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_topbar_caption(graphics, source, width, false, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.flag_draw)
+                original(graphics, source, just, width, flags);
+        });
+        return;
+    }
     if (capture_native_tooltip_caption_draw(graphics, source, [&] {
             if (const auto original = g_native_clipped_caption_hooks.flag_draw)
                 original(graphics, source, just, width, flags);
@@ -3578,6 +3608,14 @@ static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeSt
 
 static void capture_native_top_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
+    if (graphics && graphics == g_native_topbar_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_topbar_caption(graphics, source, width, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_draw)
+                original(graphics, source, just, width);
+        });
+        return;
+    }
     if (capture_native_tooltip_caption_draw(graphics, source, [&] {
             if (const auto original = g_native_clipped_caption_hooks.top_draw)
                 original(graphics, source, just, width);
@@ -3623,6 +3661,14 @@ static void capture_native_top_caption_draw(graphicst *graphics, const NativeStr
 // The pinned PE entry specializes top_addst to an unbounded string draw:
 // only graphics/source are live incoming arguments. ELF retains just/width.
 static void capture_native_top_simple_caption_draw(graphicst *graphics, const NativeString *source) {
+    if (graphics && graphics == g_native_topbar_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_topbar_caption(graphics, source, 0, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_simple_draw)
+                original(graphics, source);
+        });
+        return;
+    }
     if (capture_native_tooltip_caption_draw(graphics, source, [&] {
             if (const auto original = g_native_clipped_caption_hooks.top_simple_draw)
                 original(graphics, source);
@@ -3667,6 +3713,14 @@ static void capture_native_top_simple_caption_draw(graphicst *graphics, const Na
 
 static void capture_native_top_flag_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, uint32_t flags) {
+    if (graphics && graphics == g_native_topbar_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_topbar_caption(graphics, source, width, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_flag_draw)
+                original(graphics, source, just, width, flags);
+        });
+        return;
+    }
     if (capture_native_tooltip_caption_draw(graphics, source, [&] {
             if (const auto original = g_native_clipped_caption_hooks.top_flag_draw)
                 original(graphics, source, just, width, flags);
@@ -3728,7 +3782,9 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
             original(text, width, fill);
         return;
     }
-    if ((g_native_squads_write_graphics &&
+    if ((g_native_topbar_write_graphics &&
+            native_graphics() == g_native_topbar_write_graphics) ||
+            (g_native_squads_write_graphics &&
             native_graphics() == g_native_squads_write_graphics) ||
             (g_native_character_write_graphics &&
              native_graphics() == g_native_character_write_graphics)) {
@@ -3745,6 +3801,14 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
 template<NativeFieldKind Kind>
 static void capture_native_caption_draw(graphicst *graphics, const NativeString *text,
         NativeJustification just, int width) {
+    if (graphics && graphics == g_native_topbar_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_topbar_caption(graphics, text, width, false, caller, [&] {
+            if (const auto original = g_native_caption_hooks.draw)
+                original(graphics, text, just, width);
+        });
+        return;
+    }
     if (capture_native_tooltip_caption_draw(graphics, text, [&] {
             if (const auto original = g_native_caption_hooks.draw)
                 original(graphics, text, just, width);
@@ -3788,6 +3852,7 @@ static void reset_native_caption_capture() {
         g_native_map_track_captions.clear();
     }
     native_clipped_pending() = {};
+    native_topbar_clipped_pending() = {};
     native_squads_clipped_pending() = {};
     native_worldgen_clipped_pending() = {};
     native_character_clipped_pending() = {};
