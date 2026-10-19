@@ -24,7 +24,7 @@ static std::optional<SDL_Rect> native_building_record_panel(
     return SDL_Rect{left + 1, top + 1, right - left - 1, bottom - top - 1};
 }
 
-// Fixed native records draw their introduction and person separately without
+// Fixed native records draw their sentence fragments or person separately without
 // add_paragraph, either on consecutive rows or side by side. Claim the complete
 // record before generic item prose or formatter-owned identity rows consume it.
 void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_rows,
@@ -75,6 +75,73 @@ void Overlay::append_native_split_ui_messages(std::vector<std::string> &screen_r
             }
             return colors;
         };
+        // The coffin's no-room branch writes three fixed addst rows, not a
+        // wrapped paragraph. Its sheet may be open at the viewport bottom,
+        // so the generic closed-panel message reader cannot join these rows.
+        // Keep the complete catalog sentence and its native producer/layer
+        // boundaries; no English-sized fragment translations are needed.
+        // Original PE cases and supplier branches: extracted/coffin-detail.
+        const uintptr_t coffin_base = native_history_profile_base();
+#ifdef _WIN32
+        const std::array<uintptr_t, 3> coffin_callers{
+            native_pe_address(coffin_base, 0x194c4e),
+            native_pe_address(coffin_base, 0x194ccd),
+            native_pe_address(coffin_base, 0x194d4c)};
+#else
+        const std::array<uintptr_t, 3> coffin_callers{
+            native_reference_address(coffin_base, 0x13e1654),
+            native_reference_address(coffin_base, 0x13e16d9),
+            native_reference_address(coffin_base, 0x13e1742)};
+#endif
+        constexpr std::array<std::string_view, 3> coffin_lines{
+            "You must designate a tomb", "before this coffin will", "be used for burial."};
+        for (const auto &first : draws) {
+            if (!coffin_base || !coffin_callers.front() ||
+                    first.native_caller != coffin_callers.front() ||
+                    first.source != coffin_lines.front()) continue;
+            std::vector<Match> rows;
+            std::string source;
+            std::vector<int> source_colors;
+            int source_right = first.x;
+            for (size_t i = 0; i < coffin_lines.size(); ++i) {
+                const auto at = positions.find({first.x, first.y + static_cast<int>(i)});
+                if (at == positions.end() || !coffin_callers[i] ||
+                        at->second->native_caller != coffin_callers[i] ||
+                        at->second->source != coffin_lines[i]) break;
+                const auto row = current_draw(*at->second);
+                if (!row) break;
+                if (!source.empty()) {
+                    source.push_back(' ');
+                    source_colors.push_back(source_colors.back());
+                }
+                source += row->source;
+                const auto colors = foregrounds(*row);
+                source_colors.insert(source_colors.end(), colors.begin(), colors.end());
+                source_right = std::max(source_right, row->x + row->length);
+                rows.push_back(*row);
+            }
+            if (rows.size() != coffin_lines.size()) continue;
+            std::vector<int> target_colors;
+            const auto target = translate_help_paragraph(source, source_colors, target_colors, true);
+            if (!target || target->empty()) continue;
+            int right = source_right;
+            const NativePanelBorders borders(*gps_);
+            if (const auto panel = native_building_record_panel(borders, *gps_,
+                    SDL_Rect{first.x, first.y, source_right - first.x, 3})) {
+                right = std::max(source_right, panel->x + panel->w - (first.x - panel->x));
+                for (const Match &row : rows) {
+                    for (int x = row.x + row.length; x < right; ++x) {
+                        const auto ch = visible_char_at(x, row.y);
+                        if ((ch && ch != ' ') || native_foreground_picture_at(*gps_, x, row.y)) {
+                            right = std::max(source_right, x);
+                            break;
+                        }
+                    }
+                }
+            }
+            append_bounded_paragraph(std::move(rows), *target, screen_rows, result,
+                only_y, right, right, target_colors, false, first.x);
+        }
         // The link modal's building names come from building::getName, not
         // from free-form UI capture slots. Its source installation sentence
         // uses two adjacent addst calls; own them together before individual

@@ -925,6 +925,17 @@ static NativeMapHoverContext native_map_hover_context(uintptr_t caller,
 
 static bool native_info_title_authored(NativeInfoTitleKind kind,
         const NativeString *source, uintptr_t caller) {
+    // The coffin's linked-room caption passes the nonempty stored name at
+    // room+0xd0 itself, not the title's temporary stack string. Preserve it
+    // by provenance before attempting the title-specific frame offsets.
+    if (kind == NativeInfoTitleKind::Building) {
+        const uintptr_t base = native_history_profile_base();
+#ifdef _WIN32
+        if (base && caller == native_pe_address(base, 0x195db5)) return true;
+#else
+        if (base && caller == native_reference_address(base, 0x13e1c9b)) return true;
+#endif
+    }
     const auto &binding = g_native_info_title_binding;
     const bool farm_name = binding.farm_name_return_address &&
         caller == binding.farm_name_return_address;
