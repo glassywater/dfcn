@@ -8341,9 +8341,10 @@ static std::optional<std::pair<size_t, size_t>> ascii_tab_caption_span(
          (row[start] >= 'A' && row[start] <= 'Z') ||
          (row[start] >= '0' && row[start] <= '9'))) ++start;
     if (start >= row.size() || row[start] != '_') return std::nullopt;
-    const size_t closing = row.find_first_of("/\\", start + 1);
+    // Slashes inside Pets/Livestock and Dead/Missing belong to the caption;
+    // the first backslash closes this tab before the next tab can begin.
+    const size_t closing = row.find('\\', start + 1);
     if (closing == std::string_view::npos) return std::nullopt;
-    if (row[closing] != '\\') return std::nullopt;
     size_t end = closing;
     while (start < end && row[start] == '_') ++start;
     while (end > start && row[end - 1] == '_') --end;
