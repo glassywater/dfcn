@@ -171,10 +171,17 @@ struct NativeAnnouncementLogReferenceRequest {
         return result;
     }
 };
+// Native index construction can yield between owned entity/site captures.
+// This is unfinished input publication, never a missing name or a failed
+// translation. Its native caller retains the index cursor for the next frame.
+struct NativeAnnouncementLogNativeCapturePending {};
+static thread_local const std::chrono::steady_clock::time_point *
+    g_native_announcement_log_native_capture_deadline = nullptr;
 struct NativeAnnouncementLogWorkerInputs {
     uint64_t semantic_generation = 0;
     std::string context;
     std::shared_ptr<const std::unordered_map<std::string, std::optional<std::string>>> identity_sources;
+    uint64_t identity_sources_fingerprint = 0;
     bool identity_sources_complete = false;
     bool kinship_complete = false;
     std::optional<std::string> original_speech;
@@ -188,6 +195,7 @@ struct NativeAnnouncementLogWorkerInputs {
         raw_creature_adjectives, raw_creature_labels;
     bool raw_creatures_complete = false;
     std::shared_ptr<const std::unordered_map<std::string, std::string>> instrument_names;
+    uint64_t instrument_names_fingerprint = 0;
     std::shared_ptr<const NativeAnnouncementUnitRecord> unit_record;
     std::shared_ptr<const NativeAnnouncementKinshipRecord> kinship_record;
     std::map<std::string, std::optional<std::string>> unit_targets;
@@ -274,6 +282,7 @@ static std::shared_ptr<const NativeAnnouncementLogTranslationResult>
     native_notification_translate_report(
         std::shared_ptr<const NativeAnnouncementLogDocument> document, int foreground);
 static uint64_t native_announcement_log_translation_revision() noexcept;
+static uint64_t native_announcement_log_translation_viewport_revision() noexcept;
 static void native_announcement_log_translation_reset(uintptr_t world, uint64_t session);
 static void native_announcement_log_translation_begin_viewport();
 static void native_announcement_log_translation_end_viewport();
@@ -284,6 +293,8 @@ static std::vector<NativeAnnouncementLogDependency>
 static std::optional<NativeAnnouncementLogDependency>
     native_announcement_log_translation_visible_dependency(
         std::shared_ptr<const NativeAnnouncementLogDocument> document);
+static void native_announcement_log_translation_release_dependency(
+    const std::shared_ptr<const NativeAnnouncementLogDocument> &document, bool attempted = true) noexcept;
 static size_t native_announcement_log_preheat_capacity(size_t maximum_pending);
 static bool g_native_announcement_log_translation_viewport_ready = false;
 static std::shared_ptr<const NativeAnnouncementLogWorkerInputs>

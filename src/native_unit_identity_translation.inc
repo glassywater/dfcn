@@ -185,11 +185,20 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
     // it, or on other formatter publications in that frame. Share its result
     // between SDL and owned-input workers under the actual vocabulary/config
     // generation instead of the enclosing announcement's identity context.
-    // Live government/title references keep their existing live policy.
+    // Potential government/title references keep their live naming policy,
+    // but detached announcement workers can compose their owned name/role
+    // parts around the separately requested entity/site leaves.
     const bool live_entity = native_unit_identity_requires_world(unit);
-    if (g_native_announcement_log_worker_active && live_entity)
-        return native_announcement_log_worker_unit_target(unit);
-    const std::string key = live_entity ? std::string{} : native_unit_identity_cache_key(unit);
+    const bool detached_live = g_native_announcement_log_worker_active && live_entity;
+    const std::string key = !live_entity || detached_live
+        ? native_unit_identity_cache_key(unit) : std::string{};
+    if (detached_live) {
+        const auto *inputs = g_native_announcement_log_worker_inputs;
+        if (inputs && inputs->unit_targets_resources == RULESETS.resource_revision() &&
+                inputs->unit_targets_catalog == native_identity_translation_catalog_generation())
+            if (const auto found = inputs->unit_targets.find(key); found != inputs->unit_targets.end())
+                return found->second;
+    }
     struct OwnedCache {
         struct Entry {
             std::optional<std::string> target;
@@ -569,9 +578,29 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
         }
         return result;
     };
-    // Entity/title rendering can resolve live government fields that are not
-    // owned by this unit snapshot. Keep those references live; their ordinary
-    // nested NameOnly translations can still use this cache independently.
+    // An entity ID or an "of" role does not require rendering the complete
+    // unit on the native thread. The typed name/role helpers already request
+    // exact entity/site leaves from an announcement worker. Only an actual
+    // remaining legacy world read needs the complete-unit compatibility leaf.
+    if (detached_live) {
+        bool world_attempt = false;
+        std::optional<std::string> target;
+        {
+            struct WorldAttemptScope {
+                bool *previous = dfhack_world_read_attempt;
+                explicit WorldAttemptScope(bool &attempt) { dfhack_world_read_attempt = &attempt; }
+                ~WorldAttemptScope() { dfhack_world_read_attempt = previous; }
+            } witness(world_attempt);
+            try { target = translate(); }
+            catch (const DfhackTranslationNeedsWorld &) { world_attempt = true; }
+        }
+        // Older helpers can catch the read exception and return a fallback.
+        // Retain the witness so that such output never becomes a finished
+        // identity. Explicit entity/site dependency exceptions still unwind
+        // normally, carrying their narrower request to the service.
+        if (world_attempt) return native_announcement_log_worker_unit_target(unit);
+        return target;
+    }
     if (live_entity) return translate();
     if (key.size() > 8192) return translate();
     const auto cycle_revision = active_translation_work ? active_translation_work->cycle_revision : 0;

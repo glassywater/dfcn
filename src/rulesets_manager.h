@@ -485,6 +485,9 @@ namespace Hooks {
         // Small closed leaf vocabularies can prove that a later noun is
         // absent before an earlier material/reference expands its branches.
         std::unordered_map<std::string, std::vector<std::string_view>> literal_leaf_rules_;
+        // Only fixed, acyclic rule closures without owner/native callbacks.
+        // These proofs are independent of the report identity context.
+        std::unordered_set<std::string> context_free_namespaces_;
         mutable MemoOuterMap memo_cache_;
         std::set<RuleSignature> cyclic_rule_signatures_;
         std::unordered_map<std::string, std::string, TransparentHash, TransparentEqual>

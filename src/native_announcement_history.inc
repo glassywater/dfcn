@@ -170,6 +170,9 @@ static bool native_announcement_log_read_version(uintptr_t parent,
 }
 static std::shared_ptr<const NativeAnnouncementLogDocument> native_announcement_log_preheated_document(
     uintptr_t parent, uintptr_t world, const NativeAnnouncementLogParentVersion &version);
+static void native_announcement_log_retain_worker_document(
+    const NativeAnnouncementLogParentVersion &version,
+    const std::shared_ptr<const NativeAnnouncementLogDocument> &document);
 struct NativeAnnouncementLogRetainedDocument {
     std::shared_ptr<const NativeAnnouncementLogDocument> document;
     NativeAnnouncementLogParentVersion version;
@@ -321,8 +324,8 @@ static std::shared_ptr<NativeAnnouncementLogDocument> native_announcement_log_fr
     document->speech = native_announcement_log_speech_record(report, world);
     if (!document->speech || !document->speech->tokens_complete)
         document->speech_header = native_announcement_log_speech_header(*document);
-    // Native-thread notification translation already owns the live resolver
-    // context. Only detached worker execution needs the global input snapshot.
+    // Capture values on their native owner. Detached workers parse only this
+    // immutable snapshot and never borrow a live game object.
     if (freeze_inputs)
         document->worker_inputs = native_announcement_log_freeze_worker_inputs(*document);
     native_announcement_log_freeze_key(*document);
@@ -535,6 +538,7 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                 cache.next_sequence = cache.next_sequence == UINT64_MAX ? 1 : cache.next_sequence + 1;
                 document->sequence = cache.next_sequence;
                 incoming->document = std::move(document);
+                native_announcement_log_retain_worker_document(version, incoming->document);
                 const auto &owned = *incoming->document;
                 const size_t bytes = native_announcement_log_document_bytes(owned);
                 incoming->bytes = bytes;
@@ -577,6 +581,7 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                 native_announcement_log_freeze_key(*document);
                 auto updated = std::make_shared<NativeAnnouncementLogRetainedDocument>(*retained);
                 updated->document = std::move(document);
+                native_announcement_log_retain_worker_document(version, updated->document);
                 updated->bytes = native_announcement_log_document_bytes(*updated->document);
                 if (updated->bytes > 8 * 1024 * 1024) {
                     forget(parent);

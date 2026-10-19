@@ -228,6 +228,13 @@ static std::shared_ptr<AnnouncementLiteralSource> announcement_literal_source(
 std::optional<std::string> Overlay::translate_announcement_combat(
         std::string_view raw_source, std::string_view initial_scope) const {
     TranslationWorkScope budget;
+    // A complete native constructor has already proved this unit boundary.
+    // Keep the same unit policy as a field inside its sentence; the ordinary
+    // standalone unit entry deliberately has a narrower fallback policy.
+    const bool native_spoken_unit_field = initial_scope == "native-adventure-announcement-unit" &&
+        g_native_announcement_log_translation_document;
+    const bool native_unit_field = native_spoken_unit_field ||
+        (initial_scope == "native-announcement-unit" && g_native_announcement_log_translation_document);
     struct ScopeSpan {
         size_t scope, begin, length;
         bool operator==(const ScopeSpan &) const = default;
@@ -283,6 +290,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
         std::unordered_map<std::string, size_t> scope_ids;
         std::unordered_map<ScopeSpan, std::vector<int>, ScopeSpanHash> candidates;
         std::unordered_map<ScopeSpan, bool, ScopeSpanHash> scopes;
+        std::unordered_map<ScopeSpan, std::optional<std::string>, ScopeSpanHash> anatomy;
         std::unordered_set<ScopeSpan, ScopeSpanHash> active;
         std::unordered_map<SyntaxPath, bool, SyntaxPathHash> paths;
         std::unordered_map<std::string, std::shared_ptr<SemanticChart>> semantics;
@@ -310,7 +318,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     TranslationWorkFrame work_frame("announcement grammar", raw_source);
     if (announcement_combat_rules_.empty()) return std::nullopt;
     const bool spoken_scope = initial_scope == "spoken-sentence" ||
-        initial_scope == "spoken-greeting" || initial_scope == "adventure-announcement";
+        initial_scope == "spoken-greeting" || initial_scope == "adventure-announcement" ||
+        native_spoken_unit_field;
     // Match native prose in a canonical view, but give typed leaves their
     // original bytes. Memorial death clauses can contain doubled spaces while
     // an authored nickname in the same inscription owns its exact whitespace.
@@ -362,10 +371,10 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     const auto semantics = retained_semantics;
     auto &memo = semantics->values;
     std::unordered_set<ScopeSpan, ScopeSpanHash> active;
-    // Recognize the complete grammar before translating its fields. External
-    // resolvers remain conservative wildcards; table-owned scopes propagate
-    // their literals and finite vocabulary through aliases at every position.
-    // This does not reorder rules or make lexical recognition a translation.
+    // Recognize the complete grammar before translating open fields. External
+    // resolvers remain conservative wildcards except the closed anatomy
+    // grammar; table-owned scopes propagate their literals and finite
+    // vocabulary through aliases without changing production order.
     auto &syntax_candidates = chart->candidates;
     auto &syntax_scopes = chart->scopes;
     auto &active_syntax = chart->active;
@@ -392,6 +401,25 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 grammar != announcement_combat_syntax_.end())
             made = grammar->second.anchors.candidates(input);
         return syntax_candidates.emplace(key, std::move(made)).first->second;
+    };
+    const auto anatomy = [&](std::string_view input) -> Result {
+        const auto key = span_key("$body", input);
+        if (const auto found = chart->anatomy.find(key); found != chart->anatomy.end())
+            return found->second;
+        const size_t begin = static_cast<size_t>(input.data() - source.data());
+        const size_t end = begin + input.size();
+        const std::string_view original = std::string_view(chart->text->raw).substr(
+            origins[begin], origins[end - 1] + 1 - origins[begin]);
+        const auto cycle_revision = active_translation_work->cycle_revision;
+        // This is the same closed BODY grammar used by semantic resolution,
+        // including complete RAW names, ordinals and parent chains. Reject
+        // an impossible boundary before parsing a speculative unit or item.
+        auto result = RULESETS.translate_anatomy(cp437_to_utf8(std::string(original)), false);
+        if (result && result->empty()) result.reset();
+        if (!translation_work_exhausted() &&
+                cycle_revision == active_translation_work->cycle_revision)
+            chart->anatomy.emplace(key, result);
+        return result;
     };
     std::function<bool(std::string_view, std::string_view)> scope_fits;
     std::function<bool(const Rule &, const std::vector<std::string> &,
@@ -433,6 +461,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     scope_fits = [&](std::string_view scope, std::string_view input) {
         input = trim_view(input);
         if (input.empty()) return false;
+        if (scope == "$body") return anatomy(input).has_value();
         // This scope also has a native work-reference fallback outside its
         // table. Its lexical admission must include that external production.
         if (scope.starts_with('$') || scope == "work-reference-list") return true;
@@ -500,7 +529,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             if (scope == "$announcement" || (report_binding && !g_native_announcement_log_translation_report)) {
                 value(leaf_key, raw_source.size()); leaf_key.append(raw_source);
             }
-            if ((scope == "$item" || scope == "$announcement-item") &&
+            if ((scope == "$item" || scope == "$announcement-item" || scope == "$combat-item") &&
                     g_native_announcement_log_translation_document &&
                     g_native_announcement_log_translation_document->owned_fields &&
                     !g_native_announcement_log_translation_document->owned_fields->fragments.empty()) {
@@ -532,6 +561,40 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return result;
         };
         if (scope.starts_with("$")) input = original;
+        if (scope == "actor" && g_native_announcement_log_translation_document &&
+                !native_announcement_log_item_field_active()) {
+            const auto &document = *g_native_announcement_log_translation_document;
+            const auto &owned = document.owned_fields;
+            // The actor alternatives also admit a flying item. A formatter-
+            // captured unit already proves which alternative owns this exact
+            // span; do not first parse "the <unit caption>" as an item. A
+            // captured report fragment must match its original offset, so
+            // equal text elsewhere cannot borrow that fragment's identity.
+            if (owned && owned->world == document.world &&
+                    owned->report_id == document.report.id &&
+                    owned->type == document.report.type &&
+                    owned->normalized_source == raw_source &&
+                    owned->resource_revision == resources &&
+                    owned->catalog_generation == native_identity_translation_catalog_generation()) {
+                for (const auto &field : owned->fragments) {
+                    if (field.kind == NativeAnnouncementLogFragmentKind::UnitReference &&
+                            !field.ambiguous && field.offset == origins[begin] &&
+                            field.length == original.size() && field.source == original &&
+                            field.target && !field.target->empty())
+                        return finish(field.target);
+                }
+            }
+            const auto *inputs = g_native_announcement_log_worker_inputs;
+            if (inputs && inputs->identity_sources_complete && inputs->identity_sources) {
+                const auto identity = inputs->identity_sources->find(std::string(original));
+                // This snapshot contains captions observed from native unit
+                // formatters, not guesses based on capitalization/spelling.
+                // An ambiguous spelling has no target and keeps both original
+                // actor alternatives available in their existing order.
+                if (identity != inputs->identity_sources->end() && identity->second &&
+                        !identity->second->empty()) return finish(identity->second);
+            }
+        }
         if (scope == "$memorial-actor") {
             auto result = translate_legends_actor(input);
             return finish(translation_complete_with_native_nicknames(result, input)
@@ -800,11 +863,29 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // +0x5e8 supplies the complete noun inside them. Inventory owns
             // that same full caption grammar, including article and marks;
             // a bare ::items lookup does not own the leading article.
-            auto result = translate_inventory_item_name(input, -1, -1);
-            if (!translation_complete_with_native_nicknames(result, input))
-                result = translate_announcement_combat(input, "$announcement-item");
-            return finish(translation_complete_with_native_nicknames(result, input)
-                ? std::move(result) : std::nullopt);
+            const auto parse_item = [&]() -> Result {
+                auto result = translate_inventory_item_name(input, -1, -1);
+                if (!translation_complete_with_native_nicknames(result, input))
+                    result = translate_announcement_combat(input, "$announcement-item");
+                return translation_complete_with_native_nicknames(result, input)
+                    ? std::move(result) : std::nullopt;
+            };
+            // Repeated attacks own the same complete weapon caption even
+            // though their report IDs differ. Close the inventory-first
+            // path itself, so it shares the same dependency and native-field
+            // witness as ordinary announcement items before doing any work.
+            std::string configuration = config_.language;
+            configuration.push_back(config_.enabled ? '\1' : '\0');
+            configuration.push_back(config_.native_language_original ? '\1' : '\0');
+            configuration.push_back(config_.compositional_rules ? '\1' : '\0');
+            auto closed = native_announcement_log_closed_item_field(this, raw_source,
+                    origins[begin], input, scope, configuration,
+                    native_identity_translation_catalog_generation(),
+                    [&](const NativeUnitIdentity &identity) { return translate_native_unit_identity(identity); },
+                    parse_item);
+            if (closed.state != NativeAnnouncementLogItemFieldState::CompatibilityRequired)
+                return finish(std::move(closed.target));
+            return finish(parse_item());
         }
         if (scope == "$read-item") {
             // READ_ITEM owns this whole e68020/c65450 field. Native title
@@ -899,8 +980,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // connecting parent's name after a comma, including parents
             // called skull/skin. None of those commas introduces the health
             // panel's separate tissue suffix; keep the full owner chain.
-            return finish(RULESETS.translate_anatomy(
-                cp437_to_utf8(std::string(input)), false));
+            return finish(anatomy(std::string_view(source).substr(begin, end - begin)));
         }
         if (scope == "$announcement-substance") {
             // 11c6cb0/11c8150 append a whole material state name, including
@@ -1207,13 +1287,18 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                         if (announcement_combat_field_edges_fit(scopes[field], value) &&
                                 suffix_fits(rule, scopes, input, field + 1, end + following.size()) &&
                                 scope_fits(scopes[field], value)) {
+                            // Finish the remainder before interpreting this
+                            // open field. A literal boundary can fit while a
+                            // later item/unit is semantically impossible; it
+                            // must not make every preceding actor prefix run
+                            // the full name/item grammar first. Suffix states
+                            // are shared by their absolute source endpoints.
+                            auto suffix = match(field + 1, end + following.size());
+                            if (!suffix.matched) continue;
                             auto result = resolve(scopes[field], value);
-                            if (result) {
-                                auto suffix = match(field + 1, end + following.size());
-                                if (suffix.matched) return complete(SemanticMatch{
-                                    true, input_begin + end, std::move(result),
-                                    std::make_shared<const SemanticMatch>(std::move(suffix))});
-                            }
+                            if (result) return complete(SemanticMatch{
+                                true, input_begin + end, std::move(result),
+                                std::make_shared<const SemanticMatch>(std::move(suffix))});
                         }
                     }
                 }
@@ -1238,7 +1323,7 @@ std::optional<std::string> Overlay::translate_announcement_combat(
     };
     // Mixed combat, dialogue and catalog sentences are combined by the
     // shared complete-announcement parser. This scope always owns its span.
-    return resolve(initial_scope, source);
+    return resolve(native_unit_field ? std::string_view("unit") : initial_scope, source);
     };
     try {
         return translation_work_memo(memo_key, [&] {

@@ -1,5 +1,8 @@
 // Only catalog publication takes the renderer's translation lock. Every job
 // below owns a complete CPU parser, rule graph, naming vocabulary and memo.
+static void native_announcement_log_collect_owned_unit_dependencies(
+    const NativeAnnouncementLogDocument &document,
+    std::vector<NativeAnnouncementLogReferenceRequest> &requests);
 NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator() const {
     TranslationStateScope translation;
     using Parser = DFHack::DFZH::Hooks::RulesetsManager;
@@ -151,6 +154,15 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
             }
         }
         NativeAnnouncementLogTranslationResult result;
+        // Discover all already-owned live identity leaves in one pass. The
+        // parser otherwise unwinds at its first absent leaf and repeats the
+        // entire paragraph after every native publication. This pass only
+        // inspects immutable snapshots and never renders or reads the world.
+        native_announcement_log_collect_owned_unit_dependencies(document, result.reference_requests);
+        if (!result.reference_requests.empty()) {
+            result.needs_owned_dependency = true;
+            return result;
+        }
         bool world_attempt = false;
         bool dependency_attempt = false;
         struct WorldScope {
@@ -208,9 +220,10 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
 void Overlay::publish_native_announcement_log_translation_catalog() const {
     if (translation_cpu_only_) return;
     std::vector<NativeAnnouncementLogTranslator> translators;
-    translators.reserve(2);
-    translators.push_back(make_native_announcement_log_translator());
-    translators.push_back(make_native_announcement_log_translator());
+    const auto workers = native_announcement_log_translation_worker_count();
+    translators.reserve(workers);
+    for (size_t worker = 0; worker < workers; ++worker)
+        translators.push_back(make_native_announcement_log_translator());
     native_announcement_log_translation_publish_catalog(std::move(translators),
         native_identity_translation_catalog_generation());
     native_announcement_log_translation_start();

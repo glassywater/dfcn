@@ -3,15 +3,106 @@
 // tile painter for an otherwise identical background, border and controls.
 static thread_local SDL_Texture *g_native_announcement_log_raster_destination = nullptr;
 class NativeAnnouncementLogNativeRaster {
+    using Cell = NativeAnnouncementLogCaptionBackdrop::Cell;
     NativeUiLayerTarget target_;
     std::vector<SDL_Rect> painted_;
+    std::array<std::vector<Cell>, 2> cells_;
     bool initialized_ = false;
+    bool cells_valid_ = false;
     static void painter_identity(SDL_Renderer *) {}
+    static size_t owned_cell_count(const NativeUiLayerStorage &layer) {
+        size_t count = 0;
+        for (const auto &frame : layer.frames) {
+            if (frame.x < 0 || frame.y < 0 || frame.w < 0 || frame.h < 0 ||
+                    int64_t(frame.x) + frame.w > layer.foreground.dimx ||
+                    int64_t(frame.y) + frame.h > layer.foreground.dimy)
+                throw std::length_error("Invalid announcement raster frame");
+            const size_t size = static_cast<size_t>(frame.w) * frame.h;
+            if (size > (std::numeric_limits<size_t>::max() / sizeof(Cell)) - count)
+                throw std::length_error("Announcement raster frame overflow");
+            count += size;
+        }
+        return count;
+    }
+    void capture_cells(const NativeUiLayerStorage &layer) {
+        cells_valid_ = false;
+        const auto &grid = layer.foreground;
+        const size_t count = owned_cell_count(layer);
+        const auto *gps = reinterpret_cast<const graphicst *>(grid.view.data());
+        for (size_t plane = 0; plane < cells_.size(); ++plane) {
+            auto &saved = cells_[plane];
+            if (plane && !gps->top_in_use) { saved.clear(); continue; }
+            const auto &source = grid.planes[plane];
+            saved.resize(count);
+            size_t next = 0;
+            for (const auto &frame : layer.frames)
+                for (int x = frame.x; x < frame.x + frame.w; ++x)
+                    for (int y = frame.y; y < frame.y + frame.h; ++y) {
+                        const size_t at = static_cast<size_t>(x) * grid.dimy + y;
+                        auto &cell = saved[next++];
+                        std::memcpy(cell.screen.data(), source.screen.data() + at * 8, 8);
+                        cell.flags = source.flags[at];
+                        for (size_t slot = 0; slot < cell.textures.size(); ++slot)
+                            cell.textures[slot] = source.textures[slot][at];
+                    }
+        }
+    }
+    std::optional<std::vector<SDL_Rect>> changed_interior_rows(
+            const NativeUiLayerStorage &layer) const {
+        if (!cells_valid_) return std::nullopt;
+        const auto &grid = layer.foreground;
+        const auto *gps = reinterpret_cast<const graphicst *>(grid.view.data());
+        const size_t count = owned_cell_count(layer);
+        const size_t planes = gps->top_in_use ? cells_.size() : size_t{1};
+        for (size_t plane = 0; plane < planes; ++plane)
+            if (cells_[plane].size() != count) return std::nullopt;
+        std::vector<SDL_Rect> dirty;
+        std::vector<unsigned char> rows;
+        size_t base = 0;
+        for (const auto &frame : layer.frames) {
+            rows.assign(static_cast<size_t>(frame.h), 0);
+            for (size_t plane = 0; plane < planes; ++plane) {
+                const auto &source = grid.planes[plane];
+                size_t next = base;
+                for (int x = frame.x; x < frame.x + frame.w; ++x)
+                    for (int y = frame.y; y < frame.y + frame.h; ++y) {
+                        const size_t at = static_cast<size_t>(x) * grid.dimy + y;
+                        const auto &cell = cells_[plane][next++];
+                        bool changed = cell.flags != source.flags[at] ||
+                            std::memcmp(cell.screen.data(), source.screen.data() + at * 8, 8) != 0;
+                        for (size_t slot = 0; slot < cell.textures.size(); ++slot) {
+                            const auto texture = source.textures[slot][at];
+                            // Lower/anchored images and their offsets can
+                            // cross rows. Keep their complete native order.
+                            if (slot && (cell.textures[slot] || texture)) return std::nullopt;
+                            changed = changed || cell.textures[slot] != texture;
+                        }
+                        if (!changed) continue;
+                        // Last-column/row painters can extend past the cell.
+                        // Leave unchanged edges intact; a changed edge still
+                        // requires the complete native repaint and footprint.
+                        if (x == grid.dimx - 1 || y == grid.dimy - 1) return std::nullopt;
+                        rows[static_cast<size_t>(y - frame.y)] = 1;
+                    }
+            }
+            const int right = std::min(frame.x + frame.w, grid.dimx - 1);
+            for (int row = 0; row < frame.h;) {
+                if (!rows[static_cast<size_t>(row)]) { ++row; continue; }
+                const int first = row++;
+                while (row < frame.h && rows[static_cast<size_t>(row)]) ++row;
+                if (right > frame.x) dirty.push_back({frame.x, frame.y + first, right - frame.x, row - first});
+            }
+            base += static_cast<size_t>(frame.w) * frame.h;
+        }
+        return dirty;
+    }
 public:
     void clear() {
         target_.release();
         painted_.clear();
+        for (auto &plane : cells_) plane.clear();
         initialized_ = false;
+        cells_valid_ = false;
     }
     template <typename Painter>
     bool paint(NativeUiLayerStorage &layer, SDL_Renderer *renderer,
@@ -48,7 +139,7 @@ public:
             if (width <= 0 || height <= 0) return false;
             const bool retained = target_.texture && target_.renderer == renderer &&
                 target_.width == width && target_.height == height;
-            if (!retained) { initialized_ = false; painted_.clear(); }
+            if (!retained) { initialized_ = false; cells_valid_ = false; painted_.clear(); }
             if (!target_.prepare(renderer, width, height)) return false;
             // Native resources and real update_tile geometry only. Document
             // identities, translated text and scroll coordinates do not enter
@@ -104,7 +195,13 @@ public:
 
             std::optional<std::vector<SDL_Rect>> dirty;
             if (initialized_ && cache.matches_dependencies(layer, renderer, width, height,
-                    &painter_identity, context, true)) dirty = cache.changed_owned_rows(layer);
+                    &painter_identity, context, true)) {
+                // The shared cache conservatively rejects every frame that
+                // reaches a grid edge. This modal normally covers the whole
+                // grid: a moving interior scrollbar would repaint all tiles.
+                // Its private snapshot instead retains unchanged edge ink.
+                dirty = changed_interior_rows(layer);
+            }
             const bool complete = !dirty.has_value();
             if (complete) dirty = layer.frames;
             cache.invalidate();
@@ -113,8 +210,9 @@ public:
             bool captured = false;
             try {
                 cache.capture(layer, renderer, width, height, &painter_identity, context, true);
+                capture_cells(layer);
                 captured = true;
-            } catch (...) {}
+            } catch (...) { cells_valid_ = false; }
             std::vector<SDL_Rect> current;
             current.reserve(layer.frames.size());
             for (const auto &frame : layer.frames)
@@ -152,11 +250,12 @@ public:
             }
             painted_ = std::move(current);
             initialized_ = true;
-            if (captured) cache.publish();
+            if (captured) { cache.publish(); cells_valid_ = true; }
             return composite();
         } catch (...) {
             // An interrupted target cannot supply a later partial repaint.
             initialized_ = false;
+            cells_valid_ = false;
             target_.frame_cache.invalidate();
             return false;
         }

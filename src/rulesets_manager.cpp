@@ -201,6 +201,7 @@ namespace Hooks {
         rulesets_.swap(candidate.rulesets_);
         rule_prefix_indexes_.swap(candidate.rule_prefix_indexes_);
         literal_leaf_rules_.swap(candidate.literal_leaf_rules_);
+        context_free_namespaces_.swap(candidate.context_free_namespaces_);
         cyclic_rule_signatures_.swap(candidate.cyclic_rule_signatures_);
         static_creature_names_.swap(candidate.static_creature_names_);
         loaded_dependencies_.swap(candidate.loaded_dependencies_);
@@ -288,6 +289,7 @@ namespace Hooks {
         rulesets_.clear();
         rule_prefix_indexes_.clear();
         literal_leaf_rules_.clear();
+        context_free_namespaces_.clear();
         cyclic_rule_signatures_.clear();
         static_creature_names_.clear();
         creature_name_resolver_ = {};
@@ -1713,6 +1715,43 @@ namespace Hooks {
         }
         rule_prefix_indexes_ = std::move(indexes);
         literal_leaf_rules_ = std::move(leaves);
+        // Build a conservative closure from fixed leaves upwards. A native
+        // owner, opaque placeholder, number/replacer special form or recursive
+        // component keeps its original contextual policy. This also excludes
+        // the dwarf-language preservation callback even when that mode is off.
+        std::unordered_map<std::string, std::vector<std::string>> dependents;
+        std::unordered_map<std::string, size_t> unresolved;
+        std::vector<std::string> ready;
+        for (const auto &[identifier, rules] : rulesets_) {
+            if (!external_prefix_kind(identifier).empty() || identifier == "::dwarf_language" ||
+                    identifier.starts_with("::dwarf_language::")) continue;
+            std::unordered_set<std::string> dependencies;
+            bool fixed = true;
+            for (const auto &[source, target] : rules) {
+                (void)target;
+                for (const auto &token : source) {
+                    if (token.type == Type::Literal) continue;
+                    if (!token.value.starts_with("::") || !rulesets_.contains(token.value)) {
+                        fixed = false;
+                        break;
+                    }
+                    dependencies.insert(token.value);
+                }
+                if (!fixed) break;
+            }
+            if (!fixed) continue;
+            unresolved.emplace(identifier, dependencies.size());
+            for (const auto &dependency : dependencies) dependents[dependency].push_back(identifier);
+            if (dependencies.empty()) ready.push_back(identifier);
+        }
+        context_free_namespaces_.clear();
+        for (size_t at = 0; at < ready.size(); ++at) {
+            const auto &identifier = ready[at];
+            context_free_namespaces_.insert(identifier);
+            if (const auto found = dependents.find(identifier); found != dependents.end())
+                for (const auto &dependent : found->second)
+                    if (--unresolved.find(dependent)->second == 0) ready.push_back(dependent);
+        }
     }
 
     bool RulesetsManager::rule_literals_fit(std::string_view text, const Tokens& tokens) const {
@@ -1845,7 +1884,8 @@ namespace Hooks {
         // Freeze this query's identity context for both lookup and insertion.
         // A nested owner scope can restore a different context before return;
         // it must never put this query's candidate under that restored key.
-        const std::uint64_t context_revision = context_revision_provider_
+        const bool context_free = context_free_namespaces_.contains(identifier);
+        const std::uint64_t context_revision = !context_free && context_revision_provider_
             ? context_revision_provider_() : 0;
         const ResolutionSession::KeyView query{
             identifier, text, context_revision};
@@ -1854,7 +1894,7 @@ namespace Hooks {
         // Completed proofs are safe even during a callback: they need no
         // unfinished recursive owner to resolve their source again.
         if (auto outer_it = memo_cache_.find(identifier);
-                !dfcn::dfhack_world_read_attempt && outer_it != memo_cache_.end()) {
+                (context_free || !dfcn::dfhack_world_read_attempt) && outer_it != memo_cache_.end()) {
             if (auto* cached = outer_it->second.find(text, context_revision)) {
                 session.memo.emplace(ResolutionSession::Key{
                     identifier, text, context_revision}, *cached);
@@ -1882,11 +1922,12 @@ namespace Hooks {
             const bool stable = session.cycle_revision == cycle_revision &&
                 (!dfcn::active_translation_work ||
                     dfcn::active_translation_work->cycle_revision == shared_cycle_revision) &&
-                (context_revision_provider_ ? context_revision_provider_() : 0) == context_revision;
+                (context_free || (context_revision_provider_ ? context_revision_provider_() : 0) ==
+                    context_revision) && !dfcn::translation_work_exhausted();
             if (stable) {
                 session.memo.emplace(ResolutionSession::Key{
                     identifier, text, context_revision}, results);
-                if (!dfcn::dfhack_world_read_attempt)
+                if (context_free || !dfcn::dfhack_world_read_attempt)
                     memo_cache_[identifier].insert(text, results, context_revision);
             }
             return results;

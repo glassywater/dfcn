@@ -351,7 +351,9 @@ std::optional<std::string> Overlay::translate_help_paragraph_uncached(
                             translated = std::string{};
                             break;
                         }
-                        translated = ui_message && i == 0 &&
+                        translated = adventure_divine_guidance_template(rule)
+                            ? translate_adventure_divine_capture(rule, i, captures[i])
+                            : ui_message && i == 0 &&
                             fortress_squad_reference_template(rule.source)
                             ? translate_fortress_squad_name(captures[i])
                             : translate_legends_name(captures[i], false);

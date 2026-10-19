@@ -5294,6 +5294,8 @@ private:
         std::string_view source) const;
     std::optional<std::string> translate_ui_catalog_capture(
         const Rule &rule, size_t index, std::string_view source) const;
+    std::optional<std::string> translate_adventure_divine_capture(
+        const Rule &rule, size_t index, std::string_view source) const;
     void load_untranslated_index();
     void destroy_textures();
     void reset_render_state();
@@ -12548,19 +12550,7 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
                 const std::string key = std::to_string(index) + '\x1f' + std::string(value);
                 const auto [field, added] = divine_fields.try_emplace(key, false);
                 if (added) {
-                    std::optional<std::string> target;
-                    switch (kind) {
-                    case 'p':
-                        target = native_unit_identity_source_target(value);
-                        if (!target) target = translate_legends_actor(value, 0, true);
-                        if (!target && contains_cjk_utf8(value))
-                            target = translate_ui_message_capture(value, true);
-                        break;
-                    case 'e': target = translate_legends_name(value, false); break;
-                    case 'r': target = translate_deity_spheres(value); break;
-                    case 's': target = translate_ui_catalog_capture(rule, index, value); break;
-                    default: break;
-                    }
+                    const auto target = translate_adventure_divine_capture(rule, index, value);
                     field->second = target && !target->empty();
                 }
                 if (!field->second) continue;

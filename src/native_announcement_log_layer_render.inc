@@ -62,6 +62,15 @@ static void native_announcement_log_present_layer(SDL_Renderer *renderer,
         if (state.bind_composite(width, height)) draw_log(renderer);
         return;
     }
+    // A paused modal can keep presenting without another native producer
+    // frame. Continue its bounded history/neighbor capture here, before the
+    // retained-frame fast path, so unopened scroll positions do not stop
+    // warming as soon as the current viewport is complete. This function
+    // owns the native translation scope; the service only queues frozen
+    // documents and never waits for a worker.
+    try { native_announcement_log_preheat(
+        native_announcement_log_translation_worker_count(), false); }
+    catch (...) {}
     // A background request can arrive after the native producer stopped
     // submitting frames. Resolve its exact owned leaves on this native thread
     // and publish updated documents before reusing a retained GPU frame.
@@ -71,7 +80,7 @@ static void native_announcement_log_present_layer(SDL_Renderer *renderer,
     }
     const uint64_t submission = g_native_announcement_log_submission;
     const std::string style = g_overlay.native_announcement_log_style_key();
-    const uint64_t preparation_revision = native_announcement_log_translation_revision();
+    const uint64_t preparation_revision = native_announcement_log_translation_viewport_revision();
     const auto *gps = layer.foreground.graphics();
     const std::array<int, 6> geometry{{gps->dimx, gps->dimy,
         gps->screen_pixel_x, gps->screen_pixel_y, gps->tile_pixel_x, gps->tile_pixel_y}};

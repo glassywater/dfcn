@@ -494,14 +494,9 @@ static std::shared_ptr<const NativeAnnouncementUnitRecord> prepare_native_announ
         const auto revision = RULESETS.resource_revision();
         const auto catalog = g_overlay.native_identity_translation_catalog_generation();
         if (record->revision == revision && record->catalog == catalog) return record;
-        for (const auto &field : record->fields)
-            for (const auto &option : field.options)
-                if (native_unit_identity_requires_world(option.identity)) {
-                    auto identity = option.identity;
-                    if (identity.form == NativeUnitIdentityForm::NameOnly && identity.name.language >= 0)
-                        identity.english_name = false;
-                    (void)native_announcement_log_worker_unit_target(identity);
-                }
+        // Render the owned reference parts on this worker. Their exact
+        // entity/site helpers request missing leaves; a title or "of" role
+        // alone must not route the whole unit back through the native parser.
         struct OwnedRender {
             const NativeAnnouncementUnitRecord *source = nullptr;
             std::shared_ptr<NativeAnnouncementUnitRecord> record;
