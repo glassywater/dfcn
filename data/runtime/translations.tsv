@@ -5994,6 +5994,7 @@ Announcement combat spoken-sentence [$travel-site]: The village {s} is the only 
 Announcement combat spoken-sentence [diplomacy-group]: {s} is paying us tribute, and there is friendship between our peoples.	{s1}正在向我们进贡，双方百姓也相处和睦。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be speaking to {s}.	{s1}当时将正在对{s2}说话。	l
 Continue moving in the same direction to build up speed. If you or your mount are moving quickly, your attacks gain velocity.	持续朝同一方向移动可以加速。你或坐骑高速移动时，攻击也会获得额外速度。	hq
+DFHack GUI Quantum: {d} minecarts available: one will be ordered via the manager for you to assign to the quantum route later	可用矿车：{d} 辆。将下单制作一辆，完工后需手动分配到量子运输路线。	l
 DFHack help: "--maxlength <value>" Limits the number of items that the script will iterate through in a list (default: 2048).	"--maxlength <value>" 限制脚本将在列表中迭代的项目数（默认值：2048）。	l
 DFHack help: "-d", "--debug" Display selected target IDs in the finder window title bar. Doesn't persist between invocations.	"-d"、"--debug" 在查找器窗口标题栏中显示选定的目标 ID。在调用之间不会持续存在。	l
 DFHack help: "bprobe" Displays properties of the selected building. For deeper inspection of the building, see gui/gm-editor.	"bprobe" 显示所选建筑物的属性。如需对建筑物进行更深入的检查，请参阅 gui/gm-editor.	l
@@ -6269,6 +6270,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be appearing {s}.	{s1}当时将正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be rewarding {s}.	{s1}当时将正在奖赏{s2}。	l
 Cabinets are used in personal bedrooms for storing clothing objects. A cabinet object must be made before it can be placed.	橱柜用于在私人卧室存放衣物。须先制作橱柜，才能放置。	hj
+DFHack GUI Quantum: {d} minecarts available: an additional one will be ordered for you to assign to the quantum route later	可用矿车：{d} 辆。将额外订购一辆，完工后需手动分配到量子运输路线。	l
 DFHack help: "-g", "--gender (male|female|neuter)" The gender of the god. If not specified, a random gender will be chosen.	"-g"，"--gender (male|female|neuter)" 神的性别。如果未指定，将选择随机性别。	l
 DFHack help: "animal-control --gelded --markedfor slaughter --unmarkfor slaughter" Unmark all gelded animals for slaughter.	"animal-control --gelded --markedfor slaughter --unmarkfor slaughter" 取消所有阉割动物的屠宰标记。	l
 DFHack help: "deep-embark --depth UNDERWORLD --blockDemons" Embark in the underworld and disable the usual welcoming party.	"deep-embark --depth UNDERWORLD --blockDemons" 启程在地下世界并禁用通常的欢迎会。	l
@@ -6413,6 +6415,7 @@ Announcement combat spoken-sentence [speech-service-person]: I have no master, b
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be appearing {s}.	{s1}当时将正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be rewarding {s}.	{s1}当时将正在奖赏{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be flooding {s}.	{s1}当时将正在淹没{s2}。	l
+DFHack GUI Quantum: {d} minecart available: an additional one will be ordered for you to assign to the quantum route later	可用矿车：{d} 辆。将额外订购一辆，完工后需手动分配到量子运输路线。	l
 DFHack help: "--group-by-date" Create a folder with name "year-month" inside the world folder. Implies "--group-by-world".	"--group-by-date" 在world文件夹中创建一个名为"year-month"的文件夹。意味着 "--group-by-world"。	l
 DFHack help: "burrow units clear Farmhouse Workshops" Remove all units from the burrows named "Farmhouse" and "Workshops".	"burrow units clear Farmhouse Workshops" 移除活动区中名为"农舍"和"车间"的所有单位。	l
 DFHack help: "caravan extend" Force a caravan that is leaving to return to the depot and extend their stay another 7 days.	"caravan extend" 强制即将出发的商队返回仓库并延长停留时间7天。	l
@@ -6558,6 +6561,7 @@ Announcement combat spoken-sentence [speech-place,speech-place,$book]: I'm prepa
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be flooding {s}.	{s1}当时将正在淹没{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be burning {s}.	{s1}当时将正在焚烧{s2}。	l
 DFHack GUI Notification settings: Describes the status of the current moody dwarf: gathering materials, working, or stuck	显示处于奇异心境的矮人正在收集材料、制作，还是因缺少材料或工坊而受阻。	l
+DFHack GUI Quantum: {d} minecarts available: please order and assign a minecart of your choice to the quantum route later	可用矿车：{d} 辆。请自行订购矿车，完工后分配到量子运输路线。	l
 DFHack help: "--clean <value>" Checks for skills with a rating of "<value>" and removes them from the dwarf's skill list.	"--clean <value>" 检查评级为"<值>"的技能并将其从矮人的技能列表中删除。	l
 DFHack help: "--tile" Selects the highlighted tile's block, and then uses the tile's local position to index the 2D data.	"--tile" 选择突出显示的图块的块，然后使用图块的本地位置来索引 2D 数据。	l
 DFHack help: "-q", "--quality <num>" (default: "0", equal to "df.item_quality.Ordinary") The quality of the created item.	"-q"，"--quality <num>"（默认："0"，等于"df.item_quality.Ordinary"）创建的项目的质量。	l
@@ -8126,6 +8130,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} destroying {s}.	{s1}正在毁灭{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} is burning {s}.	{s1}正在焚烧{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will flood {s}.	{s1}将淹没{s2}。	l
+DFHack GUI Quantum: {d} minecarts available: please assign a minecart of your choice to the quantum route later	可用矿车：{d} 辆。请自行选择矿车，分配到量子运输路线。	l
 DFHack help: "--death-threshold <months>" How many months should undead lose strength for before being removed.	"--death-threshold <months>" 不死者需要多少个月失去力量才被移除。	l
 DFHack help: "--oil" Restrict the selection to plants with seeds, nuts, or fruits that can be pressed into oil.	"--oil" 将选择限制为含有种子、坚果或可榨油的水果的植物。	l
 DFHack help: "--time <delay>" Sets the delay between invocations of the command. It must be a positive integer.	"--time <delay>" 设置命令调用之间的延迟。它必须是一个正整数。	l
@@ -8289,6 +8294,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} speaks to {s}.	{s1}对{s2}说话。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will burn {s}.	{s1}将焚烧{s2}。	l
 Burrows can be suspended and unsuspended freely. When a Burrow is suspended, assigned citizens will ignore it.	[C:1:0:0]活动区[C:7:0:0]可以随时停用或重新启用。停用时，已分配的居民会忽略该[C:1:0:0]活动区[C:7:0:0]。	hq
+DFHack GUI Quantum: {d} minecart available: please assign a minecart of your choice to the quantum route later	可用矿车：{d} 辆。请自行选择矿车，分配到量子运输路线。	l
 DFHack help: "--unit <id>" The target unit ID. If not present, the currently selected unit will be the target.	​​"--unit <id>" 目标单位ID。如果不存在，则当前选定的单位将成为目标。	l
 DFHack help: "aliases" A map of blueprint alias names to their expansions. If not specified, defaults to "{}".	"aliases" 蓝图别名与其扩展的映射。如果未指定，则默认为"{}"。	l
 DFHack help: "autoclothing cloth dress" Displays the currently set number of cloth dresses chosen per citizen.	"autoclothing cloth dress" 显示当前设置的每个居民选择的布裙数量。	l
@@ -8459,6 +8465,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Attacks target specific body parts and have various modifiers. You will select these in the subsequent menus.	攻击针对具体身体部位，并带有各种修正项。接下来的菜单会让你选择这些内容。	hq
 DFHack GUI Design: Click to place the first point with the mouse. Use right-click to dismiss points in order.	点击鼠标放置起点。右键可依次撤销已放置的点。	l
 DFHack GUI Notification settings: Shows a reminder if it has been more than {d} minutes since your last save.	距离上次保存超过 {d} 分钟时发出提醒。	l
+DFHack GUI Quantum: {d} minecarts available: one will be ordered for you to assign to the quantum route later	可用矿车：{d} 辆。将订购一辆，完工后需手动分配到量子运输路线。	l
 DFHack help: "--contaminant <mat>" Trigger the command for items with a given material contaminant. Examples:	"--contaminant <mat>" 针对具有给定材料污染物的物品触发命令。示例：	l
 DFHack help: "enable autogems" Enables the plugin and starts autocutting gems according to its configuration.	"enable autogems" 启用插件并根据其配置开始自动切割宝石。	l
 DFHack help: "fix/empty-wheelbarrows" Empties all items, listing all wheelbarrows emptied and their contents.	"fix/empty-wheelbarrows" 清空所有物品，列出所有清空的手推车及其内容。	l
@@ -9157,6 +9164,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} will {s}.	{s1}将……{s2}。	l
 Can you imagine the trade wagons? Of course, there are responsibilities, and the nobility must live well.	你能想象那些贸易货车吗？当然，也有相应的责任，而且贵族必须享有优渥的生活。	hP
 DFHack GUI Confirmation prompt: Are you sure you want to restore Autostart defaults for automation tools?	确定要将自动化工具的自动启动状态恢复为默认设置吗？	l
+DFHack GUI Quantum: Please select additional feeder stockpiles or the location of the new quantum dumper.	请选择更多供料储物堆，或选择新量子倾倒器的位置。	l
 DFHack help: "--renamejob <name>" Renames the selected dwarves' custom professions to the specified name.	"--renamejob <name>" 将选定的矮人的自定义职业重命名为指定名称。	l
 DFHack help: "-f", "--include-friendly" Specifies the tool should also kill units friendly to the player.	"-f"、"--include-friendly" 指定该工具还应该杀死对玩家友好的单位。	l
 DFHack help: "-t", "--tiletype" The tile material classification. [number ID] (AIR/SOIL/STONE/RIVER/etc.)	"-t"、"--tiletype" 瓷砖材质分类。 [号码ID]（AIR/SOIL/STONE/RIVER/等）	l
@@ -10152,6 +10160,7 @@ Announcement combat visitor-statement [visitor-statement-subject,visitor-stateme
 Assign a burrow defense order. The soldiers will patrol the burrow and attack any hostile creatures.	下达活动区防卫命令。士兵会在活动区内巡逻并攻击敌对生物。	hj
 Assign a training order. The squad must be assigned to a barracks zone with the training option set.	下达训练命令。小队必须已被分配到开启训练用途的兵营区域。	hj
 DFHack GUI Design: Move the center point with the mouse. Use right-click to dismiss points in order.	用鼠标移动中心点。右键可依次撤销已放置的点。	l
+DFHack GUI Quantum: {d} minecarts available: one will be automatically assigned to the quantum route	可用矿车：{d} 辆。将自动分配一辆到量子运输路线。	l
 DFHack help: "--group-by-world" Create a folder named after the world in the "map-export" directory.	"--group-by-world" 在"map-export"目录下创建一个以世界命名的文件夹。	l
 DFHack help: "--skipImmunities" Add the syndrome to the target even if it is immune to the syndrome.	"--skipImmunities" 即使目标对该综合症免疫，也将该综合症添加到目标上。	l
 DFHack help: "-z", "--cur-zlevel" Restricts a flood fill operation to the currently visible z-level.	"-z"、"--cur-zlevel" 将洪水填充操作限制为当前可见的 Z 层。	l
@@ -10626,6 +10635,7 @@ Consider your loyalties carefully, adhere to them while they last, and abandon t
 DFHack GUI Confirmation prompt: Are you sure you want to convict {n}? This action is irreversible.	确定要将{n}定罪吗？此操作无法撤销。	l
 DFHack GUI Journal tutorial: Welcome to gui/journal, the adventurer's notebook for Dwarf Fortress!	欢迎使用 gui/journal，这里是《矮人要塞》的冒险笔记！	l
 DFHack GUI Notification settings: Reports missing nemesis records, indicating savegame corruption.	报告缺失的人物关联记录，提示存档可能损坏。	l
+DFHack GUI Quantum: {d} minecart available: it will be automatically assigned to the quantum route	可用矿车：{d} 辆。将自动分配到量子运输路线。	l
 DFHack help: "--all" Selects all units. This is the default if no selection options are specified.	"--all" 选择所有单位。如果未指定选择选项，则这是默认值。	l
 DFHack help: "-d", "--delete" Stop automatically prioritizing new jobs of the specified job types.	"-d"、"--delete" 停止自动优先指定指定作业类型的新作业。	l
 DFHack help: "-d", "--dry-run" Display what would be combined instead of actually combining items.	"-d", "--dry-run" 显示要组合的内容而不是实际组合项目。	l
@@ -19296,6 +19306,7 @@ Conversation prompt: What will you say about the end of the insurrection?	关于
 Conversation prompt: What will you say about the refusal to give tribute?	关于拒绝进贡，你想说些什么？	l
 DFHack GUI Animal assignment: Click to assign/unassign to cage/restraint.	点击分配到笼子／锁链，或取消分配。	l
 DFHack GUI Mod manager: Here are the vanilla mods that have been updated:	以下原版模组已更新：	l
+DFHack GUI Quantum: Please select the location of the new quantum dumper.	请选择新量子倾倒器的位置。	l
 DFHack GUI Viewer status: Autostart defaults restored for gameplay tools.	玩法扩展工具的自动启动状态已恢复为默认设置。	l
 DFHack GUI Viewer status: Enabled defaults restored for automation tools.	自动化工具的当前启用状态已恢复为默认设置。	l
 DFHack help: "--clear" Clear any previously registered syndrome triggers.	"--clear" 清除任何先前注册的综合症触发器。	l
@@ -33705,6 +33716,7 @@ DFHack GUI Control tool: logistics enable autoretrain	自动重新驯养（logis
 DFHack GUI Control tool: machine-toggle.pressureplate	压力板设置（machine-toggle.pressureplate）	l
 DFHack GUI Item type selector: What item do you want?	你想要什么物品？	l
 DFHack GUI Journal tutorial: ## My section subheading	## 子章节标题	l
+DFHack GUI Quantum: Please select a feeder stockpile.	请选择供料储物堆。	l
 DFHack help: "--plant" Selects the highlighted plant.	"--plant" 选择突出显示的植物。	l
 DFHack help: "--scattered" Opposite of "--stockpiled"	"--scattered" 与 "--stockpiled" 相反	l
 DFHack help: "-q", "--quiet" Suppress summary output.	"-q"、"--quiet" 抑制汇总输出。	l
@@ -55585,6 +55597,7 @@ DFHack GUI Design: Clear entire z-level	清除本层全部指定	l
 DFHack GUI Design: Mouse: {d}, {d}, {d}	鼠标：{d}, {d}, {d}	l
 DFHack GUI Input prompt: Enter command:	输入命令：	l
 DFHack GUI Mod manager: Modlist Manager	模组列表管理器	l
+DFHack GUI Quantum: Create output pile:	创建输出储物堆：	l
 DFHack GUI Rename type: FigureFirstOnly	仅名字人物	l
 DFHack GUI Rename type: LegendaryFigure	传奇人物	l
 DFHack GUI Rename type: MerchantCompany	商贸公司	l
@@ -61913,6 +61926,7 @@ DFHack GUI Mass remove: Affect built	处理已建成	l
 DFHack GUI Mod manager: Confirmation	确认	l
 DFHack GUI Mod manager: Save current	保存当前列表	l
 DFHack GUI Mod manager: Yes, proceed	确认继续	l
+DFHack GUI Quantum: Assign minecart:	分配矿车：	l
 DFHack GUI Quickfort: No description	没有描述	l
 DFHack GUI Quickfort: Shift click or	Shift 点击或	l
 DFHack GUI Quickfort: Undo blueprint	撤销蓝图	l
@@ -64132,6 +64146,7 @@ DFHack GUI Legends race filter: All	全部	l
 DFHack GUI Mass remove: Leave alone	不处理	l
 DFHack GUI Mass remove: Stockpiles:	储物堆：	l
 DFHack GUI Mod manager: Delete {s}?	删除预设“{s1}”？	l
+DFHack GUI Quantum: Dump direction:	倾倒方向：	l
 DFHack GUI Quickfort: Down z-levels	向下重复楼层	l
 DFHack GUI Rename language: English	英语	l
 DFHack GUI Rename type: MusicalForm	音乐形式	l
@@ -66458,6 +66473,7 @@ DFHack GUI Design: Top stair type:	顶层楼梯：	l
 DFHack GUI Design: gui/design Help	形状绘制帮助	l
 DFHack GUI Item type selector: any	任意	l
 DFHack GUI Mass remove: Buildings:	建筑：	l
+DFHack GUI Quantum: Feeder select:	供料堆选择：	l
 DFHack GUI Quickfort: Click or hit	点击或按	l
 DFHack GUI Quickfort: No transform	无变换	l
 DFHack GUI Rename caption: English	词义	l
@@ -83179,6 +83195,7 @@ DFHack GUI Design: FreeForm	自由形状	l
 DFHack GUI Design: On (odd)	开启（奇数）	l
 DFHack GUI Design: Reverse:	反向：	l
 DFHack GUI Design: Spacing:	间距：	l
+DFHack GUI Quantum: Quantum	量子储物堆	l
 DFHack GUI Quickfort: fliph	横向翻转	l
 DFHack GUI Quickfort: flipv	纵向翻转	l
 DFHack GUI Rename type: War	战争	l
@@ -85530,6 +85547,8 @@ DFHack GUI Design: Filled:	填充：	l
 DFHack GUI Design: Hollow:	空心：	l
 DFHack GUI Design: Invert:	反选：	l
 DFHack GUI Mod manager: Ok	确定	l
+DFHack GUI Quantum: Manual	手动	l
+DFHack GUI Quantum: Single	单选	l
 DFHack GUI Quickfort: Hide	隐藏	l
 DFHack GUI Quickfort: Show	显示	l
 DFHack GUI Title: Autodump	自动倾倒	l
@@ -87668,6 +87687,11 @@ DFHack GUI Design: Shape:	形状：	l
 DFHack GUI Design: Smooth	磨平	l
 DFHack GUI Design: Stairs	楼梯	l
 DFHack GUI Design: UpDown	上下楼梯	l
+DFHack GUI Quantum: Multi	多选	l
+DFHack GUI Quantum: Name:	名称：	l
+DFHack GUI Quantum: North	北	l
+DFHack GUI Quantum: Order	订购	l
+DFHack GUI Quantum: South	南	l
 DFHack GUI Quickfort: Off	关闭	l
 DFHack GUI Quickfort: ccw	逆时针旋转	l
 DFHack GUI Sitemap: caged	被囚禁的	l
@@ -89589,6 +89613,9 @@ DFHack GUI Design: Floor	地板	l
 DFHack GUI Design: Ramps	斜坡	l
 DFHack GUI Design: Reset	重置	l
 DFHack GUI Design: Walls	墙壁	l
+DFHack GUI Quantum: Auto	自动	l
+DFHack GUI Quantum: East	东	l
+DFHack GUI Quantum: West	西	l
 DFHack GUI Quickfort: No	关闭	l
 DFHack GUI Quickfort: On	开启	l
 DFHack GUI Quickfort: cw	顺时针旋转	l
@@ -91678,6 +91705,7 @@ DFHack GUI Design: None	无	l
 DFHack GUI Design: Ramp	斜坡	l
 DFHack GUI Design: Rows	行列	l
 DFHack GUI Design: Star	星形	l
+DFHack GUI Quantum: Off	关闭	l
 DFHack GUI Teleport: On	开启	l
 DFHack Quickstart Guide	DFHack 快速入门指南	w
 DFHack help: "--active"	"--active"	l
@@ -93755,6 +93783,7 @@ Crossbows, metal armor	十字弩（金属甲）	wli
 DFHack GUI Design: Dig	挖掘	l
 DFHack GUI Design: N/A	无	l
 DFHack GUI Design: Off	关闭	l
+DFHack GUI Quantum: On	开启	l
 DFHack help: "--block"	"--block"	l
 DFHack help: "--clear"	"--clear"	l
 DFHack help: "--cloth"	"--cloth"	l

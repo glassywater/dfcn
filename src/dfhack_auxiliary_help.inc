@@ -383,6 +383,7 @@ std::vector<Match> dfhack_auxiliary_matches;
 #include "dfhack_suspendmanager.inc"
 #include "dfhack_petitions.inc"
 #include "dfhack_rename.inc"
+#include "dfhack_quantum.inc"
         if (input && input_gap) {
             dfhack_auxiliary_regions.push_back(*frame);
             gui_literal(at, title_y, title, title_end, "Title", true);

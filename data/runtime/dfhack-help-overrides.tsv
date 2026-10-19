@@ -758,3 +758,34 @@ DFHack GUI Rename type: CraftGuild	工匠行会	l
 DFHack GUI Rename type: Guildhall	行会大厅	l
 DFHack GUI Rename type: NecromancerTower	死灵法师塔	l
 DFHack GUI Rename type: Hospital	医院	l
+
+# gui/quantum: autoarranged controls and count/mode-dependent four-row minecart status.
+DFHack GUI Quantum: Quantum	量子储物堆	l
+DFHack GUI Quantum: Please select a feeder stockpile.	请选择供料储物堆。	l
+DFHack GUI Quantum: Please select the location of the new quantum dumper.	请选择新量子倾倒器的位置。	l
+DFHack GUI Quantum: Please select additional feeder stockpiles or the location of the new quantum dumper.	请选择更多供料储物堆，或选择新量子倾倒器的位置。	l
+DFHack GUI Quantum: Name:	名称：	l
+DFHack GUI Quantum: Dump direction:	倾倒方向：	l
+DFHack GUI Quantum: Create output pile:	创建输出储物堆：	l
+DFHack GUI Quantum: Feeder select:	供料堆选择：	l
+DFHack GUI Quantum: Assign minecart:	分配矿车：	l
+DFHack GUI Quantum: North	北	l
+DFHack GUI Quantum: South	南	l
+DFHack GUI Quantum: East	东	l
+DFHack GUI Quantum: West	西	l
+DFHack GUI Quantum: On	开启	l
+DFHack GUI Quantum: Off	关闭	l
+DFHack GUI Quantum: Single	单选	l
+DFHack GUI Quantum: Multi	多选	l
+DFHack GUI Quantum: Auto	自动	l
+DFHack GUI Quantum: Order	订购	l
+DFHack GUI Quantum: Manual	手动	l
+DFHack GUI Quantum: {d} minecart available: it will be automatically assigned to the quantum route	可用矿车：{d} 辆。将自动分配到量子运输路线。	l
+DFHack GUI Quantum: {d} minecarts available: one will be automatically assigned to the quantum route	可用矿车：{d} 辆。将自动分配一辆到量子运输路线。	l
+DFHack GUI Quantum: {d} minecarts available: one will be ordered via the manager for you to assign to the quantum route later	可用矿车：{d} 辆。将下单制作一辆，完工后需手动分配到量子运输路线。	l
+DFHack GUI Quantum: {d} minecart available: an additional one will be ordered for you to assign to the quantum route later	可用矿车：{d} 辆。将额外订购一辆，完工后需手动分配到量子运输路线。	l
+DFHack GUI Quantum: {d} minecarts available: an additional one will be ordered for you to assign to the quantum route later	可用矿车：{d} 辆。将额外订购一辆，完工后需手动分配到量子运输路线。	l
+DFHack GUI Quantum: {d} minecarts available: one will be ordered for you to assign to the quantum route later	可用矿车：{d} 辆。将订购一辆，完工后需手动分配到量子运输路线。	l
+DFHack GUI Quantum: {d} minecart available: please assign a minecart of your choice to the quantum route later	可用矿车：{d} 辆。请自行选择矿车，分配到量子运输路线。	l
+DFHack GUI Quantum: {d} minecarts available: please assign a minecart of your choice to the quantum route later	可用矿车：{d} 辆。请自行选择矿车，分配到量子运输路线。	l
+DFHack GUI Quantum: {d} minecarts available: please order and assign a minecart of your choice to the quantum route later	可用矿车：{d} 辆。请自行订购矿车，完工后分配到量子运输路线。	l
