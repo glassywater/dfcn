@@ -1,0 +1,75 @@
+branch	source	reference_source_rva	classic_source_rva	condition
+global-feature	There is nothing to catch in the northwestern eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the northwestern magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the northwestern cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the northwestern lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the northwestern swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the northwestern ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the northwestern .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+global-feature	There is nothing to catch in the southwestern eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the southwestern magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the southwestern cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the southwestern lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the southwestern swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the southwestern ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the southwestern .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+global-feature	There is nothing to catch in the northeastern eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the northeastern magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the northeastern cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the northeastern lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the northeastern swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the northeastern ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the northeastern .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+global-feature	There is nothing to catch in the southeastern eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the southeastern magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the southeastern cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the southeastern lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the southeastern swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the southeastern ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the southeastern .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+global-feature	There is nothing to catch in the western eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the western magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the western cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the western lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the western swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the western ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the western .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+global-feature	There is nothing to catch in the northern eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the northern magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the northern cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the northern lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the northern swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the northern ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the northern .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+global-feature	There is nothing to catch in the eastern eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the eastern magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the eastern cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the eastern lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the eastern swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the eastern ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the eastern .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+global-feature	There is nothing to catch in the southern eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the southern magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the southern cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the southern lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the southern swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the southern ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the southern .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+global-feature	There is nothing to catch in the central eerie cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the central magma sea.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+global-feature	There is nothing to catch in the central cavern.	0x1343e9c..0x1344114	0x133ee0c..0x133f084	global layer 2/1/0
+surface	There is nothing to catch in the central lake.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the central swamps.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+surface	There is nothing to catch in the central ocean.	0x13441f3..0x134446f	0x133f163..0x133f3df	biome selector
+global-feature-default	There is nothing to catch in the central .	0x134404d..0x1344089	0x133efbd..0x133eff9	layer type not 0/1/2; empty layer
+local-feature	There is nothing to catch in the river.	0x1343cbb..0x1343dac	0x133ec2b..0x133ed1c	vtable+0x70; native-feature-owners.tsv
+local-feature	There is nothing to catch in the cave.	0x1343cbb..0x1343dac	0x133ec2b..0x133ed1c	vtable+0x70; native-feature-owners.tsv
+local-feature	There is nothing to catch in the pit.	0x1343cbb..0x1343dac	0x133ec2b..0x133ed1c	vtable+0x70; native-feature-owners.tsv
+local-feature	There is nothing to catch in the magma pool.	0x1343cbb..0x1343dac	0x133ec2b..0x133ed1c	vtable+0x70; native-feature-owners.tsv
+local-feature	There is nothing to catch in the volcano.	0x1343cbb..0x1343dac	0x133ec2b..0x133ed1c	vtable+0x70; native-feature-owners.tsv
+local-feature	There is nothing to catch in the underworld portal.	0x1343cbb..0x1343dac	0x133ec2b..0x133ed1c	vtable+0x70; native-feature-owners.tsv
+local-feature	There is nothing to catch in the subterranean water.	0x1343cbb..0x1343dac	0x133ec2b..0x133ed1c	vtable+0x70; native-feature-owners.tsv
+local-feature	There is nothing to catch in the underworld.	0x1343cbb..0x1343dac	0x133ec2b..0x133ed1c	vtable+0x70; native-feature-owners.tsv
+local-feature-base	There is nothing to catch in .	0x72250	0x721e0	base feature_init empty name
+local-feature-material-unknown	There is nothing to catch in unknown material deposit.	0xa4a940;0x14d1d44	0xa48170;0x14cccb4	no historical owner; failed material lookup
+local-feature-material-empty	There is nothing to catch in  deposit.	0xa4a940;0x14d1d08	0xa48170;0x14ccc78	no historical owner; prefix empty; solid name empty

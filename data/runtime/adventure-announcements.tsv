@@ -945,7 +945,30 @@ You pick up {s}.	你拾起了{s}。
 {n} picks up {s}.	{n}拾起了{s}。
 Your ruler has arrived with a full entourage. Your thriving site is now the capital, and with continued fortune and toil, the legend of a true Mountainhome may yet be written.	你的统治者带着完整的随行队伍抵达了。你这繁荣的地点如今已成为都城，只要好运和辛勤劳作继续下去，真正的山国都城传奇终将谱写。
 OVERWROTE JOB: {s} BY {s}	任务已被覆盖：{s1}被{s2}取代
-There is nothing to catch in {e}.	{e}中没有可捕捉的东西。
+# NO_FISH uses feature_init::getName, not a generated place name.
+# All configured PE feature suppliers and empty/default branches are retained
+# in data/extracted/announcement-fishing/; material deposits use typed grammar.
+There is nothing to catch in the river.	河流中没有可捕捉的东西。
+There is nothing to catch in the cave.	洞穴中没有可捕捉的东西。
+There is nothing to catch in the pit.	深坑中没有可捕捉的东西。
+There is nothing to catch in the magma pool.	岩浆池中没有可捕捉的东西。
+There is nothing to catch in the volcano.	火山中没有可捕捉的东西。
+There is nothing to catch in the underworld portal.	通往地下世界的传送门中没有可捕捉的东西。
+There is nothing to catch in the subterranean water.	地下水中没有可捕捉的东西。
+There is nothing to catch in the underworld.	地下世界中没有可捕捉的东西。
+There is nothing to catch in .	此处没有可捕捉的东西。
+There is nothing to catch in  deposit.	矿脉中没有可捕捉的东西。
+There is nothing to catch in unknown material deposit.	未知材料矿脉中没有可捕捉的东西。
+There is nothing to catch in 's  deposit.	矿脉中没有可捕捉的东西。
+There is nothing to catch in the northwestern .	西北部没有可捕捉的东西。
+There is nothing to catch in the southwestern .	西南部没有可捕捉的东西。
+There is nothing to catch in the northeastern .	东北部没有可捕捉的东西。
+There is nothing to catch in the southeastern .	东南部没有可捕捉的东西。
+There is nothing to catch in the western .	西部没有可捕捉的东西。
+There is nothing to catch in the northern .	北部没有可捕捉的东西。
+There is nothing to catch in the eastern .	东部没有可捕捉的东西。
+There is nothing to catch in the southern .	南部没有可捕捉的东西。
+There is nothing to catch in the central .	中部没有可捕捉的东西。
 There is nothing to catch in the northwestern eerie cavern.	西北部的诡异洞穴中没有可捕捉的东西。
 There is nothing to catch in the northwestern magma sea.	西北部的岩浆海中没有可捕捉的东西。
 There is nothing to catch in the northwestern cavern.	西北部的洞穴中没有可捕捉的东西。

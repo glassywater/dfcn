@@ -1,0 +1,5 @@
+edition	image	function_rva	end_rva
+reference	PE:6a70a6d9:02711000	0x40d5f0	0x40f77a
+reference	PE:6a70a6d9:02711000	0x40f780	0x4105a9
+classic	PE:6a70b91c:0270a000	0x40b1b0	0x40d33a
+classic	PE:6a70b91c:0270a000	0x40d340	0x40e169

@@ -1,0 +1,51 @@
+edition	image_identity	owner	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	feature-name-a49080	0xa49080	0xa49089	rip-relative	0x16cccd0	finite-text-operand-or-substring	the river
+reference	PE:6a70a6d9:02711000	feature-name-a49210	0xa49210	0xa49219	rip-relative	0x16ccce8	finite-text-operand-or-substring	the cave
+reference	PE:6a70a6d9:02711000	feature-name-a49390	0xa49390	0xa49399	rip-relative	0x16ccce0	finite-text-operand-or-substring	the pit
+reference	PE:6a70a6d9:02711000	feature-name-a49520	0xa49520	0xa49529	rip-relative	0x16ccd08	finite-text-operand-or-substring	the magma pool
+reference	PE:6a70a6d9:02711000	feature-name-a496a0	0xa496a0	0xa496a9	rip-relative	0x16cccf8	finite-text-operand-or-substring	the volcano
+reference	PE:6a70a6d9:02711000	feature-name-a49a90	0xa49a90	0xa49a99	rip-relative	0x16ccd30	finite-text-operand-or-substring	the underworld portal
+reference	PE:6a70a6d9:02711000	feature-name-a49e00	0xa49e00	0xa49e09	rip-relative	0x16ccd18	finite-text-operand-or-substring	the subterranean water
+reference	PE:6a70a6d9:02711000	feature-name-a4a0a0	0xa4a0a0	0xa4a0a9	rip-relative	0x16cccc0	finite-text-operand-or-substring	the underworld
+reference	PE:6a70a6d9:02711000	feature-name-a4a940	0xa4a940	0xa4a973	rip-relative	0x16cccb0	finite-text-operand-or-substring	 deposit
+classic	PE:6a70b91c:0270a000	feature-name-a468b0	0xa468b0	0xa468b9	rip-relative	0x16c7bf8	finite-text-operand-or-substring	the river
+classic	PE:6a70b91c:0270a000	feature-name-a46a40	0xa46a40	0xa46a49	rip-relative	0x16c7c10	finite-text-operand-or-substring	the cave
+classic	PE:6a70b91c:0270a000	feature-name-a46bc0	0xa46bc0	0xa46bc9	rip-relative	0x16c7c08	finite-text-operand-or-substring	the pit
+classic	PE:6a70b91c:0270a000	feature-name-a46d50	0xa46d50	0xa46d59	rip-relative	0x16c7ba8	finite-text-operand-or-substring	the magma pool
+classic	PE:6a70b91c:0270a000	feature-name-a46ed0	0xa46ed0	0xa46ed9	rip-relative	0x16c7b98	finite-text-operand-or-substring	the volcano
+classic	PE:6a70b91c:0270a000	feature-name-a472c0	0xa472c0	0xa472c9	rip-relative	0x16c7bd0	finite-text-operand-or-substring	the underworld portal
+classic	PE:6a70b91c:0270a000	feature-name-a47630	0xa47630	0xa47639	rip-relative	0x16c7bb8	finite-text-operand-or-substring	the subterranean water
+classic	PE:6a70b91c:0270a000	feature-name-a478d0	0xa478d0	0xa478d9	rip-relative	0x16c7be8	finite-text-operand-or-substring	the underworld
+classic	PE:6a70b91c:0270a000	feature-name-a48170	0xa48170	0xa481a3	rip-relative	0x16c7b88	finite-text-operand-or-substring	 deposit
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1987	rip-relative	0x1614d54	finite-text-operand-or-substring	plant
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d19a9	rip-relative	0x16158b4	finite-text-operand-or-substring	yarn
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d19d1	rip-relative	0x16158a4	finite-text-operand-or-substring	cloth
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d19f1	rip-relative	0x16158ac	finite-text-operand-or-substring	silk
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1a11	rip-relative	0x16158c4	finite-text-operand-or-substring	bone
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1a31	rip-relative	0x16156d0	finite-text-operand-or-substring	leather
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1a51	rip-relative	0x16158bc	finite-text-operand-or-substring	shell
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1a73	rip-relative	0x16158d4	finite-text-operand-or-substring	soap
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1a95	rip-relative	0x1789150	finite-text-operand-or-substring	ivory/tooth
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1ab7	rip-relative	0x16158e4	finite-text-operand-or-substring	horn
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1ad9	rip-relative	0x16158dc	finite-text-operand-or-substring	pearl
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1b08	rip-relative	0x16156d8	finite-text-operand-or-substring	wood
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1b0f	rip-relative	0x16a12ec	finite-text-operand-or-substring	wooden
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1c65	rip-relative	0x15edb24	separator	's 
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1cf9	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	feature-material-name	0x14d1920	0x14d1d4a	rip-relative	0x1789108	finite-text-operand-or-substring	unknown material
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cc8f7	rip-relative	0x160fd14	finite-text-operand-or-substring	plant
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cc919	rip-relative	0x16106b8	finite-text-operand-or-substring	yarn
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cc941	rip-relative	0x16106a8	finite-text-operand-or-substring	cloth
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cc961	rip-relative	0x16106b0	finite-text-operand-or-substring	silk
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cc981	rip-relative	0x16106c8	finite-text-operand-or-substring	bone
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cc9a1	rip-relative	0x1610690	finite-text-operand-or-substring	leather
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cc9c1	rip-relative	0x16106c0	finite-text-operand-or-substring	shell
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cc9e3	rip-relative	0x16106d8	finite-text-operand-or-substring	soap
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cca05	rip-relative	0x1782aa0	finite-text-operand-or-substring	ivory/tooth
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cca27	rip-relative	0x16106e8	finite-text-operand-or-substring	horn
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cca49	rip-relative	0x16106e0	finite-text-operand-or-substring	pearl
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cca78	rip-relative	0x1610698	finite-text-operand-or-substring	wood
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cca7f	rip-relative	0x169c26c	finite-text-operand-or-substring	wooden
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14ccbd5	rip-relative	0x15e8b58	separator	's 
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14ccc69	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	feature-material-name	0x14cc890	0x14cccba	rip-relative	0x1782ab0	finite-text-operand-or-substring	unknown material

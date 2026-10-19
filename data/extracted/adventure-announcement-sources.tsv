@@ -945,7 +945,7 @@ adventure.announcement.shared-final	0x14007de50:0x14007e455-0x14007e753;item=0x1
 adventure.announcement.shared-final	0x14007de50:0x14007e455-0x14007e753;actor=0x14132e430;item=0x140c65450	{n} picks up {s}.
 adventure.announcement.shared-final	0x140e4a320:0x140e4b57d-0x140e4b674;literalVA=0x14172f5d0;file=0x172e7d0;176bytes;event344=MONARCH_ARRIVAL:A_D:D_D:BOX	Your ruler has arrived with a full entourage. Your thriving site is now the capital, and with continued fortune and toil, the legend of a true Mountainhome may yet be written.
 adventure.announcement.shared-final	0x141328450:0x1413284f5-0x14132863c;job-description=0x140d03170;event271=JOB_OVERWRITTEN:A_D:D_D;no-terminal-punctuation	OVERWROTE JOB: {s} BY {s}
-adventure.announcement.shared-final	0x1413435b0:0x141343cbb-0x141343dac;waterbody-name=vtable+0x70	There is nothing to catch in {e}.
+adventure.announcement.shared-final	0x1413435b0:0x141343cbb-0x141343dac;feature_init_outdoor_riverst-vtable+0x70=0x140a49080;all-feature-suppliers-in-announcement-fishing/	There is nothing to catch in the river.
 adventure.announcement.shared-final	0x1413435b0:0x141343e9c-0x14134410f;native9-direction-switch+terrain-switch	There is nothing to catch in the northwestern eerie cavern.
 adventure.announcement.shared-final	0x1413435b0:0x141343e9c-0x14134410f;native9-direction-switch+terrain-switch	There is nothing to catch in the northwestern magma sea.
 adventure.announcement.shared-final	0x1413435b0:0x141343e9c-0x14134410f;native9-direction-switch+terrain-switch	There is nothing to catch in the northwestern cavern.
@@ -1002,3 +1002,23 @@ adventure.announcement.shared-final	0x1413435b0:0x1413441f3-0x14134446a;native9-
 adventure.announcement.shared-final	0x1413435b0:0x1413441f3-0x14134446a;native9-direction-switch+terrain-switch	There is nothing to catch in the central ocean.
 adventure.announcement.shared-final	0x140dcc6a0:0x140dcccc4-0x140dcd09b;deity=0x140a946e0;default-only;RAW-trigger-separate	{n} has been cursed by {p}!
 adventure.announcement.shared-final	0x1413a78c0:0x1413a8212-0x1413a8334;creator-language-name=0x140a94030	Your miners have defaced a {p}!
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49210;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the cave.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49390;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the pit.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49520;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the magma pool.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a496a0;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the volcano.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49a90;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the underworld portal.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49e00;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the subterranean water.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a4a0a0;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the underworld.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140072250;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the northwestern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the southwestern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the northeastern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the southeastern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the western .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the northern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the eastern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the southern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the central .
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a4a940->0x1414d1920;solid-material-empty-or-unknown-branch;announcement-fishing/actual-Ghidra	There is nothing to catch in  deposit.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a4a940->0x1414d1920;solid-material-empty-or-unknown-branch;announcement-fishing/actual-Ghidra	There is nothing to catch in 's  deposit.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a4a940->0x1414d1920;solid-material-empty-or-unknown-branch;announcement-fishing/actual-Ghidra	There is nothing to catch in unknown material deposit.

@@ -1,0 +1,57 @@
+edition	image_identity	owner	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40d82c	rip-relative	0x162ee98	finite-text-operand-or-substring	 x
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40dc99	rip-relative	0x162ee98	finite-text-operand-or-substring	 x
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e0ba	rip-relative	0x162ee98	finite-text-operand-or-substring	 x
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e4bf	rip-relative	0x15f71e4	finite-text-operand-or-substring	 is 
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e4e6	rip-relative	0x15f71d0	finite-text-operand-or-substring	hunting.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e4ef	rip-relative	0x15f7198	finite-text-operand-or-substring	sparring.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e4f8	rip-relative	0x15f71c0	finite-text-operand-or-substring	fighting!
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e92b	rip-relative	0x163a2e0	finite-text-operand-or-substring	You can recenter on certain announcements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e935	rip-relative	0x163a2f0	finite-text-operand-or-substring	 on certain announcements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e940	rip-relative	0x163a300	finite-text-operand-or-substring	uncements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e94b	rip-relative	0x163a310	finite-text-operand-or-substring	t click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40e956	rip-relative	0x163a320	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ead7	rip-relative	0x163a2e0	finite-text-operand-or-substring	You can recenter on certain announcements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40eae1	rip-relative	0x163a2f0	finite-text-operand-or-substring	 on certain announcements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40eaec	rip-relative	0x163a300	finite-text-operand-or-substring	uncements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40eaf7	rip-relative	0x163a310	finite-text-operand-or-substring	t click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40eb02	rip-relative	0x163a320	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40eb9c	rip-relative	0x163a278	finite-text-operand-or-substring	Select a report to view the full text.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40eba6	rip-relative	0x163a288	finite-text-operand-or-substring	to view the full text.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ebb1	rip-relative	0x163a298	finite-text-operand-or-substring	 text.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ebbc	rip-relative	0x163a2a8	finite-text-operand-or-substring	ick to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ebc9	rip-relative	0x163a2b0	finite-text-operand-or-substring	lose.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ebd2	rip-relative	0x163a2b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ec23	rip-relative	0x163a2e0	finite-text-operand-or-substring	You can recenter on certain announcements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ec2d	rip-relative	0x163a2f0	finite-text-operand-or-substring	 on certain announcements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ec38	rip-relative	0x163a300	finite-text-operand-or-substring	uncements.  Right click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ec43	rip-relative	0x163a310	finite-text-operand-or-substring	t click to close.
+reference	PE:6a70a6d9:02711000	alert-popup-render	0x40d5f0	0x40ec4e	rip-relative	0x163a320	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40b3ec	rip-relative	0x1629bf8	finite-text-operand-or-substring	 x
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40b859	rip-relative	0x1629bf8	finite-text-operand-or-substring	 x
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40bc7a	rip-relative	0x1629bf8	finite-text-operand-or-substring	 x
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c07f	rip-relative	0x15f2120	finite-text-operand-or-substring	 is 
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c0a6	rip-relative	0x15f2198	finite-text-operand-or-substring	hunting.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c0af	rip-relative	0x15f21a8	finite-text-operand-or-substring	sparring.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c0b8	rip-relative	0x15f2128	finite-text-operand-or-substring	fighting!
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c4eb	rip-relative	0x1635430	finite-text-operand-or-substring	You can recenter on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c4f5	rip-relative	0x1635440	finite-text-operand-or-substring	 on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c500	rip-relative	0x1635450	finite-text-operand-or-substring	uncements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c50b	rip-relative	0x1635460	finite-text-operand-or-substring	t click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c516	rip-relative	0x1635470	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c697	rip-relative	0x1635430	finite-text-operand-or-substring	You can recenter on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c6a1	rip-relative	0x1635440	finite-text-operand-or-substring	 on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c6ac	rip-relative	0x1635450	finite-text-operand-or-substring	uncements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c6b7	rip-relative	0x1635460	finite-text-operand-or-substring	t click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c6c2	rip-relative	0x1635470	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c75c	rip-relative	0x1635478	finite-text-operand-or-substring	Select a report to view the full text.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c766	rip-relative	0x1635488	finite-text-operand-or-substring	to view the full text.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c771	rip-relative	0x1635498	finite-text-operand-or-substring	 text.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c77c	rip-relative	0x16354a8	finite-text-operand-or-substring	ick to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c789	rip-relative	0x16354b0	finite-text-operand-or-substring	lose.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c792	rip-relative	0x16354b4	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c7e3	rip-relative	0x1635430	finite-text-operand-or-substring	You can recenter on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c7ed	rip-relative	0x1635440	finite-text-operand-or-substring	 on certain announcements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c7f8	rip-relative	0x1635450	finite-text-operand-or-substring	uncements.  Right click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c803	rip-relative	0x1635460	finite-text-operand-or-substring	t click to close.
+classic	PE:6a70b91c:0270a000	alert-popup-render	0x40b1b0	0x40c80e	rip-relative	0x1635470	finite-text-operand-or-substring	.

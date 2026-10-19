@@ -10803,6 +10803,7 @@ Alternatively, you can reduce the number of swamp squares and regions required b
 Announcement combat activity-detail-sentence [work-reference]: The topic being considered is {s}.	正在思考的主题是{s1}。	l
 Announcement combat adventure-announcement [$announcement-item,$body]: You strap {s} to your {s}.	你把{s1}系在了自己的{s2}上。	l
 Announcement combat adventure-announcement [$announcement-substance]: You breathe a cloud of {s}!	你喷出一团{s1}云雾！	l
+Announcement combat adventure-announcement [$person]: There is nothing to catch in {s}'s deposit.	{s1}的矿脉中没有可捕捉的东西。	l
 Announcement combat adventure-announcement [$unit,$announcement-item]: {s} loses hold of the {s}!	{s1}没能抓住{s2}！	l
 Announcement combat adventure-announcement [$unit,$announcement-item]: {s} loses hold of the {s}.	{s1}没能抓住{s2}。	l
 Announcement combat adventure-announcement [$unit,$conflict-caste]: {s} has been bitten by a {s}!	{s1}被一只{s2}咬了！	l
@@ -11056,6 +11057,7 @@ Announcement combat adventure-announcement []: Perhaps some of your friends here
 Announcement combat adventure-announcement []: Some migrants have arrived at this unhappy place.	一些移民来到了这个不幸的地方。	l
 Announcement combat adventure-announcement []: They consider you a key figure in the opposition.	他们把你视为反对者中的关键人物。	l
 Announcement combat adventure-announcement []: Try to focus on the practical side of the matter.	尽量多考虑事情实际的一面。	l
+Announcement combat adventure-announcement [material]: There is nothing to catch in {s} deposit.	{s1}矿脉中没有可捕捉的东西。	l
 Announcement combat agreement-core [agreement-core,agreement-item]: {s}. The ritual involved {s}	{s1}。仪式使用了{s2}	l
 Announcement combat agreement-core [agreement-party-list]: {s} concocted a corruption conspiracy	{s1}策划了腐败的阴谋	l
 Announcement combat agreement-core [agreement-target]: plotted to sabotage the activities of {s}	密谋破坏{s1}的活动	l
@@ -32790,6 +32792,7 @@ There is a heavy blanket of fog enveloping everything.	浓雾如厚毯般笼罩�
 There is nothing to catch in the central eerie cavern.	中部的诡异洞穴中没有可捕捉的东西。	hP
 There is nothing to catch in the eastern eerie cavern.	东部的诡异洞穴中没有可捕捉的东西。	hP
 There is nothing to catch in the western eerie cavern.	西部的诡异洞穴中没有可捕捉的东西。	hP
+There is nothing to catch in unknown material deposit.	未知材料矿脉中没有可捕捉的东西。	hP
 There is writing on this item which you have not read.	这件物品上有你尚未阅读的文字。	hH
 These are the default Dwarf Fortress plants and fungi.	这些是《矮人要塞》的默认植物和真菌。	wl
 This event occurred on the {d}nd Opal in the year {d}.	第{d2}年蛋白石月{d1}日发生了这件事。	wtl
@@ -35236,6 +35239,7 @@ There is nothing to catch in the northwestern ocean.	西北部的海洋中没有
 There is nothing to catch in the southeastern ocean.	东南部的海洋中没有可捕捉的东西。	hP
 There is nothing to catch in the southern magma sea.	南部的岩浆海中没有可捕捉的东西。	hP
 There is nothing to catch in the southwestern ocean.	西南部的海洋中没有可捕捉的东西。	hP
+There is nothing to catch in the subterranean water.	地下水中没有可捕捉的东西。	hP
 This great hunt has saved us from a dangerous enemy!	这场出色的狩猎从危险的敌人手中拯救了我们！	hPD
 This storyteller. How can I even describe the skill?	这位讲故事的人的技艺，我简直不知该如何形容！	hPD
 This visitor has come {s}. He was curious about {e}.	这位访客前来{s1}。他对{e1}感到好奇。	hPt
@@ -36474,6 +36478,7 @@ There is nothing to catch in the northeastern lake.	东北部的湖泊中没有�
 There is nothing to catch in the northwestern lake.	西北部的湖泊中没有可捕捉的东西。	hP
 There is nothing to catch in the southeastern lake.	东南部的湖泊中没有可捕捉的东西。	hP
 There is nothing to catch in the southwestern lake.	西南部的湖泊中没有可捕捉的东西。	hP
+There is nothing to catch in the underworld portal.	通往地下世界的传送门中没有可捕捉的东西。	hP
 There is nothing to catch in the western magma sea.	西部的岩浆海中没有可捕捉的东西。	hP
 There is writing on this item, but you cannot read.	这件物品上写有文字，但你无法阅读。	hH
 There's absolutely nothing interesting around here.	这附近完全没有什么有趣的事。	hPD
@@ -42135,8 +42140,12 @@ There is a strong breeze blowing from the west.	一阵劲风从西方吹来。	h
 There is a strong breeze blowing from the west.	一阵劲风从西方吹来。	hj
 There is nothing to catch in the central ocean.	中部的海洋中没有可捕捉的东西。	hP
 There is nothing to catch in the eastern ocean.	东部的海洋中没有可捕捉的东西。	hP
+There is nothing to catch in the northeastern .	东北部没有可捕捉的东西。	hP
 There is nothing to catch in the northern lake.	北部的湖泊中没有可捕捉的东西。	hP
+There is nothing to catch in the northwestern .	西北部没有可捕捉的东西。	hP
+There is nothing to catch in the southeastern .	东南部没有可捕捉的东西。	hP
 There is nothing to catch in the southern lake.	南部的湖泊中没有可捕捉的东西。	hP
+There is nothing to catch in the southwestern .	西南部没有可捕捉的东西。	hP
 There is nothing to catch in the western ocean.	西部的海洋中没有可捕捉的东西。	hP
 These are the default Dwarf Fortress bodies for	这些是《矮人要塞》的默认身体结构，	l
 These can also be assigned from the squad menu.	这些职位也可以从小队菜单中任命。	hq
@@ -46943,6 +46952,8 @@ There is a heavy wind blowing from the east.	一阵大风从东方吹来。	hj
 There is a heavy wind blowing from the west.	一阵大风从西方吹来。	hP
 There is a heavy wind blowing from the west.	一阵大风从西方吹来。	hj
 There is a {s}'s shallow imprint in the {s}.	{s2}中有一个{s1}浅压痕。	hPt
+There is nothing to catch in the magma pool.	岩浆池中没有可捕捉的东西。	hP
+There is nothing to catch in the underworld.	地下世界中没有可捕捉的东西。	hP
 These are the default Dwarf Fortress extinct	这些是《矮人要塞》的默认灭绝	wl
 This artwork appears on an unknown artifact.	这件艺术品位于未知造物上。	hH
 This engraving appears on a floor somewhere.	这幅雕刻位于某处的地面上。	hH
@@ -48542,6 +48553,8 @@ The {s} Rampage of {n} in in {p} within {p}	在{p2}，{n1}在{p1}的{s1}肆虐�
 The {s} of {e} are now expert {s} trainers.	{e1}的{s1}如今已成为驯养{s2}的专家。	hPt
 There are scattered puffy clouds above you.	你头顶散布着蓬松的云朵。	hP
 There are scattered puffy clouds above you.	你头顶散布着蓬松的云朵。	hj
+There is nothing to catch in the northern .	北部没有可捕捉的东西。	hP
+There is nothing to catch in the southern .	南部没有可捕捉的东西。	hP
 These are the default Dwarf Fortress items.	这些是《矮人要塞》的默认物品。	l
 Think on what came before and what follows.	想想过去，也想想未来。	hP
 This creature is assigned to a work detail.	此生物被分配到某项劳动分组。	hj
@@ -50321,6 +50334,9 @@ The world has passed into {s} in the wilds	在荒野中，世界已进入{s1}	ht
 The {s} suspended the construction of {s}.	{s1}暂停了{s2}的建造。	hPt
 There is a shallow {s} imprint in the {s}.	{s2}中有一个{s1}留下的浅压痕。	hPt
 There is a {s}'s vague imprint in the {s}.	{s2}中有一个{s1}模糊压痕。	hPt
+There is nothing to catch in the central .	中部没有可捕捉的东西。	hP
+There is nothing to catch in the eastern .	东部没有可捕捉的东西。	hP
+There is nothing to catch in the western .	西部没有可捕捉的东西。	hP
 This is the {i} currency of {r} under {r}.	这是「{r1}」在{r2}统治时期使用的{i1}币。	hHt
 This task has been assigned and is active.	此任务已分配工人，正在执行。	hj
 Travel building: No significant structures	无重要建筑	wi
@@ -52218,6 +52234,7 @@ There is a folder with this name already.	已存在同名文件夹。	w
 There is a {s}'s deep imprint in the {s}.	{s2}中有一个{s1}深压痕。	hPt
 There is no intelligence information yet.	目前还没有任何情报。	hP
 There is not enough room to perform here.	这里没有足够的表演空间。	hP
+There is nothing to catch in the volcano.	火山中没有可捕捉的东西。	hP
 They are only found in the untamed wilds.	它们只会出现在蛮荒之地。	l
 This artwork appears on the front of {i}.	这件艺术品位于{i1}的正面。	hHt
 This engraving appears on a floor in {p}.	这幅雕刻位于「{p1}」的地面上。	hHt
@@ -54134,6 +54151,7 @@ There are no children to do your chores.	没有儿童可以承担杂务。	wil
 There aren't any crafted artifacts here.	这里还没有任何制作完成的造物。	hP
 There is a vague {s} imprint in the {s}.	{s2}中有一个{s1}留下的模糊压痕。	hPt
 There is a {s}'s {s} imprint in the {s}.	{s3}中有一个{s1}{s2}留下的压痕。	hPt
+There is nothing to catch in 's deposit.	矿脉中没有可捕捉的东西。	hP
 There must be something else to discuss.	总还有别的事情可谈。	hPD
 There were {c} competitors in the wilds.	在荒野中，共有{c1}名参赛者。	ht
 They are so full of all those big words.	他们满口都是装腔作势的大词。	hPD
@@ -55963,6 +55981,7 @@ The {s} Rampage of {n} in in {p} at {p}	在{p2}，{n1}在{p1}的{s1}肆虐事件
 The {s} Rampage of {n} in in {p} in {d}	{d1}年的{n1}在{p1}的{s1}肆虐事件	htEi
 The {s} Rampage of {n} in in {p} in {p}	在{p2}，{n1}在{p1}的{s1}肆虐事件	htEi
 There is a deep {s} imprint in the {s}.	{s2}中有一个{s1}留下的深压痕。	hPt
+There is nothing to catch in the river.	河流中没有可捕捉的东西。	hP
 There were {c} competitors in the wilds	在荒野中，共有{c1}名参赛者	ht
 They are extinct in this world as well.	它们在这个世界中同样已经灭绝。	l
 This is not that kind of establishment.	这里不是那种场所。	hPD
@@ -58050,6 +58069,7 @@ The victory was shared by {n} and {n}.	{n1}与{n2}共同获得了胜利。	ht
 The {s} Rampage in in {p} in the wilds	在荒野中，{p1}的{s1}肆虐事件	htEi
 Then select the corners of the bridge.	然后选择桥梁的各个角。	hP
 There is a shallow imprint in the {s}.	{s1}中有一个浅压痕。	hPt
+There is nothing to catch in the cave.	洞穴中没有可捕捉的东西。	hP
 There were {c} competitors during {e}.	在{e1}期间，共有{c1}名参赛者。	ht
 There were {c} competitors within {p}.	在{p1}，共有{c1}名参赛者。	ht
 This building has been claimed by {n}.	此建筑已被{n1}占用。	hPt
@@ -60193,6 +60213,8 @@ The world has passed into {s} in {p}.	在{p1}，世界已进入{s1}。	ht
 The {s} Rampage in in {p} during {e}.	在{e1}期间，{p1}的{s1}肆虐事件。	htEi
 The {s} Rampage in in {p} within {p}.	在{p2}，{p1}的{s1}肆虐事件。	htEi
 The {s} suspended a linkage from {s}.	{s1}暂停了从{s2}接出的联动连接。	hPt
+There is nothing to catch in deposit.	矿脉中没有可捕捉的东西。	hP
+There is nothing to catch in the pit.	深坑中没有可捕捉的东西。	hP
 There used to be writing on the item.	这件物品上曾有文字。	h
 There were {c} competitors during {e}	在{e1}期间，共有{c1}名参赛者	ht
 There were {c} competitors within {p}	在{p1}，共有{c1}名参赛者	ht
@@ -69372,7 +69394,6 @@ There is a {s}'s faint {s} print.	这里有一处{s1}{s2}印迹，痕迹隐约�
 There is a {s}'s light {s} print.	这里有一处{s1}{s2}印迹，痕迹较淡。	hPt
 There is a {s}'s thick {s} print.	这里有一处{s1}{s2}印迹，痕迹浓重。	hPt
 There is no written content here.	这里还没有书写内容。	hP
-There is nothing to catch in {e}.	{e1}中没有可捕捉的东西。	hPt
 There is nothing to pick up here.	这里没有可拾取的物品。	hP
 There were {c} competitors at {p}	在{p1}，共有{c1}名参赛者	ht
 There were {c} competitors in {p}	在{p1}，共有{c1}名参赛者	ht
@@ -76541,6 +76562,7 @@ The {s} is torn from your {t}.	{s1}被从你的{t1}中扯了出来。	hPt
 There have been a few already!	已经出现过几条了！	hq
 There is a foul reek about it.	它周围弥漫着恶臭。	h
 There is a imprint in the {s}.	{s1}中有一个压痕。	hPt
+There is nothing to catch in .	此处没有可捕捉的东西。	hP
 There is nothing to hold here.	这里没有可以抓住的东西。	hP
 This artwork appears on a {i}.	这件艺术品位于{i1}上。	hHt
 This chanter! Amazing ability.	这位吟唱者的本事真让人惊叹！	hPD
