@@ -1,6 +1,6 @@
 // Complete report translations belong to an owned world/catalog publication.
-// The service never enters Overlay, SDL, native memory or a shared translator:
-// its supplied callable owns the detached rule graph and all resolver inputs.
+// Detached jobs own their rule graph and inputs. Native producers may also
+// publish complete results through a callback outside the service mutex.
 class NativeAnnouncementLogTranslationService {
     using Document = std::shared_ptr<const NativeAnnouncementLogDocument>;
     using Result = std::shared_ptr<const NativeAnnouncementLogTranslationResult>;
@@ -15,14 +15,15 @@ class NativeAnnouncementLogTranslationService {
         Result result;
         std::vector<NativeAnnouncementLogReferenceRequest> references;
         uint64_t ticket = 0, visible_epoch = 0;
-        bool running = false, needs_dependency = false;
+        bool running = false, native_running = false, native_attempted = false;
+        bool native_result = false, needs_dependency = false;
         int running_lane = -1;
         bool urgent_job = false, promote = false, requeue_normal_on_cancel = false;
         std::shared_ptr<std::atomic_bool> cancelled;
         std::optional<Queued> queued;
     };
     struct Report {
-        std::string version;
+        std::string native_version, version;
         std::unordered_map<int, Entry> colors;
         bool dependency_requested = false, dependency_queued = false, dependency_urgent = false;
     };
@@ -68,13 +69,45 @@ class NativeAnnouncementLogTranslationService {
             for (const auto &[rgb, entry] : report.colors)
                 if (entry.cancelled) entry.cancelled->store(true, std::memory_order_release);
     }
+    void replace_version_locked(Report &report, const Document &document) {
+        if (report.version == document->record_key) return;
+        // Prepare allocations before retiring old jobs. Detached work always
+        // follows the complete input version; only a native-completed result
+        // can survive an upgrade whose full native semantic key is unchanged.
+        std::string version = document->record_key;
+        std::string native_version = document->native_record_key;
+        const bool same_native = !native_version.empty() && report.native_version == native_version;
+        for (const auto &[rgb, entry] : report.colors)
+            if (entry.queued) jobs_[entry.queued->lane].erase(entry.queued->at);
+        for (const auto &[rgb, entry] : report.colors)
+            if (entry.cancelled) entry.cancelled->store(true, std::memory_order_release);
+        for (auto at = report.colors.begin(); at != report.colors.end();) {
+            auto &entry = at->second;
+            if (!same_native || !entry.native_result || !entry.result) {
+                at = report.colors.erase(at);
+                continue;
+            }
+            auto result = std::move(entry.result);
+            const auto visible_epoch = entry.visible_epoch;
+            entry = Entry{};
+            entry.document = document; entry.result = std::move(result);
+            entry.native_result = true; entry.native_attempted = true; entry.ticket = ++ticket_;
+            entry.visible_epoch = visible_epoch;
+            ++at;
+        }
+        report.version = std::move(version); report.native_version = std::move(native_version);
+        report.dependency_requested = false; report.dependency_queued = false;
+        report.dependency_urgent = false;
+        revision_.fetch_add(1, std::memory_order_release);
+    }
     void enqueue_locked(const std::string &owner, const std::string &version,
             int foreground, Entry &entry, size_t lane) {
         auto cancelled = std::make_shared<std::atomic_bool>(false);
         const uint64_t ticket = ++ticket_;
         Job job{owner, version, foreground, ticket, epoch_};
-        const auto at = jobs_[lane].insert(lane == 0 ? jobs_[lane].begin() : jobs_[lane].end(),
-            std::move(job));
+        // Preserve the visible producer's order. Repeated cache probes must
+        // not keep pushing the last row ahead of earlier pending reports.
+        const auto at = jobs_[lane].insert(jobs_[lane].end(), std::move(job));
         entry.ticket = ticket; entry.needs_dependency = false; entry.promote = false;
         entry.requeue_normal_on_cancel = false;
         entry.references.clear();
@@ -181,9 +214,15 @@ class NativeAnnouncementLogTranslationService {
                         // Keep the unsettled entry. A later owned-input
                         // publication can retry without recording a miss.
                     }
+                    // A retained notification can keep presenting without a
+                    // new native frame. Wake its publication cache when the
+                    // worker first needs native-owned leaves, not only after
+                    // the entire translation eventually completes.
+                    revision_.fetch_add(1, std::memory_order_release);
                 }
                 if (completed) {
                     entry->result = std::move(completed);
+                    entry->native_result = false;
                     revision_.fetch_add(1, std::memory_order_release);
                 }
             }
@@ -298,29 +337,42 @@ public:
         if (!document || !document->world || document->record_key.empty()) return {};
         std::unique_lock<std::mutex> lock(mutex_);
         if (stopping_) return {};
+        if (document->worker_inputs && document->worker_inputs->semantic_generation !=
+                document->semantic_generation) return {};
         if (!world_initialized_) {
             world_ = document->world;
-            session_ = document->worker_inputs ? document->worker_inputs->semantic_generation : 0;
+            session_ = document->semantic_generation;
             world_initialized_ = true;
-        } else if (world_ != document->world || (document->worker_inputs &&
-                session_ != document->worker_inputs->semantic_generation)) return {};
+        } else if (world_ != document->world || session_ != document->semantic_generation) return {};
         const std::string owner = owner_key(*document);
         auto &report = reports_[owner];
-        if (report.version != document->record_key) {
-            for (const auto &[rgb, entry] : report.colors)
-                if (entry.queued) jobs_[entry.queued->lane].erase(entry.queued->at);
-            for (const auto &[rgb, entry] : report.colors)
-                if (entry.cancelled) entry.cancelled->store(true, std::memory_order_release);
-            report.colors.clear(); report.version = document->record_key;
-            report.dependency_requested = false; report.dependency_queued = false;
-            report.dependency_urgent = false;
-        }
+        replace_version_locked(report, document);
         auto &entry = report.colors[foreground];
         if (urgent) entry.visible_epoch = viewport_epoch_;
         if (entry.result) return entry.result;
+        if (entry.native_running) return {};
+        if (!document->worker_inputs && !entry.queued && !entry.running) {
+            // Native-completed notifications deliberately omit the costly
+            // detached worker snapshot. A later new palette/view must obtain
+            // that snapshot before scheduling CPU work, rather than spending
+            // a worker turn only to discover that every input is absent.
+            if (!entry.needs_dependency) {
+                entry.document = document; entry.ticket = ++ticket_;
+                entry.needs_dependency = true;
+                revision_.fetch_add(1, std::memory_order_release);
+            }
+            if (!report.dependency_requested && (!report.dependency_queued ||
+                    (urgent && !report.dependency_urgent))) {
+                Job dependency{owner, report.version, foreground, entry.ticket, epoch_};
+                if (urgent) dependencies_.push_front(std::move(dependency));
+                else dependencies_.push_back(std::move(dependency));
+                report.dependency_queued = true; report.dependency_urgent = urgent;
+            }
+            return {};
+        }
         if (entry.queued) {
-            if (urgent) {
-                jobs_[0].splice(jobs_[0].begin(), jobs_[entry.queued->lane], entry.queued->at);
+            if (urgent && entry.queued->lane != 0) {
+                jobs_[0].splice(jobs_[0].end(), jobs_[entry.queued->lane], entry.queued->at);
                 entry.queued->lane = 0;
                 if (!viewport_depth_) interrupt_normal_for_urgent_locked();
                 ready_.notify_all();
@@ -328,11 +380,17 @@ public:
             return {};
         }
         if (entry.running) {
-            if (urgent && (!entry.urgent_job ||
-                    entry.cancelled->load(std::memory_order_acquire))) {
-                entry.promote = true;
-                entry.requeue_normal_on_cancel = false;
-                entry.cancelled->store(true, std::memory_order_release);
+            if (urgent) {
+                if (entry.cancelled->load(std::memory_order_acquire)) {
+                    // An already interrupted job must acknowledge its old
+                    // cancellation before it can be retried as visible work.
+                    entry.promote = true;
+                    entry.requeue_normal_on_cancel = false;
+                } else {
+                    // Preheating already parses this exact publication.
+                    // Becoming visible changes its priority, not its work.
+                    entry.urgent_job = true;
+                }
             }
             return {};
         }
@@ -356,6 +414,85 @@ public:
         entry.document = std::move(document);
         lock.unlock(); ready_.notify_all();
         return {};
+    }
+    Result complete_native(Document document, int foreground,
+            const NativeAnnouncementLogTranslator &resolve) {
+        if (!document || !document->world || document->record_key.empty() || !resolve) return {};
+        Job publication;
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            if (stopping_) return {};
+            if (document->worker_inputs && document->worker_inputs->semantic_generation !=
+                    document->semantic_generation) return {};
+            if (!world_initialized_) {
+                world_ = document->world;
+                session_ = document->semantic_generation;
+                world_initialized_ = true;
+            } else if (world_ != document->world || session_ != document->semantic_generation) return {};
+            const std::string owner = owner_key(*document);
+            auto &report = reports_[owner];
+            replace_version_locked(report, document);
+            auto &entry = report.colors[foreground];
+            if (entry.result) return entry.result;
+            if (entry.native_running || entry.native_attempted) return {};
+            // The native producer owns this report before it is shown. Retire
+            // speculative work without waiting for a worker or holding this
+            // mutex while the native translator resolves its world inputs.
+            if (entry.queued) jobs_[entry.queued->lane].erase(entry.queued->at);
+            if (entry.cancelled) entry.cancelled->store(true, std::memory_order_release);
+            entry.queued.reset(); entry.cancelled.reset();
+            entry.running = false; entry.running_lane = -1;
+            entry.native_running = true; entry.native_attempted = true;
+            entry.native_result = false; entry.needs_dependency = false;
+            entry.urgent_job = true;
+            entry.promote = false; entry.requeue_normal_on_cancel = false;
+            entry.references.clear(); entry.document = document;
+            entry.ticket = ++ticket_;
+            publication = {owner, report.version, foreground, entry.ticket, epoch_};
+            report.dependency_requested = false; report.dependency_queued = false;
+            report.dependency_urgent = false;
+        }
+        Result completed;
+        bool dependency = false;
+        std::vector<NativeAnnouncementLogReferenceRequest> references;
+        try {
+            auto value = resolve(*document, foreground);
+            // Unfinished native resolution must not become a permanent miss.
+            dependency = value.needs_owned_dependency;
+            if (dependency) references = std::move(value.reference_requests);
+            else
+                completed = std::make_shared<const NativeAnnouncementLogTranslationResult>(std::move(value));
+        } catch (...) {
+            std::lock_guard<std::mutex> lock(mutex_);
+            if (auto *entry = entry_locked(publication)) {
+                entry->native_running = false; entry->native_attempted = false;
+            }
+            throw;
+        }
+        bool accepted = false;
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            if (auto *entry = entry_locked(publication)) {
+                entry->native_running = false;
+                if (completed) {
+                    entry->result = completed;
+                    entry->native_result = true;
+                    accepted = true;
+                    revision_.fetch_add(1, std::memory_order_release);
+                } else if (dependency) {
+                    entry->needs_dependency = true;
+                    entry->references = std::move(references);
+                    revision_.fetch_add(1, std::memory_order_release);
+                    auto &report = reports_.find(publication.owner)->second;
+                    if (!report.dependency_requested &&
+                            (!report.dependency_queued || !report.dependency_urgent)) {
+                        dependencies_.push_front(publication);
+                        report.dependency_queued = true; report.dependency_urgent = true;
+                    }
+                }
+            }
+        }
+        return accepted ? completed : Result{};
     }
     std::vector<NativeAnnouncementLogDependency> dependencies(size_t maximum) {
         std::vector<NativeAnnouncementLogDependency> result;
@@ -415,6 +552,13 @@ native_announcement_log_translation_request(
     try {
         return g_native_announcement_log_translation_service.request(std::move(document), foreground, urgent);
     } catch (const std::bad_alloc &) { return {}; }
+}
+static std::shared_ptr<const NativeAnnouncementLogTranslationResult>
+native_announcement_log_translation_complete_native(
+        std::shared_ptr<const NativeAnnouncementLogDocument> document, int foreground,
+        const NativeAnnouncementLogTranslator &resolve) {
+    return g_native_announcement_log_translation_service.complete_native(
+        std::move(document), foreground, resolve);
 }
 static uint64_t native_announcement_log_translation_revision() noexcept {
     return g_native_announcement_log_translation_service.revision();

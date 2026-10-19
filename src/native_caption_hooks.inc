@@ -2351,7 +2351,7 @@ static void capture_native_worldgen_caption(graphicst *graphics,
 // The component's native producer already establishes ownership. Retain only
 // its submitted text and the exact interval written by this addst; no map,
 // widget-tree, button-skin or other page discovery belongs in this path.
-template<bool Character, typename Draw>
+template<bool Character, bool Notification, typename Draw>
 static void capture_native_owned_caption(graphicst *graphics,
         const NativeString *source, int width, bool top_layer,
         uintptr_t native_caller, Draw &&draw) {
@@ -2362,22 +2362,26 @@ static void capture_native_owned_caption(graphicst *graphics,
     std::array<long, 4> clip{};
     uint64_t epoch = 0;
     try {
-        auto &pending = Character ? native_character_clipped_pending() : native_squads_clipped_pending();
         epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-        if (pending.epoch != epoch) {
-            pending.fields.clear(); pending.epoch = epoch;
-        }
+        bool busy = false;
         PendingNativeField shortened;
-        if (!pending.busy) {
-            const auto found = pending.fields.find(source);
-            if (found != pending.fields.end()) {
-                shortened = std::move(found->second);
-                pending.fields.erase(found);
+        if constexpr (!Notification) {
+            auto &pending = Character ? native_character_clipped_pending() : native_squads_clipped_pending();
+            if (pending.epoch != epoch) {
+                pending.fields.clear(); pending.epoch = epoch;
+            }
+            busy = pending.busy;
+            if (!busy) {
+                const auto found = pending.fields.find(source);
+                if (found != pending.fields.end()) {
+                    shortened = std::move(found->second);
+                    pending.fields.erase(found);
+                }
             }
         }
         std::string_view submitted;
-        if (!pending.busy && graphics && graphics ==
-                (Character ? g_native_character_write_graphics : g_native_squads_write_graphics) &&
+        if (!busy && graphics && graphics == (Notification ? g_native_notification_write_graphics :
+                Character ? g_native_character_write_graphics : g_native_squads_write_graphics) &&
                 width >= 0 && graphics->dimx > 0 && graphics->dimx <= 1000 &&
                 graphics->dimy > 0 && graphics->dimy <= 1000 &&
                 native_string_view(source, &submitted, 4096) && !submitted.empty() &&
@@ -2391,9 +2395,10 @@ static void capture_native_owned_caption(graphicst *graphics,
             row.caption_source = true;
             row.native_caller = native_caller;
             row.top_layer = top_layer;
-            row.editable_text = NativeEditableTextScope::owns(native_caller) ||
-                (g_native_textbox_widget_binding.text_return_address &&
-                    native_caller == g_native_textbox_widget_binding.text_return_address);
+            if constexpr (!Notification)
+                row.editable_text = NativeEditableTextScope::owns(native_caller) ||
+                    (g_native_textbox_widget_binding.text_return_address &&
+                        native_caller == g_native_textbox_widget_binding.text_return_address);
             if constexpr (Character) {
                 row.editable_text = row.editable_text || NativeEditableTextScope::active;
                 row.info_title_kind = native_info_title_kind(native_caller);
@@ -2433,24 +2438,26 @@ static void capture_native_owned_caption(graphicst *graphics,
                     row.info_title_right = right;
                 }
             }
-            row.squad_alias_target = native_squad_alias_source_target(
-                row.complete_source, row.address);
-            row.squad_generated_name = native_squad_generated_source_name(
-                row.complete_source, row.address);
-            if (const auto identity = native_unit_identity_source_binding(
-                    row.complete_source, row.address)) {
-                row.unit_identity_target = identity->ready ? identity->target : std::string{};
-                row.unit_identity_owner = identity->unit_owner;
-                row.unit_identity_english = identity->english_name;
-                row.unit_identity_header = identity->character_header;
-                row.unit_identity_ready = identity->ready;
-                row.unit_identity_semantic_key = identity->semantic_key;
-                if (!identity->ready)
-                    row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
+            if constexpr (!Notification) {
+                row.squad_alias_target = native_squad_alias_source_target(
+                    row.complete_source, row.address);
+                row.squad_generated_name = native_squad_generated_source_name(
+                    row.complete_source, row.address);
+                if (const auto identity = native_unit_identity_source_binding(
+                        row.complete_source, row.address)) {
+                    row.unit_identity_target = identity->ready ? identity->target : std::string{};
+                    row.unit_identity_owner = identity->unit_owner;
+                    row.unit_identity_english = identity->english_name;
+                    row.unit_identity_header = identity->character_header;
+                    row.unit_identity_ready = identity->ready;
+                    row.unit_identity_semantic_key = identity->semantic_key;
+                    if (!identity->ready)
+                        row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
+                }
             }
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;
-            if constexpr (!Character)
+            if constexpr (!Character && !Notification)
                 row.squad_list_right = capture_native_squad_list_right(
                     native_caller, row.address, x);
             clip = {graphics->clipx[0], graphics->clipx[1],
@@ -2487,6 +2494,18 @@ static void capture_native_owned_caption(graphicst *graphics,
             if (!ch) return;
             row.source.push_back(static_cast<char>(ch));
         }
+        if constexpr (Notification) {
+            // The report wrap owns the complete NativeString, including a
+            // suffix clipped by the floating panel. Keep that exact address /
+            // source proof after confirming all cells this call wrote.
+            if (width == 0 && x >= 0 &&
+                    static_cast<size_t>(last - x) <= row.complete_source.size() &&
+                    std::string_view(row.complete_source).substr(
+                        static_cast<size_t>(first - x), static_cast<size_t>(last - first)) == row.source) {
+                row.x = x;
+                row.source = row.complete_source;
+            }
+        }
         if (first != x && row.squad_alias_target)
             row.squad_alias_target = native_text_to_utf8(row.source);
         if constexpr (Character) {
@@ -2517,12 +2536,12 @@ static void capture_native_owned_caption(graphicst *graphics,
         }
         auto &rows = top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
         auto &positions = g_native_drawn_text_positions[top_layer ? 1 : 0];
-        const uint64_t position = (static_cast<uint64_t>(static_cast<uint32_t>(first)) << 32) |
+        const uint64_t position = (static_cast<uint64_t>(static_cast<uint32_t>(row.x)) << 32) |
             static_cast<uint32_t>(y);
         if (positions.contains(position))
             std::erase_if(rows, [&](const NativeDrawnTextRow &previous) {
-                if (previous.x != first || previous.y != y) return false;
-                if constexpr (Character) {
+                if (previous.x != row.x || previous.y != y) return false;
+                if constexpr (Character || Notification) {
                     if (previous.source != row.source && g_native_overwritten_text_rows.size() < 4096)
                         g_native_overwritten_text_rows.push_back(previous);
                 }
@@ -2539,7 +2558,7 @@ template<typename Draw>
 static void capture_native_squads_caption(graphicst *graphics,
         const NativeString *source, int width, bool top_layer,
         uintptr_t native_caller, Draw &&draw) {
-    capture_native_owned_caption<false>(graphics, source, width, top_layer,
+    capture_native_owned_caption<false, false>(graphics, source, width, top_layer,
         native_caller, std::forward<Draw>(draw));
 }
 
@@ -2549,7 +2568,18 @@ template<typename Draw>
 static void capture_native_character_caption(graphicst *graphics,
         const NativeString *source, int width, bool top_layer,
         uintptr_t native_caller, Draw &&draw) {
-    capture_native_owned_caption<true>(graphics, source, width, top_layer,
+    capture_native_owned_caption<true, false>(graphics, source, width, top_layer,
+        native_caller, std::forward<Draw>(draw));
+}
+
+// Notification rows already belong to complete report records or typed unit
+// summaries. Their paragraph captures retain unit/category/name ownership;
+// this writer needs only its own source, clipping and actual native colors.
+template<typename Draw>
+static void capture_native_notification_caption(graphicst *graphics,
+        const NativeString *source, int width, bool top_layer,
+        uintptr_t native_caller, Draw &&draw) {
+    capture_native_owned_caption<false, true>(graphics, source, width, top_layer,
         native_caller, std::forward<Draw>(draw));
 }
 
@@ -2702,6 +2732,11 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         NativeTravelBuildingField travel_building_field = NativeTravelBuildingField::None,
         uintptr_t native_caller = 0,
         std::optional<std::array<long, 4>> capture_clip = std::nullopt) {
+    if (graphics && graphics == g_native_notification_write_graphics) {
+        capture_native_notification_caption(graphics, source, width, top_layer,
+            native_caller, std::forward<Draw>(draw));
+        return;
+    }
     if (graphics && graphics == g_native_topbar_write_graphics) {
         capture_native_topbar_caption(graphics, source, width, top_layer,
             native_caller, std::forward<Draw>(draw));
@@ -3445,6 +3480,14 @@ static void capture_native_world_site_entity_fact(graphicst *graphics,
 
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
+    if (graphics && graphics == g_native_notification_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_notification_caption(graphics, source, width, false, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.draw)
+                original(graphics, source, just, width);
+        });
+        return;
+    }
     if (graphics && graphics == g_native_topbar_write_graphics) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_topbar_caption(graphics, source, width, false, caller, [&] {
@@ -3550,6 +3593,14 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
 
 static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, uint32_t flags) {
+    if (graphics && graphics == g_native_notification_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_notification_caption(graphics, source, width, false, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.flag_draw)
+                original(graphics, source, just, width, flags);
+        });
+        return;
+    }
     if (graphics && graphics == g_native_topbar_write_graphics) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_topbar_caption(graphics, source, width, false, caller, [&] {
@@ -3619,6 +3670,14 @@ static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeSt
 
 static void capture_native_top_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
+    if (graphics && graphics == g_native_notification_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_notification_caption(graphics, source, width, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_draw)
+                original(graphics, source, just, width);
+        });
+        return;
+    }
     if (graphics && graphics == g_native_topbar_write_graphics) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_topbar_caption(graphics, source, width, true, caller, [&] {
@@ -3672,6 +3731,14 @@ static void capture_native_top_caption_draw(graphicst *graphics, const NativeStr
 // The pinned PE entry specializes top_addst to an unbounded string draw:
 // only graphics/source are live incoming arguments. ELF retains just/width.
 static void capture_native_top_simple_caption_draw(graphicst *graphics, const NativeString *source) {
+    if (graphics && graphics == g_native_notification_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_notification_caption(graphics, source, 0, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_simple_draw)
+                original(graphics, source);
+        });
+        return;
+    }
     if (graphics && graphics == g_native_topbar_write_graphics) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_topbar_caption(graphics, source, 0, true, caller, [&] {
@@ -3724,6 +3791,14 @@ static void capture_native_top_simple_caption_draw(graphicst *graphics, const Na
 
 static void capture_native_top_flag_caption_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width, uint32_t flags) {
+    if (graphics && graphics == g_native_notification_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_notification_caption(graphics, source, width, true, caller, [&] {
+            if (const auto original = g_native_clipped_caption_hooks.top_flag_draw)
+                original(graphics, source, just, width, flags);
+        });
+        return;
+    }
     if (graphics && graphics == g_native_topbar_write_graphics) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_topbar_caption(graphics, source, width, true, caller, [&] {
@@ -3787,8 +3862,10 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
         if (const auto original = g_native_caption_hooks.resize) original(text, width, fill);
         return;
     }
-    if (g_native_announcement_log_write_graphics &&
-            native_graphics() == g_native_announcement_log_write_graphics) {
+    if ((g_native_announcement_log_write_graphics &&
+            native_graphics() == g_native_announcement_log_write_graphics) ||
+            (g_native_notification_write_graphics &&
+             native_graphics() == g_native_notification_write_graphics)) {
         if (const auto original = g_native_caption_hooks.resize)
             original(text, width, fill);
         return;
@@ -3812,6 +3889,18 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
 template<NativeFieldKind Kind>
 static void capture_native_caption_draw(graphicst *graphics, const NativeString *text,
         NativeJustification just, int width) {
+    if (graphics && graphics == g_native_notification_write_graphics) {
+        const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
+        capture_native_notification_caption(graphics, text, width, false, caller, [&] {
+            // Call the entry trampoline: profile.draw points at the hooked
+            // entry and would capture this same notification a second time.
+            const auto original = g_native_clipped_caption_hooks.draw
+                ? g_native_clipped_caption_hooks.draw : g_native_caption_hooks.draw;
+            if (original)
+                original(graphics, text, just, width);
+        });
+        return;
+    }
     if (graphics && graphics == g_native_topbar_write_graphics) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_topbar_caption(graphics, text, width, false, caller, [&] {

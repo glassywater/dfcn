@@ -167,12 +167,13 @@
                         if ((ch & 0xc0) != 0x80) colors.push_back(foreground);
             } else {
                 if (notification && paragraph.parent) {
-                    // The producer owns the native report snapshot. A cold or
-                    // pending service result keeps this complete source below;
+                    // The producer owns this report and prepares its complete
+                    // translation before publishing the visible notification.
                     // SDL never retries its grammar under the display lock.
-                    if (const auto translated = native_announcement_log_translation_request(
-                            paragraph.report_document, foreground, true);
-                            translated && !translated->needs_owned_dependency) {
+                    auto translated = native_notification_retained_translation(paragraph, foreground);
+                    if (!translated) translated = native_announcement_log_translation_request(
+                        paragraph.report_document, foreground, true);
+                    if (translated && !translated->needs_owned_dependency) {
                         target = translated->target;
                         colors = translated->colors;
                     }

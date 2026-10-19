@@ -424,11 +424,40 @@ native_announcement_log_reuse_content_version(NativeAnnouncementLogPreheatDirect
     }
     return entry.document;
 }
+static std::shared_ptr<const NativeAnnouncementLogTranslationResult>
+native_notification_translate_report(
+        std::shared_ptr<const NativeAnnouncementLogDocument> document, int foreground) {
+    if (g_native_announcement_log_worker_active || !g_overlay.translation_enabled()) return {};
+    TranslationStateScope translation;
+    static const NativeAnnouncementLogTranslator resolve = [](const NativeAnnouncementLogDocument &record,
+            int color) {
+        NativeAnnouncementLogTranslationResult result;
+        dfcn::TranslationWorkScope work;
+        try {
+            result.target = g_overlay.translate_native_announcement_log_record(record,
+                native_announcement_display_source(record.report.source), color, result.colors);
+            dfcn::translation_work_step(0);
+            result.needs_owned_dependency = work.exhausted();
+        } catch (const NativeAnnouncementLogNeedsDependency &) {
+            result.needs_owned_dependency = true;
+        } catch (const DfhackTranslationNeedsWorld &) {
+            result.needs_owned_dependency = true;
+        } catch (const dfcn::TranslationWorkLimit &) {
+            result.needs_owned_dependency = true;
+        }
+        if (result.needs_owned_dependency) { result.target.reset(); result.colors.clear(); }
+        return result;
+    };
+    return native_announcement_log_translation_complete_native(std::move(document), foreground, resolve);
+}
 static void native_notification_bind_report_documents(
         std::vector<NativeAnnouncementParagraph> &paragraphs) {
     if (g_native_announcement_log_worker_active) return;
-    for (auto &paragraph : paragraphs) paragraph.report_document.reset();
-    struct VisibleRow { uintptr_t address; std::string source; };
+    for (auto &paragraph : paragraphs) {
+        paragraph.report_document.reset();
+        paragraph.report_translations.clear();
+    }
+    struct VisibleRow { uintptr_t address; std::string source; int foreground; };
     std::vector<VisibleRow> visible_rows;
     const auto &layer = g_native_notification_layer;
     const auto *gps = const_cast<NativeUiLayerStorage &>(layer).foreground.graphics();
@@ -468,7 +497,15 @@ static void native_notification_bind_report_documents(
                     }
                     if (ink && intact) { visible = true; break; }
                 }
-                if (visible) visible_rows.push_back({draw.address, draw.source});
+                if (visible) {
+                    const size_t tile = size_t(draw.x) * gps->dimy + draw.y;
+                    const bool top = gps->screen_top && native_ui_top_layer_at(*gps, tile);
+                    const auto *screen = top ? gps->screen_top : gps->screen;
+                    if (!screen) continue;
+                    const auto *cell = screen + tile * 8;
+                    visible_rows.push_back({draw.address, draw.source,
+                        (cell[1] << 16) | (cell[2] << 8) | cell[3]});
+                }
             }
         };
         // end_draw still owns the installed capture scope. Producer-tail
@@ -479,8 +516,8 @@ static void native_notification_bind_report_documents(
         } else for (const auto &draws : g_native_notification_text.rows) capture(draws);
     }
     if (visible_rows.empty()) { paragraphs.clear(); return; }
-    std::unordered_multimap<uintptr_t, const std::string *> by_address;
-    for (const auto &row : visible_rows) by_address.emplace(row.address, &row.source);
+    std::unordered_multimap<uintptr_t, const VisibleRow *> by_address;
+    for (const auto &row : visible_rows) by_address.emplace(row.address, &row);
     std::vector<size_t> visible_paragraphs;
     for (size_t index = 0; index < paragraphs.size(); ++index) {
         const auto &paragraph = paragraphs[index];
@@ -488,7 +525,7 @@ static void native_notification_bind_report_documents(
             [&](const auto &row) {
                 const auto [first, last] = by_address.equal_range(row.address);
                 return std::any_of(first, last,
-                    [&](const auto &entry) { return *entry.second == row.source; });
+                    [&](const auto &entry) { return entry.second->source == row.source; });
             });
         if (visible) visible_paragraphs.push_back(index);
     }
@@ -519,7 +556,7 @@ static void native_notification_bind_report_documents(
             // Only this visible parent is frozen. Retain the publication until
             // its own native fields change; unrelated aliases on later frames
             // must not create competing service versions of the same report.
-            document = native_announcement_log_freeze_document(paragraph.parent, world, version);
+            document = native_announcement_log_freeze_document(paragraph.parent, world, version, false);
             if (!document || document->report.source != paragraph.source) continue;
             directory.records.insert_or_assign(version.id,
                 NativeAnnouncementLogPreheatDirectory::Entry{paragraph.parent, version, document});
@@ -529,8 +566,20 @@ static void native_notification_bind_report_documents(
         // The retained wrap owns its displayed repeat suffix. A completed
         // dependency may replace the directory document without rebuilding it.
         paragraph.report_document = document;
-        if (const auto foreground = native_announcement_log_preheat_foreground(*document))
-            native_announcement_log_translation_request(std::move(document), *foreground, true);
+        std::vector<int> foregrounds;
+        for (const auto &row : paragraph.rows) {
+            const auto [first, last] = by_address.equal_range(row.address);
+            for (auto at = first; at != last; ++at)
+                if (at->second->source == row.source)
+                    foregrounds.push_back(at->second->foreground);
+        }
+        std::sort(foregrounds.begin(), foregrounds.end());
+        foregrounds.erase(std::unique(foregrounds.begin(), foregrounds.end()), foregrounds.end());
+        // Resolve each actual draw color before this native submission is
+        // published. SDL only consumes the shared complete result afterward.
+        for (const int foreground : foregrounds)
+            if (auto translated = native_notification_translate_report(document, foreground))
+                paragraph.report_translations.emplace_back(foreground, std::move(translated));
     }
 }
 static void native_announcement_log_preheat_record(uintptr_t parent, uintptr_t world, bool urgent) {
@@ -553,21 +602,54 @@ static void native_announcement_log_preheat_submission(int type, std::string_vie
     uintptr_t world = 0;
     NativeBorrowedVector<uintptr_t> reports;
     if (!native_announcement_log_preheat_domain(world, reports)) return;
-    if (!native_announcement_log_preheat_capacity(8)) return;
     uintptr_t previous = 0;
     for (size_t which = 0; which < 2; ++which) {
-        if (!native_announcement_log_preheat_capacity(8)) break;
         NativeAnnouncementHistoryRow report;
         uintptr_t parent = 0;
         if (!native_announcement_log_event_tail(which, parent, report) || !parent || parent == previous ||
                 report.type != type || report.source != source) continue;
         previous = parent;
-        native_announcement_log_preheat_record(parent, world, false);
+        NativeAnnouncementLogParentVersion version;
+        if (!native_announcement_log_read_version(parent, version, true) || version.id < 0) continue;
+        auto &directory = g_native_announcement_log_preheat_directory;
+        std::shared_ptr<const NativeAnnouncementLogDocument> document;
+        if (auto found = directory.records.find(version.id); found != directory.records.end())
+            document = native_announcement_log_reuse_content_version(found->second, parent, version);
+        if (!document) {
+            document = native_announcement_log_freeze_document(parent, world, version, false);
+            if (!document || document->report.source != source) continue;
+            directory.records.insert_or_assign(version.id,
+                NativeAnnouncementLogPreheatDirectory::Entry{parent, version, document});
+        }
+        if (const auto foreground = native_announcement_log_preheat_foreground(*document))
+            native_notification_translate_report(std::move(document), *foreground);
     }
 }
-static void native_announcement_log_preheat_dependencies(uintptr_t world, bool visible_only = false) {
+enum class NativeAnnouncementDependencyScope { Background, Log, Notifications };
+static void native_notification_publish_report_document(
+        const std::shared_ptr<const NativeAnnouncementLogDocument> &previous,
+        const std::shared_ptr<const NativeAnnouncementLogDocument> &document,
+        bool preserve_translations = false) {
+    if (!previous || !document || previous->world != document->world ||
+            previous->parent != document->parent || previous->report.id != document->report.id ||
+            previous->report.source != document->report.source) return;
+    bool published = false;
+    for (auto &paragraph : g_native_notification_paragraphs) {
+        const auto &current = paragraph.report_document;
+        if (!current || current->world != previous->world || current->parent != previous->parent ||
+                current->record_key != previous->record_key) continue;
+        // Keep the retained wrap's rows and repeat suffix. Only its
+        // resolver publication changed, so no native draw scan is needed.
+        paragraph.report_document = document;
+        if (!preserve_translations) paragraph.report_translations.clear();
+        published = true;
+    }
+    if (published) ++g_native_notification_submission_generation;
+}
+static void native_announcement_log_preheat_dependencies(uintptr_t world,
+        NativeAnnouncementDependencyScope scope = NativeAnnouncementDependencyScope::Background) {
     std::vector<NativeAnnouncementLogDependency> dependencies;
-    if (visible_only) {
+    if (scope == NativeAnnouncementDependencyScope::Log) {
         for (const auto &record : g_native_announcement_log_records) {
             if (!record.document || record.document->world != world) continue;
             auto dependency = native_announcement_log_translation_visible_dependency(record.document);
@@ -578,8 +660,8 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world, bool v
     } else {
         // The producer has already frozen this notification's visible parents.
         // Collect their pending leaves before publishing any replacement, so
-        // one native frame can advance the whole visible batch. SDL continues
-        // to consume only the immutable documents rebound at producer return.
+        // one publication can advance the whole visible batch. Retained
+        // notifications can resume these same leaves from Present as well.
         if (g_native_notification_layer.ready) {
             dependencies.reserve(g_native_notification_paragraphs.size() + 1);
             for (const auto &paragraph : g_native_notification_paragraphs) {
@@ -589,9 +671,11 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world, bool v
                 if (dependency) dependencies.push_back(std::move(*dependency));
             }
         }
-        auto background = native_announcement_log_translation_dependencies(1);
-        dependencies.insert(dependencies.end(), std::make_move_iterator(background.begin()),
-            std::make_move_iterator(background.end()));
+        if (scope == NativeAnnouncementDependencyScope::Background) {
+            auto background = native_announcement_log_translation_dependencies(1);
+            dependencies.insert(dependencies.end(), std::make_move_iterator(background.begin()),
+                std::make_move_iterator(background.end()));
+        }
     }
     for (const auto &dependency : dependencies) {
         const auto &requested = dependency.document;
@@ -612,6 +696,7 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world, bool v
                 a.source != b.source || confirmed->native_fields != requested->native_fields) {
             directory.records.insert_or_assign(version.id,
                 NativeAnnouncementLogPreheatDirectory::Entry{requested->parent, version, confirmed});
+            native_notification_publish_report_document(requested, confirmed);
             if (const auto foreground = native_announcement_log_preheat_foreground(*confirmed))
                 native_announcement_log_translation_request(std::move(confirmed), *foreground, true);
             continue;
@@ -674,6 +759,7 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world, bool v
         native_announcement_log_freeze_key(*made);
         directory.records.insert_or_assign(version.id,
             NativeAnnouncementLogPreheatDirectory::Entry{requested->parent, version, made});
+        native_notification_publish_report_document(requested, made, true);
         bool published = false;
         for (auto &visible : g_native_announcement_log_records) {
             const auto &current_document = visible.document;
@@ -726,7 +812,14 @@ static void native_announcement_log_prepare_dependencies() {
     TranslationStateScope translation;
     uintptr_t world = 0;
     if (!native_announcement_current_world(world) || !world) return;
-    native_announcement_log_preheat_dependencies(world, true);
+    native_announcement_log_preheat_dependencies(world, NativeAnnouncementDependencyScope::Log);
+}
+static void native_notification_prepare_dependencies() {
+    if (g_native_announcement_log_worker_active || !g_native_notification_layer.ready) return;
+    TranslationStateScope translation;
+    uintptr_t world = 0;
+    if (!native_announcement_current_world(world) || !world) return;
+    native_announcement_log_preheat_dependencies(world, NativeAnnouncementDependencyScope::Notifications);
 }
 static void native_announcement_log_preheat(size_t budget, bool urgent_new) {
     if (!budget || g_native_announcement_log_worker_active) return;

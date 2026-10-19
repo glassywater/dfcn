@@ -239,8 +239,8 @@ static void capture_native_announcement(void *manager, const NativeString *sourc
         g_native_announcement_history_full_refresh = true;
     }
     // Every formatter/event ticket is now bound to the actual native report
-    // ID, including a coalesced repeat. Queue its immutable input before any
-    // modal has to discover it through wrapped visible rows.
+    // ID, including a coalesced repeat. Complete and publish its translation
+    // before any notification has to discover it through wrapped visible rows.
     try { native_announcement_log_preheat_submission(submitted_type, submitted_source); }
     catch (...) {}
 }

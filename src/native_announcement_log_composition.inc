@@ -1,4 +1,4 @@
-// Report composition consumes only fields retained by the native producer.
+// Report composition consumes retained fields and complete native constructors.
 // It never discovers sentence boundaries, retries a paragraph grammar or
 // searches world objects for text that resembles one of the report's names.
 std::optional<std::string> Overlay::compose_native_announcement_log_record(
@@ -89,6 +89,12 @@ std::optional<std::string> Overlay::compose_native_announcement_log_record(
                     rules_[static_cast<size_t>(index)].template_kinds.empty())
                 if (auto target = apply_rule(rules_[static_cast<size_t>(index)], {})) return target;
         }
+    }
+
+    if (document.report.type == 104) {
+        std::vector<std::string> fields;
+        if (const auto *rule = native_announcement_cancellation_fields(document, source, fields))
+            return apply_rule(*rule, fields);
     }
 
     // A captured history formatter ticket proves its actual history-event ID

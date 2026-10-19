@@ -3601,6 +3601,8 @@ class Overlay {
 public:
     NativeAnnouncementLogTranslator make_native_announcement_log_translator() const;
     void publish_native_announcement_log_translation_catalog() const;
+    std::optional<std::string> translate_native_announcement_log_record(const NativeAnnouncementLogDocument &document,
+        std::string_view source, int foreground, std::vector<int> &target_colors) const;
     bool native_announcement_log_viewport_complete();
     std::optional<std::string> native_announcement_log_capture_entity_reference(
         const NativeAnnouncementLogReferenceRequest &request) const {
@@ -5481,10 +5483,10 @@ private:
         const std::vector<int> &source_colors, std::vector<int> &target_colors,
         bool barter_reply = false, int native_type = -1,
         dfcn::TranslationResult *owned_result = nullptr) const;
-    std::optional<std::string> translate_native_announcement_log_record(const NativeAnnouncementLogDocument &document,
-        std::string_view source, int foreground, std::vector<int> &target_colors) const;
     std::optional<std::string> compose_native_announcement_log_record(const NativeAnnouncementLogDocument &document,
         std::string_view source, int foreground, std::vector<int> &target_colors) const;
+    const Rule *native_announcement_cancellation_fields(const NativeAnnouncementLogDocument &document,
+        std::string_view source, std::vector<std::string> &translated_fields) const;
     std::optional<std::string> compose_native_announcement_log_speech(const NativeAnnouncementLogDocument &document,
         std::string_view source, int foreground, std::vector<int> &target_colors) const;
     std::shared_ptr<const TranslationResult> announcement_result_metadata(std::string_view source) const;
@@ -13142,6 +13144,46 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
                     }
                 }
             }
+            // Native nickname punctuation belongs to one name, including
+            // commas and "and". Only separators outside it divide identities.
+            bool nickname = false, has_comma = false, has_conjunction = false;
+            size_t comma_count = 0;
+            size_t profession_comma = std::string_view::npos;
+            for (size_t at = 0; at < label.size(); ++at) {
+                if (!nickname && label[at] == '`') { nickname = true; continue; }
+                if (nickname) {
+                    if (label[at] == '\'') nickname = false;
+                    continue;
+                }
+                if (label[at] == ',') { has_comma = true; ++comma_count; }
+                if (label.substr(at).starts_with(", ")) profession_comma = at;
+                if (label.substr(at).starts_with(" and ")) has_conjunction = true;
+            }
+            const bool definite_identity = value.starts_with("the ") || value.starts_with("The ");
+            const bool unnamed_identity = value.starts_with("a ") || value.starts_with("A ") ||
+                value.starts_with("an ") || value.starts_with("An ");
+            const bool quoted_identity = label.size() >= 2 &&
+                label.front() == '"' && label.back() == '"';
+            bool named_profession_attempted = false;
+            const auto named_profession = [&]() -> std::optional<std::string> {
+                named_profession_attempted = true;
+                const auto suffix = label.substr(profession_comma + 2);
+                auto descriptor = translate_creature_descriptor(suffix, true);
+                // The occupation belongs to its own vocabulary; neither it
+                // nor its separator is part of the personal name.
+                if (!complete(descriptor)) descriptor = translate_unit_profession(suffix);
+                if (!complete(descriptor)) return std::nullopt;
+                const auto name = personal_name(label.substr(0, profession_comma));
+                if (!name) return std::nullopt;
+                return *name + "，" + *descriptor + status;
+            };
+            // Ordinary report captions already delimit the name and role.
+            // Resolve those fields before treating the whole caption as a
+            // species or occupation. Lists and assumed identities retain
+            // their original precedence and every failed field falls back.
+            if (comma_count == 1 && profession_comma != std::string_view::npos &&
+                    !has_conjunction && !definite_identity && !unnamed_identity && !quoted_identity)
+                if (const auto identity = named_profession()) return identity;
             const auto creature = translate_creature_label(label);
             if (translation_complete_with_native_nicknames(creature, label))
                 return *creature + status;
@@ -13150,20 +13192,6 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             // whole role must resolve before probing its final word as a name.
             const auto role = translate_unit_profession(label, false);
             if (complete(role)) return *role + status;
-            // Native nickname punctuation belongs to one name, including
-            // commas and "and". Only separators outside it divide identities.
-            bool nickname = false, has_comma = false, has_conjunction = false;
-            size_t profession_comma = std::string_view::npos;
-            for (size_t at = 0; at < label.size(); ++at) {
-                if (!nickname && label[at] == '`') { nickname = true; continue; }
-                if (nickname) {
-                    if (label[at] == '\'') nickname = false;
-                    continue;
-                }
-                if (label[at] == ',') has_comma = true;
-                if (label.substr(at).starts_with(", ")) profession_comma = at;
-                if (label.substr(at).starts_with(" and ")) has_conjunction = true;
-            }
             // The formatter prints species + occupation + name as well as
             // name, species + occupation. Resolve the longest complete role
             // first: a multiword profession must never enter the name parser.
@@ -13182,11 +13210,6 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             // a/an + species + profession + organization fields. Resolve
             // the entire identity before treating an organization's `and`
             // as a list separator or its profession as a personal name.
-            const bool definite_identity = value.starts_with("the ") || value.starts_with("The ");
-            const bool unnamed_identity = value.starts_with("a ") || value.starts_with("A ") ||
-                value.starts_with("an ") || value.starts_with("An ");
-            const bool quoted_identity = label.size() >= 2 &&
-                label.front() == '"' && label.back() == '"';
             if (definite_identity || unnamed_identity || quoted_identity) {
                 std::string identity_source = definite_identity ? "the " + std::string(label)
                     : std::string(label);
@@ -13217,19 +13240,9 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             // personal-name field after a caste merely because names permit
             // title connectors. Complete species were already handled above.
             if (!has_conjunction) {
-                if (const size_t comma = profession_comma; comma != std::string_view::npos) {
-                    const auto suffix = label.substr(comma + 2);
-                    auto descriptor = translate_creature_descriptor(suffix, true);
-                    // Fortress status announcements append the occupation
-                    // after the name. Resolve that role in its own vocabulary;
-                    // the comma and profession are not part of the name.
-                    if (!complete(descriptor)) descriptor = translate_unit_profession(suffix);
-                    if (complete(descriptor)) {
-                        const auto person = label.substr(0, comma);
-                        const auto name = personal_name(person);
-                        if (name)
-                            return *name + "，" + *descriptor + status;
-                    }
+                if (profession_comma != std::string_view::npos) {
+                    if (!named_profession_attempted)
+                        if (const auto identity = named_profession()) return identity;
                 } else {
                     // Resolve species + profession + name before the shorter
                     // species + name form. Otherwise `Human Animal Trainer
@@ -17470,6 +17483,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "announcement_combat.inc"
 #include "adventure_barter_reply.inc"
 #include "native_announcement_log_speech_composition.inc"
+#include "native_announcement_cancellation.inc"
 #include "native_announcement_log_composition.inc"
 #include "announcement_translation.inc"
 #include "fortress_item_captions.inc"

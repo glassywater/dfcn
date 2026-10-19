@@ -239,7 +239,10 @@ static void native_announcement_log_freeze_key(NativeAnnouncementLogDocument &do
         scalar(fingerprint);
     };
     const auto &report = document.report;
-    scalar(native_announcement_log_semantic_generation_value()); scalar(document.world);
+    document.semantic_generation = native_announcement_log_semantic_generation_value();
+    scalar(document.semantic_generation); scalar(document.world);
+    scalar(RULESETS.resource_revision());
+    scalar(g_overlay.native_identity_translation_catalog_generation());
     scalar(report.type); scalar(report.id); scalar(report.continued);
     if (report.id < 0) scalar(document.parent);
     for (const auto identity : report.identity) scalar(identity);
@@ -274,13 +277,18 @@ static void native_announcement_log_freeze_key(NativeAnnouncementLogDocument &do
             text(identity);
         }
     }
+    // Native completion resolves through the live, typed report owner. Its
+    // result survives a detached worker-input publication only while all of
+    // these native fields and catalog guards remain exactly the same.
+    document.native_record_key = key;
     const bool inputs = bool(document.worker_inputs);
     scalar(inputs);
     if (inputs) text(document.worker_inputs->context);
 }
 static size_t native_announcement_log_document_bytes(const NativeAnnouncementLogDocument &document) {
     return sizeof(NativeAnnouncementLogRetainedDocument) + sizeof(document) +
-        document.report.source.capacity() + document.record_key.capacity() +
+        document.report.source.capacity() + document.native_record_key.capacity() +
+        document.record_key.capacity() +
         (document.owned_fields ? document.owned_fields->bytes : 0) +
         (document.history_event ? native_announcement_log_history_event_bytes(*document.history_event) : 0) +
         (document.speech ? document.speech->bytes : 0) +
@@ -290,7 +298,8 @@ static size_t native_announcement_log_document_bytes(const NativeAnnouncementLog
 }
 
 static std::shared_ptr<NativeAnnouncementLogDocument> native_announcement_log_freeze_document(
-        uintptr_t parent, uintptr_t world, const NativeAnnouncementLogParentVersion &version) {
+        uintptr_t parent, uintptr_t world, const NativeAnnouncementLogParentVersion &version,
+        bool freeze_inputs = true) {
     auto document = std::make_shared<NativeAnnouncementLogDocument>();
     document->parent = parent; document->world = world;
     document->native_fields = version.native_fields;
@@ -312,7 +321,10 @@ static std::shared_ptr<NativeAnnouncementLogDocument> native_announcement_log_fr
     document->speech = native_announcement_log_speech_record(report, world);
     if (!document->speech || !document->speech->tokens_complete)
         document->speech_header = native_announcement_log_speech_header(*document);
-    document->worker_inputs = native_announcement_log_freeze_worker_inputs(*document);
+    // Native-thread notification translation already owns the live resolver
+    // context. Only detached worker execution needs the global input snapshot.
+    if (freeze_inputs)
+        document->worker_inputs = native_announcement_log_freeze_worker_inputs(*document);
     native_announcement_log_freeze_key(*document);
     return document;
 }

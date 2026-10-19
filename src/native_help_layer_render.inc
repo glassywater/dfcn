@@ -169,13 +169,8 @@ static void native_help_produce_frame() {
     }
     try { native_announcement_log_preheat(4, false); }
     catch (...) {}
-    // Dependency completion can replace a document after the hover draw.
-    // Publish that same version before SDL requests its result, so the old
-    // snapshot cannot cancel the newly supplied dependency job again.
-    try {
-        if (g_native_notification_layer.ready)
-            native_notification_bind_report_documents(g_native_notification_paragraphs);
-    } catch (...) {}
+    // Dependency completion publishes replacements directly into the exact
+    // retained paragraphs. Their native draw was already bound at end_draw.
     native_settings_menu_prepare();
 }
 #endif

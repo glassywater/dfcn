@@ -4,6 +4,7 @@ static NativeUiLayerStorage g_native_notification_layer;
 static NativeInfoCapturedText g_native_notification_text;
 static std::vector<NativeAnnouncementParagraph> g_native_notification_paragraphs;
 static bool g_native_notification_sources_valid = false;
+static uint64_t g_native_notification_submission_generation = 1;
 static NativeFortressAlertSourceKind g_native_notification_source_kind = NativeFortressAlertSourceKind::None;
 static uintptr_t g_native_notification_source_owner = 0;
 static uint64_t g_native_notification_source_wrap_generation = 0;
@@ -99,9 +100,11 @@ static void native_notification_end_draw() {
         g_native_notification_sources_valid = false;
     }
     native_notification_restore_output();
+    ++g_native_notification_submission_generation;
 }
 
 static void native_notification_begin_frame() {
+    ++g_native_notification_submission_generation;
     reset_native_announcement_notification_capture();
     auto &layer = g_native_notification_layer;
     for (const auto &frame : layer.frames) layer.foreground.clear(frame);

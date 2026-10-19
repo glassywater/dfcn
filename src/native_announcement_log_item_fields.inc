@@ -12,7 +12,7 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
         const void *owner, std::string_view parent_source, size_t field_begin,
         std::string_view source, std::string_view kind,
         std::string_view configuration, uint64_t catalog,
-        RenderIdentity &&render_identity, Parse &&parse) try {
+        RenderIdentity &&render_identity, Parse &&parse, bool retain_misses = false) try {
     const auto *document = g_native_announcement_log_translation_document;
     if (!document || !document->world || source.empty() ||
             !g_native_announcement_log_translation_report ||
@@ -89,7 +89,7 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     }
     for (const auto &[source, target] : bindings.owned) { text(key, source); text(key, target); }
     struct Entry {
-        std::string target;
+        std::optional<std::string> target;
         std::vector<std::string> unbound;
         std::list<std::string>::iterator use;
         size_t bytes = 0;
@@ -163,7 +163,7 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     if (translation_work_exhausted()) return {NativeAnnouncementLogItemFieldState::Incomplete, {}};
     if (target && target->empty()) target.reset();
     const bool acyclic = active_translation_work->cycle_revision == cycle;
-    if (!target) {
+    if (!target && (!retain_misses || !acyclic)) {
         // A cycle does not prove a final miss. Return this current attempt
         // without repeating the whole cold chain; the caller's existing
         // cycle revision guard forbids memoizing it as a closed negative.
@@ -175,9 +175,9 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     if (!acyclic) return {NativeAnnouncementLogItemFieldState::Complete, std::move(target)};
     try {
     Entry entry;
-    entry.target = *target;
+    entry.target = target;
     entry.unbound.assign(bindings.unbound_queries.begin(), bindings.unbound_queries.end());
-    entry.bytes = sizeof(Entry) + 2 * key.capacity() + entry.target.capacity() +
+    entry.bytes = sizeof(Entry) + 2 * key.capacity() + (entry.target ? entry.target->capacity() : 0) +
         entry.unbound.capacity() * sizeof(std::string) + sizeof(std::string) + 5 * sizeof(void *);
     for (const auto &query : entry.unbound) entry.bytes += query.capacity();
     constexpr size_t maximum_entries = 8192, maximum_bytes = 32 * 1024 * 1024;

@@ -69,6 +69,7 @@ struct NativeAnnouncementDisplayRow {
 };
 enum class NativeFortressAlertSourceKind { None, Popup, ButtonHover, AlertHover };
 struct NativeAnnouncementLogDocument;
+struct NativeAnnouncementLogTranslationResult;
 struct NativeAnnouncementParagraph {
     uintptr_t parent = 0;
     std::shared_ptr<const NativeAnnouncementLogDocument> report_document;
@@ -83,6 +84,10 @@ struct NativeAnnouncementParagraph {
     uintptr_t unit = 0;
     int16_t category = -1;
     std::string name_source;
+    // A published notification retains its completed ink independently of
+    // speculative history jobs replacing their own worker-input publication.
+    std::vector<std::pair<int, std::shared_ptr<const NativeAnnouncementLogTranslationResult>>>
+        report_translations;
 };
 static void native_notification_bind_report_documents(
     std::vector<NativeAnnouncementParagraph> &paragraphs);
@@ -222,7 +227,7 @@ struct NativeAnnouncementLogWorkerInputScope {
 // A retained log document owns the complete report semantics and only the
 // native wrap's extent. Current submissions freeze their visible rows below.
 struct NativeAnnouncementLogDocument {
-    uint64_t sequence = 0;
+    uint64_t sequence = 0, semantic_generation = 0;
     uintptr_t parent = 0, world = 0;
     NativeAnnouncementHistoryRow report;
     NativeAnnouncementLogNativeFields native_fields;
@@ -233,7 +238,7 @@ struct NativeAnnouncementLogDocument {
     std::optional<NativeAnnouncementLogSpeechHeader> speech_header;
     std::shared_ptr<const NativeAnnouncementLogWorkerInputs> worker_inputs;
     uint64_t history_event_publication = 0;
-    std::string record_key;
+    std::string native_record_key, record_key;
     size_t native_first_index = 0, native_line_count = 0;
 };
 struct NativeAnnouncementLogTranslationResult {
@@ -242,6 +247,12 @@ struct NativeAnnouncementLogTranslationResult {
     bool needs_owned_dependency = false;
     std::vector<NativeAnnouncementLogReferenceRequest> reference_requests;
 };
+static std::shared_ptr<const NativeAnnouncementLogTranslationResult>
+native_notification_retained_translation(const NativeAnnouncementParagraph &paragraph, int foreground) {
+    for (const auto &[color, result] : paragraph.report_translations)
+        if (color == foreground && result && !result->needs_owned_dependency) return result;
+    return {};
+}
 struct NativeAnnouncementLogDependency {
     std::shared_ptr<const NativeAnnouncementLogDocument> document;
     std::vector<NativeAnnouncementLogReferenceRequest> references;
@@ -255,6 +266,13 @@ static void native_announcement_log_translation_publish_catalog(
 static std::shared_ptr<const NativeAnnouncementLogTranslationResult>
     native_announcement_log_translation_request(
         std::shared_ptr<const NativeAnnouncementLogDocument> document, int foreground, bool urgent);
+static std::shared_ptr<const NativeAnnouncementLogTranslationResult>
+    native_announcement_log_translation_complete_native(
+        std::shared_ptr<const NativeAnnouncementLogDocument> document, int foreground,
+        const NativeAnnouncementLogTranslator &resolve);
+static std::shared_ptr<const NativeAnnouncementLogTranslationResult>
+    native_notification_translate_report(
+        std::shared_ptr<const NativeAnnouncementLogDocument> document, int foreground);
 static uint64_t native_announcement_log_translation_revision() noexcept;
 static void native_announcement_log_translation_reset(uintptr_t world, uint64_t session);
 static void native_announcement_log_translation_begin_viewport();
