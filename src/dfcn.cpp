@@ -43882,6 +43882,7 @@ static graphicst *native_dfhack_display_inputs_select(graphicst *) noexcept;
 static graphicst *native_dfhack_render_read_graphics();
 #ifdef _WIN32
 static bool native_dfhack_display_inputs_active() noexcept;
+static void bind_native_worldgen_display_frame(const graphicst *graphics);
 #endif
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     if (g_native_process_exiting.load(std::memory_order_acquire)) {
@@ -43918,6 +43919,11 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
                 g_native_graphics_read_view = previous_view;
             }
         } graphics;
+#ifdef _WIN32
+        // A producer can publish another buffer between display and Present.
+        // Rebind under this composite's lock before deciding which page to draw.
+        bind_native_worldgen_display_frame(native_graphics());
+#endif
         apply_pending_arena_translated_search();
         boundary.checkpoint("arena_search");
         g_overlay.render(renderer);

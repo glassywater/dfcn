@@ -121,6 +121,7 @@ static void native_dfhack_graphics_display(void *renderer) {
             ~OverlayReadScope() { g_overlay.bind_render_graphics(previous); }
         } overlay_read;
         NativeWorldgenDisplayScope page;
+        bind_native_worldgen_display_frame(native_graphics());
         NativeMapGpuFrame map(renderer);
         NativeFortressMapHudDisplayScope fortress_hud;
         callback.call_native([&] { original(renderer); });
