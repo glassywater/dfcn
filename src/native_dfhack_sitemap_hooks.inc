@@ -18,7 +18,7 @@ struct NativeDfhackSitemapLuaApi {
     std::string painter_source, list_source, filtered_source, sitemap_source, notify_source, zone_source;
     std::string label_source, cycle_source, overlay_source, asyncexport_source, prioritize_source;
     std::string filterselection_source, planner_source, mechanisms_source, itemselection_source;
-    std::string wrapped_source, control_panel_source, movegoods_source;
+    std::string wrapped_source, control_panel_source, movegoods_source, spectate_source;
 };
 static NativeDfhackSitemapLuaApi g_native_dfhack_sitemap_lua_api;
 static std::atomic_bool g_native_dfhack_sitemap_lua_bound{false};
@@ -752,6 +752,8 @@ static void native_dfhack_overlay_quick_filter(NativeDfhackLuaState *state,
         *y1 >= *clip_y1 && *y2 <= *clip_y2;
 }
 
+#include "native_dfhack_spectate_capture.inc"
+
 static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
         NativeDfhackLuaState *state, std::string_view painted_full) {
     const auto &api = g_native_dfhack_sitemap_lua_api;
@@ -833,6 +835,10 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
                 complete && complete->starts_with(painted_full)) result.full = std::move(*complete);
     }
     stack.settop(state, token);
+    if (result.overlay_name == "spectate.tooltip") {
+        native_dfhack_spectate_label_text(state, widget, render, token, result);
+        return result;
+    }
     if (result.option_dynamic) {
         if (auto complete = native_dfhack_overlay_dynamic_text(state, token,
                 result.overlay_name, painted_full)) result.full = std::move(*complete);
@@ -1276,7 +1282,9 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
         auto control_panel = native_dfhack_control_panel_label_text(state,
             std::string_view(full, full_length), static_cast<int>(dx));
         auto overlay = control_panel ? std::optional<NativeDfhackOverlayText>{} :
-            native_dfhack_overlay_label_text(state, std::string_view(full, full_length));
+            native_dfhack_spectate_banner_text(state, std::string_view(full, full_length));
+        if (!control_panel && !overlay)
+            overlay = native_dfhack_overlay_label_text(state, std::string_view(full, full_length));
         if (!control_panel && !overlay)
             overlay = native_dfhack_buildingplan_list_text(state, std::string_view(full, full_length));
         bool owned = control_panel.has_value() || overlay.has_value();
@@ -1475,6 +1483,7 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     api.planner_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"planneroverlay.lua");
     api.mechanisms_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"mechanisms.lua");
     api.itemselection_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"itemselection.lua");
+    api.spectate_source = key(hack / L"lua" / L"plugins" / L"spectate.lua");
     g_native_dfhack_sitemap_lua_api = std::move(api);
     g_native_dfhack_sitemap_lua_bound.store(true, std::memory_order_release);
     return true;

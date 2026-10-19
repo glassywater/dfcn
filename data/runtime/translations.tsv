@@ -3333,6 +3333,7 @@ A caravan from {e} has arrived. Your status as a major land has attracted much m
 A caravan from {e} has arrived. Your status as a major land has attracted much more trade than usual. However, overall trade sentiments are terrible.	来自{e1}的商队已抵达。你作为大领地的地位吸引来了比平时多得多的贸易。不过，总体贸易意愿极差。	hPt
 A tiny, jolly humanoid creature that dwells in the fair mountains. They are known to enjoy drinking liquor and don't care whether it's theirs or not.	居住在美丽山脉中的一种小巧、快乐的类人生物。 众所周知，他们喜欢喝酒，不在乎酒是不是他们的。	lP
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are tenuous at best.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿至多只能算勉强。	hPt
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made an even more official land of the realm.	{s1}及其周边地区在王国中的领土地位进一步提升。	l
 Announcement combat agreement-core [$office,$name,agreement-party-list]: began passing a portion of corruptly-obtained funds as the {s} of {s} to {s}	以{s2}的{s1}身份开始将部分非法所得转交给{s3}	l
 Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} began passing a portion of corruptly-obtained funds as the {s} of {s} to	{s1}以{s3}的{s2}身份开始将部分非法所得转交给	l
 Announcement combat rumor-event [rumor-person,rumor-owner,$name,$name]: {s} accepted a peace offer from {s} to stop the conflict between {s} and {s}.	{s1}接受了{s2}议和提议，要让{s3}和{s4}停止冲突。	l
@@ -4228,6 +4229,7 @@ A medium-sized, aggressive, territorial fish. It can be found in shallow oceanic
 A {s} caravan from {e} has arrived. Your status as a middling land has attracted more trade than usual. Overall trade sentiments are great.	来自{e1}的{s1}商队已抵达。你作为中等领地的地位吸引来了比平时更多的贸易。总体贸易意愿很高。	hPt
 Announcement combat activity-detail-sentence [activity-detail-position]: The dance has reached the point where its accompaniment is at {s}.	舞蹈进行到此处时，伴奏已进行到{s1}。	l
 Announcement combat adventure-announcement [$native-site-name,$conflict-place,$announcement-site-type]: You have located {s}, "{s}", a {s}.	你找到了{s1}（“{s2}”），一处{s3}。	l
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made an official land of the realm.	{s1}及其周边地区已被正式纳入王国领土。	l
 Announcement combat adventure-announcement []: No one even considered making the journey to such a cursed miserable death-trap this season.	本季无人有意前往这样一个受诅咒、悲惨的死亡陷阱。	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the agreement by {s} to establish a guildhall for {s}	{s1}为{s2}建造行会大厅的协议	l
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the passing of corruptly-obtained funds by {s} to {s}	{s1}进行的非法所得的转交（交给{s2}）	l
@@ -5587,6 +5589,7 @@ A small flying insect that lives in large colonies. It has a powerful stinger on
 Announcement combat adventure-announcement []: I don't understand how somebody can become so obsessed by what somebody else has.	我不明白，一个人怎么会如此执着于别人拥有的东西。	l
 Announcement combat adventure-announcement []: Migrants refused to journey to such a dangerous and unhappy fortress this season.	本季移民拒绝前往这样一座危险而不幸的要塞。	l
 Announcement combat adventure-announcement []: No one else even considered making the journey to this cursed unhappy death-trap.	其他人连前往这个受诅咒、不幸的死亡陷阱的念头都没有。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made an even more official land of the realm.	此地及其周边地区在王国中的领土地位进一步提升。	l
 Announcement combat agreement-core [agreement-party-list,$name]: made an agreement with {s}, becoming a resident of {s} to study	与{s1}达成协议，成为{s2}的居民，以便求学	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: promised {s} to give {s} a position in {s}	答应{s1}，给{s2}在{s3}安排一个职位	l
 Announcement combat agreement-core [agreement-party-list,agreement-party-list,$name]: {s} promised to give {s} a position in {s}	{s1}答应，给{s2}在{s3}安排一个职位	l
@@ -6815,6 +6818,7 @@ A medium-sized domestic animal. It has a distinctive snout and corkscrew tail. I
 A medium-sized fish which shelters in caves on the shallow sea floor. It hunts for food in packs but is not aggressive.	一种生活在浅海海底洞穴中的中等尺寸鱼类，它们成群结队的觅食，没有太大的攻击性。	lP
 A medium-sized predatory fish found in lakes and streams. It is known for its ferocious attacks and interlocking teeth.	一种在湖泊和溪流中发现的中型掠食性鱼类。它以其凶猛的攻击和互锁的牙齿而闻名。	lP
 Announcement combat activity-detail-sentence []: This organizational activity will branch into specific worship events.	这项组织活动将安排具体的宗教活动。	l
+Announcement combat adventure-announcement [$native-site-name,$term]: {s} and the surrounding lands have been made {s}.	{s1}及其周边地区已晋升为{s2}。	l
 Announcement combat adventure-announcement []: Consider placing a farmplot on some underground soil and planting seeds.	考虑在地下土壤上开辟农田，播种作物。	l
 Announcement combat adventure-announcement []: Your most trusted companion has made the journey to meet you here today.	你最信任的同伴远道而来，今天将在这里与你会合。	l
 Announcement combat agreement-core [agreement-party-list,$name]: made an agreement with {s}, becoming a resident of {s}	与{s1}达成协议，成为{s2}的居民	l
@@ -6952,6 +6956,8 @@ A large bird with a featherless red head found in the sky of tropical deserts, s
 A snake-like creature living deep underground. Its head is covered in armor so that is resembles the head of a dragon.	一种生活在地底深处的蛇形生物。 它的头部被盔甲覆盖，就像龙头一样	lP
 Announcement combat activity-detail-sentence []: This organizational activity will branch into specific social events.	这项组织活动将安排具体的社交活动。	l
 Announcement combat adventure-announcement [$conflict-caste]: You've found a colony of {s} and another small creature.	你发现了一群{s1}和另一只小动物。	l
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a barony.	{s1}及其周边地区已晋升为男爵领。	l
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a county.	{s1}及其周边地区已晋升为伯爵领。	l
 Announcement combat adventure-announcement [$unit,$name,$announcement-item]: {s} has bestowed the name {s} upon a {s}!	{s1}将一件{s3}命名为{s2}！	l
 Announcement combat adventure-announcement []: After a long journey, you are here to meet your most trusted companion.	经过漫长的旅途，你来到这里与最信任的同伴会合。	l
 Announcement combat adventure-announcement []: In the rush of excitement, you've forgotten where you were going to go.	在兴奋之中，你忘记了原本打算前往何处。	l
@@ -6960,6 +6966,7 @@ Announcement combat adventure-announcement []: Others were too nervous to make t
 Announcement combat adventure-announcement []: Some migrants have arrived at this miserable place, despite the danger.	一些移民不顾危险，来到了这个悲惨的地方。	l
 Announcement combat adventure-announcement []: The enemy have come and are preparing to lay siege. They seek a parley!	敌军已到达，正在准备围城。他们要求谈判！	l
 Announcement combat adventure-announcement []: The sky above you is nearly black, ripped through with towering clouds.	你头顶的天空近乎漆黑，高耸的云层从中穿过。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made an official land of the realm.	此地及其周边地区已被正式纳入王国领土。	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s} to work as a mercenary	与达成协议，成为{s1}的居民，以便从事雇佣兵工作	l
 Announcement combat agreement-core [agreement-party-list,$name]: made an agreement with {s}, becoming a citizen of {s}	与{s1}达成协议，成为{s2}的公民	l
 Announcement combat agreement-title-core [agreement-party-list,$historical-actor]: the joining of with {s} to find {s}	与{s1}同行，寻找{s2}	l
@@ -7092,6 +7099,7 @@ the bestowal of the title of {s} in {p} after serving in combat, slaying an enem
 A small mammal known to defend itself ferociously in combat, often fighting off multiple animals many times its size.	一种小型哺乳动物，以在战斗中凶猛地自卫而闻名，经常击退数倍于其体型的动物。	lP
 A tiny amphibian with a long prehensile tail. It lives in underground swamps and tower-cap forests on which it feeds.	一种微型两栖动物，尾巴长且可以抓握。 它生活在地底沼泽和塔菇林中，以其为食。	lP
 Administrators handle various aspects of your fortress and can be reassigned. Many administrators also require rooms.	管理员负责要塞的各项事务，可以重新指派。许多管理员也需要配备房间。	hP
+Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a duchy.	{s1}及其周边地区已晋升为公爵领。	l
 Announcement combat adventure-announcement []: Your status as a minor land has attracted a bit more trade than usual.	作为小型领地，你们吸引了比平时略多的贸易。	l
 Announcement combat agreement-core [$name]: made an agreement with , becoming a resident of {s} to eradicate monsters	与达成协议，成为{s1}的居民，以便消灭怪物	l
 Announcement combat agreement-core [$office,$name]: began accepting bribes in exchange for leniency as the {s} of {s}	以{s2}的{s1}身份开始收受贿赂、徇私宽纵	l
@@ -10804,6 +10812,7 @@ Announcement combat activity-detail-sentence [work-reference]: The topic being c
 Announcement combat adventure-announcement [$announcement-item,$body]: You strap {s} to your {s}.	你把{s1}系在了自己的{s2}上。	l
 Announcement combat adventure-announcement [$announcement-substance]: You breathe a cloud of {s}!	你喷出一团{s1}云雾！	l
 Announcement combat adventure-announcement [$person]: There is nothing to catch in {s}'s deposit.	{s1}的矿脉中没有可捕捉的东西。	l
+Announcement combat adventure-announcement [$term]: and the surrounding lands have been made {s}.	此地及其周边地区已晋升为{s1}。	l
 Announcement combat adventure-announcement [$unit,$announcement-item]: {s} loses hold of the {s}!	{s1}没能抓住{s2}！	l
 Announcement combat adventure-announcement [$unit,$announcement-item]: {s} loses hold of the {s}.	{s1}没能抓住{s2}。	l
 Announcement combat adventure-announcement [$unit,$conflict-caste]: {s} has been bitten by a {s}!	{s1}被一只{s2}咬了！	l
@@ -10815,6 +10824,8 @@ Announcement combat adventure-announcement []: I must say that is a truly insigh
 Announcement combat adventure-announcement []: It's not a gift if you expect something in return.	若是指望回报，那就不算馈赠。	l
 Announcement combat adventure-announcement []: They must be stopped by any means at our disposal.	我们必须用尽一切手段阻止他们。	l
 Announcement combat adventure-announcement []: You will learn something you did not want to know.	你将得知某件你不愿知道的事。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made a barony.	此地及其周边地区已晋升为男爵领。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made a county.	此地及其周边地区已晋升为伯爵领。	l
 Announcement combat agreement-core [agreement-party-list,$name]: joined with {s} to oust {s} from	与{s1}同行，协助驱逐{s2}	l
 Announcement combat agreement-core [agreement-party-list,$name]: {s} joined with to oust {s} from	{s1}与同行，协助驱逐{s2}	l
 Announcement combat agreement-core [agreement-party-list]: joined with {s} to entertain the world	与{s1}同行，为世人表演	l
@@ -11057,6 +11068,7 @@ Announcement combat adventure-announcement []: Perhaps some of your friends here
 Announcement combat adventure-announcement []: Some migrants have arrived at this unhappy place.	一些移民来到了这个不幸的地方。	l
 Announcement combat adventure-announcement []: They consider you a key figure in the opposition.	他们把你视为反对者中的关键人物。	l
 Announcement combat adventure-announcement []: Try to focus on the practical side of the matter.	尽量多考虑事情实际的一面。	l
+Announcement combat adventure-announcement []: and the surrounding lands have been made a duchy.	此地及其周边地区已晋升为公爵领。	l
 Announcement combat adventure-announcement [material]: There is nothing to catch in {s} deposit.	{s1}矿脉中没有可捕捉的东西。	l
 Announcement combat agreement-core [agreement-core,agreement-item]: {s}. The ritual involved {s}	{s1}。仪式使用了{s2}	l
 Announcement combat agreement-core [agreement-party-list]: {s} concocted a corruption conspiracy	{s1}策划了腐败的阴谋	l
@@ -34960,6 +34972,7 @@ DFHack GUI Control tool: fix/stuck-written-materials	修复卡住的书籍（fix
 DFHack GUI Control tool: machine-toggle.gearassembly	齿轮组开关（machine-toggle.gearassembly）	l
 DFHack GUI Control tool: orders.conditionsrightclick	条件详情右键取消（orders.conditionsrightclick）	l
 DFHack GUI Sitemap: or libraries found at this site.	或图书馆。	l
+DFHack GUI Spectate activity: Individual Skill Drill	个人技能训练	l
 DFHack GUI Viewer status: Overlay defaults restored.	界面覆盖层已恢复为默认设置。	l
 DFHack help: "--caste <caste>" Set the target caste.	"--caste <caste>" 设置目标种姓。	l
 DFHack help: "--likecolor [ <token> [<token> ...] ]"	"--likecolor [ <token> [<token> ...] ]"	l
@@ -37550,6 +37563,7 @@ DFHack GUI Design: First Mark ({d}): {d}, {d}, {d}	起点（{d}）：{d}, {d}, {
 DFHack GUI Legends race filter: Choose race filter	选择种族筛选条件	l
 DFHack GUI Notification settings: labor_starvation	无人接手的任务	l
 DFHack GUI Notification settings: petitions_agreed	未兑现的建造承诺	l
+DFHack GUI Spectate activity: IndividualSkillDrill	个人技能训练	l
 DFHack help: "(no)clearcut <burrow>[,<burrow>...]"	"（无）明确 <活动区>[,<活动区>...]"	l
 DFHack help: "-g", "--gender (male|female|neuter)"	"-g", "--gender (male|female|neuter)"	l
 DFHack help: "catsplosion" Make all cats pregnant.	"catsplosion" 让所有的猫怀孕。	l
@@ -40385,6 +40399,7 @@ DFHack GUI Mass remove: Affect built and planned	处理已建成及规划中	l
 DFHack GUI Notification settings: agitated_count	躁动动物	l
 DFHack GUI Quickfort: Blueprint shows help text.	此蓝图显示帮助说明。	l
 DFHack GUI Quickfort: Reposition with the mouse.	用鼠标调整蓝图位置。	l
+DFHack GUI Spectate activity: Fill Service Order	接待顾客	l
 DFHack GUI Squad assignment: melee effectiveness	近战效能	l
 DFHack GUI Squad assignment: pick (mining) skill	采掘技能	l
 DFHack help: "-i", "--item <itemdef>" (required)	"-i"、"--item <itemdef>"（必填）	l
@@ -43396,6 +43411,8 @@ DFHack GUI Notification settings: bleeding_adv	血量余量（冒险）	l
 DFHack GUI Notification settings: moody_status	奇异心境进度	l
 DFHack GUI Notification settings: wildlife_adv	野生动物（冒险）	l
 DFHack GUI Rename caption: Randomize component	随机生成组成部分	l
+DFHack GUI Spectate activity: FillServiceOrder	接待顾客	l
+DFHack GUI Spectate activity: Training Session	训练课程	l
 DFHack GUI Squad assignment: need for training	训练需求	l
 DFHack GUI Workshop workers: (or double click)	（或双击）	l
 DFHack help: "(no)chop <burrow>[,<burrow>...]"	"（不）砍<活动区>[，<活动区>...]"	l
@@ -44965,6 +44982,7 @@ DFHack GUI Quickfort: Load selected blueprint	加载选中蓝图	l
 DFHack GUI Quickfort: Lock blueprint position	锁定蓝图位置	l
 DFHack GUI Quickfort: Zoom to locked position	定位到锁定位置	l
 DFHack GUI Sitemap: No artifacts around here.	附近没有造物。	l
+DFHack GUI Spectate activity: TrainingSession	训练课程	l
 DFHack GUI Squad assignment: ranged potential	远程潜力	l
 DFHack help: "--female" Selects female units.	"--female" 选择女性单位。	l
 DFHack help: "--not-marked=<flag>,<flag>,..."	"--not-marked=<flag>,<flag>,..."	l
@@ -49961,6 +49979,8 @@ DFHack GUI Rename caption: Past Participle	过去分词	l
 DFHack GUI Rename caption: Present Partici	现在分词	l
 DFHack GUI Sitemap: Click on a name or hit	点击名称或按下	l
 DFHack GUI Sitemap: Nobody around. Spooky!	附近没有生物，令人毛骨悚然！	l
+DFHack GUI Spectate activity: Conversation	交谈	l
+DFHack GUI Spectate activity: Store Object	存放物品	l
 DFHack GUI Squad assignment: Hates combat:	厌恶战斗：	l
 DFHack GUI Squad assignment: Other squads:	其他小队：	l
 DFHack GUI Squad assignment: With infants:	带婴儿：	l
@@ -51880,6 +51900,7 @@ DFHack GUI Rename caption: part of speech	词性	l
 DFHack GUI Rename caption: part_of_speech	词性	l
 DFHack GUI Rename type: PerformanceTroupe	表演团体	l
 DFHack GUI Sitemap: caged merchant animal	被囚禁的商队动物	l
+DFHack GUI Spectate activity: StoreObject	存放物品	l
 DFHack GUI Squad assignment: hammer skill	战锤技能	l
 DFHack GUI Squad assignment: stress level	压力程度	l
 DFHack help: "--death-threshold <months>"	"--death-threshold <months>"	l
@@ -53729,6 +53750,7 @@ DFHack GUI Rename caption: Rear Compound	后部复合词	l
 DFHack GUI Rename caption: Singular Noun	单数名词	l
 DFHack GUI Rename type: NecromancerTower	死灵法师塔	l
 DFHack GUI Sitemap: the selected target.	选中的目标。	l
+DFHack GUI Spectate activity: Harassment	骚扰	l
 DFHack GUI Squad assignment: spear skill	长矛技能	l
 DFHack GUI Squad assignment: sword skill	剑术技能	l
 DFHack help: "--checkInventoryEvery <n>"	"--checkInventoryEvery <n>"	l
@@ -55620,6 +55642,8 @@ DFHack GUI Rename type: FigureFirstOnly	仅名字人物	l
 DFHack GUI Rename type: LegendaryFigure	传奇人物	l
 DFHack GUI Rename type: MerchantCompany	商贸公司	l
 DFHack GUI Sitemap: Unknown affiliation	所属势力不明	l
+DFHack GUI Spectate activity: Encounter	遭遇	l
+DFHack GUI Spectate activity: Socialize	社交	l
 DFHack GUI Squad assignment: Officials:	官员：	l
 DFHack GUI Squad assignment: Toggle all	切换全部	l
 DFHack GUI Squad assignment: Uniformed:	穿制服：	l
@@ -57621,6 +57645,8 @@ DFHack GUI Mod manager: Set as default	设为默认	l
 DFHack GUI Rename caption: Change sort	更改排序	l
 DFHack GUI Rename caption: Plural Noun	复数名词	l
 DFHack GUI Rename type: MigratingGroup	迁徙团体	l
+DFHack GUI Spectate activity: Conflict	冲突	l
+DFHack GUI Spectate activity: Research	研究	l
 DFHack GUI Squad assignment: Nobility:	贵族：	l
 DFHack GUI Squad assignment: axe skill	战斧技能	l
 DFHack GUI Teleport: Click name or hit	点击名称或按	l
@@ -59803,6 +59829,7 @@ DFHack GUI Rename type: FalseIdentity	假身份	l
 DFHack GUI Rename type: FigureNoFirst	仅姓氏人物	l
 DFHack GUI Sitemap: caged fort animal	被囚禁的要塞动物	l
 DFHack GUI Sitemap: caged fort member	被囚禁的要塞居民	l
+DFHack GUI Spectate activity: Reunion	重聚	l
 DFHack help: " and loaded on startup.	"并在启动时加载。	l
 DFHack help: "--checkAttackEvery <n>"	"--checkAttackEvery <n>"	l
 DFHack help: "--position <x>,<y>,<z>"	"--position <x>,<y>,<z>"	l
@@ -61961,6 +61988,7 @@ DFHack GUI Rename type: MilitaryUnit	军事单位	l
 DFHack GUI Rename type: MountainPeak	山峰	l
 DFHack GUI Rename type: NomadicGroup	游牧团体	l
 DFHack GUI Rename type: OutcastGroup	被逐团体	l
+DFHack GUI Spectate activity: Prayer	祈祷	l
 DFHack GUI Squad assignment: Exclude	排除	l
 DFHack GUI Squad assignment: Include	包含	l
 DFHack GUI Squad assignment: Maimed:	残疾：	l
@@ -64174,6 +64202,8 @@ DFHack GUI Rename language: English	英语	l
 DFHack GUI Rename type: MusicalForm	音乐形式	l
 DFHack GUI Rename type: WeaponStore	武器店	l
 DFHack GUI Sitemap: merchant animal	商队动物	l
+DFHack GUI Spectate activity: Guard	警戒	l
+DFHack GUI Spectate job: Store item	存放物品	l
 DFHack GUI Viewer status: No output	无输出	l
 DFHack help: "--markedfor <action>"	"--markedfor <action>"	l
 DFHack help: "--no-stringification"	"--no-stringification"	l
@@ -66512,6 +66542,8 @@ DFHack GUI Sitemap: Shift-click or	按住 Shift 点击，或按下	l
 DFHack GUI Sitemap: caged friendly	被囚禁的友好生物	l
 DFHack GUI Sitemap: caged merchant	被囚禁的商人	l
 DFHack GUI Sitemap: caged wildlife	被囚禁的野生动物	l
+DFHack GUI Spectate activity: Play	游玩	l
+DFHack GUI Spectate activity: Read	阅读	l
 DFHack GUI Squad assignment: Show:	显示：	l
 DFHack GUI Teleport: Deselect unit	取消选择该单位	l
 DFHack help: "--cmd [ <command> ]"	"--cmd [ <command> ]"	l
@@ -150573,16 +150605,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-# Complete native land status reports; source: announcement-status-grammar.tsv.
-Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a barony.	{s1}及其周边地区已晋升为男爵领。	l
-Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a county.	{s1}及其周边地区已晋升为伯爵领。	l
-Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made a duchy.	{s1}及其周边地区已晋升为公爵领。	l
-Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made an official land of the realm.	{s1}及其周边地区已被正式纳入王国领土。	l
-Announcement combat adventure-announcement [$native-site-name]: {s} and the surrounding lands have been made an even more official land of the realm.	{s1}及其周边地区在王国中的领土地位进一步提升。	l
-Announcement combat adventure-announcement []: and the surrounding lands have been made a barony.	此地及其周边地区已晋升为男爵领。	l
-Announcement combat adventure-announcement []: and the surrounding lands have been made a county.	此地及其周边地区已晋升为伯爵领。	l
-Announcement combat adventure-announcement []: and the surrounding lands have been made a duchy.	此地及其周边地区已晋升为公爵领。	l
-Announcement combat adventure-announcement []: and the surrounding lands have been made an official land of the realm.	此地及其周边地区已被正式纳入王国领土。	l
-Announcement combat adventure-announcement []: and the surrounding lands have been made an even more official land of the realm.	此地及其周边地区在王国中的领土地位进一步提升。	l
-Announcement combat adventure-announcement [$native-site-name,$term]: {s} and the surrounding lands have been made {s}.	{s1}及其周边地区已晋升为{s2}。	l
-Announcement combat adventure-announcement [$term]: and the surrounding lands have been made {s}.	此地及其周边地区已晋升为{s1}。	l

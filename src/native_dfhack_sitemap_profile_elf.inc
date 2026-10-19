@@ -48,6 +48,7 @@ static bool bind_native_dfhack_sitemap_lua(void *entry_pointer) {
     api.planner_source = key(hack / "lua" / "plugins" / "buildingplan" / "planneroverlay.lua");
     api.mechanisms_source = key(hack / "lua" / "plugins" / "buildingplan" / "mechanisms.lua");
     api.itemselection_source = key(hack / "lua" / "plugins" / "buildingplan" / "itemselection.lua");
+    api.spectate_source = key(hack / "lua" / "plugins" / "spectate.lua");
     g_native_dfhack_sitemap_lua_api = std::move(api);
     g_native_dfhack_sitemap_lua_bound.store(true, std::memory_order_release);
     return true;
