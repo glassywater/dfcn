@@ -1,0 +1,27 @@
+branch	reference_rva	classic_rva	condition	native_result	translation_binding
+animation-stored-name	0x132f9b2	0x132a922	unit.animation and stored label nonempty	complete stored corpse/animation name	$memorial-item; existing corpse/corpsepiece grammar
+arena-first-name	0x132f9ce	0x132a93e	game_type 4 or 5; arena-only and unreachable in screenshot Fortress context	unit.name.first_name; may be empty	retained shared-supplier source branch; arbitrary nonempty first names are not claimed as role-parser support; explicit empty-result sentence rules cover empty text
+identity-deity	0x132fad3	0x132aa43	identity-linked entity flags deity	deity	$attack-creature-role; existing literal
+identity-force	0x132faea	0x132aa5a	identity-linked entity flags force	force	$attack-creature-role; existing literal
+identity-profession	0x132fb01	0x132aa71	assumed identity profession != -1	identity profession replaces unit profession	$attack-creature-role
+raw-or-standard-role	0x132fb80	0x132aaf0	base role path	RAW profession/caste or standard profession words; same-race empty role becomes Peasant	$attack-creature-role; professions and creatures scopes
+position-neutral	0x132fc5b	0x132abcb	ordinary position; neutral/unspecified sex	position.name[0]	$attack-creature-role; positions::singular/plural
+position-female	0x132fc80	0x132abf0	ordinary position; female	female position name if nonempty else neutral	$attack-creature-role; positions::singular/plural
+position-male	0x132fc64	0x132abd4	ordinary position; male	male position name if nonempty else neutral	$attack-creature-role; positions::singular/plural
+spouse-position-neutral	0x132fc11	0x132ab81	spouse position; neutral/unspecified sex	spouse position name[0]	$attack-creature-role; positions::singular/plural
+spouse-position-female	0x132fc36	0x132aba6	spouse position; female	female spouse name if nonempty else neutral spouse name	$attack-creature-role; positions::singular/plural
+spouse-position-male	0x132fc1a	0x132ab8a	spouse position; male	male spouse name if nonempty else neutral spouse name	$attack-creature-role; positions::singular/plural
+position-territory	0x132fcb8	0x132ac28	land_holder > 0 and matching governing entity land found	{position} of {entity-language-name}	$attack-creature-role; translate_unit_profession territory branch
+slave-child-baby	0x132fd24	0x132ac94	enslaved; profession 103/104; role nonempty	{role} Slave	$attack-creature-role; existing slave suffix
+slave-adult	0x132fd51	0x132acc1	enslaved; other role	Slave	$attack-creature-role; existing literal
+prisoner-child-baby	0x132fe9a	0x132ae0a	prisoner; profession 103/104; role nonempty	{role} Prisoner	$attack-creature-role; existing prisoner suffix
+prisoner-adult	0x132fec8	0x132ae38	prisoner; other role	Prisoner	$attack-creature-role; existing literal
+custom-profession-disabled	0x132ff94	0x132af04	third argument must be true; both LABOR_CHANGE call sites pass false	custom profession is not used	no additional custom-name translation
+stray-fierce	0x1330066	0x132afd6	tame/unowned qualifying creature; fierceness predicate	Stray {role} or Fierce {role}	$attack-creature-role; existing caste prefix scope
+agitated	0x133007c	0x132afec	otherwise unit.flags3 agitated	Agitated {role}	$attack-creature-role; existing caste prefix scope
+ghost-alone	0x13300a9	0x132b019	ghost; no curse name; generic role; no prefix	Ghost	$attack-creature-role; existing literal
+ghostly-prefix	0x13300d8	0x132b048	other ghost branch	Ghostly {role}	$attack-creature-role; existing ghostly prefix
+curse-adjective	0x13300f6	0x132b066	curse named; singular display name empty; adjective nonempty	{CE_DISPLAY_NAME adjective} {role}	$attack-creature-role; existing creature_name_display_adjective
+curse-name	0x1330156	0x132b0c6	curse named; singular display name nonempty	{role} {CE_DISPLAY_NAME singular}; space only if role nonempty	$attack-creature-role; existing creature_name_display_name
+corpse-alone	0x13301ac	0x132b11c	animation exists; role currently empty	Corpse	$attack-creature-role or $memorial-item
+corpse-suffix	0x13301c5	0x132b135	animation exists; role nonempty	{role} Corpse	$attack-creature-role; existing corpse suffix

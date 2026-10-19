@@ -1,5 +1,20 @@
 # Complete native status reports, shared by hover, expanded alerts and report history.
 # scope	source	target	field scopes	native provenance
+# LABOR_CHANGE contains PROFESSION_CHANGES (236) and CITIZEN_BECOMES_NONSOLDIER
+# (283). Both append a94030's optional language_name and the WHOLE 132f980
+# role with custom_profession disabled. In particular, "baron of PLACE" is
+# one role, not a separate place capture in the report. Keep the existing
+# office/caste/status grammar and the animation corpse/body-part alternative.
+# The shared supplier also has genuinely empty outputs; do not require a
+# guessed name or title to translate the surrounding complete sentence.
+# Sources: data/extracted/announcement-profession-succession/ and
+# data/extracted/labor-alert-category/; both configured PE editions.
+adventure-announcement	{s} has become a {s}.	{s1}成为了{s2}。	$person,profession-change-result	PE reference 133bfcb..133c0c0 / 1375055..1375142; classic 1336f3b..1337030 / 136ffc5..13700b2; a94030 optional name + 132f980(unit,false) complete role
+adventure-announcement	has become a {s}.	已成为{s1}。	profession-change-result	PE reference 133bfb4..133bfd6 / 1374fc0; classic 1336c60 / 136ff30; selected name absent or has_name=false; native leading space normalized
+adventure-announcement	{s} has become a .	{s1}的职业发生了变化。	$person	PE reference 132f980 returns whole role without nonempty guard; 133c022 and producer 1374fc0 append result even when empty
+adventure-announcement	has become a .	职业发生了变化。		PE reference 133bcf0 / 1374fc0; empty selected name and empty 132f980 result
+profession-change-result	{s}	{s1}	$attack-creature-role	PE reference 132f980 / classic 132a8f0; complete RAW profession/caste, gendered or spouse office, territory, slavery/captivity, training, ghost, curse and corpse wrappers; custom_profession=false
+profession-change-result	{s}	{s1}	$memorial-item	PE reference 132f9b2..132f9c9 / classic 132a922..132a939; animation+0x20 complete corpse/body-part name bypasses ordinary profession selection
 # LAND_GAINS_STATUS (254) and LAND_ELEVATED_STATUS (255) share the complete
 # NativeName(site) + fixed clause + LAND_NAME/default + period production.
 # NativeName is a site field, not an English entity name; retain its native

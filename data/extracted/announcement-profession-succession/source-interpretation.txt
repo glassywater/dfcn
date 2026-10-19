@@ -1,0 +1,106 @@
+Configured Windows PE profession-change announcement source
+
+These files are native source extraction, not display-test output. The .c files
+are actual Ghidra 12.1.4 output obtained with the installed JDK 25. The .asm and
+native-*.tsv files retain the matching configured PE bytes, literal references,
+direct calls, conditional branches and decoded switch tables. Original stripped
+functions have extraction labels, not alleged recovered source-level symbols.
+
+Current screenshot scope
+The hammer alert is LABOR_CHANGE. Its two native announcement types are 236
+PROFESSION_CHANGES and 283 CITIZEN_BECOMES_NONSOLDIER. The independent routing
+extraction is in ../labor-alert-category/. The complete source owners are:
+  reference 0x133bcf0..0x133e326 and 0x1374fc0..0x13751ff
+  classic   0x1336c60..0x1339296 and 0x136ff30..0x137016f
+
+Both produce exactly:
+  optional(formatted_name) + " has become a " + creature_role(unit,false) + "."
+The optional name is emitted only when unit-name returns a non-null language_name
+whose has_name byte (+0x72) is true. The role output is appended without a
+nonempty guard. Thus the complete normalized sentence shapes are:
+  {person} has become a {result}.
+  has become a {result}.
+  {person} has become a .
+  has become a .
+There is no an/the/punctuation or singular/plural sentence branch here. The
+unnamed form begins with one space in the native construction; normalization
+removes that leading space. Stored reports can persist after the unit or its
+live identity binding has gone away, so body parsing must use the complete
+stored source sentence and its typed fields.
+
+The unit-name getter selects the active assumed identity when present, otherwise
+historical-figure name, otherwise unit.name. language-name retains its own
+nickname-display configuration, first-name capitalization and generated name
+word branches. Those are name fields; neither the sentence nor role is a name.
+No squad.alias field is involved.
+
+Role supplier
+  reference 0x132f980..0x133025e; classic 0x132a8f0..0x132b1ce.
+The third argument is false at both announcement call sites. At reference
+0x132ff94 the supplier explicitly gates unit.custom_profession (+0x80) on this
+argument. Consequently custom profession is not selected for these reports.
+
+The supplier preserves the following native precedence:
+1. If unit+0xd80 exists and its stored corpse/animation name (+0x20, length+0x30)
+   is nonempty, return that complete stored label immediately.
+2. For game_type 4/5 (arena), return unit.name.first_name (+8) immediately; it may
+   be empty. This shared-supplier branch is unreachable in the screenshot's
+   Fortress context. Its preservation is not a claim that the role parser can
+   translate an arbitrary nonempty first name.
+3. An assumed identity may replace the profession; deity/force identities return
+   the literal "deity"/"force" immediately.
+4. Build the species/caste/profession label. The full base formatter and its
+   profession-word and caste-word suppliers are included. They select RAW names,
+   135 profession switch values 0..134, child/baby RAW forms, singular/plural
+   forms and case. Same-player-race empty ordinary occupation becomes Peasant.
+5. A native position selection may replace that label. It chooses normal or
+   spouse position names, then female/male/neuter names with a fallback to the
+   neutral name. If land_holder > 0, position-territory appends " of " plus the
+   governing entity's generated language name when its matching land is found.
+   The neutral RAW field is not checked for nonemptiness at assignment.
+6. Slave replaces the adult role, or appends " Slave" to a nonempty child/baby
+   role; Prisoner applies similarly and takes later precedence.
+7. The custom-profession gate exists but is disabled by the caller's false flag.
+8. Stray/Fierce or Agitated precedes the complete role. Ghost may replace a bare
+   generic role; otherwise Ghostly is prepended. CE_DISPLAY_NAME's adjective
+   field prefixes the role only when its singular field is empty; its nonempty
+   singular field follows the role. A corpse appends " Corpse", or uses "Corpse"
+   alone when no previous role text exists.
+
+The role branches, original addresses and parser bindings are listed in
+role-branches.tsv. profession-switch-text.tsv retains all 135 switch values and
+the literal strings in each decompiled case, including dynamic child/baby cases.
+These are finite source branches; generated names and mod-authored RAW fields
+remain typed fields rather than fabricated enumerations of possible values.
+
+Existing translation paths used by the data change
+The complete sentence binds its actor to $person. The result subgrammar first
+uses $attack-creature-role, which routes to the existing unit profession/creature
+role parsers. Those already handle professions, caste names, positions and
+territories, status prefixes/suffixes, and installed curse display names.
+The $memorial-item alternative handles the supplier's early complete animated
+corpse/body-part item label, including the existing corpsepiece item grammar.
+The two empty-result source shapes have explicit data rules, so they do not
+depend on a wildcard accepting an empty role. No changes to name logic are needed.
+
+Nearby source disambiguation
+native-anchors.tsv also retains other references to the same phrase and the
+position-succession phrases to distinguish shared literals from this alert's
+actual owner. The extracted extra owners are source context, not additional
+LABOR_CHANGE sentence branches: 0xdac290 produces ANIMAL_TRAINED, 0xa0b4a0
+produces PET_LOSES_DEAD_OWNER, 0x1373640 produces CITIZEN_BECOMES_SOLDIER, while
+the other branches in 0x133bcf0 produce RECRUIT_PROMOTED/SOLDIER_BECOMES_MASTER.
+FORT_POSITION_SUCCESSION uses assumed/claimed/inherited/appointed/elected
+position text and is not the screenshot's "has become a" production.
+
+PE unwind details
+The profession-word supplier is split across five chained RUNTIME_FUNCTION
+records. native-unwind-fragments.tsv preserves those records and their chain
+parents. Its actual full reference extent is 0x132cc10..0x132e0b4 (classic
+0x1327b80..0x1329024), not just the 49-byte initial prolog. Embedded switch-table
+bytes in .asm are raw disassembly context; Ghidra uses entry/control-flow plus
+the decoded switch targets, not those data bytes as instructions.
+
+No game process was started, stopped, controlled or inspected. No screenshot or
+simulated display result was generated by this extraction. Final game display
+has not been observed.

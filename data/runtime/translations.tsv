@@ -10105,6 +10105,7 @@ Announcement combat adventure-announcement [$announcement-item]: You maintain po
 Announcement combat adventure-announcement [$announcement-substance]: The {s} is hot enough already.	{s1}已经够热了。	l
 Announcement combat adventure-announcement [$announcement-substance]: You heat the {s} to no effect.	你加热了{s1}，但没有效果。	l
 Announcement combat adventure-announcement [$person,$person]: {s} is sneaking an extra drink to {s}!	{s1}正在偷偷多给{s2}一杯酒！	l
+Announcement combat adventure-announcement [$person,profession-change-result]: {s} has become a {s}.	{s1}成为了{s2}。	l
 Announcement combat adventure-announcement [$unit]: {s} has been blessed with a week's good fortune!	{s1}受到祝福，将迎来一周的好运！	l
 Announcement combat adventure-announcement [$unit]: {s} says, "We should be making better progress."	{s1}说：“我们本该走得更快些。”	l
 Announcement combat adventure-announcement [$unit]: {s} says, "We should have made it there by now."	{s1}说：“我们现在本该已经到那里了。”	l
@@ -13457,6 +13458,7 @@ Announcement combat adventure-announcement []: Why are they so fixated on these 
 Announcement combat adventure-announcement []: You are surrounded by incessant cackling.	你被持续不断的怪笑声包围了。	l
 Announcement combat adventure-announcement []: You have disturbed the sleep of the dead!	你惊扰了死者的长眠！	l
 Announcement combat adventure-announcement []: You shouldn't waste your life on revenge.	不该把一生浪费在复仇上。	l
+Announcement combat adventure-announcement [profession-change-result]: has become a {s}.	已成为{s1}。	l
 Announcement combat agreement-conclusion-title []: an agreement to establish a guildhall	一项建立行会大厅的协议	l
 Announcement combat agreement-core []: made an agreement with to entertain the citizenry	与达成协议，以便为居民表演	l
 Announcement combat agreement-title-core [$name]: the promise by to of a position in {s}	答应给在{s1}安排职位的承诺	l
@@ -19269,6 +19271,7 @@ Announcement combat memory-possession-core [agreement-item]: obtained {s}	未具
 Announcement combat memory-sentence []: You refused to name yourself to .	你不肯向名称未记载的一方透露自己的名字。	l
 Announcement combat memory-sentence [agreement-item]: {s} was given away.	{s1}被送人了。	l
 Announcement combat memory-value-insight [memory-value]: the value of {s}	{s1}的价值	l
+Announcement combat profession-change-result [$attack-creature-role]: {s}	{s1}	l
 Announcement combat quest-holder [conversation-conflict-entity]: I of {s}	{s1}的我	l
 Announcement combat quest-home-object [$announcement-item,$book]: {s} {s}	{s2}{s1}	l
 Announcement combat quest-position [conversation-conflict-entity]: of {s}	{s1}的职位	l
@@ -19651,6 +19654,7 @@ A very large aquatic reptile with fish-like fins and an elongated snout.	一种�
 Adventure item action: Path to here (no climbing/jumping) ({d} level up)	前往此处（不攀爬或跳跃，上方{d}层）	h
 An invertebrate found off the coast. It has a sting which can be severe.	在海岸边发现的一种无脊椎动物。它有一种可能很严重的刺痛感。	lP
 Announcement combat activity-detail-sentence []: The performance is at .	表演当前进度未注明。	l
+Announcement combat adventure-announcement [$person]: {s} has become a .	{s1}的职业发生了变化。	l
 Announcement combat adventure-announcement [$term]: You scratch the {s}.	你刨了刨{s1}。	l
 Announcement combat adventure-announcement [$unit,$unit]: {s} licks {s}.	{s1}舔了舔{s2}。	l
 Announcement combat adventure-announcement [$unit,$unit]: {s} stuns {s}!	{s1}使{s2}眩晕！	l
@@ -22806,6 +22810,7 @@ Announcement combat merchant-hawk-origin [merchant-hawk-item]: {s}	{s1}	l
 Announcement combat merchant-origin [$name]: {s}, out to the north	北方的{s1}	l
 Announcement combat merchant-origin [$name]: {s}, out to the south	南方的{s1}	l
 Announcement combat negotiation-opening []: negotiate persuasively	凭说服力开展谈判	l
+Announcement combat profession-change-result [$memorial-item]: {s}	{s1}	l
 Announcement combat quest-place [conversation-conflict-place]: {s}	{s1}	l
 Announcement combat quest-sentence []: I have no idea where it is.	我不知道它在哪里。	l
 Announcement combat rumor-event []: I hear has a real mean streak.	听说未具名者骨子里就很刻薄。	l
@@ -25826,6 +25831,7 @@ Announcement combat adventure-announcement []: That's absurd!	太荒谬了！	l
 Announcement combat adventure-announcement []: Vile creature!	卑劣的生物！	l
 Announcement combat adventure-announcement []: You are loved.	有人爱着你。	l
 Announcement combat adventure-announcement []: You are right.	你说得对。	l
+Announcement combat adventure-announcement []: has become a .	职业发生了变化。	l
 Announcement combat agreement-conclusion-reason []: on a whim	出于一时兴起	l
 Announcement combat agreement-core []: began embezzling funds	开始挪用资金	l
 Announcement combat agreement-core []: joined with as a guide	与同行，担任向导	l
