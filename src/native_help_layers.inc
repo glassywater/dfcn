@@ -19,9 +19,10 @@ static void native_ui_detach_map_output(graphicst &gps) noexcept {
     std::fill_n(gps.lower_viewport, 8, nullptr);
 }
 
-// Matching borrows the proven UI arrays, but its header cannot reach native
-// map objects. This read view never changes producer bindings or native SDL
-// input selectors; it ends before control returns to the native raster.
+// Matching borrows the proven UI arrays and normally detaches map objects.
+// ELF raster interception can also pin the complete original header while
+// native painters borrow masked arrays, keeping overlay callbacks unmasked.
+// The read view itself never changes producer bindings or SDL inputs.
 class NativeUiTextReadView {
     alignas(graphicst) std::array<unsigned char, sizeof(graphicst)> header_;
     Overlay *owner_ = nullptr;
@@ -30,12 +31,13 @@ class NativeUiTextReadView {
     inline static thread_local NativeUiTextReadView *active_ = nullptr;
     graphicst *graphics() noexcept { return reinterpret_cast<graphicst *>(header_.data()); }
 public:
-    NativeUiTextReadView(Overlay &owner, graphicst *source, bool enabled) noexcept {
-        // A nested matcher already borrows this same detached read header.
+    NativeUiTextReadView(Overlay &owner, graphicst *source, bool enabled,
+            bool detach_map = true) noexcept {
+        // A nested matcher already borrows this same read header.
         // Preserve its outer read scopes and address-dependent scratch keys.
         if (!enabled || !source || (active_ && source == active_->graphics())) return;
         std::memcpy(header_.data(), source, header_.size());
-        native_ui_detach_map_output(*graphics());
+        if (detach_map) native_ui_detach_map_output(*graphics());
         owner_ = &owner;
         original_ = owner.bind_render_graphics(graphics());
         previous_read_ = std::exchange(g_native_graphics_read_view, graphics());

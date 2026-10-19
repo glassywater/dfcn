@@ -9,7 +9,10 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
         std::shared_ptr<Parser> parser;
         AnnouncementMaterialVocabulary materials;
         std::vector<std::string> message_sources;
-        graphicst palette{};
+        // CPU translation reads only the copied palette. Do not construct a
+        // native graphics owner: ELF's texture constructors/destructors belong
+        // to the game library, and this worker owns no game rendering state.
+        alignas(graphicst) std::array<unsigned char, sizeof(graphicst)> palette{};
         uint64_t catalog = 0;
         bool initialized = false;
         std::shared_ptr<const std::unordered_map<std::string, std::string>> instruments;
@@ -23,8 +26,9 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
     target.translation_enabled_snapshot_.store(config_.enabled, std::memory_order_release);
     state->parser = RULESETS.clone_private();
     state->materials = {g_magical_materials, g_magical_material_qualifiers, g_magical_material_max_bytes};
-    if (gps_) std::memcpy(state->palette.uccolor, gps_->uccolor, sizeof(gps_->uccolor));
-    target.gps_ = &state->palette;
+    auto *palette = reinterpret_cast<graphicst *>(state->palette.data());
+    if (gps_) std::memcpy(palette->uccolor, gps_->uccolor, sizeof(gps_->uccolor));
+    target.gps_ = palette;
 #define ANNOUNCEMENT_COPY_RESOURCE(name) target.name = name
     ANNOUNCEMENT_COPY_RESOURCE(rules_);
     ANNOUNCEMENT_COPY_RESOURCE(trie_);

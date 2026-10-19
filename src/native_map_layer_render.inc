@@ -1,10 +1,13 @@
 #include "native_map_producer.inc"
 
+// Both hosts enter the shared matcher/cache before native UI rasterization.
+// Only the native array binding and the map GPU pass differ between ABIs.
+static NativeUiLayerGrid g_native_ui_input;
+static NativeEntryHook g_native_map_ui_draw_hook;
+
 #ifdef _WIN32
 static NativeUiLayerTarget g_native_map_target;
 static NativeUiLayerTarget g_native_map_glyph_target;
-static NativeUiLayerGrid g_native_ui_input;
-static NativeEntryHook g_native_map_ui_draw_hook;
 static NativeEntryHook g_native_map_clear_hook;
 static uint64_t g_native_map_target_serial = 0;
 static uint64_t g_native_map_target_layout = 0;
@@ -192,13 +195,20 @@ static void native_map_clear(void *renderer) {
     const auto clear = [&] { callback.call_native([&] { original(renderer); }); };
     if (!NativeMapGpuFrame::clear_native_target(renderer, clear)) clear();
 }
+#endif
 
 static void native_map_ui_draw(void *renderer) {
     NativeInputCallbackScope callback;
     TranslationStateScope translation;
+#ifdef _WIN32
     NativeMapGpuFrame::before_ui(renderer);
+#endif
     const auto original = reinterpret_cast<void (*)(void *)>(g_native_map_ui_draw_hook.original);
     if (!original) return;
+    if (g_native_process_exiting.load(std::memory_order_acquire) || g_native_ui_input_masked) {
+        callback.call_native([&] { original(renderer); });
+        return;
+    }
     auto *source = native_graphics();
     SDL_Renderer *sdl_renderer = nullptr;
     if (renderer)
@@ -211,18 +221,35 @@ static void native_map_ui_draw(void *renderer) {
         callback.call_native([&] { original(renderer); });
         return;
     }
-    // Supply the already masked copy to both renderer fields and the native
-    // RIP-relative input selectors. The overlay keeps the original page for
-    // translation; the game's producer arrays are never modified here.
+    // Supply the masked copy to every native glyph/texture input, including
+    // update_all's inlined top/anchor painters. Keep the original page for
+    // overlay readers; the game's producer arrays are never modified here.
     auto *input = g_native_ui_input.graphics();
     {
+#ifdef _WIN32
         NativeDfhackLayerRendererGrid grid(renderer, *input);
+#else
+        // ELF painters read the real gps as well as renderer's array slots.
+        // Pin the unmasked header for callbacks, then borrow only the output
+        // bindings under Linux's existing translation lock. Native texture
+        // caches and command queues retain their real owner throughout.
+        NativeUiTextReadView source_read(g_overlay, source, true, false);
+        auto *owner = native_graphics_owner();
+        NativeUiGridBinding grid(owner, *input, renderer);
+#endif
         struct InputScope {
             bool previous = g_native_ui_input_masked;
             InputScope() { g_native_ui_input_masked = true; }
             ~InputScope() { g_native_ui_input_masked = previous; }
         } masked;
         callback.call_native([&] { original(renderer); });
+#ifndef _WIN32
+        // Output binding restoration must not discard native scheduling
+        // updates made during this raster pass.
+        input->refresh_buffer_val = owner->refresh_buffer_val;
+        input->force_full_display_count = owner->force_full_display_count;
+        input->last_display_background = owner->last_display_background;
+#endif
     }
     source->refresh_buffer_val = input->refresh_buffer_val;
     source->force_full_display_count = input->force_full_display_count;
@@ -231,6 +258,7 @@ static void native_map_ui_draw(void *renderer) {
 
 static bool install_native_map_layer_hook() {
     if (!install_native_map_producer_hook()) return false;
+#ifdef _WIN32
     const auto base = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
     const auto install = [&](NativeEntryHook &hook, uintptr_t coordinate,
             std::vector<unsigned char> prefix, const void *callback, const char *label) {
@@ -245,11 +273,24 @@ static bool install_native_map_layer_hook() {
         install(g_native_map_ui_draw_hook, 0x8e1c80,
             {0x48,0x89,0x5c,0x24,0x10},
             reinterpret_cast<const void *>(&native_map_ui_draw), "Native map/interface raster boundary");
+#else
+    if (g_native_map_ui_draw_hook.installed) return true;
+    constexpr const char *label = "Native map/interface raster boundary";
+    auto *entry = static_cast<unsigned char *>(dlsym(RTLD_DEFAULT,
+        "_ZN16renderer_2d_base10update_allEv"));
+    // Complete ELF prologue instructions, with no relative operands. Hook
+    // the function entry so direct and virtual update_all calls share it.
+    const std::vector<unsigned char> prefix{0xf3,0x0f,0x1e,0xfa,0x41,0x57,0x41,0x56};
+    return entry && g_native_map_ui_draw_hook.prepare(entry, prefix,
+        reinterpret_cast<const void *>(&native_map_ui_draw), {}, label) &&
+        g_native_map_ui_draw_hook.install(label);
+#endif
 }
 
 static void uninstall_native_map_layer_hook() {
     uninstall_native_map_producer_hook();
     g_native_map_ui_draw_hook.uninstall("Native map/interface raster restore");
+#ifdef _WIN32
     g_native_map_clear_hook.uninstall("Native map clear ownership restore");
     if (!g_native_map_ui_draw_hook.active() && !g_native_map_clear_hook.active() &&
             !native_map_producer_hook_active()) {
@@ -260,13 +301,14 @@ static void uninstall_native_map_layer_hook() {
         g_native_map_layer = {};
         native_map_begin_frame();
     }
+#else
+    if (!g_native_map_ui_draw_hook.active()) g_native_ui_input = {};
+#endif
 }
 static bool native_map_layer_hook_active() {
-    return native_map_producer_hook_active() || g_native_map_ui_draw_hook.active() ||
-        g_native_map_clear_hook.active();
-}
-#else
-static bool install_native_map_layer_hook() { return true; }
-static void uninstall_native_map_layer_hook() {}
-static bool native_map_layer_hook_active() { return false; }
+    return native_map_producer_hook_active() || g_native_map_ui_draw_hook.active()
+#ifdef _WIN32
+        || g_native_map_clear_hook.active()
 #endif
+        ;
+}
