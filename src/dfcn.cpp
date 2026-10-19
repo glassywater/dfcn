@@ -136,7 +136,8 @@ static bool native_display_worldgen_page() {
         ? *g_native_display_worldgen_page : native_history_worldgen_page();
 }
 #endif
-static NativeModDetails native_mod_details(bool background_owner = false);
+static NativeModDetails native_mod_details(bool background_owner = false,
+    const graphicst *graphics = nullptr);
 static std::optional<std::string> native_main_menu_copyright();
 static bool native_fortress_gameplay_screen();
 static bool native_map_mixed_view(const graphicst *graphics) noexcept;
@@ -5014,7 +5015,8 @@ private:
         std::vector<Match> &matches, std::vector<Match> &untranslated,
         int only_y, const unsigned char *screen_override) const;
     void append_mod_list_details(const NativeModListLayout &layout,
-        std::vector<std::string> &rows, std::vector<Match> &matches) const;
+        std::vector<std::string> &rows, std::vector<Match> &matches,
+        bool captured_only = false) const;
     void layout_resting_place_details(SDL_Renderer *renderer);
     void layout_fortress_building_status(SDL_Renderer *renderer);
     void layout_fortress_farm_plot(SDL_Renderer *renderer);

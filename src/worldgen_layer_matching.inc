@@ -81,6 +81,12 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
     };
     const auto draws = std::array{captured_native_drawn_text_view(),
         captured_native_drawn_text_view(true)};
+    const auto mod_list = native_mod_list_layout(*gps_, [&](int x, int y) {
+        return visible_char_at(x, y);
+    });
+    std::vector<Match> mod_fields;
+    if (mod_list)
+        for (auto &row : context) row.resize(static_cast<size_t>(gps_->dimx), ' ');
     for (const auto &plane : draws) for (const auto &draw : plane) {
         if (draw.y < 0 || draw.y >= gps_->dimy || draw.source.empty() ||
                 draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
@@ -114,6 +120,17 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         row.source = draw.source.substr(first - draw.x, end - first);
         row.complete_source = draw.complete_source;
         for (int x = first; x < end; ++x) row.foregrounds.push_back(source_color(x, draw.y));
+        // This page has its own caption matcher. Claim package fields before
+        // joining rows or applying literal/numeric rules, just as the common
+        // mod-list reader does. Only captured writes populate this context.
+        if (mod_list) {
+            const Match span{row.x, row.y, static_cast<int>(row.source.size()),
+                kUiMessageRule, {}, row.source};
+            if (mod_list->owns_name(span) || mod_list->owns_details(span)) {
+                remember_span(row.x, row.y, row.source);
+                continue;
+            }
+        }
         const auto geography = draw.native_caller && draw.native_caller == region_return
             ? Geography::Region : draw.native_caller && draw.native_caller == landform_return
             ? Geography::Landform : draw.native_caller && draw.native_caller == river_return
@@ -125,6 +142,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
             ? Geography::SiteGloss : Geography::None;
         fields[draw.y].push_back({std::move(row), draw.editable_text, geography, draw.site_name});
     }
+    if (mod_list) append_mod_list_details(*mod_list, context, mod_fields, true);
     // Native labels, names and counters may be emitted by several addst
     // calls. Join adjacent writes without merging a distant right-side key
     // hint into the title, or merging authored text with a translated label.
@@ -506,6 +524,8 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         }
     }
     compose_native_text_rows(summary, result, -1, kWorldgenSummaryRule);
+    result.insert(result.end(), std::make_move_iterator(mod_fields.begin()),
+        std::make_move_iterator(mod_fields.end()));
     // Row composition replaces the input matches. Reattach the field's own
     // clip so composed sidebar rows cannot inherit the left chronicle clip.
     for (auto &match : result) if (!match.layout_native_clip)
