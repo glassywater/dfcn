@@ -249,6 +249,21 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                 if ((ch & 0xc0) != 0x80) translated_colors.push_back(colors.front());
             return speech;
         }
+        // ad0710 submits this complete actor/item production. Its reviewed
+        // whole-message matcher owns both typed fields and their colors;
+        // do not send every crafted item through unrelated announcement,
+        // combat and memory grammars before reaching that existing owner.
+        const auto compact = compact_ui_message_literal(block);
+        if (compact.find("hascreatedamasterpiece") != std::string::npos) {
+            for (int probe : ui_message_anchors_.candidates(compact)) {
+                const int index = ui_message_template_probes_[probe].index;
+                if (rules_[static_cast<size_t>(index)].source !=
+                        "{n} has created a masterpiece {i}!") continue;
+                translated = translate_help_paragraph(block, colors,
+                    translated_colors, true, index);
+                if (translated) return translated;
+            }
+        }
         // The speech wrapper owns its colon and entire body before the
         // adventure opinion grammar. Otherwise its incident rule can consume
         // "You: <elapsed time> I" as a unit and swallow the following reaction
@@ -308,21 +323,6 @@ std::optional<std::string> Overlay::translate_complete_announcement(
                     origin ? origin - 1 : 0, colors.size() - 1)]);
             }
             return std::string(body);
-        }
-        // ad0710 submits the crafted masterpiece as this complete native
-        // actor/item production. Resolve its existing UI rule before the
-        // unrelated help-document suffix DP; the shared matcher still owns
-        // both typed fields, full-record consumption and their colors.
-        const auto compact = compact_ui_message_literal(block);
-        if (compact.find("hascreatedamasterpiece") != std::string::npos) {
-            for (int probe : ui_message_anchors_.candidates(compact)) {
-                const int index = ui_message_template_probes_[probe].index;
-                if (rules_[static_cast<size_t>(index)].source !=
-                        "{n} has created a masterpiece {i}!") continue;
-                translated = translate_help_paragraph(block, colors,
-                    translated_colors, true, index);
-                if (translated) return translated;
-            }
         }
         // ELF 53.16 1882b38/1882bc0 builds spoken memories with the SAME
         // event and emotion formatters (101b7f0, 10283d0) as the overview.

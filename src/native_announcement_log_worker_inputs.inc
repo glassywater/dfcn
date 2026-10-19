@@ -575,7 +575,24 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world, bool v
             dependencies.push_back(std::move(*dependency));
             break;
         }
-    } else dependencies = native_announcement_log_translation_dependencies(1);
+    } else {
+        // The producer has already frozen this notification's visible parents.
+        // Collect their pending leaves before publishing any replacement, so
+        // one native frame can advance the whole visible batch. SDL continues
+        // to consume only the immutable documents rebound at producer return.
+        if (g_native_notification_layer.ready) {
+            dependencies.reserve(g_native_notification_paragraphs.size() + 1);
+            for (const auto &paragraph : g_native_notification_paragraphs) {
+                const auto &document = paragraph.report_document;
+                if (!document || document->world != world) continue;
+                auto dependency = native_announcement_log_translation_visible_dependency(document);
+                if (dependency) dependencies.push_back(std::move(*dependency));
+            }
+        }
+        auto background = native_announcement_log_translation_dependencies(1);
+        dependencies.insert(dependencies.end(), std::make_move_iterator(background.begin()),
+            std::make_move_iterator(background.end()));
+    }
     for (const auto &dependency : dependencies) {
         const auto &requested = dependency.document;
         if (!requested || requested->world != world) continue;
