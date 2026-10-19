@@ -894,7 +894,14 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 return finish(std::move(closed.target));
             return finish(parse_item());
         }
-        if (scope == "$body") return finish(translate_legends_anatomy(input));
+        if (scope == "$body") {
+            // 13345d0 returns a complete BODY name. 6c6d30 appends each
+            // connecting parent's name after a comma, including parents
+            // called skull/skin. None of those commas introduces the health
+            // panel's separate tissue suffix; keep the full owner chain.
+            return finish(RULESETS.translate_anatomy(
+                cp437_to_utf8(std::string(input)), false));
+        }
         if (scope == "$announcement-substance") {
             // 11c6cb0/11c8150 append a whole material state name, including
             // deposited contaminants and independent stagnant/salt flags.

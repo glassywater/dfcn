@@ -168,7 +168,8 @@ namespace Hooks {
         // Scoped prose vocabulary; never flattened into global item/name rules.
         std::optional<std::string> translate_appearance_term(
             const std::string& text, const std::string& context) const;
-        std::optional<std::string> translate_anatomy(const std::string& text) const;
+        std::optional<std::string> translate_anatomy(const std::string& text,
+            bool tissue_suffix = true) const;
         // A terrain caption followed by zero or more plant-growth labels.
         // Never treat its comma-separated leaves/fruit as anatomical owners.
         std::optional<std::string> translate_tile_description(const std::string& text) const;

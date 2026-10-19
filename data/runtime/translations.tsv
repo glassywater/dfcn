@@ -24448,6 +24448,7 @@ Announcement combat conversation-choice-occupation []: surgeons	外科医师	l
 Announcement combat conversation-choice-place []: the magma sea	岩浆海	l
 Announcement combat conversation-conflict-account []: many died	许多生灵丧生	l
 Announcement combat conversation-conflict-group []: a member of	未具名势力的一名成员	l
+Announcement combat damage [layer]: jamming the {s} through the	将{s1}挤压穿透	l
 Announcement combat dialogue-battle-attacker [$creature]: a {s}	一只{s1}	l
 Announcement combat dialogue-battle-person [speech-person]: {s}	{s1}	l
 Announcement combat dialogue-family []: seventh eldest daughter	第七个女儿	l
@@ -25845,6 +25846,7 @@ Announcement combat attack [attack-verb,unit]: {s} {s} by the	{s1}{s2}	l
 Announcement combat attack [attack-verb,unit]: {s} {s} in the	{s1}{s2}	l
 Announcement combat attack-army-support [attack-warning]: {s}	{s1}	l
 Announcement combat body-result [layer-phrase]: {s} collapses	{s1}塌陷了	l
+Announcement combat combat-tissue []: plump helmet man tissue	肉盔菇人组织	l
 Announcement combat conversation-choice []: Order listener to	向对方下令	l
 Announcement combat conversation-choice []: State 's location	说明某人的位置	l
 Announcement combat conversation-choice-occupation []: doctor	医生	l
@@ -28305,6 +28307,7 @@ Announcement combat journal-transfer-core []: giving of to	将某件物品交给
 Announcement combat journal-transfer-core []: placement of	放置某件物品	l
 Announcement combat justice-plot-core [$name]: Corrupt {s}	拉拢{s1}	l
 Announcement combat justice-plot-core []: Provide Position	提供职位	l
+Announcement combat layer [layer,combat-tissue]: {s}'s {s}	{s1}的{s2}	l
 Announcement combat material [$person,material]: {s}'s {s}	{s1}的{s2}	l
 Announcement combat memorial-death []: Killed by a vehicle	被车辆撞死	l
 Announcement combat memorial-family []: father and husband	父亲与丈夫	l
@@ -31288,6 +31291,7 @@ Announcement combat agreement-crime []: attempted theft	盗窃未遂	l
 Announcement combat agreement-goals []: steal treasures	盗取财宝	l
 Announcement combat attack-site-kind []: forest retreat	森林聚落	l
 Announcement combat attack-site-kind []: mountain halls	山地大厅	l
+Announcement combat combat-tissue []: pancreatic tissue	胰腺组织	l
 Announcement combat conversation-choice []: Accept as a	同意加入任职	l
 Announcement combat conversation-choice []: Accept into	同意加入表演团	l
 Announcement combat conversation-choice []: Ask to join	请求加入表演团	l
@@ -34690,6 +34694,9 @@ Announcement combat adventure-announcement []: Uh...	呃……	l
 Announcement combat adventure-announcement []: What?	什么？	l
 Announcement combat agreement-crime []: embezzlement	挪用资金	l
 Announcement combat attack [attack]: {s} from behind	从背后{s1}	l
+Announcement combat combat-tissue []: gizzard tissue	砂囊组织	l
+Announcement combat combat-tissue []: nervous tissue	神经组织	l
+Announcement combat combat-tissue []: stomach tissue	胃组织	l
 Announcement combat conversation-choice-owner []: 's	某人的	l
 Announcement combat conversation-choice-work []: for	工作	l
 Announcement combat dialogue-family []: eldest child	最年长的孩子	l
@@ -36000,6 +36007,9 @@ Announcement combat adventure-announcement []: Ack!	啊！	l
 Announcement combat adventure-announcement []: Huh?	嗯？	l
 Announcement combat adventure-announcement []: Who?	谁？	l
 Announcement combat artifact-recipient [$name]: {s}	{s1}	l
+Announcement combat combat-tissue []: cheek whisker	颊须	l
+Announcement combat combat-tissue []: kidney tissue	肾组织	l
+Announcement combat combat-tissue []: spleen tissue	脾组织	l
 Announcement combat conversation-choice-role []: of	某项职位	l
 Announcement combat damage-list [damage-list]: {s},	{s1}	l
 Announcement combat defense-adverb []: effortlessly	毫不费力地	l
@@ -37295,6 +37305,11 @@ Announcement combat attack-site-kind []: labyrinth	迷宫	l
 Announcement combat attack-site-kind []: monastery	修道院	l
 Announcement combat boast-raw-victim []: something	某人	l
 Announcement combat boast-victim [$name]: , of {s}	任职于{s1}的那人	l
+Announcement combat combat-tissue []: brain tissue	脑组织	l
+Announcement combat combat-tissue []: chin whisker	下颌须	l
+Announcement combat combat-tissue []: heart tissue	心脏组织	l
+Announcement combat combat-tissue []: interior gas	内部气体	l
+Announcement combat combat-tissue []: liver tissue	肝脏组织	l
 Announcement combat defense-adverb []: just barely	勉强	l
 Announcement combat dialogue-battle-attacker []: I	我	l
 Announcement combat dialogue-family []: eldest son	长子	l
@@ -37311,7 +37326,6 @@ Announcement combat journal-entity-event []: claim	的主权宣称	l
 Announcement combat journal-entity-event []: march	的行军	l
 Announcement combat journal-person [$message]: {s}	{s1}	l
 Announcement combat justice-plot-core []: Sabotage	破坏活动	l
-Announcement combat layer [layer,$term]: {s}'s {s}	{s1}的{s2}	l
 Announcement combat layer-list [layer-phrase]: {s}	{s1}	l
 Announcement combat material [material]: {s} vapor	{s1}蒸气	l
 Announcement combat memorial-death []: Put to rest	得以安息	l
@@ -38666,6 +38680,7 @@ Announcement combat attack-site-kind []: hillocks	丘堡	l
 Announcement combat attack-site-kind []: monument	纪念碑	l
 Announcement combat biography-office [$term]: {s}	{s1}	l
 Announcement combat boast-raw-victim []: nameless	无名者	l
+Announcement combat combat-tissue []: lung tissue	肺部组织	l
 Announcement combat conversation-choice []: Leave	离开表演团	l
 Announcement combat conversation-choice []: State	说明位置	l
 Announcement combat damage-verb []: tearing apart	撕碎	l
@@ -40131,6 +40146,7 @@ Announcement combat ability []: Summon nightmare	召唤梦魇	l
 Announcement combat agreement-core []: concocted	策划了……	l
 Announcement combat agreement-party [$name]: {s}	{s1}	l
 Announcement combat agreement-party-list []: and	和	l
+Announcement combat combat-tissue []: eye tissue	眼部组织	l
 Announcement combat conversation-choice []: Give	赠送宠物	l
 Announcement combat dialogue-battle []: attacked	未具名者袭击了未具名者	l
 Announcement combat dialogue-family []: daughter	女儿	l
@@ -41685,6 +41701,10 @@ Announcement combat attack-site-kind []: castle	城堡	l
 Announcement combat attack-site-kind []: hamlet	村庄	l
 Announcement combat attack-site-kind []: shrine	圣地	l
 Announcement combat attack-verb []: snatches at	扑抓	l
+Announcement combat combat-tissue []: cartilage	软骨	l
+Announcement combat combat-tissue []: moustache	八字胡	l
+Announcement combat combat-tissue []: sideburns	鬓角	l
+Announcement combat combat-tissue []: silk wool	丝毛	l
 Announcement combat damage []: tearing it apart	将它撕碎	l
 Announcement combat defense-adverb []: narrowly	险险	l
 Announcement combat dialogue-family []: husband	丈夫	l
@@ -43169,6 +43189,8 @@ Announcement combat agreement-crime []: murder	谋杀	l
 Announcement combat agreement-party-list []: ,	、	l
 Announcement combat attack-site-kind []: tower	高塔	l
 Announcement combat attack-site-kind []: vault	秘库	l
+Announcement combat combat-tissue [$term]: {s}	{s1}	l
+Announcement combat combat-tissue []: amethyst	紫水晶	l
 Announcement combat damage-verb []: fracturing	折断	l
 Announcement combat damage-verb []: shattering	击碎	l
 Announcement combat dialogue-battle []: I slew	我杀死了未具名者	l
@@ -43185,6 +43207,7 @@ Announcement combat greeting-state []: alright	还好	l
 Announcement combat guard-building []: a house	房子	l
 Announcement combat impact-part []: body parts	多个身体部位	l
 Announcement combat journal-event-title []: 's	某人的事件	l
+Announcement combat layer [combat-tissue]: {s}	{s1}	l
 Announcement combat memorial-death []: Drowned	溺亡	l
 Announcement combat memorial-family []: father	父亲	l
 Announcement combat memorial-family []: mother	母亲	l
@@ -44780,6 +44803,9 @@ Announcement combat attack-site-kind []: tomb	陵墓	l
 Announcement combat attack-site-kind []: town	城镇	l
 Announcement combat attack-verb []: scratches	抓	l
 Announcement combat attack-verb []: snatch at	扑抓	l
+Announcement combat combat-tissue []: eyebrow	眉毛	l
+Announcement combat combat-tissue []: eyelash	睫毛	l
+Announcement combat combat-tissue []: feather	羽毛	l
 Announcement combat damage-list [damage]: {s}	{s1}	l
 Announcement combat defense-adverb []: deftly	熟练地	l
 Announcement combat defense-adverb []: easily	轻易	l
@@ -46353,6 +46379,14 @@ Announcement combat agreement-core []: began	开始了……	l
 Announcement combat artifact-pronoun []: She	她	l
 Announcement combat attack-verb []: snatches	抓住	l
 Announcement combat attack-verb []: stabs at	戳刺	l
+Announcement combat combat-tissue []: antler	鹿角	l
+Announcement combat combat-tissue []: bronze	青铜	l
+Announcement combat combat-tissue []: chitin	甲壳	l
+Announcement combat combat-tissue []: flames	火焰	l
+Announcement combat combat-tissue []: gabbro	辉长岩	l
+Announcement combat combat-tissue []: muscle	肌肉	l
+Announcement combat combat-tissue []: sponge	海绵	l
+Announcement combat combat-tissue []: tissue	组织	l
 Announcement combat damage-verb []: bruising	挫伤	l
 Announcement combat damage-verb []: chipping	崩裂	l
 Announcement combat dialogue-family []: aunt	姑姨	l
@@ -48034,6 +48068,19 @@ Announcement combat attack-verb []: scratch	抓	l
 Announcement combat attack-verb []: slashes	劈	l
 Announcement combat attack-verb []: stab at	戳刺	l
 Announcement combat attack-verb []: strikes	打击	l
+Announcement combat combat-tissue []: blood	血液	l
+Announcement combat combat-tissue []: crust	硬壳	l
+Announcement combat combat-tissue []: flesh	血肉	l
+Announcement combat combat-tissue []: fluff	绒毛	l
+Announcement combat combat-tissue []: fluid	体液	l
+Announcement combat combat-tissue []: ivory	象牙	l
+Announcement combat combat-tissue []: magma	岩浆	l
+Announcement combat combat-tissue []: pudge	球脂	l
+Announcement combat combat-tissue []: scale	鳞片	l
+Announcement combat combat-tissue []: shell	壳	l
+Announcement combat combat-tissue []: spine	棘刺	l
+Announcement combat combat-tissue []: talon	利爪	l
+Announcement combat combat-tissue []: tooth	牙齿	l
 Announcement combat damage-verb []: denting	砸凹	l
 Announcement combat damage-verb []: tearing	撕裂	l
 Announcement combat dialogue-family []: son	儿子	l
@@ -49771,6 +49818,16 @@ Announcement combat attack-verb []: snatch	抓住	l
 Announcement combat attack-verb []: sticks	刺入	l
 Announcement combat attack-verb []: stings	蜇刺	l
 Announcement combat attack-verb []: strike	打击	l
+Announcement combat combat-tissue []: bone	骨骼	l
+Announcement combat combat-tissue []: claw	爪	l
+Announcement combat combat-tissue []: hair	毛发	l
+Announcement combat combat-tissue []: hoof	蹄	l
+Announcement combat combat-tissue []: horn	角	l
+Announcement combat combat-tissue []: iron	铁	l
+Announcement combat combat-tissue []: nail	指甲	l
+Announcement combat combat-tissue []: skin	皮肤	l
+Announcement combat combat-tissue []: wood	木头	l
+Announcement combat combat-tissue []: wool	羊毛	l
 Announcement combat dialogue-stock []: and	酒水	l
 Announcement combat equipment [$body]: {s}	{s1}	l
 Announcement combat layer []: injured part	受伤部位	l
@@ -51722,6 +51779,11 @@ Announcement combat attack-verb []: stabs	戳刺	l
 Announcement combat attack-verb []: stick	刺入	l
 Announcement combat attack-verb []: sting	蜇刺	l
 Announcement combat boast-victim []: , of	对方	l
+Announcement combat combat-tissue []: fat	脂肪	l
+Announcement combat combat-tissue []: gas	气体	l
+Announcement combat combat-tissue []: gut	肠子	l
+Announcement combat combat-tissue []: mud	淤泥	l
+Announcement combat combat-tissue []: pod	荚壳	l
 Announcement combat decay []: decomposing	正在腐烂的	l
 Announcement combat material [$term]: {s}	{s1}	l
 Announcement combat memory-death []: died	死了	l
@@ -57467,7 +57529,6 @@ Announcement combat ability []: Vanish	隐身	l
 Announcement combat decay []: stinking	发臭的	l
 Announcement combat fluid [$term]: {s}	{s1}	l
 Announcement combat layer [$body]: {s}	{s1}	l
-Announcement combat layer [$term]: {s}	{s1}	l
 Announcement combat quest-holder []: I	我	l
 Announcement combat rumor-owner []: 's	未具名者的	l
 Announcement combat rumor-owner []: my	我的	l
@@ -139710,6 +139771,7 @@ second neck	第二颈	h
 serpent man	地底蛇人	wi
 serpent men	地底蛇人	wi
 seven heads	七个头	wi
+seventeenth	第十七	wi
 seventh arm	第七上肢	h
 several {s}	数个{s1}	htu
 shaggy hair	毛发蓬松	wi
@@ -140494,6 +140556,7 @@ eerie murk	诡异的暗雾	wim
 eerie soot	诡异的煤烟制	hMi
 eerie soot	诡异的煤烟	wim
 egg-laying	产卵	wi
+eighteenth	第十八	wi
 eighth arm	第八上肢	h
 elder fire	上古火	hMi
 elder fire	上古火焰	wim
@@ -141021,6 +141084,7 @@ foul smoke	污秽的烟制	hMi
 foul smoke	污秽的烟	wim
 foul vapor	污秽的蒸气制	hMi
 foul vapor	污秽的蒸气	wim
+fourteenth	第十四	wi
 fourth arm	第四手臂	h
 fourth eye	第四只眼	h
 fourth toe	第四脚趾	h
@@ -142696,6 +142760,7 @@ nautiluses	鹦鹉螺	wi
 nest boxes	巢箱	wi
 nightmares	噩梦	r
 nightwings	夜翼	wi
+nineteenth	第十九	wi
 nodosaurus	结节龙	wi
 noted ally	著名的同盟者	h
 noted bard	著名的吟游诗人	h
@@ -143018,6 +143083,7 @@ thin bolts	纤细弩矢	wi
 third head	第三头	h
 third horn	第三个角	h
 third neck	第三颈	h
+thirteenth	第十三	wi
 three eyes	三只眼睛	wi
 three toes	三个脚趾	wi
 thrips man	蓟马人	wi
@@ -143671,6 +143737,7 @@ festivals	节庆	r
 fetid goo	恶臭的黏稠物制	hMi
 fetid goo	恶臭的黏稠物	wim
 few dozen	几十	wi
+fifteenth	第十五	wi
 fifth arm	第五上肢	h
 fifth eye	第五只眼	wi
 fifth toe	第五脚趾	h
@@ -145076,6 +145143,7 @@ self-pity	自怜	w
 silt loam	粉质壤土	wi
 siltstone	粉砂岩	wi
 sired {n}	成为了{n1}的生父	ht
+sixteenth	第十六	wi
 sixth arm	第六上肢	h
 skink man	彩舌蜥人	wi
 skink men	彩舌蜥人	wi
@@ -145723,6 +145791,7 @@ egg yolk	蛋黄	wi
 eggshell	蛋壳	wi
 electrum	琥珀金	wi
 elephant	大象	wi
+eleventh	第十一	wi
 elk bird	麋鹿鸟	wi
 elk fawn	麋鹿幼崽	wi
 emeralds	祖母绿宝石	wi
@@ -147073,6 +147142,7 @@ scrawny	骨瘦如柴	wi
 scrolls	卷轴	wi
 seasons	四季	r
 servile	卑躬屈膝	wi
+seventh	第七	wi
 sharply	明显	wi
 sheriff	治安官	wi
 shields	盾牌	wi
@@ -147129,6 +147199,7 @@ treason	叛国	h
 triumph	得意	w
 turbans	头巾	wi
 turkeys	火鸡	wi
+twelfth	第十二	wi
 twisted	扭曲	wi
 unhappy	不快乐	wi
 unicorn	独角兽	wi
@@ -147961,6 +148032,7 @@ during	在活动期间	h
 eagles	鹰	wi
 eaglet	鹰幼崽	wi
 eating	进食	wi
+eighth	第八	wi
 elated	兴高采烈	w
 eldest	最大的	wi
 equine	马	wi
@@ -147982,6 +148054,7 @@ flasks	携带瓶	wi
 flight	逃离	h
 flower	花	wi
 formed	成立了	h
+fourth	第四	wi
 friend	朋友	wi
 frilly	饰边	wi
 front 	前	wi
@@ -148164,6 +148237,7 @@ scales	鳞片	wi
 schist	片岩	wi
 schorl	黑碧玺	wi
 scroll	卷轴	wi
+second	第二	wi
 shaft/	杆/	wi
 shaken	震惊不已	w
 sheets	纸张	wi
@@ -149296,7 +149370,9 @@ fangs	獠牙	wi
 fatty	脂肪	wi
 felt 	感到	wi
 fiber	纤维	wi
+fifth	第五	wi
 filth	污垢	wi
+first	第一	wi
 flail	连枷	wi
 flask	携带瓶	wi
 flat/	平面/	wi
@@ -149406,6 +149482,7 @@ music	音乐	r
 nails	钉刺	wi
 niece	侄女或外甥女	wi
 night	夜晚	r
+ninth	第九	wi
 north	北	w
 noses	鼻子	wi
 novel	小说	hv
@@ -149475,6 +149552,7 @@ shoes	鞋	wi
 short	短小的	hv
 short	矮小	wi
 sinew	肌腱	wi
+sixth	第六	wi
 skill	技艺	wi
 skink	彩舌蜥	wi
 skirt	裙	wi
@@ -149526,10 +149604,12 @@ taupe	褐色	wi
 tears	眼泪	wi
 teeth	牙齿	h
 teeth	牙齿	wi
+tenth	第十	wi
 that 	这件事	wi
 theft	盗窃	h
 theft	盗窃	r
 thick	厚实	wi
+third	第三	wi
 thong	内裤	wi
 thumb	拇指	h
 thumb	拇指	w

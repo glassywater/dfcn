@@ -1327,7 +1327,7 @@ namespace Hooks {
     }
 
     std::optional<std::string> RulesetsManager::translate_anatomy(
-            const std::string& text) const {
+            const std::string& text, bool tissue_suffix) const {
         dfcn::TranslationStateScope translation_scope;
         return scoped_rule_translation([&]() -> std::optional<std::string> {
             if (text.empty() || text.find_first_of(".;:!?\"()\n\r") != std::string::npos)
@@ -1341,6 +1341,50 @@ namespace Hooks {
                     if (!best || result->preferred_to(*best)) best = result.get();
                 }
                 return best ? std::optional<std::string>(best->translated) : std::nullopt;
+            };
+            const auto complete_body = [&](const std::string& source)
+                    -> std::optional<std::string> {
+                // Complete RAW/INDIVIDUAL_NAME spellings own their meaning:
+                // e.g. fourth finger is an anatomical name, not a generic
+                // numbered finger. Only an otherwise unknown whole body
+                // name can use 13345d0's positive-index fallback.
+                if (auto part = complete(source, "::health::bodypart::bodypart_main"))
+                    return part;
+                // RAW STP expands the complete singular BODY/INDIVIDUAL_NAME
+                // with one final s. Keep that operation inside the anatomy
+                // grammar and require the whole singular name to resolve.
+                if (auto part = complete(source, "::health::bodypart::stp_bodypart"))
+                    return part;
+                const size_t separator = source.find(' ');
+                if (separator == std::string::npos) return std::nullopt;
+                const auto ordinal = std::string_view(source).substr(0, separator);
+                if (!ordinal.empty() && ordinal.front() >= '0' && ordinal.front() <= '9') {
+                    // 52eb70(param3=false) spells 1..19 and emits ungrouped
+                    // decimal digits plus the English ordinal suffix above
+                    // that. Its BODY caller accepts only positive int32s.
+                    // Validate the complete numeric token before the data
+                    // grammar so #digits cannot admit 21th or a zero prefix.
+                    if (ordinal.front() == '0') return std::nullopt;
+                    std::uint32_t number = 0;
+                    size_t digits = 0;
+                    for (; digits < ordinal.size(); ++digits) {
+                        const char ch = ordinal[digits];
+                        if (ch < '0' || ch > '9') break;
+                        const auto digit = static_cast<std::uint32_t>(ch - '0');
+                        if (number > (INT32_MAX - digit) / 10) return std::nullopt;
+                        number = number * 10 + digit;
+                    }
+                    if (number < 20 || ordinal.size() - digits != 2) return std::nullopt;
+                    std::string_view suffix = "th";
+                    const auto last_two = number % 100;
+                    if (last_two < 11 || last_two > 13) {
+                        if (number % 10 == 1) suffix = "st";
+                        else if (number % 10 == 2) suffix = "nd";
+                        else if (number % 10 == 3) suffix = "rd";
+                    }
+                    if (!matches_literal(ordinal.substr(digits), suffix)) return std::nullopt;
+                }
+                return complete(source, "::health::bodypart::numbered_bodypart");
             };
             std::vector<std::string> parts;
             size_t start = 0;
@@ -1359,7 +1403,7 @@ namespace Hooks {
             // tissue namespace, not the body-part vocabulary: reversing all comma
             // fields would turn "finger, hand, skin" into "skin hand finger".
             std::string tissue;
-            if (parts.size() > 1) {
+            if (tissue_suffix && parts.size() > 1) {
                 if (auto suffix = complete(", " + parts.back(), "::health::bodypart::main_tissue")) {
                     tissue = std::move(*suffix);
                     parts.pop_back();
@@ -1367,10 +1411,10 @@ namespace Hooks {
             }
             std::string translated;
             for (auto it = parts.rbegin(); it != parts.rend(); ++it) {
-                auto part = complete(*it, "::health::bodypart::bodypart_main");
+                auto part = complete_body(*it);
                 // An injury may name a tissue on its own (skin, nail, etc.).
                 // Only a single unqualified field can use this fallback.
-                if (!part && parts.size() == 1 && text.find(',') == std::string::npos)
+                if (!part && tissue_suffix && parts.size() == 1 && text.find(',') == std::string::npos)
                     part = complete(*it, "::health::bodypart::tissue");
                 if (!part) return std::nullopt;
                 translated += *part;
