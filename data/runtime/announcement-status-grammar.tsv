@@ -34,6 +34,12 @@ adventure-announcement	and the surrounding lands have been made an official land
 adventure-announcement	and the surrounding lands have been made an even more official land of the realm.	此地及其周边地区在王国中的领土地位进一步提升。		ELF 12bfe90 has_name=false/empty name; subtype 4 default; submission 12c4a18
 adventure-announcement	{s} and the surrounding lands have been made {s}.	{s1}及其周边地区已晋升为{s2}。	$native-site-name,$term	ELF 12c5142/12c53cc copy nonempty position.land_name (+258, length +260); non-vanilla RAW terms use existing scoped term translation
 adventure-announcement	and the surrounding lands have been made {s}.	此地及其周边地区已晋升为{s1}。	$term	ELF 12bfe90 has_name=false/empty name; nonempty non-vanilla position.land_name; submissions 12c47fa/12c4a18
+# Role changes use the same b71ba0 result formatter as growth, including a
+# noble office's territory. Resolve the whole report before generic prose
+# can treat a nickname-bearing clause and its trailing "of" as one name.
+adventure-announcement	{s} has become a {s}.	{s1}成为了{s2}。	$person,$growth-result	ELF b73550/b73920/c07650; b33570 selected name -> 12bfe90; b71ba0(unit,result,false) supplies complete role including office territory
+adventure-announcement	An animal has become a {s}.	一只动物成为了{s1}。	$growth-result	ELF 1bced50; absent name/has_name=false emits An animal; b71ba0(unit,result,false)
+adventure-announcement	has become a {s}.	已成为{s1}。	$growth-result	ELF b73550/b73920/c07650; absent name/has_name=false omits personal field; b71ba0(unit,result,false)
 fortress-announcement	An animal has grown to become a {s}.	一只动物长成了{s1}。	$growth-result	ELF c20a54..c20b9b; selected name absent or has_name=false; b71ba0(unit,result,true); announcement 0x116
 fortress-announcement	{s} has grown to become a {s}.	{s1}长成了{s2}。	$person,$growth-result	ELF c2963e..c29646 -> c20a81..c20b9b; b33570 selected language_name -> 12bfe90; b71ba0(unit,result,true); announcement 0x116
 

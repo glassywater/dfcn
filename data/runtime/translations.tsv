@@ -10592,6 +10592,9 @@ Announcement combat conversation-choice-transfer [conversation-choice-person]: p
 Announcement combat conversation-conflict-account [conversation-conflict-slain-list]: you slew {s}	你杀死了{s1}	l
 Announcement combat conversation-conflict-target [conversation-conflict-entity]: the forces of {s}	{s1}的部队	l
 Announcement combat diplomacy-cause []: the adversary's inability to communicate and form treaties	对方无法沟通和缔结条约	l
+Announcement combat adventure-announcement [$person,$growth-result]: {s} has become a {s}.	{s1}成为了{s2}。	l
+Announcement combat adventure-announcement [$growth-result]: An animal has become a {s}.	一只动物成为了{s1}。	l
+Announcement combat adventure-announcement [$growth-result]: has become a {s}.	已成为{s1}。	l
 Announcement combat fortress-announcement [$person,$growth-result]: {s} has grown to become a {s}.	{s1}长成了{s2}。	l
 Announcement combat fortress-announcement [$unit,$job,$unit]: {s} cancels {s}: Interrupted by {s}.	{s1}取消了{s2}：被{s3}打断。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Already leading creature.	{s1}取消了{s2}：已在牵引生物。	l
