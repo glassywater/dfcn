@@ -7091,6 +7091,39 @@ struct f_plotinfost {
     native_history_layout::f_hauling_infost f_hauling;
     native_history_layout::f_labor_infost f_labor_info;
 };
+struct f_region_map_entry {
+    int32_t f_path_map;
+    int32_t f_finder_rank;
+    Vector f_sites;
+    Flags f_flags;
+    int16_t f_elevation;
+    int16_t f_rainfall;
+    int16_t f_vegetation;
+    int16_t f_temperature;
+    int16_t f_evilness;
+    int16_t f_drainage;
+    int16_t f_volcanism;
+    int16_t f_savagery;
+    int16_t f_air_temp;
+    int16_t f_air_x;
+    int16_t f_air_y;
+    uint16_t f_clouds;
+    uint16_t f_wind;
+    int16_t f_snowfall;
+    int16_t f_salinity;
+    int16_t f_unused_16;
+    int16_t f_unused_17;
+    int16_t f_unused_18;
+    int16_t f_unused_19;
+    int16_t f_unused_20;
+    int16_t f_unused_21;
+    int16_t f_unused_22;
+    int16_t f_unused_23;
+    int16_t f_unused_24;
+    int32_t f_region_id;
+    int32_t f_landmass_id;
+    int16_t f_geo_index;
+};
 struct f_report {
     int16_t f_type;
     std::string f_text;
@@ -8955,6 +8988,15 @@ struct f_world_region {
     int32_t f_max_x;
     int32_t f_min_y;
     int32_t f_max_y;
+};
+struct f_world_river {
+    native_history_layout::f_language_name f_name;
+    native_history_layout::f_coord2d_path f_path;
+    Vector f_flow;
+    Vector f_exit_tile;
+    Vector f_elevation;
+    native_history_layout::f_coord2d f_end_pos;
+    Flags f_flags;
 };
 struct f_populacest {
     Vector f_nemesis;
@@ -21295,6 +21337,39 @@ static constexpr std::array<Field, 383> f_plotinfost_fields = {{
     {0x8770, DFCN_NATIVE_FIELD(f_plotinfost, f_labor_info.f_chores, 0x8770), 94, "labor_info.chores"},
     {0x87d0, DFCN_NATIVE_FIELD(f_plotinfost, f_labor_info.f_chores_exempted_children, 0x87d0), 24, "labor_info.chores_exempted_children"},
 }};
+static constexpr std::array<Field, 31> f_region_map_entry_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_region_map_entry, f_path_map, 0x0), 4, "path_map"},
+    {0x4, DFCN_NATIVE_FIELD(f_region_map_entry, f_finder_rank, 0x4), 4, "finder_rank"},
+    {0x8, DFCN_NATIVE_FIELD(f_region_map_entry, f_sites, 0x8), 24, "sites"},
+    {0x20, DFCN_NATIVE_FIELD(f_region_map_entry, f_flags, 0x20), 16, "flags"},
+    {0x30, DFCN_NATIVE_FIELD(f_region_map_entry, f_elevation, 0x30), 2, "elevation"},
+    {0x32, DFCN_NATIVE_FIELD(f_region_map_entry, f_rainfall, 0x32), 2, "rainfall"},
+    {0x34, DFCN_NATIVE_FIELD(f_region_map_entry, f_vegetation, 0x34), 2, "vegetation"},
+    {0x36, DFCN_NATIVE_FIELD(f_region_map_entry, f_temperature, 0x36), 2, "temperature"},
+    {0x38, DFCN_NATIVE_FIELD(f_region_map_entry, f_evilness, 0x38), 2, "evilness"},
+    {0x3a, DFCN_NATIVE_FIELD(f_region_map_entry, f_drainage, 0x3a), 2, "drainage"},
+    {0x3c, DFCN_NATIVE_FIELD(f_region_map_entry, f_volcanism, 0x3c), 2, "volcanism"},
+    {0x3e, DFCN_NATIVE_FIELD(f_region_map_entry, f_savagery, 0x3e), 2, "savagery"},
+    {0x40, DFCN_NATIVE_FIELD(f_region_map_entry, f_air_temp, 0x40), 2, "air_temp"},
+    {0x42, DFCN_NATIVE_FIELD(f_region_map_entry, f_air_x, 0x42), 2, "air_x"},
+    {0x44, DFCN_NATIVE_FIELD(f_region_map_entry, f_air_y, 0x44), 2, "air_y"},
+    {0x46, DFCN_NATIVE_FIELD(f_region_map_entry, f_clouds, 0x46), 2, "clouds"},
+    {0x48, DFCN_NATIVE_FIELD(f_region_map_entry, f_wind, 0x48), 2, "wind"},
+    {0x4a, DFCN_NATIVE_FIELD(f_region_map_entry, f_snowfall, 0x4a), 2, "snowfall"},
+    {0x4c, DFCN_NATIVE_FIELD(f_region_map_entry, f_salinity, 0x4c), 2, "salinity"},
+    {0x4e, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_16, 0x4e), 2, "unused_16"},
+    {0x50, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_17, 0x50), 2, "unused_17"},
+    {0x52, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_18, 0x52), 2, "unused_18"},
+    {0x54, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_19, 0x54), 2, "unused_19"},
+    {0x56, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_20, 0x56), 2, "unused_20"},
+    {0x58, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_21, 0x58), 2, "unused_21"},
+    {0x5a, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_22, 0x5a), 2, "unused_22"},
+    {0x5c, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_23, 0x5c), 2, "unused_23"},
+    {0x5e, DFCN_NATIVE_FIELD(f_region_map_entry, f_unused_24, 0x5e), 2, "unused_24"},
+    {0x60, DFCN_NATIVE_FIELD(f_region_map_entry, f_region_id, 0x60), 4, "region_id"},
+    {0x64, DFCN_NATIVE_FIELD(f_region_map_entry, f_landmass_id, 0x64), 4, "landmass_id"},
+    {0x68, DFCN_NATIVE_FIELD(f_region_map_entry, f_geo_index, 0x68), 2, "geo_index"},
+}};
 static constexpr std::array<Field, 22> f_report_fields = {{
     {0x0, DFCN_NATIVE_FIELD(f_report, f_type, 0x0), 2, "type"},
     {0x8, DFCN_NATIVE_FIELD(f_report, f_text, 0x8), 32, "text"},
@@ -23829,6 +23904,23 @@ static constexpr std::array<Field, 40> f_world_region_fields = {{
     {0x27c, DFCN_NATIVE_FIELD(f_world_region, f_min_y, 0x27c), 4, "min_y"},
     {0x280, DFCN_NATIVE_FIELD(f_world_region, f_max_y, 0x280), 4, "max_y"},
 }};
+static constexpr std::array<Field, 15> f_world_river_fields = {{
+    {0x0, DFCN_NATIVE_FIELD(f_world_river, f_name.f_first_name, 0x0), 32, "name.first_name"},
+    {0x20, DFCN_NATIVE_FIELD(f_world_river, f_name.f_nickname, 0x20), 32, "name.nickname"},
+    {0x40, DFCN_NATIVE_FIELD(f_world_river, f_name.f_words, 0x40), 28, "name.words"},
+    {0x5c, DFCN_NATIVE_FIELD(f_world_river, f_name.f_parts_of_speech, 0x5c), 14, "name.parts_of_speech"},
+    {0x6c, DFCN_NATIVE_FIELD(f_world_river, f_name.f_language, 0x6c), 4, "name.language"},
+    {0x70, DFCN_NATIVE_FIELD(f_world_river, f_name.f_type, 0x70), 2, "name.type"},
+    {0x72, DFCN_NATIVE_FIELD(f_world_river, f_name.f_has_name, 0x72), 1, "name.has_name"},
+    {0x78, DFCN_NATIVE_FIELD(f_world_river, f_path.f_x, 0x78), 24, "path.x"},
+    {0x90, DFCN_NATIVE_FIELD(f_world_river, f_path.f_y, 0x90), 24, "path.y"},
+    {0xa8, DFCN_NATIVE_FIELD(f_world_river, f_flow, 0xa8), 24, "flow"},
+    {0xc0, DFCN_NATIVE_FIELD(f_world_river, f_exit_tile, 0xc0), 24, "exit_tile"},
+    {0xd8, DFCN_NATIVE_FIELD(f_world_river, f_elevation, 0xd8), 24, "elevation"},
+    {0xf0, DFCN_NATIVE_FIELD(f_world_river, f_end_pos.f_x, 0xf0), 2, "end_pos.x"},
+    {0xf2, DFCN_NATIVE_FIELD(f_world_river, f_end_pos.f_y, 0xf2), 2, "end_pos.y"},
+    {0xf8, DFCN_NATIVE_FIELD(f_world_river, f_flags, 0xf8), 16, "flags"},
+}};
 static constexpr std::array<Field, 93> f_world_site_fields = {{
     {0x0, DFCN_NATIVE_FIELD(f_world_site, f_name.f_first_name, 0x0), 32, "name.first_name"},
     {0x20, DFCN_NATIVE_FIELD(f_world_site, f_name.f_nickname, 0x20), 32, "name.nickname"},
@@ -24632,6 +24724,7 @@ static constexpr Object objects[] = {
     {"performance_menu_choicest", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_performance_menu_choicest_fields.data(), std::size(f_performance_menu_choicest_fields), nullptr, 0},
     {"plant_raw", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_plant_raw_fields.data(), std::size(f_plant_raw_fields), nullptr, 0},
     {"plotinfost", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_plotinfost_fields.data(), std::size(f_plotinfost_fields), nullptr, 0},
+    {"region_map_entry", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_region_map_entry_fields.data(), std::size(f_region_map_entry_fields), nullptr, 0},
     {"report", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_report_fields.data(), std::size(f_report_fields), nullptr, 0},
     {"savegame_headerst", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_savegame_headerst_fields.data(), std::size(f_savegame_headerst_fields), nullptr, 0},
     {"setup_character_info", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_setup_character_info_fields.data(), std::size(f_setup_character_info_fields), nullptr, 0},
@@ -24673,6 +24766,7 @@ static constexpr Object objects[] = {
     {"world_construction_wallst", "world_construction", DFCN_NATIVE_BINDING(0x178a408, 0x204bfd8), f_world_construction_wallst_fields.data(), std::size(f_world_construction_wallst_fields), f_world_construction_wallst_slots, std::size(f_world_construction_wallst_slots)},
     {"world_data", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_world_data_fields.data(), std::size(f_world_data_fields), nullptr, 0},
     {"world_region", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_world_region_fields.data(), std::size(f_world_region_fields), nullptr, 0},
+    {"world_river", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_world_river_fields.data(), std::size(f_world_river_fields), nullptr, 0},
     {"world_site", "", DFCN_NATIVE_BINDING(0x0, 0x0), f_world_site_fields.data(), std::size(f_world_site_fields), nullptr, 0},
 };
 static constexpr uintptr_t world_rva = DFCN_NATIVE_BINDING(0x23d14f0, 0x23031a0);

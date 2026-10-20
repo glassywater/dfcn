@@ -169,6 +169,8 @@ def deploy_runtime_data(directory: Path) -> None:
                  "dfhack-overlay-plugin-controls.tsv", "dfhack-overlay-script-controls.tsv",
                  "procedural-terms.tsv", "procedural-word-senses.tsv",
                  "site-name-decisions.tsv", "site-name-imagery.tsv",
+                 "river-name-imagery.tsv", "river-name-constructions.tsv",
+                 "river-name-generics.tsv", "river-name-decisions.tsv",
                  "civilization-name-terms.tsv",
                  "site-government-parent-suffixes.tsv", "site-government-name-terms.tsv",
                  "site-government-independent-suffixes.tsv",

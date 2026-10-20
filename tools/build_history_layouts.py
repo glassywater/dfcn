@@ -249,7 +249,8 @@ class Generator:
         if len(events) != 133:
             raise ValueError('The pinned source must describe all 133 native event types')
         world = self.named('world')
-        roots = {'world_data', 'world_region', 'world_site', 'historical_figure', 'historical_entity',
+        roots = {'world_data', 'world_region', 'world_site', 'world_river', 'region_map_entry',
+                 'historical_figure', 'historical_entity',
                  'historical_figure_info', 'interaction_profilest', 'creature_raw', 'caste_raw',
                  'identity', 'artifact_record', 'item', 'item_toolst', 'itemdef_toolst', 'itemdef_instrumentst',
                  'itemdef_weaponst', 'itemdef_armorst', 'itemdef_shoesst',

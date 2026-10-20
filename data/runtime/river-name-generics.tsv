@@ -1,0 +1,12 @@
+# 完整 world_river 的最高有效等级；unknown 不补通名。泾仅在明确江南风格及平原水网下使用。
+size	terrain	style	suffix	priority
+Major River	*	*	江	10
+River	*	*	河	10
+Minor River	*	*	河	10
+Stream	*	*	溪	10
+Brook	lowland_waternet	jiangnan	泾	20
+Brook	lowland_waternet	*	溪	10
+Brook	hill_stream	*	溪	10
+Brook	other	*	溪	10
+Brook	unknown	*	溪	10
+unknown	*	*	-	10

@@ -2327,6 +2327,10 @@ static void capture_native_worldgen_caption(graphicst *graphics,
         row.native_caller = native_caller;
         if (g_native_site_name_fact)
             row.site_name = std::make_shared<NativeHistoryName>(*g_native_site_name_fact);
+        if (g_native_river_name_fact) {
+            row.river_name = std::make_shared<const NativeRiverNameFact>(*g_native_river_name_fact);
+            row.complete_source = g_native_river_name_fact->complete_source;
+        }
         row.editable_text = NativeEditableTextScope::active ||
             NativeEditableTextScope::owns(native_caller) ||
             native_worldgen_caption_editable(native_caller);
@@ -3477,6 +3481,7 @@ static void capture_native_world_site_entity_fact(graphicst *graphics,
 }
 
 #include "native_site_name_draws.inc"
+#include "native_river_names.inc"
 
 static void capture_native_clipped_draw(graphicst *graphics, const NativeString *source,
         NativeJustification just, int width) {
@@ -4112,8 +4117,10 @@ static bool install_native_caption_hooks() {
 #endif
 #ifdef _WIN32
     if (!append_native_site_name_draw_calls(calls)) return false;
+    if (!append_native_river_name_calls(calls)) return false;
 #else
     if (!append_native_site_name_draw_calls(profile.main_calls)) return false;
+    if (!append_native_river_name_calls(profile.main_calls)) return false;
     std::vector<NativeCall> entity_fact_calls{
         {0x143c4a2,0x425170,reinterpret_cast<const void *>(&capture_native_world_site_entity_fact<
             NativeWorldSiteEntityFactKind::SiteGovernment>),{0x48,0x89,0xda}},

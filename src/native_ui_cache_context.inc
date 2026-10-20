@@ -309,6 +309,12 @@ public:
         for (auto item : input.map_hover.data) value(item);
         value(input.editable_text); value(input.travel_building_field);
         optional(input.site_name, [&](const auto &site) { name(site); });
+        optional(input.river_name, [&](const auto &river) {
+            const auto &id = river.identity;
+            text(id.world_key); value(id.index); name(id.name);
+            value(id.size); value(id.terrain); value(id.finalized);
+            text(id.generic_style); value(river.field); text(river.complete_source);
+        });
         value(input.native_caller); value(input.adventure_crafting_role);
         value(input.adventure_inventory_role); value(input.adventure_barter_field);
         optional(input.work_order_shop_caption, [&](const auto &caption) {

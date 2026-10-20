@@ -1,0 +1,252 @@
+河流名称生成机制：本机 Linux 游戏程序反编译分析
+日期：2026-10-20
+
+结论
+
+世界地图中的河流使用 world_river.name，即 language_name/namest 结构。
+创建河流的两处调用都指定名称类型 River=20、默认词表类别 River=37。
+河流类别没有主题白名单或黑名单，两个选词器均从全体已加载的语言 WORD
+词条开始，再按照允许的位置和词性筛选。FAITH 这样的抽象词正常参与命名。
+河流规模标签与专名分开；截图中的 Stream: 不属于 The Aqua Faith 的词根。
+
+分析对象与证据范围
+
+程序：
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/dwarfort
+ELF Build ID：bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+地址均为这个 ELF 的原始虚拟地址；不是文件偏移，也不是 Windows RVA。
+本目录的 elf-*.asm 来自原始程序指令，elf-*.c 来自 Ghidra 12.1.2 的实际反编译。
+C 中函数名是分析标签，参数类型和局部变量名由反编译器推断；尾跳转可能被
+展开为被调用函数的代码。精确分支地址以汇编和 elf-switches.tsv 为准。
+
+本次只读取程序和源数据、保存逆向资料。没有修改汉化运行代码或运行词表，
+没有构建部署，没有新增或运行测试，没有操作游戏窗口，也没有读取当前河流
+对象或观察新的游戏画面。截图的名称结构是由其文本和原始词条重建的。
+
+一、命名调用链
+
+1. 河流创建函数 0x00c94ff0 内，调用点 0x00c9615f：
+   generate_by_category(language_raws, river.name, -1, 20, 37)
+
+2. 河流创建函数 0x00c96790 内，调用点 0x00c9788b：
+   generate_by_category(language_raws, river.name, -1, 20, 37)
+
+3. 0x01287d90 按类别取出两个 language_word_table：
+   selector_A = language_raws + 0x48   + category * 0x120
+   selector_B = language_raws + 0x4cc8 + category * 0x120
+   随后尾调用 0x01286260，传入 name、language、name_type、A、B。
+
+4. 0x01286260 是名称结构生成器。类型 20 的跳表项指向 0x012866a0。
+   同一个分支也处理 Artifact=1 和 ElfTree=13；只是结构规则共用。
+
+5. 0x01cc27d0 从相应位置的候选数组中随机抽取 (WORD索引, 词性)。
+   0x012c58d0 把名称结构转换为英文。
+   0x01cc3980 按 WORD 索引和词性取得英语词形。
+
+直接证据：
+elf-river-create-a.c、elf-river-create-b.c
+elf-category-dispatch.asm、elf-name-generate.c、elf-switches.tsv
+elf-select-word.c、elf-english-format.c、elf-english-word-form.asm
+
+二、为什么河名可以使用任意主题的词
+
+0x01cca840 建立各名称类别的默认选词器。River 类别为 0x25。
+其 switch 中 case 0x23（ArtImage）和 case 0x25 直接 break，
+没有添加任何包含或排除的 SYMBOL 组。其他类别可在相邻分支中看到
+NAME_PEAK、NAME_VOLCANO 等明确的限制；河流分支没有这些限制。
+
+0x01cca400 收到空的主题包含列表后，枚举全部 language.words。
+两个包含列表都为空，排除列表也为空，因此河流 A、B 选词器的候选来源相同。
+随后 0x01cc7350 把每个词按词形标志分配到六个位置池：
+
+池 0：复合词前半
+  FRONT_COMPOUND_NOUN_SING / NOUN_PLUR / ADJ / PREFIX。
+  STANDARD_VERB 另外加入动词原形和过去分词。
+
+池 1：复合词后半
+  REAR_COMPOUND_NOUN_SING / NOUN_PLUR / ADJ。
+  STANDARD_VERB 另外加入动词原形、第三人称现在式、过去式、过去分词。
+
+池 2：The 后面的中心名词
+  THE_NOUN_SING / THE_NOUN_PLUR。
+
+池 3：形容词
+  ADJ 词形非空即加入，无须 THE_ADJ 标记。
+
+池 4：中心名词前的连字符修饰词
+  THE_COMPOUND_NOUN_SING / NOUN_PLUR / ADJ / PREFIX。
+
+池 5：of 后的补语
+  OF_NOUN_SING / OF_NOUN_PLUR。
+  现在分词/动名词词形非空时，还加入 VerbGerund。
+
+选词按“词条＋词形”的数组项进行，不是先给每个英文字符串相同的概率。
+一个 WORD 可以以多个词性进入同一个池；不同 WORD 也可以有相同的英文拼写。
+WORD 本身还可能含空格或连字符，不能仅凭英文分词完整恢复原始词条边界。
+
+随附 vanilla-word-slots.tsv 列出本机原版 language_words.txt 的所有候选项，
+包含 WORD、词性、英文词形、准入依据和原文件行号。
+该原版文件有 2196 个 WORD，六个位置池的候选项数分别为：
+
+  复合词前半       3217
+  复合词后半       5301
+  中心名词         2442
+  形容词            849
+  连字符修饰词     1228
+  of 补语          2658
+
+这些是原版文件的静态词形数量，不是某个正在运行的世界的内存统计。
+模组及世界已加载的语言数据可能改变实际候选项。不存在一张固定的完整河名表。
+
+三、七个名称槽与三种主结构
+
+name.words[0..6] 保存词条索引，name.parts_of_speech[0..6] 保存相应词性。
+槽位与 Linux 偏移见 name-slots.tsv；未使用的 WORD 槽为 -1。
+
+  0  FrontCompound    复合词前半 F
+  1  RearCompound     复合词后半 R
+  2  FirstAdjective   第一形容词 A1
+  3  SecondAdjective  第二形容词 A2
+  4  HyphenCompound   连字符修饰词 H
+  5  TheX             中心名词 N
+  6  OfX              补语 Q
+
+河流分支首先执行 trandom(3)：
+
+  0：只填 F、R                    → FR
+  1：填 F、R，再生成称号          → FR the ...
+  2：只生成称号                  → The ...
+
+F 与 R 在英文显示中直接拼接。三种结构在最初抽签时各约 1/3。
+后续重抽会改变最终统计分布，不能把 1/3 当成生成结果的严格占比。
+
+称号一定先选择 N，然后选择修饰方式。其随机步骤等价于：
+
+  mode = trandom(3)
+  if trandom(50) != 0:
+      mode = trandom(2)
+
+  mode 0：填 Q          → The N of Q
+  mode 1：填 A1         → The A1 N
+  mode 2：填 Q 和 A1    → The A1 N of Q
+
+因此在进入称号分支后，三种方式最初抽签的近似概率为：
+  仅 of 补语        49.67%
+  仅形容词          49.67%
+  形容词与 of 并用   0.67%
+
+已有 A1 时，再以约 1% 的概率添加 A2。
+称号分支再以约 1% 的概率添加 H；英文输出为 H-N。
+这些结构可与前面的复合词组合，得到完整形式：
+
+  [FR ]the [A1 [A2] ] [H-]N [of Q]
+
+方括号表示按上述分支选填，不能把各项视作任意独立开关。
+称号单独出现时通常以 The 开头；带复合词时中间为 the。
+示意中的占位符对应 WORD，不要求每个占位符只有一个英文单词。
+完整名称最多使用七个 WORD 槽。截图恰好只使用 A1 与 N。
+
+生成器会随机决定从 A 或 B 选择各部分。河流的这两套池内容相同，
+这些额外随机调用仍会消耗随机数，因此上述结构伪代码不用于逐随机数复刻。
+
+四、生成器自带的约束和退化路径
+
+0x01286260 生成一轮后会：
+
+  • 按 ADJ_DIST 对两个形容词排序，值较大的在前。
+  • 拒绝同一个 WORD 索引在多个槽中重复，即使选了不同词形。
+  • 拒绝中心名词与 of 补语同时采用复数名词词性。
+  • 有冲突时重新生成，最多进行 100 轮；耗尽后保留最后一轮结果。
+
+这些是游戏本身的命名逻辑，不是本次添加的检查。
+该函数没有读取已存在的其他河名来保证全世界名称唯一，也没有语义理解步骤：
+不会判断“某颜色修饰某抽象概念是否自然”，不会根据河水真实颜色挑选 AQUA，
+不会因为水量较小就把词根限制成 brook 或 stream。
+
+若某个位置池为空，0x01cc27d0 会从全体词条和九种词性中随机兜底，并记录
+“Impoverished Word Selector”。这种退化路径可能形成缺失词形；正常原版
+河流的六个池都非空，上述完整结构描述针对正常选词路径。
+
+五、语言字段和随机数
+
+河流创建调用中的 language=-1 表示让名称生成器选择语言。
+生成器收集前 20 个未标记 generated 的语言翻译表，在候选中随机选一个；
+没有候选则回落到索引 0。原版通常是已有的种族语言表，实际取决于已加载资源。
+河流调用没有把某个文明的语言直接传入。
+
+结构化名称保留 language 字段，可供原生语言显示使用。
+英文显示函数 0x01cc3980 根据 WORD 和词性读取英语 forms，因此截图的
+Aqua、Faith 是英文词义输出，不是对某个矮人语拼写进行英文音译。
+
+随机来源是 mt_trandom/trandom。游戏随附 g_src/random.h 明确给出：
+  trandom(max) =
+    (mt_trandom() % 2147483647) / (2147483647 / max + 1)
+  max <= 1 时返回 0。
+这是有整数取整的伪随机选择；文中的概率均为近似值。
+仅知道河名或地理位置不能逆推出唯一随机种子。复现名称还取决于原始资源、
+随机状态与此前消耗的随机数；本次未继续逆向整个世界生成种子的传递链。
+
+六、截图 The Aqua Faith 的完整解释
+
+本机原始词表：
+data/vanilla/vanilla_languages/objects/language_words.txt
+
+第 19010 行：
+  [WORD:AQUA]
+  [ADJ:aqua]
+  [ADJ_DIST:1]
+  [FRONT_COMPOUND_ADJ]
+  [REAR_COMPOUND_ADJ]
+
+第 13550 行：
+  [WORD:FAITH]
+  [NOUN:faith:faiths]
+  [FRONT_COMPOUND_NOUN_SING]
+  [REAR_COMPOUND_NOUN_SING]
+  [THE_COMPOUND_NOUN_SING]
+  [THE_NOUN_SING]
+  [REAR_COMPOUND_NOUN_PLUR]
+  [OF_NOUN_PLUR]
+
+与截图一致的结构为：
+  type = River
+  words[2] = AQUA，parts_of_speech[2] = Adjective（2）
+  words[5] = FAITH，parts_of_speech[5] = Noun（0）
+  其他 WORD 槽为空
+  英文排版 = The + Aqua + Faith
+  规模标签另行排版 = Stream: + 名称
+
+The 是英文名称格式化函数添加的冠词，不是随机抽出的词条。
+Aqua 在这里表示颜色属性，Faith 是中心名词；其语法关系是“水色的信仰”。
+汉化截图显示“信仰水色”，对应的是译文把中心名词放到了颜色词前面。
+这不是原游戏把两个 WORD 槽倒序生成。
+
+七、当前汉化为何可能倒序
+
+src/embark_site.inc 的河流标签分支，以及 src/worldgen_layer_matching.inc
+的 Geography::River 分支，调用 translate_english_site_name 时只传英文文本。
+
+src/site_names.inc 中该函数在没有可用站点身份时调用：
+  english_character_names_.entity_name(english)
+
+src/english_character_names.h：
+  entity_name_parts 拆出 the 后面的称号；
+  entity_phrase_parts 合并英文词；
+  entity_phrase_join 调用 entity_join；
+  entity_join 同时尝试 surname_combine(a, b, true)
+  和 surname_combine(b, a, true)，之后按已有评分选择结果。
+
+因此该路径允许把 Aqua Faith 组合为相反词序。截图证明本次最终显示确为
+“信仰水色”；本次没有执行翻译器来模拟或复测它。
+
+若后续要覆盖全部河名，可靠输入应是 river.name 的七个 WORD/POS 槽和
+River 类型：区分复合词、形容词、中心名词、连字符成分以及 of 补语。
+仅给 The Aqua Faith 添加一条整句词条，不能覆盖同一机制产生的其他河名。
+
+参考结构资料
+
+本地：data/upstream/df-structures/df.language.xml、df.feature.xml
+上游：https://github.com/DFHack/df-structures/blob/master/df.language.xml
+上游：https://github.com/DFHack/dfhack/blob/develop/library/modules/Translation.cpp
+名称生成分支、概率和河流候选范围的结论来自上述本机 ELF，未以 DFHack
+的名称格式化实现替代对游戏生成器的反编译。

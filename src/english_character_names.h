@@ -94,6 +94,36 @@ public:
         int16_t part_of_speech = -1;
     };
 
+    // Other naming domains may explicitly reference a reviewed lexical sense.
+    // This grants no surname constructions, context rewrites or personal-name
+    // scores to that domain. Its own catalog must license each output form.
+    struct NameSenseReference {
+        std::string semantic_class, single, double_word, full, valency;
+        std::vector<std::string> traits, objects, subjects;
+    };
+    std::optional<NameSenseReference> name_sense_reference(std::string_view english,
+        std::string_view kind, std::string_view category, std::string_view state,
+        std::string_view sense) const {
+        const auto found = surnames_.find(sense_key(key(english), kinds(labels(kind)),
+            labels(category), key(state), sense));
+        if (found == surnames_.end()) return std::nullopt;
+        const auto &e = found->second;
+        return NameSenseReference{e.semantic_class, e.single, e.double_word,
+            e.full_meaning, e.valency, e.traits, e.allowed_objects, e.allowed_subjects};
+    }
+    bool name_class_is(std::string_view actual, std::string_view expected) const {
+        if (expected == "*") return true;
+        const auto found = surname_classes_.find(std::string(actual));
+        return found != surname_classes_.end() &&
+            std::find(found->second.ancestry.begin(), found->second.ancestry.end(),
+                expected) != found->second.ancestry.end();
+    }
+    std::vector<std::string> name_class_traits(std::string_view type) const {
+        const auto found = surname_classes_.find(std::string(type));
+        return found == surname_classes_.end() ? std::vector<std::string>{} : found->second.traits;
+    }
+    const MandarinNameReadings &name_readings() const { return surname_readings_; }
+
     // Places and governing entities share the classified imagery and bounded
     // scoring of surnames, but keep their own compound shapes and fallback.
     // The caller owns whole-name transliteration and the final type suffix.
@@ -221,6 +251,7 @@ private:
     };
     struct SurnameEntry {
         std::string core, modifier, head, action, agent, compact, balanced;
+        std::string single, double_word;
         std::vector<std::string> families;
         std::string semantic_class, action_type, valency, identity, imagery_sense, full_meaning;
         std::vector<std::string> traits, allowed_objects, allowed_subjects;
@@ -467,6 +498,8 @@ private:
             entry.agent = value("agent");
             entry.compact = value("compact");
             entry.balanced = value("balanced");
+            entry.single = value("single");
+            entry.double_word = value("double");
             entry.families = labels(value("family"));
             entry.semantic_class = key(value("semantic_class"));
             entry.traits = labels(value("traits"));
