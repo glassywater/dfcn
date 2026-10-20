@@ -6,3 +6,4 @@
 [AUTHOR:Byayoi Community]
 [NAME:DFCN Semantic Search Model]
 [DESCRIPTION:Optional offline semantic-search model for DFCN. Requires the DFCN Chinese localization core. Automatically discovered when installed; no world mod activation required.]
+[STEAM_FILE_ID:3823451988]

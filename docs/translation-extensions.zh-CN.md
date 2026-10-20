@@ -4,20 +4,22 @@
 
 语义搜索模型也作为独立 mod `DFCN Semantic Search Model` 分发，位于 `workshop/semantic-search/content`。核心启动时在与汉化数据扩展相同的游戏 mod、已安装数据 mod 和已订阅工坊目录中查找 `dfcn-semantic-search.toml`，验证其中声明的模型文件后才启用语义搜索；未安装或文件缺失时只关闭语义召回，拼写和拼音搜索保持可用。模型不进入 DFCN 核心工坊包或最小运行包。`package-workshop.cmd` 单独生成 `dfcn_semantic_search.zip`，整个 mod 文件夹解压至游戏 `mods` 目录后会自动识别，无需在创建世界时启用。
 
+独立模型可从[创意工坊订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988)，或下载 [dfcn_semantic_search.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020.2/dfcn_semantic_search.zip)。
+
 Windows [v53.16-20261009](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009) 提供 **Shift+F6** 扩展开关。扩展默认启用；首次按下停用全部扩展 TSV 词表和 TOML 规则，立即重新载入本体汉化并开启显示；再次按下恢复扩展并重新载入汉化。左右 Shift 均可，长按不重复切换。开关只影响本次运行，跨 **Shift+F5** 核心重载保留，不写入配置文件。Linux 源码已实现此快捷键，当前 Linux 发布包尚未包含。
 
 ## 已发布的数据包
 
 公开提供 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type 四个独立汉化数据包。[DFCN 本体工坊项目](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)提供通用扩展自动加载能力。订阅对应原模组和汉化数据包后自动识别，无需手工复制数据，也无需在创建世界时启用汉化数据包。
 
-[GitHub Release v53.16-20261019.3](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261019.3)提供 Windows 核心运行包 `DFCN-Windows-x64-minimal.zip` 及以下四个独立数据 ZIP：
+[GitHub Release v53.16-20261020.2](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020.2)提供 Windows 核心运行包 `DFCN-Windows-x64-minimal.zip` 及以下四个独立数据 ZIP：
 
 | 原模组与支持范围 | 工坊汉化数据 | 独立 ZIP |
 | --- | --- | --- |
-| Dwarvemon 2.22：基础宝可梦、生物、道具、材料、工坊、招式及战斗与历史文本 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177) | [dfcn_dwarvemon_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261019.3/dfcn_dwarvemon_zh_hans.zip) |
-| Dwarvemon Beta 2.22：Beta 与随包的 PMD、TCG、MissingNo 等可选模块 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791420) | [dfcn_dwarvemon_beta_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261019.3/dfcn_dwarvemon_beta_zh_hans.zip) |
-| Dwarvemon Entity All 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319) | [dfcn_dwarvemon_entity_all_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261019.3/dfcn_dwarvemon_entity_all_zh_hans.zip) |
-| Dwarvemon Entity Type 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235) | [dfcn_dwarvemon_entity_type_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261019.3/dfcn_dwarvemon_entity_type_zh_hans.zip) |
+| Dwarvemon 2.22：基础宝可梦、生物、道具、材料、工坊、招式及战斗与历史文本 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177) | [dfcn_dwarvemon_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020.2/dfcn_dwarvemon_zh_hans.zip) |
+| Dwarvemon Beta 2.22：Beta 与随包的 PMD、TCG、MissingNo 等可选模块 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791420) | [dfcn_dwarvemon_beta_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020.2/dfcn_dwarvemon_beta_zh_hans.zip) |
+| Dwarvemon Entity All 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319) | [dfcn_dwarvemon_entity_all_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020.2/dfcn_dwarvemon_entity_all_zh_hans.zip) |
+| Dwarvemon Entity Type 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235) | [dfcn_dwarvemon_entity_type_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020.2/dfcn_dwarvemon_entity_type_zh_hans.zip) |
 
 独立 ZIP 中的整个 mod 文件夹解压至游戏 `mods` 目录即可，各包分别安装。基础 Dwarvemon 与 Beta 使用各自的专用汉化数据，Entity All、Entity Type 也分别提供独立包。其余 18 个汉化数据包保持私密，不在本次 Release 中提供。更新或移除数据后，核心在下次启动或显式重新加载数据时识别相应变化；没有完整译文的 mod 名称、简介和工坊名称保留原文，用户自定义小队名称保持原样。
 

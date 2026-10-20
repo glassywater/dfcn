@@ -66,6 +66,8 @@ data/installed_mods 中的本地数据包。数据包无需加入创建世界的
 核心在下一次启动或显式重新加载数据时处理变化。
 扩展格式与使用说明见 dfcn/docs/translation-extensions.zh-CN.md。
 语义搜索模型另有独立的 DFCN Semantic Search Model mod；安装或订阅后，核心会在启动时自动发现并载入。模型不随 DFCN 汉化核心包发布；未安装该 mod 时拼写和拼音搜索仍可使用。
+模型订阅：https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988
+也可下载同版 Release 的 dfcn_semantic_search.zip，将整个 dfcn_semantic_search 文件夹解压至游戏 mods 目录，无需在世界模组列表中启用。
 用户自定义小队名称始终原样显示，包括英文、数字组合和中文。
 
 四、卸载与许可
