@@ -519,7 +519,7 @@ static bool native_dfhack_overlay_class_method(NativeDfhackLuaState *state,
             if (stack.getinfo(state, ">Su", &producer)) {
                 const auto path = native_dfhack_lua_text(producer.source, 32768);
                 if (path && native_dfhack_lua_source_key(*path) == source &&
-                        producer.linedefined == line) return true;
+                        (line <= 0 || producer.linedefined == line)) return true;
             }
         }
         stack.settop(state, klass);
@@ -1185,20 +1185,37 @@ static bool native_dfhack_notification_list_owner(NativeDfhackLuaState *state,
     const char *name = stack.getlocal(state, &frame, 1);
     if (!name || std::strcmp(name, "self") || stack.type(state, -1) != 5) return false;
     const int list = stack.gettop(state);
-    // These two native closures belong specifically to NotifyOverlay:init;
-    // the settings List and other scripts cannot claim a notification token.
-    const auto submit = [&](const char *field, int first, int last) {
-        stack.settop(state, list);
+    // Both closures must bind the actual enclosing NotifyOverlay instance.
+    // Source line numbers change when upstream adds comments or branches;
+    // callback identity, source, and the real parent chain prove ownership.
+    if (!native_dfhack_sitemap_raw_field(state, list, "parent_view") ||
+            stack.type(state, -1) != 5 ||
+            !native_dfhack_sitemap_raw_field(state, -1, "parent_view") ||
+            stack.type(state, -1) != 5) return false;
+    const int overlay = stack.gettop(state);
+    if (!native_dfhack_overlay_class_method(state, overlay, "overlay_onupdate",
+            api.notify_source, 0)) return false;
+    const auto submit = [&](const char *field) {
+        stack.settop(state, overlay);
         if (!native_dfhack_sitemap_raw_field(state, list, field) ||
                 stack.type(state, -1) != 6) return false;
+        const int callback = stack.gettop(state);
+        bool bound = false;
+        for (int index = 1; index <= 16; ++index) {
+            const char *upvalue = api.getupvalue(state, callback, index);
+            if (!upvalue) break;
+            if (!std::strcmp(upvalue, "self"))
+                bound = stack.type(state, -1) == 5 && api.rawequal(state, -1, overlay);
+            stack.settop(state, callback);
+        }
+        if (!bound) return false;
         NativeDfhackLuaDebug producer{};
         if (!stack.getinfo(state, ">Su", &producer) || producer.isvararg ||
-                producer.nparams != 2 || producer.linedefined != first ||
-                producer.lastlinedefined != last) return false;
+                producer.nparams != 2) return false;
         const auto source = native_dfhack_lua_text(producer.source, 32768);
         return source && native_dfhack_lua_source_key(*source) == api.notify_source;
     };
-    if (!submit("on_submit", 37, 41) || !submit("on_submit2", 42, 46)) return false;
+    if (!submit("on_submit") || !submit("on_submit2")) return false;
     stack.settop(state, top);
     // Use the actual row being passed to Label.render_text, not a selected
     // index or a name inferred from its spelling. Local slots are discovered
@@ -1256,9 +1273,9 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
                 stack.tocfunction(state, -1) != api.paint_string) return;
         stack.settop(state, top);
         if (!stack.getstack(state, 1, &painter) || !stack.getinfo(state, "Slu", &painter) ||
-                painter.linedefined != 570 || painter.lastlinedefined != 590 ||
-                painter.currentline < 581 || painter.currentline > 586 ||
                 painter.nparams != 3 || !painter.isvararg) return;
+        const bool profiled_painter = painter.linedefined == 570 &&
+            painter.lastlinedefined == 590 && painter.currentline >= 581 && painter.currentline <= 586;
         const auto painter_source = native_dfhack_lua_text(painter.source, 32768);
         if (!painter_source || native_dfhack_lua_source_key(*painter_source) != api.painter_source)
             return;
@@ -1279,13 +1296,14 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
                 visible_length > full_length - static_cast<size_t>(dx) ||
                 std::memcmp(full + dx, visible, visible_length)) return;
         stack.settop(state, top);
-        auto control_panel = native_dfhack_control_panel_label_text(state,
-            std::string_view(full, full_length), static_cast<int>(dx));
-        auto overlay = control_panel ? std::optional<NativeDfhackOverlayText>{} :
+        auto control_panel = profiled_painter ? native_dfhack_control_panel_label_text(state,
+            std::string_view(full, full_length), static_cast<int>(dx)) :
+            std::optional<NativeDfhackControlPanelText>{};
+        auto overlay = (control_panel || !profiled_painter) ? std::optional<NativeDfhackOverlayText>{} :
             native_dfhack_spectate_banner_text(state, std::string_view(full, full_length));
-        if (!control_panel && !overlay)
+        if (profiled_painter && !control_panel && !overlay)
             overlay = native_dfhack_overlay_label_text(state, std::string_view(full, full_length));
-        if (!control_panel && !overlay)
+        if (profiled_painter && !control_panel && !overlay)
             overlay = native_dfhack_buildingplan_list_text(state, std::string_view(full, full_length));
         bool owned = control_panel.has_value() || overlay.has_value();
         NativeDfhackChoiceTextOwner owner = NativeDfhackChoiceTextOwner::Sitemap;
@@ -1294,14 +1312,16 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
         // List rows still require their original authored submit provenance.
         // Actual Labels use their own onRenderBody/render_text source above;
         // helper windows need no inferred caption or copied callback owner.
-        for (int level = 2; !owned && level <= 5; ++level) {
+        for (int level = 2; !owned && level <= 8; ++level) {
             if (!stack.getstack(state, level, &list) || !stack.getinfo(state, "Slu", &list)) break;
             const auto list_source = native_dfhack_lua_text(list.source, 32768);
             if (!list_source || native_dfhack_lua_source_key(*list_source) != api.list_source ||
-                    list.linedefined != 236 || list.lastlinedefined != 293 ||
-                    list.currentline != 277 || list.nparams != 2 || list.isvararg) continue;
-            if (const auto filtered_owner = native_dfhack_filtered_list_owner(
-                    state, list, std::string_view(full, full_length))) {
+                    list.nparams != 2 || list.isvararg) continue;
+            const bool profiled_list = profiled_painter && list.linedefined == 236 &&
+                list.lastlinedefined == 293 && list.currentline == 277;
+            if (const auto filtered_owner = profiled_list ? native_dfhack_filtered_list_owner(
+                    state, list, std::string_view(full, full_length)) :
+                    std::optional<NativeDfhackChoiceTextOwner>{}) {
                 owned = true;
                 owner = *filtered_owner;
             }

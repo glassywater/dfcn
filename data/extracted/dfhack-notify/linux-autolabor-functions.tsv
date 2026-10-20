@@ -1,0 +1,10 @@
+start	end	symbol
+0x325e0	0x32786	job_display_name(df::job*)
+0x32040	0x321e6	oldest_starving_name()
+0x2eb00	0x2ebaf	reaction_display_name(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+0x10820	0x10bf3	autolabor_getStarvingJobs(lua_State*)
+0x2f330	0x2f343	ModernEngine::starving_jobs()
+0x321f0	0x3225c	ModernEngine::oldest_starving_name[abi:cxx11]()
+0x2f510	0x2f523	MonitorEngine::starving_jobs()
+0x32260	0x322cc	MonitorEngine::oldest_starving_name[abi:cxx11]()
+0x1b110	0x1b6e9	std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > DFHack::format_key<short>(char const*, short)

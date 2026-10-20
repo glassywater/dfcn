@@ -1,0 +1,5 @@
+start	end	symbol
+0x5f46e0	0x5f4825	screen_paintString(lua_State*)
+0x6459fa	0x645a2f	df::enum_traits<df::enums::job_type::job_type>::attrs(df::enums::job_type::job_type)
+0x5f3770	0x5f3f78	DFHack::Lua::CheckPen(lua_State*, DFHack::Screen::Pen*, int, bool, bool)
+0x998b00	0x998c26	DFHack::Screen::paintString(DFHack::Screen::Pen const&, int, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)

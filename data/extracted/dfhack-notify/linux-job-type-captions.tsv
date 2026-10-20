@@ -1,0 +1,260 @@
+enum_value	enum_key	caption_address	caption	fallback_address	produced_text
+-1	NONE	0x0		0xa5ba3c	NONE
+0	CarveFortification	0xa546ee	Carve Fortification	0xa3f726	Carve Fortification
+1	SmoothWall	0xa54702	Smooth Wall	0xa555c5	Smooth Wall
+2	SmoothFloor	0xa5470e	Smooth Floor	0xa555d0	Smooth Floor
+3	DetailWall	0xa5471b	Detail Wall	0xa555dc	Detail Wall
+4	DetailFloor	0xa54727	Detail Floor	0xa555e7	Detail Floor
+5	Dig	0xa3df41	Dig	0xa3df41	Dig
+6	CarveUpwardStaircase	0xa54734	Carve Upward Staircase	0xa555f3	Carve Upward Staircase
+7	CarveDownwardStaircase	0xa5474b	Carve Downward Staircase	0xa55608	Carve Downward Staircase
+8	CarveUpDownStaircase	0xa54764	Carve Up/Down Staircase	0xa5561f	Carve Up/Down Staircase
+9	CarveRamp	0xa5477c	Carve Ramp	0xa55634	Carve Ramp
+10	DigChannel	0xa54787	Dig Channel	0xa5563e	Dig Channel
+11	FellTree	0xa54793	Fell Tree	0xa55649	Fell Tree
+12	GatherPlants	0xa5479d	Gather Plants	0xa3f6c0	Gather Plants
+13	RemoveConstruction	0xa547ab	Remove Construction	0xa3f929	Remove Construction
+14	CollectWebs	0xa547bf	Collect Webs	0xa55652	Collect Webs
+15	BringItemToDepot	0xa547cc	Bring Item to Depot	0xa5565e	Bring Item to Depot
+16	BringItemToShop	0xa547e0	Bring Item to Shop	0xa5566f	Bring Item to Shop
+17	Eat	0xa66b11	Eat	0xa66b11	Eat
+18	GetProvisions	0xa547f3	Get Provisions	0xa5567f	Get Provisions
+19	Drink	0xa3c55c	Drink	0xa3c55c	Drink
+20	DrinkItem	0xa3c55c	Drink	0xa3d9bb	Drink
+21	FillWaterskin	0xa54802	Fill Waterskin	0xa5568d	Fill Waterskin
+22	FillWaterskinItem	0xa54802	Fill Waterskin	0xa5569b	Fill Waterskin
+23	Sleep	0xad8100	Sleep	0xad8100	Sleep
+24	CollectSand	0xa54811	Collect Sand	0xa556ad	Collect Sand
+25	Fish	0xa548a3	Fish	0xa548a3	Fish
+26	Hunt	0xa3cf6d	Hunt	0xa3cf6d	Hunt
+27	HuntVermin	0xa5481e	Hunt for Small Creature	0xa3db49	Hunt for Small Creature
+28	Kidnap	0xa54836	Kidnap	0xa54836	Kidnap
+29	BeatCriminal	0xa5483d	Beat Criminal	0xa556b9	Beat Criminal
+30	StartingFistFight	0xa5484b	Starting Fist Fight	0xa556c6	Starting Fist Fight
+31	CollectTaxes	0xa5485f	Collect Taxes	0xa556d8	Collect Taxes
+32	GuardTaxCollector	0xa5486d	Guard Tax Collector	0xa556e5	Guard Tax Collector
+33	CatchLiveLandAnimal	0xa54881	Catch Live Land Animal	0xa556f7	Catch Live Land Animal
+34	CatchLiveFish	0xa54898	Catch Live Fish	0xa5570b	Catch Live Fish
+35	ReturnKill	0xa548a8	Return Kill	0xa55719	Return Kill
+36	StoreOwnedItem	0xa548b4	Store Owned Item	0xa55724	Store Owned Item
+37	PlaceItemInTomb	0xa548c5	Place Item in Tomb	0xa55733	Place Item in Tomb
+38	StoreItemInStockpile	0xa548d8	Store Item in Stockpile	0xa55743	Store Item in Stockpile
+39	StoreItemInBag	0xa548f0	Store Item in Bag	0xa55758	Store Item in Bag
+40	StoreItemInLocation	0xa54902	Store Item In Location	0xa55767	Store Item In Location
+41	StoreWeapon	0xa54919	Store Weapon	0xa5577b	Store Weapon
+42	StoreArmor	0xa54926	Store Armor	0xa55787	Store Armor
+43	StoreItemInBarrel	0xa54932	Store Item in Barrel	0xa55792	Store Item in Barrel
+44	StoreItemInBin	0xa54947	Store Item in Bin	0xa557a4	Store Item in Bin
+45	SeekArtifact	0xa54959	Seek Artifact	0xa3dbd5	Seek Artifact
+46	SeekInfant	0xa54967	Seek Infant	0xa3db61	Seek Infant
+47	GoShopping	0xa54973	Go Shopping	0xa557b3	Go Shopping
+48	GoShoppingSpecific	0xa54973	Go Shopping	0xa557be	Go Shopping
+49	Clean	0xab125e	Clean	0xab125e	Clean
+50	Rest	0xa3c37b	Rest	0xa3c37b	Rest
+51	PickupEquipment	0xa5497f	Pickup Equipment	0xa557d1	Pickup Equipment
+52	DumpItem	0xa54990	Dump Item	0xa557e1	Dump Item
+53	StrangeMoodCrafter	0xa5499a	Strange Mood (Crafter)	0xa557ea	Strange Mood (Crafter)
+54	StrangeMoodJeweller	0xa549b1	Strange Mood (Jeweller)	0xa557fd	Strange Mood (Jeweller)
+55	StrangeMoodForge	0xa549c9	Strange Mood (Forge)	0xa55811	Strange Mood (Forge)
+56	StrangeMoodMagmaForge	0xa549de	Strange Mood (Magma Forge)	0xa55822	Strange Mood (Magma Forge)
+57	StrangeMoodBrooding	0xa549f9	Strange Mood (Brooding)	0xa55838	Strange Mood (Brooding)
+58	StrangeMoodFell	0xa54a11	Strange Mood (Fell)	0xa5584c	Strange Mood (Fell)
+59	StrangeMoodCarpenter	0xa54a25	Strange Mood (Carpenter)	0xa5585c	Strange Mood (Carpenter)
+60	StrangeMoodMason	0xa54a3e	Strange Mood (Mason)	0xa55871	Strange Mood (Mason)
+61	StrangeMoodBowyer	0xa54a53	Strange Mood (Bowyer)	0xa55882	Strange Mood (Bowyer)
+62	StrangeMoodTanner	0xa54a69	Strange Mood (Leather)	0xa55894	Strange Mood (Leather)
+63	StrangeMoodWeaver	0xa54a80	Strange Mood (Clothier)	0xa558a6	Strange Mood (Clothier)
+64	StrangeMoodGlassmaker	0xa54a98	Strange Mood (Glassmaker)	0xa558b8	Strange Mood (Glassmaker)
+65	StrangeMoodMechanics	0xa54ab2	Strange Mood (Mechanics)	0xa558ce	Strange Mood (Mechanics)
+66	ConstructBuilding	0xa54acb	Construct Building	0xa558e3	Construct Building
+67	ConstructDoor	0xa54ade	Construct Door	0xa558f5	Construct Door
+68	ConstructFloodgate	0xa54aed	Construct Floodgate	0xa55903	Construct Floodgate
+69	ConstructBed	0xa54b01	Construct Bed	0xa55916	Construct Bed
+70	ConstructThrone	0xa54b0f	Construct Throne	0xa55923	Construct Throne
+71	ConstructCoffin	0xa54b20	Construct Coffin	0xa55933	Construct Coffin
+72	ConstructTable	0xa54b31	Construct Table	0xa55943	Construct Table
+73	ConstructChest	0xa54b41	Construct Chest	0xa55952	Construct Chest
+74	ConstructBag	0xa54b51	Construct Bag	0xa55961	Construct Bag
+75	ConstructBin	0xa54b5f	Construct Bin	0xa5596e	Construct Bin
+76	ConstructArmorStand	0xa54b6d	Construct Armor Stand	0xa5597b	Construct Armor Stand
+77	ConstructWeaponRack	0xa54b83	Construct Weapon Rack	0xa5598f	Construct Weapon Rack
+78	ConstructCabinet	0xa54b99	Construct Cabinet	0xa559a3	Construct Cabinet
+79	ConstructStatue	0xa54bab	Construct Statue	0xa559b4	Construct Statue
+80	ConstructBlocks	0xa54bbc	Construct Blocks	0xa559c4	Construct Blocks
+81	MakeRawGlass	0xa54bcd	Make Raw Glass	0xa559d4	Make Raw Glass
+82	MakeCrafts	0xa54bdc	Make Crafts	0xa559e1	Make Crafts
+83	MintCoins	0xa54be8	Mint Coins	0xa559ec	Mint Coins
+84	CutGems	0xa54bf3	Cut Gems	0xa6000a	Cut Gems
+85	CutGlass	0xa54bfc	Cut Glass	0xa478c8	Cut Glass
+86	EncrustWithGems	0xa54c06	Encrust With Gems	0xa559f6	Encrust With Gems
+87	EncrustWithGlass	0xa54c18	Encrust With Glass	0xa55a06	Encrust With Glass
+88	DestroyBuilding	0xa54c2b	Destroy Building	0xa55a17	Destroy Building
+89	SmeltOre	0xa54c3c	Smelt Ore	0xa55a27	Smelt Ore
+90	MeltMetalObject	0xa54c46	Melt a Metal Object	0xa55a30	Melt a Metal Object
+91	ExtractMetalStrands	0xa54c5a	Extract Metal Strands	0xa55a40	Extract Metal Strands
+92	PlantSeeds	0xa54c70	Plant Seeds	0xa55a54	Plant Seeds
+93	HarvestPlants	0xa54c7c	Harvest Plants	0xa55a5f	Harvest Plants
+94	TrainHuntingAnimal	0xa54c8b	Train Hunting Animal	0xa55a6d	Train Hunting Animal
+95	TrainWarAnimal	0xa54ca0	Train War Animal	0xa55a80	Train War Animal
+96	MakeWeapon	0xa54cb1	Forge Weapon	0xa55a8f	Forge Weapon
+97	ForgeAnvil	0xa54cbe	Forge Anvil	0xa55a9a	Forge Anvil
+98	ConstructCatapultParts	0xa54cca	Construct Catapult Parts	0xa55aa5	Construct Catapult Parts
+99	ConstructBallistaParts	0xa54ce3	Construct Ballista Parts	0xa55abc	Construct Ballista Parts
+100	MakeArmor	0xa54cfc	Make Armor	0xa55ad3	Make Armor
+101	MakeHelm	0xa54d07	Forge Helm	0xa55add	Forge Helm
+102	MakePants	0xa54d12	Make Pants	0xa55ae6	Make Pants
+103	StudWith	0xa54d1d	Stud With	0xa55af0	Stud With
+104	ButcherAnimal	0xa54d27	Butcher an Animal	0xa55af9	Butcher an Animal
+105	PrepareRawFish	0xa54d39	Prepare a Raw Fish	0xa55b07	Prepare a Raw Fish
+106	MillPlants	0xa54d4c	Mill Plants	0xa55b16	Mill Plants
+107	BaitTrap	0xa54d58	Bait Trap	0xa55b21	Bait Trap
+108	MilkCreature	0xa54d62	Milk Creature	0xa55b2a	Milk Creature
+109	MakeCheese	0xa54d75	Make Cheese	0xa55b37	Make Cheese
+110	ProcessPlants	0xa54d81	Process Plants	0xa4b34d	Process Plants
+111	PolishStones	0xa54bf3	Cut Gems	0xa55b42	Cut Gems
+112	ProcessPlantsVial	0xa54d90	Process Plants (Vial)	0xa55b4f	Process Plants (Vial)
+113	ProcessPlantsBarrel	0xa54da6	Process Plants (Barrel)	0xa55b61	Process Plants (Barrel)
+114	PrepareMeal	0xa54dbe	Prepare Meal	0xa55b75	Prepare Meal
+115	WeaveCloth	0xa54dcb	Weave Cloth	0xa55b81	Weave Cloth
+116	MakeGloves	0xa54dd7	Make Gloves	0xa55b8c	Make Gloves
+117	MakeShoes	0xa54de3	Make Shoes	0xa55b97	Make Shoes
+118	MakeShield	0xa54dee	Make Shield	0xa55ba1	Make Shield
+119	MakeCage	0xa54dfa	Make Cage	0xa55bac	Make Cage
+120	MakeChain	0xa54e04	Make Chain	0xa55bb5	Make Chain
+121	MakeFlask	0xa54e0f	Make Flask	0xa55bbf	Make Flask
+122	MakeGoblet	0xa54e1a	Make Goblet	0xa55bc9	Make Goblet
+123	MakeToy	0xa54e26	Make Toy	0xa55bd4	Make Toy
+124	MakeAnimalTrap	0xa54e2f	Make Animal Trap	0xa55bdc	Make Animal Trap
+125	MakeBarrel	0xa54e40	Make Barrel	0xa55beb	Make Barrel
+126	MakeBucket	0xa54e4c	Make Bucket	0xa55bf6	Make Bucket
+127	MakeWindow	0xa54e58	Make Window	0xa55c01	Make Window
+128	MakeTotem	0xa54e64	Make Totem	0xa55c0c	Make Totem
+129	MakeAmmo	0xa54e6f	Make Ammo	0xa55c16	Make Ammo
+130	DecorateWith	0xa54e79	Decorate With	0xa55c1f	Decorate With
+131	MakeBackpack	0xa54e87	Make Backpack	0xa55c2c	Make Backpack
+132	MakeQuiver	0xa54e95	Make Quiver	0xa55c39	Make Quiver
+133	MakeBallistaArrowHead	0xa54ea1	Make Ballista Arrow Head	0xa55c44	Make Ballista Arrow Head
+134	AssembleSiegeAmmo	0xa54eba	Assemble Siege Ammo	0xa55c5a	Assemble Siege Ammo
+135	LoadCatapult	0xa54ece	Load Catapult	0xa55c6c	Load Catapult
+136	LoadBallista	0xa54edc	Load Ballista	0xa55c79	Load Ballista
+137	FireCatapult	0xa54eea	Fire Catapult	0xa55c86	Fire Catapult
+138	FireBallista	0xa54ef8	Fire Ballista	0xa55c93	Fire Ballista
+139	ConstructMechanisms	0xa54f06	Construct Mechanisms	0xa55ca0	Construct Mechanisms
+140	MakeTrapComponent	0xa54f1b	MakeTrapComponent	0xa54f1b	MakeTrapComponent
+141	LoadCageTrap	0xa54f2d	Load Cage Trap	0xa55cb4	Load Cage Trap
+142	LoadStoneTrap	0xa54f3c	Load Stone Trap	0xa55cc1	Load Stone Trap
+143	LoadWeaponTrap	0xa54f4c	Load Weapon Trap	0xa55ccf	Load Weapon Trap
+144	CleanTrap	0xa54f5d	Clean Trap	0xa55cde	Clean Trap
+145	EncrustWithStones	0xa54f68	Encrust With Stones	0xa55ce8	Encrust With Stones
+146	LinkBuildingToTrigger	0xa54f7c	Link a Building to Trigger	0xa55cfa	Link a Building to Trigger
+147	PullLever	0xa54f97	Pull the Lever	0xa55d10	Pull the Lever
+148		0xa486bc	UNUSED_04	0x0	UNUSED_04
+149	ExtractFromPlants	0xa54fa6	Extract from Plants	0xa55d1a	Extract from Plants
+150	ExtractFromRawFish	0xa54fba	Extract from Raw Fish	0xa55d2c	Extract from Raw Fish
+151	ExtractFromLandAnimal	0xa54fd0	Extract from Land Animal	0xa55d3f	Extract from Land Animal
+152	TameVermin	0xa54fe9	Tame Small Animal	0xa55d55	Tame Small Animal
+153	TameAnimal	0xa54ffb	Tame ?something?	0xa55d60	Tame ?something?
+154	ChainAnimal	0xa5500c	Chain Animal	0xa55d6b	Chain Animal
+155	UnchainAnimal	0xa55019	Unchain Animal	0xa55d77	Unchain Animal
+156	UnchainPet	0xa55028	Unchain Pet	0xa55d85	Unchain Pet
+157	ReleaseLargeCreature	0xa55034	Release Large Creature	0xa55d90	Release Large Creature
+158	ReleasePet	0xa5504b	Release Pet	0xa55da5	Release Pet
+159	ReleaseSmallCreature	0xa55057	Release Small Creature	0xa55db0	Release Small Creature
+160	HandleSmallCreature	0xa5506e	Handle Small Creature	0xa55dc5	Handle Small Creature
+161	HandleLargeCreature	0xa55084	Handle Large Creature	0xa55dd9	Handle Large Creature
+162	CageLargeCreature	0xa5509a	Cage Large Creature	0xa55ded	Cage Large Creature
+163	CageSmallCreature	0xa550ae	Cage Small Creature	0xa55dff	Cage Small Creature
+164	RecoverWounded	0xa550c2	Recover Wounded	0xa55e11	Recover Wounded
+165	DiagnosePatient	0xa550d9	Diagnose Patient	0xa55e20	Diagnose Patient
+166	ImmobilizeBreak	0xa550ea	Immobilize Break	0xa3d804	Immobilize Break
+167	DressWound	0xa550fb	Dress Wound	0xa3e00b	Dress Wound
+168	CleanPatient	0xa55107	Clean Patient	0xa55e30	Clean Patient
+169	Surgery	0xa3e5e5	Surgery	0xa3e5e5	Surgery
+170	Suture	0xa55115	Suture	0xa55115	Suture
+171	SetBone	0xa5511c	Set Bone	0xa55e3d	Set Bone
+172	PlaceInTraction	0xa55125	Place In Traction	0xa55e45	Place In Traction
+173	DrainAquarium	0xa55137	Drain Aquarium	0xa55e55	Drain Aquarium
+174	FillAquarium	0xa55146	Fill Aquarium	0xa55e63	Fill Aquarium
+175	FillPond	0xa55154	Fill Pond	0xa55e70	Fill Pond
+176	GiveWater	0xa5515e	Give Water	0xa55e79	Give Water
+177	GiveFood	0xa55169	Give Food	0xa55e83	Give Food
+178	GiveWaterPet	0xa5515e	Give Water	0xa55e8c	Give Water
+179	GiveFoodPet	0xa55169	Give Food	0xa55e99	Give Food
+180	RecoverPet	0xa55173	Recover Pet	0xa55ea5	Recover Pet
+181	PitLargeAnimal	0xa5517f	Pit/Pond Large Animal	0xa55eb0	Pit/Pond Large Animal
+182	PitSmallAnimal	0xa55195	Pit/Pond Small Animal	0xa55ebf	Pit/Pond Small Animal
+183	SlaughterAnimal	0xa551ab	Slaughter Animal	0xa55ece	Slaughter Animal
+184	MakeCharcoal	0xa551bc	Make Charcoal	0xa55ede	Make Charcoal
+185	MakeAsh	0xa551ca	Make Ash	0xa55eeb	Make Ash
+186	MakeLye	0xa551d3	Make Lye	0xa55ef3	Make Lye
+187	MakePotashFromLye	0xa551e0	Make Potash From Lye	0xa55efb	Make Potash From Lye
+188	FertilizeField	0xa551fc	Fertilize Field	0xa55f0d	Fertilize Field
+189	MakePotashFromAsh	0xa5520c	Make Potash From Ash	0xa55f1c	Make Potash From Ash
+190	DyeThread	0xa55221	Dye Thread	0xa55f2e	Dye Thread
+191	DyeCloth	0xa5522c	Dye Cloth	0xa55f38	Dye Cloth
+192	SewImage	0xa55236	Sew Image	0xab13bf	Sew Image
+193	MakePipeSection	0xa55240	Make Pipe Section	0xa55f41	Make Pipe Section
+194	OperatePump	0xa55252	Operate Pump	0xa55f51	Operate Pump
+195	ManageWorkOrders	0xa5525f	Manage Work Orders	0xa55f5d	Manage Work Orders
+196	UpdateStockpileRecords	0xa55272	Update Stockpile Records	0xa55f6e	Update Stockpile Records
+197	TradeAtDepot	0xa5528b	Trade at Depot	0xa55f85	Trade at Depot
+198	ConstructHatchCover	0xa5529a	Construct Hatch Cover	0xa55f92	Construct Hatch Cover
+199	ConstructGrate	0xa552b0	Construct Grate	0xa55fa6	Construct Grate
+200	RemoveStairs	0xa552c0	Remove Stairs/Ramps	0xa55fb5	Remove Stairs/Ramps
+201	ConstructQuern	0xa552d4	Construct Quern	0xa55fc2	Construct Quern
+202	ConstructMillstone	0xa552e4	Construct Millstone	0xa55fd1	Construct Millstone
+203	ConstructSplint	0xa552f8	Construct Splint	0xa55fe4	Construct Splint
+204	ConstructCrutch	0xa55309	Construct Crutch	0xa55ff4	Construct Crutch
+205	ConstructTractionBench	0xa5531a	Construct Traction Bench	0xa56004	Construct Traction Bench
+206	CleanSelf	0xa55333	Clean Self	0xa5601b	Clean Self
+207	BringCrutch	0xa5533e	Bring Crutch	0xa56025	Bring Crutch
+208	ApplyCast	0xa5534b	Apply Cast	0xa56031	Apply Cast
+209	CustomReaction	0xa55356	Custom Reaction	0xa5603b	Custom Reaction
+210	ConstructSlab	0xa55366	Construct Slab	0xa5604a	Construct Slab
+211	EngraveSlab	0xa55375	Engrave Memorial Slab	0xa56058	Engrave Memorial Slab
+212	ShearCreature	0xa5538b	Shear Creature	0xa56064	Shear Creature
+213	SpinThread	0xa5539a	Spin Thread	0xa56072	Spin Thread
+214	PenLargeAnimal	0xa553a6	Pen/Pasture Large Animal	0xa5607d	Pen/Pasture Large Animal
+215	PenSmallAnimal	0xa553bf	Pen/Pasture Small Animal	0xa5608c	Pen/Pasture Small Animal
+216	MakeTool	0xa553d8	Make Tool	0xa5609b	Make Tool
+217	CollectClay	0xa553e2	Collect Clay	0xa560a4	Collect Clay
+218	InstallColonyInHive	0xa553f4	Install Colony In Hive	0xa560b0	Install Colony In Hive
+219	CollectHiveProducts	0xa5540b	Collect Hive Products	0xa560c4	Collect Hive Products
+220	CauseTrouble	0xa55421	Cause Trouble	0xa4d971	Cause Trouble
+221	DrinkBlood	0xa5542f	No Job	0xa3c1fd	No Job
+222	ReportCrime	0xa55436	Report Crime	0xa560d8	Report Crime
+223	ExecuteCriminal	0xa55443	Execute Criminal	0xa560e4	Execute Criminal
+224	TrainAnimal	0xa55454	Train Animal	0xa3e096	Train Animal
+225	CarveTrack	0xa55461	Carve Track	0xa3f701	Carve Track
+226	PushTrackVehicle	0xa5546d	Push Track Vehicle	0xa560f4	Push Track Vehicle
+227	PlaceTrackVehicle	0xa55480	Place Track Vehicle	0xa56105	Place Track Vehicle
+228	StoreItemInVehicle	0xa55494	Store Item in Vehicle	0xa56117	Store Item in Vehicle
+229	GeldAnimal	0xa554aa	Geld ?something?	0xa5612a	Geld ?something?
+230	MakeFigurine	0xa554bb	Make Figurine	0xa56135	Make Figurine
+231	MakeAmulet	0xa554c9	Make Amulet	0xa56142	Make Amulet
+232	MakeScepter	0xa554d5	Make Scepter	0xa5614d	Make Scepter
+233	MakeCrown	0xa554e2	Make Crown	0xa56159	Make Crown
+234	MakeRing	0xa554ed	Make Ring	0xa56163	Make Ring
+235	MakeEarring	0xa554f7	Make Earring	0xa5616c	Make Earring
+236	MakeBracelet	0xa55504	Make Bracelet	0xa56178	Make Bracelet
+237	MakeGem	0xa55512	Make Large Gem	0xa56185	Make Large Gem
+238	PutItemOnDisplay	0xa55521	Put Item on Display	0xa5618d	Put Item on Display
+239	HeistItem	0xa5542f	No Job	0xa3e24f	No Job
+240	InterrogateSubject	0xa55535	Interrogate Subject	0xa5619e	Interrogate Subject
+241	AcceptHeistItem	0xa55549	No Activity	0xa561b1	No Activity
+242	StoreSquadEquipmentItem	0xa55555	Store Squad Equipment Item	0xa561c1	Store Squad Equipment Item
+243	MixDye	0xa55570	Mix Dye	0xa561d9	Mix Dye
+244	DyeLeather	0xa55578	Dye Leather	0xa561e0	Dye Leather
+245	ConstructBoltThrowerParts	0xa55584	Construct Bolt Thrower Parts	0xa561eb	Construct Bolt Thrower Parts
+246	LoadBoltThrower	0xa555a1	Load Bolt Thrower	0xa56205	Load Bolt Thrower
+247	FireBoltThrower	0xa555b3	Fire Bolt Thrower	0xa56215	Fire Bolt Thrower
+248	UNUSED_31	0x0		0xa56225	UNUSED_31
+249	UNUSED_32	0x0		0xa5622f	UNUSED_32
+250	UNUSED_33	0x0		0xa56239	UNUSED_33
+251	UNUSED_34	0x0		0xa56243	UNUSED_34
+252	UNUSED_35	0x0		0xa5624d	UNUSED_35
+253	UNUSED_36	0x0		0xa56257	UNUSED_36
+254	UNUSED_37	0x0		0xa56261	UNUSED_37
+255	UNUSED_38	0x0		0xa5626b	UNUSED_38
+256	UNUSED_39	0x0		0xa56275	UNUSED_39
+257	UNUSED_40	0x0		0xa5627f	UNUSED_40

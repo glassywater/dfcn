@@ -1,0 +1,4 @@
+entry	symbol
+0xbfd0	__stack_chk_fail@plt
+0xc3d0	std::__throw_length_error(char const*)@plt
+0xc460	_Unwind_Resume@plt

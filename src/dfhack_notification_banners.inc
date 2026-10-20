@@ -131,6 +131,45 @@
             if (!target) target = counted_row(full);
             return target;
         };
+        const auto text_right = [&](const SDL_Rect &frame) {
+            const int right = frame.x + frame.w - 1, bottom = frame.y + frame.h - 1;
+            // The List scrollbar is drawn after its text. Its actual arrows,
+            // not simply a five-row height, reserve the last two columns.
+            const bool scrollbar = frame.h == 7 && frame.w > 4 &&
+                dfhack_context_rows[frame.y + 1].compare(right - 2, 2, "/\\") == 0 &&
+                dfhack_context_rows[bottom - 1].compare(right - 2, 2, "\\/") == 0;
+            return scrollbar ? right - 2 : right;
+        };
+        // A graphical ConfigureButton may expose only its texture. A complete
+        // titleless branded Panel is also a notification owner when one of
+        // its rows matches the closed notification grammar. Do not make all
+        // twenty producers depend on recovering the three gear glyphs.
+        std::vector<SDL_Rect> notification_frames;
+        for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
+            const auto &frame = window.frame;
+            bool notification = native_dfhack_notification_banner_frame(window, dfhack_context_rows);
+            if (!notification && window.title_length == 0 && frame.h >= 3 && frame.h <= 7) {
+                for (int y = frame.y + 1; y < frame.y + frame.h - 1; ++y) {
+                    const auto band = std::string_view(dfhack_context_rows[y]).substr(
+                        frame.x + 1, text_right(frame) - frame.x - 1);
+                    const auto text = trim_view(band);
+                    if (text.empty() || text == "Air" || text == "Blood") continue;
+                    const int x = frame.x + 1 + static_cast<int>(text.data() - band.data());
+                    const bool bar = text.size() > 6 && text.size() <= 22 &&
+                        (text.starts_with("Air   ") || text.starts_with("Blood ")) &&
+                        std::all_of(text.begin() + 6, text.end(),
+                            [](unsigned char ch) { return ch == 219 || ch == 177; });
+                    const bool save = text.starts_with("Last save: ") &&
+                        elapsed_time(text.substr(11)).has_value();
+                    if (bar || save || translate_row(text) ||
+                            lookup_native_dfhack_notification_text(gps_, x, y, text)) {
+                        notification = true;
+                        break;
+                    }
+                }
+            }
+            if (notification) notification_frames.push_back(frame);
+        }
         const auto captured_tokens = native_dfhack_notification_texts(gps_);
         for (const auto &token : captured_tokens) {
             if (read_row(token.y).compare(token.x, token.visible.size(), token.visible) != 0)
@@ -143,23 +182,16 @@
                 static_cast<int>(token.visible.size()), 1});
             banner_match(token.x, token.y, token.visible, right, translate_row(token.full));
         }
-        for (const auto &window : native_dfhack_window_geometry(dfhack_context_rows)) {
-            const auto *frame = &window.frame;
-            const int right = frame->x + frame->w - 1;
-            if (!native_dfhack_notification_banner_frame(window, dfhack_context_rows)) continue;
+        for (const auto &notification_frame : notification_frames) {
+            const auto *frame = &notification_frame;
             const int left = frame->x + 1, bottom = frame->y + frame->h - 1;
-            // Five choices and a scrolled List both have h=7. Only the scrollbar's
-            // actual two-column arrows prove that its columns are unavailable.
-            const bool scrollbar = frame->h == 7 && right - left > 2 &&
-                dfhack_context_rows[frame->y + 1].compare(right - 2, 2, "/\\") == 0 &&
-                dfhack_context_rows[bottom - 1].compare(right - 2, 2, "\\/") == 0;
-            const int text_right = scrollbar ? right - 2 : right;
+            const int right = text_right(*frame);
             for (int y = frame->y + 1; y < bottom; ++y) {
-                const auto band = std::string_view(dfhack_context_rows[y]).substr(left, text_right - left);
+                const auto band = std::string_view(dfhack_context_rows[y]).substr(left, right - left);
                 const auto text = trim_view(band);
                 // Keep future unknown producers intact within this proven List,
                 // instead of translating their fragments through generic scans.
-                dfhack_auxiliary_regions.push_back({left, y, text_right - left, 1});
+                dfhack_auxiliary_regions.push_back({left, y, right - left, 1});
                 if (text.empty()) continue;
                 const int x = left + static_cast<int>(text.data() - band.data());
                 constexpr std::string_view save_prefix = "Last save: ";
@@ -169,7 +201,7 @@
                     const auto visible_value = text.substr(save_prefix.size());
                     const auto captured = lookup_native_dfhack_notification_text(gps_, value_x, y, visible_value);
                     const std::string_view full = captured ? std::string_view(*captured) : visible_value;
-                    banner_match(value_x, y, visible_value, text_right, elapsed_time(full));
+                    banner_match(value_x, y, visible_value, right, elapsed_time(full));
                     continue;
                 }
                 bool bar = false;
@@ -186,7 +218,7 @@
                 if (bar) continue;
                 const auto captured = lookup_native_dfhack_notification_text(gps_, x, y, text);
                 const std::string_view full = captured ? std::string_view(*captured) : text;
-                banner_match(x, y, text, text_right, translate_row(full));
+                banner_match(x, y, text, right, translate_row(full));
             }
         }
     };

@@ -266,26 +266,29 @@ static void retain_native_dfhack_border_chars(const graphicst &gps,
     if (!pens[0] || !pens[1]) return;
     for (int x = 0; x < gps.dimx; ++x) {
         for (int y = 0; y < gps.dimy; ++y) {
-            if (rows[y][x] != ' ') continue;
             const size_t tile = static_cast<size_t>(x) * gps.dimy + y;
             const bool top = native_ui_top_layer_at(gps, tile);
             const auto &write = (*pens[top])[tile];
             const auto *textures = top ? gps.screentexpos_top : gps.screentexpos;
-            if (write.texture <= 0 || !textures ||
-                    textures[tile] != write.texture) continue;
-            if ((write.ch >= 0xb3 && write.ch <= 0xda) ||
+            const bool live_texture = write.texture > 0 && textures &&
+                textures[tile] == write.texture;
+            if (rows[y][x] == ' ' && live_texture &&
+                    ((write.ch >= 0xb3 && write.ch <= 0xda) ||
                     write.ch == '/' || write.ch == '\\' ||
-                    write.ch == 176 || write.ch == 177 || write.ch == 219) {
+                    write.ch == 176 || write.ch == 177 || write.ch == 219)) {
                 rows[y][x] = static_cast<char>(write.ch);
                 continue;
             }
             // Graphical ConfigureButton and HelpButton replace three cells
             // in the top rail. Restore only a complete live [gear] or [?]
             // sequence, rather than treating arbitrary bracket art as text.
-            if (write.ch != '[' || x > gps.dimx - 3) continue;
+            if (x > gps.dimx - 3 || (rows[y][x] != '[' &&
+                    !(rows[y][x] == ' ' && live_texture && write.ch == '['))) continue;
             const size_t center_tile = static_cast<size_t>(x + 1) * gps.dimy + y;
             const bool center_top = native_ui_top_layer_at(gps, center_tile);
-            const auto center_ch = (*pens[center_top])[center_tile].ch;
+            const auto center_ch = rows[y][x + 1] == ' '
+                ? (*pens[center_top])[center_tile].ch
+                : static_cast<unsigned char>(rows[y][x + 1]);
             if (center_ch != 0x0f && center_ch != '?') continue;
             const std::array<unsigned char, 3> configure_chars{'[', center_ch, ']'};
             bool complete = true;
@@ -295,10 +298,14 @@ static void retain_native_dfhack_border_chars(const graphicst &gps,
                 const bool part_top = native_ui_top_layer_at(gps, part_tile);
                 const auto &part_write = (*pens[part_top])[part_tile];
                 const auto *part_textures = part_top ? gps.screentexpos_top : gps.screentexpos;
-                complete = rows[y][part_x] == ' ' &&
-                    part_top == top &&
-                    part_write.ch == configure_chars[part] && part_write.texture > 0 &&
-                    part_textures && part_textures[part_tile] == part_write.texture;
+                // Each piece can independently use its fallback glyph or
+                // native texture. Requiring all three to be blank rejects
+                // the entire notification panel when only the gear is art.
+                complete = part_top == top &&
+                    (static_cast<unsigned char>(rows[y][part_x]) == configure_chars[part] ||
+                     (rows[y][part_x] == ' ' && part_write.ch == configure_chars[part] &&
+                      part_write.texture > 0 && part_textures &&
+                      part_textures[part_tile] == part_write.texture));
             }
             if (complete)
                 for (size_t part = 0; part < configure_chars.size(); ++part)

@@ -15,7 +15,7 @@ warn_stranded	notifications.lua:693	({d} group of citizens is stranded)|({d} gro
 wildlife	notifications.lua:700; summarize_units:224	Wildlife: {d} {caste}(, {d} {caste})*	RAW caste_name[0/1]; arbitrary species list
 wildlife_adv	notifications.lua:707; summarize_units:224	Wildlife: {d} {caste}(, {d} {caste})*	RAW caste_name[0/1]; arbitrary species list
 injured	notifications.lua:714; injured_units:214	({d} injured citizen)|({d} injured citizens); optional suffix: ; no functional hospital!	count_units integer; functional-hospital state
-labor_starvation	notifications.lua:721	(task starvation: {d} unclaimed job)|(task starvation: {d} unclaimed jobs); optional suffix:  (oldest: {job}, {d} ticks)	autolabor_getStarvingJobs: count; job attrs.caption/key or reaction.name; ticks
+labor_starvation	notifications.lua:721	(task starvation: {d} unclaimed job)|(task starvation: {d} unclaimed jobs); optional suffix:  (oldest: {job}, {d} ticks), including empty {job}	autolabor_getStarvingJobs: count; job attrs.caption/key or reaction.name; ticks; native empty string remains truthy in Lua
 suffocation_adv	notifications.lua:745; get_bar:294	Air[padding to width 6][16 graphic tokens]	blood/breath fractions select ch219/ch177 and foreground color
 bleeding_adv	notifications.lua:753; get_bar:294	Blood[padding to width 6][16 graphic tokens]	blood/breath fractions select ch219/ch177 and foreground color
 save-reminder	notifications.lua:761; get_save_alert:317	Last save: |{formatted_minutes} mins ago	formatInt preserves grouping/SI/scientific notation; independent urgency color
