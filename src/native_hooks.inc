@@ -79,6 +79,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_construction_search_hooks.inc"
 #include "native_caption_hooks.inc"
 #include "native_adventure_home_source.inc"
+#include "native_adventure_personality_source.inc"
 #include "native_character_relations.inc"
 #include "native_overview_quote_hooks.inc"
 #include "native_paragraph_hooks.inc"

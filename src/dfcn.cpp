@@ -64,6 +64,7 @@
 #include "native_adventure_crafting.h"
 #include "native_adventure_belief_source.h"
 #include "native_adventure_home_source.h"
+#include "native_adventure_personality_source.h"
 #include "native_unit_identity.h"
 #include "native_justice_organizations.h"
 #include "native_justice_plots.h"
@@ -5396,6 +5397,8 @@ private:
         std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
     void layout_adventure_personality_needs(SDL_Renderer *renderer);
     void layout_adventure_personality_actions(SDL_Renderer *renderer);
+    void append_adventure_personality_description(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw) const;
     void recover_adventure_skill_rows();
     void ensure_adventure_background_matches();
     void prepare_adventure_hover_suppression();
@@ -14615,7 +14618,8 @@ static std::optional<std::string> translate_personality_value_change_note(
     const size_t year_at = source.rfind(" in ");
     if (year_at == std::string_view::npos || year_at == 0) return std::nullopt;
     const std::string_view year = source.substr(year_at + 4);
-    if (year.empty() || !std::all_of(year.begin(), year.end(), [](char ch) {
+    const auto year_digits = year.starts_with('-') ? year.substr(1) : year;
+    if (year_digits.empty() || !std::all_of(year_digits.begin(), year_digits.end(), [](char ch) {
             return ch >= '0' && ch <= '9';
         })) return std::nullopt;
 

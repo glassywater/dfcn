@@ -1,0 +1,797 @@
+family	group	branch	source	translation	native_sites	handler
+value	LAW	>=41	is an absolute believer in the rule of law	觉得法律必须得到遵守	0x140e251dd	src/personality_values.inc
+value	LAW	26..40	has a great deal of respect for the law	很尊重法律	0x140e251f6	src/personality_values.inc
+value	LAW	11..25	respects the law	尊重法律	0x140e25207	src/personality_values.inc
+value	LAW	-10..10	doesn't feel strongly about the law	对法律没什么特别看法	0x140e25218	src/personality_values.inc
+value	LAW	-25..-11	does not respect the law	不太尊重法律	0x140e25229	src/personality_values.inc
+value	LAW	-40..-26	disdains the law	看不起法律	0x140e2523d	src/personality_values.inc
+value	LAW	<=-41	finds the idea of laws abhorrent	讨厌法律	0x140e25249	src/personality_values.inc
+value	LOYALTY	>=41	has the highest regard for loyalty	觉得忠诚最重要	0x140e25260	src/personality_values.inc
+value	LOYALTY	26..40	greatly prizes loyalty	很看重忠诚	0x140e25279	src/personality_values.inc
+value	LOYALTY	11..25	values loyalty	看重忠诚	0x140e2528a	src/personality_values.inc
+value	LOYALTY	-10..10	doesn't particularly value loyalty	不太看重忠诚	0x140e2529b	src/personality_values.inc
+value	LOYALTY	-25..-11	views loyalty unfavorably	对忠诚没什么好感	0x140e252ac	src/personality_values.inc
+value	LOYALTY	-40..-26	disdains loyalty	看不起忠诚	0x140e252c0	src/personality_values.inc
+value	LOYALTY	<=-41	is disgusted by the idea of loyalty	讨厌忠诚	0x140e252cc	src/personality_values.inc
+value	FAMILY	>=41	sees family as one of the most important things in life	觉得家庭最重要	0x140e252e3	src/personality_values.inc
+value	FAMILY	26..40	values family greatly	很看重家庭	0x140e252fc;0x140e2530d	src/personality_values.inc
+value	FAMILY	11..25	values family	看重家庭	0x140e2530d	src/personality_values.inc
+value	FAMILY	-10..10	does not care about family one way or the other	对家庭无所谓	0x140e2531e	src/personality_values.inc
+value	FAMILY	-25..-11	is put off by family	不太喜欢家庭	0x140e2532f	src/personality_values.inc
+value	FAMILY	-40..-26	lacks any respect for family	不在乎家庭	0x140e25343	src/personality_values.inc
+value	FAMILY	<=-41	finds the idea of family loathsome	讨厌家庭	0x140e2534f	src/personality_values.inc
+value	FRIENDSHIP	>=41	believes friendship is a key to the ideal life	觉得生活不能没有朋友	0x140e25366	src/personality_values.inc
+value	FRIENDSHIP	26..40	sees friendship as one of the finer things in life	觉得有朋友是生活中很美好的事	0x140e2537f	src/personality_values.inc
+value	FRIENDSHIP	11..25	thinks friendship is important	看重友情	0x140e25390	src/personality_values.inc
+value	FRIENDSHIP	-10..10	does not care about friendship	不在乎友情	0x140e253a1	src/personality_values.inc
+value	FRIENDSHIP	-25..-11	finds friendship burdensome	觉得友情是负担	0x140e253b2	src/personality_values.inc
+value	FRIENDSHIP	-40..-26	is completely put off by the idea of friends	不喜欢交朋友	0x140e253c6	src/personality_values.inc
+value	FRIENDSHIP	<=-41	finds the whole idea of friendship disgusting	讨厌友情	0x140e253d2	src/personality_values.inc
+value	POWER	>=41	believes that the acquisition of power over others is the ideal goal in life and worthy of the highest respect	觉得掌控别人就是人生目标	0x140e253e9	src/personality_values.inc
+value	POWER	26..40	sees power over others as something to strive for	想要掌控别人	0x140e25402	src/personality_values.inc
+value	POWER	11..25	respects power	尊重权力	0x140e25413	src/personality_values.inc
+value	POWER	-10..10	doesn't find power particularly praiseworthy	不觉得权力值得追求	0x140e25424	src/personality_values.inc
+value	POWER	-25..-11	has a negative view of those who exercise power over others	不喜欢掌控别人的人	0x140e25435	src/personality_values.inc
+value	POWER	-40..-26	hates those who wield power over others	讨厌掌权的人	0x140e25449	src/personality_values.inc
+value	POWER	<=-41	finds the acquisition and use of power abhorrent and would have all masters toppled	讨厌权力，也想推翻所有统治者	0x140e25455	src/personality_values.inc
+value	TRUTH	>=41	believes the truth is inviolable regardless of the cost	觉得无论付出什么代价都要说真话	0x140e2546c	src/personality_values.inc
+value	TRUTH	26..40	believes that honesty is a high ideal	觉得诚实很重要	0x140e25485	src/personality_values.inc
+value	TRUTH	11..25	values honesty	看重诚实	0x140e25496	src/personality_values.inc
+value	TRUTH	-10..10	does not particularly value the truth	不太在乎诚实	0x140e254a7	src/personality_values.inc
+value	TRUTH	-25..-11	finds blind honesty foolish	觉得一味诚实很蠢	0x140e254b8	src/personality_values.inc
+value	TRUTH	-40..-26	sees lying as an important means to an end	觉得说谎可以帮助自己达到目的	0x140e254cc	src/personality_values.inc
+value	TRUTH	<=-41	is repelled by the idea of honesty and lies without compunction	讨厌诚实，说谎也不会过意不去	0x140e254d8	src/personality_values.inc
+value	CUNNING	>=41	holds well-laid plans and shrewd deceptions in the highest regard	很看重周密计划和巧妙欺骗	0x140e254ef	src/personality_values.inc
+value	CUNNING	26..40	greatly respects the shrewd and guileful	很尊重聪明又会算计的人	0x140e25508	src/personality_values.inc
+value	CUNNING	11..25	values cunning	看重计谋	0x140e25519	src/personality_values.inc
+value	CUNNING	-10..10	does not really value cunning and guile	不太看重计谋	0x140e2552a	src/personality_values.inc
+value	CUNNING	-25..-11	sees guile and cunning as indirect and somewhat worthless	觉得耍心眼没什么用	0x140e2553b	src/personality_values.inc
+value	CUNNING	-40..-26	holds shrewd and crafty individuals in the lowest esteem	看不起精于算计的人	0x140e2554f	src/personality_values.inc
+value	CUNNING	<=-41	is utterly disgusted by guile and cunning	讨厌耍心眼和算计	0x140e2555b	src/personality_values.inc
+value	ELOQUENCE	>=41	believes that artful speech and eloquent expression are of the highest ideals	觉得口才和表达最重要	0x140e25572	src/personality_values.inc
+value	ELOQUENCE	26..40	deeply respects eloquent speakers	很尊重有口才的人	0x140e2558b	src/personality_values.inc
+value	ELOQUENCE	11..25	values eloquence	看重口才	0x140e2559c	src/personality_values.inc
+value	ELOQUENCE	-10..10	doesn't value eloquence so much	不太看重口才	0x140e255ad	src/personality_values.inc
+value	ELOQUENCE	-25..-11	finds eloquence and artful speech off-putting	不喜欢花言巧语	0x140e255be	src/personality_values.inc
+value	ELOQUENCE	-40..-26	finds {p} somewhat disgusted with eloquent speakers	讨厌有口才的人	0x140e255e4	src/personality_values.inc
+value	ELOQUENCE	<=-41	sees artful speech and eloquence as a wasteful form of deliberate deception and treats {p} as such	觉得口才只是费时间的欺骗	0x140e2561c	src/personality_values.inc
+value	FAIRNESS	>=41	holds fairness as one of the highest ideals and despises cheating of any kind	把公平看得很重要，也讨厌任何作弊	0x140e25633	src/personality_values.inc
+value	FAIRNESS	26..40	has great respect for fairness	很看重公平	0x140e2564c	src/personality_values.inc
+value	FAIRNESS	11..25	respects fair-dealing and fair-play	在意公平	0x140e2565d	src/personality_values.inc
+value	FAIRNESS	-10..10	does not care about fairness	不在乎公平	0x140e2566e	src/personality_values.inc
+value	FAIRNESS	-25..-11	sees life as unfair and doesn't mind {p} that way	觉得生活本来就不公平，也不介意	0x140e2567f	src/personality_values.inc
+value	FAIRNESS	-40..-26	finds the idea of fair-dealing foolish and cheats when {p} finds {p} profitable	觉得公平很蠢，有好处时就会骗人	0x140e25697;0x140e256a8	src/personality_values.inc
+value	FAIRNESS	<=-41	is disgusted by the idea of fairness and will freely cheat anybody at any time	讨厌公平，也会随意骗人	0x140e256e0	src/personality_values.inc
+value	DECORUM	>=41	views decorum as a high ideal and is deeply offended by those that fail to maintain {p}	把礼貌看得很重要，也受不了不讲礼貌的人	0x140e256f7	src/personality_values.inc
+value	DECORUM	26..40	greatly respects those that observe decorum and maintain their dignity	很尊重讲礼貌的人	0x140e25710	src/personality_values.inc
+value	DECORUM	11..25	values decorum, dignity and proper behavior	看重礼貌和得体的举止	0x140e25721	src/personality_values.inc
+value	DECORUM	-10..10	doesn't care very much about decorum	不太在乎礼貌	0x140e25732	src/personality_values.inc
+value	DECORUM	-25..-11	finds maintaining decorum a silly, fumbling waste of time	觉得讲礼貌又笨又浪费时间	0x140e25743	src/personality_values.inc
+value	DECORUM	-40..-26	sees those that attempt to maintain dignified and proper behavior as vain and offensive	觉得装得体面的人又虚荣又讨厌	0x140e25757	src/personality_values.inc
+value	DECORUM	<=-41	is affronted by the whole notion of maintaining decorum and finds so-called dignified people disgusting	讨厌礼貌规矩和装体面的人	0x140e25763	src/personality_values.inc
+value	TRADITION	>=41	holds the maintenance of tradition as one of the highest ideals	觉得传统必须维护	0x140e2577a	src/personality_values.inc
+value	TRADITION	26..40	is a firm believer in the value of tradition	很相信传统的价值	0x140e25793	src/personality_values.inc
+value	TRADITION	11..25	values tradition	看重传统	0x140e257a4	src/personality_values.inc
+value	TRADITION	-10..10	doesn't have any strong feelings about tradition	对传统没什么特别看法	0x140e257b5	src/personality_values.inc
+value	TRADITION	-25..-11	disregards tradition	不在乎传统	0x140e257c6	src/personality_values.inc
+value	TRADITION	-40..-26	finds the following of tradition foolish and limiting	觉得遵守传统又蠢又束手束脚	0x140e257d7	src/personality_values.inc
+value	TRADITION	<=-41	is disgusted by tradition and would flout any {p} encounters if given a chance	讨厌传统，有机会就会打破	0x140e257ea;0x140e257fb	src/personality_values.inc
+value	ARTWORK	>=41	believes that the creation and appreciation of artwork is one of the highest ideals	觉得创作和欣赏艺术最重要	0x140e2583e	src/personality_values.inc
+value	ARTWORK	26..40	greatly respects artists and their works	很尊重艺术家和他们的作品	0x140e25857	src/personality_values.inc
+value	ARTWORK	11..25	values artwork	看重艺术	0x140e25868	src/personality_values.inc
+value	ARTWORK	-10..10	doesn't care about art one way or another	对艺术无所谓	0x140e25879	src/personality_values.inc
+value	ARTWORK	-25..-11	finds artwork boring	觉得艺术很无聊	0x140e2588a	src/personality_values.inc
+value	ARTWORK	-40..-26	sees the whole pursuit of art as silly	觉得追求艺术很蠢	0x140e2589e	src/personality_values.inc
+value	ARTWORK	<=-41	finds art offensive and would have {p} destroyed whenever possible	讨厌艺术，想把艺术品都毁掉	0x140e258aa	src/personality_values.inc
+value	COOPERATION	>=41	places cooperation as one of the highest ideals	觉得合作最重要	0x140e258c1	src/personality_values.inc
+value	COOPERATION	26..40	sees cooperation as very important in life	觉得合作对生活很重要	0x140e258da	src/personality_values.inc
+value	COOPERATION	11..25	values cooperation	愿意合作	0x140e258eb	src/personality_values.inc
+value	COOPERATION	-10..10	doesn't see cooperation as valuable	觉得合作没价值	0x140e258fc	src/personality_values.inc
+value	COOPERATION	-25..-11	dislikes cooperation	不喜欢合作	0x140e2590d	src/personality_values.inc
+value	COOPERATION	-40..-26	views cooperation as a low ideal not worthy of any respect	看不起合作	0x140e25921	src/personality_values.inc
+value	COOPERATION	<=-41	is thoroughly disgusted by cooperation	讨厌合作	0x140e2592d	src/personality_values.inc
+value	INDEPENDENCE	>=41	believes that freedom and independence are completely non-negotiable and would fight to defend them	觉得自由和独立不能妥协，也愿意为它们而战	0x140e25944	src/personality_values.inc
+value	INDEPENDENCE	26..40	treasures independence	很看重独立	0x140e2595d	src/personality_values.inc
+value	INDEPENDENCE	11..25	values independence	看重独立	0x140e2596e	src/personality_values.inc
+value	INDEPENDENCE	-10..10	doesn't really value independence one way or another	对独立无所谓	0x140e2597f	src/personality_values.inc
+value	INDEPENDENCE	-25..-11	finds the ideas of independence and freedom somewhat foolish	觉得自由和独立有点蠢	0x140e25990	src/personality_values.inc
+value	INDEPENDENCE	-40..-26	sees freedom and independence as completely worthless	觉得自由和独立毫无价值	0x140e259a4	src/personality_values.inc
+value	INDEPENDENCE	<=-41	hates freedom and would crush the independent spirit wherever {p} is found	讨厌自由，也想压制所有独立想法	0x140e259b0	src/personality_values.inc
+value	STOICISM	>=41	views any show of emotion as offensive	觉得流露感情很不合适	0x140e259c7	src/personality_values.inc
+value	STOICISM	26..40	thinks {p} is of the utmost importance to present a bold face and never grouse, complain or even show emotion	觉得人应该一直坚强，不发牢骚、不抱怨，也不流露感情	0x140e259e0	src/personality_values.inc
+value	STOICISM	11..25	believes {p} is important to conceal emotions and refrain from complaining	觉得隐藏情绪、不抱怨很重要	0x140e259f1	src/personality_values.inc
+value	STOICISM	-10..10	doesn't see much value in being stoic	不觉得克制情绪有价值	0x140e25a02	src/personality_values.inc
+value	STOICISM	-25..-11	sees no value in holding back complaints and concealing emotions	觉得抱怨和流露情绪没必要忍着	0x140e25a13	src/personality_values.inc
+value	STOICISM	-40..-26	feels that those who attempt to conceal their emotions are vain and foolish	觉得隐藏情绪的人又虚荣又蠢	0x140e25a24	src/personality_values.inc
+value	STOICISM	<=-41	sees concealment of emotions as a betrayal and tries {p} best never to associate with such secretive fools	觉得隐藏情绪就是背叛，也不愿接近这样的人	0x140e25a34;0x140e25a45	src/personality_values.inc
+value	INTROSPECTION	>=41	feels that introspection and all forms of self-examination are the keys to a good life and worthy of respect	觉得反省自己是过好生活的关键	0x140e25b0b	src/personality_values.inc
+value	INTROSPECTION	26..40	deeply values introspection	很看重自我反省	0x140e25b24	src/personality_values.inc
+value	INTROSPECTION	11..25	sees introspection as important	看重自我反省	0x140e25b35	src/personality_values.inc
+value	INTROSPECTION	-10..10	doesn't really see the value in self-examination	不觉得自我反省有价值	0x140e25b46	src/personality_values.inc
+value	INTROSPECTION	-25..-11	finds introspection to be a waste of time	觉得反省自己浪费时间	0x140e25b57	src/personality_values.inc
+value	INTROSPECTION	-40..-26	thinks that introspection is valueless and those that waste time in self-examination are deluded fools	觉得自我反省没用，花时间反省的人很蠢	0x140e25b6b	src/personality_values.inc
+value	INTROSPECTION	<=-41	finds the whole idea of introspection completely offensive and contrary to the ideals of a life well-lived	讨厌自我反省，也觉得这不利于好好生活	0x140e25b77	src/personality_values.inc
+value	SELF_CONTROL	>=41	believes that self-mastery and the denial of impulses are of the highest ideals	觉得控制自己和克制冲动最重要	0x140e25b8e	src/personality_values.inc
+value	SELF_CONTROL	26..40	finds moderation and self-control to be very important	很看重节制和自控	0x140e25ba7	src/personality_values.inc
+value	SELF_CONTROL	11..25	values self-control	看重自控	0x140e25bb8	src/personality_values.inc
+value	SELF_CONTROL	-10..10	doesn't particularly value self-control	不太看重自控	0x140e25bc9	src/personality_values.inc
+value	SELF_CONTROL	-25..-11	finds those that deny their impulses somewhat stiff	觉得克制冲动的人有点死板	0x140e25bda	src/personality_values.inc
+value	SELF_CONTROL	-40..-26	sees the denial of impulses as a vain and foolish pursuit	觉得克制冲动又虚荣又蠢	0x140e25bee	src/personality_values.inc
+value	SELF_CONTROL	<=-41	has abandoned any attempt at self-control and finds the whole concept deeply offensive	不再控制自己，也讨厌自控	0x140e25bfa	src/personality_values.inc
+value	TRANQUILITY	>=41	views tranquility as one of the highest ideals	觉得安静最重要	0x140e25c11	src/personality_values.inc
+value	TRANQUILITY	26..40	strongly values tranquility and quiet	很喜欢安静	0x140e25c2a	src/personality_values.inc
+value	TRANQUILITY	11..25	values tranquility and a peaceful day	喜欢安静的日子	0x140e25c3b	src/personality_values.inc
+value	TRANQUILITY	-10..10	doesn't have a preference between tranquility and tumult	对安静还是热闹无所谓	0x140e25c4c	src/personality_values.inc
+value	TRANQUILITY	-25..-11	prefers a noisy, bustling life to boring days without activity	更喜欢热闹忙碌的生活	0x140e25c5d	src/personality_values.inc
+value	TRANQUILITY	-40..-26	is greatly disturbed by quiet and a peaceful existence	不喜欢安静的生活	0x140e25c71	src/personality_values.inc
+value	TRANQUILITY	<=-41	is disgusted by tranquility and would that the world would constantly churn with noise and activity	讨厌安静，希望世界一直热闹	0x140e25c7d	src/personality_values.inc
+value	HARMONY	>=41	would have the world operate in complete harmony without the least bit of strife or disorder	希望世界完全和谐，没有冲突和混乱	0x140e25c94	src/personality_values.inc
+value	HARMONY	26..40	strongly believes that a peaceful and ordered society without dissent is best	觉得没有反对意见的和平社会最好	0x140e25cad	src/personality_values.inc
+value	HARMONY	11..25	values a harmonious existence	看重和谐	0x140e25cbe	src/personality_values.inc
+value	HARMONY	-10..10	sees equal parts of harmony and discord as part of life	觉得和谐和争论都是生活的一部分	0x140e25ccf	src/personality_values.inc
+value	HARMONY	-25..-11	doesn't respect a society that has settled into harmony without debate and strife	看不起没有争论的和谐社会	0x140e25ce0	src/personality_values.inc
+value	HARMONY	-40..-26	can't fathom why anyone would want to live in an orderly and harmonious society	不明白为什么有人想生活在和谐社会里	0x140e25cf4	src/personality_values.inc
+value	HARMONY	<=-41	believes deeply that chaos and disorder are the truest expressions of life and would disrupt harmony wherever {p} is found	觉得混乱才是生活本来的样子，也想破坏和谐	0x140e25d00	src/personality_values.inc
+value	MERRIMENT	>=41	believes that little is better in life than a good party	觉得没有什么比聚会更好	0x140e25d17	src/personality_values.inc
+value	MERRIMENT	26..40	truly values merrymaking and parties	很喜欢聚会	0x140e25d30	src/personality_values.inc
+value	MERRIMENT	11..25	finds merrymaking and partying worthwhile activities	喜欢聚会	0x140e25d41	src/personality_values.inc
+value	MERRIMENT	-10..10	doesn't really value merrymaking	不太喜欢聚会	0x140e25d52	src/personality_values.inc
+value	MERRIMENT	-25..-11	sees merrymaking as a waste	觉得聚会浪费时间	0x140e25d63	src/personality_values.inc
+value	MERRIMENT	-40..-26	is disgusted by merrymakers	讨厌参加聚会的人	0x140e25d77	src/personality_values.inc
+value	MERRIMENT	<=-41	is appalled by merrymaking, parties and other such worthless activities	讨厌聚会和类似活动	0x140e25d83	src/personality_values.inc
+value	CRAFTSMANSHIP	>=41	holds {craft} to be of the highest ideals and celebrates talented artisans and their masterworks	觉得手艺最重要，也欣赏好工匠和他们的作品	0x140e25f03	src/personality_values.inc
+value	CRAFTSMANSHIP	26..40	has a great deal of respect for worthy {craft}	很尊重好手艺	0x140e25fd8	src/personality_values.inc
+value	CRAFTSMANSHIP	11..25	values good {craft}	看重好手艺	0x140e26005	src/personality_values.inc
+value	CRAFTSMANSHIP	-10..10	doesn't particularly care about {craft}	不太在乎手艺	0x140e26032	src/personality_values.inc
+value	CRAFTSMANSHIP	-25..-11	considers {craft} to be relatively worthless	觉得手艺没什么价值	0x140e26062;0x140e26073	src/personality_values.inc
+value	CRAFTSMANSHIP	-40..-26	sees the pursuit of good {craft} as a total waste	觉得钻研手艺浪费时间	0x140e260b0;0x140e260c1	src/personality_values.inc
+value	CRAFTSMANSHIP	<=-41	views {craft} with disgust and would desecrate a so-called masterwork or two if {p} could get away with {p}	讨厌手艺，没人追究时还会毁掉好作品	0x140e2610d;0x140e26135	src/personality_values.inc
+value	MARTIAL_PROWESS	>=41	believes that martial prowess defines the good character of an individual	觉得武艺能体现一个人的品格	0x140e2618f	src/personality_values.inc
+value	MARTIAL_PROWESS	26..40	deeply respects skill at arms	很尊重武艺	0x140e261a8	src/personality_values.inc
+value	MARTIAL_PROWESS	11..25	values martial prowess	看重武艺	0x140e261b9	src/personality_values.inc
+value	MARTIAL_PROWESS	-10..10	does not really value skills related to fighting	不太看重战斗技能	0x140e261ca	src/personality_values.inc
+value	MARTIAL_PROWESS	-25..-11	finds those that develop skill with weapons and fighting distasteful	不喜欢钻研武器和战斗的人	0x140e261db	src/personality_values.inc
+value	MARTIAL_PROWESS	-40..-26	thinks that the pursuit of the skills of warfare and fighting is a low pursuit indeed	觉得钻研战争和战斗技能很低下	0x140e261ef	src/personality_values.inc
+value	MARTIAL_PROWESS	<=-41	abhors those that pursue the mastery of weapons and skill with fighting	讨厌钻研武器和战斗的人	0x140e261fb	src/personality_values.inc
+value	SKILL	>=41	believes that the mastery of a skill is one of the highest pursuits	觉得掌握技能最重要	0x140e26212	src/personality_values.inc
+value	SKILL	26..40	really respects those that take the time to master a skill	很尊重肯花时间掌握技能的人	0x140e2622b	src/personality_values.inc
+value	SKILL	11..25	respects the development of skill	看重提高技能	0x140e2623c	src/personality_values.inc
+value	SKILL	-10..10	doesn't care if others take the time to master skills	不在乎别人是否钻研技能	0x140e2624d	src/personality_values.inc
+value	SKILL	-25..-11	finds the pursuit of skill mastery off-putting	不喜欢钻研技能	0x140e2625e	src/personality_values.inc
+value	SKILL	-40..-26	believes that the time taken to master a skill is a horrible waste	觉得钻研技能很浪费时间	0x140e26272	src/personality_values.inc
+value	SKILL	<=-41	sees the whole idea of taking time to master a skill as appalling	讨厌花时间钻研技能	0x140e2627e	src/personality_values.inc
+value	HARD_WORK	>=41	believes that hard work is one of the highest ideals and a key to the good life	觉得努力工作最重要，也是过好生活的关键	0x140e26295	src/personality_values.inc
+value	HARD_WORK	26..40	deeply respects those that work hard at their labors	很尊重肯努力工作的人	0x140e262ae	src/personality_values.inc
+value	HARD_WORK	11..25	values hard work	看重努力工作	0x140e262bf	src/personality_values.inc
+value	HARD_WORK	-10..10	doesn't really see the point of working hard	不觉得努力工作有意义	0x140e262d0	src/personality_values.inc
+value	HARD_WORK	-25..-11	sees working hard as a foolish waste of time	觉得努力工作又蠢又浪费时间	0x140e262e1	src/personality_values.inc
+value	HARD_WORK	-40..-26	thinks working hard is an abject idiocy	觉得努力工作非常蠢	0x140e262f5	src/personality_values.inc
+value	HARD_WORK	<=-41	finds the proposition that one should work hard in life utterly abhorrent	讨厌人应该努力工作的说法	0x140e26301	src/personality_values.inc
+value	SACRIFICE	>=41	finds sacrifice to be one of the highest ideals	觉得为别人牺牲最重要	0x140e26318	src/personality_values.inc
+value	SACRIFICE	26..40	believes that those who sacrifice for others should be deeply respected	尊重肯为别人牺牲的人	0x140e26331	src/personality_values.inc
+value	SACRIFICE	11..25	values sacrifice	看重牺牲	0x140e26342	src/personality_values.inc
+value	SACRIFICE	-10..10	doesn't particularly respect sacrifice as a virtue	不觉得牺牲值得尊重	0x140e26353	src/personality_values.inc
+value	SACRIFICE	-25..-11	sees sacrifice as wasteful and foolish	觉得牺牲又浪费又蠢	0x140e26364	src/personality_values.inc
+value	SACRIFICE	-40..-26	finds sacrifice to be the height of folly	觉得牺牲最蠢	0x140e26378	src/personality_values.inc
+value	SACRIFICE	<=-41	thinks that the entire concept of sacrifice for others is truly disgusting	讨厌为别人牺牲的想法	0x140e26384	src/personality_values.inc
+value	COMPETITION	>=41	holds the idea of competition among the most important and would encourage {p} wherever possible	觉得竞争最重要，也会鼓励竞争	0x140e2639b	src/personality_values.inc
+value	COMPETITION	26..40	views competition as a crucial driving force in the world	觉得竞争是推动世界的关键	0x140e263b4	src/personality_values.inc
+value	COMPETITION	11..25	sees competition as reasonably important	觉得竞争很重要	0x140e263c5	src/personality_values.inc
+value	COMPETITION	-10..10	doesn't have strong views on competition	对竞争没什么特别看法	0x140e263d6	src/personality_values.inc
+value	COMPETITION	-25..-11	sees competition as wasteful and silly	觉得竞争又浪费又蠢	0x140e263e7	src/personality_values.inc
+value	COMPETITION	-40..-26	deeply dislikes competition	很不喜欢竞争	0x140e263fb	src/personality_values.inc
+value	COMPETITION	<=-41	finds the very idea of competition obscene	讨厌竞争	0x140e26407	src/personality_values.inc
+value	PERSEVERANCE	>=41	believes that perseverance is one of the greatest qualities somebody can have	觉得坚持是最好的品质之一	0x140e2641e	src/personality_values.inc
+value	PERSEVERANCE	26..40	greatly respects individuals that persevere through their trials and labors	很尊重在困难中坚持的人	0x140e26437	src/personality_values.inc
+value	PERSEVERANCE	11..25	respects perseverance	看重坚持	0x140e26448	src/personality_values.inc
+value	PERSEVERANCE	-10..10	doesn't think much about the idea of perseverance	不太在乎坚持	0x140e26459	src/personality_values.inc
+value	PERSEVERANCE	-25..-11	sees perseverance in the face of adversity as bull-headed and foolish	觉得在困难中坚持又固执又蠢	0x140e2646a	src/personality_values.inc
+value	PERSEVERANCE	-40..-26	thinks there is something deeply wrong with people that persevere through adversity	觉得在困难中坚持的人有问题	0x140e2647e	src/personality_values.inc
+value	PERSEVERANCE	<=-41	finds the notion that one would persevere through adversity completely abhorrent	讨厌在困难中坚持的想法	0x140e2648a	src/personality_values.inc
+value	LEISURE_TIME	>=41	believes that {p} would be a fine thing if all time were leisure time	希望所有时间都能休息	0x140e264a1	src/personality_values.inc
+value	LEISURE_TIME	26..40	treasures leisure time and thinks {p} is very important in life	很珍惜休息时间，也觉得休息很重要	0x140e264ba	src/personality_values.inc
+value	LEISURE_TIME	11..25	values leisure time	看重休息时间	0x140e264cb	src/personality_values.inc
+value	LEISURE_TIME	-10..10	doesn't think one way or the other about leisure time	对休息时间无所谓	0x140e264dc	src/personality_values.inc
+value	LEISURE_TIME	-25..-11	finds leisure time wasteful	觉得休息浪费时间	0x140e264ed	src/personality_values.inc
+value	LEISURE_TIME	-40..-26	is offended by leisure time and leisurely living	讨厌休息和悠闲生活	0x140e26501	src/personality_values.inc
+value	LEISURE_TIME	<=-41	believes that those that take leisure time are evil and finds the whole idea disgusting	觉得休息的人很坏，也讨厌休息	0x140e2650d	src/personality_values.inc
+value	COMMERCE	>=41	sees engaging in commerce as a high ideal in life	觉得做生意是很好的事	0x140e26524	src/personality_values.inc
+value	COMMERCE	26..40	really respects commerce and those that engage in trade	很尊重贸易和商人	0x140e2653d;0x140e2654e	src/personality_values.inc
+value	COMMERCE	11..25	respects commerce	尊重贸易	0x140e2654e	src/personality_values.inc
+value	COMMERCE	-10..10	doesn't particularly respect commerce	不太尊重贸易	0x140e2655f	src/personality_values.inc
+value	COMMERCE	-25..-11	is somewhat put off by trade and commerce	不太喜欢贸易	0x140e26570	src/personality_values.inc
+value	COMMERCE	-40..-26	finds those that engage in trade and commerce to be fairly disgusting	讨厌贸易和商人	0x140e26584	src/personality_values.inc
+value	COMMERCE	<=-41	holds the view that commerce is a vile obscenity	觉得贸易很卑劣	0x140e26590	src/personality_values.inc
+value	ROMANCE	>=41	sees romance as one of the highest ideals	觉得爱情最重要	0x140e265a7	src/personality_values.inc
+value	ROMANCE	26..40	thinks romance is very important in life	觉得爱情很重要	0x140e265c0	src/personality_values.inc
+value	ROMANCE	11..25	values romance	看重爱情	0x140e265d1	src/personality_values.inc
+value	ROMANCE	-10..10	doesn't care one way or the other about romance	对爱情无所谓	0x140e265e2	src/personality_values.inc
+value	ROMANCE	-25..-11	finds romance distasteful	不喜欢爱情	0x140e265f3	src/personality_values.inc
+value	ROMANCE	-40..-26	is somewhat disgusted by romance	讨厌爱情	0x140e26607	src/personality_values.inc
+value	ROMANCE	<=-41	finds even the abstract idea of romance repellent	连爱情这种想法都讨厌	0x140e26613	src/personality_values.inc
+value	NATURE	>=41	holds nature to be of greater value than most aspects of civilization	觉得自然比大多数文明事物都更有价值	0x140e2662a	src/personality_values.inc
+value	NATURE	26..40	has a deep respect for animals, plants and the natural world	很尊重动物、植物和自然	0x140e26643	src/personality_values.inc
+value	NATURE	11..25	values nature	看重自然	0x140e26654	src/personality_values.inc
+value	NATURE	-10..10	doesn't care about nature one way or another	对自然无所谓	0x140e26665	src/personality_values.inc
+value	NATURE	-25..-11	finds nature somewhat disturbing	不太喜欢自然	0x140e26676	src/personality_values.inc
+value	NATURE	-40..-26	has a deep dislike of the natural world	讨厌自然	0x140e2668a	src/personality_values.inc
+value	NATURE	<=-41	would just as soon have nature and the great outdoors burned to ashes and converted into a great mining pit	想把自然烧光，再挖成大矿坑	0x140e26693	src/personality_values.inc
+value	PEACE	>=41	believes the idea of war is utterly repellent and would have peace at all costs	讨厌战争，愿意付出任何代价换取和平	0x140e266a7	src/personality_values.inc
+value	PEACE	26..40	believes that peace is always preferable to war	觉得和平总比战争好	0x140e266bd	src/personality_values.inc
+value	PEACE	11..25	values peace over war	更喜欢和平	0x140e266cb	src/personality_values.inc
+value	PEACE	-10..10	doesn't particularly care between war and peace	对战争还是和平无所谓	0x140e266d9	src/personality_values.inc
+value	PEACE	-25..-11	sees war as a useful means to an end	把战争当成达到目的的手段	0x140e266e7	src/personality_values.inc
+value	PEACE	-40..-26	believes war is preferable to peace in general	觉得战争比和平好	0x140e266f3	src/personality_values.inc
+value	PEACE	<=-41	thinks that the world should be engaged in perpetual warfare	觉得世界应该一直打仗	0x140e266fc	src/personality_values.inc
+value	KNOWLEDGE	>=41	finds the quest for knowledge to be of the very highest value	觉得追求知识最有价值	0x140e25a88	src/personality_values.inc
+value	KNOWLEDGE	26..40	views the pursuit of knowledge as deeply important	觉得追求知识很重要	0x140e25aa1	src/personality_values.inc
+value	KNOWLEDGE	11..25	values knowledge	看重知识	0x140e25ab2	src/personality_values.inc
+value	KNOWLEDGE	-10..10	doesn't see the attainment of knowledge as important	不觉得知识重要	0x140e25ac3	src/personality_values.inc
+value	KNOWLEDGE	-25..-11	finds the pursuit of knowledge to be a waste of effort	觉得追求知识浪费力气	0x140e25ad4	src/personality_values.inc
+value	KNOWLEDGE	-40..-26	thinks the quest for knowledge is a delusional fantasy	觉得追求知识是妄想	0x140e25ae8	src/personality_values.inc
+value	KNOWLEDGE	<=-41	sees the attainment and preservation of knowledge as an offensive enterprise engaged in by arrogant fools	讨厌获取和保存知识，也觉得做这些事的人很傲慢	0x140e25af4	src/personality_values.inc
+facet	LOVE_PROPENSITY	temporary-increase	is currently more love-prone	目前更容易爱上别人	0x140e2b7bf;0x140e2b7f3	src/personality_facets.inc
+facet	LOVE_PROPENSITY	temporary-decrease	is currently less love-prone	目前更不容易爱上别人	0x140e2b7bf;0x140e2b7ff	src/personality_facets.inc
+facet	LOVE_PROPENSITY	>=91	is always in love with somebody and easily develops positive feelings	心里总有喜欢的人，也很容易对人或事产生好感	0x140e273e8	src/personality_facets.inc
+facet	LOVE_PROPENSITY	76..90	very easily falls into love and develops positive feelings	很容易爱上别人，也很容易喜欢上某件事	0x140e273fa	src/personality_facets.inc
+facet	LOVE_PROPENSITY	61..75	can easily fall in love or develop positive sentiments	容易爱上别人，也容易对事物产生好感	0x140e2740c	src/personality_facets.inc
+facet	LOVE_PROPENSITY	25..39	does not easily fall in love and rarely develops positive sentiments	不容易爱上谁，也很少对什么产生好感	0x140e2741e	src/personality_facets.inc
+facet	LOVE_PROPENSITY	10..24	is not the type to fall in love or even develop positive feelings	几乎不会爱上谁，也很难真正喜欢什么	0x140e2742e	src/personality_facets.inc
+facet	LOVE_PROPENSITY	<=9	never falls in love or develops positive feelings toward anything	从没爱上过谁，也不会真正喜欢什么	0x140e2743b	src/personality_facets.inc
+facet	HATE_PROPENSITY	temporary-increase	is currently more hate-prone	目前更容易讨厌别人或事物	0x140e2b7bf;0x140e2b812	src/personality_facets.inc
+facet	HATE_PROPENSITY	temporary-decrease	is currently less hate-prone	目前更不容易讨厌别人或事物	0x140e2b7bf;0x140e2b81e	src/personality_facets.inc
+facet	HATE_PROPENSITY	>=91	is often inflamed by hatred and easily develops hatred toward things	心里总有怨气，很容易讨厌身边的人和事	0x140e27456	src/personality_facets.inc
+facet	HATE_PROPENSITY	76..90	is prone to hatreds and often develops negative feelings	很容易记恨别人，也常对事情感到不满	0x140e27468	src/personality_facets.inc
+facet	HATE_PROPENSITY	61..75	is quick to form negative views about things	很容易看人或事情不顺眼	0x140e2747a	src/personality_facets.inc
+facet	HATE_PROPENSITY	25..39	does not easily hate or develop negative feelings	不容易讨厌谁，也很少对事情不满	0x140e2748c	src/personality_facets.inc
+facet	HATE_PROPENSITY	10..24	very rarely develops negative feelings toward things	很少讨厌身边的人和事	0x140e2749c	src/personality_facets.inc
+facet	HATE_PROPENSITY	<=9	never feels hatred toward anyone or anything	从不恨任何人，也不恨任何事	0x140e274a9	src/personality_facets.inc
+facet	ENVY_PROPENSITY	temporary-increase	is currently more envy-prone	目前更容易嫉妒别人	0x140e2b7bf;0x140e2b831	src/personality_facets.inc
+facet	ENVY_PROPENSITY	temporary-decrease	is currently less envy-prone	目前更不容易嫉妒别人	0x140e2b7bf;0x140e2b83d	src/personality_facets.inc
+facet	ENVY_PROPENSITY	>=91	is consumed by overpowering feelings of jealousy	嫉妒心强得几乎控制不住	0x140e274c4	src/personality_facets.inc
+facet	ENVY_PROPENSITY	76..90	is prone to strong feelings of jealousy	很容易嫉妒别人	0x140e274d6	src/personality_facets.inc
+facet	ENVY_PROPENSITY	61..75	often feels envious of others	经常羡慕别人，有时也会眼红	0x140e274e8	src/personality_facets.inc
+facet	ENVY_PROPENSITY	25..39	doesn't often feel envious of others	不太会嫉妒别人	0x140e274fa	src/personality_facets.inc
+facet	ENVY_PROPENSITY	10..24	is rarely jealous	很少嫉妒别人	0x140e2750a	src/personality_facets.inc
+facet	ENVY_PROPENSITY	<=9	never envies others their status, situation or possessions	从不眼红别人的地位、生活或财物	0x140e27517;0x140e281bc	src/personality_facets.inc
+facet	CHEER_PROPENSITY	temporary-increase	is currently more prone to cheerfulness	目前更容易感到开心	0x140e2b7bf;0x140e2b850	src/personality_facets.inc
+facet	CHEER_PROPENSITY	temporary-decrease	is currently less prone to cheerfulness	目前更不容易感到开心	0x140e2b7bf;0x140e2b85c	src/personality_facets.inc
+facet	CHEER_PROPENSITY	>=91	often feels filled with joy	心情总是很好	0x140e27532	src/personality_facets.inc
+facet	CHEER_PROPENSITY	76..90	can be very happy and optimistic	通常很开心，也很乐观	0x140e27544	src/personality_facets.inc
+facet	CHEER_PROPENSITY	61..75	is often cheerful	大多时候都挺高兴	0x140e27556	src/personality_facets.inc
+facet	CHEER_PROPENSITY	25..39	is rarely happy or enthusiastic	很少开心，也很少对什么提得起兴趣	0x140e27568	src/personality_facets.inc
+facet	CHEER_PROPENSITY	10..24	is dour as a rule	总是一副闷闷不乐的样子	0x140e27578	src/personality_facets.inc
+facet	CHEER_PROPENSITY	<=9	is never the slightest bit cheerful about anything	不管遇到什么都高兴不起来	0x140e27585	src/personality_facets.inc
+facet	DEPRESSION_PROPENSITY	temporary-increase	is currently more depression-prone	目前更容易情绪低落	0x140e2b7bf;0x140e2b86f	src/personality_facets.inc
+facet	DEPRESSION_PROPENSITY	temporary-decrease	is currently less depression-prone	目前更不容易情绪低落	0x140e2b7bf;0x140e2b87b	src/personality_facets.inc
+facet	DEPRESSION_PROPENSITY	>=91	is frequently depressed	经常情绪低落	0x140e275a0	src/personality_facets.inc
+facet	DEPRESSION_PROPENSITY	76..90	is often sad and dejected	经常难过，打不起精神	0x140e275b2	src/personality_facets.inc
+facet	DEPRESSION_PROPENSITY	61..75	often feels discouraged	很容易灰心	0x140e275c4	src/personality_facets.inc
+facet	DEPRESSION_PROPENSITY	25..39	rarely feels discouraged	不太容易灰心	0x140e275d6	src/personality_facets.inc
+facet	DEPRESSION_PROPENSITY	10..24	almost never feels discouraged	几乎不会气馁	0x140e275e6;0x140e275f3	src/personality_facets.inc
+facet	DEPRESSION_PROPENSITY	<=9	never feels discouraged	从来不会气馁	0x140e275f3	src/personality_facets.inc
+facet	ANGER_PROPENSITY	temporary-increase	is currently more anger-prone	目前更容易生气	0x140e2b7bf;0x140e2b88e	src/personality_facets.inc
+facet	ANGER_PROPENSITY	temporary-decrease	is currently less anger-prone	目前更不容易生气	0x140e2b7bf;0x140e2b89a	src/personality_facets.inc
+facet	ANGER_PROPENSITY	>=91	is in a constant state of internal rage	心里总憋着一股火	0x140e2760e	src/personality_facets.inc
+facet	ANGER_PROPENSITY	76..90	is very quick to anger	脾气一点就着	0x140e27620	src/personality_facets.inc
+facet	ANGER_PROPENSITY	61..75	is quick to anger	很容易生气	0x140e27632	src/personality_facets.inc
+facet	ANGER_PROPENSITY	25..39	is slow to anger	不太容易生气	0x140e27644	src/personality_facets.inc
+facet	ANGER_PROPENSITY	10..24	is very slow to anger	很难被人惹火	0x140e27654	src/personality_facets.inc
+facet	ANGER_PROPENSITY	<=9	never becomes angry	从来不会生气	0x140e27661	src/personality_facets.inc
+facet	ANXIETY_PROPENSITY	temporary-increase	is currently more anxiety-prone	目前更容易感到紧张	0x140e2b7bf;0x140e2b8ad	src/personality_facets.inc
+facet	ANXIETY_PROPENSITY	temporary-decrease	is currently less anxiety-prone	目前更不容易感到紧张	0x140e2b7bf;0x140e2b8b9	src/personality_facets.inc
+facet	ANXIETY_PROPENSITY	>=91	is a nervous wreck	总是紧张得快要崩溃	0x140e2767c	src/personality_facets.inc
+facet	ANXIETY_PROPENSITY	76..90	is always tense and jittery	总是提心吊胆，坐立不安	0x140e2768e	src/personality_facets.inc
+facet	ANXIETY_PROPENSITY	61..75	is often nervous	经常感到紧张	0x140e276a0	src/personality_facets.inc
+facet	ANXIETY_PROPENSITY	25..39	has a calm demeanor	一般都很镇定	0x140e276b2	src/personality_facets.inc
+facet	ANXIETY_PROPENSITY	10..24	has a very calm demeanor	遇事非常镇定	0x140e276c2	src/personality_facets.inc
+facet	ANXIETY_PROPENSITY	<=9	has an incredibly calm demeanor	几乎从来不会慌张	0x140e276cf	src/personality_facets.inc
+facet	LUST_PROPENSITY	temporary-increase	is currently more lust-prone	目前更容易产生性欲	0x140e2b7bf;0x140e2b8cc	src/personality_facets.inc
+facet	LUST_PROPENSITY	temporary-decrease	is currently less lust-prone	目前更不容易产生性欲	0x140e2b7bf;0x140e2b8d8	src/personality_facets.inc
+facet	LUST_PROPENSITY	>=91	is constantly ablaze with feelings of lust	总是欲火难耐	0x140e276ea	src/personality_facets.inc
+facet	LUST_PROPENSITY	76..90	is prone to strong feelings of lust	很容易产生强烈的性欲	0x140e276fc	src/personality_facets.inc
+facet	LUST_PROPENSITY	61..75	often feels lustful	经常有性冲动	0x140e2770e	src/personality_facets.inc
+facet	LUST_PROPENSITY	25..39	does not often feel lustful	很少有性冲动	0x140e27720	src/personality_facets.inc
+facet	LUST_PROPENSITY	10..24	rarely looks on others with lust	几乎不会对别人产生性欲	0x140e27730	src/personality_facets.inc
+facet	LUST_PROPENSITY	<=9	never feels lustful passions	完全没有性欲	0x140e2773d	src/personality_facets.inc
+facet	STRESS_VULNERABILITY	temporary-increase	is currently more vulnerable	目前更难应付压力	0x140e2b7bf;0x140e2b8eb	src/personality_facets.inc
+facet	STRESS_VULNERABILITY	temporary-decrease	is currently less vulnerable	目前更能应付压力	0x140e2b7bf;0x140e2b8f7	src/personality_facets.inc
+facet	STRESS_VULNERABILITY	>=91	becomes completely helpless in stressful situations	一有压力就完全不知道该怎么办	0x140e27758;0x140e281bc	src/personality_facets.inc
+facet	STRESS_VULNERABILITY	76..90	cracks easily under pressure	很容易被压力压垮	0x140e2776a	src/personality_facets.inc
+facet	STRESS_VULNERABILITY	61..75	doesn't handle stress well	不太能应付压力	0x140e2777c	src/personality_facets.inc
+facet	STRESS_VULNERABILITY	25..39	can handle stress	面对压力时还算应付得来	0x140e2778e	src/personality_facets.inc
+facet	STRESS_VULNERABILITY	10..24	is confident under pressure	压力越大，反而越沉得住气	0x140e2779e	src/personality_facets.inc
+facet	STRESS_VULNERABILITY	<=9	is impervious to the effects of stress	完全不受压力影响	0x140e277ab	src/personality_facets.inc
+facet	GREED	temporary-increase	is currently more greedy	目前更贪财	0x140e2b7bf;0x140e2b90a	src/personality_facets.inc
+facet	GREED	temporary-decrease	is currently less greedy	目前没那么贪财	0x140e2b7bf;0x140e2b916	src/personality_facets.inc
+facet	GREED	>=91	is as avaricious as they come, obsessed with acquiring wealth	贪得无厌，满脑子都想着发财	0x140e277c6	src/personality_facets.inc
+facet	GREED	76..90	is very greedy	非常贪财	0x140e277d8	src/personality_facets.inc
+facet	GREED	61..75	has a greedy streak	有点贪财	0x140e277ea	src/personality_facets.inc
+facet	GREED	25..39	doesn't focus on material goods	不太看重钱财	0x140e277fc	src/personality_facets.inc
+facet	GREED	10..24	desires little for {p} in the way of possessions	对拥有钱财没什么兴趣	0x140e27815;0x140e27829	src/personality_facets.inc
+facet	GREED	<=9	often neglects {p} own wellbeing, having no interest in material goods	完全不在乎钱财，甚至常忘了照顾好自己	0x140e27868;0x140e27879	src/personality_facets.inc
+facet	IMMODERATION	temporary-increase	is currently more intemperant	目前更容易放纵自己	0x140e2b7bf;0x140e2b929	src/personality_facets.inc
+facet	IMMODERATION	temporary-decrease	is currently less intemperant	目前更能克制自己的欲望和冲动	0x140e2b7bf;0x140e2b935	src/personality_facets.inc
+facet	IMMODERATION	>=91	is ruled by irresistible cravings and urges	完全管不住自己的欲望和冲动	0x140e278c6	src/personality_facets.inc
+facet	IMMODERATION	76..90	feels strong urges and seeks short-term rewards	冲动很强，做事只图眼前痛快	0x140e278d8	src/personality_facets.inc
+facet	IMMODERATION	61..75	occasionally overindulges	偶尔会放纵过头	0x140e278ea	src/personality_facets.inc
+facet	IMMODERATION	25..39	doesn't often experience strong cravings or urges	不太会被欲望或冲动牵着走	0x140e278fc	src/personality_facets.inc
+facet	IMMODERATION	10..24	only rarely feels strong cravings or urges	很少有难以控制的欲望或冲动	0x140e2790c	src/personality_facets.inc
+facet	IMMODERATION	<=9	never feels tempted to overindulge in anything	不管遇到什么诱惑都不会放纵自己	0x140e27919	src/personality_facets.inc
+facet	VIOLENT	temporary-increase	is currently more violent	目前更喜欢跟人打架	0x140e2b7bf;0x140e2b948	src/personality_facets.inc
+facet	VIOLENT	temporary-decrease	is currently less violent	目前更不喜欢跟人打架	0x140e2b7bf;0x140e2b954	src/personality_facets.inc
+facet	VIOLENT	>=91	is given to rough-and-tumble brawling, even to the point of starting fights for no reason	非常爱打架，甚至会没事找事地动手	0x140e27934	src/personality_facets.inc
+facet	VIOLENT	76..90	would never pass up a chance for a good fistfight	只要有架可打就不会错过	0x140e27946	src/personality_facets.inc
+facet	VIOLENT	61..75	likes to brawl	喜欢跟人打架	0x140e27958	src/personality_facets.inc
+facet	VIOLENT	25..39	tends to avoid any physical confrontations	一般都会躲开肢体冲突	0x140e2796a	src/personality_facets.inc
+facet	VIOLENT	10..24	does not enjoy participating in physical confrontations	很不喜欢跟人动手	0x140e2797a	src/personality_facets.inc
+facet	VIOLENT	<=9	would flee even the most necessary battle to avoid any form of physical confrontation	只要能避免动手，哪怕必须打也会逃走	0x140e27987	src/personality_facets.inc
+facet	PERSEVERANCE	temporary-increase	is currently more stubborn	目前更固执，认准了就更不肯放弃	0x140e2b7bf;0x140e2b967	src/personality_facets.inc
+facet	PERSEVERANCE	temporary-decrease	is currently less stubborn	目前没那么固执，也更容易放弃	0x140e2b7bf;0x140e2b973	src/personality_facets.inc
+facet	PERSEVERANCE	>=91	is unbelievably stubborn and will stick with even the most futile action once {p} mind is made up	固执得吓人，一旦认准了就绝不回头，哪怕明知没用也一样	0x140e279a6;0x140e279b7	src/personality_facets.inc
+facet	PERSEVERANCE	76..90	is very stubborn	非常固执，认准了就不肯放弃	0x140e279fb	src/personality_facets.inc
+facet	PERSEVERANCE	61..75	is stubborn	有些固执，不会轻易放弃	0x140e27a0d	src/personality_facets.inc
+facet	PERSEVERANCE	25..39	has a noticeable lack of perseverance	做事缺少耐心和毅力	0x140e27a1f	src/personality_facets.inc
+facet	PERSEVERANCE	10..24	doesn't stick with things if even minor difficulties arise	遇到一点困难就坚持不下去	0x140e27a34	src/personality_facets.inc
+facet	PERSEVERANCE	<=9	drops any activity at the slightest hint of difficulty or even the suggestion of effort being required	只要事情有点难，或者看起来要费力，就会马上放弃	0x140e27a40	src/personality_facets.inc
+facet	WASTEFULNESS	temporary-increase	is currently more wasteful	目前做事更容易浪费材料和力气	0x140e2b7bf;0x140e2b986	src/personality_facets.inc
+facet	WASTEFULNESS	temporary-decrease	is currently less wasteful	目前做事更注意节省材料和力气	0x140e2b7bf;0x140e2b992	src/personality_facets.inc
+facet	WASTEFULNESS	>=91	is completely careless with resources when completing projects and invariable wastes a lot of time and effort	做事完全不算成本，总会浪费很多材料、时间和力气	0x140e27a5b	src/personality_facets.inc
+facet	WASTEFULNESS	76..90	is not careful with resources when working on projects and often spends unnecessary effort	做事不太注意节省，常会白白浪费材料和力气	0x140e27a6d	src/personality_facets.inc
+facet	WASTEFULNESS	61..75	tends to be a little wasteful when working on projects	做事时有点浪费	0x140e27a7f	src/personality_facets.inc
+facet	WASTEFULNESS	25..39	tends to be a little tight with resources when working on projects	做事时有点舍不得用材料	0x140e27a91	src/personality_facets.inc
+facet	WASTEFULNESS	10..24	is stingy with resources on projects and refuses to expend any extra effort	做事很省材料，也不愿多花一点力气	0x140e27aa1	src/personality_facets.inc
+facet	WASTEFULNESS	<=9	cuts any corners possible when working on a project, regardless of the consequences, rather than wasting effort or resources	做事只顾省材料和力气，哪怕偷工减料会出问题也不在乎	0x140e27aae	src/personality_facets.inc
+facet	DISCORD	temporary-increase	is currently more discordant	目前更喜欢挑起争吵和混乱	0x140e2b7bf;0x140e2b9a5	src/personality_facets.inc
+facet	DISCORD	temporary-decrease	is currently more harmonious	目前更希望大家和睦相处	0x140e2b7bf;0x140e2b9b1	src/personality_facets.inc
+facet	DISCORD	>=91	revels in chaos and discord, and {p} encourages {p} whenever possible	唯恐天下不乱，一有机会就会挑事	0x140e27acd;0x140e27ade	src/personality_facets.inc
+facet	DISCORD	76..90	finds a chaotic mess preferable to the boredom of harmonious living	宁可把日子过得鸡飞狗跳，也受不了一团和气的无聊	0x140e27b22	src/personality_facets.inc
+facet	DISCORD	61..75	doesn't mind a little tumult and discord in day-to-day living	不介意生活中有些争吵和混乱	0x140e27b34	src/personality_facets.inc
+facet	DISCORD	25..39	prefers that everyone live as harmoniously as possible	希望大家尽量和睦相处	0x140e27b46	src/personality_facets.inc
+facet	DISCORD	10..24	feels best when everyone gets along without any strife or contention	喜欢大家和和气气、不吵不闹	0x140e27b5b	src/personality_facets.inc
+facet	DISCORD	<=9	would be deeply satisfied if everyone could live as one in complete harmony	最希望所有人都能亲如一家、和睦生活	0x140e27b67	src/personality_facets.inc
+facet	FRIENDLINESS	temporary-increase	is currently more friendly	目前对人更友好	0x140e2b7bf;0x140e2b9c4	src/personality_facets.inc
+facet	FRIENDLINESS	temporary-decrease	is currently more quarrelsome	目前更爱跟人争吵	0x140e2b7bf;0x140e2b9d0	src/personality_facets.inc
+facet	FRIENDLINESS	>=91	is quite a bold flatterer, extremely friendly but just a little insufferable	热情得有些过头，总爱当面说好话，甚至让人觉得是在拍马屁	0x140e27b82	src/personality_facets.inc
+facet	FRIENDLINESS	76..90	is very friendly and always tries to say nice things to others	对人很友好，也总爱说些好听的话	0x140e27b94	src/personality_facets.inc
+facet	FRIENDLINESS	61..75	is a friendly individual	对人很友好	0x140e27ba6	src/personality_facets.inc
+facet	FRIENDLINESS	25..39	is somewhat quarrelsome	有点爱跟人争	0x140e27bb8	src/personality_facets.inc
+facet	FRIENDLINESS	10..24	is unfriendly and disagreeable	对人不太友好，也不好相处	0x140e27bc8	src/personality_facets.inc
+facet	FRIENDLINESS	<=9	is a dyed-in-the-wool quarreler, never missing a chance to lash out in verbal hostility	特别爱吵架，逮到机会就会骂人	0x140e27bd5	src/personality_facets.inc
+facet	POLITENESS	temporary-increase	is currently more polite	目前更有礼貌	0x140e2b7bf;0x140e2b9e3	src/personality_facets.inc
+facet	POLITENESS	temporary-decrease	is currently more rude	目前更粗鲁	0x140e2b7bf;0x140e2b9ef	src/personality_facets.inc
+facet	POLITENESS	>=91	exhibits a refined politeness and is determined to keep the guiding rules of etiquette and decorum as if life {p} depended on {p}	举止非常得体，把礼貌和规矩看得比什么都重要	0x140e27bf0	src/personality_facets.inc
+facet	POLITENESS	76..90	is very polite and observes appropriate rules of decorum when possible	很有礼貌，也总会尽量守规矩	0x140e27c02	src/personality_facets.inc
+facet	POLITENESS	61..75	is quite polite	很有礼貌	0x140e27c14	src/personality_facets.inc
+facet	POLITENESS	25..39	could be considered rude	有时候显得有点粗鲁	0x140e27c26	src/personality_facets.inc
+facet	POLITENESS	10..24	is very impolite and inconsiderate of propriety	很没礼貌，也不在乎这样是否得体	0x140e27c36	src/personality_facets.inc
+facet	POLITENESS	<=9	is a vulgar being who does not care a lick for even the most basic rules of civilized living	十分粗俗，连最基本的礼貌和规矩都不在乎	0x140e27c43	src/personality_facets.inc
+facet	DISDAIN_ADVICE	temporary-increase	is currently more disdainful	目前更不愿听取别人的建议	0x140e2b7bf;0x140e2ba02	src/personality_facets.inc
+facet	DISDAIN_ADVICE	temporary-decrease	is currently more prudent	目前更愿意听取别人的建议	0x140e2b7bf;0x140e2ba0e	src/personality_facets.inc
+facet	DISDAIN_ADVICE	>=91	disdains even the best advice of associates and family, relying strictly on {p} own counsel	谁的话都听不进去，哪怕亲友说得再有道理也只相信自己	0x140e27c62;0x140e27c73;0x140e27ccc	src/personality_facets.inc
+facet	DISDAIN_ADVICE	76..90	dislikes receiving advice, preferring to keep {p} own counsel	不喜欢别人给自己出主意，什么都想自己决定	0x140e27c73;0x140e27cbb;0x140e27ccc	src/personality_facets.inc
+facet	DISDAIN_ADVICE	61..75	has a tendency to go {p} alone, without considering the advice of others	习惯自己做决定，很少考虑别人的意见	0x140e27d10	src/personality_facets.inc
+facet	DISDAIN_ADVICE	25..39	tends to ask others for help with difficult decisions	遇到难做的决定时，通常会找别人商量	0x140e27d22	src/personality_facets.inc
+facet	DISDAIN_ADVICE	10..24	relies on the advice of others during decision making	做决定时很依赖别人的意见	0x140e27d37	src/personality_facets.inc
+facet	DISDAIN_ADVICE	<=9	is unable to make decisions without a great deal of input from others	要是没人反复帮着出主意，就根本拿不定主意	0x140e27d43	src/personality_facets.inc
+facet	BRAVERY	temporary-increase	is currently more fearless	目前更不怕危险	0x140e2b7bf;0x140e2ba21	src/personality_facets.inc
+facet	BRAVERY	temporary-decrease	is currently more fearful	目前更容易害怕危险	0x140e2b7bf;0x140e2ba2d	src/personality_facets.inc
+facet	BRAVERY	>=91	is utterly fearless when confronted with danger, to the point of lacking common sense	遇到危险也完全不知道害怕，勇敢得有点不知死活	0x140e27d5e	src/personality_facets.inc
+facet	BRAVERY	76..90	is incredibly brave in the face of looming danger, perhaps a bit foolhardy	遇到危险时勇气惊人，有时甚至有些莽撞	0x140e27d70	src/personality_facets.inc
+facet	BRAVERY	61..75	is brave in the face of imminent danger	遇到危险时很勇敢	0x140e27d82	src/personality_facets.inc
+facet	BRAVERY	25..39	is somewhat fearful in the face of imminent danger	遇到危险时会有点害怕	0x140e27d94	src/personality_facets.inc
+facet	BRAVERY	10..24	has great trouble mastering fear when confronted by danger	一遇到危险就很难克服恐惧	0x140e27da9	src/personality_facets.inc
+facet	BRAVERY	<=9	is a coward, completely overwhelmed by fear when confronted with danger	非常胆小，一遇到危险就会吓得什么都做不了	0x140e27db5	src/personality_facets.inc
+facet	CONFIDENCE	temporary-increase	is currently more confident	目前更自信	0x140e2b7bf;0x140e2ba40	src/personality_facets.inc
+facet	CONFIDENCE	temporary-decrease	is currently less confident	目前没那么自信	0x140e2b7bf;0x140e2ba4c	src/personality_facets.inc
+facet	CONFIDENCE	>=91	presupposes success in any venture requiring {p} skills with what could be called blind overconfidence	凡是要靠本事的事，都觉得自己一定能成，自信得有些过头	0x140e27dd4;0x140e27de5	src/personality_facets.inc
+facet	CONFIDENCE	76..90	is extremely confident of {p} in situations requiring {p} skills	对自己的本事非常有信心	0x140e27e34;0x140e27e45;0x140e281bc	src/personality_facets.inc
+facet	CONFIDENCE	61..75	is generally quite confident of {p} abilities when undertaking specific ventures	做事时通常很相信自己的能力	0x140e27ec6;0x140e27ed7;0x140e27f3c	src/personality_facets.inc
+facet	CONFIDENCE	25..39	sometimes acts with little determination and confidence	做事有时不够果断，也不太自信	0x140e27f15	src/personality_facets.inc
+facet	CONFIDENCE	10..24	lacks confidence in {p} abilities	对自己的能力没什么信心	0x140e27f2f;0x140e27f3c	src/personality_facets.inc
+facet	CONFIDENCE	<=9	has no confidence at all in {p} talent and abilities	完全不相信自己的能力和天分	0x140e27f3c;0x140e27f74;0x140e27f81	src/personality_facets.inc
+facet	VANITY	temporary-increase	is currently more vain	目前更在意自己的长相和才华	0x140e2b7bf;0x140e2ba5f	src/personality_facets.inc
+facet	VANITY	temporary-decrease	is currently less vain	目前没那么在意自己的长相和才华	0x140e2b7bf;0x140e2ba6b	src/personality_facets.inc
+facet	VANITY	>=91	is completely wrapped up in {p} own appearance, abilities and other personal matters	只关心自己的长相、本事和个人得失	0x140e27f3c;0x140e27fd0;0x140e27fdd	src/personality_facets.inc
+facet	VANITY	76..90	is greatly pleased by {p} own looks and accomplishments	对自己的长相和成就非常得意	0x140e2801b;0x140e28028	src/personality_facets.inc
+facet	VANITY	61..75	is pleased by {p} own appearance and talents	很满意自己的长相和才华	0x140e28066;0x140e28073	src/personality_facets.inc
+facet	VANITY	25..39	is not inherently proud of {p} talents and accomplishments	不太会为自己的才华和成就感到骄傲	0x140e280b1;0x140e280be	src/personality_facets.inc
+facet	VANITY	10..24	takes no pleasure in {p} talents and appearance	不会因为自己的才华或长相而觉得得意	0x140e280fc;0x140e28109	src/personality_facets.inc
+facet	VANITY	<=9	could not care less about {p} appearance, talents or other personal vanities	根本不在乎自己的长相、才华和那些虚荣的东西	0x140e28141;0x140e2814e	src/personality_facets.inc
+facet	AMBITION	temporary-increase	is currently more ambitious	目前更有上进心	0x140e2b7bf;0x140e2ba7e	src/personality_facets.inc
+facet	AMBITION	temporary-decrease	is currently less ambitious	目前没那么有上进心	0x140e2b7bf;0x140e2ba8a	src/personality_facets.inc
+facet	AMBITION	>=91	has a relentless drive, completely consumed by ambition	野心极大，一心只想不断往上爬	0x140e28195	src/personality_facets.inc
+facet	AMBITION	76..90	is very ambitious, always looking for a way to better {p} situation	很有野心，总想让自己过得更好、地位更高	0x140e281ab;0x140e281bc	src/personality_facets.inc
+facet	AMBITION	61..75	is quite ambitious	很有上进心	0x140e281fa	src/personality_facets.inc
+facet	AMBITION	25..39	isn't particularly ambitious	没什么野心	0x140e2820c	src/personality_facets.inc
+facet	AMBITION	10..24	is not driven and rarely feels the need to pursue even a modest success	不求上进，连一点小成就都懒得去争	0x140e28221	src/personality_facets.inc
+facet	AMBITION	<=9	has no ambition whatsoever	完全没有上进心，也不想做出什么成绩	0x140e2822d	src/personality_facets.inc
+facet	GRATITUDE	temporary-increase	is currently more grateful	目前更懂得感激别人的帮助	0x140e2b7bf;0x140e2ba9d	src/personality_facets.inc
+facet	GRATITUDE	temporary-decrease	is currently less grateful	目前没那么懂得感激别人的帮助	0x140e2b7bf;0x140e2baa9	src/personality_facets.inc
+facet	GRATITUDE	>=91	unerringly returns favors and has a profound sense of gratitude for the kind actions of others	会把别人的好一直记在心里，而且一定会想办法回报	0x140e28248	src/personality_facets.inc
+facet	GRATITUDE	76..90	feels a strong need to reciprocate any favor done for {p}	总想着找机会报答每一个帮过自己的人	0x140e28261	src/personality_facets.inc
+facet	GRATITUDE	61..75	is grateful when others help {p} out and tries to return favors	受了别人的帮助就会感激，也会尽量回报	0x140e28299;0x140e282aa	src/personality_facets.inc
+facet	GRATITUDE	25..39	takes offered help and gifts without feeling particularly grateful	接受别人的帮助和礼物时不会特别感激	0x140e282e8	src/personality_facets.inc
+facet	GRATITUDE	10..24	accepts favors without developing a sense of obligation, preferring to act as the current situation demands	受了别人好处也不觉得欠了人情，以后还是照自己的需要做事	0x140e281bc;0x140e282fa	src/personality_facets.inc
+facet	GRATITUDE	<=9	does not feel the slightest need to reciprocate favors that others do for {p}, no matter how major the help or how much {p} needed {p}	从来不想回报别人的帮助，哪怕对方帮过天大的忙也一样	0x140e2830d;0x140e2831e;0x140e28346	src/personality_facets.inc
+facet	IMMODESTY	temporary-increase	is currently more extravagant	目前更喜欢打扮得华丽抢眼	0x140e2b7bf;0x140e2babc	src/personality_facets.inc
+facet	IMMODESTY	temporary-decrease	is currently more austere	目前更喜欢打扮得朴素得体	0x140e2b7bf;0x140e2bac8	src/personality_facets.inc
+facet	IMMODESTY	>=91	always presents {p} as extravagantly as possible, displaying a magnificent image to the world	总要把自己打扮得非常华丽，生怕别人注意不到	0x140e283ab;0x140e283bc;0x140e284bf	src/personality_facets.inc
+facet	IMMODESTY	76..90	likes to present {p} boldly, even if {p} would offend an average sense of modesty	喜欢打扮得大胆抢眼，哪怕别人觉得不得体也不在乎	0x140e28401;0x140e28412	src/personality_facets.inc
+facet	IMMODESTY	61..75	doesn't mind wearing something special now and again	偶尔也喜欢穿点特别的东西	0x140e28450	src/personality_facets.inc
+facet	IMMODESTY	25..39	prefers to present {p} modestly	更喜欢穿得朴素得体	0x140e28469;0x140e2847a	src/personality_facets.inc
+facet	IMMODESTY	10..24	presents {p} modestly and frowns on any flashy accoutrements	穿着很朴素，也不喜欢花哨的装饰	0x140e2847a;0x140e284bf;0x140e284d0	src/personality_facets.inc
+facet	IMMODESTY	<=9	cleaves to an austere lifestyle, disdaining even minor immodesties in appearance	生活非常简朴，连稍微张扬一点的打扮都看不惯	0x140e28508	src/personality_facets.inc
+facet	HUMOR	temporary-increase	is currently more zany	目前更爱开玩笑	0x140e2b7bf;0x140e2badb	src/personality_facets.inc
+facet	HUMOR	temporary-decrease	is currently more humorless	目前更缺乏幽默感	0x140e2b7bf;0x140e2bae7	src/personality_facets.inc
+facet	HUMOR	>=91	finds something humorous in everything, no matter how serious or inappropriate	什么事都能拿来开玩笑，完全不管场合合不合适	0x140e28523	src/personality_facets.inc
+facet	HUMOR	76..90	finds the humor in most situations	不管遇到什么，大多都能找到好笑的地方	0x140e281bc;0x140e28535	src/personality_facets.inc
+facet	HUMOR	61..75	has an active sense of humor	很有幽默感，也爱开玩笑	0x140e28547	src/personality_facets.inc
+facet	HUMOR	25..39	has little interest in joking around	不太喜欢开玩笑	0x140e28559	src/personality_facets.inc
+facet	HUMOR	10..24	does not find most jokes humorous	觉得大多数笑话都不好笑	0x140e2856e	src/personality_facets.inc
+facet	HUMOR	<=9	is utterly humorless	一点幽默感都没有，什么玩笑都觉得无聊	0x140e2857a	src/personality_facets.inc
+facet	VENGEFUL	temporary-increase	is currently more vengeful	目前更容易记仇	0x140e2b7bf;0x140e2bafa	src/personality_facets.inc
+facet	VENGEFUL	temporary-decrease	is currently less vengeful	目前更不容易记仇	0x140e2b7bf;0x140e2bb06	src/personality_facets.inc
+facet	VENGEFUL	>=91	is vengeful and never forgets or forgives past grievances	有仇一定会报，过去的怨从来不会忘	0x140e28595	src/personality_facets.inc
+facet	VENGEFUL	76..90	has little time for forgiveness and will generally seek retribution	很少原谅得罪过自己的人，通常都会报复	0x140e285a7	src/personality_facets.inc
+facet	VENGEFUL	61..75	tends to hang on to grievances	很容易记仇	0x140e285b9	src/personality_facets.inc
+facet	VENGEFUL	25..39	doesn't tend to hold on to grievances	不太记仇	0x140e285cb	src/personality_facets.inc
+facet	VENGEFUL	10..24	does not generally seek retribution for past wrongs	受了委屈通常也不会报复	0x140e285e0	src/personality_facets.inc
+facet	VENGEFUL	<=9	has no sense of vengeance or retribution	完全没有报复心	0x140e285ec	src/personality_facets.inc
+facet	PRIDE	temporary-increase	is currently more proud	目前更觉得自己了不起	0x140e2b7bf;0x140e2bb19	src/personality_facets.inc
+facet	PRIDE	temporary-decrease	is currently more humble	目前更谦虚	0x140e2b7bf;0x140e2bb25	src/personality_facets.inc
+facet	PRIDE	>=91	is absorbed in delusions of self-importance	自以为了不起，觉得自己是个大人物	0x140e28607	src/personality_facets.inc
+facet	PRIDE	76..90	has an overinflated sense of self-worth	把自己看得太重要	0x140e28619	src/personality_facets.inc
+facet	PRIDE	61..75	thinks {p} is fairly important in the grand scheme of things	觉得自己挺重要	0x140e28640	src/personality_facets.inc
+facet	PRIDE	25..39	is very humble	很谦虚，从不把自己看得太重	0x140e2867e	src/personality_facets.inc
+facet	PRIDE	10..24	has a low sense of self-esteem	不太看得起自己	0x140e28690	src/personality_facets.inc
+facet	PRIDE	<=9	is completely convinced of {p} own worthlessness	觉得自己一无是处，完全没有价值	0x140e286a0;0x140e286b1	src/personality_facets.inc
+facet	CRUELTY	temporary-increase	is currently more cruel	目前更残忍	0x140e2b7bf;0x140e2bb38	src/personality_facets.inc
+facet	CRUELTY	temporary-decrease	is currently more merciful	目前更容易心软	0x140e2b7bf;0x140e2bb44	src/personality_facets.inc
+facet	CRUELTY	>=91	is deliberately cruel to those unfortunate enough to be subject to {p} sadism	喜欢故意折磨落到自己手里的人	0x140e286fc	src/personality_facets.inc
+facet	CRUELTY	76..90	is sometimes cruel	有时候很残忍	0x140e2874b	src/personality_facets.inc
+facet	CRUELTY	61..75	generally acts impartially and is rarely moved to mercy	通常一视同仁，很少因为同情谁而手软	0x140e2875d	src/personality_facets.inc
+facet	CRUELTY	25..39	often acts with compassion	经常会为别人着想	0x140e2876f	src/personality_facets.inc
+facet	CRUELTY	10..24	is easily moved to mercy	很容易心软	0x140e28781	src/personality_facets.inc
+facet	CRUELTY	<=9	always acts with mercy and compassion at the forefront of {p} considerations	不管做什么都会先替别人着想，尽量不去伤害谁	0x140e28791;0x140e287a2	src/personality_facets.inc
+facet	SINGLEMINDED	temporary-increase	is currently more singleminded	目前更专注于手头的事	0x140e2b7bf;0x140e2bb57	src/personality_facets.inc
+facet	SINGLEMINDED	temporary-decrease	is currently more scatterbrained	目前更容易走神	0x140e2b7bf;0x140e2bb63	src/personality_facets.inc
+facet	SINGLEMINDED	>=91	pursues matters with a single-minded focus, often overlooking other matters	一做起事来就只顾眼前这件，常常忘了其他事情	0x140e287e9	src/personality_facets.inc
+facet	SINGLEMINDED	76..90	can be very single-minded	专心起来时眼里就只剩一件事	0x140e287fb	src/personality_facets.inc
+facet	SINGLEMINDED	61..75	generally acts with a narrow focus on the current activity	做事时一般只盯着手头的事	0x140e2880d	src/personality_facets.inc
+facet	SINGLEMINDED	25..39	can occasionally lose focus on the matter at hand	偶尔会走神	0x140e2881f	src/personality_facets.inc
+facet	SINGLEMINDED	10..24	is somewhat scatterbrained	有点心不在焉，容易走神	0x140e28834	src/personality_facets.inc
+facet	SINGLEMINDED	<=9	is a complete scatterbrain, unable to focus on a single matter for more than a passing moment	完全没法集中注意力，做什么都会马上走神	0x140e28840	src/personality_facets.inc
+facet	HOPEFUL	temporary-increase	is currently more presumptious	目前对未来更乐观	0x140e2b7bf;0x140e2bb76	src/personality_facets.inc
+facet	HOPEFUL	temporary-decrease	is currently more despairing	目前对未来更不抱希望	0x140e2b7bf;0x140e2bb82	src/personality_facets.inc
+facet	HOPEFUL	>=91	has such a developed sense of optimism that {p} always assumes the best outcome will eventually occur, no matter what	乐观得有些过头，不管情况多糟都相信最后会有最好的结果	0x140e2885f;0x140e28870	src/personality_facets.inc
+facet	HOPEFUL	76..90	is an optimist	很乐观，凡事都往好处想	0x140e288ae	src/personality_facets.inc
+facet	HOPEFUL	61..75	generally finds {p} quite hopeful about the future	对未来抱有希望	0x140e288c7;0x140e288d8	src/personality_facets.inc
+facet	HOPEFUL	25..39	tends to assume the worst of two outcomes will be the one that comes to pass	遇到两种可能时，总觉得更糟的那个会发生	0x140e28916	src/personality_facets.inc
+facet	HOPEFUL	10..24	is a pessimist	很悲观，凡事都往坏处想	0x140e2892b	src/personality_facets.inc
+facet	HOPEFUL	<=9	despairs of anything positive happening in the future and lives without feelings of hope	觉得以后不会再有任何好事，已经完全不抱希望	0x140e28937	src/personality_facets.inc
+facet	CURIOUS	temporary-increase	is currently more curious	目前好奇心更强	0x140e2b7bf;0x140e2bb95	src/personality_facets.inc
+facet	CURIOUS	temporary-decrease	is currently less curious	目前好奇心没那么强	0x140e2b7bf;0x140e2bba1	src/personality_facets.inc
+facet	CURIOUS	>=91	is implacably curious, without any respect for propriety or privacy	好奇心强得拦不住，为了弄清楚一件事根本不管礼貌和隐私	0x140e28952	src/personality_facets.inc
+facet	CURIOUS	76..90	is very curious, sometimes to {p} detriment	好奇心很强，有时会因此给自己惹麻烦	0x140e28968;0x140e28979;0x140e29079	src/personality_facets.inc
+facet	CURIOUS	61..75	is curious and eager to learn	对很多事情都好奇，也很想学新东西	0x140e289b7	src/personality_facets.inc
+facet	CURIOUS	25..39	isn't particularly curious about the world	对周围的世界没多少好奇心	0x140e289c9	src/personality_facets.inc
+facet	CURIOUS	10..24	is very rarely moved by curiosity	很少会好奇	0x140e289db	src/personality_facets.inc
+facet	CURIOUS	<=9	is incurious and never seeks out knowledge or information to satisfy {p}	对什么都不好奇，也从不主动了解新东西	0x140e289ee	src/personality_facets.inc
+facet	BASHFUL	temporary-increase	is currently more bashful	目前更害羞	0x140e2b7bf;0x140e2bbb4	src/personality_facets.inc
+facet	BASHFUL	temporary-decrease	is currently more shameless	目前更不在乎别人的眼光	0x140e2b7bf;0x140e2bbc0	src/personality_facets.inc
+facet	BASHFUL	>=91	is gripped by a crippling shyness	害羞得什么都不敢做	0x140e28a28	src/personality_facets.inc
+facet	BASHFUL	76..90	is bashful	很害羞	0x140e28a3a	src/personality_facets.inc
+facet	BASHFUL	61..75	tends to consider what others think of {p}	经常在意别人怎么看自己	0x140e28a53	src/personality_facets.inc
+facet	BASHFUL	25..39	is not particularly interested in what others think of {p}	不太在意别人怎么看自己	0x140e28a8b	src/personality_facets.inc
+facet	BASHFUL	10..24	is generally unhindered by the thoughts of others concerning {p} actions	通常不会因为别人的眼光而不敢做事	0x140e28ac0	src/personality_facets.inc
+facet	BASHFUL	<=9	is shameless, absolutely unfazed by the thoughts of others	完全不觉得害臊，也根本不在乎别人怎么看	0x140e28b09	src/personality_facets.inc
+facet	PRIVACY	temporary-increase	is currently more private	目前更看重隐私	0x140e2b7bf;0x140e2bbd3	src/personality_facets.inc
+facet	PRIVACY	temporary-decrease	is currently less private	目前没那么看重隐私	0x140e2b7bf;0x140e2bbdf	src/personality_facets.inc
+facet	PRIVACY	>=91	is private to the point of paranoia, unwilling to reveal even basic information about {p}	特别怕别人知道自己的事，连最基本的情况都不肯说	0x140e28b2b	src/personality_facets.inc
+facet	PRIVACY	76..90	has a strong tendency toward privacy	非常看重隐私	0x140e28b5c	src/personality_facets.inc
+facet	PRIVACY	61..75	tends not to reveal personal information	一般不愿谈自己的私事	0x140e28b6e	src/personality_facets.inc
+facet	PRIVACY	25..39	tends to share {p} own experiences and thoughts with others	喜欢跟别人分享自己的经历和想法	0x140e28b88;0x140e28b95	src/personality_facets.inc
+facet	PRIVACY	10..24	is not a private person and freely shares details of {p} life	不太在乎隐私，生活中的很多细节都会告诉别人	0x140e28bd3	src/personality_facets.inc
+facet	PRIVACY	<=9	shares intimate details of {p} life without sparing a thought to repercussions or propriety	连很私密的生活细节都会随便告诉别人，完全不管后果或是否合适	0x140e28c18;0x140e28c25	src/personality_facets.inc
+facet	PERFECTIONIST	temporary-increase	is currently more attentive	目前做事更注意细节	0x140e2b7bf;0x140e2bbf2	src/personality_facets.inc
+facet	PERFECTIONIST	temporary-decrease	is currently less attentive	目前做事没那么注意细节	0x140e2b7bf;0x140e2bbfe	src/personality_facets.inc
+facet	PERFECTIONIST	>=91	is obsessed with details and will often take a great deal of extra time to make sure things are done the right way	特别在意细节，宁愿多花很多时间也要把事情做对	0x140e28c6c	src/personality_facets.inc
+facet	PERFECTIONIST	76..90	is a perfectionist	做什么都想做到完美	0x140e28c7e	src/personality_facets.inc
+facet	PERFECTIONIST	61..75	tries to do things correctly each time	每次都会尽量把事情做好	0x140e28c90	src/personality_facets.inc
+facet	PERFECTIONIST	25..39	doesn't try to get things done perfectly	不要求每件事都做到完美	0x140e28ca2	src/personality_facets.inc
+facet	PERFECTIONIST	10..24	is inattentive to detail in {p} own work	做事不太注意细节	0x140e28cbc;0x140e28cc9	src/personality_facets.inc
+facet	PERFECTIONIST	<=9	is frustratingly sloppy and careless with every task {p} sets to carry out	做什么都马虎大意，粗心得让人受不了	0x140e28d05;0x140e28d12	src/personality_facets.inc
+facet	CLOSEMINDED	temporary-increase	is currently less open-minded	目前更不愿改变自己的想法	0x140e2b7bf;0x140e2bc11	src/personality_facets.inc
+facet	CLOSEMINDED	temporary-decrease	is currently more acquiescing	目前更容易接受别人的看法	0x140e2b7bf;0x140e2bc1d	src/personality_facets.inc
+facet	CLOSEMINDED	>=91	is completely closed-minded and never changes {p} mind after forming an initial idea	特别认死理，一旦有了想法就绝不会改	0x140e28d5d;0x140e28d6e	src/personality_facets.inc
+facet	CLOSEMINDED	76..90	is intellectually stubborn, rarely changing {p} mind during a debate regardless of the merits	想法很固执，争论时就算对方有道理也很少改变意见	0x140e28db0;0x140e28dc1;0x140e28ec1	src/personality_facets.inc
+facet	CLOSEMINDED	61..75	tends to be a bit stubborn in changing {p} mind about things	有点认死理，不太愿意改变想法	0x140e28e03;0x140e28e14;0x140e28ec1	src/personality_facets.inc
+facet	CLOSEMINDED	25..39	doesn't cling tightly to ideas and is open to changing {p} mind	不太坚持原来的看法，愿意听取不同意见	0x140e28e56;0x140e28ec1	src/personality_facets.inc
+facet	CLOSEMINDED	10..24	often finds {p} changing {p} mind to agree with somebody else	经常听了别人的话就改变想法	0x140e28eb0;0x140e28ec1;0x140e28ee9	src/personality_facets.inc
+facet	CLOSEMINDED	<=9	easily changes {p} mind and will generally go with the prevailing view on anything	很容易改变想法，通常大家怎么说就怎么想	0x140e28f3c;0x140e28f4d	src/personality_facets.inc
+facet	TOLERANT	temporary-increase	is currently more tolerant	目前更能接受与自己不同的人	0x140e2b7bf;0x140e2bc30	src/personality_facets.inc
+facet	TOLERANT	temporary-decrease	is currently less tolerant	目前更难接受与自己不同的人	0x140e2b7bf;0x140e2bc3c	src/personality_facets.inc
+facet	TOLERANT	>=91	is not bothered in the slightest by deviations from the norm or even extreme differences in lifestyle or appearance	什么样的人都能接受，再奇怪的长相或生活方式也不会介意	0x140e28f94	src/personality_facets.inc
+facet	TOLERANT	76..90	is very comfortable around others that are different from {p}	跟自己完全不同的人也能相处得很好	0x140e28fad	src/personality_facets.inc
+facet	TOLERANT	61..75	is quite comfortable with others that have a different appearance or culture	跟长相或文化不同的人相处时也很自在	0x140e28fde	src/personality_facets.inc
+facet	TOLERANT	25..39	is somewhat uncomfortable around those that appear unusual or live differently from {p}	跟长相奇怪或生活方式不同的人相处时会有些不自在	0x140e28ff7	src/personality_facets.inc
+facet	TOLERANT	10..24	is made deeply uncomfortable by differences in culture or appearance	很难接受文化或长相上的差别	0x140e2902b	src/personality_facets.inc
+facet	TOLERANT	<=9	cannot tolerate differences in culture, lifestyle or appearance	完全不能容忍不同的文化、生活方式或长相	0x140e29037	src/personality_facets.inc
+facet	EMOTIONALLY_OBSESSIVE	temporary-increase	is currently more obsessive	目前更容易与别人建立深厚的感情	0x140e2b7bf;0x140e2bc4f	src/personality_facets.inc
+facet	EMOTIONALLY_OBSESSIVE	temporary-decrease	is currently less obsessive	目前更不容易与别人建立深厚的感情	0x140e2b7bf;0x140e2bc5b	src/personality_facets.inc
+facet	EMOTIONALLY_OBSESSIVE	>=91	is emotionally obsessive, forming life-long attachments even if they aren't reciprocated	对感情特别执着，哪怕对方没有回应也会惦记一辈子	0x140e29052	src/personality_facets.inc
+facet	EMOTIONALLY_OBSESSIVE	76..90	forms strong emotional bonds with others, at times to {p} detriment	很容易跟别人产生很深的感情，有时还会因此伤到自己	0x140e28979;0x140e29068;0x140e29079	src/personality_facets.inc
+facet	EMOTIONALLY_OBSESSIVE	61..75	has a tendency toward forming deep emotional bonds with others	很容易跟别人建立深厚的感情	0x140e290b7	src/personality_facets.inc
+facet	EMOTIONALLY_OBSESSIVE	25..39	tends to form only tenuous emotional bonds with others	跟别人的感情通常比较淡	0x140e290c9	src/personality_facets.inc
+facet	EMOTIONALLY_OBSESSIVE	10..24	forms only fleeting and rare emotional bonds with others	很少对谁产生感情，就算有也不会长久	0x140e290de	src/personality_facets.inc
+facet	EMOTIONALLY_OBSESSIVE	<=9	does not have feelings of emotional attachment and has never felt even a moment's connection with another being	从不依恋谁，也从没跟任何人真正亲近过	0x140e290ea	src/personality_facets.inc
+facet	SWAYED_BY_EMOTIONS	temporary-increase	is currently more sensitive	目前更容易受别人情绪的影响	0x140e2b7bf;0x140e2bc6e	src/personality_facets.inc
+facet	SWAYED_BY_EMOTIONS	temporary-decrease	is currently less sensitive	目前更不容易受别人情绪的影响	0x140e2b7bf;0x140e2bc7a	src/personality_facets.inc
+facet	SWAYED_BY_EMOTIONS	>=91	is buffeted by others' emotions and can't help but to respond to them	很容易被别人的情绪带着走，想不受影响都做不到	0x140e29105	src/personality_facets.inc
+facet	SWAYED_BY_EMOTIONS	76..90	is swayed by emotional appeals	很容易被感情打动	0x140e29117	src/personality_facets.inc
+facet	SWAYED_BY_EMOTIONS	61..75	tends to be swayed by the emotions of others	常会受别人情绪的影响	0x140e29129	src/personality_facets.inc
+facet	SWAYED_BY_EMOTIONS	25..39	tends not to be swayed by emotional appeals	不太会因为感情而改变想法	0x140e2913b	src/personality_facets.inc
+facet	SWAYED_BY_EMOTIONS	10..24	does not generally respond to emotional appeals	就算别人打感情牌，通常也不会动摇	0x140e29150	src/personality_facets.inc
+facet	SWAYED_BY_EMOTIONS	<=9	is never moved by the emotions of others	完全不会被别人的情绪和感情影响	0x140e2915c	src/personality_facets.inc
+facet	ALTRUISM	temporary-increase	is currently more altruistic	目前更愿意帮助别人	0x140e2b7bf;0x140e2bc8d	src/personality_facets.inc
+facet	ALTRUISM	temporary-decrease	is currently less altruistic	目前没那么愿意帮助别人	0x140e2b7bf;0x140e2bc99	src/personality_facets.inc
+facet	ALTRUISM	>=91	is truly fulfilled by assisting those in need	很愿意帮助有困难的人，因为这样会觉得生活很有意义	0x140e29177	src/personality_facets.inc
+facet	ALTRUISM	76..90	finds helping others very emotionally rewarding	很喜欢帮助别人，也会从中得到很大的满足	0x140e29189	src/personality_facets.inc
+facet	ALTRUISM	61..75	finds helping others emotionally rewarding	喜欢帮助别人，也会因此觉得开心	0x140e2919b	src/personality_facets.inc
+facet	ALTRUISM	25..39	does not go out of {p} way to help others	不会特意费心去帮助别人	0x140e291b1;0x140e291c2	src/personality_facets.inc
+facet	ALTRUISM	10..24	dislikes helping others	不喜欢帮助别人	0x140e29200	src/personality_facets.inc
+facet	ALTRUISM	<=9	feels helping others is an imposition on {p} time	觉得帮助别人是在浪费自己的时间	0x140e29210	src/personality_facets.inc
+facet	DUTIFULNESS	temporary-increase	is currently more dutiful	目前责任心更强	0x140e2b7bf;0x140e2bcac	src/personality_facets.inc
+facet	DUTIFULNESS	temporary-decrease	is currently less dutiful	目前责任心没那么强	0x140e2b7bf;0x140e2bcb8	src/personality_facets.inc
+facet	DUTIFULNESS	>=91	has a profound sense of duty and obligation	把责任看得比什么都重	0x140e29268	src/personality_facets.inc
+facet	DUTIFULNESS	76..90	has a strong sense of duty	责任心很强	0x140e2927a	src/personality_facets.inc
+facet	DUTIFULNESS	61..75	has a sense of duty	很有责任感	0x140e2928c	src/personality_facets.inc
+facet	DUTIFULNESS	25..39	finds obligations confining	觉得责任是一种束缚	0x140e2929e	src/personality_facets.inc
+facet	DUTIFULNESS	10..24	dislikes obligations and will try to avoid being bound by them	不喜欢承担责任，总想躲开这些束缚	0x140e292b0	src/personality_facets.inc
+facet	DUTIFULNESS	<=9	hates vows, obligations, promises and other binding elements that could restrict {p} life	讨厌誓言、责任和承诺，凡是会限制自己的事都不愿沾	0x140e292c0	src/personality_facets.inc
+facet	THOUGHTLESSNESS	temporary-increase	is currently more thoughtless	目前做事更欠考虑	0x140e2b7bf;0x140e2bccb	src/personality_facets.inc
+facet	THOUGHTLESSNESS	temporary-decrease	is currently more deliberate	目前做事会想得更周全	0x140e2b7bf;0x140e2bcd7	src/personality_facets.inc
+facet	THOUGHTLESSNESS	>=91	never deliberates before acting, to the point of being considered thoughtless	做事从不过脑子，鲁莽得让人受不了	0x140e29318	src/personality_facets.inc
+facet	THOUGHTLESSNESS	76..90	doesn't generally think before acting	做事通常不先想清楚	0x140e2932a	src/personality_facets.inc
+facet	THOUGHTLESSNESS	61..75	can sometimes act without deliberation	有时没想清楚就会行动	0x140e2933c	src/personality_facets.inc
+facet	THOUGHTLESSNESS	25..39	tends to think before acting	做事前一般会先想一想	0x140e2934e	src/personality_facets.inc
+facet	THOUGHTLESSNESS	10..24	can get caught up in internal deliberations when action is necessary	需要行动时容易想得太多，迟迟下不了决定	0x140e29360	src/personality_facets.inc
+facet	THOUGHTLESSNESS	<=9	never acts without prolonged deliberation, even to {p} own detriment and the harm of those around {p}	不管什么事都要想很久才肯行动，哪怕拖下去会害到自己和身边的人	0x140e28979;0x140e29079;0x140e29370;0x140e29384	src/personality_facets.inc
+facet	ORDERLINESS	temporary-increase	is currently more orderly	目前更注意保持整洁	0x140e2b7bf;0x140e2bcea	src/personality_facets.inc
+facet	ORDERLINESS	temporary-decrease	is currently more sloppy	目前更不注意保持整洁	0x140e2b7bf;0x140e2bcf6	src/personality_facets.inc
+facet	ORDERLINESS	>=91	is obsessed with order and structure in {p} own life, with everything kept in {p} proper place	特别在意整齐，所有东西都必须放在该放的位置	0x140e293f0;0x140e29401	src/personality_facets.inc
+facet	ORDERLINESS	76..90	lives an orderly life, organized and neat	生活很有条理，东西也收拾得很整齐	0x140e2943f	src/personality_facets.inc
+facet	ORDERLINESS	61..75	tries to keep {p} things orderly	会尽量把自己的东西收拾整齐	0x140e29455;0x140e29466	src/personality_facets.inc
+facet	ORDERLINESS	25..39	tends to make a small mess with {p} own possessions	自己的东西经常有点乱	0x140e294a8;0x140e294b9	src/personality_facets.inc
+facet	ORDERLINESS	10..24	is sloppy with {p} living space	住的地方总是很乱	0x140e294fb;0x140e2950c	src/personality_facets.inc
+facet	ORDERLINESS	<=9	is completely oblivious to any conception of neatness and will just leave things strewn about without a care	完全没有整洁的概念，东西总是随手乱扔	0x140e29544	src/personality_facets.inc
+facet	TRUST	temporary-increase	is currently more trusting	目前更容易相信别人	0x140e2b7bf;0x140e2bd09	src/personality_facets.inc
+facet	TRUST	temporary-decrease	is currently more distrustful	目前更不容易相信别人	0x140e2b7bf;0x140e2bd15	src/personality_facets.inc
+facet	TRUST	>=91	is naturally trustful of everybody	天生没有戒心，谁都相信	0x140e2955f	src/personality_facets.inc
+facet	TRUST	76..90	is very trusting	很容易相信别人	0x140e29571	src/personality_facets.inc
+facet	TRUST	61..75	is trusting	一般愿意相信别人	0x140e29583	src/personality_facets.inc
+facet	TRUST	25..39	is slow to trust others	不会轻易相信别人	0x140e29595	src/personality_facets.inc
+facet	TRUST	10..24	does not trust others	不相信别人	0x140e295aa	src/personality_facets.inc
+facet	TRUST	<=9	sees others as selfish and conniving	觉得别人都很自私，而且总在算计自己	0x140e295b6	src/personality_facets.inc
+facet	GREGARIOUSNESS	temporary-increase	is currently more gregarious	目前更喜欢与人相处	0x140e2b7bf;0x140e2bd28	src/personality_facets.inc
+facet	GREGARIOUSNESS	temporary-decrease	is currently more of a loner	目前更喜欢独处	0x140e2b7bf;0x140e2bd34	src/personality_facets.inc
+facet	GREGARIOUSNESS	>=91	truly treasures the company of others	特别喜欢有人陪着，很怕孤单	0x140e295d1	src/personality_facets.inc
+facet	GREGARIOUSNESS	76..90	enjoys being in crowds	很喜欢待在人群里	0x140e295e3	src/personality_facets.inc
+facet	GREGARIOUSNESS	61..75	enjoys the company of others	喜欢和别人在一起	0x140e295f5	src/personality_facets.inc
+facet	GREGARIOUSNESS	25..39	tends to avoid crowds	一般会躲开人多的地方	0x140e29607	src/personality_facets.inc
+facet	GREGARIOUSNESS	10..24	prefers to be alone	更喜欢一个人待着	0x140e2961c	src/personality_facets.inc
+facet	GREGARIOUSNESS	<=9	considers spending time alone much more important than associating with others	觉得独处比跟别人来往重要得多	0x140e29628	src/personality_facets.inc
+facet	ASSERTIVENESS	temporary-increase	is currently more overbearing	目前说话更强势	0x140e2b7bf;0x140e2bd47	src/personality_facets.inc
+facet	ASSERTIVENESS	temporary-decrease	is currently less assertive	目前说话时没那么坚持自己的意见	0x140e2b7bf;0x140e2bd53	src/personality_facets.inc
+facet	ASSERTIVENESS	>=91	is assertive to the point of aggression, unwilling to let others get a word in edgewise when {p} has something to say	说话特别强势，自己一开口就不让别人插嘴	0x140e29647;0x140e29658;0x140e296a8	src/personality_facets.inc
+facet	ASSERTIVENESS	76..90	has an overbearing personality	很强势，总想压过别人	0x140e29696	src/personality_facets.inc
+facet	ASSERTIVENESS	61..75	is assertive	敢说出自己的想法，也会坚持自己的意见	0x140e296a8	src/personality_facets.inc
+facet	ASSERTIVENESS	25..39	tends to be passive in discussions	讨论时比较被动，不太主动说话	0x140e296ba	src/personality_facets.inc
+facet	ASSERTIVENESS	10..24	only rarely tries to assert {p} in conversation	说话时很少坚持自己的意见	0x140e296d7;0x140e296e4	src/personality_facets.inc
+facet	ASSERTIVENESS	<=9	would never under any circumstances speak up or otherwise put forth {p} point of view in a discussion	不管什么情况都不会在讨论中说出自己的想法	0x140e29720;0x140e2972d	src/personality_facets.inc
+facet	ACTIVITY_LEVEL	temporary-increase	is currently more frenetic	目前生活节奏更快	0x140e2b7bf;0x140e2bd63	src/personality_facets.inc
+facet	ACTIVITY_LEVEL	temporary-decrease	is currently more leisurely	目前生活节奏更悠闲	0x140e2b7bf;0x140e2bd6c	src/personality_facets.inc
+facet	ACTIVITY_LEVEL	>=91	is driven by a bouncing frenetic energy	精力多得用不完，一刻也闲不住	0x140e29774	src/personality_facets.inc
+facet	ACTIVITY_LEVEL	76..90	lives at a high-energy kinetic pace	精力非常旺盛，做什么都风风火火	0x140e29786	src/personality_facets.inc
+facet	ACTIVITY_LEVEL	61..75	lives a fast-paced life	生活节奏很快，总在忙个不停	0x140e29798	src/personality_facets.inc
+facet	ACTIVITY_LEVEL	25..39	likes to take {p} easy	喜欢放慢节奏，轻轻松松地过日子	0x140e297aa	src/personality_facets.inc
+facet	ACTIVITY_LEVEL	10..24	lives at a slow-going and leisurely pace	生活节奏很慢，也很悠闲	0x140e297bf	src/personality_facets.inc
+facet	ACTIVITY_LEVEL	<=9	has an utterly languid pace of easy living, calm and slow	过得非常懒散，做什么都慢吞吞的	0x140e297cb	src/personality_facets.inc
+facet	EXCITEMENT_SEEKING	temporary-increase	is currently more of a thrill seeker	目前更喜欢寻求刺激	0x140e2b7bf;0x140e2bd7c	src/personality_facets.inc
+facet	EXCITEMENT_SEEKING	temporary-decrease	is currently less of a thrill seeker	目前没那么喜欢寻求刺激	0x140e2b7bf;0x140e2bd85	src/personality_facets.inc
+facet	EXCITEMENT_SEEKING	>=91	never fails to seek out the most stressful and even dangerous situations	总爱找最紧张、最危险的事做	0x140e281bc;0x140e297e6	src/personality_facets.inc
+facet	EXCITEMENT_SEEKING	76..90	seeks out exciting and adventurous situations	喜欢主动寻找刺激和冒险	0x140e281bc;0x140e297f8	src/personality_facets.inc
+facet	EXCITEMENT_SEEKING	61..75	likes a little excitement now and then	偶尔想找点刺激	0x140e2980a	src/personality_facets.inc
+facet	EXCITEMENT_SEEKING	25..39	doesn't seek out excitement	不会主动找刺激	0x140e2981c	src/personality_facets.inc
+facet	EXCITEMENT_SEEKING	10..24	actively avoids exciting or stressful situations	会主动躲开刺激或压力大的事情	0x140e281bc;0x140e2982e	src/personality_facets.inc
+facet	EXCITEMENT_SEEKING	<=9	does everything in {p} power to avoid excitement and stress	会想尽办法避开刺激和压力	0x140e2983e;0x140e2984f	src/personality_facets.inc
+facet	IMAGINATION	temporary-increase	is currently more prone to flights of fancy	目前更容易沉浸在幻想中	0x140e2b7bf;0x140e2bd95	src/personality_facets.inc
+facet	IMAGINATION	temporary-decrease	is currently more fact-oriented	目前更关注现实	0x140e2b7bf;0x140e2bd9e	src/personality_facets.inc
+facet	IMAGINATION	>=91	is bored by reality and would rather disappear utterly and forever into a world of made-up fantasy	厌倦现实，只想永远躲进幻想的世界里	0x140e29896	src/personality_facets.inc
+facet	IMAGINATION	76..90	is given to flights of fancy to the point of distraction	总爱胡思乱想，常常忘了眼前的事	0x140e298a8	src/personality_facets.inc
+facet	IMAGINATION	61..75	has an active imagination	想象力很丰富	0x140e298ba	src/personality_facets.inc
+facet	IMAGINATION	25..39	isn't given to flights of fancy	不太爱幻想	0x140e298cc	src/personality_facets.inc
+facet	IMAGINATION	10..24	is grounded in reality	很现实，也很踏实	0x140e298e1	src/personality_facets.inc
+facet	IMAGINATION	<=9	is interested only in facts and the real world	只关心事实和现实，对幻想完全没兴趣	0x140e298ed	src/personality_facets.inc
+facet	ABSTRACT_INCLINED	temporary-increase	is currently more inclined to the abstract	目前更喜欢琢磨抽象问题	0x140e2b7bf;0x140e2bdae	src/personality_facets.inc
+facet	ABSTRACT_INCLINED	temporary-decrease	is currently more inclined to the practical	目前更关心实际问题	0x140e2b7bf;0x140e2bdb7	src/personality_facets.inc
+facet	ABSTRACT_INCLINED	>=91	eschews practical concerns for philosophical discussion, puzzles, riddles and the world of ideas	不爱管现实问题，只爱聊哲学、解谜题、琢磨各种想法	0x140e29908	src/personality_facets.inc
+facet	ABSTRACT_INCLINED	76..90	strongly prefers discussions of ideas and abstract concepts over handling specific practical issues	比起解决实际问题，更喜欢聊想法和抽象概念	0x140e2991a	src/personality_facets.inc
+facet	ABSTRACT_INCLINED	61..75	has a tendency to consider ideas and abstractions over practical applications	更喜欢琢磨抽象问题，不太在意实际用途	0x140e2992c	src/personality_facets.inc
+facet	ABSTRACT_INCLINED	25..39	likes to keep things practical, without delving too deeply into the abstract	更关心实际问题，不太喜欢抽象讨论	0x140e2993e	src/personality_facets.inc
+facet	ABSTRACT_INCLINED	10..24	dislikes abstract discussions and would much rather focus on practical examples	不喜欢抽象讨论，更愿意看实际例子	0x140e29950	src/personality_facets.inc
+facet	ABSTRACT_INCLINED	<=9	is concerned only with matters practical to the situation at hand, with absolutely no inclination toward abstract discussion	只关心眼前的实际问题，对抽象讨论完全没兴趣	0x140e281bc;0x140e29959	src/personality_facets.inc
+facet	ART_INCLINED	temporary-increase	is currently more inclined to create	目前更有创作的兴致	0x140e2b7bf;0x140e2bdc5	src/personality_facets.inc
+facet	ART_INCLINED	temporary-decrease	is currently less inclined to create	目前没那么有创作的兴致	0x140e2b7bf;0x140e2bdce	src/personality_facets.inc
+facet	ART_INCLINED	>=91	can easily become absorbed in art and the beauty of the natural world	很容易沉浸在艺术和自然风景里	0x140e29971	src/personality_facets.inc
+facet	ART_INCLINED	76..90	is greatly moved by art and natural beauty	很容易被艺术和自然风景打动	0x140e29980	src/personality_facets.inc
+facet	ART_INCLINED	61..75	is moved by art and natural beauty	喜欢艺术和自然风景，也会被它们打动	0x140e2998f	src/personality_facets.inc
+facet	ART_INCLINED	25..39	does not have a great aesthetic sensitivity	对美没那么敏感	0x140e2999e	src/personality_facets.inc
+facet	ART_INCLINED	10..24	is not readily moved by art or natural beauty	不太会被艺术或自然风景打动	0x140e299ab	src/personality_facets.inc
+facet	ART_INCLINED	<=9	is completely unmoved by art or the beauty of nature	对艺术和自然风景完全没感觉	0x140e299b4	src/personality_facets.inc
+facet	ADAPTATION	0	needs alcohol to get through the working day	需要靠酒精撑过一天的工作	0x14048198f	src/personality_facets.inc
+facet	ADAPTATION	1	needs alcohol to get through the working day and is starting to work slowly due to {p} scarcity	需要靠酒精撑过一天的工作，而且已经开始因缺酒而放慢工作速度	0x14048198f;0x140481a3d	src/personality_facets.inc
+facet	ADAPTATION	2	needs alcohol to get through the working day and really wants a drink	需要靠酒精撑过一天的工作，而且很想喝上一杯	0x14048198f;0x140481a2d	src/personality_facets.inc
+facet	ADAPTATION	3	needs alcohol to get through the working day and has gone without a drink for far, far too long	需要靠酒精撑过一天的工作，而且已经太久太久没喝酒了	0x14048198f;0x140481a1d	src/personality_facets.inc
+facet	ADAPTATION	4	needs alcohol to get through the working day and can't even remember the last time {p} had some	需要靠酒精撑过一天的工作，已经记不清上次喝酒是什么时候了	0x14048198f;0x1404819ab;0x1404819f4	src/personality_facets.inc
+facet	ADAPTATION	5	likes working outdoors and grumbles only mildly at inclement weather	喜欢在户外工作，天气不好时也只会抱怨几句	0x140481b03	src/personality_facets.inc
+facet	ADAPTATION	6	does not mind being outdoors, at least for a time	不介意在户外待一阵子	0x140481b35	src/personality_facets.inc
+facet	ADAPTATION	7	is getting used to tragedy	已经开始习惯一次次悲剧	0x140481c4a	src/personality_facets.inc
+facet	ADAPTATION	8	is a hardened individual	经历太多，已经变得麻木	0x140481c13	src/personality_facets.inc
+facet	ADAPTATION	9	doesn't really care about anything anymore	已经什么都不在乎了	0x140481bdc	src/personality_facets.inc
+attribute	ANALYTICAL_ABILITY	0	awesome intellectual powers	超凡的分析能力	0x141381805;0x14138180f	src/personality_attributes.inc
+attribute	ANALYTICAL_ABILITY	1	great analytical abilities	很强的分析能力	0x141381843	src/personality_attributes.inc
+attribute	ANALYTICAL_ABILITY	2	a sharp intellect	敏锐的头脑	0x141381854	src/personality_attributes.inc
+attribute	ANALYTICAL_ABILITY	3	a good intellect	不错的分析能力	0x141381865	src/personality_attributes.inc
+attribute	ANALYTICAL_ABILITY	4	a lousy intellect	很差的分析能力	0x141381887	src/personality_attributes.inc
+attribute	ANALYTICAL_ABILITY	5	very bad analytical abilities	非常差的分析能力	0x141381898	src/personality_attributes.inc
+attribute	ANALYTICAL_ABILITY	6	poor analytical abilities	较差的分析能力	0x1413818ad	src/personality_attributes.inc
+attribute	ANALYTICAL_ABILITY	7	a stunning lack of analytical ability	极度欠缺的分析能力	0x141381876	src/personality_attributes.inc
+attribute	FOCUS	0	unbreakable focus	坚不可摧的专注力	0x1413818be	src/personality_attributes.inc
+attribute	FOCUS	1	a great ability to focus	很强的专注力	0x1413818cf	src/personality_attributes.inc
+attribute	FOCUS	2	very good focus	很好的专注力	0x1413818e0	src/personality_attributes.inc
+attribute	FOCUS	3	the ability to focus	基本的专注力	0x1413818f1	src/personality_attributes.inc
+attribute	FOCUS	4	really poor focus	极差的专注力	0x141381913;0x141381939	src/personality_attributes.inc
+attribute	FOCUS	5	quite poor focus	很差的专注力	0x141381924;0x141381939	src/personality_attributes.inc
+attribute	FOCUS	6	poor focus	较差的专注力	0x141381939	src/personality_attributes.inc
+attribute	FOCUS	7	the absolute inability to focus	完全无法集中注意力的缺陷	0x141381902	src/personality_attributes.inc
+attribute	WILLPOWER	0	an unbreakable will	不可动摇的意志	0x141381964	src/personality_attributes.inc
+attribute	WILLPOWER	1	an iron will	钢铁般的意志	0x141381995	src/personality_attributes.inc
+attribute	WILLPOWER	2	a lot of willpower	很强的意志力	0x1413819a6;0x1413819b7	src/personality_attributes.inc
+attribute	WILLPOWER	3	absolutely no willpower	完全缺失的意志力	0x1413819b7;0x1413819c8	src/personality_attributes.inc
+attribute	WILLPOWER	4	next to no willpower	近乎没有的意志力	0x1413819b7;0x1413819d9	src/personality_attributes.inc
+attribute	WILLPOWER	5	a large deficit of willpower	严重不足的意志力	0x1413819b7;0x1413819ea	src/personality_attributes.inc
+attribute	WILLPOWER	6	little willpower	薄弱的意志力	0x1413819b7;0x1413819ff	src/personality_attributes.inc
+attribute	CREATIVITY	0	a boundless creative imagination	无穷的创造性想象力	0x141381a2a;0x141381a34	src/personality_attributes.inc
+attribute	CREATIVITY	1	great creativity	很强的创造力	0x141381a51	src/personality_attributes.inc
+attribute	CREATIVITY	2	very good creativity	很好的创造力	0x141381a62;0x141381a73	src/personality_attributes.inc
+attribute	CREATIVITY	3	next to no creative talent	近乎为零的创造才能	0x141381a84	src/personality_attributes.inc
+attribute	CREATIVITY	4	lousy creativity	很差的创造力	0x141381a95	src/personality_attributes.inc
+attribute	CREATIVITY	5	poor creativity	较差的创造力	0x141381aa6	src/personality_attributes.inc
+attribute	CREATIVITY	6	meager creativity	有限的创造力	0x141381abb	src/personality_attributes.inc
+attribute	INTUITION	0	uncanny intuition	惊人的直觉	0x141381acc	src/personality_attributes.inc
+attribute	INTUITION	1	great intuition	很强的直觉	0x141381add	src/personality_attributes.inc
+attribute	INTUITION	2	very good intuition	很好的直觉	0x141381aee;0x141381aff	src/personality_attributes.inc
+attribute	INTUITION	3	horrible intuition	糟糕透顶的直觉	0x141381b10	src/personality_attributes.inc
+attribute	INTUITION	4	lousy intuition	很差的直觉	0x141381b21	src/personality_attributes.inc
+attribute	INTUITION	5	very bad intuition	非常差的直觉	0x141381b32;0x141381b47	src/personality_attributes.inc
+attribute	PATIENCE	0	absolutely boundless patience	无穷无尽的耐心	0x141381b72;0x141381b7c	src/personality_attributes.inc
+attribute	PATIENCE	1	a deep well of patience	极大的耐心	0x141381bae	src/personality_attributes.inc
+attribute	PATIENCE	2	a great deal of patience	很充足的耐心	0x141381bbf	src/personality_attributes.inc
+attribute	PATIENCE	3	a sum of patience	一定的耐心	0x141381bd0	src/personality_attributes.inc
+attribute	PATIENCE	4	no patience at all	完全缺失的耐心	0x141381be1	src/personality_attributes.inc
+attribute	PATIENCE	5	very little patience	极少的耐心	0x141381bf2;0x141381c03	src/personality_attributes.inc
+attribute	PATIENCE	6	a shortage of patience	不足的耐心	0x141381c18	src/personality_attributes.inc
+attribute	PATIENCE	7	little patience	有限的耐心	0x141381c03	src/personality_attributes.inc
+attribute	MEMORY	0	an astonishing memory	惊人的记忆力	0x141381c29	src/personality_attributes.inc
+attribute	MEMORY	1	an amazing memory	极好的记忆力	0x141381c3a	src/personality_attributes.inc
+attribute	MEMORY	2	a great memory	很强的记忆力	0x141381c4b	src/personality_attributes.inc
+attribute	MEMORY	3	a good memory	不错的记忆力	0x141381c5c	src/personality_attributes.inc
+attribute	MEMORY	4	little memory to speak of	几乎不值一提的记忆力	0x141381c6d	src/personality_attributes.inc
+attribute	MEMORY	5	a really bad memory	非常糟糕的记忆力	0x141381c7e	src/personality_attributes.inc
+attribute	MEMORY	6	a poor memory	较差的记忆力	0x141381c8f	src/personality_attributes.inc
+attribute	MEMORY	7	an iffy memory	不太可靠的记忆力	0x141381ca4	src/personality_attributes.inc
+attribute	LINGUISTIC_ABILITY	0	an astonishing ability with languages and words	惊人的语言文字能力	0x141381cd2;0x141381cdc;0x141381ce7	src/personality_attributes.inc
+attribute	LINGUISTIC_ABILITY	1	a natural inclination toward language	天生的语言才能	0x141381d36	src/personality_attributes.inc
+attribute	LINGUISTIC_ABILITY	2	difficulty with words and language	理解和运用语言的困难	0x141381d58	src/personality_attributes.inc
+attribute	LINGUISTIC_ABILITY	3	very little linguistic ability	极弱的语言能力	0x141381d69;0x141381d7a	src/personality_attributes.inc
+attribute	LINGUISTIC_ABILITY	4	a little difficulty with words	少许语言表达困难	0x141381d8f	src/personality_attributes.inc
+attribute	LINGUISTIC_ABILITY	5	a great affinity for language	很强的语言天赋	0x141381d25	src/personality_attributes.inc
+attribute	LINGUISTIC_ABILITY	6	a way with words	不错的语言能力	0x141381d47	src/personality_attributes.inc
+attribute	LINGUISTIC_ABILITY	7	little linguistic ability	有限的语言能力	0x141381d7a	src/personality_attributes.inc
+attribute	SPATIAL_SENSE	0	a stunning feel for spatial relationships	惊人的空间关系感知力	0x141381dba;0x141381dc4;0x141381dcf	src/personality_attributes.inc
+attribute	SPATIAL_SENSE	1	a great feel for the surrounding space	很强的周围空间感知力	0x141381e09	src/personality_attributes.inc
+attribute	SPATIAL_SENSE	2	no sense for spatial relationships	完全缺失的空间关系感知力	0x141381dc4;0x141381dcf;0x141381e2b	src/personality_attributes.inc
+attribute	SPATIAL_SENSE	3	an amazing spatial sense	惊人的空间感	0x141381df8	src/personality_attributes.inc
+attribute	SPATIAL_SENSE	4	a good spatial sense	不错的空间感	0x141381e1a	src/personality_attributes.inc
+attribute	SPATIAL_SENSE	5	an atrocious spatial sense	糟糕透顶的空间感	0x141381e3c	src/personality_attributes.inc
+attribute	SPATIAL_SENSE	6	poor spatial senses	很差的空间感	0x141381e4d	src/personality_attributes.inc
+attribute	SPATIAL_SENSE	7	a questionable spatial sense	不太可靠的空间感	0x141381e62	src/personality_attributes.inc
+attribute	MUSICALITY	0	an astonishing knack for music	惊人的音乐天赋	0x141381e73	src/personality_attributes.inc
+attribute	MUSICALITY	1	absolutely no feel for music at all	完全缺失的乐感	0x141381eb7	src/personality_attributes.inc
+attribute	MUSICALITY	2	next to no natural musical ability	近乎为零的音乐天赋	0x141381ec8	src/personality_attributes.inc
+attribute	MUSICALITY	3	little natural inclination toward music	有限的音乐天赋	0x141381ed9	src/personality_attributes.inc
+attribute	MUSICALITY	4	a great musical sense	很强的乐感	0x141381e84	src/personality_attributes.inc
+attribute	MUSICALITY	5	a natural ability with music	天生的音乐能力	0x141381e95	src/personality_attributes.inc
+attribute	MUSICALITY	6	a feel for music	一定的乐感	0x141381ea6	src/personality_attributes.inc
+attribute	MUSICALITY	7	an iffy sense for music	不太可靠的乐感	0x141381eee	src/personality_attributes.inc
+attribute	KINESTHETIC_SENSE	0	an astounding feel for the position of {p} own body	惊人的身体位置感知力	0x141381eff;0x141381f5a	src/personality_attributes.inc
+attribute	KINESTHETIC_SENSE	1	a very good sense of the position of {p} own body	很好的身体位置感知力	0x141381f1e;0x141381f5a	src/personality_attributes.inc
+attribute	KINESTHETIC_SENSE	2	an unbelievably atrocious sense of the position of {p} own body	糟糕透顶的身体位置感知力	0x141381f3d;0x141381f5a	src/personality_attributes.inc
+attribute	KINESTHETIC_SENSE	3	a very clumsy kinesthetic sense	非常迟钝的运动感觉	0x141381f74	src/personality_attributes.inc
+attribute	KINESTHETIC_SENSE	4	a great kinesthetic sense	很强的运动感觉	0x141381f0d	src/personality_attributes.inc
+attribute	KINESTHETIC_SENSE	5	a good kinesthetic sense	不错的运动感觉	0x141381f2c	src/personality_attributes.inc
+attribute	KINESTHETIC_SENSE	6	a poor kinesthetic sense	较差的运动感觉	0x141381f85	src/personality_attributes.inc
+attribute	KINESTHETIC_SENSE	7	a meager kinesthetic sense	有限的运动感觉	0x141381f9a	src/personality_attributes.inc
+attribute	EMPATHY	0	an absolutely remarkable sense of others' emotions	极其出色的情绪感知力	0x141381fc5;0x141381fcf;0x141381fda	src/personality_attributes.inc
+attribute	EMPATHY	1	an ability to read emotions fairly well	相当不错的情绪感知力	0x141382024	src/personality_attributes.inc
+attribute	EMPATHY	2	the utter inability to judge others' emotions	完全无法判断他人情绪的缺陷	0x141382035	src/personality_attributes.inc
+attribute	EMPATHY	3	a great sense of empathy	很强的同理心	0x141382002	src/personality_attributes.inc
+attribute	EMPATHY	4	a very good sense of empathy	很好的同理心	0x141382013	src/personality_attributes.inc
+attribute	EMPATHY	5	next to no empathy	近乎为零的同理心	0x141382046	src/personality_attributes.inc
+attribute	EMPATHY	6	a very bad sense of empathy	非常差的同理心	0x141382057	src/personality_attributes.inc
+attribute	EMPATHY	7	poor empathy	较差的同理心	0x14138206c	src/personality_attributes.inc
+attribute	SOCIAL_AWARENESS	0	a shockingly profound feel for social relationships	极其深刻的社会关系理解力	0x141381dcf;0x14138207d	src/personality_attributes.inc
+attribute	SOCIAL_AWARENESS	1	a great feel for social relationships	很强的社会关系理解力	0x141381dcf;0x141382099	src/personality_attributes.inc
+attribute	SOCIAL_AWARENESS	2	a very good feel for social relationships	很好的社会关系理解力	0x141381dcf;0x1413820a7	src/personality_attributes.inc
+attribute	SOCIAL_AWARENESS	3	a good feel for social relationships	不错的社会关系理解力	0x141381dcf;0x1413820b5	src/personality_attributes.inc
+attribute	SOCIAL_AWARENESS	4	an absolute inability to understand social relationships	完全无法理解社会关系的缺陷	0x141381dcf;0x1413820c3	src/personality_attributes.inc
+attribute	SOCIAL_AWARENESS	5	a lack of understanding of social relationships	对社会关系的理解缺失	0x141381dcf;0x1413820d1	src/personality_attributes.inc
+attribute	SOCIAL_AWARENESS	6	a poor ability to manage or understand social relationships	较差的社会关系处理能力	0x141381dcf;0x1413820df	src/personality_attributes.inc
+attribute	SOCIAL_AWARENESS	7	a meager ability with social relationships	有限的社会关系处理能力	0x141381dcf;0x1413820f1	src/personality_attributes.inc
+value-conflict	value-conflict	0	, and {p} is troubled by this because {p} values romance	，但又看重浪漫，因此为这点感到困扰	0x140e29c1f;0x140e29c30;0x140e29c58;0x140e29cbf;0x140e29cd0;0x140e29d68;0x140e29e72;0x140e29e83;0x140e29f12;0x140e29f23;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a451;0x140e2a5ec;0x140e2a5fd;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2ad02;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	1	, and {p} is troubled by this because {p} holds romance in low regard	，但又看不上浪漫，因此为这点感到困扰	0x140e29c1f;0x140e29c30;0x140e29cbf;0x140e29cd0;0x140e29cf8;0x140e29d68;0x140e29e72;0x140e29e83;0x140e29f12;0x140e29f23;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a451;0x140e2a5ec;0x140e2a5fd;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2ad02;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	2	, and {p} is conflicted by this as {p} values parties and merrymaking in the abstract	，但观念上又认同聚会和欢庆，因此感到矛盾	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29d79;0x140e29da1;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a6e3;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2ac53;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b49b;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	3	, though {p} remains put off by deliberate merrymaking	，不过仍然不喜欢刻意欢庆	0x140e29e08;0x140e29e19;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	4	, and {p} is troubled by this because {p} values self-control	，但又看重自制力，因此为这点感到困扰	0x140e29c1f;0x140e29c30;0x140e29cbf;0x140e29cd0;0x140e29d68;0x140e29e72;0x140e29e83;0x140e29eab;0x140e29f12;0x140e29f23;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a451;0x140e2a5ec;0x140e2a5fd;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2ad02;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	5	, and {p} is troubled by this because {p} values such powerful forces in life	，但又看重生活中这些强烈的欲望和冲动，因此为这点感到困扰	0x140e28be0;0x140e292d1;0x140e29c1f;0x140e29c30;0x140e29cbf;0x140e29cd0;0x140e29d68;0x140e29e72;0x140e29e83;0x140e29f12;0x140e29f23;0x140e29f4b;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a451;0x140e2a5ec;0x140e2a5fd;0x140e2a6d2;0x140e2a758;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2ad02;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	6	, though {p} is conflicted by this for more than one reason	，不过这让自己因不止一个原因而感到矛盾	0x140e29e08;0x140e2a000;0x140e2a011;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a584;0x140e2a6e3;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2aeca;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418;0x140e2b429	src/dfcn.cpp
+value-conflict	value-conflict	7	, though {p} is disturbed by this since {p} values quiet so, at least in the abstract	，不过至少在观念上又非常看重安静，因此为这点感到困扰	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a081;0x140e2a0a9;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a93d;0x140e2a99e;0x140e2a9da;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	8	, even though {p} likes the way that they would break up the monotony on some level	，虽然某种程度上也喜欢这些事能打破生活的单调	0x140e2a109;0x140e2a11a	src/dfcn.cpp
+value-conflict	value-conflict	9	, though {p} dislikes the adoration of fighting as an art to be refined	，不过不认同把格斗当作值得钻研精进的艺术来推崇	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a173;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	10	, and {p} works to square this natural tendency with {p} respect of martial prowess	，而且正努力调和这种天性与自己对武艺的尊重	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a1d4;0x140e2a1fc;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	11	, and {p} finds this troubling, since {p} values perseverance	，但又看重坚韧，因此为这点感到困扰	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a27d;0x140e2a2a5;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	12	, though {p} is conflicted by this part of {p}	，不过也为自己这部分性情感到矛盾	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a320;0x140e2a43d;0x140e2a570;0x140e2a6e3;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	13	, and {p} is conflicted by this since {p} values harmony as an intellectual concept	，但观念上又看重和谐，因此感到矛盾	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a3ad;0x140e2a3d5;0x140e2a5ec;0x140e2a64d;0x140e2a6d2;0x140e2a6e3;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2aa9d;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2af86;0x140e2b27d;0x140e2b324;0x140e2b338;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	14	, though {p} is troubled by {p} own nature as {p} prefers discord and debate at a more abstract level	，不过观念上又更喜欢争执和辩论，因此为自己的天性感到困扰	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a451;0x140e2a479;0x140e2a4a1;0x140e2a570;0x140e2a5fd;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	15	, and {p} is troubled by {p} nature since {p} values harmony	，但又看重和谐，因此为自己的天性感到困扰	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a451;0x140e2a5ec;0x140e2a5fd;0x140e2a625;0x140e2a64d;0x140e2a6d2;0x140e2a708;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	16	, and {p} is conflicted by {p} nature since {p} would ideally prefer more strife in {p} life	，但理想中又希望生活中有更多争执，因此为自己的天性感到矛盾	0x140e28be0;0x140e292d1;0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a625;0x140e2a6d2;0x140e2a6e3;0x140e2a708;0x140e2a730;0x140e2a758;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	17	, and {p} is bothered by this since {p} values friendship	，但又看重友谊，因此为这点感到困扰	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a7f0;0x140e2a804;0x140e2a82c;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	18	, and {p} is burdened by this tendency because {p} dislikes the idea of friendship	，但又不认同友谊，因此觉得这种倾向是个负担	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2a8aa;0x140e2a8d2;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	19	, though {p} finds rules of etiquette to be valuable in the abstract	，不过在观念上又觉得礼仪规矩很有价值	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a93d;0x140e2a94e;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	20	, though {p} is troubled by this natural tendency in {p} since {p} finds dignified society to be stifling and silly when properly considered	，不过仔细想来又觉得讲究体面的社会令人压抑而且愚蠢，因此为自己的这种天性感到困扰	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a451;0x140e2a570;0x140e2a5fd;0x140e2a93d;0x140e2a99e;0x140e2a9af;0x140e2a9da;0x140e2aa02;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	21	, and {p} is conflicted by this since {p} sees these tendencies as an impediment to the quest for power	，但又认为这些倾向妨碍自己追求权力，因此感到矛盾	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a3ad;0x140e2a5ec;0x140e2a6d2;0x140e2a6e3;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2aa9d;0x140e2aac5;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2af86;0x140e2b27d;0x140e2b324;0x140e2b338;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	22	, and {p} is disturbed by this as someone who dislikes those that seek to acquire power over others	，但又不喜欢企图凌驾于他人之上的人，因此为这点感到困扰	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab40;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	23	, and {p} struggles against this tendency, as {p} finds such open expression offensive	，而且觉得这种坦率表达会冒犯别人，因而努力克制这种倾向	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2abad;0x140e2abd5;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	24	, though {p} is conflicted by this as {p} dislikes this sort of concealment in the abstract	，不过观念上又不喜欢这种遮掩，因此感到矛盾	0x140e29d79;0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a6e3;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ac53;0x140e2ac7b;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418;0x140e2b49b	src/dfcn.cpp
+value-conflict	value-conflict	25	, and {p} is troubled by this because {p} truly respects sacrifice	，但又十分尊重牺牲精神，因此为这点感到困扰	0x140e29c1f;0x140e29c30;0x140e29cbf;0x140e29cd0;0x140e29d68;0x140e29e72;0x140e29e83;0x140e29f12;0x140e29f23;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a451;0x140e2a5ec;0x140e2a5fd;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2ad02;0x140e2ad2a;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	26	, though {p} wishes this were not the case as {p} considers altruism foolish	，不过又认为利他是愚蠢的，所以希望自己没有这种倾向	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2ada8;0x140e2add0;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	27	, and {p} is conflicted by this since {p} believes in the importance of the rule of the law	，但又相信法治的重要性，因此感到矛盾	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a3ad;0x140e2a5ec;0x140e2a6d2;0x140e2a6e3;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2aa9d;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2af86;0x140e2afae;0x140e2b27d;0x140e2b324;0x140e2b338;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	28	, though {p} still holds the law in disdain	，不过仍然藐视法律	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b021;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	29	, though {p} values the concept of loyalty and is troubled by {p} natural tendencies	，不过观念上又看重忠诚，因此为自己的天性感到困扰	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a451;0x140e2a570;0x140e2a5fd;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b086;0x140e2b0ae;0x140e2b111;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	30	, though {p} still views loyalty in a dim light, at least in the abstract	，不过至少在观念上仍然看不上忠诚	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b122;0x140e2b21a;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	31	, although {p} finds this can conflict with {p} sense of independence	，不过也觉得这可能与自己的独立意识冲突	0x140e2b173;0x140e2b187;0x140e2b1af	src/dfcn.cpp
+value-conflict	value-conflict	32	, though {p} still holds the idea of freedom {p} in low regard	，不过仍然看不上自由这个观念本身	0x140e29e08;0x140e2a000;0x140e2a070;0x140e2a162;0x140e2a30c;0x140e2a43d;0x140e2a570;0x140e2a93d;0x140e2a99e;0x140e2ac3f;0x140e2ad94;0x140e2aeb9;0x140e2b010;0x140e2b072;0x140e2b111;0x140e2b21a;0x140e2b22b;0x140e2b418	src/dfcn.cpp
+value-conflict	value-conflict	33	, and {p} is conflicted by this because {p} considers tranquility preferable to tumult, conceptually	，但观念上又觉得宁静比喧闹好，因此感到矛盾	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a6e3;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b291;0x140e2b2b9;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b5e8;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	34	, and {p} is conflicted by this since {p} feels intellectually that life should be more tumultuous	，但观念上又觉得生活应该更热闹，因此感到矛盾	0x140e28be0;0x140e292d1;0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a3ad;0x140e2a5ec;0x140e2a6d2;0x140e2a6e3;0x140e2a758;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2aa9d;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2af86;0x140e2b27d;0x140e2b324;0x140e2b338;0x140e2b360;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	35	, and {p} is conflicted by this as {p} values artwork and {p} creation	，但又看重艺术品及其创作，因此感到矛盾	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29d79;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a6e3;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2ac53;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b49b;0x140e2b4c3;0x140e2b52d;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	36	, and {p} is torn by this since {p} sees the whole pursuit of art as a waste	，但又认为追求艺术完全是浪费，因此内心纠结	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b541;0x140e2b569;0x140e2b5d4;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	37	, and {p} is conflicted by this because {p} holds nature in high regard	，但又十分尊重自然，因此感到矛盾	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a5ec;0x140e2a6d2;0x140e2a6e3;0x140e2a7f0;0x140e2a896;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b291;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b5e8;0x140e2b610;0x140e2b67b	src/dfcn.cpp
+value-conflict	value-conflict	38	, and {p} is troubled by this since {p} dislikes the natural world	，但又不喜欢自然世界，因此为这点感到困扰	0x140e29c1f;0x140e29cbf;0x140e29d68;0x140e29e72;0x140e29f12;0x140e2a1c3;0x140e2a26c;0x140e2a39c;0x140e2a451;0x140e2a5ec;0x140e2a5fd;0x140e2a6d2;0x140e2a7f0;0x140e2a896;0x140e2a9da;0x140e2aa89;0x140e2ab2f;0x140e2ab99;0x140e2acee;0x140e2af72;0x140e2b27d;0x140e2b324;0x140e2b487;0x140e2b52d;0x140e2b5d4;0x140e2b67b;0x140e2b68f;0x140e2b6b7	src/dfcn.cpp
+facet-change	facet-change	0	, a turn-around after 	后这种性情发生了逆转	0x140e29b17;0x140e29b52	src/dfcn.cpp
+facet-change	facet-change	1	, a strengthening after 	后这种性情更加明显	0x140e29b30;0x140e29b52	src/dfcn.cpp
+facet-change	facet-change	2	, less extreme after 	后这种性情不再那么极端	0x140e29b43;0x140e29b52	src/dfcn.cpp
+facet-change	facet-change	3	, after 	之后	0x140e29b52	src/dfcn.cpp
+dream	dream	3	dreams of raising a family	想有自己的家庭	0x140e26a85	src/dfcn.cpp
+dream	dream	4	dreams of ruling the world	想统治世界	0x140e26a97	src/dfcn.cpp
+dream	dream	5	dreams of creating a great work of art	想创作一件好作品	0x140e26aa9	src/dfcn.cpp
+dream	dream	6	dreams of crafting a masterwork someday	想有一天做出一件杰作	0x140e26abb	src/dfcn.cpp
+dream	dream	7	dreams of bringing lasting peace to the world	想让世界长久和平	0x140e26aca	src/dfcn.cpp
+dream	dream	8	dreams of becoming a legendary warrior	想成为传奇战士	0x140e26ad9	src/dfcn.cpp
+dream	dream	9	dreams of mastering a skill	想掌握一门技能	0x140e26ae8	src/dfcn.cpp
+dream	dream	10	dreams of falling in love	想谈恋爱	0x140e26af7	src/dfcn.cpp
+dream	dream	11	dreams of seeing the great natural places of the world	想看看世界各地的自然奇景	0x140e26b06	src/dfcn.cpp
+dream	dream	14	dreams of making a great discovery	想做出重大发现	0x140e26b15	src/dfcn.cpp
+dream	dream	15	dreams of attaining rank in society	想出人头地	0x140e26b24	src/dfcn.cpp
+dream	dream	16	dreams of bathing the world in chaos	想让世界陷入混乱	0x140e26b33	src/dfcn.cpp
