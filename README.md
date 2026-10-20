@@ -40,7 +40,7 @@ Windows 本版提供 **Shift+F6**：扩展默认启用，首次按下停用全�
 
 Windows 同时安装 **DFHack 53.16-r2 / r3** 时，可按 **Shift+F11** 关闭 DFHack，再按一次恢复。开关独立于汉化：关闭时暂停插件更新、界面 hook、热键、命令与 Lua 定时回调，保留驻留核心、插件配置、存档数据和世界卸载清理。已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。
 
-已支持汉化搜索的界面可使用中文、英文、拼音全拼与首字母，并提供输入容错和物品类别匹配。需要近义匹配时，可订阅[独立离线语义搜索模型](https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988)，或从本版 Release 下载 `dfcn_semantic_search.zip`，将整个 `dfcn_semantic_search` 文件夹解压至游戏 `mods` 目录。核心在启动时自动识别模型，无需联网或在世界模组列表中启用；未安装模型时，普通文字、拼音与容错搜索仍可使用。
+已支持汉化搜索的界面可使用中文、英文、拼音全拼与首字母，并提供输入容错和物品类别匹配。需要近义匹配时，可订阅[独立离线语义搜索模型](https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988)。核心在启动时自动识别模型，无需联网或在世界模组列表中启用；未安装模型时，普通文字、拼音与容错搜索仍可使用。
 
 ## Linux 安装与使用
 
@@ -70,7 +70,7 @@ Windows 本版可用 **Shift+F6** 临时停用或恢复全部扩展数据，并�
 
 ## 维护者打包
 
-打包使用已有 Windows 编译产物和运行数据。执行根目录的 `package-workshop.cmd`，或使用 Windows PowerShell 执行 `-File tools/package-workshop.ps1`。该入口无参数，不编译代码，也不需要下载 Linux 运行包。
+打包使用已有 Windows 编译产物和运行数据。执行根目录的 `package-workshop.cmd`，或使用 Windows PowerShell 执行 `-File tools/package-workshop.ps1`。发布汉化本体时使用 `-File tools/package-workshop.ps1 -BaseOnly`，仅生成本体的 Windows 整包和工坊包。打包不编译代码，也不需要下载 Linux 运行包。
 
 该入口先生成 `DFCN-Windows-x64-minimal.zip`，包含完整 Windows 运行文件、汉化数据与许可说明。在临时副本上使用固定 Windows 工具链的 `strip.exe --strip-unneeded` 移除核心与加载器的静态符号和调试数据，保留动态导出；本机部署 DLL 不变。
 

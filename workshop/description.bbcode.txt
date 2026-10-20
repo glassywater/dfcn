@@ -8,7 +8,7 @@ DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作�
 更新内容见改动说明与订阅目录中的 CHANGELOG.txt。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020.2]Windows、独立汉化数据与语义模型下载[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020.2]Windows 汉化下载[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
 [h1]Windows 工坊安装[/h1]
@@ -55,7 +55,7 @@ Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译�
 [h1]搜索与可选语义模型[/h1]
 
 已支持汉化搜索的界面可使用中文、英文、拼音全拼与首字母，并提供输入容错和物品类别匹配。
-需要近义匹配时，可订阅 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988]DFCN 独立离线语义搜索模型[/url]，或从 GitHub Release 下载 [b]dfcn_semantic_search.zip[/b]，将整个 [b]dfcn_semantic_search[/b] 文件夹解压至游戏 [b]mods[/b] 目录。
+需要近义匹配时，可订阅 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988]DFCN 独立离线语义搜索模型[/url]。
 核心在启动时自动识别模型，无需联网或在世界模组列表中启用。未安装模型时，普通文字、拼音与容错搜索仍可使用。
 
 [h1]开关与刷新[/h1]

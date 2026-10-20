@@ -1,6 +1,8 @@
 #requires -Version 5.1
 [CmdletBinding()]
-param()
+param(
+    [switch] $BaseOnly
+)
 
 # Package native Windows binaries and public data extensions.
 # This entry never builds code, deploys to a game, or controls Steam/the game.
@@ -184,8 +186,10 @@ try {
     Install-PackageDirectory 'content'
     # Extensions remain separate from the base Workshop payload. Private data
     # packages are never selected for these public release archives.
-    Write-PublicExtensionArchives
-    Write-SemanticSearchArchive
+    if (-not $BaseOnly) {
+        Write-PublicExtensionArchives
+        Write-SemanticSearchArchive
+    }
     Write-Host ('Workshop content: ' + $contentRoot) -ForegroundColor Green
     Write-Host ('Created: ' + $outputPath)
 } catch {

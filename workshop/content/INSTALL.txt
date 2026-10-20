@@ -9,7 +9,6 @@ Releases：https://github.com/pokemonchw/dfcn/releases
 仅订阅不会自动启用汉化；无需在创建世界时启用本工坊项目。
 汉化数据扩展与可选语义搜索模型均为独立 mod，会在启动时自动识别；模型不包含在本工坊核心包内。
 可选模型订阅：https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988
-也可下载同版 GitHub Release 的 dfcn_semantic_search.zip，将整个 dfcn_semantic_search 文件夹解压至游戏 mods 目录，无需在世界模组列表中启用。
 
 一、Windows 工坊安装
 
