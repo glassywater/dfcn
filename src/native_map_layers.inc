@@ -7,6 +7,9 @@ static const graphicst *g_native_map_write_graphics = nullptr;
 static uint64_t g_native_map_frame_serial = 0;
 static bool g_native_map_classic = false;
 static void native_map_begin_frame();
+#ifndef _WIN32
+static void native_map_restore_missing_outputs();
+#endif
 
 // Save only completed native map ownership. The private glyph header is
 // prepared before the producer runs and may precede its final map bindings.

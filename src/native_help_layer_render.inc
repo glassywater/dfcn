@@ -131,6 +131,11 @@ static void native_help_begin_frame(void *renderer) {
     native_tooltip_restore_output();
     native_topbar_restore_output();
     reset_native_announcement_notification_capture();
+#ifndef _WIN32
+    // The producer owns the native buffers here, before their rotation and
+    // the next page render. Restore lost map objects at this boundary only.
+    native_map_restore_missing_outputs();
+#endif
     const auto original = reinterpret_cast<NativeHelpDrawFn>(g_native_help_frame_hook.original);
     if (original) callback.call_native([&] { original(renderer); });
 #ifdef _WIN32

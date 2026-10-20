@@ -189,6 +189,71 @@ static void uninstall_native_map_producer_hook() {
 }
 static bool native_map_producer_hook_active() { return g_native_map_producer_hook.active(); }
 #else
+static void native_map_restore_missing_outputs() {
+    if (g_native_process_exiting.load(std::memory_order_acquire)) return;
+    auto *gps = native_graphics_owner();
+    if (!gps || native_private_ui_write_active(gps) ||
+            gps->screen_pixel_x <= 0 || gps->screen_pixel_y <= 0 ||
+            gps->viewport_zoom_factor < 4) return;
+    const bool missing_port = !gps->main_map_port && gps->map_port.empty();
+    const bool missing_viewports = !gps->main_viewport && gps->viewport.empty() &&
+        std::all_of(std::begin(gps->lower_viewport), std::end(gps->lower_viewport),
+            [](const auto *viewport) { return viewport == nullptr; });
+    if ((!missing_port && !missing_viewports) ||
+            (!native_history_worldgen_page() && !native_gameplay_map_screen())) return;
+
+    // beginroutine creates these objects once for the process. An earlier
+    // UI binding could replace both their aliases and owning vectors with
+    // the detached UI header's zeros. Preserving pointers on later frames
+    // cannot recover that state, and reshape_viewports only resizes objects
+    // which already exist. Recreate the same native allocation set instead.
+    using ShapePort = void (*)(graphic_map_portst *, int32_t, int32_t);
+    using ShapeViewport = void (*)(graphic_viewportst *, int32_t, int32_t, int32_t);
+    static const auto shape_port = reinterpret_cast<ShapePort>(dlsym(RTLD_DEFAULT,
+        "_ZN18graphic_map_portst38shape_map_port_according_by_pixel_sizeEii"));
+    static const auto shape_viewport = reinterpret_cast<ShapeViewport>(dlsym(RTLD_DEFAULT,
+        "_ZN18graphic_viewportst38shape_viewport_according_by_pixel_sizeEiii"));
+    if ((missing_port && !shape_port) || (missing_viewports && !shape_viewport)) return;
+    try {
+        std::unique_ptr<graphic_map_portst> port;
+        std::array<std::unique_ptr<graphic_viewportst>, LOWER_VIEWPORT_MAX + 1> viewports;
+        if (missing_port) {
+            port = std::make_unique<graphic_map_portst>();
+            shape_port(port.get(), gps->screen_pixel_x, gps->screen_pixel_y);
+        }
+        if (missing_viewports) {
+            for (auto &viewport : viewports) {
+                viewport = std::make_unique<graphic_viewportst>();
+                shape_viewport(viewport.get(), gps->screen_pixel_x,
+                    gps->screen_pixel_y, gps->viewport_zoom_factor);
+            }
+        }
+        // Finish allocations before publishing any object. The game's own
+        // vectors own their lifetime, buffer swaps and subsequent resizes.
+        if (port) gps->map_port.reserve(1);
+        if (missing_viewports) gps->viewport.reserve(viewports.size());
+        if (port) {
+            gps->map_port.push_back(port.get());
+            gps->main_map_port = port.release();
+        }
+        if (missing_viewports) {
+            for (auto &viewport : viewports) gps->viewport.push_back(viewport.get());
+            gps->main_viewport = viewports[0].release();
+            for (size_t i = 0; i < LOWER_VIEWPORT_MAX; ++i)
+                gps->lower_viewport[i] = viewports[i + 1].release();
+        }
+        // Native allocation leaves every port inactive. The game normally
+        // selects these flags on viewscreen transitions, not on every draw;
+        // reapply the current page's own policy without changing pages.
+        if (auto *screen = reinterpret_cast<viewscreenst *>(native_current_viewscreen()))
+            screen->set_port_flags();
+        gps->force_full_display_count = std::max<int16_t>(gps->force_full_display_count, 2);
+        log_line("INFO", "Restored missing native map output objects before frame production");
+    } catch (const std::exception &error) {
+        log_line("ERROR", std::string("Cannot restore native map output objects: ") + error.what());
+    }
+}
+
 static bool install_native_map_producer_hook() { return true; }
 static void uninstall_native_map_producer_hook() {}
 static bool native_map_producer_hook_active() { return false; }
