@@ -8,7 +8,7 @@ DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作�
 更新内容见改动说明与订阅目录中的 CHANGELOG.txt。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases]Windows 与独立汉化数据下载[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020]Windows 与独立汉化数据下载[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
 [h1]Windows 工坊安装[/h1]
