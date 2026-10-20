@@ -99,21 +99,45 @@ private:
             "?active_instance@Core@DFHack@@0PEAV12@EA"));
         auto *shutdown = reinterpret_cast<const unsigned char *>(GetProcAddress(module,
             "?Shutdown@Core@DFHack@@AEAAHXZ"));
-        // The supported native shutdown obtains Private at Core+0x1250,
-        // checks std::thread's id at +8, and passes that same object to join.
-        constexpr unsigned char private_load[]{0x48,0x8b,0x81,0x50,0x12,0,0};
+        const auto console_shutdown = reinterpret_cast<const unsigned char *>(GetProcAddress(module,
+            "?shutdown@Console@DFHack@@QEAA_NXZ"));
+        // Both releases obtain Private at Core+0x1250 and join its first
+        // thread. In r3 Shutdown keeps Core in RBX, adds an exit-state store,
+        // and uses LEA for Core.console; the old RCX/ADD probe rejected it.
+        struct ShutdownProfile {
+            size_t private_at, thread_at, console_at, join_at;
+            unsigned char private_load[7], console_address[7];
+        };
+        constexpr ShutdownProfile profiles[]{
+            {0x27, 0x38, 0x3e, 0x4f,
+                {0x48,0x8b,0x81,0x50,0x12,0,0},
+                {0x48,0x81,0xc1,0xb8,0x11,0,0}}, // 53.16-r2
+            {0x2c, 0x3d, 0x43, 0x54,
+                {0x48,0x8b,0x83,0x50,0x12,0,0},
+                {0x48,0x8d,0x8b,0xb8,0x11,0,0}}, // 53.16-r3
+        };
         constexpr unsigned char thread_id[]{0x83,0x78,0x08,0x00};
-        constexpr unsigned char console_add[]{0x48,0x81,0xc1,0xb8,0x11,0,0};
         constexpr unsigned char join_load[]{0x48,0x8b,0x8b,0x50,0x12,0,0};
-        if (!readable(core_slot_, sizeof(void *)) || !readable(shutdown, 0x5b) ||
-                std::memcmp(shutdown + 0x27, private_load, sizeof(private_load)) ||
-                std::memcmp(shutdown + 0x38, thread_id, sizeof(thread_id)) ||
-                std::memcmp(shutdown + 0x3e, console_add, sizeof(console_add)) ||
-                std::memcmp(shutdown + 0x4f, join_load, sizeof(join_load)) || shutdown[0x56] != 0xe8)
-            return false;
-        int32_t relative = 0;
-        std::memcpy(&relative, shutdown + 0x57, sizeof(relative));
-        const auto *join = shutdown + 0x5b + relative;
+        if (!readable(core_slot_, sizeof(void *)) || !console_shutdown) return false;
+        const unsigned char *join = nullptr;
+        for (const auto &profile : profiles) {
+            const size_t console_call = profile.console_at + sizeof(profile.console_address);
+            const size_t join_call = profile.join_at + sizeof(join_load);
+            if (!readable(shutdown, join_call + 5) ||
+                    std::memcmp(shutdown + profile.private_at,
+                        profile.private_load, sizeof(profile.private_load)) ||
+                    std::memcmp(shutdown + profile.thread_at, thread_id, sizeof(thread_id)) ||
+                    std::memcmp(shutdown + profile.console_at,
+                        profile.console_address, sizeof(profile.console_address)) ||
+                    std::memcmp(shutdown + profile.join_at, join_load, sizeof(join_load)) ||
+                    shutdown[console_call] != 0xe8 || shutdown[join_call] != 0xe8) continue;
+            int32_t relative = 0;
+            std::memcpy(&relative, shutdown + console_call + 1, sizeof(relative));
+            if (shutdown + console_call + 5 + relative != console_shutdown) continue;
+            std::memcpy(&relative, shutdown + join_call + 1, sizeof(relative));
+            join = shutdown + join_call + 5 + relative;
+            break;
+        }
         constexpr unsigned char join_id[]{0x83,0x79,0x08,0x00};
         constexpr unsigned char join_copy[]{0x0f,0x10,0x07,0x33,0xd2,0x48,0x8d,0x4c,0x24,0x20,
             0x0f,0x29,0x44,0x24,0x20};

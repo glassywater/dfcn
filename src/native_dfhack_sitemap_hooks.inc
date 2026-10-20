@@ -1450,32 +1450,38 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
             !stack.getstack || !stack.getinfo || !stack.getlocal || !api.pushstring ||
             !api.rawget || !api.rawgeti || !api.rawlen || !api.getmetatable || !api.topointer ||
             !api.rawequal || !api.toboolean || !api.getupvalue) return false;
-    // Bind the native C function through its immutable 53.16-r2 LuaApi.cpp
+    // Bind the native C function through its immutable r2/r3 LuaApi.cpp
     // registration, not the script-replaceable dfhack.screen Lua table.
     const auto *base = reinterpret_cast<const unsigned char *>(module);
-    constexpr uintptr_t table_rva = 0xa61a50, paint_rva = 0x407960;
     constexpr std::array<const char *, 3> names{"readMapPortTile", "paintString", "fillRect"};
-    constexpr std::array<uintptr_t, 3> functions{0x4078b0, paint_rva, 0x407ad0};
-    if (!native_dfhack_lua_memory(base + table_rva, names.size() * 16)) return false;
-    for (size_t index = 0; index < names.size(); ++index) {
-        const char *name = nullptr;
-        const void *function = nullptr;
-        std::memcpy(&name, base + table_rva + index * 16, sizeof(name));
-        std::memcpy(&function, base + table_rva + index * 16 + 8, sizeof(function));
-        const auto text = native_dfhack_lua_text(name, 32);
-        if (!text || *text != names[index] || function != base + functions[index]) return false;
+    struct Registration {
+        uintptr_t table;
+        std::array<uintptr_t, names.size()> functions;
+    };
+    constexpr Registration registrations[]{
+        {0xa61a50, {0x4078b0, 0x407960, 0x407ad0}}, // 53.16-r2
+        {0xa62ad0, {0x407b90, 0x407c40, 0x407db0}}, // 53.16-r3
+    };
+    const unsigned char *paint = nullptr;
+    for (const auto &registration : registrations) {
+        if (!native_dfhack_lua_registration_pe(base, registration.table, names,
+                registration.functions)) continue;
+        paint = base + registration.functions[1];
+        break;
     }
-    constexpr std::array<unsigned char, 32> paint_prefix{
+    if (!paint) return false;
+    std::vector<unsigned char> paint_prefix{
         0x48,0x89,0x5c,0x24,0x10,0x48,0x89,0x6c,
         0x24,0x18,0x56,0x57,0x41,0x56,0x48,0x83,
         0xec,0x70,0x48,0x8b,0x05,0x47,0x0b,0xd6,
         0x00,0x48,0x33,0xc4,0x48,0x89,0x44,0x24};
-    NativePatchPages executable;
-    if (!collect_native_patch_pages(executable, reinterpret_cast<uintptr_t>(base + paint_rva),
-            paint_prefix.size(), native_patch_page_size(), true, "DFHack Sitemap text producer") ||
-            std::memcmp(base + paint_rva, paint_prefix.data(), paint_prefix.size())) return false;
+    if (!native_dfhack_read_entry_prefix(paint, paint_prefix, {21},
+            "DFHack Sitemap text producer")) return false;
+    if (native_dfhack_relative_target(paint, 21, 25) !=
+            native_dfhack_pe_directory_pointer(module, IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG,
+                offsetof(IMAGE_LOAD_CONFIG_DIRECTORY64, SecurityCookie))) return false;
     api.paint_string = reinterpret_cast<NativeDfhackLuaCFunction>(
-        const_cast<unsigned char *>(base + paint_rva));
+        const_cast<unsigned char *>(paint));
     std::array<wchar_t, 32768> filename{};
     const DWORD length = GetModuleFileNameW(module, filename.data(), static_cast<DWORD>(filename.size()));
     if (!length || length >= filename.size()) return false;

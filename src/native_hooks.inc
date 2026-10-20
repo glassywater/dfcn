@@ -91,6 +91,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_rich_hooks.inc"
 #include "native_adventure_hover_hooks.inc"
 #include "native_announcement_hooks.inc"
+#include "native_dfhack_profile_pe.inc"
 #include "native_dfhack_layer_present.inc"
 #include "native_ui_cache_context.inc"
 #include "native_help_layer_render.inc"

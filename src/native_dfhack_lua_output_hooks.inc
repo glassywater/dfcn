@@ -9,7 +9,7 @@
 
 struct NativeDfhackLuaState;
 using NativeDfhackLuaCFunction = int (*)(NativeDfhackLuaState *);
-// DFHack 53.16-r2 depends/lua/include/lua.h, Lua 5.3.6, LUA_IDSIZE=60.
+// DFHack 53.16-r2/r3 depends/lua/include/lua.h, Lua 5.3.6, LUA_IDSIZE=60.
 struct NativeDfhackLuaDebug {
     int event;
     const char *name, *namewhat, *what, *source;
@@ -528,6 +528,22 @@ static bool native_dfhack_console_nonlocal_command() {
 }
 
 #ifdef _WIN32
+template<size_t Count>
+static bool native_dfhack_lua_registration_pe(const unsigned char *base,
+        uintptr_t table, const std::array<const char *, Count> &names,
+        const std::array<uintptr_t, Count> &functions) {
+    if (!base || !native_dfhack_lua_memory(base + table, Count * 16)) return false;
+    for (size_t index = 0; index < Count; ++index) {
+        const char *name = nullptr;
+        const void *function = nullptr;
+        std::memcpy(&name, base + table + index * 16, sizeof(name));
+        std::memcpy(&function, base + table + index * 16 + 8, sizeof(function));
+        const auto text = native_dfhack_lua_text(name, 32);
+        if (!text || *text != names[index] || function != base + functions[index]) return false;
+    }
+    return true;
+}
+
 static bool native_dfhack_bind_lua_output(HMODULE module) {
     // Published once per core. Console consumers cannot race a later retry
     // rewriting function pointers or the owned source path.
@@ -570,28 +586,34 @@ static bool native_dfhack_bind_lua_output(HMODULE module) {
     // identifies the exact native println. These adjacent registration pairs
     // were read from the specified DLL and match LuaTools.cpp's dfhack_funcs.
     const auto *base = reinterpret_cast<const unsigned char *>(module);
-    constexpr uintptr_t println_rva = 0x3a9300, table_rva = 0xa5f820;
-    constexpr std::array<unsigned char, 32> println_prefix{
+    constexpr std::array<const char *, 5> names{"print", "println", "printerr", "color", "is_interactive"};
+    struct Registration {
+        uintptr_t table;
+        std::array<uintptr_t, names.size()> functions;
+    };
+    constexpr Registration registrations[]{
+        {0xa5f820, {0x3a91f0, 0x3a9300, 0x3a9430, 0x3a94d0, 0x3a9590}}, // 53.16-r2
+        {0xa60890, {0x3a9200, 0x3a9310, 0x3a9440, 0x3a94e0, 0x3a95a0}}, // 53.16-r3
+    };
+    const unsigned char *println = nullptr;
+    for (const auto &registration : registrations) {
+        if (!native_dfhack_lua_registration_pe(base, registration.table, names,
+                registration.functions)) continue;
+        println = base + registration.functions[1];
+        break;
+    }
+    if (!println) return false;
+    std::vector<unsigned char> println_prefix{
         0x48, 0x89, 0x5c, 0x24, 0x10, 0x57, 0x48, 0x83,
         0xec, 0x70, 0x48, 0x8b, 0x05, 0xaf, 0xf1, 0xdb,
         0x00, 0x48, 0x33, 0xc4, 0x48, 0x89, 0x44, 0x24,
         0x60, 0x48, 0x8b, 0xd9, 0x48, 0x8b, 0xd1, 0x48};
-    NativePatchPages executable;
-    if (!collect_native_patch_pages(executable, reinterpret_cast<uintptr_t>(base + println_rva),
-            println_prefix.size(), native_patch_page_size(), true, "DFHack Lua println producer") ||
-            std::memcmp(base + println_rva, println_prefix.data(), println_prefix.size()) ||
-            !native_dfhack_lua_memory(base + table_rva, 5 * 16)) return false;
-    constexpr std::array<const char *, 5> names{"print", "println", "printerr", "color", "is_interactive"};
-    constexpr std::array<uintptr_t, 5> functions{0x3a91f0, println_rva, 0x3a9430, 0x3a94d0, 0x3a9590};
-    for (size_t index = 0; index < names.size(); ++index) {
-        const char *name = nullptr;
-        const void *function = nullptr;
-        std::memcpy(&name, base + table_rva + index * 16, sizeof(name));
-        std::memcpy(&function, base + table_rva + index * 16 + 8, sizeof(function));
-        const auto text = native_dfhack_lua_text(name, 32);
-        if (!text || *text != names[index] || function != base + functions[index]) return false;
-    }
-    api.println = reinterpret_cast<NativeDfhackLuaCFunction>(const_cast<unsigned char *>(base + println_rva));
+    if (!native_dfhack_read_entry_prefix(println, println_prefix, {13},
+            "DFHack Lua println producer")) return false;
+    if (native_dfhack_relative_target(println, 13, 17) !=
+            native_dfhack_pe_directory_pointer(module, IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG,
+                offsetof(IMAGE_LOAD_CONFIG_DIRECTORY64, SecurityCookie))) return false;
+    api.println = reinterpret_cast<NativeDfhackLuaCFunction>(const_cast<unsigned char *>(println));
     std::array<wchar_t, 32768> filename{};
     const DWORD length = GetModuleFileNameW(module, filename.data(), static_cast<DWORD>(filename.size()));
     if (!length || length >= filename.size()) return false;
@@ -637,6 +659,48 @@ static bool native_dfhack_lua_output_hook_active() {
 }
 
 #ifdef _WIN32
+static bool native_dfhack_prepare_inlined_print_output(NativeEntryHook &hook,
+        const unsigned char *getter, const char *label) {
+    auto *println = reinterpret_cast<unsigned char *>(g_native_dfhack_lua_output_api.println);
+    if (!println) return false;
+    auto *entry = println + 0x2a;
+    // A build that emits a direct call already passes through the export hook.
+    constexpr unsigned char direct_prefix[]{0x48,0x8b,0xcb,0xe8};
+    constexpr unsigned char result_move[]{0x48,0x8b,0xf8};
+    if (native_dfhack_lua_memory(entry, 11) &&
+            !std::memcmp(entry, direct_prefix, sizeof(direct_prefix)) &&
+            !std::memcmp(entry + 8, result_move, sizeof(result_move)) &&
+            native_dfhack_relative_target(entry, 4, 8) == getter) return true;
+    // r3 println inlines GetOutput after lua_print_fmt. The exported getter's
+    // hook alone never observes this producer. Reconstruct the exact native
+    // operation: GetOutput(RBX) -> RDI, with no change to println's Lua frame,
+    // stack allocation, formatted string or native ostream writes.
+    std::vector<unsigned char> profile{
+        0x4c,0x8d,0x05,0,0,0,0, 0xba,0xd8,0xb9,0xf0,0xff, 0x48,0x8b,0xcb,
+        0xff,0x15,0,0,0,0, 0xba,0xff,0xff,0xff,0xff, 0x48,0x8b,0xcb,
+        0xff,0x15,0,0,0,0, 0x48,0x8b,0xf8, 0xba,0xfe,0xff,0xff,0xff,
+        0x48,0x8b,0xcb, 0xff,0x15,0,0,0,0};
+    if (!native_dfhack_read_entry_prefix(entry, profile, {3,17,31,48}, label)) return false;
+    // The registry token AND all three IAT slots must be the same ones used
+    // by the independently matched exported getter, not arbitrary rel32s.
+    for (const auto [inlined, exported] :
+            {std::pair<size_t,size_t>{3,13}, {17,27}, {31,41}, {48,58}}) {
+        if (native_dfhack_relative_target(entry, inlined, inlined + 4) !=
+                native_dfhack_relative_target(getter, exported, exported + 4)) return false;
+    }
+    NativeCodePatch patch{entry, std::move(profile), std::vector<unsigned char>(52, 0x90)};
+    constexpr unsigned char call_prefix[]{0x48,0x8b,0xcb,0xe8}; // mov rcx,rbx; call gate
+    std::copy(std::begin(call_prefix), std::end(call_prefix), patch.replacement.begin());
+    const intptr_t distance = reinterpret_cast<intptr_t>(hook.relay) -
+        reinterpret_cast<intptr_t>(entry + 8);
+    if (distance < INT32_MIN || distance > INT32_MAX) return false;
+    const auto relative = static_cast<int32_t>(distance);
+    std::memcpy(patch.replacement.data() + 4, &relative, sizeof(relative));
+    std::copy(std::begin(result_move), std::end(result_move), patch.replacement.begin() + 8);
+    hook.patches.push_back(std::move(patch));
+    return true;
+}
+
 static bool prepare_native_dfhack_lua_output_hook(HMODULE module) {
     constexpr const char *label = "DFHack local Lua item-description print capture";
     auto &hook = g_native_dfhack_lua_output_hook;
@@ -647,15 +711,16 @@ static bool prepare_native_dfhack_lua_output_hook(HMODULE module) {
     }
     auto *entry = reinterpret_cast<unsigned char *>(GetProcAddress(module,
         "?GetOutput@Lua@DFHack@@YAPEAVcolor_ostream@2@PEAUlua_State@@@Z"));
-    constexpr std::array<unsigned char, 32> profile{
+    std::vector<unsigned char> profile{
         0x48, 0x89, 0x5c, 0x24, 0x08, 0x57, 0x48, 0x83,
         0xec, 0x20, 0x4c, 0x8d, 0x05, 0x6f, 0xf7, 0xda,
         0x00, 0xba, 0xd8, 0xb9, 0xf0, 0xff, 0x48, 0x8b,
-        0xf9, 0xff, 0x15, 0x89, 0x31, 0x66, 0x00, 0xba};
-    NativePatchPages pages;
-    if (!entry || !collect_native_patch_pages(pages, reinterpret_cast<uintptr_t>(entry),
-            profile.size(), native_patch_page_size(), true, label) ||
-            std::memcmp(entry, profile.data(), profile.size())) {
+        0xf9, 0xff, 0x15, 0x89, 0x31, 0x66, 0x00,
+        0xba,0xff,0xff,0xff,0xff, 0x48,0x8b,0xcf, 0xff,0x15,0,0,0,0,
+        0xba,0xfe,0xff,0xff,0xff, 0x48,0x8b,0xcf, 0x48,0x8b,0xd8,
+        0xff,0x15,0,0,0,0, 0x48,0x8b,0xc3, 0x48,0x8b,0x5c,0x24,0x30,
+        0x48,0x83,0xc4,0x20,0x5f,0xc3};
+    if (!native_dfhack_read_entry_prefix(entry, profile, {13,27,41,58}, label)) {
         report_native_patch_error("ERROR", label, "GetOutput entry signature differs");
         return false;
     }
@@ -670,6 +735,7 @@ static bool prepare_native_dfhack_lua_output_hook(HMODULE module) {
     NativeRelayRange range;
     range.include(reinterpret_cast<uintptr_t>(entry));
     range.include(reinterpret_cast<uintptr_t>(entry + 5));
+    range.include(reinterpret_cast<uintptr_t>(g_native_dfhack_lua_output_api.println) + 0x32);
     hook.relay = allocate_native_relay(range, 0x228, &hook.relay_size, label);
     if (!hook.relay) { HeapFree(GetProcessHeap(), 0, context); return false; }
     bool registered = false;
@@ -738,6 +804,7 @@ static bool prepare_native_dfhack_lua_output_hook(HMODULE module) {
     const auto relative = static_cast<int32_t>(distance);
     std::memcpy(patch.replacement.data() + 1, &relative, sizeof(relative));
     hook.patches.push_back(std::move(patch));
+    if (!native_dfhack_prepare_inlined_print_output(hook, entry, label)) return false;
     hook.original = trampoline;
     if (!seal_native_relay(hook.relay, hook.relay_size, label) ||
             !add_function_table(table, 1, reinterpret_cast<DWORD64>(memory))) return false;

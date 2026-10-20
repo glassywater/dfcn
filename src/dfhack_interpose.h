@@ -21,7 +21,8 @@ namespace dfcn::dfhack {
 
 // This adapter reads DFHack's native MSVC objects, but never creates, destroys,
 // or passes STL objects across the DLL boundary. The offsets were recovered
-// from the installed x64 DFHack 53.16-r2 library and its VTableInterpose source.
+// from x64 DFHack 53.16-r2, then checked against the r3 constructor, accessors,
+// map traversal and chain mutations in the installed binary.
 // Call snapshot/dismiss only on the simulation thread while DFHack's core is
 // suspended. In particular, finish the snapshot before removing any hooks:
 // remove() frees registry nodes and changes every neighbouring link.
