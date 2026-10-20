@@ -2,6 +2,8 @@
 
 数据扩展是独立的矮人要塞 mod。DFCN 在运行时发现其声明，载入 TSV 词表和 TOML 递归规则，不执行扩展代码。翻译资源保存在数据 mod 内，不复制进本体词表，也不参与本体词表或核心的编译。
 
+语义搜索模型也作为独立 mod `DFCN Semantic Search Model` 分发，位于 `workshop/semantic-search/content`。核心启动时在与汉化数据扩展相同的游戏 mod、已安装数据 mod 和已订阅工坊目录中查找 `dfcn-semantic-search.toml`，验证其中声明的模型文件后才启用语义搜索；未安装或文件缺失时只关闭语义召回，拼写和拼音搜索保持可用。模型不进入 DFCN 核心工坊包或最小运行包。`package-workshop.cmd` 单独生成 `dfcn_semantic_search.zip`，整个 mod 文件夹解压至游戏 `mods` 目录后会自动识别，无需在创建世界时启用。
+
 Windows [v53.16-20261009](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261009) 提供 **Shift+F6** 扩展开关。扩展默认启用；首次按下停用全部扩展 TSV 词表和 TOML 规则，立即重新载入本体汉化并开启显示；再次按下恢复扩展并重新载入汉化。左右 Shift 均可，长按不重复切换。开关只影响本次运行，跨 **Shift+F5** 核心重载保留，不写入配置文件。Linux 源码已实现此快捷键，当前 Linux 发布包尚未包含。
 
 ## 已发布的数据包

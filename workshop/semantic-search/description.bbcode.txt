@@ -1,0 +1,5 @@
+Optional offline semantic-search model for DFCN.
+
+Requires [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN Chinese Localization[/url]. Subscribe to or install this model mod to enable cross-language semantic search. DFCN discovers it automatically at game startup; it does not need to be enabled in a world's mod list.
+
+The model is distributed separately from the DFCN core and is only loaded when this mod is installed.

@@ -22,9 +22,10 @@
 `src/search_similarity.inc`，对英文原名、中文显示名、拼音全拼及拼音首字母
 执行片段匹配、Unicode 编辑距离容错和预训练词汇语义向量检索。
 语义模型为 [potion-multilingual-128M](https://huggingface.co/minishlab/potion-multilingual-128M)，
-固定版本、权重、分词器及许可证位于 `data/runtime/search-semantic/`。
-权重和分词器通过 Git LFS 保存；获取源码时需取回完整 LFS 文件，
-运行包继续包含可直接使用的本地模型资源。
+固定版本、权重、分词器及许可证保存在独立的
+`workshop/semantic-search/content/dfcn/search-semantic/` mod 资源目录，权重和分词器通过
+Git LFS 保存。DFCN 启动时在已安装 mod 中查找 `dfcn-semantic-search.toml`；只有找到
+有效模型 mod 才启用语义召回，模型不包含在汉化核心运行包内。
 模型使用训练得到的 256 维词向量；不再使用字符哈希冒充语义向量。
 `src/search_semantic_model.h` 在本地执行模型原有的规范化、Unigram 分词、
 向量池化和 L2 归一化，保留英文词边界，不需要网络服务或额外推理进程。

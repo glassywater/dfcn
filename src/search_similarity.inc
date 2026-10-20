@@ -22,10 +22,12 @@ static SearchCodepoints search_codepoints(std::string_view text) {
 static const search_semantic::Model *search_semantic_model() {
     static const auto model = []() -> std::unique_ptr<search_semantic::Model> {
         try {
-            return std::make_unique<search_semantic::Model>(
-                runtime::data_path() / "search-semantic");
+            const auto installed_mod = extensions::discover();
+            if (installed_mod.semantic_model.empty()) return {};
+            return std::make_unique<search_semantic::Model>(installed_mod.semantic_model);
         } catch (const std::exception &error) {
-            // Never substitute character hashes for missing learned weights.
+            // Semantic search is optional; never substitute character hashes
+            // for absent or invalid learned weights.
             std::fprintf(stderr, "DFCN semantic search unavailable: %s\n", error.what());
             return {};
         }

@@ -30134,6 +30134,8 @@ was unafraid of {a} and refused, despite valuing the law.	虽然尊重法律，�
 {e} by fooling {a} with fabricated evidence in {p} in {p}	在{p2}，在{p1}利用伪造的证据欺骗{a1}而进行的{e1}	htEi
 {e} in order to cement the bonds of friendship during {e}	在{e2}期间，为了巩固友谊，{e1}	htEi
 {e} in order to cement the bonds of friendship within {p}	在{p1}，为了巩固友谊，{e1}	htEi
+{i} is already loaded with {i} and you prepared to shoot.	{i1}已经装好{i2}，你已准备射击。	hPt
+{i} is already nocked with {i} and you prepared to shoot.	{i1}已经搭好{i2}，你已准备射击。	hPt
 {n} cancels {s}: Need valid, active clay collection zone.	{n1}取消了{s1}：需要有效且启用的采黏土区。	hPt
 {n} cancels {s}: Need valid, active sand collection zone.	{n1}取消了{s1}：需要有效且启用的采砂区。	hPt
 {n} collapses and falls to the ground from over-exertion.	{n1}因过度劳累而瘫倒在地。	hPt
@@ -30154,8 +30156,6 @@ was unafraid of {a} and refused, despite valuing the law.	虽然尊重法律，�
 {p} was made a symbol of the {s} of {p} by {a} within {p}	在{p3}，{a1}将{p1}定为{p2}的{s1}的象征	ht
 {p}: It has been an honor, noble {p}. I bid you farewell.	{p1}：不胜荣幸，尊贵的{p2}。就此告别。	hPt
 {p}: Let's discuss the state of our current agreements...	{p1}：让我们谈谈现有协议的履行情况……	hPt
-{i} is already loaded with {i} and you prepared to shoot.	{i1}已经装好{i2}，你已准备射击。	hPt
-{i} is already nocked with {i} and you prepared to shoot.	{i1}已经搭好{i2}，你已准备射击。	hPt
 "Who are these mealy-mouthed cowards trying to impress?"	“这些说话拐弯抹角的懦夫，究竟想讨好谁？”	l
 "You must never forget true loyalty.  Repay it in full."	“真正的忠诚不可辜负，应当全心回报。”	l
 (Vehicle moved to next stop if any condition triggered.)	（任一条件触发时，车辆便会前往下一站。）	hP
@@ -53457,6 +53457,7 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {e}, after the death strike by {a} in {p}	在{p1}，在受到{a1}的致命一击之后发生的{e1}	htEi
 {e}, the performance troupe, has arrived.	演出团{e1}已经到达。	hPt
 {i} Throwing Competition of in the wilds.	在荒野中，{i1}投掷比赛。	htEi
+{i} has been moved from its proper place!	{i1}被移离了原本的位置！	hPt
 {i} masterfully constructed by {n} at {p}	在{p1}，{n1}以精湛技艺制作的{i1}	htEi
 {i} masterfully constructed by {n} in {d}	{d1}年的{n1}以精湛技艺制作的{i1}	htEi
 {i} masterfully constructed by {n} in {p}	在{p1}，{n1}以精湛技艺制作的{i1}	htEi
@@ -53518,7 +53519,6 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {s} between {a} and {a} at {p} concluded.	{a1}与{a2}在{p1}达成的{s1}结束了。	ht
 {s} between {a} and {a} concluded at {p}.	在{p1}，{a1}与{a2}之间的{s1}结束了。	ht
 {s} between {a} and {a} concluded in {p}.	在{p1}，{a1}与{a2}之间的{s1}结束了。	ht
-{i} has been moved from its proper place!	{i1}被移离了原本的位置！	hPt
 "Are these gifts? Do you wish to trade?"	“这些是礼物吗？你想做笔交易？”	hP
 "I cannot stand the world any longer..."	“我再也受不了这个世界了……”	l
 "I don't really get attached to people."	“我不太会对别人产生依恋。”	l
@@ -61630,6 +61630,7 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {e} under the influence of {a} in {p}	在{p1}，在{a1}影响下发生的{e1}	htEi
 {e} will no longer pay homage to {e}.	{e1}将不再向{e2}称臣。	hPtD
 {i} Throwing Competition in the wilds	在荒野中，{i1}投掷比赛	htEi
+{i} is missing from its proper place!	{i1}从原本的位置不见了！	hPt
 {i} masterfully dyed with {i} at {p}.	在{p1}，以精湛技艺用{i2}染色的{i1}。	htEi
 {i} masterfully dyed with {i} in {d}.	{d1}年的以精湛技艺用{i2}染色的{i1}。	htEi
 {i} masterfully dyed with {i} in {p}.	在{p1}，以精湛技艺用{i2}染色的{i1}。	htEi
@@ -61637,6 +61638,7 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {i} was confiscated by {a} within {p}	在{p1}，{a1}没收了{i1}	ht
 {i} was prepared by {n} in the wilds.	在荒野中，{n1}烹制了{i1}。	ht
 {i} was recovered by {a} in the wilds	在荒野中，{a1}找回了{i1}	ht
+{i} was seen being passed to a thief!	{i1}被人看见交给了一个窃贼！	hPt
 {i} was stolen from {p} by {a} at {p}	在{p2}，{a1}从{p1}偷走了{i1}	ht
 {i} was stolen from {p} by {a} in {p}	在{p2}，{a1}从{p1}偷走了{i1}	ht
 {i} was stolen from {p} in the wilds.	在荒野中，{i1}被人从{p1}偷走了。	ht
@@ -61704,13 +61706,11 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {p}'s harassment of {p} in the wilds.	在荒野中，{p1}骚扰了{p2}。	htEi
 {p}'s march to reclaim {p} during {e}	在{e1}期间，{p1}为收复{p2}而发动的远征	htEi
 {p}'s march to reclaim {p} within {p}	在{p3}，{p1}为收复{p2}而发动的远征	htEi
-{i} is missing from its proper place!	{i1}从原本的位置不见了！	hPt
 {s} shows a word but you cannot read.	{s1}显示出一个词，但你不识字。	hPt
 {s} was accepted by {a} in the wilds.	在荒野中，{a1}接受了{s1}。	ht
 {s} was made to {a} by {a} during {e}	在{e1}期间，{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} by {a} within {p}	在{p1}，{a2}向{a1}提出了{s1}	ht
 {s} was rejected by {a} in the wilds.	在荒野中，{a1}拒绝了{s1}。	ht
-{i} was seen being passed to a thief!	{i1}被人看见交给了一个窃贼！	hPt
 "Bravery is not a strength of mine."	“勇敢不是我的长处。”	l
 "I simply cannot afford this trade."	“我实在负担不起这笔交易。”	hP
 "I try to live and behave properly."	“我尽量让生活和言行合乎规矩。”	l
@@ -67178,8 +67178,8 @@ The sun is low in the western sky.	太阳位于西方低空。	hj
 The thread is {v} with {j} by {n}.	纺线由{n1}用{j1}染成{v1}。	hHt
 The vegetation is heavily damaged.	这里的植被受到严重破坏。	hP
 The vomit burns away in the magma.	呕吐物在岩浆中烧尽了。	hP
-The {s} Purge in {p} in the wilds.	在荒野中，{p1}的{s1}清洗事件。	htEi
 The {i} remains stuck in your {t}.	{i1}仍卡在你的{t1}中。	hPt
+The {s} Purge in {p} in the wilds.	在荒野中，{p1}的{s1}清洗事件。	htEi
 There is a {s} imprint in the {s}.	{s2}中有一个{s1}留下的压痕。	hPt
 There were {c} competitors at {p}.	在{p1}，共有{c1}名参赛者。	ht
 There were {c} competitors in {p}.	在{p1}，共有{c1}名参赛者。	ht
@@ -70858,6 +70858,7 @@ withdrew from society within {p}.	在{p1}退出了社会交往。	ht
 {e} to vent at somebody in charge	为了向负责人宣泄情绪，{e1}	htEi
 {e}, an assault on {p} during {e}	在{e2}期间，{e1}（对{p1}的攻袭）	htEi
 {e}, an assault on {p} within {p}	在{p2}，{e1}（对{p1}的攻袭）	htEi
+{i} is already prepared to shoot.	{i1}已经准备好射击了。	hPt
 {i} prepared by {n} in the wilds.	在荒野中，{n1}烹制的{i1}。	htEi
 {i} was confiscated by {a} at {p}	在{p1}，{a1}没收了{i1}	ht
 {i} was confiscated by {a} in {p}	在{p1}，{a1}没收了{i1}	ht
@@ -70943,7 +70944,6 @@ withdrew from society within {p}.	在{p1}退出了社会交往。	ht
 {s} Rampage in in {p} within {p}.	在{p2}，{p1}的{s1}肆虐事件。	htEi
 {s} between {a} and {a} concluded	{a1}与{a2}之间的{s1}结束了	ht
 {s} created by an unknown artisan	由无名工匠制作的{s1}	hIit
-{i} is already prepared to shoot.	{i1}已经准备好射击了。	hPt
 {s} was made to {a} by {a} at {p}	在{p1}，{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} by {a} in {p}	在{p1}，{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} in the wilds.	在荒野中，向{a1}提出了{s1}。	ht
@@ -76656,8 +76656,8 @@ The work has a single chapter.	这部作品只有一章。	h
 The world has passed into {e}.	世界已进入{e1}。	hPt
 The world has passed into {e}.	世界已进入{e1}。	ht
 The world has passed into {s}.	世界已进入{s1}。	ht
-The {s} is hot enough already.	{s1}已经够热了。	hPt
 The {i} is torn from your {t}.	{i1}被从你的{t1}中扯了出来。	hPt
+The {s} is hot enough already.	{s1}已经够热了。	hPt
 There have been a few already!	已经出现过几条了！	hq
 There is a foul reek about it.	它周围弥漫着恶臭。	h
 There is a imprint in the {s}.	{s1}中有一个压痕。	hPt
@@ -82866,6 +82866,8 @@ wove a masterful sewn image.	织出了一幅杰作级的刺绣图像。	h
 {e}, based in {p} during {e}	在{e2}期间，{e1}，以{p1}为据点	htEi
 {e}, based in {p} within {p}	在{p2}，{e1}，以{p1}为据点	htEi
 {i} Throwing Competition of.	{i1}投掷比赛。	htEi
+{i} is already loaded with .	{i1}已经装好了。	hPt
+{i} is already nocked with .	{i1}已经搭好了。	hPt
 {i} really makes the outfit.	{i1}真是这身装束的点睛之笔。	hPtD
 {i} was looted by {a} at {p}	在{p1}，{a1}掠走了{i1}	ht
 {i} was looted by {a} in {p}	在{p1}，{a1}掠走了{i1}	ht
@@ -82954,8 +82956,6 @@ wove a masterful sewn image.	织出了一幅杰作级的刺绣图像。	h
 {s} Rampage of {n} in in {p}	{n1}在{p1}的{s1}肆虐事件	htEi
 {s} comes up the word "{s}".	{s1}掷出了“{s2}”这个词。	hPt
 {s} from a period of no rule	{s1}（无统治者时期）	hIit
-{i} is already loaded with .	{i1}已经装好了。	hPt
-{i} is already nocked with .	{i1}已经搭好了。	hPt
 {s} is falling from the sky.	{s1}正从天空落下。	hjt
 {s} lands on the word "{s}".	{s1}落在“{s2}”这个词。	hPt
 {s} of {n}'s {t} during {e}.	在{e1}期间，{n1}的{t1}遭到{s1}的事件。	htEi
@@ -87460,6 +87460,7 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {i} was confiscated in {p}	在{p1}，{i1}被没收了	ht
 {i} was looted during {e}.	在{e1}期间，{i1}被劫走了。	ht
 {i} was looted within {p}.	在{p1}，{i1}被劫走了。	ht
+{i} was seen being stolen!	有人看见{i1}被偷走了！	hPt
 {i} was stolen during {e}.	在{e1}期间，{i1}被偷走了。	ht
 {i} was stolen within {p}.	在{p1}，{i1}被偷走了。	ht
 {n} and {n} became friends	{n1}与{n2}成为了朋友	ht
@@ -87535,7 +87536,6 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {s} was made to {a} at {p}	在{p1}，向{a1}提出了{s1}	ht
 {s} was made to {a} by {a}	{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} in {p}	在{p1}，向{a1}提出了{s1}	ht
-{i} was seen being stolen!	有人看见{i1}被偷走了！	hPt
 {s} with {a} in the wilds.	在荒野中，与{a1}的{s1}。	htEi
 {s} {s} sideburns are {s}.	{s}的{s}鬓角{s}。	wtlx
 {t} was {s} by {a} at {p}.	在{p1}，{t1}被{a1}{s1}。	ht
@@ -96528,8 +96528,8 @@ The {d}st {e} in {p}.	在{p1}，第{d1}次{e1}。	htEi
 The {d}th {e} at {p}.	在{p1}，第{d1}次{e1}。	htEi
 The {d}th {e} in {d}.	{d2}年的第{d1}次{e1}。	htEi
 The {d}th {e} in {p}.	在{p1}，第{d1}次{e1}。	htEi
-The {s} Purge in {p}.	{p1}的{s1}清洗事件。	htEi
 The {i} is too salty.	{i1}太咸了。	hPt
+The {s} Purge in {p}.	{p1}的{s1}清洗事件。	htEi
 There are no children	没有儿童	wil
 There is a {s} print.	这里有一处{s1}印迹。	hPt
 There is fog outside.	外面有雾。	hPD
@@ -98816,8 +98816,8 @@ The {d}st {e} in {p}	在{p1}，第{d1}次{e1}	htEi
 The {d}th {e} at {p}	在{p1}，第{d1}次{e1}	htEi
 The {d}th {e} in {d}	{d2}年的第{d1}次{e1}	htEi
 The {d}th {e} in {p}	在{p1}，第{d1}次{e1}	htEi
-The {s} Purge in {p}	{p1}的{s1}清洗事件	htEi
 The {i} is too cold.	{i1}太冷了。	hPt
+The {s} Purge in {p}	{p1}的{s1}清洗事件	htEi
 These workshops are 	这些工坊被用于包括染色和纺织	w
 This artwork is {s}.	这件艺术品是{s1}。	hHt
 This chanter stinks!	这位吟唱者糟透了！	hPD
@@ -127186,7 +127186,8 @@ youngest child	最小的孩子	h
 {i} was looted	{i1}被劫走了	ht
 {i} was stolen	{i1}被偷走了	ht
 {n} dismounts.	{n1}从坐骑上下来了。	hPt
-{n} drops {i}.	{n1}放下了{i1}。	hPt
+{n} drops {i}.	{n1}放下了{i1}。	hPtD
+{n} drops {s}.	{n1}放下了{s1}。	hPt
 {n} flounders!	{n1}挣扎着！	hPt
 {n} is an {s}.	{n}是{s}。	ht
 {n} is the god	{n}是神祇	atl
@@ -131844,6 +131845,7 @@ yellow zircon	黄锆石	wi
 {e} on a whim	出于一时兴起，{e1}	htEi
 {e} with {a}.	与{a1}有关的{e1}。	htEi
 {e} with {i}.	涉及{i1}的{e1}。	htEi
+{i} is empty.	{i1}是空的。	hPt
 {n} flinches.	{n1}畏缩了一下。	hPt
 {n} gestures!	{n1}做了一个手势！	hPt
 {n} gestures.	{n1}做了一个手势。	hPt
@@ -131860,7 +131862,6 @@ yellow zircon	黄锆石	wi
 {p} is a {s}.	{p}是一个{s}。	ht
 {p} was found	{p1}被找到了	ht
 {p} was lost.	{p1}遗失了。	ht
-{i} is empty.	{i1}是空的。	hPt
 {s} with {a}.	与{a1}的{s1}。	htEi
 {s}, Ordinary	{s}，普通	wtx
  cloth image	布质图案	wi

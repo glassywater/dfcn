@@ -139,6 +139,25 @@ function Write-PublicExtensionArchives {
     }
 }
 
+function Write-SemanticSearchArchive {
+    $directory = Resolve-PackageDirectory (Join-Path $workshopRoot 'semantic-search')
+    $semanticContent = Resolve-PackageDirectory (Join-Path $directory 'content')
+    $manifestPath = Join-Path $semanticContent 'dfcn-semantic-search.toml'
+    $infoPath = Join-Path $semanticContent 'info.txt'
+    if (-not [IO.File]::Exists($manifestPath) -or -not [IO.File]::Exists($infoPath)) {
+        return
+    }
+    $identities = [regex]::Matches([IO.File]::ReadAllText($infoPath),
+        '(?m)^\s*\[ID:([A-Za-z0-9_-]+)\]\s*$')
+    if ($identities.Count -ne 1) {
+        throw ('Semantic search mod must have one valid mod ID: ' + $infoPath)
+    }
+    $identity = $identities[0].Groups[1].Value
+    $archive = Join-Path $directory ($identity + '.zip')
+    Write-PackageArchive $semanticContent $archive ($identity + '/')
+    Write-Host ('Independent semantic-search mod package: ' + $archive) -ForegroundColor Green
+}
+
 try {
     & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'package-windows.ps1')
     if ($LASTEXITCODE -ne 0) { throw ('Windows packaging failed with exit code ' + $LASTEXITCODE) }
@@ -166,6 +185,7 @@ try {
     # Extensions remain separate from the base Workshop payload. Private data
     # packages are never selected for these public release archives.
     Write-PublicExtensionArchives
+    Write-SemanticSearchArchive
     Write-Host ('Workshop content: ' + $contentRoot) -ForegroundColor Green
     Write-Host ('Created: ' + $outputPath)
 } catch {
