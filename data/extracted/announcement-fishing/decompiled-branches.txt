@@ -1,0 +1,123 @@
+Native source extraction: fishing depletion announcements
+
+Images read from data/runtime/native-pe-images.json:
+  reference PE:6a70a6d9:02711000
+  classic   PE:6a70b91c:0270a000
+
+The .c files are actual Ghidra 12.1.4 decompiler output from those PE images.
+The .asm files are native objdump output with original bytes' literal operands.
+ghidra-functions.tsv records complete function boundaries used by Ghidra.
+No game process, desktop, loaded module, or reload state was inspected.
+
+Root producer:
+  reference RVA 0x13435b0..0x1344898
+  classic   RVA 0x133e520..0x133f808
+The producer computes fishing skill/random success, resolves the job's fishing
+coordinate, selects matching fish populations and filters their creature/caste
+availability. If candidates remain, it consumes population and creates the fish
+item. This successful path does not emit an announcement. No stock-recovery
+announcement exists in this owner.
+
+When the candidate list is empty, the location is recorded as exhausted. The
+announcement gate is flags & 0x70 for gamemode == 0, flags & 8 otherwise. Each
+text branch submits announcement type 0x110, packed with color 0x6 as 0x60110,
+via RVA 0xe3c20 (reference) / 0xe3bb0 (classic). The body is always followed by
+a period. Three text branches exist:
+
+1. Local feature index != -1
+   reference assembly 0x1343bc3..0x1343dac
+   classic assembly   0x133eb33..0x133ed1c
+   Validate feature-map coordinates and local-feature vector index, then call
+   feature_init::getName at vtable byte slot 0x70. There is no feature_type or
+   fishing_feature test at this call. The text is exactly:
+     "There is nothing to catch in " + feature_name + "."
+
+   The upstream selector is reference 0x14a27e0..0x14a296e and classic
+   0x149d750..0x149d8de. These are each five contiguous unwind ranges, not a
+   short 0x59-byte function. It bounds-checks map coordinates and reads tile
+   designation bits 28/29 to choose block local/global feature IDs. It does not
+   filter the feature_init subclass. The producer gives local features priority.
+
+   All feature_init RTTI classes and slot implementations are retained in
+   native-feature-owners.tsv. There are eleven class types, ten distinct slot
+   implementations (cave and subterranean_from_layer share the same text):
+     feature_initst                         -> empty (ret)
+     feature_init_outdoor_riverst            -> "the river"
+     feature_init_cavest                     -> "the cave"
+     feature_init_subterranean_from_layerst  -> "the cave"
+     feature_init_pitst                      -> "the pit"
+     feature_init_magma_poolst               -> "the magma pool"
+     feature_init_volcanost                  -> "the volcano"
+     feature_init_deep_surface_portalst      -> "the underworld portal"
+     feature_init_magma_core_from_layerst    -> "the subterranean water"
+     feature_init_underworld_from_layerst    -> "the underworld"
+     feature_init_deep_special_tubest        -> material_name + " deposit"
+
+   "the subterranean water" is the actual magma_core slot literal in both
+   images. It must not be replaced from an inferred class-name meaning.
+   This dispatch is not a named river/site/language-name supplier. No arbitrary
+   named-waterbody branch exists here. The base slot, if selected, emits exactly
+   "There is nothing to catch in ."; no placeholder or double space is inserted.
+
+2. No local feature; global feature index != -1
+   reference assembly 0x1343e45..0x1344114
+   classic assembly   0x133edd5..0x133f084
+   "There is nothing to catch in the " + direction + " " + layer + "."
+   direction is computed by dividing x/y map extent into thirds. Strict low
+   test is coordinate < extent/3; strict high is coordinate > 2*extent/3.
+   The middle band includes the two boundary coordinates. The nine outcomes:
+     northwestern, southwestern, northeastern, southeastern,
+     western, northern, eastern, southern, central.
+   layer.type 0 -> "cavern"; 1 -> "magma sea"; 2 -> "eerie cavern".
+   The default branch appends no layer name, preserving the preceding space.
+   Thus the nine "... the northern ."-style forms are retained as native
+   default outputs; this does not assert they occur in ordinary world data.
+
+3. No local or global feature
+   reference assembly 0x134415c..0x134446f
+   classic assembly   0x133f0cc..0x133f3df
+   Same prefix and nine direction branches, then the surface biome selector:
+     biome 0x1b, 0x1c, 0x1d -> "ocean"
+     biome 0x24..0x29       -> "lake"
+     all other values      -> "swamps"
+   A period follows. There is no empty surface terrain branch.
+
+Material field used only by the deep-special-tube slot:
+  reference getName 0xa4a940 -> material supplier 0x14d1920..0x14d1d79
+  classic   getName 0xa48170 -> material supplier 0x14cc890..0x14ccce9
+  Inputs: feature+0x40 int16 material type; feature+0x44 int32 material index;
+          category flags = 0; adjective = false; state = 0 (solid).
+  The optional generic-category literals plant/yarn/wood/wooden/cloth/silk/bone/
+  leather/shell/soap/ivory/tooth/horn/pearl are in the shared material supplier,
+  but their category-mask branches are not reachable with this call's flags=0.
+  Reachable composition, in order:
+    a. For historical-figure material types 0xdb..0x1a2, a matching figure with
+       its has-name flag can supply a language name; append that name and "'s ".
+       Even if the name resolution is empty, the suffix "'s " is appended.
+    b. Resolve the material using (type,index).
+       Failure appends "unknown material" (after any owner prefix).
+       Success optionally appends NAME_PREFIX (+0x520) plus one space, then
+       STATE_NAME[solid] (+0xb8) using its actual string length.
+    c. getName appends " deposit" unconditionally.
+  There is no nonempty STATE_NAME guard. The empty raw-data paths are therefore:
+    no owner/prefix/name -> feature " deposit";
+    prefix only         -> feature "<prefix>  deposit";
+    owner only          -> feature "<owner>'s  deposit";
+    empty owner only    -> feature "'s  deposit".
+  Both prefix and owner may coexist; field-supplied whitespace is not normalized
+  by the native producer. The completely empty material yields exactly
+  "There is nothing to catch in  deposit." (two spaces after "in").
+  These are producer-permitted field values, not claims that shipped RAW files
+  contain empty solid names or that every feature type naturally has fish.
+
+The finite-productions.tsv source inventory contains the 54 ordinary directional
+forms, nine empty-layer default forms, eight unique feature labels, empty feature,
+unknown-material deposit and empty-material deposit. Dynamic material forms are
+recorded separately in field-productions.tsv; material RAW names and personal
+names are open fields and must retain their established material/name handling.
+
+Literal inventory note: movdqa "!" at producer 0x1343e8f/0x13441e6 is the numeric
+std::string size/capacity vector (length 0x21), not an exclamation-mark suffix.
+Suffixes such as " to catch in " are overlapping load operands of the same
+prefix, not separate announcements. The whole C construction and explicit
+lengths determine the produced text.

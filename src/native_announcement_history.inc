@@ -170,6 +170,9 @@ static bool native_announcement_log_read_version(uintptr_t parent,
 }
 static std::shared_ptr<const NativeAnnouncementLogDocument> native_announcement_log_preheated_document(
     uintptr_t parent, uintptr_t world, const NativeAnnouncementLogParentVersion &version);
+static void native_announcement_log_retain_worker_document(
+    const NativeAnnouncementLogParentVersion &version,
+    const std::shared_ptr<const NativeAnnouncementLogDocument> &document);
 struct NativeAnnouncementLogRetainedDocument {
     std::shared_ptr<const NativeAnnouncementLogDocument> document;
     NativeAnnouncementLogParentVersion version;
@@ -177,12 +180,16 @@ struct NativeAnnouncementLogRetainedDocument {
     size_t bytes = 0;
 };
 struct NativeAnnouncementLogDocumentCache {
+    struct Entry {
+        std::shared_ptr<const NativeAnnouncementLogRetainedDocument> record;
+        std::list<uintptr_t>::iterator use;
+    };
     uintptr_t owner = 0, world = 0;
     uint64_t generation = 0;
     NativeBorrowedVector<uintptr_t> vector;
     uint64_t next_sequence = 0;
-    std::unordered_map<uintptr_t, std::shared_ptr<const NativeAnnouncementLogRetainedDocument>> documents;
-    std::deque<uintptr_t> order;
+    std::unordered_map<uintptr_t, Entry> documents;
+    std::list<uintptr_t> order;
     // One currently viewed document may exceed the ordinary byte budget.
     // Retain it separately so scrolling within it does not recreate the
     // complete source and document on every native frame.
@@ -239,7 +246,10 @@ static void native_announcement_log_freeze_key(NativeAnnouncementLogDocument &do
         scalar(fingerprint);
     };
     const auto &report = document.report;
-    scalar(native_announcement_log_semantic_generation_value()); scalar(document.world);
+    document.semantic_generation = native_announcement_log_semantic_generation_value();
+    scalar(document.semantic_generation); scalar(document.world);
+    scalar(RULESETS.resource_revision());
+    scalar(g_overlay.native_identity_translation_catalog_generation());
     scalar(report.type); scalar(report.id); scalar(report.continued);
     if (report.id < 0) scalar(document.parent);
     for (const auto identity : report.identity) scalar(identity);
@@ -274,13 +284,18 @@ static void native_announcement_log_freeze_key(NativeAnnouncementLogDocument &do
             text(identity);
         }
     }
+    // Native completion resolves through the live, typed report owner. Its
+    // result survives a detached worker-input publication only while all of
+    // these native fields and catalog guards remain exactly the same.
+    document.native_record_key = key;
     const bool inputs = bool(document.worker_inputs);
     scalar(inputs);
     if (inputs) text(document.worker_inputs->context);
 }
 static size_t native_announcement_log_document_bytes(const NativeAnnouncementLogDocument &document) {
     return sizeof(NativeAnnouncementLogRetainedDocument) + sizeof(document) +
-        document.report.source.capacity() + document.record_key.capacity() +
+        document.report.source.capacity() + document.native_record_key.capacity() +
+        document.record_key.capacity() +
         (document.owned_fields ? document.owned_fields->bytes : 0) +
         (document.history_event ? native_announcement_log_history_event_bytes(*document.history_event) : 0) +
         (document.speech ? document.speech->bytes : 0) +
@@ -290,7 +305,8 @@ static size_t native_announcement_log_document_bytes(const NativeAnnouncementLog
 }
 
 static std::shared_ptr<NativeAnnouncementLogDocument> native_announcement_log_freeze_document(
-        uintptr_t parent, uintptr_t world, const NativeAnnouncementLogParentVersion &version) {
+        uintptr_t parent, uintptr_t world, const NativeAnnouncementLogParentVersion &version,
+        bool freeze_inputs = true) {
     auto document = std::make_shared<NativeAnnouncementLogDocument>();
     document->parent = parent; document->world = world;
     document->native_fields = version.native_fields;
@@ -312,8 +328,27 @@ static std::shared_ptr<NativeAnnouncementLogDocument> native_announcement_log_fr
     document->speech = native_announcement_log_speech_record(report, world);
     if (!document->speech || !document->speech->tokens_complete)
         document->speech_header = native_announcement_log_speech_header(*document);
-    document->worker_inputs = native_announcement_log_freeze_worker_inputs(*document);
+    // Capture values on their native owner. Detached workers parse only this
+    // immutable snapshot and never borrow a live game object.
+    if (freeze_inputs)
+        document->worker_inputs = native_announcement_log_freeze_worker_inputs(*document);
     native_announcement_log_freeze_key(*document);
+    return document;
+}
+
+static std::shared_ptr<const NativeAnnouncementLogDocument>
+native_adventure_popup_report(uintptr_t parent) {
+    // PE 8020c0 / ELF 11b2e40 draw the same typed report as the log.
+    // Keep its immutable fields even on the ordinary grid path, which does
+    // not pass through the fortress notification layer's document binder.
+    uintptr_t world = 0;
+    NativeAnnouncementLogParentVersion version;
+    if (!native_announcement_current_world(world) ||
+            !native_announcement_log_read_version(parent, version, true)) return {};
+    if (auto document = native_announcement_log_preheated_document(parent, world, version))
+        return document;
+    auto document = native_announcement_log_freeze_document(parent, world, version, false);
+    if (document) native_announcement_log_retain_worker_document(version, document);
     return document;
 }
 
@@ -415,9 +450,9 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
         if (cache.large_document && cache.large_document->document->parent == parent)
             cache.large_document.reset();
         if (const auto found = cache.documents.find(parent); found != cache.documents.end()) {
-            cache.bytes -= found->second->bytes;
+            cache.bytes -= found->second.record->bytes;
+            cache.order.erase(found->second.use);
             cache.documents.erase(found);
-            std::erase(cache.order, parent);
         }
     };
     std::unordered_map<uintptr_t, std::shared_ptr<const NativeAnnouncementLogRetainedDocument>> current;
@@ -432,7 +467,12 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
             NativeAnnouncementLogParentVersion version;
             if (!version_of(parent, version)) return {};
             if (const auto found = cache.documents.find(parent); found != cache.documents.end()) {
-                if (found->second->version == version) retained = found->second;
+                if (found->second.record->version == version) {
+                    retained = found->second.record;
+                    // Rapid back-and-forth scrolling keeps the working set
+                    // hot; insertion order must not evict recently used rows.
+                    cache.order.splice(cache.order.end(), cache.order, found->second.use);
+                }
                 else forget(parent);
             }
             if (!retained && cache.large_document &&
@@ -509,7 +549,11 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                 }
                 const auto heated = native_announcement_log_preheated_document(parent, world, version);
                 auto document = heated ? std::make_shared<NativeAnnouncementLogDocument>(*heated)
-                    : native_announcement_log_freeze_document(parent, world, version);
+                    : native_announcement_log_freeze_document(parent, world, version, false);
+                // Visible capture owns only this report and its row bounds.
+                // A missing input snapshot enters the dependency queue; the
+                // bounded native input pump fills it after this draw instead
+                // of freezing every cold report synchronously during a drag.
                 if (!document) return {};
                 auto incoming = std::make_shared<NativeAnnouncementLogRetainedDocument>();
                 incoming->version = version;
@@ -523,6 +567,7 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                 cache.next_sequence = cache.next_sequence == UINT64_MAX ? 1 : cache.next_sequence + 1;
                 document->sequence = cache.next_sequence;
                 incoming->document = std::move(document);
+                native_announcement_log_retain_worker_document(version, incoming->document);
                 const auto &owned = *incoming->document;
                 const size_t bytes = native_announcement_log_document_bytes(owned);
                 incoming->bytes = bytes;
@@ -534,7 +579,8 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                     try {
                         cache.order.push_back(parent);
                         try {
-                            if (cache.documents.emplace(parent, retained).second) cache.bytes += bytes;
+                            if (cache.documents.emplace(parent, NativeAnnouncementLogDocumentCache::Entry{
+                                    retained, std::prev(cache.order.end())}).second) cache.bytes += bytes;
                             else cache.order.pop_back();
                         } catch (...) { cache.order.pop_back(); throw; }
                     } catch (const std::bad_alloc &) { /* The current owned document remains drawable. */ }
@@ -559,20 +605,23 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                 document->owned_fields = fields; document->history_event = std::move(history);
                 document->history_event_publication = publication;
                 document->speech = std::move(speech);
-                document->worker_inputs = native_announcement_log_freeze_worker_inputs(*document);
+                // The new typed publication gets its own inputs through the
+                // dependency pump, just like a newly visible cold report.
+                document->worker_inputs.reset();
                 cache.next_sequence = cache.next_sequence == UINT64_MAX ? 1 : cache.next_sequence + 1;
                 document->sequence = cache.next_sequence;
                 native_announcement_log_freeze_key(*document);
                 auto updated = std::make_shared<NativeAnnouncementLogRetainedDocument>(*retained);
                 updated->document = std::move(document);
+                native_announcement_log_retain_worker_document(version, updated->document);
                 updated->bytes = native_announcement_log_document_bytes(*updated->document);
                 if (updated->bytes > 8 * 1024 * 1024) {
                     forget(parent);
                     cache.large_document = updated;
                 } else if (const auto found = cache.documents.find(parent);
-                        found != cache.documents.end() && found->second == retained) {
-                    cache.bytes -= found->second->bytes;
-                    found->second = updated; cache.bytes += updated->bytes;
+                        found != cache.documents.end() && found->second.record == retained) {
+                    cache.bytes -= found->second.record->bytes;
+                    found->second.record = updated; cache.bytes += updated->bytes;
                     while (cache.bytes > 8 * 1024 * 1024 && !cache.order.empty()) forget(cache.order.front());
                 } else if (cache.large_document == retained) cache.large_document = updated;
                 retained = std::move(updated);

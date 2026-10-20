@@ -1,0 +1,7 @@
+branch	source	field_contract
+material	There is nothing to catch in {material} deposit.	material supplier 0x14d1920/0x14cc890; type,index; flags=0; adjective=false; state=solid
+material-owner	There is nothing to catch in {owner}'s {material} deposit.	historical figure material 219..418; owner may be empty; material name/prefix preserve actual lengths
+material-prefix-empty-solid	There is nothing to catch in {prefix}  deposit.	prefix nonempty; solid name empty; two spaces before deposit
+material-owner-empty-solid	There is nothing to catch in {owner}'s  deposit.	owner may be empty; material lookup valid with empty prefix/solid name
+material-owner-prefix-empty-solid	There is nothing to catch in {owner}'s {prefix}  deposit.	owner may be empty; prefix nonempty; solid name empty
+material-owner-unknown	There is nothing to catch in {owner}'s unknown material deposit.	owner may be empty; failed material lookup after owner prefix

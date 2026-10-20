@@ -351,7 +351,9 @@ std::optional<std::string> Overlay::translate_help_paragraph_uncached(
                             translated = std::string{};
                             break;
                         }
-                        translated = ui_message && i == 0 &&
+                        translated = adventure_divine_guidance_template(rule)
+                            ? translate_adventure_divine_capture(rule, i, captures[i])
+                            : ui_message && i == 0 &&
                             fortress_squad_reference_template(rule.source)
                             ? translate_fortress_squad_name(captures[i])
                             : translate_legends_name(captures[i], false);
@@ -384,7 +386,30 @@ std::optional<std::string> Overlay::translate_help_paragraph_uncached(
                         if (ui_message) translated = translate_announcement_date(captures[i]);
                         break;
                     case 'i':
-                        if (ui_message) translated = translate_announcement_items(captures[i]);
+                        if (ui_message) {
+                            // The matched capture owns its exact native span.
+                            // Retain a closed item parse across different
+                            // reports without borrowing another equal name's
+                            // identity or changing this catalogue's grammar.
+                            const size_t first = source_origins[ranges[i].first];
+                            const size_t last = source_origins[ranges[i].second - 1] + 1;
+                            const auto native = raw_source.substr(first, last - first);
+                            const auto parse_item = [&] {
+                                return translate_announcement_items(captures[i]);
+                            };
+                            std::string configuration = config_.language;
+                            configuration.push_back(config_.enabled ? '\1' : '\0');
+                            configuration.push_back(config_.native_language_original ? '\1' : '\0');
+                            configuration.push_back(config_.compositional_rules ? '\1' : '\0');
+                            auto closed = native_announcement_log_closed_item_field(this,
+                                raw_source, first, native, "ui-announcement-item", configuration,
+                                native_identity_translation_catalog_generation(),
+                                [&](const NativeUnitIdentity &identity) {
+                                    return translate_native_unit_identity(identity);
+                                }, parse_item);
+                            translated = closed.state == NativeAnnouncementLogItemFieldState::CompatibilityRequired
+                                ? parse_item() : std::move(closed.target);
+                        }
                         break;
                     case 't':
                         if (ui_message) translated = translate_legends_anatomy(captures[i]);

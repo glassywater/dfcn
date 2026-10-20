@@ -1428,7 +1428,15 @@ std::optional<std::string> Overlay::translate_legends_event(
         }
         if (result) break;
     }
-    if (!result) result = translate_announcement_combat(value, "historical-event-title");
+    if (!result) {
+        // Agreement titles can reduce to a bare entity/name. That resolver
+        // preserves authored nicknames and unresolved surrounding groups,
+        // so an ordinary event containing a nickname can produce a partial
+        // name result here. It must not hide the complete event rules below.
+        auto title = translate_announcement_combat(value, "historical-event-title");
+        if (translation_complete_with_native_nicknames(title, value))
+            result = std::move(title);
+    }
     for (int index : candidates) {
         if (result) break;
         const Rule &rule = rules_[static_cast<size_t>(index)];

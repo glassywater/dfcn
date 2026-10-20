@@ -1,0 +1,86 @@
+Land status announcement source reconstruction, Linux 53.16
+
+Image: data/runtime/native-elf-images.json reference dwarfort
+Identity: ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c
+Actual Ghidra C: elf-land-elevation-producer.c, elf-site-native-name.c,
+elf-site-english-name.c, elf-native-word.c. Complete unwind bodies, call operands, conditional
+edges and text operands are retained alongside them. The text below names
+the fields recovered from those bodies; it is not replacement decompiler output.
+
+Producer 12c3370..12c58cf processes queued entity changes. Only outer kind 0,
+subtype 3 or 4, submits the pictured land-status prose. Other outer kinds and
+subtypes update appointments/history/entity state without this announcement.
+
+Subtype 3: LAND_GAINS_STATUS (254)
+  12c4380..12c43bf initializes "an official land of the realm" from inline
+  and vector stores. It is not a contiguous C string in the image.
+  Resolve the entity, queued position IDs, historical figures and live units.
+  On the qualifying unit branch (b232b0), a nonempty position.land_name
+  (position+258, length +260) replaces the fallback at 12c5142.
+  Missing entity/position/figure/unit, failed qualification, or empty LAND_NAME
+  leaves the current wording intact. Repeated qualifying positions replace it
+  in native iteration order; they do not append an additional sentence.
+  Look up plotinfo.site_id (297e2a4) in world_data.sites (world_data+198/+1a0).
+  If the site is absent, emit nothing.
+  Announcement flags at 26bbd08: mode 0 requires mask 70, other modes mask 8.
+  Disabled flags emit nothing; they do not select another text.
+  12c46dc calls NativeName(site, output), 12c46ec appends the fixed clause
+  and selected land string, then appends a period.
+  12c47fa submits type fe, foreground 5 (magenta), duration 2000.
+
+Subtype 4: LAND_ELEVATED_STATUS (255)
+  12c3a0b..12c3a8f initializes
+  "an even more official land of the realm" from inline/vector stores.
+  Resolve the site's entity link and existing position assignment; follow its
+  replacement position ID (+2d4). Find the matching assignment and substitute
+  nonempty replacement position.land_name at 12c53cc. Failed lookups or empty
+  LAND_NAME retain the default. Remaining branches update position ownership,
+  figures and unit state, without changing the announcement's sentence shape.
+  The same site lookup is required. Flags at 26bbd0c use the same mode masks.
+  12c48fa calls NativeName(site, output), 12c490a appends the same fixed clause.
+  12c4a18 submits type ff, foreground 5, duration 2000.
+
+Complete visible production, both types:
+  NativeName(site) + " and the surrounding lands have been made " + LAND + "."
+
+The currently installed vanilla RAW provides exactly these nonempty LAND_NAMEs:
+  MOUNTAIN/BARON: a barony -> 男爵领
+  MOUNTAIN/COUNT: a county -> 伯爵领
+  MOUNTAIN/DUKE:  a duchy  -> 公爵领
+See raw-land-names.tsv for the source positions. LAND_NAME is loaded data,
+not an enum of these three strings: custom RAW can provide other titles.
+The two native defaults plus these three RAW values give five vanilla text
+forms. Each can also have an empty NativeName, giving ten whole-record rules.
+The two additional generic rules retain the typed site/LAND_NAME separation
+and use existing term translation for additional RAW definitions.
+
+NativeName, 12bfe90..12c0b46:
+  has_name at +72 is false -> return without appending a name.
+  first_name (+0/+8) may itself be empty.
+  nickname (+20/+28) is authored text between backtick/apostrophe; its mode
+  can replace the first name, follow it, or hide the nickname.
+  WORD groups (+40..+58) use 1cc6140 with the selected language at +6c;
+  absent groups are skipped, present groups are capitalized and space-joined.
+  None of these paths requires a nonempty final result. The producer still
+  appends the full fixed clause when the result is empty.
+  This call is NativeName, not EnglishName (12c58d0). The latter body is
+  retained to distinguish the site's native spelling from its English alias.
+
+Native WORD supplier, 1cc6140..1cc623a:
+  Negative/out-of-range WORD IDs or language IDs return without appending.
+  Otherwise append the selected language table's string for that WORD.
+  A zero-length entry adds no text. There is no additional fallback label
+  or announcement sentence in this function. The strings are RAW language
+  data, so arbitrary generated site spellings are resolved by identity,
+  not enumerated from this one screenshot.
+
+The runtime rules therefore use $native-site-name, which already resolves
+real site identities and their naming preferences, rather than the former
+generic entity/name capture. Empty-site productions handle the remaining
+clause explicitly. No screenshot-specific spelling or squad alias is added.
+The land names here denote territories; fortress/status.toml uses those same
+RAW strings as title-column labels, so that unrelated context is unchanged.
+
+Runtime entries are in announcement-status-grammar.tsv and directly in
+translations.tsv. Both alert flyouts and expanded/history reports enter the
+existing complete announcement grammar. No generated binary is needed.

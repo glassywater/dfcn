@@ -1,4 +1,6 @@
-// A closed, complete item field owns its parse separately from report IDs.
+// A closed, complete item field owns its parse separately from report IDs
+// and worker parsers. Completed proofs are shared; cold parsing keeps each
+// worker's private translation state and never holds the cache lock.
 // Live attempts retain the existing complete announcement fallback. A closed
 // parse distinguishes a real miss from an interrupted/cyclic current attempt.
 enum class NativeAnnouncementLogItemFieldState { CompatibilityRequired, Complete, Incomplete };
@@ -12,7 +14,7 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
         const void *owner, std::string_view parent_source, size_t field_begin,
         std::string_view source, std::string_view kind,
         std::string_view configuration, uint64_t catalog,
-        RenderIdentity &&render_identity, Parse &&parse) try {
+        RenderIdentity &&render_identity, Parse &&parse, bool retain_misses = true) try {
     const auto *document = g_native_announcement_log_translation_document;
     if (!document || !document->world || source.empty() ||
             !g_native_announcement_log_translation_report ||
@@ -31,12 +33,20 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     const auto text = [&](std::string &key, std::string_view value) {
         scalar(key, value.size()); key.append(value);
     };
-    scalar(generation, reinterpret_cast<uintptr_t>(owner));
     scalar(generation, document->world); scalar(generation, native_announcement_log_semantic_generation_value());
     scalar(generation, resources); scalar(generation, catalog); scalar(generation, generated);
     text(generation, configuration);
     std::string key;
     text(key, kind); text(key, source);
+    // Frozen reports may retain different instrument vocabularies in the
+    // same world/catalog. Keep both proofs instead of clearing every field
+    // whenever a worker switches between those immutable snapshots.
+    const bool frozen_inputs = bool(document->worker_inputs);
+    scalar(key, frozen_inputs);
+    if (frozen_inputs) {
+        scalar(key, bool(document->worker_inputs->instrument_names));
+        scalar(key, document->worker_inputs->instrument_names_fingerprint);
+    }
     const auto *owned = document->owned_fields.get();
     if (owned && owned->world == document->world && owned->type == document->report.type &&
             owned->report_id == document->report.id) {
@@ -89,13 +99,13 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     }
     for (const auto &[source, target] : bindings.owned) { text(key, source); text(key, target); }
     struct Entry {
-        std::string target;
+        std::optional<std::string> target;
         std::vector<std::string> unbound;
         std::list<std::string>::iterator use;
         size_t bytes = 0;
     };
     struct Cache {
-        const void *owner = nullptr;
+        std::mutex mutex;
         std::string generation;
         std::unordered_map<std::string, Entry> entries;
         std::list<std::string> order;
@@ -116,11 +126,14 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
             if (g_native_unit_identity_sources.contains(query)) return false;
         return true;
     };
-    static const unsigned char item_field_cache_tag = 0;
-    auto &cache = domain_cache<Cache>(&item_field_cache_tag);
-    if (cache.owner != owner || cache.generation != generation) {
+    // The copied worker catalogs have the same semantic generation. Keeping
+    // this completed proof in a domain cache forces every worker to repeat
+    // the expensive cold item grammar as reports move between queue lanes.
+    static Cache cache;
+    std::unique_lock cache_lock(cache.mutex);
+    if (cache.generation != generation) {
         cache.entries.clear(); cache.order.clear(); cache.bytes = 0;
-        cache.owner = owner; cache.generation = generation;
+        cache.generation = generation;
     }
     if (const auto found = cache.entries.find(key); found != cache.entries.end()) {
         if (!unbound_still_absent(found->second.unbound)) return {};
@@ -131,8 +144,10 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     // external source queries were never witnessed by this field. Its final
     // complete result, rather than that temporary context, is retained above.
     const auto nonce = ++cache.next_context;
+    cache_lock.unlock();
     std::string context_key = generation;
-    context_key.append(key); scalar(context_key, nonce);
+    context_key.append(key); scalar(context_key, reinterpret_cast<uintptr_t>(owner));
+    scalar(context_key, nonce);
     bindings.context = native_identity_source_fingerprint(context_key, std::nullopt);
     if (!bindings.context) bindings.context = 1;
     const auto cycle = active_translation_work->cycle_revision;
@@ -163,7 +178,7 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     if (translation_work_exhausted()) return {NativeAnnouncementLogItemFieldState::Incomplete, {}};
     if (target && target->empty()) target.reset();
     const bool acyclic = active_translation_work->cycle_revision == cycle;
-    if (!target) {
+    if (!target && (!retain_misses || !acyclic)) {
         // A cycle does not prove a final miss. Return this current attempt
         // without repeating the whole cold chain; the caller's existing
         // cycle revision guard forbids memoizing it as a closed negative.
@@ -174,10 +189,16 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     // circular alternative. Only its persistent publication is withheld.
     if (!acyclic) return {NativeAnnouncementLogItemFieldState::Complete, std::move(target)};
     try {
+    cache_lock.lock();
+    // An older job may finish after a new catalog/world has published, or a
+    // second worker may already have completed this same field. Neither
+    // case may replace that cache's ownership or duplicate its LRU entry.
+    if (cache.generation != generation || cache.entries.contains(key))
+        return {NativeAnnouncementLogItemFieldState::Complete, std::move(target)};
     Entry entry;
-    entry.target = *target;
+    entry.target = target;
     entry.unbound.assign(bindings.unbound_queries.begin(), bindings.unbound_queries.end());
-    entry.bytes = sizeof(Entry) + 2 * key.capacity() + entry.target.capacity() +
+    entry.bytes = sizeof(Entry) + 2 * key.capacity() + (entry.target ? entry.target->capacity() : 0) +
         entry.unbound.capacity() * sizeof(std::string) + sizeof(std::string) + 5 * sizeof(void *);
     for (const auto &query : entry.unbound) entry.bytes += query.capacity();
     constexpr size_t maximum_entries = 8192, maximum_bytes = 32 * 1024 * 1024;

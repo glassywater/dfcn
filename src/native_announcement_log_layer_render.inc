@@ -9,6 +9,7 @@ struct NativeAnnouncementLogPresentCache {
     void (*draw)(SDL_Renderer *) = nullptr;
     int width = 0, height = 0;
     std::string style;
+    std::string source_context;
     bool valid = false;
     bool translations_complete = false;
     uint64_t preparation_revision = 0;
@@ -62,6 +63,15 @@ static void native_announcement_log_present_layer(SDL_Renderer *renderer,
         if (state.bind_composite(width, height)) draw_log(renderer);
         return;
     }
+    // A paused modal can keep presenting without another native producer
+    // frame. Continue its bounded history/neighbor capture here, before the
+    // retained-frame fast path, so unopened scroll positions do not stop
+    // warming as soon as the current viewport is complete. This function
+    // owns the native translation scope; the service only queues frozen
+    // documents and never waits for a worker.
+    try { native_announcement_log_preheat(
+        native_announcement_log_translation_worker_count(), false); }
+    catch (...) {}
     // A background request can arrive after the native producer stopped
     // submitting frames. Resolve its exact owned leaves on this native thread
     // and publish updated documents before reusing a retained GPU frame.
@@ -71,7 +81,7 @@ static void native_announcement_log_present_layer(SDL_Renderer *renderer,
     }
     const uint64_t submission = g_native_announcement_log_submission;
     const std::string style = g_overlay.native_announcement_log_style_key();
-    const uint64_t preparation_revision = native_announcement_log_translation_revision();
+    const uint64_t preparation_revision = native_announcement_log_translation_viewport_revision();
     const auto *gps = layer.foreground.graphics();
     const std::array<int, 6> geometry{{gps->dimx, gps->dimy,
         gps->screen_pixel_x, gps->screen_pixel_y, gps->tile_pixel_x, gps->tile_pixel_y}};
@@ -133,6 +143,9 @@ static void native_announcement_log_present_layer(SDL_Renderer *renderer,
         published.draw = draw_log;
         published.width = width; published.height = height;
         published.style = style;
+        if (g_native_announcement_log_source_context_valid)
+            published.source_context = g_native_announcement_log_source_context;
+        else published.source_context.clear();
         published.translations_complete = translations_complete;
         published.preparation_revision = preparation_revision;
         published.valid = true;
@@ -167,12 +180,20 @@ static void native_announcement_log_present_layer(SDL_Renderer *renderer,
     // Native controls and artwork must not wait for a cold record. Preparation
     // returns ready Chinese plus address-proven masks for pending records.
     // An incomplete publication is retained only until the service changes.
+    const bool retain_cross_submission = context && published.valid &&
+        published.style == style &&
+        published.source_context == g_native_announcement_log_source_context;
     g_overlay.native_announcement_log_viewport_complete();
     published.valid = false;
     target.frame_cache.invalidate();
     bool captured = false;
-    if (context) {
+    if (retain_cross_submission) {
         try {
+            // During a drag, each different source allocation invalidates
+            // this whole-frame proof on the very next submission. Establish
+            // it only after the allocation is stable for two submissions;
+            // repeated Presents still use the immutable-submission fast path.
+            // Pixel equality continues to require every original cache field.
             target.frame_cache.capture(layer, renderer, width, height, draw_log, *context, true);
             captured = true;
         } catch (...) { /* Allocation failure leaves this private draw uncached. */ }

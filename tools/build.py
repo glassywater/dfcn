@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Build and publish DFCN with the current host's native tools."""
+"""Build DFCN natively, or explicitly cross-compile Windows DLLs on Linux."""
 
 from __future__ import annotations
 
 import argparse
 import ctypes
+from datetime import datetime
 import hashlib
 import os
 from pathlib import Path
@@ -168,6 +169,8 @@ def deploy_runtime_data(directory: Path) -> None:
                  "dfhack-overlay-plugin-controls.tsv", "dfhack-overlay-script-controls.tsv",
                  "procedural-terms.tsv", "procedural-word-senses.tsv",
                  "site-name-decisions.tsv", "site-name-imagery.tsv",
+                 "river-name-imagery.tsv", "river-name-constructions.tsv",
+                 "river-name-generics.tsv", "river-name-decisions.tsv",
                  "civilization-name-terms.tsv",
                  "site-government-parent-suffixes.tsv", "site-government-name-terms.tsv",
                  "site-government-independent-suffixes.tsv",
@@ -618,17 +621,18 @@ def publish(candidate: Path, destination: Path, *, keep_candidate: bool = False)
         atomic_replace(candidate, destination)
 
 
-def stamp_core_version(candidate: Path) -> None:
-    """Embed a short fingerprint without hashing its own version bytes."""
+def stamp_core_version(candidate: Path, build_hour: str, *, target_platform: str | None = None) -> None:
+    """Embed the compilation hour and fingerprint, excluding their own bytes."""
     image = bytearray(candidate.read_bytes())
-    marker = b"DFCN_BINARY_VERSION[00000]\0"
+    placeholder = b"0000.00.00.00.00000"
+    marker = b"DFCN_BINARY_VERSION[" + placeholder + b"]\0"
     if image.count(marker) != 1:
         raise RuntimeError(f"Core binary must contain one version slot: {candidate}")
     version_offset = image.index(marker) + len(b"DFCN_BINARY_VERSION[")
-    image[version_offset:version_offset + 5] = b"00000"
+    image[version_offset:version_offset + len(placeholder)] = placeholder
 
     checksum_offset = None
-    if sys.platform == "win32":
+    if (target_platform or sys.platform) == "win32":
         if len(image) < 64 or image[:2] != b"MZ":
             raise RuntimeError(f"Core binary has no valid PE header: {candidate}")
         pe_offset = int.from_bytes(image[60:64], "little")
@@ -655,7 +659,8 @@ def stamp_core_version(candidate: Path) -> None:
         version[fingerprint[0] % 5] = ord("A") + fingerprint[1] % 26
     elif all(ord("A") <= char <= ord("Z") for char in version):
         version[fingerprint[0] % 5] = ord("0") + fingerprint[1] % 10
-    image[version_offset:version_offset + 5] = version
+    stamped_version = build_hour.encode("ascii") + b"." + version
+    image[version_offset:version_offset + len(placeholder)] = stamped_version
 
     if checksum_offset is not None:
         # Sum little-endian 16-bit words, counting an odd final byte as low.
@@ -667,8 +672,127 @@ def stamp_core_version(candidate: Path) -> None:
         image[checksum_offset:checksum_offset + 4] = checksum.to_bytes(4, "little")
 
     candidate.write_bytes(image)
-    print(f"Core version: {version.decode('ascii')}; normalized binary SHA-256: "
+    print(f"Core version: {stamped_version.decode('ascii')}; normalized binary SHA-256: "
           f"{fingerprint.hex()}", flush=True)
+
+
+def build_windows_cross(args: argparse.Namespace) -> int:
+    """Compile existing generated sources, optionally deploying DLLs to ROOT."""
+    if sys.platform != "linux":
+        raise RuntimeError("The Windows cross-build requires a Linux host.")
+    if args.clean or args.rebuild_loader or args.toolchain_root:
+        raise RuntimeError("--windows-cross cannot be combined with native build/deploy options.")
+    compiler_path = args.cross_compiler or (
+        Path.home() / ".local/share/dfcn-toolchains/mingw-w64-16.2.0/usr/bin/x86_64-w64-mingw32-g++")
+    if not compiler_path.is_absolute():
+        raise RuntimeError("--cross-compiler must be an absolute path to a Linux MinGW-w64 g++.")
+    if not compiler_path.is_file() or not os.access(compiler_path, os.X_OK):
+        raise RuntimeError(f"Required Linux cross compiler is missing: {compiler_path}. "
+                           "Install it at this path or explicitly configure --cross-compiler.")
+    with compiler_path.open("rb") as source:
+        if source.read(4) != b"\x7fELF":
+            raise RuntimeError(f"The cross compiler must be a Linux ELF executable: {compiler_path}")
+
+    sdk = (args.sdl_root or
+           Path.home() / ".local/opt/SDL2-2.30.11/x86_64-w64-mingw32").expanduser().resolve()
+    import_library = sdk / "lib/libSDL2.dll.a"
+    for path in (sdk / "include/SDL2/SDL.h", import_library):
+        if not path.is_file():
+            raise RuntimeError(f"Required Windows x64 SDL2 SDK file is missing: {path}")
+
+    output = (args.output_dir or ROOT / "build/windows-x64").expanduser().resolve()
+    if output in (ROOT, GAME.resolve()) or output in ROOT.parents:
+        raise RuntimeError(f"Choose a separate cross-build output directory: {output}")
+
+    env = dict(os.environ)
+    for name in ("CXX", "CXXFLAGS", "CPPFLAGS", "LDFLAGS", "LDLIBS", "PKG_CONFIG",
+                 "PKG_CONFIG_PATH", "PKG_CONFIG_LIBDIR", "PKG_CONFIG_SYSROOT_DIR",
+                 "GCC_EXEC_PREFIX", "COMPILER_PATH", "LIBRARY_PATH", "CPATH",
+                 "C_INCLUDE_PATH", "CPLUS_INCLUDE_PATH", "PYTHONHOME", "PYTHONPATH"):
+        env.pop(name, None)
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env["PATH"] = str(compiler_path.parent) + os.pathsep + "/usr/bin:/bin"
+    compiler = [str(compiler_path)]
+    target = run([*compiler, "-dumpmachine"], env, capture=True)
+    if target != "x86_64-w64-mingw32":
+        raise RuntimeError(f"Expected Windows x64 MinGW-w64 target, got {target!r}.")
+    # The POSIX compiler supplies C++ threads through winpthreads. Embed that
+    # runtime, including symbols referenced later by the static C++ library.
+    pthread_library = Path(run([*compiler, "-print-file-name=libwinpthread.a"], env, capture=True))
+    if not pthread_library.is_absolute() or not pthread_library.is_file():
+        raise RuntimeError(f"The configured cross compiler cannot locate static libwinpthread.a: "
+                           f"{pthread_library}. Use a complete POSIX-thread MinGW-w64 toolchain.")
+
+    abi = NATIVE_ABIS["win32"]
+    compile_flags = ["-std=c++20", "-O2", "-Wall", "-Wextra", "-Wpedantic",
+                     *abi["compile"], "-pthread",
+                     "-Icompat", "-Isrc", "-Ithird_party/tomlplusplus/include",
+                     "-Ithird_party/opencc/src", "-DOpencc_BUILT_AS_STATIC",
+                     f"-I{sdk / 'include'}"]
+    # Use the exact dynamic SDL2 import archive, never the Linux library or
+    # libSDL2.a. The Windows game provides SDL2.dll at runtime.
+    link_flags = ["-shared", str(import_library),
+                  "-Wl,--whole-archive", str(pthread_library), "-Wl,--no-whole-archive",
+                  *abi["link"]]
+    print(f"Cross compiler: {compiler_path}\nTarget: {target}\nWindows SDL2 SDK: {sdk}\n"
+          f"Output directory: {output}\nUsing existing generated sources; no data generation.",
+          flush=True)
+    if args.deploy_project:
+        print(f"Windows DLL deployment: {ROOT}", flush=True)
+    output.mkdir(parents=True, exist_ok=True)
+    # Each invocation has a private source snapshot and staging directory.
+    # Serialize publication of the pair for builds targeting the same output.
+    import fcntl
+    with (output / ".build.lock").open("a+b") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            print("Waiting for the current Windows cross-build to finish...", flush=True)
+            fcntl.flock(lock, fcntl.LOCK_EX)
+        with tempfile.TemporaryDirectory(prefix=".cross-build-", dir=output) as temporary:
+            staging = Path(temporary)
+            snapshot = staging / "sources"
+            for relative in ("src", "compat", "third_party/tomlplusplus/include",
+                             "third_party/opencc/src"):
+                shutil.copytree(ROOT / relative, snapshot / relative)
+            pinyin = Path("third_party/pinyin-data/pinyin_data.inc")
+            (snapshot / pinyin).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / pinyin, snapshot / pinyin)
+            core_candidate = staging / abi["core"]
+            loader_candidate = staging / abi["loader"]
+            build_hour = datetime.now().strftime("%Y.%m.%d.%H")
+            print("Cross-compiling the Windows core...", flush=True)
+            run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
+                 "src/rulesets_manager.cpp", "src/chinese_conversion.cpp",
+                 *[str(path.relative_to(snapshot))
+                   for path in sorted((snapshot / "third_party/opencc/src").glob("*.cpp"))],
+                 *link_flags, *abi["core_link"]], env, cwd=snapshot)
+            stamp_core_version(core_candidate, build_hour, target_platform="win32")
+            print("Cross-compiling the Windows loader...", flush=True)
+            run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp",
+                 *link_flags], env, cwd=snapshot)
+            # Leave the previous output untouched if either compiler fails.
+            for candidate in (core_candidate, loader_candidate):
+                os.replace(candidate, output / candidate.name)
+        if args.deploy_project:
+            # Native publish() only accepts inputs in native destination
+            # directories. Keep the cross-build outputs, then stage the copy
+            # in ROOT so the normal atomic replacement can own publication.
+            for name in (abi["core"], abi["loader"]):
+                destination = ROOT / name
+                staged = destination.with_name(name + ".publish")
+                print(f"Publishing {destination}", flush=True)
+                try:
+                    shutil.copyfile(output / name, checked_path(staged))
+                    atomic_replace(staged, destination)
+                finally:
+                    remove_file(staged)
+    print(f"Windows cross-build completed:\n{output / abi['core']}\n{output / abi['loader']}",
+          flush=True)
+    if args.deploy_project:
+        print(f"Windows DLLs deployed:\n{ROOT / abi['core']}\n{ROOT / abi['loader']}",
+              flush=True)
+    return 0
 
 
 def main() -> int:
@@ -677,7 +801,19 @@ def main() -> int:
     parser.add_argument("--toolchain-root", type=Path, help="Native toolchain directory containing bin/.")
     parser.add_argument("--sdl-root", type=Path, help="Installed SDL2 SDK root when using an SDK dependency configuration.")
     parser.add_argument("--clean", action="store_true", help="Remove the current host's build outputs and staging files.")
+    parser.add_argument("--windows-cross", action="store_true",
+                        help="Cross-compile Windows x64 DLLs on Linux without data generation.")
+    parser.add_argument("--cross-compiler", type=Path,
+                        help="Absolute Linux MinGW-w64 g++ path (default: the installed user-local MinGW-w64 16.2.0 toolchain).")
+    parser.add_argument("--output-dir", type=Path,
+                        help="Cross-build output directory (default: build/windows-x64 under the source root).")
+    parser.add_argument("--deploy-project", action="store_true",
+                        help="Also deploy cross-compiled Windows DLLs to the source root.")
     args = parser.parse_args()
+    if args.windows_cross:
+        return build_windows_cross(args)
+    if args.cross_compiler or args.output_dir or args.deploy_project:
+        parser.error("--cross-compiler, --output-dir and --deploy-project require --windows-cross.")
     abi = NATIVE_ABIS.get(sys.platform)
     if abi is None:
         raise RuntimeError(f"No native build configuration for this host: {sys.platform}")
@@ -813,11 +949,12 @@ def main() -> int:
                     shutil.copytree(GAME / "g_src", snapshot / "g_src")
                 if rebuild_core:
                     print("Building the reloadable core...", flush=True)
+                    build_hour = datetime.now().strftime("%Y.%m.%d.%H")
                     run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
                          "src/rulesets_manager.cpp", "src/chinese_conversion.cpp",
                          *[str(path.relative_to(ROOT)) for path in sorted((ROOT / "third_party/opencc/src").glob("*.cpp"))],
                          *link_flags, *abi["core_link"]], env, cwd=snapshot)
-                    stamp_core_version(core_candidate)
+                    stamp_core_version(core_candidate, build_hour)
                 if rebuild_loader:
                     print("Building the resident loader...", flush=True)
                     run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp",

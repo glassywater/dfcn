@@ -1,0 +1,3 @@
+edition	image	role	start_rva	code_end_rva	assembly_file	source_path
+reference	PE:6a70a6d9:02711000	announcement-alert-routing	0xeaa20	0xeab13	reference-announcement-alert-routing.asm	signed int16 announcement type -> native alert group
+classic	PE:6a70b91c:0270a000	announcement-alert-routing	0xea9b0	0xeaaa3	classic-announcement-alert-routing.asm	signed int16 announcement type -> native alert group

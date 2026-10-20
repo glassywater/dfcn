@@ -189,3 +189,21 @@ Civilization is the whole entity language_name or an empty field; site is
 the native-name/quoted-English-name pair. The separate initial reclaim
 interface constructor at 0x13797e0 has no direct submit site in the native
 submit graph and contributes no additional document branch to this popup.
+
+The 2026-10-19 disk-image re-read additionally retains actual Ghidra C output
+for both complete render/input pairs in renderer/. Its three report sources,
+repeat branches, two instruction sentences and unit/category summaries are
+unchanged. This is source evidence, not an observation of the running game.
+
+The NO_FISH producer at reference 0x13435b0 / classic 0x133e520 has been
+expanded through every feature_init::getName virtual implementation and the
+complete local/global selector in ../announcement-fishing/. The old {e}
+place-name abstraction was incorrect: the virtual slot supplies ordinary
+feature descriptions, not named waterbodies. The actual Ghidra output retains
+74 finite productions and separate open material/owner/prefix compositions,
+including empty fields and the unknown global-layer-type fallthrough.
+adventure-announcements.tsv now owns the fixed descriptions/defaults and
+adventure-announcement-grammar.tsv binds deposits to the existing material
+supplier, with a separate owner-only form. The reloadable translations.tsv
+has the same direct edits in the source workspace and both game installations;
+no translation generator or build/deployment was run for this data change.

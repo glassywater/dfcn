@@ -1,11 +1,11 @@
-// The native build entry point stamps these five bytes from the linked core's
+// The native build entry point stamps the local compilation hour and five-byte
 // binary fingerprint before deployment. Volatile reads keep -O2 from folding
 // the placeholder into the displayed credit; the version lives in the core.
-static const volatile char kTranslationBinaryVersion[] = "DFCN_BINARY_VERSION[00000]";
+static const volatile char kTranslationBinaryVersion[] = "DFCN_BINARY_VERSION[0000.00.00.00.00000]";
 
 static std::string translation_binary_version() {
     constexpr size_t offset = sizeof("DFCN_BINARY_VERSION[") - 1;
-    std::string version(5, '\0');
+    std::string version(sizeof(kTranslationBinaryVersion) - offset - 2, '\0');
     for (size_t i = 0; i < version.size(); ++i)
         version[i] = kTranslationBinaryVersion[offset + i];
     return version;

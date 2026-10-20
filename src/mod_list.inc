@@ -25,6 +25,32 @@ struct NativeModListLayout {
     }
 };
 
+static std::optional<NativeModListLayout> native_mod_selector_layout(
+        const graphicst &gps, const NativeModDetails &details,
+        int frame_left, int frame_right) {
+    const int bottom = gps.dimy - 11;
+    if (bottom <= 2 || frame_left < 0 || frame_right >= gps.dimx) return std::nullopt;
+    const int details_divider = (frame_left + 2 * frame_right) / 3;
+    const int names_divider = (frame_left + details_divider) / 2;
+    if (names_divider <= frame_left + 1 ||
+            details_divider <= names_divider + 1 ||
+            frame_right <= details_divider + 4) return std::nullopt;
+    NativeModListLayout layout;
+    layout.left = frame_left + 1;
+    layout.right = details_divider;
+    layout.first_y = 2;
+    layout.bottom = bottom;
+    layout.details_left = details_divider + 2;
+    layout.details_right = frame_right - 2;
+    layout.frame_right = frame_right;
+    layout.name_columns = {
+        {frame_left + 1, 2, names_divider - frame_left - 1, bottom - 2},
+        {names_divider + 1, 2, details_divider - names_divider - 1, bottom - 2},
+    };
+    layout.details = details;
+    return layout;
+}
+
 template<class ReadChar>
 static std::optional<NativeModListLayout> native_mod_list_layout(
         const graphicst &gps, const ReadChar &read_char) {
@@ -43,12 +69,19 @@ static std::optional<NativeModListLayout> native_mod_list_layout(
     };
     const NativePanelBorders borders(gps);
     const NativeModDetails details = native_mod_details(
-        NativeUiReadScope::background_view(&gps));
+        NativeUiReadScope::background_view(&gps), &gps);
     if (details.kind == NativeModScreenKind::NewRegion ||
             details.kind == NativeModScreenKind::NewArena) {
         // The current screen's doing_mods flag owns both lists even before
         // any package is hovered. Native 53.16 places the selector above its
         // ten-row footer, with two dividers derived from the actual L/R frame.
+        // The isolated worldgen producer already captured those exact bounds
+        // from the native viewport getter. Its package fields do not depend
+        // on recognizing a border skin in another output layer.
+        if (native_worldgen_output_active(&gps))
+            return native_mod_selector_layout(gps, details,
+                g_native_worldgen_panel.x,
+                g_native_worldgen_panel.x + g_native_worldgen_panel.w - 1);
         const int bottom = gps.dimy - 11;
         if (bottom <= 2) return std::nullopt;
         for (int frame_left = 0; frame_left < gps.dimx; ++frame_left) {
@@ -59,25 +92,8 @@ static std::optional<NativeModListLayout> native_mod_list_layout(
                 if (!borders.at(frame_right, 0, 2) ||
                         !borders.at(frame_right, 1, 5) ||
                         !borders.at(frame_right, bottom - 1, 5)) continue;
-                const int details_divider = (frame_left + 2 * frame_right) / 3;
-                const int names_divider = (frame_left + details_divider) / 2;
-                if (names_divider <= frame_left + 1 ||
-                        details_divider <= names_divider + 1 ||
-                        frame_right <= details_divider + 4) continue;
-                NativeModListLayout layout;
-                layout.left = frame_left + 1;
-                layout.right = details_divider;
-                layout.first_y = 2;
-                layout.bottom = bottom;
-                layout.details_left = details_divider + 2;
-                layout.details_right = frame_right - 2;
-                layout.frame_right = frame_right;
-                layout.name_columns = {
-                    {frame_left + 1, 2, names_divider - frame_left - 1, bottom - 2},
-                    {names_divider + 1, 2, details_divider - names_divider - 1, bottom - 2},
-                };
-                layout.details = details;
-                return layout;
+                if (auto layout = native_mod_selector_layout(gps, details,
+                        frame_left, frame_right)) return layout;
             }
         }
         return std::nullopt;
@@ -164,11 +180,12 @@ static std::optional<NativeModListLayout> native_mod_list_layout(
 // complete catalog entries or authored Chinese; other unknown descriptions
 // retain their original glyphs, wrapping and spacing.
 void Overlay::append_mod_list_details(const NativeModListLayout &layout,
-        std::vector<std::string> &rows, std::vector<Match> &matches) const {
+        std::vector<std::string> &rows, std::vector<Match> &matches,
+        bool captured_only) const {
     const int left = layout.details_left, right = layout.details_right;
     if (right <= left || layout.bottom <= 2) return;
     auto context = rows;
-    for (int y = 2; y < layout.bottom; ++y)
+    if (!captured_only) for (int y = 2; y < layout.bottom; ++y)
         for (int x = left; x < layout.frame_right; ++x) {
             bool top = false;
             const auto *cell = cell_at(x, y, &top);
@@ -186,9 +203,12 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
         std::string native;
         native.reserve(static_cast<size_t>(last - first));
         for (int x = first; x < last; ++x) {
-            bool top = false;
-            const auto *cell = cell_at(x, y, &top);
-            native.push_back(cell && cell[0] ? static_cast<char>(cell[0]) : ' ');
+            if (captured_only) native.push_back(context[y][x]);
+            else {
+                bool top = false;
+                const auto *cell = cell_at(x, y, &top);
+                native.push_back(cell && cell[0] ? static_cast<char>(cell[0]) : ' ');
+            }
         }
         for (const auto &field : split_text_fields(native)) {
             if (!contains_cjk_utf8(field.text)) continue;
@@ -317,6 +337,39 @@ void Overlay::append_mod_list_details(const NativeModListLayout &layout,
             cell[2] == gps_->uccolor[palette][1] &&
             cell[3] == gps_->uccolor[palette][2];
     };
+    // The available-mod writer puts this fixed green status one row below
+    // each name, at 4 + 3*n. Preserve names even when one is called Installed.
+    if ((layout.details.kind == NativeModScreenKind::NewRegion ||
+            layout.details.kind == NativeModScreenKind::NewArena) &&
+            !layout.name_columns.empty()) {
+        constexpr std::string_view source = "Installed";
+        const auto &column = layout.name_columns.front();
+        const int x = column.x + 1, end = column.x + column.w;
+        const auto target = exact_literal_translation(source);
+        if (target && x + static_cast<int>(source.size()) < end)
+            for (int y = 4; y < layout.bottom; y += 3) {
+                bool status = true;
+                for (size_t offset = 0; status && offset < source.size(); ++offset) {
+                    const int at = x + static_cast<int>(offset);
+                    bool top = false;
+                    const auto *cell = cell_at(at, y, &top);
+                    status = cell && cell[0] == static_cast<unsigned char>(source[offset]) &&
+                        palette_at(at, y, 10) && (!captured_only || context[y][at] == source[offset]);
+                }
+                if (!status) continue;
+                Match label{x, y, static_cast<int>(source.size()), kUiMessageRule,
+                    *target, std::string(source)};
+                label.layout_x = x;
+                label.layout_length = static_cast<int>(source.size());
+                label.layout_clip_right = x + label.layout_length;
+                label.layout_left = true;
+                label.layout_prepared = true;
+                label.layout_line_height_pixels = tile_h;
+                label.layout_native_clip = SDL_Rect{origin_x + x * tile_w,
+                    origin_y + y * tile_h, label.layout_length * tile_w, tile_h};
+                matches.push_back(std::move(label));
+            }
+    }
     struct Dependency { std::string_view prefix, label; };
     for (int y = 5; y < std::min(layout.bottom, gps_->dimy - 12); ++y) {
         auto row = field(y);

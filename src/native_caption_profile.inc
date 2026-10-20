@@ -89,6 +89,8 @@ static bool resolve_native_caption_profile(NativeCaptionProfile &profile) {
         {native_pe_address(profile.base, 0x426057), NativeInfoTitleKind::NobleSymbolValue, 7},
         {native_pe_address(profile.base, 0x4260af), NativeInfoTitleKind::NobleSymbolAmount},
         {native_pe_address(profile.base, 0x18057a), NativeInfoTitleKind::Building},
+        // Coffin details draw the associated tomb's stored name directly.
+        {native_pe_address(profile.base, 0x195db5), NativeInfoTitleKind::Building},
         {native_pe_address(profile.base, 0x158a79), NativeInfoTitleKind::Engraving},
         {native_pe_address(profile.base, 0x158af4), NativeInfoTitleKind::Terrain},
         {native_pe_address(profile.base, 0x158f72), NativeInfoTitleKind::PlannedEngraving},

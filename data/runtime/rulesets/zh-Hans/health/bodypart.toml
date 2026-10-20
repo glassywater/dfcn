@@ -178,6 +178,55 @@ name = "bodypart_main"
 "{side}{organ}" = "{side}{organ}"
 
 [[rulesets]]
+name = "stp_bodypart"
+[rulesets.rules]
+# BP/INDIVIDUAL_NAME STP appends s to the complete singular name. The native
+# anatomy extract confirms this for crest, fifth eye, head sclerite and the
+# other installed BODY names. Complete supplied plurals keep first priority;
+# this scoped production never strips s from an unknown word or a tissue.
+"{bodypart_main}s" = "{bodypart_main}"
+
+[[rulesets]]
+name = "numbered_bodypart"
+[rulesets.rules]
+# Native 0x1413345d0 / classic 0x14132f540 uses this only when a positive
+# individual index has no full INDIVIDUAL_NAME entry. Existing complete body
+# names are resolved first by translate_anatomy; both singular/plural names
+# and each member of a child, owner chain retain that precedence.
+"{native_ordinal} {bodypart_main}" = "{native_ordinal}{bodypart_main}"
+"{native_ordinal} {stp_bodypart}" = "{native_ordinal}{stp_bodypart}"
+
+[[rulesets]]
+name = "native_ordinal"
+[rulesets.rules]
+# 0x14052eb70 / classic 0x14052c590, param3=false. The BODY caller excludes
+# zero and negative indices; indices >=20 use numeric suffixes, never twenty.
+# translate_anatomy validates the numeric token's range and suffix agreement.
+"first" = "第一"
+"second" = "第二"
+"third" = "第三"
+"fourth" = "第四"
+"fifth" = "第五"
+"sixth" = "第六"
+"seventh" = "第七"
+"eighth" = "第八"
+"ninth" = "第九"
+"tenth" = "第十"
+"eleventh" = "第十一"
+"twelfth" = "第十二"
+"thirteenth" = "第十三"
+"fourteenth" = "第十四"
+"fifteenth" = "第十五"
+"sixteenth" = "第十六"
+"seventeenth" = "第十七"
+"eighteenth" = "第十八"
+"nineteenth" = "第十九"
+"{#digits}st" = "第{#digits}"
+"{#digits}nd" = "第{#digits}"
+"{#digits}rd" = "第{#digits}"
+"{#digits}th" = "第{#digits}"
+
+[[rulesets]]
 name = "organ"
 [rulesets.rules]
 "lung" = "肺"

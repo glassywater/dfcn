@@ -24,18 +24,64 @@ std::vector<Match> Overlay::find_native_announcement_log_matches() const {
         return SDL_Rect{origin_x + left * tile_w, origin_y + top * tile_h,
             (right - left) * tile_w, (bottom - top) * tile_h};
     };
+    struct LayoutView {
+        std::string_view source, target;
+        const std::vector<int> &colors;
+        int width, foreground, repeats;
+    };
+    struct LayoutKey {
+        std::string source, target;
+        std::vector<int> colors;
+        int width, foreground, repeats;
+        LayoutView view() const { return {source, target, colors, width, foreground, repeats}; }
+    };
+    struct LayoutHash {
+        using is_transparent = void;
+        size_t operator()(const LayoutView &key) const {
+            size_t hash = std::hash<std::string_view>{}(key.source);
+            const auto combine = [&](size_t value) {
+                hash ^= value + size_t{0x9e3779b9} + (hash << 6) + (hash >> 2);
+            };
+            combine(std::hash<std::string_view>{}(key.target));
+            combine(key.colors.size());
+            for (const int color : key.colors) combine(std::hash<int>{}(color));
+            combine(std::hash<int>{}(key.width));
+            combine(std::hash<int>{}(key.foreground));
+            combine(std::hash<int>{}(key.repeats));
+            return hash;
+        }
+        size_t operator()(const LayoutKey &key) const { return (*this)(key.view()); }
+    };
+    struct LayoutEqual {
+        using is_transparent = void;
+        bool operator()(const LayoutView &left, const LayoutView &right) const {
+            return left.width == right.width && left.foreground == right.foreground &&
+                left.repeats == right.repeats && left.source == right.source &&
+                left.target == right.target && left.colors == right.colors;
+        }
+        bool operator()(const LayoutKey &left, const LayoutKey &right) const {
+            return (*this)(left.view(), right.view());
+        }
+        bool operator()(const LayoutKey &left, const LayoutView &right) const {
+            return (*this)(left.view(), right);
+        }
+        bool operator()(const LayoutView &left, const LayoutKey &right) const {
+            return (*this)(left, right.view());
+        }
+    };
     struct PreparedRecord {
         std::string source;
         std::optional<std::string> target;
         std::vector<int> colors;
         ParagraphLayoutCacheEntry layout;
+        std::list<const LayoutKey *>::iterator use{};
         size_t bytes = 0;
     };
     struct RecordCache {
         const Overlay *owner = nullptr;
         std::string style;
-        std::unordered_map<std::string, PreparedRecord> entries;
-        std::deque<std::string> order;
+        std::unordered_map<LayoutKey, PreparedRecord, LayoutHash, LayoutEqual> entries;
+        std::list<const LayoutKey *> order;
         size_t bytes = 0;
     };
     // These are complete, position-independent documents. A changed native
@@ -165,12 +211,18 @@ std::vector<Match> Overlay::find_native_announcement_log_matches() const {
             mask_pending();
             continue;
         }
+        // An unsupported completed record has no measured layout. Do not
+        // retain a negative layout entry that could outlive a subsequently
+        // published complete translation of this same native record.
+        if (!translation->target || translation->target->empty()) continue;
         PreparedRecord local;
         const PreparedRecord *prepared = nullptr;
         const ParagraphLayoutCacheEntry *prepared_layout = nullptr;
         bool work_limited = false;
         bool layout_failed = false;
+        bool local_measured = false;
         const auto prepare = [&](PreparedRecord &entry, bool measure) {
+            local_measured = false;
             entry.source = native_announcement_display_source(report.source);
             // A missing translation only queues an owned service job above.
             // Rendering never invokes either the complete parser or a field
@@ -197,30 +249,41 @@ std::vector<Match> Overlay::find_native_announcement_log_matches() const {
                     entry.layout.lines, entry.layout.foregrounds, entry.layout.font_pixels)) {
                 entry.target.reset();
                 layout_failed = true;
-            }
+            } else local_measured = true;
         };
         try {
             if (cache_enabled) {
-                // Producer-frozen report identity includes its owned native
-                // field publications. Wrapping and scroll positions do not
-                // require a new composition or semantic-registry query.
-                std::string key = native_announcement_log_document_key(document);
-                const auto value = [&](const auto &input) {
-                    key.append(reinterpret_cast<const char *>(&input), sizeof(input));
-                };
+                // Layout owns rendered text, colors, width and the original
+                // display-language context. Worker-input publications can
+                // change without changing any of them; keying this cache by
+                // the entire semantic document repeatedly measured/copied an
+                // identical Chinese paragraph after dependency completion.
+                // Borrow all three input buffers during lookup. Equal raw
+                // source also proves equal normalized display-language
+                // context; normalize only a cache miss in prepare(). A hit
+                // must not allocate or serialize a complete paragraph key.
                 const int width = right - left;
-                if (report.id < 0) value(document.parent);
-                value(foreground); value(width); value(report.repeats);
-                if (const auto found = record_cache.entries.find(key);
+                const LayoutView lookup{report.source, *translation->target,
+                    translation->colors, width, foreground, report.repeats};
+                if (const auto found = record_cache.entries.find(lookup);
                         found != record_cache.entries.end()) {
+                    // Dragging back through recently seen records keeps
+                    // their complete measured layout. Insertion-order
+                    // eviction discarded these hot records after one pass.
+                    record_cache.order.splice(record_cache.order.end(),
+                        record_cache.order, found->second.use);
                     prepared = &found->second;
                 } else {
                     prepare(local, true);
                     if (!work_limited && !layout_failed) {
                         constexpr size_t maximum_entries = 512;
                         constexpr size_t maximum_bytes = 8 * 1024 * 1024;
-                        size_t bytes = sizeof(PreparedRecord) + 2 * key.size() +
-                            sizeof(std::string) + 5 * sizeof(void *) + local.source.capacity() +
+                        LayoutKey key{report.source, *translation->target, translation->colors,
+                            width, foreground, report.repeats};
+                        size_t bytes = sizeof(PreparedRecord) + sizeof(LayoutKey) +
+                            key.source.capacity() + key.target.capacity() +
+                            key.colors.capacity() * sizeof(int) +
+                            8 * sizeof(void *) + local.source.capacity() +
                             (local.target ? local.target->capacity() : 0) +
                             local.colors.capacity() * sizeof(int);
                         size_t layout_bytes = local.layout.lines.capacity() * sizeof(std::string) +
@@ -235,25 +298,29 @@ std::vector<Match> Overlay::find_native_announcement_log_matches() const {
                             while (!record_cache.order.empty() &&
                                     (record_cache.entries.size() >= maximum_entries ||
                                      record_cache.bytes > maximum_bytes - bytes)) {
-                                const auto oldest = record_cache.entries.find(record_cache.order.front());
+                                const auto oldest = record_cache.entries.find(*record_cache.order.front());
                                 if (oldest != record_cache.entries.end()) {
                                     record_cache.bytes -= oldest->second.bytes;
                                     record_cache.entries.erase(oldest);
                                 }
                                 record_cache.order.pop_front();
                             }
-                            record_cache.order.push_back(key);
-                            try {
-                                const auto [stored, inserted] = record_cache.entries.try_emplace(key);
-                                if (inserted) {
-                                    stored->second = std::move(local);
+                            const auto [stored, inserted] = record_cache.entries.try_emplace(
+                                std::move(key), std::move(local));
+                            if (inserted) {
+                                try {
+                                    // unordered_map rehash preserves key
+                                    // addresses; the LRU owns no second copy.
+                                    record_cache.order.push_back(&stored->first);
+                                    stored->second.use = std::prev(record_cache.order.end());
                                     record_cache.bytes += stored->second.bytes;
-                                } else record_cache.order.pop_back();
-                                prepared = &stored->second;
-                            } catch (...) {
-                                record_cache.order.pop_back();
-                                throw;
+                                } catch (...) {
+                                    local = std::move(stored->second);
+                                    record_cache.entries.erase(stored);
+                                    throw;
+                                }
                             }
+                            prepared = &stored->second;
                         }
                     }
                     if (!prepared) prepared = &local;
@@ -267,12 +334,20 @@ std::vector<Match> Overlay::find_native_announcement_log_matches() const {
         } catch (const std::bad_alloc &) {
             // Preserve the original uncached path when retained storage
             // cannot be allocated; it still owns only this record's draws.
-            local = {};
             work_limited = false;
-            layout_failed = false;
-            prepare(local, false);
-            prepared = &local;
-            prepared_layout = nullptr;
+            if (local_measured && local.target) {
+                // Retaining a cache entry is optional. Its allocation failure
+                // must not discard this frame's already completed layout and
+                // measure/copy the same paragraph through the fallback again.
+                prepared = &local;
+                prepared_layout = &local.layout;
+            } else {
+                local = {};
+                layout_failed = false;
+                prepare(local, false);
+                prepared = &local;
+                prepared_layout = nullptr;
+            }
         } catch (const dfcn::TranslationWorkLimit &) { work_limited = true; }
         if (work_limited || layout_failed) {
             viewport_ready = false;

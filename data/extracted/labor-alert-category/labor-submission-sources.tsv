@@ -1,0 +1,5 @@
+edition	image_identity	function_rva	submission_instruction_rva	reaching_type_values	enum_names_from_df_structures	parameters_argument	unresolved_value_expression	native_branch_evidence
+reference	PE:6a70a6d9:02711000	0x133bcf0	0x133c0c0	236	PROFESSION_CHANGES	stack:48		CFG reaching parameter field writes; values are branch alternatives, not fixed captions
+reference	PE:6a70a6d9:02711000	0x1374fc0	0x1375142	283	CITIZEN_BECOMES_NONSOLDIER	stack:32		CFG reaching parameter field writes; values are branch alternatives, not fixed captions
+classic	PE:6a70b91c:0270a000	0x1336c60	0x1337030	236	PROFESSION_CHANGES	stack:48		CFG reaching parameter field writes; values are branch alternatives, not fixed captions
+classic	PE:6a70b91c:0270a000	0x136ff30	0x13700b2	283	CITIZEN_BECOMES_NONSOLDIER	stack:32		CFG reaching parameter field writes; values are branch alternatives, not fixed captions

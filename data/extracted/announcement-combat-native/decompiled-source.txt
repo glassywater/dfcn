@@ -5,8 +5,8 @@ Source extraction: tools/extract_combat_announcement_sources.py and
 tools/DecompileCombatAnnouncements.java.
 The configured reference and classic images were read and disassembled locally;
 the manifest owners were then decompiled from those same original PE bytes by
-Ghidra 12.1.4 into real per-owner C. There are 41 logical native owners per image,
-82 .c files in total, each beside its corresponding .asm. This document describes
+Ghidra 12.1.4 into real per-owner C. There are 45 logical native owners per image,
+90 .c files in total, each beside its corresponding .asm. This document describes
 their production grammar; it is not a substitute for the original-PE C exports.
 Image identities: reference PE:6a70a6d9:02711000; classic PE:6a70b91c:0270a000.
 This is static source extraction, not observed game output. The extractor
@@ -18,12 +18,20 @@ The C keeps Ghidra's original diagnostics and inferred types; these are recovere
 source expressions, not original developer variable names or complete C++ types.
 Native selector destinations are supplied from native-switches.tsv, and complete
 unwind owner boundaries prevent tail transfers from swallowing unrelated owners.
-The 2026-10-18 shot/defense follow-up re-decompiles the complete melee/projectile,
-item-caption, unit-caption and body-part owners directly from both configured
-PEs, using the same DecompileCombatAnnouncements.java and their retained native
-owner/call/literal/selector operands. These are complete owner C exports, not
-just the string sites shown by the screenshots. The other existing owner C
-exports remain the source graph for shared damage, projectiles and item subtypes.
+The 2026-10-19 connected-body follow-up re-decompiles all 45 owners directly from
+each configured PE using DecompileCombatAnnouncements.java and their retained
+native owner/call/literal/selector operands. This includes the complete shared
+damage constructor, every retained damage caller and melee/projectile branch,
+the display consumers, full unit/item suppliers, and body/material suppliers.
+Four newly retained owners per edition supply body ordinal prefixes, connected
+body-name disambiguation, instantiated tissue definitions and tissue templates.
+These are complete owner C exports, not only the screenshot's string sites.
+The 2026-10-20 strike-report follow-up imported both configured original PEs
+again and re-decompiled all 45 owners per edition with the same Java extractor,
+without the optional existing-output skip. Both complete C exports finished.
+The native source trees and their original instruction/selector operands are
+unchanged. RAW extraction now additionally retains all ATTACK_* behavioral
+inputs, including non-bite CANLATCH sources described below.
 The std::basic_string overflow throw is nonreturning at reference 0x140065890 and
 classic 0x140065820; the selector bytes following that call are data, not extra
 English productions or reachable x86 instruction branches.
@@ -67,9 +75,9 @@ verbs. Complete sentence translation must therefore happen before the native
 wrapped fragments lose their full sentence and dynamic-field ownership context.
 
 The rendered panel accepts other producers using the same announcement transport.
-The 41-owner combat/source manifest is a scoped construction tree and includes
+The 45-owner combat/source manifest is a scoped construction tree and includes
 its display consumers and complete corpse/body/material suppliers; it is not
-a claim that this UI admits only 41 producers.
+a claim that this UI admits only 45 producers.
 The broader announcement-popup-native transport/catalog extraction and existing
 status/death/speech source extractions retain those additional producer families.
 
@@ -623,3 +631,168 @@ both base and third-person forms in raw-attack-verbs.tsv. Additional jab/jabs co
 from available Steam MOD 2925028826 (500502), item_extra_weapons.txt:152,164.
 Unknown future RAW verbs/parts are dynamically supplied strings; spelling alone
 does not provide translation or an identity-source classification.
+
+Attack behavior flags and the meaning of latching
+-----------------------------------------------
+The RAW extraction also retains every ATTACK_* field and every procedural
+ATTACK_* source expression, including CANLATCH, EDGE, WITH, attack skill,
+priority and contact/penetration parameters. These are native source inputs,
+not additional displayed English words. Retaining only ATTACK_VERB would lose
+the evidence selecting follow-up report branches.
+
+The native shared-damage kind22/kind23 branches append latch/latches on firmly
+with or without " to " + OWNED_OBJECT. They do not select a bite-specific verb.
+Both configured stock RAWs give CREATURE:SEA_MONSTER a pincer SNATCH attack:
+creature_standard.txt:5588 selects BY_CATEGORY:PINCER; :5590 supplies
+snatch/snatches; :5596 enables ATTACK_FLAG_CANLATCH. The procedural creature
+supplier generators/creatures/shared_info.lua:5473 supplies snatch/snatches
+and :5479 enables the same flag. Therefore the finite latch follow-up denotes
+holding on, including non-mouth attacks, and must not always be rendered as
+biting. Both original RAW sequences are retained in raw-attack-fields.tsv and
+raw-procedural-attack-sources.tsv beside their edition, filename and line.
+
+Connected body names and tissue fields, original native construction
+-------------------------------------------------------------------
+The additional original-PE C sources are paired as follows:
+  body connection expansion: 0x1406c6d30 / 0x1406c4750
+  native ordinal prefix:    0x14052eb70 / 0x14052c590
+  tissue definition:        0x1406f6b90 / 0x1406f45b0
+  tissue template:          0x1406f8e60 / 0x1406f6880
+
+The body connection constructor resolves a BODY template and processes every
+part in it. It collects matching existing connection parents from explicit
+connection identifiers, categories and connection-type flags. No match can
+leave the template disconnected; a part without any requested connection uses
+the -1 parent. For each matched parent, it copies the template's singular and
+plural name vectors to the new body part at +0x90 and +0xa8, and preserves its
+number at +0x84. At reference 0x1406c72e1..0x1406c7420 the constructor appends
+", " and the connection parent's first singular name to EVERY copied singular
+and plural name exactly when parent index != -1 and more than one parent was
+matched. The parent is an already constructed body part, so its name can itself
+contain another connection suffix. This is a complete BODY field with recursively
+connected parent names, not a damage-list separator or another attack record.
+Neither the actor nor a custom identity name supplies these body suffixes.
+
+The screenshot's "skull, fourth head" follows this construction: the stock
+body_default.txt has [BP:HD4:fourth head:STP] and [BP:SKULL:skull:STP], while the
+skull template connects to HEAD. The current body-name formatter copies the
+already expanded name verbatim. The full source grammar is therefore:
+  CONNECTED_BODY = complete RAW body name
+                 | complete RAW body name + ", " + CONNECTED_BODY.
+All raw singular, explicit plural and INDIVIDUAL_NAME variants take this same
+connection suffix path. Names such as "fourth head" that are already in RAW
+are complete direct names; they do not require the ordinal helper.
+
+Reference body formatter 0x1413345d0 / classic 0x14132f540 takes requested name
+index and grammatical count mode. If the index selects an existing individual
+name, it copies that complete singular/plural vector entry. If index > 0 but
+does not select an existing individual entry, it writes ordinal(index), one
+space, and the appropriate first singular/plural name. Empty name vectors use
+the same optional ordinal followed by "body part" or "body parts"; invalid
+part indices use the bare fallback. The body formatter calls the ordinal helper
+with its numeric-only argument false, and only for positive name indices.
+Its reachable finite prefix branches are First, Second, Third, Fourth, Fifth,
+Sixth, Seventh, Eighth, Ninth, Tenth, Eleventh, Twelfth, Thirteenth, Fourteenth,
+Fifteenth, Sixteenth, Seventeenth, Eighteenth and Nineteenth. At index >=20 it
+appends st/nd/rd/th to the integer text, with last-two-digit 11/12/13 exceptions.
+The complete ordinal owner also retains its general-purpose Zeroth, negative
+and numeric-only branches; those are not reached by this body's positive-index
+call. Native source does not turn the compound RAW name "fourth finger" into
+an arbitrary ordinal plus another body slot before choosing the direct name.
+
+The instantiated tissue definition owner assigns the first TISSUE_NAME field
+directly to tissue+0x30 and the second field to tissue+0x50. Its plural branches
+are NP -> repeat the singular, STP -> singular + "s", otherwise the supplied
+complete plural. The template owner stores the two source arguments in the
+corresponding template fields; its raw tokens can subsequently be instantiated.
+The shared damage constructor uses tissue+0x30 as one complete name. Neither
+TISSUE_NAME loader adds a body connection comma. A one-layer body may instead
+use the full BODY name (including its connection suffix), and multi-layer
+damage may form BODY + "'s " + TISSUE for a non-main body. Those distinct
+native source choices must stay intact when translating the damage target.
+
+The normal damage-loop selector at reference 0x1400e7605..0x1400e76c4 chooses
+bruising, denting, tearing, chipping, fracturing, shattering or tearing apart
+from damage amount and material response. A second layer at
+0x1400e78d4..0x1400e79a5 either emits its own verb or omits a matching repeated
+verb. Every target can be one of the complete BODY/TISSUE fields above. Thus
+"tearing the muscle and fracturing the skull, fourth head" contains two damage
+actions; the second action's entire target is "skull, fourth head". Its comma
+cannot be consumed as a third damage action or a sentence boundary. The same
+ownership applies to connected fields in destroyed-body outcomes, hole/jamming,
+break-away, artery/nerve/ligament/tendon and every shared-damage caller.
+
+raw-anatomy-fields.tsv retains original BODY/BP/INDIVIDUAL_NAME, connection,
+category, tissue-definition/material and layer-assignment tokens from both
+configured games' vanilla, installed_mods and available mods object sources.
+raw-anatomy-names.tsv retains every BP, INDIVIDUAL_NAME and TISSUE_NAME name
+argument with its source file and line; NP and STP are marked plural directives,
+not caption text. raw-procedural-anatomy-sources.tsv retains original Lua source
+expressions supplying anatomy and tissue tokens. These are input-source records,
+not a simulated roster of generated bodies or a claim that all available mods
+are active in the current world. Unknown future RAW names remain open fields.
+
+Native C reconstruction boundaries
+----------------------------------
+The actual Ghidra exports retain all source diagnostics. They include overlapping
+global-symbol warnings, manually supplied switch destinations, nonreturning
+string-overflow/CRT error paths, type-propagation uncertainty in the generic item
+supplier, and simplification of unreachable blocks in speech transformation.
+The shared-damage owner reports two single-destination switch simplifications;
+the original switch tables and case aliases remain in native-switches.tsv and
+the original instructions remain in its complete .asm. These diagnostics are
+not replaced with invented C branches. The original PE instructions, all
+control-flow operands and decoded dispatch targets remain the source when a
+C simplification or guessed type obscures a path. A returned C function is
+reconstructed source, not proof of a runtime display or an original C++ type.
+
+
+Complete native owner pairs in this extraction
+----------------------------------------------
+Each row lists reference/classic VAs. Full end boundaries and identities are
+in native-owners.tsv; each complete .c and .asm uses its edition and start RVA.
+  0x1400e3c20 / 0x1400e3bb0  announcement-submit
+  0x1400e56a0 / 0x1400e5630  shared-damage
+  0x1400e9f40 / 0x1400e9ed0  adventure-announcement-popup-render
+  0x14052eb70 / 0x14052c590  body-name-number-prefix
+  0x140643f70 / 0x140641990  embedded-item-removal
+  0x140646f00 / 0x140644920  shared-damage-producer+wrestling
+  0x14064a350 / 0x140647d70  melee-projectile-defense+shared-damage-producer
+  0x140654d20 / 0x140652740  charge
+  0x14067b6c0 / 0x1406790e0  speech-transform
+  0x140684a10 / 0x140682430  speech-wrapper
+  0x1406c6d30 / 0x1406c4750  body-name-connection-disambiguation
+  0x1406f6b90 / 0x1406f45b0  caste-tissue-name-definition
+  0x1406f8e60 / 0x1406f6880  template-tissue-name-definition
+  0x140716b70 / 0x140714590  body-size-caption
+  0x140717d30 / 0x140715750  creature-appearance
+  0x1408a40e0 / 0x1408a1960  adventure-announcement-row-builder
+  0x140a82c10 / 0x140a7fc90  generic-item-type-material-caption
+  0x140c65450 / 0x140c62490  complete-item-caption
+  0x140ca0d60 / 0x140c9dda0  corpse-caption-article
+  0x140ca10e0 / 0x140c9e120  corpse-short-caption
+  0x140ca1aa0 / 0x140c9eae0  corpse-full-caption
+  0x140ea8fb0 / 0x140ea3f20  projectile-motion-announcements
+  0x140eadea0 / 0x140ea8e10  collision
+  0x14132cc10 / 0x141327b80  profession-label-supplier
+  0x14132e0c0 / 0x141329030  creature-profession-description
+  0x14132e430 / 0x1413293a0  combat-unit-caption
+  0x14132f980 / 0x14132a8f0  unit-role-description
+  0x141330c30 / 0x14132bba0  speaker-caption
+  0x141331500 / 0x14132c470  alternate-unit-caption
+  0x1413345d0 / 0x14132f540  body-part-name
+  0x141361370 / 0x14135c2e0  grip-state-announcements
+  0x1413650e0 / 0x141360050  breath-defense
+  0x1413654c0 / 0x141360430  breath-fire
+  0x141365990 / 0x141360900  fireball
+  0x141366000 / 0x141360f70  breath-fire-alternate
+  0x1413664d0 / 0x141361440  webbing
+  0x141397100 / 0x141392070  item-removal-job
+  0x1413b1580 / 0x1413ac4f0  bodily-impact+shared-damage-producer
+  0x1413b20a0 / 0x1413ad010  shared-damage-producer
+  0x1413c72b0 / 0x1413c2220  cloud-emission
+  0x1413c80b0 / 0x1413c3020  glob-emission
+  0x1413c8f60 / 0x1413c3ed0  cloud-emission
+  0x1413c9ad0 / 0x1413c4a40  cloud-emission
+  0x1413ca1d0 / 0x1413c5140  cloud-emission
+  0x1414d1920 / 0x1414cc890  material-state-caption

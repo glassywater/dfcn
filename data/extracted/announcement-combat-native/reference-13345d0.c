@@ -29,7 +29,7 @@ void combat_source_body_part_name_13345d0
           }
           *(undefined1 *)puVar4 = 0;
           if (0 < param_4) {
-            FUN_14052eb70(param_4,param_2,0);
+            combat_source_body_name_number_prefix_52eb70(param_4,param_2,0);
             FUN_1400b9b80(param_2,0x20);
           }
           if ((param_5 != 0) &&
@@ -86,7 +86,7 @@ void combat_source_body_part_name_13345d0
       }
       *(undefined1 *)puVar4 = 0;
       if (0 < param_4) {
-        FUN_14052eb70(param_4,param_2,0);
+        combat_source_body_name_number_prefix_52eb70(param_4,param_2,0);
         FUN_1400b9b80(param_2,0x20);
       }
       FUN_14006fa10(param_2,"body part",9);

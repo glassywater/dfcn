@@ -51,7 +51,7 @@ world.civilization.trade	0x1433bbf+0x1433c04+0x1433c17	Offerings from {e}:
 world.civilization.trade-agreements	0x1602b88	Trade Agreement (Exports to {e})
 world.civilization.trade-agreements	0x1602ba8	Requests (Imports from {e})
 # Adventure announcements: Windows PE literal file offsets; equipment items
-# and anatomical parts are authored {s} captures, including item articles.
+# use {i} captures (including articles); complete anatomical parts use {t}.
 # Shared social/knowledge constructors, not only the adventure input handlers.
 # Actor/recipient helpers and the terminal period were followed to the common
 # announcement submitter; the knowledge source comes from 0x140ee0830.
@@ -66,8 +66,8 @@ adventure.announcement.knowledge	0x140091c6a+0x140091c83+0x140091c92+0x140091cbb
 adventure.announcement.reading	0x15e8948	It has no writing.
 adventure.announcement.reading	0x15e8930	The pages are blank.
 adventure.announcement.reading	0x15e8960	It has no pages.
-adventure.announcement.equipment	0x16ad7f0+0x16ad7e0	You strap {s} to your {s}.
-adventure.announcement.equipment	0x16ad810+0x16ad800	You draw {s} with your {s}.
+adventure.announcement.equipment	0x16ad7f0+0x16ad7e0	You strap {i} to your {t}.
+adventure.announcement.equipment	0x16ad810+0x16ad800	You draw {i} with your {t}.
 # Windows DF 53.16 pickup constructor 0x1408039b0..0x14080533d.
 # These are PE literal file offsets. "the" and the final period are fixed;
 # 0x140c65450 supplies complete item/container names, with quality marks.
@@ -77,25 +77,25 @@ adventure.announcement.equipment	0x16ad810+0x16ad800	You draw {s} with your {s}.
 # The two container branches really differ for NPCs: 0x1408049d0..0x140804aa9
 # uses "and put it in", 0x140804d11..0x140804f15 uses "and puts it in".
 # Each his/her/its branch remains a whole sentence, not a fragment mapping.
-adventure.announcement.pickup	0x16ae394+0x16ae270+0x16ae260+0x15edb60	You pick up the {s} and put it in your {s}.
-adventure.announcement.pickup	0x16ae394+0x16ae270+0x15ed7e0+0x15edb60	You pick up the {s} with your {s}.
-adventure.announcement.pickup	0x16ae394+0x15e876c+0x15ed7e0+0x15edb60	You pick the {s} with your {s}.
-adventure.announcement.pickup	0x16ae380+0x15e876c+0x15ed7e0+0x15edb60	You pull off the {s} with your {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae280+0x16cdf18	{n} picks up the {s} and puts it in his {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae280+0x16cdec0	{n} picks up the {s} and puts it in her {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae280+0x15ed728	{n} picks up the {s} and puts it in its {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae260+0x16cdf18	{n} picks up the {s} and put it in his {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae260+0x16cdec0	{n} picks up the {s} and put it in her {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae260+0x15ed728	{n} picks up the {s} and put it in its {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x15ed7e0+0x16cdf18	{n} picks up the {s} with his {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x15ed7e0+0x16cdec0	{n} picks up the {s} with her {s}.
-adventure.announcement.pickup	0x16ae38c+0x16ae270+0x15ed7e0+0x15ed728	{n} picks up the {s} with its {s}.
-adventure.announcement.pickup	0x16ae38c+0x15e876c+0x15ed7e0+0x16cdf18	{n} picks the {s} with his {s}.
-adventure.announcement.pickup	0x16ae38c+0x15e876c+0x15ed7e0+0x16cdec0	{n} picks the {s} with her {s}.
-adventure.announcement.pickup	0x16ae38c+0x15e876c+0x15ed7e0+0x15ed728	{n} picks the {s} with its {s}.
-adventure.announcement.pickup	0x16ae370+0x15e876c+0x15ed7e0+0x16cdf18	{n} pulls off the {s} with his {s}.
-adventure.announcement.pickup	0x16ae370+0x15e876c+0x15ed7e0+0x16cdec0	{n} pulls off the {s} with her {s}.
-adventure.announcement.pickup	0x16ae370+0x15e876c+0x15ed7e0+0x15ed728	{n} pulls off the {s} with its {s}.
+adventure.announcement.pickup	0x16ae394+0x16ae270+0x16ae260+0x15edb60	You pick up the {i} and put it in your {i}.
+adventure.announcement.pickup	0x16ae394+0x16ae270+0x15ed7e0+0x15edb60	You pick up the {i} with your {t}.
+adventure.announcement.pickup	0x16ae394+0x15e876c+0x15ed7e0+0x15edb60	You pick the {i} with your {t}.
+adventure.announcement.pickup	0x16ae380+0x15e876c+0x15ed7e0+0x15edb60	You pull off the {i} with your {t}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae280+0x16cdf18	{n} picks up the {i} and puts it in his {i}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae280+0x16cdec0	{n} picks up the {i} and puts it in her {i}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae280+0x15ed728	{n} picks up the {i} and puts it in its {i}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae260+0x16cdf18	{n} picks up the {i} and put it in his {i}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae260+0x16cdec0	{n} picks up the {i} and put it in her {i}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x16ae260+0x15ed728	{n} picks up the {i} and put it in its {i}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x15ed7e0+0x16cdf18	{n} picks up the {i} with his {t}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x15ed7e0+0x16cdec0	{n} picks up the {i} with her {t}.
+adventure.announcement.pickup	0x16ae38c+0x16ae270+0x15ed7e0+0x15ed728	{n} picks up the {i} with its {t}.
+adventure.announcement.pickup	0x16ae38c+0x15e876c+0x15ed7e0+0x16cdf18	{n} picks the {i} with his {t}.
+adventure.announcement.pickup	0x16ae38c+0x15e876c+0x15ed7e0+0x16cdec0	{n} picks the {i} with her {t}.
+adventure.announcement.pickup	0x16ae38c+0x15e876c+0x15ed7e0+0x15ed728	{n} picks the {i} with its {t}.
+adventure.announcement.pickup	0x16ae370+0x15e876c+0x15ed7e0+0x16cdf18	{n} pulls off the {i} with his {t}.
+adventure.announcement.pickup	0x16ae370+0x15e876c+0x15ed7e0+0x16cdec0	{n} pulls off the {i} with her {t}.
+adventure.announcement.pickup	0x16ae370+0x15e876c+0x15ed7e0+0x15ed728	{n} pulls off the {i} with its {t}.
 adventure.announcement.posture	0x1788940	You lie on the ground.
 adventure.announcement.posture	0x1788978	You stand up.
 adventure.announcement.posture	0x1788b08	{n} lies on the ground.

@@ -45,46 +45,48 @@ bool Overlay::find_fortress_map_matches(int only_y,
         return false;
     CellReadCacheScope cell_reads(*this);
     NativePanelReadScope panel_reads(gps_);
-    // A raw plane can contain none of the HUD while the other plane owns it.
-    // Establish its three-row widget from current composed cells; the field
-    // readers below continue to claim only this pass's exact source bytes.
+    const bool isolated_topbar = native_topbar_background_view(gps_);
+    // When the topbar has its own native page, the main grid has no header to
+    // prove. Retain the composed three-row proof for the uncaptured fallback.
+    // The field readers claim only this pass's exact source bytes in both cases.
     int header_y = -1, population_x = -1, stocks_x = -1;
-    for (int y = 0; y < std::min(3, gps_->dimy); ++y) {
-        std::string context(gps_->dimx, ' ');
-        for (int x = 0; x < gps_->dimx; ++x) {
-            const auto ch = visible_char_at(x, y);
-            if (ch) context[x] = static_cast<char>(ch);
-        }
-        for (const std::string_view label : {"Pop", "Population", "Stocks"})
-            for (size_t at = context.find(label); at != std::string::npos;
-                    at = context.find(label, at + label.size())) {
-                if (!has_word_boundaries(context, at, at + label.size())) continue;
-                if (label == "Stocks") stocks_x = static_cast<int>(at);
-                else { header_y = y; population_x = static_cast<int>(at); }
+    if (!isolated_topbar) {
+        for (int y = 0; y < std::min(3, gps_->dimy); ++y) {
+            std::string context(gps_->dimx, ' ');
+            for (int x = 0; x < gps_->dimx; ++x) {
+                const auto ch = visible_char_at(x, y);
+                if (ch) context[x] = static_cast<char>(ch);
             }
-    }
-    if (header_y < 0 || header_y + 2 >= gps_->dimy || stocks_x <= population_x)
-        return false;
-    std::array<bool, 3> counters{};
-    constexpr std::string_view counter_labels[]{"Food", "Drink", "Seeds"};
-    for (int y = header_y; y <= header_y + 2; ++y) {
-        std::string context(gps_->dimx, ' ');
-        for (int x = population_x; x < gps_->dimx; ++x) {
-            const auto ch = visible_char_at(x, y);
-            if (ch) context[x] = static_cast<char>(ch);
+            for (const std::string_view label : {"Pop", "Population", "Stocks"})
+                for (size_t at = context.find(label); at != std::string::npos;
+                        at = context.find(label, at + label.size())) {
+                    if (!has_word_boundaries(context, at, at + label.size())) continue;
+                    if (label == "Stocks") stocks_x = static_cast<int>(at);
+                    else { header_y = y; population_x = static_cast<int>(at); }
+                }
         }
-        for (size_t index = 0; index < counters.size(); ++index) {
-            const auto label = counter_labels[index];
-            const auto at = context.find(label);
-            counters[index] = counters[index] || (at != std::string::npos &&
-                has_word_boundaries(context, at, at + label.size()));
+        if (header_y < 0 || header_y + 2 >= gps_->dimy || stocks_x <= population_x)
+            return false;
+        std::array<bool, 3> counters{};
+        constexpr std::string_view counter_labels[]{"Food", "Drink", "Seeds"};
+        for (int y = header_y; y <= header_y + 2; ++y) {
+            std::string context(gps_->dimx, ' ');
+            for (int x = population_x; x < gps_->dimx; ++x) {
+                const auto ch = visible_char_at(x, y);
+                if (ch) context[x] = static_cast<char>(ch);
+            }
+            for (size_t index = 0; index < counters.size(); ++index) {
+                const auto label = counter_labels[index];
+                const auto at = context.find(label);
+                counters[index] = counters[index] || (at != std::string::npos &&
+                    has_word_boundaries(context, at, at + label.size()));
+            }
         }
+        if (std::find(counters.begin(), counters.end(), false) != counters.end()) return false;
     }
-    if (std::find(counters.begin(), counters.end(), false) != counters.end()) return false;
 
-    // Reject a different document from the small composed HUD proof before
-    // reading either complete source plane. Coverage below still owns the
-    // whole grid and falls back whenever an unrelated caption remains.
+    // The captured topbar owns its private page. Coverage here owns the
+    // remaining map interface and falls back when an unrelated caption remains.
     std::vector<std::string> rows(gps_->dimy, std::string(gps_->dimx, ' '));
     for (int y = 0; y < gps_->dimy; ++y) {
         for (int x = 0; x < gps_->dimx; ++x) {
@@ -105,8 +107,10 @@ bool Overlay::find_fortress_map_matches(int only_y,
     std::vector<Match> matches;
     // Keep complete identities and native rank grammar ahead of dictionary
     // words. Missing identity data falls back through the coverage check.
-    append_fortress_site_name(rows, matches, -1, screen_override != nullptr);
-    append_native_fortress_status_rows(rows, matches, -1, screen_override != nullptr);
+    if (!isolated_topbar) {
+        append_fortress_site_name(rows, matches, -1, screen_override != nullptr);
+        append_native_fortress_status_rows(rows, matches, -1, screen_override != nullptr);
+    }
     append_native_map_hover_phrases(rows, matches, -1, NativeMapHoverKind::Terrain);
 
 #ifdef _WIN32
@@ -126,7 +130,7 @@ bool Overlay::find_fortress_map_matches(int only_y,
     const auto zero_target = exact_literal_translation("None");
     const auto owned_literal = [&](const NativeDrawnTextRow &draw) {
         return (alert_return && draw.native_caller == alert_return && draw.source == "ALERT") ||
-            (draw.native_caller && draw.source == "None" && draw.x >= population_x &&
+            (!isolated_topbar && draw.native_caller && draw.source == "None" && draw.x >= population_x &&
                 std::find(zero_returns.begin(), zero_returns.end(), draw.native_caller) !=
                     zero_returns.end());
     };
@@ -182,7 +186,8 @@ bool Overlay::find_fortress_map_matches(int only_y,
 #endif
 
     std::vector<std::string> hud_rows(gps_->dimy, std::string(gps_->dimx, ' '));
-    for (int y = header_y; y <= header_y + 2; ++y) hud_rows[y] = rows[y];
+    if (!isolated_topbar)
+        for (int y = header_y; y <= header_y + 2; ++y) hud_rows[y] = rows[y];
     // Elevation is the map renderer's complete numeric field (native return
     // 0x3f5751). It is unrelated to the promotion dialog's "Elevate whom?".
     const auto signed_decimal = [](std::string_view source) {
@@ -227,7 +232,7 @@ bool Overlay::find_fortress_map_matches(int only_y,
     };
     for (auto &match : hud_matches) {
         const auto source = trim_view(match.source);
-        const bool header = match.y >= header_y && match.y <= header_y + 2;
+        const bool header = !isolated_topbar && match.y >= header_y && match.y <= header_y + 2;
         const bool counter = header && match.x >= population_x &&
             (source == "Pop" || source == "Population" || source == "Food" ||
                 source == "Drink" || source == "Seeds" || source == "Stocks" ||

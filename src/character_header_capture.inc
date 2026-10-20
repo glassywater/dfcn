@@ -62,10 +62,11 @@ void Overlay::append_character_header(
         match.layout_left = true;
         result.push_back(std::move(match));
     };
-    const auto activity_field = [&](const NativeDrawnTextRow &draw,
-            bool top_layer, int y, std::string &complete)
+    const auto header_field = [&](const NativeDrawnTextRow &draw,
+            bool top_layer, int y, std::string &complete, bool allow_identity = false)
             -> std::optional<LogicalTextField> {
-        if (!draw.caption_source || draw.unit_identity_target || draw.source.empty() ||
+        if (!draw.caption_source || (!allow_identity && draw.unit_identity_target) ||
+                draw.source.empty() ||
                 !source_row_matches(draw.x, draw.y, top_layer, y)) return std::nullopt;
         std::string_view visible = draw.source;
         complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
@@ -135,18 +136,57 @@ void Overlay::append_character_header(
                     spacer = true;
                     continue;
                 }
+                // The header writes "Pet of " and the owner's language_name
+                // in separate adjacent calls. Bind both actual draws before
+                // changing their order to the Chinese possessive; the quote
+                // above owns this slot even when the portrait breaks the frame.
+                bool pet_claimed = false;
+                if (!spacer && aligned->text.starts_with("Pet of ")) {
+                    for (size_t layer = 0; layer < header_draws.size() && !pet_claimed; ++layer) {
+                        for (const auto &prefix : *header_draws[layer]) {
+                            if (prefix.x != aligned->start) continue;
+                            std::string prefix_source;
+                            const auto prefix_field = header_field(prefix, layer != 0, y, prefix_source);
+                            if (!prefix_field || prefix_source != "Pet of " ||
+                                    prefix_field->text != prefix_source) continue;
+                            for (const auto &owner : *header_draws[layer]) {
+                                if (owner.x != prefix_field->end || owner.editable_text ||
+                                        owner.squad_alias_target) continue;
+                                std::string owner_source;
+                                const auto owner_field = header_field(owner, layer != 0, y,
+                                    owner_source, true);
+                                if (!owner_field || owner_source.empty()) continue;
+                                const bool pending = owner.unit_identity_target &&
+                                    !owner.unit_identity_ready;
+                                auto owner_target = owner.unit_identity_target;
+                                if (!owner_target && owner_source == "Somebody")
+                                    owner_target = exact_literal_translation(owner_source);
+                                if (!owner_target) owner_target = translate_unit_identity(owner_source, true);
+                                if (!owner_target || (!pending && owner_target->empty())) continue;
+                                const LogicalTextField relation{prefix_field->start, owner_field->end,
+                                    prefix_field->text + owner_field->text};
+                                claim_field(relation, y, pending ? std::string{} : *owner_target + "的宠物",
+                                    relation.end, {}, pending);
+                                pet_claimed = true;
+                                break;
+                            }
+                            if (pet_claimed) break;
+                        }
+                    }
+                }
+                if (pet_claimed) continue;
                 bool claimed = false;
                 for (size_t layer = 0; layer < header_draws.size() && !claimed; ++layer) {
                     for (const auto &draw : *header_draws[layer]) {
                         if (draw.x != aligned->start) continue;
                         std::string source;
-                        const auto field = activity_field(draw, layer != 0, y, source);
+                        const auto field = header_field(draw, layer != 0, y, source);
                         if (!field) continue;
                         const auto translation = translate_fortress_activity_display(source, !spacer);
                         if (!translation.usable() || translation.target.empty()) continue;
                         const auto claim_activity = [&](int row) {
                             std::string physical_source;
-                            const auto physical = activity_field(draw, layer != 0, row, physical_source);
+                            const auto physical = header_field(draw, layer != 0, row, physical_source);
                             if (!physical || physical_source != source) return;
                             claim_field(*physical, row, translation.target, physical->end,
                                 std::make_shared<const TranslationResult>(translation));

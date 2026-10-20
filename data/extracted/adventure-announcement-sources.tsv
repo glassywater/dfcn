@@ -137,47 +137,47 @@ adventure.announcement.control	0x140895fd0:0x140897098@0x16b3e80	You might not b
 adventure.announcement.control	0x140895fd0:0x140897191@0x16b3ef8	You feel really full.
 adventure.announcement.control	0x140895fd0:0x1408971ea@0x16b3ed8	You are starting to feel full.
 adventure.announcement.control	PE reference 0x140895fd0:0x140896e60; classic 0x140893850:0x1408946e0; adventure-consumption/*-consume.c	You just can't fit any more.
-adventure.announcement.control	0x140833df0	You read {s}.
-adventure.announcement.control	0x140834410	You pull out {s}.
-adventure.announcement.control	0x140834eb0	You cease nocking {s}.
-adventure.announcement.control	0x140834830;0x14088d130;0x1408a4a00	You begin loading {s} into {s}.
-adventure.announcement.control	0x140834830;0x14088d130;0x1408a4a00	You begin nocking {s} in {s}.
+adventure.announcement.control	0x140833df0	You read {i}.
+adventure.announcement.control	0x140834410	You pull out {i}.
+adventure.announcement.control	0x140834eb0	You cease nocking {i}.
+adventure.announcement.control	0x140834830;0x14088d130;0x1408a4a00	You begin loading {i} into {i}.
+adventure.announcement.control	0x140834830;0x14088d130;0x1408a4a00	You begin nocking {i} in {i}.
 adventure.announcement.control	0x1408360a0;0x140837150	You fill your {s} with {s}.
-adventure.announcement.control	0x1408360a0;0x140837150	Your {s} is already full.
-adventure.announcement.control	0x1408360a0;0x140837150	It won't fit in your {s}.
-adventure.announcement.control	0x1408360a0	{s} is empty.
+adventure.announcement.control	0x1408360a0;0x140837150	Your {i} is already full.
+adventure.announcement.control	0x1408360a0;0x140837150	It won't fit in your {i}.
+adventure.announcement.control	0x1408360a0	{i} is empty.
 adventure.announcement.control	0x140836b20	The {s} is hot enough already.
 adventure.announcement.control	0x140836b20	You heat the {s}.
 adventure.announcement.control	0x140836b20	You heat the {s} to no effect.
-adventure.announcement.control	0x140894b00;0x1408956d0;0x14007de50:0x14007e11b-0x14007e317;item=0x140c65450	You empty {s}.
-adventure.announcement.control	0x140894b00;0x1408956d0	You empty the {s}.
-adventure.announcement.control	0x140894b00	You drop {s}.
-adventure.announcement.control	0x140895240	You put on {s}.
-adventure.announcement.control	0x1408956d0	You take out the {s}.
-adventure.announcement.control	0x1408956d0	You take off {s}.
-adventure.announcement.control	0x140895fd0	You eat the {s}.
-adventure.announcement.control	0x140895fd0	You drink the {s}.
-adventure.announcement.control	0x140895fd0	You lick the {s}.
-adventure.announcement.control	0x140895fd0	The {s} is too salty.
-adventure.announcement.control	0x140895fd0	The {s} is too hot.
-adventure.announcement.control	0x140895fd0	The {s} is too cold.
-adventure.announcement.control	0x140899df0	You pack the {s} on to {n}.
-adventure.announcement.control	0x14089a1e0;0x14089a950	You put the {s} into the {s}.
-adventure.announcement.control	0x14089a1e0;0x14089a950	You put the {s} on the {s}.
-adventure.announcement.control	0x14089a1e0;0x14089a950	You put the {s} on display.
+adventure.announcement.control	0x140894b00;0x1408956d0;0x14007de50:0x14007e11b-0x14007e317;item=0x140c65450	You empty {i}.
+adventure.announcement.control	0x140894b00;0x1408956d0	You empty the {i}.
+adventure.announcement.control	0x140894b00	You drop {i}.
+adventure.announcement.control	0x140895240	You put on {i}.
+adventure.announcement.control	0x1408956d0	You take out the {i}.
+adventure.announcement.control	0x1408956d0	You take off {i}.
+adventure.announcement.control	0x140895fd0	You eat the {i}.
+adventure.announcement.control	0x140895fd0	You drink the {i}.
+adventure.announcement.control	0x140895fd0	You lick the {i}.
+adventure.announcement.control	0x140895fd0	The {i} is too salty.
+adventure.announcement.control	0x140895fd0	The {i} is too hot.
+adventure.announcement.control	0x140895fd0	The {i} is too cold.
+adventure.announcement.control	0x140899df0	You pack the {i} on to {n}.
+adventure.announcement.control	0x14089a1e0;0x14089a950	You put the {i} into the {i}.
+adventure.announcement.control	0x14089a1e0;0x14089a950	You put the {i} on the {i}.
+adventure.announcement.control	0x14089a1e0;0x14089a950	You put the {i} on display.
 adventure.announcement.control	0x1408a6e70	You fail to grab the {s}!
-adventure.announcement.control	0x14082fd20;0x14088a2b0	You struggle for {s}.
-adventure.announcement.control	0x14088d130;0x1408a4a00;0x1408a5640	You prepare to shoot {s} in {s}.
-adventure.announcement.control	0x14088d130;0x1408a4a00;0x1408a5640	You prepare to shoot {s} nocked in {s}.
-adventure.announcement.control	0x14088d130;0x1408a4a00;0x1408a5640	You prepare to shoot {n} with {s} in {s}.
-adventure.announcement.control	0x14088d130;0x1408a4a00;0x1408a5640	You prepare to shoot {n} with {s} nocked in {s}.
-adventure.announcement.control	0x140834830;0x14088d130;0x1408a4a00	You begin loading {s} into {s} with intentions of shooting {n}.
-adventure.announcement.control	0x140834830;0x14088d130;0x1408a4a00	You begin nocking {s} in {s} with intentions of shooting {n}.
-adventure.announcement.control	0x1408a5fe0;0x1408a65d0	You begin to throw {s}.
-adventure.announcement.control	0x1408a5fe0;0x1408a65d0	You begin to throw {s} at {n}.
-adventure.announcement.control	0x1407f7020	You do not have a free grasp for {s}.
-adventure.announcement.control	0x1407f7020	You don't have any ammunition for {s}.
-adventure.announcement.control	0x1407f7020	{s} is already prepared to shoot.
+adventure.announcement.control	0x14082fd20;0x14088a2b0	You struggle for {i}.
+adventure.announcement.control	0x14088d130;0x1408a4a00;0x1408a5640	You prepare to shoot {i} in {i}.
+adventure.announcement.control	0x14088d130;0x1408a4a00;0x1408a5640	You prepare to shoot {i} nocked in {i}.
+adventure.announcement.control	0x14088d130;0x1408a4a00;0x1408a5640	You prepare to shoot {n} with {i} in {i}.
+adventure.announcement.control	0x14088d130;0x1408a4a00;0x1408a5640	You prepare to shoot {n} with {i} nocked in {i}.
+adventure.announcement.control	0x140834830;0x14088d130;0x1408a4a00	You begin loading {i} into {i} with intentions of shooting {n}.
+adventure.announcement.control	0x140834830;0x14088d130;0x1408a4a00	You begin nocking {i} in {i} with intentions of shooting {n}.
+adventure.announcement.control	0x1408a5fe0;0x1408a65d0	You begin to throw {i}.
+adventure.announcement.control	0x1408a5fe0;0x1408a65d0	You begin to throw {i} at {n}.
+adventure.announcement.control	0x1407f7020	You do not have a free grasp for {i}.
+adventure.announcement.control	0x1407f7020	You don't have any ammunition for {i}.
+adventure.announcement.control	0x1407f7020	{i} is already prepared to shoot.
 adventure.announcement.control	0x1407f7020	You've found a colony of {s}.
 adventure.announcement.control	0x1407f7020	You've found a colony of {s} and another small creature.
 adventure.announcement.control	0x1407f7020	You've found a colony of {s} and some other small creatures.
@@ -337,18 +337,18 @@ adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flo
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the lava!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You flounder in the magma!
 adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x141506424-0x141506459;PE:6a70b91c:0270a000:0x141501394-0x1415013c9	You flounder!
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You push {s}.
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;0x14132c090:0x14132c54d-0x14132c668	You lose hold of the {s}.
-adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x1415092dd-0x141509345;PE:6a70b91c:0270a000:0x14150424d-0x1415042b5	You lose hold of the {s}!
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You push {i}.
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;0x14132c090:0x14132c54d-0x14132c668	You lose hold of the {i}.
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x1415092dd-0x141509345;PE:6a70b91c:0270a000:0x14150424d-0x1415042b5	You lose hold of the {i}!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You mount {n}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You dismount.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the water!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the lava!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} flounders in the magma!
 adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x141506424-0x141506459;PE:6a70b91c:0270a000:0x141501394-0x1415013c9	{n} flounders!
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} pushes {s}.
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;0x14132c090:0x14132c54d-0x14132c668	{n} loses hold of the {s}.
-adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x1415092e6-0x141509345;PE:6a70b91c:0270a000:0x141504256-0x1415042b5	{n} loses hold of the {s}!
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} pushes {i}.
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;0x14132c090:0x14132c54d-0x14132c668	{n} loses hold of the {i}.
+adventure.announcement.shared-action	PE:6a70a6d9:02711000:0x1415092e6-0x141509345;PE:6a70b91c:0270a000:0x141504256-0x1415042b5	{n} loses hold of the {i}!
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} mounts {n}.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} dismounts.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You cannot mount {n} due to the presence of an existing rider.
@@ -358,56 +358,56 @@ adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You sta
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} stands up.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You lie on the ground.
 adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{n} lies on the ground.
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{s} is already nocked with {s} and you prepared to shoot.
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;native-empty-ammunition-append=0x1415098b9	{s} is already nocked with .
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You finish nocking {s} in {s}.
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You finish nocking {s} in {s} and prepare to shoot.
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{s} is already loaded with {s} and you prepared to shoot.
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;native-empty-ammunition-append=0x1415098b9	{s} is already loaded with .
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You finish loading {s} into {s}.
-adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You finish loading {s} into {s} and prepare to shoot.
-adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	{n} gains possession of the {s}.
-adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	{n} maintains possession of the {s}.
-adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	You gain possession of the {s}.
-adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	You maintain possession of the {s}.
-adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	You've lost possession of the {s}.
-adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	The {s} remains stuck in {n}'s {t}.
-adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	The {s} remains stuck in your {t}.
-adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	The {s} is torn from your {t}.
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{i} is already nocked with {i} and you prepared to shoot.
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;native-empty-ammunition-append=0x1415098b9	{i} is already nocked with .
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You finish nocking {i} in {i}.
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You finish nocking {i} in {i} and prepare to shoot.
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	{i} is already loaded with {i} and you prepared to shoot.
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede;native-empty-ammunition-append=0x1415098b9	{i} is already loaded with .
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You finish loading {i} into {i}.
+adventure.announcement.shared-action	0x1415059c0:0x141505d24-0x141509ede	You finish loading {i} into {i} and prepare to shoot.
+adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	{n} gains possession of the {i}.
+adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	{n} maintains possession of the {i}.
+adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	You gain possession of the {i}.
+adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	You maintain possession of the {i}.
+adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	You've lost possession of the {i}.
+adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	The {i} remains stuck in {n}'s {t}.
+adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	The {i} remains stuck in your {t}.
+adventure.announcement.shared-action	0x140c88f50:0x140c89330-0x140c89dc3	The {i} is torn from your {t}.
 adventure.announcement.shared-action	0x1413f5350:0x1413f663b-0x1413f67ff	You reorganize your possessions.
 adventure.announcement.shared-action	0x1413f5350:0x1413f663b-0x1413f67ff	{n} reorganizes his possessions.
 adventure.announcement.shared-action	0x1413f5350:0x1413f663b-0x1413f67ff	{n} reorganizes her possessions.
 adventure.announcement.shared-action	0x1413f5350:0x1413f663b-0x1413f67ff	{n} reorganizes its possessions.
-adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} straps {s} to his {t}.
-adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} draws {s} with his {t}.
-adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} straps {s} to her {t}.
-adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} draws {s} with her {t}.
-adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} straps {s} to its {t}.
-adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} draws {s} with its {t}.
-adventure.announcement.shared-action	0x140224ec0:0x140226c0a-0x1402290f6	{n} drops {s}.
-adventure.announcement.shared-action	0x140224ec0:0x140226c0a-0x1402290f6	{n} drinks {s}.
+adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} straps {i} to his {t}.
+adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} draws {i} with his {t}.
+adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} straps {i} to her {t}.
+adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} draws {i} with her {t}.
+adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} straps {i} to its {t}.
+adventure.announcement.shared-action	0x140224ec0:0x1402264f6-0x1402269cc;0x141502780:0x141502d76-0x1415031a1;possessive=0x140aa4850;anatomy=0x1413345d0	{n} draws {i} with its {t}.
+adventure.announcement.shared-action	0x140224ec0:0x140226c0a-0x1402290f6	{n} drops {i}.
+adventure.announcement.shared-action	0x140224ec0:0x140226c0a-0x1402290f6	{n} drinks {i}.
 adventure.announcement.shared-action	0x140224ec0:0x140226c0a-0x1402290f6	{p} is sneaking an extra drink to {p}!
-adventure.announcement.shared-action	0x14027e300:0x14027eb2d-0x14027ebac	You butcher {s}.
-adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You make {s}.
-adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You make {s} and {s}.
-adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You make {s} and more.
-adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You have finished working on {s}.
-adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You have finished working on {s} and {s}.
-adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You have finished working on {s} and more.
+adventure.announcement.shared-action	0x14027e300:0x14027eb2d-0x14027ebac	You butcher {i}.
+adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You make {i}.
+adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You make {i} and {i}.
+adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You make {i} and more.
+adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You have finished working on {i}.
+adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You have finished working on {i} and {i}.
+adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You have finished working on {i} and more.
 adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You practice your {s}.
 adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You practice your {s} but make nothing of note.
 adventure.announcement.shared-action	0x1402804b0:0x140280709-0x140280feb	You make nothing.
-adventure.announcement.shared-item-job	0x141397100:0x141397273-0x1413973b5	{n} pulls out and drops {s}.
-adventure.announcement.shared-item-job	0x141397100:0x141397273-0x1413973b5	{n} pulls out and releases {s}.
+adventure.announcement.shared-item-job	0x141397100:0x141397273-0x1413973b5	{n} pulls out and drops {i}.
+adventure.announcement.shared-item-job	0x141397100:0x141397273-0x1413973b5	{n} pulls out and releases {i}.
 adventure.announcement.shared-item-job	0x1401fe5c0:0x1401feebc-0x1401feff9	You have bestowed the name {b} upon {s}.
 adventure.announcement.shared-item-job	0x1413cfbe0:0x1413d0206-0x1413d0325	{n} has bestowed the name {b} upon a {s}!
-adventure.announcement.shared-item-job	0x1413cfbe0:0x1413d0658-0x1413d0739	{n} has grown attached to a {s}!
-adventure.announcement.shared-item-job	0x1413e6e20:0x1413e774d-0x1413e7cf6	{s} has been moved from its proper place!
-adventure.announcement.shared-item-job	0x1413e6e20:0x1413e774d-0x1413e7cf6	{s} is missing from its proper place!
-adventure.announcement.shared-item-job	0x1413e6e20:0x1413e774d-0x1413e7cf6	{s} was seen being passed to a thief!
-adventure.announcement.shared-item-job	0x1413e6e20:0x1413e774d-0x1413e7cf6	{s} was seen being stolen!
-adventure.announcement.shared-item-job	0x1413e8800:0x1413e8c7e-0x1413e8d33	{n} drinks the {s}.
-adventure.announcement.shared-item-job	0x1413e8800:0x1413e8e57-0x1413e8ff8	{n} eats the {s}.
+adventure.announcement.shared-item-job	0x1413cfbe0:0x1413d0658-0x1413d0739	{n} has grown attached to a {i}!
+adventure.announcement.shared-item-job	0x1413e6e20:0x1413e774d-0x1413e7cf6	{i} has been moved from its proper place!
+adventure.announcement.shared-item-job	0x1413e6e20:0x1413e774d-0x1413e7cf6	{i} is missing from its proper place!
+adventure.announcement.shared-item-job	0x1413e6e20:0x1413e774d-0x1413e7cf6	{i} was seen being passed to a thief!
+adventure.announcement.shared-item-job	0x1413e6e20:0x1413e774d-0x1413e7cf6	{i} was seen being stolen!
+adventure.announcement.shared-item-job	0x1413e8800:0x1413e8c7e-0x1413e8d33	{n} drinks the {i}.
+adventure.announcement.shared-item-job	0x1413e8800:0x1413e8e57-0x1413e8ff8	{n} eats the {i}.
 adventure.announcement.shared-item-job	0x1413e8800:0x1413e912b-0x1413e915f	It makes them look even more sick.
 adventure.announcement.shared-item-job	0x1413e8800:0x1413e9182-0x1413e91ad	They look sick suddenly.
 adventure.announcement.shared-item-job	0x1410821f0:0x14108227f-0x1410824d0	You have located {b}, "{b}", a {s}.
@@ -941,11 +941,11 @@ adventure.announcement.caravan	0x140e42d20:0x140e437e2-0x140e43ca3;type=0x43;com
 adventure.announcement.caravan	0x140e42d20:0x140e437e2-0x140e43ca3;type=0x43;complete-caravan-paragraph;native-capitalize=0x14052d650	A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are cautious.
 adventure.announcement.social-world	0x140e4dd10:0x140e4ed20-0x140e4eec8;profession-label=0x14132f980(r8b=1)	A {s} from {e} has arrived.
 adventure.announcement.shared-final	0x14007de50:0x14007e11b-0x14007e317;actor=0x14132e430;item=0x140c65450	{n} empties {s}.
-adventure.announcement.shared-final	0x14007de50:0x14007e455-0x14007e753;item=0x140c65450	You pick up {s}.
+adventure.announcement.shared-final	0x14007de50:0x14007e455-0x14007e753;item=0x140c65450	You pick up {i}.
 adventure.announcement.shared-final	0x14007de50:0x14007e455-0x14007e753;actor=0x14132e430;item=0x140c65450	{n} picks up {s}.
 adventure.announcement.shared-final	0x140e4a320:0x140e4b57d-0x140e4b674;literalVA=0x14172f5d0;file=0x172e7d0;176bytes;event344=MONARCH_ARRIVAL:A_D:D_D:BOX	Your ruler has arrived with a full entourage. Your thriving site is now the capital, and with continued fortune and toil, the legend of a true Mountainhome may yet be written.
 adventure.announcement.shared-final	0x141328450:0x1413284f5-0x14132863c;job-description=0x140d03170;event271=JOB_OVERWRITTEN:A_D:D_D;no-terminal-punctuation	OVERWROTE JOB: {s} BY {s}
-adventure.announcement.shared-final	0x1413435b0:0x141343cbb-0x141343dac;waterbody-name=vtable+0x70	There is nothing to catch in {e}.
+adventure.announcement.shared-final	0x1413435b0:0x141343cbb-0x141343dac;feature_init_outdoor_riverst-vtable+0x70=0x140a49080;all-feature-suppliers-in-announcement-fishing/	There is nothing to catch in the river.
 adventure.announcement.shared-final	0x1413435b0:0x141343e9c-0x14134410f;native9-direction-switch+terrain-switch	There is nothing to catch in the northwestern eerie cavern.
 adventure.announcement.shared-final	0x1413435b0:0x141343e9c-0x14134410f;native9-direction-switch+terrain-switch	There is nothing to catch in the northwestern magma sea.
 adventure.announcement.shared-final	0x1413435b0:0x141343e9c-0x14134410f;native9-direction-switch+terrain-switch	There is nothing to catch in the northwestern cavern.
@@ -1002,3 +1002,23 @@ adventure.announcement.shared-final	0x1413435b0:0x1413441f3-0x14134446a;native9-
 adventure.announcement.shared-final	0x1413435b0:0x1413441f3-0x14134446a;native9-direction-switch+terrain-switch	There is nothing to catch in the central ocean.
 adventure.announcement.shared-final	0x140dcc6a0:0x140dcccc4-0x140dcd09b;deity=0x140a946e0;default-only;RAW-trigger-separate	{n} has been cursed by {p}!
 adventure.announcement.shared-final	0x1413a78c0:0x1413a8212-0x1413a8334;creator-language-name=0x140a94030	Your miners have defaced a {p}!
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49210;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the cave.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49390;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the pit.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49520;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the magma pool.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a496a0;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the volcano.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49a90;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the underworld portal.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a49e00;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the subterranean water.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a4a0a0;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in the underworld.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140072250;feature-init-vtable+0x70;announcement-fishing/actual-Ghidra	There is nothing to catch in .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the northwestern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the southwestern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the northeastern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the southeastern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the western .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the northern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the eastern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the southern .
+adventure.announcement.fishing	0x1413435b0:0x141343e45-0x141344114;native9-direction+global-layer-type-default-no-text;announcement-fishing/actual-Ghidra	There is nothing to catch in the central .
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a4a940->0x1414d1920;solid-material-empty-or-unknown-branch;announcement-fishing/actual-Ghidra	There is nothing to catch in  deposit.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a4a940->0x1414d1920;solid-material-empty-or-unknown-branch;announcement-fishing/actual-Ghidra	There is nothing to catch in 's  deposit.
+adventure.announcement.fishing	0x1413435b0:0x141343d0a->0x140a4a940->0x1414d1920;solid-material-empty-or-unknown-branch;announcement-fishing/actual-Ghidra	There is nothing to catch in unknown material deposit.

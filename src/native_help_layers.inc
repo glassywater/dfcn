@@ -24,19 +24,28 @@ static void native_ui_detach_map_output(graphicst &gps) noexcept {
 // native painters borrow masked arrays, keeping overlay callbacks unmasked.
 // The read view itself never changes producer bindings or SDL inputs.
 class NativeUiTextReadView {
-    alignas(graphicst) std::array<unsigned char, sizeof(graphicst)> header_;
+    struct alignas(graphicst) Header {
+        std::array<unsigned char, sizeof(graphicst)> bytes;
+    };
+    // A graphicst header is about 250 KiB. Even an inactive nested reader
+    // used to reserve it on the game's render stack before parsing any text.
+    std::unique_ptr<Header> header_;
     Overlay *owner_ = nullptr;
     graphicst *original_ = nullptr, *previous_read_ = nullptr;
     NativeUiTextReadView *previous_ = nullptr;
     inline static thread_local NativeUiTextReadView *active_ = nullptr;
-    graphicst *graphics() noexcept { return reinterpret_cast<graphicst *>(header_.data()); }
+    graphicst *graphics() noexcept {
+        return header_ ? reinterpret_cast<graphicst *>(header_->bytes.data()) : nullptr;
+    }
 public:
     NativeUiTextReadView(Overlay &owner, graphicst *source, bool enabled,
             bool detach_map = true) noexcept {
         // A nested matcher already borrows this same read header.
         // Preserve its outer read scopes and address-dependent scratch keys.
         if (!enabled || !source || (active_ && source == active_->graphics())) return;
-        std::memcpy(header_.data(), source, header_.size());
+        header_.reset(new (std::nothrow) Header);
+        if (!header_) return;
+        std::memcpy(header_->bytes.data(), source, header_->bytes.size());
         if (detach_map) native_ui_detach_map_output(*graphics());
         owner_ = &owner;
         original_ = owner.bind_render_graphics(graphics());
@@ -48,7 +57,7 @@ public:
     ~NativeUiTextReadView() {
         if (!owner_) return;
         // A parent capture-read scope can outlive a nested matcher. Keep its
-        // owned row snapshot, but never retain this stack header as a key.
+        // owned row snapshot, but never retain this temporary header as a key.
         if (auto *captures = NativeCapturedTextReadScope::active)
             for (auto &draws : captures->draws)
                 if (draws.key && draws.key->graphics_read_view == graphics())
@@ -194,8 +203,8 @@ struct NativeUiLayerStorage {
 static NativeUiLayerStorage g_native_help_layer;
 
 // Both inlined game stores and graphicst helpers use the game's static gps.
-// Redirect it before the component draws, then restore its complete output
-// and cursor state. Raster helpers also borrow the renderer's array slots.
+// Redirect only its UI output and cursor state, leaving map bindings owned
+// by the game throughout. Raster helpers also borrow the renderer's array slots.
 class NativeUiGridBinding {
     graphicst *gps_;
     NativeDfhackOutputBinding previous_;
@@ -205,7 +214,9 @@ public:
     NativeUiGridBinding(graphicst *gps, const graphicst &view, void *renderer = nullptr)
         : gps_(gps), previous_(NativeDfhackOutputBinding::capture(*gps)), renderer_(renderer) {
         const auto binding = NativeDfhackOutputBinding::capture(view);
-        binding.apply(*gps_);
+        // UI snapshots may detach map output. Never copy those null aliases
+        // into the real gps, including during nested or retained UI bindings.
+        binding.apply(*gps_, false);
         NativeUiReadScope::invalidate_reads();
         if (renderer_) {
             auto *fields = static_cast<unsigned char *>(renderer_) + sizeof(void *);
@@ -217,7 +228,9 @@ public:
         if (renderer_)
             std::memcpy(static_cast<unsigned char *>(renderer_) + sizeof(void *),
                 renderer_pointers_.data(), sizeof(renderer_pointers_));
-        previous_.apply(*gps_);
+        // Native drawing may create or rotate map viewports while bound.
+        // Keep their live values instead of restoring an older snapshot.
+        previous_.apply(*gps_, false);
         NativeUiReadScope::invalidate_reads();
     }
 };

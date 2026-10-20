@@ -2137,6 +2137,10 @@ DFHack GUI Notification banner: task starvation: {d} unclaimed job	无人接手�
 DFHack GUI Notification banner: task starvation: {d} unclaimed jobs	无人接手：{d} 项任务	l
 DFHack GUI Notification banner: task starvation: {d} unclaimed job (oldest: {s}, {d} ticks)	无人接手：{d1} 项任务（最久：{s1}，{d2} 刻）	l
 DFHack GUI Notification banner: task starvation: {d} unclaimed jobs (oldest: {s}, {d} ticks)	无人接手：{d1} 项任务（最久：{s1}，{d2} 刻）	l
+# autolabor pushes a string even when the engine has no oldest name; Lua's
+# `if job` also accepts an empty string before formatting the optional detail.
+DFHack GUI Notification banner: task starvation: {d} unclaimed job (oldest: , {d} ticks)	无人接手：{d1} 项任务（最久：未知任务，{d2} 刻）	l
+DFHack GUI Notification banner: task starvation: {d} unclaimed jobs (oldest: , {d} ticks)	无人接手：{d1} 项任务（最久：未知任务，{d2} 刻）	l
 DFHack GUI Notification banner: Wildlife: {s}	野生动物：{s}	l
 DFHack GUI Notification banner: {d} {s}	{d} 只{s}	l
 DFHack GUI Notification banner: Air	呼吸	l

@@ -1,0 +1,29 @@
+# syntax 是原始槽位关系；direction 明示中文方向，不试换序。full 保留必要的长词形，group 保留完整子树。
+# 通名吸收仅在顶层、实际水体中心且完整河流等级已知时启用；嵌套水名与音译不截尾。
+id	syntax	relation	left_class	right_class	left_pos	right_pos	left_role	right_role	left_traits	right_traits	direction	forms	head	naturalness	preference	absorb_generic
+color	attribute|compound|hyphen	property	property.color	physical	2	0|1	modifier	head	-	-	source	*	right	20	5	-
+temperature	attribute|compound|hyphen	property	property.temperature	physical	2	0|1	modifier	head	-	-	source	*	right	18	4	-
+light	attribute|compound|hyphen	property	property.light	physical	2	0|1	modifier	head	-	-	source	*	right	18	4	-
+depth	attribute|compound|hyphen	property	property.size|property.shape|property.position	terrain|material|body	2	0|1	modifier	head	-	-	source	*	right	18	3	-
+quiet-water	attribute|compound|hyphen	property	property.relation	terrain.water|weather.water	2	0|1	modifier	head	-	-	source	*	right	20	4	-
+clear-water	attribute|compound|hyphen	property	property.value	terrain.water|fluid	2	0|1	modifier	head	-	-	source	*	right	20	4	-
+lasting-faith	attribute|compound|hyphen	property	property.age	virtue.faith|virtue.loyalty|concept.memory	2	0|1	modifier	head	-	-	source	*	right	20	6	-
+material	compound|hyphen	material	material	weapon|tool|armor|attire|container|body	0|1	0|1	modifier	head	-	-	source	*	right	18	4	-
+plant-place	compound|hyphen	emblem	plant	terrain|material.rock	0|1	0|1	modifier	head	-	-	source	*	right	18	4	-
+animal-place	compound|hyphen	emblem	creature	terrain|material.rock	0|1	0|1	modifier	head	-	-	source	*	right	17	4	-
+sky-place	compound|hyphen	emblem	celestial|light|weather	terrain|material.rock	0|1	0|1	modifier	head	-	-	source	*	right	18	4	-
+water-stone	compound|hyphen	surface	terrain.water|fluid	material.rock|terrain.bank	0|1	0|1	modifier	head	-	-	source	*	right	17	3	-
+animal-part	compound|hyphen	genitive	creature	body	0|1	0|1	possessor	head	-	-	source	*	right	19	4	-
+plant-part	compound|hyphen	genitive	plant	plant_part|fruit	0|1	0|1	possessor	head	-	-	source	*	right	19	4	-
+of-animal	of	genitive	body	creature	0|1	0|1	head	possessor	-	-	reverse	*	left	19	4	-
+of-plant	of	genitive	plant_part|fruit	plant	0|1	0|1	head	possessor	-	-	reverse	*	left	19	4	-
+of-person	of	genitive	weapon|tool|attire	person	0|1	0|1	head	possessor	-	-	reverse	*	left	17	3	-
+of-voice	of	object	voice	emotion|virtue|ruin|social.war	0|1	0|1	head	object	-	-	reverse	*	left	17	3	-
+wash-object	compound	verb_object	action.wash	weapon|tool|material.rock	4	0|1	action	patient	-	-	source	*	right	20	6	-
+sound-subject	compound	subject_verb	creature|tool.musical|weather	action.vocal	0|1	4|5|7	subject	action	-	-	source	*	left	19	4	-
+moving-subject	compound	subject_verb	creature|weather|terrain.water	action.move	0|1	4|5|7	subject	action	-	-	source	*	left	18	4	-
+paired-plants	compound	coordinate	plant	plant	0|1	0|1	image	image	-	-	source	*	right	17	3	-
+paired-stones	compound	coordinate	material.rock|material.metal	material.rock|material.metal	0|1	0|1	image	image	-	-	source	*	right	16	3	-
+paired-virtues	compound	coordinate	virtue	virtue	0|1	0|1	image	image	-	-	source	*	right	17	3	-
+water-generic	attribute|compound|hyphen	property	property.color|property.temperature|property.light|property.relation|property.value|property.size	terrain.water	2	0|1	modifier	head	-	-	source	*	left	20	7	right
+image-water-generic	compound|hyphen	emblem	plant|creature|celestial|material.rock	terrain.water	0|1	0|1	modifier	head	-	-	source	*	left	18	6	right

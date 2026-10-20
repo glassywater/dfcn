@@ -33,6 +33,7 @@
 #include <map>
 #include <memory>
 #include <mutex>
+#include <new>
 #include <numeric>
 #include <optional>
 #include <regex>
@@ -73,6 +74,7 @@
 #include "translation_extensions.h"
 #include "english_character_names.h"
 #include "english_name_transliteration.h"
+#include "river_names.h"
 #include "chinese_conversion.h"
 
 namespace fs = std::filesystem;
@@ -136,7 +138,8 @@ static bool native_display_worldgen_page() {
         ? *g_native_display_worldgen_page : native_history_worldgen_page();
 }
 #endif
-static NativeModDetails native_mod_details(bool background_owner = false);
+static NativeModDetails native_mod_details(bool background_owner = false,
+    const graphicst *graphics = nullptr);
 static std::optional<std::string> native_main_menu_copyright();
 static bool native_fortress_gameplay_screen();
 static bool native_map_mixed_view(const graphicst *graphics) noexcept;
@@ -2243,6 +2246,14 @@ struct NativeWorldSiteEntityFact {
 };
 static thread_local const NativeWorldSiteEntityFact *g_native_world_site_entity_fact = nullptr;
 static thread_local const NativeHistoryName *g_native_site_name_fact = nullptr;
+static thread_local const NativeRiverNameFact *g_native_river_name_fact = nullptr;
+class NativeRiverNameFactScope {
+    const NativeRiverNameFact *previous_;
+public:
+    explicit NativeRiverNameFactScope(const NativeRiverNameFact *fact)
+        : previous_(g_native_river_name_fact) { g_native_river_name_fact = fact; }
+    ~NativeRiverNameFactScope() { g_native_river_name_fact = previous_; }
+};
 class NativeSiteNameFactScope {
     const NativeHistoryName *previous_;
 public:
@@ -2297,6 +2308,7 @@ struct NativeFortressZoneCaption {
     std::shared_ptr<const NativeHistoryName> squad_name;
     std::optional<std::string> squad_alias;
     std::optional<int> line_offset;
+    bool detail = false;
 };
 static std::optional<NativeFortressZoneCaption> capture_native_fortress_zone_caption(
     uintptr_t caller, uintptr_t source);
@@ -2383,6 +2395,7 @@ struct NativeDrawnTextRow {
     // the owned name and mother context with this draw through cached frames.
     std::shared_ptr<const NativeWorldSiteEntityFact> world_site_entity_fact{};
     std::shared_ptr<NativeHistoryName> site_name{};
+    std::shared_ptr<const NativeRiverNameFact> river_name{};
     // The actual addst return address identifies document-specific row writers.
     uintptr_t native_caller = 0;
     std::optional<NativeJusticeOrganizationCaption> justice_organization{};
@@ -2490,6 +2503,8 @@ static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_announcement_log_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
 static thread_local const graphicst *g_native_pause_write_graphics = nullptr;
+static thread_local const graphicst *g_native_topbar_write_graphics = nullptr;
+static bool native_topbar_cell_outside(const graphicst *, int, int) noexcept;
 static thread_local const graphicst *g_native_worldgen_write_graphics = nullptr;
 static SDL_Rect g_native_worldgen_panel{};
 static bool native_worldgen_main_view(const graphicst *) noexcept;
@@ -2515,6 +2530,7 @@ static bool native_reports_background_copy_hidden(SDL_Renderer *, const SDL_Rect
 static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics ||
         gps == g_native_resolution_write_graphics ||
+        gps == g_native_topbar_write_graphics ||
         gps == g_native_worldgen_write_graphics || native_dfhack_layer_write_active(gps));
 }
 #include "native_capture_mask.inc"
@@ -2907,6 +2923,11 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
                 std::make_shared<const NativeWorldSiteEntityFact>(*g_native_world_site_entity_fact);
         if (!character && g_native_site_name_fact)
             row.site_name = std::make_shared<NativeHistoryName>(*g_native_site_name_fact);
+        if (!character && g_native_river_name_fact) {
+            row.river_name = std::make_shared<const NativeRiverNameFact>(*g_native_river_name_fact);
+            row.complete_source = g_native_river_name_fact->complete_source;
+            row.caption_source = true;
+        }
         row.native_caller = native_caller;
         row.justice_organization = std::move(justice_organization);
         if (row.justice_organization) row.caption_source = true;
@@ -3597,6 +3618,8 @@ class Overlay {
 public:
     NativeAnnouncementLogTranslator make_native_announcement_log_translator() const;
     void publish_native_announcement_log_translation_catalog() const;
+    std::optional<std::string> translate_native_announcement_log_record(const NativeAnnouncementLogDocument &document,
+        std::string_view source, int foreground, std::vector<int> &target_colors) const;
     bool native_announcement_log_viewport_complete();
     std::optional<std::string> native_announcement_log_capture_entity_reference(
         const NativeAnnouncementLogReferenceRequest &request) const {
@@ -3632,6 +3655,8 @@ public:
     void render_native_tooltip_layer(SDL_Renderer *renderer);
     void render_native_notification_layer(SDL_Renderer *renderer);
     void render_native_pause_layer(SDL_Renderer *renderer);
+    void render_native_topbar_layer(SDL_Renderer *renderer);
+    std::optional<std::string> native_topbar_cache_context() const;
     void render_native_worldgen_layer(SDL_Renderer *renderer);
     void render_native_reports_layer(SDL_Renderer *renderer);
     void render_native_announcement_log_layer(SDL_Renderer *renderer);
@@ -3758,6 +3783,8 @@ private:
     std::vector<Match> find_native_notification_matches() const;
     std::vector<Match> find_native_announcement_log_matches() const;
     std::vector<Match> find_native_pause_matches() const;
+    std::vector<Match> find_native_topbar_matches(int only_y = -1,
+        const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_stocks_matches() const;
     std::vector<Match> find_native_squads_matches() const;
     std::vector<Match> find_native_info_background_matches(int only_y,
@@ -3986,6 +4013,12 @@ private:
     std::optional<std::string> localize_site_name(const NativeHistoryName &name) const;
     std::string site_name_full_transliteration(const NativeHistoryName &name) const;
     std::vector<std::string> site_name_search_aliases(const NativeHistoryName &name) const;
+    std::string translate_river_name(const RiverNameIdentity &identity,
+        RiverDisplayField field, std::string_view source) const;
+    std::string translate_river_text(std::string_view source) const;
+    std::vector<std::string> river_name_search_aliases(const RiverNameIdentity &identity) const;
+    void append_river_name_matches(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
     std::optional<NativeHistoryName> resolve_site_reference_name(std::string_view source) const;
     std::optional<std::string> translate_site_reference(
         std::string_view source, bool english_field = false) const;
@@ -4195,6 +4228,10 @@ private:
     };
     std::unordered_map<std::string, SiteNameImagery> site_name_imagery_;
     fs::file_time_type site_name_imagery_mtime_{};
+    RiverNames river_names_;
+    uint64_t river_names_revision_ = 0;
+    mutable std::string river_name_cache_world_;
+    mutable std::unordered_map<std::string, std::string> river_name_cache_;
     // Political/cultural name senses are scoped to civilization name slots.
     std::unordered_map<std::string, std::string> civilization_name_terms_;
     std::unordered_map<std::string, std::string> civilization_name_modifiers_;
@@ -4724,6 +4761,7 @@ private:
     bool load_procedural_word_senses();
     bool load_site_name_decisions();
     bool load_site_name_imagery();
+    bool load_river_names();
     bool load_civilization_name_terms();
     bool load_site_government_name_terms();
     std::optional<std::string> site_government_name_term(
@@ -4954,6 +4992,8 @@ private:
         const std::vector<std::string> &rows, int &prompt_y) const;
     void append_fortress_zone_types(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void append_fortress_zone_details(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_stockpile_types(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_fortress_stockpile_settings(std::vector<std::string> &rows,
@@ -5014,7 +5054,8 @@ private:
         std::vector<Match> &matches, std::vector<Match> &untranslated,
         int only_y, const unsigned char *screen_override) const;
     void append_mod_list_details(const NativeModListLayout &layout,
-        std::vector<std::string> &rows, std::vector<Match> &matches) const;
+        std::vector<std::string> &rows, std::vector<Match> &matches,
+        bool captured_only = false) const;
     void layout_resting_place_details(SDL_Renderer *renderer);
     void layout_fortress_building_status(SDL_Renderer *renderer);
     void layout_fortress_farm_plot(SDL_Renderer *renderer);
@@ -5280,6 +5321,8 @@ private:
         std::string_view source) const;
     std::optional<std::string> translate_ui_catalog_capture(
         const Rule &rule, size_t index, std::string_view source) const;
+    std::optional<std::string> translate_adventure_divine_capture(
+        const Rule &rule, size_t index, std::string_view source) const;
     void load_untranslated_index();
     void destroy_textures();
     void reset_render_state();
@@ -5472,10 +5515,10 @@ private:
         const std::vector<int> &source_colors, std::vector<int> &target_colors,
         bool barter_reply = false, int native_type = -1,
         dfcn::TranslationResult *owned_result = nullptr) const;
-    std::optional<std::string> translate_native_announcement_log_record(const NativeAnnouncementLogDocument &document,
-        std::string_view source, int foreground, std::vector<int> &target_colors) const;
     std::optional<std::string> compose_native_announcement_log_record(const NativeAnnouncementLogDocument &document,
         std::string_view source, int foreground, std::vector<int> &target_colors) const;
+    const Rule *native_announcement_cancellation_fields(const NativeAnnouncementLogDocument &document,
+        std::string_view source, std::vector<std::string> &translated_fields) const;
     std::optional<std::string> compose_native_announcement_log_speech(const NativeAnnouncementLogDocument &document,
         std::string_view source, int foreground, std::vector<int> &target_colors) const;
     std::shared_ptr<const TranslationResult> announcement_result_metadata(std::string_view source) const;
@@ -7260,6 +7303,8 @@ bool Overlay::load_procedural_terms() {
         log_line("ERROR", "Cannot load reviewed site name decisions");
     if (!load_site_name_imagery())
         log_line("ERROR", "Cannot load site name imagery relations");
+    if (!load_river_names())
+        log_line("ERROR", "Cannot load river naming resources: " + river_names_.error());
     std::string path = runtime::utf8(runtime::data_path() / "procedural-terms.tsv");
     std::ifstream input(fs::u8path(path), std::ios::binary);
     if (!input) {
@@ -7991,6 +8036,7 @@ void Overlay::run_settings_menu_action(int action) {
 const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     *top = false;
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return nullptr;
+    if (native_topbar_cell_outside(gps_, x, y)) return nullptr;
     if (native_map_mixed_view(gps_)) return nullptr;
     if (native_info_background_cell_hidden(gps_, x, y)) return nullptr;
     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
@@ -8015,6 +8061,7 @@ static bool graphically_occluded(uint8_t state, uint64_t cell_epoch,
 
 unsigned char Overlay::visible_char_at(int x, int y) const {
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return 0;
+    if (native_topbar_cell_outside(gps_, x, y)) return 0;
     if (native_map_mixed_view(gps_)) return 0;
     if (native_info_background_cell_hidden(gps_, x, y)) return 0;
     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
@@ -8325,9 +8372,10 @@ static std::optional<std::pair<size_t, size_t>> ascii_tab_caption_span(
          (row[start] >= 'A' && row[start] <= 'Z') ||
          (row[start] >= '0' && row[start] <= '9'))) ++start;
     if (start >= row.size() || row[start] != '_') return std::nullopt;
-    const size_t closing = row.find_first_of("/\\", start + 1);
+    // Slashes inside Pets/Livestock and Dead/Missing belong to the caption;
+    // the first backslash closes this tab before the next tab can begin.
+    const size_t closing = row.find('\\', start + 1);
     if (closing == std::string_view::npos) return std::nullopt;
-    if (row[closing] != '\\') return std::nullopt;
     size_t end = closing;
     while (start < end && row[start] == '_') ++start;
     while (end > start && row[end - 1] == '_') --end;
@@ -10039,6 +10087,7 @@ static std::optional<std::string> reconstruct_site_english_name(
 
 #include "history_names.inc"
 #include "site_names.inc"
+#include "river_names.inc"
 #include "civilization_name_terms.inc"
 #include "site_government_name_terms.inc"
 
@@ -12003,11 +12052,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
         }
     }
 
-    static constexpr std::array<std::pair<std::string_view, std::string_view>, 9>
+    static constexpr std::array<std::pair<std::string_view, std::string_view>, 2>
         map_features = {{
-        {"Major River: ", "大河："}, {"Minor River: ", "小河："},
-        {"Stream: ", "溪流："}, {"Brook: ", "小溪："}, {"River: ", "河流："},
-        {"Creek: ", "溪流："}, {"Channel: ", "水道："},
         {"Volcano: ", "火山："}, {"Mountain: ", "山峰："},
     }};
     for (const auto &[prefix, translated_prefix] : map_features) {
@@ -12531,19 +12577,7 @@ bool Overlay::match_catalog_template(const Rule &rule, std::string_view source,
                 const std::string key = std::to_string(index) + '\x1f' + std::string(value);
                 const auto [field, added] = divine_fields.try_emplace(key, false);
                 if (added) {
-                    std::optional<std::string> target;
-                    switch (kind) {
-                    case 'p':
-                        target = native_unit_identity_source_target(value);
-                        if (!target) target = translate_legends_actor(value, 0, true);
-                        if (!target && contains_cjk_utf8(value))
-                            target = translate_ui_message_capture(value, true);
-                        break;
-                    case 'e': target = translate_legends_name(value, false); break;
-                    case 'r': target = translate_deity_spheres(value); break;
-                    case 's': target = translate_ui_catalog_capture(rule, index, value); break;
-                    default: break;
-                    }
+                    const auto target = translate_adventure_divine_capture(rule, index, value);
                     field->second = target && !target->empty();
                 }
                 if (!field->second) continue;
@@ -13131,6 +13165,46 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
                     }
                 }
             }
+            // Native nickname punctuation belongs to one name, including
+            // commas and "and". Only separators outside it divide identities.
+            bool nickname = false, has_comma = false, has_conjunction = false;
+            size_t comma_count = 0;
+            size_t profession_comma = std::string_view::npos;
+            for (size_t at = 0; at < label.size(); ++at) {
+                if (!nickname && label[at] == '`') { nickname = true; continue; }
+                if (nickname) {
+                    if (label[at] == '\'') nickname = false;
+                    continue;
+                }
+                if (label[at] == ',') { has_comma = true; ++comma_count; }
+                if (label.substr(at).starts_with(", ")) profession_comma = at;
+                if (label.substr(at).starts_with(" and ")) has_conjunction = true;
+            }
+            const bool definite_identity = value.starts_with("the ") || value.starts_with("The ");
+            const bool unnamed_identity = value.starts_with("a ") || value.starts_with("A ") ||
+                value.starts_with("an ") || value.starts_with("An ");
+            const bool quoted_identity = label.size() >= 2 &&
+                label.front() == '"' && label.back() == '"';
+            bool named_profession_attempted = false;
+            const auto named_profession = [&]() -> std::optional<std::string> {
+                named_profession_attempted = true;
+                const auto suffix = label.substr(profession_comma + 2);
+                auto descriptor = translate_creature_descriptor(suffix, true);
+                // The occupation belongs to its own vocabulary; neither it
+                // nor its separator is part of the personal name.
+                if (!complete(descriptor)) descriptor = translate_unit_profession(suffix);
+                if (!complete(descriptor)) return std::nullopt;
+                const auto name = personal_name(label.substr(0, profession_comma));
+                if (!name) return std::nullopt;
+                return *name + "，" + *descriptor + status;
+            };
+            // Ordinary report captions already delimit the name and role.
+            // Resolve those fields before treating the whole caption as a
+            // species or occupation. Lists and assumed identities retain
+            // their original precedence and every failed field falls back.
+            if (comma_count == 1 && profession_comma != std::string_view::npos &&
+                    !has_conjunction && !definite_identity && !unnamed_identity && !quoted_identity)
+                if (const auto identity = named_profession()) return identity;
             const auto creature = translate_creature_label(label);
             if (translation_complete_with_native_nicknames(creature, label))
                 return *creature + status;
@@ -13139,20 +13213,6 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             // whole role must resolve before probing its final word as a name.
             const auto role = translate_unit_profession(label, false);
             if (complete(role)) return *role + status;
-            // Native nickname punctuation belongs to one name, including
-            // commas and "and". Only separators outside it divide identities.
-            bool nickname = false, has_comma = false, has_conjunction = false;
-            size_t profession_comma = std::string_view::npos;
-            for (size_t at = 0; at < label.size(); ++at) {
-                if (!nickname && label[at] == '`') { nickname = true; continue; }
-                if (nickname) {
-                    if (label[at] == '\'') nickname = false;
-                    continue;
-                }
-                if (label[at] == ',') has_comma = true;
-                if (label.substr(at).starts_with(", ")) profession_comma = at;
-                if (label.substr(at).starts_with(" and ")) has_conjunction = true;
-            }
             // The formatter prints species + occupation + name as well as
             // name, species + occupation. Resolve the longest complete role
             // first: a multiword profession must never enter the name parser.
@@ -13171,11 +13231,6 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             // a/an + species + profession + organization fields. Resolve
             // the entire identity before treating an organization's `and`
             // as a list separator or its profession as a personal name.
-            const bool definite_identity = value.starts_with("the ") || value.starts_with("The ");
-            const bool unnamed_identity = value.starts_with("a ") || value.starts_with("A ") ||
-                value.starts_with("an ") || value.starts_with("An ");
-            const bool quoted_identity = label.size() >= 2 &&
-                label.front() == '"' && label.back() == '"';
             if (definite_identity || unnamed_identity || quoted_identity) {
                 std::string identity_source = definite_identity ? "the " + std::string(label)
                     : std::string(label);
@@ -13206,19 +13261,9 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
             // personal-name field after a caste merely because names permit
             // title connectors. Complete species were already handled above.
             if (!has_conjunction) {
-                if (const size_t comma = profession_comma; comma != std::string_view::npos) {
-                    const auto suffix = label.substr(comma + 2);
-                    auto descriptor = translate_creature_descriptor(suffix, true);
-                    // Fortress status announcements append the occupation
-                    // after the name. Resolve that role in its own vocabulary;
-                    // the comma and profession are not part of the name.
-                    if (!complete(descriptor)) descriptor = translate_unit_profession(suffix);
-                    if (complete(descriptor)) {
-                        const auto person = label.substr(0, comma);
-                        const auto name = personal_name(person);
-                        if (name)
-                            return *name + "，" + *descriptor + status;
-                    }
+                if (profession_comma != std::string_view::npos) {
+                    if (!named_profession_attempted)
+                        if (const auto identity = named_profession()) return identity;
                 } else {
                     // Resolve species + profession + name before the shorter
                     // species + name form. Otherwise `Human Animal Trainer
@@ -13323,6 +13368,12 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
         target = exact_literal_translation(caption);
         if (complete(target)) return target;
     }
+    // A unit capture must end with the unit identity. Failed identities may
+    // not become item/material phrases or a word-by-word name below: in a
+    // combat record that can swallow the following RAW attack verb. Native
+    // bindings, complete personal/role forms and literal labels above retain
+    // their usual handling; the enclosing grammar owns every other field.
+    if (unit_label) return std::nullopt;
     // e68020 passes written titles unchanged to every item action, including
     // a title's own question mark and an optional copy/designation wrapper.
     // Only complete native book productions establish this interpretation;
@@ -17302,6 +17353,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_squads_layers.inc"
 #include "native_pause_layers.inc"
 #include "native_worldgen_layers.inc"
+#include "native_topbar_layers.inc"
 
 #include "native_prepared_ui_frame.inc"
 
@@ -17452,6 +17504,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "announcement_combat.inc"
 #include "adventure_barter_reply.inc"
 #include "native_announcement_log_speech_composition.inc"
+#include "native_announcement_cancellation.inc"
 #include "native_announcement_log_composition.inc"
 #include "announcement_translation.inc"
 #include "fortress_item_captions.inc"
@@ -17841,6 +17894,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_notification_layer_matching.inc"
 #include "native_announcement_log_layer_matching.inc"
 #include "native_pause_layer_matching.inc"
+#include "native_topbar_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
 #include "native_squads_layer_matching.inc"
 #include "native_info_layer_translation.inc"
@@ -17849,6 +17903,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_tooltip_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
+#include "native_topbar_layer_translation.inc"
 #include "worldgen_layer_matching.inc"
 
 void Overlay::render_dfhack_layer(SDL_Renderer *renderer,
@@ -17900,6 +17955,10 @@ std::vector<Match> Overlay::find_matches(int only_y,
 
 std::vector<Match> Overlay::find_native_matches(int only_y,
         const unsigned char *screen_override, bool primary_pages_probed) const {
+    // The native top bar is a complete independent producer. Its private
+    // grid can never select a page probe or the full-screen fallback.
+    if (native_topbar_foreground_view(gps_))
+        return find_native_topbar_matches(only_y, screen_override);
     NativeCapturedTextReadScope captured_text_reads;
     NativeAdventureBackgroundReadScope adventure_background_reads;
     RenderTimingScope match_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Match);
@@ -18544,6 +18603,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     const bool native_legends_body = native_history_legends_page();
     if (native_legends_body)
         append_legends_detail_matches(screen_rows, result, only_y, screen_override);
+    // The arrival modal is also retained as an announcement. Its dedicated
+    // reader must claim the complete prose before generic announcement
+    // recovery can reinterpret its title as a speaker and its body as a work.
+    append_embark_introduction_matches(screen_rows, result, only_y, screen_override != nullptr);
     append_native_message_paragraphs(screen_rows, result, untranslated_help_rows,
         only_y, screen_override, true);
     retain_native_text_cells(screen_rows, map_text_cells);
@@ -18669,6 +18732,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         // Zone drawing can retain the ordinary map HUD state. Its fixed
         // addst callers own these controls independently of that page gate.
         append_fortress_zone_drawing_matches(screen_rows, result, only_y);
+        append_fortress_zone_details(screen_rows, result, only_y,
+            screen_override != nullptr);
         if (!local_fortress_hud) {
             append_fortress_petition_site_names(screen_rows, result, only_y,
                 screen_override != nullptr);
@@ -18769,6 +18834,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         : capture_world_civilization_details(world_site ? &*world_site : nullptr);
     const auto civilization_trade_rows = civilization_details
         ? capture_world_civilization_trade_rows(*civilization_details) : std::vector<NativeTextCard>{};
+    append_river_name_matches(screen_rows, result, only_y);
     if (embark_site) {
         append_embark_site_headings(*embark_site, screen_rows, result, only_y);
         append_adventure_travel_status_paragraphs(*embark_site, screen_rows, result, only_y);
@@ -19269,7 +19335,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         screen_override, &name_editor_regions);
 
     context_detail.checkpoint(RenderTimingStage::Tooltips);
-    append_embark_introduction_matches(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_economy_matches(screen_rows, result, only_y, screen_override != nullptr);
 
     context_detail.checkpoint(RenderTimingStage::Choices);
@@ -43853,6 +43918,8 @@ static void native_announcement_log_present_layer(SDL_Renderer *renderer,
     void (*draw_log)(SDL_Renderer *));
 static void native_pause_present_layer(SDL_Renderer *renderer,
     void (*draw_pause)(SDL_Renderer *));
+static void native_topbar_present_layer(SDL_Renderer *renderer,
+    void (*draw_topbar)(SDL_Renderer *));
 static void native_resolution_present_layer(SDL_Renderer *renderer,
     void (*draw_resolution)(SDL_Renderer *));
 static void native_worldgen_present_layer(SDL_Renderer *renderer,
@@ -43862,6 +43929,7 @@ static graphicst *native_dfhack_display_inputs_select(graphicst *) noexcept;
 static graphicst *native_dfhack_render_read_graphics();
 #ifdef _WIN32
 static bool native_dfhack_display_inputs_active() noexcept;
+static void bind_native_worldgen_display_frame(const graphicst *graphics);
 #endif
 extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
     if (g_native_process_exiting.load(std::memory_order_acquire)) {
@@ -43898,6 +43966,11 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
                 g_native_graphics_read_view = previous_view;
             }
         } graphics;
+#ifdef _WIN32
+        // A producer can publish another buffer between display and Present.
+        // Rebind under this composite's lock before deciding which page to draw.
+        bind_native_worldgen_display_frame(native_graphics());
+#endif
         apply_pending_arena_translated_search();
         boundary.checkpoint("arena_search");
         g_overlay.render(renderer);
@@ -43909,6 +43982,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
                 g_overlay.render_native_help_layer(help_renderer);
             });
         } else {
+            native_topbar_present_layer(renderer, [](SDL_Renderer *topbar_renderer) {
+                g_overlay.render_native_topbar_layer(topbar_renderer);
+            });
             native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
                 g_overlay.render_native_info_layer(info_renderer);
             });

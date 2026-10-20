@@ -201,6 +201,7 @@ namespace Hooks {
         rulesets_.swap(candidate.rulesets_);
         rule_prefix_indexes_.swap(candidate.rule_prefix_indexes_);
         literal_leaf_rules_.swap(candidate.literal_leaf_rules_);
+        context_free_namespaces_.swap(candidate.context_free_namespaces_);
         cyclic_rule_signatures_.swap(candidate.cyclic_rule_signatures_);
         static_creature_names_.swap(candidate.static_creature_names_);
         loaded_dependencies_.swap(candidate.loaded_dependencies_);
@@ -288,6 +289,7 @@ namespace Hooks {
         rulesets_.clear();
         rule_prefix_indexes_.clear();
         literal_leaf_rules_.clear();
+        context_free_namespaces_.clear();
         cyclic_rule_signatures_.clear();
         static_creature_names_.clear();
         creature_name_resolver_ = {};
@@ -1327,7 +1329,7 @@ namespace Hooks {
     }
 
     std::optional<std::string> RulesetsManager::translate_anatomy(
-            const std::string& text) const {
+            const std::string& text, bool tissue_suffix) const {
         dfcn::TranslationStateScope translation_scope;
         return scoped_rule_translation([&]() -> std::optional<std::string> {
             if (text.empty() || text.find_first_of(".;:!?\"()\n\r") != std::string::npos)
@@ -1341,6 +1343,50 @@ namespace Hooks {
                     if (!best || result->preferred_to(*best)) best = result.get();
                 }
                 return best ? std::optional<std::string>(best->translated) : std::nullopt;
+            };
+            const auto complete_body = [&](const std::string& source)
+                    -> std::optional<std::string> {
+                // Complete RAW/INDIVIDUAL_NAME spellings own their meaning:
+                // e.g. fourth finger is an anatomical name, not a generic
+                // numbered finger. Only an otherwise unknown whole body
+                // name can use 13345d0's positive-index fallback.
+                if (auto part = complete(source, "::health::bodypart::bodypart_main"))
+                    return part;
+                // RAW STP expands the complete singular BODY/INDIVIDUAL_NAME
+                // with one final s. Keep that operation inside the anatomy
+                // grammar and require the whole singular name to resolve.
+                if (auto part = complete(source, "::health::bodypart::stp_bodypart"))
+                    return part;
+                const size_t separator = source.find(' ');
+                if (separator == std::string::npos) return std::nullopt;
+                const auto ordinal = std::string_view(source).substr(0, separator);
+                if (!ordinal.empty() && ordinal.front() >= '0' && ordinal.front() <= '9') {
+                    // 52eb70(param3=false) spells 1..19 and emits ungrouped
+                    // decimal digits plus the English ordinal suffix above
+                    // that. Its BODY caller accepts only positive int32s.
+                    // Validate the complete numeric token before the data
+                    // grammar so #digits cannot admit 21th or a zero prefix.
+                    if (ordinal.front() == '0') return std::nullopt;
+                    std::uint32_t number = 0;
+                    size_t digits = 0;
+                    for (; digits < ordinal.size(); ++digits) {
+                        const char ch = ordinal[digits];
+                        if (ch < '0' || ch > '9') break;
+                        const auto digit = static_cast<std::uint32_t>(ch - '0');
+                        if (number > (INT32_MAX - digit) / 10) return std::nullopt;
+                        number = number * 10 + digit;
+                    }
+                    if (number < 20 || ordinal.size() - digits != 2) return std::nullopt;
+                    std::string_view suffix = "th";
+                    const auto last_two = number % 100;
+                    if (last_two < 11 || last_two > 13) {
+                        if (number % 10 == 1) suffix = "st";
+                        else if (number % 10 == 2) suffix = "nd";
+                        else if (number % 10 == 3) suffix = "rd";
+                    }
+                    if (!matches_literal(ordinal.substr(digits), suffix)) return std::nullopt;
+                }
+                return complete(source, "::health::bodypart::numbered_bodypart");
             };
             std::vector<std::string> parts;
             size_t start = 0;
@@ -1359,7 +1405,7 @@ namespace Hooks {
             // tissue namespace, not the body-part vocabulary: reversing all comma
             // fields would turn "finger, hand, skin" into "skin hand finger".
             std::string tissue;
-            if (parts.size() > 1) {
+            if (tissue_suffix && parts.size() > 1) {
                 if (auto suffix = complete(", " + parts.back(), "::health::bodypart::main_tissue")) {
                     tissue = std::move(*suffix);
                     parts.pop_back();
@@ -1367,10 +1413,10 @@ namespace Hooks {
             }
             std::string translated;
             for (auto it = parts.rbegin(); it != parts.rend(); ++it) {
-                auto part = complete(*it, "::health::bodypart::bodypart_main");
+                auto part = complete_body(*it);
                 // An injury may name a tissue on its own (skin, nail, etc.).
                 // Only a single unqualified field can use this fallback.
-                if (!part && parts.size() == 1 && text.find(',') == std::string::npos)
+                if (!part && tissue_suffix && parts.size() == 1 && text.find(',') == std::string::npos)
                     part = complete(*it, "::health::bodypart::tissue");
                 if (!part) return std::nullopt;
                 translated += *part;
@@ -1669,6 +1715,43 @@ namespace Hooks {
         }
         rule_prefix_indexes_ = std::move(indexes);
         literal_leaf_rules_ = std::move(leaves);
+        // Build a conservative closure from fixed leaves upwards. A native
+        // owner, opaque placeholder, number/replacer special form or recursive
+        // component keeps its original contextual policy. This also excludes
+        // the dwarf-language preservation callback even when that mode is off.
+        std::unordered_map<std::string, std::vector<std::string>> dependents;
+        std::unordered_map<std::string, size_t> unresolved;
+        std::vector<std::string> ready;
+        for (const auto &[identifier, rules] : rulesets_) {
+            if (!external_prefix_kind(identifier).empty() || identifier == "::dwarf_language" ||
+                    identifier.starts_with("::dwarf_language::")) continue;
+            std::unordered_set<std::string> dependencies;
+            bool fixed = true;
+            for (const auto &[source, target] : rules) {
+                (void)target;
+                for (const auto &token : source) {
+                    if (token.type == Type::Literal) continue;
+                    if (!token.value.starts_with("::") || !rulesets_.contains(token.value)) {
+                        fixed = false;
+                        break;
+                    }
+                    dependencies.insert(token.value);
+                }
+                if (!fixed) break;
+            }
+            if (!fixed) continue;
+            unresolved.emplace(identifier, dependencies.size());
+            for (const auto &dependency : dependencies) dependents[dependency].push_back(identifier);
+            if (dependencies.empty()) ready.push_back(identifier);
+        }
+        context_free_namespaces_.clear();
+        for (size_t at = 0; at < ready.size(); ++at) {
+            const auto &identifier = ready[at];
+            context_free_namespaces_.insert(identifier);
+            if (const auto found = dependents.find(identifier); found != dependents.end())
+                for (const auto &dependent : found->second)
+                    if (--unresolved.find(dependent)->second == 0) ready.push_back(dependent);
+        }
     }
 
     bool RulesetsManager::rule_literals_fit(std::string_view text, const Tokens& tokens) const {
@@ -1801,7 +1884,8 @@ namespace Hooks {
         // Freeze this query's identity context for both lookup and insertion.
         // A nested owner scope can restore a different context before return;
         // it must never put this query's candidate under that restored key.
-        const std::uint64_t context_revision = context_revision_provider_
+        const bool context_free = context_free_namespaces_.contains(identifier);
+        const std::uint64_t context_revision = !context_free && context_revision_provider_
             ? context_revision_provider_() : 0;
         const ResolutionSession::KeyView query{
             identifier, text, context_revision};
@@ -1810,7 +1894,7 @@ namespace Hooks {
         // Completed proofs are safe even during a callback: they need no
         // unfinished recursive owner to resolve their source again.
         if (auto outer_it = memo_cache_.find(identifier);
-                !dfcn::dfhack_world_read_attempt && outer_it != memo_cache_.end()) {
+                (context_free || !dfcn::dfhack_world_read_attempt) && outer_it != memo_cache_.end()) {
             if (auto* cached = outer_it->second.find(text, context_revision)) {
                 session.memo.emplace(ResolutionSession::Key{
                     identifier, text, context_revision}, *cached);
@@ -1838,11 +1922,12 @@ namespace Hooks {
             const bool stable = session.cycle_revision == cycle_revision &&
                 (!dfcn::active_translation_work ||
                     dfcn::active_translation_work->cycle_revision == shared_cycle_revision) &&
-                (context_revision_provider_ ? context_revision_provider_() : 0) == context_revision;
+                (context_free || (context_revision_provider_ ? context_revision_provider_() : 0) ==
+                    context_revision) && !dfcn::translation_work_exhausted();
             if (stable) {
                 session.memo.emplace(ResolutionSession::Key{
                     identifier, text, context_revision}, results);
-                if (!dfcn::dfhack_world_read_attempt)
+                if (context_free || !dfcn::dfhack_world_read_attempt)
                     memo_cache_[identifier].insert(text, results, context_revision);
             }
             return results;

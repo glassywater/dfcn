@@ -11,6 +11,29 @@ using NativeWorldgenViewportFn = void (*)(const void *, int32_t *, int32_t *);
 using NativeWorldgenHistoryClearFn = void (*)(NativeHistoryRichBox *);
 static NativeWorldgenViewportFn g_native_worldgen_viewport = nullptr;
 
+// The producer and SDL display can hold different members of the native
+// double buffer. Bind only at the raw display/Present boundary, where the
+// pinned header and the published viewscreen owner identify the same page.
+static void bind_native_worldgen_display_frame(const graphicst *graphics) {
+    if (!graphics || graphics != native_dfhack_render_read_graphics() ||
+            graphics != g_native_graphics_read_view || !graphics->screen ||
+            !native_worldgen_has_frame() || g_drawing_overlay ||
+            native_private_ui_write_active(graphics) ||
+            NativeDfhackForegroundScope::active || g_native_info_foreground ||
+            g_native_character_foreground) return;
+    const auto *source = g_native_worldgen_layer.foreground.graphics();
+    if (graphics->dimx != source->dimx || graphics->dimy != source->dimy ||
+            graphics->screen_pixel_x != source->screen_pixel_x ||
+            graphics->screen_pixel_y != source->screen_pixel_y ||
+            graphics->tile_pixel_x != source->tile_pixel_x ||
+            graphics->tile_pixel_y != source->tile_pixel_y ||
+            graphics->screen == source->screen || graphics->screen == source->screen_top ||
+            native_current_viewscreen() != g_native_worldgen_owner) return;
+    // Dimensions alone never claim another page or a private component.
+    // Keep main_view's exact-grid check after proving this native binding.
+    g_native_worldgen_background_grid = graphics->screen;
+}
+
 static void native_worldgen_clear_shared_ui(graphicst &gps) {
     const size_t count = static_cast<size_t>(gps.dimx) * gps.dimy;
     // The native viewscreen's clear now belongs to its private grid. Retire

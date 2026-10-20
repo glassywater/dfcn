@@ -295,8 +295,9 @@ static bool prepare_native_dfhack_draw_entries(HMODULE module) {
         std::vector<unsigned char> prefix;
         size_t displacement_offset = 0, instruction_end = 0;
     };
-    // Complete instructions from the installed 53.16-r2 exports. Only
-    // paintTile and clear relocate a RIP-relative global operand.
+    // Complete instructions shared by the 53.16-r2/r3 exports. Only
+    // paintTile and clear relocate a RIP-relative global operand; its
+    // displacement belongs to the loaded image, not the reference build.
     const Profile profiles[] = {
         {NativeDfhackDrawApi::Tile,
             "?paintTile@Screen@DFHack@@YA_NAEBUPen@12@HH_NPEQgraphic_viewportst@df@@PEAH@Z",
@@ -341,14 +342,19 @@ static bool prepare_native_dfhack_draw_entries(HMODULE module) {
         if (hook.installed) continue;
         if (!hook.original) {
             auto *entry = reinterpret_cast<unsigned char *>(GetProcAddress(module, profile.symbol));
+            auto prefix = profile.prefix;
             std::vector<NativeRelativeFixup> fixups;
-            if (entry && profile.instruction_end) {
-                int32_t relative = 0;
-                std::memcpy(&relative, profile.prefix.data() + profile.displacement_offset, sizeof(relative));
+            if (profile.instruction_end) {
+                if (!native_dfhack_read_entry_prefix(entry, prefix,
+                        {profile.displacement_offset}, label)) return false;
+                const auto *target = native_dfhack_relative_target(
+                    entry, profile.displacement_offset, profile.instruction_end);
+                if (target != reinterpret_cast<const unsigned char *>(GetProcAddress(module,
+                        "?gps@global@df@@3PEAUgraphic@2@EA"))) return false;
                 fixups.push_back({profile.displacement_offset, profile.instruction_end,
-                    reinterpret_cast<uintptr_t>(entry + profile.instruction_end + relative)});
+                    reinterpret_cast<uintptr_t>(target)});
             }
-            if (!entry || !hook.prepare(entry, profile.prefix, profile.wrapper, fixups, label)) return false;
+            if (!entry || !hook.prepare(entry, prefix, profile.wrapper, fixups, label)) return false;
         }
     }
     for (auto &hook : g_native_dfhack_draw_entries)

@@ -1,0 +1,5398 @@
+0x140a0b4a0: mov    QWORD PTR [rsp+0x20],rbx
+0x140a0b4a5: push   rbp
+0x140a0b4a6: push   rsi
+0x140a0b4a7: push   rdi
+0x140a0b4a8: push   r12
+0x140a0b4aa: push   r13
+0x140a0b4ac: push   r14
+0x140a0b4ae: push   r15
+0x140a0b4b0: lea    rbp,[rsp-0x180]
+0x140a0b4b8: sub    rsp,0x280
+0x140a0b4bf: mov    rax,QWORD PTR [rip+0xe90b7a]        # 0x14189c040
+0x140a0b4c6: xor    rax,rsp
+0x140a0b4c9: mov    QWORD PTR [rbp+0x170],rax
+0x140a0b4d0: mov    QWORD PTR [rbp-0x50],r8
+0x140a0b4d4: mov    r13,rdx
+0x140a0b4d7: mov    QWORD PTR [rsp+0x58],rdx
+0x140a0b4dc: mov    rbx,rcx
+0x140a0b4df: cmp    DWORD PTR [rdx+0x4],0x28
+0x140a0b4e3: jge    0x140a0d317
+0x140a0b4e9: movzx  eax,WORD PTR [rcx+0xa0]
+0x140a0b4f0: mov    edi,0x7
+0x140a0b4f5: cmp    ax,0x63
+0x140a0b4f9: je     0x140a0b505
+0x140a0b4fb: cmp    ax,0x62
+0x140a0b4ff: jne    0x140a0b58b
+0x140a0b505: cmp    DWORD PTR [rcx+0x3bc],0xffffffff
+0x140a0b50c: je     0x140a0b58b
+0x140a0b50e: call   0x1413b3090
+0x140a0b513: test   rax,rax
+0x140a0b516: je     0x140a0b58b
+0x140a0b518: mov    edx,0xd
+0x140a0b51d: mov    rcx,rax
+0x140a0b520: call   0x140b98d30
+0x140a0b525: mov    edx,eax
+0x140a0b527: lea    rcx,[rip+0x1aee78a]        # 0x1424f9cb8
+0x140a0b52e: call   0x140067dc0
+0x140a0b533: test   rax,rax
+0x140a0b536: je     0x140a0b58b
+0x140a0b538: mov    rdx,QWORD PTR [rax+0x130]
+0x140a0b53f: test   rdx,rdx
+0x140a0b542: je     0x140a0b58b
+0x140a0b544: mov    rdx,QWORD PTR [rdx+0x28]
+0x140a0b548: test   rdx,rdx
+0x140a0b54b: je     0x140a0b58b
+0x140a0b54d: cmp    WORD PTR [rdx],0x3
+0x140a0b551: jne    0x140a0b58b
+0x140a0b553: mov    edx,DWORD PTR [rdx+0x10]
+0x140a0b556: lea    rcx,[rip+0x1adc87b]        # 0x1424e7dd8
+0x140a0b55d: call   0x140072570
+0x140a0b562: test   rax,rax
+0x140a0b565: je     0x140a0b58b
+0x140a0b567: lea    rcx,[rax+0x68]
+0x140a0b56b: mov    edx,edi
+0x140a0b56d: call   0x140071f90
+0x140a0b572: test   al,al
+0x140a0b574: je     0x140a0b58b
+0x140a0b576: mov    DWORD PTR [r13+0x0],0x3a
+0x140a0b57e: mov    DWORD PTR [r13+0x4],0x28
+0x140a0b586: jmp    0x140a0d317
+0x140a0b58b: test   DWORD PTR [rbx+0x110],0x20000
+0x140a0b595: jne    0x140a0d317
+0x140a0b59b: lea    r12,[rbx+0x2b8]
+0x140a0b5a2: mov    rcx,r12
+0x140a0b5a5: call   0x14006f370
+0x140a0b5aa: test   eax,eax
+0x140a0b5ac: jle    0x140a0b5ff
+0x140a0b5ae: lea    esi,[rax-0x1]
+0x140a0b5b1: test   esi,esi
+0x140a0b5b3: js     0x140a0b5ff
+0x140a0b5b5: movsxd rdi,esi
+0x140a0b5b8: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a0b5c0: mov    rdx,rdi
+0x140a0b5c3: mov    rcx,r12
+0x140a0b5c6: call   0x14006f360
+0x140a0b5cb: mov    edx,DWORD PTR [rax]
+0x140a0b5cd: lea    rcx,[rip+0x1ad824c]        # 0x1424e3820
+0x140a0b5d4: call   0x140075500
+0x140a0b5d9: test   rax,rax
+0x140a0b5dc: je     0x140a0b5ec
+0x140a0b5de: lea    rcx,[rax+0x8]
+0x140a0b5e2: call   0x14006ee50
+0x140a0b5e7: test   rax,rax
+0x140a0b5ea: jne    0x140a0b5f7
+0x140a0b5ec: mov    rdx,rdi
+0x140a0b5ef: mov    rcx,r12
+0x140a0b5f2: call   0x1400b9a90
+0x140a0b5f7: dec    rdi
+0x140a0b5fa: sub    esi,0x1
+0x140a0b5fd: jns    0x140a0b5c0
+0x140a0b5ff: lea    rcx,[rbx+0x2d0]
+0x140a0b606: call   0x14006f370
+0x140a0b60b: test   eax,eax
+0x140a0b60d: jle    0x140a0b667
+0x140a0b60f: lea    esi,[rax-0x1]
+0x140a0b612: test   esi,esi
+0x140a0b614: js     0x140a0b667
+0x140a0b616: movsxd rdi,esi
+0x140a0b619: nop    DWORD PTR [rax+0x0]
+0x140a0b620: mov    rdx,rdi
+0x140a0b623: lea    rcx,[rbx+0x2d0]
+0x140a0b62a: call   0x14006f360
+0x140a0b62f: mov    edx,DWORD PTR [rax]
+0x140a0b631: lea    rcx,[rip+0x1ad81e8]        # 0x1424e3820
+0x140a0b638: call   0x140075500
+0x140a0b63d: test   rax,rax
+0x140a0b640: je     0x140a0b650
+0x140a0b642: lea    rcx,[rax+0x8]
+0x140a0b646: call   0x14006ee50
+0x140a0b64b: test   rax,rax
+0x140a0b64e: jne    0x140a0b65f
+0x140a0b650: mov    rdx,rdi
+0x140a0b653: lea    rcx,[rbx+0x2d0]
+0x140a0b65a: call   0x1400b9a90
+0x140a0b65f: dec    rdi
+0x140a0b662: sub    esi,0x1
+0x140a0b665: jns    0x140a0b620
+0x140a0b667: lea    rcx,[rbx+0x2e8]
+0x140a0b66e: call   0x14006f370
+0x140a0b673: test   eax,eax
+0x140a0b675: jle    0x140a0b6c8
+0x140a0b677: lea    esi,[rax-0x1]
+0x140a0b67a: test   esi,esi
+0x140a0b67c: js     0x140a0b6c8
+0x140a0b67e: movsxd rdi,esi
+0x140a0b681: mov    rdx,rdi
+0x140a0b684: lea    rcx,[rbx+0x2e8]
+0x140a0b68b: call   0x14006f360
+0x140a0b690: mov    edx,DWORD PTR [rax]
+0x140a0b692: lea    rcx,[rip+0x1ad8187]        # 0x1424e3820
+0x140a0b699: call   0x140075500
+0x140a0b69e: test   rax,rax
+0x140a0b6a1: je     0x140a0b6b1
+0x140a0b6a3: lea    rcx,[rax+0x8]
+0x140a0b6a7: call   0x14006ee50
+0x140a0b6ac: test   rax,rax
+0x140a0b6af: jne    0x140a0b6c0
+0x140a0b6b1: mov    rdx,rdi
+0x140a0b6b4: lea    rcx,[rbx+0x2e8]
+0x140a0b6bb: call   0x1400b9a90
+0x140a0b6c0: dec    rdi
+0x140a0b6c3: sub    esi,0x1
+0x140a0b6c6: jns    0x140a0b681
+0x140a0b6c8: cmp    QWORD PTR [rbx+0x490],0x0
+0x140a0b6d0: jne    0x140a0d317
+0x140a0b6d6: mov    rcx,rbx
+0x140a0b6d9: call   0x14138ed20
+0x140a0b6de: mov    esi,0x1
+0x140a0b6e3: mov    edi,0x64
+0x140a0b6e8: test   al,al
+0x140a0b6ea: je     0x140a0b90b
+0x140a0b6f0: test   DWORD PTR [rbx+0x110],0x8000
+0x140a0b6fa: je     0x140a0b90b
+0x140a0b700: mov    edx,0x3a
+0x140a0b705: mov    rcx,rbx
+0x140a0b708: call   0x140073230
+0x140a0b70d: test   al,al
+0x140a0b70f: jne    0x140a0b90b
+0x140a0b715: movzx  eax,WORD PTR [rbx+0xa0]
+0x140a0b71c: cmp    ax,0x67
+0x140a0b720: je     0x140a0b90b
+0x140a0b726: cmp    ax,0x68
+0x140a0b72a: je     0x140a0b90b
+0x140a0b730: mov    ecx,edi
+0x140a0b732: call   0x140071f30
+0x140a0b737: test   eax,eax
+0x140a0b739: jne    0x140a0b90b
+0x140a0b73f: lea    r9,[rsp+0x40]
+0x140a0b744: lea    r8,[rsp+0x44]
+0x140a0b749: lea    rdx,[rsp+0x50]
+0x140a0b74e: mov    rcx,rbx
+0x140a0b751: call   0x141367430
+0x140a0b756: movzx  r9d,WORD PTR [rsp+0x40]
+0x140a0b75c: movzx  r8d,WORD PTR [rsp+0x44]
+0x140a0b762: movzx  edx,WORD PTR [rsp+0x50]
+0x140a0b767: lea    rcx,[rip+0x19c5d82]        # 0x1423d14f0
+0x140a0b76e: call   0x140068010
+0x140a0b773: test   al,0x8
+0x140a0b775: je     0x140a0b90b
+0x140a0b77b: mov    edx,esi
+0x140a0b77d: mov    rcx,rbx
+0x140a0b780: call   0x1400731c0
+0x140a0b785: test   al,al
+0x140a0b787: jne    0x140a0b90b
+0x140a0b78d: mov    edx,0x2c
+0x140a0b792: mov    BYTE PTR [rsp+0x28],al
+0x140a0b796: mov    DWORD PTR [rsp+0x20],0xc350
+0x140a0b79e: xor    r9d,r9d
+0x140a0b7a1: mov    r8d,0xc8
+0x140a0b7a7: mov    rcx,rbx
+0x140a0b7aa: call   0x1409e57d0
+0x140a0b7af: test   rax,rax
+0x140a0b7b2: je     0x140a0b90b
+0x140a0b7b8: cmp    DWORD PTR [rax],0xafc8
+0x140a0b7be: jl     0x140a0b90b
+0x140a0b7c4: mov    DWORD PTR [rax],0x9c40
+0x140a0b7ca: lea    rcx,[rbp+0x138]
+0x140a0b7d1: call   0x140065b00
+0x140a0b7d6: nop
+0x140a0b7d7: lea    rdx,[rsp+0x60]
+0x140a0b7dc: lea    rcx,[rip+0x19d98e5]        # 0x1423e50c8
+0x140a0b7e3: call   0x14006f240
+0x140a0b7e8: lea    rdx,[rsp+0x68]
+0x140a0b7ed: lea    rcx,[rip+0x19d98d4]        # 0x1423e50c8
+0x140a0b7f4: call   0x14006f230
+0x140a0b7f9: lea    r8,[rsp+0x68]
+0x140a0b7fe: lea    rdx,[rsp+0x4a]
+0x140a0b803: lea    rcx,[rsp+0x60]
+0x140a0b808: call   0x14006ee20
+0x140a0b80d: xor    edx,edx
+0x140a0b80f: movzx  ecx,BYTE PTR [rax]
+0x140a0b812: call   0x1400657b0
+0x140a0b817: test   al,al
+0x140a0b819: je     0x140a0b89e
+0x140a0b81f: nop
+0x140a0b820: lea    rcx,[rsp+0x60]
+0x140a0b825: call   0x14006ee10
+0x140a0b82a: mov    rcx,QWORD PTR [rax]
+0x140a0b82d: mov    QWORD PTR [rbp+0x120],rcx
+0x140a0b834: test   DWORD PTR [rcx+0x110],0x2010002
+0x140a0b83e: jne    0x140a0b872
+0x140a0b840: cmp    rcx,rbx
+0x140a0b843: je     0x140a0b872
+0x140a0b845: movzx  r9d,WORD PTR [rsp+0x40]
+0x140a0b84b: movzx  r8d,WORD PTR [rsp+0x44]
+0x140a0b851: movzx  edx,WORD PTR [rsp+0x50]
+0x140a0b856: call   0x14014da20
+0x140a0b85b: test   al,al
+0x140a0b85d: je     0x140a0b872
+0x140a0b85f: lea    rdx,[rbp+0x120]
+0x140a0b866: lea    rcx,[rbp+0x138]
+0x140a0b86d: call   0x1400b9980
+0x140a0b872: lea    rcx,[rsp+0x60]
+0x140a0b877: call   0x14006ee00
+0x140a0b87c: lea    r8,[rsp+0x68]
+0x140a0b881: lea    rdx,[rsp+0x4a]
+0x140a0b886: lea    rcx,[rsp+0x60]
+0x140a0b88b: call   0x14006ee20
+0x140a0b890: xor    edx,edx
+0x140a0b892: movzx  ecx,BYTE PTR [rax]
+0x140a0b895: call   0x1400657b0
+0x140a0b89a: test   al,al
+0x140a0b89c: jne    0x140a0b820
+0x140a0b89e: lea    rcx,[rbp+0x138]
+0x140a0b8a5: call   0x14006ee50
+0x140a0b8aa: test   rax,rax
+0x140a0b8ad: je     0x140a0b8ff
+0x140a0b8af: lea    rcx,[rbp+0x138]
+0x140a0b8b6: call   0x14006ee50
+0x140a0b8bb: mov    rcx,rax
+0x140a0b8be: call   0x140071f30
+0x140a0b8c3: movsxd rdx,eax
+0x140a0b8c6: lea    rcx,[rbp+0x138]
+0x140a0b8cd: call   0x14006f220
+0x140a0b8d2: mov    rcx,QWORD PTR [rax]
+0x140a0b8d5: test   rcx,rcx
+0x140a0b8d8: je     0x140a0b8ff
+0x140a0b8da: mov    DWORD PTR [r13+0x0],0x42
+0x140a0b8e2: mov    QWORD PTR [r13+0x8],rcx
+0x140a0b8e6: mov    DWORD PTR [r13+0x4],0x28
+0x140a0b8ee: lea    rcx,[rbp+0x138]
+0x140a0b8f5: call   0x140067160
+0x140a0b8fa: jmp    0x140a0d317
+0x140a0b8ff: lea    rcx,[rbp+0x138]
+0x140a0b906: call   0x140067160
+0x140a0b90b: mov    rcx,rbx
+0x140a0b90e: call   0x14138ed20
+0x140a0b913: mov    edi,0x3e8
+0x140a0b918: mov    DWORD PTR [rbp-0x80],edi
+0x140a0b91b: test   al,al
+0x140a0b91d: je     0x140a0bae5
+0x140a0b923: test   DWORD PTR [rbx+0x110],0x4000000
+0x140a0b92d: je     0x140a0bae5
+0x140a0b933: cmp    DWORD PTR [rbx+0x138],0x0
+0x140a0b93a: jne    0x140a0bae5
+0x140a0b940: movzx  eax,WORD PTR [rbx+0xa0]
+0x140a0b947: cmp    ax,0x67
+0x140a0b94b: je     0x140a0bae5
+0x140a0b951: cmp    ax,0x68
+0x140a0b955: je     0x140a0bae5
+0x140a0b95b: mov    edx,0x32
+0x140a0b960: mov    rcx,rbx
+0x140a0b963: call   0x1400737b0
+0x140a0b968: test   rax,rax
+0x140a0b96b: je     0x140a0b979
+0x140a0b96d: cmp    DWORD PTR [rax],0x20d0
+0x140a0b973: jg     0x140a0bae5
+0x140a0b979: mov    ecx,edi
+0x140a0b97b: call   0x140071f30
+0x140a0b980: test   eax,eax
+0x140a0b982: jne    0x140a0bae5
+0x140a0b988: mov    edx,esi
+0x140a0b98a: mov    rcx,rbx
+0x140a0b98d: call   0x1400731c0
+0x140a0b992: test   al,al
+0x140a0b994: jne    0x140a0bae5
+0x140a0b99a: lea    rcx,[rbp+0x138]
+0x140a0b9a1: call   0x140065b00
+0x140a0b9a6: nop
+0x140a0b9a7: lea    rdx,[rsp+0x60]
+0x140a0b9ac: lea    rcx,[rip+0x19d9715]        # 0x1423e50c8
+0x140a0b9b3: call   0x14006f240
+0x140a0b9b8: lea    rdx,[rsp+0x68]
+0x140a0b9bd: lea    rcx,[rip+0x19d9704]        # 0x1423e50c8
+0x140a0b9c4: call   0x14006f230
+0x140a0b9c9: lea    r8,[rsp+0x68]
+0x140a0b9ce: lea    rdx,[rsp+0x4a]
+0x140a0b9d3: lea    rcx,[rsp+0x60]
+0x140a0b9d8: call   0x14006ee20
+0x140a0b9dd: xor    edx,edx
+0x140a0b9df: movzx  ecx,BYTE PTR [rax]
+0x140a0b9e2: call   0x1400657b0
+0x140a0b9e7: test   al,al
+0x140a0b9e9: je     0x140a0ba78
+0x140a0b9ef: nop
+0x140a0b9f0: lea    rcx,[rsp+0x60]
+0x140a0b9f5: call   0x14006ee10
+0x140a0b9fa: mov    rcx,QWORD PTR [rax]
+0x140a0b9fd: mov    QWORD PTR [rbp+0x120],rcx
+0x140a0ba04: test   DWORD PTR [rcx+0x110],0x2010002
+0x140a0ba0e: jne    0x140a0ba48
+0x140a0ba10: cmp    rcx,rbx
+0x140a0ba13: je     0x140a0ba48
+0x140a0ba15: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0ba1d: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0ba25: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0ba2c: call   0x14014da20
+0x140a0ba31: test   al,al
+0x140a0ba33: je     0x140a0ba48
+0x140a0ba35: lea    rdx,[rbp+0x120]
+0x140a0ba3c: lea    rcx,[rbp+0x138]
+0x140a0ba43: call   0x1400b9980
+0x140a0ba48: lea    rcx,[rsp+0x60]
+0x140a0ba4d: call   0x14006ee00
+0x140a0ba52: lea    r8,[rsp+0x68]
+0x140a0ba57: lea    rdx,[rsp+0x4a]
+0x140a0ba5c: lea    rcx,[rsp+0x60]
+0x140a0ba61: call   0x14006ee20
+0x140a0ba66: xor    edx,edx
+0x140a0ba68: movzx  ecx,BYTE PTR [rax]
+0x140a0ba6b: call   0x1400657b0
+0x140a0ba70: test   al,al
+0x140a0ba72: jne    0x140a0b9f0
+0x140a0ba78: lea    rcx,[rbp+0x138]
+0x140a0ba7f: call   0x14006ee50
+0x140a0ba84: test   rax,rax
+0x140a0ba87: je     0x140a0bad9
+0x140a0ba89: lea    rcx,[rbp+0x138]
+0x140a0ba90: call   0x14006ee50
+0x140a0ba95: mov    rcx,rax
+0x140a0ba98: call   0x140071f30
+0x140a0ba9d: movsxd rdx,eax
+0x140a0baa0: lea    rcx,[rbp+0x138]
+0x140a0baa7: call   0x14006f220
+0x140a0baac: mov    rcx,QWORD PTR [rax]
+0x140a0baaf: test   rcx,rcx
+0x140a0bab2: je     0x140a0bad9
+0x140a0bab4: mov    DWORD PTR [r13+0x0],0x42
+0x140a0babc: mov    QWORD PTR [r13+0x8],rcx
+0x140a0bac0: mov    DWORD PTR [r13+0x4],0x28
+0x140a0bac8: lea    rcx,[rbp+0x138]
+0x140a0bacf: call   0x140067160
+0x140a0bad4: jmp    0x140a0d317
+0x140a0bad9: lea    rcx,[rbp+0x138]
+0x140a0bae0: call   0x140067160
+0x140a0bae5: mov    rcx,rbx
+0x140a0bae8: call   0x14138ed20
+0x140a0baed: xor    edi,edi
+0x140a0baef: mov    esi,0xb7
+0x140a0baf4: mov    r14d,0x28
+0x140a0bafa: lea    r13,[rip+0xffffffffff5f44ff]        # 0x140000000
+0x140a0bb01: test   al,al
+0x140a0bb03: je     0x140a0c2cd
+0x140a0bb09: mov    r9d,0x6a
+0x140a0bb0f: movzx  r8d,WORD PTR [rbx+0x12c]
+0x140a0bb17: movzx  edx,WORD PTR [rbx+0xa4]
+0x140a0bb1e: lea    rcx,[rip+0x1ae0f23]        # 0x1424eca48
+0x140a0bb25: call   0x140072850
+0x140a0bb2a: test   al,al
+0x140a0bb2c: je     0x140a0c2cd
+0x140a0bb32: mov    rcx,r12
+0x140a0bb35: call   0x14006f370
+0x140a0bb3a: test   rax,rax
+0x140a0bb3d: jne    0x140a0c2cd
+0x140a0bb43: lea    rcx,[rbx+0x2d0]
+0x140a0bb4a: call   0x14006f370
+0x140a0bb4f: test   rax,rax
+0x140a0bb52: jne    0x140a0c2cd
+0x140a0bb58: cmp    WORD PTR [rbx+0x814],0xffff
+0x140a0bb60: jne    0x140a0c2cd
+0x140a0bb66: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0bb6e: jne    0x140a0c2cd
+0x140a0bb74: cmp    DWORD PTR [rbx+0x988],0x2710
+0x140a0bb7e: jl     0x140a0c2cd
+0x140a0bb84: movzx  r8d,WORD PTR [rbx+0x12c]
+0x140a0bb8c: movzx  edx,WORD PTR [rbx+0xa4]
+0x140a0bb93: lea    rcx,[rip+0x1ae0eae]        # 0x1424eca48
+0x140a0bb9a: call   0x1400bba90
+0x140a0bb9f: mov    r14,rax
+0x140a0bba2: mov    QWORD PTR [rbp-0x58],rax
+0x140a0bba6: xor    r12b,r12b
+0x140a0bba9: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0bbb1: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0bbb9: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0bbc0: lea    rcx,[rip+0x19c5929]        # 0x1423d14f0
+0x140a0bbc7: call   0x140067f80
+0x140a0bbcc: movzx  r15d,ax
+0x140a0bbd0: movzx  ecx,r15w
+0x140a0bbd4: call   0x1409e5250
+0x140a0bbd9: test   al,al
+0x140a0bbdb: je     0x140a0bdea
+0x140a0bbe1: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0bbe9: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0bbf1: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0bbf8: lea    rcx,[rip+0x19c58f1]        # 0x1423d14f0
+0x140a0bbff: call   0x1414d1330
+0x140a0bc04: mov    rdi,rax
+0x140a0bc07: test   rax,rax
+0x140a0bc0a: je     0x140a0bd0e
+0x140a0bc10: movsx  ecx,WORD PTR [rbx+0xa8]
+0x140a0bc17: and    ecx,0x8000000f
+0x140a0bc1d: jge    0x140a0bc26
+0x140a0bc1f: dec    ecx
+0x140a0bc21: or     ecx,0xfffffff0
+0x140a0bc24: inc    ecx
+0x140a0bc26: movsx  edx,WORD PTR [rbx+0xaa]
+0x140a0bc2d: and    edx,0x8000000f
+0x140a0bc33: jge    0x140a0bc3c
+0x140a0bc35: dec    edx
+0x140a0bc37: or     edx,0xfffffff0
+0x140a0bc3a: inc    edx
+0x140a0bc3c: movsx  rax,cx
+0x140a0bc40: shl    rax,0x4
+0x140a0bc44: movsx  rsi,dx
+0x140a0bc48: add    rax,rdi
+0x140a0bc4b: add    rsi,rax
+0x140a0bc4e: cmp    BYTE PTR [rsi+0xc],0x0
+0x140a0bc52: jbe    0x140a0bcee
+0x140a0bc58: test   r14,r14
+0x140a0bc5b: je     0x140a0bc82
+0x140a0bc5d: lea    rcx,[r14+0x41c0]
+0x140a0bc64: call   0x14006f370
+0x140a0bc69: test   rax,rax
+0x140a0bc6c: je     0x140a0bc82
+0x140a0bc6e: lea    rdx,[r14+0x41c0]
+0x140a0bc75: mov    ecx,DWORD PTR [rdi+0x8]
+0x140a0bc78: call   0x1400b9f70
+0x140a0bc7d: cmp    eax,0xffffffff
+0x140a0bc80: je     0x140a0bcee
+0x140a0bc82: dec    BYTE PTR [rsi+0xc]
+0x140a0bc85: mov    r9d,0x16
+0x140a0bc8b: movzx  r8d,WORD PTR [rbx+0x12c]
+0x140a0bc93: movzx  edx,WORD PTR [rbx+0xa4]
+0x140a0bc9a: lea    rcx,[rip+0x1ae0da7]        # 0x1424eca48
+0x140a0bca1: call   0x1406583d0
+0x140a0bca6: sub    DWORD PTR [rbx+0x988],eax
+0x140a0bcac: xor    r8d,r8d
+0x140a0bcaf: lea    rax,[rsp+0x78]
+0x140a0bcb4: mov    QWORD PTR [rsp+0x20],rax
+0x140a0bcb9: lea    r9,[rsp+0x40]
+0x140a0bcbe: mov    edx,DWORD PTR [rdi+0x8]
+0x140a0bcc1: lea    rcx,[rip+0x1ae0c30]        # 0x1424ec8f8
+0x140a0bcc8: call   0x1401fa670
+0x140a0bccd: movzx  edx,WORD PTR [rsp+0x40]
+0x140a0bcd2: cmp    dx,0xffff
+0x140a0bcd6: je     0x140a0bceb
+0x140a0bcd8: mov    r9d,0x64
+0x140a0bcde: mov    r8d,DWORD PTR [rsp+0x78]
+0x140a0bce3: mov    rcx,rbx
+0x140a0bce6: call   0x1413de050
+0x140a0bceb: mov    r12b,0x1
+0x140a0bcee: cmp    DWORD PTR [rbx+0x988],0x0
+0x140a0bcf5: jge    0x140a0bcff
+0x140a0bcf7: xor    eax,eax
+0x140a0bcf9: mov    DWORD PTR [rbx+0x988],eax
+0x140a0bcff: cmp    BYTE PTR [rsi+0xc],0x0
+0x140a0bd03: jne    0x140a0bdd9
+0x140a0bd09: mov    esi,0xb7
+0x140a0bd0e: movzx  ecx,r15w
+0x140a0bd12: call   0x140247770
+0x140a0bd17: test   al,al
+0x140a0bd19: je     0x140a0bd48
+0x140a0bd1b: call   0x140aa4b60
+0x140a0bd20: mov    WORD PTR [rsp+0x20],ax
+0x140a0bd25: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0bd2d: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0bd35: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0bd3c: lea    rcx,[rip+0x19c57ad]        # 0x1423d14f0
+0x140a0bd43: call   0x14028dee0
+0x140a0bd48: lea    eax,[r15-0x31]
+0x140a0bd4c: cmp    eax,esi
+0x140a0bd4e: ja     0x140a0bdd9
+0x140a0bd54: cdqe
+0x140a0bd56: movzx  eax,BYTE PTR [rax+r13*1+0xa110f0]
+0x140a0bd5f: mov    ecx,DWORD PTR [r13+rax*4+0xa110dc]
+0x140a0bd67: add    rcx,r13
+0x140a0bd6a: jmp    rcx
+0x140a0bd6c: mov    WORD PTR [rsp+0x20],0xed
+0x140a0bd73: jmp    0x140a0bdb6
+0x140a0bd75: mov    WORD PTR [rsp+0x20],0x27
+0x140a0bd7c: jmp    0x140a0bdb6
+0x140a0bd7e: mov    r14d,0x28
+0x140a0bd84: mov    WORD PTR [rsp+0x20],r14w
+0x140a0bd8a: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0bd92: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0bd9a: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0bda1: lea    rcx,[rip+0x19c5748]        # 0x1423d14f0
+0x140a0bda8: call   0x14028dee0
+0x140a0bdad: jmp    0x140a0bddf
+0x140a0bdaf: mov    WORD PTR [rsp+0x20],0x29
+0x140a0bdb6: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0bdbe: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0bdc6: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0bdcd: lea    rcx,[rip+0x19c571c]        # 0x1423d14f0
+0x140a0bdd4: call   0x14028dee0
+0x140a0bdd9: mov    r14d,0x28
+0x140a0bddf: test   r12b,r12b
+0x140a0bde2: jne    0x140a0c2cd
+0x140a0bde8: xor    edi,edi
+0x140a0bdea: mov    r13d,0xffff8ad0
+0x140a0bdf0: cmp    WORD PTR [rbx+0xc0],r13w
+0x140a0bdf8: je     0x140a0be0c
+0x140a0bdfa: mov    eax,0xa8
+0x140a0bdff: cmp    WORD PTR [rbx+0xc6],ax
+0x140a0be06: je     0x140a0c2bf
+0x140a0be0c: mov    edx,0x2d
+0x140a0be11: mov    rcx,rbx
+0x140a0be14: call   0x1400737b0
+0x140a0be19: test   rax,rax
+0x140a0be1c: jne    0x140a0c2bf
+0x140a0be22: mov    DWORD PTR [rsp+0x78],edi
+0x140a0be26: mov    edx,0x1f
+0x140a0be2b: mov    rcx,rbx
+0x140a0be2e: call   0x1413b1090
+0x140a0be33: mov    r14,rax
+0x140a0be36: test   rax,rax
+0x140a0be39: je     0x140a0c11e
+0x140a0be3f: test   BYTE PTR [rax+0x154],0x8
+0x140a0be46: je     0x140a0c11e
+0x140a0be4c: cmp    DWORD PTR [rax+0x150],0x58
+0x140a0be53: jne    0x140a0c11e
+0x140a0be59: mov    r13d,0xffffffff
+0x140a0be5f: mov    WORD PTR [rsp+0x44],r13w
+0x140a0be65: mov    ecx,0xffff8ad0
+0x140a0be6a: movzx  r8d,cx
+0x140a0be6e: mov    WORD PTR [rsp+0x40],cx
+0x140a0be73: movsx  r12d,WORD PTR [rax+0x3c]
+0x140a0be78: mov    eax,DWORD PTR [rax+0x44]
+0x140a0be7b: add    eax,DWORD PTR [r14+0x3c]
+0x140a0be7f: cmp    r12d,eax
+0x140a0be82: jge    0x140a0c105
+0x140a0be88: mov    rcx,rdi
+0x140a0be8b: mov    QWORD PTR [rsp+0x60],rcx
+0x140a0be90: movsx  r15d,WORD PTR [r14+0x38]
+0x140a0be95: mov    esi,r15d
+0x140a0be98: mov    eax,DWORD PTR [r14+0x38]
+0x140a0be9c: add    eax,DWORD PTR [r14+0x40]
+0x140a0bea0: cmp    r15d,eax
+0x140a0bea3: jge    0x140a0c0a3
+0x140a0bea9: nop    DWORD PTR [rax+0x0]
+0x140a0beb0: mov    rax,QWORD PTR [r14+0x30]
+0x140a0beb4: cmp    BYTE PTR [rcx+rax*1],0x0
+0x140a0beb8: je     0x140a0c07b
+0x140a0bebe: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0bec3: movzx  r9d,WORD PTR [r14+0x20]
+0x140a0bec8: movzx  r8d,r12w
+0x140a0becc: movzx  edx,r15w
+0x140a0bed0: mov    rcx,rbx
+0x140a0bed3: call   0x1413a4910
+0x140a0bed8: test   al,al
+0x140a0beda: je     0x140a0c075
+0x140a0bee0: movzx  r9d,WORD PTR [r14+0x20]
+0x140a0bee5: movzx  r8d,r12w
+0x140a0bee9: movzx  edx,r15w
+0x140a0beed: lea    rcx,[rip+0x19c55fc]        # 0x1423d14f0
+0x140a0bef4: call   0x140067f80
+0x140a0bef9: movzx  ecx,ax
+0x140a0befc: call   0x1409e5250
+0x140a0bf01: test   al,al
+0x140a0bf03: je     0x140a0c075
+0x140a0bf09: movzx  r8d,WORD PTR [r14+0x20]
+0x140a0bf0e: sub    r8w,WORD PTR [rbx+0xac]
+0x140a0bf16: movzx  edx,r12w
+0x140a0bf1a: sub    dx,WORD PTR [rbx+0xaa]
+0x140a0bf21: movzx  ecx,r15w
+0x140a0bf25: sub    cx,WORD PTR [rbx+0xa8]
+0x140a0bf2c: call   0x1409e5440
+0x140a0bf31: movzx  edi,ax
+0x140a0bf34: movzx  r9d,WORD PTR [r14+0x20]
+0x140a0bf39: movzx  r8d,r12w
+0x140a0bf3d: movzx  edx,r15w
+0x140a0bf41: lea    rcx,[rip+0x19c55a8]        # 0x1423d14f0
+0x140a0bf48: call   0x140068010
+0x140a0bf4d: test   al,0x10
+0x140a0bf4f: je     0x140a0bf60
+0x140a0bf51: movzx  ecx,di
+0x140a0bf54: add    cx,cx
+0x140a0bf57: add    di,cx
+0x140a0bf5a: shl    di,0x2
+0x140a0bf5e: jmp    0x140a0bf70
+0x140a0bf60: test   al,0x8
+0x140a0bf62: je     0x140a0bf70
+0x140a0bf64: movzx  eax,di
+0x140a0bf67: add    ax,ax
+0x140a0bf6a: add    di,ax
+0x140a0bf6d: add    di,di
+0x140a0bf70: cmp    di,r13w
+0x140a0bf74: jl     0x140a0bf91
+0x140a0bf76: cmp    r13w,0xffff
+0x140a0bf7b: je     0x140a0bf91
+0x140a0bf7d: cmp    r13w,di
+0x140a0bf81: jne    0x140a0c073
+0x140a0bf87: mov    eax,DWORD PTR [rbp-0x78]
+0x140a0bf8a: xor    edi,edi
+0x140a0bf8c: jmp    0x140a0c047
+0x140a0bf91: movzx  r9d,WORD PTR [r14+0x20]
+0x140a0bf96: movzx  r8d,r12w
+0x140a0bf9a: movzx  edx,r15w
+0x140a0bf9e: lea    rcx,[rip+0x19c554b]        # 0x1423d14f0
+0x140a0bfa5: call   0x1414d1330
+0x140a0bfaa: mov    rdx,rax
+0x140a0bfad: mov    QWORD PTR [rsp+0x68],rax
+0x140a0bfb2: test   rax,rax
+0x140a0bfb5: je     0x140a0c073
+0x140a0bfbb: mov    rax,QWORD PTR [rbp-0x58]
+0x140a0bfbf: test   rax,rax
+0x140a0bfc2: je     0x140a0bffc
+0x140a0bfc4: lea    r13,[rax+0x41c0]
+0x140a0bfcb: mov    rcx,r13
+0x140a0bfce: call   0x14006f370
+0x140a0bfd3: test   rax,rax
+0x140a0bfd6: je     0x140a0bff1
+0x140a0bfd8: mov    rdx,r13
+0x140a0bfdb: mov    rcx,QWORD PTR [rsp+0x68]
+0x140a0bfe0: mov    ecx,DWORD PTR [rcx+0x8]
+0x140a0bfe3: call   0x1400b9f70
+0x140a0bfe8: cmp    eax,0xffffffff
+0x140a0bfeb: je     0x140a0c073
+0x140a0bff1: movzx  r13d,WORD PTR [rsp+0x44]
+0x140a0bff7: mov    rdx,QWORD PTR [rsp+0x68]
+0x140a0bffc: and    esi,0x8000000f
+0x140a0c002: jge    0x140a0c00b
+0x140a0c004: dec    esi
+0x140a0c006: or     esi,0xfffffff0
+0x140a0c009: inc    esi
+0x140a0c00b: movsx  ecx,r12w
+0x140a0c00f: and    ecx,0x8000000f
+0x140a0c015: jge    0x140a0c01e
+0x140a0c017: dec    ecx
+0x140a0c019: or     ecx,0xfffffff0
+0x140a0c01c: inc    ecx
+0x140a0c01e: movsx  rax,si
+0x140a0c022: shl    rax,0x4
+0x140a0c026: movsx  rcx,cx
+0x140a0c02a: add    rax,rdx
+0x140a0c02d: cmp    BYTE PTR [rcx+rax*1+0xc],0x43
+0x140a0c032: jae    0x140a0c03e
+0x140a0c034: shl    di,0x2
+0x140a0c038: cmp    di,r13w
+0x140a0c03c: jg     0x140a0c073
+0x140a0c03e: mov    WORD PTR [rsp+0x44],di
+0x140a0c043: xor    edi,edi
+0x140a0c045: mov    eax,edi
+0x140a0c047: inc    eax
+0x140a0c049: mov    DWORD PTR [rbp-0x78],eax
+0x140a0c04c: mov    ecx,eax
+0x140a0c04e: call   0x140071f30
+0x140a0c053: test   eax,eax
+0x140a0c055: jne    0x140a0c075
+0x140a0c057: movzx  r8d,r15w
+0x140a0c05b: mov    WORD PTR [rsp+0x40],r15w
+0x140a0c061: mov    WORD PTR [rsp+0x50],r12w
+0x140a0c067: movzx  eax,WORD PTR [r14+0x20]
+0x140a0c06c: mov    WORD PTR [rsp+0x4c],ax
+0x140a0c071: jmp    0x140a0c07b
+0x140a0c073: xor    edi,edi
+0x140a0c075: movzx  r8d,WORD PTR [rsp+0x40]
+0x140a0c07b: inc    r15w
+0x140a0c07f: inc    QWORD PTR [rsp+0x60]
+0x140a0c084: movsx  esi,r15w
+0x140a0c088: mov    eax,DWORD PTR [r14+0x38]
+0x140a0c08c: add    eax,DWORD PTR [r14+0x40]
+0x140a0c090: cmp    esi,eax
+0x140a0c092: movzx  r13d,WORD PTR [rsp+0x44]
+0x140a0c098: mov    rcx,QWORD PTR [rsp+0x60]
+0x140a0c09d: jl     0x140a0beb0
+0x140a0c0a3: inc    r12w
+0x140a0c0a7: movsx  edx,r12w
+0x140a0c0ab: mov    eax,DWORD PTR [r14+0x44]
+0x140a0c0af: add    eax,DWORD PTR [r14+0x3c]
+0x140a0c0b3: cmp    edx,eax
+0x140a0c0b5: jl     0x140a0be90
+0x140a0c0bb: mov    r13d,0xffff8ad0
+0x140a0c0c1: cmp    r8w,r13w
+0x140a0c0c5: je     0x140a0c10b
+0x140a0c0c7: mov    WORD PTR [rbp+0x138],r8w
+0x140a0c0cf: movzx  eax,WORD PTR [rsp+0x50]
+0x140a0c0d4: mov    WORD PTR [rbp+0x160],ax
+0x140a0c0db: movzx  eax,WORD PTR [rsp+0x4c]
+0x140a0c0e0: mov    WORD PTR [rbp+0x150],ax
+0x140a0c0e7: mov    edx,0x2d
+0x140a0c0ec: mov    r14d,0x1
+0x140a0c0f2: mov    r8d,0x78
+0x140a0c0f8: mov    rcx,rbx
+0x140a0c0fb: call   0x1400737e0
+0x140a0c100: jmp    0x140a0c276
+0x140a0c105: mov    r13d,0xffff8ad0
+0x140a0c10b: mov    edx,0x2d
+0x140a0c110: mov    r8d,0x78
+0x140a0c116: mov    rcx,rbx
+0x140a0c119: call   0x1400737e0
+0x140a0c11e: mov    r9d,r13d
+0x140a0c121: mov    edx,0x2
+0x140a0c126: mov    WORD PTR [rsp+0x28],r13w
+0x140a0c12c: mov    WORD PTR [rsp+0x20],r13w
+0x140a0c132: xor    r8d,r8d
+0x140a0c135: mov    rcx,rbx
+0x140a0c138: call   0x140a35020
+0x140a0c13d: mov    edx,0x2d
+0x140a0c142: mov    r8d,0x4b0
+0x140a0c148: mov    rcx,rbx
+0x140a0c14b: call   0x1400737e0
+0x140a0c150: mov    eax,DWORD PTR [rip+0x17259aa]        # 0x142131b00
+0x140a0c156: test   eax,eax
+0x140a0c158: jle    0x140a0c2bf
+0x140a0c15e: mov    r13d,edi
+0x140a0c161: lea    rsi,[rip+0x11a759a]        # 0x141bb3702
+0x140a0c168: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a0c170: movzx  r14d,WORD PTR [rsi-0x2]
+0x140a0c175: movzx  r15d,WORD PTR [rsi]
+0x140a0c179: movzx  r12d,WORD PTR [rsi+0x2]
+0x140a0c17e: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0c183: movzx  r9d,r12w
+0x140a0c187: movzx  r8d,r15w
+0x140a0c18b: movzx  edx,r14w
+0x140a0c18f: mov    rcx,rbx
+0x140a0c192: call   0x1413a4910
+0x140a0c197: test   al,al
+0x140a0c199: je     0x140a0c258
+0x140a0c19f: movzx  r9d,r12w
+0x140a0c1a3: movzx  r8d,r15w
+0x140a0c1a7: movzx  edx,r14w
+0x140a0c1ab: lea    rcx,[rip+0x19c533e]        # 0x1423d14f0
+0x140a0c1b2: call   0x140067f80
+0x140a0c1b7: movzx  ecx,ax
+0x140a0c1ba: call   0x1409e5250
+0x140a0c1bf: test   al,al
+0x140a0c1c1: je     0x140a0c258
+0x140a0c1c7: movzx  r9d,r12w
+0x140a0c1cb: movzx  r8d,r15w
+0x140a0c1cf: movzx  edx,r14w
+0x140a0c1d3: lea    rcx,[rip+0x19c5316]        # 0x1423d14f0
+0x140a0c1da: call   0x1414d1330
+0x140a0c1df: mov    QWORD PTR [rbp+0x120],rax
+0x140a0c1e6: test   rax,rax
+0x140a0c1e9: je     0x140a0c258
+0x140a0c1eb: mov    rax,QWORD PTR [rbp-0x58]
+0x140a0c1ef: test   rax,rax
+0x140a0c1f2: je     0x140a0c224
+0x140a0c1f4: lea    rcx,[rax+0x41c0]
+0x140a0c1fb: call   0x14006f370
+0x140a0c200: test   rax,rax
+0x140a0c203: je     0x140a0c224
+0x140a0c205: mov    rdx,QWORD PTR [rbp-0x58]
+0x140a0c209: add    rdx,0x41c0
+0x140a0c210: mov    rcx,QWORD PTR [rbp+0x120]
+0x140a0c217: mov    ecx,DWORD PTR [rcx+0x8]
+0x140a0c21a: call   0x1400b9f70
+0x140a0c21f: cmp    eax,0xffffffff
+0x140a0c222: je     0x140a0c258
+0x140a0c224: mov    WORD PTR [rbp+rdi*1+0x138],r14w
+0x140a0c22d: mov    WORD PTR [rbp+rdi*1+0x160],r15w
+0x140a0c236: mov    WORD PTR [rbp+rdi*1+0x150],r12w
+0x140a0c23f: mov    r14d,DWORD PTR [rsp+0x78]
+0x140a0c244: inc    r14d
+0x140a0c247: mov    DWORD PTR [rsp+0x78],r14d
+0x140a0c24c: add    rdi,0x2
+0x140a0c250: cmp    rdi,0x10
+0x140a0c254: jge    0x140a0c271
+0x140a0c256: jmp    0x140a0c25d
+0x140a0c258: mov    r14d,DWORD PTR [rsp+0x78]
+0x140a0c25d: inc    r13d
+0x140a0c260: add    rsi,0xc
+0x140a0c264: cmp    r13d,DWORD PTR [rip+0x1725895]        # 0x142131b00
+0x140a0c26b: jl     0x140a0c170
+0x140a0c271: test   r14d,r14d
+0x140a0c274: jle    0x140a0c2c7
+0x140a0c276: mov    ecx,r14d
+0x140a0c279: call   0x140071f30
+0x140a0c27e: mov    rdx,QWORD PTR [rsp+0x58]
+0x140a0c283: mov    DWORD PTR [rdx],0x43
+0x140a0c289: cdqe
+0x140a0c28b: lea    rcx,[rax+rax*1]
+0x140a0c28f: movzx  eax,WORD PTR [rbp+rcx*1+0x138]
+0x140a0c297: mov    WORD PTR [rdx+0x30],ax
+0x140a0c29b: movzx  eax,WORD PTR [rbp+rcx*1+0x160]
+0x140a0c2a3: mov    WORD PTR [rdx+0x32],ax
+0x140a0c2a7: movzx  eax,WORD PTR [rbp+rcx*1+0x150]
+0x140a0c2af: mov    WORD PTR [rdx+0x34],ax
+0x140a0c2b3: mov    DWORD PTR [rdx+0x4],0x28
+0x140a0c2ba: jmp    0x140a0d317
+0x140a0c2bf: mov    r14d,0x28
+0x140a0c2c5: jmp    0x140a0c2d3
+0x140a0c2c7: mov    r14d,0x28
+0x140a0c2cd: mov    r13d,0xffff8ad0
+0x140a0c2d3: mov    r8,QWORD PTR [rbx+0x3b0]
+0x140a0c2da: test   r8,r8
+0x140a0c2dd: je     0x140a0c5d8
+0x140a0c2e3: mov    r8,QWORD PTR [r8+0x4d8]
+0x140a0c2ea: test   r8,r8
+0x140a0c2ed: je     0x140a0c5d8
+0x140a0c2f3: movsx  ecx,WORD PTR [r8+0x14]
+0x140a0c2f8: sub    ecx,0x5e
+0x140a0c2fb: je     0x140a0c30e
+0x140a0c2fd: sub    ecx,0x1
+0x140a0c300: je     0x140a0c30e
+0x140a0c302: cmp    ecx,0x81
+0x140a0c308: jne    0x140a0c5d8
+0x140a0c30e: mov    edx,0xf
+0x140a0c313: mov    rcx,r8
+0x140a0c316: call   0x140d09a90
+0x140a0c31b: cmp    rax,rbx
+0x140a0c31e: jne    0x140a0c5d8
+0x140a0c324: mov    edx,0x15
+0x140a0c329: mov    rcx,rbx
+0x140a0c32c: call   0x1400737b0
+0x140a0c331: test   rax,rax
+0x140a0c334: jne    0x140a0c5ca
+0x140a0c33a: mov    r8,QWORD PTR [rbx+0x3b0]
+0x140a0c341: movzx  edx,WORD PTR [r8+0xa8]
+0x140a0c349: cmp    dx,WORD PTR [rbx+0xa8]
+0x140a0c350: jne    0x140a0c378
+0x140a0c352: movzx  eax,WORD PTR [rbx+0xaa]
+0x140a0c359: cmp    WORD PTR [r8+0xaa],ax
+0x140a0c361: jne    0x140a0c378
+0x140a0c363: movzx  eax,WORD PTR [rbx+0xac]
+0x140a0c36a: cmp    WORD PTR [r8+0xac],ax
+0x140a0c372: je     0x140a0c5ca
+0x140a0c378: xor    dil,dil
+0x140a0c37b: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0c380: movzx  r9d,WORD PTR [r8+0xac]
+0x140a0c388: movzx  r8d,WORD PTR [r8+0xaa]
+0x140a0c390: mov    rcx,rbx
+0x140a0c393: call   0x1413a4910
+0x140a0c398: test   al,al
+0x140a0c39a: jne    0x140a0c48c
+0x140a0c3a0: cmp    DWORD PTR [rip+0xe8fef1],0x0        # 0x14189c298
+0x140a0c3a7: jne    0x140a0c421
+0x140a0c3a9: mov    edx,0x1f
+0x140a0c3ae: mov    rcx,rbx
+0x140a0c3b1: call   0x1413b1090
+0x140a0c3b6: mov    rdi,rax
+0x140a0c3b9: test   rax,rax
+0x140a0c3bc: je     0x140a0c421
+0x140a0c3be: test   BYTE PTR [rax+0x154],0x8
+0x140a0c3c5: je     0x140a0c421
+0x140a0c3c7: cmp    DWORD PTR [rax+0x150],0x58
+0x140a0c3ce: jne    0x140a0c421
+0x140a0c3d0: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0c3d8: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0c3e0: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0c3e7: mov    rcx,rax
+0x140a0c3ea: call   0x1405587b0
+0x140a0c3ef: test   al,al
+0x140a0c3f1: je     0x140a0c421
+0x140a0c3f3: mov    rdx,QWORD PTR [rbx+0x3b0]
+0x140a0c3fa: movzx  r9d,WORD PTR [rdx+0xac]
+0x140a0c402: movzx  r8d,WORD PTR [rdx+0xaa]
+0x140a0c40a: movzx  edx,WORD PTR [rdx+0xa8]
+0x140a0c411: mov    rcx,rdi
+0x140a0c414: call   0x1405587b0
+0x140a0c419: test   al,al
+0x140a0c41b: je     0x140a0c5ca
+0x140a0c421: mov    r9d,r13d
+0x140a0c424: mov    edx,0xf
+0x140a0c429: mov    WORD PTR [rsp+0x28],r13w
+0x140a0c42f: mov    WORD PTR [rsp+0x20],r13w
+0x140a0c435: mov    r8b,0x1
+0x140a0c438: mov    rcx,rbx
+0x140a0c43b: call   0x140a33be0
+0x140a0c440: mov    rdx,QWORD PTR [rbx+0x3b0]
+0x140a0c447: movzx  r9d,WORD PTR [rdx+0xac]
+0x140a0c44f: movzx  r8d,WORD PTR [rdx+0xaa]
+0x140a0c457: movzx  edx,WORD PTR [rdx+0xa8]
+0x140a0c45e: lea    rcx,[rip+0x19c508b]        # 0x1423d14f0
+0x140a0c465: call   0x140256de0
+0x140a0c46a: mov    edx,0x15
+0x140a0c46f: mov    rcx,rbx
+0x140a0c472: cmp    eax,DWORD PTR [rip+0x1c324c4]        # 0x14263e93c
+0x140a0c478: jl     0x140a0c5bf
+0x140a0c47e: mov    dil,0x1
+0x140a0c481: mov    r8d,0x14
+0x140a0c487: call   0x1400737e0
+0x140a0c48c: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0c493: movzx  r8d,WORD PTR [rbx+0xac]
+0x140a0c49b: sub    r8w,WORD PTR [rax+0xac]
+0x140a0c4a3: movzx  edx,WORD PTR [rbx+0xaa]
+0x140a0c4aa: sub    dx,WORD PTR [rax+0xaa]
+0x140a0c4b1: movzx  ecx,WORD PTR [rbx+0xa8]
+0x140a0c4b8: sub    cx,WORD PTR [rax+0xa8]
+0x140a0c4bf: call   0x1409e5440
+0x140a0c4c4: cmp    ax,0x3
+0x140a0c4c8: jg     0x140a0c4dc
+0x140a0c4ca: mov    ecx,0x1f4
+0x140a0c4cf: call   0x140071f30
+0x140a0c4d4: test   eax,eax
+0x140a0c4d6: jne    0x140a0c5ca
+0x140a0c4dc: mov    rdx,QWORD PTR [rbx+0x3b0]
+0x140a0c4e3: mov    DWORD PTR [rsp+0x28],0xf
+0x140a0c4eb: movzx  eax,WORD PTR [rbx+0xbc]
+0x140a0c4f2: mov    WORD PTR [rsp+0x20],ax
+0x140a0c4f7: movzx  r9d,WORD PTR [rdx+0xac]
+0x140a0c4ff: movzx  r8d,WORD PTR [rdx+0xaa]
+0x140a0c507: movzx  edx,WORD PTR [rdx+0xa8]
+0x140a0c50e: mov    rcx,rbx
+0x140a0c511: call   0x141378860
+0x140a0c516: test   dil,dil
+0x140a0c519: je     0x140a0c5ca
+0x140a0c51f: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0c526: movzx  r8d,WORD PTR [rbx+0xc4]
+0x140a0c52e: sub    r8w,WORD PTR [rax+0xac]
+0x140a0c536: movzx  edx,WORD PTR [rbx+0xaa]
+0x140a0c53d: sub    dx,WORD PTR [rax+0xaa]
+0x140a0c544: movzx  ecx,WORD PTR [rbx+0xc0]
+0x140a0c54b: sub    cx,WORD PTR [rax+0xc0]
+0x140a0c552: call   0x1409e5440
+0x140a0c557: cmp    ax,0x3
+0x140a0c55b: jg     0x140a0c56e
+0x140a0c55d: lea    rcx,[rbx+0xc8]
+0x140a0c564: call   0x14006f450
+0x140a0c569: test   rax,rax
+0x140a0c56c: jne    0x140a0c5ca
+0x140a0c56e: mov    rdx,QWORD PTR [rsp+0x58]
+0x140a0c573: mov    DWORD PTR [rdx],0x44
+0x140a0c579: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0c580: movzx  ecx,WORD PTR [rax+0xa8]
+0x140a0c587: mov    WORD PTR [rdx+0x30],cx
+0x140a0c58b: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0c592: movzx  ecx,WORD PTR [rax+0xaa]
+0x140a0c599: mov    WORD PTR [rdx+0x32],cx
+0x140a0c59d: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0c5a4: movzx  ecx,WORD PTR [rax+0xac]
+0x140a0c5ab: mov    WORD PTR [rdx+0x34],cx
+0x140a0c5af: mov    DWORD PTR [rdx+0x38],0x9
+0x140a0c5b6: mov    DWORD PTR [rdx+0x4],r14d
+0x140a0c5ba: jmp    0x140a0d317
+0x140a0c5bf: mov    r8d,0xc8
+0x140a0c5c5: call   0x1400737e0
+0x140a0c5ca: mov    rsi,QWORD PTR [rsp+0x58]
+0x140a0c5cf: mov    DWORD PTR [rsi+0x4],r14d
+0x140a0c5d3: jmp    0x140a0d311
+0x140a0c5d8: mov    r15d,0x5
+0x140a0c5de: cmp    QWORD PTR [rbx+0x3b0],0x0
+0x140a0c5e6: jne    0x140a0c7ad
+0x140a0c5ec: mov    edx,0x7
+0x140a0c5f1: mov    rcx,rbx
+0x140a0c5f4: call   0x1400737b0
+0x140a0c5f9: test   rax,rax
+0x140a0c5fc: jne    0x140a0c7ad
+0x140a0c602: mov    rcx,rbx
+0x140a0c605: call   0x14138ed20
+0x140a0c60a: test   al,al
+0x140a0c60c: je     0x140a0c7ad
+0x140a0c612: mov    edx,0x3a
+0x140a0c617: mov    rcx,rbx
+0x140a0c61a: call   0x140073230
+0x140a0c61f: test   al,al
+0x140a0c621: je     0x140a0c7ad
+0x140a0c627: mov    rcx,rbx
+0x140a0c62a: call   0x140a40950
+0x140a0c62f: test   al,al
+0x140a0c631: jne    0x140a0c7ad
+0x140a0c637: mov    edx,0x37
+0x140a0c63c: mov    rcx,rbx
+0x140a0c63f: call   0x1400737b0
+0x140a0c644: test   rax,rax
+0x140a0c647: jne    0x140a0c7ad
+0x140a0c64d: movsx  ecx,WORD PTR [rbx+0xa0]
+0x140a0c654: call   0x140a804c0
+0x140a0c659: test   al,al
+0x140a0c65b: jne    0x140a0c7ad
+0x140a0c661: cmp    WORD PTR [rbx+0x814],0xffff
+0x140a0c669: jne    0x140a0c7ad
+0x140a0c66f: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0c677: jne    0x140a0c7ad
+0x140a0c67d: mov    edx,0x6
+0x140a0c682: mov    rcx,rbx
+0x140a0c685: call   0x1400737b0
+0x140a0c68a: test   rax,rax
+0x140a0c68d: jne    0x140a0c7ad
+0x140a0c693: mov    edx,0x6
+0x140a0c698: mov    r8d,0x1f4
+0x140a0c69e: mov    rcx,rbx
+0x140a0c6a1: call   0x1400737e0
+0x140a0c6a6: lea    rdx,[rsp+0x60]
+0x140a0c6ab: lea    rcx,[rbx+0x6d0]
+0x140a0c6b2: call   0x14006f240
+0x140a0c6b7: lea    rdx,[rsp+0x68]
+0x140a0c6bc: lea    rcx,[rbx+0x6d0]
+0x140a0c6c3: call   0x14006f230
+0x140a0c6c8: lea    r8,[rsp+0x68]
+0x140a0c6cd: lea    rdx,[rsp+0x4a]
+0x140a0c6d2: lea    rcx,[rsp+0x60]
+0x140a0c6d7: call   0x14006ee20
+0x140a0c6dc: xor    edx,edx
+0x140a0c6de: movzx  ecx,BYTE PTR [rax]
+0x140a0c6e1: call   0x1400657b0
+0x140a0c6e6: test   al,al
+0x140a0c6e8: je     0x140a0c7ad
+0x140a0c6ee: xchg   ax,ax
+0x140a0c6f0: lea    rcx,[rsp+0x60]
+0x140a0c6f5: call   0x14006ee10
+0x140a0c6fa: mov    rdi,QWORD PTR [rax]
+0x140a0c6fd: test   BYTE PTR [rdi+0x1a],0x1
+0x140a0c701: je     0x140a0c77d
+0x140a0c703: test   BYTE PTR [rdi+0x14],0x1
+0x140a0c707: jne    0x140a0c77d
+0x140a0c709: cmp    WORD PTR [rdi+0x18],0x0
+0x140a0c70e: jl     0x140a0c871
+0x140a0c714: movsx  r14,WORD PTR [rdi+0x18]
+0x140a0c719: lea    rcx,[rbx+0x4f0]
+0x140a0c720: call   0x14006f370
+0x140a0c725: cmp    r14,rax
+0x140a0c728: jae    0x140a0c871
+0x140a0c72e: mov    rdx,r14
+0x140a0c731: lea    rcx,[rbx+0x4f0]
+0x140a0c738: call   0x14006f360
+0x140a0c73d: test   DWORD PTR [rax],0x80002
+0x140a0c743: jne    0x140a0c77d
+0x140a0c745: mov    r8d,r15d
+0x140a0c748: movzx  edx,WORD PTR [rdi+0x18]
+0x140a0c74c: mov    rcx,QWORD PTR [rbx+0x5f8]
+0x140a0c753: call   0x1400fd380
+0x140a0c758: test   al,al
+0x140a0c75a: je     0x140a0c871
+0x140a0c760: movsx  rdx,WORD PTR [rdi+0x18]
+0x140a0c765: lea    rcx,[rbx+0x4f0]
+0x140a0c76c: call   0x14006f360
+0x140a0c771: test   DWORD PTR [rax],0x800
+0x140a0c777: jne    0x140a0c871
+0x140a0c77d: lea    rcx,[rsp+0x60]
+0x140a0c782: call   0x14006ee00
+0x140a0c787: lea    r8,[rsp+0x68]
+0x140a0c78c: lea    rdx,[rsp+0x4a]
+0x140a0c791: lea    rcx,[rsp+0x60]
+0x140a0c796: call   0x14006ee20
+0x140a0c79b: xor    edx,edx
+0x140a0c79d: movzx  ecx,BYTE PTR [rax]
+0x140a0c7a0: call   0x1400657b0
+0x140a0c7a5: test   al,al
+0x140a0c7a7: jne    0x140a0c6f0
+0x140a0c7ad: mov    rdi,QWORD PTR [rsp+0x58]
+0x140a0c7b2: cmp    BYTE PTR [rbx+0xac8],0x0
+0x140a0c7b9: je     0x140a0cdd3
+0x140a0c7bf: movsx  ecx,WORD PTR [rbx+0xa0]
+0x140a0c7c6: call   0x140a804c0
+0x140a0c7cb: mov    esi,0x7
+0x140a0c7d0: test   al,al
+0x140a0c7d2: jne    0x140a0cdd8
+0x140a0c7d8: mov    edx,esi
+0x140a0c7da: mov    rcx,rbx
+0x140a0c7dd: call   0x1400737b0
+0x140a0c7e2: test   rax,rax
+0x140a0c7e5: jne    0x140a0cdd8
+0x140a0c7eb: mov    edx,0x37
+0x140a0c7f0: mov    rcx,rbx
+0x140a0c7f3: call   0x1400737b0
+0x140a0c7f8: test   rax,rax
+0x140a0c7fb: jne    0x140a0cdd8
+0x140a0c801: mov    rcx,rbx
+0x140a0c804: call   0x140a40950
+0x140a0c809: test   al,al
+0x140a0c80b: jne    0x140a0cdd8
+0x140a0c811: mov    edx,0x33
+0x140a0c816: mov    rcx,rbx
+0x140a0c819: call   0x1400737b0
+0x140a0c81e: test   rax,rax
+0x140a0c821: jne    0x140a0cdd8
+0x140a0c827: cmp    WORD PTR [rbx+0x814],0xffff
+0x140a0c82f: jne    0x140a0cdd8
+0x140a0c835: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0c83d: jne    0x140a0cdd8
+0x140a0c843: xor    edx,edx
+0x140a0c845: mov    rcx,rbx
+0x140a0c848: call   0x1413a4310
+0x140a0c84d: mov    rcx,rbx
+0x140a0c850: cmp    QWORD PTR [rbx+0x4d8],0x0
+0x140a0c858: je     0x140a0c8a2
+0x140a0c85a: call   0x140a40d90
+0x140a0c85f: mov    DWORD PTR [rdi],0xc
+0x140a0c865: mov    DWORD PTR [rdi+0x4],0x28
+0x140a0c86c: jmp    0x140a0d317
+0x140a0c871: mov    r9d,0x28
+0x140a0c877: mov    r8,QWORD PTR [rbp-0x50]
+0x140a0c87b: mov    rdi,QWORD PTR [rsp+0x58]
+0x140a0c880: mov    rdx,rdi
+0x140a0c883: mov    rcx,rbx
+0x140a0c886: call   0x140a0b0e0
+0x140a0c88b: cmp    DWORD PTR [rdi+0x4],0x28
+0x140a0c88f: jl     0x140a0c7b2
+0x140a0c895: mov    rcx,rbx
+0x140a0c898: call   0x140a40d90
+0x140a0c89d: jmp    0x140a0d317
+0x140a0c8a2: call   0x140073ac0
+0x140a0c8a7: test   al,al
+0x140a0c8a9: je     0x140a0cdd8
+0x140a0c8af: xor    dil,dil
+0x140a0c8b2: mov    BYTE PTR [rsp+0x4a],dil
+0x140a0c8b7: lea    rdx,[rbp-0x68]
+0x140a0c8bb: lea    rcx,[rip+0x198d016]        # 0x1423998d8
+0x140a0c8c2: call   0x14006f240
+0x140a0c8c7: lea    rdx,[rsp+0x60]
+0x140a0c8cc: lea    rcx,[rip+0x198d005]        # 0x1423998d8
+0x140a0c8d3: call   0x14006f230
+0x140a0c8d8: lea    r8,[rsp+0x60]
+0x140a0c8dd: lea    rdx,[rsp+0x48]
+0x140a0c8e2: lea    rcx,[rbp-0x68]
+0x140a0c8e6: call   0x14006ee20
+0x140a0c8eb: xor    edx,edx
+0x140a0c8ed: movzx  ecx,BYTE PTR [rax]
+0x140a0c8f0: call   0x1400657b0
+0x140a0c8f5: test   al,al
+0x140a0c8f7: je     0x140a0c94b
+0x140a0c8f9: nop    DWORD PTR [rax+0x0]
+0x140a0c900: lea    rcx,[rbp-0x68]
+0x140a0c904: call   0x14006ee10
+0x140a0c909: mov    rcx,QWORD PTR [rax]
+0x140a0c90c: mov    eax,DWORD PTR [rbx+0x130]
+0x140a0c912: cmp    DWORD PTR [rcx+0x4],eax
+0x140a0c915: je     0x140a0c943
+0x140a0c917: lea    rcx,[rbp-0x68]
+0x140a0c91b: call   0x14006ee00
+0x140a0c920: lea    r8,[rsp+0x60]
+0x140a0c925: lea    rdx,[rsp+0x48]
+0x140a0c92a: lea    rcx,[rbp-0x68]
+0x140a0c92e: call   0x14006ee20
+0x140a0c933: xor    edx,edx
+0x140a0c935: movzx  ecx,BYTE PTR [rax]
+0x140a0c938: call   0x1400657b0
+0x140a0c93d: test   al,al
+0x140a0c93f: jne    0x140a0c900
+0x140a0c941: jmp    0x140a0c94b
+0x140a0c943: mov    dil,0x1
+0x140a0c946: mov    BYTE PTR [rsp+0x4a],dil
+0x140a0c94b: mov    ecx,0xffffffff
+0x140a0c950: mov    r13d,ecx
+0x140a0c953: xor    eax,eax
+0x140a0c955: mov    r15d,eax
+0x140a0c958: movzx  r12d,cx
+0x140a0c95c: lea    rdx,[rbp+0x120]
+0x140a0c963: lea    rcx,[rip+0x198cf6e]        # 0x1423998d8
+0x140a0c96a: call   0x14006f240
+0x140a0c96f: mov    rcx,QWORD PTR [rax]
+0x140a0c972: mov    QWORD PTR [rbp-0x68],rcx
+0x140a0c976: lea    r8,[rsp+0x60]
+0x140a0c97b: lea    rdx,[rsp+0x48]
+0x140a0c980: lea    rcx,[rbp-0x68]
+0x140a0c984: call   0x14006ee20
+0x140a0c989: xor    edx,edx
+0x140a0c98b: movzx  ecx,BYTE PTR [rax]
+0x140a0c98e: call   0x1400657b0
+0x140a0c993: test   al,al
+0x140a0c995: je     0x140a0cc05
+0x140a0c99b: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a0c9a0: lea    rcx,[rbp-0x68]
+0x140a0c9a4: call   0x14006ee10
+0x140a0c9a9: mov    r14,QWORD PTR [rax]
+0x140a0c9ac: mov    eax,DWORD PTR [r14+0x4]
+0x140a0c9b0: cmp    eax,0xffffffff
+0x140a0c9b3: je     0x140a0c9c3
+0x140a0c9b5: cmp    eax,DWORD PTR [rbx+0x130]
+0x140a0c9bb: jne    0x140a0cbd2
+0x140a0c9c1: jmp    0x140a0c9de
+0x140a0c9c3: mov    eax,DWORD PTR [r14+0x8]
+0x140a0c9c7: test   al,0x2
+0x140a0c9c9: je     0x140a0c9d6
+0x140a0c9cb: test   dil,dil
+0x140a0c9ce: jne    0x140a0cbd2
+0x140a0c9d4: jmp    0x140a0c9de
+0x140a0c9d6: test   al,0x1
+0x140a0c9d8: je     0x140a0cbd2
+0x140a0c9de: mov    edx,DWORD PTR [r14]
+0x140a0c9e1: lea    rcx,[rip+0x19d86c8]        # 0x1423e50b0
+0x140a0c9e8: call   0x140073b70
+0x140a0c9ed: mov    rdi,rax
+0x140a0c9f0: test   rax,rax
+0x140a0c9f3: je     0x140a0cbd2
+0x140a0c9f9: mov    eax,DWORD PTR [rax+0x110]
+0x140a0c9ff: test   eax,0x50002
+0x140a0ca04: jne    0x140a0cbd2
+0x140a0ca0a: bt     eax,0x19
+0x140a0ca0e: jae    0x140a0ca1a
+0x140a0ca10: bt     eax,0x1a
+0x140a0ca14: jb     0x140a0cbd2
+0x140a0ca1a: mov    edx,0x37
+0x140a0ca1f: mov    rcx,rdi
+0x140a0ca22: call   0x1400737b0
+0x140a0ca27: test   rax,rax
+0x140a0ca2a: jne    0x140a0cbd2
+0x140a0ca30: mov    edx,esi
+0x140a0ca32: mov    rcx,rdi
+0x140a0ca35: call   0x1400737b0
+0x140a0ca3a: test   rax,rax
+0x140a0ca3d: jne    0x140a0cbd2
+0x140a0ca43: mov    rcx,rdi
+0x140a0ca46: call   0x140a40950
+0x140a0ca4b: test   al,al
+0x140a0ca4d: jne    0x140a0cbd2
+0x140a0ca53: cmp    DWORD PTR [rdi+0x138],0x7
+0x140a0ca5a: jne    0x140a0ca6c
+0x140a0ca5c: mov    eax,DWORD PTR [r14+0x8]
+0x140a0ca60: test   al,0x4
+0x140a0ca62: jne    0x140a0ca6c
+0x140a0ca64: test   al,0x8
+0x140a0ca66: je     0x140a0cbd2
+0x140a0ca6c: lea    r9,[rsp+0x4c]
+0x140a0ca71: lea    r8,[rbp-0x60]
+0x140a0ca75: lea    rdx,[rsp+0x70]
+0x140a0ca7a: mov    rcx,rdi
+0x140a0ca7d: call   0x141367430
+0x140a0ca82: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0ca87: movzx  r9d,WORD PTR [rsp+0x4c]
+0x140a0ca8d: movzx  r8d,WORD PTR [rbp-0x60]
+0x140a0ca92: movzx  edx,WORD PTR [rsp+0x70]
+0x140a0ca97: mov    rcx,rbx
+0x140a0ca9a: call   0x1413a4910
+0x140a0ca9f: test   al,al
+0x140a0caa1: je     0x140a0cbd2
+0x140a0caa7: mov    rcx,rdi
+0x140a0caaa: call   0x1413dac80
+0x140a0caaf: test   al,al
+0x140a0cab1: jne    0x140a0cbd2
+0x140a0cab7: mov    r8d,0x1
+0x140a0cabd: mov    esi,r8d
+0x140a0cac0: movsxd rax,DWORD PTR [rdi+0x138]
+0x140a0cac7: cmp    eax,0x7
+0x140a0caca: ja     0x140a0cb07
+0x140a0cacc: lea    rdx,[rip+0xffffffffff5f352d]        # 0x140000000
+0x140a0cad3: mov    ecx,DWORD PTR [rdx+rax*4+0xa111a8]
+0x140a0cada: add    rcx,rdx
+0x140a0cadd: jmp    rcx
+0x140a0cadf: mov    esi,0x7
+0x140a0cae4: jmp    0x140a0cb07
+0x140a0cae6: mov    esi,0x6
+0x140a0caeb: jmp    0x140a0cb07
+0x140a0caed: mov    esi,0x5
+0x140a0caf2: jmp    0x140a0cb07
+0x140a0caf4: mov    esi,0x4
+0x140a0caf9: jmp    0x140a0cb07
+0x140a0cafb: mov    esi,0x3
+0x140a0cb00: jmp    0x140a0cb07
+0x140a0cb02: mov    esi,0x2
+0x140a0cb07: test   BYTE PTR [r14+0x8],0xc
+0x140a0cb0c: jne    0x140a0cb46
+0x140a0cb0e: test   DWORD PTR [rdi+0x110],0x4000000
+0x140a0cb18: je     0x140a0cb46
+0x140a0cb1a: mov    edx,0x32
+0x140a0cb1f: mov    rcx,rdi
+0x140a0cb22: call   0x1400737b0
+0x140a0cb27: test   rax,rax
+0x140a0cb2a: je     0x140a0cb46
+0x140a0cb2c: mov    ecx,DWORD PTR [rax]
+0x140a0cb2e: cmp    ecx,0x8340
+0x140a0cb34: jge    0x140a0cbcd
+0x140a0cb3a: mov    eax,0x8340
+0x140a0cb3f: sub    eax,ecx
+0x140a0cb41: imul   eax,esi
+0x140a0cb44: jmp    0x140a0cb4c
+0x140a0cb46: imul   eax,esi,0x52080
+0x140a0cb4c: xor    esi,esi
+0x140a0cb4e: test   eax,eax
+0x140a0cb50: cmovns esi,eax
+0x140a0cb53: cmp    esi,r13d
+0x140a0cb56: jl     0x140a0cbcd
+0x140a0cb58: mov    eax,DWORD PTR [rdi+0x110]
+0x140a0cb5e: bt     eax,0x1a
+0x140a0cb62: jae    0x140a0cb93
+0x140a0cb64: mov    r13d,esi
+0x140a0cb67: mov    r15,rdi
+0x140a0cb6a: mov    eax,DWORD PTR [r14+0x8]
+0x140a0cb6e: test   al,0x4
+0x140a0cb70: je     0x140a0cb7a
+0x140a0cb72: mov    r12d,0x5f
+0x140a0cb78: jmp    0x140a0cbcd
+0x140a0cb7a: mov    esi,0x7
+0x140a0cb7f: test   al,0x8
+0x140a0cb81: je     0x140a0cb8b
+0x140a0cb83: mov    r12d,0x5e
+0x140a0cb89: jmp    0x140a0cbd2
+0x140a0cb8b: mov    r12d,0xe0
+0x140a0cb91: jmp    0x140a0cbd2
+0x140a0cb93: bt     eax,0x19
+0x140a0cb97: jae    0x140a0cbcd
+0x140a0cb99: mov    QWORD PTR [rsp+0x20],rdi
+0x140a0cb9e: xor    r9d,r9d
+0x140a0cba1: lea    r8,[rbp+0x120]
+0x140a0cba8: lea    rdx,[rbp+0x138]
+0x140a0cbaf: mov    rcx,rbx
+0x140a0cbb2: call   0x141377090
+0x140a0cbb7: cmp    QWORD PTR [rbp+0x120],0x0
+0x140a0cbbf: je     0x140a0cbcd
+0x140a0cbc1: mov    r13d,esi
+0x140a0cbc4: mov    r15,rdi
+0x140a0cbc7: mov    r12d,0x99
+0x140a0cbcd: mov    esi,0x7
+0x140a0cbd2: lea    rcx,[rbp-0x68]
+0x140a0cbd6: call   0x14006ee00
+0x140a0cbdb: lea    r8,[rsp+0x60]
+0x140a0cbe0: lea    rdx,[rsp+0x48]
+0x140a0cbe5: lea    rcx,[rbp-0x68]
+0x140a0cbe9: call   0x14006ee20
+0x140a0cbee: xor    edx,edx
+0x140a0cbf0: movzx  ecx,BYTE PTR [rax]
+0x140a0cbf3: call   0x1400657b0
+0x140a0cbf8: test   al,al
+0x140a0cbfa: movzx  edi,BYTE PTR [rsp+0x4a]
+0x140a0cbff: jne    0x140a0c9a0
+0x140a0cc05: mov    r13d,0xffff8ad0
+0x140a0cc0b: mov    WORD PTR [rsp+0x40],r13w
+0x140a0cc11: test   r15,r15
+0x140a0cc14: je     0x140a0cdc0
+0x140a0cc1a: cmp    r12w,0xffff
+0x140a0cc1f: je     0x140a0cdc0
+0x140a0cc25: mov    rcx,r15
+0x140a0cc28: test   DWORD PTR [r15+0x110],0x2000000
+0x140a0cc33: je     0x140a0cc4e
+0x140a0cc35: lea    r9,[rsp+0x50]
+0x140a0cc3a: lea    r8,[rsp+0x44]
+0x140a0cc3f: lea    rdx,[rsp+0x40]
+0x140a0cc44: call   0x141367430
+0x140a0cc49: jmp    0x140a0cd6b
+0x140a0cc4e: mov    edx,0x1f
+0x140a0cc53: call   0x1413b1090
+0x140a0cc58: test   rax,rax
+0x140a0cc5b: je     0x140a0cc96
+0x140a0cc5d: test   BYTE PTR [rax+0x154],0x8
+0x140a0cc64: je     0x140a0cc96
+0x140a0cc66: cmp    DWORD PTR [rax+0x150],0x58
+0x140a0cc6d: jne    0x140a0cc96
+0x140a0cc6f: movzx  eax,WORD PTR [r15+0xa8]
+0x140a0cc77: mov    WORD PTR [rsp+0x40],ax
+0x140a0cc7c: movzx  eax,WORD PTR [r15+0xaa]
+0x140a0cc84: mov    WORD PTR [rsp+0x44],ax
+0x140a0cc89: movzx  eax,WORD PTR [r15+0xac]
+0x140a0cc91: mov    WORD PTR [rsp+0x50],ax
+0x140a0cc96: cmp    WORD PTR [rsp+0x40],r13w
+0x140a0cc9c: jne    0x140a0cd73
+0x140a0cca2: test   DWORD PTR [r15+0x110],0x8000000
+0x140a0ccad: je     0x140a0ccd6
+0x140a0ccaf: movzx  eax,WORD PTR [r15+0xa8]
+0x140a0ccb7: mov    WORD PTR [rsp+0x40],ax
+0x140a0ccbc: movzx  eax,WORD PTR [r15+0xaa]
+0x140a0ccc4: mov    WORD PTR [rsp+0x44],ax
+0x140a0ccc9: movzx  eax,WORD PTR [r15+0xac]
+0x140a0ccd1: jmp    0x140a0cd66
+0x140a0ccd6: mov    rdx,rbx
+0x140a0ccd9: lea    rcx,[rbp+0xd0]
+0x140a0cce0: call   0x1402b6380
+0x140a0cce5: lea    rcx,[rip+0x19e1b0c]        # 0x1423ee7f8
+0x140a0ccec: call   0x14006ee50
+0x140a0ccf1: mov    rsi,rax
+0x140a0ccf4: sub    esi,0x1
+0x140a0ccf7: js     0x140a0cd41
+0x140a0ccf9: movsxd rdi,esi
+0x140a0ccfc: nop    DWORD PTR [rax+0x0]
+0x140a0cd00: mov    rdx,rdi
+0x140a0cd03: lea    rcx,[rip+0x19e1aee]        # 0x1423ee7f8
+0x140a0cd0a: call   0x14006f220
+0x140a0cd0f: mov    rcx,QWORD PTR [rax]
+0x140a0cd12: test   BYTE PTR [rcx+0x154],0x8
+0x140a0cd19: je     0x140a0cd39
+0x140a0cd1b: mov    rdx,rdi
+0x140a0cd1e: lea    rcx,[rip+0x19e1ad3]        # 0x1423ee7f8
+0x140a0cd25: call   0x14006f220
+0x140a0cd2a: lea    rdx,[rbp+0xd0]
+0x140a0cd31: mov    rcx,QWORD PTR [rax]
+0x140a0cd34: call   0x1405a7b40
+0x140a0cd39: dec    rdi
+0x140a0cd3c: sub    esi,0x1
+0x140a0cd3f: jns    0x140a0cd00
+0x140a0cd41: movzx  eax,WORD PTR [rbp+0xde]
+0x140a0cd48: cmp    ax,r13w
+0x140a0cd4c: je     0x140a0cd6b
+0x140a0cd4e: mov    WORD PTR [rsp+0x40],ax
+0x140a0cd53: movzx  eax,WORD PTR [rbp+0xe0]
+0x140a0cd5a: mov    WORD PTR [rsp+0x44],ax
+0x140a0cd5f: movzx  eax,WORD PTR [rbp+0xe2]
+0x140a0cd66: mov    WORD PTR [rsp+0x50],ax
+0x140a0cd6b: cmp    WORD PTR [rsp+0x40],r13w
+0x140a0cd71: je     0x140a0cdc0
+0x140a0cd73: mov    rcx,rbx
+0x140a0cd76: call   0x140a40d90
+0x140a0cd7b: mov    rcx,r15
+0x140a0cd7e: call   0x140a40d90
+0x140a0cd83: mov    rcx,QWORD PTR [rsp+0x58]
+0x140a0cd88: mov    DWORD PTR [rcx],0x45
+0x140a0cd8e: mov    DWORD PTR [rcx+0x4],0x28
+0x140a0cd95: movzx  eax,WORD PTR [rsp+0x40]
+0x140a0cd9a: mov    WORD PTR [rcx+0x30],ax
+0x140a0cd9e: movzx  eax,WORD PTR [rsp+0x44]
+0x140a0cda3: mov    WORD PTR [rcx+0x32],ax
+0x140a0cda7: movzx  eax,WORD PTR [rsp+0x50]
+0x140a0cdac: mov    WORD PTR [rcx+0x34],ax
+0x140a0cdb0: movsx  eax,r12w
+0x140a0cdb4: mov    DWORD PTR [rcx+0x38],eax
+0x140a0cdb7: mov    QWORD PTR [rcx+0x8],r15
+0x140a0cdbb: jmp    0x140a0d317
+0x140a0cdc0: mov    edx,0x33
+0x140a0cdc5: mov    r8d,0x3e8
+0x140a0cdcb: mov    rcx,rbx
+0x140a0cdce: call   0x1400737e0
+0x140a0cdd3: mov    esi,0x7
+0x140a0cdd8: mov    rcx,rbx
+0x140a0cddb: call   0x14138ed20
+0x140a0cde0: test   al,al
+0x140a0cde2: je     0x140a0ce04
+0x140a0cde4: mov    BYTE PTR [rsp+0x4a],0x0
+0x140a0cde9: xor    r8d,r8d
+0x140a0cdec: lea    rdx,[rsp+0x4a]
+0x140a0cdf1: mov    rcx,rbx
+0x140a0cdf4: call   0x140a38a10
+0x140a0cdf9: cmp    BYTE PTR [rsp+0x4a],0x0
+0x140a0cdfe: jne    0x140a0d317
+0x140a0ce04: mov    rcx,rbx
+0x140a0ce07: call   0x14138ed20
+0x140a0ce0c: test   al,al
+0x140a0ce0e: je     0x140a0cf86
+0x140a0ce14: cmp    BYTE PTR [rbx+0xae4],0x0
+0x140a0ce1b: je     0x140a0cf86
+0x140a0ce21: movsx  ecx,WORD PTR [rbx+0xa0]
+0x140a0ce28: call   0x140a804c0
+0x140a0ce2d: test   al,al
+0x140a0ce2f: jne    0x140a0cf86
+0x140a0ce35: mov    edx,esi
+0x140a0ce37: mov    rcx,rbx
+0x140a0ce3a: call   0x1400737b0
+0x140a0ce3f: test   rax,rax
+0x140a0ce42: jne    0x140a0cf86
+0x140a0ce48: mov    edx,0x37
+0x140a0ce4d: mov    rcx,rbx
+0x140a0ce50: call   0x1400737b0
+0x140a0ce55: test   rax,rax
+0x140a0ce58: jne    0x140a0cf86
+0x140a0ce5e: lea    rcx,[rbx+0x2b8]
+0x140a0ce65: call   0x14006f370
+0x140a0ce6a: test   rax,rax
+0x140a0ce6d: jne    0x140a0cf86
+0x140a0ce73: lea    rcx,[rbx+0x2d0]
+0x140a0ce7a: call   0x14006f370
+0x140a0ce7f: test   rax,rax
+0x140a0ce82: jne    0x140a0cf86
+0x140a0ce88: mov    edx,0x11
+0x140a0ce8d: mov    rcx,rbx
+0x140a0ce90: call   0x1400737b0
+0x140a0ce95: test   rax,rax
+0x140a0ce98: jne    0x140a0cf86
+0x140a0ce9e: mov    rcx,rbx
+0x140a0cea1: call   0x140a40950
+0x140a0cea6: test   al,al
+0x140a0cea8: jne    0x140a0cf86
+0x140a0ceae: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0ceb6: jne    0x140a0cf86
+0x140a0cebc: cmp    WORD PTR [rbx+0x814],0xffff
+0x140a0cec4: jne    0x140a0cf86
+0x140a0ceca: xor    edx,edx
+0x140a0cecc: mov    rcx,rbx
+0x140a0cecf: call   0x1413a4310
+0x140a0ced4: cmp    QWORD PTR [rbx+0x4d8],0x0
+0x140a0cedc: jne    0x140a0fa23
+0x140a0cee2: mov    rcx,rbx
+0x140a0cee5: call   0x140073ac0
+0x140a0ceea: test   al,al
+0x140a0ceec: je     0x140a0cf86
+0x140a0cef2: lea    r9,[rbp-0x60]
+0x140a0cef6: lea    r8,[rsp+0x70]
+0x140a0cefb: lea    rdx,[rsp+0x44]
+0x140a0cf00: mov    rcx,rbx
+0x140a0cf03: call   0x1413ad610
+0x140a0cf08: mov    dl,0x1
+0x140a0cf0a: mov    rcx,rbx
+0x140a0cf0d: call   0x14133e330
+0x140a0cf12: mov    rdi,rax
+0x140a0cf15: lea    r9,[rsp+0x40]
+0x140a0cf1a: xor    r8d,r8d
+0x140a0cf1d: mov    rdx,rax
+0x140a0cf20: mov    rcx,rbx
+0x140a0cf23: call   0x14133f510
+0x140a0cf28: test   rax,rax
+0x140a0cf2b: je     0x140a0cf73
+0x140a0cf2d: test   rdi,rdi
+0x140a0cf30: je     0x140a0cf73
+0x140a0cf32: cmp    WORD PTR [rsp+0x44],r13w
+0x140a0cf38: je     0x140a0cf73
+0x140a0cf3a: mov    rcx,rbx
+0x140a0cf3d: call   0x140a40d90
+0x140a0cf42: mov    rcx,QWORD PTR [rsp+0x58]
+0x140a0cf47: mov    DWORD PTR [rcx],0x46
+0x140a0cf4d: movzx  eax,WORD PTR [rsp+0x44]
+0x140a0cf52: mov    WORD PTR [rcx+0x30],ax
+0x140a0cf56: movzx  eax,WORD PTR [rsp+0x70]
+0x140a0cf5b: mov    WORD PTR [rcx+0x32],ax
+0x140a0cf5f: movzx  eax,WORD PTR [rbp-0x60]
+0x140a0cf63: mov    WORD PTR [rcx+0x34],ax
+0x140a0cf67: mov    DWORD PTR [rcx+0x4],0x28
+0x140a0cf6e: jmp    0x140a0d317
+0x140a0cf73: mov    edx,0x11
+0x140a0cf78: mov    r8d,0x3e8
+0x140a0cf7e: mov    rcx,rbx
+0x140a0cf81: call   0x1400737e0
+0x140a0cf86: cmp    WORD PTR [rbx+0xa0],0x62
+0x140a0cf8e: jne    0x140a0d074
+0x140a0cf94: xor    edx,edx
+0x140a0cf96: mov    rcx,rbx
+0x140a0cf99: call   0x14134f250
+0x140a0cf9e: mov    rsi,rax
+0x140a0cfa1: test   rax,rax
+0x140a0cfa4: je     0x140a0d06a
+0x140a0cfaa: cmp    QWORD PTR [rbx+0x3b0],rax
+0x140a0cfb1: jne    0x140a0d06a
+0x140a0cfb7: test   BYTE PTR [rax+0x110],0x2
+0x140a0cfbe: jne    0x140a0d06a
+0x140a0cfc4: mov    rax,QWORD PTR [rax+0x4d8]
+0x140a0cfcb: test   rax,rax
+0x140a0cfce: je     0x140a0d06a
+0x140a0cfd4: cmp    WORD PTR [rax+0x14],0x1a
+0x140a0cfd9: jne    0x140a0d06a
+0x140a0cfdf: movzx  edx,WORD PTR [rbx+0xaa]
+0x140a0cfe6: sub    dx,WORD PTR [rsi+0xaa]
+0x140a0cfed: movzx  ecx,WORD PTR [rbx+0xa8]
+0x140a0cff4: sub    cx,WORD PTR [rsi+0xa8]
+0x140a0cffb: call   0x140072170
+0x140a0d000: cmp    ax,0x7
+0x140a0d004: jge    0x140a0d064
+0x140a0d006: lea    rcx,[rip+0x19d80bb]        # 0x1423e50c8
+0x140a0d00d: call   0x14006ee50
+0x140a0d012: mov    rdi,rax
+0x140a0d015: sub    edi,0x1
+0x140a0d018: js     0x140a0d04c
+0x140a0d01a: nop    WORD PTR [rax+rax*1+0x0]
+0x140a0d020: movsxd rdx,edi
+0x140a0d023: lea    rcx,[rip+0x19d809e]        # 0x1423e50c8
+0x140a0d02a: call   0x14006f220
+0x140a0d02f: mov    rcx,QWORD PTR [rax]
+0x140a0d032: test   DWORD PTR [rcx+0x110],0x2050002
+0x140a0d03c: jne    0x140a0d047
+0x140a0d03e: cmp    QWORD PTR [rcx+0x490],rbx
+0x140a0d045: je     0x140a0d074
+0x140a0d047: sub    edi,0x1
+0x140a0d04a: jns    0x140a0d020
+0x140a0d04c: test   DWORD PTR [rsi+0x110],0x40000
+0x140a0d056: je     0x140a0d074
+0x140a0d058: or     DWORD PTR [rbx+0x110],0x40000
+0x140a0d062: jmp    0x140a0d074
+0x140a0d064: cmp    ax,0x14
+0x140a0d068: jle    0x140a0d074
+0x140a0d06a: and    DWORD PTR [rbx+0x110],0xfffbffff
+0x140a0d074: cmp    WORD PTR [rbx+0xa0],0x63
+0x140a0d07c: jne    0x140a0d341
+0x140a0d082: cmp    DWORD PTR [rbx+0x3bc],0xffffffff
+0x140a0d089: je     0x140a0d341
+0x140a0d08f: xor    edx,edx
+0x140a0d091: mov    rcx,rbx
+0x140a0d094: call   0x14134f250
+0x140a0d099: mov    rdi,rax
+0x140a0d09c: test   rax,rax
+0x140a0d09f: je     0x140a0d341
+0x140a0d0a5: cmp    QWORD PTR [rbx+0x3b0],rax
+0x140a0d0ac: jne    0x140a0d341
+0x140a0d0b2: test   BYTE PTR [rax+0x110],0x2
+0x140a0d0b9: jne    0x140a0d341
+0x140a0d0bf: mov    rcx,rax
+0x140a0d0c2: call   0x1413cc1d0
+0x140a0d0c7: test   rax,rax
+0x140a0d0ca: je     0x140a0d341
+0x140a0d0d0: xor    r9d,r9d
+0x140a0d0d3: mov    r8d,0x2
+0x140a0d0d9: mov    rdx,rdi
+0x140a0d0dc: mov    rcx,rbx
+0x140a0d0df: call   0x14138c120
+0x140a0d0e4: mov    edx,0x15
+0x140a0d0e9: mov    rcx,rbx
+0x140a0d0ec: call   0x1400737b0
+0x140a0d0f1: test   rax,rax
+0x140a0d0f4: jne    0x140a0d305
+0x140a0d0fa: mov    r8,QWORD PTR [rbx+0x3b0]
+0x140a0d101: movzx  edx,WORD PTR [r8+0xa8]
+0x140a0d109: cmp    dx,WORD PTR [rbx+0xa8]
+0x140a0d110: jne    0x140a0d138
+0x140a0d112: movzx  eax,WORD PTR [rbx+0xaa]
+0x140a0d119: cmp    WORD PTR [r8+0xaa],ax
+0x140a0d121: jne    0x140a0d138
+0x140a0d123: movzx  eax,WORD PTR [rbx+0xac]
+0x140a0d12a: cmp    WORD PTR [r8+0xac],ax
+0x140a0d132: je     0x140a0d305
+0x140a0d138: xor    dil,dil
+0x140a0d13b: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0d140: movzx  r9d,WORD PTR [r8+0xac]
+0x140a0d148: movzx  r8d,WORD PTR [r8+0xaa]
+0x140a0d150: mov    rcx,rbx
+0x140a0d153: call   0x1413a4910
+0x140a0d158: test   al,al
+0x140a0d15a: jne    0x140a0d1c7
+0x140a0d15c: mov    r9d,r13d
+0x140a0d15f: mov    edx,0xf
+0x140a0d164: mov    WORD PTR [rsp+0x28],r13w
+0x140a0d16a: mov    WORD PTR [rsp+0x20],r13w
+0x140a0d170: mov    r8b,0x1
+0x140a0d173: mov    rcx,rbx
+0x140a0d176: call   0x140a33be0
+0x140a0d17b: mov    rdx,QWORD PTR [rbx+0x3b0]
+0x140a0d182: movzx  r9d,WORD PTR [rdx+0xac]
+0x140a0d18a: movzx  r8d,WORD PTR [rdx+0xaa]
+0x140a0d192: movzx  edx,WORD PTR [rdx+0xa8]
+0x140a0d199: lea    rcx,[rip+0x19c4350]        # 0x1423d14f0
+0x140a0d1a0: call   0x140256de0
+0x140a0d1a5: mov    edx,0x15
+0x140a0d1aa: mov    rcx,rbx
+0x140a0d1ad: cmp    eax,DWORD PTR [rip+0x1c31789]        # 0x14263e93c
+0x140a0d1b3: jl     0x140a0d2fa
+0x140a0d1b9: mov    dil,0x1
+0x140a0d1bc: mov    r8d,0x14
+0x140a0d1c2: call   0x1400737e0
+0x140a0d1c7: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0d1ce: movzx  r8d,WORD PTR [rbx+0xac]
+0x140a0d1d6: sub    r8w,WORD PTR [rax+0xac]
+0x140a0d1de: movzx  edx,WORD PTR [rbx+0xaa]
+0x140a0d1e5: sub    dx,WORD PTR [rax+0xaa]
+0x140a0d1ec: movzx  ecx,WORD PTR [rbx+0xa8]
+0x140a0d1f3: sub    cx,WORD PTR [rax+0xa8]
+0x140a0d1fa: call   0x1409e5440
+0x140a0d1ff: cmp    ax,0x3
+0x140a0d203: jg     0x140a0d217
+0x140a0d205: mov    ecx,0x1f4
+0x140a0d20a: call   0x140071f30
+0x140a0d20f: test   eax,eax
+0x140a0d211: jne    0x140a0d305
+0x140a0d217: mov    rdx,QWORD PTR [rbx+0x3b0]
+0x140a0d21e: mov    DWORD PTR [rsp+0x28],0xf
+0x140a0d226: movzx  eax,WORD PTR [rbx+0xbc]
+0x140a0d22d: mov    WORD PTR [rsp+0x20],ax
+0x140a0d232: movzx  r9d,WORD PTR [rdx+0xac]
+0x140a0d23a: movzx  r8d,WORD PTR [rdx+0xaa]
+0x140a0d242: movzx  edx,WORD PTR [rdx+0xa8]
+0x140a0d249: mov    rcx,rbx
+0x140a0d24c: call   0x141378860
+0x140a0d251: test   dil,dil
+0x140a0d254: je     0x140a0d305
+0x140a0d25a: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0d261: movzx  r8d,WORD PTR [rbx+0xc4]
+0x140a0d269: sub    r8w,WORD PTR [rax+0xac]
+0x140a0d271: movzx  edx,WORD PTR [rbx+0xaa]
+0x140a0d278: sub    dx,WORD PTR [rax+0xaa]
+0x140a0d27f: movzx  ecx,WORD PTR [rbx+0xc0]
+0x140a0d286: sub    cx,WORD PTR [rax+0xc0]
+0x140a0d28d: call   0x1409e5440
+0x140a0d292: cmp    ax,0x3
+0x140a0d296: jg     0x140a0d2a9
+0x140a0d298: lea    rcx,[rbx+0xc8]
+0x140a0d29f: call   0x14006f450
+0x140a0d2a4: test   rax,rax
+0x140a0d2a7: jne    0x140a0d305
+0x140a0d2a9: mov    rdx,QWORD PTR [rsp+0x58]
+0x140a0d2ae: mov    DWORD PTR [rdx],0x44
+0x140a0d2b4: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0d2bb: movzx  ecx,WORD PTR [rax+0xa8]
+0x140a0d2c2: mov    WORD PTR [rdx+0x30],cx
+0x140a0d2c6: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0d2cd: movzx  ecx,WORD PTR [rax+0xaa]
+0x140a0d2d4: mov    WORD PTR [rdx+0x32],cx
+0x140a0d2d8: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0d2df: movzx  ecx,WORD PTR [rax+0xac]
+0x140a0d2e6: mov    WORD PTR [rdx+0x34],cx
+0x140a0d2ea: mov    DWORD PTR [rdx+0x38],0x9
+0x140a0d2f1: mov    DWORD PTR [rdx+0x4],0x28
+0x140a0d2f8: jmp    0x140a0d317
+0x140a0d2fa: mov    r8d,0xc8
+0x140a0d300: call   0x1400737e0
+0x140a0d305: mov    rsi,QWORD PTR [rsp+0x58]
+0x140a0d30a: mov    DWORD PTR [rsi+0x4],0x28
+0x140a0d311: mov    DWORD PTR [rsi],0x2f
+0x140a0d317: mov    rcx,QWORD PTR [rbp+0x170]
+0x140a0d31e: xor    rcx,rsp
+0x140a0d321: call   0x141539660
+0x140a0d326: mov    rbx,QWORD PTR [rsp+0x2d8]
+0x140a0d32e: add    rsp,0x280
+0x140a0d335: pop    r15
+0x140a0d337: pop    r14
+0x140a0d339: pop    r13
+0x140a0d33b: pop    r12
+0x140a0d33d: pop    rdi
+0x140a0d33e: pop    rsi
+0x140a0d33f: pop    rbp
+0x140a0d340: ret
+0x140a0d341: mov    rcx,rbx
+0x140a0d344: call   0x14138ed20
+0x140a0d349: test   al,al
+0x140a0d34b: je     0x140a0d6f2
+0x140a0d351: cmp    BYTE PTR [rbx+0xae1],0x0
+0x140a0d358: je     0x140a0d6f2
+0x140a0d35e: movsx  ecx,WORD PTR [rbx+0xa0]
+0x140a0d365: call   0x140a804c0
+0x140a0d36a: mov    edi,0x7
+0x140a0d36f: test   al,al
+0x140a0d371: jne    0x140a0d6f7
+0x140a0d377: mov    edx,edi
+0x140a0d379: mov    rcx,rbx
+0x140a0d37c: call   0x1400737b0
+0x140a0d381: test   rax,rax
+0x140a0d384: jne    0x140a0d6f7
+0x140a0d38a: mov    edx,0x37
+0x140a0d38f: mov    rcx,rbx
+0x140a0d392: call   0x1400737b0
+0x140a0d397: test   rax,rax
+0x140a0d39a: jne    0x140a0d6f7
+0x140a0d3a0: mov    edx,0x12
+0x140a0d3a5: mov    rcx,rbx
+0x140a0d3a8: call   0x1400737b0
+0x140a0d3ad: test   rax,rax
+0x140a0d3b0: jne    0x140a0d6f7
+0x140a0d3b6: mov    rcx,rbx
+0x140a0d3b9: call   0x140a40950
+0x140a0d3be: test   al,al
+0x140a0d3c0: jne    0x140a0d6f7
+0x140a0d3c6: cmp    WORD PTR [rbx+0x814],0xffff
+0x140a0d3ce: jne    0x140a0d6f7
+0x140a0d3d4: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0d3dc: jne    0x140a0d6f7
+0x140a0d3e2: xor    edx,edx
+0x140a0d3e4: mov    rcx,rbx
+0x140a0d3e7: call   0x1413a4310
+0x140a0d3ec: cmp    QWORD PTR [rbx+0x4d8],0x0
+0x140a0d3f4: jne    0x140a0fa23
+0x140a0d3fa: mov    rcx,rbx
+0x140a0d3fd: call   0x140073ac0
+0x140a0d402: test   al,al
+0x140a0d404: je     0x140a0d6f7
+0x140a0d40a: mov    rdx,rbx
+0x140a0d40d: lea    rcx,[rbp+0xd0]
+0x140a0d414: call   0x1402b6380
+0x140a0d419: lea    rcx,[rip+0x19e1360]        # 0x1423ee780
+0x140a0d420: call   0x14006ee50
+0x140a0d425: mov    rsi,rax
+0x140a0d428: sub    esi,0x1
+0x140a0d42b: js     0x140a0d471
+0x140a0d42d: movsxd rdi,esi
+0x140a0d430: mov    rdx,rdi
+0x140a0d433: lea    rcx,[rip+0x19e1346]        # 0x1423ee780
+0x140a0d43a: call   0x14006f220
+0x140a0d43f: mov    rcx,QWORD PTR [rax]
+0x140a0d442: test   BYTE PTR [rcx+0x154],0x8
+0x140a0d449: je     0x140a0d469
+0x140a0d44b: mov    rdx,rdi
+0x140a0d44e: lea    rcx,[rip+0x19e132b]        # 0x1423ee780
+0x140a0d455: call   0x14006f220
+0x140a0d45a: lea    rdx,[rbp+0xd0]
+0x140a0d461: mov    rcx,QWORD PTR [rax]
+0x140a0d464: call   0x1405a8110
+0x140a0d469: dec    rdi
+0x140a0d46c: sub    esi,0x1
+0x140a0d46f: jns    0x140a0d430
+0x140a0d471: cmp    WORD PTR [rbp+0xde],r13w
+0x140a0d479: jne    0x140a0da0b
+0x140a0d47f: cmp    BYTE PTR [rip+0xec9a96],0x0        # 0x1418d6f1c
+0x140a0d486: jne    0x140a0d6df
+0x140a0d48c: xor    r14d,r14d
+0x140a0d48f: movzx  r13d,r14w
+0x140a0d493: mov    WORD PTR [rsp+0x40],r14w
+0x140a0d499: lea    rcx,[rip+0x1c31c50]        # 0x14263f0f0
+0x140a0d4a0: call   0x14006ee50
+0x140a0d4a5: test   rax,rax
+0x140a0d4a8: je     0x140a0d62e
+0x140a0d4ae: mov    esi,r14d
+0x140a0d4b1: mov    rdx,rsi
+0x140a0d4b4: lea    rcx,[rip+0x1c31c35]        # 0x14263f0f0
+0x140a0d4bb: call   0x14006f220
+0x140a0d4c0: mov    rcx,QWORD PTR [rax]
+0x140a0d4c3: mov    rax,QWORD PTR [rcx]
+0x140a0d4c6: call   QWORD PTR [rax+0x30]
+0x140a0d4c9: mov    rdi,rax
+0x140a0d4cc: test   rax,rax
+0x140a0d4cf: je     0x140a0d60b
+0x140a0d4d5: mov    rdx,rsi
+0x140a0d4d8: lea    rcx,[rip+0x1c31c11]        # 0x14263f0f0
+0x140a0d4df: call   0x14006f220
+0x140a0d4e4: mov    rcx,QWORD PTR [rax]
+0x140a0d4e7: mov    rdx,QWORD PTR [rcx]
+0x140a0d4ea: call   QWORD PTR [rdx+0x60]
+0x140a0d4ed: test   al,al
+0x140a0d4ef: je     0x140a0d60b
+0x140a0d4f5: lea    r15,[rdi+0x28]
+0x140a0d4f9: mov    rcx,r15
+0x140a0d4fc: call   0x14006f450
+0x140a0d501: test   rax,rax
+0x140a0d504: je     0x140a0d60b
+0x140a0d50a: lea    rsi,[rdi+0x40]
+0x140a0d50e: mov    QWORD PTR [rbp+0x138],rsi
+0x140a0d515: lea    rax,[rdi+0x70]
+0x140a0d519: mov    QWORD PTR [rbp+0x120],rax
+0x140a0d520: add    rdi,0x58
+0x140a0d524: mov    QWORD PTR [rsp+0x68],rdi
+0x140a0d529: mov    r12,r14
+0x140a0d52c: movzx  r13d,r14w
+0x140a0d530: mov    rdx,r12
+0x140a0d533: mov    rcx,r15
+0x140a0d536: call   0x14006f440
+0x140a0d53b: movzx  r14d,WORD PTR [rax]
+0x140a0d53f: sub    r14w,WORD PTR [rip+0x1adaba1]        # 0x1424e80e8
+0x140a0d547: movzx  eax,r14w
+0x140a0d54b: add    ax,ax
+0x140a0d54e: add    r14w,ax
+0x140a0d552: shl    r14w,0x4
+0x140a0d557: mov    rdx,r12
+0x140a0d55a: mov    rcx,rsi
+0x140a0d55d: call   0x14006f440
+0x140a0d562: movzx  esi,WORD PTR [rax]
+0x140a0d565: sub    si,WORD PTR [rip+0x1adab80]        # 0x1424e80ec
+0x140a0d56c: movzx  eax,si
+0x140a0d56f: add    ax,ax
+0x140a0d572: add    si,ax
+0x140a0d575: shl    si,0x4
+0x140a0d579: mov    rdx,r12
+0x140a0d57c: mov    rcx,rdi
+0x140a0d57f: call   0x14006f440
+0x140a0d584: movsx  edi,WORD PTR [rax]
+0x140a0d587: mov    rdx,r12
+0x140a0d58a: mov    rcx,QWORD PTR [rbp+0x120]
+0x140a0d591: call   0x14006f440
+0x140a0d596: movsx  ecx,WORD PTR [rax]
+0x140a0d599: sub    ecx,edi
+0x140a0d59b: inc    ecx
+0x140a0d59d: call   0x140071f30
+0x140a0d5a2: mov    edi,eax
+0x140a0d5a4: mov    rdx,r12
+0x140a0d5a7: mov    rcx,QWORD PTR [rsp+0x68]
+0x140a0d5ac: call   0x14006f440
+0x140a0d5b1: add    di,WORD PTR [rax]
+0x140a0d5b4: lea    ecx,[rsi+0x2f]
+0x140a0d5b7: lea    r9d,[r14+0x2f]
+0x140a0d5bb: mov    WORD PTR [rsp+0x30],di
+0x140a0d5c0: mov    WORD PTR [rsp+0x28],cx
+0x140a0d5c5: mov    WORD PTR [rsp+0x20],si
+0x140a0d5ca: movzx  r8d,r14w
+0x140a0d5ce: lea    rdx,[rbp+0xd0]
+0x140a0d5d5: mov    rcx,rbx
+0x140a0d5d8: call   0x1413af340
+0x140a0d5dd: inc    r13w
+0x140a0d5e1: movsx  r12,r13w
+0x140a0d5e5: mov    rcx,r15
+0x140a0d5e8: call   0x14006f450
+0x140a0d5ed: cmp    r12,rax
+0x140a0d5f0: mov    rdi,QWORD PTR [rsp+0x68]
+0x140a0d5f5: mov    rsi,QWORD PTR [rbp+0x138]
+0x140a0d5fc: jb     0x140a0d530
+0x140a0d602: movzx  r13d,WORD PTR [rsp+0x40]
+0x140a0d608: xor    r14d,r14d
+0x140a0d60b: inc    r13w
+0x140a0d60f: mov    WORD PTR [rsp+0x40],r13w
+0x140a0d615: movsx  rsi,r13w
+0x140a0d619: lea    rcx,[rip+0x1c31ad0]        # 0x14263f0f0
+0x140a0d620: call   0x14006ee50
+0x140a0d625: cmp    rsi,rax
+0x140a0d628: jb     0x140a0d4b1
+0x140a0d62e: lea    rcx,[rip+0x19c4023]        # 0x1423d1658
+0x140a0d635: call   0x14006ee50
+0x140a0d63a: mov    rdi,rax
+0x140a0d63d: sub    edi,0x1
+0x140a0d640: js     0x140a0d6a0
+0x140a0d642: movsxd rsi,edi
+0x140a0d645: data16 data16 nop WORD PTR [rax+rax*1+0x0]
+0x140a0d650: mov    rdx,rsi
+0x140a0d653: lea    rcx,[rip+0x19c3ffe]        # 0x1423d1658
+0x140a0d65a: call   0x14006f220
+0x140a0d65f: mov    r8,QWORD PTR [rax]
+0x140a0d662: movzx  ecx,WORD PTR [r8+0x8]
+0x140a0d667: mov    WORD PTR [rsp+0x30],cx
+0x140a0d66c: movzx  eax,WORD PTR [r8+0x6]
+0x140a0d671: mov    WORD PTR [rsp+0x28],ax
+0x140a0d676: movzx  eax,WORD PTR [r8+0x2]
+0x140a0d67b: mov    WORD PTR [rsp+0x20],ax
+0x140a0d680: movzx  r9d,WORD PTR [r8+0x4]
+0x140a0d685: movzx  r8d,WORD PTR [r8]
+0x140a0d689: lea    rdx,[rbp+0xd0]
+0x140a0d690: mov    rcx,rbx
+0x140a0d693: call   0x1413af340
+0x140a0d698: dec    rsi
+0x140a0d69b: sub    edi,0x1
+0x140a0d69e: jns    0x140a0d650
+0x140a0d6a0: mov    ecx,0x64
+0x140a0d6a5: call   0x140071f30
+0x140a0d6aa: mov    r8d,0x14
+0x140a0d6b0: test   eax,eax
+0x140a0d6b2: mov    eax,0x5
+0x140a0d6b7: cmovne r8w,ax
+0x140a0d6bc: lea    rdx,[rbp+0xd0]
+0x140a0d6c3: mov    rcx,rbx
+0x140a0d6c6: call   0x1413b02b0
+0x140a0d6cb: mov    r13d,0xffff8ad0
+0x140a0d6d1: cmp    WORD PTR [rbp+0xde],r13w
+0x140a0d6d9: jne    0x140a0da0b
+0x140a0d6df: mov    edx,0x12
+0x140a0d6e4: mov    r8d,0x3e8
+0x140a0d6ea: mov    rcx,rbx
+0x140a0d6ed: call   0x1400737e0
+0x140a0d6f2: mov    edi,0x7
+0x140a0d6f7: cmp    QWORD PTR [rbx+0x3b0],0x0
+0x140a0d6ff: jne    0x140a0dc7e
+0x140a0d705: mov    edx,edi
+0x140a0d707: mov    rcx,rbx
+0x140a0d70a: call   0x1400737b0
+0x140a0d70f: test   rax,rax
+0x140a0d712: jne    0x140a0dc7e
+0x140a0d718: mov    rcx,rbx
+0x140a0d71b: call   0x14138ed20
+0x140a0d720: test   al,al
+0x140a0d722: je     0x140a0dc7e
+0x140a0d728: mov    edx,0x3a
+0x140a0d72d: mov    rcx,rbx
+0x140a0d730: call   0x140073230
+0x140a0d735: test   al,al
+0x140a0d737: je     0x140a0dc7e
+0x140a0d73d: mov    edx,0x37
+0x140a0d742: mov    rcx,rbx
+0x140a0d745: call   0x1400737b0
+0x140a0d74a: test   rax,rax
+0x140a0d74d: jne    0x140a0dc7e
+0x140a0d753: cmp    DWORD PTR [rbx+0x3d8],0xffffffff
+0x140a0d75a: jne    0x140a0dc7e
+0x140a0d760: cmp    DWORD PTR [rbx+0x3d4],0xffffffff
+0x140a0d767: jne    0x140a0dc7e
+0x140a0d76d: mov    rcx,rbx
+0x140a0d770: call   0x140a40950
+0x140a0d775: test   al,al
+0x140a0d777: jne    0x140a0dc7e
+0x140a0d77d: cmp    BYTE PTR [rbx+0xac1],al
+0x140a0d783: je     0x140a0dc7e
+0x140a0d789: movsx  ecx,WORD PTR [rbx+0xa0]
+0x140a0d790: call   0x140a804c0
+0x140a0d795: test   al,al
+0x140a0d797: jne    0x140a0dc7e
+0x140a0d79d: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0d7a5: jne    0x140a0dc7e
+0x140a0d7ab: mov    ecx,0xc8
+0x140a0d7b0: call   0x140071f30
+0x140a0d7b5: test   eax,eax
+0x140a0d7b7: jne    0x140a0dc7e
+0x140a0d7bd: mov    rcx,rbx
+0x140a0d7c0: call   0x140073ac0
+0x140a0d7c5: test   al,al
+0x140a0d7c7: je     0x140a0dc7e
+0x140a0d7cd: movzx  eax,BYTE PTR [rip+0xe8ea19]        # 0x14189c1ed
+0x140a0d7d4: test   al,al
+0x140a0d7d6: je     0x140a0d7fc
+0x140a0d7d8: cmp    al,0x2
+0x140a0d7da: jne    0x140a0dc7e
+0x140a0d7e0: mov    r8b,0x1
+0x140a0d7e3: movzx  edx,r8b
+0x140a0d7e7: lea    rcx,[rip+0x1985d6a]        # 0x142393558
+0x140a0d7ee: call   0x1408d95a0
+0x140a0d7f3: cmp    eax,0xffffffff
+0x140a0d7f6: jne    0x140a0dc7e
+0x140a0d7fc: movzx  r14d,r13w
+0x140a0d800: mov    WORD PTR [rsp+0x40],r13w
+0x140a0d806: movzx  r15d,WORD PTR [rbx+0xac]
+0x140a0d80e: mov    WORD PTR [rsp+0x4a],r15w
+0x140a0d814: mov    r12d,0x64
+0x140a0d81a: movsx  eax,WORD PTR [rbx+0xa8]
+0x140a0d821: lea    esi,[rax-0x14]
+0x140a0d824: movsx  ecx,si
+0x140a0d827: add    eax,0x14
+0x140a0d82a: movzx  r13d,WORD PTR [rsp+0x70]
+0x140a0d830: cmp    ecx,eax
+0x140a0d832: jg     0x140a0db06
+0x140a0d838: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a0d840: cmp    ecx,DWORD PTR [rip+0x1ada896]        # 0x1424e80dc
+0x140a0d846: jge    0x140a0db00
+0x140a0d84c: movsx  eax,WORD PTR [rbx+0xaa]
+0x140a0d853: lea    edi,[rax-0x14]
+0x140a0d856: lea    ecx,[rax+0x14]
+0x140a0d859: movsx  eax,di
+0x140a0d85c: cmp    eax,ecx
+0x140a0d85e: jg     0x140a0dae8
+0x140a0d864: nop    DWORD PTR [rax+0x0]
+0x140a0d868: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a0d870: movzx  eax,di
+0x140a0d873: xor    ecx,ecx
+0x140a0d875: mov    edi,ecx
+0x140a0d877: test   ax,ax
+0x140a0d87a: cmovns di,ax
+0x140a0d87e: movsx  eax,di
+0x140a0d881: cmp    eax,DWORD PTR [rip+0x1ada859]        # 0x1424e80e0
+0x140a0d887: jge    0x140a0dae8
+0x140a0d88d: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d895: movzx  r8d,di
+0x140a0d899: movzx  edx,si
+0x140a0d89c: lea    rcx,[rip+0x19c3c4d]        # 0x1423d14f0
+0x140a0d8a3: call   0x14007dc40
+0x140a0d8a8: bt     eax,0x10
+0x140a0d8ac: jae    0x140a0d8f8
+0x140a0d8ae: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d8b6: movzx  r8d,di
+0x140a0d8ba: movzx  edx,si
+0x140a0d8bd: lea    rcx,[rip+0x19c3c2c]        # 0x1423d14f0
+0x140a0d8c4: call   0x140067f80
+0x140a0d8c9: movzx  ecx,ax
+0x140a0d8cc: call   0x140247210
+0x140a0d8d1: test   al,al
+0x140a0d8d3: jne    0x140a0d8f8
+0x140a0d8d5: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d8dd: movzx  r8d,di
+0x140a0d8e1: movzx  edx,si
+0x140a0d8e4: lea    rcx,[rip+0x19c3c05]        # 0x1423d14f0
+0x140a0d8eb: call   0x140068010
+0x140a0d8f0: test   al,0x7
+0x140a0d8f2: je     0x140a0dad0
+0x140a0d8f8: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0d8fd: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d905: movzx  r8d,di
+0x140a0d909: movzx  edx,si
+0x140a0d90c: mov    rcx,rbx
+0x140a0d90f: call   0x1413a4910
+0x140a0d914: test   al,al
+0x140a0d916: je     0x140a0dad0
+0x140a0d91c: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d924: movzx  r8d,di
+0x140a0d928: movzx  edx,si
+0x140a0d92b: lea    rcx,[rip+0x19c3bbe]        # 0x1423d14f0
+0x140a0d932: call   0x140068010
+0x140a0d937: test   al,0x8
+0x140a0d939: jne    0x140a0dad0
+0x140a0d93f: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d947: movzx  r8d,di
+0x140a0d94b: movzx  edx,si
+0x140a0d94e: lea    rcx,[rip+0x19c3b9b]        # 0x1423d14f0
+0x140a0d955: call   0x140068010
+0x140a0d95a: test   al,0x10
+0x140a0d95c: jne    0x140a0dad0
+0x140a0d962: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d96a: movzx  r8d,di
+0x140a0d96e: movzx  edx,si
+0x140a0d971: lea    rcx,[rip+0x19c3b78]        # 0x1423d14f0
+0x140a0d978: call   0x1414d22e0
+0x140a0d97d: test   al,al
+0x140a0d97f: je     0x140a0dad0
+0x140a0d985: movzx  edx,di
+0x140a0d988: sub    dx,WORD PTR [rbx+0xaa]
+0x140a0d98f: movzx  ecx,si
+0x140a0d992: sub    cx,WORD PTR [rbx+0xa8]
+0x140a0d999: call   0x140072170
+0x140a0d99e: movzx  r14d,ax
+0x140a0d9a2: cmp    ax,r12w
+0x140a0d9a6: jge    0x140a0daca
+0x140a0d9ac: mov    BYTE PTR [rsp+0x20],0x0
+0x140a0d9b1: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d9b9: movzx  r8d,di
+0x140a0d9bd: movzx  edx,si
+0x140a0d9c0: mov    rcx,rbx
+0x140a0d9c3: call   0x141366860
+0x140a0d9c8: test   al,al
+0x140a0d9ca: jne    0x140a0dc68
+0x140a0d9d0: lea    r15d,[rsi-0x1]
+0x140a0d9d4: mov    BYTE PTR [rsp+0x20],al
+0x140a0d9d8: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0d9e0: movzx  r8d,di
+0x140a0d9e4: movzx  edx,r15w
+0x140a0d9e8: mov    rcx,rbx
+0x140a0d9eb: call   0x141366860
+0x140a0d9f0: test   al,al
+0x140a0d9f2: je     0x140a0da4b
+0x140a0d9f4: movzx  r12d,r14w
+0x140a0d9f8: movzx  r14d,r15w
+0x140a0d9fc: mov    WORD PTR [rsp+0x40],r15w
+0x140a0da02: movzx  r13d,di
+0x140a0da06: jmp    0x140a0dad0
+0x140a0da0b: mov    rcx,rbx
+0x140a0da0e: call   0x140a40d90
+0x140a0da13: mov    rcx,QWORD PTR [rsp+0x58]
+0x140a0da18: mov    DWORD PTR [rcx],0x47
+0x140a0da1e: mov    DWORD PTR [rcx+0x4],0x28
+0x140a0da25: movzx  eax,WORD PTR [rbp+0xde]
+0x140a0da2c: mov    WORD PTR [rcx+0x30],ax
+0x140a0da30: movzx  eax,WORD PTR [rbp+0xe0]
+0x140a0da37: mov    WORD PTR [rcx+0x32],ax
+0x140a0da3b: movzx  eax,WORD PTR [rbp+0xe2]
+0x140a0da42: mov    WORD PTR [rcx+0x34],ax
+0x140a0da46: jmp    0x140a0d317
+0x140a0da4b: lea    r15d,[rsi+0x1]
+0x140a0da4f: mov    BYTE PTR [rsp+0x20],0x0
+0x140a0da54: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0da5c: movzx  r8d,di
+0x140a0da60: movzx  edx,r15w
+0x140a0da64: mov    rcx,rbx
+0x140a0da67: call   0x141366860
+0x140a0da6c: test   al,al
+0x140a0da6e: jne    0x140a0d9f4
+0x140a0da70: lea    r15d,[rdi+0x1]
+0x140a0da74: mov    BYTE PTR [rsp+0x20],al
+0x140a0da78: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0da80: movzx  r8d,r15w
+0x140a0da84: movzx  edx,si
+0x140a0da87: mov    rcx,rbx
+0x140a0da8a: call   0x141366860
+0x140a0da8f: test   al,al
+0x140a0da91: je     0x140a0daa6
+0x140a0da93: movzx  r12d,r14w
+0x140a0da97: movzx  r14d,si
+0x140a0da9b: mov    WORD PTR [rsp+0x40],si
+0x140a0daa0: movzx  r13d,r15w
+0x140a0daa4: jmp    0x140a0dad0
+0x140a0daa6: lea    r15d,[rdi-0x1]
+0x140a0daaa: mov    BYTE PTR [rsp+0x20],0x0
+0x140a0daaf: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0dab7: movzx  r8d,r15w
+0x140a0dabb: movzx  edx,si
+0x140a0dabe: mov    rcx,rbx
+0x140a0dac1: call   0x141366860
+0x140a0dac6: test   al,al
+0x140a0dac8: jne    0x140a0da93
+0x140a0daca: movzx  r14d,WORD PTR [rsp+0x40]
+0x140a0dad0: inc    di
+0x140a0dad3: movsx  ecx,WORD PTR [rbx+0xaa]
+0x140a0dada: add    ecx,0x14
+0x140a0dadd: movsx  eax,di
+0x140a0dae0: cmp    eax,ecx
+0x140a0dae2: jle    0x140a0d870
+0x140a0dae8: inc    si
+0x140a0daeb: movsx  ecx,si
+0x140a0daee: movsx  eax,WORD PTR [rbx+0xa8]
+0x140a0daf5: add    eax,0x14
+0x140a0daf8: cmp    ecx,eax
+0x140a0dafa: jle    0x140a0d840
+0x140a0db00: movzx  r15d,WORD PTR [rsp+0x4a]
+0x140a0db06: xor    edi,edi
+0x140a0db08: mov    esi,edi
+0x140a0db0a: lea    rcx,[rip+0x19d7b7f]        # 0x1423e5690
+0x140a0db11: call   0x14006ee50
+0x140a0db16: test   rax,rax
+0x140a0db19: je     0x140a0dbda
+0x140a0db1f: nop
+0x140a0db20: mov    rdx,rdi
+0x140a0db23: lea    rcx,[rip+0x19d7b66]        # 0x1423e5690
+0x140a0db2a: call   0x14006f220
+0x140a0db2f: mov    rcx,QWORD PTR [rax]
+0x140a0db32: mov    eax,DWORD PTR [rcx+0x10]
+0x140a0db35: bt     eax,0x13
+0x140a0db39: jb     0x140a0dbc0
+0x140a0db3f: test   al,0x1
+0x140a0db41: je     0x140a0dbc0
+0x140a0db43: lea    r9,[rsp+0x4c]
+0x140a0db48: lea    r8,[rsp+0x50]
+0x140a0db4d: lea    rdx,[rsp+0x44]
+0x140a0db52: call   0x140c8baa0
+0x140a0db57: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0db5c: movzx  r9d,WORD PTR [rsp+0x4c]
+0x140a0db62: movzx  r8d,WORD PTR [rsp+0x50]
+0x140a0db68: movzx  edx,WORD PTR [rsp+0x44]
+0x140a0db6d: mov    rcx,rbx
+0x140a0db70: call   0x1413a4910
+0x140a0db75: test   al,al
+0x140a0db77: je     0x140a0dbc0
+0x140a0db79: movzx  r8d,WORD PTR [rsp+0x4c]
+0x140a0db7f: sub    r8w,WORD PTR [rbx+0xac]
+0x140a0db87: movzx  edx,WORD PTR [rsp+0x50]
+0x140a0db8c: sub    dx,WORD PTR [rbx+0xaa]
+0x140a0db93: movzx  ecx,WORD PTR [rsp+0x44]
+0x140a0db98: sub    cx,WORD PTR [rbx+0xa8]
+0x140a0db9f: call   0x1409e5440
+0x140a0dba4: cmp    ax,r12w
+0x140a0dba8: jge    0x140a0dbc0
+0x140a0dbaa: movzx  r12d,ax
+0x140a0dbae: movzx  r14d,WORD PTR [rsp+0x44]
+0x140a0dbb4: movzx  r13d,WORD PTR [rsp+0x50]
+0x140a0dbba: movzx  r15d,WORD PTR [rsp+0x4c]
+0x140a0dbc0: inc    esi
+0x140a0dbc2: movsxd rdi,esi
+0x140a0dbc5: lea    rcx,[rip+0x19d7ac4]        # 0x1423e5690
+0x140a0dbcc: call   0x14006ee50
+0x140a0dbd1: cmp    rdi,rax
+0x140a0dbd4: jb     0x140a0db20
+0x140a0dbda: mov    ecx,0xffff8ad0
+0x140a0dbdf: cmp    r14w,cx
+0x140a0dbe3: je     0x140a0dc7e
+0x140a0dbe9: lea    rcx,[rip+0x19d85c8]        # 0x1423e61b8
+0x140a0dbf0: call   0x14006f330
+0x140a0dbf5: mov    rdi,rax
+0x140a0dbf8: test   rax,rax
+0x140a0dbfb: je     0x140a0dc3a
+0x140a0dbfd: nop    DWORD PTR [rax]
+0x140a0dc00: mov    rcx,QWORD PTR [rdi]
+0x140a0dc03: cmp    WORD PTR [rcx+0x14],0x31
+0x140a0dc08: jne    0x140a0dc2c
+0x140a0dc0a: cmp    WORD PTR [rcx+0x20],r15w
+0x140a0dc0f: jne    0x140a0dc2c
+0x140a0dc11: movzx  edx,WORD PTR [rcx+0x1e]
+0x140a0dc15: sub    dx,r13w
+0x140a0dc19: movzx  ecx,WORD PTR [rcx+0x1c]
+0x140a0dc1d: sub    cx,r14w
+0x140a0dc21: call   0x140072170
+0x140a0dc26: cmp    ax,0x1
+0x140a0dc2a: jle    0x140a0dc7e
+0x140a0dc2c: mov    eax,0x10
+0x140a0dc31: mov    rdi,QWORD PTR [rdi+rax*1]
+0x140a0dc35: test   rdi,rdi
+0x140a0dc38: jne    0x140a0dc00
+0x140a0dc3a: mov    rcx,rbx
+0x140a0dc3d: call   0x140a40d90
+0x140a0dc42: mov    rax,QWORD PTR [rsp+0x58]
+0x140a0dc47: mov    DWORD PTR [rax],0x48
+0x140a0dc4d: mov    DWORD PTR [rax+0x4],0x28
+0x140a0dc54: mov    WORD PTR [rax+0x30],r14w
+0x140a0dc59: mov    WORD PTR [rax+0x32],r13w
+0x140a0dc5e: mov    WORD PTR [rax+0x34],r15w
+0x140a0dc63: jmp    0x140a0d317
+0x140a0dc68: movzx  r12d,r14w
+0x140a0dc6c: movzx  r14d,si
+0x140a0dc70: mov    WORD PTR [rsp+0x40],si
+0x140a0dc75: movzx  r13d,di
+0x140a0dc79: jmp    0x140a0dad0
+0x140a0dc7e: mov    edx,0x7
+0x140a0dc83: mov    rcx,rbx
+0x140a0dc86: call   0x1400737b0
+0x140a0dc8b: test   rax,rax
+0x140a0dc8e: jne    0x140a0df10
+0x140a0dc94: mov    rcx,rbx
+0x140a0dc97: call   0x14138ed20
+0x140a0dc9c: test   al,al
+0x140a0dc9e: je     0x140a0df10
+0x140a0dca4: mov    r9d,0x99
+0x140a0dcaa: movzx  r8d,WORD PTR [rbx+0x12c]
+0x140a0dcb2: movzx  edx,WORD PTR [rbx+0xa4]
+0x140a0dcb9: lea    rcx,[rip+0x1aded88]        # 0x1424eca48
+0x140a0dcc0: call   0x140072850
+0x140a0dcc5: test   al,al
+0x140a0dcc7: jne    0x140a0df10
+0x140a0dccd: lea    rdi,[rbx+0x408]
+0x140a0dcd4: mov    rcx,rdi
+0x140a0dcd7: call   0x14006ee50
+0x140a0dcdc: mov    r12,rax
+0x140a0dcdf: lea    esi,[rax-0x1]
+0x140a0dce2: test   esi,esi
+0x140a0dce4: js     0x140a0df08
+0x140a0dcea: movsxd rcx,esi
+0x140a0dced: lea    r15,[rcx*8+0x0]
+0x140a0dcf5: data16 data16 nop WORD PTR [rax+rax*1+0x0]
+0x140a0dd00: mov    rcx,QWORD PTR [rdi]
+0x140a0dd03: mov    rdx,QWORD PTR [r15+rcx*1]
+0x140a0dd07: cmp    WORD PTR [rdx+0x8],0x0
+0x140a0dd0c: jne    0x140a0dd51
+0x140a0dd0e: cmp    QWORD PTR [rbx+0x4d8],0x0
+0x140a0dd16: jne    0x140a0dd51
+0x140a0dd18: movsxd rdx,esi
+0x140a0dd1b: mov    rcx,rdi
+0x140a0dd1e: call   0x14006f220
+0x140a0dd23: mov    rdx,QWORD PTR [rax]
+0x140a0dd26: mov    rdx,QWORD PTR [rdx]
+0x140a0dd29: mov    rcx,rbx
+0x140a0dd2c: call   0x1413a4310
+0x140a0dd31: cmp    QWORD PTR [rbx+0x4d8],0x0
+0x140a0dd39: jne    0x140a0fa23
+0x140a0dd3f: mov    rcx,rdi
+0x140a0dd42: call   0x14006ee50
+0x140a0dd47: cmp    eax,r12d
+0x140a0dd4a: jne    0x140a0dcd4
+0x140a0dd4c: jmp    0x140a0defb
+0x140a0dd51: movsxd r14,esi
+0x140a0dd54: mov    rdx,r14
+0x140a0dd57: mov    rcx,rdi
+0x140a0dd5a: call   0x14006f220
+0x140a0dd5f: mov    rcx,QWORD PTR [rax]
+0x140a0dd62: cmp    WORD PTR [rcx+0x8],0x0
+0x140a0dd67: je     0x140a0defb
+0x140a0dd6d: mov    rdx,r14
+0x140a0dd70: mov    rcx,rdi
+0x140a0dd73: call   0x14006f220
+0x140a0dd78: mov    rcx,QWORD PTR [rax]
+0x140a0dd7b: cmp    WORD PTR [rcx+0x8],0x9
+0x140a0dd80: je     0x140a0defb
+0x140a0dd86: mov    rdx,r14
+0x140a0dd89: mov    rcx,rdi
+0x140a0dd8c: call   0x14006f220
+0x140a0dd91: mov    rcx,QWORD PTR [rax]
+0x140a0dd94: cmp    WORD PTR [rcx+0x8],0x5
+0x140a0dd99: je     0x140a0defb
+0x140a0dd9f: mov    rdx,r14
+0x140a0dda2: mov    rcx,rdi
+0x140a0dda5: call   0x14006f220
+0x140a0ddaa: mov    rcx,QWORD PTR [rax]
+0x140a0ddad: cmp    WORD PTR [rcx+0x8],0x6
+0x140a0ddb2: jne    0x140a0ddeb
+0x140a0ddb4: cmp    QWORD PTR [rbx+0x490],0x0
+0x140a0ddbc: jne    0x140a0defb
+0x140a0ddc2: mov    rdx,r14
+0x140a0ddc5: mov    rcx,rdi
+0x140a0ddc8: call   0x14006f220
+0x140a0ddcd: mov    rdx,QWORD PTR [rax]
+0x140a0ddd0: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0ddd5: xor    r9d,r9d
+0x140a0ddd8: mov    r8b,0x1
+0x140a0dddb: mov    rdx,QWORD PTR [rdx]
+0x140a0ddde: mov    rcx,rbx
+0x140a0dde1: call   0x141329bf0
+0x140a0dde6: jmp    0x140a0dcd4
+0x140a0ddeb: mov    rdx,r14
+0x140a0ddee: mov    rcx,rdi
+0x140a0ddf1: call   0x14006f220
+0x140a0ddf6: mov    rcx,QWORD PTR [rax]
+0x140a0ddf9: mov    rcx,QWORD PTR [rcx]
+0x140a0ddfc: mov    rax,QWORD PTR [rcx]
+0x140a0ddff: call   QWORD PTR [rax]
+0x140a0de01: cmp    ax,0x53
+0x140a0de05: jne    0x140a0de20
+0x140a0de07: mov    rdx,r14
+0x140a0de0a: mov    rcx,rdi
+0x140a0de0d: call   0x14006f220
+0x140a0de12: mov    rcx,QWORD PTR [rax]
+0x140a0de15: cmp    WORD PTR [rcx+0x8],0x1
+0x140a0de1a: je     0x140a0defb
+0x140a0de20: mov    rdx,r14
+0x140a0de23: mov    rcx,rdi
+0x140a0de26: call   0x14006f220
+0x140a0de2b: mov    rcx,QWORD PTR [rax]
+0x140a0de2e: mov    rcx,QWORD PTR [rcx]
+0x140a0de31: mov    rax,QWORD PTR [rcx]
+0x140a0de34: call   QWORD PTR [rax]
+0x140a0de36: cmp    ax,0x52
+0x140a0de3a: jne    0x140a0de55
+0x140a0de3c: movsxd rdx,esi
+0x140a0de3f: mov    rcx,rdi
+0x140a0de42: call   0x14006f220
+0x140a0de47: mov    rcx,QWORD PTR [rax]
+0x140a0de4a: cmp    WORD PTR [rcx+0x8],0x2
+0x140a0de4f: je     0x140a0defb
+0x140a0de55: movsxd rdx,esi
+0x140a0de58: mov    rcx,rdi
+0x140a0de5b: call   0x14006f220
+0x140a0de60: mov    rcx,QWORD PTR [rax]
+0x140a0de63: mov    rcx,QWORD PTR [rcx]
+0x140a0de66: mov    rax,QWORD PTR [rcx]
+0x140a0de69: call   QWORD PTR [rax]
+0x140a0de6b: cmp    ax,0xc
+0x140a0de6f: jne    0x140a0de86
+0x140a0de71: movsxd rdx,esi
+0x140a0de74: mov    rcx,rdi
+0x140a0de77: call   0x14006f220
+0x140a0de7c: mov    rcx,QWORD PTR [rax]
+0x140a0de7f: cmp    WORD PTR [rcx+0x8],0x1
+0x140a0de84: je     0x140a0defb
+0x140a0de86: movsxd rdx,esi
+0x140a0de89: mov    rcx,rdi
+0x140a0de8c: call   0x14006f220
+0x140a0de91: movsxd r14,esi
+0x140a0de94: mov    rdx,QWORD PTR [rax]
+0x140a0de97: mov    rdx,QWORD PTR [rdx]
+0x140a0de9a: mov    rcx,rbx
+0x140a0de9d: call   0x141360790
+0x140a0dea2: test   al,al
+0x140a0dea4: jne    0x140a0ddc2
+0x140a0deaa: mov    rdx,r14
+0x140a0dead: mov    rcx,rdi
+0x140a0deb0: call   0x14006f220
+0x140a0deb5: mov    rcx,QWORD PTR [rax]
+0x140a0deb8: mov    rcx,QWORD PTR [rcx]
+0x140a0debb: mov    rax,QWORD PTR [rcx]
+0x140a0debe: call   QWORD PTR [rax]
+0x140a0dec0: cmp    ax,0x3d
+0x140a0dec4: je     0x140a0dee2
+0x140a0dec6: movsxd rdx,esi
+0x140a0dec9: mov    rcx,rdi
+0x140a0decc: call   0x14006f220
+0x140a0ded1: mov    rcx,QWORD PTR [rax]
+0x140a0ded4: mov    rcx,QWORD PTR [rcx]
+0x140a0ded7: mov    rax,QWORD PTR [rcx]
+0x140a0deda: call   QWORD PTR [rax]
+0x140a0dedc: cmp    ax,0x3e
+0x140a0dee0: jne    0x140a0defb
+0x140a0dee2: movsxd rdx,esi
+0x140a0dee5: mov    rcx,rdi
+0x140a0dee8: call   0x14006f220
+0x140a0deed: mov    rdx,QWORD PTR [rax]
+0x140a0def0: mov    rdx,QWORD PTR [rdx]
+0x140a0def3: mov    rcx,rbx
+0x140a0def6: call   0x141360900
+0x140a0defb: sub    r15,0x8
+0x140a0deff: sub    esi,0x1
+0x140a0df02: jns    0x140a0dd00
+0x140a0df08: mov    rcx,rbx
+0x140a0df0b: call   0x1413609b0
+0x140a0df10: cmp    BYTE PTR [rbx+0x12e],0x0
+0x140a0df17: jne    0x140a0e29f
+0x140a0df1d: mov    r8d,0x43
+0x140a0df23: movzx  edx,WORD PTR [rbx+0xa4]
+0x140a0df2a: lea    rcx,[rip+0x1adeb17]        # 0x1424eca48
+0x140a0df31: call   0x1400e35c0
+0x140a0df36: test   al,al
+0x140a0df38: je     0x140a0e29f
+0x140a0df3e: movzx  eax,WORD PTR [rbx+0xa0]
+0x140a0df45: cmp    ax,0x67
+0x140a0df49: je     0x140a0e29f
+0x140a0df4f: cmp    ax,0x68
+0x140a0df53: je     0x140a0e29f
+0x140a0df59: mov    edx,0x3a
+0x140a0df5e: mov    rcx,rbx
+0x140a0df61: call   0x140073230
+0x140a0df66: test   al,al
+0x140a0df68: je     0x140a0df7f
+0x140a0df6a: mov    edx,0x48
+0x140a0df6f: mov    rcx,rbx
+0x140a0df72: call   0x140073230
+0x140a0df77: test   al,al
+0x140a0df79: je     0x140a0e29f
+0x140a0df7f: mov    rax,QWORD PTR [rbx+0xa98]
+0x140a0df86: test   rax,rax
+0x140a0df89: je     0x140a0e29f
+0x140a0df8f: test   BYTE PTR [rax+0x88],0x6
+0x140a0df96: je     0x140a0e29f
+0x140a0df9c: cmp    QWORD PTR [rbx+0xd80],0x0
+0x140a0dfa4: jne    0x140a0e29f
+0x140a0dfaa: test   DWORD PTR [rbx+0x118],0x1000
+0x140a0dfb4: jne    0x140a0e29f
+0x140a0dfba: cmp    DWORD PTR [rbx+0x364],0x0
+0x140a0dfc1: jne    0x140a0e29f
+0x140a0dfc7: mov    ecx,0x3e8
+0x140a0dfcc: call   0x140071f30
+0x140a0dfd1: test   eax,eax
+0x140a0dfd3: jne    0x140a0e29f
+0x140a0dfd9: mov    rcx,rbx
+0x140a0dfdc: call   0x1402243d0
+0x140a0dfe1: test   al,al
+0x140a0dfe3: jne    0x140a0e29f
+0x140a0dfe9: lea    r9,[rsp+0x44]
+0x140a0dfee: lea    r8,[rsp+0x50]
+0x140a0dff3: lea    rdx,[rsp+0x4c]
+0x140a0dff8: mov    rcx,rbx
+0x140a0dffb: call   0x141367430
+0x140a0e000: lea    rcx,[rbp+0x138]
+0x140a0e007: call   0x140065b00
+0x140a0e00c: nop
+0x140a0e00d: xor    r13d,r13d
+0x140a0e010: mov    esi,r13d
+0x140a0e013: mov    r15d,r13d
+0x140a0e016: mov    r14d,r13d
+0x140a0e019: lea    rcx,[rip+0x19d70a8]        # 0x1423e50c8
+0x140a0e020: call   0x14006ee50
+0x140a0e025: test   rax,rax
+0x140a0e028: je     0x140a0e291
+0x140a0e02e: mov    edi,r13d
+0x140a0e031: mov    rdx,rdi
+0x140a0e034: lea    rcx,[rip+0x19d708d]        # 0x1423e50c8
+0x140a0e03b: call   0x14006f220
+0x140a0e040: mov    rcx,QWORD PTR [rax]
+0x140a0e043: test   BYTE PTR [rcx+0x110],0x2
+0x140a0e04a: jne    0x140a0e1bf
+0x140a0e050: mov    rdx,rdi
+0x140a0e053: lea    rcx,[rip+0x19d706e]        # 0x1423e50c8
+0x140a0e05a: call   0x14006f220
+0x140a0e05f: mov    rcx,QWORD PTR [rax]
+0x140a0e062: call   0x1402243d0
+0x140a0e067: test   al,al
+0x140a0e069: jne    0x140a0e1bf
+0x140a0e06f: mov    rdx,rdi
+0x140a0e072: lea    rcx,[rip+0x19d704f]        # 0x1423e50c8
+0x140a0e079: call   0x14006f220
+0x140a0e07e: mov    rcx,QWORD PTR [rax]
+0x140a0e081: mov    eax,DWORD PTR [rbx+0xa4]
+0x140a0e087: cmp    DWORD PTR [rcx+0xa4],eax
+0x140a0e08d: jne    0x140a0e1bf
+0x140a0e093: mov    rdx,rdi
+0x140a0e096: lea    rcx,[rip+0x19d702b]        # 0x1423e50c8
+0x140a0e09d: call   0x14006f220
+0x140a0e0a2: mov    rcx,QWORD PTR [rax]
+0x140a0e0a5: cmp    WORD PTR [rcx+0xa0],0x67
+0x140a0e0ad: je     0x140a0e1bc
+0x140a0e0b3: mov    rdx,rdi
+0x140a0e0b6: lea    rcx,[rip+0x19d700b]        # 0x1423e50c8
+0x140a0e0bd: call   0x14006f220
+0x140a0e0c2: mov    rcx,QWORD PTR [rax]
+0x140a0e0c5: cmp    WORD PTR [rcx+0xa0],0x68
+0x140a0e0cd: je     0x140a0e1bc
+0x140a0e0d3: mov    rdx,rdi
+0x140a0e0d6: lea    rcx,[rip+0x19d6feb]        # 0x1423e50c8
+0x140a0e0dd: call   0x14006f220
+0x140a0e0e2: mov    rcx,QWORD PTR [rax]
+0x140a0e0e5: cmp    BYTE PTR [rcx+0x12e],0x1
+0x140a0e0ec: jne    0x140a0e1b8
+0x140a0e0f2: mov    rdx,rdi
+0x140a0e0f5: lea    rcx,[rip+0x19d6fcc]        # 0x1423e50c8
+0x140a0e0fc: call   0x14006f220
+0x140a0e101: mov    rcx,QWORD PTR [rax]
+0x140a0e104: cmp    QWORD PTR [rcx+0xa98],r13
+0x140a0e10b: je     0x140a0e1b8
+0x140a0e111: mov    rdx,rdi
+0x140a0e114: lea    rcx,[rip+0x19d6fad]        # 0x1423e50c8
+0x140a0e11b: call   0x14006f220
+0x140a0e120: mov    rcx,QWORD PTR [rax]
+0x140a0e123: mov    rax,QWORD PTR [rcx+0xa98]
+0x140a0e12a: test   BYTE PTR [rax+0x88],0x18
+0x140a0e131: je     0x140a0e1b8
+0x140a0e137: mov    rdx,rdi
+0x140a0e13a: lea    rcx,[rip+0x19d6f87]        # 0x1423e50c8
+0x140a0e141: call   0x14006f220
+0x140a0e146: lea    r9,[rsp+0x70]
+0x140a0e14b: lea    r8,[rbp-0x60]
+0x140a0e14f: lea    rdx,[rsp+0x40]
+0x140a0e154: mov    rcx,QWORD PTR [rax]
+0x140a0e157: call   0x141367430
+0x140a0e15c: movzx  eax,WORD PTR [rsp+0x70]
+0x140a0e161: mov    WORD PTR [rsp+0x30],ax
+0x140a0e166: movzx  eax,WORD PTR [rbp-0x60]
+0x140a0e16a: mov    WORD PTR [rsp+0x28],ax
+0x140a0e16f: movzx  eax,WORD PTR [rsp+0x40]
+0x140a0e174: mov    WORD PTR [rsp+0x20],ax
+0x140a0e179: movzx  r9d,WORD PTR [rsp+0x44]
+0x140a0e17f: movzx  r8d,WORD PTR [rsp+0x50]
+0x140a0e185: movzx  edx,WORD PTR [rsp+0x4c]
+0x140a0e18a: lea    rcx,[rip+0x19c335f]        # 0x1423d14f0
+0x140a0e191: call   0x14144ca60
+0x140a0e196: test   al,al
+0x140a0e198: je     0x140a0e1b8
+0x140a0e19a: mov    rdx,rdi
+0x140a0e19d: lea    rcx,[rip+0x19d6f24]        # 0x1423e50c8
+0x140a0e1a4: call   0x14006f220
+0x140a0e1a9: mov    rdx,rax
+0x140a0e1ac: lea    rcx,[rbp+0x138]
+0x140a0e1b3: call   0x1400b9980
+0x140a0e1b8: inc    esi
+0x140a0e1ba: jmp    0x140a0e1bf
+0x140a0e1bc: inc    r15d
+0x140a0e1bf: inc    r14d
+0x140a0e1c2: movsxd rdi,r14d
+0x140a0e1c5: lea    rcx,[rip+0x19d6efc]        # 0x1423e50c8
+0x140a0e1cc: call   0x14006ee50
+0x140a0e1d1: cmp    rdi,rax
+0x140a0e1d4: jb     0x140a0e031
+0x140a0e1da: lea    eax,[rsi+rsi*2]
+0x140a0e1dd: cmp    r15d,eax
+0x140a0e1e0: jge    0x140a0e291
+0x140a0e1e6: lea    eax,[r15+rsi*1]
+0x140a0e1ea: cmp    eax,0x32
+0x140a0e1ed: jge    0x140a0e291
+0x140a0e1f3: lea    rcx,[rbp+0x138]
+0x140a0e1fa: call   0x14006ee50
+0x140a0e1ff: test   rax,rax
+0x140a0e202: je     0x140a0e291
+0x140a0e208: lea    rcx,[rbp+0x138]
+0x140a0e20f: call   0x14006ee50
+0x140a0e214: mov    rcx,rax
+0x140a0e217: call   0x140071f30
+0x140a0e21c: movsxd rdx,eax
+0x140a0e21f: lea    rcx,[rbp+0x138]
+0x140a0e226: call   0x14006f220
+0x140a0e22b: mov    rdi,QWORD PTR [rax]
+0x140a0e22e: mov    edx,0x30d40
+0x140a0e233: mov    rcx,rbx
+0x140a0e236: call   0x1413eac10
+0x140a0e23b: mov    rax,QWORD PTR [rbx+0x368]
+0x140a0e242: test   rax,rax
+0x140a0e245: jne    0x140a0e268
+0x140a0e247: mov    ecx,0x20
+0x140a0e24c: call   0x141539690
+0x140a0e251: mov    QWORD PTR [rbp+0x120],rax
+0x140a0e258: mov    rcx,rax
+0x140a0e25b: call   0x1405c0e10
+0x140a0e260: nop
+0x140a0e261: mov    QWORD PTR [rbx+0x368],rax
+0x140a0e268: lea    rdx,[rdi+0x798]
+0x140a0e26f: mov    rcx,rax
+0x140a0e272: call   0x1407e04f0
+0x140a0e277: movzx  eax,WORD PTR [rdi+0x12c]
+0x140a0e27e: mov    WORD PTR [rbx+0x370],ax
+0x140a0e285: mov    eax,DWORD PTR [rdi+0xc30]
+0x140a0e28b: mov    DWORD PTR [rbx+0x374],eax
+0x140a0e291: lea    rcx,[rbp+0x138]
+0x140a0e298: call   0x140067160
+0x140a0e29d: jmp    0x140a0e2a2
+0x140a0e29f: xor    r13d,r13d
+0x140a0e2a2: cmp    BYTE PTR [rbx+0x12e],0x0
+0x140a0e2a9: jne    0x140a0e5d8
+0x140a0e2af: mov    r8d,0x43
+0x140a0e2b5: movzx  edx,WORD PTR [rbx+0xa4]
+0x140a0e2bc: lea    rcx,[rip+0x1ade785]        # 0x1424eca48
+0x140a0e2c3: call   0x1400e35c0
+0x140a0e2c8: test   al,al
+0x140a0e2ca: je     0x140a0e5d8
+0x140a0e2d0: mov    rcx,rbx
+0x140a0e2d3: call   0x14138ed20
+0x140a0e2d8: test   al,al
+0x140a0e2da: je     0x140a0e5d8
+0x140a0e2e0: mov    edx,0x3a
+0x140a0e2e5: mov    rcx,rbx
+0x140a0e2e8: call   0x140073230
+0x140a0e2ed: test   al,al
+0x140a0e2ef: je     0x140a0e5d8
+0x140a0e2f5: mov    edx,0x48
+0x140a0e2fa: mov    rcx,rbx
+0x140a0e2fd: call   0x140073230
+0x140a0e302: test   al,al
+0x140a0e304: jne    0x140a0e5d8
+0x140a0e30a: cmp    DWORD PTR [rbx+0x364],0x0
+0x140a0e311: jne    0x140a0e5d8
+0x140a0e317: mov    rax,QWORD PTR [rbx+0xa98]
+0x140a0e31e: test   rax,rax
+0x140a0e321: je     0x140a0e5d8
+0x140a0e327: test   BYTE PTR [rax+0x88],0x6
+0x140a0e32e: je     0x140a0e5d8
+0x140a0e334: cmp    QWORD PTR [rbx+0xd80],0x0
+0x140a0e33c: jne    0x140a0e5d8
+0x140a0e342: test   DWORD PTR [rbx+0x118],0x1000
+0x140a0e34c: jne    0x140a0e5d8
+0x140a0e352: movzx  eax,WORD PTR [rbx+0xa0]
+0x140a0e359: cmp    ax,0x67
+0x140a0e35d: je     0x140a0e5d8
+0x140a0e363: cmp    ax,0x68
+0x140a0e367: je     0x140a0e5d8
+0x140a0e36d: mov    ecx,0x3e8
+0x140a0e372: call   0x140071f30
+0x140a0e377: test   eax,eax
+0x140a0e379: jne    0x140a0e5d8
+0x140a0e37f: mov    rcx,rbx
+0x140a0e382: call   0x1402243d0
+0x140a0e387: test   al,al
+0x140a0e389: jne    0x140a0e5d8
+0x140a0e38f: mov    r12d,DWORD PTR [rip+0x1982882]        # 0x142390c18
+0x140a0e396: mov    r15d,r13d
+0x140a0e399: mov    esi,r13d
+0x140a0e39c: lea    rcx,[rip+0x19d6d25]        # 0x1423e50c8
+0x140a0e3a3: call   0x14006ee50
+0x140a0e3a8: mov    r14,rax
+0x140a0e3ab: sub    r14d,0x1
+0x140a0e3af: js     0x140a0e466
+0x140a0e3b5: movsxd rdi,r14d
+0x140a0e3b8: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a0e3c0: mov    rdx,rdi
+0x140a0e3c3: lea    rcx,[rip+0x19d6cfe]        # 0x1423e50c8
+0x140a0e3ca: call   0x14006f220
+0x140a0e3cf: mov    rcx,QWORD PTR [rax]
+0x140a0e3d2: test   BYTE PTR [rcx+0x110],0x2
+0x140a0e3d9: jne    0x140a0e459
+0x140a0e3db: mov    rdx,rdi
+0x140a0e3de: lea    rcx,[rip+0x19d6ce3]        # 0x1423e50c8
+0x140a0e3e5: call   0x14006f220
+0x140a0e3ea: mov    edx,0x3a
+0x140a0e3ef: mov    rcx,QWORD PTR [rax]
+0x140a0e3f2: call   0x140073230
+0x140a0e3f7: test   al,al
+0x140a0e3f9: je     0x140a0e459
+0x140a0e3fb: mov    rdx,rdi
+0x140a0e3fe: lea    rcx,[rip+0x19d6cc3]        # 0x1423e50c8
+0x140a0e405: call   0x14006f220
+0x140a0e40a: mov    rcx,QWORD PTR [rax]
+0x140a0e40d: call   0x14138ed20
+0x140a0e412: test   al,al
+0x140a0e414: je     0x140a0e459
+0x140a0e416: mov    rdx,rdi
+0x140a0e419: lea    rcx,[rip+0x19d6ca8]        # 0x1423e50c8
+0x140a0e420: call   0x14006f220
+0x140a0e425: mov    rcx,QWORD PTR [rax]
+0x140a0e428: movsx  edx,WORD PTR [rcx+0xa0]
+0x140a0e42f: sub    edx,0x67
+0x140a0e432: je     0x140a0e457
+0x140a0e434: cmp    edx,0x1
+0x140a0e437: je     0x140a0e457
+0x140a0e439: inc    r15d
+0x140a0e43c: mov    rdx,rdi
+0x140a0e43f: lea    rcx,[rip+0x19d6c82]        # 0x1423e50c8
+0x140a0e446: call   0x14006f220
+0x140a0e44b: mov    rcx,QWORD PTR [rax]
+0x140a0e44e: cmp    DWORD PTR [rcx+0x364],0x0
+0x140a0e455: jle    0x140a0e459
+0x140a0e457: inc    esi
+0x140a0e459: dec    rdi
+0x140a0e45c: sub    r14d,0x1
+0x140a0e460: jns    0x140a0e3c0
+0x140a0e466: imul   r15d,DWORD PTR [rip+0x19827ae]        # 0x142390c1c
+0x140a0e46e: mov    eax,0x51eb851f
+0x140a0e473: imul   r15d
+0x140a0e476: sar    edx,0x5
+0x140a0e479: mov    eax,edx
+0x140a0e47b: shr    eax,0x1f
+0x140a0e47e: add    edx,eax
+0x140a0e480: cmp    edx,r12d
+0x140a0e483: cmovl  r12d,edx
+0x140a0e487: mov    r15d,0x1
+0x140a0e48d: mov    edx,r15d
+0x140a0e490: mov    rcx,rbx
+0x140a0e493: call   0x14134f250
+0x140a0e498: mov    rdi,rax
+0x140a0e49b: test   rax,rax
+0x140a0e49e: je     0x140a0e5de
+0x140a0e4a4: cmp    esi,r12d
+0x140a0e4a7: jge    0x140a0e5de
+0x140a0e4ad: cmp    BYTE PTR [rax+0x12e],r15b
+0x140a0e4b4: jne    0x140a0e5de
+0x140a0e4ba: mov    rax,QWORD PTR [rax+0xa98]
+0x140a0e4c1: test   rax,rax
+0x140a0e4c4: je     0x140a0e5de
+0x140a0e4ca: test   BYTE PTR [rax+0x88],0x18
+0x140a0e4d1: je     0x140a0e5de
+0x140a0e4d7: test   BYTE PTR [rdi+0x110],0x2
+0x140a0e4de: jne    0x140a0e5de
+0x140a0e4e4: mov    rcx,rdi
+0x140a0e4e7: call   0x1402243d0
+0x140a0e4ec: test   al,al
+0x140a0e4ee: jne    0x140a0e5de
+0x140a0e4f4: lea    r9,[rsp+0x50]
+0x140a0e4f9: lea    r8,[rsp+0x4c]
+0x140a0e4fe: lea    rdx,[rsp+0x70]
+0x140a0e503: mov    rcx,rbx
+0x140a0e506: call   0x141367430
+0x140a0e50b: lea    r9,[rsp+0x40]
+0x140a0e510: lea    r8,[rsp+0x44]
+0x140a0e515: lea    rdx,[rbp-0x60]
+0x140a0e519: mov    rcx,rdi
+0x140a0e51c: call   0x141367430
+0x140a0e521: movzx  edx,WORD PTR [rsp+0x70]
+0x140a0e526: cmp    dx,0xffff
+0x140a0e52a: je     0x140a0e5de
+0x140a0e530: movzx  ecx,WORD PTR [rbp-0x60]
+0x140a0e534: cmp    cx,0xffff
+0x140a0e538: je     0x140a0e5de
+0x140a0e53e: movzx  eax,WORD PTR [rsp+0x40]
+0x140a0e543: mov    WORD PTR [rsp+0x30],ax
+0x140a0e548: movzx  eax,WORD PTR [rsp+0x44]
+0x140a0e54d: mov    WORD PTR [rsp+0x28],ax
+0x140a0e552: mov    WORD PTR [rsp+0x20],cx
+0x140a0e557: movzx  r9d,WORD PTR [rsp+0x50]
+0x140a0e55d: movzx  r8d,WORD PTR [rsp+0x4c]
+0x140a0e563: lea    rcx,[rip+0x19c2f86]        # 0x1423d14f0
+0x140a0e56a: call   0x14144ca60
+0x140a0e56f: test   al,al
+0x140a0e571: je     0x140a0e5de
+0x140a0e573: mov    edx,0x493e0
+0x140a0e578: mov    rcx,rbx
+0x140a0e57b: call   0x1413eac10
+0x140a0e580: mov    rax,QWORD PTR [rbx+0x368]
+0x140a0e587: test   rax,rax
+0x140a0e58a: jne    0x140a0e5ad
+0x140a0e58c: mov    ecx,0x20
+0x140a0e591: call   0x141539690
+0x140a0e596: mov    QWORD PTR [rbp+0x120],rax
+0x140a0e59d: mov    rcx,rax
+0x140a0e5a0: call   0x1405c0e10
+0x140a0e5a5: nop
+0x140a0e5a6: mov    QWORD PTR [rbx+0x368],rax
+0x140a0e5ad: lea    rdx,[rdi+0x798]
+0x140a0e5b4: mov    rcx,rax
+0x140a0e5b7: call   0x1407e04f0
+0x140a0e5bc: movzx  eax,WORD PTR [rdi+0x12c]
+0x140a0e5c3: mov    WORD PTR [rbx+0x370],ax
+0x140a0e5ca: mov    eax,DWORD PTR [rdi+0xc30]
+0x140a0e5d0: mov    DWORD PTR [rbx+0x374],eax
+0x140a0e5d6: jmp    0x140a0e5de
+0x140a0e5d8: mov    r15d,0x1
+0x140a0e5de: mov    edi,0x8
+0x140a0e5e3: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0e5eb: jne    0x140a0e923
+0x140a0e5f1: mov    r8d,0x18
+0x140a0e5f7: mov    edx,DWORD PTR [rip+0x198507b]        # 0x142393678
+0x140a0e5fd: mov    rcx,rbx
+0x140a0e600: call   0x14138f4e0
+0x140a0e605: test   al,al
+0x140a0e607: je     0x140a0e923
+0x140a0e60d: mov    ecx,0x1f4
+0x140a0e612: call   0x140071f30
+0x140a0e617: test   eax,eax
+0x140a0e619: jne    0x140a0e923
+0x140a0e61f: mov    edx,edi
+0x140a0e621: mov    rcx,rbx
+0x140a0e624: call   0x1400737b0
+0x140a0e629: test   rax,rax
+0x140a0e62c: jne    0x140a0e923
+0x140a0e632: mov    QWORD PTR [rsp+0x20],r13
+0x140a0e637: xor    r9d,r9d
+0x140a0e63a: xor    r8d,r8d
+0x140a0e63d: lea    rdx,[rbp+0x120]
+0x140a0e644: mov    rcx,rbx
+0x140a0e647: call   0x14134a5e0
+0x140a0e64c: mov    DWORD PTR [rbp-0x78],r13d
+0x140a0e650: lea    rcx,[rip+0x19df901]        # 0x1423edf58
+0x140a0e657: call   0x14006ee50
+0x140a0e65c: test   rax,rax
+0x140a0e65f: je     0x140a0e923
+0x140a0e665: mov    rsi,r13
+0x140a0e668: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a0e670: mov    rdx,rsi
+0x140a0e673: lea    rcx,[rip+0x19df8de]        # 0x1423edf58
+0x140a0e67a: call   0x14006f220
+0x140a0e67f: mov    rcx,QWORD PTR [rax]
+0x140a0e682: cmp    DWORD PTR [rcx+0x1a0],0xffffffff
+0x140a0e689: je     0x140a0e8fd
+0x140a0e68f: mov    rdx,rsi
+0x140a0e692: lea    rcx,[rip+0x19df8bf]        # 0x1423edf58
+0x140a0e699: call   0x14006f220
+0x140a0e69e: mov    rdi,QWORD PTR [rax]
+0x140a0e6a1: mov    rdx,rsi
+0x140a0e6a4: lea    rcx,[rip+0x19df8ad]        # 0x1423edf58
+0x140a0e6ab: call   0x14006f220
+0x140a0e6b0: mov    rcx,QWORD PTR [rax]
+0x140a0e6b3: lea    r8,[rdi+0x1a4]
+0x140a0e6ba: mov    edx,DWORD PTR [rcx+0x1a0]
+0x140a0e6c0: lea    rcx,[rip+0x19d69e9]        # 0x1423e50b0
+0x140a0e6c7: call   0x14014db50
+0x140a0e6cc: mov    r14,rax
+0x140a0e6cf: test   rax,rax
+0x140a0e6d2: je     0x140a0e8fd
+0x140a0e6d8: mov    rdx,rsi
+0x140a0e6db: lea    rcx,[rip+0x19df876]        # 0x1423edf58
+0x140a0e6e2: call   0x14006f220
+0x140a0e6e7: mov    r12,QWORD PTR [rax]
+0x140a0e6ea: mov    rdx,QWORD PTR [r12]
+0x140a0e6ee: mov    rcx,r12
+0x140a0e6f1: call   QWORD PTR [rdx+0xd8]
+0x140a0e6f7: movsx  edx,ax
+0x140a0e6fa: sub    edx,0x50
+0x140a0e6fd: je     0x140a0e73c
+0x140a0e6ff: sub    edx,0xc
+0x140a0e702: je     0x140a0e72e
+0x140a0e704: sub    edx,0x1
+0x140a0e707: je     0x140a0e720
+0x140a0e709: cmp    edx,0x4
+0x140a0e70c: jne    0x140a0e8fd
+0x140a0e712: cmp    DWORD PTR [rbp+0x12c],0x0
+0x140a0e719: jg     0x140a0e749
+0x140a0e71b: jmp    0x140a0e8fd
+0x140a0e720: cmp    DWORD PTR [rbp+0x120],0x0
+0x140a0e727: jg     0x140a0e749
+0x140a0e729: jmp    0x140a0e8fd
+0x140a0e72e: cmp    DWORD PTR [rbp+0x124],0x0
+0x140a0e735: jg     0x140a0e749
+0x140a0e737: jmp    0x140a0e8fd
+0x140a0e73c: cmp    DWORD PTR [rbp+0x128],0x0
+0x140a0e743: jle    0x140a0e8fd
+0x140a0e749: mov    r8d,DWORD PTR [rip+0x1984f28]        # 0x142393678
+0x140a0e750: mov    edx,DWORD PTR [rip+0x1984f1a]        # 0x142393670
+0x140a0e756: mov    rcx,r14
+0x140a0e759: call   0x14134bc90
+0x140a0e75e: mov    edi,eax
+0x140a0e760: mov    DWORD PTR [rsp+0x78],eax
+0x140a0e764: mov    edx,r15d
+0x140a0e767: mov    rcx,r14
+0x140a0e76a: call   0x14134f250
+0x140a0e76f: mov    rsi,rax
+0x140a0e772: test   rax,rax
+0x140a0e775: je     0x140a0e7a6
+0x140a0e777: mov    rdx,QWORD PTR [r12]
+0x140a0e77b: mov    rcx,r12
+0x140a0e77e: call   QWORD PTR [rdx+0x1c8]
+0x140a0e784: test   al,al
+0x140a0e786: je     0x140a0e7a6
+0x140a0e788: mov    r8d,DWORD PTR [rip+0x1984ee9]        # 0x142393678
+0x140a0e78f: mov    edx,DWORD PTR [rip+0x1984edb]        # 0x142393670
+0x140a0e795: mov    rcx,rsi
+0x140a0e798: call   0x14134bc90
+0x140a0e79d: cmp    eax,edi
+0x140a0e79f: cmovg  edi,eax
+0x140a0e7a2: mov    DWORD PTR [rsp+0x78],edi
+0x140a0e7a6: mov    r8d,DWORD PTR [rip+0x1984ecb]        # 0x142393678
+0x140a0e7ad: mov    edx,DWORD PTR [rip+0x1984ebd]        # 0x142393670
+0x140a0e7b3: mov    rcx,rbx
+0x140a0e7b6: call   0x14134bc90
+0x140a0e7bb: mov    r14d,eax
+0x140a0e7be: mov    DWORD PTR [rsp+0x70],eax
+0x140a0e7c2: cmp    eax,edi
+0x140a0e7c4: jle    0x140a0e8fd
+0x140a0e7ca: mov    esi,r13d
+0x140a0e7cd: mov    rdx,rbx
+0x140a0e7d0: mov    rcx,r12
+0x140a0e7d3: call   0x140559610
+0x140a0e7d8: mov    ecx,eax
+0x140a0e7da: call   0x14136eb20
+0x140a0e7df: mov    WORD PTR [rsp+0x40],ax
+0x140a0e7e4: mov    r15d,r13d
+0x140a0e7e7: lea    rcx,[rbx+0x450]
+0x140a0e7ee: call   0x14006ee50
+0x140a0e7f3: test   rax,rax
+0x140a0e7f6: je     0x140a0e872
+0x140a0e7f8: xor    eax,eax
+0x140a0e7fa: mov    edi,eax
+0x140a0e7fc: nop    DWORD PTR [rax+0x0]
+0x140a0e800: mov    rdx,rdi
+0x140a0e803: lea    rcx,[rbx+0x450]
+0x140a0e80a: call   0x14006f220
+0x140a0e80f: mov    r14,QWORD PTR [rax]
+0x140a0e812: mov    rax,QWORD PTR [r12]
+0x140a0e816: mov    rcx,r12
+0x140a0e819: call   QWORD PTR [rax+0xd8]
+0x140a0e81f: movzx  edi,ax
+0x140a0e822: mov    rdx,QWORD PTR [r14]
+0x140a0e825: mov    rcx,r14
+0x140a0e828: call   QWORD PTR [rdx+0xd8]
+0x140a0e82e: cmp    ax,di
+0x140a0e831: jne    0x140a0e852
+0x140a0e833: mov    rdx,rbx
+0x140a0e836: mov    rcx,r14
+0x140a0e839: call   0x140559610
+0x140a0e83e: mov    ecx,eax
+0x140a0e840: call   0x14136eb20
+0x140a0e845: cmp    ax,WORD PTR [rsp+0x40]
+0x140a0e84a: jg     0x140a0e869
+0x140a0e84c: cwde
+0x140a0e84d: cmp    esi,eax
+0x140a0e84f: cmovl  esi,eax
+0x140a0e852: inc    r15d
+0x140a0e855: movsxd rdi,r15d
+0x140a0e858: lea    rcx,[rbx+0x450]
+0x140a0e85f: call   0x14006ee50
+0x140a0e864: cmp    rdi,rax
+0x140a0e867: jb     0x140a0e800
+0x140a0e869: mov    edi,DWORD PTR [rsp+0x78]
+0x140a0e86d: mov    r14d,DWORD PTR [rsp+0x70]
+0x140a0e872: lea    rcx,[rbx+0x450]
+0x140a0e879: call   0x14006ee50
+0x140a0e87e: movsxd rcx,r15d
+0x140a0e881: cmp    rcx,rax
+0x140a0e884: jne    0x140a0e8fa
+0x140a0e886: sub    r14d,edi
+0x140a0e889: dec    r14d
+0x140a0e88c: mov    eax,0x88888889
+0x140a0e891: imul   r14d
+0x140a0e894: lea    edi,[r14+rdx*1]
+0x140a0e898: sar    edi,0x3
+0x140a0e89b: mov    eax,edi
+0x140a0e89d: shr    eax,0x1f
+0x140a0e8a0: add    edi,eax
+0x140a0e8a2: movsx  eax,WORD PTR [rsp+0x40]
+0x140a0e8a7: add    edi,eax
+0x140a0e8a9: sub    edi,esi
+0x140a0e8ab: inc    edi
+0x140a0e8ad: test   edi,edi
+0x140a0e8af: jle    0x140a0e8fa
+0x140a0e8b1: lea    rcx,[rbp+0xd0]
+0x140a0e8b8: call   0x140072510
+0x140a0e8bd: mov    DWORD PTR [rbp+0xd0],0x67
+0x140a0e8c7: mov    rax,QWORD PTR [r12]
+0x140a0e8cb: mov    rcx,r12
+0x140a0e8ce: call   QWORD PTR [rax+0xd0]
+0x140a0e8d4: mov    DWORD PTR [rbp+0xd4],eax
+0x140a0e8da: mov    DWORD PTR [rbp+0xd8],edi
+0x140a0e8e0: lea    eax,[rdi+rdi*4]
+0x140a0e8e3: add    eax,eax
+0x140a0e8e5: mov    DWORD PTR [rbp+0xdc],eax
+0x140a0e8eb: lea    rdx,[rbp+0xd0]
+0x140a0e8f2: mov    rcx,rbx
+0x140a0e8f5: call   0x1413eff80
+0x140a0e8fa: xor    r13d,r13d
+0x140a0e8fd: mov    eax,DWORD PTR [rbp-0x78]
+0x140a0e900: inc    eax
+0x140a0e902: mov    DWORD PTR [rbp-0x78],eax
+0x140a0e905: movsxd rsi,eax
+0x140a0e908: lea    rcx,[rip+0x19df649]        # 0x1423edf58
+0x140a0e90f: call   0x14006ee50
+0x140a0e914: cmp    rsi,rax
+0x140a0e917: mov    r15d,0x1
+0x140a0e91d: jb     0x140a0e670
+0x140a0e923: mov    r9d,0x28
+0x140a0e929: mov    rsi,QWORD PTR [rbp-0x50]
+0x140a0e92d: mov    r8,rsi
+0x140a0e930: mov    rdi,QWORD PTR [rsp+0x58]
+0x140a0e935: mov    rdx,rdi
+0x140a0e938: mov    rcx,rbx
+0x140a0e93b: call   0x140a3a2e0
+0x140a0e940: cmp    DWORD PTR [rdi+0x4],0x28
+0x140a0e944: jge    0x140a0d317
+0x140a0e94a: mov    r9d,0x9b
+0x140a0e950: movzx  r8d,WORD PTR [rbx+0x12c]
+0x140a0e958: movzx  edx,WORD PTR [rbx+0xa4]
+0x140a0e95f: lea    rcx,[rip+0x1ade0e2]        # 0x1424eca48
+0x140a0e966: call   0x140072850
+0x140a0e96b: test   al,al
+0x140a0e96d: je     0x140a0efe4
+0x140a0e973: cmp    QWORD PTR [rbx+0xd80],0x0
+0x140a0e97b: jne    0x140a0efe4
+0x140a0e981: xor    edx,edx
+0x140a0e983: mov    rcx,rbx
+0x140a0e986: call   0x14134f250
+0x140a0e98b: mov    r12,rax
+0x140a0e98e: mov    r13d,0x7d0
+0x140a0e994: test   rax,rax
+0x140a0e997: je     0x140a0eb00
+0x140a0e99d: test   BYTE PTR [rax+0x110],0x2
+0x140a0e9a4: je     0x140a0eb00
+0x140a0e9aa: mov    ecx,0x5dc
+0x140a0e9af: call   0x140071f30
+0x140a0e9b4: test   eax,eax
+0x140a0e9b6: jne    0x140a0eb00
+0x140a0e9bc: mov    eax,0xffffffff
+0x140a0e9c1: mov    DWORD PTR [rbx+0x3bc],eax
+0x140a0e9c7: mov    edx,0xd
+0x140a0e9cc: xor    r9d,r9d
+0x140a0e9cf: mov    r8d,eax
+0x140a0e9d2: mov    rcx,rbx
+0x140a0e9d5: call   0x1413918c0
+0x140a0e9da: mov    edx,0xf7
+0x140a0e9df: mov    r8d,DWORD PTR [rip+0xe8d8b2]        # 0x14189c298
+0x140a0e9e6: lea    rcx,[rip+0x19822b3]        # 0x142390ca0
+0x140a0e9ed: call   0x14007de30
+0x140a0e9f2: test   al,al
+0x140a0e9f4: je     0x140a0eb00
+0x140a0e9fa: lea    rcx,[rbp+0xd0]
+0x140a0ea01: call   0x14006f690
+0x140a0ea06: nop
+0x140a0ea07: mov    rcx,rbx
+0x140a0ea0a: call   0x1413e5a90
+0x140a0ea0f: test   rax,rax
+0x140a0ea12: je     0x140a0ea2b
+0x140a0ea14: cmp    BYTE PTR [rax+0x72],0x0
+0x140a0ea18: je     0x140a0ea2b
+0x140a0ea1a: lea    rdx,[rbp+0xd0]
+0x140a0ea21: mov    rcx,rax
+0x140a0ea24: call   0x140a94030
+0x140a0ea29: jmp    0x140a0ea3e
+0x140a0ea2b: lea    rdx,[rip+0xcbcbfe]        # 0x1416cb630 ; cstring 'An animal'
+0x140a0ea32: lea    rcx,[rbp+0xd0]
+0x140a0ea39: call   0x14006f580
+0x140a0ea3e: lea    rdx,[rip+0xcbcbfb]        # 0x1416cb640 ; cstring ' has become a '
+0x140a0ea45: lea    rcx,[rbp+0xd0]
+0x140a0ea4c: call   0x14006f560
+0x140a0ea51: lea    rcx,[rbp+0x100]
+0x140a0ea58: call   0x14006f690
+0x140a0ea5d: nop
+0x140a0ea5e: xor    r8d,r8d
+0x140a0ea61: lea    rdx,[rbp+0x100]
+0x140a0ea68: mov    rcx,rbx
+0x140a0ea6b: call   0x14132f980
+0x140a0ea70: lea    rdx,[rbp+0x100]
+0x140a0ea77: lea    rcx,[rbp+0xd0]
+0x140a0ea7e: call   0x1400b9d10
+0x140a0ea83: mov    dl,0x2e
+0x140a0ea85: lea    rcx,[rbp+0xd0]
+0x140a0ea8c: call   0x1400b9d30
+0x140a0ea91: lea    rcx,[rbp+0x0]
+0x140a0ea95: call   0x14007dbe0
+0x140a0ea9a: mov    DWORD PTR [rbp+0x0],0x200f7
+0x140a0eaa1: mov    BYTE PTR [rbp+0x4],0x1
+0x140a0eaa5: mov    WORD PTR [rbp+0x1c],r13w
+0x140a0eaaa: movzx  eax,WORD PTR [rbx+0xa8]
+0x140a0eab1: mov    WORD PTR [rbp+0x6],ax
+0x140a0eab5: movzx  eax,WORD PTR [rbx+0xaa]
+0x140a0eabc: mov    WORD PTR [rbp+0x8],ax
+0x140a0eac0: movzx  eax,WORD PTR [rbx+0xac]
+0x140a0eac7: mov    WORD PTR [rbp+0xa],ax
+0x140a0eacb: mov    QWORD PTR [rbp+0x20],rbx
+0x140a0eacf: lea    r8,[rbp+0x0]
+0x140a0ead3: lea    rdx,[rbp+0xd0]
+0x140a0eada: lea    rcx,[rip+0x1ad4d6f]        # 0x1424e3850
+0x140a0eae1: call   0x1400e3c20
+0x140a0eae6: nop
+0x140a0eae7: lea    rcx,[rbp+0x100]
+0x140a0eaee: call   0x140067e30
+0x140a0eaf3: nop
+0x140a0eaf4: lea    rcx,[rbp+0xd0]
+0x140a0eafb: call   0x140067e30
+0x140a0eb00: mov    rcx,rbx
+0x140a0eb03: call   0x141324b50
+0x140a0eb08: test   rax,rax
+0x140a0eb0b: jne    0x140a0f03b
+0x140a0eb11: mov    ecx,0x5dc
+0x140a0eb16: call   0x140071f30
+0x140a0eb1b: test   eax,eax
+0x140a0eb1d: jne    0x140a0efcc
+0x140a0eb23: lea    rcx,[rbp+0x120]
+0x140a0eb2a: call   0x140065b00
+0x140a0eb2f: nop
+0x140a0eb30: xor    edi,edi
+0x140a0eb32: mov    r15d,edi
+0x140a0eb35: lea    rcx,[rip+0x19d658c]        # 0x1423e50c8
+0x140a0eb3c: call   0x14006ee50
+0x140a0eb41: test   rax,rax
+0x140a0eb44: je     0x140a0ecd3
+0x140a0eb4a: mov    r14d,edi
+0x140a0eb4d: nop    DWORD PTR [rax]
+0x140a0eb50: mov    rdx,r14
+0x140a0eb53: lea    rcx,[rip+0x19d656e]        # 0x1423e50c8
+0x140a0eb5a: call   0x14006f220
+0x140a0eb5f: mov    rcx,QWORD PTR [rax]
+0x140a0eb62: test   BYTE PTR [rcx+0x110],0x2
+0x140a0eb69: jne    0x140a0ecb4
+0x140a0eb6f: mov    rdx,r14
+0x140a0eb72: lea    rcx,[rip+0x19d654f]        # 0x1423e50c8
+0x140a0eb79: call   0x14006f220
+0x140a0eb7e: mov    rcx,QWORD PTR [rax]
+0x140a0eb81: test   DWORD PTR [rcx+0x110],0x10000
+0x140a0eb8b: jne    0x140a0ecb4
+0x140a0eb91: mov    rdx,r14
+0x140a0eb94: lea    rcx,[rip+0x19d652d]        # 0x1423e50c8
+0x140a0eb9b: call   0x14006f220
+0x140a0eba0: mov    rcx,QWORD PTR [rax]
+0x140a0eba3: test   DWORD PTR [rcx+0x110],0x2000000
+0x140a0ebad: jne    0x140a0ecb4
+0x140a0ebb3: mov    rdx,r14
+0x140a0ebb6: lea    rcx,[rip+0x19d650b]        # 0x1423e50c8
+0x140a0ebbd: call   0x14006f220
+0x140a0ebc2: mov    rcx,QWORD PTR [rax]
+0x140a0ebc5: call   0x14138ed20
+0x140a0ebca: test   al,al
+0x140a0ebcc: je     0x140a0ecb4
+0x140a0ebd2: mov    rdx,r14
+0x140a0ebd5: lea    rcx,[rip+0x19d64ec]        # 0x1423e50c8
+0x140a0ebdc: call   0x14006f220
+0x140a0ebe1: mov    edx,0x3a
+0x140a0ebe6: mov    rcx,QWORD PTR [rax]
+0x140a0ebe9: call   0x140073230
+0x140a0ebee: test   al,al
+0x140a0ebf0: je     0x140a0ecb4
+0x140a0ebf6: mov    rdx,r14
+0x140a0ebf9: lea    rcx,[rip+0x19d64c8]        # 0x1423e50c8
+0x140a0ec00: call   0x14006f220
+0x140a0ec05: mov    rcx,QWORD PTR [rax]
+0x140a0ec08: movzx  esi,WORD PTR [rcx+0xac]
+0x140a0ec0f: mov    rdx,r14
+0x140a0ec12: lea    rcx,[rip+0x19d64af]        # 0x1423e50c8
+0x140a0ec19: call   0x14006f220
+0x140a0ec1e: mov    rcx,QWORD PTR [rax]
+0x140a0ec21: movzx  edi,WORD PTR [rcx+0xaa]
+0x140a0ec28: mov    rdx,r14
+0x140a0ec2b: lea    rcx,[rip+0x19d6496]        # 0x1423e50c8
+0x140a0ec32: call   0x14006f220
+0x140a0ec37: mov    rcx,QWORD PTR [rax]
+0x140a0ec3a: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0ec3f: movzx  r9d,si
+0x140a0ec43: movzx  r8d,di
+0x140a0ec47: movzx  edx,WORD PTR [rcx+0xa8]
+0x140a0ec4e: mov    rcx,rbx
+0x140a0ec51: call   0x1413a4910
+0x140a0ec56: test   al,al
+0x140a0ec58: je     0x140a0ecb4
+0x140a0ec5a: mov    rdx,r14
+0x140a0ec5d: lea    rcx,[rip+0x19d6464]        # 0x1423e50c8
+0x140a0ec64: call   0x14006f220
+0x140a0ec69: mov    rdx,rbx
+0x140a0ec6c: mov    rcx,QWORD PTR [rax]
+0x140a0ec6f: call   0x1413f2bc0
+0x140a0ec74: test   al,al
+0x140a0ec76: jne    0x140a0ecb4
+0x140a0ec78: mov    rdx,r14
+0x140a0ec7b: lea    rcx,[rip+0x19d6446]        # 0x1423e50c8
+0x140a0ec82: call   0x14006f220
+0x140a0ec87: mov    rdx,QWORD PTR [rax]
+0x140a0ec8a: mov    rcx,rbx
+0x140a0ec8d: call   0x1413f2bc0
+0x140a0ec92: test   al,al
+0x140a0ec94: jne    0x140a0ecb4
+0x140a0ec96: mov    rdx,r14
+0x140a0ec99: lea    rcx,[rip+0x19d6428]        # 0x1423e50c8
+0x140a0eca0: call   0x14006f220
+0x140a0eca5: mov    rdx,rax
+0x140a0eca8: lea    rcx,[rbp+0x120]
+0x140a0ecaf: call   0x1400b9980
+0x140a0ecb4: inc    r15d
+0x140a0ecb7: movsxd r14,r15d
+0x140a0ecba: lea    rcx,[rip+0x19d6407]        # 0x1423e50c8
+0x140a0ecc1: call   0x14006ee50
+0x140a0ecc6: cmp    r14,rax
+0x140a0ecc9: jb     0x140a0eb50
+0x140a0eccf: mov    rsi,QWORD PTR [rbp-0x50]
+0x140a0ecd3: lea    rcx,[rbp+0x120]
+0x140a0ecda: call   0x14006ee50
+0x140a0ecdf: test   rax,rax
+0x140a0ece2: je     0x140a0efbb
+0x140a0ece8: lea    rcx,[rbp+0x120]
+0x140a0ecef: call   0x14006ee50
+0x140a0ecf4: mov    rcx,rax
+0x140a0ecf7: call   0x140071f30
+0x140a0ecfc: movsxd rdx,eax
+0x140a0ecff: lea    rcx,[rbp+0x120]
+0x140a0ed06: call   0x14006f220
+0x140a0ed0b: xor    r9d,r9d
+0x140a0ed0e: mov    r8d,0x2
+0x140a0ed14: mov    rdx,QWORD PTR [rax]
+0x140a0ed17: mov    rcx,rbx
+0x140a0ed1a: call   0x14138c120
+0x140a0ed1f: test   r12,r12
+0x140a0ed22: jne    0x140a0efbb
+0x140a0ed28: mov    ecx,0x32
+0x140a0ed2d: call   0x140071f30
+0x140a0ed32: test   eax,eax
+0x140a0ed34: jne    0x140a0efbb
+0x140a0ed3a: mov    eax,0xffffffff
+0x140a0ed3f: mov    r9d,eax
+0x140a0ed42: mov    edx,0x1
+0x140a0ed47: mov    BYTE PTR [rsp+0x30],dl
+0x140a0ed4b: mov    DWORD PTR [rsp+0x28],eax
+0x140a0ed4f: mov    WORD PTR [rsp+0x20],ax
+0x140a0ed54: movzx  r8d,WORD PTR [rbx+0xa4]
+0x140a0ed5c: mov    rcx,QWORD PTR [rbx+0x3b0]
+0x140a0ed63: call   0x14133ec90
+0x140a0ed68: test   al,al
+0x140a0ed6a: je     0x140a0efbb
+0x140a0ed70: mov    rax,QWORD PTR [rbx]
+0x140a0ed73: xor    r9d,r9d
+0x140a0ed76: mov    r8b,0x1
+0x140a0ed79: xor    edx,edx
+0x140a0ed7b: mov    rcx,rbx
+0x140a0ed7e: call   QWORD PTR [rax+0x20]
+0x140a0ed81: mov    rdx,QWORD PTR [rbx+0x3b0]
+0x140a0ed88: mov    r8d,DWORD PTR [rdx+0xc30]
+0x140a0ed8f: mov    r14d,0x64
+0x140a0ed95: cmp    r8d,0xffffffff
+0x140a0ed99: je     0x140a0edb7
+0x140a0ed9b: mov    r9d,r14d
+0x140a0ed9e: mov    edx,0xd
+0x140a0eda3: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0eda8: mov    rcx,rbx
+0x140a0edab: call   0x141391970
+0x140a0edb0: mov    rdx,QWORD PTR [rbx+0x3b0]
+0x140a0edb7: cmp    BYTE PTR [rbx+0x7a],0x0
+0x140a0edbb: jne    0x140a0edfd
+0x140a0edbd: mov    edx,DWORD PTR [rdx+0x140]
+0x140a0edc3: lea    rcx,[rip+0x19c2a2e]        # 0x1423d17f8
+0x140a0edca: call   0x14007daf0
+0x140a0edcf: test   rax,rax
+0x140a0edd2: je     0x140a0edfd
+0x140a0edd4: xor    r8d,r8d
+0x140a0edd7: lea    rdx,[rbx+0x8]
+0x140a0eddb: mov    rcx,rax
+0x140a0edde: call   0x140931860
+0x140a0ede3: mov    rcx,rbx
+0x140a0ede6: call   0x1413b3090
+0x140a0edeb: test   rax,rax
+0x140a0edee: je     0x140a0edfd
+0x140a0edf0: lea    rcx,[rax+0x38]
+0x140a0edf4: lea    rdx,[rbx+0x8]
+0x140a0edf8: call   0x14014d760
+0x140a0edfd: mov    edx,0xf8
+0x140a0ee02: mov    r8d,DWORD PTR [rip+0xe8d48f]        # 0x14189c298
+0x140a0ee09: lea    rcx,[rip+0x1981e90]        # 0x142390ca0
+0x140a0ee10: call   0x14007de30
+0x140a0ee15: test   al,al
+0x140a0ee17: je     0x140a0ef1d
+0x140a0ee1d: lea    rcx,[rbp+0xd0]
+0x140a0ee24: call   0x14006f690
+0x140a0ee29: nop
+0x140a0ee2a: xor    r8d,r8d
+0x140a0ee2d: lea    rdx,[rbp+0xd0]
+0x140a0ee34: mov    rcx,rbx
+0x140a0ee37: call   0x141330c30
+0x140a0ee3c: lea    rdx,[rip+0xcbc80d]        # 0x1416cb650 ; cstring ' has adopted '
+0x140a0ee43: lea    rcx,[rbp+0xd0]
+0x140a0ee4a: call   0x14006f560
+0x140a0ee4f: lea    rcx,[rbp+0x100]
+0x140a0ee56: call   0x14006f690
+0x140a0ee5b: nop
+0x140a0ee5c: xor    r8d,r8d
+0x140a0ee5f: lea    rdx,[rbp+0x100]
+0x140a0ee66: mov    rcx,QWORD PTR [rbx+0x3b0]
+0x140a0ee6d: call   0x141330c30
+0x140a0ee72: lea    rdx,[rbp+0x100]
+0x140a0ee79: lea    rcx,[rbp+0xd0]
+0x140a0ee80: call   0x1400b9d10
+0x140a0ee85: mov    dl,0x2e
+0x140a0ee87: lea    rcx,[rbp+0xd0]
+0x140a0ee8e: call   0x1400b9d30
+0x140a0ee93: lea    rcx,[rbp+0x80]
+0x140a0ee9a: call   0x14007dbe0
+0x140a0ee9f: mov    DWORD PTR [rbp+0x80],0x200f8
+0x140a0eea9: mov    BYTE PTR [rbp+0x84],0x1
+0x140a0eeb0: mov    WORD PTR [rbp+0x9c],r13w
+0x140a0eeb8: movzx  eax,WORD PTR [rbx+0xa8]
+0x140a0eebf: mov    WORD PTR [rbp+0x86],ax
+0x140a0eec6: movzx  eax,WORD PTR [rbx+0xaa]
+0x140a0eecd: mov    WORD PTR [rbp+0x88],ax
+0x140a0eed4: movzx  eax,WORD PTR [rbx+0xac]
+0x140a0eedb: mov    WORD PTR [rbp+0x8a],ax
+0x140a0eee2: mov    QWORD PTR [rbp+0xa0],rbx
+0x140a0eee9: lea    r8,[rbp+0x80]
+0x140a0eef0: lea    rdx,[rbp+0xd0]
+0x140a0eef7: lea    rcx,[rip+0x1ad4952]        # 0x1424e3850
+0x140a0eefe: call   0x1400e3c20
+0x140a0ef03: nop
+0x140a0ef04: lea    rcx,[rbp+0x100]
+0x140a0ef0b: call   0x140067e30
+0x140a0ef10: nop
+0x140a0ef11: lea    rcx,[rbp+0xd0]
+0x140a0ef18: call   0x140067e30
+0x140a0ef1d: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0ef24: mov    edx,DWORD PTR [rax+0x130]
+0x140a0ef2a: mov    DWORD PTR [rbx+0x3bc],edx
+0x140a0ef30: lea    rcx,[rbp+0x0]
+0x140a0ef34: call   0x140072510
+0x140a0ef39: mov    DWORD PTR [rbp+0x0],0x80
+0x140a0ef40: mov    eax,DWORD PTR [rbx+0xa4]
+0x140a0ef46: mov    DWORD PTR [rbp+0x4],eax
+0x140a0ef49: mov    DWORD PTR [rbp+0xc],r14d
+0x140a0ef4d: lea    rdx,[rbp+0x0]
+0x140a0ef51: mov    rcx,QWORD PTR [rbx+0x3b0]
+0x140a0ef58: call   0x1413eff80
+0x140a0ef5d: and    DWORD PTR [rbx+0x114],0xfffdffff
+0x140a0ef67: lea    rcx,[rip+0x19d724a]        # 0x1423e61b8
+0x140a0ef6e: call   0x14006f330
+0x140a0ef73: mov    rdi,rax
+0x140a0ef76: test   rax,rax
+0x140a0ef79: je     0x140a0efbb
+0x140a0ef7b: mov    r14d,0xb7
+0x140a0ef81: mov    rcx,QWORD PTR [rdi]
+0x140a0ef84: cmp    WORD PTR [rcx+0x14],r14w
+0x140a0ef89: jne    0x140a0efa0
+0x140a0ef8b: mov    r8d,DWORD PTR [rbx+0x130]
+0x140a0ef92: mov    edx,0x1a
+0x140a0ef97: call   0x140d097d0
+0x140a0ef9c: test   al,al
+0x140a0ef9e: jne    0x140a0efab
+0x140a0efa0: mov    rdi,QWORD PTR [rdi+0x10]
+0x140a0efa4: test   rdi,rdi
+0x140a0efa7: jne    0x140a0ef81
+0x140a0efa9: jmp    0x140a0efbb
+0x140a0efab: mov    rdx,QWORD PTR [rdi]
+0x140a0efae: lea    rcx,[rip+0x19d71fb]        # 0x1423e61b0
+0x140a0efb5: call   0x140d032a0
+0x140a0efba: nop
+0x140a0efbb: lea    rcx,[rbp+0x120]
+0x140a0efc2: call   0x140067160
+0x140a0efc7: mov    rdi,QWORD PTR [rsp+0x58]
+0x140a0efcc: mov    ecx,0x96
+0x140a0efd1: call   0x140071f30
+0x140a0efd6: test   eax,eax
+0x140a0efd8: jne    0x140a0f03b
+0x140a0efda: test   r12,r12
+0x140a0efdd: je     0x140a0f03b
+0x140a0efdf: mov    rdx,r12
+0x140a0efe2: jmp    0x140a0f02a
+0x140a0efe4: cmp    QWORD PTR [rbx+0x3b0],0x0
+0x140a0efec: je     0x140a0f03b
+0x140a0efee: mov    ecx,0xc8
+0x140a0eff3: call   0x140071f30
+0x140a0eff8: test   eax,eax
+0x140a0effa: jne    0x140a0f03b
+0x140a0effc: cmp    QWORD PTR [rbx+0xd80],0x0
+0x140a0f004: jne    0x140a0f03b
+0x140a0f006: xor    edx,edx
+0x140a0f008: mov    rcx,rbx
+0x140a0f00b: call   0x14134f250
+0x140a0f010: test   rax,rax
+0x140a0f013: je     0x140a0f03b
+0x140a0f015: cmp    rax,QWORD PTR [rbx+0x3b0]
+0x140a0f01c: je     0x140a0f03b
+0x140a0f01e: test   BYTE PTR [rax+0x110],0x2
+0x140a0f025: jne    0x140a0f03b
+0x140a0f027: mov    rdx,rax
+0x140a0f02a: xor    r9d,r9d
+0x140a0f02d: mov    r8d,0x2
+0x140a0f033: mov    rcx,rbx
+0x140a0f036: call   0x14138c120
+0x140a0f03b: mov    rcx,rbx
+0x140a0f03e: call   0x1413406b0
+0x140a0f043: cmp    eax,0x2
+0x140a0f046: jne    0x140a0f23e
+0x140a0f04c: mov    rcx,rbx
+0x140a0f04f: call   0x14138ed20
+0x140a0f054: test   al,al
+0x140a0f056: je     0x140a0f23e
+0x140a0f05c: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0f064: jne    0x140a0f23e
+0x140a0f06a: mov    edx,0x3a
+0x140a0f06f: mov    rcx,rbx
+0x140a0f072: call   0x140073230
+0x140a0f077: test   al,al
+0x140a0f079: je     0x140a0f09e
+0x140a0f07b: mov    r9d,0x28
+0x140a0f081: mov    r8,rsi
+0x140a0f084: mov    rdx,rdi
+0x140a0f087: mov    rcx,rbx
+0x140a0f08a: call   0x1413a4b70
+0x140a0f08f: cmp    DWORD PTR [rdi+0x4],0x28
+0x140a0f093: jge    0x140a0d317
+0x140a0f099: jmp    0x140a0f23e
+0x140a0f09e: mov    rax,QWORD PTR [rbx+0x3b0]
+0x140a0f0a5: test   rax,rax
+0x140a0f0a8: je     0x140a0f0b7
+0x140a0f0aa: cmp    BYTE PTR [rax+0xac9],0x0
+0x140a0f0b1: jne    0x140a0f23e
+0x140a0f0b7: xor    edi,edi
+0x140a0f0b9: mov    r13d,0xffffffff
+0x140a0f0bf: mov    r12d,0xc30
+0x140a0f0c5: mov    r15d,edi
+0x140a0f0c8: lea    rcx,[rip+0x19d5ff9]        # 0x1423e50c8
+0x140a0f0cf: call   0x14006ee50
+0x140a0f0d4: test   rax,rax
+0x140a0f0d7: je     0x140a0f23e
+0x140a0f0dd: mov    r14d,edi
+0x140a0f0e0: mov    rdx,r14
+0x140a0f0e3: lea    rcx,[rip+0x19d5fde]        # 0x1423e50c8
+0x140a0f0ea: call   0x14006f220
+0x140a0f0ef: mov    rcx,QWORD PTR [rax]
+0x140a0f0f2: test   BYTE PTR [rcx+0x110],0x2
+0x140a0f0f9: jne    0x140a0f1f7
+0x140a0f0ff: mov    rdx,r14
+0x140a0f102: lea    rcx,[rip+0x19d5fbf]        # 0x1423e50c8
+0x140a0f109: call   0x14006f220
+0x140a0f10e: mov    rcx,QWORD PTR [rax]
+0x140a0f111: test   DWORD PTR [rcx+0x110],0x10000
+0x140a0f11b: jne    0x140a0f1f7
+0x140a0f121: mov    rdx,r14
+0x140a0f124: lea    rcx,[rip+0x19d5f9d]        # 0x1423e50c8
+0x140a0f12b: call   0x14006f220
+0x140a0f130: mov    rcx,QWORD PTR [rax]
+0x140a0f133: test   DWORD PTR [rcx+0x110],0x2000000
+0x140a0f13d: jne    0x140a0f1f7
+0x140a0f143: mov    rdx,r14
+0x140a0f146: lea    rcx,[rip+0x19d5f7b]        # 0x1423e50c8
+0x140a0f14d: call   0x14006f220
+0x140a0f152: mov    rcx,QWORD PTR [rax]
+0x140a0f155: call   0x14138ed20
+0x140a0f15a: test   al,al
+0x140a0f15c: je     0x140a0f1f7
+0x140a0f162: mov    rdx,r14
+0x140a0f165: lea    rcx,[rip+0x19d5f5c]        # 0x1423e50c8
+0x140a0f16c: call   0x14006f220
+0x140a0f171: mov    rcx,QWORD PTR [rax]
+0x140a0f174: cmp    BYTE PTR [rcx+0xac9],0x0
+0x140a0f17b: je     0x140a0f1f7
+0x140a0f17d: mov    rdx,r14
+0x140a0f180: lea    rcx,[rip+0x19d5f41]        # 0x1423e50c8
+0x140a0f187: call   0x14006f220
+0x140a0f18c: mov    rcx,QWORD PTR [rax]
+0x140a0f18f: movzx  esi,WORD PTR [rcx+0xac]
+0x140a0f196: sub    si,WORD PTR [rbx+0xac]
+0x140a0f19d: mov    rdx,r14
+0x140a0f1a0: lea    rcx,[rip+0x19d5f21]        # 0x1423e50c8
+0x140a0f1a7: call   0x14006f220
+0x140a0f1ac: mov    rcx,QWORD PTR [rax]
+0x140a0f1af: movzx  edi,WORD PTR [rcx+0xaa]
+0x140a0f1b6: sub    di,WORD PTR [rbx+0xaa]
+0x140a0f1bd: mov    rdx,r14
+0x140a0f1c0: lea    rcx,[rip+0x19d5f01]        # 0x1423e50c8
+0x140a0f1c7: call   0x14006f220
+0x140a0f1cc: mov    rcx,QWORD PTR [rax]
+0x140a0f1cf: movzx  ecx,WORD PTR [rcx+0xa8]
+0x140a0f1d6: sub    cx,WORD PTR [rbx+0xa8]
+0x140a0f1dd: movzx  r8d,si
+0x140a0f1e1: movzx  edx,di
+0x140a0f1e4: call   0x1409e5440
+0x140a0f1e9: movsx  ecx,ax
+0x140a0f1ec: cmp    r12d,ecx
+0x140a0f1ef: jle    0x140a0f1f7
+0x140a0f1f1: mov    r13d,r15d
+0x140a0f1f4: mov    r12d,ecx
+0x140a0f1f7: inc    r15d
+0x140a0f1fa: movsxd r14,r15d
+0x140a0f1fd: lea    rcx,[rip+0x19d5ec4]        # 0x1423e50c8
+0x140a0f204: call   0x14006ee50
+0x140a0f209: cmp    r14,rax
+0x140a0f20c: jb     0x140a0f0e0
+0x140a0f212: cmp    r13d,0xffffffff
+0x140a0f216: je     0x140a0f23e
+0x140a0f218: movsxd rdx,r13d
+0x140a0f21b: lea    rcx,[rip+0x19d5ea6]        # 0x1423e50c8
+0x140a0f222: call   0x14006f220
+0x140a0f227: mov    r9d,0x2
+0x140a0f22d: mov    r8d,0x1
+0x140a0f233: mov    rdx,QWORD PTR [rax]
+0x140a0f236: mov    rcx,rbx
+0x140a0f239: call   0x14138c120
+0x140a0f23e: cmp    QWORD PTR [rbx+0xd48],0x0
+0x140a0f246: je     0x140a0f56a
+0x140a0f24c: mov    rcx,rbx
+0x140a0f24f: call   0x141324b50
+0x140a0f254: test   rax,rax
+0x140a0f257: jne    0x140a0f56a
+0x140a0f25d: mov    rcx,rbx
+0x140a0f260: call   0x1413857d0
+0x140a0f265: lea    r14,[rbx+0x408]
+0x140a0f26c: mov    rcx,r14
+0x140a0f26f: call   0x14006ee50
+0x140a0f274: mov    rsi,rax
+0x140a0f277: sub    esi,0x1
+0x140a0f27a: mov    QWORD PTR [rsp+0x68],rsi
+0x140a0f27f: js     0x140a0f56a
+0x140a0f285: movsxd rcx,esi
+0x140a0f288: lea    r15,[rcx*8+0x0]
+0x140a0f290: mov    QWORD PTR [rbp-0x58],r15
+0x140a0f294: nop    DWORD PTR [rax+0x0]
+0x140a0f298: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a0f2a0: movsxd rdi,esi
+0x140a0f2a3: mov    rdx,rdi
+0x140a0f2a6: mov    rcx,r14
+0x140a0f2a9: call   0x14006f220
+0x140a0f2ae: mov    rcx,QWORD PTR [rax]
+0x140a0f2b1: mov    rcx,QWORD PTR [rcx]
+0x140a0f2b4: mov    rax,QWORD PTR [rcx]
+0x140a0f2b7: call   QWORD PTR [rax]
+0x140a0f2b9: cmp    ax,0x52
+0x140a0f2bd: jne    0x140a0f4ec
+0x140a0f2c3: mov    rdx,rdi
+0x140a0f2c6: mov    rcx,r14
+0x140a0f2c9: call   0x14006f220
+0x140a0f2ce: mov    rcx,QWORD PTR [rax]
+0x140a0f2d1: cmp    WORD PTR [rcx+0x8],0x2
+0x140a0f2d6: jne    0x140a0f4ec
+0x140a0f2dc: mov    ecx,0xc8
+0x140a0f2e1: call   0x140071f30
+0x140a0f2e6: test   eax,eax
+0x140a0f2e8: jne    0x140a0f4ec
+0x140a0f2ee: movzx  edx,WORD PTR [rbx+0xa4]
+0x140a0f2f5: lea    rcx,[rip+0x1add74c]        # 0x1424eca48
+0x140a0f2fc: call   0x1400bba60
+0x140a0f301: mov    QWORD PTR [rbp+0x120],rax
+0x140a0f308: mov    rdx,rdi
+0x140a0f30b: mov    rcx,r14
+0x140a0f30e: call   0x14006f220
+0x140a0f313: mov    rcx,QWORD PTR [rax]
+0x140a0f316: movzx  r12d,WORD PTR [rcx+0xa]
+0x140a0f31b: cmp    r12w,0xffff
+0x140a0f320: je     0x140a0f4ec
+0x140a0f326: lea    rdi,[rbx+0x5b0]
+0x140a0f32d: mov    rcx,rdi
+0x140a0f330: call   0x14006ee50
+0x140a0f335: mov    r13,rax
+0x140a0f338: sub    r13d,0x1
+0x140a0f33c: js     0x140a0f474
+0x140a0f342: movsxd rdx,r13d
+0x140a0f345: mov    rcx,rdi
+0x140a0f348: call   0x14006f220
+0x140a0f34d: mov    r15,QWORD PTR [rax]
+0x140a0f350: lea    rcx,[r15+0x8]
+0x140a0f354: call   0x14006ee50
+0x140a0f359: sub    eax,0x1
+0x140a0f35c: js     0x140a0f465
+0x140a0f362: movsxd rsi,eax
+0x140a0f365: data16 data16 nop WORD PTR [rax+rax*1+0x0]
+0x140a0f370: mov    rax,QWORD PTR [r15+0x8]
+0x140a0f374: mov    rdi,QWORD PTR [rax+rsi*8]
+0x140a0f378: movsx  rax,WORD PTR [rdi+0x4]
+0x140a0f37d: cmp    ax,r12w
+0x140a0f381: jne    0x140a0f454
+0x140a0f387: cmp    WORD PTR [rdi+0x6],0xffff
+0x140a0f38c: je     0x140a0f454
+0x140a0f392: cmp    WORD PTR [rdi+0x98],0x0
+0x140a0f39a: jle    0x140a0f454
+0x140a0f3a0: mov    rdx,rax
+0x140a0f3a3: mov    rcx,QWORD PTR [rbx+0x5f8]
+0x140a0f3aa: call   0x14006f220
+0x140a0f3af: mov    rcx,QWORD PTR [rax]
+0x140a0f3b2: add    rcx,0x58
+0x140a0f3b6: movsx  rdx,WORD PTR [rdi+0x6]
+0x140a0f3bb: call   0x14006f220
+0x140a0f3c0: mov    r14,QWORD PTR [rax]
+0x140a0f3c3: lea    rcx,[rbx+0x1368]
+0x140a0f3ca: movsxd rdx,DWORD PTR [r14+0x68]
+0x140a0f3ce: call   0x14006f360
+0x140a0f3d3: cmp    DWORD PTR [rax],0x0
+0x140a0f3d6: jle    0x140a0f454
+0x140a0f3d8: mov    rcx,QWORD PTR [rbp+0x120]
+0x140a0f3df: add    rcx,0x208
+0x140a0f3e6: movsxd rdx,DWORD PTR [r14+0x20]
+0x140a0f3ea: call   0x14006f220
+0x140a0f3ef: mov    rcx,QWORD PTR [rax]
+0x140a0f3f2: add    rcx,0x20
+0x140a0f3f6: mov    edx,0x15
+0x140a0f3fb: call   0x140071f90
+0x140a0f400: test   al,al
+0x140a0f402: je     0x140a0f454
+0x140a0f404: movsx  rdx,WORD PTR [rdi+0x4]
+0x140a0f409: mov    rcx,QWORD PTR [rbx+0x5f8]
+0x140a0f410: call   0x14006f220
+0x140a0f415: mov    rcx,QWORD PTR [rax]
+0x140a0f418: add    rcx,0x48
+0x140a0f41c: mov    edx,0x5
+0x140a0f421: call   0x140071f90
+0x140a0f426: test   al,al
+0x140a0f428: jne    0x140a0f454
+0x140a0f42a: movsx  rdx,WORD PTR [rdi+0x4]
+0x140a0f42f: mov    rcx,QWORD PTR [rbx+0x5f8]
+0x140a0f436: call   0x14006f220
+0x140a0f43b: mov    rcx,QWORD PTR [rax]
+0x140a0f43e: add    rcx,0x48
+0x140a0f442: mov    edx,0xd
+0x140a0f447: call   0x140071f90
+0x140a0f44c: test   al,al
+0x140a0f44e: je     0x140a0f4dc
+0x140a0f454: sub    rsi,0x1
+0x140a0f458: jns    0x140a0f370
+0x140a0f45e: lea    rdi,[rbx+0x5b0]
+0x140a0f465: sub    r13d,0x1
+0x140a0f469: jns    0x140a0f342
+0x140a0f46f: mov    rsi,QWORD PTR [rsp+0x68]
+0x140a0f474: lea    rcx,[rbx+0x408]
+0x140a0f47b: movsxd rdx,esi
+0x140a0f47e: call   0x14006f220
+0x140a0f483: mov    rcx,QWORD PTR [rax]
+0x140a0f486: mov    rdi,QWORD PTR [rcx]
+0x140a0f489: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0f48e: xor    r9d,r9d
+0x140a0f491: xor    r8d,r8d
+0x140a0f494: mov    edx,esi
+0x140a0f496: mov    rcx,rbx
+0x140a0f499: call   0x141329480
+0x140a0f49e: mov    BYTE PTR [rsp+0x28],0x1
+0x140a0f4a3: mov    r15d,0xffffffff
+0x140a0f4a9: mov    DWORD PTR [rsp+0x20],r15d
+0x140a0f4ae: mov    r9d,r15d
+0x140a0f4b1: xor    r8d,r8d
+0x140a0f4b4: mov    rdx,rdi
+0x140a0f4b7: mov    rcx,rbx
+0x140a0f4ba: call   0x1413289b0
+0x140a0f4bf: xor    edx,edx
+0x140a0f4c1: mov    rcx,rbx
+0x140a0f4c4: call   0x1413a4310
+0x140a0f4c9: cmp    QWORD PTR [rbx+0x4d8],0x0
+0x140a0f4d1: jne    0x140a0fa23
+0x140a0f4d7: jmp    0x140a0f570
+0x140a0f4dc: mov    rsi,QWORD PTR [rsp+0x68]
+0x140a0f4e1: lea    r14,[rbx+0x408]
+0x140a0f4e8: mov    r15,QWORD PTR [rbp-0x58]
+0x140a0f4ec: mov    rax,QWORD PTR [r14]
+0x140a0f4ef: mov    rcx,QWORD PTR [r15+rax*1]
+0x140a0f4f3: mov    rcx,QWORD PTR [rcx]
+0x140a0f4f6: mov    rax,QWORD PTR [rcx]
+0x140a0f4f9: call   QWORD PTR [rax]
+0x140a0f4fb: cmp    ax,0x53
+0x140a0f4ff: jne    0x140a0f553
+0x140a0f501: movsxd rdx,esi
+0x140a0f504: mov    rcx,r14
+0x140a0f507: call   0x14006f220
+0x140a0f50c: mov    rcx,QWORD PTR [rax]
+0x140a0f50f: cmp    WORD PTR [rcx+0x8],0x1
+0x140a0f514: jne    0x140a0f553
+0x140a0f516: mov    rcx,rbx
+0x140a0f519: call   0x141385b10
+0x140a0f51e: movsx  eax,WORD PTR [rbx+0xc38]
+0x140a0f525: cmp    eax,0x1
+0x140a0f528: jle    0x140a0f9c0
+0x140a0f52e: movsx  ecx,WORD PTR [rbx+0xc3a]
+0x140a0f535: cmp    ax,cx
+0x140a0f538: jle    0x140a0f9c0
+0x140a0f53e: test   BYTE PTR [rbx+0x118],0x40
+0x140a0f545: je     0x140a0f549
+0x140a0f547: inc    ecx
+0x140a0f549: sar    eax,1
+0x140a0f54b: cmp    ecx,eax
+0x140a0f54d: jle    0x140a0f9c0
+0x140a0f553: dec    esi
+0x140a0f555: mov    QWORD PTR [rsp+0x68],rsi
+0x140a0f55a: sub    r15,0x8
+0x140a0f55e: mov    QWORD PTR [rbp-0x58],r15
+0x140a0f562: test   esi,esi
+0x140a0f564: jns    0x140a0f2a0
+0x140a0f56a: mov    r15d,0xffffffff
+0x140a0f570: mov    edx,DWORD PTR [rbx+0x3bc]
+0x140a0f576: cmp    edx,0xffffffff
+0x140a0f579: je     0x140a0f64a
+0x140a0f57f: lea    rcx,[rip+0x19d5b2a]        # 0x1423e50b0
+0x140a0f586: call   0x140073b70
+0x140a0f58b: mov    rdi,rax
+0x140a0f58e: test   rax,rax
+0x140a0f591: je     0x140a0f64a
+0x140a0f597: mov    ecx,0xc8
+0x140a0f59c: call   0x140071f30
+0x140a0f5a1: test   eax,eax
+0x140a0f5a3: jne    0x140a0f64a
+0x140a0f5a9: movzx  edx,WORD PTR [rbx+0xaa]
+0x140a0f5b0: sub    dx,WORD PTR [rdi+0xaa]
+0x140a0f5b7: movzx  ecx,WORD PTR [rbx+0xa8]
+0x140a0f5be: sub    cx,WORD PTR [rdi+0xa8]
+0x140a0f5c5: call   0x140072170
+0x140a0f5ca: movzx  esi,ax
+0x140a0f5cd: mov    r9d,r15d
+0x140a0f5d0: mov    edx,0x1
+0x140a0f5d5: mov    BYTE PTR [rsp+0x30],dl
+0x140a0f5d9: mov    DWORD PTR [rsp+0x28],r15d
+0x140a0f5de: mov    WORD PTR [rsp+0x20],r15w
+0x140a0f5e4: movzx  r8d,WORD PTR [rbx+0xa4]
+0x140a0f5ec: mov    rcx,rdi
+0x140a0f5ef: call   0x14133ec90
+0x140a0f5f4: test   al,al
+0x140a0f5f6: je     0x140a0f64a
+0x140a0f5f8: cmp    si,0x2
+0x140a0f5fc: jg     0x140a0f64a
+0x140a0f5fe: movzx  eax,WORD PTR [rdi+0xac]
+0x140a0f605: cmp    WORD PTR [rbx+0xac],ax
+0x140a0f60c: jne    0x140a0f64a
+0x140a0f60e: lea    rcx,[rbp+0xd0]
+0x140a0f615: call   0x140072510
+0x140a0f61a: mov    DWORD PTR [rbp+0xd0],0xad
+0x140a0f624: mov    eax,DWORD PTR [rbx+0xa4]
+0x140a0f62a: mov    DWORD PTR [rbp+0xd4],eax
+0x140a0f630: mov    eax,0x64
+0x140a0f635: mov    DWORD PTR [rbp+0xdc],eax
+0x140a0f63b: lea    rdx,[rbp+0xd0]
+0x140a0f642: mov    rcx,rdi
+0x140a0f645: call   0x1413eff80
+0x140a0f64a: call   0x140eb68b0
+0x140a0f64f: mov    r8d,eax
+0x140a0f652: mov    eax,0x3
+0x140a0f657: mul    r8d
+0x140a0f65a: mov    ecx,r8d
+0x140a0f65d: sub    ecx,edx
+0x140a0f65f: shr    ecx,1
+0x140a0f661: add    ecx,edx
+0x140a0f663: shr    ecx,0x1e
+0x140a0f666: imul   ecx,ecx,0x7fffffff
+0x140a0f66c: sub    r8d,ecx
+0x140a0f66f: cmp    r8d,0x418938
+0x140a0f676: jae    0x140a0f6a2
+0x140a0f678: mov    rcx,rbx
+0x140a0f67b: call   0x14138ed20
+0x140a0f680: test   al,al
+0x140a0f682: jne    0x140a0f690
+0x140a0f684: mov    rcx,rbx
+0x140a0f687: call   0x14138ee20
+0x140a0f68c: test   al,al
+0x140a0f68e: je     0x140a0f6a2
+0x140a0f690: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0f698: jne    0x140a0f6a2
+0x140a0f69a: mov    rcx,rbx
+0x140a0f69d: call   0x14137a930
+0x140a0f6a2: call   0x140eb68b0
+0x140a0f6a7: mov    r8d,eax
+0x140a0f6aa: mov    eax,0x3
+0x140a0f6af: mul    r8d
+0x140a0f6b2: mov    ecx,r8d
+0x140a0f6b5: sub    ecx,edx
+0x140a0f6b7: shr    ecx,1
+0x140a0f6b9: add    ecx,edx
+0x140a0f6bb: shr    ecx,0x1e
+0x140a0f6be: imul   ecx,ecx,0x7fffffff
+0x140a0f6c4: sub    r8d,ecx
+0x140a0f6c7: cmp    r8d,0x418938
+0x140a0f6ce: jae    0x140a0f6dc
+0x140a0f6d0: mov    rdx,QWORD PTR [rbp-0x50]
+0x140a0f6d4: mov    rcx,rbx
+0x140a0f6d7: call   0x1413de8c0
+0x140a0f6dc: cmp    DWORD PTR [rbx+0x118],0x0
+0x140a0f6e3: jge    0x140a0f705
+0x140a0f6e5: mov    rax,QWORD PTR [rbx+0x1268]
+0x140a0f6ec: test   rax,rax
+0x140a0f6ef: je     0x140a0f705
+0x140a0f6f1: test   BYTE PTR [rax+0x18],0x1
+0x140a0f6f5: mov    eax,0x3e8
+0x140a0f6fa: mov    ecx,0xa
+0x140a0f6ff: cmove  eax,ecx
+0x140a0f702: mov    DWORD PTR [rbp-0x80],eax
+0x140a0f705: call   0x140eb68b0
+0x140a0f70a: mov    r8d,eax
+0x140a0f70d: mov    eax,0x3
+0x140a0f712: mul    r8d
+0x140a0f715: mov    ecx,r8d
+0x140a0f718: sub    ecx,edx
+0x140a0f71a: shr    ecx,1
+0x140a0f71c: add    ecx,edx
+0x140a0f71e: shr    ecx,0x1e
+0x140a0f721: imul   ecx,ecx,0x7fffffff
+0x140a0f727: sub    r8d,ecx
+0x140a0f72a: xor    edx,edx
+0x140a0f72c: mov    eax,0x7fffffff
+0x140a0f731: div    DWORD PTR [rbp-0x80]
+0x140a0f734: lea    ecx,[rax+0x1]
+0x140a0f737: xor    edx,edx
+0x140a0f739: mov    eax,r8d
+0x140a0f73c: div    ecx
+0x140a0f73e: test   eax,eax
+0x140a0f740: jne    0x140a0f794
+0x140a0f742: mov    rcx,rbx
+0x140a0f745: call   0x14138ed20
+0x140a0f74a: test   al,al
+0x140a0f74c: jne    0x140a0f757
+0x140a0f74e: cmp    DWORD PTR [rbx+0x118],0x0
+0x140a0f755: jge    0x140a0f794
+0x140a0f757: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0f75f: jne    0x140a0f794
+0x140a0f761: movzx  eax,WORD PTR [rbx+0x814]
+0x140a0f768: cmp    ax,0x3
+0x140a0f76c: je     0x140a0f794
+0x140a0f76e: cmp    ax,0x4
+0x140a0f772: je     0x140a0f794
+0x140a0f774: mov    rcx,rbx
+0x140a0f777: call   0x140073710
+0x140a0f77c: test   al,al
+0x140a0f77e: je     0x140a0f794
+0x140a0f780: mov    rcx,rbx
+0x140a0f783: call   0x140073760
+0x140a0f788: test   al,al
+0x140a0f78a: je     0x140a0f794
+0x140a0f78c: mov    rcx,rbx
+0x140a0f78f: call   0x14137b650
+0x140a0f794: mov    rcx,rbx
+0x140a0f797: call   0x14138ed20
+0x140a0f79c: mov    BYTE PTR [rsp+0x4a],al
+0x140a0f7a0: test   al,al
+0x140a0f7a2: jne    0x140a0f7b1
+0x140a0f7a4: cmp    DWORD PTR [rbx+0x118],0x0
+0x140a0f7ab: jge    0x140a106b2
+0x140a0f7b1: cmp    DWORD PTR [rbx+0xc30],0xffffffff
+0x140a0f7b8: je     0x140a106b2
+0x140a0f7be: mov    edx,0x3a
+0x140a0f7c3: mov    rcx,rbx
+0x140a0f7c6: call   0x140073230
+0x140a0f7cb: test   al,al
+0x140a0f7cd: je     0x140a106b2
+0x140a0f7d3: mov    r14d,0xffff8ad0
+0x140a0f7d9: cmp    WORD PTR [rbx+0x360],0xffff
+0x140a0f7e1: jne    0x140a110d2
+0x140a0f7e7: movzx  eax,WORD PTR [rbx+0x814]
+0x140a0f7ee: cmp    ax,0x3
+0x140a0f7f2: je     0x140a110d2
+0x140a0f7f8: cmp    ax,0x4
+0x140a0f7fc: je     0x140a110d2
+0x140a0f802: cmp    WORD PTR [rbx+0xae],r14w
+0x140a0f80a: je     0x140a110d2
+0x140a0f810: mov    edx,0x7
+0x140a0f815: mov    rcx,rbx
+0x140a0f818: call   0x1400737b0
+0x140a0f81d: test   rax,rax
+0x140a0f820: jne    0x140a110d2
+0x140a0f826: cmp    DWORD PTR [rbx+0x3d8],0xffffffff
+0x140a0f82d: jne    0x140a110d2
+0x140a0f833: cmp    DWORD PTR [rbx+0x3d4],0xffffffff
+0x140a0f83a: jne    0x140a110d2
+0x140a0f840: cmp    WORD PTR [rbx+0xc0],r14w
+0x140a0f848: jne    0x140a110d2
+0x140a0f84e: lea    rcx,[rbx+0x2b8]
+0x140a0f855: call   0x14006f370
+0x140a0f85a: test   rax,rax
+0x140a0f85d: jne    0x140a110d2
+0x140a0f863: lea    rcx,[rbx+0x2d0]
+0x140a0f86a: call   0x14006f370
+0x140a0f86f: test   rax,rax
+0x140a0f872: jne    0x140a110d2
+0x140a0f878: cmp    QWORD PTR [rbx+0xa98],rax
+0x140a0f87f: je     0x140a110d2
+0x140a0f885: mov    rax,QWORD PTR [rbx+0x1268]
+0x140a0f88c: test   rax,rax
+0x140a0f88f: je     0x140a0f89e
+0x140a0f891: mov    eax,DWORD PTR [rax+0x18]
+0x140a0f894: and    al,0x7
+0x140a0f896: cmp    al,0x1
+0x140a0f898: jne    0x140a110d2
+0x140a0f89e: xor    eax,eax
+0x140a0f8a0: mov    r13d,eax
+0x140a0f8a3: mov    QWORD PTR [rbp-0x68],rax
+0x140a0f8a7: cmp    WORD PTR [rbx+0xa0],0x67
+0x140a0f8af: jne    0x140a0fdac
+0x140a0f8b5: cmp    BYTE PTR [rip+0xe97cfd],al        # 0x1418a75b8
+0x140a0f8bb: je     0x140a0f8d8
+0x140a0f8bd: test   BYTE PTR [rip+0xe97cf8],0x2        # 0x1418a75bc
+0x140a0f8c4: jne    0x140a0f8d8
+0x140a0f8c6: mov    eax,DWORD PTR [rip+0xe97cf8]        # 0x1418a75c4
+0x140a0f8cc: add    eax,0xffffffd0
+0x140a0f8cf: cmp    eax,0x3
+0x140a0f8d2: jbe    0x140a110d2
+0x140a0f8d8: mov    r12d,r15d
+0x140a0f8db: mov    r14d,r15d
+0x140a0f8de: lea    rdx,[rbp-0x80]
+0x140a0f8e2: lea    rcx,[rip+0x19defcf]        # 0x1423ee8b8
+0x140a0f8e9: call   0x14006f240
+0x140a0f8ee: lea    rdx,[rbp-0x38]
+0x140a0f8f2: lea    rcx,[rip+0x19defbf]        # 0x1423ee8b8
+0x140a0f8f9: call   0x14006f230
+0x140a0f8fe: lea    r8,[rbp-0x38]
+0x140a0f902: lea    rdx,[rsp+0x4a]
+0x140a0f907: lea    rcx,[rbp-0x80]
+0x140a0f90b: call   0x14006ee20
+0x140a0f910: xor    edx,edx
+0x140a0f912: movzx  ecx,BYTE PTR [rax]
+0x140a0f915: call   0x1400657b0
+0x140a0f91a: test   al,al
+0x140a0f91c: je     0x140a0fa70
+0x140a0f922: lea    rcx,[rbp-0x80]
+0x140a0f926: call   0x14006ee10
+0x140a0f92b: mov    rcx,QWORD PTR [rax]
+0x140a0f92e: cmp    DWORD PTR [rcx+0x118],0xffffffff
+0x140a0f935: je     0x140a0f98e
+0x140a0f937: lea    rcx,[rbp-0x80]
+0x140a0f93b: call   0x14006ee10
+0x140a0f940: mov    rcx,QWORD PTR [rax]
+0x140a0f943: cmp    QWORD PTR [rcx+0x30],r13
+0x140a0f947: je     0x140a0f98e
+0x140a0f949: lea    rcx,[rbp-0x80]
+0x140a0f94d: call   0x14006ee10
+0x140a0f952: mov    rcx,QWORD PTR [rax]
+0x140a0f955: cmp    DWORD PTR [rcx+0x150],0x5c
+0x140a0f95c: je     0x140a0f98e
+0x140a0f95e: lea    rcx,[rbp-0x80]
+0x140a0f962: call   0x14006ee10
+0x140a0f967: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0f96f: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0f977: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0f97e: mov    rcx,QWORD PTR [rax]
+0x140a0f981: call   0x1405587b0
+0x140a0f986: test   al,al
+0x140a0f988: jne    0x140a0fa3a
+0x140a0f98e: lea    rcx,[rbp-0x80]
+0x140a0f992: call   0x14006ee00
+0x140a0f997: lea    r8,[rbp-0x38]
+0x140a0f99b: lea    rdx,[rsp+0x4a]
+0x140a0f9a0: lea    rcx,[rbp-0x80]
+0x140a0f9a4: call   0x14006ee20
+0x140a0f9a9: xor    edx,edx
+0x140a0f9ab: movzx  ecx,BYTE PTR [rax]
+0x140a0f9ae: call   0x1400657b0
+0x140a0f9b3: test   al,al
+0x140a0f9b5: jne    0x140a0f922
+0x140a0f9bb: jmp    0x140a0fa70
+0x140a0f9c0: lea    rcx,[rbx+0x408]
+0x140a0f9c7: movsxd rdx,esi
+0x140a0f9ca: call   0x14006f220
+0x140a0f9cf: mov    rcx,QWORD PTR [rax]
+0x140a0f9d2: mov    rdi,QWORD PTR [rcx]
+0x140a0f9d5: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0f9da: xor    r9d,r9d
+0x140a0f9dd: xor    r8d,r8d
+0x140a0f9e0: mov    edx,esi
+0x140a0f9e2: mov    rcx,rbx
+0x140a0f9e5: call   0x141329480
+0x140a0f9ea: mov    BYTE PTR [rsp+0x28],0x1
+0x140a0f9ef: mov    r15d,0xffffffff
+0x140a0f9f5: mov    DWORD PTR [rsp+0x20],r15d
+0x140a0f9fa: mov    r9d,r15d
+0x140a0f9fd: xor    r8d,r8d
+0x140a0fa00: mov    rdx,rdi
+0x140a0fa03: mov    rcx,rbx
+0x140a0fa06: call   0x1413289b0
+0x140a0fa0b: xor    edx,edx
+0x140a0fa0d: mov    rcx,rbx
+0x140a0fa10: call   0x1413a4310
+0x140a0fa15: cmp    QWORD PTR [rbx+0x4d8],0x0
+0x140a0fa1d: je     0x140a0f570
+0x140a0fa23: mov    rsi,QWORD PTR [rsp+0x58]
+0x140a0fa28: mov    DWORD PTR [rsi],0xc
+0x140a0fa2e: mov    DWORD PTR [rsi+0x4],0x28
+0x140a0fa35: jmp    0x140a0d317
+0x140a0fa3a: lea    rcx,[rbp-0x80]
+0x140a0fa3e: call   0x14006ee10
+0x140a0fa43: mov    rcx,QWORD PTR [rax]
+0x140a0fa46: mov    r12d,DWORD PTR [rcx+0x114]
+0x140a0fa4d: lea    rcx,[rbp-0x80]
+0x140a0fa51: call   0x14006ee10
+0x140a0fa56: mov    rdx,QWORD PTR [rax]
+0x140a0fa59: mov    r14d,DWORD PTR [rdx+0x118]
+0x140a0fa60: lea    rcx,[rbp-0x80]
+0x140a0fa64: call   0x14006ee10
+0x140a0fa69: mov    rdx,QWORD PTR [rax]
+0x140a0fa6c: mov    r15d,DWORD PTR [rdx+0x50]
+0x140a0fa70: lea    rdx,[rsp+0x60]
+0x140a0fa75: lea    rcx,[rip+0x1ad3da4]        # 0x1424e3820
+0x140a0fa7c: call   0x14006f240
+0x140a0fa81: lea    rdx,[rbp-0x48]
+0x140a0fa85: lea    rcx,[rip+0x1ad3d94]        # 0x1424e3820
+0x140a0fa8c: call   0x14006f230
+0x140a0fa91: lea    r8,[rbp-0x48]
+0x140a0fa95: lea    rdx,[rsp+0x4c]
+0x140a0fa9a: lea    rcx,[rsp+0x60]
+0x140a0fa9f: call   0x14006ee20
+0x140a0faa4: xor    edx,edx
+0x140a0faa6: movzx  ecx,BYTE PTR [rax]
+0x140a0faa9: call   0x1400657b0
+0x140a0faae: test   al,al
+0x140a0fab0: je     0x140a0fd0a
+0x140a0fab6: movsxd rdi,r14d
+0x140a0fab9: nop    DWORD PTR [rax+0x0]
+0x140a0fac0: lea    rcx,[rsp+0x60]
+0x140a0fac5: call   0x14006ee10
+0x140a0faca: mov    rsi,QWORD PTR [rax]
+0x140a0facd: cmp    WORD PTR [rsi+0x4],0x8
+0x140a0fad2: jne    0x140a0fbc1
+0x140a0fad8: cmp    rdi,0xffffffffffffffff
+0x140a0fadc: je     0x140a0fbc1
+0x140a0fae2: cmp    r15d,0xffffffff
+0x140a0fae6: je     0x140a0fbc1
+0x140a0faec: lea    rdx,[rsp+0x78]
+0x140a0faf1: lea    rcx,[rsi+0x8]
+0x140a0faf5: call   0x14006f240
+0x140a0fafa: lea    rdx,[rsp+0x68]
+0x140a0faff: lea    rcx,[rsi+0x8]
+0x140a0fb03: call   0x14006f230
+0x140a0fb08: lea    r8,[rsp+0x68]
+0x140a0fb0d: lea    rdx,[rsp+0x4a]
+0x140a0fb12: lea    rcx,[rsp+0x78]
+0x140a0fb17: call   0x14006ee20
+0x140a0fb1c: xor    edx,edx
+0x140a0fb1e: movzx  ecx,BYTE PTR [rax]
+0x140a0fb21: call   0x1400657b0
+0x140a0fb26: test   al,al
+0x140a0fb28: je     0x140a0fbb8
+0x140a0fb2e: xchg   ax,ax
+0x140a0fb30: lea    rcx,[rsp+0x78]
+0x140a0fb35: call   0x14006ee10
+0x140a0fb3a: mov    rcx,QWORD PTR [rax]
+0x140a0fb3d: mov    rax,QWORD PTR [rcx]
+0x140a0fb40: call   QWORD PTR [rax]
+0x140a0fb42: cmp    ax,0xc
+0x140a0fb46: jne    0x140a0fb83
+0x140a0fb48: lea    rcx,[rsp+0x78]
+0x140a0fb4d: call   0x14006ee10
+0x140a0fb52: mov    rcx,QWORD PTR [rax]
+0x140a0fb55: test   BYTE PTR [rcx+0x14],0x1
+0x140a0fb59: jne    0x140a0fb83
+0x140a0fb5b: lea    rcx,[rsp+0x78]
+0x140a0fb60: call   0x14006ee10
+0x140a0fb65: mov    rcx,QWORD PTR [rax]
+0x140a0fb68: cmp    DWORD PTR [rcx+0xb0],r12d
+0x140a0fb6f: jne    0x140a0fb83
+0x140a0fb71: cmp    DWORD PTR [rcx+0xb4],r14d
+0x140a0fb78: jne    0x140a0fb83
+0x140a0fb7a: cmp    DWORD PTR [rcx+0xb8],r15d
+0x140a0fb81: je     0x140a0fbb1
+0x140a0fb83: lea    rcx,[rsp+0x78]
+0x140a0fb88: call   0x14006ee00
+0x140a0fb8d: lea    r8,[rsp+0x68]
+0x140a0fb92: lea    rdx,[rsp+0x4a]
+0x140a0fb97: lea    rcx,[rsp+0x78]
+0x140a0fb9c: call   0x14006ee20
+0x140a0fba1: xor    edx,edx
+0x140a0fba3: movzx  ecx,BYTE PTR [rax]
+0x140a0fba6: call   0x1400657b0
+0x140a0fbab: test   al,al
+0x140a0fbad: jne    0x140a0fb30
+0x140a0fbaf: jmp    0x140a0fbb8
+0x140a0fbb1: mov    r13,rsi
+0x140a0fbb4: mov    QWORD PTR [rbp-0x68],rcx
+0x140a0fbb8: test   r13,r13
+0x140a0fbbb: jne    0x140a0fd68
+0x140a0fbc1: cmp    WORD PTR [rsi+0x4],0xc
+0x140a0fbc6: jne    0x140a0fcd3
+0x140a0fbcc: lea    rdx,[rbp-0x78]
+0x140a0fbd0: lea    rcx,[rsi+0x8]
+0x140a0fbd4: call   0x14006f240
+0x140a0fbd9: lea    rdx,[rbp-0x58]
+0x140a0fbdd: lea    rcx,[rsi+0x8]
+0x140a0fbe1: call   0x14006f230
+0x140a0fbe6: lea    r8,[rbp-0x58]
+0x140a0fbea: lea    rdx,[rsp+0x48]
+0x140a0fbef: lea    rcx,[rbp-0x78]
+0x140a0fbf3: call   0x14006ee20
+0x140a0fbf8: xor    edx,edx
+0x140a0fbfa: movzx  ecx,BYTE PTR [rax]
+0x140a0fbfd: call   0x1400657b0
+0x140a0fc02: test   al,al
+0x140a0fc04: je     0x140a0fcca
+0x140a0fc0a: nop    WORD PTR [rax+rax*1+0x0]
+0x140a0fc10: lea    rcx,[rbp-0x78]
+0x140a0fc14: call   0x14006ee10
+0x140a0fc19: mov    rcx,QWORD PTR [rax]
+0x140a0fc1c: mov    rax,QWORD PTR [rcx]
+0x140a0fc1f: call   QWORD PTR [rax]
+0x140a0fc21: cmp    ax,0x17
+0x140a0fc25: jne    0x140a0fc94
+0x140a0fc27: lea    rcx,[rbp-0x78]
+0x140a0fc2b: call   0x14006ee10
+0x140a0fc30: mov    rcx,QWORD PTR [rax]
+0x140a0fc33: test   BYTE PTR [rcx+0x14],0x1
+0x140a0fc37: jne    0x140a0fc94
+0x140a0fc39: lea    rcx,[rbp-0x78]
+0x140a0fc3d: call   0x14006ee10
+0x140a0fc42: mov    rdi,QWORD PTR [rax]
+0x140a0fc45: lea    rcx,[rdi+0xb4]
+0x140a0fc4c: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a0fc54: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a0fc5c: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a0fc63: call   0x140075700
+0x140a0fc68: test   al,al
+0x140a0fc6a: je     0x140a0fc94
+0x140a0fc6c: mov    BYTE PTR [rsp+0x20],0x1
+0x140a0fc71: movzx  r9d,WORD PTR [rdi+0xea]
+0x140a0fc79: movzx  r8d,WORD PTR [rdi+0xe8]
+0x140a0fc81: movzx  edx,WORD PTR [rdi+0xe6]
+0x140a0fc88: mov    rcx,rbx
+0x140a0fc8b: call   0x1413a4910
+0x140a0fc90: test   al,al
+0x140a0fc92: jne    0x140a0fcc3
+0x140a0fc94: lea    rcx,[rbp-0x78]
+0x140a0fc98: call   0x14006ee00
+0x140a0fc9d: lea    r8,[rbp-0x58]
+0x140a0fca1: lea    rdx,[rsp+0x48]
+0x140a0fca6: lea    rcx,[rbp-0x78]
+0x140a0fcaa: call   0x14006ee20
+0x140a0fcaf: xor    edx,edx
+0x140a0fcb1: movzx  ecx,BYTE PTR [rax]
+0x140a0fcb4: call   0x1400657b0
+0x140a0fcb9: test   al,al
+0x140a0fcbb: jne    0x140a0fc10
+0x140a0fcc1: jmp    0x140a0fcca
+0x140a0fcc3: mov    r13,rsi
+0x140a0fcc6: mov    QWORD PTR [rbp-0x68],rdi
+0x140a0fcca: test   r13,r13
+0x140a0fccd: jne    0x140a0fd68
+0x140a0fcd3: lea    rcx,[rsp+0x60]
+0x140a0fcd8: call   0x14006ee00
+0x140a0fcdd: lea    r8,[rbp-0x48]
+0x140a0fce1: lea    rdx,[rsp+0x4c]
+0x140a0fce6: lea    rcx,[rsp+0x60]
+0x140a0fceb: call   0x14006ee20
+0x140a0fcf0: xor    edx,edx
+0x140a0fcf2: movzx  ecx,BYTE PTR [rax]
+0x140a0fcf5: call   0x1400657b0
+0x140a0fcfa: test   al,al
+0x140a0fcfc: movsxd rdi,r14d
+0x140a0fcff: jne    0x140a0fac0
+0x140a0fd05: test   r13,r13
+0x140a0fd08: jne    0x140a0fd68
+0x140a0fd0a: call   0x14007c990
+0x140a0fd0f: mov    r13,rax
+0x140a0fd12: mov    WORD PTR [rax+0x4],0xc
+0x140a0fd18: mov    edx,0x17
+0x140a0fd1d: mov    r8d,0xffffffff
+0x140a0fd23: mov    rcx,rax
+0x140a0fd26: call   0x14007c9c0
+0x140a0fd2b: mov    QWORD PTR [rbp-0x68],rax
+0x140a0fd2f: movzx  ecx,WORD PTR [rbx+0xa8]
+0x140a0fd36: mov    WORD PTR [rax+0xe6],cx
+0x140a0fd3d: movzx  ecx,WORD PTR [rbx+0xaa]
+0x140a0fd44: mov    WORD PTR [rax+0xe8],cx
+0x140a0fd4b: movzx  ecx,WORD PTR [rbx+0xac]
+0x140a0fd52: mov    WORD PTR [rax+0xea],cx
+0x140a0fd59: lea    rdx,[rax+0xb4]
+0x140a0fd60: mov    rcx,rbx
+0x140a0fd63: call   0x140a40f70
+0x140a0fd68: lea    rdx,[rbx+0x2d0]
+0x140a0fd6f: mov    ecx,DWORD PTR [r13+0x0]
+0x140a0fd73: call   0x1400b9e70
+0x140a0fd78: lea    rcx,[rbp+0x50]
+0x140a0fd7c: call   0x140065b00
+0x140a0fd81: nop
+0x140a0fd82: lea    rdx,[rbx+0xc30]
+0x140a0fd89: lea    rcx,[rbp+0x50]
+0x140a0fd8d: call   0x14006f410
+0x140a0fd92: mov    r8b,0x1
+0x140a0fd95: lea    rdx,[rbp+0x50]
+0x140a0fd99: mov    rcx,QWORD PTR [rbp-0x68]
+0x140a0fd9d: call   0x140075f20
+0x140a0fda2: nop
+0x140a0fda3: lea    rcx,[rbp+0x50]
+0x140a0fda7: jmp    0x140a10e9e
+0x140a0fdac: mov    rcx,rbx
+0x140a0fdaf: call   0x140073b50
+0x140a0fdb4: test   al,al
+0x140a0fdb6: je     0x140a110d2
+0x140a0fdbc: mov    BYTE PTR [rsp+0x70],r13b
+0x140a0fdc1: xor    sil,sil
+0x140a0fdc4: mov    DWORD PTR [rbp-0x78],esi
+0x140a0fdc7: xor    r12b,r12b
+0x140a0fdca: mov    DWORD PTR [rbp-0x60],r12d
+0x140a0fdce: xor    r14b,r14b
+0x140a0fdd1: mov    DWORD PTR [rsp+0x78],r14d
+0x140a0fdd6: xor    r15b,r15b
+0x140a0fdd9: mov    BYTE PTR [rsp+0x48],r15b
+0x140a0fdde: mov    rcx,QWORD PTR [rbx+0xa98]
+0x140a0fde5: add    rcx,0x380
+0x140a0fdec: lea    rdx,[rbp-0x30]
+0x140a0fdf0: call   0x14006f240
+0x140a0fdf5: mov    rcx,QWORD PTR [rbx+0xa98]
+0x140a0fdfc: add    rcx,0x380
+0x140a0fe03: lea    rdx,[rbp-0x28]
+0x140a0fe07: call   0x14006f230
+0x140a0fe0c: lea    r8,[rbp-0x28]
+0x140a0fe10: lea    rdx,[rsp+0x4c]
+0x140a0fe15: lea    rcx,[rbp-0x30]
+0x140a0fe19: call   0x14006ee20
+0x140a0fe1e: xor    edx,edx
+0x140a0fe20: movzx  ecx,BYTE PTR [rax]
+0x140a0fe23: call   0x1400657b0
+0x140a0fe28: test   al,al
+0x140a0fe2a: je     0x140a0febc
+0x140a0fe30: lea    r12,[rip+0xffffffffff5f01c9]        # 0x140000000
+0x140a0fe37: lea    rcx,[rbp-0x30]
+0x140a0fe3b: call   0x14006ee10
+0x140a0fe40: mov    rcx,QWORD PTR [rax]
+0x140a0fe43: movsxd rax,DWORD PTR [rcx]
+0x140a0fe46: cmp    eax,0x1d
+0x140a0fe49: ja     0x140a0fe82
+0x140a0fe4b: movzx  eax,BYTE PTR [r12+rax*1+0xa111e0]
+0x140a0fe54: mov    ecx,DWORD PTR [r12+rax*4+0xa111c8]
+0x140a0fe5c: add    rcx,r12
+0x140a0fe5f: jmp    rcx
+0x140a0fe61: mov    BYTE PTR [rsp+0x70],0x1
+0x140a0fe66: jmp    0x140a0fe82
+0x140a0fe68: mov    sil,0x1
+0x140a0fe6b: movzx  r15d,sil
+0x140a0fe6f: jmp    0x140a0fe82
+0x140a0fe71: mov    sil,0x1
+0x140a0fe74: jmp    0x140a0fe82
+0x140a0fe76: mov    r14b,0x1
+0x140a0fe79: jmp    0x140a0fe82
+0x140a0fe7b: mov    r14b,0x1
+0x140a0fe7e: movzx  r15d,r14b
+0x140a0fe82: lea    rcx,[rbp-0x30]
+0x140a0fe86: call   0x14006ee00
+0x140a0fe8b: lea    r8,[rbp-0x28]
+0x140a0fe8f: lea    rdx,[rsp+0x4c]
+0x140a0fe94: lea    rcx,[rbp-0x30]
+0x140a0fe98: call   0x14006ee20
+0x140a0fe9d: xor    edx,edx
+0x140a0fe9f: movzx  ecx,BYTE PTR [rax]
+0x140a0fea2: call   0x1400657b0
+0x140a0fea7: test   al,al
+0x140a0fea9: jne    0x140a0fe37
+0x140a0feab: mov    BYTE PTR [rsp+0x48],r15b
+0x140a0feb0: mov    DWORD PTR [rsp+0x78],r14d
+0x140a0feb5: mov    DWORD PTR [rbp-0x78],esi
+0x140a0feb8: mov    r12d,DWORD PTR [rbp-0x60]
+0x140a0febc: cmp    BYTE PTR [rsp+0x4a],r13b
+0x140a0fec1: je     0x140a1014b
+0x140a0fec7: lea    rdx,[rsp+0x60]
+0x140a0fecc: lea    rcx,[rbx+0x13d0]
+0x140a0fed3: call   0x14006f240
+0x140a0fed8: lea    rdx,[rbp-0x48]
+0x140a0fedc: lea    rcx,[rbx+0x13d0]
+0x140a0fee3: call   0x14006f230
+0x140a0fee8: lea    r8,[rbp-0x48]
+0x140a0feec: lea    rdx,[rsp+0x4c]
+0x140a0fef1: lea    rcx,[rsp+0x60]
+0x140a0fef6: call   0x14006ee20
+0x140a0fefb: xor    edx,edx
+0x140a0fefd: movzx  ecx,BYTE PTR [rax]
+0x140a0ff00: call   0x1400657b0
+0x140a0ff05: test   al,al
+0x140a0ff07: je     0x140a0ff5d
+0x140a0ff09: mov    r14d,0x1
+0x140a0ff0f: nop
+0x140a0ff10: lea    rcx,[rsp+0x60]
+0x140a0ff15: call   0x14006ee10
+0x140a0ff1a: mov    rcx,QWORD PTR [rax]
+0x140a0ff1d: movzx  r12d,r12b
+0x140a0ff21: cmp    DWORD PTR [rcx+0x4],0x2
+0x140a0ff25: cmove  r12d,r14d
+0x140a0ff29: lea    rcx,[rsp+0x60]
+0x140a0ff2e: call   0x14006ee00
+0x140a0ff33: lea    r8,[rbp-0x48]
+0x140a0ff37: lea    rdx,[rsp+0x4c]
+0x140a0ff3c: lea    rcx,[rsp+0x60]
+0x140a0ff41: call   0x14006ee20
+0x140a0ff46: xor    edx,edx
+0x140a0ff48: movzx  ecx,BYTE PTR [rax]
+0x140a0ff4b: call   0x1400657b0
+0x140a0ff50: test   al,al
+0x140a0ff52: jne    0x140a0ff10
+0x140a0ff54: mov    DWORD PTR [rbp-0x60],r12d
+0x140a0ff58: mov    r14d,DWORD PTR [rsp+0x78]
+0x140a0ff5d: mov    edx,DWORD PTR [rsp+0x70]
+0x140a0ff61: movzx  eax,BYTE PTR [rsp+0x48]
+0x140a0ff66: xor    ecx,ecx
+0x140a0ff68: mov    r15d,ecx
+0x140a0ff6b: test   dl,dl
+0x140a0ff6d: jne    0x140a0ff86
+0x140a0ff6f: cmp    BYTE PTR [rbp-0x78],cl
+0x140a0ff72: jne    0x140a0ff86
+0x140a0ff74: test   r12b,r12b
+0x140a0ff77: jne    0x140a0ff86
+0x140a0ff79: test   r14b,r14b
+0x140a0ff7c: jne    0x140a0ff86
+0x140a0ff7e: test   al,al
+0x140a0ff80: je     0x140a10f3e
+0x140a0ff86: lea    rdx,[rbp-0x80]
+0x140a0ff8a: lea    rcx,[rip+0x19de927]        # 0x1423ee8b8
+0x140a0ff91: call   0x14006f240
+0x140a0ff96: lea    rdx,[rbp-0x20]
+0x140a0ff9a: lea    rcx,[rip+0x19de917]        # 0x1423ee8b8
+0x140a0ffa1: call   0x14006f230
+0x140a0ffa6: lea    r8,[rbp-0x20]
+0x140a0ffaa: lea    rdx,[rsp+0x40]
+0x140a0ffaf: lea    rcx,[rbp-0x80]
+0x140a0ffb3: call   0x14006ee20
+0x140a0ffb8: xor    edx,edx
+0x140a0ffba: movzx  ecx,BYTE PTR [rax]
+0x140a0ffbd: call   0x1400657b0
+0x140a0ffc2: test   al,al
+0x140a0ffc4: je     0x140a10f3e
+0x140a0ffca: mov    r14,QWORD PTR [rbp+0x120]
+0x140a0ffd1: lea    rcx,[rbp-0x80]
+0x140a0ffd5: call   0x14006ee10
+0x140a0ffda: mov    rcx,QWORD PTR [rax]
+0x140a0ffdd: cmp    DWORD PTR [rcx+0x118],0xffffffff
+0x140a0ffe4: je     0x140a1064d
+0x140a0ffea: lea    rcx,[rbp-0x80]
+0x140a0ffee: call   0x14006ee10
+0x140a0fff3: mov    rcx,QWORD PTR [rax]
+0x140a0fff6: cmp    QWORD PTR [rcx+0x30],r13
+0x140a0fffa: je     0x140a1064d
+0x140a10000: lea    rcx,[rbp-0x80]
+0x140a10004: call   0x14006ee10
+0x140a10009: mov    rcx,QWORD PTR [rax]
+0x140a1000c: cmp    DWORD PTR [rcx+0x150],0x5c
+0x140a10013: je     0x140a1064d
+0x140a10019: lea    rcx,[rbp-0x80]
+0x140a1001d: call   0x14006ee10
+0x140a10022: movzx  r9d,WORD PTR [rbx+0xac]
+0x140a1002a: movzx  r8d,WORD PTR [rbx+0xaa]
+0x140a10032: movzx  edx,WORD PTR [rbx+0xa8]
+0x140a10039: mov    rcx,QWORD PTR [rax]
+0x140a1003c: call   0x1405587b0
+0x140a10041: test   al,al
+0x140a10043: je     0x140a1064d
+0x140a10049: lea    rcx,[rbp-0x80]
+0x140a1004d: call   0x14006ee10
+0x140a10052: mov    rcx,QWORD PTR [rax]
+0x140a10055: mov    edx,DWORD PTR [rcx+0x114]
+0x140a1005b: mov    rcx,QWORD PTR [rip+0x1adbaf6]        # 0x1424ebb58
+0x140a10062: call   0x14007db20
+0x140a10067: mov    rdi,rax
+0x140a1006a: test   rax,rax
+0x140a1006d: je     0x140a1064d
+0x140a10073: lea    rcx,[rbp-0x80]
+0x140a10077: call   0x14006ee10
+0x140a1007c: mov    rdx,QWORD PTR [rax]
+0x140a1007f: mov    edx,DWORD PTR [rdx+0x118]
+0x140a10085: mov    rcx,rdi
+0x140a10088: call   0x140067e80
+0x140a1008d: mov    rsi,rax
+0x140a10090: test   rax,rax
+0x140a10093: je     0x140a1064d
+0x140a10099: lea    rcx,[rax+0x28]
+0x140a1009d: cmp    BYTE PTR [rsp+0x4a],r13b
+0x140a100a2: je     0x140a10333
+0x140a100a8: mov    edx,0x5
+0x140a100ad: call   0x140071f90
+0x140a100b2: test   al,al
+0x140a100b4: jne    0x140a10345
+0x140a100ba: xor    edx,edx
+0x140a100bc: mov    r8d,DWORD PTR [rip+0x19835b5]        # 0x142393678
+0x140a100c3: mov    rcx,rbx
+0x140a100c6: call   0x14138f480
+0x140a100cb: test   ax,ax
+0x140a100ce: je     0x140a1064d
+0x140a100d4: mov    edx,0x6
+0x140a100d9: lea    rcx,[rsi+0x28]
+0x140a100dd: call   0x140071f90
+0x140a100e2: test   al,al
+0x140a100e4: je     0x140a10345
+0x140a100ea: mov    rax,QWORD PTR [rsi]
+0x140a100ed: mov    rcx,rsi
+0x140a100f0: call   QWORD PTR [rax]
+0x140a100f2: cmp    ax,0x2
+0x140a100f6: je     0x140a10314
+0x140a100fc: cmp    ax,0xb
+0x140a10100: jne    0x140a10345
+0x140a10106: cmp    DWORD PTR [rip+0xe8c18b],r13d        # 0x14189c298
+0x140a1010d: jne    0x140a10345
+0x140a10113: movzx  edx,WORD PTR [rsi+0x134]
+0x140a1011a: lea    rcx,[rip+0x198110f]        # 0x142391230
+0x140a10121: call   0x1402b61e0
+0x140a10126: test   rax,rax
+0x140a10129: je     0x140a10345
+0x140a1012f: xor    edx,edx
+0x140a10131: mov    r8d,DWORD PTR [rax+0x4]
+0x140a10135: mov    rcx,rbx
+0x140a10138: call   0x14138f480
+0x140a1013d: test   ax,ax
+0x140a10140: jne    0x140a10345
+0x140a10146: jmp    0x140a1064d
+0x140a1014b: cmp    DWORD PTR [rbx+0x118],r13d
+0x140a10152: jge    0x140a0ff5d
+0x140a10158: movzx  edi,WORD PTR [rbx+0xa0]
+0x140a1015f: mov    rcx,rbx
+0x140a10162: call   0x1413b3090
+0x140a10167: test   rax,rax
+0x140a1016a: je     0x140a10193
+0x140a1016c: mov    rcx,QWORD PTR [rax+0x130]
+0x140a10173: test   rcx,rcx
+0x140a10176: je     0x140a10193
+0x140a10178: mov    rax,QWORD PTR [rcx+0x8]
+0x140a1017c: test   rax,rax
+0x140a1017f: je     0x140a10193
+0x140a10181: movsx  ecx,WORD PTR [rax+0x60]
+0x140a10185: mov    eax,ecx
+0x140a10187: cmp    ecx,0xffffffff
+0x140a1018a: je     0x140a10193
+0x140a1018c: cmp    eax,0x66
+0x140a1018f: cmovne di,cx
+0x140a10193: movsx  eax,di
+0x140a10196: add    eax,0xffffffc3
+0x140a10199: cmp    eax,0x43
+0x140a1019c: ja     0x140a101ca
+0x140a1019e: cdqe
+0x140a101a0: lea    rdx,[rip+0xffffffffff5efe59]        # 0x140000000
+0x140a101a7: movzx  eax,BYTE PTR [rdx+rax*1+0xa1120c]
+0x140a101af: mov    ecx,DWORD PTR [rdx+rax*4+0xa11200]
+0x140a101b6: add    rcx,rdx
+0x140a101b9: jmp    rcx
+0x140a101bb: mov    sil,0x1
+0x140a101be: mov    DWORD PTR [rbp-0x78],esi
+0x140a101c1: jmp    0x140a101ca
+0x140a101c3: mov    r12b,0x1
+0x140a101c6: mov    DWORD PTR [rbp-0x60],r12d
+0x140a101ca: mov    edx,DWORD PTR [rsp+0x70]
+0x140a101ce: test   dl,dl
+0x140a101d0: jne    0x140a101f3
+0x140a101d2: test   r12b,r12b
+0x140a101d5: jne    0x140a101f3
+0x140a101d7: test   sil,sil
+0x140a101da: jne    0x140a101f3
+0x140a101dc: test   r14b,r14b
+0x140a101df: jne    0x140a101f3
+0x140a101e1: movzx  esi,sil
+0x140a101e5: test   r15b,r15b
+0x140a101e8: mov    eax,0x1
+0x140a101ed: cmove  esi,eax
+0x140a101f0: mov    DWORD PTR [rbp-0x78],esi
+0x140a101f3: mov    rcx,QWORD PTR [rbx+0x1268]
+0x140a101fa: test   rcx,rcx
+0x140a101fd: je     0x140a0ff61
+0x140a10203: call   0x140a413d0
+0x140a10208: xor    dil,dil
+0x140a1020b: xor    sil,sil
+0x140a1020e: xor    r14b,r14b
+0x140a10211: xor    r15b,r15b
+0x140a10214: lea    rdx,[rbp-0x70]
+0x140a10218: mov    rcx,QWORD PTR [rbx+0x1268]
+0x140a1021f: call   0x14006f240
+0x140a10224: lea    rdx,[rbp-0x48]
+0x140a10228: mov    rcx,QWORD PTR [rbx+0x1268]
+0x140a1022f: call   0x14006f230
+0x140a10234: lea    r8,[rbp-0x48]
+0x140a10238: lea    rdx,[rsp+0x4c]
+0x140a1023d: lea    rcx,[rbp-0x70]
+0x140a10241: call   0x14006ee20
+0x140a10246: xor    edx,edx
+0x140a10248: movzx  ecx,BYTE PTR [rax]
+0x140a1024b: call   0x1400657b0
+0x140a10250: test   al,al
+0x140a10252: je     0x140a102cb
+0x140a10254: lea    rcx,[rbp-0x70]
+0x140a10258: call   0x14006ee10
+0x140a1025d: mov    rcx,QWORD PTR [rax]
+0x140a10260: test   BYTE PTR [rcx+0x18],0x1
+0x140a10264: jne    0x140a1029d
+0x140a10266: lea    rcx,[rbp-0x70]
+0x140a1026a: call   0x14006ee10
+0x140a1026f: mov    rcx,QWORD PTR [rax]
+0x140a10272: mov    edx,DWORD PTR [rcx]
+0x140a10274: test   edx,edx
+0x140a10276: je     0x140a1029a
+0x140a10278: sub    edx,0x1
+0x140a1027b: je     0x140a10291
+0x140a1027d: sub    edx,0x1
+0x140a10280: je     0x140a1028c
+0x140a10282: sub    edx,0x1
+0x140a10285: je     0x140a1028c
+0x140a10287: cmp    edx,0x7
+0x140a1028a: jne    0x140a1029d
+0x140a1028c: mov    dil,0x1
+0x140a1028f: jmp    0x140a1029d
+0x140a10291: mov    r14b,0x1
+0x140a10294: movzx  r15d,r14b
+0x140a10298: jmp    0x140a1029d
+0x140a1029a: mov    sil,0x1
+0x140a1029d: lea    rcx,[rbp-0x70]
+0x140a102a1: call   0x14006ee00
+0x140a102a6: lea    r8,[rbp-0x48]
+0x140a102aa: lea    rdx,[rsp+0x4c]
+0x140a102af: lea    rcx,[rbp-0x70]
+0x140a102b3: call   0x14006ee20
+0x140a102b8: xor    edx,edx
+0x140a102ba: movzx  ecx,BYTE PTR [rax]
+0x140a102bd: call   0x1400657b0
+0x140a102c2: test   al,al
+0x140a102c4: jne    0x140a10254
+0x140a102c6: test   dil,dil
+0x140a102c9: jne    0x140a102cf
+0x140a102cb: mov    BYTE PTR [rbp-0x78],r13b
+0x140a102cf: mov    eax,DWORD PTR [rsp+0x70]
+0x140a102d3: movzx  eax,al
+0x140a102d6: test   sil,sil
+0x140a102d9: cmove  eax,r13d
+0x140a102dd: mov    DWORD PTR [rsp+0x70],eax
+0x140a102e1: movzx  r12d,r12b
+0x140a102e5: test   r14b,r14b
+0x140a102e8: cmove  r12d,r13d
+0x140a102ec: mov    DWORD PTR [rbp-0x60],r12d
+0x140a102f0: mov    r14d,DWORD PTR [rsp+0x78]
+0x140a102f5: movzx  r14d,r14b
+0x140a102f9: test   r15b,r15b
+0x140a102fc: cmove  r14d,r13d
+0x140a10300: mov    DWORD PTR [rsp+0x78],r14d
+0x140a10305: xor    al,al
+0x140a10307: mov    BYTE PTR [rsp+0x48],al
+0x140a1030b: mov    edx,DWORD PTR [rsp+0x70]
+0x140a1030f: jmp    0x140a0ff66
+0x140a10314: cmp    DWORD PTR [rsi+0xb8],0x1
+0x140a1031b: jne    0x140a10345
+0x140a1031d: xor    edx,edx
+0x140a1031f: mov    r8d,DWORD PTR [rsi+0xbc]
+0x140a10326: mov    rcx,rbx
+0x140a10329: call   0x14138f480
+0x140a1032e: test   ax,ax
+0x140a10331: jmp    0x140a1033f
+0x140a10333: mov    edx,0x4
+0x140a10338: call   0x140071f90
+0x140a1033d: test   al,al
+0x140a1033f: je     0x140a1064d
+0x140a10345: mov    rax,QWORD PTR [rsi]
+0x140a10348: mov    rcx,rsi
+0x140a1034b: call   QWORD PTR [rax]
+0x140a1034d: movsx  ecx,ax
+0x140a10350: sub    ecx,0x2
+0x140a10353: je     0x140a1047b
+0x140a10359: sub    ecx,0x6
+0x140a1035c: je     0x140a10472
+0x140a10362: sub    ecx,0x1
+0x140a10365: je     0x140a1038f
+0x140a10367: cmp    ecx,0x2
+0x140a1036a: jne    0x140a10648
+0x140a10370: cmp    BYTE PTR [rsp+0x48],r13b
+0x140a10375: je     0x140a10648
+0x140a1037b: lea    rcx,[rbp-0x80]
+0x140a1037f: call   0x14006ee10
+0x140a10384: mov    r15,QWORD PTR [rax]
+0x140a10387: mov    r14,rsi
+0x140a1038a: jmp    0x140a10648
+0x140a1038f: test   r12b,r12b
+0x140a10392: jne    0x140a1039f
+0x140a10394: cmp    BYTE PTR [rsp+0x78],r13b
+0x140a10399: je     0x140a10648
+0x140a1039f: cmp    BYTE PTR [rsp+0x4a],r13b
+0x140a103a4: je     0x140a1037b
+0x140a103a6: xor    r12b,r12b
+0x140a103a9: lea    rdx,[rbp-0x40]
+0x140a103ad: lea    rcx,[rbx+0x13d0]
+0x140a103b4: call   0x14006f240
+0x140a103b9: lea    rdx,[rbp-0x48]
+0x140a103bd: lea    rcx,[rbx+0x13d0]
+0x140a103c4: call   0x14006f230
+0x140a103c9: lea    r8,[rbp-0x48]
+0x140a103cd: lea    rdx,[rsp+0x4c]
+0x140a103d2: lea    rcx,[rbp-0x40]
+0x140a103d6: call   0x14006ee20
+0x140a103db: xor    edx,edx
+0x140a103dd: movzx  ecx,BYTE PTR [rax]
+0x140a103e0: call   0x1400657b0
+0x140a103e5: test   al,al
+0x140a103e7: je     0x140a10635
+0x140a103ed: nop    DWORD PTR [rax]
+0x140a103f0: lea    rcx,[rbp-0x40]
+0x140a103f4: call   0x14006ee10
+0x140a103f9: mov    rcx,QWORD PTR [rax]
+0x140a103fc: cmp    DWORD PTR [rcx+0x4],0x2
+0x140a10400: jne    0x140a1043b
+0x140a10402: mov    r12b,0x1
+0x140a10405: cmp    DWORD PTR [rip+0xe8be8c],r13d        # 0x14189c298
+0x140a1040c: jne    0x140a10419
+0x140a1040e: mov    eax,DWORD PTR [rip+0x1983264]        # 0x142393678
+0x140a10414: cmp    DWORD PTR [rcx+0x18],eax
+0x140a10417: je     0x140a1042c
+0x140a10419: mov    eax,DWORD PTR [rcx+0x14]
+0x140a1041c: cmp    DWORD PTR [rsi+0x98],eax
+0x140a10422: jne    0x140a1043b
+0x140a10424: mov    eax,DWORD PTR [rcx+0x10]
+0x140a10427: cmp    DWORD PTR [rsi+0x8],eax
+0x140a1042a: jne    0x140a1043b
+0x140a1042c: lea    rcx,[rbp-0x80]
+0x140a10430: call   0x14006ee10
+0x140a10435: mov    r15,QWORD PTR [rax]
+0x140a10438: mov    r14,rsi
+0x140a1043b: lea    rcx,[rbp-0x40]
+0x140a1043f: call   0x14006ee00
+0x140a10444: lea    r8,[rbp-0x48]
+0x140a10448: lea    rdx,[rsp+0x4c]
+0x140a1044d: lea    rcx,[rbp-0x40]
+0x140a10451: call   0x14006ee20
+0x140a10456: xor    edx,edx
+0x140a10458: movzx  ecx,BYTE PTR [rax]
+0x140a1045b: call   0x1400657b0
+0x140a10460: test   al,al
+0x140a10462: jne    0x140a103f0
+0x140a10464: test   r12b,r12b
+0x140a10467: jne    0x140a10644
+0x140a1046d: jmp    0x140a10635
+0x140a10472: cmp    BYTE PTR [rbp-0x78],r13b
+0x140a10476: jmp    0x140a10375
+0x140a1047b: cmp    BYTE PTR [rsp+0x70],r13b
+0x140a10480: je     0x140a10648
+0x140a10486: xor    r12b,r12b
+0x140a10489: cmp    DWORD PTR [rsi+0xb8],0x1
+0x140a10490: jne    0x140a10568
+0x140a10496: mov    rcx,rbx
+0x140a10499: call   0x1413b3090
+0x140a1049e: test   rax,rax
+0x140a104a1: je     0x140a10568
+0x140a104a7: lea    rdi,[rax+0xe8]
+0x140a104ae: lea    rdx,[rsp+0x60]
+0x140a104b3: mov    rcx,rdi
+0x140a104b6: call   0x14006f240
+0x140a104bb: lea    rdx,[rbp-0x38]
+0x140a104bf: mov    rcx,rdi
+0x140a104c2: call   0x14006f230
+0x140a104c7: lea    r8,[rbp-0x38]
+0x140a104cb: lea    rdx,[rsp+0x50]
+0x140a104d0: lea    rcx,[rsp+0x60]
+0x140a104d5: call   0x14006ee20
+0x140a104da: xor    edx,edx
+0x140a104dc: movzx  ecx,BYTE PTR [rax]
+0x140a104df: call   0x1400657b0
+0x140a104e4: test   al,al
+0x140a104e6: je     0x140a10568
+0x140a104ec: nop    DWORD PTR [rax+0x0]
+0x140a104f0: lea    rcx,[rsp+0x60]
+0x140a104f5: call   0x14006ee10
+0x140a104fa: mov    rcx,QWORD PTR [rax]
+0x140a104fd: mov    rax,QWORD PTR [rcx]
+0x140a10500: call   QWORD PTR [rax]
+0x140a10502: test   ax,ax
+0x140a10505: jne    0x140a1053d
+0x140a10507: lea    rcx,[rsp+0x60]
+0x140a1050c: call   0x14006ee10
+0x140a10511: mov    rdx,QWORD PTR [rax]
+0x140a10514: mov    edx,DWORD PTR [rdx+0x8]
+0x140a10517: lea    rcx,[rip+0x19c12da]        # 0x1423d17f8
+0x140a1051e: call   0x14007daf0
+0x140a10523: test   rax,rax
+0x140a10526: je     0x140a1053d
+0x140a10528: cmp    WORD PTR [rax],0x5
+0x140a1052c: jne    0x140a1053d
+0x140a1052e: mov    eax,DWORD PTR [rax+0x4]
+0x140a10531: cmp    DWORD PTR [rsi+0xbc],eax
+0x140a10537: je     0x140a10635
+0x140a1053d: lea    rcx,[rsp+0x60]
+0x140a10542: call   0x14006ee00
+0x140a10547: lea    r8,[rbp-0x38]
+0x140a1054b: lea    rdx,[rsp+0x50]
+0x140a10550: lea    rcx,[rsp+0x60]
+0x140a10555: call   0x14006ee20
+0x140a1055a: xor    edx,edx
+0x140a1055c: movzx  ecx,BYTE PTR [rax]
+0x140a1055f: call   0x1400657b0
+0x140a10564: test   al,al
+0x140a10566: jne    0x140a104f0
+0x140a10568: mov    rcx,QWORD PTR [rbx+0xa98]
+0x140a1056f: add    rcx,0x380
+0x140a10576: lea    rdx,[rbp-0x70]
+0x140a1057a: call   0x14006f240
+0x140a1057f: mov    rcx,QWORD PTR [rbx+0xa98]
+0x140a10586: add    rcx,0x380
+0x140a1058d: lea    rdx,[rsp+0x68]
+0x140a10592: call   0x14006f230
+0x140a10597: lea    r8,[rsp+0x68]
+0x140a1059c: lea    rdx,[rsp+0x44]
+0x140a105a1: lea    rcx,[rbp-0x70]
+0x140a105a5: call   0x14006ee20
+0x140a105aa: xor    edx,edx
+0x140a105ac: movzx  ecx,BYTE PTR [rax]
+0x140a105af: call   0x1400657b0
+0x140a105b4: test   al,al
+0x140a105b6: je     0x140a10644
+0x140a105bc: nop    DWORD PTR [rax+0x0]
+0x140a105c0: lea    rcx,[rbp-0x70]
+0x140a105c4: call   0x14006ee10
+0x140a105c9: mov    rcx,QWORD PTR [rax]
+0x140a105cc: cmp    DWORD PTR [rcx],0x2
+0x140a105cf: jne    0x140a10606
+0x140a105d1: cmp    DWORD PTR [rsi+0xb8],r13d
+0x140a105d8: jne    0x140a105f1
+0x140a105da: lea    rcx,[rbp-0x70]
+0x140a105de: call   0x14006ee10
+0x140a105e3: mov    rcx,QWORD PTR [rax]
+0x140a105e6: mov    eax,DWORD PTR [rsi+0xbc]
+0x140a105ec: cmp    DWORD PTR [rcx+0x4],eax
+0x140a105ef: je     0x140a105fa
+0x140a105f1: cmp    DWORD PTR [rsi+0xbc],0xffffffff
+0x140a105f8: jne    0x140a10606
+0x140a105fa: mov    r12b,0x1
+0x140a105fd: lea    rcx,[rbp-0x70]
+0x140a10601: call   0x14006ee10
+0x140a10606: lea    rcx,[rbp-0x70]
+0x140a1060a: call   0x14006ee00
+0x140a1060f: lea    r8,[rsp+0x68]
+0x140a10614: lea    rdx,[rsp+0x44]
+0x140a10619: lea    rcx,[rbp-0x70]
+0x140a1061d: call   0x14006ee20
+0x140a10622: xor    edx,edx
+0x140a10624: movzx  ecx,BYTE PTR [rax]
+0x140a10627: call   0x1400657b0
+0x140a1062c: test   al,al
+0x140a1062e: jne    0x140a105c0
+0x140a10630: test   r12b,r12b
+0x140a10633: je     0x140a10644
+0x140a10635: lea    rcx,[rbp-0x80]
+0x140a10639: call   0x14006ee10
+0x140a1063e: mov    r14,rsi
+0x140a10641: mov    r15,QWORD PTR [rax]
+0x140a10644: mov    r12d,DWORD PTR [rbp-0x60]
+0x140a10648: test   r15,r15
+0x140a1064b: jne    0x140a10683
+0x140a1064d: lea    rcx,[rbp-0x80]
+0x140a10651: call   0x14006ee00
+0x140a10656: lea    r8,[rbp-0x20]
+0x140a1065a: lea    rdx,[rsp+0x40]
+0x140a1065f: lea    rcx,[rbp-0x80]
+0x140a10663: call   0x14006ee20
+0x140a10668: xor    edx,edx
+0x140a1066a: movzx  ecx,BYTE PTR [rax]
+0x140a1066d: call   0x1400657b0
+0x140a10672: test   al,al
+0x140a10674: jne    0x140a0ffd1
+0x140a1067a: test   r15,r15
+0x140a1067d: je     0x140a10f3e
+0x140a10683: mov    rax,QWORD PTR [r14]
+0x140a10686: mov    rcx,r14
+0x140a10689: call   QWORD PTR [rax]
+0x140a1068b: movsx  ecx,ax
+0x140a1068e: sub    ecx,0x2
+0x140a10691: je     0x140a10c87
+0x140a10697: sub    ecx,0x6
+0x140a1069a: je     0x140a10a75
+0x140a106a0: sub    ecx,0x1
+0x140a106a3: je     0x140a1075d
+0x140a106a9: cmp    ecx,0x2
+0x140a106ac: je     0x140a10a75
+0x140a106b2: mov    rsi,QWORD PTR [rsp+0x58]
+0x140a106b7: mov    r14d,0xffff8ad0
+0x140a106bd: xor    dil,dil
+0x140a106c0: mov    edx,0x18
+0x140a106c5: mov    rcx,rbx
+0x140a106c8: call   0x1400737b0
+0x140a106cd: test   rax,rax
+0x140a106d0: je     0x140a106e2
+0x140a106d2: mov    edx,0x18
+0x140a106d7: mov    rcx,rbx
+0x140a106da: call   0x1400fdcf0
+0x140a106df: mov    dil,0x1
+0x140a106e2: call   0x140eb68b0
+0x140a106e7: mov    r8d,eax
+0x140a106ea: mov    eax,0x3
+0x140a106ef: mul    r8d
+0x140a106f2: mov    ecx,r8d
+0x140a106f5: sub    ecx,edx
+0x140a106f7: shr    ecx,1
+0x140a106f9: add    ecx,edx
+0x140a106fb: shr    ecx,0x1e
+0x140a106fe: imul   ecx,ecx,0x7fffffff
+0x140a10704: sub    r8d,ecx
+0x140a10707: cmp    r8d,0x418938
+0x140a1070e: jb     0x140a10723
+0x140a10710: cmp    WORD PTR [rbx+0xae],r14w
+0x140a10718: je     0x140a10723
+0x140a1071a: test   dil,dil
+0x140a1071d: je     0x140a0d30a
+0x140a10723: mov    rcx,rbx
+0x140a10726: call   0x14138ed20
+0x140a1072b: test   al,al
+0x140a1072d: jne    0x140a1074b
+0x140a1072f: test   DWORD PTR [rbx+0x110],0x800
+0x140a10739: jne    0x140a1074b
+0x140a1073b: test   DWORD PTR [rbx+0x114],0x800000
+0x140a10745: je     0x140a0d30a
+0x140a1074b: mov    edx,0x2
+0x140a10750: mov    rcx,rbx
+0x140a10753: call   0x141370300
+0x140a10758: jmp    0x140a0d30a
+0x140a1075d: test   r12b,r12b
+0x140a10760: je     0x140a1095a
+0x140a10766: lea    rdx,[rbp-0x60]
+0x140a1076a: lea    rcx,[rip+0x1ad30af]        # 0x1424e3820
+0x140a10771: call   0x14006f240
+0x140a10776: lea    rdx,[rbp-0x10]
+0x140a1077a: lea    rcx,[rip+0x1ad309f]        # 0x1424e3820
+0x140a10781: call   0x14006f230
+0x140a10786: lea    r8,[rbp-0x10]
+0x140a1078a: lea    rdx,[rsp+0x44]
+0x140a1078f: lea    rcx,[rbp-0x60]
+0x140a10793: call   0x14006ee20
+0x140a10798: xor    edx,edx
+0x140a1079a: movzx  ecx,BYTE PTR [rax]
+0x140a1079d: call   0x1400657b0
+0x140a107a2: test   al,al
+0x140a107a4: je     0x140a108cd
+0x140a107aa: nop    WORD PTR [rax+rax*1+0x0]
+0x140a107b0: lea    rcx,[rbp-0x60]
+0x140a107b4: call   0x14006ee10
+0x140a107b9: mov    rsi,QWORD PTR [rax]
+0x140a107bc: cmp    WORD PTR [rsi+0x4],0x9
+0x140a107c1: jne    0x140a1089b
+0x140a107c7: lea    rdx,[rbp-0x70]
+0x140a107cb: lea    rcx,[rsi+0x8]
+0x140a107cf: call   0x14006f240
+0x140a107d4: lea    rdx,[rbp-0x18]
+0x140a107d8: lea    rcx,[rsi+0x8]
+0x140a107dc: call   0x14006f230
+0x140a107e1: lea    r8,[rbp-0x18]
+0x140a107e5: lea    rdx,[rsp+0x40]
+0x140a107ea: lea    rcx,[rbp-0x70]
+0x140a107ee: call   0x14006ee20
+0x140a107f3: xor    edx,edx
+0x140a107f5: movzx  ecx,BYTE PTR [rax]
+0x140a107f8: call   0x1400657b0
+0x140a107fd: test   al,al
+0x140a107ff: je     0x140a10896
+0x140a10805: lea    rcx,[rbp-0x70]
+0x140a10809: call   0x14006ee10
+0x140a1080e: mov    rcx,QWORD PTR [rax]
+0x140a10811: mov    rax,QWORD PTR [rcx]
+0x140a10814: call   QWORD PTR [rax]
+0x140a10816: cmp    ax,0xf
+0x140a1081a: jne    0x140a10860
+0x140a1081c: lea    rcx,[rbp-0x70]
+0x140a10820: call   0x14006ee10
+0x140a10825: mov    rcx,QWORD PTR [rax]
+0x140a10828: test   BYTE PTR [rcx+0x14],0x1
+0x140a1082c: jne    0x140a10860
+0x140a1082e: lea    rcx,[rbp-0x70]
+0x140a10832: call   0x14006ee10
+0x140a10837: mov    rcx,QWORD PTR [rax]
+0x140a1083a: mov    eax,DWORD PTR [rip+0x1982e34]        # 0x142393674
+0x140a10840: cmp    DWORD PTR [rcx+0xb0],eax
+0x140a10846: jne    0x140a10860
+0x140a10848: mov    eax,DWORD PTR [r14+0x8]
+0x140a1084c: cmp    DWORD PTR [rcx+0xb4],eax
+0x140a10852: jne    0x140a10860
+0x140a10854: mov    eax,DWORD PTR [r15+0x50]
+0x140a10858: cmp    DWORD PTR [rcx+0xb8],eax
+0x140a1085e: je     0x140a1088f
+0x140a10860: lea    rcx,[rbp-0x70]
+0x140a10864: call   0x14006ee00
+0x140a10869: lea    r8,[rbp-0x18]
+0x140a1086d: lea    rdx,[rsp+0x40]
+0x140a10872: lea    rcx,[rbp-0x70]
+0x140a10876: call   0x14006ee20
+0x140a1087b: xor    edx,edx
+0x140a1087d: movzx  ecx,BYTE PTR [rax]
+0x140a10880: call   0x1400657b0
+0x140a10885: test   al,al
+0x140a10887: jne    0x140a10805
+0x140a1088d: jmp    0x140a10896
+0x140a1088f: mov    r13,rsi
+0x140a10892: mov    QWORD PTR [rbp-0x68],rcx
+0x140a10896: test   r13,r13
+0x140a10899: jne    0x140a10913
+0x140a1089b: lea    rcx,[rbp-0x60]
+0x140a1089f: call   0x14006ee00
+0x140a108a4: lea    r8,[rbp-0x10]
+0x140a108a8: lea    rdx,[rsp+0x44]
+0x140a108ad: lea    rcx,[rbp-0x60]
+0x140a108b1: call   0x14006ee20
+0x140a108b6: xor    edx,edx
+0x140a108b8: movzx  ecx,BYTE PTR [rax]
+0x140a108bb: call   0x1400657b0
+0x140a108c0: test   al,al
+0x140a108c2: jne    0x140a107b0
+0x140a108c8: test   r13,r13
+0x140a108cb: jne    0x140a10913
+0x140a108cd: call   0x14007c990
+0x140a108d2: mov    r13,rax
+0x140a108d5: mov    WORD PTR [rax+0x4],0x9
+0x140a108db: mov    edx,0xf
+0x140a108e0: mov    r8d,0xffffffff
+0x140a108e6: mov    rcx,rax
+0x140a108e9: call   0x14007c9c0
+0x140a108ee: mov    rdi,rax
+0x140a108f1: mov    eax,DWORD PTR [rip+0x1982d7d]        # 0x142393674
+0x140a108f7: mov    DWORD PTR [rdi+0xb0],eax
+0x140a108fd: mov    eax,DWORD PTR [r14+0x8]
+0x140a10901: mov    DWORD PTR [rdi+0xb4],eax
+0x140a10907: mov    eax,DWORD PTR [r15+0x50]
+0x140a1090b: mov    DWORD PTR [rdi+0xb8],eax
+0x140a10911: jmp    0x140a10917
+0x140a10913: mov    rdi,QWORD PTR [rbp-0x68]
+0x140a10917: lea    rdx,[rbx+0x2d0]
+0x140a1091e: mov    ecx,DWORD PTR [r13+0x0]
+0x140a10922: call   0x1400b9e70
+0x140a10927: lea    rcx,[rbp+0x68]
+0x140a1092b: call   0x140065b00
+0x140a10930: nop
+0x140a10931: lea    rdx,[rbx+0xc30]
+0x140a10938: lea    rcx,[rbp+0x68]
+0x140a1093c: call   0x14006f410
+0x140a10941: mov    r8b,0x1
+0x140a10944: lea    rdx,[rbp+0x68]
+0x140a10948: mov    rcx,rdi
+0x140a1094b: call   0x140075f20
+0x140a10950: nop
+0x140a10951: lea    rcx,[rbp+0x68]
+0x140a10955: jmp    0x140a10e9e
+0x140a1095a: cmp    BYTE PTR [rsp+0x78],r13b
+0x140a1095f: je     0x140a106b2
+0x140a10965: mov    edx,0x3d
+0x140a1096a: mov    rcx,rbx
+0x140a1096d: call   0x1400737b0
+0x140a10972: test   rax,rax
+0x140a10975: jne    0x140a106b2
+0x140a1097b: xor    esi,esi
+0x140a1097d: mov    QWORD PTR [rbp-0x40],rsi
+0x140a10981: mov    edi,0xffffffff
+0x140a10986: mov    DWORD PTR [rsp+0x78],edi
+0x140a1098a: mov    eax,DWORD PTR [r14+0x8]
+0x140a1098e: mov    DWORD PTR [rsp+0x20],eax
+0x140a10992: mov    r9d,DWORD PTR [r14+0x98]
+0x140a10999: lea    r8,[rsp+0x78]
+0x140a1099e: lea    rdx,[rbp-0x40]
+0x140a109a2: mov    rcx,rbx
+0x140a109a5: call   0x1400b7630
+0x140a109aa: cmp    QWORD PTR [rbp-0x40],rsi
+0x140a109ae: je     0x140a10a5d
+0x140a109b4: cmp    DWORD PTR [rsp+0x78],edi
+0x140a109b8: je     0x140a10a5d
+0x140a109be: call   0x14007c990
+0x140a109c3: mov    r13,rax
+0x140a109c6: mov    WORD PTR [rax+0x4],0xb
+0x140a109cc: mov    edx,0x12
+0x140a109d1: mov    r8d,edi
+0x140a109d4: mov    rcx,rax
+0x140a109d7: call   0x14007c9c0
+0x140a109dc: mov    rdi,rax
+0x140a109df: mov    r8,QWORD PTR [rbp-0x40]
+0x140a109e3: mov    r8d,DWORD PTR [r8+0x1c]
+0x140a109e7: mov    edx,0x2
+0x140a109ec: mov    rcx,rax
+0x140a109ef: call   0x1400a6530
+0x140a109f4: mov    ecx,DWORD PTR [r14+0x8]
+0x140a109f8: mov    DWORD PTR [rdi+0xb8],ecx
+0x140a109fe: mov    ecx,DWORD PTR [r14+0x98]
+0x140a10a05: mov    DWORD PTR [rdi+0xb4],ecx
+0x140a10a0b: mov    ecx,DWORD PTR [rsp+0x78]
+0x140a10a0f: mov    DWORD PTR [rdi+0xb0],ecx
+0x140a10a15: lea    rdx,[rbx+0x2b8]
+0x140a10a1c: mov    ecx,DWORD PTR [r13+0x0]
+0x140a10a20: call   0x1400b9e70
+0x140a10a25: lea    rcx,[rbp+0x0]
+0x140a10a29: call   0x140065b00
+0x140a10a2e: nop
+0x140a10a2f: lea    rdx,[rbx+0xc30]
+0x140a10a36: lea    rcx,[rbp+0x0]
+0x140a10a3a: call   0x14006f410
+0x140a10a3f: mov    r8b,0x1
+0x140a10a42: lea    rdx,[rbp+0x0]
+0x140a10a46: mov    rcx,rdi
+0x140a10a49: call   0x140075f20
+0x140a10a4e: nop
+0x140a10a4f: lea    rcx,[rbp+0x0]
+0x140a10a53: call   0x140065b20
+0x140a10a58: jmp    0x140a10ea5
+0x140a10a5d: mov    edx,0x3d
+0x140a10a62: mov    r8d,0x20d0
+0x140a10a68: mov    rcx,rbx
+0x140a10a6b: call   0x1400737e0
+0x140a10a70: jmp    0x140a106b2
+0x140a10a75: lea    rdx,[rbp-0x58]
+0x140a10a79: lea    rcx,[rip+0x1ad2da0]        # 0x1424e3820
+0x140a10a80: call   0x14006f240
+0x140a10a85: lea    rdx,[rbp+0x160]
+0x140a10a8c: lea    rcx,[rip+0x1ad2d8d]        # 0x1424e3820
+0x140a10a93: call   0x14006f230
+0x140a10a98: lea    r8,[rbp+0x160]
+0x140a10a9f: lea    rdx,[rsp+0x44]
+0x140a10aa4: lea    rcx,[rbp-0x58]
+0x140a10aa8: call   0x14006ee20
+0x140a10aad: xor    edx,edx
+0x140a10aaf: movzx  ecx,BYTE PTR [rax]
+0x140a10ab2: call   0x1400657b0
+0x140a10ab7: test   al,al
+0x140a10ab9: je     0x140a10bee
+0x140a10abf: nop
+0x140a10ac0: lea    rcx,[rbp-0x58]
+0x140a10ac4: call   0x14006ee10
+0x140a10ac9: mov    rsi,QWORD PTR [rax]
+0x140a10acc: cmp    WORD PTR [rsi+0x4],0x8
+0x140a10ad1: jne    0x140a10bb9
+0x140a10ad7: lea    rdx,[rbp-0x78]
+0x140a10adb: lea    rcx,[rsi+0x8]
+0x140a10adf: call   0x14006f240
+0x140a10ae4: lea    rdx,[rbp+0x150]
+0x140a10aeb: lea    rcx,[rsi+0x8]
+0x140a10aef: call   0x14006f230
+0x140a10af4: lea    r8,[rbp+0x150]
+0x140a10afb: lea    rdx,[rsp+0x40]
+0x140a10b00: lea    rcx,[rbp-0x78]
+0x140a10b04: call   0x14006ee20
+0x140a10b09: xor    edx,edx
+0x140a10b0b: movzx  ecx,BYTE PTR [rax]
+0x140a10b0e: call   0x1400657b0
+0x140a10b13: test   al,al
+0x140a10b15: je     0x140a10bb4
+0x140a10b1b: nop    DWORD PTR [rax+rax*1+0x0]
+0x140a10b20: lea    rcx,[rbp-0x78]
+0x140a10b24: call   0x14006ee10
+0x140a10b29: mov    rcx,QWORD PTR [rax]
+0x140a10b2c: mov    rax,QWORD PTR [rcx]
+0x140a10b2f: call   QWORD PTR [rax]
+0x140a10b31: cmp    ax,0xc
+0x140a10b35: jne    0x140a10b7b
+0x140a10b37: lea    rcx,[rbp-0x78]
+0x140a10b3b: call   0x14006ee10
+0x140a10b40: mov    rcx,QWORD PTR [rax]
+0x140a10b43: test   BYTE PTR [rcx+0x14],0x1
+0x140a10b47: jne    0x140a10b7b
+0x140a10b49: lea    rcx,[rbp-0x78]
+0x140a10b4d: call   0x14006ee10
+0x140a10b52: mov    rcx,QWORD PTR [rax]
+0x140a10b55: mov    eax,DWORD PTR [rip+0x1982b19]        # 0x142393674
+0x140a10b5b: cmp    DWORD PTR [rcx+0xb0],eax
+0x140a10b61: jne    0x140a10b7b
+0x140a10b63: mov    eax,DWORD PTR [r14+0x8]
+0x140a10b67: cmp    DWORD PTR [rcx+0xb4],eax
+0x140a10b6d: jne    0x140a10b7b
+0x140a10b6f: mov    eax,DWORD PTR [r15+0x50]
+0x140a10b73: cmp    DWORD PTR [rcx+0xb8],eax
+0x140a10b79: je     0x140a10bad
+0x140a10b7b: lea    rcx,[rbp-0x78]
+0x140a10b7f: call   0x14006ee00
+0x140a10b84: lea    r8,[rbp+0x150]
+0x140a10b8b: lea    rdx,[rsp+0x40]
+0x140a10b90: lea    rcx,[rbp-0x78]
+0x140a10b94: call   0x14006ee20
+0x140a10b99: xor    edx,edx
+0x140a10b9b: movzx  ecx,BYTE PTR [rax]
+0x140a10b9e: call   0x1400657b0
+0x140a10ba3: test   al,al
+0x140a10ba5: jne    0x140a10b20
+0x140a10bab: jmp    0x140a10bb4
+0x140a10bad: mov    r13,rsi
+0x140a10bb0: mov    QWORD PTR [rbp-0x68],rcx
+0x140a10bb4: test   r13,r13
+0x140a10bb7: jne    0x140a10c34
+0x140a10bb9: lea    rcx,[rbp-0x58]
+0x140a10bbd: call   0x14006ee00
+0x140a10bc2: lea    r8,[rbp+0x160]
+0x140a10bc9: lea    rdx,[rsp+0x44]
+0x140a10bce: lea    rcx,[rbp-0x58]
+0x140a10bd2: call   0x14006ee20
+0x140a10bd7: xor    edx,edx
+0x140a10bd9: movzx  ecx,BYTE PTR [rax]
+0x140a10bdc: call   0x1400657b0
+0x140a10be1: test   al,al
+0x140a10be3: jne    0x140a10ac0
+0x140a10be9: test   r13,r13
+0x140a10bec: jne    0x140a10c34
+0x140a10bee: call   0x14007c990
+0x140a10bf3: mov    r13,rax
+0x140a10bf6: mov    WORD PTR [rax+0x4],0x8
+0x140a10bfc: mov    edx,0xc
+0x140a10c01: mov    r8d,0xffffffff
+0x140a10c07: mov    rcx,rax
+0x140a10c0a: call   0x14007c9c0
+0x140a10c0f: mov    rdi,rax
+0x140a10c12: mov    eax,DWORD PTR [rip+0x1982a5c]        # 0x142393674
+0x140a10c18: mov    DWORD PTR [rdi+0xb0],eax
+0x140a10c1e: mov    eax,DWORD PTR [r14+0x8]
+0x140a10c22: mov    DWORD PTR [rdi+0xb4],eax
+0x140a10c28: mov    eax,DWORD PTR [r15+0x50]
+0x140a10c2c: mov    DWORD PTR [rdi+0xb8],eax
+0x140a10c32: jmp    0x140a10c38
+0x140a10c34: mov    rdi,QWORD PTR [rbp-0x68]
+0x140a10c38: lea    rdx,[rbx+0x2d0]
+0x140a10c3f: mov    ecx,DWORD PTR [r13+0x0]
+0x140a10c43: call   0x1400b9e70
+0x140a10c48: lea    rcx,[rbp+0x100]
+0x140a10c4f: call   0x140065b00
+0x140a10c54: nop
+0x140a10c55: lea    rdx,[rbx+0xc30]
+0x140a10c5c: lea    rcx,[rbp+0x100]
+0x140a10c63: call   0x14006f410
+0x140a10c68: mov    r8b,0x1
+0x140a10c6b: lea    rdx,[rbp+0x100]
+0x140a10c72: mov    rcx,rdi
+0x140a10c75: call   0x140075f20
+0x140a10c7a: nop
+0x140a10c7b: lea    rcx,[rbp+0x100]
+0x140a10c82: jmp    0x140a10e9e
+0x140a10c87: lea    rdx,[rsp+0x68]
+0x140a10c8c: lea    rcx,[rip+0x1ad2b8d]        # 0x1424e3820
+0x140a10c93: call   0x14006f240
+0x140a10c98: lea    rdx,[rbp+0x120]
+0x140a10c9f: lea    rcx,[rip+0x1ad2b7a]        # 0x1424e3820
+0x140a10ca6: call   0x14006f230
+0x140a10cab: lea    r8,[rbp+0x120]
+0x140a10cb2: lea    rdx,[rsp+0x44]
+0x140a10cb7: lea    rcx,[rsp+0x68]
+0x140a10cbc: call   0x14006ee20
+0x140a10cc1: xor    edx,edx
+0x140a10cc3: movzx  ecx,BYTE PTR [rax]
+0x140a10cc6: call   0x1400657b0
+0x140a10ccb: test   al,al
+0x140a10ccd: je     0x140a10e0a
+0x140a10cd3: lea    rcx,[rsp+0x68]
+0x140a10cd8: call   0x14006ee10
+0x140a10cdd: mov    rsi,QWORD PTR [rax]
+0x140a10ce0: cmp    WORD PTR [rsi+0x4],0x7
+0x140a10ce5: jne    0x140a10dd3
+0x140a10ceb: lea    rdx,[rsp+0x70]
+0x140a10cf0: lea    rcx,[rsi+0x8]
+0x140a10cf4: call   0x14006f240
+0x140a10cf9: lea    rdx,[rbp+0x138]
+0x140a10d00: lea    rcx,[rsi+0x8]
+0x140a10d04: call   0x14006f230
+0x140a10d09: lea    r8,[rbp+0x138]
+0x140a10d10: lea    rdx,[rsp+0x40]
+0x140a10d15: lea    rcx,[rsp+0x70]
+0x140a10d1a: call   0x14006ee20
+0x140a10d1f: xor    edx,edx
+0x140a10d21: movzx  ecx,BYTE PTR [rax]
+0x140a10d24: call   0x1400657b0
+0x140a10d29: test   al,al
+0x140a10d2b: je     0x140a10dca
+0x140a10d31: lea    rcx,[rsp+0x70]
+0x140a10d36: call   0x14006ee10
+0x140a10d3b: mov    rcx,QWORD PTR [rax]
+0x140a10d3e: mov    rax,QWORD PTR [rcx]
+0x140a10d41: call   QWORD PTR [rax]
+0x140a10d43: cmp    ax,0xd
+0x140a10d47: jne    0x140a10d8f
+0x140a10d49: lea    rcx,[rsp+0x70]
+0x140a10d4e: call   0x14006ee10
+0x140a10d53: mov    rcx,QWORD PTR [rax]
+0x140a10d56: test   BYTE PTR [rcx+0x14],0x1
+0x140a10d5a: jne    0x140a10d8f
+0x140a10d5c: lea    rcx,[rsp+0x70]
+0x140a10d61: call   0x14006ee10
+0x140a10d66: mov    rcx,QWORD PTR [rax]
+0x140a10d69: mov    eax,DWORD PTR [rip+0x1982905]        # 0x142393674
+0x140a10d6f: cmp    DWORD PTR [rcx+0xb0],eax
+0x140a10d75: jne    0x140a10d8f
+0x140a10d77: mov    eax,DWORD PTR [r14+0x8]
+0x140a10d7b: cmp    DWORD PTR [rcx+0xb4],eax
+0x140a10d81: jne    0x140a10d8f
+0x140a10d83: mov    eax,DWORD PTR [r15+0x50]
+0x140a10d87: cmp    DWORD PTR [rcx+0xb8],eax
+0x140a10d8d: je     0x140a10dc3
+0x140a10d8f: lea    rcx,[rsp+0x70]
+0x140a10d94: call   0x14006ee00
+0x140a10d99: lea    r8,[rbp+0x138]
+0x140a10da0: lea    rdx,[rsp+0x40]
+0x140a10da5: lea    rcx,[rsp+0x70]
+0x140a10daa: call   0x14006ee20
+0x140a10daf: xor    edx,edx
+0x140a10db1: movzx  ecx,BYTE PTR [rax]
+0x140a10db4: call   0x1400657b0
+0x140a10db9: test   al,al
+0x140a10dbb: jne    0x140a10d31
+0x140a10dc1: jmp    0x140a10dca
+0x140a10dc3: mov    r13,rsi
+0x140a10dc6: mov    QWORD PTR [rbp-0x68],rcx
+0x140a10dca: test   r13,r13
+0x140a10dcd: jne    0x140a10e50
+0x140a10dd3: lea    rcx,[rsp+0x68]
+0x140a10dd8: call   0x14006ee00
+0x140a10ddd: lea    r8,[rbp+0x120]
+0x140a10de4: lea    rdx,[rsp+0x44]
+0x140a10de9: lea    rcx,[rsp+0x68]
+0x140a10dee: call   0x14006ee20
+0x140a10df3: xor    edx,edx
+0x140a10df5: movzx  ecx,BYTE PTR [rax]
+0x140a10df8: call   0x1400657b0
+0x140a10dfd: test   al,al
+0x140a10dff: jne    0x140a10cd3
+0x140a10e05: test   r13,r13
+0x140a10e08: jne    0x140a10e50
+0x140a10e0a: call   0x14007c990
+0x140a10e0f: mov    r13,rax
+0x140a10e12: mov    WORD PTR [rax+0x4],0x7
+0x140a10e18: mov    edx,0xd
+0x140a10e1d: mov    r8d,0xffffffff
+0x140a10e23: mov    rcx,rax
+0x140a10e26: call   0x14007c9c0
+0x140a10e2b: mov    rdi,rax
+0x140a10e2e: mov    eax,DWORD PTR [rip+0x1982840]        # 0x142393674
+0x140a10e34: mov    DWORD PTR [rdi+0xb0],eax
+0x140a10e3a: mov    eax,DWORD PTR [r14+0x8]
+0x140a10e3e: mov    DWORD PTR [rdi+0xb4],eax
+0x140a10e44: mov    eax,DWORD PTR [r15+0x50]
+0x140a10e48: mov    DWORD PTR [rdi+0xb8],eax
+0x140a10e4e: jmp    0x140a10e54
+0x140a10e50: mov    rdi,QWORD PTR [rbp-0x68]
+0x140a10e54: lea    rdx,[rbx+0x2d0]
+0x140a10e5b: mov    ecx,DWORD PTR [r13+0x0]
+0x140a10e5f: call   0x1400b9e70
+0x140a10e64: lea    rcx,[rbp+0xd0]
+0x140a10e6b: call   0x140065b00
+0x140a10e70: nop
+0x140a10e71: lea    rdx,[rbx+0xc30]
+0x140a10e78: lea    rcx,[rbp+0xd0]
+0x140a10e7f: call   0x14006f410
+0x140a10e84: mov    r8b,0x1
+0x140a10e87: lea    rdx,[rbp+0xd0]
+0x140a10e8e: mov    rcx,rdi
+0x140a10e91: call   0x140075f20
+0x140a10e96: nop
+0x140a10e97: lea    rcx,[rbp+0xd0]
+0x140a10e9e: call   0x140065b20
+0x140a10ea3: xor    esi,esi
+0x140a10ea5: lea    rcx,[r13+0x8]
+0x140a10ea9: call   0x14006ee50
+0x140a10eae: test   rax,rax
+0x140a10eb1: je     0x140a106b2
+0x140a10eb7: xor    edx,edx
+0x140a10eb9: lea    rcx,[r13+0x8]
+0x140a10ebd: call   0x14006f220
+0x140a10ec2: mov    rdi,QWORD PTR [rax]
+0x140a10ec5: mov    rax,QWORD PTR [rdi]
+0x140a10ec8: mov    rdx,rbx
+0x140a10ecb: mov    rcx,rdi
+0x140a10ece: call   QWORD PTR [rax+0x60]
+0x140a10ed1: test   eax,eax
+0x140a10ed3: jne    0x140a106b2
+0x140a10ed9: mov    rax,QWORD PTR [rdi]
+0x140a10edc: mov    rdx,rbx
+0x140a10edf: mov    rcx,rdi
+0x140a10ee2: call   QWORD PTR [rax+0x68]
+0x140a10ee5: test   al,al
+0x140a10ee7: jne    0x140a10f19
+0x140a10ee9: mov    DWORD PTR [rsp+0x28],0x4b
+0x140a10ef1: mov    QWORD PTR [rsp+0x20],rsi
+0x140a10ef6: xor    r9d,r9d
+0x140a10ef9: mov    r8,QWORD PTR [rbp-0x50]
+0x140a10efd: mov    rsi,QWORD PTR [rsp+0x58]
+0x140a10f02: mov    rdx,rsi
+0x140a10f05: mov    rcx,rbx
+0x140a10f08: call   0x140a0a1e0
+0x140a10f0d: cmp    DWORD PTR [rsi+0x4],0x4b
+0x140a10f11: jge    0x140a0d317
+0x140a10f17: jmp    0x140a10f28
+0x140a10f19: mov    rsi,QWORD PTR [rsp+0x58]
+0x140a10f1e: cmp    DWORD PTR [rsi+0x4],0x4b
+0x140a10f22: jge    0x140a106b7
+0x140a10f28: mov    DWORD PTR [rsi],0x3
+0x140a10f2e: mov    QWORD PTR [rsi+0x28],rdi
+0x140a10f32: mov    DWORD PTR [rsi+0x4],0x4b
+0x140a10f39: jmp    0x140a0d317
+0x140a10f3e: mov    rcx,QWORD PTR [rbx+0x1268]
+0x140a10f45: test   rcx,rcx
+0x140a10f48: je     0x140a106b2
+0x140a10f4e: xor    dil,dil
+0x140a10f51: lea    rdx,[rbp-0x70]
+0x140a10f55: call   0x14006f240
+0x140a10f5a: lea    rdx,[rbp+0x120]
+0x140a10f61: mov    rcx,QWORD PTR [rbx+0x1268]
+0x140a10f68: call   0x14006f230
+0x140a10f6d: lea    r8,[rbp+0x120]
+0x140a10f74: lea    rdx,[rsp+0x40]
+0x140a10f79: lea    rcx,[rbp-0x70]
+0x140a10f7d: call   0x14006ee20
+0x140a10f82: xor    edx,edx
+0x140a10f84: movzx  ecx,BYTE PTR [rax]
+0x140a10f87: call   0x1400657b0
+0x140a10f8c: test   al,al
+0x140a10f8e: je     0x140a106b2
+0x140a10f94: lea    rcx,[rbp-0x70]
+0x140a10f98: call   0x14006ee10
+0x140a10f9d: mov    rcx,QWORD PTR [rax]
+0x140a10fa0: test   BYTE PTR [rcx+0x18],0x1
+0x140a10fa4: jne    0x140a10fdf
+0x140a10fa6: lea    rcx,[rbp-0x70]
+0x140a10faa: call   0x14006ee10
+0x140a10faf: mov    rcx,QWORD PTR [rax]
+0x140a10fb2: mov    edx,DWORD PTR [rcx]
+0x140a10fb4: test   edx,edx
+0x140a10fb6: je     0x140a10fcc
+0x140a10fb8: sub    edx,0x1
+0x140a10fbb: je     0x140a10fcc
+0x140a10fbd: sub    edx,0x1
+0x140a10fc0: je     0x140a10fcc
+0x140a10fc2: sub    edx,0x1
+0x140a10fc5: je     0x140a10fcc
+0x140a10fc7: cmp    edx,0x7
+0x140a10fca: jne    0x140a10fdf
+0x140a10fcc: lea    rcx,[rbp-0x70]
+0x140a10fd0: call   0x14006ee10
+0x140a10fd5: mov    rcx,QWORD PTR [rax]
+0x140a10fd8: or     DWORD PTR [rcx+0x18],0x1
+0x140a10fdc: mov    dil,0x1
+0x140a10fdf: lea    rcx,[rbp-0x70]
+0x140a10fe3: call   0x14006ee00
+0x140a10fe8: lea    r8,[rbp+0x120]
+0x140a10fef: lea    rdx,[rsp+0x40]
+0x140a10ff4: lea    rcx,[rbp-0x70]
+0x140a10ff8: call   0x14006ee20
+0x140a10ffd: xor    edx,edx
+0x140a10fff: movzx  ecx,BYTE PTR [rax]
+0x140a11002: call   0x1400657b0
+0x140a11007: test   al,al
+0x140a11009: jne    0x140a10f94
+0x140a1100b: test   dil,dil
+0x140a1100e: je     0x140a106b2
+0x140a11014: lea    rdx,[rbp-0x50]
+0x140a11018: mov    rcx,QWORD PTR [rbx+0x1268]
+0x140a1101f: call   0x14006f240
+0x140a11024: lea    rdx,[rsp+0x68]
+0x140a11029: mov    rcx,QWORD PTR [rbx+0x1268]
+0x140a11030: call   0x14006f230
+0x140a11035: lea    r8,[rsp+0x68]
+0x140a1103a: lea    rdx,[rsp+0x40]
+0x140a1103f: lea    rcx,[rbp-0x50]
+0x140a11043: call   0x14006ee20
+0x140a11048: xor    edx,edx
+0x140a1104a: movzx  ecx,BYTE PTR [rax]
+0x140a1104d: call   0x1400657b0
+0x140a11052: test   al,al
+0x140a11054: je     0x140a11092
+0x140a11056: lea    rcx,[rbp-0x50]
+0x140a1105a: call   0x14006ee10
+0x140a1105f: mov    rcx,QWORD PTR [rax]
+0x140a11062: test   BYTE PTR [rcx+0x18],0x1
+0x140a11066: je     0x140a11092
+0x140a11068: lea    rcx,[rbp-0x50]
+0x140a1106c: call   0x14006ee00
+0x140a11071: lea    r8,[rsp+0x68]
+0x140a11076: lea    rdx,[rsp+0x40]
+0x140a1107b: lea    rcx,[rbp-0x50]
+0x140a1107f: call   0x14006ee20
+0x140a11084: xor    edx,edx
+0x140a11086: movzx  ecx,BYTE PTR [rax]
+0x140a11089: call   0x1400657b0
+0x140a1108e: test   al,al
+0x140a11090: jne    0x140a11056
+0x140a11092: lea    r8,[rsp+0x68]
+0x140a11097: lea    rdx,[rsp+0x40]
+0x140a1109c: lea    rcx,[rbp-0x50]
+0x140a110a0: call   0x14006ee20
+0x140a110a5: xor    edx,edx
+0x140a110a7: movzx  ecx,BYTE PTR [rax]
+0x140a110aa: call   0x140071e60
+0x140a110af: mov    rsi,QWORD PTR [rsp+0x58]
+0x140a110b4: mov    r14d,0xffff8ad0
+0x140a110ba: test   al,al
+0x140a110bc: je     0x140a106bd
+0x140a110c2: mov    rax,QWORD PTR [rbx+0x1268]
+0x140a110c9: or     DWORD PTR [rax+0x18],0x2
+0x140a110cd: jmp    0x140a106bd
+0x140a110d2: mov    rsi,QWORD PTR [rsp+0x58]
+0x140a110d7: jmp    0x140a106bd
+0x140a110dc: jne    0x140a1109b
+0x140a110de: movabs al,ds:0xa0bdaf00a0bd7e00
+0x140a110e7: add    BYTE PTR [rbp+rdi*4-0x60],ch
+0x140a110eb: add    cl,bl
+0x140a110ed: mov    ebp,0x10000a0
+0x140a110f2: add    al,BYTE PTR [rax]
+0x140a110f4: add    DWORD PTR [rdx],eax
+0x140a110f6: add    al,0x4
+0x140a110f8: add    al,0x4
+0x140a110fa: add    al,0x4
+0x140a110fc: add    al,0x4
+0x140a110fe: add    al,0x4
+0x140a11100: add    al,0x4
+0x140a11102: add    al,0x4
+0x140a11104: add    al,0x4
+0x140a11106: add    al,0x4
+0x140a11108: add    al,0x4
+0x140a1110a: add    al,0x4
+0x140a1110c: add    al,0x4
+0x140a1110e: add    al,0x4
+0x140a11110: add    al,0x4
+0x140a11112: add    al,0x4
+0x140a11114: add    al,0x4
+0x140a11116: add    al,0x4
+0x140a11118: add    al,0x4
+0x140a1111a: add    al,0x4
+0x140a1111c: add    al,0x4
+0x140a1111e: add    al,0x4
+0x140a11120: add    al,0x4
+0x140a11122: add    al,0x4
+0x140a11124: add    al,0x4
+0x140a11126: add    al,0x4
+0x140a11128: add    al,0x4
+0x140a1112a: add    al,0x4
+0x140a1112c: add    al,0x4
+0x140a1112e: add    al,0x4
+0x140a11130: add    al,0x4
+0x140a11132: add    al,0x4
+0x140a11134: add    al,0x4
+0x140a11136: add    al,0x4
+0x140a11138: add    al,0x4
+0x140a1113a: add    al,0x4
+0x140a1113c: add    al,0x4
+0x140a1113e: add    al,0x4
+0x140a11140: add    al,0x4
+0x140a11142: add    al,0x4
+0x140a11144: add    al,0x4
+0x140a11146: add    al,0x4
+0x140a11148: add    al,0x4
+0x140a1114a: add    al,0x4
+0x140a1114c: add    al,0x4
+0x140a1114e: add    al,0x4
+0x140a11150: add    al,0x4
+0x140a11152: add    al,0x4
+0x140a11154: add    al,0x4
+0x140a11156: add    al,0x4
+0x140a11158: add    al,0x4
+0x140a1115a: add    al,0x4
+0x140a1115c: add    al,0x4
+0x140a1115e: add    al,0x4
+0x140a11160: add    al,0x4
+0x140a11162: add    al,0x4
+0x140a11164: add    al,0x4
+0x140a11166: add    al,0x4
+0x140a11168: add    al,0x4
+0x140a1116a: add    al,0x4
+0x140a1116c: add    al,0x4
+0x140a1116e: add    al,0x4
+0x140a11170: add    al,0x4
+0x140a11172: add    al,0x4
+0x140a11174: add    al,0x4
+0x140a11176: add    al,0x4
+0x140a11178: add    al,0x4
+0x140a1117a: add    al,0x4
+0x140a1117c: add    al,0x4
+0x140a1117e: add    al,0x4
+0x140a11180: add    al,0x4
+0x140a11182: add    al,0x4
+0x140a11184: add    al,0x4
+0x140a11186: add    al,0x4
+0x140a11188: add    al,0x4
+0x140a1118a: add    al,0x4
+0x140a1118c: add    al,0x4
+0x140a1118e: add    al,0x4
+0x140a11190: add    al,0x4
+0x140a11192: add    al,0x4
+0x140a11194: add    al,0x4
+0x140a11196: add    al,0x4
+0x140a11198: add    al,0x4
+0x140a1119a: add    al,0x4
+0x140a1119c: add    al,0x4
+0x140a1119e: add    al,0x4
+0x140a111a0: add    al,0x4
+0x140a111a2: add    al,0x4
+0x140a111a4: add    eax,DWORD PTR [rbx+rax*1]
+0x140a111a7: .byte 0x3

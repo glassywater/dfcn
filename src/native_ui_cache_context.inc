@@ -2,6 +2,12 @@
 // ownership and complete clipped paragraphs can change independently. Keep
 // those inputs in an exact key; native draw counters are deliberately absent.
 // Call layer_context before installing that layer's captured-text scope.
+struct NativeNotificationTranslationInput {
+    std::shared_ptr<const NativeAnnouncementLogDocument> document;
+    int foreground = 0;
+    std::shared_ptr<const NativeAnnouncementLogTranslationResult> completed;
+};
+
 class NativeUiCacheContextWriter {
     std::string key_;
     const graphicst *graphics_ = nullptr;
@@ -303,6 +309,12 @@ public:
         for (auto item : input.map_hover.data) value(item);
         value(input.editable_text); value(input.travel_building_field);
         optional(input.site_name, [&](const auto &site) { name(site); });
+        optional(input.river_name, [&](const auto &river) {
+            const auto &id = river.identity;
+            text(id.world_key); value(id.index); name(id.name);
+            value(id.size); value(id.terrain); value(id.finalized);
+            text(id.generic_style); value(river.field); text(river.complete_source);
+        });
         value(input.native_caller); value(input.adventure_crafting_role);
         value(input.adventure_inventory_role); value(input.adventure_barter_field);
         optional(input.work_order_shop_caption, [&](const auto &caption) {
@@ -447,7 +459,16 @@ public:
         value(world);
         optional(native_ui_classic(), [&](bool classic) { value(classic); });
     }
-    void notification_sources() {
+    void notification_source_context() {
+        notification_ = true;
+        tooltip_ = true;
+    }
+    void notification_sources(std::vector<NativeNotificationTranslationInput> &translations) {
+        // Index the submitted row ownership once. Each complete paragraph
+        // then visits only its own writers, including clipped visible rows.
+        std::unordered_multimap<uintptr_t, const NativeDrawnTextRow *> writers;
+        for (const auto &plane : g_native_notification_text.rows)
+            for (const auto &draw : plane) writers.emplace(draw.address, &draw);
         range(g_native_notification_paragraphs, [&](const auto &paragraph) {
             value(paragraph.parent); text(paragraph.source);
             value(paragraph.centered); value(paragraph.fortress_alert);
@@ -455,18 +476,13 @@ public:
             value(paragraph.unit); value(paragraph.category); text(paragraph.name_source);
             optional(paragraph.report_document, [&](const auto &document) {
                 text(native_announcement_log_document_key(document));
-                // A finished result for another report cannot invalidate this
-                // target. Probe only colors used by this parent's submitted
-                // rows, using the same private cells as the paragraph matcher.
                 std::vector<int> foregrounds;
-                if (graphics_) for (const auto &plane : g_native_notification_text.rows)
-                    for (const auto &draw : plane) {
-                        if (draw.x < 0 || draw.y < 0 || draw.x >= graphics_->dimx ||
-                                draw.y >= graphics_->dimy ||
-                                std::none_of(paragraph.rows.begin(), paragraph.rows.end(),
-                                    [&](const auto &row) {
-                                        return row.address == draw.address && row.source == draw.source;
-                                    })) continue;
+                if (graphics_) for (const auto &row : paragraph.rows) {
+                    const auto [first, last] = writers.equal_range(row.address);
+                    for (auto writer = first; writer != last; ++writer) {
+                        const auto &draw = *writer->second;
+                        if (draw.source != row.source || draw.x < 0 || draw.y < 0 ||
+                                draw.x >= graphics_->dimx || draw.y >= graphics_->dimy) continue;
                         const size_t tile = static_cast<size_t>(draw.x) * graphics_->dimy + draw.y;
                         const bool top = graphics_->screen_top && native_ui_top_layer_at(*graphics_, tile);
                         const auto *screen = top ? graphics_->screen_top : graphics_->screen;
@@ -474,19 +490,14 @@ public:
                         const auto *cell = screen + tile * 8;
                         foregrounds.push_back((cell[1] << 16) | (cell[2] << 8) | cell[3]);
                     }
+                }
                 std::sort(foregrounds.begin(), foregrounds.end());
                 foregrounds.erase(std::unique(foregrounds.begin(), foregrounds.end()), foregrounds.end());
                 if (foregrounds.empty()) { complete = false; return; }
                 range(foregrounds, [&](int foreground) {
                     value(foreground);
-                    const auto translated = native_announcement_log_translation_request(
-                        paragraph.report_document, foreground, true);
-                    value(bool(translated));
-                    if (translated) {
-                        value(translated->needs_owned_dependency);
-                        optional(translated->target, [&](const auto &target) { text(target); });
-                        range(translated->colors, [&](int color) { value(color); });
-                    }
+                    translations.push_back({paragraph.report_document, foreground,
+                        native_notification_retained_translation(paragraph, foreground)});
                 });
             });
             range(paragraph.rows, [&](const auto &row) {
@@ -861,18 +872,70 @@ public:
     }
 };
 
+std::optional<std::string> Overlay::native_topbar_cache_context() const {
+    // Only this producer's submitted captions, site identity and style
+    // affect its target. Other pages and layers have no top-bar meaning.
+    NativeUiCacheContextWriter key;
+    key.tooltip();
+    key.graphics(g_native_topbar_layer.foreground.graphics());
+    key.bundle(g_native_topbar_text);
+    NativeHistoryName site;
+    std::string english;
+    if (!capture_current_fortress_site_name(site, english)) return std::nullopt;
+    key.name(site);
+    key.text(english);
+    return key.finish();
+}
+
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    if (&layer == &g_native_topbar_layer) return g_overlay.native_topbar_cache_context();
     if (&layer == &g_native_notification_layer) {
         // Only the submitted notification and its complete parents can change
         // this target. Other panels, historical registries and formatter scopes
         // must neither disable this cache nor force a full repaint every frame.
+        struct Submission {
+            uint64_t generation = 0, translation_revision = 0;
+            uint64_t source_publication = 1, result_publication = 1;
+            std::optional<std::string> source;
+            std::vector<NativeNotificationTranslationInput> translations;
+            std::vector<std::shared_ptr<const NativeAnnouncementLogTranslationResult>> results;
+        };
+        static Submission submitted;
+        const bool changed = submitted.generation != g_native_notification_submission_generation;
+        if (changed) {
+            NativeUiCacheContextWriter source;
+            source.notification_source_context();
+            source.graphics(const_cast<NativeUiLayerStorage &>(layer).foreground.graphics());
+            source.bundle(g_native_notification_text);
+            source.value(g_native_notification_sources_valid);
+            std::vector<NativeNotificationTranslationInput> translations;
+            source.notification_sources(translations);
+            auto complete_source = source.finish();
+            if (submitted.source != complete_source) ++submitted.source_publication;
+            submitted.source = std::move(complete_source);
+            submitted.translations = std::move(translations);
+            submitted.generation = g_native_notification_submission_generation;
+        }
+        if (!submitted.source) return std::nullopt;
+        const uint64_t revision = native_announcement_log_translation_revision();
+        if (changed || submitted.translation_revision != revision) {
+            std::vector<std::shared_ptr<const NativeAnnouncementLogTranslationResult>> results;
+            results.reserve(submitted.translations.size());
+            for (const auto &input : submitted.translations)
+                results.push_back(input.completed ? input.completed :
+                    native_announcement_log_translation_request(input.document, input.foreground, true));
+            // Hold both immutable publications during comparison. A small
+            // monotonic token also prevents recycled result addresses from
+            // matching an older retained texture after this snapshot changes.
+            if (submitted.results != results) ++submitted.result_publication;
+            submitted.results = std::move(results);
+            submitted.translation_revision = revision;
+        }
         NativeUiCacheContextWriter key;
         key.notification();
-        key.graphics(const_cast<NativeUiLayerStorage &>(layer).foreground.graphics());
-        key.bundle(g_native_notification_text);
-        key.value(g_native_notification_sources_valid);
-        key.notification_sources();
+        key.value(submitted.source_publication);
+        key.value(submitted.result_publication);
         return key.finish();
     }
     if (&layer == &g_native_tooltip_layer) {
@@ -957,5 +1020,6 @@ static std::optional<std::string> native_main_ui_cache_context() {
     key.layer(g_native_tooltip_layer); key.layer(g_native_help_layer);
     key.layer(g_native_resolution_layer); key.layer(g_native_worldgen_layer);
     key.layer(g_native_character_layer);
+    key.layer(g_native_topbar_layer);
     return key.finish();
 }

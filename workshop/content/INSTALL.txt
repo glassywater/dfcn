@@ -3,7 +3,7 @@ Byayoi 同人社区：https://byayoi.org/
 GitHub：https://github.com/pokemonchw/dfcn
 Releases：https://github.com/pokemonchw/dfcn/releases
 
-当前工坊版本：53.16-20261019（2026-10-19）。完整更新日志见本目录 CHANGELOG.txt。
+当前工坊版本：53.16-20261020（2026-10-20）。完整更新日志见本目录 CHANGELOG.txt。
 适用：Dwarf Fortress 53.16，Windows x64；支持 Steam 版与官网免费版。
 运行文件位于 DFCN/。Shift+F6 可临时停用或恢复扩展数据；Shift+F5 再次开启时重新读取核心与数据。
 仅订阅不会自动启用汉化；无需在创建世界时启用本工坊项目。
@@ -45,7 +45,7 @@ C:/Program Files (x86)/Steam/steamapps/workshop/content/975370/3811193379/DFCN/d
 首次启动时若游戏根目录没有 dfcn_config.ini，会从该默认模板复制生成；已有文件不会覆盖。
 模板保留在订阅目录，复制失败时作为回退配置。
 
-Windows 运行包默认 font_scale=1.1、min_font_pixels=12、font_bold=true；font_pixel_grid=0 保留普通字体渲染，使用点阵字体时可设为 12 启用整数倍缩放。个人设置写入游戏根目录的 dfcn_config.ini。
+Windows 运行包内置思源黑体简体粗体及字体许可，默认 font_scale=1.1、min_font_pixels=16、font_bold=true；font_pixel_grid=0 保留普通字体渲染，使用点阵字体时可设为 12 启用整数倍缩放。个人设置写入游戏根目录的 dfcn_config.ini。
 后续 Windows 工坊更新由 Steam 下载到订阅目录；只要实际目录不变，游戏中的入口配置继续指向该目录。
 
 从旧版 Windows 整包复制方式升级：
@@ -55,7 +55,7 @@ Windows 运行包默认 font_scale=1.1、min_font_pixels=12、font_bold=true；f
 
 二、GitHub Release 安装
 
-https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261019
+https://github.com/pokemonchw/dfcn/releases
 下载 DFCN-Windows-x64-minimal.zip，将全部内容按原目录结构解压到包含 Dwarf Fortress.exe 的游戏根目录。
 包括 dfhooks.dll、dfhooks_dfcn.ini 和整个 dfcn 文件夹；汉化设置优先读取游戏根目录的 dfcn_config.ini。
 首次启动时若文件不存在，从 dfcn/data/runtime/config.ini 复制生成；已有文件不会覆盖，复制失败时读取该默认模板。
@@ -79,7 +79,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235
 Entity All、Entity Type 的生物和物品译文需配合 Dwarvemon 汉化数据。
 四个包分别订阅或安装，宝可梦专用词条保存在各自的独立数据包中。
 工坊订阅后自动识别，无需复制其中的数据到本体目录。
-GitHub v53.16-20261019 同时提供这四个包的独立 ZIP，整个 mod 文件夹解压至游戏 mods 目录即可。
+GitHub Releases 提供这四个包的独立 ZIP，整个 mod 文件夹解压至游戏 mods 目录即可。
 其余 18 个汉化数据包保持私密。
 模组名称和内容使用通用译文匹配，没有完整译文的名称及简介保留原文；用户自定义小队名称始终原样显示。
 其他汉化扩展的安装与支持范围以各自说明为准。
@@ -105,7 +105,7 @@ Shift+F8：在简体中文与台湾正体中文之间切换，同步刷新字体
 language=zh-Hans 为简体中文（默认）；language=zh-Hant 为台湾正体中文，使用随包提供的离线 OpenCC 转为台湾字形及常用词汇。
 修改此项可保留默认语言选择；同时接受 zh-CN、zh-TW、zh-Hans-CN、zh-Hant-TW。自定义小队名称和用户输入保持原样。
 
-Windows 同时安装 DFHack 53.16-r2 时，可按 Shift+F11 独立暂停或恢复 DFHack 工具。
+Windows 同时安装 DFHack 53.16-r2 / r3 时，可按 Shift+F11 独立暂停或恢复 DFHack 工具。
 插件配置和状态会保留；关闭时已经打开的 DFHack 界面会关闭，此前对游戏或存档执行的修改不会回滚。
 汉化覆盖 DFHack 帮助、控制面板、常用弹窗及本地命令输出，可执行命令、快捷键和导出内容保留原文。
 

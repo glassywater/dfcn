@@ -33,6 +33,8 @@ struct SiteReferenceCache {
     std::array<uintptr_t, 9> vectors{};
     uint64_t epoch = 0;
     size_t refresh_cursor = 0;
+    size_t build_cursor = 0, source_index_cursor = 0;
+    bool index_complete = false;
     std::vector<SiteReferenceIdentity> identities;
     std::unordered_map<int32_t, size_t> identity_indices;
     std::unordered_map<std::string, std::vector<size_t>> sources;
@@ -97,17 +99,20 @@ bool Overlay::capture_current_fortress_site_name(NativeHistoryName &name,
     return true;
 }
 
+static void index_site_reference_source(SiteReferenceCache &cache, size_t index) {
+    for (const auto &source : {cache.identities[index].native,
+            cache.identities[index].english}) {
+        const std::string key = site_reference_key(source);
+        if (key.empty()) continue;
+        auto &candidates = cache.sources[key];
+        if (std::find(candidates.begin(), candidates.end(), index) == candidates.end())
+            candidates.push_back(index);
+    }
+}
 static void index_site_reference_sources(SiteReferenceCache &cache) {
     cache.sources.clear();
     for (size_t index = 0; index < cache.identities.size(); ++index)
-        for (const auto &source : {cache.identities[index].native,
-                cache.identities[index].english}) {
-            const std::string key = site_reference_key(source);
-            if (key.empty()) continue;
-            auto &candidates = cache.sources[key];
-            if (std::find(candidates.begin(), candidates.end(), index) == candidates.end())
-                candidates.push_back(index);
-        }
+        index_site_reference_source(cache, index);
 }
 
 static SiteReferenceCache &site_reference_owned_cache() {
@@ -169,18 +174,38 @@ static std::optional<SiteReferenceIdentity> resolve_site_reference_identity(
         reinterpret_cast<uintptr_t>(translations.capacity)};
     if (cache.world_data != world_data || cache.vectors != vectors) {
         cache = {};
-        for (size_t index = 0; index < sites.size(); ++index) {
-            const uintptr_t site = native_history_vector_at(sites, index);
-            SiteReferenceIdentity identity;
-            if (!capture_site_reference_identity(base, site, identity)) continue;
-            identity.refreshed_epoch = epoch;
-            cache.identity_indices.emplace(identity.id, cache.identities.size());
-            cache.identities.push_back(std::move(identity));
-        }
         cache.world_data = world_data;
         cache.vectors = vectors;
+    }
+    if (!cache.index_complete) {
+        // Build from the retained position across short announcement input
+        // slices. A partial world catalog cannot prove absence or uniqueness;
+        // ordinary callers without a deadline finish it before using it too.
+        bool progressed = false;
+        while (cache.build_cursor < sites.size() ||
+                cache.source_index_cursor < cache.identities.size()) {
+            if (progressed && g_native_announcement_log_native_capture_deadline &&
+                    std::chrono::steady_clock::now() >= *g_native_announcement_log_native_capture_deadline)
+                throw NativeAnnouncementLogNativeCapturePending{};
+            if (cache.source_index_cursor < cache.identities.size()) {
+                const auto index = cache.source_index_cursor;
+                cache.identity_indices.insert_or_assign(cache.identities[index].id, index);
+                index_site_reference_source(cache, index);
+                ++cache.source_index_cursor;
+                progressed = true;
+                continue;
+            }
+            const uintptr_t site = native_history_vector_at(sites, cache.build_cursor);
+            SiteReferenceIdentity identity;
+            if (capture_site_reference_identity(base, site, identity)) {
+                identity.refreshed_epoch = epoch;
+                cache.identities.push_back(std::move(identity));
+            }
+            ++cache.build_cursor;
+            progressed = true;
+        }
+        cache.index_complete = true;
         cache.epoch = epoch;
-        index_site_reference_sources(cache);
     }
     const auto refresh = [&](SiteReferenceIdentity &identity) {
         if (identity.refreshed_epoch == epoch) return false;

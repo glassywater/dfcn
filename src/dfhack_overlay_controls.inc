@@ -18,7 +18,8 @@
         std::vector<std::pair<int, int>> sourced_controls;
         const auto named_source = [&](int x, int y, int length) {
             return std::any_of(source_texts.begin(), source_texts.end(), [&](const auto &text) {
-                return (text.option_name || text.role == NativeDfhackOverlayTextRole::Material ||
+                return (text.overlay_name == "spectate.tooltip" ||
+                        text.option_name || text.role == NativeDfhackOverlayTextRole::Material ||
                         text.role == NativeDfhackOverlayTextRole::Category ||
                         text.role == NativeDfhackOverlayTextRole::Item) && text.y == y &&
                     x < text.x + static_cast<int>(text.visible.size()) &&
@@ -26,7 +27,8 @@
             });
         };
         for (const auto &text : source_texts)
-            if (text.option_name || text.role == NativeDfhackOverlayTextRole::Key ||
+            if (text.overlay_name == "spectate.tooltip" ||
+                    text.option_name || text.role == NativeDfhackOverlayTextRole::Key ||
                     text.role == NativeDfhackOverlayTextRole::Material ||
                     text.role == NativeDfhackOverlayTextRole::Category ||
                     text.role == NativeDfhackOverlayTextRole::Item || text.quick_filter_label)
@@ -179,7 +181,25 @@
         const int last_y = only_y < 0 ? gps_->dimy : std::min(gps_->dimy, only_y + 1);
         for (const auto &text : source_texts) {
             if (text.y < first_y || text.y >= last_y || text.option_name) continue;
-            if (text.role == NativeDfhackOverlayTextRole::Item) {
+            if (text.overlay_name == "spectate.tooltip") {
+                // Both the direct unit banner and MouseTooltip's Label retain
+                // their actual GetUnitInfoText fields. Resolve complete jobs
+                // with the activity grammar; never interpret a name or a
+                // user-configured stress face as an ordinary control label.
+                std::optional<std::string> target;
+                if (text.role == NativeDfhackOverlayTextRole::SpectateJob) {
+                    target = exact_literal_translation("DFHack GUI Spectate job: " + text.full);
+                    if (!target) target = translate_fortress_activity(text.full, true);
+                    if (!target) target = translate_dfhack_caption("job", text.full);
+                } else if (text.role == NativeDfhackOverlayTextRole::SpectateActivity) {
+                    target = exact_literal_translation("DFHack GUI Spectate activity: " + text.full);
+                } else if (text.role == NativeDfhackOverlayTextRole::SpectateName) {
+                    target = translate_dfhack_readable_unit_name(text.full);
+                }
+                if (!target && contains_cjk_utf8(text.full)) target = text.full;
+                const int length = static_cast<int>(text.visible.size());
+                if (target) emit(text.x, text.y, length, *target, text.x + length, true);
+            } else if (text.role == NativeDfhackOverlayTextRole::Item) {
                 // The two mechanism HotkeyLabels and ItemSelection's final
                 // list token retain the complete native item designation.
                 // Resolve its material, singular/plural noun and quality
@@ -218,7 +238,7 @@
         // ID cannot turn an authored name such as Any into a sentinel.
         for (const auto &control : catalog->overlay_controls) {
             for (const auto &text : source_texts) {
-                if (text.y < first_y || text.y >= last_y ||
+                if (text.y < first_y || text.y >= last_y || text.overlay_name == "spectate.tooltip" ||
                         text.role == NativeDfhackOverlayTextRole::Key ||
                         text.role == NativeDfhackOverlayTextRole::Material ||
                         text.role == NativeDfhackOverlayTextRole::Category ||

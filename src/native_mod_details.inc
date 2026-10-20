@@ -23,7 +23,7 @@ static bool native_mod_copy_header(uintptr_t address, NativeModHeader &header) {
     return true;
 }
 
-static NativeModDetails native_mod_details(bool background_owner) {
+static NativeModDetails native_mod_details(bool background_owner, const graphicst *graphics) {
     NativeModDetails details;
     if (!native_history_profile_base()) return details;
     uintptr_t screen = native_current_viewscreen();
@@ -72,11 +72,15 @@ static NativeModDetails native_mod_details(bool background_owner) {
             screen, type, 0x30 + index * 4, 4), rect[index]) && have_rect;
     if (have_rect && rect[0] <= rect[2] && rect[1] <= rect[3]) details.widget_rect = rect;
 
-    auto *gps = native_graphics();
+    const auto *gps = graphics ? graphics : native_graphics();
     if (!gps || !gps->screen || gps->dimx <= 0 || gps->dimx > 1000 ||
             gps->dimy <= 2 || gps->dimy > 1000) return details;
     std::vector<uintptr_t> title_addresses;
     uint64_t epoch = 0;
+    // A private UI component retains its caption registry with its grid.
+    // Its draw epoch need not equal the newer background capture epoch;
+    // reject concurrent capture changes while retaining that component.
+    const uint64_t capture_epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
     {
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
         epoch = g_native_drawn_text_epoch;
@@ -112,7 +116,7 @@ static NativeModDetails native_mod_details(bool background_owner) {
         capture(g_native_drawn_text_rows);
         capture(g_native_drawn_top_text_rows);
     }
-    if (title_addresses.empty() || epoch !=
+    if (title_addresses.empty() || capture_epoch !=
             g_embark_item_capture_epoch.load(std::memory_order_acquire)) return details;
     // The mod renderer passes the actual header.name string directly to
     // addst at row 2. Its cached last_hover ID/version are never updated by
@@ -134,7 +138,7 @@ static NativeModDetails native_mod_details(bool background_owner) {
         }
         if (details.header) break;
     }
-    if (epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) {
+    if (capture_epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) {
         details.header.reset();
         return details;
     }
@@ -153,7 +157,7 @@ static NativeModDetails native_mod_details(bool background_owner) {
         remaining -= row.size();
         details.description_rows.push_back(std::move(row));
     }
-    if (epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) {
+    if (capture_epoch != g_embark_item_capture_epoch.load(std::memory_order_acquire)) {
         details.header.reset();
         details.description_rows.clear();
     }

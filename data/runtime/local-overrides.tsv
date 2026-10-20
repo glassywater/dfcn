@@ -7346,7 +7346,7 @@ Overview sentence: This is a fight!	这是打起来了！	l
 Overview sentence: In the midst of conflict...	卷进争斗里了……	l
 Overview sentence: Has the tide turned?	局势要变了吗？	l
 Overview sentence: How fragile we are...	我们原来这么不堪一击……	l
-Overview sentence: How fleeting life is...	人活着的日子真短啊……	l
+Overview sentence: How fleeting life is...	生命如此短暂……	l
 Overview sentence: Gruesome wounds!	这伤口，太惨了！	l
 Overview sentence: So easily broken...	这么容易就垮了……	l
 Overview sentence: Those injuries...	伤成这样……	l
@@ -12787,3 +12787,26 @@ Building link prompt: {s}	点击一个建筑，将其连接到{s}。	l
 Building link candidate: {s}	连接到{s}	l
 Building link rejected: {s}	无法连接到{s}	l
 Building link installation: {s}	将安装在{s}处	l
+
+# plugins/spectate.lua: shortened job and activity_entry_type tooltip fields.
+# The installed activity supplier can emit enum identifiers or spaced captions.
+DFHack GUI Spectate job: Store item	存放物品	l
+DFHack GUI Spectate activity: TrainingSession	训练课程	l
+DFHack GUI Spectate activity: Training Session	训练课程	l
+DFHack GUI Spectate activity: IndividualSkillDrill	个人技能训练	l
+DFHack GUI Spectate activity: Individual Skill Drill	个人技能训练	l
+DFHack GUI Spectate activity: Conflict	冲突	l
+DFHack GUI Spectate activity: Harassment	骚扰	l
+DFHack GUI Spectate activity: Guard	警戒	l
+DFHack GUI Spectate activity: Conversation	交谈	l
+DFHack GUI Spectate activity: Reunion	重聚	l
+DFHack GUI Spectate activity: Prayer	祈祷	l
+DFHack GUI Spectate activity: Socialize	社交	l
+DFHack GUI Spectate activity: Research	研究	l
+DFHack GUI Spectate activity: FillServiceOrder	接待顾客	l
+DFHack GUI Spectate activity: Fill Service Order	接待顾客	l
+DFHack GUI Spectate activity: Read	阅读	l
+DFHack GUI Spectate activity: Play	游玩	l
+DFHack GUI Spectate activity: Encounter	遭遇	l
+DFHack GUI Spectate activity: StoreObject	存放物品	l
+DFHack GUI Spectate activity: Store Object	存放物品	l

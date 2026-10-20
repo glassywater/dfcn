@@ -13,6 +13,8 @@ struct CivilizationReferenceCache {
     std::array<uintptr_t, 9> vectors{};
     uint64_t epoch = 0;
     size_t refresh_cursor = 0;
+    size_t build_cursor = 0, source_index_cursor = 0;
+    bool index_complete = false;
     std::vector<CivilizationReferenceIdentity> identities;
     std::unordered_map<int32_t, size_t> identity_indices;
     std::unordered_map<std::string, std::vector<size_t>> sources;
@@ -130,18 +132,20 @@ static bool capture_civilization_reference_identity(uintptr_t base, uintptr_t en
     return true;
 }
 
+static void index_civilization_reference_source(CivilizationReferenceCache &cache, size_t index) {
+    const auto &identity = cache.identities[index];
+    for (const auto &source : {identity.native, identity.english}) {
+        const std::string key = civilization_reference_key(source);
+        if (key.empty()) continue;
+        auto &candidates = cache.sources[key];
+        if (std::find(candidates.begin(), candidates.end(), index) == candidates.end())
+            candidates.push_back(index);
+    }
+}
 static void index_civilization_reference_sources(CivilizationReferenceCache &cache) {
     cache.sources.clear();
-    for (size_t i = 0; i < cache.identities.size(); ++i) {
-        const auto &identity = cache.identities[i];
-        for (const auto &source : {identity.native, identity.english}) {
-            const std::string key = civilization_reference_key(source);
-            if (key.empty()) continue;
-            auto &candidates = cache.sources[key];
-            if (std::find(candidates.begin(), candidates.end(), i) == candidates.end())
-                candidates.push_back(i);
-        }
-    }
+    for (size_t index = 0; index < cache.identities.size(); ++index)
+        index_civilization_reference_source(cache, index);
 }
 
 std::optional<std::string> Overlay::translate_civilization_reference(
@@ -236,10 +240,29 @@ std::optional<std::string> Overlay::translate_entity_reference(
     // A new world or vector membership rebuilds the identity catalog. Names
     // edited in place are found by a bounded rotating refresh below.
     if (changed_world) {
-        std::vector<CivilizationReferenceIdentity> identities;
-        std::unordered_map<int32_t, size_t> identity_indices;
-        for (size_t i = 0; i < entities.size(); ++i) {
-            const uintptr_t entity = native_history_vector_at(entities, i);
+        cache = {};
+        cache.world_data = world_data;
+        cache.vectors = vectors;
+    }
+    if (!cache.index_complete) {
+        // Announcement capture can yield between native entities. Retain
+        // both the capture and source-index cursors so the next input slice
+        // resumes this world instead of restarting or publishing a false miss.
+        bool progressed = false;
+        while (cache.build_cursor < entities.size() ||
+                cache.source_index_cursor < cache.identities.size()) {
+            if (progressed && g_native_announcement_log_native_capture_deadline &&
+                    std::chrono::steady_clock::now() >= *g_native_announcement_log_native_capture_deadline)
+                throw NativeAnnouncementLogNativeCapturePending{};
+            if (cache.source_index_cursor < cache.identities.size()) {
+                const auto index = cache.source_index_cursor;
+                cache.identity_indices.insert_or_assign(cache.identities[index].id, index);
+                index_civilization_reference_source(cache, index);
+                ++cache.source_index_cursor;
+                progressed = true;
+                continue;
+            }
+            const uintptr_t entity = native_history_vector_at(entities, cache.build_cursor);
             int16_t type = -1;
             if (!entity || !native_history_copy(native_history_object_field(entity,
                     "historical_entity", 0, sizeof(type)), type)) {
@@ -248,21 +271,19 @@ std::optional<std::string> Overlay::translate_entity_reference(
             }
             // Index every real kind for identity and ambiguity. Explicit
             // native governing roles alone admit the additional name senses.
-            if (type < 0 || type > 10) continue;
-            CivilizationReferenceIdentity identity;
-            if (capture_civilization_reference_identity(base, entity, translations, identity)) {
-                identity.refreshed_epoch = draw_epoch_;
-                identity_indices.emplace(identity.id, identities.size());
-                identities.push_back(std::move(identity));
+            if (type >= 0 && type <= 10) {
+                CivilizationReferenceIdentity identity;
+                if (capture_civilization_reference_identity(base, entity, translations, identity)) {
+                    identity.refreshed_epoch = draw_epoch_;
+                    cache.identities.push_back(std::move(identity));
+                }
             }
+            ++cache.build_cursor;
+            progressed = true;
         }
-        cache.identities = std::move(identities);
-        cache.identity_indices = std::move(identity_indices);
-        cache.world_data = world_data;
-        cache.vectors = vectors;
+        cache.index_complete = true;
         cache.epoch = draw_epoch_;
         cache.refresh_cursor = 0;
-        index_civilization_reference_sources(cache);
     }
     const auto refresh = [&](CivilizationReferenceIdentity &identity) {
         if (identity.refreshed_epoch == draw_epoch_) return false;

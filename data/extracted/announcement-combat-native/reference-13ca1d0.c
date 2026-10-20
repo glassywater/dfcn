@@ -120,7 +120,7 @@ void combat_source_cloud_emission_13ca1d0
       uStack_138 = 0;
       uStack_140 = 0xffffffff;
       iStack_148 = param_5;
-      FUN_140a82c10(auStack_98,param_2,param_3,param_4);
+      combat_source_generic_item_type_material_caption_a82c10(auStack_98,param_2,param_3,param_4);
     }
     else {
       FUN_14006fa10(auStack_98," ",1);

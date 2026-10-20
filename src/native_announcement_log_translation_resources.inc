@@ -1,5 +1,8 @@
 // Only catalog publication takes the renderer's translation lock. Every job
 // below owns a complete CPU parser, rule graph, naming vocabulary and memo.
+static void native_announcement_log_collect_owned_unit_dependencies(
+    const NativeAnnouncementLogDocument &document,
+    std::vector<NativeAnnouncementLogReferenceRequest> &requests);
 NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator() const {
     TranslationStateScope translation;
     using Parser = DFHack::DFZH::Hooks::RulesetsManager;
@@ -116,7 +119,8 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
         state->message_sources.emplace_back(source);
         target.ui_message_template_sources_.try_emplace(state->message_sources.back(), index);
     }
-    return [state = std::move(state)](const NativeAnnouncementLogDocument &document, int foreground) {
+    return [state = std::move(state)](const NativeAnnouncementLogDocument &document, int) {
+        translation_work_step(0);
         TranslationStateDomainScope domain(state->domain);
         Parser::ScopedInstanceOverride parser(*state->parser);
         struct OwnerScope {
@@ -136,12 +140,16 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
             state->overlay.identity_translation_catalog_generation_.store(state->catalog, std::memory_order_release);
             state->initialized = true;
         }
+        // A viewport can retire this job while its private parser initializes.
+        // Keep that initialized graph, but yield before copying another input
+        // catalogue or collecting dependencies for an obsolete foreground job.
+        translation_work_step(0);
         NativeAnnouncementLogWorkerInputScope inputs(document.worker_inputs.get());
         if (document.worker_inputs && document.worker_inputs->instrument_names &&
                 state->instruments != document.worker_inputs->instrument_names) {
-            state->instruments = document.worker_inputs->instrument_names;
-            if (state->overlay.native_instrument_names_ != *state->instruments) {
-                state->overlay.native_instrument_names_ = *state->instruments;
+            const auto &instruments = document.worker_inputs->instrument_names;
+            if (state->overlay.native_instrument_names_ != *instruments) {
+                state->overlay.native_instrument_names_ = *instruments;
                 state->overlay.described_instrument_items_.clear();
                 state->overlay.instrument_description_cache_.clear();
                 state->overlay.workshop_recipe_translation_cache_.clear();
@@ -149,8 +157,19 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
                 state->overlay.item_translation_cache_.clear();
                 state->overlay.item_translation_cache_order_.clear();
             }
+            state->instruments = instruments;
         }
+        translation_work_step(0);
         NativeAnnouncementLogTranslationResult result;
+        // Discover all already-owned live identity leaves in one pass. The
+        // parser otherwise unwinds at its first absent leaf and repeats the
+        // entire paragraph after every native publication. This pass only
+        // inspects immutable snapshots and never renders or reads the world.
+        native_announcement_log_collect_owned_unit_dependencies(document, result.reference_requests);
+        if (!result.reference_requests.empty()) {
+            result.needs_owned_dependency = true;
+            return result;
+        }
         bool world_attempt = false;
         bool dependency_attempt = false;
         struct WorldScope {
@@ -179,6 +198,10 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
             g_native_announcement_log_identity_context ^=
                 native_identity_source_fingerprint(document.record_key, std::nullopt);
             if (!g_native_announcement_log_identity_context) g_native_announcement_log_identity_context = 1;
+            // This parser serves one uniform native report. Preserve inherited
+            // foreground as a template marker; the service applies the actual
+            // viewport RGB after lookup, without rerunning sentence semantics.
+            constexpr int foreground = native_announcement_log_inherited_foreground;
             result.target = state->overlay.compose_native_announcement_log_record(
                 document, source, foreground, result.colors);
             TranslationResult outcome;
@@ -208,9 +231,10 @@ NativeAnnouncementLogTranslator Overlay::make_native_announcement_log_translator
 void Overlay::publish_native_announcement_log_translation_catalog() const {
     if (translation_cpu_only_) return;
     std::vector<NativeAnnouncementLogTranslator> translators;
-    translators.reserve(2);
-    translators.push_back(make_native_announcement_log_translator());
-    translators.push_back(make_native_announcement_log_translator());
+    const auto workers = native_announcement_log_translation_worker_count();
+    translators.reserve(workers);
+    for (size_t worker = 0; worker < workers; ++worker)
+        translators.push_back(make_native_announcement_log_translator());
     native_announcement_log_translation_publish_catalog(std::move(translators),
         native_identity_translation_catalog_generation());
     native_announcement_log_translation_start();

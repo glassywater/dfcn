@@ -1,0 +1,4 @@
+file	line	entity	position	token	text	translation
+data/vanilla/vanilla_entities/objects/entity_default.txt	741	MOUNTAIN	DUKE	LAND_NAME	a duchy	公爵领
+data/vanilla/vanilla_entities/objects/entity_default.txt	777	MOUNTAIN	COUNT	LAND_NAME	a county	伯爵领
+data/vanilla/vanilla_entities/objects/entity_default.txt	814	MOUNTAIN	BARON	LAND_NAME	a barony	男爵领

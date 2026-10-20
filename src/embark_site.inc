@@ -180,13 +180,17 @@ void Overlay::append_embark_site_names(const NativeTextCard &card,
             }
             continue;
         }
-        // River captions select the English geographical name. They share
-        // whole-name composition, but have no world_site type to append.
-        for (std::string_view prefix : {"Brook:", "Stream:", "Minor River:", "Major River:"}) {
+        // Typed river draws have already claimed the complete name. Leave
+        // their independent segment label to the literal-caption translator.
+        for (std::string_view prefix : {"Brook:", "Stream:", "River:", "Minor River:", "Major River:"}) {
             if (!source.starts_with(prefix)) continue;
+            if (std::any_of(matches.begin(), matches.end(), [&](const Match &m) {
+                    return m.y == row.y && m.rule == kWorldgenSummaryRule &&
+                        m.x >= row.x && m.x < row.x + int(row.source.size());
+                })) break;
             const auto label = exact_literal_translation(prefix);
-            const auto name = translate_english_site_name(trim_view(std::string_view(source).substr(prefix.size())));
-            if (label && name) claim(row, *label + *name);
+            const auto name = translate_river_text(trim_view(std::string_view(source).substr(prefix.size())));
+            if (label && !name.empty()) claim(row, *label + name);
             break;
         }
     }

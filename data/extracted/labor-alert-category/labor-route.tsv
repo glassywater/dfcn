@@ -1,0 +1,5 @@
+edition	image_identity	announcement_type	announcement_name	mapping_function_rva	byte_remap_rva	table_index	branch_target_rva	alert_type	alert_name
+reference	PE:6a70a6d9:02711000	236	PROFESSION_CHANGES	0xeaa20	0xeaba0	25	0xeaa86	11	LABOR_CHANGE
+reference	PE:6a70a6d9:02711000	283	CITIZEN_BECOMES_NONSOLDIER	0xeaa20	0xeaba0	25	0xeaa86	11	LABOR_CHANGE
+classic	PE:6a70b91c:0270a000	236	PROFESSION_CHANGES	0xea9b0	0xeab30	25	0xeaa16	11	LABOR_CHANGE
+classic	PE:6a70b91c:0270a000	283	CITIZEN_BECOMES_NONSOLDIER	0xea9b0	0xeab30	25	0xeaa16	11	LABOR_CHANGE

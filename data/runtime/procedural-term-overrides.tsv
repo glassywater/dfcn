@@ -13,6 +13,9 @@ alchemical	炼金
 brook	小溪
 carnage	屠戮
 carnages	屠戮
+# CASKET is a coffin in DF; keep the shared vocabulary aligned with items::coffin.
+casket	棺
+caskets	棺
 chartreuse	黄绿色
 cliff	悬崖
 chuck	抛掷

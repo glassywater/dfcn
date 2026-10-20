@@ -691,13 +691,15 @@ static bool install_native_dfhack_render_layers() {
     if (!g_native_dfhack_render_thread_entry.original) {
         auto *entry = reinterpret_cast<unsigned char *>(GetProcAddress(module,
             "?runRenderThreadCallbacks@DFHack@@YAXXZ"));
-        if (!entry) return false;
-        int32_t relative = 0;
-        std::memcpy(&relative, entry + 6, sizeof(relative));
+        std::vector<unsigned char> prefix{
+            0x48,0x83,0xec,0x28,0x8b,0x0d,0x5e,0x25,0x97,0x00};
+        if (!native_dfhack_read_entry_prefix(entry, prefix, {6}, label)) return false;
+        const auto *target = native_dfhack_relative_target(entry, 6, 10);
+        if (target != native_dfhack_pe_directory_pointer(module, IMAGE_DIRECTORY_ENTRY_TLS,
+                offsetof(IMAGE_TLS_DIRECTORY64, AddressOfIndex))) return false;
         const std::vector<NativeRelativeFixup> fixups{{6, 10,
-            reinterpret_cast<uintptr_t>(entry + 10 + relative)}};
-        if (!g_native_dfhack_render_thread_entry.prepare(entry,
-                {0x48,0x83,0xec,0x28,0x8b,0x0d,0x5e,0x25,0x97,0x00},
+            reinterpret_cast<uintptr_t>(target)}};
+        if (!g_native_dfhack_render_thread_entry.prepare(entry, prefix,
                 reinterpret_cast<const void *>(&native_dfhack_render_thread_callback), fixups, label)) return false;
     }
     if (!g_native_dfhack_render_update_entry.install(label) || !g_native_dfhack_render_lua_entry.install(label) ||

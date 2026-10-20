@@ -23,9 +23,75 @@ layer	part	部位		0x141361885+0x1400e686d+0x1400e6ac8+0x1400e7aec+0x1400e7e95
 layer	main part	主要部分		0x141361885+0x1400e686d+0x1400e6ac8+0x1400e7aec+0x1400e7e95
 layer	injured part	受伤部位		0x141361885+0x1400e686d+0x1400e6ac8+0x1400e7aec+0x1400e7e95
 layer	severed part	断肢		0x141361885+0x1400e686d+0x1400e6ac8+0x1400e7aec+0x1400e7e95
-layer	{s}'s {s}	{s1}的{s2}	layer,$term	0x1400e7732+0x1400e7a26+0x1400e8158
+layer	{s}'s {s}	{s1}的{s2}	layer,combat-tissue	0x1400e7732+0x1400e7a26+0x1400e8158; complete BODY owner and caste tissue singular-name field +0x30
 layer	{s}	{s1}	$body	0x1413345d0; RAW body names
-layer	{s}	{s1}	$term	0x1400e7768+0x1400e79b5; RAW tissue/material display names
+layer	{s}	{s1}	combat-tissue	0x1400e7768+0x1400e79b5; RAW tissue/material display names
+# Both TISSUE_NAME loaders retain the complete singular field at caste tissue
+# +0x30; shared damage copies that field, including unusual uniform bodies.
+# Keep these meanings inside the tissue field, distinct from color, body-name
+# and item homonyms. RAW names and procedural sources are retained in
+# data/extracted/announcement-combat-native/raw-anatomy-names.tsv and
+# raw-procedural-anatomy-sources.tsv. NP/STP are plural instructions, not names.
+combat-tissue	amethyst	紫水晶		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	antler	鹿角		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	blood	血液		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	bone	骨骼		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	brain tissue	脑组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	bronze	青铜		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	cartilage	软骨		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	cheek whisker	颊须		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	chin whisker	下颌须		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	chitin	甲壳		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	claw	爪		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	crust	硬壳		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	eye tissue	眼部组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	eyebrow	眉毛		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	eyelash	睫毛		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	fat	脂肪		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	feather	羽毛		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	flames	火焰		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	flesh	血肉		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	fluff	绒毛		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	fluid	体液		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	gabbro	辉长岩		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	gas	气体		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	gizzard tissue	砂囊组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	gut	肠子		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	hair	毛发		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	heart tissue	心脏组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	hoof	蹄		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	horn	角		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	interior gas	内部气体		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	iron	铁		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	ivory	象牙		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	kidney tissue	肾组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	liver tissue	肝脏组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	lung tissue	肺部组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	magma	岩浆		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	moustache	八字胡		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	mud	淤泥		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	muscle	肌肉		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	nail	指甲		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	nervous tissue	神经组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	pancreatic tissue	胰腺组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	plump helmet man tissue	肉盔菇人组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	pod	荚壳		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	pudge	球脂		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	scale	鳞片		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	shell	壳		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	sideburns	鬓角		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	silk wool	丝毛		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	skin	皮肤		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	spine	棘刺		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	spleen tissue	脾组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	sponge	海绵		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	stomach tissue	胃组织		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	talon	利爪		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	tooth	牙齿		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	wood	木头		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	wool	羊毛		RAW TISSUE_NAME; PE 0x1406f6b90 / 0x1406f45b0
+combat-tissue	tissue	组织		vanilla_procedural/scripts/generators/creatures/shared_info.lua:4953; uniform-body TISSUE_NAME
+combat-tissue	{s}	{s1}	$term	0x1400e777d+0x1400e7a54; complete dynamic RAW tissue/material display field
 object	{s}	{s1}	$body	0x1400e5b17+0x141361868; anatomical semantics precede homonymous item nouns
 object	{s}	{s1}	$combat-item	0x1400e5afa+0x1413617c3; complete c65450 caption includes its virtual article and designation wrappers
 object	body part	身体部位		0x141361885+0x141361c5a
@@ -119,6 +185,7 @@ damage	{s} through a hole in the	{s1}，穿过孔洞	damage	Steam 0x1400e7a9c+0x
 damage	passing through a hole in the	穿过孔洞		Steam 0x1400e7c0f+0x1400e7cb4+0x1400e7d2e / classic 0x1400e7b9f+0x1400e7c44+0x1400e7cbe; single-layer different body or null material skips target text before and-jamming continuation
 layer	{s}'s	{s1}	$body	Steam 0x1400e7cc8..0x1400e7d31+0x1400e8206..0x1400e8285 / classic 0x1400e7c58..0x1400e7cc1+0x1400e8196..0x1400e8215; complete body possessive can precede a skipped null tissue name; preserve the known body without inventing a tissue
 damage	jamming the {s} through the {s}	将{s1}挤压穿过{s2}	layer,layer	0x1400e7d50..0x1400e7fcd
+damage	jamming the {s} through the	将{s1}挤压穿透	layer	Steam 0x1400e7ecf..0x1400e7f7f -> 0x1400e8294 / classic 0x1400e7e5f..0x1400e7f0f -> 0x1400e8224; endpoint is the struck body and has one tissue layer, so the native builder retains through-the separator without a target name
 damage	jamming the {s} out of the wound	将{s1}从伤口挤出	layer	0x1400e7d50+0x1400e7fd2
 damage	breaking away the {s}	使{s1}断落	layer	0x1400e8088+0x1400e80ee
 fraction	most of	大部分		0x1400e80b1+0x1400e80c3+0x1400e80cc+0x1400e80de
@@ -207,10 +274,13 @@ sentence	{s} is ripped to shreds!	{s1}被撕成了碎片！	equipment	0x1400e8fc
 sentence	{s} breaks!	{s1}断裂了！	equipment	0x1400e8fd8+0x1400e905e
 sentence	{s} attack is interrupted!	{s1}攻击被打断了！	owner	0x1400e90f4+0x1400e917e
 sentence	The {s} has lodged firmly in the wound!	{s1}牢牢嵌在了伤口中！	$item	0x1400e929d+0x1400e92ba+0x1400e9349
-sentence	{s} latch on firmly!	{s1}牢牢咬住了！	unit	0x1400e94db+0x1400e94e4+0x1400e956f
-sentence	{s} latch on firmly to {s}!	{s1}牢牢咬住了{s2}！	unit,owned-object	0x1400e939b+0x1400e93a4+0x1400e93b4+0x1400e94a8
-sentence	{s} latches on firmly!	{s1}牢牢咬住了！	unit	0x1400e94db+0x1400e94e4+0x1400e956f
-sentence	{s} latches on firmly to {s}!	{s1}牢牢咬住了{s2}！	unit,owned-object	0x1400e939b+0x1400e93a4+0x1400e93b4+0x1400e94a8
+# CANLATCH includes both bite and pincer snatch: creature_standard.txt:5596 and
+# vanilla_procedural/scripts/generators/creatures/shared_info.lua:5479. These
+# follow-up records contain no attack verb, so do not invent a biting action.
+sentence	{s} latch on firmly!	{s1}牢牢抓住了！	unit	0x1400e94db+0x1400e94e4+0x1400e956f
+sentence	{s} latch on firmly to {s}!	{s1}牢牢抓住了{s2}！	unit,owned-object	0x1400e939b+0x1400e93a4+0x1400e93b4+0x1400e94a8
+sentence	{s} latches on firmly!	{s1}牢牢抓住了！	unit	0x1400e94db+0x1400e94e4+0x1400e956f
+sentence	{s} latches on firmly to {s}!	{s1}牢牢抓住了{s2}！	unit,owned-object	0x1400e939b+0x1400e93a4+0x1400e93b4+0x1400e94a8
 sentence	{s} have become enraged!	{s1}暴怒了！	unit	0x1400e91cc
 sentence	{s} have been knocked unconscious!	{s1}被击昏了！	unit	0x1400e9692
 sentence	{s} have been stunned again!	{s1}又被击晕了！	unit	0x1400e977a
@@ -253,8 +323,8 @@ head	The force twists the {s}	冲击力扭转了{s1}	$body	0x140653080..0x140653
 head	The force pulls the {s}	冲击力拉扯了{s1}	$body	0x140653080..0x140653164; complete prefix transferred to damage record
 assault	{s} attack {s}	{s1}攻击{s2}	actor,unit	0x14064d2d0..0x14064d348+0x14064e2ba..0x14064e30a
 assault	{s} attacks {s}	{s1}攻击{s2}	actor,unit	0x14064d2d0..0x14064d348+0x14064e2ba..0x14064e30a
-shot	{s} strike at {s}	{s1}向{s2}发动射击	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4
-shot	{s} strikes at {s}	{s1}向{s2}发动射击	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4
+shot	{s} strike at {s}	{s1}袭向{s2}	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4; actor is the flying/spinning projectile itself or a unit, never an inferred shooter
+shot	{s} strikes at {s}	{s1}袭向{s2}	actor,unit	0x14064d52d..0x14064d55c+0x14064db18..0x14064db47+0x14064f1b5..0x14064f1e4; actor is the flying/spinning projectile itself or a unit, never an inferred shooter
 evasion	{s} scramble away	{s1}连滚带爬地躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} scramble away from {s}!	{s1}连滚带爬地躲开了{s2}！	unit,actor	0x14064e08a..0x14064e112
 evasion	{s} scrambles away	{s1}连滚带爬地躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
@@ -264,9 +334,9 @@ sentence	{s} roll away from {s}!	{s1}翻滚躲开了{s2}！	unit,actor	0x14064e0
 evasion	{s} rolls away	{s1}翻滚躲开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
 sentence	{s} rolls away from {s}!	{s1}翻滚躲开了{s2}！	unit,actor	0x14064e08a..0x14064e112
 evasion	{s} jump away	{s1}跳开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
-sentence	{s} jump away from {s}!	{s1}跳开了{s2}！	unit,actor	0x14064e08a..0x14064e112
+sentence	{s} jump away from {s}!	{s1}跳开，避过了{s2}！	unit,actor	0x14064e08a..0x14064e112
 evasion	{s} jumps away	{s1}跳开了	subject-pronoun	0x14064d38a..0x14064d7c5+0x14064e33c..0x14064e3b1
-sentence	{s} jumps away from {s}!	{s1}跳开了{s2}！	unit,actor	0x14064e08a..0x14064e112
+sentence	{s} jumps away from {s}!	{s1}跳开，避过了{s2}！	unit,actor	0x14064e08a..0x14064e112
 sentence	{s} but {s}!	{s1}，但{s2}！	assault,evasion	0x14064d327+0x14064d348+0x14064d7c5; 0x14064e2e9+0x14064e3b1
 sentence	{s} miss {s}!	{s1}未能击中{s2}！	actor,unit	0x14064e61b..0x14064e658
 sentence	{s} miss {s} badly, blocked by the divine intervention of mighty {s}!	{s1}远远偏离了{s2}，攻击被强大的{s3}以神力阻止了！	actor,unit,$person	0x140650242..0x1406502c4; native deity name helper

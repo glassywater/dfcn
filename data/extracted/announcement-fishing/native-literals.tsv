@@ -1,0 +1,83 @@
+edition	image_identity	owner	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343cbb	rip-relative	0x1782e18	finite-text-operand-or-substring	There is nothing to catch in 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343cc5	rip-relative	0x1782e28	finite-text-operand-or-substring	 to catch in 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343cd2	rip-relative	0x1782e30	finite-text-operand-or-substring	h in 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343cdb	rip-relative	0x1782e34	separator	 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343d2e	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343e8f	rip-relative	0x178b330	numeric-string-layout-vector	!
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343e9c	rip-relative	0x1782e50	finite-text-operand-or-substring	There is nothing to catch in the 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343ea6	rip-relative	0x1782e60	finite-text-operand-or-substring	 to catch in the 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343eb1	rip-relative	0x1782e70	separator	 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343f05	rip-relative	0x1782e40	finite-text-operand-or-substring	northwestern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343f2a	rip-relative	0x1782d88	finite-text-operand-or-substring	southwestern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343f69	rip-relative	0x1782d78	finite-text-operand-or-substring	northeastern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343f8e	rip-relative	0x1782da8	finite-text-operand-or-substring	southeastern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343f9f	rip-relative	0x16d1880	finite-text-operand-or-substring	western
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343fc0	rip-relative	0x1782d98	finite-text-operand-or-substring	northern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343fd3	rip-relative	0x16d1888	finite-text-operand-or-substring	eastern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1343ff3	rip-relative	0x1782dc0	finite-text-operand-or-substring	southern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344001	rip-relative	0x1782db8	finite-text-operand-or-substring	central
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x134401f	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x134405e	rip-relative	0x1782dd0	finite-text-operand-or-substring	eerie cavern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x134406d	rip-relative	0x1782de0	finite-text-operand-or-substring	magma sea
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344079	rip-relative	0x164c394	finite-text-operand-or-substring	cavern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x134408f	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13441e6	rip-relative	0x178b330	numeric-string-layout-vector	!
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13441f3	rip-relative	0x1782e50	finite-text-operand-or-substring	There is nothing to catch in the 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13441fd	rip-relative	0x1782e60	finite-text-operand-or-substring	 to catch in the 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344208	rip-relative	0x1782e70	separator	 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344251	rip-relative	0x1782e40	finite-text-operand-or-substring	northwestern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344279	rip-relative	0x1782d88	finite-text-operand-or-substring	southwestern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13442ba	rip-relative	0x1782d78	finite-text-operand-or-substring	northeastern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13442e1	rip-relative	0x1782da8	finite-text-operand-or-substring	southeastern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13442f4	rip-relative	0x16d1880	finite-text-operand-or-substring	western
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344315	rip-relative	0x1782d98	finite-text-operand-or-substring	northern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344328	rip-relative	0x16d1888	finite-text-operand-or-substring	eastern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344348	rip-relative	0x1782dc0	finite-text-operand-or-substring	southern
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344356	rip-relative	0x1782db8	finite-text-operand-or-substring	central
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x1344374	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13443b8	rip-relative	0x164c49c	finite-text-operand-or-substring	lake
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13443c7	rip-relative	0x1782524	finite-text-operand-or-substring	swamps
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13443d3	rip-relative	0x164c50c	finite-text-operand-or-substring	ocean
+reference	PE:6a70a6d9:02711000	fishing-resource-update	0x13435b0	0x13443ef	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ec2b	rip-relative	0x177cba0	finite-text-operand-or-substring	There is nothing to catch in 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ec35	rip-relative	0x177cbb0	finite-text-operand-or-substring	 to catch in 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ec42	rip-relative	0x177cbb8	finite-text-operand-or-substring	h in 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ec4b	rip-relative	0x177cbbc	separator	 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ec9e	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133edff	rip-relative	0x1785c30	numeric-string-layout-vector	!
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ee0c	rip-relative	0x177cb78	finite-text-operand-or-substring	There is nothing to catch in the 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ee16	rip-relative	0x177cb88	finite-text-operand-or-substring	 to catch in the 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ee21	rip-relative	0x177cb98	separator	 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ee75	rip-relative	0x177cbd0	finite-text-operand-or-substring	northwestern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ee9a	rip-relative	0x177cbc0	finite-text-operand-or-substring	southwestern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133eed9	rip-relative	0x177cbf0	finite-text-operand-or-substring	northeastern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133eefe	rip-relative	0x177cbe0	finite-text-operand-or-substring	southeastern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ef0f	rip-relative	0x16cca20	finite-text-operand-or-substring	western
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ef30	rip-relative	0x177d6c0	finite-text-operand-or-substring	northern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ef43	rip-relative	0x16cca28	finite-text-operand-or-substring	eastern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ef63	rip-relative	0x177d6b0	finite-text-operand-or-substring	southern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ef71	rip-relative	0x177d6e0	finite-text-operand-or-substring	central
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133ef8f	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133efce	rip-relative	0x177d6f0	finite-text-operand-or-substring	eerie cavern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133efdd	rip-relative	0x177d6d0	finite-text-operand-or-substring	magma sea
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133efe9	rip-relative	0x1647400	finite-text-operand-or-substring	cavern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133efff	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f156	rip-relative	0x1785c30	numeric-string-layout-vector	!
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f163	rip-relative	0x177cb78	finite-text-operand-or-substring	There is nothing to catch in the 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f16d	rip-relative	0x177cb88	finite-text-operand-or-substring	 to catch in the 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f178	rip-relative	0x177cb98	separator	 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f1c1	rip-relative	0x177cbd0	finite-text-operand-or-substring	northwestern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f1e9	rip-relative	0x177cbc0	finite-text-operand-or-substring	southwestern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f22a	rip-relative	0x177cbf0	finite-text-operand-or-substring	northeastern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f251	rip-relative	0x177cbe0	finite-text-operand-or-substring	southeastern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f264	rip-relative	0x16cca20	finite-text-operand-or-substring	western
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f285	rip-relative	0x177d6c0	finite-text-operand-or-substring	northern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f298	rip-relative	0x16cca28	finite-text-operand-or-substring	eastern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f2b8	rip-relative	0x177d6b0	finite-text-operand-or-substring	southern
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f2c6	rip-relative	0x177d6e0	finite-text-operand-or-substring	central
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f2e4	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f328	rip-relative	0x164732c	finite-text-operand-or-substring	lake
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f337	rip-relative	0x177d6e8	finite-text-operand-or-substring	swamps
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f343	rip-relative	0x164739c	finite-text-operand-or-substring	ocean
+classic	PE:6a70b91c:0270a000	fishing-resource-update	0x133e520	0x133f35f	rip-relative	0x15e3574	finite-text-operand-or-substring	.

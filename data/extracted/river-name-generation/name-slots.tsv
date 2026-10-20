@@ -1,0 +1,8 @@
+slot	native_component	word_offset	pos_offset	selector_pool	meaning
+0	FrontCompound	0x40	0x5c	0	复合词前半
+1	RearCompound	0x44	0x5e	1	复合词后半
+2	FirstAdjective	0x48	0x60	3	称号第一形容词
+3	SecondAdjective	0x4c	0x62	3	称号第二形容词
+4	HyphenCompound	0x50	0x64	4	称号连字符修饰词
+5	TheX	0x54	0x66	2	称号中心名词
+6	OfX	0x58	0x68	5	of 后面的补语

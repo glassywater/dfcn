@@ -1,0 +1,271 @@
+edition	profession_value	jump_rva	case_rva	decompiled_literal_choices	source_kind
+reference	0	0x132cce3	0x132cce5	miner	standard native profession word; RAW override has precedence
+reference	1	0x132cce3	0x132ccff	woodworker	standard native profession word; RAW override has precedence
+reference	2	0x132cce3	0x132cd19	carpenter	standard native profession word; RAW override has precedence
+reference	3	0x132cce3	0x132cd33	bowyer	standard native profession word; RAW override has precedence
+reference	4	0x132cce3	0x132cd4d	woodcutter	standard native profession word; RAW override has precedence
+reference	5	0x132cce3	0x132cd67	stoneworker	standard native profession word; RAW override has precedence
+reference	6	0x132cce3	0x132cd9b	stonecutter	standard native profession word; RAW override has precedence
+reference	7	0x132cce3	0x132cdb5	stone carver	standard native profession word; RAW override has precedence
+reference	8	0x132cce3	0x132cd81	engraver	standard native profession word; RAW override has precedence
+reference	9	0x132cce3	0x132cdcf	mason	standard native profession word; RAW override has precedence
+reference	10	0x132cce3	0x132cde9	ranger	standard native profession word; RAW override has precedence
+reference	11	0x132cce3	0x132ce03	animal caretaker	standard native profession word; RAW override has precedence
+reference	12	0x132cce3	0x132ce1d	animal trainer	standard native profession word; RAW override has precedence
+reference	13	0x132cce3	0x132ce37	hunter	standard native profession word; RAW override has precedence
+reference	14	0x132cce3	0x132ce51	trapper	standard native profession word; RAW override has precedence
+reference	15	0x132cce3	0x132ce6b	animal dissector	standard native profession word; RAW override has precedence
+reference	16	0x132cce3	0x132ce85	metalsmith	standard native profession word; RAW override has precedence
+reference	17	0x132cce3	0x132ce9f	furnace operator	standard native profession word; RAW override has precedence
+reference	18	0x132cce3	0x132ceb9	weaponsmith	standard native profession word; RAW override has precedence
+reference	19	0x132cce3	0x132ced3	armorer	standard native profession word; RAW override has precedence
+reference	20	0x132cce3	0x132ceed	blacksmith	standard native profession word; RAW override has precedence
+reference	21	0x132cce3	0x132cf07	metalcrafter	standard native profession word; RAW override has precedence
+reference	22	0x132cce3	0x132cf21	jeweler	standard native profession word; RAW override has precedence
+reference	23	0x132cce3	0x132cf3b	gem cutter	standard native profession word; RAW override has precedence
+reference	24	0x132cce3	0x132cf55	gem setter	standard native profession word; RAW override has precedence
+reference	25	0x132cce3	0x132cf6f	craftsmen | craftsman	standard native profession word; RAW override has precedence
+reference	26	0x132cce3	0x132cf8f	woodcrafter	standard native profession word; RAW override has precedence
+reference	27	0x132cce3	0x132d02b	stonecrafter	standard native profession word; RAW override has precedence
+reference	28	0x132cce3	0x132d045	leatherworker	standard native profession word; RAW override has precedence
+reference	29	0x132cce3	0x132d05f	bone carver	standard native profession word; RAW override has precedence
+reference	30	0x132cce3	0x132d079	weaver	standard native profession word; RAW override has precedence
+reference	31	0x132cce3	0x132d093	clothier	standard native profession word; RAW override has precedence
+reference	32	0x132cce3	0x132d0ad	glassmaker	standard native profession word; RAW override has precedence
+reference	33	0x132cce3	0x132cfdd	potter	standard native profession word; RAW override has precedence
+reference	34	0x132cce3	0x132cff7	glazer	standard native profession word; RAW override has precedence
+reference	35	0x132cce3	0x132d011	wax worker	standard native profession word; RAW override has precedence
+reference	36	0x132cce3	0x132d0c7	strand extractor	standard native profession word; RAW override has precedence
+reference	37	0x132cce3	0x132d0e1	fishery worker	standard native profession word; RAW override has precedence
+reference	38	0x132cce3	0x132d0fb	fishermen | fisherman	standard native profession word; RAW override has precedence
+reference	39	0x132cce3	0x132d11b	fish dissector	standard native profession word; RAW override has precedence
+reference	40	0x132cce3	0x132d135	fish cleaner	standard native profession word; RAW override has precedence
+reference	41	0x132cce3	0x132d14f	farmer	standard native profession word; RAW override has precedence
+reference	42	0x132cce3	0x132d169	cheesemaker	standard native profession word; RAW override has precedence
+reference	43	0x132cce3	0x132d183	milker	standard native profession word; RAW override has precedence
+reference	44	0x132cce3	0x132d1eb	cook	standard native profession word; RAW override has precedence
+reference	45	0x132cce3	0x132d205	thresher	standard native profession word; RAW override has precedence
+reference	46	0x132cce3	0x132d21f	miller	standard native profession word; RAW override has precedence
+reference	47	0x132cce3	0x132d239	butcher	standard native profession word; RAW override has precedence
+reference	48	0x132cce3	0x132d253	tanner	standard native profession word; RAW override has precedence
+reference	49	0x132cce3	0x132d26d	dyer	standard native profession word; RAW override has precedence
+reference	50	0x132cce3	0x132d2bb	planter	standard native profession word; RAW override has precedence
+reference	51	0x132cce3	0x132d2d5	herbalist	standard native profession word; RAW override has precedence
+reference	52	0x132cce3	0x132d2ef	brewer	standard native profession word; RAW override has precedence
+reference	53	0x132cce3	0x132d309	soap maker	standard native profession word; RAW override has precedence
+reference	54	0x132cce3	0x132d323	potash maker	standard native profession word; RAW override has precedence
+reference	55	0x132cce3	0x132d33d	lye maker	standard native profession word; RAW override has precedence
+reference	56	0x132cce3	0x132d357	wood burner	standard native profession word; RAW override has precedence
+reference	57	0x132cce3	0x132d1b7	shearer	standard native profession word; RAW override has precedence
+reference	58	0x132cce3	0x132d1d1	spinner	standard native profession word; RAW override has precedence
+reference	59	0x132cce3	0x132d287	presser	standard native profession word; RAW override has precedence
+reference	60	0x132cce3	0x132d2a1	beekeeper	standard native profession word; RAW override has precedence
+reference	61	0x132cce3	0x132d371	engineer	standard native profession word; RAW override has precedence
+reference	62	0x132cce3	0x132d38b	mechanic	standard native profession word; RAW override has precedence
+reference	63	0x132cce3	0x132d3a5	siege engineer	standard native profession word; RAW override has precedence
+reference	64	0x132cce3	0x132d3bf	siege operator	standard native profession word; RAW override has precedence
+reference	65	0x132cce3	0x132d3d9	pump operator	standard native profession word; RAW override has precedence
+reference	66	0x132cce3	0x132d3f3	clerk	standard native profession word; RAW override has precedence
+reference	67	0x132cce3	0x132d40d	administrator	standard native profession word; RAW override has precedence
+reference	68	0x132cce3	0x132d427	trader	standard native profession word; RAW override has precedence
+reference	69	0x132cce3	0x132d4dd	doctor	standard native profession word; RAW override has precedence
+reference	70	0x132cce3	0x132d4f7	diagnostician	standard native profession word; RAW override has precedence
+reference	71	0x132cce3	0x132d511	bone doctor	standard native profession word; RAW override has precedence
+reference	72	0x132cce3	0x132d52b	suturer	standard native profession word; RAW override has precedence
+reference	73	0x132cce3	0x132d545	surgeon	standard native profession word; RAW override has precedence
+reference	74	0x132cce3	0x132d55f	merchant	standard native profession word; RAW override has precedence
+reference	75	0x132cce3	0x132d593	hammermen | hammerman	standard native profession word; RAW override has precedence
+reference	76	0x132cce3	0x132d5b3	Hammer Lord	standard native profession word; RAW override has precedence
+reference	77	0x132cce3	0x132d5cd	spearmen | spearman	standard native profession word; RAW override has precedence
+reference	78	0x132cce3	0x132d5ed	Spearmaster	standard native profession word; RAW override has precedence
+reference	79	0x132cce3	0x132d607	crossbowmen | crossbowman	standard native profession word; RAW override has precedence
+reference	80	0x132cce3	0x132d627	Elite Crossbowman | Elite Crossbowmen	standard native profession word; RAW override has precedence
+reference	81	0x132cce3	0x132d647	wrestler	standard native profession word; RAW override has precedence
+reference	82	0x132cce3	0x132d661	Elite Wrestler	standard native profession word; RAW override has precedence
+reference	83	0x132cce3	0x132d67b	axemen | axeman	standard native profession word; RAW override has precedence
+reference	84	0x132cce3	0x132d69b	Axe Lord	standard native profession word; RAW override has precedence
+reference	85	0x132cce3	0x132d6b5	swordsmen | swordsman	standard native profession word; RAW override has precedence
+reference	86	0x132cce3	0x132d6d5	Swordmaster	standard native profession word; RAW override has precedence
+reference	87	0x132cce3	0x132d6ef	macemen | maceman	standard native profession word; RAW override has precedence
+reference	88	0x132cce3	0x132d70f	Mace Lord	standard native profession word; RAW override has precedence
+reference	89	0x132cce3	0x132d729	pikemen | pikeman	standard native profession word; RAW override has precedence
+reference	90	0x132cce3	0x132d749	Pikemaster	standard native profession word; RAW override has precedence
+reference	91	0x132cce3	0x132d763	bowmen | bowman	standard native profession word; RAW override has precedence
+reference	92	0x132cce3	0x132d783	Elite Bowmen | Elite Bowman	standard native profession word; RAW override has precedence
+reference	93	0x132cce3	0x132d7a3	blowgunner	standard native profession word; RAW override has precedence
+reference	94	0x132cce3	0x132d7bd	Master Blowgunner	standard native profession word; RAW override has precedence
+reference	95	0x132cce3	0x132d7d7	lasher	standard native profession word; RAW override has precedence
+reference	96	0x132cce3	0x132d7f1	Master Lasher	standard native profession word; RAW override has precedence
+reference	97	0x132cce3	0x132d80b	recruit	standard native profession word; RAW override has precedence
+reference	98	0x132cce3	0x132d825	hunting	standard native profession word; RAW override has precedence
+reference	99	0x132cce3	0x132d83a	war	standard native profession word; RAW override has precedence
+reference	100	0x132cce3	0x132d84f	Master Thief	standard native profession word; RAW override has precedence
+reference	101	0x132cce3	0x132d869	thief	standard native profession word; RAW override has precedence
+reference	102	0x132cce3	0x132de47		no ordinary occupation word; base formatter supplies Peasant or species name
+reference	103	0x132cce3	0x132da9d	child | children	RAW caste child/baby name, RAW species fallback, then listed built-in singular/plural fallback
+reference	104	0x132cce3	0x132dc6d	baby | babies	RAW caste child/baby name, RAW species fallback, then listed built-in singular/plural fallback
+reference	105	0x132cce3	0x132d579	drunk	standard native profession word; RAW override has precedence
+reference	106	0x132cce3	0x132d883	monster slayer	standard native profession word; RAW override has precedence
+reference	107	0x132cce3	0x132d89d	scout	standard native profession word; RAW override has precedence
+reference	108	0x132cce3	0x132d8b7	beast hunter	standard native profession word; RAW override has precedence
+reference	109	0x132cce3	0x132d8d1	snatcher	standard native profession word; RAW override has precedence
+reference	110	0x132cce3	0x132d8eb	mercenary | mercenaries	standard native profession word; RAW override has precedence
+reference	111	0x132cce3	0x132d19d	gelder	standard native profession word; RAW override has precedence
+reference	112	0x132cce3	0x132d48f	performer	standard native profession word; RAW override has precedence
+reference	113	0x132cce3	0x132d441	poet	standard native profession word; RAW override has precedence
+reference	114	0x132cce3	0x132d45b	bard	standard native profession word; RAW override has precedence
+reference	115	0x132cce3	0x132d475	dancer	standard native profession word; RAW override has precedence
+reference	116	0x132cce3	0x132d917	sage	standard native profession word; RAW override has precedence
+reference	117	0x132cce3	0x132d931	scholar	standard native profession word; RAW override has precedence
+reference	118	0x132cce3	0x132d94b	philosopher	standard native profession word; RAW override has precedence
+reference	119	0x132cce3	0x132d965	mathematician	standard native profession word; RAW override has precedence
+reference	120	0x132cce3	0x132d97f	historian	standard native profession word; RAW override has precedence
+reference	121	0x132cce3	0x132d999	astronomer	standard native profession word; RAW override has precedence
+reference	122	0x132cce3	0x132d9b3	naturalist	standard native profession word; RAW override has precedence
+reference	123	0x132cce3	0x132d9cd	chemist	standard native profession word; RAW override has precedence
+reference	124	0x132cce3	0x132d9e7	geographer	standard native profession word; RAW override has precedence
+reference	125	0x132cce3	0x132d4a9	scribe	standard native profession word; RAW override has precedence
+reference	126	0x132cce3	0x132cfa9	papermaker	standard native profession word; RAW override has precedence
+reference	127	0x132cce3	0x132cfc3	bookbinder	standard native profession word; RAW override has precedence
+reference	128	0x132cce3	0x132d4c3	tavern keeper	standard native profession word; RAW override has precedence
+reference	129	0x132cce3	0x132da01	criminal	standard native profession word; RAW override has precedence
+reference	130	0x132cce3	0x132da1b	peddler	standard native profession word; RAW override has precedence
+reference	131	0x132cce3	0x132da35	prophet	standard native profession word; RAW override has precedence
+reference	132	0x132cce3	0x132da4f	pilgrim	standard native profession word; RAW override has precedence
+reference	133	0x132cce3	0x132da69	monk	standard native profession word; RAW override has precedence
+reference	134	0x132cce3	0x132da83	messenger	standard native profession word; RAW override has precedence
+classic	0	0x1327c53	0x1327c55	miner	standard native profession word; RAW override has precedence
+classic	1	0x1327c53	0x1327c6f	woodworker	standard native profession word; RAW override has precedence
+classic	2	0x1327c53	0x1327c89	carpenter	standard native profession word; RAW override has precedence
+classic	3	0x1327c53	0x1327ca3	bowyer	standard native profession word; RAW override has precedence
+classic	4	0x1327c53	0x1327cbd	woodcutter	standard native profession word; RAW override has precedence
+classic	5	0x1327c53	0x1327cd7	stoneworker	standard native profession word; RAW override has precedence
+classic	6	0x1327c53	0x1327d0b	stonecutter	standard native profession word; RAW override has precedence
+classic	7	0x1327c53	0x1327d25	stone carver	standard native profession word; RAW override has precedence
+classic	8	0x1327c53	0x1327cf1	engraver	standard native profession word; RAW override has precedence
+classic	9	0x1327c53	0x1327d3f	mason	standard native profession word; RAW override has precedence
+classic	10	0x1327c53	0x1327d59	ranger	standard native profession word; RAW override has precedence
+classic	11	0x1327c53	0x1327d73	animal caretaker	standard native profession word; RAW override has precedence
+classic	12	0x1327c53	0x1327d8d	animal trainer	standard native profession word; RAW override has precedence
+classic	13	0x1327c53	0x1327da7	hunter	standard native profession word; RAW override has precedence
+classic	14	0x1327c53	0x1327dc1	trapper	standard native profession word; RAW override has precedence
+classic	15	0x1327c53	0x1327ddb	animal dissector	standard native profession word; RAW override has precedence
+classic	16	0x1327c53	0x1327df5	metalsmith	standard native profession word; RAW override has precedence
+classic	17	0x1327c53	0x1327e0f	furnace operator	standard native profession word; RAW override has precedence
+classic	18	0x1327c53	0x1327e29	weaponsmith	standard native profession word; RAW override has precedence
+classic	19	0x1327c53	0x1327e43	armorer	standard native profession word; RAW override has precedence
+classic	20	0x1327c53	0x1327e5d	blacksmith	standard native profession word; RAW override has precedence
+classic	21	0x1327c53	0x1327e77	metalcrafter	standard native profession word; RAW override has precedence
+classic	22	0x1327c53	0x1327e91	jeweler	standard native profession word; RAW override has precedence
+classic	23	0x1327c53	0x1327eab	gem cutter	standard native profession word; RAW override has precedence
+classic	24	0x1327c53	0x1327ec5	gem setter	standard native profession word; RAW override has precedence
+classic	25	0x1327c53	0x1327edf	craftsmen | craftsman	standard native profession word; RAW override has precedence
+classic	26	0x1327c53	0x1327eff	woodcrafter	standard native profession word; RAW override has precedence
+classic	27	0x1327c53	0x1327f9b	stonecrafter	standard native profession word; RAW override has precedence
+classic	28	0x1327c53	0x1327fb5	leatherworker	standard native profession word; RAW override has precedence
+classic	29	0x1327c53	0x1327fcf	bone carver	standard native profession word; RAW override has precedence
+classic	30	0x1327c53	0x1327fe9	weaver	standard native profession word; RAW override has precedence
+classic	31	0x1327c53	0x1328003	clothier	standard native profession word; RAW override has precedence
+classic	32	0x1327c53	0x132801d	glassmaker	standard native profession word; RAW override has precedence
+classic	33	0x1327c53	0x1327f4d	potter	standard native profession word; RAW override has precedence
+classic	34	0x1327c53	0x1327f67	glazer	standard native profession word; RAW override has precedence
+classic	35	0x1327c53	0x1327f81	wax worker	standard native profession word; RAW override has precedence
+classic	36	0x1327c53	0x1328037	strand extractor	standard native profession word; RAW override has precedence
+classic	37	0x1327c53	0x1328051	fishery worker	standard native profession word; RAW override has precedence
+classic	38	0x1327c53	0x132806b	fishermen | fisherman	standard native profession word; RAW override has precedence
+classic	39	0x1327c53	0x132808b	fish dissector	standard native profession word; RAW override has precedence
+classic	40	0x1327c53	0x13280a5	fish cleaner	standard native profession word; RAW override has precedence
+classic	41	0x1327c53	0x13280bf	farmer	standard native profession word; RAW override has precedence
+classic	42	0x1327c53	0x13280d9	cheesemaker	standard native profession word; RAW override has precedence
+classic	43	0x1327c53	0x13280f3	milker	standard native profession word; RAW override has precedence
+classic	44	0x1327c53	0x132815b	cook	standard native profession word; RAW override has precedence
+classic	45	0x1327c53	0x1328175	thresher	standard native profession word; RAW override has precedence
+classic	46	0x1327c53	0x132818f	miller	standard native profession word; RAW override has precedence
+classic	47	0x1327c53	0x13281a9	butcher	standard native profession word; RAW override has precedence
+classic	48	0x1327c53	0x13281c3	tanner	standard native profession word; RAW override has precedence
+classic	49	0x1327c53	0x13281dd	dyer	standard native profession word; RAW override has precedence
+classic	50	0x1327c53	0x132822b	planter	standard native profession word; RAW override has precedence
+classic	51	0x1327c53	0x1328245	herbalist	standard native profession word; RAW override has precedence
+classic	52	0x1327c53	0x132825f	brewer	standard native profession word; RAW override has precedence
+classic	53	0x1327c53	0x1328279	soap maker	standard native profession word; RAW override has precedence
+classic	54	0x1327c53	0x1328293	potash maker	standard native profession word; RAW override has precedence
+classic	55	0x1327c53	0x13282ad	lye maker	standard native profession word; RAW override has precedence
+classic	56	0x1327c53	0x13282c7	wood burner	standard native profession word; RAW override has precedence
+classic	57	0x1327c53	0x1328127	shearer	standard native profession word; RAW override has precedence
+classic	58	0x1327c53	0x1328141	spinner	standard native profession word; RAW override has precedence
+classic	59	0x1327c53	0x13281f7	presser	standard native profession word; RAW override has precedence
+classic	60	0x1327c53	0x1328211	beekeeper	standard native profession word; RAW override has precedence
+classic	61	0x1327c53	0x13282e1	engineer	standard native profession word; RAW override has precedence
+classic	62	0x1327c53	0x13282fb	mechanic	standard native profession word; RAW override has precedence
+classic	63	0x1327c53	0x1328315	siege engineer	standard native profession word; RAW override has precedence
+classic	64	0x1327c53	0x132832f	siege operator	standard native profession word; RAW override has precedence
+classic	65	0x1327c53	0x1328349	pump operator	standard native profession word; RAW override has precedence
+classic	66	0x1327c53	0x1328363	clerk	standard native profession word; RAW override has precedence
+classic	67	0x1327c53	0x132837d	administrator	standard native profession word; RAW override has precedence
+classic	68	0x1327c53	0x1328397	trader	standard native profession word; RAW override has precedence
+classic	69	0x1327c53	0x132844d	doctor	standard native profession word; RAW override has precedence
+classic	70	0x1327c53	0x1328467	diagnostician	standard native profession word; RAW override has precedence
+classic	71	0x1327c53	0x1328481	bone doctor	standard native profession word; RAW override has precedence
+classic	72	0x1327c53	0x132849b	suturer	standard native profession word; RAW override has precedence
+classic	73	0x1327c53	0x13284b5	surgeon	standard native profession word; RAW override has precedence
+classic	74	0x1327c53	0x13284cf	merchant	standard native profession word; RAW override has precedence
+classic	75	0x1327c53	0x1328503	hammermen | hammerman	standard native profession word; RAW override has precedence
+classic	76	0x1327c53	0x1328523	Hammer Lord	standard native profession word; RAW override has precedence
+classic	77	0x1327c53	0x132853d	spearmen | spearman	standard native profession word; RAW override has precedence
+classic	78	0x1327c53	0x132855d	Spearmaster	standard native profession word; RAW override has precedence
+classic	79	0x1327c53	0x1328577	crossbowmen | crossbowman	standard native profession word; RAW override has precedence
+classic	80	0x1327c53	0x1328597	Elite Crossbowman | Elite Crossbowmen	standard native profession word; RAW override has precedence
+classic	81	0x1327c53	0x13285b7	wrestler	standard native profession word; RAW override has precedence
+classic	82	0x1327c53	0x13285d1	Elite Wrestler	standard native profession word; RAW override has precedence
+classic	83	0x1327c53	0x13285eb	axemen | axeman	standard native profession word; RAW override has precedence
+classic	84	0x1327c53	0x132860b	Axe Lord	standard native profession word; RAW override has precedence
+classic	85	0x1327c53	0x1328625	swordsmen | swordsman	standard native profession word; RAW override has precedence
+classic	86	0x1327c53	0x1328645	Swordmaster	standard native profession word; RAW override has precedence
+classic	87	0x1327c53	0x132865f	macemen | maceman	standard native profession word; RAW override has precedence
+classic	88	0x1327c53	0x132867f	Mace Lord	standard native profession word; RAW override has precedence
+classic	89	0x1327c53	0x1328699	pikemen | pikeman	standard native profession word; RAW override has precedence
+classic	90	0x1327c53	0x13286b9	Pikemaster	standard native profession word; RAW override has precedence
+classic	91	0x1327c53	0x13286d3	bowmen | bowman	standard native profession word; RAW override has precedence
+classic	92	0x1327c53	0x13286f3	Elite Bowmen | Elite Bowman	standard native profession word; RAW override has precedence
+classic	93	0x1327c53	0x1328713	blowgunner	standard native profession word; RAW override has precedence
+classic	94	0x1327c53	0x132872d	Master Blowgunner	standard native profession word; RAW override has precedence
+classic	95	0x1327c53	0x1328747	lasher	standard native profession word; RAW override has precedence
+classic	96	0x1327c53	0x1328761	Master Lasher	standard native profession word; RAW override has precedence
+classic	97	0x1327c53	0x132877b	recruit	standard native profession word; RAW override has precedence
+classic	98	0x1327c53	0x1328795	hunting	standard native profession word; RAW override has precedence
+classic	99	0x1327c53	0x13287aa	war	standard native profession word; RAW override has precedence
+classic	100	0x1327c53	0x13287bf	Master Thief	standard native profession word; RAW override has precedence
+classic	101	0x1327c53	0x13287d9	thief	standard native profession word; RAW override has precedence
+classic	102	0x1327c53	0x1328db7		no ordinary occupation word; base formatter supplies Peasant or species name
+classic	103	0x1327c53	0x1328a0d	child | children	RAW caste child/baby name, RAW species fallback, then listed built-in singular/plural fallback
+classic	104	0x1327c53	0x1328bdd	baby | babies	RAW caste child/baby name, RAW species fallback, then listed built-in singular/plural fallback
+classic	105	0x1327c53	0x13284e9	drunk	standard native profession word; RAW override has precedence
+classic	106	0x1327c53	0x13287f3	monster slayer	standard native profession word; RAW override has precedence
+classic	107	0x1327c53	0x132880d	scout	standard native profession word; RAW override has precedence
+classic	108	0x1327c53	0x1328827	beast hunter	standard native profession word; RAW override has precedence
+classic	109	0x1327c53	0x1328841	snatcher	standard native profession word; RAW override has precedence
+classic	110	0x1327c53	0x132885b	mercenary | mercenaries	standard native profession word; RAW override has precedence
+classic	111	0x1327c53	0x132810d	gelder	standard native profession word; RAW override has precedence
+classic	112	0x1327c53	0x13283ff	performer	standard native profession word; RAW override has precedence
+classic	113	0x1327c53	0x13283b1	poet	standard native profession word; RAW override has precedence
+classic	114	0x1327c53	0x13283cb	bard	standard native profession word; RAW override has precedence
+classic	115	0x1327c53	0x13283e5	dancer	standard native profession word; RAW override has precedence
+classic	116	0x1327c53	0x1328887	sage	standard native profession word; RAW override has precedence
+classic	117	0x1327c53	0x13288a1	scholar	standard native profession word; RAW override has precedence
+classic	118	0x1327c53	0x13288bb	philosopher	standard native profession word; RAW override has precedence
+classic	119	0x1327c53	0x13288d5	mathematician	standard native profession word; RAW override has precedence
+classic	120	0x1327c53	0x13288ef	historian	standard native profession word; RAW override has precedence
+classic	121	0x1327c53	0x1328909	astronomer	standard native profession word; RAW override has precedence
+classic	122	0x1327c53	0x1328923	naturalist	standard native profession word; RAW override has precedence
+classic	123	0x1327c53	0x132893d	chemist	standard native profession word; RAW override has precedence
+classic	124	0x1327c53	0x1328957	geographer	standard native profession word; RAW override has precedence
+classic	125	0x1327c53	0x1328419	scribe	standard native profession word; RAW override has precedence
+classic	126	0x1327c53	0x1327f19	papermaker	standard native profession word; RAW override has precedence
+classic	127	0x1327c53	0x1327f33	bookbinder	standard native profession word; RAW override has precedence
+classic	128	0x1327c53	0x1328433	tavern keeper	standard native profession word; RAW override has precedence
+classic	129	0x1327c53	0x1328971	criminal	standard native profession word; RAW override has precedence
+classic	130	0x1327c53	0x132898b	peddler	standard native profession word; RAW override has precedence
+classic	131	0x1327c53	0x13289a5	prophet	standard native profession word; RAW override has precedence
+classic	132	0x1327c53	0x13289bf	pilgrim	standard native profession word; RAW override has precedence
+classic	133	0x1327c53	0x13289d9	monk	standard native profession word; RAW override has precedence
+classic	134	0x1327c53	0x13289f3	messenger	standard native profession word; RAW override has precedence

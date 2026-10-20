@@ -30,6 +30,10 @@ static std::unordered_map<std::string, std::optional<std::string>> g_native_unit
 // formatter may change its own or a nested name's binding in the same epoch.
 // Publish every registry mutation independently of native grid read views.
 static std::atomic<uint64_t> g_native_unit_identity_revision{0};
+// Frozen announcement inputs own only source aliases, not transient formatter
+// addresses or pending owner witnesses. Give those snapshots their actual
+// mutation stream so another owner of an existing alias needs no full copy.
+static std::atomic<uint64_t> g_native_unit_identity_sources_revision{0};
 // Cache identity follows the registry's contents, not the draw epoch. The
 // same complete set of semantic bindings gets the same fingerprint on later
 // frames; an ambiguous source is distinct from a resolved authored target.
@@ -126,6 +130,8 @@ static void clear_native_unit_identities() {
     std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
     g_native_unit_identity_context.store(0, std::memory_order_release);
     g_native_unit_identity_owners.clear();
+    if (!g_native_unit_identity_sources.empty())
+        g_native_unit_identity_sources_revision.fetch_add(1, std::memory_order_release);
     g_native_unit_identity_sources.clear();
     g_native_unit_identity_epoch = 0;
     g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
@@ -135,6 +141,8 @@ static void native_unit_identity_begin_epoch_locked(uint64_t epoch) {
     if (g_native_unit_identity_epoch != epoch) {
         g_native_unit_identity_context.store(0, std::memory_order_release);
         g_native_unit_identity_owners.clear();
+        if (!g_native_unit_identity_sources.empty())
+            g_native_unit_identity_sources_revision.fetch_add(1, std::memory_order_release);
         g_native_unit_identity_sources.clear();
         g_native_unit_identity_epoch = epoch;
         g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
@@ -172,6 +180,7 @@ static void remember_native_unit_identity_locked(uintptr_t owner, std::string_vi
             key, resolved_target);
         if (inserted) {
             context ^= native_identity_source_fingerprint(entry->first, entry->second);
+            g_native_unit_identity_sources_revision.fetch_add(1, std::memory_order_release);
             g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
         }
         // Ambiguous spelling must not assign one unit's custom name to another
@@ -180,6 +189,7 @@ static void remember_native_unit_identity_locked(uintptr_t owner, std::string_vi
             context ^= native_identity_source_fingerprint(entry->first, entry->second);
             entry->second.reset();
             context ^= native_identity_source_fingerprint(entry->first, entry->second);
+            g_native_unit_identity_sources_revision.fetch_add(1, std::memory_order_release);
             g_native_unit_identity_revision.fetch_add(1, std::memory_order_release);
         }
     };

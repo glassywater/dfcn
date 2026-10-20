@@ -66,6 +66,10 @@ ROOT_FUNCTIONS = {
         0x14132f980: "unit-role-description",
         0x141331500: "alternate-unit-caption",
         0x1413345d0: "body-part-name",
+        0x14052eb70: "body-name-number-prefix",
+        0x1406c6d30: "body-name-connection-disambiguation",
+        0x1406f6b90: "caste-tissue-name-definition",
+        0x1406f8e60: "template-tissue-name-definition",
         0x1414d1920: "material-state-caption",
         0x140ca1aa0: "corpse-full-caption",
         0x140ca10e0: "corpse-short-caption",
@@ -95,6 +99,10 @@ ROOT_FUNCTIONS = {
         0x14132a8f0: "unit-role-description",
         0x14132c470: "alternate-unit-caption",
         0x14132f540: "body-part-name",
+        0x14052c590: "body-name-number-prefix",
+        0x1406c4750: "body-name-connection-disambiguation",
+        0x1406f45b0: "caste-tissue-name-definition",
+        0x1406f6880: "template-tissue-name-definition",
         0x1414cc890: "material-state-caption",
         0x140c9eae0: "corpse-full-caption",
         0x140c9e120: "corpse-short-caption",
@@ -174,6 +182,15 @@ def damage_callers(image, dispatch):
 
 def raw_sources(config):
     fields, scripts, verbs, parts, roots = [], [], {}, {}, []
+    anatomy, anatomy_scripts, anatomy_names = [], [], []
+    anatomy_tokens = {
+        "BODY", "BP", "INDIVIDUAL_NAME", "CON", "CONTYPE", "CON_CAT",
+        "CATEGORY", "DEFAULT_RELSIZE", "NUMBER", "BODYGLOSS",
+        "USE_TISSUE_TEMPLATE", "TISSUE", "TISSUE_NAME", "TISSUE_MATERIAL",
+        "BODY_DETAIL_PLAN", "BP_LAYERS", "BP_LAYERS_OVER", "BP_LAYERS_UNDER",
+        "BP_TISSUE", "BP_TISSUE_LAYER", "SET_TL_GROUP", "PLUS_TL_GROUP",
+        "TL_MAJOR_ARTERIES", "TL_CONNECTS", "TL_HEALING_RATE", "BP_RELATION",
+    }
     for edition in ("reference", "classic"):
         game = Path(config[edition]).parent
         for folder in ("data/vanilla", "data/installed_mods", "mods"):
@@ -188,9 +205,21 @@ def raw_sources(config):
                 for number, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
                     for token in re.findall(r"\[([^]]+)\]", line):
                         atoms = token.split(":")
-                        if atoms[0] in ("CREATURE", "CREATURE_VARIATION", "ITEM_WEAPON", "ITEM_TOOL", "ITEM_AMMO", "ITEM_TRAPCOMP"):
+                        if (atoms[0] in ("CREATURE", "CREATURE_VARIATION", "ITEM_WEAPON", "ITEM_TOOL", "ITEM_AMMO", "ITEM_TRAPCOMP", "TISSUE_TEMPLATE")
+                                or (atoms[0] == "BODY" and path.name.startswith("body_"))
+                                or (atoms[0] == "BODY_DETAIL_PLAN" and path.name.startswith("b_detail_plan"))):
                             owner = ":".join(atoms[:2])
-                        if atoms[0] not in ("ATTACK", "ATTACK_VERB"):
+                        if atoms[0] in anatomy_tokens:
+                            source = path.relative_to(game).as_posix()
+                            anatomy.append((edition, folder, source, number, owner, atoms[0], ":".join(atoms[1:])))
+                            values = atoms[2:4] if atoms[0] == "BP" else atoms[1:3] if atoms[0] in ("INDIVIDUAL_NAME", "TISSUE_NAME") else []
+                            for form, value in zip(("singular", "plural"), values):
+                                anatomy_names.append((value, edition, source, number, owner, atoms[0], form,
+                                                      "plural-directive" if value in ("NP", "STP") else "raw-text"))
+                        # Retain the attack definition's behavioral inputs too.
+                        # CANLATCH, for example, is used by non-bite attacks;
+                        # its announcement cannot infer "bite" from the flag.
+                        if atoms[0] != "ATTACK" and not atoms[0].startswith("ATTACK_"):
                             continue
                         source = path.relative_to(game).as_posix()
                         row = (edition, folder, source, number, owner, atoms[0], ":".join(atoms[1:]))
@@ -206,11 +235,13 @@ def raw_sources(config):
         procedural = game / "data/vanilla/vanilla_procedural/scripts"
         for path in sorted(procedural.rglob("*.lua")) if procedural.exists() else []:
             for number, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
-                if "[ATTACK:" not in line and "[ATTACK_VERB:" not in line:
+                if any("[" + token + ":" in line for token in anatomy_tokens):
+                    anatomy_scripts.append((edition, path.relative_to(game).as_posix(), number, line.strip()))
+                if not re.search(r"\[ATTACK(?::|_)", line):
                     continue
                 source = path.relative_to(game).as_posix()
                 scripts.append((edition, source, number, line.strip()))
-                for token in re.findall(r"\[(ATTACK(?:_VERB)?:[^]]+)\]", line):
+                for token in re.findall(r"\[(ATTACK(?::|_)[^]]+)\]", line):
                     atoms = token.split(":")
                     if atoms[0] == "ATTACK_VERB" and len(atoms) == 3 and all('"' not in value for value in atoms[1:]):
                         for form, value in zip(("base", "third-person"), atoms[1:]):
@@ -227,6 +258,9 @@ def raw_sources(config):
     write_tsv("raw-weapon-parts.tsv", ("source", "edition", "raw_source", "line", "owner"),
               ((part, *proof) for part, proofs in sorted(parts.items()) for proof in proofs))
     write_tsv("raw-source-roots.tsv", ("edition", "path", "text_files", "ownership"), roots)
+    write_tsv("raw-anatomy-fields.tsv", ("edition", "source_root", "source", "line", "owner", "token", "fields"), anatomy)
+    write_tsv("raw-anatomy-names.tsv", ("source", "edition", "raw_source", "line", "owner", "token", "form", "kind"), anatomy_names)
+    write_tsv("raw-procedural-anatomy-sources.tsv", ("edition", "source", "line", "source_expression"), anatomy_scripts)
     print("RAW attack verbs: " + ", ".join(sorted(verbs)))
     print("RAW weapon parts: " + ", ".join(sorted(parts)))
 

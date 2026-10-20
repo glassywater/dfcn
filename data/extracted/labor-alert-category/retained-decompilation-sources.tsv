@@ -1,0 +1,9 @@
+edition	role	source_path	meaning
+reference	complete hover owner	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	actual Ghidra C, entire monolithic renderer excluding trailing jump-table data; icon/report/repeat/header paths
+reference	hover instructions	data/extracted/fortress-alert-ui/reference-alert-hover-renderer.asm	original full PE unwind owner, source instructions and branch targets
+reference	expanded popup render	data/extracted/announcement-popup-native/renderer/reference-40d5f0.c	actual Ghidra C; three report sources and header alternatives
+reference	expanded popup input	data/extracted/announcement-popup-native/renderer/reference-40f780.c	actual Ghidra C; no additional authored text
+classic	complete hover owner	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	actual Ghidra C, entire monolithic renderer excluding trailing jump-table data; icon/report/repeat/header paths
+classic	hover instructions	data/extracted/fortress-alert-ui/classic-alert-hover-renderer.asm	original full PE unwind owner, source instructions and branch targets
+classic	expanded popup render	data/extracted/announcement-popup-native/renderer/classic-40b1b0.c	actual Ghidra C; three report sources and header alternatives
+classic	expanded popup input	data/extracted/announcement-popup-native/renderer/classic-40d340.c	actual Ghidra C; no additional authored text

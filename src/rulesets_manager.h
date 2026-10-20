@@ -168,7 +168,8 @@ namespace Hooks {
         // Scoped prose vocabulary; never flattened into global item/name rules.
         std::optional<std::string> translate_appearance_term(
             const std::string& text, const std::string& context) const;
-        std::optional<std::string> translate_anatomy(const std::string& text) const;
+        std::optional<std::string> translate_anatomy(const std::string& text,
+            bool tissue_suffix = true) const;
         // A terrain caption followed by zero or more plant-growth labels.
         // Never treat its comma-separated leaves/fruit as anatomical owners.
         std::optional<std::string> translate_tile_description(const std::string& text) const;
@@ -484,6 +485,9 @@ namespace Hooks {
         // Small closed leaf vocabularies can prove that a later noun is
         // absent before an earlier material/reference expands its branches.
         std::unordered_map<std::string, std::vector<std::string_view>> literal_leaf_rules_;
+        // Only fixed, acyclic rule closures without owner/native callbacks.
+        // These proofs are independent of the report identity context.
+        std::unordered_set<std::string> context_free_namespaces_;
         mutable MemoOuterMap memo_cache_;
         std::set<RuleSignature> cyclic_rule_signatures_;
         std::unordered_map<std::string, std::string, TransparentHash, TransparentEqual>

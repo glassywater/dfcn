@@ -1,0 +1,84 @@
+Announcement alert popup: current configured Windows PE decompilation
+
+The four .c files in this directory are actual Ghidra 12.1.4 decompiler
+output from the complete PE unwind owners, using the installed JDK 25.
+They were obtained with tools/DecompileAnnouncementLog.java and a separate
+temporary headless project for each configured edition. The original
+instructions, literal operands, calls and conditional branches were read
+again from the same disk images and retained alongside that output.
+Generated names such as announcement_log_* and log_supplier_* belong to
+the extraction script. Semantic field names below use the existing native
+layout; they are not claimed to be symbols recovered from the stripped PE.
+
+Images and complete owners:
+  Steam/reference PE:6a70a6d9:02711000
+    render 0x40d5f0..0x40f77a; input 0x40f780..0x4105a9
+  Classic PE:6a70b91c:0270a000
+    render 0x40b1b0..0x40d33a; input 0x40d340..0x40e169
+
+Body-source precedence (reference-40d5f0.c; same Classic branches):
+  owner+0xa8 != null: viewing_unit, category at owner+0xb0;
+    read unit+0xce8+category*0x18 announcement-ID vector.
+  otherwise owner+0x10 != 0: viewing_alert_button;
+    read world.status.alert_button_announcement_id.
+  otherwise owner+8 != null: selected alert;
+    first read alert+8 announcement-ID vector;
+    then read alert+0x20 unit-ID vector with its parallel categories.
+  otherwise: no body source.
+Each report ID is resolved against world.status.reports. Missing IDs are
+skipped. Present records contribute the complete report.text at report+8.
+The selected-alert unit branch similarly skips a missing unit; it has no
+"Somebody" fallback. These are distinct from hover source construction.
+
+The repeat branch is present separately in all three report paths:
+  report.repeat_count at report+0x34 <= 0: use report.text unchanged;
+  report.repeat_count > 0: copy report.text, append " x", then append the
+    signed int32 decimal result of repeat_count+1 before wrapping.
+  Reference instructions 0x40d812/0x40d82c,
+    0x40dc7f/0x40dc99 and 0x40e0a0/0x40e0ba;
+  Classic instructions 0x40b3d2/0x40b3ec,
+    0x40b83f/0x40b859 and 0x40bc60/0x40bc7a.
+The actual .c output contains all three <1 conditions and all three
+integer-to-string calls. The suffix is display metadata, not an additional
+announcement source production.
+
+Unit-summary branch (reference 0x40e48d..0x40e50e):
+  identity = unit full-name/profession formatter 0x1331500;
+  capitalize identity, append " is ";
+  category == 0: append "fighting!";
+  category == 1: append "sparring.";
+  category == 2: append "hunting.";
+  every other category: append nothing.
+The renderer does not reject an empty identity. The complete source forms
+are therefore the three named summaries, the three empty-identity summaries,
+and the named/empty invalid-category copula. Existing native unit identity
+ownership and category handling in src/adventure_announcements.inc preserve
+the field semantics, including empty names. The valid summary templates are
+in data/runtime/ui-messages.tsv; invalid-category copulas add no activity.
+
+Fixed instruction branches (native double spaces retained):
+  viewing_unit, viewing_alert_button, or selected alert with no unit IDs:
+    You can recenter on certain announcements.  Right click to close.
+  selected alert with unit IDs:
+    Select a report to view the full text.  Right click to close.
+  no body owner: no instruction source.
+The three emitted copies of the first instruction are the actual source
+branches, not different translatable sentences. The instructions already
+use complete-message translations in data/runtime/ui-messages.tsv.
+
+The input functions manipulate scrolling, report selection, recentering,
+unit/category selection and closing. Neither input owner contains an
+authored text literal or constructs another visible sentence. Returning
+from a selected unit clears owner+0xa8 when an alert parent remains;
+otherwise closing clears the popup-active byte at owner+0.
+
+All remaining rendered text is complete stored report.text; empty padding
+rows and icon glyphs do not introduce sentences. Its native submission
+universe is retained in the parent directory: native-announcement-enum.tsv,
+native-submission-types.tsv, native-production-catalog.tsv and
+native-scoped-productions.tsv, with the complete 235 producer owners and
+their instruction branches. Generated proper names and user-authored
+fields are typed inputs to those productions, not a finite list of names.
+
+These artifacts are source extraction and decompilation evidence. They do
+not describe a game-screen observation or a translation test result.

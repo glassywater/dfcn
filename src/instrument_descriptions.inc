@@ -66,6 +66,8 @@ void Overlay::refresh_native_instrument_names() const {
 
 std::optional<std::string> Overlay::translate_instrument_native_name(
         std::string_view source, bool generated_namespace) const {
+    if (g_native_announcement_log_worker_active)
+        native_announcement_log_worker_require_instrument_names();
     std::string name = lower_native_name(trim(std::string(source)));
     if (const auto found = native_instrument_names_.find(name);
         found != native_instrument_names_.end()) {

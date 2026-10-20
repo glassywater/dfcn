@@ -9,6 +9,7 @@ static bool resolve_native_caption_semantics_elf(NativeCaptionProfile &profile) 
         {native_reference_address(base,0xfce851),NativeInfoTitleKind::Item},
         {native_reference_address(base,0xfcbb88),NativeInfoTitleKind::ItemList},
         {native_reference_address(base,0xfcf98c),NativeInfoTitleKind::Building},
+        {native_reference_address(base,0x13e1c9b),NativeInfoTitleKind::Building},
         {native_reference_address(base,0xfcaf40),NativeInfoTitleKind::Engraving},
         {native_reference_address(base,0xfcc9af),NativeInfoTitleKind::Terrain},
         {native_reference_address(base,0xfcb1b9),NativeInfoTitleKind::PlannedEngraving},

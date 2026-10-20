@@ -238,8 +238,8 @@ class Toggle {
         suspended_core_ = reinterpret_cast<SuspendedFn>(symbol(module_, "?isSuspended@Core@DFHack@@QEAA_NXZ"));
         if (!readable(core_slot_, sizeof(void *)) || !console_ || !plugin_manager_ || !suspended_core_ ||
             !registry_.bind(module_) || !chain_bind()) return false;
-        // Whole, non-relative instruction prefixes recovered from 53.16-r2.
-        // Reject other builds before modifying any code or native callbacks.
+        // Whole, non-relative instruction prefixes shared by 53.16-r2/r3.
+        // Reject differing instructions before modifying native callbacks.
         static constexpr unsigned char apply_prefix[] =
             {0x48,0x89,0x5c,0x24,0x08,0x55,0x56,0x57,0x41,0x54,0x41,0x55,0x41,0x56};
         static constexpr unsigned char remove_prefix[] =
@@ -540,8 +540,8 @@ class Toggle {
 #ifdef _WIN32
     static bool console_shutdown_callback(void *console) {
         auto &self = *instance_;
-        // Core has set its shutdown flag. Cancel and drain input before the
-        // native Console takes its write lock and closes the input handle.
+        // Core has set its shutdown flag. Older consoles need input cancelled;
+        // r3 must reach native shutdown first so its exit event wakes the reader.
         auto *core = read<void *>(self.core_slot_);
         if (core && self.console_ && self.console_(core) == console &&
                 read<unsigned char>(core, 0x1548)) self.console_exit_.begin_shutdown();
@@ -609,7 +609,7 @@ public:
         attempted_ = true;
         instance_ = this;
         if (!prepare_hooks()) {
-            report("ERROR", "Shift+F11 unavailable: installed DFHack native interfaces do not match 53.16-r2");
+            report("ERROR", "Shift+F11 unavailable: installed DFHack native interfaces do not match the supported ABI");
             return;
         }
 #ifdef _WIN32

@@ -1,0 +1,101 @@
+LABOR_CHANGE announcement category and alert hover source
+
+This directory records native source extraction, not a game-screen observation
+or a translation test. Enum names come from the checked-in df-structures XML;
+all numeric routes come from the configured Windows PE images.
+
+Category boundary
+  reference PE:6a70a6d9:02711000, map RVA eaa20..eab13
+  classic   PE:6a70b91c:0270a000, map RVA ea9b0..eaaa3
+
+The mapper sign-extends announcement_type (int16 at descriptor+0), compares
+the resulting value unsigned against 353, and returns GENERAL for values
+outside 0..353. The 354-byte native remap selects a 34-entry RVA jump table.
+route-table.tsv reads all enum values 0..355 from those actual table bytes,
+including the two final values' default route. No spelling of the displayed
+profession is used to choose an alert category.
+
+Exactly two input values select the remap entry 25 / return 11 LABOR_CHANGE:
+  236 PROFESSION_CHANGES
+    reference producer 133bcf0, submit 133c0c0
+    classic producer 1336c60, submit 1337030
+  283 CITIZEN_BECOMES_NONSOLDIER
+    reference producer 1374fc0, submit 1375142
+    classic producer 136ff30, submit 13700b2
+The instruction listings retain the complete mapper; pe-*-ghidra-decompiled.c
+are actual Ghidra 12.1.4 output. The tool's generated adventure_choice_ prefix
+is only a script naming convention. Its switch override is populated from the
+recovered native jump table, not from hand-selected LABOR_CHANGE examples.
+
+FORT_POSITION_SUCCESSION (178) instead maps to NOBLE (7).
+CITIZEN_BECOMES_SOLDIER (282) maps to MILITARY (12).
+These do not add body alternatives to this LABOR_CHANGE group. A source
+containing a noble title such as baron does not change its producer type.
+The two actual body producers and all of their name/profession suppliers are
+handled by the companion noble/profession extraction. Their finite sentence
+branches plus typed RAW and user-authored fields form the complete source
+grammar; generated names cannot be enumerated as a finite string list.
+
+Actual Ghidra hover output retained in place
+  data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c
+  data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c
+These are the entire monolithic Fortress renderers, from 3d6950 / 3d4510
+through 3fca34 / 3fa5f4; trailing jump-table data are excluded from code.
+The corresponding full PE unwind instruction listings remain in
+data/extracted/fortress-alert-ui/*-alert-hover-renderer.asm.
+
+Individual alert hover body
+  Reference 3f6351 selects the actual announcement_alertst pointer.
+  A changed selected pointer, or width other than 80, rebuilds the cache.
+  The alert+8 report-ID vector is resolved against world.status.reports.
+  A missing report ID contributes no text.
+  For each present report, report.text at report+8 is the whole source.
+  report.repeat_count at +34 <= 0 keeps the source unchanged.
+  repeat_count > 0 copies the source and appends " x" and the signed int32
+  decimal result of repeat_count+1 (3f6427..3f6477).
+  Native word wrapping occurs after this whole-source construction.
+  Its colors (+28) and brightness (+2a) are copied per resulting row.
+  The row loop draws only the cached range that fits within the hover frame.
+  It does not author or translate an additional report sentence.
+  Classic code addresses for these hover blocks are reference minus 2440.
+
+The red ALERT-button hover is a separate source path: it walks the global
+alert_button_announcement_id vector, uses the same report lookup and whole
+source/repeat construction (reference 3d7505..3d7555), and has no unit-summary
+loop. It is not an additional LABOR_CHANGE producer.
+
+Hover instruction and visibility branches
+  The existing screenshot instruction has the exact source:
+    Left click for recenter and expand options.  Right click to dismiss.
+  The two occurrences are at reference 3fab2b (ALERT button) and 3fae1b
+  (individual icon), classic 3f86eb / 3f89db.
+  The renderer suppresses both hovers while the alert popup is open or the
+  modal announcement-popup vector is nonempty. Native widget/instruction
+  priority can also suppress them. A successful button-hover draw jumps past
+  the icon-hover path, so these two hover frames are mutually exclusive.
+  Both complete captions already use data/runtime/ui-messages.tsv.
+
+Expanded popup: retained actual Ghidra output
+  data/extracted/announcement-popup-native/renderer/reference-40d5f0.c
+  data/extracted/announcement-popup-native/renderer/classic-40b1b0.c
+  The source order is viewing_unit, else viewing_alert_button, else selected
+  alert. All use complete stored report.text and the same repeat semantics.
+  With no owner there is no body or instruction source.
+  viewing_unit, alert_button, or selected alert without unit IDs:
+    You can recenter on certain announcements.  Right click to close.
+  selected alert with a nonempty unit-ID vector:
+    Select a report to view the full text.  Right click to close.
+  Both complete captions are already in data/runtime/ui-messages.tsv.
+  The matching input C bodies (reference-40f780.c/classic-40d340.c) cover
+  closing, recentering and report selection and author no further text.
+
+Shared renderer branches, not additional labor-report productions
+  The generic icon-hover and popup paths also support unit/category summary
+  vectors for their other alert groups. Category 0/1/2 appends fighting!,
+  sparring., hunting. after capitalized unit identity + " is ". Any other
+  category adds no verb. Only hover substitutes Somebody when unit lookup
+  fails; popup skips the missing unit. decompiled-ui-productions.tsv retains
+  these shared renderer branches so that they are not misidentified as a new
+  LABOR_CHANGE sentence or as a new profession branch.
+
+No game UI, input, hot reload, loaded-module state or runtime log was accessed.

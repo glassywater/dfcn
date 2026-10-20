@@ -32,6 +32,8 @@
             // the actual world's RAW names, not the spelling of a visible name.
             return memoize_item_translation(std::string("dfhack-item-type:") +
                 (subtype ? "subtype:" : "category:") + std::string(source), [&]() {
+                    if (subtype && g_native_announcement_log_worker_active)
+                        native_announcement_log_worker_require_instrument_names();
                     if (subtype && native_instrument_names_.contains(
                             lower_native_name(std::string(source))))
                         return translate_instrument_native_name(source, true);

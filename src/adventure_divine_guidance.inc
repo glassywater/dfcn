@@ -36,3 +36,30 @@ static bool adventure_divine_guidance_template(const Rule &rule) {
         source.starts_with("You seek {e}.") ||
         source.starts_with("The journey is long. Be sure to travel to {e}, rather than walking leisurely.");
 }
+
+std::optional<std::string> Overlay::translate_adventure_divine_capture(
+        const Rule &rule, size_t index, std::string_view source) const {
+    if (!adventure_divine_guidance_template(rule) || index >= rule.template_kinds.size())
+        return std::nullopt;
+    translation_work_step();
+    switch (rule.template_kinds[index]) {
+    case 'p': {
+        auto target = native_unit_identity_source_target(source);
+        if (!target) target = translate_legends_actor(source, 0, true);
+        if (!target && contains_cjk_utf8(source))
+            target = translate_ui_message_capture(source, true);
+        return target;
+    }
+    case 'e':
+        // The followers are an entity, but the destination is the name of
+        // a building. Sending the latter to the historical entity resolver
+        // requests unrelated world data before its generated-name grammar.
+        if (adventure_divine_building_capture(rule, index))
+            return source.empty() ? std::optional<std::string>(std::string{})
+                : translate_legends_name(source, false, false);
+        return translate_legends_name(source, false);
+    case 'r': return translate_deity_spheres(source);
+    case 's': return translate_ui_catalog_capture(rule, index, source);
+    default: return std::nullopt;
+    }
+}

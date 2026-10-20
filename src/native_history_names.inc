@@ -112,23 +112,85 @@ static uintptr_t native_elf_history_address(uintptr_t va) {
 // Runtime-generated instruments are not confined to the installed language
 // dictionaries. Read only their actual name fields; translation and name
 // admission remain in the shared instrument resolver, never in ABI bindings.
-static bool capture_native_instrument_names(
-        std::vector<std::pair<std::string, std::string>> &names) {
-    names.clear();
+static std::shared_ptr<const std::vector<std::pair<std::string, std::string>>>
+capture_native_instrument_name_snapshot(bool refresh_epoch = true, bool allow_build = true) {
+    struct Capture {
+        std::array<uintptr_t, 5> stamp{};
+        uint64_t epoch = UINT64_MAX;
+        size_t cursor = 0;
+        bool building = false, matches_previous = false;
+        std::shared_ptr<const std::vector<std::pair<std::string, std::string>>> published;
+        std::vector<std::pair<std::string, std::string>> pending;
+    };
+    static Capture capture;
+    static std::mutex mutex;
+    std::lock_guard<std::mutex> lock(mutex);
     NativeBorrowedVector<uintptr_t> definitions;
+    uintptr_t world = 0;
     if (!native_history_read_vector(native_history_global(0x24ecdf8), definitions) ||
-        definitions.size() > 65536) return false;
-    names.reserve(definitions.size());
-    for (size_t i = 0; i < definitions.size(); ++i) {
-        const uintptr_t definition = native_history_vector_at(definitions, i);
+            definitions.size() > 65536 ||
+            !native_history_copy(native_history_global(0x24ebb58), world)) {
+        capture = {};
+        return {};
+    }
+    const std::array<uintptr_t, 5> stamp{world, reinterpret_cast<uintptr_t>(definitions.begin),
+        reinterpret_cast<uintptr_t>(definitions.end),
+        definitions.size() ? native_history_vector_at(definitions, 0) : 0,
+        definitions.size() ? native_history_vector_at(definitions, definitions.size() - 1) : 0};
+    const auto epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+    if (capture.stamp != stamp) {
+        capture = {};
+        capture.stamp = stamp;
+    }
+    if (capture.published && (!refresh_epoch || (!capture.building && capture.epoch == epoch)))
+        return capture.published;
+    if (!allow_build) return {};
+    if (!capture.building) {
+        capture.pending.clear();
+        capture.pending.reserve(definitions.size());
+        capture.cursor = 0;
+        capture.building = true;
+        capture.matches_previous = capture.published && capture.published->size() == definitions.size();
+    }
+    bool progressed = false;
+    while (capture.cursor < definitions.size()) {
+        if (progressed && g_native_announcement_log_native_capture_deadline &&
+                std::chrono::steady_clock::now() >= *g_native_announcement_log_native_capture_deadline)
+            throw NativeAnnouncementLogNativeCapturePending{};
+        const uintptr_t definition = native_history_vector_at(definitions, capture.cursor);
         std::string singular, plural;
         if (!definition ||
             !native_history_copy_string(native_history_object_field(
                 definition, "itemdef_instrumentst", 0x68), singular) ||
             !native_history_copy_string(native_history_object_field(
-                definition, "itemdef_instrumentst", 0x88), plural)) return false;
-        names.emplace_back(std::move(singular), std::move(plural));
+                definition, "itemdef_instrumentst", 0x88), plural)) {
+            capture = {};
+            return {};
+        }
+        if (capture.matches_previous) {
+            const auto &previous = (*capture.published)[capture.cursor];
+            capture.matches_previous = previous.first == singular && previous.second == plural;
+        }
+        capture.pending.emplace_back(std::move(singular), std::move(plural));
+        ++capture.cursor;
+        progressed = true;
     }
+    // A new draw epoch must not discard a partly captured table. Native
+    // callers outside an announcement slice finish the same capture normally.
+    if (!capture.matches_previous)
+        capture.published = std::make_shared<const std::vector<std::pair<std::string, std::string>>>(
+            std::move(capture.pending));
+    else capture.pending.clear();
+    capture.building = false;
+    capture.epoch = epoch;
+    return capture.published;
+}
+static bool capture_native_instrument_names(
+        std::vector<std::pair<std::string, std::string>> &names) {
+    names.clear();
+    const auto snapshot = capture_native_instrument_name_snapshot();
+    if (!snapshot) return false;
+    names = *snapshot;
     return true;
 }
 

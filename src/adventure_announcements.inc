@@ -167,15 +167,28 @@
                         if ((ch & 0xc0) != 0x80) colors.push_back(foreground);
             } else {
                 if (notification && paragraph.parent) {
-                    // The producer owns the native report snapshot. A cold or
-                    // pending service result keeps this complete source below;
+                    // The producer owns this report and prepares its complete
+                    // translation before publishing the visible notification.
                     // SDL never retries its grammar under the display lock.
-                    if (const auto translated = native_announcement_log_translation_request(
-                            paragraph.report_document, foreground, true);
-                            translated && !translated->needs_owned_dependency) {
+                    auto translated = native_notification_retained_translation(paragraph, foreground);
+                    if (!translated) translated = native_announcement_log_translation_request(
+                        paragraph.report_document, foreground, true);
+                    if (translated && !translated->needs_owned_dependency) {
                         target = translated->target;
                         colors = translated->colors;
                     }
+                } else if (paragraph.report_document || paragraph.parent) {
+                    // Popup/report panels retain the same native producer
+                    // and typed fields as notifications. Do not discard the
+                    // COMBAT_* type before selecting its grammar.
+                    // Freeze only this proven visible parent. Discovery is
+                    // also used by map ownership and must not prepare every
+                    // offscreen report merely to identify its original rows.
+                    const auto document = paragraph.report_document
+                        ? paragraph.report_document : native_adventure_popup_report(paragraph.parent);
+                    if (document && document->report.source == paragraph.source)
+                        target = translate_native_announcement_log_record(
+                            *document, source, foreground, colors);
                 } else {
                     target = translate_complete_announcement(source,
                         std::vector<int>(source.size(), foreground), colors);

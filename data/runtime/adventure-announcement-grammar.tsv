@@ -1,4 +1,7 @@
 # Complete native adventure records, before generic personal-name templates.
+# NO_FISH: material deposits use the existing material supplier; empty fields have separate productions.
+adventure-announcement	There is nothing to catch in {s} deposit.	{s1}矿脉中没有可捕捉的东西。	material	PE reference 0x1343d0a->feature_init_deep_special_tubest 0xa4a940->0x14d1920(flags=0,adjective=false,state=0); classic 0x133ec7a->0xa48170->0x14cc890; complete material name, not a generated place; announcement-fishing/
+adventure-announcement	There is nothing to catch in {s}'s deposit.	{s1}的矿脉中没有可捕捉的东西。	$person	PE reference 0xa4a968->0x14d1920: historical-figure material owner retained while prefix/solid name are empty; native double spaces normalized; paired classic 0xa48198->0x14cc890; announcement-fishing/
 # scope / source / target / typed fields / native construction
 # The complete reading productions share one semantic entry for native
 # report parents and unabridged captured captions. Original PE instructions,
@@ -933,7 +936,7 @@ adventure-announcement	{s} has gnawed its way out of confinement!	{s1}啃开了�
 # The player equipment producer supplies an item and a body part independently.
 # Both fields belong to the whole report; the ordinary UI {s} noun matcher cannot
 # resolve artifact names as anatomy or consume the verb through partial word rules.
-adventure-announcement	You strap {s} to your {s}.	你把{s1}系在了自己的{s2}上。	$announcement-item,$body	PE reference 7f7020:7fb91b..7fba2a / classic 7f48a0:7f919b..7f92aa; c65450/c62490 complete item; 13345d0/132f540 mode 2 body-part name; ELF Ghidra elf-source-1238870.c and native prefix 1245082
+adventure-announcement	You strap {s} to your {s}.	你将{s1}绑在自己的{s2}上。	$announcement-item,$body	PE reference 7f7020:7fb91b..7fba2a / classic 7f48a0:7f919b..7f92aa; c65450/c62490 complete item; 13345d0/132f540 mode 2 body-part name; ELF Ghidra elf-source-1238870.c and native prefix 1245082
 adventure-announcement	You draw {s} with your {s}.	你用自己的{s2}拔出了{s1}。	$announcement-item,$body	PE reference 7f7020:7fbbc9..7fbcd8 / classic 7f48a0:7f9449..7f9558; c65450/c62490 complete item; 13345d0/132f540 mode 2 body-part name; ELF Ghidra elf-source-1238870.c and native prefix 1244d85
 # 8039b0 appends one of three grasp verbs or an item/container destination.
 # NPC gender and the native put/puts branches are independent of the actor name.
