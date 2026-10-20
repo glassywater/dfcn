@@ -49,7 +49,7 @@ struct NativeDfhackOutputBinding {
         std::copy_n(gps.lower_viewport, 8, b.lower.begin());
         return b;
     }
-    void apply(graphicst &gps) const noexcept {
+    void apply(graphicst &gps, bool include_map_output = true) const noexcept {
         gps.screen = static_cast<unsigned char *>(pointers[0]);
         gps.screentexpos = static_cast<NativeDfhackLayerTexture *>(pointers[1]);
         gps.screentexpos_lower = static_cast<NativeDfhackLayerTexture *>(pointers[2]);
@@ -72,12 +72,14 @@ struct NativeDfhackOutputBinding {
         std::memcpy(&gps.screenx, draw.data(), draw.size());
         std::copy(clipx.begin(), clipx.end(), gps.clipx);
         std::copy(clipy.begin(), clipy.end(), gps.clipy);
-        std::memcpy(&gps.viewport, viewports.data(), sizeof(viewports));
-        std::memcpy(&gps.map_port, map_ports.data(), sizeof(map_ports));
-        gps.main_viewport = reinterpret_cast<decltype(gps.main_viewport)>(main_viewport);
-        gps.main_map_port = reinterpret_cast<decltype(gps.main_map_port)>(main_map_port);
-        for (size_t i = 0; i < lower.size(); ++i)
-            gps.lower_viewport[i] = reinterpret_cast<decltype(gps.main_viewport)>(lower[i]);
+        if (include_map_output) {
+            std::memcpy(&gps.viewport, viewports.data(), sizeof(viewports));
+            std::memcpy(&gps.map_port, map_ports.data(), sizeof(map_ports));
+            gps.main_viewport = reinterpret_cast<decltype(gps.main_viewport)>(main_viewport);
+            gps.main_map_port = reinterpret_cast<decltype(gps.main_map_port)>(main_map_port);
+            for (size_t i = 0; i < lower.size(); ++i)
+                gps.lower_viewport[i] = reinterpret_cast<decltype(gps.main_viewport)>(lower[i]);
+        }
     }
 };
 

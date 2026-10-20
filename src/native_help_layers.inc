@@ -194,8 +194,8 @@ struct NativeUiLayerStorage {
 static NativeUiLayerStorage g_native_help_layer;
 
 // Both inlined game stores and graphicst helpers use the game's static gps.
-// Redirect it before the component draws, then restore its complete output
-// and cursor state. Raster helpers also borrow the renderer's array slots.
+// Redirect only its UI output and cursor state, leaving map bindings owned
+// by the game throughout. Raster helpers also borrow the renderer's array slots.
 class NativeUiGridBinding {
     graphicst *gps_;
     NativeDfhackOutputBinding previous_;
@@ -205,7 +205,9 @@ public:
     NativeUiGridBinding(graphicst *gps, const graphicst &view, void *renderer = nullptr)
         : gps_(gps), previous_(NativeDfhackOutputBinding::capture(*gps)), renderer_(renderer) {
         const auto binding = NativeDfhackOutputBinding::capture(view);
-        binding.apply(*gps_);
+        // UI snapshots may detach map output. Never copy those null aliases
+        // into the real gps, including during nested or retained UI bindings.
+        binding.apply(*gps_, false);
         NativeUiReadScope::invalidate_reads();
         if (renderer_) {
             auto *fields = static_cast<unsigned char *>(renderer_) + sizeof(void *);
@@ -217,7 +219,9 @@ public:
         if (renderer_)
             std::memcpy(static_cast<unsigned char *>(renderer_) + sizeof(void *),
                 renderer_pointers_.data(), sizeof(renderer_pointers_));
-        previous_.apply(*gps_);
+        // Native drawing may create or rotate map viewports while bound.
+        // Keep their live values instead of restoring an older snapshot.
+        previous_.apply(*gps_, false);
         NativeUiReadScope::invalidate_reads();
     }
 };
