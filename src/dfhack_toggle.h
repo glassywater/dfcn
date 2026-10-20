@@ -540,8 +540,8 @@ class Toggle {
 #ifdef _WIN32
     static bool console_shutdown_callback(void *console) {
         auto &self = *instance_;
-        // Core has set its shutdown flag. Cancel and drain input before the
-        // native Console takes its write lock and closes the input handle.
+        // Core has set its shutdown flag. Older consoles need input cancelled;
+        // r3 must reach native shutdown first so its exit event wakes the reader.
         auto *core = read<void *>(self.core_slot_);
         if (core && self.console_ && self.console_(core) == console &&
                 read<unsigned char>(core, 0x1548)) self.console_exit_.begin_shutdown();

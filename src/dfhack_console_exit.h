@@ -16,8 +16,8 @@
 
 namespace dfcn::dfhack {
 
-// The resident loader observes only DFHack's console-input import. It cancels
-// that reader before native FreeConsole can close its outstanding request.
+// Older DFHack consoles need their pending input cancelled before FreeConsole.
+// Consoles with a native exit event must signal it before joining the reader.
 class ConsoleExit {
 public:
     using Report = void (*)(const char *, const std::string &);
@@ -36,6 +36,7 @@ private:
     void **core_slot_ = nullptr;
     Report report_ = nullptr;
     bool installed_ = false, protection_pending_ = false;
+    bool native_shutdown_wakes_reader_ = false;
     DWORD original_protection_ = 0;
     std::atomic_bool exiting_{false};
     std::mutex mutex_;
@@ -107,19 +108,21 @@ private:
         struct ShutdownProfile {
             size_t private_at, thread_at, console_at, join_at;
             unsigned char private_load[7], console_address[7];
+            bool wakes_reader;
         };
         constexpr ShutdownProfile profiles[]{
             {0x27, 0x38, 0x3e, 0x4f,
                 {0x48,0x8b,0x81,0x50,0x12,0,0},
-                {0x48,0x81,0xc1,0xb8,0x11,0,0}}, // 53.16-r2
+                {0x48,0x81,0xc1,0xb8,0x11,0,0}, false}, // 53.16-r2
             {0x2c, 0x3d, 0x43, 0x54,
                 {0x48,0x8b,0x83,0x50,0x12,0,0},
-                {0x48,0x8d,0x8b,0xb8,0x11,0,0}}, // 53.16-r3
+                {0x48,0x8d,0x8b,0xb8,0x11,0,0}, true}, // 53.16-r3
         };
         constexpr unsigned char thread_id[]{0x83,0x78,0x08,0x00};
         constexpr unsigned char join_load[]{0x48,0x8b,0x8b,0x50,0x12,0,0};
         if (!readable(core_slot_, sizeof(void *)) || !console_shutdown) return false;
         const unsigned char *join = nullptr;
+        bool wakes_reader = false;
         for (const auto &profile : profiles) {
             const size_t console_call = profile.console_at + sizeof(profile.console_address);
             const size_t join_call = profile.join_at + sizeof(join_load);
@@ -136,13 +139,35 @@ private:
             if (shutdown + console_call + 5 + relative != console_shutdown) continue;
             std::memcpy(&relative, shutdown + join_call + 1, sizeof(relative));
             join = shutdown + join_call + 5 + relative;
+            wakes_reader = profile.wakes_reader;
             break;
         }
         constexpr unsigned char join_id[]{0x83,0x79,0x08,0x00};
         constexpr unsigned char join_copy[]{0x0f,0x10,0x07,0x33,0xd2,0x48,0x8d,0x4c,0x24,0x20,
             0x0f,0x29,0x44,0x24,0x20};
-        return readable(join, 0x39) && !std::memcmp(join + 6, join_id, sizeof(join_id)) &&
-            !std::memcmp(join + 0x25, join_copy, sizeof(join_copy));
+        if (!readable(join, 0x39) || std::memcmp(join + 6, join_id, sizeof(join_id)) ||
+                std::memcmp(join + 0x25, join_copy, sizeof(join_copy))) return false;
+        if (wakes_reader) {
+            // r3 Console::shutdown loads Private::exit_event and calls SetEvent.
+            // Its prompt loop waits on that event BEFORE ReadConsoleInputA.
+            // Cancelling input and joining here would prevent the signal forever.
+            constexpr unsigned char signal_event[]{
+                0x48,0x8b,0x43,0x18, 0x48,0x8b,0x48,0x28,
+                0x48,0x85,0xc9, 0x74,0x06, 0xff,0x15};
+            if (!readable(console_shutdown, 0x39) ||
+                    std::memcmp(console_shutdown + 0x26, signal_event, sizeof(signal_event)))
+                return false;
+            int32_t relative = 0;
+            std::memcpy(&relative, console_shutdown + 0x35, sizeof(relative));
+            const auto *slot = console_shutdown + 0x39 + relative;
+            FARPROC signal = nullptr;
+            if (!readable(slot, sizeof(signal))) return false;
+            std::memcpy(&signal, slot, sizeof(signal));
+            const auto kernel = GetModuleHandleW(L"kernel32.dll");
+            if (!kernel || !signal || signal != GetProcAddress(kernel, "SetEvent")) return false;
+        }
+        native_shutdown_wakes_reader_ = wakes_reader;
+        return true;
     }
 
     HANDLE native_reader_lease() const noexcept {
@@ -248,12 +273,20 @@ private:
 public:
     bool initialize(HMODULE module, Report reporter) {
         report_ = reporter;
+        if (native_shutdown_wakes_reader_) return true;
         if (slot_) return installed_;
+        if (!bind_native_reader(module)) {
+            report("native console shutdown interfaces are unavailable");
+            return false;
+        }
+        // r3 owns both waking and joining its reader. Leave its input import
+        // untouched and let Console::shutdown publish the native exit event.
+        if (native_shutdown_wakes_reader_) return true;
         const auto kernel = GetModuleHandleW(L"kernel32.dll");
         original_ = kernel ? reinterpret_cast<ReadFn>(GetProcAddress(kernel, "ReadConsoleInputA")) : nullptr;
         cancel_ = kernel ? reinterpret_cast<CancelFn>(GetProcAddress(kernel, "CancelSynchronousIo")) : nullptr;
         slot_ = find_import(module);
-        if (!original_ || !cancel_ || !slot_ || !bind_native_reader(module) || reinterpret_cast<uintptr_t>(slot_) %
+        if (!original_ || !cancel_ || !slot_ || reinterpret_cast<uintptr_t>(slot_) %
                 std::atomic_ref<ReadFn>::required_alignment ||
                 std::atomic_ref<ReadFn>(*slot_).load(std::memory_order_acquire) != original_) {
             slot_ = nullptr;
@@ -272,6 +305,7 @@ public:
     }
 
     void begin_shutdown() {
+        if (native_shutdown_wakes_reader_) return;
         const DWORD incoming_error = GetLastError();
         exiting_.store(true, std::memory_order_release);
         const HANDLE native = native_reader_lease();
