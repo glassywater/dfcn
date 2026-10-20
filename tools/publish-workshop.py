@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Publish the prepared DFCN Workshop folder through the logged-in Steam client.
 
-Uses the game's existing Steamworks DLL and its flat UGC interface. This helper
+Uses the installed Steamworks library and its flat UGC interface. This helper
 does not start Steam or the game, display a window, or require account secrets.
 """
 
@@ -18,11 +18,14 @@ import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
-STEAM_DIR = Path(r"D:\program\steam")
+STEAM_DIR = (Path.home() / ".local/share/Steam" if sys.platform == "linux"
+             else Path(r"D:\program\steam"))
 GAME_DIR = STEAM_DIR / "steamapps/common/Dwarf Fortress"
-STEAM_DLL = GAME_DIR / "steam_api64.dll"
+STEAM_DLL = (STEAM_DIR / "steamrt64/libsteam_api.so" if sys.platform == "linux"
+             else GAME_DIR / "steam_api64.dll")
 STATE_FILE = ROOT / "workshop/published-item.json"
 INVALID_HANDLE = (1 << 64) - 1
+CALLBACK_PACK = 4 if sys.platform == "linux" else 8
 
 U32 = C.c_uint32
 U64 = C.c_uint64
@@ -33,17 +36,17 @@ STR = C.c_char_p
 
 
 class CallbackMsg(C.Structure):
-    _pack_ = 8
+    _pack_ = CALLBACK_PACK
     _fields_ = [("user", I32), ("callback", I32), ("data", PTR), ("size", I32)]
 
 
 class APICallCompleted(C.Structure):
-    _pack_ = 8
+    _pack_ = CALLBACK_PACK
     _fields_ = [("call", U64), ("callback", I32), ("size", U32)]
 
 
 class QueryCompleted(C.Structure):
-    _pack_ = 8
+    _pack_ = CALLBACK_PACK
     _fields_ = [
         ("handle", U64), ("result", I32), ("returned", U32), ("total", U32),
         ("cached", BOOL), ("next_cursor", C.c_char * 256),
@@ -51,18 +54,19 @@ class QueryCompleted(C.Structure):
 
 
 class CreateItemResult(C.Structure):
-    _pack_ = 8
+    _pack_ = CALLBACK_PACK
     _fields_ = [("result", I32), ("item_id", U64), ("needs_legal", BOOL)]
 
 
 class SubmitItemResult(C.Structure):
-    _pack_ = 8
+    _pack_ = CALLBACK_PACK
     _fields_ = [("result", I32), ("needs_legal", BOOL), ("item_id", U64)]
 
 
 class UGCDetails(C.Structure):
-    # Layout from Valve's ISteamUGC016 SteamUGCDetails_t, Windows pack(8).
-    _pack_ = 8
+    # Valve SDK callback packing is 4 on Linux and 8 on Windows.
+    # The trailing size field is present in UGC021; older interfaces leave it.
+    _pack_ = CALLBACK_PACK
     _fields_ = [
         ("item_id", U64), ("result", I32), ("file_type", I32),
         ("creator_appid", U32), ("consumer_appid", U32),
@@ -74,7 +78,7 @@ class UGCDetails(C.Structure):
         ("filename", C.c_char * 260), ("file_size", I32),
         ("preview_size", I32), ("url", C.c_char * 256),
         ("votes_up", U32), ("votes_down", U32), ("score", C.c_float),
-        ("children", U32),
+        ("children", U32), ("total_files_size", U64),
     ]
 
 
@@ -132,10 +136,14 @@ class Steam:
         self.dll_dirs = []
         os.environ["SteamAppId"] = str(appid)
         os.environ["SteamGameId"] = str(appid)
-        for directory in (GAME_DIR, STEAM_DIR):
-            self.dll_dirs.append(os.add_dll_directory(str(directory)))
+        if sys.platform == "win32":
+            for directory in (GAME_DIR, STEAM_DIR):
+                self.dll_dirs.append(os.add_dll_directory(str(directory)))
         self.dll = C.CDLL(str(STEAM_DLL))
-        self.bind("SteamAPI_Init", BOOL, [])
+        if hasattr(self.dll, "SteamAPI_InitFlat"):
+            self.bind("SteamAPI_InitFlat", I32, [PTR])
+        else:
+            self.bind("SteamAPI_Init", BOOL, [])
         self.bind("SteamAPI_Shutdown", None, [])
         self.bind("SteamAPI_GetHSteamPipe", I32, [])
         self.bind("SteamAPI_ManualDispatch_Init", None, [])
@@ -144,9 +152,9 @@ class Steam:
         self.bind("SteamAPI_ManualDispatch_FreeLastCallback", None, [I32])
         self.bind("SteamAPI_ManualDispatch_GetAPICallResult", BOOL,
                   [I32, U64, PTR, I32, I32, C.POINTER(BOOL)])
-        self.bind("SteamAPI_SteamUGC_v016", PTR, [])
-        self.bind("SteamAPI_SteamUser_v021", PTR, [])
-        self.bind("SteamAPI_SteamUtils_v010", PTR, [])
+        ugc = self.bind_interface("SteamUGC", ("021", "016"))
+        user = self.bind_interface("SteamUser", ("023", "021"))
+        utils = self.bind_interface("SteamUtils", ("011", "010"))
         self.bind("SteamAPI_ISteamUser_GetSteamID", U64, [PTR])
         self.bind("SteamAPI_ISteamUtils_GetAppID", U32, [PTR])
         self.bind("SteamAPI_ISteamUGC_CreateQueryUserUGCRequest", U64,
@@ -164,14 +172,20 @@ class Steam:
         self.bind("SteamAPI_ISteamUGC_SubmitItemUpdate", U64, [PTR, U64, STR])
         self.bind("SteamAPI_ISteamUGC_GetItemUpdateProgress", I32,
                   [PTR, U64, C.POINTER(U64), C.POINTER(U64)])
-        if not self.dll.SteamAPI_Init():
+        if hasattr(self.dll, "SteamAPI_InitFlat"):
+            error = C.create_string_buffer(1024)
+            result = self.dll.SteamAPI_InitFlat(error)
+            if result != 0:
+                raise RuntimeError(f"SteamAPI_InitFlat failed ({result}): "
+                                   f"{error.value.decode('utf-8', errors='replace')}")
+        elif not self.dll.SteamAPI_Init():
             raise RuntimeError("SteamAPI_Init failed; the existing Steam session could not be used")
         self.initialized = True
         self.dll.SteamAPI_ManualDispatch_Init()
         self.pipe = self.dll.SteamAPI_GetHSteamPipe()
-        self.ugc = self.dll.SteamAPI_SteamUGC_v016()
-        self.user = self.dll.SteamAPI_SteamUser_v021()
-        self.utils = self.dll.SteamAPI_SteamUtils_v010()
+        self.ugc = ugc()
+        self.user = user()
+        self.utils = utils()
         if not all((self.pipe, self.ugc, self.user, self.utils)):
             self.close()
             raise RuntimeError("Steam did not return the required Steamworks interfaces")
@@ -186,6 +200,14 @@ class Steam:
         function = getattr(self.dll, name)
         function.restype = result
         function.argtypes = args
+
+    def bind_interface(self, name, versions):
+        for version in versions:
+            symbol = f"SteamAPI_{name}_v{version}"
+            if hasattr(self.dll, symbol):
+                self.bind(symbol, PTR, [])
+                return getattr(self.dll, symbol)
+        raise RuntimeError(f"Steamworks library lacks a supported {name} interface: {STEAM_DLL}")
 
     def close(self):
         if self.initialized:

@@ -73,6 +73,8 @@ try {
         'data/runtime/civilization-name-terms.tsv',
         'data/runtime/site-name-decisions.tsv',
         'data/runtime/site-name-imagery.tsv',
+        'data/runtime/river-name-imagery.tsv', 'data/runtime/river-name-constructions.tsv',
+        'data/runtime/river-name-generics.tsv', 'data/runtime/river-name-decisions.tsv',
         'data/runtime/site-government-parent-suffixes.tsv',
         'data/runtime/site-government-name-terms.tsv',
         'data/runtime/site-government-independent-suffixes.tsv',
@@ -123,6 +125,10 @@ try {
         $fontPath = Join-Path $projectRoot ('data\runtime\' + $name)
         if ([IO.File]::Exists($fontPath)) {
             Add-RuntimeFile $fontPath ('dfcn/data/runtime/' + $name)
+            $fontLicense = Join-Path $projectRoot 'data/runtime/font.LICENSE.txt'
+            if ([IO.File]::Exists($fontLicense)) {
+                Add-RuntimeFile $fontLicense 'dfcn/data/runtime/font.LICENSE.txt'
+            }
             break
         }
     }

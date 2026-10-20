@@ -38,7 +38,7 @@ Windows 本版提供 **Shift+F6**：扩展默认启用，首次按下停用全�
 
 **Shift+F1** 打开或关闭汉化设置菜单，提供切换中英文、切换繁简体、切换四族语言音译、开关 DFHack（需已安装 DFHack）、重载汉化五项。点击选项执行后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭；英文模式下仍可打开。四族语言默认采用中文音译，可切换为原文拼写，选择保留到本次游戏结束，并跨核心重载保留。DFHack 选项与 Shift+F11 相同，未安装或接口未就绪时不执行。重载汉化会重新载入核心与数据并开启汉化。
 
-Windows 同时安装 **DFHack 53.16-r2** 时，可按 **Shift+F11** 关闭 DFHack，再按一次恢复。开关独立于汉化：关闭时暂停插件更新、界面 hook、热键、命令与 Lua 定时回调，保留驻留核心、插件配置、存档数据和世界卸载清理。已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。
+Windows 同时安装 **DFHack 53.16-r2 / r3** 时，可按 **Shift+F11** 关闭 DFHack，再按一次恢复。开关独立于汉化：关闭时暂停插件更新、界面 hook、热键、命令与 Lua 定时回调，保留驻留核心、插件配置、存档数据和世界卸载清理。已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。
 
 ## Linux 安装与使用
 
@@ -75,6 +75,15 @@ Windows 本版可用 **Shift+F6** 临时停用或恢复全部扩展数据，并�
 工坊入口从 `info.txt`、`INSTALL.txt`、`CHANGELOG.txt` 和 Windows 运行 ZIP 重建整个 `workshop/content`，不沿用内容目录中的旧 ZIP、缓存或其他遗留文件。`DFCN/` 保持完整 Windows 运行目录，入口配置改为工坊订阅路径，并提供对应的工坊安装说明。
 
 入口生成 `DFCN-Windows-workshop.zip`，并将 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type 四个公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。独立汉化扩展与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。Linux 独立运行包仍从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 获取。
+
+Linux 宿主打包已有的 Windows 交叉编译产物时，使用固定 Python 执行
+`tools/package-windows-cross.py`。该脚本读取同一 Windows 运行文件清单，
+使用已安装的 MinGW-w64 `strip` 处理临时 DLL 副本，生成完整 Windows 包、
+Windows 工坊包和四个公开扩展 ZIP，不编译或生成数据。
+工坊发布工具 `tools/publish-workshop.py` 支持 Linux 已安装的 Steamworks 库及现有登录会话。
+
+本次 Windows 工坊版本为 **v53.16-20261020**，变化及全部 16 条提交分析见
+[更新日志](docs/releases/v53.16-20261020.md)。
 
 ## Linux 交叉编译 Windows x64
 
