@@ -1,0 +1,58 @@
+冒险模式回答延迟显示：原生反编译分析
+
+分析对象
+当前安装的 Linux dwarfort，可执行文件的静态指令与 Ghidra C 输出。
+本目录的 native-functions.tsv 使用 ELF 虚拟地址，不是 PE RVA。
+反编译中的自动类型和变量名仅供阅读；字段意义以实际指令和宿主结构布局为准。
+
+已确认的原生路径
+
+1. 选择一个实际发言的普通话题，不等于同步生成 NPC 回答。
+   1163020 的默认发言分支（1163e80 起）创建玩家的 Talk 动作，
+   设置动作类型 7、原生 timer 初值 10000，并保存活动、会话、话题和受话人。
+   这个数值不是毫秒或帧数结论。随后 1163f23 关闭话题窗口，清空选择项、
+   过滤词和 conversation.adv_announcement 显示列表。切换子菜单等分支另有处理。
+   完整源：elf-source-1163020.c；指令：elf-conversation-choice.asm。
+
+2. 已生成的发言写入全局 report，而“继续聊”读取已有 report。
+   103a1d0 的说话包装器调用 17ea070，普通对话公告类型为 0xa3。
+   17ea070 保存完整文本和活动/会话标识，并按 A_DISPLAY 开关加入 display 列表。
+   当前游戏默认文件和用户 prefs 文件均保留 REGULAR_CONVERSATION:A_D；
+   不是由当前文件缺失 A_D 所能解释的情况。
+   这两处原生函数已有完整反编译资料，位于相邻 adventure-announcement-native 目录。
+
+3. “继续聊”为什么能显示上次的回答，有直接的二进制证据。
+   adventure_option_talk_existing_conversationst 的 doRealize 位于 10853e0，
+   从选项 +10/+18 取活动与会话指针，转入 1084e40。
+   1084e40 清空旧窗口列表，开启 conversation.open，遍历全局 reports
+   （28154f8..2815500），按 report+5c 的活动 ID 与 report+60 的会话 ID 筛选。
+   短文本保留 parent，长文本按 85 原生列拆行，然后填入 conversation+0xb0 的
+   adv_announcement。这个路径没有等待 NPC 回答的循环，也没有创建新的 Talk 动作。
+   1172630 读取这份列表绘制最近发言。因此，再进入时出现旧回答可以是历史重建，
+   不能据此判断回答直到这次进入才产生。
+   完整源：elf-source-10853e0.c、elf-source-1084e40.c、elf-source-1172630.c。
+
+4. 自动公告显示与对话窗口的历史列表是不同的路径。
+   1160090 使用全局 display，筛选 timer 仍有效的近期报告，并按 95 原生列重排。
+   它清除 ADV_HANDLE_ANNOUNCEMENTS 等待处理标志，再设置 ADV_SHOWING_ANNOUNCEMENTS。
+   超出 d_init.adventure.display_length 时设置 ADV_HAVE_MORE；MORE 设置等条件
+   决定是否设置 ADV_DOING_MORE。普通短消息显示与需要确认的长消息窗口不能等同。
+   11b2e40 是该自动公告的绘制入口；1222780/121d360 的逻辑阶段仅在
+   ADV_HANDLE_ANNOUNCEMENTS 为真时调用 1160090。
+   17ea070 的普通公告入队路径本身没有设置 ADV_HANDLE_ANNOUNCEMENTS。
+   因此，“新报告入库”和“自动窗口重新排版”并非同一个操作。如果回答产生时
+   未安排这次重新排版，或者排版结果未显示，后来继续聊天仍可从 reports 找回回答。
+   这些原生函数已有完整资料，位于 adventure-announcement-native 目录。
+
+对当前汉化代码的定位
+native_announcement_hooks.inc 在完整源捕获前后调用原提交函数，参数保持原样；
+native_conversation_search_hooks.inc 的写入用于搜索排名，没有写会话 open、
+Talk 动作 timer 或 announcement.temp_flag。没有在这些入口发现“等下次聊再提交”的逻辑。
+这不能排除显示遮挡、文本识别或其他绘制路径的问题。
+
+结论与证据边界
+已确定：普通话题走后续动作处理；继续聊天重新显示已有记录；即时公告另有刷新和
+显示条件。“下次聊天才看见”优先指向回答产生后的即时显示路径，而不是词表缺字。
+尚未确定：本次现象究竟是原生刷新未触发、短公告显示方式/可见时间，还是绘制遮挡。
+本次只读内存取样没有活动对话窗口或近期普通对话报告，无法还原故障发生时的状态。
+不能把静态推断写成实机已确认原因，也不能以反编译成功声称显示已经修复。

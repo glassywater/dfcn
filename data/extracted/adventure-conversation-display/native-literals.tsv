@@ -1,0 +1,329 @@
+role	owner	site	operand	kind	source
+conversation-open	0x120eaa0	0x120eb8f	0x2041	inline	A 
+conversation-open	0x120eaa0	0x120ec55	0x2e6b	inline	k.
+conversation-open	0x120eaa0	0x120ec5b	0x20746f6e6e616320	inline	 cannot 
+conversation-open	0x120eaa0	0x120ec68	0x61657073	inline	spea
+conversation-open	0x120eaa0	0x120eeb2	0x213b0f0/16	vector	You cannot speak
+conversation-open	0x120eaa0	0x120effb	0x7473756d20756f59	inline	You must
+conversation-open	0x120eaa0	0x120f180	0x2130ca1	cstring	 cannot speak.
+conversation-open	0x120eaa0	0x120f994	0x2107edc	cstring	.
+conversation-render	0x1172630	0x1172a2d	0x6c65	inline	el
+conversation-render	0x1172630	0x1172a3a	0x636e6143	inline	Canc
+conversation-render	0x1172630	0x1172ac6	0x213a4c0/16	vector	Click a creature
+conversation-render	0x1172630	0x1172ace	0x6e6f6974	inline	tion
+conversation-render	0x1172630	0x1172ad5	0x61737265766e6f63	inline	conversa
+conversation-render	0x1172630	0x1172ae8	0x213a4d0/16	vector	 to start a new 
+conversation-render	0x1172630	0x11736ab	0x7920647261776f54	inline	Toward y
+conversation-render	0x1172630	0x11736e4	0x203a756f	inline	ou: 
+conversation-render	0x1172630	0x1173772	0x213a4e0/16	vector	Positive attitud
+conversation-render	0x1172630	0x11741ea	0x6c65	inline	el
+conversation-render	0x1172630	0x11741ef	0x636e6143	inline	Canc
+conversation-render	0x1172630	0x1174275	0x213a500/16	vector	Choose your tone
+conversation-render	0x1172630	0x117427d	0x6361742f	inline	/tac
+conversation-render	0x1172630	0x1174a3c	0x203a	inline	: 
+conversation-render	0x1172630	0x1174a6e	0x206c6172656e6547	inline	General 
+conversation-render	0x1172630	0x1174a97	0x646f6f4d	inline	Mood
+conversation-render	0x1172630	0x1174af4	0x212f486	cstring	Enthusiastic
+conversation-render	0x1172630	0x1174e0b	0x6164696d69746e49	inline	Intimida
+conversation-render	0x1172630	0x1174e18	0x203a6574	inline	te: 
+conversation-render	0x1172630	0x11750f2	0x3a40	inline	@:
+conversation-render	0x1172630	0x1175148	0x203a	inline	: 
+conversation-render	0x1172630	0x117516c	0x6564617573726550	inline	Persuade
+conversation-render	0x1172630	0x1175489	0x212f4c6	cstring	Impossible
+conversation-render	0x1172630	0x117565d	0x212f4c6	cstring	Impossible
+conversation-render	0x1172630	0x11756ae	0x212f0bb	cstring	Annoyed
+conversation-render	0x1172630	0x11756fc	0x202c	inline	, 
+conversation-render	0x1172630	0x11757a1	0x20f7379	cstring	 
+conversation-render	0x1172630	0x11757c0	0x20f7379	cstring	 
+conversation-render	0x1172630	0x1175a53	0x213a4f0/16	vector	Negative attitud
+conversation-render	0x1172630	0x1175a9d	0x203a	inline	: 
+conversation-render	0x1172630	0x1175acd	0x6e6f6974616c6552	inline	Relation
+conversation-render	0x1172630	0x1175aed	0x70696873	inline	ship
+conversation-render	0x1172630	0x1175b83	0x212f059	cstring	Respects you
+conversation-render	0x1172630	0x1175bd8	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x1175c23	0x212f08d	cstring	Trusts you
+conversation-render	0x1172630	0x1175c78	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x1175cc3	0x212f0a6	cstring	Highly Loyal
+conversation-render	0x1172630	0x1175d19	0x202c	inline	, 
+conversation-render	0x1172630	0x1175d98	0x212efda	cstring	Bold
+conversation-render	0x1172630	0x1175de4	0x202c	inline	, 
+conversation-render	0x1172630	0x1175e69	0x212efc8	cstring	Agitated
+conversation-render	0x1172630	0x1175ecd	0x202c	inline	, 
+conversation-render	0x1172630	0x1175f38	0x69746150	inline	Pati
+conversation-render	0x1172630	0x1175f6a	0x6e65	inline	en
+conversation-render	0x1172630	0x117604a	0x212f4b7	cstring	Favorable odds
+conversation-render	0x1172630	0x11760a4	0x212f4b7	cstring	Favorable odds
+conversation-render	0x1172630	0x117611e	0x212f000	cstring	Loves you
+conversation-render	0x1172630	0x1176173	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x11761be	0x212f02b	cstring	Terrified of you
+conversation-render	0x1172630	0x117622e	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x1176279	0x212f079	cstring	Low respect for you
+conversation-render	0x1172630	0x11762a6	0x212efbf	cstring	Animated
+conversation-render	0x1172630	0x11762f0	0x212efdf	cstring	Confident
+conversation-render	0x1172630	0x1176cab	0x203a	inline	: 
+conversation-render	0x1172630	0x1176ce0	0x7364726f7779654b	inline	Keywords
+conversation-render	0x1172630	0x1176e25	0x2e2e	inline	..
+conversation-render	0x1172630	0x1177124	0x213a510/16	vector	Almost guarantee
+conversation-render	0x1172630	0x11771e7	0x213a510/16	vector	Almost guarantee
+conversation-render	0x1172630	0x117725c	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x11772bf	0x212efe9	cstring	Acquiescent
+conversation-render	0x1172630	0x11772e2	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x1177345	0x21b07d7	cstring	Sluggish
+conversation-render	0x1172630	0x117736b	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x11773be	0x212efb5	cstring	Impatient
+conversation-render	0x1172630	0x117746a	0x212f4fc	cstring	Unfavorable odds
+conversation-render	0x1172630	0x1177497	0x212f4a8	cstring	Likely success
+conversation-render	0x1172630	0x1177538	0x210eb8c	cstring	...
+conversation-render	0x1172630	0x117755b	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x11775a6	0x212f04a	cstring	No fear of you
+conversation-render	0x1172630	0x11775d3	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x117761e	0x212f03c	cstring	Scared of you
+conversation-render	0x1172630	0x1177651	0x2142877	cstring	_
+conversation-render	0x1172630	0x1177764	0x212efd1	cstring	Inactive
+conversation-render	0x1172630	0x1177840	0x212f00a	cstring	Likes you
+conversation-render	0x1172630	0x1177876	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x11778c1	0x212f0ad	cstring	Loyal
+conversation-render	0x1172630	0x11778f3	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x117793e	0x212f08d	cstring	Trusts you
+conversation-render	0x1172630	0x1177974	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x11779bf	0x212f098	cstring	Distrusts you
+conversation-render	0x1172630	0x11779ec	0x212eff5	cstring	Unassuming
+conversation-render	0x1172630	0x1177a2d	0x212f4fc	cstring	Unfavorable odds
+conversation-render	0x1172630	0x1177a5a	0x212f4a8	cstring	Likely success
+conversation-render	0x1172630	0x1177a91	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x1177adc	0x212f059	cstring	Respects you
+conversation-render	0x1172630	0x1177b09	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x1177b67	0x212efa4	cstring	Neutral attitude
+conversation-render	0x1172630	0x1177ba0	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x1177beb	0x212f098	cstring	Distrusts you
+conversation-render	0x1172630	0x1177cf5	0x212f0b3	cstring	Neutral
+conversation-render	0x1172630	0x1177d85	0x2132140	cstring	How will you respond to the offer of service?
+conversation-render	0x1172630	0x1177e1d	0x20f3aea	cstring	, 
+conversation-render	0x1172630	0x1177e68	0x212f066	cstring	No respect for you
+conversation-render	0x1172630	0x1177e9d	0x212f53a	cstring	Which pet will you gift?
+conversation-render	0x1172630	0x1177efb	0x212f147	cstring	Admiration
+conversation-render	0x1172630	0x1177f42	0x212f4f2	cstring	Even odds
+conversation-render	0x1172630	0x1177f6f	0x212f3e7	cstring	Restless
+conversation-render	0x1172630	0x1177fbe	0x2132420	cstring	What will you say about your plots and scheming?
+conversation-render	0x1172630	0x117800b	0x20f4934	cstring	Grieving
+conversation-render	0x1172630	0x1178076	0x212f493	cstring	Pessimistic
+conversation-render	0x1172630	0x11780bd	0x212f396	cstring	Passionate
+conversation-render	0x1172630	0x1178104	0x2211ef7	cstring	Patient
+conversation-render	0x1172630	0x117814b	0x212f38d	cstring	Panicked
+conversation-render	0x1172630	0x1178192	0x212f384	cstring	Outraged
+conversation-render	0x1172630	0x11781d9	0x212f36f	cstring	Nostalgic
+conversation-render	0x1172630	0x1178220	0x212f379	cstring	Optimistic
+conversation-render	0x1172630	0x1178267	0x212f367	cstring	Nervous
+conversation-render	0x1172630	0x11782ae	0x20f498c	cstring	Mortified
+conversation-render	0x1172630	0x11782fd	0x212f520	cstring	What do you want to know?
+conversation-render	0x1172630	0x117834a	0x212f21e	cstring	Despair
+conversation-render	0x1172630	0x11783a0	0x20f4996	cstring	Shaken
+conversation-render	0x1172630	0x11783e7	0x212f404	cstring	Servile
+conversation-render	0x1172630	0x1178436	0x2132170	cstring	How will you respond to the position offer?
+conversation-render	0x1172630	0x1178483	0x212f49f	cstring	Euphoric
+conversation-render	0x1172630	0x11784ca	0x212f01e	cstring	Dislikes you
+conversation-render	0x1172630	0x11784f7	0x212f347	cstring	Jovial
+conversation-render	0x1172630	0x1178546	0x212f50d	cstring	What will you say?
+conversation-render	0x1172630	0x1178593	0x212f1ae	cstring	Anxious
+conversation-render	0x1172630	0x11785da	0x212f107	cstring	Triumphant
+conversation-render	0x1172630	0x1178629	0x212f50d	cstring	What will you say?
+conversation-render	0x1172630	0x1178676	0x212f2bc	cstring	Free
+conversation-render	0x1172630	0x11786e1	0x212f360	cstring	Lonely
+conversation-render	0x1172630	0x1178728	0x212f357	cstring	Loathing
+conversation-render	0x1172630	0x117876f	0x212f34e	cstring	Jubilant
+conversation-render	0x1172630	0x11787be	0x2132288	cstring	What will you say about the agreement?
+conversation-render	0x1172630	0x117880b	0x212f1e8	cstring	Bored
+conversation-render	0x1172630	0x117885c	0x212f3c8	cstring	Remorseful
+conversation-render	0x1172630	0x11788a3	0x212f3be	cstring	Regretful
+conversation-render	0x1172630	0x11788f2	0x21321f8	cstring	What will you say about the conflict?
+conversation-render	0x1172630	0x117893f	0x212c26a	cstring	Doubt
+conversation-render	0x1172630	0x1178986	0x212f4f2	cstring	Even odds
+conversation-render	0x1172630	0x11789b3	0x212f306	cstring	Hopeless
+conversation-render	0x1172630	0x11789ff	0x212f17a	cstring	Alienated
+conversation-render	0x1172630	0x1178a46	0x212f0e6	cstring	Alarmed
+conversation-render	0x1172630	0x1178a8d	0x212f171	cstring	In Agony
+conversation-render	0x1172630	0x1178ad4	0x212f166	cstring	Aggravated
+conversation-render	0x1172630	0x1178b1b	0x212efc8	cstring	Agitated
+conversation-render	0x1172630	0x1178b62	0x212f4e3	cstring	Likely failure
+conversation-render	0x1172630	0x1178b8f	0x212f440	cstring	Wonder
+conversation-render	0x1172630	0x1178bde	0x21324e0	cstring	How will you respond to this dismissal?
+conversation-render	0x1172630	0x1178c2b	0x212f2cc	cstring	Gleeful
+conversation-render	0x1172630	0x1178c80	0x212c4a5	cstring	Lustful
+conversation-render	0x1172630	0x1178cc7	0x212f136	cstring	Loving
+conversation-render	0x1172630	0x1178d16	0x2132458	cstring	How will you respond about your profession?
+conversation-render	0x1172630	0x1178d63	0x2175705	cstring	Content
+conversation-render	0x1172630	0x1178dc0	0x212f122	cstring	Sad
+conversation-render	0x1172630	0x1178e07	0x212f3f0	cstring	Indignant
+conversation-render	0x1172630	0x1178e4e	0x212f3dd	cstring	Resentful
+conversation-render	0x1172630	0x1178e9d	0x21325c8	cstring	How will you respond to the tribute cancellation?
+conversation-render	0x1172630	0x1178eea	0x212f278	cstring	Empathetic
+conversation-render	0x1172630	0x1178f3b	0x212f323	cstring	Interested
+conversation-render	0x1172630	0x1178f82	0x212f31a	cstring	Insulted
+conversation-render	0x1172630	0x1178fd1	0x212f50d	cstring	What will you say?
+conversation-render	0x1172630	0x117901e	0x212f19d	cstring	Angry
+conversation-render	0x1172630	0x1179065	0x212f4d1	cstring	Nearly impossible
+conversation-render	0x1172630	0x1179092	0x212f414	cstring	Sympathy
+conversation-render	0x1172630	0x11790e1	0x2132540	cstring	What will you say about how you are feeling?
+conversation-render	0x1172630	0x117912e	0x212f47c	cstring	Expectant
+conversation-render	0x1172630	0x1179189	0x212f126	cstring	Joyous
+conversation-render	0x1172630	0x11791d8	0x2132660	cstring	How will you respond to the request to cease hostilities?
+conversation-render	0x1172630	0x1179225	0x212f1d3	cstring	Averse
+conversation-render	0x1172630	0x1179276	0x212f3aa	cstring	Enraptured
+conversation-render	0x1172630	0x11792bd	0x21730e2	cstring	Enraged
+conversation-render	0x1172630	0x1179304	0x212c6e1	cstring	Proud
+conversation-render	0x1172630	0x117934b	0x212f3a1	cstring	Pleasure
+conversation-render	0x1172630	0x1179392	0x20f48da	cstring	Relieved
+conversation-render	0x1172630	0x11793d9	0x212f3b5	cstring	Rejected
+conversation-render	0x1172630	0x1179420	0x212f3fa	cstring	Self-pity
+conversation-render	0x1172630	0x1179467	0x212f3d3	cstring	Repentant
+conversation-render	0x1172630	0x11794ae	0x212f0fd	cstring	Satisfied
+conversation-render	0x1172630	0x11794f5	0x212f44f	cstring	Wrathful
+conversation-render	0x1172630	0x1179544	0x2132380	cstring	What will you say about the structure?
+conversation-render	0x1172630	0x1179591	0x212f24b	cstring	Dislike
+conversation-render	0x1172630	0x11795d8	0x212f4e3	cstring	Likely failure
+conversation-render	0x1172630	0x1179605	0x212f2e9	cstring	Guilty
+conversation-render	0x1172630	0x1179654	0x212f595	cstring	How will you respond?
+conversation-render	0x1172630	0x11796a1	0x212f152	cstring	Adoration
+conversation-render	0x1172630	0x11796f2	0x20f48f3	cstring	Terrified
+conversation-render	0x1172630	0x1179739	0x212f41d	cstring	Tenderness
+conversation-render	0x1172630	0x1179788	0x212f520	cstring	What do you want to know?
+conversation-render	0x1172630	0x11797d5	0x212f2db	cstring	Glum
+conversation-render	0x1172630	0x1179840	0x20f4982	cstring	Miserable
+conversation-render	0x1172630	0x11798a1	0x2132328	cstring	What will you say about the surrounding area?
+conversation-render	0x1172630	0x11798ee	0x212f20b	cstring	Dejected
+conversation-render	0x1172630	0x117993f	0x212f438	cstring	Unhappy
+conversation-render	0x1172630	0x1179986	0x212f431	cstring	Uneasy
+conversation-render	0x1172630	0x11799d5	0x2132248	cstring	What will you say about the conclusion of the agreement?
+conversation-render	0x1172630	0x1179a22	0x212f289	cstring	Enjoyment
+conversation-render	0x1172630	0x1179a69	0x212f014	cstring	Hates you
+conversation-render	0x1172630	0x1179a96	0x212f338	cstring	Isolated
+conversation-render	0x1172630	0x1179ae5	0x2131e50	cstring	What will you say about the incident?
+conversation-render	0x1172630	0x1179b32	0x212f1a3	cstring	In Anguish
+conversation-render	0x1172630	0x1179b83	0x212f0ee	cstring	Shocked
+conversation-render	0x1172630	0x1179bca	0x212f40c	cstring	Ashamed
+conversation-render	0x1172630	0x1179c11	0x212f0db	cstring	Suspicious
+conversation-render	0x1172630	0x1179c58	0x212f428	cstring	Thrilled
+conversation-render	0x1172630	0x1179ca7	0x21322d8	cstring	What will you say about the request?
+conversation-render	0x1172630	0x1179cf4	0x212f2b2	cstring	Ferocious
+conversation-render	0x1172630	0x1179d3b	0x212f4d1	cstring	Nearly impossible
+conversation-render	0x1172630	0x1179d68	0x212f2f6	cstring	Hateful
+conversation-render	0x1172630	0x1179db7	0x21326a0	cstring	How will you respond to the demand to yield?
+conversation-render	0x1172630	0x1179e04	0x212f1e1	cstring	Bitter
+conversation-render	0x1172630	0x1179e55	0x212f458	cstring	Zealous
+conversation-render	0x1172630	0x1179e9c	0x212f447	cstring	Worried
+conversation-render	0x1172630	0x1179eeb	0x21321d0	cstring	What will you say about the journey?
+conversation-render	0x1172630	0x1179f38	0x212f253	cstring	Displeasure
+conversation-render	0x1172630	0x1179fb0	0x212f30f	cstring	Humiliated
+conversation-render	0x1172630	0x1179ff7	0x20f492a	cstring	Horrified
+conversation-render	0x1172630	0x117a03e	0x212f341	cstring	Jolly
+conversation-render	0x1172630	0x117a08d	0x2132220	cstring	What will you say about the rescue?
+conversation-render	0x1172630	0x117a0da	0x212f15c	cstring	Affection
+conversation-render	0x1172630	0x117a129	0x2132488	cstring	How will you respond to this passive reply?
+conversation-render	0x1172630	0x117a176	0x212c6c0	cstring	Vengeful
+conversation-render	0x1172630	0x117a1c5	0x21323d0	cstring	How will you respond to the accusation?
+conversation-render	0x1172630	0x117a212	0x212f2c1	cstring	Frustrated
+conversation-render	0x1172630	0x117a261	0x2132630	cstring	How will you respond to the demand for tribute?
+conversation-render	0x1172630	0x117a2ae	0x212f0c3	cstring	Grouchy
+conversation-render	0x1172630	0x117a326	0x212f1f5	cstring	Confused
+conversation-render	0x1172630	0x117a36d	0x212f1ee	cstring	Caring
+conversation-render	0x1172630	0x117a3b4	0x212f18b	cstring	Ambivalent
+conversation-render	0x1172630	0x117a3fb	0x212f214	cstring	Delighted
+conversation-render	0x1172630	0x117a442	0x212f13d	cstring	Accepting
+conversation-render	0x1172630	0x117a489	0x212f1fe	cstring	Contemptuous
+conversation-render	0x1172630	0x117a4d0	0x212f473	cstring	Defeated
+conversation-render	0x1172630	0x117a517	0x212f196	cstring	Amused
+conversation-render	0x1172630	0x117a55e	0x212f460	cstring	Existential Crisis
+conversation-render	0x1172630	0x117a5a5	0x212f184	cstring	Amazed
+conversation-render	0x1172630	0x117a5f4	0x212f553	cstring	About whom do you ask?
+conversation-render	0x1172630	0x117a641	0x212f32e	cstring	Irritated
+conversation-render	0x1172630	0x117a690	0x2132570	cstring	What will you say about your family?
+conversation-render	0x1172630	0x117a6dd	0x212f265	cstring	Elated
+conversation-render	0x1172630	0x117a72c	0x2132740	cstring	How will you respond to the request for a guide?
+conversation-render	0x1172630	0x117a779	0x212f2fe	cstring	Hopeful
+conversation-render	0x1172630	0x117a7c8	0x212f583	cstring	How will you ask?
+conversation-render	0x1172630	0x117a815	0x212f1c0	cstring	Aroused
+conversation-render	0x1172630	0x117a864	0x21323f8	cstring	What will you say about your master?
+conversation-render	0x1172630	0x117a8b1	0x212f0cb	cstring	Grumpy
+conversation-render	0x1172630	0x117a900	0x2132300	cstring	What will you say about the trade?
+conversation-render	0x1172630	0x117a94d	0x212f112	cstring	Eexcited
+conversation-render	0x1172630	0x117a99c	0x21321a0	cstring	How will you respond to the adoption request?
+conversation-render	0x1172630	0x117a9e9	0x212f2f0	cstring	Happy
+conversation-render	0x1172630	0x117aa38	0x2131ef8	cstring	What will you say about the trouble?
+conversation-render	0x1172630	0x117aa85	0x2131ea0	cstring	What will you say about the new leadership?
+conversation-render	0x1172630	0x117aae0	0x212f595	cstring	How will you respond?
+conversation-render	0x1172630	0x117ab2d	0x212f0f6	cstring	Grimly Satisfied
+conversation-render	0x1172630	0x117ab83	0x212f233	cstring	Disgusted
+conversation-render	0x1172630	0x117abca	0x212f226	cstring	Disappointed
+conversation-render	0x1172630	0x117ac11	0x212f23d	cstring	Disillusioned
+conversation-render	0x1172630	0x117ac58	0x20f496c	cstring	Distressed
+conversation-render	0x1172630	0x117ac9f	0x20f4963	cstring	Dismayed
+conversation-render	0x1172630	0x117ad29	0x212f26c	cstring	Embarrassed
+conversation-render	0x1172630	0x117ad70	0x212f283	cstring	Empty
+conversation-render	0x1172630	0x117adb7	0x212f25f	cstring	Eager
+conversation-render	0x1172630	0x117adfe	0x212f2e0	cstring	Grateful
+conversation-render	0x1172630	0x117ae45	0x212f0d2	cstring	Fondness
+conversation-render	0x1172630	0x117ae8c	0x212f11b	cstring	Gaiety
+conversation-render	0x1172630	0x117aed3	0x212f29f	cstring	Exhilarated
+conversation-render	0x1172630	0x117af1a	0x212f2d4	cstring	Gloomy
+conversation-render	0x1172630	0x117af61	0x212f2ab	cstring	Afraid
+conversation-render	0x1172630	0x117afa8	0x20f4977	cstring	Frightened
+conversation-render	0x1172630	0x117afef	0x212f293	cstring	Exasperated
+conversation-render	0x1172630	0x117b036	0x2132108	cstring	What will you say about the artifact's location?
+conversation-render	0x1172630	0x117b090	0x2131da8	cstring	What will you say about the group?
+conversation-render	0x1172630	0x117b0dd	0x2132080	cstring	What will you say about the gang?
+conversation-render	0x1172630	0x117b138	0x21324b8	cstring	How will you respond to this flattery?
+conversation-render	0x1172630	0x117b185	0x212f12d	cstring	Blissful
+conversation-render	0x1172630	0x117b1d4	0x2132598	cstring	How will you respond to the offer of tribute?
+conversation-render	0x1172630	0x117b221	0x2131da8	cstring	What will you say about the group?
+conversation-render	0x1172630	0x117b278	0x21326d0	cstring	How will you respond to the request for information?
+conversation-render	0x1172630	0x117b2c5	0x2131f88	cstring	What will you say about the refusal to give tribute?
+conversation-render	0x1172630	0x117b320	0x212f56a	cstring	Where do you want to go?
+conversation-render	0x1172630	0x117b36d	0x2131e50	cstring	What will you say about the incident?
+conversation-render	0x1172630	0x117b3c8	0x2132778	cstring	What will you say about the missing treasure?
+conversation-render	0x1172630	0x117b415	0x212f1c8	cstring	Astonished
+conversation-render	0x1172630	0x117b464	0x2132600	cstring	How will you respond to the offer of peace?
+conversation-render	0x1172630	0x117b4b1	0x2131ce0	cstring	What will you say about the insurrection?
+conversation-render	0x1172630	0x117b508	0x21322b0	cstring	What will you say about services?
+conversation-render	0x1172630	0x117b555	0x2131ff0	cstring	What will you say about the failed peace agreement?
+conversation-render	0x1172630	0x117b5b0	0x20fc909	cstring	What do you want?
+conversation-render	0x1172630	0x117b5fd	0x2131ed0	cstring	What will you say about the beast?
+conversation-render	0x1172630	0x117b658	0x2132508	cstring	How will you respond to this statement of values?
+conversation-render	0x1172630	0x117b6a5	0x212f1da	cstring	In Awe
+conversation-render	0x1172630	0x117b6f4	0x2132358	cstring	What will you say about the site?
+conversation-render	0x1172630	0x117b741	0x2131d48	cstring	What will you say about the site reclamation?
+conversation-render	0x1172630	0x117b798	0x21323a8	cstring	How will you respond to the invocation?
+conversation-render	0x1172630	0x117b7e5	0x2131f20	cstring	What will you say about tribute agreement?
+conversation-render	0x1172630	0x117b840	0x2132708	cstring	How will you respond to the request for directions?
+conversation-render	0x1172630	0x117b88d	0x2131dd0	cstring	What will you say about the army?
+conversation-render	0x1172630	0x117b8e0	0x212f1b6	cstring	Apathetic
+conversation-render	0x1172630	0x117b927	0x2131d10	cstring	What will you say about the end of the insurrection?
+conversation-render	0x1172630	0x117b974	0x2132028	cstring	What will you say about the tribute stoppage?
+conversation-render	0x1172630	0x117b9c1	0x2131ef8	cstring	What will you say about the trouble?
+conversation-render	0x1172630	0x117ba0e	0x2131f50	cstring	What will you say about the refusal to accept tribute?
+conversation-render	0x1172630	0x117ba5b	0x2131d78	cstring	What will you say about the site's foundation?
+conversation-render	0x1172630	0x117baa8	0x2131fc0	cstring	What will you say about the peace agreement?
+conversation-render	0x1172630	0x117baf5	0x2131e28	cstring	What will you say about the abduction?
+conversation-render	0x1172630	0x117bb42	0x2132058	cstring	What will you say about the claim?
+conversation-render	0x1172630	0x117bb8f	0x2131df8	cstring	What will you say about the failed occupation?
+conversation-render	0x1172630	0x117bbdc	0x2131e78	cstring	What will you say about the occupation?
+conversation-render	0x1172630	0x117bc29	0x21320a8	cstring	What will you say about the refugees?
+conversation-render	0x1172630	0x117bc76	0x21320d0	cstring	What will you say about the artifact's destruction?
+conversation-input	0x120ccf0	0x120cdd6	0x232a	inline	*#
+conversation-input	0x120ccf0	0x120cfc6	0x232a	inline	*#
+conversation-input	0x120ccf0	0x120d02d	0x232a	inline	*#
+conversation-input	0x120ccf0	0x120e96e	0x232a	inline	*#
+conversation-input	0x120ccf0	0x120e9a6	0x232a	inline	*#
+conversation-choice	0x1163020	0x1163631	0x20cad52	cstring	CUSTOM_LAW_MAKER
+conversation-choice	0x1163020	0x11636a9	0x7531	inline	1u
+conversation-choice	0x1163020	0x116383b	0x20caccb	cstring	lord
+conversation-choice	0x1163020	0x116385c	0x20cacd3	cstring	lords
+conversation-choice	0x1163020	0x1163883	0x20cad63	cstring	lady
+conversation-choice	0x1163020	0x1163897	0x20cad68	cstring	ladies
+conversation-choice	0x1163020	0x11638a3	0x20caccb	cstring	lord
+conversation-choice	0x1163020	0x11638c5	0x20cad7c	cstring	lords consort
+conversation-choice	0x1163020	0x11638d1	0x20cad6f	cstring	lord consort
+conversation-choice	0x1163020	0x1163900	0x20cad8a	cstring	lady consort
+conversation-choice	0x1163020	0x1163914	0x20cad97	cstring	ladies consort
+conversation-choice	0x1163020	0x1163920	0x20cad6f	cstring	lord consort
+conversation-choice	0x1163020	0x1164c67	0x20cada6	cstring	hearthperson
+conversation-choice	0x1163020	0x1164c86	0x20cadb3	cstring	hearthpeople
