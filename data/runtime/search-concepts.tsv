@@ -1,0 +1,50 @@
+# Supplementary game categories. Native kinds and subtypes are discovered
+# from the loaded grammar and RAWs independently of this file.
+# group: labels; kinds: parent relation; attribute: nonexclusive material.
+# Clothing/protective equipment membership uses RAW LAYER/ARMORLEVEL.
+group	item	item|items|object|objects|物品|物件
+group	clothing	clothing|clothes|garment|garments|apparel|衣服|衣物|服装|衣裳
+group	armor	armor|armour|armors|armours|protective equipment|盔甲|护甲|防具
+kinds	armor	shield
+group	equipment	equipment|gear|装备
+kinds	equipment	weapon|armor|helm|pants|gloves|shoes|shield|ammo|backpack|quiver
+group	furniture	furniture|家具
+kinds	furniture	door|floodgate|bed|chair|window|cage|barrel|table|coffin|box|armorstand|weaponrack|cabinet|bin|hatch_cover|grate|quern|millstone|traction_bench|slab|statue|bookcase|displaycase|pedestal|altar
+group	crafts	craft|crafts|handicraft|handicrafts|工艺品|手工艺品
+kinds	crafts	figurine|amulet|scepter|crown|ring|earring|bracelet|gem|totem
+group	jewelry	jewelry|jewellery|ornament|ornaments|首饰|饰品
+kinds	jewelry	amulet|crown|ring|earring|bracelet
+group	ammunition	ammo|ammunition|弹药
+kinds	ammunition	ammo|siegeammo
+group	siege	siege equipment|攻城器械|围攻装备
+kinds	siege	catapultparts|ballistaparts|ballistaarrowhead|boltthrowerparts|siegeammo
+group	traps	trap component|trap components|陷阱部件
+kinds	traps	trapcomp|trapparts|animaltrap
+group	food	food|foods|foodstuff|foodstuffs|食物|食品|食材
+kinds	food	food|meat|fish|fish_raw|egg|cheese|plant_growth|spice
+group	drinks	drink|drinks|beverage|beverages|饮料|饮品
+kinds	drinks	drink
+group	containers	container|containers|容器
+kinds	containers	box|bag|bin|barrel|bucket|flask|goblet|backpack|quiver|cage|pot|jug
+group	medical	medical supplies|医疗用品
+kinds	medical	splint|crutch|orthopedic_cast|traction_bench
+group	writing	writing supplies|书写用品
+kinds	writing	book|sheet|scrollroller|bookbinding
+group	materials	material|materials|raw material|raw materials|材料|原料
+kinds	materials	bar|boulder|rock|wood|rough|smallgem|cloth|thread|skin_tanned|liquid_misc|powder_misc|glob|liquid_glob|branch
+attribute	bar	material
+attribute	boulder	material
+attribute	rock	material
+attribute	wood	material
+attribute	rough	material
+attribute	smallgem	material
+attribute	gem	material
+attribute	cloth	material
+attribute	thread	material
+attribute	skin_tanned	material
+attribute	liquid_misc	material
+attribute	powder_misc	material
+attribute	glob	material
+attribute	liquid_glob	material
+attribute	branch	material
+suffix	zh-noun	子|儿

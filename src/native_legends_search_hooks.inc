@@ -94,7 +94,8 @@ static size_t match_native_legends_search(const char *native_text, size_t native
                 query_text, query_length);
         })
         : SIZE_MAX;
-    if (result != SIZE_MAX) return result;
+    if (result != SIZE_MAX)
+        return native_search_item_result(result, native_text, native_length, query_text, query_length);
     try {
         if (!g_overlay.translation_enabled() || !frame || !screen || !query_text ||
             query_length == 0 || query_length > 4096) return result;
@@ -142,7 +143,8 @@ static size_t capture_native_legends_search_descriptor_find(const char *native_t
                 query_text, query_length);
         })
         : SIZE_MAX;
-    if (result != SIZE_MAX) return result;
+    if (result != SIZE_MAX)
+        return native_search_item_result(result, native_text, native_length, query_text, query_length);
     try {
         if (!g_overlay.translation_enabled() || !descriptor || !query_text ||
             query_length == 0 || query_length > 4096) return result;

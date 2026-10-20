@@ -7,6 +7,7 @@
 #include "translation_state.h"
 #include "translation_work.h"
 #include "dfhack_translation_thread.h"
+#include "runtime_paths.h"
 
 #include <algorithm>
 #include <array>
@@ -14,6 +15,7 @@
 #include <functional>
 #include <iterator>
 #include <sstream>
+#include <tuple>
 
 #define TOML_EXCEPTIONS 0
 #include <toml++/toml.hpp>
@@ -73,6 +75,77 @@ namespace Hooks {
     }
 
     RulesetsManager::RulesetsManager() {
+    }
+
+    std::vector<RulesetsManager::SearchItemNoun> RulesetsManager::search_item_nouns() const {
+        dfcn::TranslationStateScope translation_scope;
+        std::vector<SearchItemNoun> result;
+        constexpr std::string_view prefix = "::items::";
+        // Discover roots from the actual inventory grammar. Follow their
+        // noun productions instead of whitelisting leaf suffixes: bar::coal,
+        // root literals, generated subtypes and extension namespaces count.
+        std::set<std::string> roots;
+        if (const auto main = rulesets_.find("::items::main"); main != rulesets_.end())
+            for (const auto& [source, target] : main->second)
+                for (const auto& token : source)
+                    if (token.type == Type::Reference && token.value.starts_with(prefix) &&
+                            token.value.find("::", prefix.size()) == std::string::npos)
+                        roots.insert(token.value);
+        for (const auto& root : roots) {
+            const std::string kind = root.substr(prefix.size());
+            std::set<std::string> seen;
+            std::vector<std::string> pending{root};
+            while (!pending.empty()) {
+                std::string identifier = std::move(pending.back());
+                pending.pop_back();
+                if (!seen.insert(identifier).second) continue;
+                const auto found = rulesets_.find(identifier);
+                if (found == rulesets_.end()) continue;
+                for (const auto& [source, target] : found->second) {
+                    for (const auto& token : source)
+                        if (token.type == Type::Reference && token.value.starts_with(root + "::") &&
+                                token.value.find('^') == std::string::npos &&
+                                token.value.find("prefix") == std::string::npos &&
+                                token.value.find('$') == std::string::npos)
+                            pending.push_back(token.value);
+                    if (source.size() != 1 || target.size() != 1 ||
+                            source.front().type != Type::Literal ||
+                            target.front().type != Type::Literal ||
+                            source.front().value.empty() || target.front().value.empty()) continue;
+                    const auto& noun = source.front().value;
+                    result.push_back({kind, noun, target.front().value,
+                        identifier.find("::default") != std::string::npos ||
+                        (identifier.find("::singular") == std::string::npos &&
+                         identifier.find("::plural") == std::string::npos &&
+                         (noun == kind || noun == kind + "s"))});
+                }
+            }
+        }
+        // A stable order also makes ambiguous aliases independent of hash order.
+        std::sort(result.begin(), result.end(), [](const auto& a, const auto& b) {
+            return std::tie(a.kind, a.source, a.target) < std::tie(b.kind, b.source, b.target);
+        });
+        return result;
+    }
+
+    std::vector<std::pair<std::string, std::string>>
+    RulesetsManager::search_word_equivalents() const {
+        dfcn::TranslationStateScope translation_scope;
+        std::set<std::pair<std::string, std::string>> words;
+        for (const auto& [identifier, rules] : rulesets_)
+            for (const auto& [source, target] : rules) {
+                if (source.size() != 1 || target.size() != 1 ||
+                        source.front().type != Type::Literal || target.front().type != Type::Literal)
+                    continue;
+                const auto& a = source.front().value;
+                const auto& b = target.front().value;
+                if (a.empty() || a.size() > 40 || b.empty() || b.size() > 30 ||
+                        !std::all_of(a.begin(), a.end(), [](unsigned char c) {
+                            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '-';
+                        })) continue;
+                words.emplace(a, b);
+            }
+        return {words.begin(), words.end()};
     }
 
     std::shared_ptr<RulesetsManager> RulesetsManager::clone_private() const {
@@ -227,6 +300,10 @@ namespace Hooks {
             dependencies.push_back(std::move(dependency));
         };
         add(dir, true);
+        // Search graph/word alignment use the same published resource
+        // revision, so data-only edits invalidate positive and negative hits.
+        add(dfcn::runtime::data_path() / "search-concepts.tsv", false);
+        add(dfcn::runtime::data_path() / "procedural-terms.tsv", false);
         std::error_code error;
         std::filesystem::recursive_directory_iterator it(dir, error), end;
         while (!error && it != end) {

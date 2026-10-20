@@ -48,6 +48,7 @@ bool Overlay::translated_symbol_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty()) return false;
     if (translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     const auto target = memoize_search_translation(static_cast<char>(0x40 + static_cast<int>(kind)), source, [&] {
         return translate_symbol_candidate(source, kind);
     }, kind == SymbolCaptionKind::Figure || kind == SymbolCaptionKind::Artifact);

@@ -329,6 +329,7 @@ bool Overlay::translated_adventure_action_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty() || source.size() > 65536) return false;
     if (translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     if (native_choice) {
         // Equal captions can have different enums or native identities.
         // Retain the complete captured discriminator, including unnamed
@@ -1103,6 +1104,7 @@ bool Overlay::translated_conversation_keywords_match(std::string_view keywords,
     TranslationStateScope translation_scope;
     if (!translation_enabled()) return false;
     if (translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(keywords), query)) return true;
     const auto translated = translate_conversation_keywords(keywords);
     if (translated) return translated_search_text_matches(*translated, query);
     // Native ranking searches a deduplicated keyword vector. Two different

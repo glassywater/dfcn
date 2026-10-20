@@ -45,6 +45,10 @@ RUNTIME_FILES = (
     "data/runtime/pinyin-data/pinyin.txt", "data/runtime/pinyin-data/SOURCE",
     "data/runtime/phrase-pinyin-data/large_pinyin.txt",
     "data/runtime/phrase-pinyin-data/LICENSE", "data/runtime/phrase-pinyin-data/SOURCE",
+    "data/runtime/search-concepts.tsv",
+    "data/runtime/search-semantic/model.safetensors", "data/runtime/search-semantic/tokenizer.json",
+    "data/runtime/search-semantic/config.json", "data/runtime/search-semantic/LICENSE",
+    "data/runtime/search-semantic/README.md", "data/runtime/search-semantic/SOURCE",
 )
 LICENSE_FILES = (
     "data/upstream/licenses/dfi18n-data.LICENSE.md", "data/upstream/licenses/dfzh-data.LICENSE.md",
@@ -55,6 +59,7 @@ LICENSE_FILES = (
     "data/runtime/english-pronunciation/britfone.LICENSE",
     "data/runtime/english-pronunciation/MFA-LICENSE.txt",
     "third_party/opencc/LICENSE", "third_party/opencc/SOURCE",
+    "data/runtime/search-semantic/LICENSE", "data/runtime/search-semantic/SOURCE",
 )
 INSTALLATION = """DFCN Linux x64 / Dwarf Fortress 53.16
 

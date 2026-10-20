@@ -126,6 +126,14 @@ namespace Hooks {
             const std::string& text, bool allow_material = false) const;
         // Furniture type nouns, isolated from material and prose rules.
         std::optional<std::string> translate_furniture_type(const std::string& text) const;
+        struct SearchItemNoun {
+            std::string kind, source, target;
+            bool category = false;
+        };
+        // Whole item nouns from the loaded grammar, including extensions.
+        // Material/prefix rules and arbitrary sentence fragments are excluded.
+        std::vector<SearchItemNoun> search_item_nouns() const;
+        std::vector<std::pair<std::string, std::string>> search_word_equivalents() const;
         // Bare cup/mug/goblet types; keep their complete material field separate.
         std::optional<std::string> translate_drinkware_type(const std::string& text) const;
         // Equipment specifications have their own vocabulary, separate from appearance.

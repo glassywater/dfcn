@@ -58,7 +58,6 @@ static size_t match_native_workshop_search(const char *native_text,
                 query_text, query_length);
         })
         : SIZE_MAX;
-    if (result != SIZE_MAX) return result;
     try {
         if (!g_overlay.translation_enabled() || !query_text ||
             query_length == 0 || query_length > 4096) return result;
@@ -67,9 +66,12 @@ static size_t match_native_workshop_search(const char *native_text,
         // retains the spelling required by generated instrument names and
         // scoped task grammar. It is available even for offscreen choices.
         std::string source;
-        if (read_caption(source) &&
-            g_overlay.translated_unit_search_matches(source, query, true))
-            return 0;
+        if (read_caption(source)) {
+            if (const auto typed = translated_search_item_decision(source, query))
+                return *typed ? 0 : SIZE_MAX;
+            if (result != SIZE_MAX) return result;
+            if (g_overlay.translated_unit_search_matches(source, query, true)) return 0;
+        }
     } catch (...) {
         // Translation/allocation failures must not unwind through the game.
     }

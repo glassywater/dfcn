@@ -72,6 +72,7 @@
 #include "native_trade_item_caption.h"
 #include "core_api.h"
 #include "runtime_paths.h"
+#include "search_semantic_model.h"
 #include "translation_extensions.h"
 #include "english_character_names.h"
 #include "english_name_transliteration.h"
@@ -5932,6 +5933,7 @@ bool Overlay::translated_plant_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     const auto target = memoize_search_translation('p', source, [&] {
         return translate_plant_name(source);
     });
@@ -5975,6 +5977,7 @@ bool Overlay::translated_color_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty() ||
             translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     const auto target = memoize_search_translation('o', source, [&] {
         return translate_color_picker_caption(source);
     });
@@ -5986,6 +5989,7 @@ bool Overlay::translated_material_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     // Use the material noun grammar used by the displayed captions, never
     // equipment adjectives or unrelated creature-name token matches.
     const auto target = memoize_search_translation('m', source, [&] {
@@ -6001,6 +6005,7 @@ bool Overlay::translated_work_order_condition_search_matches(std::string_view so
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     // Exactly the same complete grammar/cache as the displayed trait row,
     // including material-bearing, tool-use and multiword color constraints.
     const auto target = memoize_search_translation('w', source, [&] {
@@ -6014,6 +6019,7 @@ bool Overlay::translated_item_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     // Select the caption's semantic context, not the host or visible rows.
     // Both display entries own the full-name grammar and bounded cache.
     const auto translated = memoize_search_translation(fortress_item ? 'i' : 'b', source, [&] {
