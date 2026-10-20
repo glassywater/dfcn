@@ -137,47 +137,47 @@ You might not be able to keep it down.	你可能会吐出来。
 You feel really full.	你感到很饱。
 You are starting to feel full.	你开始感到饱了。
 You just can't fit any more.	你实在吃喝不下更多了。
-You read {s}.	你阅读了{s}。
-You pull out {s}.	你拔出了{s}。
-You cease nocking {s}.	你停止搭上{s}。
-You begin loading {s} into {s}.	你开始将{s1}装入{s2}。
-You begin nocking {s} in {s}.	你开始将{s1}搭在{s2}上。
+You read {i}.	你阅读了{i1}。
+You pull out {i}.	你拔出了{i1}。
+You cease nocking {i}.	你停止搭上{i1}。
+You begin loading {i} into {i}.	你开始将{i1}装入{i2}。
+You begin nocking {i} in {i}.	你开始将{i1}搭在{i2}上。
 You fill your {s} with {s}.	你将{s2}装进自己的{s1}。
-Your {s} is already full.	你的{s}已经装满了。
-It won't fit in your {s}.	你的{s}装不下它。
-{s} is empty.	{s}是空的。
+Your {i} is already full.	你的{i1}已经装满了。
+It won't fit in your {i}.	你的{i1}装不下它。
+{i} is empty.	{i1}是空的。
 The {s} is hot enough already.	{s}已经够热了。
 You heat the {s}.	你加热了{s}。
 You heat the {s} to no effect.	你加热了{s}，但没有效果。
-You empty {s}.	你倒空了{s}。
-You empty the {s}.	你倒空了{s}。
-You drop {s}.	你放下了{s}。
-You put on {s}.	你穿上了{s}。
-You take out the {s}.	你取出了{s}。
-You take off {s}.	你脱下了{s}。
-You eat the {s}.	你吃下了{s}。
-You drink the {s}.	你喝下了{s}。
-You lick the {s}.	你舔了舔{s}。
-The {s} is too salty.	{s}太咸了。
-The {s} is too hot.	{s}太烫了。
-The {s} is too cold.	{s}太冷了。
-You pack the {s} on to {n}.	你将{s}装到{n}身上。
-You put the {s} into the {s}.	你将{s1}放进{s2}。
-You put the {s} on the {s}.	你将{s1}放在{s2}上。
-You put the {s} on display.	你将{s}摆出来展示。
+You empty {i}.	你倒空了{i1}。
+You empty the {i}.	你倒空了{i1}。
+You drop {i}.	你放下了{i1}。
+You put on {i}.	你穿上了{i1}。
+You take out the {i}.	你取出了{i1}。
+You take off {i}.	你脱下了{i1}。
+You eat the {i}.	你吃下了{i1}。
+You drink the {i}.	你喝下了{i1}。
+You lick the {i}.	你舔了舔{i1}。
+The {i} is too salty.	{i1}太咸了。
+The {i} is too hot.	{i1}太烫了。
+The {i} is too cold.	{i1}太冷了。
+You pack the {i} on to {n}.	你将{i1}装到{n1}身上。
+You put the {i} into the {i}.	你将{i1}放进{i2}。
+You put the {i} on the {i}.	你将{i1}放在{i2}上。
+You put the {i} on display.	你将{i1}摆出来展示。
 You fail to grab the {s}!	你没能抓住{s}！
-You struggle for {s}.	你争夺着{s}。
-You prepare to shoot {s} in {s}.	你准备发射装在{s2}里的{s1}。
-You prepare to shoot {s} nocked in {s}.	你准备射出搭在{s2}上的{s1}。
-You prepare to shoot {n} with {s} in {s}.	你准备朝{n}发射装在{s2}里的{s1}。
-You prepare to shoot {n} with {s} nocked in {s}.	你准备朝{n}射出搭在{s2}上的{s1}。
-You begin loading {s} into {s} with intentions of shooting {n}.	你开始将{s1}装入{s2}，准备射击{n}。
-You begin nocking {s} in {s} with intentions of shooting {n}.	你开始将{s1}搭在{s2}上，准备射击{n}。
-You begin to throw {s}.	你开始投掷{s}。
-You begin to throw {s} at {n}.	你开始向{n}投掷{s}。
-You do not have a free grasp for {s}.	你没有空闲的手来拿{s}。
-You don't have any ammunition for {s}.	你没有可供{s}使用的弹药。
-{s} is already prepared to shoot.	{s}已经准备好射击了。
+You struggle for {i}.	你争夺着{i1}。
+You prepare to shoot {i} in {i}.	你准备发射装在{i2}里的{i1}。
+You prepare to shoot {i} nocked in {i}.	你准备射出搭在{i2}上的{i1}。
+You prepare to shoot {n} with {i} in {i}.	你准备朝{n1}发射装在{i2}里的{i1}。
+You prepare to shoot {n} with {i} nocked in {i}.	你准备朝{n1}射出搭在{i2}上的{i1}。
+You begin loading {i} into {i} with intentions of shooting {n}.	你开始将{i1}装入{i2}，准备射击{n1}。
+You begin nocking {i} in {i} with intentions of shooting {n}.	你开始将{i1}搭在{i2}上，准备射击{n1}。
+You begin to throw {i}.	你开始投掷{i1}。
+You begin to throw {i} at {n}.	你开始向{n1}投掷{i1}。
+You do not have a free grasp for {i}.	你没有空闲的手来拿{i1}。
+You don't have any ammunition for {i}.	你没有可供{i1}使用的弹药。
+{i} is already prepared to shoot.	{i1}已经准备好射击了。
 You've found a colony of {s}.	你发现了一群{s}。
 You've found a colony of {s} and another small creature.	你发现了一群{s}和另一只小动物。
 You've found a colony of {s} and some other small creatures.	你发现了一群{s}和其他一些小动物。
@@ -337,18 +337,18 @@ You flounder in the water!	你在水中挣扎！
 You flounder in the lava!	你在熔岩中挣扎！
 You flounder in the magma!	你在岩浆中挣扎！
 You flounder!	你挣扎着！
-You push {s}.	你推动了{s}。
-You lose hold of the {s}.	你没能抓住{s}。
-You lose hold of the {s}!	你没能抓住{s}！
+You push {i}.	你推动了{i1}。
+You lose hold of the {i}.	你没能抓住{i1}。
+You lose hold of the {i}!	你没能抓住{i1}！
 You mount {n}.	你骑上了{n}。
 You dismount.	你从坐骑上下来了。
 {n} flounders in the water!	{n}在水中挣扎！
 {n} flounders in the lava!	{n}在熔岩中挣扎！
 {n} flounders in the magma!	{n}在岩浆中挣扎！
 {n} flounders!	{n}挣扎着！
-{n} pushes {s}.	{n}推动了{s}。
-{n} loses hold of the {s}.	{n}没能抓住{s}。
-{n} loses hold of the {s}!	{n}没能抓住{s}！
+{n} pushes {i}.	{n1}推动了{i1}。
+{n} loses hold of the {i}.	{n1}没能抓住{i1}。
+{n} loses hold of the {i}!	{n1}没能抓住{i1}！
 {n} mounts {n}.	{n1}骑上了{n2}。
 {n} dismounts.	{n}从坐骑上下来了。
 You cannot mount {n} due to the presence of an existing rider.	{n}已经有骑手，你无法骑上去。
@@ -358,56 +358,56 @@ You stand up.	你起身了。
 {n} stands up.	{n}起身了。
 You lie on the ground.	你趴在了地上。
 {n} lies on the ground.	{n}趴在了地上。
-{s} is already nocked with {s} and you prepared to shoot.	{s1}已经搭好{s2}，你已准备射击。
-{s} is already nocked with .	{s}已经搭好了。
-You finish nocking {s} in {s}.	你已在{s2}上搭好{s1}。
-You finish nocking {s} in {s} and prepare to shoot.	你已在{s2}上搭好{s1}，并准备射击。
-{s} is already loaded with {s} and you prepared to shoot.	{s1}已经装好{s2}，你已准备射击。
-{s} is already loaded with .	{s}已经装好了。
-You finish loading {s} into {s}.	你已在{s2}上装好{s1}。
-You finish loading {s} into {s} and prepare to shoot.	你已在{s2}上装好{s1}，并准备射击。
-{n} gains possession of the {s}.	{n}取得了{s}。
-{n} maintains possession of the {s}.	{n}仍控制着{s}。
-You gain possession of the {s}.	你取得了{s}。
-You maintain possession of the {s}.	你仍控制着{s}。
-You've lost possession of the {s}.	你失去了{s}。
-The {s} remains stuck in {n}'s {t}.	{s}仍卡在{n}的{t}中。
-The {s} remains stuck in your {t}.	{s}仍卡在你的{t}中。
-The {s} is torn from your {t}.	{s}被从你的{t}中扯了出来。
+{i} is already nocked with {i} and you prepared to shoot.	{i1}已经搭好{i2}，你已准备射击。
+{i} is already nocked with .	{i1}已经搭好了。
+You finish nocking {i} in {i}.	你已在{i2}上搭好{i1}。
+You finish nocking {i} in {i} and prepare to shoot.	你已在{i2}上搭好{i1}，并准备射击。
+{i} is already loaded with {i} and you prepared to shoot.	{i1}已经装好{i2}，你已准备射击。
+{i} is already loaded with .	{i1}已经装好了。
+You finish loading {i} into {i}.	你已在{i2}上装好{i1}。
+You finish loading {i} into {i} and prepare to shoot.	你已在{i2}上装好{i1}，并准备射击。
+{n} gains possession of the {i}.	{n1}取得了{i1}。
+{n} maintains possession of the {i}.	{n1}仍控制着{i1}。
+You gain possession of the {i}.	你取得了{i1}。
+You maintain possession of the {i}.	你仍控制着{i1}。
+You've lost possession of the {i}.	你失去了{i1}。
+The {i} remains stuck in {n}'s {t}.	{i1}仍卡在{n1}的{t1}中。
+The {i} remains stuck in your {t}.	{i1}仍卡在你的{t1}中。
+The {i} is torn from your {t}.	{i1}被从你的{t1}中扯了出来。
 You reorganize your possessions.	你重新整理了随身物品。
 {n} reorganizes his possessions.	{n}重新整理了自己的随身物品。
 {n} reorganizes her possessions.	{n}重新整理了自己的随身物品。
 {n} reorganizes its possessions.	{n}重新整理了自己的随身物品。
-{n} straps {s} to his {t}.	{n}将{s}绑在自己的{t}上。
-{n} draws {s} with his {t}.	{n}用自己的{t}拔出了{s}。
-{n} straps {s} to her {t}.	{n}将{s}绑在自己的{t}上。
-{n} draws {s} with her {t}.	{n}用自己的{t}拔出了{s}。
-{n} straps {s} to its {t}.	{n}将{s}绑在自己的{t}上。
-{n} draws {s} with its {t}.	{n}用自己的{t}拔出了{s}。
-{n} drops {s}.	{n}放下了{s}。
-{n} drinks {s}.	{n}喝下了{s}。
+{n} straps {i} to his {t}.	{n1}将{i1}绑在自己的{t1}上。
+{n} draws {i} with his {t}.	{n1}用自己的{t1}拔出了{i1}。
+{n} straps {i} to her {t}.	{n1}将{i1}绑在自己的{t1}上。
+{n} draws {i} with her {t}.	{n1}用自己的{t1}拔出了{i1}。
+{n} straps {i} to its {t}.	{n1}将{i1}绑在自己的{t1}上。
+{n} draws {i} with its {t}.	{n1}用自己的{t1}拔出了{i1}。
+{n} drops {i}.	{n1}放下了{i1}。
+{n} drinks {i}.	{n1}喝下了{i1}。
 {p} is sneaking an extra drink to {p}!	{p1}正在偷偷多给{p2}一杯酒！
-You butcher {i}.	你屠宰了{i}。
-You make {i}.	你制作了{i}。
+You butcher {i}.	你屠宰了{i1}。
+You make {i}.	你制作了{i1}。
 You make {i} and {i}.	你制作了{i1}和{i2}。
-You make {i} and more.	你制作了{i}等物品。
-You have finished working on {i}.	你完成了对{i}的加工。
+You make {i} and more.	你制作了{i1}等物品。
+You have finished working on {i}.	你完成了对{i1}的加工。
 You have finished working on {i} and {i}.	你完成了对{i1}和{i2}的加工。
-You have finished working on {i} and more.	你完成了对{i}等物品的加工。
+You have finished working on {i} and more.	你完成了对{i1}等物品的加工。
 You practice your {s}.	你练习了{s}。
 You practice your {s} but make nothing of note.	你练习了{s}，但没有做出什么像样的东西。
 You make nothing.	你什么也没做出来。
-{n} pulls out and drops {s}.	{n}拔出并丢下了{s}。
-{n} pulls out and releases {s}.	{n}拔出并松开了{s}。
+{n} pulls out and drops {i}.	{n1}拔出并丢下了{i1}。
+{n} pulls out and releases {i}.	{n1}拔出并松开了{i1}。
 You have bestowed the name {b} upon {s}.	你将{s}命名为{b}。
 {n} has bestowed the name {b} upon a {s}!	{n}将一件{s}命名为{b}！
-{n} has grown attached to a {s}!	{n}对一件{s}产生了依恋！
-{s} has been moved from its proper place!	{s}被移离了原本的位置！
-{s} is missing from its proper place!	{s}从原本的位置不见了！
-{s} was seen being passed to a thief!	{s}被人看见交给了一个窃贼！
-{s} was seen being stolen!	有人看见{s}被偷走了！
-{n} drinks the {s}.	{n}喝下了{s}。
-{n} eats the {s}.	{n}吃下了{s}。
+{n} has grown attached to a {i}!	{n1}对一件{i1}产生了依恋！
+{i} has been moved from its proper place!	{i1}被移离了原本的位置！
+{i} is missing from its proper place!	{i1}从原本的位置不见了！
+{i} was seen being passed to a thief!	{i1}被人看见交给了一个窃贼！
+{i} was seen being stolen!	有人看见{i1}被偷走了！
+{n} drinks the {i}.	{n1}喝下了{i1}。
+{n} eats the {i}.	{n1}吃下了{i1}。
 It makes them look even more sick.	这使其看起来更加恶心了。
 They look sick suddenly.	其突然显得很恶心。
 You have located {b}, "{b}", a {s}.	你找到了{b1}（“{b2}”），一处{s}。
@@ -941,7 +941,7 @@ A {s} caravan from {e} has arrived. Your status as a minor land has attracted a 
 A {s} caravan from {e} has arrived. Your status as a minor land has attracted a bit more trade than usual. Trade relations remain strengthened by recent negotiations. However, overall trade sentiments are cautious.	来自{e}的{s}商队已抵达。你作为小领地的地位吸引来了比平时略多的贸易。近期谈判对贸易关系的促进作用仍在持续。不过，总体贸易意愿偏于谨慎。
 A {s} from {e} has arrived.	一位来自{e}的{s}已抵达。
 {n} empties {s}.	{n}倒空了{s}。
-You pick up {s}.	你拾起了{s}。
+You pick up {i}.	你拾起了{i1}。
 {n} picks up {s}.	{n}拾起了{s}。
 Your ruler has arrived with a full entourage. Your thriving site is now the capital, and with continued fortune and toil, the legend of a true Mountainhome may yet be written.	你的统治者带着完整的随行队伍抵达了。你这繁荣的地点如今已成为都城，只要好运和辛勤劳作继续下去，真正的山国都城传奇终将谱写。
 OVERWROTE JOB: {s} BY {s}	任务已被覆盖：{s1}被{s2}取代
@@ -1028,10 +1028,3 @@ Your miners have defaced a {p}!	你的矿工毁坏了一件{p}的作品！
 
 # Complete shared-action productions at 0x14027e300 / 0x1402804b0.
 # Native source ownership: data/extracted/adventure-announcement-sources.tsv.
-You butcher {s}.	你屠宰了{s1}。
-You make {s}.	你制作了{s1}。
-You make {s} and {s}.	你制作了{s1}和{s2}。
-You make {s} and more.	你制作了{s1}等物品。
-You have finished working on {s}.	你完成了{s1}的加工。
-You have finished working on {s} and {s}.	你完成了{s1}和{s2}的加工。
-You have finished working on {s} and more.	你完成了{s1}等物品的加工。

@@ -425,26 +425,18 @@ std::optional<std::string> Overlay::compose_native_announcement_log_record(
             })) return target;
     } else if (document.report.type >= 0 && document.report.type != 104 &&
             document.report.type != 233 && document.report.type != 234 &&
-            document.report.type != 258 && source.starts_with("You ") &&
+            document.report.type != 258 &&
             !native_original_speech_source(source)) {
-        // These complete action productions already belong to the native
-        // adventure grammar. Bind their literal item/body/terrain boundaries
-        // once, before the whole-paragraph parser tries unrelated speech and
-        // sentence partitions. Repeated or ambiguous separators still fall
-        // back to that grammar; a partial action never publishes a result.
+        // The popup admits the complete announcement queue, not a short list
+        // of player actions. Every reviewed constructor with a fixed opening
+        // can bind its typed fields here, including Your/The preconditions,
+        // containers, ammunition, environment and other native action branches.
+        // Open actor/sentence productions retain the full grammar's ambiguity
+        // handling; repeated separators still fall back to that same grammar.
         if (auto target = direct_constructor("adventure-announcement",
                 [](std::string_view, const Rule &rule) {
-                    for (const std::string_view pattern : {
-                            "You put on {s}.", "You take out the {s}.",
-                            "You put the {s} into the {s}.",
-                            "You put the {s} on the {s}.",
-                            "You put the {s} on display.",
-                            "You strap {s} to your {s}.",
-                            "You fail to grab the {s}!",
-                            "You lose hold of the {s}.",
-                            "You lose hold of the {s}!"})
-                        if (rule.source == pattern) return true;
-                    return false;
+                    return !rule.template_literals.empty() &&
+                        !trim_view(rule.template_literals.front()).empty();
                 })) return target;
     }
     // Intermediate bound rules may have populated their palettes before an

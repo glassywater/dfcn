@@ -347,6 +347,8 @@ struct NativeAnnouncementLogVisibleRecord {
     std::vector<NativeAnnouncementDisplayRow> rows;
 };
 static std::vector<NativeAnnouncementParagraph> native_adventure_announcement_paragraphs();
+static std::shared_ptr<const NativeAnnouncementLogDocument>
+native_adventure_popup_report(uintptr_t parent);
 static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_paragraphs(
     uintptr_t owner, size_t first, size_t end);
 static void clear_native_announcement_log_documents();

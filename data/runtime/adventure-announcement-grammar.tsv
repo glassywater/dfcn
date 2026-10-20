@@ -936,7 +936,7 @@ adventure-announcement	{s} has gnawed its way out of confinement!	{s1}啃开了�
 # The player equipment producer supplies an item and a body part independently.
 # Both fields belong to the whole report; the ordinary UI {s} noun matcher cannot
 # resolve artifact names as anatomy or consume the verb through partial word rules.
-adventure-announcement	You strap {s} to your {s}.	你把{s1}系在了自己的{s2}上。	$announcement-item,$body	PE reference 7f7020:7fb91b..7fba2a / classic 7f48a0:7f919b..7f92aa; c65450/c62490 complete item; 13345d0/132f540 mode 2 body-part name; ELF Ghidra elf-source-1238870.c and native prefix 1245082
+adventure-announcement	You strap {s} to your {s}.	你将{s1}绑在自己的{s2}上。	$announcement-item,$body	PE reference 7f7020:7fb91b..7fba2a / classic 7f48a0:7f919b..7f92aa; c65450/c62490 complete item; 13345d0/132f540 mode 2 body-part name; ELF Ghidra elf-source-1238870.c and native prefix 1245082
 adventure-announcement	You draw {s} with your {s}.	你用自己的{s2}拔出了{s1}。	$announcement-item,$body	PE reference 7f7020:7fbbc9..7fbcd8 / classic 7f48a0:7f9449..7f9558; c65450/c62490 complete item; 13345d0/132f540 mode 2 body-part name; ELF Ghidra elf-source-1238870.c and native prefix 1244d85
 # 8039b0 appends one of three grasp verbs or an item/container destination.
 # NPC gender and the native put/puts branches are independent of the actor name.

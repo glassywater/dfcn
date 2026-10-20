@@ -640,27 +640,27 @@ It has no pages.	它没有书页。
 # quality marks and body parts use the existing typed term grammar.
 # Pickup constructors include ground items, plant growths and grasp/container
 # destinations. Preserve the native NPC "put" variant as well as "puts".
-You pick up the {s} and put it in your {s}.	你拾起了{s1}，并将其放入你的{s2}中。
-You pick up the {s} with your {s}.	你用{s2}拾起了{s1}。
-You pick the {s} with your {s}.	你用{s2}采摘了{s1}。
-You pull off the {s} with your {s}.	你用{s2}扯下了{s1}。
-{n} picks up the {s} and puts it in his {s}.	{n}拾起了{s1}，并将其放入他的{s2}中。
-{n} picks up the {s} and puts it in her {s}.	{n}拾起了{s1}，并将其放入她的{s2}中。
-{n} picks up the {s} and puts it in its {s}.	{n}拾起了{s1}，并将其放入它的{s2}中。
-{n} picks up the {s} and put it in his {s}.	{n}拾起了{s1}，并将其放入他的{s2}中。
-{n} picks up the {s} and put it in her {s}.	{n}拾起了{s1}，并将其放入她的{s2}中。
-{n} picks up the {s} and put it in its {s}.	{n}拾起了{s1}，并将其放入它的{s2}中。
-{n} picks up the {s} with his {s}.	{n}用他的{s2}拾起了{s1}。
-{n} picks up the {s} with her {s}.	{n}用她的{s2}拾起了{s1}。
-{n} picks up the {s} with its {s}.	{n}用它的{s2}拾起了{s1}。
-{n} picks the {s} with his {s}.	{n}用他的{s2}采摘了{s1}。
-{n} picks the {s} with her {s}.	{n}用她的{s2}采摘了{s1}。
-{n} picks the {s} with its {s}.	{n}用它的{s2}采摘了{s1}。
-{n} pulls off the {s} with his {s}.	{n}用他的{s2}扯下了{s1}。
-{n} pulls off the {s} with her {s}.	{n}用她的{s2}扯下了{s1}。
-{n} pulls off the {s} with its {s}.	{n}用它的{s2}扯下了{s1}。
-You strap {s} to your {s}.	你把{s1}系在了{s2}上。
-You draw {s} with your {s}.	你用{s2}拔出了{s1}。
+You pick up the {i} and put it in your {i}.	你拾起了{i1}，并将其放入自己的{i2}中。
+You pick up the {i} with your {t}.	你用自己的{t1}拾起了{i1}。
+You pick the {i} with your {t}.	你用自己的{t1}采摘了{i1}。
+You pull off the {i} with your {t}.	你用自己的{t1}扯下了{i1}。
+{n} picks up the {i} and puts it in his {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。
+{n} picks up the {i} and puts it in her {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。
+{n} picks up the {i} and puts it in its {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。
+{n} picks up the {i} and put it in his {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。
+{n} picks up the {i} and put it in her {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。
+{n} picks up the {i} and put it in its {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。
+{n} picks up the {i} with his {t}.	{n1}用自己的{t1}拾起了{i1}。
+{n} picks up the {i} with her {t}.	{n1}用自己的{t1}拾起了{i1}。
+{n} picks up the {i} with its {t}.	{n1}用自己的{t1}拾起了{i1}。
+{n} picks the {i} with his {t}.	{n1}用自己的{t1}采摘了{i1}。
+{n} picks the {i} with her {t}.	{n1}用自己的{t1}采摘了{i1}。
+{n} picks the {i} with its {t}.	{n1}用自己的{t1}采摘了{i1}。
+{n} pulls off the {i} with his {t}.	{n1}用自己的{t1}扯下了{i1}。
+{n} pulls off the {i} with her {t}.	{n1}用自己的{t1}扯下了{i1}。
+{n} pulls off the {i} with its {t}.	{n1}用自己的{t1}扯下了{i1}。
+You strap {i} to your {t}.	你将{i1}绑在自己的{t1}上。
+You draw {i} with your {t}.	你用自己的{t1}拔出了{i1}。
 You do not have a free grasp and your quivers and pack are full.	你没有空闲的抓握部位，而且所有箭筒和背包都已装满。
 You do not have a free grasp and your quiver and packs are full.	你没有空闲的抓握部位，而且箭筒和所有背包都已装满。
 You do not have a free grasp and your quivers are full.	你没有空闲的抓握部位，而且所有箭筒都已装满。

@@ -10810,7 +10810,7 @@ A small woolly insect that lives in hive colonies. It has an annoying sting whic
 Alternatively, you can reduce the number of ocean squares and regions required by the parameters.	也可以减少参数要求的海洋方格和区域数量。	l
 Alternatively, you can reduce the number of swamp squares and regions required by the parameters.	也可以减少参数要求的沼泽方格和区域数量。	l
 Announcement combat activity-detail-sentence [work-reference]: The topic being considered is {s}.	正在思考的主题是{s1}。	l
-Announcement combat adventure-announcement [$announcement-item,$body]: You strap {s} to your {s}.	你把{s1}系在了自己的{s2}上。	l
+Announcement combat adventure-announcement [$announcement-item,$body]: You strap {s} to your {s}.	你将{s1}绑在自己的{s2}上。	l
 Announcement combat adventure-announcement [$announcement-substance]: You breathe a cloud of {s}!	你喷出一团{s1}云雾！	l
 Announcement combat adventure-announcement [$person]: There is nothing to catch in {s}'s deposit.	{s1}的矿脉中没有可捕捉的东西。	l
 Announcement combat adventure-announcement [$term]: and the surrounding lands have been made {s}.	此地及其周边地区已晋升为{s1}。	l
@@ -24721,7 +24721,7 @@ This visitor has come . It heard this was the place for prayer.	这位访客已�
 This visitor has come . She heard {e} was the place for prayer.	这位访客已经到来。她听说{e1}适合祈祷。	hPt
 Vanilla mod description: Various text strings used by the game.	游戏使用的各种文本。	l
 We cannot choose our families, but we can choose to avoid them.	我们无法选择家人，却可以选择远离他们。	hPD
-You begin loading {s} into {s} with intentions of shooting {n}.	你开始将{s1}装入{s2}，准备射击{n1}。	hPt
+You begin loading {i} into {i} with intentions of shooting {n}.	你开始将{i1}装入{i2}，准备射击{n1}。	hPt
 You can prepare in advance with {k} or from the inventory menu.	可以按 {k1} 提前准备，也可以通过物品栏菜单准备。	hPt
 You do not have a free grasp and your quiver and pack are full.	你没有空闲的抓握部位，而且箭筒和背包都已装满。	hP
 You have nothing to put inside a container or on a pack animal.	你没有可以放入容器或放到驮畜身上的物品。	hP
@@ -26175,7 +26175,7 @@ We can abide by this. Let us work toward mutual co-existence.	我们可以遵守
 We have unleashed the echo of a forgotten divine retribution!	那场早已被遗忘的神罚，余威竟被我们释放出来了！	hP
 With them come monstrous siege engineers from the {s} of {e}!	随军而来的还有可怕的攻城巨兽，来自{e1}的{s1}！	hPt
 Would you like to join {e}? The troupe could use your talent.	你愿意加入{e1}吗？剧团需要你的才华。	hPtD
-You begin nocking {s} in {s} with intentions of shooting {n}.	你开始将{s1}搭在{s2}上，准备射击{n1}。	hPt
+You begin nocking {i} in {i} with intentions of shooting {n}.	你开始将{i1}搭在{i2}上，准备射击{n1}。	hPt
 You can't build a fire until you stop riding this projectile.	你必须先离开骑乘的飞行物，才能生火。	hP
 You emerged from the wilds and came to be a {s} in {n}, a {s}	你走出荒野，成为一名{s}，居住在{n}（{s}）	atl
 You make a mockery of the {s} with a shameworthy performance.	你把{s1}模仿得不伦不类，丢尽了脸。	hPt
@@ -30154,8 +30154,8 @@ was unafraid of {a} and refused, despite valuing the law.	虽然尊重法律，�
 {p} was made a symbol of the {s} of {p} by {a} within {p}	在{p3}，{a1}将{p1}定为{p2}的{s1}的象征	ht
 {p}: It has been an honor, noble {p}. I bid you farewell.	{p1}：不胜荣幸，尊贵的{p2}。就此告别。	hPt
 {p}: Let's discuss the state of our current agreements...	{p1}：让我们谈谈现有协议的履行情况……	hPt
-{s} is already loaded with {s} and you prepared to shoot.	{s1}已经装好{s2}，你已准备射击。	hPt
-{s} is already nocked with {s} and you prepared to shoot.	{s1}已经搭好{s2}，你已准备射击。	hPt
+{i} is already loaded with {i} and you prepared to shoot.	{i1}已经装好{i2}，你已准备射击。	hPt
+{i} is already nocked with {i} and you prepared to shoot.	{i1}已经搭好{i2}，你已准备射击。	hPt
 "Who are these mealy-mouthed cowards trying to impress?"	“这些说话拐弯抹角的懦夫，究竟想讨好谁？”	l
 "You must never forget true loyalty.  Repay it in full."	“真正的忠诚不可辜负，应当全心回报。”	l
 (Vehicle moved to next stop if any condition triggered.)	（任一条件触发时，车辆便会前往下一站。）	hP
@@ -33977,7 +33977,7 @@ You can't fell trees because you are dying of thirst.	你快渴死了，无法�
 You can't rest until you stop riding this projectile.	你必须先离开骑乘的飞行物，才能休息。	hP
 You chant sloppily and even forget some of the words.	你吟唱得含含糊糊，甚至忘记了部分词句。	hP
 You do not have a free grasp and your quiver is full.	你没有空闲的抓握部位，而且箭筒已装满。	hP
-You finish loading {s} into {s} and prepare to shoot.	你已在{s2}上装好{s1}，并准备射击。	hPt
+You finish loading {i} into {i} and prepare to shoot.	你已在{i2}上装好{i1}，并准备射击。	hPt
 You have recently encountered one of these creatures.	你最近遇到过这种生物。	hP
 You have selected an area near a necromancer's tower.	你选择的区域临近死灵法师塔。	l
 You insult me with your derision, but let us move on.	你的嘲弄侮辱了我，不过我们还是换个话题吧。	hPD
@@ -36538,7 +36538,7 @@ You can't write until you stop riding this vehicle.	你必须先离开乘坐的�
 You dance flawlessly, like someone out of a legend!	你舞姿完美无瑕，宛如传说中的人物！	hP
 You do not have a free grasp and your pack is full.	你没有空闲的抓握部位，而且背包已装满。	hP
 You don't believe anything relevant, unfortunately.	遗憾的是，你没有与此相关的信念。	hP
-You finish nocking {s} in {s} and prepare to shoot.	你已在{s2}上搭好{s1}，并准备射击。	hPt
+You finish nocking {i} in {i} and prepare to shoot.	你已在{i2}上搭好{i1}，并准备射击。	hPt
 You have been crushed under the collapsing ceiling.	你被坍塌的顶板压死了。	hP
 You just aren't as convincing as you think you are.	你的话没有你想的那么有说服力。	hPD
 You lay forth an awe-inspiring sermon for the ages!	你布道震撼人心，足以流传后世！	hP
@@ -40778,7 +40778,7 @@ You can't write because you are dying of thirst.	你快渴死了，无法书写�
 You cannot fell trees until you leave this site.	你必须先离开此地点，才能砍树。	hP
 You have been ordered to drive these forces out.	你受命驱逐这些势力。	hP
 You need to be holding an axe with a sharp edge.	你需要手持一把刃口锋利的斧头。	hP
-You prepare to shoot {n} with {s} nocked in {s}.	你准备朝{n1}射出搭在{s2}上的{s1}。	hPt
+You prepare to shoot {n} with {i} nocked in {i}.	你准备朝{n1}射出搭在{i2}上的{i1}。	hPt
 You should keep your weird thoughts to yourself.	你那些怪念头还是留在心里吧。	hPD
 You shouldn't whittle your life away on working.	不该把一生都消磨在劳作上。	hPD
 Your workers will rarely make them on their own.	你的工人偶尔会自行制作造物。	hP
@@ -47974,9 +47974,9 @@ wrongfully convicted {n} of {s} in the wilds	在荒野中错误地判定{n1}犯�
 {n} has revealed the presence of {b} to {n}.	{n1}向{n2}透露了{b1}的存在。	hPt
 {n} is throwing a tantrum, possessed by {n}!	{n1}被{n2}附身，正在大发脾气！	hPt
 {n} is throwing objects around the fortress!	{n1}正在要塞各处乱扔物品！	hPt
-{n} picks up the {s} and puts it in her {s}.	{n1}拾起了{s1}，并将其放入她的{s2}中。	hPt
-{n} picks up the {s} and puts it in his {s}.	{n1}拾起了{s1}，并将其放入他的{s2}中。	hPt
-{n} picks up the {s} and puts it in its {s}.	{n1}拾起了{s1}，并将其放入它的{s2}中。	hPt
+{n} picks up the {i} and puts it in her {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。	hPt
+{n} picks up the {i} and puts it in his {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。	hPt
+{n} picks up the {i} and puts it in its {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。	hPt
 {n} push past you, interrupting your action.	{n1}从你身旁挤过，打断了你的动作。	hPt
 {p} concluded with {p} overthrown during {e}	在{e1}期间，{p1}以{p2}被推翻告终	ht
 {p} concluded with {p} overthrown within {p}	在{p3}，{p1}以{p2}被推翻告终	ht
@@ -48668,7 +48668,7 @@ You haven't named any position symbols yet.	你尚未命名任何职位象征物
 You honor {e} with the presentation of {b}.	你献上{b1}，使{e1}倍感荣耀。	hPt
 You may find very unpleasant environs here.	此地的环境可能会非常险恶。	l
 You need a broker with the appraisal skill.	需要有估价技能的交易员。	wl
-You pick up the {s} and put it in your {s}.	你拾起了{s1}，并将其放入你的{s2}中。	hPt
+You pick up the {i} and put it in your {i}.	你拾起了{i1}，并将其放入自己的{i2}中。	hPt
 You will wait, staying awake for {u} hours.	你将保持清醒，等待{u1}小时。	hPt
 You've already searched this area recently.	你最近已经搜寻过此区域。	hP
 a long-dead corpse was convicted of a crime	一具久远的尸体被判定有罪	wi
@@ -49701,9 +49701,9 @@ wrongfully convicted {n} of {s} within {p}.	在{p1}错误地判定{n1}犯有{s1}
 {n} has been found dead, contorted in fear!	{n1}的尸体被发现了，因恐惧而扭曲着！	hPt
 {n} has risen and is haunting the fortress!	{n1}已从死后归来，在要塞中作祟！	hPt
 {n} is not going to take much more of this.	{n1}快要忍无可忍了。	hPt
-{n} picks up the {s} and put it in her {s}.	{n1}拾起了{s1}，并将其放入她的{s2}中。	hPt
-{n} picks up the {s} and put it in his {s}.	{n1}拾起了{s1}，并将其放入他的{s2}中。	hPt
-{n} picks up the {s} and put it in its {s}.	{n1}拾起了{s1}，并将其放入它的{s2}中。	hPt
+{n} picks up the {i} and put it in her {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。	hPt
+{n} picks up the {i} and put it in his {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。	hPt
+{n} picks up the {i} and put it in its {i}.	{n1}拾起了{i1}，并将其放入自己的{i2}中。	hPt
 {n} was an {s}, animated by unknown forces.	{n}是被未知力量复活的{s}。	ht
 {n} was wrongfully convicted of {s} at {p}.	在{p1}，{n1}被错判犯有{s1}。	ht
 {n} was wrongfully convicted of {s} in {p}.	在{p1}，{n1}被错判犯有{s1}。	ht
@@ -50462,7 +50462,6 @@ You can't write because you can't breathe.	你无法呼吸，不能书写。	hP
 You cannot rest until you leave this site.	你必须先离开此地点，才能休息。	hP
 You have attracted some positive interest.	你引起了一些善意的关注。	hP
 You have finished working on {i} and more.	你完成了对{i1}等物品的加工。	hPt
-You have finished working on {s} and more.	你完成了{s1}等物品的加工。	hPt
 You have no idea what's lurking out there.	你并不知道外面潜伏着什么。	hq
 You have nothing left to draw or put away.	你已经没有可以取出或收起的物品了。	hP
 You have partially overcome the paralysis.	你的麻痹消退了一些。	hP
@@ -52373,11 +52372,10 @@ You can't write because you are swimming.	你正在游泳，无法书写。	hP
 You don't feel safe enough to fell trees.	你觉得这里不够安全，无法砍树。	hP
 You have disturbed the sleep of the dead!	你惊扰了死者的长眠！	hP
 You have finished working on {i} and {i}.	你完成了对{i1}和{i2}的加工。	hPt
-You have finished working on {s} and {s}.	你完成了{s1}和{s2}的加工。	hPt
 You haven't been able to act for a while.	你已经有一段时间无法行动了。	hP
 You must appoint a {s} to create a squad.	必须先任命一名{s1}，才能创建小队。	hPt
 You must think you're really frightening.	你肯定觉得自己很吓人。	hPD
-You prepare to shoot {n} with {s} in {s}.	你准备朝{n1}发射装在{s2}里的{s1}。	hPt
+You prepare to shoot {n} with {i} in {i}.	你准备朝{n1}发射装在{i2}里的{i1}。	hPt
 You will sleep as necessary for {u} hour.	你将在接下来的{u1}小时内按需睡觉。	hPt
 a competition involving {b} in the wilds.	在荒野中，以《{b1}》为内容的比赛。	htEi
 a criminal could not be properly punished	罪犯没有得到适当的惩罚	wi
@@ -53520,7 +53518,7 @@ you will need to reclaim the fort to play	但你需要先收复这座要塞，	w
 {s} between {a} and {a} at {p} concluded.	{a1}与{a2}在{p1}达成的{s1}结束了。	ht
 {s} between {a} and {a} concluded at {p}.	在{p1}，{a1}与{a2}之间的{s1}结束了。	ht
 {s} between {a} and {a} concluded in {p}.	在{p1}，{a1}与{a2}之间的{s1}结束了。	ht
-{s} has been moved from its proper place!	{s1}被移离了原本的位置！	hPt
+{i} has been moved from its proper place!	{i1}被移离了原本的位置！	hPt
 "Are these gifts? Do you wish to trade?"	“这些是礼物吗？你想做笔交易？”	hP
 "I cannot stand the world any longer..."	“我再也受不了这个世界了……”	l
 "I don't really get attached to people."	“我不太会对别人产生依恋。”	l
@@ -56117,7 +56115,7 @@ You have been encased in cooling magma.	你被封在了冷却的岩浆中。	hP
 You have been found dead, badly burned.	你的尸体被发现了，上面有严重的烧伤。	hP
 You have killed {c} of these creatures.	你杀死过{c}只这种生物。	ht
 You just can't give a sermon very well.	你布道实在讲得不好。	hP
-You prepare to shoot {s} nocked in {s}.	你准备射出搭在{s2}上的{s1}。	hPt
+You prepare to shoot {i} nocked in {i}.	你准备射出搭在{i2}上的{i1}。	hPt
 You shoot out thick strands of webbing!	你喷出粗壮的蛛丝！	hP
 You should report the task as complete.	你应当报告此任务已经完成。	hP
 You tangle together and tumble forward!	你们纠缠在一起，向前翻滚！	hP
@@ -58220,7 +58218,7 @@ You begin the seventh verse paragraph.	你开始朗诵第7段诗。	hP
 You begin the twelfth verse paragraph.	你开始朗诵第12段诗。	hP
 You cannot climb or mount while prone.	俯卧时无法攀爬或骑乘。	hP
 You don't feel safe enough to compose.	你觉得这里不够安全，无法创作。	hP
-You don't have any ammunition for {s}.	你没有可供{s1}使用的弹药。	hPt
+You don't have any ammunition for {i}.	你没有可供{i1}使用的弹药。	hPt
 You have been crushed by a drawbridge.	你被吊桥压死了。	hP
 You have been drained of blood by {p}!	你被{p1}吸干了血！	hPt
 You have been encased in cooling lava.	你被封在了冷却的熔岩中。	hP
@@ -60378,7 +60376,7 @@ You are still surrounded by cackling.	你仍被怪笑声包围着。	hP
 You begin the eighth verse paragraph.	你开始朗诵第8段诗。	hP
 You begin the fourth verse paragraph.	你开始朗诵第4段诗。	hP
 You begin the second verse paragraph.	你开始朗诵第2段诗。	hP
-You do not have a free grasp for {s}.	你没有空闲的手来拿{s1}。	hPt
+You do not have a free grasp for {i}.	你没有空闲的手来拿{i1}。	hPt
 You don't feel safe enough to travel.	你觉得这里不够安全，无法旅行。	hP
 You feel too watched to build a fire.	你感觉被人盯着，无法安心生火。	hP
 You have been found dead, dehydrated.	你被发现时，已经因脱水而死。	hP
@@ -61706,13 +61704,13 @@ writing of a masterpiece in the wilds	在荒野中，书写杰作	hEi
 {p}'s harassment of {p} in the wilds.	在荒野中，{p1}骚扰了{p2}。	htEi
 {p}'s march to reclaim {p} during {e}	在{e1}期间，{p1}为收复{p2}而发动的远征	htEi
 {p}'s march to reclaim {p} within {p}	在{p3}，{p1}为收复{p2}而发动的远征	htEi
-{s} is missing from its proper place!	{s1}从原本的位置不见了！	hPt
+{i} is missing from its proper place!	{i1}从原本的位置不见了！	hPt
 {s} shows a word but you cannot read.	{s1}显示出一个词，但你不识字。	hPt
 {s} was accepted by {a} in the wilds.	在荒野中，{a1}接受了{s1}。	ht
 {s} was made to {a} by {a} during {e}	在{e1}期间，{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} by {a} within {p}	在{p1}，{a2}向{a1}提出了{s1}	ht
 {s} was rejected by {a} in the wilds.	在荒野中，{a1}拒绝了{s1}。	ht
-{s} was seen being passed to a thief!	{s1}被人看见交给了一个窃贼！	hPt
+{i} was seen being passed to a thief!	{i1}被人看见交给了一个窃贼！	hPt
 "Bravery is not a strength of mine."	“勇敢不是我的长处。”	l
 "I simply cannot afford this trade."	“我实在负担不起这笔交易。”	hP
 "I try to live and behave properly."	“我尽量让生活和言行合乎规矩。”	l
@@ -63961,7 +63959,7 @@ you will need to unretire or recruit	但你需要让这个角色复出或将其	
 {n} is in the middle of dancing {b}.	{n1}正在表演舞蹈《{b1}》。	hPt
 {n} is most often depicted as a {s}.	{n}最常以{s}的形象出现。	ht
 {n} is the force which permeates {r}	{n}是遍及{r}的自然之灵	atl
-{n} maintains possession of the {s}.	{n1}仍控制着{s1}。	hPt
+{n} maintains possession of the {i}.	{n1}仍控制着{i1}。	hPt
 {n} says, "We must not abandon {n}!"	{n1}说：“我们不能抛下{n2}！”	hPt
 {n} says: "We must not abandon {n}!"	{n1}说：“我们不能抛下{n2}！”	hPt
 {n} seems ecstatic with the trading.	{n1}似乎为这次交易欣喜若狂。	hPt
@@ -64763,7 +64761,7 @@ The sun is high in the western sky.	太阳位于西方高空。	hP
 The sun is high in the western sky.	太阳位于西方高空。	hj
 The weather looks to be fine today.	今天天气看起来不错。	hPD
 The work has no particular subject.	这部作品没有特定主题。	h
-The {s} remains stuck in {n}'s {t}.	{s1}仍卡在{n1}的{t1}中。	hPt
+The {i} remains stuck in {n}'s {t}.	{i1}仍卡在{n1}的{t1}中。	hPt
 There are two sides to every story.	每件事都有两面。	hP
 There is a deep imprint in the {s}.	{s1}中有一个深压痕。	hPt
 There's nothing like a good friend.	没有什么比得上一个好朋友。	hPD
@@ -64843,8 +64841,8 @@ You have burned up in a magma mist.	你在岩浆雾中被烧死了。	hP
 You have created a masterpiece {i}!	你制作出了一件杰作级的{i1}！	hPt
 You have leapt from a great height.	你从高处跳了下去。	hP
 You have located {b}, "{b}", a {s}.	你找到了{b1}（“{b2}”），一处{s1}。	hPt
-You maintain possession of the {s}.	你仍控制着{s1}。	hPt
-You pull off the {s} with your {s}.	你用{s2}扯下了{s1}。	hPt
+You maintain possession of the {i}.	你仍控制着{i1}。	hPt
+You pull off the {i} with your {t}.	你用自己的{t1}扯下了{i1}。	hPt
 You tell the story in vivid detail.	你绘声绘色地讲述着故事的细节。	hP
 Your settlement has been abandoned.	你的定居点已被废弃。	hq
 Your settlement has been abandoned.	你的聚居地已被放弃。	w
@@ -66273,9 +66271,9 @@ you were caught up in a new romance	你陷入新的恋情	wi
 {n} has shared a rumor from abroad.	{n1}分享了一则来自外地的传闻。	hPt
 {n} is a force which permeates {p}.	{n}是遍及{p}的自然之灵。	ht
 {n} is telling the tale quite well.	{n1}把故事讲得相当精彩。	hPt
-{n} pulls off the {s} with her {s}.	{n1}用她的{s2}扯下了{s1}。	hPt
-{n} pulls off the {s} with his {s}.	{n1}用他的{s2}扯下了{s1}。	hPt
-{n} pulls off the {s} with its {s}.	{n1}用它的{s2}扯下了{s1}。	hPt
+{n} pulls off the {i} with her {t}.	{n1}用自己的{t1}扯下了{i1}。	hPt
+{n} pulls off the {i} with his {t}.	{n1}用自己的{t1}扯下了{i1}。	hPt
+{n} pulls off the {i} with its {t}.	{n1}用自己的{t1}扯下了{i1}。	hPt
 {n} seems pleased with the trading.	{n1}似乎对这次交易感到满意。	hPt
 {n} was convicted of {s} during {e}	在{e1}期间，{n1}被判定犯有{s1}	ht
 {n} was convicted of {s} within {p}	在{p1}，{n1}被判定犯有{s1}	ht
@@ -67181,7 +67179,7 @@ The thread is {v} with {j} by {n}.	纺线由{n1}用{j1}染成{v1}。	hHt
 The vegetation is heavily damaged.	这里的植被受到严重破坏。	hP
 The vomit burns away in the magma.	呕吐物在岩浆中烧尽了。	hP
 The {s} Purge in {p} in the wilds.	在荒野中，{p1}的{s1}清洗事件。	htEi
-The {s} remains stuck in your {t}.	{s1}仍卡在你的{t1}中。	hPt
+The {i} remains stuck in your {t}.	{i1}仍卡在你的{t1}中。	hPt
 There is a {s} imprint in the {s}.	{s2}中有一个{s1}留下的压痕。	hPt
 There were {c} competitors at {p}.	在{p1}，共有{c1}名参赛者。	ht
 There were {c} competitors in {p}.	在{p1}，共有{c1}名参赛者。	ht
@@ -67258,11 +67256,11 @@ You have improved {s} masterfully!	你对{s1}的装饰达到了杰作水平！	h
 You have reverted to a wild state!	你恢复了野性！	hP
 You know of no appropriate stones.	你尚未发现合适的石材。	w
 You must face the challenge today.	今天你必须面对挑战。	hP
-You pick up the {s} with your {s}.	你用{s2}拾起了{s1}。	hPt
+You pick up the {i} with your {t}.	你用自己的{t1}拾起了{i1}。	hPt
 You roll, testing the will of {p}.	你掷出骰子，试探{p1}的意志。	hPt
 You tangle together and fall over!	你们纠缠在一起，摔倒了！	hP
 You've found some small creatures.	你发现了一些小型生物。	hP
-You've lost possession of the {s}.	你失去了{s1}。	hPt
+You've lost possession of the {i}.	你失去了{i1}。	hPt
 Your adventure has come to an end.	你的冒险已经结束。	hq
 Your adventure has come to an end.	你的冒险已告终。	w
 Your chant is absolutely flawless.	你的吟唱完美无瑕。	hP
@@ -68689,9 +68687,9 @@ wove a masterful sewn image in {p}	在{p1}织出了一幅杰作级的刺绣图�
 {n} is completely free of the web.	{n1}完全挣脱了蛛网。	hPt
 {n} is giving a creditable sermon.	{n1}布道讲得可圈可点。	hPt
 {n} of {p} constructed {p} in {p}.	在{p3}，{p1}的{n}建造了{p2}。	ht
-{n} picks up the {s} with her {s}.	{n1}用她的{s2}拾起了{s1}。	hPt
-{n} picks up the {s} with his {s}.	{n1}用他的{s2}拾起了{s1}。	hPt
-{n} picks up the {s} with its {s}.	{n1}用它的{s2}拾起了{s1}。	hPt
+{n} picks up the {i} with her {t}.	{n1}用自己的{t1}拾起了{i1}。	hPt
+{n} picks up the {i} with his {t}.	{n1}用自己的{t1}拾起了{i1}。	hPt
+{n} picks up the {i} with its {t}.	{n1}用自己的{t1}拾起了{i1}。	hPt
 {n} recites the words evocatively.	{n1}朗诵的诗句引人遐想。	hPt
 {n} was struck down by {n} in {p}.	{n1}在{p}被{n2}击杀。	ht
 {n}'s presence in {p} in the wilds	在荒野中，{n1}在{p1}出现	htEi
@@ -69576,7 +69574,6 @@ You cannot jump while in the air.	身处空中时无法跳跃。	hP
 You have been blessed with a pet!	你受到祝福，获赐了一只宠物！	hP
 You have been found dead, frozen.	你被发现时，已经冻死了。	hP
 You have finished working on {i}.	你完成了对{i1}的加工。	hPt
-You have finished working on {s}.	你完成了{s1}的加工。	hPt
 You have forgotten your training!	你忘掉了所受的训练！	hP
 You must reflect on your actions.	你必须反思自己的行为。	hP
 You recite the words evocatively.	你朗诵的诗句引人遐想。	hP
@@ -70946,7 +70943,7 @@ withdrew from society within {p}.	在{p1}退出了社会交往。	ht
 {s} Rampage in in {p} within {p}.	在{p2}，{p1}的{s1}肆虐事件。	htEi
 {s} between {a} and {a} concluded	{a1}与{a2}之间的{s1}结束了	ht
 {s} created by an unknown artisan	由无名工匠制作的{s1}	hIit
-{s} is already prepared to shoot.	{s1}已经准备好射击了。	hPt
+{i} is already prepared to shoot.	{i1}已经准备好射击了。	hPt
 {s} was made to {a} by {a} at {p}	在{p1}，{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} by {a} in {p}	在{p1}，{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} in the wilds.	在荒野中，向{a1}提出了{s1}。	ht
@@ -71857,7 +71854,7 @@ You cannot jump while wrestling.	摔跤时无法跳跃。	hP
 You charge at {n} from the side!	你从侧面冲向{n1}！	hPt
 You choose the perfect phrasing.	你选用了恰到好处的措辞。	hP
 You feel too watched to compose.	你感觉被人盯着，无法安心创作。	hP
-You finish loading {s} into {s}.	你已在{s2}上装好{s1}。	hPt
+You finish loading {i} into {i}.	你已在{i2}上装好{i1}。	hPt
 You have been favorably noticed.	你给对方留下了好印象。	hP
 You have been impaled on spikes.	你被尖刺刺穿了。	hP
 You have nothing left to remove.	你已经没有可以脱下的物品了。	hP
@@ -71865,7 +71862,7 @@ You have selected a narrow area.	你选择了一个狭窄区域。	l
 You have selected a savage area.	你选择了一片凶险区域。	l
 You have succumbed to infection.	你因感染而死。	hP
 You must come out of your shell.	你必须先从壳中伸出来。	hP
-You prepare to shoot {s} in {s}.	你准备发射装在{s2}里的{s1}。	hPt
+You prepare to shoot {i} in {i}.	你准备发射装在{i2}里的{i1}。	hPt
 You reorganize your possessions.	你重新整理了随身物品。	hP
 You've located a {s} to the {s}!	你发现{s2}有一处{s1}！	hPt
 Your sleep has been interrupted!	你的睡眠被打断了！	hP
@@ -73164,13 +73161,13 @@ wrongfully convicted {n} of {s}.	错误地判定{n1}犯有{s1}。	ht
 {n} cancels {s}: No floor space.	{n1}取消了{s1}：没有地面空间。	hPt
 {n} cancels {s}: Resting injury.	{n1}取消了{s1}：正在养伤。	hPt
 {n} cancels {s}: Seeking Infant.	{n1}取消了{s1}：正在寻找婴儿。	hPt
-{n} gains possession of the {s}.	{n1}取得了{s1}。	hPt
+{n} gains possession of the {i}.	{n1}取得了{i1}。	hPt
 {n} has become a student of {n}.	{n1}成为了{n2}的学生。	hPt
 {n} has been blessed with a pet!	{n1}受到祝福，获赐了一只宠物！	hPt
 {n} has been elected {s} of {e}.	{n1}已当选为{e1}的{s1}。	hPt
 {n} has been found dead, frozen.	{n1}被发现时，已经冻死了。	hPt
 {n} has been missing for a week.	{n1}已经失踪一周。	hPt
-{n} has grown attached to a {s}!	{n1}对一件{s1}产生了依恋！	hPt
+{n} has grown attached to a {i}!	{n1}对一件{i1}产生了依恋！	hPt
 {n} has left the martial trance.	{n1}脱离了战斗专注状态。	hPt
 {n} is guided by forces unknown.	{n}受到未知力量的指引。	ht
 {n} of {p} became an {s} in {p}.	在{p2}，{p1}的{n}成为了{s}。	ht
@@ -74155,7 +74152,7 @@ Wrestling Competition of in {p}	在{p1}，摔跤比赛	htEi
 Written objects (incl. copies):	书面作品（含副本）：	wl
 X is making a plaintive gesture	X正做出哀求的手势	wl
 X is striking a triumphant pose	X正摆出胜利的姿态	wl
-You begin loading {s} into {s}.	你开始将{s1}装入{s2}。	hPt
+You begin loading {i} into {i}.	你开始将{i1}装入{i2}。	hPt
 You begin playing make believe.	你开始玩扮演游戏。	hP
 You begin the fifteenth stanza.	你开始朗诵第15节诗。	hP
 You begin the seventeenth line.	你开始朗诵第17行。	hP
@@ -74164,7 +74161,7 @@ You cannot fell the trees here.	你无法砍倒这里的树木。	hP
 You cannot jump while swimming.	游泳时无法跳跃。	hP
 You do not have any farm plots.	你还没有任何耕地。	hP
 You feel too watched to travel.	你感觉被人盯着，无法安心旅行。	hP
-You gain possession of the {s}.	你取得了{s1}。	hPt
+You gain possession of the {i}.	你取得了{i1}。	hPt
 You have been drained of blood!	你被吸干了血！	hP
 You have been found solidified.	你被发现时，已经凝固而死。	hP
 You have been hacked to pieces.	你被砍成了碎片。	hP
@@ -74176,7 +74173,7 @@ You have selected an evil area.	你选择了一片邪恶区域。	l
 You haven't saved your changes.	你的更改尚未保存。
 You know, I think you're right.	你知道，我觉得你说得对。	hPD
 You need a free grasp to climb.	需要一个空闲的抓握部位才能攀爬。	hP
-You pick the {s} with your {s}.	你用{s2}采摘了{s1}。	hPt
+You pick the {i} with your {t}.	你用自己的{t1}采摘了{i1}。	hPt
 You shudder and a spirit rises!	你颤抖起来，一个灵体随之升起！	hP
 You spit a glob of molten rock!	你吐出一团熔岩！	hP
 You spit a glob of molten rock.	你吐出一团熔岩。	hP
@@ -75636,10 +75633,10 @@ wrongfully convicted {n} of {s}	错误地判定{n1}犯有{s1}	ht
 {n} leaps at {n} from the side!	{n1}从侧面扑向{n2}！	hPt
 {n} of {p} became a {s} in {p}.	在{p2}，{p1}的{n}成为了{s}。	ht
 {n} passes out from exhaustion.	{n1}精疲力竭，昏倒了。	hPt
-{n} picks the {s} with her {s}.	{n1}用她的{s2}采摘了{s1}。	hPt
-{n} picks the {s} with his {s}.	{n1}用他的{s2}采摘了{s1}。	hPt
-{n} picks the {s} with its {s}.	{n1}用它的{s2}采摘了{s1}。	hPt
-{n} pulls out and releases {s}.	{n1}拔出并松开了{s1}。	hPt
+{n} picks the {i} with her {t}.	{n1}用自己的{t1}采摘了{i1}。	hPt
+{n} picks the {i} with his {t}.	{n1}用自己的{t1}采摘了{i1}。	hPt
+{n} picks the {i} with its {t}.	{n1}用自己的{t1}采摘了{i1}。	hPt
+{n} pulls out and releases {i}.	{n1}拔出并松开了{i1}。	hPt
 {n} raises a high fever in you!	{n1}使你高烧不退！	hPt
 {n} raises a high fever in {n}!	{n1}使{n2}高烧不退！	hPt
 {n} vomits into the dragonfire.	{n1}吐进了龙焰里。	hPt
@@ -76660,7 +76657,7 @@ The world has passed into {e}.	世界已进入{e1}。	hPt
 The world has passed into {e}.	世界已进入{e1}。	ht
 The world has passed into {s}.	世界已进入{s1}。	ht
 The {s} is hot enough already.	{s1}已经够热了。	hPt
-The {s} is torn from your {t}.	{s1}被从你的{t1}中扯了出来。	hPt
+The {i} is torn from your {t}.	{i1}被从你的{t1}中扯了出来。	hPt
 There have been a few already!	已经出现过几条了！	hq
 There is a foul reek about it.	它周围弥漫着恶臭。	h
 There is a imprint in the {s}.	{s1}中有一个压痕。	hPt
@@ -76727,7 +76724,7 @@ You begin the fourteenth line.	你开始朗诵第14行。	hP
 You begin the nineteenth line.	你开始朗诵第19行。	hP
 You begin the thirteenth line.	你开始朗诵第13行。	hP
 You begin the verse paragraph.	你开始朗诵这一段诗。	hP
-You begin to throw {s} at {n}.	你开始向{n1}投掷{s1}。	hPt
+You begin to throw {i} at {n}.	你开始向{n1}投掷{i1}。	hPt
 You charge at {n} from behind!	你从背后冲向{n1}！	hPt
 You conclude your performance.	你结束了表演。	hP
 You do not have any locations.	你还没有任何地点。	hP
@@ -76737,7 +76734,7 @@ You fail to mount {n} in time.	你没能及时骑上{n1}。	hPt
 You feel too watched to build.	你感觉被人盯着，无法安心建造。	hP
 You feel too watched to write.	你感觉被人盯着，无法安心书写。	hP
 You find your sight is fading!	你发现视线越来越模糊！	hP
-You finish nocking {s} in {s}.	你已在{s2}上搭好{s1}。	hPt
+You finish nocking {i} in {i}.	你已在{i2}上搭好{i1}。	hPt
 You have been bitten by a {s}!	你被一只{s1}咬了！	hPt
 You have been found condensed.	你被发现时，已经凝结而死。	hP
 You have been granted healing!	你得到了治愈！	hP
@@ -79260,7 +79257,7 @@ You are playing make believe.	你正在玩扮演游戏。	hP
 You are playing the {s} well.	你把{s1}演奏得很好。	hPt
 You are too injured to climb.	你的伤势太重，无法攀爬。	hP
 You awaken from your slumber.	你从睡梦中醒来。	hP
-You begin nocking {s} in {s}.	你开始将{s1}搭在{s2}上。	hPt
+You begin nocking {i} in {i}.	你开始将{i1}搭在{i2}上。	hPt
 You begin playing with a toy.	你开始玩玩具。	hP
 You begin the fifteenth line.	你开始朗诵第15行。	hP
 You begin the seventh stanza.	你开始朗诵第7节诗。	hP
@@ -79275,7 +79272,7 @@ You have been encased in ice.	你被封在了冰中。	hP
 You have been found scuttled.	你被发现时，已经遭到凿沉。	hP
 You have been stung by a {s}!	你被一只{s1}蜇了！	hPt
 You pass out from exhaustion.	你精疲力竭，昏倒了。	hP
-You put the {s} into the {s}.	你将{s1}放进{s2}。	hPt
+You put the {i} into the {i}.	你将{i1}放进{i2}。	hPt
 You see your sight is fading!	你发现视线越来越模糊！	hP
 You stumble over the details.	你讲到细节时磕磕绊绊。	hP
 You vomit into the lava mist.	你吐进了熔岩雾里。	hP
@@ -82904,7 +82901,7 @@ wove a masterful sewn image.	织出了一幅杰作级的刺绣图像。	h
 {n} is playing the {s} well.	{n1}把{s1}演奏得很好。	hPt
 {n} makes a flicking motion!	{n1}做了个轻弹的动作！	hPt
 {n} makes a flicking motion.	{n1}做了个轻弹的动作。	hPt
-{n} pulls out and drops {s}.	{n1}拔出并丢下了{s1}。	hPt
+{n} pulls out and drops {i}.	{n1}拔出并丢下了{i1}。	hPt
 {n} retracts into her shell.	{n1}缩进自己的壳里。	hPt
 {n} retracts into his shell.	{n1}缩进自己的壳里。	hPt
 {n} retracts into its shell.	{n1}缩进自己的壳里。	hPt
@@ -82957,8 +82954,8 @@ wove a masterful sewn image.	织出了一幅杰作级的刺绣图像。	h
 {s} Rampage of {n} in in {p}	{n1}在{p1}的{s1}肆虐事件	htEi
 {s} comes up the word "{s}".	{s1}掷出了“{s2}”这个词。	hPt
 {s} from a period of no rule	{s1}（无统治者时期）	hIit
-{s} is already loaded with .	{s1}已经装好了。	hPt
-{s} is already nocked with .	{s1}已经搭好了。	hPt
+{i} is already loaded with .	{i1}已经装好了。	hPt
+{i} is already nocked with .	{i1}已经搭好了。	hPt
 {s} is falling from the sky.	{s1}正从天空落下。	hjt
 {s} lands on the word "{s}".	{s1}落在“{s2}”这个词。	hPt
 {s} of {n}'s {t} during {e}.	在{e1}期间，{n1}的{t1}遭到{s1}的事件。	htEi
@@ -83968,7 +83965,7 @@ You begin the {d}th stanza.	你开始朗诵第{d1}节诗。	hPt
 You breathe a cloud of {s}!	你喷出一团{s1}云雾！	hPt
 You can no longer be a {s}.	你不能再担任{s1}了。	hPtD
 You come out of your shell.	你从壳中伸了出来。	hP
-You draw {s} with your {s}.	你用{s2}拔出了{s1}。	hPt
+You draw {i} with your {t}.	你用自己的{t1}拔出了{i1}。	hPt
 You fill your {s} with {s}.	你将{s2}装进自己的{s1}。	hPt
 You have been buried alive.	你被活埋了。	hP
 You have been burned alive.	你被活活烧死了。	hP
@@ -83977,9 +83974,9 @@ You have been found melted.	你被发现时，已经熔化而死。	hP
 You hear a resounding bark.	你听到了洪亮的吠叫声。	hP
 You make a flicking motion!	你做了个轻弹的动作！	hP
 You make a flicking motion.	你做了个轻弹的动作。	hP
-You pack the {s} on to {n}.	你将{s1}装到{n1}身上。	hPt
-You put the {s} on display.	你将{s1}摆出来展示。	hPt
-You put the {s} on the {s}.	你将{s1}放在{s2}上。	hPt
+You pack the {i} on to {n}.	你将{i1}装到{n1}身上。	hPt
+You put the {i} on display.	你将{i1}摆出来展示。	hPt
+You put the {i} on the {i}.	你将{i1}放在{i2}上。	hPt
 You root around in the {s}.	你在{s1}中翻找。	hPt
 Your ambition is misguided.	你的抱负走错了方向。	hP
 Your dreams will come true.	你的梦想将会成真。	hP
@@ -85265,9 +85262,9 @@ wove a masterful sewn image	织出了一幅杰作级的刺绣图像	h
 {n} comes out of its shell.	{n1}从壳中伸了出来。	hPt
 {n} constructed {p} in {p}.	在{p2}，{n}建造了{p1}。	ht
 {n} devoured an {s} in {p}.	在{p}，{n}吞噬了一只{s}。	ht
-{n} draws {s} with her {t}.	{n1}用自己的{t1}拔出了{s1}。	hPt
-{n} draws {s} with his {t}.	{n1}用自己的{t1}拔出了{s1}。	hPt
-{n} draws {s} with its {t}.	{n1}用自己的{t1}拔出了{s1}。	hPt
+{n} draws {i} with her {t}.	{n1}用自己的{t1}拔出了{i1}。	hPt
+{n} draws {i} with his {t}.	{n1}用自己的{t1}拔出了{i1}。	hPt
+{n} draws {i} with its {t}.	{n1}用自己的{t1}拔出了{i1}。	hPt
 {n} flounders in the magma!	{n1}在岩浆中挣扎！	hPt
 {n} flounders in the water!	{n1}在水中挣扎！	hPt
 {n} fought with {n} in {p}.	在{p}，{n1}与{n2}交战。	ht
@@ -86327,7 +86324,7 @@ You hear a metallic ching.	你听到了金属般的叮当声。	hP
 You hear distant grinding.	你听到远处传来机械摩擦声。	hP
 You interact with building	你与建筑互动	w
 You must reveal the truth.	你必须揭露真相。	hP
-You strap {s} to your {s}.	你把{s1}系在了{s2}上。	hPt
+You strap {i} to your {t}.	你将{i1}绑在自己的{t1}上。	hPt
 You vomit into the flames.	你吐进了火焰里。	hP
 You will need to appoint a	你需要任命一位	hq
 Your Attributes and Skills	你的属性与技能
@@ -87492,13 +87489,13 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {n} is an {s} born in {d}.	{n}是{s}，生于第{d}年。	ht
 {n} is playing with a toy.	{n1}正在玩玩具。	hPt
 {n} is unwilling to trade.	{n1}不愿交易。	hPt
-{n} loses hold of the {s}!	{n1}没能抓住{s1}！	hPt
-{n} loses hold of the {s}.	{n1}没能抓住{s1}。	hPt
+{n} loses hold of the {i}!	{n1}没能抓住{i1}！	hPt
+{n} loses hold of the {i}.	{n1}没能抓住{i1}。	hPt
 {n} regains consciousness.	{n1}恢复了意识。	hPt
 {n} ruled from {p} of {p}.	{n}以{p2}的{p1}为统治中心。	ht
-{n} straps {s} to her {t}.	{n1}将{s1}绑在自己的{t1}上。	hPt
-{n} straps {s} to his {t}.	{n1}将{s1}绑在自己的{t1}上。	hPt
-{n} straps {s} to its {t}.	{n1}将{s1}绑在自己的{t1}上。	hPt
+{n} straps {i} to her {t}.	{n1}将{i1}绑在自己的{t1}上。	hPt
+{n} straps {i} to his {t}.	{n1}将{i1}绑在自己的{t1}上。	hPt
+{n} straps {i} to its {t}.	{n1}将{i1}绑在自己的{t1}上。	hPt
 {n} was a {s} born in {d}.	{n}是{s}，生于第{d}年。	ht
 {n} was the victor at {p}.	在{p1}，{n1}获得了胜利。	ht
 {n} was the victor in {p}.	在{p1}，{n1}获得了胜利。	ht
@@ -87538,7 +87535,7 @@ were expelled in the wilds	在荒野中遭到了驱逐	h
 {s} was made to {a} at {p}	在{p1}，向{a1}提出了{s1}	ht
 {s} was made to {a} by {a}	{a2}向{a1}提出了{s1}	ht
 {s} was made to {a} in {p}	在{p1}，向{a1}提出了{s1}	ht
-{s} was seen being stolen!	有人看见{s1}被偷走了！	hPt
+{i} was seen being stolen!	有人看见{i1}被偷走了！	hPt
 {s} with {a} in the wilds.	在荒野中，与{a1}的{s1}。	htEi
 {s} {s} sideburns are {s}.	{s}的{s}鬓角{s}。	wtlx
 {t} was {s} by {a} at {p}.	在{p1}，{t1}被{a1}{s1}。	ht
@@ -88079,7 +88076,7 @@ It is strikingly colored.	它的颜色格外醒目。	h
 It is very solidly built.	它的体格十分壮实。	h
 It started at {p} at {p}.	在{p2}，从{p1}出发。	ht
 It started at {p} in {p}.	在{p2}，从{p1}出发。	ht
-It won't fit in your {s}.	你的{s1}装不下它。	hPt
+It won't fit in your {i}.	你的{i1}装不下它。	hPt
 Its {q} feathers are {s}.	它的{q1}羽毛{s1}。	ht
 Journey of {a} during {e}	在{e1}期间，{a1}的旅程	htEi
 Journey of {a} within {p}	在{p1}，{a1}的旅程	htEi
@@ -88402,11 +88399,11 @@ You have died of old age.	你老死了。	hP
 You have frozen to death.	你冻死了。	hP
 You hear a harsh whistle.	你听到了刺耳的哨声。	hP
 You hear nearby grinding.	你听到附近传来机械摩擦声。	hP
-You lose hold of the {s}!	你没能抓住{s1}！	hPt
-You lose hold of the {s}.	你没能抓住{s1}。	hPt
+You lose hold of the {i}!	你没能抓住{i1}！	hPt
+You lose hold of the {i}.	你没能抓住{i1}。	hPt
 You regain consciousness.	你恢复了意识。	hP
 You should travel to {e}.	你应该前往{e1}。	hPtD
-Your {s} is already full.	你的{s1}已经装满了。	hPt
+Your {i} is already full.	你的{i1}已经装满了。	hPt
 Zoom in on the play area.	放大游戏区域。	hj
 Zoom in on the play area.	放大游戏区域。	wl
 a competition during {e}.	在{e1}期间，比赛。	htEi
@@ -92401,7 +92398,7 @@ Writing material: ramie	苎麻纸	l
 You are a stranger here	你在这里是个陌生人	al
 You are in a fell mood.	你陷入了残暴心境。	hj
 You bash the door down!	你撞破了门！	hP
-You begin to throw {s}.	你开始投掷{s1}。	hPt
+You begin to throw {i}.	你开始投掷{i1}。	hPt
 You break the hatch in!	你砸破了舱盖！	hP
 You can make a variety 	你可以使用三种不同类型的玻璃	w
 You continue the dance.	你继续舞蹈。	hP
@@ -94470,7 +94467,7 @@ You are burning alive!	你正被活活烧死！	hP
 You are chanting well.	你吟唱得很好。	hP
 You are in a fey mood.	你陷入了古怪心境。	hj
 You begin dancing {b}.	你开始表演舞蹈《{b1}》。	hPt
-You cease nocking {s}.	你停止搭上{s1}。	hPt
+You cease nocking {i}.	你停止搭上{i1}。	hPt
 You chant beautifully.	你吟唱得优美动听。	hP
 You chop down the {s}.	你砍倒了{s1}。	hPt
 You continue the poem.	你继续朗诵诗歌。	hP
@@ -94482,7 +94479,6 @@ You hear a loud grunt.	你听到了响亮的哼叫声。	hP
 You interact with item	你与物品互动	w
 You lie on the ground.	你趴在了地上。	hP
 You make {i} and more.	你制作了{i1}等物品。	hPt
-You make {s} and more.	你制作了{s1}等物品。	hPt
 You must be convinced.	我非得让你心服口服。	hPD
 You need a broker with	需要一名交易员，	wl
 You practice your {s}.	你练习了{s1}。	hPt
@@ -96533,7 +96529,7 @@ The {d}th {e} at {p}.	在{p1}，第{d1}次{e1}。	htEi
 The {d}th {e} in {d}.	{d2}年的第{d1}次{e1}。	htEi
 The {d}th {e} in {p}.	在{p1}，第{d1}次{e1}。	htEi
 The {s} Purge in {p}.	{p1}的{s1}清洗事件。	htEi
-The {s} is too salty.	{s1}太咸了。	hPt
+The {i} is too salty.	{i1}太咸了。	hPt
 There are no children	没有儿童	wil
 There is a {s} print.	这里有一处{s1}印迹。	hPt
 There is fog outside.	外面有雾。	hPD
@@ -96599,12 +96595,11 @@ You hear a deep purr.	你听到了低沉的呼噜声。	hP
 You hear a loud bark.	你听到了响亮的吠叫声。	hP
 You lower the bucket.	你放下了水桶。	hP
 You make {i} and {i}.	你制作了{i1}和{i2}。	hPt
-You make {s} and {s}.	你制作了{s1}和{s2}。	hPt
 You raise the bucket.	你提起了水桶。	hP
 You roll into a ball.	你蜷缩成一团。	hP
 You sing beautifully.	你唱得优美动听。	hP
-You struggle for {s}.	你争夺着{s1}。	hPt
-You take out the {s}.	你取出了{s1}。	hPt
+You struggle for {i}.	你争夺着{i1}。	hPt
+You take out the {i}.	你取出了{i1}。	hPt
 You will be rewarded.	你将获得回报。	hP
 Your citizens need a 	你的居民需要一个舒适的睡眠场	w
 Z Levels Above Ground	地表上方的 Z 层数
@@ -98822,7 +98817,7 @@ The {d}th {e} at {p}	在{p1}，第{d1}次{e1}	htEi
 The {d}th {e} in {d}	{d2}年的第{d1}次{e1}	htEi
 The {d}th {e} in {p}	在{p1}，第{d1}次{e1}	htEi
 The {s} Purge in {p}	{p1}的{s1}清洗事件	htEi
-The {s} is too cold.	{s1}太冷了。	hPt
+The {i} is too cold.	{i1}太冷了。	hPt
 These workshops are 	这些工坊被用于包括染色和纺织	w
 This artwork is {s}.	这件艺术品是{s1}。	hHt
 This chanter stinks!	这位吟唱者糟透了！	hPD
@@ -101707,7 +101702,7 @@ The Tired Continent	疲惫大陆	w
 The Truth About {b}	{b}的真相	hbti
 The Wall of Holding	持守之墙
 The poem continues.	诗歌朗诵还在继续。	hP
-The {s} is too hot.	{s1}太烫了。	hPt
+The {i} is too hot.	{i1}太烫了。	hPt
 They accept tribute	对方接受贡品	w
 They worship at {n}	他们在{n}礼拜	atl
 This dancer stinks!	这位舞者糟透了！	hPD
@@ -104499,7 +104494,7 @@ younger half-sister	同父异母或同母异父的妹妹	wi
 {n} (Owes you {d}\x0F)	{n1}（欠你{d1}☼）	hPt
 {n} charges at {n}!	{n1}冲向{n2}！	hPt
 {n} devoured a {s}.	{n}吞噬了一只{s}。	ht
-{n} drinks the {s}.	{n1}喝下了{s1}。	hPt
+{n} drinks the {i}.	{n1}喝下了{i1}。	hPt
 {n} fought with {n}	{n1}与{n2}交战	ht
 {n} has solidified.	{n1}凝固而死。	hPt
 {n} has stolen {s}!	{n1}偷走了{s1}！	hPt
@@ -105110,8 +105105,8 @@ You cannot perform	你无法表演	w
 You charge at {n}!	你冲向{n1}！	hPt
 You clench a fist!	你握紧拳头！	hP
 You clench a fist.	你握紧拳头。	hP
-You drink the {s}.	你喝下了{s1}。	hPt
-You empty the {s}.	你倒空了{s1}。	hPt
+You drink the {i}.	你喝下了{i1}。	hPt
+You empty the {i}.	你倒空了{i1}。	hPt
 You feed on victim	你以受害者为食	w
 You feel horrible!	你感觉糟透了！	hP
 You first, coward!	你先来，懦夫！	hPD
@@ -109002,11 +108997,11 @@ You have drowned.	你溺水而死。	hP
 You hear a click.	你听到了咔哒声。	hP
 You hear a grunt.	你听到了哼叫声。	hP
 You heat the {s}.	你加热了{s1}。	hPt
-You lick the {s}.	你舔了舔{s1}。	hPt
+You lick the {i}.	你舔了舔{i1}。	hPt
 You make nothing.	你什么也没做出来。	hP
 You pet yourself.	你抚摸了自己。	hP
-You pull out {s}.	你拔出了{s1}。	hPt
-You take off {s}.	你脱下了{s1}。	hPt
+You pull out {i}.	你拔出了{i1}。	hPt
+You take off {i}.	你脱下了{i1}。	hPt
 Youngest daughter	最小的女儿	w
 Zone type: Office	办公室	l
 a ceremony at {p}	在{p1}，仪式	htEi
@@ -112866,7 +112861,7 @@ youngest daughter	最小的女儿	h
 {n} devoured {n}.	{n1}吞噬了{n2}。	ht
 {n} devoured {p}.	{n1}吞噬了{p}。	ht
 {n} divorced {n}.	{n1}与{n2}离婚了。	ht
-{n} eats the {s}.	{n1}吃下了{s1}。	hPt
+{n} eats the {i}.	{n1}吃下了{i1}。	hPt
 {n} embraces {n}.	{n1}拥抱了{n2}。	hPt
 {n} has come! {q}	{n1}来了！{q1}	hPt
 {n} has returned.	{n1}回来了。	hPt
@@ -113369,11 +113364,10 @@ You are stunned.	你被击晕了。	hj
 You are thirsty.	你口渴了。	hj
 You blow softly.	你轻轻吹气。	hP
 You butcher {i}.	你屠宰了{i1}。	hPt
-You butcher {s}.	你屠宰了{s1}。	hPt
 You cannot mount	你无法骑乘	w
 You cannot read.	你无法阅读。	hP
 You cannot speak	你无法说话	w
-You eat the {s}.	你吃下了{s1}。	hPt
+You eat the {i}.	你吃下了{i1}。	hPt
 You feed on {n}.	你吸食{n1}。	hPt
 You feel frozen!	你感觉身体僵住了！	hP
 You have boiled.	你沸腾而死。	hP
@@ -113382,7 +113376,7 @@ You hear a purr.	你听到了呼噜声。	hP
 You hear a toot.	你听到了短促的嘟嘟声。	hP
 You leap at {n}!	你扑向{n1}！	hPt
 You must unroll.	你必须先舒展开身体。	hP
-You pick up {s}.	你拾起了{s1}。	hPt
+You pick up {i}.	你拾起了{i1}。	hPt
 You smell blood.	你闻到了血腥味。	hj
 You smell death.	你闻到了死亡的气息。	hj
 You smell filth.	你闻到了污垢的气味。	hj
@@ -117873,7 +117867,7 @@ You cannot see.	你看不见。	hP
 You feel dizzy!	你感觉头晕目眩！	hP
 You must yield!	你必须投降！	hPD
 You need a {s}.	你需要一名{s1}。	hPt
-You put on {s}.	你穿上了{s1}。	hPt
+You put on {i}.	你穿上了{i1}。	hPt
 You set a fire.	你点起了一把火。	hP
 You smell soil.	你闻到了土壤的气味。	hj
 You smell soot.	你闻到了烟灰的气味。	hj
@@ -122265,7 +122259,7 @@ younger sibling	弟妹	wi
 {i} was looted.	{i1}被劫走了。	ht
 {i} was stolen.	{i1}被偷走了。	ht
 {i}-bound codex	{i1}书壳装订的抄本	hIit
-{n} drinks {s}.	{n1}喝下了{s1}。	hPt
+{n} drinks {i}.	{n1}喝下了{i1}。	hPt
 {n} falls over.	{n1}摔倒了。	hPt
 {n} fought {n}.	{n1}与{n2}交战。	ht
 {n} has boiled.	{n1}沸腾而死。	hPt
@@ -122279,7 +122273,7 @@ younger sibling	弟妹	wi
 {n} looks sick!	{n1}看起来很不舒服！	hPt
 {n} married {n}	{n1}与{n2}结婚了	ht
 {n} mounts {n}.	{n1}骑上了{n2}。	hPt
-{n} pushes {s}.	{n1}推动了{s1}。	hPt
+{n} pushes {i}.	{n1}推动了{i1}。	hPt
 {n} raided {n}.	{n1}袭击了{n2}。	ht
 {n} raided {p}.	{n1}袭击了{p}。	ht
 {n} rolls away!	{n1}翻滚着躲开了！	hPt
@@ -122703,7 +122697,7 @@ X is traveling	X正在旅行	wl
 Yes, let's go.	好，我们走吧。	hPD
 You are right.	你说得对。	hPD
 You calm down!	你才该冷静！	hPD
-You empty {s}.	你倒空了{s1}。	hPt
+You empty {i}.	你倒空了{i1}。	hPt
 You enter {m}.	你开始演奏{m1}。	hPt
 You fall over.	你摔倒了。	hP
 You feel numb!	你感觉麻木！	hP
@@ -127192,8 +127186,7 @@ youngest child	最小的孩子	h
 {i} was looted	{i1}被劫走了	ht
 {i} was stolen	{i1}被偷走了	ht
 {n} dismounts.	{n1}从坐骑上下来了。	hPt
-{n} drops {i}.	{n1}扔下了{i1}。	hPtD
-{n} drops {s}.	{n1}放下了{s1}。	hPt
+{n} drops {i}.	{n1}放下了{i1}。	hPt
 {n} flounders!	{n1}挣扎着！	hPt
 {n} is an {s}.	{n}是{s}。	ht
 {n} is the god	{n}是神祇	atl
@@ -127611,14 +127604,13 @@ X is hiding Y	X正在藏匿Y	wl
 X is laboring	X正在劳动	wl
 X is laughing	X正在大笑	wl
 You dismount.	你从坐骑上下来了。	hP
-You drop {s}.	你放下了{s1}。	hPt
+You drop {i}.	你放下了{i1}。	hPt
 You flounder!	你挣扎着！	hP
 You lick {n}.	你舔了舔{n1}。	hPt
 You make {i}.	你制作了{i1}。	hPt
-You make {s}.	你制作了{s1}。	hPt
 You mock me?!	你在嘲弄我？！	hPD
-You push {s}.	你推动了{s1}。	hPt
-You read {s}.	你阅读了{s1}。	hPt
+You push {i}.	你推动了{i1}。	hPt
+You read {i}.	你阅读了{i1}。	hPt
 You seek {e}.	你要寻找的是{e1}。	hqt
 You stand up.	你起身了。	hP
 You tusk {n}.	你用獠牙轻碰{n1}。	hPt
@@ -131868,7 +131860,7 @@ yellow zircon	黄锆石	wi
 {p} is a {s}.	{p}是一个{s}。	ht
 {p} was found	{p1}被找到了	ht
 {p} was lost.	{p1}遗失了。	ht
-{s} is empty.	{s1}是空的。	hPt
+{i} is empty.	{i1}是空的。	hPt
 {s} with {a}.	与{a1}的{s1}。	htEi
 {s}, Ordinary	{s}，普通	wtx
  cloth image	布质图案	wi

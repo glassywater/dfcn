@@ -177,12 +177,18 @@
                         target = translated->target;
                         colors = translated->colors;
                     }
-                } else if (paragraph.report_document) {
+                } else if (paragraph.report_document || paragraph.parent) {
                     // Popup/report panels retain the same native producer
                     // and typed fields as notifications. Do not discard the
                     // COMBAT_* type before selecting its grammar.
-                    target = translate_native_announcement_log_record(
-                        *paragraph.report_document, source, foreground, colors);
+                    // Freeze only this proven visible parent. Discovery is
+                    // also used by map ownership and must not prepare every
+                    // offscreen report merely to identify its original rows.
+                    const auto document = paragraph.report_document
+                        ? paragraph.report_document : native_adventure_popup_report(paragraph.parent);
+                    if (document && document->report.source == paragraph.source)
+                        target = translate_native_announcement_log_record(
+                            *document, source, foreground, colors);
                 } else {
                     target = translate_complete_announcement(source,
                         std::vector<int>(source.size(), foreground), colors);

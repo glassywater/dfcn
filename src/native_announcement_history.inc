@@ -336,6 +336,22 @@ static std::shared_ptr<NativeAnnouncementLogDocument> native_announcement_log_fr
     return document;
 }
 
+static std::shared_ptr<const NativeAnnouncementLogDocument>
+native_adventure_popup_report(uintptr_t parent) {
+    // PE 8020c0 / ELF 11b2e40 draw the same typed report as the log.
+    // Keep its immutable fields even on the ordinary grid path, which does
+    // not pass through the fortress notification layer's document binder.
+    uintptr_t world = 0;
+    NativeAnnouncementLogParentVersion version;
+    if (!native_announcement_current_world(world) ||
+            !native_announcement_log_read_version(parent, version, true)) return {};
+    if (auto document = native_announcement_log_preheated_document(parent, world, version))
+        return document;
+    auto document = native_announcement_log_freeze_document(parent, world, version, false);
+    if (document) native_announcement_log_retain_worker_document(version, document);
+    return document;
+}
+
 static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_paragraphs(
         uintptr_t owner, size_t first, size_t end) {
     // This reader is called only synchronously by capture_native_announcement_log,

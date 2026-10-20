@@ -935,6 +935,14 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             // "{b} and {b}" and preserve authored item-name fields.
             if (auto caption = translate_item_caption_grammar(input))
                 return caption;
+            // c65450(item, ..., false, 1) / e68020 supply the definite
+            // article inside ordinary action item fields. Resolve the noun
+            // as equipment before book-title/name alternatives see its words.
+            // Keep the full original span for native item-field ownership.
+            for (std::string_view article : {"the ", "The ", "a ", "A ", "an ", "An "})
+                if (input.starts_with(article))
+                    if (auto caption = translate_item_caption_grammar(input.substr(article.size())))
+                        return caption;
             // ELF e68020 emits a complete written title for item kinds
             // 0x56/0x59, optionally followed by " (copy)". Its punctuation
             // belongs to this item field, before the announcement's period.

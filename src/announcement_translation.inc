@@ -699,9 +699,8 @@ std::optional<std::string> Overlay::translate_complete_announcement(
 
 std::optional<std::string> Overlay::translate_announcement_items(
         std::string_view source) const {
-    // The item-description grammar owns coordination, names with internal
-    // commas/and, materials, quality and designation marks. Its coordinated
-    // productions recursively resolve EVERY item; no fixed list length or
-    // verbatim English tail is introduced in announcement capture.
-    return translate_item_description_term(source);
+    // Catalogue {i} and native constructor $announcement-item denote the
+    // same whole field. Share equipment/article precedence, written titles,
+    // coordination and designation marks instead of treating it as prose.
+    return translate_announcement_combat(source, "$announcement-item");
 }
