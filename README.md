@@ -76,6 +76,47 @@ Windows 本版可用 **Shift+F6** 临时停用或恢复全部扩展数据，并�
 
 入口生成 `DFCN-Windows-workshop.zip`，并将 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type 四个公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。独立汉化扩展与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。Linux 独立运行包仍从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 获取。
 
+## Linux 交叉编译 Windows x64
+
+显式构建 Windows DLL 时使用根目录 `build-windows-cross.sh`。它使用 Linux 上运行的
+MinGW-w64 编译器，输出 `build/windows-x64/dfcn_core.dll` 和
+`build/windows-x64/dfhooks_dfcn.dll`，不向游戏目录部署。日常本机构建继续使用
+`build-deploy.sh` / `build-deploy.ps1`。
+
+需要同时把两个 Windows DLL 部署到当前项目根目录时，执行
+`build-windows-cross.sh --deploy-project`。构建目录仍保留同一次编译的产物，
+已有词表、规则和其他运行数据原地使用；此选项不会写入 Linux `.so` 或游戏引导文件。
+
+依赖为现有 Codex Python runtime、Linux 版 MinGW-w64 POSIX 线程工具链
+（固定使用 `$HOME/.local/share/dfcn-toolchains/mingw-w64-16.2.0/usr/bin/x86_64-w64-mingw32-g++`，
+需包含静态 `libwinpthread.a`）和 Windows x64 SDL2 MinGW 开发包。
+本机工具链由 Arch 官方 MinGW-w64 软件包安装到上述用户目录，不需要管理员权限。
+`--sdl-root` 指向开发包内的 `x86_64-w64-mingw32`
+目录，其中应有 `include/SDL2/SDL.h` 和 `lib/libSDL2.dll.a`；不能使用 Linux SDL2
+开发库。参考 [MinGW-w64 工具链说明](https://www.mingw-w64.org/downloads/)。
+
+```bash
+/bin/bash '/home/lulika/workspace/dfcn/build-windows-cross.sh'
+```
+
+默认 SDK 为 `$HOME/.local/opt/SDL2-2.30.11/x86_64-w64-mingw32`，可用
+`--sdl-root /path/to/SDL2/x86_64-w64-mingw32` 指定已安装位置。
+可用 `--cross-compiler /absolute/path/to/g++`
+显式指定其他已安装的 Linux MinGW-w64 POSIX 编译器，用 `--output-dir /path/to/output`
+改变输出目录；相对 SDK 和输出路径按调用时的当前目录解析。脚本不会下载、安装、
+扫描或自动切换工具链，缺少依赖时直接报告具体路径。
+
+脚本固定使用 C++20、`-O2`，不添加调试信息，静态链接 GCC、C++ 和 winpthreads
+运行库，SDL2 仍通过导入库动态链接；核心版本号与 PE 校验和使用现有构建逻辑。
+相关链接选项见 [GCC 文档](https://gcc.gnu.org/onlinedocs/gcc/Link-Options.html)。
+两个 DLL 均编译完成后才替换输出目录中的已有产物，临时源码与候选文件在结束时清理。
+
+交叉编译使用当前仓库已有的 `.inc`、生成头文件和 Windows 绑定，不运行数据生成器，
+也不读取 Windows 游戏映像来重新提取绑定。生成文件需与当前源码配套。
+输出仅包含两个 DLL，不是完整安装包；运行时仍需现有 Windows 安装的加载入口、
+SDL2 与配套汉化数据。退出码 `0` 表示 DLL 编译输出完成，非零表示失败，
+不代表已在 Windows 游戏内观察到运行效果。
+
 ## 技术栈
 
 - **C++20**：原生加载器、汉化核心、文本捕获与界面排版。

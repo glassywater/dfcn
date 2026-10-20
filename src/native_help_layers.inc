@@ -24,19 +24,28 @@ static void native_ui_detach_map_output(graphicst &gps) noexcept {
 // native painters borrow masked arrays, keeping overlay callbacks unmasked.
 // The read view itself never changes producer bindings or SDL inputs.
 class NativeUiTextReadView {
-    alignas(graphicst) std::array<unsigned char, sizeof(graphicst)> header_;
+    struct alignas(graphicst) Header {
+        std::array<unsigned char, sizeof(graphicst)> bytes;
+    };
+    // A graphicst header is about 250 KiB. Even an inactive nested reader
+    // used to reserve it on the game's render stack before parsing any text.
+    std::unique_ptr<Header> header_;
     Overlay *owner_ = nullptr;
     graphicst *original_ = nullptr, *previous_read_ = nullptr;
     NativeUiTextReadView *previous_ = nullptr;
     inline static thread_local NativeUiTextReadView *active_ = nullptr;
-    graphicst *graphics() noexcept { return reinterpret_cast<graphicst *>(header_.data()); }
+    graphicst *graphics() noexcept {
+        return header_ ? reinterpret_cast<graphicst *>(header_->bytes.data()) : nullptr;
+    }
 public:
     NativeUiTextReadView(Overlay &owner, graphicst *source, bool enabled,
             bool detach_map = true) noexcept {
         // A nested matcher already borrows this same read header.
         // Preserve its outer read scopes and address-dependent scratch keys.
         if (!enabled || !source || (active_ && source == active_->graphics())) return;
-        std::memcpy(header_.data(), source, header_.size());
+        header_.reset(new (std::nothrow) Header);
+        if (!header_) return;
+        std::memcpy(header_->bytes.data(), source, header_->bytes.size());
         if (detach_map) native_ui_detach_map_output(*graphics());
         owner_ = &owner;
         original_ = owner.bind_render_graphics(graphics());
@@ -48,7 +57,7 @@ public:
     ~NativeUiTextReadView() {
         if (!owner_) return;
         // A parent capture-read scope can outlive a nested matcher. Keep its
-        // owned row snapshot, but never retain this stack header as a key.
+        // owned row snapshot, but never retain this temporary header as a key.
         if (auto *captures = NativeCapturedTextReadScope::active)
             for (auto &draws : captures->draws)
                 if (draws.key && draws.key->graphics_read_view == graphics())

@@ -1287,15 +1287,23 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                         if (announcement_combat_field_edges_fit(scopes[field], value) &&
                                 suffix_fits(rule, scopes, input, field + 1, end + following.size()) &&
                                 scope_fits(scopes[field], value)) {
-                            // Finish the remainder before interpreting this
-                            // open field. A literal boundary can fit while a
-                            // later item/unit is semantically impossible; it
-                            // must not make every preceding actor prefix run
-                            // the full name/item grammar first. Suffix states
-                            // are shared by their absolute source endpoints.
+                            // Prove a list element before descending into its
+                            // recursive tail. In work-description, $description
+                            // is a syntax wildcard: suffix-first resolution
+                            // otherwise recurses at every space in unrelated
+                            // prose before rejecting even its first word.
+                            const bool recursive_tail = field + 2 == scopes.size() &&
+                                scopes.back() == scope;
+                            Result result;
+                            if (recursive_tail) {
+                                result = resolve(scopes[field], value);
+                                if (!result) continue;
+                            }
+                            // Other productions still prove the remainder
+                            // before opening speculative item/name fields.
                             auto suffix = match(field + 1, end + following.size());
                             if (!suffix.matched) continue;
-                            auto result = resolve(scopes[field], value);
+                            if (!recursive_tail) result = resolve(scopes[field], value);
                             if (result) return complete(SemanticMatch{
                                 true, input_begin + end, std::move(result),
                                 std::make_shared<const SemanticMatch>(std::move(suffix))});

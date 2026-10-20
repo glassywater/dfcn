@@ -10592,9 +10592,6 @@ Announcement combat conversation-choice-transfer [conversation-choice-person]: p
 Announcement combat conversation-conflict-account [conversation-conflict-slain-list]: you slew {s}	你杀死了{s1}	l
 Announcement combat conversation-conflict-target [conversation-conflict-entity]: the forces of {s}	{s1}的部队	l
 Announcement combat diplomacy-cause []: the adversary's inability to communicate and form treaties	对方无法沟通和缔结条约	l
-Announcement combat adventure-announcement [$person,$growth-result]: {s} has become a {s}.	{s1}成为了{s2}。	l
-Announcement combat adventure-announcement [$growth-result]: An animal has become a {s}.	一只动物成为了{s1}。	l
-Announcement combat adventure-announcement [$growth-result]: has become a {s}.	已成为{s1}。	l
 Announcement combat fortress-announcement [$person,$growth-result]: {s} has grown to become a {s}.	{s1}长成了{s2}。	l
 Announcement combat fortress-announcement [$unit,$job,$unit]: {s} cancels {s}: Interrupted by {s}.	{s1}取消了{s2}：被{s3}打断。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Already leading creature.	{s1}取消了{s2}：已在牵引生物。	l
@@ -12832,6 +12829,7 @@ Announcement combat adventure-announcement [$announcement-item]: It won't fit in
 Announcement combat adventure-announcement [$announcement-item]: You lose hold of the {s}!	你没能抓住{s1}！	l
 Announcement combat adventure-announcement [$announcement-item]: You lose hold of the {s}.	你没能抓住{s1}。	l
 Announcement combat adventure-announcement [$announcement-item]: Your {s} is already full.	你的{s1}已经装满了。	l
+Announcement combat adventure-announcement [$person,$growth-result]: {s} has become a {s}.	{s1}成为了{s2}。	l
 Announcement combat adventure-announcement [$unit,$announcement-item]: {s} drinks the {s}.	{s1}喝下了{s2}。	l
 Announcement combat adventure-announcement [$unit]: {s} has been blessed with holylegwear!	{s1}受到祝福，获赐了神圣腿部装备！	l
 Announcement combat adventure-announcement [$unit]: {s} has been encased in cooling magma.	{s1}被封在了冷却的岩浆中。	l
@@ -13442,6 +13440,7 @@ A tiny black and white bird. It is one of the most intelligent of the natural cr
 After a polite discussion with local rivals, {n} has claimed the position of {s} of {e}.	与当地的几位竞争者客气地商谈后，{n1}取得了{e1}的{s1}之位。	hPt
 Although my own insignificant beliefs lie elsewhere, I am overmastered by your presence!	虽说我有点不值一提的不同看法，但你的气势真让我服气！	hPD
 Announcement combat adventure-announcement [$announcement-item]: You begin to throw {s}.	你开始投掷{s1}。	l
+Announcement combat adventure-announcement [$growth-result]: An animal has become a {s}.	一只动物成为了{s1}。	l
 Announcement combat adventure-announcement [$unit,$announcement-item]: {s} eats the {s}.	{s1}吃下了{s2}。	l
 Announcement combat adventure-announcement [$unit,$unit]: {s} sucks the wind out of {s}!	{s1}抽走了{s2}的气息！	l
 Announcement combat adventure-announcement [$unit]: {s} has been found dead, dehydrated.	{s1}被发现时，已经因脱水而死。	l
@@ -17072,6 +17071,7 @@ Announcement combat adventure-announcement [$announcement-item]: You make {s}.	�
 Announcement combat adventure-announcement [$announcement-item]: You push {s}.	你推动了{s1}。	l
 Announcement combat adventure-announcement [$announcement-item]: You read {s}.	你阅读了{s1}。	l
 Announcement combat adventure-announcement [$announcement-item]: {s} is empty.	{s1}是空的。	l
+Announcement combat adventure-announcement [$growth-result]: has become a {s}.	已成为{s1}。	l
 Announcement combat adventure-announcement [$unit,$unit]: {s} has adopted {s}.	{s1}收养了{s2}。	l
 Announcement combat adventure-announcement [$unit]: {s} blocks the dragonfire.	{s1}挡住了龙焰。	l
 Announcement combat adventure-announcement [$unit]: {s} flounders in the lava!	{s1}在熔岩中挣扎！	l

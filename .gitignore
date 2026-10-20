@@ -9,6 +9,7 @@
 *.log
 
 # Build and Python caches
+/build/windows-x64/
 /data/extracted/cache/
 /data/extracted/workshop-task-choice/elf-decompiled.c
 __pycache__/

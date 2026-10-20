@@ -33,6 +33,7 @@
 #include <map>
 #include <memory>
 #include <mutex>
+#include <new>
 #include <numeric>
 #include <optional>
 #include <regex>
@@ -18602,6 +18603,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     const bool native_legends_body = native_history_legends_page();
     if (native_legends_body)
         append_legends_detail_matches(screen_rows, result, only_y, screen_override);
+    // The arrival modal is also retained as an announcement. Its dedicated
+    // reader must claim the complete prose before generic announcement
+    // recovery can reinterpret its title as a speaker and its body as a work.
+    append_embark_introduction_matches(screen_rows, result, only_y, screen_override != nullptr);
     append_native_message_paragraphs(screen_rows, result, untranslated_help_rows,
         only_y, screen_override, true);
     retain_native_text_cells(screen_rows, map_text_cells);
@@ -19330,7 +19335,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         screen_override, &name_editor_regions);
 
     context_detail.checkpoint(RenderTimingStage::Tooltips);
-    append_embark_introduction_matches(screen_rows, result, only_y, screen_override != nullptr);
     append_fortress_economy_matches(screen_rows, result, only_y, screen_override != nullptr);
 
     context_detail.checkpoint(RenderTimingStage::Choices);

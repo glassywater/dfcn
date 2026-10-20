@@ -22,7 +22,9 @@ class NativeDfhackDisplayOwnershipScope {
     NativeDfhackDisplayOwnershipScope *previous_ = nullptr;
     graphicst *previous_view_ = nullptr, *previous_selector_ = nullptr;
     graphicst *inputs_ = nullptr;
-    graphicst nested_inputs_{};
+    // Only a reentrant display needs a private header. Keeping this inline
+    // consumed about 250 KiB of the Windows render stack on every display.
+    std::unique_ptr<graphicst> nested_inputs_;
     int16_t initial_force_full_display_ = 0;
     std::optional<NativeDfhackLayerRendererGrid> renderer_grid_;
     bool committed_ = false;
@@ -30,7 +32,8 @@ public:
     explicit NativeDfhackDisplayOwnershipScope(void *renderer) : previous_(active_),
             previous_view_(g_native_graphics_read_view) {
         if (!native_dfhack_display_inputs_active()) return;
-        inputs_ = previous_ ? &nested_inputs_ : native_dfhack_display_inputs_snapshot();
+        if (previous_) nested_inputs_.reset(new (std::nothrow) graphicst);
+        inputs_ = previous_ ? nested_inputs_.get() : native_dfhack_display_inputs_snapshot();
         if (!inputs_) return;
         const auto *preceding = previous_ ? previous_->inputs_ :
             g_native_dfhack_render_read_ready ? inputs_ : nullptr;
