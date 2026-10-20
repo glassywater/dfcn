@@ -151,7 +151,10 @@ struct NativeAnnouncementKinshipRecord;
 struct NativeMissionReturnParty;
 struct SiteReferenceIdentity;
 struct NativeAnnouncementLogReferenceRequest {
-    enum class Kind : uint8_t { Entity, Site, Unit, EntityId };
+    enum class Kind : uint8_t {
+        Entity, Site, Unit, EntityId,
+        RawCreatureLabels, RawCreatureAdjectives, InstrumentNames
+    };
     Kind kind = Kind::Entity;
     std::string source;
     bool polity_role = false, government_field = false, english_field = false;
@@ -215,6 +218,7 @@ struct NativeAnnouncementLogNeedsDependency {
 };
 static thread_local const NativeAnnouncementLogWorkerInputs *g_native_announcement_log_worker_inputs = nullptr;
 static thread_local bool g_native_announcement_log_worker_active = false;
+static void native_announcement_log_worker_require_instrument_names();
 static uint64_t native_announcement_log_semantic_generation_value() {
     if (!g_native_announcement_log_worker_active) return g_native_announcement_log_semantic_generation;
     if (!g_native_announcement_log_worker_inputs) throw NativeAnnouncementLogNeedsDependency{};

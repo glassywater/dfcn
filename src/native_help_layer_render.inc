@@ -341,22 +341,61 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
         const NativeDrawnTextRow *writer;
         const NativeAnnouncementLogCaptionBackdrop *backdrop;
     };
-    std::vector<std::vector<CaptionInk>> caption_ink;
+    struct CaptionRow {
+        int left = 0, right = 0;
+        std::vector<const CaptionInk *> cells;
+    };
+    std::vector<CaptionInk> caption_ink;
+    std::vector<CaptionRow> caption_rows;
     if (log_layer) {
-        caption_ink.resize(gps->dimy);
+        size_t count = 0;
+        for (const auto &plane : g_native_announcement_log_text.rows) count += plane.size();
+        caption_ink.reserve(count);
+        caption_rows.resize(gps->dimy);
+        std::unordered_multimap<uint64_t, const NativeAnnouncementLogCaptionBackdrop *> backdrops;
+        backdrops.reserve(g_native_announcement_log_caption_backdrops.size());
+        for (const auto &before : g_native_announcement_log_caption_backdrops)
+            backdrops.emplace(before.sequence, &before);
         for (const auto &plane : g_native_announcement_log_text.rows)
             for (const auto &draw : plane) {
                 if (draw.y < 0 || draw.y >= gps->dimy) continue;
                 const NativeAnnouncementLogCaptionBackdrop *backdrop = nullptr;
-                for (const auto &before : g_native_announcement_log_caption_backdrops)
-                    if (before.sequence == draw.sequence && before.address == draw.address &&
+                const auto [first, last] = backdrops.equal_range(draw.sequence);
+                for (auto at = first; at != last; ++at) {
+                    const auto &before = *at->second;
+                    if (before.address == draw.address &&
                             before.top_layer == draw.top_layer && before.x == draw.x &&
-                            before.y == draw.y && before.source == draw.source) {
+                            before.y == draw.y && before.source == draw.source &&
+                            (!backdrop || &before < backdrop)) {
+                        // Equal sequence keys still use the first exact
+                        // captured backdrop, as the original ordered scan.
                         backdrop = &before;
-                        break;
                     }
-                caption_ink[draw.y].push_back({&draw, backdrop});
+                }
+                caption_ink.push_back({&draw, backdrop});
+                auto &row = caption_rows[draw.y];
+                const int left = std::clamp(draw.x, 0, gps->dimx);
+                const int right = static_cast<int>(std::clamp<int64_t>(
+                    int64_t(draw.x) + int64_t(draw.source.size()), left, gps->dimx));
+                if (left >= right) continue;
+                if (row.left == row.right) { row.left = left; row.right = right; }
+                else { row.left = std::min(row.left, left); row.right = std::max(row.right, right); }
             }
+        // Allocate only the captured caption intervals. Resolve overlap once
+        // in capture order, instead of searching every writer for every cell
+        // again while source masks are applied below.
+        for (auto &row : caption_rows) row.cells.resize(static_cast<size_t>(row.right - row.left));
+        for (const auto &ink : caption_ink) {
+            const auto &draw = *ink.writer;
+            auto &row = caption_rows[draw.y];
+            const int left = std::clamp(draw.x, row.left, row.right);
+            const int right = static_cast<int>(std::clamp<int64_t>(
+                int64_t(draw.x) + int64_t(draw.source.size()), left, row.right));
+            for (int x = left; x < right; ++x) {
+                auto &latest = row.cells[static_cast<size_t>(x - row.left)];
+                if (!latest || latest->writer->sequence < draw.sequence) latest = &ink;
+            }
+        }
     }
     struct SourceMask {
         using Texture = std::remove_pointer_t<decltype(graphicst::screentexpos)>;
@@ -421,12 +460,10 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
                 const auto expected = static_cast<unsigned char>(source[i]);
                 const NativeAnnouncementLogCaptionBackdrop *backdrop = nullptr;
                 if (log_layer) {
-                    const CaptionInk *latest = nullptr;
-                    for (const auto &ink : caption_ink[y]) {
-                        const auto &draw = *ink.writer;
-                        if (x < draw.x || static_cast<size_t>(x - draw.x) >= draw.source.size()) continue;
-                        if (!latest || latest->writer->sequence < draw.sequence) latest = &ink;
-                    }
+                    const auto &row = caption_rows[y];
+                    const CaptionInk *latest = x >= row.left &&
+                        static_cast<size_t>(x - row.left) < row.cells.size()
+                            ? row.cells[static_cast<size_t>(x - row.left)] : nullptr;
                     // A missing optional backdrop on the latest writer must
                     // never expose an earlier writer's skin at this position.
                     if (latest && latest->backdrop &&

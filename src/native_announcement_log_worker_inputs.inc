@@ -169,16 +169,32 @@ native_announcement_log_worker_mission_return(std::string_view complete_source) 
 static std::shared_ptr<const DfhackRawCreatureLabels>
 native_announcement_log_worker_raw_creature_labels() {
     const auto *inputs = g_native_announcement_log_worker_inputs;
-    if (!inputs || !inputs->raw_creatures_complete || !inputs->raw_creature_labels)
+    if (!inputs || !inputs->raw_creature_labels) {
+        NativeAnnouncementLogReferenceRequest request;
+        request.kind = NativeAnnouncementLogReferenceRequest::Kind::RawCreatureLabels;
+        native_announcement_log_record_reference_request(std::move(request));
         throw NativeAnnouncementLogNeedsDependency{};
+    }
     return inputs->raw_creature_labels;
 }
 static std::shared_ptr<const DfhackRawCreatureLabels>
 native_announcement_log_worker_raw_creature_adjectives() {
     const auto *inputs = g_native_announcement_log_worker_inputs;
-    if (!inputs || !inputs->raw_creatures_complete || !inputs->raw_creature_adjectives)
+    if (!inputs || !inputs->raw_creature_adjectives) {
+        NativeAnnouncementLogReferenceRequest request;
+        request.kind = NativeAnnouncementLogReferenceRequest::Kind::RawCreatureAdjectives;
+        native_announcement_log_record_reference_request(std::move(request));
         throw NativeAnnouncementLogNeedsDependency{};
+    }
     return inputs->raw_creature_adjectives;
+}
+static void native_announcement_log_worker_require_instrument_names() {
+    const auto *inputs = g_native_announcement_log_worker_inputs;
+    if (inputs && inputs->instrument_names) return;
+    NativeAnnouncementLogReferenceRequest request;
+    request.kind = NativeAnnouncementLogReferenceRequest::Kind::InstrumentNames;
+    native_announcement_log_record_reference_request(std::move(request));
+    throw NativeAnnouncementLogNeedsDependency{};
 }
 
 // Finalize an already owned snapshot without recapturing any native inputs.
@@ -193,6 +209,7 @@ static void native_announcement_log_finish_worker_inputs(NativeAnnouncementLogWo
         value(input.size()); key.append(input);
     };
     value(inputs.semantic_generation); value(inputs.identity_sources_fingerprint);
+    value(bool(inputs.instrument_names));
     value(inputs.instrument_names_fingerprint);
     value(inputs.kinship_complete);
     if (inputs.kinship_record) {
@@ -265,16 +282,101 @@ struct NativeAnnouncementLogAliasPublication {
     uintptr_t world = 0;
     uint64_t generation = 0, revision = UINT64_MAX, fingerprint = 0;
     std::shared_ptr<const std::unordered_map<std::string, std::optional<std::string>>> sources;
-    uint64_t instrument_epoch = UINT64_MAX, instrument_fingerprint = 0;
+    uint64_t instrument_fingerprint = 0;
     std::shared_ptr<const std::unordered_map<std::string, std::string>> instruments;
+    std::shared_ptr<const std::vector<std::pair<std::string, std::string>>> instrument_source;
+    std::shared_ptr<const std::vector<std::pair<std::string, std::string>>> instrument_pending_names;
+    std::shared_ptr<std::unordered_map<std::string, std::string>> instrument_pending;
+    size_t instrument_cursor = 0;
+    uint64_t instrument_pending_fingerprint = 0;
+    bool instrument_matches_previous = false;
 };
 static NativeAnnouncementLogAliasPublication g_native_announcement_log_alias_publication;
+static std::chrono::steady_clock::time_point g_native_announcement_log_capture_resume{};
+static std::shared_ptr<const std::unordered_map<std::string, std::string>>
+native_announcement_log_capture_instrument_inputs(bool allow_build) {
+    auto &aliases = g_native_announcement_log_alias_publication;
+    // The native table owns a world/vector signature and keeps the same
+    // immutable pointer when its normal epoch refresh finds unchanged names.
+    // Announcement draws therefore do not normalize/hash it again per frame.
+    auto names = capture_native_instrument_name_snapshot(false, allow_build);
+    if (names && aliases.instruments && aliases.instrument_source == names) return aliases.instruments;
+    if (!allow_build) return {};
+    {
+        if (!aliases.instrument_pending || aliases.instrument_pending_names != names) {
+            // A supported table paused inside its native capture throws the
+            // pending signal and retains its cursor. A failed/unsupported
+            // read instead withdraws name-admission evidence, as before; it
+            // must not hold unrelated announcements in an endless retry.
+            if (!names) names =
+                std::make_shared<const std::vector<std::pair<std::string, std::string>>>();
+            aliases.instrument_pending_names = std::move(names);
+            aliases.instrument_pending = std::make_shared<std::unordered_map<std::string, std::string>>();
+            aliases.instrument_cursor = 0;
+            aliases.instrument_pending_fingerprint = 0;
+            aliases.instrument_matches_previous = bool(aliases.instruments);
+        }
+        bool progressed = false;
+        const auto insert = [&](std::string source, const std::string &target) {
+            const auto [entry, added] = aliases.instrument_pending->emplace(std::move(source), target);
+            if (!added) return;
+            aliases.instrument_pending_fingerprint ^=
+                native_identity_source_fingerprint(entry->first, entry->second);
+            if (aliases.instrument_matches_previous) {
+                const auto previous = aliases.instruments->find(entry->first);
+                aliases.instrument_matches_previous = previous != aliases.instruments->end() &&
+                    previous->second == entry->second;
+            }
+        };
+        while (aliases.instrument_cursor < aliases.instrument_pending_names->size()) {
+            if (progressed && g_native_announcement_log_native_capture_deadline &&
+                    std::chrono::steady_clock::now() >= *g_native_announcement_log_native_capture_deadline)
+                throw NativeAnnouncementLogNativeCapturePending{};
+            const auto &[singular, plural] = (*aliases.instrument_pending_names)[aliases.instrument_cursor];
+            const auto name = lower_native_name(singular);
+            if (!name.empty()) {
+                insert(name, name);
+                if (!plural.empty()) insert(lower_native_name(plural), name);
+            }
+            ++aliases.instrument_cursor; progressed = true;
+        }
+        if (!aliases.instrument_matches_previous ||
+                aliases.instruments->size() != aliases.instrument_pending->size())
+            aliases.instruments = std::move(aliases.instrument_pending);
+        aliases.instrument_fingerprint = aliases.instrument_pending_fingerprint;
+        aliases.instrument_source = aliases.instrument_pending_names;
+        aliases.instrument_pending.reset();
+        aliases.instrument_pending_names.reset();
+    }
+    return aliases.instruments;
+}
 static std::shared_ptr<const NativeAnnouncementLogWorkerInputs>
 native_announcement_log_freeze_worker_inputs(const NativeAnnouncementLogDocument &document) {
     if (g_native_announcement_log_worker_active) throw NativeAnnouncementLogNeedsDependency{};
     auto inputs = std::make_shared<NativeAnnouncementLogWorkerInputs>();
     inputs->semantic_generation = native_announcement_log_semantic_generation_value();
     auto &aliases = g_native_announcement_log_alias_publication;
+    if (aliases.world != document.world || aliases.generation != inputs->semantic_generation) {
+        aliases = {};
+        aliases.world = document.world; aliases.generation = inputs->semantic_generation;
+    }
+    // Publish the report's cheap, already-owned inputs immediately. Cold RAW
+    // tables are optional capabilities: only a parser that actually reads one
+    // requests its exact native leaf. An unrelated sentence need not wait for
+    // two whole creature tables and every generated instrument before starting.
+    const auto *previous = document.worker_inputs.get();
+    inputs->raw_creature_labels = previous && previous->raw_creature_labels
+        ? previous->raw_creature_labels : native_dfhack_raw_creature_labels_capture(false);
+    inputs->raw_creature_adjectives = previous && previous->raw_creature_adjectives
+        ? previous->raw_creature_adjectives : native_dfhack_raw_creature_adjectives_capture(false);
+    inputs->raw_creatures_complete = inputs->raw_creature_labels && inputs->raw_creature_adjectives;
+    if (previous && previous->instrument_names) {
+        inputs->instrument_names = previous->instrument_names;
+        inputs->instrument_names_fingerprint = previous->instrument_names_fingerprint;
+    } else if (auto instruments = native_announcement_log_capture_instrument_inputs(false)) {
+        inputs->instrument_names = std::move(instruments);
+        inputs->instrument_names_fingerprint = aliases.instrument_fingerprint;
+    }
     {
         std::lock_guard<std::mutex> lock(g_native_unit_identity_mutex);
         // Only the source dictionary affects a detached parser. New native
@@ -283,40 +385,20 @@ native_announcement_log_freeze_worker_inputs(const NativeAnnouncementLogDocument
         const auto revision = g_native_unit_identity_sources_revision.load(std::memory_order_acquire);
         if (!aliases.sources || aliases.world != document.world ||
                 aliases.generation != inputs->semantic_generation || aliases.revision != revision) {
-            auto sources = std::make_shared<const std::unordered_map<std::string,
-                std::optional<std::string>>>(g_native_unit_identity_sources);
-            uint64_t fingerprint = 0;
-            for (const auto &[source, target] : *sources)
-                fingerprint ^= native_identity_source_fingerprint(source, target);
-            if (!aliases.sources || *aliases.sources != *sources) aliases.sources = std::move(sources);
+            // Native draw epochs can republish exactly the same aliases.
+            // Compare before allocating, and reuse the registry's maintained
+            // content fingerprint instead of hashing a second full copy.
+            if (!aliases.sources || *aliases.sources != g_native_unit_identity_sources)
+                aliases.sources = std::make_shared<const std::unordered_map<std::string,
+                    std::optional<std::string>>>(g_native_unit_identity_sources);
             aliases.world = document.world; aliases.generation = inputs->semantic_generation;
-            aliases.revision = revision; aliases.fingerprint = fingerprint;
+            aliases.revision = revision;
+            aliases.fingerprint = g_native_unit_identity_context.load(std::memory_order_relaxed);
         }
         inputs->identity_sources = aliases.sources;
         inputs->identity_sources_fingerprint = aliases.fingerprint;
     }
     inputs->identity_sources_complete = true;
-    const auto instrument_epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-    if (!aliases.instruments || aliases.instrument_epoch != instrument_epoch) {
-        std::vector<std::pair<std::string, std::string>> names;
-        auto captured = std::make_shared<std::unordered_map<std::string, std::string>>();
-        if (capture_native_instrument_names(names)) for (const auto &[singular, plural] : names) {
-            const auto name = lower_native_name(singular);
-            if (name.empty()) continue;
-            captured->emplace(name, name);
-            if (!plural.empty()) captured->emplace(lower_native_name(plural), name);
-        }
-        if (!aliases.instruments || *aliases.instruments != *captured) {
-            uint64_t fingerprint = 0;
-            for (const auto &[source, target] : *captured)
-                fingerprint ^= native_identity_source_fingerprint(source, target);
-            aliases.instruments = std::move(captured);
-            aliases.instrument_fingerprint = fingerprint;
-        }
-        aliases.instrument_epoch = instrument_epoch;
-    }
-    inputs->instrument_names = aliases.instruments;
-    inputs->instrument_names_fingerprint = aliases.instrument_fingerprint;
     inputs->unit_targets_resources = RULESETS.resource_revision();
     inputs->unit_targets_catalog = g_overlay.native_identity_translation_catalog_generation();
     if (document.worker_inputs &&
@@ -387,9 +469,6 @@ native_announcement_log_freeze_worker_inputs(const NativeAnnouncementLogDocument
     inputs->mission_return_source = normalize_utterance(document.report.source);
     inputs->mission_return = capture_native_announcement_log_mission_return(document.report.source);
     inputs->mission_return_complete = true;
-    inputs->raw_creature_labels = native_dfhack_raw_creature_labels();
-    inputs->raw_creature_adjectives = native_dfhack_raw_creature_adjectives();
-    inputs->raw_creatures_complete = inputs->raw_creature_labels && inputs->raw_creature_adjectives;
     native_announcement_log_finish_worker_inputs(*inputs);
     if (document.worker_inputs && document.worker_inputs->context == inputs->context)
         return document.worker_inputs;
@@ -416,6 +495,7 @@ static NativeAnnouncementLogPreheatDirectory g_native_announcement_log_preheat_d
 static void clear_native_announcement_log_preheat() {
     g_native_announcement_log_preheat_directory = {};
     g_native_announcement_log_alias_publication = {};
+    g_native_announcement_log_capture_resume = {};
 }
 static bool native_announcement_log_preheat_domain(uintptr_t &world,
         NativeBorrowedVector<uintptr_t> &reports) {
@@ -683,7 +763,7 @@ static void native_notification_bind_report_documents(
             // Only this visible parent is frozen. Retain the publication until
             // its own native fields change; unrelated aliases on later frames
             // must not create competing service versions of the same report.
-            document = native_announcement_log_freeze_document(paragraph.parent, world, version);
+            document = native_announcement_log_freeze_document(paragraph.parent, world, version, false);
             if (!document || document->report.source != paragraph.source) continue;
             directory.records.insert_or_assign(version.id,
                 NativeAnnouncementLogPreheatDirectory::Entry{paragraph.parent, version, document});
@@ -716,20 +796,28 @@ static bool native_announcement_log_preheat_record(uintptr_t parent, uintptr_t w
     auto found = directory.records.find(version.id);
     auto document = found != directory.records.end()
         ? native_announcement_log_reuse_content_version(found->second, parent, version) : nullptr;
-    if (document) {
-        // A retained input is not proof that its service job completed: an
-        // earlier palette/capacity/dependency publication may have deferred it.
-        if (const auto foreground = native_announcement_log_preheat_foreground(*document))
-            native_announcement_log_translation_request(std::move(document), *foreground, urgent);
-        return false;
+    bool captured = false;
+    if (document && !document->worker_inputs) {
+        auto ready = std::make_shared<NativeAnnouncementLogDocument>(*document);
+        ready->worker_inputs = native_announcement_log_freeze_worker_inputs(*ready);
+        native_announcement_log_freeze_key(*ready);
+        document = std::move(ready);
+        captured = true;
+    } else if (!document) {
+        // This pump already owns a native capture allowance. Basic inputs no
+        // longer build global vocabularies, so preheat an actual CPU job here
+        // instead of accumulating input-less records in the dependency queue.
+        document = native_announcement_log_freeze_document(parent, world, version, true);
+        captured = true;
     }
-    document = native_announcement_log_freeze_document(parent, world, version);
     if (!document || document->report.source.empty()) return false;
-    directory.records.insert_or_assign(version.id,
+    if (captured) directory.records.insert_or_assign(version.id,
         NativeAnnouncementLogPreheatDirectory::Entry{parent, version, document});
+    // An owned input is not proof its service job completed: request again
+    // cheaply so a previously deferred palette/capacity can still progress.
     if (const auto foreground = native_announcement_log_preheat_foreground(*document))
         native_announcement_log_translation_request(std::move(document), *foreground, urgent);
-    return true;
+    return captured;
 }
 static void native_announcement_log_preheat_submission(int type, std::string_view source) {
     if (type < 0 || source.empty() || g_native_announcement_log_worker_active) return;
@@ -751,7 +839,7 @@ static void native_announcement_log_preheat_submission(int type, std::string_vie
         if (auto found = directory.records.find(version.id); found != directory.records.end())
             document = native_announcement_log_reuse_content_version(found->second, parent, version);
         if (!document) {
-            document = native_announcement_log_freeze_document(parent, world, version);
+            document = native_announcement_log_freeze_document(parent, world, version, true);
             if (!document || document->report.source != source) continue;
             directory.records.insert_or_assign(version.id,
                 NativeAnnouncementLogPreheatDirectory::Entry{parent, version, document});
@@ -804,13 +892,15 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world,
     dependencies.reserve(maximum);
     if (scope == NativeAnnouncementDependencyScope::Log) {
         dependencies.reserve(std::min(maximum, g_native_announcement_log_records.size()));
-        for (const auto &record : g_native_announcement_log_records) {
-            if (dependencies.size() >= maximum) break;
-            if (!record.document || record.document->world != world) continue;
-            auto dependency = native_announcement_log_translation_visible_dependency(record.document);
-            if (!dependency) continue;
-            dependencies.push_back(std::move(*dependency));
-        }
+        for (const bool basic : {true, false})
+            for (const auto &record : g_native_announcement_log_records) {
+                if (dependencies.size() >= maximum) break;
+                if (!record.document || record.document->world != world ||
+                        basic != !record.document->worker_inputs) continue;
+                auto dependency = native_announcement_log_translation_visible_dependency(record.document);
+                if (!dependency) continue;
+                dependencies.push_back(std::move(*dependency));
+            }
     } else {
         // The producer has already frozen this notification's visible parents.
         // Collect their pending leaves before publishing any replacement, so
@@ -818,13 +908,14 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world,
         // notifications can resume these same leaves from Present as well.
         if (g_native_notification_layer.ready) {
             dependencies.reserve(maximum);
-            for (const auto &paragraph : g_native_notification_paragraphs) {
-                if (dependencies.size() >= maximum) break;
-                const auto &document = paragraph.report_document;
-                if (!document || document->world != world) continue;
-                auto dependency = native_announcement_log_translation_visible_dependency(document);
-                if (dependency) dependencies.push_back(std::move(*dependency));
-            }
+            for (const bool basic : {true, false})
+                for (const auto &paragraph : g_native_notification_paragraphs) {
+                    if (dependencies.size() >= maximum) break;
+                    const auto &document = paragraph.report_document;
+                    if (!document || document->world != world || basic != !document->worker_inputs) continue;
+                    auto dependency = native_announcement_log_translation_visible_dependency(document);
+                    if (dependency) dependencies.push_back(std::move(*dependency));
+                }
         }
         if (scope == NativeAnnouncementDependencyScope::Background && dependencies.size() < maximum) {
             auto background = native_announcement_log_translation_dependencies(maximum - dependencies.size());
@@ -832,10 +923,58 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world,
                 std::make_move_iterator(background.end()));
         }
     }
+    const auto dependency_order = [](const NativeAnnouncementLogDependency &dependency) {
+        if (dependency.document && !dependency.document->worker_inputs) return 0;
+        const bool vocabulary = std::any_of(dependency.references.begin(), dependency.references.end(),
+            [](const auto &request) {
+                using Kind = NativeAnnouncementLogReferenceRequest::Kind;
+                return request.kind == Kind::RawCreatureLabels || request.kind == Kind::RawCreatureAdjectives ||
+                    request.kind == Kind::InstrumentNames;
+            });
+        return vocabulary ? 2 : 1;
+    };
+    std::stable_sort(dependencies.begin(), dependencies.end(), [&](const auto &a, const auto &b) {
+        return dependency_order(a) < dependency_order(b);
+    });
     continuing_capture.resize(dependencies.size(), false);
+    struct CaptureSlice {
+        const std::chrono::steady_clock::time_point *previous =
+            g_native_announcement_log_native_capture_deadline;
+        explicit CaptureSlice(const std::chrono::steady_clock::time_point &end) {
+            g_native_announcement_log_native_capture_deadline = &end;
+        }
+        ~CaptureSlice() { g_native_announcement_log_native_capture_deadline = previous; }
+    };
+    const auto continue_capture = [&] {
+        continuing_capture[attempted - 1] = true;
+        // Multiple producer/Present entry points can ask for the same native
+        // leaf back-to-back. Yield until the next pump instead of spending a
+        // fresh 1.5 ms slice in each entry point of one displayed frame.
+        g_native_announcement_log_capture_resume =
+            std::chrono::steady_clock::now() + std::chrono::milliseconds(4);
+    };
+    struct PublishVisibleInputs {
+        bool changed = false;
+        ~PublishVisibleInputs() {
+            if (!changed) return;
+            // A dependency batch changes this retained draw once. Serializing
+            // every visible source/backdrop after each individual report made
+            // the native slice grow with both page size and dependency count.
+            g_native_announcement_log_source_context_valid = false;
+            try {
+                g_native_announcement_log_source_context = native_announcement_log_source_key();
+                g_native_announcement_log_source_context_valid = g_native_announcement_log_resources_valid;
+            } catch (...) { g_native_announcement_log_source_context.clear(); }
+            ++g_native_announcement_log_submission;
+        }
+    } publication;
     for (const auto &dependency : dependencies) {
-        if (std::chrono::steady_clock::now() >= deadline) break;
+        const auto now = std::chrono::steady_clock::now();
+        if (now >= deadline || (now < g_native_announcement_log_capture_resume &&
+                dependency.document && dependency.document->worker_inputs)) break;
         ++attempted;
+        CaptureSlice capture_slice(deadline);
+        try {
         const auto &requested = dependency.document;
         if (!requested || requested->world != world) continue;
         NativeAnnouncementLogParentVersion version;
@@ -846,7 +985,7 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world,
         std::shared_ptr<const NativeAnnouncementLogDocument> confirmed;
         if (current != directory.records.end()) confirmed = native_announcement_log_reuse_content_version(
             current->second, requested->parent, version);
-        if (!confirmed) confirmed = native_announcement_log_freeze_document(requested->parent, world, version);
+        if (!confirmed) confirmed = native_announcement_log_freeze_document(requested->parent, world, version, false);
         if (!confirmed) continue;
         const auto &a = confirmed->report; const auto &b = requested->report;
         if (a.type != b.type || a.id != b.id ||
@@ -879,17 +1018,9 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world,
         // to append a government/site target to that immutable publication.
         if (!made->worker_inputs || dependency.references.empty())
             made->worker_inputs = native_announcement_log_freeze_worker_inputs(*made);
-        if (made->worker_inputs) {
+        if (made->worker_inputs && !dependency.references.empty()) {
             auto inputs = std::make_shared<NativeAnnouncementLogWorkerInputs>(*made->worker_inputs);
             size_t resolved = 0;
-            struct CaptureSlice {
-                const std::chrono::steady_clock::time_point *previous =
-                    g_native_announcement_log_native_capture_deadline;
-                explicit CaptureSlice(const std::chrono::steady_clock::time_point &end) {
-                    g_native_announcement_log_native_capture_deadline = &end;
-                }
-                ~CaptureSlice() { g_native_announcement_log_native_capture_deadline = previous; }
-            } capture_slice(deadline);
             try {
             for (const auto &request : dependency.references) {
                 if (resolved && std::chrono::steady_clock::now() >= deadline) break;
@@ -912,6 +1043,19 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world,
                     auto target = g_overlay.translate_native_unit_identity(*request.unit);
                     dfcn::translation_work_step(0);
                     inputs->unit_targets.emplace(request.unit_key, std::move(target));
+                } else if (request.kind == NativeAnnouncementLogReferenceRequest::Kind::RawCreatureLabels) {
+                    if (inputs->raw_creature_labels) continue;
+                    inputs->raw_creature_labels = native_dfhack_raw_creature_labels();
+                    inputs->raw_creatures_complete = inputs->raw_creature_labels && inputs->raw_creature_adjectives;
+                } else if (request.kind == NativeAnnouncementLogReferenceRequest::Kind::RawCreatureAdjectives) {
+                    if (inputs->raw_creature_adjectives) continue;
+                    inputs->raw_creature_adjectives = native_dfhack_raw_creature_adjectives();
+                    inputs->raw_creatures_complete = inputs->raw_creature_labels && inputs->raw_creature_adjectives;
+                } else if (request.kind == NativeAnnouncementLogReferenceRequest::Kind::InstrumentNames) {
+                    if (inputs->instrument_names) continue;
+                    inputs->instrument_names = native_announcement_log_capture_instrument_inputs(true);
+                    inputs->instrument_names_fingerprint =
+                        g_native_announcement_log_alias_publication.instrument_fingerprint;
                 }
                 ++resolved;
             }
@@ -919,7 +1063,7 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world,
                 // The cold index made progress but has not yet proved a
                 // result/miss. Retain earlier complete leaves and resume the
                 // same native cursor next frame without failure backoff.
-                continuing_capture[attempted - 1] = true;
+                continue_capture();
             }
             // Only the leaves actually requested by a worker need native
             // resolution. Eagerly translating every possible identity mode
@@ -963,25 +1107,27 @@ static void native_announcement_log_preheat_dependencies(uintptr_t world,
             // Publish dependency readiness into this exact retained native
             // draw. Waiting for another native frame would keep requesting
             // its old input version from every repeated Present.
-            g_native_announcement_log_source_context_valid = false;
-            try {
-                g_native_announcement_log_source_context = native_announcement_log_source_key();
-                g_native_announcement_log_source_context_valid = g_native_announcement_log_resources_valid;
-            } catch (...) { g_native_announcement_log_source_context.clear(); }
-            ++g_native_announcement_log_submission;
+            publication.changed = true;
         }
         // The visible allocation can retain this same native parent. Force
         // its next cheap lookup to adopt the new immutable publication.
         auto &visible = native_announcement_log_document_cache();
         if (const auto found = visible.documents.find(requested->parent); found != visible.documents.end()) {
-            visible.bytes -= found->second->bytes; visible.documents.erase(found);
-            std::erase(visible.order, requested->parent);
+            visible.bytes -= found->second.record->bytes;
+            visible.order.erase(found->second.use);
+            visible.documents.erase(found);
         }
         if (visible.large_document && visible.large_document->document->parent == requested->parent)
             visible.large_document.reset();
         if (const auto foreground = native_announcement_log_preheat_foreground(*made))
             native_announcement_log_translation_request(std::move(made), *foreground,
                 published || scope != NativeAnnouncementDependencyScope::Background);
+        } catch (const NativeAnnouncementLogNativeCapturePending &) {
+            // Global vocabularies retain their partially captured owned
+            // values. Publish no incomplete input/miss, and retry the same
+            // service claim without its ordinary dependency failure backoff.
+            continue_capture();
+        }
     }
 }
 static void native_announcement_log_prepare_dependencies() {
@@ -1027,6 +1173,7 @@ static void native_announcement_log_preheat(size_t budget, bool urgent_new) {
     int32_t first_id = -1, last_id = -1;
     if (!at(0, first_parent, first_id) || !at(reports.size() - 1, last_parent, last_id)) return;
     while (!directory.records.empty() && directory.records.begin()->first < first_id) {
+        if (std::chrono::steady_clock::now() >= deadline) return;
         native_announcement_log_translation_forget(directory.records.begin()->second.document);
         directory.records.erase(directory.records.begin());
     }
@@ -1067,11 +1214,29 @@ static void native_announcement_log_preheat(size_t budget, bool urgent_new) {
         }
     if (visible_last >= 0 && (directory.visible_first != visible_first ||
             directory.visible_last != visible_last)) {
+        const bool adjacent = directory.visible_first >= 0 &&
+            int64_t(visible_first) <= int64_t(directory.visible_last) + 1 &&
+            int64_t(visible_last) + 1 >= directory.visible_first;
         directory.nearby_older_first = directory.visible_first < 0 ||
             visible_first <= directory.visible_first;
         directory.visible_first = visible_first; directory.visible_last = visible_last;
-        directory.nearby_before = visible_first - 1; directory.nearby_after = visible_last;
-        directory.nearby_before_left = directory.nearby_after_left = 128;
+        if (adjacent) {
+            // A one-row scroll exposes an extension of the same window. The
+            // previous visible records already own jobs/results, so preserve
+            // progress through its overlapping neighbours instead of reading
+            // and requesting the nearest 128 completed records again.
+            directory.nearby_before = std::min(directory.nearby_before, visible_first - 1);
+            directory.nearby_after = std::max(directory.nearby_after, visible_last);
+            const int64_t first = std::max<int64_t>(0, int64_t(visible_first) - 128);
+            const int64_t last = std::min<int64_t>(INT32_MAX, int64_t(visible_last) + 128);
+            directory.nearby_before_left = static_cast<size_t>(std::clamp<int64_t>(
+                int64_t(directory.nearby_before) - first + 1, 0, 128));
+            directory.nearby_after_left = static_cast<size_t>(std::clamp<int64_t>(
+                last - directory.nearby_after, 0, 128));
+        } else {
+            directory.nearby_before = visible_first - 1; directory.nearby_after = visible_last;
+            directory.nearby_before_left = directory.nearby_after_left = 128;
+        }
     }
     size_t before = visible_last >= 0 ? upper(directory.nearby_before) : 0;
     size_t after = visible_last >= 0 ? upper(directory.nearby_after) : reports.size();

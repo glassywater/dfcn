@@ -423,6 +423,29 @@ std::optional<std::string> Overlay::compose_native_announcement_log_record(
                     rule.source.find("pull off") != std::string::npos ||
                     rule.source.find("pulls off") != std::string::npos;
             })) return target;
+    } else if (document.report.type >= 0 && document.report.type != 104 &&
+            document.report.type != 233 && document.report.type != 234 &&
+            document.report.type != 258 && source.starts_with("You ") &&
+            !native_original_speech_source(source)) {
+        // These complete action productions already belong to the native
+        // adventure grammar. Bind their literal item/body/terrain boundaries
+        // once, before the whole-paragraph parser tries unrelated speech and
+        // sentence partitions. Repeated or ambiguous separators still fall
+        // back to that grammar; a partial action never publishes a result.
+        if (auto target = direct_constructor("adventure-announcement",
+                [](std::string_view, const Rule &rule) {
+                    for (const std::string_view pattern : {
+                            "You put on {s}.", "You take out the {s}.",
+                            "You put the {s} into the {s}.",
+                            "You put the {s} on the {s}.",
+                            "You put the {s} on display.",
+                            "You strap {s} to your {s}.",
+                            "You fail to grab the {s}!",
+                            "You lose hold of the {s}.",
+                            "You lose hold of the {s}!"})
+                        if (rule.source == pattern) return true;
+                    return false;
+                })) return target;
     }
     // Intermediate bound rules may have populated their palettes before an
     // unresolved typed leaf. Only a complete report publishes target colors.

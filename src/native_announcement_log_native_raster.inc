@@ -3,12 +3,13 @@
 // tile painter for an otherwise identical background, border and controls.
 static thread_local SDL_Texture *g_native_announcement_log_raster_destination = nullptr;
 class NativeAnnouncementLogNativeRaster {
-    using Cell = NativeAnnouncementLogCaptionBackdrop::Cell;
+    using Plane = NativeUiLayerGrid::Plane;
     NativeUiLayerTarget target_;
     std::vector<SDL_Rect> painted_;
-    std::array<std::vector<Cell>, 2> cells_;
+    std::array<Plane, 2> cells_;
     bool initialized_ = false;
     bool cells_valid_ = false;
+    bool nonlocal_cells_ = false;
     static void painter_identity(SDL_Renderer *) {}
     static size_t owned_cell_count(const NativeUiLayerStorage &layer) {
         size_t count = 0;
@@ -18,91 +19,139 @@ class NativeAnnouncementLogNativeRaster {
                     int64_t(frame.y) + frame.h > layer.foreground.dimy)
                 throw std::length_error("Invalid announcement raster frame");
             const size_t size = static_cast<size_t>(frame.w) * frame.h;
-            if (size > (std::numeric_limits<size_t>::max() / sizeof(Cell)) - count)
+            if (size > (std::numeric_limits<size_t>::max() / 8) - count)
                 throw std::length_error("Announcement raster frame overflow");
             count += size;
         }
         return count;
     }
+    static void copy_column(Plane &saved, size_t next, const Plane &source,
+            size_t at, size_t count) {
+        std::copy_n(source.screen.data() + at * 8, count * 8, saved.screen.data() + next * 8);
+        std::copy_n(source.flags.data() + at, count, saved.flags.data() + next);
+        for (size_t slot = 0; slot < saved.textures.size(); ++slot)
+            std::copy_n(source.textures[slot].data() + at, count, saved.textures[slot].data() + next);
+    }
+    static bool same_column(const Plane &saved, size_t next, const Plane &source,
+            size_t at, size_t count) {
+        if (std::memcmp(saved.screen.data() + next * 8, source.screen.data() + at * 8,
+                    count * 8) != 0 ||
+                std::memcmp(saved.flags.data() + next, source.flags.data() + at,
+                    count * sizeof(uint32_t)) != 0) return false;
+        for (size_t slot = 0; slot < saved.textures.size(); ++slot)
+            if (std::memcmp(saved.textures[slot].data() + next, source.textures[slot].data() + at,
+                    count * sizeof(NativeUiLayerGrid::Texture)) != 0) return false;
+        return true;
+    }
     void capture_cells(const NativeUiLayerStorage &layer) {
         cells_valid_ = false;
+        nonlocal_cells_ = false;
         const auto &grid = layer.foreground;
         const size_t count = owned_cell_count(layer);
         const auto *gps = reinterpret_cast<const graphicst *>(grid.view.data());
         for (size_t plane = 0; plane < cells_.size(); ++plane) {
             auto &saved = cells_[plane];
-            if (plane && !gps->top_in_use) { saved.clear(); continue; }
+            if (plane && !gps->top_in_use) { saved = {}; continue; }
             const auto &source = grid.planes[plane];
-            saved.resize(count);
+            saved.screen.resize(count * 8);
+            saved.flags.resize(count);
+            for (auto &textures : saved.textures) textures.resize(count);
             size_t next = 0;
-            for (const auto &frame : layer.frames)
-                for (int x = frame.x; x < frame.x + frame.w; ++x)
-                    for (int y = frame.y; y < frame.y + frame.h; ++y) {
-                        const size_t at = static_cast<size_t>(x) * grid.dimy + y;
-                        auto &cell = saved[next++];
-                        std::memcpy(cell.screen.data(), source.screen.data() + at * 8, 8);
-                        cell.flags = source.flags[at];
-                        for (size_t slot = 0; slot < cell.textures.size(); ++slot)
-                            cell.textures[slot] = source.textures[slot][at];
-                    }
+            for (const auto &frame : layer.frames) {
+                if (!frame.h) continue;
+                for (int x = frame.x; x < frame.x + frame.w; ++x) {
+                    copy_column(saved, next, source,
+                        static_cast<size_t>(x) * grid.dimy + frame.y, frame.h);
+                    next += frame.h;
+                }
+            }
+            for (size_t slot = 1; slot < saved.textures.size(); ++slot)
+                nonlocal_cells_ = nonlocal_cells_ || std::any_of(
+                    saved.textures[slot].begin(), saved.textures[slot].end(),
+                    [](const auto value) { return value != 0; });
         }
     }
     std::optional<std::vector<SDL_Rect>> changed_interior_rows(
-            const NativeUiLayerStorage &layer) const {
+            const NativeUiLayerStorage &layer, bool cell_local_painter) {
         if (!cells_valid_) return std::nullopt;
         const auto &grid = layer.foreground;
         const auto *gps = reinterpret_cast<const graphicst *>(grid.view.data());
         const size_t count = owned_cell_count(layer);
         const size_t planes = gps->top_in_use ? cells_.size() : size_t{1};
         for (size_t plane = 0; plane < planes; ++plane)
-            if (cells_[plane].size() != count) return std::nullopt;
+            if (cells_[plane].flags.size() != count) return std::nullopt;
         std::vector<SDL_Rect> dirty;
-        std::vector<unsigned char> rows;
+        struct ChangedColumn { size_t plane, packed, source, count; };
+        std::vector<ChangedColumn> columns;
+        std::vector<std::pair<int, int>> rows;
         size_t base = 0;
         for (const auto &frame : layer.frames) {
-            rows.assign(static_cast<size_t>(frame.h), 0);
+            if (!frame.w || !frame.h) continue;
+            rows.assign(static_cast<size_t>(frame.h), {frame.x + frame.w, frame.x});
             for (size_t plane = 0; plane < planes; ++plane) {
                 const auto &source = grid.planes[plane];
+                const auto &saved = cells_[plane];
                 size_t next = base;
-                for (int x = frame.x; x < frame.x + frame.w; ++x)
-                    for (int y = frame.y; y < frame.y + frame.h; ++y) {
+                for (int x = frame.x; x < frame.x + frame.w; ++x) {
+                    const size_t first = static_cast<size_t>(x) * grid.dimy + frame.y;
+                    if (same_column(saved, next, source, first, frame.h)) {
+                        next += frame.h;
+                        continue;
+                    }
+                    // Native lower/anchored images may cover another row's
+                    // changed cells even when their own descriptors stayed
+                    // unchanged. Any such image retains the complete order.
+                    if (nonlocal_cells_ || !cell_local_painter) return std::nullopt;
+                    columns.push_back({plane, next, first, static_cast<size_t>(frame.h)});
+                    for (int y = frame.y; y < frame.y + frame.h; ++y, ++next) {
                         const size_t at = static_cast<size_t>(x) * grid.dimy + y;
-                        const auto &cell = cells_[plane][next++];
-                        bool changed = cell.flags != source.flags[at] ||
-                            std::memcmp(cell.screen.data(), source.screen.data() + at * 8, 8) != 0;
-                        for (size_t slot = 0; slot < cell.textures.size(); ++slot) {
+                        bool changed = saved.flags[next] != source.flags[at] ||
+                            std::memcmp(saved.screen.data() + next * 8, source.screen.data() + at * 8, 8) != 0;
+                        for (size_t slot = 0; slot < saved.textures.size(); ++slot) {
                             const auto texture = source.textures[slot][at];
                             // Lower/anchored images and their offsets can
                             // cross rows. Keep their complete native order.
-                            if (slot && (cell.textures[slot] || texture)) return std::nullopt;
-                            changed = changed || cell.textures[slot] != texture;
+                            if (slot && texture) return std::nullopt;
+                            changed = changed || saved.textures[slot][next] != texture;
                         }
                         if (!changed) continue;
                         // Last-column/row painters can extend past the cell.
                         // Leave unchanged edges intact; a changed edge still
                         // requires the complete native repaint and footprint.
                         if (x == grid.dimx - 1 || y == grid.dimy - 1) return std::nullopt;
-                        rows[static_cast<size_t>(y - frame.y)] = 1;
+                        auto &[left, right] = rows[static_cast<size_t>(y - frame.y)];
+                        left = std::min(left, x); right = std::max(right, x + 1);
                     }
+                }
             }
-            const int right = std::min(frame.x + frame.w, grid.dimx - 1);
             for (int row = 0; row < frame.h;) {
-                if (!rows[static_cast<size_t>(row)]) { ++row; continue; }
+                const auto bounds = rows[static_cast<size_t>(row)];
+                if (bounds.first >= bounds.second) { ++row; continue; }
                 const int first = row++;
-                while (row < frame.h && rows[static_cast<size_t>(row)]) ++row;
-                if (right > frame.x) dirty.push_back({frame.x, frame.y + first, right - frame.x, row - first});
+                while (row < frame.h && rows[static_cast<size_t>(row)] == bounds) ++row;
+                // Ordinary primary/font tiles have one cell destination.
+                // Only those cells are cleared and repainted on both planes;
+                // a scrollbar move must not repaint its entire body row.
+                dirty.push_back({bounds.first, frame.y + first,
+                    bounds.second - bounds.first, row - first});
             }
             base += static_cast<size_t>(frame.w) * frame.h;
         }
+        // The ordinary scroll path changes a few columns. Keep the rest of
+        // the packed snapshot instead of copying the complete grid twice.
+        for (const auto &column : columns)
+            copy_column(cells_[column.plane], column.packed, grid.planes[column.plane],
+                column.source, column.count);
         return dirty;
     }
 public:
     void clear() {
         target_.release();
         painted_.clear();
-        for (auto &plane : cells_) plane.clear();
+        for (auto &plane : cells_) plane = {};
         initialized_ = false;
         cells_valid_ = false;
+        nonlocal_cells_ = false;
     }
     template <typename Painter>
     bool paint(NativeUiLayerStorage &layer, SDL_Renderer *renderer,
@@ -190,27 +239,41 @@ public:
                 return true;
             };
             auto &cache = target_.frame_cache;
-            if (initialized_ && cache.matches(layer, renderer, width, height,
-                    &painter_identity, context, true)) return composite();
-
+            const bool dependencies_match = initialized_ && cache.matches_dependencies(
+                layer, renderer, width, height, &painter_identity, context, true);
             std::optional<std::vector<SDL_Rect>> dirty;
-            if (initialized_ && cache.matches_dependencies(layer, renderer, width, height,
-                    &painter_identity, context, true)) {
+            if (dependencies_match) {
                 // The shared cache conservatively rejects every frame that
                 // reaches a grid edge. This modal normally covers the whole
                 // grid: a moving interior scrollbar would repaint all tiles.
                 // Its private snapshot instead retains unchanged edge ink.
-                dirty = changed_interior_rows(layer);
+                void **methods = nullptr;
+                std::memcpy(&methods, layer.native_renderer, sizeof(methods));
+                const auto executable = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
+                // These exact native ordinary painters have one-cell
+                // destinations away from the last row/column. A replacement
+                // renderer keeps the conservative complete repaint path.
+                const bool cell_local_painter = methods && native_pe_supported() &&
+                    reinterpret_cast<uintptr_t>(methods[0]) == native_pe_address(executable, 0x8ddc20) &&
+                    reinterpret_cast<uintptr_t>(methods[2]) == native_pe_address(executable, 0x8ddfe0);
+                dirty = changed_interior_rows(layer, cell_local_painter);
+                if (dirty && dirty->empty()) return composite();
             }
             const bool complete = !dirty.has_value();
             if (complete) dirty = layer.frames;
             cache.invalidate();
+            cells_valid_ = false;
             // Snapshot while SourceMask is active, before the temporary dirty
             // frame list replaces the complete producer-owned allocation.
             bool captured = false;
             try {
-                cache.capture(layer, renderer, width, height, &painter_identity, context, true);
-                capture_cells(layer);
+                // This shared cache owns only the stable header/frame proof
+                // here. The packed cells above own pixel equality and are
+                // updated only in changed columns, never recaptured merely
+                // because the scrollbar moved inside the same allocation.
+                if (!dependencies_match)
+                    cache.capture(layer, renderer, width, height, &painter_identity, context, true);
+                if (complete) capture_cells(layer);
                 captured = true;
             } catch (...) { cells_valid_ = false; }
             std::vector<SDL_Rect> current;

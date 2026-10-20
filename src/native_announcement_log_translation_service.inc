@@ -1,6 +1,10 @@
 // Complete report translations belong to an owned world/catalog publication.
 // Detached jobs own their rule graph and inputs. Native producers may also
 // publish complete results through a callback outside the service mutex.
+// Native foregrounds and explicit rule palettes are packed 24-bit RGB. This
+// positive out-of-range value survives the parser's inherited-color copies
+// without colliding with a real color or its negative "no color" sentinels.
+static constexpr int native_announcement_log_inherited_foreground = 0x01000000;
 static size_t native_announcement_log_translation_worker_count() noexcept {
     // Leave a logical CPU for native input/rendering on smaller machines and
     // cap private rule graphs so historical preheating cannot saturate a host.
@@ -14,6 +18,8 @@ class NativeAnnouncementLogTranslationService {
     static constexpr size_t maximum_workers = 4;
     using Document = std::shared_ptr<const NativeAnnouncementLogDocument>;
     using Result = std::shared_ptr<const NativeAnnouncementLogTranslationResult>;
+    using ReferenceList = std::vector<NativeAnnouncementLogReferenceRequest>;
+    using References = std::shared_ptr<const ReferenceList>;
     struct Job {
         std::string owner, version;
         int foreground = 0;
@@ -23,7 +29,7 @@ class NativeAnnouncementLogTranslationService {
         struct Queued { size_t lane; std::list<Job>::iterator at; };
         Document document;
         Result result;
-        std::vector<NativeAnnouncementLogReferenceRequest> references;
+        References references;
         uint64_t ticket = 0, visible_epoch = 0;
         bool running = false, native_running = false, native_attempted = false;
         bool native_result = false, needs_dependency = false;
@@ -33,13 +39,16 @@ class NativeAnnouncementLogTranslationService {
         std::optional<Queued> queued;
     };
     struct Report {
+        Document document;
         std::string native_version, version;
+        std::unordered_set<std::string> input_ancestors;
         std::unordered_map<int, Entry> colors;
         bool dependency_requested = false, dependency_queued = false, dependency_urgent = false;
         std::optional<std::list<Job>::iterator> dependency_position;
         unsigned dependency_retries = 0;
         std::chrono::steady_clock::time_point dependency_retry_at{};
     };
+    using Reports = std::unordered_map<std::string, Report>;
     std::mutex mutex_;
     std::condition_variable ready_;
     std::array<std::thread, maximum_workers> workers_;
@@ -49,7 +58,7 @@ class NativeAnnouncementLogTranslationService {
     uint64_t viewport_epoch_ = 0;
     size_t viewport_depth_ = 0;
     std::array<std::shared_ptr<const NativeAnnouncementLogTranslator>, maximum_workers> translators_;
-    std::unordered_map<std::string, Report> reports_;
+    Reports reports_;
     std::array<std::list<Job>, 2> jobs_;
     std::array<const Job *, maximum_workers> running_{}; // worker stack jobs; mutex-protected
     // A reset invalidates running_ before its cancelled worker has returned.
@@ -81,12 +90,12 @@ class NativeAnnouncementLogTranslationService {
         }
         return key;
     }
-    void clear_locked() {
+    void clear_locked(Reports &retired) {
         cancel_locked();
         ++epoch_;
         for (auto &jobs : jobs_) jobs.clear();
         running_.fill(nullptr);
-        dependencies_.clear(); reports_.clear();
+        dependencies_.clear(); reports_.swap(retired);
         publish_change_locked(true);
     }
     void cancel_locked() noexcept {
@@ -114,39 +123,107 @@ class NativeAnnouncementLogTranslationService {
         report.dependency_queued = true;
         report.dependency_urgent = urgent;
     }
-    void replace_version_locked(Report &report, const Document &document) {
+    static bool extends_worker_inputs(const Document &before, const Document &after) {
+        if (!before || !after->worker_inputs) return false;
+        if (!before->worker_inputs) return true;
+        const auto &a = *before->worker_inputs;
+        const auto &b = *after->worker_inputs;
+        // Only appended answers to exact leaf requests are an input upgrade.
+        // Lazy vocabulary leaves may change from absent to present, but an
+        // existing identity/vocabulary/owner snapshot must stay unchanged.
+        if (a.semantic_generation != b.semantic_generation ||
+                a.identity_sources != b.identity_sources ||
+                a.identity_sources_fingerprint != b.identity_sources_fingerprint ||
+                a.identity_sources_complete != b.identity_sources_complete ||
+                a.kinship_complete != b.kinship_complete || a.kinship_record != b.kinship_record ||
+                a.original_speech != b.original_speech ||
+                a.original_speech_complete != b.original_speech_complete ||
+                a.original_speech_body_source != b.original_speech_body_source ||
+                a.original_speech_body != b.original_speech_body ||
+                a.mission_return_source != b.mission_return_source ||
+                a.mission_return != b.mission_return ||
+                a.mission_return_complete != b.mission_return_complete ||
+                (a.raw_creature_adjectives && a.raw_creature_adjectives != b.raw_creature_adjectives) ||
+                (a.raw_creature_labels && a.raw_creature_labels != b.raw_creature_labels) ||
+                (a.raw_creatures_complete && !b.raw_creatures_complete) ||
+                (a.instrument_names && (a.instrument_names != b.instrument_names ||
+                    a.instrument_names_fingerprint != b.instrument_names_fingerprint)) ||
+                a.unit_record != b.unit_record ||
+                a.unit_targets_resources != b.unit_targets_resources ||
+                a.unit_targets_catalog != b.unit_targets_catalog) return false;
+        const auto retains = [](const auto &old_values, const auto &new_values) {
+            if (old_values.size() > new_values.size()) return false;
+            for (const auto &[key, value] : old_values) {
+                const auto found = new_values.find(key);
+                if (found == new_values.end() || found->second != value) return false;
+            }
+            return true;
+        };
+        return retains(a.unit_targets, b.unit_targets) && retains(a.entity_targets, b.entity_targets) &&
+            retains(a.site_identities, b.site_identities);
+    }
+    void replace_version_locked(Report &report, Document &document,
+            std::vector<Entry> &retired) {
         if (report.version == document->record_key) return;
+        const bool same_native = !document->native_record_key.empty() &&
+            report.native_version == document->native_record_key;
+        if (same_native && report.document && report.input_ancestors.contains(document->record_key)) {
+            // A retained viewport/notification can still hold the input from
+            // before native leaves were appended. Adopt the current immutable
+            // publication instead of cancelling it and reinstalling that old
+            // snapshot over an already preheated result.
+            document = report.document;
+            return;
+        }
         // Prepare allocations before retiring old jobs. Detached work always
-        // follows the complete input version; only a native-completed result
-        // can survive an upgrade whose full native semantic key is unchanged.
+        // follows the complete input version. A complete worker target can
+        // survive a proven append-only leaf upgrade: it did not request any
+        // of the previously absent keys, or it could not have completed.
         std::string version = document->record_key;
         std::string native_version = document->native_record_key;
-        const bool same_native = !native_version.empty() && report.native_version == native_version;
+        const bool input_upgrade = same_native && extends_worker_inputs(report.document, document);
+        retired.reserve(report.colors.size());
+        if (input_upgrade) report.input_ancestors.insert(report.version);
+        else report.input_ancestors.clear();
         discard_dependencies_locked(owner_key(*document));
         bool visible = false;
         for (const auto &[rgb, entry] : report.colors)
             if (entry.queued) jobs_[entry.queued->lane].erase(entry.queued->at);
         for (const auto &[rgb, entry] : report.colors)
-            if (entry.cancelled) entry.cancelled->store(true, std::memory_order_release);
+            if (entry.cancelled && !(input_upgrade && entry.running))
+                entry.cancelled->store(true, std::memory_order_release);
         for (auto at = report.colors.begin(); at != report.colors.end();) {
             auto &entry = at->second;
             visible = visible || visible_locked(entry);
+            if (input_upgrade && entry.running) {
+                // Keep the executing ticket. Its complete target is still
+                // valid after adding answers to previously absent leaves.
+                // An unfinished old-input attempt is retried with this newer
+                // document when the worker returns, never published as final.
+                entry.document = document;
+                ++at;
+                continue;
+            }
             const auto visible_epoch = entry.visible_epoch;
-            if (!same_native || !entry.native_result || !entry.result) {
+            retired.push_back(std::move(entry));
+            auto &previous = retired.back();
+            entry = Entry{};
+            if (!same_native || !previous.result || (!previous.native_result &&
+                    !(input_upgrade && previous.result->target && !previous.result->needs_owned_dependency))) {
                 // An owned-input refresh changes the work version, not the
                 // visible row. Preserve that membership until the next batch.
-                entry = Entry{};
                 entry.visible_epoch = visible_epoch;
                 ++at;
                 continue;
             }
-            auto result = std::move(entry.result);
-            entry = Entry{};
-            entry.document = document; entry.result = std::move(result);
-            entry.native_result = true; entry.native_attempted = true; entry.ticket = ++ticket_;
+            entry.document = document; entry.result = std::move(previous.result);
+            entry.native_result = previous.native_result;
+            entry.native_attempted = previous.native_attempted;
+            entry.ticket = input_upgrade ? previous.ticket : ++ticket_;
             entry.visible_epoch = visible_epoch;
             ++at;
         }
+        report.document = document;
         report.version = std::move(version); report.native_version = std::move(native_version);
         report.dependency_requested = false; report.dependency_queued = false;
         report.dependency_urgent = false;
@@ -163,7 +240,7 @@ class NativeAnnouncementLogTranslationService {
         const auto at = jobs_[lane].insert(jobs_[lane].end(), std::move(job));
         entry.ticket = ticket; entry.needs_dependency = false; entry.promote = false;
         entry.requeue_normal_on_cancel = false;
-        entry.references.clear();
+        entry.references.reset();
         if (const auto report = reports_.find(owner); report != reports_.end()) {
             report->second.dependency_urgent = false;
             report->second.dependency_retries = 0;
@@ -175,7 +252,8 @@ class NativeAnnouncementLogTranslationService {
     Entry *entry_locked(const Job &job) {
         if (job.epoch != epoch_) return nullptr;
         const auto report = reports_.find(job.owner);
-        if (report == reports_.end() || report->second.version != job.version) return nullptr;
+        if (report == reports_.end() || (report->second.version != job.version &&
+                !report->second.input_ancestors.contains(job.version))) return nullptr;
         const auto entry = report->second.colors.find(job.foreground);
         return entry != report->second.colors.end() && entry->second.ticket == job.ticket
             ? &entry->second : nullptr;
@@ -223,15 +301,15 @@ class NativeAnnouncementLogTranslationService {
                 cancellation = entry->cancelled;
             }
             Result completed;
-            std::vector<NativeAnnouncementLogReferenceRequest> references;
+            References references;
             bool dependency = false, cancelled = false;
             try {
                 TranslationWorkCancellationScope cancel_scope(cancellation.get());
                 NativeAnnouncementLogWorkerInputScope inputs(document->worker_inputs.get());
                 auto value = (*translator)(*document, job.foreground);
-                if (cancellation->load(std::memory_order_acquire)) throw TranslationWorkCancelled{};
                 dependency = value.needs_owned_dependency;
-                if (dependency) references = std::move(value.reference_requests);
+                if (dependency && !value.reference_requests.empty())
+                    references = std::make_shared<const ReferenceList>(std::move(value.reference_requests));
                 if (!dependency)
                     completed = std::make_shared<const NativeAnnouncementLogTranslationResult>(std::move(value));
             } catch (const TranslationWorkCancelled &) { cancelled = true; }
@@ -241,7 +319,11 @@ class NativeAnnouncementLogTranslationService {
                 // A revised owned input or catalog can retry this publication.
                 dependency = true;
             }
-            cancelled = cancelled || cancellation->load(std::memory_order_acquire);
+            // Cancellation asks an executing parser to yield. A result it
+            // already finished still belongs to this publication; viewport
+            // priority alone must not discard it and restart the same parse.
+            // Epoch/version/ticket validation below rejects obsolete owners.
+            cancelled = cancelled || (!completed && cancellation->load(std::memory_order_acquire));
             {
                 std::lock_guard<std::mutex> lock(mutex_);
                 busy_[lane] = false;
@@ -250,16 +332,17 @@ class NativeAnnouncementLogTranslationService {
                 if (stopping_) return;
                 auto *entry = entry_locked(job);
                 if (!entry || translator != translators_[lane]) continue;
+                auto &report = reports_.find(job.owner)->second;
                 entry->running = false;
                 entry->running_lane = -1;
-                cancelled = cancelled || cancellation->load(std::memory_order_acquire);
+                cancelled = cancelled || (!completed && cancellation->load(std::memory_order_acquire));
                 if (cancelled) {
                     // Priority changes transfer a cancelled record only after
                     // its old worker acknowledges the cancellation.
                     // No entry is parsed concurrently by multiple translators.
                     if (entry->promote || entry->requeue_normal_on_cancel) try {
                         const size_t next_lane = entry->promote ? 0 : 1;
-                        enqueue_locked(job.owner, job.version, job.foreground, *entry, next_lane);
+                        enqueue_locked(job.owner, report.version, job.foreground, *entry, next_lane);
                         ready_.notify_all();
                     } catch (...) {
                         entry->promote = false;
@@ -268,22 +351,34 @@ class NativeAnnouncementLogTranslationService {
                     }
                     continue;
                 }
+                if (job.version != report.version && (!completed || !completed->target)) {
+                    // A leaf may already have been appended while this parser
+                    // was finishing its older input. Continue on the new
+                    // snapshot instead of requesting that same leaf again.
+                    try {
+                        enqueue_locked(job.owner, report.version, job.foreground, *entry,
+                            entry->urgent_job ? 0 : 1);
+                        ready_.notify_all();
+                    } catch (...) {
+                        // A later request can retry allocation/enqueueing.
+                    }
+                    continue;
+                }
                 entry->needs_dependency = dependency;
                 entry->references = std::move(references);
                 if (dependency) {
-                    const auto report = reports_.find(job.owner);
-                    if (!report->second.dependency_requested && (!report->second.dependency_queued ||
-                            (entry->urgent_job && !report->second.dependency_urgent))) try {
-                        enqueue_dependency_locked(std::move(job), report->second, entry->urgent_job);
+                    if (!report.dependency_requested && (!report.dependency_queued ||
+                            (entry->urgent_job && !report.dependency_urgent))) try {
+                        enqueue_dependency_locked(std::move(job), report, entry->urgent_job);
                     } catch (...) {
                         // Keep the unsettled entry. A later owned-input
                         // publication can retry without recording a miss.
                     }
-                    // A retained notification can keep presenting without a
-                    // new native frame. Wake its publication cache when the
-                    // worker first needs native-owned leaves, not only after
-                    // the entire translation eventually completes.
-                    publish_change_locked(*entry);
+                    // Retained notifications still need the general wakeup.
+                    // The log services pending leaves before its retained-
+                    // frame fast path; no visible text changed here, so do
+                    // not discard its layout for every intermediate request.
+                    publish_change_locked(false);
                 }
                 if (completed) {
                     entry->result = std::move(completed);
@@ -328,11 +423,15 @@ public:
         ready_.notify_all();
         // Joining holds neither the service mutex nor a translation lock.
         for (auto &worker : workers_) if (worker.joinable()) worker.join();
-        std::lock_guard<std::mutex> lock(mutex_);
-        clear_locked();
-        for (auto &translator : translators_) translator.reset();
-        catalog_generation_ = 0; world_ = 0; session_ = 0;
-        world_initialized_ = false;
+        Reports retired;
+        std::array<std::shared_ptr<const NativeAnnouncementLogTranslator>, maximum_workers> retired_translators;
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            clear_locked(retired);
+            translators_.swap(retired_translators);
+            catalog_generation_ = 0; world_ = 0; session_ = 0;
+            world_initialized_ = false;
+        }
     }
     void publish_catalog(std::vector<NativeAnnouncementLogTranslator> translators, uint64_t generation) {
         if (translators.size() != native_announcement_log_translation_worker_count())
@@ -341,21 +440,23 @@ public:
         for (size_t lane = 0; lane < translators.size(); ++lane)
             if (translators[lane]) owned[lane] = std::make_shared<const NativeAnnouncementLogTranslator>(
                 std::move(translators[lane]));
+        Reports retired;
         {
             std::lock_guard<std::mutex> lock(mutex_);
             const auto available = [](const auto &translator) { return static_cast<bool>(translator); };
             if (catalog_generation_ == generation &&
                     std::all_of(translators_.begin(), translators_.begin() + translators.size(), available) &&
                     std::all_of(owned.begin(), owned.begin() + translators.size(), available)) return;
-            clear_locked();
-            translators_ = std::move(owned); catalog_generation_ = generation;
+            clear_locked(retired);
+            translators_.swap(owned); catalog_generation_ = generation;
         }
         ready_.notify_all();
     }
     void reset(uintptr_t world, uint64_t session) {
+        Reports retired;
         std::lock_guard<std::mutex> lock(mutex_);
         if (world_initialized_ && world_ == world && session_ == session) return;
-        clear_locked(); world_ = world; session_ = session;
+        clear_locked(retired); world_ = world; session_ = session;
         world_initialized_ = true;
     }
     void begin_viewport() {
@@ -395,6 +496,7 @@ public:
     }
     void forget(const Document &document) {
         if (!document) return;
+        Reports::node_type retired;
         std::lock_guard<std::mutex> lock(mutex_);
         if (world_ != document->world) return;
         const auto found = reports_.find(owner_key(*document));
@@ -406,11 +508,15 @@ public:
         for (const auto &[rgb, entry] : found->second.colors)
             if (entry.cancelled) entry.cancelled->store(true, std::memory_order_release);
         discard_dependencies_locked(found->first);
-        reports_.erase(found);
+        retired = reports_.extract(found);
         publish_change_locked(visible);
     }
     Result request(Document document, int foreground, bool urgent) {
         if (!document || !document->world || document->record_key.empty()) return {};
+        // Dropping an old publication can release its full source, frozen
+        // dictionaries and result layout. Its final owner leaves this scope
+        // only after the queue mutex, including on an early cache return.
+        std::vector<Entry> retired;
         std::unique_lock<std::mutex> lock(mutex_);
         if (stopping_) return {};
         if (document->worker_inputs && document->worker_inputs->semantic_generation !=
@@ -422,11 +528,50 @@ public:
         } else if (world_ != document->world || session_ != document->semantic_generation) return {};
         const std::string owner = owner_key(*document);
         auto &report = reports_[owner];
-        replace_version_locked(report, document);
-        auto &entry = report.colors[foreground];
+        replace_version_locked(report, document, retired);
+        auto &colored = report.colors[foreground];
+        if (urgent && viewport_depth_) colored.visible_epoch = viewport_epoch_;
+        if (colored.result) return colored.result;
+        if (colored.native_running) return {};
+        // A detached source has one uniform foreground. Share its parse and
+        // exact dependency frontier across history and every viewport color;
+        // changing a palette must not queue the same paragraph a second time.
+        auto &entry = report.colors[native_announcement_log_inherited_foreground];
         if (urgent && viewport_depth_) entry.visible_epoch = viewport_epoch_;
-        if (entry.result) return entry.result;
-        if (entry.native_running) return {};
+        if (entry.result) {
+            const auto color_template = entry.result;
+            const Job publication{owner, report.version,
+                native_announcement_log_inherited_foreground, entry.ticket, epoch_};
+            lock.unlock();
+            Result completed = color_template;
+            if (std::find(color_template->colors.begin(), color_template->colors.end(),
+                    native_announcement_log_inherited_foreground) != color_template->colors.end()) {
+                auto value = std::make_shared<NativeAnnouncementLogTranslationResult>(*color_template);
+                for (auto &color : value->colors)
+                    if (color == native_announcement_log_inherited_foreground) color = foreground;
+                completed = std::move(value);
+            }
+            // Output copying/tinting never holds the queue mutex, reads game
+            // state, or invokes a translator. Revalidate before publishing so
+            // a concurrent catalog/owner change cannot retain an old target.
+            lock.lock();
+            if (!entry_locked(publication)) { lock.unlock(); return {}; }
+            auto &current_report = reports_.find(owner)->second;
+            auto &current = current_report.colors[foreground];
+            if (current.result) {
+                auto result = current.result;
+                lock.unlock();
+                return result;
+            }
+            if (current.native_running) { lock.unlock(); return {}; }
+            current.document = current_report.document;
+            current.result = std::move(completed);
+            auto result = current.result;
+            lock.unlock();
+            return result;
+        }
+        // Jobs and dependency tickets always use the shared template slot.
+        foreground = native_announcement_log_inherited_foreground;
         if (!document->worker_inputs && !entry.queued && !entry.running) {
             // Native-completed notifications deliberately omit the costly
             // detached worker snapshot. A later new palette/view must obtain
@@ -435,7 +580,7 @@ public:
             if (!entry.needs_dependency) {
                 entry.document = document; entry.ticket = ++ticket_;
                 entry.needs_dependency = true;
-                publish_change_locked(entry);
+                publish_change_locked(false);
             }
             if (!report.dependency_requested && (!report.dependency_queued ||
                     (urgent && !report.dependency_urgent))) {
@@ -492,6 +637,7 @@ public:
             const NativeAnnouncementLogTranslator &resolve) {
         if (!document || !document->world || document->record_key.empty() || !resolve) return {};
         Job publication;
+        std::vector<Entry> retired;
         {
             std::lock_guard<std::mutex> lock(mutex_);
             if (stopping_) return {};
@@ -504,7 +650,7 @@ public:
             } else if (world_ != document->world || session_ != document->semantic_generation) return {};
             const std::string owner = owner_key(*document);
             auto &report = reports_[owner];
-            replace_version_locked(report, document);
+            replace_version_locked(report, document, retired);
             auto &entry = report.colors[foreground];
             // A detached parser's completed miss has not tried the live
             // report owner. Let the native producer resolve it once before
@@ -522,22 +668,24 @@ public:
             entry.native_result = false; entry.needs_dependency = false;
             entry.urgent_job = true;
             entry.promote = false; entry.requeue_normal_on_cancel = false;
-            entry.references.clear(); entry.document = document;
+            entry.references.reset(); entry.document = document;
             entry.ticket = ++ticket_;
             publication = {owner, report.version, foreground, entry.ticket, epoch_};
             discard_dependencies_locked(owner);
             report.dependency_requested = false; report.dependency_queued = false;
             report.dependency_urgent = false;
         }
+        retired.clear();
         Result completed;
         bool dependency = false;
-        std::vector<NativeAnnouncementLogReferenceRequest> references;
+        References references;
         try {
             auto value = resolve(*document, foreground);
             // Unfinished native resolution must not become a permanent miss.
             dependency = value.needs_owned_dependency;
-            if (dependency) references = std::move(value.reference_requests);
-            else
+            if (dependency && !value.reference_requests.empty())
+                references = std::make_shared<const ReferenceList>(std::move(value.reference_requests));
+            if (!dependency)
                 completed = std::make_shared<const NativeAnnouncementLogTranslationResult>(std::move(value));
         } catch (...) {
             std::lock_guard<std::mutex> lock(mutex_);
@@ -559,7 +707,7 @@ public:
                 } else if (dependency) {
                     entry->needs_dependency = true;
                     entry->references = std::move(references);
-                    publish_change_locked(*entry);
+                    publish_change_locked(false);
                     auto &report = reports_.find(publication.owner)->second;
                     if (!report.dependency_requested &&
                             (!report.dependency_queued || !report.dependency_urgent)) {
@@ -573,58 +721,86 @@ public:
     std::vector<NativeAnnouncementLogDependency> dependencies(size_t maximum) {
         std::vector<NativeAnnouncementLogDependency> result;
         if (!maximum) return result;
-        std::lock_guard<std::mutex> lock(mutex_);
-        result.reserve(std::min(maximum, dependencies_.size()));
-        const auto now = std::chrono::steady_clock::now();
-        size_t remaining = std::min(dependencies_.size(), std::max(size_t{32}, maximum * 8));
-        while (remaining && !dependencies_.empty() && result.size() < maximum) {
-            --remaining;
-            Job job = std::move(dependencies_.front());
-            if (const auto found = reports_.find(job.owner); found != reports_.end()) {
-                found->second.dependency_position.reset();
-                found->second.dependency_queued = false;
-                found->second.dependency_urgent = false;
-            }
-            dependencies_.pop_front();
-            auto *entry = entry_locked(job);
-            if (entry && entry->needs_dependency) {
-                auto &report = reports_.find(job.owner)->second;
-                if (!report.dependency_requested && report.dependency_retry_at > now) {
-                    enqueue_dependency_locked(std::move(job), report, false);
-                    continue;
+        struct Pending { Document document; References references; };
+        std::vector<Pending> pending;
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            pending.reserve(std::min(maximum, dependencies_.size()));
+            const auto now = std::chrono::steady_clock::now();
+            size_t remaining = std::min(dependencies_.size(), std::max(size_t{32}, maximum * 8));
+            while (remaining && !dependencies_.empty() && pending.size() < maximum) {
+                --remaining;
+                Job job = std::move(dependencies_.front());
+                if (const auto found = reports_.find(job.owner); found != reports_.end()) {
+                    found->second.dependency_position.reset();
+                    found->second.dependency_queued = false;
+                    found->second.dependency_urgent = false;
                 }
-                report.dependency_queued = false;
-                report.dependency_urgent = false;
-                if (!report.dependency_requested) {
-                    result.push_back({entry->document, entry->references});
-                    report.dependency_requested = true;
-                    discard_dependencies_locked(job.owner);
+                dependencies_.pop_front();
+                auto *entry = entry_locked(job);
+                if (entry && entry->needs_dependency) {
+                    auto &report = reports_.find(job.owner)->second;
+                    if (!report.dependency_requested && report.dependency_retry_at > now) {
+                        enqueue_dependency_locked(std::move(job), report, false);
+                        continue;
+                    }
+                    report.dependency_queued = false;
+                    report.dependency_urgent = false;
+                    if (!report.dependency_requested) {
+                        pending.push_back({entry->document, entry->references});
+                        report.dependency_requested = true;
+                        discard_dependencies_locked(job.owner);
+                    }
                 }
             }
+        }
+        // Requests can retain full entity/item source strings. Snapshot only
+        // their immutable owner under the queue mutex; native consumers copy
+        // those bytes without blocking viewport requests or worker completion.
+        try {
+            result.reserve(pending.size());
+            for (const auto &entry : pending)
+                result.push_back({entry.document, entry.references ? *entry.references : ReferenceList{}});
+        } catch (...) {
+            for (const auto &entry : pending) release_dependency(entry.document, false);
+            throw;
         }
         return result;
     }
     std::optional<NativeAnnouncementLogDependency> visible_dependency(const Document &document) {
         if (!document) return std::nullopt;
-        std::lock_guard<std::mutex> lock(mutex_);
-        if (stopping_ || world_ != document->world) return std::nullopt;
-        const auto found = reports_.find(owner_key(*document));
-        if (found == reports_.end() || found->second.version != document->record_key ||
-                found->second.dependency_requested ||
-                found->second.dependency_retry_at > std::chrono::steady_clock::now())
-            return std::nullopt;
-        auto &report = found->second;
-        for (const auto &[foreground, entry] : report.colors) {
-            if (!entry.needs_dependency || !entry.document) continue;
-            NativeAnnouncementLogDependency result{entry.document, entry.references};
-            // Claiming a visible dependency consumes its queued ticket too.
-            // Retaining old tickets here would fill the preheat capacity even
-            // after all actual dependency work had already been completed.
-            discard_dependencies_locked(found->first);
-            report.dependency_requested = true;
-            report.dependency_queued = false;
-            report.dependency_urgent = false;
-            return result;
+        Document claimed;
+        References references;
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            if (stopping_ || world_ != document->world) return std::nullopt;
+            const auto found = reports_.find(owner_key(*document));
+            if (found == reports_.end()) return std::nullopt;
+            const bool current = found->second.version == document->record_key ||
+                (found->second.native_version == document->native_record_key &&
+                    found->second.input_ancestors.contains(document->record_key));
+            if (!current || found->second.dependency_requested ||
+                    found->second.dependency_retry_at > std::chrono::steady_clock::now())
+                return std::nullopt;
+            auto &report = found->second;
+            for (const auto &[foreground, entry] : report.colors) {
+                if (!entry.needs_dependency || !entry.document) continue;
+                claimed = entry.document;
+                references = entry.references;
+                // Claiming a visible dependency consumes its queued ticket
+                // too, before releasing the mutex for the request copy.
+                discard_dependencies_locked(found->first);
+                report.dependency_requested = true;
+                report.dependency_queued = false;
+                report.dependency_urgent = false;
+                break;
+            }
+        }
+        if (claimed) try {
+            return NativeAnnouncementLogDependency{claimed, references ? *references : ReferenceList{}};
+        } catch (...) {
+            release_dependency(claimed, false);
+            throw;
         }
         return std::nullopt;
     }

@@ -85,12 +85,15 @@ native_announcement_log_worker_raw_creature_labels();
 static std::shared_ptr<const DfhackRawCreatureLabels>
 native_announcement_log_worker_raw_creature_adjectives();
 
-static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature_labels() {
+static std::shared_ptr<const DfhackRawCreatureLabels>
+native_dfhack_raw_creature_labels_capture(bool allow_build) {
     if (native_announcement_log_worker_running())
         return native_announcement_log_worker_raw_creature_labels();
     static std::mutex mutex;
     static std::array<uintptr_t, 5> stamp{};
     static std::shared_ptr<const DfhackRawCreatureLabels> cached;
+    static std::shared_ptr<DfhackRawCreatureLabels> pending;
+    static size_t cursor = 0;
     std::lock_guard<std::mutex> lock(mutex);
     const uintptr_t address = native_history_page_address(NativeHistoryPageSymbol::Creatures);
     NativeBorrowedVector<uintptr_t> creatures;
@@ -99,6 +102,7 @@ static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature
             !native_history_copy(native_history_global(0x24ebb58), world)) {
         stamp = {};
         cached.reset();
+        pending.reset(); cursor = 0;
         return {};
     }
     const std::array<uintptr_t, 5> current{world, reinterpret_cast<uintptr_t>(creatures.begin),
@@ -106,10 +110,19 @@ static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature
         creatures.size() ? native_history_vector_at(creatures, 0) : 0,
         creatures.size() ? native_history_vector_at(creatures, creatures.size() - 1) : 0};
     if (cached && current == stamp) return cached;
-    auto labels = std::make_shared<DfhackRawCreatureLabels>();
-    labels->reserve(creatures.size());
-    for (size_t index = 0; index < creatures.size(); ++index) {
-        const uintptr_t creature = native_history_vector_at(creatures, index);
+    if (!allow_build) return {};
+    if (!pending || current != stamp) {
+        cached.reset();
+        pending = std::make_shared<DfhackRawCreatureLabels>();
+        pending->reserve(creatures.size());
+        cursor = 0; stamp = current;
+    }
+    bool progressed = false;
+    while (cursor < creatures.size()) {
+        if (progressed && g_native_announcement_log_native_capture_deadline &&
+                std::chrono::steady_clock::now() >= *g_native_announcement_log_native_capture_deadline)
+            throw NativeAnnouncementLogNativeCapturePending{};
+        const uintptr_t creature = native_history_vector_at(creatures, cursor);
         std::string id, name;
         if (!creature || !native_history_copy_string(native_history_object_field(
                 creature, "creature_raw", 0, sizeof(NativeString)), id) ||
@@ -117,24 +130,32 @@ static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature
                     creature, "creature_raw", 0x20, sizeof(NativeString)), name)) {
             stamp = {};
             cached.reset();
+            pending.reset(); cursor = 0;
             return {};
         }
-        if (!id.empty() && !name.empty()) labels->insert_or_assign(id, native_text_to_utf8(name));
+        if (!id.empty() && !name.empty()) pending->insert_or_assign(id, native_text_to_utf8(name));
+        ++cursor; progressed = true;
     }
-    stamp = current;
-    cached = std::move(labels);
+    cached = std::move(pending);
     return cached;
+}
+static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature_labels() {
+    return native_dfhack_raw_creature_labels_capture(true);
 }
 
 // creature_raw.name is a bound array of three consecutive NativeString values.
 // Resolve both elements through that array field, rather than assuming an
 // edition-specific object offset. This owned map is captured on the render side.
-static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature_adjectives() {
+static std::shared_ptr<const DfhackRawCreatureLabels>
+native_dfhack_raw_creature_adjectives_capture(bool allow_build) {
     if (native_announcement_log_worker_running())
         return native_announcement_log_worker_raw_creature_adjectives();
     static std::mutex mutex;
     static std::array<uintptr_t, 5> stamp{};
     static std::shared_ptr<const DfhackRawCreatureLabels> cached;
+    static std::shared_ptr<DfhackRawCreatureLabels> pending;
+    static std::unordered_set<std::string> ambiguous;
+    static size_t cursor = 0;
     std::lock_guard<std::mutex> lock(mutex);
     const uintptr_t address = native_history_page_address(NativeHistoryPageSymbol::Creatures);
     NativeBorrowedVector<uintptr_t> creatures;
@@ -143,6 +164,7 @@ static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature
             !native_history_copy(native_history_global(0x24ebb58), world)) {
         stamp = {};
         cached.reset();
+        pending.reset(); ambiguous.clear(); cursor = 0;
         return {};
     }
     const std::array<uintptr_t, 5> current{world, reinterpret_cast<uintptr_t>(creatures.begin),
@@ -150,13 +172,21 @@ static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature
         creatures.size() ? native_history_vector_at(creatures, 0) : 0,
         creatures.size() ? native_history_vector_at(creatures, creatures.size() - 1) : 0};
     if (cached && current == stamp) return cached;
-    auto labels = std::make_shared<DfhackRawCreatureLabels>();
-    labels->reserve(creatures.size());
-    std::unordered_set<std::string> ambiguous;
+    if (!allow_build) return {};
+    if (!pending || current != stamp) {
+        cached.reset();
+        pending = std::make_shared<DfhackRawCreatureLabels>();
+        pending->reserve(creatures.size());
+        ambiguous.clear(); cursor = 0; stamp = current;
+    }
     constexpr size_t name_coordinate = 0x20;
     constexpr size_t adjective_coordinate = name_coordinate + 2 * sizeof(NativeString);
-    for (size_t index = 0; index < creatures.size(); ++index) {
-        const uintptr_t creature = native_history_vector_at(creatures, index);
+    bool progressed = false;
+    while (cursor < creatures.size()) {
+        if (progressed && g_native_announcement_log_native_capture_deadline &&
+                std::chrono::steady_clock::now() >= *g_native_announcement_log_native_capture_deadline)
+            throw NativeAnnouncementLogNativeCapturePending{};
+        const uintptr_t creature = native_history_vector_at(creatures, cursor);
         std::string name, adjective;
         if (!creature || !native_history_copy_string(native_history_object_field(
                 creature, "creature_raw", name_coordinate, sizeof(NativeString)), name) ||
@@ -164,20 +194,25 @@ static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature
                     creature, "creature_raw", adjective_coordinate, sizeof(NativeString)), adjective)) {
             stamp = {};
             cached.reset();
+            pending.reset(); ambiguous.clear(); cursor = 0;
             return {};
         }
         std::string key = lower(native_text_to_utf8(adjective));
         std::string value = native_text_to_utf8(name);
+        ++cursor; progressed = true;
         if (key.empty() || value.empty() || ambiguous.contains(key)) continue;
-        const auto found = labels->find(key);
-        if (found == labels->end()) {
-            labels->emplace(std::move(key), std::move(value));
+        const auto found = pending->find(key);
+        if (found == pending->end()) {
+            pending->emplace(std::move(key), std::move(value));
         } else if (found->second != value) {
-            labels->erase(found);
+            pending->erase(found);
             ambiguous.insert(std::move(key));
         }
     }
-    stamp = current;
-    cached = std::move(labels);
+    cached = std::move(pending);
+    ambiguous.clear();
     return cached;
+}
+static std::shared_ptr<const DfhackRawCreatureLabels> native_dfhack_raw_creature_adjectives() {
+    return native_dfhack_raw_creature_adjectives_capture(true);
 }

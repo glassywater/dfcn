@@ -43,8 +43,10 @@ static NativeAnnouncementLogItemFieldResult native_announcement_log_closed_item_
     // whenever a worker switches between those immutable snapshots.
     const bool frozen_inputs = bool(document->worker_inputs);
     scalar(key, frozen_inputs);
-    if (frozen_inputs)
+    if (frozen_inputs) {
+        scalar(key, bool(document->worker_inputs->instrument_names));
         scalar(key, document->worker_inputs->instrument_names_fingerprint);
+    }
     const auto *owned = document->owned_fields.get();
     if (owned && owned->world == document->world && owned->type == document->report.type &&
             owned->report_id == document->report.id) {

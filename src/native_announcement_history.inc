@@ -180,12 +180,16 @@ struct NativeAnnouncementLogRetainedDocument {
     size_t bytes = 0;
 };
 struct NativeAnnouncementLogDocumentCache {
+    struct Entry {
+        std::shared_ptr<const NativeAnnouncementLogRetainedDocument> record;
+        std::list<uintptr_t>::iterator use;
+    };
     uintptr_t owner = 0, world = 0;
     uint64_t generation = 0;
     NativeBorrowedVector<uintptr_t> vector;
     uint64_t next_sequence = 0;
-    std::unordered_map<uintptr_t, std::shared_ptr<const NativeAnnouncementLogRetainedDocument>> documents;
-    std::deque<uintptr_t> order;
+    std::unordered_map<uintptr_t, Entry> documents;
+    std::list<uintptr_t> order;
     // One currently viewed document may exceed the ordinary byte budget.
     // Retain it separately so scrolling within it does not recreate the
     // complete source and document on every native frame.
@@ -430,9 +434,9 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
         if (cache.large_document && cache.large_document->document->parent == parent)
             cache.large_document.reset();
         if (const auto found = cache.documents.find(parent); found != cache.documents.end()) {
-            cache.bytes -= found->second->bytes;
+            cache.bytes -= found->second.record->bytes;
+            cache.order.erase(found->second.use);
             cache.documents.erase(found);
-            std::erase(cache.order, parent);
         }
     };
     std::unordered_map<uintptr_t, std::shared_ptr<const NativeAnnouncementLogRetainedDocument>> current;
@@ -447,7 +451,12 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
             NativeAnnouncementLogParentVersion version;
             if (!version_of(parent, version)) return {};
             if (const auto found = cache.documents.find(parent); found != cache.documents.end()) {
-                if (found->second->version == version) retained = found->second;
+                if (found->second.record->version == version) {
+                    retained = found->second.record;
+                    // Rapid back-and-forth scrolling keeps the working set
+                    // hot; insertion order must not evict recently used rows.
+                    cache.order.splice(cache.order.end(), cache.order, found->second.use);
+                }
                 else forget(parent);
             }
             if (!retained && cache.large_document &&
@@ -524,7 +533,11 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                 }
                 const auto heated = native_announcement_log_preheated_document(parent, world, version);
                 auto document = heated ? std::make_shared<NativeAnnouncementLogDocument>(*heated)
-                    : native_announcement_log_freeze_document(parent, world, version);
+                    : native_announcement_log_freeze_document(parent, world, version, false);
+                // Visible capture owns only this report and its row bounds.
+                // A missing input snapshot enters the dependency queue; the
+                // bounded native input pump fills it after this draw instead
+                // of freezing every cold report synchronously during a drag.
                 if (!document) return {};
                 auto incoming = std::make_shared<NativeAnnouncementLogRetainedDocument>();
                 incoming->version = version;
@@ -550,7 +563,8 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                     try {
                         cache.order.push_back(parent);
                         try {
-                            if (cache.documents.emplace(parent, retained).second) cache.bytes += bytes;
+                            if (cache.documents.emplace(parent, NativeAnnouncementLogDocumentCache::Entry{
+                                    retained, std::prev(cache.order.end())}).second) cache.bytes += bytes;
                             else cache.order.pop_back();
                         } catch (...) { cache.order.pop_back(); throw; }
                     } catch (const std::bad_alloc &) { /* The current owned document remains drawable. */ }
@@ -575,7 +589,9 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                 document->owned_fields = fields; document->history_event = std::move(history);
                 document->history_event_publication = publication;
                 document->speech = std::move(speech);
-                document->worker_inputs = native_announcement_log_freeze_worker_inputs(*document);
+                // The new typed publication gets its own inputs through the
+                // dependency pump, just like a newly visible cold report.
+                document->worker_inputs.reset();
                 cache.next_sequence = cache.next_sequence == UINT64_MAX ? 1 : cache.next_sequence + 1;
                 document->sequence = cache.next_sequence;
                 native_announcement_log_freeze_key(*document);
@@ -587,9 +603,9 @@ static std::vector<NativeAnnouncementLogVisibleRecord> native_announcement_log_p
                     forget(parent);
                     cache.large_document = updated;
                 } else if (const auto found = cache.documents.find(parent);
-                        found != cache.documents.end() && found->second == retained) {
-                    cache.bytes -= found->second->bytes;
-                    found->second = updated; cache.bytes += updated->bytes;
+                        found != cache.documents.end() && found->second.record == retained) {
+                    cache.bytes -= found->second.record->bytes;
+                    found->second.record = updated; cache.bytes += updated->bytes;
                     while (cache.bytes > 8 * 1024 * 1024 && !cache.order.empty()) forget(cache.order.front());
                 } else if (cache.large_document == retained) cache.large_document = updated;
                 retained = std::move(updated);
