@@ -166,8 +166,8 @@ kind	vampire	吸血鬼
 kind	vampires	吸血鬼
 kind	warrior	战士
 kind	warriors	战士
-kind	werebeast	狂化生物
-kind	werebeasts	狂化生物
+kind	werebeast	被兽化诅咒的生物
+kind	werebeasts	被兽化诅咒的生物
 kind	wolf	狼
 kind	wolves	狼
 kind	woman	女子
@@ -693,4 +693,4 @@ were_alias	monitor lizard	巨蜥
 # Shared identity prefixes retain the established creature/material wording.
 size_prefix	giant	巨型
 size_prefix	gigantic	巨型
-form_prefix	were	狂化
+form_prefix	were	被兽化诅咒的

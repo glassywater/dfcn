@@ -7534,8 +7534,8 @@ int Overlay::procedural_name_self_test() {
             translated->begin(), translated->end(), [](unsigned char ch) {
                 return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
             });
-        if (!translated || !translated->starts_with("狂化") ||
-            *translated == "狂化生物" || contains_latin) {
+        if (!translated || !translated->starts_with("被兽化诅咒的") ||
+            *translated == "被兽化诅咒的生物" || contains_latin) {
             log_line("ERROR", "Were-creature self-test mismatch for " + source +
                                   ": got " +
                                   (translated ? *translated : "<none>"));
@@ -7543,17 +7543,17 @@ int Overlay::procedural_name_self_test() {
         }
     }
     const auto gila_were = translate_procedural_fragment("Weregila monster");
-    if (!gila_were || *gila_were != "狂化钝尾毒蜥") return 42;
+    if (!gila_were || *gila_were != "被兽化诅咒的钝尾毒蜥") return 42;
     const auto modded_were =
         translate_procedural_fragment("Wereclockwork cave crocodile");
-    if (!modded_were || !modded_were->starts_with("狂化") ||
-        *modded_were == "狂化生物") return 43;
+    if (!modded_were || !modded_were->starts_with("被兽化诅咒的") ||
+        *modded_were == "被兽化诅咒的生物") return 43;
     const std::array<std::string_view, 4> ordinary_were_text = {{
         "Were", "Were going", "Weren't", "Werebeast Attack Population Rating",
     }};
     for (size_t index = 0; index < ordinary_were_text.size(); ++index) {
         if (translate_procedural_fragment(std::string(ordinary_were_text[index])) ==
-            std::optional<std::string>("狂化生物")) {
+            std::optional<std::string>("被兽化诅咒的生物")) {
             log_line("ERROR", "Were-creature false positive for " +
                                   std::string(ordinary_were_text[index]));
             return static_cast<int>(44 + index);
@@ -9397,7 +9397,7 @@ static std::optional<std::string_view> fixed_arena_condition_translation(
     static constexpr std::array<std::pair<std::string_view, std::string_view>, 8>
         conditions = {{
             {"Tame/mountable", "已驯服/可骑乘"},
-            {"Werebeast", "狂化生物"},
+            {"Werebeast", "被兽化诅咒的生物"},
             {"Necromancer", "死灵法师"},
             {"Animated corpse", "活尸"},
             {"Cursed", "受诅咒"},
@@ -10704,8 +10704,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // DF forms every cursed creature name by joining "Were" directly to the
     // lower-case species name (Weregila monster, Werewolf, ...).  Resolve that
     // grammar once so all vanilla species and mod-added species are covered,
-    // while retaining the species identity (狂化毒蜥, 狂化狼, ...) rather than
-    // collapsing every row to the unhelpful generic label “狂化生物”.
+    // while retaining the species identity (被兽化诅咒的毒蜥, 被兽化诅咒的狼, ...)
+    // rather than collapsing every row to the generic label “被兽化诅咒的生物”.
     // Requiring a lower-case letter immediately after "Were" and lower-case
     // name words thereafter keeps ordinary prose and setting labels such as
     // "Were going" and "Werebeast Attack ..." outside this rule.
@@ -23605,10 +23605,12 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 matched_end = candidate_end;
                 translated_species = translated;
             }
+            const auto were_name_prefix = creature_name_form_prefix.find("were");
+            if (were_name_prefix == creature_name_form_prefix.end()) continue;
             candidates.push_back({
                 static_cast<int>(start), y,
                 static_cast<int>(matched_end - start), -7,
-                std::string("狂化") + std::string(*translated_species),
+                std::string(were_name_prefix->second) + std::string(*translated_species),
                 row.substr(start, matched_end - start),
             });
             start = matched_end - 1;
@@ -44463,7 +44465,7 @@ DFCN_EXPORT int dfcn_ruleset_self_test() {
         dfcn::translate_arena_equipment_source_phrase(
             "bulky werecoati leather capes");
     if (!bulky_werecoati ||
-        *bulky_werecoati != "狂化长鼻浣熊皮革质厚重披风") {
+        *bulky_werecoati != "被兽化诅咒的长鼻浣熊皮革质厚重披风") {
         rulesets.shutdown();
         return 12;
     }
@@ -44471,7 +44473,7 @@ DFCN_EXPORT int dfcn_ruleset_self_test() {
         dfcn::translate_arena_equipment_source_phrase(
             "bulky weremonitor leather tunics");
     if (!bulky_weremonitor ||
-        *bulky_weremonitor != "狂化巨蜥皮革质厚重短袍") {
+        *bulky_weremonitor != "被兽化诅咒的巨蜥皮革质厚重短袍") {
         rulesets.shutdown();
         return 13;
     }

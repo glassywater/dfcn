@@ -1290,7 +1290,7 @@ frozen serpent man venom	冻结的地底蛇人毒液	wi
 boiling serpent man venom	沸腾的地底蛇人毒液	wi
 serpent man bite	地底蛇人咬伤	wi
 sea nettle jellyfish	海荨麻水母	wi
-weregila monster	狂化钝尾毒蜥	wi
+weregila monster	被兽化诅咒的钝尾毒蜥	wi
 Fighter	战士	wi
 Archer	射手	wi
 Knife User	短刀手	wi
@@ -3504,7 +3504,7 @@ Custom settings	自定义设置
 # Fortress mode: complete custom difficulty settings
 Civilizations can attack	政权可以发动袭击
 Megabeasts can attack	巨兽可以来袭
-Werebeasts can attack	狂化生物可以来袭
+Werebeasts can attack	被兽化诅咒的生物可以来袭
 Curious wilderness creatures can come to cause trouble	好奇的荒野生物可以前来捣乱
 Enemy/merchant population trigger {d}	敌人/商人人口阈值 {d}	wt
 Enemy/merchant production trigger {d}	敌人/商人创造财富阈值 {d}	wt
@@ -3516,7 +3516,7 @@ Forgotten beast wealth divisor (more = safer)	遗忘猛兽财富除数（越高�
 Wilderness sensitivity (less = sooner)	荒野敏感度（越低越早来袭）
 Wilderness irritation minimum (less = sooner)	荒野激怒值下限（越低越早来袭）
 Wilderness irritation decay (more = safer)	荒野激怒值衰减（越高越安全）
-Werebeast attack period (seasons)	狂化生物来袭间隔（季度）
+Werebeast attack period (seasons)	被兽化诅咒的生物来袭间隔（季度）
 Vampire migrant fraction (more = safer)	吸血鬼移民比例分母（越高越安全）
 Invasion creature cap (excluding mounts)	入侵生物数量上限（不含坐骑）
 Invasion difficulty (first)	入侵难度（第一轮）
@@ -3899,8 +3899,8 @@ Number of Night Troll Types	夜行巨魔种类数量	l
 Number of Bogeyman Types	夜魔种类数量	l
 Number of Nightmare Types	梦魇种类数量	l
 Number of Vampire Curse Types	吸血鬼诅咒种类数量	l
-Number of Werebeast Curse Types	狂化生物种类数量
-Werebeast Attack Population Rating	狂化生物来袭人口阈值
+Number of Werebeast Curse Types	被兽化诅咒的生物种类数量
+Werebeast Attack Population Rating	被兽化诅咒的生物来袭人口阈值
 Medium	中等	w
 Large	大	w
 {d} years	{d} 年	wt
@@ -4452,8 +4452,8 @@ Minimum Final Forest Region Count	最终森林区域最少数量
 Minimum Initial Ocean Square Count	初始海洋方格最少数量
 Minimum Initial Ocean Region Count	初始海洋区域最少数量
 Minimum Final Ocean Region Count	最终海洋区域最少数量
-Werebeast Attack Exported Wealth Rating	狂化生物来袭出口财富阈值
-Werebeast Attack Created Wealth Rating	狂化生物来袭创造财富阈值
+Werebeast Attack Exported Wealth Rating	被兽化诅咒的生物来袭出口财富阈值
+Werebeast Attack Created Wealth Rating	被兽化诅咒的生物来袭创造财富阈值
 Number of Secret Types	秘密种类数量
 Number of Regional Interaction Types	区域性互动种类数量
 Number of Disturbance Interaction Types	侵扰性互动种类数量
@@ -5821,7 +5821,7 @@ Vermin escaped from cage	害虫逃出笼子	w
 (Strange mood) Building claimed	奇异心境：占用建筑	w
 Artifact construction begun	开始制作造物	w
 Megabeast	巨兽来袭	w
-Werebeast	狂化生物来袭	w
+Werebeast	被兽化诅咒的生物来袭	w
 Regular beast	野兽来袭	w
 Berserk	陷入狂暴	w
 Magma defaced engraving	岩浆毁坏雕刻	w
