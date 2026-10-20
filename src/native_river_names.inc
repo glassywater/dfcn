@@ -155,11 +155,18 @@ struct NativeRiverPending {
     uint64_t epoch = 0;
     NativeRiverNameFact fact;
 };
-static thread_local NativeRiverPending g_native_river_pending;
+static NativeRiverPending &native_river_pending() {
+    // The captured identity owns strings. A thread-exit destructor would hold
+    // the core DLL after shutdown and block Shift+F5 from loading it again.
+    // Keep ownership in this core and only a trivial pointer in the TLS slot.
+    return reloadable_thread_state<NativeRiverPending, struct NativeRiverPendingTag>();
+}
+
 static void capture_native_river_english(const void *river, NativeString *output,
         bool capitalized, bool unused) {
     NativeInputCallbackScope callback;
-    g_native_river_pending = {};
+    auto &pending = native_river_pending();
+    pending = {};
     const uintptr_t base = native_history_profile_base();
 #ifdef _WIN32
     const auto original = reinterpret_cast<NativeUnitIdentityEnglishNameFn>(
@@ -173,9 +180,9 @@ static void capture_native_river_english(const void *river, NativeString *output
         const auto identity = capture_native_river_identity(reinterpret_cast<uintptr_t>(river));
         std::string_view full;
         if (native_string_view(output, &full, 4096) && !full.empty()) {
-            g_native_river_pending.buffer = output;
-            g_native_river_pending.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
-            g_native_river_pending.fact = {
+            pending.buffer = output;
+            pending.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
+            pending.fact = {
                 identity.value_or(RiverNameIdentity{}), RiverDisplayField::English, std::string(full)};
         }
     } catch (...) {}
@@ -185,8 +192,9 @@ static void capture_native_river_name_draw(graphicst *graphics, const NativeStri
         NativeJustification just, int width) {
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
     NativeInputCallbackScope callback;
-    auto pending = std::move(g_native_river_pending);
-    g_native_river_pending = {};
+    auto &state = native_river_pending();
+    auto pending = std::move(state);
+    state = {};
     const bool owned = pending.buffer == source &&
         pending.epoch == g_embark_item_capture_epoch.load(std::memory_order_acquire);
     NativeRiverNameFactScope scope(owned ? &pending.fact : nullptr);
