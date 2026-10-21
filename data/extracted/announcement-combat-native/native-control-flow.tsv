@@ -10000,6 +10000,356 @@ reference	creature-appearance	0x140717d30	0x14071a29a	jno    0x14071a29c
 reference	creature-appearance	0x140717d30	0x14071a2aa	jno    0x14071a2ac
 reference	creature-appearance	0x140717d30	0x14071a2ac	cmp    esp,DWORD PTR [rax-0x5f98ff8f]
 reference	creature-appearance	0x140717d30	0x14071a2b2	jno    0x14071a2b4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408020f2	test   BYTE PTR [rcx+0x43c0],0x1
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408020f9	jne    0x1408029e3
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802107	test   rax,0xfffffffffffffff8
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080210d	je     0x1408029e3
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802121	cmp    BYTE PTR [rip+0x1b8e4ad],0x0        # 0x1423905d5
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802128	je     0x14080213c
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802193	cmp    rax,rcx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802196	je     0x1408021d6
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802198	jae    0x1408021c5
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408021a1	cmp    DWORD PTR [r8+0x64],r15d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408021a5	jne    0x1408021ad
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408021ab	jmp    0x140802193
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408021c3	jmp    0x1408021e8
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408021d4	jmp    0x1408021e1
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408021f5	cmp    ecx,DWORD PTR [rip+0x1b8ea05]        # 0x142390c00
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802207	test   r8b,r8b
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080220a	je     0x140802211
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080220c	cmp    ecx,eax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802219	test   BYTE PTR [r13+0x43c0],0x2
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802221	jne    0x140802238
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080222a	test   rax,rax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080222d	je     0x140802240
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080222f	test   BYTE PTR [rax+0x110],0x2
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802236	je     0x140802240
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802245	cmp    r12d,edi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802248	jl     0x140802315
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802253	cmp    r14d,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802256	jg     0x14080230a
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080227d	cmp    edi,0x6
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802280	jne    0x1408022aa
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802282	cmp    ebx,r14d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802285	jne    0x14080228f
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080228d	jmp    0x1408022f4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802296	cmp    ebx,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802298	jne    0x1408022a2
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022a0	jmp    0x1408022fb
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022a8	jmp    0x1408022fb
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022aa	cmp    edi,r12d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022ad	jne    0x1408022d7
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022af	cmp    ebx,r14d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022b2	jne    0x1408022bc
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022ba	jmp    0x1408022f4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022c3	cmp    ebx,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022c5	jne    0x1408022cf
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022cd	jmp    0x1408022fb
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022d5	jmp    0x1408022fb
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022d7	cmp    ebx,r14d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022da	jne    0x1408022e4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022e2	jmp    0x1408022f4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022e4	cmp    ebx,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408022ec	je     0x1408022f4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802302	cmp    ebx,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802304	jle    0x140802260
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080230c	cmp    edi,r12d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080230f	jle    0x140802250
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802324	test   BYTE PTR [r13+0x43c0],0x2
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080232c	jne    0x140802343
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802335	test   rax,rax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802338	je     0x140802348
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080233a	test   BYTE PTR [rax+0x110],0x2
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802341	je     0x140802348
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802360	cmp    eax,edx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802362	jle    0x14080236a
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802379	cmp    ecx,eax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802384	test   eax,eax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080238c	cmp    ecx,DWORD PTR [r13+0x43cc]
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802393	jle    0x14080239c
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408023a9	cmp    ebx,eax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408023ab	jge    0x140802746
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408023d5	cmp    ebx,eax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408023d7	jge    0x14080273d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802400	cmp    ebx,eax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802402	jne    0x14080240c
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080240c	cmp    BYTE PTR [rip+0x1b8e1c2],0x0        # 0x1423905d5
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802413	je     0x140802441
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802415	cmp    DWORD PTR [rbp-0x19],r12d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802419	jne    0x140802441
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080241e	cmp    eax,r8d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802421	jl     0x140802441
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802423	cmp    eax,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802425	jg     0x140802441
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802432	cmp    eax,0xffffffff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802435	je     0x140802441
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802467	cmp    r8d,0xffffffff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080246b	je     0x140802504
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802474	test   r10b,r10b
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802490	test   rax,rax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802493	je     0x1408024b9
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080249c	test   rax,rax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080249f	je     0x1408024b9
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024a1	cmp    DWORD PTR [rax+0x130],r8d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024a8	jne    0x1408024b9
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024b7	jmp    0x1408024fa
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024d3	cmp    eax,r8d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024d6	je     0x1408024ee
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024d8	cmp    eax,0xffffffff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024db	je     0x1408024e6
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024df	cmp    ecx,0x9
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024e2	jl     0x1408024c0
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024e4	jmp    0x140802504
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802511	test   ecx,ecx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802513	jle    0x14080251e
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802515	test   BYTE PTR [rdx],0x1
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802518	jne    0x1408025ff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802539	test   r9,r9
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080253c	je     0x1408025ff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080256a	test   r9d,r9d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080256d	je     0x1408025c4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080256f	cmp    r11d,0xffffffff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802573	je     0x1408025c4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080257b	js     0x1408025aa
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080258d	cmp    DWORD PTR [r10+0x130],r11d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802594	je     0x1408025ad
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408025a6	cmp    edx,eax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408025a8	jle    0x140802580
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408025ad	test   r10,r10
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408025b0	je     0x1408025c4
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408025c2	jmp    0x1408025cb
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802603	test   ecx,ecx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802605	jle    0x14080260c
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802607	test   BYTE PTR [rdx],0x1
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080260a	jne    0x140802625
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080261b	cmp    DWORD PTR [rax+0x64],0xffffffff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080261f	je     0x140802625
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802629	cmp    BYTE PTR [rbp-0x29],0x0
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802671	test   BYTE PTR [rax+0x30],0x1
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802675	jne    0x1408026d9
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802677	cmp    DWORD PTR [rax+0x64],0xffffffff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080267b	jne    0x1408026d9
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802681	test   rcx,rcx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802684	jne    0x1408026b3
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802690	cmp    ecx,edx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408026b1	jmp    0x1408026fc
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408026ba	cmp    eax,edx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408026d7	jmp    0x140802700
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408026f1	cmp    QWORD PTR [rdx+0x10],0x0
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408026f6	jne    0x140802700
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802725	cmp    ebx,DWORD PTR [rbp-0x9]
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802737	jl     0x1408023c0
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802758	cmp    ecx,edx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080275a	jle    0x1408027ba
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408027ba	cmp    r15d,0xffffffff
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408027be	je     0x1408028ac
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408027d9	test   r8d,r8d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408027dc	je     0x1408028ac
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408027e8	js     0x14080281b
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408027fd	cmp    DWORD PTR [rbx+0x130],r15d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802804	je     0x14080281d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802816	cmp    edx,r8d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802819	jle    0x1408027f0
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080281d	test   rbx,rbx
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802820	je     0x1408028ac
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802826	cmp    DWORD PTR [rip+0x1bcaf4b],0x0        # 0x1423cd778
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080282d	jle    0x1408028ac
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802836	test   BYTE PTR [rax],0x1
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802839	je     0x1408028ac
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080283b	cmp    DWORD PTR [rbx+0x142c],0x0
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802842	je     0x140802850
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802844	test   DWORD PTR [rbx+0x11c],0x4000
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080284e	je     0x140802858
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802858	cmp    DWORD PTR [rbx+0x142c],0x0
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080285f	je     0x1408028ac
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408028ac	test   BYTE PTR [r13+0x43c0],0x2
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408028b4	jne    0x1408028d3
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408028bd	test   rax,rax
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408028c0	je     0x1408029e3
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408028c6	test   BYTE PTR [rax+0x110],0x2
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408028cd	je     0x1408029e3
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408028eb	cmp    r14d,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408028ee	jg     0x140802951
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080291c	cmp    ebx,r14d
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080291f	jne    0x140802927
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802925	jmp    0x140802934
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802927	cmp    ebx,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802929	jne    0x140802930
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080292e	jmp    0x140802934
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802946	cmp    r11,r12
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802949	jl     0x140802910
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080294d	cmp    ebx,esi
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080294f	jle    0x140802900
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802987	test   BYTE PTR [r13+0x43c0],0x8
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x14080298f	je     0x140802a0a
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408029b0	cmp    rdx,0xf
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408029b4	jbe    0x1408029e3
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408029c0	cmp    rdx,0x1000
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408029c7	jb     0x1408029de
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408029d8	cmp    rax,0x1f
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408029dc	ja     0x140802a57
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802a29	cmp    rdx,0xf
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802a2d	jbe    0x1408029e3
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802a39	cmp    rdx,0x1000
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802a40	jb     0x1408029de
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802a51	cmp    rax,0x1f
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802a55	jbe    0x1408029de
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802aa6	cmp    rax,rbx
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802aa9	je     0x140802adc
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802aab	jae    0x140802ad6
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ab4	cmp    DWORD PTR [rdx+0x64],0xffffffff
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ab8	jne    0x140802ac0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802abe	jmp    0x140802aa6
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ad4	jmp    0x140802aed
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ada	jmp    0x140802ae0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b04	cmp    edx,DWORD PTR [rip+0x1b8e0f6]        # 0x142390c00
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b13	test   r14b,r14b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b16	je     0x140802b1d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b18	cmp    ecx,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b31	jne    0x140802b46
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b33	test   r15,r15
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b36	je     0x140802ce5
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b3c	test   BYTE PTR [r15+0x110],0x2
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b44	je     0x140802b4a
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b51	test   eax,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b53	jne    0x140802b64
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b55	test   r15,r15
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b58	je     0x140802b6b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b5a	test   BYTE PTR [r15+0x110],0x2
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b62	je     0x140802b6b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b7c	cmp    edx,r14d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b91	test   r12b,r12b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b94	je     0x140802c27
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b9a	cmp    edx,r14d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802b9d	jle    0x140802c27
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ba3	cmp    r11d,r10d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ba6	jl     0x140802c27
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ba8	cmp    r11d,r9d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802bab	jg     0x140802c27
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802bad	cmp    edi,0x6
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802bb0	jl     0x140802c27
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802bb2	cmp    edi,r13d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802bb5	jg     0x140802c27
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c02	test   al,al
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c04	jne    0x140803059
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c31	cmp    eax,r14d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c34	jle    0x140802c78
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c78	cmp    BYTE PTR [rip+0x1ce4f99],0x0        # 0x1424e7c18
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c7f	je     0x140802d8b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c85	test   r12b,r12b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c88	je     0x140802d77
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c8e	cmp    BYTE PTR [rip+0x1b8d939],0x0        # 0x1423905ce
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802c95	je     0x140802d77
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802cdb	cmp    edi,r11d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802cde	jg     0x140802cf1
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ce3	jmp    0x140802d55
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802cec	jmp    0x140802b55
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802cf5	cmp    edi,r10d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802cf8	jl     0x140802d11
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d08	cmp    eax,ecx
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d0a	jge    0x140802d58
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d0f	jmp    0x140802d58
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d11	cmp    r10d,r11d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d14	jle    0x140802d58
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d49	cmp    eax,ecx
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d4e	cmp    eax,r9d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d75	jmp    0x140802d92
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802d89	jmp    0x140802d92
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802da1	cmp    ebx,r14d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802da4	jle    0x140802eb8
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802daf	cmp    r8d,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802db2	jl     0x140802eb8
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dba	cmp    r8d,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dbd	jg     0x140802eb8
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dc3	cmp    edi,0x7
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dc6	jl     0x140802eb8
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dcc	cmp    edi,DWORD PTR [rbp+0x68]
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dcf	jg     0x140802eb8
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dd5	test   r12b,r12b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dd8	je     0x140802eb8
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802dde	test   cl,cl
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802de0	je     0x140802eb8
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e2b	cmp    edi,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e2d	jne    0x140802e46
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e34	cmp    ecx,DWORD PTR [rbp-0x24]
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e41	jmp    0x140803059
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e4b	cmp    edi,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e4d	jne    0x140802e6c
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e5c	cmp    ecx,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e67	jmp    0x140803059
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e6c	cmp    edi,DWORD PTR [rbp-0x10]
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e6f	jl     0x140802ea0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e71	cmp    edi,DWORD PTR [rbp-0xc]
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e74	jg     0x140802e82
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e7d	jmp    0x140803059
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e90	cmp    edx,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802e9b	jmp    0x140803059
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ea6	cmp    ecx,DWORD PTR [rbp-0x24]
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802eb3	jmp    0x140803059
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ebf	test   BYTE PTR [rax+0x43c0],0x2
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ec6	jne    0x140802ed7
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ec8	test   r15,r15
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ecb	je     0x140802f16
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ecd	test   BYTE PTR [r15+0x110],0x2
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ed5	je     0x140802f16
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ee9	test   r12b,r12b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802eec	je     0x140802f16
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802eee	test   cl,cl
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ef0	je     0x140802f16
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ef2	cmp    r8d,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ef5	jl     0x140802f16
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802efa	cmp    r8d,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802efd	jg     0x140802f16
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802eff	cmp    edi,r13d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f02	jl     0x140802f16
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f08	cmp    edi,eax
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f0a	jg     0x140802f16
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f25	test   r9b,r9b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f28	jne    0x140802f48
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f30	cmp    DWORD PTR [rcx+0x1c],0x1
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f34	jge    0x140802f3c
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f3a	jmp    0x140802f42
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f42	cmp    BYTE PTR [rcx+0x19],0x0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f46	je     0x140802f30
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f48	cmp    BYTE PTR [r8+0x19],0x0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f4d	jne    0x140802f56
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f4f	cmp    DWORD PTR [r8+0x1c],0x1
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f54	jle    0x140802fb6
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f59	test   r9b,r9b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f5c	jne    0x140802f7c
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f61	cmp    DWORD PTR [rcx+0x1c],0x152
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f68	jge    0x140802f70
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f6e	jmp    0x140802f76
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f76	cmp    BYTE PTR [rcx+0x19],0x0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f7a	je     0x140802f61
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f7c	cmp    BYTE PTR [r8+0x19],0x0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f81	jne    0x140802f8d
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f83	cmp    DWORD PTR [r8+0x1c],0x152
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f8b	jle    0x140802fb6
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f8d	test   r9b,r9b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f90	jne    0x140802faa
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f92	cmp    DWORD PTR [rax+0x1c],0x5
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f96	jge    0x140802f9e
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802f9c	jmp    0x140802fa4
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fa4	cmp    BYTE PTR [rax+0x19],0x0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fa8	je     0x140802f92
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802faa	cmp    BYTE PTR [rdx+0x19],0x0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fae	jne    0x140803009
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fb0	cmp    DWORD PTR [rdx+0x1c],0x5
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fb4	jg     0x140803009
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fc7	cmp    BYTE PTR [rbx+0x19],0x0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fcb	jne    0x140802ff5
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fef	cmp    BYTE PTR [rbx+0x19],0x0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802ff3	je     0x140802fd0
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140803007	jmp    0x140803011
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140803009	test   r10b,r10b
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x14080300c	je     0x140803059
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140803011	test   BYTE PTR [rip+0x1ce4bf8],0x8        # 0x1424e7c10
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140803018	je     0x14080302e
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x14080302c	jmp    0x140803059
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140803040	cmp    rax,rcx
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140803043	jae    0x140803052
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140803050	jmp    0x140803040
 reference	adventure-announcement-row-builder	0x1408a40e0	0x1408a4117	test   rax,rax
 reference	adventure-announcement-row-builder	0x1408a40e0	0x1408a411a	je     0x1408a418f
 reference	adventure-announcement-row-builder	0x1408a40e0	0x1408a411c	test   BYTE PTR [rax+0x110],0x2
@@ -29067,6 +29417,356 @@ classic	creature-appearance	0x140715750	0x140717cc1	jnp    0x140717d34
 classic	creature-appearance	0x140715750	0x140717cc5	jnp    0x140717d38
 classic	creature-appearance	0x140715750	0x140717cc9	jnp    0x140717d3c
 classic	creature-appearance	0x140715750	0x140717cce	jno    0x140717cd0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ff972	test   BYTE PTR [rcx+0x43c0],0x1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ff979	jne    0x140800263
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ff987	test   rax,0xfffffffffffffff8
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ff98d	je     0x140800263
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ff9a1	cmp    BYTE PTR [rip+0x1b8ab1d],0x0        # 0x14238a4c5
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ff9a8	je     0x1407ff9bc
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa13	cmp    rax,rcx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa16	je     0x1407ffa56
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa18	jae    0x1407ffa45
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa21	cmp    DWORD PTR [r8+0x64],r15d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa25	jne    0x1407ffa2d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa2b	jmp    0x1407ffa13
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa43	jmp    0x1407ffa68
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa54	jmp    0x1407ffa61
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa75	cmp    ecx,DWORD PTR [rip+0x1b8b075]        # 0x14238aaf0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa87	test   r8b,r8b
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa8a	je     0x1407ffa91
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa8c	cmp    ecx,eax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffa99	test   BYTE PTR [r13+0x43c0],0x2
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffaa1	jne    0x1407ffab8
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffaaa	test   rax,rax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffaad	je     0x1407ffac0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffaaf	test   BYTE PTR [rax+0x110],0x2
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffab6	je     0x1407ffac0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffac5	cmp    r12d,edi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffac8	jl     0x1407ffb95
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffad3	cmp    r14d,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffad6	jg     0x1407ffb8a
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffafd	cmp    edi,0x6
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb00	jne    0x1407ffb2a
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb02	cmp    ebx,r14d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb05	jne    0x1407ffb0f
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb0d	jmp    0x1407ffb74
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb16	cmp    ebx,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb18	jne    0x1407ffb22
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb20	jmp    0x1407ffb7b
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb28	jmp    0x1407ffb7b
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb2a	cmp    edi,r12d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb2d	jne    0x1407ffb57
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb2f	cmp    ebx,r14d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb32	jne    0x1407ffb3c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb3a	jmp    0x1407ffb74
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb43	cmp    ebx,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb45	jne    0x1407ffb4f
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb4d	jmp    0x1407ffb7b
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb55	jmp    0x1407ffb7b
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb57	cmp    ebx,r14d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb5a	jne    0x1407ffb64
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb62	jmp    0x1407ffb74
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb64	cmp    ebx,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb6c	je     0x1407ffb74
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb82	cmp    ebx,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb84	jle    0x1407ffae0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb8c	cmp    edi,r12d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffb8f	jle    0x1407ffad0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffba4	test   BYTE PTR [r13+0x43c0],0x2
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffbac	jne    0x1407ffbc3
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffbb5	test   rax,rax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffbb8	je     0x1407ffbc8
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffbba	test   BYTE PTR [rax+0x110],0x2
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffbc1	je     0x1407ffbc8
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffbe0	cmp    eax,edx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffbe2	jle    0x1407ffbea
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffbf9	cmp    ecx,eax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc04	test   eax,eax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc0c	cmp    ecx,DWORD PTR [r13+0x43cc]
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc13	jle    0x1407ffc1c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc29	cmp    ebx,eax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc2b	jge    0x1407fffc6
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc55	cmp    ebx,eax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc57	jge    0x1407fffbd
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc80	cmp    ebx,eax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc82	jne    0x1407ffc8c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc8c	cmp    BYTE PTR [rip+0x1b8a832],0x0        # 0x14238a4c5
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc93	je     0x1407ffcc1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc95	cmp    DWORD PTR [rbp-0x19],r12d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc99	jne    0x1407ffcc1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffc9e	cmp    eax,r8d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffca1	jl     0x1407ffcc1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffca3	cmp    eax,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffca5	jg     0x1407ffcc1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffcb2	cmp    eax,0xffffffff
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffcb5	je     0x1407ffcc1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffce7	cmp    r8d,0xffffffff
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffceb	je     0x1407ffd84
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffcf4	test   r10b,r10b
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd10	test   rax,rax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd13	je     0x1407ffd39
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd1c	test   rax,rax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd1f	je     0x1407ffd39
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd21	cmp    DWORD PTR [rax+0x130],r8d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd28	jne    0x1407ffd39
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd37	jmp    0x1407ffd7a
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd53	cmp    eax,r8d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd56	je     0x1407ffd6e
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd58	cmp    eax,0xffffffff
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd5b	je     0x1407ffd66
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd5f	cmp    ecx,0x9
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd62	jl     0x1407ffd40
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd64	jmp    0x1407ffd84
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd91	test   ecx,ecx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd93	jle    0x1407ffd9e
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd95	test   BYTE PTR [rdx],0x1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd98	jne    0x1407ffe7f
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffdb9	test   r9,r9
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffdbc	je     0x1407ffe7f
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffdea	test   r9d,r9d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffded	je     0x1407ffe44
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffdef	cmp    r11d,0xffffffff
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffdf3	je     0x1407ffe44
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffdfb	js     0x1407ffe2a
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe0d	cmp    DWORD PTR [r10+0x130],r11d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe14	je     0x1407ffe2d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe26	cmp    edx,eax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe28	jle    0x1407ffe00
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe2d	test   r10,r10
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe30	je     0x1407ffe44
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe42	jmp    0x1407ffe4b
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe83	test   ecx,ecx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe85	jle    0x1407ffe8c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe87	test   BYTE PTR [rdx],0x1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe8a	jne    0x1407ffea5
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe9b	cmp    DWORD PTR [rax+0x64],0xffffffff
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffe9f	je     0x1407ffea5
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffea9	cmp    BYTE PTR [rbp-0x29],0x0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffef1	test   BYTE PTR [rax+0x30],0x1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffef5	jne    0x1407fff59
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffef7	cmp    DWORD PTR [rax+0x64],0xffffffff
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffefb	jne    0x1407fff59
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fff01	test   rcx,rcx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fff04	jne    0x1407fff33
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fff10	cmp    ecx,edx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fff31	jmp    0x1407fff7c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fff3a	cmp    eax,edx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fff57	jmp    0x1407fff80
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fff71	cmp    QWORD PTR [rdx+0x10],0x0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fff76	jne    0x1407fff80
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fffa5	cmp    ebx,DWORD PTR [rbp-0x9]
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fffb7	jl     0x1407ffc40
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fffd8	cmp    ecx,edx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407fffda	jle    0x14080003a
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080003a	cmp    r15d,0xffffffff
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080003e	je     0x14080012c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800059	test   r8d,r8d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080005c	je     0x14080012c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800068	js     0x14080009b
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080007d	cmp    DWORD PTR [rbx+0x130],r15d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800084	je     0x14080009d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800096	cmp    edx,r8d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800099	jle    0x140800070
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080009d	test   rbx,rbx
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000a0	je     0x14080012c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000a6	cmp    DWORD PTR [rip+0x1bc75bb],0x0        # 0x1423c7668
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000ad	jle    0x14080012c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000b6	test   BYTE PTR [rax],0x1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000b9	je     0x14080012c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000bb	cmp    DWORD PTR [rbx+0x142c],0x0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000c2	je     0x1408000d0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000c4	test   DWORD PTR [rbx+0x11c],0x4000
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000ce	je     0x1408000d8
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000d8	cmp    DWORD PTR [rbx+0x142c],0x0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408000df	je     0x14080012c
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080012c	test   BYTE PTR [r13+0x43c0],0x2
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800134	jne    0x140800153
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080013d	test   rax,rax
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800140	je     0x140800263
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800146	test   BYTE PTR [rax+0x110],0x2
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080014d	je     0x140800263
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080016b	cmp    r14d,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080016e	jg     0x1408001d1
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080019c	cmp    ebx,r14d
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080019f	jne    0x1408001a7
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408001a5	jmp    0x1408001b4
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408001a7	cmp    ebx,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408001a9	jne    0x1408001b0
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408001ae	jmp    0x1408001b4
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408001c6	cmp    r11,r12
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408001c9	jl     0x140800190
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408001cd	cmp    ebx,esi
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408001cf	jle    0x140800180
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800207	test   BYTE PTR [r13+0x43c0],0x8
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080020f	je     0x14080028a
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800230	cmp    rdx,0xf
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800234	jbe    0x140800263
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800240	cmp    rdx,0x1000
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800247	jb     0x14080025e
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800258	cmp    rax,0x1f
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080025c	ja     0x1408002d7
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408002a9	cmp    rdx,0xf
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408002ad	jbe    0x140800263
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408002b9	cmp    rdx,0x1000
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408002c0	jb     0x14080025e
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408002d1	cmp    rax,0x1f
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408002d5	jbe    0x14080025e
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800326	cmp    rax,rbx
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800329	je     0x14080035c
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080032b	jae    0x140800356
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800334	cmp    DWORD PTR [rdx+0x64],0xffffffff
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800338	jne    0x140800340
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080033e	jmp    0x140800326
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800354	jmp    0x14080036d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080035a	jmp    0x140800360
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800384	cmp    edx,DWORD PTR [rip+0x1b8a766]        # 0x14238aaf0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800393	test   r14b,r14b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800396	je     0x14080039d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800398	cmp    ecx,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003b1	jne    0x1408003c6
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003b3	test   r15,r15
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003b6	je     0x140800565
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003bc	test   BYTE PTR [r15+0x110],0x2
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003c4	je     0x1408003ca
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003d1	test   eax,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003d3	jne    0x1408003e4
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003d5	test   r15,r15
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003d8	je     0x1408003eb
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003da	test   BYTE PTR [r15+0x110],0x2
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003e2	je     0x1408003eb
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408003fc	cmp    edx,r14d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800411	test   r12b,r12b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800414	je     0x1408004a7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080041a	cmp    edx,r14d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080041d	jle    0x1408004a7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800423	cmp    r11d,r10d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800426	jl     0x1408004a7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800428	cmp    r11d,r9d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080042b	jg     0x1408004a7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080042d	cmp    edi,0x6
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800430	jl     0x1408004a7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800432	cmp    edi,r13d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800435	jg     0x1408004a7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800482	test   al,al
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800484	jne    0x1408008d9
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408004b1	cmp    eax,r14d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408004b4	jle    0x1408004f8
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408004f8	cmp    BYTE PTR [rip+0x1ce1609],0x0        # 0x1424e1b08
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408004ff	je     0x14080060b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800505	test   r12b,r12b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800508	je     0x1408005f7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080050e	cmp    BYTE PTR [rip+0x1b89fa9],0x0        # 0x14238a4be
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800515	je     0x1408005f7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080055b	cmp    edi,r11d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080055e	jg     0x140800571
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800563	jmp    0x1408005d5
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080056c	jmp    0x1408003d5
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800575	cmp    edi,r10d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800578	jl     0x140800591
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800588	cmp    eax,ecx
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080058a	jge    0x1408005d8
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080058f	jmp    0x1408005d8
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800591	cmp    r10d,r11d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800594	jle    0x1408005d8
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408005c9	cmp    eax,ecx
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408005ce	cmp    eax,r9d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408005f5	jmp    0x140800612
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800609	jmp    0x140800612
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800621	cmp    ebx,r14d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800624	jle    0x140800738
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080062f	cmp    r8d,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800632	jl     0x140800738
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080063a	cmp    r8d,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080063d	jg     0x140800738
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800643	cmp    edi,0x7
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800646	jl     0x140800738
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080064c	cmp    edi,DWORD PTR [rbp+0x68]
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080064f	jg     0x140800738
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800655	test   r12b,r12b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800658	je     0x140800738
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080065e	test   cl,cl
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800660	je     0x140800738
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006ab	cmp    edi,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006ad	jne    0x1408006c6
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006b4	cmp    ecx,DWORD PTR [rbp-0x24]
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006c1	jmp    0x1408008d9
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006cb	cmp    edi,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006cd	jne    0x1408006ec
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006dc	cmp    ecx,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006e7	jmp    0x1408008d9
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006ec	cmp    edi,DWORD PTR [rbp-0x10]
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006ef	jl     0x140800720
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006f1	cmp    edi,DWORD PTR [rbp-0xc]
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006f4	jg     0x140800702
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408006fd	jmp    0x1408008d9
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800710	cmp    edx,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080071b	jmp    0x1408008d9
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800726	cmp    ecx,DWORD PTR [rbp-0x24]
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800733	jmp    0x1408008d9
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080073f	test   BYTE PTR [rax+0x43c0],0x2
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800746	jne    0x140800757
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800748	test   r15,r15
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080074b	je     0x140800796
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080074d	test   BYTE PTR [r15+0x110],0x2
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800755	je     0x140800796
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800769	test   r12b,r12b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080076c	je     0x140800796
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080076e	test   cl,cl
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800770	je     0x140800796
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800772	cmp    r8d,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800775	jl     0x140800796
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080077a	cmp    r8d,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080077d	jg     0x140800796
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080077f	cmp    edi,r13d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800782	jl     0x140800796
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800788	cmp    edi,eax
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080078a	jg     0x140800796
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007a5	test   r9b,r9b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007a8	jne    0x1408007c8
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007b0	cmp    DWORD PTR [rcx+0x1c],0x1
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007b4	jge    0x1408007bc
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007ba	jmp    0x1408007c2
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007c2	cmp    BYTE PTR [rcx+0x19],0x0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007c6	je     0x1408007b0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007c8	cmp    BYTE PTR [r8+0x19],0x0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007cd	jne    0x1408007d6
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007cf	cmp    DWORD PTR [r8+0x1c],0x1
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007d4	jle    0x140800836
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007d9	test   r9b,r9b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007dc	jne    0x1408007fc
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007e1	cmp    DWORD PTR [rcx+0x1c],0x152
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007e8	jge    0x1408007f0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007ee	jmp    0x1408007f6
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007f6	cmp    BYTE PTR [rcx+0x19],0x0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007fa	je     0x1408007e1
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408007fc	cmp    BYTE PTR [r8+0x19],0x0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800801	jne    0x14080080d
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800803	cmp    DWORD PTR [r8+0x1c],0x152
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080080b	jle    0x140800836
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080080d	test   r9b,r9b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800810	jne    0x14080082a
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800812	cmp    DWORD PTR [rax+0x1c],0x5
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800816	jge    0x14080081e
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080081c	jmp    0x140800824
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800824	cmp    BYTE PTR [rax+0x19],0x0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800828	je     0x140800812
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080082a	cmp    BYTE PTR [rdx+0x19],0x0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080082e	jne    0x140800889
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800830	cmp    DWORD PTR [rdx+0x1c],0x5
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800834	jg     0x140800889
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800847	cmp    BYTE PTR [rbx+0x19],0x0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080084b	jne    0x140800875
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080086f	cmp    BYTE PTR [rbx+0x19],0x0
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800873	je     0x140800850
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800887	jmp    0x140800891
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800889	test   r10b,r10b
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x14080088c	je     0x1408008d9
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800891	test   BYTE PTR [rip+0x1ce1268],0x8        # 0x1424e1b00
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800898	je     0x1408008ae
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408008ac	jmp    0x1408008d9
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408008c0	cmp    rax,rcx
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408008c3	jae    0x1408008d2
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408008d0	jmp    0x1408008c0
 classic	adventure-announcement-row-builder	0x1408a1960	0x1408a1997	test   rax,rax
 classic	adventure-announcement-row-builder	0x1408a1960	0x1408a199a	je     0x1408a1a0f
 classic	adventure-announcement-row-builder	0x1408a1960	0x1408a199c	test   BYTE PTR [rax+0x110],0x2

@@ -9065,7 +9065,45 @@ std::optional<std::string> Overlay::translate_corpsepiece_item_name(
         // Unnamed species, your, rotten/mangled bodies, generic material
         // classes and remains retain their existing complete scoped grammar.
         if (auto noun = scoped(value, "::items::corpse::body")) return noun;
-        return scoped(value, "::items::corpsepiece::caption");
+        if (auto noun = scoped(value, "::items::corpsepiece::caption")) return noun;
+        // PE ca1aa0:ca1da2/ca1dd2 and ca10e0:ca1208 do not always
+        // supply a RAW caste here. The unnamed branch calls 132e0c0 with
+        // profession 0x66, producing Peasant for the player's own race;
+        // a surviving owner instead supplies the complete 132e430 role.
+        // Resolve that whole role before the independently selected body
+        // outcome. This covers every corpse/skeleton/remains, detached RAW
+        // part and tissue/material branch, not just "mutilated corpse".
+        // Rotten precedes the role; mangled/partial/mutilated stay inside
+        // the body suffix. Names with a possessive were handled above and
+        // must never be reinterpreted as a role plus an arbitrary noun.
+        std::string_view role_body(value);
+        std::string decay;
+        constexpr std::string_view rotten = "rotten ";
+        if (role_body.size() > rotten.size() &&
+                lower(std::string(role_body.substr(0, rotten.size()))) == rotten) {
+            const auto prefix = RULESETS.compose_bound_rule(
+                "::items::corpse::^0", std::string(rotten));
+            if (!prefix) return std::nullopt;
+            decay = *prefix;
+            role_body.remove_prefix(rotten.size());
+        }
+        if (role_body.find("'s ") != std::string_view::npos ||
+                role_body.find_first_of(".!?;:\r\n") != std::string_view::npos)
+            return std::nullopt;
+        for (size_t at = role_body.find(' '); at != std::string_view::npos;
+             at = role_body.find(' ', at + 1)) {
+            const auto body_source = trim_view(role_body.substr(at + 1));
+            if (body_source.empty()) continue;
+            const auto noun = scoped(body_source, "::items::corpsepiece::animated_body");
+            if (!noun) continue;
+            const auto role_source = trim_view(role_body.substr(0, at));
+            auto role = translate_creature_label(role_source);
+            if (!translation_complete_with_native_nicknames(role, role_source))
+                role = translate_unit_profession(role_source, false);
+            if (translation_complete_with_native_nicknames(role, role_source))
+                return decay + *role + *noun;
+        }
+        return std::nullopt;
     };
     return body(body, source);
 }
@@ -13173,6 +13211,12 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
                 return identity;
             if (const auto identity = exact_literal_translation("Announcement unit: " + lower(std::string(value))))
                 return identity;
+            // Stored animated captions are copied verbatim by 132e430
+            // before its ordinary caste/profession path. Keep the entire
+            // corpse/body production together here too: legacy status and
+            // announcement templates share this unit entry with combat.
+            if (const auto animation = translate_native_animation_label(value))
+                return animation;
             // Native action captions use both `the <caste> <name>` and
             // `<name>, <caste/profession> (status)`. Keep their grammar inside the authored
             // unit slot: species, professions, personal names and status suffixes must not be

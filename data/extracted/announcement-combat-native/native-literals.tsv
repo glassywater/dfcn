@@ -934,6 +934,11 @@ reference	creature-appearance	0x140717d30	0x14071a088	0x14168543c	cstring	dry
 reference	creature-appearance	0x140717d30	0x14071a09e	0x14164b74c	cstring	-
 reference	creature-appearance	0x140717d30	0x14071a16a	0x141686348	cstring	average
 reference	creature-appearance	0x140717d30	0x14071a212	0x141686348	cstring	average
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024aa	0x3a40	inline	@:
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x1408024f1	0x3a	inline-store	:
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802991	0x65726f4d	inline	More
+reference	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802a0a	0x79616b4f	inline	Okay
+reference	adventure-graphical-announcement-popup-input	0x140802a60	0x140802fb6	0x232a	inline	*#
 reference	generic-item-type-material-caption	0x140a82c10	0x140a82d27	0x141649d9c	cstring	large
 reference	generic-item-type-material-caption	0x140a82c10	0x140a82d30	0x141649da0	cstring	e
 reference	generic-item-type-material-caption	0x140a82c10	0x140a82d39	0x141686358	cstring	small
@@ -2815,6 +2820,11 @@ classic	creature-appearance	0x140715750	0x140717aa8	0x14168069c	cstring	dry
 classic	creature-appearance	0x140715750	0x140717abe	0x14164667c	cstring	-
 classic	creature-appearance	0x140715750	0x140717b8a	0x1416810f8	cstring	average
 classic	creature-appearance	0x140715750	0x140717c32	0x1416810f8	cstring	average
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd2a	0x3a40	inline	@:
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x1407ffd71	0x3a	inline-store	:
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x140800211	0x65726f4d	inline	More
+classic	adventure-graphical-announcement-popup-render	0x1407ff940	0x14080028a	0x79616b4f	inline	Okay
+classic	adventure-graphical-announcement-popup-input	0x1408002e0	0x140800836	0x232a	inline	*#
 classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fda7	0x14164517c	cstring	large
 classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fdb0	0x141645180	cstring	e
 classic	generic-item-type-material-caption	0x140a7fc90	0x140a7fdb9	0x141681108	cstring	small

@@ -384,6 +384,43 @@ sentence	{s} is stunned by divine power!	{s1}被神力震慑了！	unit-list	0x1
 sentence	Many are stunned by divine power!	许多生物被神力震慑了！		0x140650b5d+0x140650c9a
 sentence	{s} has moved out of range!	{s1}已经离开了攻击范围！	unit	0x14064a578
 
+# Complete charge owner 0x140654d20 / classic 0x140652740 submits COMBAT_*
+# records. These productions belong to the same sentence root as strikes,
+# including both player/nonplayer grammar and every collision outcome.
+sentence	They tangle together and fall over!	双方纠缠在一起，摔倒了！		PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	They tangle together and tumble forward!	双方纠缠在一起，向前翻滚！		PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You tangle together and fall over!	你们纠缠在一起，摔倒了！		PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You tangle together and tumble forward!	你们纠缠在一起，向前翻滚！		PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You leap at {s}!	你扑向{s1}！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} leaps at {s}!	{s1}扑向{s2}！	$unit,$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You leap at {s} from behind!	你从背后扑向{s1}！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} leaps at {s} from behind!	{s1}从背后扑向{s2}！	$unit,$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You leap at {s} from the side!	你从侧面扑向{s1}！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} leaps at {s} from the side!	{s1}从侧面扑向{s2}！	$unit,$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You charge at {s}!	你冲向{s1}！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} charges at {s}!	{s1}冲向{s2}！	$unit,$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You charge at {s} from behind!	你从背后冲向{s1}！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} charges at {s} from behind!	{s1}从背后冲向{s2}！	$unit,$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You charge at {s} from the side!	你从侧面冲向{s1}！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} charges at {s} from the side!	{s1}从侧面冲向{s2}！	$unit,$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You are surprised by the ferocity of {s}'s onslaught!	你被{s1}的凶猛攻势惊到了！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} looks surprised by the ferocity of Your onslaught!	{s1}看起来被你的凶猛攻势惊到了！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} looks surprised by the ferocity of {s}'s onslaught!	{s1}看起来被{s2}的凶猛攻势惊到了！	$unit,$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} scrambles away!	{s1}连滚带爬地躲开了！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} rolls away!	{s1}翻滚着躲开了！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} jumps away!	{s1}跳开了！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You collide with {s}!	你与{s1}撞在了一起！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} collides with {s}!	{s1}与{s2}撞在了一起！	$unit,$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} is knocked over!	{s1}被撞倒了！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} is knocked over and tumbles backward!	{s1}被撞倒，向后翻滚！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	{s} bounces backward!	{s1}被弹得往后退！	$unit	PE reference 0x140654d20 / classic 0x140652740; complete charge owner C/ASM in announcement-combat-native; COMBAT_START_CHARGE/SURPRISE_CHARGE/JUMP_DODGE_STRIKE/CHARGE_*
+sentence	You scramble away!	你连滚带爬地躲开了！		PE reference 0x14065620b..0x1406562e3; player prone scramble; type11; paired classic complete owner 0x140652740
+sentence	You roll away!	你翻滚着躲开了！		PE reference 0x14065620b..0x1406562e3; player prone roll; type11; paired classic complete owner 0x140652740
+sentence	You jump away!	你跳开了！		PE reference 0x14065620b..0x1406562e3; player upright jump; type11; paired classic complete owner 0x140652740
+sentence	You are knocked over!	你被撞倒了！		PE reference 0x140656d1a+0x140656d4e+0x140656ef6+0x140656f2d; player defender/attacker; paired classic complete owner 0x140652740
+sentence	You are knocked over and tumble backward!	你被撞倒，向后翻滚！		PE reference 0x140656a24+0x140656a5b+0x140656a8d+0x140656abb+0x140656ff6+0x140657024; player defender/attacker; paired classic complete owner 0x140652740
+sentence	You bounce backward!	你被弹得往后退！		PE reference 0x14065720a..0x14065729c; player attacker bounce; type20; paired classic complete owner 0x140652740
+
 # Wrestling 0x140646f00, including prefixes consumed by the shared damage tree.
 attack-verb	grab	抓住		0x140649ccf+0x140649cd8; emitted through standard attack-record head
 attack-verb	grabs	抓住		0x140649ccf+0x140649cd8; emitted through standard attack-record head
