@@ -1,0 +1,188 @@
+河流名称生成与翻译资源提取说明
+日期：2026-10-20
+对应提案：docs/river-name-redesign.zh-CN.txt
+
+一、资料性质
+
+本目录保存当前安装映像的实际反汇编、Ghidra反编译，以及原版语言源资料
+和现有中文命名资源的静态提取。不是模拟世界、翻译运行记录或实机效果。
+没有修改现有运行词表、翻译代码或游戏文件。
+
+“全量词表”指当前安装的原版语言源资料，不包括尚未安装的模组、未读取
+的存档或世界运行时新建的语言。随机完整名称的组合不在此逐一枚举。
+查找安装目录data/vanilla、data/installed_mods、mods的语言对象后，本次
+使用的源文件为vanilla_languages/objects下六个language_*.txt。
+
+二、二进制身份与地址
+
+研究映像：
+  /home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+  大小：26,507,264字节
+  身份：PE:6a70a6d9:02711000
+  SHA-256：205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+  ImageBase：0x140000000
+
+pe-*.asm和pe-*.tsv中的地址均为此映像的静态VA。
+主提案的函数地址为RVA，换算为VA时加ImageBase。
+code_end_va、unwind_end_va采用右开区间，即不包括结束地址本身。
+该映像与本次原版raw及中文资源的来源路径、大小、摘要均见source-manifest.tsv。
+
+本次离线处理了以下八个过程：
+
+  RVA        文件名角色          内容
+  0xa92860   name-generate       名称槽位生成及重抽
+  0xd2cc40   word-tables         按名称类别准备主题选择器
+  0xd36e80   build-selector      主题包含／排除集合到WORD集合
+  0xd35530   fill-word-slots     WORD／词性进入六个位置池
+  0xd35ee0   select-word         从池中选择WORD和词性
+  0xf7c380   river-create-a      第一处河流创建过程
+  0xf7f070   river-create-b      第二处河流创建过程
+  0xa946e0   english-format      完整英文名称的格式化
+
+函数角色名是本次分析标签，不是原程序符号。
+pe-*.c是Ghidra实际反编译输出，保留其临时变量和未知类型；不冒充原作者
+源代码，也不能作为可直接编译的游戏实现。
+
+三、提取过程及必须保留的解释
+
+1. 用/usr/bin/objdump读取x86-64 PE指令；使用仓库已有的
+   tools/native_caption_image.py读取PE段、unwind函数范围和字面量。
+   按已定位的八个函数导出指令、直接调用目标和两个跳表。
+   没有执行Dwarf Fortress.exe。
+
+2. 对生成函数和主题函数，代码结束位置截在跳表之前。
+   fill-word-slots有分段unwind：首段止于RVA 0xd3559a，完整过程的
+   指令范围延伸至0xd35ed4。pe-functions.tsv分别保存这两个边界，
+   最终.asm与.c均按完整过程提取。
+
+3. 名称类型分派先读字节重映射表，再读RVA跳表：
+     字节表RVA 0xa93ff4；RVA表0xa93fcc；原始选择值共55项。
+   pe-switches.tsv的selector是原始name.type，不是压缩后的case号。
+   name.type=20跳向RVA 0xa934c4；其他名称类型可能共用同一分支。
+
+4. 主题类别跳表RVA 0xd33da8，共68项。
+   类别37跳向共同建表出口0xd33d19，未添加主题包含／排除项。
+   两处河流创建分别在RVA 0xf7ecef、0xf7fae8调用名称生成函数，
+   传language=-1、type=20及两套类别37选择器。
+
+5. 用本机Ghidra 12.1.2 analyzeHeadless导入映像，关闭全程序自动分析，
+   根据已提取的函数范围、指令、调用和跳表进行定向反编译。
+   外部调用使用占位函数；其精确类型未全部恢复。
+   跳表目标和字面量由映像字节导入，角色名由人工标注。
+   反编译C用于整理控制流；词性、分支和常量的判断以汇编与源raw相互对应。
+
+本次使用的三个提取脚本快照保存在source-tools/：
+  extract_pe.py
+  extract_vocab.py
+  DecompileRiverRedesign.java
+
+它们记录本次研究方法，不属于运行翻译器、构建入口或测试工具。
+脚本保留当次绝对路径及固定映像地址，不能直接套用另一版本的游戏。
+extract_pe.py依赖仓库原有native_caption_image.py和/usr/bin/objdump；
+extract_vocab.py只写本研究目录，并在/tmp/dfcn-river-redesign中保存词汇统计。
+Python使用：
+  /home/lulika/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3
+
+本次最终Ghidra导出使用：
+  /home/lulika/workspace/jphz/analysis/tools/ghidra_12.1.2_PUBLIC/support/analyzeHeadless
+  项目目录：/tmp/dfcn-river-redesign
+  项目名：river-source-complete
+  参数：-import <上述映像> -noanalysis
+        -scriptPath /tmp/dfcn-river-redesign
+        -postScript DecompileRiverRedesign.java <本资料目录>
+
+source-tools/保存的是当次临时脚本的原样副本。
+native-structures.tsv按已恢复分支整理，不由脚本调用游戏生成器产生。
+
+仓库既有data/extracted/river-name-generation中的ELF资料可对照阅读，
+其Build ID为bcc6789e6fb477b785a2b02be80b8b1b054ff88c。
+本次没有重新取得该ELF，不能混用PE与ELF的地址和提取日期。
+
+四、原版源词表的内容与口径
+
+raw-words.tsv
+  2,196条WORD。保留九种词形、ADJ_DIST、位置标记及原始行号。
+  列Noun至VerbGerund对应原生POS 0至8。
+
+raw-forms.tsv
+  7,618条非空WORD／POS词形。空词形不计入此表。
+
+raw-selector-pools.tsv
+  依据反编译的准入逻辑，将原版词形展开为六池的15,695个候选项。
+  eligibility记录准入标记。形容词池只要求形容词非空；
+  of池另外接纳非空动名词；STANDARD_VERB按原生动词形态进入复合池。
+  一个WORD／POS可出现在多个池，因此这不是15,695个独立词根。
+  此表不记录随机抽取频率，也不表示真实世界中各词出现的频率。
+
+raw-translations.tsv
+  DWARF、ELF、GOBLIN、HUMAN各2,196条，共8,784条T_WORD。
+  按CP437解码，cp437_hex保留拼写对应的原始字节。
+  这四语的拼写共享WORD意义，不应反过来按读音重新猜词义。
+
+raw-symbols.tsv、raw-symbol-members.tsv
+  全部84组SYMBOL及3,198条成员。
+  它们是完整主题资源；河流类别不据此限制为自然、山水等某一主题。
+
+native-structures.tsv
+  七槽正常生成分支形成的21种结构，包括复合名、称号及两者共存。
+  不包含选词池异常为空时任意WORD／词性退化路径产生的所有异常组合。
+
+english-homographs.tsv
+  85组相同英文、相同POS而WORD不同的情况。
+  列出歧义来源，不凭拼写把不同义项合并。
+
+五、已有中文资源的连接资料
+
+完整上下文意象库仍引用原文件：
+  data/runtime/character-surname-context-imagery.tsv
+  49,209,095字节；117,582条记录；4,363个不同源义项键。
+  SHA-256：5e4224bfb0b964a75b5843b59b043cafac895e0c898b86198bfed40bfdea0c60
+
+基础表character-surname-lexicon.tsv有7,606条义项；
+其中3,243条通过imagery_english复用其他拼写的上下文意象。
+本目录不再复制这张完整大表；源表及其分类、构式资源已在source-manifest.tsv
+标明版本。
+
+word-pos-resource-map.tsv
+  逐一列出7,618个原版非空词形的WORD源释义、姓氏义项候选数、
+  同释义／粗类别候选数、经imagery_english连接的上下文行数，
+  以及小型河流叶词表是否有相同WORD／POS。
+  其中river_leaf_pos_present仅判断WORD／POS，不代表槽位和关系也适用。
+
+surname-sense-candidates.tsv
+  展开同英文拼写的全部候选，保留kind、category、state、sense、
+  semantic_class、基础词形、完整意义及imagery_english。
+  exact_gloss_and_coarse_kind表示静态同释义／粗类别相交，
+  不是已经人工定稿的义项绑定；其他行更不能直接当作运行映射。
+  6,195个词形至少有一个这种直接候选，其余仍需派生、同义或歧义解析。
+  各候选的context_rows可重叠，不宜相加当成独立词汇覆盖数。
+
+shared-imagery-dimensions.tsv
+  原上下文表的relation、角色、单／双字use和interpretation分布。
+  所有semantic_bridge为空，不能把这一空列当作已提供的隐喻解释。
+
+selector-resource-counts.tsv
+  以WORD、POS和原生槽位对应小型河流词表，保留最宽松的交集数：
+  F 90/3217；R 137/5301；N 94/2442；A 18/849；H 65/1228；Q 85/2658。
+  尚未考虑配价、伙伴类别、关系和构式，不能作为最终译名覆盖率。
+
+六、关键源码入口
+
+  src/english_character_names.h
+    NameSenseReference、name_sense_reference()只提供基础义项内容。
+
+  src/character_surname_context.inc
+    surname_imagery_及surname_words(self,partner,relation,role)
+    才是真正访问完整上下文表的路径。
+
+  src/river_names.h
+    从99行河流表接入基础义项；叶节点须先命中imagery_中的WORD。
+    缺少适用叶词或上层构式时，组合结果为空。
+
+  src/river_names.inc
+    组合失败后进入音译；可信但无对象身份的文本入口也直接音译。
+    已有transliterate决策会跳过组合。
+
+提案据此提出共享完整上下文查询、保留原生WORD身份、补全七槽表达，
+并让没有凝练候选的已知词继续走完整意译。具体设计与现实资料引用
+统一见主提案，不把本目录的候选交叉表直接部署为新翻译规则。

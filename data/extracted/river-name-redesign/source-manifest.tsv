@@ -1,0 +1,22 @@
+path	bytes	sha256
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/data/vanilla/vanilla_languages/objects/language_DWARF.txt	52791	6662cfdccf269b0e5709603b78846d41bd588e216d6143a333b160702002f196
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/data/vanilla/vanilla_languages/objects/language_ELF.txt	52585	97e867fb73a5023a15a9f8cb2dbc9603339443e1c27b6a3d8160d7555284e50e
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/data/vanilla/vanilla_languages/objects/language_GOBLIN.txt	52194	46941e3af4e8f2d4366ac829882e63a6b3f673b9233c649cc7fe7c2d04738c66
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/data/vanilla/vanilla_languages/objects/language_HUMAN.txt	51989	ef4759b5474e33acd1ba4d97d9c4d2ca69c7b66c1d72eb8f457b55b3939631c1
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/data/vanilla/vanilla_languages/objects/language_SYM.txt	59192	815988035862858d4ded947cddb2bcf1ac9efa741dbc4ae19366a6bd229e0ad6
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/data/vanilla/vanilla_languages/objects/language_words.txt	406348	39cf81e08d0881ff9796a77063dda696ece8320095373790f150ce0eecdfc8d5
+/home/lulika/workspace/dfcn/data/runtime/procedural-word-senses.tsv	85075	2db4cd63cd99a97c1b486033cd31edf55aff8eb0e34cbca9a035f99c8aa3c9c6
+/home/lulika/workspace/dfcn/data/runtime/character-name-lexicon.tsv	374818	157745624248d29ad23e16508f960b7fc13190f7419c464154fa145dee34845a
+/home/lulika/workspace/dfcn/data/runtime/character-surname-lexicon.tsv	1327109	b1b69a619e303d7171eddb4a7e0965905dc9f6a59d3534aea629f2164f73ffd1
+/home/lulika/workspace/dfcn/data/runtime/character-surname-context-imagery.tsv	49209095	5e4224bfb0b964a75b5843b59b043cafac895e0c898b86198bfed40bfdea0c60
+/home/lulika/workspace/dfcn/data/runtime/character-surname-classes.tsv	9272	25b46983f73c071419ddc01a9bd6fe8f6e25e07f1c56874330bfefea7671e26e
+/home/lulika/workspace/dfcn/data/runtime/character-surname-constructions.tsv	108939	1ebe1bfb0ed6671f2c6b7773a5e2f3e3765c5237c2924dee6359b2fb0826d06b
+/home/lulika/workspace/dfcn/data/runtime/river-name-imagery.tsv	8668	d140b52e8fc7880300eafec30c20e9110f97aa073e0b5b017f98667cee3acab0
+/home/lulika/workspace/dfcn/data/runtime/river-name-constructions.tsv	3603	6fc374d445a65f23b5293b9fad97263d3e58310146c7a76e839616faf1e418e1
+/home/lulika/workspace/dfcn/data/runtime/river-name-decisions.tsv	651	fb7090c68be308c4bc4fa63618b49a55d0f617e5b37caa300d9cc618ba1df276
+/home/lulika/workspace/dfcn/data/runtime/river-name-generics.tsv	398	41503129f990f154a753377868cf9e74420fd95b8c6ca317accd28e761806dab
+/home/lulika/workspace/dfcn/src/river_names.h	26785	138d03cbdcc555ea96b4f01c7ef36e05d738d8f0723578d1089b0c09a054cff9
+/home/lulika/workspace/dfcn/src/river_names.inc	7307	69728981842802a92d80730b6394726fa690fe96e4d8f61dbec936c2fddaaec6
+/home/lulika/workspace/dfcn/src/english_character_names.h	72481	29d4103e3a0f27a64b22ba3d3ba17c503d699f590d0c2c3ecb74c68fea820d66
+/home/lulika/workspace/dfcn/src/character_surname_context.inc	32168	af0c6f5ac1b3d2aa07c968f437ff6432785785a17838e38cee6efabf4394423e
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe	26507264	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7

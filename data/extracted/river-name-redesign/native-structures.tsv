@@ -1,0 +1,22 @@
+family	native_form	populated_slots	branch
+compound_only	F+R	0|1	first draw 0
+title_only	The N of Q	5|6	mode=Q; A2=0; H=0
+title_only	The H-N of Q	4|5|6	mode=Q; A2=0; H=1
+title_only	The A1 N	2|5	mode=A; A2=0; H=0
+title_only	The A1 H-N	2|4|5	mode=A; A2=0; H=1
+title_only	The A1 A2 N	2|3|5	mode=A; A2=1; H=0
+title_only	The A1 A2 H-N	2|3|4|5	mode=A; A2=1; H=1
+title_only	The A1 N of Q	2|5|6	mode=AQ; A2=0; H=0
+title_only	The A1 H-N of Q	2|4|5|6	mode=AQ; A2=0; H=1
+title_only	The A1 A2 N of Q	2|3|5|6	mode=AQ; A2=1; H=0
+title_only	The A1 A2 H-N of Q	2|3|4|5|6	mode=AQ; A2=1; H=1
+compound_title	FR the N of Q	0|1|5|6	mode=Q; A2=0; H=0
+compound_title	FR the H-N of Q	0|1|4|5|6	mode=Q; A2=0; H=1
+compound_title	FR the A1 N	0|1|2|5	mode=A; A2=0; H=0
+compound_title	FR the A1 H-N	0|1|2|4|5	mode=A; A2=0; H=1
+compound_title	FR the A1 A2 N	0|1|2|3|5	mode=A; A2=1; H=0
+compound_title	FR the A1 A2 H-N	0|1|2|3|4|5	mode=A; A2=1; H=1
+compound_title	FR the A1 N of Q	0|1|2|5|6	mode=AQ; A2=0; H=0
+compound_title	FR the A1 H-N of Q	0|1|2|4|5|6	mode=AQ; A2=0; H=1
+compound_title	FR the A1 A2 N of Q	0|1|2|3|5|6	mode=AQ; A2=1; H=0
+compound_title	FR the A1 A2 H-N of Q	0|1|2|3|4|5|6	mode=AQ; A2=1; H=1
