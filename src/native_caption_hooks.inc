@@ -2277,6 +2277,9 @@ static void capture_native_worldgen_caption(graphicst *graphics,
                 native_string_view(source, &text, 4096) && !text.empty() &&
                 text.find_first_of("\r\n") == std::string_view::npos &&
                 text.find('\0') == std::string_view::npos) {
+            // In particular, dfaa08 receives bb8e10's complete era title
+            // from history.eras.back(). Copy it before addst abbreviates its
+            // private string to 37 cells; the drawn bytes are not that title.
             complete.assign(text);
             // Worldgen shortens river names before addst. Consume only the
             // same string's exact abbreviation from this producer's epoch.

@@ -65,6 +65,9 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
         std::shared_ptr<const NativeHistoryName> site_name;
         std::shared_ptr<const NativeRiverNameFact> river_name;
     };
+    const auto complete_text = [](const NativeTextCardRow &row) {
+        return trim_view(row.complete_source.empty() ? row.source : row.complete_source);
+    };
     std::map<int, std::vector<Field>> fields;
     // The paragraph fitter only mutates its owned source spans. Uncaptured
     // rows stay empty, and no context is populated from a full-screen read.
@@ -170,13 +173,23 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
             const int previous_end = row.x + static_cast<int>(row.source.size());
             const int next_end = field.row.x + static_cast<int>(field.row.source.size());
             if (next_end <= previous_end) continue;
-            // Keep complete names while combining their visible suppression
-            // spans. Their translated label/quotes and name share one layout.
-            std::string complete;
-            if (name_parts) {
-                complete = row.complete_source.empty() ? row.source : row.complete_source;
+            // A shortened span has no byte offset into its complete source.
+            // Only disjoint writes can join such fields without losing text.
+            if (field.row.x < previous_end &&
+                    (complete_text(row) != row.source || complete_text(field.row) != field.row.source)) {
+                joined.push_back(std::move(field));
+                continue;
+            }
+            // dfaa08 draws the full in-memory era title at width 37, then
+            // dfaa47 appends the year. Preserve both original strings even
+            // when the first draw abbreviates words or removes the determiner.
+            // Visible bytes below own only suppression and layout geometry.
+            std::string complete(complete_text(row));
+            if (field.row.x >= previous_end) {
                 complete.append(static_cast<size_t>(field.row.x - previous_end), ' ');
-                complete += field.row.complete_source.empty() ? field.row.source : field.row.complete_source;
+                complete += complete_text(field.row);
+            } else complete += complete_text(field.row).substr(previous_end - field.row.x);
+            if (name_parts) {
                 joined.back().geography = field.geography;
                 // Quote writers have no site object. Keep the snapshot owned
                 // by the English-name writer when the three runs are joined.
@@ -499,8 +512,7 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
                 heading_y >= 0 && y >= prose_top && y < prose_bottom))
             continue;
         const bool geography = field.geography != Geography::None;
-        const auto source = normalize_utterance(geography && !row.complete_source.empty()
-            ? row.complete_source : row.source);
+        const auto source = normalize_utterance(complete_text(row));
         const bool summary_row = inside_panel(row) && row.x == left && (heading_y < 0 || y <= heading_y);
         const bool identity = summary_row && (source.starts_with("Creating ") ||
             source.find(", year ") != std::string::npos);
