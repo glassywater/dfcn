@@ -3603,6 +3603,7 @@ enum class LegendsSearchKind {
 // Stockpile display and search share the same typed caption grammar.
 // Native stockpile_view_mode numbers belong only to the binding data.
 enum class StockpileCaptionKind { Label, Value, Color, Wood, ItemType };
+#include "native_stockpile_caption_kind.inc"
 
 enum class SymbolCaptionKind { Creature, Plant, Shape, Item, Figure, Artifact, Action };
 
@@ -18485,10 +18486,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         }
     }
     const auto mod_workshop_names = preserve_mod_workshop_names(screen_rows);
-    // Stockpile settings reuse the task chooser's icon/category skins and
-    // search field. Their status controls must claim all three columns first:
-    // the generic chooser otherwise consumes the category proof and leaves
-    // filters/values at their original English caption positions.
+    // The stockpile interface and its native caption writers own these
+    // fields before the generic task chooser can consume their shared skins.
     if (!local_fortress_hud)
         append_fortress_stockpile_settings(screen_rows, result, only_y);
     // The chooser owns complete category names and separate task controls.
