@@ -1,0 +1,119 @@
+edition	owner	instruction_rva	instruction
+reference	adventure-global-renderer	0xafec59	test   BYTE PTR [rip+0x1b44f58],0x5        # 0x142643bb8
+reference	adventure-global-renderer	0xafec7f	test   cl,0x1
+reference	adventure-global-renderer	0xafec8d	cmp    WORD PTR [rip+0x1b44f2c],ax        # 0x142643bc0
+reference	adventure-global-renderer	0xafeca8	test   r12,r12
+reference	adventure-global-renderer	0xafecc5	cmp    r14d,edi
+reference	adventure-global-renderer	0xafecea	cmp    esi,r13d
+reference	adventure-global-renderer	0xafecf3	cmp    ebx,r14d
+reference	adventure-global-renderer	0xaffc23	cmp    ebx,edi
+reference	adventure-global-renderer	0xaffc37	cmp    esi,r15d
+reference	adventure-global-renderer	0xaffc3c	cmp    ebx,r14d
+reference	adventure-global-renderer	0xaffc4c	cmp    ebx,edi
+reference	adventure-global-renderer	0xaffc60	cmp    ebx,r14d
+reference	adventure-global-renderer	0xaffc6d	cmp    ebx,edi
+reference	adventure-global-renderer	0xaffc87	cmp    ebx,edi
+reference	adventure-global-renderer	0xaffc91	cmp    esi,r15d
+reference	adventure-global-renderer	0xaffca5	test   r12,r12
+reference	adventure-global-renderer	0xaffcc1	test   r12,r12
+reference	adventure-global-renderer	0xaffce6	test   r12,r12
+reference	adventure-global-renderer	0xaffd11	test   r12,r12
+reference	adventure-global-renderer	0xaffd40	cmp    WORD PTR [r14],cx
+reference	adventure-global-renderer	0xaffd5b	test   ecx,ecx
+reference	adventure-global-renderer	0xaffd6d	cmp    ecx,0x1
+reference	adventure-global-renderer	0xaffdcb	test   al,al
+reference	adventure-global-renderer	0xaffe28	test   al,al
+reference	adventure-global-renderer	0xaffe54	test   BYTE PTR [rdi-0x8],0x2
+reference	adventure-global-renderer	0xaffe98	cmp    al,0x4
+reference	adventure-global-renderer	0xaffeae	cmp    al,0x8
+reference	adventure-global-renderer	0xaffec4	cmp    al,0x10
+reference	adventure-global-renderer	0xaffeda	cmp    al,0x14
+reference	adventure-global-renderer	0xafff14	cmp    al,0xc
+reference	adventure-global-renderer	0xafff4b	cmp    al,0x1c
+reference	adventure-global-renderer	0xafff82	cmp    al,0x18
+reference	adventure-global-renderer	0xafffd7	cmp    r14,rax
+reference	adventure-global-renderer	0xafffe5	cmp    QWORD PTR [rbp-0x20],rbx
+reference	adventure-global-renderer	0xaffffb	test   r12,r12
+reference	adventure-global-renderer	0xb0001a	test   ax,ax
+reference	adventure-global-renderer	0xb00023	test   cl,0x1
+reference	adventure-global-renderer	0xb00032	cmp    DWORD PTR [rip+0x1b43b83],r8d        # 0x142643bbc
+reference	adventure-global-renderer	0xb000e7	test   ax,ax
+reference	adventure-global-renderer	0xb000f0	test   cl,0x4
+reference	adventure-global-renderer	0xb000ff	cmp    DWORD PTR [rip+0x1b43bc6],0xffffffff        # 0x142643ccc
+reference	adventure-global-renderer	0xb00170	cmp    DWORD PTR [rip+0x1b43b55],0xffffffff        # 0x142643ccc
+reference	adventure-global-renderer	0xb00179	cmp    BYTE PTR [rip+0x1b43b54],0x0        # 0x142643cd4
+reference	adventure-global-renderer	0xb001a6	test   rax,rax
+reference	adventure-global-renderer	0xb001ba	test   al,al
+reference	odor-creature-name	0xaa3be5	cmp    QWORD PTR [rdx+0x18],0xf
+reference	odor-creature-name	0xaa3c05	cmp    r9w,0xffff
+reference	odor-creature-name	0xaa3c10	test   r8b,r8b
+reference	odor-creature-name	0xaa3c19	test   si,si
+reference	odor-creature-name	0xaa3c33	cmp    rsi,rax
+reference	odor-creature-name	0xaa3c38	test   r9w,r9w
+reference	odor-creature-name	0xaa3c5f	cmp    r8,rax
+reference	odor-creature-name	0xaa3c70	cmp    rdi,rdx
+reference	odor-creature-name	0xaa3c75	cmp    QWORD PTR [rdx+0x18],0xf
+reference	odor-creature-name	0xaa3c92	cmp    QWORD PTR [rdi+0x10],0x0
+reference	odor-creature-name	0xaa3caa	test   si,si
+reference	odor-creature-name	0xaa3cbd	cmp    rsi,rax
+reference	odor-creature-name	0xaa3cc2	test   r9w,r9w
+reference	odor-creature-name	0xaa3ce5	cmp    r8,rax
+reference	odor-creature-name	0xaa3cf2	cmp    rdi,rdx
+reference	odor-creature-name	0xaa3cf7	cmp    QWORD PTR [rdx+0x18],0xf
+reference	odor-creature-name	0xaa3d14	cmp    QWORD PTR [rdi+0x10],0x0
+reference	odor-creature-name	0xaa3d1e	test   si,si
+reference	odor-creature-name	0xaa3d31	cmp    rbx,rax
+reference	odor-creature-name	0xaa3d3e	cmp    rdi,rdx
+reference	odor-creature-name	0xaa3d43	cmp    QWORD PTR [rdx+0x18],0xf
+reference	odor-creature-name	0xaa3d6c	test   r8b,r8b
+reference	odor-creature-name	0xaa3d71	test   si,si
+reference	odor-creature-name	0xaa3d84	cmp    rbx,rax
+reference	odor-caste-lookup	0xbba90	test   dx,dx
+reference	odor-caste-lookup	0xbbaa8	cmp    r10,rax
+reference	odor-caste-lookup	0xbbaad	test   r8w,r8w
+reference	odor-caste-lookup	0xbbad0	cmp    rdx,rcx
+reference	odor-capitalization	0x52d667	test   rbp,rbp
+reference	odor-capitalization	0x52d696	cmp    rsi,0xf
+reference	odor-capitalization	0x52d69f	cmp    BYTE PTR [r9+rax*1],0x5b
+reference	odor-capitalization	0x52d6b3	cmp    rsi,0xf
+reference	odor-capitalization	0x52d6bc	cmp    BYTE PTR [r9+rax*1],0x5d
+reference	odor-capitalization	0x52d6ca	test   ebx,ebx
+reference	odor-capitalization	0x52d6d2	test   dil,dil
+reference	odor-capitalization	0x52d6da	cmp    rsi,0xf
+reference	odor-capitalization	0x52d6e3	cmp    BYTE PTR [r9+rax*1-0x1],0x20
+reference	odor-capitalization	0x52d6ee	cmp    rsi,0xf
+reference	odor-capitalization	0x52d6f7	cmp    BYTE PTR [rax+r9*1-0x1],0x22
+reference	odor-capitalization	0x52d708	cmp    rsi,0xf
+reference	odor-capitalization	0x52d711	cmp    BYTE PTR [rax+r9*1-0x1],0x27
+reference	odor-capitalization	0x52d719	test   r10d,r10d
+reference	odor-capitalization	0x52d71e	cmp    r10d,0x2
+reference	odor-capitalization	0x52d727	cmp    rdx,0xf
+reference	odor-capitalization	0x52d730	cmp    BYTE PTR [rax+r9*1-0x2],0x20
+reference	odor-capitalization	0x52d73b	cmp    rdx,0xf
+reference	odor-capitalization	0x52d744	cmp    BYTE PTR [rax+r9*1-0x2],0x2c
+reference	odor-capitalization	0x52d74c	test   r11b,r11b
+reference	odor-capitalization	0x52d758	cmp    r8,0xf
+reference	odor-capitalization	0x52d761	cmp    BYTE PTR [r9+rax*1],0x61
+reference	odor-capitalization	0x52d76b	cmp    r8,0xf
+reference	odor-capitalization	0x52d774	cmp    BYTE PTR [rax+r9*1],0x7a
+reference	odor-capitalization	0x52d77e	cmp    r8,0xf
+reference	odor-capitalization	0x52d78f	cmp    eax,0x23
+reference	odor-capitalization	0x52d7af	cmp    rsi,0xf
+reference	odor-capitalization	0x52d7b8	cmp    BYTE PTR [rax+r9*1],0x20
+reference	odor-capitalization	0x52d7c2	cmp    rsi,0xf
+reference	odor-capitalization	0x52d7cb	cmp    BYTE PTR [rax+r9*1],0x22
+reference	odor-capitalization	0x52d7e2	cmp    rax,rbp
+reference	odor-capitalization	0x52d7f3	cmp    r8,0xf
+reference	odor-capitalization	0x52d803	cmp    QWORD PTR [rcx+0x18],0xf
+reference	odor-capitalization	0x52d816	cmp    r8,0xf
+reference	odor-capitalization	0x52d828	cmp    r8,0xf
+reference	odor-capitalization	0x52d83a	cmp    r8,0xf
+reference	odor-capitalization	0x52d84c	cmp    r8,0xf
+reference	odor-capitalization	0x52d85e	cmp    r8,0xf
+reference	odor-capitalization	0x52d870	cmp    r8,0xf
+reference	odor-capitalization	0x52d882	cmp    r8,0xf
+reference	odor-capitalization	0x52d894	cmp    r8,0xf
+reference	track-count	0x52c176	cmp    QWORD PTR [rsp+0x38],0xf
+reference	track-count	0x52c195	cmp    rdx,0xf
+reference	track-count	0x52c1a6	cmp    rdx,0x1000
+reference	track-count	0x52c1be	cmp    rax,0x1f

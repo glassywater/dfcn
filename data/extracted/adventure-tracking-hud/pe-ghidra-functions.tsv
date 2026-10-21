@@ -1,0 +1,7 @@
+edition	image	owner	start_rva	code_end_rva	assembly_input
+reference	PE:6a70a6d9:02711000	adventure-global-renderer	0xaf1190	0xb0390e	../adventure-movement-hud/pe-reference-adventure-global-renderer.asm
+reference	PE:6a70a6d9:02711000	odor-creature-name	0xaa3bd0	0xaa3d93	pe-current-odor-creature-name.asm
+reference	PE:6a70a6d9:02711000	odor-caste-lookup	0xbba90	0xbbadd	pe-current-odor-caste-lookup.asm
+reference	PE:6a70a6d9:02711000	odor-capitalization	0x52d650	0x52d8ba	pe-current-odor-capitalization.asm
+reference	PE:6a70a6d9:02711000	track-count	0x52c130	0x52c1e3	pe-current-track-count.asm
+reference	PE:6a70a6d9:02711000	track-count-stream	0x52c2b0	0x52c388	pe-current-track-count-stream.asm

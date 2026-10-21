@@ -5085,6 +5085,9 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_adventure_compass_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
+    void append_adventure_tracking_hud_matches(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y,
+        const unsigned char *screen_override) const;
     void layout_adventure_compass(SDL_Renderer *renderer);
     std::optional<std::string> translate_fortress_activity(
         const std::string &source, bool typed_only = false) const;
@@ -17499,6 +17502,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_locations.inc"
 #include "fortress_location_list.inc"
 #include "adventure_compass.inc"
+#include "adventure_tracking_hud.inc"
 #include "embark_civilizations.inc"
 #include "fortress_livestock.inc"
 #include "native_calendar_date.inc"
@@ -18647,6 +18651,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // before clipped identities or generated-name readers see the grid.
     if (!announcement_panel_only) {
 #include "adventure_movement.inc"
+        append_adventure_tracking_hud_matches(screen_rows, result, only_y, screen_override);
     }
     // Written-content titles must own both rows before clipped unit-name
     // recovery or generic item/name matching can consume their words.

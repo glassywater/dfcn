@@ -150687,3 +150687,7 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+
+# Adventure sensory HUD, native source: data/extracted/adventure-tracking-hud/.
+Tracks Visible:	可见踪迹：	wl
+Tracks Visible: {d}	可见踪迹：{d}	hPt

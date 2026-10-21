@@ -1,0 +1,997 @@
+source_file	line	creature	field	native_value
+data/vanilla/vanilla_creatures/objects/creature_amphibians.txt	7	TOAD	NAME	toad
+data/vanilla/vanilla_creatures/objects/creature_amphibians.txt	87	TOAD_MAN	NAME	toad man
+data/vanilla/vanilla_creatures/objects/creature_amphibians.txt	104	GIANT_TOAD	NAME	giant toad
+data/vanilla/vanilla_creatures/objects/creature_annelids.txt	7	WORM	NAME	worm
+data/vanilla/vanilla_creatures/objects/creature_annelids.txt	59	WORM_MAN	NAME	worm man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	7	BIRD_BLUEJAY	NAME	blue jay
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	129	BLUEJAY_MAN	NAME	bluejay man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	146	GIANT_BLUEJAY	NAME	giant bluejay
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	167	BIRD_CARDINAL	NAME	cardinal
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	288	CARDINAL_MAN	NAME	cardinal man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	305	GIANT_CARDINAL	NAME	giant cardinal
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	326	BIRD_GRACKLE	NAME	grackle
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	444	GRACKLE_MAN	NAME	grackle man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	461	GIANT_GRACKLE	NAME	giant grackle
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	482	BIRD_ORIOLE	NAME	oriole
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	599	ORIOLE_MAN	NAME	oriole man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	616	GIANT_ORIOLE	NAME	giant oriole
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	637	BIRD_RW_BLACKBIRD	NAME	red-winged blackbird
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	755	RW_BLACKBIRD_MAN	NAME	red-winged blackbird man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	772	GIANT_RW_BLACKBIRD	NAME	giant red-winged blackbird
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	803	BIRD_PENGUIN	NAME	penguin
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	898	BIRD_PENGUIN_LITTLE	NAME	little penguin
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	994	BIRD_PENGUIN_EMPEROR	NAME	emperor penguin
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1110	PENGUIN MAN	NAME	penguin man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1126	BIRD_PENGUIN_GIANT	NAME	giant penguin
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1154	BIRD_FALCON_PEREGRINE	NAME	peregrine falcon
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1293	PEREGRINE FALCON MAN	NAME	peregrine falcon man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1310	GIANT PEREGRINE FALCON	NAME	giant peregrine falcon
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1339	BIRD_KIWI	NAME	kiwi
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1449	KIWI MAN	NAME	kiwi man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1465	BIRD_KIWI_GIANT	NAME	giant kiwi
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1497	BIRD_OSTRICH	NAME	ostrich
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1632	OSTRICH MAN	NAME	ostrich man
+data/vanilla/vanilla_creatures/objects/creature_birds.txt	1648	BIRD_OSTRICH_GIANT	NAME	giant ostrich
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	13	BIRD_CROW	NAME	crow
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	135	CROW_MAN	NAME	crow man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	152	GIANT_CROW	NAME	giant crow
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	179	BIRD_RAVEN	NAME	raven
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	304	RAVEN_MAN	NAME	raven man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	321	GIANT_RAVEN	NAME	giant raven
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	347	BIRD_CASSOWARY	NAME	cassowary
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	458	CASSOWARY_MAN	NAME	cassowary man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	475	GIANT_CASSOWARY	NAME	giant cassowary
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	495	BIRD_KEA	NAME	kea
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	621	KEA_MAN	NAME	kea man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	638	GIANT_KEA	NAME	giant kea
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	665	BIRD_OWL_SNOWY	NAME	snowy owl
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	788	SNOWY_OWL_MAN	NAME	snowy owl man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	805	GIANT_SNOWY_OWL	NAME	giant snowy owl
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	831	SPARROW	NAME	sparrow
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	955	SPARROW_MAN	NAME	sparrow man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	972	GIANT_SPARROW	NAME	giant sparrow
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	999	BIRD_STORK_WHITE	NAME	white stork
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1104	WHITE_STORK_MAN	NAME	white stork man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1121	GIANT_WHITE_STORK	NAME	giant white stork
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1149	BIRD_LOON	NAME	loon
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1254	LOON_MAN	NAME	loon man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1271	GIANT_LOON	NAME	giant loon
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1297	BIRD_OWL_BARN	NAME	barn owl
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1423	BARN_OWL_MAN	NAME	barn owl man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1440	GIANT_BARN_OWL	NAME	giant barn owl
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1465	BIRD_PARAKEET	NAME	parakeet
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1586	PARAKEET_MAN	NAME	parakeet man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1603	GIANT_PARAKEET	NAME	giant parakeet
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1629	BIRD_KAKAPO	NAME	kakapo
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1735	KAKAPO_MAN	NAME	kakapo man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1752	GIANT_KAKAPO	NAME	giant kakapo
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1778	BIRD_PARROT_GREY	NAME	grey parrot
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1883	GREY_PARROT_MAN	NAME	grey parrot man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1900	GIANT_GREY_PARROT	NAME	giant grey parrot
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	1926	BIRD_PUFFIN	NAME	puffin
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2028	PUFFIN_MAN	NAME	puffin man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2045	GIANT_PUFFIN	NAME	giant puffin
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2069	BIRD_SWAN	NAME	swan
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2173	SWAN_MAN	NAME	swan man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2190	GIANT_SWAN	NAME	giant swan
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2214	BIRD_LORIKEET	NAME	lorikeet
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2333	LORIKEET_MAN	NAME	lorikeet man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2350	GIANT_LORIKEET	NAME	giant lorikeet
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2376	BIRD_WREN	NAME	wren
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2498	WREN_MAN	NAME	wren man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2515	GIANT_WREN	NAME	giant wren
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2540	BIRD_OSPREY	NAME	osprey
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2665	OSPREY_MAN	NAME	osprey man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2682	GIANT_OSPREY	NAME	giant osprey
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2706	BIRD_EMU	NAME	emu
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2820	EMU_MAN	NAME	emu man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2837	GIANT_EMU	NAME	giant emu
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2861	BIRD_COCKATIEL	NAME	cockatiel
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2979	COCKATIEL_MAN	NAME	cockatiel man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	2996	GIANT_COCKATIEL	NAME	giant cockatiel
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3019	BIRD_LOVEBIRD_PEACH-FACED	NAME	peach-faced lovebird
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3139	PEACH-FACED_LOVEBIRD_MAN	NAME	peach-faced lovebird man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3156	GIANT_PEACH-FACED_LOVEBIRD	NAME	giant peach-faced lovebird
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3181	BIRD_MAGPIE	NAME	magpie
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3301	MAGPIE_MAN	NAME	magpie man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3318	GIANT_MAGPIE	NAME	giant magpie
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3342	BIRD_KESTREL	NAME	kestrel
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3468	KESTREL_MAN	NAME	kestrel man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3485	GIANT_KESTREL	NAME	giant kestrel
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3508	BIRD_ALBATROSS	NAME	albatross
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3612	ALBATROSS_MAN	NAME	albatross man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3629	GIANT_ALBATROSS	NAME	giant albatross
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3654	BIRD_OWL_GREAT_HORNED	NAME	great horned owl
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3782	GREAT_HORNED_OWL_MAN	NAME	great horned owl man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3799	GIANT_GREAT_HORNED_OWL	NAME	giant great horned owl
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3824	BIRD_EAGLE	NAME	eagle
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3950	EAGLE_MAN	NAME	eagle man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3967	GIANT_EAGLE	NAME	giant eagle
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	3991	BIRD_HORNBILL	NAME	hornbill
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	4109	HORNBILL_MAN	NAME	hornbill man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	4126	GIANT_HORNBILL	NAME	giant hornbill
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	4150	BIRD_LOVEBIRD_MASKED	NAME	masked lovebird
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	4267	MASKED_LOVEBIRD_MAN	NAME	masked lovebird man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	4284	GIANT_MASKED_LOVEBIRD	NAME	giant masked lovebird
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	4307	BIRD_BUSHTIT	NAME	bushtit
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	4425	BUSHTIT_MAN	NAME	bushtit man
+data/vanilla/vanilla_creatures/objects/creature_birds_new.txt	4442	GIANT_BUSHTIT	NAME	giant bushtit
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	11	DAMSELFLY	NAME	damselfly
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	78	DAMSELFLY_MAN	NAME	damselfly man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	95	GIANT_DAMSELFLY	NAME	giant damselfly
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	120	MOTH	NAME	moth
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	186	MOTH_MAN	NAME	moth man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	203	GIANT_MOTH	NAME	giant moth
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	226	GRASSHOPPER	NAME	grasshopper
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	290	GRASSHOPPER_MAN	NAME	grasshopper man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	307	GIANT_GRASSHOPPER	NAME	giant grasshopper
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	329	BARK_SCORPION	NAME	bark scorpion
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	439	BARK_SCORPION_MAN	NAME	bark scorpion man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	473	GIANT_BARK_SCORPION	NAME	giant bark scorpion
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	494	MANTIS	NAME	mantis
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	565	MANTIS_MAN	NAME	mantis man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	582	GIANT_MANTIS	NAME	giant mantis
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	606	TICK	NAME	tick
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	674	TICK_MAN	NAME	tick man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	691	GIANT_TICK	NAME	giant tick
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	714	LOUSE	NAME	louse
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	781	LOUSE_MAN	NAME	louse man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	798	GIANT_LOUSE	NAME	giant louse
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	820	THRIPS	NAME	thrips
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	889	THRIPS_MAN	NAME	thrips man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	906	GIANT_THRIPS	NAME	giant thrips
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	927	SLUG	NAME	slug
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	977	SLUG_MAN	NAME	slug man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	995	GIANT_SLUG	NAME	giant slug
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1014	MOSQUITO	NAME	mosquito
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1087	MOSQUITO_MAN	NAME	mosquito man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1104	GIANT_MOSQUITO	NAME	giant mosquito
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1128	SPIDER_JUMPING	NAME	jumping spider
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1194	JUMPING_SPIDER_MAN	NAME	jumping spider man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1212	GIANT_JUMPING_SPIDER	NAME	giant jumping spider
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1234	TERMITE	NAME	termite
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1301	MOON_SNAIL	NAME	moon snail
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1370	MOON_SNAIL_MAN	NAME	moon snail man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1387	GIANT_MOON_SNAIL	NAME	giant moon snail
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1409	SPIDER_BROWN_RECLUSE	NAME	brown recluse spider
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1514	BROWN_RECLUSE_SPIDER_MAN	NAME	brown recluse spider man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1549	GIANT_BROWN_RECLUSE_SPIDER	NAME	giant brown recluse spider
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1570	SNAIL	NAME	snail
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1627	SNAIL_MAN	NAME	snail man
+data/vanilla/vanilla_creatures/objects/creature_bug_slug_new.txt	1645	GIANT_SNAIL	NAME	giant snail
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	11	GECKO_LEOPARD	NAME	leopard gecko
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	100	LEOPARD_GECKO_MAN	NAME	leopard gecko man
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	117	GIANT_LEOPARD_GECKO	NAME	giant leopard gecko
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	140	DESERT TORTOISE	NAME	desert tortoise
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	242	DESERT_TORTOISE_MAN	NAME	desert tortoise man
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	259	GIANT_DESERT_TORTOISE	NAME	giant desert tortoise
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	283	GILA_MONSTER	NAME	gila monster
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	426	GILA_MONSTER_MAN	NAME	gila monster man
+data/vanilla/vanilla_creatures/objects/creature_desert_new.txt	460	GIANT_GILA_MONSTER	NAME	giant gila monster
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	7	DOG	NAME	dog
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	127	CAT	NAME	cat
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	277	MULE	NAME	mule
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	367	DONKEY	NAME	donkey
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	481	HORSE	NAME	horse
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	599	COW	NAME	cow
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	728	SHEEP	NAME	sheep
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	871	PIG	NAME	pig
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	986	GOAT	NAME	goat
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	1116	BIRD_CHICKEN	NAME	chicken
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	1216	CAVY	NAME	cavy
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	1312	BIRD_DUCK	NAME	duck
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	1404	WATER_BUFFALO	NAME	water buffalo
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	1531	REINDEER	NAME	reindeer
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	1662	BIRD_GOOSE	NAME	goose
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	1754	YAK	NAME	yak
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	1881	LLAMA	NAME	llama
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	2010	ALPACA	NAME	alpaca
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	2137	BIRD_GUINEAFOWL	NAME	guineafowl
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	2236	BIRD_PEAFOWL_BLUE	NAME	blue peafowl
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	2345	BIRD_TURKEY	NAME	turkey
+data/vanilla/vanilla_creatures/objects/creature_domestic.txt	2451	RABBIT	NAME	rabbit
+data/vanilla/vanilla_creatures/objects/creature_equipment.txt	7	EQUIPMENT_WAGON	NAME	wagon
+data/vanilla/vanilla_creatures/objects/creature_fanciful.txt	6	CHIMERA	NAME	chimera
+data/vanilla/vanilla_creatures/objects/creature_fanciful.txt	14	CENTAUR	NAME	centaur
+data/vanilla/vanilla_creatures/objects/creature_fanciful.txt	28	GRIFFON	NAME	griffon
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	7	FLY	NAME	fly
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	77	FLY_MAN	NAME	fly man
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	94	GIANT_FLY	NAME	giant fly
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	113	ROACH_LARGE	NAME	large roach
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	183	ROACH_MAN	NAME	roach man
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	200	GIANT_ROACH	NAME	giant roach
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	219	BEETLE	NAME	beetle
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	286	BEETLE_MAN	NAME	beetle man
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	303	GIANT_BEETLE	NAME	giant beetle
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	321	ANT	NAME	ant
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	401	BUTTERFLY_MONARCH	NAME	monarch butterfly
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	467	BUTTERFLY_MONARCH_MAN	NAME	monarch butterfly man
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	484	GIANT_BUTTERFLY_MONARCH	NAME	giant monarch butterfly
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	503	FIREFLY	NAME	firefly
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	572	FIREFLY_MAN	NAME	firefly man
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	589	GIANT_FIREFLY	NAME	giant firefly
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	608	DRAGONFLY	NAME	dragonfly
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	675	DRAGONFLY_MAN	NAME	dragonfly man
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	692	GIANT_DRAGONFLY	NAME	giant dragonfly
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	718	HONEY_BEE	NAME	honey bee
+data/vanilla/vanilla_creatures/objects/creature_insects.txt	843	BUMBLEBEE	NAME	bumblebee
+data/vanilla/vanilla_creatures/objects/creature_large_mountain.txt	7	GOAT_MOUNTAIN	NAME	mountain goat
+data/vanilla/vanilla_creatures/objects/creature_large_mountain.txt	127	GOAT_MOUNTAIN_MAN	NAME	mountain goat man
+data/vanilla/vanilla_creatures/objects/creature_large_mountain.txt	144	GIANT_GOAT_MOUNTAIN	NAME	giant mountain goat
+data/vanilla/vanilla_creatures/objects/creature_large_mountain.txt	165	MARMOT_HOARY	NAME	hoary marmot
+data/vanilla/vanilla_creatures/objects/creature_large_mountain.txt	275	MARMOT_HOARY_MAN	NAME	hoary marmot man
+data/vanilla/vanilla_creatures/objects/creature_large_mountain.txt	294	GIANT_MARMOT_HOARY	NAME	giant hoary marmot
+data/vanilla/vanilla_creatures/objects/creature_large_mountain.txt	313	GNOME_MOUNTAIN	NAME	mountain gnome
+data/vanilla/vanilla_creatures/objects/creature_large_mountain.txt	557	GNOME_DARK	NAME	dark gnome
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	7	WALRUS	NAME	walrus
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	97	WALRUS_MAN	NAME	walrus man
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	114	GIANT_WALRUS	NAME	giant walrus
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	134	FISH_LAMPREY_SEA	NAME	sea lamprey
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	220	SHARK_GREAT_WHITE	NAME	great white shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	300	SHARK_FRILL	NAME	frill shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	380	SHARK_SPINY_DOGFISH	NAME	spiny dogfish
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	460	SHARK_WOBBEGONG_SPOTTED	NAME	spotted wobbegong
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	540	SHARK_WHALE	NAME	whale shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	610	SHARK_BASKING	NAME	basking shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	680	SHARK_NURSE	NAME	nurse shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	759	SHARK_MAKO_SHORTFIN	NAME	shortfin mako shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	839	SHARK_MAKO_LONGFIN	NAME	longfin mako shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	919	SHARK_TIGER	NAME	tiger shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	998	SHARK_BULL	NAME	bull shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1077	SHARK_REEF_BLACKTIP	NAME	blacktip reef shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1157	SHARK_REEF_WHITETIP	NAME	whitetip reef shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1236	SHARK_BLUE	NAME	blue shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1315	SHARK_HAMMERHEAD	NAME	hammerhead shark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1395	SHARK_ANGEL	NAME	angelshark
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1475	FISH_SKATE_COMMON	NAME	common skate
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1547	FISH_RAY_MANTA	NAME	manta ray
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1609	FISH_STINGRAY	NAME	stingray
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1687	FISH_COELACANTH	NAME	coelacanth
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1769	FISH_STURGEON	NAME	sturgeon
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1855	FISH_CONGER_EEL	NAME	conger eel
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	1924	FISH_MILKFISH	NAME	milkfish
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2013	FISH_COD	NAME	cod
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2097	FISH_OPAH	NAME	opah
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2180	FISH_GROUPER_GIANT	NAME	giant grouper
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2262	FISH_BLUEFISH	NAME	bluefish
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2346	FISH_SUNFISH_OCEAN	NAME	ocean sunfish
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2430	FISH_SWORDFISH	NAME	swordfish
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2514	FISH_MARLIN	NAME	marlin
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2598	FISH_HALIBUT	NAME	halibut
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2681	FISH_BARRACUDA_GREAT	NAME	great barracuda
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2766	FISH_TUNA_BLUEFIN	NAME	bluefin tuna
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2859	NARWHAL	NAME	narwhal
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2967	NARWHAL MAN	NAME	narwhal man
+data/vanilla/vanilla_creatures/objects/creature_large_ocean.txt	2983	NARWHAL, GIANT	NAME	giant narwhal
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	7	HIPPO	NAME	hippo
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	115	HIPPO_MAN	NAME	hippo man
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	132	GIANT_HIPPO	NAME	giant hippo
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	151	FISH_GAR_LONGNOSE	NAME	longnose gar
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	238	FISH_CARP	NAME	carp
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	324	FISH_TIGERFISH	NAME	tigerfish
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	410	FISH_PIKE	NAME	pike
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	506	PLATYPUS	NAME	platypus
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	678	PLATYPUS MAN	NAME	platypus man
+data/vanilla/vanilla_creatures/objects/creature_large_riverlake.txt	711	PLATYPUS, GIANT	NAME	giant platypus
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	7	BEAR_GRIZZLY	NAME	grizzly bear
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	124	BEAR_GRIZZLY_MAN	NAME	grizzly bear man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	143	GIANT_BEAR_GRIZZLY	NAME	giant grizzly bear
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	163	BEAR_BLACK	NAME	black bear
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	278	BEAR_BLACK_MAN	NAME	black bear man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	297	GIANT_BEAR_BLACK	NAME	giant black bear
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	317	DEER	NAME	deer
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	443	DEER_MAN	NAME	deer man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	460	GIANT_DEER	NAME	giant deer
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	479	FOX	NAME	fox
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	588	FOX_MAN	NAME	fox man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	607	GIANT_FOX	NAME	giant fox
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	626	RACCOON	NAME	raccoon
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	737	RACCOON_MAN	NAME	raccoon man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	756	GIANT_RACCOON	NAME	giant raccoon
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	776	MACAQUE_RHESUS	NAME	rhesus macaque
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	886	MACAQUE_RHESUS_MAN	NAME	rhesus macaque man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	905	GIANT_MACAQUE_RHESUS	NAME	giant rhesus macaque
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	924	COUGAR	NAME	cougar
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1036	COUGAR_MAN	NAME	cougar man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1055	GIANT_COUGAR	NAME	giant cougar
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1075	WOLF	NAME	wolf
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1187	WOLF_MAN	NAME	wolf man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1206	GIANT_WOLF	NAME	giant wolf
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1225	GROUNDHOG	NAME	groundhog
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1337	GROUNDHOG_MAN	NAME	groundhog man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1356	GIANT_GROUNDHOG	NAME	giant groundhog
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1375	ALLIGATOR	NAME	alligator
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1495	ALLIGATOR_MAN	NAME	alligator man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1514	GIANT_ALLIGATOR	NAME	giant alligator
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1533	BIRD_BUZZARD	NAME	buzzard
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1656	BUZZARD_MAN	NAME	buzzard man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1673	GIANT_BUZZARD	NAME	giant buzzard
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1701	PANDA	NAME	panda
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1824	PANDA, GIGANTIC	NAME	gigantic panda
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1881	PANDA MAN	NAME	panda man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	1900	CAPYBARA	NAME	capybara
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2008	CAPYBARA, GIANT	NAME	giant capybara
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2051	CAPYBARA MAN	NAME	capybara man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2067	BADGER	NAME	badger
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2198	BADGER MAN	NAME	badger man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2227	BADGER, GIANT	NAME	giant badger
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2258	MOOSE	NAME	moose
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2394	MOOSE MAN	NAME	moose man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2410	MOOSE, GIANT	NAME	giant moose
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2441	RED PANDA	NAME	red panda
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2591	RED PANDA MAN	NAME	red panda man
+data/vanilla/vanilla_creatures/objects/creature_large_temperate.txt	2621	RED PANDA, GIANT	NAME	giant red panda
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	7	ELEPHANT	NAME	elephant
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	124	ELEPHANT_MAN	NAME	elephant man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	145	GIANT_ELEPHANT	NAME	giant elephant
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	175	WARTHOG	NAME	warthog
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	297	WARTHOG_MAN	NAME	warthog man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	318	GIANT_WARTHOG	NAME	giant warthog
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	337	LION	NAME	lion
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	448	LION_MAN	NAME	lion man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	467	GIANT_LION	NAME	giant lion
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	486	LEOPARD	NAME	leopard
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	597	LEOPARD_MAN	NAME	leopard man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	616	GIANT_LEOPARD	NAME	giant leopard
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	635	JAGUAR	NAME	jaguar
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	746	JAGUAR_MAN	NAME	jaguar man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	765	GIANT_JAGUAR	NAME	giant jaguar
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	784	TIGER	NAME	tiger
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	897	TIGER_MAN	NAME	tiger man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	916	GIANT_TIGER	NAME	giant tiger
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	935	CHEETAH	NAME	cheetah
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1045	CHEETAH_MAN	NAME	cheetah man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1064	GIANT_CHEETAH	NAME	giant cheetah
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1083	GAZELLE	NAME	gazelle
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1196	GAZELLE_MAN	NAME	gazelle man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1213	GIANT_GAZELLE	NAME	giant gazelle
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1232	MANDRILL	NAME	mandrill
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1341	MANDRILL_MAN	NAME	mandrill man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1360	GIANT_MANDRILL	NAME	giant mandrill
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1379	CHIMPANZEE	NAME	chimpanzee
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1471	BONOBO	NAME	bonobo
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1563	GORILLA	NAME	gorilla
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1658	ORANGUTAN	NAME	orangutan
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1750	GIBBON_SIAMANG	NAME	siamang
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1842	GIBBON_WHITE_HANDED	NAME	white-handed gibbon
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	1935	GIBBON_BLACK_HANDED	NAME	black-handed gibbon
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2028	GIBBON_GRAY	NAME	gray gibbon
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2120	GIBBON_SILVERY	NAME	silvery gibbon
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2212	GIBBON_PILEATED	NAME	pileated gibbon
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2307	GIBBON_BILOU	NAME	bilou
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2399	GIBBON_WHITE_BROWED	NAME	white-browed gibbon
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2491	GIBBON_BLACK_CRESTED	NAME	black-crested gibbon
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2583	CAMEL_1_HUMP	NAME	one-humped camel
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2725	CAMEL_1_HUMP_MAN	NAME	one-humped camel man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2755	GIANT_CAMEL_1_HUMP	NAME	giant one-humped camel
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2774	CAMEL_2_HUMP	NAME	two-humped camel
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2916	CAMEL_2_HUMP_MAN	NAME	two-humped camel man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2946	GIANT_CAMEL_2_HUMP	NAME	giant two-humped camel
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	2965	CROCODILE_SALTWATER	NAME	saltwater crocodile
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3085	CROCODILE_SALTWATER_MAN	NAME	saltwater crocodile man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3104	GIANT_CROCODILE_SALTWATER	NAME	giant saltwater crocodile
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3123	BIRD_VULTURE	NAME	vulture
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3244	VULTURE_MAN	NAME	vulture man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3261	GIANT_VULTURE	NAME	giant vulture
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3281	RHINOCEROS	NAME	rhinoceros
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3391	RHINOCEROS_MAN	NAME	rhinoceros man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3412	GIANT_RHINOCEROS	NAME	giant rhinoceros
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3431	GIRAFFE	NAME	giraffe
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3529	GIRAFFE_MAN	NAME	giraffe man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3550	GIANT_GIRAFFE	NAME	giant giraffe
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3568	HONEY BADGER	NAME	honey badger
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3697	HONEY BADGER MAN	NAME	honey badger man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3726	HONEY BADGER, GIANT	NAME	giant honey badger
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3754	GIANT TORTOISE	NAME	giant tortoise
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3859	GIANT TORTOISE MAN	NAME	giant tortoise man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3875	GIGANTIC TORTOISE	NAME	gigantic tortoise
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	3901	ARMADILLO	NAME	armadillo
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	4004	ARMADILLO MAN	NAME	armadillo man
+data/vanilla/vanilla_creatures/objects/creature_large_tropical.txt	4020	ARMADILLO, GIANT	NAME	giant armadillo
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	7	MUSKOX	NAME	muskox
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	130	MUSKOX_MAN	NAME	muskox man
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	147	GIANT_MUSKOX	NAME	giant muskox
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	166	ELK	NAME	elk
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	291	ELK_MAN	NAME	elk man
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	308	GIANT_ELK	NAME	giant elk
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	327	BEAR_POLAR	NAME	polar bear
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	445	BEAR_POLAR_MAN	NAME	polar bear man
+data/vanilla/vanilla_creatures/objects/creature_large_tundra.txt	464	GIANT_BEAR_POLAR	NAME	giant polar bear
+data/vanilla/vanilla_creatures/objects/creature_mountain_new.txt	12	WOLVERINE	NAME	wolverine
+data/vanilla/vanilla_creatures/objects/creature_mountain_new.txt	132	WOLVERINE_MAN	NAME	wolverine man
+data/vanilla/vanilla_creatures/objects/creature_mountain_new.txt	151	GIANT_WOLVERINE	NAME	giant wolverine
+data/vanilla/vanilla_creatures/objects/creature_mountain_new.txt	172	CHINCHILLA	NAME	chinchilla
+data/vanilla/vanilla_creatures/objects/creature_mountain_new.txt	278	CHINCHILLA_MAN	NAME	chinchilla man
+data/vanilla/vanilla_creatures/objects/creature_mountain_new.txt	297	GIANT_CHINCHILLA	NAME	giant chinchilla
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	8	FLOATING_GUTS	NAME	floating guts
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	62	DRUNIAN	NAME	drunian
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	154	CREEPING_EYE	NAME	creeping eye
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	208	VORACIOUS_CAVE_CRAWLER	NAME	voracious cave crawler
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	280	BLIND_CAVE_OGRE	NAME	blind cave ogre
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	375	CAP_HOPPER	NAME	cap hopper
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	445	MAGMA_CRAB	NAME	magma crab
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	510	CRUNDLE	NAME	crundle
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	632	HUNGRY_HEAD	NAME	hungry head
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	704	FLESH_BALL	NAME	flesh ball
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	748	ELK_BIRD	NAME	elk bird
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	861	HELMET_SNAKE	NAME	helmet snake
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	974	GREEN_DEVOURER	NAME	green devourer
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1044	RUTHERER	NAME	rutherer
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1132	CREEPY_CRAWLER	NAME	creepy crawler
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1178	DRALTHA	NAME	draltha
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1266	GIANT_EARTHWORM	NAME	giant earthworm
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1315	BLOOD_MAN	NAME	blood man
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1336	BLOOD_MAN	ODOR_STRING	blood
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1388	BUGBAT	NAME	bugbat
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1472	MANERA	NAME	manera
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1555	MOLEMARIAN	NAME	molemarian
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1646	JABBERER	NAME	jabberer
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1752	POND_GRABBER	NAME	pond grabber
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1823	BLIND_CAVE_BEAR	NAME	blind cave bear
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	1910	CAVE_DRAGON	NAME	cave dragon
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	2019	REACHER	NAME	reacher
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	2124	ELEMENTMAN_GABBRO	NAME	gabbro man
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	2186	GORLAK	NAME	gorlak
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	2324	CAVE_FLOATER	NAME	cave floater
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	2413	PLUMP_HELMET_MAN	NAME	plump helmet man
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	2502	CAVE_BLOB	NAME	cave blob
+data/vanilla/vanilla_creatures/objects/creature_next_underground.txt	2576	ELEMENTMAN_AMETHYST	NAME	amethyst man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	13	OCTOPUS	NAME	octopus
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	124	OCTOPUS_MAN	NAME	octopus man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	150	GIANT_OCTOPUS	NAME	giant octopus
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	171	CRAB	NAME	crab
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	243	CRAB_MAN	NAME	crab man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	260	GIANT_CRAB	NAME	giant crab
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	283	LEOPARD_SEAL	NAME	leopard seal
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	375	LEOPARD_SEAL_MAN	NAME	leopard seal man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	392	GIANT_LEOPARD_SEAL	NAME	giant leopard seal
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	416	CUTTLEFISH	NAME	cuttlefish
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	528	CUTTLEFISH_MAN	NAME	cuttlefish man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	554	GIANT_CUTTLEFISH	NAME	giant cuttlefish
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	574	ORCA	NAME	orca
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	670	ORCA_MAN	NAME	orca man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	687	GIANT_ORCA	NAME	giant orca
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	707	SPONGE	NAME	sponge
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	760	SPONGE_MAN	NAME	sponge man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	778	GIANT_SPONGE	NAME	giant sponge
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	796	HORSESHOE_CRAB	NAME	horseshoe crab
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	860	HORSESHOE_CRAB_MAN	NAME	horseshoe crab man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	877	GIANT_HORSESHOE_CRAB	NAME	giant horseshoe crab
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	898	SPERM_WHALE	NAME	sperm whale
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	995	SPERM_WHALE_MAN	NAME	sperm whale man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1012	GIANT_SPERM_WHALE	NAME	giant sperm whale
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1034	ELEPHANT_SEAL	NAME	elephant seal
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1130	ELEPHANT_SEAL_MAN	NAME	elephant seal man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1147	GIANT_ELEPHANT_SEAL	NAME	giant elephant seal
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1169	HARP_SEAL	NAME	harp seal
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1261	HARP_SEAL_MAN	NAME	harp seal man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1278	GIANT_HARP_SEAL	NAME	giant harp seal
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1301	NAUTILUS	NAME	nautilus
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1387	NAUTILUS_MAN	NAME	nautilus man
+data/vanilla/vanilla_creatures/objects/creature_ocean_new.txt	1404	GIANT_NAUTILUS	NAME	giant nautilus
+data/vanilla/vanilla_creatures/objects/creature_other.txt	7	FOXSQUIRREL	NAME	fox squirrel
+data/vanilla/vanilla_creatures/objects/creature_other.txt	91	MOGHOPPER	NAME	moghopper
+data/vanilla/vanilla_creatures/objects/creature_other.txt	165	RAT_DEMON	NAME	demon rat
+data/vanilla/vanilla_creatures/objects/creature_other.txt	244	WAMBLER_FLUFFY	NAME	fluffy wambler
+data/vanilla/vanilla_creatures/objects/creature_other.txt	316	LIZARD_RHINO_TWO_LEGGED	NAME	two-legged rhino lizard
+data/vanilla/vanilla_creatures/objects/creature_other.txt	397	WORM_KNUCKLE	NAME	knuckle worm
+data/vanilla/vanilla_creatures/objects/creature_other.txt	440	SPIDER_PHANTOM	NAME	phantom spider
+data/vanilla/vanilla_creatures/objects/creature_other.txt	516	FLY_ACORN	NAME	acorn fly
+data/vanilla/vanilla_creatures/objects/creature_other.txt	571	GNAT_BLOOD	NAME	blood gnat
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	7	LIZARD	NAME	lizard
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	100	LIZARD_MAN	NAME	lizard man
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	119	GIANT_LIZARD	NAME	giant lizard
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	139	SKINK	NAME	skink
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	237	SKINK_MAN	NAME	skink man
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	254	GIANT_SKINK	NAME	giant skink
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	273	CHAMELEON	NAME	chameleon
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	374	CHAMELEON_MAN	NAME	chameleon man
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	391	GIANT_CHAMELEON	NAME	giant chameleon
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	411	ANOLE	NAME	anole
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	508	ANOLE_MAN	NAME	anole man
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	525	GIANT_ANOLE	NAME	giant anole
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	545	IGUANA	NAME	iguana
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	652	IGUANA_MAN	NAME	iguana man
+data/vanilla/vanilla_creatures/objects/creature_reptiles.txt	671	GIANT_IGUANA	NAME	giant iguana
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	12	RIVER OTTER	NAME	river otter
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	109	SEA OTTER	NAME	sea otter
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	220	OTTER_MAN	NAME	otter man
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	239	GIANT_OTTER	NAME	giant otter
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	264	SNAPPING TURTLE	NAME	common snapping turtle
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	355	ALLIGATOR SNAPPING TURTLE	NAME	alligator snapping turtle
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	462	SNAPPING_TURTLE_MAN	NAME	snapping turtle man
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	479	GIANT_SNAPPING_TURTLE	NAME	giant snapping turtle
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	501	BEAVER	NAME	beaver
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	611	BEAVER_MAN	NAME	beaver man
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	630	GIANT_BEAVER	NAME	giant beaver
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	656	LEECH	NAME	leech
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	721	LEECH_MAN	NAME	leech man
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	739	GIANT_LEECH	NAME	giant leech
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	762	AXOLOTL	NAME	axolotl
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	848	AXOLOTL_MAN	NAME	axolotl man
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	865	GIANT_AXOLOTL	NAME	giant axolotl
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	885	MINK	NAME	mink
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	994	MINK_MAN	NAME	mink man
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	1013	GIANT_MINK	NAME	giant mink
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	1036	POND_TURTLE	NAME	pond turtle
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	1137	POND_TURTLE_MAN	NAME	pond turtle man
+data/vanilla/vanilla_creatures/objects/creature_riverlakepool_new.txt	1154	GIANT_POND_TURTLE	NAME	giant pond turtle
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	11	HAMSTER	NAME	hamster
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	112	HAMSTER_MAN	NAME	hamster man
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	131	GIANT_HAMSTER	NAME	giant hamster
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	153	HEDGEHOG	NAME	hedgehog
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	262	HEDGEHOG_MAN	NAME	hedgehog man
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	281	GIANT_HEDGEHOG	NAME	giant hedgehog
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	303	SQUIRREL_FLYING	NAME	flying squirrel
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	406	FLYING_SQUIRREL_MAN	NAME	flying squirrel man
+data/vanilla/vanilla_creatures/objects/creature_small_mammal_new.txt	425	GIANT_FLYING_SQUIRREL	NAME	giant flying squirrel
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	7	RAT	NAME	rat
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	114	RAT_MAN	NAME	rat man
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	126	SQUIRREL_GRAY	NAME	gray squirrel
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	228	SQUIRREL_GRAY_MAN	NAME	gray squirrel man
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	247	GIANT_SQUIRREL_GRAY	NAME	giant gray squirrel
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	267	SQUIRREL_RED	NAME	red squirrel
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	369	SQUIRREL_RED_MAN	NAME	red squirrel man
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	388	GIANT_SQUIRREL_RED	NAME	giant red squirrel
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	408	CHIPMUNK	NAME	chipmunk
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	510	CHIPMUNK_MAN	NAME	chipmunk man
+data/vanilla/vanilla_creatures/objects/creature_small_mammals.txt	529	GIANT_CHIPMUNK	NAME	giant chipmunk
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	7	MUSSEL	NAME	mussel
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	64	OYSTER	NAME	oyster
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	119	FISH_SALMON	NAME	salmon
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	193	FISH_CLOWNFISH	NAME	clownfish
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	263	FISH_HAGFISH	NAME	hagfish
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	331	FISH_LAMPREY_BROOK	NAME	brook lamprey
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	400	FISH_RAY_BAT	NAME	bat ray
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	468	FISH_RAY_THORNBACK	NAME	thornback ray
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	535	FISH_RATFISH_SPOTTED	NAME	spotted ratfish
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	605	FISH_HERRING	NAME	herring
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	677	FISH_SHAD	NAME	shad
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	752	FISH_ANCHOVY	NAME	anchovy
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	823	FISH_TROUT_STEELHEAD	NAME	steelhead trout
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	897	FISH_HAKE	NAME	hake
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	969	FISH_SEAHORSE	NAME	seahorse
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1034	FISH_GLASSEYE	NAME	glasseye
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1105	FISH_PUFFER_WHITE_SPOTTED	NAME	white-spotted puffer
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1169	FISH_SOLE	NAME	sole
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1240	FISH_FLOUNDER	NAME	flounder
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1310	FISH_MACKEREL	NAME	mackerel
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1382	JELLYFISH_SEA_NETTLE	NAME	sea nettle jellyfish
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1429	SQUID	NAME	squid
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1541	SQUID MAN	NAME	squid man
+data/vanilla/vanilla_creatures/objects/creature_small_ocean.txt	1567	GIGANTIC SQUID	NAME	gigantic squid
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	7	FISH_LUNGFISH	NAME	lungfish
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	88	FISH_LOACH_CLOWN	NAME	clown loach
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	159	FISH_BULLHEAD_BROWN	NAME	brown bullhead
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	230	FISH_BULLHEAD_YELLOW	NAME	yellow bullhead
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	301	FISH_BULLHEAD_BLACK	NAME	black bullhead
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	372	FISH_KNIFEFISH_BANDED	NAME	banded knifefish
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	443	FISH_CHAR	NAME	char
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	514	FISH_TROUT_RAINBOW	NAME	rainbow trout
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	585	FISH_MOLLY_SAILFIN	NAME	sailfin molly
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	660	FISH_GUPPY	NAME	guppy
+data/vanilla/vanilla_creatures/objects/creature_small_riverlake.txt	735	FISH_PERCH	NAME	perch
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	7	DWARF	NAME	dwarf
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	454	HUMAN	NAME	human
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	736	ELF	NAME	elf
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	1016	GOBLIN	NAME	goblin
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	1292	KOBOLD	NAME	kobold
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	1529	GREMLIN	NAME	gremlin
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	1724	TROLL	NAME	troll
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	1926	OGRE	NAME	ogre
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	2100	UNICORN	NAME	unicorn
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	2216	DRAGON	NAME	dragon
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	2352	SATYR	NAME	satyr
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	2612	COLOSSUS_BRONZE	NAME	bronze colossus
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	2681	GIANT	NAME	giant
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	2935	CYCLOPS	NAME	cyclops
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	3184	ETTIN	NAME	ettin
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	3439	MINOTAUR	NAME	minotaur
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	3626	YETI	NAME	yeti
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	3741	SASQUATCH	NAME	sasquatch
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	3855	BLIZZARD_MAN	NAME	blizzard man
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	3939	WOLF_ICE	NAME	ice wolf
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	4031	FAIRY	NAME	fairy
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	4232	PIXIE	NAME	pixie
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	4432	BEAK_DOG	NAME	beak dog
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	4535	GRIMELING	NAME	grimeling
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	4602	BLENDEC_FOUL	NAME	foul blendec
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	4720	STRANGLER	NAME	strangler
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	4812	NIGHTWING	NAME	nightwing
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	4900	HARPY	NAME	harpy
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	5081	HYDRA	NAME	hydra
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	5188	MERPERSON	NAME	merperson
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	5440	SEA_SERPENT	NAME	sea serpent
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	5533	SEA_MONSTER	NAME	sea monster
+data/vanilla/vanilla_creatures/objects/creature_standard.txt	5615	BIRD_ROC	NAME	roc
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	7	CROCODILE_CAVE	NAME	cave crocodile
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	105	TOAD_GIANT_CAVE	NAME	giant cave toad
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	181	OLM_GIANT	NAME	giant olm
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	258	BAT_GIANT	NAME	giant bat
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	347	RAT_GIANT	NAME	giant rat
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	442	RAT_LARGE	NAME	large rat
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	534	MOLE_DOG_NAKED	NAME	naked mole dog
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	622	TROGLODYTE	NAME	troglodyte
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	790	MOLE_GIANT	NAME	giant mole
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	882	IMP_FIRE	NAME	fire imp
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	916	IMP_FIRE	ODOR_STRING	smoke
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1004	SPIDER_CAVE_GIANT	NAME	giant cave spider
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1108	SPIDER_CAVE	NAME	cave spider
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1187	FISH_CAVE	NAME	cave fish
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1274	CAVE_FISH_MAN	NAME	cave fish man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1285	LOBSTER_CAVE	NAME	cave lobster
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1341	SNAKE_FIRE	NAME	fire snake
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1381	SNAKE_FIRE	ODOR_STRING	smoke
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1387	OLM	NAME	olm
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1472	OLM_MAN	NAME	olm man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1483	BAT	NAME	bat
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1598	BAT_MAN	NAME	bat man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1608	MAGGOT_PURRING	NAME	purring maggot
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1667	ELEMENTMAN_FIRE	NAME	fire man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1708	ELEMENTMAN_FIRE	ODOR_STRING	smoke
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1745	ELEMENTMAN_MAGMA	NAME	magma man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1822	ELEMENTMAN_IRON	NAME	iron man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1910	ELEMENTMAN_MUD	NAME	mud man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1930	ELEMENTMAN_MUD	ODOR_STRING	mud
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	1974	BIRD_SWALLOW_CAVE	NAME	cave swallow
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	2091	CAVE_SWALLOW_MAN	NAME	cave swallow man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	2102	BIRD_SWALLOW_CAVE_GIANT	NAME	giant cave swallow
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	2205	AMPHIBIAN_MAN	NAME	amphibian man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	2300	REPTILE_MAN	NAME	reptile man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	2421	SERPENT_MAN	NAME	serpent man
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	2561	ANT_MAN	NAME	antman
+data/vanilla/vanilla_creatures/objects/creature_subterranean.txt	2679	RODENT MAN	NAME	rodent man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	13	WILD_BOAR	NAME	wild boar
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	138	WILD_BOAR_MAN	NAME	wild boar man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	159	GIANT_WILD_BOAR	NAME	giant wild boar
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	184	COYOTE	NAME	coyote
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	301	COYOTE_MAN	NAME	coyote man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	320	GIANT_COYOTE	NAME	giant coyote
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	344	KANGAROO	NAME	kangaroo
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	488	KANGAROO_MAN	NAME	kangaroo man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	514	GIANT_KANGAROO	NAME	giant kangaroo
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	540	KOALA	NAME	koala
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	649	KOALA_MAN	NAME	koala man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	668	GIANT_KOALA	NAME	giant koala
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	691	ADDER	NAME	adder
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	831	ADDER_MAN	NAME	adder man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	865	GIANT_ADDER	NAME	giant adder
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	888	ECHIDNA	NAME	echidna
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1004	ECHIDNA_MAN	NAME	echidna man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1023	GIANT_ECHIDNA	NAME	giant echidna
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1047	PORCUPINE	NAME	porcupine
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1167	PORCUPINE_MAN	NAME	porcupine man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1186	GIANT_PORCUPINE	NAME	giant porcupine
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1210	KINGSNAKE	NAME	kingsnake
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1311	KINGSNAKE_MAN	NAME	kingsnake man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1328	GIANT_KINGSNAKE	NAME	giant kingsnake
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1351	GRAY_LANGUR	NAME	gray langur
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1464	GRAY_LANGUR_MAN	NAME	gray langur man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1483	GIANT_GRAY_LANGUR	NAME	giant gray langur
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1507	BOBCAT	NAME	bobcat
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1622	BOBCAT_MAN	NAME	bobcat man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1641	GIANT_BOBCAT	NAME	giant bobcat
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1662	SKUNK	NAME	skunk
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1775	SKUNK_MAN	NAME	skunk man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1794	GIANT_SKUNK	NAME	giant skunk
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1816	GREEN_TREE_FROG	NAME	green tree frog
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1901	GREEN_TREE_FROG_MAN	NAME	green tree frog man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1918	GIANT_GREEN_TREE_FROG	NAME	giant green tree frog
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	1941	HARE	NAME	hare
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2055	HARE_MAN	NAME	hare man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2074	GIANT_HARE	NAME	giant hare
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2096	RATTLESNAKE	NAME	rattlesnake
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2229	RATTLESNAKE_MAN	NAME	rattlesnake man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2263	GIANT_RATTLESNAKE	NAME	giant rattlesnake
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2285	WEASEL	NAME	weasel
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2395	WEASEL_MAN	NAME	weasel man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2414	GIANT_WEASEL	NAME	giant weasel
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2438	COPPERHEAD_SNAKE	NAME	copperhead snake
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2567	COPPERHEAD_SNAKE_MAN	NAME	copperhead snake man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2601	GIANT_COPPERHEAD_SNAKE	NAME	giant copperhead snake
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2623	IBEX	NAME	ibex
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2742	IBEX_MAN	NAME	ibex man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2759	GIANT_IBEX	NAME	giant ibex
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2782	WOMBAT	NAME	wombat
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2894	WOMBAT_MAN	NAME	wombat man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2913	GIANT_WOMBAT	NAME	giant wombat
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	2936	DINGO	NAME	dingo
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	3046	DINGO_MAN	NAME	dingo man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	3065	GIANT_DINGO	NAME	giant dingo
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	3086	COATI	NAME	coati
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	3197	COATI_MAN	NAME	coati man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	3216	GIANT_COATI	NAME	giant coati
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	3239	OPOSSUM	NAME	opossum
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	3350	OPOSSUM_MAN	NAME	opossum man
+data/vanilla/vanilla_creatures/objects/creature_temperate_new.txt	3369	GIANT_OPOSSUM	NAME	giant opossum
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	13	MONGOOSE	NAME	mongoose
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	123	MONGOOSE_MAN	NAME	mongoose man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	142	GIANT_MONGOOSE	NAME	giant mongoose
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	166	HYENA	NAME	hyena
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	279	HYENA_MAN	NAME	hyena man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	298	GIANT_HYENA	NAME	giant hyena
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	322	ANACONDA	NAME	anaconda
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	415	ANACONDA_MAN	NAME	anaconda man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	432	GIANT_ANACONDA	NAME	giant anaconda
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	455	MONITOR_LIZARD	NAME	monitor lizard
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	565	MONITOR_LIZARD_MAN	NAME	monitor lizard man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	584	GIANT_MONITOR_LIZARD	NAME	giant monitor lizard
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	607	KING_COBRA	NAME	king cobra
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	743	KING_COBRA_MAN	NAME	king cobra man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	777	GIANT_KING_COBRA	NAME	giant king cobra
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	799	OCELOT	NAME	ocelot
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	912	OCELOT_MAN	NAME	ocelot man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	931	GIANT_OCELOT	NAME	giant ocelot
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	955	JACKAL	NAME	jackal
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1065	JACKAL_MAN	NAME	jackal man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1084	GIANT_JACKAL	NAME	giant jackal
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1107	CAPUCHIN	NAME	capuchin
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1217	CAPUCHIN_MAN	NAME	capuchin man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1236	GIANT_CAPUCHIN	NAME	giant capuchin
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1258	SLOTH	NAME	sloth
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1365	SLOTH_MAN	NAME	sloth man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1384	GIANT_SLOTH	NAME	giant sloth
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1407	SPIDER_MONKEY	NAME	spider monkey
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1515	SPIDER_MONKEY_MAN	NAME	spider monkey man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1534	GIANT_SPIDER_MONKEY	NAME	giant spider monkey
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1556	PANGOLIN	NAME	pangolin
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1675	PANGOLIN_MAN	NAME	pangolin man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1694	GIANT_PANGOLIN	NAME	giant pangolin
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1715	BLACK_MAMBA	NAME	black mamba
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1858	BLACK_MAMBA_MAN	NAME	black mamba man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1892	GIANT_BLACK_MAMBA	NAME	giant black mamba
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	1913	BEAR_SLOTH	NAME	sloth bear
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2024	SLOTH_BEAR_MAN	NAME	sloth bear man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2043	GIANT_SLOTH_BEAR	NAME	giant sloth bear
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2066	AYE-AYE	NAME	aye-aye
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2173	AYE-AYE_MAN	NAME	aye-aye man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2192	GIANT_AYE-AYE	NAME	giant aye-aye
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2218	BUSHMASTER	NAME	bushmaster
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2357	BUSHMASTER_MAN	NAME	bushmaster man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2391	GIANT_BUSHMASTER	NAME	giant bushmaster
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2413	PYTHON	NAME	python
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2512	PYTHON_MAN	NAME	python man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2529	GIANT_PYTHON	NAME	giant python
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2551	TAPIR	NAME	tapir
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2690	TAPIR_MAN	NAME	tapir man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2716	GIANT_TAPIR	NAME	giant tapir
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2737	IMPALA	NAME	impala
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2850	IMPALA_MAN	NAME	impala man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2867	GIANT_IMPALA	NAME	giant impala
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	2890	AARDVARK	NAME	aardvark
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	3001	AARDVARK_MAN	NAME	aardvark man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	3020	GIANT_AARDVARK	NAME	giant aardvark
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	3044	LION_TAMARIN	NAME	lion tamarin
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	3146	LION_TAMARIN_MAN	NAME	lion tamarin man
+data/vanilla/vanilla_creatures/objects/creature_tropical_new.txt	3165	GIANT_LION_TAMARIN	NAME	giant lion tamarin
+data/vanilla/vanilla_creatures/objects/creature_tundra_taiga_new.txt	12	STOAT	NAME	stoat
+data/vanilla/vanilla_creatures/objects/creature_tundra_taiga_new.txt	122	STOAT_MAN	NAME	stoat man
+data/vanilla/vanilla_creatures/objects/creature_tundra_taiga_new.txt	141	GIANT_STOAT	NAME	giant stoat
+data/vanilla/vanilla_creatures/objects/creature_tundra_taiga_new.txt	164	LYNX	NAME	lynx
+data/vanilla/vanilla_creatures/objects/creature_tundra_taiga_new.txt	274	LYNX_MAN	NAME	lynx man
+data/vanilla/vanilla_creatures/objects/creature_tundra_taiga_new.txt	293	GIANT_LYNX	NAME	giant lynx
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	7	CAMBRIAN_HALLUCIGENIA	NAME	hallucigenia
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	89	CAMBRIAN_HALLUCIGENIA_MAN	NAME	hallucigenia man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	98	CAMBRIAN_HAIKOUICHTHYS	NAME	haikouichthys
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	187	CAMBRIAN_HAIKOUICHTHYS_MAN	NAME	haikouichthys man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	196	CAMBRIAN_OPABINIA	NAME	opabinia
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	284	CAMBRIAN_OPABINIA_MAN	NAME	opabinia man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	293	CAMBRIAN_ANOMALOCARIS	NAME	anomalocaris
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	373	CAMBRIAN_ANOMALOCARIS_MAN	NAME	anomalocaris man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	382	CAMBRIAN_TRILOBITE	NAME	trilobite
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	464	CAMBRIAN_TRILOBITE_MAN	NAME	trilobite man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	473	CAMBRIAN_WIWAXIA	NAME	wiwaxia
+data/vanilla/vanilla_creatures_extinct/objects/creature_cambrian.txt	562	CAMBRIAN_WIWAXIA_MAN	NAME	wiwaxia man
+data/vanilla/vanilla_creatures_extinct/objects/creature_carboniferous.txt	7	CARBONIFEROUS_OESTOCEPHALUS	NAME	oestocephalus
+data/vanilla/vanilla_creatures_extinct/objects/creature_carboniferous.txt	96	CARBONIFEROUS_OESTOCEPHALUS_MAN	NAME	oestocephalus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_carboniferous.txt	105	CARBONIFEROUS_TULLIMONSTRUM	NAME	tullimonstrum
+data/vanilla/vanilla_creatures_extinct/objects/creature_carboniferous.txt	184	CARBONIFEROUS_TULLIMONSTRUM_MAN	NAME	tullimonstrum man
+data/vanilla/vanilla_creatures_extinct/objects/creature_carboniferous.txt	193	CARBONIFEROUS_ARTHROPLEURA	NAME	arthropleura
+data/vanilla/vanilla_creatures_extinct/objects/creature_carboniferous.txt	269	CARBONIFEROUS_ARTHROPLEURA_MAN	NAME	arthropleura man
+data/vanilla/vanilla_creatures_extinct/objects/creature_carboniferous.txt	278	CARBONIFEROUS_MEGANEURA	NAME	meganeura
+data/vanilla/vanilla_creatures_extinct/objects/creature_carboniferous.txt	354	CARBONIFEROUS_MEGANEURA_MAN	NAME	meganeura man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	7	CENOZOIC_DEINOTHERIUM	NAME	deinotherium
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	116	CENOZOIC_DEINOTHERIUM_MAN	NAME	deinotherium man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	125	CENOZOIC_SMILODON	NAME	smilodon
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	248	CENOZOIC_SMILODON_MAN	NAME	smilodon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	257	CENOZOIC_MAMMOTH_PYGMY	NAME	pygmy mammoth
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	371	CENOZOIC_MAMMOTH_PYGMY_MAN	NAME	pygmy mammoth man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	380	CENOZOIC_MEGATHERIUM	NAME	megatherium
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	483	CENOZOIC_MEGATHERIUM_MAN	NAME	megatherium man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	492	CENOZOIC_THYLACINE	NAME	thylacine
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	610	CENOZOIC_THYLACINE_MAN	NAME	thylacine man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	619	CENOZOIC_ANDREWSARCHUS	NAME	andrewsarchus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	738	CENOZOIC_ANDREWSARCHUS_MAN	NAME	andrewsarchus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	747	CENOZOIC_RHINOCEROS_WOOLLY	NAME	woolly rhinoceros
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	868	CENOZOIC_RHINOCEROS_WOOLLY_MAN	NAME	woolly rhinoceros man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	877	CENOZOIC_MIOHIPPUS	NAME	miohippus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1017	CENOZOIC_MIOHIPPUS_MAN	NAME	miohippus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1026	CENOZOIC_GLYPTODON	NAME	glyptodon
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1133	CENOZOIC_GLYPTODON_MAN	NAME	glyptodon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1142	CENOZOIC_MAMMOTH_WOOLLY	NAME	woolly mammoth
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1269	CENOZOIC_MAMMOTH_WOOLLY_MAN	NAME	woolly mammoth man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1278	CENOZOIC_PARACERATHERIUM	NAME	paraceratherium
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1377	CENOZOIC_PARACERATHERIUM_MAN	NAME	paraceratherium man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1386	CENOZOIC_DODO	NAME	dodo
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1506	CENOZOIC_DODO_MAN	NAME	dodo man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1515	CENOZOIC_KELENKEN	NAME	kelenken
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1637	CENOZOIC_KELENKEN_MAN	NAME	kelenken man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1646	CENOZOIC_MOA	NAME	moa
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1770	CENOZOIC_MOA_MAN	NAME	moa man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1779	CENOZOIC_MEGALODON	NAME	megalodon
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1881	CENOZOIC_MEGALODON_MAN	NAME	megalodon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	1890	CENOZOIC_MEGALANIA	NAME	megalania
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2008	CENOZOIC_MEGALANIA_MAN	NAME	megalania man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2017	CENOZOIC_TITANOBOA	NAME	titanoboa
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2118	CENOZOIC_TITANOBOA_MAN	NAME	titanoboa man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2127	CENOZOIC_PLATYBELODON	NAME	platybelodon
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2236	CENOZOIC_PLATYBELODON_MAN	NAME	platybelodon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2245	CENOZOIC_ENTELODON	NAME	entelodon
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2367	CENOZOIC_ENTELODON_MAN	NAME	entelodon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2376	CENOZOIC_MEGACEROPS	NAME	megacerops
+data/vanilla/vanilla_creatures_extinct/objects/creature_cenozoic.txt	2481	CENOZOIC_MEGACEROPS_MAN	NAME	megacerops man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	7	CRETACEOUS_AMMONITE	NAME	ammonite
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	101	CRETACEOUS_AMMONITE_MAN	NAME	ammonite man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	110	CRETACEOUS_ARCHELON	NAME	archelon
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	219	CRETACEOUS_ARCHELON_MAN	NAME	archelon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	228	CRETACEOUS_VELOCIRAPTOR	NAME	velociraptor
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	377	CRETACEOUS_VELOCIRAPTOR_MAN	NAME	velociraptor man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	386	CRETACEOUS_MONONYKUS	NAME	mononykus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	524	CRETACEOUS_MONONYKUS_MAN	NAME	mononykus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	533	CRETACEOUS_LINHENYKUS	NAME	linhenykus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	671	CRETACEOUS_LINHENYKUS_MAN	NAME	linhenykus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	680	CRETACEOUS_BUITRERAPTOR	NAME	buitreraptor
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	827	CRETACEOUS_BUITRERAPTOR_MAN	NAME	buitreraptor man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	836	CRETACEOUS_DEINONYCHUS	NAME	deinonychus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	983	CRETACEOUS_DEINONYCHUS_MAN	NAME	deinonychus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	992	CRETACEOUS_UTAHRAPTOR	NAME	utahraptor
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1142	CRETACEOUS_UTAHRAPTOR_MAN	NAME	utahraptor man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1151	CRETACEOUS_MOSASAURUS	NAME	mosasaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1247	CRETACEOUS_MOSASAURUS_MAN	NAME	mosasaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1256	CRETACEOUS_PARASAUROLOPHUS	NAME	parasaurolophus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1393	CRETACEOUS_PARASAUROLOPHUS_MAN	NAME	parasaurolophus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1402	CRETACEOUS_IGUANODON	NAME	iguanodon
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1553	CRETACEOUS_IGUANODON_MAN	NAME	iguanodon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1562	CRETACEOUS_TRICERATOPS	NAME	triceratops
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1691	CRETACEOUS_TRICERATOPS_MAN	NAME	triceratops man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1700	CRETACEOUS_KOSMOCERATOPS	NAME	kosmoceratops
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1829	CRETACEOUS_KOSMOCERATOPS_MAN	NAME	kosmoceratops man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1838	CRETACEOUS_MICROCERATUS	NAME	microceratus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1947	CRETACEOUS_MICROCERATUS_MAN	NAME	microceratus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	1956	CRETACEOUS_ANKYLOSAURUS	NAME	ankylosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2092	CRETACEOUS_ANKYLOSAURUS_MAN	NAME	ankylosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2101	CRETACEOUS_PACHYCEPHALOSAURUS	NAME	pachycephalosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2236	CRETACEOUS_PACHYCEPHALOSAURUS_MAN	NAME	pachycephalosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2245	CRETACEOUS_QUETZALCOATLUS	NAME	quetzalcoatlus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2369	CRETACEOUS_QUETZALCOATLUS_MAN	NAME	quetzalcoatlus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2378	CRETACEOUS_COLEPIOCEPHALE	NAME	colepiocephale
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2507	CRETACEOUS_COLEPIOCEPHALE_MAN	NAME	colepiocephale man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2516	CRETACEOUS_TSINTAOSAURUS	NAME	tsintaosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2650	CRETACEOUS_TSINTAOSAURUS_MAN	NAME	tsintaosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2659	CRETACEOUS_THERIZINOSAURUS	NAME	therizinosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2810	CRETACEOUS_THERIZINOSAURUS_MAN	NAME	therizinosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2819	CRETACEOUS_SUZHOUSAURUS	NAME	suzhousaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2970	CRETACEOUS_SUZHOUSAURUS_MAN	NAME	suzhousaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	2979	CRETACEOUS_NOTHRONYCHUS	NAME	nothronychus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3130	CRETACEOUS_NOTHRONYCHUS_MAN	NAME	nothronychus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3139	CRETACEOUS_CARNOTAURUS	NAME	carnotaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3285	CRETACEOUS_CARNOTAURUS_MAN	NAME	carnotaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3294	CRETACEOUS_SPINOSAURUS_AEGYPTIACUS	NAME	spinosaurus aegyptiacus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3442	CRETACEOUS_SPINOSAURUS_AEGYPTIACUS_MAN	NAME	spinosaurus aegyptiacus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3451	CRETACEOUS_TYRANNOSAURUS	NAME	tyrannosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3598	CRETACEOUS_TYRANNOSAURUS_MAN	NAME	tyrannosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3607	CRETACEOUS_AMARGASAURUS	NAME	amargasaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3731	CRETACEOUS_AMARGASAURUS_MAN	NAME	amargasaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3740	CRETACEOUS_OVIRAPTOR	NAME	oviraptor
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3875	CRETACEOUS_OVIRAPTOR_MAN	NAME	oviraptor man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	3884	CRETACEOUS_SINOPTERUS	NAME	sinopterus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	4001	CRETACEOUS_SINOPTERUS_MAN	NAME	sinopterus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	4010	CRETACEOUS_SPINOSAURUS_MIRABILIS	NAME	spinosaurus mirabilis
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	4169	CRETACEOUS_SPINOSAURUS_MIRABILIS_MAN	NAME	spinosaurus mirabilis man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	4178	CRETACEOUS_HYPSILOPHODON	NAME	hypsilophodon
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	4310	CRETACEOUS_HYPSILOPHODON_MAN	NAME	hypsilophodon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	4319	CRETACEOUS_NODOSAURUS	NAME	nodosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_cretaceous.txt	4437	CRETACEOUS_NODOSAURUS_MAN	NAME	nodosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	7	DEVONIAN_DUNKLEOSTEUS	NAME	dunkleosteus
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	113	DEVONIAN_DUNKLEOSTEUS_MAN	NAME	dunkleosteus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	122	DEVONIAN_TIKTAALIK	NAME	tiktaalik
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	214	DEVONIAN_TIKTAALIK_MAN	NAME	tiktaalik man
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	223	DEVONIAN_HIBBERTOPTERUS_SCOULERI	NAME	hibbertopterus scouleri
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	306	DEVONIAN_HIBBERTOPTERUS_SCOULERI_MAN	NAME	hibbertopterus scouleri man
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	315	DEVONIAN_HIBBERTOPTERUS_PEACHI	NAME	hibbertopterus peachi
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	398	DEVONIAN_HIBBERTOPTERUS_PEACHI_MAN	NAME	hibbertopterus peachi man
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	407	DEVONIAN_DREPANOPTERUS	NAME	drepanopterus
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	487	DEVONIAN_DREPANOPTERUS_MAN	NAME	drepanopterus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	496	DEVONIAN_MIMETASTER	NAME	mimetaster
+data/vanilla/vanilla_creatures_extinct/objects/creature_devonian.txt	574	DEVONIAN_MIMETASTER_MAN	NAME	mimetaster man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	7	JURASSIC_ICHTHYOSAURUS	NAME	ichthyosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	113	JURASSIC_ICHTHYOSAURUS_MAN	NAME	ichthyosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	122	JURASSIC_TORVOSAURUS	NAME	torvosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	262	JURASSIC_TORVOSAURUS_MAN	NAME	torvosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	271	JURASSIC_ARCHAEOPTERYX	NAME	archaeopteryx
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	395	JURASSIC_ARCHAEOPTERYX_MAN	NAME	archaeopteryx man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	404	JURASSIC_PLESIOSAURUS	NAME	plesiosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	502	JURASSIC_PLESIOSAURUS_MAN	NAME	plesiosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	511	JURASSIC_STEGOSAURUS	NAME	stegosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	651	JURASSIC_STEGOSAURUS_MAN	NAME	stegosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	660	JURASSIC_KENTROSAURUS	NAME	kentrosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	834	JURASSIC_KENTROSAURUS_MAN	NAME	kentrosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	843	JURASSIC_PTERODACTYLUS	NAME	pterodactylus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	962	JURASSIC_PTERODACTYLUS_MAN	NAME	pterodactylus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	971	JURASSIC_JEHOLOPTERUS	NAME	jeholopterus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1089	JURASSIC_JEHOLOPTERUS_MAN	NAME	jeholopterus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1098	JURASSIC_DILOPHOSAURUS	NAME	dilophosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1243	JURASSIC_DILOPHOSAURUS_MAN	NAME	dilophosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1252	JURASSIC_CERATOSAURUS	NAME	ceratosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1402	JURASSIC_CERATOSAURUS_MAN	NAME	ceratosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1411	JURASSIC_EUROPASAURUS	NAME	europasaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1534	JURASSIC_EUROPASAURUS_MAN	NAME	europasaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1543	JURASSIC_BRACHIOSAURUS	NAME	brachiosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1668	JURASSIC_BRACHIOSAURUS_MAN	NAME	brachiosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1677	JURASSIC_DIPLODOCUS	NAME	diplodocus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1802	JURASSIC_DIPLODOCUS_MAN	NAME	diplodocus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1811	JURASSIC_BRONTOSAURUS	NAME	brontosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1936	JURASSIC_BRONTOSAURUS_MAN	NAME	brontosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	1945	JURASSIC_ALLOSAURUS	NAME	allosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	2094	JURASSIC_ALLOSAURUS_MAN	NAME	allosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	2103	JURASSIC_AFROVENATOR	NAME	afrovenator
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	2249	JURASSIC_AFROVENATOR_MAN	NAME	afrovenator man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	2258	JURASSIC_RHAMPHORHYNCHUS	NAME	rhamphorhynchus
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	2376	JURASSIC_RHAMPHORHYNCHUS_MAN	NAME	rhamphorhynchus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	2385	JURASSIC_OSTENOCARIS	NAME	ostenocaris
+data/vanilla/vanilla_creatures_extinct/objects/creature_jurassic.txt	2464	JURASSIC_OSTENOCARIS_MAN	NAME	ostenocaris man
+data/vanilla/vanilla_creatures_extinct/objects/creature_ordovician.txt	7	ORDOVICIAN_AEGIROCASSIS	NAME	aegirocassis
+data/vanilla/vanilla_creatures_extinct/objects/creature_ordovician.txt	87	ORDOVICIAN_AEGIROCASSIS_MAN	NAME	aegirocassis man
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	7	PERMIAN_DIPLOCAULUS	NAME	diplocaulus
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	104	PERMIAN_DIPLOCAULUS_MAN	NAME	diplocaulus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	113	PERMIAN_ERYOPS	NAME	eryops
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	224	PERMIAN_ERYOPS_MAN	NAME	eryops man
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	233	PERMIAN_HELICOPRION	NAME	helicoprion
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	334	PERMIAN_HELICOPRION_MAN	NAME	helicoprion man
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	343	PERMIAN_DIMETRODON	NAME	dimetrodon
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	456	PERMIAN_DIMETRODON_MAN	NAME	dimetrodon man
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	465	PERMIAN_DIADECTES	NAME	diadectes
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	578	PERMIAN_DIADECTES_MAN	NAME	diadectes man
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	587	PERMIAN_ANTEOSAURUS	NAME	anteosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	698	PERMIAN_ANTEOSAURUS_MAN	NAME	anteosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	707	PERMIAN_LYSTROSAURUS	NAME	lystrosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_permian.txt	813	PERMIAN_LYSTROSAURUS_MAN	NAME	lystrosaurus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_silurian.txt	7	SILURIAN_JAEKELOPTERUS	NAME	jaekelopterus
+data/vanilla/vanilla_creatures_extinct/objects/creature_silurian.txt	93	SILURIAN_JAEKELOPTERUS_MAN	NAME	jaekelopterus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	7	TRIASSIC_GERROTHORAX	NAME	gerrothorax
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	103	TRIASSIC_GERROTHORAX_MAN	NAME	gerrothorax man
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	112	TRIASSIC_EORAPTOR	NAME	eoraptor
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	250	TRIASSIC_EORAPTOR_MAN	NAME	eoraptor man
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	259	TRIASSIC_SHAROVIPTERYX	NAME	sharovipteryx
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	372	TRIASSIC_SHAROVIPTERYX_MAN	NAME	sharovipteryx man
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	382	TRIASSIC_PSEPHODERMA	NAME	psephoderma
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	497	TRIASSIC_PSEPHODERMA_MAN	NAME	psephoderma man
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	506	TRIASSIC_PROCOMPSOGNATHUS	NAME	procompsognathus
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	618	TRIASSIC_PROCOMPSOGNATHUS_MAN	NAME	procompsognathus man
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	627	TRIASSIC_DREPANOSAURUS	NAME	drepanosaurus
+data/vanilla/vanilla_creatures_extinct/objects/creature_triassic.txt	744	TRIASSIC_DREPANOSAURUS_MAN	NAME	drepanosaurus man
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4297	procedural	Lua source	"options.odor_string=""soil"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4332	procedural	Lua source	"options.odor_string=""soot"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4353	procedural	Lua source	"options.odor_string=""mud"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4371	procedural	Lua source	"options.odor_string=""vomit"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4406	procedural	Lua source	"options.odor_string=""filth"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4491	procedural	Lua source	"options.odor_string=""smoke"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4568	procedural	Lua source	"options.odor_string=""soot"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4585	procedural	Lua source	"options.odor_string=""soot"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4994	procedural	Lua source	if options.odor_string then
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	4995	procedural	Lua source	"lines[#lines+1]=""[ODOR_STRING:""..options.odor_string..""]"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	6515	procedural	Lua source	"if options.forced_odor_string and (options.always_odor or options.r_class ~= ""UNIFORM"") then"
+data/vanilla/vanilla_procedural/scripts/generators/creatures/shared_info.lua	6517	procedural	Lua source	"lines[#lines+1]=""[ODOR_STRING:""..options.forced_odor_string..""]"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	283	procedural	Lua source	"forced_odor_string=""brimstone"","
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	624	procedural	Lua source	night_troll_smells={
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	625	procedural	Lua source	"""bug innards"","
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	626	procedural	Lua source	"""cooked flesh"","
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	627	procedural	Lua source	"""death"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	628	procedural	Lua source	}
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	762	procedural	Lua source	"lines[#lines+1]=""[ODOR_STRING:""..pick_random(night_troll_smells)..""]"""
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	1822	procedural	Lua source	"DISEASE={add=""it bears malodorous pustules"",odor=""death""},"
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	1835	procedural	Lua source	"FOOD={add=""it has the delicious smell of freshly-baked goods"",odor=""freshly-baked goods""},"
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	2145	procedural	Lua source	options.forced_odor_string=add_tbl.odor
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	2218	procedural	Lua source	options.forced_odor_string=add_tbl.odor
+data/vanilla/vanilla_procedural/scripts/generators/creatures.lua	2284	procedural	Lua source	options.forced_odor_string=add_tbl.odor

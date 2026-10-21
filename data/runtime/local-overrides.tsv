@@ -12302,6 +12302,10 @@ Symbol picker guild: X	X行会	hi
 Symbol picker craft guild	工匠行会	hi
 
 # Native Adventure odor productions: data/extracted/adventure-smell/.
+# The same sensory HUD draws the track label and integer separately.
+# Source branches and all eight spoor bearings: adventure-tracking-hud/.
+Tracks Visible:	可见踪迹：	wl
+Tracks Visible: {d}	可见踪迹：{d}	hPt
 # Three status renderers share None/Death/ODOR_STRING/NAME[0], then capitalize.
 # Complete UI fields preserve the native separate label/value drawing.
 Strongest Odor: None	最强气味：无	hP

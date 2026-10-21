@@ -1,0 +1,25 @@
+field	condition	source	draw_call_rva	translation
+counter	count > 0; tracks enabled; mode == 0	Tracks Visible: <signed integer>	0xb00087 + 0xb000c8	可见踪迹：<原生数字>
+counter	count <= 0; tracks enabled; mode == 0	Tracks Visible: <signed integer>	0xb00087 + 0xb000c8	可见踪迹：<原生数字>
+counter	tracks disabled or mode != 0	<no text>		no invented phrase
+direction	valid slot; flags&2; flags&0x1c == 0	N	0xaffe8e	北
+direction	valid slot; flags&2; flags&0x1c == 4	S	0xaffea4	南
+direction	valid slot; flags&2; flags&0x1c == 8	E	0xaffeba	东
+direction	valid slot; flags&2; flags&0x1c == 12	NE	0xafff3c	东北
+direction	valid slot; flags&2; flags&0x1c == 16	W	0xaffed0	西
+direction	valid slot; flags&2; flags&0x1c == 20	NW	0xafff02	西北
+direction	valid slot; flags&2; flags&0x1c == 24	SE	0xafffaa	东南
+direction	valid slot; flags&2; flags&0x1c == 28	SW	0xafff73	西南
+direction	flags&2 == 0 or coordinate == -30000	<no text>		no invented phrase
+list	tracks disabled or first coordinate == -30000	<no list>		no invented phrase
+odor	odor enabled; mode == 0; race == -1	Strongest Odor: None	0xb00151 + 0xb0021c	最强气味：无
+odor	odor enabled; mode == 0; race != -1; death != 0	Strongest Odor: Death	0xb00151 + 0xb0021c	最强气味：死亡
+odor	nonempty caste ODOR_STRING	Strongest Odor: <capitalized ODOR_STRING>	0xb00151 + 0xb0021c	complete finite odor fields / full-term grammar
+odor	null caste or empty ODOR_STRING; available NAME[0]	Strongest Odor: <capitalized creature NAME[0]>	0xb00151 + 0xb0021c	complete creature grammar
+odor	null caste or empty ODOR_STRING; invalid race or empty NAME[0]	Strongest Odor:	0xb00151	最强气味：
+odor	odor disabled or mode != 0	<no text>		no invented phrase
+symbol	type 0	"	0xaffe4f	native vegetation glyph
+symbol	type 1	<creature glyph or !>	0xaffe4f	native creature glyph
+symbol	type 2	<item glyph or [>	0xaffe4f	native item glyph
+symbol	type 3	%	0xaffe4f	native mess glyph
+symbol	other type	<no glyph>		independent direction branch retained
