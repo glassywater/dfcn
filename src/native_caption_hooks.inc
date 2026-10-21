@@ -1829,6 +1829,9 @@ struct NativeClippedPending {
 static NativeClippedPending &native_embark_civilization_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct EmbarkCivilizationClippedCaptionTag>();
 }
+static NativeClippedPending &native_designation_clipped_pending() {
+    return reloadable_thread_state<NativeClippedPending, struct DesignationClippedCaptionTag>();
+}
 static NativeClippedPending &native_topbar_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct TopbarClippedCaptionTag>();
 }
@@ -1847,6 +1850,9 @@ static NativeClippedPending &native_clipped_pending() {
     if (g_native_embark_civilization_write_graphics &&
             native_graphics() == g_native_embark_civilization_write_graphics)
         return native_embark_civilization_clipped_pending();
+    if (g_native_designation_write_graphics &&
+            native_graphics() == g_native_designation_write_graphics)
+        return native_designation_clipped_pending();
     if (g_native_topbar_write_graphics &&
             native_graphics() == g_native_topbar_write_graphics)
         return native_topbar_clipped_pending();
@@ -1932,6 +1938,7 @@ static void remember_native_clipped_resize(NativeString *source, size_t width, c
     if (g_native_tooltip_write || (native_private_ui_write_active(native_graphics()) &&
             native_graphics() != g_native_worldgen_write_graphics &&
             native_graphics() != g_native_topbar_write_graphics &&
+            native_graphics() != g_native_designation_write_graphics &&
             native_graphics() != g_native_embark_civilization_write_graphics) ||
             native_caption_separate_output(native_graphics())) return;
     auto &state = native_clipped_pending();
@@ -2749,6 +2756,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         return;
     }
     if (graphics && (graphics == g_native_topbar_write_graphics ||
+            graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         capture_native_bounded_panel_caption(graphics, source, width, top_layer,
             native_caller, std::forward<Draw>(draw));
@@ -3502,6 +3510,7 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
         return;
     }
     if (graphics && (graphics == g_native_topbar_write_graphics ||
+            graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_bounded_panel_caption(graphics, source, width, false, caller, [&] {
@@ -3616,6 +3625,7 @@ static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeSt
         return;
     }
     if (graphics && (graphics == g_native_topbar_write_graphics ||
+            graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_bounded_panel_caption(graphics, source, width, false, caller, [&] {
@@ -3694,6 +3704,7 @@ static void capture_native_top_caption_draw(graphicst *graphics, const NativeStr
         return;
     }
     if (graphics && (graphics == g_native_topbar_write_graphics ||
+            graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_bounded_panel_caption(graphics, source, width, true, caller, [&] {
@@ -3756,6 +3767,7 @@ static void capture_native_top_simple_caption_draw(graphicst *graphics, const Na
         return;
     }
     if (graphics && (graphics == g_native_topbar_write_graphics ||
+            graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_bounded_panel_caption(graphics, source, 0, true, caller, [&] {
@@ -3817,6 +3829,7 @@ static void capture_native_top_flag_caption_draw(graphicst *graphics, const Nati
         return;
     }
     if (graphics && (graphics == g_native_topbar_write_graphics ||
+            graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_bounded_panel_caption(graphics, source, width, true, caller, [&] {
@@ -3892,6 +3905,8 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
             native_graphics() == g_native_embark_civilization_write_graphics) ||
             (g_native_topbar_write_graphics &&
             native_graphics() == g_native_topbar_write_graphics) ||
+            (g_native_designation_write_graphics &&
+             native_graphics() == g_native_designation_write_graphics) ||
             (g_native_squads_write_graphics &&
             native_graphics() == g_native_squads_write_graphics) ||
             (g_native_character_write_graphics &&
@@ -3922,6 +3937,7 @@ static void capture_native_caption_draw(graphicst *graphics, const NativeString 
         return;
     }
     if (graphics && (graphics == g_native_topbar_write_graphics ||
+            graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_bounded_panel_caption(graphics, text, width, false, caller, [&] {
@@ -3973,6 +3989,7 @@ static void reset_native_caption_capture() {
         g_native_map_track_captions.clear();
     }
     native_clipped_pending() = {};
+    native_designation_clipped_pending() = {};
     native_topbar_clipped_pending() = {};
     native_embark_civilization_clipped_pending() = {};
     native_squads_clipped_pending() = {};

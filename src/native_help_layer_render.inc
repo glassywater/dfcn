@@ -86,6 +86,7 @@ static void native_help_draw(void *help) {
 }
 
 static void native_help_reset_frame(void *renderer) {
+    native_designation_begin_frame();
     native_embark_civilization_begin_frame();
     native_topbar_begin_frame();
     native_map_begin_frame();
@@ -130,6 +131,7 @@ static void native_help_begin_frame(void *renderer) {
     // Only restore unfinished output bindings before native arrays swap.
     // Keep the last completed layer available until the producer takes over.
     native_tooltip_restore_output();
+    native_designation_restore_output();
     native_embark_civilization_restore_output();
     native_topbar_restore_output();
     reset_native_announcement_notification_capture();
@@ -167,6 +169,7 @@ static void native_help_produce_frame() {
         // scope before this producer returns to the native display handshake.
         struct FinishNotifications {
             ~FinishNotifications() {
+                native_designation_end_draw();
                 native_topbar_end_draw();
                 native_notification_end_draw();
                 reset_native_announcement_notification_capture();
@@ -607,6 +610,7 @@ static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTa
     try { context = native_ui_layer_cache_context(layer); }
     catch (...) { /* Rendering remains available without a retained source. */ }
     const bool owned_frames = &layer == &g_native_notification_layer ||
+        &layer == &g_native_designation_layer ||
         &layer == &g_native_topbar_layer;
     if (context && target.frame_cache.matches(layer, renderer, width, height,
             draw_layer, *context, owned_frames)) {

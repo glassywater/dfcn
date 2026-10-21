@@ -12,8 +12,10 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
     SDL_Rect panel{};
     uint64_t epoch = 0;
     try {
+        const bool designation = graphics && graphics == g_native_designation_write_graphics;
         const bool civilization = graphics && graphics == g_native_embark_civilization_write_graphics;
-        auto &pending = civilization ? native_embark_civilization_clipped_pending()
+        auto &pending = designation ? native_designation_clipped_pending()
+            : civilization ? native_embark_civilization_clipped_pending()
                                     : native_topbar_clipped_pending();
         epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
         if (pending.epoch != epoch) {
@@ -29,8 +31,9 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
             }
         }
         std::string_view submitted;
-        panel = civilization ? g_native_embark_civilization_panel : g_native_topbar_panel;
-        if (!pending.busy && graphics && (civilization || graphics == g_native_topbar_write_graphics) &&
+        panel = designation ? SDL_Rect{0, 0, graphics->dimx, graphics->dimy}
+            : civilization ? g_native_embark_civilization_panel : g_native_topbar_panel;
+        if (!pending.busy && graphics && (designation || civilization || graphics == g_native_topbar_write_graphics) &&
                 width >= 0 && graphics->dimx > 0 && graphics->dimx <= 1000 &&
                 graphics->dimy > 0 && graphics->dimy <= 1000 &&
                 panel.x >= 0 && panel.y >= 0 && panel.w > 0 && panel.h > 0 &&
@@ -80,6 +83,8 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
         const int last = static_cast<int>(std::min<int64_t>(panel.x + panel.w,
             std::min<int64_t>(graphics->screenx, int64_t(clip[1]) + 1)));
         if (first >= last) return;
+        if (graphics == g_native_designation_write_graphics)
+            native_designation_submit_span(first, y, last - first);
         row.x = first;
         row.y = y;
         row.source.reserve(static_cast<size_t>(last - first));

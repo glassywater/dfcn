@@ -92,6 +92,7 @@ struct NativePreparedUiFrame;
 static std::optional<std::string> native_main_ui_cache_context();
 static void request_native_process_exit() noexcept;
 static void release_native_squads_language_resources();
+static void release_native_designation_language_resources();
 static void release_native_character_language_resources();
 static void release_native_dfhack_layer_target() noexcept;
 
@@ -2501,6 +2502,7 @@ static bool native_character_background_cell_hidden(const graphicst *, int, int)
 static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
 static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
+static thread_local const graphicst *g_native_designation_write_graphics = nullptr;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_announcement_log_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
@@ -2536,6 +2538,7 @@ static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics ||
         gps == g_native_resolution_write_graphics ||
         gps == g_native_topbar_write_graphics ||
+        gps == g_native_designation_write_graphics ||
         gps == g_native_embark_civilization_write_graphics ||
         gps == g_native_worldgen_write_graphics || native_dfhack_layer_write_active(gps));
 }
@@ -3679,6 +3682,8 @@ public:
     void prepare_native_squads_text();
     void render_native_squads_layer(SDL_Renderer *renderer, const Overlay &source);
     void release_native_squads_resources();
+    void render_native_designation_layer(SDL_Renderer *renderer, const Overlay &source);
+    void release_native_designation_resources();
     void render_native_fortress_layer(SDL_Renderer *renderer, NativeFortressLayerKind kind);
     void queue_dfhack_layer_translation();
     bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
@@ -7854,6 +7859,7 @@ void Overlay::toggle_display_language() {
     // thread. Retire borrowed component faces before replacing the main font.
     invalidate_render_resources();
     release_native_squads_language_resources();
+    release_native_designation_language_resources();
     release_native_dfhack_layer_target();
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
@@ -17377,6 +17383,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_pause_layers.inc"
 #include "native_worldgen_layers.inc"
 #include "native_topbar_layers.inc"
+#include "native_designation_layers.inc"
 #include "native_embark_civilization_layers.inc"
 
 #include "native_prepared_ui_frame.inc"
@@ -17927,6 +17934,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_character_layer_translation.inc"
 #include "native_squads_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"
+#include "native_designation_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
 #include "native_topbar_layer_translation.inc"
@@ -43761,6 +43769,10 @@ static Overlay &native_character_drawing_state() {
 // The squad component borrows immutable catalog/font resources only. Its
 // graphics, matches, font caches and GPU text resources belong to this object.
 static Overlay g_native_squads_overlay;
+static Overlay g_native_designation_overlay;
+static void release_native_designation_language_resources() {
+    g_native_designation_overlay.release_native_designation_resources();
+}
 static void release_native_squads_language_resources() {
     g_native_squads_overlay.release_native_squads_resources();
 }
@@ -43954,6 +43966,8 @@ static void native_embark_civilization_present_layer(SDL_Renderer *renderer,
     void (*draw_civilization)(SDL_Renderer *));
 static void native_topbar_present_layer(SDL_Renderer *renderer,
     void (*draw_topbar)(SDL_Renderer *));
+static void native_designation_present_layer(SDL_Renderer *renderer,
+    void (*draw_designations)(SDL_Renderer *));
 static void native_resolution_present_layer(SDL_Renderer *renderer,
     void (*draw_resolution)(SDL_Renderer *));
 static void native_worldgen_present_layer(SDL_Renderer *renderer,
@@ -44021,6 +44035,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             });
             native_topbar_present_layer(renderer, [](SDL_Renderer *topbar_renderer) {
                 g_overlay.render_native_topbar_layer(topbar_renderer);
+            });
+            native_designation_present_layer(renderer, [](SDL_Renderer *designation_renderer) {
+                g_native_designation_overlay.render_native_designation_layer(designation_renderer, g_overlay);
             });
             native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
                 g_overlay.render_native_info_layer(info_renderer);

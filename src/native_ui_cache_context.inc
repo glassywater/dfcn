@@ -899,6 +899,13 @@ std::optional<std::string> Overlay::native_embark_civilization_cache_context() c
 
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    if (&layer == &g_native_designation_layer) {
+        NativeUiCacheContextWriter key;
+        key.tooltip();
+        key.graphics(g_native_designation_layer.foreground.graphics());
+        key.bundle(g_native_designation_text);
+        return key.finish();
+    }
     if (&layer == &g_native_embark_civilization_layer)
         return g_overlay.native_embark_civilization_cache_context();
     if (&layer == &g_native_topbar_layer) return g_overlay.native_topbar_cache_context();
