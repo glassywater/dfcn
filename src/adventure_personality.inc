@@ -1,3 +1,112 @@
+// The preview uses three plain curses_text_boxst vectors, not the rich-text
+// boxes of the in-game unit sheet. Own the whole retained document before
+// word matching, including sentences below the current scroll position.
+void Overlay::append_adventure_personality_description(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw) const {
+    if (!gps_ || !face_ || gps_->tile_pixel_x <= 0 || gps_->tile_pixel_y <= 0) return;
+    const auto cache = native_adventure_personality_cache();
+    if (!cache) return;
+    std::unordered_map<uintptr_t, size_t> row_indices;
+    for (size_t index = 0; index < cache->rows.size(); ++index)
+        row_indices.emplace(cache->rows[index].address, index);
+    const NativePanelBorders borders(*gps_);
+    const uint64_t epoch = captured_native_drawn_text_epoch();
+    struct Viewport { int left, right, top, bottom, first; };
+    std::optional<Viewport> viewport;
+    for (const auto &snapshot : {captured_native_drawn_text_snapshot(false),
+                                captured_native_drawn_text_snapshot(true)}) {
+        for (const auto &draw : *snapshot) {
+            const auto found = row_indices.find(draw.address);
+            if (found == row_indices.end() || draw.draw_epoch != epoch ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    (raw && draw.draw_grid != raw) || draw.x < 0 || draw.y < 0 ||
+                    draw.y >= gps_->dimy || draw.source.empty() ||
+                    draw.source != cache->rows[found->second].source ||
+                    draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x) ||
+                    rows[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0)
+                continue;
+            const auto pane = native_panel_interior(borders, *gps_,
+                draw.x, draw.x + static_cast<int>(draw.source.size()), draw.y);
+            if (!pane || pane->w <= 0 || pane->h <= 0) continue;
+            const int row_zero = draw.y - static_cast<int>(found->second);
+            const int top = std::max(pane->y, row_zero);
+            const int bottom = std::min(pane->y + pane->h,
+                row_zero + static_cast<int>(cache->rows.size()));
+            if (bottom <= top || pane->x + pane->w <= draw.x) continue;
+            Viewport candidate{draw.x, pane->x + pane->w, top, bottom, top - row_zero};
+            // Match every retained row that the native renderer placed in this
+            // frame. An identical first sentence in another character is not
+            // sufficient; row addresses and all visible source bytes agree.
+            bool intact = true;
+            for (int y = top; y < bottom && intact; ++y) {
+                const auto &source = cache->rows[static_cast<size_t>(y - row_zero)].source;
+                if (source.size() > static_cast<size_t>(candidate.right - candidate.left) ||
+                        rows[y].compare(candidate.left, source.size(), source) != 0)
+                    intact = false;
+            }
+            if (intact) { viewport = candidate; break; }
+        }
+        if (viewport) break;
+    }
+    if (!viewport) return;
+    const auto &pane = *viewport;
+    const int width = pane.right - pane.left;
+    const auto &layout = prepare_native_knowledge_layout(cache->source, width, true);
+    if (layout.lines.empty() || layout.line_height_pixels <= 0) return;
+    const int height = pane.bottom - pane.top;
+    const int visible_lines = height * gps_->tile_pixel_y / layout.line_height_pixels;
+    if (visible_lines <= 0) return;
+    const int native_range = std::max(0, static_cast<int>(cache->rows.size()) - height);
+    const int target_range = std::max(0, static_cast<int>(layout.lines.size()) - visible_lines);
+    const int first_line = native_range > 0
+        ? std::clamp(static_cast<int>((int64_t(pane.first) * target_range + native_range / 2) /
+            native_range), 0, target_range) : 0;
+    const int origin_x = (gps_->screen_pixel_x - gps_->dimx * gps_->tile_pixel_x) / 2;
+    const int origin_y = (gps_->screen_pixel_y - gps_->dimy * gps_->tile_pixel_y) / 2;
+    const SDL_Rect clip{origin_x + pane.left * gps_->tile_pixel_x,
+        origin_y + pane.top * gps_->tile_pixel_y,
+        width * gps_->tile_pixel_x, height * gps_->tile_pixel_y};
+    for (int y = pane.top; y < pane.bottom; ++y) {
+        if (only_y < 0 || only_y == y)
+            matches.push_back({pane.left, y, width, kAdventureCreationDescriptionRule, {},
+                rows[y].substr(pane.left, width)});
+        std::fill_n(rows[y].begin() + pane.left, width, ' ');
+    }
+    const auto foreground_rgb = [&](int color) {
+        if (color < 0) color = 7 | 64;
+        const int palette = (color & 7) + ((color & 64) ? 8 : 0);
+        return (gps_->uccolor[palette][0] << 16) |
+            (gps_->uccolor[palette][1] << 8) | gps_->uccolor[palette][2];
+    };
+    for (int line = 0; line < visible_lines &&
+            first_line + line < static_cast<int>(layout.lines.size()); ++line) {
+        const int offset = line * layout.line_height_pixels;
+        const int y = pane.top + offset / gps_->tile_pixel_y;
+        if (only_y >= 0 && only_y != y) continue;
+        Match match{pane.left, y, 0, kAdventureCreationDescriptionRule,
+            layout.lines[static_cast<size_t>(first_line + line)], {}};
+        match.translation_result = layout.translation_result;
+        match.language_converted = config_.language == "zh-Hant";
+        match.layout_x = pane.left;
+        match.layout_y = y;
+        match.layout_length = width;
+        match.layout_left = true;
+        match.layout_prepared = true;
+        match.layout_fixed_baseline = true;
+        match.layout_pixel_y = offset % gps_->tile_pixel_y;
+        match.layout_line_height_pixels = layout.line_height_pixels;
+        match.layout_reflowed_paragraph = true;
+        match.layout_native_clip = clip;
+        match.layout_foreground_rgb = foreground_rgb(-1);
+        const auto &colors = layout.line_foregrounds[static_cast<size_t>(first_line + line)];
+        if (!colors.empty()) {
+            match.layout_foreground_rgb = foreground_rgb(colors.front());
+            for (int color : colors) match.layout_glyph_foreground_rgb.push_back(foreground_rgb(color));
+        }
+        matches.push_back(std::move(match));
+    }
+}
+
 // The native creator writes 29-byte facet descriptions at x=1, then starts
 // its seven rating slots at x=29 (PE 53.16: 0x62edc4..0x62f873). The first
 // slot overwrites the last description byte. Recover meaning from the actual
@@ -7,6 +116,7 @@ void Overlay::append_adventure_personality_matches(std::vector<std::string> &row
         std::vector<Match> &matches, int only_y, const unsigned char *raw) const {
     if (!gps_ || gps_->dimx <= 0 || gps_->dimy <= 0 ||
             rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    append_adventure_personality_description(rows, matches, only_y, raw);
     constexpr std::string_view done = "Done customizing";
     int footer_y = -1;
     for (int y = 0; y < gps_->dimy; ++y) {

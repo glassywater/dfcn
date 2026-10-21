@@ -45,6 +45,7 @@ RUNTIME_FILES = (
     "data/runtime/pinyin-data/pinyin.txt", "data/runtime/pinyin-data/SOURCE",
     "data/runtime/phrase-pinyin-data/large_pinyin.txt",
     "data/runtime/phrase-pinyin-data/LICENSE", "data/runtime/phrase-pinyin-data/SOURCE",
+    "data/runtime/search-concepts.tsv",
 )
 LICENSE_FILES = (
     "data/upstream/licenses/dfi18n-data.LICENSE.md", "data/upstream/licenses/dfzh-data.LICENSE.md",
@@ -67,6 +68,7 @@ INSTALLATION = """DFCN Linux x64 / Dwarf Fortress 53.16
 FreeType、Fontconfig、C++ 运行库及 glibc；不包含这些系统依赖。
 未内置字体时，Fontconfig 选择系统已安装的中文无衬线字体。
 汉化配置位于 dfcn/data/runtime/config.ini。
+语义搜索需要单独安装 DFCN Semantic Search Model mod；模型不包含在本运行包内。
 运行包不包含游戏程序、源码、本机路径配置或生成工具。
 """
 

@@ -162,8 +162,8 @@ static const std::unordered_map<std::string_view, std::string_view>
     {"vampires", "吸血鬼"},
     {"warrior", "战士"},
     {"warriors", "战士"},
-    {"werebeast", "狂化生物"},
-    {"werebeasts", "狂化生物"},
+    {"werebeast", "被兽化诅咒的生物"},
+    {"werebeasts", "被兽化诅咒的生物"},
     {"wolf", "狼"},
     {"wolves", "狼"},
     {"woman", "女子"},
@@ -737,7 +737,7 @@ static const std::unordered_map<std::string_view, std::string_view>
 };
 static const std::unordered_map<std::string_view, std::string_view>
     creature_name_form_prefix = {
-    {"were", "狂化"},
+    {"were", "被兽化诅咒的"},
 };
 static const std::unordered_map<std::string_view, std::string_view>
     creature_name_status_prefix = {

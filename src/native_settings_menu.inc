@@ -115,12 +115,20 @@ public:
     }
 };
 
-static constexpr size_t kNativeSettingsMenuOptionCount = 5;
+static constexpr size_t kNativeSettingsMenuOptionCount = 6;
 static constexpr int kNativeSettingsMenuHeight =
     4 + 3 * static_cast<int>(kNativeSettingsMenuOptionCount);
 
+struct NativeSettingsMenuCaption {
+    SDL_Rect box{};
+    std::string source, target;
+};
+
 struct NativeSettingsMenuState {
     bool open = false, f1_consumed = false, hits_ready = false;
+    bool export_pending = false, export_result = false, export_success = false;
+    std::string export_message, export_filename;
+    std::vector<NativeSettingsMenuCaption> captions;
     uint32_t consumed_buttons = 0;
     std::array<bool, SDL_NUM_SCANCODES> consumed_keys{};
     int hovered = -1;
@@ -128,22 +136,26 @@ struct NativeSettingsMenuState {
     std::array<SDL_Rect, kNativeSettingsMenuOptionCount> rows{}, pixel_rows{};
     double input_scale_x = 1, input_scale_y = 1;
     double input_offset_x = 0, input_offset_y = 0;
+    size_t row_count() const { return export_result ? 1 : rows.size(); }
 };
 static NativeSettingsMenuState g_native_settings_menu;
 static NativeUiLayerStorage g_native_settings_menu_layer;
 static NativeInfoCapturedText g_native_settings_menu_text;
 static constexpr std::array<std::string_view, kNativeSettingsMenuOptionCount + 1> kNativeSettingsMenuSources{
     "Chinese translation", "Toggle Chinese / English", "Toggle simplified / traditional",
-    "Toggle language transliteration", "Toggle DFHack (installed only)", "Reload Chinese translation"};
+    "Toggle language transliteration", "Toggle DFHack (installed only)", "Reload Chinese translation",
+    "Export whole map (all known levels)"};
 static constexpr std::array<std::string_view, kNativeSettingsMenuOptionCount + 1> kNativeSettingsMenuLabels{
     "汉化设置", "切换中英文", "切换繁简体", "切换四族语言音译",
-    "开关 DFHack（需已安装 DFHack）", "重载汉化"};
+    "开关 DFHack（需已安装 DFHack）", "重载汉化", "导出整张地图（全部已知层）"};
 
 static void native_settings_menu_close() {
     auto &menu = g_native_settings_menu;
     menu.open = false;
     menu.hovered = -1;
     menu.hits_ready = false;
+    menu.export_pending = false;
+    menu.export_result = false;
     g_native_settings_menu_layer.ready = false;
 }
 
@@ -160,6 +172,16 @@ static void native_settings_menu_prepare() try {
     TranslationStateScope translation;
     auto &menu = g_native_settings_menu;
     if (!menu.open) return;
+    // The SDL input callback only queues this action. The native producer
+    // owns the world here, before UI detachment.
+    if (menu.export_pending) {
+        menu.export_pending = false;
+        menu.export_filename.clear();
+        menu.export_success = native_blueprint_export(menu.export_message, menu.export_filename);
+        menu.export_result = true;
+        menu.hovered = -1;
+        menu.hits_ready = false;
+    }
     // Windows DFHack writers can hold M without T. Never wait for M while T
     // is held: retain the previous complete component if another writer owns it.
     std::unique_lock<std::recursive_mutex> writer(g_native_dfhack_layer_mutex, std::try_to_lock);
@@ -167,9 +189,14 @@ static void native_settings_menu_prepare() try {
     auto *owner = native_graphics_owner();
     const auto &bindings = native_settings_menu_bindings();
     const auto ui = native_ui_settings();
+    // Share adjacent button borders on short grids so the sixth action does
+    // not make a previously usable small window lose the entire menu.
+    const int row_stride = owner && owner->dimy < kNativeSettingsMenuHeight ? 2 : 3;
+    const int height = menu.export_result ? 13
+        : 7 + row_stride * (static_cast<int>(kNativeSettingsMenuOptionCount) - 1);
     if (!owner || !owner->screen || !owner->screen_top ||
             owner->dimx < 36 || owner->dimx > 1000 ||
-            owner->dimy < kNativeSettingsMenuHeight || owner->dimy > 1000 ||
+            owner->dimy < height || owner->dimy > 1000 ||
             !bindings.ready() || !ui || !g_native_help_layer.native_renderer ||
             !g_native_help_layer.renderer || native_dfhack_layer_write_active(owner)) return;
 
@@ -183,10 +210,11 @@ static void native_settings_menu_prepare() try {
     grid->clipx[1] = grid->dimx - 1; grid->clipy[1] = grid->dimy - 1;
     grid->screenf = 7; grid->screenb = 0; grid->screenbright = false;
     grid->use_old_16_colors = true;
-    const int width = std::min(44, owner->dimx - 2), height = kNativeSettingsMenuHeight;
+    const int width = std::min(44, owner->dimx - 2);
     menu.panel = {(owner->dimx - width) / 2, (owner->dimy - height) / 2, width, height};
-    for (size_t i = 0; i < menu.rows.size(); ++i)
-        menu.rows[i] = {menu.panel.x + 2, menu.panel.y + 3 + static_cast<int>(i) * 3,
+    for (size_t i = 0; i < menu.row_count(); ++i)
+        menu.rows[i] = {menu.panel.x + 2,
+            menu.panel.y + (menu.export_result ? 9 : 3 + static_cast<int>(i) * row_stride),
             menu.panel.w - 4, 3};
     layer.frames = {menu.panel};
     layer.native_renderer = g_native_help_layer.native_renderer;
@@ -212,16 +240,35 @@ static void native_settings_menu_prepare() try {
         ui->texpos_border_w, ui->texpos_border_interior, ui->texpos_border_e,
         ui->texpos_border_sw, ui->texpos_border_s, ui->texpos_border_se};
     skin.nineslice(menu.panel, border.data());
-    const auto title = kNativeSettingsMenuSources[0];
-    text.text(menu.panel.x + (menu.panel.w - static_cast<int>(title.size())) / 2,
-        menu.panel.y + 1, title);
-    for (size_t i = 0; i < menu.rows.size(); ++i) {
+    menu.captions.clear();
+    const auto caption = [&](SDL_Rect box, std::string_view source, std::string_view target) {
+        text.text(box.x + (box.w - static_cast<int>(source.size())) / 2, box.y, source);
+        menu.captions.push_back({box, std::string(source), std::string(target)});
+    };
+    caption({menu.panel.x + 1, menu.panel.y + 1, menu.panel.w - 2, 1},
+        menu.export_result ? "Terrain blueprint export" : kNativeSettingsMenuSources[0],
+        menu.export_result ? "地形蓝图导出" : kNativeSettingsMenuLabels[0]);
+    if (menu.export_result) {
+        caption({menu.panel.x + 2, menu.panel.y + 3, menu.panel.w - 4, 1},
+            menu.export_success ? "Blueprint exported" : "Blueprint export failed", menu.export_message);
+        if (menu.export_success) {
+            caption({menu.panel.x + 2, menu.panel.y + 5, menu.panel.w - 4, 1},
+                "dfcn/blueprints/", "导出目录：dfcn/blueprints/");
+            caption({menu.panel.x + 2, menu.panel.y + 7, menu.panel.w - 4, 1},
+                menu.export_filename, menu.export_filename);
+        } else {
+            caption({menu.panel.x + 2, menu.panel.y + 6, menu.panel.w - 4, 1},
+                "No blueprint was saved", "没有保存蓝图文件");
+        }
+    }
+    for (size_t i = 0; i < menu.row_count(); ++i) {
         const auto &row = menu.rows[i];
         const auto &button = menu.hovered == static_cast<int>(i)
             ? ui->texpos_selected_intro_button : ui->texpos_unselected_intro_button;
         skin.nineslice(row, button.data());
-        const auto label = kNativeSettingsMenuSources[i + 1];
-        text.text(row.x + (row.w - static_cast<int>(label.size())) / 2, row.y + 1, label);
+        caption({row.x + 1, row.y + 1, row.w - 2, 1},
+            menu.export_result ? "Close" : kNativeSettingsMenuSources[i + 1],
+            menu.export_result ? "关闭" : kNativeSettingsMenuLabels[i + 1]);
     }
     grid->top_in_use = owner->top_in_use;
     layer.ready = true;
@@ -283,7 +330,7 @@ bool Overlay::settings_menu_event(const SDL_Event &event) {
         const SDL_Point point{
             static_cast<int>(std::floor(x * menu.input_scale_x + menu.input_offset_x)),
             static_cast<int>(std::floor(y * menu.input_scale_y + menu.input_offset_y))};
-        for (size_t i = 0; i < menu.pixel_rows.size(); ++i)
+        for (size_t i = 0; i < menu.row_count(); ++i)
             if (SDL_PointInRect(&point, &menu.pixel_rows[i])) return static_cast<int>(i);
         return -1;
     };
@@ -297,10 +344,16 @@ bool Overlay::settings_menu_event(const SDL_Event &event) {
         if (event.button.button == SDL_BUTTON_RIGHT) native_settings_menu_close();
         else if (event.button.button == SDL_BUTTON_LEFT) {
             const int action = hovered(event.button.x, event.button.y);
+            if (!menu.export_result && action == 5) {
+                menu.export_pending = true;
+                menu.hits_ready = false;
+                return true;
+            }
+            const bool result = menu.export_result;
             // Close before an action can invalidate a font or reload resources.
             // Keep the matching mouse release consumed after this modal ends.
             native_settings_menu_close();
-            if (action >= 0) run_settings_menu_action(action);
+            if (!result && action >= 0) run_settings_menu_action(action);
         }
         return true;
     }
@@ -330,7 +383,7 @@ void Overlay::render_settings_menu(SDL_Renderer *renderer) {
     if (!grid || grid->tile_pixel_x <= 0 || grid->tile_pixel_y <= 0) return;
     const int origin_x = (grid->screen_pixel_x - grid->dimx * grid->tile_pixel_x) / 2;
     const int origin_y = (grid->screen_pixel_y - grid->dimy * grid->tile_pixel_y) / 2;
-    for (size_t i = 0; i < menu.rows.size(); ++i) {
+    for (size_t i = 0; i < menu.row_count(); ++i) {
         const auto &row = menu.rows[i];
         menu.pixel_rows[i] = {origin_x + row.x * grid->tile_pixel_x,
             origin_y + row.y * grid->tile_pixel_y,
@@ -381,15 +434,12 @@ void Overlay::render_settings_menu(SDL_Renderer *renderer) {
     NativeUiReadScope component(grid, nullptr);
     CellReadCacheScope cells(*this);
     std::vector<Match> labels;
-    if (face_) for (size_t i = 0; i < kNativeSettingsMenuLabels.size(); ++i) {
-        const SDL_Rect box = i == 0
-            ? SDL_Rect{menu.panel.x + 1, menu.panel.y + 1, menu.panel.w - 2, 1}
-            : SDL_Rect{menu.rows[i - 1].x + 1, menu.rows[i - 1].y + 1,
-                menu.rows[i - 1].w - 2, 1};
-        const auto source = kNativeSettingsMenuSources[i];
+    if (face_) for (const auto &caption : menu.captions) {
+        const auto box = caption.box;
+        const auto &source = caption.source;
         const int source_x = box.x + (box.w - static_cast<int>(source.size())) / 2;
         Match match{source_x, box.y, static_cast<int>(source.size()), -2,
-            std::string(kNativeSettingsMenuLabels[i]), std::string(source)};
+            caption.target, source};
         match.layout_x = box.x; match.layout_y = box.y; match.layout_length = box.w;
         match.layout_box_pixel_x = origin_x + box.x * grid->tile_pixel_x;
         match.layout_box_pixel_width = box.w * grid->tile_pixel_x;

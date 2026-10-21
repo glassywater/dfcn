@@ -61,7 +61,8 @@ static size_t match_native_unit_search(const char *text, size_t length, size_t s
             return g_real_native_unit_search_find(text, length, start, query_text, query_length);
         })
         : SIZE_MAX;
-    if (result != SIZE_MAX) return result;
+    if (result != SIZE_MAX)
+        return native_search_item_result(result, text, length, query_text, query_length);
     try {
         if (start != 0 || !text || length == 0 || length > 65536 ||
             !query_text || query_length == 0 || query_length > 4096 ||

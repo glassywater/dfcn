@@ -191,7 +191,8 @@ def deploy_runtime_data(directory: Path) -> None:
                  "english-pronunciation/SOURCE",
                  "pinyin-data/pinyin.txt", "pinyin-data/SOURCE",
                  "phrase-pinyin-data/large_pinyin.txt",
-                 "phrase-pinyin-data/LICENSE", "phrase-pinyin-data/SOURCE"):
+                 "phrase-pinyin-data/LICENSE", "phrase-pinyin-data/SOURCE",
+                 "search-concepts.tsv"):
         install(runtime / name, (RUNTIME / name).read_bytes())
     for name in ("dfhack-help.LICENSE", "lua-output.LICENSE", "pinyin-data/LICENSE"):
         install(runtime / name, (ROOT / "third_party" / name).read_bytes())

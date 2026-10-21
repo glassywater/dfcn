@@ -20,8 +20,9 @@ class NativeUiLayerFrameCache {
     static const graphicst &graphics(const NativeUiLayerGrid &grid) noexcept {
         return *reinterpret_cast<const graphicst *>(grid.view.data());
     }
-    bool same_header(const NativeUiLayerGrid &grid) const noexcept {
+    bool same_header(const NativeUiLayerStorage &layer) const noexcept {
         if (!header_) return false;
+        const auto &grid = layer.foreground;
         // The submitted arrays already own characters, colors and artwork.
         // Producer cursors/mouse positions, alternating array addresses and
         // the native renderer's mutable texture cache/command queue do not
@@ -56,6 +57,12 @@ class NativeUiLayerFrameCache {
         }};
 #undef DFCN_LAYER_HEADER_FIELD
         for (const auto &[offset, size] : fields) {
+            // The civilization panel has its own clip and UI tile geometry.
+            // Map zoom and background/title state cannot invalidate it.
+            if (&layer == &g_native_embark_civilization_layer &&
+                    (offset == offsetof(graphicst, viewport_zoom_factor) ||
+                     offset == offsetof(graphicst, display_title) ||
+                     offset == offsetof(graphicst, display_background))) continue;
             if (size && std::memcmp(header_->data() + offset,
                     grid.view.data() + offset, size) != 0) return false;
         }
@@ -176,7 +183,7 @@ public:
                 draw_layer_ != draw_layer || width_ != width || height_ != height ||
                 dimx_ != grid.dimx || dimy_ != grid.dimy || top_in_use_ != gps.top_in_use ||
                 owned_frames_ != owned_frames || context_ != context || !same_metadata(layer)) return false;
-        return same_header(grid);
+        return same_header(layer);
     }
     bool matches(const NativeUiLayerStorage &layer, SDL_Renderer *renderer,
             int width, int height, DrawLayer draw_layer,

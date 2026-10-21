@@ -1,0 +1,12 @@
+{
+  "appid": 975370,
+  "title": "DFCN · Semantic Search Model",
+  "description_file": "workshop/semantic-search/description.bbcode.txt",
+  "content_folder": "workshop/semantic-search/content",
+  "preview_file": "workshop/semantic-search/preview.png",
+  "tags": [
+    "mod"
+  ],
+  "visibility": 0,
+  "changelog": "Initial release of the standalone offline semantic-search model for DFCN."
+}

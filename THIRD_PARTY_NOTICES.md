@@ -214,3 +214,15 @@ DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
 ```
+
+## Multilingual semantic search model
+
+DFCN optionally uses Minish Lab's
+[potion-multilingual-128M](https://huggingface.co/minishlab/potion-multilingual-128M)
+at revision `74dfa0358db39b3f78439a6aa8eb2d5e009c9823`, under the MIT license.
+The unmodified weights, tokenizer, model card, license and provenance are
+distributed in the separate `DFCN Semantic Search Model` mod at
+`workshop/semantic-search/content/dfcn/search-semantic/`; they are not included
+in the DFCN core package. This Model2Vec model contains
+learned multilingual token embeddings derived from BAAI/bge-m3; DFCN uses
+them locally for semantic search.

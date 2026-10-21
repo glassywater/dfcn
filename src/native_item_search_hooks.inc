@@ -39,15 +39,17 @@ static size_t capture_native_item_search_find(const char *native_text,
                 query_text, query_length);
         })
         : SIZE_MAX;
-    if (native_result != SIZE_MAX) return native_result;
     try {
         if (!g_overlay.translation_enabled() || !query_text ||
             query_length == 0 || query_length > 4096) return native_result;
         const std::string_view query(query_text, query_length);
         std::string_view source;
-        if (native_string_view(original_name, &source, 65536) && !source.empty() &&
-            g_overlay.translated_item_search_matches(source, query))
-            return 0;
+        if (native_string_view(original_name, &source, 65536) && !source.empty()) {
+            if (const auto typed = translated_search_item_decision(source, query))
+                return *typed ? 0 : SIZE_MAX;
+            if (native_result != SIZE_MAX) return native_result;
+            if (g_overlay.translated_item_search_matches(source, query)) return 0;
+        }
     } catch (...) {
         // Translation/allocation failures must not escape through the game ABI.
     }

@@ -1,0 +1,25 @@
+Model: minishlab/potion-multilingual-128M
+Publisher: Minish Lab
+License: MIT (see LICENSE and the upstream model card in README.md)
+Repository: https://huggingface.co/minishlab/potion-multilingual-128M
+Pinned revision: 74dfa0358db39b3f78439a6aa8eb2d5e009c9823
+
+model.safetensors, tokenizer.json, config.json and README.md are unmodified
+upstream files from that revision. Model2Vec's MIT license is retained from
+https://github.com/MinishLab/model2vec/blob/main/LICENSE.
+
+Upstream LFS object identities:
+model.safetensors: 14b5eb39cb4ce5666da8ad1f3dc6be4346e9b2d601c073302fa0a31bf7943397
+tokenizer.json: 19f1909063da3cfe3bd83a782381f040dccea475f4816de11116444a73e1b6a1
+
+The model contains 500353 pretrained 256-dimensional float32 token vectors.
+It was distilled/trained from BAAI/bge-m3 with multilingual Tokenlearn data.
+DFCN performs local Unigram segmentation using the packaged normalization map,
+mean pooling and L2 normalization, followed by cosine-distance retrieval.
+There is no remote inference, API key, character-hash embedding, or model training
+at game runtime. The original matrix is mapped read-only once per core.
+
+Inference reference:
+https://github.com/MinishLab/model2vec/blob/main/model2vec/model.py
+Normalization format reference:
+https://github.com/google/sentencepiece/blob/master/src/normalizer.cc

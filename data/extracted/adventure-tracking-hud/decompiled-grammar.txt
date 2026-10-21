@@ -1,0 +1,164 @@
+Adventure left sensory HUD — current Windows executable source
+
+Scope
+  The screenshot's "Tracks Visible: 22" belongs to the sensory block of
+  the main Adventure renderer. This block owns the spoor list, its eight
+  bearings, the track counter and the strongest-odor field.
+  The Freshest track popup is a different producer, retained separately
+  in ../adventure-tracking/. Creature/quest compass badges likewise have
+  their own producer in ../adventure-compass/.
+
+Actual decompilation
+  Input: /home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+  PE:6a70a6d9:02711000
+  SHA-256: 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+  Ghidra 12.1.2, fresh import with -noanalysis, then the existing
+  tools/DecompileAdventureMovementHUD.java script with current-image
+  function, disassembly, call, literal and switch inputs.
+  The complete renderer AF1190..B0390E and all listed suppliers were
+  actually decompiled. pe-current-hud-ghidra.c is an unmodified excerpt
+  of that new C output, with its source label and exit boundary retained.
+  The full same-image renderer is also already retained at
+  ../adventure-movement-hud/pe-reference-adventure-global-renderer.c.
+  Each supplier has its complete C and assembly retained here.
+  No running process or desktop was used for this source extraction.
+
+All addresses below are reference PE RVAs.
+  Owner: AF1190..B0390E
+  Sensory eligibility/frame entry: AFEC59..AFED07
+  Sensory frame continuation, list and labels: AFFC20..B0022F
+  Track count append: 52C130..52C1E3
+  Signed integer stream: 52C2B0..52C388
+  Caste lookup: BBA90..BBADD
+  Creature name: AA3BD0..AA3D93
+  First-letter capitalization: 52D650..52D8BA
+
+Eligibility and placement
+  Display flags: uint32 at 2643BB8.
+  If (flags & 5) == 0, this whole block produces nothing.
+  flags & 1 enables tracks; flags & 4 independently enables odor.
+  Mode word uint16 at 2640B70 must be zero to draw either text field.
+  The spoor list can still be drawn when the mode hides the text fields.
+  No alternate phrase is emitted by any of those suppression paths.
+
+  A preceding compass/list moves the spoor frame down by ten rows.
+  With a valid first spoor coordinate and tracks enabled, its 11x11 frame
+  has top row 0 or 10, then the track counter starts at row 11 or 21.
+  Otherwise the counter starts at row 1 or 11.
+  The odor field uses the next row if the counter was drawn, or the same
+  starting row if tracks are disabled.
+  In the stacked case, native CP437 junctions replace the upper corners.
+
+Spoor list
+  Nine int16 coordinates begin at 2643BC0.
+  First coordinate -30000 suppresses the entire list and frame.
+  Within a visible list, coordinate -30000 skips that slot without
+  incrementing the output row.
+  Each slot's record has stride 16; its flags are at 2643C00-8+16*slot,
+  and its type byte at 2643C00-6+16*slot.
+  Native symbols are drawn at x=1; direction text is independently at x=3.
+
+  Type 0: vegetation glyph '"' with green palette.
+  Type 1: creature/caste glyph, falling back to '!' if absent.
+  Type 2: item glyph, falling back to '[' if absent.
+  Type 3: mess glyph '%'.
+  Other types: no symbol. The independent direction branch still runs.
+  These symbols are pictures, not English nouns.
+
+  If !(record.flags & 2): no direction text.
+  Otherwise selector = (record.flags & 0x1c) >> 2:
+      0 N  -> 北       addchar call AFFE8E
+      1 S  -> 南       addchar call AFFEA4
+      2 E  -> 东       addchar call AFFEBA
+      3 NE -> 东北     addst call AFFF3C
+      4 W  -> 西       addchar call AFFED0
+      5 NW -> 西北     addst call AFFF02
+      6 SE -> 东南     addst call AFFFAA
+      7 SW -> 西南     addst call AFFF73
+  The one-character and two-character branches are equally semantic
+  direction fields. Generic addst capture alone misses four of them.
+  The runtime reader follows native slot order and flags, requires the
+  current frame and exact visible bearing cells, and uses the existing
+  Adventure compass vocabulary for all eight alternatives.
+
+Track counter
+  Count: signed int32 at 2643BBC.
+  Count > 0 selects bright green; count <= 0 selects ordinary gray.
+  Both branches draw exactly "Tracks Visible: " followed by the native
+  integer. There is no singular, "No tracks", or special zero wording.
+  Label call B00087 returns at B0008C.
+  Number call B000C8 returns at B000CD.
+  52C130 calls 52C2B0; the latter inserts a signed int into the native
+  std::ostream and returns its string. Keep those bytes, without limits
+  tied to the screenshot's 22 or a generated table of possible counts.
+  Target: 可见踪迹：<native count>.
+
+Strongest odor
+  Race/caste/death state: 2643CCC / 2643CD0 / 2643CD4.
+  Race == -1 selects ordinary gray; otherwise bright brown.
+  Label call B00151 returns at B00156, independently of value call
+  B0021C (return B00221).
+
+  if race == -1:
+      value = "None"
+  else if death != 0:
+      value = "Death"
+  else:
+      caste = lookup(int16(race), int16(caste))
+      if caste != null and !caste.ODOR_STRING.empty():
+          value = caste.ODOR_STRING at caste+0x4270
+      else:
+          value = creature_name(int16(race), plural=false, caste=-1)
+  capitalize_first_eligible_letter(value)
+  draw(value)
+
+  The name helper therefore uses creature NAME[0], not CASTE_NAME,
+  a personal name or a juvenile-name branch. Out-of-range/negative race
+  or an empty NAME[0] can return an empty string; the label remains.
+  The complete supplier C includes its other plural/caste branches,
+  but this caller explicitly disables them.
+  Capitalization skips bracketed markup and changes only the first
+  eligible letter; "bug innards" becomes "Bug innards".
+
+  Complete finite standard fields:
+      Strongest Odor: None                 最强气味：无
+      Strongest Odor: Death                最强气味：死亡
+      Strongest Odor: Blood                最强气味：血液
+      Strongest Odor: Smoke                最强气味：烟雾
+      Strongest Odor: Mud                  最强气味：淤泥
+      Strongest Odor: Bug innards          最强气味：昆虫内脏
+      Strongest Odor: Cooked flesh         最强气味：熟肉
+      Strongest Odor: Filth                最强气味：污垢
+      Strongest Odor: Soot                 最强气味：烟灰
+      Strongest Odor: Vomit                最强气味：呕吐物
+      Strongest Odor: Soil                 最强气味：土壤
+      Strongest Odor: Freshly-baked goods   最强气味：刚出炉的烘焙食品
+      Strongest Odor: Brimstone            最强气味：硫磺
+      Strongest Odor:                      最强气味：
+  Death is shared by the native override and the RAW/procedural odor.
+  All these complete fields already live in the runtime catalog.
+  Strongest Odor: {s} supplies the complete term/creature grammar for
+  dynamic NAME[0] and procedural names. Arbitrary mod-authored strings
+  are open-ended; unresolved values remain verbatim with the Chinese label.
+
+Runtime treatment
+  src/adventure_tracking_hud.inc claims the actual native label/value
+  writers before generic name and word matching. Adjacent draws are joined
+  only when caller, row, grid, dimensions and current text agree.
+  Both text layers and paired glyph rows use the same source ownership.
+  Numbers retain the native representation; colors remain native.
+  Eight-bearing fields use a four-cell layout, independent of the symbol.
+  local-overrides.tsv and translations.tsv were edited in place.
+
+Source inventory
+  pe-current-hud.asm: every instruction in the sensory block's two regions.
+  pe-branches.tsv / pe-conditions.tsv: native control-flow edges/operands.
+  pe-literals.tsv / pe-calls.tsv: original string operands and suppliers.
+  pe-switches.tsv: capitalization supplier's explicit switch targets.
+  pe-ghidra-functions.tsv: full function bounds used for decompilation.
+  raw-name-and-odor-sources.tsv: current installed RAW NAME/ODOR_STRING
+  fields, and Lua odor-producing assignments, choices and propagation.
+  Existing expanded creature vocabulary and its detailed provenance:
+      ../adventure-smell/odor-raw-creature-name-sources.tsv
+      ../adventure-smell/odor-raw-text-sources.tsv
+  These are source extraction artifacts, not display observations.

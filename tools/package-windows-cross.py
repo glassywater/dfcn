@@ -98,7 +98,7 @@ def package():
 
         payload = staging / "content"
         payload.mkdir()
-        for name in ("info.txt", "INSTALL.txt", "CHANGELOG.txt"):
+        for name in ("info.txt", "INSTALL.txt", "CHANGELOG.txt", "install.bat"):
             shutil.copyfile(WORKSHOP / "content" / name, payload / name)
         shutil.move(runtime, payload / "DFCN")
         (payload / "DFCN/dfhooks_dfcn.ini").write_text(

@@ -6,6 +6,7 @@ static void native_reset_render_resources() {
     native_settings_menu_release();
     g_overlay.invalidate_render_resources();
     g_native_squads_overlay.release_native_squads_resources();
+    release_native_designation_language_resources();
     release_native_character_language_resources();
 
     const auto reset_layer = [](NativeUiLayerTarget &target,
@@ -26,7 +27,11 @@ static void native_reset_render_resources() {
     reset_layer(g_native_reports_target, g_native_reports_layer);
     native_announcement_log_release_layer();
     reset_layer(g_native_pause_target, g_native_pause_layer);
+    native_embark_civilization_begin_frame();
+    reset_layer(g_native_embark_civilization_target, g_native_embark_civilization_layer);
     native_topbar_begin_frame();
+    native_designation_begin_frame();
+    reset_layer(g_native_designation_target, g_native_designation_layer);
     reset_layer(g_native_topbar_target, g_native_topbar_layer);
     reset_layer(g_native_resolution_target, g_native_resolution_layer);
     reset_layer(g_native_worldgen_target, g_native_worldgen_layer);

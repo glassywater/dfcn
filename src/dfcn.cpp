@@ -30,6 +30,7 @@
 #include <iomanip>
 #include <iterator>
 #include <list>
+#include <locale>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -64,6 +65,7 @@
 #include "native_adventure_crafting.h"
 #include "native_adventure_belief_source.h"
 #include "native_adventure_home_source.h"
+#include "native_adventure_personality_source.h"
 #include "native_unit_identity.h"
 #include "native_justice_organizations.h"
 #include "native_justice_plots.h"
@@ -71,6 +73,7 @@
 #include "native_trade_item_caption.h"
 #include "core_api.h"
 #include "runtime_paths.h"
+#include "search_semantic_model.h"
 #include "translation_extensions.h"
 #include "english_character_names.h"
 #include "english_name_transliteration.h"
@@ -90,6 +93,7 @@ struct NativePreparedUiFrame;
 static std::optional<std::string> native_main_ui_cache_context();
 static void request_native_process_exit() noexcept;
 static void release_native_squads_language_resources();
+static void release_native_designation_language_resources();
 static void release_native_character_language_resources();
 static void release_native_dfhack_layer_target() noexcept;
 
@@ -2499,12 +2503,16 @@ static bool native_character_background_cell_hidden(const graphicst *, int, int)
 static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
 static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
+static thread_local const graphicst *g_native_designation_write_graphics = nullptr;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_announcement_log_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
 static thread_local const graphicst *g_native_pause_write_graphics = nullptr;
 static thread_local const graphicst *g_native_topbar_write_graphics = nullptr;
 static bool native_topbar_cell_outside(const graphicst *, int, int) noexcept;
+static thread_local const graphicst *g_native_embark_civilization_write_graphics = nullptr;
+static bool native_embark_civilization_cell_outside(const graphicst *, int, int) noexcept;
+static bool native_embark_civilization_layer_hook_active();
 static thread_local const graphicst *g_native_worldgen_write_graphics = nullptr;
 static SDL_Rect g_native_worldgen_panel{};
 static bool native_worldgen_main_view(const graphicst *) noexcept;
@@ -2531,6 +2539,8 @@ static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics ||
         gps == g_native_resolution_write_graphics ||
         gps == g_native_topbar_write_graphics ||
+        gps == g_native_designation_write_graphics ||
+        gps == g_native_embark_civilization_write_graphics ||
         gps == g_native_worldgen_write_graphics || native_dfhack_layer_write_active(gps));
 }
 #include "native_capture_mask.inc"
@@ -3656,6 +3666,8 @@ public:
     void render_native_notification_layer(SDL_Renderer *renderer);
     void render_native_pause_layer(SDL_Renderer *renderer);
     void render_native_topbar_layer(SDL_Renderer *renderer);
+    void render_native_embark_civilization_layer(SDL_Renderer *renderer);
+    std::optional<std::string> native_embark_civilization_cache_context() const;
     std::optional<std::string> native_topbar_cache_context() const;
     void render_native_worldgen_layer(SDL_Renderer *renderer);
     void render_native_reports_layer(SDL_Renderer *renderer);
@@ -3671,6 +3683,8 @@ public:
     void prepare_native_squads_text();
     void render_native_squads_layer(SDL_Renderer *renderer, const Overlay &source);
     void release_native_squads_resources();
+    void render_native_designation_layer(SDL_Renderer *renderer, const Overlay &source);
+    void release_native_designation_resources();
     void render_native_fortress_layer(SDL_Renderer *renderer, NativeFortressLayerKind kind);
     void queue_dfhack_layer_translation();
     bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
@@ -3783,6 +3797,8 @@ private:
     std::vector<Match> find_native_notification_matches() const;
     std::vector<Match> find_native_announcement_log_matches() const;
     std::vector<Match> find_native_pause_matches() const;
+    std::vector<Match> find_native_embark_civilization_matches(int only_y = -1,
+        const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_topbar_matches(int only_y = -1,
         const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_stocks_matches() const;
@@ -5083,6 +5099,9 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_adventure_compass_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
+    void append_adventure_tracking_hud_matches(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y,
+        const unsigned char *screen_override) const;
     void layout_adventure_compass(SDL_Renderer *renderer);
     std::optional<std::string> translate_fortress_activity(
         const std::string &source, bool typed_only = false) const;
@@ -5396,6 +5415,8 @@ private:
         std::vector<Match> &matches, int only_y, const unsigned char *screen_override) const;
     void layout_adventure_personality_needs(SDL_Renderer *renderer);
     void layout_adventure_personality_actions(SDL_Renderer *renderer);
+    void append_adventure_personality_description(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw) const;
     void recover_adventure_skill_rows();
     void ensure_adventure_background_matches();
     void prepare_adventure_hover_suppression();
@@ -5929,6 +5950,7 @@ bool Overlay::translated_plant_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     const auto target = memoize_search_translation('p', source, [&] {
         return translate_plant_name(source);
     });
@@ -5972,6 +5994,7 @@ bool Overlay::translated_color_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled || source.empty() ||
             translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     const auto target = memoize_search_translation('o', source, [&] {
         return translate_color_picker_caption(source);
     });
@@ -5983,6 +6006,7 @@ bool Overlay::translated_material_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     // Use the material noun grammar used by the displayed captions, never
     // equipment adjectives or unrelated creature-name token matches.
     const auto target = memoize_search_translation('m', source, [&] {
@@ -5998,6 +6022,7 @@ bool Overlay::translated_work_order_condition_search_matches(std::string_view so
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     // Exactly the same complete grammar/cache as the displayed trait row,
     // including material-bearing, tool-use and multiword color constraints.
     const auto target = memoize_search_translation('w', source, [&] {
@@ -6011,6 +6036,7 @@ bool Overlay::translated_item_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     // Select the caption's semantic context, not the host or visible rows.
     // Both display entries own the full-name grammar and bounded cache.
     const auto translated = memoize_search_translation(fortress_item ? 'i' : 'b', source, [&] {
@@ -7525,8 +7551,8 @@ int Overlay::procedural_name_self_test() {
             translated->begin(), translated->end(), [](unsigned char ch) {
                 return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
             });
-        if (!translated || !translated->starts_with("狂化") ||
-            *translated == "狂化生物" || contains_latin) {
+        if (!translated || !translated->starts_with("被兽化诅咒的") ||
+            *translated == "被兽化诅咒的生物" || contains_latin) {
             log_line("ERROR", "Were-creature self-test mismatch for " + source +
                                   ": got " +
                                   (translated ? *translated : "<none>"));
@@ -7534,17 +7560,17 @@ int Overlay::procedural_name_self_test() {
         }
     }
     const auto gila_were = translate_procedural_fragment("Weregila monster");
-    if (!gila_were || *gila_were != "狂化钝尾毒蜥") return 42;
+    if (!gila_were || *gila_were != "被兽化诅咒的钝尾毒蜥") return 42;
     const auto modded_were =
         translate_procedural_fragment("Wereclockwork cave crocodile");
-    if (!modded_were || !modded_were->starts_with("狂化") ||
-        *modded_were == "狂化生物") return 43;
+    if (!modded_were || !modded_were->starts_with("被兽化诅咒的") ||
+        *modded_were == "被兽化诅咒的生物") return 43;
     const std::array<std::string_view, 4> ordinary_were_text = {{
         "Were", "Were going", "Weren't", "Werebeast Attack Population Rating",
     }};
     for (size_t index = 0; index < ordinary_were_text.size(); ++index) {
         if (translate_procedural_fragment(std::string(ordinary_were_text[index])) ==
-            std::optional<std::string>("狂化生物")) {
+            std::optional<std::string>("被兽化诅咒的生物")) {
             log_line("ERROR", "Were-creature false positive for " +
                                   std::string(ordinary_were_text[index]));
             return static_cast<int>(44 + index);
@@ -7834,6 +7860,7 @@ void Overlay::toggle_display_language() {
     // thread. Retire borrowed component faces before replacing the main font.
     invalidate_render_resources();
     release_native_squads_language_resources();
+    release_native_designation_language_resources();
     release_native_dfhack_layer_target();
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
@@ -8036,7 +8063,8 @@ void Overlay::run_settings_menu_action(int action) {
 const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     *top = false;
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return nullptr;
-    if (native_topbar_cell_outside(gps_, x, y)) return nullptr;
+    if (native_topbar_cell_outside(gps_, x, y) ||
+            native_embark_civilization_cell_outside(gps_, x, y)) return nullptr;
     if (native_map_mixed_view(gps_)) return nullptr;
     if (native_info_background_cell_hidden(gps_, x, y)) return nullptr;
     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
@@ -8061,7 +8089,8 @@ static bool graphically_occluded(uint8_t state, uint64_t cell_epoch,
 
 unsigned char Overlay::visible_char_at(int x, int y) const {
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return 0;
-    if (native_topbar_cell_outside(gps_, x, y)) return 0;
+    if (native_topbar_cell_outside(gps_, x, y) ||
+            native_embark_civilization_cell_outside(gps_, x, y)) return 0;
     if (native_map_mixed_view(gps_)) return 0;
     if (native_info_background_cell_hidden(gps_, x, y)) return 0;
     const size_t tile = static_cast<size_t>(x) * gps_->dimy + y;
@@ -9388,7 +9417,7 @@ static std::optional<std::string_view> fixed_arena_condition_translation(
     static constexpr std::array<std::pair<std::string_view, std::string_view>, 8>
         conditions = {{
             {"Tame/mountable", "已驯服/可骑乘"},
-            {"Werebeast", "狂化生物"},
+            {"Werebeast", "被兽化诅咒的生物"},
             {"Necromancer", "死灵法师"},
             {"Animated corpse", "活尸"},
             {"Cursed", "受诅咒"},
@@ -10695,8 +10724,8 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // DF forms every cursed creature name by joining "Were" directly to the
     // lower-case species name (Weregila monster, Werewolf, ...).  Resolve that
     // grammar once so all vanilla species and mod-added species are covered,
-    // while retaining the species identity (狂化毒蜥, 狂化狼, ...) rather than
-    // collapsing every row to the unhelpful generic label “狂化生物”.
+    // while retaining the species identity (被兽化诅咒的毒蜥, 被兽化诅咒的狼, ...)
+    // rather than collapsing every row to the generic label “被兽化诅咒的生物”.
     // Requiring a lower-case letter immediately after "Were" and lower-case
     // name words thereafter keeps ordinary prose and setting labels such as
     // "Were going" and "Werebeast Attack ..." outside this rule.
@@ -14615,7 +14644,8 @@ static std::optional<std::string> translate_personality_value_change_note(
     const size_t year_at = source.rfind(" in ");
     if (year_at == std::string_view::npos || year_at == 0) return std::nullopt;
     const std::string_view year = source.substr(year_at + 4);
-    if (year.empty() || !std::all_of(year.begin(), year.end(), [](char ch) {
+    const auto year_digits = year.starts_with('-') ? year.substr(1) : year;
+    if (year_digits.empty() || !std::all_of(year_digits.begin(), year_digits.end(), [](char ch) {
             return ch >= '0' && ch <= '9';
         })) return std::nullopt;
 
@@ -17354,6 +17384,8 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_pause_layers.inc"
 #include "native_worldgen_layers.inc"
 #include "native_topbar_layers.inc"
+#include "native_designation_layers.inc"
+#include "native_embark_civilization_layers.inc"
 
 #include "native_prepared_ui_frame.inc"
 
@@ -17489,6 +17521,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_locations.inc"
 #include "fortress_location_list.inc"
 #include "adventure_compass.inc"
+#include "adventure_tracking_hud.inc"
 #include "embark_civilizations.inc"
 #include "fortress_livestock.inc"
 #include "native_calendar_date.inc"
@@ -17895,15 +17928,18 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_announcement_log_layer_matching.inc"
 #include "native_pause_layer_matching.inc"
 #include "native_topbar_layer_matching.inc"
+#include "native_embark_civilization_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
 #include "native_squads_layer_matching.inc"
 #include "native_info_layer_translation.inc"
 #include "native_character_layer_translation.inc"
 #include "native_squads_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"
+#include "native_designation_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
 #include "native_topbar_layer_translation.inc"
+#include "native_embark_civilization_layer_translation.inc"
 #include "worldgen_layer_matching.inc"
 
 void Overlay::render_dfhack_layer(SDL_Renderer *renderer,
@@ -17957,6 +17993,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         const unsigned char *screen_override, bool primary_pages_probed) const {
     // The native top bar is a complete independent producer. Its private
     // grid can never select a page probe or the full-screen fallback.
+    if (native_embark_civilization_foreground_view(gps_))
+        return find_native_embark_civilization_matches(only_y, screen_override);
     if (native_topbar_foreground_view(gps_))
         return find_native_topbar_matches(only_y, screen_override);
     NativeCapturedTextReadScope captured_text_reads;
@@ -18637,6 +18675,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // before clipped identities or generated-name readers see the grid.
     if (!announcement_panel_only) {
 #include "adventure_movement.inc"
+        append_adventure_tracking_hud_matches(screen_rows, result, only_y, screen_override);
     }
     // Written-content titles must own both rows before clipped unit-name
     // recovery or generic item/name matching can consume their words.
@@ -23595,10 +23634,12 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 matched_end = candidate_end;
                 translated_species = translated;
             }
+            const auto were_name_prefix = creature_name_form_prefix.find("were");
+            if (were_name_prefix == creature_name_form_prefix.end()) continue;
             candidates.push_back({
                 static_cast<int>(start), y,
                 static_cast<int>(matched_end - start), -7,
-                std::string("狂化") + std::string(*translated_species),
+                std::string(were_name_prefix->second) + std::string(*translated_species),
                 row.substr(start, matched_end - start),
             });
             start = matched_end - 1;
@@ -43729,6 +43770,10 @@ static Overlay &native_character_drawing_state() {
 // The squad component borrows immutable catalog/font resources only. Its
 // graphics, matches, font caches and GPU text resources belong to this object.
 static Overlay g_native_squads_overlay;
+static Overlay g_native_designation_overlay;
+static void release_native_designation_language_resources() {
+    g_native_designation_overlay.release_native_designation_resources();
+}
 static void release_native_squads_language_resources() {
     g_native_squads_overlay.release_native_squads_resources();
 }
@@ -43918,8 +43963,12 @@ static void native_announcement_log_present_layer(SDL_Renderer *renderer,
     void (*draw_log)(SDL_Renderer *));
 static void native_pause_present_layer(SDL_Renderer *renderer,
     void (*draw_pause)(SDL_Renderer *));
+static void native_embark_civilization_present_layer(SDL_Renderer *renderer,
+    void (*draw_civilization)(SDL_Renderer *));
 static void native_topbar_present_layer(SDL_Renderer *renderer,
     void (*draw_topbar)(SDL_Renderer *));
+static void native_designation_present_layer(SDL_Renderer *renderer,
+    void (*draw_designations)(SDL_Renderer *));
 static void native_resolution_present_layer(SDL_Renderer *renderer,
     void (*draw_resolution)(SDL_Renderer *));
 static void native_worldgen_present_layer(SDL_Renderer *renderer,
@@ -43982,8 +44031,14 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
                 g_overlay.render_native_help_layer(help_renderer);
             });
         } else {
+            native_embark_civilization_present_layer(renderer, [](SDL_Renderer *civilization_renderer) {
+                g_overlay.render_native_embark_civilization_layer(civilization_renderer);
+            });
             native_topbar_present_layer(renderer, [](SDL_Renderer *topbar_renderer) {
                 g_overlay.render_native_topbar_layer(topbar_renderer);
+            });
+            native_designation_present_layer(renderer, [](SDL_Renderer *designation_renderer) {
+                g_native_designation_overlay.render_native_designation_layer(designation_renderer, g_overlay);
             });
             native_info_present_layer(renderer, [](SDL_Renderer *info_renderer) {
                 g_overlay.render_native_info_layer(info_renderer);
@@ -44076,6 +44131,7 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
 static void native_settings_menu_prepare();
 static void native_settings_menu_release();
 #include "native_hooks.inc"
+#include "native_blueprint_export.inc"
 #include "native_settings_menu.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
@@ -44453,7 +44509,7 @@ DFCN_EXPORT int dfcn_ruleset_self_test() {
         dfcn::translate_arena_equipment_source_phrase(
             "bulky werecoati leather capes");
     if (!bulky_werecoati ||
-        *bulky_werecoati != "狂化长鼻浣熊皮革质厚重披风") {
+        *bulky_werecoati != "被兽化诅咒的长鼻浣熊皮革质厚重披风") {
         rulesets.shutdown();
         return 12;
     }
@@ -44461,7 +44517,7 @@ DFCN_EXPORT int dfcn_ruleset_self_test() {
         dfcn::translate_arena_equipment_source_phrase(
             "bulky weremonitor leather tunics");
     if (!bulky_weremonitor ||
-        *bulky_weremonitor != "狂化巨蜥皮革质厚重短袍") {
+        *bulky_weremonitor != "被兽化诅咒的巨蜥皮革质厚重短袍") {
         rulesets.shutdown();
         return 13;
     }

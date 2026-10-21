@@ -96,6 +96,7 @@ bool Overlay::translated_stockpile_search_matches(std::string_view source,
     TranslationStateScope translation_scope;
     if (!config_.enabled) return false;
     if (source.empty() || translated_search_query(query).literal.empty()) return false;
+    if (translated_search_text_matches(native_text_to_utf8(source), query)) return true;
     const auto result = translate_stockpile_setting_display(source, kind);
     return result.usable() && translated_search_text_matches(result.target, query);
 }

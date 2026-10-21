@@ -16,6 +16,7 @@
 #include <set>
 #include <string>
 #include <string_view>
+#include <tuple>
 #include <utility>
 #include <vector>
 
@@ -65,6 +66,9 @@ struct Snapshot {
     std::vector<Package> packages;
     std::vector<ResourceStamp> resources;
     std::vector<std::string> diagnostics;
+    // The semantic-search model is an optional, independent data mod. It is
+    // discovered from the same installed mod roots as translation extensions.
+    fs::path semantic_model;
     // An available empty Steam list is authoritative, including after the
     // final extension is unsubscribed while its download remains on disk.
     bool steam_subscriptions_available = false;
@@ -318,7 +322,6 @@ inline fs::path resource_path(const fs::path& root, std::string_view value) {
 
 inline Snapshot discover(std::string_view language = "zh-Hans") {
     Snapshot snapshot;
-    if (!enabled()) return snapshot;
     const auto watch = [&](const fs::path& path) { snapshot.resources.push_back(detail::stamp(path)); };
     const auto steam = detail::subscriptions();
     snapshot.steam_subscriptions_available = steam.available;
@@ -394,20 +397,30 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
     });
     std::set<fs::path> visited;
     std::map<std::string, std::pair<Package, int>> selected;
+    std::optional<std::tuple<int64_t, int, fs::path>> selected_semantic_model;
     for (const auto& entry : candidates) {
         const auto root = detail::canonical_path(entry.root);
         if (root.empty() || visited.contains(root)) continue;
         const auto manifest = root / "dfcn-extension.toml";
+        const auto semantic_manifest = root / "dfcn-semantic-search.toml";
         std::error_code error;
-        if (!fs::is_regular_file(manifest, error) || !detail::within(root, manifest)) continue;
-        watch(manifest);
+        const bool has_extension = fs::is_regular_file(manifest, error) &&
+            detail::within(root, manifest);
+        error.clear();
+        const bool has_semantic_model = fs::is_regular_file(semantic_manifest, error) &&
+            detail::within(root, semantic_manifest);
+        if (!has_extension && !has_semantic_model) continue;
+        if (has_extension) watch(manifest);
+        if (has_semantic_model) watch(semantic_manifest);
         const auto info_path = root / "info.txt";
         if (!detail::within(root, info_path)) continue;
         watch(info_path);
         const auto info = detail::text(info_path);
         const auto info_id = info ? detail::info_value(*info, "ID") : std::nullopt;
         if (!info_id || !detail::identifier(*info_id)) {
-            snapshot.diagnostics.push_back(runtime::utf8(manifest) + ": missing valid info.txt mod ID");
+            const auto& declared_manifest = has_extension ? manifest : semantic_manifest;
+            snapshot.diagnostics.push_back(runtime::utf8(declared_manifest) +
+                ": missing valid info.txt mod ID");
             continue;
         }
         // game/mods is an explicit local installation. Only subscription
@@ -420,6 +433,60 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
                     (item && *item && !steam.ids.contains(*item))) continue;
         }
         visited.insert(root);
+
+        int64_t mod_version = 0;
+        if (const auto version = detail::info_value(*info, "NUMERIC_VERSION"))
+            mod_version = detail::number<int64_t>(*version).value_or(-1);
+        if (has_semantic_model && mod_version >= 0) {
+            const auto data = detail::text(semantic_manifest);
+            if (!data) {
+                snapshot.diagnostics.push_back(runtime::utf8(semantic_manifest) +
+                    ": cannot read semantic-search manifest");
+            } else if (const auto parsed = toml::parse(*data, runtime::utf8(semantic_manifest)); !parsed) {
+                snapshot.diagnostics.push_back(runtime::utf8(semantic_manifest) + ": " +
+                    std::string(parsed.error().description()));
+            } else {
+                const auto& parsed_manifest = parsed;
+                const auto schema = parsed_manifest["schema"].value<int64_t>();
+                const auto id = parsed_manifest["id"].value<std::string>();
+                const auto model = parsed_manifest["model"].value<std::string>();
+                const auto model_path = model
+                    ? detail::resource_path(root, *model) : fs::path{};
+                bool valid = schema && *schema == 1 && id && *id == "dfcn-semantic-search" &&
+                    !model_path.empty();
+                if (valid) {
+                    std::error_code model_error;
+                    valid = fs::is_directory(model_path, model_error) && !model_error;
+                    for (const auto name : {"model.safetensors", "tokenizer.json", "config.json"}) {
+                        const auto file = model_path / name;
+                        model_error.clear();
+                        if (!detail::within(root, file) ||
+                                !fs::is_regular_file(file, model_error) || model_error) {
+                            valid = false;
+                            break;
+                        }
+                    }
+                }
+                if (valid) {
+                    const auto candidate = std::make_tuple(mod_version, entry.priority, root);
+                    const bool better = !selected_semantic_model ||
+                        std::get<0>(candidate) > std::get<0>(*selected_semantic_model) ||
+                        (std::get<0>(candidate) == std::get<0>(*selected_semantic_model) &&
+                         (std::get<1>(candidate) < std::get<1>(*selected_semantic_model) ||
+                          (std::get<1>(candidate) == std::get<1>(*selected_semantic_model) &&
+                           std::get<2>(candidate) < std::get<2>(*selected_semantic_model))));
+                    if (better) {
+                        selected_semantic_model = candidate;
+                        snapshot.semantic_model = model_path;
+                    }
+                } else {
+                    snapshot.diagnostics.push_back(runtime::utf8(semantic_manifest) +
+                        ": missing valid semantic-search model files");
+                }
+            }
+        }
+
+        if (!enabled() || !has_extension) continue;
         const auto data = detail::text(manifest);
         if (!data) continue;
         const auto parsed = toml::parse(*data, runtime::utf8(manifest));
@@ -440,8 +507,7 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
         package.name = parsed["name"].value_or(package.id);
         package.root = root;
         package.manifest = manifest;
-        if (const auto version = detail::info_value(*info, "NUMERIC_VERSION"))
-            package.version = detail::number<int64_t>(*version).value_or(0);
+        package.version = mod_version;
         bool valid = package.version >= 0;
         const auto resolve = [&](std::string_view field, bool directory, fs::path& result) {
             const auto value = parsed[field].value<std::string>();
@@ -495,6 +561,7 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
 
 inline bool same_resources(const Snapshot& left, const Snapshot& right) {
     return left.packages == right.packages && left.resources == right.resources &&
+        left.semantic_model == right.semantic_model &&
         left.steam_subscriptions_available == right.steam_subscriptions_available &&
         left.subscribed_items == right.subscribed_items;
 }

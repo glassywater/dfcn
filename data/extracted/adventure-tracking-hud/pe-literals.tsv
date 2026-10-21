@@ -1,0 +1,9 @@
+edition	owner	instruction_rva	operand_va	storage	source
+reference	adventure-global-renderer	0xaffede	0x14169f524	cstring	NW
+reference	adventure-global-renderer	0xafff18	0x14169f528	cstring	NE
+reference	adventure-global-renderer	0xafff4f	0x14169f52c	cstring	SW
+reference	adventure-global-renderer	0xafff86	0x14169f530	cstring	SE
+reference	adventure-global-renderer	0xb00063	0x1416b1738	cstring	Tracks Visible: 
+reference	adventure-global-renderer	0xb0012d	0x1416afa68	cstring	Strongest Odor: 
+reference	adventure-global-renderer	0xb00182	0x1415f70e4	cstring	Death
+reference	adventure-global-renderer	0xb001ed	0x1415ff764	cstring	None

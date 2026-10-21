@@ -96,6 +96,7 @@ try {
         'data/runtime/pinyin-data/pinyin.txt', 'data/runtime/pinyin-data/SOURCE',
         'data/runtime/phrase-pinyin-data/large_pinyin.txt',
         'data/runtime/phrase-pinyin-data/LICENSE', 'data/runtime/phrase-pinyin-data/SOURCE',
+        'data/runtime/search-concepts.tsv',
         'data/runtime/dfhack-help-translations.tsv', 'data/runtime/dfhack-help-overrides.tsv',
         'data/runtime/dfhack-help-command-overrides.tsv', 'data/runtime/dfhack-output-core.tsv',
         'data/runtime/dfhack-output-translations.tsv', 'data/runtime/dfhack-output-stonesense.tsv',

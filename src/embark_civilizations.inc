@@ -35,7 +35,8 @@ static std::vector<NativeEmbarkSelectionRecord> native_embark_selection_records(
             return row.find(text) != std::string::npos;
         });
     };
-    const bool civilizations = has("Choose origin civilization") &&
+    const bool civilizations = !native_embark_civilization_layer_hook_active() &&
+        has("Choose origin civilization") &&
         (has("Find embark location") || has("Reclaim/unretire"));
     if (!civilizations && std::none_of(kEmbarkReclaimConfirmLabels.begin(),
             kEmbarkReclaimConfirmLabels.end(), has)) return {};
@@ -90,6 +91,19 @@ static std::vector<NativeEmbarkSelectionRecord> native_embark_selection_records(
 // Own those fields before word matching, inside their current native frame.
 void Overlay::append_embark_civilization_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
+    // The independent civilization producer never enters page discovery.
+    // Reclaim retains its existing owner; its complete confirmation caption
+    // must already be in the caller's rows before reading any additional cells.
+    if (native_embark_civilization_layer_hook_active()) {
+        if (g_native_embark_civilization_layer.ready) return;
+        const bool reclaim = std::any_of(rows.begin(), rows.end(), [](const auto &row) {
+            return std::any_of(kEmbarkReclaimConfirmLabels.begin(),
+                kEmbarkReclaimConfirmLabels.end(), [&](auto label) {
+                    return row.find(label) != std::string::npos;
+                });
+        });
+        if (!reclaim) return;
+    }
     // Recover the same logical scene during both raw-layer suppression and
     // final composition. Physical masks still validate each original byte.
     std::vector<std::string> context(gps_->dimy, std::string(gps_->dimx, ' '));

@@ -548,13 +548,14 @@ def parse_creature_names(
     the higher-priority reviewed dictionaries.  Sex markers are removed here
     because creature pickers render their own independent female/male glyph.
 
-    CHILD tags describe animal juveniles, while BABY tags describe sapient
-    babies.  Preserve each CHILD form's relationship to its adult name so the
-    finalized dictionary can consistently render it as ``adult name + 幼崽``.
+    CHILD tags are shared by animals and sapient creatures. Only animal
+    CHILD forms should be standardized as ``adult name + 幼崽``; sapient
+    age names retain their reviewed baby/child translations.
     """
     targets_by_source: dict[str, set[str]] = collections.defaultdict(set)
     animal_juvenile_adults: dict[str, set[str]] = collections.defaultdict(set)
     name_state_by_context: dict[str, dict[str, str]] = collections.defaultdict(dict)
+    sapient_contexts = installed_sapient_creature_contexts(CREATURE_RAW_ROOTS)
     for block in re.split(r"\n\s*\n", path.read_text(encoding="utf-8-sig")):
         context = parse_po_field(block, "msgctxt")
         if not context.startswith("CREATURE:"):
@@ -568,7 +569,8 @@ def parse_creature_names(
             name_state["base"] = normalize_source(source_fields[0]).strip()
         elif source_kind == "CASTE_NAME":
             name_state["caste"] = normalize_source(source_fields[0]).strip()
-        elif source_kind in ("GENERAL_CHILD_NAME", "CHILDNAME"):
+        elif (source_kind in ("GENERAL_CHILD_NAME", "CHILDNAME") and
+              context not in sapient_contexts):
             adult_key = "base" if source_kind == "GENERAL_CHILD_NAME" else "caste"
             adult_source = name_state.get(adult_key) or name_state.get("base", "")
             if adult_source:
@@ -1399,6 +1401,26 @@ def parse_extinct_creatures(path: Path) -> list[Entry]:
                     caste_names.extend(match.groups())
         flush_creature()
     return entries
+
+
+def installed_sapient_creature_contexts(raw_roots: tuple[Path, ...]) -> set[str]:
+    """Identify sapient RAW owners, independently of their juvenile name tags."""
+    contexts: set[str] = set()
+    for raw_root in raw_roots:
+        if not raw_root.is_dir():
+            continue
+        for path in sorted(raw_root.glob("creature_*.txt")):
+            # Restrict parsing to RAW token lines, excluding explanatory prose.
+            tokens = "\n".join(
+                line for line in path.read_text(encoding="cp437", errors="replace").splitlines()
+                if line.lstrip().startswith("[")
+            )
+            creatures = re.split(r"\[CREATURE:([^\]]+)\]", tokens)
+            for creature_id, body in zip(creatures[1::2], creatures[2::2]):
+                # Learning creatures include kobolds even without CAN_SPEAK.
+                if "[INTELLIGENT]" in body or "[CAN_LEARN]" in body:
+                    contexts.add(f"CREATURE:{creature_id}")
+    return contexts
 
 
 def installed_creature_name_forms(raw_roots: tuple[Path, ...]) -> dict[str, set[str]]:

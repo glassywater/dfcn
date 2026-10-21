@@ -133,11 +133,24 @@ static bool resolve_native_search_binding(
 // This is the byte substring contract used by the native filters (including
 // empty queries and npos). A single implementation avoids exposing compiler
 // specific argument orders to the shared translated-search callbacks.
+static size_t native_search_item_result(size_t result, const char *text, size_t length,
+        const char *query, size_t query_length) {
+    if (result != SIZE_MAX && text && query && query_length && g_overlay.translation_enabled()) {
+        try {
+            if (const auto typed = translated_search_item_decision(
+                    std::string_view(text, length), std::string_view(query, query_length));
+                    typed && !*typed) return SIZE_MAX;
+        } catch (...) {}
+    }
+    return result;
+}
+
 static size_t native_search_byte_find(const char *text, size_t length, size_t start,
         const char *query, size_t query_length) {
     if ((!text && length) || (!query && query_length)) return SIZE_MAX;
-    return std::string_view(text ? text : "", length).find(
+    const size_t result = std::string_view(text ? text : "", length).find(
         std::string_view(query ? query : "", query_length), start);
+    return native_search_item_result(result, text, length, query, query_length);
 }
 
 // POD native strings require the game's destructor; an owning NativeString
@@ -234,14 +247,18 @@ static void prepare_native_inlined_search_term(NativeString *term,
         if (!g_overlay.translation_enabled() ||
             !native_string_view(query_string, &query, 4096) ||
             query.empty() || source.empty() ||
-            !native_string_view(term, &text, 65536) ||
-            text.find(query) != std::string_view::npos || !match(source, query)) return;
+            !native_string_view(term, &text, 65536)) return;
+        const auto typed = translated_search_item_decision(source, query);
+        const bool native_match = text.find(query) != std::string_view::npos;
+        if (!typed && (native_match || !match(source, query))) return;
         // Native assignment preserves the game's allocator/SSO ownership.
         // Only this filter's disposable key is changed, never its source.
         const auto assign = reinterpret_cast<void (*)(NativeString *, const char *)>(
             native_history_page_address(NativeHistoryPageSymbol::AssignLiteral));
         if (assign) {
-            const std::string committed(query);
+            // An empty disposable key rejects a nonempty query. This also
+            // removes the native substring hit weapon -> weapon rack.
+            const std::string committed(typed && !*typed ? std::string_view{} : query);
             assign(term, committed.c_str());
         }
     } catch (...) {}

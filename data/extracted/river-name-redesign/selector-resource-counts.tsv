@@ -1,0 +1,7 @@
+pool	slot	raw_entries	river_word_pos_slot_entries	entries_outside_river_leaf_table
+0	front_compound	3217	90	3127
+1	rear_compound	5301	137	5164
+2	the_noun	2442	94	2348
+3	adjective	849	18	831
+4	hyphen_modifier	1228	65	1163
+5	of_complement	2658	85	2573

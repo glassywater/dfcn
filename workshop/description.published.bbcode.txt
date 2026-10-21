@@ -3,12 +3,12 @@
 DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作品，结合社区译文与本地修订，翻译游戏界面、人物信息、物品描述和传说故事，支持简体中文与台湾正体中文。
 
 [b]适配 Dwarf Fortress 53.16，Windows x64，支持 Steam 版与官网免费版。[/b]
-当前版本：[b]53.16-20261020[/b]（2026-10-20）。
+当前版本：[b]53.16-20261020.2[/b]（2026-10-20）。
 游戏内按 [b]Shift+F1[/b] 打开汉化设置菜单，可切换中英文、繁简体、四族语言原文／音译，开关已安装的 DFHack，或重新载入汉化。
 更新内容见改动说明与订阅目录中的 CHANGELOG.txt。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020]Windows 与独立汉化数据下载[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020.2]Windows 汉化下载[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
 [h1]Windows 工坊安装[/h1]
@@ -51,6 +51,12 @@ GitHub Windows 运行包 [b]DFCN-Windows-x64-minimal.zip[/b] 整包解压到游�
 [/list]
 Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译各自名称和文明配置简介，生物与物品译文由 Dwarvemon 汉化数据提供。其余 18 个扩展的创意工坊项目维持私密。
 没有完整译文的模组名称及内容保留原文，用户自定义小队名称始终原样显示。扩展不修改原始模组 RAW 或世界规则。
+
+[h1]搜索与可选语义模型[/h1]
+
+已支持汉化搜索的界面可使用中文、英文、拼音全拼与首字母，并提供输入容错和物品类别匹配。
+需要近义匹配时，可订阅 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988]DFCN 独立离线语义搜索模型[/url]。
+核心在启动时自动识别模型，无需联网或在世界模组列表中启用。未安装模型时，普通文字、拼音与容错搜索仍可使用。
 
 [h1]开关与刷新[/h1]
 

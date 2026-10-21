@@ -1,0 +1,23 @@
+0xbba90: test   dx,dx
+0xbba93: js     0x1400bbada
+0xbba95: mov    r9,QWORD PTR [rcx+0x20]
+0xbba99: mov    rax,QWORD PTR [rcx+0x28]
+0xbba9d: sub    rax,r9
+0xbbaa0: movsx  r10,dx
+0xbbaa4: sar    rax,0x3
+0xbbaa8: cmp    r10,rax
+0xbbaab: jae    0x1400bbada
+0xbbaad: test   r8w,r8w
+0xbbab1: js     0x1400bbada
+0xbbab3: mov    rcx,QWORD PTR [r9+r10*8]
+0xbbab7: movsx  rdx,r8w
+0xbbabb: mov    rax,QWORD PTR [rcx+0x178]
+0xbbac2: mov    rcx,QWORD PTR [rcx+0x180]
+0xbbac9: sub    rcx,rax
+0xbbacc: sar    rcx,0x3
+0xbbad0: cmp    rdx,rcx
+0xbbad3: jae    0x1400bbada
+0xbbad5: mov    rax,QWORD PTR [rax+rdx*8]
+0xbbad9: ret
+0xbbada: xor    eax,eax
+0xbbadc: ret
