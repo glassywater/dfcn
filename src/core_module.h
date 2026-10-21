@@ -64,15 +64,43 @@ struct Source {
     }
 };
 
-struct Image {
+// Only a core whose shutdown completed may be reactivated. Keep an owning
+// reference to that exact image if the runtime still retains it after our
+// FreeLibrary; never adopt an unrelated module found by pathname alone.
+struct DetachedCore {
     HMODULE handle = nullptr;
 
-    bool close(Report report) {
+    ~DetachedCore() { reset(); }
+    void reset(HMODULE next = nullptr) {
+        if (handle) FreeLibrary(handle);
+        handle = next;
+    }
+};
+inline DetachedCore detached_core;
+
+struct Image {
+    HMODULE handle = nullptr;
+    bool reactivated = false;
+
+    bool close(Report report, bool allow_reactivation = false) {
+        const HMODULE released = handle;
+        // A restored candidate can fail before initialization. Its prior
+        // shutdown still authorizes a later retry of this same detached image.
+        allow_reactivation = allow_reactivation || reactivated;
         if (handle && !FreeLibrary(handle)) {
             report("ERROR", "Cannot release core module: system error " + std::to_string(GetLastError()));
             return false;
         }
         handle = nullptr;
+        reactivated = false;
+        if (released && allow_reactivation) {
+            HMODULE remaining = nullptr;
+            if (GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS,
+                    reinterpret_cast<LPCWSTR>(released), &remaining)) {
+                if (remaining == released) detached_core.reset(remaining);
+                else FreeLibrary(remaining);
+            }
+        }
         return true;
     }
 
@@ -117,9 +145,15 @@ inline bool load(Source &source, Image &image, Report report) {
     HMODULE existing = nullptr;
     if (GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
                           source.path.c_str(), &existing)) {
-        report("ERROR", "Core is still mapped after releasing the loader reference; thread-local cleanup or another owner may retain it. Restart the game to release it");
-        return false;
+        if (existing != detached_core.handle) {
+            report("ERROR", "Cannot adopt a mapped core whose hooks were not detached by this loader");
+            return false;
+        }
+        image.handle = std::exchange(detached_core.handle, nullptr);
+        image.reactivated = true;
+        return true;
     }
+    detached_core.reset();
     image.handle = LoadLibraryExW(source.path.c_str(), nullptr,
         LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR | LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
     if (!image.handle) {
@@ -156,8 +190,9 @@ struct Source {
 struct Image {
     Descriptor image;
     void *handle = nullptr;
+    bool reactivated = false;
 
-    bool close(Report report) {
+    bool close(Report report, bool = false) {
         if (handle && dlclose(handle) != 0) {
             const char *error = dlerror();
             report("ERROR", std::string("Cannot release core module: ") +
@@ -304,7 +339,10 @@ public:
     }
 
     void *symbol(const char *name) const { return image.symbol(name); }
-    bool close() { return image.close(report); }
+    // Explicit close follows a successful core shutdown. Destruction of a
+    // fresh, uninitialized candidate does not authorize adopting that image.
+    bool close() { return image.close(report, true); }
+    bool reactivated() const { return image.reactivated; }
     void keep_resident() { retained = true; }
 };
 
