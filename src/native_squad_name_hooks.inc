@@ -3,12 +3,16 @@
 // branch-owned fields of traveller returns; native strings remain unchanged.
 #ifdef _WIN32
 using NativeSquadAliasCopyFn = NativeString *(*)(NativeString *, const NativeString *);
+using NativeSquadAliasAssignFn = NativeString *(*)(NativeString *, const char *, size_t);
 using NativeSquadAliasDestroyFn = void (*)(NativeString *);
+using NativeSquadNameAbbreviateFn = void (*)(NativeString *);
 using NativeSquadReturnAppendFn = NativeString *(*)(NativeString *, const NativeString *);
 struct NativeSquadNameHooks {
     NativeCallHook calls;
     NativeSquadAliasCopyFn copy = nullptr;
+    NativeSquadAliasAssignFn assign = nullptr;
     NativeSquadAliasDestroyFn destroy = nullptr, destroy_direct = nullptr;
+    NativeSquadNameAbbreviateFn abbreviate = nullptr;
     NativeSquadReturnAppendFn return_append = nullptr;
     NativeUnitIdentityEnglishNameFn return_name = nullptr;
     uintptr_t base = 0;
@@ -49,6 +53,64 @@ static NativeString *capture_native_squad_alias_copy(NativeString *output,
         // Capturing a name must never unwind into the native render function.
     }
     return result;
+}
+
+static NativeString *capture_native_squad_alias_assign(NativeString *output,
+        const char *data, size_t length) {
+    NativeInputCallbackScope callback;
+    std::string alias;
+    try {
+        forget_native_squad_alias(reinterpret_cast<uintptr_t>(output));
+        NativeBorrowedVector<uintptr_t> squads;
+        if (g_overlay.translation_enabled() && data && length > 0 && length <= 65536 &&
+                native_history_read_vector(native_history_global(0x24e37c0), squads) &&
+                squads.size() <= 65536) {
+            for (size_t i = 0; i < squads.size(); ++i) {
+                const uintptr_t squad = native_history_vector_at(squads, i);
+                if (!squad || squad > UINTPTR_MAX - native_history_layout::squad_alias_offset)
+                    continue;
+                const auto *field = reinterpret_cast<const NativeString *>(
+                    squad + native_history_layout::squad_alias_offset);
+                std::string_view actual;
+                // This caller has already unpacked the native string. Its
+                // data pointer and length still prove the particular alias
+                // field; matching another squad's spelling is insufficient.
+                if (native_string_view(field, &actual, 65536) &&
+                        actual.data() == data && actual.size() == length) {
+                    alias.assign(actual);
+                    break;
+                }
+            }
+        }
+    } catch (...) {}
+    NativeString *result = nullptr;
+    callback.call_native([&] { result = g_native_squad_name_hooks.assign(output, data, length); });
+    try {
+        std::string_view copied;
+        if (!alias.empty() && native_string_view(output, &copied, 65536) && copied == alias)
+            remember_native_squad_alias(reinterpret_cast<uintptr_t>(output), alias);
+    } catch (...) {}
+    return result;
+}
+
+static void capture_native_squad_generated_abbreviate(NativeString *source) {
+    NativeInputCallbackScope callback;
+    std::shared_ptr<const NativeHistoryName> name;
+    try {
+        std::string_view before;
+        if (g_overlay.translation_enabled() && native_string_view(source, &before, 65536))
+            name = native_squad_generated_source_name(before, reinterpret_cast<uintptr_t>(source));
+        forget_native_squad_alias(reinterpret_cast<uintptr_t>(source));
+    } catch (...) {}
+    callback.call_native([&] { g_native_squad_name_hooks.abbreviate(source); });
+    try {
+        std::string_view after;
+        // Nobles removes the article before its ordinary resize/ellipsis
+        // path. Carry the captured language_name through that actual change
+        // so the draw can resolve it from its current, complete native text.
+        if (name && native_string_view(source, &after, 65536))
+            remember_native_squad_generated(reinterpret_cast<uintptr_t>(source), after, *name);
+    } catch (...) {}
 }
 
 static void capture_native_squad_return_generated(const void *name,
@@ -247,8 +309,10 @@ static void uninstall_native_squad_name_hooks() {
     auto &hooks = g_native_squad_name_hooks;
     if (!hooks.calls.uninstall("Native authored squad name restore")) return;
     hooks.copy = nullptr;
+    hooks.assign = nullptr;
     hooks.destroy = nullptr;
     hooks.destroy_direct = nullptr;
+    hooks.abbreviate = nullptr;
     hooks.return_append = nullptr;
     hooks.return_name = nullptr;
     hooks.base = 0;
@@ -266,12 +330,14 @@ static bool install_native_squad_name_hooks() {
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
     hooks.copy = reinterpret_cast<NativeSquadAliasCopyFn>(native_pe_address(base, 0x6f5a0));
+    hooks.assign = reinterpret_cast<NativeSquadAliasAssignFn>(native_pe_address(base, 0x6f8d0));
     hooks.destroy = reinterpret_cast<NativeSquadAliasDestroyFn>(native_pe_address(base, 0x67e30));
     hooks.destroy_direct = reinterpret_cast<NativeSquadAliasDestroyFn>(native_pe_address(base, 0x6f850));
+    hooks.abbreviate = reinterpret_cast<NativeSquadNameAbbreviateFn>(native_pe_address(base, 0xede350));
     hooks.return_append = reinterpret_cast<NativeSquadReturnAppendFn>(native_pe_address(base, 0xb9d10));
     hooks.return_name = reinterpret_cast<NativeUnitIdentityEnglishNameFn>(native_pe_address(base, 0xa946e0));
     hooks.base = base;
-    if (!hooks.copy || !hooks.destroy || !hooks.destroy_direct ||
+    if (!hooks.copy || !hooks.assign || !hooks.destroy || !hooks.destroy_direct || !hooks.abbreviate ||
             !hooks.return_append || !hooks.return_name) return false;
     // PE 53.16: alias sources are squad.alias (+0x80), selected only when
     // nonempty. Confirmation's bound alternatives format squad.name (+0x8).
@@ -326,6 +392,12 @@ static bool install_native_squad_name_hooks() {
             reinterpret_cast<const void *>(&capture_native_squad_alias_copy)},
         {0x3e9e17, 0x6f5a0, // Zone sidebar's single assigned squad, rbp+1c30.
             reinterpret_cast<const void *>(&capture_native_squad_alias_copy)},
+        {0x427065, 0x6f8d0, // Nobles' squad subtitle, actual alias bytes, rbp+140.
+            reinterpret_cast<const void *>(&capture_native_squad_alias_assign)},
+        {0x42707d, 0xa946e0, // Nobles' subtitle, actual squad.name branch.
+            reinterpret_cast<const void *>(&capture_native_squad_confirmation_generated)},
+        {0x4270a6, 0xede350, // Generated subtitle's article removal before clipping.
+            reinterpret_cast<const void *>(&capture_native_squad_generated_abbreviate)},
         {0x44198f, 0x6f5a0, // Squad selectors, rbp+d0.
             reinterpret_cast<const void *>(&capture_native_squad_alias_copy)},
         {0x4419a7, 0xa946e0, // Disband confirmation, actual squad.name branch.
@@ -355,6 +427,8 @@ static bool install_native_squad_name_hooks() {
             reinterpret_cast<const void *>(&capture_native_squad_alias_destroy<>)},
         {0x3e9eb7, 0x67e30,
             reinterpret_cast<const void *>(&capture_native_squad_alias_destroy<>)},
+        {0x427126, 0x6f850,
+            reinterpret_cast<const void *>(&capture_native_squad_alias_destroy<true>)},
         {0x441a87, 0x67e30,
             reinterpret_cast<const void *>(&capture_native_squad_alias_destroy<>)},
         {0x441c45, 0x67e30,

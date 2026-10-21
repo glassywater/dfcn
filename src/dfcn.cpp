@@ -2990,7 +2990,20 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.squad_alias_target = squad_alias_target ? std::move(squad_alias_target)
             : native_squad_alias_source_target(
                 complete_source.empty() ? source : complete_source, address);
-        if (row.squad_alias_target) row.caption_source = true;
+        row.squad_generated_name = native_squad_generated_source_name(
+            complete_source.empty() ? source : complete_source, address);
+        if (row.squad_alias_target || row.squad_generated_name) {
+            row.caption_source = true;
+#ifdef _WIN32
+            // Nobles submits its squad subtitle after shortening it to twenty
+            // cells. Keep that allocation even though addst itself has width 0.
+            if (native_caller == native_reference_address(native_history_profile_base(), 0x42711e) &&
+                    row.draw_clip) {
+                auto &clip = *row.draw_clip;
+                clip.w = std::max(0, std::min(clip.x + clip.w, x + 20) - clip.x);
+            }
+#endif
+        }
         if (!complete_source.empty() && complete_source != source &&
             complete_source.size() <= 4096 &&
             complete_source.find('\0') == std::string_view::npos &&
