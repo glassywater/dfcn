@@ -86,6 +86,7 @@ static void native_help_draw(void *help) {
 }
 
 static void native_help_reset_frame(void *renderer) {
+    native_embark_civilization_begin_frame();
     native_topbar_begin_frame();
     native_map_begin_frame();
     native_tooltip_begin_frame();
@@ -129,6 +130,7 @@ static void native_help_begin_frame(void *renderer) {
     // Only restore unfinished output bindings before native arrays swap.
     // Keep the last completed layer available until the producer takes over.
     native_tooltip_restore_output();
+    native_embark_civilization_restore_output();
     native_topbar_restore_output();
     reset_native_announcement_notification_capture();
 #ifndef _WIN32

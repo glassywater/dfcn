@@ -1,7 +1,7 @@
-// This producer already owns the top bar. Keep only the string submitted by
-// this call and its actual cursor advance; never discover another UI owner.
+// The top bar or civilization producer already owns its bounded panel. Keep
+// only this call's submitted string and cursor advance; never discover a page.
 template<typename Draw>
-static void capture_native_topbar_caption(graphicst *graphics,
+static void capture_native_bounded_panel_caption(graphicst *graphics,
         const NativeString *source, int width, bool top_layer,
         uintptr_t native_caller, Draw &&draw) {
     NativeInputCallbackScope callback;
@@ -12,7 +12,9 @@ static void capture_native_topbar_caption(graphicst *graphics,
     SDL_Rect panel{};
     uint64_t epoch = 0;
     try {
-        auto &pending = native_topbar_clipped_pending();
+        const bool civilization = graphics && graphics == g_native_embark_civilization_write_graphics;
+        auto &pending = civilization ? native_embark_civilization_clipped_pending()
+                                    : native_topbar_clipped_pending();
         epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
         if (pending.epoch != epoch) {
             pending.fields.clear();
@@ -27,8 +29,8 @@ static void capture_native_topbar_caption(graphicst *graphics,
             }
         }
         std::string_view submitted;
-        panel = g_native_topbar_panel;
-        if (!pending.busy && graphics && graphics == g_native_topbar_write_graphics &&
+        panel = civilization ? g_native_embark_civilization_panel : g_native_topbar_panel;
+        if (!pending.busy && graphics && (civilization || graphics == g_native_topbar_write_graphics) &&
                 width >= 0 && graphics->dimx > 0 && graphics->dimx <= 1000 &&
                 graphics->dimy > 0 && graphics->dimy <= 1000 &&
                 panel.x >= 0 && panel.y >= 0 && panel.w > 0 && panel.h > 0 &&

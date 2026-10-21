@@ -108,6 +108,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_pause_layer_render.inc"
 #include "native_worldgen_layer_render.inc"
 #include "native_topbar_layer_render.inc"
+#include "native_embark_civilization_layer_render.inc"
 #include "native_map_layer_render.inc"
 #include "native_dfhack_render_layers.inc"
 #include "native_dfhack_capture_hooks.inc"
@@ -182,6 +183,7 @@ static bool install_sdl_hooks() {
         {"Native world generation layer", install_native_worldgen_layer_hook},
         {"Native map layer", install_native_map_layer_hook},
         {"Native fortress top bar layer", install_native_topbar_layer_hook},
+        {"Native embark civilization layer", install_native_embark_civilization_layer_hook},
     };
     for (const auto &[label, install] : stages) {
         if (!install()) {
@@ -210,6 +212,7 @@ static bool install_sdl_hooks() {
 
 static void uninstall_sdl_hooks() {
     [[maybe_unused]] NativePatchMappingScope mapping_scope;
+    uninstall_native_embark_civilization_layer_hook();
     uninstall_native_topbar_layer_hook();
     uninstall_native_map_layer_hook();
     uninstall_native_worldgen_layer_hook();
@@ -287,6 +290,7 @@ static bool native_hooks_detached() {
         !native_resolution_layer_hook_active() &&
         !native_map_layer_hook_active() &&
         !native_topbar_layer_hook_active() &&
+        !native_embark_civilization_layer_hook_active() &&
         !native_info_layer_hook_active() &&
         !native_character_layer_hook_active() &&
         !native_stocks_layer_hook_active() &&

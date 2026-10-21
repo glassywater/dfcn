@@ -887,8 +887,20 @@ std::optional<std::string> Overlay::native_topbar_cache_context() const {
     return key.finish();
 }
 
+std::optional<std::string> Overlay::native_embark_civilization_cache_context() const {
+    NativeUiCacheContextWriter key;
+    key.tooltip();
+    key.graphics(g_native_embark_civilization_layer.foreground.graphics());
+    key.bundle(g_native_embark_civilization_text);
+    key.rect(g_native_embark_civilization_panel);
+    key.range(g_native_embark_civilization_boxes, [&](const auto &box) { key.rect(box); });
+    return key.finish();
+}
+
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    if (&layer == &g_native_embark_civilization_layer)
+        return g_overlay.native_embark_civilization_cache_context();
     if (&layer == &g_native_topbar_layer) return g_overlay.native_topbar_cache_context();
     if (&layer == &g_native_notification_layer) {
         // Only the submitted notification and its complete parents can change
