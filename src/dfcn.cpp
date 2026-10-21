@@ -2510,6 +2510,8 @@ static thread_local const graphicst *g_native_notification_write_graphics = null
 static thread_local const graphicst *g_native_pause_write_graphics = nullptr;
 static thread_local const graphicst *g_native_topbar_write_graphics = nullptr;
 static bool native_topbar_cell_outside(const graphicst *, int, int) noexcept;
+static thread_local const graphicst *g_native_petition_write_graphics = nullptr;
+static bool native_petition_cell_outside(const graphicst *, int, int) noexcept;
 static thread_local const graphicst *g_native_petitions_write_graphics = nullptr;
 static bool native_petitions_cell_outside(const graphicst *, int, int) noexcept;
 static bool native_petitions_background_cell_hidden(const graphicst *, int, int) noexcept;
@@ -2542,6 +2544,7 @@ static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics ||
         gps == g_native_resolution_write_graphics ||
         gps == g_native_topbar_write_graphics ||
+        gps == g_native_petition_write_graphics ||
         gps == g_native_petitions_write_graphics ||
         gps == g_native_designation_write_graphics ||
         gps == g_native_embark_civilization_write_graphics ||
@@ -3673,6 +3676,7 @@ public:
     void render_native_notification_layer(SDL_Renderer *renderer);
     void render_native_pause_layer(SDL_Renderer *renderer);
     void render_native_topbar_layer(SDL_Renderer *renderer);
+    void render_native_petition_layer(SDL_Renderer *renderer);
     void render_native_petitions_layer(SDL_Renderer *renderer);
     void render_native_embark_civilization_layer(SDL_Renderer *renderer);
     std::optional<std::string> native_embark_civilization_cache_context() const;
@@ -5065,6 +5069,8 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_accepted_petition_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    std::vector<Match> find_native_petition_matches(int only_y = -1,
+        const unsigned char *screen_override = nullptr) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
     void append_fortress_build_material_fields(std::vector<std::string> &rows,
@@ -8097,6 +8103,7 @@ const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     *top = false;
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return nullptr;
     if (native_topbar_cell_outside(gps_, x, y) ||
+            native_petition_cell_outside(gps_, x, y) ||
             native_petitions_cell_outside(gps_, x, y) ||
             native_embark_civilization_cell_outside(gps_, x, y)) return nullptr;
     if (native_map_mixed_view(gps_)) return nullptr;
@@ -8124,6 +8131,7 @@ static bool graphically_occluded(uint8_t state, uint64_t cell_epoch,
 unsigned char Overlay::visible_char_at(int x, int y) const {
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return 0;
     if (native_topbar_cell_outside(gps_, x, y) ||
+            native_petition_cell_outside(gps_, x, y) ||
             native_petitions_cell_outside(gps_, x, y) ||
             native_embark_civilization_cell_outside(gps_, x, y)) return 0;
     if (native_map_mixed_view(gps_)) return 0;
@@ -17457,6 +17465,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_stocks_layers.inc"
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
+#include "native_petition_layers.inc"
 #include "native_announcement_log_layers.inc"
 #include "native_reports_layers.inc"
 #include "native_squads_layers.inc"
@@ -18020,6 +18029,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
 #include "native_topbar_layer_translation.inc"
+#include "native_petition_layer_translation.inc"
 #include "native_petitions_layer_translation.inc"
 #include "native_embark_civilization_layer_translation.inc"
 #include "worldgen_layer_matching.inc"
@@ -18079,6 +18089,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         return find_native_embark_civilization_matches(only_y, screen_override);
     if (native_topbar_foreground_view(gps_))
         return find_native_topbar_matches(only_y, screen_override);
+    if (native_petition_foreground_view(gps_))
+        return find_native_petition_matches(only_y, screen_override);
     if (native_petitions_foreground_view(gps_))
         return find_native_petitions_matches(only_y, screen_override);
     NativeCapturedTextReadScope captured_text_reads;
@@ -18649,8 +18661,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
 #include "pause_menu_fields.inc"
     append_fortress_elevation_rows(screen_rows, result, only_y,
         screen_override != nullptr);
+#ifndef _WIN32
     append_accepted_petition_matches(screen_rows, result, only_y,
         screen_override != nullptr);
+#endif
     // Native chooser callers own these whole fields even when the map has
     // replaced the live outer frame by the time SDL presents its captions.
     const bool classic_location_fields = native_ui_classic().value_or(false);
@@ -44048,6 +44062,8 @@ static void native_tooltip_present_layer(SDL_Renderer *renderer,
     void (*draw_tooltips)(SDL_Renderer *));
 static void native_notification_present_layer(SDL_Renderer *renderer,
     void (*draw_notifications)(SDL_Renderer *));
+static void native_petition_present_layer(SDL_Renderer *renderer,
+    void (*draw_petition)(SDL_Renderer *));
 static void native_announcement_log_present_layer(SDL_Renderer *renderer,
     void (*draw_log)(SDL_Renderer *));
 static void native_pause_present_layer(SDL_Renderer *renderer,
@@ -44148,6 +44164,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             });
             native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
                 g_overlay.render_native_notification_layer(notification_renderer);
+            });
+            native_petition_present_layer(renderer, [](SDL_Renderer *petition_renderer) {
+                g_overlay.render_native_petition_layer(petition_renderer);
             });
             native_petitions_present_layer(renderer, [](SDL_Renderer *petitions_renderer) {
                 g_overlay.render_native_petitions_layer(petitions_renderer);

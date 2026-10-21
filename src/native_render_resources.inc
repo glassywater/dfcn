@@ -30,6 +30,8 @@ static void native_reset_render_resources() {
     native_embark_civilization_begin_frame();
     reset_layer(g_native_embark_civilization_target, g_native_embark_civilization_layer);
     native_topbar_begin_frame();
+    native_petition_begin_frame();
+    reset_layer(g_native_petition_target, g_native_petition_layer);
     native_petitions_begin_frame();
     native_designation_begin_frame();
     reset_layer(g_native_designation_target, g_native_designation_layer);

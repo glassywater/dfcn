@@ -1835,6 +1835,9 @@ static NativeClippedPending &native_designation_clipped_pending() {
 static NativeClippedPending &native_topbar_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct TopbarClippedCaptionTag>();
 }
+static NativeClippedPending &native_petition_clipped_pending() {
+    return reloadable_thread_state<NativeClippedPending, struct PetitionDetailClippedCaptionTag>();
+}
 static NativeClippedPending &native_petitions_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct PetitionsClippedCaptionTag>();
 }
@@ -1848,6 +1851,9 @@ static NativeClippedPending &native_character_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct CharacterClippedCaptionTag>();
 }
 static NativeClippedPending &native_clipped_pending() {
+    if (g_native_petition_write_graphics &&
+            native_graphics() == g_native_petition_write_graphics)
+        return native_petition_clipped_pending();
     // Native temporary strings from the sidebar must never consume or
     // replace a pending resize belonging to the background page.
     if (g_native_petitions_write_graphics &&
@@ -1944,6 +1950,7 @@ static void remember_native_clipped_resize(NativeString *source, size_t width, c
     if (g_native_tooltip_write || (native_private_ui_write_active(native_graphics()) &&
             native_graphics() != g_native_worldgen_write_graphics &&
             native_graphics() != g_native_topbar_write_graphics &&
+            native_graphics() != g_native_petition_write_graphics &&
             native_graphics() != g_native_petitions_write_graphics &&
             native_graphics() != g_native_designation_write_graphics &&
             native_graphics() != g_native_embark_civilization_write_graphics) ||
@@ -2769,7 +2776,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             native_caller, std::forward<Draw>(draw));
         return;
     }
-    if (graphics && (graphics == g_native_petitions_write_graphics ||
+    if (graphics && (graphics == g_native_petition_write_graphics ||
+            graphics == g_native_petitions_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3524,7 +3532,8 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
         });
         return;
     }
-    if (graphics && (graphics == g_native_petitions_write_graphics ||
+    if (graphics && (graphics == g_native_petition_write_graphics ||
+            graphics == g_native_petitions_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3640,7 +3649,8 @@ static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeSt
         });
         return;
     }
-    if (graphics && (graphics == g_native_petitions_write_graphics ||
+    if (graphics && (graphics == g_native_petition_write_graphics ||
+            graphics == g_native_petitions_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3720,7 +3730,8 @@ static void capture_native_top_caption_draw(graphicst *graphics, const NativeStr
         });
         return;
     }
-    if (graphics && (graphics == g_native_petitions_write_graphics ||
+    if (graphics && (graphics == g_native_petition_write_graphics ||
+            graphics == g_native_petitions_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3784,7 +3795,8 @@ static void capture_native_top_simple_caption_draw(graphicst *graphics, const Na
         });
         return;
     }
-    if (graphics && (graphics == g_native_petitions_write_graphics ||
+    if (graphics && (graphics == g_native_petition_write_graphics ||
+            graphics == g_native_petitions_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3847,7 +3859,8 @@ static void capture_native_top_flag_caption_draw(graphicst *graphics, const Nati
         });
         return;
     }
-    if (graphics && (graphics == g_native_petitions_write_graphics ||
+    if (graphics && (graphics == g_native_petition_write_graphics ||
+            graphics == g_native_petitions_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3921,7 +3934,9 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
             original(text, width, fill);
         return;
     }
-    if ((g_native_petitions_write_graphics &&
+    if ((g_native_petition_write_graphics &&
+            native_graphics() == g_native_petition_write_graphics) ||
+            (g_native_petitions_write_graphics &&
             native_graphics() == g_native_petitions_write_graphics) ||
             (g_native_embark_civilization_write_graphics &&
             native_graphics() == g_native_embark_civilization_write_graphics) ||
@@ -3958,7 +3973,8 @@ static void capture_native_caption_draw(graphicst *graphics, const NativeString 
         });
         return;
     }
-    if (graphics && (graphics == g_native_petitions_write_graphics ||
+    if (graphics && (graphics == g_native_petition_write_graphics ||
+            graphics == g_native_petitions_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -4014,6 +4030,7 @@ static void reset_native_caption_capture() {
     native_clipped_pending() = {};
     native_designation_clipped_pending() = {};
     native_topbar_clipped_pending() = {};
+    native_petition_clipped_pending() = {};
     native_petitions_clipped_pending() = {};
     native_embark_civilization_clipped_pending() = {};
     native_squads_clipped_pending() = {};

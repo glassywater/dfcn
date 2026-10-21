@@ -15,9 +15,11 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
         const bool designation = graphics && graphics == g_native_designation_write_graphics;
         const bool civilization = graphics && graphics == g_native_embark_civilization_write_graphics;
         const bool petitions = graphics && graphics == g_native_petitions_write_graphics;
+        const bool petition = graphics && graphics == g_native_petition_write_graphics;
         auto &pending = designation ? native_designation_clipped_pending()
             : civilization ? native_embark_civilization_clipped_pending()
             : petitions ? native_petitions_clipped_pending()
+            : petition ? native_petition_clipped_pending()
                                     : native_topbar_clipped_pending();
         epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
         if (pending.epoch != epoch) {
@@ -35,8 +37,9 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
         std::string_view submitted;
         panel = designation ? SDL_Rect{0, 0, graphics->dimx, graphics->dimy}
             : petitions ? g_native_petitions_panel
+            : petition ? g_native_petition_panel
             : civilization ? g_native_embark_civilization_panel : g_native_topbar_panel;
-        if (!pending.busy && graphics && (designation || civilization || petitions ||
+        if (!pending.busy && graphics && (designation || civilization || petitions || petition ||
                 graphics == g_native_topbar_write_graphics) &&
                 width >= 0 && graphics->dimx > 0 && graphics->dimx <= 1000 &&
                 graphics->dimy > 0 && graphics->dimy <= 1000 &&
@@ -61,6 +64,14 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
             row.caption_source = true;
             row.top_layer = top_layer;
             row.native_caller = native_caller;
+            if (petition) {
+                row.location_picker_field = native_location_picker_field(native_caller);
+                // The producer reserves 55 columns per field; its own panel
+                // and clip define the remaining budget, never a page border scan.
+                const int right = static_cast<int>(std::min({int64_t(panel.x) + panel.w - 1,
+                    int64_t(x) + 55, int64_t(clip[1]) + 1}));
+                row.location_picker_box = SDL_Rect{x, y, std::max(0, right - x), 1};
+            }
             row.civilization_field = native_civilization_caption_field(native_caller);
             row.editable_text = NativeEditableTextScope::active ||
                 NativeEditableTextScope::owns(native_caller);
