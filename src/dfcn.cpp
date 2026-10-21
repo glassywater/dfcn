@@ -30,6 +30,7 @@
 #include <iomanip>
 #include <iterator>
 #include <list>
+#include <locale>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -44130,6 +44131,7 @@ extern "C" int dfcn_render_copy(SDL_Renderer *renderer, SDL_Texture *texture,
 static void native_settings_menu_prepare();
 static void native_settings_menu_release();
 #include "native_hooks.inc"
+#include "native_blueprint_export.inc"
 #include "native_settings_menu.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"

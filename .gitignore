@@ -1,5 +1,6 @@
 # Local game state and collected text
 /run/
+/blueprints/
 /data/runtime/untranslated.tsv
 /data/runtime/native-pe-images.json
 /data/runtime/native-elf-images.json
