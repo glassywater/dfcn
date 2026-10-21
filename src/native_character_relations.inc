@@ -2,7 +2,7 @@
 // Keep its English string and native draw intact; bind the Chinese title to
 // the actual subject, relative and screen cells used by that same row.
 static void remember_native_character_relation(int x, int y, std::string_view source,
-    std::string_view target, const graphicst *graphics);
+    std::string_view target, const graphicst *graphics, bool overview_count);
 static void clear_native_character_relations();
 
 // Every native family enum has a Chinese caption, including sex-neutral
@@ -180,6 +180,39 @@ static void capture_native_character_relation(graphicst *graphics, const NativeS
     if (original) callback.call_native([&] { original(graphics, source, static_cast<NativeJustification>(0), 0); });
 }
 
+template<bool Children>
+static void capture_native_character_overview_count(graphicst *graphics,
+        const NativeString *source, int32_t count) {
+    NativeInputCallbackScope callback;
+    const auto original = g_native_character_relations_hook.draw;
+    try {
+        const auto capture = [&] {
+            std::string_view text;
+            if (!graphics || !graphics->screen || !g_overlay.translation_enabled() ||
+                    graphics->dimx <= 0 || graphics->dimx > 1000 ||
+                    graphics->dimy <= 0 || graphics->dimy > 1000 ||
+                    graphics->screenx < 0 || graphics->screenx >= graphics->dimx ||
+                    graphics->screeny < 0 || graphics->screeny >= graphics->dimy ||
+                    count < 2 || !native_string_view(source, &text, 256) || text.empty()) return;
+            // These two native branches count historical-figure links of
+            // type 3 (children) and type 5 (lovers), without filtering their
+            // targets. The relay reads that exact int32 accumulator from the
+            // caller frame. The source supplies only the native draw span;
+            // neither the relationship nor its number is parsed from text.
+            const std::string target = std::to_string(count) +
+                (Children ? " 个孩子" : " 位爱人");
+            remember_native_character_relation(graphics->screenx, graphics->screeny,
+                text, target, graphics, true);
+        };
+        capture();
+    } catch (...) {
+        // Preserve the original draw even if the overlay cannot allocate.
+    }
+    if (original) callback.call_native([&] {
+        original(graphics, source, static_cast<NativeJustification>(0), 0);
+    });
+}
+
 static bool native_character_relations_hook_active() {
     return g_native_character_relations_hook.code.active();
 }
@@ -212,6 +245,25 @@ static bool install_native_character_relations_hook() {
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
     const NativeCaptionSignature signatures[] = {
+        // Overview accumulators and their number-formatter arguments share
+        // this caller frame in both PE editions. Type 3 increments children
+        // at +da0; type 5 increments lovers at +d9c.
+        {0x1602b8, {0x8b,0x84,0x24,0xa0,0x0d,0x00,0x00,0xff,0xc0,
+            0x89,0x84,0x24,0xa0,0x0d,0x00,0x00}},
+        {0x160330, {0x8b,0x84,0x24,0x9c,0x0d,0x00,0x00,0xff,0xc0,
+            0x89,0x84,0x24,0x9c,0x0d,0x00,0x00}},
+        {0x1603a6, {0x48,0x8d,0x94,0x24,0x60,0x41,0x00,0x00,
+            0x8b,0x8c,0x24,0x9c,0x0d,0x00,0x00}},
+        {0x160584, {0x48,0x8d,0x94,0x24,0x40,0x42,0x00,0x00,
+            0x8b,0x8c,0x24,0xa0,0x0d,0x00,0x00}},
+        // The two count rows draw their own stack strings with zero
+        // justification/width, leaving R8 available to carry the count.
+        {0x1603ce, {0x45,0x33,0xc9,0x45,0x33,0xc0,
+            0x48,0x8d,0x94,0x24,0x60,0x41,0x00,0x00,
+            0x48,0x8d,0x0d,0x0d,0xa0,0x4e,0x02,0xe8,0x78,0x95,0x97,0x00}},
+        {0x1605ac, {0x45,0x33,0xc9,0x45,0x33,0xc0,
+            0x48,0x8d,0x94,0x24,0x40,0x42,0x00,0x00,
+            0x48,0x8d,0x0d,0x2f,0x9e,0x4e,0x02,0xe8,0x9a,0x93,0x97,0x00}},
         // Identity draw copies this exact row from sheet.names before resize.
         {0x176c6a, {0x48,0x8b,0x84,0x24,0x60,0xb2,0x00,0x00,
             0x48,0x05,0x40,0x18,0x00,0x00}},
@@ -259,6 +311,15 @@ static bool install_native_character_relations_hook() {
     // caller frame. Preserve RCX/RDX; pass sheet and signed row index in the
     // otherwise-zero R8/R9. MOVSXD matches the original int32 index load.
     std::vector<NativeCall> calls = {
+        // Each count relay reads its original int32 accumulator plus the
+        // return-address adjustment. The distinct call site supplies the
+        // relationship kind; no English caption participates in selection.
+        {0x1603e3, 0xad9960,
+        reinterpret_cast<const void *>(&capture_native_character_overview_count<false>),
+        {0x44,0x8b,0x84,0x24,0xa4,0x0d,0x00,0x00}},
+        {0x1605c1, 0xad9960,
+        reinterpret_cast<const void *>(&capture_native_character_overview_count<true>),
+        {0x44,0x8b,0x84,0x24,0xa8,0x0d,0x00,0x00}},
         {0x176ca6, 0x6f5d0,
         reinterpret_cast<const void *>(&capture_native_character_relation_identity),
         {0x4c,0x8b,0x84,0x24,0x68,0xb2,0x00,0x00,

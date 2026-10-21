@@ -3244,13 +3244,15 @@ struct NativeCharacterRelation {
     int x = 0, y = 0, dimx = 0, dimy = 0;
     const unsigned char *screen = nullptr;
     std::string source, target;
+    bool overview_count = false;
 };
 static std::mutex g_native_character_relation_mutex;
 static std::vector<NativeCharacterRelation> g_native_character_relations;
 static uint64_t g_native_character_relation_epoch = 0;
 
 static void remember_native_character_relation(int x, int y,
-        std::string_view source, std::string_view target, const graphicst *graphics) {
+        std::string_view source, std::string_view target, const graphicst *graphics,
+        bool overview_count = false) {
     if (!graphics || !graphics->screen || x < 0 || y < 0 ||
         x >= graphics->dimx || y >= graphics->dimy || source.empty() ||
         source.size() > static_cast<size_t>(graphics->dimx - x)) return;
@@ -3265,17 +3267,18 @@ static void remember_native_character_relation(int x, int y,
     });
     if (!target.empty() && g_native_character_relations.size() < 4096)
         g_native_character_relations.push_back({x, y, graphics->dimx, graphics->dimy,
-            graphics->screen, std::string(source), std::string(target)});
+            graphics->screen, std::string(source), std::string(target), overview_count});
 }
 
 static std::vector<NativeCharacterRelation> captured_native_character_relations(
-        const graphicst *graphics) {
+        const graphicst *graphics, bool overview_counts = false) {
     if (!graphics) return {};
     std::lock_guard<std::mutex> lock(g_native_character_relation_mutex);
     std::vector<NativeCharacterRelation> rows;
     for (const auto &row : g_native_character_relations)
         if (row.screen == graphics->screen && row.dimx == graphics->dimx &&
-            row.dimy == graphics->dimy) rows.push_back(row);
+            row.dimy == graphics->dimy && row.overview_count == overview_counts)
+            rows.push_back(row);
     return rows;
 }
 

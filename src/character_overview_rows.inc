@@ -99,6 +99,34 @@ void Overlay::append_character_overview_identities(
         std::vector<std::string> &screen_rows, std::vector<Match> &matches,
         int only_y) const {
     if (!native_character_translation_active(gps_)) return;
+    // The two native count draw calls generate these targets from their
+    // live stack counters. Bind them by their current draw coordinates;
+    // neither the English noun nor its printed digits select a translation.
+    const auto relationship_counts = captured_native_character_relations(gps_, true);
+    const auto relationship_count_target = [&](int x, int y)
+            -> std::optional<std::string> {
+        for (const auto &count : relationship_counts) {
+            if (count.x != x) continue;
+            if (count.y == y) return count.target;
+            // Full-height graphical text occupies paired native font halves.
+            // Both halves belong to the same captured count draw.
+            if (std::abs(count.y - y) != 1) continue;
+            bool source_top = false, target_top = false;
+            const auto *source_cell = cell_at(x, count.y, &source_top);
+            const auto *target_cell = cell_at(x, y, &target_top);
+            const auto *flags = source_top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+            if (!source_cell || !target_cell || source_top != target_top || !flags) continue;
+            const auto half_at = [&](int row) {
+                return flags[static_cast<size_t>(x) * gps_->dimy + row] &
+                    ((1u << 3) | (1u << 4));
+            };
+            const auto half = half_at(count.y);
+            if ((half == (1u << 3) && y == count.y + 1 && half_at(y) == (1u << 4)) ||
+                (half == (1u << 4) && y == count.y - 1 && half_at(y) == (1u << 3)))
+                return count.target;
+        }
+        return std::nullopt;
+    };
 #include "character_overview_draw_rows.inc"
     for (const auto &card : cards) {
         for (const auto &row : card.rows) {
@@ -122,9 +150,11 @@ void Overlay::append_character_overview_identities(
                     screen[static_cast<size_t>(boundary)] = static_cast<char>(0xb3);
             }
 
-            const std::string source = normalize_utterance(row.source);
-            if (source.empty()) continue;
-            auto target = translate_fortress_squad_reference(row.source, row.x, row.y);
+            auto target = relationship_count_target(row.x, row.y);
+            const bool native_count = target.has_value();
+            const std::string source = native_count ? std::string{} : normalize_utterance(row.source);
+            if (!native_count && source.empty()) continue;
+            if (!target) target = translate_fortress_squad_reference(row.source, row.x, row.y);
             TranslationResult display_result;
             if (!target) target = exact_literal_translation("Character overview: " + source);
             if (!target) target = exact_literal_translation(source);
@@ -146,10 +176,10 @@ void Overlay::append_character_overview_identities(
                 match.translation_result = std::make_shared<const TranslationResult>(display_result);
                 match.native_hover_untranslated = display_result.has_untranslated();
             }
-            if (translate_rated_skill_phrase(row.source)) match.rule = kRatedSkillRule;
+            if (!native_count && translate_rated_skill_phrase(row.source)) match.rule = kRatedSkillRule;
             if (!row.foregrounds.empty())
                 match.layout_foreground_rgb = row.foregrounds.front();
-            if (row.source.starts_with("Squad:"))
+            if (!native_count && row.source.starts_with("Squad:"))
                 std::erase_if(matches, [&](const Match &previous) {
                     return previous.y == row.y && previous.x < end &&
                         row.x < previous.x + previous.length;
