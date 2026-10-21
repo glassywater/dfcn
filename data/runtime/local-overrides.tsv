@@ -9447,10 +9447,15 @@ Thief	小偷	wi
 Thieves	小偷	wi
 Peasant	平民	wi
 Peasants	平民	wi
-Child	儿童	wi
-Children	儿童	wi
+Child	小孩	wi
+Children	小孩	wi
 Baby	婴儿	wi
 Babies	婴儿	wi
+# Sapient RAW age names stay distinct from standardized animal juveniles.
+dwarven child	矮人小孩	wi
+dwarven children	矮人小孩	wi
+dwarven baby	矮人婴儿	wi
+dwarven babies	矮人婴儿	wi
 Drunk	酗酒者	wi
 Drunks	酗酒者	wi
 Monster slayer	怪物猎手	wi
