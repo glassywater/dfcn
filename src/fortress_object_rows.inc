@@ -52,6 +52,10 @@ void Overlay::append_fortress_object_rows(std::vector<std::string> &rows,
         const uint32_t half = flags ? flags[static_cast<size_t>(x) * gps_->dimy + y] & half_mask : 0;
         if (half == half_mask) return std::nullopt;
         const int color = (first[1] << 16) | (first[2] << 8) | first[3];
+        // Item-coloring mods can leave the quotes in the UI color while
+        // recoloring the name. The quotes, not a foreground change, bound
+        // this field; layer, font-half and action boundaries still apply.
+        const bool quoted = source_rows[y][x] == '"';
         int end = x;
         for (; end < right; ++end) {
             const unsigned char ch = source_rows[y][end];
@@ -63,7 +67,8 @@ void Overlay::append_fortress_object_rows(std::vector<std::string> &rows,
             const auto *cell = cell_at(end, y, &layer);
             const uint32_t current = flags ? flags[static_cast<size_t>(end) * gps_->dimy + y] & half_mask : 0;
             if (!cell || layer != top || current != half ||
-                    ((cell[1] << 16) | (cell[2] << 8) | cell[3]) != color) break;
+                    (!quoted && ((cell[1] << 16) | (cell[2] << 8) | cell[3]) != color)) break;
+            if (quoted && end > x && ch == '"') { ++end; break; }
         }
         while (end > x && source_rows[y][end - 1] == ' ') --end;
         if (end <= x) return std::nullopt;
@@ -133,6 +138,27 @@ void Overlay::append_fortress_object_rows(std::vector<std::string> &rows,
                 match.native_split_duplicate = representative;
                 match.layout_pixel_y = gps_->tile_pixel_y / 2;
                 if (representative) match.target.clear();
+            }
+            if (!match.target.empty() && field.source.front() == '"') {
+                const size_t body = field.source.find_first_not_of(' ', 1);
+                std::vector<uint32_t> codepoints;
+                if (body != std::string::npos && field.source[body] != '"' &&
+                        decode_utf8(match.target, codepoints) && !codepoints.empty()) {
+                    bool top = false;
+                    const auto *cell = cell_at(field.x + static_cast<int>(body), y, &top);
+                    const int body_color = cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3]
+                                               : field.color;
+                    match.layout_foreground_rgb = body_color;
+                    match.layout_glyph_foreground_rgb.assign(codepoints.size(), body_color);
+                    if (codepoints.front() == '"' || codepoints.front() == 0x201c)
+                        match.layout_glyph_foreground_rgb.front() = field.color;
+                    if (codepoints.back() == '"' || codepoints.back() == 0x201d) {
+                        const auto *closing = field.source.size() > 1 && field.source.back() == '"'
+                            ? cell_at(field.end - 1, y, &top) : nullptr;
+                        match.layout_glyph_foreground_rgb.back() = closing
+                            ? (closing[1] << 16) | (closing[2] << 8) | closing[3] : field.color;
+                    }
+                }
             }
             representative = true;
             matches.push_back(std::move(match));
