@@ -4820,6 +4820,11 @@ private:
     bool append_name_editor_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, const unsigned char *raw_layer,
         std::vector<SDL_Rect> *owned_regions = nullptr) const;
+#ifdef _WIN32
+    void append_native_settlement_name_previews(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw_layer,
+        std::vector<SDL_Rect> &owned_regions) const;
+#endif
     bool layout_name_editor(SDL_Renderer *renderer);
     void append_embark_introduction_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
@@ -19437,6 +19442,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // for immediate glyph suppression, not just the final overlay pass.
     append_name_editor_matches(screen_rows, name_editor_matches, only_y,
         screen_override, &name_editor_regions);
+#ifdef _WIN32
+    append_native_settlement_name_previews(screen_rows, name_editor_matches,
+        only_y, screen_override, name_editor_regions);
+#endif
 
     context_detail.checkpoint(RenderTimingStage::Tooltips);
     append_fortress_economy_matches(screen_rows, result, only_y, screen_override != nullptr);
