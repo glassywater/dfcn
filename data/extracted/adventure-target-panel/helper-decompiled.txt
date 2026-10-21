@@ -17,7 +17,9 @@ render_selected_target(unit, S, right, top):
     draw_portrait_frame(S, S+11, top, top+5)
     draw_native_unit_portrait_or_character(unit)
     # 0x8732b9..0x87331c, mode=1, r9b=1, stack byte=1:
-    draw_text(S+13, top+1, unit_identity_132e430(unit, mode=1), white)
+    set_cursor(S+13, top+1)
+    draw_conflict_prefix_7e4860(unit)
+    draw_text_at_cursor(unit_identity_132e430(unit, mode=1), white)
     y = top+2
     for action in unit.actions_at_7d0:
         if action.type == -1: continue
@@ -150,9 +152,10 @@ attack():
         if natural_attack_index == -1: text += "push"
         else:
             natural_attack = owner.body_at_5f8.attacks_at_18[natural_attack_index]
-            text += bodypart_13345d0(owner, natural_attack.bodypart_at_08,
-                                   ordinal=0, grammatical_number=2)
-            text += " " + natural_attack.name_at_40
+            if natural_attack.flags_at_60 & 1 and not natural_attack.parts_at_150.empty:
+                text += bodypart_13345d0(owner, natural_attack.parts_at_150[0],
+                                       ordinal=0, grammatical_number=2) + " "
+            text += natural_attack.name_at_40
     if active and reveal & 2 and int16(action+28) != -1:
         text += ", aiming for "
         text += bodypart_13345d0(target, int16(action+28), 0, 2)

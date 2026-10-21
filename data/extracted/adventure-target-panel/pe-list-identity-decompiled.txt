@@ -1,0 +1,152 @@
+Attack-target list identity source, reconstructed from current configured PEs
+
+pe-reference-list-identity-ghidra.c and pe-classic-list-identity-ghidra.c are
+actual Ghidra 12.1.4 C output, not hand-written substitute C. The sibling
+*-functions.tsv, *-calls.tsv, *-branches.tsv, *-literals.tsv and per-function
+*.asm retain the matching binary source. The following removes allocation,
+string-capacity and exception-cleanup branches from that output, while keeping
+every branch which chooses visible identity text.
+
+The list calls reference RVA 0x132e430 (classic 0x13293a0), with article=1,
+capitalize=true and use_custom=true. Its output is separate from Ally/conflict
+prefixes and from the action/status rows. It does not read squad.alias.
+
+identity(unit, article, capitalize, use_custom):
+    if adventure_mode and player_exists and unit == player:
+        return "You" if capitalize else "you"
+    if unit.animation and unit.animation.stored_name is nonempty:
+        return capitalize_if_requested(unit.animation.stored_name)
+    if game_type in {4, 5}:
+        return capitalize_if_requested(unit.name.first_name)
+
+    if adventure_mode and player_exists:
+        selected_name = unit.name
+        if unit's historical figure has linked identity:
+            selected_name = selected_identity_name(identity)
+        if selected_name.has_name:
+            if game_type == 1:
+                inspect player's learned figure/identity records
+                if known true identity or known unit population:
+                    selected_name = unit.name
+                elif selected linked identity is known:
+                    keep selected_name
+                else:
+                    goto descriptive_identity
+            if directly following player or following a party member:
+                if selected_name.first_name is nonempty:
+                    return capitalize(selected_name.first_name)
+                return capitalize(language_name(selected_name))
+
+            role = selected_role(unit)
+            personal = language_name(selected_name)
+            if personal is empty and role is empty:
+                goto descriptive_identity
+            if role is empty:
+                return capitalize(personal)
+            return ("The " if capitalize else "the ") + role +
+                   (" " + personal if personal is nonempty else "")
+
+descriptive_identity:
+    if linked identity references a historical figure with deity bit:
+        return capitalize_if_requested(article_text + "deity")
+    if linked identity references a historical figure with force bit:
+        return capitalize_if_requested(article_text + "force")
+    role, generic_role = selected_role(unit)
+    result = ""
+    if caste has PET/PET_EXOTIC and unit.pet_owner_id == -1 and unit.tame:
+        result += article_text
+        result += "fierce " if unit's civilization entity RAW bit 60 is set else "stray "
+    elif unit.flags4 & 0x1000:
+        result += article_text + "agitated "
+    if unit.flags3 & 0x1000:
+        if generic_role and result is empty:
+            return capitalize_if_requested(article_text + "ghost")
+        result += article_if_still_empty + "ghostly "
+    result += article_if_still_empty
+    if adventure_mode:
+        appearance = unit.distinguishing_appearance
+        if appearance is empty: refresh_appearance(unit)
+        if appearance != "average": result += appearance + " "
+    if unit.curse_named and curse_name is empty and curse_prefix is nonempty:
+        result += curse_prefix + " "
+    result += role
+    if unit.curse_named and curse_name is nonempty:
+        result += (" " if result is nonempty else article_text) + curse_name
+    if unit.animation:
+        result += " corpse" if result is nonempty else article_text + "corpse"
+    return capitalize_if_requested(result)
+
+article_text is "the " for 1, "a " for 0, otherwise empty. The target list
+therefore uses the definite-article form, but the captured formatter remains
+shared by other native consumers. "average" is a comparison sentinel, not an
+appearance label printed by this branch. Literal punctuation and article
+selection are preserved in the source inventory even when Chinese omits them.
+
+selected_role(unit):
+    profession = unit.profession
+    if linked identity has explicit profession, use that profession
+    role = base_role(profession, race, caste, same-player-race)
+    if linked identity has no explicit profession:
+        if historical figure has selected office:
+            role = office spouse/nonspouse name; select female/male/neutral
+            name and fall back to neutral when the sex-specific name is empty
+            if office.land_holder > 0:
+                append " of " + matching territory's entity English name
+        if historical-figure slavery relationship is positive:
+            role = role + " slave" for nonempty child/baby roles, else "slave"
+        if historical-figure imprisonment relationship is positive:
+            role = role + " prisoner" for nonempty child/baby roles, else "prisoner"
+    if use_custom and unit.custom_profession is nonempty:
+        role = unit.custom_profession
+
+base_role (reference 0x132e0c0, classic 0x1329030) combines profession words,
+RAW caste/species and optional profession prefix. Different-player-race roles
+include the caste/species unless the profession supplier says it already does;
+same-race empty professions use peasant/Peasant. The caller passes singular
+and lowercase. The supplier's other callers can request plural, including the
+special bare "s" branch; it is retained in the disassembly and actual C.
+
+The shared profession-word supplier (reference 0x132cc10..0x132e0b4, classic
+0x1327b80..0x1329024) was already decompiled from the same PE identities. Its
+135 switch values 0..134 and RAW override branches are retained in:
+    ../announcement-profession-succession/profession-switch-text.tsv
+    ../announcement-profession-succession/role-branches.tsv
+    ../legends-entity-introduction/reference-profession-title.c
+    ../legends-entity-introduction/classic-profession-title.c
+These RAW/profession branches feed the existing creature-label/profession
+grammar. Species, caste, office, curse and appearance are typed dynamic fields,
+not a finite list of literal names. Authored custom professions retain their
+exact source unless an explicit Unit custom profession override exists.
+
+selected_identity_name (reference 0xc3a4f0..0xc3a588; classic
+0xc37530..0xc375c8) returns linked historical figure name+0x38 only if its
+has_name byte is true; otherwise identity.name+8. The complete function spans
+adjacent unwind records, all included in the retained assembly.
+
+language_name (reference 0xa94030..0xa946d1; classic 0xa910b0..0xa91751):
+    absent has_name -> no text
+    nickname mode 0 -> quoted nickname replaces first name
+    nickname mode 1 -> first name followed by quoted nickname
+    nickname mode 2 -> quoted nickname replaces the entire name
+    no nickname -> first name
+    unless replaced entirely, append translated language WORD roots in their
+    native groups 0..1, 2..5 and 6, with the native spaces/capitalization
+    invalid/missing WORD or language indices contribute no root
+Its quotes are the native grave/apostrophe pair; existing name translation
+renders the captured authored nickname with Chinese quotes. First names and
+WORD roots are transliterated only with their actual language_name metadata.
+
+The first-name-only branch is at reference 0x132ee88..0x132eeaa and classic
+0x1329df8..0x1329e1a. Its preceding recognition branch can change selected_name
+back to unit+8 at 0x132e6c0/0x1329630. Caller stack +0x48 always retains that
+final language_name. At the assignment itself R9 has already changed to the
+string heap pointer when first_name is longer than 15 bytes, so capturing R9
+as a language_name there would be incorrect. The existing assignment hook now
+passes caller stack +0x48 (relay stack +0x50 after CALL) to the dedicated
+GivenName wrapper, which refreshes the typed selected name before publication.
+
+The screenshot spelling Udal is not a fixed label in these procedures. It is
+a runtime first/name field. A generated language-bearing name uses the native
+phonetic display path; an authored language-less first name or nickname stays
+literal. The screenshot alone does not expose that metadata, and no spelling
+heuristic or global Udal replacement belongs in the translation vocabulary.

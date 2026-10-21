@@ -1,0 +1,7 @@
+edition	role	instruction_rva	instruction
+steam	prefix	0x7e4b6c	call   QWORD PTR [rip+0xe00fb6]        # 0x1415e5b28
+steam	prefix	0x7e4c6f	call   QWORD PTR [rax]
+steam	level-selection	0x14e3105	call   QWORD PTR [rax]
+classic	prefix	0x7e23ec	call   QWORD PTR [rip+0xdfe6ae]        # 0x1415e0aa0
+classic	prefix	0x7e24ef	call   QWORD PTR [rax]
+classic	level-selection	0x14de075	call   QWORD PTR [rax]

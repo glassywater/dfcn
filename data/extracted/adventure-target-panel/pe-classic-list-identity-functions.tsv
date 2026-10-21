@@ -1,0 +1,7 @@
+role	start	end	assembly	image	path
+caption	0x13293a0	0x132a8e1	pe-classic-list-identity-caption.asm	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+role	0x1329030	0x1329398	pe-classic-list-identity-role.asm	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+selected-name	0xc37530	0xc375c8	pe-classic-list-identity-selected-name.asm	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+language-name	0xa910b0	0xa91751	pe-classic-list-identity-language-name.asm	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+caste-name	0xaa0c50	0xaa0e13	pe-classic-list-identity-caste-name.asm	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+office-territory	0x9bb7e0	0x9bb928	pe-classic-list-identity-office-territory.asm	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe

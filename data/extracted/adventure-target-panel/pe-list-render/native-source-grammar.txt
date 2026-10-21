@@ -1,0 +1,59 @@
+Attack/wrestle target list: current PE renderer source
+
+Sources are the installed images selected by data/runtime/native-pe-images.json.
+The .asm files contain their original instructions. pe-*-ghidra-decompiled.c
+contains actual Ghidra 12.1.4 C output from the complete renderer, with native
+switch tables supplied as computed destinations. No original bytes were changed.
+
+Reference renderer: RVA 0x878600..0x880044 (before switch-table data).
+Classic renderer:   RVA 0x875e80..0x87d8c4 (before switch-table data).
+All renderer stages are retained in the C; the screenshot is stage 0.
+
+Stage 0 finite text and display branches:
+  The shared top-right button says "Done".
+  If screen+0x31d is true and screen+0x31c is false:
+    heading = "Who will you wrestle?".
+  Otherwise:
+    heading = "Who will you attack?".
+  Empty candidate vectors still display the heading and Done; they do not
+  introduce an empty-list message, placeholder name or status.
+  The visible candidate page comes from vector+0x10 and scroll position+0x28.
+  Each candidate allocates eight rows. Scrolling changes the right boundary
+  and visible records, not their text production.
+  Graphical portraits and classic character glyphs are alternate artwork;
+  they do not supply an additional caption.
+  The shortcut is rendered independently before the text field.
+  Cursor starts at outer L+16, row_top+1.
+  Call conflict-prefix(candidate) at reference 0x879089 / classic 0x876909.
+  Then call unit-identity(candidate, article=1, capitalize=true, custom=true)
+  at reference 0x8790b8 / classic 0x876938 and draw its string at the now
+  advanced cursor. The name uses foreground 7, non-bright, independently
+  of the prefix's relationship color.
+  Each action in candidate+0x7d0 whose type != -1 calls the status renderer
+  on the next row at outer L+19. Stop after the six available status rows.
+  The caller has no additional word, trailing qualifier or empty-name fallback.
+
+Complete dependent productions are retained beside this directory:
+  ../pe-all-conflict-grammar.txt: seven levels, Ally, colon-only and no prefix;
+    current binaries' full helper C, conditions and switch aliases are adjacent.
+  ../pe-list-status-productions.txt: all 28 action selectors and their timing,
+    style, direction, item, attack and anatomy compositions, including empty
+    or missing referenced records; full helper C is adjacent.
+  ../pe-*-list-identity-ghidra.c: complete identity, selected-name, role,
+    language-name, caste-name and office-territory suppliers. Generated names,
+    authored names/nicknames, identity reveal decisions and RAW role text
+    remain semantic fields, not a finite list of guessed English names.
+
+The shared selected-target summary uses the same prefix, identity and status
+suppliers at reference 0x872f10 / classic 0x870790. Its complete C is retained
+in the same files; the prefix previously omitted from the handwritten source
+reconstruction is now included in helper-decompiled.txt.
+
+Extraction:
+  tools/extract_adventure_target_list_pe.py uses the configured PE files,
+  their unwind ownership, fixed toolchain objdump and original switch tables.
+  tools/DecompileAdventureActionMenuPE.java consumes this directory's native
+  manifests without changing their code bytes. Ghidra was invoked separately
+  for reference and classic with -import IMAGE -noanalysis -scriptPath tools
+  -postScript DecompileAdventureActionMenuPE.java THIS_DIRECTORY EDITION
+  -deleteProject, using the installed ghidra_12.1.4_PUBLIC and jdk-25.0.4.1+1.

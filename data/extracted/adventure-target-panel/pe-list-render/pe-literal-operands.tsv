@@ -1,0 +1,329 @@
+edition	role	instruction_rva	operand	kind	text
+reference	attack-chooser-renderer	0x87881e	0x1416044c0	cstring	Done
+reference	attack-chooser-renderer	0x8788b1	0x1416b3908	cstring	Who will you wrestle?
+reference	attack-chooser-renderer	0x8788de	0x1416b38f0	cstring	Who will you attack?
+reference	attack-chooser-renderer	0x878950	0x1416b39c0	cstring	 has yielded.  Attack anyway?
+reference	attack-chooser-renderer	0x8789a7	0x1416b39a0	cstring	Really start a conflict with 
+reference	attack-chooser-renderer	0x878a04	0x141614d50	cstring	?
+reference	attack-chooser-renderer	0x878a3b	0x1416b3a00	cstring	Really attack 
+reference	attack-chooser-renderer	0x878a98	0x141614d50	cstring	?
+reference	attack-chooser-renderer	0x878af5	0x1416b39e0	cstring	What do you want to aim for?
+reference	attack-chooser-renderer	0x878b2c	0x14167e668	cstring	Attack 
+reference	attack-chooser-renderer	0x878b83	0x141618434	cstring	:
+reference	attack-chooser-renderer	0x878bb6	0x1416b3980	cstring	Wrestle 
+reference	attack-chooser-renderer	0x879344	0x14162bdb8	cstring	Confirm
+reference	attack-chooser-renderer	0x879446	0x1415fe724	cstring	Cancel
+reference	attack-chooser-renderer	0x87971f	0x1416b3834	cstring	Dodge 
+reference	attack-chooser-renderer	0x8797a4	0x1416b37f8	cstring	Block 
+reference	attack-chooser-renderer	0x879871	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x8798ae	0x141662700	cstring	NO_SUB
+reference	attack-chooser-renderer	0x8798d9	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x879913	0x1415ee5e0	cstring	 with 
+reference	attack-chooser-renderer	0x87995b	0x141615540	cstring	 (
+reference	attack-chooser-renderer	0x8799aa	0x141615580	cstring	)
+reference	attack-chooser-renderer	0x879a2e	0x1416b3800	cstring	Parry 
+reference	attack-chooser-renderer	0x879af8	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x879b35	0x141662700	cstring	NO_SUB
+reference	attack-chooser-renderer	0x879b60	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x879bef	0x1415ee5e0	cstring	 with 
+reference	attack-chooser-renderer	0x879c3f	0x141615540	cstring	 (
+reference	attack-chooser-renderer	0x879cb6	0x141615580	cstring	)
+reference	attack-chooser-renderer	0x879d0e	0x1416b3990	cstring	Dodge (
+reference	attack-chooser-renderer	0x879d53	0x141615580	cstring	)
+reference	attack-chooser-renderer	0x879d72	0x1416b3998	cstring	Block (
+reference	attack-chooser-renderer	0x879db7	0x141615580	cstring	)
+reference	attack-chooser-renderer	0x879dd6	0x1416b3978	cstring	Parry (
+reference	attack-chooser-renderer	0x879eab	0x141615580	cstring	)
+reference	attack-chooser-renderer	0x879ec7	0x141613fa0	cstring	Wrestle
+reference	attack-chooser-renderer	0x879ed0	0x14161499c	cstring	Strike
+reference	attack-chooser-renderer	0x87a2ff	0x1416b37c0	cstring	Impossible strike
+reference	attack-chooser-renderer	0x87a340	0x1416b37a8	cstring	Difficult strike
+reference	attack-chooser-renderer	0x87a381	0x1416b37e8	cstring	Tricky strike
+reference	attack-chooser-renderer	0x87a3c1	0x1416b37d8	cstring	Normal strike
+reference	attack-chooser-renderer	0x87a3ff	0x1416b3898	cstring	Easy strike
+reference	attack-chooser-renderer	0x87a439	0x1416b3888	cstring	Easier strike
+reference	attack-chooser-renderer	0x87a477	0x1416b38b8	cstring	Simple strike
+reference	attack-chooser-renderer	0x87a4b7	0x1415e90d8	cstring	, 
+reference	attack-chooser-renderer	0x87a4fe	0x1416b38a8	cstring	can only graze
+reference	attack-chooser-renderer	0x87a545	0x1416b3858	cstring	can't land squarely
+reference	attack-chooser-renderer	0x87a58c	0x1416b3840	cstring	can't quite connect
+reference	attack-chooser-renderer	0x87a5d3	0x1416b3878	cstring	fairly solid
+reference	attack-chooser-renderer	0x87a617	0x1416b386c	cstring	square
+reference	attack-chooser-renderer	0x87a65b	0x1416b42d8	cstring	very square
+reference	attack-chooser-renderer	0x87a6a2	0x1416b42c8	cstring	direct hit
+reference	attack-chooser-renderer	0x87a6f6	0x1415edfac	cstring	+
+reference	attack-chooser-renderer	0x87a733	0x1415edfac	cstring	+
+reference	attack-chooser-renderer	0x87a770	0x14164b74c	cstring	-
+reference	attack-chooser-renderer	0x87a7af	0x14164b74c	cstring	-
+reference	attack-chooser-renderer	0x87a808	0x1415ee438	cstring	!
+reference	attack-chooser-renderer	0x87aae2	0x1416b42ec	cstring	stab
+reference	attack-chooser-renderer	0x87ab0f	0x1416b42e4	cstring	slash
+reference	attack-chooser-renderer	0x87ab3c	0x1416b42ac	cstring	slap
+reference	attack-chooser-renderer	0x87ab66	0x1416b42a4	cstring	hack
+reference	attack-chooser-renderer	0x87ab90	0x1416b42bc	cstring	bash
+reference	attack-chooser-renderer	0x87abba	0x1416b42b4	cstring	lash
+reference	attack-chooser-renderer	0x87abf5	0x1416b4324	cstring	pommel
+reference	attack-chooser-renderer	0x87ac3e	0x1416b431c	cstring	punch
+reference	attack-chooser-renderer	0x87ac58	0x141675118	cstring	kick
+reference	attack-chooser-renderer	0x87ac72	0x1416b4334	cstring	bite
+reference	attack-chooser-renderer	0x87ac8c	0x1416b432c	cstring	sting
+reference	attack-chooser-renderer	0x87aca6	0x1416b4304	cstring	snatch
+reference	attack-chooser-renderer	0x87ae57	0x1415eb514	cstring	/
+reference	attack-chooser-renderer	0x87ae69	0x141662708	cstring	strike
+reference	attack-chooser-renderer	0x87ae79	0x1415eb514	cstring	/
+reference	attack-chooser-renderer	0x87aeae	0x141662700	cstring	NO_SUB
+reference	attack-chooser-renderer	0x87aeda	0x1415eb514	cstring	/
+reference	attack-chooser-renderer	0x87af62	0x1415eb514	cstring	/
+reference	attack-chooser-renderer	0x87afad	0x1416627f4	cstring	push
+reference	attack-chooser-renderer	0x87b043	0x1416b2ca0	cstring	Impossible
+reference	attack-chooser-renderer	0x87b084	0x1416b42f8	cstring	Difficult
+reference	attack-chooser-renderer	0x87b0c5	0x1416b4314	cstring	Tricky
+reference	attack-chooser-renderer	0x87b10e	0x1416164b8	cstring	Normal
+reference	attack-chooser-renderer	0x87b16c	0x1416b430c	cstring	Easy
+reference	attack-chooser-renderer	0x87b1aa	0x1416b4100	cstring	Easier
+reference	attack-chooser-renderer	0x87b1e8	0x1416b40f8	cstring	Simple
+reference	attack-chooser-renderer	0x87b231	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x87b276	0x1416b4110	cstring	VVSlow
+reference	attack-chooser-renderer	0x87b2b7	0x1416b4108	cstring	V Slow
+reference	attack-chooser-renderer	0x87b2f8	0x1416b40dc	cstring	Slow
+reference	attack-chooser-renderer	0x87b336	0x1416b40d4	cstring	Fast
+reference	attack-chooser-renderer	0x87b374	0x1416b40f0	cstring	V Fast
+reference	attack-chooser-renderer	0x87b3bd	0x1416b40e8	cstring	 strike
+reference	attack-chooser-renderer	0x87b3ea	0x1415e90d8	cstring	, 
+reference	attack-chooser-renderer	0x87b430	0x1416b38a8	cstring	can only graze
+reference	attack-chooser-renderer	0x87b476	0x1416b3858	cstring	can't land squarely
+reference	attack-chooser-renderer	0x87b4bc	0x1416b3840	cstring	can't quite connect
+reference	attack-chooser-renderer	0x87b502	0x1416b3878	cstring	fairly solid
+reference	attack-chooser-renderer	0x87b54a	0x1416b386c	cstring	square
+reference	attack-chooser-renderer	0x87b58d	0x1416b42d8	cstring	very square
+reference	attack-chooser-renderer	0x87b5d3	0x1416b42c8	cstring	direct hit
+reference	attack-chooser-renderer	0x87b634	0x1415edfac	cstring	+
+reference	attack-chooser-renderer	0x87b671	0x1415edfac	cstring	+
+reference	attack-chooser-renderer	0x87b6ae	0x14164b74c	cstring	-
+reference	attack-chooser-renderer	0x87b6ed	0x14164b74c	cstring	-
+reference	attack-chooser-renderer	0x87b747	0x1415ee438	cstring	!
+reference	attack-chooser-renderer	0x87bd53	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x87bd87	0x1416b41e8	cstring	Quick attack: faster to strike and recover, but not powerful
+reference	attack-chooser-renderer	0x87bee6	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x87bf1a	0x1416b4248	cstring	Heavy attack: slower to strike and recover, but hits harder
+reference	attack-chooser-renderer	0x87c077	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x87c0ab	0x1416b4120	cstring	Wild attack: fast strike, slow recovery, hard but unbalancing/inaccurate
+reference	attack-chooser-renderer	0x87c208	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x87c235	0x1416b4190	cstring	Precise attack: very slow to strike, improved accuracy
+reference	attack-chooser-renderer	0x87c293	0x1416b4228	cstring	No quick attack: enraged
+reference	attack-chooser-renderer	0x87c2e8	0x1416b4288	cstring	No heavy attack: enraged
+reference	attack-chooser-renderer	0x87c336	0x1416b4170	cstring	Forced wild attack: enraged
+reference	attack-chooser-renderer	0x87c384	0x1416b41c8	cstring	No precise attack: enraged
+reference	attack-chooser-renderer	0x87c40a	0x1416b3ef8	cstring	No charge attack: no target
+reference	attack-chooser-renderer	0x87c446	0x1416b3ed0	cstring	No charge attack: you are on the ground
+reference	attack-chooser-renderer	0x87c482	0x1416b3f40	cstring	No charge attack: you are mounted
+reference	attack-chooser-renderer	0x87c4be	0x1416b3f18	cstring	No charge attack: you are chained
+reference	attack-chooser-renderer	0x87c4fa	0x1416b3e40	cstring	No charge attack: you are in uncontrolled flight
+reference	attack-chooser-renderer	0x87c536	0x1416b3e18	cstring	No charge attack: you are on a vehicle
+reference	attack-chooser-renderer	0x87c572	0x1416b3ea0	cstring	No charge attack: you are on a projectile
+reference	attack-chooser-renderer	0x87c5ae	0x1416b3e78	cstring	No charge attack: you are climbing
+reference	attack-chooser-renderer	0x87c5ea	0x1416b4048	cstring	No charge attack: target is on the ground
+reference	attack-chooser-renderer	0x87c626	0x1416b4020	cstring	No charge attack: target is mounted
+reference	attack-chooser-renderer	0x87c66b	0x1416b40b0	cstring	No charge attack: target is chained
+reference	attack-chooser-renderer	0x87c6b0	0x1416b4078	cstring	No charge attack: target is in uncontrolled flight
+reference	attack-chooser-renderer	0x87c6f5	0x1416b3f98	cstring	No charge attack: target is on a vehicle
+reference	attack-chooser-renderer	0x87c73a	0x1416b3f68	cstring	No charge attack: target is on a projectile
+reference	attack-chooser-renderer	0x87c77f	0x1416b3ff8	cstring	No charge attack: target is climbing
+reference	attack-chooser-renderer	0x87c7bb	0x1416b3fc8	cstring	No charge attack: target shares your location
+reference	attack-chooser-renderer	0x87c7f7	0x1416b3d08	cstring	No charge attack: target's location inaccessible
+reference	attack-chooser-renderer	0x87c833	0x1416b3ce0	cstring	No charge attack: target too far away
+reference	attack-chooser-renderer	0x87c97d	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x87c9aa	0x1416b3d80	cstring	Charge attack: move toward your opponent
+reference	attack-chooser-renderer	0x87caee	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x87cb1b	0x1416b3d40	cstring	Multi-attack: choose another simultaneous action afterward
+reference	attack-chooser-renderer	0x87cf20	0x1416b3cb0	cstring	Both holding 
+reference	attack-chooser-renderer	0x87cf29	0x1416b3ca0	cstring	Grabbed their 
+reference	attack-chooser-renderer	0x87cf35	0x1416b3cd0	cstring	Grabbed your 
+reference	attack-chooser-renderer	0x87cf3e	0x1416b3cc0	cstring	Sharing 
+reference	attack-chooser-renderer	0x87dc81	0x1416b3df0	cstring	Gain possession of 
+reference	attack-chooser-renderer	0x87e01b	0x1416b4898	cstring	Grab
+reference	attack-chooser-renderer	0x87e040	0x1415e873c	cstring	 
+reference	attack-chooser-renderer	0x87e16a	0x1415ee5e0	cstring	 with 
+reference	attack-chooser-renderer	0x87e538	0x1416b3de0	cstring	Wrestle using 
+reference	attack-chooser-renderer	0x87e7f3	0x1416b3e0c	cstring	Lock 
+reference	attack-chooser-renderer	0x87e831	0x1415ee5e0	cstring	 with 
+reference	attack-chooser-renderer	0x87eab3	0x1416b3e04	cstring	Choke 
+reference	attack-chooser-renderer	0x87ed23	0x1416b3dc0	cstring	Take-down by 
+reference	attack-chooser-renderer	0x87efa3	0x1416b3db0	cstring	Throw by 
+reference	attack-chooser-renderer	0x87f223	0x1416b3dd8	cstring	Pinch 
+reference	attack-chooser-renderer	0x87f493	0x1416b3dd0	cstring	Gouge 
+reference	attack-chooser-renderer	0x87f703	0x1416b4818	cstring	Break 
+reference	attack-chooser-renderer	0x87f9a8	0x1416b4838	cstring	Release choke of 
+reference	attack-chooser-renderer	0x87f9c5	0x1415ed92c	cstring	 on 
+reference	attack-chooser-renderer	0x87f9e7	0x1416b4800	cstring	Release joint lock of 
+reference	attack-chooser-renderer	0x87f9f0	0x1416b4820	cstring	Release grip of 
+reference	attack-chooser-renderer	0x87fa10	0x1416b47b8	cstring	Loosen choke of 
+reference	attack-chooser-renderer	0x87fa19	0x1416b47d0	cstring	Loosen joint lock of 
+reference	attack-chooser-renderer	0x87fa22	0x1416b47f0	cstring	Break grip of 
+reference	attack-chooser-renderer	0x87fa3f	0x1415ed92c	cstring	 on 
+reference	attack-chooser-renderer	0x87fcb3	0x1416b47e8	cstring	Shake 
+reference	attack-chooser-renderer	0x87ff33	0x1416b48a0	cstring	Strangle 
+classic	attack-chooser-renderer	0x87609e	0x1415ff490	cstring	Done
+classic	attack-chooser-renderer	0x876131	0x1416aeac8	cstring	Who will you wrestle?
+classic	attack-chooser-renderer	0x87615e	0x1416aeab0	cstring	Who will you attack?
+classic	attack-chooser-renderer	0x8761d0	0x1416aea38	cstring	 has yielded.  Attack anyway?
+classic	attack-chooser-renderer	0x876227	0x1416aea18	cstring	Really start a conflict with 
+classic	attack-chooser-renderer	0x876284	0x14160fd10	cstring	?
+classic	attack-chooser-renderer	0x8762bb	0x1416aea78	cstring	Really attack 
+classic	attack-chooser-renderer	0x876318	0x14160fd10	cstring	?
+classic	attack-chooser-renderer	0x876375	0x1416aea58	cstring	What do you want to aim for?
+classic	attack-chooser-renderer	0x8763ac	0x141679028	cstring	Attack 
+classic	attack-chooser-renderer	0x876403	0x141613404	cstring	:
+classic	attack-chooser-renderer	0x876436	0x1416ae8a0	cstring	Wrestle 
+classic	attack-chooser-renderer	0x876bc4	0x1416275a8	cstring	Confirm
+classic	attack-chooser-renderer	0x876cc6	0x1415f959c	cstring	Cancel
+classic	attack-chooser-renderer	0x876f9f	0x1416ae88c	cstring	Dodge 
+classic	attack-chooser-renderer	0x877024	0x1416ae850	cstring	Block 
+classic	attack-chooser-renderer	0x8770f1	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x87712e	0x14165d5e0	cstring	NO_SUB
+classic	attack-chooser-renderer	0x877159	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x877193	0x1415e9590	cstring	 with 
+classic	attack-chooser-renderer	0x8771db	0x141610298	cstring	 (
+classic	attack-chooser-renderer	0x87722a	0x1416102d8	cstring	)
+classic	attack-chooser-renderer	0x8772ae	0x1416ae858	cstring	Parry 
+classic	attack-chooser-renderer	0x877378	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x8773b5	0x14165d5e0	cstring	NO_SUB
+classic	attack-chooser-renderer	0x8773e0	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x87746f	0x1415e9590	cstring	 with 
+classic	attack-chooser-renderer	0x8774bf	0x141610298	cstring	 (
+classic	attack-chooser-renderer	0x877536	0x1416102d8	cstring	)
+classic	attack-chooser-renderer	0x87758e	0x1416ae8b0	cstring	Dodge (
+classic	attack-chooser-renderer	0x8775d3	0x1416102d8	cstring	)
+classic	attack-chooser-renderer	0x8775f2	0x1416ae8b8	cstring	Block (
+classic	attack-chooser-renderer	0x877637	0x1416102d8	cstring	)
+classic	attack-chooser-renderer	0x877656	0x1416ae898	cstring	Parry (
+classic	attack-chooser-renderer	0x87772b	0x1416102d8	cstring	)
+classic	attack-chooser-renderer	0x877747	0x14160ef80	cstring	Wrestle
+classic	attack-chooser-renderer	0x877750	0x14160f8dc	cstring	Strike
+classic	attack-chooser-renderer	0x877b7f	0x1416ae918	cstring	Impossible strike
+classic	attack-chooser-renderer	0x877bc0	0x1416ae900	cstring	Difficult strike
+classic	attack-chooser-renderer	0x877c01	0x1416ae940	cstring	Tricky strike
+classic	attack-chooser-renderer	0x877c41	0x1416ae930	cstring	Normal strike
+classic	attack-chooser-renderer	0x877c7f	0x1416ae8d0	cstring	Easy strike
+classic	attack-chooser-renderer	0x877cb9	0x1416ae8c0	cstring	Easier strike
+classic	attack-chooser-renderer	0x877cf7	0x1416ae8f0	cstring	Simple strike
+classic	attack-chooser-renderer	0x877d37	0x1415e40c4	cstring	, 
+classic	attack-chooser-renderer	0x877d7e	0x1416ae8e0	cstring	can only graze
+classic	attack-chooser-renderer	0x877dc5	0x1416ae7e0	cstring	can't land squarely
+classic	attack-chooser-renderer	0x877e0c	0x1416ae7c8	cstring	can't quite connect
+classic	attack-chooser-renderer	0x877e53	0x1416ae800	cstring	fairly solid
+classic	attack-chooser-renderer	0x877e97	0x1416ae7f4	cstring	square
+classic	attack-chooser-renderer	0x877edb	0x1416ae7a8	cstring	very square
+classic	attack-chooser-renderer	0x877f22	0x1416ae798	cstring	direct hit
+classic	attack-chooser-renderer	0x877f76	0x1415e8f8c	cstring	+
+classic	attack-chooser-renderer	0x877fb3	0x1415e8f8c	cstring	+
+classic	attack-chooser-renderer	0x877ff0	0x14164667c	cstring	-
+classic	attack-chooser-renderer	0x87802f	0x14164667c	cstring	-
+classic	attack-chooser-renderer	0x878088	0x1415e942c	cstring	!
+classic	attack-chooser-renderer	0x878362	0x1416ae7bc	cstring	stab
+classic	attack-chooser-renderer	0x87838f	0x1416ae7b4	cstring	slash
+classic	attack-chooser-renderer	0x8783bc	0x1416ae838	cstring	slap
+classic	attack-chooser-renderer	0x8783e6	0x1416ae830	cstring	hack
+classic	attack-chooser-renderer	0x878410	0x1416ae848	cstring	bash
+classic	attack-chooser-renderer	0x87843a	0x1416ae840	cstring	lash
+classic	attack-chooser-renderer	0x878475	0x1416ae818	cstring	pommel
+classic	attack-chooser-renderer	0x8784be	0x1416ae810	cstring	punch
+classic	attack-chooser-renderer	0x8784d8	0x141670434	cstring	kick
+classic	attack-chooser-renderer	0x8784f2	0x1416ae828	cstring	bite
+classic	attack-chooser-renderer	0x87850c	0x1416ae820	cstring	sting
+classic	attack-chooser-renderer	0x878526	0x1416af214	cstring	snatch
+classic	attack-chooser-renderer	0x8786d7	0x1415e64cc	cstring	/
+classic	attack-chooser-renderer	0x8786e9	0x14165d5e8	cstring	strike
+classic	attack-chooser-renderer	0x8786f9	0x1415e64cc	cstring	/
+classic	attack-chooser-renderer	0x87872e	0x14165d5e0	cstring	NO_SUB
+classic	attack-chooser-renderer	0x87875a	0x1415e64cc	cstring	/
+classic	attack-chooser-renderer	0x8787e2	0x1415e64cc	cstring	/
+classic	attack-chooser-renderer	0x87882d	0x14165da3c	cstring	push
+classic	attack-chooser-renderer	0x8788c3	0x1416ade98	cstring	Impossible
+classic	attack-chooser-renderer	0x878904	0x1416af208	cstring	Difficult
+classic	attack-chooser-renderer	0x878945	0x1416af224	cstring	Tricky
+classic	attack-chooser-renderer	0x87898e	0x1416111f4	cstring	Normal
+classic	attack-chooser-renderer	0x8789ec	0x1416af21c	cstring	Easy
+classic	attack-chooser-renderer	0x878a2a	0x1416af1ec	cstring	Easier
+classic	attack-chooser-renderer	0x878a68	0x1416af1e4	cstring	Simple
+classic	attack-chooser-renderer	0x878ab1	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x878af6	0x1416af1fc	cstring	VVSlow
+classic	attack-chooser-renderer	0x878b37	0x1416af1f4	cstring	V Slow
+classic	attack-chooser-renderer	0x878b78	0x1416af2f4	cstring	Slow
+classic	attack-chooser-renderer	0x878bb6	0x1416af2ec	cstring	Fast
+classic	attack-chooser-renderer	0x878bf4	0x1416af308	cstring	V Fast
+classic	attack-chooser-renderer	0x878c3d	0x1416af300	cstring	 strike
+classic	attack-chooser-renderer	0x878c6a	0x1415e40c4	cstring	, 
+classic	attack-chooser-renderer	0x878cb0	0x1416ae8e0	cstring	can only graze
+classic	attack-chooser-renderer	0x878cf6	0x1416ae7e0	cstring	can't land squarely
+classic	attack-chooser-renderer	0x878d3c	0x1416ae7c8	cstring	can't quite connect
+classic	attack-chooser-renderer	0x878d82	0x1416ae800	cstring	fairly solid
+classic	attack-chooser-renderer	0x878dca	0x1416ae7f4	cstring	square
+classic	attack-chooser-renderer	0x878e0d	0x1416ae7a8	cstring	very square
+classic	attack-chooser-renderer	0x878e53	0x1416ae798	cstring	direct hit
+classic	attack-chooser-renderer	0x878eb4	0x1415e8f8c	cstring	+
+classic	attack-chooser-renderer	0x878ef1	0x1415e8f8c	cstring	+
+classic	attack-chooser-renderer	0x878f2e	0x14164667c	cstring	-
+classic	attack-chooser-renderer	0x878f6d	0x14164667c	cstring	-
+classic	attack-chooser-renderer	0x878fc7	0x1415e942c	cstring	!
+classic	attack-chooser-renderer	0x8795d3	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x879607	0x1416af230	cstring	Quick attack: faster to strike and recover, but not powerful
+classic	attack-chooser-renderer	0x879766	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x87979a	0x1416af290	cstring	Heavy attack: slower to strike and recover, but hits harder
+classic	attack-chooser-renderer	0x8798f7	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x87992b	0x1416aefb0	cstring	Wild attack: fast strike, slow recovery, hard but unbalancing/inaccurate
+classic	attack-chooser-renderer	0x879a88	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x879ab5	0x1416af020	cstring	Precise attack: very slow to strike, improved accuracy
+classic	attack-chooser-renderer	0x879b13	0x1416af270	cstring	No quick attack: enraged
+classic	attack-chooser-renderer	0x879b68	0x1416af2d0	cstring	No heavy attack: enraged
+classic	attack-chooser-renderer	0x879bb6	0x1416af000	cstring	Forced wild attack: enraged
+classic	attack-chooser-renderer	0x879c04	0x1416af058	cstring	No precise attack: enraged
+classic	attack-chooser-renderer	0x879c8a	0x1416aef38	cstring	No charge attack: no target
+classic	attack-chooser-renderer	0x879cc6	0x1416aef10	cstring	No charge attack: you are on the ground
+classic	attack-chooser-renderer	0x879d02	0x1416aef80	cstring	No charge attack: you are mounted
+classic	attack-chooser-renderer	0x879d3e	0x1416aef58	cstring	No charge attack: you are chained
+classic	attack-chooser-renderer	0x879d7a	0x1416af158	cstring	No charge attack: you are in uncontrolled flight
+classic	attack-chooser-renderer	0x879db6	0x1416af130	cstring	No charge attack: you are on a vehicle
+classic	attack-chooser-renderer	0x879df2	0x1416af1b8	cstring	No charge attack: you are on a projectile
+classic	attack-chooser-renderer	0x879e2e	0x1416af190	cstring	No charge attack: you are climbing
+classic	attack-chooser-renderer	0x879e6a	0x1416af0a0	cstring	No charge attack: target is on the ground
+classic	attack-chooser-renderer	0x879ea6	0x1416af078	cstring	No charge attack: target is mounted
+classic	attack-chooser-renderer	0x879eeb	0x1416af108	cstring	No charge attack: target is chained
+classic	attack-chooser-renderer	0x879f30	0x1416af0d0	cstring	No charge attack: target is in uncontrolled flight
+classic	attack-chooser-renderer	0x879f75	0x1416aee10	cstring	No charge attack: target is on a vehicle
+classic	attack-chooser-renderer	0x879fba	0x1416aede0	cstring	No charge attack: target is on a projectile
+classic	attack-chooser-renderer	0x879fff	0x1416aee70	cstring	No charge attack: target is climbing
+classic	attack-chooser-renderer	0x87a03b	0x1416aee40	cstring	No charge attack: target shares your location
+classic	attack-chooser-renderer	0x87a077	0x1416aed38	cstring	No charge attack: target's location inaccessible
+classic	attack-chooser-renderer	0x87a0b3	0x1416aed10	cstring	No charge attack: target too far away
+classic	attack-chooser-renderer	0x87a1fd	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x87a22a	0x1416aedb0	cstring	Charge attack: move toward your opponent
+classic	attack-chooser-renderer	0x87a36e	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x87a39b	0x1416aed70	cstring	Multi-attack: choose another simultaneous action afterward
+classic	attack-chooser-renderer	0x87a7a0	0x1416aeee0	cstring	Both holding 
+classic	attack-chooser-renderer	0x87a7a9	0x1416aeed0	cstring	Grabbed their 
+classic	attack-chooser-renderer	0x87a7b5	0x1416aef00	cstring	Grabbed your 
+classic	attack-chooser-renderer	0x87a7be	0x1416aeef0	cstring	Sharing 
+classic	attack-chooser-renderer	0x87b501	0x1416aeea8	cstring	Gain possession of 
+classic	attack-chooser-renderer	0x87b89b	0x1416aec88	cstring	Grab
+classic	attack-chooser-renderer	0x87b8c0	0x1415e3720	cstring	 
+classic	attack-chooser-renderer	0x87b9ea	0x1415e9590	cstring	 with 
+classic	attack-chooser-renderer	0x87bdb8	0x1416aee98	cstring	Wrestle using 
+classic	attack-chooser-renderer	0x87c073	0x1416aeec4	cstring	Lock 
+classic	attack-chooser-renderer	0x87c0b1	0x1415e9590	cstring	 with 
+classic	attack-chooser-renderer	0x87c333	0x1416aeebc	cstring	Choke 
+classic	attack-chooser-renderer	0x87c5a3	0x1416aec68	cstring	Take-down by 
+classic	attack-chooser-renderer	0x87c823	0x1416aec58	cstring	Throw by 
+classic	attack-chooser-renderer	0x87caa3	0x1416aec80	cstring	Pinch 
+classic	attack-chooser-renderer	0x87cd13	0x1416aec78	cstring	Gouge 
+classic	attack-chooser-renderer	0x87cf83	0x1416aec20	cstring	Break 
+classic	attack-chooser-renderer	0x87d228	0x1416aec40	cstring	Release choke of 
+classic	attack-chooser-renderer	0x87d245	0x1415e8944	cstring	 on 
+classic	attack-chooser-renderer	0x87d267	0x1416aec08	cstring	Release joint lock of 
+classic	attack-chooser-renderer	0x87d270	0x1416aec28	cstring	Release grip of 
+classic	attack-chooser-renderer	0x87d290	0x1416aecc8	cstring	Loosen choke of 
+classic	attack-chooser-renderer	0x87d299	0x1416aece0	cstring	Loosen joint lock of 
+classic	attack-chooser-renderer	0x87d2a2	0x1416aed00	cstring	Break grip of 
+classic	attack-chooser-renderer	0x87d2bf	0x1415e8944	cstring	 on 
+classic	attack-chooser-renderer	0x87d533	0x1416aecf8	cstring	Shake 
+classic	attack-chooser-renderer	0x87d7b3	0x1416aec90	cstring	Strangle 

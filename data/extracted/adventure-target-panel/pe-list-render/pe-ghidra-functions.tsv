@@ -1,0 +1,5 @@
+edition	image	role	start_rva	code_end_rva	assembly_file	owners	source_path
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x880044	pe-reference-attack-chooser-renderer.asm	attack-chooser-renderer	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+reference	PE:6a70a6d9:02711000	selected-target-summary	0x872f10	0x8733a4	pe-reference-selected-target-summary.asm	selected-target-summary	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d8c4	pe-classic-attack-chooser-renderer.asm	attack-chooser-renderer	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	selected-target-summary	0x870790	0x870c24	pe-classic-selected-target-summary.asm	selected-target-summary	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe

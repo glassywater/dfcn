@@ -1,0 +1,111 @@
+edition	role	instruction_rva	condition
+steam	prefix	0x7e489d	cmp    rcx,rdx
+steam	prefix	0x7e48b1	cmp    r13d,0xffffffff
+steam	prefix	0x7e48bb	cmp    r13d,0x6
+steam	prefix	0x7e4b3e	cmp    rdx,0xf
+steam	prefix	0x7e4b4e	cmp    rdx,0x1000
+steam	prefix	0x7e4b66	cmp    rax,0x1f
+steam	prefix	0x7e4bd4	cmp    r15,r12
+steam	prefix	0x7e4bee	test   r9,r9
+steam	prefix	0x7e4bf7	cmp    r10d,0xffffffff
+steam	prefix	0x7e4c1d	cmp    DWORD PTR [r14],r10d
+steam	prefix	0x7e4c32	cmp    edx,eax
+steam	prefix	0x7e4c39	test   r14,r14
+steam	prefix	0x7e4c42	cmp    WORD PTR [r14+0x4],0x2
+steam	prefix	0x7e4c60	cmp    rsi,r14
+steam	prefix	0x7e4c71	cmp    ax,0x8
+steam	prefix	0x7e4c7e	test   BYTE PTR [rdi+0x14],0x1
+steam	prefix	0x7e4ca0	cmp    rbx,rdi
+steam	prefix	0x7e4cda	cmp    BYTE PTR [rbp-0x31],0x0
+steam	prefix	0x7e4ce3	cmp    eax,0xffffffff
+steam	prefix	0x7e4d12	cmp    BYTE PTR [rbp-0x21],0x0
+steam	prefix	0x7e4d1b	cmp    eax,0xffffffff
+steam	prefix	0x7e4d4a	cmp    BYTE PTR [rbp-0x11],0x0
+steam	prefix	0x7e4d53	cmp    eax,0xffffffff
+steam	prefix	0x7e4d81	cmp    BYTE PTR [rbp-0x1],0x0
+steam	prefix	0x7e4d8a	cmp    eax,0xffffffff
+steam	prefix	0x7e4da0	cmp    rax,rcx
+steam	prefix	0x7e4da5	cmp    r13d,0xffffffff
+steam	prefix	0x7e4dae	cmp    DWORD PTR [rdx+0x4],r13d
+steam	prefix	0x7e4deb	cmp    r13d,0xffffffff
+steam	level-selection	0x14e3063	cmp    r14,r15
+steam	level-selection	0x14e307d	test   r9,r9
+steam	level-selection	0x14e3086	cmp    r10d,0xffffffff
+steam	level-selection	0x14e30ad	cmp    DWORD PTR [r13+0x0],r10d
+steam	level-selection	0x14e30c7	cmp    edx,eax
+steam	level-selection	0x14e30d0	test   r13,r13
+steam	level-selection	0x14e30d9	cmp    WORD PTR [r13+0x4],0x2
+steam	level-selection	0x14e30f0	cmp    rsi,rbp
+steam	level-selection	0x14e3107	cmp    ax,0x8
+steam	level-selection	0x14e3114	test   BYTE PTR [rdi+0x14],0x1
+steam	level-selection	0x14e3130	cmp    rbx,rdi
+steam	level-selection	0x14e3164	cmp    BYTE PTR [rsp+0x60],r12b
+steam	level-selection	0x14e3184	cmp    eax,0xffffffff
+steam	level-selection	0x14e31a6	cmp    BYTE PTR [rsp+0x70],r12b
+steam	level-selection	0x14e31c6	cmp    eax,0xffffffff
+steam	level-selection	0x14e31fa	cmp    BYTE PTR [rsp+0x80],dl
+steam	level-selection	0x14e3210	cmp    eax,0xffffffff
+steam	level-selection	0x14e323f	cmp    BYTE PTR [rsp+0x90],dl
+steam	level-selection	0x14e3258	cmp    eax,0xffffffff
+steam	level-selection	0x14e3260	cmp    BYTE PTR [rsp+0xf0],0x0
+steam	level-selection	0x14e326a	test   r12b,r12b
+steam	level-selection	0x14e328c	test   r12b,r12b
+steam	level-selection	0x14e32d4	test   r12,r12
+steam	level-selection	0x14e32d9	test   rbx,rbx
+steam	level-selection	0x14e3303	cmp    QWORD PTR [rsp+0x30],0x0
+steam	level-selection	0x14e3317	test   rax,rax
+classic	prefix	0x7e211d	cmp    rcx,rdx
+classic	prefix	0x7e2131	cmp    r13d,0xffffffff
+classic	prefix	0x7e213b	cmp    r13d,0x6
+classic	prefix	0x7e23be	cmp    rdx,0xf
+classic	prefix	0x7e23ce	cmp    rdx,0x1000
+classic	prefix	0x7e23e6	cmp    rax,0x1f
+classic	prefix	0x7e2454	cmp    r15,r12
+classic	prefix	0x7e246e	test   r9,r9
+classic	prefix	0x7e2477	cmp    r10d,0xffffffff
+classic	prefix	0x7e249d	cmp    DWORD PTR [r14],r10d
+classic	prefix	0x7e24b2	cmp    edx,eax
+classic	prefix	0x7e24b9	test   r14,r14
+classic	prefix	0x7e24c2	cmp    WORD PTR [r14+0x4],0x2
+classic	prefix	0x7e24e0	cmp    rsi,r14
+classic	prefix	0x7e24f1	cmp    ax,0x8
+classic	prefix	0x7e24fe	test   BYTE PTR [rdi+0x14],0x1
+classic	prefix	0x7e2520	cmp    rbx,rdi
+classic	prefix	0x7e255a	cmp    BYTE PTR [rbp-0x31],0x0
+classic	prefix	0x7e2563	cmp    eax,0xffffffff
+classic	prefix	0x7e2592	cmp    BYTE PTR [rbp-0x21],0x0
+classic	prefix	0x7e259b	cmp    eax,0xffffffff
+classic	prefix	0x7e25ca	cmp    BYTE PTR [rbp-0x11],0x0
+classic	prefix	0x7e25d3	cmp    eax,0xffffffff
+classic	prefix	0x7e2601	cmp    BYTE PTR [rbp-0x1],0x0
+classic	prefix	0x7e260a	cmp    eax,0xffffffff
+classic	prefix	0x7e2620	cmp    rax,rcx
+classic	prefix	0x7e2625	cmp    r13d,0xffffffff
+classic	prefix	0x7e262e	cmp    DWORD PTR [rdx+0x4],r13d
+classic	prefix	0x7e266b	cmp    r13d,0xffffffff
+classic	level-selection	0x14ddfd3	cmp    r14,r15
+classic	level-selection	0x14ddfed	test   r9,r9
+classic	level-selection	0x14ddff6	cmp    r10d,0xffffffff
+classic	level-selection	0x14de01d	cmp    DWORD PTR [r13+0x0],r10d
+classic	level-selection	0x14de037	cmp    edx,eax
+classic	level-selection	0x14de040	test   r13,r13
+classic	level-selection	0x14de049	cmp    WORD PTR [r13+0x4],0x2
+classic	level-selection	0x14de060	cmp    rsi,rbp
+classic	level-selection	0x14de077	cmp    ax,0x8
+classic	level-selection	0x14de084	test   BYTE PTR [rdi+0x14],0x1
+classic	level-selection	0x14de0a0	cmp    rbx,rdi
+classic	level-selection	0x14de0d4	cmp    BYTE PTR [rsp+0x60],r12b
+classic	level-selection	0x14de0f4	cmp    eax,0xffffffff
+classic	level-selection	0x14de116	cmp    BYTE PTR [rsp+0x70],r12b
+classic	level-selection	0x14de136	cmp    eax,0xffffffff
+classic	level-selection	0x14de16a	cmp    BYTE PTR [rsp+0x80],dl
+classic	level-selection	0x14de180	cmp    eax,0xffffffff
+classic	level-selection	0x14de1af	cmp    BYTE PTR [rsp+0x90],dl
+classic	level-selection	0x14de1c8	cmp    eax,0xffffffff
+classic	level-selection	0x14de1d0	cmp    BYTE PTR [rsp+0xf0],0x0
+classic	level-selection	0x14de1da	test   r12b,r12b
+classic	level-selection	0x14de1fc	test   r12b,r12b
+classic	level-selection	0x14de244	test   r12,r12
+classic	level-selection	0x14de249	test   rbx,rbx
+classic	level-selection	0x14de273	cmp    QWORD PTR [rsp+0x30],0x0
+classic	level-selection	0x14de287	test   rax,rax

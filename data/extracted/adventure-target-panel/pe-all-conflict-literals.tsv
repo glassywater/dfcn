@@ -1,0 +1,33 @@
+edition	image	owners	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e48f7	rip-relative	0x162fc40	finite-text-operand-or-substring	Encounter
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4904	rip-relative	0x162fc48	finite-text-operand-or-substring	r
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4952	rip-relative	0x1630080	finite-text-operand-or-substring	Horseplay
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e495f	rip-relative	0x1630088	finite-text-operand-or-substring	y
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e49ad	inline-immediate-fragment		finite-short-string-fragment	Training
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e49ff	rip-relative	0x1630068	finite-text-operand-or-substring	Brawl
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4a08	rip-relative	0x163006c	finite-text-operand-or-substring	l
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4a56	rip-relative	0x1630070	finite-text-operand-or-substring	Non-lethal
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4a63	rip-relative	0x1630078	finite-text-operand-or-substring	al
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4ab2	rip-relative	0x16300b4	finite-text-operand-or-substring	Lethal
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4abb	rip-relative	0x16300b8	finite-text-operand-or-substring	al
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4b0a	rip-relative	0x16300c0	finite-text-operand-or-substring	No Quarter
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4b17	rip-relative	0x16300c8	finite-text-operand-or-substring	er
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4e0f	rip-relative	0x16ad460	finite-text-operand-or-substring	Ally: 
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4e18	rip-relative	0x16ad464	finite-text-operand-or-substring	: 
+steam	PE:6a70a6d9:02711000	target-conflict-prefix	0x7e4860	0x7e4b8c	inline-register-to-string		finite-short-string-fragment	: 
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e2177	rip-relative	0x162ac30	finite-text-operand-or-substring	Encounter
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e2184	rip-relative	0x162ac38	finite-text-operand-or-substring	r
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e21d2	rip-relative	0x162ac40	finite-text-operand-or-substring	Horseplay
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e21df	rip-relative	0x162ac48	finite-text-operand-or-substring	y
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e222d	inline-immediate-fragment		finite-short-string-fragment	Training
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e227f	rip-relative	0x162ac94	finite-text-operand-or-substring	Brawl
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e2288	rip-relative	0x162ac98	finite-text-operand-or-substring	l
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e22d6	rip-relative	0x162ac70	finite-text-operand-or-substring	Non-lethal
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e22e3	rip-relative	0x162ac78	finite-text-operand-or-substring	al
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e2332	rip-relative	0x162ac7c	finite-text-operand-or-substring	Lethal
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e233b	rip-relative	0x162ac80	finite-text-operand-or-substring	al
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e238a	rip-relative	0x162abd0	finite-text-operand-or-substring	No Quarter
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e2397	rip-relative	0x162abd8	finite-text-operand-or-substring	er
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e268f	rip-relative	0x16a8650	finite-text-operand-or-substring	Ally: 
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e2698	rip-relative	0x16a8654	finite-text-operand-or-substring	: 
+classic	PE:6a70b91c:0270a000	target-conflict-prefix	0x7e20e0	0x7e240c	inline-register-to-string		finite-short-string-fragment	: 

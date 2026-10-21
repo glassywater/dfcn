@@ -99,7 +99,9 @@ Reconstructed main renderer
         draw_rectangle(record width = available panel width, height=8);
         draw_portrait_or_classic_unit_symbol(L+1,y, width=12);
         draw_hotkey(L+14,y+1);
-        draw_text(L+16,y+1,unit_identity(candidate));
+        set_cursor(L+16,y+1);
+        draw_conflict_prefix_7e4860(candidate); // advances that same cursor
+        draw_text_at_cursor(unit_identity(candidate), foreground=7, bright=false);
         for action in candidate.action_vector_0x7d0:
           if (action.kind!=-1 && y<record_y+8) draw_status(L+19,y++,action,candidate);
       break;

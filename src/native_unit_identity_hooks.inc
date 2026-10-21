@@ -720,6 +720,23 @@ static const void *capture_native_unit_movement_selected_name(const void *identi
     return result;
 }
 
+static NativeString *capture_native_unit_movement_given_name(NativeString *output,
+        const char *source, size_t length, const void *selected_name) {
+    NativeInputCallbackScope callback;
+    // 132e6c0 may replace a linked identity with unit+8 after the player
+    // recognizes it. At 132eeaa, [rsp+48] still holds that final language_name
+    // while R9 can already be its heap-backed first_name bytes. The existing
+    // assign call's relay supplies the actual selected field as argument 4.
+    capture_native_unit_reference_selected_name(reinterpret_cast<uintptr_t>(selected_name));
+    record_native_unit_reference_part<NativeUnitReferencePartKind::GivenName, true>(
+        output, source, length);
+    NativeString *result = nullptr;
+    callback.call_native([&] {
+        result = g_native_unit_identity_hooks.assign(output, source, length);
+    });
+    return result;
+}
+
 static void capture_native_unit_movement_reference(void *unit, NativeString *output,
         int32_t article, bool capitalize, bool use_custom) {
     NativeInputCallbackScope callback;
@@ -1300,8 +1317,10 @@ static bool install_native_unit_identity_hooks() {
             reinterpret_cast<const void *>(&capture_native_unit_reference_part<
                 NativeUnitReferencePartKind::Literal, true>)},
         {0x132eeaa, 0x6f8d0,
-            reinterpret_cast<const void *>(&capture_native_unit_reference_part<
-                NativeUnitReferencePartKind::GivenName, true>)},
+            // Classic 1329e1a uses the same selected-name stack slot.
+            // CALL adds the return address: caller +48 becomes relay +50.
+            reinterpret_cast<const void *>(&capture_native_unit_movement_given_name),
+            {0x4c,0x8b,0x4c,0x24,0x50}},
         {0x132f939, 0x6f8d0,
             reinterpret_cast<const void *>(&capture_native_unit_reference_part<
                 NativeUnitReferencePartKind::Authored, true>)},

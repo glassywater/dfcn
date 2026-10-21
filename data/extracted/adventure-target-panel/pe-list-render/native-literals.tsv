@@ -1,0 +1,329 @@
+edition	image	role	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87881e	rip-relative	0x16044c0	finite-text-operand-or-substring	Done
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x8788b1	rip-relative	0x16b3908	finite-text-operand-or-substring	Who will you wrestle?
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x8788de	rip-relative	0x16b38f0	finite-text-operand-or-substring	Who will you attack?
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x878950	rip-relative	0x16b39c0	finite-text-operand-or-substring	 has yielded.  Attack anyway?
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x8789a7	rip-relative	0x16b39a0	finite-text-operand-or-substring	Really start a conflict with 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x878a04	rip-relative	0x1614d50	finite-text-operand-or-substring	?
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x878a3b	rip-relative	0x16b3a00	finite-text-operand-or-substring	Really attack 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x878a98	rip-relative	0x1614d50	finite-text-operand-or-substring	?
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x878af5	rip-relative	0x16b39e0	finite-text-operand-or-substring	What do you want to aim for?
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x878b2c	rip-relative	0x167e668	finite-text-operand-or-substring	Attack 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x878b83	rip-relative	0x1618434	finite-text-operand-or-substring	:
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x878bb6	rip-relative	0x16b3980	finite-text-operand-or-substring	Wrestle 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879344	rip-relative	0x162bdb8	finite-text-operand-or-substring	Confirm
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879446	rip-relative	0x15fe724	finite-text-operand-or-substring	Cancel
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87971f	rip-relative	0x16b3834	finite-text-operand-or-substring	Dodge 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x8797a4	rip-relative	0x16b37f8	finite-text-operand-or-substring	Block 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879871	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x8798ae	rip-relative	0x1662700	finite-text-operand-or-substring	NO_SUB
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x8798d9	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879913	rip-relative	0x15ee5e0	finite-text-operand-or-substring	 with 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87995b	rip-relative	0x1615540	separator	 (
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x8799aa	rip-relative	0x1615580	separator	)
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879a2e	rip-relative	0x16b3800	finite-text-operand-or-substring	Parry 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879af8	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879b35	rip-relative	0x1662700	finite-text-operand-or-substring	NO_SUB
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879b60	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879bef	rip-relative	0x15ee5e0	finite-text-operand-or-substring	 with 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879c3f	rip-relative	0x1615540	separator	 (
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879cb6	rip-relative	0x1615580	separator	)
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879d0e	rip-relative	0x16b3990	finite-text-operand-or-substring	Dodge (
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879d53	rip-relative	0x1615580	separator	)
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879d72	rip-relative	0x16b3998	finite-text-operand-or-substring	Block (
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879db7	rip-relative	0x1615580	separator	)
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879dd6	rip-relative	0x16b3978	finite-text-operand-or-substring	Parry (
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879eab	rip-relative	0x1615580	separator	)
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879ec7	rip-relative	0x1613fa0	finite-text-operand-or-substring	Wrestle
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x879ed0	rip-relative	0x161499c	finite-text-operand-or-substring	Strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a2ff	rip-relative	0x16b37c0	finite-text-operand-or-substring	Impossible strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a340	rip-relative	0x16b37a8	finite-text-operand-or-substring	Difficult strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a381	rip-relative	0x16b37e8	finite-text-operand-or-substring	Tricky strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a3c1	rip-relative	0x16b37d8	finite-text-operand-or-substring	Normal strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a3ff	rip-relative	0x16b3898	finite-text-operand-or-substring	Easy strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a439	rip-relative	0x16b3888	finite-text-operand-or-substring	Easier strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a477	rip-relative	0x16b38b8	finite-text-operand-or-substring	Simple strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a4b7	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a4fe	rip-relative	0x16b38a8	finite-text-operand-or-substring	can only graze
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a545	rip-relative	0x16b3858	finite-text-operand-or-substring	can't land squarely
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a58c	rip-relative	0x16b3840	finite-text-operand-or-substring	can't quite connect
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a5d3	rip-relative	0x16b3878	finite-text-operand-or-substring	fairly solid
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a617	rip-relative	0x16b386c	finite-text-operand-or-substring	square
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a65b	rip-relative	0x16b42d8	finite-text-operand-or-substring	very square
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a6a2	rip-relative	0x16b42c8	finite-text-operand-or-substring	direct hit
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a6f6	rip-relative	0x15edfac	finite-text-operand-or-substring	+
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a733	rip-relative	0x15edfac	finite-text-operand-or-substring	+
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a770	rip-relative	0x164b74c	finite-text-operand-or-substring	-
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a7af	rip-relative	0x164b74c	finite-text-operand-or-substring	-
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87a808	rip-relative	0x15ee438	finite-text-operand-or-substring	!
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87aae2	rip-relative	0x16b42ec	finite-text-operand-or-substring	stab
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ab0f	rip-relative	0x16b42e4	finite-text-operand-or-substring	slash
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ab3c	rip-relative	0x16b42ac	finite-text-operand-or-substring	slap
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ab66	rip-relative	0x16b42a4	finite-text-operand-or-substring	hack
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ab90	rip-relative	0x16b42bc	finite-text-operand-or-substring	bash
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87abba	rip-relative	0x16b42b4	finite-text-operand-or-substring	lash
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87abf5	rip-relative	0x16b4324	finite-text-operand-or-substring	pommel
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ac3e	rip-relative	0x16b431c	finite-text-operand-or-substring	punch
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ac58	rip-relative	0x1675118	finite-text-operand-or-substring	kick
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ac72	rip-relative	0x16b4334	finite-text-operand-or-substring	bite
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ac8c	rip-relative	0x16b432c	finite-text-operand-or-substring	sting
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87aca6	rip-relative	0x16b4304	finite-text-operand-or-substring	snatch
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ae57	rip-relative	0x15eb514	separator	/
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ae69	rip-relative	0x1662708	finite-text-operand-or-substring	strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ae79	rip-relative	0x15eb514	separator	/
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87aeae	rip-relative	0x1662700	finite-text-operand-or-substring	NO_SUB
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87aeda	rip-relative	0x15eb514	separator	/
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87af62	rip-relative	0x15eb514	separator	/
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87afad	rip-relative	0x16627f4	finite-text-operand-or-substring	push
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b043	rip-relative	0x16b2ca0	finite-text-operand-or-substring	Impossible
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b084	rip-relative	0x16b42f8	finite-text-operand-or-substring	Difficult
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b0c5	rip-relative	0x16b4314	finite-text-operand-or-substring	Tricky
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b10e	rip-relative	0x16164b8	finite-text-operand-or-substring	Normal
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b16c	rip-relative	0x16b430c	finite-text-operand-or-substring	Easy
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b1aa	rip-relative	0x16b4100	finite-text-operand-or-substring	Easier
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b1e8	rip-relative	0x16b40f8	finite-text-operand-or-substring	Simple
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b231	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b276	rip-relative	0x16b4110	finite-text-operand-or-substring	VVSlow
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b2b7	rip-relative	0x16b4108	finite-text-operand-or-substring	V Slow
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b2f8	rip-relative	0x16b40dc	finite-text-operand-or-substring	Slow
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b336	rip-relative	0x16b40d4	finite-text-operand-or-substring	Fast
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b374	rip-relative	0x16b40f0	finite-text-operand-or-substring	V Fast
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b3bd	rip-relative	0x16b40e8	finite-text-operand-or-substring	 strike
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b3ea	rip-relative	0x15e90d8	separator	, 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b430	rip-relative	0x16b38a8	finite-text-operand-or-substring	can only graze
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b476	rip-relative	0x16b3858	finite-text-operand-or-substring	can't land squarely
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b4bc	rip-relative	0x16b3840	finite-text-operand-or-substring	can't quite connect
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b502	rip-relative	0x16b3878	finite-text-operand-or-substring	fairly solid
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b54a	rip-relative	0x16b386c	finite-text-operand-or-substring	square
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b58d	rip-relative	0x16b42d8	finite-text-operand-or-substring	very square
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b5d3	rip-relative	0x16b42c8	finite-text-operand-or-substring	direct hit
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b634	rip-relative	0x15edfac	finite-text-operand-or-substring	+
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b671	rip-relative	0x15edfac	finite-text-operand-or-substring	+
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b6ae	rip-relative	0x164b74c	finite-text-operand-or-substring	-
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b6ed	rip-relative	0x164b74c	finite-text-operand-or-substring	-
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87b747	rip-relative	0x15ee438	finite-text-operand-or-substring	!
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87bd53	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87bd87	rip-relative	0x16b41e8	finite-text-operand-or-substring	Quick attack: faster to strike and recover, but not powerful
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87bee6	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87bf1a	rip-relative	0x16b4248	finite-text-operand-or-substring	Heavy attack: slower to strike and recover, but hits harder
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c077	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c0ab	rip-relative	0x16b4120	finite-text-operand-or-substring	Wild attack: fast strike, slow recovery, hard but unbalancing/inaccurate
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c208	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c235	rip-relative	0x16b4190	finite-text-operand-or-substring	Precise attack: very slow to strike, improved accuracy
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c293	rip-relative	0x16b4228	finite-text-operand-or-substring	No quick attack: enraged
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c2e8	rip-relative	0x16b4288	finite-text-operand-or-substring	No heavy attack: enraged
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c336	rip-relative	0x16b4170	finite-text-operand-or-substring	Forced wild attack: enraged
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c384	rip-relative	0x16b41c8	finite-text-operand-or-substring	No precise attack: enraged
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c40a	rip-relative	0x16b3ef8	finite-text-operand-or-substring	No charge attack: no target
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c446	rip-relative	0x16b3ed0	finite-text-operand-or-substring	No charge attack: you are on the ground
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c482	rip-relative	0x16b3f40	finite-text-operand-or-substring	No charge attack: you are mounted
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c4be	rip-relative	0x16b3f18	finite-text-operand-or-substring	No charge attack: you are chained
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c4fa	rip-relative	0x16b3e40	finite-text-operand-or-substring	No charge attack: you are in uncontrolled flight
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c536	rip-relative	0x16b3e18	finite-text-operand-or-substring	No charge attack: you are on a vehicle
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c572	rip-relative	0x16b3ea0	finite-text-operand-or-substring	No charge attack: you are on a projectile
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c5ae	rip-relative	0x16b3e78	finite-text-operand-or-substring	No charge attack: you are climbing
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c5ea	rip-relative	0x16b4048	finite-text-operand-or-substring	No charge attack: target is on the ground
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c626	rip-relative	0x16b4020	finite-text-operand-or-substring	No charge attack: target is mounted
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c66b	rip-relative	0x16b40b0	finite-text-operand-or-substring	No charge attack: target is chained
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c6b0	rip-relative	0x16b4078	finite-text-operand-or-substring	No charge attack: target is in uncontrolled flight
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c6f5	rip-relative	0x16b3f98	finite-text-operand-or-substring	No charge attack: target is on a vehicle
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c73a	rip-relative	0x16b3f68	finite-text-operand-or-substring	No charge attack: target is on a projectile
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c77f	rip-relative	0x16b3ff8	finite-text-operand-or-substring	No charge attack: target is climbing
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c7bb	rip-relative	0x16b3fc8	finite-text-operand-or-substring	No charge attack: target shares your location
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c7f7	rip-relative	0x16b3d08	finite-text-operand-or-substring	No charge attack: target's location inaccessible
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c833	rip-relative	0x16b3ce0	finite-text-operand-or-substring	No charge attack: target too far away
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c97d	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87c9aa	rip-relative	0x16b3d80	finite-text-operand-or-substring	Charge attack: move toward your opponent
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87caee	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87cb1b	rip-relative	0x16b3d40	finite-text-operand-or-substring	Multi-attack: choose another simultaneous action afterward
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87cf20	rip-relative	0x16b3cb0	finite-text-operand-or-substring	Both holding 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87cf29	rip-relative	0x16b3ca0	finite-text-operand-or-substring	Grabbed their 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87cf35	rip-relative	0x16b3cd0	finite-text-operand-or-substring	Grabbed your 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87cf3e	rip-relative	0x16b3cc0	finite-text-operand-or-substring	Sharing 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87dc81	rip-relative	0x16b3df0	finite-text-operand-or-substring	Gain possession of 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87e01b	rip-relative	0x16b4898	finite-text-operand-or-substring	Grab
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87e040	rip-relative	0x15e873c	separator	 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87e16a	rip-relative	0x15ee5e0	finite-text-operand-or-substring	 with 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87e538	rip-relative	0x16b3de0	finite-text-operand-or-substring	Wrestle using 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87e7f3	rip-relative	0x16b3e0c	finite-text-operand-or-substring	Lock 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87e831	rip-relative	0x15ee5e0	finite-text-operand-or-substring	 with 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87eab3	rip-relative	0x16b3e04	finite-text-operand-or-substring	Choke 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ed23	rip-relative	0x16b3dc0	finite-text-operand-or-substring	Take-down by 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87efa3	rip-relative	0x16b3db0	finite-text-operand-or-substring	Throw by 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87f223	rip-relative	0x16b3dd8	finite-text-operand-or-substring	Pinch 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87f493	rip-relative	0x16b3dd0	finite-text-operand-or-substring	Gouge 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87f703	rip-relative	0x16b4818	finite-text-operand-or-substring	Break 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87f9a8	rip-relative	0x16b4838	finite-text-operand-or-substring	Release choke of 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87f9c5	rip-relative	0x15ed92c	finite-text-operand-or-substring	 on 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87f9e7	rip-relative	0x16b4800	finite-text-operand-or-substring	Release joint lock of 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87f9f0	rip-relative	0x16b4820	finite-text-operand-or-substring	Release grip of 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87fa10	rip-relative	0x16b47b8	finite-text-operand-or-substring	Loosen choke of 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87fa19	rip-relative	0x16b47d0	finite-text-operand-or-substring	Loosen joint lock of 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87fa22	rip-relative	0x16b47f0	finite-text-operand-or-substring	Break grip of 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87fa3f	rip-relative	0x15ed92c	finite-text-operand-or-substring	 on 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87fcb3	rip-relative	0x16b47e8	finite-text-operand-or-substring	Shake 
+reference	PE:6a70a6d9:02711000	attack-chooser-renderer	0x878600	0x87ff33	rip-relative	0x16b48a0	finite-text-operand-or-substring	Strangle 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87609e	rip-relative	0x15ff490	finite-text-operand-or-substring	Done
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876131	rip-relative	0x16aeac8	finite-text-operand-or-substring	Who will you wrestle?
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87615e	rip-relative	0x16aeab0	finite-text-operand-or-substring	Who will you attack?
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8761d0	rip-relative	0x16aea38	finite-text-operand-or-substring	 has yielded.  Attack anyway?
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876227	rip-relative	0x16aea18	finite-text-operand-or-substring	Really start a conflict with 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876284	rip-relative	0x160fd10	finite-text-operand-or-substring	?
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8762bb	rip-relative	0x16aea78	finite-text-operand-or-substring	Really attack 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876318	rip-relative	0x160fd10	finite-text-operand-or-substring	?
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876375	rip-relative	0x16aea58	finite-text-operand-or-substring	What do you want to aim for?
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8763ac	rip-relative	0x1679028	finite-text-operand-or-substring	Attack 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876403	rip-relative	0x1613404	finite-text-operand-or-substring	:
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876436	rip-relative	0x16ae8a0	finite-text-operand-or-substring	Wrestle 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876bc4	rip-relative	0x16275a8	finite-text-operand-or-substring	Confirm
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876cc6	rip-relative	0x15f959c	finite-text-operand-or-substring	Cancel
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x876f9f	rip-relative	0x16ae88c	finite-text-operand-or-substring	Dodge 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877024	rip-relative	0x16ae850	finite-text-operand-or-substring	Block 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8770f1	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87712e	rip-relative	0x165d5e0	finite-text-operand-or-substring	NO_SUB
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877159	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877193	rip-relative	0x15e9590	finite-text-operand-or-substring	 with 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8771db	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87722a	rip-relative	0x16102d8	separator	)
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8772ae	rip-relative	0x16ae858	finite-text-operand-or-substring	Parry 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877378	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8773b5	rip-relative	0x165d5e0	finite-text-operand-or-substring	NO_SUB
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8773e0	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87746f	rip-relative	0x15e9590	finite-text-operand-or-substring	 with 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8774bf	rip-relative	0x1610298	separator	 (
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877536	rip-relative	0x16102d8	separator	)
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87758e	rip-relative	0x16ae8b0	finite-text-operand-or-substring	Dodge (
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8775d3	rip-relative	0x16102d8	separator	)
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8775f2	rip-relative	0x16ae8b8	finite-text-operand-or-substring	Block (
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877637	rip-relative	0x16102d8	separator	)
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877656	rip-relative	0x16ae898	finite-text-operand-or-substring	Parry (
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87772b	rip-relative	0x16102d8	separator	)
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877747	rip-relative	0x160ef80	finite-text-operand-or-substring	Wrestle
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877750	rip-relative	0x160f8dc	finite-text-operand-or-substring	Strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877b7f	rip-relative	0x16ae918	finite-text-operand-or-substring	Impossible strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877bc0	rip-relative	0x16ae900	finite-text-operand-or-substring	Difficult strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877c01	rip-relative	0x16ae940	finite-text-operand-or-substring	Tricky strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877c41	rip-relative	0x16ae930	finite-text-operand-or-substring	Normal strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877c7f	rip-relative	0x16ae8d0	finite-text-operand-or-substring	Easy strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877cb9	rip-relative	0x16ae8c0	finite-text-operand-or-substring	Easier strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877cf7	rip-relative	0x16ae8f0	finite-text-operand-or-substring	Simple strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877d37	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877d7e	rip-relative	0x16ae8e0	finite-text-operand-or-substring	can only graze
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877dc5	rip-relative	0x16ae7e0	finite-text-operand-or-substring	can't land squarely
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877e0c	rip-relative	0x16ae7c8	finite-text-operand-or-substring	can't quite connect
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877e53	rip-relative	0x16ae800	finite-text-operand-or-substring	fairly solid
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877e97	rip-relative	0x16ae7f4	finite-text-operand-or-substring	square
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877edb	rip-relative	0x16ae7a8	finite-text-operand-or-substring	very square
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877f22	rip-relative	0x16ae798	finite-text-operand-or-substring	direct hit
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877f76	rip-relative	0x15e8f8c	finite-text-operand-or-substring	+
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877fb3	rip-relative	0x15e8f8c	finite-text-operand-or-substring	+
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x877ff0	rip-relative	0x164667c	finite-text-operand-or-substring	-
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87802f	rip-relative	0x164667c	finite-text-operand-or-substring	-
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878088	rip-relative	0x15e942c	finite-text-operand-or-substring	!
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878362	rip-relative	0x16ae7bc	finite-text-operand-or-substring	stab
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87838f	rip-relative	0x16ae7b4	finite-text-operand-or-substring	slash
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8783bc	rip-relative	0x16ae838	finite-text-operand-or-substring	slap
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8783e6	rip-relative	0x16ae830	finite-text-operand-or-substring	hack
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878410	rip-relative	0x16ae848	finite-text-operand-or-substring	bash
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87843a	rip-relative	0x16ae840	finite-text-operand-or-substring	lash
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878475	rip-relative	0x16ae818	finite-text-operand-or-substring	pommel
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8784be	rip-relative	0x16ae810	finite-text-operand-or-substring	punch
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8784d8	rip-relative	0x1670434	finite-text-operand-or-substring	kick
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8784f2	rip-relative	0x16ae828	finite-text-operand-or-substring	bite
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87850c	rip-relative	0x16ae820	finite-text-operand-or-substring	sting
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878526	rip-relative	0x16af214	finite-text-operand-or-substring	snatch
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8786d7	rip-relative	0x15e64cc	separator	/
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8786e9	rip-relative	0x165d5e8	finite-text-operand-or-substring	strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8786f9	rip-relative	0x15e64cc	separator	/
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87872e	rip-relative	0x165d5e0	finite-text-operand-or-substring	NO_SUB
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87875a	rip-relative	0x15e64cc	separator	/
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8787e2	rip-relative	0x15e64cc	separator	/
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87882d	rip-relative	0x165da3c	finite-text-operand-or-substring	push
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8788c3	rip-relative	0x16ade98	finite-text-operand-or-substring	Impossible
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878904	rip-relative	0x16af208	finite-text-operand-or-substring	Difficult
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878945	rip-relative	0x16af224	finite-text-operand-or-substring	Tricky
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87898e	rip-relative	0x16111f4	finite-text-operand-or-substring	Normal
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8789ec	rip-relative	0x16af21c	finite-text-operand-or-substring	Easy
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878a2a	rip-relative	0x16af1ec	finite-text-operand-or-substring	Easier
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878a68	rip-relative	0x16af1e4	finite-text-operand-or-substring	Simple
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878ab1	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878af6	rip-relative	0x16af1fc	finite-text-operand-or-substring	VVSlow
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878b37	rip-relative	0x16af1f4	finite-text-operand-or-substring	V Slow
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878b78	rip-relative	0x16af2f4	finite-text-operand-or-substring	Slow
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878bb6	rip-relative	0x16af2ec	finite-text-operand-or-substring	Fast
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878bf4	rip-relative	0x16af308	finite-text-operand-or-substring	V Fast
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878c3d	rip-relative	0x16af300	finite-text-operand-or-substring	 strike
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878c6a	rip-relative	0x15e40c4	separator	, 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878cb0	rip-relative	0x16ae8e0	finite-text-operand-or-substring	can only graze
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878cf6	rip-relative	0x16ae7e0	finite-text-operand-or-substring	can't land squarely
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878d3c	rip-relative	0x16ae7c8	finite-text-operand-or-substring	can't quite connect
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878d82	rip-relative	0x16ae800	finite-text-operand-or-substring	fairly solid
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878dca	rip-relative	0x16ae7f4	finite-text-operand-or-substring	square
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878e0d	rip-relative	0x16ae7a8	finite-text-operand-or-substring	very square
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878e53	rip-relative	0x16ae798	finite-text-operand-or-substring	direct hit
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878eb4	rip-relative	0x15e8f8c	finite-text-operand-or-substring	+
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878ef1	rip-relative	0x15e8f8c	finite-text-operand-or-substring	+
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878f2e	rip-relative	0x164667c	finite-text-operand-or-substring	-
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878f6d	rip-relative	0x164667c	finite-text-operand-or-substring	-
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x878fc7	rip-relative	0x15e942c	finite-text-operand-or-substring	!
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8795d3	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879607	rip-relative	0x16af230	finite-text-operand-or-substring	Quick attack: faster to strike and recover, but not powerful
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879766	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87979a	rip-relative	0x16af290	finite-text-operand-or-substring	Heavy attack: slower to strike and recover, but hits harder
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x8798f7	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87992b	rip-relative	0x16aefb0	finite-text-operand-or-substring	Wild attack: fast strike, slow recovery, hard but unbalancing/inaccurate
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879a88	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879ab5	rip-relative	0x16af020	finite-text-operand-or-substring	Precise attack: very slow to strike, improved accuracy
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879b13	rip-relative	0x16af270	finite-text-operand-or-substring	No quick attack: enraged
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879b68	rip-relative	0x16af2d0	finite-text-operand-or-substring	No heavy attack: enraged
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879bb6	rip-relative	0x16af000	finite-text-operand-or-substring	Forced wild attack: enraged
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879c04	rip-relative	0x16af058	finite-text-operand-or-substring	No precise attack: enraged
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879c8a	rip-relative	0x16aef38	finite-text-operand-or-substring	No charge attack: no target
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879cc6	rip-relative	0x16aef10	finite-text-operand-or-substring	No charge attack: you are on the ground
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879d02	rip-relative	0x16aef80	finite-text-operand-or-substring	No charge attack: you are mounted
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879d3e	rip-relative	0x16aef58	finite-text-operand-or-substring	No charge attack: you are chained
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879d7a	rip-relative	0x16af158	finite-text-operand-or-substring	No charge attack: you are in uncontrolled flight
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879db6	rip-relative	0x16af130	finite-text-operand-or-substring	No charge attack: you are on a vehicle
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879df2	rip-relative	0x16af1b8	finite-text-operand-or-substring	No charge attack: you are on a projectile
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879e2e	rip-relative	0x16af190	finite-text-operand-or-substring	No charge attack: you are climbing
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879e6a	rip-relative	0x16af0a0	finite-text-operand-or-substring	No charge attack: target is on the ground
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879ea6	rip-relative	0x16af078	finite-text-operand-or-substring	No charge attack: target is mounted
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879eeb	rip-relative	0x16af108	finite-text-operand-or-substring	No charge attack: target is chained
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879f30	rip-relative	0x16af0d0	finite-text-operand-or-substring	No charge attack: target is in uncontrolled flight
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879f75	rip-relative	0x16aee10	finite-text-operand-or-substring	No charge attack: target is on a vehicle
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879fba	rip-relative	0x16aede0	finite-text-operand-or-substring	No charge attack: target is on a projectile
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x879fff	rip-relative	0x16aee70	finite-text-operand-or-substring	No charge attack: target is climbing
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a03b	rip-relative	0x16aee40	finite-text-operand-or-substring	No charge attack: target shares your location
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a077	rip-relative	0x16aed38	finite-text-operand-or-substring	No charge attack: target's location inaccessible
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a0b3	rip-relative	0x16aed10	finite-text-operand-or-substring	No charge attack: target too far away
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a1fd	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a22a	rip-relative	0x16aedb0	finite-text-operand-or-substring	Charge attack: move toward your opponent
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a36e	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a39b	rip-relative	0x16aed70	finite-text-operand-or-substring	Multi-attack: choose another simultaneous action afterward
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a7a0	rip-relative	0x16aeee0	finite-text-operand-or-substring	Both holding 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a7a9	rip-relative	0x16aeed0	finite-text-operand-or-substring	Grabbed their 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a7b5	rip-relative	0x16aef00	finite-text-operand-or-substring	Grabbed your 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87a7be	rip-relative	0x16aeef0	finite-text-operand-or-substring	Sharing 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87b501	rip-relative	0x16aeea8	finite-text-operand-or-substring	Gain possession of 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87b89b	rip-relative	0x16aec88	finite-text-operand-or-substring	Grab
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87b8c0	rip-relative	0x15e3720	separator	 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87b9ea	rip-relative	0x15e9590	finite-text-operand-or-substring	 with 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87bdb8	rip-relative	0x16aee98	finite-text-operand-or-substring	Wrestle using 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87c073	rip-relative	0x16aeec4	finite-text-operand-or-substring	Lock 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87c0b1	rip-relative	0x15e9590	finite-text-operand-or-substring	 with 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87c333	rip-relative	0x16aeebc	finite-text-operand-or-substring	Choke 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87c5a3	rip-relative	0x16aec68	finite-text-operand-or-substring	Take-down by 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87c823	rip-relative	0x16aec58	finite-text-operand-or-substring	Throw by 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87caa3	rip-relative	0x16aec80	finite-text-operand-or-substring	Pinch 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87cd13	rip-relative	0x16aec78	finite-text-operand-or-substring	Gouge 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87cf83	rip-relative	0x16aec20	finite-text-operand-or-substring	Break 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d228	rip-relative	0x16aec40	finite-text-operand-or-substring	Release choke of 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d245	rip-relative	0x15e8944	finite-text-operand-or-substring	 on 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d267	rip-relative	0x16aec08	finite-text-operand-or-substring	Release joint lock of 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d270	rip-relative	0x16aec28	finite-text-operand-or-substring	Release grip of 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d290	rip-relative	0x16aecc8	finite-text-operand-or-substring	Loosen choke of 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d299	rip-relative	0x16aece0	finite-text-operand-or-substring	Loosen joint lock of 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d2a2	rip-relative	0x16aed00	finite-text-operand-or-substring	Break grip of 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d2bf	rip-relative	0x15e8944	finite-text-operand-or-substring	 on 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d533	rip-relative	0x16aecf8	finite-text-operand-or-substring	Shake 
+classic	PE:6a70b91c:0270a000	attack-chooser-renderer	0x875e80	0x87d7b3	rip-relative	0x16aec90	finite-text-operand-or-substring	Strangle 

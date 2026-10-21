@@ -1,0 +1,5 @@
+edition	image	role	start_rva	code_end_rva	assembly_file	owners	source_path
+steam	PE:6a70a6d9:02711000	prefix	0x7e4860	0x7e4e74	pe-steam-conflict-prefix.asm	target-conflict-prefix	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+steam	PE:6a70a6d9:02711000	level-selection	0x14e3010	0x14e334c	pe-steam-conflict-level-selection.asm	target-conflict-level-selection	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	prefix	0x7e20e0	0x7e26f4	pe-classic-conflict-prefix.asm	target-conflict-prefix	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	level-selection	0x14ddf80	0x14de2bc	pe-classic-conflict-level-selection.asm	target-conflict-level-selection	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe

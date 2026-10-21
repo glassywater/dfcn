@@ -6119,16 +6119,34 @@ static std::string preserve_native_language_original(
 static void clear_native_language_originals();
 static bool item_term_contains_sentence_punctuation(std::string_view source);
 
-static size_t adventure_ranged_action_offset(std::string_view source) {
+struct AdventureConflictPrefix {
+    std::string_view label;
+    size_t identity_offset;
+};
+
+// PE 7e4860 / 7e20e0 draws a direct level, shared-conflict Ally, a
+// label-less colon, or nothing. The unit/action formatter follows separately.
+// A trimmed label with no identity is still a complete native production.
+static std::optional<AdventureConflictPrefix> adventure_conflict_prefix(
+        std::string_view source) {
     for (const std::string_view prefix : {"Encounter: ", "Horseplay: ", "Training: ",
             "Brawl: ", "Non-lethal: ", "Lethal: ", "No Quarter: ", "Ally: ", ": "}) {
-        if (!source.starts_with(prefix)) continue;
-        const auto action = source.substr(prefix.size());
-        if (action.starts_with("Quickly shoot ") ||
-                action.starts_with("Aim carefully and shoot ") ||
-                action.starts_with("Quickly throw at ") ||
-                action.starts_with("Aim carefully and throw at ")) return prefix.size();
+        if (source.starts_with(prefix))
+            return AdventureConflictPrefix{prefix.substr(0, prefix.size() - 2), prefix.size()};
+        if (source == prefix.substr(0, prefix.size() - 1))
+            return AdventureConflictPrefix{prefix.substr(0, prefix.size() - 2), source.size()};
     }
+    return std::nullopt;
+}
+
+static size_t adventure_ranged_action_offset(std::string_view source) {
+    const auto prefix = adventure_conflict_prefix(source);
+    if (!prefix) return 0;
+    const auto action = source.substr(prefix->identity_offset);
+    if (action.starts_with("Quickly shoot ") ||
+            action.starts_with("Aim carefully and shoot ") ||
+            action.starts_with("Quickly throw at ") ||
+            action.starts_with("Aim carefully and throw at ")) return prefix->identity_offset;
     return 0;
 }
 
