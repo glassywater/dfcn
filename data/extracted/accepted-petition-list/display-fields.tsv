@@ -1,0 +1,13 @@
+edition	call_rva	return_rva	field	production
+reference	0x3f9bb2	0x3f9bb7	Request	resolved historical_entity.type == 10; level 1 guildhall / level 2 grand guildhall / other level empty
+reference	0x3f9ceb	0x3f9cf0	Guild	base-profession(request.profession, current race, plural=true, capitalize=true) + ' guild'
+reference	0x3f9eee	0x3f9ef3	Date	request day ordinal + ' ' + calendar month + ', ' + agreement year
+reference	0x3fa048	0x3fa04d	Request	resolved historical_entity.type == 5; level 1 temple / level 2 temple complex / other level empty
+reference	0x3fa139	0x3fa13e	Faith	EnglishName(historical_entity.name at +0x20, capitalize=true, short=false); agreement entity_ids[0] selects the historical entity
+reference	0x3fa33c	0x3fa341	Date	request day ordinal + ' ' + calendar month + ', ' + agreement year
+classic	0x3f7772	0x3f7777	Request	resolved historical_entity.type == 10; level 1 guildhall / level 2 grand guildhall / other level empty
+classic	0x3f78ab	0x3f78b0	Guild	base-profession(request.profession, current race, plural=true, capitalize=true) + ' guild'
+classic	0x3f7aae	0x3f7ab3	Date	request day ordinal + ' ' + calendar month + ', ' + agreement year
+classic	0x3f7c08	0x3f7c0d	Request	resolved historical_entity.type == 5; level 1 temple / level 2 temple complex / other level empty
+classic	0x3f7cf9	0x3f7cfe	Faith	EnglishName(historical_entity.name at +0x20, capitalize=true, short=false); agreement entity_ids[0] selects the historical entity
+classic	0x3f7efc	0x3f7f01	Date	request day ordinal + ' ' + calendar month + ', ' + agreement year

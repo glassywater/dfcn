@@ -1,0 +1,111 @@
+Accepted-petition list: original source extraction
+
+This directory records the three-line accepted construction list. It is not
+the separate single-request hover detail headed "Accepted petition:".
+
+The configured Steam and Classic PE files were read directly. pe-functions.tsv
+records their identity, SHA256, path, and complete native supplier extents.
+complete-owner-sources.tsv links the actual complete renderer assembly and
+Ghidra C already retained in fortress-rectangle. The two new focused assembly
+slices preserve list geometry/count, visibility gates, filtering, both entity
+branches, all six addst calls, clipping, and loop continuation. Their outgoing
+edges are retained as outgoing edges: neither slice is represented as a new
+callable native function or a hand-written substitute for Ghidra output.
+
+pe-*-ghidra-decompiled.c and pe-*-ROLE.c are actual Ghidra 12.1.4 output from
+the configured original images, produced by DecompileAcceptedPetitionList.java.
+The complete suppliers cover profession selection, all 135 profession enum
+values, creature RAW overrides, species labels, EnglishName construction, all
+nine English word-form selectors, twelve calendar months, signed decimal
+formatting and its ostream supplier, and capitalization. Signed ECX/RDX
+parameters for the number append/stream functions are annotated from their
+original instructions and the imported ostream operator<<(int) signature.
+No game instructions are patched for this decompilation.
+
+pe-switches.tsv retains every original selector alias, including compressed
+byte mappings. pe-switch-table-bytes.tsv retains the original target-RVA and
+selector bytes, including month and ordinal tables outside the focused code.
+Direct call/jump extraction accepts objdump's 0x prefix. An indirect jump must
+actually jump through a register; a direct jump is never mistaken for a jump
+table. Table bytes are excluded from instruction/function bodies.
+
+Finite wording
+
+The list has exactly four nonempty fixed request labels:
+  Build guildhall
+  Build grand guildhall
+  Build temple
+  Build temple complex
+The native text omits the article used in the hover detail. Entity type 10
+selects guild requests; type 5 selects faith requests. These are the resolved
+historical_entity.type values. They are different from the prerequisite first
+agreement detail.type == 12. Levels other than 1 or 2 leave the request label
+empty; other entity types emit no text in the reserved four-row record slot.
+
+The guild line appends literal " guild" to the native profession supplier.
+finite-literal-operands.tsv records all finite instruction text and punctuation
+from the list and suppliers with original instruction addresses. All 135 native
+profession selector branches remain available in pe-switches.tsv and the
+actual profession-words C, with the existing semantic selector table in
+../announcement-profession-succession/profession-switch-text.tsv.
+The game itself builds "Thiefs" and "Master Thiefs" by applying its ordinary
+plural suffix "s" to "thief" / "Master Thief" and then capitalization. These
+native forms must be handled even though conventional English uses "thieves".
+
+installed-raw-professions.tsv is extracted directly from each configured
+installation's creature_standard.txt. It includes the DWARF creature's twelve
+PROFESSION_NAME pairs at lines 276..287, GENERAL_BABY_NAME at line 263 and
+GENERAL_CHILD_NAME at line 266, with exact paths and source line numbers.
+The list passes caste=-1 and selects plural=true and capitalization=true;
+caste-specific profession/child/baby labels are not inferred at this caller.
+
+Dates use signed integer source fields, the complete st/nd/rd/th selector
+mapping, literal space and comma-space, and the twelve calendar month names.
+The native month default appends nothing; it still leaves the date separators.
+Native truncation writes three individual periods. Those characters are
+retained as source evidence, while processing uses the complete captured field.
+
+Dynamic wording
+
+The faith line is EnglishName(historical_entity.name at +0x20), with
+capitalize=true and short=false. The agreement's entity entry and its first
+entity id select that historical entity. It is not agreement.name or squad.alias.
+The supplier retains first-name and authored-nickname fields, nickname display
+modes, paired generated words, The/the, Of/of, hyphens, spaces and nickname
+quotes. Runtime-authored name values are not a finite executable literal list.
+They remain typed name inputs; screenshot examples do not become new entries.
+
+installed-language-word-forms.tsv contains the actual installed
+data/vanilla/vanilla_languages/objects/language_words.txt WORD/NOUN/ADJ/PREFIX/
+VERB values, with both configured paths and line numbers. The native nine-way
+word-form selector reads the loaded WORD records. This file records source
+vocabulary, not an enumeration of every generated name combination. Missing
+word ids and out-of-range word forms append no text. Saves/mods can supply
+different RAW vocabulary; the complete typed production remains the boundary.
+installed-raw-sources.tsv retains the read source paths and file SHA256 values.
+
+Reproduction (offline source extraction, not a runtime-data generator)
+
+  & 'C:/Users/WIN11/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'D:/workspace/dfcn/tools/extract_accepted_petition_list_sources.py'
+
+Ghidra executable:
+  C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/ghidra_12.1.4_PUBLIC/support/analyzeHeadless.bat
+JAVA_HOME:
+  C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/jdk-25.0.4.1+1
+
+For each reference/classic edition, import the corresponding source_path from
+pe-functions.tsv with these arguments:
+  PROJECT_DIRECTORY PROJECT_NAME -import IMAGE -noanalysis -scriptPath D:/workspace/dfcn/tools -postScript DecompileAcceptedPetitionList.java D:/workspace/dfcn/data/extracted/accepted-petition-list EDITION -deleteProject
+
+The actual temporary project directories used are
+  D:/workspace/dfcn/data/extracted/cache/petition-list-reference-project
+  D:/workspace/dfcn/data/extracted/cache/petition-list-classic-project
+and their project names are petition-list-reference / petition-list-classic.
+Ghidra rejects project paths with a component beginning with a dot. Separate
+settings/cache directories use .cache/petition-list-EDITION-settings and
+.cache/petition-list-EDITION-cache through GHIDRA_HEADLESS_JAVA_OPTIONS:
+  -Dapplication.settingsdir=SETTINGS_DIRECTORY -Dapplication.cachedir=CACHE_DIRECTORY
+
+Source extraction and decompilation do not run the game or establish a final
+in-game visual result. No tests, display simulations or check reports are part
+of these source artifacts.

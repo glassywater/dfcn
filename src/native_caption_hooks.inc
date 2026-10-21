@@ -1835,6 +1835,9 @@ static NativeClippedPending &native_designation_clipped_pending() {
 static NativeClippedPending &native_topbar_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct TopbarClippedCaptionTag>();
 }
+static NativeClippedPending &native_petitions_clipped_pending() {
+    return reloadable_thread_state<NativeClippedPending, struct PetitionsClippedCaptionTag>();
+}
 static NativeClippedPending &native_squads_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct SquadsClippedCaptionTag>();
 }
@@ -1847,6 +1850,9 @@ static NativeClippedPending &native_character_clipped_pending() {
 static NativeClippedPending &native_clipped_pending() {
     // Native temporary strings from the sidebar must never consume or
     // replace a pending resize belonging to the background page.
+    if (g_native_petitions_write_graphics &&
+            native_graphics() == g_native_petitions_write_graphics)
+        return native_petitions_clipped_pending();
     if (g_native_embark_civilization_write_graphics &&
             native_graphics() == g_native_embark_civilization_write_graphics)
         return native_embark_civilization_clipped_pending();
@@ -1938,6 +1944,7 @@ static void remember_native_clipped_resize(NativeString *source, size_t width, c
     if (g_native_tooltip_write || (native_private_ui_write_active(native_graphics()) &&
             native_graphics() != g_native_worldgen_write_graphics &&
             native_graphics() != g_native_topbar_write_graphics &&
+            native_graphics() != g_native_petitions_write_graphics &&
             native_graphics() != g_native_designation_write_graphics &&
             native_graphics() != g_native_embark_civilization_write_graphics) ||
             native_caption_separate_output(native_graphics())) return;
@@ -2070,7 +2077,11 @@ static void capture_native_clipped_resize(NativeString *source, size_t width, ch
             original(source, width, fill);
         return;
     }
-    bool zone_plain_prefix = false;
+    // The petition list also keeps a plain prefix at widths of 1..3;
+    // its inline ellipsis stores run only for a wider retained string.
+    bool zone_plain_prefix = width > 0 && width <= 3 &&
+        g_native_petitions_write_graphics &&
+        native_graphics() == g_native_petitions_write_graphics;
 #ifdef _WIN32
     const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
     if (remember_native_character_group_resize(source, width, fill, caller)) {
@@ -2083,10 +2094,10 @@ static void capture_native_clipped_resize(NativeString *source, size_t width, ch
         // The Places zone/location column only adds dots when its retained
         // width exceeds three bytes. Narrower nonempty captions are plain
         // prefixes of the same complete native name or description.
-        zone_plain_prefix = base &&
+        zone_plain_prefix = zone_plain_prefix || (base &&
             (caller == native_reference_address(base, 0x39c8e9) ||
              caller == native_reference_address(base, 0x39d28e) ||
-             caller == native_reference_address(base, 0x39d489));
+             caller == native_reference_address(base, 0x39d489)));
     }
 #endif
     remember_native_clipped_resize(source, width, fill, false, zone_plain_prefix);
@@ -2758,7 +2769,8 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             native_caller, std::forward<Draw>(draw));
         return;
     }
-    if (graphics && (graphics == g_native_topbar_write_graphics ||
+    if (graphics && (graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         capture_native_bounded_panel_caption(graphics, source, width, top_layer,
@@ -3512,7 +3524,8 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
         });
         return;
     }
-    if (graphics && (graphics == g_native_topbar_write_graphics ||
+    if (graphics && (graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
@@ -3627,7 +3640,8 @@ static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeSt
         });
         return;
     }
-    if (graphics && (graphics == g_native_topbar_write_graphics ||
+    if (graphics && (graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
@@ -3706,7 +3720,8 @@ static void capture_native_top_caption_draw(graphicst *graphics, const NativeStr
         });
         return;
     }
-    if (graphics && (graphics == g_native_topbar_write_graphics ||
+    if (graphics && (graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
@@ -3769,7 +3784,8 @@ static void capture_native_top_simple_caption_draw(graphicst *graphics, const Na
         });
         return;
     }
-    if (graphics && (graphics == g_native_topbar_write_graphics ||
+    if (graphics && (graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
@@ -3831,7 +3847,8 @@ static void capture_native_top_flag_caption_draw(graphicst *graphics, const Nati
         });
         return;
     }
-    if (graphics && (graphics == g_native_topbar_write_graphics ||
+    if (graphics && (graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
@@ -3904,7 +3921,9 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
             original(text, width, fill);
         return;
     }
-    if ((g_native_embark_civilization_write_graphics &&
+    if ((g_native_petitions_write_graphics &&
+            native_graphics() == g_native_petitions_write_graphics) ||
+            (g_native_embark_civilization_write_graphics &&
             native_graphics() == g_native_embark_civilization_write_graphics) ||
             (g_native_topbar_write_graphics &&
             native_graphics() == g_native_topbar_write_graphics) ||
@@ -3939,7 +3958,8 @@ static void capture_native_caption_draw(graphicst *graphics, const NativeString 
         });
         return;
     }
-    if (graphics && (graphics == g_native_topbar_write_graphics ||
+    if (graphics && (graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
@@ -3994,6 +4014,7 @@ static void reset_native_caption_capture() {
     native_clipped_pending() = {};
     native_designation_clipped_pending() = {};
     native_topbar_clipped_pending() = {};
+    native_petitions_clipped_pending() = {};
     native_embark_civilization_clipped_pending() = {};
     native_squads_clipped_pending() = {};
     native_worldgen_clipped_pending() = {};

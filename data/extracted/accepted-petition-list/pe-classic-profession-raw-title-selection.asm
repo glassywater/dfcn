@@ -1,0 +1,99 @@
+; classic PE:6a70b91c:0270a000; profession-raw-title-selection; RVA 0x30ab30..0x30aca4
+; complete chained RUNTIME_FUNCTION owner; table data excluded from code
+0x30ab30: mov    QWORD PTR [rsp+0x10],rbx
+0x30ab35: mov    QWORD PTR [rsp+0x18],rbp
+0x30ab3a: mov    QWORD PTR [rsp+0x20],rsi
+0x30ab3f: push   rdi
+0x30ab40: sub    rsp,0x30
+0x30ab44: movsx  rdi,WORD PTR [rsp+0x60]
+0x30ab4a: mov    rbx,rdx
+0x30ab4d: movsx  rsi,r8w
+0x30ab51: mov    rbp,rcx
+0x30ab54: test   si,si
+0x30ab57: js     0x14030aca0
+0x30ab5d: mov    rcx,QWORD PTR [rcx+0x20]
+0x30ab61: mov    rax,QWORD PTR [rbp+0x28]
+0x30ab65: sub    rax,rcx
+0x30ab68: sar    rax,0x3
+0x30ab6c: cmp    rsi,rax
+0x30ab6f: jae    0x14030aca0
+0x30ab75: mov    eax,0x86
+0x30ab7a: cmp    di,ax
+0x30ab7d: ja     0x14030aca0
+0x30ab83: test   r9w,r9w
+0x30ab87: js     0x14030ac7c
+0x30ab8d: mov    rcx,QWORD PTR [rcx+rsi*8]
+0x30ab91: movsx  r8,r9w
+0x30ab95: mov    rax,QWORD PTR [rcx+0x180]
+0x30ab9c: sub    rax,QWORD PTR [rcx+0x178]
+0x30aba3: sar    rax,0x3
+0x30aba7: cmp    r8,rax
+0x30abaa: jae    0x14030ac7c
+0x30abb0: mov    rax,QWORD PTR [rcx+0x178]
+0x30abb7: mov    rdx,rdi
+0x30abba: mov    QWORD PTR [rsp+0x40],r14
+0x30abbf: movzx  r14d,BYTE PTR [rsp+0x68]
+0x30abc5: test   r14b,r14b
+0x30abc8: je     0x14030abd3
+0x30abca: add    rdx,0x148
+0x30abd1: jmp    0x14030abda
+0x30abd3: add    rdx,0xc1
+0x30abda: shl    rdx,0x5
+0x30abde: add    rdx,QWORD PTR [rax+r8*8]
+0x30abe2: cmp    rbx,rdx
+0x30abe5: je     0x14030abfd
+0x30abe7: cmp    QWORD PTR [rdx+0x18],0xf
+0x30abec: mov    r8,QWORD PTR [rdx+0x10]
+0x30abf0: jbe    0x14030abf5
+0x30abf2: mov    rdx,QWORD PTR [rdx]
+0x30abf5: mov    rcx,rbx
+0x30abf8: call   0x14006f860
+0x30abfd: cmp    QWORD PTR [rbx+0x10],0x0
+0x30ac02: jbe    0x14030ac59
+0x30ac04: cmp    BYTE PTR [rsp+0x70],0x0
+0x30ac09: je     0x14030ac3d
+0x30ac0b: mov    rax,QWORD PTR [rbx+0x18]
+0x30ac0f: mov    rcx,rbx
+0x30ac12: cmp    rax,0xf
+0x30ac16: jbe    0x14030ac1b
+0x30ac18: mov    rcx,QWORD PTR [rbx]
+0x30ac1b: cmp    BYTE PTR [rcx],0x61
+0x30ac1e: jl     0x14030ac3d
+0x30ac20: mov    rcx,rbx
+0x30ac23: cmp    rax,0xf
+0x30ac27: jbe    0x14030ac2c
+0x30ac29: mov    rcx,QWORD PTR [rbx]
+0x30ac2c: cmp    BYTE PTR [rcx],0x7a
+0x30ac2f: jg     0x14030ac3d
+0x30ac31: cmp    rax,0xf
+0x30ac35: jbe    0x14030ac3a
+0x30ac37: mov    rbx,QWORD PTR [rbx]
+0x30ac3a: add    BYTE PTR [rbx],0xe0
+0x30ac3d: mov    al,0x1
+0x30ac3f: mov    r14,QWORD PTR [rsp+0x40]
+0x30ac44: mov    rbx,QWORD PTR [rsp+0x48]
+0x30ac49: mov    rbp,QWORD PTR [rsp+0x50]
+0x30ac4e: mov    rsi,QWORD PTR [rsp+0x58]
+0x30ac53: add    rsp,0x30
+0x30ac57: pop    rdi
+0x30ac58: ret
+0x30ac59: movzx  eax,BYTE PTR [rsp+0x70]
+0x30ac5e: movzx  r9d,di
+0x30ac62: mov    BYTE PTR [rsp+0x28],al
+0x30ac66: movzx  r8d,si
+0x30ac6a: mov    rdx,rbx
+0x30ac6d: mov    BYTE PTR [rsp+0x20],r14b
+0x30ac72: mov    rcx,rbp
+0x30ac75: call   0x1401bb2c0
+0x30ac7a: jmp    0x14030ac3f
+0x30ac7c: movzx  eax,BYTE PTR [rsp+0x70]
+0x30ac81: movzx  r9d,di
+0x30ac85: mov    BYTE PTR [rsp+0x28],al
+0x30ac89: movzx  r8d,si
+0x30ac8d: movzx  eax,BYTE PTR [rsp+0x68]
+0x30ac92: mov    rcx,rbp
+0x30ac95: mov    BYTE PTR [rsp+0x20],al
+0x30ac99: call   0x1401bb2c0
+0x30ac9e: jmp    0x14030ac44
+0x30aca0: xor    al,al
+0x30aca2: jmp    0x14030ac44

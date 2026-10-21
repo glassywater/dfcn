@@ -1,0 +1,25 @@
+edition	role	start_rva	code_end_rva	existing_ghidra_source	current_ghidra_source
+reference	base-profession	0x132e0c0	0x132e428	data/extracted/announcement-profession-succession/reference-base-profession.c	data/extracted/accepted-petition-list/pe-reference-base-profession.c
+reference	profession-words	0x132cc10	0x132de98	data/extracted/announcement-profession-succession/reference-profession-words.c	data/extracted/accepted-petition-list/pe-reference-profession-words.c
+reference	profession-raw-title-available	0x30cea0	0x30cf63	data/extracted/legends-entity-introduction/reference-profession-raw-title-available.c	data/extracted/accepted-petition-list/pe-reference-profession-raw-title-available.c
+reference	profession-raw-title-selection	0x30cf70	0x30d0e4	data/extracted/legends-entity-introduction/reference-profession-raw-title-selection.c	data/extracted/accepted-petition-list/pe-reference-profession-raw-title-selection.c
+reference	profession-raw-creature-title	0x1bb330	0x1bb3fc	data/extracted/legends-entity-introduction/reference-profession-raw-creature-title.c	data/extracted/accepted-petition-list/pe-reference-profession-raw-creature-title.c
+reference	caste-words	0xaa3bd0	0xaa3d93	data/extracted/announcement-profession-succession/reference-caste-words.c	data/extracted/accepted-petition-list/pe-reference-caste-words.c
+reference	english-generated-name	0xa946e0	0xa94ea2	data/extracted/unit-preferences/reference-generated-art-form-name.decompiled.c	data/extracted/accepted-petition-list/pe-reference-english-generated-name.c
+reference	english-word-form	0xd2cb50	0xd2cc1c	data/extracted/unit-preferences/reference-english-word-form.decompiled.c	data/extracted/accepted-petition-list/pe-reference-english-word-form.c
+reference	calendar-month	0x773390	0x7734af	data/extracted/adventure-journal-agreements/pe-steam-ghidra-decompiled.c	data/extracted/accepted-petition-list/pe-reference-calendar-month.c
+reference	decimal-number	0x52c130	0x52c1e3		data/extracted/accepted-petition-list/pe-reference-decimal-number.c
+reference	decimal-stream	0x52c2b0	0x52c388		data/extracted/accepted-petition-list/pe-reference-decimal-stream.c
+reference	capitalize-name	0x52d3c0	0x52d600	data/extracted/unit-preferences/reference-titlecase-field.decompiled.c	data/extracted/accepted-petition-list/pe-reference-capitalize-name.c
+classic	base-profession	0x1329030	0x1329398	data/extracted/announcement-profession-succession/classic-base-profession.c	data/extracted/accepted-petition-list/pe-classic-base-profession.c
+classic	profession-words	0x1327b80	0x1328e08	data/extracted/announcement-profession-succession/classic-profession-words.c	data/extracted/accepted-petition-list/pe-classic-profession-words.c
+classic	profession-raw-title-available	0x30aa60	0x30ab23	data/extracted/legends-entity-introduction/classic-profession-raw-title-available.c	data/extracted/accepted-petition-list/pe-classic-profession-raw-title-available.c
+classic	profession-raw-title-selection	0x30ab30	0x30aca4	data/extracted/legends-entity-introduction/classic-profession-raw-title-selection.c	data/extracted/accepted-petition-list/pe-classic-profession-raw-title-selection.c
+classic	profession-raw-creature-title	0x1bb2c0	0x1bb38c	data/extracted/legends-entity-introduction/classic-profession-raw-creature-title.c	data/extracted/accepted-petition-list/pe-classic-profession-raw-creature-title.c
+classic	caste-words	0xaa0c50	0xaa0e13	data/extracted/announcement-profession-succession/classic-caste-words.c	data/extracted/accepted-petition-list/pe-classic-caste-words.c
+classic	english-generated-name	0xa91760	0xa91f22	data/extracted/unit-preferences/classic-generated-art-form-name.decompiled.c	data/extracted/accepted-petition-list/pe-classic-english-generated-name.c
+classic	english-word-form	0xd29b90	0xd29c5c	data/extracted/unit-preferences/classic-english-word-form.decompiled.c	data/extracted/accepted-petition-list/pe-classic-english-word-form.c
+classic	calendar-month	0x770db0	0x770ecf	data/extracted/adventure-journal-agreements/pe-classic-ghidra-decompiled.c	data/extracted/accepted-petition-list/pe-classic-calendar-month.c
+classic	decimal-number	0x529cf0	0x529da3		data/extracted/accepted-petition-list/pe-classic-decimal-number.c
+classic	decimal-stream	0x529db0	0x529e88		data/extracted/accepted-petition-list/pe-classic-decimal-stream.c
+classic	capitalize-name	0x52ade0	0x52b020	data/extracted/unit-preferences/classic-titlecase-field.decompiled.c	data/extracted/accepted-petition-list/pe-classic-capitalize-name.c

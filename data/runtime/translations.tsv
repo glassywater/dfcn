@@ -91771,7 +91771,7 @@ Book title subject: War	战争	hi
 Bring up your abduction	谈起你被绑架这件事	hP
 Broker can access depot	交易员可以到达贸易站	wi
 Brook: The Yellow Style	溪流:黄色风格	w
-Build a grand guildhall	建造大行会大厅	hP
+Build a grand guildhall	建造大行会大厅	P
 Build menu: Stoneworker	石匠工坊	wi
 Build placement: Stairs	楼梯	wi
 Can {b} Save The World?	{b}能拯救世界吗？	hbti
@@ -93863,7 +93863,7 @@ Book title noun: races	种族	hi
 Book title noun: seals	印章	hi
 Book title noun: ticks	滴答声	hi
 Bring up {p}'s bribery	谈起{p1}贿赂这件事	hPt
-Build a temple complex	建造神殿建筑群	hP
+Build a temple complex	建造神殿建筑群	P
 Build menu: Metalsmith	金属锻造坊	wi
 Build placement: Track	轨道	wi
 Carve upward staircase	挖掘上行楼梯	wi
@@ -95994,6 +95994,7 @@ Book title noun: tick	滴答声	hi
 Brew drink from fruit	用果实酿酒	wi
 Brew drink from plant	用植物酿酒	wi
 Brook: The Fiery Cake	溪流:火热蛋糕	w
+Build grand guildhall	建造大行会大厅	P
 Build menu: Carpenter	木匠工坊	wi
 Building ({d} of {d})	建造 ({d} of {d})	wt
 Cabinets are used in 	柜子用于个人卧室存放服饰物品。	w
@@ -98352,6 +98353,7 @@ Brook: Tribegladness	小溪：欢欣部落
 Build material: Null	物品不存在	h
 Build menu: Clothier	裁缝工坊	wi
 Build menu: Mechanic	机械师工坊	wi
+Build temple complex	建造神殿建筑群	P
 Build. (coming soon)	建造。（即将推出）	hj
 Cancel the agreement	取消约定	hP
 Cannot make campfire	无法生起篝火	w
@@ -108558,7 +108560,7 @@ Bowyer's Workshop	制弓工坊	wi
 Brook: Bandedglum	小溪: 条纹忧郁	w
 Brook: Giftwinnow	溪流:礼物筛选	w
 Brook: Ringhandle	小溪：环柄
-Build a guildhall	建造行会大厅	hP
+Build a guildhall	建造行会大厅	P
 Build menu: Siege	攻城器械工坊	wi
 Burial Receptacle	棺椁	wi
 Butcher an animal	屠宰一个动物	wi
@@ -117534,6 +117536,7 @@ Beware a rival.	提防对手。	hP
 Broker's Office	交易员办公室	wli
 Brook: Hexspoke	溪流:六辐条	w
 Brook: Tinbrush	溪流:锡刷	w
+Build guildhall	建造行会大厅	P
 Camera controls	镜头控制	hq
 Camera controls	镜头控制	w
 Catch live fish	抓捕活鱼	wi
@@ -122365,7 +122368,7 @@ Be extravagant	奢侈享受	w
 Be with family	与家人相处	w
 Begin activity	开始活动	w
 Below freezing	冰点以下
-Build a temple	建造神殿	hP
+Build a temple	建造神殿	P
 Burial Chamber	墓室	w
 Business rival	商业竞争对手	w
 Butcher's Shop	屠夫工坊	wi
@@ -127429,6 +127432,7 @@ Make clay jug	制作黏土壶	wi
 Making anvils	制作锻砧	wl
 Malachite {d}	第{d}年 孔雀石月	wt
 Master Lasher	鞭挞大师	wi
+Master Thiefs	盗贼大师	wi
 Master of {b}	{b}之主	hbti
 Masterful dye	杰作级染色	w
 Mastering {b}	精通{b}	hbti
@@ -131908,6 +131912,7 @@ Break in {s}	撞破{s1}	hPt
 Breathe fire	喷火	w
 Bring crutch	送来拐杖	wi
 Bring up {v}	谈起{v1}	hPt
+Build temple	建造神殿	P
 Cannot climb	无法攀爬	w
 Cannot stand	无法站立	w
 Ceremony of.	仪式。	hEi
@@ -147802,6 +147807,7 @@ Thebil	塞比尔	wi
 Thedak	塞达克	wi
 Themor	塞莫尔	wi
 Thibam	西巴姆	wi
+Thiefs	小偷	wi
 Thik\x82n	锡肯	wi
 Thocit	索锡特	wi
 Thokit	索基特	wi

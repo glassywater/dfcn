@@ -164,7 +164,9 @@ std::optional<std::string> Overlay::translate_journal_agreement_field(
         return translate_journal_title(source, JournalSearchKind::Artifact);
     case NativeJournalAgreementField::Date:
     case NativeJournalAgreementField::None: {
-        if (const auto date = parse_native_calendar_date(source); date && date->end == source.size()) {
+        const bool signed_day = kind == NativeJournalAgreementField::Date;
+        if (const auto date = parse_native_calendar_date(source, false, signed_day);
+                date && date->end == source.size()) {
             std::vector<size_t> origins;
             if (const auto month = RULESETS.translate_with_origins(
                     std::string(date->month), "::day::month", origins))
@@ -176,14 +178,21 @@ std::optional<std::string> Overlay::translate_journal_agreement_field(
         if (comma == std::string_view::npos) return std::nullopt;
         const auto ordinal = trim_view(source.substr(0, comma));
         const auto year = trim_view(source.substr(comma + 1));
-        if (ordinal.size() < 3 || ordinal.size() > 4 || year.empty() ||
-                !std::all_of(year.begin(), year.end(), [](char ch) { return ch >= '0' && ch <= '9'; }))
+        const auto year_digits = year.starts_with('-') ? year.substr(1) : year;
+        if (ordinal.size() < 3 || ordinal.size() > (signed_day ? 5u : 4u) ||
+                year_digits.empty() ||
+                !std::all_of(year_digits.begin(), year_digits.end(),
+                    [](char ch) { return ch >= '0' && ch <= '9'; }))
             return std::nullopt;
         const auto day = ordinal.substr(0, ordinal.size() - 2);
         const auto suffix = ordinal.substr(ordinal.size() - 2);
+        const auto day_digits = signed_day && day.starts_with('-') ? day.substr(1) : day;
         if ((suffix != "st" && suffix != "nd" && suffix != "rd" && suffix != "th") ||
-                !std::all_of(day.begin(), day.end(), [](char ch) { return ch >= '0' && ch <= '9'; }) ||
-                parse_int(std::string(day), 0) < 1 || parse_int(std::string(day), 0) > 28)
+                day_digits.empty() || day_digits.size() > 2 ||
+                !std::all_of(day_digits.begin(), day_digits.end(),
+                    [](char ch) { return ch >= '0' && ch <= '9'; }) ||
+                parse_int(std::string(day), 0) < (signed_day ? -26 : 1) ||
+                parse_int(std::string(day), 0) > 28)
             return std::nullopt;
         const auto month = legends_terms_.find("Adventurer log agreement field: Unknown month");
         if (month == legends_terms_.end()) return std::nullopt;

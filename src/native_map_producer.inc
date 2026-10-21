@@ -52,7 +52,7 @@ static void bind_native_map_display_frame(const graphicst *graphics) noexcept {
         &g_native_tooltip_layer, &g_native_notification_layer,
         &g_native_announcement_log_layer, &g_native_reports_layer,
         &g_native_squads_layer, &g_native_pause_layer, &g_native_worldgen_layer,
-        &g_native_topbar_layer, &g_native_embark_civilization_layer
+        &g_native_topbar_layer, &g_native_embark_civilization_layer, &g_native_petitions_layer
     };
     for (const auto *layer : private_layers)
         for (const auto &plane : layer->foreground.planes) {
