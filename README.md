@@ -22,13 +22,11 @@ Windows 与 Linux 共用汉化数据载入优化：TOML 规则图按节点及引
 
 当前运行包适用于 **Dwarf Fortress 53.16 / Windows x64**，无需编译，也无需安装 DFHack 或其他外部 Mod。
 
-**Steam 创意工坊：**订阅 [DFCN 汉化](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379) 后，运行文件位于 `你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/DFCN/`。仅将其中的 `dfhooks.dll` 和 `dfhooks_dfcn.ini` 复制到包含 `Dwarf Fortress.exe` 的游戏根目录，其余文件留在订阅目录。游戏与订阅内容位于同一 Steam 库时，游戏目录中 `dfhooks_dfcn.ini` 的第一行使用：
+**Steam 创意工坊：**订阅 [DFCN 汉化](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379) 并下载完成后，运行订阅目录 `你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/` 中的 [`install.bat`](workshop/content/install.bat)。脚本使用 Windows 自带 PowerShell，自动查找 Steam 游戏目录，安装 `dfhooks.dll` 并生成指向订阅目录的 `dfhooks_dfcn.ini`，无需手动复制文件或编辑路径，支持跨 Steam 库和中文路径。也可单独下载该 BAT 运行，它会查找已经下载的汉化订阅内容。
 
-```text
-../../workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll
-```
+脚本优先选择与订阅内容同库的游戏，无法唯一确定时显示目录供选择；官网版或未被自动找到的安装，可将游戏文件夹或 `Dwarf Fortress.exe` 拖到 BAT 上。已有引导文件被替换前会备份，旧版游戏根目录的 `dfhooks_dfcn.dll` 会改名备份以避免重复加载，`dfcn_config.ini` 保持原样。核心与词表留在完整的订阅目录，后续由 Steam 更新；移动目录后重新运行脚本即可。
 
-如果位于不同 Steam 库，将第一行改为该 DLL 的实际绝对路径；只写路径，不加引号或 `key=value`，保存为 UTF-8 无 BOM。汉化启动时优先读取游戏根目录的 `dfcn_config.ini`；文件不存在时，从订阅目录的 `DFCN/dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖。订阅目录中的 `config.ini` 保留为默认模板，复制失败时作为回退配置。完整路径示例、旧版迁移与卸载方法见 [工坊详细说明](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)。
+汉化启动时优先读取游戏根目录的 `dfcn_config.ini`；文件不存在时，从订阅目录的 `DFCN/dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖。订阅目录中的 `config.ini` 保留为默认模板，复制失败时作为回退配置。手动安装、路径示例与卸载方法见 [安装说明](workshop/content/INSTALL.txt)。
 
 **GitHub Release：**从 [v53.16-20261020.2](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020.2) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。汉化设置同样使用游戏根目录的 `dfcn_config.ini`，首次启动时由 `dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖；复制失败时读取默认模板。完整变化见 Release 更新日志。
 

@@ -169,7 +169,7 @@ try {
     [void][IO.Directory]::CreateDirectory($payloadRoot)
     # Recreate the upload tree from selected inputs. Stray archives, caches or
     # earlier payloads in workshop/content cannot be carried into another upload.
-    foreach ($name in @('info.txt', 'INSTALL.txt', 'CHANGELOG.txt')) {
+    foreach ($name in @('info.txt', 'INSTALL.txt', 'CHANGELOG.txt', 'install.bat')) {
         Copy-Item -LiteralPath (Join-Path $contentRoot $name) -Destination (Join-Path $payloadRoot $name)
     }
     $windowsFolder = Join-Path $payloadRoot 'DFCN'

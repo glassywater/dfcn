@@ -13,19 +13,17 @@ DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作�
 
 [h1]Windows 工坊安装[/h1]
 
-[b]运行文件位于 DFCN 文件夹。仅订阅不会自动启用汉化。[/b]
+[b]首次订阅后运行 install.bat 自动安装，无需手动复制文件。[/b]
 [olist]
-[*]打开订阅目录：[code]你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/DFCN/[/code]
-[*]将其中的 [b]dfhooks.dll[/b] 与 [b]dfhooks_dfcn.ini[/b] 复制到包含 [b]Dwarf Fortress.exe[/b] 的游戏根目录。
-[*]INI 第一行应指向订阅目录中 [b]DFCN/dfcn/dfhooks_dfcn.dll[/b] 的实际路径。其余文件保留在订阅目录。
+[*]订阅并下载完成，打开订阅目录：[code]你的 Steam 库目录/steamapps/workshop/content/975370/3811193379/[/code]
+[*]双击 [b]install.bat[/b]，自动寻找游戏目录、安装引导文件并填写汉化路径。
+[*]显示安装完成后正常启动游戏。完整 [b]DFCN[/b] 文件夹保留在订阅目录，核心与词表继续由 Steam 更新。
 [/olist]
-游戏与订阅内容位于同一 Steam 库时，已预填：[code]../../workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
-位于不同 Steam 库时，改用实际绝对路径，例如：[code]D:/SteamLibrary/steamapps/workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll[/code]
-[b]第一行只写 DLL 路径，不加引号、不写 key=value，保存为 UTF-8 无 BOM。[/b]
+脚本使用 Windows 自带 PowerShell，不依赖 DFHack，支持中文路径和多个 Steam 库。优先选择与订阅内容同库的游戏，无法唯一确定时显示目录供选择。官网版或其他安装可将游戏文件夹或 Dwarf Fortress.exe 拖到 BAT 上指定位置。移动游戏或汉化目录后重新运行脚本即可。手动安装方法见订阅目录中的 INSTALL.txt。
 
 保留完整订阅目录结构。汉化设置优先使用游戏根目录的 [b]dfcn_config.ini[/b]；首次启动时若该文件不存在，从订阅目录的 [code]DFCN/dfcn/data/runtime/config.ini[/code] 复制生成，已有文件不会覆盖。订阅目录中的 config.ini 保留为默认模板和复制失败时的回退配置。
 后续工坊更新由 Steam 下载到订阅目录；目录不变时，入口配置继续使用，个人设置保存在游戏根目录。
-旧版整包安装升级时，移除游戏根目录中旧的 [b]dfhooks_dfcn.dll[/b]（若存在）。旧 dfcn 文件夹中的个人配置可自行保留。
+脚本会备份被替换的引导文件，并将旧版根目录 [b]dfhooks_dfcn.dll[/b] 改名备份以避免重复加载。已有 dfcn_config.ini 和旧 dfcn 文件夹保留。
 
 [h1]简体与正体切换[/h1]
 
@@ -72,7 +70,7 @@ Windows 同时安装 DFHack 53.16-r2 / r3 时，[b]Shift+F11[/b] 可独立暂停
 
 [h1]卸载与许可[/h1]
 
-取消订阅不会删除手动安装或生成的文件。工坊安装需移除自己添加的 dfhooks.dll、dfhooks_dfcn.ini 和 dfcn_config.ini；整包安装还需移除汉化 dfcn 目录。保留游戏本体、RAW、存档与个人资料，需要的个人设置可先保存。
+取消订阅不会删除脚本安装、手动安装或生成的文件。工坊安装需移除自己添加的 dfhooks.dll、dfhooks_dfcn.ini 和 dfcn_config.ini；整包安装还需移除汉化 dfcn 目录。保留游戏本体、RAW、存档与个人资料，需要的个人设置可先保存。
 
 普通汉化无需 DFHack，不改写磁盘上的游戏本体、RAW 或存档。
 感谢矮人要塞中文维基翻译组，以及 DFHack / dfhooks、df-structures、DFI18n、dfint、dfzh、ECDICT、OpenCC 等上游贡献者。

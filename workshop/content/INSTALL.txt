@@ -6,22 +6,37 @@ Releases：https://github.com/pokemonchw/dfcn/releases
 当前工坊版本：53.16-20261020.2（2026-10-20）。完整更新日志见本目录 CHANGELOG.txt。
 适用：Dwarf Fortress 53.16，Windows x64；支持 Steam 版与官网免费版。
 运行文件位于 DFCN/。Shift+F6 可临时停用或恢复扩展数据；Shift+F5 再次开启时重新读取核心与数据。
-仅订阅不会自动启用汉化；无需在创建世界时启用本工坊项目。
+首次订阅后运行 install.bat 自动安装引导；无需在创建世界时启用本工坊项目。
 汉化数据扩展与可选语义搜索模型均为独立 mod，会在启动时自动识别；模型不包含在本工坊核心包内。
 可选模型订阅：https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988
 
 一、Windows 工坊安装
 
 订阅内容目录：
-你的 Steam 库目录\steamapps\workshop\content\975370\3811193379\DFCN\
+你的 Steam 库目录\steamapps\workshop\content\975370\3811193379\
 
 游戏根目录（包含 Dwarf Fortress.exe）：
 你的 Steam 库目录\steamapps\common\Dwarf Fortress\
 
-1. 订阅并等待下载完成后，打开上面的 DFCN 文件夹。
-2. 只将 dfhooks.dll 和 dfhooks_dfcn.ini 复制到游戏根目录。
-3. 打开游戏根目录中的 dfhooks_dfcn.ini，第一行填写订阅内容里 dfcn/dfhooks_dfcn.dll 的实际路径。
-   其他文件继续保留在订阅目录中，无需复制整个 DFCN 或 dfcn 文件夹到游戏目录。
+1. 订阅并等待下载完成后，双击订阅目录中的 install.bat。
+2. 脚本自动查找 Steam 游戏目录，复制引导文件并填写汉化路径。显示“安装完成”后即可正常启动游戏。
+   不用手动复制文件或编辑 INI，不依赖 DFHack；使用 Windows 自带 PowerShell。
+3. 完整 DFCN 文件夹继续保留在订阅目录，后续核心与词表由 Steam 更新。
+
+脚本支持中文路径和多个 Steam 库，优先选择与订阅内容同库的游戏。
+如果发现多个游戏目录且无法唯一确定，会显示目录供选择。
+也可以单独下载 install.bat 运行，脚本会查找已经下载的工坊汉化文件。
+官网版或其他未被自动找到的游戏，可将游戏文件夹或 Dwarf Fortress.exe 拖到 install.bat 上，
+或使用：install.bat "D:\Games\Dwarf Fortress"
+脚本仍需要已下载的工坊汉化内容，或与脚本相邻的完整 DFCN 文件夹。
+已有 dfcn_config.ini 不会改写。被替换的引导文件保留为 .dfcn-backup- 开头后缀的备份，
+旧版根目录 dfhooks_dfcn.dll 同样改名备份以避免重复加载，不删除旧 dfcn 目录。
+安装失败会尝试恢复本次已经改动的文件，并显示具体错误与无法恢复的备份位置。
+如果使用解压到其他位置的 DFCN 文件夹，该文件夹也必须保留；移动目录后重新运行脚本。
+
+手动安装备用方式：将 DFCN 中的 dfhooks.dll 和 dfhooks_dfcn.ini 复制到游戏根目录，
+再将游戏根目录 dfhooks_dfcn.ini 的第一行改为实际加载器路径。以下示例仅供手动安装参考；
+install.bat 会自动填写绝对路径，无需再修改。
 
 游戏与订阅内容位于同一 Steam 库时，dfhooks_dfcn.ini 已预填以下相对路径，可直接使用：
 ../../workshop/content/975370/3811193379/DFCN/dfcn/dfhooks_dfcn.dll
@@ -51,7 +66,7 @@ Windows 运行包内置思源黑体简体粗体及字体许可，默认 font_sca
 后续 Windows 工坊更新由 Steam 下载到订阅目录；只要实际目录不变，游戏中的入口配置继续指向该目录。
 
 从旧版 Windows 整包复制方式升级：
-移除游戏根目录中旧版汉化的 dfhooks_dfcn.dll（若存在），避免加载两份汉化。
+install.bat 会将游戏根目录中旧版汉化的 dfhooks_dfcn.dll 改名备份，避免加载两份汉化；手动安装时自行移除该文件。
 旧版复制到游戏目录中的 dfcn 文件夹已不再使用，可在保留个人配置或资料后移除。
 更新时保留游戏根目录的 dfcn_config.ini；旧版 config.ini 中需要保留的个人设置可写入该文件。
 
@@ -113,7 +128,7 @@ Windows 同时安装 DFHack 53.16-r2 / r3 时，可按 Shift+F11 独立暂停或
 
 五、卸载
 
-取消订阅不会自动删除手动复制到游戏目录中的文件。
+取消订阅不会自动删除脚本安装或手动复制到游戏目录中的文件。
 Windows 工坊安装：删除自己添加到游戏根目录的 dfhooks.dll、dfhooks_dfcn.ini 和生成的 dfcn_config.ini，再取消订阅。
 Windows GitHub 整包安装：移除自己安装的入口文件、dfcn_config.ini 及 dfcn 汉化目录。
 旧版整包安装遗留的汉化文件也需自行移除。无需删除游戏本体或存档。
