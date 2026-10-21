@@ -3,12 +3,12 @@
 DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作品，结合社区译文与本地修订，翻译游戏界面、人物信息、物品描述和传说故事，支持简体中文与台湾正体中文。
 
 [b]适配 Dwarf Fortress 53.16，Windows x64，支持 Steam 版与官网免费版。[/b]
-当前版本：[b]53.16-20261020.2[/b]（2026-10-20）。
+当前版本：[b]53.16-20261021[/b]（2026-10-21）。
 游戏内按 [b]Shift+F1[/b] 打开汉化设置菜单，可切换中英文、繁简体、四族语言原文／音译，开关已安装的 DFHack，或重新载入汉化。
 更新内容见改动说明与订阅目录中的 CHANGELOG.txt。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020.2]Windows 汉化下载[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261021]Windows 汉化下载[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
 [h1]Windows 工坊安装[/h1]
@@ -56,10 +56,15 @@ Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译�
 需要近义匹配时，可订阅 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988]DFCN 独立离线语义搜索模型[/url]。
 核心在启动时自动识别模型，无需联网或在世界模组列表中启用。未安装模型时，普通文字、拼音与容错搜索仍可使用。
 
+[h1]地形蓝图导出[/h1]
+
+[b]Shift+F1[/b] 菜单新增“导出整张地图（全部已知层）”，无需 DFHack。导出完整本地地图和所有含已揭示地形的楼层，保留坐标并标记未知区域，不受镜头或当前楼层影响。
+蓝图保存至汉化目录的 [b]blueprints[/b] 文件夹，可导入 dfbluepaint；包含墙、地板、楼梯、斜坡、水、岩浆及植被等地形，不包含建筑、物品或单位。菜单显示导出结果和文件位置。
+
 [h1]开关与刷新[/h1]
 
 [b]Shift+F1[/b]：打开或关闭汉化设置菜单，可切换中英文、繁简体、四族语言音译，开关已安装的 DFHack，或重新载入核心与数据并开启汉化。英文模式下仍可打开。
-点击选项后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭。四族语言默认采用中文音译，可切换为原文拼写，选择在本次运行及核心重载后保留；DFHack 选项需已安装 DFHack 且接口可用。
+切换与重载选项执行后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭。四族语言默认采用中文音译，可切换为原文拼写，选择在本次运行及核心重载后保留；DFHack 选项需已安装 DFHack 且接口可用。
 
 [b]Shift+F10[/b]：开启或关闭汉化，保留当前核心与数据。
 [b]Shift+F5[/b]：关闭汉化，再次开启时重新读取核心与数据。

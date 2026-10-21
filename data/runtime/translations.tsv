@@ -101715,6 +101715,7 @@ This singer? Awful.	这位歌手？糟透了。	hPD
 Throwing a tantrum!	正在大发脾气！	hP
 Time Spent With {b}	与{b}共度的时光	hbti
 Toggle/edit setting	切换/编辑设置	w
+Tracks Visible: {d}	可见踪迹：{d}	hPt
 Unassigned occupant	未分配的笼内生物	hP
 Underground regions	地下区域
 Unknown interaction	未知能力	hP
@@ -117827,6 +117828,7 @@ The {s} is {s}.	{s1}：{s2}。	hPt
 Thief (villain)	盗贼（反派）	w
 This is an {i}.	这是{i1}。	ht
 Thoughts on {b}	{b}感想	hbti
+Tracks Visible:	可见踪迹：	wl
 Traditional {b}	传统{b}	hbti
 Trap components	陷阱组件	wi
 Treasure hunter	淘金者	w
@@ -150687,7 +150689,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-
-# Adventure sensory HUD, native source: data/extracted/adventure-tracking-hud/.
-Tracks Visible:	可见踪迹：	wl
-Tracks Visible: {d}	可见踪迹：{d}	hPt
