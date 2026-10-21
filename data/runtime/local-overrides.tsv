@@ -6955,6 +6955,9 @@ Make cheese	制作奶酪	wi
 Make lye	制作碱液	wi
 Make ash	制作灰烬	wi
 Make charcoal	制作木炭	wi
+# Native BAR/COAL material index 1 is fuel, distinct from the CHARCOAL color/ADJ sense.
+# Keep the standalone item caption ahead of generated-name adjective fallbacks.
+charcoal	木炭	wi
 Make totem	制作图腾	wi
 Make traction bench	制作牵引台	wi
 Dye thread	染线	wi
