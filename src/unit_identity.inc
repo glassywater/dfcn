@@ -9,10 +9,19 @@ std::optional<std::string> Overlay::translate_unit_profession(
             [&]() -> std::optional<std::string> {
     const std::string folded = lower(source);
     if (auto role = exact_literal_translation("Unit profession: " + folded)) return role;
-    if (auto role = exact_literal_translation(source)) return role;
-    // Generated religious offices share the Legends terms, which are kept
-    // out of ordinary UI literal matching. Resolve their complete role here.
-    if (auto role = translate_legends_office(source)) return role;
+    // Only a formatter-owned profession slot proves the role in advance.
+    // Untyped callers also probe item prefixes: accepting any dictionary
+    // word here made iron + bolts a profession plus Dwarvemon body part,
+    // returning 铁电流 before the ammunition grammar could run.
+    if (typed) {
+        if (auto role = exact_literal_translation(source)) return role;
+        // This reader includes ordinary literal fallbacks because its own
+        // native office fields already establish the semantic role.
+        if (auto role = translate_legends_office(source)) return role;
+    } else if (const auto role = legends_terms_.find("Native history office: " + folded);
+            role != legends_terms_.end()) {
+        return role->second;
+    }
 
     // The semantic namespaces cover all standard professions and positions,
     // including case-sensitive skill captions used as occupations.
@@ -22,13 +31,22 @@ std::optional<std::string> Overlay::translate_unit_profession(
         if (initial && ch >= 'a' && ch <= 'z') ch -= 'a' - 'A';
         initial = ch == ' ' || ch == '-';
     }
-    if (auto role = exact_literal_translation(title)) return role;
+    if (typed)
+        if (auto role = exact_literal_translation(title)) return role;
+    // Preserve reviewed wording only AFTER a scoped grammar proves that
+    // this is a profession/position. A translated material is not a role.
+    const auto reviewed_role = [&](std::string target) {
+        if (auto reviewed = exact_literal_translation(source)) return *reviewed;
+        if (auto reviewed = exact_literal_translation(title)) return *reviewed;
+        return target;
+    };
     std::vector<size_t> origins;
     for (const auto scope : {"::positions::singular", "::positions::plural"})
         if (auto role = RULESETS.translate_with_origins(
-                native_text_to_utf8(folded), scope, origins)) return role;
-    if (auto role = RULESETS.translate_with_origins(
-            native_text_to_utf8(title), "::professions::^0", origins)) return role;
+                native_text_to_utf8(folded), scope, origins)) return reviewed_role(*role);
+    for (const auto scope : {"::professions", "::professions::^0"})
+        if (auto role = RULESETS.translate_with_origins(
+                native_text_to_utf8(title), scope, origins)) return reviewed_role(*role);
 
     // Tame/unowned and agitated prefixes wrap the complete native role, not
     // only a species. Keep the caste prefix glossary authoritative.
