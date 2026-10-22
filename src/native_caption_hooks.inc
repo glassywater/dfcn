@@ -1,4 +1,7 @@
 // One caption capture and hook lifecycle for every native executable ABI.
+static void capture_native_character_relation_row(NativeDrawnTextRow &row,
+    const graphicst *graphics, const NativeString *source, uintptr_t caller);
+
 using NativeCaptionResizeFn = void (*)(NativeString *, size_t, char);
 using NativeCaptionDefaultResizeFn = void (*)(NativeString *, size_t);
 using NativeCaptionDrawFn = void (*)(graphicst *, const NativeString *, NativeJustification, int);
@@ -2615,6 +2618,8 @@ static void capture_native_owned_caption(graphicst *graphics,
                         row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
                 }
             }
+            if constexpr (Character)
+                capture_native_character_relation_row(row, graphics, source, native_caller);
             x = graphics->screenx; y = graphics->screeny;
             dimx = graphics->dimx; dimy = graphics->dimy;
             if constexpr (!Character && !Notification)
@@ -2672,6 +2677,7 @@ static void capture_native_owned_caption(graphicst *graphics,
             if (first != x) {
                 row.info_title_kind = NativeInfoTitleKind::None;
                 row.info_title_right = -1;
+                row.character_relation_right = -1;
             } else if (row.source != row.complete_source) {
                 remember_clipped_caption(first, y, row.source, row.complete_source);
             }

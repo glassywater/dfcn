@@ -98,6 +98,116 @@ static void remember_native_character_relation_identity(NativeString *output,
     }
 }
 
+// The relation renderer draws every cached name at one call site, including
+// short names that never enter its resize path. Preserve that native row's
+// allocation before addst writes its glyphs; translation readiness does not
+// determine whether the relationship has a name above it.
+static void capture_native_character_relation_row(NativeDrawnTextRow &row,
+        const graphicst *graphics, const NativeString *source, uintptr_t caller) {
+#ifdef _WIN32
+    try {
+        const auto &hook = g_native_character_relations_hook;
+        const uintptr_t owner = reinterpret_cast<uintptr_t>(source);
+        if (!hook.base || !hook.code.active() ||
+                caller != native_reference_address(hook.base, 0x176dc5) ||
+                !graphics || !source || row.top_layer || owner < 0x3a00 ||
+                graphics->dimx <= 0 || graphics->dimx > 1000 ||
+                graphics->dimy <= 0 || graphics->dimy > 1000) return;
+        // The source is the renderer's [rsp+3a00] string. These slots are
+        // read from that same frame, not from our callback's current stack.
+        const uintptr_t frame = owner - 0x3a00;
+        if (frame > UINTPTR_MAX - 0xb268) return;
+        int32_t left = -1, right = -1, top = -1, index = -1;
+        uintptr_t sheet = 0;
+        if (!native_history_copy(frame + 0x2c8, left) ||
+                !native_history_copy(frame + 0x548, right) ||
+                !native_history_copy(frame + 0x16c, top) ||
+                !native_history_copy(frame + 0x140, index) ||
+                !native_history_copy(frame + 0xb260, sheet) ||
+                left < 0 || left >= graphics->dimx || right <= left ||
+                right >= graphics->dimx || right - left <= 16 ||
+                top < 0 || top >= graphics->dimy - 2 || index < 0 ||
+                graphics->screenx != left + 7 || graphics->screeny != top + 1 ||
+                !sheet || sheet > UINTPTR_MAX - 0x18b8) return;
+        int32_t object_type = -1, page = -1;
+        NativeBorrowedVector<uintptr_t> names;
+        if (!native_history_copy(sheet + 8, object_type) || object_type != 0 ||
+                !native_history_copy(sheet + 0xc0, page) || page != 6 ||
+                !native_history_read_vector(native_character_sheet_field(
+                    sheet, 0x1840, "rel_name"), names) || names.size() > 65536 ||
+                static_cast<size_t>(index) >= names.size()) return;
+        const uintptr_t cached = native_history_vector_at(names, static_cast<size_t>(index));
+        std::string_view complete, submitted;
+        if (!cached || !native_string_view(reinterpret_cast<const NativeString *>(cached),
+                    &complete, 65536) || !native_string_view(source, &submitted, 4096) ||
+                complete.find_first_of("\r\n") != std::string_view::npos ||
+                complete.find('\0') != std::string_view::npos) return;
+        // Native 176cde compares length with R-L-15, then retains R-L-16
+        // bytes and replaces the last three with dots. Prove both the full
+        // and shortened forms against this row's cached string.
+        const size_t capacity = static_cast<size_t>(right - left - 16);
+        std::string expected(complete);
+        if (expected.size() > capacity) {
+            expected.resize(capacity);
+            if (capacity > 3) expected.replace(capacity - 3, 3, "...");
+        }
+        if (submitted != expected) return;
+        row.complete_source.assign(complete);
+        // The name starts at L+7, so its exclusive allocated edge is R-9.
+        // This keeps the two native action buttons outside the text column.
+        row.character_relation_right = right - 9;
+        row.caption_source = true;
+        if (complete.empty() || row.unit_identity_target) return;
+        if (const auto identity = native_unit_identity_source_binding(complete, owner)) {
+            row.unit_identity_target = identity->ready ? identity->target : std::string{};
+            row.unit_identity_owner = identity->unit_owner;
+            row.unit_identity_english = identity->english_name;
+            row.unit_identity_header = identity->character_header;
+            row.unit_identity_ready = identity->ready;
+            row.unit_identity_semantic_key = identity->semantic_key;
+            if (!identity->ready)
+                row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
+            return;
+        }
+        NativeBorrowedVector<uintptr_t> figures;
+        NativeBorrowedVector<int32_t> units;
+        if (!native_history_read_vector(native_character_sheet_field(sheet, 0x18a0, "rel_hf"), figures) ||
+                !native_history_copy(native_character_sheet_field(sheet, 0x1888, "rel_unid"), units) ||
+                !units.valid(65536) || figures.size() != names.size() ||
+                units.size() != names.size()) return;
+        int32_t unit_id = -1;
+        if (!native_history_copy(reinterpret_cast<uintptr_t>(units.begin) +
+                static_cast<size_t>(index) * sizeof(int32_t), unit_id)) return;
+        uintptr_t unit = 0, name = 0;
+        if (unit_id >= 0) {
+            if (!native_history_material_find_id(native_history_global(0x23e50b0), 0x130,
+                    unit_id, unit) || !unit) return;
+        } else {
+            const uintptr_t figure = native_history_vector_at(figures, static_cast<size_t>(index));
+            int32_t figure_id = -1;
+            if (!figure || figure > UINTPTR_MAX - 0xe4 ||
+                    !native_history_copy(native_history_object_field(figure, "historical_figure", 0xe0),
+                        figure_id) || figure_id < 0 ||
+                    native_history_find_subject(hook.base, NativeHistoryObjectKind::Figure,
+                        figure_id) != figure) return;
+            name = native_history_object_field(figure, "historical_figure", 0x38);
+        }
+        if (const auto target = translate_native_unit_identity_reference(unit, name, complete)) {
+            row.unit_identity_target = *target;
+            row.unit_identity_owner = unit;
+            row.unit_identity_ready = true;
+        }
+    } catch (...) {
+        // The original draw and any already proven geometry remain intact.
+    }
+#else
+    (void)row;
+    (void)graphics;
+    (void)source;
+    (void)caller;
+#endif
+}
+
 static NativeString *capture_native_character_relation_identity(NativeString *output,
         const NativeString *source, const void *sheet, size_t index) {
     NativeInputCallbackScope callback;
@@ -285,6 +395,21 @@ static bool install_native_character_relations_hook() {
         {0x176c80, {0x48,0x63,0x84,0x24,0x40,0x01,0x00,0x00}},
         {0x176c98, {0x48,0x8b,0x00,0x48,0x8b,0xd0,
             0x48,0x8d,0x8c,0x24,0x00,0x3a,0x00,0x00}},
+        // The name draw uses this frame's L/T coordinates and R-L-16
+        // allocation even when no resize occurs. Its return address owns
+        // the complete relation row captured by the shared addst hook.
+        {0x176cac, {0x8b,0x84,0x24,0xc8,0x02,0x00,0x00,0x83,0xc0,0x07,
+            0x8b,0x8c,0x24,0x6c,0x01,0x00,0x00,0xff,0xc1,0x44,0x8b,0xc0,0x8b,0xd1,
+            0x48,0x8d,0x0d,0x25,0x37,0x4d,0x02,0xe8,0x50,0x44,0xf4,0xff}},
+        {0x176cde, {0x8b,0x8c,0x24,0xc8,0x02,0x00,0x00,
+            0x8b,0x94,0x24,0x48,0x05,0x00,0x00,0x2b,0xd1,0x8b,0xca,0xff,0xc9,
+            0x83,0xe9,0x0e,0x48,0x63,0xc9,0x48,0x3b,0xc1}},
+        {0x176d01, {0x8b,0x84,0x24,0xc8,0x02,0x00,0x00,
+            0x8b,0x8c,0x24,0x48,0x05,0x00,0x00,0x2b,0xc8,0x8b,0xc1,0xff,0xc8,
+            0x83,0xe8,0x0f,0x89,0x84,0x24,0x54,0x0b,0x00,0x00}},
+        {0x176dab, {0x45,0x33,0xc9,0x45,0x33,0xc0,
+            0x48,0x8d,0x94,0x24,0x00,0x3a,0x00,0x00,
+            0x48,0x8d,0x0d,0x30,0x36,0x4d,0x02,0xe8,0x9b,0x2b,0x96,0x00}},
         {0x1a39c0, {0x48,0x8d,0x86,0x88,0x18,0x00,0x00,
             0x48,0x89,0x45,0xe0}},
         // The current row uses this sheet pointer and signed 32-bit index.

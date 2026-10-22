@@ -2425,6 +2425,9 @@ struct NativeDrawnTextRow {
     // Squad name, order and routine share the producer's text column,
     // which narrows when the list needs its scrollbar.
     int squad_list_right = -1;
+    // The relation name writer owns a complete two-row record and reserves
+    // the columns beyond this edge for its recenter/view controls.
+    int character_relation_right = -1;
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
@@ -2504,6 +2507,7 @@ static thread_local const graphicst *g_native_character_write_graphics = nullptr
 static thread_local bool g_native_character_foreground = false;
 static bool native_character_foreground_view(const graphicst *) noexcept;
 static bool native_character_translation_active(const graphicst *) noexcept;
+static std::optional<int32_t> native_character_sub_tab(const graphicst *) noexcept;
 static bool native_character_background_view(const graphicst *) noexcept;
 static bool native_character_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
@@ -28186,14 +28190,16 @@ void Overlay::normalize_native_split_text() {
     for (size_t index = 0; index < prepared_matches_.size(); ++index) {
         Match &match = prepared_matches_[index];
         if (match.native_announcement_popup || match.native_adventure_choice_row) continue;
-        // The decompiled combat, portrait, trade and embark finder renderers
-        // use ordinary addst, retaining old half-font flags without drawing halves.
+        // The decompiled combat, portrait, trade, relation and embark finder
+        // renderers use ordinary addst, retaining old half-font flags without
+        // drawing halves. Relation names and labels are separate full rows.
         if (match.rule == kAdventureCombatFieldRule ||
                 match.rule == kAdventureActionPanelRule ||
                 match.rule == kAnnouncementListRule ||
                 match.rule == kFortressTradeFieldRule ||
                 match.rule == kConversationPortraitRule ||
                 match.rule == kConversationToneRule ||
+                match.rule == kCharacterRelationRowRule ||
                 match.rule == kEmbarkFinderFieldRule) continue;
         // Tooltip wrapping owns its physical source rows and output lines.
         // Flags retained from a covered picture caption cannot turn those

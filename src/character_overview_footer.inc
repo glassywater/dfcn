@@ -134,6 +134,10 @@ void Overlay::append_character_overview_footer(
         std::vector<std::string> &screen_rows, std::vector<Match> &matches,
         int tabs_y, int only_y, bool source_scan) const {
     if (!native_character_translation_active(gps_)) return;
+    // Relation identities can begin with quotes too. Their complete name
+    // already owns a two-line record; treating that prefix as failed footer
+    // prose would erase the identity and retain a source-only quote instead.
+    if (const auto page = native_character_sub_tab(gps_); page && *page != 0) return;
     auto draw = current_character_overview_quote();
     std::vector<std::string> draw_rows;
     if (draw) {
