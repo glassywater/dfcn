@@ -1,0 +1,773 @@
+edition	role	instruction_rva	operand	kind	text
+reference	age-caption	0xbb8e35	0x1415ed9bc	cstring	The 
+reference	age-caption	0xbb8e9f	0x1415e873c	cstring	 
+reference	age-caption	0xbb8efc	0x1416dfc00	cstring	Unknown Age
+reference	worldgen-dialog-renderer	0xdf8dec	0x1417209b0	cstring	Loading data needed to create new world
+reference	worldgen-dialog-renderer	0xdf8e60	0x141604568	cstring	Initializing...
+reference	worldgen-dialog-renderer	0xdf8ec0	0x1416ac810	cstring	Loading object files...  
+reference	worldgen-dialog-renderer	0xdf8f06	0x1416ac810	cstring	Loading object files...  
+reference	worldgen-dialog-renderer	0xdf8f45	0x141720a80	cstring	Initializing music load...
+reference	worldgen-dialog-renderer	0xdf8f84	0x1416ac340	cstring	Processing languages...
+reference	worldgen-dialog-renderer	0xdf8fc3	0x1416ac2f0	cstring	Processing inorganics...
+reference	worldgen-dialog-renderer	0xdf9002	0x1416ac310	cstring	Processing plants...
+reference	worldgen-dialog-renderer	0xdf9041	0x1416ac388	cstring	Processing items...
+reference	worldgen-dialog-renderer	0xdf9080	0x1416ac3a0	cstring	Processing creatures...
+reference	worldgen-dialog-renderer	0xdf90bf	0x1416ac358	cstring	Processing entities...
+reference	worldgen-dialog-renderer	0xdf90fe	0x1416ac370	cstring	Processing reactions...
+reference	worldgen-dialog-renderer	0xdf913d	0x1416ac3f0	cstring	Processing interactions...
+reference	worldgen-dialog-renderer	0xdf917c	0x1416ac410	cstring	Processing music...
+reference	worldgen-dialog-renderer	0xdf91bb	0x1416ac3b8	cstring	Processing sounds...
+reference	worldgen-dialog-renderer	0xdf91fa	0x141619380	cstring	Finalizing languages...
+reference	worldgen-dialog-renderer	0xdf9239	0x141619398	cstring	Finalizing descriptors...
+reference	worldgen-dialog-renderer	0xdf9278	0x1416193b8	cstring	Finalizing material templates...
+reference	worldgen-dialog-renderer	0xdf92b7	0x141619300	cstring	Finalizing inorganics...
+reference	worldgen-dialog-renderer	0xdf92f6	0x141619320	cstring	Finalizing plants...
+reference	worldgen-dialog-renderer	0xdf9335	0x141619338	cstring	Finalizing tissue templates...
+reference	worldgen-dialog-renderer	0xdf9374	0x141619358	cstring	Finalizing items...
+reference	worldgen-dialog-renderer	0xdf93b3	0x141619450	cstring	Finalizing buildings...
+reference	worldgen-dialog-renderer	0xdf93f2	0x141619468	cstring	Finalizing body detail plans...
+reference	worldgen-dialog-renderer	0xdf9431	0x141619488	cstring	Finalizing creature variations...
+reference	worldgen-dialog-renderer	0xdf9470	0x1416194b0	cstring	Finalizing creatures...
+reference	worldgen-dialog-renderer	0xdf94af	0x1416193e0	cstring	Finalizing entities...
+reference	worldgen-dialog-renderer	0xdf94ee	0x1416193f8	cstring	Finalizing reactions...
+reference	worldgen-dialog-renderer	0xdf952d	0x141619410	cstring	Finalizing interactions...
+reference	worldgen-dialog-renderer	0xdf956c	0x141619430	cstring	Preparing material data...
+reference	worldgen-dialog-renderer	0xdf95c8	0x1416acff8	cstring	Preparing graphics...  
+reference	worldgen-dialog-renderer	0xdf962f	0x1416acff8	cstring	Preparing graphics...  
+reference	worldgen-dialog-renderer	0xdf966e	0x141720a70	cstring	Finalizing...
+reference	worldgen-dialog-renderer	0xdf9a0c	0x141602dbc	cstring	", """
+reference	worldgen-dialog-renderer	0xdf9a45	0x1415e9718	cstring	""""
+reference	worldgen-dialog-renderer	0xdf9abc	0x141720098	cstring	Creating 
+reference	worldgen-dialog-renderer	0xdf9b26	0x141720148	cstring	Creating the world
+reference	worldgen-dialog-renderer	0xdf9b7e	0x141615540	cstring	 (
+reference	worldgen-dialog-renderer	0xdf9bf2	0x141720138	cstring	 rejected)
+reference	worldgen-dialog-renderer	0xdf9c60	0x141720120	cstring	Preparing elevation...
+reference	worldgen-dialog-renderer	0xdf9cbb	0x141720108	cstring	Setting temperature...
+reference	worldgen-dialog-renderer	0xdf9d1a	0x1417201a0	cstring	Running rivers...
+reference	worldgen-dialog-renderer	0xdf9d88	0x141615540	cstring	 (
+reference	worldgen-dialog-renderer	0xdf9dfc	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdf9e7a	0x141720190	cstring	Forming lakes
+reference	worldgen-dialog-renderer	0xdf9ed3	0x1415ec860	cstring	...
+reference	worldgen-dialog-renderer	0xdf9f29	0x141615540	cstring	 (
+reference	worldgen-dialog-renderer	0xdf9f9d	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdf9ff3	0x141720178	cstring	 and minerals...
+reference	worldgen-dialog-renderer	0xdfa041	0x141615540	cstring	 (
+reference	worldgen-dialog-renderer	0xdfa063	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdfa099	0x1415ec860	cstring	...
+reference	worldgen-dialog-renderer	0xdfa12c	0x141720160	cstring	Growing vegetation...
+reference	worldgen-dialog-renderer	0xdfa1ad	0x141720200	cstring	Verifying terrain...
+reference	worldgen-dialog-renderer	0xdfa208	0x1417201e8	cstring	Importing wildlife...
+reference	worldgen-dialog-renderer	0xdfa278	0x1417201d0	cstring	Recounting legends...
+reference	worldgen-dialog-renderer	0xdfa2e6	0x1417201b8	cstring	Finished prehistory...
+reference	worldgen-dialog-renderer	0xdfa329	0x141720268	cstring	Placing civilizations... (
+reference	worldgen-dialog-renderer	0xdfa34f	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdfa391	0x141720248	cstring	Making cave civilizations...
+reference	worldgen-dialog-renderer	0xdfa3d4	0x141720230	cstring	Making cave pops...
+reference	worldgen-dialog-renderer	0xdfa417	0x141720218	cstring	Placing other beasts...
+reference	worldgen-dialog-renderer	0xdfa45a	0x1417202d0	cstring	Placing megabeasts...
+reference	worldgen-dialog-renderer	0xdfa49d	0x1417202b8	cstring	Placing good/evil...
+reference	worldgen-dialog-renderer	0xdfa4e0	0x1417202a0	cstring	Placing caves... (
+reference	worldgen-dialog-renderer	0xdfa50c	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdfa545	0x141720288	cstring	Prehistory init...
+reference	worldgen-dialog-renderer	0xdfa5bf	0x141720338	cstring	Finalizing civ mats... (
+reference	worldgen-dialog-renderer	0xdfa669	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdfa6bb	0x141720320	cstring	Finalizing art... (
+reference	worldgen-dialog-renderer	0xdfa765	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdfa7b5	0x141720300	cstring	Finalizing uniforms... (
+reference	worldgen-dialog-renderer	0xdfa85f	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdfa8b1	0x1417202e8	cstring	Finalizing sites... (
+reference	worldgen-dialog-renderer	0xdfa95a	0x141615580	cstring	)
+reference	worldgen-dialog-renderer	0xdfaa0d	0x141720398	cstring	, year 
+reference	worldgen-dialog-renderer	0xdfaa64	0x141720380	cstring	Historical figures: 
+reference	worldgen-dialog-renderer	0xdfab59	0x141720368	cstring	An abridged chronicle (
+reference	worldgen-dialog-renderer	0xdfabae	0x141720358	cstring	 events total):
+reference	worldgen-dialog-renderer	0xdfae7c	0x1417203e8	cstring	   Events: 
+reference	worldgen-dialog-renderer	0xdfb079	0x1417203d8	cstring	LACK OF PEAKS
+reference	worldgen-dialog-renderer	0xdfb0b3	0x1417203b8	cstring	MEDIUM ELEVATION REJECTION
+reference	worldgen-dialog-renderer	0xdfb0ed	0x1417203a0	cstring	LOW ELEVATION REJECTION
+reference	worldgen-dialog-renderer	0xdfb127	0x141720440	cstring	HIGH ELEVATION REJECTION
+reference	worldgen-dialog-renderer	0xdfb161	0x141720428	cstring	LACK OF EDGE OCEANS
+reference	worldgen-dialog-renderer	0xdfb19b	0x141720410	cstring	RAINFALL REJECTION
+reference	worldgen-dialog-renderer	0xdfb1d5	0x1417203f8	cstring	DRAINAGE REJECTION
+reference	worldgen-dialog-renderer	0xdfb20f	0x1417204a0	cstring	SAVAGERY REJECTION
+reference	worldgen-dialog-renderer	0xdfb249	0x141720488	cstring	VOLCANISM REJECTION
+reference	worldgen-dialog-renderer	0xdfb283	0x141720470	cstring	LACK OF VOLCANOS
+reference	worldgen-dialog-renderer	0xdfb2bd	0x141720460	cstring	SWAMP REJECTION
+reference	worldgen-dialog-renderer	0xdfb2f7	0x1417204f8	cstring	DESERT REJECTION
+reference	worldgen-dialog-renderer	0xdfb331	0x1417204e0	cstring	FOREST REJECTION
+reference	worldgen-dialog-renderer	0xdfb36b	0x1417204c8	cstring	MOUNTAIN REJECTION
+reference	worldgen-dialog-renderer	0xdfb3a5	0x1417204b8	cstring	OCEAN REJECTION
+reference	worldgen-dialog-renderer	0xdfb3df	0x141720550	cstring	GLACIER REJECTION
+reference	worldgen-dialog-renderer	0xdfb419	0x141720538	cstring	TUNDRA REJECTION
+reference	worldgen-dialog-renderer	0xdfb453	0x141720520	cstring	GRASSLAND REJECTION
+reference	worldgen-dialog-renderer	0xdfb48d	0x141720510	cstring	HILLS REJECTION
+reference	worldgen-dialog-renderer	0xdfb4c7	0x1417205b0	cstring	LACK OF RIVERS
+reference	worldgen-dialog-renderer	0xdfb501	0x141720598	cstring	TOO MANY REGIONS
+reference	worldgen-dialog-renderer	0xdfb53b	0x141720580	cstring	LACK OF MOUNTAIN CAVES
+reference	worldgen-dialog-renderer	0xdfb575	0x141720568	cstring	LACK OF LOW-LYING CAVES
+reference	worldgen-dialog-renderer	0xdfb5af	0x141720640	cstring	UNABLE TO PLACE ENOUGH CIVILIZATIONS
+reference	worldgen-dialog-renderer	0xdfb5e9	0x141720620	cstring	NO CIVILIZATIONS AVAILABLE
+reference	worldgen-dialog-renderer	0xdfb620	0x1417205f0	cstring	UNABLE TO PLACE CONTROLLABLE CIVILIZATION
+reference	worldgen-dialog-renderer	0xdfb657	0x1417205c0	cstring	FARMING CIVILIZATION PLACED WITHOUT CROPS
+reference	worldgen-dialog-renderer	0xdfb803	0x141720718	cstring	CONTINUE until you give me another warning.
+reference	worldgen-dialog-renderer	0xdfb92d	0x1417206e8	cstring	ABORT NOW and I'll look over my parameters.
+reference	worldgen-dialog-renderer	0xdfba5d	0x1417206a8	cstring	ALLOW THIS REJECTION TYPE and continue reporting others.
+reference	worldgen-dialog-renderer	0xdfbb8d	0x141720668	cstring	ALLOW ALL REJECTS, even if I end up with a legends-only world!
+reference	worldgen-dialog-renderer	0xdfbced	0x141721010	cstring	Play now
+reference	worldgen-dialog-renderer	0xdfbe1d	0x141720fe8	cstring	Keep world and return to main menu
+reference	worldgen-dialog-renderer	0xdfbfba	0x141720fd8	cstring	Use world now
+reference	worldgen-dialog-renderer	0xdfc12e	0x141720fc0	cstring	Continue generating
+reference	worldgen-dialog-renderer	0xdfc25d	0x141720b20	cstring	Back to main menu
+reference	worldgen-dialog-renderer	0xdfc3b9	0x141616324	cstring	Pause
+reference	worldgen-dialog-renderer	0xdfc835	0x1415eca10	cstring	Mountain
+reference	worldgen-dialog-renderer	0xdfc86f	0x1415eca20	cstring	Glacier
+reference	worldgen-dialog-renderer	0xdfc8a9	0x1415eca7c	cstring	Tundra
+reference	worldgen-dialog-renderer	0xdfc8e3	0x1415eca88	cstring	Temperate Freshwater Swamp
+reference	worldgen-dialog-renderer	0xdfc91d	0x1415eca40	cstring	Temperate Saltwater Swamp
+reference	worldgen-dialog-renderer	0xdfc957	0x1415eca60	cstring	Temperate Freshwater Marsh
+reference	worldgen-dialog-renderer	0xdfc991	0x1415ecad8	cstring	Temperate Saltwater Marsh
+reference	worldgen-dialog-renderer	0xdfc9cb	0x1415ecaf8	cstring	Tropical Freshwater Swamp
+reference	worldgen-dialog-renderer	0xdfca05	0x1415ecaa8	cstring	Tropical Saltwater Swamp
+reference	worldgen-dialog-renderer	0xdfca3f	0x1415ecac8	cstring	Mangrove Swamp
+reference	worldgen-dialog-renderer	0xdfca79	0x1415ecb40	cstring	Tropical Freshwater Marsh
+reference	worldgen-dialog-renderer	0xdfcab3	0x1415ecb60	cstring	Tropical Saltwater Marsh
+reference	worldgen-dialog-renderer	0xdfcaed	0x1415ecb14	cstring	Taiga
+reference	worldgen-dialog-renderer	0xdfcb27	0x1416aee48	cstring	Temperate Conifer Forest
+reference	worldgen-dialog-renderer	0xdfcb61	0x1415ecbc0	cstring	Temperate Broadleaf Forest
+reference	worldgen-dialog-renderer	0xdfcb9b	0x1415ecbe0	cstring	Tropical Coniferous Forest
+reference	worldgen-dialog-renderer	0xdfcbd5	0x1416aee28	cstring	Tropical Dry Brdlf Forest
+reference	worldgen-dialog-renderer	0xdfcc0f	0x1416aee78	cstring	Tropical Moist Brdlf Forst
+reference	worldgen-dialog-renderer	0xdfcc49	0x1415ecc30	cstring	Temperate Grassland
+reference	worldgen-dialog-renderer	0xdfcc83	0x1415ecc48	cstring	Temperate Savanna
+reference	worldgen-dialog-renderer	0xdfccbd	0x1415ecc00	cstring	Temperate Shrubland
+reference	worldgen-dialog-renderer	0xdfccf7	0x1415ecc18	cstring	Tropical Grassland
+reference	worldgen-dialog-renderer	0xdfcd31	0x1415ecc80	cstring	Tropical Savanna
+reference	worldgen-dialog-renderer	0xdfcd6b	0x1415ecc98	cstring	Tropical Shrubland
+reference	worldgen-dialog-renderer	0xdfcda5	0x1415ecc60	cstring	Badlands
+reference	worldgen-dialog-renderer	0xdfcddf	0x1415ecc70	cstring	Rocky Wasteland
+reference	worldgen-dialog-renderer	0xdfce19	0x1415eccd0	cstring	Sand Desert
+reference	worldgen-dialog-renderer	0xdfce53	0x1415ecce0	cstring	Tropical Ocean
+reference	worldgen-dialog-renderer	0xdfce8d	0x1415eccb0	cstring	Temperate Ocean
+reference	worldgen-dialog-renderer	0xdfcec7	0x1415eccc0	cstring	Arctic Ocean
+reference	worldgen-dialog-renderer	0xdfcf01	0x1415ecd30	cstring	Temperate Freshwater Pool
+reference	worldgen-dialog-renderer	0xdfcf3b	0x1415ecd50	cstring	Temperate Brackish Pool
+reference	worldgen-dialog-renderer	0xdfcf75	0x1415eccf0	cstring	Temperate Saltwater Pool
+reference	worldgen-dialog-renderer	0xdfcfaf	0x1415ecd10	cstring	Tropical Freshwater Pool
+reference	worldgen-dialog-renderer	0xdfcfe9	0x1415ecda0	cstring	Tropical Brackish Pool
+reference	worldgen-dialog-renderer	0xdfd023	0x1415ecdb8	cstring	Tropical Saltwater Pool
+reference	worldgen-dialog-renderer	0xdfd05d	0x1415ecd68	cstring	Temperate Freshwater Lake
+reference	worldgen-dialog-renderer	0xdfd097	0x1415ecd88	cstring	Temperate Brackish Lake
+reference	worldgen-dialog-renderer	0xdfd0d1	0x1415ece00	cstring	Temperate Saltwater Lake
+reference	worldgen-dialog-renderer	0xdfd10b	0x1415ece20	cstring	Tropical Freshwater Lake
+reference	worldgen-dialog-renderer	0xdfd145	0x1415ecdd0	cstring	Tropical Brackish Lake
+reference	worldgen-dialog-renderer	0xdfd17f	0x1415ecde8	cstring	Tropical Saltwater Lake
+reference	worldgen-dialog-renderer	0xdfd1b9	0x1415ece80	cstring	Temperate Freshwater River
+reference	worldgen-dialog-renderer	0xdfd1f3	0x1415ecea0	cstring	Temperate Brackish River
+reference	worldgen-dialog-renderer	0xdfd22d	0x1415ece40	cstring	Temperate Saltwater River
+reference	worldgen-dialog-renderer	0xdfd267	0x1415ece60	cstring	Tropical Freshwater River
+reference	worldgen-dialog-renderer	0xdfd2a1	0x1415ecef0	cstring	Tropical Brackish River
+reference	worldgen-dialog-renderer	0xdfd2db	0x1415ecf08	cstring	Tropical Saltwater River
+reference	worldgen-dialog-renderer	0xdfd315	0x1415ecec0	cstring	Subterranean Water
+reference	worldgen-dialog-renderer	0xdfd34c	0x1415eced8	cstring	Subterranean Chasm
+reference	worldgen-dialog-renderer	0xdfd383	0x1415ecf60	cstring	Subterranean Magma
+reference	worldgen-dialog-renderer	0xdfd400	0x1416aee68	cstring	Temperature: 
+reference	worldgen-dialog-renderer	0xdfd45e	0x1415f7400	cstring	Freezing
+reference	worldgen-dialog-renderer	0xdfd4ac	0x1415f7420	cstring	Cold
+reference	worldgen-dialog-renderer	0xdfd4f9	0x1415fedb0	cstring	Temperate
+reference	worldgen-dialog-renderer	0xdfd546	0x1415f7384	cstring	Warm
+reference	worldgen-dialog-renderer	0xdfd593	0x1415f738c	cstring	Hot
+reference	worldgen-dialog-renderer	0xdfd5d2	0x1415f7390	cstring	Scorching
+reference	worldgen-dialog-renderer	0xdfd637	0x1416aef28	cstring	Trees: 
+reference	worldgen-dialog-renderer	0xdfd6b4	0x1416aef1c	cstring	Scarce
+reference	worldgen-dialog-renderer	0xdfd701	0x1416aef3c	cstring	Sparse
+reference	worldgen-dialog-renderer	0xdfd74e	0x1416aef30	cstring	Woodland
+reference	worldgen-dialog-renderer	0xdfd790	0x1416aeef0	cstring	Heavily Forested
+reference	worldgen-dialog-renderer	0xdfd7de	0x1415ff764	cstring	None
+reference	worldgen-dialog-renderer	0xdfd843	0x1416aeed8	cstring	Other Vegetation: 
+reference	worldgen-dialog-renderer	0xdfd8ba	0x1416aef1c	cstring	Scarce
+reference	worldgen-dialog-renderer	0xdfd907	0x1416aef10	cstring	Moderate
+reference	worldgen-dialog-renderer	0xdfd94e	0x1416aef04	cstring	Thick
+reference	worldgen-dialog-renderer	0xdfd99c	0x1415ff764	cstring	None
+reference	worldgen-dialog-renderer	0xdfda03	0x1416af600	cstring	Surroundings: 
+reference	worldgen-dialog-renderer	0xdfda6f	0x1416af5f8	cstring	Serene
+reference	worldgen-dialog-renderer	0xdfdab9	0x1416af61c	cstring	Calm
+reference	worldgen-dialog-renderer	0xdfdafd	0x1416af610	cstring	Sinister
+reference	worldgen-dialog-renderer	0xdfdb5b	0x1416af5d0	cstring	Mirthful
+reference	worldgen-dialog-renderer	0xdfdba8	0x1416af5c0	cstring	Wilderness
+reference	worldgen-dialog-renderer	0xdfdbef	0x1416af5f0	cstring	Haunted
+reference	worldgen-dialog-renderer	0xdfdc3c	0x1416af5e0	cstring	Joyous Wilds
+reference	worldgen-dialog-renderer	0xdfdc86	0x1416af668	cstring	Untamed Wilds
+reference	worldgen-dialog-renderer	0xdfdcc7	0x1416af658	cstring	Terrifying
+reference	worldgen-dialog-renderer	0xdfdea1	0x1415e9718	cstring	""""
+reference	worldgen-dialog-renderer	0xdfdef4	0x1415e9718	cstring	""""
+reference	worldgen-dialog-renderer	0xdfdf7e	0x1415e873c	cstring	 
+reference	worldgen-dialog-renderer	0xdfe283	0x1416af688	cstring	Multiple Constructions
+reference	worldgen-dialog-renderer	0xdfe375	0x1416af678	cstring	Major River: 
+reference	worldgen-dialog-renderer	0xdfe3d0	0x1416af638	cstring	River: 
+reference	worldgen-dialog-renderer	0xdfe41f	0x1416af628	cstring	Minor River: 
+reference	worldgen-dialog-renderer	0xdfe482	0x1416af648	cstring	Stream: 
+reference	worldgen-dialog-renderer	0xdfe4c5	0x1416af640	cstring	Brook: 
+reference	worldgen-dialog-renderer	0xdfe654	0x1416af490	cstring	Volcano: 
+reference	worldgen-dialog-renderer	0xdfe67f	0x1416af480	cstring	Mountain: 
+reference	worldgen-dialog-renderer	0xdfe7a2	0x141721050	cstring	Ice
+reference	worldgen-dialog-renderer	0xdfe97b	0x141629a04	cstring	FLUX
+reference	worldgen-dialog-renderer	0xdfed1f	0x141629a60	cstring	FIRED_MAT
+reference	worldgen-dialog-renderer	0xdfeddd	0x141721040	cstring	Shallow Clay
+reference	worldgen-dialog-renderer	0xdfee19	0x14162a4f4	cstring	Clay
+reference	worldgen-dialog-renderer	0xdfeea7	0x141721030	cstring	Shallow Sand
+reference	worldgen-dialog-renderer	0xdfeede	0x14162b8a0	cstring	Sand
+reference	worldgen-dialog-renderer	0xdfef79	0x141721020	cstring	Little soil
+reference	worldgen-dialog-renderer	0xdfefb8	0x141721090	cstring	Some soil
+reference	worldgen-dialog-renderer	0xdfeff7	0x141721080	cstring	Deep soil
+reference	worldgen-dialog-renderer	0xdff033	0x141721070	cstring	Very deep soil
+reference	worldgen-dialog-renderer	0xdff06f	0x141721058	cstring	Extremely deep soil
+reference	worldgen-dialog-renderer	0xdff0f4	0x1417210d8	cstring	Varied aquifer
+reference	worldgen-dialog-renderer	0xdff133	0x1417210c8	cstring	Heavy aquifer
+reference	worldgen-dialog-renderer	0xdff1ae	0x1417210b8	cstring	Light aquifer
+reference	worldgen-dialog-renderer	0xdff496	0x1417210a0	cstring	Flux stone layer
+reference	worldgen-dialog-renderer	0xdff63a	0x141721128	cstring	To recenter, press 
+reference	worldgen-dialog-renderer	0xdff6c4	0x141721100	cstring	 or hold+drag the middle mouse button.
+reference	worldgen-dialog-renderer	0xdffcac	0x141619940	cstring	Mods
+reference	worldgen-dialog-renderer	0xdffd10	0x141720b68	cstring	Basic options
+reference	worldgen-dialog-renderer	0xdffd4a	0x141720b58	cstring	Detailed mode
+reference	worldgen-dialog-renderer	0xdffd8a	0x141720b58	cstring	Detailed mode
+reference	worldgen-dialog-renderer	0xdffdc1	0x141720b68	cstring	Basic options
+reference	worldgen-dialog-renderer	0xe000df	0x141720aa0	cstring	Create world
+reference	worldgen-dialog-renderer	0xe0013a	0x141720b20	cstring	Back to main menu
+reference	worldgen-dialog-renderer	0xe00440	0x1415e873c	cstring	 
+reference	worldgen-dialog-renderer	0xe0054d	0x1416190f8	cstring	Installed
+reference	worldgen-dialog-renderer	0xe009e6	0x1415e873c	cstring	 
+reference	worldgen-dialog-renderer	0xe00dd0	0x141618cd8	cstring	Unnamed mod
+reference	worldgen-dialog-renderer	0xe00e5a	0x141618ce8	cstring	Author: 
+reference	worldgen-dialog-renderer	0xe00ea4	0x141618d90	cstring	Unknown author
+reference	worldgen-dialog-renderer	0xe00f23	0x141618da0	cstring	Version: 
+reference	worldgen-dialog-renderer	0xe01004	0x141618d70	cstring	Earliest compatible version: 
+reference	worldgen-dialog-renderer	0xe010fa	0x141619108	cstring	Description:
+reference	worldgen-dialog-renderer	0xe012c9	0x141619068	cstring	Must be after 
+reference	worldgen-dialog-renderer	0xe01314	0x141619078	cstring	Must be before 
+reference	worldgen-dialog-renderer	0xe0134b	0x141619088	cstring	Requires 
+reference	worldgen-dialog-renderer	0xe01481	0x141618fe0	cstring	Conflicts with 
+reference	worldgen-dialog-renderer	0xe01556	0x141720af8	cstring	Click now to open to this mod folder.
+reference	worldgen-dialog-renderer	0xe01601	0x141720b48	cstring	World map size
+reference	worldgen-dialog-renderer	0xe01647	0x141720b38	cstring	History length
+reference	worldgen-dialog-renderer	0xe016b5	0x141720c10	cstring	In such a young world certain game elements will not be available.
+reference	worldgen-dialog-renderer	0xe01723	0x141720bc0	cstring	A shorter history means certain game elements might not be available.
+reference	worldgen-dialog-renderer	0xe01791	0x141720b98	cstring	This may take several minutes!
+reference	worldgen-dialog-renderer	0xe017ff	0x141720b78	cstring	This may take a long while!
+reference	worldgen-dialog-renderer	0xe01845	0x141720ca0	cstring	Number of civilizations
+reference	worldgen-dialog-renderer	0xe0188b	0x141720c88	cstring	Maximum number of sites
+reference	worldgen-dialog-renderer	0xe018d1	0x141720c70	cstring	Number of beasts
+reference	worldgen-dialog-renderer	0xe01917	0x141720c58	cstring	Natural savagery
+reference	worldgen-dialog-renderer	0xe0195d	0x141720d50	cstring	Real world extinct creatures
+reference	worldgen-dialog-renderer	0xe019cb	0x141720d28	cstring	They are extinct in this world as well.
+reference	worldgen-dialog-renderer	0xe01a39	0x141720ce8	cstring	They live only on savage islands and very small savage biomes.
+reference	worldgen-dialog-renderer	0xe01aa7	0x141720cb8	cstring	They are only found in the untamed wilds.
+reference	worldgen-dialog-renderer	0xe01b15	0x141720dc8	cstring	They can be found in any wilderness.
+reference	worldgen-dialog-renderer	0xe01b83	0x141720d90	cstring	Many civilizations keep them as pets and work animals.
+reference	worldgen-dialog-renderer	0xe01bc6	0x141720d78	cstring	Mineral occurrence
+reference	worldgen-dialog-renderer	0xe01e5b	0x141720e08	cstring	Medium
+reference	worldgen-dialog-renderer	0xe01ea0	0x1416aecb4	cstring	Small
+reference	worldgen-dialog-renderer	0xe01ee5	0x141720e10	cstring	Smaller
+reference	worldgen-dialog-renderer	0xe01f2a	0x141720d70	cstring	Pocket
+reference	worldgen-dialog-renderer	0xe01f9b	0x141720e28	cstring	500 years
+reference	worldgen-dialog-renderer	0xe01fd5	0x141720e38	cstring	250 years
+reference	worldgen-dialog-renderer	0xe0201a	0x141720e48	cstring	100 years
+reference	worldgen-dialog-renderer	0xe0205f	0x141720df0	cstring	50 years
+reference	worldgen-dialog-renderer	0xe020a4	0x141720e00	cstring	5 years
+reference	worldgen-dialog-renderer	0xe02115	0x141720e18	cstring	Very high
+reference	worldgen-dialog-renderer	0xe0214f	0x141660db8	cstring	High
+reference	worldgen-dialog-renderer	0xe02194	0x141720e08	cstring	Medium
+reference	worldgen-dialog-renderer	0xe021d9	0x141660bb4	cstring	Low
+reference	worldgen-dialog-renderer	0xe0221e	0x141662020	cstring	Very low
+reference	worldgen-dialog-renderer	0xe0228f	0x141720e18	cstring	Very high
+reference	worldgen-dialog-renderer	0xe022c9	0x141660db8	cstring	High
+reference	worldgen-dialog-renderer	0xe0230e	0x141720e08	cstring	Medium
+reference	worldgen-dialog-renderer	0xe02353	0x141660bb4	cstring	Low
+reference	worldgen-dialog-renderer	0xe02398	0x141662020	cstring	Very low
+reference	worldgen-dialog-renderer	0xe02409	0x141720e18	cstring	Very high
+reference	worldgen-dialog-renderer	0xe02443	0x141660db8	cstring	High
+reference	worldgen-dialog-renderer	0xe02488	0x141720e08	cstring	Medium
+reference	worldgen-dialog-renderer	0xe024cd	0x141660bb4	cstring	Low
+reference	worldgen-dialog-renderer	0xe02512	0x141662020	cstring	Very low
+reference	worldgen-dialog-renderer	0xe02583	0x141720e18	cstring	Very high
+reference	worldgen-dialog-renderer	0xe025bd	0x141660db8	cstring	High
+reference	worldgen-dialog-renderer	0xe02602	0x141720e08	cstring	Medium
+reference	worldgen-dialog-renderer	0xe02647	0x141660bb4	cstring	Low
+reference	worldgen-dialog-renderer	0xe0268c	0x141662020	cstring	Very low
+reference	worldgen-dialog-renderer	0xe026fd	0x141629e18	cstring	Domesticated
+reference	worldgen-dialog-renderer	0xe02737	0x14171cad0	cstring	Any wilderness
+reference	worldgen-dialog-renderer	0xe0277c	0x14171cae0	cstring	Untamed wilds
+reference	worldgen-dialog-renderer	0xe027c1	0x1416b2598	cstring	Isolated
+reference	worldgen-dialog-renderer	0xe02806	0x14171ca40	cstring	Extinct
+reference	worldgen-dialog-renderer	0xe02877	0x141720e58	cstring	Everywhere
+reference	worldgen-dialog-renderer	0xe028db	0x141720e68	cstring	Frequent
+reference	worldgen-dialog-renderer	0xe02920	0x1416aef3c	cstring	Sparse
+reference	worldgen-dialog-renderer	0xe02965	0x141720e74	cstring	Rare
+reference	worldgen-dialog-renderer	0xe029aa	0x141720e80	cstring	Very rare
+reference	worldgen-dialog-renderer	0xe029ef	0x1416af19c	cstring	Large
+reference	worldgen-dialog-renderer	0xe02aa5	0x141720f00	cstring	Parameters saved!
+reference	worldgen-dialog-renderer	0xe02af3	0x141720ee8	cstring	Parameters loaded!
+reference	worldgen-dialog-renderer	0xe02b2a	0x141720ea8	cstring	Choose or create a parameter set to make a custom world.
+reference	worldgen-dialog-renderer	0xe02c5e	0x141720e90	cstring	New parameter set
+reference	worldgen-dialog-renderer	0xe02d84	0x1416052e8	cstring	Save
+reference	worldgen-dialog-renderer	0xe02ea4	0x1416b10fc	cstring	Load
+reference	worldgen-dialog-renderer	0xe0314e	0x1415ec82c	cstring	_
+reference	worldgen-dialog-renderer	0xe03326	0x141720f40	cstring	Width
+reference	worldgen-dialog-renderer	0xe03513	0x141720f38	cstring	Height
+reference	worldgen-dialog-renderer	0xe037ad	0x1415ec82c	cstring	_
+reference	worldgen-dialog-renderer	0xe038da	0x141720f18	cstring	Random seed
+reference	worldgen-dialog-renderer	0xe03911	0x141720f28	cstring	Various seeds
+reference	worldgen-dialog-renderer	0xe03a49	0x1415e8778	cstring	Copy
+reference	worldgen-dialog-renderer	0xe03b79	0x141619224	cstring	Delete
+reference	worldgen-dialog-renderer	0xe03d5e	0x1416160a8	cstring	Range: 
+reference	worldgen-dialog-renderer	0xe03de0	0x1415ed5b4	cstring	 to 
+reference	worldgen-dialog-renderer	0xe03faf	0x1415ec82c	cstring	_
+reference	worldgen-dialog-renderer	0xe046d2	0x141720f98	cstring	Really delete this parameter set?
+reference	worldgen-dialog-renderer	0xe04809	0x141619224	cstring	Delete
+reference	worldgen-dialog-renderer	0xe04934	0x1415fe724	cstring	Cancel
+reference	worldgen-dialog-renderer	0xe04ae4	0x141720f78	cstring	Really change the dimensions?
+reference	worldgen-dialog-renderer	0xe04b31	0x141720f50	cstring	This parameter set will be reset.
+reference	worldgen-dialog-renderer	0xe04c69	0x141720f48	cstring	Change
+reference	worldgen-dialog-renderer	0xe04d94	0x1415fe724	cstring	Cancel
+reference	worldgen-dialog-renderer	0xe04f44	0x1417200e8	cstring	Are you sure you want to abort?
+reference	worldgen-dialog-renderer	0xe04f91	0x1417200c8	cstring	You haven't saved your changes.
+reference	worldgen-dialog-renderer	0xe050c9	0x14163a808	cstring	Abort
+reference	worldgen-dialog-renderer	0xe051f4	0x1415fe724	cstring	Cancel
+reference	worldgen-dialog-renderer	0xe053a4	0x1417200a8	cstring	Are you sure you want to go on?
+reference	worldgen-dialog-renderer	0xe053f1	0x1417200c8	cstring	You haven't saved your changes.
+reference	worldgen-dialog-renderer	0xe05529	0x1415f7234	cstring	Create
+reference	worldgen-dialog-renderer	0xe05654	0x1415fe724	cstring	Cancel
+reference	worldgen-step-and-chronicle-selection	0xf51e7c	0x141745348	cstring	Not enough peaks: 
+reference	worldgen-step-and-chronicle-selection	0xf51ea2	0x141745304	cstring	<
+reference	worldgen-step-and-chronicle-selection	0xf52241	0x141745308	cstring	Not enough medium altitudes
+reference	worldgen-step-and-chronicle-selection	0xf5238b	0x1417452a8	cstring	Not enough medium altitudes after shift down
+reference	worldgen-step-and-chronicle-selection	0xf523b9	0x1417452d8	cstring	Not enough low altitudes after shift down: 
+reference	worldgen-step-and-chronicle-selection	0xf5250c	0x1417454a8	cstring	Not enough high altitudes after shift up
+reference	worldgen-step-and-chronicle-selection	0xf5253a	0x141745478	cstring	Not enough medium altitudes after shift up
+reference	worldgen-step-and-chronicle-selection	0xf526bb	0x141745438	cstring	Not enough partial edge oceans
+reference	worldgen-step-and-chronicle-selection	0xf526f9	0x141745458	cstring	Not enough complete edge oceans
+reference	worldgen-step-and-chronicle-selection	0xf5292e	0x1417453e0	cstring	Rainfall not evenly distributed: 
+reference	worldgen-step-and-chronicle-selection	0xf5294a	0x14164b74c	cstring	-
+reference	worldgen-step-and-chronicle-selection	0xf52977	0x14164b74c	cstring	-
+reference	worldgen-step-and-chronicle-selection	0xf529f9	0x141745408	cstring	Flat/rough areas not evenly distributed: 
+reference	worldgen-step-and-chronicle-selection	0xf52a16	0x14164b74c	cstring	-
+reference	worldgen-step-and-chronicle-selection	0xf52a43	0x14164b74c	cstring	-
+reference	worldgen-step-and-chronicle-selection	0xf52aba	0x141745398	cstring	Savagery not evenly distributed
+reference	worldgen-step-and-chronicle-selection	0xf52b21	0x1417453b8	cstring	Volcanism not evenly distributed
+reference	worldgen-step-and-chronicle-selection	0xf52b8b	0x141745b10	cstring	Initial swamp square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf52be1	0x141745b38	cstring	Initial desert square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf52c37	0x141745ac0	cstring	Initial forest square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf52c8d	0x141745ae8	cstring	Initial mountain square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf52ce3	0x141745a70	cstring	Initial ocean square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf52d39	0x141745a98	cstring	Initial glacier square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf52d8f	0x141745a18	cstring	Initial tundra square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf52de0	0x141745a40	cstring	Initial grassland square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf52e39	0x141745c20	cstring	Initial hill square count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf5308d	0x141745c48	cstring	Not enough volcanos
+reference	worldgen-step-and-chronicle-selection	0xf53393	0x141745be0	cstring	Swamp region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf533ec	0x141745c00	cstring	Desert region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf53445	0x141745ba0	cstring	Forest region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf5349e	0x141745bc0	cstring	Mountain region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf534f7	0x141745b60	cstring	Ocean region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf53550	0x141745b80	cstring	Glacier region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf535a9	0x141745d48	cstring	Tundra region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf53602	0x141745d68	cstring	Grassland region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf5365b	0x141745cf8	cstring	Hill region count fails by 
+reference	worldgen-step-and-chronicle-selection	0xf539b9	0x141745d18	cstring	Not enough river start points before erosion
+reference	worldgen-step-and-chronicle-selection	0xf54c7a	0x141745ca8	cstring	Too many distinct subregions (over by 
+reference	worldgen-step-and-chronicle-selection	0xf54ca8	0x141615580	cstring	)
+reference	worldgen-step-and-chronicle-selection	0xf550d0	0x1416516f8	cstring	errorlog.txt
+reference	worldgen-step-and-chronicle-selection	0xf550ee	0x141745c60	cstring	A world gen error from DF 
+reference	worldgen-step-and-chronicle-selection	0xf55110	0x141745cd0	cstring	 will be logged after parameter dump.
+reference	worldgen-step-and-chronicle-selection	0xf55166	0x141745c80	cstring	Error sorting rivers: working with 
+reference	worldgen-step-and-chronicle-selection	0xf55185	0x141745ec8	cstring	 ran into 
+reference	worldgen-step-and-chronicle-selection	0xf553c1	0x141745ed8	cstring	Not enough medium altitude locations after erosion
+reference	worldgen-step-and-chronicle-selection	0xf55414	0x141745e58	cstring	Not enough low altitude locations after erosion: 
+reference	worldgen-step-and-chronicle-selection	0xf5546e	0x141745e90	cstring	Not enough high altitude locations after erosion
+reference	worldgen-step-and-chronicle-selection	0xf55737	0x14163fca4	cstring	[R]
+classic	age-caption	0xbb5e75	0x1415e89c4	cstring	The 
+classic	age-caption	0xbb5edf	0x1415e3720	cstring	 
+classic	age-caption	0xbb5f3c	0x1416daa90	cstring	Unknown Age
+classic	worldgen-dialog-renderer	0xdf3d5c	0x14171b2a8	cstring	Loading data needed to create new world
+classic	worldgen-dialog-renderer	0xdf3dd0	0x1415ff538	cstring	Initializing...
+classic	worldgen-dialog-renderer	0xdf3e30	0x1416a7708	cstring	Loading object files...  
+classic	worldgen-dialog-renderer	0xdf3e76	0x1416a7708	cstring	Loading object files...  
+classic	worldgen-dialog-renderer	0xdf3eb5	0x14171b288	cstring	Initializing music load...
+classic	worldgen-dialog-renderer	0xdf3ef4	0x1416a75b0	cstring	Processing languages...
+classic	worldgen-dialog-renderer	0xdf3f33	0x1416a75c8	cstring	Processing inorganics...
+classic	worldgen-dialog-renderer	0xdf3f72	0x1416a7580	cstring	Processing plants...
+classic	worldgen-dialog-renderer	0xdf3fb1	0x1416a7598	cstring	Processing items...
+classic	worldgen-dialog-renderer	0xdf3ff0	0x1416a7620	cstring	Processing creatures...
+classic	worldgen-dialog-renderer	0xdf402f	0x1416a7638	cstring	Processing entities...
+classic	worldgen-dialog-renderer	0xdf406e	0x1416a75e8	cstring	Processing reactions...
+classic	worldgen-dialog-renderer	0xdf40ad	0x1416a7600	cstring	Processing interactions...
+classic	worldgen-dialog-renderer	0xdf40ec	0x1416a7688	cstring	Processing music...
+classic	worldgen-dialog-renderer	0xdf412b	0x1416a76a0	cstring	Processing sounds...
+classic	worldgen-dialog-renderer	0xdf416a	0x141614230	cstring	Finalizing languages...
+classic	worldgen-dialog-renderer	0xdf41a9	0x141614248	cstring	Finalizing descriptors...
+classic	worldgen-dialog-renderer	0xdf41e8	0x141614190	cstring	Finalizing material templates...
+classic	worldgen-dialog-renderer	0xdf4227	0x1416141b8	cstring	Finalizing inorganics...
+classic	worldgen-dialog-renderer	0xdf4266	0x1416141d8	cstring	Finalizing plants...
+classic	worldgen-dialog-renderer	0xdf42a5	0x1416141f0	cstring	Finalizing tissue templates...
+classic	worldgen-dialog-renderer	0xdf42e4	0x141613fa0	cstring	Finalizing items...
+classic	worldgen-dialog-renderer	0xdf4323	0x141613fb8	cstring	Finalizing buildings...
+classic	worldgen-dialog-renderer	0xdf4362	0x141613fd0	cstring	Finalizing body detail plans...
+classic	worldgen-dialog-renderer	0xdf43a1	0x141613ff0	cstring	Finalizing creature variations...
+classic	worldgen-dialog-renderer	0xdf43e0	0x141613f38	cstring	Finalizing creatures...
+classic	worldgen-dialog-renderer	0xdf441f	0x141613f50	cstring	Finalizing entities...
+classic	worldgen-dialog-renderer	0xdf445e	0x141613f68	cstring	Finalizing reactions...
+classic	worldgen-dialog-renderer	0xdf449d	0x141613f80	cstring	Finalizing interactions...
+classic	worldgen-dialog-renderer	0xdf44dc	0x141614080	cstring	Preparing material data...
+classic	worldgen-dialog-renderer	0xdf4538	0x1416a73d8	cstring	Preparing graphics...  
+classic	worldgen-dialog-renderer	0xdf459f	0x1416a73d8	cstring	Preparing graphics...  
+classic	worldgen-dialog-renderer	0xdf45de	0x14171b360	cstring	Finalizing...
+classic	worldgen-dialog-renderer	0xdf497c	0x1415fdc6c	cstring	", """
+classic	worldgen-dialog-renderer	0xdf49b5	0x1415e46fc	cstring	""""
+classic	worldgen-dialog-renderer	0xdf4a2c	0x141719db0	cstring	Creating 
+classic	worldgen-dialog-renderer	0xdf4a96	0x141719d98	cstring	Creating the world
+classic	worldgen-dialog-renderer	0xdf4aee	0x141610298	cstring	 (
+classic	worldgen-dialog-renderer	0xdf4b62	0x141719e48	cstring	 rejected)
+classic	worldgen-dialog-renderer	0xdf4bd0	0x141719e30	cstring	Preparing elevation...
+classic	worldgen-dialog-renderer	0xdf4c2b	0x141719e18	cstring	Setting temperature...
+classic	worldgen-dialog-renderer	0xdf4c8a	0x141719e00	cstring	Running rivers...
+classic	worldgen-dialog-renderer	0xdf4cf8	0x141610298	cstring	 (
+classic	worldgen-dialog-renderer	0xdf4d6c	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf4dea	0x141719ea0	cstring	Forming lakes
+classic	worldgen-dialog-renderer	0xdf4e43	0x1415e77d0	cstring	...
+classic	worldgen-dialog-renderer	0xdf4e99	0x141610298	cstring	 (
+classic	worldgen-dialog-renderer	0xdf4f0d	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf4f63	0x141719e88	cstring	 and minerals...
+classic	worldgen-dialog-renderer	0xdf4fb1	0x141610298	cstring	 (
+classic	worldgen-dialog-renderer	0xdf4fd3	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf5009	0x1415e77d0	cstring	...
+classic	worldgen-dialog-renderer	0xdf509c	0x141719e70	cstring	Growing vegetation...
+classic	worldgen-dialog-renderer	0xdf511d	0x141719e58	cstring	Verifying terrain...
+classic	worldgen-dialog-renderer	0xdf5178	0x141719f00	cstring	Importing wildlife...
+classic	worldgen-dialog-renderer	0xdf51e8	0x141719ee8	cstring	Recounting legends...
+classic	worldgen-dialog-renderer	0xdf5256	0x141719ed0	cstring	Finished prehistory...
+classic	worldgen-dialog-renderer	0xdf5299	0x141719eb0	cstring	Placing civilizations... (
+classic	worldgen-dialog-renderer	0xdf52bf	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf5301	0x141719f60	cstring	Making cave civilizations...
+classic	worldgen-dialog-renderer	0xdf5344	0x141719f48	cstring	Making cave pops...
+classic	worldgen-dialog-renderer	0xdf5387	0x141719f30	cstring	Placing other beasts...
+classic	worldgen-dialog-renderer	0xdf53ca	0x141719f18	cstring	Placing megabeasts...
+classic	worldgen-dialog-renderer	0xdf540d	0x14171b6a0	cstring	Placing good/evil...
+classic	worldgen-dialog-renderer	0xdf5450	0x14171b688	cstring	Placing caves... (
+classic	worldgen-dialog-renderer	0xdf547c	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf54b5	0x14171b670	cstring	Prehistory init...
+classic	worldgen-dialog-renderer	0xdf552f	0x14171b650	cstring	Finalizing civ mats... (
+classic	worldgen-dialog-renderer	0xdf55d9	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf562b	0x14171b6f8	cstring	Finalizing art... (
+classic	worldgen-dialog-renderer	0xdf56d5	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf5725	0x14171b6d8	cstring	Finalizing uniforms... (
+classic	worldgen-dialog-renderer	0xdf57cf	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf5821	0x14171b6c0	cstring	Finalizing sites... (
+classic	worldgen-dialog-renderer	0xdf58ca	0x1416102d8	cstring	)
+classic	worldgen-dialog-renderer	0xdf597d	0x14171b6b8	cstring	, year 
+classic	worldgen-dialog-renderer	0xdf59d4	0x14171b748	cstring	Historical figures: 
+classic	worldgen-dialog-renderer	0xdf5ac9	0x14171b730	cstring	An abridged chronicle (
+classic	worldgen-dialog-renderer	0xdf5b1e	0x14171b720	cstring	 events total):
+classic	worldgen-dialog-renderer	0xdf5dec	0x14171b710	cstring	   Events: 
+classic	worldgen-dialog-renderer	0xdf5fe9	0x14171b7b8	cstring	LACK OF PEAKS
+classic	worldgen-dialog-renderer	0xdf6023	0x14171b798	cstring	MEDIUM ELEVATION REJECTION
+classic	worldgen-dialog-renderer	0xdf605d	0x14171b780	cstring	LOW ELEVATION REJECTION
+classic	worldgen-dialog-renderer	0xdf6097	0x14171b760	cstring	HIGH ELEVATION REJECTION
+classic	worldgen-dialog-renderer	0xdf60d1	0x14171b810	cstring	LACK OF EDGE OCEANS
+classic	worldgen-dialog-renderer	0xdf610b	0x14171b7f8	cstring	RAINFALL REJECTION
+classic	worldgen-dialog-renderer	0xdf6145	0x14171b7e0	cstring	DRAINAGE REJECTION
+classic	worldgen-dialog-renderer	0xdf617f	0x14171b7c8	cstring	SAVAGERY REJECTION
+classic	worldgen-dialog-renderer	0xdf61b9	0x14171b868	cstring	VOLCANISM REJECTION
+classic	worldgen-dialog-renderer	0xdf61f3	0x14171b850	cstring	LACK OF VOLCANOS
+classic	worldgen-dialog-renderer	0xdf622d	0x14171b840	cstring	SWAMP REJECTION
+classic	worldgen-dialog-renderer	0xdf6267	0x14171b828	cstring	DESERT REJECTION
+classic	worldgen-dialog-renderer	0xdf62a1	0x14171b8c0	cstring	FOREST REJECTION
+classic	worldgen-dialog-renderer	0xdf62db	0x14171b8a8	cstring	MOUNTAIN REJECTION
+classic	worldgen-dialog-renderer	0xdf6315	0x14171b898	cstring	OCEAN REJECTION
+classic	worldgen-dialog-renderer	0xdf634f	0x14171b880	cstring	GLACIER REJECTION
+classic	worldgen-dialog-renderer	0xdf6389	0x14171b910	cstring	TUNDRA REJECTION
+classic	worldgen-dialog-renderer	0xdf63c3	0x14171b8f8	cstring	GRASSLAND REJECTION
+classic	worldgen-dialog-renderer	0xdf63fd	0x14171b8e8	cstring	HILLS REJECTION
+classic	worldgen-dialog-renderer	0xdf6437	0x14171b8d8	cstring	LACK OF RIVERS
+classic	worldgen-dialog-renderer	0xdf6471	0x14171b980	cstring	TOO MANY REGIONS
+classic	worldgen-dialog-renderer	0xdf64ab	0x14171b968	cstring	LACK OF MOUNTAIN CAVES
+classic	worldgen-dialog-renderer	0xdf64e5	0x14171b950	cstring	LACK OF LOW-LYING CAVES
+classic	worldgen-dialog-renderer	0xdf651f	0x14171b928	cstring	UNABLE TO PLACE ENOUGH CIVILIZATIONS
+classic	worldgen-dialog-renderer	0xdf6559	0x14171ba28	cstring	NO CIVILIZATIONS AVAILABLE
+classic	worldgen-dialog-renderer	0xdf6590	0x14171b9f8	cstring	UNABLE TO PLACE CONTROLLABLE CIVILIZATION
+classic	worldgen-dialog-renderer	0xdf65c7	0x14171b9c8	cstring	FARMING CIVILIZATION PLACED WITHOUT CROPS
+classic	worldgen-dialog-renderer	0xdf6773	0x14171b998	cstring	CONTINUE until you give me another warning.
+classic	worldgen-dialog-renderer	0xdf689d	0x14171bad8	cstring	ABORT NOW and I'll look over my parameters.
+classic	worldgen-dialog-renderer	0xdf69cd	0x14171ba98	cstring	ALLOW THIS REJECTION TYPE and continue reporting others.
+classic	worldgen-dialog-renderer	0xdf6afd	0x14171ba58	cstring	ALLOW ALL REJECTS, even if I end up with a legends-only world!
+classic	worldgen-dialog-renderer	0xdf6c5d	0x14171ba48	cstring	Play now
+classic	worldgen-dialog-renderer	0xdf6d8d	0x14171bb30	cstring	Keep world and return to main menu
+classic	worldgen-dialog-renderer	0xdf6f2a	0x14171bb20	cstring	Use world now
+classic	worldgen-dialog-renderer	0xdf709e	0x14171bb08	cstring	Continue generating
+classic	worldgen-dialog-renderer	0xdf71cd	0x14171b328	cstring	Back to main menu
+classic	worldgen-dialog-renderer	0xdf7329	0x141611280	cstring	Pause
+classic	worldgen-dialog-renderer	0xdf77a5	0x1415e7a08	cstring	Mountain
+classic	worldgen-dialog-renderer	0xdf77df	0x1415e7a18	cstring	Glacier
+classic	worldgen-dialog-renderer	0xdf7819	0x1415e79dc	cstring	Tundra
+classic	worldgen-dialog-renderer	0xdf7853	0x1415e79e8	cstring	Temperate Freshwater Swamp
+classic	worldgen-dialog-renderer	0xdf788d	0x1415e7a60	cstring	Temperate Saltwater Swamp
+classic	worldgen-dialog-renderer	0xdf78c7	0x1415e7a80	cstring	Temperate Freshwater Marsh
+classic	worldgen-dialog-renderer	0xdf7901	0x1415e7a20	cstring	Temperate Saltwater Marsh
+classic	worldgen-dialog-renderer	0xdf793b	0x1415e7a40	cstring	Tropical Freshwater Swamp
+classic	worldgen-dialog-renderer	0xdf7975	0x1415e7ae0	cstring	Tropical Saltwater Swamp
+classic	worldgen-dialog-renderer	0xdf79af	0x1415e7b00	cstring	Mangrove Swamp
+classic	worldgen-dialog-renderer	0xdf79e9	0x1415e7aa0	cstring	Tropical Freshwater Marsh
+classic	worldgen-dialog-renderer	0xdf7a23	0x1415e7ac0	cstring	Tropical Saltwater Marsh
+classic	worldgen-dialog-renderer	0xdf7a5d	0x1415e7b4c	cstring	Taiga
+classic	worldgen-dialog-renderer	0xdf7a97	0x1416a9ef0	cstring	Temperate Conifer Forest
+classic	worldgen-dialog-renderer	0xdf7ad1	0x1415e7b10	cstring	Temperate Broadleaf Forest
+classic	worldgen-dialog-renderer	0xdf7b0b	0x1415e7b30	cstring	Tropical Coniferous Forest
+classic	worldgen-dialog-renderer	0xdf7b45	0x1416a9ed0	cstring	Tropical Dry Brdlf Forest
+classic	worldgen-dialog-renderer	0xdf7b7f	0x1416a9f20	cstring	Tropical Moist Brdlf Forst
+classic	worldgen-dialog-renderer	0xdf7bb9	0x1415e7b78	cstring	Temperate Grassland
+classic	worldgen-dialog-renderer	0xdf7bf3	0x1415e7b90	cstring	Temperate Savanna
+classic	worldgen-dialog-renderer	0xdf7c2d	0x1415e7c18	cstring	Temperate Shrubland
+classic	worldgen-dialog-renderer	0xdf7c67	0x1415e7c30	cstring	Tropical Grassland
+classic	worldgen-dialog-renderer	0xdf7ca1	0x1415e7be8	cstring	Tropical Savanna
+classic	worldgen-dialog-renderer	0xdf7cdb	0x1415e7c00	cstring	Tropical Shrubland
+classic	worldgen-dialog-renderer	0xdf7d15	0x1415e7c68	cstring	Badlands
+classic	worldgen-dialog-renderer	0xdf7d4f	0x1415e7c78	cstring	Rocky Wasteland
+classic	worldgen-dialog-renderer	0xdf7d89	0x1415e7c48	cstring	Sand Desert
+classic	worldgen-dialog-renderer	0xdf7dc3	0x1415e7c58	cstring	Tropical Ocean
+classic	worldgen-dialog-renderer	0xdf7dfd	0x1415e7cc0	cstring	Temperate Ocean
+classic	worldgen-dialog-renderer	0xdf7e37	0x1415e7cd0	cstring	Arctic Ocean
+classic	worldgen-dialog-renderer	0xdf7e71	0x1415e7c88	cstring	Temperate Freshwater Pool
+classic	worldgen-dialog-renderer	0xdf7eab	0x1415e7ca8	cstring	Temperate Brackish Pool
+classic	worldgen-dialog-renderer	0xdf7ee5	0x1415e7d10	cstring	Temperate Saltwater Pool
+classic	worldgen-dialog-renderer	0xdf7f1f	0x1415e7d30	cstring	Tropical Freshwater Pool
+classic	worldgen-dialog-renderer	0xdf7f59	0x1415e7ce0	cstring	Tropical Brackish Pool
+classic	worldgen-dialog-renderer	0xdf7f93	0x1415e7cf8	cstring	Tropical Saltwater Pool
+classic	worldgen-dialog-renderer	0xdf7fcd	0x1415e7d90	cstring	Temperate Freshwater Lake
+classic	worldgen-dialog-renderer	0xdf8007	0x1415e7db0	cstring	Temperate Brackish Lake
+classic	worldgen-dialog-renderer	0xdf8041	0x1415e7d50	cstring	Temperate Saltwater Lake
+classic	worldgen-dialog-renderer	0xdf807b	0x1415e7d70	cstring	Tropical Freshwater Lake
+classic	worldgen-dialog-renderer	0xdf80b5	0x1415e7e08	cstring	Tropical Brackish Lake
+classic	worldgen-dialog-renderer	0xdf80ef	0x1415e7e20	cstring	Tropical Saltwater Lake
+classic	worldgen-dialog-renderer	0xdf8129	0x1415e7dc8	cstring	Temperate Freshwater River
+classic	worldgen-dialog-renderer	0xdf8163	0x1415e7de8	cstring	Temperate Brackish River
+classic	worldgen-dialog-renderer	0xdf819d	0x1415e7e70	cstring	Temperate Saltwater River
+classic	worldgen-dialog-renderer	0xdf81d7	0x1415e7e90	cstring	Tropical Freshwater River
+classic	worldgen-dialog-renderer	0xdf8211	0x1415e7e38	cstring	Tropical Brackish River
+classic	worldgen-dialog-renderer	0xdf824b	0x1415e7e50	cstring	Tropical Saltwater River
+classic	worldgen-dialog-renderer	0xdf8285	0x1415e7ef0	cstring	Subterranean Water
+classic	worldgen-dialog-renderer	0xdf82bc	0x1415e7f08	cstring	Subterranean Chasm
+classic	worldgen-dialog-renderer	0xdf82f3	0x1415e7eb0	cstring	Subterranean Magma
+classic	worldgen-dialog-renderer	0xdf8370	0x1416a9f10	cstring	Temperature: 
+classic	worldgen-dialog-renderer	0xdf83ce	0x1415f23b0	cstring	Freezing
+classic	worldgen-dialog-renderer	0xdf841c	0x1415f23d0	cstring	Cold
+classic	worldgen-dialog-renderer	0xdf8469	0x1415f9c20	cstring	Temperate
+classic	worldgen-dialog-renderer	0xdf84b6	0x1415f23d8	cstring	Warm
+classic	worldgen-dialog-renderer	0xdf8503	0x1415f23e0	cstring	Hot
+classic	worldgen-dialog-renderer	0xdf8542	0x1415f2338	cstring	Scorching
+classic	worldgen-dialog-renderer	0xdf85a7	0x1416a9eb0	cstring	Trees: 
+classic	worldgen-dialog-renderer	0xdf8624	0x1416a9ea4	cstring	Scarce
+classic	worldgen-dialog-renderer	0xdf8671	0x1416a9ec4	cstring	Sparse
+classic	worldgen-dialog-renderer	0xdf86be	0x1416a9eb8	cstring	Woodland
+classic	worldgen-dialog-renderer	0xdf8700	0x1416a9d70	cstring	Heavily Forested
+classic	worldgen-dialog-renderer	0xdf874e	0x1415fa7dc	cstring	None
+classic	worldgen-dialog-renderer	0xdf87b3	0x1416a9d58	cstring	Other Vegetation: 
+classic	worldgen-dialog-renderer	0xdf882a	0x1416a9ea4	cstring	Scarce
+classic	worldgen-dialog-renderer	0xdf8877	0x1416a9d90	cstring	Moderate
+classic	worldgen-dialog-renderer	0xdf88be	0x1416a9d84	cstring	Thick
+classic	worldgen-dialog-renderer	0xdf890c	0x1415fa7dc	cstring	None
+classic	worldgen-dialog-renderer	0xdf8973	0x1416a9d30	cstring	Surroundings: 
+classic	worldgen-dialog-renderer	0xdf89df	0x1416a9d28	cstring	Serene
+classic	worldgen-dialog-renderer	0xdf8a29	0x1416a9d4c	cstring	Calm
+classic	worldgen-dialog-renderer	0xdf8a6d	0x1416a9d40	cstring	Sinister
+classic	worldgen-dialog-renderer	0xdf8acb	0x1416a9df8	cstring	Mirthful
+classic	worldgen-dialog-renderer	0xdf8b18	0x1416a9de8	cstring	Wilderness
+classic	worldgen-dialog-renderer	0xdf8b5f	0x1416a9e18	cstring	Haunted
+classic	worldgen-dialog-renderer	0xdf8bac	0x1416a9e08	cstring	Joyous Wilds
+classic	worldgen-dialog-renderer	0xdf8bf6	0x1416a9db0	cstring	Untamed Wilds
+classic	worldgen-dialog-renderer	0xdf8c37	0x1416a9da0	cstring	Terrifying
+classic	worldgen-dialog-renderer	0xdf8e11	0x1415e46fc	cstring	""""
+classic	worldgen-dialog-renderer	0xdf8e64	0x1415e46fc	cstring	""""
+classic	worldgen-dialog-renderer	0xdf8eee	0x1415e3720	cstring	 
+classic	worldgen-dialog-renderer	0xdf91f3	0x1416a9dd0	cstring	Multiple Constructions
+classic	worldgen-dialog-renderer	0xdf92e5	0x1416a9dc0	cstring	Major River: 
+classic	worldgen-dialog-renderer	0xdf9340	0x1416aa540	cstring	River: 
+classic	worldgen-dialog-renderer	0xdf938f	0x1416aa530	cstring	Minor River: 
+classic	worldgen-dialog-renderer	0xdf93f2	0x1416aa550	cstring	Stream: 
+classic	worldgen-dialog-renderer	0xdf9435	0x1416aa548	cstring	Brook: 
+classic	worldgen-dialog-renderer	0xdf95c4	0x1416aa4f8	cstring	Volcano: 
+classic	worldgen-dialog-renderer	0xdf95ef	0x1416aa4e8	cstring	Mountain: 
+classic	worldgen-dialog-renderer	0xdf9712	0x14171bb04	cstring	Ice
+classic	worldgen-dialog-renderer	0xdf98eb	0x1416248ec	cstring	FLUX
+classic	worldgen-dialog-renderer	0xdf9c8f	0x1416248e0	cstring	FIRED_MAT
+classic	worldgen-dialog-renderer	0xdf9d4d	0x14171bb88	cstring	Shallow Clay
+classic	worldgen-dialog-renderer	0xdf9d89	0x141625884	cstring	Clay
+classic	worldgen-dialog-renderer	0xdf9e17	0x14171bb78	cstring	Shallow Sand
+classic	worldgen-dialog-renderer	0xdf9e4e	0x141626b00	cstring	Sand
+classic	worldgen-dialog-renderer	0xdf9ee9	0x14171bb68	cstring	Little soil
+classic	worldgen-dialog-renderer	0xdf9f28	0x14171bb58	cstring	Some soil
+classic	worldgen-dialog-renderer	0xdf9f67	0x14171bbd0	cstring	Deep soil
+classic	worldgen-dialog-renderer	0xdf9fa3	0x14171bbc0	cstring	Very deep soil
+classic	worldgen-dialog-renderer	0xdf9fdf	0x14171bba8	cstring	Extremely deep soil
+classic	worldgen-dialog-renderer	0xdfa064	0x14171bb98	cstring	Varied aquifer
+classic	worldgen-dialog-renderer	0xdfa0a3	0x14171bc20	cstring	Heavy aquifer
+classic	worldgen-dialog-renderer	0xdfa11e	0x14171bc10	cstring	Light aquifer
+classic	worldgen-dialog-renderer	0xdfa406	0x14171bbf8	cstring	Flux stone layer
+classic	worldgen-dialog-renderer	0xdfa5aa	0x14171bbe0	cstring	To recenter, press 
+classic	worldgen-dialog-renderer	0xdfa634	0x14171bc60	cstring	 or hold+drag the middle mouse button.
+classic	worldgen-dialog-renderer	0xdfac1c	0x1416146f4	cstring	Mods
+classic	worldgen-dialog-renderer	0xdfac80	0x14171b370	cstring	Basic options
+classic	worldgen-dialog-renderer	0xdfacba	0x141719978	cstring	Detailed mode
+classic	worldgen-dialog-renderer	0xdfacfa	0x141719978	cstring	Detailed mode
+classic	worldgen-dialog-renderer	0xdfad31	0x14171b370	cstring	Basic options
+classic	worldgen-dialog-renderer	0xdfb04f	0x14171b380	cstring	Create world
+classic	worldgen-dialog-renderer	0xdfb0aa	0x14171b328	cstring	Back to main menu
+classic	worldgen-dialog-renderer	0xdfb3b0	0x1415e3720	cstring	 
+classic	worldgen-dialog-renderer	0xdfb4bd	0x141613f08	cstring	Installed
+classic	worldgen-dialog-renderer	0xdfb956	0x1415e3720	cstring	 
+classic	worldgen-dialog-renderer	0xdfbd40	0x141613f18	cstring	Unnamed mod
+classic	worldgen-dialog-renderer	0xdfbdca	0x141613f28	cstring	Author: 
+classic	worldgen-dialog-renderer	0xdfbe14	0x141613e98	cstring	Unknown author
+classic	worldgen-dialog-renderer	0xdfbe93	0x141613ea8	cstring	Version: 
+classic	worldgen-dialog-renderer	0xdfbf74	0x141613eb8	cstring	Earliest compatible version: 
+classic	worldgen-dialog-renderer	0xdfc06a	0x141613ed8	cstring	Description:
+classic	worldgen-dialog-renderer	0xdfc239	0x141613d30	cstring	Must be after 
+classic	worldgen-dialog-renderer	0xdfc284	0x141613d40	cstring	Must be before 
+classic	worldgen-dialog-renderer	0xdfc2bb	0x141613d50	cstring	Requires 
+classic	worldgen-dialog-renderer	0xdfc3f1	0x141613d60	cstring	Conflicts with 
+classic	worldgen-dialog-renderer	0xdfc4c6	0x14171b3d8	cstring	Click now to open to this mod folder.
+classic	worldgen-dialog-renderer	0xdfc571	0x141719968	cstring	World map size
+classic	worldgen-dialog-renderer	0xdfc5b7	0x141719958	cstring	History length
+classic	worldgen-dialog-renderer	0xdfc625	0x141719910	cstring	In such a young world certain game elements will not be available.
+classic	worldgen-dialog-renderer	0xdfc693	0x1417199e0	cstring	A shorter history means certain game elements might not be available.
+classic	worldgen-dialog-renderer	0xdfc701	0x1417199c0	cstring	This may take several minutes!
+classic	worldgen-dialog-renderer	0xdfc76f	0x1417199a0	cstring	This may take a long while!
+classic	worldgen-dialog-renderer	0xdfc7b5	0x141719988	cstring	Number of civilizations
+classic	worldgen-dialog-renderer	0xdfc7fb	0x141719a78	cstring	Maximum number of sites
+classic	worldgen-dialog-renderer	0xdfc841	0x141719a60	cstring	Number of beasts
+classic	worldgen-dialog-renderer	0xdfc887	0x141719a48	cstring	Natural savagery
+classic	worldgen-dialog-renderer	0xdfc8cd	0x141719a28	cstring	Real world extinct creatures
+classic	worldgen-dialog-renderer	0xdfc93b	0x141719b28	cstring	They are extinct in this world as well.
+classic	worldgen-dialog-renderer	0xdfc9a9	0x141719ae8	cstring	They live only on savage islands and very small savage biomes.
+classic	worldgen-dialog-renderer	0xdfca17	0x141719ab8	cstring	They are only found in the untamed wilds.
+classic	worldgen-dialog-renderer	0xdfca85	0x141719a90	cstring	They can be found in any wilderness.
+classic	worldgen-dialog-renderer	0xdfcaf3	0x141719b78	cstring	Many civilizations keep them as pets and work animals.
+classic	worldgen-dialog-renderer	0xdfcb36	0x141719b60	cstring	Mineral occurrence
+classic	worldgen-dialog-renderer	0xdfcdcb	0x141719bd8	cstring	Medium
+classic	worldgen-dialog-renderer	0xdfce10	0x1416a9d18	cstring	Small
+classic	worldgen-dialog-renderer	0xdfce55	0x141719b50	cstring	Smaller
+classic	worldgen-dialog-renderer	0xdfce9a	0x141719b58	cstring	Pocket
+classic	worldgen-dialog-renderer	0xdfcf0b	0x141719c00	cstring	500 years
+classic	worldgen-dialog-renderer	0xdfcf45	0x141719c10	cstring	250 years
+classic	worldgen-dialog-renderer	0xdfcf8a	0x141719bb0	cstring	100 years
+classic	worldgen-dialog-renderer	0xdfcfcf	0x141719bc0	cstring	50 years
+classic	worldgen-dialog-renderer	0xdfd014	0x141719bd0	cstring	5 years
+classic	worldgen-dialog-renderer	0xdfd085	0x141719bf0	cstring	Very high
+classic	worldgen-dialog-renderer	0xdfd0bf	0x14165bd70	cstring	High
+classic	worldgen-dialog-renderer	0xdfd104	0x141719bd8	cstring	Medium
+classic	worldgen-dialog-renderer	0xdfd149	0x14165bdac	cstring	Low
+classic	worldgen-dialog-renderer	0xdfd18e	0x14165cf90	cstring	Very low
+classic	worldgen-dialog-renderer	0xdfd1ff	0x141719bf0	cstring	Very high
+classic	worldgen-dialog-renderer	0xdfd239	0x14165bd70	cstring	High
+classic	worldgen-dialog-renderer	0xdfd27e	0x141719bd8	cstring	Medium
+classic	worldgen-dialog-renderer	0xdfd2c3	0x14165bdac	cstring	Low
+classic	worldgen-dialog-renderer	0xdfd308	0x14165cf90	cstring	Very low
+classic	worldgen-dialog-renderer	0xdfd379	0x141719bf0	cstring	Very high
+classic	worldgen-dialog-renderer	0xdfd3b3	0x14165bd70	cstring	High
+classic	worldgen-dialog-renderer	0xdfd3f8	0x141719bd8	cstring	Medium
+classic	worldgen-dialog-renderer	0xdfd43d	0x14165bdac	cstring	Low
+classic	worldgen-dialog-renderer	0xdfd482	0x14165cf90	cstring	Very low
+classic	worldgen-dialog-renderer	0xdfd4f3	0x141719bf0	cstring	Very high
+classic	worldgen-dialog-renderer	0xdfd52d	0x14165bd70	cstring	High
+classic	worldgen-dialog-renderer	0xdfd572	0x141719bd8	cstring	Medium
+classic	worldgen-dialog-renderer	0xdfd5b7	0x14165bdac	cstring	Low
+classic	worldgen-dialog-renderer	0xdfd5fc	0x14165cf90	cstring	Very low
+classic	worldgen-dialog-renderer	0xdfd66d	0x141625660	cstring	Domesticated
+classic	worldgen-dialog-renderer	0xdfd6a7	0x141717cd8	cstring	Any wilderness
+classic	worldgen-dialog-renderer	0xdfd6ec	0x141717c38	cstring	Untamed wilds
+classic	worldgen-dialog-renderer	0xdfd731	0x1416ad510	cstring	Isolated
+classic	worldgen-dialog-renderer	0xdfd776	0x141717c48	cstring	Extinct
+classic	worldgen-dialog-renderer	0xdfd7e7	0x141719c38	cstring	Everywhere
+classic	worldgen-dialog-renderer	0xdfd84b	0x141719c48	cstring	Frequent
+classic	worldgen-dialog-renderer	0xdfd890	0x1416a9ec4	cstring	Sparse
+classic	worldgen-dialog-renderer	0xdfd8d5	0x141719c54	cstring	Rare
+classic	worldgen-dialog-renderer	0xdfd91a	0x141719be0	cstring	Very rare
+classic	worldgen-dialog-renderer	0xdfd95f	0x1416a9d10	cstring	Large
+classic	worldgen-dialog-renderer	0xdfda15	0x141719c20	cstring	Parameters saved!
+classic	worldgen-dialog-renderer	0xdfda63	0x141719cc0	cstring	Parameters loaded!
+classic	worldgen-dialog-renderer	0xdfda9a	0x141719c80	cstring	Choose or create a parameter set to make a custom world.
+classic	worldgen-dialog-renderer	0xdfdbce	0x141719c68	cstring	New parameter set
+classic	worldgen-dialog-renderer	0xdfdcf4	0x1416002b8	cstring	Save
+classic	worldgen-dialog-renderer	0xdfde14	0x1416ac06c	cstring	Load
+classic	worldgen-dialog-renderer	0xdfe0be	0x1415e783c	cstring	_
+classic	worldgen-dialog-renderer	0xdfe296	0x141719c5c	cstring	Width
+classic	worldgen-dialog-renderer	0xdfe483	0x141719d20	cstring	Height
+classic	worldgen-dialog-renderer	0xdfe71d	0x1415e783c	cstring	_
+classic	worldgen-dialog-renderer	0xdfe84a	0x141719d00	cstring	Random seed
+classic	worldgen-dialog-renderer	0xdfe881	0x141719d10	cstring	Various seeds
+classic	worldgen-dialog-renderer	0xdfe9b9	0x1415e3724	cstring	Copy
+classic	worldgen-dialog-renderer	0xdfeae9	0x1416144ac	cstring	Delete
+classic	worldgen-dialog-renderer	0xdfecce	0x141611108	cstring	Range: 
+classic	worldgen-dialog-renderer	0xdfed50	0x1415e8524	cstring	 to 
+classic	worldgen-dialog-renderer	0xdfef1f	0x1415e783c	cstring	_
+classic	worldgen-dialog-renderer	0xdff642	0x141719cd8	cstring	Really delete this parameter set?
+classic	worldgen-dialog-renderer	0xdff779	0x1416144ac	cstring	Delete
+classic	worldgen-dialog-renderer	0xdff8a4	0x1415f959c	cstring	Cancel
+classic	worldgen-dialog-renderer	0xdffa54	0x141719d78	cstring	Really change the dimensions?
+classic	worldgen-dialog-renderer	0xdffaa1	0x141719d50	cstring	This parameter set will be reset.
+classic	worldgen-dialog-renderer	0xdffbd9	0x141719d48	cstring	Change
+classic	worldgen-dialog-renderer	0xdffd04	0x1415f959c	cstring	Cancel
+classic	worldgen-dialog-renderer	0xdffeb4	0x141719d28	cstring	Are you sure you want to abort?
+classic	worldgen-dialog-renderer	0xdfff01	0x141719de0	cstring	You haven't saved your changes.
+classic	worldgen-dialog-renderer	0xe00039	0x141635570	cstring	Abort
+classic	worldgen-dialog-renderer	0xe00164	0x1415f959c	cstring	Cancel
+classic	worldgen-dialog-renderer	0xe00314	0x141719dc0	cstring	Are you sure you want to go on?
+classic	worldgen-dialog-renderer	0xe00361	0x141719de0	cstring	You haven't saved your changes.
+classic	worldgen-dialog-renderer	0xe00499	0x1415f21d4	cstring	Create
+classic	worldgen-dialog-renderer	0xe005c4	0x1415f959c	cstring	Cancel
+classic	worldgen-step-and-chronicle-selection	0xf4cdec	0x141740140	cstring	Not enough peaks: 
+classic	worldgen-step-and-chronicle-selection	0xf4ce12	0x1417400fc	cstring	<
+classic	worldgen-step-and-chronicle-selection	0xf4d1b1	0x141740100	cstring	Not enough medium altitudes
+classic	worldgen-step-and-chronicle-selection	0xf4d2fb	0x1417400a0	cstring	Not enough medium altitudes after shift down
+classic	worldgen-step-and-chronicle-selection	0xf4d329	0x1417400d0	cstring	Not enough low altitudes after shift down: 
+classic	worldgen-step-and-chronicle-selection	0xf4d47c	0x1417402a0	cstring	Not enough high altitudes after shift up
+classic	worldgen-step-and-chronicle-selection	0xf4d4aa	0x141740270	cstring	Not enough medium altitudes after shift up
+classic	worldgen-step-and-chronicle-selection	0xf4d62b	0x141740230	cstring	Not enough partial edge oceans
+classic	worldgen-step-and-chronicle-selection	0xf4d669	0x141740250	cstring	Not enough complete edge oceans
+classic	worldgen-step-and-chronicle-selection	0xf4d89e	0x1417401d8	cstring	Rainfall not evenly distributed: 
+classic	worldgen-step-and-chronicle-selection	0xf4d8ba	0x14164667c	cstring	-
+classic	worldgen-step-and-chronicle-selection	0xf4d8e7	0x14164667c	cstring	-
+classic	worldgen-step-and-chronicle-selection	0xf4d969	0x141740200	cstring	Flat/rough areas not evenly distributed: 
+classic	worldgen-step-and-chronicle-selection	0xf4d986	0x14164667c	cstring	-
+classic	worldgen-step-and-chronicle-selection	0xf4d9b3	0x14164667c	cstring	-
+classic	worldgen-step-and-chronicle-selection	0xf4da2a	0x141740190	cstring	Savagery not evenly distributed
+classic	worldgen-step-and-chronicle-selection	0xf4da91	0x1417401b0	cstring	Volcanism not evenly distributed
+classic	worldgen-step-and-chronicle-selection	0xf4dafb	0x1417403c8	cstring	Initial swamp square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4db51	0x1417403f0	cstring	Initial desert square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4dba7	0x141740378	cstring	Initial forest square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4dbfd	0x1417403a0	cstring	Initial mountain square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4dc53	0x141740328	cstring	Initial ocean square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4dca9	0x141740350	cstring	Initial glacier square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4dcff	0x1417402d0	cstring	Initial tundra square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4dd50	0x1417402f8	cstring	Initial grassland square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4dda9	0x1417404d8	cstring	Initial hill square count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4dffd	0x141740500	cstring	Not enough volcanos
+classic	worldgen-step-and-chronicle-selection	0xf4e303	0x141740498	cstring	Swamp region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e35c	0x1417404b8	cstring	Desert region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e3b5	0x141740458	cstring	Forest region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e40e	0x141740478	cstring	Mountain region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e467	0x141740418	cstring	Ocean region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e4c0	0x141740438	cstring	Glacier region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e519	0x141740600	cstring	Tundra region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e572	0x141740620	cstring	Grassland region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e5cb	0x1417405b0	cstring	Hill region count fails by 
+classic	worldgen-step-and-chronicle-selection	0xf4e929	0x1417405d0	cstring	Not enough river start points before erosion
+classic	worldgen-step-and-chronicle-selection	0xf4fbea	0x141740560	cstring	Too many distinct subregions (over by 
+classic	worldgen-step-and-chronicle-selection	0xf4fc18	0x1416102d8	cstring	)
+classic	worldgen-step-and-chronicle-selection	0xf50040	0x14164c4a0	cstring	errorlog.txt
+classic	worldgen-step-and-chronicle-selection	0xf5005e	0x141740518	cstring	A world gen error from DF 
+classic	worldgen-step-and-chronicle-selection	0xf50080	0x141740588	cstring	 will be logged after parameter dump.
+classic	worldgen-step-and-chronicle-selection	0xf500d6	0x141740538	cstring	Error sorting rivers: working with 
+classic	worldgen-step-and-chronicle-selection	0xf500f5	0x141740780	cstring	 ran into 
+classic	worldgen-step-and-chronicle-selection	0xf50331	0x141740790	cstring	Not enough medium altitude locations after erosion
+classic	worldgen-step-and-chronicle-selection	0xf50384	0x141740710	cstring	Not enough low altitude locations after erosion: 
+classic	worldgen-step-and-chronicle-selection	0xf503de	0x141740748	cstring	Not enough high altitude locations after erosion
+classic	worldgen-step-and-chronicle-selection	0xf506a7	0x14163ae74	cstring	[R]

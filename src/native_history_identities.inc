@@ -6,10 +6,13 @@ struct NativeHistoryIdentityInfo {
 };
 
 static bool native_history_identity_reference(NativeHistoryEventData &event, int32_t id,
-        NativeHistoryIdentityInfo &info) {
+        NativeHistoryIdentityInfo &info, bool *present = nullptr) {
+    if (present) *present = false;
     const uintptr_t base = native_history_profile_base();
     NativeBorrowedVector<uintptr_t> identities;
-    if (!base || id < 0 || !native_history_read_vector(native_history_global(0x24e7ce8), identities)) return false;
+    if (!base) return false;
+    if (id < 0) return present != nullptr;
+    if (!native_history_read_vector(native_history_global(0x24e7ce8), identities)) return false;
     uintptr_t object = 0;
     // 072570 finds identity.id at +0 in this sorted native vector.
     size_t begin = 0, end = identities.size();
@@ -21,8 +24,13 @@ static bool native_history_identity_reference(NativeHistoryEventData &event, int
         if (candidate_id == id) { object = candidate; break; }
         if (candidate_id < id) begin = middle + 1; else end = middle;
     }
-    if (!object || object > UINTPTR_MAX - 0xb0 ||
+    // c3a590 renders "a secret identity" when this lookup has no record.
+    // Only callers that consume that fallback opt in; assume_identity's
+    // own +d0 root requires the record before it emits any event text.
+    if (!object) return present != nullptr;
+    if (object > UINTPTR_MAX - 0xb0 ||
         !native_history_copy(object + 0x88, info.real_figure)) return false;
+    if (present) *present = true;
     // c3a5e0: an identity pointing at an existing HF uses the ordinary HF
     // formatter exclusively, before inspecting its false name/profession.
     if (info.real_figure >= 0) return true;

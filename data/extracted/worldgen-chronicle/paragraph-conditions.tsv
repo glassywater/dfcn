@@ -1,0 +1,2117 @@
+edition	role	instruction_rva	condition
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9e75	cmp    DWORD PTR [rcx+0x18],r13d
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9e7f	test   BYTE PTR [rax],0x4
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9ef7	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9f4f	test   r15,r15
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9f57	test   rax,rax
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9f69	test   eax,eax
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9f84	cmp    DWORD PTR [r15+0x20],0x101
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9fbe	test   r15,r15
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9fc7	cmp    QWORD PTR [rsi],r13
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2a9fd8	cmp    eax,0x19
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa0f0	test   rax,0xfffffffffffffff8
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa0fc	cmp    ecx,0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa111	test   rax,rax
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa12d	cmp    ecx,0x1
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa1b5	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa20d	test   r15,r15
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa219	test   rcx,rcx
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa21e	cmp    DWORD PTR [rcx],0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa225	test   ecx,ecx
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa233	cmp    ecx,0x1
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa278	cmp    DWORD PTR [r15+0x20],0x101
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa2c3	cmp    r8d,0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa2db	cmp    eax,0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa2e0	cmp    DWORD PTR [rsi],eax
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa2fe	cmp    r8d,0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa319	cmp    DWORD PTR [rdi+0x40],0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa31f	cmp    DWORD PTR [rdi+0x44],0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa325	cmp    DWORD PTR [rsi],0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa35c	test   rcx,rcx
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa396	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa3b6	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa3da	test   rcx,rcx
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa418	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa438	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa476	cmp    r8d,0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa48e	cmp    eax,0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa493	cmp    DWORD PTR [rsi],eax
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa4b1	cmp    r8d,0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa4cc	cmp    DWORD PTR [rdi+0x40],0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa4d2	cmp    DWORD PTR [rdi+0x44],0xffffffff
+reference	history_event_hfs_formed_intrigue_relationshipst	0x2aa4d8	cmp    DWORD PTR [rsi],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aa735	cmp    DWORD PTR [rcx+0x18],r13d
+reference	history_event_failed_intrigue_corruptionst	0x2aa73f	test   BYTE PTR [rax],0x4
+reference	history_event_failed_intrigue_corruptionst	0x2aa7b7	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aa824	test   r15,r15
+reference	history_event_failed_intrigue_corruptionst	0x2aa82d	cmp    QWORD PTR [rsi],r13
+reference	history_event_failed_intrigue_corruptionst	0x2aa83e	cmp    eax,0x19
+reference	history_event_failed_intrigue_corruptionst	0x2aa956	test   rax,0xfffffffffffffff8
+reference	history_event_failed_intrigue_corruptionst	0x2aa962	cmp    ecx,0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aa977	test   rax,rax
+reference	history_event_failed_intrigue_corruptionst	0x2aa993	cmp    ecx,0x1
+reference	history_event_failed_intrigue_corruptionst	0x2aaa1b	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aaa73	test   r15,r15
+reference	history_event_failed_intrigue_corruptionst	0x2aaa7f	test   rcx,rcx
+reference	history_event_failed_intrigue_corruptionst	0x2aaa84	cmp    DWORD PTR [rcx],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aaa8b	test   ecx,ecx
+reference	history_event_failed_intrigue_corruptionst	0x2aaa99	cmp    ecx,0x1
+reference	history_event_failed_intrigue_corruptionst	0x2aaade	cmp    DWORD PTR [r15+0x20],0x101
+reference	history_event_failed_intrigue_corruptionst	0x2aab29	cmp    r8d,0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aab41	cmp    eax,0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aab46	cmp    DWORD PTR [rsi],eax
+reference	history_event_failed_intrigue_corruptionst	0x2aab64	cmp    r8d,0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aab7f	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aab85	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aab8b	cmp    DWORD PTR [rsi],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aabc2	test   rcx,rcx
+reference	history_event_failed_intrigue_corruptionst	0x2aabfc	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_failed_intrigue_corruptionst	0x2aac1c	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_failed_intrigue_corruptionst	0x2aac40	test   rcx,rcx
+reference	history_event_failed_intrigue_corruptionst	0x2aac7e	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_failed_intrigue_corruptionst	0x2aac9e	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_failed_intrigue_corruptionst	0x2aacdc	cmp    r8d,0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aacf4	cmp    eax,0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aacf9	cmp    DWORD PTR [rsi],eax
+reference	history_event_failed_intrigue_corruptionst	0x2aad17	cmp    r8d,0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aad32	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aad38	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+reference	history_event_failed_intrigue_corruptionst	0x2aad3e	cmp    DWORD PTR [rsi],0xffffffff
+reference	history-supplier-b5a6c0	0xb5a70a	cmp    esi,0xffffffff
+reference	history-supplier-b5a6c0	0xb5a713	cmp    QWORD PTR [rcx+0x10],0x0
+reference	history-supplier-b5a6c0	0xb5a729	cmp    esi,0x5d
+reference	history-supplier-b5a6c0	0xb5a793	cmp    edi,0xffffffff
+reference	history-supplier-b5a6c0	0xb5a7d7	cmp    QWORD PTR [rbp+0x28],0xf
+reference	history-supplier-b5a6c0	0xb5a7f2	cmp    rdx,0xf
+reference	history-supplier-b5a6c0	0xb5a806	cmp    rdx,0x1000
+reference	history-supplier-b5a6c0	0xb5a81e	cmp    rax,0x1f
+reference	history-supplier-b5a6c0	0xb5aec6	cmp    edi,0x20
+reference	history-supplier-b5a6c0	0xb5b0fc	cmp    QWORD PTR [rbp+0x28],0xf
+reference	history-supplier-b5a6c0	0xb5b117	cmp    rdx,0xf
+reference	history-supplier-b5a6c0	0xb5b127	cmp    rdx,0x1000
+reference	history-supplier-b5a6c0	0xb5b13f	cmp    rax,0x1f
+reference	history-supplier-b5a6c0	0xb5b1db	cmp    edi,0x3f
+reference	history-supplier-b5a6c0	0xb5b2ff	cmp    r12d,0xffffffff
+reference	history-supplier-b5a6c0	0xb5b309	cmp    QWORD PTR [rbx+0x10],0x0
+reference	history-supplier-b5a6c0	0xb5b322	cmp    r12d,0x118
+reference	history-supplier-b5a6c0	0xb5b555	test   rax,rax
+reference	history_event_war_field_battlest	0xb6529f	cmp    r8d,0xffffffff
+reference	history_event_war_field_battlest	0xb652cf	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+reference	history_event_war_field_battlest	0xb6533c	cmp    QWORD PTR [rsp+0x48],0xf
+reference	history_event_war_field_battlest	0xb65370	cmp    rdx,0xf
+reference	history_event_war_field_battlest	0xb65381	cmp    rdx,0x1000
+reference	history_event_war_field_battlest	0xb65399	cmp    rax,0x1f
+reference	history_event_war_field_battlest	0xb653ab	cmp    DWORD PTR [rdi+0x40],0xffffffff
+reference	history_event_war_field_battlest	0xb653bc	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+reference	history_event_war_field_battlest	0xb653ff	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+reference	history_event_war_field_battlest	0xb65405	cmp    DWORD PTR [rdi+0x40],0xffffffff
+reference	history_event_war_field_battlest	0xb6541d	cmp    DWORD PTR [rdi+0x44],0xffffffff
+reference	history_event_war_field_battlest	0xb6545c	test   BYTE PTR [rdi+0x4c],0x1
+reference	history_event_war_field_battlest	0xb6548c	cmp    DWORD PTR [rdi+0x48],0xffffffff
+reference	history_event_war_field_battlest	0xb654b6	test   BYTE PTR [rdi+0x4c],0x2
+reference	history_event_sneak_into_sitest	0xb65a65	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_sneak_into_sitest	0xb65a92	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_war_attacked_sitest	0xb65c13	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_war_attacked_sitest	0xb65c7a	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_war_attacked_sitest	0xb65ce7	cmp    QWORD PTR [rsp+0x48],0xf
+reference	history_event_war_attacked_sitest	0xb65d1b	cmp    rdx,0xf
+reference	history_event_war_attacked_sitest	0xb65d2c	cmp    rdx,0x1000
+reference	history_event_war_attacked_sitest	0xb65d44	cmp    rax,0x1f
+reference	history_event_war_attacked_sitest	0xb65d56	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+reference	history_event_war_attacked_sitest	0xb65d67	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_war_attacked_sitest	0xb65daa	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_war_attacked_sitest	0xb65db0	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+reference	history_event_war_attacked_sitest	0xb65dc8	cmp    DWORD PTR [rdi+0x40],0xffffffff
+reference	history_event_war_attacked_sitest	0xb65e07	test   BYTE PTR [rdi+0x48],0x1
+reference	history_event_war_attacked_sitest	0xb65e37	cmp    DWORD PTR [rdi+0x44],0xffffffff
+reference	history_event_war_attacked_sitest	0xb65e61	test   BYTE PTR [rdi+0x48],0x2
+reference	history_event_war_destroyed_sitest	0xb66001	test   BYTE PTR [rdi+0x38],0x1
+reference	history_event_war_destroyed_sitest	0xb6602e	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_war_plundered_sitest	0xb66231	test   BYTE PTR [rdi+0x38],0x1
+reference	history_event_war_plundered_sitest	0xb6625e	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_war_plundered_sitest	0xb662be	cmp    al,0xc
+reference	history_event_war_plundered_sitest	0xb662c2	test   ecx,ecx
+reference	history_event_war_plundered_sitest	0xb662e7	test   dl,0x4
+reference	history_event_war_plundered_sitest	0xb662ec	test   ecx,ecx
+reference	history_event_war_plundered_sitest	0xb6630b	test   dl,0x8
+reference	history_event_war_plundered_sitest	0xb66310	test   ecx,ecx
+reference	history_event_war_plundered_sitest	0xb6632f	test   ecx,ecx
+reference	history_event_hf_freedst	0xb6653d	cmp    r8d,0xffffffff
+reference	history_event_hf_freedst	0xb6655f	cmp    DWORD PTR [rdi+0x28],0xffffffff
+reference	history_event_hf_freedst	0xb66565	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hf_freedst	0xb665c8	test   rax,rax
+reference	history_event_hf_freedst	0xb665fc	cmp    rax,0x3
+reference	history_event_hf_freedst	0xb66611	cmp    rax,0x2
+reference	history_event_hf_freedst	0xb66667	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_hf_freedst	0xb66691	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_hf_freedst	0xb666bb	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_war_site_new_leaderst	0xb6696d	cmp    DWORD PTR [rbp+0x30],eax
+reference	history_event_war_site_new_leaderst	0xb669a4	test   rax,rax
+reference	history_event_war_site_new_leaderst	0xb669cb	cmp    r8d,0xffffffff
+reference	history_event_war_site_new_leaderst	0xb669e0	cmp    rax,rcx
+reference	history_event_war_site_new_leaderst	0xb669e9	cmp    DWORD PTR [rax],r8d
+reference	history_event_war_site_new_leaderst	0xb669fa	cmp    eax,0xffffffff
+reference	history_event_war_site_new_leaderst	0xb66a2e	cmp    edi,0x2
+reference	history_event_war_site_new_leaderst	0xb66a87	cmp    eax,DWORD PTR [r15+0x20]
+reference	history_event_war_site_new_leaderst	0xb66ac7	test   eax,eax
+reference	history_event_war_site_new_leaderst	0xb66b07	cmp    edi,r12d
+reference	history_event_war_site_new_leaderst	0xb66b37	cmp    rsi,r13
+reference	history_event_war_site_new_leaderst	0xb66b91	cmp    DWORD PTR [rbp+0x2c],0xffffffff
+reference	history_event_war_site_tribute_forcedst	0xb66f27	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_war_site_tribute_forcedst	0xb66f2d	test   eax,eax
+reference	history_event_war_site_tribute_forcedst	0xb66f52	test   eax,eax
+reference	history_event_war_site_tribute_forcedst	0xb66f8c	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_war_site_tribute_forcedst	0xb66fb5	test   BYTE PTR [rdi+0x3c],0x1
+reference	history_event_war_site_tribute_forcedst	0xb66fbf	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_war_site_tribute_forcedst	0xb67005	test   ecx,ecx
+reference	history_event_war_site_tribute_forcedst	0xb67013	cmp    ecx,0x1
+reference	history_event_war_site_taken_overst	0xb672a8	cmp    DWORD PTR [rdi+0x30],eax
+reference	history_event_war_site_taken_overst	0xb6730a	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_add_entity_site_profile_flagst	0xb674c1	cmp    DWORD PTR [rdi+0x30],0x10000
+reference	history_event_site_surrenderedst	0xb67654	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_hf_destroyed_sitest	0xb6787b	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_hf_attacked_sitest	0xb67c8b	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_site_diedst	0xb67e52	test   BYTE PTR [rdi+0x34],0x1
+reference	history_event_site_diedst	0xb67eb8	cmp    r8d,DWORD PTR [rdi+0x2c]
+reference	history_event_site_retiredst	0xb68889	test   DWORD PTR [rdi+0x34],0x1
+reference	history_event_created_buildingst	0xb692b6	test   rax,rax
+reference	history_event_created_buildingst	0xb6930e	cmp    r8d,0xffffffff
+reference	history_event_created_buildingst	0xb69336	cmp    r8d,0xffffffff
+reference	history_event_created_buildingst	0xb69341	cmp    DWORD PTR [rbx+0x28],0xffffffff
+reference	history_event_created_buildingst	0xb6936b	test   rsi,rsi
+reference	history_event_created_buildingst	0xb69378	cmp    ax,0x7
+reference	history_event_created_buildingst	0xb6938d	test   BYTE PTR [rbx+0x3c],0x1
+reference	history_event_created_buildingst	0xb693d3	test   rsi,rsi
+reference	history_event_created_buildingst	0xb693e0	cmp    ax,0x7
+reference	history_event_created_sitest	0xb69a80	cmp    r8d,0xffffffff
+reference	history_event_created_sitest	0xb69aaa	cmp    r8d,0xffffffff
+reference	history_event_created_sitest	0xb69ab5	cmp    DWORD PTR [rdi+0x28],0xffffffff
+reference	history_event_created_sitest	0xb69adf	test   rbp,rbp
+reference	history_event_created_sitest	0xb69ae4	cmp    WORD PTR [rbp+0x80],0xa
+reference	history_event_created_sitest	0xb69b0d	cmp    cx,0x1
+reference	history_event_created_sitest	0xb69b20	cmp    WORD PTR [rbp+0x80],0x8
+reference	history_event_created_sitest	0xb69b5d	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_insurrection_startedst	0xb6a4d2	cmp    DWORD PTR [rdi+0x28],0xffffffff
+reference	history_event_insurrection_endedst	0xb6a655	test   ecx,ecx
+reference	history_event_insurrection_endedst	0xb6a662	cmp    ecx,0x1
+reference	history_event_insurrection_endedst	0xb6a66f	cmp    r8d,0xffffffff
+reference	history_event_insurrection_endedst	0xb6a6fd	cmp    r8d,0xffffffff
+reference	history_event_insurrection_endedst	0xb6a781	cmp    r8d,0xffffffff
+reference	history_event_reclaim_sitest	0xb6a98c	cmp    r8d,0xffffffff
+reference	history_event_reclaim_sitest	0xb6a997	cmp    DWORD PTR [rdi+0x28],0xffffffff
+reference	history_event_reclaim_sitest	0xb6a9c1	test   DWORD PTR [rdi+0x34],0x1
+reference	history_event_creature_devouredst	0xb6ac23	cmp    r8d,0xffffffff
+reference	history_event_creature_devouredst	0xb6ac96	cmp    r9w,0xffff
+reference	history_event_creature_devouredst	0xb6aca1	test   dx,dx
+reference	history_event_creature_devouredst	0xb6acb4	cmp    rdx,rax
+reference	history_event_creature_devouredst	0xb6acb9	test   r9w,r9w
+reference	history_event_creature_devouredst	0xb6acd8	cmp    r9,rax
+reference	history_event_creature_devouredst	0xb6acea	cmp    rax,rdx
+reference	history_event_creature_devouredst	0xb6acf3	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history_event_creature_devouredst	0xb6ad0c	test   rbp,rbp
+reference	history_event_creature_devouredst	0xb6ad21	test   dx,dx
+reference	history_event_creature_devouredst	0xb6ad2d	cmp    rbx,rcx
+reference	history_event_creature_devouredst	0xb6ad3f	cmp    rax,rdx
+reference	history_event_creature_devouredst	0xb6ad48	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history_event_creature_devouredst	0xb6ad66	cmp    QWORD PTR [rsp+0x48],0xf
+reference	history_event_creature_devouredst	0xb6ad7d	cmp    DWORD PTR [rsi+0x38],0xffffffff
+reference	history_event_creature_devouredst	0xb6adad	cmp    rdx,0xf
+reference	history_event_creature_devouredst	0xb6adbe	cmp    rdx,0x1000
+reference	history_event_creature_devouredst	0xb6add6	cmp    rax,0x1f
+reference	history_event_creature_devouredst	0xb6ade8	cmp    DWORD PTR [rsi+0x3c],0xffffffff
+reference	history_event_creature_devouredst	0xb6ae14	cmp    DWORD PTR [rsi+0x40],0xffffffff
+reference	history_event_creature_devouredst	0xb6ae1a	cmp    DWORD PTR [rsi+0x44],0xffffffff
+reference	history_event_creature_devouredst	0xb6ae3f	cmp    r8d,0xffffffff
+reference	history_event_hist_figure_woundedst	0xb6b1be	test   r9,r9
+reference	history_event_hist_figure_woundedst	0xb6b1c7	cmp    r11d,0xffffffff
+reference	history_event_hist_figure_woundedst	0xb6b1fd	cmp    DWORD PTR [rcx+0xe0],r11d
+reference	history_event_hist_figure_woundedst	0xb6b217	cmp    r8d,r9d
+reference	history_event_hist_figure_woundedst	0xb6b22b	test   ax,ax
+reference	history_event_hist_figure_woundedst	0xb6b24c	cmp    rdx,rax
+reference	history_event_hist_figure_woundedst	0xb6b255	test   cx,cx
+reference	history_event_hist_figure_woundedst	0xb6b27c	cmp    rcx,rax
+reference	history_event_hist_figure_woundedst	0xb6b2a0	test   ax,ax
+reference	history_event_hist_figure_woundedst	0xb6b2b6	cmp    rdx,rax
+reference	history_event_hist_figure_woundedst	0xb6b2bf	cmp    DWORD PTR [rax+0x50],r12d
+reference	history_event_hist_figure_woundedst	0xb6b2c9	test   BYTE PTR [rax],0x10
+reference	history_event_hist_figure_woundedst	0xb6b363	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history_event_hist_figure_woundedst	0xb6b392	cmp    BYTE PTR [rdi+0x46],r12b
+reference	history_event_hist_figure_woundedst	0xb6b39c	test   ecx,ecx
+reference	history_event_hist_figure_woundedst	0xb6b3b7	cmp    ecx,r15d
+reference	history_event_hist_figure_woundedst	0xb6b3c3	test   sil,sil
+reference	history_event_hist_figure_woundedst	0xb6b3ec	test   sil,sil
+reference	history_event_hist_figure_woundedst	0xb6b422	test   sil,sil
+reference	history_event_hist_figure_woundedst	0xb6b42e	test   sil,sil
+reference	history_event_hist_figure_woundedst	0xb6b45a	test   ecx,ecx
+reference	history_event_hist_figure_woundedst	0xb6b46d	cmp    ecx,r15d
+reference	history_event_hist_figure_woundedst	0xb6b4b7	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hist_figure_woundedst	0xb6b4f4	test   BYTE PTR [rdi+0x48],r15b
+reference	history_event_hist_figure_simple_battle_eventst	0xb6ecb0	test   rax,0xfffffffffffffffc
+reference	history_event_hist_figure_simple_battle_eventst	0xb6ecc4	test   rax,0xfffffffffffffffc
+reference	history_event_hist_figure_simple_battle_eventst	0xb6ed24	test   ecx,ecx
+reference	history_event_hist_figure_simple_battle_eventst	0xb6ed50	cmp    ecx,r14d
+reference	history_event_hist_figure_simple_battle_eventst	0xb6ed76	cmp    eax,0xa
+reference	history_event_knowledge_discoveredst	0xb6f543	test   r9,r9
+reference	history_event_knowledge_discoveredst	0xb6f54c	cmp    r11d,0xffffffff
+reference	history_event_knowledge_discoveredst	0xb6f57d	cmp    DWORD PTR [rcx+0xe0],r11d
+reference	history_event_knowledge_discoveredst	0xb6f597	cmp    r8d,r9d
+reference	history_event_knowledge_discoveredst	0xb6f612	test   BYTE PTR [rdi+0x34],0x1
+reference	history_event_knowledge_discoveredst	0xb6f674	cmp    eax,0xd
+reference	history_event_knowledge_discoveredst	0xb6f691	cmp    edx,0x80000
+reference	history_event_knowledge_discoveredst	0xb6f6a3	cmp    edx,0x2000
+reference	history_event_knowledge_discoveredst	0xb6f6b5	cmp    edx,0x400
+reference	history_event_knowledge_discoveredst	0xb6f6bf	cmp    edx,0x80
+reference	history_event_knowledge_discoveredst	0xb6f6c7	cmp    edx,0x100
+reference	history_event_knowledge_discoveredst	0xb6f6cf	cmp    edx,0x200
+reference	history_event_knowledge_discoveredst	0xb6f72f	cmp    edx,0x800
+reference	history_event_knowledge_discoveredst	0xb6f737	cmp    edx,0x1000
+reference	history_event_knowledge_discoveredst	0xb6f7b3	cmp    edx,0x4000
+reference	history_event_knowledge_discoveredst	0xb6f7bf	cmp    edx,0x8000
+reference	history_event_knowledge_discoveredst	0xb6f7cb	cmp    edx,0x10000
+reference	history_event_knowledge_discoveredst	0xb6f7d3	cmp    edx,0x20000
+reference	history_event_knowledge_discoveredst	0xb6f7db	cmp    edx,0x40000
+reference	history_event_knowledge_discoveredst	0xb6f945	cmp    edx,0x4000000
+reference	history_event_knowledge_discoveredst	0xb6f957	cmp    edx,0x800000
+reference	history_event_knowledge_discoveredst	0xb6f969	cmp    edx,0x100000
+reference	history_event_knowledge_discoveredst	0xb6f971	cmp    edx,0x200000
+reference	history_event_knowledge_discoveredst	0xb6f979	cmp    edx,0x400000
+reference	history_event_knowledge_discoveredst	0xb6fa53	cmp    edx,0x1000000
+reference	history_event_knowledge_discoveredst	0xb6fa5b	cmp    edx,0x2000000
+reference	history_event_knowledge_discoveredst	0xb6fae7	cmp    edx,0x8000000
+reference	history_event_knowledge_discoveredst	0xb6faf3	cmp    edx,0x10000000
+reference	history_event_knowledge_discoveredst	0xb6faff	cmp    edx,0x20000000
+reference	history_event_knowledge_discoveredst	0xb6fb07	cmp    edx,0x40000000
+reference	history_event_knowledge_discoveredst	0xb6fb0f	cmp    edx,0x80000000
+reference	history_event_knowledge_discoveredst	0xb6fc30	cmp    edx,0x4
+reference	history_event_knowledge_discoveredst	0xb6fc35	cmp    edx,0x8
+reference	history_event_knowledge_discoveredst	0xb6fcd8	cmp    edx,0x4000
+reference	history_event_knowledge_discoveredst	0xb6fd4b	cmp    edx,0x40
+reference	history_event_hf_gains_secret_goalst	0xb6ffe1	test   r8,r8
+reference	history_event_hf_gains_secret_goalst	0xb6ffea	cmp    r10d,0xffffffff
+reference	history_event_hf_gains_secret_goalst	0xb7001d	cmp    DWORD PTR [rdi+0xe0],r10d
+reference	history_event_hf_gains_secret_goalst	0xb70036	cmp    edx,r8d
+reference	history_event_hf_gains_secret_goalst	0xb70040	test   rdi,rdi
+reference	history_event_hf_gains_secret_goalst	0xb700c2	cmp    eax,0xc
+reference	history_event_hf_gains_secret_goalst	0xb70110	cmp    al,0x1
+reference	history_event_hf_gains_secret_goalst	0xb70128	test   al,al
+reference	history_event_hf_gains_secret_goalst	0xb7018a	cmp    QWORD PTR [rsp+0x48],0xf
+reference	history_event_hf_gains_secret_goalst	0xb701be	cmp    rdx,0xf
+reference	history_event_hf_gains_secret_goalst	0xb701d3	cmp    rdx,0x1000
+reference	history_event_hf_gains_secret_goalst	0xb701eb	cmp    rax,0x1f
+reference	history_event_hist_figure_revivedst	0xb703eb	cmp    DWORD PTR [r13+0x40],0xffffffff
+reference	history_event_hist_figure_revivedst	0xb703f2	test   DWORD PTR [r13+0x3c],0x2
+reference	history_event_hist_figure_revivedst	0xb7042b	test   BYTE PTR [r13+0x3c],0x1
+reference	history_event_hist_figure_revivedst	0xb70447	cmp    DWORD PTR [r13+0x40],0xffffffff
+reference	history_event_hist_figure_revivedst	0xb70483	cmp    WORD PTR [r13+0x38],0xffff
+reference	history_event_hist_figure_revivedst	0xb704a9	cmp    eax,0xa
+reference	history_event_hist_figure_revivedst	0xb705e7	cmp    eax,0xffffffff
+reference	history_event_hist_figure_revivedst	0xb70602	test   ecx,ecx
+reference	history_event_hist_figure_revivedst	0xb7061f	cmp    ecx,eax
+reference	history_event_hist_figure_revivedst	0xb7064d	cmp    ax,0xa
+reference	history_event_hist_figure_revivedst	0xb70661	cmp    rsi,rbp
+reference	history_event_hist_figure_revivedst	0xb70671	cmp    rbx,rdi
+reference	history_event_hist_figure_revivedst	0xb7067e	cmp    ax,0x1f
+reference	history_event_hist_figure_revivedst	0xb70687	cmp    QWORD PTR [rax+0xa8],0x0
+reference	history_event_hist_figure_revivedst	0xb706a3	cmp    rax,rdx
+reference	history_event_hist_figure_revivedst	0xb706ac	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history_event_hist_figure_revivedst	0xb706d3	cmp    ax,0x2
+reference	history_event_hist_figure_revivedst	0xb706e7	cmp    rsi,rbp
+reference	history_event_hist_figure_revivedst	0xb706f7	cmp    rbx,rdi
+reference	history_event_hist_figure_revivedst	0xb70704	cmp    ax,0x1f
+reference	history_event_hist_figure_revivedst	0xb7070d	cmp    QWORD PTR [rax+0xa8],0x0
+reference	history_event_hist_figure_revivedst	0xb70729	cmp    rax,rdx
+reference	history_event_hist_figure_revivedst	0xb70732	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history_event_hist_figure_revivedst	0xb70751	test   rbx,rbx
+reference	history_event_hist_figure_revivedst	0xb70770	cmp    QWORD PTR [rsp+0x48],0xf
+reference	history_event_hist_figure_revivedst	0xb70792	cmp    DWORD PTR [r13+0x2c],0xffffffff
+reference	history_event_hist_figure_revivedst	0xb707c0	cmp    DWORD PTR [r13+0x30],0xffffffff
+reference	history_event_hist_figure_revivedst	0xb707c7	cmp    DWORD PTR [r13+0x34],0xffffffff
+reference	history_event_hist_figure_revivedst	0xb707ee	cmp    r8d,0xffffffff
+reference	history_event_hist_figure_diedst	0xb708b0	cmp    r11d,r12d
+reference	history_event_hist_figure_diedst	0xb708ce	test   r8d,r8d
+reference	history_event_hist_figure_diedst	0xb708ed	cmp    DWORD PTR [rdi+0x1c],r11d
+reference	history_event_hist_figure_diedst	0xb70903	cmp    edx,r8d
+reference	history_event_hist_figure_diedst	0xb7090a	test   rdi,rdi
+reference	history_event_hist_figure_diedst	0xb7090f	test   DWORD PTR [rdi+0x10],0x40000
+reference	history_event_hist_figure_diedst	0xb70920	cmp    rbx,rdi
+reference	history_event_hist_figure_diedst	0xb7092e	cmp    eax,0x1
+reference	history_event_hist_figure_diedst	0xb70942	test   rax,rax
+reference	history_event_hist_figure_diedst	0xb70955	cmp    r11d,r13d
+reference	history_event_hist_figure_diedst	0xb7096c	test   r8d,r8d
+reference	history_event_hist_figure_diedst	0xb7098d	cmp    DWORD PTR [rdi+0x1c],r11d
+reference	history_event_hist_figure_diedst	0xb709a3	cmp    edx,eax
+reference	history_event_hist_figure_diedst	0xb709a9	test   rdi,rdi
+reference	history_event_hist_figure_diedst	0xb709ae	test   DWORD PTR [rdi+0x10],0x40000
+reference	history_event_hist_figure_diedst	0xb709c0	cmp    rbx,rdi
+reference	history_event_hist_figure_diedst	0xb709ce	cmp    eax,0x1
+reference	history_event_hist_figure_diedst	0xb709e2	test   rax,rax
+reference	history_event_hist_figure_diedst	0xb70a23	cmp    r12d,0xffffffff
+reference	history_event_hist_figure_diedst	0xb70a57	cmp    r13d,0xffffffff
+reference	history_event_hist_figure_diedst	0xb70ab8	cmp    r8d,0xffffffff
+reference	history_event_hist_figure_diedst	0xb70ac2	cmp    DWORD PTR [r15+0x20],r8d
+reference	history_event_hist_figure_diedst	0xb70ad4	cmp    eax,0x33
+reference	history_event_hist_figure_diedst	0xb70af8	cmp    dx,0xffff
+reference	history_event_hist_figure_diedst	0xb70b02	cmp    dx,0x45
+reference	history_event_hist_figure_diedst	0xb70b85	cmp    ax,0xffff
+reference	history_event_hist_figure_diedst	0xb70b8f	cmp    ax,0x45
+reference	history_event_hist_figure_diedst	0xb70b95	cmp    rbx,0x2
+reference	history_event_hist_figure_diedst	0xb70b9f	cmp    rbx,0xf
+reference	history_event_hist_figure_diedst	0xb70c25	cmp    rbx,rax
+reference	history_event_hist_figure_diedst	0xb70c31	cmp    rax,0xf
+reference	history_event_hist_figure_diedst	0xb70c5c	cmp    rbx,0xf
+reference	history_event_hist_figure_diedst	0xb70c6d	cmp    rdx,0x1000
+reference	history_event_hist_figure_diedst	0xb70c85	cmp    rax,0x1f
+reference	history_event_hist_figure_diedst	0xb70dcd	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb70de2	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb70dfe	cmp    QWORD PTR [rbp-0x39],0xf
+reference	history_event_hist_figure_diedst	0xb70e2a	cmp    QWORD PTR [rbp-0x19],0xf
+reference	history_event_hist_figure_diedst	0xb70e46	cmp    DWORD PTR [r14+0x58],0xffffffff
+reference	history_event_hist_figure_diedst	0xb70e7a	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb70f05	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb70f1c	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb70f30	cmp    QWORD PTR [rbp-0x39],0xf
+reference	history_event_hist_figure_diedst	0xb70f51	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb70fe3	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb70ffe	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71012	cmp    QWORD PTR [rbp-0x39],0xf
+reference	history_event_hist_figure_diedst	0xb7131d	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb71332	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb7134c	cmp    QWORD PTR [rbp-0x39],0xf
+reference	history_event_hist_figure_diedst	0xb7153a	cmp    eax,0x36
+reference	history_event_hist_figure_diedst	0xb716a5	cmp    r8d,0xffffffff
+reference	history_event_hist_figure_diedst	0xb716da	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71735	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71792	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb7185f	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb7189e	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb718d5	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb718ed	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71901	cmp    QWORD PTR [rbp-0x39],0xf
+reference	history_event_hist_figure_diedst	0xb7194f	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71990	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb719a5	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb719f3	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71a2d	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb71a42	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71a63	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb71a6a	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71a9b	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71ac0	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71b12	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71b54	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71b5f	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb71b66	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71b9a	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71bbf	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71c88	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71cc7	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71cfe	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb71d12	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71d53	cmp    QWORD PTR [rbp-0x39],r13
+reference	history_event_hist_figure_diedst	0xb71d6d	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71db0	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71def	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71e23	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb71e9f	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71ec7	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71f0e	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71f4d	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb71f88	cmp    QWORD PTR [rbp-0x41],0x0
+reference	history_event_hist_figure_diedst	0xb71f8f	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71f96	test   bl,bl
+reference	history_event_hist_figure_diedst	0xb71fc0	test   bl,bl
+reference	history_event_hist_figure_diedst	0xb71fe2	cmp    QWORD PTR [rbp-0x21],0x0
+reference	history_event_hist_figure_diedst	0xb71fed	test   bl,bl
+reference	history_event_hist_figure_diedst	0xb7203b	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb72046	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hist_figure_diedst	0xb72080	cmp    DWORD PTR [r14+0x2c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb720e0	test   r8,r8
+reference	history_event_hist_figure_diedst	0xb720e5	cmp    r10d,0xffffffff
+reference	history_event_hist_figure_diedst	0xb72100	cmp    DWORD PTR [rdi+0xe0],r10d
+reference	history_event_hist_figure_diedst	0xb72119	cmp    edx,eax
+reference	history_event_hist_figure_diedst	0xb7211f	test   rdi,rdi
+reference	history_event_hist_figure_diedst	0xb72153	cmp    al,0x1
+reference	history_event_hist_figure_diedst	0xb7217c	test   al,al
+reference	history_event_hist_figure_diedst	0xb721da	cmp    rdx,0xf
+reference	history_event_hist_figure_diedst	0xb721ea	cmp    rdx,0x1000
+reference	history_event_hist_figure_diedst	0xb72202	cmp    rax,0x1f
+reference	history_event_hist_figure_diedst	0xb7221b	cmp    DWORD PTR [r14+0x5c],0xffffffff
+reference	history_event_hist_figure_diedst	0xb72222	cmp    DWORD PTR [r14+0x60],0xffffffff
+reference	history_event_hist_figure_diedst	0xb72248	cmp    r8d,0xffffffff
+reference	history_event_hist_figure_diedst	0xb72275	cmp    rdx,0xf
+reference	history_event_hist_figure_diedst	0xb72285	cmp    rdx,0x1000
+reference	history_event_hist_figure_diedst	0xb7229d	cmp    rax,0x1f
+reference	history_event_hist_figure_reunionst	0xb74e1a	test   rax,0xfffffffffffffffc
+reference	history_event_hist_figure_reunionst	0xb74e2e	test   rax,0xfffffffffffffffc
+reference	history_event_hist_figure_reunionst	0xb74ec4	cmp    rdi,0x1
+reference	history_event_hist_figure_reunionst	0xb74f1e	cmp    rax,r15
+reference	history_event_hist_figure_reunionst	0xb74f29	cmp    rax,r15
+reference	history_event_hist_figure_reunionst	0xb74f95	cmp    rdi,r15
+reference	history_event_hist_figure_reunionst	0xb74fb8	cmp    DWORD PTR [rsi+0x5c],0xffffffff
+reference	history_event_hist_figure_reunionst	0xb74fe7	cmp    DWORD PTR [rsi+0x60],0xffffffff
+reference	history_event_hist_figure_reunionst	0xb74fed	cmp    DWORD PTR [rsi+0x64],0xffffffff
+reference	history_event_hist_figure_reunionst	0xb75012	cmp    r8d,0xffffffff
+reference	history_event_hist_figure_reunionst	0xb7506e	cmp    DWORD PTR [rsi+0x58],0xffffffff
+reference	history_event_hist_figure_abductedst	0xb753d0	cmp    DWORD PTR [rsi+0x20],r8d
+reference	history_event_hist_figure_abductedst	0xb75431	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_hist_figure_abductedst	0xb7545b	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_hist_figure_abductedst	0xb75461	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_hist_figure_abductedst	0xb75486	cmp    r8d,0xffffffff
+reference	history_event_hist_figure_abductedst	0xb7549f	cmp    DWORD PTR [rsi+0x20],eax
+reference	history_event_hf_learns_secretst	0xb782a8	test   r9,r9
+reference	history_event_hf_learns_secretst	0xb782ad	cmp    r11d,0xffffffff
+reference	history_event_hf_learns_secretst	0xb782bb	test   r10d,r10d
+reference	history_event_hf_learns_secretst	0xb782cd	cmp    DWORD PTR [rbp+0xe0],r11d
+reference	history_event_hf_learns_secretst	0xb782e6	cmp    edx,r10d
+reference	history_event_hf_learns_secretst	0xb782fc	test   r9,r9
+reference	history_event_hf_learns_secretst	0xb78301	cmp    r8d,0xffffffff
+reference	history_event_hf_learns_secretst	0xb7830d	test   r10d,r10d
+reference	history_event_hf_learns_secretst	0xb7831f	cmp    DWORD PTR [rbx+0xe0],r8d
+reference	history_event_hf_learns_secretst	0xb78338	cmp    edx,r10d
+reference	history_event_hf_learns_secretst	0xb78340	test   rbp,rbp
+reference	history_event_hf_learns_secretst	0xb78383	test   rbx,rbx
+reference	history_event_hf_learns_secretst	0xb783ea	test   rbx,rbx
+reference	history_event_hf_learns_secretst	0xb78422	cmp    DWORD PTR [r14+0x30],0xffffffff
+reference	history_event_hf_does_interactionst	0xb7869b	test   r9,r9
+reference	history_event_hf_does_interactionst	0xb786a0	cmp    r11d,0xffffffff
+reference	history_event_hf_does_interactionst	0xb786b0	test   r10d,r10d
+reference	history_event_hf_does_interactionst	0xb786cd	cmp    DWORD PTR [rsi+0xe0],r11d
+reference	history_event_hf_does_interactionst	0xb786e6	cmp    edx,r10d
+reference	history_event_hf_does_interactionst	0xb786fe	test   r9,r9
+reference	history_event_hf_does_interactionst	0xb78707	cmp    r8d,0xffffffff
+reference	history_event_hf_does_interactionst	0xb78718	test   r10d,r10d
+reference	history_event_hf_does_interactionst	0xb7873d	cmp    DWORD PTR [rbp+0xe0],r8d
+reference	history_event_hf_does_interactionst	0xb78756	cmp    edx,r10d
+reference	history_event_hf_does_interactionst	0xb78760	test   rbp,rbp
+reference	history_event_hf_does_interactionst	0xb7876d	test   eax,eax
+reference	history_event_hf_does_interactionst	0xb7878d	cmp    rcx,rax
+reference	history_event_hf_does_interactionst	0xb7879a	test   rax,rax
+reference	history_event_hf_does_interactionst	0xb787a7	test   ecx,ecx
+reference	history_event_hf_does_interactionst	0xb787be	cmp    rcx,rax
+reference	history_event_hf_does_interactionst	0xb787cb	test   r14,r14
+reference	history_event_hf_does_interactionst	0xb7880e	test   rsi,rsi
+reference	history_event_hf_does_interactionst	0xb7884f	cmp    QWORD PTR [r14+0x48],0xf
+reference	history_event_hf_does_interactionst	0xb78892	cmp    QWORD PTR [r14+0x68],0xf
+reference	history_event_hf_does_interactionst	0xb788ac	cmp    DWORD PTR [rbx+0x38],0xffffffff
+reference	history_event_hf_does_interactionst	0xb788d9	cmp    DWORD PTR [rbx+0x3c],0xffffffff
+reference	history_event_hf_does_interactionst	0xb788df	cmp    DWORD PTR [rbx+0x40],0xffffffff
+reference	history_event_hf_does_interactionst	0xb78905	cmp    r8d,0xffffffff
+reference	history_event_change_creature_typest	0xb78c68	test   r9,r9
+reference	history_event_change_creature_typest	0xb78c6d	cmp    r11d,0xffffffff
+reference	history_event_change_creature_typest	0xb78c7b	test   r10d,r10d
+reference	history_event_change_creature_typest	0xb78c8d	cmp    DWORD PTR [rsi+0xe0],r11d
+reference	history_event_change_creature_typest	0xb78ca6	cmp    edx,r10d
+reference	history_event_change_creature_typest	0xb78cbc	test   r9,r9
+reference	history_event_change_creature_typest	0xb78cc1	cmp    r8d,0xffffffff
+reference	history_event_change_creature_typest	0xb78ccd	test   r10d,r10d
+reference	history_event_change_creature_typest	0xb78cdf	cmp    DWORD PTR [rbx+0xe0],r8d
+reference	history_event_change_creature_typest	0xb78cf8	cmp    edx,r10d
+reference	history_event_change_creature_typest	0xb78d00	test   rsi,rsi
+reference	history_event_change_creature_typest	0xb78d43	test   rbx,rbx
+reference	history_event_change_creature_typest	0xb78daa	test   rbx,rbx
+reference	history_event_assume_identityst	0xb790a0	test   r8,r8
+reference	history_event_assume_identityst	0xb790a9	cmp    r10d,0xffffffff
+reference	history_event_assume_identityst	0xb790d0	cmp    DWORD PTR [rbx+0xe0],r10d
+reference	history_event_assume_identityst	0xb790e9	cmp    edx,r8d
+reference	history_event_assume_identityst	0xb79105	test   rbx,rbx
+reference	history_event_assume_identityst	0xb7910e	test   rax,rax
+reference	history_event_assume_identityst	0xb7917b	cmp    DWORD PTR [rbp+0x30],0xffffffff
+reference	history_event_assume_identityst	0xb791d6	cmp    al,0x1
+reference	history_event_assume_identityst	0xb791e1	test   al,al
+reference	history_event_assume_identityst	0xb79246	cmp    rdx,0xf
+reference	history_event_assume_identityst	0xb79257	cmp    rdx,0x1000
+reference	history_event_assume_identityst	0xb7926f	cmp    rax,0x1f
+reference	history_event_create_entity_positionst	0xb794e6	cmp    r8d,0xffffffff
+reference	history_event_create_entity_positionst	0xb7950a	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_create_entity_positionst	0xb7951f	cmp    WORD PTR [rdi+0x38],0x2
+reference	history_event_create_entity_positionst	0xb79563	test   ecx,ecx
+reference	history_event_create_entity_positionst	0xb795c7	test   rax,0xfffffffffffffff8
+reference	history_event_create_entity_positionst	0xb795d2	cmp    ecx,0xffffffff
+reference	history_event_create_entity_positionst	0xb795e3	test   rax,rax
+reference	history_event_create_entity_positionst	0xb795f7	test   rax,rax
+reference	history_event_create_entity_positionst	0xb79603	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history_event_create_entity_positionst	0xb7961c	cmp    DWORD PTR [rdi+0x30],eax
+reference	history_event_create_entity_positionst	0xb79649	test   ecx,ecx
+reference	history_event_create_entity_positionst	0xb79657	cmp    ecx,0x1
+reference	history_event_hfs_formed_reputation_relationshipst	0xb7993a	cmp    eax,DWORD PTR [rdi+0x3c]
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79948	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb799d2	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79a3c	cmp    DWORD PTR [rdi+0x38],0x1b
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79a64	cmp    eax,0x1b
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79a72	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79afe	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79b64	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79bee	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79c7c	cmp    r8d,0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79c94	cmp    ecx,0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79c99	cmp    DWORD PTR [rsi],ecx
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79cb8	cmp    r8d,0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79cd3	cmp    DWORD PTR [r14],0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79ce3	cmp    DWORD PTR [rdi+0x44],0xffffffff
+reference	history_event_hfs_formed_reputation_relationshipst	0xb79ce9	cmp    DWORD PTR [rsi],0xffffffff
+reference	history_event_entity_overthrownst	0xb79dbc	cmp    r8d,0xffffffff
+reference	history_event_entity_overthrownst	0xb79e04	cmp    DWORD PTR [rdi+0x30],eax
+reference	history_event_entity_overthrownst	0xb79e64	cmp    DWORD PTR [rdi+0x58],0xffffffff
+reference	history_event_entity_overthrownst	0xb79eac	test   r14d,r14d
+reference	history_event_entity_overthrownst	0xb79ee0	cmp    rbx,rdi
+reference	history_event_entity_overthrownst	0xb79f0c	cmp    ebp,0x2
+reference	history_event_entity_overthrownst	0xb79f2c	cmp    ebp,r12d
+reference	history_event_entity_overthrownst	0xb79f31	cmp    r14d,0x3
+reference	history_event_entity_persecutedst	0xb7b850	cmp    r8d,0xffffffff
+reference	history_event_entity_persecutedst	0xb7b88e	cmp    r8d,0xffffffff
+reference	history_event_entity_persecutedst	0xb7b90b	test   rax,rax
+reference	history_event_entity_persecutedst	0xb7b922	test   rax,rax
+reference	history_event_entity_persecutedst	0xb7b933	test   rax,rax
+reference	history_event_entity_persecutedst	0xb7b94a	test   rax,rax
+reference	history_event_entity_persecutedst	0xb7b94f	cmp    DWORD PTR [rdi+0x68],esi
+reference	history_event_entity_persecutedst	0xb7b95f	test   r14d,r14d
+reference	history_event_entity_persecutedst	0xb7b996	test   r15,r15
+reference	history_event_entity_persecutedst	0xb7b9ad	test   rax,rax
+reference	history_event_entity_persecutedst	0xb7b9be	test   rax,rax
+reference	history_event_entity_persecutedst	0xb7b9d8	cmp    rax,rcx
+reference	history_event_entity_persecutedst	0xb7b9ea	test   esi,esi
+reference	history_event_entity_persecutedst	0xb7b9f2	cmp    ebp,0xffffffff
+reference	history_event_entity_persecutedst	0xb7ba19	cmp    BYTE PTR [rsp+0x38],cl
+reference	history_event_entity_persecutedst	0xb7ba32	cmp    eax,0xffffffff
+reference	history_event_entity_persecutedst	0xb7ba6f	cmp    esi,0x3e8
+reference	history_event_entity_persecutedst	0xb7ba9a	cmp    r14d,0x2
+reference	history_event_entity_persecutedst	0xb7bac6	cmp    esi,0x1f4
+reference	history_event_entity_persecutedst	0xb7badd	cmp    esi,0x64
+reference	history_event_entity_persecutedst	0xb7baf1	cmp    esi,0x18
+reference	history_event_entity_persecutedst	0xb7bb08	cmp    esi,0x6
+reference	history_event_entity_persecutedst	0xb7bb1f	cmp    esi,0x3
+reference	history_event_entity_persecutedst	0xb7bb42	cmp    esi,0x3e8
+reference	history_event_entity_persecutedst	0xb7bb5c	cmp    esi,0x1f4
+reference	history_event_entity_persecutedst	0xb7bb76	cmp    esi,0x64
+reference	history_event_entity_persecutedst	0xb7bb8d	cmp    esi,0x18
+reference	history_event_entity_persecutedst	0xb7bba4	cmp    esi,0x6
+reference	history_event_entity_persecutedst	0xb7bbbb	cmp    r15,0x2
+reference	history_event_entity_persecutedst	0xb7bc1f	cmp    esi,0x4
+reference	history_event_entity_persecutedst	0xb7bc4b	cmp    r15,0x1
+reference	history_event_entity_persecutedst	0xb7bc74	cmp    esi,0x3
+reference	history_event_entity_persecutedst	0xb7bcb5	cmp    esi,0x2
+reference	history_event_entity_persecutedst	0xb7bcde	cmp    ebp,0xffffffff
+reference	history_event_entity_persecutedst	0xb7bd01	cmp    BYTE PTR [rsp+0x38],cl
+reference	history_event_entity_persecutedst	0xb7bd1a	cmp    eax,0xffffffff
+reference	history_event_entity_persecutedst	0xb7bd81	cmp    r14d,0x1
+reference	history_event_entity_persecutedst	0xb7bd96	cmp    r15d,0x3
+reference	history_event_entity_persecutedst	0xb7bde3	test   rax,rax
+reference	history_event_entity_persecutedst	0xb7bde8	cmp    DWORD PTR [rdi+0x68],eax
+reference	history_event_entity_persecutedst	0xb7bdf1	cmp    rax,0x2
+reference	history_event_entity_persecutedst	0xb7be58	cmp    rax,0x3
+reference	history_event_entity_persecutedst	0xb7be6d	cmp    rax,0x1
+reference	history_event_entity_persecutedst	0xb7bea7	test   eax,eax
+reference	history_event_entity_persecutedst	0xb7beaf	cmp    eax,0x19
+reference	history_event_entity_persecutedst	0xb7bec0	cmp    rax,0x1
+reference	history_event_entity_persecutedst	0xb7bef2	cmp    rax,0x1
+reference	history_event_entity_persecutedst	0xb7bf1b	test   sil,sil
+reference	history_event_entity_persecutedst	0xb7bf3c	cmp    r14d,0x2
+reference	history_event_entity_persecutedst	0xb7bf50	cmp    r15d,0x3
+reference	history_event_entity_breach_feature_layerst	0xb7c131	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_entity_alliance_formedst	0xb7c2ee	cmp    DWORD PTR [rcx+0x18],r14d
+reference	history_event_entity_alliance_formedst	0xb7c2f8	test   BYTE PTR [rax],0x4
+reference	history_event_entity_alliance_formedst	0xb7c358	cmp    rax,0x3
+reference	history_event_entity_alliance_formedst	0xb7c37b	cmp    r8d,0xffffffff
+reference	history_event_entity_alliance_formedst	0xb7c390	cmp    rax,rcx
+reference	history_event_entity_alliance_formedst	0xb7c399	cmp    DWORD PTR [rax],r8d
+reference	history_event_entity_alliance_formedst	0xb7c3ab	cmp    eax,0xffffffff
+reference	history_event_entity_alliance_formedst	0xb7c3ef	cmp    rax,0x2
+reference	history_event_entity_alliance_formedst	0xb7c422	cmp    rax,0x1
+reference	history_event_entity_alliance_formedst	0xb7c46f	test   r14,r14
+reference	history_event_entity_alliance_formedst	0xb7c480	test   rcx,rcx
+reference	history_event_entity_alliance_formedst	0xb7c4c2	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_entity_alliance_formedst	0xb7c4e2	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_entity_alliance_formedst	0xb7c4fd	cmp    rdx,0xf
+reference	history_event_entity_alliance_formedst	0xb7c50d	cmp    rdx,0x1000
+reference	history_event_entity_alliance_formedst	0xb7c525	cmp    rax,0x1f
+reference	history_event_entity_alliance_formedst	0xb7c53b	test   rcx,rcx
+reference	history_event_entity_alliance_formedst	0xb7c579	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_entity_alliance_formedst	0xb7c599	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_hf_ransomedst	0xb7c7a5	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_hf_ransomedst	0xb7c7ab	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_hf_ransomedst	0xb7c7d1	cmp    r8d,0xffffffff
+reference	history_event_hf_ransomedst	0xb7c7f1	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_hf_ransomedst	0xb7c830	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_hf_interrogatedst	0xb7cedb	test   DWORD PTR [r15+0x50],0x1
+reference	history_event_hf_interrogatedst	0xb7cf0c	cmp    DWORD PTR [r15+0x2c],0xffffffff
+reference	history_event_hf_interrogatedst	0xb7cf5b	test   rax,rax
+reference	history_event_hf_interrogatedst	0xb7cf86	cmp    DWORD PTR [r15+0x30],0xffffffff
+reference	history_event_hf_interrogatedst	0xb7d025	cmp    edi,0xffffffff
+reference	history_event_hf_interrogatedst	0xb7d049	cmp    BYTE PTR [rsp+0x40],cl
+reference	history_event_hf_interrogatedst	0xb7d05c	cmp    eax,0xffffffff
+reference	history_event_hf_interrogatedst	0xb7d083	cmp    ebp,0x2
+reference	history_event_hf_interrogatedst	0xb7d097	cmp    ebp,r12d
+reference	history_event_hf_interrogatedst	0xb7d0c0	cmp    rbx,rdi
+reference	history_event_hf_interrogatedst	0xb7d0cc	cmp    r8d,DWORD PTR [r14+0x20]
+reference	history_event_hf_interrogatedst	0xb7d0f2	cmp    ebp,0x2
+reference	history_event_hf_interrogatedst	0xb7d112	cmp    ebp,r12d
+reference	history_event_hf_interrogatedst	0xb7d117	cmp    r13d,0x3
+reference	history_event_hf_interrogatedst	0xb7d16e	test   BYTE PTR [r15+0x50],0x2
+reference	history_event_hf_interrogatedst	0xb7d196	test   BYTE PTR [r15+0x50],0x2
+reference	history_event_hf_interrogatedst	0xb7d1b3	cmp    DWORD PTR [r15+0x30],0xffffffff
+reference	history_event_hf_interrogatedst	0xb7d248	cmp    DWORD PTR [r15+0x30],0xffffffff
+reference	history_event_failed_frame_attemptst	0xb7d4d7	cmp    eax,0x12
+reference	history_event_failed_frame_attemptst	0xb7d628	cmp    eax,0xffffffff
+reference	history_event_failed_frame_attemptst	0xb7d62d	cmp    eax,DWORD PTR [rdi+0x38]
+reference	history_event_failed_frame_attemptst	0xb7d69c	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hf_convictedst	0xb7dadd	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_hf_convictedst	0xb7dafb	cmp    DWORD PTR [rdi+0x2c],eax
+reference	history_event_hf_convictedst	0xb7db47	test   al,0x2
+reference	history_event_hf_convictedst	0xb7db5d	test   al,0x1c
+reference	history_event_hf_convictedst	0xb7db7c	test   BYTE PTR [r13+0x0],0x8
+reference	history_event_hf_convictedst	0xb7dbbc	test   BYTE PTR [r13+0x0],0x4
+reference	history_event_hf_convictedst	0xb7dbc3	test   al,al
+reference	history_event_hf_convictedst	0xb7dc2a	test   BYTE PTR [r13+0x0],0x10
+reference	history_event_hf_convictedst	0xb7dc31	test   al,al
+reference	history_event_hf_convictedst	0xb7dcbc	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_hf_convictedst	0xb7dcec	test   BYTE PTR [r13+0x0],0x1
+reference	history_event_hf_convictedst	0xb7dd1d	test   DWORD PTR [r13+0x0],0x20
+reference	history_event_hf_convictedst	0xb7dd52	cmp    eax,ebx
+reference	history_event_hf_convictedst	0xb7de9c	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hf_convictedst	0xb7dec2	cmp    DWORD PTR [rdi+0x50],0xffffffff
+reference	history_event_hf_convictedst	0xb7decb	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hf_convictedst	0xb7dede	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history_event_hf_convictedst	0xb7df25	cmp    DWORD PTR [rdi+0x58],0xffffffff
+reference	history_event_hf_convictedst	0xb7df2f	cmp    DWORD PTR [rdi+0x5c],0xffffffff
+reference	history_event_hf_convictedst	0xb7dfbf	cmp    eax,0xffffffff
+reference	history_event_hf_convictedst	0xb7dfc7	cmp    eax,ecx
+reference	history_event_hf_convictedst	0xb7dfcb	cmp    eax,DWORD PTR [rdi+0x50]
+reference	history_event_hf_convictedst	0xb7dfd5	cmp    ecx,0xffffffff
+reference	history_event_hf_convictedst	0xb7e024	test   ecx,ecx
+reference	history_event_hf_convictedst	0xb7e028	cmp    DWORD PTR [rdi+0x70],r14d
+reference	history_event_hf_convictedst	0xb7e02e	cmp    DWORD PTR [rdi+0x78],r14d
+reference	history_event_hf_convictedst	0xb7e03b	test   al,0x4
+reference	history_event_hf_convictedst	0xb7e05b	test   al,0x2
+reference	history_event_hf_convictedst	0xb7e065	test   al,0x8
+reference	history_event_hf_convictedst	0xb7e072	test   ecx,ecx
+reference	history_event_hf_convictedst	0xb7e07b	test   ecx,ecx
+reference	history_event_hf_convictedst	0xb7e0a5	test   bl,bl
+reference	history_event_hf_convictedst	0xb7e0e3	cmp    QWORD PTR [rbp-0x18],0xf
+reference	history_event_hf_convictedst	0xb7e10e	cmp    DWORD PTR [rdi+0x70],0x2
+reference	history_event_hf_convictedst	0xb7e132	test   r12b,al
+reference	history_event_hf_convictedst	0xb7e13a	test   bl,bl
+reference	history_event_hf_convictedst	0xb7e177	test   al,0x2
+reference	history_event_hf_convictedst	0xb7e195	test   al,0x8
+reference	history_event_hf_convictedst	0xb7e1b3	cmp    DWORD PTR [rdi+0x74],0x0
+reference	history_event_hf_convictedst	0xb7e1d5	cmp    ecx,0x1
+reference	history_event_hf_convictedst	0xb7e1f4	cmp    ecx,0xc
+reference	history_event_hf_convictedst	0xb7e1f9	cmp    ecx,0x18
+reference	history_event_hf_convictedst	0xb7e222	cmp    QWORD PTR [rbp-0x18],0xf
+reference	history_event_hf_convictedst	0xb7e26e	cmp    ecx,0xc
+reference	history_event_hf_convictedst	0xb7e2a3	cmp    ecx,eax
+reference	history_event_hf_convictedst	0xb7e2f3	cmp    QWORD PTR [rbp-0x18],0xf
+reference	history_event_hf_convictedst	0xb7e335	cmp    rdx,0xf
+reference	history_event_hf_convictedst	0xb7e345	cmp    rdx,0x1000
+reference	history_event_hf_convictedst	0xb7e35d	cmp    rax,0x1f
+reference	history_event_hf_convictedst	0xb7e38d	test   rax,rax
+reference	history_event_hf_convictedst	0xb7e3f5	cmp    eax,0xffffffff
+reference	history_event_hf_convictedst	0xb7e41e	cmp    BYTE PTR [rbp-0x38],cl
+reference	history_event_hf_convictedst	0xb7e426	cmp    eax,0xffffffff
+reference	history_event_hf_convictedst	0xb7e450	cmp    r14d,0x2
+reference	history_event_hf_convictedst	0xb7e465	cmp    r14d,0x1
+reference	history_event_hf_convictedst	0xb7e490	cmp    rbx,rdi
+reference	history_event_hf_convictedst	0xb7e49c	cmp    r8d,DWORD PTR [r15+0x20]
+reference	history_event_hf_convictedst	0xb7e4c4	cmp    r14d,0x2
+reference	history_event_hf_convictedst	0xb7e4e5	cmp    r14d,0x1
+reference	history_event_hf_convictedst	0xb7e4eb	cmp    r12d,0x3
+reference	history_event_hf_convictedst	0xb7e543	test   BYTE PTR [r13+0x0],0x40
+reference	history_event_hf_convictedst	0xb7e56e	test   BYTE PTR [r13+0x0],0x40
+reference	history_event_add_hf_entity_linkst	0xb7ead0	cmp    eax,0x4
+reference	history_event_add_hf_entity_linkst	0xb7eae4	cmp    eax,0x6
+reference	history_event_add_hf_entity_linkst	0xb7eb17	cmp    eax,0xf
+reference	history_event_add_hf_entity_linkst	0xb7eb4b	test   rax,0xfffffffffffffff8
+reference	history_event_add_hf_entity_linkst	0xb7eb5a	cmp    ecx,0xffffffff
+reference	history_event_add_hf_entity_linkst	0xb7eb6f	test   rax,rax
+reference	history_event_add_hf_entity_linkst	0xb7eb8a	test   rax,rax
+reference	history_event_add_hf_entity_linkst	0xb7ebca	test   r8,r8
+reference	history_event_add_hf_entity_linkst	0xb7ebd3	cmp    r10d,0xffffffff
+reference	history_event_add_hf_entity_linkst	0xb7ebfd	cmp    DWORD PTR [rbp+0xe0],r10d
+reference	history_event_add_hf_entity_linkst	0xb7ec16	cmp    edx,eax
+reference	history_event_add_hf_entity_linkst	0xb7ec1f	test   rbp,rbp
+reference	history_event_add_hf_entity_linkst	0xb7ec36	test   rax,0xfffffffffffffff8
+reference	history_event_add_hf_entity_linkst	0xb7ec45	cmp    ecx,0xffffffff
+reference	history_event_add_hf_entity_linkst	0xb7ec5a	test   rax,rax
+reference	history_event_add_hf_entity_linkst	0xb7ec75	test   rax,rax
+reference	history_event_add_hf_entity_linkst	0xb7ec7e	cmp    WORD PTR [rax+0x2d8],0x1
+reference	history_event_add_hf_entity_linkst	0xb7ecab	test   ecx,ecx
+reference	history_event_add_hf_entity_linkst	0xb7ecb3	cmp    ecx,0x1
+reference	history_event_add_hf_entity_linkst	0xb7ed83	test   r8,r8
+reference	history_event_add_hf_entity_linkst	0xb7ed8c	cmp    r10d,0xffffffff
+reference	history_event_add_hf_entity_linkst	0xb7edb0	cmp    DWORD PTR [rbp+0xe0],r10d
+reference	history_event_add_hf_entity_linkst	0xb7edc9	cmp    edx,r8d
+reference	history_event_add_hf_entity_linkst	0xb7edd3	test   rbp,rbp
+reference	history_event_add_hf_entity_linkst	0xb7edea	test   rax,0xfffffffffffffff8
+reference	history_event_add_hf_entity_linkst	0xb7edf9	cmp    ecx,0xffffffff
+reference	history_event_add_hf_entity_linkst	0xb7ee0e	test   rax,rax
+reference	history_event_add_hf_entity_linkst	0xb7ee29	test   rax,rax
+reference	history_event_add_hf_entity_linkst	0xb7ee4b	test   eax,eax
+reference	history_event_add_hf_entity_linkst	0xb7ee4f	cmp    eax,0x1
+reference	history_event_add_hf_entity_linkst	0xb7ee5d	cmp    QWORD PTR [rsi+0x128],r12
+reference	history_event_add_hf_entity_linkst	0xb7ee7f	cmp    QWORD PTR [rsi+0xe8],r12
+reference	history_event_add_hf_entity_linkst	0xb7ee8f	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history_event_add_hf_entity_linkst	0xb7eee8	cmp    DWORD PTR [rdi+0x38],0xffffffff
+reference	history_event_add_hf_entity_linkst	0xb7ef2e	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+reference	history_event_add_hf_entity_linkst	0xb7ef37	cmp    DWORD PTR [rdi+0x38],eax
+reference	history_event_add_hf_entity_linkst	0xb7ef54	cmp    DWORD PTR [rdi+0x3c],eax
+reference	history_event_remove_hf_entity_linkst	0xb7f084	cmp    eax,0xf
+reference	history_event_remove_hf_entity_linkst	0xb7f0b3	test   rax,0xfffffffffffffff8
+reference	history_event_remove_hf_entity_linkst	0xb7f0c2	cmp    ecx,0xffffffff
+reference	history_event_remove_hf_entity_linkst	0xb7f0d7	test   rax,rax
+reference	history_event_remove_hf_entity_linkst	0xb7f0f2	test   rax,rax
+reference	history_event_remove_hf_entity_linkst	0xb7f135	test   rdx,rdx
+reference	history_event_remove_hf_entity_linkst	0xb7f13e	cmp    r9d,0xffffffff
+reference	history_event_remove_hf_entity_linkst	0xb7f15d	cmp    DWORD PTR [rsi+0xe0],r9d
+reference	history_event_remove_hf_entity_linkst	0xb7f174	cmp    ebx,edx
+reference	history_event_remove_hf_entity_linkst	0xb7f17d	test   rsi,rsi
+reference	history_event_remove_hf_entity_linkst	0xb7f194	test   rax,0xfffffffffffffff8
+reference	history_event_remove_hf_entity_linkst	0xb7f1a3	cmp    ecx,0xffffffff
+reference	history_event_remove_hf_entity_linkst	0xb7f1b8	test   rax,rax
+reference	history_event_remove_hf_entity_linkst	0xb7f1d3	test   rax,rax
+reference	history_event_remove_hf_entity_linkst	0xb7f1f1	cmp    WORD PTR [rbx+0x2d8],0x1
+reference	history_event_remove_hf_entity_linkst	0xb7f224	test   ecx,ecx
+reference	history_event_remove_hf_entity_linkst	0xb7f22c	cmp    ecx,0x1
+reference	history_event_remove_hf_entity_linkst	0xb7f2d8	test   rdx,rdx
+reference	history_event_remove_hf_entity_linkst	0xb7f2e1	cmp    r9d,0xffffffff
+reference	history_event_remove_hf_entity_linkst	0xb7f300	cmp    DWORD PTR [rsi+0xe0],r9d
+reference	history_event_remove_hf_entity_linkst	0xb7f317	cmp    ebx,edx
+reference	history_event_remove_hf_entity_linkst	0xb7f320	test   rsi,rsi
+reference	history_event_remove_hf_entity_linkst	0xb7f337	test   rax,0xfffffffffffffff8
+reference	history_event_remove_hf_entity_linkst	0xb7f346	cmp    ecx,0xffffffff
+reference	history_event_remove_hf_entity_linkst	0xb7f35b	test   rax,rax
+reference	history_event_remove_hf_entity_linkst	0xb7f376	test   rax,rax
+reference	history_event_remove_hf_entity_linkst	0xb7f398	test   eax,eax
+reference	history_event_remove_hf_entity_linkst	0xb7f39c	cmp    eax,0x1
+reference	history_event_remove_hf_entity_linkst	0xb7f3aa	cmp    QWORD PTR [rbx+0x128],0x0
+reference	history_event_remove_hf_entity_linkst	0xb7f3c6	cmp    QWORD PTR [rbx+0xe8],0x0
+reference	history_event_remove_hf_entity_linkst	0xb7f3de	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history_event_war_peace_acceptedst	0xb8367d	cmp    DWORD PTR [rcx+0x18],esi
+reference	history_event_war_peace_acceptedst	0xb83686	test   BYTE PTR [rax],0x4
+reference	history_event_war_peace_acceptedst	0xb8370a	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_war_peace_acceptedst	0xb83749	test   rsi,rsi
+reference	history_event_war_peace_acceptedst	0xb8375a	test   rcx,rcx
+reference	history_event_war_peace_acceptedst	0xb8379c	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_war_peace_acceptedst	0xb837bc	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_war_peace_acceptedst	0xb837d7	cmp    rdx,0xf
+reference	history_event_war_peace_acceptedst	0xb837e7	cmp    rdx,0x1000
+reference	history_event_war_peace_acceptedst	0xb837ff	cmp    rax,0x1f
+reference	history_event_war_peace_acceptedst	0xb83815	test   rcx,rcx
+reference	history_event_war_peace_acceptedst	0xb83857	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_war_peace_acceptedst	0xb83877	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_war_peace_acceptedst	0xb83892	cmp    rdx,0xf
+reference	history_event_war_peace_acceptedst	0xb838a2	cmp    rdx,0x1000
+reference	history_event_war_peace_acceptedst	0xb838ba	cmp    rax,0x1f
+reference	history_event_war_peace_rejectedst	0xb839dd	cmp    DWORD PTR [rcx+0x18],esi
+reference	history_event_war_peace_rejectedst	0xb839e6	test   BYTE PTR [rax],0x4
+reference	history_event_war_peace_rejectedst	0xb83a6a	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_war_peace_rejectedst	0xb83aa9	test   rsi,rsi
+reference	history_event_war_peace_rejectedst	0xb83aba	test   rcx,rcx
+reference	history_event_war_peace_rejectedst	0xb83afc	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_war_peace_rejectedst	0xb83b1c	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_war_peace_rejectedst	0xb83b37	cmp    rdx,0xf
+reference	history_event_war_peace_rejectedst	0xb83b47	cmp    rdx,0x1000
+reference	history_event_war_peace_rejectedst	0xb83b5f	cmp    rax,0x1f
+reference	history_event_war_peace_rejectedst	0xb83b75	test   rcx,rcx
+reference	history_event_war_peace_rejectedst	0xb83bb7	cmp    QWORD PTR [rbp-0x28],0x0
+reference	history_event_war_peace_rejectedst	0xb83bd7	cmp    QWORD PTR [rbp-0x20],0xf
+reference	history_event_war_peace_rejectedst	0xb83bf2	cmp    rdx,0xf
+reference	history_event_war_peace_rejectedst	0xb83c02	cmp    rdx,0x1000
+reference	history_event_war_peace_rejectedst	0xb83c1a	cmp    rax,0x1f
+reference	history_event_artifact_createdst	0xb89d56	test   DWORD PTR [rbx+0x3c],0x1
+reference	history_event_artifact_createdst	0xb89d86	cmp    DWORD PTR [rbx+0x38],0xffffffff
+reference	history_event_artifact_createdst	0xb89db0	cmp    DWORD PTR [rbx+0x30],0xffffffff
+reference	history_event_artifact_createdst	0xb89dbb	cmp    DWORD PTR [rbx+0x34],0xffffffff
+reference	history_event_artifact_createdst	0xb89dcf	test   ecx,ecx
+reference	history_event_artifact_createdst	0xb89df3	cmp    r8d,0xffffffff
+reference	history_event_artifact_createdst	0xb89e14	cmp    DWORD PTR [rbx+0x34],0xffffffff
+reference	history_event_artifact_transformedst	0xb8a35f	test   r8d,r8d
+reference	history_event_artifact_transformedst	0xb8a364	cmp    r10d,0xffffffff
+reference	history_event_artifact_transformedst	0xb8a38d	cmp    DWORD PTR [rbx],r10d
+reference	history_event_artifact_transformedst	0xb8a3a2	cmp    edx,eax
+reference	history_event_artifact_transformedst	0xb8a3a9	test   rbx,rbx
+reference	history_event_artifact_transformedst	0xb8a3b0	cmp    QWORD PTR [rbx+0x90],rax
+reference	history_event_artifact_transformedst	0xb8a3c7	test   eax,eax
+reference	history_event_artifact_transformedst	0xb8a41f	cmp    QWORD PTR [rsp+0x48],0xf
+reference	history_event_artifact_transformedst	0xb8a450	cmp    rdx,0xf
+reference	history_event_artifact_transformedst	0xb8a461	cmp    rdx,0x1000
+reference	history_event_artifact_transformedst	0xb8a479	cmp    rax,0x1f
+reference	history_event_artifact_transformedst	0xb8a4ac	test   rax,rax
+reference	history_event_artifact_transformedst	0xb8a4e0	cmp    rbx,rdi
+reference	history_event_artifact_transformedst	0xb8a522	test   r9d,r9d
+reference	history_event_artifact_transformedst	0xb8a527	cmp    r10d,0xffffffff
+reference	history_event_artifact_transformedst	0xb8a550	cmp    r8d,r10d
+reference	history_event_artifact_transformedst	0xb8a55d	cmp    r8d,r10d
+reference	history_event_artifact_transformedst	0xb8a567	cmp    edx,eax
+reference	history_event_artifact_transformedst	0xb8a56e	test   rsi,rsi
+reference	history_event_artifact_transformedst	0xb8a575	cmp    QWORD PTR [rsi+0x90],0x0
+reference	history_event_artifact_transformedst	0xb8a587	test   eax,eax
+reference	history_event_artifact_transformedst	0xb8a5de	cmp    QWORD PTR [rsp+0x48],0xf
+reference	history_event_artifact_transformedst	0xb8a5fd	cmp    rdx,0xf
+reference	history_event_artifact_transformedst	0xb8a60e	cmp    rdx,0x1000
+reference	history_event_artifact_transformedst	0xb8a626	cmp    rax,0x1f
+reference	history_event_artifact_transformedst	0xb8a634	cmp    r15d,0x2
+reference	history_event_artifact_transformedst	0xb8a649	cmp    r15d,0x1
+reference	history_event_artifact_transformedst	0xb8a679	cmp    DWORD PTR [r13+0x50],0xffffffff
+reference	history_event_artifact_destroyedst	0xb8abab	cmp    DWORD PTR [rdi+0x30],0xffffffff
+reference	history_event_artifact_destroyedst	0xb8abed	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_artifact_destroyedst	0xb8ac02	cmp    DWORD PTR [rdi+0x34],0xffffffff
+reference	history_event_artifact_destroyedst	0xb8ac2c	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+reference	history-supplier-b92640	0xb9266d	cmp    r8d,0x1
+reference	history-supplier-b92640	0xb9269d	cmp    r14d,0xffffffff
+reference	history-supplier-b92640	0xb926d6	cmp    r14d,0x10680
+reference	history-supplier-b92640	0xb926ee	cmp    r14d,0x8340
+reference	history-supplier-b92640	0xb9271b	test   ebx,ebx
+reference	history-supplier-b92640	0xb92729	cmp    ebx,0x1
+reference	history-supplier-b92640	0xb92772	cmp    rax,0x4
+reference	history-supplier-b92640	0xb92788	cmp    r14,0xf
+reference	history-supplier-b92640	0xb927a3	cmp    r13,0xf
+reference	history-supplier-b92640	0xb927b0	cmp    rdi,rcx
+reference	history-supplier-b92640	0xb927bf	cmp    rdi,rax
+reference	history-supplier-b92640	0xb92803	cmp    QWORD PTR [rbp-0x10],0xf
+reference	history-supplier-b92640	0xb9281e	cmp    rdx,0xf
+reference	history-supplier-b92640	0xb9282e	cmp    rdx,0x1000
+reference	history-supplier-b92640	0xb92846	cmp    rax,0x1f
+reference	history-supplier-b92640	0xb9285e	cmp    QWORD PTR [rbp-0x30],0xf
+reference	history-supplier-b92640	0xb92879	cmp    r14,0xf
+reference	history-supplier-b92640	0xb92886	cmp    rdx,0x1000
+reference	history-supplier-b92640	0xb9289e	cmp    rax,0x1f
+reference	history-supplier-b92900	0xb92932	test   rax,0xfffffffffffffff8
+reference	history-supplier-b92900	0xb9293a	cmp    r8d,0xffffffff
+reference	history-supplier-b92900	0xb92956	test   rdi,rdi
+reference	history-supplier-b92900	0xb929d1	cmp    QWORD PTR [rsp+0x38],0xf
+reference	history-supplier-b92900	0xb929ea	test   esi,esi
+reference	history-supplier-b92900	0xb92a09	cmp    rdx,0xf
+reference	history-supplier-b92900	0xb92a1a	cmp    rdx,0x1000
+reference	history-supplier-b92900	0xb92a32	cmp    rax,0x1f
+reference	history-supplier-b92f10	0xb92f5a	test   rax,rax
+reference	history-supplier-b92f10	0xb92f67	test   rdx,rdx
+reference	history-supplier-b92f10	0xb92f74	test   rax,rax
+reference	history-supplier-b92f10	0xb92f7f	cmp    DWORD PTR [rax+0x20],ecx
+reference	history-supplier-b92f10	0xb92f96	cmp    DWORD PTR [rax+0x24],ecx
+reference	history-supplier-b92f10	0xb92fb8	test   rax,rax
+reference	history-supplier-b92f10	0xb92fc1	test   BYTE PTR [rax+0x4],0x8
+reference	history-supplier-b92f10	0xb92fcb	cmp    BYTE PTR [rdi+0xaa],0x0
+reference	history-supplier-b92f10	0xb9300d	cmp    QWORD PTR [rbp-0x71],0xf
+reference	history-supplier-b92f10	0xb93029	cmp    rdx,0xf
+reference	history-supplier-b92f10	0xb9303e	cmp    rdx,0x1000
+reference	history-supplier-b92f10	0xb93056	cmp    rax,0x1f
+reference	history-supplier-b92f10	0xb93094	test   rax,rax
+reference	history-supplier-b92f10	0xb930a7	test   rax,rax
+reference	history-supplier-b92f10	0xb930ac	cmp    BYTE PTR [rax+0x7a],0x0
+reference	history-supplier-b92f10	0xb930e7	cmp    QWORD PTR [rbp-0x71],0xf
+reference	history-supplier-b92f10	0xb93126	test   BYTE PTR [r13+0x0],0x2
+reference	history-supplier-b92f10	0xb93166	cmp    DWORD PTR [rdi+0xd0],0x0
+reference	history-supplier-b92f10	0xb93176	test   BYTE PTR [rax],0x4
+reference	history-supplier-b92f10	0xb9317b	test   BYTE PTR [rax],0x8
+reference	history-supplier-b92f10	0xb931a1	test   rax,rax
+reference	history-supplier-b92f10	0xb931a9	test   rsi,rsi
+reference	history-supplier-b92f10	0xb931b6	cmp    WORD PTR [rdi+0x2],ax
+reference	history-supplier-b92f10	0xb931c5	test   rsi,rsi
+reference	history-supplier-b92f10	0xb931ce	test   rsi,rsi
+reference	history-supplier-b92f10	0xb931d7	cmp    QWORD PTR [rsi+0x160],r15
+reference	history-supplier-b92f10	0xb931e6	cmp    BYTE PTR [rsi+0x88],r15b
+reference	history-supplier-b92f10	0xb931fa	cmp    WORD PTR [rdi+0x2],0xffff
+reference	history-supplier-b92f10	0xb93201	cmp    cx,r14w
+reference	history-supplier-b92f10	0xb93232	cmp    DWORD PTR [rax+0x24],r9d
+reference	history-supplier-b92f10	0xb93240	test   ecx,ecx
+reference	history-supplier-b92f10	0xb93252	cmp    ecx,0x1
+reference	history-supplier-b92f10	0xb932ed	cmp    BYTE PTR [rdi+0xaa],0x0
+reference	history-supplier-b92f10	0xb932fa	cmp    eax,r9d
+reference	history-supplier-b92f10	0xb93303	test   r12b,r12b
+reference	history-supplier-b92f10	0xb9330c	test   cx,cx
+reference	history-supplier-b92f10	0xb9332a	test   rsi,rsi
+reference	history-supplier-b92f10	0xb9332f	cmp    QWORD PTR [rsi+0x160],0x0
+reference	history-supplier-b92f10	0xb9334e	cmp    DWORD PTR [rdi+0xd0],0x0
+reference	history-supplier-b92f10	0xb9335e	cmp    BYTE PTR [rax],0x0
+reference	history-supplier-b92f10	0xb93363	test   rsi,rsi
+reference	history-supplier-b92f10	0xb93368	cmp    BYTE PTR [rsi+0x88],0x0
+reference	history-supplier-b92f10	0xb933a6	cmp    cx,0xffff
+reference	history-supplier-b92f10	0xb933ac	test   r13w,r13w
+reference	history-supplier-b92f10	0xb933cb	cmp    r13,rax
+reference	history-supplier-b92f10	0xb933d0	test   cx,cx
+reference	history-supplier-b92f10	0xb933ee	cmp    rcx,rax
+reference	history-supplier-b92f10	0xb933ff	cmp    rax,rdx
+reference	history-supplier-b92f10	0xb93408	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history-supplier-b92f10	0xb9341f	test   r8,r8
+reference	history-supplier-b92f10	0xb93426	test   r13w,r13w
+reference	history-supplier-b92f10	0xb93441	cmp    r13,rax
+reference	history-supplier-b92f10	0xb93452	cmp    rax,rdx
+reference	history-supplier-b92f10	0xb9345b	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history-supplier-b92f10	0xb93476	cmp    QWORD PTR [rbp-0x11],0xf
+reference	history-supplier-b92f10	0xb93488	test   rsi,rsi
+reference	history-supplier-b92f10	0xb9348d	cmp    BYTE PTR [rsi+0x88],0x0
+reference	history-supplier-b92f10	0xb934b3	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history-supplier-b92f10	0xb934f1	cmp    DWORD PTR [rax+0x20],r9d
+reference	history-supplier-b92f10	0xb9350d	cmp    QWORD PTR [rbp-0x51],0xf
+reference	history-supplier-b92f10	0xb9352d	cmp    DWORD PTR [rax+0x20],r8d
+reference	history-supplier-b92f10	0xb93537	test   r12b,r12b
+reference	history-supplier-b92f10	0xb93540	cmp    WORD PTR [rbp+0x7f],0x2
+reference	history-supplier-b92f10	0xb93560	test   rsi,rsi
+reference	history-supplier-b92f10	0xb93565	cmp    QWORD PTR [rsi+0x160],0x0
+reference	history-supplier-b92f10	0xb93584	cmp    DWORD PTR [rdi+0xd0],0x0
+reference	history-supplier-b92f10	0xb93594	cmp    BYTE PTR [rax],0x0
+reference	history-supplier-b92f10	0xb93599	test   rsi,rsi
+reference	history-supplier-b92f10	0xb9359e	cmp    BYTE PTR [rsi+0x88],0x0
+reference	history-supplier-b92f10	0xb935d9	cmp    cx,0xffff
+reference	history-supplier-b92f10	0xb935df	test   di,di
+reference	history-supplier-b92f10	0xb935fd	cmp    rdi,rax
+reference	history-supplier-b92f10	0xb93602	test   cx,cx
+reference	history-supplier-b92f10	0xb93620	cmp    rcx,rax
+reference	history-supplier-b92f10	0xb93631	cmp    rax,rdx
+reference	history-supplier-b92f10	0xb9363a	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history-supplier-b92f10	0xb93651	test   r15,r15
+reference	history-supplier-b92f10	0xb93658	test   di,di
+reference	history-supplier-b92f10	0xb93672	cmp    rdi,rax
+reference	history-supplier-b92f10	0xb93683	cmp    rax,rdx
+reference	history-supplier-b92f10	0xb9368c	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history-supplier-b92f10	0xb936a7	cmp    QWORD PTR [rbp-0x31],0xf
+reference	history-supplier-b92f10	0xb936bc	test   rsi,rsi
+reference	history-supplier-b92f10	0xb936c1	cmp    BYTE PTR [rsi+0x88],0x0
+reference	history-supplier-b92f10	0xb936e7	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history-supplier-b92f10	0xb936fe	cmp    rdx,0xf
+reference	history-supplier-b92f10	0xb93712	cmp    rdx,0x1000
+reference	history-supplier-b92f10	0xb9372a	cmp    rax,0x1f
+reference	history-supplier-b92f10	0xb93747	cmp    eax,r9d
+reference	history-supplier-b92f10	0xb93768	test   rsi,rsi
+reference	history-supplier-b92f10	0xb9376d	cmp    QWORD PTR [rsi+0x160],0x0
+reference	history-supplier-b92f10	0xb9378c	cmp    DWORD PTR [rdi+0xd0],0x0
+reference	history-supplier-b92f10	0xb9379c	cmp    BYTE PTR [rax],0x0
+reference	history-supplier-b92f10	0xb937a1	test   rsi,rsi
+reference	history-supplier-b92f10	0xb937a6	cmp    BYTE PTR [rsi+0x88],0x0
+reference	history-supplier-b92f10	0xb937f4	cmp    QWORD PTR [rbp-0x71],0xf
+reference	history-supplier-b92f10	0xb9380b	test   rsi,rsi
+reference	history-supplier-b92f10	0xb93810	cmp    BYTE PTR [rsi+0x88],0x0
+reference	history-supplier-b92f10	0xb93836	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history-supplier-b92f10	0xb93853	cmp    WORD PTR [rbp+0x77],0x2
+reference	history-supplier-b92f10	0xb9385a	cmp    BYTE PTR [rsp+0x20],0x0
+reference	history-supplier-b92f10	0xb9387b	test   BYTE PTR [rax],0x2
+reference	history-supplier-b92f10	0xb9389a	cmp    rdx,0xf
+reference	history-supplier-b92f10	0xb938aa	cmp    rdx,0x1000
+reference	history-supplier-b92f10	0xb938c2	cmp    rax,0x1f
+reference	history-supplier-b92f10	0xb938eb	cmp    WORD PTR [rbp+0x77],0x2
+reference	history-supplier-b93930	0xb93966	test   rax,rax
+reference	history-supplier-b93930	0xb939e3	cmp    QWORD PTR [rsp+0x38],0xf
+reference	history-supplier-b93930	0xb939fc	test   edi,edi
+reference	history-supplier-b93930	0xb93a1b	cmp    rdx,0xf
+reference	history-supplier-b93930	0xb93a2c	cmp    rdx,0x1000
+reference	history-supplier-b93930	0xb93a44	cmp    rax,0x1f
+reference	history-supplier-b93c60	0xb93c63	test   r8d,r8d
+reference	history-supplier-b93c60	0xb93c80	cmp    rdx,rax
+reference	history-supplier-b93c60	0xb93c98	test   rcx,rcx
+reference	history-supplier-b93c60	0xb93ca1	cmp    rax,rcx
+reference	history-supplier-b93c60	0xb93ca9	cmp    QWORD PTR [rdx+0x20],0x0
+reference	history-supplier-b93c60	0xb93cbe	cmp    QWORD PTR [rdx+0x18],0xf
+reference	history-supplier-b94090	0xb940c3	test   rax,rax
+reference	history-supplier-b94090	0xb940dd	test   rax,rax
+reference	history-supplier-b94090	0xb9414a	cmp    BYTE PTR [rsp+0x90],0x0
+reference	history-supplier-b94090	0xb94161	test   rax,rax
+reference	history-supplier-b94090	0xb9416a	cmp    BYTE PTR [rax+0x72],0x0
+reference	history-supplier-b94090	0xb941ab	cmp    QWORD PTR [rsp+0x38],0xf
+reference	history-supplier-b94090	0xb941c4	test   esi,esi
+reference	history-supplier-b94090	0xb941e3	cmp    rdx,0xf
+reference	history-supplier-b94090	0xb941f8	cmp    rdx,0x1000
+reference	history-supplier-b94090	0xb94210	cmp    rax,0x1f
+reference	history-supplier-b94090	0xb94233	cmp    ecx,0xd
+reference	history-supplier-b94090	0xb9431f	test   ecx,ecx
+reference	history-supplier-b94090	0xb94328	cmp    ecx,0x1
+reference	history-supplier-b94090	0xb9437e	test   esi,esi
+reference	history-supplier-b94400	0xb9443c	test   r9d,r9d
+reference	history-supplier-b94400	0xb94441	cmp    r8d,0xffffffff
+reference	history-supplier-b94400	0xb9445d	cmp    DWORD PTR [rbx],r8d
+reference	history-supplier-b94400	0xb94472	cmp    edx,eax
+reference	history-supplier-b94400	0xb94478	test   rbx,rbx
+reference	history-supplier-b94400	0xb94496	cmp    ax,0x59
+reference	history-supplier-b94400	0xb944ad	test   al,al
+reference	history-supplier-b94400	0xb944b9	cmp    ax,0x57
+reference	history-supplier-b94400	0xb94535	cmp    QWORD PTR [rsp+0x30],0x0
+reference	history-supplier-b94400	0xb94549	cmp    ax,0x59
+reference	history-supplier-b94400	0xb94560	test   al,al
+reference	history-supplier-b94400	0xb9456c	cmp    ax,0x57
+reference	history-supplier-b94400	0xb94592	cmp    rbx,0x8
+reference	history-supplier-b94400	0xb9459d	cmp    rbx,0xf
+reference	history-supplier-b94400	0xb945dc	cmp    rbx,rax
+reference	history-supplier-b94400	0xb945ea	cmp    rax,rdi
+reference	history-supplier-b94400	0xb9461c	cmp    rbx,0xf
+reference	history-supplier-b94400	0xb9462e	cmp    rdx,0x1000
+reference	history-supplier-b94400	0xb94646	cmp    rax,0x1f
+reference	history-supplier-b94400	0xb94662	cmp    QWORD PTR [rsp+0x38],0xf
+reference	history-supplier-b94400	0xb9467b	test   r14d,r14d
+reference	history-supplier-b94400	0xb9469b	cmp    rdx,0xf
+reference	history-supplier-b94400	0xb946ac	cmp    rdx,0x1000
+reference	history-supplier-b94400	0xb946c4	cmp    rax,0x1f
+reference	history-supplier-b94940	0xb9496e	test   rax,rax
+reference	history-supplier-b94940	0xb949b4	cmp    BYTE PTR [rdi+0x7a],0x0
+reference	history-supplier-b94940	0xb949bd	test   ecx,ecx
+reference	history-supplier-b94940	0xb949c6	cmp    ecx,0x1
+reference	history-supplier-b94940	0xb949fe	test   esi,esi
+reference	history-supplier-b94a40	0xb94a76	test   rax,rax
+reference	history-supplier-b94a40	0xb94af0	cmp    QWORD PTR [rsp+0x38],0xf
+reference	history-supplier-b94a40	0xb94b09	test   edi,edi
+reference	history-supplier-b94a40	0xb94b28	cmp    rdx,0xf
+reference	history-supplier-b94a40	0xb94b39	cmp    rdx,0x1000
+reference	history-supplier-b94a40	0xb94b51	cmp    rax,0x1f
+reference	history-supplier-b94ed0	0xb94eeb	test   r8d,r8d
+reference	history-supplier-b94ed0	0xb94f06	cmp    r8d,eax
+reference	history-supplier-b94ed0	0xb94f37	test   r9b,r9b
+reference	history-supplier-b94ed0	0xb94f68	cmp    QWORD PTR [rsp+0x38],0xf
+reference	history-supplier-b94ed0	0xb94f87	cmp    rdx,0xf
+reference	history-supplier-b94ed0	0xb94f98	cmp    rdx,0x1000
+reference	history-supplier-b94ed0	0xb94fb0	cmp    rax,0x1f
+reference	history-supplier-b94ed0	0xb94fea	cmp    BYTE PTR [rsp+0x88],0x0
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7a35	cmp    DWORD PTR [rcx+0x18],r13d
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7a3f	test   BYTE PTR [rax],0x4
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7ab7	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7b0f	test   r15,r15
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7b17	test   rax,rax
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7b29	test   eax,eax
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7b44	cmp    DWORD PTR [r15+0x20],0x101
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7b7e	test   r15,r15
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7b87	cmp    QWORD PTR [rsi],r13
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7b98	cmp    eax,0x19
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7cb0	test   rax,0xfffffffffffffff8
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7cbc	cmp    ecx,0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7cd1	test   rax,rax
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7ced	cmp    ecx,0x1
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7d75	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7dcd	test   r15,r15
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7dd9	test   rcx,rcx
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7dde	cmp    DWORD PTR [rcx],0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7de5	test   ecx,ecx
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7df3	cmp    ecx,0x1
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7e38	cmp    DWORD PTR [r15+0x20],0x101
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7e83	cmp    r8d,0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7e9b	cmp    eax,0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7ea0	cmp    DWORD PTR [rsi],eax
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7ebe	cmp    r8d,0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7ed9	cmp    DWORD PTR [rdi+0x40],0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7edf	cmp    DWORD PTR [rdi+0x44],0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7ee5	cmp    DWORD PTR [rsi],0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7f1c	test   rcx,rcx
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7f56	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7f76	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7f9a	test   rcx,rcx
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7fd8	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a7ff8	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a8036	cmp    r8d,0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a804e	cmp    eax,0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a8053	cmp    DWORD PTR [rsi],eax
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a8071	cmp    r8d,0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a808c	cmp    DWORD PTR [rdi+0x40],0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a8092	cmp    DWORD PTR [rdi+0x44],0xffffffff
+classic	history_event_hfs_formed_intrigue_relationshipst	0x2a8098	cmp    DWORD PTR [rsi],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a82f5	cmp    DWORD PTR [rcx+0x18],r13d
+classic	history_event_failed_intrigue_corruptionst	0x2a82ff	test   BYTE PTR [rax],0x4
+classic	history_event_failed_intrigue_corruptionst	0x2a8377	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a83e4	test   r15,r15
+classic	history_event_failed_intrigue_corruptionst	0x2a83ed	cmp    QWORD PTR [rsi],r13
+classic	history_event_failed_intrigue_corruptionst	0x2a83fe	cmp    eax,0x19
+classic	history_event_failed_intrigue_corruptionst	0x2a8516	test   rax,0xfffffffffffffff8
+classic	history_event_failed_intrigue_corruptionst	0x2a8522	cmp    ecx,0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a8537	test   rax,rax
+classic	history_event_failed_intrigue_corruptionst	0x2a8553	cmp    ecx,0x1
+classic	history_event_failed_intrigue_corruptionst	0x2a85db	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a8633	test   r15,r15
+classic	history_event_failed_intrigue_corruptionst	0x2a863f	test   rcx,rcx
+classic	history_event_failed_intrigue_corruptionst	0x2a8644	cmp    DWORD PTR [rcx],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a864b	test   ecx,ecx
+classic	history_event_failed_intrigue_corruptionst	0x2a8659	cmp    ecx,0x1
+classic	history_event_failed_intrigue_corruptionst	0x2a869e	cmp    DWORD PTR [r15+0x20],0x101
+classic	history_event_failed_intrigue_corruptionst	0x2a86e9	cmp    r8d,0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a8701	cmp    eax,0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a8706	cmp    DWORD PTR [rsi],eax
+classic	history_event_failed_intrigue_corruptionst	0x2a8724	cmp    r8d,0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a873f	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a8745	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a874b	cmp    DWORD PTR [rsi],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a8782	test   rcx,rcx
+classic	history_event_failed_intrigue_corruptionst	0x2a87bc	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_failed_intrigue_corruptionst	0x2a87dc	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_failed_intrigue_corruptionst	0x2a8800	test   rcx,rcx
+classic	history_event_failed_intrigue_corruptionst	0x2a883e	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_failed_intrigue_corruptionst	0x2a885e	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_failed_intrigue_corruptionst	0x2a889c	cmp    r8d,0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a88b4	cmp    eax,0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a88b9	cmp    DWORD PTR [rsi],eax
+classic	history_event_failed_intrigue_corruptionst	0x2a88d7	cmp    r8d,0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a88f2	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a88f8	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+classic	history_event_failed_intrigue_corruptionst	0x2a88fe	cmp    DWORD PTR [rsi],0xffffffff
+classic	history-supplier-b57700	0xb5774a	cmp    esi,0xffffffff
+classic	history-supplier-b57700	0xb57753	cmp    QWORD PTR [rcx+0x10],0x0
+classic	history-supplier-b57700	0xb57769	cmp    esi,0x5d
+classic	history-supplier-b57700	0xb577d3	cmp    edi,0xffffffff
+classic	history-supplier-b57700	0xb57817	cmp    QWORD PTR [rbp+0x28],0xf
+classic	history-supplier-b57700	0xb57832	cmp    rdx,0xf
+classic	history-supplier-b57700	0xb57846	cmp    rdx,0x1000
+classic	history-supplier-b57700	0xb5785e	cmp    rax,0x1f
+classic	history-supplier-b57700	0xb57f06	cmp    edi,0x20
+classic	history-supplier-b57700	0xb5813c	cmp    QWORD PTR [rbp+0x28],0xf
+classic	history-supplier-b57700	0xb58157	cmp    rdx,0xf
+classic	history-supplier-b57700	0xb58167	cmp    rdx,0x1000
+classic	history-supplier-b57700	0xb5817f	cmp    rax,0x1f
+classic	history-supplier-b57700	0xb5821b	cmp    edi,0x3f
+classic	history-supplier-b57700	0xb5833f	cmp    r12d,0xffffffff
+classic	history-supplier-b57700	0xb58349	cmp    QWORD PTR [rbx+0x10],0x0
+classic	history-supplier-b57700	0xb58362	cmp    r12d,0x118
+classic	history-supplier-b57700	0xb58595	test   rax,rax
+classic	history_event_war_field_battlest	0xb622df	cmp    r8d,0xffffffff
+classic	history_event_war_field_battlest	0xb6230f	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+classic	history_event_war_field_battlest	0xb6237c	cmp    QWORD PTR [rsp+0x48],0xf
+classic	history_event_war_field_battlest	0xb623b0	cmp    rdx,0xf
+classic	history_event_war_field_battlest	0xb623c1	cmp    rdx,0x1000
+classic	history_event_war_field_battlest	0xb623d9	cmp    rax,0x1f
+classic	history_event_war_field_battlest	0xb623eb	cmp    DWORD PTR [rdi+0x40],0xffffffff
+classic	history_event_war_field_battlest	0xb623fc	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+classic	history_event_war_field_battlest	0xb6243f	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+classic	history_event_war_field_battlest	0xb62445	cmp    DWORD PTR [rdi+0x40],0xffffffff
+classic	history_event_war_field_battlest	0xb6245d	cmp    DWORD PTR [rdi+0x44],0xffffffff
+classic	history_event_war_field_battlest	0xb6249c	test   BYTE PTR [rdi+0x4c],0x1
+classic	history_event_war_field_battlest	0xb624cc	cmp    DWORD PTR [rdi+0x48],0xffffffff
+classic	history_event_war_field_battlest	0xb624f6	test   BYTE PTR [rdi+0x4c],0x2
+classic	history_event_sneak_into_sitest	0xb62aa5	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_sneak_into_sitest	0xb62ad2	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_war_attacked_sitest	0xb62c53	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_war_attacked_sitest	0xb62cba	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_war_attacked_sitest	0xb62d27	cmp    QWORD PTR [rsp+0x48],0xf
+classic	history_event_war_attacked_sitest	0xb62d5b	cmp    rdx,0xf
+classic	history_event_war_attacked_sitest	0xb62d6c	cmp    rdx,0x1000
+classic	history_event_war_attacked_sitest	0xb62d84	cmp    rax,0x1f
+classic	history_event_war_attacked_sitest	0xb62d96	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+classic	history_event_war_attacked_sitest	0xb62da7	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_war_attacked_sitest	0xb62dea	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_war_attacked_sitest	0xb62df0	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+classic	history_event_war_attacked_sitest	0xb62e08	cmp    DWORD PTR [rdi+0x40],0xffffffff
+classic	history_event_war_attacked_sitest	0xb62e47	test   BYTE PTR [rdi+0x48],0x1
+classic	history_event_war_attacked_sitest	0xb62e77	cmp    DWORD PTR [rdi+0x44],0xffffffff
+classic	history_event_war_attacked_sitest	0xb62ea1	test   BYTE PTR [rdi+0x48],0x2
+classic	history_event_war_destroyed_sitest	0xb63041	test   BYTE PTR [rdi+0x38],0x1
+classic	history_event_war_destroyed_sitest	0xb6306e	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_war_plundered_sitest	0xb63271	test   BYTE PTR [rdi+0x38],0x1
+classic	history_event_war_plundered_sitest	0xb6329e	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_war_plundered_sitest	0xb632fe	cmp    al,0xc
+classic	history_event_war_plundered_sitest	0xb63302	test   ecx,ecx
+classic	history_event_war_plundered_sitest	0xb63327	test   dl,0x4
+classic	history_event_war_plundered_sitest	0xb6332c	test   ecx,ecx
+classic	history_event_war_plundered_sitest	0xb6334b	test   dl,0x8
+classic	history_event_war_plundered_sitest	0xb63350	test   ecx,ecx
+classic	history_event_war_plundered_sitest	0xb6336f	test   ecx,ecx
+classic	history_event_hf_freedst	0xb6357d	cmp    r8d,0xffffffff
+classic	history_event_hf_freedst	0xb6359f	cmp    DWORD PTR [rdi+0x28],0xffffffff
+classic	history_event_hf_freedst	0xb635a5	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hf_freedst	0xb63608	test   rax,rax
+classic	history_event_hf_freedst	0xb6363c	cmp    rax,0x3
+classic	history_event_hf_freedst	0xb63651	cmp    rax,0x2
+classic	history_event_hf_freedst	0xb636a7	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_hf_freedst	0xb636d1	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_hf_freedst	0xb636fb	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_war_site_new_leaderst	0xb639ad	cmp    DWORD PTR [rbp+0x30],eax
+classic	history_event_war_site_new_leaderst	0xb639e4	test   rax,rax
+classic	history_event_war_site_new_leaderst	0xb63a0b	cmp    r8d,0xffffffff
+classic	history_event_war_site_new_leaderst	0xb63a20	cmp    rax,rcx
+classic	history_event_war_site_new_leaderst	0xb63a29	cmp    DWORD PTR [rax],r8d
+classic	history_event_war_site_new_leaderst	0xb63a3a	cmp    eax,0xffffffff
+classic	history_event_war_site_new_leaderst	0xb63a6e	cmp    edi,0x2
+classic	history_event_war_site_new_leaderst	0xb63ac7	cmp    eax,DWORD PTR [r15+0x20]
+classic	history_event_war_site_new_leaderst	0xb63b07	test   eax,eax
+classic	history_event_war_site_new_leaderst	0xb63b47	cmp    edi,r12d
+classic	history_event_war_site_new_leaderst	0xb63b77	cmp    rsi,r13
+classic	history_event_war_site_new_leaderst	0xb63bd1	cmp    DWORD PTR [rbp+0x2c],0xffffffff
+classic	history_event_war_site_tribute_forcedst	0xb63f67	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_war_site_tribute_forcedst	0xb63f6d	test   eax,eax
+classic	history_event_war_site_tribute_forcedst	0xb63f92	test   eax,eax
+classic	history_event_war_site_tribute_forcedst	0xb63fcc	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_war_site_tribute_forcedst	0xb63ff5	test   BYTE PTR [rdi+0x3c],0x1
+classic	history_event_war_site_tribute_forcedst	0xb63fff	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_war_site_tribute_forcedst	0xb64045	test   ecx,ecx
+classic	history_event_war_site_tribute_forcedst	0xb64053	cmp    ecx,0x1
+classic	history_event_war_site_taken_overst	0xb642e8	cmp    DWORD PTR [rdi+0x30],eax
+classic	history_event_war_site_taken_overst	0xb6434a	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_add_entity_site_profile_flagst	0xb64501	cmp    DWORD PTR [rdi+0x30],0x10000
+classic	history_event_site_surrenderedst	0xb64694	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_hf_destroyed_sitest	0xb648bb	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_hf_attacked_sitest	0xb64ccb	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_site_diedst	0xb64e92	test   BYTE PTR [rdi+0x34],0x1
+classic	history_event_site_diedst	0xb64ef8	cmp    r8d,DWORD PTR [rdi+0x2c]
+classic	history_event_site_retiredst	0xb658c9	test   DWORD PTR [rdi+0x34],0x1
+classic	history_event_created_buildingst	0xb662f6	test   rax,rax
+classic	history_event_created_buildingst	0xb6634e	cmp    r8d,0xffffffff
+classic	history_event_created_buildingst	0xb66376	cmp    r8d,0xffffffff
+classic	history_event_created_buildingst	0xb66381	cmp    DWORD PTR [rbx+0x28],0xffffffff
+classic	history_event_created_buildingst	0xb663ab	test   rsi,rsi
+classic	history_event_created_buildingst	0xb663b8	cmp    ax,0x7
+classic	history_event_created_buildingst	0xb663cd	test   BYTE PTR [rbx+0x3c],0x1
+classic	history_event_created_buildingst	0xb66413	test   rsi,rsi
+classic	history_event_created_buildingst	0xb66420	cmp    ax,0x7
+classic	history_event_created_sitest	0xb66ac0	cmp    r8d,0xffffffff
+classic	history_event_created_sitest	0xb66aea	cmp    r8d,0xffffffff
+classic	history_event_created_sitest	0xb66af5	cmp    DWORD PTR [rdi+0x28],0xffffffff
+classic	history_event_created_sitest	0xb66b1f	test   rbp,rbp
+classic	history_event_created_sitest	0xb66b24	cmp    WORD PTR [rbp+0x80],0xa
+classic	history_event_created_sitest	0xb66b4d	cmp    cx,0x1
+classic	history_event_created_sitest	0xb66b60	cmp    WORD PTR [rbp+0x80],0x8
+classic	history_event_created_sitest	0xb66b9d	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_insurrection_startedst	0xb67512	cmp    DWORD PTR [rdi+0x28],0xffffffff
+classic	history_event_insurrection_endedst	0xb67695	test   ecx,ecx
+classic	history_event_insurrection_endedst	0xb676a2	cmp    ecx,0x1
+classic	history_event_insurrection_endedst	0xb676af	cmp    r8d,0xffffffff
+classic	history_event_insurrection_endedst	0xb6773d	cmp    r8d,0xffffffff
+classic	history_event_insurrection_endedst	0xb677c1	cmp    r8d,0xffffffff
+classic	history_event_reclaim_sitest	0xb679cc	cmp    r8d,0xffffffff
+classic	history_event_reclaim_sitest	0xb679d7	cmp    DWORD PTR [rdi+0x28],0xffffffff
+classic	history_event_reclaim_sitest	0xb67a01	test   DWORD PTR [rdi+0x34],0x1
+classic	history_event_creature_devouredst	0xb67c63	cmp    r8d,0xffffffff
+classic	history_event_creature_devouredst	0xb67cd6	cmp    r9w,0xffff
+classic	history_event_creature_devouredst	0xb67ce1	test   dx,dx
+classic	history_event_creature_devouredst	0xb67cf4	cmp    rdx,rax
+classic	history_event_creature_devouredst	0xb67cf9	test   r9w,r9w
+classic	history_event_creature_devouredst	0xb67d18	cmp    r9,rax
+classic	history_event_creature_devouredst	0xb67d2a	cmp    rax,rdx
+classic	history_event_creature_devouredst	0xb67d33	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history_event_creature_devouredst	0xb67d4c	test   rbp,rbp
+classic	history_event_creature_devouredst	0xb67d61	test   dx,dx
+classic	history_event_creature_devouredst	0xb67d6d	cmp    rbx,rcx
+classic	history_event_creature_devouredst	0xb67d7f	cmp    rax,rdx
+classic	history_event_creature_devouredst	0xb67d88	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history_event_creature_devouredst	0xb67da6	cmp    QWORD PTR [rsp+0x48],0xf
+classic	history_event_creature_devouredst	0xb67dbd	cmp    DWORD PTR [rsi+0x38],0xffffffff
+classic	history_event_creature_devouredst	0xb67ded	cmp    rdx,0xf
+classic	history_event_creature_devouredst	0xb67dfe	cmp    rdx,0x1000
+classic	history_event_creature_devouredst	0xb67e16	cmp    rax,0x1f
+classic	history_event_creature_devouredst	0xb67e28	cmp    DWORD PTR [rsi+0x3c],0xffffffff
+classic	history_event_creature_devouredst	0xb67e54	cmp    DWORD PTR [rsi+0x40],0xffffffff
+classic	history_event_creature_devouredst	0xb67e5a	cmp    DWORD PTR [rsi+0x44],0xffffffff
+classic	history_event_creature_devouredst	0xb67e7f	cmp    r8d,0xffffffff
+classic	history_event_hist_figure_woundedst	0xb681fe	test   r9,r9
+classic	history_event_hist_figure_woundedst	0xb68207	cmp    r11d,0xffffffff
+classic	history_event_hist_figure_woundedst	0xb6823d	cmp    DWORD PTR [rcx+0xe0],r11d
+classic	history_event_hist_figure_woundedst	0xb68257	cmp    r8d,r9d
+classic	history_event_hist_figure_woundedst	0xb6826b	test   ax,ax
+classic	history_event_hist_figure_woundedst	0xb6828c	cmp    rdx,rax
+classic	history_event_hist_figure_woundedst	0xb68295	test   cx,cx
+classic	history_event_hist_figure_woundedst	0xb682bc	cmp    rcx,rax
+classic	history_event_hist_figure_woundedst	0xb682e0	test   ax,ax
+classic	history_event_hist_figure_woundedst	0xb682f6	cmp    rdx,rax
+classic	history_event_hist_figure_woundedst	0xb682ff	cmp    DWORD PTR [rax+0x50],r12d
+classic	history_event_hist_figure_woundedst	0xb68309	test   BYTE PTR [rax],0x10
+classic	history_event_hist_figure_woundedst	0xb683a3	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history_event_hist_figure_woundedst	0xb683d2	cmp    BYTE PTR [rdi+0x46],r12b
+classic	history_event_hist_figure_woundedst	0xb683dc	test   ecx,ecx
+classic	history_event_hist_figure_woundedst	0xb683f7	cmp    ecx,r15d
+classic	history_event_hist_figure_woundedst	0xb68403	test   sil,sil
+classic	history_event_hist_figure_woundedst	0xb6842c	test   sil,sil
+classic	history_event_hist_figure_woundedst	0xb68462	test   sil,sil
+classic	history_event_hist_figure_woundedst	0xb6846e	test   sil,sil
+classic	history_event_hist_figure_woundedst	0xb6849a	test   ecx,ecx
+classic	history_event_hist_figure_woundedst	0xb684ad	cmp    ecx,r15d
+classic	history_event_hist_figure_woundedst	0xb684f7	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hist_figure_woundedst	0xb68534	test   BYTE PTR [rdi+0x48],r15b
+classic	history_event_hist_figure_simple_battle_eventst	0xb6bcf0	test   rax,0xfffffffffffffffc
+classic	history_event_hist_figure_simple_battle_eventst	0xb6bd04	test   rax,0xfffffffffffffffc
+classic	history_event_hist_figure_simple_battle_eventst	0xb6bd64	test   ecx,ecx
+classic	history_event_hist_figure_simple_battle_eventst	0xb6bd90	cmp    ecx,r14d
+classic	history_event_hist_figure_simple_battle_eventst	0xb6bdb6	cmp    eax,0xa
+classic	history_event_knowledge_discoveredst	0xb6c583	test   r9,r9
+classic	history_event_knowledge_discoveredst	0xb6c58c	cmp    r11d,0xffffffff
+classic	history_event_knowledge_discoveredst	0xb6c5bd	cmp    DWORD PTR [rcx+0xe0],r11d
+classic	history_event_knowledge_discoveredst	0xb6c5d7	cmp    r8d,r9d
+classic	history_event_knowledge_discoveredst	0xb6c652	test   BYTE PTR [rdi+0x34],0x1
+classic	history_event_knowledge_discoveredst	0xb6c6b4	cmp    eax,0xd
+classic	history_event_knowledge_discoveredst	0xb6c6d1	cmp    edx,0x80000
+classic	history_event_knowledge_discoveredst	0xb6c6e3	cmp    edx,0x2000
+classic	history_event_knowledge_discoveredst	0xb6c6f5	cmp    edx,0x400
+classic	history_event_knowledge_discoveredst	0xb6c6ff	cmp    edx,0x80
+classic	history_event_knowledge_discoveredst	0xb6c707	cmp    edx,0x100
+classic	history_event_knowledge_discoveredst	0xb6c70f	cmp    edx,0x200
+classic	history_event_knowledge_discoveredst	0xb6c76f	cmp    edx,0x800
+classic	history_event_knowledge_discoveredst	0xb6c777	cmp    edx,0x1000
+classic	history_event_knowledge_discoveredst	0xb6c7f3	cmp    edx,0x4000
+classic	history_event_knowledge_discoveredst	0xb6c7ff	cmp    edx,0x8000
+classic	history_event_knowledge_discoveredst	0xb6c80b	cmp    edx,0x10000
+classic	history_event_knowledge_discoveredst	0xb6c813	cmp    edx,0x20000
+classic	history_event_knowledge_discoveredst	0xb6c81b	cmp    edx,0x40000
+classic	history_event_knowledge_discoveredst	0xb6c985	cmp    edx,0x4000000
+classic	history_event_knowledge_discoveredst	0xb6c997	cmp    edx,0x800000
+classic	history_event_knowledge_discoveredst	0xb6c9a9	cmp    edx,0x100000
+classic	history_event_knowledge_discoveredst	0xb6c9b1	cmp    edx,0x200000
+classic	history_event_knowledge_discoveredst	0xb6c9b9	cmp    edx,0x400000
+classic	history_event_knowledge_discoveredst	0xb6ca93	cmp    edx,0x1000000
+classic	history_event_knowledge_discoveredst	0xb6ca9b	cmp    edx,0x2000000
+classic	history_event_knowledge_discoveredst	0xb6cb27	cmp    edx,0x8000000
+classic	history_event_knowledge_discoveredst	0xb6cb33	cmp    edx,0x10000000
+classic	history_event_knowledge_discoveredst	0xb6cb3f	cmp    edx,0x20000000
+classic	history_event_knowledge_discoveredst	0xb6cb47	cmp    edx,0x40000000
+classic	history_event_knowledge_discoveredst	0xb6cb4f	cmp    edx,0x80000000
+classic	history_event_knowledge_discoveredst	0xb6cc70	cmp    edx,0x4
+classic	history_event_knowledge_discoveredst	0xb6cc75	cmp    edx,0x8
+classic	history_event_knowledge_discoveredst	0xb6cd18	cmp    edx,0x4000
+classic	history_event_knowledge_discoveredst	0xb6cd8b	cmp    edx,0x40
+classic	history_event_hf_gains_secret_goalst	0xb6d021	test   r8,r8
+classic	history_event_hf_gains_secret_goalst	0xb6d02a	cmp    r10d,0xffffffff
+classic	history_event_hf_gains_secret_goalst	0xb6d05d	cmp    DWORD PTR [rdi+0xe0],r10d
+classic	history_event_hf_gains_secret_goalst	0xb6d076	cmp    edx,r8d
+classic	history_event_hf_gains_secret_goalst	0xb6d080	test   rdi,rdi
+classic	history_event_hf_gains_secret_goalst	0xb6d102	cmp    eax,0xc
+classic	history_event_hf_gains_secret_goalst	0xb6d150	cmp    al,0x1
+classic	history_event_hf_gains_secret_goalst	0xb6d168	test   al,al
+classic	history_event_hf_gains_secret_goalst	0xb6d1ca	cmp    QWORD PTR [rsp+0x48],0xf
+classic	history_event_hf_gains_secret_goalst	0xb6d1fe	cmp    rdx,0xf
+classic	history_event_hf_gains_secret_goalst	0xb6d213	cmp    rdx,0x1000
+classic	history_event_hf_gains_secret_goalst	0xb6d22b	cmp    rax,0x1f
+classic	history_event_hist_figure_revivedst	0xb6d42b	cmp    DWORD PTR [r13+0x40],0xffffffff
+classic	history_event_hist_figure_revivedst	0xb6d432	test   DWORD PTR [r13+0x3c],0x2
+classic	history_event_hist_figure_revivedst	0xb6d46b	test   BYTE PTR [r13+0x3c],0x1
+classic	history_event_hist_figure_revivedst	0xb6d487	cmp    DWORD PTR [r13+0x40],0xffffffff
+classic	history_event_hist_figure_revivedst	0xb6d4c3	cmp    WORD PTR [r13+0x38],0xffff
+classic	history_event_hist_figure_revivedst	0xb6d4e9	cmp    eax,0xa
+classic	history_event_hist_figure_revivedst	0xb6d627	cmp    eax,0xffffffff
+classic	history_event_hist_figure_revivedst	0xb6d642	test   ecx,ecx
+classic	history_event_hist_figure_revivedst	0xb6d65f	cmp    ecx,eax
+classic	history_event_hist_figure_revivedst	0xb6d68d	cmp    ax,0xa
+classic	history_event_hist_figure_revivedst	0xb6d6a1	cmp    rsi,rbp
+classic	history_event_hist_figure_revivedst	0xb6d6b1	cmp    rbx,rdi
+classic	history_event_hist_figure_revivedst	0xb6d6be	cmp    ax,0x1f
+classic	history_event_hist_figure_revivedst	0xb6d6c7	cmp    QWORD PTR [rax+0xa8],0x0
+classic	history_event_hist_figure_revivedst	0xb6d6e3	cmp    rax,rdx
+classic	history_event_hist_figure_revivedst	0xb6d6ec	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history_event_hist_figure_revivedst	0xb6d713	cmp    ax,0x2
+classic	history_event_hist_figure_revivedst	0xb6d727	cmp    rsi,rbp
+classic	history_event_hist_figure_revivedst	0xb6d737	cmp    rbx,rdi
+classic	history_event_hist_figure_revivedst	0xb6d744	cmp    ax,0x1f
+classic	history_event_hist_figure_revivedst	0xb6d74d	cmp    QWORD PTR [rax+0xa8],0x0
+classic	history_event_hist_figure_revivedst	0xb6d769	cmp    rax,rdx
+classic	history_event_hist_figure_revivedst	0xb6d772	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history_event_hist_figure_revivedst	0xb6d791	test   rbx,rbx
+classic	history_event_hist_figure_revivedst	0xb6d7b0	cmp    QWORD PTR [rsp+0x48],0xf
+classic	history_event_hist_figure_revivedst	0xb6d7d2	cmp    DWORD PTR [r13+0x2c],0xffffffff
+classic	history_event_hist_figure_revivedst	0xb6d800	cmp    DWORD PTR [r13+0x30],0xffffffff
+classic	history_event_hist_figure_revivedst	0xb6d807	cmp    DWORD PTR [r13+0x34],0xffffffff
+classic	history_event_hist_figure_revivedst	0xb6d82e	cmp    r8d,0xffffffff
+classic	history_event_hist_figure_diedst	0xb6d8f0	cmp    r11d,r12d
+classic	history_event_hist_figure_diedst	0xb6d90e	test   r8d,r8d
+classic	history_event_hist_figure_diedst	0xb6d92d	cmp    DWORD PTR [rdi+0x1c],r11d
+classic	history_event_hist_figure_diedst	0xb6d943	cmp    edx,r8d
+classic	history_event_hist_figure_diedst	0xb6d94a	test   rdi,rdi
+classic	history_event_hist_figure_diedst	0xb6d94f	test   DWORD PTR [rdi+0x10],0x40000
+classic	history_event_hist_figure_diedst	0xb6d960	cmp    rbx,rdi
+classic	history_event_hist_figure_diedst	0xb6d96e	cmp    eax,0x1
+classic	history_event_hist_figure_diedst	0xb6d982	test   rax,rax
+classic	history_event_hist_figure_diedst	0xb6d995	cmp    r11d,r13d
+classic	history_event_hist_figure_diedst	0xb6d9ac	test   r8d,r8d
+classic	history_event_hist_figure_diedst	0xb6d9cd	cmp    DWORD PTR [rdi+0x1c],r11d
+classic	history_event_hist_figure_diedst	0xb6d9e3	cmp    edx,eax
+classic	history_event_hist_figure_diedst	0xb6d9e9	test   rdi,rdi
+classic	history_event_hist_figure_diedst	0xb6d9ee	test   DWORD PTR [rdi+0x10],0x40000
+classic	history_event_hist_figure_diedst	0xb6da00	cmp    rbx,rdi
+classic	history_event_hist_figure_diedst	0xb6da0e	cmp    eax,0x1
+classic	history_event_hist_figure_diedst	0xb6da22	test   rax,rax
+classic	history_event_hist_figure_diedst	0xb6da63	cmp    r12d,0xffffffff
+classic	history_event_hist_figure_diedst	0xb6da97	cmp    r13d,0xffffffff
+classic	history_event_hist_figure_diedst	0xb6daf8	cmp    r8d,0xffffffff
+classic	history_event_hist_figure_diedst	0xb6db02	cmp    DWORD PTR [r15+0x20],r8d
+classic	history_event_hist_figure_diedst	0xb6db14	cmp    eax,0x33
+classic	history_event_hist_figure_diedst	0xb6db38	cmp    dx,0xffff
+classic	history_event_hist_figure_diedst	0xb6db42	cmp    dx,0x45
+classic	history_event_hist_figure_diedst	0xb6dbc5	cmp    ax,0xffff
+classic	history_event_hist_figure_diedst	0xb6dbcf	cmp    ax,0x45
+classic	history_event_hist_figure_diedst	0xb6dbd5	cmp    rbx,0x2
+classic	history_event_hist_figure_diedst	0xb6dbdf	cmp    rbx,0xf
+classic	history_event_hist_figure_diedst	0xb6dc65	cmp    rbx,rax
+classic	history_event_hist_figure_diedst	0xb6dc71	cmp    rax,0xf
+classic	history_event_hist_figure_diedst	0xb6dc9c	cmp    rbx,0xf
+classic	history_event_hist_figure_diedst	0xb6dcad	cmp    rdx,0x1000
+classic	history_event_hist_figure_diedst	0xb6dcc5	cmp    rax,0x1f
+classic	history_event_hist_figure_diedst	0xb6de0d	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6de22	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6de3e	cmp    QWORD PTR [rbp-0x39],0xf
+classic	history_event_hist_figure_diedst	0xb6de6a	cmp    QWORD PTR [rbp-0x19],0xf
+classic	history_event_hist_figure_diedst	0xb6de86	cmp    DWORD PTR [r14+0x58],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6deba	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6df45	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6df5c	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6df70	cmp    QWORD PTR [rbp-0x39],0xf
+classic	history_event_hist_figure_diedst	0xb6df91	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6e023	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6e03e	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6e052	cmp    QWORD PTR [rbp-0x39],0xf
+classic	history_event_hist_figure_diedst	0xb6e35d	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6e372	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6e38c	cmp    QWORD PTR [rbp-0x39],0xf
+classic	history_event_hist_figure_diedst	0xb6e57a	cmp    eax,0x36
+classic	history_event_hist_figure_diedst	0xb6e6e5	cmp    r8d,0xffffffff
+classic	history_event_hist_figure_diedst	0xb6e71a	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6e775	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6e7d2	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6e89f	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6e8de	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6e915	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6e92d	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6e941	cmp    QWORD PTR [rbp-0x39],0xf
+classic	history_event_hist_figure_diedst	0xb6e98f	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6e9d0	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6e9e5	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6ea33	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ea6d	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6ea82	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6eaa3	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6eaaa	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6eadb	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6eb00	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6eb52	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6eb94	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6eb9f	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6eba6	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6ebda	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ebff	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ecc8	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ed07	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ed3e	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6ed52	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6ed93	cmp    QWORD PTR [rbp-0x39],r13
+classic	history_event_hist_figure_diedst	0xb6edad	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6edf0	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ee2f	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ee63	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6eedf	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ef07	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ef4e	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6ef8d	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6efc8	cmp    QWORD PTR [rbp-0x41],0x0
+classic	history_event_hist_figure_diedst	0xb6efcf	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6efd6	test   bl,bl
+classic	history_event_hist_figure_diedst	0xb6f000	test   bl,bl
+classic	history_event_hist_figure_diedst	0xb6f022	cmp    QWORD PTR [rbp-0x21],0x0
+classic	history_event_hist_figure_diedst	0xb6f02d	test   bl,bl
+classic	history_event_hist_figure_diedst	0xb6f07b	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6f086	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6f0c0	cmp    DWORD PTR [r14+0x2c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6f120	test   r8,r8
+classic	history_event_hist_figure_diedst	0xb6f125	cmp    r10d,0xffffffff
+classic	history_event_hist_figure_diedst	0xb6f140	cmp    DWORD PTR [rdi+0xe0],r10d
+classic	history_event_hist_figure_diedst	0xb6f159	cmp    edx,eax
+classic	history_event_hist_figure_diedst	0xb6f15f	test   rdi,rdi
+classic	history_event_hist_figure_diedst	0xb6f193	cmp    al,0x1
+classic	history_event_hist_figure_diedst	0xb6f1bc	test   al,al
+classic	history_event_hist_figure_diedst	0xb6f21a	cmp    rdx,0xf
+classic	history_event_hist_figure_diedst	0xb6f22a	cmp    rdx,0x1000
+classic	history_event_hist_figure_diedst	0xb6f242	cmp    rax,0x1f
+classic	history_event_hist_figure_diedst	0xb6f25b	cmp    DWORD PTR [r14+0x5c],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6f262	cmp    DWORD PTR [r14+0x60],0xffffffff
+classic	history_event_hist_figure_diedst	0xb6f288	cmp    r8d,0xffffffff
+classic	history_event_hist_figure_diedst	0xb6f2b5	cmp    rdx,0xf
+classic	history_event_hist_figure_diedst	0xb6f2c5	cmp    rdx,0x1000
+classic	history_event_hist_figure_diedst	0xb6f2dd	cmp    rax,0x1f
+classic	history_event_hist_figure_reunionst	0xb71e5a	test   rax,0xfffffffffffffffc
+classic	history_event_hist_figure_reunionst	0xb71e6e	test   rax,0xfffffffffffffffc
+classic	history_event_hist_figure_reunionst	0xb71f04	cmp    rdi,0x1
+classic	history_event_hist_figure_reunionst	0xb71f5e	cmp    rax,r15
+classic	history_event_hist_figure_reunionst	0xb71f69	cmp    rax,r15
+classic	history_event_hist_figure_reunionst	0xb71fd5	cmp    rdi,r15
+classic	history_event_hist_figure_reunionst	0xb71ff8	cmp    DWORD PTR [rsi+0x5c],0xffffffff
+classic	history_event_hist_figure_reunionst	0xb72027	cmp    DWORD PTR [rsi+0x60],0xffffffff
+classic	history_event_hist_figure_reunionst	0xb7202d	cmp    DWORD PTR [rsi+0x64],0xffffffff
+classic	history_event_hist_figure_reunionst	0xb72052	cmp    r8d,0xffffffff
+classic	history_event_hist_figure_reunionst	0xb720ae	cmp    DWORD PTR [rsi+0x58],0xffffffff
+classic	history_event_hist_figure_abductedst	0xb72410	cmp    DWORD PTR [rsi+0x20],r8d
+classic	history_event_hist_figure_abductedst	0xb72471	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_hist_figure_abductedst	0xb7249b	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_hist_figure_abductedst	0xb724a1	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_hist_figure_abductedst	0xb724c6	cmp    r8d,0xffffffff
+classic	history_event_hist_figure_abductedst	0xb724df	cmp    DWORD PTR [rsi+0x20],eax
+classic	history_event_hf_learns_secretst	0xb752e8	test   r9,r9
+classic	history_event_hf_learns_secretst	0xb752ed	cmp    r11d,0xffffffff
+classic	history_event_hf_learns_secretst	0xb752fb	test   r10d,r10d
+classic	history_event_hf_learns_secretst	0xb7530d	cmp    DWORD PTR [rbp+0xe0],r11d
+classic	history_event_hf_learns_secretst	0xb75326	cmp    edx,r10d
+classic	history_event_hf_learns_secretst	0xb7533c	test   r9,r9
+classic	history_event_hf_learns_secretst	0xb75341	cmp    r8d,0xffffffff
+classic	history_event_hf_learns_secretst	0xb7534d	test   r10d,r10d
+classic	history_event_hf_learns_secretst	0xb7535f	cmp    DWORD PTR [rbx+0xe0],r8d
+classic	history_event_hf_learns_secretst	0xb75378	cmp    edx,r10d
+classic	history_event_hf_learns_secretst	0xb75380	test   rbp,rbp
+classic	history_event_hf_learns_secretst	0xb753c3	test   rbx,rbx
+classic	history_event_hf_learns_secretst	0xb7542a	test   rbx,rbx
+classic	history_event_hf_learns_secretst	0xb75462	cmp    DWORD PTR [r14+0x30],0xffffffff
+classic	history_event_hf_does_interactionst	0xb756db	test   r9,r9
+classic	history_event_hf_does_interactionst	0xb756e0	cmp    r11d,0xffffffff
+classic	history_event_hf_does_interactionst	0xb756f0	test   r10d,r10d
+classic	history_event_hf_does_interactionst	0xb7570d	cmp    DWORD PTR [rsi+0xe0],r11d
+classic	history_event_hf_does_interactionst	0xb75726	cmp    edx,r10d
+classic	history_event_hf_does_interactionst	0xb7573e	test   r9,r9
+classic	history_event_hf_does_interactionst	0xb75747	cmp    r8d,0xffffffff
+classic	history_event_hf_does_interactionst	0xb75758	test   r10d,r10d
+classic	history_event_hf_does_interactionst	0xb7577d	cmp    DWORD PTR [rbp+0xe0],r8d
+classic	history_event_hf_does_interactionst	0xb75796	cmp    edx,r10d
+classic	history_event_hf_does_interactionst	0xb757a0	test   rbp,rbp
+classic	history_event_hf_does_interactionst	0xb757ad	test   eax,eax
+classic	history_event_hf_does_interactionst	0xb757cd	cmp    rcx,rax
+classic	history_event_hf_does_interactionst	0xb757da	test   rax,rax
+classic	history_event_hf_does_interactionst	0xb757e7	test   ecx,ecx
+classic	history_event_hf_does_interactionst	0xb757fe	cmp    rcx,rax
+classic	history_event_hf_does_interactionst	0xb7580b	test   r14,r14
+classic	history_event_hf_does_interactionst	0xb7584e	test   rsi,rsi
+classic	history_event_hf_does_interactionst	0xb7588f	cmp    QWORD PTR [r14+0x48],0xf
+classic	history_event_hf_does_interactionst	0xb758d2	cmp    QWORD PTR [r14+0x68],0xf
+classic	history_event_hf_does_interactionst	0xb758ec	cmp    DWORD PTR [rbx+0x38],0xffffffff
+classic	history_event_hf_does_interactionst	0xb75919	cmp    DWORD PTR [rbx+0x3c],0xffffffff
+classic	history_event_hf_does_interactionst	0xb7591f	cmp    DWORD PTR [rbx+0x40],0xffffffff
+classic	history_event_hf_does_interactionst	0xb75945	cmp    r8d,0xffffffff
+classic	history_event_change_creature_typest	0xb75ca8	test   r9,r9
+classic	history_event_change_creature_typest	0xb75cad	cmp    r11d,0xffffffff
+classic	history_event_change_creature_typest	0xb75cbb	test   r10d,r10d
+classic	history_event_change_creature_typest	0xb75ccd	cmp    DWORD PTR [rsi+0xe0],r11d
+classic	history_event_change_creature_typest	0xb75ce6	cmp    edx,r10d
+classic	history_event_change_creature_typest	0xb75cfc	test   r9,r9
+classic	history_event_change_creature_typest	0xb75d01	cmp    r8d,0xffffffff
+classic	history_event_change_creature_typest	0xb75d0d	test   r10d,r10d
+classic	history_event_change_creature_typest	0xb75d1f	cmp    DWORD PTR [rbx+0xe0],r8d
+classic	history_event_change_creature_typest	0xb75d38	cmp    edx,r10d
+classic	history_event_change_creature_typest	0xb75d40	test   rsi,rsi
+classic	history_event_change_creature_typest	0xb75d83	test   rbx,rbx
+classic	history_event_change_creature_typest	0xb75dea	test   rbx,rbx
+classic	history_event_assume_identityst	0xb760e0	test   r8,r8
+classic	history_event_assume_identityst	0xb760e9	cmp    r10d,0xffffffff
+classic	history_event_assume_identityst	0xb76110	cmp    DWORD PTR [rbx+0xe0],r10d
+classic	history_event_assume_identityst	0xb76129	cmp    edx,r8d
+classic	history_event_assume_identityst	0xb76145	test   rbx,rbx
+classic	history_event_assume_identityst	0xb7614e	test   rax,rax
+classic	history_event_assume_identityst	0xb761bb	cmp    DWORD PTR [rbp+0x30],0xffffffff
+classic	history_event_assume_identityst	0xb76216	cmp    al,0x1
+classic	history_event_assume_identityst	0xb76221	test   al,al
+classic	history_event_assume_identityst	0xb76286	cmp    rdx,0xf
+classic	history_event_assume_identityst	0xb76297	cmp    rdx,0x1000
+classic	history_event_assume_identityst	0xb762af	cmp    rax,0x1f
+classic	history_event_create_entity_positionst	0xb76526	cmp    r8d,0xffffffff
+classic	history_event_create_entity_positionst	0xb7654a	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_create_entity_positionst	0xb7655f	cmp    WORD PTR [rdi+0x38],0x2
+classic	history_event_create_entity_positionst	0xb765a3	test   ecx,ecx
+classic	history_event_create_entity_positionst	0xb76607	test   rax,0xfffffffffffffff8
+classic	history_event_create_entity_positionst	0xb76612	cmp    ecx,0xffffffff
+classic	history_event_create_entity_positionst	0xb76623	test   rax,rax
+classic	history_event_create_entity_positionst	0xb76637	test   rax,rax
+classic	history_event_create_entity_positionst	0xb76643	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history_event_create_entity_positionst	0xb7665c	cmp    DWORD PTR [rdi+0x30],eax
+classic	history_event_create_entity_positionst	0xb76689	test   ecx,ecx
+classic	history_event_create_entity_positionst	0xb76697	cmp    ecx,0x1
+classic	history_event_hfs_formed_reputation_relationshipst	0xb7697a	cmp    eax,DWORD PTR [rdi+0x3c]
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76988	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76a12	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76a7c	cmp    DWORD PTR [rdi+0x38],0x1b
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76aa4	cmp    eax,0x1b
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76ab2	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76b3e	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76ba4	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76c2e	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76cbc	cmp    r8d,0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76cd4	cmp    ecx,0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76cd9	cmp    DWORD PTR [rsi],ecx
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76cf8	cmp    r8d,0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76d13	cmp    DWORD PTR [r14],0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76d23	cmp    DWORD PTR [rdi+0x44],0xffffffff
+classic	history_event_hfs_formed_reputation_relationshipst	0xb76d29	cmp    DWORD PTR [rsi],0xffffffff
+classic	history_event_entity_overthrownst	0xb76dfc	cmp    r8d,0xffffffff
+classic	history_event_entity_overthrownst	0xb76e44	cmp    DWORD PTR [rdi+0x30],eax
+classic	history_event_entity_overthrownst	0xb76ea4	cmp    DWORD PTR [rdi+0x58],0xffffffff
+classic	history_event_entity_overthrownst	0xb76eec	test   r14d,r14d
+classic	history_event_entity_overthrownst	0xb76f20	cmp    rbx,rdi
+classic	history_event_entity_overthrownst	0xb76f4c	cmp    ebp,0x2
+classic	history_event_entity_overthrownst	0xb76f6c	cmp    ebp,r12d
+classic	history_event_entity_overthrownst	0xb76f71	cmp    r14d,0x3
+classic	history_event_entity_persecutedst	0xb78890	cmp    r8d,0xffffffff
+classic	history_event_entity_persecutedst	0xb788ce	cmp    r8d,0xffffffff
+classic	history_event_entity_persecutedst	0xb7894b	test   rax,rax
+classic	history_event_entity_persecutedst	0xb78962	test   rax,rax
+classic	history_event_entity_persecutedst	0xb78973	test   rax,rax
+classic	history_event_entity_persecutedst	0xb7898a	test   rax,rax
+classic	history_event_entity_persecutedst	0xb7898f	cmp    DWORD PTR [rdi+0x68],esi
+classic	history_event_entity_persecutedst	0xb7899f	test   r14d,r14d
+classic	history_event_entity_persecutedst	0xb789d6	test   r15,r15
+classic	history_event_entity_persecutedst	0xb789ed	test   rax,rax
+classic	history_event_entity_persecutedst	0xb789fe	test   rax,rax
+classic	history_event_entity_persecutedst	0xb78a18	cmp    rax,rcx
+classic	history_event_entity_persecutedst	0xb78a2a	test   esi,esi
+classic	history_event_entity_persecutedst	0xb78a32	cmp    ebp,0xffffffff
+classic	history_event_entity_persecutedst	0xb78a59	cmp    BYTE PTR [rsp+0x38],cl
+classic	history_event_entity_persecutedst	0xb78a72	cmp    eax,0xffffffff
+classic	history_event_entity_persecutedst	0xb78aaf	cmp    esi,0x3e8
+classic	history_event_entity_persecutedst	0xb78ada	cmp    r14d,0x2
+classic	history_event_entity_persecutedst	0xb78b06	cmp    esi,0x1f4
+classic	history_event_entity_persecutedst	0xb78b1d	cmp    esi,0x64
+classic	history_event_entity_persecutedst	0xb78b31	cmp    esi,0x18
+classic	history_event_entity_persecutedst	0xb78b48	cmp    esi,0x6
+classic	history_event_entity_persecutedst	0xb78b5f	cmp    esi,0x3
+classic	history_event_entity_persecutedst	0xb78b82	cmp    esi,0x3e8
+classic	history_event_entity_persecutedst	0xb78b9c	cmp    esi,0x1f4
+classic	history_event_entity_persecutedst	0xb78bb6	cmp    esi,0x64
+classic	history_event_entity_persecutedst	0xb78bcd	cmp    esi,0x18
+classic	history_event_entity_persecutedst	0xb78be4	cmp    esi,0x6
+classic	history_event_entity_persecutedst	0xb78bfb	cmp    r15,0x2
+classic	history_event_entity_persecutedst	0xb78c5f	cmp    esi,0x4
+classic	history_event_entity_persecutedst	0xb78c8b	cmp    r15,0x1
+classic	history_event_entity_persecutedst	0xb78cb4	cmp    esi,0x3
+classic	history_event_entity_persecutedst	0xb78cf5	cmp    esi,0x2
+classic	history_event_entity_persecutedst	0xb78d1e	cmp    ebp,0xffffffff
+classic	history_event_entity_persecutedst	0xb78d41	cmp    BYTE PTR [rsp+0x38],cl
+classic	history_event_entity_persecutedst	0xb78d5a	cmp    eax,0xffffffff
+classic	history_event_entity_persecutedst	0xb78dc1	cmp    r14d,0x1
+classic	history_event_entity_persecutedst	0xb78dd6	cmp    r15d,0x3
+classic	history_event_entity_persecutedst	0xb78e23	test   rax,rax
+classic	history_event_entity_persecutedst	0xb78e28	cmp    DWORD PTR [rdi+0x68],eax
+classic	history_event_entity_persecutedst	0xb78e31	cmp    rax,0x2
+classic	history_event_entity_persecutedst	0xb78e98	cmp    rax,0x3
+classic	history_event_entity_persecutedst	0xb78ead	cmp    rax,0x1
+classic	history_event_entity_persecutedst	0xb78ee7	test   eax,eax
+classic	history_event_entity_persecutedst	0xb78eef	cmp    eax,0x19
+classic	history_event_entity_persecutedst	0xb78f00	cmp    rax,0x1
+classic	history_event_entity_persecutedst	0xb78f32	cmp    rax,0x1
+classic	history_event_entity_persecutedst	0xb78f5b	test   sil,sil
+classic	history_event_entity_persecutedst	0xb78f7c	cmp    r14d,0x2
+classic	history_event_entity_persecutedst	0xb78f90	cmp    r15d,0x3
+classic	history_event_entity_breach_feature_layerst	0xb79171	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_entity_alliance_formedst	0xb7932e	cmp    DWORD PTR [rcx+0x18],r14d
+classic	history_event_entity_alliance_formedst	0xb79338	test   BYTE PTR [rax],0x4
+classic	history_event_entity_alliance_formedst	0xb79398	cmp    rax,0x3
+classic	history_event_entity_alliance_formedst	0xb793bb	cmp    r8d,0xffffffff
+classic	history_event_entity_alliance_formedst	0xb793d0	cmp    rax,rcx
+classic	history_event_entity_alliance_formedst	0xb793d9	cmp    DWORD PTR [rax],r8d
+classic	history_event_entity_alliance_formedst	0xb793eb	cmp    eax,0xffffffff
+classic	history_event_entity_alliance_formedst	0xb7942f	cmp    rax,0x2
+classic	history_event_entity_alliance_formedst	0xb79462	cmp    rax,0x1
+classic	history_event_entity_alliance_formedst	0xb794af	test   r14,r14
+classic	history_event_entity_alliance_formedst	0xb794c0	test   rcx,rcx
+classic	history_event_entity_alliance_formedst	0xb79502	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_entity_alliance_formedst	0xb79522	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_entity_alliance_formedst	0xb7953d	cmp    rdx,0xf
+classic	history_event_entity_alliance_formedst	0xb7954d	cmp    rdx,0x1000
+classic	history_event_entity_alliance_formedst	0xb79565	cmp    rax,0x1f
+classic	history_event_entity_alliance_formedst	0xb7957b	test   rcx,rcx
+classic	history_event_entity_alliance_formedst	0xb795b9	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_entity_alliance_formedst	0xb795d9	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_hf_ransomedst	0xb797e5	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_hf_ransomedst	0xb797eb	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_hf_ransomedst	0xb79811	cmp    r8d,0xffffffff
+classic	history_event_hf_ransomedst	0xb79831	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_hf_ransomedst	0xb79870	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_hf_interrogatedst	0xb79f1b	test   DWORD PTR [r15+0x50],0x1
+classic	history_event_hf_interrogatedst	0xb79f4c	cmp    DWORD PTR [r15+0x2c],0xffffffff
+classic	history_event_hf_interrogatedst	0xb79f9b	test   rax,rax
+classic	history_event_hf_interrogatedst	0xb79fc6	cmp    DWORD PTR [r15+0x30],0xffffffff
+classic	history_event_hf_interrogatedst	0xb7a065	cmp    edi,0xffffffff
+classic	history_event_hf_interrogatedst	0xb7a089	cmp    BYTE PTR [rsp+0x40],cl
+classic	history_event_hf_interrogatedst	0xb7a09c	cmp    eax,0xffffffff
+classic	history_event_hf_interrogatedst	0xb7a0c3	cmp    ebp,0x2
+classic	history_event_hf_interrogatedst	0xb7a0d7	cmp    ebp,r12d
+classic	history_event_hf_interrogatedst	0xb7a100	cmp    rbx,rdi
+classic	history_event_hf_interrogatedst	0xb7a10c	cmp    r8d,DWORD PTR [r14+0x20]
+classic	history_event_hf_interrogatedst	0xb7a132	cmp    ebp,0x2
+classic	history_event_hf_interrogatedst	0xb7a152	cmp    ebp,r12d
+classic	history_event_hf_interrogatedst	0xb7a157	cmp    r13d,0x3
+classic	history_event_hf_interrogatedst	0xb7a1ae	test   BYTE PTR [r15+0x50],0x2
+classic	history_event_hf_interrogatedst	0xb7a1d6	test   BYTE PTR [r15+0x50],0x2
+classic	history_event_hf_interrogatedst	0xb7a1f3	cmp    DWORD PTR [r15+0x30],0xffffffff
+classic	history_event_hf_interrogatedst	0xb7a288	cmp    DWORD PTR [r15+0x30],0xffffffff
+classic	history_event_failed_frame_attemptst	0xb7a517	cmp    eax,0x12
+classic	history_event_failed_frame_attemptst	0xb7a668	cmp    eax,0xffffffff
+classic	history_event_failed_frame_attemptst	0xb7a66d	cmp    eax,DWORD PTR [rdi+0x38]
+classic	history_event_failed_frame_attemptst	0xb7a6dc	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hf_convictedst	0xb7ab1d	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_hf_convictedst	0xb7ab3b	cmp    DWORD PTR [rdi+0x2c],eax
+classic	history_event_hf_convictedst	0xb7ab87	test   al,0x2
+classic	history_event_hf_convictedst	0xb7ab9d	test   al,0x1c
+classic	history_event_hf_convictedst	0xb7abbc	test   BYTE PTR [r13+0x0],0x8
+classic	history_event_hf_convictedst	0xb7abfc	test   BYTE PTR [r13+0x0],0x4
+classic	history_event_hf_convictedst	0xb7ac03	test   al,al
+classic	history_event_hf_convictedst	0xb7ac6a	test   BYTE PTR [r13+0x0],0x10
+classic	history_event_hf_convictedst	0xb7ac71	test   al,al
+classic	history_event_hf_convictedst	0xb7acfc	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_hf_convictedst	0xb7ad2c	test   BYTE PTR [r13+0x0],0x1
+classic	history_event_hf_convictedst	0xb7ad5d	test   DWORD PTR [r13+0x0],0x20
+classic	history_event_hf_convictedst	0xb7ad92	cmp    eax,ebx
+classic	history_event_hf_convictedst	0xb7aedc	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hf_convictedst	0xb7af02	cmp    DWORD PTR [rdi+0x50],0xffffffff
+classic	history_event_hf_convictedst	0xb7af0b	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hf_convictedst	0xb7af1e	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history_event_hf_convictedst	0xb7af65	cmp    DWORD PTR [rdi+0x58],0xffffffff
+classic	history_event_hf_convictedst	0xb7af6f	cmp    DWORD PTR [rdi+0x5c],0xffffffff
+classic	history_event_hf_convictedst	0xb7afff	cmp    eax,0xffffffff
+classic	history_event_hf_convictedst	0xb7b007	cmp    eax,ecx
+classic	history_event_hf_convictedst	0xb7b00b	cmp    eax,DWORD PTR [rdi+0x50]
+classic	history_event_hf_convictedst	0xb7b015	cmp    ecx,0xffffffff
+classic	history_event_hf_convictedst	0xb7b064	test   ecx,ecx
+classic	history_event_hf_convictedst	0xb7b068	cmp    DWORD PTR [rdi+0x70],r14d
+classic	history_event_hf_convictedst	0xb7b06e	cmp    DWORD PTR [rdi+0x78],r14d
+classic	history_event_hf_convictedst	0xb7b07b	test   al,0x4
+classic	history_event_hf_convictedst	0xb7b09b	test   al,0x2
+classic	history_event_hf_convictedst	0xb7b0a5	test   al,0x8
+classic	history_event_hf_convictedst	0xb7b0b2	test   ecx,ecx
+classic	history_event_hf_convictedst	0xb7b0bb	test   ecx,ecx
+classic	history_event_hf_convictedst	0xb7b0e5	test   bl,bl
+classic	history_event_hf_convictedst	0xb7b123	cmp    QWORD PTR [rbp-0x18],0xf
+classic	history_event_hf_convictedst	0xb7b14e	cmp    DWORD PTR [rdi+0x70],0x2
+classic	history_event_hf_convictedst	0xb7b172	test   r12b,al
+classic	history_event_hf_convictedst	0xb7b17a	test   bl,bl
+classic	history_event_hf_convictedst	0xb7b1b7	test   al,0x2
+classic	history_event_hf_convictedst	0xb7b1d5	test   al,0x8
+classic	history_event_hf_convictedst	0xb7b1f3	cmp    DWORD PTR [rdi+0x74],0x0
+classic	history_event_hf_convictedst	0xb7b215	cmp    ecx,0x1
+classic	history_event_hf_convictedst	0xb7b234	cmp    ecx,0xc
+classic	history_event_hf_convictedst	0xb7b239	cmp    ecx,0x18
+classic	history_event_hf_convictedst	0xb7b262	cmp    QWORD PTR [rbp-0x18],0xf
+classic	history_event_hf_convictedst	0xb7b2ae	cmp    ecx,0xc
+classic	history_event_hf_convictedst	0xb7b2e3	cmp    ecx,eax
+classic	history_event_hf_convictedst	0xb7b333	cmp    QWORD PTR [rbp-0x18],0xf
+classic	history_event_hf_convictedst	0xb7b375	cmp    rdx,0xf
+classic	history_event_hf_convictedst	0xb7b385	cmp    rdx,0x1000
+classic	history_event_hf_convictedst	0xb7b39d	cmp    rax,0x1f
+classic	history_event_hf_convictedst	0xb7b3cd	test   rax,rax
+classic	history_event_hf_convictedst	0xb7b435	cmp    eax,0xffffffff
+classic	history_event_hf_convictedst	0xb7b45e	cmp    BYTE PTR [rbp-0x38],cl
+classic	history_event_hf_convictedst	0xb7b466	cmp    eax,0xffffffff
+classic	history_event_hf_convictedst	0xb7b490	cmp    r14d,0x2
+classic	history_event_hf_convictedst	0xb7b4a5	cmp    r14d,0x1
+classic	history_event_hf_convictedst	0xb7b4d0	cmp    rbx,rdi
+classic	history_event_hf_convictedst	0xb7b4dc	cmp    r8d,DWORD PTR [r15+0x20]
+classic	history_event_hf_convictedst	0xb7b504	cmp    r14d,0x2
+classic	history_event_hf_convictedst	0xb7b525	cmp    r14d,0x1
+classic	history_event_hf_convictedst	0xb7b52b	cmp    r12d,0x3
+classic	history_event_hf_convictedst	0xb7b583	test   BYTE PTR [r13+0x0],0x40
+classic	history_event_hf_convictedst	0xb7b5ae	test   BYTE PTR [r13+0x0],0x40
+classic	history_event_add_hf_entity_linkst	0xb7bb10	cmp    eax,0x4
+classic	history_event_add_hf_entity_linkst	0xb7bb24	cmp    eax,0x6
+classic	history_event_add_hf_entity_linkst	0xb7bb57	cmp    eax,0xf
+classic	history_event_add_hf_entity_linkst	0xb7bb8b	test   rax,0xfffffffffffffff8
+classic	history_event_add_hf_entity_linkst	0xb7bb9a	cmp    ecx,0xffffffff
+classic	history_event_add_hf_entity_linkst	0xb7bbaf	test   rax,rax
+classic	history_event_add_hf_entity_linkst	0xb7bbca	test   rax,rax
+classic	history_event_add_hf_entity_linkst	0xb7bc0a	test   r8,r8
+classic	history_event_add_hf_entity_linkst	0xb7bc13	cmp    r10d,0xffffffff
+classic	history_event_add_hf_entity_linkst	0xb7bc3d	cmp    DWORD PTR [rbp+0xe0],r10d
+classic	history_event_add_hf_entity_linkst	0xb7bc56	cmp    edx,eax
+classic	history_event_add_hf_entity_linkst	0xb7bc5f	test   rbp,rbp
+classic	history_event_add_hf_entity_linkst	0xb7bc76	test   rax,0xfffffffffffffff8
+classic	history_event_add_hf_entity_linkst	0xb7bc85	cmp    ecx,0xffffffff
+classic	history_event_add_hf_entity_linkst	0xb7bc9a	test   rax,rax
+classic	history_event_add_hf_entity_linkst	0xb7bcb5	test   rax,rax
+classic	history_event_add_hf_entity_linkst	0xb7bcbe	cmp    WORD PTR [rax+0x2d8],0x1
+classic	history_event_add_hf_entity_linkst	0xb7bceb	test   ecx,ecx
+classic	history_event_add_hf_entity_linkst	0xb7bcf3	cmp    ecx,0x1
+classic	history_event_add_hf_entity_linkst	0xb7bdc3	test   r8,r8
+classic	history_event_add_hf_entity_linkst	0xb7bdcc	cmp    r10d,0xffffffff
+classic	history_event_add_hf_entity_linkst	0xb7bdf0	cmp    DWORD PTR [rbp+0xe0],r10d
+classic	history_event_add_hf_entity_linkst	0xb7be09	cmp    edx,r8d
+classic	history_event_add_hf_entity_linkst	0xb7be13	test   rbp,rbp
+classic	history_event_add_hf_entity_linkst	0xb7be2a	test   rax,0xfffffffffffffff8
+classic	history_event_add_hf_entity_linkst	0xb7be39	cmp    ecx,0xffffffff
+classic	history_event_add_hf_entity_linkst	0xb7be4e	test   rax,rax
+classic	history_event_add_hf_entity_linkst	0xb7be69	test   rax,rax
+classic	history_event_add_hf_entity_linkst	0xb7be8b	test   eax,eax
+classic	history_event_add_hf_entity_linkst	0xb7be8f	cmp    eax,0x1
+classic	history_event_add_hf_entity_linkst	0xb7be9d	cmp    QWORD PTR [rsi+0x128],r12
+classic	history_event_add_hf_entity_linkst	0xb7bebf	cmp    QWORD PTR [rsi+0xe8],r12
+classic	history_event_add_hf_entity_linkst	0xb7becf	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history_event_add_hf_entity_linkst	0xb7bf28	cmp    DWORD PTR [rdi+0x38],0xffffffff
+classic	history_event_add_hf_entity_linkst	0xb7bf6e	cmp    DWORD PTR [rdi+0x3c],0xffffffff
+classic	history_event_add_hf_entity_linkst	0xb7bf77	cmp    DWORD PTR [rdi+0x38],eax
+classic	history_event_add_hf_entity_linkst	0xb7bf94	cmp    DWORD PTR [rdi+0x3c],eax
+classic	history_event_remove_hf_entity_linkst	0xb7c0c4	cmp    eax,0xf
+classic	history_event_remove_hf_entity_linkst	0xb7c0f3	test   rax,0xfffffffffffffff8
+classic	history_event_remove_hf_entity_linkst	0xb7c102	cmp    ecx,0xffffffff
+classic	history_event_remove_hf_entity_linkst	0xb7c117	test   rax,rax
+classic	history_event_remove_hf_entity_linkst	0xb7c132	test   rax,rax
+classic	history_event_remove_hf_entity_linkst	0xb7c175	test   rdx,rdx
+classic	history_event_remove_hf_entity_linkst	0xb7c17e	cmp    r9d,0xffffffff
+classic	history_event_remove_hf_entity_linkst	0xb7c19d	cmp    DWORD PTR [rsi+0xe0],r9d
+classic	history_event_remove_hf_entity_linkst	0xb7c1b4	cmp    ebx,edx
+classic	history_event_remove_hf_entity_linkst	0xb7c1bd	test   rsi,rsi
+classic	history_event_remove_hf_entity_linkst	0xb7c1d4	test   rax,0xfffffffffffffff8
+classic	history_event_remove_hf_entity_linkst	0xb7c1e3	cmp    ecx,0xffffffff
+classic	history_event_remove_hf_entity_linkst	0xb7c1f8	test   rax,rax
+classic	history_event_remove_hf_entity_linkst	0xb7c213	test   rax,rax
+classic	history_event_remove_hf_entity_linkst	0xb7c231	cmp    WORD PTR [rbx+0x2d8],0x1
+classic	history_event_remove_hf_entity_linkst	0xb7c264	test   ecx,ecx
+classic	history_event_remove_hf_entity_linkst	0xb7c26c	cmp    ecx,0x1
+classic	history_event_remove_hf_entity_linkst	0xb7c318	test   rdx,rdx
+classic	history_event_remove_hf_entity_linkst	0xb7c321	cmp    r9d,0xffffffff
+classic	history_event_remove_hf_entity_linkst	0xb7c340	cmp    DWORD PTR [rsi+0xe0],r9d
+classic	history_event_remove_hf_entity_linkst	0xb7c357	cmp    ebx,edx
+classic	history_event_remove_hf_entity_linkst	0xb7c360	test   rsi,rsi
+classic	history_event_remove_hf_entity_linkst	0xb7c377	test   rax,0xfffffffffffffff8
+classic	history_event_remove_hf_entity_linkst	0xb7c386	cmp    ecx,0xffffffff
+classic	history_event_remove_hf_entity_linkst	0xb7c39b	test   rax,rax
+classic	history_event_remove_hf_entity_linkst	0xb7c3b6	test   rax,rax
+classic	history_event_remove_hf_entity_linkst	0xb7c3d8	test   eax,eax
+classic	history_event_remove_hf_entity_linkst	0xb7c3dc	cmp    eax,0x1
+classic	history_event_remove_hf_entity_linkst	0xb7c3ea	cmp    QWORD PTR [rbx+0x128],0x0
+classic	history_event_remove_hf_entity_linkst	0xb7c406	cmp    QWORD PTR [rbx+0xe8],0x0
+classic	history_event_remove_hf_entity_linkst	0xb7c41e	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history_event_war_peace_acceptedst	0xb806bd	cmp    DWORD PTR [rcx+0x18],esi
+classic	history_event_war_peace_acceptedst	0xb806c6	test   BYTE PTR [rax],0x4
+classic	history_event_war_peace_acceptedst	0xb8074a	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_war_peace_acceptedst	0xb80789	test   rsi,rsi
+classic	history_event_war_peace_acceptedst	0xb8079a	test   rcx,rcx
+classic	history_event_war_peace_acceptedst	0xb807dc	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_war_peace_acceptedst	0xb807fc	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_war_peace_acceptedst	0xb80817	cmp    rdx,0xf
+classic	history_event_war_peace_acceptedst	0xb80827	cmp    rdx,0x1000
+classic	history_event_war_peace_acceptedst	0xb8083f	cmp    rax,0x1f
+classic	history_event_war_peace_acceptedst	0xb80855	test   rcx,rcx
+classic	history_event_war_peace_acceptedst	0xb80897	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_war_peace_acceptedst	0xb808b7	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_war_peace_acceptedst	0xb808d2	cmp    rdx,0xf
+classic	history_event_war_peace_acceptedst	0xb808e2	cmp    rdx,0x1000
+classic	history_event_war_peace_acceptedst	0xb808fa	cmp    rax,0x1f
+classic	history_event_war_peace_rejectedst	0xb80a1d	cmp    DWORD PTR [rcx+0x18],esi
+classic	history_event_war_peace_rejectedst	0xb80a26	test   BYTE PTR [rax],0x4
+classic	history_event_war_peace_rejectedst	0xb80aaa	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_war_peace_rejectedst	0xb80ae9	test   rsi,rsi
+classic	history_event_war_peace_rejectedst	0xb80afa	test   rcx,rcx
+classic	history_event_war_peace_rejectedst	0xb80b3c	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_war_peace_rejectedst	0xb80b5c	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_war_peace_rejectedst	0xb80b77	cmp    rdx,0xf
+classic	history_event_war_peace_rejectedst	0xb80b87	cmp    rdx,0x1000
+classic	history_event_war_peace_rejectedst	0xb80b9f	cmp    rax,0x1f
+classic	history_event_war_peace_rejectedst	0xb80bb5	test   rcx,rcx
+classic	history_event_war_peace_rejectedst	0xb80bf7	cmp    QWORD PTR [rbp-0x28],0x0
+classic	history_event_war_peace_rejectedst	0xb80c17	cmp    QWORD PTR [rbp-0x20],0xf
+classic	history_event_war_peace_rejectedst	0xb80c32	cmp    rdx,0xf
+classic	history_event_war_peace_rejectedst	0xb80c42	cmp    rdx,0x1000
+classic	history_event_war_peace_rejectedst	0xb80c5a	cmp    rax,0x1f
+classic	history_event_artifact_createdst	0xb86d96	test   DWORD PTR [rbx+0x3c],0x1
+classic	history_event_artifact_createdst	0xb86dc6	cmp    DWORD PTR [rbx+0x38],0xffffffff
+classic	history_event_artifact_createdst	0xb86df0	cmp    DWORD PTR [rbx+0x30],0xffffffff
+classic	history_event_artifact_createdst	0xb86dfb	cmp    DWORD PTR [rbx+0x34],0xffffffff
+classic	history_event_artifact_createdst	0xb86e0f	test   ecx,ecx
+classic	history_event_artifact_createdst	0xb86e33	cmp    r8d,0xffffffff
+classic	history_event_artifact_createdst	0xb86e54	cmp    DWORD PTR [rbx+0x34],0xffffffff
+classic	history_event_artifact_transformedst	0xb8739f	test   r8d,r8d
+classic	history_event_artifact_transformedst	0xb873a4	cmp    r10d,0xffffffff
+classic	history_event_artifact_transformedst	0xb873cd	cmp    DWORD PTR [rbx],r10d
+classic	history_event_artifact_transformedst	0xb873e2	cmp    edx,eax
+classic	history_event_artifact_transformedst	0xb873e9	test   rbx,rbx
+classic	history_event_artifact_transformedst	0xb873f0	cmp    QWORD PTR [rbx+0x90],rax
+classic	history_event_artifact_transformedst	0xb87407	test   eax,eax
+classic	history_event_artifact_transformedst	0xb8745f	cmp    QWORD PTR [rsp+0x48],0xf
+classic	history_event_artifact_transformedst	0xb87490	cmp    rdx,0xf
+classic	history_event_artifact_transformedst	0xb874a1	cmp    rdx,0x1000
+classic	history_event_artifact_transformedst	0xb874b9	cmp    rax,0x1f
+classic	history_event_artifact_transformedst	0xb874ec	test   rax,rax
+classic	history_event_artifact_transformedst	0xb87520	cmp    rbx,rdi
+classic	history_event_artifact_transformedst	0xb87562	test   r9d,r9d
+classic	history_event_artifact_transformedst	0xb87567	cmp    r10d,0xffffffff
+classic	history_event_artifact_transformedst	0xb87590	cmp    r8d,r10d
+classic	history_event_artifact_transformedst	0xb8759d	cmp    r8d,r10d
+classic	history_event_artifact_transformedst	0xb875a7	cmp    edx,eax
+classic	history_event_artifact_transformedst	0xb875ae	test   rsi,rsi
+classic	history_event_artifact_transformedst	0xb875b5	cmp    QWORD PTR [rsi+0x90],0x0
+classic	history_event_artifact_transformedst	0xb875c7	test   eax,eax
+classic	history_event_artifact_transformedst	0xb8761e	cmp    QWORD PTR [rsp+0x48],0xf
+classic	history_event_artifact_transformedst	0xb8763d	cmp    rdx,0xf
+classic	history_event_artifact_transformedst	0xb8764e	cmp    rdx,0x1000
+classic	history_event_artifact_transformedst	0xb87666	cmp    rax,0x1f
+classic	history_event_artifact_transformedst	0xb87674	cmp    r15d,0x2
+classic	history_event_artifact_transformedst	0xb87689	cmp    r15d,0x1
+classic	history_event_artifact_transformedst	0xb876b9	cmp    DWORD PTR [r13+0x50],0xffffffff
+classic	history_event_artifact_destroyedst	0xb87beb	cmp    DWORD PTR [rdi+0x30],0xffffffff
+classic	history_event_artifact_destroyedst	0xb87c2d	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_artifact_destroyedst	0xb87c42	cmp    DWORD PTR [rdi+0x34],0xffffffff
+classic	history_event_artifact_destroyedst	0xb87c6c	cmp    DWORD PTR [rdi+0x2c],0xffffffff
+classic	history-supplier-b8f680	0xb8f6ad	cmp    r8d,0x1
+classic	history-supplier-b8f680	0xb8f6dd	cmp    r14d,0xffffffff
+classic	history-supplier-b8f680	0xb8f716	cmp    r14d,0x10680
+classic	history-supplier-b8f680	0xb8f72e	cmp    r14d,0x8340
+classic	history-supplier-b8f680	0xb8f75b	test   ebx,ebx
+classic	history-supplier-b8f680	0xb8f769	cmp    ebx,0x1
+classic	history-supplier-b8f680	0xb8f7b2	cmp    rax,0x4
+classic	history-supplier-b8f680	0xb8f7c8	cmp    r14,0xf
+classic	history-supplier-b8f680	0xb8f7e3	cmp    r13,0xf
+classic	history-supplier-b8f680	0xb8f7f0	cmp    rdi,rcx
+classic	history-supplier-b8f680	0xb8f7ff	cmp    rdi,rax
+classic	history-supplier-b8f680	0xb8f843	cmp    QWORD PTR [rbp-0x10],0xf
+classic	history-supplier-b8f680	0xb8f85e	cmp    rdx,0xf
+classic	history-supplier-b8f680	0xb8f86e	cmp    rdx,0x1000
+classic	history-supplier-b8f680	0xb8f886	cmp    rax,0x1f
+classic	history-supplier-b8f680	0xb8f89e	cmp    QWORD PTR [rbp-0x30],0xf
+classic	history-supplier-b8f680	0xb8f8b9	cmp    r14,0xf
+classic	history-supplier-b8f680	0xb8f8c6	cmp    rdx,0x1000
+classic	history-supplier-b8f680	0xb8f8de	cmp    rax,0x1f
+classic	history-supplier-b8f940	0xb8f972	test   rax,0xfffffffffffffff8
+classic	history-supplier-b8f940	0xb8f97a	cmp    r8d,0xffffffff
+classic	history-supplier-b8f940	0xb8f996	test   rdi,rdi
+classic	history-supplier-b8f940	0xb8fa11	cmp    QWORD PTR [rsp+0x38],0xf
+classic	history-supplier-b8f940	0xb8fa2a	test   esi,esi
+classic	history-supplier-b8f940	0xb8fa49	cmp    rdx,0xf
+classic	history-supplier-b8f940	0xb8fa5a	cmp    rdx,0x1000
+classic	history-supplier-b8f940	0xb8fa72	cmp    rax,0x1f
+classic	history-supplier-b8ff50	0xb8ff9a	test   rax,rax
+classic	history-supplier-b8ff50	0xb8ffa7	test   rdx,rdx
+classic	history-supplier-b8ff50	0xb8ffb4	test   rax,rax
+classic	history-supplier-b8ff50	0xb8ffbf	cmp    DWORD PTR [rax+0x20],ecx
+classic	history-supplier-b8ff50	0xb8ffd6	cmp    DWORD PTR [rax+0x24],ecx
+classic	history-supplier-b8ff50	0xb8fff8	test   rax,rax
+classic	history-supplier-b8ff50	0xb90001	test   BYTE PTR [rax+0x4],0x8
+classic	history-supplier-b8ff50	0xb9000b	cmp    BYTE PTR [rdi+0xaa],0x0
+classic	history-supplier-b8ff50	0xb9004d	cmp    QWORD PTR [rbp-0x71],0xf
+classic	history-supplier-b8ff50	0xb90069	cmp    rdx,0xf
+classic	history-supplier-b8ff50	0xb9007e	cmp    rdx,0x1000
+classic	history-supplier-b8ff50	0xb90096	cmp    rax,0x1f
+classic	history-supplier-b8ff50	0xb900d4	test   rax,rax
+classic	history-supplier-b8ff50	0xb900e7	test   rax,rax
+classic	history-supplier-b8ff50	0xb900ec	cmp    BYTE PTR [rax+0x7a],0x0
+classic	history-supplier-b8ff50	0xb90127	cmp    QWORD PTR [rbp-0x71],0xf
+classic	history-supplier-b8ff50	0xb90166	test   BYTE PTR [r13+0x0],0x2
+classic	history-supplier-b8ff50	0xb901a6	cmp    DWORD PTR [rdi+0xd0],0x0
+classic	history-supplier-b8ff50	0xb901b6	test   BYTE PTR [rax],0x4
+classic	history-supplier-b8ff50	0xb901bb	test   BYTE PTR [rax],0x8
+classic	history-supplier-b8ff50	0xb901e1	test   rax,rax
+classic	history-supplier-b8ff50	0xb901e9	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb901f6	cmp    WORD PTR [rdi+0x2],ax
+classic	history-supplier-b8ff50	0xb90205	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb9020e	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb90217	cmp    QWORD PTR [rsi+0x160],r15
+classic	history-supplier-b8ff50	0xb90226	cmp    BYTE PTR [rsi+0x88],r15b
+classic	history-supplier-b8ff50	0xb9023a	cmp    WORD PTR [rdi+0x2],0xffff
+classic	history-supplier-b8ff50	0xb90241	cmp    cx,r14w
+classic	history-supplier-b8ff50	0xb90272	cmp    DWORD PTR [rax+0x24],r9d
+classic	history-supplier-b8ff50	0xb90280	test   ecx,ecx
+classic	history-supplier-b8ff50	0xb90292	cmp    ecx,0x1
+classic	history-supplier-b8ff50	0xb9032d	cmp    BYTE PTR [rdi+0xaa],0x0
+classic	history-supplier-b8ff50	0xb9033a	cmp    eax,r9d
+classic	history-supplier-b8ff50	0xb90343	test   r12b,r12b
+classic	history-supplier-b8ff50	0xb9034c	test   cx,cx
+classic	history-supplier-b8ff50	0xb9036a	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb9036f	cmp    QWORD PTR [rsi+0x160],0x0
+classic	history-supplier-b8ff50	0xb9038e	cmp    DWORD PTR [rdi+0xd0],0x0
+classic	history-supplier-b8ff50	0xb9039e	cmp    BYTE PTR [rax],0x0
+classic	history-supplier-b8ff50	0xb903a3	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb903a8	cmp    BYTE PTR [rsi+0x88],0x0
+classic	history-supplier-b8ff50	0xb903e6	cmp    cx,0xffff
+classic	history-supplier-b8ff50	0xb903ec	test   r13w,r13w
+classic	history-supplier-b8ff50	0xb9040b	cmp    r13,rax
+classic	history-supplier-b8ff50	0xb90410	test   cx,cx
+classic	history-supplier-b8ff50	0xb9042e	cmp    rcx,rax
+classic	history-supplier-b8ff50	0xb9043f	cmp    rax,rdx
+classic	history-supplier-b8ff50	0xb90448	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history-supplier-b8ff50	0xb9045f	test   r8,r8
+classic	history-supplier-b8ff50	0xb90466	test   r13w,r13w
+classic	history-supplier-b8ff50	0xb90481	cmp    r13,rax
+classic	history-supplier-b8ff50	0xb90492	cmp    rax,rdx
+classic	history-supplier-b8ff50	0xb9049b	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history-supplier-b8ff50	0xb904b6	cmp    QWORD PTR [rbp-0x11],0xf
+classic	history-supplier-b8ff50	0xb904c8	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb904cd	cmp    BYTE PTR [rsi+0x88],0x0
+classic	history-supplier-b8ff50	0xb904f3	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history-supplier-b8ff50	0xb90531	cmp    DWORD PTR [rax+0x20],r9d
+classic	history-supplier-b8ff50	0xb9054d	cmp    QWORD PTR [rbp-0x51],0xf
+classic	history-supplier-b8ff50	0xb9056d	cmp    DWORD PTR [rax+0x20],r8d
+classic	history-supplier-b8ff50	0xb90577	test   r12b,r12b
+classic	history-supplier-b8ff50	0xb90580	cmp    WORD PTR [rbp+0x7f],0x2
+classic	history-supplier-b8ff50	0xb905a0	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb905a5	cmp    QWORD PTR [rsi+0x160],0x0
+classic	history-supplier-b8ff50	0xb905c4	cmp    DWORD PTR [rdi+0xd0],0x0
+classic	history-supplier-b8ff50	0xb905d4	cmp    BYTE PTR [rax],0x0
+classic	history-supplier-b8ff50	0xb905d9	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb905de	cmp    BYTE PTR [rsi+0x88],0x0
+classic	history-supplier-b8ff50	0xb90619	cmp    cx,0xffff
+classic	history-supplier-b8ff50	0xb9061f	test   di,di
+classic	history-supplier-b8ff50	0xb9063d	cmp    rdi,rax
+classic	history-supplier-b8ff50	0xb90642	test   cx,cx
+classic	history-supplier-b8ff50	0xb90660	cmp    rcx,rax
+classic	history-supplier-b8ff50	0xb90671	cmp    rax,rdx
+classic	history-supplier-b8ff50	0xb9067a	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history-supplier-b8ff50	0xb90691	test   r15,r15
+classic	history-supplier-b8ff50	0xb90698	test   di,di
+classic	history-supplier-b8ff50	0xb906b2	cmp    rdi,rax
+classic	history-supplier-b8ff50	0xb906c3	cmp    rax,rdx
+classic	history-supplier-b8ff50	0xb906cc	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history-supplier-b8ff50	0xb906e7	cmp    QWORD PTR [rbp-0x31],0xf
+classic	history-supplier-b8ff50	0xb906fc	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb90701	cmp    BYTE PTR [rsi+0x88],0x0
+classic	history-supplier-b8ff50	0xb90727	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history-supplier-b8ff50	0xb9073e	cmp    rdx,0xf
+classic	history-supplier-b8ff50	0xb90752	cmp    rdx,0x1000
+classic	history-supplier-b8ff50	0xb9076a	cmp    rax,0x1f
+classic	history-supplier-b8ff50	0xb90787	cmp    eax,r9d
+classic	history-supplier-b8ff50	0xb907a8	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb907ad	cmp    QWORD PTR [rsi+0x160],0x0
+classic	history-supplier-b8ff50	0xb907cc	cmp    DWORD PTR [rdi+0xd0],0x0
+classic	history-supplier-b8ff50	0xb907dc	cmp    BYTE PTR [rax],0x0
+classic	history-supplier-b8ff50	0xb907e1	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb907e6	cmp    BYTE PTR [rsi+0x88],0x0
+classic	history-supplier-b8ff50	0xb90834	cmp    QWORD PTR [rbp-0x71],0xf
+classic	history-supplier-b8ff50	0xb9084b	test   rsi,rsi
+classic	history-supplier-b8ff50	0xb90850	cmp    BYTE PTR [rsi+0x88],0x0
+classic	history-supplier-b8ff50	0xb90876	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history-supplier-b8ff50	0xb90893	cmp    WORD PTR [rbp+0x77],0x2
+classic	history-supplier-b8ff50	0xb9089a	cmp    BYTE PTR [rsp+0x20],0x0
+classic	history-supplier-b8ff50	0xb908bb	test   BYTE PTR [rax],0x2
+classic	history-supplier-b8ff50	0xb908da	cmp    rdx,0xf
+classic	history-supplier-b8ff50	0xb908ea	cmp    rdx,0x1000
+classic	history-supplier-b8ff50	0xb90902	cmp    rax,0x1f
+classic	history-supplier-b8ff50	0xb9092b	cmp    WORD PTR [rbp+0x77],0x2
+classic	history-supplier-b90970	0xb909a6	test   rax,rax
+classic	history-supplier-b90970	0xb90a23	cmp    QWORD PTR [rsp+0x38],0xf
+classic	history-supplier-b90970	0xb90a3c	test   edi,edi
+classic	history-supplier-b90970	0xb90a5b	cmp    rdx,0xf
+classic	history-supplier-b90970	0xb90a6c	cmp    rdx,0x1000
+classic	history-supplier-b90970	0xb90a84	cmp    rax,0x1f
+classic	history-supplier-b90ca0	0xb90ca3	test   r8d,r8d
+classic	history-supplier-b90ca0	0xb90cc0	cmp    rdx,rax
+classic	history-supplier-b90ca0	0xb90cd8	test   rcx,rcx
+classic	history-supplier-b90ca0	0xb90ce1	cmp    rax,rcx
+classic	history-supplier-b90ca0	0xb90ce9	cmp    QWORD PTR [rdx+0x20],0x0
+classic	history-supplier-b90ca0	0xb90cfe	cmp    QWORD PTR [rdx+0x18],0xf
+classic	history-supplier-b910d0	0xb91103	test   rax,rax
+classic	history-supplier-b910d0	0xb9111d	test   rax,rax
+classic	history-supplier-b910d0	0xb9118a	cmp    BYTE PTR [rsp+0x90],0x0
+classic	history-supplier-b910d0	0xb911a1	test   rax,rax
+classic	history-supplier-b910d0	0xb911aa	cmp    BYTE PTR [rax+0x72],0x0
+classic	history-supplier-b910d0	0xb911eb	cmp    QWORD PTR [rsp+0x38],0xf
+classic	history-supplier-b910d0	0xb91204	test   esi,esi
+classic	history-supplier-b910d0	0xb91223	cmp    rdx,0xf
+classic	history-supplier-b910d0	0xb91238	cmp    rdx,0x1000
+classic	history-supplier-b910d0	0xb91250	cmp    rax,0x1f
+classic	history-supplier-b910d0	0xb91273	cmp    ecx,0xd
+classic	history-supplier-b910d0	0xb9135f	test   ecx,ecx
+classic	history-supplier-b910d0	0xb91368	cmp    ecx,0x1
+classic	history-supplier-b910d0	0xb913be	test   esi,esi
+classic	history-supplier-b91440	0xb9147c	test   r9d,r9d
+classic	history-supplier-b91440	0xb91481	cmp    r8d,0xffffffff
+classic	history-supplier-b91440	0xb9149d	cmp    DWORD PTR [rbx],r8d
+classic	history-supplier-b91440	0xb914b2	cmp    edx,eax
+classic	history-supplier-b91440	0xb914b8	test   rbx,rbx
+classic	history-supplier-b91440	0xb914d6	cmp    ax,0x59
+classic	history-supplier-b91440	0xb914ed	test   al,al
+classic	history-supplier-b91440	0xb914f9	cmp    ax,0x57
+classic	history-supplier-b91440	0xb91575	cmp    QWORD PTR [rsp+0x30],0x0
+classic	history-supplier-b91440	0xb91589	cmp    ax,0x59
+classic	history-supplier-b91440	0xb915a0	test   al,al
+classic	history-supplier-b91440	0xb915ac	cmp    ax,0x57
+classic	history-supplier-b91440	0xb915d2	cmp    rbx,0x8
+classic	history-supplier-b91440	0xb915dd	cmp    rbx,0xf
+classic	history-supplier-b91440	0xb9161c	cmp    rbx,rax
+classic	history-supplier-b91440	0xb9162a	cmp    rax,rdi
+classic	history-supplier-b91440	0xb9165c	cmp    rbx,0xf
+classic	history-supplier-b91440	0xb9166e	cmp    rdx,0x1000
+classic	history-supplier-b91440	0xb91686	cmp    rax,0x1f
+classic	history-supplier-b91440	0xb916a2	cmp    QWORD PTR [rsp+0x38],0xf
+classic	history-supplier-b91440	0xb916bb	test   r14d,r14d
+classic	history-supplier-b91440	0xb916db	cmp    rdx,0xf
+classic	history-supplier-b91440	0xb916ec	cmp    rdx,0x1000
+classic	history-supplier-b91440	0xb91704	cmp    rax,0x1f
+classic	history-supplier-b91980	0xb919ae	test   rax,rax
+classic	history-supplier-b91980	0xb919f4	cmp    BYTE PTR [rdi+0x7a],0x0
+classic	history-supplier-b91980	0xb919fd	test   ecx,ecx
+classic	history-supplier-b91980	0xb91a06	cmp    ecx,0x1
+classic	history-supplier-b91980	0xb91a3e	test   esi,esi
+classic	history-supplier-b91a80	0xb91ab6	test   rax,rax
+classic	history-supplier-b91a80	0xb91b30	cmp    QWORD PTR [rsp+0x38],0xf
+classic	history-supplier-b91a80	0xb91b49	test   edi,edi
+classic	history-supplier-b91a80	0xb91b68	cmp    rdx,0xf
+classic	history-supplier-b91a80	0xb91b79	cmp    rdx,0x1000
+classic	history-supplier-b91a80	0xb91b91	cmp    rax,0x1f
+classic	history-supplier-b91f10	0xb91f2b	test   r8d,r8d
+classic	history-supplier-b91f10	0xb91f46	cmp    r8d,eax
+classic	history-supplier-b91f10	0xb91f77	test   r9b,r9b
+classic	history-supplier-b91f10	0xb91fa8	cmp    QWORD PTR [rsp+0x38],0xf
+classic	history-supplier-b91f10	0xb91fc7	cmp    rdx,0xf
+classic	history-supplier-b91f10	0xb91fd8	cmp    rdx,0x1000
+classic	history-supplier-b91f10	0xb91ff0	cmp    rax,0x1f
+classic	history-supplier-b91f10	0xb9202a	cmp    BYTE PTR [rsp+0x88],0x0

@@ -265,6 +265,12 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
                 "; id=" + std::to_string(id) + "; subid=" + std::to_string(subid);
             return std::nullopt;
         }
+        if (kind == NativeHistoryObjectKind::Underground &&
+                event.fields.contains("subject.underground." + std::to_string(id) + ".silent")) {
+            // Native b94940 deliberately prints no label for these captured
+            // layer branches. A missing layer still uses its explicit label.
+            return Pieces{};
+        }
         std::optional<std::string> name;
         bool preserved_reference = false;
         const SiteReferenceSource *site_source = nullptr;

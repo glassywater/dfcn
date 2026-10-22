@@ -962,18 +962,23 @@ static bool populate_native_history_subjects(NativeHistoryEventData &event, bool
         subject.kind = kind;
         subject.id = id;
         if (kind == NativeHistoryObjectKind::Underground) {
-            // The native layer formatter only names these unnamed layer
-            // types. Its has_name branch emits no name; do not invent one.
+            // b94940 emits only its link delimiters for a named layer or
+            // an unnamed type outside 0..2. That is a valid empty field,
+            // not a missing snapshot of the surrounding historical event.
             uint8_t has_name = 0;
             int16_t type = -1;
-            if (!native_history_copy(object + 0x7a, has_name) || has_name ||
-                    !native_history_copy(object, type) || type < 0 || type > 2) {
+            if (!native_history_copy(object + 0x7a, has_name) ||
+                    (!has_name && !native_history_copy(object, type))) {
                 complete = false;
                 return;
             }
-            static constexpr const char *labels[] = {
-                "the depths of the world", "the magma sea", "the Underworld"};
-            subject.label_key = labels[type];
+            if (has_name || type < 0 || type > 2) {
+                event.fields["subject.underground." + std::to_string(id) + ".silent"] = {1};
+            } else {
+                static constexpr const char *labels[] = {
+                    "the depths of the world", "the magma sea", "the Underworld"};
+                subject.label_key = labels[type];
+            }
             event.subjects.push_back(std::move(subject));
             return;
         }

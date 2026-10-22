@@ -1,0 +1,133 @@
+World generation: abridged chronicle native source
+
+ORIGINAL IMAGES AND SOURCE OWNERSHIP
+
+The configured Steam and Classic Windows PE files were read in place. Their
+actual PE identities, SHA256 values and source paths are in image-sources.json.
+No game process was opened or executed. This directory contains original source
+extraction, not a game-display result or a test report.
+
+tools/extract_worldgen_chronicle_sources.py reads each actual RTTI vtable's
++0xf0 score and +0xd0 paragraph entries. It discovers all 133 concrete event
+classes in each image. All 133 paragraph entries agree with the already retained
+actual Ghidra C from precisely the same SHA256 image in adventure-story-narrative.
+retained-paragraph-sources.tsv records these source identities and paths. The
+paragraphs are not renamed copies of +0xd8 titles.
+
+This directory's 18 functions per edition were imported from the current PE and
+decompiled by Ghidra 12.1.4 with the existing directory-driven script
+tools/DecompileAdventureStoryNarrative.java. The script accepts this directory
+and the edition, reconstructs original instruction bodies and switch overrides,
+then writes actual C. Its internal narrative_* symbol prefix is just a label;
+the documented native RVAs identify the real functions. Per-function *.c and
+*-ghidra-decompiled.c retain the actual decompiler output. The *.asm and native
+TSV files retain original PCs, literal operands, conditions, calls, aliases and
+default edges alongside it.
+
+ENTRY, ADMISSION AND OUTPUT
+
+Steam world-generation routine: RVA 0xf4f820, chronicle selection 0xf55689.
+Classic counterpart: RVA 0xf4a790, chronicle selection 0xf505f9.
+Steam renderer: RVA 0xdf8a80. Classic renderer: RVA 0xdf39f0.
+
+The generation routine enters the chronicle production arm while the generation
+stage is 9 and the finalizing flag is false. Once over 1000 milliseconds have
+elapsed (or the tick counter wraps), it visits at most the latest 1000 history
+events, newest first. It stops when an event ID at +0x20 is no newer than the
+last selected ID. It selects the first largest strictly positive value returned
+by the event's virtual +0xf0. Equal scores keep the newer event. If no positive
+event is available, it appends nothing.
+
+The selected event is rendered through virtual +0xd0, with a fresh context from
+RVA 0x72080 / 0x72010. The context's focus IDs are -1, flags are ORed with 2,
+the translated argument is true, and glyphs_only is false. The original caller
+appends [R] to this exact paragraph, appends it to richbox 0x24ec848 / 0x24e6738,
+clears its current width and lays it out at width 78. The renderer draws the last
+ten native richbox rows and the actual link colors. There is no event-text or
+English-spelling filter at this stage.
+
+Of 133 event classes, 79 use the actual xor eax,eax; ret score body and cannot
+be selected here. The other 54 have a positive constant or a conditional positive
+score. native-event-selection.tsv records every class, including excluded ones,
+and the exact score/sentence/vtable entry. image-sources.json lists all 54 IDs.
+
+Constant scores, using native history_event_type IDs:
+  50: 101, 102, 104
+  100: 0, 11, 12, 18, 23, 25, 26, 46, 47, 78, 79, 80, 86, 87, 113,
+       122, 123, 127
+  120: 49
+  140: 48, 50, 110
+  150: 1, 2, 24
+
+Conditional scores:
+  3, 52, 55, 56, 63, 64, 65, 66, 67, 73, 124, 125, 130, 131, 132:
+    historical figure at event+0x28; missing figure gives zero, otherwise
+    use its native importance.
+  70: same rule, figure ID at event+0x2c.
+  4, 5: only entity-link types 10/11 with an existing entity and matching
+    position whose precedence is 1 score 200; all other arms give zero.
+  30: site/building must exist and abstract-building type must equal 7;
+    this arm scores 100, all other arms zero.
+  99, 128, 129: both figures at event+0x28 and +0x30 must exist; the score
+    is the minimum of their importance values.
+  57, 59: independently find the maximum importance in each of the two
+    participant vectors; the score is the minimum of those two maxima.
+  85: use the discoverer's importance; event+0x34 bit 0 sets a floor of 50,
+    including the missing-figure arm.
+  121: any nonempty relevant victim/result vector at +0x50, +0x70 or +0x88
+    scores 100; all three empty gives zero.
+
+Historical-figure importance is itself retained in full actual C. It returns
+200 for a precedence-one occupied position or the original caste/figure flag
+conditions; otherwise it returns zero. The exact flag bytes, bounds, absent
+record conditions and virtual-position link operation remain in that C and ASM.
+No subjective importance inference substitutes for those native predicates.
+
+PARAGRAPH GRAMMAR AND ALL TEXT LEAVES
+
+paragraph-source-closure.tsv follows direct native-history calls from all 54
+possible +0xd0 roots. paragraph-literals/conditions/branches/switches/calls and
+paragraph-indirect-calls.tsv extract those functions' source operands/branches
+from their same-image retained catalogue. All context-dependent native arms
+remain in their C, even where this particular caller's default focus IDs select
+only a subset. Native default/no-text branches are meaningful output, not an
+extraction failure. This includes named/unknown-kind underground regions in
+b94940, whose link may legally enclose no visible label.
+
+retained-text-boundaries.tsv identifies the original actual C for external
+semantic providers: generated/personal language names and WORD forms, creature
+and race/caste RAW names, item/material/profession labels, date/age/ordinal,
+historical form/knowledge/battle text and nested identities. Dynamic RAW labels
+and generated or authored names are typed fields; a finite source catalogue
+cannot enumerate every future world's string combinations. The complete
+branch grammar and their field suppliers are the finite extraction target.
+
+The complete dialog renderer C and native-literals.tsv retain all outer page
+states, initialization/progress messages, headings, controls, counters and
+warning titles, not just the five chronicle rows in the supplied image. Warning
+paragraphs have their original complete producer and variants in the existing
+worldgen-warnings source directory. Age labels use the native age-caption
+supplier retained here; its title is a typed age-name field with optional
+ordinal, and an empty title produces Unknown Age. Its era-name productions
+remain in the existing world-ages sources.
+
+THE FIGURE DESCRIPTION VISIBLE IN THE SCREENSHOT
+
+Steam b92f10 / Classic b8ff50 is the full historical-figure text supplier,
+retained in adventure-story-narrative as history-supplier-<RVA>. It handles:
+  missing figure; first/third person context; named/unnamed figure; race/caste
+  descriptor before or after the name; zombie; ghostly; curse display name;
+  possessive suffix; and optional typed HF links.
+
+The curse display name is not a hard-coded vampire sentence. It reads
+figure+0x130 -> info+0x48, requires curse+0x88, and appends the native string
+at curse+0x90. Race/caste NAME and language_name at figure+0x38 supply the
+remaining descriptor and generated name. Thus "the elf vampire Aweme
+Threesaffron" is a composition of a race, a curse display name and typed name
+fields. Its suffix is an English WORD-form combination, not a custom squad
+alias and not a separately enumerable full-name literal.
+
+The identity supplier c3a590 / c375d0 also has a real missing-record production,
+"a secret identity". The relationship/corruption event roots can use that
+production even when no identity record exists. Their paragraph branches must
+not be discarded solely because the lookup returns no identity.

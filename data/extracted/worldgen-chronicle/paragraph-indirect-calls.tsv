@@ -1,0 +1,99 @@
+edition	role	instruction_rva	instruction
+reference	history-supplier-b5a6c0	0xb5a824	call   QWORD PTR [rip+0xa8b2fe]        # 0x1415e5b28
+reference	history-supplier-b5a6c0	0xb5b145	call   QWORD PTR [rip+0xa8a9dd]        # 0x1415e5b28
+reference	history-supplier-b5a6c0	0xb5b576	call   r8
+reference	history_event_war_field_battlest	0xb6539f	call   QWORD PTR [rip+0xa80783]        # 0x1415e5b28
+reference	history_event_war_attacked_sitest	0xb65d4a	call   QWORD PTR [rip+0xa7fdd8]        # 0x1415e5b28
+reference	history_event_created_buildingst	0xb69376	call   QWORD PTR [rax]
+reference	history_event_created_buildingst	0xb693de	call   QWORD PTR [rax]
+reference	history_event_creature_devouredst	0xb6addc	call   QWORD PTR [rip+0xa7ad46]        # 0x1415e5b28
+reference	history_event_hf_gains_secret_goalst	0xb701f1	call   QWORD PTR [rip+0xa75931]        # 0x1415e5b28
+reference	history_event_hist_figure_revivedst	0xb7064b	call   QWORD PTR [rax]
+reference	history_event_hist_figure_revivedst	0xb7067c	call   QWORD PTR [rax]
+reference	history_event_hist_figure_revivedst	0xb706d1	call   QWORD PTR [rax]
+reference	history_event_hist_figure_revivedst	0xb70702	call   QWORD PTR [rax]
+reference	history_event_hist_figure_diedst	0xb7092b	call   QWORD PTR [rax+0x10]
+reference	history_event_hist_figure_diedst	0xb7093f	call   QWORD PTR [rax+0x40]
+reference	history_event_hist_figure_diedst	0xb709cb	call   QWORD PTR [rax+0x10]
+reference	history_event_hist_figure_diedst	0xb709df	call   QWORD PTR [rax+0x40]
+reference	history_event_hist_figure_diedst	0xb70c8b	call   QWORD PTR [rip+0xa74e97]        # 0x1415e5b28
+reference	history_event_hist_figure_diedst	0xb72208	call   QWORD PTR [rip+0xa7391a]        # 0x1415e5b28
+reference	history_event_hist_figure_diedst	0xb722a3	call   QWORD PTR [rip+0xa7387f]        # 0x1415e5b28
+reference	history_event_assume_identityst	0xb79275	call   QWORD PTR [rip+0xa6c8ad]        # 0x1415e5b28
+reference	history_event_entity_alliance_formedst	0xb7c52b	call   QWORD PTR [rip+0xa695f7]        # 0x1415e5b28
+reference	history_event_hf_convictedst	0xb7e363	call   QWORD PTR [rip+0xa677bf]        # 0x1415e5b28
+reference	history_event_war_peace_acceptedst	0xb83805	call   QWORD PTR [rip+0xa6231d]        # 0x1415e5b28
+reference	history_event_war_peace_acceptedst	0xb838c0	call   QWORD PTR [rip+0xa62262]        # 0x1415e5b28
+reference	history_event_war_peace_rejectedst	0xb83b65	call   QWORD PTR [rip+0xa61fbd]        # 0x1415e5b28
+reference	history_event_war_peace_rejectedst	0xb83c20	call   QWORD PTR [rip+0xa61f02]        # 0x1415e5b28
+reference	history_event_artifact_transformedst	0xb8a47f	call   QWORD PTR [rip+0xa5b6a3]        # 0x1415e5b28
+reference	history_event_artifact_transformedst	0xb8a672	call   QWORD PTR [rip+0xa5b4b0]        # 0x1415e5b28
+reference	history-supplier-b92640	0xb9284c	call   QWORD PTR [rip+0xa532d6]        # 0x1415e5b28
+reference	history-supplier-b92640	0xb928a4	call   QWORD PTR [rip+0xa5327e]        # 0x1415e5b28
+reference	history-supplier-b92900	0xb92a38	call   QWORD PTR [rip+0xa530ea]        # 0x1415e5b28
+reference	history-supplier-b92f10	0xb9305c	call   QWORD PTR [rip+0xa52ac6]        # 0x1415e5b28
+reference	history-supplier-b92f10	0xb93730	call   QWORD PTR [rip+0xa523f2]        # 0x1415e5b28
+reference	history-supplier-b92f10	0xb938c8	call   QWORD PTR [rip+0xa5225a]        # 0x1415e5b28
+reference	history-supplier-b93930	0xb93a4a	call   QWORD PTR [rip+0xa520d8]        # 0x1415e5b28
+reference	history-supplier-b94090	0xb9415e	call   QWORD PTR [rax+0x10]
+reference	history-supplier-b94090	0xb94216	call   QWORD PTR [rip+0xa5190c]        # 0x1415e5b28
+reference	history-supplier-b94090	0xb9422d	call   QWORD PTR [rax]
+reference	history-supplier-b94400	0xb94494	call   QWORD PTR [rax]
+reference	history-supplier-b94400	0xb944a7	call   QWORD PTR [rax+0xe0]
+reference	history-supplier-b94400	0xb944b7	call   QWORD PTR [rax]
+reference	history-supplier-b94400	0xb94547	call   QWORD PTR [rax]
+reference	history-supplier-b94400	0xb9455a	call   QWORD PTR [rax+0xe0]
+reference	history-supplier-b94400	0xb9456a	call   QWORD PTR [rax]
+reference	history-supplier-b94400	0xb9464c	call   QWORD PTR [rip+0xa514d6]        # 0x1415e5b28
+reference	history-supplier-b94400	0xb946ca	call   QWORD PTR [rip+0xa51458]        # 0x1415e5b28
+reference	history-supplier-b94a40	0xb94b57	call   QWORD PTR [rip+0xa50fcb]        # 0x1415e5b28
+reference	history-supplier-b94ed0	0xb94fb6	call   QWORD PTR [rip+0xa50b6c]        # 0x1415e5b28
+classic	history-supplier-b57700	0xb57864	call   QWORD PTR [rip+0xa89236]        # 0x1415e0aa0
+classic	history-supplier-b57700	0xb58185	call   QWORD PTR [rip+0xa88915]        # 0x1415e0aa0
+classic	history-supplier-b57700	0xb585b6	call   r8
+classic	history_event_war_field_battlest	0xb623df	call   QWORD PTR [rip+0xa7e6bb]        # 0x1415e0aa0
+classic	history_event_war_attacked_sitest	0xb62d8a	call   QWORD PTR [rip+0xa7dd10]        # 0x1415e0aa0
+classic	history_event_created_buildingst	0xb663b6	call   QWORD PTR [rax]
+classic	history_event_created_buildingst	0xb6641e	call   QWORD PTR [rax]
+classic	history_event_creature_devouredst	0xb67e1c	call   QWORD PTR [rip+0xa78c7e]        # 0x1415e0aa0
+classic	history_event_hf_gains_secret_goalst	0xb6d231	call   QWORD PTR [rip+0xa73869]        # 0x1415e0aa0
+classic	history_event_hist_figure_revivedst	0xb6d68b	call   QWORD PTR [rax]
+classic	history_event_hist_figure_revivedst	0xb6d6bc	call   QWORD PTR [rax]
+classic	history_event_hist_figure_revivedst	0xb6d711	call   QWORD PTR [rax]
+classic	history_event_hist_figure_revivedst	0xb6d742	call   QWORD PTR [rax]
+classic	history_event_hist_figure_diedst	0xb6d96b	call   QWORD PTR [rax+0x10]
+classic	history_event_hist_figure_diedst	0xb6d97f	call   QWORD PTR [rax+0x40]
+classic	history_event_hist_figure_diedst	0xb6da0b	call   QWORD PTR [rax+0x10]
+classic	history_event_hist_figure_diedst	0xb6da1f	call   QWORD PTR [rax+0x40]
+classic	history_event_hist_figure_diedst	0xb6dccb	call   QWORD PTR [rip+0xa72dcf]        # 0x1415e0aa0
+classic	history_event_hist_figure_diedst	0xb6f248	call   QWORD PTR [rip+0xa71852]        # 0x1415e0aa0
+classic	history_event_hist_figure_diedst	0xb6f2e3	call   QWORD PTR [rip+0xa717b7]        # 0x1415e0aa0
+classic	history_event_assume_identityst	0xb762b5	call   QWORD PTR [rip+0xa6a7e5]        # 0x1415e0aa0
+classic	history_event_entity_alliance_formedst	0xb7956b	call   QWORD PTR [rip+0xa6752f]        # 0x1415e0aa0
+classic	history_event_hf_convictedst	0xb7b3a3	call   QWORD PTR [rip+0xa656f7]        # 0x1415e0aa0
+classic	history_event_war_peace_acceptedst	0xb80845	call   QWORD PTR [rip+0xa60255]        # 0x1415e0aa0
+classic	history_event_war_peace_acceptedst	0xb80900	call   QWORD PTR [rip+0xa6019a]        # 0x1415e0aa0
+classic	history_event_war_peace_rejectedst	0xb80ba5	call   QWORD PTR [rip+0xa5fef5]        # 0x1415e0aa0
+classic	history_event_war_peace_rejectedst	0xb80c60	call   QWORD PTR [rip+0xa5fe3a]        # 0x1415e0aa0
+classic	history_event_artifact_transformedst	0xb874bf	call   QWORD PTR [rip+0xa595db]        # 0x1415e0aa0
+classic	history_event_artifact_transformedst	0xb876b2	call   QWORD PTR [rip+0xa593e8]        # 0x1415e0aa0
+classic	history-supplier-b8f680	0xb8f88c	call   QWORD PTR [rip+0xa5120e]        # 0x1415e0aa0
+classic	history-supplier-b8f680	0xb8f8e4	call   QWORD PTR [rip+0xa511b6]        # 0x1415e0aa0
+classic	history-supplier-b8f940	0xb8fa78	call   QWORD PTR [rip+0xa51022]        # 0x1415e0aa0
+classic	history-supplier-b8ff50	0xb9009c	call   QWORD PTR [rip+0xa509fe]        # 0x1415e0aa0
+classic	history-supplier-b8ff50	0xb90770	call   QWORD PTR [rip+0xa5032a]        # 0x1415e0aa0
+classic	history-supplier-b8ff50	0xb90908	call   QWORD PTR [rip+0xa50192]        # 0x1415e0aa0
+classic	history-supplier-b90970	0xb90a8a	call   QWORD PTR [rip+0xa50010]        # 0x1415e0aa0
+classic	history-supplier-b910d0	0xb9119e	call   QWORD PTR [rax+0x10]
+classic	history-supplier-b910d0	0xb91256	call   QWORD PTR [rip+0xa4f844]        # 0x1415e0aa0
+classic	history-supplier-b910d0	0xb9126d	call   QWORD PTR [rax]
+classic	history-supplier-b91440	0xb914d4	call   QWORD PTR [rax]
+classic	history-supplier-b91440	0xb914e7	call   QWORD PTR [rax+0xe0]
+classic	history-supplier-b91440	0xb914f7	call   QWORD PTR [rax]
+classic	history-supplier-b91440	0xb91587	call   QWORD PTR [rax]
+classic	history-supplier-b91440	0xb9159a	call   QWORD PTR [rax+0xe0]
+classic	history-supplier-b91440	0xb915aa	call   QWORD PTR [rax]
+classic	history-supplier-b91440	0xb9168c	call   QWORD PTR [rip+0xa4f40e]        # 0x1415e0aa0
+classic	history-supplier-b91440	0xb9170a	call   QWORD PTR [rip+0xa4f390]        # 0x1415e0aa0
+classic	history-supplier-b91a80	0xb91b97	call   QWORD PTR [rip+0xa4ef03]        # 0x1415e0aa0
+classic	history-supplier-b91f10	0xb91ff6	call   QWORD PTR [rip+0xa4eaa4]        # 0x1415e0aa0

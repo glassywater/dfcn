@@ -305,7 +305,10 @@ case 129: { // failed_intrigue_corruption: RVA 2aa700
         const int32_t id = fields.at(key).front();
         if (id == -1) continue;
         NativeHistoryIdentityInfo info;
-        if (!native_history_identity_reference(result, id, info)) { captured = false; break; }
+        bool present = false;
+        if (!native_history_identity_reference(result, id, info, &present)) { captured = false; break; }
+        fields.emplace(std::string(key) + "_present", std::vector<int32_t>{present});
+        if (!present) continue;
         fields.emplace(std::string(key) + "_real_figure", std::vector<int32_t>{info.real_figure});
         reference('n', info.real_figure);
         if (info.real_figure < 0) {

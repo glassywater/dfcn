@@ -264,11 +264,13 @@ std::optional<std::string> Overlay::translate_history_name(
         for (size_t slot = 0; slot < name.words.size(); ++slot) {
             const auto &word = name.words[slot];
             if (word.id.empty() || !word.has_form) continue;
-            const auto found = history_english_name_forms_.find(word.id);
-            if (found == history_english_name_forms_.end() ||
-                    word.part_of_speech < 0 || word.part_of_speech > 8)
-                return std::nullopt;
-            forms[slot] = found->second[static_cast<size_t>(word.part_of_speech)];
+            if (word.part_of_speech < 0 || word.part_of_speech > 8) return std::nullopt;
+            forms[slot] = word.english_form;
+            if (forms[slot].empty()) {
+                const auto found = history_english_name_forms_.find(word.id);
+                if (found != history_english_name_forms_.end())
+                    forms[slot] = found->second[static_cast<size_t>(word.part_of_speech)];
+            }
         }
         const auto capitalized = [](std::string value) {
             if (!value.empty() && value.front() >= 'a' && value.front() <= 'z')
@@ -277,6 +279,109 @@ std::optional<std::string> Overlay::translate_history_name(
         };
         std::string english;
         const bool nickname = !name.nickname.empty();
+        const bool has_title = !name.words[2].id.empty() ||
+            !name.words[3].id.empty() || !name.words[5].id.empty();
+        const auto typed_name = [&]() -> std::optional<std::string> {
+            // PE a946e0 supplies seven independent WORD/POS slots; b92f10
+            // adds race, ghost/zombie and curse labels outside that name.
+            // A missing literary compound must not reject the complete
+            // identity (and hence all of those independently known labels).
+            std::string result;
+            if ((!nickname || name.nickname_mode == 1) && !name.first_name.empty())
+                result = name.language < 0 ? native_text_to_utf8(name.first_name) :
+                    transliterate_native_language_word(name.first_name);
+            if (nickname) {
+                auto translated = exact_literal_translation("Unit nickname: " + name.nickname);
+                if (!translated) translated = exact_literal_translation(
+                    "Unit nickname: " + native_text_to_utf8(name.nickname));
+                result += "“" + (translated ? *translated : native_text_to_utf8(name.nickname)) + "”";
+            }
+            if (nickname && name.nickname_mode == 2) return result;
+            std::array<std::string, 7> meanings;
+            std::array<EnglishCharacterNames::NativeSenses, 7> senses;
+            for (size_t slot = 0; slot < name.words.size(); ++slot) {
+                const auto &word = name.words[slot];
+                if (word.id.empty() || !word.has_form || (slot == 4 && !has_title)) continue;
+                const auto pos = word.part_of_speech;
+                const char *part = pos < 2 ? "NOUN" : pos == 2 ? "ADJ" :
+                    pos == 3 ? "PREFIX" : "VERB";
+                const auto found = procedural_word_senses_.find(word.id + "\t" + part);
+                if (found != procedural_word_senses_.end()) meanings[slot] = found->second;
+                senses[slot] = english_character_names_.resolve_native_senses(
+                    word.id, pos, forms[slot], meanings[slot]);
+                if (pos == 2) {
+                    const auto adjective = english_character_names_.translate_adjective(
+                        senses[slot], meanings[slot]);
+                    if (!adjective.text.empty()) meanings[slot] = adjective.text;
+                }
+                if (meanings[slot].empty()) {
+                    // Mod-added WORDs keep their own field. Only an unknown
+                    // generated root needs phonetics; known neighbours retain
+                    // their WORD/POS meanings and authored nicknames stay exact.
+                    meanings[slot] = english_name_transliterator_.word(
+                        forms[slot].empty() ? word.id : forms[slot], pos);
+                    if (meanings[slot].empty()) meanings[slot] = transliterate_native_history_name(
+                        forms[slot].empty() ? word.id : forms[slot]);
+                }
+            }
+            const auto compound = [&](size_t first, size_t second) {
+                if (meanings[first].empty()) return meanings[second];
+                if (meanings[second].empty()) return meanings[first];
+                const auto composed = english_character_names_.surname_compose_typed(
+                    senses[first], senses[second]);
+                if (composed.classified()) return composed.text;
+                // This is a typed generated compound, not an inferred prose
+                // phrase. Preserve both complete root meanings when no short
+                // surname construction is licensed, without dropping either.
+                const auto roles = [](int16_t pos) -> uint8_t {
+                    return pos < 2 ? kNameFrontNoun | kNameRearNoun :
+                        pos == 2 ? kNameFrontAdjective | kNameRearAdjective :
+                        pos == 3 ? kNameFrontPrefix : kNameVerb;
+                };
+                return render_procedural_compound(meanings[first], meanings[second],
+                    roles(name.words[first].part_of_speech), roles(name.words[second].part_of_speech));
+            };
+            std::string surname = compound(0, 1);
+            if (name.first_name.empty() && !nickname && !surname.empty() &&
+                    !name.native_name.empty()) {
+                // For a name without literal first_name the first native WORD
+                // group occupies the given-name position, as in the normal
+                // renderer above. Keep that pronunciation through a failure in
+                // a later epithet/OfX group too.
+                const auto first = std::string_view(name.native_name).substr(
+                    0, name.native_name.find(' '));
+                surname = transliterate_native_language_word(first);
+            }
+            std::string title;
+            if (has_title) {
+                std::string source;
+                for (size_t slot = 2; slot <= 5; ++slot) {
+                    if (forms[slot].empty()) continue;
+                    if (!source.empty() && slot != 5) source += ' ';
+                    if (slot == 5 && !source.empty()) source += forms[4].empty() ? " " : "-";
+                    source += forms[slot];
+                }
+                const auto translated = english_character_names_.title(source);
+                title = translated ? *translated : meanings[2] + meanings[3] + compound(4, 5);
+            }
+            if (!meanings[6].empty()) {
+                if (!title.empty()) title = meanings[6] + "之" + title;
+                else if (!surname.empty()) surname = meanings[6] + "之" + surname;
+                else result = meanings[6] + "之" + result;
+            }
+            for (const auto *group : {&surname, &title}) {
+                if (group->empty()) continue;
+                if (!result.empty()) result += "·";
+                result += *group;
+            }
+            // A present language_name with no displayed fields intentionally
+            // contributes an empty name; its separately typed race may remain.
+            return result;
+        };
+        const auto finish = [&](std::optional<std::string> translated) {
+            return translation_complete_with_native_nicknames(translated, english)
+                ? translated : typed_name();
+        };
         if (nickname && (name.nickname_mode == 0 || name.nickname_mode == 2))
             english = "`" + name.nickname + "'";
         else {
@@ -287,7 +392,7 @@ std::optional<std::string> Overlay::translate_history_name(
             }
         }
         if (nickname && name.nickname_mode == 2)
-            return translate_english_character_name(english, name.first_name);
+            return finish(translate_english_character_name(english, name.first_name));
         const auto append = [&](const std::string &group) {
             if (group.empty()) return;
             if (!english.empty()) english += ' ';
@@ -296,8 +401,7 @@ std::optional<std::string> Overlay::translate_history_name(
         append(capitalized(forms[0] + forms[1]));
         // a949d5 starts the title only for slots 2, 3 or 5. A lone slot 4
         // stays invisible, including when a name was edited or inherited.
-        if (!name.words[2].id.empty() || !name.words[3].id.empty() ||
-                !name.words[5].id.empty()) {
+        if (has_title) {
             std::string title;
             const auto append_title = [&](const std::string &form) {
                 if (form.empty()) return;
@@ -316,7 +420,7 @@ std::optional<std::string> Overlay::translate_history_name(
         if (!forms[6].empty())
             append((english.empty() ? "Of " : "of ") + capitalized(forms[6]));
         if (!name.first_name.empty())
-            return translate_english_character_name(english, name.first_name);
+            return finish(translate_english_character_name(english, name.first_name));
         // Some generated actors have no literal first_name. Their first
         // visible name group comes from WORD slots instead. Its English
         // gloss is still a proper name here, not a surname to be recomposed.
@@ -328,9 +432,9 @@ std::optional<std::string> Overlay::translate_history_name(
                 0, name.native_name.find(' '));
             const std::string target = native ? native->substr(
                 0, native->find("·")) : std::string{};
-            return translate_english_character_name(english, given, target);
+            return finish(translate_english_character_name(english, given, target));
         }
-        return translate_english_character_name(english);
+        return finish(translate_english_character_name(english));
     }
     auto given_name = [&](const std::string &value) {
         // First-name/utterance fields keep the established proper-name
