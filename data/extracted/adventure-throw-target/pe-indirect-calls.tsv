@@ -1,0 +1,51 @@
+edition	role	instruction_rva	instruction
+steam	conflict-prefix-renderer	0x7e48d7	jmp    rcx
+steam	conflict-prefix-renderer	0x7e4b6c	call   QWORD PTR [rip+0xe00fb6]        # 0x1415e5b28
+steam	conflict-prefix-renderer	0x7e4c6f	call   QWORD PTR [rax]
+steam	ranged-target-option-population	0x864dff	call   QWORD PTR [rip+0xd80d23]        # 0x1415e5b28
+steam	ranged-target-option-population	0x864e4c	call   QWORD PTR [rax+0x10]
+steam	ranged-target-option-population	0x864e5a	call   QWORD PTR [rax+0x18]
+steam	ranged-target-option-population	0x865258	call   QWORD PTR [rip+0xd808ca]        # 0x1415e5b28
+steam	ranged-target-option-population	0x8659a9	call   QWORD PTR [rip+0xd80179]        # 0x1415e5b28
+steam	ranged-target-option-population	0x865ba2	call   QWORD PTR [rax+0x90]
+steam	ranged-target-option-population	0x865bbb	call   QWORD PTR [rax]
+steam	ranged-target-option-population	0x865bd0	call   QWORD PTR [rax]
+steam	ranged-target-option-population	0x865d3c	call   QWORD PTR [rip+0xd7fde6]        # 0x1415e5b28
+steam	chooser-renderer	0x8846eb	call   QWORD PTR [rax+0x90]
+steam	chooser-renderer	0x884824	call   QWORD PTR [rip+0xd609be]        # 0x1415e51e8
+steam	chooser-renderer	0x884e53	call   QWORD PTR [rip+0xd60ccf]        # 0x1415e5b28
+steam	chooser-renderer	0x88508f	jmp    rcx
+steam	chooser-renderer	0x8851fb	call   QWORD PTR [rax+0xc8]
+steam	chooser-renderer	0x8853d6	call   QWORD PTR [rip+0xd6074c]        # 0x1415e5b28
+steam	chooser-renderer	0x885528	call   QWORD PTR [rax+0x118]
+steam	chooser-renderer	0x885572	call   QWORD PTR [rax+0x8]
+steam	chooser-renderer	0x885586	call   QWORD PTR [rax+0x10]
+steam	chooser-renderer	0x88568e	call   QWORD PTR [rip+0xd60494]        # 0x1415e5b28
+steam	adventure_movement_throw_item_at_creaturest-caption	0x8a5fb3	call   QWORD PTR [rip+0xd3fb6f]        # 0x1415e5b28
+steam	adventure_movement_throw_item_at_tilest-caption	0x8a65a5	call   QWORD PTR [rip+0xd3f57d]        # 0x1415e5b28
+steam	conflict-level-selection	0x14e3105	call   QWORD PTR [rax]
+classic	conflict-prefix-renderer	0x7e2157	jmp    rcx
+classic	conflict-prefix-renderer	0x7e23ec	call   QWORD PTR [rip+0xdfe6ae]        # 0x1415e0aa0
+classic	conflict-prefix-renderer	0x7e24ef	call   QWORD PTR [rax]
+classic	ranged-target-option-population	0x86267f	call   QWORD PTR [rip+0xd7e41b]        # 0x1415e0aa0
+classic	ranged-target-option-population	0x8626cc	call   QWORD PTR [rax+0x10]
+classic	ranged-target-option-population	0x8626da	call   QWORD PTR [rax+0x18]
+classic	ranged-target-option-population	0x862ad8	call   QWORD PTR [rip+0xd7dfc2]        # 0x1415e0aa0
+classic	ranged-target-option-population	0x863229	call   QWORD PTR [rip+0xd7d871]        # 0x1415e0aa0
+classic	ranged-target-option-population	0x863422	call   QWORD PTR [rax+0x90]
+classic	ranged-target-option-population	0x86343b	call   QWORD PTR [rax]
+classic	ranged-target-option-population	0x863450	call   QWORD PTR [rax]
+classic	ranged-target-option-population	0x8635bc	call   QWORD PTR [rip+0xd7d4de]        # 0x1415e0aa0
+classic	chooser-renderer	0x881f6b	call   QWORD PTR [rax+0x90]
+classic	chooser-renderer	0x8820a4	call   QWORD PTR [rip+0xd5e13e]        # 0x1415e01e8
+classic	chooser-renderer	0x8826d3	call   QWORD PTR [rip+0xd5e3c7]        # 0x1415e0aa0
+classic	chooser-renderer	0x88290f	jmp    rcx
+classic	chooser-renderer	0x882a7b	call   QWORD PTR [rax+0xc8]
+classic	chooser-renderer	0x882c56	call   QWORD PTR [rip+0xd5de44]        # 0x1415e0aa0
+classic	chooser-renderer	0x882da8	call   QWORD PTR [rax+0x118]
+classic	chooser-renderer	0x882df2	call   QWORD PTR [rax+0x8]
+classic	chooser-renderer	0x882e06	call   QWORD PTR [rax+0x10]
+classic	chooser-renderer	0x882f0e	call   QWORD PTR [rip+0xd5db8c]        # 0x1415e0aa0
+classic	adventure_movement_throw_item_at_creaturest-caption	0x8a3833	call   QWORD PTR [rip+0xd3d267]        # 0x1415e0aa0
+classic	adventure_movement_throw_item_at_tilest-caption	0x8a3e25	call   QWORD PTR [rip+0xd3cc75]        # 0x1415e0aa0
+classic	conflict-level-selection	0x14de075	call   QWORD PTR [rax]

@@ -6177,15 +6177,19 @@ static std::optional<AdventureConflictPrefix> adventure_conflict_prefix(
     return std::nullopt;
 }
 
+static bool adventure_ranged_action_caption(std::string_view action) {
+    for (const std::string_view verb : {"Quickly shoot", "Aim carefully and shoot",
+            "Quickly throw at", "Aim carefully and throw at"})
+        if (action == verb || (action.starts_with(verb) &&
+                action.size() > verb.size() && action[verb.size()] == ' '))
+            return true;
+    return false;
+}
+
 static size_t adventure_ranged_action_offset(std::string_view source) {
     const auto prefix = adventure_conflict_prefix(source);
-    if (!prefix) return 0;
-    const auto action = source.substr(prefix->identity_offset);
-    if (action.starts_with("Quickly shoot ") ||
-            action.starts_with("Aim carefully and shoot ") ||
-            action.starts_with("Quickly throw at ") ||
-            action.starts_with("Aim carefully and throw at ")) return prefix->identity_offset;
-    return 0;
+    return prefix && adventure_ranged_action_caption(source.substr(prefix->identity_offset))
+        ? prefix->identity_offset : 0;
 }
 
 #include "display_language.inc"
@@ -20271,6 +20275,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 std::vector<int> translation_colors = source_colors;
                 std::vector<Match> choice_rows{choice};
                 std::vector<Match> continuation_companions;
+                std::vector<Match> ranged_overflow;
                 bool complete_caption = true;
                 if (visible_right < choice_right) {
                     // The popup's border/text is not part of this action.
@@ -20304,6 +20309,102 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         translation_colors.resize(translation_source.size(), source_colors.back());
                     }
                 }
+#ifdef _WIN32
+                // The chooser paints option+0x118 before constructing its
+                // caption, but shortens the latter to the original full row
+                // width. A conflict prelude can push even the dots outside
+                // the frame. Bind the original +8 draw before consulting the
+                // panel-local ellipsis; the native resize capture already
+                // retains the complete unit designation for both PE editions.
+                const auto chooser_base = native_history_profile_base();
+                const uintptr_t chooser_writer = chooser_base
+                    ? native_reference_address(chooser_base, 0x88562d) : 0;
+                if (chooser_writer) {
+                    std::vector<size_t> origins;
+                    const std::string joined = normalize_utterance(choice.source, &origins);
+                    const size_t ranged_at = adventure_ranged_action_offset(joined);
+                    const int action_x = ranged_at
+                        ? first + static_cast<int>(origins[ranged_at]) : first;
+                    std::optional<std::string> recovered;
+                    bool ambiguous = false;
+                    for (const auto *draws : {&action_draws, &top_action_draws}) {
+                        for (const auto &draw : *draws) {
+                            if (draw.native_caller != chooser_writer || draw.x != action_x ||
+                                    (draw.y != y && (!companion || draw.y != companion_y)) ||
+                                    draw.source.empty() || draw.x >= end) continue;
+                            const std::string complete = normalize_utterance(
+                                draw.complete_source.empty() ? draw.source : draw.complete_source);
+                            if (!adventure_ranged_action_caption(complete) || complete.ends_with("..."))
+                                continue;
+                            const int exposed_end = std::min(end,
+                                draw.x + static_cast<int>(draw.source.size()));
+                            if (exposed_end < end) continue;
+                            const auto agrees = [&](int column, int row_y) {
+                                if (column < 0 || column >= gps_->dimx ||
+                                        (draw.draw_clip && (column < draw.draw_clip->x ||
+                                            column >= draw.draw_clip->x + draw.draw_clip->w ||
+                                            row_y < draw.draw_clip->y ||
+                                            row_y >= draw.draw_clip->y + draw.draw_clip->h)) ||
+                                        (occluding_frame && column >= occluding_frame->x &&
+                                            column < occluding_frame->x + occluding_frame->w &&
+                                            row_y >= occluding_frame->y &&
+                                            row_y < occluding_frame->y + occluding_frame->h))
+                                    return false;
+                                bool top = false;
+                                const auto *cell = cell_at(column, row_y, &top);
+                                if (cell && cell[0] && cell[0] != ' ' &&
+                                        (half == top_half || half == bottom_half)) {
+                                    const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                                    const uint32_t expected = row_y == y ? half :
+                                        half == top_half ? bottom_half : top_half;
+                                    if (!flags || (flags[static_cast<size_t>(column) * gps_->dimy + row_y] &
+                                            (top_half | bottom_half)) != expected) return false;
+                                }
+                                return cell && top == draw.top_layer &&
+                                    (!screen_override || screen_override ==
+                                        (top ? gps_->screen_top : gps_->screen)) &&
+                                    (cell[0] ? cell[0] : ' ') == static_cast<unsigned char>(
+                                        draw.source[static_cast<size_t>(column - draw.x)]);
+                            };
+                            bool intact = true;
+                            for (int column = draw.x; column < exposed_end; ++column)
+                                if (!agrees(column, draw.y)) { intact = false; break; }
+                            if (!intact) continue;
+                            const std::string candidate = joined.substr(0, ranged_at) + complete;
+                            if (recovered && *recovered != candidate) { ambiguous = true; break; }
+                            recovered = candidate;
+                            // Suppress only the same draw's surviving overflow
+                            // glyphs. The translated caption keeps the original
+                            // panel allocation; no border or other text is erased.
+                            const int overflow_end = std::min(gps_->dimx,
+                                draw.x + static_cast<int>(draw.source.size()));
+                            for (const int row_y : {y, companion ? companion_y : -1}) {
+                                if (row_y < 0) continue;
+                                for (int column = visible_right; column < overflow_end;) {
+                                    if (!agrees(column, row_y)) { ++column; continue; }
+                                    const int begin = column++;
+                                    while (column < overflow_end && agrees(column, row_y)) ++column;
+                                    Match overflow{begin, row_y, column - begin, kUiMessageRule, {},
+                                        draw.source.substr(static_cast<size_t>(begin - draw.x), column - begin)};
+                                    overflow.native_split_duplicate = true;
+                                    ranged_overflow.push_back(std::move(overflow));
+                                }
+                            }
+                        }
+                        if (ambiguous) break;
+                    }
+                    if (recovered && !ambiguous) {
+                        translation_source = *recovered;
+                        complete_caption = true;
+                        const int tail_color = source_colors.back();
+                        translation_colors.assign(translation_source.size(), tail_color);
+                        // Collapse native spacing without shifting the conflict
+                        // colour onto the separately drawn action and identity.
+                        for (size_t at = 0; at < std::min(joined.size(), translation_colors.size()); ++at)
+                            translation_colors[at] = source_colors[origins[at]];
+                    } else ranged_overflow.clear();
+                }
+#endif
                 if (translation_source.ends_with("...")) {
                     std::vector<size_t> origins;
                     const std::string joined = normalize_utterance(choice.source, &origins);
@@ -20477,6 +20578,14 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             std::fill_n(screen_rows[partner.y].begin() + partner.x, partner.length, ' ');
                             if (only_y < 0 || only_y == partner.y) result.push_back(std::move(partner));
                         }
+                    }
+                    for (auto &overflow : ranged_overflow) {
+                        std::erase_if(result, [&](const Match &prior) {
+                            return prior.y == overflow.y && prior.x < overflow.x + overflow.length &&
+                                overflow.x < prior.x + prior.length;
+                        });
+                        std::fill_n(screen_rows[overflow.y].begin() + overflow.x, overflow.length, ' ');
+                        if (only_y < 0 || only_y == overflow.y) result.push_back(std::move(overflow));
                     }
                     continue;
                 }

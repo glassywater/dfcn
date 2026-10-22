@@ -1,0 +1,156 @@
+Throw-target chooser: original PE source grammar
+
+These materials were extracted again from both configured current executables.
+pe-steam-ghidra-decompiled.c and pe-classic-ghidra-decompiled.c are actual
+Ghidra 12.1.4 C output. This prose describes those original sources and is not
+substitute decompiled C. The original instructions, literal operands, direct
+condition edges, comparisons, indirect calls, RTTI slots, vtable references,
+and complete switch aliases are retained alongside it.
+
+Image and complete owners
+Steam PE:6a70a6d9:02711000
+  population 0x864b50..0x865d76
+  chooser renderer 0x884460..0x885748
+  creature caption 0x8a5e70..0x8a5fdf
+  tile caption 0x8a64d0..0x8a65cc
+  creature prefix dispatch 0x8a54d0..0x8a553b
+  conflict prefix renderer 0x7e4860..0x7e4e74
+  conflict level selector 0x14e3010..0x14e334c
+Classic PE:6a70b91c:0270a000
+  population 0x8623d0..0x8635f6
+  chooser renderer 0x881ce0..0x882fc8
+  creature caption 0x8a36f0..0x8a385f
+  tile caption 0x8a3d50..0x8a3e4c
+  creature prefix dispatch 0x8a2d50..0x8a2dbb
+  conflict prefix renderer 0x7e20e0..0x7e26f4
+  conflict level selector 0x14ddf80..0x14de2bc
+The inherited detail forwards to virtual slot +8, and the tile prefix is an
+empty leaf. Their real instruction bodies and both editions' slots are kept.
+
+Option population and scope
+The extractor follows the real MSVC RTTI hierarchy to the throw-creature and
+throw-tile classes. It reads their primary vtables and follows every native
+RIP-relative LEA of those two vtables. All three references in each edition
+belong to the single population owner above. The complete owner is retained;
+its other categories are adjacent code, not extra throw-target sentences.
+
+The shown chooser uses category 4. Steam global byte 0x18a8a58 distinguishes
+shoot (nonzero) from throw (zero); the same condition is used by population
+and the title. In the throw branch, the thrown-item pointer at 0x18a8a70 must
+be nonzero. Candidate target records are in 0x18a8a80..0x18a8a88. For each
+candidate, in original vector order:
+  append throw-creature with obj+0x24 = candidate unit ID and obj+0x30 = 1;
+  append throw-creature with the same unit ID and obj+0x30 = 0.
+Then append one throw-tile, even when no creature candidates exist.
+Each receives the chosen tile xyz and the controlled unit's origin xyz.
+All created entries have obj+0x20 = 0. The state is marked active and category
+4 only when the resulting vector is nonempty; each option receives category4.
+The early missing-player path creates no choices. A zero thrown-item pointer
+creates no throw entries. These paths do not introduce a fallback sentence.
+
+The neighboring shoot branch uses shoot-creature (careful then quick, flag
+obj+0x38) and one shoot-tile. Its existing complete caption sources are
+data/extracted/adventure-action-menu/pe-steam-ghidra-decompiled.c and
+pe-classic-ghidra-decompiled.c, with all owners in pe-slot-owners.tsv.
+The dedicated throw extraction retains the whole population branch so the
+shoot/throw distinction and vector construction are directly recoverable.
+
+Complete displayed throw grammar
+Title: "At whom or what would you like to throw?"
+Button: "Cancel"
+Creature row: HOTKEY + " " + PREFIX + CAPTION
+  CAPTION = "Aim carefully and throw at " + UNIT when obj+0x30 != 0
+          | "Quickly throw at " + UNIT when obj+0x30 == 0
+          | empty when the unit ID is -1, the unit vector is empty, or the
+            binary search cannot resolve that ID.
+  A resolved unit with an empty UNIT still leaves the complete verb phrase.
+Tile row: HOTKEY + " " + TILE
+  The shared tile caption function also supports "Throw at " + TILE when
+  obj+0x20 != 0. The shown chooser always constructs it with that flag zero.
+  TILE has no conflict prefix; its virtual +0x118 is an empty leaf.
+  There is no direction, distance, projectile name or weapon suffix in either
+  throw-creature or throw-tile caption.
+HOTKEY is the native per-row input glyph. It is not part of the sentence.
+The renderer also appends "..." when its caption shortening path is taken.
+
+PREFIX is emitted independently before the complete caption is constructed.
+The creature prefix dispatcher first resolves obj+0x24; an unresolved target
+emits nothing. The shared prefix then selects exactly these paths:
+  target == controlled unit -> empty
+  direct conflict 0 -> "Encounter" then ": "
+                  1 -> "Horseplay" then ": "
+                  2 -> "Training" then ": "
+                  3 -> "Brawl" then ": "
+                  4 -> "Non-lethal" then ": "
+                  5 -> "Lethal" then ": "
+                  6 -> "No Quarter" then ": "
+  direct conflict other than 0..6 and -1 -> ": " only
+  direct conflict -1, eligible shared activity/group found -> "Ally: "
+  direct conflict -1, no eligible shared activity/group -> empty
+The direct conflict label and colon are separate native draw calls; Ally is
+one draw call. The original colors differ by conflict and survive separately
+from the caption color reset. No identity-length condition suppresses PREFIX.
+
+The direct conflict selector visits controlled-unit activities, requires type2
+and active type8 events, identifies distinct participant groups for target and
+controlled unit, and returns the group's relation level. Missing opposing
+relation returns -1. The shared branch requires both units in the same group,
+first trying historical-figure ID, then unit ID for each. It folds relation
+levels from initial -1 using the larger value. Any resulting value other than
+-1 prints Ally; it does not re-enter the seven-way direct-conflict switch.
+All nested activity and relation branches remain in the actual C and ASM.
+
+UNIT and TILE are complete semantic fields, not finite lists of world names.
+native-supplier-sources.tsv links the existing actual full supplier C and its
+matching native owner inventories. The throw call is exactly:
+  Steam 0x132e430(unit, buffer, 0, 1, 1)
+  Classic 0x13293a0(unit, buffer, 0, 1, 1)
+The third parameter is article mode0, fourth capitalizes, fifth allows custom
+profession. Article0 gives "a " in descriptive identities; named identities
+can still choose "The " plus role plus personal name independently. Do not
+copy the attack target list caller's article1 into this throw caller.
+The retained identity source includes You; animated stored names; game-type
+first names; learned or assumed identities; followers' personal names; role
+plus personal name; deity/force; tame stray/fierce; agitated; ghost/ghostly;
+distinguishing appearance; curse name/prefix; corpse; caste/profession; custom
+profession; offices and spouse/sex/territory variants; slave/prisoner roles;
+and all empty-name/empty-role paths. It does not read squad.alias.
+Its RAW vocabulary and generated/user names are dynamic fields; preserving
+their semantic source is required instead of enumerating one screenshot's
+human pump operator and personal name as complete standalone captions.
+
+The tile caller uses Steam 0xe7d330 / Classic 0xe782a0 with chosen xyz and
+last flag zero. Its complete source includes terrain types, materials,
+construction, vegetation/plant parts, grass, deposits and fluid variants;
+native-supplier-sources.tsv points to the full original supplier functions.
+
+Renderer order and truncation
+Steam renderer performs:
+  0x885528 virtual +0x118 -> independent PREFIX draw
+  0x885572 virtual +8 -> full CAPTION (category4)
+  0x885597..0x885615 -> native byte-length shortening and three trailing dots
+  0x885628 -> draw the already-shortened CAPTION
+Classic has the corresponding owner offset and original instructions saved.
+The inherited +0x10 path used by categories3/6/7 forwards to +8, but category4
+directly uses +8. Native shortening loses the tail of UNIT before the final
+draw call. Translating the full caption requires the caption source before
+that shortening; a final-draw-only whole-name matcher receives incomplete
+English and cannot reconstruct the missing identity from the visible prefix.
+
+Extraction method
+tools/extract_adventure_throw_target_pe.py reads the configured executables
+with the fixed Python and toolchain objdump. The Ghidra command uses:
+  C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/
+    ghidra_12.1.4_PUBLIC/support/analyzeHeadless.bat
+  JAVA_HOME = same parent / jdk-25.0.4.1+1
+  -import CURRENT_IMAGE -noanalysis -scriptPath D:/workspace/dfcn/tools
+  -postScript DecompileAdventureActionMenuPE.java
+    D:/workspace/dfcn/data/extracted/adventure-throw-target steam|classic
+  -deleteProject
+Each edition used its own temporary project, settings and cache. Both actual
+headless invocations completed successfully. Ghidra's tail-call notice at the
+inherited detail is the real indirect vtable jump, whose destination mapping
+is retained in pe-slot-owners.tsv. Manual switch override notices refer to
+the complete native jump-table aliases saved in pe-switches.tsv.
+This task did not access a game process, desktop, load state, or game window.
+These are source materials, not runtime display observations or test results.

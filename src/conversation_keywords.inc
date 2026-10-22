@@ -280,8 +280,23 @@ std::optional<std::string> Overlay::translate_adventure_action_choice(
     // Native option captions own typed unit, tile, building, item, material
     // and direction fields. Resolve them before the general UI compositor:
     // its item-name fallback may retain English inside a terrain description.
-    if (const auto target = translate_adventure_item_action(normalized))
-        return uniform_colors(target);
+    if (const auto target = translate_adventure_item_action(normalized)) {
+        const auto result = uniform_colors(target);
+        if (const size_t at = adventure_ranged_action_offset(normalized)) {
+            const auto prefix = adventure_conflict_prefix(normalized);
+            const auto label = prefix->label.empty() ? std::optional<std::string>("") :
+                exact_literal_translation("Adventure ranged prefix: " + std::string(prefix->label));
+            std::vector<uint32_t> prefix_codepoints;
+            std::vector<size_t> origins;
+            normalize_utterance(source, &origins);
+            if (label && decode_utf8(*label + "：", prefix_codepoints) &&
+                    at < origins.size() && origins[at] < source_colors.size() &&
+                    prefix_codepoints.size() <= target_colors.size())
+                std::fill(target_colors.begin() + prefix_codepoints.size(), target_colors.end(),
+                    source_colors[origins[at]]);
+        }
+        return result;
+    }
     if (!native_choice) {
         if (const auto target = translate_adventure_deposit_caption(normalized))
             return uniform_colors(target);

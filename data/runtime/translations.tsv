@@ -38657,6 +38657,7 @@ A tiny predatory mollusk. It is brightly colored.	一种小型肉食软体动物
 A very large mammalian omnivore with a long head.	一种体型很大的哺乳类杂食动物，头部修长。	lP
 A very large woolly mammal person with two tusks.	一种体型很大的长毛哺乳类人形生物，长有两根獠牙。	lP
 Adventure action: Give a sermon promoting a value	发表宣扬某种价值观的布道	l
+Adventure item action: Aim carefully and throw at	仔细瞄准并投掷	h
 Adventure item action: Continue conversation with	继续交谈	h
 Adventure item action: What will you do with {s}?	你想如何处理{s}？	h
 Adventurer log agreement field: Cause trouble for	给以下团体制造麻烦：	h
@@ -43169,6 +43170,7 @@ A small feline predator with a shortened tail.	一种尾巴缩短的小型猫科
 A small whiskered fish found in inland waters.	在内陆水域发现的一种带须的小型鱼类。	lP
 A tiny flying reptile with a small round head.	一种微小的飞行爬行动物，头部小而圆。	lP
 A very large dinosaur person with a long neck.	一种体型很大、颈部修长的恐龙类人形生物。	lP
+Adventure item action: Aim carefully and shoot	仔细瞄准并射击	h
 Adventure item action: Fill {s} from {s} ({p})	用{s2}中的内容物装满{s1}（{p}）	h
 Adventure item action: Fill {s} with {s} ({p})	用{s2}装满{s1}（{p}）	h
 Adventure performance genre: Alternate history	架空历史	l
@@ -55512,6 +55514,7 @@ Adventure item action: Put in {s} ({p})	放入{s}（{p}）	h
 Adventure item action: Put on {n} ({p})	放到{n}上（{p}）	h
 Adventure item action: Put on {s} ({p})	放到{s}上（{p}）	h
 Adventure item action: Put or place {s}	放置或摆放{s}	h
+Adventure item action: Quickly throw at	快速投掷	h
 Adventure item action: Raise {s} bucket	升起{s}的水桶	h
 Adventure item action: Set on {s} ({p})	摆放到{s}上（{p}）	h
 Adventure item action: Stop leading {n}	停止牵领{n}	h
@@ -61869,6 +61872,7 @@ Adventure item action: Hang from {s}	悬挂于{s}	h
 Adventure item action: Load into {s}	装入{s}	h
 Adventure item action: Make Campfire	搭建篝火	h
 Adventure item action: Pick {s} lock	撬开{s}的锁	h
+Adventure item action: Quickly shoot	快速射击	h
 Adventure item action: View yourself	查看自己	h
 Adventure performance value: Artwork	艺术	l
 Adventure performance value: Cunning	谋略	l
@@ -73268,6 +73272,7 @@ Adventure item action: Pull {s}	拉动{s}	h
 Adventure item action: Push {s}	推动{s}	h
 Adventure item action: Ride {s}	乘坐{s}	h
 Adventure item action: Roll all	投掷所有骰子	h
+Adventure item action: Throw at	投掷	h
 Adventure item action: View {n}	查看{n}	h
 Adventure item action: View {s}	查看{s}	h
 Adventure item action: Wear {s}	穿戴{s}	h
@@ -80624,6 +80629,7 @@ Adventure action: Squirt ink	喷墨	l
 Adventure companion: Distant	远处	wl
 Adventure companion: Wrestle	摔跤	wl
 Adventure item action: Climb	攀爬	h
+Adventure item action: Shoot	射击	h
 Adventure movement: Darkness	黑暗	l
 Adventure movement: Scramble	快速挪动	l
 Adventure movement: Terrible	极差	l

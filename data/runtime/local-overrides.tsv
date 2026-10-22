@@ -11684,6 +11684,13 @@ Adventure item action: Shoot {s}	射击{s}	h
 Adventure item action: Quickly throw at {n}	快速投向{n}	h
 Adventure item action: Aim carefully and throw at {n}	仔细瞄准并投向{n}	h
 Adventure item action: Throw at {s}	投向{s}	h
+# Native ranged constructors retain their verb when the resolved supplier is empty.
+Adventure item action: Quickly shoot	快速射击	h
+Adventure item action: Aim carefully and shoot	仔细瞄准并射击	h
+Adventure item action: Shoot	射击	h
+Adventure item action: Quickly throw at	快速投掷	h
+Adventure item action: Aim carefully and throw at	仔细瞄准并投掷	h
+Adventure item action: Throw at	投掷	h
 Adventure item action: Jump to the {p}	跳向{p}	h
 Adventure item action: {p}	{p}	h
 Adventure item action: Move to {n}	移动到{n}	h
