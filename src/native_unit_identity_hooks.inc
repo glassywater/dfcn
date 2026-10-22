@@ -928,6 +928,55 @@ static std::optional<std::string> finish_native_unit_identity_call(NativeUnitIde
     return std::nullopt;
 }
 
+// A retained look record owns a unit ID even after transient formatter
+// bindings expire. Recover only that record's exact fortress caption; the
+// disposable formatter and its nested calls publish no aliases or owners.
+static std::optional<NativeUnitIdentitySource> recover_native_map_hover_unit_identity(
+        int32_t unit_id, std::string_view expected) {
+    const auto &hooks = g_native_unit_identity_hooks;
+    if (unit_id < 0 || expected.empty() || expected.size() > 65536 ||
+            !hooks.entries[4].installed || !hooks.entries[4].original ||
+            !hooks.destroy) return std::nullopt;
+    try {
+        uintptr_t unit = 0;
+        if (!native_history_material_find_id(native_history_global(0x23e50b0),
+                0x130, unit_id, unit) || !unit) return std::nullopt;
+        const auto catalog = current_native_identity_translation_catalog();
+        NativeUnitIdentityRenderScope identity_scope;
+        NativeInputCallbackScope callback;
+        NativeSearchString output(hooks.destroy);
+        NativeUnitIdentityCall call;
+        call.unit = unit;
+        call.publish = false;
+        {
+            NativeUnitIdentityActiveScope scope(call);
+            const auto original = reinterpret_cast<NativeUnitIdentityFormatFn>(
+                hooks.entries[4].original);
+            callback.call_native([&] {
+                original(reinterpret_cast<void *>(unit), &output.value, false);
+            });
+        }
+        std::string_view source;
+        if (!native_string_view(&output.value, &source, 65536) || source != expected)
+            return std::nullopt;
+        auto target = finish_native_unit_identity_call<4>(call, &output.value, false);
+        if (!target || target->empty() ||
+                catalog != current_native_identity_translation_catalog()) return std::nullopt;
+        NativeUnitIdentitySource binding;
+        binding.source.assign(expected);
+        binding.semantic_source = binding.source;
+        binding.target = std::move(*target);
+        binding.unit_owner = unit;
+        binding.ready = true;
+        binding.catalog = catalog;
+        return binding;
+    } catch (...) {
+        // Unsupported or changed records remain unbound rather than borrowing
+        // a same-spelling identity from another panel.
+    }
+    return std::nullopt;
+}
+
 // Cached UI strings can outlive the frame and NativeString that first
 // formatted them. Resolve their explicit unit/name reference through the same
 // native selection and field renderer, without guessing from the cached text.

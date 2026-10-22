@@ -88,6 +88,7 @@ static void native_help_draw(void *help) {
 static void native_help_reset_frame(void *renderer) {
     native_petition_begin_frame();
     native_designation_begin_frame();
+    native_map_hover_begin_frame();
     native_embark_civilization_begin_frame();
     native_topbar_begin_frame();
     native_petitions_begin_frame();
@@ -135,6 +136,7 @@ static void native_help_begin_frame(void *renderer) {
     native_tooltip_restore_output();
     native_petition_restore_output();
     native_designation_restore_output();
+    native_map_hover_restore_output();
     native_embark_civilization_restore_output();
     native_topbar_restore_output();
     native_petitions_restore_output();
@@ -175,6 +177,7 @@ static void native_help_produce_frame() {
             ~FinishNotifications() {
                 native_petition_end_draw();
                 native_designation_end_draw();
+                native_map_hover_end_draw();
                 native_topbar_end_draw();
                 native_petitions_end_draw();
                 native_notification_end_draw();
@@ -619,6 +622,7 @@ static void native_ui_present_layer(NativeUiLayerStorage &layer, NativeUiLayerTa
         &layer == &g_native_petition_layer ||
         &layer == &g_native_petitions_layer ||
         &layer == &g_native_designation_layer ||
+        &layer == &g_native_map_hover_layer ||
         &layer == &g_native_topbar_layer;
     if (context && target.frame_cache.matches(layer, renderer, width, height,
             draw_layer, *context, owned_frames)) {

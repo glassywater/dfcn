@@ -899,6 +899,10 @@ std::optional<std::string> Overlay::native_embark_civilization_cache_context() c
 
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    // This list resolves its own typed unit captions, including pending
+    // identity results, at presentation. Never borrow the whole page's
+    // semantic key or freeze those results in another component's cache.
+    if (&layer == &g_native_map_hover_layer) return std::nullopt;
     if (&layer == &g_native_petition_layer) {
         NativeUiCacheContextWriter key;
         key.tooltip();

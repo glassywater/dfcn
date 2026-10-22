@@ -94,6 +94,7 @@ static std::optional<std::string> native_main_ui_cache_context();
 static void request_native_process_exit() noexcept;
 static void release_native_squads_language_resources();
 static void release_native_designation_language_resources();
+static void release_native_map_hover_language_resources();
 static void release_native_character_language_resources();
 static void release_native_dfhack_layer_target() noexcept;
 
@@ -2509,6 +2510,8 @@ static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Re
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
 static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
 static thread_local const graphicst *g_native_designation_write_graphics = nullptr;
+static thread_local const graphicst *g_native_map_hover_write_graphics = nullptr;
+static bool native_map_hover_cell_outside(const graphicst *, int, int) noexcept;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_announcement_log_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
@@ -2552,6 +2555,7 @@ static bool native_private_ui_write_active(const graphicst *gps) noexcept {
         gps == g_native_petition_write_graphics ||
         gps == g_native_petitions_write_graphics ||
         gps == g_native_designation_write_graphics ||
+        gps == g_native_map_hover_write_graphics ||
         gps == g_native_embark_civilization_write_graphics ||
         gps == g_native_worldgen_write_graphics || native_dfhack_layer_write_active(gps));
 }
@@ -3030,6 +3034,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
 static std::optional<std::string> native_justice_actor_source(
     uintptr_t string_address, std::string_view native_displayed, uintptr_t native_caller,
     std::optional<bool> *sabotage_person = nullptr);
+
+static void prepare_native_map_hover_unit_identity(NativeDrawnTextRow &row);
 
 static void refresh_native_unit_identity_draw(NativeDrawnTextRow &row) {
     if (!row.unit_identity_target || row.unit_identity_semantic_key.empty()) return;
@@ -3716,6 +3722,8 @@ public:
     void release_native_squads_resources();
     void render_native_designation_layer(SDL_Renderer *renderer, const Overlay &source);
     void release_native_designation_resources();
+    void render_native_map_hover_layer(SDL_Renderer *renderer, const Overlay &source);
+    void release_native_map_hover_resources();
     void render_native_fortress_layer(SDL_Renderer *renderer, NativeFortressLayerKind kind);
     void queue_dfhack_layer_translation();
     bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
@@ -7934,6 +7942,7 @@ void Overlay::toggle_display_language() {
     invalidate_render_resources();
     release_native_squads_language_resources();
     release_native_designation_language_resources();
+    release_native_map_hover_language_resources();
     release_native_dfhack_layer_target();
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
@@ -8137,6 +8146,7 @@ const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     *top = false;
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return nullptr;
     if (native_topbar_cell_outside(gps_, x, y) ||
+            native_map_hover_cell_outside(gps_, x, y) ||
             native_petition_cell_outside(gps_, x, y) ||
             native_petitions_cell_outside(gps_, x, y) ||
             native_embark_civilization_cell_outside(gps_, x, y)) return nullptr;
@@ -8165,6 +8175,7 @@ static bool graphically_occluded(uint8_t state, uint64_t cell_epoch,
 unsigned char Overlay::visible_char_at(int x, int y) const {
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return 0;
     if (native_topbar_cell_outside(gps_, x, y) ||
+            native_map_hover_cell_outside(gps_, x, y) ||
             native_petition_cell_outside(gps_, x, y) ||
             native_petitions_cell_outside(gps_, x, y) ||
             native_embark_civilization_cell_outside(gps_, x, y)) return 0;
@@ -17508,6 +17519,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_topbar_layers.inc"
 #include "native_petitions_layers.inc"
 #include "native_designation_layers.inc"
+#include "native_map_hover_layers.inc"
 #include "native_embark_civilization_layers.inc"
 
 #include "native_prepared_ui_frame.inc"
@@ -18061,6 +18073,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_squads_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"
 #include "native_designation_layer_translation.inc"
+#include "native_map_hover_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
 #include "native_topbar_layer_translation.inc"
@@ -44066,6 +44079,10 @@ static Overlay g_native_designation_overlay;
 static void release_native_designation_language_resources() {
     g_native_designation_overlay.release_native_designation_resources();
 }
+static Overlay g_native_map_hover_overlay;
+static void release_native_map_hover_language_resources() {
+    g_native_map_hover_overlay.release_native_map_hover_resources();
+}
 static void release_native_squads_language_resources() {
     g_native_squads_overlay.release_native_squads_resources();
 }
@@ -44265,6 +44282,8 @@ static void native_petitions_present_layer(SDL_Renderer *renderer,
     void (*draw_petitions)(SDL_Renderer *));
 static void native_designation_present_layer(SDL_Renderer *renderer,
     void (*draw_designations)(SDL_Renderer *));
+static void native_map_hover_present_layer(SDL_Renderer *renderer,
+    void (*draw_hover)(SDL_Renderer *));
 static void native_resolution_present_layer(SDL_Renderer *renderer,
     void (*draw_resolution)(SDL_Renderer *));
 static void native_worldgen_present_layer(SDL_Renderer *renderer,
@@ -44332,6 +44351,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             });
             native_topbar_present_layer(renderer, [](SDL_Renderer *topbar_renderer) {
                 g_overlay.render_native_topbar_layer(topbar_renderer);
+            });
+            native_map_hover_present_layer(renderer, [](SDL_Renderer *hover_renderer) {
+                g_native_map_hover_overlay.render_native_map_hover_layer(hover_renderer, g_overlay);
             });
             native_designation_present_layer(renderer, [](SDL_Renderer *designation_renderer) {
                 g_native_designation_overlay.render_native_designation_layer(designation_renderer, g_overlay);

@@ -16,7 +16,9 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
         const bool civilization = graphics && graphics == g_native_embark_civilization_write_graphics;
         const bool petitions = graphics && graphics == g_native_petitions_write_graphics;
         const bool petition = graphics && graphics == g_native_petition_write_graphics;
-        auto &pending = designation ? native_designation_clipped_pending()
+        const bool map_hover = graphics && graphics == g_native_map_hover_write_graphics;
+        auto &pending = map_hover ? native_map_hover_clipped_pending()
+            : designation ? native_designation_clipped_pending()
             : civilization ? native_embark_civilization_clipped_pending()
             : petitions ? native_petitions_clipped_pending()
             : petition ? native_petition_clipped_pending()
@@ -36,10 +38,11 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
         }
         std::string_view submitted;
         panel = designation ? SDL_Rect{0, 0, graphics->dimx, graphics->dimy}
+            : map_hover ? g_native_map_hover_panel
             : petitions ? g_native_petitions_panel
             : petition ? g_native_petition_panel
             : civilization ? g_native_embark_civilization_panel : g_native_topbar_panel;
-        if (!pending.busy && graphics && (designation || civilization || petitions || petition ||
+        if (!pending.busy && graphics && (map_hover || designation || civilization || petitions || petition ||
                 graphics == g_native_topbar_write_graphics) &&
                 width >= 0 && graphics->dimx > 0 && graphics->dimx <= 1000 &&
                 graphics->dimy > 0 && graphics->dimy <= 1000 &&
@@ -64,6 +67,15 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
             row.caption_source = true;
             row.top_layer = top_layer;
             row.native_caller = native_caller;
+            if (map_hover) {
+                row.map_hover = native_map_hover_context_for_draw(graphics, source, native_caller);
+                if (row.map_hover.kind == NativeMapHoverKind::Spoor)
+                    if (auto complete = native_complete_map_track_caption(source, submitted))
+                        row.complete_source = std::move(*complete);
+                // Unit identity belongs to the persistent look record. Its
+                // private renderer resolves that snapshot, including records
+                // whose formatter ran before the current capture epoch.
+            }
             if (petition) {
                 row.location_picker_field = native_location_picker_field(native_caller);
                 // The producer reserves 55 columns per field; its own panel

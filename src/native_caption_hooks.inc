@@ -1321,6 +1321,95 @@ struct NativeMapTrackCaption {
 static std::mutex g_native_map_track_caption_mutex;
 static std::vector<NativeMapTrackCaption> g_native_map_track_captions;
 
+struct NativeMapHoverUnitIdentity {
+    NativeMapHoverContext context;
+    NativeUnitIdentitySource identity;
+};
+static std::mutex g_native_map_hover_unit_identity_mutex;
+static std::unordered_map<uintptr_t, NativeMapHoverUnitIdentity>
+    g_native_map_hover_unit_identities;
+
+static bool native_map_hover_unit_identity_matches(
+        const NativeUnitIdentitySource &identity, std::string_view source,
+        uint64_t catalog) {
+    // Untyped formatter fallbacks have no catalog. Keeping
+    // their native spelling here would turn a missed capture into a permanent
+    // untranslated result for an otherwise recoverable look record.
+    return identity.source == source && identity.catalog == catalog &&
+        (identity.ready || !identity.semantic_key.empty());
+}
+
+static void remember_native_map_hover_unit_identity(uintptr_t owner,
+        const NativeMapHoverContext &context, const NativeUnitIdentitySource &identity) {
+    if (!owner || context.kind != NativeMapHoverKind::Unit ||
+            identity.catalog != current_native_identity_translation_catalog() ||
+            (!identity.ready && identity.semantic_key.empty())) return;
+    std::lock_guard<std::mutex> lock(g_native_map_hover_unit_identity_mutex);
+    if (g_native_map_hover_unit_identities.size() >= 4096 &&
+            !g_native_map_hover_unit_identities.contains(owner))
+        g_native_map_hover_unit_identities.erase(g_native_map_hover_unit_identities.begin());
+    g_native_map_hover_unit_identities.insert_or_assign(owner,
+        NativeMapHoverUnitIdentity{context, identity});
+}
+
+static void prepare_native_map_hover_unit_identity(NativeDrawnTextRow &row) {
+    if (row.map_hover.kind != NativeMapHoverKind::Unit || !row.address) return;
+    row.unit_identity_target.reset();
+    row.unit_identity_owner = 0;
+    row.unit_identity_english = false;
+    row.unit_identity_header = false;
+    row.unit_identity_ready = true;
+    row.unit_identity_semantic_key.clear();
+    row.unit_identity_pending.reset();
+    try {
+        const auto source = row.complete_source.empty() ? std::string_view(row.source)
+            : std::string_view(row.complete_source);
+        if (source.empty()) return;
+        const uint64_t catalog = current_native_identity_translation_catalog();
+        std::optional<NativeUnitIdentitySource> identity;
+        {
+            std::lock_guard<std::mutex> lock(g_native_map_hover_unit_identity_mutex);
+            const auto found = g_native_map_hover_unit_identities.find(row.address);
+            if (found != g_native_map_hover_unit_identities.end()) {
+                const auto &entry = found->second;
+                if (entry.context.kind == row.map_hover.kind &&
+                        entry.context.data == row.map_hover.data &&
+                        entry.context.fragment == row.map_hover.fragment &&
+                        native_map_hover_unit_identity_matches(entry.identity, source, catalog))
+                    identity = entry.identity;
+                else g_native_map_hover_unit_identities.erase(found);
+            }
+        }
+        if (!identity) {
+            auto current = native_unit_identity_source_binding(source, row.address);
+            if (current && native_map_hover_unit_identity_matches(*current, source, catalog))
+                identity = std::move(current);
+        }
+        if (!identity)
+            identity = recover_native_map_hover_unit_identity(row.map_hover.data[0], source);
+        if (!identity || !native_map_hover_unit_identity_matches(*identity, source, catalog)) return;
+        if (!identity->ready) {
+            // A look record survives ordinary draw epochs. Its copied typed
+            // binding can retrieve the completed worker result even after
+            // another panel has cleared the transient formatter registry.
+            auto prepared = prepare_native_unit_identity_source_binding(source, row.address,
+                identity->semantic_key, &*identity);
+            if (prepared && native_map_hover_unit_identity_matches(*prepared, source, catalog))
+                identity = std::move(prepared);
+        }
+        if (catalog != current_native_identity_translation_catalog()) return;
+        remember_native_map_hover_unit_identity(row.address, row.map_hover, *identity);
+        row.unit_identity_target = identity->ready ? identity->target : std::string{};
+        row.unit_identity_owner = identity->unit_owner;
+        row.unit_identity_english = identity->english_name;
+        row.unit_identity_header = identity->character_header;
+        row.unit_identity_ready = identity->ready;
+        row.unit_identity_semantic_key = identity->semantic_key;
+        if (!identity->ready)
+            row.unit_identity_pending = std::make_shared<const NativeUnitIdentitySource>(*identity);
+    } catch (...) {}
+}
+
 static void capture_native_map_caption_build(void *record) {
     // The creator and both native draw loops retain this same record+offset
     // string. Invalidate at EVERY rebuild, including short/non-track records,
@@ -1329,12 +1418,36 @@ static void capture_native_map_caption_build(void *record) {
         const auto *source = reinterpret_cast<const NativeString *>(
             static_cast<const unsigned char *>(record) +
             g_native_map_track_caption_hooks.text_offset);
-        std::lock_guard<std::mutex> lock(g_native_map_track_caption_mutex);
-        std::erase_if(g_native_map_track_captions,
-            [&](const NativeMapTrackCaption &caption) { return caption.owner == source; });
+        {
+            std::lock_guard<std::mutex> lock(g_native_map_track_caption_mutex);
+            std::erase_if(g_native_map_track_captions,
+                [&](const NativeMapTrackCaption &caption) { return caption.owner == source; });
+        }
+        {
+            std::lock_guard<std::mutex> lock(g_native_map_hover_unit_identity_mutex);
+            g_native_map_hover_unit_identities.erase(reinterpret_cast<uintptr_t>(source));
+        }
     } catch (...) {}
     if (g_native_map_track_caption_hooks.build)
         g_native_map_track_caption_hooks.build(record);
+    try {
+        const uintptr_t owner = reinterpret_cast<uintptr_t>(record);
+        const size_t offset = g_native_map_track_caption_hooks.text_offset;
+        std::array<int32_t, 7> fields{};
+        if (!owner || !offset || offset > UINTPTR_MAX - owner ||
+                !native_history_copy(owner, fields) ||
+                fields.front() != static_cast<int32_t>(NativeMapHoverKind::Unit)) return;
+        const auto *source = reinterpret_cast<const NativeString *>(owner + offset);
+        std::string_view text;
+        if (!native_string_view(source, &text, 65536) || text.empty()) return;
+        const auto identity = native_unit_identity_source_binding(text, owner + offset);
+        if (!identity || !native_map_hover_unit_identity_matches(*identity, text,
+                current_native_identity_translation_catalog())) return;
+        NativeMapHoverContext context;
+        context.kind = NativeMapHoverKind::Unit;
+        std::copy_n(fields.begin() + 1, context.data.size(), context.data.begin());
+        remember_native_map_hover_unit_identity(owner + offset, context, *identity);
+    } catch (...) {}
 }
 
 static void capture_native_map_track_shorten_with(NativeString *source, int width,
@@ -1835,6 +1948,9 @@ static NativeClippedPending &native_designation_clipped_pending() {
 static NativeClippedPending &native_topbar_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct TopbarClippedCaptionTag>();
 }
+static NativeClippedPending &native_map_hover_clipped_pending() {
+    return reloadable_thread_state<NativeClippedPending, struct MapHoverClippedCaptionTag>();
+}
 static NativeClippedPending &native_petition_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct PetitionDetailClippedCaptionTag>();
 }
@@ -1851,6 +1967,9 @@ static NativeClippedPending &native_character_clipped_pending() {
     return reloadable_thread_state<NativeClippedPending, struct CharacterClippedCaptionTag>();
 }
 static NativeClippedPending &native_clipped_pending() {
+    if (g_native_map_hover_write_graphics &&
+            native_graphics() == g_native_map_hover_write_graphics)
+        return native_map_hover_clipped_pending();
     if (g_native_petition_write_graphics &&
             native_graphics() == g_native_petition_write_graphics)
         return native_petition_clipped_pending();
@@ -1950,6 +2069,7 @@ static void remember_native_clipped_resize(NativeString *source, size_t width, c
     if (g_native_tooltip_write || (native_private_ui_write_active(native_graphics()) &&
             native_graphics() != g_native_worldgen_write_graphics &&
             native_graphics() != g_native_topbar_write_graphics &&
+            native_graphics() != g_native_map_hover_write_graphics &&
             native_graphics() != g_native_petition_write_graphics &&
             native_graphics() != g_native_petitions_write_graphics &&
             native_graphics() != g_native_designation_write_graphics &&
@@ -2163,7 +2283,8 @@ static bool native_caption_draw_outside_clip_y(const graphicst *graphics,
 static NativeMapHoverContext native_map_hover_context_for_draw(
         const graphicst *graphics, const NativeString *source, uintptr_t caller) {
     if ((graphics && graphics == g_native_squads_write_graphics) ||
-            native_private_ui_write_active(graphics) ||
+            (native_private_ui_write_active(graphics) &&
+                graphics != g_native_map_hover_write_graphics) ||
             native_caption_draw_outside_clip_y(graphics, source)) return {};
     // A known caller or exact current ui_look_list owner proves the source,
     // independently of which native addst variant draws its actual glyphs.
@@ -2778,6 +2899,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     }
     if (graphics && (graphics == g_native_petition_write_graphics ||
             graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_map_hover_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3534,6 +3656,7 @@ static void capture_native_clipped_draw(graphicst *graphics, const NativeString 
     }
     if (graphics && (graphics == g_native_petition_write_graphics ||
             graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_map_hover_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3651,6 +3774,7 @@ static void capture_native_clipped_flag_draw(graphicst *graphics, const NativeSt
     }
     if (graphics && (graphics == g_native_petition_write_graphics ||
             graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_map_hover_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3732,6 +3856,7 @@ static void capture_native_top_caption_draw(graphicst *graphics, const NativeStr
     }
     if (graphics && (graphics == g_native_petition_write_graphics ||
             graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_map_hover_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3797,6 +3922,7 @@ static void capture_native_top_simple_caption_draw(graphicst *graphics, const Na
     }
     if (graphics && (graphics == g_native_petition_write_graphics ||
             graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_map_hover_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3861,6 +3987,7 @@ static void capture_native_top_flag_caption_draw(graphicst *graphics, const Nati
     }
     if (graphics && (graphics == g_native_petition_write_graphics ||
             graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_map_hover_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
@@ -3942,6 +4069,8 @@ static void capture_native_caption_resize(NativeString *text, size_t width, char
             native_graphics() == g_native_embark_civilization_write_graphics) ||
             (g_native_topbar_write_graphics &&
             native_graphics() == g_native_topbar_write_graphics) ||
+            (g_native_map_hover_write_graphics &&
+             native_graphics() == g_native_map_hover_write_graphics) ||
             (g_native_designation_write_graphics &&
              native_graphics() == g_native_designation_write_graphics) ||
             (g_native_squads_write_graphics &&
@@ -3975,12 +4104,18 @@ static void capture_native_caption_draw(graphicst *graphics, const NativeString 
     }
     if (graphics && (graphics == g_native_petition_write_graphics ||
             graphics == g_native_petitions_write_graphics ||
+            graphics == g_native_map_hover_write_graphics ||
             graphics == g_native_topbar_write_graphics ||
             graphics == g_native_designation_write_graphics ||
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_bounded_panel_caption(graphics, text, width, false, caller, [&] {
-            if (const auto original = g_native_caption_hooks.draw)
+            // The private look-list capture already owns this call. Avoid
+            // reentering the shared addst entry with our helper as its caller.
+            const auto original = graphics == g_native_map_hover_write_graphics &&
+                g_native_clipped_caption_hooks.draw
+                ? g_native_clipped_caption_hooks.draw : g_native_caption_hooks.draw;
+            if (original)
                 original(graphics, text, just, width);
         });
         return;
@@ -4027,9 +4162,14 @@ static void reset_native_caption_capture() {
         std::lock_guard<std::mutex> lock(g_native_map_track_caption_mutex);
         g_native_map_track_captions.clear();
     }
+    {
+        std::lock_guard<std::mutex> lock(g_native_map_hover_unit_identity_mutex);
+        g_native_map_hover_unit_identities.clear();
+    }
     native_clipped_pending() = {};
     native_designation_clipped_pending() = {};
     native_topbar_clipped_pending() = {};
+    native_map_hover_clipped_pending() = {};
     native_petition_clipped_pending() = {};
     native_petitions_clipped_pending() = {};
     native_embark_civilization_clipped_pending() = {};
