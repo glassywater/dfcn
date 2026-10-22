@@ -1,0 +1,11 @@
+edition	image	class	vtable_rva	instruction_rva	owner_rva
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest	0x16bb068	0x86395c	0x863300
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest	0x16bb068	0x863a2a	0x863300
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest	0x16bb068	0x8652c0	0x864b50
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest	0x16bb068	0x8653a3	0x864b50
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_tilest	0x16bb2b8	0x865496	0x864b50
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest	0x16b5f58	0x8611dc	0x860b80
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest	0x16b5f58	0x8612aa	0x860b80
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest	0x16b5f58	0x862b40	0x8623d0
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest	0x16b5f58	0x862c23	0x8623d0
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_tilest	0x16b61a8	0x862d16	0x8623d0

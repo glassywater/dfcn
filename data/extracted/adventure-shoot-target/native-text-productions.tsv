@@ -1,0 +1,43 @@
+edition	decompiled_source	provider_rva	role	native_branch	production	dynamic_fields	scope
+steam	pe-steam-ghidra-decompiled.c	0x884460	title	state+4=4; ranged mode=shoot	Who or what would you like to shoot?		ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x884460	button	ordinary chooser frame	Cancel		ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x8a4890	body	target unit resolves; option+0x38!=0	Aim carefully and shoot {UNIT}	UNIT: native-supplier-sources.tsv complete-unit-identity	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x8a4890	body	target unit resolves; option+0x38=0	Quickly shoot {UNIT}	UNIT: native-supplier-sources.tsv complete-unit-identity	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x8a4890	body	target ID=-1, empty unit vector, or target ID not found			ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x8a5540	body	option+0x20=0; category4 constructor always sets this zero	{TILE}	TILE: native-supplier-sources.tsv complete-terrain-caption	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x8a5540	body	option+0x20!=0	Shoot {TILE}	TILE: native-supplier-sources.tsv complete-terrain-caption	shared-option-caption
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	target is not player; direct conflict level=0	Encounter: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	target is not player; direct conflict level=1	Horseplay: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	target is not player; direct conflict level=2	Training: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	target is not player; direct conflict level=3	Brawl: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	target is not player; direct conflict level=4	Non-lethal: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	target is not player; direct conflict level=5	Lethal: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	target is not player; direct conflict level=6	No Quarter: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	direct conflict=-1; shared eligible activity contains both participants and a level	Ally: 	activity type=2; event virtual type=8; event flag bit0 clear; figure/unit membership	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	direct conflict outside0..6 and !=-1	: 		ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	prefix	target is player; or direct conflict=-1 and no eligible shared activity			ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x8a54d0	prefix	target ID=-1, empty unit vector, or target not found			ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x72250	prefix	tile option virtual+0x118			ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x884460	key	each visible row; binding ID=0x52+visible row ordinal	{KEY}	current-key-caption: complete configured native key label; missing binding='?'	ranged-target-chooser
+steam	pe-steam-ghidra-decompiled.c	0x884460	body-display	caption length reaches native available-width cutoff	{BODY_PREFIX}...	body is resized before drawing; trailing three bytes replaced when retained length>3	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x881ce0	title	state+4=4; ranged mode=shoot	Who or what would you like to shoot?		ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x881ce0	button	ordinary chooser frame	Cancel		ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x8a2110	body	target unit resolves; option+0x38!=0	Aim carefully and shoot {UNIT}	UNIT: native-supplier-sources.tsv complete-unit-identity	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x8a2110	body	target unit resolves; option+0x38=0	Quickly shoot {UNIT}	UNIT: native-supplier-sources.tsv complete-unit-identity	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x8a2110	body	target ID=-1, empty unit vector, or target ID not found			ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x8a2dc0	body	option+0x20=0; category4 constructor always sets this zero	{TILE}	TILE: native-supplier-sources.tsv complete-terrain-caption	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x8a2dc0	body	option+0x20!=0	Shoot {TILE}	TILE: native-supplier-sources.tsv complete-terrain-caption	shared-option-caption
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	target is not player; direct conflict level=0	Encounter: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	target is not player; direct conflict level=1	Horseplay: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	target is not player; direct conflict level=2	Training: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	target is not player; direct conflict level=3	Brawl: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	target is not player; direct conflict level=4	Non-lethal: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	target is not player; direct conflict level=5	Lethal: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	target is not player; direct conflict level=6	No Quarter: 	native writes label and ': ' separately in the same color	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	direct conflict=-1; shared eligible activity contains both participants and a level	Ally: 	activity type=2; event virtual type=8; event flag bit0 clear; figure/unit membership	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	direct conflict outside0..6 and !=-1	: 		ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	prefix	target is player; or direct conflict=-1 and no eligible shared activity			ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x8a2d50	prefix	target ID=-1, empty unit vector, or target not found			ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x721e0	prefix	tile option virtual+0x118			ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x881ce0	key	each visible row; binding ID=0x52+visible row ordinal	{KEY}	current-key-caption: complete configured native key label; missing binding='?'	ranged-target-chooser
+classic	pe-classic-ghidra-decompiled.c	0x881ce0	body-display	caption length reaches native available-width cutoff	{BODY_PREFIX}...	body is resized before drawing; trailing three bytes replaced when retained length>3	ranged-target-chooser

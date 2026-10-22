@@ -679,6 +679,9 @@ struct Match {
     // page cells can retain half-font flags, but cannot change this native
     // paragraph's baselines or its complete body ownership.
     bool native_announcement_popup = false;
+    // The action chooser's ordinary addst writer leaves old half-font flags
+    // in the grid. Its bound source owns one row through every layout pass.
+    bool native_adventure_choice_row = false;
     // Squad text arrives with explicit producer bounds on its private grid.
     // It must never borrow another component's caption geometry.
     bool native_squads_foreground = false;
@@ -20112,6 +20115,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             }
             const auto action_draws = captured_native_drawn_text_view();
             const auto top_action_draws = captured_native_drawn_text_view(true);
+            uintptr_t chooser_writer = 0;
+#ifdef _WIN32
+            if (const auto base = native_history_profile_base())
+                chooser_writer = native_reference_address(base, 0x88562d);
+#endif
             std::set<std::pair<int, int>> owned_action_captions;
             for (int y = title_y + 1; y < panel->y + panel->h; ++y) {
                 const auto &visible = context[y];
@@ -20219,9 +20227,49 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 // rediscovering it from only the caption can miss its picture
                 // or lower font half and fall back to the enclosing menu.
                 choice.native_picture_caption_box = choice_box;
+                // PE 884460 draws the +118 prelude and +8 caption through
+                // ordinary addst, whose bb190 writer does not clear the grid's
+                // half-font flags. Bind the current +8 source BEFORE reading
+                // those flags: stale flags can differ even within one word.
+                // The prelude is a separate draw at the same native baseline.
+                if (chooser_writer && !native_site) {
+                    const auto ordinary_caption = [&](const NativeDrawnTextRow &draw) {
+                        if (draw.native_caller != chooser_writer || draw.y != y ||
+                                draw.x < first || draw.x >= end || draw.source.empty() ||
+                                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                                (screen_override && screen_override != draw.draw_grid) ||
+                                draw.source.size() < static_cast<size_t>(end - draw.x) ||
+                                source_row.compare(draw.x, end - draw.x,
+                                    draw.source, 0, end - draw.x) != 0) return false;
+                        if (draw.draw_clip && (draw.x < draw.draw_clip->x ||
+                                end > draw.draw_clip->x + draw.draw_clip->w ||
+                                y < draw.draw_clip->y || y >= draw.draw_clip->y + draw.draw_clip->h))
+                            return false;
+                        if (draw.x > first) {
+                            const auto prelude = normalize_utterance(
+                                std::string_view(source_row).substr(first, draw.x - first));
+                            const auto prefix = adventure_conflict_prefix(prelude);
+                            if (!prefix || prefix->identity_offset != prelude.size() ||
+                                    !adventure_ranged_action_caption(normalize_utterance(
+                                        draw.complete_source.empty() ? draw.source : draw.complete_source)))
+                                return false;
+                        }
+                        for (int column = draw.x; column < end; ++column) {
+                            bool top = false;
+                            cell_at(column, y, &top);
+                            if (source_row[column] != ' ' && top != draw.top_layer) return false;
+                        }
+                        return true;
+                    };
+                    choice.native_adventure_choice_row =
+                        std::any_of(action_draws.begin(), action_draws.end(), ordinary_caption) ||
+                        std::any_of(top_action_draws.begin(), top_action_draws.end(), ordinary_caption);
+                }
                 constexpr uint32_t top_half = 1u << 3;
                 constexpr uint32_t bottom_half = 1u << 4;
                 const auto caption_half = [&](int row_y) {
+                    if (choice.native_adventure_choice_row) return uint32_t{0};
                     if (choice_caption_right(row_y) < end) return UINT32_MAX;
                     uint32_t half = UINT32_MAX;
                     for (int x = first; x < end; ++x) {
@@ -20328,9 +20376,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 // the frame. Bind the original +8 draw before consulting the
                 // panel-local ellipsis; the native resize capture already
                 // retains the complete unit designation for both PE editions.
-                const auto chooser_base = native_history_profile_base();
-                const uintptr_t chooser_writer = chooser_base
-                    ? native_reference_address(chooser_base, 0x88562d) : 0;
                 if (chooser_writer) {
                     std::vector<size_t> origins;
                     const std::string joined = normalize_utterance(choice.source, &origins);
@@ -28115,7 +28160,7 @@ void Overlay::normalize_native_split_text() {
     std::vector<Caption> captions;
     for (size_t index = 0; index < prepared_matches_.size(); ++index) {
         Match &match = prepared_matches_[index];
-        if (match.native_announcement_popup) continue;
+        if (match.native_announcement_popup || match.native_adventure_choice_row) continue;
         // The decompiled combat, portrait, trade and embark finder renderers
         // use ordinary addst, retaining old half-font flags without drawing halves.
         if (match.rule == kAdventureCombatFieldRule ||

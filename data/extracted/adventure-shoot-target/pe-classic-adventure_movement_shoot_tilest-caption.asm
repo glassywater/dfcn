@@ -1,0 +1,59 @@
+# classic PE:6a70b91c:0270a000; adventure_movement_shoot_tilest-caption; RVA 0x8a2dc0..0x8a2ebc
+0x008a2dc0: mov    QWORD PTR [rsp+0x18],rbx
+0x008a2dc5: push   rdi
+0x008a2dc6: sub    rsp,0x60
+0x008a2dca: mov    rax,QWORD PTR [rip+0xff326f]        # 0x141896040
+0x008a2dd1: xor    rax,rsp
+0x008a2dd4: mov    QWORD PTR [rsp+0x50],rax
+0x008a2dd9: mov    rdi,rdx
+0x008a2ddc: mov    rbx,rcx
+0x008a2ddf: cmp    BYTE PTR [rcx+0x20],0x0
+0x008a2de3: je     0x1408a2dfa
+0x008a2de5: mov    r8d,0x6
+0x008a2deb: lea    rdx,[rip+0xe0cbde]        # 0x1416af9d0 ; literal="Shoot "
+0x008a2df2: mov    rcx,rdi
+0x008a2df5: call   0x14006f860
+0x008a2dfa: xorps  xmm0,xmm0
+0x008a2dfd: movups XMMWORD PTR [rsp+0x30],xmm0
+0x008a2e02: mov    QWORD PTR [rsp+0x40],0x0
+0x008a2e0b: mov    QWORD PTR [rsp+0x48],0xf
+0x008a2e14: mov    BYTE PTR [rsp+0x30],0x0
+0x008a2e19: mov    BYTE PTR [rsp+0x28],0x0
+0x008a2e1e: movzx  eax,WORD PTR [rbx+0x14]
+0x008a2e22: mov    WORD PTR [rsp+0x20],ax
+0x008a2e27: movzx  r9d,WORD PTR [rbx+0x12]
+0x008a2e2c: movzx  r8d,WORD PTR [rbx+0x10]
+0x008a2e31: lea    rdx,[rsp+0x30]
+0x008a2e36: lea    rcx,[rip+0x1b285a3]        # 0x1423cb3e0
+0x008a2e3d: call   0x140e782a0
+0x008a2e42: lea    rdx,[rsp+0x30]
+0x008a2e47: cmp    QWORD PTR [rsp+0x48],0xf
+0x008a2e4d: cmova  rdx,QWORD PTR [rsp+0x30]
+0x008a2e53: mov    r8,QWORD PTR [rsp+0x40]
+0x008a2e58: mov    rcx,rdi
+0x008a2e5b: call   0x14006f9a0
+0x008a2e60: nop
+0x008a2e61: mov    rdx,QWORD PTR [rsp+0x48]
+0x008a2e66: cmp    rdx,0xf
+0x008a2e6a: jbe    0x1408a2ea1
+0x008a2e6c: inc    rdx
+0x008a2e6f: mov    rcx,QWORD PTR [rsp+0x30]
+0x008a2e74: mov    rax,rcx
+0x008a2e77: cmp    rdx,0x1000
+0x008a2e7e: jb     0x1408a2e9c
+0x008a2e80: add    rdx,0x27
+0x008a2e84: mov    rcx,QWORD PTR [rcx-0x8]
+0x008a2e88: sub    rax,rcx
+0x008a2e8b: add    rax,0xfffffffffffffff8
+0x008a2e8f: cmp    rax,0x1f
+0x008a2e93: jbe    0x1408a2e9c
+0x008a2e95: call   QWORD PTR [rip+0xd3dc05]        # 0x1415e0aa0
+0x008a2e9b: int3
+0x008a2e9c: call   0x1415345f0
+0x008a2ea1: mov    rcx,QWORD PTR [rsp+0x50]
+0x008a2ea6: xor    rcx,rsp
+0x008a2ea9: call   0x1415345d0
+0x008a2eae: mov    rbx,QWORD PTR [rsp+0x80]
+0x008a2eb6: add    rsp,0x60
+0x008a2eba: pop    rdi
+0x008a2ebb: ret

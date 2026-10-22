@@ -1,0 +1,141 @@
+edition	image	role	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e48f7	rip-relative	0x162fc40	finite-text-operand-or-substring	Encounter
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4904	rip-relative	0x162fc48	finite-text-operand-or-substring	r
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4952	rip-relative	0x1630080	finite-text-operand-or-substring	Horseplay
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e495f	rip-relative	0x1630088	finite-text-operand-or-substring	y
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e49ad	inline-immediate-fragment		finite-short-string-fragment	Training
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e49ff	rip-relative	0x1630068	finite-text-operand-or-substring	Brawl
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4a08	rip-relative	0x163006c	finite-text-operand-or-substring	l
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4a56	rip-relative	0x1630070	finite-text-operand-or-substring	Non-lethal
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4a63	rip-relative	0x1630078	finite-text-operand-or-substring	al
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4ab2	rip-relative	0x16300b4	finite-text-operand-or-substring	Lethal
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4abb	rip-relative	0x16300b8	finite-text-operand-or-substring	al
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4b0a	rip-relative	0x16300c0	finite-text-operand-or-substring	No Quarter
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4b17	rip-relative	0x16300c8	finite-text-operand-or-substring	er
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4e0f	rip-relative	0x16ad460	finite-text-operand-or-substring	Ally: 
+steam	PE:6a70a6d9:02711000	conflict-prefix-renderer	0x7e4860	0x7e4e18	rip-relative	0x16ad464	finite-text-operand-or-substring	: 
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-863300	0x863300	0x86481b	rip-relative	0x16ae008	finite-text-operand-or-substring	You must 
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-863300	0x863300	0x864828	rip-relative	0x16ae010	separator	 
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-863300	0x863300	0x864869	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x864cfd	rip-relative	0x16ae008	finite-text-operand-or-substring	You must 
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x864d0a	rip-relative	0x16ae010	separator	 
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x864d4c	rip-relative	0x15e85b4	finite-text-operand-or-substring	.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x8651cb	rip-relative	0x16b1860	finite-text-operand-or-substring	There is no furniture, building, or vehicle to interact with here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x8651d5	rip-relative	0x16b1870	finite-text-operand-or-substring	iture, building, or vehicle to interact with here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x8651e0	rip-relative	0x16b1880	finite-text-operand-or-substring	 or vehicle to interact with here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x8651eb	rip-relative	0x16b1890	finite-text-operand-or-substring	nteract with here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x8651f6	rip-relative	0x16b18a0	finite-text-operand-or-substring	e.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865929	rip-relative	0x16b1960	finite-text-operand-or-substring	You cannot climb or mount while prone.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865933	rip-relative	0x16b1970	finite-text-operand-or-substring	 or mount while prone.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x86593e	rip-relative	0x16b1980	finite-text-operand-or-substring	prone.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865947	rip-relative	0x16b1984	finite-text-operand-or-substring	e.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865abb	rip-relative	0x16b1940	finite-text-operand-or-substring	There is nothing to hold here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865ac5	rip-relative	0x16b1950	finite-text-operand-or-substring	 to hold here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865ad2	rip-relative	0x16b1958	finite-text-operand-or-substring	 here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865adb	rip-relative	0x16b195c	finite-text-operand-or-substring	e.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865cd2	rip-relative	0x16b18f8	finite-text-operand-or-substring	There is nothing to pick up here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865cdc	rip-relative	0x16b1908	finite-text-operand-or-substring	 to pick up here.
+steam	PE:6a70a6d9:02711000	ranged-target-option-population-864b50	0x864b50	0x865ce7	rip-relative	0x16b1918	finite-text-operand-or-substring	.
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x884769	rip-relative	0x16b45f0	finite-text-operand-or-substring	Pick up how many? (0-
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x884773	rip-relative	0x16b4600	finite-text-operand-or-substring	? (0-
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x88477c	rip-relative	0x16b4604	finite-text-operand-or-substring	-
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x8847a1	rip-relative	0x1615580	separator	)
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x884850	rip-relative	0x15ec82c	finite-text-operand-or-substring	_
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x884ceb	inline-immediate-fragment		finite-short-string-fragment	Okay
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x884df5	rip-relative	0x15fe724	finite-text-operand-or-substring	Cancel
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x884dfe	rip-relative	0x15fe728	finite-text-operand-or-substring	el
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x884fe5	rip-relative	0x15fe724	finite-text-operand-or-substring	Cancel
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x884fee	rip-relative	0x15fe728	finite-text-operand-or-substring	el
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x8850b6	rip-relative	0x16b4540	finite-text-operand-or-substring	What do you want to do?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x8850c0	rip-relative	0x16b4550	finite-text-operand-or-substring	 to do?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x8850c9	rip-relative	0x16b4554	finite-text-operand-or-substring	do?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x8850d4	rip-relative	0x16b4556	finite-text-operand-or-substring	?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x88529b	rip-relative	0x16b4520	finite-text-operand-or-substring	Where would you like to move?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x8852a5	rip-relative	0x16b4530	finite-text-operand-or-substring	like to move?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x8852b2	rip-relative	0x16b4538	finite-text-operand-or-substring	move?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x8852bb	rip-relative	0x16b453c	finite-text-operand-or-substring	?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x885300	rip-relative	0x178b360	numeric-string-layout-vector	$
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x88530d	rip-relative	0x16b4588	finite-text-operand-or-substring	Who or what would you like to shoot?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x885317	rip-relative	0x16b4598	finite-text-operand-or-substring	d you like to shoot?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x885322	rip-relative	0x16b45a8	finite-text-operand-or-substring	oot?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x885351	rip-relative	0x178b3a0	numeric-string-layout-vector	(
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x88535e	rip-relative	0x16b4558	finite-text-operand-or-substring	At whom or what would you like to throw?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x885368	rip-relative	0x16b4568	finite-text-operand-or-substring	would you like to throw?
+steam	PE:6a70a6d9:02711000	chooser-renderer	0x884460	0x885373	rip-relative	0x16b4578	finite-text-operand-or-substring	o throw?
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest-caption	0x8a4890	0x8a492f	rip-relative	0x16b4b20	finite-text-operand-or-substring	Quickly shoot 
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_creaturest-caption	0x8a4890	0x8a4936	rip-relative	0x16b4ae8	finite-text-operand-or-substring	Aim carefully and shoot 
+steam	PE:6a70a6d9:02711000	adventure_movement_shoot_tilest-caption	0x8a5540	0x8a556b	rip-relative	0x16b4b18	finite-text-operand-or-substring	Shoot 
+steam	PE:6a70a6d9:02711000	current-key-caption	0x8ecb30	0x8ecd27	rip-relative	0x16bf558	finite-text-operand-or-substring	Missing binding displayed: 
+steam	PE:6a70a6d9:02711000	current-key-caption	0x8ecb30	0x8ecd32	rip-relative	0x16bf568	finite-text-operand-or-substring	displayed: 
+steam	PE:6a70a6d9:02711000	current-key-caption	0x8ecb30	0x8ecd40	rip-relative	0x16bf570	finite-text-operand-or-substring	d: 
+steam	PE:6a70a6d9:02711000	current-key-caption	0x8ecb30	0x8ecd4c	rip-relative	0x16bf572	separator	 
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e2177	rip-relative	0x162ac30	finite-text-operand-or-substring	Encounter
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e2184	rip-relative	0x162ac38	finite-text-operand-or-substring	r
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e21d2	rip-relative	0x162ac40	finite-text-operand-or-substring	Horseplay
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e21df	rip-relative	0x162ac48	finite-text-operand-or-substring	y
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e222d	inline-immediate-fragment		finite-short-string-fragment	Training
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e227f	rip-relative	0x162ac94	finite-text-operand-or-substring	Brawl
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e2288	rip-relative	0x162ac98	finite-text-operand-or-substring	l
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e22d6	rip-relative	0x162ac70	finite-text-operand-or-substring	Non-lethal
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e22e3	rip-relative	0x162ac78	finite-text-operand-or-substring	al
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e2332	rip-relative	0x162ac7c	finite-text-operand-or-substring	Lethal
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e233b	rip-relative	0x162ac80	finite-text-operand-or-substring	al
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e238a	rip-relative	0x162abd0	finite-text-operand-or-substring	No Quarter
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e2397	rip-relative	0x162abd8	finite-text-operand-or-substring	er
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e268f	rip-relative	0x16a8650	finite-text-operand-or-substring	Ally: 
+classic	PE:6a70b91c:0270a000	conflict-prefix-renderer	0x7e20e0	0x7e2698	rip-relative	0x16a8654	finite-text-operand-or-substring	: 
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-860b80	0x860b80	0x86209b	rip-relative	0x16a8f88	finite-text-operand-or-substring	You must 
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-860b80	0x860b80	0x8620a8	rip-relative	0x16a8f90	separator	 
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-860b80	0x860b80	0x8620e9	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x86257d	rip-relative	0x16a8f88	finite-text-operand-or-substring	You must 
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x86258a	rip-relative	0x16a8f90	separator	 
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x8625cc	rip-relative	0x15e3574	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x862a4b	rip-relative	0x16acb30	finite-text-operand-or-substring	There is no furniture, building, or vehicle to interact with here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x862a55	rip-relative	0x16acb40	finite-text-operand-or-substring	iture, building, or vehicle to interact with here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x862a60	rip-relative	0x16acb50	finite-text-operand-or-substring	 or vehicle to interact with here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x862a6b	rip-relative	0x16acb60	finite-text-operand-or-substring	nteract with here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x862a76	rip-relative	0x16acb70	finite-text-operand-or-substring	e.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x8631a9	rip-relative	0x16ac9a8	finite-text-operand-or-substring	You cannot climb or mount while prone.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x8631b3	rip-relative	0x16ac9b8	finite-text-operand-or-substring	 or mount while prone.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x8631be	rip-relative	0x16ac9c8	finite-text-operand-or-substring	prone.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x8631c7	rip-relative	0x16ac9cc	finite-text-operand-or-substring	e.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x86333b	rip-relative	0x16ac988	finite-text-operand-or-substring	There is nothing to hold here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x863345	rip-relative	0x16ac998	finite-text-operand-or-substring	 to hold here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x863352	rip-relative	0x16ac9a0	finite-text-operand-or-substring	 here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x86335b	rip-relative	0x16ac9a4	finite-text-operand-or-substring	e.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x863552	rip-relative	0x16ac940	finite-text-operand-or-substring	There is nothing to pick up here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x86355c	rip-relative	0x16ac950	finite-text-operand-or-substring	 to pick up here.
+classic	PE:6a70b91c:0270a000	ranged-target-option-population-8623d0	0x8623d0	0x863567	rip-relative	0x16ac960	finite-text-operand-or-substring	.
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x881fe9	rip-relative	0x16af6e0	finite-text-operand-or-substring	Pick up how many? (0-
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x881ff3	rip-relative	0x16af6f0	finite-text-operand-or-substring	? (0-
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x881ffc	rip-relative	0x16af6f4	finite-text-operand-or-substring	-
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882021	rip-relative	0x16102d8	separator	)
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x8820d0	rip-relative	0x15e783c	finite-text-operand-or-substring	_
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x88256b	inline-immediate-fragment		finite-short-string-fragment	Okay
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882675	rip-relative	0x15f959c	finite-text-operand-or-substring	Cancel
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x88267e	rip-relative	0x15f95a0	finite-text-operand-or-substring	el
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882865	rip-relative	0x15f959c	finite-text-operand-or-substring	Cancel
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x88286e	rip-relative	0x15f95a0	finite-text-operand-or-substring	el
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882936	rip-relative	0x16af510	finite-text-operand-or-substring	What do you want to do?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882940	rip-relative	0x16af520	finite-text-operand-or-substring	 to do?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882949	rip-relative	0x16af524	finite-text-operand-or-substring	do?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882954	rip-relative	0x16af526	finite-text-operand-or-substring	?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882b1b	rip-relative	0x16af4f0	finite-text-operand-or-substring	Where would you like to move?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882b25	rip-relative	0x16af500	finite-text-operand-or-substring	like to move?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882b32	rip-relative	0x16af508	finite-text-operand-or-substring	move?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882b3b	rip-relative	0x16af50c	finite-text-operand-or-substring	?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882b80	rip-relative	0x1785c60	numeric-string-layout-vector	$
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882b8d	rip-relative	0x16af558	finite-text-operand-or-substring	Who or what would you like to shoot?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882b97	rip-relative	0x16af568	finite-text-operand-or-substring	d you like to shoot?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882ba2	rip-relative	0x16af578	finite-text-operand-or-substring	oot?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882bd1	rip-relative	0x1785ca0	numeric-string-layout-vector	(
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882bde	rip-relative	0x16af528	finite-text-operand-or-substring	At whom or what would you like to throw?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882be8	rip-relative	0x16af538	finite-text-operand-or-substring	would you like to throw?
+classic	PE:6a70b91c:0270a000	chooser-renderer	0x881ce0	0x882bf3	rip-relative	0x16af548	finite-text-operand-or-substring	o throw?
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest-caption	0x8a2110	0x8a21af	rip-relative	0x16af9d8	finite-text-operand-or-substring	Quickly shoot 
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_creaturest-caption	0x8a2110	0x8a21b6	rip-relative	0x16af9a0	finite-text-operand-or-substring	Aim carefully and shoot 
+classic	PE:6a70b91c:0270a000	adventure_movement_shoot_tilest-caption	0x8a2dc0	0x8a2deb	rip-relative	0x16af9d0	finite-text-operand-or-substring	Shoot 
+classic	PE:6a70b91c:0270a000	current-key-caption	0x8ea360	0x8ea557	rip-relative	0x16ba448	finite-text-operand-or-substring	Missing binding displayed: 
+classic	PE:6a70b91c:0270a000	current-key-caption	0x8ea360	0x8ea562	rip-relative	0x16ba458	finite-text-operand-or-substring	displayed: 
+classic	PE:6a70b91c:0270a000	current-key-caption	0x8ea360	0x8ea570	rip-relative	0x16ba460	finite-text-operand-or-substring	d: 
+classic	PE:6a70b91c:0270a000	current-key-caption	0x8ea360	0x8ea57c	rip-relative	0x16ba462	separator	 

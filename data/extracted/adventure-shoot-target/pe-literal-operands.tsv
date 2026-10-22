@@ -1,0 +1,137 @@
+edition	role	instruction_rva	operand	kind	text
+steam	conflict-prefix-renderer	0x7e48f7	0x14162fc40	cstring	Encounter
+steam	conflict-prefix-renderer	0x7e4904	0x14162fc48	cstring	r
+steam	conflict-prefix-renderer	0x7e4952	0x141630080	cstring	Horseplay
+steam	conflict-prefix-renderer	0x7e495f	0x141630088	cstring	y
+steam	conflict-prefix-renderer	0x7e49ad	0x676e696e69617254	inline	Training
+steam	conflict-prefix-renderer	0x7e49ff	0x141630068	cstring	Brawl
+steam	conflict-prefix-renderer	0x7e4a08	0x14163006c	cstring	l
+steam	conflict-prefix-renderer	0x7e4a56	0x141630070	cstring	Non-lethal
+steam	conflict-prefix-renderer	0x7e4a63	0x141630078	cstring	al
+steam	conflict-prefix-renderer	0x7e4ab2	0x1416300b4	cstring	Lethal
+steam	conflict-prefix-renderer	0x7e4abb	0x1416300b8	cstring	al
+steam	conflict-prefix-renderer	0x7e4b0a	0x1416300c0	cstring	No Quarter
+steam	conflict-prefix-renderer	0x7e4b17	0x1416300c8	cstring	er
+steam	conflict-prefix-renderer	0x7e4e0f	0x1416ad460	cstring	Ally: 
+steam	conflict-prefix-renderer	0x7e4e18	0x1416ad464	cstring	: 
+steam	ranged-target-option-population-863300	0x86481b	0x1416ae008	cstring	You must 
+steam	ranged-target-option-population-863300	0x864828	0x1416ae010	cstring	 
+steam	ranged-target-option-population-863300	0x864869	0x1415e85b4	cstring	.
+steam	ranged-target-option-population-864b50	0x864cfd	0x1416ae008	cstring	You must 
+steam	ranged-target-option-population-864b50	0x864d0a	0x1416ae010	cstring	 
+steam	ranged-target-option-population-864b50	0x864d4c	0x1415e85b4	cstring	.
+steam	ranged-target-option-population-864b50	0x8651cb	0x1416b1860/16	vector	There is no furn
+steam	ranged-target-option-population-864b50	0x8651d5	0x1416b1870/16	vector	iture, building,
+steam	ranged-target-option-population-864b50	0x8651e0	0x1416b1880/16	vector	 or vehicle to i
+steam	ranged-target-option-population-864b50	0x8651eb	0x1416b1890/16	vector	nteract with her
+steam	ranged-target-option-population-864b50	0x8651f6	0x1416b18a0	cstring	e.
+steam	ranged-target-option-population-864b50	0x865929	0x1416b1960/16	vector	You cannot climb
+steam	ranged-target-option-population-864b50	0x865933	0x1416b1970/16	vector	 or mount while 
+steam	ranged-target-option-population-864b50	0x86593e	0x1416b1980	cstring	prone.
+steam	ranged-target-option-population-864b50	0x865947	0x1416b1984	cstring	e.
+steam	ranged-target-option-population-864b50	0x865abb	0x1416b1940/16	vector	There is nothing
+steam	ranged-target-option-population-864b50	0x865ac5	0x1416b1950	cstring	 to hold here.
+steam	ranged-target-option-population-864b50	0x865ad2	0x1416b1958	cstring	 here.
+steam	ranged-target-option-population-864b50	0x865adb	0x1416b195c	cstring	e.
+steam	ranged-target-option-population-864b50	0x865cd2	0x1416b18f8/16	vector	There is nothing
+steam	ranged-target-option-population-864b50	0x865cdc	0x1416b1908/16	vector	 to pick up here
+steam	ranged-target-option-population-864b50	0x865ce7	0x1416b1918	cstring	.
+steam	chooser-renderer	0x884769	0x1416b45f0/16	vector	Pick up how many
+steam	chooser-renderer	0x884773	0x1416b4600	cstring	? (0-
+steam	chooser-renderer	0x88477c	0x1416b4604	cstring	-
+steam	chooser-renderer	0x8847a1	0x141615580	cstring	)
+steam	chooser-renderer	0x884850	0x1415ec82c	cstring	_
+steam	chooser-renderer	0x884ceb	0x79616b4f	inline	Okay
+steam	chooser-renderer	0x884df5	0x1415fe724	cstring	Cancel
+steam	chooser-renderer	0x884dfe	0x1415fe728	cstring	el
+steam	chooser-renderer	0x884fe5	0x1415fe724	cstring	Cancel
+steam	chooser-renderer	0x884fee	0x1415fe728	cstring	el
+steam	chooser-renderer	0x8850b6	0x1416b4540/16	vector	What do you want
+steam	chooser-renderer	0x8850c0	0x1416b4550	cstring	 to do?
+steam	chooser-renderer	0x8850c9	0x1416b4554	cstring	do?
+steam	chooser-renderer	0x8850d4	0x1416b4556	cstring	?
+steam	chooser-renderer	0x88529b	0x1416b4520/16	vector	Where would you 
+steam	chooser-renderer	0x8852a5	0x1416b4530	cstring	like to move?
+steam	chooser-renderer	0x8852b2	0x1416b4538	cstring	move?
+steam	chooser-renderer	0x8852bb	0x1416b453c	cstring	?
+steam	chooser-renderer	0x88530d	0x1416b4588/16	vector	Who or what woul
+steam	chooser-renderer	0x885317	0x1416b4598/16	vector	d you like to sh
+steam	chooser-renderer	0x885322	0x1416b45a8	cstring	oot?
+steam	chooser-renderer	0x88535e	0x1416b4558/16	vector	At whom or what 
+steam	chooser-renderer	0x885368	0x1416b4568/16	vector	would you like t
+steam	chooser-renderer	0x885373	0x1416b4578	cstring	o throw?
+steam	adventure_movement_shoot_creaturest-caption	0x8a492f	0x1416b4b20	cstring	Quickly shoot 
+steam	adventure_movement_shoot_creaturest-caption	0x8a4936	0x1416b4ae8	cstring	Aim carefully and shoot 
+steam	adventure_movement_shoot_tilest-caption	0x8a556b	0x1416b4b18	cstring	Shoot 
+steam	current-key-caption	0x8ecd27	0x1416bf558/16	vector	Missing binding 
+steam	current-key-caption	0x8ecd32	0x1416bf568	cstring	displayed: 
+steam	current-key-caption	0x8ecd40	0x1416bf570	cstring	d: 
+steam	current-key-caption	0x8ecd4c	0x1416bf572	cstring	 
+classic	conflict-prefix-renderer	0x7e2177	0x14162ac30	cstring	Encounter
+classic	conflict-prefix-renderer	0x7e2184	0x14162ac38	cstring	r
+classic	conflict-prefix-renderer	0x7e21d2	0x14162ac40	cstring	Horseplay
+classic	conflict-prefix-renderer	0x7e21df	0x14162ac48	cstring	y
+classic	conflict-prefix-renderer	0x7e222d	0x676e696e69617254	inline	Training
+classic	conflict-prefix-renderer	0x7e227f	0x14162ac94	cstring	Brawl
+classic	conflict-prefix-renderer	0x7e2288	0x14162ac98	cstring	l
+classic	conflict-prefix-renderer	0x7e22d6	0x14162ac70	cstring	Non-lethal
+classic	conflict-prefix-renderer	0x7e22e3	0x14162ac78	cstring	al
+classic	conflict-prefix-renderer	0x7e2332	0x14162ac7c	cstring	Lethal
+classic	conflict-prefix-renderer	0x7e233b	0x14162ac80	cstring	al
+classic	conflict-prefix-renderer	0x7e238a	0x14162abd0	cstring	No Quarter
+classic	conflict-prefix-renderer	0x7e2397	0x14162abd8	cstring	er
+classic	conflict-prefix-renderer	0x7e268f	0x1416a8650	cstring	Ally: 
+classic	conflict-prefix-renderer	0x7e2698	0x1416a8654	cstring	: 
+classic	ranged-target-option-population-860b80	0x86209b	0x1416a8f88	cstring	You must 
+classic	ranged-target-option-population-860b80	0x8620a8	0x1416a8f90	cstring	 
+classic	ranged-target-option-population-860b80	0x8620e9	0x1415e3574	cstring	.
+classic	ranged-target-option-population-8623d0	0x86257d	0x1416a8f88	cstring	You must 
+classic	ranged-target-option-population-8623d0	0x86258a	0x1416a8f90	cstring	 
+classic	ranged-target-option-population-8623d0	0x8625cc	0x1415e3574	cstring	.
+classic	ranged-target-option-population-8623d0	0x862a4b	0x1416acb30/16	vector	There is no furn
+classic	ranged-target-option-population-8623d0	0x862a55	0x1416acb40/16	vector	iture, building,
+classic	ranged-target-option-population-8623d0	0x862a60	0x1416acb50/16	vector	 or vehicle to i
+classic	ranged-target-option-population-8623d0	0x862a6b	0x1416acb60/16	vector	nteract with her
+classic	ranged-target-option-population-8623d0	0x862a76	0x1416acb70	cstring	e.
+classic	ranged-target-option-population-8623d0	0x8631a9	0x1416ac9a8/16	vector	You cannot climb
+classic	ranged-target-option-population-8623d0	0x8631b3	0x1416ac9b8/16	vector	 or mount while 
+classic	ranged-target-option-population-8623d0	0x8631be	0x1416ac9c8	cstring	prone.
+classic	ranged-target-option-population-8623d0	0x8631c7	0x1416ac9cc	cstring	e.
+classic	ranged-target-option-population-8623d0	0x86333b	0x1416ac988/16	vector	There is nothing
+classic	ranged-target-option-population-8623d0	0x863345	0x1416ac998	cstring	 to hold here.
+classic	ranged-target-option-population-8623d0	0x863352	0x1416ac9a0	cstring	 here.
+classic	ranged-target-option-population-8623d0	0x86335b	0x1416ac9a4	cstring	e.
+classic	ranged-target-option-population-8623d0	0x863552	0x1416ac940/16	vector	There is nothing
+classic	ranged-target-option-population-8623d0	0x86355c	0x1416ac950/16	vector	 to pick up here
+classic	ranged-target-option-population-8623d0	0x863567	0x1416ac960	cstring	.
+classic	chooser-renderer	0x881fe9	0x1416af6e0/16	vector	Pick up how many
+classic	chooser-renderer	0x881ff3	0x1416af6f0	cstring	? (0-
+classic	chooser-renderer	0x881ffc	0x1416af6f4	cstring	-
+classic	chooser-renderer	0x882021	0x1416102d8	cstring	)
+classic	chooser-renderer	0x8820d0	0x1415e783c	cstring	_
+classic	chooser-renderer	0x88256b	0x79616b4f	inline	Okay
+classic	chooser-renderer	0x882675	0x1415f959c	cstring	Cancel
+classic	chooser-renderer	0x88267e	0x1415f95a0	cstring	el
+classic	chooser-renderer	0x882865	0x1415f959c	cstring	Cancel
+classic	chooser-renderer	0x88286e	0x1415f95a0	cstring	el
+classic	chooser-renderer	0x882936	0x1416af510/16	vector	What do you want
+classic	chooser-renderer	0x882940	0x1416af520	cstring	 to do?
+classic	chooser-renderer	0x882949	0x1416af524	cstring	do?
+classic	chooser-renderer	0x882954	0x1416af526	cstring	?
+classic	chooser-renderer	0x882b1b	0x1416af4f0/16	vector	Where would you 
+classic	chooser-renderer	0x882b25	0x1416af500	cstring	like to move?
+classic	chooser-renderer	0x882b32	0x1416af508	cstring	move?
+classic	chooser-renderer	0x882b3b	0x1416af50c	cstring	?
+classic	chooser-renderer	0x882b8d	0x1416af558/16	vector	Who or what woul
+classic	chooser-renderer	0x882b97	0x1416af568/16	vector	d you like to sh
+classic	chooser-renderer	0x882ba2	0x1416af578	cstring	oot?
+classic	chooser-renderer	0x882bde	0x1416af528/16	vector	At whom or what 
+classic	chooser-renderer	0x882be8	0x1416af538/16	vector	would you like t
+classic	chooser-renderer	0x882bf3	0x1416af548	cstring	o throw?
+classic	adventure_movement_shoot_creaturest-caption	0x8a21af	0x1416af9d8	cstring	Quickly shoot 
+classic	adventure_movement_shoot_creaturest-caption	0x8a21b6	0x1416af9a0	cstring	Aim carefully and shoot 
+classic	adventure_movement_shoot_tilest-caption	0x8a2deb	0x1416af9d0	cstring	Shoot 
+classic	current-key-caption	0x8ea557	0x1416ba448/16	vector	Missing binding 
+classic	current-key-caption	0x8ea562	0x1416ba458	cstring	displayed: 
+classic	current-key-caption	0x8ea570	0x1416ba460	cstring	d: 
+classic	current-key-caption	0x8ea57c	0x1416ba462	cstring	 
