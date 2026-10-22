@@ -243,6 +243,9 @@ static NativeString *capture_native_mission_return_append(NativeString *output,
         if (g_overlay.translation_enabled() &&
                 native_string_view(source, &incoming, SIZE_MAX) &&
                 native_string_view(output, &before, SIZE_MAX)) {
+            // These exact append sites own UnitLabel/EnglishName even when
+            // the formatter returned no bytes. Retain the empty member so
+            // the second-unit separator and the return suffix stay typed.
             member.assign(incoming);
             if constexpr (Second) {
                 party = native_mission_return_owned_party(owner);

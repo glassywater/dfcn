@@ -149,7 +149,9 @@ static void forget_native_mission_return_owner(uintptr_t owner) {
 
 static void remember_native_mission_return_generated(uintptr_t owner,
         std::string_view source, NativeHistoryName name) {
-    if (!owner || source.empty()) return;
+    // EnglishName can emit nothing for a valid squad.name. That empty field
+    // still proves the generated branch and must survive the later append.
+    if (!owner) return;
     NativeMissionReturnParty party;
     party.kind = NativeMissionReturnKind::Generated;
     party.prefix.assign(source);
@@ -173,7 +175,10 @@ static std::optional<NativeMissionReturnParty> take_native_mission_return_genera
 
 static void remember_native_mission_return_party(uintptr_t owner,
         NativeMissionReturnParty party) {
-    if (!owner || party.prefix.empty()) return;
+    // The unit formatter and generated squad formatter may both return an
+    // empty name. Only alias selection requires a nonempty native field.
+    if (!owner || party.kind == NativeMissionReturnKind::Ambiguous ||
+            (party.kind == NativeMissionReturnKind::Alias && party.prefix.empty())) return;
     std::lock_guard<std::mutex> lock(g_native_mission_return_mutex);
     if (g_native_mission_return_owners.size() >= 8192 &&
             !g_native_mission_return_owners.contains(owner)) return;
@@ -247,7 +252,7 @@ static void remember_native_mission_return_submission(uintptr_t owner,
     if (found == g_native_mission_return_owners.end()) return;
     auto party = found->second;
     bool returned = false;
-    if (!party.prefix.empty() && source.starts_with(party.prefix)) {
+    if (party.kind != NativeMissionReturnKind::Ambiguous && source.starts_with(party.prefix)) {
         const auto suffix = source.substr(party.prefix.size());
         for (std::string_view literal : {" has returned.", " have returned.",
                 " and others have returned."}) {

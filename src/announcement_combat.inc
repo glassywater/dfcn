@@ -526,7 +526,8 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             value(leaf_key, original.size()); leaf_key.append(original);
             const bool report_binding = scope == "$unit" || scope == "$person" ||
                 scope == "$speech-person" || scope == "$speech-first-name";
-            if (scope == "$announcement" || (report_binding && !g_native_announcement_log_translation_report)) {
+            if (scope == "$announcement" || scope == "$mission-return-party" ||
+                    (report_binding && !g_native_announcement_log_translation_report)) {
                 value(leaf_key, raw_source.size()); leaf_key.append(raw_source);
             }
             if ((scope == "$item" || scope == "$announcement-item" || scope == "$combat-item") &&
@@ -549,9 +550,10 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             return std::nullopt;
         }
         const auto cycle_revision = active_translation_work->cycle_revision;
+        bool native_empty_return_party = false;
         const auto finish = [&](Result result) -> Result {
             active.erase(key);
-            if (result && result->empty()) result.reset();
+            if (result && result->empty() && !native_empty_return_party) result.reset();
             if (!translation_work_exhausted() &&
                     cycle_revision == active_translation_work->cycle_revision) {
                 memo.emplace(key, result);
@@ -709,6 +711,18 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                     return finish(std::nullopt);
                 return finish(native_text_to_utf8(input));
             }
+            // With no first UnitLabel/squad EnglishName, the native plural
+            // branch still appends " and others have returned.". Its visible
+            // nonempty subject is the suffix's "and others", not an alias.
+            // Only this captured empty source can give those words a role;
+            // an authored squad named "and others" retains its exact bytes.
+            const bool empty_first = party->prefix.empty() &&
+                (party->kind == NativeMissionReturnKind::Generated ||
+                 (party->kind == NativeMissionReturnKind::Units &&
+                  party->units.size() == 1 && party->units.front().empty()));
+            if (empty_first && normalize_utterance(input) == "and others" && begin == 0 &&
+                    std::string_view(source).substr(end).starts_with(" have returned."))
+                return finish(std::string("其他人"));
             // Reject a competing literal split inside an authored name or a
             // unit's nickname. Only the captured party's full span may own it.
             if (normalize_utterance(party->prefix) != normalize_utterance(input))
@@ -725,12 +739,22 @@ std::optional<std::string> Overlay::translate_announcement_combat(
                 for (const auto &member : party->units) {
                     // The exact formatter call establishes a live unit field;
                     // a squad alias never enters this authored-unit fallback.
+                    // Empty members contribute no invented name or dangling
+                    // conjunction. The remaining native fields stay intact.
+                    if (member.empty()) continue;
                     auto translated = translate_ui_message_capture(member, true);
                     if (!translated) translated = translate_unit_identity(member, true);
                     if (!translated) return finish(std::nullopt);
                     if (!target.empty()) target += "和";
                     target += *translated;
                 }
+                // Two empty native fields still leave the nonempty " and "
+                // separator. This bound leaf may translate to no subject so
+                // the enclosing complete return clause supplies the message.
+                // No ordinary unit/name scope admits an empty translation.
+                native_empty_return_party = target.empty() && !party->units.empty() &&
+                    std::all_of(party->units.begin(), party->units.end(),
+                        [](const std::string &member) { return member.empty(); });
                 return finish(std::move(target));
             }
             return finish(native_text_to_utf8(input));

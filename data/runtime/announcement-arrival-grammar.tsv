@@ -79,3 +79,14 @@ fortress-arrival	{s} has arrived.	{s1}已经到达。	$unit	301; unit formatter 
 fortress-arrival	{s} is visiting.	{s1}来访了。	$unit	301; unit formatter 1330c30; other historical figure information type
 fortress-arrival	{s}, the performance troupe, has arrived.	演出团{s1}已经到达。	$name	301; entity formatter b92900; information type 1
 fortress-arrival	{s}, a performance troupe, is visiting.	演出团{s1}来访了。	$name	301; entity formatter b92900; other information type
+# Current PE 10b150 appends and submits these suffixes even when 1330c30 or
+# b92900 returns an empty field. Keep the exact complete producer forms;
+# neither the shared unit/name grammar nor custom squad aliases become nullable.
+fortress-arrival	has arrived.	已经到达。		301; empty unit formatter; no capitalization in submit; current PE source in extracted/fortress-guest-arrivals
+fortress-arrival	is visiting.	来访了。		301; empty unit formatter; no capitalization in submit
+fortress-arrival	, the performance troupe, has arrived.	演出团已经到达。		301; empty entity name; native leading comma retained
+fortress-arrival	, a performance troupe, is visiting.	演出团来访了。		301; empty entity name; native leading comma retained
+fortress-arrival	has returned.	回来了。		301; empty sole unit caption; fixed complete suffix
+fortress-arrival	has returned. {s}	回来了。{s1}	$history-report	301; empty sole unit caption with complete nonempty history appendix
+fortress-arrival	have returned.	回来了。		301; empty generated squad name; custom nonempty aliases retain their own field
+fortress-arrival	have returned. {s}	回来了。{s1}	$history-report	301; empty generated squad name with complete nonempty history appendix

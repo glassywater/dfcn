@@ -1,0 +1,27 @@
+The complete world/entity construction functions were imported and submitted to
+Ghidra 12.1.4 from both configured native PE images:
+  reference 0x311c10..0x35f274
+  classic   0x30f7d0..0x35ce34
+
+Both complete-function attempts ended with the original decompiler error:
+  Exception while decompiling 140311c10: Decompiler process died
+  Exception while decompiling 14030f7d0: Decompiler process died
+The headless launcher itself returned 0 after reporting this script failure;
+that launcher status is not treated as successful C decompilation.
+
+The whole annotated assembly, source literals, original native jump tables,
+call operands and conditional branches are retained. These full world functions
+are NOT represented as successfully decompiled C. Their relevant ordinary/high
+religious title construction regions are separately exported under
+religious-regions/ from the actual initializer to the post-title merge point.
+Region C is actual decompiler output for those original code blocks, with
+their parent function and exact boundaries recorded. It is not a substitute
+claim of successful decompilation of the rest of the world-construction body.
+Ghidra retains original parent continuation after the fallback fallthrough;
+the region C is consequently not a hard-cut slice. External branch paths stop
+at the named analysis-only region_exit stubs. Complete parent assembly preserves
+the continuation and permits distinguishing it from the selected title blocks.
+
+The complete visitor identity, name, caste, profession, office rank/sex/spouse,
+territory and religious-word-selection functions have separate successful C
+output. The site/religious office constructor also has its own successful C.

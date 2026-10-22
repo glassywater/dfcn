@@ -24,6 +24,9 @@ Its source and target each end in one {s}; vocabulary generation reuses it.
 `continuation` is a visible clipped prefix, isolated from complete prose in hC.
 `office` and `office-prefix` supply the finite generated office vocabulary.
 Their combinations compile into complete scoped terms, never global words.
+`office-title` supplies a complete title without adding court-rank prefixes.
+Both fixed and generated titles also publish the shared native office key,
+so saved unit announcements can resolve them without a live position owner.
 `civic-domain` and `civic-office` supply the separate municipal duty/title
 family. Its components are not standalone terms or court-rank combinations.
 `religious-prefix` combines a priest-rank prefix with the installed RAW
@@ -186,6 +189,16 @@ def compile_events(path: Path) -> list[tuple[str, str, str]]:
         entries[key] = entry
         priorities[key] = priority
 
+    def office_title(source, target):
+        # The same entity_position names feed the visitor's unit formatter
+        # and historical events. A generic Legends term alone cannot prove
+        # a profession in an old announcement, where its native field owner
+        # is no longer available. Publish the complete office in the shared
+        # typed namespace too; never promote its prefix or noun separately.
+        emit(source, target, namespace="i")
+        # Explicit office senses in the authored catalogue remain decisive.
+        emit("Native history office: " + source.lower(), target, priority=2)
+
     def event(source, target, connective="", namespace="", subject=None):
         target, counts = indexed(source, target)
 
@@ -278,7 +291,9 @@ def compile_events(path: Path) -> list[tuple[str, str, str]]:
             emit(source, target)
         elif mode == "office":
             offices.append((source, target))
-            emit(source, target, namespace="i")
+            office_title(source, target)
+        elif mode == "office-title":
+            office_title(source, target)
         elif mode == "office-prefix":
             office_prefixes.append((source, target))
         elif mode == "civic-domain":
@@ -343,11 +358,11 @@ def compile_events(path: Path) -> list[tuple[str, str, str]]:
     for prefixes, roles in ((office_prefixes, offices), (civic_domains, civic_offices)):
         for prefix, prefix_target in prefixes:
             for office, office_target in roles:
-                emit(f"{prefix} {office}", prefix_target + office_target, namespace="i")
+                office_title(f"{prefix} {office}", prefix_target + office_target)
     if religious_prefixes:
         for noun, noun_target in religious_name_nouns(path.parent).items():
             for prefix, prefix_target in religious_prefixes:
-                emit(f"{prefix} {noun}", prefix_target + noun_target, namespace="i")
+                office_title(f"{prefix} {noun}", prefix_target + noun_target)
     for response, response_target in responses:
         response_target, counts = indexed(response, response_target)
         for concession, concession_target in concessions:
