@@ -1,8 +1,9 @@
 # 当前显示河段类别；缺少类别时使用中性“河”。不按全河最高流量或词义推断类别。
+# 五级通名固定为“江、河、川、溪、涧”，属于项目命名约定，不按地形或风格改换。
 size	terrain	style	suffix	priority
 Major River	*	*	江	10
 River	*	*	河	10
-Minor River	*	*	河	10
+Minor River	*	*	川	10
 Stream	*	*	溪	10
-Brook	*	*	溪	10
+Brook	*	*	涧	10
 unknown	*	*	河	10
