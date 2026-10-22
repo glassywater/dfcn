@@ -6886,6 +6886,13 @@ bool Overlay::load_compositional_rules() {
                         !decode_utf8(*target, codepoints)) return std::nullopt;
                 return TranslationResult::translated({}, std::move(*target), "typed").strict_target();
             };
+            // The book narrator selects translateName(site.name, true).
+            // Preserve that English field provenance so real sites use their
+            // WORD/POS, reviewed name and site class. Fictional sites share
+            // the same whole-name localization/phonetic fallback without a
+            // guessed site class; generic name composition is not a fallback.
+            if (kind == "english_site")
+                return complete(translate_legends_place(*native, true));
             // Syndrome memories name the substance itself, not an item made
             // from it. Reuse the material noun, including generated remedies.
             const auto complete_material = [&](std::string_view part)

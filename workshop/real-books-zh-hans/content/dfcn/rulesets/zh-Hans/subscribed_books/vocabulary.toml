@@ -1,4 +1,4 @@
-# 仅用于书籍文本的类型化填槽，不参与人名/小队名翻译。
+# 仅用于书籍文本的类型化填槽；虚构姓名词池和真实姓名入口不参与小队名翻译。
 base = "subscribed_books::vocabulary"
 
 [[rulesets]]
@@ -311,6 +311,8 @@ name = "cause"
 [[rulesets]]
 name = "person"
 [rulesets.rules]
+"{::subscribed_books::fiction_names::person}" = "{::subscribed_books::fiction_names::person}"
+"{::text::person}" = "{::text::person}"
 "{::subscribed_books::narrative_vocabulary::person}" = "{::subscribed_books::narrative_vocabulary::person}"
 "{::subscribed_books::speech::bystander}" = "{::subscribed_books::speech::bystander}"
 "{@bt_name|::subscribed_books::vocabulary::plain_person} {epithet}" = "{@bt_name|::subscribed_books::vocabulary::plain_person}（{epithet}）"
@@ -329,6 +331,12 @@ name = "person"
 "a wild bear" = "一头野熊"
 "a bandit chief" = "一位强盗首领"
 "the hero" = "主人公"
+"the enemy" = "敌人"
+"a friend" = "一位朋友"
+"they" = "他们"
+"the fallen" = "逝者"
+"the killer" = "凶手"
+"unknown forces" = "不明力量"
 "the adversary" = "对手"
 "the other" = "另一人"
 "the figure" = "这位人物"
@@ -339,9 +347,12 @@ name = "person"
 [[rulesets]]
 name = "place"
 [rulesets.rules]
+# book_vars.site_name emits the English site field; fiction_world uses English compounds.
+"{::text::english_site}" = "{::text::english_site}"
 "{::subscribed_books::narrative_vocabulary::place}" = "{::subscribed_books::narrative_vocabulary::place}"
 "a distant land" = "一片遥远的土地"
 "these lands" = "这些土地"
+"the town" = "那座城镇"
 
 [[rulesets]]
 name = "entity"
@@ -546,6 +557,8 @@ name = "artifact"
 [[rulesets]]
 name = "plain_person"
 [rulesets.rules]
+"{::subscribed_books::fiction_names::person}" = "{::subscribed_books::fiction_names::person}"
+"{::text::person}" = "{::text::person}"
 "{::subscribed_books::narrative_vocabulary::person}" = "{::subscribed_books::narrative_vocabulary::person}"
 "{::subscribed_books::speech::bystander}" = "{::subscribed_books::speech::bystander}"
 "someone of no renown" = "一位无名之人"

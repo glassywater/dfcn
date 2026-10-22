@@ -23,6 +23,7 @@ name = "wnoun"
 [rulesets.rules]
 "{weapon}" = "{weapon}"
 "{::materials::state} {weapon}" = "{::materials::state}{weapon}"
+"{::items::weapon}" = "{::items::weapon}"
 
 [[rulesets]]
 name = "wnoun2"
@@ -48,8 +49,10 @@ name = "weapon"
 "crossbow bolt" = "弩箭"
 "quarrel" = "弩箭"
 "fist" = "拳头"
+"fists" = "双拳"
 "claws" = "利爪"
 "teeth" = "牙齿"
+"jaws" = "利颚"
 "weapon" = "武器"
 
 [[rulesets]]
@@ -72,6 +75,8 @@ name = "body"
 "right hand" = "右手"
 "limb" = "肢体"
 "arm" = "手臂"
+"guard" = "防守"
+"{::health::bodypart::raw_names}" = "{::health::bodypart::raw_names}"
 
 [[rulesets]]
 name = "pro1"
@@ -148,6 +153,10 @@ name = "attack"
 "threw a blow at" = "出拳攻向"
 "lashed out at" = "猛击"
 "clawed at" = "伸爪抓向"
+"swung a fist at" = "挥拳攻向"
+"threw a punch at" = "出拳击向"
+"grabbed for" = "伸手抓向"
+"drove a knee toward" = "抬膝撞向"
 
 [[rulesets]]
 name = "hit"
@@ -186,6 +195,11 @@ name = "hit"
 "tore into" = "撕裂"
 "raked across" = "抓伤"
 "crashed into" = "狠狠撞上"
+"punched" = "拳击"
+"slammed a fist into" = "挥拳猛击"
+"hammered" = "猛捶"
+"drove a knee into" = "以膝撞中"
+"caught with a hook to" = "以勾拳击中"
 
 [[rulesets]]
 name = "parry"
@@ -212,6 +226,9 @@ name = "parry"
 "was dodged" = "被躲开"
 "struck only air" = "只击中空气"
 "was turned aside" = "被拨开"
+"blocked the punch" = "挡住拳头"
+"slapped the fist aside" = "将拳头拍向一旁"
+"ducked the swing" = "俯身躲过挥拳"
 
 [[rulesets]]
 name = "miss"
@@ -234,6 +251,9 @@ name = "miss"
 "The blow found nothing" = "攻击扑了空"
 "The strike whiffed" = "这一击挥空"
 "Claws raked empty air" = "利爪只抓过空气"
+"The punch found nothing" = "这一拳落了空"
+"The blow went wide" = "这一击打偏了"
+"Knuckles met empty air" = "拳头只击中了空气"
 
 [[rulesets]]
 name = "defense"
@@ -255,7 +275,7 @@ name = "defense"
 "dropped low and let it pass overhead" = "伏低身体，让攻击从头顶掠过"
 
 [[rulesets]]
-name = "result"
+name = "result_base"
 [rulesets.rules]
 "grazing the skin" = "擦破皮肤"
 "barely scratching" = "只造成轻微擦伤"
@@ -274,6 +294,21 @@ name = "result"
 "crushing the joint" = "砸碎关节"
 "splitting the flesh wide open" = "将皮肉大幅撕开"
 "sending a fountain of blood into the air" = "使鲜血喷涌到空中"
+"and the bone gave way beneath it" = "使下面的骨头应声折断"
+"crushing it" = "将其砸烂"
+"ruining it" = "将其彻底毁伤"
+"cutting clean through" = "将其齐齐切断"
+
+[[rulesets]]
+name = "internal_body"
+[rulesets.rules]
+"{::health::bodypart::raw_names}" = "{::health::bodypart::raw_names}"
+
+[[rulesets]]
+name = "result"
+[rulesets.rules]
+"{result_base}, and the blow went on into the {internal_body}" = "{result_base}，余劲继续伤及{internal_body}"
+"{result_base}" = "{result_base}"
 
 [[rulesets]]
 [rulesets.rules]
@@ -965,4 +1000,25 @@ name = "result"
 "Defense was a afterthought. {@bt_name|::subscribed_books::battle::person} attacked, and attacked, and attacked." = "防守早已被抛到脑后。{@bt_name|::subscribed_books::battle::person}只管进攻、进攻、再进攻。"
 "{@bt_actor|::subscribed_books::battle::person} struck at the exact moment {@bt_def|::subscribed_books::battle::person} shifted weight -- a opening most fighters would have missed." = "{@bt_actor|::subscribed_books::battle::person}趁{@bt_def|::subscribed_books::battle::person}转移重心的一瞬间出手——大多数战士都会错过这个空当。"
 "{miss}. {@bt_def|::subscribed_books::battle::person} circled, looking for a opening." = "{miss}。{@bt_def|::subscribed_books::battle::person}绕着对手移动，寻找破绽。"
+
+# 新战斗叙述及作者修订后的小说分支。
+[[rulesets]]
+[rulesets.rules]
+"{miss}." = "{miss}。"
+"{@bt_atk|::subscribed_books::battle::person} {attack} {@bt_def|::subscribed_books::battle::person}'s {body}, but {@bt_def2|::subscribed_books::battle::person} caught it on {pos1} shield." = "{@bt_atk|::subscribed_books::battle::person}{attack}{@bt_def|::subscribed_books::battle::person}的{body}，却被 {@bt_def2|::subscribed_books::battle::person} 用{pos1}盾牌接住。"
+"{@bt_atk|::subscribed_books::battle::person} got a hand around {@bt_def|::subscribed_books::battle::person}'s throat and squeezed, {result}." = "{@bt_atk|::subscribed_books::battle::person} 伸手掐住 {@bt_def|::subscribed_books::battle::person} 的喉咙，猛然收紧，{result}。"
+"{@bt_atk|::subscribed_books::battle::person} {attack} {@bt_def|::subscribed_books::battle::person}'s {body}, {result}." = "{@bt_atk|::subscribed_books::battle::person}{attack}{@bt_def|::subscribed_books::battle::person}的{body}，{result}。"
+"The {wnoun} found {@bt_loser|::subscribed_books::battle::person}'s {body}. The blow did not kill, and it changed everything. {@bt_loser2|::subscribed_books::battle::person} collapsed, broken but breathing." = "{wnoun}击中了 {@bt_loser|::subscribed_books::battle::person} 的{body}。这一击没有致命，却改变了一切。{@bt_loser2|::subscribed_books::battle::person} 倒了下去，遍体残伤，却仍在呼吸。"
+"The final blow caught {@bt_loser|::subscribed_books::battle::person} across the temple. {pro1} went down like a felled tree, alive and utterly unconscious. {@bt_winner|::subscribed_books::battle::person} stood over the body, waited for the breathing to steady, and walked away." = "最后一击打中了 {@bt_loser|::subscribed_books::battle::person} 的太阳穴。{pro1}如同被砍倒的大树一般倒下，虽还活着，却已彻底失去意识。{@bt_winner|::subscribed_books::battle::person} 站在倒下的身体旁，等呼吸平稳后，便离开了。"
+"The fight ended in exhaustion. They stood apart, swaying, bleeding, unable to continue but unwilling to yield. The draw was a postponement." = "战斗以双方精疲力竭而告终。他们分开站着，身体摇晃，鲜血流淌，已无力再战，却谁也不愿认输。这场平局，只是将胜负暂缓。"
+"What followed was butchery. The {wnoun} rose and fell again and again. When it was over, {@bt_victim|::subscribed_books::battle::person} was beyond recognition. The ground was a ruin of what had been." = "接下来是一场屠戮。{wnoun}一次又一次举起落下。结束时，{@bt_victim|::subscribed_books::battle::person} 已面目全非。地上只剩昔日生命的残骸。"
+"The wound festered. Day by day, the corruption spread through {@bt_victim|::subscribed_books::battle::person}'s body, until even {pos1} iron will could not hold it at bay. {pro1} died in the slow war against {pos2} own failing flesh." = "伤口溃烂了。腐败一天天蔓延过 {@bt_victim|::subscribed_books::battle::person} 的身体，直到连{pos1}钢铁般的意志也无法阻挡。{pro1}死于同{pos2}衰败血肉对抗的漫长战争。"
+"{@bt_actor|::subscribed_books::battle::person} went for the knee, to cripple. A dead enemy is forgotten. A maimed one is a walking reminder." = "{@bt_actor|::subscribed_books::battle::person} 直取膝盖，意在致残。死去的敌人终会被遗忘，残废的敌人却是行走的警示。"
+"{@bt_name|::subscribed_books::battle::person} was in no hurry to win. {pro1} was making sure {@bt_def|::subscribed_books::battle::person} remembered this." = "{@bt_name|::subscribed_books::battle::person} 不急着取胜。{pro1}要确保 {@bt_def|::subscribed_books::battle::person} 永远记住这一刻。"
+"{@bt_actor|::subscribed_books::battle::person} inflicted a shallow, humiliating cut across {@bt_def|::subscribed_books::battle::person}'s cheek." = "{@bt_actor|::subscribed_books::battle::person} 在 {@bt_def|::subscribed_books::battle::person} 的脸颊上划出一道浅浅的、充满羞辱意味的伤口。"
+"{@bt_actor|::subscribed_books::battle::person} carved a thin line across {@bt_def|::subscribed_books::battle::person}'s forearm -- a wound designed to scar. {@bt_name|::subscribed_books::battle::person} wanted {@bt_def2|::subscribed_books::battle::person} to carry this memory in {@bt_def3|::subscribed_books::battle::person}'s flesh." = "{@bt_actor|::subscribed_books::battle::person} 在 {@bt_def|::subscribed_books::battle::person} 的前臂上划出一道细伤，刻意让它留下疤痕。{@bt_name|::subscribed_books::battle::person} 要让 {@bt_def2|::subscribed_books::battle::person} 把这段记忆留在 {@bt_def3|::subscribed_books::battle::person} 的皮肉上。"
+"{@bt_name|::subscribed_books::battle::person}'s eyes were bright with pleasure." = "{@bt_name|::subscribed_books::battle::person} 的双眼闪烁着快意的光。"
+"{@bt_name|::subscribed_books::battle::person} fought only to survive. Every instinct screamed to flee." = "{@bt_name|::subscribed_books::battle::person} 战斗只为活下来。每一种本能都在尖叫着要逃。"
+"Both stood, and neither fell.\nBoth bled, and neither died.\nThe draw made no tale to tell;\nboth walked on, unsatisfied." = "两人站立，无人倒下，\n两人流血，无人死去。\n平局没有留下可传的传奇，\n两人继续前行，却都心有不甘。"
+"The fight was vicious. Neither gave ground willingly. But when the {wnoun} found {@bt_loser|::subscribed_books::battle::person}'s {body}, the outcome was decided by something almost worse than death." = "战斗异常凶狠，双方都不肯轻易退让。但当{wnoun}击中 {@bt_loser|::subscribed_books::battle::person} 的{body}时，结局便由一种几乎比死亡更糟的命运决定了。"
 

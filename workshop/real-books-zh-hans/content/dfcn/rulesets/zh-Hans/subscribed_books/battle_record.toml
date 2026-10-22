@@ -1,0 +1,78 @@
+# 真实人物小说中的战斗史实桥接：脱险与仍然到来的死亡。
+base = "subscribed_books::battle_record"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"the fighter" = "那名战士"
+"the foe" = "敌手"
+"{::subscribed_books::vocabulary::person}" = "{::subscribed_books::vocabulary::person}"
+
+[[rulesets]]
+name = "god"
+[rulesets.rules]
+"the gods" = "诸神"
+"{@bt_god|::subscribed_books::world::deity}" = "{@bt_god|::subscribed_books::world::deity}"
+
+[[rulesets]]
+name = "pro1"
+[rulesets.rules]
+"{::subscribed_books::battle::pro1}" = "{::subscribed_books::battle::pro1}"
+
+[[rulesets]]
+name = "pro2"
+[rulesets.rules]
+"{::subscribed_books::battle::pro1}" = "{::subscribed_books::battle::pro1}"
+
+[[rulesets]]
+name = "pos1"
+[rulesets.rules]
+"{::subscribed_books::battle::pos1}" = "{::subscribed_books::battle::pos1}"
+
+[[rulesets]]
+name = "obj1"
+[rulesets.rules]
+"{::subscribed_books::battle::obj1}" = "{::subscribed_books::battle::obj1}"
+
+[[rulesets]]
+name = "reflexive"
+[rulesets.rules]
+"{::subscribed_books::arcs::a_reflexive}" = "{::subscribed_books::arcs::a_reflexive}"
+
+[[rulesets]]
+[rulesets.rules]
+# 神佑、老练、意志、同伴驰援、敌人失误、诈死与异类之躯。
+"{@bt_saved|::subscribed_books::battle_record::person} had already fallen when the light changed. Those who were there swore afterwards that {god} had turned the last blow aside; {@bt_saved2|::subscribed_books::battle_record::person} rose, and {@bt_foe|::subscribed_books::battle_record::person} did not understand what had happened until it was over." = "光线变化时，{@bt_saved|::subscribed_books::battle_record::person} 已经倒下。在场的人后来发誓说，是{god}拨开了最后一击。{@bt_saved2|::subscribed_books::battle_record::person} 重新站起，直到一切结束，{@bt_foe|::subscribed_books::battle_record::person} 都没明白发生了什么。"
+"The killing stroke never landed. {@bt_saved|::subscribed_books::battle_record::person} called on {god}, and something answered - a gust, a slip, a sudden glare - and when it passed, {@bt_saved2|::subscribed_books::battle_record::person} was on {pos1} feet and {@bt_foe|::subscribed_books::battle_record::person} was the one in danger." = "致命的一击始终没有落下。{@bt_saved|::subscribed_books::battle_record::person} 呼唤{god}，随即便有了回应：一阵风、一次失足、一片突如其来的耀光。等异象过去，{@bt_saved2|::subscribed_books::battle_record::person} 已用{pos1}双脚重新站稳，陷入险境的反倒成了 {@bt_foe|::subscribed_books::battle_record::person}。"
+"By every right {@bt_saved|::subscribed_books::battle_record::person} should have died there. {pro1} would say for the rest of {pos1} life that {god} had held {obj1} up, and no one who saw it argued." = "照理说，{@bt_saved|::subscribed_books::battle_record::person} 本该死在那里。此后{pos1}余生中，{pro1}始终说是{god}扶住了{obj1}，而所有亲眼目睹的人都没有反驳。"
+"{@bt_saved|::subscribed_books::battle_record::person} went down - and it was a feint learned in a dozen older fights. When {@bt_foe|::subscribed_books::battle_record::person} stepped in to finish it, {@bt_saved2|::subscribed_books::battle_record::person} was already moving, and the fight turned in a heartbeat." = "{@bt_saved|::subscribed_books::battle_record::person} 倒了下去，却只是从十几场旧日战斗中学来的佯招。当 {@bt_foe|::subscribed_books::battle_record::person} 上前准备补上最后一击时，{@bt_saved2|::subscribed_books::battle_record::person} 已然动身，战局在转瞬间逆转。"
+"It looked like the end. But {@bt_saved|::subscribed_books::battle_record::person} had been in worse, and old instinct took over where strength had failed: a twist, a hook, and {@bt_foe|::subscribed_books::battle_record::person} was suddenly fighting for {pos1} own life." = "看起来一切都要结束了。但 {@bt_saved|::subscribed_books::battle_record::person} 曾经历过更险恶的境地。力量耗尽之处，旧日的本能接管了身体：一扭，一勾，{@bt_foe|::subscribed_books::battle_record::person} 突然变成了为{pos1}性命而战的人。"
+"Anyone else would have died. {@bt_saved|::subscribed_books::battle_record::person} had survived too many fights to die in this one, and turned the last of {pos1} strength into one blow {@bt_foe|::subscribed_books::battle_record::person} never saw coming." = "换作旁人早已丧命。{@bt_saved|::subscribed_books::battle_record::person} 从太多战斗中活了下来，不肯死在这一场里，于是将{pos1}最后的力量化作一击，令 {@bt_foe|::subscribed_books::battle_record::person} 猝不及防。"
+"{@bt_saved|::subscribed_books::battle_record::person} should have stayed down. {pro1} did not. Bleeding, half-blind, {pro2} dragged {reflexive} up again and again until {@bt_foe|::subscribed_books::battle_record::person} was the one who faltered." = "{@bt_saved|::subscribed_books::battle_record::person} 本该再也站不起来。可{pro1}偏不肯倒下。鲜血淋漓，视野模糊，{pro2}一次又一次撑起{reflexive}，直到 {@bt_foe|::subscribed_books::battle_record::person} 先开始动摇。"
+"There was no strength left in {@bt_saved|::subscribed_books::battle_record::person}, only refusal. {pro1} would not die there, and somehow that was enough." = "{@bt_saved|::subscribed_books::battle_record::person} 已无半分力气，只剩不肯屈服的意志。{pro1}不愿死在那里，而不知为何，这就足够了。"
+"The blow was falling when someone crashed into {@bt_foe|::subscribed_books::battle_record::person} from the side - one of {@bt_saved|::subscribed_books::battle_record::person}'s own, arrived at the last moment - and {@bt_saved2|::subscribed_books::battle_record::person} lived." = "攻击即将落下时，有人从侧面撞向 {@bt_foe|::subscribed_books::battle_record::person}。那是 {@bt_saved|::subscribed_books::battle_record::person} 的一位同伴，在最后一刻赶到了。于是，{@bt_saved2|::subscribed_books::battle_record::person} 活了下来。"
+"A shout, a thrown stone, a figure running in: {@bt_saved|::subscribed_books::battle_record::person}'s companions had come, and the fight was no longer one against one." = "一声呼喊，一块飞石，一道冲来的身影：{@bt_saved|::subscribed_books::battle_record::person} 的同伴赶到了，战斗已不再是一对一。"
+"{@bt_foe|::subscribed_books::battle_record::person} overreached. The killing blow went a hand's breadth too far, and {@bt_saved|::subscribed_books::battle_record::person} was inside it before {pro1} could recover." = "{@bt_foe|::subscribed_books::battle_record::person} 用力过猛。致命一击多探出了一掌之距，{pro1}还没来得及收招，{@bt_saved|::subscribed_books::battle_record::person} 就已切入了攻击内侧。"
+"Certain of the end, {@bt_foe|::subscribed_books::battle_record::person} hesitated a moment too long, savouring it. {@bt_saved|::subscribed_books::battle_record::person} did not hesitate at all." = "{@bt_foe|::subscribed_books::battle_record::person} 确信胜负已定，为了品味这一刻，多犹豫了片刻。{@bt_saved|::subscribed_books::battle_record::person} 却丝毫没有犹豫。"
+"The ground betrayed {@bt_foe|::subscribed_books::battle_record::person} - a stumble at the worst moment - and {@bt_saved|::subscribed_books::battle_record::person} took the chance {pro1} had been given." = "脚下的地面背叛了 {@bt_foe|::subscribed_books::battle_record::person}，使其在最糟糕的一刻踉跄失足。{@bt_saved|::subscribed_books::battle_record::person} 抓住了上天给{pro1}的机会。"
+"{@bt_saved|::subscribed_books::battle_record::person} lay still and let {@bt_foe|::subscribed_books::battle_record::person} believe it. When {@bt_foe2|::subscribed_books::battle_record::person} turned away, {@bt_saved2|::subscribed_books::battle_record::person} was no longer where {pro1} had fallen." = "{@bt_saved|::subscribed_books::battle_record::person} 一动不动地躺着，任由 {@bt_foe|::subscribed_books::battle_record::person} 信以为真。当 {@bt_foe2|::subscribed_books::battle_record::person} 转身时，{@bt_saved2|::subscribed_books::battle_record::person} 已不在{pro1}倒下的地方了。"
+"The fall was a lie. {@bt_saved|::subscribed_books::battle_record::person} played dead long enough for {@bt_foe|::subscribed_books::battle_record::person} to lower {pos1} guard, and that was all {pro1} needed." = "倒下只是骗局。{@bt_saved|::subscribed_books::battle_record::person} 装死，直到 {@bt_foe|::subscribed_books::battle_record::person} 放松了{pos1}戒备，而这就已经足够{pro1}出手。"
+"What should have killed {@bt_saved|::subscribed_books::battle_record::person} did not. {pro1} rose from it as if the wound belonged to someone else, and {@bt_foe|::subscribed_books::battle_record::person} backed away." = "本该杀死 {@bt_saved|::subscribed_books::battle_record::person} 的一击没能奏效。{pro1}重新站了起来，仿佛伤口属于别人，而 {@bt_foe|::subscribed_books::battle_record::person} 向后退去。"
+"Any living thing would have died of that blow. {@bt_saved|::subscribed_books::battle_record::person} was not, perhaps, a living thing in quite that sense, and the fight went on." = "任何活物挨了那一击都该死去。也许，{@bt_saved|::subscribed_books::battle_record::person} 并不是通常意义上的活物。战斗仍在继续。"
+# 伤重、背后补刀、另一名袭击者、坠落、溺水、箭矢、火焰与失血。
+"{@bt_victim|::subscribed_books::battle_record::person} walked away from it. The wounds did not let {obj1} go far: within days they had turned, and {@bt_victim2|::subscribed_books::battle_record::person} died of what {@bt_foe|::subscribed_books::battle_record::person} had done after all." = "{@bt_victim|::subscribed_books::battle_record::person} 活着离开了。伤口却没让{obj1}走远：几天之内，伤势便恶化了。{@bt_victim2|::subscribed_books::battle_record::person} 终究还是死于 {@bt_foe|::subscribed_books::battle_record::person} 留下的伤。"
+"It seemed {@bt_victim|::subscribed_books::battle_record::person} had survived. {pro1} had not; the cuts went deeper than anyone knew, and {pro2} died before the season turned." = "{@bt_victim|::subscribed_books::battle_record::person} 看起来已捡回一条命。可{pro1}并没有：伤口比任何人所知的都深，还未等到季节更替，{pro2}就死去了。"
+"{@bt_victim|::subscribed_books::battle_record::person} turned away, believing it finished. {@bt_foe|::subscribed_books::battle_record::person} did not believe it, and the last blow came from behind." = "{@bt_victim|::subscribed_books::battle_record::person} 以为一切结束，转过身去。{@bt_foe|::subscribed_books::battle_record::person} 却不这样想，最后一击从背后袭来。"
+"It should have ended there, with {@bt_victim|::subscribed_books::battle_record::person} standing. But {@bt_foe|::subscribed_books::battle_record::person} rose one more time, and that time {@bt_victim2|::subscribed_books::battle_record::person} was not quick enough." = "一切本该就此结束，{@bt_victim|::subscribed_books::battle_record::person} 仍站着。但 {@bt_foe|::subscribed_books::battle_record::person} 又一次站了起来，而这一次，{@bt_victim2|::subscribed_books::battle_record::person} 没能及时反应。"
+"{@bt_victim|::subscribed_books::battle_record::person} had beaten {@bt_foe|::subscribed_books::battle_record::person}. {pro1} had not seen the other one - and it was the other one who finished it." = "{@bt_victim|::subscribed_books::battle_record::person} 已经击败了 {@bt_foe|::subscribed_books::battle_record::person}。{pro1}却没看见还有另一个人，而了结一切的正是那个人。"
+"The fight was won, and it did not matter: {@bt_foe|::subscribed_books::battle_record::person}'s people were close, and {@bt_victim|::subscribed_books::battle_record::person} did not leave the place alive." = "战斗赢了，却已无关紧要：{@bt_foe|::subscribed_books::battle_record::person} 的人就在附近，{@bt_victim|::subscribed_books::battle_record::person} 没能活着离开那里。"
+"{@bt_victim|::subscribed_books::battle_record::person} broke away and ran - and the ground ran out beneath {obj1}. {pro1} was found below, days later." = "{@bt_victim|::subscribed_books::battle_record::person} 挣脱后逃跑，却在奔跑中踏空，地面消失在{obj1}脚下。几天后，人们才在下方找到了{pro1}。"
+"In flight, {@bt_victim|::subscribed_books::battle_record::person} misjudged the edge, and the fall did what {@bt_foe|::subscribed_books::battle_record::person} had not." = "逃跑中，{@bt_victim|::subscribed_books::battle_record::person} 错判了边缘的位置。{@bt_foe|::subscribed_books::battle_record::person} 没能做到的事，这一跤做到了。"
+"{@bt_victim|::subscribed_books::battle_record::person} escaped as far as the water. The current did the rest." = "{@bt_victim|::subscribed_books::battle_record::person} 逃到了水边。余下的事，由激流完成。"
+"Wounded and running, {@bt_victim|::subscribed_books::battle_record::person} tried the crossing. {pro1} never reached the other side." = "{@bt_victim|::subscribed_books::battle_record::person} 带伤逃跑，试图涉水渡过。{pro1}始终没能抵达对岸。"
+"As {@bt_victim|::subscribed_books::battle_record::person} turned to go, an arrow came out of the dark. {pro1} was dead before {pro2} knew it had been loosed." = "{@bt_victim|::subscribed_books::battle_record::person} 转身要走时，一支箭从黑暗中飞出。{pro2}尚未察觉有人放箭，{pro1}便已丧命。"
+"{@bt_victim|::subscribed_books::battle_record::person} had survived the fight. {pro1} did not survive the bolt that followed it." = "{@bt_victim|::subscribed_books::battle_record::person} 挺过了战斗。{pro1}却没能挺过随后射来的弩箭。"
+"Fire took {@bt_victim|::subscribed_books::battle_record::person} in the end - what the fight had spared, the flames did not." = "最后，大火夺去了 {@bt_victim|::subscribed_books::battle_record::person} 的生命。战斗饶过的，烈焰没有饶过。"
+"{@bt_victim|::subscribed_books::battle_record::person} escaped the blade only to be caught by the burning, and {pro1} did not come out of it." = "{@bt_victim|::subscribed_books::battle_record::person} 逃过了刀刃，却陷入火海，{pro1}再也没有走出来。"
+"{@bt_victim|::subscribed_books::battle_record::person} kept {pos1} feet a while longer. Then the blood ran out, and {pro1} sat down, and did not get up again." = "{@bt_victim|::subscribed_books::battle_record::person} 用{pos1}双脚又支撑了一阵。随后，鲜血流尽，{pro1}坐了下来，再也没有起身。"
+"No one blow killed {@bt_victim|::subscribed_books::battle_record::person}. All of them together did, slowly, before help could come." = "没有哪一击单独杀死了 {@bt_victim|::subscribed_books::battle_record::person}。但所有伤势加在一起，终究在援助赶到之前，缓缓夺走了性命。"

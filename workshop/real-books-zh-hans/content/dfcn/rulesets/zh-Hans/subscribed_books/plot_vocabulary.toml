@@ -1,0 +1,103 @@
+# fiction_plot.lua：全部十二种剧情前提的物件、职位、亲属、争端和目标。
+base = "subscribed_books::plot_vocabulary"
+
+[[rulesets]]
+name = "object"
+[rulesets.rules]
+"{material} {object_noun}" = "{material}{object_noun}"
+"codex" = "古抄本"
+"scroll" = "卷轴"
+"set of tablets" = "一组刻板"
+"quire" = "书帖"
+
+[[rulesets]]
+name = "material"
+[rulesets.rules]
+"silver" = "银制"
+"copper" = "铜制"
+"jade" = "玉制"
+"bone" = "骨制"
+"iron" = "铁制"
+"gold" = "金制"
+"obsidian" = "黑曜石制"
+"amber" = "琥珀制"
+"bronze" = "青铜制"
+
+[[rulesets]]
+name = "object_noun"
+[rulesets.rules]
+"chalice" = "圣杯"
+"crown" = "王冠"
+"reliquary" = "圣物匣"
+"mask" = "面具"
+"lantern" = "提灯"
+"scepter" = "权杖"
+"circlet" = "头冠"
+"horn" = "号角"
+"idol" = "神像"
+
+[[rulesets]]
+name = "office"
+[rulesets.rules]
+"warden" = "守卫长"
+"high magistrate" = "大法官"
+"lord of the hall" = "厅堂之主"
+"keeper of the vaults" = "地库守护者"
+"speaker of the council" = "议会发言人"
+"{::subscribed_books::vocabulary::role}" = "{::subscribed_books::vocabulary::role}"
+
+[[rulesets]]
+name = "relation"
+[rulesets.rules]
+"sister" = "姐妹"
+"mother" = "母亲"
+"daughter" = "女儿"
+"brother" = "兄弟"
+"father" = "父亲"
+"son" = "儿子"
+
+[[rulesets]]
+name = "stake"
+[rulesets.rules]
+"the {object}" = "那件{object}"
+"what became of {@bt_victim|::subscribed_books::vocabulary::person}" = "{@bt_victim|::subscribed_books::vocabulary::person}的下落"
+"{@bt_victim|::subscribed_books::vocabulary::person}'s death" = "{@bt_victim|::subscribed_books::vocabulary::person}的死"
+"the hall at {@bt_place|::subscribed_books::vocabulary::place}" = "{@bt_place|::subscribed_books::vocabulary::place}的厅堂"
+"the seat of {@bt_office|::subscribed_books::plot_vocabulary::office}" = "{@bt_office|::subscribed_books::plot_vocabulary::office}之位"
+"the {object} in the vaults" = "地库中的那件{object}"
+"what lay between {@bt_hero|::subscribed_books::vocabulary::person} and {@bt_ally|::subscribed_books::vocabulary::person}" = "{@bt_hero|::subscribed_books::vocabulary::person}与{@bt_ally|::subscribed_books::vocabulary::person}之间的纠葛"
+"the oath" = "那份誓约"
+"the truth about {@bt_victim|::subscribed_books::vocabulary::person}'s death" = "{@bt_victim|::subscribed_books::vocabulary::person}死亡的真相"
+"the borrowed name" = "那个冒用的名字"
+
+[[rulesets]]
+name = "stake2"
+[rulesets.rules]
+"{stake}" = "{stake}"
+
+[[rulesets]]
+name = "goal"
+[rulesets.rules]
+"bring the {object} home to {@bt_place|::subscribed_books::vocabulary::place}" = "把那件{object}带回{@bt_place|::subscribed_books::vocabulary::place}"
+"find {@bt_victim|::subscribed_books::vocabulary::person}, or the truth of what happened" = "找到{@bt_victim|::subscribed_books::vocabulary::person}，或查明事情的真相"
+"make {@bt_foe|::subscribed_books::vocabulary::person} answer for {@bt_victim|::subscribed_books::vocabulary::person}" = "让{@bt_foe|::subscribed_books::vocabulary::person}为{@bt_victim|::subscribed_books::vocabulary::person}的遭遇付出代价"
+"take back what {@bt_foe|::subscribed_books::vocabulary::person} stole" = "夺回{@bt_foe|::subscribed_books::vocabulary::person}窃取的一切"
+"win the seat of {@bt_office|::subscribed_books::plot_vocabulary::office}" = "赢得{@bt_office|::subscribed_books::plot_vocabulary::office}之位"
+"read the {object} before {@bt_foe|::subscribed_books::vocabulary::person} can" = "抢在{@bt_foe|::subscribed_books::vocabulary::person}之前读到那件{object}"
+"end the feud, or outlast it" = "结束世仇，或熬到它消亡"
+"be free of the oath without breaking it" = "在不违背誓约的前提下摆脱它"
+"find who killed {@bt_victim|::subscribed_books::vocabulary::person}" = "查出杀害{@bt_victim|::subscribed_books::vocabulary::person}的凶手"
+"find the {object} and the hand that took it" = "找到那件{object}和偷走它的人"
+"shed the borrowed name before it costs everything" = "赶在付出一切之前摆脱那个冒用的名字"
+"find the {object} before {@bt_foe|::subscribed_books::vocabulary::person} asks for it back" = "赶在{@bt_foe|::subscribed_books::vocabulary::person}索还之前找回那件{object}"
+
+[[rulesets]]
+name = "cause"
+[rulesets.rules]
+"the {object}" = "那件{object}"
+"the hall" = "那座厅堂"
+"the seat" = "那个席位"
+"the feud" = "世仇"
+"the oath" = "誓约"
+"the mistake" = "那场误会"
+"{@bt_victim|::subscribed_books::vocabulary::person}" = "{@bt_victim|::subscribed_books::vocabulary::person}"
