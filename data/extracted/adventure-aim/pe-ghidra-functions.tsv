@@ -1,0 +1,3 @@
+edition	image	role	start_rva	code_end_rva	assembly_file	owners	source_path
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881562	pe-reference-ranged-aim-renderer.asm	ranged-aim-renderer	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ede2	pe-classic-ranged-aim-renderer.asm	ranged-aim-renderer	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
