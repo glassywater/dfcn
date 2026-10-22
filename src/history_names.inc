@@ -570,6 +570,10 @@ std::optional<std::string> Overlay::translate_history_name(
         const char *link = site_government || polity ? "" : "之";
         if (!title.empty()) title = glosses[6] + link + title;
         else if (!compound.empty()) compound = glosses[6] + link + compound;
+        // Without WORD0..5, OfX qualifies the literal first-name/nickname
+        // group. The real slots prove that head; do not append a dangling
+        // ownership phrase after it or infer a surname from its spelling.
+        else if (!result.empty()) result = glosses[6] + link + result;
         else title = glosses[6] + link;
     }
     auto append = [&](const std::string &part) {

@@ -1,0 +1,145 @@
+Native target-list status grammar, reconstructed from current PE machine code
+
+Sources:
+  pe-reference-list-status.decompiled.c / .asm / .switches.tsv
+  pe-classic-list-status.decompiled.c / .asm / .switches.tsv
+  Reference code RVA 0x852640..0x8540fc, table through 0x85416c.
+  Classic code RVA 0x84fec0..0x85197c, table through 0x8519ec.
+  The two status bodies have the same control flow and text productions.
+  Addresses in the reconstruction below are reference RVAs. Classic status
+  instruction addresses are reference minus 0x2780.
+
+This file describes original source behavior, not an executed display.
+The .decompiled.c files are actual Ghidra output; this is their readable grammar.
+
+ACTION SWITCH (uint32 at action+0, 28 entries)
+0  Movement: "Charging" if action+0x1c bit0, otherwise "Moving".
+1  Attack: ATTACK below.
+2  "Jumping"
+3  "Holding terrain"
+4  "Releasing hold on terrain"
+5  "Climbing"
+6  "Working"
+7  "Talking"
+8  "Regaining balance"
+9  "Parrying"
+10 "Blocking"
+11 "Dodging" + " " + DIRECTION(action source, action destination).
+12 "Recovering from deflection" + optional " with " + ITEM.
+13 "Standing Up"
+14 "Lying Down"
+15 "Working" (the same native switch destination as action 6).
+16 "Pushing Object"
+17 "Sucking Blood"
+18 "Holding item"
+19 "Releasing hold on item"
+20 "Mounting"
+21 "Dismounting"
+22 "Leading animal"
+23 "Stop leading animal"
+24 ("Nocking" or "Loading") + " ammo".
+25 "Shooting weapon"
+26 "Throwing item"
+27 "Recovering after shooting"
+Out-of-range values, including -1: no status text.
+
+MOVEMENT AND DODGE
+Movement appends " " + DIRECTION only when owner's path coordinate vector
+at +0xc8 is nonempty. The source position is owner +0xa8/+0xaa/+0xac, except
+owner +0x110 bit0x02000000 uses its type-11 carrier reference. The destination
+is the first int16 in the path vectors at +0xc8/+0xe0/+0xf8.
+Dodge uses source int16 +0x08/+0x0a/+0x0c and destination +0x14/+0x16/+0x18.
+DIRECTION has these alternatives:
+  x/y displacement: southeast, southwest, south, northeast, northwest,
+                    north, east, west.
+  Each x/y direction independently appends " (above)" or " (below)" if z
+  differs; no z difference produces no suffix.
+  Pure z displacement: upward or downward, with no parenthesized suffix.
+  No displacement: empty direction; the already emitted space is retained.
+
+ATTACK (type 1)
+The target is unit_by_id(int32(action+0x08)); active means action+0x48 > 0.
+If the target does not exist, emit "Attacking" if active, otherwise
+"Recovering from attacking", with no subject or suffix.
+
+If the target exists:
+  TARGET = "you" for the current player, otherwise native unit-reference
+  formatter reference RVA 0x1331500 (classic RVA 0x132c470).
+  Reveal flags are zero for other targets. For the current player, find the
+  owner unit ID and action ID among the ten +0xdfc/+0xe24 slots and use the
+  corresponding +0xe9c reveal flags.
+  PREFIX is empty unless active and reveal bit4:
+    action+0x48 >= 5: "Remote: "
+    action+0x48 == 4: "Distant: "
+    action+0x48 == 3: "Starting: "
+    action+0x48 == 2: "Incoming: "
+    action+0x48 == 1: "IMMINENT: "
+  TEXT = PREFIX + ("Attacking" if active else "Recovering from attacking")
+       + " " + TARGET.
+
+  Method int32(action+0x0c) chooses mutually exclusive continuations:
+    0: append " with wrestling".
+    1: append " with grab".
+    Other method and item ID action+0x24 != -1:
+      If item_by_id exists, append " with " + STYLE + ITEM.
+      If active and reveal bit1, also append " " + WEAPON_ATTACK.
+      Missing item: no continuation.
+    Other method and item ID action+0x24 == -1:
+      If reveal bit1, append " with " + STYLE + NATURAL_ATTACK.
+      No reveal bit1: no continuation.
+
+  Every method rejoins at 0x85305b. If active, reveal bit2 and
+  int16(action+0x28) != -1, append ", aiming for " + TARGET_BODYPART.
+  Thus aiming also accompanies wrestling/grab and a missing/hidden weapon.
+  Recovery never has a timing prefix, style or aiming suffix; weapon attack
+  names are also hidden during recovery. Natural attack names may remain
+  visible during recovery because that branch only requires reveal bit1.
+
+STYLE
+  Empty unless active and reveal bit8. Concatenate enabled action+0x3c bits
+  in order: 0x20 "quick", 0x40 "heavy", 0x80 "wild", 0x100 "precise".
+  The words have no separators. Append one space iff any bit was enabled.
+  Nonempty outputs before that final space are:
+    quick, heavy, wild, precise,
+    quickheavy, quickwild, quickprecise, heavywild, heavyprecise, wildprecise,
+    quickheavywild, quickheavyprecise, quickwildprecise, heavywildprecise,
+    quickheavywildprecise.
+
+WEAPON_ATTACK
+  Get item virtual +0x438 attack vector. Null or empty -> "strike".
+  Otherwise select int32(action+0x2c). If raw attack +0x50 is not "NO_SUB",
+  append raw attack +0x50 + " "; always append raw attack +0x10.
+  NO_SUB is a sentinel and is never displayed by this branch.
+
+NATURAL_ATTACK
+  If int32(action+0x2c) == -1: "push".
+  Otherwise select owner.body(+0x5f8).attacks(+0x18)[action+0x2c].
+  At 0x852fe9..0x853037, prefix an owner BODYPART + " " only if raw attack
+  +0x60 bit0 is set AND its int16 body-part vector +0x150..+0x158 is nonempty;
+  the body-part index is that vector's first entry.
+  Always append the selected raw attack's name at +0x40.
+  This condition replaces the older helper-decompiled.txt reconstruction
+  that incorrectly treated the body-part prefix as unconditional and +0x08.
+
+DYNAMIC TYPES
+  TARGET is a complete unit reference, not a general word. Route through
+  the typed unit-identity resolver; generated names follow native naming
+  semantics, while player-authored names remain valid identity fields.
+  ITEM is item_name(reference 0xc65450, classic 0xc62490) with mode=0 and
+  argument=-1. Preserve the shared full item designation grammar.
+  BODYPART and TARGET_BODYPART are bodypart(reference 0x13345d0, classic
+  0x132f540), ordinal=0, grammatical_number=2. Resolve anatomy before status
+  templates, including its plural and fallback body part/body parts.
+  RAW weapon +0x10, weapon +0x50 and natural attack +0x40 are distinct fields;
+  their base sources are retained in helper-raw-display-fields.tsv and
+  helper-raw-display-productions.tsv. They may form an item/part + raw phrase.
+
+DEFLECTION / AMMO
+  Type12 looks up item ID action+0x0c and adds " with " + ITEM only if found.
+  Type24 looks up item ID action+0x0c. "Nocking" requires the item to exist,
+  virtual type==24, and its raw subtype at item+0xe8 to have int32 +0x1cc==0.
+  All other branches use "Loading". Both append the literal " ammo".
+
+All static text productions above already have literals/templates in the
+panel's adventure-target-translations.tsv. The two aiming templates at that
+file's end apply to both the PE common continuation above and the ELF helper.

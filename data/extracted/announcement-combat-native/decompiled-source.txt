@@ -5,8 +5,8 @@ Source extraction: tools/extract_combat_announcement_sources.py and
 tools/DecompileCombatAnnouncements.java.
 The configured reference and classic images were read and disassembled locally;
 the manifest owners were then decompiled from those same original PE bytes by
-Ghidra 12.1.4 into real per-owner C. There are 45 logical native owners per image,
-90 .c files in total, each beside its corresponding .asm. This document describes
+Ghidra 12.1.4 into real per-owner C. There are 47 logical native owners per image,
+94 .c files in total, each beside its corresponding .asm. This document describes
 their production grammar; it is not a substitute for the original-PE C exports.
 Image identities: reference PE:6a70a6d9:02711000; classic PE:6a70b91c:0270a000.
 This is static source extraction, not observed game output. The extractor
@@ -32,6 +32,13 @@ without the optional existing-output skip. Both complete C exports finished.
 The native source trees and their original instruction/selector operands are
 unchanged. RAW extraction now additionally retains all ATTACK_* behavioral
 inputs, including non-bite CANLATCH sources described below.
+The 2026-10-21 graphical battle-popup follow-up imports the current configured
+PEs again and retains the actual graphical renderer and input owners in addition
+to the generic message-box owner. Both original-PE source trees now contain 47
+complete owners. The graphical renderer is 0x1408020c0 / 0x1407ff940, not the
+generic 0x1400e9f40 / 0x1400e9ed0 owner. Its scroll/page, full-report/wrapped-row,
+speaker marker, portrait, control visibility and More/Okay branches are retained
+in real C together with their complete original instruction operands.
 The std::basic_string overflow throw is nonreturning at reference 0x140065890 and
 classic 0x140065820; the selector bytes following that call are data, not extra
 English productions or reachable x86 instruction branches.
@@ -48,7 +55,9 @@ Announcement transport and display consumers
 -------------------------------------------
 Reference / classic pairs, both with real PE C and assembly in this directory:
   announcement submit:       0x1400e3c20 / 0x1400e3bb0
-  popup render:              0x1400e9f40 / 0x1400e9ed0
+  generic message-box render:0x1400e9f40 / 0x1400e9ed0
+  graphical popup render:    0x1408020c0 / 0x1407ff940
+  graphical popup input:     0x140802a60 / 0x1408002e0
   adventure row construction:0x1408a40e0 / 0x1408a1960
 
 The submit function takes the complete text as its second argument, validates the
@@ -61,7 +70,7 @@ Its local Empty announcement diagnostic is error-log text, not a normal message
 to translate into the battle panel. Sound, location and ownership bookkeeping
 are preserved in C but are not additional English caption fragments.
 
-The popup renderer consumes already constructed entries at object+0x48..+0x50,
+The generic message-box renderer consumes already constructed entries at object+0x48..+0x50,
 copies each entry's three color bytes (+0x20..+0x22), and uses its native x/y
 coordinates (+0x28/+0x2c). The portrait-present branch shifts the text origin
 from +2 to +0xe and widens the frame. Its only direct English control labels are
@@ -74,12 +83,39 @@ portrait layout and report lifetime are display branches, not alternative combat
 verbs. Complete sentence translation must therefore happen before the native
 wrapped fragments lose their full sentence and dynamic-field ownership context.
 
+The screenshot's graphical popup uses a different complete renderer at
+0x1408020c0..0x140802a5e / 0x1407ff940..0x1408002de. It reads the prepared row
+vector at object+0x43d0..+0x43d8 and retains each row's originating report pointer
+at row+0x20. A nonempty row string is displayed directly; an empty row string
+selects the complete report.text at report+8. It copies native color, chooses
+centered/left alignment from report flags and speaker ownership, and reserves
+portrait space without constructing another combat sentence.
+When speaker IDs are present, its text-mode marker branches produce @: for the
+current player, 1: through 9: for the first nine distinct speakers, or no marker
+when there is no speaker or all slots are occupied. These markers are metadata.
+The only authored control words remain More and Okay. Native object+0x43c0 bit0
+and an empty primary queue suppress the panel. Bit1 or the native player-death
+flag enables the button; bit3 selects More, while a cleared bit3 selects Okay.
+Reaching the last displayed row clears bit3. The exact text draw returns are
+reference 0x1408029ab / 0x140802a24 and classic 0x14080022b / 0x1408002a4.
+The separate complete input owner scrolls, selects a speaker, advances the page
+when bit3 is set, or clears the displayed announcement state otherwise. It adds
+no authored text. The integer 0x232a passed to the input action routine is an
+action identifier, not the printable caption "*#" suggested by raw byte decoding.
+
 The rendered panel accepts other producers using the same announcement transport.
-The 45-owner combat/source manifest is a scoped construction tree and includes
+The 47-owner combat/source manifest is a scoped construction tree and includes
 its display consumers and complete corpse/body/material suppliers; it is not
-a claim that this UI admits only 45 producers.
+a claim that this UI admits only 47 producers.
 The broader announcement-popup-native transport/catalog extraction and existing
 status/death/speech source extractions retain those additional producer families.
+Its native-production-catalog.tsv maps 165 native submission owners to existing
+complete source productions, while native-scoped-productions.tsv supplies the
+remaining 70 owners (235 actual submit owners in total), paired with the classic
+owners and call sites in native-producer-owners.tsv/native-submission-edges.tsv.
+The 47 owners re-decompiled here deepen the combat, naming and display paths in
+that larger source graph; 356 accepted announcement type IDs are routing values,
+not 356 text-producing functions and not a claim about 356 fresh C exports.
 
 Complete typed dynamic input fields
 ----------------------------------
@@ -393,6 +429,17 @@ Charge producer 0x140654d20..0x140657a56
   "You tangle together and fall over!" | "They tangle together and fall over!"
                                                    0x1406576f8..0x14065779b
 
+The 2026-10-21 runtime repair follows this complete native charge family rather
+than only the photographed lines. Its 27 existing complete productions had been
+stored under adventure-announcement, while native COMBAT type IDs 6..48 enter
+the strict sentence scope. Those rules could therefore never match that path.
+The complete family now belongs to sentence, together with the six native player
+forms: You scramble away!, You roll away!, You jump away!, You are knocked over!,
+You are knocked over and tumble backward!, and You bounce backward!.
+Both native tangle outcomes also submit types 166/167, which now retain COMBAT
+ownership so they use the same complete-sentence grammar and typed UNIT fields.
+This describes source routing and the implementation change, not game observation.
+
 Collision/projectile movement and impact producers
 -------------------------------------------------
 Collision 0x140eadea0..0x140eb3ac4:
@@ -546,11 +593,23 @@ methods above. These are independent original-PE operands, not a global assumed
 reference/classic address delta.
 
 The full caption chooses player "your ", named live owner plus "'s ", named
-historical figure plus "'s ", or the unnamed complete creature/caste label.
+historical figure plus "'s ", or an unnamed complete creature/profession label.
 The two possessive branches call the pure language_name formatter a94030 on
 unit+8 (ca1bfc) or historical figure+0x38 (ca1cb7), then append the possessive
 at ca1c21/ca1cdc. They do not supply an actor/profession caption. A preceding
 announcement action therefore cannot become an occupation inside this owner.
+The unnamed full-caption branch is not limited to RAW species names. When
+there is no live owner, or that owner already has a stored animation label,
+ca1dd2 / classic c9ee12 calls 132e0c0 / classic 1329030 with profession 0x66.
+That supplier emits "Peasant"/"peasant" for the player's own race when the
+profession descriptor is empty (132e33b / classic 13292ab); other races retain
+their caste plus selected profession descriptor. A non-animated live owner
+instead calls the complete combat unit formatter at ca1da2 / classic c9ede2.
+The short caption independently calls the same profession-0x66 supplier at
+ca1208 / classic c9e248. These are role fields, not authored personal names.
+Every body outcome below can follow either unnamed role branch: Peasant
+mutilated corpse is one concrete case, and its skeleton, remains, RAW anatomy
+and tissue/material siblings must use the same complete role/body production.
 It then composes optional "rotten ", optional "mangled ", the selected body or
 tissue/material field, and the finite body states skeleton, partial remains,
 mutilated corpse, corpse. Partial skeleton/body states and optional [amount]
@@ -766,6 +825,8 @@ in native-owners.tsv; each complete .c and .asm uses its edition and start RVA.
   0x1406f8e60 / 0x1406f6880  template-tissue-name-definition
   0x140716b70 / 0x140714590  body-size-caption
   0x140717d30 / 0x140715750  creature-appearance
+  0x1408020c0 / 0x1407ff940  adventure-graphical-announcement-popup-render
+  0x140802a60 / 0x1408002e0  adventure-graphical-announcement-popup-input
   0x1408a40e0 / 0x1408a1960  adventure-announcement-row-builder
   0x140a82c10 / 0x140a7fc90  generic-item-type-material-caption
   0x140c65450 / 0x140c62490  complete-item-caption

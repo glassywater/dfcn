@@ -63,6 +63,10 @@ void Overlay::append_fortress_written_content_rows(
             const auto *first = cell_at(x, y, &first_top);
             if (!first) return std::nullopt;
             const int color = (first[1] << 16) | (first[2] << 8) | first[3];
+            // Item-colour mods may recolour the title while leaving its
+            // quotation marks white. The paired quotes delimit this field;
+            // its foreground is styling, not a boundary within the title.
+            const bool quoted = background_rows[y][x] == '"';
             int end = x;
             while (end < right && !is_cp437_box_separator(background_rows[y], end)) {
                 if (native_item_action_at(*gps_, end, y) ||
@@ -70,10 +74,11 @@ void Overlay::append_fortress_written_content_rows(
                 if (background_rows[y][end] != ' ') {
                     bool cell_top = false;
                     const auto *cell = cell_at(end, y, &cell_top);
-                    if (!cell || ((cell[1] << 16) | (cell[2] << 8) | cell[3]) != color) break;
+                    if (!cell || (!quoted &&
+                            ((cell[1] << 16) | (cell[2] << 8) | cell[3]) != color)) break;
                 }
                 ++end;
-                if (background_rows[y][x] == '"' && end > x + 1 &&
+                if (quoted && end > x + 1 &&
                         background_rows[y][end - 1] == '"') break;
             }
             while (end > x && background_rows[y][end - 1] == ' ') --end;
@@ -164,6 +169,32 @@ void Overlay::append_fortress_written_content_rows(
                 bool top = false;
                 if (const auto *cell = cell_at(field.x, y, &top))
                     match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                if (quoted) {
+                    const int opening_color = match.layout_foreground_rgb;
+                    int body_color = opening_color;
+                    int closing_color = opening_color;
+                    for (int x = field.x + 1; x < field.end; ++x) {
+                        const char ch = field.source[x - field.x];
+                        if (ch == ' ') continue;
+                        if (ch != '"')
+                            if (const auto *cell = cell_at(x, y, &top))
+                                body_color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                        break;
+                    }
+                    if (field.source.size() >= 2 && field.source.back() == '"')
+                        if (const auto *cell = cell_at(field.end - 1, y, &top))
+                            closing_color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                    match.layout_foreground_rgb = body_color;
+                    std::vector<uint32_t> codepoints;
+                    if (decode_utf8(match.target, codepoints) && !codepoints.empty()) {
+                        match.layout_glyph_foreground_rgb.assign(codepoints.size(), body_color);
+                        if (codepoints.front() == '"' || codepoints.front() == 0x201c)
+                            match.layout_glyph_foreground_rgb.front() = opening_color;
+                        if (codepoints.size() >= 2 &&
+                                (codepoints.back() == '"' || codepoints.back() == 0x201d))
+                            match.layout_glyph_foreground_rgb.back() = closing_color;
+                    }
+                }
                 if (field.height == 2) {
                     match.native_split_text = true;
                     match.native_split_top_y = field.y;

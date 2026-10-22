@@ -78,17 +78,17 @@ std::optional<std::string> Overlay::translate_adventure_target_text(
         // A formatter-owned unit/item/anatomy capture is resolved by that
         // type before a same-spelled status or ordinary dictionary word.
         if (kind == 'n') {
+            if (const auto identity = native_unit_identity_source_target(trim_view(original)))
+                return finish(identity);
             // Target records draw the conflict label and its punctuation
             // before the unit formatter advances the same native cursor.
             // Own them as one caption so the colon cannot leave the name
             // centered independently in its original English span.
-            for (const std::string_view level : {"Encounter", "Horseplay", "Training",
-                    "Brawl", "Non-lethal", "Lethal", "No Quarter"}) {
-                if (!source.starts_with(level) ||
-                        !std::string_view(source).substr(level.size()).starts_with(": "))
-                    continue;
-                const auto conflict = exact_literal_translation(level);
-                const auto identity = resolve(std::string_view(source).substr(level.size() + 2), 'n');
+            if (const auto prefix = adventure_conflict_prefix(source)) {
+                const auto conflict = prefix->label.empty() ? Result(std::string{})
+                    : exact_literal_translation("Adventure ranged prefix: " + std::string(prefix->label));
+                const auto identity = prefix->identity_offset == source.size() ? Result(std::string{})
+                    : resolve(std::string_view(source).substr(prefix->identity_offset), 'n');
                 const auto colon = adventure_target_literals_.find(":");
                 return finish(conflict && identity && colon != adventure_target_literals_.end()
                     ? Result(*conflict + colon->second + *identity) : std::nullopt);
@@ -493,6 +493,53 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
             // Use the exact native formatter's identity before a lexical
             // fallback. A shortened name retains its complete translation.
             const auto &layer_draws = layer ? top_draws : draws;
+            if (!target && kind == 'n') {
+                for (auto draw = layer_draws.rbegin(); draw != layer_draws.rend(); ++draw) {
+                    if (draw->x == first && draw->y == y && draw->unit_identity_target &&
+                            std::string_view(draw->source).starts_with(lookup_source)) {
+                        // An authored name can itself begin with "Ally: ".
+                        // Its exact formatter draw owns those bytes as a name.
+                        target = draw->unit_identity_target;
+                        break;
+                    }
+                }
+            }
+            if (!target && kind == 'n') {
+                if (const auto prefix = adventure_conflict_prefix(lookup_source)) {
+                    const auto label = prefix->label.empty() ? std::optional(std::string{})
+                        : exact_literal_translation("Adventure ranged prefix: " + std::string(prefix->label));
+                    const auto colon = adventure_target_literals_.find(":");
+                    const auto identity_source = std::string_view(lookup_source).substr(prefix->identity_offset);
+                    const int identity_x = first + static_cast<int>(prefix->identity_offset);
+                    std::optional<std::string> identity;
+                    // The prefix and identity advance the same native cursor,
+                    // but only the latter owns the selected unit/name record.
+                    for (auto draw = layer_draws.rbegin(); draw != layer_draws.rend(); ++draw) {
+                        if (draw->x != identity_x || draw->y != y ||
+                                !std::string_view(draw->source).starts_with(identity_source)) continue;
+                        identity = draw->unit_identity_target;
+                        if (!identity) identity = translate_adventure_target_text(
+                            draw->complete_source.empty() ? draw->source : draw->complete_source, 'n');
+                        break;
+                    }
+                    if (!identity) identity = identity_source.empty() ? std::optional(std::string{})
+                        : translate_adventure_target_text(identity_source, 'n');
+                    if (label && identity && colon != adventure_target_literals_.end()) {
+                        const std::string prelude = *label + colon->second;
+                        target = prelude + *identity;
+                        const auto color_text = [&](std::string_view text, int x) {
+                            bool color_layer = false;
+                            const auto *cell = cell_at(x, y, &color_layer);
+                            const int rgb = cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : 0xffffff;
+                            std::vector<uint32_t> codepoints;
+                            if (decode_utf8(std::string(text), codepoints))
+                                target_colors.insert(target_colors.end(), codepoints.size(), rgb);
+                        };
+                        color_text(prelude, first);
+                        if (!identity->empty()) color_text(*identity, identity_x);
+                    }
+                }
+            }
             for (auto draw = layer_draws.rbegin(); !target && draw != layer_draws.rend(); ++draw) {
                 if (draw->x != first || draw->y != y ||
                         !std::string_view(draw->source).starts_with(lookup_source)) continue;

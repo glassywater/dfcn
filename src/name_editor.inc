@@ -301,6 +301,7 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
     std::vector<Field> previews;
     std::array<int, 3> columns{gps_->dimx, gps_->dimx, gps_->dimx};
     int heading_y = -1;
+    bool settlement_preview = false;
     for (size_t y = 0; y < context.size(); ++y) {
         const auto fields = fields_in(context[y], static_cast<int>(y));
         size_t table_begin = fields.size();
@@ -332,7 +333,10 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
                 field.source == "Done" || heading;
             if (caption) {
                 captions.push_back(field);
-                if (heading) heading_y = std::max(heading_y, field.y);
+                if (heading && field.y >= heading_y) {
+                    heading_y = field.y;
+                    settlement_preview = field.source == "Name your settlement";
+                }
             } else if (field.y < signature.first_slot_y &&
                        field.x > signature.front_x &&
                        (contains_cjk_utf8(field.source) ||
@@ -398,8 +402,19 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
             continue;
         const bool quoted = preview.source.size() >= 2 &&
             preview.source.front() == '"' && preview.source.back() == '"';
-        auto target = quoted ? translate_procedural_fragment(preview.source) :
-            translate_procedural_fragment(preview.source, true);
+        std::optional<std::string> target;
+        if (settlement_preview) {
+            // The editor establishes a place-name field before a world_site
+            // exists. Use whole-name localization and its English phonetic
+            // fallback, while keeping the native spelling independent. No
+            // site classification is available here to supply a type suffix.
+            target = quoted ? translate_procedural_fragment(preview.source,
+                false, false, {}, ProceduralFragmentContext::english_site_name) :
+                std::optional<std::string>(transliterate_site_spelling(preview.source));
+        } else {
+            target = quoted ? translate_procedural_fragment(preview.source) :
+                translate_procedural_fragment(preview.source, true);
+        }
         if (target) {
             // Expand equally into genuinely blank cells on both sides.
             // The Random/Done buttons can share this row with a preview;
@@ -457,6 +472,90 @@ bool Overlay::append_name_editor_matches(std::vector<std::string> &rows,
     // native cursor, byte positions and field contents intact.
     return true;
 }
+
+#ifdef _WIN32
+void Overlay::append_native_settlement_name_previews(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw_layer,
+        std::vector<SDL_Rect> &owned_regions) const {
+    // name_creator_interfacest::render does not draw an enclosing frame in
+    // settlement context. Its three addst producers establish these fields
+    // independently of a nearby panel or the word-table reader's scratch rows.
+    // Use the existing caption capture; no extra native hook is needed.
+    const uintptr_t base = native_history_profile_base();
+    if (!base) return;
+    const uintptr_t heading_caller = native_reference_address(base, 0x1fc995);
+    const uintptr_t native_caller = native_reference_address(base, 0x1fcd29);
+    const uintptr_t english_caller = native_reference_address(base, 0x1fcde4);
+    if (!heading_caller || !native_caller || !english_caller) return;
+    const auto draws = captured_native_drawn_text_view();
+    const auto current = [&](const NativeDrawnTextRow &draw) {
+        if (draw.draw_grid != gps_->screen || draw.top_layer ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                draw.x < 0 || draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy ||
+                draw.source.empty() || draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x))
+            return false;
+        if (draw.draw_clip && (draw.x < draw.draw_clip->x || draw.y < draw.draw_clip->y ||
+                draw.x + static_cast<int>(draw.source.size()) > draw.draw_clip->x + draw.draw_clip->w ||
+                draw.y >= draw.draw_clip->y + draw.draw_clip->h)) return false;
+        for (size_t i = 0; i < draw.source.size(); ++i) {
+            const int x = draw.x + static_cast<int>(i);
+            const size_t tile = static_cast<size_t>(x) * gps_->dimy + draw.y;
+            const auto expected = static_cast<unsigned char>(draw.source[i]);
+            if (draw.draw_grid[tile * 8] != expected) return false;
+            bool top = false;
+            const auto *cell = cell_at(x, draw.y, &top);
+            const unsigned char ch = raw_layer ? (cell ? cell[0] : 0)
+                : visible_char_at(x, draw.y);
+            const auto visible = ch ? ch : ' ';
+            if (visible != expected || (top && expected != ' ')) return false;
+        }
+        return true;
+    };
+    for (const auto &heading : draws) {
+        if (heading.native_caller != heading_caller ||
+                heading.source != "Name your settlement" || !current(heading)) continue;
+        for (const auto &draw : draws) {
+            const bool english = draw.native_caller == english_caller;
+            if ((!english && draw.native_caller != native_caller) ||
+                    draw.draw_epoch != heading.draw_epoch || draw.sequence <= heading.sequence ||
+                    draw.y != heading.y + (english ? 3 : 2) || !current(draw)) continue;
+            if (raw_layer && raw_layer != draw.draw_grid) continue;
+            if (english && (draw.source.size() < 2 ||
+                    draw.source.front() != '"' || draw.source.back() != '"')) continue;
+            const auto target = english ? translate_procedural_fragment(draw.source,
+                false, false, {}, ProceduralFragmentContext::english_site_name) :
+                std::optional<std::string>(transliterate_site_spelling(draw.source));
+            if (!target || target->empty()) continue;
+            const int length = static_cast<int>(draw.source.size());
+            owned_regions.push_back({draw.x, draw.y, length, 1});
+            std::fill_n(rows[draw.y].begin() + draw.x, length, ' ');
+            std::erase_if(matches, [&](const Match &match) {
+                return match.y == draw.y && match.x < draw.x + length &&
+                    draw.x < match.x + match.length;
+            });
+            if (only_y >= 0 && only_y != draw.y) continue;
+            Match match{draw.x, draw.y, length, kNameEditorPreviewRule, *target, draw.source};
+            int left = draw.x, right = draw.x + length;
+            const int clip_left = draw.draw_clip ? draw.draw_clip->x : 0;
+            const int clip_right = draw.draw_clip
+                ? draw.draw_clip->x + draw.draw_clip->w : gps_->dimx;
+            const auto blank = [&](int x) {
+                bool top = false;
+                const auto *cell = cell_at(x, draw.y, &top);
+                return cell && (!cell[0] || cell[0] == ' ');
+            };
+            while (left > clip_left && right < clip_right && blank(left - 1) && blank(right)) {
+                --left;
+                ++right;
+            }
+            match.layout_x = left;
+            match.layout_length = right - left;
+            match.layout_foreground_rgb = draw.foreground_rgb;
+            matches.push_back(std::move(match));
+        }
+    }
+}
+#endif
 
 bool Overlay::layout_name_editor(SDL_Renderer *renderer) {
     if (!gps_ || !face_ || !renderer || gps_->tile_pixel_x <= 0 ||

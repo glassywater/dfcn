@@ -1,0 +1,2 @@
+edition	image_identity	source_path	sha256	start_rva	code_end_rva	switch_end_rva	unwind_end_rva
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	0x84fec0	0x85197c	0x8519ec	0x8519ec

@@ -2510,6 +2510,11 @@ static thread_local const graphicst *g_native_notification_write_graphics = null
 static thread_local const graphicst *g_native_pause_write_graphics = nullptr;
 static thread_local const graphicst *g_native_topbar_write_graphics = nullptr;
 static bool native_topbar_cell_outside(const graphicst *, int, int) noexcept;
+static thread_local const graphicst *g_native_petition_write_graphics = nullptr;
+static bool native_petition_cell_outside(const graphicst *, int, int) noexcept;
+static thread_local const graphicst *g_native_petitions_write_graphics = nullptr;
+static bool native_petitions_cell_outside(const graphicst *, int, int) noexcept;
+static bool native_petitions_background_cell_hidden(const graphicst *, int, int) noexcept;
 static thread_local const graphicst *g_native_embark_civilization_write_graphics = nullptr;
 static bool native_embark_civilization_cell_outside(const graphicst *, int, int) noexcept;
 static bool native_embark_civilization_layer_hook_active();
@@ -2539,6 +2544,8 @@ static bool native_private_ui_write_active(const graphicst *gps) noexcept {
     return gps && (gps == g_native_help_write_graphics ||
         gps == g_native_resolution_write_graphics ||
         gps == g_native_topbar_write_graphics ||
+        gps == g_native_petition_write_graphics ||
+        gps == g_native_petitions_write_graphics ||
         gps == g_native_designation_write_graphics ||
         gps == g_native_embark_civilization_write_graphics ||
         gps == g_native_worldgen_write_graphics || native_dfhack_layer_write_active(gps));
@@ -2983,7 +2990,20 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.squad_alias_target = squad_alias_target ? std::move(squad_alias_target)
             : native_squad_alias_source_target(
                 complete_source.empty() ? source : complete_source, address);
-        if (row.squad_alias_target) row.caption_source = true;
+        row.squad_generated_name = native_squad_generated_source_name(
+            complete_source.empty() ? source : complete_source, address);
+        if (row.squad_alias_target || row.squad_generated_name) {
+            row.caption_source = true;
+#ifdef _WIN32
+            // Nobles submits its squad subtitle after shortening it to twenty
+            // cells. Keep that allocation even though addst itself has width 0.
+            if (native_caller == native_reference_address(native_history_profile_base(), 0x42711e) &&
+                    row.draw_clip) {
+                auto &clip = *row.draw_clip;
+                clip.w = std::max(0, std::min(clip.x + clip.w, x + 20) - clip.x);
+            }
+#endif
+        }
         if (!complete_source.empty() && complete_source != source &&
             complete_source.size() <= 4096 &&
             complete_source.find('\0') == std::string_view::npos &&
@@ -3244,13 +3264,15 @@ struct NativeCharacterRelation {
     int x = 0, y = 0, dimx = 0, dimy = 0;
     const unsigned char *screen = nullptr;
     std::string source, target;
+    bool overview_count = false;
 };
 static std::mutex g_native_character_relation_mutex;
 static std::vector<NativeCharacterRelation> g_native_character_relations;
 static uint64_t g_native_character_relation_epoch = 0;
 
 static void remember_native_character_relation(int x, int y,
-        std::string_view source, std::string_view target, const graphicst *graphics) {
+        std::string_view source, std::string_view target, const graphicst *graphics,
+        bool overview_count = false) {
     if (!graphics || !graphics->screen || x < 0 || y < 0 ||
         x >= graphics->dimx || y >= graphics->dimy || source.empty() ||
         source.size() > static_cast<size_t>(graphics->dimx - x)) return;
@@ -3265,17 +3287,18 @@ static void remember_native_character_relation(int x, int y,
     });
     if (!target.empty() && g_native_character_relations.size() < 4096)
         g_native_character_relations.push_back({x, y, graphics->dimx, graphics->dimy,
-            graphics->screen, std::string(source), std::string(target)});
+            graphics->screen, std::string(source), std::string(target), overview_count});
 }
 
 static std::vector<NativeCharacterRelation> captured_native_character_relations(
-        const graphicst *graphics) {
+        const graphicst *graphics, bool overview_counts = false) {
     if (!graphics) return {};
     std::lock_guard<std::mutex> lock(g_native_character_relation_mutex);
     std::vector<NativeCharacterRelation> rows;
     for (const auto &row : g_native_character_relations)
         if (row.screen == graphics->screen && row.dimx == graphics->dimx &&
-            row.dimy == graphics->dimy) rows.push_back(row);
+            row.dimy == graphics->dimy && row.overview_count == overview_counts)
+            rows.push_back(row);
     return rows;
 }
 
@@ -3593,6 +3616,7 @@ enum class LegendsSearchKind {
 // Stockpile display and search share the same typed caption grammar.
 // Native stockpile_view_mode numbers belong only to the binding data.
 enum class StockpileCaptionKind { Label, Value, Color, Wood, ItemType };
+#include "native_stockpile_caption_kind.inc"
 
 enum class SymbolCaptionKind { Creature, Plant, Shape, Item, Figure, Artifact, Action };
 
@@ -3666,6 +3690,8 @@ public:
     void render_native_notification_layer(SDL_Renderer *renderer);
     void render_native_pause_layer(SDL_Renderer *renderer);
     void render_native_topbar_layer(SDL_Renderer *renderer);
+    void render_native_petition_layer(SDL_Renderer *renderer);
+    void render_native_petitions_layer(SDL_Renderer *renderer);
     void render_native_embark_civilization_layer(SDL_Renderer *renderer);
     std::optional<std::string> native_embark_civilization_cache_context() const;
     std::optional<std::string> native_topbar_cache_context() const;
@@ -3800,6 +3826,8 @@ private:
     std::vector<Match> find_native_embark_civilization_matches(int only_y = -1,
         const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_topbar_matches(int only_y = -1,
+        const unsigned char *screen_override = nullptr) const;
+    std::vector<Match> find_native_petitions_matches(int only_y = -1,
         const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_stocks_matches() const;
     std::vector<Match> find_native_squads_matches() const;
@@ -4817,6 +4845,11 @@ private:
     bool append_name_editor_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, const unsigned char *raw_layer,
         std::vector<SDL_Rect> *owned_regions = nullptr) const;
+#ifdef _WIN32
+    void append_native_settlement_name_previews(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y, const unsigned char *raw_layer,
+        std::vector<SDL_Rect> &owned_regions) const;
+#endif
     bool layout_name_editor(SDL_Renderer *renderer);
     void append_embark_introduction_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
@@ -5050,6 +5083,8 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
     void append_accepted_petition_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    std::vector<Match> find_native_petition_matches(int only_y = -1,
+        const unsigned char *screen_override = nullptr) const;
     void layout_fortress_build_placement(SDL_Renderer *renderer);
     void layout_fortress_build_materials(SDL_Renderer *renderer);
     void append_fortress_build_material_fields(std::vector<std::string> &rows,
@@ -6116,16 +6151,34 @@ static std::string preserve_native_language_original(
 static void clear_native_language_originals();
 static bool item_term_contains_sentence_punctuation(std::string_view source);
 
-static size_t adventure_ranged_action_offset(std::string_view source) {
+struct AdventureConflictPrefix {
+    std::string_view label;
+    size_t identity_offset;
+};
+
+// PE 7e4860 / 7e20e0 draws a direct level, shared-conflict Ally, a
+// label-less colon, or nothing. The unit/action formatter follows separately.
+// A trimmed label with no identity is still a complete native production.
+static std::optional<AdventureConflictPrefix> adventure_conflict_prefix(
+        std::string_view source) {
     for (const std::string_view prefix : {"Encounter: ", "Horseplay: ", "Training: ",
             "Brawl: ", "Non-lethal: ", "Lethal: ", "No Quarter: ", "Ally: ", ": "}) {
-        if (!source.starts_with(prefix)) continue;
-        const auto action = source.substr(prefix.size());
-        if (action.starts_with("Quickly shoot ") ||
-                action.starts_with("Aim carefully and shoot ") ||
-                action.starts_with("Quickly throw at ") ||
-                action.starts_with("Aim carefully and throw at ")) return prefix.size();
+        if (source.starts_with(prefix))
+            return AdventureConflictPrefix{prefix.substr(0, prefix.size() - 2), prefix.size()};
+        if (source == prefix.substr(0, prefix.size() - 1))
+            return AdventureConflictPrefix{prefix.substr(0, prefix.size() - 2), source.size()};
     }
+    return std::nullopt;
+}
+
+static size_t adventure_ranged_action_offset(std::string_view source) {
+    const auto prefix = adventure_conflict_prefix(source);
+    if (!prefix) return 0;
+    const auto action = source.substr(prefix->identity_offset);
+    if (action.starts_with("Quickly shoot ") ||
+            action.starts_with("Aim carefully and shoot ") ||
+            action.starts_with("Quickly throw at ") ||
+            action.starts_with("Aim carefully and throw at ")) return prefix->identity_offset;
     return 0;
 }
 
@@ -8064,6 +8117,8 @@ const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     *top = false;
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return nullptr;
     if (native_topbar_cell_outside(gps_, x, y) ||
+            native_petition_cell_outside(gps_, x, y) ||
+            native_petitions_cell_outside(gps_, x, y) ||
             native_embark_civilization_cell_outside(gps_, x, y)) return nullptr;
     if (native_map_mixed_view(gps_)) return nullptr;
     if (native_info_background_cell_hidden(gps_, x, y)) return nullptr;
@@ -8090,6 +8145,8 @@ static bool graphically_occluded(uint8_t state, uint64_t cell_epoch,
 unsigned char Overlay::visible_char_at(int x, int y) const {
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return 0;
     if (native_topbar_cell_outside(gps_, x, y) ||
+            native_petition_cell_outside(gps_, x, y) ||
+            native_petitions_cell_outside(gps_, x, y) ||
             native_embark_civilization_cell_outside(gps_, x, y)) return 0;
     if (native_map_mixed_view(gps_)) return 0;
     if (native_info_background_cell_hidden(gps_, x, y)) return 0;
@@ -9062,7 +9119,45 @@ std::optional<std::string> Overlay::translate_corpsepiece_item_name(
         // Unnamed species, your, rotten/mangled bodies, generic material
         // classes and remains retain their existing complete scoped grammar.
         if (auto noun = scoped(value, "::items::corpse::body")) return noun;
-        return scoped(value, "::items::corpsepiece::caption");
+        if (auto noun = scoped(value, "::items::corpsepiece::caption")) return noun;
+        // PE ca1aa0:ca1da2/ca1dd2 and ca10e0:ca1208 do not always
+        // supply a RAW caste here. The unnamed branch calls 132e0c0 with
+        // profession 0x66, producing Peasant for the player's own race;
+        // a surviving owner instead supplies the complete 132e430 role.
+        // Resolve that whole role before the independently selected body
+        // outcome. This covers every corpse/skeleton/remains, detached RAW
+        // part and tissue/material branch, not just "mutilated corpse".
+        // Rotten precedes the role; mangled/partial/mutilated stay inside
+        // the body suffix. Names with a possessive were handled above and
+        // must never be reinterpreted as a role plus an arbitrary noun.
+        std::string_view role_body(value);
+        std::string decay;
+        constexpr std::string_view rotten = "rotten ";
+        if (role_body.size() > rotten.size() &&
+                lower(std::string(role_body.substr(0, rotten.size()))) == rotten) {
+            const auto prefix = RULESETS.compose_bound_rule(
+                "::items::corpse::^0", std::string(rotten));
+            if (!prefix) return std::nullopt;
+            decay = *prefix;
+            role_body.remove_prefix(rotten.size());
+        }
+        if (role_body.find("'s ") != std::string_view::npos ||
+                role_body.find_first_of(".!?;:\r\n") != std::string_view::npos)
+            return std::nullopt;
+        for (size_t at = role_body.find(' '); at != std::string_view::npos;
+             at = role_body.find(' ', at + 1)) {
+            const auto body_source = trim_view(role_body.substr(at + 1));
+            if (body_source.empty()) continue;
+            const auto noun = scoped(body_source, "::items::corpsepiece::animated_body");
+            if (!noun) continue;
+            const auto role_source = trim_view(role_body.substr(0, at));
+            auto role = translate_creature_label(role_source);
+            if (!translation_complete_with_native_nicknames(role, role_source))
+                role = translate_unit_profession(role_source, false);
+            if (translation_complete_with_native_nicknames(role, role_source))
+                return decay + *role + *noun;
+        }
+        return std::nullopt;
     };
     return body(body, source);
 }
@@ -13170,6 +13265,12 @@ std::optional<std::string> Overlay::translate_ui_message_capture(
                 return identity;
             if (const auto identity = exact_literal_translation("Announcement unit: " + lower(std::string(value))))
                 return identity;
+            // Stored animated captions are copied verbatim by 132e430
+            // before its ordinary caste/profession path. Keep the entire
+            // corpse/body production together here too: legacy status and
+            // announcement templates share this unit entry with combat.
+            if (const auto animation = translate_native_animation_label(value))
+                return animation;
             // Native action captions use both `the <caste> <name>` and
             // `<name>, <caste/profession> (status)`. Keep their grammar inside the authored
             // unit slot: species, professions, personal names and status suffixes must not be
@@ -17378,12 +17479,14 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_stocks_layers.inc"
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
+#include "native_petition_layers.inc"
 #include "native_announcement_log_layers.inc"
 #include "native_reports_layers.inc"
 #include "native_squads_layers.inc"
 #include "native_pause_layers.inc"
 #include "native_worldgen_layers.inc"
 #include "native_topbar_layers.inc"
+#include "native_petitions_layers.inc"
 #include "native_designation_layers.inc"
 #include "native_embark_civilization_layers.inc"
 
@@ -17928,6 +18031,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_announcement_log_layer_matching.inc"
 #include "native_pause_layer_matching.inc"
 #include "native_topbar_layer_matching.inc"
+#include "native_petitions_layer_matching.inc"
 #include "native_embark_civilization_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
 #include "native_squads_layer_matching.inc"
@@ -17939,6 +18043,8 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
 #include "native_topbar_layer_translation.inc"
+#include "native_petition_layer_translation.inc"
+#include "native_petitions_layer_translation.inc"
 #include "native_embark_civilization_layer_translation.inc"
 #include "worldgen_layer_matching.inc"
 
@@ -17997,6 +18103,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         return find_native_embark_civilization_matches(only_y, screen_override);
     if (native_topbar_foreground_view(gps_))
         return find_native_topbar_matches(only_y, screen_override);
+    if (native_petition_foreground_view(gps_))
+        return find_native_petition_matches(only_y, screen_override);
+    if (native_petitions_foreground_view(gps_))
+        return find_native_petitions_matches(only_y, screen_override);
     NativeCapturedTextReadScope captured_text_reads;
     NativeAdventureBackgroundReadScope adventure_background_reads;
     RenderTimingScope match_timing(render_timings_, config_.trace_render_timing, RenderTimingStage::Match);
@@ -18389,10 +18499,8 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         }
     }
     const auto mod_workshop_names = preserve_mod_workshop_names(screen_rows);
-    // Stockpile settings reuse the task chooser's icon/category skins and
-    // search field. Their status controls must claim all three columns first:
-    // the generic chooser otherwise consumes the category proof and leaves
-    // filters/values at their original English caption positions.
+    // The stockpile interface and its native caption writers own these
+    // fields before the generic task chooser can consume their shared skins.
     if (!local_fortress_hud)
         append_fortress_stockpile_settings(screen_rows, result, only_y);
     // The chooser owns complete category names and separate task controls.
@@ -18565,8 +18673,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
 #include "pause_menu_fields.inc"
     append_fortress_elevation_rows(screen_rows, result, only_y,
         screen_override != nullptr);
+#ifndef _WIN32
     append_accepted_petition_matches(screen_rows, result, only_y,
         screen_override != nullptr);
+#endif
     // Native chooser callers own these whole fields even when the map has
     // replaced the live outer frame by the time SDL presents its captions.
     const bool classic_location_fields = native_ui_classic().value_or(false);
@@ -19372,6 +19482,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // for immediate glyph suppression, not just the final overlay pass.
     append_name_editor_matches(screen_rows, name_editor_matches, only_y,
         screen_override, &name_editor_regions);
+#ifdef _WIN32
+    append_native_settlement_name_previews(screen_rows, name_editor_matches,
+        only_y, screen_override, name_editor_regions);
+#endif
 
     context_detail.checkpoint(RenderTimingStage::Tooltips);
     append_fortress_economy_matches(screen_rows, result, only_y, screen_override != nullptr);
@@ -42708,6 +42822,7 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
     if (!match.native_dfhack_foreground && !match.native_squads_foreground &&
             !native_announcement_log_foreground_view(gps_) &&
             !native_character_foreground_view(gps_) &&
+            !native_petitions_foreground_view(gps_) &&
             !match.layout_reflowed_paragraph) {
         if (const auto draw_clip = native_captured_text_clip(*gps_, match)) {
             SDL_Rect writer_clip = pixels(*draw_clip);
@@ -43959,6 +44074,8 @@ static void native_tooltip_present_layer(SDL_Renderer *renderer,
     void (*draw_tooltips)(SDL_Renderer *));
 static void native_notification_present_layer(SDL_Renderer *renderer,
     void (*draw_notifications)(SDL_Renderer *));
+static void native_petition_present_layer(SDL_Renderer *renderer,
+    void (*draw_petition)(SDL_Renderer *));
 static void native_announcement_log_present_layer(SDL_Renderer *renderer,
     void (*draw_log)(SDL_Renderer *));
 static void native_pause_present_layer(SDL_Renderer *renderer,
@@ -43967,6 +44084,8 @@ static void native_embark_civilization_present_layer(SDL_Renderer *renderer,
     void (*draw_civilization)(SDL_Renderer *));
 static void native_topbar_present_layer(SDL_Renderer *renderer,
     void (*draw_topbar)(SDL_Renderer *));
+static void native_petitions_present_layer(SDL_Renderer *renderer,
+    void (*draw_petitions)(SDL_Renderer *));
 static void native_designation_present_layer(SDL_Renderer *renderer,
     void (*draw_designations)(SDL_Renderer *));
 static void native_resolution_present_layer(SDL_Renderer *renderer,
@@ -44057,6 +44176,12 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             });
             native_notification_present_layer(renderer, [](SDL_Renderer *notification_renderer) {
                 g_overlay.render_native_notification_layer(notification_renderer);
+            });
+            native_petition_present_layer(renderer, [](SDL_Renderer *petition_renderer) {
+                g_overlay.render_native_petition_layer(petition_renderer);
+            });
+            native_petitions_present_layer(renderer, [](SDL_Renderer *petitions_renderer) {
+                g_overlay.render_native_petitions_layer(petitions_renderer);
             });
             native_announcement_log_present_layer(renderer, [](SDL_Renderer *log_renderer) {
                 g_overlay.render_native_announcement_log_layer(log_renderer);

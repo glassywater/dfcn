@@ -1,0 +1,5 @@
+edition	role	start_rva	end_rva
+reference	attack-chooser-renderer	0x878600	0x880118
+reference	selected-target-summary	0x872f10	0x8733a4
+classic	attack-chooser-renderer	0x875e80	0x87d998
+classic	selected-target-summary	0x870790	0x870c24

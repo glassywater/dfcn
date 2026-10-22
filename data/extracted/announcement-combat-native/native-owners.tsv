@@ -14,6 +14,8 @@ reference	PE:6a70a6d9:02711000	caste-tissue-name-definition	0x1406f6b90	0x1406f8
 reference	PE:6a70a6d9:02711000	template-tissue-name-definition	0x1406f8e60	0x1406faddc
 reference	PE:6a70a6d9:02711000	body-size-caption	0x140716b70	0x140717d30
 reference	PE:6a70a6d9:02711000	creature-appearance	0x140717d30	0x14071a2b4
+reference	PE:6a70a6d9:02711000	adventure-graphical-announcement-popup-render	0x1408020c0	0x140802a5e
+reference	PE:6a70a6d9:02711000	adventure-graphical-announcement-popup-input	0x140802a60	0x140803071
 reference	PE:6a70a6d9:02711000	adventure-announcement-row-builder	0x1408a40e0	0x1408a44a7
 reference	PE:6a70a6d9:02711000	generic-item-type-material-caption	0x140a82c10	0x140a882fc
 reference	PE:6a70a6d9:02711000	complete-item-caption	0x140c65450	0x140c65f0a
@@ -59,6 +61,8 @@ classic	PE:6a70b91c:0270a000	caste-tissue-name-definition	0x1406f45b0	0x1406f687
 classic	PE:6a70b91c:0270a000	template-tissue-name-definition	0x1406f6880	0x1406f87fc
 classic	PE:6a70b91c:0270a000	body-size-caption	0x140714590	0x140715750
 classic	PE:6a70b91c:0270a000	creature-appearance	0x140715750	0x140717cd4
+classic	PE:6a70b91c:0270a000	adventure-graphical-announcement-popup-render	0x1407ff940	0x1408002de
+classic	PE:6a70b91c:0270a000	adventure-graphical-announcement-popup-input	0x1408002e0	0x1408008f1
 classic	PE:6a70b91c:0270a000	adventure-announcement-row-builder	0x1408a1960	0x1408a1d27
 classic	PE:6a70b91c:0270a000	generic-item-type-material-caption	0x140a7fc90	0x140a8537c
 classic	PE:6a70b91c:0270a000	complete-item-caption	0x140c62490	0x140c62f4a

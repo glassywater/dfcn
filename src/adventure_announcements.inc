@@ -17,9 +17,11 @@
                 std::make_move_iterator(alert_paragraphs.begin()),
                 std::make_move_iterator(alert_paragraphs.end()));
         }
-        auto draws = paragraphs.empty() ? std::vector<NativeDrawnTextRow>{}
+        const bool popup_controls = !notification && !notification_background &&
+            native_gameplay_map_screen();
+        auto draws = paragraphs.empty() && !popup_controls ? std::vector<NativeDrawnTextRow>{}
             : captured_native_drawn_text_rows();
-        if (!paragraphs.empty()) {
+        if (!paragraphs.empty() || popup_controls) {
             auto top_draws = captured_native_drawn_text_rows(true);
             draws.insert(draws.end(), std::make_move_iterator(top_draws.begin()),
                 std::make_move_iterator(top_draws.end()));
@@ -27,6 +29,52 @@
         std::unordered_multimap<uintptr_t, const NativeDrawnTextRow *> by_address;
         for (const auto &draw : draws)
             if (draw.address) by_address.emplace(draw.address, &draw);
+        // The native renderer emits these two complete control captions at
+        // its own addst sites, independently of every report's grammar and
+        // of whether that report translated. More and Okay own their button
+        // before generic map/caption classification. The live caller,
+        // layer and bytes prove this is the popup's
+        // control; its spelling alone does not claim a map label.
+        const uintptr_t popup_base = native_history_profile_base();
+#ifdef _WIN32
+        const uintptr_t more_caller = native_reference_address(popup_base, 0x8029ab);
+        const uintptr_t okay_caller = native_reference_address(popup_base, 0x802a24);
+#else
+        const uintptr_t more_caller = native_reference_address(popup_base, 0xdb3c4b);
+        const uintptr_t okay_caller = native_reference_address(popup_base, 0xdb30c3);
+#endif
+        for (const auto &draw : draws) {
+            const bool more = more_caller && draw.native_caller == more_caller;
+            const bool okay = okay_caller && draw.native_caller == okay_caller;
+            if ((!more && !okay) || draw.source != (more ? "More" : "Okay") ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    draw.x < 0 || draw.y < 0 || draw.y >= gps_->dimy ||
+                    draw.x + 4 > gps_->dimx || (only_y >= 0 && draw.y != only_y) ||
+                    screen_rows[draw.y].compare(draw.x, 4, draw.source) != 0) continue;
+            bool current = true;
+            for (int column = draw.x; column < draw.x + 4; ++column) {
+                bool top = false;
+                cell_at(column, draw.y, &top);
+                const auto origin = native_text_grid_origin(*gps_,
+                    static_cast<size_t>(column) * gps_->dimy + draw.y, top);
+                if (draw.draw_grid != origin.grid || draw.top_layer != origin.top_layer ||
+                        (screen_override && screen_override !=
+                            (top ? gps_->screen_top : gps_->screen))) {
+                    current = false;
+                    break;
+                }
+            }
+            if (!current) continue;
+            const auto target = exact_literal_translation(draw.source);
+            if (!target || target->empty()) continue;
+            Match match{draw.x, draw.y, 4, kUiMessageRule, *target, draw.source};
+            match.layout_x = draw.x;
+            match.layout_length = 4;
+            match.layout_left = false;
+            match.layout_clip_right = draw.x + 4;
+            result.push_back(std::move(match));
+            std::fill_n(screen_rows[draw.y].begin() + draw.x, 4, ' ');
+        }
         const NativePanelBorders borders(*gps_);
         const auto settings = native_ui_settings();
         const auto report_panel = [&](const NativeDrawnTextRow &draw)

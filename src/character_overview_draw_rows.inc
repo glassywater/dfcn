@@ -205,8 +205,10 @@ if (!cards.empty()) {
                 end = part->draw->x + static_cast<int>(part->draw->source.size());
             }
             if (text.source.empty()) continue;
-            const std::string source = normalize_utterance(text.source);
-            auto target = translate_fortress_squad_reference(text.source,
+            auto target = relationship_count_target(ordered.front()->draw->x, y);
+            const bool native_count = target.has_value();
+            const std::string source = native_count ? std::string{} : normalize_utterance(text.source);
+            if (!target) target = translate_fortress_squad_reference(text.source,
                 ordered.front()->draw->x, y);
             if (!target) target = exact_literal_translation("Character overview: " + source);
             if (!target) target = exact_literal_translation(source);
@@ -234,8 +236,10 @@ if (!cards.empty()) {
             // A skill's rust status and a need's value have independent
             // colors. Their offsets come from complete grammar, never from
             // the now-overwritten grid cells at the same byte positions.
-            const auto skills = translate_rated_skill_list(text.source);
-            if (skills && skills->size() == 1 && skills->front().target == text.target) {
+            const auto skills = native_count ? std::nullopt : translate_rated_skill_list(text.source);
+            if (native_count) {
+                append_colors(text.target, 0);
+            } else if (skills && skills->size() == 1 && skills->front().target == text.target) {
                 const auto &skill = skills->front();
                 const size_t status = skill.status_target_start == std::string::npos
                     ? skill.target.size() : skill.status_target_start;

@@ -1,3 +1,144 @@
+// Accepted construction petitions own a private native grid and its typed
+// addst sources. Only those submitted fields enter this component's reader;
+// neither its blank background nor the page behind it supplies text context.
+std::vector<Match> Overlay::find_native_petition_matches(int only_y,
+        const unsigned char *screen_override) const {
+    std::vector<Match> matches;
+    const auto &panel = g_native_petition_panel;
+    if (!gps_ || !gps_->screen || !native_petition_foreground_view(gps_) ||
+            gps_->dimx <= 0 || gps_->dimx > 1000 || gps_->dimy <= 0 || gps_->dimy > 1000 ||
+            panel.x < 0 || panel.y < 0 || panel.w <= 0 || panel.h <= 0 ||
+            panel.w > gps_->dimx - panel.x || panel.h > gps_->dimy - panel.y ||
+            (only_y >= 0 && (only_y < panel.y || only_y >= panel.y + panel.h)) ||
+            (screen_override && screen_override != gps_->screen &&
+                screen_override != gps_->screen_top)) return matches;
+    const auto identity = [&](std::string_view source) -> std::optional<std::string> {
+        if (contains_cjk_utf8(source)) return native_text_to_utf8(source);
+        // EnglishName is a generated entity/location field. Authored
+        // nicknames retain the shared name renderer's literal handling.
+        return translate_legends_name(source, false, false);
+    };
+    const auto catalog = [&](std::string_view source) -> std::optional<std::string> {
+        // Complete UI messages marked hP are intentionally absent from the
+        // generic capture index. This private panel has already identified
+        // each native field, so resolve its full message in the UI catalog.
+        if (!ui_message_trie_.empty()) {
+            int node = 0;
+            for (unsigned char ch : source) {
+                if (native_prose_space(ch)) continue;
+                const auto next = ui_message_trie_[node].next.find(ch);
+                if (next == ui_message_trie_[node].next.end()) { node = -1; break; }
+                node = next->second;
+            }
+            if (node >= 0) {
+                const int index = ui_message_trie_[node].rule;
+                if (index >= 0 && static_cast<size_t>(index) < rules_.size()) {
+                    const auto &rule = rules_[static_cast<size_t>(index)];
+                    if (rule.ui_message && rule.source == source && !rule.target.empty())
+                        return rule.target;
+                }
+            }
+        }
+        if (const auto literal = exact_literal_translation(std::string(source))) return literal;
+        for (const int index : ui_message_template_rules_) {
+            const auto &rule = rules_[static_cast<size_t>(index)];
+            if (!rule.source.starts_with("Agreement date: ") &&
+                    !rule.source.starts_with("The associated zones must have enough value.")) continue;
+            std::vector<std::string> captures;
+            std::vector<std::pair<size_t, size_t>> ranges;
+            if (!match_catalog_template(rule, source, 0, captures, ranges)) continue;
+            bool complete = false;
+            auto target = translate_template_captures(rule, captures, &complete);
+            if (complete && !target.empty()) return target;
+        }
+        return std::nullopt;
+    };
+    const auto drawn = captured_native_drawn_text_view();
+    const auto top_drawn = captured_native_drawn_text_view(true);
+    for (const auto *layer : {&drawn, &top_drawn}) {
+        for (const auto &draw : *layer) {
+            if (!native_accepted_petition_field(draw.location_picker_field) ||
+                    !draw.location_picker_box || draw.editable_text ||
+                    draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    draw.x < panel.x || draw.x >= panel.x + panel.w ||
+                    draw.y < panel.y || draw.y >= panel.y + panel.h ||
+                    (only_y >= 0 && only_y != draw.y) ||
+                    (screen_override && screen_override != draw.draw_grid) ||
+                    draw.source.empty()) continue;
+            int right = std::min(panel.x + panel.w,
+                draw.location_picker_box->x + draw.location_picker_box->w);
+            if (draw.draw_clip) right = std::min(right, draw.draw_clip->x + draw.draw_clip->w);
+            const int end = std::min(right, draw.x + static_cast<int>(draw.source.size()));
+            if (end <= draw.x) continue;
+            const std::string source = draw.source.substr(0, static_cast<size_t>(end - draw.x));
+            bool visible = true;
+            for (int x = draw.x; x < end; ++x) {
+                const auto ch = screen_override
+                    ? screen_override[(static_cast<size_t>(x) * gps_->dimy + draw.y) * 8]
+                    : visible_char_at(x, draw.y);
+                if (ch != static_cast<unsigned char>(source[static_cast<size_t>(x - draw.x)])) {
+                    visible = false;
+                    break;
+                }
+            }
+            if (!visible) continue;
+            const std::string complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+            std::optional<std::string> target;
+            switch (draw.location_picker_field) {
+            case NativeLocationPickerField::PetitionFor:
+                if (complete == "for") target = catalog("Accepted petition: for");
+                break;
+            case NativeLocationPickerField::PetitionFaith: {
+                std::string_view name = complete;
+                if (name.ends_with('.') && !name.ends_with("...")) name.remove_suffix(1);
+                target = name.empty() ? catalog("Accepted petition: missing name")
+                    : identity(name);
+                break;
+            }
+            case NativeLocationPickerField::PetitionGuild: {
+                constexpr std::string_view suffix = " guild.";
+                if (!complete.ends_with(suffix)) break;
+                const auto profession = std::string_view(complete).substr(0, complete.size() - suffix.size());
+                auto occupation = translate_unit_profession(profession, true);
+                if (!occupation) occupation = translate_ui_message_capture(profession, false);
+                if (occupation) target = *occupation + "行会";
+                break;
+            }
+            case NativeLocationPickerField::PetitionLocation: {
+                const size_t comma = complete.rfind(", ");
+                const auto value = std::string_view(complete).substr(
+                    comma == std::string::npos ? 0 : comma + 2);
+                const size_t digits = value.starts_with('-') ? 1 : 0;
+                if (value.size() < digits + 2 || value.back() != '\x0f' ||
+                        !std::all_of(value.begin() + digits, value.end() - 1,
+                            [](unsigned char ch) { return ch >= '0' && ch <= '9'; })) break;
+                const std::string wealth = std::string(value.substr(0, value.size() - 1)) + "☼";
+                if (comma == std::string::npos) target = wealth;
+                else if (const auto name = identity(std::string_view(complete).substr(0, comma)))
+                    target = *name + "，" + wealth;
+                break;
+            }
+            case NativeLocationPickerField::PetitionFixed:
+            case NativeLocationPickerField::PetitionRequest:
+            case NativeLocationPickerField::PetitionDate:
+                target = catalog(complete);
+                break;
+            default: break;
+            }
+            if (!target || target->empty()) continue;
+            Match match{draw.x, draw.y, static_cast<int>(source.size()),
+                kHoverPictureCaptionRule, *target, source};
+            match.native_picture_caption_box = SDL_Rect{draw.x, draw.y, right - draw.x, 1};
+            match.native_picture_caption_source = complete;
+            match.layout_foreground_rgb = draw.foreground_rgb;
+            matches.push_back(std::move(match));
+        }
+    }
+    return matches;
+}
+
+#ifndef _WIN32
 // Accepted construction petitions have their own native addst identities.
 // Claim every complete field before generic UI/word matching can split names,
 // articles or the separately drawn "for" line. Both PE and ELF use this path.
@@ -120,6 +261,8 @@ void Overlay::append_accepted_petition_matches(std::vector<std::string> &rows,
         }
     }
 }
+
+#endif
 
 // Petitions draw the site's EnglishName as an independent colored line.
 // Its neighboring request prose proves the field's role; a standalone name

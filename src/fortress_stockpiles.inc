@@ -101,42 +101,55 @@ bool Overlay::translated_stockpile_search_matches(std::string_view source,
     return result.usable() && translated_search_text_matches(result.target, query);
 }
 
-// Custom settings have category/filter columns and a value column. The
-// category column can be absent; filters still own stockpile status controls.
-// Ordinary on/off skins also appear in unrelated preference buttons.
-// Read every caption before the task chooser can claim the icon column and
-// search results while leaving the middle filters to English-span centring.
+struct NativeStockpileSettingsState {
+    uintptr_t category_return = 0;
+    uintptr_t filter_return = 0;
+    uintptr_t value_return = 0;
+    StockpileCaptionKind value_kind = StockpileCaptionKind::Value;
+};
+static std::optional<NativeStockpileSettingsState> native_stockpile_settings_state();
+
+// The native interface's open bit and current sub-mode own this page. Its
+// three caption writers distinguish categories, filters (including direct
+// toggles) and values even when search removes the entire value column.
+// Local button geometry is used only to place text and reserve artwork.
 void Overlay::append_fortress_stockpile_settings(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
-    const NativePanelBorders borders(*gps_);
+    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
+    const auto state = native_stockpile_settings_state();
+    if (!state) return;
     const auto settings = native_ui_settings();
     const bool classic = settings && settings->classic;
     struct Caption {
-        NativeCategoryButton button;
-        SDL_Rect panel;
         NativeTextCard card;
-        bool category;
-        int status_left;
+        StockpileCaptionKind kind;
+        const NativeDrawnTextRow *draw;
     };
     std::vector<Caption> captions;
-    for (int y = 0; y < gps_->dimy; ++y) {
-        for (const auto &field : split_text_fields(rows[y])) {
+    const std::array draws{captured_native_drawn_text_view(),
+        captured_native_drawn_text_view(true)};
+    for (const auto &layer : draws) {
+        for (const auto &draw : layer) {
+            const bool category = draw.native_caller == state->category_return;
+            const bool value = draw.native_caller == state->value_return;
+            if (!draw.native_caller || (!category && !value &&
+                    draw.native_caller != state->filter_return)) continue;
+            if (draw.x < 0 || draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy ||
+                    draw.source.empty() || draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x) ||
+                    (draw.draw_dimx && draw.draw_dimx != gps_->dimx) ||
+                    (draw.draw_dimy && draw.draw_dimy != gps_->dimy) ||
+                    rows[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0) continue;
+            const auto text = trim_view(draw.source);
+            if (text.empty()) continue;
+            const int first = draw.x + static_cast<int>(text.data() - draw.source.data());
+            const int last = first + static_cast<int>(text.size());
             const auto setting = native_stockpile_setting_button_frame(
-                *gps_, field.start, field.end, y);
+                *gps_, first, last, draw.y);
             if (!setting) continue;
             const auto *button = &setting->button;
-            if (std::any_of(captions.begin(), captions.end(), [&](const Caption &seen) {
-                    return seen.button.interior.x == button->interior.x &&
-                        seen.button.interior.y == button->interior.y;
-                })) continue;
             const auto &box = button->interior;
-            // The complete three-row control must fit inside its owner. A
-            // caption-only query can mistake the button's own ASCII border
-            // for the outer settings panel and then reject the whole row.
-            const auto panel = native_panel_interior(borders, *gps_, box);
-            if (!panel || box.y < panel->y || box.y + box.h > panel->y + panel->h) continue;
-            const auto icon = native_category_button_text_rect(
-                *gps_, field.start, field.end, y, button);
+            const auto icon = category ? native_category_button_text_rect(
+                *gps_, first, last, draw.y, button) : std::nullopt;
             const int source_left = !classic && icon ? icon->x : box.x;
             const int text_left = source_left + 1;
             int right = setting->status_left >= 0 ? setting->status_left - 1 : box.x + box.w;
@@ -165,102 +178,29 @@ void Overlay::append_fortress_stockpile_settings(std::vector<std::string> &rows,
                     return rows[row.y].compare(row.x, row.source.size(), row.source) != 0;
                 })) continue;
             card->interior = {text_left, box.y, right - text_left, box.h};
-            captions.push_back({*button, *panel, std::move(*card),
-                icon.has_value(), setting->status_left});
+            if (std::any_of(captions.begin(), captions.end(), [&](const Caption &seen) {
+                    return seen.card.interior.x == card->interior.x &&
+                        seen.card.interior.y == card->interior.y;
+                })) continue;
+            captions.push_back({std::move(*card),
+                value ? state->value_kind : StockpileCaptionKind::Label, &draw});
         }
-    }
-    const auto same_panel = [](const SDL_Rect &a, const SDL_Rect &b) {
-        return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
-    };
-    std::vector<SDL_Rect> settings_panels;
-    // The stockpile-only status control and the search field in the same
-    // owner prove the page even without category icons or visible results.
-    // A covered category column must not send the remaining filter labels
-    // and material names to generic matching.
-    for (const auto &caption : captions) {
-        if (caption.status_left < 0 ||
-            std::any_of(settings_panels.begin(), settings_panels.end(),
-                [&](const SDL_Rect &panel) { return same_panel(panel, caption.panel); })) continue;
-        bool found = false;
-        const int panel_right = caption.panel.x + caption.panel.w;
-        for (int top = caption.panel.y;
-                top + 3 <= caption.button.interior.y && !found; ++top)
-            for (int x = caption.button.interior.x + caption.button.interior.w;
-                    x + 4 < panel_right; ++x) {
-                const auto search = native_textbox_rect_at(*gps_, x, top);
-                if (search && search->x + search->w <= panel_right) {
-                    found = true;
-                    break;
-                }
-            }
-        if (found) settings_panels.push_back(caption.panel);
-    }
-    for (const auto &panel : settings_panels) {
-        int category_left = gps_->dimx;
-        for (const auto &caption : captions)
-            if (caption.status_left >= 0 && same_panel(panel, caption.panel))
-                category_left = std::min(category_left, caption.button.interior.x);
-        const bool has_filter_column = std::any_of(captions.begin(), captions.end(),
-            [&](const Caption &caption) {
-                return caption.status_left >= 0 && same_panel(panel, caption.panel) &&
-                    caption.button.interior.x > category_left;
-            });
-        for (auto &caption : captions)
-            if (same_panel(panel, caption.panel))
-                caption.category = caption.status_left >= 0 &&
-                    caption.button.interior.x == category_left &&
-                    (has_filter_column || caption.category);
-    }
-    // Keep the graphical icon/category proof when the status controls are
-    // covered. A shared on/off skin alone is also used by other preferences.
-    for (const auto &category : captions) {
-        if (!category.category || std::any_of(settings_panels.begin(), settings_panels.end(),
-                [&](const SDL_Rect &panel) { return same_panel(panel, category.panel); })) continue;
-        if (std::any_of(captions.begin(), captions.end(), [&](const Caption &other) {
-                return !other.category && other.button.toggle &&
-                    other.button.interior.x >= category.button.interior.x + category.button.interior.w &&
-                    same_panel(category.panel, other.panel);
-            })) settings_panels.push_back(category.panel);
     }
     const auto clipped = captured_clipped_captions();
     for (const auto &caption : captions) {
-        if (std::none_of(settings_panels.begin(), settings_panels.end(), [&](const SDL_Rect &panel) {
-                return same_panel(caption.panel, panel);
-            })) continue;
-        int last_column = caption.button.interior.x;
-        std::string category, filter;
-        for (const auto &other : captions) {
-            if (!same_panel(caption.panel, other.panel)) continue;
-            last_column = std::max(last_column, other.button.interior.x);
-        }
-        for (const auto &other : captions) {
-            if (!same_panel(caption.panel, other.panel)) continue;
-            if (!other.button.selected || other.card.rows.empty()) continue;
-            const auto source = lower(normalize_utterance(other.card.rows.front().source));
-            if (other.category) category = source;
-            else if (other.status_left >= 0 || other.button.interior.x < last_column) filter = source;
-        }
-        const bool candidate = !caption.category && caption.status_left < 0 &&
-            caption.button.interior.x == last_column;
-        auto kind = candidate ? StockpileCaptionKind::Value : StockpileCaptionKind::Label;
-        if (candidate) {
-            if (filter == "color") kind = StockpileCaptionKind::Color;
-            else if (category == "wood") kind = StockpileCaptionKind::Wood;
-            else if (filter == "type" || filter == "item types" || filter == "weapons" ||
-                     filter == "trap components" || filter == "body" || filter == "head" ||
-                     filter == "feet" || filter == "hands" || filter == "legs" || filter == "shield")
-                kind = StockpileCaptionKind::ItemType;
-        }
         std::vector<Match> labels;
         for (const auto &row : caption.card.rows) {
             std::string source = row.source;
+            if (caption.draw->x == row.x && caption.draw->y == row.y &&
+                    caption.draw->source == source && !caption.draw->complete_source.empty())
+                source = caption.draw->complete_source;
             for (const auto &capture : clipped)
                 if (capture.x == row.x && capture.y == row.y && capture.visible == source) {
                     source = capture.complete;
                     break;
                 }
             source = normalize_utterance(source);
-            const auto translation = translate_stockpile_setting_display(source, kind);
+            const auto translation = translate_stockpile_setting_display(source, caption.kind);
             Match label{row.x, row.y, static_cast<int>(row.source.size()),
                 kFortressStockpileSettingRule, translation.usable()
                     ? translation.target : native_text_to_utf8(source), row.source};

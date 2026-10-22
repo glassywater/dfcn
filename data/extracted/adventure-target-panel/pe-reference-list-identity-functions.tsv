@@ -1,0 +1,7 @@
+role	start	end	assembly	image	path
+caption	0x132e430	0x132f971	pe-reference-list-identity-caption.asm	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+role	0x132e0c0	0x132e428	pe-reference-list-identity-role.asm	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+selected-name	0xc3a4f0	0xc3a588	pe-reference-list-identity-selected-name.asm	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+language-name	0xa94030	0xa946d1	pe-reference-list-identity-language-name.asm	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+caste-name	0xaa3bd0	0xaa3d93	pe-reference-list-identity-caste-name.asm	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+office-territory	0x9bdfb0	0x9be0f8	pe-reference-list-identity-office-territory.asm	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe

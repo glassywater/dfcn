@@ -28,6 +28,7 @@ static bool native_info_background_cell_hidden(const graphicst *graphics,
         int x, int y) noexcept {
     if (native_character_background_cell_hidden(graphics, x, y)) return true;
     if (native_squads_background_cell_hidden(graphics, x, y)) return true;
+    if (native_petitions_background_cell_hidden(graphics, x, y)) return true;
     if (native_reports_background_cell_hidden(graphics, x, y)) return true;
     if (native_stocks_background_cell_hidden(graphics, x, y)) return true;
     return graphics && g_native_info_layer.ready &&

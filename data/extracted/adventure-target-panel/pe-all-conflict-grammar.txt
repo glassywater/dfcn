@@ -1,0 +1,108 @@
+Target chooser conflict prefix: native PE source grammar
+
+Source provenance
+-----------------
+Both configured images in data/runtime/native-pe-images.json were read again.
+The actual Ally: literal's RIP-relative load identifies the prefix's unwind
+owner; the first direct call in that owner identifies the level selector.
+The actual target chooser calls that same prefix before the unit formatter.
+
+steam   PE:6a70a6d9:02711000
+  chooser RVA 0x878600, prefix call RVA 0x879089
+  prefix RVA 0x7e4860..0x7e4e74; native switch data begins at 0x7e4e74
+  direct level selection RVA 0x14e3010..0x14e334c
+  following unit identity call RVA 0x8790b8 -> 0x132e430
+  following identity draw RVA 0x8790dd -> 0xad9960
+classic PE:6a70b91c:0270a000
+  chooser RVA 0x875e80, prefix call RVA 0x876909
+  prefix RVA 0x7e20e0..0x7e26f4; native switch data begins at 0x7e26f4
+  direct level selection RVA 0x14ddf80..0x14de2bc
+  following unit identity call RVA 0x876938 -> 0x13293a0
+  following identity draw RVA 0x87695d -> 0xad69a0
+
+pe-steam-conflict-decompiled.c and pe-classic-conflict-decompiled.c contain
+actual Ghidra 12.1.4 output, not a handwritten substitute. The source assembly,
+all conditional branches, comparison operands, indirect calls, switch selector
+aliases, literal operands and caller-order excerpts are adjacent. The C's
+"Switch is manually overridden" marks the native seven-entry PE jump table
+retained in pe-all-conflict-switches.tsv, not inferred cases. Ghidra's global
+width-overlap notice does not omit a prefix branch.
+
+Complete finite output grammar
+------------------------------
+Input target is the currently controlled unit:
+  Emit nothing, before looking up any conflict.
+
+Otherwise call the direct level selector with controlled unit and target.
+For direct level != -1, interpret the switch range as unsigned 0..6:
+  0 -> "Encounter"   (foreground 7, non-bright)
+  1 -> "Horseplay"   (foreground 2, bright)
+  2 -> "Training"    (foreground 7, bright)
+  3 -> "Brawl"       (foreground 3, bright)
+  4 -> "Non-lethal"  (foreground 6, bright)
+  5 -> "Lethal"      (foreground 4, bright)
+  6 -> "No Quarter"  (foreground 5, bright)
+  Any other value -> no word and no color assignment in the switch.
+  Every one of these paths then emits ": " as a separate native string draw.
+  Thus out-of-range values other than -1 produce a colon-only prefix.
+
+For direct level == -1, the separate shared-participant branch:
+  Iterate the controlled unit's activity IDs from +0x300 through +0x308.
+  Skip an ID of -1, an empty activity vector, and unresolved IDs.
+  Require activity type 2 at activity+0x4.
+  Iterate its events; require virtual event type 8 and event+0x14 bit 0 clear.
+  Iterate each event's participant groups at +0x48 through +0x50.
+  Require BOTH controlled unit and target in the SAME group. For each unit,
+  try its historical-figure ID (+0xc30) in group+0x8 first, then its unit ID
+  (+0x130) in group+0x20 if historical-figure lookup returns -1.
+  For eligible groups, fold all relation levels from group+0x38..+0x40;
+  initial sentinel is -1, and each candidate replaces it when sentinel==-1
+  or candidate>sentinel.
+  If the final selected level remains -1: emit nothing.
+  Otherwise: set foreground 1, bright, and emit the single string "Ally: ".
+  The shared level does not re-enter the seven-level switch.
+
+The complete distinct prefix strings are therefore:
+  "", "Encounter: ", "Horseplay: ", "Training: ", "Brawl: ",
+  "Non-lethal: ", "Lethal: ", "No Quarter: ", ": ", "Ally: ".
+There is no "No conflict", "Unknown", "Enemy", or fallback-name literal.
+Suffix literals such as "r", "y", "al" and "er" in the operand inventory
+are the last bytes of small-string copies, not independent display choices.
+The direct separator uses mov eax,0x203a followed by a 16-bit small-string
+store; its bytes are explicitly retained in the literal inventory.
+
+Direct level selector
+---------------------
+This helper writes no text. It visits the controlled unit's activities using
+the same activity and event eligibility rules. It finds different participant
+groups for the controlled unit and target. A group containing both resets
+the pending opposing groups for that event. With both distinct groups found,
+it looks up the target group ID in the controlled group's relation vector
+and returns the relation's level at +4. Exhausting eligible activities without
+such a relation returns -1 and enables the prefix's shared-group branch.
+The original helper and all of its branches are retained in the actual C.
+
+Identity composition and empty identity
+--------------------------------------
+The target chooser initializes the identity buffer and calls the complete
+unit formatter only AFTER drawing the prefix, then draws that buffer in the
+ordinary name color. There is no identity-length predicate before the prefix,
+no fallback name at that call site, and no conditional suppression of the
+prefix based on identity content. Consequently each nonempty prefix can be
+visible with an empty identity string. A translator must not lose that prefix
+merely because there is no following identity capture. An empty prefix leaves
+only the identity, and empty prefix plus empty identity leaves this field empty.
+This describes empty string content, not a claim that a null unit pointer is
+a valid input to the native helper.
+
+Offline extraction tools
+------------------------
+tools/extract_adventure_target_conflict_pe.py reads the two configured files
+using the fixed Python and fixed toolchain objdump.exe, and saves the native
+sources. tools/DecompileAdventureTargetConflictPE.java consumes those sources.
+Actual C was produced with the installed ghidra_12.1.4_PUBLIC analyzer and
+jdk-25.0.4.1+1, -import each configured image -noanalysis -scriptPath
+D:/workspace/dfcn/tools -postScript DecompileAdventureTargetConflictPE.java
+D:/workspace/dfcn/data/extracted/adventure-target-panel steam|classic
+-deleteProject. Each edition used its own project, user home, settings,
+cache and temporary directory. No game process or desktop was accessed.

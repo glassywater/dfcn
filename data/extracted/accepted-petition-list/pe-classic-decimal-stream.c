@@ -1,0 +1,32 @@
+/* classic PE:6a70b91c:0270a000; decimal-stream; RVA 0x529db0..0x529e88 */
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void petition_list_decimal_stream(int value,undefined *output)
+
+{
+  undefined1 auStack_158 [44];
+  int iStack_12c;
+  longlong lStack_128;
+  undefined1 auStack_120 [8];
+  undefined1 auStack_118 [120];
+  undefined1 auStack_a0 [104];
+  undefined1 auStack_38 [32];
+  ulonglong uStack_18;
+  
+  uStack_18 = _DAT_141896040 ^ (ulonglong)auStack_158;
+  FUN_1402444e0(&lStack_128);
+  __6__basic_ostream_DU__char_traits_D_std___std__QEAAAEAV01_H_Z(&lStack_128,value);
+  FUN_1402447b0(auStack_120,auStack_38);
+  FUN_1401f9b60(output,auStack_38);
+  FUN_14006f7e0(auStack_38);
+  *(undefined **)(auStack_120 + (longlong)*(int *)(lStack_128 + 4) + -8) = &UNK_141610aa0;
+  *(int *)((longlong)&iStack_12c + (longlong)*(int *)(lStack_128 + 4)) =
+       *(int *)(lStack_128 + 4) + -0x88;
+  FUN_1402443f0(auStack_120);
+  __1__basic_ostream_DU__char_traits_D_std___std__UEAA_XZ(auStack_118);
+  __1__basic_ios_DU__char_traits_D_std___std__UEAA_XZ(auStack_a0);
+  FUN_1415345d0(uStack_18 ^ (ulonglong)auStack_158);
+  return;
+}
+

@@ -1,0 +1,187 @@
+role	kind	native_text	instruction_sources
+list-inline-region	cstring	Build guildhall	reference:0x3f9ad4;classic:0x3f7694
+list-inline-region	cstring	Build grand guildhall	reference:0x3f9b03;classic:0x3f76c3
+list-inline-region	inline-character	.	reference:0x3f9b6e;reference:0x3f9b83;reference:0x3f9b98;reference:0x3f9caa;reference:0x3f9cbf;reference:0x3f9cd4;reference:0x3f9ead;reference:0x3f9ec2;reference:0x3f9ed7;reference:0x3fa000;reference:0x3fa015;reference:0x3fa02a;reference:0x3fa0f8;reference:0x3fa10d;reference:0x3fa122;reference:0x3fa2fb;reference:0x3fa310;reference:0x3fa325;classic:0x3f772e;classic:0x3f7743;classic:0x3f7758;classic:0x3f786a;classic:0x3f787f;classic:0x3f7894;classic:0x3f7a6d;classic:0x3f7a82;classic:0x3f7a97;classic:0x3f7bc0;classic:0x3f7bd5;classic:0x3f7bea;classic:0x3f7cb8;classic:0x3f7ccd;classic:0x3f7ce2;classic:0x3f7ebb;classic:0x3f7ed0;classic:0x3f7ee5
+list-inline-region	cstring	 guild	reference:0x3f9c44;classic:0x3f7804
+list-inline-region	cstring	st	reference:0x3f9d7c;reference:0x3fa1ca;classic:0x3f793c;classic:0x3f7d8a
+list-inline-region	cstring	nd	reference:0x3f9d88;reference:0x3fa1d6;classic:0x3f7948;classic:0x3f7d96
+list-inline-region	cstring	rd	reference:0x3f9d94;reference:0x3fa1e2;classic:0x3f7954;classic:0x3f7da2
+list-inline-region	cstring	th	reference:0x3f9da0;reference:0x3fa1ee;classic:0x3f7960;classic:0x3f7dae
+list-inline-region	cstring	 	reference:0x3f9db3;reference:0x3fa201;classic:0x3f7973;classic:0x3f7dc1
+list-inline-region	cstring	, 	reference:0x3f9df5;reference:0x3fa243;classic:0x3f79b5;classic:0x3f7e03
+list-inline-region	cstring	Build temple	reference:0x3f9f66;classic:0x3f7b26
+list-inline-region	cstring	Build temple complex	reference:0x3f9f95;classic:0x3f7b55
+base-profession	cstring	s	reference:0x132e1e3;reference:0x132e363;classic:0x1329153;classic:0x13292d3
+base-profession	append-character	 	reference:0x132e238;reference:0x132e2b5;classic:0x13291a8;classic:0x1329225
+base-profession	cstring	peasant	reference:0x132e334;classic:0x13292a4
+base-profession	cstring	Peasant	reference:0x132e33b;classic:0x13292ab
+profession-words	cstring	miner	reference:0x132cceb;classic:0x1327c5b
+profession-words	cstring	woodworker	reference:0x132cd05;classic:0x1327c75
+profession-words	cstring	carpenter	reference:0x132cd1f;classic:0x1327c8f
+profession-words	cstring	bowyer	reference:0x132cd39;classic:0x1327ca9
+profession-words	cstring	woodcutter	reference:0x132cd53;classic:0x1327cc3
+profession-words	cstring	stoneworker	reference:0x132cd6d;classic:0x1327cdd
+profession-words	cstring	engraver	reference:0x132cd87;classic:0x1327cf7
+profession-words	cstring	stonecutter	reference:0x132cda1;classic:0x1327d11
+profession-words	cstring	stone carver	reference:0x132cdbb;classic:0x1327d2b
+profession-words	cstring	mason	reference:0x132cdd5;classic:0x1327d45
+profession-words	cstring	ranger	reference:0x132cdef;classic:0x1327d5f
+profession-words	cstring	animal caretaker	reference:0x132ce09;classic:0x1327d79
+profession-words	cstring	animal trainer	reference:0x132ce23;classic:0x1327d93
+profession-words	cstring	hunter	reference:0x132ce3d;classic:0x1327dad
+profession-words	cstring	trapper	reference:0x132ce57;classic:0x1327dc7
+profession-words	cstring	animal dissector	reference:0x132ce71;classic:0x1327de1
+profession-words	cstring	metalsmith	reference:0x132ce8b;classic:0x1327dfb
+profession-words	cstring	furnace operator	reference:0x132cea5;classic:0x1327e15
+profession-words	cstring	weaponsmith	reference:0x132cebf;classic:0x1327e2f
+profession-words	cstring	armorer	reference:0x132ced9;classic:0x1327e49
+profession-words	cstring	blacksmith	reference:0x132cef3;classic:0x1327e63
+profession-words	cstring	metalcrafter	reference:0x132cf0d;classic:0x1327e7d
+profession-words	cstring	jeweler	reference:0x132cf27;classic:0x1327e97
+profession-words	cstring	gem cutter	reference:0x132cf41;classic:0x1327eb1
+profession-words	cstring	gem setter	reference:0x132cf5b;classic:0x1327ecb
+profession-words	cstring	craftsman	reference:0x132cf6f;classic:0x1327edf
+profession-words	cstring	craftsmen	reference:0x132cf76;classic:0x1327ee6
+profession-words	cstring	woodcrafter	reference:0x132cf95;classic:0x1327f05
+profession-words	cstring	papermaker	reference:0x132cfaf;classic:0x1327f1f
+profession-words	cstring	bookbinder	reference:0x132cfc9;classic:0x1327f39
+profession-words	cstring	potter	reference:0x132cfe3;classic:0x1327f53
+profession-words	cstring	glazer	reference:0x132cffd;classic:0x1327f6d
+profession-words	cstring	wax worker	reference:0x132d017;classic:0x1327f87
+profession-words	cstring	stonecrafter	reference:0x132d031;classic:0x1327fa1
+profession-words	cstring	leatherworker	reference:0x132d04b;classic:0x1327fbb
+profession-words	cstring	bone carver	reference:0x132d065;classic:0x1327fd5
+profession-words	cstring	weaver	reference:0x132d07f;classic:0x1327fef
+profession-words	cstring	clothier	reference:0x132d099;classic:0x1328009
+profession-words	cstring	glassmaker	reference:0x132d0b3;classic:0x1328023
+profession-words	cstring	strand extractor	reference:0x132d0cd;classic:0x132803d
+profession-words	cstring	fishery worker	reference:0x132d0e7;classic:0x1328057
+profession-words	cstring	fisherman	reference:0x132d0fb;classic:0x132806b
+profession-words	cstring	fishermen	reference:0x132d102;classic:0x1328072
+profession-words	cstring	fish dissector	reference:0x132d121;classic:0x1328091
+profession-words	cstring	fish cleaner	reference:0x132d13b;classic:0x13280ab
+profession-words	cstring	farmer	reference:0x132d155;classic:0x13280c5
+profession-words	cstring	cheesemaker	reference:0x132d16f;classic:0x13280df
+profession-words	cstring	milker	reference:0x132d189;classic:0x13280f9
+profession-words	cstring	gelder	reference:0x132d1a3;classic:0x1328113
+profession-words	cstring	shearer	reference:0x132d1bd;classic:0x132812d
+profession-words	cstring	spinner	reference:0x132d1d7;classic:0x1328147
+profession-words	cstring	cook	reference:0x132d1f1;classic:0x1328161
+profession-words	cstring	thresher	reference:0x132d20b;classic:0x132817b
+profession-words	cstring	miller	reference:0x132d225;classic:0x1328195
+profession-words	cstring	butcher	reference:0x132d23f;classic:0x13281af
+profession-words	cstring	tanner	reference:0x132d259;classic:0x13281c9
+profession-words	cstring	dyer	reference:0x132d273;classic:0x13281e3
+profession-words	cstring	presser	reference:0x132d28d;classic:0x13281fd
+profession-words	cstring	beekeeper	reference:0x132d2a7;classic:0x1328217
+profession-words	cstring	planter	reference:0x132d2c1;classic:0x1328231
+profession-words	cstring	herbalist	reference:0x132d2db;classic:0x132824b
+profession-words	cstring	brewer	reference:0x132d2f5;classic:0x1328265
+profession-words	cstring	soap maker	reference:0x132d30f;classic:0x132827f
+profession-words	cstring	potash maker	reference:0x132d329;classic:0x1328299
+profession-words	cstring	lye maker	reference:0x132d343;classic:0x13282b3
+profession-words	cstring	wood burner	reference:0x132d35d;classic:0x13282cd
+profession-words	cstring	engineer	reference:0x132d377;classic:0x13282e7
+profession-words	cstring	mechanic	reference:0x132d391;classic:0x1328301
+profession-words	cstring	siege engineer	reference:0x132d3ab;classic:0x132831b
+profession-words	cstring	siege operator	reference:0x132d3c5;classic:0x1328335
+profession-words	cstring	pump operator	reference:0x132d3df;classic:0x132834f
+profession-words	cstring	clerk	reference:0x132d3f9;classic:0x1328369
+profession-words	cstring	administrator	reference:0x132d413;classic:0x1328383
+profession-words	cstring	trader	reference:0x132d42d;classic:0x132839d
+profession-words	cstring	poet	reference:0x132d447;classic:0x13283b7
+profession-words	cstring	bard	reference:0x132d461;classic:0x13283d1
+profession-words	cstring	dancer	reference:0x132d47b;classic:0x13283eb
+profession-words	cstring	performer	reference:0x132d495;classic:0x1328405
+profession-words	cstring	scribe	reference:0x132d4af;classic:0x132841f
+profession-words	cstring	tavern keeper	reference:0x132d4c9;classic:0x1328439
+profession-words	cstring	doctor	reference:0x132d4e3;classic:0x1328453
+profession-words	cstring	diagnostician	reference:0x132d4fd;classic:0x132846d
+profession-words	cstring	bone doctor	reference:0x132d517;classic:0x1328487
+profession-words	cstring	suturer	reference:0x132d531;classic:0x13284a1
+profession-words	cstring	surgeon	reference:0x132d54b;classic:0x13284bb
+profession-words	cstring	merchant	reference:0x132d565;classic:0x13284d5
+profession-words	cstring	drunk	reference:0x132d57f;classic:0x13284ef
+profession-words	cstring	hammerman	reference:0x132d593;classic:0x1328503
+profession-words	cstring	hammermen	reference:0x132d59a;classic:0x132850a
+profession-words	cstring	Hammer Lord	reference:0x132d5b9;classic:0x1328529
+profession-words	cstring	spearman	reference:0x132d5d0;classic:0x1328540
+profession-words	cstring	spearmen	reference:0x132d5d7;classic:0x1328547
+profession-words	cstring	Spearmaster	reference:0x132d5f3;classic:0x1328563
+profession-words	cstring	crossbowman	reference:0x132d60a;classic:0x132857a
+profession-words	cstring	crossbowmen	reference:0x132d611;classic:0x1328581
+profession-words	cstring	Elite Crossbowmen	reference:0x132d62a;classic:0x132859a
+profession-words	cstring	Elite Crossbowman	reference:0x132d631;classic:0x13285a1
+profession-words	cstring	wrestler	reference:0x132d64d;classic:0x13285bd
+profession-words	cstring	Elite Wrestler	reference:0x132d667;classic:0x13285d7
+profession-words	cstring	axeman	reference:0x132d67b;classic:0x13285eb
+profession-words	cstring	axemen	reference:0x132d682;classic:0x13285f2
+profession-words	cstring	Axe Lord	reference:0x132d6a1;classic:0x1328611
+profession-words	cstring	swordsman	reference:0x132d6b5;classic:0x1328625
+profession-words	cstring	swordsmen	reference:0x132d6bc;classic:0x132862c
+profession-words	cstring	Swordmaster	reference:0x132d6db;classic:0x132864b
+profession-words	cstring	maceman	reference:0x132d6ef;classic:0x132865f
+profession-words	cstring	macemen	reference:0x132d6f6;classic:0x1328666
+profession-words	cstring	Mace Lord	reference:0x132d715;classic:0x1328685
+profession-words	cstring	pikeman	reference:0x132d729;classic:0x1328699
+profession-words	cstring	pikemen	reference:0x132d730;classic:0x13286a0
+profession-words	cstring	Pikemaster	reference:0x132d74f;classic:0x13286bf
+profession-words	cstring	bowman	reference:0x132d763;classic:0x13286d3
+profession-words	cstring	bowmen	reference:0x132d76a;classic:0x13286da
+profession-words	cstring	Elite Bowman	reference:0x132d786;classic:0x13286f6
+profession-words	cstring	Elite Bowmen	reference:0x132d78d;classic:0x13286fd
+profession-words	cstring	blowgunner	reference:0x132d7a9;classic:0x1328719
+profession-words	cstring	Master Blowgunner	reference:0x132d7c3;classic:0x1328733
+profession-words	cstring	lasher	reference:0x132d7dd;classic:0x132874d
+profession-words	cstring	Master Lasher	reference:0x132d7f7;classic:0x1328767
+profession-words	cstring	recruit	reference:0x132d811;classic:0x1328781
+profession-words	cstring	hunting	reference:0x132d82b;classic:0x132879b
+profession-words	cstring	war	reference:0x132d840;classic:0x13287b0
+profession-words	cstring	Master Thief	reference:0x132d855;classic:0x13287c5
+profession-words	cstring	thief	reference:0x132d86f;classic:0x13287df
+profession-words	cstring	monster slayer	reference:0x132d889;classic:0x13287f9
+profession-words	cstring	scout	reference:0x132d8a3;classic:0x1328813
+profession-words	cstring	beast hunter	reference:0x132d8bd;classic:0x132882d
+profession-words	cstring	snatcher	reference:0x132d8d7;classic:0x1328847
+profession-words	cstring	mercenaries	reference:0x132d8ee;classic:0x132885e
+profession-words	cstring	mercenary	reference:0x132d8fb;classic:0x132886b
+profession-words	cstring	sage	reference:0x132d91d;classic:0x132888d
+profession-words	cstring	scholar	reference:0x132d937;classic:0x13288a7
+profession-words	cstring	philosopher	reference:0x132d951;classic:0x13288c1
+profession-words	cstring	mathematician	reference:0x132d96b;classic:0x13288db
+profession-words	cstring	historian	reference:0x132d985;classic:0x13288f5
+profession-words	cstring	astronomer	reference:0x132d99f;classic:0x132890f
+profession-words	cstring	naturalist	reference:0x132d9b9;classic:0x1328929
+profession-words	cstring	chemist	reference:0x132d9d3;classic:0x1328943
+profession-words	cstring	geographer	reference:0x132d9ed;classic:0x132895d
+profession-words	cstring	criminal	reference:0x132da07;classic:0x1328977
+profession-words	cstring	peddler	reference:0x132da21;classic:0x1328991
+profession-words	cstring	prophet	reference:0x132da3b;classic:0x13289ab
+profession-words	cstring	pilgrim	reference:0x132da55;classic:0x13289c5
+profession-words	cstring	monk	reference:0x132da6f;classic:0x13289df
+profession-words	cstring	messenger	reference:0x132da89;classic:0x13289f9
+profession-words	cstring	children	reference:0x132db26;classic:0x1328a96
+profession-words	cstring	child	reference:0x132dc5b;classic:0x1328bcb
+profession-words	cstring	babies	reference:0x132dcb8;reference:0x132de26;classic:0x1328c28;classic:0x1328d96
+profession-words	cstring	baby	reference:0x132dcca;reference:0x132de35;classic:0x1328c3a;classic:0x1328da5
+profession-words	cstring	s	reference:0x132de57;classic:0x1328dc7
+english-generated-name	append-character	`	reference:0xa9477e;reference:0xa948b7;classic:0xa917fe;classic:0xa91937
+english-generated-name	append-character	'	reference:0xa947a2;reference:0xa948db;classic:0xa91822;classic:0xa9195b
+english-generated-name	cstring	 	reference:0xa948a3;reference:0xa9495e;reference:0xa94a3b;reference:0xa94af2;reference:0xa94b9a;reference:0xa94d1f;reference:0xa94e09;classic:0xa91923;classic:0xa919de;classic:0xa91abb;classic:0xa91b72;classic:0xa91c1a;classic:0xa91d9f;classic:0xa91e89
+english-generated-name	cstring	The 	reference:0xa94a5d;reference:0xa94b11;reference:0xa94bb9;reference:0xa94d4b;classic:0xa91add;classic:0xa91b91;classic:0xa91c39;classic:0xa91dcb
+english-generated-name	cstring	the 	reference:0xa94a78;reference:0xa94b1a;reference:0xa94bc2;reference:0xa94d62;classic:0xa91af8;classic:0xa91b9a;classic:0xa91c42;classic:0xa91de2
+english-generated-name	inline-character	-	reference:0xa94c79;classic:0xa91cf9
+english-generated-name	cstring	of 	reference:0xa94e18;classic:0xa91e98
+english-generated-name	cstring	Of 	reference:0xa94e1f;classic:0xa91e9f
+calendar-month	cstring	Granite	reference:0x7733b8;classic:0x770dd8
+calendar-month	cstring	Slate	reference:0x7733cd;classic:0x770ded
+calendar-month	cstring	Felsite	reference:0x7733e2;classic:0x770e02
+calendar-month	cstring	Hematite	reference:0x7733f1;classic:0x770e11
+calendar-month	cstring	Malachite	reference:0x77340c;classic:0x770e2c
+calendar-month	cstring	Galena	reference:0x773421;classic:0x770e41
+calendar-month	cstring	Limestone	reference:0x773436;classic:0x770e56
+calendar-month	cstring	Sandstone	reference:0x77344b;classic:0x770e6b
+calendar-month	cstring	Timber	reference:0x773460;classic:0x770e80
+calendar-month	cstring	Moonstone	reference:0x773475;classic:0x770e95
+calendar-month	cstring	Opal	reference:0x77348a;classic:0x770eaa
+calendar-month	cstring	Obsidian	reference:0x773499;classic:0x770eb9

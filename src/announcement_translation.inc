@@ -201,7 +201,8 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     // Legends event kind does. Combat retains that owner through display
     // fallback; an unresolved combat field is not a different prose kind.
     // IDs are announcement_type in df.g_src.basics.xml.
-    const bool combat_record = native_type >= 6 && native_type <= 48;
+    const bool combat_record = (native_type >= 6 && native_type <= 48) ||
+        native_type == 166 || native_type == 167;
     std::string_view native_scope;
     if (combat_record) native_scope = "sentence";
     else if (native_type == 104) native_scope = "fortress-announcement";

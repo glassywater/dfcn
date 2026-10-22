@@ -7,28 +7,6 @@
 static bool resolve_native_stockpile_search_profile(NativeStockpileSearchProfile &profile) {
     const uintptr_t base = native_history_profile_base();
     if (!base) return false;
-    const std::vector<std::pair<int32_t, StockpileCaptionKind>> caption_modes{
-        // stockpile_view_mode field meanings (df.building.xml); not translated
-        // strings or a separate grammar. All remaining fields are Value.
-        {0x47, StockpileCaptionKind::Color}, // GoodsColor
-        {0x4a, StockpileCaptionKind::Color}, // LeatherColor
-        {0x54, StockpileCaptionKind::Color}, // ClothColor
-        {0x69, StockpileCaptionKind::Color}, // ArmorColor
-        {0x55, StockpileCaptionKind::Wood},
-        {0x16, StockpileCaptionKind::ItemType}, // FurnitureType
-        {0x1e, StockpileCaptionKind::ItemType}, // RefuseItems
-        {0x2d, StockpileCaptionKind::ItemType}, // AmmoType
-        {0x40, StockpileCaptionKind::ItemType}, // GoodsType
-        {0x49, StockpileCaptionKind::ItemType}, // LeatherType
-        {0x57, StockpileCaptionKind::ItemType}, // WeaponsType
-        {0x58, StockpileCaptionKind::ItemType}, // WeaponsTrapcomp
-        {0x5f, StockpileCaptionKind::ItemType}, // ArmorBody
-        {0x60, StockpileCaptionKind::ItemType}, // ArmorHead
-        {0x61, StockpileCaptionKind::ItemType}, // ArmorFeet
-        {0x62, StockpileCaptionKind::ItemType}, // ArmorHands
-        {0x63, StockpileCaptionKind::ItemType}, // ArmorLegs
-        {0x64, StockpileCaptionKind::ItemType}, // ArmorShield
-    };
     const NativeSearchBinding<NativeStockpileSearchProfile> bindings[]{
       {{
         // Complete filter FDE d4ffc0..d501bb: empty-query restore and full candidate traversal.
@@ -78,7 +56,7 @@ static bool resolve_native_stockpile_search_profile(NativeStockpileSearchProfile
         // Changed input calls the same filter, including deletion and clearing.
         {0xf8f8a1, {0x48,0x8d,0x3d,0x38,0x97,0x36,0x01,0x48,0xc7,0x45,0x10,0x00,0x00,0x00,0x00,0x4c,
             0x89,0x6d,0x20,0x48,0xc7,0x45,0x28,0x00,0x00,0x00,0x00,0xe8,0xff,0x06,0x9c,0xff}},
-      }, {0, reinterpret_cast<NativeSearchFoldFn>(native_reference_address(base, 0x25940)), caption_modes, {
+      }, {0, reinterpret_cast<NativeSearchFoldFn>(native_reference_address(base, 0x25940)), {
         {0x950086, 0x25940,
             reinterpret_cast<const void *>(&capture_native_stockpile_search_query_fold)},
         // Replace only the inline find, d500d3..d5014c. No outside branch

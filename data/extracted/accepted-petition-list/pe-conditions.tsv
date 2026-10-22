@@ -1,0 +1,711 @@
+edition	role	instruction_rva	condition
+reference	list-inline-region	0x3f97b5	cmp    BYTE PTR [rip+0x14a953c],0x0        # 0x1418a2cf8
+reference	list-inline-region	0x3f97be	cmp    BYTE PTR [rip+0x14a9783],0x0        # 0x1418a2f48
+reference	list-inline-region	0x3f97cb	cmp    BYTE PTR [rip+0x14a8286],0x0        # 0x1418a1a58
+reference	list-inline-region	0x3f97d8	cmp    BYTE PTR [rip+0x14ada21],0x0        # 0x1418a7200
+reference	list-inline-region	0x3f980a	cmp    BYTE PTR [rip+0x14ad7e7],0x0        # 0x1418a6ff8
+reference	list-inline-region	0x3f983e	cmp    DWORD PTR [rbp-0x40],0x0
+reference	list-inline-region	0x3f9855	cmp    esi,r14d
+reference	list-inline-region	0x3f9863	cmp    r12d,r13d
+reference	list-inline-region	0x3f9892	cmp    edi,esi
+reference	list-inline-region	0x3f989a	cmp    ebx,r12d
+reference	list-inline-region	0x3f98b5	cmp    ebx,r13d
+reference	list-inline-region	0x3f98ce	cmp    edi,r14d
+reference	list-inline-region	0x3f98d7	cmp    ebx,r12d
+reference	list-inline-region	0x3f98ef	cmp    ebx,r13d
+reference	list-inline-region	0x3f990b	cmp    ebx,r12d
+reference	list-inline-region	0x3f991f	cmp    ebx,r13d
+reference	list-inline-region	0x3f9942	cmp    ebx,r13d
+reference	list-inline-region	0x3f994d	cmp    edi,r14d
+reference	list-inline-region	0x3f9997	test   al,al
+reference	list-inline-region	0x3f99af	cmp    r15d,r14d
+reference	list-inline-region	0x3f99c9	test   rax,rax
+reference	list-inline-region	0x3f99d2	test   BYTE PTR [rax+0x4c],0x2
+reference	list-inline-region	0x3f99e5	test   rax,rax
+reference	list-inline-region	0x3f9a01	cmp    eax,0xc
+reference	list-inline-region	0x3f9a27	test   rax,rax
+reference	list-inline-region	0x3f9a3c	test   rax,rax
+reference	list-inline-region	0x3f9a60	test   rax,rax
+reference	list-inline-region	0x3f9a6c	cmp    ax,0x5
+reference	list-inline-region	0x3f9a76	cmp    ax,0xa
+reference	list-inline-region	0x3f9aca	cmp    DWORD PTR [rax+0x1c],0x1
+reference	list-inline-region	0x3f9af9	cmp    DWORD PTR [rax+0x1c],0x2
+reference	list-inline-region	0x3f9b30	cmp    rax,r12
+reference	list-inline-region	0x3f9b3c	test   r14d,r14d
+reference	list-inline-region	0x3f9b58	cmp    r14d,0x3
+reference	list-inline-region	0x3f9c63	cmp    rax,r12
+reference	list-inline-region	0x3f9c78	test   r14d,r14d
+reference	list-inline-region	0x3f9c94	cmp    r14d,0x3
+reference	list-inline-region	0x3f9d59	cmp    edi,0x20
+reference	list-inline-region	0x3f9e6c	cmp    rax,rcx
+reference	list-inline-region	0x3f9e7d	test   esi,esi
+reference	list-inline-region	0x3f9e98	cmp    esi,0x3
+reference	list-inline-region	0x3f9f5c	cmp    DWORD PTR [rax+0x1c],0x1
+reference	list-inline-region	0x3f9f8b	cmp    DWORD PTR [rax+0x1c],0x2
+reference	list-inline-region	0x3f9fc2	cmp    rax,r13
+reference	list-inline-region	0x3f9fce	test   r12d,r12d
+reference	list-inline-region	0x3f9fea	cmp    r12d,0x3
+reference	list-inline-region	0x3fa0b5	cmp    rax,r13
+reference	list-inline-region	0x3fa0c6	test   r14d,r14d
+reference	list-inline-region	0x3fa0e2	cmp    r14d,0x3
+reference	list-inline-region	0x3fa1a7	cmp    edi,0x20
+reference	list-inline-region	0x3fa2ba	cmp    rax,rcx
+reference	list-inline-region	0x3fa2cb	test   esi,esi
+reference	list-inline-region	0x3fa2e6	cmp    esi,0x3
+reference	list-inline-region	0x3fa38e	test   al,al
+reference	list-layout-and-count	0x3f6852	cmp    BYTE PTR [rip+0x14b079f],sil        # 0x1418a6ff8
+reference	list-layout-and-count	0x3f68b5	test   al,al
+reference	list-layout-and-count	0x3f68dd	test   rax,rax
+reference	list-layout-and-count	0x3f68e6	test   BYTE PTR [rax+0x4c],0x2
+reference	list-layout-and-count	0x3f68f9	test   rax,rax
+reference	list-layout-and-count	0x3f6911	cmp    eax,0xc
+reference	list-layout-and-count	0x3f6937	test   rax,rax
+reference	list-layout-and-count	0x3f694c	test   rax,rax
+reference	list-layout-and-count	0x3f696d	test   rax,rax
+reference	list-layout-and-count	0x3f6997	test   al,al
+reference	list-layout-and-count	0x3f69a2	test   esi,esi
+reference	list-layout-and-count	0x3f69bd	cmp    esi,eax
+reference	base-profession	0x132e0fc	cmp    QWORD PTR [rcx+0x18],0xf
+reference	base-profession	0x132e10d	cmp    si,0xfffe
+reference	base-profession	0x132e119	cmp    eax,0x1
+reference	base-profession	0x132e130	test   rax,rax
+reference	base-profession	0x132e13c	test   rsi,rsi
+reference	base-profession	0x132e14a	test   eax,eax
+reference	base-profession	0x132e1c0	test   dil,dil
+reference	base-profession	0x132e1d1	cmp    rdi,0xf
+reference	base-profession	0x132e1dd	cmp    r8,0x1
+reference	base-profession	0x132e1ef	test   eax,eax
+reference	base-profession	0x132e1fa	cmp    rdi,0xf
+reference	base-profession	0x132e218	test   r8,r8
+reference	base-profession	0x132e221	cmp    QWORD PTR [rbp-0x31],0xf
+reference	base-profession	0x132e23d	cmp    r12w,si
+reference	base-profession	0x132e247	cmp    BYTE PTR [rbp-0x71],0x0
+reference	base-profession	0x132e281	test   dil,dil
+reference	base-profession	0x132e293	cmp    QWORD PTR [rbp-0x11],0xf
+reference	base-profession	0x132e2a9	cmp    QWORD PTR [rbp-0x59],0x0
+reference	base-profession	0x132e2bf	cmp    rdx,0xf
+reference	base-profession	0x132e2cf	cmp    rdx,0x1000
+reference	base-profession	0x132e2e7	cmp    rax,0x1f
+reference	base-profession	0x132e303	test   r8,r8
+reference	base-profession	0x132e30c	cmp    QWORD PTR [rbp-0x51],0xf
+reference	base-profession	0x132e31e	cmp    r12w,si
+reference	base-profession	0x132e324	cmp    QWORD PTR [rbp-0x59],0x0
+reference	base-profession	0x132e32b	cmp    QWORD PTR [rbx+0x10],0x0
+reference	base-profession	0x132e342	test   dil,dil
+reference	base-profession	0x132e357	cmp    BYTE PTR [rbp+0x6f],0x0
+reference	base-profession	0x132e37b	cmp    rdx,0xf
+reference	base-profession	0x132e38b	cmp    rdx,0x1000
+reference	base-profession	0x132e3a3	cmp    rax,0x1f
+reference	base-profession	0x132e3c9	cmp    rdi,0xf
+reference	base-profession	0x132e3da	cmp    rdx,0x1000
+reference	base-profession	0x132e3f2	cmp    rax,0x1f
+reference	profession-words	0x132cc37	cmp    r9w,ax
+reference	profession-words	0x132cc7f	test   al,al
+reference	profession-words	0x132ccc4	cmp    r9d,0x86
+reference	profession-words	0x132cf7d	test   r14b,r14b
+reference	profession-words	0x132d109	test   r14b,r14b
+reference	profession-words	0x132d5a1	test   r14b,r14b
+reference	profession-words	0x132d5cd	test   r14b,r14b
+reference	profession-words	0x132d607	test   r14b,r14b
+reference	profession-words	0x132d627	test   r14b,r14b
+reference	profession-words	0x132d689	test   r14b,r14b
+reference	profession-words	0x132d6c3	test   r14b,r14b
+reference	profession-words	0x132d6fd	test   r14b,r14b
+reference	profession-words	0x132d737	test   r14b,r14b
+reference	profession-words	0x132d771	test   r14b,r14b
+reference	profession-words	0x132d783	test   r14b,r14b
+reference	profession-words	0x132d8eb	test   r14b,r14b
+reference	profession-words	0x132da9d	cmp    bp,0xffff
+reference	profession-words	0x132daa7	test   di,di
+reference	profession-words	0x132dac4	cmp    rdi,rax
+reference	profession-words	0x132dad5	cmp    QWORD PTR [rax+0xd0],0x0
+reference	profession-words	0x132dadf	test   r14b,r14b
+reference	profession-words	0x132dafb	cmp    rdi,rcx
+reference	profession-words	0x132db17	test   r14b,r14b
+reference	profession-words	0x132db40	test   di,di
+reference	profession-words	0x132db53	cmp    rdi,rax
+reference	profession-words	0x132db5c	test   bp,bp
+reference	profession-words	0x132db7a	cmp    rbp,rax
+reference	profession-words	0x132db83	cmp    QWORD PTR [rax+0x110],0x0
+reference	profession-words	0x132db92	test   r14b,r14b
+reference	profession-words	0x132dbb9	cmp    rdi,rcx
+reference	profession-words	0x132dbdb	cmp    rbp,rax
+reference	profession-words	0x132dbf7	test   di,di
+reference	profession-words	0x132dc0a	cmp    r8,rax
+reference	profession-words	0x132dc17	cmp    QWORD PTR [rax+0xd0],0x0
+reference	profession-words	0x132dc25	test   di,di
+reference	profession-words	0x132dc2e	test   r14b,r14b
+reference	profession-words	0x132dc46	cmp    r8,rcx
+reference	profession-words	0x132dc6d	cmp    bp,0xffff
+reference	profession-words	0x132dc76	test   di,di
+reference	profession-words	0x132dc93	cmp    rdx,rax
+reference	profession-words	0x132dc9c	cmp    QWORD PTR [rax+0x90],0x0
+reference	profession-words	0x132dcad	test   r14b,r14b
+reference	profession-words	0x132dce4	test   di,di
+reference	profession-words	0x132dcf3	cmp    rdi,rax
+reference	profession-words	0x132dcf8	test   bp,bp
+reference	profession-words	0x132dd16	cmp    rbp,rax
+reference	profession-words	0x132dd1f	cmp    QWORD PTR [rax+0xd0],0x0
+reference	profession-words	0x132dd35	test   r14b,r14b
+reference	profession-words	0x132dd65	test   di,di
+reference	profession-words	0x132dd78	cmp    rdx,rax
+reference	profession-words	0x132dd85	cmp    QWORD PTR [rax+0x90],0x0
+reference	profession-words	0x132dd93	test   di,di
+reference	profession-words	0x132dd98	test   r14b,r14b
+reference	profession-words	0x132ddad	cmp    rdx,rcx
+reference	profession-words	0x132ddb9	cmp    rbx,rdx
+reference	profession-words	0x132ddbe	cmp    QWORD PTR [rdx+0x18],0xf
+reference	profession-words	0x132ddd4	cmp    QWORD PTR [rbx+0x10],0x0
+reference	profession-words	0x132dddb	test   r13b,r13b
+reference	profession-words	0x132dde7	cmp    rcx,0xf
+reference	profession-words	0x132ddf0	cmp    BYTE PTR [rax],0x61
+reference	profession-words	0x132ddf8	cmp    rcx,0xf
+reference	profession-words	0x132de01	cmp    BYTE PTR [rax],0x7a
+reference	profession-words	0x132de09	cmp    rcx,0xf
+reference	profession-words	0x132de1b	test   r14b,r14b
+reference	profession-words	0x132de47	test   r14b,r14b
+reference	profession-words	0x132de4c	test   sil,sil
+reference	profession-words	0x132de66	test   r13b,r13b
+reference	profession-raw-title-available	0x30cea4	test   dx,dx
+reference	profession-raw-title-available	0x30cec0	cmp    r11,rax
+reference	profession-raw-title-available	0x30cece	cmp    r9w,ax
+reference	profession-raw-title-available	0x30cedc	test   r8w,r8w
+reference	profession-raw-title-available	0x30ceff	cmp    r8,rax
+reference	profession-raw-title-available	0x30cf10	cmp    QWORD PTR [rax+rcx*1+0x1830],0x0
+reference	profession-raw-title-available	0x30cf26	cmp    QWORD PTR [rdx+rcx*1+0x230],0x0
+reference	profession-raw-title-available	0x30cf4b	cmp    QWORD PTR [rax+rcx*1+0x230],0x0
+reference	profession-raw-title-selection	0x30cf94	test   si,si
+reference	profession-raw-title-selection	0x30cfac	cmp    rsi,rax
+reference	profession-raw-title-selection	0x30cfba	cmp    di,ax
+reference	profession-raw-title-selection	0x30cfc3	test   r9w,r9w
+reference	profession-raw-title-selection	0x30cfe7	cmp    r8,rax
+reference	profession-raw-title-selection	0x30d005	test   r14b,r14b
+reference	profession-raw-title-selection	0x30d022	cmp    rbx,rdx
+reference	profession-raw-title-selection	0x30d027	cmp    QWORD PTR [rdx+0x18],0xf
+reference	profession-raw-title-selection	0x30d03d	cmp    QWORD PTR [rbx+0x10],0x0
+reference	profession-raw-title-selection	0x30d044	cmp    BYTE PTR [rsp+0x70],0x0
+reference	profession-raw-title-selection	0x30d052	cmp    rax,0xf
+reference	profession-raw-title-selection	0x30d05b	cmp    BYTE PTR [rcx],0x61
+reference	profession-raw-title-selection	0x30d063	cmp    rax,0xf
+reference	profession-raw-title-selection	0x30d06c	cmp    BYTE PTR [rcx],0x7a
+reference	profession-raw-title-selection	0x30d071	cmp    rax,0xf
+reference	profession-raw-creature-title	0x1bb339	test   r8w,r8w
+reference	profession-raw-creature-title	0x1bb356	cmp    r8,rax
+reference	profession-raw-creature-title	0x1bb364	cmp    r9w,ax
+reference	profession-raw-creature-title	0x1bb36e	cmp    BYTE PTR [rsp+0x50],0x0
+reference	profession-raw-creature-title	0x1bb391	cmp    rbx,rdx
+reference	profession-raw-creature-title	0x1bb396	cmp    QWORD PTR [rdx+0x18],0xf
+reference	profession-raw-creature-title	0x1bb3ac	cmp    QWORD PTR [rbx+0x10],0x0
+reference	profession-raw-creature-title	0x1bb3b3	cmp    BYTE PTR [rsp+0x58],0x0
+reference	profession-raw-creature-title	0x1bb3c1	cmp    rax,0xf
+reference	profession-raw-creature-title	0x1bb3ca	cmp    BYTE PTR [rcx],0x61
+reference	profession-raw-creature-title	0x1bb3d2	cmp    rax,0xf
+reference	profession-raw-creature-title	0x1bb3db	cmp    BYTE PTR [rcx],0x7a
+reference	profession-raw-creature-title	0x1bb3e0	cmp    rax,0xf
+reference	caste-words	0xaa3be5	cmp    QWORD PTR [rdx+0x18],0xf
+reference	caste-words	0xaa3c05	cmp    r9w,0xffff
+reference	caste-words	0xaa3c10	test   r8b,r8b
+reference	caste-words	0xaa3c19	test   si,si
+reference	caste-words	0xaa3c33	cmp    rsi,rax
+reference	caste-words	0xaa3c38	test   r9w,r9w
+reference	caste-words	0xaa3c5f	cmp    r8,rax
+reference	caste-words	0xaa3c70	cmp    rdi,rdx
+reference	caste-words	0xaa3c75	cmp    QWORD PTR [rdx+0x18],0xf
+reference	caste-words	0xaa3c92	cmp    QWORD PTR [rdi+0x10],0x0
+reference	caste-words	0xaa3caa	test   si,si
+reference	caste-words	0xaa3cbd	cmp    rsi,rax
+reference	caste-words	0xaa3cc2	test   r9w,r9w
+reference	caste-words	0xaa3ce5	cmp    r8,rax
+reference	caste-words	0xaa3cf2	cmp    rdi,rdx
+reference	caste-words	0xaa3cf7	cmp    QWORD PTR [rdx+0x18],0xf
+reference	caste-words	0xaa3d14	cmp    QWORD PTR [rdi+0x10],0x0
+reference	caste-words	0xaa3d1e	test   si,si
+reference	caste-words	0xaa3d31	cmp    rbx,rax
+reference	caste-words	0xaa3d3e	cmp    rdi,rdx
+reference	caste-words	0xaa3d43	cmp    QWORD PTR [rdx+0x18],0xf
+reference	caste-words	0xaa3d6c	test   r8b,r8b
+reference	caste-words	0xaa3d71	test   si,si
+reference	caste-words	0xaa3d84	cmp    rbx,rax
+reference	english-generated-name	0xa94723	cmp    BYTE PTR [rcx+0x72],r13b
+reference	english-generated-name	0xa94737	cmp    eax,0xa
+reference	english-generated-name	0xa9474e	cmp    QWORD PTR [rdx+0x18],0xf
+reference	english-generated-name	0xa9476a	cmp    QWORD PTR [rsi+0x30],r13
+reference	english-generated-name	0xa94770	test   r12d,0xfffffffd
+reference	english-generated-name	0xa9478b	cmp    QWORD PTR [rdx+0x18],0xf
+reference	english-generated-name	0xa947c4	cmp    QWORD PTR [rsi+0x18],0xf
+reference	english-generated-name	0xa947ce	cmp    r14,rax
+reference	english-generated-name	0xa947d7	cmp    r14,0xf
+reference	english-generated-name	0xa94801	cmp    rbx,rax
+reference	english-generated-name	0xa9480b	cmp    rbx,rcx
+reference	english-generated-name	0xa9483a	cmp    BYTE PTR [rbp-0x39],0x0
+reference	english-generated-name	0xa94859	cmp    rbx,0xf
+reference	english-generated-name	0xa94879	test   rbx,rbx
+reference	english-generated-name	0xa9488c	cmp    QWORD PTR [rsi+0x30],0x0
+reference	english-generated-name	0xa94893	cmp    r12d,0x1
+reference	english-generated-name	0xa94899	test   bl,bl
+reference	english-generated-name	0xa948c4	cmp    QWORD PTR [rdx+0x18],0xf
+reference	english-generated-name	0xa948e2	cmp    QWORD PTR [rsi+0x30],0x0
+reference	english-generated-name	0xa948e9	cmp    r12d,0x2
+reference	english-generated-name	0xa948f6	cmp    edx,0xffffffff
+reference	english-generated-name	0xa948fb	cmp    DWORD PTR [rsi+0x44],edx
+reference	english-generated-name	0xa94904	test   bl,bl
+reference	english-generated-name	0xa94908	test   r14b,r14b
+reference	english-generated-name	0xa9494d	cmp    QWORD PTR [rbp-0x19],0x0
+reference	english-generated-name	0xa94954	test   bl,bl
+reference	english-generated-name	0xa9496d	test   r15b,r15b
+reference	english-generated-name	0xa9497f	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-generated-name	0xa9499b	cmp    rdx,0xf
+reference	english-generated-name	0xa949ab	cmp    rdx,0x1000
+reference	english-generated-name	0xa949c3	cmp    rax,0x1f
+reference	english-generated-name	0xa949d5	cmp    DWORD PTR [rsi+0x54],0xffffffff
+reference	english-generated-name	0xa949db	cmp    DWORD PTR [rsi+0x48],0xffffffff
+reference	english-generated-name	0xa949e1	cmp    DWORD PTR [rsi+0x4c],0xffffffff
+reference	english-generated-name	0xa949eb	test   bl,bl
+reference	english-generated-name	0xa949ef	test   r14b,r14b
+reference	english-generated-name	0xa94a26	cmp    QWORD PTR [rbp-0x19],0x0
+reference	english-generated-name	0xa94a31	test   bl,bl
+reference	english-generated-name	0xa94a4a	cmp    QWORD PTR [rdi+0x10],0x0
+reference	english-generated-name	0xa94a51	cmp    r15b,0x1
+reference	english-generated-name	0xa94a8a	test   r15b,r15b
+reference	english-generated-name	0xa94a9c	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-generated-name	0xa94abc	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-generated-name	0xa94add	cmp    QWORD PTR [rbp-0x19],0x0
+reference	english-generated-name	0xa94ae8	test   bl,bl
+reference	english-generated-name	0xa94b01	test   r14b,r14b
+reference	english-generated-name	0xa94b06	cmp    QWORD PTR [rdi+0x10],0x0
+reference	english-generated-name	0xa94b0d	cmp    r15b,0x1
+reference	english-generated-name	0xa94b32	test   r15b,r15b
+reference	english-generated-name	0xa94b44	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-generated-name	0xa94b64	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-generated-name	0xa94b85	cmp    QWORD PTR [rbp-0x19],0x0
+reference	english-generated-name	0xa94b90	test   bl,bl
+reference	english-generated-name	0xa94ba9	test   r14b,r14b
+reference	english-generated-name	0xa94bae	cmp    QWORD PTR [rdi+0x10],0x0
+reference	english-generated-name	0xa94bb5	cmp    r15b,0x1
+reference	english-generated-name	0xa94bda	test   r15b,r15b
+reference	english-generated-name	0xa94bfc	cmp    rax,0x1
+reference	english-generated-name	0xa94c0a	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-generated-name	0xa94c2c	cmp    r12,rbx
+reference	english-generated-name	0xa94c38	cmp    rbx,rcx
+reference	english-generated-name	0xa94c42	cmp    rbx,0x16
+reference	english-generated-name	0xa94c87	cmp    QWORD PTR [rbp+0xf],0xf
+reference	english-generated-name	0xa94ca2	cmp    rdx,0xf
+reference	english-generated-name	0xa94cb2	cmp    rdx,0x1000
+reference	english-generated-name	0xa94cca	cmp    rax,0x1f
+reference	english-generated-name	0xa94cea	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-generated-name	0xa94d0a	cmp    QWORD PTR [rbp-0x19],0x0
+reference	english-generated-name	0xa94d15	test   bl,bl
+reference	english-generated-name	0xa94d33	test   r14b,r14b
+reference	english-generated-name	0xa94d38	cmp    QWORD PTR [rdi+0x10],0x0
+reference	english-generated-name	0xa94d3f	cmp    r13b,0x1
+reference	english-generated-name	0xa94d71	test   r13b,r13b
+reference	english-generated-name	0xa94d83	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-generated-name	0xa94db5	cmp    edx,0xffffffff
+reference	english-generated-name	0xa94dbe	test   bl,bl
+reference	english-generated-name	0xa94dc2	cmp    BYTE PTR [rbp-0x38],0x0
+reference	english-generated-name	0xa94df8	cmp    QWORD PTR [rbp-0x19],0x0
+reference	english-generated-name	0xa94dff	test   bl,bl
+reference	english-generated-name	0xa94e26	cmp    QWORD PTR [rdi+0x10],0x0
+reference	english-generated-name	0xa94e3d	test   r13b,r13b
+reference	english-generated-name	0xa94e4f	cmp    QWORD PTR [rbp-0x11],0xf
+reference	english-word-form	0xd2cb53	test   edx,edx
+reference	english-word-form	0xd2cb73	cmp    rdx,rax
+reference	english-word-form	0xd2cb81	cmp    eax,0x8
+reference	english-word-form	0xd2cc05	cmp    QWORD PTR [rdx+0x18],0xf
+reference	calendar-month	0x773393	cmp    ecx,0xb
+reference	decimal-number	0x52c176	cmp    QWORD PTR [rsp+0x38],0xf
+reference	decimal-number	0x52c195	cmp    rdx,0xf
+reference	decimal-number	0x52c1a6	cmp    rdx,0x1000
+reference	decimal-number	0x52c1be	cmp    rax,0x1f
+reference	capitalize-name	0x52d3ce	cmp    QWORD PTR [rcx+0x10],rdi
+reference	capitalize-name	0x52d3fa	cmp    rax,0xf
+reference	capitalize-name	0x52d403	cmp    BYTE PTR [r8+r9*1],0x5b
+reference	capitalize-name	0x52d415	cmp    rax,0xf
+reference	capitalize-name	0x52d41e	cmp    BYTE PTR [r8+r9*1],0x5d
+reference	capitalize-name	0x52d42d	test   r11d,r11d
+reference	capitalize-name	0x52d439	test   bl,bl
+reference	capitalize-name	0x52d444	cmp    rax,0xf
+reference	capitalize-name	0x52d44d	cmp    BYTE PTR [r8+r9*1-0x1],0x20
+reference	capitalize-name	0x52d458	cmp    rdx,0xf
+reference	capitalize-name	0x52d461	cmp    BYTE PTR [rax+r8*1-0x1],0x22
+reference	capitalize-name	0x52d46f	cmp    rdx,0xf
+reference	capitalize-name	0x52d478	cmp    BYTE PTR [r9+r8*1-0x1],0x27
+reference	capitalize-name	0x52d483	test   edi,edi
+reference	capitalize-name	0x52d487	cmp    edi,0x2
+reference	capitalize-name	0x52d48f	cmp    rdx,0xf
+reference	capitalize-name	0x52d498	cmp    BYTE PTR [rax+r8*1-0x2],0x20
+reference	capitalize-name	0x52d4a3	cmp    rdx,0xf
+reference	capitalize-name	0x52d4ac	cmp    BYTE PTR [r9+r8*1-0x2],0x2c
+reference	capitalize-name	0x52d4bc	test   r10b,r10b
+reference	capitalize-name	0x52d4c8	cmp    rax,0xf
+reference	capitalize-name	0x52d4d1	cmp    BYTE PTR [r8+rdx*1],0x61
+reference	capitalize-name	0x52d4db	cmp    rax,0xf
+reference	capitalize-name	0x52d4e4	cmp    BYTE PTR [rdx+r8*1],0x7a
+reference	capitalize-name	0x52d4ee	cmp    rax,0xf
+reference	capitalize-name	0x52d4ff	cmp    QWORD PTR [rcx+0x18],0xf
+reference	capitalize-name	0x52d515	cmp    r9,0xf
+reference	capitalize-name	0x52d526	cmp    eax,0x23
+reference	capitalize-name	0x52d548	cmp    r9,0xf
+reference	capitalize-name	0x52d55e	cmp    r9,0xf
+reference	capitalize-name	0x52d571	cmp    r9,0xf
+reference	capitalize-name	0x52d584	cmp    r9,0xf
+reference	capitalize-name	0x52d597	cmp    r9,0xf
+reference	capitalize-name	0x52d5aa	cmp    r9,0xf
+reference	capitalize-name	0x52d5bd	cmp    r9,0xf
+reference	capitalize-name	0x52d5d0	cmp    r9,0xf
+reference	capitalize-name	0x52d5e8	cmp    rax,QWORD PTR [rcx+0x10]
+classic	list-inline-region	0x3f7375	cmp    BYTE PTR [rip+0x14a594c],0x0        # 0x14189ccc8
+classic	list-inline-region	0x3f737e	cmp    BYTE PTR [rip+0x14a5b93],0x0        # 0x14189cf18
+classic	list-inline-region	0x3f738b	cmp    BYTE PTR [rip+0x14a4696],0x0        # 0x14189ba28
+classic	list-inline-region	0x3f7398	cmp    BYTE PTR [rip+0x14a9e31],0x0        # 0x1418a11d0
+classic	list-inline-region	0x3f73ca	cmp    BYTE PTR [rip+0x14a9bf7],0x0        # 0x1418a0fc8
+classic	list-inline-region	0x3f73fe	cmp    DWORD PTR [rbp-0x40],0x0
+classic	list-inline-region	0x3f7415	cmp    esi,r14d
+classic	list-inline-region	0x3f7423	cmp    r12d,r13d
+classic	list-inline-region	0x3f7452	cmp    edi,esi
+classic	list-inline-region	0x3f745a	cmp    ebx,r12d
+classic	list-inline-region	0x3f7475	cmp    ebx,r13d
+classic	list-inline-region	0x3f748e	cmp    edi,r14d
+classic	list-inline-region	0x3f7497	cmp    ebx,r12d
+classic	list-inline-region	0x3f74af	cmp    ebx,r13d
+classic	list-inline-region	0x3f74cb	cmp    ebx,r12d
+classic	list-inline-region	0x3f74df	cmp    ebx,r13d
+classic	list-inline-region	0x3f7502	cmp    ebx,r13d
+classic	list-inline-region	0x3f750d	cmp    edi,r14d
+classic	list-inline-region	0x3f7557	test   al,al
+classic	list-inline-region	0x3f756f	cmp    r15d,r14d
+classic	list-inline-region	0x3f7589	test   rax,rax
+classic	list-inline-region	0x3f7592	test   BYTE PTR [rax+0x4c],0x2
+classic	list-inline-region	0x3f75a5	test   rax,rax
+classic	list-inline-region	0x3f75c1	cmp    eax,0xc
+classic	list-inline-region	0x3f75e7	test   rax,rax
+classic	list-inline-region	0x3f75fc	test   rax,rax
+classic	list-inline-region	0x3f7620	test   rax,rax
+classic	list-inline-region	0x3f762c	cmp    ax,0x5
+classic	list-inline-region	0x3f7636	cmp    ax,0xa
+classic	list-inline-region	0x3f768a	cmp    DWORD PTR [rax+0x1c],0x1
+classic	list-inline-region	0x3f76b9	cmp    DWORD PTR [rax+0x1c],0x2
+classic	list-inline-region	0x3f76f0	cmp    rax,r12
+classic	list-inline-region	0x3f76fc	test   r14d,r14d
+classic	list-inline-region	0x3f7718	cmp    r14d,0x3
+classic	list-inline-region	0x3f7823	cmp    rax,r12
+classic	list-inline-region	0x3f7838	test   r14d,r14d
+classic	list-inline-region	0x3f7854	cmp    r14d,0x3
+classic	list-inline-region	0x3f7919	cmp    edi,0x20
+classic	list-inline-region	0x3f7a2c	cmp    rax,rcx
+classic	list-inline-region	0x3f7a3d	test   esi,esi
+classic	list-inline-region	0x3f7a58	cmp    esi,0x3
+classic	list-inline-region	0x3f7b1c	cmp    DWORD PTR [rax+0x1c],0x1
+classic	list-inline-region	0x3f7b4b	cmp    DWORD PTR [rax+0x1c],0x2
+classic	list-inline-region	0x3f7b82	cmp    rax,r13
+classic	list-inline-region	0x3f7b8e	test   r12d,r12d
+classic	list-inline-region	0x3f7baa	cmp    r12d,0x3
+classic	list-inline-region	0x3f7c75	cmp    rax,r13
+classic	list-inline-region	0x3f7c86	test   r14d,r14d
+classic	list-inline-region	0x3f7ca2	cmp    r14d,0x3
+classic	list-inline-region	0x3f7d67	cmp    edi,0x20
+classic	list-inline-region	0x3f7e7a	cmp    rax,rcx
+classic	list-inline-region	0x3f7e8b	test   esi,esi
+classic	list-inline-region	0x3f7ea6	cmp    esi,0x3
+classic	list-inline-region	0x3f7f4e	test   al,al
+classic	list-layout-and-count	0x3f4412	cmp    BYTE PTR [rip+0x14acbaf],sil        # 0x1418a0fc8
+classic	list-layout-and-count	0x3f4475	test   al,al
+classic	list-layout-and-count	0x3f449d	test   rax,rax
+classic	list-layout-and-count	0x3f44a6	test   BYTE PTR [rax+0x4c],0x2
+classic	list-layout-and-count	0x3f44b9	test   rax,rax
+classic	list-layout-and-count	0x3f44d1	cmp    eax,0xc
+classic	list-layout-and-count	0x3f44f7	test   rax,rax
+classic	list-layout-and-count	0x3f450c	test   rax,rax
+classic	list-layout-and-count	0x3f452d	test   rax,rax
+classic	list-layout-and-count	0x3f4557	test   al,al
+classic	list-layout-and-count	0x3f4562	test   esi,esi
+classic	list-layout-and-count	0x3f457d	cmp    esi,eax
+classic	base-profession	0x132906c	cmp    QWORD PTR [rcx+0x18],0xf
+classic	base-profession	0x132907d	cmp    si,0xfffe
+classic	base-profession	0x1329089	cmp    eax,0x1
+classic	base-profession	0x13290a0	test   rax,rax
+classic	base-profession	0x13290ac	test   rsi,rsi
+classic	base-profession	0x13290ba	test   eax,eax
+classic	base-profession	0x1329130	test   dil,dil
+classic	base-profession	0x1329141	cmp    rdi,0xf
+classic	base-profession	0x132914d	cmp    r8,0x1
+classic	base-profession	0x132915f	test   eax,eax
+classic	base-profession	0x132916a	cmp    rdi,0xf
+classic	base-profession	0x1329188	test   r8,r8
+classic	base-profession	0x1329191	cmp    QWORD PTR [rbp-0x31],0xf
+classic	base-profession	0x13291ad	cmp    r12w,si
+classic	base-profession	0x13291b7	cmp    BYTE PTR [rbp-0x71],0x0
+classic	base-profession	0x13291f1	test   dil,dil
+classic	base-profession	0x1329203	cmp    QWORD PTR [rbp-0x11],0xf
+classic	base-profession	0x1329219	cmp    QWORD PTR [rbp-0x59],0x0
+classic	base-profession	0x132922f	cmp    rdx,0xf
+classic	base-profession	0x132923f	cmp    rdx,0x1000
+classic	base-profession	0x1329257	cmp    rax,0x1f
+classic	base-profession	0x1329273	test   r8,r8
+classic	base-profession	0x132927c	cmp    QWORD PTR [rbp-0x51],0xf
+classic	base-profession	0x132928e	cmp    r12w,si
+classic	base-profession	0x1329294	cmp    QWORD PTR [rbp-0x59],0x0
+classic	base-profession	0x132929b	cmp    QWORD PTR [rbx+0x10],0x0
+classic	base-profession	0x13292b2	test   dil,dil
+classic	base-profession	0x13292c7	cmp    BYTE PTR [rbp+0x6f],0x0
+classic	base-profession	0x13292eb	cmp    rdx,0xf
+classic	base-profession	0x13292fb	cmp    rdx,0x1000
+classic	base-profession	0x1329313	cmp    rax,0x1f
+classic	base-profession	0x1329339	cmp    rdi,0xf
+classic	base-profession	0x132934a	cmp    rdx,0x1000
+classic	base-profession	0x1329362	cmp    rax,0x1f
+classic	profession-words	0x1327ba7	cmp    r9w,ax
+classic	profession-words	0x1327bef	test   al,al
+classic	profession-words	0x1327c34	cmp    r9d,0x86
+classic	profession-words	0x1327eed	test   r14b,r14b
+classic	profession-words	0x1328079	test   r14b,r14b
+classic	profession-words	0x1328511	test   r14b,r14b
+classic	profession-words	0x132853d	test   r14b,r14b
+classic	profession-words	0x1328577	test   r14b,r14b
+classic	profession-words	0x1328597	test   r14b,r14b
+classic	profession-words	0x13285f9	test   r14b,r14b
+classic	profession-words	0x1328633	test   r14b,r14b
+classic	profession-words	0x132866d	test   r14b,r14b
+classic	profession-words	0x13286a7	test   r14b,r14b
+classic	profession-words	0x13286e1	test   r14b,r14b
+classic	profession-words	0x13286f3	test   r14b,r14b
+classic	profession-words	0x132885b	test   r14b,r14b
+classic	profession-words	0x1328a0d	cmp    bp,0xffff
+classic	profession-words	0x1328a17	test   di,di
+classic	profession-words	0x1328a34	cmp    rdi,rax
+classic	profession-words	0x1328a45	cmp    QWORD PTR [rax+0xd0],0x0
+classic	profession-words	0x1328a4f	test   r14b,r14b
+classic	profession-words	0x1328a6b	cmp    rdi,rcx
+classic	profession-words	0x1328a87	test   r14b,r14b
+classic	profession-words	0x1328ab0	test   di,di
+classic	profession-words	0x1328ac3	cmp    rdi,rax
+classic	profession-words	0x1328acc	test   bp,bp
+classic	profession-words	0x1328aea	cmp    rbp,rax
+classic	profession-words	0x1328af3	cmp    QWORD PTR [rax+0x110],0x0
+classic	profession-words	0x1328b02	test   r14b,r14b
+classic	profession-words	0x1328b29	cmp    rdi,rcx
+classic	profession-words	0x1328b4b	cmp    rbp,rax
+classic	profession-words	0x1328b67	test   di,di
+classic	profession-words	0x1328b7a	cmp    r8,rax
+classic	profession-words	0x1328b87	cmp    QWORD PTR [rax+0xd0],0x0
+classic	profession-words	0x1328b95	test   di,di
+classic	profession-words	0x1328b9e	test   r14b,r14b
+classic	profession-words	0x1328bb6	cmp    r8,rcx
+classic	profession-words	0x1328bdd	cmp    bp,0xffff
+classic	profession-words	0x1328be6	test   di,di
+classic	profession-words	0x1328c03	cmp    rdx,rax
+classic	profession-words	0x1328c0c	cmp    QWORD PTR [rax+0x90],0x0
+classic	profession-words	0x1328c1d	test   r14b,r14b
+classic	profession-words	0x1328c54	test   di,di
+classic	profession-words	0x1328c63	cmp    rdi,rax
+classic	profession-words	0x1328c68	test   bp,bp
+classic	profession-words	0x1328c86	cmp    rbp,rax
+classic	profession-words	0x1328c8f	cmp    QWORD PTR [rax+0xd0],0x0
+classic	profession-words	0x1328ca5	test   r14b,r14b
+classic	profession-words	0x1328cd5	test   di,di
+classic	profession-words	0x1328ce8	cmp    rdx,rax
+classic	profession-words	0x1328cf5	cmp    QWORD PTR [rax+0x90],0x0
+classic	profession-words	0x1328d03	test   di,di
+classic	profession-words	0x1328d08	test   r14b,r14b
+classic	profession-words	0x1328d1d	cmp    rdx,rcx
+classic	profession-words	0x1328d29	cmp    rbx,rdx
+classic	profession-words	0x1328d2e	cmp    QWORD PTR [rdx+0x18],0xf
+classic	profession-words	0x1328d44	cmp    QWORD PTR [rbx+0x10],0x0
+classic	profession-words	0x1328d4b	test   r13b,r13b
+classic	profession-words	0x1328d57	cmp    rcx,0xf
+classic	profession-words	0x1328d60	cmp    BYTE PTR [rax],0x61
+classic	profession-words	0x1328d68	cmp    rcx,0xf
+classic	profession-words	0x1328d71	cmp    BYTE PTR [rax],0x7a
+classic	profession-words	0x1328d79	cmp    rcx,0xf
+classic	profession-words	0x1328d8b	test   r14b,r14b
+classic	profession-words	0x1328db7	test   r14b,r14b
+classic	profession-words	0x1328dbc	test   sil,sil
+classic	profession-words	0x1328dd6	test   r13b,r13b
+classic	profession-raw-title-available	0x30aa64	test   dx,dx
+classic	profession-raw-title-available	0x30aa80	cmp    r11,rax
+classic	profession-raw-title-available	0x30aa8e	cmp    r9w,ax
+classic	profession-raw-title-available	0x30aa9c	test   r8w,r8w
+classic	profession-raw-title-available	0x30aabf	cmp    r8,rax
+classic	profession-raw-title-available	0x30aad0	cmp    QWORD PTR [rax+rcx*1+0x1830],0x0
+classic	profession-raw-title-available	0x30aae6	cmp    QWORD PTR [rdx+rcx*1+0x230],0x0
+classic	profession-raw-title-available	0x30ab0b	cmp    QWORD PTR [rax+rcx*1+0x230],0x0
+classic	profession-raw-title-selection	0x30ab54	test   si,si
+classic	profession-raw-title-selection	0x30ab6c	cmp    rsi,rax
+classic	profession-raw-title-selection	0x30ab7a	cmp    di,ax
+classic	profession-raw-title-selection	0x30ab83	test   r9w,r9w
+classic	profession-raw-title-selection	0x30aba7	cmp    r8,rax
+classic	profession-raw-title-selection	0x30abc5	test   r14b,r14b
+classic	profession-raw-title-selection	0x30abe2	cmp    rbx,rdx
+classic	profession-raw-title-selection	0x30abe7	cmp    QWORD PTR [rdx+0x18],0xf
+classic	profession-raw-title-selection	0x30abfd	cmp    QWORD PTR [rbx+0x10],0x0
+classic	profession-raw-title-selection	0x30ac04	cmp    BYTE PTR [rsp+0x70],0x0
+classic	profession-raw-title-selection	0x30ac12	cmp    rax,0xf
+classic	profession-raw-title-selection	0x30ac1b	cmp    BYTE PTR [rcx],0x61
+classic	profession-raw-title-selection	0x30ac23	cmp    rax,0xf
+classic	profession-raw-title-selection	0x30ac2c	cmp    BYTE PTR [rcx],0x7a
+classic	profession-raw-title-selection	0x30ac31	cmp    rax,0xf
+classic	profession-raw-creature-title	0x1bb2c9	test   r8w,r8w
+classic	profession-raw-creature-title	0x1bb2e6	cmp    r8,rax
+classic	profession-raw-creature-title	0x1bb2f4	cmp    r9w,ax
+classic	profession-raw-creature-title	0x1bb2fe	cmp    BYTE PTR [rsp+0x50],0x0
+classic	profession-raw-creature-title	0x1bb321	cmp    rbx,rdx
+classic	profession-raw-creature-title	0x1bb326	cmp    QWORD PTR [rdx+0x18],0xf
+classic	profession-raw-creature-title	0x1bb33c	cmp    QWORD PTR [rbx+0x10],0x0
+classic	profession-raw-creature-title	0x1bb343	cmp    BYTE PTR [rsp+0x58],0x0
+classic	profession-raw-creature-title	0x1bb351	cmp    rax,0xf
+classic	profession-raw-creature-title	0x1bb35a	cmp    BYTE PTR [rcx],0x61
+classic	profession-raw-creature-title	0x1bb362	cmp    rax,0xf
+classic	profession-raw-creature-title	0x1bb36b	cmp    BYTE PTR [rcx],0x7a
+classic	profession-raw-creature-title	0x1bb370	cmp    rax,0xf
+classic	caste-words	0xaa0c65	cmp    QWORD PTR [rdx+0x18],0xf
+classic	caste-words	0xaa0c85	cmp    r9w,0xffff
+classic	caste-words	0xaa0c90	test   r8b,r8b
+classic	caste-words	0xaa0c99	test   si,si
+classic	caste-words	0xaa0cb3	cmp    rsi,rax
+classic	caste-words	0xaa0cb8	test   r9w,r9w
+classic	caste-words	0xaa0cdf	cmp    r8,rax
+classic	caste-words	0xaa0cf0	cmp    rdi,rdx
+classic	caste-words	0xaa0cf5	cmp    QWORD PTR [rdx+0x18],0xf
+classic	caste-words	0xaa0d12	cmp    QWORD PTR [rdi+0x10],0x0
+classic	caste-words	0xaa0d2a	test   si,si
+classic	caste-words	0xaa0d3d	cmp    rsi,rax
+classic	caste-words	0xaa0d42	test   r9w,r9w
+classic	caste-words	0xaa0d65	cmp    r8,rax
+classic	caste-words	0xaa0d72	cmp    rdi,rdx
+classic	caste-words	0xaa0d77	cmp    QWORD PTR [rdx+0x18],0xf
+classic	caste-words	0xaa0d94	cmp    QWORD PTR [rdi+0x10],0x0
+classic	caste-words	0xaa0d9e	test   si,si
+classic	caste-words	0xaa0db1	cmp    rbx,rax
+classic	caste-words	0xaa0dbe	cmp    rdi,rdx
+classic	caste-words	0xaa0dc3	cmp    QWORD PTR [rdx+0x18],0xf
+classic	caste-words	0xaa0dec	test   r8b,r8b
+classic	caste-words	0xaa0df1	test   si,si
+classic	caste-words	0xaa0e04	cmp    rbx,rax
+classic	english-generated-name	0xa917a3	cmp    BYTE PTR [rcx+0x72],r13b
+classic	english-generated-name	0xa917b7	cmp    eax,0xa
+classic	english-generated-name	0xa917ce	cmp    QWORD PTR [rdx+0x18],0xf
+classic	english-generated-name	0xa917ea	cmp    QWORD PTR [rsi+0x30],r13
+classic	english-generated-name	0xa917f0	test   r12d,0xfffffffd
+classic	english-generated-name	0xa9180b	cmp    QWORD PTR [rdx+0x18],0xf
+classic	english-generated-name	0xa91844	cmp    QWORD PTR [rsi+0x18],0xf
+classic	english-generated-name	0xa9184e	cmp    r14,rax
+classic	english-generated-name	0xa91857	cmp    r14,0xf
+classic	english-generated-name	0xa91881	cmp    rbx,rax
+classic	english-generated-name	0xa9188b	cmp    rbx,rcx
+classic	english-generated-name	0xa918ba	cmp    BYTE PTR [rbp-0x39],0x0
+classic	english-generated-name	0xa918d9	cmp    rbx,0xf
+classic	english-generated-name	0xa918f9	test   rbx,rbx
+classic	english-generated-name	0xa9190c	cmp    QWORD PTR [rsi+0x30],0x0
+classic	english-generated-name	0xa91913	cmp    r12d,0x1
+classic	english-generated-name	0xa91919	test   bl,bl
+classic	english-generated-name	0xa91944	cmp    QWORD PTR [rdx+0x18],0xf
+classic	english-generated-name	0xa91962	cmp    QWORD PTR [rsi+0x30],0x0
+classic	english-generated-name	0xa91969	cmp    r12d,0x2
+classic	english-generated-name	0xa91976	cmp    edx,0xffffffff
+classic	english-generated-name	0xa9197b	cmp    DWORD PTR [rsi+0x44],edx
+classic	english-generated-name	0xa91984	test   bl,bl
+classic	english-generated-name	0xa91988	test   r14b,r14b
+classic	english-generated-name	0xa919cd	cmp    QWORD PTR [rbp-0x19],0x0
+classic	english-generated-name	0xa919d4	test   bl,bl
+classic	english-generated-name	0xa919ed	test   r15b,r15b
+classic	english-generated-name	0xa919ff	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-generated-name	0xa91a1b	cmp    rdx,0xf
+classic	english-generated-name	0xa91a2b	cmp    rdx,0x1000
+classic	english-generated-name	0xa91a43	cmp    rax,0x1f
+classic	english-generated-name	0xa91a55	cmp    DWORD PTR [rsi+0x54],0xffffffff
+classic	english-generated-name	0xa91a5b	cmp    DWORD PTR [rsi+0x48],0xffffffff
+classic	english-generated-name	0xa91a61	cmp    DWORD PTR [rsi+0x4c],0xffffffff
+classic	english-generated-name	0xa91a6b	test   bl,bl
+classic	english-generated-name	0xa91a6f	test   r14b,r14b
+classic	english-generated-name	0xa91aa6	cmp    QWORD PTR [rbp-0x19],0x0
+classic	english-generated-name	0xa91ab1	test   bl,bl
+classic	english-generated-name	0xa91aca	cmp    QWORD PTR [rdi+0x10],0x0
+classic	english-generated-name	0xa91ad1	cmp    r15b,0x1
+classic	english-generated-name	0xa91b0a	test   r15b,r15b
+classic	english-generated-name	0xa91b1c	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-generated-name	0xa91b3c	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-generated-name	0xa91b5d	cmp    QWORD PTR [rbp-0x19],0x0
+classic	english-generated-name	0xa91b68	test   bl,bl
+classic	english-generated-name	0xa91b81	test   r14b,r14b
+classic	english-generated-name	0xa91b86	cmp    QWORD PTR [rdi+0x10],0x0
+classic	english-generated-name	0xa91b8d	cmp    r15b,0x1
+classic	english-generated-name	0xa91bb2	test   r15b,r15b
+classic	english-generated-name	0xa91bc4	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-generated-name	0xa91be4	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-generated-name	0xa91c05	cmp    QWORD PTR [rbp-0x19],0x0
+classic	english-generated-name	0xa91c10	test   bl,bl
+classic	english-generated-name	0xa91c29	test   r14b,r14b
+classic	english-generated-name	0xa91c2e	cmp    QWORD PTR [rdi+0x10],0x0
+classic	english-generated-name	0xa91c35	cmp    r15b,0x1
+classic	english-generated-name	0xa91c5a	test   r15b,r15b
+classic	english-generated-name	0xa91c7c	cmp    rax,0x1
+classic	english-generated-name	0xa91c8a	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-generated-name	0xa91cac	cmp    r12,rbx
+classic	english-generated-name	0xa91cb8	cmp    rbx,rcx
+classic	english-generated-name	0xa91cc2	cmp    rbx,0x16
+classic	english-generated-name	0xa91d07	cmp    QWORD PTR [rbp+0xf],0xf
+classic	english-generated-name	0xa91d22	cmp    rdx,0xf
+classic	english-generated-name	0xa91d32	cmp    rdx,0x1000
+classic	english-generated-name	0xa91d4a	cmp    rax,0x1f
+classic	english-generated-name	0xa91d6a	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-generated-name	0xa91d8a	cmp    QWORD PTR [rbp-0x19],0x0
+classic	english-generated-name	0xa91d95	test   bl,bl
+classic	english-generated-name	0xa91db3	test   r14b,r14b
+classic	english-generated-name	0xa91db8	cmp    QWORD PTR [rdi+0x10],0x0
+classic	english-generated-name	0xa91dbf	cmp    r13b,0x1
+classic	english-generated-name	0xa91df1	test   r13b,r13b
+classic	english-generated-name	0xa91e03	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-generated-name	0xa91e35	cmp    edx,0xffffffff
+classic	english-generated-name	0xa91e3e	test   bl,bl
+classic	english-generated-name	0xa91e42	cmp    BYTE PTR [rbp-0x38],0x0
+classic	english-generated-name	0xa91e78	cmp    QWORD PTR [rbp-0x19],0x0
+classic	english-generated-name	0xa91e7f	test   bl,bl
+classic	english-generated-name	0xa91ea6	cmp    QWORD PTR [rdi+0x10],0x0
+classic	english-generated-name	0xa91ebd	test   r13b,r13b
+classic	english-generated-name	0xa91ecf	cmp    QWORD PTR [rbp-0x11],0xf
+classic	english-word-form	0xd29b93	test   edx,edx
+classic	english-word-form	0xd29bb3	cmp    rdx,rax
+classic	english-word-form	0xd29bc1	cmp    eax,0x8
+classic	english-word-form	0xd29c45	cmp    QWORD PTR [rdx+0x18],0xf
+classic	calendar-month	0x770db3	cmp    ecx,0xb
+classic	decimal-number	0x529d36	cmp    QWORD PTR [rsp+0x38],0xf
+classic	decimal-number	0x529d55	cmp    rdx,0xf
+classic	decimal-number	0x529d66	cmp    rdx,0x1000
+classic	decimal-number	0x529d7e	cmp    rax,0x1f
+classic	capitalize-name	0x52adee	cmp    QWORD PTR [rcx+0x10],rdi
+classic	capitalize-name	0x52ae1a	cmp    rax,0xf
+classic	capitalize-name	0x52ae23	cmp    BYTE PTR [r8+r9*1],0x5b
+classic	capitalize-name	0x52ae35	cmp    rax,0xf
+classic	capitalize-name	0x52ae3e	cmp    BYTE PTR [r8+r9*1],0x5d
+classic	capitalize-name	0x52ae4d	test   r11d,r11d
+classic	capitalize-name	0x52ae59	test   bl,bl
+classic	capitalize-name	0x52ae64	cmp    rax,0xf
+classic	capitalize-name	0x52ae6d	cmp    BYTE PTR [r8+r9*1-0x1],0x20
+classic	capitalize-name	0x52ae78	cmp    rdx,0xf
+classic	capitalize-name	0x52ae81	cmp    BYTE PTR [rax+r8*1-0x1],0x22
+classic	capitalize-name	0x52ae8f	cmp    rdx,0xf
+classic	capitalize-name	0x52ae98	cmp    BYTE PTR [r9+r8*1-0x1],0x27
+classic	capitalize-name	0x52aea3	test   edi,edi
+classic	capitalize-name	0x52aea7	cmp    edi,0x2
+classic	capitalize-name	0x52aeaf	cmp    rdx,0xf
+classic	capitalize-name	0x52aeb8	cmp    BYTE PTR [rax+r8*1-0x2],0x20
+classic	capitalize-name	0x52aec3	cmp    rdx,0xf
+classic	capitalize-name	0x52aecc	cmp    BYTE PTR [r9+r8*1-0x2],0x2c
+classic	capitalize-name	0x52aedc	test   r10b,r10b
+classic	capitalize-name	0x52aee8	cmp    rax,0xf
+classic	capitalize-name	0x52aef1	cmp    BYTE PTR [r8+rdx*1],0x61
+classic	capitalize-name	0x52aefb	cmp    rax,0xf
+classic	capitalize-name	0x52af04	cmp    BYTE PTR [rdx+r8*1],0x7a
+classic	capitalize-name	0x52af0e	cmp    rax,0xf
+classic	capitalize-name	0x52af1f	cmp    QWORD PTR [rcx+0x18],0xf
+classic	capitalize-name	0x52af35	cmp    r9,0xf
+classic	capitalize-name	0x52af46	cmp    eax,0x23
+classic	capitalize-name	0x52af68	cmp    r9,0xf
+classic	capitalize-name	0x52af7e	cmp    r9,0xf
+classic	capitalize-name	0x52af91	cmp    r9,0xf
+classic	capitalize-name	0x52afa4	cmp    r9,0xf
+classic	capitalize-name	0x52afb7	cmp    r9,0xf
+classic	capitalize-name	0x52afca	cmp    r9,0xf
+classic	capitalize-name	0x52afdd	cmp    r9,0xf
+classic	capitalize-name	0x52aff0	cmp    r9,0xf
+classic	capitalize-name	0x52b008	cmp    rax,QWORD PTR [rcx+0x10]

@@ -1,0 +1,5 @@
+edition	role	source_path	sha256	scope
+reference	standard-creature-names	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_creatures\objects\creature_standard.txt	b34c86c1124b767943541eddbcdd3fc091a29fca41f48502d1862924ddf96509	installed vanilla source; a save/mod may supply other typed values
+reference	english-language-words	D:\program\steam\steamapps\common\Dwarf Fortress\data\vanilla\vanilla_languages\objects\language_words.txt	39cf81e08d0881ff9796a77063dda696ece8320095373790f150ce0eecdfc8d5	installed vanilla source; a save/mod may supply other typed values
+classic	standard-creature-names	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_creatures\objects\creature_standard.txt	b34c86c1124b767943541eddbcdd3fc091a29fca41f48502d1862924ddf96509	installed vanilla source; a save/mod may supply other typed values
+classic	english-language-words	C:\Users\WIN11\Downloads\df_53_16_win\data\vanilla\vanilla_languages\objects\language_words.txt	39cf81e08d0881ff9796a77063dda696ece8320095373790f150ce0eecdfc8d5	installed vanilla source; a save/mod may supply other typed values

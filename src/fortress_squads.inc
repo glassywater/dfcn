@@ -315,15 +315,17 @@ std::vector<std::pair<size_t, size_t>> Overlay::authored_squad_display_spans(
     return spans;
 }
 
-// Apply the proven alias-copy owner before generic caption/name matching.
-// Its original text also owns clipped and double-height native glyphs.
+// Apply the proven squad field before generic caption/name matching. Aliases
+// stay authored; generated names use their captured WORD IDs and grammar.
+// Both own the complete visible span, including clipped/double-height glyphs.
 void Overlay::append_fortress_squad_alias_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, const unsigned char *raw) const {
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
     for (bool top : {false, true}) {
         if (raw && raw != (top ? gps_->screen_top : gps_->screen)) continue;
         for (const auto &draw : captured_native_drawn_text_view(top)) {
-            if (!draw.squad_alias_target || draw.source.empty() || draw.x < 0 ||
+            if ((!draw.squad_alias_target && !draw.squad_generated_name) ||
+                    draw.source.empty() || draw.x < 0 ||
                     draw.x >= gps_->dimx || draw.y < 0 || draw.y >= gps_->dimy ||
                     draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
                     draw.draw_grid != (top ? gps_->screen_top : gps_->screen)) continue;
@@ -336,6 +338,12 @@ void Overlay::append_fortress_squad_alias_rows(std::vector<std::string> &rows,
                 end = std::min(end, clip.x + clip.w);
             }
             if (first != draw.x || first >= end) continue;
+            const auto translated = draw.squad_alias_target ? draw.squad_alias_target
+                : translate_history_name(*draw.squad_generated_name);
+            // Even an unresolved generated name owns its field. Letting the
+            // generic matcher translate a suffix would corrupt the name.
+            const std::string target = translated ? *translated
+                : native_text_to_utf8(draw.source.substr(0, end - first));
             std::array<int, 2> physical{draw.y, -1};
             const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
             if (flags) {
@@ -364,22 +372,27 @@ void Overlay::append_fortress_squad_alias_rows(std::vector<std::string> &rows,
                 if (!current) continue;
                 const std::string source = draw.source.substr(0, end - first);
                 Match match{first, y, end - first, kFortressSquadRowRule,
-                    *draw.squad_alias_target, source};
+                    target, source};
                 for (const auto &previous : matches)
                     if (previous.x == first && previous.y == y &&
                             std::string_view(source).starts_with(previous.source)) {
                         match = previous;
                         match.length = end - first;
                         match.source = source;
-                        match.target = *draw.squad_alias_target;
+                        match.target = target;
                         break;
                     }
-                match.native_hover_untranslated = false;
+                match.native_hover_untranslated = !translated;
                 match.native_help_review_source.clear();
-                auto alias_result = TranslationResult::translated(source, *draw.squad_alias_target, "squad.alias");
-                alias_result.status = TranslationStatus::PreservedAuthored;
-                alias_result.fragments.front().status = alias_result.status;
-                match.translation_result = std::make_shared<TranslationResult>(std::move(alias_result));
+                if (draw.squad_alias_target) {
+                    auto alias_result = TranslationResult::translated(source, target, "squad.alias");
+                    alias_result.status = TranslationStatus::PreservedAuthored;
+                    alias_result.fragments.front().status = alias_result.status;
+                    match.translation_result = std::make_shared<TranslationResult>(std::move(alias_result));
+                } else if (translated) {
+                    match.translation_result = std::make_shared<TranslationResult>(
+                        TranslationResult::translated(source, target, "squad.name"));
+                }
                 if (match.layout_clip_right <= first && draw.draw_clip) {
                     match.layout_x = first;
                     match.layout_clip_right = draw.draw_clip->x + draw.draw_clip->w;

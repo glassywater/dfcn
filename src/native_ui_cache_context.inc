@@ -899,6 +899,22 @@ std::optional<std::string> Overlay::native_embark_civilization_cache_context() c
 
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    if (&layer == &g_native_petition_layer) {
+        NativeUiCacheContextWriter key;
+        key.tooltip();
+        key.graphics(g_native_petition_layer.foreground.graphics());
+        key.bundle(g_native_petition_text);
+        key.rect(g_native_petition_panel);
+        return key.finish();
+    }
+    if (&layer == &g_native_petitions_layer) {
+        NativeUiCacheContextWriter key;
+        key.tooltip();
+        key.graphics(g_native_petitions_layer.foreground.graphics());
+        key.bundle(g_native_petitions_text);
+        key.rect(g_native_petitions_panel);
+        return key.finish();
+    }
     if (&layer == &g_native_designation_layer) {
         NativeUiCacheContextWriter key;
         key.tooltip();
@@ -1040,5 +1056,6 @@ static std::optional<std::string> native_main_ui_cache_context() {
     key.layer(g_native_resolution_layer); key.layer(g_native_worldgen_layer);
     key.layer(g_native_character_layer);
     key.layer(g_native_topbar_layer);
+    key.layer(g_native_petitions_layer);
     return key.finish();
 }

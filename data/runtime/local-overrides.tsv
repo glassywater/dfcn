@@ -1,4 +1,16 @@
-# Local high-priority fixes. Rebuild through the host build-deploy entry.
+# Local high-priority fixes; data-only edits do not require a rebuild.
+# Complete native construction labels: the accepted-petition list omits the
+# article, while its detail tooltip includes it. Keep both native forms in
+# the exact whole-message index (P); hP is excluded from that index.
+Build temple	建造神殿	P
+Build temple complex	建造神殿建筑群	P
+Build guildhall	建造行会大厅	P
+Build grand guildhall	建造大行会大厅	P
+Build a temple	建造神殿	P
+Build a temple complex	建造神殿建筑群	P
+Build a guildhall	建造行会大厅	P
+Build a grand guildhall	建造大行会大厅	P
+
 # Native pressure-plate configuration captions are complete UI fields.
 # Keep trigger states together instead of translating their individual words.
 Resets	可重复触发	w
@@ -6943,6 +6955,9 @@ Make cheese	制作奶酪	wi
 Make lye	制作碱液	wi
 Make ash	制作灰烬	wi
 Make charcoal	制作木炭	wi
+# Native BAR/COAL material index 1 is fuel, distinct from the CHARCOAL color/ADJ sense.
+# Keep the standalone item caption ahead of generated-name adjective fallbacks.
+charcoal	木炭	wi
 Make totem	制作图腾	wi
 Make traction bench	制作牵引台	wi
 Dye thread	染线	wi
@@ -9443,8 +9458,11 @@ war peasant	受过战斗训练的平民	wi
 war peasants	受过战斗训练的平民	wi
 Master Thief	盗贼大师	wi
 Master Thieves	盗贼大师	wi
+# Native profession switch appends a literal s for both thief branches.
+Master Thiefs	盗贼大师	wi
 Thief	小偷	wi
 Thieves	小偷	wi
+Thiefs	小偷	wi
 Peasant	平民	wi
 Peasants	平民	wi
 Child	小孩	wi

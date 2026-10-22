@@ -1,0 +1,2 @@
+edition	image_identity	source_path	sha256	start_rva	code_end_rva	switch_end_rva	unwind_end_rva
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	0x852640	0x8540fc	0x85416c	0x85416c

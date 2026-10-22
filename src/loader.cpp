@@ -155,8 +155,13 @@ static CoreLoadResult load_core(bool enable) {
     if (enable) core->api->set_enabled(true);
     std::vector<unsigned char>().swap(pending_captures);
     ++generation;
-    log("INFO", "Core " + std::string(enable ? "hot-reloaded" : "loaded") +
-        "; generation=" + std::to_string(generation) + "; build=" + core->api->build);
+    if (core->module->reactivated()) {
+        log("WARN", "Detached core reactivated with refreshed configuration and data; "
+            "the runtime still retains this code image, so any deployed code changes remain pending");
+    } else {
+        log("INFO", "Core " + std::string(enable ? "hot-reloaded" : "loaded") +
+            "; generation=" + std::to_string(generation) + "; build=" + core->api->build);
+    }
     return CoreLoadResult::Loaded;
 }
 

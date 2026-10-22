@@ -226,7 +226,20 @@ void Overlay::append_fortress_noble_rows(std::vector<std::string> &rows,
         std::string header(rows[y].size(), ' ');
         std::copy(rows[y].begin() + band->panel.x, rows[y].begin() + panel_right,
             header.begin() + band->panel.x);
-        const auto fields = split_text_fields(header);
+        std::vector<LogicalTextField> fields;
+        for (const auto &field : split_text_fields(header)) {
+            // The native room summary writes "Needs: " at column + 27,
+            // then writes the required grade at the resulting cursor
+            // (53.16: 0x42a3f8 / 0x42a42d). Its single separating space
+            // stays inside one logical field; retain both original spans.
+            constexpr std::string_view needs = "Needs: ";
+            if (field.text.starts_with(needs) &&
+                    is_character_room_status(std::string_view(field.text).substr(needs.size()))) {
+                fields.push_back({field.start, field.start + 6, "Needs:"});
+                fields.push_back({field.start + static_cast<int>(needs.size()),
+                    field.end, field.text.substr(needs.size())});
+            } else fields.push_back(field);
+        }
         size_t column = 0;
         for (size_t i = 0; i < fields.size(); ++i) {
             const auto &field = fields[i];

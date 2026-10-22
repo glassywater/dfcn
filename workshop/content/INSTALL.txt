@@ -3,7 +3,7 @@ Byayoi 同人社区：https://byayoi.org/
 GitHub：https://github.com/pokemonchw/dfcn
 Releases：https://github.com/pokemonchw/dfcn/releases
 
-当前工坊版本：53.16-20261020.2（2026-10-20）。完整更新日志见本目录 CHANGELOG.txt。
+当前工坊版本：53.16-20261021（2026-10-21）。完整更新日志见本目录 CHANGELOG.txt。
 适用：Dwarf Fortress 53.16，Windows x64；支持 Steam 版与官网免费版。
 运行文件位于 DFCN/。Shift+F6 可临时停用或恢复扩展数据；Shift+F5 再次开启时重新读取核心与数据。
 首次订阅后运行 install.bat 自动安装引导；无需在创建世界时启用本工坊项目。
@@ -104,8 +104,10 @@ GitHub Releases 提供这四个包的独立 ZIP，整个 mod 文件夹解压至�
 四、汉化开关与数据刷新
 
 Shift+F1：打开或关闭汉化设置菜单，可切换中英文、繁简体、四族语言音译，
-开关已安装的 DFHack，或重新载入核心与数据并开启汉化。
-英文模式下仍可打开。点击选项后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭。
+开关已安装的 DFHack、重新载入核心与数据并开启汉化，或导出整张地图的全部已知层。
+英文模式下仍可打开。切换与重载选项执行后自动关闭，导出选项显示结果和文件位置。
+也可按 Esc、右键或点击菜单外空白处关闭。
+蓝图保存至汉化目录的 blueprints 文件夹，可导入 dfbluepaint；仅导出地形，不含建筑、物品或单位。
 四族语言默认采用中文音译，可切换为原文拼写，选择在本次运行及核心重载后保留。
 DFHack 选项需已安装 DFHack 且接口可用。
 Shift+F10：开启或关闭汉化，保留当前核心和数据。
