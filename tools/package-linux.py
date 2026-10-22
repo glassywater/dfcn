@@ -28,6 +28,7 @@ RUNTIME_FILES = (
     "data/runtime/site-government-name-terms.tsv",
     "data/runtime/site-government-independent-suffixes.tsv",
     "data/runtime/character-name-lexicon.tsv", "data/runtime/character-name-overrides.tsv",
+    "data/runtime/character-native-senses.tsv",
     "data/runtime/character-surname-lexicon.tsv",
     "data/runtime/character-surname-classes.tsv",
     "data/runtime/character-surname-constructions.tsv",
