@@ -1,5 +1,44 @@
 Spoken popup native source reconstruction
 
+Current Windows personality-reply production
+-------------------------------------------
+The configured Steam and official Windows PE images were imported directly
+into Ghidra 12.1.4 and all 118 retained owners per edition were decompiled,
+including the complete 254-slot conversation dispatcher. Existing assembly,
+literal and switch manifests supply the original decoded instruction ranges
+and jump destinations to DecompileAnnouncementConversation.java. The current
+per-role C files are the exports from those installed executable images.
+
+The pictured reply is the topic-reaction owner at reference 0x140666470 /
+classic 0x140663e90. Its literal "Don't get on my bad side." is selected at
+reference 0x1406671b7 / classic 0x140664bd7. All personality, stress, greeting,
+and dispatcher replies use the complete spoken-body path; an unrelated
+adventure-announcement namespace alone does not make a production available
+to that path. The retained speech literals therefore have explicit
+spoken-sentence entries, and the status/quest alternatives retain their
+greeting-state and quest-report typed constituents.
+
+The same owner independently selects devotional reflection: "I've" or
+"I have", " been ", contemplating/considering/praying, then a deity caption
+or one of its definite spheres. Praying adds "to " before the deity or
+"on " before the sphere. The sphere branch independently selects "the
+subject of ", "the concept of ", "the idea of ", "the theme of ", or no
+topic prefix. Direct historical captions and unknown spheres may be empty;
+the remaining native words and terminal period still form a reply.
+
+The profession-8 branch precedes those adult replies. It selects one, two,
+or three syllables. Every ordinary syllable is g/b/d/m followed by a; caste
+flags can replace only the final a with is/us/er/in, or with as. Initial
+capitalization is applied after the final ! or ... is appended. The bounded
+speech-babble scopes retain this exact finite one-to-three-syllable grammar.
+
+Direct greeting/family EnglishName and native-name calls remain distinct
+from TEXT_SET TRANS_NAME parameters. Empty temple/library/location, recalled
+name, race/profession, entity, family head/ancestor, and bracketed speaker
+fields leave their separators in place. GREET_REPLY_DIFF_LANGUAGE also has
+an empty AUDIENCE:RACE branch, while SPEAKER:TRANS_NAME keeps its own nameless
+substitution. The explicit complete productions preserve those distinctions.
+
 This is maintained binary source material, not a display/acceptance report.
 The executable images include the configured Linux Steam ELF and the retained
 Steam and official Windows PE source inventories.
@@ -132,15 +171,18 @@ all native branches remain in its full source bodies):
       header = "";
   }
 
-  if (adventure_mode && speaker_is_player)
-      header = "You";
-  if (header != "" && recipient_is_player)
-      addressed_player_flag = true;
-  else if (header != "" && recipient_ref.unit_id != -1) {
-      if (recipient unit resolves)
-          header += " (to " + native_recipient_caption(recipient) + ")";
-      else
-          addressed_player_flag = false;     // no invented recipient text
+  if (adventure_mode) {
+      if (speaker_is_player) {
+          header = "You";
+      } else if (header != "") {
+          if (recipient_is_player)
+              addressed_player_flag = true;
+          else if (recipient_ref.unit_id != -1) {
+              addressed_player_flag = false;
+              if (recipient unit resolves)
+                  header += " (to " + native_recipient_caption(recipient) + ")";
+          }
+      }
   }
 
   body = speech_parameter_expansion(body, speaker_ref, typed_parameters);
@@ -148,8 +190,10 @@ all native branches remain in its full source bodies):
   if (header != "") header += ": ";        // native literal 0x1406852ce
   if (speaker exists && race/caste indices are valid
       && caste_flags contains the native speech-transform bit)
-      body = native_speech_transform(body);
-  complete_report = header + body;
+      rendered_body = native_speech_transform(copy(body));
+  else
+      rendered_body = body;
+  complete_report = header + rendered_body;
   retain_speech_record(original_ref, topic, typed_parameters, flags);
   if (native visibility/distance/routing admits the speech)
       submit_announcement(complete_report, native_report_type);
@@ -167,6 +211,10 @@ corresponding speaker caption plus colon). Recipient lookup success at
 whose caption resolves empty still retains the literal " (to )". A missing
 recipient unit and an existing recipient with empty display text are distinct
 native branches.
+The player replacement and the NPC addressee block are mutually exclusive
+in the complete PE wrapper: "You (to ...):" is not one of its productions.
+The transform receives a copy at 0x140685380; the expanded body passed into
+the wrapper remains available with its original token boundaries.
 
 Speech transform is Steam 0x14067b6c0..0x14067bc4d, called at wrapper
 0x140685380. It replaces S/s through temporary ([LIP])/([lip]) markers, then

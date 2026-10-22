@@ -377,7 +377,9 @@ spoken-greeting	Ah, hello. I'm {s}.	啊，你好。我叫{s1}。	speech-person	E
 spoken-greeting	I am {s}. Can I be of some help?	我是{s1}。需要帮忙吗？	speech-person	ELF 1048a40 ->203d220 set 0x3b ->10338c0; elf-text-sets.tsv GREET_REPLY_AFTER_HERO alternative 1
 spoken-greeting	I am {s}. How can I be of service?	我是{s1}。有什么可以为你效劳？	speech-person	ELF 1048a40 ->203d220 set 0x3b ->10338c0; elf-text-sets.tsv GREET_REPLY_AFTER_HERO alternative 2
 spoken-greeting	Hello, {s}. I am {s}.	你好，{s1}。我是{s2}。	speech-race,speech-person	ELF 104b1f5 ->203d220 set 8 ->10338c0 AUDIENCE:RACE/SPEAKER:TRANS_NAME; elf-text-sets.tsv GREET_REPLY_DIFF_LANGUAGE
-spoken-greeting	I'm a true {s} of {s}.	我才是{s2}的真正{s1}。	$term,$name	ELF 104a842..104a9eb: profession call b6c100 at 104a8ce, entity call a278f0 at 104a971; alternate allocation path 104c1c2
+spoken-greeting	I'm a true {s} of {s}.	我才是{s2}的真正{s1}。	speech-race-profession,$name	ELF 104a842..104a9eb: profession call b6c100 at 104a8ce, entity call a278f0 at 104a971; PE 132e0c0 complete race/profession caption
+speech-race-profession	{s}	{s1}	$office	PE reference 132e0c0 / classic 1329030; complete race plus profession/title through the existing profession parser
+speech-race-profession	{s}	{s1}	$creature	PE reference 132e0c0 / classic 1329030; complete caste branch when no separate profession is appended
 spoken-greeting	[{s} is dumbstruck for a moment.]	【{s1}一时惊得说不出话来。】	speech-person	ELF 104c9bd..104ca32: opening bracket, EnglishName 12bfe90 at 104c9fe, suffix 104ca19 and closing bracket
 spoken-greeting	How are you, my {s}?	你好吗，我的{s1}？	dialogue-family	ELF 1049e0e..1049eb0 and 104b671: native greeting relationship append; FAMILY_RELATIONSHIP call 1503cd0 at 1049e5e
 # The same native greeting owner selects all five unusual-FIRST_NAME alternatives;
@@ -400,6 +402,79 @@ spoken-greeting	This servant of {s} greets you.	我以{s1}仆人的身份，向�
 spoken-greeting	Welcome to {s}.	欢迎来到{s1}。	speech-place	PE 67f254..67f2a0 and corresponding classic: native temple/site language_name
 spoken-greeting	You are welcome at {s}. Please be respectful of the materials.	欢迎来到{s1}。请爱惜这里的资料。	speech-place	PE 67f477..67f4c0 and corresponding classic: library language_name
 spoken-greeting	This is {s}. What can I do for you?	这里是{s1}。有什么可以帮你？	speech-place	PE 67f53b..67f584 and corresponding classic: native location language_name
+spoken-greeting	Welcome to .	欢迎来到这里。		PE reference 67f254..67f2a0; classic dialogue-1048a40; direct location EnglishName can be empty, without TRANS_NAME substitution
+spoken-greeting	You are welcome at . Please be respectful of the materials.	欢迎来到这里。请爱惜这里的资料。		PE reference 67f477..67f4c0; classic dialogue-1048a40; direct library EnglishName empty branch
+spoken-greeting	This is . What can I do for you?	这里的场所未注明名称。有什么可以帮你？		PE reference 67f53b..67f584; classic dialogue-1048a40; direct location EnglishName empty branch
+spoken-greeting	[ is dumbstruck for a moment.]	【对方一时惊得说不出话来。】		PE reference dialogue-1048a40: a94030 empty name retains opening bracket, suffix and closing bracket; paired classic
+spoken-greeting	I thought you called yourself .	我以为你说过自己的名字。		PE reference 67eb2b..67ec11; classic dialogue-1048a40; FIRST_NAME and direct EnglishName both empty, no nameless substitution
+spoken-greeting	Hello, . I am {s}.	你好，我是{s1}。	speech-person	PE reference speech-unit-parameters 13a0e8f..13a0f22; classic corresponding source; GREET_REPLY_DIFF_LANGUAGE AUDIENCE:RACE empty, SPEAKER:TRANS_NAME retains its own fallback
+spoken-greeting	I'm a true {s} of .	我才是真正的{s1}。	speech-race-profession	PE reference dialogue-1048a40: race-profession-caption plus b92900; entity EnglishName empty
+spoken-greeting	I'm a true of {s}.	我才是{s1}的真正一员。	$name	PE reference dialogue-1048a40: empty race-profession-caption plus b92900 entity EnglishName
+spoken-greeting	I'm a true of .	我才是真正的一员。		PE reference dialogue-1048a40: race-profession-caption and b92900 entity EnglishName both empty
+spoken-sentence	The head of the family is .	家族首领的名字未记载。		PE reference dialogue-1054af0: direct a946e0 family head EnglishName empty; paired classic
+spoken-sentence	Our family's ancestor is .	我们家族祖先的名字未记载。		PE reference dialogue-1054af0: direct a946e0 ancestor EnglishName empty; paired classic
+spoken-sentence	[ is overcome for a moment.] No... I don't want to talk about it.	【对方一时情绪难抑。】不……我不想谈这件事。		PE reference dialogue-1054af0/dialogue-1055b70: direct a94030 speaker name empty, fixed reaction still appended; paired classic
+# 666470/663e90 chooses devotional reflection before its personality/stress reply.
+# Prefix, action, optional topic phrase, definite sphere and deity caption are independent native branches.
+spoken-sentence	I've been {s}.	我最近一直在{s1}。	speech-devotional-action	PE reference 6675b2..66786c; classic topic-reaction; contraction branch
+spoken-sentence	I have been {s}.	我最近一直在{s1}。	speech-devotional-action	PE reference 6675a3..66786c; classic topic-reaction; full-prefix branch
+speech-devotional-action	contemplating {s}	思考{s1}	speech-devotional-topic	PE reference 66763f..6677be; classic topic-reaction; selected deity sphere branch
+speech-devotional-action	considering {s}	思索{s1}	speech-devotional-topic	PE reference 667630..6677be; classic topic-reaction; selected deity sphere branch
+speech-devotional-action	praying on {s}	为{s1}祈祷	speech-devotional-topic	PE reference 667616+6676d0..6677be; classic topic-reaction; selected deity sphere branch
+speech-devotional-action	contemplating {s}	冥想{s1}	dialogue-query-person	PE reference 66763f+667851..66786c; classic topic-reaction; historical deity via b92f10, distinct from sphere branch
+speech-devotional-action	considering {s}	思索{s1}	dialogue-query-person	PE reference 667630+667851..66786c; classic topic-reaction; historical deity via b92f10
+speech-devotional-action	praying to {s}	向{s1}祈祷	dialogue-query-person	PE reference 667616+667846..66786c; classic topic-reaction; historical deity via b92f10
+speech-devotional-topic	{s}	{s1}	speech-sphere	PE reference 667726..66776e; classic topic-reaction; 6-way selector values 4/5 append no topic phrase
+speech-devotional-topic	the subject of {s}	{s1}这一主题	speech-sphere	PE reference 667747..66776e; classic topic-reaction; selector 0
+speech-devotional-topic	the concept of {s}	{s1}这一概念	speech-sphere	PE reference 66773e..66776e; classic topic-reaction; selector 1
+speech-devotional-topic	the idea of {s}	{s1}这一理念	speech-sphere	PE reference 667735..66776e; classic topic-reaction; selector 2
+speech-devotional-topic	the theme of {s}	{s1}这一主题	speech-sphere	PE reference 667726..66776e; classic topic-reaction; selector 3
+speech-devotional-topic	the subject of	某个未注明的主题		PE reference 756500/756690 unknown sphere returns empty; topic-reaction retains topic phrase
+speech-devotional-topic	the concept of	某个未注明的概念		PE reference 756500/756690 unknown sphere returns empty; topic-reaction retains topic phrase
+speech-devotional-topic	the idea of	某个未注明的理念		PE reference 756500/756690 unknown sphere returns empty; topic-reaction retains topic phrase
+speech-devotional-topic	the theme of	某个未注明的主题		PE reference 756500/756690 unknown sphere returns empty; topic-reaction retains topic phrase
+speech-devotional-action	contemplating	冥想		PE reference 66763f..66786c; empty direct historical caption or unknown sphere without topic phrase
+speech-devotional-action	considering	思索		PE reference 667630..66786c; empty direct historical caption or unknown sphere without topic phrase
+speech-devotional-action	praying on	祈祷		PE reference 667616+6676d0..6677be; unknown sphere without topic phrase
+speech-devotional-action	praying to	祈祷		PE reference 667616+667846..66786c; direct historical deity EnglishName empty
+# BABY profession branch: one to three syllables, optional caste-specific final ending, then ! or ... .
+# The two bounded scopes preserve the native maximum rather than accepting arbitrary phonetic text.
+spoken-sentence	{s}!	{s1}！	speech-babble	PE reference 6664f6..666824 / classic 663f16..664244; profession 8, native final punctuation branch
+spoken-sentence	{s}...	{s1}……	speech-babble	PE reference 6664f6..666824 / classic 663f16..664244; profession 8, native final punctuation branch
+speech-babble	{s}	{s1}	speech-babble-last	PE topic-reaction; one syllable
+speech-babble	ga{s}	嘎{s1}	speech-babble-tail	PE topic-reaction; initial g+a followed by one or two syllables
+speech-babble	ba{s}	吧{s1}	speech-babble-tail	PE topic-reaction; initial b+a followed by one or two syllables
+speech-babble	da{s}	哒{s1}	speech-babble-tail	PE topic-reaction; initial d+a followed by one or two syllables
+speech-babble	ma{s}	嘛{s1}	speech-babble-tail	PE topic-reaction; initial m+a followed by one or two syllables
+speech-babble-tail	{s}	{s1}	speech-babble-last	PE topic-reaction; final syllable after one initial syllable
+speech-babble-tail	ga{s}	嘎{s1}	speech-babble-last	PE topic-reaction; middle g+a in three-syllable branch
+speech-babble-tail	ba{s}	吧{s1}	speech-babble-last	PE topic-reaction; middle b+a in three-syllable branch
+speech-babble-tail	da{s}	哒{s1}	speech-babble-last	PE topic-reaction; middle d+a in three-syllable branch
+speech-babble-tail	ma{s}	嘛{s1}	speech-babble-last	PE topic-reaction; middle m+a in three-syllable branch
+speech-babble-last	ga	嘎		PE topic-reaction; g consonant plus ordinary a ending
+speech-babble-last	ba	吧		PE topic-reaction; b consonant plus ordinary a ending
+speech-babble-last	da	哒		PE topic-reaction; d consonant plus ordinary a ending
+speech-babble-last	ma	嘛		PE topic-reaction; m consonant plus ordinary a ending
+speech-babble-last	gis	吉斯		PE topic-reaction; g plus caste flag +0x6a8[7]&8 is ending
+speech-babble-last	bis	比斯		PE topic-reaction; b plus caste flag +0x6a8[7]&8 is ending
+speech-babble-last	dis	迪斯		PE topic-reaction; d plus caste flag +0x6a8[7]&8 is ending
+speech-babble-last	mis	米斯		PE topic-reaction; m plus caste flag +0x6a8[7]&8 is ending
+speech-babble-last	gus	古斯		PE topic-reaction; g plus caste flag +0x6a8[7]&8 us ending
+speech-babble-last	bus	布斯		PE topic-reaction; b plus caste flag +0x6a8[7]&8 us ending
+speech-babble-last	dus	杜斯		PE topic-reaction; d plus caste flag +0x6a8[7]&8 us ending
+speech-babble-last	mus	穆斯		PE topic-reaction; m plus caste flag +0x6a8[7]&8 us ending
+speech-babble-last	ger	格尔		PE topic-reaction; g plus caste flag +0x6a8[7]&8 er ending
+speech-babble-last	ber	伯尔		PE topic-reaction; b plus caste flag +0x6a8[7]&8 er ending
+speech-babble-last	der	德尔		PE topic-reaction; d plus caste flag +0x6a8[7]&8 er ending
+speech-babble-last	mer	默尔		PE topic-reaction; m plus caste flag +0x6a8[7]&8 er ending
+speech-babble-last	gin	金		PE topic-reaction; g plus caste flag +0x6a8[7]&8 in ending
+speech-babble-last	bin	宾		PE topic-reaction; b plus caste flag +0x6a8[7]&8 in ending
+speech-babble-last	din	丁		PE topic-reaction; d plus caste flag +0x6a8[7]&8 in ending
+speech-babble-last	min	敏		PE topic-reaction; m plus caste flag +0x6a8[7]&8 in ending
+speech-babble-last	gas	嘎斯		PE topic-reaction; g plus caste flag +0x6a8[14]&0x80 as ending
+speech-babble-last	bas	巴斯		PE topic-reaction; b plus caste flag +0x6a8[14]&0x80 as ending
+speech-babble-last	das	达斯		PE topic-reaction; d plus caste flag +0x6a8[14]&0x80 as ending
+speech-babble-last	mas	马斯		PE topic-reaction; m plus caste flag +0x6a8[14]&0x80 as ending
 # Parameter leaves from both current PE images, including native missing-name arms.
 speech-person	nameless	无名		PE 13a0da7/139bd17 and bb182f/bae86f: TRANS_NAME empty output
 speech-person	something	某个存在		PE 685a69/683489: absent ANY:TRANS_NAME/FIRST_NAME parameter

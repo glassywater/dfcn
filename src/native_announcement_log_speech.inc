@@ -8,6 +8,7 @@ static NativeEntryHook g_native_announcement_log_speech_entry, g_native_announce
 static NativeAnnouncementLogSpeechFn g_real_native_announcement_log_speech = nullptr;
 static NativeAnnouncementLogSpeechReplaceFn g_real_native_announcement_log_speech_replace = nullptr;
 struct NativeAnnouncementLogSpeechLive {
+    struct Caption { int32_t unit_id; std::string source; NativeUnitIdentity identity; };
     NativeAnnouncementLogSpeech speech;
     uintptr_t conversation = 0, before_end = 0;
     NativeString *body = nullptr;
@@ -15,9 +16,30 @@ struct NativeAnnouncementLogSpeechLive {
     std::string shadow;
     std::vector<size_t> owners;
     std::vector<size_t> anchors;
+    std::vector<Caption> captions;
     bool valid = false, mapping = true, transformed = false;
 };
 static thread_local NativeAnnouncementLogSpeechLive *g_native_announcement_log_speech_live = nullptr;
+static void remember_native_announcement_log_speech_identity(
+        uintptr_t unit, const NativeUnitIdentity &identity, std::string_view source) noexcept {
+    auto *live = g_native_announcement_log_speech_live;
+    if (!live || !live->valid || !unit) return;
+    try {
+        int32_t unit_id = -1;
+        if (!native_history_copy(native_history_object_field(unit, "unit", 0x130, 4), unit_id) ||
+                unit_id < 0 || (unit_id != live->speech.speaker_ref[0] &&
+                    unit_id != live->speech.recipient_ref[0])) return;
+        // The outer native reference formatter finishes after its nested
+        // name/role suppliers. Retain that complete selection for this one
+        // wrapper invocation; no later world lookup can replace its caption.
+        for (auto &caption : live->captions)
+            if (caption.unit_id == unit_id && caption.source == source) {
+                caption.identity = identity;
+                return;
+            }
+        live->captions.push_back({unit_id, std::string(source), identity});
+    } catch (...) {}
+}
 struct NativeAnnouncementLogSpeechCallback {
     NativeAnnouncementLogSpeechCallback() { g_active_native_announcement_callbacks.fetch_add(1, std::memory_order_acq_rel); }
     ~NativeAnnouncementLogSpeechCallback() { g_active_native_announcement_callbacks.fetch_sub(1, std::memory_order_acq_rel); }
@@ -190,6 +212,8 @@ static void native_announcement_log_speech_finish_snapshot(NativeAnnouncementLog
     scalar(speech.parameters.size());
     for (const auto &[name, value] : speech.parameters) { text(name); scalar(value); }
     text(speech.original_body); text(speech.expanded_body); text(speech.rendered_body); text(speech.header_source);
+    text(speech.speaker_source); text(speech.recipient_source);
+    scalar(speech.header_complete); scalar(speech.player); scalar(speech.addressed);
     scalar(speech.tokens_complete);
     scalar(speech.tokens.size());
     for (const auto &token : speech.tokens) {
@@ -199,8 +223,13 @@ static void native_announcement_log_speech_finish_snapshot(NativeAnnouncementLog
     const bool speaker = speech.speaker_identity.has_value(), recipient = speech.recipient_identity.has_value();
     scalar(speaker); if (speaker) text(native_unit_identity_cache_key(*speech.speaker_identity));
     scalar(recipient); if (recipient) text(native_unit_identity_cache_key(*speech.recipient_identity));
+    const bool speaker_caption = speech.speaker_caption_identity.has_value();
+    const bool recipient_caption = speech.recipient_caption_identity.has_value();
+    scalar(speaker_caption); if (speaker_caption) text(native_unit_identity_cache_key(*speech.speaker_caption_identity));
+    scalar(recipient_caption); if (recipient_caption) text(native_unit_identity_cache_key(*speech.recipient_caption_identity));
     speech.bytes = sizeof(speech) + speech.source.capacity() + speech.original_body.capacity() +
         speech.expanded_body.capacity() + speech.rendered_body.capacity() + speech.header_source.capacity() +
+        speech.speaker_source.capacity() + speech.recipient_source.capacity() +
         3 * speech.context.capacity() + speech.tokens.capacity() * sizeof(NativeAnnouncementLogSpeechToken);
     for (const auto &token : speech.tokens) speech.bytes += token.token.capacity() + token.source.capacity();
     for (const auto &[name, value] : speech.parameters) speech.bytes += name.capacity() + sizeof(value) + 5 * sizeof(void *);
@@ -276,8 +305,51 @@ static NativeAnnouncementLogSpeechSubmission begin_native_announcement_log_speec
             token.source = speech->expanded_body.substr(token.offset, token.length);
         }
     }
-    speech->speaker_identity = native_announcement_log_speech_unit(speech->speaker_ref[0]);
-    speech->recipient_identity = native_announcement_log_speech_unit(speech->recipient_ref[0]);
+    // 684a10 builds the heading from completed native unit captions, then
+    // appends ": " exactly once. Bind only an exact reconstruction of that
+    // owned heading. A nickname containing " (to " is never a delimiter.
+    speech->header_complete = speech->header_source.empty();
+    uintptr_t player = 0;
+    int32_t player_id = -1;
+    if (native_history_copy(native_history_global(0x23e5110), player) && player)
+        for (const auto &field : native_history_layout::f_unit_fields)
+            if (std::string_view(field.name) == "id") {
+                native_history_copy(player + field.native, player_id);
+                break;
+            }
+    if (player_id >= 0 && speech->speaker_ref[0] == player_id && speech->header_source == "You: ") {
+        speech->header_complete = true;
+        speech->player = true;
+        speech->speaker_source = "You";
+    }
+    for (auto speaker_at = live->captions.rbegin(); speaker_at != live->captions.rend(); ++speaker_at) {
+        const auto &speaker_caption = *speaker_at;
+        if (speech->header_complete || speaker_caption.unit_id != speech->speaker_ref[0]) continue;
+        const auto bind_speaker = [&] {
+            speech->speaker_source = speaker_caption.source;
+            speech->speaker_caption_identity = speaker_caption.identity;
+            speech->header_complete = true;
+        };
+        if (speech->header_source == speaker_caption.source + ": ") {
+            bind_speaker();
+            break;
+        }
+        for (auto recipient_at = live->captions.rbegin(); recipient_at != live->captions.rend(); ++recipient_at) {
+            const auto &recipient_caption = *recipient_at;
+            if (recipient_caption.unit_id != speech->recipient_ref[0] ||
+                    speech->header_source != speaker_caption.source + " (to " +
+                        recipient_caption.source + "): ") continue;
+            bind_speaker();
+            speech->addressed = true;
+            speech->recipient_source = recipient_caption.source;
+            speech->recipient_caption_identity = recipient_caption.identity;
+            break;
+        }
+    }
+    if (!speech->speaker_identity)
+        speech->speaker_identity = native_announcement_log_speech_unit(speech->speaker_ref[0]);
+    if (!speech->recipient_identity)
+        speech->recipient_identity = native_announcement_log_speech_unit(speech->recipient_ref[0]);
     uintptr_t world = 0;
     if (!native_history_copy(native_history_global(0x24ebb58), world) || !world) return ticket;
     native_announcement_log_speech_finish_snapshot(*speech);

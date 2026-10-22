@@ -4450,6 +4450,7 @@ Announcement combat quest-sentence [conversation-conflict-entity]: Speaking as a
 Announcement combat rumor-event [$name,$name]: I hear that a group calling itself {s} founded after a long journey from the lands of {s}.	听说一个自称{s1}的势力从{s2}的领地长途跋涉而来，建立了未具名地点。	l
 Announcement combat rumor-event [rumor-owner,$name,$name]: refused an offer of peace from {s} regarding the conflict between {s} and {s}.	未具名者拒绝了{s1}为平息{s2}和{s3}的冲突而提出的议和。	l
 Announcement combat rumor-event [rumor-time,rumor-person,$travel-site,rumor-person]: I heard that {s}, {s} was kidnapped from {s} by {s}.	听说{s1}，{s4}从{s3}绑走了{s2}。	l
+Announcement combat spoken-sentence []: I wish I could tell you where to begin your search. Until then, you are free to do as you please.	我也希望能告诉你从哪里开始寻找。在那之前，你可以自由行动。	l
 DFHack GUI Sitemap: Click on a name or hit Enter to zoom to the selected target. Shift-click or Shift-Enter to zoom and follow unit/item.	点击名称或按下 Enter，定位至选中的目标。按住 Shift 点击，或按下 Shift-Enter，定位并跟随生物或物品。	l
 DFHack help: "--mode <mode>" Mode can be "add" or "set", depending on whether you want to add to the existing experience/level or set it.	"--mode <mode>" 模式可以是 "add" 或 "set"，具体取决于您是否要添加到现有的 experience/level 或设置它。	l
 DFHack help: "--search <pattern> [<pattern>]" Searches the source for field names with substrings matching any of the specified patterns.	"--search <pattern> [<pattern>]" 在源中搜索子字符串与任何指定模式匹配的字段名称。	l
@@ -5477,6 +5478,7 @@ Announcement combat conversation-conflict-death [conversation-conflict-person,co
 Announcement combat fortress-arrival []: Some migrants have decided to brave this terrifying place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖之地，明知这里可能成为他们的坟墓。	l
 Announcement combat justice-intrigue-method [justice-intrigue-actor]: played for sympathy by appealing to a shared worship of {s}	以共同信奉{s1}为由博取同情	l
 Announcement combat negotiation-response []: made several jokes of their own but came to see the seriousness of the issue at hand	也讲了几个笑话，但随后意识到了当前问题的严重性	l
+Announcement combat spoken-sentence []: We were going to entertain the world! It's a shame, but I'll have to make my own way now.	我们原本要为全世界带来欢乐！真遗憾，但现在我得独自闯荡了。	l
 Announcement combat spoken-sentence [diplomacy-group]: {s} accepts our tribute, and there is no hard feeling between our peoples.	{s1}接受我们的贡品，双方百姓也没什么芥蒂。	l
 DFHack help: "--onUnequip <mode>" Trigger the command when someone unequips an appropriate item. Same mode values as "--onEquip".	"--onUnequip <mode>" 当有人取消装备适当的物品时触发该命令。与 "--onEquip" 相同的模式值。	l
 DFHack help: "modtools/create-item -u 323 -i MEAT:NONE -m CREATURE:DWARF:BRAIN" Have unit 323 produce a lump of (prepared) brain.	"modtools/create-item -u 323 -i MEAT:NONE -m CREATURE:DWARF:BRAIN" 让323号单位生产出一块（准备好的）大脑。	l
@@ -5600,6 +5602,7 @@ Announcement combat agreement-title-core [agreement-party-list,$name]: the agree
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list]: the joining of {s} with {s} to help rescue	{s1}与{s2}同行，前去营救……	l
 Announcement combat conversation-choice [conversation-choice-entity,conversation-choice-entity]: Offer peace between {s} and {s}	提议{s1}与{s2}议和	l
 Announcement combat negotiation-sentence []: The task was made somewhat easier by the relative populations of the civilizations.	双方政权的人口差距让这项任务容易了一些。	l
+Announcement combat spoken-sentence []: I am so nearly swayed by your greatness alone that we can simply assign you the victory!	单凭你这非凡的气度，我就快服了，不如干脆算你赢吧！	l
 DFHack help: "channel-safely runonce" Runs the safety procedures once. You can use this if you prefer initiating scans manually.	"channel-safely runonce" 运行一次安全程序。如果您喜欢手动启动扫描，可以使用此选项。	l
 DFHack help: "ls --dev trigger" List all commands, including developer and modding commands, that match the substring "trigger".	"ls --dev trigger" 列出与子字符串 "trigger" 匹配的所有命令，包括开发人员和修改命令。	l
 DFHack help: "modtools/spawn-liquid --type Water --level 7 --position 60,60,143" Spawn 7/7 Water on tile coordinates 60, 60, 143	"modtools/spawn-liquid --type Water --level 7 --position 60,60,143" 生成 7/7 瓷砖坐标 60, 60, 143 上的水	l
@@ -5994,6 +5997,7 @@ Announcement combat justice-interrogation-sentence []: Attempted to make intimid
 Announcement combat rumor-event [$name]: We formed {s} in order to find better lives after the horrible mismanagement of by .	未具名者把未具名地点治理得一团糟，我们才组建了{s1}，想过上好日子。	l
 Announcement combat spoken-sentence [$name,dialogue-family,$unit]: I'm going to {s} to move into my new home with my {s} {s}.	我正前往{s1}，与我的{s2}{s3}搬入我们的新家。	l
 Announcement combat spoken-sentence [$travel-site]: The village {s} is the only other settlement to utilize the market there.	只有{s1}这座村庄也去那里赶集。	l
+Announcement combat spoken-sentence []: Certainly. It would be terrible to leave someone to fend for themselves after sunset.	当然。日落之后，让人独自在外面自生自灭就太糟了。	l
 Announcement combat spoken-sentence [diplomacy-group]: {s} is paying us tribute, and there is friendship between our peoples.	{s1}正在向我们进贡，双方百姓也相处和睦。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be speaking to {s}.	{s1}当时将正在对{s2}说话。	l
 Continue moving in the same direction to build up speed. If you or your mount are moving quickly, your attacks gain velocity.	持续朝同一方向移动可以加速。你或坐骑高速移动时，攻击也会获得额外速度。	hq
@@ -6559,6 +6563,7 @@ Announcement combat rumor-event []: A bandit gang calling itself has been harass
 Announcement combat rumor-event [rumor-person,rumor-owner,$name,$name]: {s} refused {s} offer of tribute from {s} to {s}.	{s1}拒绝了{s2}进贡提议：由{s3}向{s4}纳贡。	l
 Announcement combat rumor-event [rumor-time,rumor-person,$travel-site]: I heard that {s}, {s} was kidnapped from {s} by .	听说{s1}，未具名者从{s3}绑走了{s2}。	l
 Announcement combat spoken-sentence [$kinship]: It pains me all the more, for the foul villain is my own {s}, now cursed.	更让我痛心的是，这个恶徒竟是我的{s1}，如今已遭到诅咒。	l
+Announcement combat spoken-sentence []: I don't understand how somebody can become so obsessed by what somebody else has.	我不明白，一个人怎么会如此执着于别人拥有的东西。	l
 Announcement combat spoken-sentence [diplomacy-group]: {s} is our ally, and there is no hard feeling between our peoples.	{s1}是我们的盟友，双方百姓也没什么芥蒂。	l
 Announcement combat spoken-sentence [speech-place,speech-place,$book]: I'm preparing to travel to {s} in {s} to view {s}.	我正准备前往{s2}的{s1}瞻仰{s3}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be flooding {s}.	{s1}当时将正在淹没{s2}。	l
@@ -7773,6 +7778,8 @@ Announcement combat negotiation-response []: attempted to put their opposite at 
 Announcement combat negotiation-response []: spun a web of deceit of their own but became tied in their own knots	也编织了一张谎言之网，却作茧自缚	l
 Announcement combat rumor-event [$name,$name]: I hear that a group calling itself {s} reclaimed on behalf of {s}.	听说一个自称{s1}的势力代表{s2}收复了未具名地点。	l
 Announcement combat sentence [$book,$item,$name]: I am searching for {s} {s}, and this quest is taking me to {s}.	我正在寻找{s1}{s2}，为此要前往{s3}。	l
+Announcement combat spoken-sentence []: Indoors, outdoors. It's all the same to me as long as the weather's fine.	室内也好，室外也好。只要天气不错，对我来说都一样。	l
+Announcement combat spoken-sentence []: You'll have the room for another day. I'm glad you're enjoying your stay.	这间房会再为你留一天。很高兴你在这里住得愉快。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am appearing {s}.	{s1}正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} am rewarding {s}.	{s1}正在奖赏{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} are flooding {s}.	{s1}正在淹没{s2}。	l
@@ -8644,6 +8651,7 @@ Announcement combat rumor-event [rumor-person,$travel-site]: I hear that {s} los
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain was once my own {s}.	更让我痛心的是，这个恶徒曾是我的{s1}。	l
 Announcement combat speech-journey-reward [speech-journey-purpose]: {s} and maybe something to drink as well	{s1}，也许还能找点酒喝	l
 Announcement combat spoken-sentence [$number,$creature,$name]: I have taken down {s} {s} while stalking {s}.	我在{s3}潜行猎杀过{s1}只{s2}。	l
+Announcement combat spoken-sentence []: The bond is broken! Return to the Underworld and trouble us no more!	束缚已被打破！回到地下世界去，别再纠缠我们！	l
 Announcement combat spoken-sentence [speech-office]: I would be honored to serve as a {s}. Will you have me?	能担任{s1}将是我的荣幸。你愿意接纳我吗？	l
 Announcement combat spoken-sentence [speech-person,threat-possessive]: [{s} pauses to regain {s} composure.]	【{s1}稍作停顿，{s2}正努力恢复镇定。】	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} appears {s}.	{s1}出现在{s2}。	l
@@ -8804,6 +8812,7 @@ Announcement combat sentence [$name]: Join me and we can shake off the yoke of {
 Announcement combat sentence [diplomacy-group]: {s} is our ally, but there is ill-will between our peoples.	{s1}是我们的盟友，可双方百姓却互有敌意。	l
 Announcement combat site-rumor-event [$name,$travel-site]: {s} was overthrown after an insurrection in {s}.	{s1}在{s2}的一场叛乱后被推翻了。	l
 Announcement combat spoken-sentence [$number]: There are {s} other villages which utilize the market there.	还有{s1}座村庄去那里赶集。	l
+Announcement combat spoken-sentence []: I just don't understand these flames of passion people go on about.	人们总说欲火难耐，我实在无法理解。	l
 Announcement combat spoken-sentence []: It is I that would lead you, but I have no need of your protection.	该由我来带领你才对，但我不需要你的保护。	l
 Announcement combat spoken-sentence [threat-material]: Beware! It it said that only {s} harms the creature.	当心！据说只有{s1}能伤到这只生物。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} appear {s}.	{s1}出现在{s2}。	l
@@ -9161,6 +9170,7 @@ Announcement combat rumor-event []: We are besieged by a terrifying monster from
 Announcement combat rumor-event [rumor-owner,$name,$name]: refused {s} demand of tribute from {s} to {s}.	未具名者拒绝了{s1}要求：让{s2}向{s3}进贡。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} releases the choke hold of {s} on {s}.	{s1}解除了{s2}对{s3}的勒颈控制。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} releases the joint lock of {s} on {s}.	{s1}解除了{s2}对{s3}的关节锁技。	l
+Announcement combat spoken-sentence []: [ is overcome for a moment.] No... I don't want to talk about it.	【对方一时情绪难抑。】不……我不想谈这件事。	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the extinguisher of {s}, {s}!	终结{s1}生命的正是我，{s2}！	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-emotion]: {s} are {s}.	{s1}{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-emotion]: {s} was {s}.	{s1}曾{s2}。	l
@@ -9347,7 +9357,10 @@ Announcement combat sentence [unit,owned-object,owned-object]: {s} release the c
 Announcement combat sentence [unit,owned-object,owned-object]: {s} release the joint lock of {s} on {s}.	{s1}解除了{s2}对{s3}的关节锁技。	l
 Announcement combat spoken-greeting [speech-first-name]: {s}... your parents must have been interesting!	{s1}……你的父母一定很有意思！	l
 Announcement combat spoken-sentence [$unit,dialogue-family]: Be careful, for their leader {s} is my {s}.	小心点，他们的领袖{s1}可是我的{s2}。	l
+Announcement combat spoken-sentence []: One must always carefully consider the correct course of action.	做事之前，总应慎重考虑怎样才妥当。	l
 Announcement combat spoken-sentence []: Surely any place is better than this. Let's set off immediately!	去哪儿都比待在这里强。我们马上出发吧！	l
+Announcement combat spoken-sentence []: Their strength has been challenged, and their hold has loosened.	他们遭到挑战，对这里的控制已经松动了。	l
+Announcement combat spoken-sentence []: They consider you an infamous villain among those opposing them.	他们把你视为反对者中臭名昭著的恶人。	l
 Announcement combat spoken-sentence [dialogue-family,speech-person,biography-office]: My {s} {s} is {s}.	我的{s1}{s2}担任{s3}。	l
 Announcement combat spoken-sentence [speech-person]: Behold, mortal. I am {s}. I know why you have come.	看吧，凡人。我是{s1}。我知道你为何而来。	l
 Announcement combat travel-drive-main [$name,$travel-site]: You have been ordered to drive {s} from {s}.	你奉命将{s1}赶出{s2}。	l
@@ -9720,6 +9733,8 @@ Announcement combat sentence [speech-sphere]: There is also the natural issue of
 Announcement combat sentence [unit,owned-object,owned-object]: {s} places a chokehold on {s} with {s}!	{s1}用{s3}勒住了{s2}！	l
 Announcement combat site-rumor-event [site-rumor-person,$travel-site]: the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	l
 Announcement combat spoken-sentence [$travel-site,$travel-site]: The people of {s} go to {s} to trade.	{s1}的人会去{s2}做买卖。	l
+Announcement combat spoken-sentence []: Probably on the move or deep underground, but I can't be sure.	可能正在途中，也可能在地下深处，但我不能确定。	l
+Announcement combat spoken-sentence []: Reveal what you have been scheming or suffer the consequences.	交代你的阴谋，否则后果自负。	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the conqueror of {s}, {s}!	我就是{s1}的征服者，{s2}！	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the strangler of {s}, {s}!	绞杀{s1}的正是我，{s2}！	l
 DFHack GUI Quickfort: Build mode blueprints will use DFHack building planner material filter settings.	建造类蓝图会采用 DFHack 建造规划器的材料筛选设置。	l
@@ -9948,6 +9963,8 @@ Announcement combat site-rumor-event [$travel-site,site-rumor-person]: was kidna
 Announcement combat site-rumor-event [site-rumor-person,site-rumor-person]: {s} was kidnapped by {s}.	{s1}被{s2}绑架了。	l
 Announcement combat speech-journey-purpose [dialogue-query-person]: to move into my new home with {s}	，与{s1}搬入我们的新家	l
 Announcement combat spoken-sentence [$creature]: ... and the {s} saw the sun and vomited on the spot!	……然后那个{s1}看见太阳，当场吐了！	l
+Announcement combat spoken-sentence []: I'd just as soon not have anything too exciting happen today.	我倒希望今天别发生什么太刺激的事。	l
+Announcement combat spoken-sentence []: Your name precedes you. Thank you for all that you have done.	久仰大名。感谢你所做的一切。	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the murderer of {s}, {s}!	谋杀{s1}的正是我，{s2}！	l
 Announcement combat spoken-sentence [memory-person,memory-person]: {s} escalated a conflict with {s}.	{s1}升级了与{s2}的冲突。	l
 Announcement combat spoken-sentence [speech-place,$book]: I'm preparing to travel to {s} to view {s}.	我正准备前往{s1}瞻仰{s2}。	l
@@ -10364,8 +10381,12 @@ Announcement combat sentence []: I will agree to travel with you if you lead me 
 Announcement combat sentence [speech-service-person]: I do not know! My instructions come from {s}.	我不知道！我的指令来自{s1}。	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} breaks the grip of {s} from {s}!	{s1}挣脱了{s2}对{s3}的抓握！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} releases the grip of {s} on {s}.	{s1}解除了{s2}对{s3}的抓握。	l
+Announcement combat spoken-greeting []: You are welcome at . Please be respectful of the materials.	欢迎来到这里。请爱惜这里的资料。	l
 Announcement combat spoken-sentence [$creature]: ... and the {s} said, "Are you going to eat that?"	……然后那个{s1}说道：“你要吃那个吗？”	l
+Announcement combat spoken-sentence []: I'll need to see something impressive before I consider it.	你得先拿出点真本事，我才会考虑。	l
 Announcement combat spoken-sentence []: If you want to offer your condolences, you should talk to .	想去吊唁的话，你该找未具名者谈谈。	l
+Announcement combat spoken-sentence []: Sometimes I think I need a drink, but I can control myself.	有时我觉得该喝一杯，但我能克制自己。	l
+Announcement combat spoken-sentence []: What stories you tell! It's such an honor to have you here.	你讲的故事真精彩！你能来这里，真是荣幸。	l
 Announcement combat spoken-sentence []: With a band so large, what share of the glory would I have?	队伍这么大，我又能分得多少荣耀？	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the killer of {s}, {s}!	杀死{s1}的正是我，{s2}！	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the master of {s}, {s}!	我就是{s1}的主人，{s2}！	l
@@ -10630,7 +10651,10 @@ Announcement combat site-rumor-event [site-rumor-person,$travel-site]: {s} was k
 Announcement combat speech-architecture-justification []: can be thought of as a representation of	象征着	l
 Announcement combat speech-journey-purpose [dialogue-family]: to move into my new home with my {s}	，与我的{s1}未具名者搬入我们的新家	l
 Announcement combat spoken-greeting [speech-first-name,speech-first-name]: So, {s}... {s}, was it?	那么，{s1}……是叫{s2}，对吗？	l
+Announcement combat spoken-sentence []: I am escaping from danger which threatened my former home.	我原来的家遭遇了危险，我是出来避难的。	l
+Announcement combat spoken-sentence []: It's not perfect, but it's good enough. Why fret about it?	虽然不完美，但已经够好了，何必为此烦恼？	l
 Announcement combat spoken-sentence []: Would you like to join ? The troupe could use your talent.	你愿意加入剧团吗？剧团需要你的才华。	l
+Announcement combat spoken-sentence []: You have a room here, and you can stay longer if you like.	你在这里有一间房，愿意的话可以多住些日子。	l
 Announcement combat spoken-sentence []: is well-traveled and would probably have that information.	未具名者走过不少地方，应该知道这方面的消息。	l
 Announcement combat spoken-sentence [boast-raw-victim,$creature]: It is I that felled {s} the {s}.	正是我击倒了{s2}{s1}。	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the death of {s}, {s}!	给{s1}带来死亡的正是我，{s2}！	l
@@ -11129,6 +11153,7 @@ Announcement combat sentence [unit,owned-object,owned-object]: {s} break the gri
 Announcement combat sentence [unit,unit,object,owned-object]: {s} throw {s} by the {s} with {s}!	{s1}用{s4}抓住{s2}的{s3}将其抛了出去！	l
 Announcement combat speech-architecture-justification []: can be thought of as the antithesis of	与以下概念形成对立：	l
 Announcement combat spoken-sentence [$name,description-building]: Search first in {s}, {s} here.	先在这里的{s2}{s1}找找。	l
+Announcement combat spoken-sentence []: They still hold this area, but they do not feel certain.	他们仍控制着这片地区，但并没有把握。	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the foe of {s}, {s}!	我就是{s1}的敌人，{s2}！	l
 Announcement combat spoken-sentence [dialogue-family-indef,speech-person]: I have {s} named {s}.	我有{s1}，名叫{s2}。	l
 Announcement combat spoken-sentence [speech-place,$date]: I started my pilgrimage in {s} in {s}.	我于{s2}在{s1}开始朝圣。	l
@@ -11401,6 +11426,7 @@ Announcement combat sentence [boast-victim,boast-slain-clause]: I am the strangl
 Announcement combat site-rumor-event [site-rumor-person,$name]: {s} claimed in the name of {s}.	{s1}以{s2}的名义取得了未具名地点。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Might I interest you in {s}, {s}?	{s2}，我能让你对{s1}感兴趣吗？	l
 Announcement combat spoken-sentence [$travel-site,trade-places]: {s} engages in trade with {s}.	{s1}同{s2}有贸易往来。	l
+Announcement combat spoken-sentence []: People can be so angry, and I just don't understand it.	人怎么会有那么大的怒气，我实在不理解。	l
 Announcement combat spoken-sentence [dialogue-family-indef,speech-person]: I had {s} named {s}.	我曾有{s1}，名叫{s2}。	l
 Announcement combat spoken-sentence [speech-place,speech-journey-reward]: I'm going to {s} {s}!	我正前往{s1}{s2}！	l
 Announcement combat spoken-sentence [speech-race]: Did you hear the one about the {s} and the ?	你听过那个关于{s1}和某种生物的笑话吗？	l
@@ -11696,6 +11722,8 @@ Announcement combat spoken-sentence [$term,speech-person,$name]: Make way for {s
 Announcement combat spoken-sentence []: I've always wanted to travel the world. Let us be off!	我一直想周游世界。我们出发吧！	l
 Announcement combat spoken-sentence []: It is rumored that the dead rise and stalk the living!	据说死人会在那里复活，暗中追踪活人！	l
 Announcement combat spoken-sentence []: It would be so great to perform and make people happy.	能靠演出带给大家快乐，那该多好。	l
+Announcement combat spoken-sentence []: My talented bard! It's such an honor to have you here.	才华横溢的吟游诗人，你能来这里，真是我的荣幸！	l
+Announcement combat spoken-sentence []: You are considered an integral part of the opposition.	你被视为反对者中不可或缺的一员。	l
 Announcement combat spoken-sentence [dialogue-trouble-list]: Well, let's see... we've got {s}.	嗯，让我想想……我们这里有{s1}。	l
 Announcement combat spoken-sentence [speech-office]: I am your loyal {s}. What do you command?	我是你忠诚的{s1}。你有何吩咐？	l
 Announcement combat spoken-sentence [speech-race]: Did you hear the one about the and the {s}?	你听过那个关于某种生物和{s1}的笑话吗？	l
@@ -11943,6 +11971,7 @@ Announcement combat spoken-sentence [$item,merchant-address]: Excellent {s} righ
 Announcement combat spoken-sentence [$item,merchant-address]: Fantastic {s} right there, {s}.	{s2}，就那里的绝妙的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-town]: {s} were tanned right here in {s}.	{s1}就是在{s2}鞣制的。	l
 Announcement combat spoken-sentence []: That's such a fantastic idea. I can't wait to be off!	这个主意太棒了。我等不及要出发了！	l
+Announcement combat spoken-sentence []: You ought to be rewarded for returning our treasures.	你归还了我们的宝藏，应当得到奖赏。	l
 Announcement combat spoken-sentence [dialogue-object]: Perhaps you'd be willing to trade {s}?	你愿不愿意拿{s1}来交换？	l
 Announcement combat spoken-sentence [speech-place,speech-place]: I'm traveling to {s} in {s}.	我正在前往{s2}的{s1}。	l
 Announcement combat spoken-sentence [trade-places]: The villages {s} utilize the market here.	{s1}这些村庄都来这里赶集。	l
@@ -12245,6 +12274,7 @@ Announcement combat sentence [speech-place,speech-place,$date]: I visited {s} in
 Announcement combat sentence [trade-places]: The villages {s} also utilize the market there.	{s1}这些村庄也去那里赶集。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Splendid {s} right there, {s}.	{s2}，就那里的出色的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-town]: {s} was tanned right here in {s}.	{s1}就是在{s2}鞣制的。	l
+Announcement combat spoken-sentence []: I'd like to stay here another day if you don't mind.	如果你不介意，我想在这里再住一天。	l
 Announcement combat spoken-sentence []: If you want to find a relative, you should talk to .	想找亲人的话，你该去问问未具名者。	l
 Announcement combat spoken-sentence [boast-victim,boast-slain-clause]: I am the of {s}, {s}!	击败{s1}的正是我，{s2}！	l
 Announcement combat spoken-sentence [dialogue-query-person]: What can you tell me about {s}?	能跟我说说{s1}吗？	l
@@ -12586,6 +12616,10 @@ Announcement combat site-rumor-predecessor [dialogue-family,site-rumor-person]: 
 Announcement combat site-rumor-predecessor [dialogue-family,site-rumor-person]: its {s} {s}	它的{s1}{s2}	l
 Announcement combat spoken-sentence [$item,merchant-town]: {s} were made right here in {s}.	{s1}就是在{s2}制作的。	l
 Announcement combat spoken-sentence [$term,$term,speech-person]: I am a {s} of the {s} {s}.	我是{s2}{s3}的{s1}。	l
+Announcement combat spoken-sentence []: I don't always do things in the most efficient way.	我做事并不总是那么有效率。	l
+Announcement combat spoken-sentence []: I wouldn't feel comfortable getting all dressed up.	打扮得太讲究，会让我不自在。	l
+Announcement combat spoken-sentence []: People do get so carried away sometimes, but not I.	人有时会忘乎所以，但我不会。	l
+Announcement combat spoken-sentence []: What a dancer! It's such an honor to have you here.	多么出色的舞者！你能来这里，真是荣幸。	l
 Announcement combat spoken-sentence [speech-place,$book]: I'm traveling to {s} to view {s}.	我正在前往{s1}瞻仰{s2}。	l
 Announcement combat spoken-sentence [threat-name,threat-crimes]: Knowing no mercy, {s} {s}!	{s1}毫不留情，{s2}！	l
 Announcement combat spoken-sentence [threat-possessive]: [ pauses to regain {s} composure.]	【{s1}稍作停顿，努力恢复镇定。】	l
@@ -12916,9 +12950,13 @@ Announcement combat sentence [unit,actor,equipment]: {s} bats {s} out of the air
 Announcement combat sentence [unit,object,unit]: {s} let the {s} drop away as {s} attacks.	{s1}在{s3}攻击时放开了{s2}。	l
 Announcement combat sentence [unit,object,unit]: {s} lets the {s} drop away as {s} attack.	{s1}在{s3}攻击时放开了{s2}。	l
 Announcement combat site-rumor-event [$name,$travel-site]: the army of {s} marched on {s}.	{s1}的军队向{s2}进军了。	l
+Announcement combat spoken-greeting [speech-race-profession,$name]: I'm a true {s} of {s}.	我才是{s2}的真正{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Decent {s} right there, {s}.	{s2}，就那里的不错的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-town]: {s} was made right here in {s}.	{s1}就是在{s2}制作的。	l
 Announcement combat spoken-sentence [$item,merchant-town]: {s} were cut right here in {s}.	{s1}就是在{s2}切割的。	l
+Announcement combat spoken-sentence []: I must say that is a truly insightful observation!	不得不说，你这番见解真是深刻！	l
+Announcement combat spoken-sentence []: It's not a gift if you expect something in return.	若是指望回报，那就不算馈赠。	l
+Announcement combat spoken-sentence []: They must be stopped by any means at our disposal.	我们必须用尽一切手段阻止他们。	l
 Announcement combat spoken-sentence [dialogue-family,speech-person]: My {s} was named {s}.	我已故的{s1}名叫{s2}。	l
 Announcement combat spoken-sentence [diplomacy-cause]: The trouble started because of {s}.	最初是因为{s1}，才起了冲突。	l
 Announcement combat spoken-sentence [speech-person]: The seat of {s} is also located here.	{s1}的统治中心也在这里。	l
@@ -13204,10 +13242,13 @@ Announcement combat sentence [speech-place,$date]: I started my pilgrimage in {s
 Announcement combat sentence [speech-place,speech-journey-purpose]: I'm going to {s} {s}.	我正前往{s1}{s2}。	l
 Announcement combat sentence [unit,actor,equipment]: {s} bat {s} out of the air with {s}!	{s1}用{s3}将{s2}从空中击落了！	l
 Announcement combat sentence [unit,object,unit]: {s} let the {s} drop away as {s} attack.	{s1}在{s3}攻击时放开了{s2}。	l
+Announcement combat speech-devotional-action [speech-devotional-topic]: contemplating {s}	思考{s1}	l
 Announcement combat speech-journey-purpose [speech-office]: to take up my position as {s}	就任{s1}	l
 Announcement combat spoken-sentence [$item,merchant-address]: Great {s} right there, {s}.	{s2}，就那里的很棒的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-town]: {s} was cut right here in {s}.	{s1}就是在{s2}切割的。	l
 Announcement combat spoken-sentence []: Excitement! Adventure! I am thrilled to join you.	刺激！冒险！能跟你们一起去，真让人兴奋！	l
+Announcement combat spoken-sentence []: They consider you a key figure in the opposition.	他们把你视为反对者中的关键人物。	l
+Announcement combat spoken-sentence []: Try to focus on the practical side of the matter.	尽量多考虑事情实际的一面。	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the extinguisher of , {s}!	终结对方生命的正是我，{s1}！	l
 Announcement combat spoken-sentence [dialogue-family,speech-person]: My {s} is named {s}.	我的{s1}名叫{s2}。	l
 Announcement combat threat-family-list [threat-family-group,threat-family-list]: {s}, {s}	{s1}、{s2}	l
@@ -13529,6 +13570,10 @@ Announcement combat sentence [unit,owned-object,owned-object]: {s} catches {s} w
 Announcement combat spoken-sentence [$item,merchant-address]: Good {s} right there, {s}.	{s2}，就那里的优质的{s1}。	l
 Announcement combat spoken-sentence []: A demonstration of your skill might convince me.	展示一下你的技艺，也许就能说服我。	l
 Announcement combat spoken-sentence []: Can you lead me to battle and a warrior's death?	你能带我上战场，让我像个战士那样战死吗？	l
+Announcement combat spoken-sentence []: I am sorry. I do not think there is room for me.	抱歉，我觉得这里容不下我。	l
+Announcement combat spoken-sentence []: I don't understand why they have to be that way.	我不理解，他们为什么非要那样。	l
+Announcement combat spoken-sentence []: It really is a pleasure to speak with you again.	能再次与你交谈，真令人高兴。	l
+Announcement combat spoken-sentence []: It's a great day to fall in love all over again.	今天真是重新坠入爱河的好日子。	l
 Announcement combat spoken-sentence []: It's such a noble pursuit. Let's go immediately!	这是多么崇高的追求。我们马上走吧！	l
 Announcement combat travel-drive-main [$name]: You have been ordered to drive {s} from .	你奉命将{s1}赶出未具名地点。	l
 Announcement combat visitor-statement [visitor-statement-object]: will be appearing {s}.	将正在出现在{s1}。	l
@@ -13844,6 +13889,8 @@ Announcement combat sentence [head,equipment]: {s}, but the attack is deflected 
 Announcement combat sentence [speech-office]: I am your loyal {s}. What do you command?	我是你忠诚的{s1}。你有何吩咐？	l
 Announcement combat sentence [threat-material]: It is said that {s} harms the creature.	据说{s1}能伤到这只生物。	l
 Announcement combat site-rumor-event [site-rumor-artifact]: {s} was known to be in in .	当时已知{s1}位于未具名地点的一座建筑里。	l
+Announcement combat speech-devotional-action [dialogue-query-person]: contemplating {s}	冥想{s1}	l
+Announcement combat speech-devotional-action [speech-devotional-topic]: considering {s}	思索{s1}	l
 Announcement combat spoken-greeting [speech-first-name]: {s}. Does that mean something?	{s1}。这个名字有什么含义吗？	l
 Announcement combat spoken-greeting [speech-person]: I am {s}. How can I be of service?	我是{s1}。有什么可以为你效劳？	l
 Announcement combat spoken-greeting [speech-person]: I thought you called yourself {s}.	我以为你自称{s1}。	l
@@ -13851,6 +13898,8 @@ Announcement combat spoken-greeting [speech-place]: This is {s}. What can I do f
 Announcement combat spoken-sentence [$creature]: {s} have been known to hunt out there.	听说{s1}会在那里狩猎。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Excellent {s} there, {s}.	{s2}，那里的上等的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Fantastic {s} there, {s}.	{s2}，那里的绝妙的{s1}。	l
+Announcement combat spoken-sentence []: I confess your stunning argument overwhelms me!	我承认，你这番精彩的论辩让我心服口服！	l
+Announcement combat spoken-sentence []: I encountered a fascinating conundrum recently.	我最近遇到了一个引人入胜的难题。	l
 Announcement combat spoken-sentence []: I so love the performing arts. It's time to go!	我太喜欢表演艺术了。该出发了！	l
 Announcement combat spoken-sentence []: The performing arts are so important. Let's go!	表演艺术多重要啊。我们走吧！	l
 Announcement combat spoken-sentence []: The trouble started because of a dispute over .	最初是起了争执，才引发冲突。	l
@@ -14169,12 +14218,18 @@ Announcement combat sentence [trade-places]: The villages {s} utilize the market
 Announcement combat sentence [unit,owned-object,owned-object]: {s} catch {s} with {s}!	{s1}用{s3}抓住了{s2}！	l
 Announcement combat sentence [unit,owned-object,owned-object]: {s} locks {s} with {s}!	{s1}用{s3}锁住{s2}！	l
 Announcement combat site-rumor-event [site-rumor-person]: the army of {s} marched on .	{s1}的军队向未具名地点进军了。	l
+Announcement combat speech-devotional-action [speech-devotional-topic]: praying on {s}	为{s1}祈祷	l
 Announcement combat spoken-greeting [speech-person]: [{s} is dumbstruck for a moment.]	【{s1}一时惊得说不出话来。】	l
 Announcement combat spoken-greeting [speech-race,speech-person]: Hello, {s}. I am {s}.	你好，{s1}。我是{s2}。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Splendid {s} there, {s}.	{s2}，那里的出色的{s1}。	l
 Announcement combat spoken-sentence []: Ha! Such enthusiasm from one such as yourself.	哈！就凭你，也这么热心？	l
 Announcement combat spoken-sentence []: I would love to join . Can I perform with you?	我很想加入剧团。我能和你们一起表演吗？	l
 Announcement combat spoken-sentence []: I've always dreamed of seeing far-away places.	我一直梦想着去看看遥远的地方。	l
+Announcement combat spoken-sentence []: It has always been my dream to start a family.	组建家庭一直是我的梦想。	l
+Announcement combat spoken-sentence []: Thank you for preserving our legacy of wisdom.	感谢你保护我们传承的智慧。	l
+Announcement combat spoken-sentence []: The poet! It's such an honor to have you here.	诗人！你能来这里，真是荣幸。	l
+Announcement combat spoken-sentence []: Well, there must be something else to discuss.	好吧，总还有别的事情可谈。	l
+Announcement combat spoken-sentence []: You'll get nothing from me with your flattery.	再怎么奉承，你也休想从我这里捞到好处。	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the conqueror of , {s}!	我就是对方的征服者，{s1}！	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the strangler of , {s}!	绞杀对方的正是我，{s1}！	l
 Announcement combat spoken-sentence [threat-fiend,threat-killing]: This {s} fiend {s}!	这个{s1}恶徒{s2}！	l
@@ -14512,9 +14567,13 @@ Announcement combat sentence [threat-name,threat-crimes]: Knowing no mercy, {s} 
 Announcement combat sentence [unit,owned-object,owned-object]: {s} lock {s} with {s}!	{s1}用{s3}锁住{s2}！	l
 Announcement combat sentence [unit]: {s} are propelled away by the force of the blow!	{s1}被这一击打飞了！	l
 Announcement combat speech-architecture-justification []: can allow one to experience	能让人感受到	l
+Announcement combat speech-devotional-action [dialogue-query-person]: considering {s}	思索{s1}	l
 Announcement combat spoken-greeting [speech-person]: I am {s}. Can I be of some help?	我是{s1}。需要帮忙吗？	l
 Announcement combat spoken-sentence [$creature,$creature]: So, the {s} and the {s}...	话说，那个{s1}和那个{s2}……	l
+Announcement combat spoken-sentence []: It's so great when everybody just gets along.	大家和睦相处，真是美好。	l
 Announcement combat spoken-sentence []: There is also the issue of their godlessness.	还有，他们不信神，这也是个问题。	l
+Announcement combat spoken-sentence []: They consider you a leader of the opposition.	他们把你视为反对者的领袖。	l
+Announcement combat spoken-sentence []: Your selfless dedication is appreciated here.	这里的人都感激你的无私奉献。	l
 Announcement combat spoken-sentence [boast-raw-victim]: It is I that felled {s} the .	正是我击倒了{s1}。	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the murderer of , {s}!	谋杀对方的正是我，{s1}！	l
 Announcement combat travel-empty-caste-actor [$travel-person]: the zombie ghostly {s}	幽灵活尸·{s1}	l
@@ -14878,11 +14937,14 @@ Announcement combat site-rumor-event [$name]: an insurrection against {s} began 
 Announcement combat site-rumor-event [$travel-site,$name]: {s} was conquered by {s}.	{s1}被{s2}征服了。	l
 Announcement combat site-rumor-event [site-rumor-artifact]: {s} was known to be in .	当时已知{s1}位于未具名地点。	l
 Announcement combat site-rumor-event [site-rumor-person]: was kidnapped from by {s}.	{s1}从未具名地点绑架了一个人。	l
+Announcement combat speech-devotional-action [dialogue-query-person]: praying to {s}	向{s1}祈祷	l
 Announcement combat spoken-greeting [speech-person]: This servant of {s} greets you.	我以{s1}仆人的身份，向你问好。	l
 Announcement combat spoken-greeting [speech-sphere]: This servant of {s} greets you.	我以{s1}仆人的身份，向你问好。	l
 Announcement combat spoken-sentence [$distance]: There is a long-ranging patrol {s}.	有一支远程巡逻队在{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Decent {s} there, {s}.	{s2}，那里的不错的{s1}。	l
+Announcement combat spoken-sentence []: An honor as always. How can I be of service?	每次见到你都深感荣幸。有什么需要我效劳的？	l
 Announcement combat spoken-sentence []: How I long for some excitement in my life...	我真想让日子过得刺激些……	l
+Announcement combat spoken-sentence []: Some people are so wrapped up in themselves.	有些人眼里实在只有自己。	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the crusher of , {s}!	碾碎对方的正是我，{s1}！	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the nemesis of , {s}!	我就是对方的宿敌，{s1}！	l
 Announcement combat spoken-sentence [dialogue-query-person]: Please guide me to {s}.	请带我去找{s1}。	l
@@ -15247,8 +15309,14 @@ Announcement combat sentence [dialogue-family,speech-person]: My {s} was named {
 Announcement combat sentence [diplomacy-cause]: The trouble started because of {s}.	最初是因为{s1}，才起了冲突。	l
 Announcement combat sentence [speech-person]: The seat of {s} is also located here.	{s1}的统治中心也在这里。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Great {s} there, {s}.	{s2}，那里的很棒的{s1}。	l
+Announcement combat spoken-sentence []: Are you looking forward to the performance?	你期待这场表演吗？	l
+Announcement combat spoken-sentence []: Don't bother trying to play on my emotions.	别费心利用我的感情。	l
+Announcement combat spoken-sentence []: Get me going and I won't stop for anything.	只要我行动起来，就没有什么能让我停下。	l
 Announcement combat spoken-sentence []: I cannot, for I am on an important journey.	不行，我此行有要事在身。	l
+Announcement combat spoken-sentence []: I don't feel like I need to chase anything.	我不觉得我需要追逐任何东西.	l
+Announcement combat spoken-sentence []: I don't remember what I was going to say...	我不记得要说什么了……	l
 Announcement combat spoken-sentence []: Nothing beats the open road. Let us be off!	再没有什么比在路上更痛快了。出发吧！	l
+Announcement combat spoken-sentence []: People should listen to what I have to say.	人们应该听听我要说的话。	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the killer of , {s}!	杀死对方的正是我，{s1}！	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the master of , {s}!	我就是对方的主人，{s1}！	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the slayer of , {s}!	杀死对方的正是我，{s1}！	l
@@ -15604,7 +15672,17 @@ Announcement combat site-rumor-event [site-rumor-person,$name]: {s} became of {s
 Announcement combat site-rumor-event [site-rumor-person]: {s} was kidnapped from .	{s1}在未具名地点被绑架了。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Good {s} there, {s}.	{s2}，那里的优质的{s1}。	l
 Announcement combat spoken-sentence [$name]: I rule {s} from this capital as well.	我也在这座首都统治着{s1}。	l
+Announcement combat spoken-sentence []: A great piece of art is one that moves me.	能打动我的，才是好艺术。	l
+Announcement combat spoken-sentence []: A legend? Here? I can scarcely believe it.	传说中的人物？在这里？我简直不敢相信。	l
+Announcement combat spoken-sentence []: I am sorry. There is no room for you here.	抱歉，这里没有你的容身之处。	l
 Announcement combat spoken-sentence []: I do not know! My instructions come from .	我不知道！我的指令来自未具名者。	l
+Announcement combat spoken-sentence []: I hope you find what you are seeking here.	希望你能在这里找到你所追寻的东西。	l
+Announcement combat spoken-sentence []: If you insist so strongly, we can move on.	既然你如此坚持，我们可以换个话题。	l
+Announcement combat spoken-sentence []: In any case, peace is no longer an option.	无论如何，都已经没法讲和了。	l
+Announcement combat spoken-sentence []: It is invigorating to be out in the wilds!	置身荒野真让人精神振奋！	l
+Announcement combat spoken-sentence []: Look at the sky! Are we in the Underworld?	看看天空！我们是在地下世界吗？	l
+Announcement combat spoken-sentence []: The need for my task seems to have passed.	看来我的任务已经没有必要了。	l
+Announcement combat spoken-sentence []: You are considered part of the opposition.	你被视为反对者的一员。	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the death of , {s}!	给对方带来死亡的正是我，{s1}！	l
 Announcement combat spoken-sentence [description-institution]: There is {s} there.	那里有一座{s1}。	l
 Announcement combat spoken-sentence [dialogue-recognition]: {s}, is it really you?	{s1}，真的是你吗？	l
@@ -16007,10 +16085,18 @@ Announcement combat sentence []: It's such a noble pursuit. Let's go immediately
 Announcement combat sentence [unit,actor,equipment]: {s} bats {s} aside with {s}!	{s1}用{s3}将{s2}拨到了一旁！	l
 Announcement combat site-rumor-event [$name]: {s} waited out an insurrection in .	{s1}在未具名地点按兵不动，一直等到叛乱平息。	l
 Announcement combat speech-journey-purpose []: in search of a thrilling adventure	寻一场惊险刺激的冒险	l
+Announcement combat spoken-greeting [speech-race-profession]: I'm a true {s} of .	我才是真正的{s1}。	l
 Announcement combat spoken-sentence [$distance]: There are guards patrolling {s}.	有卫兵在{s1}巡逻。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Excellent {s}, {s}.	{s2}，上等的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Fantastic {s}, {s}.	{s2}，绝妙的{s1}。	l
+Announcement combat spoken-sentence []: I'd just as soon you went someplace else.	我更希望你去别的地方。	l
+Announcement combat spoken-sentence []: I'll be back with your drink in a moment.	我马上就把你的饮品送来。	l
+Announcement combat spoken-sentence []: Now we will have to build our own future.	现在我们得创造自己的未来。	l
 Announcement combat spoken-sentence []: Please help me to escape from this place.	请帮我逃离这个地方。	l
+Announcement combat spoken-sentence []: Please let me shelter here for the night.	请让我在这里借宿一晚。	l
+Announcement combat spoken-sentence []: The alliance has outlived its usefulness.	这个联盟已经失去作用了。	l
+Announcement combat spoken-sentence []: Why are they so fixated on these baubles?	他们为什么如此痴迷这些小玩意？	l
+Announcement combat spoken-sentence []: You shouldn't waste your life on revenge.	不该把一生浪费在复仇上。	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the bane of , {s}!	我就是对方的祸根，{s1}！	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the lord of , {s}!	我就是对方的领主，{s1}！	l
 Announcement combat spoken-sentence [boast-victim]: I am the extinguisher of {s}!	终结{s1}生命的正是我！	l
@@ -16416,10 +16502,19 @@ Announcement combat sentence [work,work-description]: You have composed {s}. {s}
 Announcement combat spoken-sentence [$item,merchant-address]: Splendid {s}, {s}.	{s2}，出色的{s1}。	l
 Announcement combat spoken-sentence [$name]: The surrounding area is called {s}.	周边地区叫做{s1}。	l
 Announcement combat spoken-sentence [$travel-site]: The largest of these is {s}.	其中最大的是{s1}。	l
+Announcement combat spoken-sentence []: Can you tell me where I can find myself?	能告诉我到哪里能找到我自己吗？	l
 Announcement combat spoken-sentence []: Did you hear the one about the and the ?	你听过那个关于两种生物的笑话吗？	l
+Announcement combat spoken-sentence []: I don't like being obligated to anybody.	我不喜欢欠任何人的情。	l
+Announcement combat spoken-sentence []: I'm feeling optimistic about the future.	我对未来充满希望。	l
+Announcement combat spoken-sentence []: I'm having trouble taking you seriously.	我实在难以把你的话当真。	l
+Announcement combat spoken-sentence []: There must be something else to discuss.	总还有别的事情可谈。	l
+Announcement combat spoken-sentence []: There's no room for mercy in this world.	这世界容不下仁慈。	l
+Announcement combat spoken-sentence []: Yes! It'll be great to perform with you.	好啊！能与你一起表演一定很棒。	l
+Announcement combat spoken-sentence []: You have been such a good trade partner.	你一直是个很好的贸易伙伴。	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the foe of , {s}!	我就是对方的敌人，{s1}！	l
 Announcement combat spoken-sentence [boast-victim]: I am the conqueror of {s}, !	我就是{s1}的征服者！	l
 Announcement combat spoken-sentence [boast-victim]: I am the strangler of {s}, !	绞杀{s1}的正是我！	l
+Announcement combat spoken-sentence [speech-devotional-action]: I have been {s}.	我最近一直在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: appearing {s}.	正在出现在{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: destroyed {s}.	曾毁灭{s1}。	l
 Announcement combat visitor-statement [visitor-statement-object]: rewarding {s}.	正在奖赏{s1}。	l
@@ -16767,8 +16862,15 @@ Announcement combat sentence [unit]: {s} slam into an obstacle and blows apart!	
 Announcement combat sentence [unit]: {s} slams into an obstacle and blow apart!	{s1}猛撞在障碍物上，四分五裂了！	l
 Announcement combat site-rumor-event [site-rumor-person]: was kidnapped by {s}.	有人被{s1}绑架了。	l
 Announcement combat speech-architecture-justification []: can bring one near to	能让人接近	l
+Announcement combat speech-devotional-topic [speech-sphere]: the concept of {s}	{s1}这一概念	l
+Announcement combat speech-devotional-topic [speech-sphere]: the subject of {s}	{s1}这一主题	l
 Announcement combat spoken-greeting [speech-person]: Greetings. My name is {s}.	你好，我叫{s1}。	l
 Announcement combat spoken-sentence [$book]: I cannot give up my quest for {s}.	我不能放弃寻找{s1}。	l
+Announcement combat spoken-sentence []: Everything just so in its proper place!	一切都井井有条，各归其位！	l
+Announcement combat spoken-sentence []: How can someone be so consumed by hate?	一个人怎么会被仇恨吞噬到这种地步？	l
+Announcement combat spoken-sentence []: I don't feel like telling you about it.	我不想和你谈这件事。	l
+Announcement combat spoken-sentence []: I need some more excitement in my life.	我的生活需要多一点刺激。	l
+Announcement combat spoken-sentence []: I'm giving up on this hopeless venture.	我要放弃这场毫无希望的冒险。	l
 Announcement combat spoken-sentence [boast-victim]: I am the murderer of {s}, !	谋杀{s1}的正是我！	l
 Announcement combat spoken-sentence [boast-victim]: I am the vanquisher of {s}!	战胜{s1}的正是我！	l
 Announcement combat spoken-sentence [speech-place,$date]: I visited {s} in {s}.	我于{s2}到访了{s1}。	l
@@ -17141,13 +17243,20 @@ Announcement combat speech-service-person []: somebody whose name I don't know	�
 Announcement combat spoken-sentence [$book,$item]: I am searching for {s} {s}.	我正在寻找{s1}{s2}。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Decent {s}, {s}.	{s2}，不错的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-origin]: {s} are from {s}.	{s1}来自{s2}。	l
+Announcement combat spoken-sentence []: Do you have wisdom to share, preacher?	布道者，你有什么智慧要分享吗？	l
+Announcement combat spoken-sentence []: Don't try to throw your weight around.	别想在这里仗势欺人。	l
+Announcement combat spoken-sentence []: I cannot stand the world any longer...	我再也受不了这个世界了……	l
+Announcement combat spoken-sentence []: I don't know anything else about them.	关于他们，我不知道更多了。	l
+Announcement combat spoken-sentence []: I don't really get attached to people.	我不太会对别人产生依恋。	l
 Announcement combat spoken-sentence []: I have no interest in your objectives.	我对你的目标毫无兴趣。	l
 Announcement combat spoken-sentence []: I've defeated many fearsome opponents!	我击败过许多可怕的对手！	l
+Announcement combat spoken-sentence []: You are thinking about this all wrong.	你对这件事的想法完全错了。	l
 Announcement combat spoken-sentence [boast-victim]: I am the conqueror of {s}!	我就是{s1}的征服者！	l
 Announcement combat spoken-sentence [boast-victim]: I am the crusher of {s}, !	碾碎{s1}的正是我！	l
 Announcement combat spoken-sentence [boast-victim]: I am the nemesis of {s}, !	我就是{s1}的宿敌！	l
 Announcement combat spoken-sentence [boast-victim]: I am the strangler of {s}!	绞杀{s1}的正是我！	l
 Announcement combat spoken-sentence [rumor-time,dialogue-battle]: {s} {s} in .	{s1}，在某处，{s2}。	l
+Announcement combat spoken-sentence [speech-devotional-action]: I've been {s}.	我最近一直在{s1}。	l
 Announcement combat threat-material [speech-person,threat-material]: {s}'s {s}	{s1}的{s2}	l
 Announcement combat travel-empty-caste-actor [$travel-person]: the ghostly {s}	幽灵·{s1}	l
 Announcement combat visitor-statement [visitor-statement-object]: appears {s}.	出现在{s1}。	l
@@ -17548,14 +17657,25 @@ Announcement combat sentence [memory-person]: {s} escalated a conflict with .	{s
 Announcement combat sentence [speech-place]: I'm returning to my home in {s}.	我正返回{s1}的家。	l
 Announcement combat sentence [unit,actor,equipment]: {s} blocks {s} with {s}!	{s1}用{s3}挡住了{s2}！	l
 Announcement combat sentence [unit,owned-object]: {s} latch on firmly to {s}!	{s1}牢牢抓住了{s2}！	l
+Announcement combat speech-devotional-topic [speech-sphere]: the theme of {s}	{s1}这一主题	l
 Announcement combat spoken-greeting [speech-sphere]: Life is, in a word, {s}.	一言以蔽之，生命就是{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-address]: Great {s}, {s}.	{s2}，很棒的{s1}。	l
 Announcement combat spoken-sentence [$item,merchant-origin]: {s} is from {s}.	{s1}来自{s2}。	l
 Announcement combat spoken-sentence [$name,$creature]: {s} is a group of {s}.	{s1}是一个由{s2}组成的势力。	l
 Announcement combat spoken-sentence [$number]: No fewer than {s} groups fled.	至少有{s1}个势力逃走了。	l
 Announcement combat spoken-sentence [$unit,$speech-person]: {s} STRANGUS {s}!	{s1} 斯特朗古斯 {s2}！	l
+Announcement combat spoken-sentence []: A few separate groups were organized.	几个各自独立的组织成立了。	l
+Announcement combat spoken-sentence []: Can you tell me where I can find you?	能告诉我到哪里能找到你吗？	l
 Announcement combat spoken-sentence []: Hey... that sounds like a great idea!	嘿……这听起来真是个好主意！	l
+Announcement combat spoken-sentence []: I have been so foolish. Yes, I agree.	我以前太愚蠢了。是的，我同意。	l
+Announcement combat spoken-sentence []: I have trouble controlling my temper.	我很难控制自己的脾气。	l
+Announcement combat spoken-sentence []: I tire of this pointless skirmishing.	我厌倦了这种毫无意义的小规模冲突。	l
 Announcement combat spoken-sentence []: I've decided. Let's call our troupe !	我决定了。我们的剧团就叫这个名字吧！	l
+Announcement combat spoken-sentence []: I've forgotten what trouble it was...	我忘记是什么麻烦了……	l
+Announcement combat spoken-sentence []: Ignoring that I don't quite concur...	暂且不提我还不完全赞同……	l
+Announcement combat spoken-sentence []: Is there something to be happy about?	有什么值得高兴的事吗？	l
+Announcement combat spoken-sentence []: It's great to have a friend like you!	有你这样的朋友真好！	l
+Announcement combat spoken-sentence []: Sometimes I just don't like somebody.	有时我就是不喜欢某个人。	l
 Announcement combat spoken-sentence []: [You receive a detailed description.]	【你听到了一番详细的介绍。】	l
 Announcement combat spoken-sentence [boast-victim]: I am the killer of {s}, !	杀死{s1}的正是我！	l
 Announcement combat spoken-sentence [boast-victim]: I am the master of {s}, !	我就是{s1}的主人！	l
@@ -17998,12 +18118,25 @@ Announcement combat site-rumor-event [$travel-site]: was kidnapped from {s}.	有
 Announcement combat site-rumor-event [site-rumor-person]: {s} was kidnapped.	{s1}被绑架了。	l
 Announcement combat speech-architecture-element []: no architectural element	无建筑构件	l
 Announcement combat speech-architecture-element []: pillars on the perimeter	沿边界排列的柱子	l
+Announcement combat speech-devotional-topic [speech-sphere]: the idea of {s}	{s1}这一理念	l
 Announcement combat speech-journey-purpose []: to move into my new home with	，与未具名者搬入我们的新家	l
 Announcement combat spoken-sentence [$item,merchant-address]: Good {s}, {s}.	{s2}，优质的{s1}。	l
 Announcement combat spoken-sentence [$term,$name]: Make way for {s} and {s}!	给{s1}未具名者和{s2}让路！	l
 Announcement combat spoken-sentence [$unit,$speech-person]: {s} STORKIS {s}!	{s1} 斯托尔基斯 {s2}！	l
 Announcement combat spoken-sentence []: . How do you like the sound of that?	未具名者。你觉得这个名字怎么样？	l
+Announcement combat spoken-sentence []: Do I look like I need to calm down?!	我看起来像是需要冷静吗？！	l
+Announcement combat spoken-sentence []: Do you have dreams? Tell me a story!	你有梦境吗？给我讲个故事！	l
+Announcement combat spoken-sentence []: Everybody has their own way of life.	人人都有自己的活法。	l
+Announcement combat spoken-sentence []: Everything is all piling up at once!	所有事情一下子全压过来了！	l
+Announcement combat spoken-sentence []: I am honored to be in your presence.	能见到你，我倍感荣幸。	l
 Announcement combat spoken-sentence []: I am unfit to brave danger with you.	我不适合与你一同冒险。	l
+Announcement combat spoken-sentence []: I guess I just don't appreciate art.	看来我就是不懂欣赏艺术。	l
+Announcement combat spoken-sentence []: Maybe I give up too early sometimes.	也许有时我放弃得太早了。	l
+Announcement combat spoken-sentence []: My trust is earned, and not by many.	想得到我的信任，得有真凭实据，而做到的人不多。	l
+Announcement combat spoken-sentence []: Thank you for protecting our wisdom.	感谢你守护我们的智慧。	l
+Announcement combat spoken-sentence []: There will be no rest for the enemy.	敌人将永无宁日。	l
+Announcement combat spoken-sentence []: Were you trying to make an argument?	你刚才那也叫讲道理？	l
+Announcement combat spoken-sentence []: What can you tell me about yourself?	能说说你自己吗？	l
 Announcement combat spoken-sentence [boast-slain-clause]: I am the of , {s}!	击败对方的正是我，{s1}！	l
 Announcement combat spoken-sentence [boast-victim]: I am the crusher of {s}!	碾碎{s1}的正是我！	l
 Announcement combat spoken-sentence [boast-victim]: I am the death of {s}, !	给{s1}带来死亡的正是我！	l
@@ -18407,8 +18540,20 @@ Announcement combat speech-architecture-justification []: can remind one of	能�
 Announcement combat spoken-greeting [dialogue-family]: How are you, my {s}?	你好吗，我的{s1}？	l
 Announcement combat spoken-sentence [$book,$item]: I have obtained {s} {s}.	我已取得{s1}{s2}。	l
 Announcement combat spoken-sentence [$creature]: {s} roam freely out there.	{s1}在那里自由游荡。	l
+Announcement combat spoken-sentence []: Are you stalking a dangerous beast?	你在追踪危险的野兽吗？	l
+Announcement combat spoken-sentence []: At least it doesn't rain down here.	至少这下面不会下雨。	l
+Announcement combat spoken-sentence []: How are you enjoying the adventure?	这趟冒险还过得愉快吗？	l
+Announcement combat spoken-sentence []: I am a very, very important person.	我是个非常、非常重要的人物。	l
+Announcement combat spoken-sentence []: I am overmastered by your presence!	你的气势让我折服！	l
+Announcement combat spoken-sentence []: I don't think I'm cut out for this.	我觉得自己不适合做这件事。	l
+Announcement combat spoken-sentence []: I haven't heard anything like that.	我没听说过这样的事。	l
+Announcement combat spoken-sentence []: I heard that there was an incident.	听说出事了。	l
 Announcement combat spoken-sentence []: I'm not sure exactly where to look.	我不确定究竟该去哪里找。	l
+Announcement combat spoken-sentence []: If you have a task, do it properly.	有事要做，就把它做好。	l
+Announcement combat spoken-sentence []: They do not feel challenged at all.	他们觉得没人能撼动自己的地位。	l
 Announcement combat spoken-sentence []: This is a cause worthy of struggle.	这件事值得为之奋斗。	l
+Announcement combat spoken-sentence []: This war must end with our victory.	这场战争必须以我们的胜利告终。	l
+Announcement combat spoken-sentence []: We are in the right in all matters.	不管什么事，道理都在我们这边。	l
 Announcement combat spoken-sentence [boast-victim]: I am the bane of {s}, !	我就是{s1}的祸根！	l
 Announcement combat spoken-sentence [boast-victim]: I am the killer of {s}!	杀死{s1}的正是我！	l
 Announcement combat spoken-sentence [boast-victim]: I am the lord of {s}, !	我就是{s1}的领主！	l
@@ -18843,9 +18988,20 @@ Announcement combat sentence [unit]: {s} is having more trouble breathing!	{s1}�
 Announcement combat sentence [work,$item]: You have written {s} on to {s}.	你将{s1}写到了{s2}上。	l
 Announcement combat site-rumor-event [$name]: the army of {s} marched on .	{s1}的军队向未具名地点进军了。	l
 Announcement combat spoken-sentence [$unit,$speech-person]: {s} AUGIS {s}!	{s1} 奥吉斯 {s2}！	l
+Announcement combat spoken-sentence []: Am I supposed to engage with that?	难道还要我回应那番话？	l
+Announcement combat spoken-sentence []: Bravery is not a strength of mine.	勇敢不是我的长处。	l
 Announcement combat spoken-sentence []: Can you tell me where I can find ?	能告诉我到哪里能找到未具名者吗？	l
+Announcement combat spoken-sentence []: Despite some minor reservations...	尽管还有一些小小的保留意见……	l
+Announcement combat spoken-sentence []: I don't remember what I believe...	我不记得自己相信什么了……	l
+Announcement combat spoken-sentence []: I try to live and behave properly.	我尽量让生活和言行合乎规矩。	l
 Announcement combat spoken-sentence []: I'd love to travel and create art.	我很想一边旅行，一边从事艺术创作。	l
+Announcement combat spoken-sentence []: It's such a joy to be with people.	与人相伴，真是快乐。	l
+Announcement combat spoken-sentence []: It's such a pleasure to serve you.	能为你服务真是荣幸。	l
 Announcement combat spoken-sentence []: Join me and we'll bring back home!	加入我，我们一起把未具名者带回家！	l
+Announcement combat spoken-sentence []: Tell me who you work for, or else.	说出你为谁效力，否则后果自负。	l
+Announcement combat spoken-sentence []: There's nothing like a good brawl.	没有什么比得上痛快打上一架。	l
+Announcement combat spoken-sentence []: There's nothing to be upset about.	没有什么值得烦心的。	l
+Announcement combat spoken-sentence []: Well, I believe... something else.	嗯，我相信……别的东西。	l
 Announcement combat spoken-sentence []: What happened to bring us to this?	究竟发生了什么，让我们走到了这一步？	l
 Announcement combat spoken-sentence [boast-victim]: I am the death of {s}!	给{s1}带来死亡的正是我！	l
 Announcement combat spoken-sentence [boast-victim]: I am the foe of {s}, !	我就是{s1}的敌人！	l
@@ -19285,13 +19441,23 @@ Announcement combat sentence [unit,material]: {s} breathes a glob of {s}!	{s1}�
 Announcement combat sentence [unit-list]: {s} is stunned by divine power!	{s1}被神力震慑了！	l
 Announcement combat sentence [unit]: {s} are caught in a cloud of flames!	{s1}被火焰云吞没了！	l
 Announcement combat sentence [unit]: {s} is stumbling around obliviously!	{s1}浑浑噩噩地四处踉跄！	l
-Announcement combat spoken-greeting [$term,$name]: I'm a true {s} of {s}.	我才是{s2}的真正{s1}。	l
 Announcement combat spoken-sentence [$distance]: There are guards in {s}.	{s1}有卫兵。	l
 Announcement combat spoken-sentence [$item]: Might I interest you in {s}?	我能让你对{s1}感兴趣吗？	l
 Announcement combat spoken-sentence []: Can you manage a troupe so large?	这么大的剧团，你管得过来吗？	l
+Announcement combat spoken-sentence []: I was never one to follow advice.	我从来不是听得进劝的人。	l
+Announcement combat spoken-sentence []: I'm not much of a decision maker.	我不太擅长拿主意。	l
+Announcement combat spoken-sentence []: It really gets me down sometimes.	有时我真为此感到沮丧。	l
+Announcement combat spoken-sentence []: It's all starting to get me down.	这一切开始让我消沉了。	l
 Announcement combat spoken-sentence []: Let us leave as soon as possible.	我们尽快离开吧。	l
+Announcement combat spoken-sentence []: One should always return a favor.	受人恩惠，就应当回报。	l
 Announcement combat spoken-sentence []: Other arms may not cut so deeply.	其他武器可能伤不了它这么深。	l
+Announcement combat spoken-sentence []: People are basically trustworthy.	人总的来说是值得信任的。	l
 Announcement combat spoken-sentence []: Savage beasts call it their home.	那里栖息着凶猛的野兽。	l
+Announcement combat spoken-sentence []: Soon the world will be set right.	世界很快就会恢复正轨。	l
+Announcement combat spoken-sentence []: There's no need for trouble here.	别在这里惹事。	l
+Announcement combat spoken-sentence []: We can no longer pay them homage.	我们不能再向他们称臣了。	l
+Announcement combat spoken-sentence []: We can no longer travel together.	我们不能再一起旅行了。	l
+Announcement combat spoken-sentence []: Yes, I want more. Is that so bad?	是，我想要更多。这有那么糟吗？	l
 Announcement combat spoken-sentence [boast-victim]: I am the bane of {s}!	我就是{s1}的祸根！	l
 Announcement combat spoken-sentence [boast-victim]: I am the lord of {s}!	我就是{s1}的领主！	l
 Announcement combat spoken-sentence [description-resident]: {s} is there.	{s1}在那里。	l
@@ -19740,14 +19906,24 @@ Announcement combat sentence [unit,material]: {s} breathe a glob of {s}!	{s1}喷
 Announcement combat sentence [unit]: {s} are caught in a burst of steam!	{s1}被喷涌的蒸汽笼罩了！	l
 Announcement combat sentence [unit]: {s} are struck by a ball of flames!	{s1}被一团火球击中了！	l
 Announcement combat sentence [unit]: {s} is caught in a cloud of flames!	{s1}被火焰云吞没了！	l
+Announcement combat spoken-greeting []: This is . What can I do for you?	这里的场所未注明名称。有什么可以帮你？	l
 Announcement combat spoken-greeting [speech-person]: Ah, hello. I'm {s}.	啊，你好。我叫{s1}。	l
 Announcement combat spoken-sentence [$name,$name]: {s} has occupied {s}.	{s1}占领了{s2}。	l
 Announcement combat spoken-sentence [$name]: Search first in {s}, there.	先在那里的{s1}找找。	l
 Announcement combat spoken-sentence [$unit,memory-person]: {s} pets {s}.	{s1}摸了摸{s2}。	l
 Announcement combat spoken-sentence []: But mostly I just like to drink.	不过，我最喜欢的还是喝酒。	l
+Announcement combat spoken-sentence []: I couldn't follow your rambling.	你东拉西扯的，我听不明白。	l
+Announcement combat spoken-sentence []: I don't care one way or another.	怎样我都不在乎。	l
 Announcement combat spoken-sentence []: I don't know very much about it.	我对那里了解不多。	l
+Announcement combat spoken-sentence []: I don't mind stirring things up.	我不介意挑起点事端。	l
+Announcement combat spoken-sentence []: I'm curious. Tell me everything!	我很好奇. 告诉我一切!	l
+Announcement combat spoken-sentence []: I'm feel like I'm about to snap.	我觉得自己就要崩溃了。	l
+Announcement combat spoken-sentence []: I'm not going to change my mind.	我不会改变主意。	l
 Announcement combat spoken-sentence []: Tavern keeper! Uhh... nevermind.	酒馆老板！呃……算了。	l
 Announcement combat spoken-sentence []: The trouble started because of .	冲突起因不详。	l
+Announcement combat spoken-sentence []: W... worried? Do I look worried?	担……担心？我看起来很担心吗？	l
+Announcement combat spoken-sentence []: We must be careful not to waste.	我们必须留心，不能浪费。	l
+Announcement combat spoken-sentence []: What's this about proper living?	所谓合乎规矩的生活，究竟是什么？	l
 Announcement combat spoken-sentence [boast-victim]: I am the foe of {s}!	我就是{s1}的敌人！	l
 Announcement combat threat-crimes [threat-crime,threat-crimes]: {s}, {s}	{s1}、{s2}	l
 Announcement combat visitor-statement [visitor-statement-subject]: {s} .	{s1}……。	l
@@ -20185,14 +20361,27 @@ Announcement combat sentence [unit]: {s} is caught in a burst of steam!	{s1}被�
 Announcement combat sentence [unit]: {s} is struck by a ball of flames!	{s1}被一团火球击中了！	l
 Announcement combat site-rumor-event [$travel-site]: {s} was conquered.	{s1}被征服了。	l
 Announcement combat speech-architecture-element []: paved outdoor areas	铺砌的室外区域	l
+Announcement combat spoken-greeting []: I thought you called yourself .	我以为你说过自己的名字。	l
+Announcement combat spoken-greeting [speech-person]: Hello, . I am {s}.	你好，我是{s1}。	l
 Announcement combat spoken-sentence [$item]: Are you interested in {s}?	你对{s1}感兴趣吗？	l
 Announcement combat spoken-sentence [$item]: Excellent {s} right there.	就那里的上等的{s1}。	l
 Announcement combat spoken-sentence [$item]: Fantastic {s} right there.	就那里的绝妙的{s1}。	l
 Announcement combat spoken-sentence [$name]: Search first in {s}, here.	先在这里的{s1}找找。	l
+Announcement combat spoken-sentence []: All drinks are free, of course!	当然，所有饮品都是免费的！	l
+Announcement combat spoken-sentence []: I admire how brilliant you are!	你的才智让我钦佩！	l
+Announcement combat spoken-sentence []: I can't take much more of this!	这样下去，我就要撑不住了！	l
 Announcement combat spoken-sentence []: I cannot abandon my pilgrimage.	我不能放弃朝圣之旅。	l
+Announcement combat spoken-sentence []: I was out visiting the library.	我刚才去图书馆了。	l
+Announcement combat spoken-sentence []: I'm concentrating on something.	我正专心想一件事。	l
+Announcement combat spoken-sentence []: I'm going to visit the library.	我正要去图书馆。	l
 Announcement combat spoken-sentence []: I'm sorry. I can't go with you.	抱歉。我不能跟你走。	l
+Announcement combat spoken-sentence []: It is good to finally meet you!	终于见到你了，真高兴！	l
+Announcement combat spoken-sentence []: Oh, I don't usually think much.	我平时不怎么多想。	l
 Announcement combat spoken-sentence []: The performances will be great.	演出一定会很精彩。	l
+Announcement combat spoken-sentence []: Their strength has been broken.	他们的力量已被摧毁。	l
 Announcement combat spoken-sentence []: There's nothing organized here.	这里的买卖没人组织。	l
+Announcement combat spoken-sentence []: You know, I think you're right.	你知道，我觉得你说得对。	l
+Announcement combat spoken-sentence [greeting-state]: Everything's {s}.	一切都{s1}。	l
 Announcement combat spoken-sentence [material]: {s} is falling outside.	外面正有{s1}落下。	l
 Announcement combat visitor-statement-emotion []: in existential crisis	陷入存在危机	l
 Announcement combat visitor-statement-reference []: an unknown creature	未知生物	l
@@ -20704,11 +20893,29 @@ Announcement combat site-rumor-event [$name,$travel-site]: {s} in {s}.	{s1}在{s
 Announcement combat speech-architecture-element []: paved indoor areas	铺砌的室内区域	l
 Announcement combat speech-journey-purpose []: in search of excitement	寻求刺激	l
 Announcement combat speech-service-person [dialogue-query-person]: {s}	{s1}	l
+Announcement combat spoken-greeting []: [ is dumbstruck for a moment.]	【对方一时惊得说不出话来。】	l
 Announcement combat spoken-greeting [speech-person]: Praise be to {s}.	愿赞美归于{s1}。	l
 Announcement combat spoken-sentence [$creature]: {s}! It's terrifying.	{s1}！太可怕了。	l
 Announcement combat spoken-sentence [$item]: Splendid {s} right there.	就那里的出色的{s1}。	l
+Announcement combat spoken-sentence []: Been in any good scraps today?	今天痛快地打过架吗？	l
+Announcement combat spoken-sentence []: Fine. Let's drop the argument.	好吧。我们别争了。	l
+Announcement combat spoken-sentence []: How I long for civilization...	我多么怀念文明世界……	l
+Announcement combat spoken-sentence []: I could tell you all about it!	我可以把来龙去脉都告诉你！	l
+Announcement combat spoken-sentence []: I feel so tired of everything.	我对一切都感到厌倦。	l
+Announcement combat spoken-sentence []: I require a substantive reply.	我需要你拿出点实实在在的答复。	l
+Announcement combat spoken-sentence []: I was just out for some water.	我刚才出去取水了。	l
+Announcement combat spoken-sentence []: I was out visiting the shrine.	我刚才去圣地了。	l
+Announcement combat spoken-sentence []: I was out visiting the temple.	我刚才去神殿了。	l
+Announcement combat spoken-sentence []: I would prefer to be outdoors.	我更愿意待在户外。	l
+Announcement combat spoken-sentence []: I'm at my best under pressure.	有压力时，我反而发挥得最好。	l
+Announcement combat spoken-sentence []: I'm going to visit the shrine.	我正要去圣地。	l
+Announcement combat spoken-sentence []: I'm going to visit the temple.	我正要去神殿。	l
+Announcement combat spoken-sentence []: I've been under some pressure.	我最近有些压力。	l
 Announcement combat spoken-sentence []: I've heard of a place called .	我听说过一个地方，但不知道它的名字。	l
+Announcement combat spoken-sentence []: Show some mercy now and again.	偶尔也发发慈悲。	l
+Announcement combat spoken-sentence []: Thank you for keeping us safe.	感谢你保护我们的安全。	l
 Announcement combat spoken-sentence []: There is also a family matter.	另外还牵涉到家族的事。	l
+Announcement combat spoken-sentence []: Yes, I can see it clearly now.	是的，我现在看清楚了。	l
 Announcement combat spoken-sentence [boast-victim]: I am the of {s}, !	击败{s1}的正是我！	l
 Announcement combat spoken-sentence [rumor-time,rumor-event]: {s}, {s}	{s1}，{s2}	l
 Announcement combat threat-victim [$kinship,speech-person]: my {s} {s}	我的{s1}{s2}	l
@@ -21246,6 +21453,19 @@ Announcement combat speech-journey-purpose []: in search of adventure	寻找冒�
 Announcement combat speech-journey-purpose []: to take up my position	就任	l
 Announcement combat speech-office [$office,speech-person]: {s} of {s}	{s2}的{s1}	l
 Announcement combat spoken-greeting [speech-person]: Salutations {s}.	{s1}，向你致意。	l
+Announcement combat spoken-sentence []: And what exactly do you want?	你到底想要什么？	l
+Announcement combat spoken-sentence []: Are you hunting for treasure?	你在寻找宝藏吗？	l
+Announcement combat spoken-sentence []: Don't walk off with anything.	别顺手拿走东西。	l
+Announcement combat spoken-sentence []: I don't handle pressure well.	我难以承受压力。	l
+Announcement combat spoken-sentence []: I go with the flow sometimes.	我有时也会随大流。	l
+Announcement combat spoken-sentence []: I was just out at the tavern.	我刚才在酒馆。	l
+Announcement combat spoken-sentence []: I would prefer to be indoors.	我更愿意待在室内。	l
+Announcement combat spoken-sentence []: I'm feeling really worn down.	我真的很疲惫。	l
+Announcement combat spoken-sentence []: I'm going out for some water.	我正要出去取水。	l
+Announcement combat spoken-sentence []: I'm returning from my patrol.	我正巡逻归来。	l
+Announcement combat spoken-sentence []: My goals are important to me.	我很看重自己的目标。	l
+Announcement combat spoken-sentence []: The enemy will be driven off.	敌人会被赶走的。	l
+Announcement combat spoken-sentence []: You don't care, so don't ask.	既不关心，就不必过问。	l
 Announcement combat spoken-sentence [merchant-hawk]: {s}! Today only!	{s1}！仅限今天！	l
 Announcement combat spoken-sentence [speech-place]: I'm going to {s}.	我正前往{s1}。	l
 Announcement combat threat-crime [threat-building]: prayed inside {s}	在{s1}中祈祷	l
@@ -21741,11 +21961,22 @@ Announcement combat spoken-sentence [$item]: Decent {s} right there.	就那里�
 Announcement combat spoken-sentence [$name]: I am a prisoner of {s}.	我是{s1}的囚犯。	l
 Announcement combat spoken-sentence [$term]: I am a {s}, as are you.	与你一样，我也是一名{s1}。	l
 Announcement combat spoken-sentence [$term]: Tavern keeper! One {s}!	酒馆老板！来一杯{s1}！	l
+Announcement combat spoken-sentence []: Do you have a story to tell?	你有什么故事要讲吗？	l
+Announcement combat spoken-sentence []: Have you written a new poem?	你写新诗了吗？	l
 Announcement combat spoken-sentence []: I am the extinguisher of , !	终结对方生命的正是我！	l
+Announcement combat spoken-sentence []: I don't really want to know.	我其实并不想知道。	l
+Announcement combat spoken-sentence []: I just don't care anymore...	我已经什么都不在乎了……	l
+Announcement combat spoken-sentence []: I'm going out to the tavern.	我正要去酒馆。	l
+Announcement combat spoken-sentence []: I'm on an important mission.	我正在执行一项重要任务。	l
 Announcement combat spoken-sentence []: It is a place of great evil.	那是个极其邪恶的地方。	l
+Announcement combat spoken-sentence []: Their tribute is not enough.	他们的贡品还不够。	l
 Announcement combat spoken-sentence []: What can you tell me about ?	能跟我说说未具名者吗？	l
+Announcement combat spoken-sentence []: What have you been scheming?	你在谋划什么？	l
+Announcement combat spoken-sentence []: Why must they be so violent?	他们为何非要诉诸暴力？	l
 Announcement combat spoken-sentence [boast-victim]: I am the of {s}!	击败{s1}的正是我！	l
 Announcement combat spoken-sentence [dialogue-object]: Where is {s}?	{s1}在哪里？	l
+Announcement combat spoken-sentence [greeting-state]: I'm doing {s}.	我过得{s1}。	l
+Announcement combat spoken-sentence [greeting-state]: I've been {s}.	我最近过得{s1}。	l
 Announcement combat visitor-statement []: were will be speaking to .	当时将正在说话。	l
 Announcement combat visitor-statement-emotion []: feeling admiration	心怀钦佩	l
 Announcement combat visitor-statement-emotion []: feeling ambivalent	没什么特别的感觉	l
@@ -22260,7 +22491,18 @@ Announcement combat spoken-greeting [speech-person]: Greetings {s}.	你好，{s1
 Announcement combat spoken-greeting [speech-place]: Welcome to {s}.	欢迎来到{s1}。	l
 Announcement combat spoken-sentence [$item]: Great {s} right there.	就那里的很棒的{s1}。	l
 Announcement combat spoken-sentence [$speech-person]: STRANGUS {s}!	斯特朗古斯 {s1}！	l
+Announcement combat spoken-sentence []: I am not governed by urges.	我不会任由冲动左右自己。	l
+Announcement combat spoken-sentence []: I could really use a drink.	我真想喝一杯。	l
+Announcement combat spoken-sentence []: I get so jealous sometimes.	有时我真是嫉妒得厉害。	l
+Announcement combat spoken-sentence []: I'm not planning a journey.	我没有出行计划。	l
 Announcement combat spoken-sentence []: I'm sorry. My duty is here.	抱歉，我得在这里履行职责。	l
+Announcement combat spoken-sentence []: It is good to see you here.	很高兴在这里见到你。	l
+Announcement combat spoken-sentence []: Loyalty should be rewarded.	忠诚应当得到奖赏。	l
+Announcement combat spoken-sentence []: Make any good deals lately?	最近做成什么好买卖了吗？	l
+Announcement combat spoken-sentence []: One group organized itself.	一个组织成立了。	l
+Announcement combat spoken-sentence []: So I overindulge sometimes.	我偶尔也会放纵自己。	l
+Announcement combat spoken-sentence []: The head of the family is .	家族首领的名字未记载。	l
+Announcement combat spoken-sentence []: There's so much to be done!	还有许多事要做！	l
 Announcement combat spoken-sentence []: escalated a conflict with .	未具名者升级了与未具名者的冲突。	l
 Announcement combat spoken-sentence [dialogue-stock]: We have {s} .	我们有{s1}。	l
 Announcement combat spoken-sentence [memory-person]: {s} attacked .	{s1}攻击了未具名者。	l
@@ -22840,13 +23082,29 @@ Announcement combat sentence [unit]: {s} are caught up in the web!	{s1}被蛛网
 Announcement combat sentence [unit]: {s} is caught in a lava mist!	{s1}被熔岩雾笼罩了！	l
 Announcement combat speech-architecture-element []: open structure	开放式结构	l
 Announcement combat speech-architecture-element []: uneven pillars	高低不一的柱子	l
+Announcement combat speech-babble-tail [speech-babble-last]: ba{s}	吧{s1}	l
+Announcement combat speech-babble-tail [speech-babble-last]: da{s}	哒{s1}	l
+Announcement combat speech-babble-tail [speech-babble-last]: ga{s}	嘎{s1}	l
+Announcement combat speech-babble-tail [speech-babble-last]: ma{s}	嘛{s1}	l
 Announcement combat speech-journey-purpose []: to start a new life	开始新的生活	l
 Announcement combat spoken-sentence [$item]: Good {s} right there.	就那里的优质的{s1}。	l
 Announcement combat spoken-sentence [$name,$distance]: {s} is {s}.	{s1}位于{s2}。	l
 Announcement combat spoken-sentence [$speech-person]: STORKIS {s}!	斯托尔基斯 {s1}！	l
+Announcement combat spoken-sentence []: How can people be so glum?	人为什么会这么不快乐？	l
 Announcement combat spoken-sentence []: I am the extinguisher of !	终结对方生命的正是我！	l
 Announcement combat spoken-sentence []: I am the vanquisher of , !	战胜对方的正是我！	l
+Announcement combat spoken-sentence []: I feel angry all the time.	我心里总有一股怒气。	l
+Announcement combat spoken-sentence []: I will settle this my way.	我要用我的方式解决此事。	l
+Announcement combat spoken-sentence []: I'm just out for a stroll.	我只是出来散步。	l
+Announcement combat spoken-sentence []: I've been feeling anxious.	我最近一直心神不宁。	l
+Announcement combat spoken-sentence []: It is good to be outdoors.	在户外真好。	l
+Announcement combat spoken-sentence []: It sure is dark down here.	这下面可真黑。	l
+Announcement combat spoken-sentence []: Our family's ancestor is .	我们家族祖先的名字未记载。	l
+Announcement combat spoken-sentence []: Our hopes travel with you.	我们的希望就寄托在你身上了。	l
+Announcement combat spoken-sentence []: Please guide me to myself.	请带我去找我自己。	l
 Announcement combat spoken-sentence []: Save us from this traitor!	救救我们，消灭这个叛徒吧！	l
+Announcement combat spoken-sentence []: This conversation is over.	谈话到此结束。	l
+Announcement combat spoken-sentence []: Who cares what they think?	何必在意他们怎么想？	l
 Announcement combat spoken-sentence []: demanded submission from .	未具名者要求未具名者臣服。	l
 Announcement combat spoken-sentence [dialogue-stock]: We have {s}.	我们有{s1}。	l
 Announcement combat spoken-sentence [material]: What is this? {s}?	这是什么？{s1}？	l
@@ -23391,10 +23649,23 @@ Announcement combat spoken-sentence [$item]: Fantastic {s} there.	那里的绝�
 Announcement combat spoken-sentence [$name,$name]: {s} is in {s}.	{s1}位于{s2}。	l
 Announcement combat spoken-sentence [$name,$name]: {s} rules {s}.	{s1}统治着{s2}。	l
 Announcement combat spoken-sentence [$name]: I am a slave of {s}.	我是{s1}的奴隶。	l
+Announcement combat spoken-sentence []: Best keep your head down.	最好还是低调些。	l
+Announcement combat spoken-sentence []: Don't get on my bad side.	别惹我。	l
+Announcement combat spoken-sentence []: Don't let the enemy rest.	别让敌人喘息。	l
 Announcement combat spoken-sentence []: I am the conqueror of , !	我就是对方的征服者！	l
 Announcement combat spoken-sentence []: I am the strangler of , !	绞杀对方的正是我！	l
+Announcement combat spoken-sentence []: I don't know what to say.	我不知道该说什么。	l
+Announcement combat spoken-sentence []: I prefer to be by myself.	我更喜欢独处。	l
+Announcement combat spoken-sentence []: I wonder what they think.	不知道他们会怎么想。	l
+Announcement combat spoken-sentence []: Is it time to make music?	该奏乐了吗？	l
+Announcement combat spoken-sentence []: It is good to be indoors.	在室内真好。	l
 Announcement combat spoken-sentence []: Save us from this horror!	救救我们，消灭这个怪物吧！	l
+Announcement combat spoken-sentence []: Thank you for all you do.	感谢你所做的一切。	l
+Announcement combat spoken-sentence []: The task is accomplished.	任务已经完成。	l
+Announcement combat spoken-sentence []: Try to keep an open mind.	不妨多听听不同的见解。	l
+Announcement combat spoken-sentence []: You are bound to obey me.	你受我约束，必须服从我。	l
 Announcement combat spoken-sentence [biography-office]: I am {s}.	我是{s1}。	l
+Announcement combat spoken-sentence [greeting-state]: I feel {s}.	我感觉{s1}。	l
 Announcement combat threat-crime [threat-building]: destroyed {s}	毁坏了{s1}	l
 Announcement combat threat-crime [threat-building]: disturbed {s}	扰乱了{s1}	l
 Announcement combat threat-crime [threat-livestock]: devoured {s}	吞食了{s1}	l
@@ -23898,13 +24169,25 @@ Announcement combat sentence [unit]: {s} has moved out of range!	{s1}已经离�
 Announcement combat sentence [unit]: {s} slams into an obstacle!	{s1}猛撞在了障碍物上！	l
 Announcement combat speech-architecture-element []: lower floors	下层楼面	l
 Announcement combat speech-architecture-element []: upper floors	上层楼面	l
+Announcement combat speech-babble-tail [speech-babble-last]: {s}	{s1}	l
+Announcement combat speech-devotional-topic [speech-sphere]: {s}	{s1}	l
 Announcement combat speech-journey-purpose []: in search of work	寻找工作	l
 Announcement combat spoken-greeting [speech-sphere]: Praise {s}.	赞美{s1}。	l
 Announcement combat spoken-sentence [$item]: Splendid {s} there.	那里的出色的{s1}。	l
 Announcement combat spoken-sentence [$speech-person]: AUGIS {s}!	奥吉斯 {s1}！	l
+Announcement combat spoken-sentence []: How sinister the glow...	这光芒多么阴森……	l
 Announcement combat spoken-sentence []: I am the murderer of , !	谋杀对方的正是我！	l
 Announcement combat spoken-sentence []: I am the vanquisher of !	战胜对方的正是我！	l
+Announcement combat spoken-sentence []: I sense you're wavering.	我感觉你在动摇。	l
+Announcement combat spoken-sentence []: I'm feeling randy today!	我今天很想与人亲热！	l
 Announcement combat spoken-sentence []: I'm kicking you out of .	我要把你赶出剧团。	l
+Announcement combat spoken-sentence []: I'm returning on my own.	我要独自回去了。	l
+Announcement combat spoken-sentence []: Let's drop the argument.	我们别争了。	l
+Announcement combat spoken-sentence []: Oh, I'm nothing special.	我没什么过人之处。	l
+Announcement combat spoken-sentence []: This is the life for me.	这正是我想要的生活。	l
+Announcement combat spoken-sentence []: What do you think of me?	你觉得我怎么样？	l
+Announcement combat spoken-sentence []: Where should I take you?	我该带你去哪里？	l
+Announcement combat spoken-sentence []: You dare to flatter me?!	你竟敢奉承我？！	l
 Announcement combat spoken-sentence [dialogue-object]: Drop {s}!	放下{s1}！	l
 Announcement combat spoken-sentence [dialogue-recognition]: {s}!	{s1}！	l
 Announcement combat threat-crime [threat-building]: profaned {s}	亵渎了{s1}	l
@@ -24505,13 +24788,27 @@ Announcement combat sentence [unit]: {s} slam into an obstacle!	{s1}猛撞在了
 Announcement combat shot-result [defense-adverb]: {s} deflected	{s1}挡开了	l
 Announcement combat site-rumor-date [$digits]: the early of {s}	第{s1}年某季之初	l
 Announcement combat speech-first-name [$speech-first-name]: {s}	{s1}	l
+Announcement combat spoken-greeting [$name]: I'm a true of {s}.	我才是{s1}的真正一员。	l
 Announcement combat spoken-greeting [speech-person]: Hello {s}.	你好，{s1}。	l
+Announcement combat spoken-sentence []: Are you ready to learn?	准备好学习了吗？	l
 Announcement combat spoken-sentence []: I am a forgetful guard.	我是一名健忘的卫兵。	l
+Announcement combat spoken-sentence []: I am a little confused.	我有点困惑。	l
 Announcement combat spoken-sentence []: I am the conqueror of !	我就是对方的征服者！	l
 Announcement combat spoken-sentence []: I am the crusher of , !	碾碎对方的正是我！	l
 Announcement combat spoken-sentence []: I am the nemesis of , !	我就是对方的宿敌！	l
 Announcement combat spoken-sentence []: I am the strangler of !	绞杀对方的正是我！	l
+Announcement combat spoken-sentence []: I believe... something.	我相信……某些东西。	l
+Announcement combat spoken-sentence []: I get fed up sometimes.	有时我也觉得受够了。	l
+Announcement combat spoken-sentence []: I have nothing for you.	我没什么能给你的。	l
+Announcement combat spoken-sentence []: I must obey the master!	我必须服从主人！	l
+Announcement combat spoken-sentence []: I try not to interrupt.	我尽量不打断别人说话。	l
+Announcement combat spoken-sentence []: I'd watch out for them.	我会提防他们。	l
+Announcement combat spoken-sentence []: It won't turn out well.	这事不会有好结果。	l
+Announcement combat spoken-sentence []: Let's not hurt anybody.	我们别伤害任何人。	l
+Announcement combat spoken-sentence []: Of course. My pleasure.	当然，我很乐意。	l
+Announcement combat spoken-sentence []: Please guide me to you.	请带我去找你。	l
 Announcement combat spoken-sentence []: Take me away from here.	带我离开这里吧。	l
+Announcement combat spoken-sentence []: Welcome home, my child.	欢迎回家，我的孩子。	l
 Announcement combat spoken-sentence [speech-room]: This is {s}.	这里是{s1}。	l
 Announcement combat visitor-statement []: was will be burning .	当时将正在燃烧。	l
 Announcement combat visitor-statement []: was will be flooding.	当时将正在泛滥。	l
@@ -25196,15 +25493,32 @@ Announcement combat sentence [unit,actor]: {s} bats {s} aside!	{s1}将{s2}拨到
 Announcement combat sentence [unit]: {s} looks even more sick!	{s1}看起来更加想吐了！	l
 Announcement combat site-rumor-date [$digits]: the late of {s}	第{s1}年某季之末	l
 Announcement combat speech-architecture-element []: water pool	水池	l
+Announcement combat speech-devotional-action []: contemplating	冥想	l
+Announcement combat speech-devotional-topic []: the concept of	某个未注明的概念	l
+Announcement combat speech-devotional-topic []: the subject of	某个未注明的主题	l
 Announcement combat spoken-sentence [$item]: Decent {s} there.	那里的不错的{s1}。	l
 Announcement combat spoken-sentence [$name]: {s} is very near.	{s1}近在咫尺。	l
 Announcement combat spoken-sentence [$term]: I'd like the {s}.	我要{s1}。	l
+Announcement combat spoken-sentence []: Are you being serious?	你是认真的吗？	l
+Announcement combat spoken-sentence []: Are you still dancing?	你还在跳舞吗？	l
+Announcement combat spoken-sentence []: Friendship is forever.	友谊长存。	l
+Announcement combat spoken-sentence []: Grief? I feel nothing.	悲伤？我毫无感觉。	l
+Announcement combat spoken-sentence []: I am sort of confused.	我有些困惑。	l
 Announcement combat spoken-sentence []: I am the killer of , !	杀死对方的正是我！	l
 Announcement combat spoken-sentence []: I am the master of , !	我就是对方的主人！	l
 Announcement combat spoken-sentence []: I am the murderer of !	谋杀对方的正是我！	l
 Announcement combat spoken-sentence []: I am the slayer of , !	杀死对方的正是我！	l
+Announcement combat spoken-sentence []: I don't want to argue.	我不想争论。	l
+Announcement combat spoken-sentence []: I look splendid today.	我今天真是光彩照人。	l
 Announcement combat spoken-sentence []: I would... rather not.	我……还是不去了。	l
+Announcement combat spoken-sentence []: I'm walking my patrol.	我正在巡逻。	l
+Announcement combat spoken-sentence []: I've heard it all now!	我现在真是什么荒唐话都听过了！	l
 Announcement combat spoken-sentence []: That place is blessed.	那里是受祝福之地。	l
+Announcement combat spoken-sentence []: We will be successful.	我们一定会成功。	l
+Announcement combat spoken-sentence []: We will fight no more.	我们不会再战斗了。	l
+Announcement combat spoken-sentence []: What did you just say?	你刚才说什么？	l
+Announcement combat spoken-sentence []: You must be convinced.	我非得让你心服口服。	l
+Announcement combat spoken-sentence [greeting-state]: I'm {s}.	我{s1}。	l
 Announcement combat visitor-statement []: was will be burning.	当时将正在燃烧。	l
 Announcement combat visitor-statement []: will be destroying .	将正在毁灭。	l
 Announcement combat visitor-statement-emotion []: contemptuous	心怀轻蔑	l
@@ -25943,13 +26257,28 @@ Announcement combat site-rumor-artifact [$memorial-item]: {s}	{s1}	l
 Announcement combat site-rumor-date [$digits]: the mid of {s}	第{s1}年某季之中	l
 Announcement combat site-rumor-event []: was kidnapped from .	有人在未具名地点被绑架了。	l
 Announcement combat speech-architecture-element []: lava pool	熔岩池	l
+Announcement combat speech-babble [speech-babble-tail]: ba{s}	吧{s1}	l
+Announcement combat speech-babble [speech-babble-tail]: da{s}	哒{s1}	l
+Announcement combat speech-babble [speech-babble-tail]: ga{s}	嘎{s1}	l
+Announcement combat speech-babble [speech-babble-tail]: ma{s}	嘛{s1}	l
 Announcement combat speech-room-bearing []: right around here	这附近	l
 Announcement combat spoken-greeting [speech-person]: Hey {s}.	嘿，{s1}。	l
 Announcement combat spoken-sentence [$item]: Great {s} there.	那里的很棒的{s1}。	l
+Announcement combat spoken-sentence []: An item has returned!	一件物品回来了！	l
+Announcement combat spoken-sentence []: How have things been?	最近怎么样？	l
 Announcement combat spoken-sentence []: I am the crusher of !	碾碎对方的正是我！	l
 Announcement combat spoken-sentence []: I am the death of , !	给对方带来死亡的正是我！	l
 Announcement combat spoken-sentence []: I am the nemesis of !	我就是对方的宿敌！	l
+Announcement combat spoken-sentence []: I guess I'm not sure.	我想我还不确定。	l
+Announcement combat spoken-sentence []: I like to dress well.	我喜欢衣着得体。	l
+Announcement combat spoken-sentence []: I must take my leave.	我得告辞了。	l
+Announcement combat spoken-sentence []: I value your loyalty.	我珍视你的忠诚。	l
+Announcement combat spoken-sentence []: I will fight no more.	我不会再战斗了。	l
 Announcement combat spoken-sentence []: Let's spread the joy!	让我们传播欢乐吧！	l
+Announcement combat spoken-sentence []: No such place exists.	没有这样的地方。	l
+Announcement combat spoken-sentence []: There is fog outside.	外面有雾。	l
+Announcement combat spoken-sentence []: What a strange place!	多么奇怪的地方！	l
+Announcement combat spoken-sentence []: You're so perceptive!	你看得真透彻！	l
 Announcement combat spoken-sentence [dialogue-judgement]: {s}	{s1}	l
 Announcement combat threat-material [$memorial-material]: {s}	{s1}	l
 Announcement combat threat-material [threat-material]: 's {s}	无名者的{s1}	l
@@ -26618,15 +26947,26 @@ Announcement combat sentence [unit]: {s} feel less feverish.	{s1}的发热减轻
 Announcement combat sentence [unit]: {s} has become enraged!	{s1}暴怒了！	l
 Announcement combat sentence [unit]: {s} have less swelling.	{s1}肿胀减轻了。	l
 Announcement combat site-rumor-person [$memorial-actor]: {s}	{s1}	l
+Announcement combat speech-devotional-action []: considering	思索	l
+Announcement combat speech-devotional-topic []: the theme of	某个未注明的主题	l
 Announcement combat spoken-sentence [$item]: Good {s} there.	那里的优质的{s1}。	l
+Announcement combat spoken-sentence []: How may I serve you?	我能为你做些什么？	l
+Announcement combat spoken-sentence []: I am afraid of them.	我害怕他们。	l
 Announcement combat spoken-sentence []: I am the bane of , !	我就是对方的祸根！	l
 Announcement combat spoken-sentence []: I am the killer of !	杀死对方的正是我！	l
 Announcement combat spoken-sentence []: I am the lord of , !	我就是对方的领主！	l
 Announcement combat spoken-sentence []: I am the master of !	我就是对方的主人！	l
 Announcement combat spoken-sentence []: I am the slayer of !	杀死对方的正是我！	l
 Announcement combat spoken-sentence []: I found myself dead.	我发现自己已经死了。	l
+Announcement combat spoken-sentence []: It's not my problem.	这不关我的事。	l
+Announcement combat spoken-sentence []: Just think about it.	好好想想吧。	l
+Announcement combat spoken-sentence []: Long live the cause!	我们的事业万岁！	l
+Announcement combat spoken-sentence []: Long live the cause.	我们的事业万岁。	l
 Announcement combat spoken-sentence []: Please guide me to .	请带我去找未具名者。	l
 Announcement combat spoken-sentence []: Tavern keeper! One !	酒馆老板！来一杯酒！	l
+Announcement combat spoken-sentence []: Who do you work for?	你为谁效力？	l
+Announcement combat spoken-sentence []: Wow! That's amazing!	哇！太惊人了！	l
+Announcement combat spoken-sentence []: You are bound to me!	你已受我约束！	l
 Announcement combat spoken-sentence []: You should talk to .	你应该找未具名者谈谈。	l
 Announcement combat threat-stolen-item [$memorial-item]: {s}	{s1}	l
 Announcement combat travel-empty-caste-actor []: the ghostly	幽灵	l
@@ -27423,14 +27763,29 @@ Announcement combat sentence [unit]: {s} have fewer wounds.	{s1}的一些伤口�
 Announcement combat sentence [unit]: {s} latches on firmly!	{s1}牢牢抓住了！	l
 Announcement combat sentence [work]: You have authored {s}.	你著成了{s1}。	l
 Announcement combat sentence [work]: You have composed {s}.	你创作了{s1}。	l
+Announcement combat speech-babble [speech-babble-last]: {s}	{s1}	l
+Announcement combat speech-devotional-action []: praying on	祈祷	l
+Announcement combat speech-devotional-action []: praying to	祈祷	l
+Announcement combat speech-devotional-topic []: the idea of	某个未注明的理念	l
+Announcement combat speech-race-profession [$creature]: {s}	{s1}	l
 Announcement combat spoken-sentence [$item]: Excellent {s}.	上等的{s1}。	l
 Announcement combat spoken-sentence [$item]: Fantastic {s}.	绝妙的{s1}。	l
 Announcement combat spoken-sentence [$name]: We are in {s}.	我们在{s1}。	l
 Announcement combat spoken-sentence [$unit]: {s} STRANGUS !	{s1} 斯特朗古斯！	l
 Announcement combat spoken-sentence []: , is it really you?	未具名者，真的是你吗？	l
+Announcement combat spoken-sentence []: Are in a foul mood?	心情不好吗？	l
+Announcement combat spoken-sentence []: Huh? What was that?	嗯？刚才说什么？	l
 Announcement combat spoken-sentence []: I am the death of !	给对方带来死亡的正是我！	l
 Announcement combat spoken-sentence []: I am the foe of , !	我就是对方的敌人！	l
+Announcement combat spoken-sentence []: I am very confused.	我非常困惑。	l
+Announcement combat spoken-sentence []: I repent! I repent!	我忏悔！我忏悔！	l
+Announcement combat spoken-sentence []: I'll show you calm!	我让你见识一下什么叫冷静！	l
 Announcement combat spoken-sentence []: Knowing no mercy, !	这个恶徒毫不留情地作恶，具体罪行不明！	l
+Announcement combat spoken-sentence []: Maybe you're right.	也许你是对的。	l
+Announcement combat spoken-sentence []: We yield! We yield!	我们投降！我们投降！	l
+Announcement combat spoken-sentence []: Yes, let's move on.	好，我们换个话题吧。	l
+Announcement combat spoken-sentence []: You must be joking.	你一定是在开玩笑。	l
+Announcement combat spoken-sentence [speech-babble]: {s}...	{s1}……	l
 Announcement combat threat-building []: an underworld spire	一座地下世界尖塔	l
 Announcement combat threat-crime []: devoured our livestock	吞食了我们的牲畜	l
 Announcement combat threat-crimes [threat-crime]: {s} , and	{s1}，还犯下了两项罪行（细节不明）	l
@@ -28349,8 +28704,18 @@ Announcement combat speech-race [speech-race]: ghostly {s}	幽灵般的{s1}	l
 Announcement combat spoken-sentence [$item]: Splendid {s}.	出色的{s1}。	l
 Announcement combat spoken-sentence [$speech-person]: {s}!	{s1}！	l
 Announcement combat spoken-sentence [$unit]: {s} STORKIS !	{s1} 斯托尔基斯！	l
+Announcement combat spoken-sentence []: Ha ha! So amusing!	哈哈！真有趣！	l
 Announcement combat spoken-sentence []: I am the bane of !	我就是对方的祸根！	l
 Announcement combat spoken-sentence []: I am the lord of !	我就是对方的领主！	l
+Announcement combat spoken-sentence []: I just don't know.	我实在不知道。	l
+Announcement combat spoken-sentence []: I'm happy to help.	我很乐意帮忙。	l
+Announcement combat spoken-sentence []: It was inevitable.	这是不可避免的。	l
+Announcement combat spoken-sentence []: It's for the best.	这样最好。	l
+Announcement combat spoken-sentence []: Nobody I remember.	我不记得有谁。	l
+Announcement combat spoken-sentence []: Pause to consider.	停下来想一想。	l
+Announcement combat spoken-sentence []: They are terrific.	他们很了不起。	l
+Announcement combat spoken-sentence []: Well, let's see...	嗯，让我看看……	l
+Announcement combat spoken-sentence []: Why should I help?	我为什么要帮忙？	l
 Announcement combat spoken-sentence [memory-sentence]: {s}	{s1}	l
 Announcement combat threat-crimes [threat-crime]: {s}, and	{s1}，还犯下了两项罪行（细节不明）	l
 Announcement combat travel-empty-caste-actor []: a ghostly	幽灵	l
@@ -29275,9 +29640,22 @@ Announcement combat sentence [unit]: {s} feel less dizzy.	{s1}的眩晕减轻了
 Announcement combat sentence [unit]: {s} latch on firmly!	{s1}牢牢抓住了！	l
 Announcement combat shot [actor,unit]: {s} strikes at {s}	{s1}袭向{s2}	l
 Announcement combat speech-race [speech-race]: zombie {s}	僵尸{s1}	l
+Announcement combat speech-race-profession [$office]: {s}	{s1}	l
+Announcement combat spoken-sentence []: Don't talk to me.	别跟我说话。	l
+Announcement combat spoken-sentence []: Get away from me!	离我远点！	l
+Announcement combat spoken-sentence []: How unreasonable!	真不讲道理！	l
 Announcement combat spoken-sentence []: I am the foe of !	我就是对方的敌人！	l
 Announcement combat spoken-sentence []: I worship no one.	我不崇拜任何神祇。	l
+Announcement combat spoken-sentence []: I yield! I yield!	我投降！我投降！	l
+Announcement combat spoken-sentence []: Is it really you?	真的是你吗？	l
+Announcement combat spoken-sentence []: Stop and reflect.	停下来反思一下。	l
+Announcement combat spoken-sentence []: That isn't funny.	这并不好笑。	l
+Announcement combat spoken-sentence []: That's not right.	那不对。	l
+Announcement combat spoken-sentence []: They are outlaws.	他们是不法之徒。	l
+Announcement combat spoken-sentence []: Uhh... nevermind.	呃……算了。	l
+Announcement combat spoken-sentence []: What an odd glow!	多么奇怪的光芒！	l
 Announcement combat spoken-sentence [merchant-hawk]: {s}!	{s1}！	l
+Announcement combat spoken-sentence [speech-babble]: {s}!	{s1}！	l
 Announcement combat threat-crimes [threat-crime]: and {s}	犯下了罪行（细节不明），并{s1}	l
 Announcement combat threat-crimes [threat-crime]: {s} and	{s1}，还犯下了罪行（细节不明）	l
 Announcement combat threat-livestock [speech-person]: {s}	{s1}	l
@@ -30273,7 +30651,14 @@ Announcement combat shot [actor,unit]: {s} strike at {s}	{s1}袭向{s2}	l
 Announcement combat speech-sphere []: some vague concept	某种模糊的概念	l
 Announcement combat spoken-sentence [$item]: Decent {s}.	不错的{s1}。	l
 Announcement combat spoken-sentence [$unit]: {s} AUGIS !	{s1} 奥吉斯！	l
+Announcement combat spoken-sentence []: Give me a break.	饶了我吧。	l
+Announcement combat spoken-sentence []: How's life here?	在这里过得怎么样？	l
+Announcement combat spoken-sentence []: I beg to differ.	恕我不能苟同。	l
+Announcement combat spoken-sentence []: I do not scheme.	我没有谋划阴谋。	l
 Announcement combat spoken-sentence []: Keep practicing!	继续练习吧！	l
+Announcement combat spoken-sentence []: What's the rush?	何必着急？	l
+Announcement combat spoken-sentence []: Yes! It is done.	太好了！大功告成。	l
+Announcement combat spoken-sentence []: You are amazing.	你真了不起。	l
 Announcement combat spoken-sentence [memory-death]: {s}.	未具名者{s1}。	l
 Announcement combat threat-building []: a counting house	一座账房	l
 Announcement combat threat-crime []: destroyed our homes	毁坏了我们的家园	l
@@ -31358,8 +31743,17 @@ Announcement combat sentence []: That place is blessed.	那里是受祝福之地
 Announcement combat site-rumor-event []: was conquered.	未具名地点被征服了。	l
 Announcement combat site-rumor-event []: was kidnapped.	有人被绑架了。	l
 Announcement combat speech-person [$speech-person]: {s}	{s1}	l
+Announcement combat spoken-greeting []: I'm a true of .	我才是真正的一员。	l
 Announcement combat spoken-sentence [$item]: Great {s}.	很棒的{s1}。	l
+Announcement combat spoken-sentence []: Astonished? No.	惊讶？没有。	l
+Announcement combat spoken-sentence []: Enjoy the hunt!	祝你狩猎愉快！	l
 Announcement combat spoken-sentence []: I am the of , !	击败对方的正是我！	l
+Announcement combat spoken-sentence []: I cannot agree.	我无法赞同。	l
+Announcement combat spoken-sentence []: I have no idea.	我完全不知道。	l
+Announcement combat spoken-sentence []: I serve no one.	我不为任何人效力。	l
+Announcement combat spoken-sentence []: It is an honor.	不胜荣幸。	l
+Announcement combat spoken-sentence []: My good friend.	我的好朋友。	l
+Announcement combat spoken-sentence [quest-report]: {s}	{s1}	l
 Announcement combat threat-crime []: profaned our homes	亵渎了我们的家园	l
 Announcement combat threat-crime [threat-building]: {s}	犯下了涉及{s1}的罪行	l
 Announcement combat threat-family-group [$kinship]: {s}	{s1}	l
@@ -32432,7 +32826,18 @@ Announcement combat site-rumor-event [$name]: {s} in .	{s1}在未具名地点。
 Announcement combat site-rumor-position [$office]: {s}	{s1}	l
 Announcement combat speech-room []: the counting house	账房	l
 Announcement combat spoken-sentence [$item]: Good {s}.	优质的{s1}。	l
+Announcement combat spoken-sentence []: Base flattery!	少来这套下作的奉承！	l
+Announcement combat spoken-sentence []: How dare you?!	你怎么敢？！	l
+Announcement combat spoken-sentence []: I am confused.	我有些困惑。	l
+Announcement combat spoken-sentence []: I don't agree.	我不同意。	l
+Announcement combat spoken-sentence []: I must insist.	这点我坚持。	l
 Announcement combat spoken-sentence []: I'd like the .	我想点一杯酒。	l
+Announcement combat spoken-sentence []: Is it raining?	在下雨吗？	l
+Announcement combat spoken-sentence []: Let's move on.	我们换个话题吧。	l
+Announcement combat spoken-sentence []: No, I mean it.	不，我是认真的。	l
+Announcement combat spoken-sentence []: That's absurd!	太荒谬了！	l
+Announcement combat spoken-sentence []: Vile creature!	卑劣的生物！	l
+Announcement combat spoken-sentence []: You are right.	你说得对。	l
 Announcement combat spoken-sentence [rumor-event]: {s}	{s1}	l
 Announcement combat threat-victim [speech-person]: {s}	{s1}	l
 Announcement combat visitor-statement []: am burning .	正在燃烧。	l
@@ -33571,8 +33976,21 @@ Announcement combat speech-room-bearing []: northeast	东北面	l
 Announcement combat speech-room-bearing []: northwest	西北面	l
 Announcement combat speech-room-bearing []: southeast	东南面	l
 Announcement combat speech-room-bearing []: southwest	西南面	l
+Announcement combat spoken-sentence []: Are we close?	我们快到了吗？	l
+Announcement combat spoken-sentence []: Do your duty.	尽好自己的本分。	l
+Announcement combat spoken-sentence []: Have no fear.	不必畏惧。	l
+Announcement combat spoken-sentence []: How gracious!	真是宽宏大量！	l
 Announcement combat spoken-sentence []: I am the of !	击败对方的正是我！	l
+Announcement combat spoken-sentence []: I'm appalled.	我感到震惊。	l
 Announcement combat spoken-sentence []: I'm leaving .	我要离开剧团。	l
+Announcement combat spoken-sentence []: I'm not sure.	我不确定。	l
+Announcement combat spoken-sentence []: Insufferable!	简直忍无可忍！	l
+Announcement combat spoken-sentence []: It's my mess.	是我自己弄乱的。	l
+Announcement combat spoken-sentence []: My companion.	我的伙伴。	l
+Announcement combat spoken-sentence []: That's wrong.	那是错的。	l
+Announcement combat spoken-sentence []: Unbelievable.	难以置信。	l
+Announcement combat spoken-sentence []: You mock me?!	你在嘲弄我？！	l
+Announcement combat spoken-sentence []: You're wrong.	你错了。	l
 Announcement combat threat-building []: the catacombs	地下墓穴	l
 Announcement combat threat-crimes [threat-crime]: {s}	{s1}	l
 Announcement combat travel-actor [$travel-actor]: {s}	{s1}	l
@@ -34787,6 +35205,8 @@ Announcement combat sentence [work-description]: {s}	{s1}	l
 Announcement combat site-rumor-artifact [$book]: {s}	{s1}	l
 Announcement combat site-rumor-artifact [$item]: {s}	{s1}	l
 Announcement combat site-rumor-building [$name]: {s}	{s1}	l
+Announcement combat spoken-greeting []: Welcome to .	欢迎来到这里。	l
+Announcement combat spoken-sentence []: I hate them.	我恨他们。	l
 Announcement combat spoken-sentence []: Welcome to !	欢迎加入剧团！	l
 Announcement combat threat-kill-count [$number]: {s}	{s1}人	l
 Announcement combat threat-name [speech-person]: {s}	{s1}	l
@@ -36064,7 +36484,12 @@ Announcement combat sentence [unit]: {s} feel sick!	{s1}觉得恶心！	l
 Announcement combat speech-first-name []: something	某个存在	l
 Announcement combat speech-room []: the dining hall	餐厅	l
 Announcement combat speech-room []: the throne room	王座厅	l
+Announcement combat spoken-sentence []: I disagree.	我不同意。	l
+Announcement combat spoken-sentence []: I hate you.	我恨你。	l
 Announcement combat spoken-sentence []: I worship .	我崇拜未具名者。	l
+Announcement combat spoken-sentence []: It's wrong.	这是错的。	l
+Announcement combat spoken-sentence []: Wait, what?	等等，什么？	l
+Announcement combat spoken-sentence []: Where am I?	我在哪里？	l
 Announcement combat threat-building []: a guildhall	一座行会大厅	l
 Announcement combat threat-building []: a mead hall	一座蜜酒大厅	l
 Announcement combat threat-stolen-item [$book]: {s}	{s1}	l
@@ -37361,7 +37786,10 @@ Announcement combat sentence [unit]: {s} has come!	{s1}来了！	l
 Announcement combat sentence [unit]: {s} pass out.	{s1}昏过去了。	l
 Announcement combat site-rumor-date [$digits]: {s}	第{s1}年	l
 Announcement combat speech-first-name []: nameless	无名	l
+Announcement combat spoken-sentence []: Greetings.	你好。	l
+Announcement combat spoken-sentence []: Of course.	当然。	l
 Announcement combat spoken-sentence []: STRANGUS !	斯特朗古斯！	l
+Announcement combat spoken-sentence []: The enemy!	敌人！	l
 Announcement combat spoken-sentence []: attacked .	未具名者攻击了未具名者。	l
 Announcement combat threat-building []: a hospital	一所医院	l
 Announcement combat threat-building []: the sewers	下水道	l
@@ -38758,8 +39186,13 @@ Announcement combat speech-room []: the dormitory	宿舍	l
 Announcement combat speech-room []: the guildhall	行会大厅	l
 Announcement combat speech-room-bearing []: north	北面	l
 Announcement combat speech-room-bearing []: south	南面	l
+Announcement combat spoken-sentence []: Be happy!	开心一点！	l
 Announcement combat spoken-sentence []: I serve .	我为未具名者效力。	l
+Announcement combat spoken-sentence []: Intruder!	入侵者！	l
+Announcement combat spoken-sentence []: Murderer!	凶手！	l
 Announcement combat spoken-sentence []: STORKIS !	斯托尔基斯！	l
+Announcement combat spoken-sentence []: Shameful.	可耻。	l
+Announcement combat spoken-sentence []: The dead!	亡者！	l
 Announcement combat spoken-sentence []: This is .	这个场所未注明名称。	l
 Announcement combat spoken-sentence []: We have .	我们这里有酒水。	l
 Announcement combat threat-building []: a dungeon	一座地牢	l
@@ -41761,6 +42194,9 @@ Announcement combat sentence [unit]: {s} blocks	{s1}格挡	l
 Announcement combat speech-person []: something	某个存在	l
 Announcement combat speech-room []: the library	图书馆	l
 Announcement combat spoken-sentence []: AUGIS !	奥吉斯！	l
+Announcement combat spoken-sentence []: Ahhh...	啊……	l
+Announcement combat spoken-sentence []: Gwargh!	嘎哇啊！	l
+Announcement combat spoken-sentence []: Really.	真是的。	l
 Announcement combat threat-building []: a tower	一座高塔	l
 Announcement combat threat-crime []: devoured a	吞食了一只身份不明的生物	l
 Announcement combat visitor-statement []: are .	……。	l
@@ -43260,9 +43696,32 @@ Announcement combat sentence []: I am the of !	击败对方的正是我！	l
 Announcement combat sentence []: I'm leaving .	我要离开剧团。	l
 Announcement combat sentence [head]: {s} and !	{s1}！	l
 Announcement combat sentence [unit]: {s} block	{s1}格挡	l
+Announcement combat speech-babble-last []: bas	巴斯	l
+Announcement combat speech-babble-last []: ber	伯尔	l
+Announcement combat speech-babble-last []: bin	宾	l
+Announcement combat speech-babble-last []: bis	比斯	l
+Announcement combat speech-babble-last []: bus	布斯	l
+Announcement combat speech-babble-last []: das	达斯	l
+Announcement combat speech-babble-last []: der	德尔	l
+Announcement combat speech-babble-last []: din	丁	l
+Announcement combat speech-babble-last []: dis	迪斯	l
+Announcement combat speech-babble-last []: dus	杜斯	l
+Announcement combat speech-babble-last []: gas	嘎斯	l
+Announcement combat speech-babble-last []: ger	格尔	l
+Announcement combat speech-babble-last []: gin	金	l
+Announcement combat speech-babble-last []: gis	吉斯	l
+Announcement combat speech-babble-last []: gus	古斯	l
+Announcement combat speech-babble-last []: mas	马斯	l
+Announcement combat speech-babble-last []: mer	默尔	l
+Announcement combat speech-babble-last []: min	敏	l
+Announcement combat speech-babble-last []: mis	米斯	l
+Announcement combat speech-babble-last []: mus	穆斯	l
 Announcement combat speech-person []: nameless	无名	l
 Announcement combat speech-place []: something	某个地方	l
 Announcement combat speech-place []: the wilds	荒野	l
+Announcement combat spoken-sentence []: Never!	绝不！	l
+Announcement combat spoken-sentence []: Never.	绝不。	l
+Announcement combat spoken-sentence []: Uhh...	呃……	l
 Announcement combat spoken-sentence []: Where?	哪里？	l
 Announcement combat threat-building []: a keep	一座城堡主楼	l
 Announcement combat threat-building []: a tomb	一座陵墓	l
@@ -44860,9 +45319,16 @@ Announcement combat rumor-time []: a year ago	一年前	l
 Announcement combat rumor-time []: months ago	数月前	l
 Announcement combat sentence []: Welcome to !	欢迎加入剧团！	l
 Announcement combat shot-result []: deflected	挡开了	l
+Announcement combat speech-babble-last []: ba	吧	l
+Announcement combat speech-babble-last []: da	哒	l
+Announcement combat speech-babble-last []: ga	嘎	l
+Announcement combat speech-babble-last []: ma	嘛	l
 Announcement combat speech-place [$name]: {s}	{s1}	l
 Announcement combat speech-place []: nameless	无名之地	l
 Announcement combat speech-room []: the tower	塔楼	l
+Announcement combat spoken-sentence []: Fool!	蠢货！	l
+Announcement combat spoken-sentence []: Uh...	呃……	l
+Announcement combat spoken-sentence []: What?	什么？	l
 Announcement combat threat-crime []: devoured	吞食了身份不明的生物	l
 Announcement combat threat-crime []: profaned	亵渎了建筑（名称不明）	l
 Announcement combat threat-possessive []: her	她	l
@@ -46432,6 +46898,9 @@ Announcement combat reference-kind []: vault	秘库	l
 Announcement combat sentence [$message]: {s}	{s1}	l
 Announcement combat sentence []: I worship .	我崇拜未具名者。	l
 Announcement combat speech-race []: creature	生物	l
+Announcement combat spoken-sentence []: Ack!	啊！	l
+Announcement combat spoken-sentence []: Huh?	嗯？	l
+Announcement combat spoken-sentence []: Who?	谁？	l
 Announcement combat threat-name [$name]: {s}	{s1}	l
 Announcement combat work-ordinal []: seventh	7	l
 Announcement combat work-ordinal []: twelfth	12	l
@@ -48120,6 +48589,10 @@ Announcement combat sentence []: STRANGUS !	斯特朗古斯！	l
 Announcement combat sentence []: attacked .	未具名者攻击了未具名者。	l
 Announcement combat sentence [head]: {s}, !	{s1}！	l
 Announcement combat shot-result []: parried	招架住了	l
+Announcement combat spoken-sentence []: Eh?	诶？	l
+Announcement combat spoken-sentence []: Ha!	哈！	l
+Announcement combat spoken-sentence []: No!	不！	l
+Announcement combat spoken-sentence []: No.	不。	l
 Announcement combat subject-pronoun []: she	她	l
 Announcement combat subject-pronoun []: you	你	l
 Announcement combat visitor-statement []: .	……。	l

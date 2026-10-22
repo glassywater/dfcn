@@ -97,7 +97,9 @@ std::optional<std::string> Overlay::translate_unit_profession(
     if (folded == ghostly.substr(0, ghostly.size() - 1))
         return std::string(creature_name_status_prefix.at("ghostly"));
     if (folded.starts_with(ghostly)) {
-        const auto role = translate_unit_profession(source.substr(ghostly.size()), typed);
+        const auto remainder = std::string_view(source).substr(ghostly.size());
+        auto role = translate_creature_label(remainder);
+        if (!role) role = translate_unit_profession(remainder, typed);
         const auto status = creature_name_status_prefix.find("ghostly");
         if (role && status != creature_name_status_prefix.end())
             return std::string(status->second) + *role;
@@ -117,7 +119,8 @@ std::optional<std::string> Overlay::translate_unit_profession(
             std::string_view(folded).substr(0, at));
         if (adjective == creature_name_display_adjective.end()) continue;
         const auto base = std::string_view(source).substr(at + 1);
-        const auto role = translate_unit_profession(base, false);
+        auto role = translate_creature_label(base);
+        if (!role) role = translate_unit_profession(base, false);
         if (translation_complete_with_native_nicknames(role, base))
             return std::string(adjective->second) + *role;
     }
@@ -129,6 +132,9 @@ std::optional<std::string> Overlay::translate_unit_profession(
     // this native field here too. Its existing scope covers every body-size,
     // voice, fixed facial form and RAW modifier/body-part production; neither
     // an appearance word nor its adjacent role is a personal-name field.
+    // 132e430 appends the same selected field for a caste-only animal as for
+    // a species plus profession. Its terminal therefore need not be a role:
+    // body-size, voice and RAW features can all precede a plain caste name.
     for (size_t at = source.rfind(' '); at != std::string::npos;
          at = at == 0 ? std::string::npos : source.rfind(' ', at - 1)) {
         std::vector<size_t> appearance_origins;
@@ -137,7 +143,8 @@ std::optional<std::string> Overlay::translate_unit_profession(
             "::map_hover::unit::appearance", appearance_origins);
         if (!appearance || appearance->empty()) continue;
         const auto remainder = std::string_view(source).substr(at + 1);
-        const auto role = translate_unit_profession(remainder, false);
+        auto role = translate_creature_label(remainder);
+        if (!role) role = translate_unit_profession(remainder, false);
         if (translation_complete_with_native_nicknames(role, remainder))
             return *appearance + "的" + *role;
     }
@@ -147,8 +154,9 @@ std::optional<std::string> Overlay::translate_unit_profession(
     // rather than transliterating the combined title as a generated name.
     constexpr std::string_view necromancer = " necromancer";
     if (folded.ends_with(necromancer)) {
-        const auto role = translate_unit_profession(
-            source.substr(0, source.size() - necromancer.size()), typed);
+        const auto base = std::string_view(source).substr(0, source.size() - necromancer.size());
+        auto role = translate_creature_label(base);
+        if (!role) role = translate_unit_profession(base, typed);
         const auto status = exact_literal_translation("Necromancer");
         if (role && status) return *role + "／" + *status;
     }
@@ -166,7 +174,8 @@ std::optional<std::string> Overlay::translate_unit_profession(
             std::string_view(folded).substr(at + 1));
         if (display == creature_name_display_name.end()) continue;
         const auto base = std::string_view(source).substr(0, at);
-        const auto role = translate_unit_profession(base, false);
+        auto role = translate_creature_label(base);
+        if (!role) role = translate_unit_profession(base, false);
         if (translation_complete_with_native_nicknames(role, base))
             return *role + "／" + std::string(display->second);
     }

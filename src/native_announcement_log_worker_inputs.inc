@@ -66,6 +66,8 @@ static void native_announcement_log_visit_owned_units(
     if (document.speech_header && document.speech_header->speaker)
         visit(*document.speech_header->speaker);
     if (document.speech) {
+        if (document.speech->speaker_caption_identity) visit(*document.speech->speaker_caption_identity);
+        if (document.speech->recipient_caption_identity) visit(*document.speech->recipient_caption_identity);
         if (document.speech->speaker_identity) visit(*document.speech->speaker_identity);
         if (document.speech->recipient_identity) visit(*document.speech->recipient_identity);
         // Person token slots select NameOnly and the exact expanded token

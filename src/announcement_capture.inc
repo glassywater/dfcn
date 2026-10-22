@@ -136,11 +136,15 @@ struct NativeAnnouncementLogSpeech {
     std::array<int32_t, 9> rumor_data{};
     std::map<std::string, int64_t> parameters;
     std::optional<NativeUnitIdentity> speaker_identity, recipient_identity;
+    std::optional<NativeUnitIdentity> speaker_caption_identity, recipient_caption_identity;
     std::string original_body, expanded_body, rendered_body, header_source, source, context;
+    std::string speaker_source, recipient_source;
     std::vector<NativeAnnouncementLogSpeechToken> tokens;
-    bool tokens_complete = false;
+    bool tokens_complete = false, header_complete = false, player = false, addressed = false;
     size_t bytes = 0;
 };
+static void remember_native_announcement_log_speech_identity(
+    uintptr_t unit, const NativeUnitIdentity &identity, std::string_view source) noexcept;
 struct NativeAnnouncementLogSpeechHeader {
     size_t body_offset = 0;
     std::optional<NativeUnitIdentity> speaker;

@@ -329,6 +329,29 @@ std::optional<std::string> Overlay::translate_spoken_dialogue_body(
     }, active_key);
 }
 
+std::optional<std::string> Overlay::translate_announcement_speech_actor(
+        std::string_view value) const {
+    if (value == "You") return std::string("你");
+    // The speech wrapper's live-unit formatter copies animation+0x20
+    // directly for a corpse or detached body component. This production
+    // owns the possessive owner and every native damage/anatomy/material
+    // branch, even when that owner has no generated-name dictionary entry.
+    if (const auto identity = native_unit_identity_source_target(value)) return identity;
+    if (const auto body = translate_native_animation_label(value)) return body;
+    if (const auto unit = translate_ui_message_capture(value, true)) return unit;
+    // Without a live unit, 103a1d0 falls back to the historical figure's
+    // complete EnglishName. A surname-only name or English title has no
+    // native given-word mask, so it needs the same typed person renderer
+    // used by the body's historical-figure fields.
+    const auto figure = translate_legends_actor(value, 0, true);
+    if (translation_complete_with_native_nicknames(figure, value)) return figure;
+    // EnglishName copies FIRST_NAME from UTTERANCES as well as WORD
+    // names. A stored speech record can outlive its live formatter's
+    // identity binding, so the historical-header branch needs the same
+    // complete personal-name renderer as SPEAKER:TRANS_NAME.
+    return translate_announcement_combat(value, "$speech-person");
+}
+
 // 0x140684a10 submits either ACTOR: BODY or ACTOR (to RECIPIENT): BODY.
 // BODY is passed intact through 0x140685d00 before submission, so translate it
 // against the complete reviewed paragraph catalog, never as an arbitrary name.
@@ -336,27 +359,6 @@ std::optional<std::string> Overlay::translate_spoken_dialogue_body(
 // generic paragraph matcher, so inner catalog translation cannot recurse here.
 std::optional<std::string> Overlay::translate_announcement_dialogue(
         std::string_view source, int native_type) const {
-    auto actor = [&](std::string_view value) -> std::optional<std::string> {
-        if (value == "You") return std::string("你");
-        // The speech wrapper's live-unit formatter copies animation+0x20
-        // directly for a corpse or detached body component. This production
-        // owns the possessive owner and every native damage/anatomy/material
-        // branch, even when that owner has no generated-name dictionary entry.
-        if (const auto identity = native_unit_identity_source_target(value)) return identity;
-        if (const auto body = translate_native_animation_label(value)) return body;
-        if (const auto unit = translate_ui_message_capture(value, true)) return unit;
-        // Without a live unit, 103a1d0 falls back to the historical figure's
-        // complete EnglishName. A surname-only name or English title has no
-        // native given-word mask, so it needs the same typed person renderer
-        // used by the body's historical-figure fields.
-        const auto figure = translate_legends_actor(value, 0, true);
-        if (translation_complete_with_native_nicknames(figure, value)) return figure;
-        // EnglishName copies FIRST_NAME from UTTERANCES as well as WORD
-        // names. A stored speech record can outlive its live formatter's
-        // identity binding, so the historical-header branch needs the same
-        // complete personal-name renderer as SPEAKER:TRANS_NAME.
-        return translate_announcement_combat(value, "$speech-person");
-    };
     for (size_t colon = source.find(':'); colon != std::string_view::npos;
          colon = source.find(':', colon + 1)) {
         if (colon + 1 < source.size() && source[colon + 1] != ' ') continue;
@@ -372,11 +374,11 @@ std::optional<std::string> Overlay::translate_announcement_dialogue(
             // unit's caption is empty: the native " (to )" still survives.
             recipient = caption.empty()
                 ? exact_literal_translation("Announcement speech: unnamed recipient")
-                : actor(caption);
+                : translate_announcement_speech_actor(caption);
             if (!recipient || recipient->empty()) continue;
             prefix = prefix.substr(0, to);
         }
-        const auto speaker = actor(prefix);
+        const auto speaker = translate_announcement_speech_actor(prefix);
         if (!speaker || speaker->empty()) continue;
         const std::string heading = *speaker +
             (recipient ? "（对" + *recipient + "）" : "") + "：";

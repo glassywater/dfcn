@@ -5577,6 +5577,7 @@ private:
     std::optional<std::string> translate_announcement_music_passages(std::string_view source) const;
     std::optional<std::string> translate_announcement_number(std::string_view source) const;
     std::optional<std::string> translate_announcement_date(std::string_view source) const;
+    std::optional<std::string> translate_announcement_speech_actor(std::string_view source) const;
     std::optional<std::string> translate_announcement_dialogue(std::string_view source,
         int native_type = -1) const;
     std::optional<std::string> translate_spoken_dialogue_body(std::string_view source) const;

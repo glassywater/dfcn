@@ -512,6 +512,8 @@ static std::optional<std::string> finish_native_unit_reference_call(
         if (!native_string_view(output, &source, 262144) ||
                 !g_overlay.translation_enabled()) return std::nullopt;
         if (source.empty()) {
+            if (call.publish && !call.parent)
+                remember_native_announcement_log_speech_identity(call.unit, {}, source);
             // Modes 4/5 copy first_name even when it is empty. Its return is
             // still one of producer 321's two calls, but has no visible field
             // or semantic name to publish.
@@ -599,6 +601,8 @@ static std::optional<std::string> finish_native_unit_reference_call(
         const bool typed = !call.reference_failed && !snapshot.reference_parts.empty() &&
             capture_native_unit_identity(call.unit, snapshot);
         if (typed) {
+            if (call.publish && !call.parent)
+                remember_native_announcement_log_speech_identity(call.unit, snapshot, original);
             if (captured) *captured = snapshot;
             if (call.publish)
                 translated = publish_native_unit_identity_snapshot(snapshot,
@@ -867,7 +871,12 @@ static std::optional<std::string> finish_native_unit_identity_call(NativeUnitIde
                 call.parent->role_seen = true;
             }
         }
-        if (source.empty() || !g_overlay.translation_enabled()) return std::nullopt;
+        if (source.empty()) {
+            if (call.publish && !call.parent)
+                remember_native_announcement_log_speech_identity(call.unit, {}, source);
+            return std::nullopt;
+        }
+        if (!g_overlay.translation_enabled()) return std::nullopt;
         const std::string original(source);
         std::optional<std::string> translated;
         NativeUnitIdentity snapshot;
@@ -896,6 +905,8 @@ static std::optional<std::string> finish_native_unit_identity_call(NativeUnitIde
             typed = (!needs_role || call.role_seen) &&
                 capture_native_unit_identity(call.unit, snapshot);
             if (typed) {
+                if (call.publish && !call.parent)
+                    remember_native_announcement_log_speech_identity(call.unit, snapshot, original);
                 if (call.publish)
                     translated = publish_native_unit_identity_snapshot(std::move(snapshot),
                         reinterpret_cast<uintptr_t>(output), original, name_unit, english_name);

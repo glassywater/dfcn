@@ -1,12 +1,12 @@
-// Captured TEXT_SET tokens are atomic grammar slots. Older records can prove
-// their complete header through the exact native speaker formatter; only that
-// branch retains the existing complete body grammar for uncaptured fields.
+// Captured TEXT_SET tokens are atomic grammar slots. Their complete wrapper
+// header survives a delegated body production or an incomplete token capture.
+// Older records retain the exact native speaker-formatter compatibility path.
 std::optional<std::string> Overlay::compose_native_announcement_log_speech(
         const NativeAnnouncementLogDocument &document, std::string_view source,
         int foreground, std::vector<int> &target_colors) const {
     target_colors.clear();
     const auto &owned = document.speech;
-    if (!owned || !owned->tokens_complete || owned->source != document.report.source ||
+    if (!owned || owned->source != document.report.source ||
             source != native_announcement_display_source(owned->source)) {
         // Old reports retain the speaker's real unit ID, even when the
         // wrapper/token hook did not witness their production. The same
@@ -35,6 +35,51 @@ std::optional<std::string> Overlay::compose_native_announcement_log_speech(
         return target;
     }
     const auto &speech = *owned;
+    const auto header = trim_view(speech.header_source);
+    std::string heading;
+    if (!header.empty()) {
+        if (!header.ends_with(':')) return std::nullopt;
+        const auto actor = [&](const std::optional<NativeUnitIdentity> &identity,
+                std::string_view caption) -> std::optional<std::string> {
+            // Only the formatter snapshot whose complete source rebuilt this
+            // heading owns its selected appearance/role/title. A generic Full
+            // snapshot is not the movement-reference caption used by speech.
+            if (speech.header_complete && identity)
+                if (auto target = translate_native_unit_identity(*identity)) return target;
+            return translate_announcement_speech_actor(caption);
+        };
+        std::optional<std::string> speaker, recipient;
+        bool addressed = speech.addressed;
+        if (speech.header_complete) {
+            speaker = speech.player ? exact_literal_translation("you")
+                : actor(speech.speaker_caption_identity, speech.speaker_source);
+            if (addressed)
+                recipient = speech.recipient_source.empty()
+                    ? exact_literal_translation("Announcement speech: unnamed recipient")
+                    : actor(speech.recipient_caption_identity, speech.recipient_source);
+        } else {
+            // Historical-figure and uncaptured formatter branches retain the
+            // complete compatibility grammar, bounded by the wrapper's known
+            // header/body boundary rather than a colon in the body.
+            const size_t to = header.find(" (to ");
+            const auto caption = header.substr(0,
+                to == std::string_view::npos ? header.size() - 1 : to);
+            speaker = translate_announcement_speech_actor(caption);
+            addressed = to != std::string_view::npos;
+            if (addressed) {
+                if (!header.ends_with("):")) return std::nullopt;
+                const auto recipient_caption = header.substr(to + 5, header.size() - to - 7);
+                recipient = recipient_caption.empty()
+                    ? exact_literal_translation("Announcement speech: unnamed recipient")
+                    : translate_announcement_speech_actor(recipient_caption);
+            }
+        }
+        if (!speaker || speaker->empty() || (addressed && (!recipient || recipient->empty())))
+            return std::nullopt;
+        heading = *speaker + (addressed ? "（对" + *recipient + "）" : "") + "：";
+    }
+    const auto compose_tokens = [&]() -> std::optional<std::string> {
+    if (!speech.tokens_complete) return std::nullopt;
     constexpr uint16_t slot_symbol = 256;
 
     struct SpeechNode {
@@ -251,28 +296,7 @@ std::optional<std::string> Overlay::compose_native_announcement_log_speech(
         for (const unsigned char ch : text)
             if ((ch & 0xc0) != 0x80) colors.push_back(rgb);
     };
-    const auto header = trim_view(speech.header_source);
-    if (!header.empty()) {
-        if (!header.ends_with(':')) return std::nullopt;
-        const size_t to = header.find(" (to ");
-        const auto speaker_source = header.substr(0, to == std::string_view::npos ? header.size() - 1 : to);
-        std::optional<std::string> speaker = speaker_source == "You"
-            ? exact_literal_translation("you")
-            : speech.speaker_identity ? identity_target(*speech.speaker_identity, speaker_source, false)
-                : std::nullopt;
-        if (!speaker || speaker->empty()) return std::nullopt;
-        append(*speaker, foreground);
-        if (to != std::string_view::npos) {
-            if (!header.ends_with("):")) return std::nullopt;
-            std::optional<std::string> recipient = speech.recipient_identity
-                ? identity_target(*speech.recipient_identity, {}, false) :
-                header.ends_with(" (to ):")
-                    ? exact_literal_translation("Announcement speech: unnamed recipient") : std::nullopt;
-            if (!recipient || recipient->empty()) return std::nullopt;
-            append("（对", foreground); append(*recipient, foreground); append("）", foreground);
-        }
-        append("：", foreground);
-    }
+    append(heading, foreground);
     // The complete original template and header are now accepted. Render
     // each winning native field once, sharing only exact token/value pairs
     // within this one immutable speech snapshot. No result can cross report
@@ -326,5 +350,36 @@ std::optional<std::string> Overlay::compose_native_announcement_log_speech(
     }
     if (result.empty()) return std::nullopt;
     target_colors = std::move(colors);
+    return result;
+    };
+    auto result = compose_tokens();
+    if (!result) {
+        // A native topic may append a reaction or delegated sentence outside
+        // TEXT_SET, or a token supplier may have been unavailable. Its complete
+        // expanded body is still owned and must not discard the captured
+        // speaker/addressee merely because the token trie has no production.
+        const auto body = native_announcement_display_source(speech.expanded_body);
+        std::string translated_body;
+        if (!body.empty()) {
+            NativeAnnouncementUnitBodyScope semantic_body(source, body);
+            const auto translated = translate_spoken_dialogue_body(body);
+            if (!translated || translated->empty()) return std::nullopt;
+            translated_body = *translated;
+        }
+        result = heading + translated_body;
+        if (result->empty()) return std::nullopt;
+        target_colors.clear();
+        for (const unsigned char ch : *result)
+            if ((ch & 0xc0) != 0x80) target_colors.push_back(foreground);
+    }
+    // 685380 transforms a copy of expanded_body. Only the observed native
+    // transform establishes this voice; repeated letters are never guessed.
+    if (speech.rendered_body != speech.expanded_body) {
+        const auto voice = exact_literal_translation("Announcement speech: lisp");
+        if (!voice) return std::nullopt;
+        *result += *voice;
+        for (const unsigned char ch : *voice)
+            if ((ch & 0xc0) != 0x80) target_colors.push_back(foreground);
+    }
     return result;
 }
