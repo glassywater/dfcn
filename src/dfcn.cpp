@@ -1026,6 +1026,7 @@ static constexpr int kFortressPressurePlateRule = -167;
 static constexpr int kAdventureCompanionFieldRule = -168;
 static constexpr int kFortressBuildPlacementStatusRule = -169;
 static constexpr int kConversationToneRule = -170;
+static constexpr int kAdventureActionPanelRule = -171;
 
 static bool is_fortress_noble_symbol_field(const Match &match) {
     return match.rule == kFortressNobleSymbolNameRule ||
@@ -5144,6 +5145,10 @@ private:
     void append_adventure_tracking_hud_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const;
+    void append_adventure_action_panel_matches(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y,
+        const unsigned char *screen_override) const;
+    void layout_adventure_action_panel(SDL_Renderer *renderer);
     void layout_adventure_compass(SDL_Renderer *renderer);
     std::optional<std::string> translate_fortress_activity(
         const std::string &source, bool typed_only = false) const;
@@ -17636,6 +17641,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_location_list.inc"
 #include "adventure_compass.inc"
 #include "adventure_tracking_hud.inc"
+#include "adventure_action_panel.inc"
 #include "embark_civilizations.inc"
 #include "fortress_livestock.inc"
 #include "native_calendar_date.inc"
@@ -18768,6 +18774,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_embark_introduction_matches(screen_rows, result, only_y, screen_override != nullptr);
     append_native_message_paragraphs(screen_rows, result, untranslated_help_rows,
         only_y, screen_override, true);
+    // The queue includes addchar directions and labels wider than its frame.
+    // Own its actual writers before the classic map text mask and
+    // before generic captions can interpret a short action as a name.
+    append_adventure_action_panel_matches(screen_rows, result, only_y, screen_override);
     retain_native_text_cells(screen_rows, map_text_cells);
 #include "announcement_panel.inc"
     // A captured document owns complete rows before any generic caption,
@@ -28109,6 +28119,7 @@ void Overlay::normalize_native_split_text() {
         // The decompiled combat, portrait, trade and embark finder renderers
         // use ordinary addst, retaining old half-font flags without drawing halves.
         if (match.rule == kAdventureCombatFieldRule ||
+                match.rule == kAdventureActionPanelRule ||
                 match.rule == kAnnouncementListRule ||
                 match.rule == kFortressTradeFieldRule ||
                 match.rule == kConversationPortraitRule ||
@@ -43291,6 +43302,7 @@ std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *r
         layout_fortress_farm_plot(renderer);
         layout_fortress_ammunition_choices(renderer);
         layout_adventure_compass(renderer);
+        layout_adventure_action_panel(renderer);
         layout_fortress_sort_captions();
         layout_fortress_justice(renderer);
         layout_fortress_labor(renderer);

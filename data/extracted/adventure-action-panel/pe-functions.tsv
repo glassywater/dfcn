@@ -1,0 +1,13 @@
+edition	image	source_path	sha256	role	start_rva	code_end_rva	first_unwind_end_rva
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	adventure-global-renderer	0xaf1190	0xb0390e	0xb03c40
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	draw-string	0xad9960	0xad9a33	0xad9a33
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	quantity-string	0x52c130	0x52c1e3	0x52c1e3
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	integer-decimal	0x52c2b0	0x52c388	0x52c388
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	current-key-draw	0xc394b0	0xc395b5	0xc395b5
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	current-key-caption	0x8ecb30	0x8ece32	0x8ece32
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	adventure-global-renderer	0xaee1d0	0xb0094e	0xb00c80
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	draw-string	0xad69a0	0xad6a73	0xad6a73
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	quantity-string	0x529cf0	0x529da3	0x529da3
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	integer-decimal	0x529db0	0x529e88	0x529e88
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	current-key-draw	0xc364f0	0xc365f5	0xc365f5
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	current-key-caption	0x8ea360	0x8ea662	0x8ea662

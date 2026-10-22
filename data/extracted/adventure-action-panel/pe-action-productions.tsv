@@ -1,0 +1,61 @@
+edition	action_type	branch_rva	source	dynamic_fields
+reference	0	0xafef2d	Move | Charge	direction at x=12: [N|S|empty][E|W|empty][+|-|empty]
+reference	1	0xaff1c9	Attack	direction at x=12: [N|S|empty][E|W|empty][+|-|empty]
+reference	2	0xaff33f	Jump	
+reference	3	0xaff3db	Hold	
+reference	4	0xaff561	Release	
+reference	5	0xaff64b	Climb	
+reference	6	0xaff6e7	Job	
+reference	7	0xaff735	Talk	
+reference	8	0xaff5af	Unsteady	
+reference	9	0xaff783	Parry	
+reference	10	0xaff7d1	Block	
+reference	11	0xaff81f	Dodge	direction at x=12: [N|S|empty][E|W|empty][+|-|empty]
+reference	12	0xaff8f1	Recover	
+reference	13	0xaff93f	Stand Up	
+reference	14	0xaff98d	Lie Down	
+reference	15	0xaff6e7	Job	
+reference	16	0xaff38d	Push Object	
+reference	17	0xaff699	Suck Blood	
+reference	18	0xaff3db	Hold	
+reference	19	0xaff561	Release	
+reference	20	0xaff429	Mount	
+reference	21	0xaff477	Dismount	
+reference	22	0xaff4c5	Lead animal	
+reference	23	0xaff513	Stop leading animal	
+reference	24	0xaff9db	Nock ammo | Load ammo	quantity at x=14-number.length; Nock only for item type 24 and itemdef+0x1cc==0, otherwise Load
+reference	25	0xaffb12	Shoot weapon	
+reference	26	0xaffb60	Throw item	
+reference	27	0xaff5fd	Regaining balance	
+reference	-1	skip		no row; action type -1 skipped
+reference	outside 0..27	0xaff0db		no caption; native row increment path
+classic	0	0xafbf6d	Move | Charge	direction at x=12: [N|S|empty][E|W|empty][+|-|empty]
+classic	1	0xafc209	Attack	direction at x=12: [N|S|empty][E|W|empty][+|-|empty]
+classic	2	0xafc37f	Jump	
+classic	3	0xafc41b	Hold	
+classic	4	0xafc5a1	Release	
+classic	5	0xafc68b	Climb	
+classic	6	0xafc727	Job	
+classic	7	0xafc775	Talk	
+classic	8	0xafc5ef	Unsteady	
+classic	9	0xafc7c3	Parry	
+classic	10	0xafc811	Block	
+classic	11	0xafc85f	Dodge	direction at x=12: [N|S|empty][E|W|empty][+|-|empty]
+classic	12	0xafc931	Recover	
+classic	13	0xafc97f	Stand Up	
+classic	14	0xafc9cd	Lie Down	
+classic	15	0xafc727	Job	
+classic	16	0xafc3cd	Push Object	
+classic	17	0xafc6d9	Suck Blood	
+classic	18	0xafc41b	Hold	
+classic	19	0xafc5a1	Release	
+classic	20	0xafc469	Mount	
+classic	21	0xafc4b7	Dismount	
+classic	22	0xafc505	Lead animal	
+classic	23	0xafc553	Stop leading animal	
+classic	24	0xafca1b	Nock ammo | Load ammo	quantity at x=14-number.length; Nock only for item type 24 and itemdef+0x1cc==0, otherwise Load
+classic	25	0xafcb52	Shoot weapon	
+classic	26	0xafcba0	Throw item	
+classic	27	0xafc63d	Regaining balance	
+classic	-1	skip		no row; action type -1 skipped
+classic	outside 0..27	0xafc11b		no caption; native row increment path

@@ -48049,6 +48049,7 @@ A spiny person with the head of an echidna.	一种长着豪猪的多刺的人形
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。	hP
 ABORT NOW and I'll look over my parameters.	立即中止，我要检查参数。	l
 Accept that the listener will not trade {i}	接受对方不愿交换{i1}的决定	hPt
+Adventure action queue: Stop leading animal	停止牵引动物
 Adventure action: Raise once-resting corpse	复生昔日安眠的尸体	l
 Adventure action: Raise once-resting hunter	复生昔日安眠的猎手	l
 Adventure action: Raise once-resting slayer	复生昔日安眠的杀手	l
@@ -51716,6 +51717,7 @@ A tiny amphibian that lives in the trees.	一种生活在树上的微型两栖�
 A tiny marine fish found in vast schools.	一种在大量鱼群中发现的微小海鱼。	lP
 Accuse listener of being a night creature	指控对方是夜行生物	hP
 Acknowledge lack of righteous indignation	表示没有义愤	hP
+Adventure action queue: Regaining balance	恢复平衡
 Adventure action: Raise corrupted butcher	复生腐化屠夫	l
 Adventure action: Raise corrupted stalker	复生腐化潜行者	l
 Adventure action: Raise mausoleum butcher	复生陵寝屠夫	l
@@ -61741,6 +61743,7 @@ A huge monster the shape of a moose.	一只巨大的驼鹿怪。	lP
 A huge woolly mammal with two horns.	一种巨大的长毛哺乳动物，长有两根角。	lP
 A person with the head of a warthog.	一种长着疣猪头的人形生物。	lP
 A {s} diplomat from {e} has arrived.	来自{e1}的{s1}外交官已抵达。	hPt
+Adventure action queue: Shoot weapon	射击
 Adventure action: Raise bitter ghoul	复生苦痛食尸鬼	l
 Adventure action: Raise bitter haunt	复生苦痛游魂	l
 Adventure action: Raise bitter shade	复生苦痛幽影	l
@@ -64041,6 +64044,8 @@ A large mammal person with a shell.	一种背负甲壳的大型哺乳类人形�
 A man-shaped creature made of iron.	由铁组成的人形生物。	lP
 A small amphibian with a flat body.	一种身体扁平的小型两栖动物。	lP
 Acknowledge lack of disillusionment	表示没有幻灭	hP
+Adventure action queue: Lead animal	牵引动物
+Adventure action queue: Push Object	推动物体
 Adventure action: Raise bleak ghoul	复生凄凉食尸鬼	l
 Adventure action: Raise bleak haunt	复生凄凉游魂	l
 Adventure action: Raise bleak shade	复生凄凉幽影	l
@@ -66360,6 +66365,8 @@ A very large legless shark person.	一种体型很大、没有腿的鲨鱼类人
 Ability to grasp somewhat impaired	抓取能力有所受损	w
 Ability to stand somewhat impaired	直立能力有所受损	w
 Acknowledge lack of disappointment	表示没有失望	hP
+Adventure action queue: Suck Blood	吸血
+Adventure action queue: Throw item	投掷物品
 Adventure action target: creatures	生物	h
 Adventure action: Raise bitter one	复生苦痛之人	l
 Adventure action: Raise buried one	复生埋葬之人	l
@@ -68760,6 +68767,8 @@ A person with the head of an elk.	一种长着麋鹿头的人形生物。	lP
 Accept invitation to become a {s}	接受成为{s1}的邀请	hPt
 Acknowledge lack of embarrassment	表示没有尴尬	hP
 Acknowledge lack of mortification	表示没有羞愧难当	hP
+Adventure action queue: Load ammo	装填弹药
+Adventure action queue: Nock ammo	搭箭
 Adventure action target: building	建筑	h
 Adventure action target: creature	生物	h
 Adventure action target: the Void	虚空	h
@@ -70987,6 +70996,11 @@ Acknowledge lack of hopelessness	表示没有绝望感	hP
 Acknowledge lack of restlessness	表示没有躁动不安	hP
 Acknowledge lack of satisfaction	表示没有满意	hP
 Acknowledge lack of vengefulness	表示没有复仇心	hP
+Adventure action queue: Dismount	下坐骑
+Adventure action queue: Lie Down	躺下
+Adventure action queue: Stand Up	站起
+Adventure action queue: Unsteady	站立不稳
+Adventure action queue: and more	还有更多
 Adventure action: Animate corpse	活化尸体	l
 Adventure action: Cause bleeding	引发出血	l
 Adventure action: Compose a poem	创作诗歌	l
@@ -73262,6 +73276,8 @@ Acknowledge lack of humiliation	表示没有屈辱	hP
 Acknowledge lack of nervousness	表示没有紧张	hP
 Acknowledge lack of unhappiness	表示没有不快	hP
 Acquiesce (changes your values)	默认接受（改变你的价值观）	hP
+Adventure action queue: Recover	恢复
+Adventure action queue: Release	松开
 Adventure action: Compose music	创作音乐	l
 Adventure action: Give a sermon	布道	l
 Adventure action: Hurl fireball	投掷火球	l
@@ -75735,6 +75751,9 @@ Acknowledge lack of repentance	表示没有忏悔	hP
 Acknowledge lack of resentment	表示没有怨恨	hP
 Acknowledge lack of tenderness	表示没有温柔	hP
 Acknowledge lack of uneasiness	表示没有不安	hP
+Adventure action queue: Attack	攻击
+Adventure action queue: Charge	冲锋
+Adventure action queue: to act	执行
 Adventure action: Breathe fire	喷火	l
 Adventure action: Create ghoul	制造食尸鬼	l
 Adventure action: Tell a story	讲故事	l
@@ -78261,6 +78280,11 @@ Acknowledge lack of servility	表示没有卑躬屈膝	hP
 Acknowledge lack of suspicion	表示没有怀疑	hP
 Acquiescing <-> Resists ideas	易受影响 ↔ 抗拒观念	wl
 Adds Pokemon related content.	添加宝可梦相关内容。	wl
+Adventure action queue: Block	格挡
+Adventure action queue: Climb	攀爬
+Adventure action queue: Dodge	闪避
+Adventure action queue: Mount	骑乘
+Adventure action queue: Parry	招架
 Adventure action target: item	物品	h
 Adventure action target: tree	树	h
 Adventure action: Propel away	击退	l
@@ -80630,6 +80654,10 @@ Acknowledge lack of optimism	表示没有乐观	hP
 Acknowledge lack of patience	表示没有耐心	hP
 Acknowledge lack of pleasure	表示没有愉悦	hP
 Acknowledge lack of sympathy	表示没有同情	hP
+Adventure action queue: Hold	抓握
+Adventure action queue: Jump	跳跃
+Adventure action queue: Move	移动
+Adventure action queue: Talk	交谈
 Adventure action: Cause pain	引发疼痛	l
 Adventure action: Pet animal	抚摸动物	l
 Adventure action: Spray dust	喷射粉尘	l
@@ -83015,6 +83043,7 @@ Acknowledge lack of remorse	表示没有懊悔	hP
 Acknowledge lack of sadness	表示没有悲伤	hP
 Acknowledge lack of triumph	表示没有得意	hP
 Add/edit routines (columns)	添加/编辑日程（列）	w
+Adventure action queue: Job	工作
 Adventure action: Head bump	头部轻碰	l
 Adventure action: Raise fog	唤起迷雾	l
 Adventure action: Spit glob	吐出团块	l
@@ -87591,6 +87620,8 @@ Acknowledge lack of worry	表示没有担心	hP
 Acknowledge lack of wrath	表示没有暴怒	hP
 Add new recenter location	添加新的重新居中位置
 Add or choose a location.	添加或选择一个地点。	wli
+Adventure action queue: +	上
+Adventure action queue: -	下
 Adventure action: Blister	引发水疱	l
 Adventure action: Butcher	屠宰	l
 Adventure action: Scratch	刨地	l
@@ -147692,6 +147723,7 @@ Rintor	林托尔	wi
 Rirn\x94l	利诺尔	wi
 Rithog	利索格	wi
 Rithul	利苏尔	wi
+River:	河流：	w
 Romlam	罗拉姆	wi
 Ronush	龙那石	wi
 Rorash	罗拉石	wi
@@ -149030,7 +149062,6 @@ Risid	利西德	wi
 Ritan	利坦	wi
 Ritas	利塔	wi
 River	河流	wi
-River:	河流：	w
 Robek	罗贝克	wi
 Rodem	罗登	wi
 Roder	罗德尔	wi

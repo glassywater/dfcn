@@ -3334,6 +3334,37 @@ Adventure compass: NW	西北
 Adventure compass: NNW	北西北
 Adventure compass: Gui	向导
 Adventure compass: Qst	任务
+Adventure action queue: Move	移动
+Adventure action queue: Charge	冲锋
+Adventure action queue: Attack	攻击
+Adventure action queue: Jump	跳跃
+Adventure action queue: Hold	抓握
+Adventure action queue: Release	松开
+Adventure action queue: Climb	攀爬
+Adventure action queue: Job	工作
+Adventure action queue: Talk	交谈
+Adventure action queue: Unsteady	站立不稳
+Adventure action queue: Parry	招架
+Adventure action queue: Block	格挡
+Adventure action queue: Dodge	闪避
+Adventure action queue: Recover	恢复
+Adventure action queue: Stand Up	站起
+Adventure action queue: Lie Down	躺下
+Adventure action queue: Push Object	推动物体
+Adventure action queue: Suck Blood	吸血
+Adventure action queue: Mount	骑乘
+Adventure action queue: Dismount	下坐骑
+Adventure action queue: Lead animal	牵引动物
+Adventure action queue: Stop leading animal	停止牵引动物
+Adventure action queue: Nock ammo	搭箭
+Adventure action queue: Load ammo	装填弹药
+Adventure action queue: Shoot weapon	射击
+Adventure action queue: Throw item	投掷物品
+Adventure action queue: Regaining balance	恢复平衡
+Adventure action queue: and more	还有更多
+Adventure action queue: to act	执行
+Adventure action queue: +	上
+Adventure action queue: -	下
 # Complete compass-popup productions from native Steam 0x7f5490..0x7f5837.
 # Classic emits the same productions at 0x7f2d10..0x7f30b7.
 # Reuse the existing 40 eight-bearing distance fields in announcement-world-fields.tsv.

@@ -1,0 +1,55 @@
+edition	north_south	east_west	height	native_text	actions
+reference					Move | Charge | Attack | Dodge
+reference			+	+	Move | Charge | Attack | Dodge
+reference			-	-	Move | Charge | Attack | Dodge
+reference		E		E	Move | Charge | Attack | Dodge
+reference		E	+	E+	Move | Charge | Attack | Dodge
+reference		E	-	E-	Move | Charge | Attack | Dodge
+reference		W		W	Move | Charge | Attack | Dodge
+reference		W	+	W+	Move | Charge | Attack | Dodge
+reference		W	-	W-	Move | Charge | Attack | Dodge
+reference	N			N	Move | Charge | Attack | Dodge
+reference	N		+	N+	Move | Charge | Attack | Dodge
+reference	N		-	N-	Move | Charge | Attack | Dodge
+reference	N	E		NE	Move | Charge | Attack | Dodge
+reference	N	E	+	NE+	Move | Charge | Attack | Dodge
+reference	N	E	-	NE-	Move | Charge | Attack | Dodge
+reference	N	W		NW	Move | Charge | Attack | Dodge
+reference	N	W	+	NW+	Move | Charge | Attack | Dodge
+reference	N	W	-	NW-	Move | Charge | Attack | Dodge
+reference	S			S	Move | Charge | Attack | Dodge
+reference	S		+	S+	Move | Charge | Attack | Dodge
+reference	S		-	S-	Move | Charge | Attack | Dodge
+reference	S	E		SE	Move | Charge | Attack | Dodge
+reference	S	E	+	SE+	Move | Charge | Attack | Dodge
+reference	S	E	-	SE-	Move | Charge | Attack | Dodge
+reference	S	W		SW	Move | Charge | Attack | Dodge
+reference	S	W	+	SW+	Move | Charge | Attack | Dodge
+reference	S	W	-	SW-	Move | Charge | Attack | Dodge
+classic					Move | Charge | Attack | Dodge
+classic			+	+	Move | Charge | Attack | Dodge
+classic			-	-	Move | Charge | Attack | Dodge
+classic		E		E	Move | Charge | Attack | Dodge
+classic		E	+	E+	Move | Charge | Attack | Dodge
+classic		E	-	E-	Move | Charge | Attack | Dodge
+classic		W		W	Move | Charge | Attack | Dodge
+classic		W	+	W+	Move | Charge | Attack | Dodge
+classic		W	-	W-	Move | Charge | Attack | Dodge
+classic	N			N	Move | Charge | Attack | Dodge
+classic	N		+	N+	Move | Charge | Attack | Dodge
+classic	N		-	N-	Move | Charge | Attack | Dodge
+classic	N	E		NE	Move | Charge | Attack | Dodge
+classic	N	E	+	NE+	Move | Charge | Attack | Dodge
+classic	N	E	-	NE-	Move | Charge | Attack | Dodge
+classic	N	W		NW	Move | Charge | Attack | Dodge
+classic	N	W	+	NW+	Move | Charge | Attack | Dodge
+classic	N	W	-	NW-	Move | Charge | Attack | Dodge
+classic	S			S	Move | Charge | Attack | Dodge
+classic	S		+	S+	Move | Charge | Attack | Dodge
+classic	S		-	S-	Move | Charge | Attack | Dodge
+classic	S	E		SE	Move | Charge | Attack | Dodge
+classic	S	E	+	SE+	Move | Charge | Attack | Dodge
+classic	S	E	-	SE-	Move | Charge | Attack | Dodge
+classic	S	W		SW	Move | Charge | Attack | Dodge
+classic	S	W	+	SW+	Move | Charge | Attack | Dodge
+classic	S	W	-	SW-	Move | Charge | Attack | Dodge
