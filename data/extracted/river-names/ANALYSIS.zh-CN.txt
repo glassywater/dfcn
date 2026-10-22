@@ -1,0 +1,137 @@
+河名生成和河流类型标签：当前 Windows 游戏映像的定向逆向研究
+日期：2026-10-22
+
+资料性质
+
+本目录是用户要求的实际游戏反编译研究证据，不是测试、自测、验收结果、
+运行日志或游戏内效果记录。读取安装中的 PE 字节，未运行或操作游戏。
+本次没有把旧反编译文本改日期充作新结果；pe-*.asm 来自当前映像的新一轮
+objdump 提取，pe-*.c 来自本次 Ghidra 12.1.2 导入和 decompileFunction。
+函数用途标签是分析命名，不是游戏附带的调试符号。Ghidra 的未知类型、
+临时变量、未恢复外部调用签名和警告保留原样，判断以汇编和结构定义对应。
+
+映像与方法
+
+实际输入：
+/home/lulika/.local/share/Steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+PE32+ x86-64 Windows，ImageBase 0x140000000。
+PE 身份、文件大小和 SHA-256 见 source-image.tsv。
+本文地址均为 RVA，pe-*.asm、pe-functions.tsv、type-label-writers.tsv 为静态 VA。
+
+Python 固定为：
+/home/lulika/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3
+反汇编：/usr/bin/objdump。
+Ghidra：
+/home/lulika/workspace/jphz/analysis/tools/ghidra_12.1.2_PUBLIC/support/analyzeHeadless
+JDK：/usr/lib/jvm/java-27-openjdk。
+本次临时工程、settings/cache 均在 /tmp/dfcn-river-names；用 XDG_CONFIG_HOME
+和 XDG_CACHE_HOME 指定可写路径，不改变系统配置、不向游戏写入研究工具。
+
+执行参数：
+analyzeHeadless /tmp/dfcn-river-names river-names-20261022
+-import <上述实际游戏映像> -noanalysis
+-scriptPath /home/lulika/workspace/dfcn/data/extracted/river-names/source-tools
+-postScript DecompileRiverNames.java /home/lulika/workspace/dfcn/data/extracted/river-names
+-deleteProject
+
+source-tools 保存实际使用的提取脚本，属于二进制研究方法，不接入构建或运行。
+定向提取依据实际 PE unwind 范围；fill-word-slots 的完整代码跨分段 unwind，
+范围使用 0xd35530–0xd35ed4。跳表显式恢复原始 selector：名称类型 20 经
+0xa93ff4 字节重映射再查 0xa93fcc 表，落到 0xa934c4，不能把 C 中压缩 case 1
+误当成 name.type=1。
+
+一、先生成语义槽位，再由不同语言表现同一个名字
+
+河流创建过程 0xf7c380 和 0xf7f070，分别在 0xf7ecef、0xf7fae8 调用名称
+生成器 0xa92860，参数是 language=-1、type=20，以及类别 37 的两个词池。
+两个选择器静态 VA 为 0x1424f0158 和 0x1424f4dd8。
+
+0xa929e0–0xa92abb 恢复了 language=-1 的具体含义：遍历 translations，
+排除 translation.flags(+0x68) 的 bit 0 已置位者，最多收集 20 个候选，
+随机取一个写入 name.language(+0x6c)。本地 df.language.xml 将该位命名为
+GENERATED。因此不是强制矮人语，也不是从英文地名音节随机拼字。
+结构还写入 name.type(+0x70)=20、has_name(+0x72)=true。
+
+真正的名称是七个 WORD 索引（+0x40 起，每项 int32）与七个词性
+（+0x5c 起，每项 int16）。原语词形与英文词形都由这些索引产生。
+WORD 身份比英文拼写可靠：英文同形异义、复合词连写和词形变化都可能
+使反向拆英文损失信息。已取得对象时，应优先使用七槽及原始 WORD 身份。
+
+二、河流并没有只从山川草木里抽词
+
+0xd2cc40 的类别 0x25（十进制 37）直接到 0xd33d19 的共同建表出口，
+未加入主题包含或排除项；与山峰类别明确加入 NAME_PEAK 的分支不同。
+0xd36e80 发现包含集合为空，就把全部 language.words 的索引加入候选，
+之后调用位置建池逻辑。自然物、器物、战争、身体、情绪和抽象概念均可能
+正常进入河名。译文不能为了像山水地名而把源意象改成别的山水词。
+
+六池与七槽：
+池 0 FRONT_COMPOUND -> 槽 0 F（复合前部）
+池 1 REAR_COMPOUND  -> 槽 1 R（复合后部）
+池 2 THE            -> 槽 5 N（中心名词）
+池 3 THE_ADJ        -> 槽 2 A1、槽 3 A2（形容词）
+池 4 THE_COMPOUND   -> 槽 4 H（连字符修饰）
+池 5 OF             -> 槽 6 Q（of 补语）
+
+原生九词性：0 名词单数，1 名词复数，2 形容词，3 前缀，4 动词原形，
+5 第三人称现在式，6 过去式，7 过去分词，8 现在分词／动名词。
+0xd35530 按 FRONT_COMPOUND、REAR_COMPOUND、THE、THE_COMPOUND、OF、
+STANDARD_VERB 和各词形是否存在分池；不是把全部 WORD 当作中文名词。
+
+三、河名语法
+
+原始 type=20 从 0xa934c4 起随机选三种主式：
+F+R
+F+R the [A1 [A2] ] [H-]N [of Q]
+The [A1 [A2] ] [H-]N [of Q]
+
+带称号的分支跳到共同块 0xa93192，中心 N 必有；Q 或 A1 通常二选一，
+少数同时出现，A2、H 各有低概率出现。重复词、形容词顺序、N/Q 同时复数等
+另有整理或重抽，循环上限 100。不可把最初随机分支比例当作实际河名统计。
+同一河名里的 F+R 与称号应一同译出，不能为了简短丢掉一个部分。
+
+完整英文格式器 0xa946e0 按七槽拼出连写复合词、the、形容词、H-N 和 of Q；
+词义必须按原词性保留。单个 WORD 也可能包含空格或连字符，所以不能把
+每个空格或连字符都视作生成器语法边界。
+
+四、截图类型标签与专名是两次绘制
+
+本次额外反编译了三个完整原生显示过程：
+0x80d5e0–0x8189ac（embark-panel）
+0xdf8a80–0xe059d4（world-panel）
+0x1046410–0x1052ca6（travel-panel，内有两处河流显示）
+
+共四处显示分支、20 处类型标签绘制调用，完整地址见 type-label-writers.tsv。
+所有标签原文字面量均含冒号和末尾空格：
+Major River: 
+River: 
+Minor River: 
+Stream: 
+Brook: 
+
+以 embark 分支为例：
+0x80f984 比较 world_river.flow（向量偏移 +0xa8）的当前段值，>=20000
+输出 Major River；0x80f9df 的 >=10000 输出 River；0x80fa2e 的 >=5000
+输出 Minor River；再小的情况查当前区域 flag 15，置位为 Brook，否则 Stream。
+这些是原版内部 flow 数值，不能擅称立方米/秒。
+
+River 标签 addst 调用是 0x80fa0b；全部标签绘制后，0x80fb2f 以 river
+对象为第一个参数调用英文格式器 0xa946e0；若英文太长会缩略或截断，
+最后 0x80fbdf 单独绘制名字。因此：
+1. 标签必须作为独立界面词处理，不能依靠翻译河名时顺便修复。
+2. 截图名字来源是完整英文意义格式，不是原语字段，不能把它全音译
+   当作保留矮人语等原语形式。
+3. 捕获点应继续在格式器后、原版缩略前保存完整名字。
+4. 类型属于当前河段；同一 world_river 的正式译名应稳定，不能每换
+   河段便改变专名。若给正式名加通名，应使用一致的对象尺度规则。
+
+五、对汉化设计的直接约束
+
+可靠顺序为：明确整名决策 -> 完整 WORD/POS 语义组合 -> 保义的中文全称。
+少数尚不认识的模组 WORD 才局部保留或音译，不能使其余已知词全部失去语义。
+完整中文词义应是兜底，短小意象是可选表达；短名候选不足不等于意义未知。
+词义上下文库可以共享，但河名需自身的结构组织，不宜把姓氏筛选当河名准入表。
+不凭河名推断地理事实、不凭拼写猜用户自定义专名、不改变自定义小队名字。
+
+截图中的两串中文已经是旧译器音译输出，无法仅从它们唯一反推原始七槽。
+本次没有声称恢复这两条河的实际 WORD，也没有观察修改后的游戏内显示。

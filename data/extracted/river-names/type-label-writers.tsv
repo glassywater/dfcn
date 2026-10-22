@@ -1,0 +1,21 @@
+role	literal_instruction_va	literal	draw_call_va	draw_callee_va
+embark-panel	0x14080f98c	'Major River: '	0x14080f9b0	0x140ad9960
+embark-panel	0x14080f9e7	'River: '	0x14080fa0b	0x140ad9960
+embark-panel	0x14080fa36	'Minor River: '	0x14080fa5a	0x140ad9960
+embark-panel	0x14080fa96	'Stream: '	0x14080faba	0x140ad9960
+embark-panel	0x14080fad5	'Brook: '	0x14080faf9	0x140ad9960
+world-panel	0x140dfe375	'Major River: '	0x140dfe39d	0x140ad9960
+world-panel	0x140dfe3d0	'River: '	0x140dfe3f8	0x140ad9960
+world-panel	0x140dfe41f	'Minor River: '	0x140dfe447	0x140ad9960
+world-panel	0x140dfe482	'Stream: '	0x140dfe4aa	0x140ad9960
+world-panel	0x140dfe4c5	'Brook: '	0x140dfe4ed	0x140ad9960
+travel-panel	0x141049d32	'Major River: '	0x141049d5a	0x140ad9960
+travel-panel	0x141049d90	'River: '	0x141049db8	0x140ad9960
+travel-panel	0x141049de3	'Minor River: '	0x141049e0b	0x140ad9960
+travel-panel	0x141049e47	'Stream: '	0x141049e6f	0x140ad9960
+travel-panel	0x141049e89	'Brook: '	0x141049eb1	0x140ad9960
+travel-panel	0x14104dafb	'Major River: '	0x14104db23	0x140ad9960
+travel-panel	0x14104db59	'River: '	0x14104db81	0x140ad9960
+travel-panel	0x14104dbac	'Minor River: '	0x14104dbd4	0x140ad9960
+travel-panel	0x14104dc0e	'Stream: '	0x14104dc36	0x140ad9960
+travel-panel	0x14104dc50	'Brook: '	0x14104dc78	0x140ad9960

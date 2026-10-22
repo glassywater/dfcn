@@ -1,4 +1,4 @@
 # 精确完整原文 + 显示栏 + type + language + 七组 WORD/POS。* 只放宽语言索引，不放宽结构或河流身份。
-# The Aqua Faith 尚无语义定稿；旧译仅用于来源/搜索别名。音译由英语发音资源处理，不预写或借用原语音译。
+# 英语栏历史 core／音译／旧译只作搜索别名，不覆盖分组构词。原语栏保留既有 retain／transliteration 策略。
 source	field	type	language	word0	pos0	word1	pos1	word2	pos2	word3	pos3	word4	pos4	word5	pos5	word6	pos6	core	policy	transliteration	old_translation	absorbed_generic	notes
-The Aqua Faith	english	20	*	-	-1	-	-1	AQUA	2	-	-1	-	-1	FAITH	0	-	-1	-	transliterate	-	信仰水色	-	颜色修饰抽象信仰暂无自然整名；完整英文音译，通名由真实全程规模另定。
+The Aqua Faith	english	20	*	-	-1	-	-1	AQUA	2	-	-1	-	-1	FAITH	0	-	-1	碧色信仰	localize	-	信仰水色	-	保留水碧颜色修饰信仰的奇幻意象；通名由同一完整河流对象另定，不据名称推断水色或居民信仰。

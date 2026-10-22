@@ -175,6 +175,7 @@ def deploy_runtime_data(directory: Path) -> None:
                  "site-government-parent-suffixes.tsv", "site-government-name-terms.tsv",
                  "site-government-independent-suffixes.tsv",
                  "character-name-lexicon.tsv", "character-name-overrides.tsv",
+                 "character-native-senses.tsv",
                  "character-surname-lexicon.tsv",
                  "character-surname-classes.tsv",
                  "character-surname-context-imagery.tsv",

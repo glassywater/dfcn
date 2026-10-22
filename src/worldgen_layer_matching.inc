@@ -493,9 +493,11 @@ std::vector<Match> Overlay::find_native_worldgen_matches() const {
             for (std::string_view prefix : {"Major River:", "Minor River:", "River:", "Stream:", "Brook:"}) {
                 if (!source.starts_with(prefix)) continue;
                 const auto label = exact_literal_translation(prefix);
-                const auto name = field.river_name ? translate_river_name(field.river_name->identity,
+                auto identity = field.river_name ? field.river_name->identity : RiverNameIdentity{};
+                identity.size = RiverNames::category(prefix);
+                const auto name = field.river_name ? translate_river_name(identity,
                     field.river_name->field, field.river_name->complete_source)
-                    : translate_river_text(trim_view(source.substr(prefix.size())));
+                    : translate_river_text(trim_view(source.substr(prefix.size())), identity.size);
                 return label && !name.empty() ? std::optional(*label + name) : std::nullopt;
             }
             return field.river_name ? translate_river_name(field.river_name->identity,

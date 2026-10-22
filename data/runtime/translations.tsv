@@ -132020,7 +132020,7 @@ Low strength	力量低	wil
 Main: Nobles	主界面：贵族	w
 Main: Squads	主界面：小队	w
 Main: Stocks	主界面：库存	w
-Major River:	大河：	w
+Major River:	大型河流：	w
 Make contact	建立联系	wliP
 Make pair of	制作一对	wi
 Make romance	恋爱	w
@@ -132039,7 +132039,7 @@ Metal Crafts	金属工艺品	hH
 Metalcrafter	金属工匠	wi
 Milled plant	磨碎的植物	wi
 Minewandered	矿行者
-Minor River:	小河：	w
+Minor River:	小型河流：	w
 Misc. Object	杂物使用	wi
 Misc. liquid	其他液体	wi
 Modest Study	普通书房	w
@@ -149014,6 +149014,7 @@ Risid	利西德	wi
 Ritan	利坦	wi
 Ritas	利塔	wi
 River	河流	wi
+River:	河流：	w
 Robek	罗贝克	wi
 Rodem	罗登	wi
 Roder	罗德尔	wi

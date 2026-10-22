@@ -4059,7 +4059,9 @@ private:
     std::vector<std::string> site_name_search_aliases(const NativeHistoryName &name) const;
     std::string translate_river_name(const RiverNameIdentity &identity,
         RiverDisplayField field, std::string_view source) const;
-    std::string translate_river_text(std::string_view source) const;
+    std::string translate_river_text(std::string_view source,
+        RiverSize category = RiverSize::Unknown) const;
+    RiverNames::Result localize_river_name(const NativeHistoryName &name) const;
     std::vector<std::string> river_name_search_aliases(const RiverNameIdentity &identity) const;
     void append_river_name_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
@@ -4275,7 +4277,11 @@ private:
     RiverNames river_names_;
     uint64_t river_names_revision_ = 0;
     mutable std::string river_name_cache_world_;
-    mutable std::unordered_map<std::string, std::string> river_name_cache_;
+    struct RiverNameCacheEntry {
+        std::string text;
+        std::optional<RiverNames::Result> translation;
+    };
+    mutable std::unordered_map<std::string, RiverNameCacheEntry> river_name_cache_;
     // Political/cultural name senses are scoped to civilization name slots.
     std::unordered_map<std::string, std::string> civilization_name_terms_;
     std::unordered_map<std::string, std::string> civilization_name_modifiers_;
