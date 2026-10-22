@@ -1,0 +1,102 @@
+ADVENTURE CONVERSATION TONE/TACT — NATIVE SOURCE, 2026-10-22
+
+These files are offline source extraction and actual Ghidra 12.1.4 C output,
+not tests, simulated game output, a translation acceptance report or a claim
+that the game screen has been observed. Neither PE was executed or attached.
+The configured images are data/runtime/native-pe-images.json:
+  reference (Steam) PE:6a70a6d9:02711000
+  classic          PE:6a70b91c:0270a000
+
+The source-tools/extract_tone.py reader obtains instructions, literals,
+calls and selector tables from both current files. DecompileConversationTone
+imports the actual PEs into Ghidra and supplies those native instruction and
+switch boundaries. Names prefixed tone_ are analysis labels, not debug names.
+Ghidra's 'Switch is manually overridden' refers to actual PE jump tables in
+native-switches.tsv. It does not refer to handwritten replacement code.
+
+FUNCTIONS AND COMPLETE BRANCH SCOPE
+
+reference-renderer.c / classic-renderer.c contain the complete original
+renderer (RVA 0x867e10 / 0x865690), including the tone window entered when
+conversation+0x84 is true. Existing renderer selector-table metadata comes
+from ../adventure-conversation-keywords/renderer-switches.tsv; those tables
+belong to adjacent conversation screens and are retained so the whole
+renderer can be decompiled without losing its surrounding control flow.
+native-branches.tsv narrows the user's requested window to every strategy,
+rating, odds, empty/default and visibility branch.
+
+reference-input-handler.c / classic-input-handler.c are the actual complete
+handlers at 0x885770 / 0x882ff0. They open this window only for selected
+talk_choice_type 226 FISH_FOR_MASTER or 227 FISH_FOR_PLOTS. They clear the
+strategy vector and append exactly 0 and then 1 without an eligibility gate.
+The renderer's selector==0 is Persuade and selector==1 is Intimidate. The
+default selector emits no strategy text. Empty vector handling is also
+retained, even though the normal producer supplies both options.
+
+Both mouse and bound-key selection converge on these same productions.
+Cancel clears the tone flag; selecting a row passes its native selector to
+the existing conversation-submit caller. No third strategy is generated.
+
+TEXT GRAMMAR AND DRAW CALLS
+
+tone-texts.tsv lists 30 distinct source atoms: one header, one Cancel,
+two strategy labels, two skill titles, sixteen rating labels and eight odds
+labels. tone-skill-productions.tsv expands every one of the 32 complete
+rating/title strings for each image. Ratings and titles are NOT separate
+draw calls: the game builds '{rating} {title}' and draws that one string.
+There is no 'Not' zero-skill alternative here; zero produces Dabbling.
+
+tone-draw-calls.tsv records every one of the 22 text draw call sites per
+image, including exact post-call return RVA, source grammar and width.
+Steam return span: 0x86b70f..0x86c205 (inclusive).
+Classic return span: 0x868f8f..0x869a85 (inclusive).
+Only the two complete rating/title draws use native width 20. All other
+tone text calls use width 0. The text-draw helper copies the original string,
+shortens it only when width is nonzero and length exceeds width, then emits
+characters through the same native glyph helper. Strings which already
+fit therefore bypass the abbreviation supplier entirely. Any translation
+path recovering text only through that supplier loses normal short rows.
+
+The primary labels and header each have one RIP-relative literal owner in
+each configured PE (literal-owners.tsv). Thus there is no separate copy of
+these labels in an alternate graphics/character renderer. This is the same
+native text pipeline; graphical frame tiles and key glyphs do not add an
+independent translatable string family.
+
+RATING AND TITLE SUPPLIERS
+
+Actual rating functions: Steam 0x7737c0, Classic 0x7711e0. The unsigned
+comparison selects 0..14, with every other uint32 value mapping to Legendary.
+This includes negative signed values, though the effective skill supplier
+normally returns a nonnegative level.
+
+Actual title functions: Steam 0x774730, Classic 0x772150. They normally allow
+RAW profession overrides, but job_skill 70/PERSUASION and 77/INTIMIDATION both
+map to profession -1. The raw-override branch is unreachable for this window;
+the only two titles are Persuader and Intimidator. Their profession mappings
+are retained in the complete native selector table and actual C.
+
+The effective skill functions at 0x133e7a0 / 0x1339710 span several adjacent
+PE unwind entries; all fragments through 0x133eacd / 0x1339a3d are included.
+The renderer requests skill 0x46 or 0x4d for the actor's rating, 0x48 for the
+odds-visibility gate, and 0x30 for the listener's defense. The eight odds
+labels are hidden unless the effective observation level is greater than 1.
+
+ODDS NUMERIC BRANCHES
+
+Start A=5*actor selected skill; D=5*listener skill 0x30. If the listener has
+no matching relationship record, keep those values. With a matching record:
+  persuasion uses record+0x90 flag and +0x64 modifier, soul trait 0x22;
+  intimidation uses record+0x94 flag and +0x5c modifier, soul trait 0x12.
+If the selected flag >=1, D becomes 20*listener skill and the modifier is 0.
+Otherwise modifier starts at 100+record modifier. If the listener has a soul,
+the selected trait transforms modifier by these ordered thresholds:
+  <10: *10; <25: *4; <40: *2; <61: unchanged;
+  <76: /2; <91: /4; >=91: 0.
+Clamp modifier to 0..200, then A = modifier*A/100 using native integer math.
+The ordered comparisons and all eight outcomes are in native-branches.tsv;
+the same branch family appears independently under both strategies.
+
+This extraction establishes the current configured game's finite text
+families, production conditions and native draw provenance. Later game
+versions or modified executable instructions require a new extraction.

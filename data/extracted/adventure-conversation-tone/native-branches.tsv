@@ -1,0 +1,28 @@
+domain	condition	output_or_action	source
+open	talk_choice_type == 226 (FISH_FOR_MASTER) or 227 (FISH_FOR_PLOTS)	set conversation+0x84; retain selected choice at +0x88; clear +0x90 vector; append 0 then 1; clear scroll state +0xa8/+0xac	reference-input-handler.c; reference-input-handler.asm 0x886b16..0x886bd6
+open	all other talk_choice_type	immediate submit with tact=-1; do not open tone popup	reference-input-handler.asm 0x886b1c..0x886b34
+visible	conversation+0x84 == 0	no tone popup; continue ordinary conversation rendering	reference-renderer.c
+visible	conversation+0x84 != 0	frame, Cancel, Choose your tone/tact; then iterate option vector	reference-renderer.c
+option-vector	empty vector	frame/title/cancel only; no option or odds text	reference-renderer.c
+strategy	selector == 0	Persuade: ; rating(skill 0x46) + space + Persuader	reference-renderer.c
+strategy	selector == 1	Intimidate: ; rating(skill 0x4d) + space + Intimidator	reference-renderer.c
+strategy	any other selector	row background and key only; no strategy, rating or odds text	reference-renderer.c
+rating	uint32(level) == 0..14	Dabbling, Novice, Adequate, Competent, Skilled, Proficient, Talented, Adept, Expert, Professional, Accomplished, Great, Master, High Master, Grand Master	reference-rating.c; native-switches.tsv
+rating	uint32(level) > 14 (including negative signed inputs)	Legendary	reference-rating.c; reference-rating.asm 0x7737db..0x7737de
+title	job_skill 0x46 or 0x4d	profession mapper returns -1, so race/caste RAW override is unreachable; static Persuader/Intimidator only	reference-profession.c; reference-title.c; native-switches.tsv
+odds-visibility	effective observation skill 0x48 <= 1	no odds line for either strategy	reference-renderer.c
+odds-visibility	effective observation skill 0x48 > 1	evaluate ordered odds branches below using attack A and defense D	reference-renderer.c
+odds-1	A > 5*D	Almost guaranteed	reference-renderer.c
+odds-2	previous branch false; A > 2*D	Likely success	reference-renderer.c
+odds-3	previous branches false; A > D	Favorable odds	reference-renderer.c
+odds-4	previous branches false; D >= 1 and A <= 0	Impossible	reference-renderer.c
+odds-5	previous branches false; 5*A < D	Nearly impossible	reference-renderer.c
+odds-6	previous branches false; 2*A < D	Likely failure	reference-renderer.c
+odds-7	previous branches false; A == D	Even odds (including A=D=0)	reference-renderer.c
+odds-8	all previous branches false	Unfavorable odds	reference-renderer.c
+text-draw	source string empty	no glyph output	reference-text-draw.c
+text-draw	width == 0 or string length <= width	use complete copied native string	reference-text-draw.c
+text-draw	width != 0 and string length > width	call abbreviation supplier before emitting glyphs; tone skill rows have width 20	reference-text-draw.c
+text-draw	cursor beyond right edge, or source exhausted by left clipping	end glyph loop; no new text alternative	reference-text-draw.c
+input	cancel/escape while tone open	clear conversation+0x84; no new text production	reference-input-handler.c
+input	choose one tone option	pass stored choice +0x88 and selected vector value to conversation submit	reference-input-handler.c

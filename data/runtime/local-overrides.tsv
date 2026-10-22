@@ -11026,6 +11026,16 @@ Conversation prompt: How will you respond to this passive reply?	你将如何回
 Conversation prompt: How will you respond to this statement of values?	你将如何回应这番价值观表述？	l
 Conversation prompt: How will you respond to this dismissal?	你将如何回应这番打发？	l
 Conversation prompt: Choose your tone/tact	选择交谈的语气与策略。	l
+Conversation tone: Persuade:	说服：	l
+Conversation tone: Intimidate:	恐吓：	l
+Conversation tone: Almost guaranteed	几乎必定成功	l
+Conversation tone: Likely success	很可能成功	l
+Conversation tone: Favorable odds	胜算较高	l
+Conversation tone: Impossible	不可能成功	l
+Conversation tone: Nearly impossible	几乎不可能成功	l
+Conversation tone: Likely failure	很可能失败	l
+Conversation tone: Even odds	胜负参半	l
+Conversation tone: Unfavorable odds	胜算较低	l
 Conversation prompt: What do you want?	你想要什么？	l
 Conversation prompt: How will you respond to the adoption request?	你将如何回应收养请求？	l
 Conversation prompt: How will you respond to the position offer?	你将如何回应职位邀请？	l

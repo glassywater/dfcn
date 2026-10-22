@@ -1,0 +1,31 @@
+role	source
+header	Choose your tone/tact
+control	Cancel
+strategy	Persuade: 
+strategy	Intimidate: 
+title	Persuader
+title	Intimidator
+rating	Dabbling
+rating	Novice
+rating	Adequate
+rating	Competent
+rating	Skilled
+rating	Proficient
+rating	Talented
+rating	Adept
+rating	Expert
+rating	Professional
+rating	Accomplished
+rating	Great
+rating	Master
+rating	High Master
+rating	Grand Master
+rating	Legendary
+odds	Almost guaranteed
+odds	Likely success
+odds	Favorable odds
+odds	Impossible
+odds	Nearly impossible
+odds	Likely failure
+odds	Even odds
+odds	Unfavorable odds

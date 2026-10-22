@@ -1,0 +1,15 @@
+edition	image	role	start_rva	end_rva	asm
+reference	PE:6a70a6d9:02711000	renderer	0x867e10	0x86d958	reference-renderer.asm
+reference	PE:6a70a6d9:02711000	rating	0x7737c0	0x77394c	reference-rating.asm
+reference	PE:6a70a6d9:02711000	title	0x774730	0x775284	reference-title.asm
+reference	PE:6a70a6d9:02711000	profession	0x764a70	0x764c74	reference-profession.asm
+reference	PE:6a70a6d9:02711000	skill-value	0x133e7a0	0x133eacd	reference-skill-value.asm
+reference	PE:6a70a6d9:02711000	text-draw	0xad9960	0xad9a33	reference-text-draw.asm
+reference	PE:6a70a6d9:02711000	input-handler	0x885770	0x886bdb	reference-input-handler.asm
+classic	PE:6a70b91c:0270a000	renderer	0x865690	0x86b1d8	classic-renderer.asm
+classic	PE:6a70b91c:0270a000	rating	0x7711e0	0x77136c	classic-rating.asm
+classic	PE:6a70b91c:0270a000	title	0x772150	0x772ca4	classic-title.asm
+classic	PE:6a70b91c:0270a000	profession	0x762490	0x762694	classic-profession.asm
+classic	PE:6a70b91c:0270a000	skill-value	0x1339710	0x1339a3d	classic-skill-value.asm
+classic	PE:6a70b91c:0270a000	text-draw	0xad69a0	0xad6a73	classic-text-draw.asm
+classic	PE:6a70b91c:0270a000	input-handler	0x882ff0	0x88445b	classic-input-handler.asm

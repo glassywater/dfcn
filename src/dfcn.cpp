@@ -1025,6 +1025,7 @@ static constexpr int kFortressNobleSymbolPositionRule = -166;
 static constexpr int kFortressPressurePlateRule = -167;
 static constexpr int kAdventureCompanionFieldRule = -168;
 static constexpr int kFortressBuildPlacementStatusRule = -169;
+static constexpr int kConversationToneRule = -170;
 
 static bool is_fortress_noble_symbol_field(const Match &match) {
     return match.rule == kFortressNobleSymbolNameRule ||
@@ -19525,6 +19526,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         retain_native_text_cells(context, map_text_cells);
         mask_native_knowledge(context);
 #include "adventure_conversation_portrait.inc"
+#include "adventure_conversation_tone.inc"
         enum class ChoiceKind { Action, Conversation, NativeSite };
         struct ChoicePanel {
             SDL_Rect bounds;
@@ -28110,6 +28112,7 @@ void Overlay::normalize_native_split_text() {
                 match.rule == kAnnouncementListRule ||
                 match.rule == kFortressTradeFieldRule ||
                 match.rule == kConversationPortraitRule ||
+                match.rule == kConversationToneRule ||
                 match.rule == kEmbarkFinderFieldRule) continue;
         // Tooltip wrapping owns its physical source rows and output lines.
         // Flags retained from a covered picture caption cannot turn those
@@ -43225,6 +43228,7 @@ std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *r
             match.rule == kAdventureJournalTabRule ||
             match.rule == kUiMessageRule ||
             match.rule == kConversationPortraitRule ||
+            match.rule == kConversationToneRule ||
             match.rule == kWorldgenSummaryRule ||
             match.rule == kWorldgenChronicleRule || match.rule == kWorldgenControlRule;
     };

@@ -62037,6 +62037,8 @@ Conversation keyword: tavern keepers	酒保	l
 Conversation relationship: Hates you	憎恨你	l
 Conversation relationship: Likes you	喜欢你	l
 Conversation relationship: Loves you	爱你	l
+Conversation tone: Almost guaranteed	几乎必定成功	l
+Conversation tone: Nearly impossible	几乎不可能成功	l
 Create a tree to place in the arena.	创建一棵树并将其放入竞技场。	hj
 Create a tree to place in the arena.	创建一棵树并将其放入竞技场。	l
 DFHack GUI Animal assignment: gender	性别	l
@@ -64257,6 +64259,7 @@ Conversation keyword: service order	服务 订单	l
 Conversation keyword: tavern keeper	酒保	l
 Conversation keyword: worthlessness	毫无价值	l
 Conversation mood: Grimly Satisfied	冷酷的满足	l
+Conversation tone: Unfavorable odds	胜算较低	l
 Create a sharp rock with two rocks.	用两块石头制作一块尖石。	w
 Cull Unimportant Historical Figures	清理不重要的历史人物
 DFHack GUI Control tool: autocheese	自动制作奶酪（autocheese）	l
@@ -68969,6 +68972,9 @@ Conversation keyword: return back	返回 回去	l
 Conversation keyword: tranquility	宁静	l
 Conversation keyword: unhappiness	不快	l
 Conversation keyword: whereabouts	下落	l
+Conversation tone: Favorable odds	胜算较高	l
+Conversation tone: Likely failure	很可能失败	l
+Conversation tone: Likely success	很可能成功	l
 Converting to gathering blueprint	将采集指定区域转为蓝图	wo
 Converting to smoothing blueprint	将打磨指定区域转为蓝图	wo
 Convict a suspect for this crime.	将嫌疑人判定为此案的罪犯。	hj
@@ -76027,6 +76033,7 @@ Conversation mood: Embarrassed	尴尬	l
 Conversation mood: Exasperated	懊恼	l
 Conversation mood: Exhilarated	欢腾	l
 Conversation mood: Pessimistic	悲观	l
+Conversation tone: Intimidate:	恐吓：	l
 Converting mining to blueprint	将挖掘指定区域转为蓝图	wo
 Credits: Lead Audio Programmer	首席音频程序员	wl
 Credits: Lots of HTML/IT stuff	大量 HTML 与信息技术工作	wl
@@ -78587,6 +78594,7 @@ Conversation mood: Remorseful	懊悔	l
 Conversation mood: Suspicious	怀疑	l
 Conversation mood: Tenderness	温柔	l
 Conversation mood: Triumphant	得意	l
+Conversation tone: Impossible	不可能成功	l
 Credits: Bug Tracker Managers	问题追踪系统管理员	wl
 DFHack GUI Caption: Edit name	编辑名称	l
 DFHack GUI Mass remove: Mode:	模式：	l
@@ -80951,6 +80959,8 @@ Conversation mood: Resentful	怨恨	l
 Conversation mood: Satisfied	满意	l
 Conversation mood: Self-pity	自怜	l
 Conversation mood: Terrified	极度恐惧	l
+Conversation tone: Even odds	胜负参半	l
+Conversation tone: Persuade:	说服：	l
 Credits: Annie Forsman-Adams	Annie Forsman-Adams	wl
 Credits: DF 2010 Playtesting	《矮人要塞》2010 年版试玩测试	wl
 Credits: Initial Playtesting	早期试玩测试	wl
