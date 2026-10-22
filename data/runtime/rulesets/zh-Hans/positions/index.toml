@@ -16,6 +16,7 @@ name = "singular"
 "lady consort" = "领主夫人"
 "{mountain::singular}" = "{mountain::singular}"
 "{forest::singular}" = "{forest::singular}"
+"{generated::singular}" = "{generated::singular}"
 
 [[rulesets]]
 name = "plural"
@@ -26,6 +27,7 @@ name = "plural"
 "ladies consort" = "领主夫人"
 "{mountain::plural}" = "{mountain::plural}"
 "{forest::plural}" = "{forest::plural}"
+"{generated::plural}" = "{generated::plural}"
 
 # Groups binds a complete native office or spouse title, including generated
 # court/civic/religious titles resolved through the shared office vocabulary.

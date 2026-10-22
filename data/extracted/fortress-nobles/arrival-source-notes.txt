@@ -1,0 +1,59 @@
+皇冠通知中的到访及身份字段：本机 Windows PE 实际反编译来源
+
+来源映像
+reference = D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+            PE:6a70a6d9:02711000，image base 0x140000000
+classic   = C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+            PE:6a70b91c:0270a000，image base 0x140000000
+路径来自 data/runtime/native-pe-images.json。读取的是磁盘上的 PE，未运行游戏、附加进程、读取加载日志或操作窗口。
+
+本目录的 native-functions.tsv 列出两版完整 PE unwind owner；native-unwind-fragments.tsv 保留链式 unwind 片段。native-literals.tsv / native-branches.tsv / native-calls.tsv 保存完整线性反汇编的字面量、分支和调用候选，native-switches.tsv 保存 switch 原始槽位。PE unwind 末尾包含跳转表时，线性 .asm 也会显示数据的指令解释；这些行不是可执行分支证据。Ghidra 按真实控制流与 native-switches.tsv 的目标解码，.c 是其实际输出；本文是该输出的语义索引，不是反编译替代品。函数名 fortress_nobles_* 是分析时分配的名称，不表示原程序含有这些符号。
+
+到访类完整句式与条件
+79 DIPLOMAT_ARRIVAL
+  reference 0xe4b750..0xe4ca6c / classic 0xe466c0..0xe479dc。
+  固定构造："A " + species.adjective + " diplomat from " + entity.name + " has arrived."
+  species.adjective 是有效种族索引的 creature_raw+0x60 字符串，不是单位姓名。索引无效时先保留空字符串；RAW 字符串本身也可为空。entity.name 取当前来访实体+0x20，经 a94030 / a910b0 的 language_name 格式器格式化。追加时不检查种族形容词或实体名是否为空，两个字段的四种空/非空组合全部保留。冠词固定 A，不会按元音改成 An。
+  type 写入 0x4f，实际提交点 reference 0xe4c97e / classic 0xe478ee。外交官队伍内各单位的位置处理不会为每个单位改变本条固定句式。
+
+80 LIAISON_ARRIVAL
+  reference 0xe4ca70..0xe4dd10 / classic 0xe479e0..0xe48c80。
+  对来访列表内 unit.flags1 的 bit 1 未置位的每个单位：调用 1331500 / 132c470 身份描述器，调用 52d650 / 52b070 做单词首字母处理，追加 " from " + entity.name + " has arrived."。entity.name 来自历史实体+0x20，经 a94030 / a910b0；不是把 from 后的实体吞进单位字段。拼接处没有非空判断，保留两个字段的空/非空组合。
+  实际提交点 reference 0xe4db33 / classic 0xe48aa3，参数首 DWORD 0x70050。
+  列表为空，或整个列表均未产生上述到访消息时，扫描实体 position 列表；position+0x32f 非零、position+0x30 大于 3、其 flag 指针+3 的 bit 3 置位时，构造："No " + position+0x98 通用单数名称 + "?  How curious..."。没有名称非空判断，空名称仍产生 "No ?  How curious..."。
+  缺席句提交点 reference 0xe4dc87 / classic 0xe48bf7，参数首 DWORD 0x40050；它仍是 type 80，只是颜色为 4。到访句颜色为 7。两条均归皇冠通知。
+
+81 TRADE_DIPLOMAT_ARRIVAL
+  reference 0xe4dd10..0xe4f038 / classic 0xe48c80..0xe49fa8。
+  列表内 unit.flags1 bit 1 未置位，且 int32(unit+0x110) 小于零，即高位 trade-diplomat 标志置位时，构造："A " + creature_role(unit, allow_custom_profession=1) + " from " + entity.name + " has arrived."
+  creature_role 为 132f980 / 132a8f0，entity.name 同上。两字段追加不加非空守卫，四种组合均存在构造路径；固定冠词 A 单独属于外层句式。
+  实际提交点 reference 0xe4eec8 / classic 0xe49e38，参数首 DWORD 0x70051。
+  截图的 "A high treasurer from ... has arrived." 对应这一构造，high treasurer 是自动生成职位字段，不是 80 类 1331500 已带定冠词的身份描述。
+
+68 NOBLE_ARRIVAL 的边界
+  当前两版枚举和皇冠 category 7 的路由中保留 68；已有完整 native-submission-types.tsv 未发现 type 68 提交点。本次没有凭枚举名伪造一种到访句式。e46c20 的 "Your ruler has arrived, dressed as a peasant!" 在 e46ebd 写入 0x70159，e46ef2 提交，实际是 345 HASTY_MONARCH；君主随从到访是 344 MONARCH_ARRIVAL。这两类与 346 SATISFIED_MONARCH 在当前路由中均属于 GENERAL 0，并非皇冠 7。
+
+单位身份与角色的完整来源
+  132f980 / 132a8f0 creature-role：基础职业/种族/阶级；有效历史身份覆盖；职位、配偶职位、性别名称回退；领地后缀；Slave / Prisoner；custom_profession；Agitated / Fierce / Stray；Ghost / Ghostly；不死前后缀；Corpse；特殊 force / deity；模式 4/5 或尸体已有名的直接字符串分支。本目录保存完整 C，未将身份简化成固定的几个官名。
+  职位字段通用单数在 position+0x98；女性+0xd8、男性+0x118 为空时回退+0x98；配偶通用+0x158、女性+0x198、男性+0x1d8，对应性别字段为空时回退+0x158。性别值既不是 0 也不是 1 时选通用形式。
+  有领地级别且找到匹配领地记录时，9bdfb0 / 9bb7e0 追加 " of " + 英文语言地名；无匹配/无地点时不追加。其调用 a946e0 / a91760 的参数为 1,0，不能把它误当原生语言专名格式器 a94030。
+  allow_custom_profession=1 且 unit+0x90 长度非零时，unit+0x80 自定义职业覆盖基础角色，之后仍可带外部生物状态。这个用户字符串没有有限枚举，运行处理必须保留未识别的自定义内容，不能凭拼写判断是自动生成职位。
+  1331500 / 132c470 身份描述器还包含定冠词 the、名字/可见身份、特殊 deity/force、幽灵/不死、异种种族、职位领地及自定义职业等分支。单位职业跳转表真实上界是 0x86，共 135 个原始槽位。本次按 mov eax,0x86; cmp ecx,eax 恢复所有槽；旧通用提取器误把前面字符串容量 cmp rdx,0xf 当成上界，仅取了 16 个槽。本目录完整职业 C 已包含 case 0x10 到 case 0x86，实际原表保存在 native-switches.tsv。
+  1330260 / 132b1d0 不是严格的纯人名格式器：它先生成个人名；为空或当前知识状态不显示名字时，调用 creature_role(unit,1) 回退。继任通知的这个字段必须接受姓名或角色。
+  1330c30 / 132bba0 输出单位标题（姓名、身份/职业及组合），选举等通知沿用单位语义。
+  52d650 / 52b070 仅做大写处理与 CP437 字符映射、括号/引号边界处理，不把 the 变成 A。
+
+运行数据对应
+  data/runtime/announcement-arrival-grammar.tsv 处理 79、80、81 的完整句式、缺席提示及各字段空值组合；81 固定 A 在外层消耗，角色交给已有语义供应器。data/runtime/rulesets/zh-Hans/positions/ 下的词表负责职位角色；有限自动生成职位补齐与用户自定义职业原样保留分开处理。
+
+实际提取命令
+  & 'C:/Users/WIN11/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'D:/workspace/dfcn/tools/extract_fortress_nobles_sources.py'
+  $env:JAVA_HOME = 'C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/jdk-25.0.4.1+1'
+  $env:GHIDRA_HEADLESS_JAVA_OPTIONS = '-Dapplication.settingsdir=D:/workspace/dfcn/.cache/nobles-reference-settings -Dapplication.cachedir=D:/workspace/dfcn/.cache/nobles-reference-cache'
+  & 'C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/ghidra_12.1.4_PUBLIC/support/analyzeHeadless.bat' 'C:/Users/WIN11/AppData/Local/Temp/dfcn-nobles-reference-project' 'nobles-reference' -import 'D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe' -noanalysis -scriptPath 'D:/workspace/dfcn/tools' -postScript DecompileFortressNobles.java 'D:/workspace/dfcn/data/extracted/fortress-nobles' reference -deleteProject
+  $env:GHIDRA_HEADLESS_JAVA_OPTIONS = '-Dapplication.settingsdir=D:/workspace/dfcn/.cache/nobles-classic-settings -Dapplication.cachedir=D:/workspace/dfcn/.cache/nobles-classic-cache'
+  & 'C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/ghidra_12.1.4_PUBLIC/support/analyzeHeadless.bat' 'C:/Users/WIN11/AppData/Local/Temp/dfcn-nobles-classic-project' 'nobles-classic' -import 'C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe' -noanalysis -scriptPath 'D:/workspace/dfcn/tools' -postScript DecompileFortressNobles.java 'D:/workspace/dfcn/data/extracted/fortress-nobles' classic -deleteProject
+
+Ghidra 使用原生指令及完整 switch 目标进行 decompile，没有修改原映像。demand-change owner 在末尾的 range-check failure 调用之后紧接跳转表；本次把该 MSVC fast-fail 包装器标成 no-return，避免把跳转表数据误当失败调用的后继指令。range-failure / fast-fail 的两版原始指令与 C 亦保留。mandate-create 的物品类别随机表不是紧邻跳转的小整数比较，而是先约束 r8d < 0x6492492e，再通过 MUL/SHR 完成 r8d / 0x924924a；本次恢复其全部 0..10 原始槽位。其余 globals overlap、type propagation 等原始反编译器警告保留在 C 中，不被替换为手写伪 C。
+
+此目录为用户明确要求的反编译来源材料，不是测试、专项检查或验收报告。没有运行翻译数据生成器、编译部署或游戏内操作；没有观察游戏内最终显示结果。

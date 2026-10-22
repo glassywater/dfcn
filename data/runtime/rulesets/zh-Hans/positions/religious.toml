@@ -1,0 +1,34 @@
+base = "positions::religious"
+
+# Native priest offices append one installed language WORD noun form to a
+# rank prefix (native-producers.asm, site-and-religious-offices).
+# Noun meanings come from religious-noun-forms.tsv/procedural-word-senses,
+# not the generic UI dictionary. Nouns cannot match as standalone positions.
+# A displayed homonym without a unique WORD sense preserves its noun spelling.
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"{prefix} {::positions::language_nouns::singular}" = "{prefix}{::positions::language_nouns::singular}"
+# Native 0x97ac49 / 0x9860f4 falls back to the plural noun when no singular exists.
+"{prefix} {::positions::language_nouns::plural}" = "{prefix}{::positions::language_nouns::plural}"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"{prefix} {::positions::language_nouns::plural}" = "{prefix}{::positions::language_nouns::plural}"
+
+[[rulesets]]
+name = "prefix"
+[rulesets.rules]
+"high" = "高阶"
+"first" = "第一"
+"exalted" = "高尚"
+"holy" = "神圣"
+"sacred" = "神圣"
+"most high" = "至高"
+"absolute" = "绝对"
+"most exalted" = "至尊"
+"most holy" = "至圣"
+"most sacred" = "至圣"
+

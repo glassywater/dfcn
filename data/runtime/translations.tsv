@@ -151223,3 +151223,52 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
+Announcement combat adventure-announcement [$embark-race-adjective,$memory-entity]: A {s} diplomat from {s} has arrived.	来自{s2}的{s1}外交官已抵达。	l
+Announcement combat adventure-announcement [$memory-entity]: A diplomat from {s} has arrived.	来自{s1}的外交官已抵达。	l
+Announcement combat adventure-announcement [$embark-race-adjective]: A {s} diplomat from has arrived.	一位{s1}外交官已抵达。	l
+Announcement combat adventure-announcement []: A diplomat from has arrived.	一位外交官已抵达。	l
+Announcement combat adventure-announcement [noble-arrival-role,$memory-entity]: A {s} from {s} has arrived.	来自{s2}的{s1}已抵达。	l
+Announcement combat adventure-announcement [$memory-entity]: A from {s} has arrived.	来自{s1}的使者已抵达。	l
+Announcement combat adventure-announcement [noble-arrival-role]: A {s} from has arrived.	{s1}已抵达。	l
+Announcement combat adventure-announcement []: A from has arrived.	一位使者已抵达。	l
+Announcement combat noble-arrival-role [$attack-creature-role]: {s}	{s1}	l
+Announcement combat noble-arrival-role [$memorial-item]: {s}	{s1}	l
+Announcement combat adventure-announcement [$memory-entity]: from {s} has arrived.	来自{s1}的联络员已抵达。	l
+Announcement combat adventure-announcement [$unit]: {s} from has arrived.	{s1}已抵达。	l
+Announcement combat adventure-announcement []: from has arrived.	一位联络员已抵达。	l
+Announcement combat adventure-announcement [$office]: No {s}? How curious...	没有{s1}？真奇怪……	l
+Announcement combat adventure-announcement []: No ? How curious...	没有人担任这一职位？真奇怪……	l
+Announcement combat fortress-announcement []: has mandated the construction of certain goods.	已下令制作某些物品。	l
+Announcement combat fortress-announcement []: has imposed a ban on certain exports.	已禁止出口某些物品。	l
+Announcement combat fortress-announcement []: has altered the prices of goods.	已调整物品价格。	l
+Announcement combat fortress-announcement []: 's mandate has ended.	一项法令已结束。	l
+Announcement combat fortress-announcement []: 's mandates have ended.	多项法令已结束。	l
+Announcement combat fortress-announcement []: has ended a mandate.	已结束一项法令。	l
+Announcement combat fortress-announcement []: has forgotten a demand.	已忘记一项要求。	l
+Announcement combat fortress-announcement []: has a new demand.	提出了一项新要求。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has assumed the position of {s}.	{s1}就任了{s2}。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has claimed the position of {s}.	{s1}取得了{s2}之位。	l
+Announcement combat fortress-announcement [$unit,noble-position]: After a polite discussion with a local rival, {s} has claimed the position of {s}.	与当地的一位竞争者客气地商谈后，{s1}取得了{s2}之位。	l
+Announcement combat fortress-announcement [$unit,noble-position]: After a polite discussion with local rivals, {s} has claimed the position of {s}.	与当地的几位竞争者客气地商谈后，{s1}取得了{s2}之位。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s}, being the rightful heir, has inherited the position of {s}.	{s1}作为合法继承人，继承了{s2}。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has been appointed to the position of {s}.	{s1}被任命为{s2}。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has been elected to the position of {s}.	{s1}被选举为{s2}。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has been elected {s}.	{s1}已当选为{s2}。	l
+Announcement combat fortress-announcement [$unit]: {s} has been elected .	{s1}已当选。	l
+Announcement combat noble-position [$office,$memory-entity]: {s} of {s}	{s2}的{s1}	l
+Announcement combat noble-position [$office,$name]: {s} of {s}	{s2}的{s1}	l
+Announcement combat noble-position [$office]: {s}	{s1}	l
+Announcement combat noble-position [$office]: {s} of	{s1}	l
+Announcement combat noble-position [$memory-entity]: of {s}	{s1}的职务	l
+Announcement combat noble-position [$name]: of {s}	{s1}的职务	l
+Announcement combat noble-position []: of	职务	l
+Announcement combat fortress-announcement [noble-position]: has assumed the position of {s}.	已就任{s1}。	l
+Announcement combat fortress-announcement [noble-position]: has claimed the position of {s}.	已取得{s1}之位。	l
+Announcement combat fortress-announcement [noble-position]: After a polite discussion with a local rival, has claimed the position of {s}.	与当地的一位竞争者客气地商谈后，已取得{s1}之位。	l
+Announcement combat fortress-announcement [noble-position]: After a polite discussion with local rivals, has claimed the position of {s}.	与当地的几位竞争者客气地商谈后，已取得{s1}之位。	l
+Announcement combat fortress-announcement [noble-position]: , being the rightful heir, has inherited the position of {s}.	合法继承人已继承{s1}。	l
+Announcement combat fortress-announcement [noble-position]: has been appointed to the position of {s}.	已被任命为{s1}。	l
+Announcement combat fortress-announcement [noble-position]: has been elected to the position of {s}.	已被选举为{s1}。	l
+Announcement combat fortress-announcement []: has been re-elected.	已再次当选。	l
+Announcement combat fortress-announcement [noble-position]: has been elected {s}.	已当选为{s1}。	l
+Announcement combat fortress-announcement []: has been elected .	已当选。	l

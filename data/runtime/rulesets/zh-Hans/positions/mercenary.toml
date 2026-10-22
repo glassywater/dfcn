@@ -1,0 +1,26 @@
+base = "positions::mercenary"
+
+# entity_position NAME branches, native-producers.asm 0x9600c8..0x960306:
+# 0x964293 prefixes lord; 0x960279 appends master(s); 0x9642e7 appends commander(s).
+# A noun lacking the singular flag uses its plural form even for a single holder.
+# Rank/Degree/Exalted titles stored separately at entity+0x1330 are not positions.
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"lord {noun}" = "{noun}领主"
+"{noun} master" = "{noun}首领"
+"{noun} commander" = "{noun}指挥官"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"lord {::positions::language_nouns::plural}" = "{::positions::language_nouns::plural}领主"
+"{::positions::language_nouns::plural} masters" = "{::positions::language_nouns::plural}首领"
+"{::positions::language_nouns::plural} commanders" = "{::positions::language_nouns::plural}指挥官"
+
+[[rulesets]]
+name = "noun"
+[rulesets.rules]
+"{::positions::language_nouns::singular}" = "{::positions::language_nouns::singular}"
+"{::positions::language_nouns::plural}" = "{::positions::language_nouns::plural}"

@@ -1,5 +1,38 @@
 # Complete native status reports, shared by hover, expanded alerts and report history.
 # scope	source	target	field scopes	native provenance
+# NOBLE (7): the complete appointment/election productions use separate
+# personal identity, RAW office and native site/entity fields. In particular
+# the rival introduction in 14644c0 is optional, not an unconditional prefix.
+# Actual paired Ghidra C: data/extracted/announcement-profession-succession/.
+fortress-announcement	{s} has assumed the position of {s}.	{s1}就任了{s2}。	$unit,noble-position	PE reference 9ba3c0; submits 9ba97b/9bc954; 1330260(unit,true), gendered RAW office, 9bdfb0 territory or b92900 entity
+fortress-announcement	{s} has claimed the position of {s}.	{s1}取得了{s2}之位。	$unit,noble-position	PE reference 14644c0; rival count <=1 at 1464813..1464847 skips introduction; submit 1464a5a
+fortress-announcement	After a polite discussion with a local rival, {s} has claimed the position of {s}.	与当地的一位竞争者客气地商谈后，{s1}取得了{s2}之位。	$unit,noble-position	PE reference 14644c0; rival count 2; 1464826..1464842; submit 1464a5a
+fortress-announcement	After a polite discussion with local rivals, {s} has claimed the position of {s}.	与当地的几位竞争者客气地商谈后，{s1}取得了{s2}之位。	$unit,noble-position	PE reference 14644c0; rival count >2; 1464835..1464842; submit 1464a5a
+fortress-announcement	{s}, being the rightful heir, has inherited the position of {s}.	{s1}作为合法继承人，继承了{s2}。	$unit,noble-position	PE reference 1468370; 14771b4..1477267; submit 1477308; 1330260 name, 99a3c0 gendered office, 9bdfb0 or b92900 owner
+fortress-announcement	{s} has been appointed to the position of {s}.	{s1}被任命为{s2}。	$unit,noble-position	PE reference 1468370; submit 1477895; 1330260 name, 99a3c0 gendered office, 9bdfb0 or b92900 owner
+fortress-announcement	{s} has been elected to the position of {s}.	{s1}被选举为{s2}。	$unit,noble-position	PE reference 1468370; submit 1477e50; 1330260 name, 99a3c0 gendered office, 9bdfb0 or b92900 owner
+fortress-announcement	{s} has been elected {s}.	{s1}已当选为{s2}。	$unit,noble-position	PE reference e646f0; e6543e..e654f2; submit e65724; 1330c30(unit,false), RAW gendered position.name and optional 9bdfb0 territory
+fortress-announcement	{s} has been elected .	{s1}已当选。	$unit	PE reference e646f0; neutral RAW position.name is appended without nonempty guard; no territory suffix when land_holder<=0 or lookup fails
+noble-position	{s} of {s}	{s2}的{s1}	$office,$memory-entity	PE reference 9ba3c0/14644c0/1468370; fallback b92900 entity caption after complete RAW office
+noble-position	{s} of {s}	{s2}的{s1}	$office,$name	PE reference 9bdfb0:9be044..9be094; complete RAW office followed by a946e0 English site name
+noble-position	{s}	{s1}	$office	PE reference e646f0; no territory suffix when land_holder<=0 or 9bdfb0 lookup fails
+noble-position	{s} of	{s1}	$office	PE reference 9bdfb0 appends of before possibly empty a946e0 name; b92900 fallback likewise has no nonempty guard
+noble-position	of {s}	{s1}的职务	$memory-entity	PE reference 9ba3c0/14644c0/1468370; empty neutral RAW position.name plus b92900 entity caption
+noble-position	of {s}	{s1}的职务	$name	PE reference 9bdfb0; empty neutral RAW position.name plus a946e0 English site name
+noble-position	of	职务		PE reference 9bdfb0/b92900; empty neutral RAW title and empty owner caption retain the native of separator
+# Both 1330260 and 1330c30 can finish with an empty identity when no visible
+# name exists and the selected neutral RAW role is empty. Keep these complete
+# reports; do not make the general $unit parser accept arbitrary empty fields.
+fortress-announcement	has assumed the position of {s}.	已就任{s1}。	noble-position	PE reference 1330260:1330481 -> 132f980(unit,true); empty role; 9ba3c0 still appends complete predicate
+fortress-announcement	has claimed the position of {s}.	已取得{s1}之位。	noble-position	PE reference 1330260 empty name/role; 14644c0 rival count<=1
+fortress-announcement	After a polite discussion with a local rival, has claimed the position of {s}.	与当地的一位竞争者客气地商谈后，已取得{s1}之位。	noble-position	PE reference 1330260 empty name/role; 14644c0 rival count=2; native doubled space normalized
+fortress-announcement	After a polite discussion with local rivals, has claimed the position of {s}.	与当地的几位竞争者客气地商谈后，已取得{s1}之位。	noble-position	PE reference 1330260 empty name/role; 14644c0 rival count>2; native doubled space normalized
+fortress-announcement	, being the rightful heir, has inherited the position of {s}.	合法继承人已继承{s1}。	noble-position	PE reference 1330260 empty name/role; 1468370:14771df retains its leading comma
+fortress-announcement	has been appointed to the position of {s}.	已被任命为{s1}。	noble-position	PE reference 1330260 empty name/role; 1468370 submit1477895
+fortress-announcement	has been elected to the position of {s}.	已被选举为{s1}。	noble-position	PE reference 1330260 empty name/role; 1468370 submit1477e50
+fortress-announcement	has been re-elected.	已再次当选。		PE reference 1330c30:1330e72 -> 132f980(unit,true); absent name and empty neutral RAW role; e646f0 re-election
+fortress-announcement	has been elected {s}.	已当选为{s1}。	noble-position	PE reference 1330c30 absent name and empty neutral RAW role; e646f0 election with separate position
+fortress-announcement	has been elected .	已当选。		PE reference e646f0; empty 1330c30 actor and unchecked empty neutral office without territory
 # LABOR_CHANGE contains PROFESSION_CHANGES (236) and CITIZEN_BECOMES_NONSOLDIER
 # (283). Both append a94030's optional language_name and the WHOLE 132f980
 # role with custom_profession disabled. In particular, "baron of PLACE" is
