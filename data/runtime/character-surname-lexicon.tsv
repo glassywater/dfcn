@@ -82,10 +82,10 @@ ages	action	intransitive	none	老去	time	老去			衰老		老	老去		action.vi
 aging	action	intransitive	process	老去	abstract	老去			衰老		老	老去		action.vital		vital	intransitive		organism		变老	老	老去	bound	complete	direct	direct		aging
 air	object	nature	none	空气	nature	空气	气	空气			气	空气		weather.air			none				空气	气	空气	bound	natural	direct	direct		air
 alchemical	quality	abstract	none	炼金	abstract|quality	炼金	炼金				炼	炼金		property.magic			none				炼金	炼	炼金	bound	complete	direct	direct		alchemical
-alchemies	object	abstract	none	炼金术	abstract	炼金		炼金			炼	炼金		magic.spell			none				炼金术	炼	炼金	bound	restricted	direct	direct		alchemies
-alchemy	object	abstract	none	炼金术	abstract	炼金		炼金			炼	炼金		magic.spell			none				炼金术	炼	炼金	bound	restricted	direct	direct		alchemies
-ale	object	food	none	艾尔酒	artifact	麦酒		麦酒			酿	麦酒		food.alcohol			none				艾尔酒	酿	麦酒	restricted	restricted	direct	direct		ale
-ales	object	food	none	艾尔酒	artifact	麦酒		麦酒			酿	麦酒		food.alcohol			none				艾尔酒	酿	麦酒	restricted	restricted	direct	direct		ale
+alchemies	object	abstract	none	炼金术	abstract	炼金		炼金			炼	炼金		magic.spell			none				炼金术	炼	炼金	bound	natural	direct	direct		alchemies
+alchemy	object	abstract	none	炼金术	abstract	炼金		炼金			炼	炼金		magic.spell			none				炼金术	炼	炼金	bound	natural	direct	direct		alchemies
+ale	object	food	none	艾尔酒	artifact	麦酒		麦酒			酿	麦酒		food.alcohol			none				艾尔酒	酿	麦酒	bound	natural	direct	direct		ale
+ales	object	food	none	艾尔酒	artifact	麦酒		麦酒			酿	麦酒		food.alcohol			none				艾尔酒	酿	麦酒	bound	natural	direct	direct		ale
 allegiance	object	object	none	效忠	abstract|oath	效忠		效忠			忠	效忠		virtue.loyalty			none				效忠	忠	效忠	bound	complete	direct	direct		allegiance
 allegiances	object	object	none	效忠	abstract|oath	效忠		效忠			忠	效忠		virtue.loyalty			none				效忠	忠	效忠	bound	complete	direct	direct		allegiance
 alliance	object	object	none	联盟	abstract|social	联盟		联盟			盟	联盟		social.group			none				联盟	盟	联盟	bound	complete	direct	direct		alliance
@@ -996,12 +996,12 @@ char	action	transitive	none	烧焦	abstract|voice	烧焦			烧焦		焦	烧焦		a
 charcoal	object	material	none	木炭	material	木炭	木炭	木炭			炭	木炭		material.fuel			none				木炭	炭	木炭	bound	complete	direct	direct		charcoal
 charcoal	quality	material	none	炭灰	material|quality	炭灰	炭灰				灰	炭灰		property.color			none				炭灰	灰	炭灰	bound	complete	direct	direct		charcoal
 charity	object	emotion	none	慈悲	emotion	慈悲		慈悲			慈	慈悲		virtue.morality			none				慈悲	慈	慈悲	bound	complete	direct	direct		charity
-charm	object	abstract	none	吸引力	abstract	魅惑		魅惑			魅	魅惑		emotion.interest			none				吸引力	魅	魅惑	restricted	restricted	direct	direct		charm
+charm	object	abstract	none	吸引力	abstract	魅惑		魅惑			魅	魅惑		emotion.interest			none				吸引力	魅	魅惑	bound	natural	direct	direct		charm
 charm	action	transitive	none	迷住	abstract	迷住			迷住		惑	迷住		action.emotion		emotion	transitive	person|creature|emotion|concept			迷住	惑	迷住	restricted	complete	direct	direct		charm
 charmed	action	transitive	none	迷住	abstract	迷住			迷住		惑	迷住		action.emotion		emotion	transitive	person|creature|emotion|concept			迷住	惑	迷住	restricted	complete	direct	direct		charm
 charmed	state	transitive	result	迷住	abstract	迷住	迷住的		迷住		惑	迷住		property.emotion		emotion	transitive	person|creature|emotion|concept			迷住	惑	迷住	restricted	complete	direct	direct		charmed
 charming	action	transitive	process	迷住	abstract	迷住			迷住		惑	迷住		action.emotion		emotion	transitive	person|creature|emotion|concept			迷住	惑	迷住	restricted	complete	direct	direct		charming
-charms	object	abstract	none	吸引力	abstract	魅惑		魅惑			魅	魅惑		emotion.interest			none				吸引力	魅	魅惑	restricted	restricted	direct	direct		charm
+charms	object	abstract	none	吸引力	abstract	魅惑		魅惑			魅	魅惑		emotion.interest			none				吸引力	魅	魅惑	bound	natural	direct	direct		charm
 charms	action	transitive	none	迷住	abstract	迷住			迷住		惑	迷住		action.emotion		emotion	transitive	person|creature|emotion|concept			迷住	惑	迷住	restricted	complete	direct	direct		charm
 charred	action	transitive	none	烧焦	abstract|voice	烧焦			烧焦		焦	烧焦		action.heat		heat	transitive	physical			烧焦	焦	烧焦	bound	complete	direct	direct		char
 charred	state	transitive	result	焦黑	abstract|voice	焦黑	焦黑的		烧焦		焦	焦黑		property.temperature		heat	transitive	physical			焦黑	焦	焦黑	bound	complete	direct	direct		charred
@@ -1346,13 +1346,13 @@ conqueror	agent	person	none	征服者	person	征服者		征服者	征服	征服�
 conquerors	agent	person	none	征服者	person	征服者		征服者	征服	征服者	征			person.agent		social	transitive	person|social		征服者	征服者	征	征服	stem	stem	direct	direct		conqueror
 considerate	quality	abstract	none	体贴	abstract|quality	体贴	体贴				恤	体贴		property.moral			none				体贴	恤	体贴	restricted	complete	direct	direct		considerate
 consideration	object	object	none	体谅	abstract	体谅		体谅			谅	体谅		emotion.general			none				体谅	谅	体谅	bound	complete	direct	direct		consideration
-construct	object	artifact	none	构造物	artifact|craft	造物		造物			筑	造物		tool.artifact			none				构造物	筑	造物	restricted	restricted	direct	direct		construct
+construct	object	artifact	none	构造物	artifact|craft	造物		造物			筑	造物		tool.artifact			none				构造物	筑	造物	bound	natural	direct	direct		construct
 construct	action	abstract	none	筑	abstract|craft	筑造			建造		筑	筑造		action.create		create	transitive	physical			构筑	筑	筑造	natural	natural	direct	direct		construct
 constructed	action	abstract	none	筑	abstract|craft	筑造			建造		筑	筑造		action.create		create	transitive	physical			构筑	筑	筑造	natural	natural	direct	direct		construct
 constructed	state	abstract	result	筑	abstract|craft	筑造	筑造的		建造		筑	筑造		property.change		create	transitive	physical			构筑	筑	筑造	natural	natural	direct	direct		constructed
 constructing	action	abstract	process	筑	abstract|craft	筑造			建造		筑	筑造		action.create		create	transitive	physical			构筑	筑	筑造	natural	natural	direct	direct		constructing
 constructive	quality	abstract	none	有建设性	abstract|craft|quality	建设	建设的				建	建设		property.value			none				有建设性	建	建设	bound	natural	direct	direct		constructive
-constructs	object	artifact	none	构造物	artifact|craft	造物		造物			筑	造物		tool.artifact			none				构造物	筑	造物	restricted	restricted	direct	direct		construct
+constructs	object	artifact	none	构造物	artifact|craft	造物		造物			筑	造物		tool.artifact			none				构造物	筑	造物	bound	natural	direct	direct		construct
 constructs	action	abstract	none	筑	abstract|craft	筑造			建造		筑	筑造		action.create		create	transitive	physical			构筑	筑	筑造	natural	natural	direct	direct		construct
 contain	action	transitive	none	包含	abstract	包含			包含		含	包含		action.change		change	transitive	physical|concept.relation|quantity			包含	含	包含	bound	complete	direct	direct		contain
 contained	quality	abstract	none	克制	abstract|quality	克制	克制				制	克制		property.relation			none				克制	制	克制	bound	complete	direct	direct		contained
@@ -1374,8 +1374,8 @@ contests	object	abstract	none	竞赛	abstract	竞赛		竞赛			竞	竞赛		socia
 contests	action	transitive	none	竞争	abstract	竞争			竞争		争	竞争		action.social		social	transitive	person|social			竞争	争	竞争	bound	complete	direct	direct		compete
 continent	object	landscape	none	大陆	landscape	大陆		大陆			陆	大陆		terrain.general			none				大陆	陆	大陆	bound	natural	direct	direct		continent
 continents	object	landscape	none	大陆	landscape	大陆		大陆			陆	大陆		terrain.general			none				大陆	陆	大陆	bound	natural	direct	direct		continent
-contingencies	object	abstract	none	偶然性	abstract	偶然		偶然			偶	偶然		concept.fate			none				偶然性	偶	偶然	bound	restricted	direct	direct		contingencies
-contingency	object	abstract	none	偶然性	abstract	偶然		偶然			偶	偶然		concept.fate			none				偶然性	偶	偶然	bound	restricted	direct	direct		contingencies
+contingencies	object	abstract	none	偶然性	abstract	偶然		偶然			偶	偶然		concept.fate			none				偶然性	偶	偶然	bound	natural	direct	direct		contingencies
+contingency	object	abstract	none	偶然性	abstract	偶然		偶然			偶	偶然		concept.fate			none				偶然性	偶	偶然	bound	natural	direct	direct		contingencies
 contingent	object	object	none	偶发	abstract	偶发		偶发			偶	偶发		concept.fate			none				偶发	偶	偶发	bound	complete	direct	direct		contingent
 contingent	quality	abstract	none	偶然	abstract|quality	偶然	偶然				偶	偶然		property.relation			none				偶然	偶	偶然	bound	complete	direct	direct		contingent
 contingents	object	object	none	偶发	abstract	偶发		偶发			偶	偶发		concept.fate			none				偶发	偶	偶发	bound	complete	direct	direct		contingent
@@ -1439,8 +1439,8 @@ courageous	quality	emotion	none	勇敢	emotion|virtue|quality	勇敢	勇敢				�
 courteous	quality	abstract	none	有礼	abstract|quality	有礼	有礼的				礼	有礼		property.moral			none				有礼	礼	有礼	bound	complete	direct	direct		courteous
 courtesies	object	object	none	礼貌	abstract	礼貌		礼貌			礼	礼貌		virtue.morality			none				礼貌	礼	礼貌	bound	complete	direct	direct		courtesies
 courtesy	object	object	none	礼貌	abstract	礼貌		礼貌			礼	礼貌		virtue.morality			none				礼貌	礼	礼貌	bound	complete	direct	direct		courtesies
-coven	object	abstract	none	女巫会	abstract	巫会		巫会			巫	巫会		social.group			none				女巫会	巫	巫会	bound	restricted	direct	direct		coven
-covens	object	abstract	none	女巫会	abstract	巫会		巫会			巫	巫会		social.group			none				女巫会	巫	巫会	bound	restricted	direct	direct		coven
+coven	object	abstract	none	女巫会	abstract	巫会		巫会			巫	巫会		social.group			none				女巫会	巫	巫会	bound	natural	direct	direct		coven
+covens	object	abstract	none	女巫会	abstract	巫会		巫会			巫	巫会		social.group			none				女巫会	巫	巫会	bound	natural	direct	direct		coven
 cover	object	artifact	none	盖	artifact	覆盖		覆盖			盖	覆盖		tool.component			none				盖	盖	盖子	natural	natural	direct	direct		cover
 cover	action	artifact|transitive	none	覆盖	artifact	覆盖			覆盖		覆	覆盖		action.attach		attach	transitive	physical			覆盖	覆	覆盖	bound	complete	direct	direct		cover
 covered	action	artifact|transitive	none	覆盖	artifact	覆盖			覆盖		覆	覆盖		action.attach		attach	transitive	physical			覆盖	覆	覆盖	bound	complete	direct	direct		cover
@@ -1548,12 +1548,12 @@ cries	action	intransitive	none	哭	emotion|voice	哭泣			哭		哭	哭泣		actio
 crimson	quality	color	none	深红	color|quality	深红	深红				赤	深红		property.color			none				深红色	赤	深红	restricted	complete	direct	direct		crimson
 critter	object	creature	none	小兽	creature	小兽		小兽			兽	小兽		creature.general			none				小兽	兽	小兽	bound	complete	direct	direct		critter
 critters	object	creature	none	小兽	creature	小兽		小兽			兽	小兽		creature.general			none				小兽	兽	小兽	bound	complete	direct	direct		critter
-cross	object	artifact	none	十字架	artifact	刑架		刑架			刑	刑架		tool.artifact			none				十字架	刑	刑架	restricted	restricted	direct	direct		cross
+cross	object	artifact	none	十字架	artifact	刑架		刑架			刑	刑架		tool.artifact			none				十字架	刑	刑架	bound	natural	direct	direct		cross
 cross	quality	abstract	none	恼怒	abstract|quality	恼怒	恼怒				恼	恼怒		property.emotion			none				恼怒	恼	恼怒	bound	complete	direct	direct		cross
 cross	action	transitive	none	交叉	abstract	交叉			交叉		交	交叉		action.craft		craft	transitive	physical			交叉	交	交叉	bound	complete	direct	direct		cross
 crossed	action	transitive	none	交叉	abstract	交叉			交叉		交	交叉		action.craft		craft	transitive	physical			交叉	交	交叉	bound	complete	direct	direct		cross
 crossed	state	transitive	result	交叉	abstract	交叉	交叉的		交叉		交	交叉		property.change		craft	transitive	physical			交叉	交	交叉	bound	complete	direct	direct		crossed
-crosses	object	artifact	none	十字架	artifact	刑架		刑架			刑	刑架		tool.artifact			none				十字架	刑	刑架	restricted	restricted	direct	direct		cross
+crosses	object	artifact	none	十字架	artifact	刑架		刑架			刑	刑架		tool.artifact			none				十字架	刑	刑架	bound	natural	direct	direct		cross
 crosses	action	transitive	none	交叉	abstract	交叉			交叉		交	交叉		action.craft		craft	transitive	physical			交叉	交	交叉	bound	complete	direct	direct		cross
 crossing	action	transitive	process	交叉	abstract	交叉			交叉		交	交叉		action.craft		craft	transitive	physical			交叉	交	交叉	bound	complete	direct	direct		crossing
 crow	object	creature	none	乌鸦	creature	乌鸦		乌鸦			鸦	乌鸦		creature.bird			none				乌鸦	鸦	乌鸦	bound	complete	direct	direct		crow
@@ -1617,7 +1617,7 @@ cults	object	abstract	none	崇拜	abstract|social	崇拜		崇拜			祀	崇拜		v
 cunning	quality	abstract	none	狡猾	abstract|quality	狡猾	狡猾				狡	狡猾		property.moral			none				狡猾	狡	狡猾	bound	complete	direct	direct		cunning
 cup	object	artifact	none	杯	artifact	酒杯		酒杯			杯	酒杯		container.vessel			none				杯子	杯	杯子	natural	natural	direct	direct		cup
 cups	object	artifact	none	杯	artifact	酒杯		酒杯			杯	酒杯		container.vessel			none				杯子	杯	杯子	natural	natural	direct	direct		cup
-curiosity	object	object	none	好奇心	abstract	求知		求知			求	求知		emotion.interest			none				好奇心	求	求知	restricted	restricted	direct	direct		curiosity
+curiosity	object	object	none	好奇心	abstract	求知		求知			求	求知		emotion.interest			none				好奇心	求	求知	bound	natural	direct	direct		curiosity
 curious	quality	abstract	none	好奇	abstract|quality	好奇	好奇				奇	好奇		property.emotion			none				好奇	奇	好奇	bound	complete	direct	direct		curious
 curl	object	object	none	鬈曲	abstract	鬈曲		鬈曲			鬈	鬈曲		concept.form			none				鬈曲	鬈	鬈曲	bound	complete	direct	direct		curl
 curl	action	transitive	none	弄卷	abstract	弄卷			卷曲		卷	弄卷		action.craft		craft	transitive	physical			弄卷	卷	弄卷	bound	complete	direct	direct		curl
@@ -1749,7 +1749,7 @@ defenses	object	abstract	none	防卫	abstract|guard	防卫		防卫			卫	防卫	
 defensive	quality	abstract	none	防卫	abstract|guard|quality	防卫	防卫				卫	防卫		property.social			none				防卫	卫	防卫	bound	complete	direct	direct		defensive
 deference	object	abstract	none	敬意	abstract	敬意		敬意			敬	敬意		virtue.honor			none				敬意	敬	敬意	bound	complete	direct	direct		deference
 deferent	quality	abstract	none	恭敬	abstract|quality	恭敬	恭敬				敬	恭敬		property.moral			none				恭敬	敬	恭敬	bound	complete	direct	direct		deferent
-deification	object	abstract	none	奉为神	abstract	神化		神化			神	神化		magic.holy			none				奉为神	神	神化	bound	restricted	direct	direct		deification
+deification	object	abstract	none	奉为神	abstract	神化		神化			神	神化		magic.holy			none				奉为神	神	神化	bound	natural	direct	direct		deification
 deified	quality	abstract	none	神化	abstract|quality	神化	神化				神	神化		property.sacred			none				神化	神	神化	bound	complete	direct	direct		deified
 deified	action	transitive	none	奉为神	abstract	神化			神化		神	神化		action.magic		magic	transitive	physical|person|magic			奉为神	神	神化	bound	natural	direct	direct		deified
 deified	state	transitive	result	奉神	abstract	奉神	奉神的		神化		奉	奉神		property.sacred		magic	transitive	physical|person|magic			奉神	奉	奉神	bound	complete	direct	direct		deified
@@ -1921,7 +1921,7 @@ dish	object	artifact	none	盘	artifact	圆盘		圆盘			盘	圆盘		container.ve
 dishes	object	artifact	none	盘	artifact	圆盘		圆盘			盘	圆盘		container.vessel			none				盘子	盘	盘子	natural	natural	direct	direct		dish
 dishonest	quality	abstract	none	不诚	abstract|quality	不诚	不诚				伪	不诚		property.moral			none				不诚	伪	不诚	restricted	complete	direct	direct		dishonest
 disloyal	quality	abstract	none	不忠	abstract|quality	不忠	不忠				叛	不忠		property.moral			none				不忠	叛	不忠	restricted	complete	direct	direct		disloyal
-disloyalty	object	object	none	不忠实	abstract	不忠		不忠			叛	不忠		virtue.loyalty			none				不忠实	叛	不忠	restricted	restricted	direct	direct		disloyalty
+disloyalty	object	object	none	不忠实	abstract	不忠		不忠			叛	不忠		virtue.loyalty			none				不忠实	叛	不忠	bound	natural	direct	direct		disloyalty
 dismal	quality	abstract	none	阴沉	abstract|quality	阴沉	阴沉				阴	阴沉		property.emotion			none				阴沉	阴	阴沉	bound	complete	direct	direct		dismal
 dispersal	object	object	none	散布	abstract	散布		散布			散	散布		concept.activity			none				散布	散	散布	bound	complete	direct	direct		dispersal
 disperse	action	transitive	none	分散	abstract	分散			分散		散	分散		action.cut		cut	transitive	physical			分散	散	分散	bound	complete	direct	direct		disperse
@@ -2140,14 +2140,14 @@ dulled	action	transitive	none	钝化	abstract	钝化			钝化		钝	钝化		actio
 dulled	state	transitive	result	钝化	abstract	钝化	钝化的		钝化		钝	钝化		property.change		craft	transitive	physical			钝化	钝	钝化	bound	complete	direct	direct		dulled
 dulling	action	transitive	process	钝化	abstract	钝化			钝化		钝	钝化		action.craft		craft	transitive	physical			钝化	钝	钝化	bound	complete	direct	direct		dulling
 dulls	action	transitive	none	钝化	abstract	钝化			钝化		钝	钝化		action.craft		craft	transitive	physical			钝化	钝	钝化	bound	complete	direct	direct		dull
-dump	object	artifact	none	垃圾堆	artifact	污秽		污秽			秽	污秽		material.dirt			none				垃圾堆	秽	污秽	restricted	restricted	direct	direct		dump
+dump	object	artifact	none	垃圾堆	artifact	污秽		污秽			秽	污秽		material.dirt			none				垃圾堆	秽	污秽	bound	natural	direct	direct		dump
 dump	action	transitive	none	倾倒	abstract	倾倒			倾倒		倾	倾倒		action.trade		trade	transitive	physical|social.trade			倾倒	倾	倾倒	bound	complete	direct	direct		dump
 dumped	action	transitive	none	倾倒	abstract	倾倒			倾倒		倾	倾倒		action.trade		trade	transitive	physical|social.trade			倾倒	倾	倾倒	bound	complete	direct	direct		dump
 dumped	state	transitive	result	倾倒	abstract	倾倒	倾倒的		倾倒		倾	倾倒		property.social		trade	transitive	physical|social.trade			倾倒	倾	倾倒	bound	complete	direct	direct		dumped
 dumping	action	transitive	process	倾倒	abstract	倾倒			倾倒		倾	倾倒		action.trade		trade	transitive	physical|social.trade			倾倒	倾	倾倒	bound	complete	direct	direct		dumping
 dumpling	object	food	none	饺	artifact	饺子		饺子			饺	饺子		food.staple			none				饺子	饺	饺子	natural	natural	direct	direct		dumpling
 dumplings	object	food	none	饺	artifact	饺子		饺子			饺	饺子		food.staple			none				饺子	饺	饺子	natural	natural	direct	direct		dumpling
-dumps	object	artifact	none	垃圾堆	artifact	污秽		污秽			秽	污秽		material.dirt			none				垃圾堆	秽	污秽	restricted	restricted	direct	direct		dump
+dumps	object	artifact	none	垃圾堆	artifact	污秽		污秽			秽	污秽		material.dirt			none				垃圾堆	秽	污秽	bound	natural	direct	direct		dump
 dumps	action	transitive	none	倾倒	abstract	倾倒			倾倒		倾	倾倒		action.trade		trade	transitive	physical|social.trade			倾倒	倾	倾倒	bound	complete	direct	direct		dump
 dune	object	landscape	none	沙丘	landscape	沙丘		沙丘			沙	沙丘		terrain.height			none				沙丘	丘	沙丘	bound	natural	direct	direct		dune
 dunes	object	landscape	none	沙丘	landscape	沙丘		沙丘			沙	沙丘		terrain.height			none				沙丘	丘	沙丘	bound	natural	direct	direct		dune
@@ -2411,9 +2411,9 @@ eyes	object	body	none	眼	body	眼眸		眼眸			眼	眼眸		body.face			none				
 fabulous	quality	abstract	none	神奇	abstract|quality	神奇	神奇				奇	神奇		property.value			none				神奇	奇	神奇	bound	complete	direct	direct		fabulous
 face	object	body	none	脸	body	面容		面容			脸	面容		body.face			none				脸	脸	面孔	natural	natural	direct	direct		face
 faces	object	body	none	脸	body	面容		面容			脸	面容		body.face			none				脸	脸	面孔	natural	natural	direct	direct		face
-faction	object	object	none	小派系	abstract	支族		支族			族	支族		social.group			none				小派系	族	支族	restricted	restricted	direct	direct		faction
+faction	object	object	none	小派系	abstract	支族		支族			族	支族		social.group			none				小派系	族	支族	bound	natural	direct	direct		faction
 factional	quality	abstract	none	派系	abstract|quality	派系	派系				派	派系		property.social			none				派系	派	派系	bound	complete	direct	direct		factional
-factions	object	object	none	小派系	abstract	支族		支族			族	支族		social.group			none				小派系	族	支族	restricted	restricted	direct	direct		faction
+factions	object	object	none	小派系	abstract	支族		支族			族	支族		social.group			none				小派系	族	支族	bound	natural	direct	direct		faction
 fade	action	intransitive	none	褪色	decay	褪色			褪色		褪	褪色		action.change		change	intransitive		physical|quantity|concept.relation		褪色	褪	褪色	bound	complete	direct	direct		fade
 faded	quality	abstract	none	褪色	abstract|decay|quality	褪色	褪色				褪	褪色		property.change			none				褪色	褪	褪色	bound	complete	direct	direct		faded
 faded	action	intransitive	none	褪色	decay	褪色			褪色		褪	褪色		action.change		change	intransitive		physical|quantity|concept.relation		褪色	褪	褪色	bound	complete	direct	direct		fade
@@ -2964,12 +2964,12 @@ glumness	object	object	none	忧郁	abstract|emotion	忧郁		忧郁			郁	忧郁	
 glutton	agent	person	none	暴食者	person	暴食者		暴食者	暴食	暴食者	噬			person.agent		consume	transitive	food|fruit|fluid|terrain.water		暴食者	暴食者	食	暴食	stem	stem	direct	direct		glutton
 gluttons	agent	person	none	暴食者	person	暴食者		暴食者	暴食	暴食者	噬			person.agent		consume	transitive	food|fruit|fluid|terrain.water		暴食者	暴食者	食	暴食	stem	stem	direct	direct		glutton
 gnarled	quality	abstract	none	多节	abstract|quality	多节	多节				节	多节		property.shape			none				多节	节	多节	bound	complete	direct	direct		gnarled
-goad	object	artifact	none	赶牛棒	artifact	牧杖		牧杖			杖	牧杖		tool.hand			none				赶牛棒	杖	牧杖	restricted	restricted	direct	direct		goad
+goad	object	artifact	none	赶牛棒	artifact	牧杖		牧杖			杖	牧杖		tool.hand			none				赶牛棒	杖	牧杖	bound	natural	direct	direct		goad
 goad	action	artifact	none	驱策	artifact	驱策			驱策		策	驱策		action.rule		rule	transitive	person|creature|social			驱策	策	驱策	bound	complete	direct	direct		goad
 goaded	action	artifact	none	驱策	artifact	驱策			驱策		策	驱策		action.rule		rule	transitive	person|creature|social			驱策	策	驱策	bound	complete	direct	direct		goad
 goaded	state	artifact	result	驱策	artifact	驱策	驱策的		驱策		策	驱策		property.social		rule	transitive	person|creature|social			驱策	策	驱策	bound	complete	direct	direct		goaded
 goading	action	artifact	process	驱策	artifact	驱策			驱策		策	驱策		action.rule		rule	transitive	person|creature|social			驱策	策	驱策	bound	complete	direct	direct		goading
-goads	object	artifact	none	赶牛棒	artifact	牧杖		牧杖			杖	牧杖		tool.hand			none				赶牛棒	杖	牧杖	restricted	restricted	direct	direct		goad
+goads	object	artifact	none	赶牛棒	artifact	牧杖		牧杖			杖	牧杖		tool.hand			none				赶牛棒	杖	牧杖	bound	natural	direct	direct		goad
 goads	action	artifact	none	驱策	artifact	驱策			驱策		策	驱策		action.rule		rule	transitive	person|creature|social			驱策	策	驱策	bound	complete	direct	direct		goad
 goal	object	object	none	目标	abstract	目标		目标			标	目标		concept.reason			none				目标	标	目标	bound	complete	direct	direct		goal
 goals	object	object	none	目标	abstract	目标		目标			标	目标		concept.reason			none				目标	标	目标	bound	complete	direct	direct		goal
@@ -2983,10 +2983,10 @@ gold	object	material	none	金	material	黄金	金	金			金	黄金		material.met
 golden	quality	material	none	金	material|quality	黄金	黄金				金	黄金		property.color			none				金色	金	金黄	natural	natural	direct	direct		golden
 goldenrod	quality	color	none	金黄	color|quality	金黄	金黄				金	金黄		property.color			none				金黄	金	金黄	bound	complete	direct	direct		goldenrod
 golds	object	material	none	金	material	黄金	黄金	黄金			金	黄金		material.metal			none				黄金	金	金料	natural	natural	direct	direct		gold
-goo	object	abstract	none	粘性物	abstract	黏胶		黏胶			胶	黏胶		material.slime			none				粘性物	胶	黏胶	restricted	restricted	direct	direct		goo
+goo	object	abstract	none	粘性物	abstract	黏胶		黏胶			胶	黏胶		material.slime			none				粘性物	胶	黏胶	bound	natural	direct	direct		goo
 good	object	object	none	善行	abstract	善行		善行			善	善行		virtue.morality			none				善行	善	善行	bound	complete	direct	direct		good
 good	quality	abstract	none	好	abstract|quality	美善	美善				好	美善		property.moral			none				好	好	美善	natural	natural	direct	direct		good
-goos	object	abstract	none	粘性物	abstract	黏胶		黏胶			胶	黏胶		material.slime			none				粘性物	胶	黏胶	restricted	restricted	direct	direct		goo
+goos	object	abstract	none	粘性物	abstract	黏胶		黏胶			胶	黏胶		material.slime			none				粘性物	胶	黏胶	bound	natural	direct	direct		goo
 goose	object	creature	none	鹅	creature	鹅		鹅			鹅	雁鹅		creature.bird			none				鹅	鹅	鹅鸟	natural	natural	direct	direct		geese
 gore	object	object	none	鲜血	abstract	鲜血		鲜血			血	鲜血		fluid.blood			none				鲜血	血	鲜血	bound	complete	direct	direct		gore
 gore	action	transitive	none	贯	abstract	贯穿			贯穿		贯	贯穿		action.strike		strike	transitive	physical			刺穿	贯	贯穿	natural	natural	direct	direct		gore
@@ -3471,7 +3471,7 @@ incinerated	action	transitive	none	烧成灰	abstract	焚灰			焚毁		焚	焚�
 incinerated	state	transitive	result	成灰	abstract	灰烬	灰烬的		焚毁		烬	灰烬		property.damage		heat	transitive	physical			成灰	烬	成灰	restricted	complete	direct	direct		incinerated
 incinerates	action	transitive	none	烧成灰	abstract	焚灰			焚毁		焚	焚灰		action.heat		heat	transitive	physical			烧成灰	焚	焚灰	restricted	natural	direct	direct		cremate
 incinerating	action	transitive	process	烧成灰	abstract	焚灰			焚毁		焚	焚灰		action.heat		heat	transitive	physical			烧成灰	焚	焚灰	restricted	natural	direct	direct		cremating
-incineration	object	object	none	烧成灰	abstract	焚灰		焚灰			焚	焚灰		concept.activity			none				烧成灰	焚	焚灰	restricted	restricted	direct	direct		incineration
+incineration	object	object	none	烧成灰	abstract	焚灰		焚灰			焚	焚灰		concept.activity			none				烧成灰	焚	焚灰	bound	natural	direct	direct		incineration
 inconsiderate	quality	abstract	none	不体贴	abstract|quality	冷漠	冷漠				漠	冷漠		property.moral			none				不体贴	漠	冷漠	restricted	natural	direct	direct		inconsiderate
 inconvenience	object	artifact	none	不便	artifact	不便		不便			涩	不便		concept.relation			none				不便	涩	不便	restricted	complete	direct	direct		inconvenience
 inconveniences	object	artifact	none	不便	artifact	不便		不便			涩	不便		concept.relation			none				不便	涩	不便	restricted	complete	direct	direct		inconvenience
@@ -3492,11 +3492,11 @@ inferior	quality	abstract	none	低劣	abstract|quality	低劣	低劣				劣	低�
 inferno	object	nature	none	火狱	nature|magic	火狱		火狱			狱	火狱		weather.fire			none				火狱	炎	火狱	bound	natural	direct	direct		inferno
 infernos	object	nature	none	火狱	nature|magic	火狱		火狱			狱	火狱		weather.fire			none				火狱	炎	火狱	bound	natural	direct	direct		inferno
 infinite	quality	abstract	none	无穷	abstract|quality	无穷	无穷				瀚	无穷		property.number			none				无穷	瀚	无穷	restricted	complete	direct	direct		infinite
-influence	object	object	none	影响力	abstract	影响		影响			势	影响		social.rule			none				影响力	势	影响	restricted	restricted	direct	direct		influence
+influence	object	object	none	影响力	abstract	影响		影响			势	影响		social.rule			none				影响力	势	影响	bound	natural	direct	direct		influence
 influence	action	transitive	none	影响	abstract	影响			影响		势	影响		action.social		social	transitive	person|social			影响	动	影响	restricted	complete	property	direct		influence
 influenced	action	transitive	none	影响	abstract	影响			影响		势	影响		action.social		social	transitive	person|social			影响	动	影响	restricted	complete	property	direct		influence
 influenced	state	transitive	result	影响	abstract	影响	影响的		影响		势	影响		property.social		social	transitive	person|social			影响	势	影响	restricted	complete	direct	direct		influenced
-influences	object	object	none	影响力	abstract	影响		影响			势	影响		social.rule			none				影响力	势	影响	restricted	restricted	direct	direct		influence
+influences	object	object	none	影响力	abstract	影响		影响			势	影响		social.rule			none				影响力	势	影响	bound	natural	direct	direct		influence
 influences	action	transitive	none	影响	abstract	影响			影响		势	影响		action.social		social	transitive	person|social			影响	动	影响	restricted	complete	property	direct		influence
 influencing	action	transitive	process	影响	abstract	影响			影响		势	影响		action.social		social	transitive	person|social			影响	动	影响	restricted	complete	property	direct		influencing
 influential	quality	abstract	none	有影响	abstract|quality	有影响	有影响的				势			property.social			none				有影响	势	影响	restricted	natural	direct	direct		influential
@@ -3535,10 +3535,10 @@ itches	object	object	none	痒	abstract	奇痒		奇痒			痒	奇痒		ruin.disease
 ivory	object	material	none	象牙	material	象牙	象牙	象牙			牙	象牙		body.bone			none				象牙	牙	象牙	bound	complete	direct	direct		ivory
 ivory	quality	material	none	象牙质	material|quality	象牙	象牙				牙	象牙		property.material			none				象牙质	牙	象牙	bound	natural	direct	direct		ivory
 ivy	object	plant	none	常春藤	plant	常春藤		常春藤			藤			plant.vine			none				常春藤	常	常蔓	bound	natural	property	property		ivy
-jack	object	artifact	none	千斤顶	artifact	举重器		举重器			顶	顶升		tool.machine			none				千斤顶	顶	顶升	bound	restricted	direct	direct		jack
+jack	object	artifact	none	千斤顶	artifact	举重器		举重器			顶	顶升		tool.machine			none				千斤顶	顶	顶升	bound	natural	direct	direct		jack
 jackal	object	creature	none	豺	creature	胡狼		胡狼			豺	胡狼		creature.mammal			none				豺	豺	豺狼	natural	natural	direct	direct		jackal
 jackals	object	creature	none	豺	creature	胡狼		胡狼			豺	胡狼		creature.mammal			none				豺	豺	豺狼	natural	natural	direct	direct		jackal
-jacks	object	artifact	none	千斤顶	artifact	举重器		举重器			顶	顶升		tool.machine			none				千斤顶	顶	顶升	bound	restricted	direct	direct		jack
+jacks	object	artifact	none	千斤顶	artifact	举重器		举重器			顶	顶升		tool.machine			none				千斤顶	顶	顶升	bound	natural	direct	direct		jack
 jade	object	material	none	玉	material	美玉	美玉	美玉			玉	美玉		material.gem			none				玉	玉	玉石	natural	natural	direct	direct		jade
 jade	quality	material	none	翠玉色	material|quality	翠玉	翠玉				翠	翠玉		property.color			none				翠玉色	翠	翠玉	bound	natural	direct	direct		jade
 jades	object	material	none	玉	material	美玉	美玉	美玉			玉	美玉		material.gem			none				玉	玉	玉石	natural	natural	direct	direct		jade
@@ -3795,16 +3795,16 @@ leeches	object	creature	none	水蛭	creature	水蛭		水蛭			蛭	水蛭		creatu
 legend	object	abstract	none	传说	abstract	传说		传说			传	传说		voice.text			none				传说	传	传说	bound	complete	direct	direct		legend
 legendary	quality	abstract	none	传说	abstract|quality	传说	传说				传	传说		property.social			none				传说	传	传说	bound	complete	direct	direct		legendary
 legends	object	abstract	none	传说	abstract	传说		传说			传	传说		voice.text			none				传说	传	传说	bound	complete	direct	direct		legend
-lemon	object	color	none	柠檬黄	abstract	柠黄		柠黄			黄	柠黄		property.color			none				柠檬黄	黄	柠黄	bound	restricted	direct	direct		lemon
-lemons	object	color	none	柠檬黄	abstract	柠黄		柠黄			黄	柠黄		property.color			none				柠檬黄	黄	柠黄	bound	restricted	direct	direct		lemon
+lemon	object	color	none	柠檬黄	abstract	柠黄		柠黄			黄	柠黄		property.color			none				柠檬黄	黄	柠黄	bound	natural	direct	direct		lemon
+lemons	object	color	none	柠檬黄	abstract	柠黄		柠黄			黄	柠黄		property.color			none				柠檬黄	黄	柠黄	bound	natural	direct	direct		lemon
 length	object	object	none	长度	abstract	长度		长度			长	长度		quantity.measure			none				长度	长	长度	bound	complete	direct	direct		length
 lengths	object	object	none	长度	abstract	长度		长度			长	长度		quantity.measure			none				长度	长	长度	bound	complete	direct	direct		length
 lens	object	artifact	none	透镜	artifact	透镜		透镜			镜	透镜		tool.machine			none				透镜	镜	透镜	bound	complete	direct	direct		lens
 lenses	object	artifact	none	透镜	artifact	透镜		透镜			镜	透镜		tool.machine			none				透镜	镜	透镜	bound	complete	direct	direct		lens
 leopard	object	creature	none	豹	creature	花豹		花豹			豹	花豹		creature.mammal			none				豹	豹	豹兽	natural	natural	direct	direct		leopard
 leopards	object	creature	none	豹	creature	花豹		花豹			豹	花豹		creature.mammal			none				豹	豹	豹兽	natural	natural	direct	direct		leopard
-leper	object	person	none	麻风者	person	麻风		麻风			疫	麻风		person.general			none				麻风病人	疫	麻风	restricted	restricted	direct	direct		leper
-lepers	object	person	none	麻风者	person	麻风		麻风			疫	麻风		person.general			none				麻风病人	疫	麻风	restricted	restricted	direct	direct		leper
+leper	object	person	none	麻风者	person	麻风		麻风			疫	麻风		person.general			none				麻风病人	疫	麻风	bound	natural	direct	direct		leper
+lepers	object	person	none	麻风者	person	麻风		麻风			疫	麻风		person.general			none				麻风病人	疫	麻风	bound	natural	direct	direct		leper
 leprosies	object	object	none	麻风	abstract	麻风		麻风			疫	麻风		ruin.disease			none				麻疯病	疫	麻风	restricted	complete	direct	direct		leprosies
 leprosy	object	object	none	麻风	abstract	麻风		麻风			疫	麻风		ruin.disease			none				麻疯病	疫	麻风	restricted	complete	direct	direct		leprosies
 lesion	object	object	none	病灶	abstract	病灶		病灶			疡	病灶		ruin.disease			none				病灶	疡	病灶	restricted	complete	direct	direct		lesion
@@ -3843,8 +3843,8 @@ lilac	object	color	none	淡紫	abstract	淡紫		淡紫			紫	淡紫		property.co
 lilacs	object	color	none	淡紫	abstract	淡紫		淡紫			紫	淡紫		property.color			none				淡紫	紫	淡紫	bound	complete	direct	direct		lilac
 limb	object	body	none	肢	body	肢体		肢体			肢	肢体		body.limb			none				肢	肢	肢体	natural	natural	direct	direct		limb
 limbs	object	body	none	肢	body	肢体		肢体			肢	肢体		body.limb			none				肢	肢	肢体	natural	natural	direct	direct		limb
-lime	object	color	none	莱姆绿	abstract	青绿		青绿			绿	青绿		property.color			none				莱姆绿	绿	青绿	bound	restricted	direct	direct		lime
-limes	object	color	none	莱姆绿	abstract	青绿		青绿			绿	青绿		property.color			none				莱姆绿	绿	青绿	bound	restricted	direct	direct		lime
+lime	object	color	none	莱姆绿	abstract	青绿		青绿			绿	青绿		property.color			none				莱姆绿	绿	青绿	bound	natural	direct	direct		lime
+limes	object	color	none	莱姆绿	abstract	青绿		青绿			绿	青绿		property.color			none				莱姆绿	绿	青绿	bound	natural	direct	direct		lime
 limp	quality	abstract	none	松软	abstract|quality	松软	松软				软	松软		property.texture			none				松软	软	松软	bound	complete	direct	direct		limp
 limp	action	intransitive	none	跛行	abstract	跛行			跛行		跛	跛行		action.move		move	intransitive		creature|person|weather.wind|weather.storm|weather.water|terrain.water		跛行	跛	跛行	bound	complete	direct	direct		limp
 limped	action	intransitive	none	跛行	abstract	跛行			跛行		跛	跛行		action.move		move	intransitive		creature|person|weather.wind|weather.storm|weather.water|terrain.water		跛行	跛	跛行	bound	complete	direct	direct		limp
@@ -3891,8 +3891,8 @@ lone	quality	abstract	none	孤	abstract|quality	孤寂	孤寂				孤	孤寂		pro
 lonely	quality	abstract	none	孤	abstract|quality	孤寂	孤寂				孤	孤寂		property.emotion			none				孤单	孤	孤寂	natural	natural	direct	direct		lonely
 lonesome	quality	abstract	none	寂寞	abstract|quality	寂寞	寂寞				寂	寂寞		property.emotion			none				寂寞	寂	寂寞	bound	complete	direct	direct		lonesome
 long	quality	abstract	none	长	abstract|quality	长久	长久				长	长久		property.size			none				长	长	长形	natural	natural	direct	direct		long
-loot	object	object	none	掠获物	abstract	战获		战获			掠	战获		tool.artifact			none				掠获物	掠	战获	bound	restricted	direct	direct		loot
-loots	object	object	none	掠获物	abstract	战获		战获			掠	战获		tool.artifact			none				掠获物	掠	战获	bound	restricted	direct	direct		loot
+loot	object	object	none	掠获物	abstract	战获		战获			掠	战获		tool.artifact			none				掠获物	掠	战获	bound	natural	direct	direct		loot
+loots	object	object	none	掠获物	abstract	战获		战获			掠	战获		tool.artifact			none				掠获物	掠	战获	bound	natural	direct	direct		loot
 lord	object	person	none	领主	person|rule	领主		领主			君	领主		person.status			none				领主	领	领主	bound	complete	direct	direct		lord
 lords	object	person	none	领主	person|rule	领主		领主			君	领主		person.status			none				领主	领	领主	bound	complete	direct	direct		lord
 lost	quality	abstract	none	迷失	abstract|quality	迷失	迷失				迷	迷失		property.motion			none				迷失	迷	迷失	bound	complete	direct	direct		lost
@@ -3963,9 +3963,9 @@ lutes	object	artifact	none	鲁特琴	artifact	弦琴		弦琴			琴	弦琴		tool.
 luxuries	object	object	none	奢侈	abstract	奢侈		奢侈			奢	奢侈		social.trade			none				奢侈	奢	奢侈	bound	complete	direct	direct		luxuries
 luxurious	quality	abstract	none	豪华	abstract|quality	豪华	豪华				华	豪华		property.value			none				豪华	华	豪华	bound	complete	direct	direct		luxurious
 luxury	object	object	none	奢侈	abstract	奢侈		奢侈			奢	奢侈		social.trade			none				奢侈	奢	奢侈	bound	complete	direct	direct		luxuries
-lyric	object	abstract	none	抒情诗	abstract|voice	诗歌		诗歌			诗	诗歌		voice.text			none				抒情诗	诗	诗歌	bound	restricted	direct	direct		lyric
+lyric	object	abstract	none	抒情诗	abstract|voice	诗歌		诗歌			诗	诗歌		voice.text			none				抒情诗	诗	诗歌	bound	natural	direct	direct		lyric
 lyrical	quality	abstract	none	抒情	abstract|voice|quality	抒情	抒情				吟	抒情		property.sound			none				抒情	吟	抒情	restricted	complete	direct	direct		lyrical
-lyrics	object	abstract	none	抒情诗	abstract|voice	诗歌		诗歌			诗	诗歌		voice.text			none				抒情诗	诗	诗歌	bound	restricted	direct	direct		lyric
+lyrics	object	abstract	none	抒情诗	abstract|voice	诗歌		诗歌			诗	诗歌		voice.text			none				抒情诗	诗	诗歌	bound	natural	direct	direct		lyric
 machine	object	artifact	none	机器	artifact	机器		机器			机	机器		tool.machine			none				机器	机	机器	bound	complete	direct	direct		machine
 machines	object	artifact	none	机器	artifact	机器		机器			机	机器		tool.machine			none				机器	机	机器	bound	complete	direct	direct		machine
 maggot	object	creature	none	蛆	creature	蛆虫		蛆虫			蛆	蛆虫		creature.insect			none				蛆	蛆	蛆虫	natural	natural	direct	direct		maggot
@@ -3990,8 +3990,8 @@ malodor	object	object	none	恶臭	abstract	恶臭		恶臭			臭	恶臭		property
 malodorous	quality	abstract	none	恶臭	abstract|quality	恶臭	恶臭				臭	恶臭		property.odor			none				恶臭	臭	恶臭	bound	complete	direct	direct		fetid
 malodors	object	object	none	恶臭	abstract	恶臭		恶臭			臭	恶臭		property.odor			none				恶臭	臭	恶臭	bound	complete	direct	direct		malodor
 man	object	person	none	男人	person	男人		男人			男	男人		person.age			none				男人	男	男人	bound	complete	direct	direct		man
-mange	object	nature	none	兽疥癣	nature	疥癣		疥癣			癣	疥癣		ruin.disease			none				兽疥癣	癣	疥癣	bound	restricted	direct	direct		mange
-manges	object	nature	none	兽疥癣	nature	疥癣		疥癣			癣	疥癣		ruin.disease			none				兽疥癣	癣	疥癣	bound	restricted	direct	direct		mange
+mange	object	nature	none	兽疥癣	nature	疥癣		疥癣			癣	疥癣		ruin.disease			none				兽疥癣	癣	疥癣	bound	natural	direct	direct		mange
+manges	object	nature	none	兽疥癣	nature	疥癣		疥癣			癣	疥癣		ruin.disease			none				兽疥癣	癣	疥癣	bound	natural	direct	direct		mange
 mangy	quality	abstract	none	疥癣	abstract|quality	疥癣	疥癣				癣	疥癣		property.disease			none				疥癣	癣	疥癣	bound	complete	direct	direct		mangy
 manor	object	building	none	庄园	building	庄园		庄园			庄	庄园		building.dwelling			none				庄园	庄	庄园	bound	natural	direct	direct		manor
 manors	object	building	none	庄园	building	庄园		庄园			庄	庄园		building.dwelling			none				庄园	庄	庄园	bound	natural	direct	direct		manor
@@ -4048,10 +4048,10 @@ maw	object	body	none	巨口	body	巨口		巨口			口	巨口		body.face			none		
 maws	object	body	none	巨口	body	巨口		巨口			口	巨口		body.face			none				巨口	口	巨口	bound	complete	direct	direct		maw
 maze	object	building	none	迷宫	building	迷宫		迷宫			迷	迷宫		building.space			none				迷宫	迷	迷宫	bound	natural	direct	direct		labyrinth
 mazes	object	building	none	迷宫	building	迷宫		迷宫			迷	迷宫		building.space			none				迷宫	迷	迷宫	bound	natural	direct	direct		labyrinth
-mead	object	food	none	蜂蜜酒	artifact	蜜酒		蜜酒			酒	蜜酒		food.alcohol			none				蜂蜜酒	酒	蜜酒	bound	restricted	direct	direct		mead
+mead	object	food	none	蜂蜜酒	artifact	蜜酒		蜜酒			酒	蜜酒		food.alcohol			none				蜂蜜酒	酒	蜜酒	bound	natural	direct	direct		mead
 meadow	object	landscape	none	草地	landscape	草地		草地			草	草地		terrain.plain			none				草地	草	草地	bound	natural	direct	direct		meadow
 meadows	object	landscape	none	草地	landscape	草地		草地			草	草地		terrain.plain			none				草地	草	草地	bound	natural	direct	direct		meadow
-meads	object	food	none	蜂蜜酒	artifact	蜜酒		蜜酒			酒	蜜酒		food.alcohol			none				蜂蜜酒	酒	蜜酒	bound	restricted	direct	direct		mead
+meads	object	food	none	蜂蜜酒	artifact	蜜酒		蜜酒			酒	蜜酒		food.alcohol			none				蜂蜜酒	酒	蜜酒	bound	natural	direct	direct		mead
 meal	object	food	none	餐	artifact	用餐		用餐			餐	用餐		food.meal			none				餐	餐	餐食	natural	natural	direct	direct		meal
 meal	object	food	none	粉	artifact	细粉		细粉			粉	细粉		food.staple			none				谷粉	粉	谷粉	natural	natural	direct	direct		meal
 meals	object	food	none	餐	artifact	用餐		用餐			餐	用餐		food.meal			none				餐	餐	餐食	natural	natural	direct	direct		meal
@@ -4112,8 +4112,8 @@ mesh	object	object	none	网孔	abstract	网孔		网孔			网	网孔		tool.compon
 meshes	object	object	none	网孔	abstract	网孔		网孔			网	网孔		tool.component			none				网孔	网	网孔	bound	complete	direct	direct		mesh
 mess	object	object	none	混乱	abstract	混乱		混乱			乱	混乱		concept.event			none				混乱	乱	混乱	bound	complete	direct	direct		mess
 messes	object	object	none	混乱	abstract	混乱		混乱			乱	混乱		concept.event			none				混乱	乱	混乱	bound	complete	direct	direct		mess
-messiah	object	person	none	救世主	person	救赎者		救赎者			救	救星		magic.spirit			none				救世主	救	救星	bound	restricted	direct	direct		messiah
-messiahs	object	person	none	救世主	person	救赎者		救赎者			救	救星		magic.spirit			none				救世主	救	救星	bound	restricted	direct	direct		messiah
+messiah	object	person	none	救世主	person	救赎者		救赎者			救	救星		magic.spirit			none				救世主	救	救星	bound	natural	direct	direct		messiah
+messiahs	object	person	none	救世主	person	救赎者		救赎者			救	救星		magic.spirit			none				救世主	救	救星	bound	natural	direct	direct		messiah
 messianic	quality	person	none	弥赛亚	person|quality	救赎者	救赎者的				赎	圣使		property.sacred			none				弥赛亚	赎	圣使	restricted	natural	direct	direct		messianic
 met	action	transitive	none	相遇	abstract	相遇			相遇		遇	相遇		action.social		social	transitive	person|social			相遇	遇	相遇	bound	complete	direct	direct		meet
 met	state	transitive	result	相遇	abstract	相遇	相遇的		相遇		遇	相遇		property.social		social	transitive	person|social			相遇	遇	相遇	bound	complete	direct	direct		met
@@ -4166,7 +4166,7 @@ mirrors	object	artifact	none	镜	artifact	明镜		明镜			镜	明镜		tool.mach
 mirrors	action	artifact|transitive	none	映	artifact	映照			映		映	映照		action.craft		craft	transitive	physical			映照	映	映照	natural	natural	direct	direct		mirror
 mirth	object	emotion	none	欢笑	emotion	欢笑		欢笑			笑	欢笑		emotion.joy			none				欢笑	笑	欢笑	bound	complete	direct	direct		mirth
 mirthful	quality	emotion	none	愉快	emotion|quality	愉快	愉快				悦	愉快		property.emotion			none				愉快	悦	愉快	restricted	complete	direct	direct		delightful
-mischief	object	object	none	恶作剧	abstract	戏谑		戏谑			谑	戏谑		social.relation			none				恶作剧	谑	戏谑	restricted	restricted	direct	direct		mischief
+mischief	object	object	none	恶作剧	abstract	戏谑		戏谑			谑	戏谑		social.relation			none				恶作剧	谑	戏谑	bound	natural	direct	direct		mischief
 mischievous	quality	abstract	none	淘气	abstract|quality	淘气	淘气				顽	淘气		property.emotion			none				淘气	顽	淘气	restricted	complete	direct	direct		mischievous
 miseries	object	emotion	none	痛苦	emotion	痛苦		痛苦			痛	痛苦		ruin.pain			none				痛苦	痛	痛苦	bound	complete	direct	direct		miseries
 misery	object	emotion	none	痛苦	emotion	痛苦		痛苦			痛	痛苦		ruin.pain			none				痛苦	痛	痛苦	bound	complete	direct	direct		miseries
@@ -4205,10 +4205,10 @@ monger	agent	person	none	商人	person	商人		商人	贩	商人	商	商人		per
 mongers	agent	person	none	商人	person	商人		商人	贩	商人	商	商人		person.agent		social	transitive	person|social		商人	商人	商	经商	stem	stem	direct	direct		monger
 mongrel	object	abstract	none	混种	abstract	混种		混种			杂	混种		creature.general			none				混种	杂	混种	restricted	complete	direct	direct		mongrel
 mongrels	object	abstract	none	混种	abstract	混种		混种			杂	混种		creature.general			none				混种	杂	混种	restricted	complete	direct	direct		mongrel
-monk	object	person	none	修道士	person	修士		修士			修	修士		person.occupation			none				修道士	修	修士	bound	restricted	direct	direct		monk
+monk	object	person	none	修道士	person	修士		修士			修	修士		person.occupation			none				修道士	修	修士	bound	natural	direct	direct		monk
 monkey	object	creature	none	猴	creature	猴子		猴子			猴	猴子		creature.mammal			none				猴子	猴	猴类	natural	natural	direct	direct		monkey
 monkeys	object	creature	none	猴	creature	猴子		猴子			猴	猴子		creature.mammal			none				猴子	猴	猴类	natural	natural	direct	direct		monkey
-monks	object	person	none	修道士	person	修士		修士			修	修士		person.occupation			none				修道士	修	修士	bound	restricted	direct	direct		monk
+monks	object	person	none	修道士	person	修士		修士			修	修士		person.occupation			none				修道士	修	修士	bound	natural	direct	direct		monk
 monster	object	object	none	怪物	abstract	怪物		怪物			怪	怪物		creature.fantasy			none				怪物	怪	怪物	bound	complete	direct	direct		monster
 monsters	object	object	none	怪物	abstract	怪物		怪物			怪	怪物		creature.fantasy			none				怪物	怪	怪物	bound	complete	direct	direct		monster
 monstrous	quality	abstract	none	巨大	abstract|quality	巨大	巨大				巨	巨大		property.size			none				巨大	巨	巨大	bound	complete	direct	direct		monstrous
@@ -4230,8 +4230,8 @@ morasses	object	landscape	none	沼泽	landscape	沼泽		沼泽			沼	沼泽		ter
 morning	object	nature	none	早晨	nature|time	早晨		早晨			晨	早晨		time.day			none				早晨	晨	清晨	bound	natural	direct	direct		morning
 mornings	object	nature	none	早晨	nature|time	早晨		早晨			晨	早晨		time.day			none				早晨	晨	清晨	bound	natural	direct	direct		morning
 morose	quality	abstract	none	郁闷	abstract|quality	郁闷	郁闷				郁	郁闷		property.emotion			none				郁闷	郁	郁闷	bound	complete	direct	direct		morose
-morsel	object	abstract	none	食物小块	abstract	小食		小食			食	小食		food.meal			none				食物小块	食	小食	bound	restricted	direct	direct		morsel
-morsels	object	abstract	none	食物小块	abstract	小食		小食			食	小食		food.meal			none				食物小块	食	小食	bound	restricted	direct	direct		morsel
+morsel	object	abstract	none	食物小块	abstract	小食		小食			食	小食		food.meal			none				食物小块	食	小食	bound	natural	direct	direct		morsel
+morsels	object	abstract	none	食物小块	abstract	小食		小食			食	小食		food.meal			none				食物小块	食	小食	bound	natural	direct	direct		morsel
 mortal	object	object	none	凡人	abstract	凡人		凡人			凡	凡人		person.general			none				凡人	凡	凡人	bound	complete	direct	direct		mortal
 mortal	quality	abstract	none	必死	abstract|quality	必死	必死				殒	必死		property.vitality			none				必死	殒	必死	restricted	complete	direct	direct		mortal
 mortality	object	object	none	必死	abstract	必死		必死			殒	必死		ruin.death			none				必死	殒	必死	restricted	complete	direct	direct		mortality
@@ -4411,7 +4411,7 @@ nourished	state	transitive	result	滋养	abstract	滋养	滋养的		滋养		养	
 nourishes	action	transitive	none	滋养	abstract	滋养			滋养		养	滋养		action.consume		consume	transitive	food|fruit|fluid|terrain.water			滋养	养	滋养	bound	complete	direct	direct		nourish
 nourishing	quality	abstract	none	有营养	abstract|quality	富养	富养的				养	富养		property.vitality			none				有营养	养	营养	bound	natural	direct	direct		nourishing
 nourishing	action	transitive	process	滋养	abstract	滋养			滋养		养	滋养		action.consume		consume	transitive	food|fruit|fluid|terrain.water			滋养	养	滋养	bound	complete	direct	direct		nourishing
-nourishment	object	object	none	滋养品	abstract	滋养		滋养			养	滋养		food.meal			none				滋养品	养	滋养	bound	restricted	direct	direct		nourishment
+nourishment	object	object	none	滋养品	abstract	滋养		滋养			养	滋养		food.meal			none				滋养品	养	滋养	bound	natural	direct	direct		nourishment
 null	quality	abstract	none	虚无	abstract|quality	虚无	虚无				虚	虚无		property.position			none				虚无	虚	虚无	bound	complete	direct	direct		null
 number	object	number	none	数	abstract	数目		数目			数	数目		quantity.number			none				数	数	数目	natural	natural	direct	direct		number
 numbers	object	number	none	数	abstract	数目		数目			数	数目		quantity.number			none				数	数	数目	natural	natural	direct	direct		number
@@ -4505,14 +4505,14 @@ organs	object	body	none	器官	body	器官		器官			器	器官		body.organ			no
 outrage	object	object	none	暴行	abstract	暴行		暴行			暴	暴行		social.war			none				暴行	暴	暴行	bound	complete	direct	direct		outrage
 outrageous	quality	abstract	none	暴虐	abstract|quality	暴虐	暴虐				虐	暴虐		property.moral			none				暴虐	虐	暴虐	bound	complete	direct	direct		outrageous
 over	prefix	prefix	none	上	prefix	高处	上				上	高处		prefix.position			none				上	上	上方	bound	natural	direct	direct		over
-owl	object	creature	none	猫头鹰	creature	夜枭		夜枭			枭	夜枭		creature.bird			none				猫头鹰	枭	夜枭	restricted	restricted	direct	direct		owl
-owls	object	creature	none	猫头鹰	creature	夜枭		夜枭			枭	夜枭		creature.bird			none				猫头鹰	枭	夜枭	restricted	restricted	direct	direct		owl
+owl	object	creature	none	猫头鹰	creature	夜枭		夜枭			枭	夜枭		creature.bird			none				猫头鹰	枭	夜枭	bound	natural	direct	direct		owl
+owls	object	creature	none	猫头鹰	creature	夜枭		夜枭			枭	夜枭		creature.bird			none				猫头鹰	枭	夜枭	bound	natural	direct	direct		owl
 own	action	transitive	none	拥有	abstract	拥有			拥有		拥	拥有		action.rule		rule	transitive	person|creature|social			拥有	拥	拥有	bound	complete	direct	direct		own
 owned	action	transitive	none	拥有	abstract	拥有			拥有		拥	拥有		action.rule		rule	transitive	person|creature|social			拥有	拥	拥有	bound	complete	direct	direct		own
 owned	state	transitive	result	拥有	abstract	拥有	拥有的		拥有		拥	拥有		property.social		rule	transitive	person|creature|social			拥有	拥	拥有	bound	complete	direct	direct		owned
 owner	agent	person	none	拥有者	person	持有者		持有者	持有	持有者	拥			person.agent		rule	transitive	person|creature|social		拥有者	拥有者	拥	拥有	stem	stem	direct	direct		owner
 owners	agent	person	none	拥有者	person	持有者		持有者	持有	持有者	拥			person.agent		rule	transitive	person|creature|social		拥有者	拥有者	拥	拥有	stem	stem	direct	direct		owner
-ownership	object	object	none	所有权	abstract	归属		归属			属	归属		social.trade			none				所有权	属	归属	restricted	restricted	direct	direct		ownership
+ownership	object	object	none	所有权	abstract	归属		归属			属	归属		social.trade			none				所有权	属	归属	bound	natural	direct	direct		ownership
 owning	action	transitive	process	拥有	abstract	拥有			拥有		拥	拥有		action.rule		rule	transitive	person|creature|social			拥有	拥	拥有	bound	complete	direct	direct		owning
 owns	action	transitive	none	拥有	abstract	拥有			拥有		拥	拥有		action.rule		rule	transitive	person|creature|social			拥有	拥	拥有	bound	complete	direct	direct		own
 ox	object	creature	none	牛	creature	公牛		公牛			牛	公牛		creature.mammal			none				牛	牛	牛类	natural	natural	direct	direct		ox
@@ -4589,12 +4589,12 @@ parched	state	transitive	result	干枯	abstract	干枯	干枯的		烤		枯	干�
 parches	action	transitive	none	烤	abstract	烤炙			烤		烤	烤炙		action.heat		heat	transitive	food|fruit			烤	烤	烘烤	natural	natural	direct	direct		broil
 parching	action	transitive	process	烤	abstract	烤炙			烤		烤	烤炙		action.heat		heat	transitive	food|fruit			烤	烤	烘烤	natural	natural	direct	direct		broiling
 parity	object	abstract	none	同等	abstract	同等		同等			同	同等		concept.relation			none				同等	同	同等	bound	complete	direct	direct		equivalence
-partner	object	object	none	合伙人	abstract	同盟		同盟			伙	同盟		person.social			none				合伙人	伙	同盟	bound	restricted	direct	direct		partner
+partner	object	object	none	合伙人	abstract	同盟		同盟			伙	同盟		person.social			none				合伙人	伙	同盟	bound	natural	direct	direct		partner
 partner	action	transitive	none	结伴	abstract	结伴			结伴		伴	结伴		action.social		social	transitive	person|social			结伴	伴	结伴	bound	complete	direct	direct		partner
 partnered	action	transitive	none	结伴	abstract	结伴			结伴		伴	结伴		action.social		social	transitive	person|social			结伴	伴	结伴	bound	complete	direct	direct		partner
 partnered	state	transitive	result	结伴	abstract	结伴	结伴的		结伴		伴	结伴		property.social		social	transitive	person|social			结伴	伴	结伴	bound	complete	direct	direct		partnered
 partnering	action	transitive	process	结伴	abstract	结伴			结伴		伴	结伴		action.social		social	transitive	person|social			结伴	伴	结伴	bound	complete	direct	direct		partnering
-partners	object	object	none	合伙人	abstract	同盟		同盟			伙	同盟		person.social			none				合伙人	伙	同盟	bound	restricted	direct	direct		partner
+partners	object	object	none	合伙人	abstract	同盟		同盟			伙	同盟		person.social			none				合伙人	伙	同盟	bound	natural	direct	direct		partner
 partners	action	transitive	none	结伴	abstract	结伴			结伴		伴	结伴		action.social		social	transitive	person|social			结伴	伴	结伴	bound	complete	direct	direct		partner
 pass	object	landscape	none	山口	landscape	山口		山口			隘	山口		terrain.path			none				山口	隘	山口	bound	natural	direct	direct		pass
 pass	action	transitive	none	经过	abstract	经过			经过		过	经过		action.change		change	transitive	physical|concept.relation|quantity			经过	过	经过	bound	complete	direct	direct		pass
@@ -4638,8 +4638,8 @@ pear	object	plant	none	梨	plant	梨果		梨果			梨	梨果		fruit.pome			none	
 pearl	object	material	none	珠	material	珍珠	珍珠	珍珠			珠	珍珠		material.gem			none				珍珠	珠	珍珠	natural	natural	direct	direct		pearl
 pearls	object	material	none	珠	material	珍珠	珍珠	珍珠			珠	珍珠		material.gem			none				珍珠	珠	珍珠	natural	natural	direct	direct		pearl
 pears	object	plant	none	梨	plant	梨果		梨果			梨	梨果		fruit.pome			none				梨子	梨	梨子	natural	natural	direct	direct		pear
-pebble	object	landscape	none	小圆石	landscape	卵石		卵石			砾	卵石		material.rock			none				小圆石	砾	卵石	restricted	restricted	direct	direct		pebble
-pebbles	object	landscape	none	小圆石	landscape	卵石		卵石			砾	卵石		material.rock			none				小圆石	砾	卵石	restricted	restricted	direct	direct		pebble
+pebble	object	landscape	none	小圆石	landscape	卵石		卵石			砾	卵石		material.rock			none				小圆石	砾	卵石	bound	natural	direct	direct		pebble
+pebbles	object	landscape	none	小圆石	landscape	卵石		卵石			砾	卵石		material.rock			none				小圆石	砾	卵石	bound	natural	direct	direct		pebble
 peek	object	artifact	none	偷看	artifact	偷看		偷看			窥	偷看		concept.activity			none				偷看	窥	偷看	restricted	complete	direct	direct		peek
 peek	action	transitive	none	偷看	abstract	偷看			偷看		窥	偷看		action.seek		seek	transitive	physical|concept			偷看	窥	偷看	restricted	complete	direct	direct		peek
 peeked	action	transitive	none	偷看	abstract	偷看			偷看		窥	偷看		action.seek		seek	transitive	physical|concept			偷看	窥	偷看	restricted	complete	direct	direct		peek
@@ -4693,11 +4693,11 @@ phantom	object	object	none	幻影	abstract|magic	幻影		幻影			幻	幻影		ma
 phantoms	object	object	none	幻影	abstract|magic	幻影		幻影			幻	幻影		magic.spirit			none				幻影	幻	幻影	bound	complete	direct	direct		phantom
 phlegm	object	body	none	痰	body	浊痰		浊痰			痰	浊痰		fluid.mucus			none				痰	痰	痰液	natural	natural	direct	direct		phlegm
 phlegms	object	body	none	痰	body	浊痰		浊痰			痰	浊痰		fluid.mucus			none				痰	痰	痰液	natural	natural	direct	direct		phlegm
-phrase	object	abstract	none	惯用语	abstract	言辞		言辞			言	言辞		voice.text			none				惯用语	言	言辞	restricted	restricted	direct	direct		phrase
+phrase	object	abstract	none	惯用语	abstract	言辞		言辞			言	言辞		voice.text			none				惯用语	言	言辞	bound	natural	direct	direct		phrase
 phrase	action	transitive	none	措辞	abstract	措辞			措辞		辞	措辞		action.communicate		communicate	transitive	person|voice|concept			措辞	辞	措辞	bound	complete	direct	direct		phrase
 phrased	action	transitive	none	措辞	abstract	措辞			措辞		辞	措辞		action.communicate		communicate	transitive	person|voice|concept			措辞	辞	措辞	bound	complete	direct	direct		phrase
 phrased	state	transitive	result	措辞	abstract	措辞	措辞的		措辞		辞	措辞		property.social		communicate	transitive	person|voice|concept			措辞	辞	措辞	bound	complete	direct	direct		phrased
-phrases	object	abstract	none	惯用语	abstract	言辞		言辞			言	言辞		voice.text			none				惯用语	言	言辞	restricted	restricted	direct	direct		phrase
+phrases	object	abstract	none	惯用语	abstract	言辞		言辞			言	言辞		voice.text			none				惯用语	言	言辞	bound	natural	direct	direct		phrase
 phrases	action	transitive	none	措辞	abstract	措辞			措辞		辞	措辞		action.communicate		communicate	transitive	person|voice|concept			措辞	辞	措辞	bound	complete	direct	direct		phrase
 phrasing	action	transitive	process	措辞	abstract	措辞			措辞		辞	措辞		action.communicate		communicate	transitive	person|voice|concept			措辞	辞	措辞	bound	complete	direct	direct		phrasing
 pick	object	artifact	none	鹤嘴锄	artifact	矿镐		矿镐			镐	矿镐		tool.hand			none				鹤嘴锄	镐	鹤镐	restricted	natural	direct	direct		pick
@@ -4736,8 +4736,8 @@ plane	object	landscape	none	平面	landscape	平面		平面			平	平面		concep
 planes	object	landscape	none	平面	landscape	平面		平面			平	平面		concept.form			none				平面	平	平面	bound	complete	direct	direct		plane
 planet	object	celestial	none	行星	celestial	行星		行星			星	行星		celestial.body			none				行星	星	行星	bound	natural	direct	direct		planet
 planets	object	celestial	none	行星	celestial	行星		行星			星	行星		celestial.body			none				行星	星	行星	bound	natural	direct	direct		planet
-plank	object	artifact	none	厚木板	artifact	厚板		厚板			板	厚板		tool.component			none				厚木板	板	厚板	bound	restricted	direct	direct		plank
-planks	object	artifact	none	厚木板	artifact	厚板		厚板			板	厚板		tool.component			none				厚木板	板	厚板	bound	restricted	direct	direct		plank
+plank	object	artifact	none	厚木板	artifact	厚板		厚板			板	厚板		tool.component			none				厚木板	板	厚板	bound	natural	direct	direct		plank
+planks	object	artifact	none	厚木板	artifact	厚板		厚板			板	厚板		tool.component			none				厚木板	板	厚板	bound	natural	direct	direct		plank
 planned	action	transitive	none	计划	abstract	计划			计划		计	计划		action.cognition		cognition	transitive	physical|concept			计划	计	计划	bound	complete	direct	direct		plan
 planned	state	transitive	result	计划	abstract	计划	计划的		计划		计	计划		property.mental		cognition	transitive	physical|concept			计划	计	计划	bound	complete	direct	direct		planned
 planning	action	transitive	process	计划	abstract	计划			计划		计	计划		action.cognition		cognition	transitive	physical|concept			计划	计	计划	bound	complete	direct	direct		planning
@@ -4866,8 +4866,8 @@ praised	state	transitive	result	赞颂	abstract	赞颂	赞颂的		赞颂		颂	�
 praises	object	object	none	赞美	abstract	赞美		赞美			誉	赞美		voice.speech			none				赞美	誉	赞美	restricted	complete	direct	direct		praise
 praises	action	transitive	none	赞颂	abstract	赞颂			赞颂		颂	赞颂		action.communicate		communicate	transitive	person|voice|concept			赞颂	颂	赞颂	bound	complete	direct	direct		praise
 praising	action	transitive	process	赞颂	abstract	赞颂			赞颂		颂	赞颂		action.communicate		communicate	transitive	person|voice|concept			赞颂	颂	赞颂	bound	complete	direct	direct		praising
-prank	object	artifact	none	恶作剧	artifact	戏谑		戏谑			谑	戏谑		social.relation			none				恶作剧	谑	戏谑	restricted	restricted	direct	direct		prank
-pranks	object	artifact	none	恶作剧	artifact	戏谑		戏谑			谑	戏谑		social.relation			none				恶作剧	谑	戏谑	restricted	restricted	direct	direct		prank
+prank	object	artifact	none	恶作剧	artifact	戏谑		戏谑			谑	戏谑		social.relation			none				恶作剧	谑	戏谑	bound	natural	direct	direct		prank
+pranks	object	artifact	none	恶作剧	artifact	戏谑		戏谑			谑	戏谑		social.relation			none				恶作剧	谑	戏谑	bound	natural	direct	direct		prank
 pregnancies	object	object	none	怀孕	abstract	怀孕		怀孕			孕	怀孕		ruin.life			none				怀孕	孕	怀孕	bound	complete	direct	direct		pregnancies
 pregnancy	object	object	none	怀孕	abstract	怀孕		怀孕			孕	怀孕		ruin.life			none				怀孕	孕	怀孕	bound	complete	direct	direct		pregnancies
 pregnant	quality	abstract	none	有孕	abstract|quality	有孕	怀孕的				孕	有孕		property.vitality			none				有孕	孕	有孕	bound	complete	direct	direct		pregnant
@@ -5001,8 +5001,8 @@ quill	object	artifact	none	羽毛笔	artifact	翎笔		翎笔			翎	翎笔		tool.
 quills	object	artifact	none	羽毛笔	artifact	翎笔		翎笔			翎	翎笔		tool.hand			none				羽毛笔	翎	羽笔	restricted	natural	direct	direct		quill
 rabbit	object	creature	none	兔	creature	兔子		兔子			兔	兔子		creature.mammal			none				兔子	兔	兔子	natural	natural	direct	direct		bunnies
 rabbits	object	creature	none	兔	creature	兔子		兔子			兔	兔子		creature.mammal			none				兔子	兔	兔子	natural	natural	direct	direct		bunnies
-rabble	object	object	none	乌合之众	abstract	乌合		乌合			群	乌合		social.group			none				乌合之众	群	乌合	restricted	restricted	direct	direct		rabble
-rabbles	object	object	none	乌合之众	abstract	乌合		乌合			群	乌合		social.group			none				乌合之众	群	乌合	restricted	restricted	direct	direct		rabble
+rabble	object	object	none	乌合之众	abstract	乌合		乌合			群	乌合		social.group			none				乌合之众	群	乌合	bound	natural	direct	direct		rabble
+rabbles	object	object	none	乌合之众	abstract	乌合		乌合			群	乌合		social.group			none				乌合之众	群	乌合	bound	natural	direct	direct		rabble
 race	object	object	none	种族	abstract	族裔		族裔			族	族裔		creature.general			none				种族	族	种族	bound	complete	direct	direct		race
 race	object	object	none	赛跑	abstract	竞逐		竞逐			竞	竞逐		concept.activity			none				赛跑	竞	赛跑	restricted	complete	direct	direct		race
 race	action	intransitive	none	赛跑	abstract	竞逐			赛跑		竞	竞逐		action.move		move	intransitive		creature|person|weather.wind|weather.storm|weather.water|terrain.water		赛跑	竞	赛跑	restricted	complete	direct	direct		race
@@ -5092,8 +5092,8 @@ reasoned	state	intransitive	result	推理	abstract	推理	推理的		推理		推
 reasoning	action	intransitive	process	推理	abstract	推理			推理		推	推理		action.cognition		cognition	intransitive		person		推理	推	推理	bound	complete	direct	direct		reasoning
 reasons	object	abstract	none	理由	abstract	理由		理由			理	理由		concept.reason			none				理由	理	理由	bound	complete	direct	direct		reason
 reasons	action	intransitive	none	推理	abstract	推理			推理		推	推理		action.cognition		cognition	intransitive		person		推理	推	推理	bound	complete	direct	direct		reason
-recluse	object	person	none	隐遁者	person	隐遁者		隐遁者			遁	隐士		person.social			none				隐遁者	遁	隐士	bound	restricted	direct	direct		recluse
-recluses	object	person	none	隐遁者	person	隐遁者		隐遁者			遁	隐士		person.social			none				隐遁者	遁	隐士	bound	restricted	direct	direct		recluse
+recluse	object	person	none	隐遁者	person	隐遁者		隐遁者			遁	隐士		person.social			none				隐遁者	遁	隐士	bound	natural	direct	direct		recluse
+recluses	object	person	none	隐遁者	person	隐遁者		隐遁者			遁	隐士		person.social			none				隐遁者	遁	隐士	bound	natural	direct	direct		recluse
 reclusive	quality	person	none	隐遁	person|quality	隐遁	隐遁				隐	隐遁		property.social			none				隐遁	隐	隐遁	bound	complete	direct	direct		reclusive
 recreation	object	abstract	none	娱乐	abstract	娱乐		娱乐			乐	娱乐		emotion.joy			none				娱乐	乐	娱乐	bound	complete	direct	direct		diversion
 recreations	object	abstract	none	娱乐	abstract	娱乐		娱乐			乐	娱乐		emotion.joy			none				娱乐	乐	娱乐	bound	complete	direct	direct		diversion
@@ -5524,12 +5524,12 @@ scraping	action	transitive	process	刮除	abstract	刮除			刮除		刮	刮除		
 scraps	object	abstract	none	碎片	abstract	碎片		碎片			屑	碎片		tool.component			none				碎片	屑	碎片	restricted	complete	direct	direct		scrap
 scratch	object	object	none	抓痕	abstract	抓痕		抓痕			痕	抓痕		ruin.damage			none				抓痕	痕	抓痕	bound	complete	direct	direct		scratch
 scratches	object	object	none	抓痕	abstract	抓痕		抓痕			痕	抓痕		ruin.damage			none				抓痕	痕	抓痕	bound	complete	direct	direct		scratch
-scream	object	object	none	尖叫声	abstract|voice	咆哮		咆哮			啸	咆哮		voice.sound			none				尖叫声	啸	咆哮	restricted	restricted	direct	direct		scream
+scream	object	object	none	尖叫声	abstract|voice	咆哮		咆哮			啸	咆哮		voice.sound			none				尖叫声	啸	尖啸	bound	natural	direct	direct		scream
 scream	action	intransitive	none	尖叫	voice	咆哮			尖叫		啸	咆哮		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		尖叫	啸	尖叫	restricted	complete	direct	direct		scream
 screamed	action	intransitive	none	尖叫	voice	咆哮			尖叫		啸	咆哮		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		尖叫	啸	尖叫	restricted	complete	direct	direct		scream
 screamed	state	intransitive	result	尖叫	voice	咆哮	咆哮的		尖叫		啸	咆哮		property.sound		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		尖叫	啸	尖叫	restricted	complete	direct	direct		screamed
 screaming	action	intransitive	process	尖叫	voice	咆哮			尖叫		啸	咆哮		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		尖叫	啸	尖叫	restricted	complete	direct	direct		screaming
-screams	object	object	none	尖叫声	abstract|voice	咆哮		咆哮			啸	咆哮		voice.sound			none				尖叫声	啸	咆哮	restricted	restricted	direct	direct		scream
+screams	object	object	none	尖叫声	abstract|voice	咆哮		咆哮			啸	咆哮		voice.sound			none				尖叫声	啸	尖啸	bound	natural	direct	direct		scream
 screams	action	intransitive	none	尖叫	voice	咆哮			尖叫		啸	咆哮		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		尖叫	啸	尖叫	restricted	complete	direct	direct		scream
 scribe	agent	person	none	文书	person|craft	文书		文书	抄	文书	书	文书		person.agent		craft	transitive	physical		文书	文书	书	抄写	stem	stem	direct	direct		scribe
 scribe	action	person|transitive	none	抄写	person|craft	抄写			抄写		抄	抄写		action.craft		craft	transitive	physical			抄写	抄	抄写	bound	complete	direct	direct		scribe
@@ -5832,13 +5832,13 @@ sizzled	state	intransitive	result	嘶响	abstract	嘶响	嘶响的		嘶响		嘶	
 sizzles	action	intransitive	none	嘶响	abstract	嘶响			嘶响		嘶	嘶响		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		嘶响	嘶	嘶响	bound	complete	direct	direct		sizzle
 sizzling	quality	abstract	none	嘶响	abstract|quality	嘶响	嘶响				嘶	嘶响		property.sound			none				嘶响	嘶	嘶响	bound	complete	direct	direct		sizzling
 sizzling	action	intransitive	process	嘶响	abstract	嘶响			嘶响		嘶	嘶响		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		嘶响	嘶	嘶响	bound	complete	direct	direct		sizzling
-skewer	object	object	none	串肉棒	abstract	肉签		肉签			签	肉签		tool.hand			none				串肉棒	签	肉签	restricted	restricted	direct	direct		skewer
+skewer	object	object	none	串肉棒	abstract	肉签		肉签			签	肉签		tool.hand			none				串肉棒	签	肉签	bound	natural	direct	direct		skewer
 skewer	action	transitive	none	贯	abstract	贯穿			贯穿		贯	贯穿		action.strike		strike	transitive	physical			刺穿	贯	贯穿	natural	natural	direct	direct		gore
 skewered	quality	abstract	none	串起	abstract|quality	串起	串起				串	串起		property.change			none				串起	串	串起	bound	complete	direct	direct		skewered
 skewered	action	transitive	none	贯	abstract	贯穿			贯穿		贯	贯穿		action.strike		strike	transitive	physical			刺穿	贯	贯穿	natural	natural	direct	direct		gore
 skewered	state	transitive	result	贯	abstract	贯穿	贯穿的		贯穿		贯	贯穿		property.damage		strike	transitive	physical			刺穿	贯	贯穿	natural	natural	direct	direct		impaled
 skewering	action	transitive	process	贯	abstract	贯穿			贯穿		贯	贯穿		action.strike		strike	transitive	physical			刺穿	贯	贯穿	natural	natural	direct	direct		goring
-skewers	object	object	none	串肉棒	abstract	肉签		肉签			签	肉签		tool.hand			none				串肉棒	签	肉签	restricted	restricted	direct	direct		skewer
+skewers	object	object	none	串肉棒	abstract	肉签		肉签			签	肉签		tool.hand			none				串肉棒	签	肉签	bound	natural	direct	direct		skewer
 skewers	action	transitive	none	贯	abstract	贯穿			贯穿		贯	贯穿		action.strike		strike	transitive	physical			刺穿	贯	贯穿	natural	natural	direct	direct		gore
 skies	object	celestial	none	天空	celestial	苍穹	天	天			天	苍穹		celestial.sky			none				天空	天	天空	bound	natural	direct	direct		skies
 skin	object	body	none	皮肤	body	皮肤		皮肤			肤	皮肤		body.wing_scale			none				皮肤	肤	皮肤	bound	complete	direct	direct		skin
@@ -5883,8 +5883,8 @@ sliding	action	intransitive	process	滑	motion	滑行			滑		滑	滑行		action.
 slim	quality	abstract	none	瘦	abstract|quality	瘦削	瘦削				瘦	瘦削		property.size			none				瘦	瘦	瘦削	natural	natural	direct	direct		lean
 slime	object	abstract	none	烂泥	abstract	烂泥		烂泥			泥	烂泥		material.slime			none				烂泥	泥	烂泥	bound	complete	direct	direct		slime
 slimes	object	abstract	none	烂泥	abstract	烂泥		烂泥			泥	烂泥		material.slime			none				烂泥	泥	烂泥	bound	complete	direct	direct		slime
-sling	object	weapon	none	投石索	weapon	投石索		投石索			索	投索		weapon.launcher			none				投石索	索	投索	bound	restricted	direct	direct		sling
-slings	object	weapon	none	投石索	weapon	投石索		投石索			索	投索		weapon.launcher			none				投石索	索	投索	bound	restricted	direct	direct		sling
+sling	object	weapon	none	投石索	weapon	投石索		投石索			索	投索		weapon.launcher			none				投石索	索	投索	bound	natural	direct	direct		sling
+slings	object	weapon	none	投石索	weapon	投石索		投石索			索	投索		weapon.launcher			none				投石索	索	投索	bound	natural	direct	direct		sling
 slink	action	intransitive	none	潜行	motion	潜行			潜行		潜	潜行		action.move		move	intransitive		creature|person|weather.wind|weather.storm|weather.water|terrain.water		潜行	潜	潜行	bound	complete	direct	direct		prowl
 slinking	action	intransitive	process	潜行	motion	潜行			潜行		潜	潜行		action.move		move	intransitive		creature|person|weather.wind|weather.storm|weather.water|terrain.water		潜行	潜	潜行	bound	complete	direct	direct		prowling
 slinks	action	intransitive	none	潜行	motion	潜行			潜行		潜	潜行		action.move		move	intransitive		creature|person|weather.wind|weather.storm|weather.water|terrain.water		潜行	潜	潜行	bound	complete	direct	direct		prowl
@@ -6161,7 +6161,7 @@ spoil	action	abstract	none	损坏	abstract	损坏			损坏		损	损坏		action.c
 spoiled	action	abstract	none	损坏	abstract	损坏			损坏		损	损坏		action.change		change	intransitive		physical|quantity|concept.relation		损坏	损	损坏	bound	complete	direct	direct		spoil
 spoiled	state	abstract	result	损坏	abstract	损坏	损坏的		损坏		损	损坏		property.change		change	intransitive		physical|quantity|concept.relation		损坏	损	损坏	bound	complete	direct	direct		spoiled
 spoiling	action	abstract	process	损坏	abstract	损坏			损坏		损	损坏		action.change		change	intransitive		physical|quantity|concept.relation		损坏	损	损坏	bound	complete	direct	direct		spoiling
-spoils	object	object	none	战利品	abstract	战获		战获			获	战获		tool.artifact			none				战利品	获	战获	restricted	restricted	direct	direct		spoils
+spoils	object	object	none	战利品	abstract	战获		战获			获	战获		tool.artifact			none				战利品	获	战获	bound	natural	direct	direct		spoils
 spoils	action	abstract	none	损坏	abstract	损坏			损坏		损	损坏		action.change		change	intransitive		physical|quantity|concept.relation		损坏	损	损坏	bound	complete	direct	direct		spoil
 spoke	action	transitive	none	言	voice	言语			言说		言	言语		action.vocal		vocal	transitive	voice|person|creature|tool.musical			说话	言	言说	natural	natural	direct	direct		speak
 spoken	state	transitive	result	言	voice	言语	言语的		言说		言	言语		property.sound		vocal	transitive	voice|person|creature|tool.musical			说话	言	言说	natural	natural	direct	direct		spoken
@@ -6379,8 +6379,8 @@ stormy	quality	nature	none	暴风雨	nature|weather|quality	风暴	风暴				暴
 strange	quality	abstract	none	奇异	abstract|quality	奇异	奇异				奇	奇异		property.value			none				奇异	奇	奇异	bound	complete	direct	direct		strange
 strangeness	object	object	none	奇异	abstract	奇异		奇异			奇	奇异		property.value			none				奇异	奇	奇异	bound	complete	direct	direct		strangeness
 strangenesses	object	object	none	奇异	abstract	奇异		奇异			奇	奇异		property.value			none				奇异	奇	奇异	bound	complete	direct	direct		strangeness
-stranger	object	person	none	陌生人	person	异客		异客			异	异客		person.social			none				陌生人	异	异客	restricted	restricted	direct	direct		stranger
-strangers	object	person	none	陌生人	person	异客		异客			异	异客		person.social			none				陌生人	异	异客	restricted	restricted	direct	direct		stranger
+stranger	object	person	none	陌生人	person	异客		异客			异	异客		person.social			none				陌生人	异	异客	bound	natural	direct	direct		stranger
+strangers	object	person	none	陌生人	person	异客		异客			异	异客		person.social			none				陌生人	异	异客	bound	natural	direct	direct		stranger
 strangle	action	transitive	none	勒死	abstract	勒死			勒死		勒	勒死		action.strike		strike	transitive	physical			勒死	勒	勒死	bound	complete	direct	direct		strangle
 strangled	quality	abstract	none	扼死	abstract|quality	扼死	扼死				扼	扼死		property.vitality			none				扼死	扼	扼死	bound	complete	direct	direct		strangled
 strangled	action	transitive	none	勒死	abstract	勒死			勒死		勒	勒死		action.strike		strike	transitive	physical			勒死	勒	勒死	bound	complete	direct	direct		strangle
@@ -6739,13 +6739,13 @@ thundering	action	nature	process	雷鸣	nature|weather	雷鸣			雷鸣		雷	雷�
 thunders	object	nature	none	雷	nature|weather	雷霆		雷霆			雷	雷霆		weather.thunder			none				雷	雷	雷鸣	bound	natural	direct	direct		thunder
 thunders	action	nature	none	雷鸣	nature|weather	雷鸣			雷鸣		雷	雷鸣		action.vocal		vocal	intransitive		weather.thunder|weather.storm		打雷	雷	雷鸣	bound	complete	direct	direct		thunder
 tick	object	creature	none	蜱虫	creature	蜱虫		蜱虫			蜱	蜱虫		creature.insect			none				蜱虫	蜱	蜱虫	bound	complete	direct	direct		tick
-tick	object	object	none	滴答声	abstract	滴答		滴答			滴	滴答		voice.sound			none				滴答声	滴	滴答	bound	restricted	direct	direct		tick
+tick	object	object	none	滴答声	abstract	滴答		滴答			滴	滴答		voice.sound			none				滴答声	滴	滴答	bound	natural	direct	direct		tick
 tick	action	abstract	none	滴答响	abstract	滴答			滴答		滴	滴答		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		滴答响	滴	滴答	bound	natural	direct	direct		tick
 ticked	action	abstract	none	滴答响	abstract	滴答			滴答		滴	滴答		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		滴答响	滴	滴答	bound	natural	direct	direct		tick
 ticked	state	abstract	result	滴答响	abstract	滴答	滴答的		滴答		滴	滴答		property.sound		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		滴答响	滴	滴答	bound	natural	direct	direct		ticked
 ticking	action	abstract	process	滴答响	abstract	滴答			滴答		滴	滴答		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		滴答响	滴	滴答	bound	natural	direct	direct		ticking
 ticks	object	creature	none	蜱虫	creature	蜱虫		蜱虫			蜱	蜱虫		creature.insect			none				蜱虫	蜱	蜱虫	bound	complete	direct	direct		tick
-ticks	object	object	none	滴答声	abstract	滴答		滴答			滴	滴答		voice.sound			none				滴答声	滴	滴答	bound	restricted	direct	direct		tick
+ticks	object	object	none	滴答声	abstract	滴答		滴答			滴	滴答		voice.sound			none				滴答声	滴	滴答	bound	natural	direct	direct		tick
 ticks	action	abstract	none	滴答响	abstract	滴答			滴答		滴	滴答		action.vocal		vocal	intransitive		creature|person|tool.musical|weather.thunder|weather.storm|weather.water		滴答响	滴	滴答	bound	natural	direct	direct		tick
 tight	quality	abstract	none	紧绷	abstract|quality	紧绷	紧绷				绷	紧绷		property.shape			none				紧绷	绷	紧绷	bound	complete	direct	direct		tight
 tightness	object	object	none	紧束	abstract	紧束		紧束			束	紧束		property.texture			none				紧束	束	紧束	bound	complete	direct	direct		tightness
@@ -7041,7 +7041,7 @@ umbras	object	nature	none	影	nature	暗影		暗影			影	暗影		light.shadow		
 un	prefix	prefix	none	非	prefix	非	非				非			prefix.negation			none				非	非	并非	bound	natural	direct	direct		un
 unbridled	quality	abstract	none	无羁	abstract|quality	无羁	无羁				放	无羁		property.relation			none				无羁	放	无羁	restricted	complete	direct	direct		unbridled
 uncertain	quality	abstract	none	不确定	abstract|quality	不定	不定				疑	不定		property.relation			none				不确定	疑	不定	restricted	natural	direct	direct		uncertain
-uncertainty	object	abstract	none	不确定	abstract	不定		不定			疑	不定		concept.event			none				不确定	疑	不定	restricted	restricted	direct	direct		uncertainty
+uncertainty	object	abstract	none	不确定	abstract	不定		不定			疑	不定		concept.event			none				不确定	疑	不定	bound	natural	direct	direct		uncertainty
 uncle	object	abstract	none	叔父	abstract|social	叔父		叔父			叔	叔父		person.kin			none				叔父	叔	叔父	bound	complete	direct	direct		uncle
 uncles	object	abstract	none	叔父	abstract|social	叔父		叔父			叔	叔父		person.kin			none				叔父	叔	叔父	bound	complete	direct	direct		uncle
 uncommon	quality	abstract	none	不寻常	abstract|quality	奇异	奇异				异	奇异		property.relation			none				不寻常	异	奇异	restricted	natural	direct	direct		uncommon
@@ -7552,9 +7552,9 @@ wrath	object	emotion	none	怒	emotion	狂怒		狂怒			怒	狂怒		emotion.anger
 wraths	object	emotion	none	怒	emotion	狂怒		狂怒			怒	狂怒		emotion.anger			none				愤怒	怒	愤怒	natural	natural	direct	direct		anger
 wreath	object	abstract	none	花圈	abstract	花圈		花圈			环	花圈		attire.ornament			none				花圈	环	花圈	restricted	complete	direct	direct		wreath
 wreaths	object	abstract	none	花圈	abstract	花圈		花圈			环	花圈		attire.ornament			none				花圈	环	花圈	restricted	complete	direct	direct		wreath
-wretch	object	person	none	可怜虫	person	悲悯		悲悯			悯	悲悯		person.social			none				可怜虫	悯	悲悯	restricted	restricted	direct	direct		wretch
+wretch	object	person	none	可怜虫	person	悲悯		悲悯			悯	悲悯		person.social			none				可怜虫	悯	悲悯	bound	natural	direct	direct		wretch
 wretched	quality	person	none	悲惨	person|quality	悲惨	悲惨				悲	悲惨		property.emotion			none				悲惨	悲	悲惨	bound	complete	direct	direct		wretched
-wretches	object	person	none	可怜虫	person	悲悯		悲悯			悯	悲悯		person.social			none				可怜虫	悯	悲悯	restricted	restricted	direct	direct		wretch
+wretches	object	person	none	可怜虫	person	悲悯		悲悯			悯	悲悯		person.social			none				可怜虫	悯	悲悯	bound	natural	direct	direct		wretch
 wring	action	transitive	none	拧	abstract	绞拧			拧		拧	绞拧		action.craft		craft	transitive	physical			拧	拧	绞拧	natural	natural	direct	direct		wring
 wringing	action	transitive	process	拧	abstract	绞拧			拧		拧	绞拧		action.craft		craft	transitive	physical			拧	拧	绞拧	natural	natural	direct	direct		wringing
 wrings	action	transitive	none	拧	abstract	绞拧			拧		拧	绞拧		action.craft		craft	transitive	physical			拧	拧	绞拧	natural	natural	direct	direct		wring
