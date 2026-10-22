@@ -180,7 +180,9 @@ static void capture_native_character_relation(graphicst *graphics, const NativeS
     if (original) callback.call_native([&] { original(graphics, source, static_cast<NativeJustification>(0), 0); });
 }
 
-template<bool Children>
+enum class NativeCharacterOverviewCount { Lovers, Children, Pets };
+
+template<NativeCharacterOverviewCount Kind>
 static void capture_native_character_overview_count(graphicst *graphics,
         const NativeString *source, int32_t count) {
     NativeInputCallbackScope callback;
@@ -194,13 +196,18 @@ static void capture_native_character_overview_count(graphicst *graphics,
                     graphics->screenx < 0 || graphics->screenx >= graphics->dimx ||
                     graphics->screeny < 0 || graphics->screeny >= graphics->dimy ||
                     count < 2 || !native_string_view(source, &text, 256) || text.empty()) return;
-            // These two native branches count historical-figure links of
-            // type 3 (children) and type 5 (lovers), without filtering their
-            // targets. The relay reads that exact int32 accumulator from the
-            // caller frame. The source supplies only the native draw span;
-            // neither the relationship nor its number is parsed from text.
+            // The family branches count historical-figure links of type 3
+            // (children) and type 5 (lovers). The pet branch counts units
+            // whose pet-owner ID is the current unit. Each relay reads the
+            // exact int32 accumulator from the native caller frame. A lone
+            // relative/pet uses its identity branch; zero draws no row.
+            // The source supplies only the native draw span, never the kind
+            // or number. See data/extracted/character-overview-family.
+            constexpr std::string_view suffix =
+                Kind == NativeCharacterOverviewCount::Children ? " 个孩子" :
+                Kind == NativeCharacterOverviewCount::Pets ? " 只宠物" : " 位爱人";
             const std::string target = std::to_string(count) +
-                (Children ? " 个孩子" : " 位爱人");
+                std::string(suffix);
             remember_native_character_relation(graphics->screenx, graphics->screeny,
                 text, target, graphics, true);
         };
@@ -247,16 +254,21 @@ static bool install_native_character_relations_hook() {
     const NativeCaptionSignature signatures[] = {
         // Overview accumulators and their number-formatter arguments share
         // this caller frame in both PE editions. Type 3 increments children
-        // at +da0; type 5 increments lovers at +d9c.
+        // at +da0; type 5 increments lovers at +d9c; matched pet owners
+        // increment pets at +da4.
         {0x1602b8, {0x8b,0x84,0x24,0xa0,0x0d,0x00,0x00,0xff,0xc0,
             0x89,0x84,0x24,0xa0,0x0d,0x00,0x00}},
         {0x160330, {0x8b,0x84,0x24,0x9c,0x0d,0x00,0x00,0xff,0xc0,
             0x89,0x84,0x24,0x9c,0x0d,0x00,0x00}},
+        {0x1607fa, {0x8b,0x84,0x24,0xa4,0x0d,0x00,0x00,0xff,0xc0,
+            0x89,0x84,0x24,0xa4,0x0d,0x00,0x00}},
         {0x1603a6, {0x48,0x8d,0x94,0x24,0x60,0x41,0x00,0x00,
             0x8b,0x8c,0x24,0x9c,0x0d,0x00,0x00}},
         {0x160584, {0x48,0x8d,0x94,0x24,0x40,0x42,0x00,0x00,
             0x8b,0x8c,0x24,0xa0,0x0d,0x00,0x00}},
-        // The two count rows draw their own stack strings with zero
+        {0x160870, {0x48,0x8d,0x94,0x24,0x20,0x42,0x00,0x00,
+            0x8b,0x8c,0x24,0xa4,0x0d,0x00,0x00}},
+        // The three count rows draw their own stack strings with zero
         // justification/width, leaving R8 available to carry the count.
         {0x1603ce, {0x45,0x33,0xc9,0x45,0x33,0xc0,
             0x48,0x8d,0x94,0x24,0x60,0x41,0x00,0x00,
@@ -264,6 +276,9 @@ static bool install_native_character_relations_hook() {
         {0x1605ac, {0x45,0x33,0xc9,0x45,0x33,0xc0,
             0x48,0x8d,0x94,0x24,0x40,0x42,0x00,0x00,
             0x48,0x8d,0x0d,0x2f,0x9e,0x4e,0x02,0xe8,0x9a,0x93,0x97,0x00}},
+        {0x160898, {0x45,0x33,0xc9,0x45,0x33,0xc0,
+            0x48,0x8d,0x94,0x24,0x20,0x42,0x00,0x00,
+            0x48,0x8d,0x0d,0x43,0x9b,0x4e,0x02,0xe8,0xae,0x90,0x97,0x00}},
         // Identity draw copies this exact row from sheet.names before resize.
         {0x176c6a, {0x48,0x8b,0x84,0x24,0x60,0xb2,0x00,0x00,
             0x48,0x05,0x40,0x18,0x00,0x00}},
@@ -315,11 +330,14 @@ static bool install_native_character_relations_hook() {
         // return-address adjustment. The distinct call site supplies the
         // relationship kind; no English caption participates in selection.
         {0x1603e3, 0xad9960,
-        reinterpret_cast<const void *>(&capture_native_character_overview_count<false>),
+        reinterpret_cast<const void *>(&capture_native_character_overview_count<NativeCharacterOverviewCount::Lovers>),
         {0x44,0x8b,0x84,0x24,0xa4,0x0d,0x00,0x00}},
         {0x1605c1, 0xad9960,
-        reinterpret_cast<const void *>(&capture_native_character_overview_count<true>),
+        reinterpret_cast<const void *>(&capture_native_character_overview_count<NativeCharacterOverviewCount::Children>),
         {0x44,0x8b,0x84,0x24,0xa8,0x0d,0x00,0x00}},
+        {0x1608ad, 0xad9960,
+        reinterpret_cast<const void *>(&capture_native_character_overview_count<NativeCharacterOverviewCount::Pets>),
+        {0x44,0x8b,0x84,0x24,0xac,0x0d,0x00,0x00}},
         {0x176ca6, 0x6f5d0,
         reinterpret_cast<const void *>(&capture_native_character_relation_identity),
         {0x4c,0x8b,0x84,0x24,0x68,0xb2,0x00,0x00,

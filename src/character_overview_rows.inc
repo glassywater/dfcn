@@ -20,9 +20,10 @@ std::vector<NativeTextCard> Overlay::capture_character_overview_rows() const {
     };
     const auto is_age_row = [](std::string_view source) {
         const std::string text = lower(normalize_utterance(source));
-        size_t end = 0;
+        size_t end = text.starts_with('-') ? 1 : 0;
+        const size_t digits = end;
         while (end < text.size() && text[end] >= '0' && text[end] <= '9') ++end;
-        if (end == 0) return false;
+        if (end == digits) return false;
         const std::string_view rest(text.data() + end, text.size() - end);
         for (std::string_view suffix : {" year old", " years old"}) {
             if (rest.starts_with(suffix) &&
@@ -99,7 +100,7 @@ void Overlay::append_character_overview_identities(
         std::vector<std::string> &screen_rows, std::vector<Match> &matches,
         int only_y) const {
     if (!native_character_translation_active(gps_)) return;
-    // The two native count draw calls generate these targets from their
+    // The native family/pet count draw calls generate these targets from their
     // live stack counters. Bind them by their current draw coordinates;
     // neither the English noun nor its printed digits select a translation.
     const auto relationship_counts = captured_native_character_relations(gps_, true);

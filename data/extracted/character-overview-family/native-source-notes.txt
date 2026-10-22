@@ -1,0 +1,51 @@
+人物概述页：年龄、性别、配偶、爱人、孩子与宠物格的原生来源
+
+范围与来源
+本目录对应用户第二张放大图中的整个左上格。2026-10-23 实际读取 data/runtime/native-pe-images.json 指定的两份 Windows PE，使用 objdump 保留原始机器码，并用已安装的 Ghidra 12.1.4 对两版分别执行实际 C 反编译。这里是用户要求的来源提取，不是测试、显示模拟或实机效果记录。
+Reference: PE:6a70a6d9:02711000；父函数 unwind 范围 RVA 0x14ef90..0x1a01c4；此格的完整基本块范围 0x15fc74..0x160969。
+Classic: PE:6a70b91c:0270a000；父函数 unwind 范围 RVA 0x14ef20..0x1a0154；此格范围 0x15fc04..0x1608f9。
+以下调用点、栈槽和分支地址以 Reference 为准；此格 Classic 指令地址减 0x70。供应函数地址不能套用此偏移，分别见 pe-sources.tsv。
+
+pe-*-age-family-pet-cell-region.asm 保留整个格的指令、原始字节及字符串操作数；pe-edges.tsv 保留条件/无条件边以及全部边界进出；pe-calls.tsv 保留直接调用和三个间接虚函数调用；pe-literals.tsv 保留字符串和原生性别字节；pe-page-switch.tsv 保留实际页面表的全部 11 个 selector。
+pe-*-age-family-pet-cell-region.c 是本次 Ghidra 的实际输出。区域不是独立原生函数，入口继承父函数的栈/寄存器，末尾 0x160969 是继续绘制右上属性格的合流点。离线分析把该合流点设为 continuation stub，并在末尾 fallthrough 终止区域；没有改动游戏文件。原始边界和字节仍见 ASM/TSV，不把区域 C 当成完整父函数。
+pe-sources.tsv 记录实际映像路径、SHA256、父函数和动态供应器来源。完整父函数 C/ASM 原地保留于 character-factions，完整动态名称/身份 C/ASM 原地保留于 visitor-unit-identity，避免复制庞大来源树。两个目录的原生映像身份与本次一致。
+
+页面入口与空记录
+ui+0xc0 的页面 switch selector 0 到达此格。先画年龄/性别，再调用 0x13b3090 获取历史人物；为 null 时直接跳到 0x160969，因此后面的配偶、爱人、孩子及宠物均不画。没有单独的“无亲属”或“无宠物”字面文本。
+
+年龄完整分支
+0x15fd72 调用年龄 leaf 0x13b9f90..0x13ba018，Classic 为 0x13b4f00..0x13b4f88；该 leaf 没有 unwind 条目，实际 RET/INT3 对齐确定边界。pe-*-age-in-years.asm 和 .c 保存本次完整实际反编译。
+unit+0x394 != -1 时取它及 +0x398 的年/tick；否则取当前全局年/tick。所有路径都减去 unit+0x39c 和 +0x38c。若 unit+0x390、所选 tick 均 != -1 且全局模式值 <=1，则还用 tick-(unit+0x3a0+unit+0x390) 校正负的年内偏移。没有把结果夹到 0，也没有 unknown 文本或省略年龄的返回分支。
+caller 将返回的 int32 转为十进制，拼接 " Year"，仅 n!=1 时追加 "s"，再拼 " Old"。因此原生形态是 1 Year Old 或 <其他有符号整数> Years Old；负号也属于可能的原生文本。
+
+性别完整分支
+unit+0x12e == 1：追加 ", "，调用 0x1385b10 后追加原生 CP437 字节 0x0b（♂）。unit+0x118 的 0x10000000 置位时在符号前、后分别追加 "x"。
+unit+0x12e == 0：同样流程，但使用字节 0x0c（♀）。其余性别值不追加任何性别文本。
+因此年龄后有五种输出形态：无后缀、", \x0b"、", \x0c"、", x\x0bx"、", x\x0cx"。不能把 x 包裹当成普通后缀字母丢弃。1385b10 在旧来源中的角色名为 name-fallback，此处只是复用完整机器来源，并不按这个分析名推断行为。
+
+配偶、爱人与孩子
+遍历历史人物 +0x118 的链接，每条链接调用虚函数读取类型。实际使用 type 2（配偶）、3（孩子）、5（爱人），其他类型不产此格文本。
+配偶 type 2 每条独立处理；取 link+8 的 HF id 查表，找不到记录不产文字；找到后画 "Spouse: " + 完整动态姓名。这里没有 spouses 计数或性别专用丈夫/妻子文案。
+爱人 type 5：累加 [rsp+0xd9c]，首次可解析的人物指针存 [rsp+0x1600]。计数 >=2 时画 "<n> lovers"；计数 <2 且指针非空时画 "Lover: " + 动态姓名；否则不画文字。
+孩子 type 3：累加 [rsp+0xda0]，首次可解析的人物指针存 [rsp+0x1608]。计数 >=2 时画 "<n> children"；计数 <2 且指针非空时画 "Child: " + 动态姓名；否则不画文字。
+计数来自链接而不是姓名查找成功数：某条链接无法解析 HF 不取消计数。单条链接却无法解析人物时不虚构名字。
+三种单人姓名都先取 HF+0x38，0xc0f630 找到可用当前对象时改由 0xc3a4f0 选其姓名，再调用 0xa946e0(name,string,true,false) 生成完整英文名称；Classic 分别为 0xc0c670、0xc37530、0xa91760。前缀和姓名最终同一 NativeString、同一次 addst 绘制。姓名是动态 language_name 数据，不可能把所有世界生成名称穷举成固定英文词表。
+
+宠物完整分支
+在上述历史人物存在的前提下，扫描全局 0x23e50c8 单位列表，选择 pet+0x3bc == 当前 unit+0x130 的条目。计数 [rsp+0xda4]，首只对象 [rsp+0x17a0]；都在进入此格后清零。
+0x16080f 比较 count 与 2。>=2：0x16087f 将实际计数写成十进制，0x160884 引用 " pets"，0x1608ad 调 addst，源为 [rsp+0x4220]。
+<2 且首只对象非空：0x16093b 调 0x1330c30(pet,string,false)，0x160955 绘制完整动态宠物身份。0 只没有文字；单只显示其身份，不存在 "1 pet" 或 "Pet: " 分支。
+0x1330c30 的完整实际 C/ASM 在 pe-sources.tsv 链接的 visitor-unit-identity 中：按模式、已知身份和姓名可用性选择名称，可能引号包裹姓名，再追加 creature-role；本格第三参数为 false，所以该供应器的附加性别段在此调用关闭。
+若 pet+0x110 的 0x4000000 置位，完整身份后追加训练括号。pet+0x138 的全部分支为：0 或范围外 -> Semi-Wild；1 -> Trained；2 -> -Trained-；3 -> +Trained+；4 -> *Trained*；5 -> \xf0Trained\xf0；6 -> \x0fTrained\x0f；7 -> Tame。原生 CP437 品质字节仍属于输出的一部分，完整 selector 表保留于 visitor-unit-identity/native-switches.tsv 和 fortress-livestock-training/native-switches.tsv。
+动态 creature-role 供应器 0x132f980（Classic 0x132a8f0）完整 C/ASM 保留于 visitor-unit-identity，包含原生 RAW 种族/caste、职业及其来源，还有 Stray、Fierce、Agitated、Slave、Prisoner、Ghost/Ghostly、Corpse 和 deity/force 等受各自数据条件控制的共享分支。不能因为当前截图只见复数计数而删掉单只完整身份路径，也不能把这些共享供应器词语无条件全部拼到每只宠物上。更下游的 base-profession、profession-words、caste-words、position-territory、selected-office、office-rank-selection、religious-word-selection 及 language-name 实际 C/ASM 仍在同一来源目录，入口索引为 native-functions.tsv。
+
+实现对应
+src/native_character_relations.inc 的原生计数接管分别绑定 lovers/children/pets 的真实 draw 点与同帧 int32 累加器，用“位爱人 / 个孩子 / 只宠物”构成中文；数量和种类不从英文猜测。零值和单体分支沿原生独立路径处理。
+单只宠物沿既有 0x1330c30 全局 Full 单位身份接管，保留名称、物种/职业、身份与训练标记的完整结构；不是追加一个孤立 pet 词条。Spouse/Lover/Child 的整串前缀与动态名称沿既有角色页翻译路径处理。
+src/character_overview_rows.inc 的年龄行识别与 src/dfcn.cpp 的年龄翻译共同覆盖有符号年龄、无性别、两种性别及 x 包裹；原生男性/女性符号在中文年龄后保留。
+这些来源没有读取加载日志、启动/操作/关闭游戏，也没有观察到修复后的实机画面。
+
+本机提取入口
+固定 Python 执行 tools/extract_character_overview_family_pe.py；仅做离线来源提取，不生成运行词表或调用构建工具。
+Ghidra 使用 tools/DecompileCharacterOverviewFamilyPE.java，参数为本目录绝对路径及 reference/classic；每版独立项目，以 -import 对应原始 PE -noanalysis -scriptPath D:/workspace/dfcn/tools -postScript DecompileCharacterOverviewFamilyPE.java D:/workspace/dfcn/data/extracted/character-overview-family EDITION -deleteProject 执行。
+实际使用 JDK C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/jdk-25.0.4.1+1；Ghidra C:/Users/WIN11/AppData/Local/Programs/dfcn-analysis-tools/ghidra_12.1.4_PUBLIC。每版通过 application.settingsdir、application.cachedir、java.io.tmpdir 使用独立临时分析目录。两个 region 和两个 age leaf 均实际完成 decompileFunction；C 输出保留反编译器自身的全局符号重叠提示，尚未恢复的名称/类型不当作原游戏调试符号。

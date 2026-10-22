@@ -10657,12 +10657,15 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // represented by one candidate with the intended Chinese age expression.
     auto translate_character_age = [](std::string_view source)
         -> std::optional<std::string> {
-        size_t cursor = 0;
+        // The age supplier passes a signed value straight to the decimal
+        // formatter; its year/tick calculation does not clamp to zero.
+        size_t cursor = source.starts_with('-') ? 1 : 0;
+        const size_t digits = cursor;
         while (cursor < source.size() && source[cursor] >= '0' &&
                source[cursor] <= '9') {
             ++cursor;
         }
-        if (cursor == 0) return std::nullopt;
+        if (cursor == digits) return std::nullopt;
         const std::string age(source.substr(0, cursor));
 
         auto skip_spaces = [&]() {
@@ -10700,7 +10703,14 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
 
         std::string sex;
         if (cursor < source.size()) {
-            if (cursor + 1 != source.size()) return std::nullopt;
+            // The native overview wraps the sex glyph in x...x when the
+            // unit's gelded flag is set. This is part of the same age draw,
+            // including the female branch; keep both marks with the glyph.
+            const bool gelded = source.size() - cursor == 3 &&
+                source[cursor] == 'x' && source.back() == 'x' &&
+                (source[cursor + 1] == '\x0b' || source[cursor + 1] == '\x0c');
+            if (gelded) ++cursor;
+            else if (cursor + 1 != source.size()) return std::nullopt;
             const unsigned char marker =
                 static_cast<unsigned char>(source[cursor]);
             if (marker == 0x0b) sex = "♂";
@@ -10708,6 +10718,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             else if (marker == 'M' || marker == 'm') sex = "男";
             else if (marker == 'F' || marker == 'f') sex = "女";
             else return std::nullopt;
+            if (gelded) sex = "x" + sex + "x";
         }
 
         std::string translated = age + " 岁";
