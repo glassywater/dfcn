@@ -7,22 +7,13 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
     const std::array batches{captured_native_drawn_text_snapshot(false),
         captured_native_drawn_text_snapshot(true)};
     std::vector<const NativeDrawnTextRow *> draws;
-    for (const auto &batch : batches) for (const auto &draw : *batch) {
-        if (draw.adventure_barter_field == NativeAdventureBarterField::None ||
-                draw.source.empty() || draw.x < 0 || draw.y < 0 ||
+    const auto current_draw = [&](const NativeDrawnTextRow &draw, size_t length) {
+        if (length == 0 || length > draw.source.size() || draw.x < 0 || draw.y < 0 ||
                 draw.x >= gps_->dimx || draw.y >= gps_->dimy ||
                 draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
                 draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
-                draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x)) continue;
-        const auto occupied = [&](const Match &match) {
-            return match.y == draw.y && match.length > 0 &&
-                match.x < draw.x + static_cast<int>(draw.source.size()) &&
-                match.x + match.length > draw.x;
-        };
-        if (std::any_of(matches.begin(), matches.end(), occupied) ||
-                std::any_of(untranslated.begin(), untranslated.end(), occupied)) continue;
-        bool current = true;
-        for (size_t at = 0; at < draw.source.size(); ++at) {
+                length > static_cast<size_t>(gps_->dimx - draw.x)) return false;
+        for (size_t at = 0; at < length; ++at) {
             bool top = false;
             const auto *cell = cell_at(draw.x + static_cast<int>(at), draw.y, &top);
             const bool ink = draw.source[at] != ' ';
@@ -31,23 +22,51 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
                     (ink && top != draw.top_layer) ||
                     (ink && screen_override && screen_override !=
                         (top ? gps_->screen_top : gps_->screen))) {
-                current = false;
-                break;
+                return false;
             }
         }
-        if (current) {
+        return true;
+    };
+    std::vector<const NativeDrawnTextRow *> weights;
+    for (const auto &batch : batches) for (const auto &draw : *batch)
+        if (draw.adventure_barter_field == NativeAdventureBarterField::Weight &&
+                current_draw(draw, draw.source.size())) weights.push_back(&draw);
+    std::unordered_map<const NativeDrawnTextRow *, size_t> draw_lengths;
+    for (const auto &batch : batches) for (const auto &draw : *batch) {
+        if (draw.adventure_barter_field == NativeAdventureBarterField::None) continue;
+        size_t length = draw.source.size();
+        if (draw.adventure_barter_field == NativeAdventureBarterField::Item) {
+            // Weight can overwrite the end of the name's native draw. Only
+            // its surviving prefix is visible source; the formatter capture
+            // still supplies the complete item and its original identity.
+            for (const auto *weight : weights)
+                if (weight->y == draw.y && weight->x > draw.x &&
+                        weight->top_layer == draw.top_layer &&
+                        weight->sequence > draw.sequence)
+                    length = std::min(length, static_cast<size_t>(weight->x - draw.x));
+        }
+        const auto occupied = [&](const Match &match) {
+            return match.y == draw.y && match.length > 0 &&
+                match.x < draw.x + static_cast<int>(length) &&
+                match.x + match.length > draw.x;
+        };
+        if (std::any_of(matches.begin(), matches.end(), occupied) ||
+                std::any_of(untranslated.begin(), untranslated.end(), occupied)) continue;
+        if (current_draw(draw, length)) {
             // A graphical copy can hide part of the logical caption from
             // visible_char_at. Its proven native draw still owns these bytes.
             // Transparent padding can resolve to the other layer; only ink
             // must retain this producer's visible layer and screen identity.
-            rows[draw.y].replace(draw.x, draw.source.size(), draw.source);
+            rows[draw.y].replace(draw.x, length, draw.source, 0, length);
             draws.push_back(&draw);
+            draw_lengths.emplace(&draw, length);
         }
     }
     if (draws.empty()) return;
     const auto reserve = [&](const NativeDrawnTextRow &draw, std::string_view source) {
-        Match row{draw.x, draw.y, static_cast<int>(draw.source.size()),
-            kUiMessageRule, {}, draw.source};
+        const size_t length = draw_lengths.at(&draw);
+        Match row{draw.x, draw.y, static_cast<int>(length),
+            kUiMessageRule, {}, draw.source.substr(0, length)};
         row.native_help_source_only = true;
         row.native_help_review_source = source;
         std::fill_n(rows[row.y].begin() + row.x, row.length, ' ');
@@ -147,17 +166,21 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
         }
     }
     for (const auto *draw : draws) {
+        const size_t length = draw_lengths.at(draw);
         if (paragraph_draws.contains(draw) ||
-                rows[draw->y].compare(draw->x, draw->source.size(), draw->source) != 0) continue;
+                rows[draw->y].compare(draw->x, length, draw->source, 0, length) != 0) continue;
         const auto field = draw->adventure_barter_field;
-        const std::string_view complete = draw->complete_source.empty()
-            ? std::string_view(draw->source) : std::string_view(draw->complete_source);
+        const std::string_view complete = draw->trade_item_caption &&
+                !draw->trade_item_caption->source.empty()
+            ? std::string_view(draw->trade_item_caption->source)
+            : draw->complete_source.empty() ? std::string_view(draw->source)
+                : std::string_view(draw->complete_source);
         const std::string source(trim_view(complete));
         if (field == NativeAdventureBarterField::Editable ||
                 field == NativeAdventureBarterField::CurrencyAmount) {
             // These are the actual player-entered filter/amount and native
             // currency value fields. Their bytes keep the native renderer.
-            std::fill_n(rows[draw->y].begin() + draw->x, draw->source.size(), ' ');
+            std::fill_n(rows[draw->y].begin() + draw->x, length, ' ');
             continue;
         }
         // An uncaptured reply draw is only one native 68-column wrap row.
@@ -166,10 +189,67 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
             reserve(*draw, complete);
             continue;
         }
+        const bool inventory_field = field == NativeAdventureBarterField::Item ||
+            field == NativeAdventureBarterField::ItemHeading ||
+            field == NativeAdventureBarterField::Contents ||
+            field == NativeAdventureBarterField::Weight;
+        int right = draw->draw_clip
+            ? std::min(gps_->dimx, draw->draw_clip->x + draw->draw_clip->w) : gps_->dimx;
+        if (inventory_field) {
+            // Use the producer's independent columns and actual controls,
+            // including Weight on the same row, as the name's text budget.
+            // Neither the English word spacing nor the screenshot supplies
+            // a boundary for a Chinese item caption.
+            for (const auto *next : draws)
+                if (next->y == draw->y && next->x > draw->x &&
+                        next->top_layer == draw->top_layer)
+                    right = std::min(right, next->x);
+            for (int x = draw->x + static_cast<int>(length); x < right; ++x)
+                if (native_foreground_picture_at(*gps_, x, draw->y)) {
+                    right = x;
+                    break;
+                }
+        }
+        if (field == NativeAdventureBarterField::Item) {
+            // Only the memory capture knows the item before shortening.
+            // An unbound dotted prefix remains one owned native field and
+            // cannot fall through to independent word/name translations.
+            if ((!draw->trade_item_caption || draw->trade_item_caption->source.empty()) &&
+                    draw->complete_source.empty() && source.ends_with("...")) {
+                reserve(*draw, complete);
+                continue;
+            }
+            auto translation = draw->trade_item_caption && !draw->trade_item_caption->source.empty()
+                ? translate_native_trade_item_caption_display(*draw->trade_item_caption)
+                : translate_fortress_item_caption_display(complete);
+            if (!translation.usable() || translation.target.empty() ||
+                    translation.target.find_first_of("\r\n") != std::string::npos ||
+                    right <= draw->x) {
+                reserve(*draw, complete);
+                continue;
+            }
+            Match match{draw->x, draw->y, static_cast<int>(length),
+                kFortressItemCaptionRule, translation.target, draw->source.substr(0, length)};
+            match.native_item_caption_source = complete;
+            match.native_hover_untranslated = translation.has_untranslated();
+            match.translation_result = std::make_shared<const TranslationResult>(std::move(translation));
+            match.layout_foreground_rgb = draw->foreground_rgb;
+            match.layout_x = draw->x;
+            match.layout_y = draw->y;
+            match.layout_length = right - draw->x;
+            match.layout_clip_right = right;
+            match.layout_left = true;
+            match.layout_prepared = true;
+            match.layout_line_height_pixels = gps_->tile_pixel_y;
+            std::fill_n(rows[match.y].begin() + match.x, match.length, ' ');
+            if (only_y < 0 || only_y == match.y) matches.push_back(std::move(match));
+            continue;
+        }
         std::vector<int> target_colors;
         auto target = field == NativeAdventureBarterField::Merchant && draw->unit_identity_ready &&
                 draw->unit_identity_target && !draw->unit_identity_target->empty()
-            ? draw->unit_identity_target : translate_message(source, draw->foreground_rgb, target_colors,
+            ? draw->unit_identity_target : inventory_field ? std::optional<std::string>{}
+            : translate_message(source, draw->foreground_rgb, target_colors,
                 field == NativeAdventureBarterField::Talkline ||
                 field == NativeAdventureBarterField::Reply,
                 field == NativeAdventureBarterField::Reply);
@@ -177,14 +257,6 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
             target = exact_literal_translation("Adventure barter: You");
         if (!target && field == NativeAdventureBarterField::Merchant)
             target = translate_unit_identity(source);
-        if (!target && field == NativeAdventureBarterField::Item) {
-            // The native producer can shorten an item in place. Let the
-            // existing complete item capture own an unbound dotted prefix.
-            if (draw->complete_source.empty() && source.ends_with("...")) continue;
-            target = draw->trade_item_caption
-                ? translate_native_trade_item_caption(*draw->trade_item_caption)
-                : translate_inventory_item_name(source, draw->y, draw->x);
-        }
         if (!target && field == NativeAdventureBarterField::ItemHeading)
             target = exact_literal_translation(source);
         if (!target && field == NativeAdventureBarterField::Contents) {
@@ -207,18 +279,16 @@ void Overlay::append_adventure_barter_fields(std::vector<std::string> &rows,
             if (const auto label = exact_literal_translation("Weight:"))
                 target = *label + native_text_to_utf8(std::string_view(source).substr(7));
         if (!target) {
-            if (field == NativeAdventureBarterField::Control ||
+            if (inventory_field || field == NativeAdventureBarterField::Control ||
                     field == NativeAdventureBarterField::Prompt ||
                     field == NativeAdventureBarterField::Talkline ||
                     field == NativeAdventureBarterField::Reply)
                 reserve(*draw, complete);
             continue;
         }
-        Match match{draw->x,draw->y,static_cast<int>(draw->source.size()),
-            kUiMessageRule,*target,draw->source};
+        Match match{draw->x,draw->y,static_cast<int>(length),
+            kUiMessageRule,*target,draw->source.substr(0, length)};
         match.layout_foreground_rgb = draw->foreground_rgb;
-        int right = draw->draw_clip
-            ? draw->draw_clip->x + draw->draw_clip->w : gps_->dimx;
         // A closed button owns the translated caption's centering and width.
         // Currency totals and prompts retain their original independent draw.
         if (const auto button = native_button_text_rect(*gps_, draw->x,
