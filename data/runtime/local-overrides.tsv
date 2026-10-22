@@ -7303,6 +7303,10 @@ Fortress activity: Uninvited Guest	不速之客	li
 Fortress activity: Visitor	来访者	li
 Fortress activity: Diplomat	外交官	li
 Fortress activity: Tame	驯服	li
+# PE training states and wrapper branches: data/extracted/fortress-livestock-training.
+# All nine base states use the existing complete-field Caged/Chained grammar.
+Fortress activity: Semi-Wild	半野生	li
+Fortress activity: Domesticated	已驯化	li
 Fortress activity: Trained	受过训练	li
 Fortress activity: Trainer	驯兽师	li
 # Pets/Livestock: Any is the unrestricted trainer setting, not a person's name.
@@ -7318,6 +7322,8 @@ Fortress activity: Point	地点	li
 Fortress activity: Route	路线	li
 Fortress activity: Burrow	活动区	li
 # Only native status grammar consumes these suffixes; never global prose replacements.
+Fortress activity: suffix (Caged)	（关在笼中）	li
+Fortress activity: suffix (Chained)	（被拴住）	li
 Fortress activity: suffix (activity cancelled)	（活动已取消）	li
 Fortress activity: suffix (no barracks)	（没有兵营）	li
 Fortress activity: suffix (improper barracks)	（兵营不合要求）	li

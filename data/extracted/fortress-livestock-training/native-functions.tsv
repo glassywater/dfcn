@@ -1,0 +1,11 @@
+edition	identity	label	start_rva	end_rva	assembly
+reference	PE:6a70a6d9:02711000	creature-identity-training-short	0x1330880	0x1330c2c	reference-creature-identity-training-short.asm
+reference	PE:6a70a6d9:02711000	creature-identity-training-full	0x1330c30	0x13312b8	reference-creature-identity-training-full.asm
+reference	PE:6a70a6d9:02711000	creature-activity-status	0x138f620	0x138ffc4	reference-creature-activity-status.asm
+reference	PE:6a70a6d9:02711000	creature-activity-status-color	0x138ffd0	0x1390cf0	reference-creature-activity-status-color.asm
+reference	PE:6a70a6d9:02711000	creature-list-status-renderer	0x1425c40	0x1427be4	reference-creature-list-status-renderer.asm
+classic	PE:6a70b91c:0270a000	creature-identity-training-short	0x132b7f0	0x132bb9c	classic-creature-identity-training-short.asm
+classic	PE:6a70b91c:0270a000	creature-identity-training-full	0x132bba0	0x132c228	classic-creature-identity-training-full.asm
+classic	PE:6a70b91c:0270a000	creature-activity-status	0x138a590	0x138af34	classic-creature-activity-status.asm
+classic	PE:6a70b91c:0270a000	creature-activity-status-color	0x138af40	0x138bc60	classic-creature-activity-status-color.asm
+classic	PE:6a70b91c:0270a000	creature-list-status-renderer	0x1420bb0	0x1422b54	classic-creature-list-status-renderer.asm

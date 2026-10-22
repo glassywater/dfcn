@@ -151272,3 +151272,9 @@ Announcement combat fortress-announcement [noble-position]: has been elected to 
 Announcement combat fortress-announcement []: has been re-elected.	已再次当选。	l
 Announcement combat fortress-announcement [noble-position]: has been elected {s}.	已当选为{s1}。	l
 Announcement combat fortress-announcement []: has been elected .	已当选。	l
+
+# Pets/Livestock training: native PE sources in data/extracted/fortress-livestock-training.
+Fortress activity: Semi-Wild	半野生	li
+Fortress activity: Domesticated	已驯化	li
+Fortress activity: suffix (Caged)	（关在笼中）	li
+Fortress activity: suffix (Chained)	（被拴住）	li
