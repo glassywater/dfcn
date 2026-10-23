@@ -195,6 +195,11 @@ static bool capture_native_history_collection_title(int32_t id, NativeHistoryEve
         value.kind = NativeHistoryObjectKind::Collection;
         value.id = id;
         if (!capture_native_history_name(base, address, value.name)) return false;
+        // War/battle +30 titles render OriginalName before the quoted
+        // English WORD gloss. Keep both fields in the owned name snapshot.
+        if ((type == 0 || type == 1) && value.name.has_name &&
+                !capture_native_history_original_name(base, address, value.name.native_name))
+            return false;
         event.fields[key + "named"] = {value.name.has_name ? 1 : 0};
         event.subjects.push_back(std::move(value));
         return true;

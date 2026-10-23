@@ -30,7 +30,58 @@ const auto collection_title = [&](int32_t id) -> std::optional<Pieces> {
             layer >= 0 ? subject(NativeHistoryObjectKind::Underground, layer) :
             region >= 0 ? subject(NativeHistoryObjectKind::Region, region) : term("the wilds");
     };
-    if (type == 0 || type == 1) return finish(subject(NativeHistoryObjectKind::Collection, id));
+    if (type == 0 || type == 1) {
+        const auto named = std::find_if(event.subjects.begin(), event.subjects.end(),
+            [&](const auto &value) {
+                return value.kind == NativeHistoryObjectKind::Collection &&
+                    value.id == id && value.subid == -1;
+            });
+        const auto gloss = named != event.subjects.end()
+            ? translate_history_name(named->name) : std::nullopt;
+        if (!gloss) return finish(subject(NativeHistoryObjectKind::Collection, id));
+        std::string original = named->name.native_name;
+        bool paired = false;
+        if (!original.empty()) {
+            // bc56b0 emits the quoted gloss only when it differs from the
+            // native spelling. Compare original fields, never Chinese text.
+            const auto english = reconstruct_site_english_name(named->name);
+            paired = english && original != *english;
+        } else {
+            // Retained documents from earlier captures still own the full
+            // displayed HEC link. Recover its name from one uninterrupted
+            // occurrence of this exact collection ID, not nearby prose.
+            for (size_t at = 0; at < document.tokens.size() && !paired;) {
+                const auto &first = document.tokens[at];
+                if (first.link_type != collection_link_type || first.link_id != id) {
+                    ++at;
+                    continue;
+                }
+                std::string displayed;
+                const int subid = first.link_subid;
+                do {
+                    if (!displayed.empty()) displayed += ' ';
+                    displayed += document.tokens[at++].source;
+                } while (at < document.tokens.size() &&
+                    document.tokens[at].link_type == collection_link_type &&
+                    document.tokens[at].link_id == id && document.tokens[at].link_subid == subid);
+                auto source = trim_view(displayed);
+                // The rich-text parser can attach sentence punctuation to
+                // the final linked word, outside the quoted name itself.
+                while (!source.empty() && std::string_view(".,?!").find(source.back()) != std::string_view::npos)
+                    source = trim_view(source.substr(0, source.size() - 1));
+                if (const auto identity = split_generated_name_identity(source)) {
+                    original.assign(identity->native_name);
+                    paired = true;
+                }
+            }
+        }
+        if (!paired) return finish(Pieces{piece(*gloss, neutral)});
+        auto native = translate_procedural_fragment(original, true);
+        if (!native) native = preserve_field(original, "collection-native-name");
+        // The owning page applies the same HEC link to the complete pair.
+        return finish(Pieces{piece(*native, neutral), piece("，“", neutral),
+            piece(*gloss, neutral), piece("”", neutral)});
+    }
     if (type == 2) {
         const auto first = subject(NativeHistoryObjectKind::Figure, number(prefix + "first"));
         const auto second = subject(NativeHistoryObjectKind::Figure, number(prefix + "second"));
