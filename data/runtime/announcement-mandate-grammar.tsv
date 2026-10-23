@@ -10,6 +10,16 @@ fortress-announcement	{s} has ended a mandate.	{s1}结束了一项法令。	$uni
 fortress-announcement	A mandate has ended.	一项法令已结束。		reference 0x140e3c7a6..0x140e3c811 absent mandate unit / classic 0x140e37716..0x140e37781
 fortress-announcement	{s} has forgotten a demand.	{s1}忘记了一项要求。	$unit	reference 0x14134ac10..0x14134bb1c literal 0x14134ad01 / classic 0x141345b80..0x141346a8c literal 0x141345c71
 fortress-announcement	{s} has a new demand.	{s1}提出了一项新要求。	$unit	reference 0x14134ac10..0x14134bb1c literal 0x14134b8c6 / classic 0x141345b80..0x141346a8c literal 0x141346836
+# 1330c30 appends 132f980(unit,true) without requiring a nonempty role.
+# Absent personal name plus an empty neutral RAW office can leave no actor.
+fortress-announcement	has mandated the construction of certain goods.	已下令制作某些物品。		PE reference 134de20:134e739..134e770; empty 1330c30 identity; mode1
+fortress-announcement	has imposed a ban on certain exports.	已禁止出口某些物品。		PE reference 134de20:134e739..134e770; empty 1330c30 identity; mode0
+fortress-announcement	has altered the prices of goods.	已调整物品价格。		PE reference 134de20:134e98b..134e9ab; empty 1330c30 identity
+fortress-announcement	's mandate has ended.	一项法令已结束。		PE reference 13b2a30:13b2ac2..13b2b34; empty 1330c30 identity; matching count1
+fortress-announcement	's mandates have ended.	多项法令已结束。		PE reference 13b2a30:13b2ac2..13b2b34; empty 1330c30 identity; matching count>1
+fortress-announcement	has ended a mandate.	已结束一项法令。		PE reference e39910:e3c5aa..e3c5db; unit exists but 1330c30 identity empty
+fortress-announcement	has forgotten a demand.	已忘记一项要求。		PE reference 134ac10:134ad01; empty 1330c30 identity
+fortress-announcement	has a new demand.	提出了一项新要求。		PE reference 134ac10:134b8c6; empty 1330c30 identity
 # The automatic queue announcement is external Lua, not a native mandate completion.
 # Installed native/DFHack source contains no such string. Exact full sentence is
 # attested by the user screenshot; public author documentation identifies the

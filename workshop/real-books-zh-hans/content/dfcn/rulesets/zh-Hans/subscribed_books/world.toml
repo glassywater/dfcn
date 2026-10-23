@@ -1,9 +1,10 @@
-# Explicit fiction_world.lua vocabulary. Invented personal names retain their spelling.
+# Explicit fiction_world.lua vocabulary. Invented personal names use fiction_names.toml.
 base = "subscribed_books::world"
 
 [[rulesets]]
 name = "item"
 [rulesets.rules]
+"a gift" = "一件礼物"
 "an iron dagger" = "一把铁匕首"
 "a steel sword" = "一把钢剑"
 "a bronze axe" = "一把青铜斧"
@@ -154,9 +155,11 @@ name = "trait"
 "hot_headed" = "冲动"
 "hot headed" = "冲动"
 "argumentative" = "好争辩"
+"assertive" = "强势"
 "cheater" = "惯于作弊"
 "stubborn" = "固执"
 "manipulative" = "善于操纵人"
+"cunning" = "狡黠"
 "noble" = "高尚"
 "aggressive" = "好斗"
 "coward" = "胆怯"

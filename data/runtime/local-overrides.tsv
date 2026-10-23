@@ -1497,8 +1497,9 @@ Stream: {s}	溪流：{s}	wt
 Brook: {s}	小溪：{s}	wt
 Stream:	溪流：	w
 Brook:	小溪：	w
-Minor River:	小河：	w
-Major River:	大河：	w
+Minor River:	小型河流：	w
+River:	河流：	w
+Major River:	大型河流：	w
 Deep soil	深厚土层
 
 # Fortress help index: keep the native viewed status separate from its title.
@@ -3333,6 +3334,37 @@ Adventure compass: NW	西北
 Adventure compass: NNW	北西北
 Adventure compass: Gui	向导
 Adventure compass: Qst	任务
+Adventure action queue: Move	移动
+Adventure action queue: Charge	冲锋
+Adventure action queue: Attack	攻击
+Adventure action queue: Jump	跳跃
+Adventure action queue: Hold	抓握
+Adventure action queue: Release	松开
+Adventure action queue: Climb	攀爬
+Adventure action queue: Job	工作
+Adventure action queue: Talk	交谈
+Adventure action queue: Unsteady	站立不稳
+Adventure action queue: Parry	招架
+Adventure action queue: Block	格挡
+Adventure action queue: Dodge	闪避
+Adventure action queue: Recover	恢复
+Adventure action queue: Stand Up	站起
+Adventure action queue: Lie Down	躺下
+Adventure action queue: Push Object	推动物体
+Adventure action queue: Suck Blood	吸血
+Adventure action queue: Mount	骑乘
+Adventure action queue: Dismount	下坐骑
+Adventure action queue: Lead animal	牵引动物
+Adventure action queue: Stop leading animal	停止牵引动物
+Adventure action queue: Nock ammo	搭箭
+Adventure action queue: Load ammo	装填弹药
+Adventure action queue: Shoot weapon	射击
+Adventure action queue: Throw item	投掷物品
+Adventure action queue: Regaining balance	恢复平衡
+Adventure action queue: and more	还有更多
+Adventure action queue: to act	执行
+Adventure action queue: +	上
+Adventure action queue: -	下
 # Complete compass-popup productions from native Steam 0x7f5490..0x7f5837.
 # Classic emits the same productions at 0x7f2d10..0x7f30b7.
 # Reuse the existing 40 eight-bearing distance fields in announcement-world-fields.tsv.
@@ -7271,6 +7303,10 @@ Fortress activity: Uninvited Guest	不速之客	li
 Fortress activity: Visitor	来访者	li
 Fortress activity: Diplomat	外交官	li
 Fortress activity: Tame	驯服	li
+# PE training states and wrapper branches: data/extracted/fortress-livestock-training.
+# All nine base states use the existing complete-field Caged/Chained grammar.
+Fortress activity: Semi-Wild	半野生	li
+Fortress activity: Domesticated	已驯化	li
 Fortress activity: Trained	受过训练	li
 Fortress activity: Trainer	驯兽师	li
 # Pets/Livestock: Any is the unrestricted trainer setting, not a person's name.
@@ -7286,6 +7322,8 @@ Fortress activity: Point	地点	li
 Fortress activity: Route	路线	li
 Fortress activity: Burrow	活动区	li
 # Only native status grammar consumes these suffixes; never global prose replacements.
+Fortress activity: suffix (Caged)	（关在笼中）	li
+Fortress activity: suffix (Chained)	（被拴住）	li
 Fortress activity: suffix (activity cancelled)	（活动已取消）	li
 Fortress activity: suffix (no barracks)	（没有兵营）	li
 Fortress activity: suffix (improper barracks)	（兵营不合要求）	li
@@ -9558,6 +9596,10 @@ Elite Marksdwarf	精英矮人弩手	wi
 Elite Marksdwarves	精英矮人弩手	wi
 Elite Bowdwarf	精英矮人弓手	wi
 Elite Bowdwarves	精英矮人弓手	wi
+Unit profession: dwarf elite marksdwarf	精英矮人弩手	wi
+Unit profession: dwarf elite marksdwarves	精英矮人弩手	wi
+Unit profession: dwarf elite bowdwarf	精英矮人弓手	wi
+Unit profession: dwarf elite bowdwarves	精英矮人弓手	wi
 Diagnoser	诊断医师	wi
 Diagnosers	诊断医师	wi
 Swordsmaster	利剑主宰	wi
@@ -11025,6 +11067,16 @@ Conversation prompt: How will you respond to this passive reply?	你将如何回
 Conversation prompt: How will you respond to this statement of values?	你将如何回应这番价值观表述？	l
 Conversation prompt: How will you respond to this dismissal?	你将如何回应这番打发？	l
 Conversation prompt: Choose your tone/tact	选择交谈的语气与策略。	l
+Conversation tone: Persuade:	说服：	l
+Conversation tone: Intimidate:	恐吓：	l
+Conversation tone: Almost guaranteed	几乎必定成功	l
+Conversation tone: Likely success	很可能成功	l
+Conversation tone: Favorable odds	胜算较高	l
+Conversation tone: Impossible	不可能成功	l
+Conversation tone: Nearly impossible	几乎不可能成功	l
+Conversation tone: Likely failure	很可能失败	l
+Conversation tone: Even odds	胜负参半	l
+Conversation tone: Unfavorable odds	胜算较低	l
 Conversation prompt: What do you want?	你想要什么？	l
 Conversation prompt: How will you respond to the adoption request?	你将如何回应收养请求？	l
 Conversation prompt: How will you respond to the position offer?	你将如何回应职位邀请？	l
@@ -11683,6 +11735,13 @@ Adventure item action: Shoot {s}	射击{s}	h
 Adventure item action: Quickly throw at {n}	快速投向{n}	h
 Adventure item action: Aim carefully and throw at {n}	仔细瞄准并投向{n}	h
 Adventure item action: Throw at {s}	投向{s}	h
+# Native ranged constructors retain their verb when the resolved supplier is empty.
+Adventure item action: Quickly shoot	快速射击	h
+Adventure item action: Aim carefully and shoot	仔细瞄准并射击	h
+Adventure item action: Shoot	射击	h
+Adventure item action: Quickly throw at	快速投掷	h
+Adventure item action: Aim carefully and throw at	仔细瞄准并投掷	h
+Adventure item action: Throw at	投掷	h
 Adventure item action: Jump to the {p}	跳向{p}	h
 Adventure item action: {p}	{p}	h
 Adventure item action: Move to {n}	移动到{n}	h

@@ -175,6 +175,7 @@ def deploy_runtime_data(directory: Path) -> None:
                  "site-government-parent-suffixes.tsv", "site-government-name-terms.tsv",
                  "site-government-independent-suffixes.tsv",
                  "character-name-lexicon.tsv", "character-name-overrides.tsv",
+                 "character-native-senses.tsv",
                  "character-surname-lexicon.tsv",
                  "character-surname-classes.tsv",
                  "character-surname-context-imagery.tsv",
@@ -251,6 +252,7 @@ NATIVE_ABIS = {
     "win32": {
         "core": "dfcn_core.dll",
         "loader": "dfhooks_dfcn.dll",
+        "mouse_coordinates": "dfcn_mouse_coordinates.dll",
         "compiler": "g++.exe",
         "compiler_hint": TEMP / "codex-world-compute-w64devkit/extracted/w64devkit/bin",
         "target": r"(?:mingw|windows)",
@@ -761,6 +763,7 @@ def build_windows_cross(args: argparse.Namespace) -> int:
             shutil.copyfile(ROOT / pinyin, snapshot / pinyin)
             core_candidate = staging / abi["core"]
             loader_candidate = staging / abi["loader"]
+            mouse_candidate = staging / abi["mouse_coordinates"]
             build_hour = datetime.now().strftime("%Y.%m.%d.%H")
             print("Cross-compiling the Windows core...", flush=True)
             run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
@@ -772,14 +775,17 @@ def build_windows_cross(args: argparse.Namespace) -> int:
             print("Cross-compiling the Windows loader...", flush=True)
             run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp",
                  *link_flags], env, cwd=snapshot)
-            # Leave the previous output untouched if either compiler fails.
-            for candidate in (core_candidate, loader_candidate):
+            print("Cross-compiling the independent mouse coordinates mod...", flush=True)
+            run([*compiler, *compile_flags, "-o", str(mouse_candidate),
+                 "src/mods/mouse_coordinates.cpp", *link_flags], env, cwd=snapshot)
+            # Leave the previous outputs untouched if any compiler fails.
+            for candidate in (core_candidate, loader_candidate, mouse_candidate):
                 os.replace(candidate, output / candidate.name)
         if args.deploy_project:
             # Native publish() only accepts inputs in native destination
             # directories. Keep the cross-build outputs, then stage the copy
             # in ROOT so the normal atomic replacement can own publication.
-            for name in (abi["core"], abi["loader"]):
+            for name in (abi["mouse_coordinates"], abi["core"], abi["loader"]):
                 destination = ROOT / name
                 staged = destination.with_name(name + ".publish")
                 print(f"Publishing {destination}", flush=True)
@@ -788,10 +794,12 @@ def build_windows_cross(args: argparse.Namespace) -> int:
                     atomic_replace(staged, destination)
                 finally:
                     remove_file(staged)
-    print(f"Windows cross-build completed:\n{output / abi['core']}\n{output / abi['loader']}",
+    print(f"Windows cross-build completed:\n{output / abi['core']}\n{output / abi['loader']}\n"
+          f"{output / abi['mouse_coordinates']}",
           flush=True)
     if args.deploy_project:
-        print(f"Windows DLLs deployed:\n{ROOT / abi['core']}\n{ROOT / abi['loader']}",
+        print(f"Windows DLLs deployed:\n{ROOT / abi['core']}\n{ROOT / abi['loader']}\n"
+              f"{ROOT / abi['mouse_coordinates']}",
               flush=True)
     return 0
 
@@ -824,8 +832,12 @@ def main() -> int:
                                                       for directory in native_game_directories()]
     core_candidate = core.with_name(core.stem + ".candidate" + core.suffix)
     loader_candidate = loader.with_name(loader.stem + ".candidate" + loader.suffix)
+    mouse_mod = ROOT / abi["mouse_coordinates"] if "mouse_coordinates" in abi else None
+    mouse_candidate = mouse_mod.with_name(mouse_mod.stem + ".candidate" + mouse_mod.suffix) if mouse_mod else None
     staging = [core_candidate, loader_candidate,
                *(path.with_name(path.name + ".publish") for path in (core, loader, *game_loaders))]
+    if mouse_candidate:
+        staging.append(mouse_candidate)
     bootstrap_candidate = ROOT / "dfhooks.candidate.dll"
     bootstrap_config_candidate = ROOT / "dfhooks_dfcn.candidate.ini"
     if sys.platform == "win32":
@@ -934,7 +946,9 @@ def main() -> int:
             env.get(name) for name in ("CXX", "CPPFLAGS", "CXXFLAGS", "LDFLAGS", "LDLIBS", "PKG_CONFIG", "PKG_CONFIG_PATH")))
         rebuild_core = configured_build or needs_update([core], core_inputs)
         rebuild_loader = args.rebuild_loader or configured_build or needs_update([loader, *game_loaders], loader_inputs())
-        if rebuild_core or rebuild_loader:
+        rebuild_mouse = mouse_mod and (configured_build or needs_update([mouse_mod],
+            [SCRIPT, ROOT / "src/mods/mouse_coordinates.cpp", ROOT / "src/mouse_coordinates_api.h"]))
+        if rebuild_core or rebuild_loader or rebuild_mouse:
             # Both core translation units and the loader must see the same
             # shared headers even when this checkout is edited during a long
             # compile. Copy once; relative includes and the Linux export map
@@ -960,11 +974,24 @@ def main() -> int:
                     print("Building the resident loader...", flush=True)
                     run([*compiler, *compile_flags, "-o", str(loader_candidate), "src/loader.cpp",
                          *link_flags], env, cwd=snapshot)
+                if rebuild_mouse:
+                    print("Building the independent mouse coordinates mod...", flush=True)
+                    run([*compiler, *compile_flags, "-o", str(mouse_candidate),
+                         "src/mods/mouse_coordinates.cpp", *link_flags], env, cwd=snapshot)
         for directory in edition_destinations():
             deploy_runtime_data(directory)
         for directory in native_game_directories():
             deploy_translation_extensions(directory)
         package_translation_extensions()
+        if mouse_mod:
+            for directory in edition_destinations():
+                directory.mkdir(parents=True, exist_ok=True)
+                destination = directory / mouse_mod.name
+                staging.append(destination.with_name(destination.name + ".publish"))
+                publish_ready(mouse_candidate if rebuild_mouse else mouse_mod,
+                              destination, keep_candidate=True)
+            if rebuild_mouse:
+                publish_ready(mouse_candidate, mouse_mod)
         if rebuild_core:
             for directory in edition_destinations():
                 directory.mkdir(parents=True, exist_ok=True)

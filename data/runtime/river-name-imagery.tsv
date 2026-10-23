@@ -1,4 +1,4 @@
-# 每行授权的是河名用途；没有登记的 WORD/POS、关系或义项进入整名音译。
+# 每行授权河名的凝练词形；未登记 WORD/POS 或构式继续使用全量 WORD 释义和完整河名语法。
 # reference 为既有姓氏词表的完整义项键 english;kind;category;state;sense，只复用显式指定的词形和分类/配价。
 # - 表示没有该长度的合法词形，绝不截字；@single/@double/@full 显式引用，词形不因姓氏表存在而自动获准。
 word	pos	sense	self_class	partner_class	relation	role	slots	single	double	full	reference	constructions	use	preference

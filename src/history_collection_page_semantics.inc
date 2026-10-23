@@ -58,10 +58,10 @@ if (document.page && document.page->kind == NativeHistoryPageKind::CollectionInt
         auto title = collection_title(id);
         if (!title) return std::nullopt;
         for (const auto &token : document.tokens) {
-            if (token.link_type != 9 || token.link_id != id) continue;
+            if (token.link_type != collection_link_type || token.link_id != id) continue;
             for (auto &part : *title) {
                 part.foreground_rgb = token.color;
-                part.native_link_type = 9;
+                part.native_link_type = collection_link_type;
                 part.native_link_id = id;
                 part.native_link_subid = token.link_subid;
             }
@@ -144,10 +144,10 @@ if (document.page && document.page->kind == NativeHistoryPageKind::CollectionInt
                 cause = term(labels[collection_type]);
                 if (cause) {
                     for (const auto &token : document.tokens) {
-                        if (token.link_type != 9 || token.link_id != value) continue;
+                        if (token.link_type != collection_link_type || token.link_id != value) continue;
                         for (auto &part : *cause) {
                             part.foreground_rgb = token.color;
-                            part.native_link_type = 9;
+                            part.native_link_type = collection_link_type;
                             part.native_link_id = value;
                             part.native_link_subid = token.link_subid;
                         }

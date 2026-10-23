@@ -189,7 +189,8 @@ void Overlay::append_embark_site_names(const NativeTextCard &card,
                         m.x >= row.x && m.x < row.x + int(row.source.size());
                 })) break;
             const auto label = exact_literal_translation(prefix);
-            const auto name = translate_river_text(trim_view(std::string_view(source).substr(prefix.size())));
+            const auto name = translate_river_text(trim_view(std::string_view(source).substr(prefix.size())),
+                RiverNames::category(prefix));
             if (label && !name.empty()) claim(row, *label + name);
             break;
         }

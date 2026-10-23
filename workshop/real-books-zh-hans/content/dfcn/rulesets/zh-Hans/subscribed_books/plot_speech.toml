@@ -1,0 +1,127 @@
+# fiction_speech.lua：小说主线、胜利后、失利后、复仇线与宿怨线的全部对话。
+# 保留原有六类公共事务话题；姓名和地点仅在明确的身份槽内原样回退。
+base = "subscribed_books::plot_speech"
+
+# competent_templates：有把握的提议。
+[[rulesets]]
+[rulesets.rules]
+'"{@bt_foe|::subscribed_books::vocabulary::person} was seen near {@bt_place|::subscribed_books::vocabulary::place}," {@bt_name|::subscribed_books::vocabulary::person} said. "Not long ago. We are close."' = "“有人在{@bt_place|::subscribed_books::vocabulary::place}附近见到了{@bt_foe|::subscribed_books::vocabulary::person}，”{@bt_name|::subscribed_books::vocabulary::person}说，“就在不久前。我们快找到了。”"
+'"I will not rest while {@bt_foe|::subscribed_books::vocabulary::person} breathes," {@bt_name|::subscribed_books::vocabulary::person} said. "Not after {@bt_victim|::subscribed_books::vocabulary::person}."' = "“只要{@bt_foe|::subscribed_books::vocabulary::person}还活着，我就不会罢休，”{@bt_name|::subscribed_books::vocabulary::person}说，“{@bt_victim|::subscribed_books::vocabulary::person}的事发生后，更不可能。”"
+'"Someone in {@bt_place|::subscribed_books::vocabulary::place} knows where {@bt_foe|::subscribed_books::vocabulary::person} sleeps," {@bt_name|::subscribed_books::vocabulary::person} said. "We only have to ask the right way."' = "“{@bt_place|::subscribed_books::vocabulary::place}总有人知道{@bt_foe|::subscribed_books::vocabulary::person}睡在哪里，”{@bt_name|::subscribed_books::vocabulary::person}说，“我们只须用对方法问。”"
+'"Help me find {@bt_foe|::subscribed_books::vocabulary::person}," {@bt_name|::subscribed_books::vocabulary::person} said. "That is all I ask. What comes after is mine."' = "“帮我找到{@bt_foe|::subscribed_books::vocabulary::person}，”{@bt_name|::subscribed_books::vocabulary::person}说，“我只求这一件事。后面的事由我来。”"
+'"{@bt_victim|::subscribed_books::vocabulary::person} deserved better than {@bt_foe|::subscribed_books::vocabulary::person} gave," {@bt_name|::subscribed_books::vocabulary::person} said. "So I will give {@bt_foe2|::subscribed_books::vocabulary::person} what {@bt_foe3|::subscribed_books::vocabulary::person} deserves."' = "“{@bt_victim|::subscribed_books::vocabulary::person}本不该受到{@bt_foe|::subscribed_books::vocabulary::person}那样的对待，”{@bt_name|::subscribed_books::vocabulary::person}说，“所以我要让{@bt_foe2|::subscribed_books::vocabulary::person}得到应有的报应。”"
+'"You know what you did," {@bt_name|::subscribed_books::vocabulary::person} said. "Do not pretend you have forgotten the {wrong}."' = "“你知道自己做过什么，”{@bt_name|::subscribed_books::vocabulary::person}说，“别装作忘了那场{wrong}。”"
+'"I trusted you once," {@bt_name|::subscribed_books::vocabulary::person} said. "I will not make that mistake twice."' = "“我曾经信任你，”{@bt_name|::subscribed_books::vocabulary::person}说，“同样的错误，我不会犯第二次。”"
+'"We should talk about the {wrong}," {@bt_name|::subscribed_books::vocabulary::person} said, "before one of us does something worse."' = "“我们该谈谈那场{wrong}，”{@bt_name|::subscribed_books::vocabulary::person}说，“趁我们之中还没人做出更糟的事。”"
+'"We will try again," {@bt_name|::subscribed_books::vocabulary::person} said. Nobody believed it, least of all {@bt_name2|::subscribed_books::vocabulary::person}.' = "“我们会再试一次，”{@bt_name|::subscribed_books::vocabulary::person}说。没人相信这句话，最不信的就是{@bt_name2|::subscribed_books::vocabulary::person}自己。"
+'"{@bt_foe|::subscribed_books::vocabulary::person} has {stake}, and we have our lives," {@bt_name|::subscribed_books::vocabulary::person} said. "Some days that feels like a fair trade."' = "“{@bt_foe|::subscribed_books::vocabulary::person}得到了{stake}，我们保住了性命，”{@bt_name|::subscribed_books::vocabulary::person}说，“有些时候，我觉得这笔交换倒也公平。”"
+'"Next time," {@bt_name|::subscribed_books::vocabulary::person} said, "we go to {@bt_far_place|::subscribed_books::vocabulary::place} better prepared."' = "“下一次，”{@bt_name|::subscribed_books::vocabulary::person}说，“去{@bt_far_place|::subscribed_books::vocabulary::place}之前，我们会准备得更充分。”"
+'"I can still see {@bt_far_place|::subscribed_books::vocabulary::place} when I close my eyes," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“一闭上眼，我还是会看见{@bt_far_place|::subscribed_books::vocabulary::place}，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"We should have gone in the spring," {@bt_name|::subscribed_books::vocabulary::person} said. "I said so at the time."' = "“我们本该春天就去，”{@bt_name|::subscribed_books::vocabulary::person}说，“当时我就这么说过。”"
+'"It is over," {@bt_name|::subscribed_books::vocabulary::person} said. "I keep waiting to feel it."' = "“结束了，”{@bt_name|::subscribed_books::vocabulary::person}说，“可我还在等自己真正感觉到这一点。”"
+'"We did what we set out to do," {@bt_name|::subscribed_books::vocabulary::person} said. "I do not know what we do now."' = "“我们做到了出发时要做的事，”{@bt_name|::subscribed_books::vocabulary::person}说，“可我不知道现在该做什么。”"
+'"{@bt_place|::subscribed_books::vocabulary::place} will want to hear how it ended," {@bt_name|::subscribed_books::vocabulary::person} said. "I am not sure I want to tell them."' = "“{@bt_place|::subscribed_books::vocabulary::place}的人会想知道事情如何收场，”{@bt_name|::subscribed_books::vocabulary::person}说，“我却不确定自己想不想讲。”"
+'"I thought {@bt_foe|::subscribed_books::vocabulary::person} would be harder to forget," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“我还以为{@bt_foe|::subscribed_books::vocabulary::person}会更难忘掉，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"I keep expecting {@bt_foe|::subscribed_books::vocabulary::person} to walk through that door," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“我总觉得{@bt_foe|::subscribed_books::vocabulary::person}还会从那扇门走进来，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"{@bt_place|::subscribed_books::vocabulary::place} owes us a drink," {@bt_name|::subscribed_books::vocabulary::person} said. "Several."' = "“{@bt_place|::subscribed_books::vocabulary::place}欠我们一杯酒，”{@bt_name|::subscribed_books::vocabulary::person}说，“好几杯。”"
+'"We go after {@bt_foe|::subscribed_books::vocabulary::person} now, before the trail goes cold," {@bt_name|::subscribed_books::vocabulary::person} said. "Every day we wait, {stake} slips further away."' = "“趁线索还没断，我们现在就去追{@bt_foe|::subscribed_books::vocabulary::person}，”{@bt_name|::subscribed_books::vocabulary::person}说，“每多等一天，{stake}就离我们更远一步。”"
+'"{@bt_foe|::subscribed_books::vocabulary::person} has friends at {@bt_far_place|::subscribed_books::vocabulary::place}. We need some of our own before we get there," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“{@bt_foe|::subscribed_books::vocabulary::person}在{@bt_far_place|::subscribed_books::vocabulary::place}有朋友。到那里之前，我们也得找到自己的帮手，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"Patience," {@bt_name|::subscribed_books::vocabulary::person} said. "{@bt_foe|::subscribed_books::vocabulary::person} has made one mistake already. There will be another, and we will be there when it comes."' = "“耐心些，”{@bt_name|::subscribed_books::vocabulary::person}说，“{@bt_foe|::subscribed_books::vocabulary::person}已经犯过一次错。还会有下一次，而到时候我们就在场。”"
+'"If we mean to {goal}, we do it properly or not at all," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“如果我们真想{goal}，就把这件事做好，否则干脆别做，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"I have been thinking about {cause}," {@bt_name|::subscribed_books::vocabulary::person} said. "We have been looking at it from the wrong side."' = "“我一直在想{cause}的事，”{@bt_name|::subscribed_books::vocabulary::person}说，“我们一直看错了方向。”"
+'"We start at {@bt_place|::subscribed_books::vocabulary::place}," {@bt_name|::subscribed_books::vocabulary::person} said. "Whatever {@bt_foe|::subscribed_books::vocabulary::person} left behind there, someone saw it."' = "“我们从{@bt_place|::subscribed_books::vocabulary::place}开始，”{@bt_name|::subscribed_books::vocabulary::person}说，“不管{@bt_foe|::subscribed_books::vocabulary::person}在那里留下了什么，总有人见过。”"
+'"We need to know what {@bt_foe|::subscribed_books::vocabulary::person} wants," {@bt_name|::subscribed_books::vocabulary::person} said. "Not what {@bt_foe2|::subscribed_books::vocabulary::person} took. What {@bt_foe3|::subscribed_books::vocabulary::person} wants."' = "“我们得知道{@bt_foe|::subscribed_books::vocabulary::person}想要什么，”{@bt_name|::subscribed_books::vocabulary::person}说，“不是已经拿走了什么，而是还想要什么。”"
+'"If {@bt_foe|::subscribed_books::vocabulary::person} is at {@bt_far_place|::subscribed_books::vocabulary::place}, there are only two roads in," {@bt_name|::subscribed_books::vocabulary::person} said. "We take the one nobody watches."' = "“如果{@bt_foe|::subscribed_books::vocabulary::person}在{@bt_far_place|::subscribed_books::vocabulary::place}，进去的路就只有两条，”{@bt_name|::subscribed_books::vocabulary::person}说，“我们走没人看守的那条。”"
+'"We should split up," {@bt_name|::subscribed_books::vocabulary::person} said. "One of us asks questions in {@bt_place|::subscribed_books::vocabulary::place}; the other watches the road to {@bt_far_place|::subscribed_books::vocabulary::place}."' = "“我们应该分头行动，”{@bt_name|::subscribed_books::vocabulary::person}说，“一个人在{@bt_place|::subscribed_books::vocabulary::place}打听消息，另一个人盯着通往{@bt_far_place|::subscribed_books::vocabulary::place}的路。”"
+'"Doors open at {@bt_far_place|::subscribed_books::vocabulary::place} for the right price," {@bt_name|::subscribed_books::vocabulary::person} said. "We are going to need a great deal of it."' = "“价钱合适，{@bt_far_place|::subscribed_books::vocabulary::place}的门就会打开，”{@bt_name|::subscribed_books::vocabulary::person}说，“我们得准备一大笔钱。”"
+'"Whatever we do about {cause}, we do it together or not at all," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“不管我们打算怎样处理{cause}，都要一起做，否则就谁也别做，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"I have been counting what {stake} has cost us," {@bt_name|::subscribed_books::vocabulary::person} said. "I want to stop counting before it is everything."' = "“我一直在数，为了{stake}我们付出了多少，”{@bt_name|::subscribed_books::vocabulary::person}说，“我希望在赔上一切之前停下来。”"
+'"{@bt_foe|::subscribed_books::vocabulary::person} is careful," {@bt_name|::subscribed_books::vocabulary::person} said. "Careful people keep habits. Find the habit and we find {@bt_foe2|::subscribed_books::vocabulary::person}."' = "“{@bt_foe|::subscribed_books::vocabulary::person}很谨慎，”{@bt_name|::subscribed_books::vocabulary::person}说，“谨慎的人都有固定的习惯。找到这些习惯，就能找到{@bt_foe2|::subscribed_books::vocabulary::person}。”"
+'"Someone in {@bt_place|::subscribed_books::vocabulary::place} helped {@bt_foe|::subscribed_books::vocabulary::person}," {@bt_name|::subscribed_books::vocabulary::person} said. "Nobody does a thing like that alone."' = "“{@bt_place|::subscribed_books::vocabulary::place}有人帮了{@bt_foe|::subscribed_books::vocabulary::person}，”{@bt_name|::subscribed_books::vocabulary::person}说，“这种事，谁也不可能独自办成。”"
+
+# incompetent_templates：缺乏经验的提议。
+[[rulesets]]
+[rulesets.rules]
+'"What if we simply asked {@bt_foe|::subscribed_books::vocabulary::person} to turn up somewhere?" {@bt_name|::subscribed_books::vocabulary::person} offered. Nobody answered.' = "“不如直接让{@bt_foe|::subscribed_books::vocabulary::person}到某个地方露面？”{@bt_name|::subscribed_books::vocabulary::person}提议。没人回答。"
+'"I will know {@bt_foe|::subscribed_books::vocabulary::person} when I see them," {@bt_name|::subscribed_books::vocabulary::person} said, which was not true.' = "“见到了，我就能认出{@bt_foe|::subscribed_books::vocabulary::person}，”{@bt_name|::subscribed_books::vocabulary::person}说，可事实并非如此。"
+'"Let us pretend the {wrong} never happened," {@bt_name|::subscribed_books::vocabulary::person} said brightly. It did not work.' = "“我们就当那场{wrong}从没发生过吧，”{@bt_name|::subscribed_books::vocabulary::person}兴高采烈地说。这个办法没有奏效。"
+'"Technically," {@bt_name|::subscribed_books::vocabulary::person} said, "we did find {@bt_foe|::subscribed_books::vocabulary::person}."' = "“严格来说，”{@bt_name|::subscribed_books::vocabulary::person}说，“我们的确找到了{@bt_foe|::subscribed_books::vocabulary::person}。”"
+'"So," {@bt_name|::subscribed_books::vocabulary::person} said brightly. "Is there a reward for this sort of thing?"' = "“那么，”{@bt_name|::subscribed_books::vocabulary::person}兴高采烈地说，“做这种事有赏钱吗？”"
+'"I still think we should have tried asking nicely," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“我还是觉得，当初该试着好好开口请求，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"We could simply ask {@bt_foe|::subscribed_books::vocabulary::person} nicely," {@bt_name|::subscribed_books::vocabulary::person} suggested. Nobody laughed.' = "“我们可以直接好好求求{@bt_foe|::subscribed_books::vocabulary::person}，”{@bt_name|::subscribed_books::vocabulary::person}提议。没人笑。"
+'"How hard can it be to {goal}?" {@bt_name|::subscribed_books::vocabulary::person} asked, and was the only one who did not wince.' = "“{goal}能有多难？”{@bt_name|::subscribed_books::vocabulary::person}问，只有问话的人没有露出难堪的神色。"
+'"I say we go to {@bt_far_place|::subscribed_books::vocabulary::place} and see what happens," {@bt_name|::subscribed_books::vocabulary::person} said, as though that were a plan.' = "“依我看，先去{@bt_far_place|::subscribed_books::vocabulary::place}，到时再看，”{@bt_name|::subscribed_books::vocabulary::person}说，仿佛这也算个计划。"
+'"What if we wait for {@bt_foe|::subscribed_books::vocabulary::person} to feel sorry?" {@bt_name|::subscribed_books::vocabulary::person} offered.' = "“要不等{@bt_foe|::subscribed_books::vocabulary::person}自己后悔呢？”{@bt_name|::subscribed_books::vocabulary::person}提议。"
+'"I could disguise myself as {@bt_foe|::subscribed_books::vocabulary::person}," {@bt_name|::subscribed_books::vocabulary::person} said. Everyone looked at {@bt_name2|::subscribed_books::vocabulary::person} for a long moment.' = "“我可以扮成{@bt_foe|::subscribed_books::vocabulary::person}，”{@bt_name|::subscribed_books::vocabulary::person}说。所有人都盯着{@bt_name2|::subscribed_books::vocabulary::person}，看了好一会儿。"
+
+# grievance_templates：责难。
+[[rulesets]]
+[rulesets.rules]
+'"You keep telling me to wait," {@bt_name|::subscribed_books::vocabulary::person} said. "{@bt_foe|::subscribed_books::vocabulary::person} did not wait to kill {@bt_victim|::subscribed_books::vocabulary::person}."' = "“你一直叫我等，”{@bt_name|::subscribed_books::vocabulary::person}说，“{@bt_foe|::subscribed_books::vocabulary::person}杀{@bt_victim|::subscribed_books::vocabulary::person}的时候，可没有等。”"
+'"Every day we sit here, {@bt_foe|::subscribed_books::vocabulary::person} gets further from what was done to {@bt_victim|::subscribed_books::vocabulary::person}," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“我们每多坐在这里一天，{@bt_foe|::subscribed_books::vocabulary::person}就离为{@bt_victim|::subscribed_books::vocabulary::person}的遭遇偿债更远一步，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"After the {wrong}, you have the nerve to stand here and talk to me?" {@bt_name|::subscribed_books::vocabulary::person} said.' = "“那场{wrong}之后，你还有脸站在这里跟我说话？”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"I have not forgotten the {wrong}," {@bt_name|::subscribed_books::vocabulary::person} said. "I never will. Do not ask me to."' = "“我没忘记那场{wrong}，”{@bt_name|::subscribed_books::vocabulary::person}说，“永远都不会。别要求我忘记。”"
+'"You never once said you were sorry for the {wrong}," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“为了那场{wrong}，你连一句对不起都没说过，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"We had {@bt_foe|::subscribed_books::vocabulary::person} and you let it slip," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“我们本已把{@bt_foe|::subscribed_books::vocabulary::person}攥在手里，你却让机会溜走了，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"I said {@bt_far_place|::subscribed_books::vocabulary::place} was a trap," {@bt_name|::subscribed_books::vocabulary::person} said. "I said it twice."' = "“我说过{@bt_far_place|::subscribed_books::vocabulary::place}是个陷阱，”{@bt_name|::subscribed_books::vocabulary::person}说，“我说过两遍。”"
+'"You did not have to enjoy it," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“你本不必以此为乐，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"We paid too much for {stake}," {@bt_name|::subscribed_books::vocabulary::person} said, "and you know it."' = "“为了{stake}，我们付出的代价太大了，”{@bt_name|::subscribed_books::vocabulary::person}说，“你心里也清楚。”"
+'"You had {@bt_foe|::subscribed_books::vocabulary::person} within reach and let the moment pass," {@bt_name|::subscribed_books::vocabulary::person} said. "Do not tell me that was wisdom."' = "“{@bt_foe|::subscribed_books::vocabulary::person}就在你伸手可及的地方，你却放过了那个机会，”{@bt_name|::subscribed_books::vocabulary::person}说，“别跟我说那叫明智。”"
+'"Everything we have lost since {@bt_place|::subscribed_books::vocabulary::place}, we lost to your caution," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“从{@bt_place|::subscribed_books::vocabulary::place}之后，我们失去的一切，都是被你的谨慎葬送的，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"You talk about {cause} as though it were yours alone," {@bt_name|::subscribed_books::vocabulary::person} said. "It was never yours alone."' = "“你说起{cause}，好像那只是你一个人的事，”{@bt_name|::subscribed_books::vocabulary::person}说，“可它从来都不只是你一个人的事。”"
+'"You trusted the wrong people at {@bt_far_place|::subscribed_books::vocabulary::place}," {@bt_name|::subscribed_books::vocabulary::person} said, "and we are still paying for it."' = "“你在{@bt_far_place|::subscribed_books::vocabulary::place}信错了人，”{@bt_name|::subscribed_books::vocabulary::person}说，“直到现在，我们还在为此付代价。”"
+'"You promised me we would {goal}," {@bt_name|::subscribed_books::vocabulary::person} said. "So far all we have done is talk."' = "“你答应过我，我们会{goal}，”{@bt_name|::subscribed_books::vocabulary::person}说，“可到现在为止，我们只是在空谈。”"
+'"Every time {@bt_foe|::subscribed_books::vocabulary::person} is mentioned, you go quiet," {@bt_name|::subscribed_books::vocabulary::person} said. "What are you not telling me?"' = "“每次提到{@bt_foe|::subscribed_books::vocabulary::person}，你就不说话了，”{@bt_name|::subscribed_books::vocabulary::person}说，“你究竟瞒了我什么？”"
+'"You spent our last coin on that informer from {@bt_far_place|::subscribed_books::vocabulary::place}," {@bt_name|::subscribed_books::vocabulary::person} said, "and he lied to us."' = "“你把我们最后一枚钱花在了那个从{@bt_far_place|::subscribed_books::vocabulary::place}来的线人身上，”{@bt_name|::subscribed_books::vocabulary::person}说，“结果他骗了我们。”"
+'"I did not come all this way to watch you lose your nerve," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“我走了这么远，不是为了看你临阵退缩，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+
+# rebuttal_templates：反驳与回应。
+[[rulesets]]
+[rulesets.rules]
+'"And when you find {@bt_foe|::subscribed_books::vocabulary::person}?" {@bt_name|::subscribed_books::vocabulary::person} asked. "Have you thought past that?"' = "“找到{@bt_foe|::subscribed_books::vocabulary::person}之后呢？”{@bt_name|::subscribed_books::vocabulary::person}问，“再往后的事，你想过吗？”"
+'"{@bt_victim|::subscribed_books::vocabulary::person} would not want you to throw your life away on {@bt_foe|::subscribed_books::vocabulary::person}," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“{@bt_victim|::subscribed_books::vocabulary::person}不会希望你为了{@bt_foe|::subscribed_books::vocabulary::person}白白送命，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"Then we go together," {@bt_name|::subscribed_books::vocabulary::person} said. "You should not face {@bt_foe|::subscribed_books::vocabulary::person} alone."' = "“那我们一起去，”{@bt_name|::subscribed_books::vocabulary::person}说，“你不该独自面对{@bt_foe|::subscribed_books::vocabulary::person}。”"
+'"Revenge is a long road," {@bt_name|::subscribed_books::vocabulary::person} said. "Make sure you can walk back from it."' = "“复仇是一条漫长的路，”{@bt_name|::subscribed_books::vocabulary::person}说，“你得确定自己还能沿着它走回来。”"
+'"I did what I had to," {@bt_name|::subscribed_books::vocabulary::person} said. "You would have done the same."' = "“我做了不得不做的事，”{@bt_name|::subscribed_books::vocabulary::person}说，“换作你，也会这么做。”"
+'"How long will you hold the {wrong} over me?" {@bt_name|::subscribed_books::vocabulary::person} asked.' = "“那场{wrong}，你还要拿来压我多久？”{@bt_name|::subscribed_books::vocabulary::person}问。"
+'"You never let anything go," {@bt_name|::subscribed_books::vocabulary::person} said. "Not once, not ever."' = "“你从来不肯放下任何事，”{@bt_name|::subscribed_books::vocabulary::person}说，“一次也没有，从来都没有。”"
+'"We are alive," {@bt_name|::subscribed_books::vocabulary::person} said. "That has to count for something."' = "“我们还活着，”{@bt_name|::subscribed_books::vocabulary::person}说，“这总该算有点意义。”"
+'"{@bt_foe|::subscribed_books::vocabulary::person} was better than we were," {@bt_name|::subscribed_books::vocabulary::person} said. "That is all it was."' = "“{@bt_foe|::subscribed_books::vocabulary::person}比我们强，”{@bt_name|::subscribed_books::vocabulary::person}说，“仅此而已。”"
+'"What else were we supposed to do?" {@bt_name|::subscribed_books::vocabulary::person} said.' = "“那我们还能怎么办？”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"{@bt_foe|::subscribed_books::vocabulary::person} chose every step of it," {@bt_name|::subscribed_books::vocabulary::person} said. "We only finished it."' = "“每一步都是{@bt_foe|::subscribed_books::vocabulary::person}自己的选择，”{@bt_name|::subscribed_books::vocabulary::person}说，“我们只是让它结束。”"
+'"And if {@bt_foe|::subscribed_books::vocabulary::person} is waiting for exactly that?" {@bt_name|::subscribed_books::vocabulary::person} countered.' = "“要是{@bt_foe|::subscribed_books::vocabulary::person}等的恰好就是这个呢？”{@bt_name|::subscribed_books::vocabulary::person}反驳道。"
+'"Rushing at {@bt_foe|::subscribed_books::vocabulary::person} is how people end up in the ground," {@bt_name|::subscribed_books::vocabulary::person} said. "I would rather {goal} and live."' = "“贸然冲向{@bt_foe|::subscribed_books::vocabulary::person}，只会把人送进土里，”{@bt_name|::subscribed_books::vocabulary::person}说，“我宁愿既能{goal}，又能活下来。”"
+'"We do not even know that {@bt_foe|::subscribed_books::vocabulary::person} is still at {@bt_far_place|::subscribed_books::vocabulary::place}," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“我们甚至都不知道{@bt_foe|::subscribed_books::vocabulary::person}是不是还在{@bt_far_place|::subscribed_books::vocabulary::place}，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"{stake} is not worth all of us," {@bt_name|::subscribed_books::vocabulary::person} said quietly. "Is it?"' = "“{stake}不值得让我们全都送命，”{@bt_name|::subscribed_books::vocabulary::person}轻声说，“不是吗？”"
+'"Talk is how we stay alive long enough to {goal}," {@bt_name|::subscribed_books::vocabulary::person} said.' = "“正是靠商量，我们才能活到{goal}的时候，”{@bt_name|::subscribed_books::vocabulary::person}说。"
+'"Do you want {stake}, or do you want to die proving a point?" {@bt_name|::subscribed_books::vocabulary::person} asked.' = "“你想要的是{stake}，还是为了证明自己有理而去送死？”{@bt_name|::subscribed_books::vocabulary::person}问。"
+'"I have not lost my nerve," {@bt_name|::subscribed_books::vocabulary::person} said. "I have found my sense."' = "“我没有失去勇气，”{@bt_name|::subscribed_books::vocabulary::person}说，“我只是找回了理智。”"
+'"Give me one more day," {@bt_name|::subscribed_books::vocabulary::person} said. "One more, and then we go."' = "“再给我一天，”{@bt_name|::subscribed_books::vocabulary::person}说，“就一天，然后我们就走。”"
+'"There is nothing to tell," {@bt_name|::subscribed_books::vocabulary::person} said, a little too quickly.' = "“没什么可说的，”{@bt_name|::subscribed_books::vocabulary::person}回答得稍微太快了些。"
+
+# 同一小说仍可落入旧公共事务话题；保留旧译条并补充上游更新的责难句。
+[[rulesets]]
+[rulesets.rules]
+'"You would {::subscribed_books::speech::governance::action} {::subscribed_books::speech::governance::body}?" {@bt_name|::subscribed_books::vocabulary::person} asked. "Call it reform if you like. I call it destruction."' = "“你要对{::subscribed_books::speech::governance::body}采取{::subscribed_books::speech::governance::action}措施？”{@bt_name|::subscribed_books::vocabulary::person}问，“你尽可以称它为改革。在我看来，这就是毁灭。”"
+
+[[rulesets]]
+name = "stake"
+[rulesets.rules]
+"{::subscribed_books::plot_vocabulary::stake}" = "{::subscribed_books::plot_vocabulary::stake}"
+
+[[rulesets]]
+name = "goal"
+[rulesets.rules]
+"{::subscribed_books::plot_vocabulary::goal}" = "{::subscribed_books::plot_vocabulary::goal}"
+
+[[rulesets]]
+name = "cause"
+[rulesets.rules]
+"{::subscribed_books::plot_vocabulary::cause}" = "{::subscribed_books::plot_vocabulary::cause}"
+
+[[rulesets]]
+name = "wrong"
+[rulesets.rules]
+"betrayal" = "背叛"
+"mutiny" = "叛乱"
+"wrong" = "伤害"

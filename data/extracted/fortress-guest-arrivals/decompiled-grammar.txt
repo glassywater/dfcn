@@ -1,0 +1,193 @@
+Guest-arrival alert hover: complete native source boundary
+
+Source: the actual reference and classic PE files configured by
+data/runtime/native-pe-images.json. pe-functions.tsv retains their full paths,
+PE identities, SHA-256 values and decoded function ranges. The *.c files are
+Ghidra decompiler output; *.asm, pe-branches.tsv, pe-conditions.tsv,
+pe-literals.tsv and pe-switches.tsv retain the native operands and branches.
+This is offline source extraction, not an observation of the running game.
+
+Actual decompiler output retained
+  Both images completed Ghidra C export for travellers-producer,
+  announcement-submit, report-category, migrant-producer and
+  alert-popup-renderer (ten completed native functions in all).
+  The complete Fortress main renderer is also retained as original assembly,
+  literal operands, switch aliases and branch edges in
+  pe-*-fortress-alert-hover-owner.asm and the native TSV inventories. Whole-
+  renderer C output was not produced: its broad simplification remained
+  running, and the final raw-tree attempt was stopped at task completion.
+  That explicit stop yielded the exact Ghidra diagnostic "Decompiler process
+  died" at reference 0x3d6950 / classic 0x3d4510 (shell exit 1). This is not
+  reported as successful C decompilation. The card-specific producers,
+  category membership, report ownership and expanded renderer were already
+  fully decompiled; the hover instruction/count branches also remain in the
+  complete original machine-code source. The default Java export therefore
+  selects the bounded producer chain; the monolithic owner is opt-in.
+
+  A final bounded-region attempt used the actual full renderer CFG to retain
+  three related native basic-block regions per image, without treating them
+  as independent native functions. pe-hover-regions.tsv identifies their
+  parent, range and every original continuation; pe-hover-edges.tsv preserves
+  internal, incoming and outgoing edges. pe-*-*-region.asm preserves every
+  original instruction byte, and pe-hover-literals.tsv / pe-hover-calls.tsv
+  retain the literal and supplier operands. Parent register/stack live-ins
+  are external inputs. The Ghidra analysis used boundary continuation stubs
+  and an explicit final-fallthrough boundary; it did not patch native bytes.
+
+  Reference parent 0x3d6950, classic parent 0x3d4510:
+    alert-button-hover-source-region
+      reference [0x3d740d,0x3d7627); classic [0x3d4fcd,0x3d51e7)
+      C status: reference timeout; classic timeout.
+      Hit bounds, report-vector lookup, repetition suffix, wrapping/colors,
+      and hover-card position.
+    alert-icon-hover-source-region
+      reference [0x3f60da,0x3f6830); classic [0x3f3c9a,0x3f43f0)
+      C status: reference not attempted; classic not attempted.
+      Icon selection, alert report-vector lookup, repetition suffix,
+      wrapping/colors, adjacent generic unit-summary branch and position.
+    alert-hover-two-card-render-region
+      reference [0x3fa94d,0x3faf77); classic [0x3f850d,0x3f8b37)
+      C status: reference not attempted; classic not attempted.
+      Popup/modal gating, both hover-card frames, both occurrences of the
+      click instruction, and colored report-row rendering. Additional exits
+      are reference 0x3fb44f and classic 0x3f900f.
+
+  This bounded C attempt also failed. Both runs reached the dedicated Java
+  script, then the first region exhausted its 60-second decompiler budget:
+    reference: Region C unavailable at 0x3d740d: Exception while decompiling
+               1403d740d: process: timeout
+    classic:   Region C unavailable at 0x3d4fcd: Exception while decompiling
+               1403d4fcd: process: timeout
+  The thrown exception prevented the other two regions in each image from
+  entering the C stage. Both headless shells returned 0 after recording the
+  script error; that return code is not C-export success. No region C file
+  was produced, and no retry followed. All six original regions and their
+  full boundary edges remain available as the precise native UI source.
+  All primary message productions, submission/category ownership and popup
+  branches below come from completed actual Ghidra C exports. Hover-only
+  instruction/count presentation is supported by the native ASM/CFG source;
+  it is not represented as a completed C export.
+
+Card/category boundary
+  The screenshot is the alert-icon hover card (its instruction begins
+  "Left click for recenter and expand options."). The native guest category is
+  28 (0x1c). The report-category switch maps only announcement 301 (0x12d,
+  GUEST_ARRIVAL) to category 28 in both configured PE files.
+  announcement-submit calls this switch and appends the report ID to the
+  matching announcement_alertst's +8 vector. The hover owner looks these IDs
+  up and uses report.text (+8), rather than rebuilding the visitor sentence.
+  The same category reaches the expanded alert popup renderer.
+  Category 3 migrant types 49, 50, 69, 70, 71 and 72 share the Reports Arrivals
+  tab with category 28, but do not enter this guest hover card. Their producer
+  is preserved here as adjacent source evidence, not as extra card branches.
+  GUEST_RUMOR (324) in the travellers producer maps to category 30, so its
+  rumor/tales sentences and the separate Spoils Report are outside this card.
+
+All guest sentence productions
+  Producer: reference 0x10b150..0x1103b0, classic 0x10b0e0..0x110340.
+  All six submission sites use descriptor DWORD 0x2012d (type 301, color 2),
+  bright 1 and display timer 2000. The complete producer is preserved.
+
+  New visitor, one unit:
+    UnitLabel(unit) + " has arrived."
+    UnitLabel(unit) + " is visiting."
+  New visitors, multiple units with no consistent performance entity:
+    one independent record per unit using the same two branches above.
+  New visitors, multiple units with a consistent performance entity:
+    EntityName(entity) + ", the performance troupe, has arrived."
+    EntityName(entity) + ", a performance troupe, is visiting."
+  Arrived versus visiting is selected using the unit's historical figure
+  lookup, then info pointer +0x130, then its +0x28 information record. All
+  three pointers must exist and information record.word0 must be 1 to choose
+  arrived; a missing pointer or any other value chooses visiting. For a
+  performance troupe the first live unit supplies this information. Zero
+  live units produces no new-visitor sentence.
+
+  Returns, one live unit or no returning squad:
+    one unit: UnitLabel(unit) + " has returned."
+    two units: UnitLabel(first) + " and " + UnitLabel(second)
+               + " have returned."
+    three or more units: UnitLabel(first) + " and others have returned."
+  Returns, multiple live units and returning squads present:
+    one squad: SquadLabel(first) + " have returned."
+    multiple squads: SquadLabel(first) + " and others have returned."
+  The native branch prioritizes the unit form when live-unit count is one,
+  even when a squad is also present. Each of these five return productions
+  can append the optional history field described below.
+
+Semantic fields, not finite phrase substitutions
+  UnitLabel is native unit formatter reference 0x1330c30 / classic 0x132bba0,
+  called with its trailing mode argument zero. It supplies the actual name,
+  identity, profession/office and transformation fields as a single caption;
+  its title-field branches are extracted separately in ../visitor-unit-identity.
+  EntityName is reference 0xb92900 / classic 0xb8f940.
+  SquadLabel tests actual squad.alias (+0x80) for emptiness. A nonempty alias
+  is appended verbatim. Only an empty alias uses squad.name (+8) through
+  native EnglishName reference 0xa946e0 / classic 0xa91760. Spelling is not
+  evidence of an alias or a reason to translate user-authored names.
+
+Empty semantic fields
+  The producer never tests UnitLabel or EntityName output for emptiness. It
+  appends the selected fixed suffix and submits the resulting record anyway.
+  It also does not test the generated SquadLabel after the empty-alias branch.
+  Therefore exact bare productions include " has arrived.", " is visiting.",
+  " has returned.", " have returned.", " and others have returned.",
+  ", the performance troupe, has arrived." and
+  ", a performance troupe, is visiting.". In the two-unit return production,
+  either UnitLabel can independently be empty; both empty produce
+  " and  have returned." (two spaces between and and have). The optional
+  history appendix is still available for these return records. Because a
+  fixed suffix remains, announcement-submit's empty-whole-text rejection does
+  not suppress them. These exact type-301 paths do not justify accepting an
+  empty unit field in unrelated grammars.
+  announcement-submit preserves the source case and bytes when copying into
+  report+8 (reference 0xe46ad). Its earlier helper 0x52bd30 is only the native
+  game-log sink; pe-reference-announcement-text-log-sink.asm retains that
+  source without opening any log. There is no capitalization call here.
+  The translation-side native_announcement_display_source strips leading
+  whitespace and collapses internal whitespace, but preserves case. Thus
+  bare forms normalize to lowercase "has arrived.", "is visiting.",
+  "has returned.", "have returned.", "and others have returned." and
+  "and have returned."; the troupe forms retain their initial comma.
+
+Optional return report appendix
+  The return event ID is selected from returning army records -> squad_mission
+  -> live units' 64 int32 event slots at unit+0x404. Disagreeing IDs omit the
+  report. There is no history-event subtype restriction at this selection.
+  An available event is formatted through its virtual +0xd0 slot with native
+  flags 0,1,0. If the resulting field is nonempty, exactly two ASCII spaces
+  and the entire history sentence are appended to the same return-text owner
+  before type 301 submission. An absent event, empty field or no selected ID
+  adds no text. This creates an optional appendix for every return family.
+  Exact call sites: reference 0x10dbf2/0x10dd99/0x10dfbc;
+                    classic 0x10db82/0x10dd29/0x10df4c.
+  The complete reachable 133-type virtual dispatch and descendant sources
+  are retained in ../announcement-negotiation-native/returned-history-dispatch.tsv.
+  This open semantic field must remain delegated to the existing structural
+  history-document path; it is not limited to the visitor sentence suffixes.
+
+Hover and expanded-card text
+  Hover instruction (both alert-icon and alert-button branches):
+    "Left click for recenter and expand options.  Right click to dismiss."
+  Expanded category-28 card instruction:
+    "You can recenter on certain announcements.  Right click to close."
+  The native alternate "Select a report to view the full text.  Right click
+  to close." requires report_unid entries. Guest constructors create report
+  IDs in +8, not unit-summary entries, so this is a generic UI branch rather
+  than an additional guest-caption production.
+  Report repetition counter is report+0x34. Zero preserves only report.text;
+  positive values append " x" and the decimal value counter+1. Repetition is
+  counted by matching complete source report text in announcement-submit,
+  and does not alter any UnitLabel, EntityName or SquadLabel field.
+  The "Somebody is fighting!/sparring./hunting." summaries belong to other
+  alert categories' unit vectors and cannot be supplied by these guest
+  constructors. They are present in the complete generic renderer sources
+  to make that distinction explicit.
+
+Existing processing boundaries
+  Type 301 sentence syntax and history appendices are described in
+  ../fortress-arrivals/decompiled-arrival-productions.tsv and handled through
+  the existing complete-announcement grammar and native history documents.
+  The untranslated generated office title in the supplied screenshot is
+  inside UnitLabel, before " is visiting."; adding another visitor suffix
+  cannot resolve that title-field failure.

@@ -1292,3 +1292,399 @@ adventure-announcement	{s} has cooked a masterpiece!	{s1}烹饪出了一道杰�
 adventure-announcement	{s} has engraved a masterpiece!	{s1}刻出了一件杰作！	$unit	PE reference 0x1486440; announcement-popup-native/native-production-catalog.tsv complete source; paired classic owner in native-producer-owners.tsv; original branches in reference/classic-announcement-producers.asm
 adventure-announcement	{s} and {s} have married.  Congratulations!	{s1}和{s2}结婚了。恭喜！	$unit,$unit	PE reference 0x14cc8d0; announcement-popup-native/native-production-catalog.tsv complete source; paired classic owner in native-producer-owners.tsv; original branches in reference/classic-announcement-producers.asm
 adventure-announcement	{s} is brawling under the influence!	{s1}喝醉了，正在斗殴！	$unit	PE reference 0x14ee3d0; announcement-popup-native/native-production-catalog.tsv complete source; paired classic owner in native-producer-owners.tsv; original branches in reference/classic-announcement-producers.asm
+
+# Complete spoken productions retained from both current PE dialogue owners.
+# Dedicated popup speech accepts these finite literal/typed alternatives; unrelated adventure records remain in their own scope.
+spoken-sentence	Uhh...	呃……		PE reference 0x1406664c5; classic 0x140663ee5; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Uh...	呃……		PE reference 0x1404d5cf5; classic 0x1404d38b5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Who?	谁？		PE reference 0x1404c83a4; classic 0x1404c5f64; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Ahhh...	啊……		PE reference 0x1404a1348; classic 0x14049ef08; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Gwargh!	嘎哇啊！		PE reference 0x1404a1331; classic 0x14049eef1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Ack!	啊！		PE reference 0x1404d5cde; classic 0x1404d389e; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Huh?	嗯？		PE reference 0x1404d5cc7; classic 0x1404d3887; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Eh?	诶？		PE reference 0x1404d5cb0; classic 0x1404d3870; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Ha!	哈！		PE reference 0x1404d5c99; classic 0x1404d3859; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	No!	不！		PE reference 0x1404d5c82; classic 0x1404d3842; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	No.	不。		PE reference 0x1404d6acc; classic 0x1404d468c; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Really.	真是的。		PE reference 0x1404d61dd; classic 0x1404d3d9d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What?	什么？		PE reference 0x1404d5e0e; classic 0x1404d39ce; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	A few separate groups were organized.	几个各自独立的组织成立了。		PE reference 0x1404ae64d; classic 0x1404ac20d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	A great piece of art is one that moves me.	能打动我的，才是好艺术。		PE reference 0x140667525; classic 0x140664f45; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	A legend? Here? I can scarcely believe it.	传说中的人物？在这里？我简直不敢相信。		PE reference 0x14067edec; classic 0x14067c80c; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	All drinks are free, of course!	当然，所有饮品都是免费的！		PE reference 0x1404b7887; classic 0x1404b5447; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Am I supposed to engage with that?	难道还要我回应那番话？		PE reference 0x1404d5e9a; classic 0x1404d3a5a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	An honor as always. How can I be of service?	每次见到你都深感荣幸。有什么需要我效劳的？		PE reference 0x14067ec56; classic 0x14067c676; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	An item has returned!	一件物品回来了！		PE reference 0x1404cd749; classic 0x1404cb309; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	And what exactly do you want?	你到底想要什么？		PE reference 0x14067fd35; classic 0x14067d755; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Are in a foul mood?	心情不好吗？		PE reference 0x14067fe04; classic 0x14067d824; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Are we close?	我们快到了吗？		PE reference 0x1404a5aa0; classic 0x1404a3660; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Are you being serious?	你是认真的吗？		PE reference 0x1404d5df4; classic 0x1404d39b4; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Are you hunting for treasure?	你在寻找宝藏吗？		PE reference 0x14067fda1; classic 0x14067d7c1; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Are you looking forward to the performance?	你期待这场表演吗？		PE reference 0x1404a679b; classic 0x1404a435b; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Are you ready to learn?	准备好学习了吗？		PE reference 0x14067fd41; classic 0x14067d761; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Are you stalking a dangerous beast?	你在追踪危险的野兽吗？		PE reference 0x14067fe16; classic 0x14067d836; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Are you still dancing?	你还在跳舞吗？		PE reference 0x14067fdfb; classic 0x14067d81b; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	At least it doesn't rain down here.	至少这下面不会下雨。		PE reference 0x1404bc8d4; classic 0x1404ba494; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Base flattery!	少来这套下作的奉承！		PE reference 0x1404d527c; classic 0x1404d2e3c; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Be happy!	开心一点！		PE reference 0x140666ba1; classic 0x1406645c1; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Been in any good scraps today?	今天痛快地打过架吗？		PE reference 0x14067fd4d; classic 0x14067d76d; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Best keep your head down.	最好还是低调些。		PE reference 0x140682db5; classic 0x1406807d5; dialogue-105a860 complete speech body; announcement-conversation/
+spoken-sentence	Bravery is not a strength of mine.	勇敢不是我的长处。		PE reference 0x140666e59; classic 0x140664879; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Can you tell me where I can find myself?	能告诉我到哪里能找到我自己吗？		PE reference 0x1404a42fa; classic 0x1404a1eba; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Can you tell me where I can find you?	能告诉我到哪里能找到你吗？		PE reference 0x1404a4320; classic 0x1404a1ee0; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Certainly. It would be terrible to leave someone to fend for themselves after sunset.	当然。日落之后，让人独自在外面自生自灭就太糟了。		PE reference 0x1404b56c3; classic 0x1404b3283; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Despite some minor reservations...	尽管还有一些小小的保留意见……		PE reference 0x1404d390a; classic 0x1404d14ca; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Do I look like I need to calm down?!	我看起来像是需要冷静吗？！		PE reference 0x1404d43c3; classic 0x1404d1f83; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Do you have a story to tell?	你有什么故事要讲吗？		PE reference 0x14067fde0; classic 0x14067d800; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Do you have dreams? Tell me a story!	你有梦境吗？给我讲个故事！		PE reference 0x1406674f6; classic 0x140664f16; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Do you have wisdom to share, preacher?	布道者，你有什么智慧要分享吗？		PE reference 0x14067fdd7; classic 0x14067d7f7; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Do your duty.	尽好自己的本分。		PE reference 0x1406673c6; classic 0x140664de6; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Don't bother trying to play on my emotions.	别费心利用我的感情。		PE reference 0x14066737d; classic 0x140664d9d; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Don't get on my bad side.	别惹我。		PE reference 0x1406671b7; classic 0x140664bd7; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Don't let the enemy rest.	别让敌人喘息。		PE reference 0x14067fd89; classic 0x14067d7a9; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Don't talk to me.	别跟我说话。		PE reference 0x1404a138d,0x1404a13a4; classic 0x14049ef4d,0x14049ef64; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Don't try to throw your weight around.	别想在这里仗势欺人。		PE reference 0x14067fdb3; classic 0x14067d7d3; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Don't walk off with anything.	别顺手拿走东西。		PE reference 0x14067fe1f; classic 0x14067d83f; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Enjoy the hunt!	祝你狩猎愉快！		PE reference 0x1404a88f1; classic 0x1404a64b1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Everybody has their own way of life.	人人都有自己的活法。		PE reference 0x140667313; classic 0x140664d33; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Everything is all piling up at once!	所有事情一下子全压过来了！		PE reference 0x140667afc; classic 0x14066551c; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Everything just so in its proper place!	一切都井井有条，各归其位！		PE reference 0x140667420; classic 0x140664e40; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Fine. Let's drop the argument.	好吧。我们别争了。		PE reference 0x1404d579d; classic 0x1404d335d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Friendship is forever.	友谊长存。		PE reference 0x14066733f; classic 0x140664d5f; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Get away from me!	离我远点！		PE reference 0x1404a1376,0x1404d43fb,0x1406615dd; classic 0x14049ef36,0x1404d1fbb,0x14065effd; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Get me going and I won't stop for anything.	只要我行动起来，就没有什么能让我停下。		PE reference 0x140666d4c; classic 0x14066476c; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Give me a break.	饶了我吧。		PE reference 0x1404d5dda; classic 0x1404d399a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Greetings.	你好。		PE reference 0x140680896; classic 0x14067e2b6; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Have no fear.	不必畏惧。		PE reference 0x140666e48; classic 0x140664868; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Have you written a new poem?	你写新诗了吗？		PE reference 0x14067fde9; classic 0x14067d809; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	How I long for civilization...	我多么怀念文明世界……		PE reference 0x1404bcccc; classic 0x1404ba88c; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	How are you enjoying the adventure?	这趟冒险还过得愉快吗？		PE reference 0x1404a5eaa; classic 0x1404a3a6a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	How can people be so glum?	人为什么会这么不快乐？		PE reference 0x140666bca; classic 0x1406645ea; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	How can someone be so consumed by hate?	一个人怎么会被仇恨吞噬到这种地步？		PE reference 0x140666b65; classic 0x140664585; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	How dare you?!	你怎么敢？！		PE reference 0x1404d52dc; classic 0x1404d2e9c; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	How gracious!	真是宽宏大量！		PE reference 0x1404d58d5; classic 0x1404d3495; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	How have things been?	最近怎么样？		PE reference 0x1404a6e4c; classic 0x1404a4a0c; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	How may I serve you?	我能为你做些什么？		PE reference 0x1404a7181; classic 0x1404a4d41; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	How sinister the glow...	这光芒多么阴森……		PE reference 0x1404bcd0d; classic 0x1404ba8cd; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	How unreasonable!	真不讲道理！		PE reference 0x1404d5d9f; classic 0x1404d395f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	How's life here?	在这里过得怎么样？		PE reference 0x1404a6e75; classic 0x1404a4a35; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Huh? What was that?	嗯？刚才说什么？		PE reference 0x14066723d; classic 0x140664c5d; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I admire how brilliant you are!	你的才智让我钦佩！		PE reference 0x1404d39cd; classic 0x1404d158d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am a little confused.	我有点困惑。		PE reference 0x14049d321; classic 0x14049aee1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am a very, very important person.	我是个非常、非常重要的人物。		PE reference 0x1406671d3; classic 0x140664bf3; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I am afraid of them.	我害怕他们。		PE reference 0x1404a54df,0x1404af015; classic 0x1404a309f,0x1404acbd5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am confused.	我有些困惑。		PE reference 0x14049d34f,0x14049d89f,0x14049d8b6,0x14049db9d,0x14049df32,0x14049e1e4,0x14049e8ef,0x14049ea6b,0x14049ed70,0x14049efb2,0x14049f21a,0x14049f4d0,0x14049fd30,0x1404a0350,0x1404a037e,0x1404a0927,0x1404a0955,0x1404a0acb,0x1404a0ae2,0x1404a0d1a,0x1404a0d31,0x1404a0ece,0x1404a0ee5; classic 0x14049af0f,0x14049b45f,0x14049b476,0x14049b75d,0x14049baf2,0x14049bda4,0x14049c4af,0x14049c62b,0x14049c930,0x14049cb72,0x14049cdda,0x14049d090,0x14049d8f0,0x14049df10,0x14049df3e,0x14049e4e7,0x14049e515,0x14049e68b,0x14049e6a2,0x14049e8da,0x14049e8f1,0x14049ea8e,0x14049eaa5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am escaping from danger which threatened my former home.	我原来的家遭遇了危险，我是出来避难的。		PE reference 0x1404ca7a3; classic 0x1404c8363; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am honored to be in your presence.	能见到你，我倍感荣幸。		PE reference 0x14067ee51; classic 0x14067c871; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	I am not governed by urges.	我不会任由冲动左右自己。		PE reference 0x140666d24; classic 0x140664744; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I am overmastered by your presence!	你的气势让我折服！		PE reference 0x1404d3a18; classic 0x1404d15d8; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am so nearly swayed by your greatness alone that we can simply assign you the victory!	单凭你这非凡的气度，我就快服了，不如干脆算你赢吧！		PE reference 0x1404d3a74; classic 0x1404d1634; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am sorry. I do not think there is room for me.	抱歉，我觉得这里容不下我。		PE reference 0x1404a0367; classic 0x14049df27; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am sorry. There is no room for you here.	抱歉，这里没有你的容身之处。		PE reference 0x1404a093e; classic 0x14049e4fe; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am sort of confused.	我有些困惑。		PE reference 0x14049d338; classic 0x14049aef8; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I am very confused.	我非常困惑。		PE reference 0x14049d366; classic 0x14049af26; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I beg to differ.	恕我不能苟同。		PE reference 0x1404d6ab2; classic 0x1404d4672; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I believe... something.	我相信……某些东西。		PE reference 0x1404d7069; classic 0x1404d4c29; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I can't take much more of this!	这样下去，我就要撑不住了！		PE reference 0x140667b7f; classic 0x14066559f; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I cannot agree.	我无法赞同。		PE reference 0x1404d6a64; classic 0x1404d4624; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I cannot stand the world any longer...	我再也受不了这个世界了……		PE reference 0x140667b16; classic 0x140665536; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I confess your stunning argument overwhelms me!	我承认，你这番精彩的论辩让我心服口服！		PE reference 0x1404d3a01; classic 0x1404d15c1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I could really use a drink.	我真想喝一杯。		PE reference 0x140666ced; classic 0x14066470d; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I could tell you all about it!	我可以把来龙去脉都告诉你！		PE reference 0x1406672ba; classic 0x140664cda; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I couldn't follow your rambling.	你东拉西扯的，我听不明白。		PE reference 0x1404d6026; classic 0x1404d3be6; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I disagree.	我不同意。		PE reference 0x1404d6a4a; classic 0x1404d460a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I do not scheme.	我没有谋划阴谋。		PE reference 0x1404dcb52; classic 0x1404da712; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I don't agree.	我不同意。		PE reference 0x1404d6b28; classic 0x1404d46e8; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I don't always do things in the most efficient way.	我做事并不总是那么有效率。		PE reference 0x140666d68; classic 0x140664788; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't care one way or another.	怎样我都不在乎。		PE reference 0x1404a54b1,0x1404aefe7,0x140673d15; classic 0x1404a3071,0x1404acba7,0x140671735; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I don't feel like I need to chase anything.	我不觉得我需要追逐任何东西.		PE reference 0x140666ee0; classic 0x140664900; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't feel like telling you about it.	我不想和你谈这件事。		PE reference 0x1406672ae; classic 0x140664cce; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't handle pressure well.	我难以承受压力。		PE reference 0x140666c60; classic 0x140664680; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't know anything else about them.	关于他们，我不知道更多了。		PE reference 0x1404a5466,0x1404aef9c; classic 0x1404a3026,0x1404acb5c; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I don't know what to say.	我不知道该说什么。		PE reference 0x1404d66ba; classic 0x1404d427a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I don't like being obligated to anybody.	我不喜欢欠任何人的情。		PE reference 0x1406673d7; classic 0x140664df7; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't mind stirring things up.	我不介意挑起点事端。		PE reference 0x140666d94; classic 0x1406647b4; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't really get attached to people.	我不太会对别人产生依恋。		PE reference 0x140667350; classic 0x140664d70; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't really want to know.	我其实并不想知道。		PE reference 0x140667271; classic 0x140664c91; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't remember what I believe...	我不记得自己相信什么了……		PE reference 0x1404cd902; classic 0x1404cb4c2; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I don't remember what I was going to say...	我不记得要说什么了……		PE reference 0x1404c8511,0x1404c86ba; classic 0x1404c60d1,0x1404c627a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I don't think I'm cut out for this.	我觉得自己不适合做这件事。		PE reference 0x140666e86; classic 0x1406648a6; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't understand how somebody can become so obsessed by what somebody else has.	我不明白，一个人怎么会如此执着于别人拥有的东西。		PE reference 0x140666b81; classic 0x1406645a1; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't understand why they have to be that way.	我不理解，他们为什么非要那样。		PE reference 0x14066731f; classic 0x140664d3f; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I don't want to argue.	我不想争论。		PE reference 0x1404d66a3; classic 0x1404d4263; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I encountered a fascinating conundrum recently.	我最近遇到了一个引人入胜的难题。		PE reference 0x14066750f; classic 0x140664f2f; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I feel angry all the time.	我心里总有一股怒气。		PE reference 0x140667b65; classic 0x140665585; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I feel so tired of everything.	我对一切都感到厌倦。		PE reference 0x140667b99; classic 0x1406655b9; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I get fed up sometimes.	有时我也觉得受够了。		PE reference 0x140667be8; classic 0x140665608; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I get so jealous sometimes.	有时我真是嫉妒得厉害。		PE reference 0x140666b75; classic 0x140664595; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I go with the flow sometimes.	我有时也会随大流。		PE reference 0x14066736c; classic 0x140664d8c; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I guess I just don't appreciate art.	看来我就是不懂欣赏艺术。		PE reference 0x140667536; classic 0x140664f56; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I guess I'm not sure.	我想我还不确定。		PE reference 0x1404d66d1; classic 0x1404d4291; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I hate them.	我恨他们。		PE reference 0x1404a54c8,0x1404aeffe; classic 0x1404a3088,0x1404acbbe; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I hate you.	我恨你。		PE reference 0x1404a1298; classic 0x14049ee58; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I have been so foolish. Yes, I agree.	我以前太愚蠢了。是的，我同意。		PE reference 0x1404d3361; classic 0x1404d0f21; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I have no idea.	我完全不知道。		PE reference 0x1404adb24; classic 0x1404ab6e4; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I have nothing for you.	我没什么能给你的。		PE reference 0x14067fdbc; classic 0x14067d7dc; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	I have trouble controlling my temper.	我很难控制自己的脾气。		PE reference 0x140666bda; classic 0x1406645fa; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I haven't heard anything like that.	我没听说过这样的事。		PE reference 0x1404ae221; classic 0x1404abde1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I heard that there was an incident.	听说出事了。		PE reference 0x14068357a; classic 0x140680f9a; dialogue-105a860 complete speech body; announcement-conversation/
+spoken-sentence	I hope you find what you are seeking here.	希望你能在这里找到你所追寻的东西。		PE reference 0x1404a5225; classic 0x1404a2de5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I just don't care anymore...	我已经什么都不在乎了……		PE reference 0x140667ac8; classic 0x1406654e8; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I just don't know.	我实在不知道。		PE reference 0x1404d668c,0x14066a943; classic 0x1404d424c,0x140668363; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I just don't understand these flames of passion people go on about.	人们总说欲火难耐，我实在无法理解。		PE reference 0x140666c44; classic 0x140664664; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I like to dress well.	我喜欢衣着得体。		PE reference 0x140666f29; classic 0x140664949; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I look splendid today.	我今天真是光彩照人。		PE reference 0x140666ea2; classic 0x1406648c2; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I must insist.	这点我坚持。		PE reference 0x1404d6ba7; classic 0x1404d4767; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I must obey the master!	我必须服从主人！		PE reference 0x1404a131a; classic 0x14049eeda; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I must say that is a truly insightful observation!	不得不说，你这番见解真是深刻！		PE reference 0x1404d39e7; classic 0x1404d15a7; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I must take my leave.	我得告辞了。		PE reference 0x1404b0703; classic 0x1404ae2c3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I need some more excitement in my life.	我的生活需要多一点刺激。		PE reference 0x1406674dd; classic 0x140664efd; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I prefer to be by myself.	我更喜欢独处。		PE reference 0x14066748b; classic 0x140664eab; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I require a substantive reply.	我需要你拿出点实实在在的答复。		PE reference 0x1404d6bec; classic 0x1404d47ac; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I sense you're wavering.	我感觉你在动摇。		PE reference 0x1404d6c03; classic 0x1404d47c3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I serve no one.	我不为任何人效力。		PE reference 0x1404d7b3a; classic 0x1404d56fa; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I tire of this pointless skirmishing.	我厌倦了这种毫无意义的小规模冲突。		PE reference 0x1404aa1a6; classic 0x1404a7d66; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I try not to interrupt.	我尽量不打断别人说话。		PE reference 0x1406674b8; classic 0x140664ed8; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I try to live and behave properly.	我尽量让生活和言行合乎规矩。		PE reference 0x140666dee; classic 0x14066480e; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I value your loyalty.	我珍视你的忠诚。		PE reference 0x14067fdc5; classic 0x14067d7e5; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	I was just out at the tavern.	我刚才在酒馆。		PE reference 0x1404ca8c3; classic 0x1404c8483; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I was just out for some water.	我刚才出去取水了。		PE reference 0x1404ca87e; classic 0x1404c843e; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I was never one to follow advice.	我从来不是听得进劝的人。		PE reference 0x140666e1b; classic 0x14066483b; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I was out visiting the library.	我刚才去图书馆了。		PE reference 0x1404ca8da; classic 0x1404c849a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I was out visiting the shrine.	我刚才去圣地了。		PE reference 0x1404ca8ac; classic 0x1404c846c; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I was out visiting the temple.	我刚才去神殿了。		PE reference 0x1404ca895; classic 0x1404c8455; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I will fight no more.	我不会再战斗了。		PE reference 0x1404cfc59; classic 0x1404cd819; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I will settle this my way.	我要用我的方式解决此事。		PE reference 0x1404d532b; classic 0x1404d2eeb; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I wish I could tell you where to begin your search. Until then, you are free to do as you please.	我也希望能告诉你从哪里开始寻找。在那之前，你可以自由行动。		PE reference 0x1404aa754; classic 0x1404a8314; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I wonder what they think.	不知道他们会怎么想。		PE reference 0x140667291; classic 0x140664cb1; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I would prefer to be indoors.	我更愿意待在室内。		PE reference 0x1404bcce3; classic 0x1404ba8a3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I would prefer to be outdoors.	我更愿意待在户外。		PE reference 0x1404bcd3e; classic 0x1404ba8fe; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I wouldn't feel comfortable getting all dressed up.	打扮得太讲究，会让我不自在。		PE reference 0x140666f3a; classic 0x14066495a; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I yield! I yield!	我投降！我投降！		PE reference 0x1404cfb03; classic 0x1404cd6c3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'd just as soon not have anything too exciting happen today.	我倒希望今天别发生什么太刺激的事。		PE reference 0x1406674e9; classic 0x140664f09; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'd just as soon you went someplace else.	我更希望你去别的地方。		PE reference 0x1404b6e2d; classic 0x1404b49ed; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'd like to stay here another day if you don't mind.	如果你不介意，我想在这里再住一天。		PE reference 0x1404b536e; classic 0x1404b2f2e; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'd watch out for them.	我会提防他们。		PE reference 0x1404adc14; classic 0x1404ab7d4; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'll be back with your drink in a moment.	我马上就把你的饮品送来。		PE reference 0x1404b896a; classic 0x1404b652a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'll need to see something impressive before I consider it.	你得先拿出点真本事，我才会考虑。		PE reference 0x14049e8d8; classic 0x14049c498; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'll show you calm!	我让你见识一下什么叫冷静！		PE reference 0x1404d43e4; classic 0x1404d1fa4; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm appalled.	我感到震惊。		PE reference 0x1404d6181; classic 0x1404d3d41; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm at my best under pressure.	有压力时，我反而发挥得最好。		PE reference 0x140666c71; classic 0x140664691; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm concentrating on something.	我正专心想一件事。		PE reference 0x14066722c; classic 0x140664c4c; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm curious. Tell me everything!	我很好奇. 告诉我一切!		PE reference 0x140667265; classic 0x140664c85; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm feel like I'm about to snap.	我觉得自己就要崩溃了。		PE reference 0x140667ae2; classic 0x140665502; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm feeling optimistic about the future.	我对未来充满希望。		PE reference 0x140667249; classic 0x140664c69; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm feeling randy today!	我今天很想与人亲热！		PE reference 0x140666c33; classic 0x140664653; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm feeling really worn down.	我真的很疲惫。		PE reference 0x140667b4b; classic 0x14066556b; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm giving up on this hopeless venture.	我要放弃这场毫无希望的冒险。		PE reference 0x1404a51d7; classic 0x1404a2d97; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm going out for some water.	我正要出去取水。		PE reference 0x1404ca968; classic 0x1404c8528; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm going out to the tavern.	我正要去酒馆。		PE reference 0x1404ca9ad; classic 0x1404c856d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm going to visit the library.	我正要去图书馆。		PE reference 0x1404ca9c4; classic 0x1404c8584; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm going to visit the shrine.	我正要去圣地。		PE reference 0x1404ca996; classic 0x1404c8556; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm going to visit the temple.	我正要去神殿。		PE reference 0x1404ca97f; classic 0x1404c853f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm happy to help.	我很乐意帮忙。		PE reference 0x140667399; classic 0x140664db9; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm having trouble taking you seriously.	我实在难以把你的话当真。		PE reference 0x1404d6040; classic 0x1404d3c00; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm just out for a stroll.	我只是出来散步。		PE reference 0x1404ca867,0x1404ca951; classic 0x1404c8427,0x1404c8511; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm not going to change my mind.	我不会改变主意。		PE reference 0x1406672f7; classic 0x140664d17; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm not much of a decision maker.	我不太擅长拿主意。		PE reference 0x140666e2c; classic 0x14066484c; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I'm not planning a journey.	我没有出行计划。		PE reference 0x1404ca9ed; classic 0x1404c85ad; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm not sure.	我不确定。		PE reference 0x1404c9416; classic 0x1404c6fd6; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm on an important mission.	我正在执行一项重要任务。		PE reference 0x1404ca7ba; classic 0x1404c837a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm returning from my patrol.	我正巡逻归来。		PE reference 0x1404ca84d; classic 0x1404c840d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm returning on my own.	我要独自回去了。		PE reference 0x1404a520b; classic 0x1404a2dcb; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I'm walking my patrol.	我正在巡逻。		PE reference 0x1404ca937; classic 0x1404c84f7; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I've been feeling anxious.	我最近一直心神不宁。		PE reference 0x140667c02; classic 0x140665622; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I've been under some pressure.	我最近有些压力。		PE reference 0x140667bce; classic 0x1406655ee; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	I've forgotten what trouble it was...	我忘记是什么麻烦了……		PE reference 0x1404a2310; classic 0x14049fed0; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	I've heard it all now!	我现在真是什么荒唐话都听过了！		PE reference 0x1404d5ec8; classic 0x1404d3a88; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	If you have a task, do it properly.	有事要做，就把它做好。		PE reference 0x1406672da; classic 0x140664cfa; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	If you insist so strongly, we can move on.	既然你如此坚持，我们可以换个话题。		PE reference 0x1404d576f; classic 0x1404d332f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Ignoring that I don't quite concur...	暂且不提我还不完全赞同……		PE reference 0x1404d3938; classic 0x1404d14f8; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	In any case, peace is no longer an option.	无论如何，都已经没法讲和了。		PE reference 0x1404aa14a; classic 0x1404a7d0a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Indoors, outdoors. It's all the same to me as long as the weather's fine.	室内也好，室外也好。只要天气不错，对我来说都一样。		PE reference 0x1404bcca3,0x1404bcd5f; classic 0x1404ba863,0x1404ba91f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Insufferable!	简直忍无可忍！		PE reference 0x1404d52f3; classic 0x1404d2eb3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Intruder!	入侵者！		PE reference 0x1404a12b2,0x1406618fe; classic 0x14049ee72,0x14065f31e; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Is it raining?	在下雨吗？		PE reference 0x1404bc8eb; classic 0x1404ba4ab; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Is it really you?	真的是你吗？		PE reference 0x1404cd553; classic 0x1404cb113; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Is it time to make music?	该奏乐了吗？		PE reference 0x14067fdf2; classic 0x14067d812; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Is there something to be happy about?	有什么值得高兴的事吗？		PE reference 0x140666bb2; classic 0x1406645d2; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It has always been my dream to start a family.	组建家庭一直是我的梦想。		PE reference 0x1404ba27f; classic 0x1404b7e3f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It is an honor.	不胜荣幸。		PE reference 0x14067ee7c; classic 0x14067c89c; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	It is good to be indoors.	在室内真好。		PE reference 0x1404bcd76; classic 0x1404ba936; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It is good to be outdoors.	在户外真好。		PE reference 0x1404bcc82; classic 0x1404ba842; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It is good to finally meet you!	终于见到你了，真高兴！		PE reference 0x14067eed7; classic 0x14067c8f7; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	It is good to see you here.	很高兴在这里见到你。		PE reference 0x1404b7101; classic 0x1404b4cc1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It is invigorating to be out in the wilds!	置身荒野真让人精神振奋！		PE reference 0x1404bcc6b; classic 0x1404ba82b; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It really gets me down sometimes.	有时我真为此感到沮丧。		PE reference 0x140666bbe; classic 0x1406645de; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It really is a pleasure to speak with you again.	能再次与你交谈，真令人高兴。		PE reference 0x14067fdce; classic 0x14067d7ee; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	It sure is dark down here.	这下面可真黑。		PE reference 0x1404bcd8d; classic 0x1404ba94d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It was inevitable.	这是不可避免的。		PE reference 0x1404a5432,0x1404aef68,0x140673c97; classic 0x1404a2ff2,0x1404acb28,0x1406716b7; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It won't turn out well.	这事不会有好结果。		PE reference 0x140667255; classic 0x140664c75; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It's a great day to fall in love all over again.	今天真是重新坠入爱河的好日子。		PE reference 0x140666b3a; classic 0x14066455a; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It's all starting to get me down.	这一切开始让我消沉了。		PE reference 0x140667c1c; classic 0x14066563c; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It's for the best.	这样最好。		PE reference 0x1404a549a,0x1404aefd0,0x140673d03; classic 0x1404a305a,0x1404acb90,0x140671723; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It's great to have a friend like you!	有你这样的朋友真好！		PE reference 0x14067fd29; classic 0x14067d749; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	It's my mess.	是我自己弄乱的。		PE reference 0x140667431; classic 0x140664e51; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It's not a gift if you expect something in return.	若是指望回报，那就不算馈赠。		PE reference 0x140666f0d; classic 0x14066492d; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It's not my problem.	这不关我的事。		PE reference 0x1404a5418,0x1404aef4e,0x140673c85; classic 0x1404a2fd8,0x1404acb0e,0x1406716a5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It's not perfect, but it's good enough. Why fret about it?	虽然不完美，但已经够好了，何必为此烦恼？		PE reference 0x1406672eb; classic 0x140664d0b; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It's so great when everybody just gets along.	大家和睦相处，真是美好。		PE reference 0x140666da5; classic 0x1406647c5; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It's such a joy to be with people.	与人相伴，真是快乐。		PE reference 0x14066747a; classic 0x140664e9a; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	It's such a pleasure to serve you.	能为你服务真是荣幸。		PE reference 0x1404b70b3; classic 0x1404b4c73; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	It's wrong.	这是错的。		PE reference 0x1404d61f4; classic 0x1404d3db4; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Just think about it.	好好想想吧。		PE reference 0x1404d6b3f; classic 0x1404d46ff; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Let's drop the argument.	我们别争了。		PE reference 0x1404d5976,0x1404d5b07; classic 0x1404d3536,0x1404d36c7; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Let's move on.	我们换个话题吧。		PE reference 0x1404d5948; classic 0x1404d3508; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Let's not hurt anybody.	我们别伤害任何人。		PE reference 0x14067fd59; classic 0x14067d779; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Long live the cause!	我们的事业万岁！		PE reference 0x14067fd71; classic 0x14067d791; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Long live the cause.	我们的事业万岁。		PE reference 0x1404b7169; classic 0x1404b4d29; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Look at the sky! Are we in the Underworld?	看看天空！我们是在地下世界吗？		PE reference 0x1404bc755; classic 0x1404ba315; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Loyalty should be rewarded.	忠诚应当得到奖赏。		PE reference 0x1404b7183; classic 0x1404b4d43; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Make any good deals lately?	最近做成什么好买卖了吗？		PE reference 0x14067fd65; classic 0x14067d785; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Maybe I give up too early sometimes.	也许有时我放弃得太早了。		PE reference 0x140666d58; classic 0x140664778; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Maybe you're right.	也许你是对的。		PE reference 0x1404d3333; classic 0x1404d0ef3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Murderer!	凶手！		PE reference 0x1404a1300,0x1406613bd; classic 0x14049eec0,0x14065eddd; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	My companion.	我的伙伴。		PE reference 0x1404b70e7; classic 0x1404b4ca7; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	My goals are important to me.	我很看重自己的目标。		PE reference 0x140666ecf; classic 0x1406648ef; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	My good friend.	我的好朋友。		PE reference 0x1404b70cd; classic 0x1404b4c8d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	My talented bard! It's such an honor to have you here.	才华横溢的吟游诗人，你能来这里，真是我的荣幸！		PE reference 0x1404b71c8; classic 0x1404b4d88; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	My trust is earned, and not by many.	想得到我的信任，得有真凭实据，而做到的人不多。		PE reference 0x14066745e; classic 0x140664e7e; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	No such place exists.	没有这样的地方。		PE reference 0x1404c79bd; classic 0x1404c557d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	No, I mean it.	不，我是认真的。		PE reference 0x1404d6bbe; classic 0x1404d477e; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Nobody I remember.	我不记得有谁。		PE reference 0x1404ae7ec; classic 0x1404ac3ac; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Now we will have to build our own future.	现在我们得创造自己的未来。		PE reference 0x1404a5532; classic 0x1404a30f2; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Of course.	当然。		PE reference 0x1404c555f,0x1404d58be; classic 0x1404c311f,0x1404d347e; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Of course. My pleasure.	当然，我很乐意。		PE reference 0x1404b56ac; classic 0x1404b326c; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Oh, I don't usually think much.	我平时不怎么多想。		PE reference 0x1406673f3; classic 0x140664e13; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Oh, I'm nothing special.	我没什么过人之处。		PE reference 0x1406671df; classic 0x140664bff; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	One group organized itself.	一个组织成立了。		PE reference 0x1404ae636; classic 0x1404ac1f6; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	One must always carefully consider the correct course of action.	做事之前，总应慎重考虑怎样才妥当。		PE reference 0x140667404; classic 0x140664e24; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	One should always return a favor.	受人恩惠，就应当回报。		PE reference 0x140666efc; classic 0x14066491c; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Our hopes travel with you.	我们的希望就寄托在你身上了。		PE reference 0x1404a88da; classic 0x1404a649a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Pause to consider.	停下来想一想。		PE reference 0x1404d6ae3; classic 0x1404d46a3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	People are basically trustworthy.	人总的来说是值得信任的。		PE reference 0x14066744d; classic 0x140664e6d; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	People can be so angry, and I just don't understand it.	人怎么会有那么大的怒气，我实在不理解。		PE reference 0x140666be6; classic 0x140664606; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	People do get so carried away sometimes, but not I.	人有时会忘乎所以，但我不会。		PE reference 0x140666b41; classic 0x140664561; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	People should listen to what I have to say.	人们应该听听我要说的话。		PE reference 0x1406674a7; classic 0x140664ec7; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Please guide me to myself.	请带我去找我自己。		PE reference 0x1404a48e5; classic 0x1404a24a5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Please guide me to you.	请带我去找你。		PE reference 0x1404a490b; classic 0x1404a24cb; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Please let me shelter here for the night.	请让我在这里借宿一晚。		PE reference 0x1404b5385; classic 0x1404b2f45; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Probably on the move or deep underground, but I can't be sure.	可能正在途中，也可能在地下深处，但我不能确定。		PE reference 0x1404c8b06; classic 0x1404c66c6; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Reveal what you have been scheming or suffer the consequences.	交代你的阴谋，否则后果自负。		PE reference 0x1404c37ca; classic 0x1404c138a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Shameful.	可耻。		PE reference 0x1404d6198; classic 0x1404d3d58; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Show some mercy now and again.	偶尔也发发慈悲。		PE reference 0x140667210; classic 0x140664c30; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	So I overindulge sometimes.	我偶尔也会放纵自己。		PE reference 0x140666cf7; classic 0x140664717; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Some people are so wrapped up in themselves.	有些人眼里实在只有自己。		PE reference 0x140666eb3; classic 0x1406648d3; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Sometimes I just don't like somebody.	有时我就是不喜欢某个人。		PE reference 0x140666b59; classic 0x140664579; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Sometimes I think I need a drink, but I can control myself.	有时我觉得该喝一杯，但我能克制自己。		PE reference 0x140666d17; classic 0x140664737; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Soon the world will be set right.	世界很快就会恢复正轨。		PE reference 0x1404a62b4; classic 0x1404a3e74; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Stop and reflect.	停下来反思一下。		PE reference 0x1404d6b11; classic 0x1404d46d1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Tell me who you work for, or else.	说出你为谁效力，否则后果自负。		PE reference 0x1404c3656; classic 0x1404c1216; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Thank you for all you do.	感谢你所做的一切。		PE reference 0x1404b711b,0x14067fd95; classic 0x1404b4cdb,0x14067d7b5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Thank you for keeping us safe.	感谢你保护我们的安全。		PE reference 0x14067fd7d; classic 0x14067d79d; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Thank you for preserving our legacy of wisdom.	感谢你保护我们传承的智慧。		PE reference 0x1404b714f; classic 0x1404b4d0f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Thank you for protecting our wisdom.	感谢你守护我们的智慧。		PE reference 0x14067fdaa; classic 0x14067d7ca; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	That isn't funny.	这并不好笑。		PE reference 0x1406671ab; classic 0x140664bcb; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	That's absurd!	太荒谬了！		PE reference 0x1404d5f05; classic 0x1404d3ac5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	That's not right.	那不对。		PE reference 0x1404d6a98; classic 0x1404d4658; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	That's wrong.	那是错的。		PE reference 0x1404d6a7e; classic 0x1404d463e; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	The alliance has outlived its usefulness.	这个联盟已经失去作用了。		PE reference 0x1404aa133; classic 0x1404a7cf3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	The bond is broken! Return to the Underworld and trouble us no more!	束缚已被打破！回到地下世界去，别再纠缠我们！		PE reference 0x1404c2864; classic 0x1404c0424; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	The dead!	亡者！		PE reference 0x1404a135f,0x14066154d; classic 0x14049ef1f,0x14065ef6d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	The enemy will be driven off.	敌人会被赶走的。		PE reference 0x14049b578,0x14049b913; classic 0x140499138,0x1404994d3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	The enemy!	敌人！		PE reference 0x1404a12e6,0x1406618b3; classic 0x14049eea6,0x14065f2d3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	The need for my task seems to have passed.	看来我的任务已经没有必要了。		PE reference 0x14049b551,0x14049b8ec,0x14049d2e3; classic 0x140499111,0x1404994ac,0x14049aea3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	The poet! It's such an honor to have you here.	诗人！你能来这里，真是荣幸。		PE reference 0x1404b71b1; classic 0x1404b4d71; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	The task is accomplished.	任务已经完成。		PE reference 0x14049a3d1; classic 0x140497f91; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Their strength has been broken.	他们的力量已被摧毁。		PE reference 0x1404ac7c2; classic 0x1404aa382; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Their strength has been challenged, and their hold has loosened.	他们遭到挑战，对这里的控制已经松动了。		PE reference 0x1404ac7ab; classic 0x1404aa36b; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Their tribute is not enough.	他们的贡品还不够。		PE reference 0x1404aa178; classic 0x1404a7d38; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	There is fog outside.	外面有雾。		PE reference 0x1406785bf; classic 0x140675fdf; dialogue-1042790 complete speech body; announcement-conversation/
+spoken-sentence	There must be something else to discuss.	总还有别的事情可谈。		PE reference 0x1404d595f,0x1404d5af0; classic 0x1404d351f,0x1404d36b0; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	There will be no rest for the enemy.	敌人将永无宁日。		PE reference 0x14049d30a; classic 0x14049aeca; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	There's no need for trouble here.	别在这里惹事。		PE reference 0x1404b72df; classic 0x1404b4e9f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	There's no room for mercy in this world.	这世界容不下仁慈。		PE reference 0x1406671ff; classic 0x140664c1f; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	There's nothing like a good brawl.	没有什么比得上痛快打上一架。		PE reference 0x140666d30; classic 0x140664750; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	There's nothing to be upset about.	没有什么值得烦心的。		PE reference 0x140666c17; classic 0x140664637; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	There's so much to be done!	还有许多事要做！		PE reference 0x1406674c4; classic 0x140664ee4; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	They are outlaws.	他们是不法之徒。		PE reference 0x1404a550d,0x1404af043,0x140673cf1; classic 0x1404a30cd,0x1404acc03,0x140671711; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	They are terrific.	他们很了不起。		PE reference 0x1404a54f6,0x1404af02c; classic 0x1404a30b6,0x1404acbec; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	They consider you a key figure in the opposition.	他们把你视为反对者中的关键人物。		PE reference 0x1404ac931,0x1404adc93; classic 0x1404aa4f1,0x1404ab853; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	They consider you a leader of the opposition.	他们把你视为反对者的领袖。		PE reference 0x1404ac907,0x1404adc69; classic 0x1404aa4c7,0x1404ab829; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	They consider you an infamous villain among those opposing them.	他们把你视为反对者中臭名昭著的恶人。		PE reference 0x1404ac8da,0x1404adc3c; classic 0x1404aa49a,0x1404ab7fc; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	They do not feel challenged at all.	他们觉得没人能撼动自己的地位。		PE reference 0x1404ac769; classic 0x1404aa329; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	They must be stopped by any means at our disposal.	我们必须用尽一切手段阻止他们。		PE reference 0x1404a53fe,0x1404aef34; classic 0x1404a2fbe,0x1404acaf4; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	They still hold this area, but they do not feel certain.	他们仍控制着这片地区，但并没有把握。		PE reference 0x1404ac78a; classic 0x1404aa34a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	This conversation is over.	谈话到此结束。		PE reference 0x1404d5342; classic 0x1404d2f02; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	This is the life for me.	这正是我想要的生活。		PE reference 0x1404a544c,0x1404aef82,0x140673ca9; classic 0x1404a300c,0x1404acb42,0x1406716c9; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	This war must end with our victory.	这场战争必须以我们的胜利告终。		PE reference 0x1404aa161; classic 0x1404a7d21; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Try to focus on the practical side of the matter.	尽量多考虑事情实际的一面。		PE reference 0x140667502; classic 0x140664f22; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Try to keep an open mind.	不妨多听听不同的见解。		PE reference 0x140667303; classic 0x140664d23; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Uhh... nevermind.	呃……算了。		PE reference 0x1404b7f67; classic 0x1404b5b27; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Unbelievable.	难以置信。		PE reference 0x1404d61c6; classic 0x1404d3d86; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Vile creature!	卑劣的生物！		PE reference 0x1404a12cc,0x140661949; classic 0x14049ee8c,0x14065f369; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	W... worried? Do I look worried?	担……担心？我看起来很担心吗？		PE reference 0x140666c06; classic 0x140664626; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Wait, what?	等等，什么？		PE reference 0x1404d5e2f; classic 0x1404d39ef; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	We are in the right in all matters.	不管什么事，道理都在我们这边。		PE reference 0x1404a5480,0x1404aefb6,0x140673cdf; classic 0x1404a3040,0x1404acb76,0x1406716ff; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	We can no longer pay them homage.	我们不能再向他们称臣了。		PE reference 0x1404aa18f; classic 0x1404a7d4f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	We can no longer travel together.	我们不能再一起旅行了。		PE reference 0x1404a4b65; classic 0x1404a2725; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	We must be careful not to waste.	我们必须留心，不能浪费。		PE reference 0x140666d74; classic 0x140664794; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	We were going to entertain the world! It's a shame, but I'll have to make my own way now.	我们原本要为全世界带来欢乐！真遗憾，但现在我得独自闯荡了。		PE reference 0x1404a51f1; classic 0x1404a2db1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	We will be successful.	我们一定会成功。		PE reference 0x140666e75; classic 0x140664895; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	We will fight no more.	我们不会再战斗了。		PE reference 0x1404cfc42; classic 0x1404cd802; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	We yield! We yield!	我们投降！我们投降！		PE reference 0x1404cfaec; classic 0x1404cd6ac; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Welcome home, my child.	欢迎回家，我的孩子。		PE reference 0x14067f2c2; classic 0x14067cce2; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Well, I believe... something else.	嗯，我相信……别的东西。		PE reference 0x1404d6c56; classic 0x1404d4816; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Well, let's see...	嗯，让我看看……		PE reference 0x1404a1dd8; classic 0x14049f998; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Well, there must be something else to discuss.	好吧，总还有别的事情可谈。		PE reference 0x1404d5786; classic 0x1404d3346; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Were you trying to make an argument?	你刚才那也叫讲道理？		PE reference 0x1404d5db9; classic 0x1404d3979; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What a dancer! It's such an honor to have you here.	多么出色的舞者！你能来这里，真是荣幸。		PE reference 0x1404b71df; classic 0x1404b4d9f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What a strange place!	多么奇怪的地方！		PE reference 0x1404bcc21; classic 0x1404ba7e1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What an odd glow!	多么奇怪的光芒！		PE reference 0x1404bc81e; classic 0x1404ba3de; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What can you tell me about yourself?	能说说你自己吗？		PE reference 0x1404a3e59; classic 0x1404a1a19; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What did you just say?	你刚才说什么？		PE reference 0x1404d5e50; classic 0x1404d3a10; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What do you think of me?	你觉得我怎么样？		PE reference 0x1404a3e33; classic 0x1404a19f3; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What have you been scheming?	你在谋划什么？		PE reference 0x1404c37e1; classic 0x1404c13a1; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What stories you tell! It's such an honor to have you here.	你讲的故事真精彩！你能来这里，真是荣幸。		PE reference 0x1404b719a; classic 0x1404b4d5a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	What's the rush?	何必着急？		PE reference 0x1406674d0; classic 0x140664ef0; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	What's this about proper living?	所谓合乎规矩的生活，究竟是什么？		PE reference 0x140666dff; classic 0x14066481f; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Where am I?	我在哪里？		PE reference 0x1404bcda4; classic 0x1404ba964; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Where should I take you?	我该带你去哪里？		PE reference 0x1404a60af; classic 0x1404a3c6f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Who cares what they think?	何必在意他们怎么想？		PE reference 0x1406672a2; classic 0x140664cc2; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Who do you work for?	你为谁效力？		PE reference 0x1404c366d; classic 0x1404c122d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Why are they so fixated on these baubles?	他们为什么如此痴迷这些小玩意？		PE reference 0x140666c9e; classic 0x1406646be; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Why must they be so violent?	他们为何非要诉诸暴力？		PE reference 0x140666d3c; classic 0x14066475c; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Why should I help?	我为什么要帮忙？		PE reference 0x1406673aa; classic 0x140664dca; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Yes! It'll be great to perform with you.	好啊！能与你一起表演一定很棒。		PE reference 0x14049f0ff; classic 0x14049ccbf; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Yes, I can see it clearly now.	是的，我现在看清楚了。		PE reference 0x1404d334a; classic 0x1404d0f0a; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Yes, I want more. Is that so bad?	是，我想要更多。这有那么糟吗？		PE reference 0x140666c8d; classic 0x1406646ad; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	Yes, let's move on.	好，我们换个话题吧。		PE reference 0x1404d5ad9; classic 0x1404d3699; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You are amazing.	你真了不起。		PE reference 0x1404c3e3c; classic 0x1404c19fc; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You are bound to me!	你已受我约束！		PE reference 0x1404c2a4b; classic 0x1404c060b; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You are bound to obey me.	你受我约束，必须服从我。		PE reference 0x1404a5ca5; classic 0x1404a3865; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You are considered an integral part of the opposition.	你被视为反对者中不可或缺的一员。		PE reference 0x1404ac95b,0x1404adcbd; classic 0x1404aa51b,0x1404ab87d; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You are considered part of the opposition.	你被视为反对者的一员。		PE reference 0x1404ac972,0x1404adcd4; classic 0x1404aa532,0x1404ab894; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You are right.	你说得对。		PE reference 0x1404d58ec; classic 0x1404d34ac; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You are thinking about this all wrong.	你对这件事的想法完全错了。		PE reference 0x1404d6afa; classic 0x1404d46ba; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You dare to flatter me?!	你竟敢奉承我？！		PE reference 0x1404d5293; classic 0x1404d2e53; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You don't care, so don't ask.	既不关心，就不必过问。		PE reference 0x140666dd2; classic 0x1406647f2; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	You have a room here, and you can stay longer if you like.	你在这里有一间房，愿意的话可以多住些日子。		PE reference 0x1404b79af; classic 0x1404b556f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You have been such a good trade partner.	你一直是个很好的贸易伙伴。		PE reference 0x1404b7099; classic 0x1404b4c59; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You know, I think you're right.	你知道，我觉得你说得对。		PE reference 0x1404d3378; classic 0x1404d0f38; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You mock me?!	你在嘲弄我？！		PE reference 0x1404d530a; classic 0x1404d2eca; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You must be convinced.	我非得让你心服口服。		PE reference 0x1404d6bd5; classic 0x1404d4795; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You must be joking.	你一定是在开玩笑。		PE reference 0x1404d5eb1; classic 0x1404d3a71; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You ought to be rewarded for returning our treasures.	你归还了我们的宝藏，应当得到奖赏。		PE reference 0x1404b7135; classic 0x1404b4cf5; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You shouldn't waste your life on revenge.	不该把一生浪费在复仇上。		PE reference 0x1406671c3; classic 0x140664be3; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	You'll get nothing from me with your flattery.	再怎么奉承，你也休想从我这里捞到好处。		PE reference 0x14067fe0d; classic 0x14067d82d; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	You'll have the room for another day. I'm glad you're enjoying your stay.	这间房会再为你留一天。很高兴你在这里住得愉快。		PE reference 0x1404b8f74; classic 0x1404b6b34; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	You're so perceptive!	你看得真透彻！		PE reference 0x140666dc1; classic 0x1406647e1; topic-reaction complete speech body; announcement-conversation/
+spoken-sentence	You're wrong.	你错了。		PE reference 0x1404d61af; classic 0x1404d3d6f; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	Your name precedes you. Thank you for all that you have done.	久仰大名。感谢你所做的一切。		PE reference 0x14067eeaa; classic 0x14067c8ca; dialogue-1048a40 complete speech body; announcement-conversation/
+spoken-sentence	Your selfless dedication is appreciated here.	这里的人都感激你的无私奉献。		PE reference 0x1404b71f6; classic 0x1404b4db6; conversation-dispatch complete speech body; announcement-conversation/
+spoken-sentence	{s}	{s1}	quest-report	PE reference 0x14065a250 / classic 0x140657c70; artifact-rumor complete request/location chain; announcement-conversation/
+spoken-sentence	I'm doing {s}.	我过得{s1}。	greeting-state	PE reference 0x140666470 / classic 0x140663e90; topic-reaction randomized prefix and finite state suffix; announcement-conversation/
+spoken-sentence	I've been {s}.	我最近过得{s1}。	greeting-state	PE reference 0x140666470 / classic 0x140663e90; topic-reaction randomized prefix and finite state suffix; announcement-conversation/
+spoken-sentence	I'm {s}.	我{s1}。	greeting-state	PE reference 0x140666470 / classic 0x140663e90; topic-reaction randomized prefix and finite state suffix; announcement-conversation/
+spoken-sentence	I feel {s}.	我感觉{s1}。	greeting-state	PE reference 0x140666470 / classic 0x140663e90; topic-reaction randomized prefix and finite state suffix; announcement-conversation/
+spoken-sentence	Everything's {s}.	一切都{s1}。	greeting-state	PE reference 0x140666470 / classic 0x140663e90; topic-reaction randomized prefix and finite state suffix; announcement-conversation/

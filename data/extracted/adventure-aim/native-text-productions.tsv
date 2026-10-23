@@ -1,0 +1,36 @@
+production	condition	source	origin	role
+modal-done	self+0x48 != 0	Done	center+44,8	complete fixed text
+modal-question	self+0x48 != 0	Where will you aim?	center-48,8	complete fixed text
+bodypart-invalid	index < 0 or index >= parts.size	body part	center-43,row_y+1	complete fallback text
+bodypart-empty-singular	valid index; singular_names.empty; count <= 1	body part	center-43,row_y+1	complete fallback text
+bodypart-empty-plural	valid index; singular_names.empty; count > 1	body parts	center-43,row_y+1	body part plus native appended s
+bodypart-singular	valid index; !singular_names.empty; count < 2	{part.singular_names[0]}	center-43,row_y+1	dynamic RAW bodypart leaf
+bodypart-plural	valid index; !singular_names.empty; count >= 2	{part.plural_names[0]}	center-43,row_y+1	dynamic RAW bodypart leaf
+aim-impossible-shot	effective < -2; self+0x10 != 0	Impossible shot	center-5,row_y+1	complete fixed text; color=0x01010005
+aim-impossible-throw	effective < -2; self+0x10 == 0	Impossible throw	center-5,row_y+1	complete fixed text; color=0x01010005
+aim-difficult-shot	effective == -2; self+0x10 != 0	Difficult shot	center-5,row_y+1	complete fixed text; color=0x01010004
+aim-difficult-throw	effective == -2; self+0x10 == 0	Difficult throw	center-5,row_y+1	complete fixed text; color=0x01010004
+aim-tricky-shot	effective == -1; self+0x10 != 0	Tricky shot	center-5,row_y+1	complete fixed text; color=0x01010006
+aim-tricky-throw	effective == -1; self+0x10 == 0	Tricky throw	center-5,row_y+1	complete fixed text; color=0x01010006
+aim-normal-shot	effective == 0; self+0x10 != 0	Normal shot	center-5,row_y+1	complete fixed text; color=0x01010007
+aim-normal-throw	effective == 0; self+0x10 == 0	Normal throw	center-5,row_y+1	complete fixed text; color=0x01010007
+aim-easy-shot	effective == 1; self+0x10 != 0	Easy shot	center-5,row_y+1	complete fixed text; color=0x01000002
+aim-easy-throw	effective == 1; self+0x10 == 0	Easy throw	center-5,row_y+1	complete fixed text; color=0x01000002
+aim-easier-shot	effective == 2; self+0x10 != 0	Easier shot	center-5,row_y+1	complete fixed text; color=0x01010002
+aim-easier-throw	effective == 2; self+0x10 == 0	Easier throw	center-5,row_y+1	complete fixed text; color=0x01010002
+aim-simple-shot	effective > 2; self+0x10 != 0	Simple shot	center-5,row_y+1	complete fixed text; color=0x01010003
+aim-simple-throw	effective > 2; self+0x10 == 0	Simple throw	center-5,row_y+1	complete fixed text; color=0x01010003
+condition-plus-bright	flags & 0x20	+	right-2,row_y+1	native symbol; color=0x01010002
+condition-plus	!(flags & 0x20); flags & 0x40	+	right-2,row_y+1	native symbol; color=0x01000002
+condition-minus-yellow	!(flags & 0x60); flags & 0x80	-	right-2,row_y+1	native symbol; color=0x01010006
+condition-minus-red	!(flags & 0xe0); flags & 0x100	-	right-2,row_y+1	native symbol; color=0x01010004
+condition-alert	flags & 0x200	!	right-1,row_y+1	native symbol independent of plus/minus; color=0x01010003
+row-key	visible row	{native_key_binding(0x52+visible_index)}	center-45,row_y+1	dynamic configured binding glyph
+row-leader	visible row	{byte(0xfa) repeated 43 times}	center-43,row_y+1	native graphic separator
+cursor-instruction-prefix	self+0x48 == 0; help-suppression byte == 0	Click a target or move the cursor and press 	center-33,top+2	fixed fragment preceding native key; trailing space retained
+cursor-instruction-key	self+0x48 == 0; help-suppression byte == 0	{native_key_binding(1)}	current cursor	dynamic configured binding glyph
+cursor-instruction-period	self+0x48 == 0; help-suppression byte == 0	.	current cursor	native punctuation after key
+cursor-delay-warning	cursor help visible; self+0x28 != 0	Delay warning: Ammo will be loaded/nocked before firing.	center-33,top+4	complete fixed text
+cursor-prepare-prefix	cursor help visible; self+0x28 != 0	You can prepare in advance with 	center-33,top+5	fixed fragment preceding native key; trailing space retained
+cursor-prepare-key	cursor help visible; self+0x28 != 0	{native_key_binding(0x164)}	current cursor	dynamic configured binding glyph
+cursor-prepare-suffix	cursor help visible; self+0x28 != 0	 or from the inventory menu.	current cursor	fixed fragment after native key; leading space retained

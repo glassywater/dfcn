@@ -1,0 +1,32 @@
+冒险模式左上动作队列：原生来源与完整文本分支
+
+映像来自 data/runtime/native-pe-images.json 指定的 Steam 和官网版 Windows PE。
+pe-functions.tsv 保存实际磁盘映像路径、PE 标识、SHA256 及原生函数范围。
+
+面板属于 Steam RVA 0xaf1190 / 官网版 RVA 0xaee1d0 的冒险界面绘制函数。
+pe-*-action-panel-ghidra.c 是相同映像既有真实 Ghidra C 的逐字摘录，保留
+原来的标签、变量和共享出口；完整函数位于 adventure-movement-hud。
+pe-decompiled-sources.tsv 记录完整 C 的路径及原始、当前映像 SHA256。
+本次另从两版实际 PE 重新提取完整函数汇编、跳转表、分支、条件和字面量。
+数字转换、数字字符串、当前按键名称、当前按键绘制、字符串绘制这五个
+供应函数均另行执行了实际 Ghidra 反编译，保存为 *-ghidra.c。
+
+pe-action-productions.tsv 覆盖 switch 的全部 0..27 输入及 -1/越界无文本路径。
+共享输入 Hold(3/18)、Release(4/19)、Job(6/15) 仍分别列出。
+Move 依据动作标志选择 Move/Charge。
+装填动作依据物品类型及定义选择 Nock ammo/Load ammo；物品不存在时仍走 Load。
+合计 27 种动作文本，以及 and more、前导空格加 to act 两条提示。
+
+pe-display-fields.tsv 保存全部 addst 调用、返回地址、字段角色与原生坐标。
+pe-dynamic-productions.tsv 保存动态字段的来源和组合规则：
+- Move/Charge、Attack、Dodge 使用逐字符 [N|S|空][E|W|空][+|-|空]，
+  包括纯垂直方向、八方位加高差和完全无方向；目标/路径无效时不输出方向。
+- 装填数量来自动作记录 +0x8，经整数供应函数生成有符号十进制。
+- footer 依次绘制当前绑定 0x157、0x158，再绘制 to act；未绑定的键为 ?。
+- 列表有后续项时输出 and more；另一个列表存在时整个队列向下移动十行。
+
+动作逐行绘制，使用普通 addst，无半高文字分支。长英文文本原生可越出
+先前绘制的边框，因此翻译实现分别保存完整源墨迹与面板内中文布局宽度。
+方向源位置和中文显示位置也独立保存，给组合方向及高差预留空间。
+src/adventure_action_panel.inc 按原生调用及完整源文本认领字段，使用
+Adventure action queue: 限定词条。数字和当前按键绑定保持原生标识。

@@ -1,0 +1,47 @@
+edition	announcement_type	source_rva	branch	text	semantic_fields
+reference	301	0x10e8b4	new single unit; history info type 1	{unit} has arrived.	unit label 0x1330c30; mode 0
+reference	301	0x10e8bd	new single unit; missing history info or type != 1	{unit} is visiting.	unit label 0x1330c30; mode 0
+reference	301	0x10eb39	new multiple units; no consistent performance entity; info type 1	{unit} has arrived.	each unit independently
+reference	301	0x10eb42	new multiple units; no consistent performance entity; missing info or type != 1	{unit} is visiting.	each unit independently
+reference	301	0x10e9ce	new multiple units; consistent performance entity; first-unit info type 1	{entity}, the performance troupe, has arrived.	entity name 0xb92900
+reference	301	0x10e9d7	new multiple units; consistent performance entity; first-unit info absent or type != 1	{entity}, a performance troupe, is visiting.	entity name 0xb92900
+reference	301	0x10df48	one returning live unit	{unit} has returned.	unit label; optional history appendix
+reference	301	0x10df26	two returning live units; unit-based branch	{unit1} and {unit2} have returned.	two unit labels; optional history appendix
+reference	301	0x10deb2	three or more returning live units; unit-based branch	{unit} and others have returned.	first unit label; optional history appendix
+reference	301	0x10db7e	multiple live units; one returning squad	{squad} have returned.	nonempty custom alias unchanged; otherwise native EnglishName; optional history appendix
+reference	301	0x10dd25	multiple live units; multiple returning squads	{squad} and others have returned.	first squad custom alias unchanged or generated name; optional history appendix
+reference	301	0x10dbf2	return branch; selected history event and nonempty +d0 result	{return sentence}  {history report}	same native output owner; all 133 history virtual types in retained dispatch
+classic	301	0x10e844	new single unit; history info type 1	{unit} has arrived.	unit label 0x132bba0; mode 0
+classic	301	0x10e84d	new single unit; missing history info or type != 1	{unit} is visiting.	unit label 0x132bba0; mode 0
+classic	301	0x10eac9	new multiple units; no consistent performance entity; info type 1	{unit} has arrived.	each unit independently
+classic	301	0x10ead2	new multiple units; no consistent performance entity; missing info or type != 1	{unit} is visiting.	each unit independently
+classic	301	0x10e95e	new multiple units; consistent performance entity; first-unit info type 1	{entity}, the performance troupe, has arrived.	entity name 0xb8f940
+classic	301	0x10e967	new multiple units; consistent performance entity; first-unit info absent or type != 1	{entity}, a performance troupe, is visiting.	entity name 0xb8f940
+classic	301	0x10ded8	one returning live unit	{unit} has returned.	unit label; optional history appendix
+classic	301	0x10deb6	two returning live units; unit-based branch	{unit1} and {unit2} have returned.	two unit labels; optional history appendix
+classic	301	0x10de42	three or more returning live units; unit-based branch	{unit} and others have returned.	first unit label; optional history appendix
+classic	301	0x10db0e	multiple live units; one returning squad	{squad} have returned.	nonempty custom alias unchanged; otherwise native EnglishName; optional history appendix
+classic	301	0x10dcb5	multiple live units; multiple returning squads	{squad} and others have returned.	first squad custom alias unchanged or generated name; optional history appendix
+classic	301	0x10db82	return branch; selected history event and nonempty +d0 result	{return sentence}  {history report}	same native output owner; all 133 history virtual types in retained dispatch
+reference	301	0x10e8b4	empty unit label; info type 1	 has arrived.	normalized: has arrived.
+reference	301	0x10e8bd	empty unit label; missing info or type != 1	 is visiting.	normalized: is visiting.
+reference	301	0x10df48	empty only returning unit label	 has returned.	normalized: has returned.; optional history appendix
+reference	301	0x10db7e	empty generated squad label	 have returned.	normalized: have returned.; optional history appendix
+reference	301	0x10deb2	empty first unit in three-or-more return	 and others have returned.	normalized: and others have returned.; optional history appendix
+reference	301	0x10dd25	empty generated first squad in multiple-squad return	 and others have returned.	normalized: and others have returned.; optional history appendix
+reference	301	0x10df26	two-unit return; empty first label only	 and {unit2} have returned.	normalized: and {unit2} have returned.; optional history appendix
+reference	301	0x10df26	two-unit return; empty second label only	{unit1} and  have returned.	normalized: {unit1} and have returned.; optional history appendix
+reference	301	0x10df26	two-unit return; both labels empty	 and  have returned.	normalized: and have returned.; optional history appendix
+reference	301	0x10e9ce	empty entity label; first-unit info type 1	, the performance troupe, has arrived.	normalized source retains leading comma
+reference	301	0x10e9d7	empty entity label; first-unit info absent or type != 1	, a performance troupe, is visiting.	normalized source retains leading comma
+classic	301	0x10e844	empty unit label; info type 1	 has arrived.	normalized: has arrived.
+classic	301	0x10e84d	empty unit label; missing info or type != 1	 is visiting.	normalized: is visiting.
+classic	301	0x10ded8	empty only returning unit label	 has returned.	normalized: has returned.; optional history appendix
+classic	301	0x10db0e	empty generated squad label	 have returned.	normalized: have returned.; optional history appendix
+classic	301	0x10de42	empty first unit in three-or-more return	 and others have returned.	normalized: and others have returned.; optional history appendix
+classic	301	0x10dcb5	empty generated first squad in multiple-squad return	 and others have returned.	normalized: and others have returned.; optional history appendix
+classic	301	0x10deb6	two-unit return; empty first label only	 and {unit2} have returned.	normalized: and {unit2} have returned.; optional history appendix
+classic	301	0x10deb6	two-unit return; empty second label only	{unit1} and  have returned.	normalized: {unit1} and have returned.; optional history appendix
+classic	301	0x10deb6	two-unit return; both labels empty	 and  have returned.	normalized: and have returned.; optional history appendix
+classic	301	0x10e95e	empty entity label; first-unit info type 1	, the performance troupe, has arrived.	normalized source retains leading comma
+classic	301	0x10e967	empty entity label; first-unit info absent or type != 1	, a performance troupe, is visiting.	normalized source retains leading comma

@@ -88,8 +88,11 @@ static bool install_native_stocks_layer_hook() {
     const auto owner = native_reference_address(base, 0x18a2710);
     std::vector<unsigned char> prefix{
         0x40,0x55,0x53,0x56,0x57,0x41,0x54,0x41,0x55,0x41,0x56,0x41,0x57};
-    // Complete call signatures also admit these bindings to the normal PE
-    // address seed, including the corresponding Classic instruction bytes.
+    // Complete call signatures admit these return-address identities to the
+    // PE address seed, including the corresponding Classic instruction bytes.
+    // We do not patch these calls. Mods such as quality-colors replace them
+    // after startup, so compare no live bytes here during core reactivation.
+    // The draw entry we actually patch retains its own strict validation.
     std::vector<NativeCaptionSignature> captions{
         {0x3a1ac6, {0xe8,0x95,0x7e,0x73,0x00}},
         {0x3a2c30, {0xe8,0x2b,0x6d,0x73,0x00}},
@@ -101,9 +104,7 @@ static bool install_native_stocks_layer_hook() {
     for (size_t i = 0; i < captions.size(); ++i) {
         auto &caption = captions[i];
         const auto address = native_reference_address(base, caption.address);
-        if (!address || !native_reference_bytes(caption.address, caption.bytes) ||
-                std::memcmp(reinterpret_cast<const void *>(address),
-                    caption.bytes.data(), caption.bytes.size()) != 0) return false;
+        if (!address || !native_reference_bytes(caption.address, caption.bytes)) return false;
         callers[i] = address + caption.bytes.size();
     }
 #else

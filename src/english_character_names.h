@@ -21,10 +21,33 @@
 
 namespace dfcn {
 
-// This composer sees only displayed English.  The lexicon describes visible
-// senses, not saved WORD/POS values, race, profession, or a character's identity.
+// String callers resolve visible English; typed callers preserve native
+// WORD/POS boundaries and bind them to the same complete lexical senses.
 class EnglishCharacterNames {
 public:
+    enum class CandidateOrigin {
+        UnresolvedSense, ClassifiedSurnameConstruction, NoLicensedConstruction
+    };
+    enum class ComposePolicy { FullSurname, TitleHead11, Title22z, AdjectiveHeadDouble };
+    struct Composition {
+        CandidateOrigin origin = CandidateOrigin::UnresolvedSense;
+        std::string text, left_word, right_word, left_sense, right_sense;
+        std::string construction, pattern, context_relation, left_role, right_role;
+        size_t left_branch = SIZE_MAX, right_branch = SIZE_MAX;
+        int score = 0, preference = 0;
+        bool reversed = false;
+        bool classified() const { return origin == CandidateOrigin::ClassifiedSurnameConstruction; }
+    };
+    struct NativeSense {
+        std::string key, word, english;
+        int16_t pos = -1;
+    };
+    using NativeSenses = std::vector<NativeSense>;
+    struct AdjectiveSurface {
+        enum class Status { Resolved, MissingAdjectiveSurface };
+        Status status = Status::MissingAdjectiveSurface;
+        std::string text, sense;
+    };
     using GivenCallback = std::function<std::optional<std::string>(std::string_view)>;
     using NicknameCallback = std::function<std::string(std::string_view)>;
 
@@ -62,6 +85,7 @@ public:
         for (const auto &[form, target] : overrides_) lexical_forms_.insert(form);
         surnames_ = std::move(surnames);
         surname_readings_ = std::move(readings);
+        if (!read_native_sense_bindings(runtime_dir)) return false;
         loaded_ = true;
         return true;
     }
@@ -123,6 +147,82 @@ public:
         return found == surname_classes_.end() ? std::vector<std::string>{} : found->second.traits;
     }
     const MandarinNameReadings &name_readings() const { return surname_readings_; }
+
+
+    // A generated geography name supplies a reviewed WORD/POS gloss. Spelling
+    // is only an index: homographs cannot select a different Chinese sense.
+    struct GeographySense {
+        std::string key, semantic_class, full, valency;
+        std::vector<std::string> objects, subjects;
+        bool result_state = false;
+    };
+    std::optional<GeographySense> geography_sense(std::string_view english,
+        int16_t pos, std::string_view gloss) const {
+        const auto found = words_.find(key(english));
+        if (found == words_.end() || gloss.empty()) return {};
+        const uint32_t mask = pos == 0 || pos == 1 ? Object | Agent :
+            pos == 2 ? Quality | State : pos == 3 ? Prefix :
+            pos >= 4 && pos <= 8 ? Action | State : 0;
+        std::optional<GeographySense> result;
+        int specificity = -1;
+        bool ambiguous = false;
+        for (const auto &word : found->second) {
+            if (!(word.kinds & mask)) continue;
+            const auto identity = sense_key(word.english, word.kinds, word.categories,
+                word.state, word.preferred);
+            const auto entry = surnames_.find(identity);
+            if (entry == surnames_.end()) continue;
+            const auto &e = entry->second;
+            const bool state = pos == 7 && (word.kinds & State) && word.state == "result";
+            const bool same_meaning = word.preferred == gloss || e.full_meaning == gloss;
+            // Result states can have a distinct gloss (break -> broken).
+            // The stored action must connect it to this WORD's meaning;
+            // another homograph's attractive adjective is not sufficient.
+            if (!same_meaning && !(state && (word.action == gloss || e.action == gloss))) continue;
+            const int rank = state ? 1 : 0;
+            if (rank < specificity) continue;
+            if (rank > specificity) { result.reset(); specificity = rank; ambiguous = false; }
+            GeographySense current{identity, e.semantic_class,
+                state && !e.full_meaning.empty() ? e.full_meaning : std::string(gloss),
+                e.valency, e.allowed_objects, e.allowed_subjects, state};
+            // A bare transitive action such as "覆盖" needs its passive
+            // reading here. Existing result words such as "破损", and
+            // intransitive states such as "坠落", do not take this prefix.
+            if (state && current.full == gloss && e.valency == "transitive")
+                current.full = "被" + current.full;
+            // Conflicting lexical analyses retain the authoritative WORD
+            // gloss instead of silently guessing an argument structure.
+            if (result && (result->semantic_class != current.semantic_class ||
+                result->valency != current.valency || result->objects != current.objects ||
+                result->subjects != current.subjects || result->full != current.full)) ambiguous = true;
+            if (!result || current.key < result->key) result = std::move(current);
+        }
+        return ambiguous ? std::nullopt : result;
+    }
+    std::string geography_context_word(const GeographySense &self,
+        const GeographySense &partner, std::string_view relation, std::string_view role) const {
+        if (self.result_state) return self.full;
+        Part a, b;
+        a.surname_sense = self.key;
+        b.surname_sense = partner.key;
+        std::string best = self.full;
+        int preference = -1;
+        for (const auto &word : surname_words(a, b, relation, role)) {
+            // Property projections in the surname library can change an
+            // image (e.g. an abbey into silence). Geography keeps the image.
+            if (word.interpretation != "direct" ||
+                (word.use != "complete" && word.use != "natural" && word.use != "nominal"))
+                continue;
+            const int rank = word.branch ? word.branch->preference : 0;
+            if (rank > preference || (rank == preference &&
+                std::tuple{glyph_count(word.text), word.text} <
+                std::tuple{glyph_count(best), std::string_view(best)})) {
+                best = word.text;
+                preference = rank;
+            }
+        }
+        return best;
+    }
 
     // Places and governing entities share the classified imagery and bounded
     // scoring of surnames, but keep their own compound shapes and fallback.
@@ -245,6 +345,7 @@ private:
         bool known = false, complete = false;
         unsigned roots = 0;
         int score = 0;
+        Composition composition;
     };
     struct Quote {
         std::size_t begin, content, end, after;
@@ -899,10 +1000,11 @@ private:
     }
     #include "character_surname_context.inc"
 
-    Part surname_combine(const Part &left, const Part &right, bool entity = false) const {
+    Part surname_combine(const Part &left, const Part &right, bool entity = false,
+        ComposePolicy policy = ComposePolicy::FullSurname) const {
         // Entity names share the current imagery branches and bounded score.
         // Their compound shapes and whole-name fallback remain distinct.
-        return surname_context_combine(left, right, entity);
+        return surname_context_combine(left, right, entity, policy);
     }
 
     Part surname_part(std::string_view source) const {
@@ -950,11 +1052,9 @@ private:
             Part p = surname_combine(a, b);
             if (better(p, best)) best = std::move(p);
         }
-        // A complete lexical parse is evidence for both roots even when no
-        // literary surface form survived. Keep its complete Chinese wording;
-        // do not erase a known surname or publish a half-translated identity.
-        if (best.known) return best;
-        return recognized;
+        // Recognition supplies boundaries, never an alternative rendered
+        // surname: its ordinary wording can bypass the equal-width rule.
+        return best;
     }
 
     static std::optional<std::string> entity_result(const std::vector<Part> &parts) {
@@ -1458,6 +1558,8 @@ private:
         }
         return std::nullopt;
     }
+public:
+    #include "character_native_senses.inc"
 };
 
 } // namespace dfcn

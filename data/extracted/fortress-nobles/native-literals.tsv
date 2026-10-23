@@ -1,0 +1,969 @@
+edition	label	owner_rva	instruction_rva	literal_rva	kind	text
+reference	position-territory	0x9bdfb0	0x9be03a	0x15eb518	cstring	 of 
+reference	language-name	0xa94030	0xa9413d	0x15e873c	cstring	 
+reference	language-name	0xa94030	0xa942b3	0x15e873c	cstring	 
+reference	language-name	0xa94030	0xa9450f	0x15e873c	cstring	 
+reference	language-name	0xa94030	0xa9463b	0x15e873c	cstring	 
+reference	land-elevation	0xac5b30	0xac628c	0x16cf1e8	cstring	an official land of the realm
+reference	land-elevation	0xac5b30	0xac6296	0x16cf1f8	cstring	 of the realm
+reference	land-elevation	0xac5b30	0xac62a3	0x16cf200	cstring	realm
+reference	land-elevation	0xac5b30	0xac62ac	0x16cf204	cstring	m
+reference	land-elevation	0xac5b30	0xac6a69	0x16cf1b8	cstring	 and the surrounding lands have been made 
+reference	land-elevation	0xac5b30	0xac6a73	0x16cf1c8	cstring	ding lands have been made 
+reference	land-elevation	0xac5b30	0xac6a7e	0x16cf1d8	cstring	been made 
+reference	land-elevation	0xac5b30	0xac6a8b	0x16cf1e0	cstring	e 
+reference	land-elevation	0xac5b30	0xac6ad8	0x15e85b4	cstring	.
+reference	land-elevation	0xac5b30	0xac6c33	0x16cf190	cstring	an even more official land of the realm
+reference	land-elevation	0xac5b30	0xac6c3d	0x16cf1a0	cstring	icial land of the realm
+reference	land-elevation	0xac5b30	0xac6c48	0x16cf1b0	cstring	e realm
+reference	land-elevation	0xac5b30	0xac6c51	0x16cf1b4	cstring	alm
+reference	land-elevation	0xac5b30	0xac6c5c	0x16cf1b6	cstring	m
+reference	land-elevation	0xac5b30	0xac72ea	0x16cf1b8	cstring	 and the surrounding lands have been made 
+reference	land-elevation	0xac5b30	0xac72f4	0x16cf1c8	cstring	ding lands have been made 
+reference	land-elevation	0xac5b30	0xac72ff	0x16cf1d8	cstring	been made 
+reference	land-elevation	0xac5b30	0xac730c	0x16cf1e0	cstring	e 
+reference	land-elevation	0xac5b30	0xac738a	0x15e85b4	cstring	.
+reference	demand-change	0xe39910	0xe39b38		printable-immediate	gfff
+reference	demand-change	0xe39910	0xe39bac		printable-immediate	gfff
+reference	demand-change	0xe39910	0xe3a003	0x15ed9bc	cstring	The 
+reference	demand-change	0xe39910	0xe3a03b	0x172efa0	cstring	 has been missing for a week.
+reference	demand-change	0xe39910	0xe3b691	0x172efc0	cstring	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. 
+reference	demand-change	0xe39910	0xe3b731	0x172f038	cstring	What are a few pesky demons after all?
+reference	demand-change	0xe39910	0xe3b74a	0x172f228	cstring	The gods surely want you to dig deeper still!
+reference	demand-change	0xe39910	0xe3b753	0x172f258	cstring	And why shouldn't you dig deeper still?!
+reference	demand-change	0xe39910	0xe3b82b	0x172f288	cstring	 is satisfied with their position here. 
+reference	demand-change	0xe39910	0xe3b871	0x172f2b8	cstring	Everything is properly royal, properly furnished.  And yet? 
+reference	demand-change	0xe39910	0xe3b884	0x172f110	cstring	A true Mountainhome must have a true throne! 
+reference	demand-change	0xe39910	0xe3b897	0x172f140	cstring	And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. 
+reference	demand-change	0xe39910	0xe3b921	0x172f1b0	cstring	This legend does not end until we've chipped out the last treasures of the underworld!
+reference	demand-change	0xe39910	0xe3b92a	0x172f208	cstring	Deeper. We must dig deeper.
+reference	demand-change	0xe39910	0xe3b933	0x172dfb0	cstring	Congratulations!  (You should be proud of your accomplishment.  Embark in a world with the deepest cavern layers for further challenges.)
+reference	demand-change	0xe39910	0xe3ba6c	0x172e040	cstring	Your fortress is out of food!
+reference	demand-change	0xe39910	0xe3ba96	0x172e060	cstring	  Consider placing a farmplot on some underground soil and planting seeds.
+reference	demand-change	0xe39910	0xe3ba9f	0x172e0b0	cstring	  Are your farmplots working?  Make sure you are planting edible plants.
+reference	demand-change	0xe39910	0xe3bac1	0x172dee0	cstring	  Try building a butcher's shop and slaughtering some livestock.
+reference	demand-change	0xe39910	0xe3baca	0x172df28	cstring	  Do you have any livestock to slaughter?
+reference	demand-change	0xe39910	0xe3bad6	0x172df58	cstring	  Perhaps you can gather plants, fruit, or go fishing.
+reference	demand-change	0xe39910	0xe3c5cd	0x172df90	cstring	 has ended a mandate.
+reference	demand-change	0xe39910	0xe3c7a6	0x172e1c0	cstring	A mandate has ended.
+reference	demand-change	0xe39910	0xe3eb3c		printable-immediate	0u
+reference	demand-change	0xe39910	0xe3ed04		printable-immediate	0u
+reference	demand-change	0xe39910	0xe3ef0e		printable-immediate	0u
+reference	demand-change	0xe39910	0xe3f1a1		printable-immediate	0u
+reference	demand-change	0xe39910	0xe3f4ac		printable-immediate	0u
+reference	diplomat-arrival	0xe4b750	0xe4c2b6	0x16cd918	cstring	ELVES_STANDARD
+reference	diplomat-arrival	0xe4b750	0xe4c2c3	0x16cd920	cstring	ANDARD
+reference	diplomat-arrival	0xe4b750	0xe4c2cc	0x16cd924	cstring	RD
+reference	diplomat-arrival	0xe4b750	0xe4c342	0x16ce8c8	cstring	HUMAN_STANDARD
+reference	diplomat-arrival	0xe4b750	0xe4c34f	0x16ce8d0	cstring	ANDARD
+reference	diplomat-arrival	0xe4b750	0xe4c358	0x16ce8d4	cstring	RD
+reference	diplomat-arrival	0xe4b750	0xe4c806	0x15ed67c	cstring	A 
+reference	diplomat-arrival	0xe4b750	0xe4c89c	0x172f688	cstring	 diplomat from 
+reference	diplomat-arrival	0xe4b750	0xe4c8de	0x15fd068	cstring	 has arrived.
+reference	producer-e4ca70	0xe4ca70	0xe4d429	0x16cdb58	cstring	DWARF_LIAISON
+reference	producer-e4ca70	0xe4ca70	0xe4d436	0x16cdb60	cstring	AISON
+reference	producer-e4ca70	0xe4ca70	0xe4d43f	0x16cdb64	cstring	N
+reference	producer-e4ca70	0xe4ca70	0xe4d944	0x16cdb58	cstring	DWARF_LIAISON
+reference	producer-e4ca70	0xe4ca70	0xe4d951	0x16cdb60	cstring	AISON
+reference	producer-e4ca70	0xe4ca70	0xe4d95a	0x16cdb64	cstring	N
+reference	producer-e4ca70	0xe4ca70	0xe4da6d	0x15ed97c	cstring	 from 
+reference	producer-e4ca70	0xe4ca70	0xe4daab	0x15fd068	cstring	 has arrived.
+reference	producer-e4ca70	0xe4ca70	0xe4dbc9	0x172f698	cstring	No 
+reference	producer-e4ca70	0xe4ca70	0xe4dbd3	0x172f69a	cstring	 
+reference	producer-e4ca70	0xe4ca70	0xe4dc05	0x172f818	cstring	?  How curious...
+reference	trade-diplomat-arrival	0xe4dd10	0xe4e756	0x16ce930	cstring	HUMAN_TRADE
+reference	trade-diplomat-arrival	0xe4dd10	0xe4e763	0x16ce938	cstring	ADE
+reference	trade-diplomat-arrival	0xe4dd10	0xe4e76e	0x16ce93a	cstring	E
+reference	trade-diplomat-arrival	0xe4dd10	0xe4ed20	0x15ed67c	cstring	A 
+reference	trade-diplomat-arrival	0xe4dd10	0xe4ed90	0x15ed97c	cstring	 from 
+reference	trade-diplomat-arrival	0xe4dd10	0xe4ed98	0x15ed980	cstring	m 
+reference	trade-diplomat-arrival	0xe4dd10	0xe4ee00	0x15fd068	cstring	 has arrived.
+reference	trade-diplomat-arrival	0xe4dd10	0xe4ee0c	0x15fd070	cstring	ived.
+reference	trade-diplomat-arrival	0xe4dd10	0xe4ee15	0x15fd074	cstring	.
+reference	profession-words	0x132cc10	0x132cceb	0x1782060	cstring	miner
+reference	profession-words	0x132cc10	0x132cd05	0x1782080	cstring	woodworker
+reference	profession-words	0x132cc10	0x132cd1f	0x1782070	cstring	carpenter
+reference	profession-words	0x132cc10	0x132cd39	0x17821f4	cstring	bowyer
+reference	profession-words	0x132cc10	0x132cd53	0x17821e8	cstring	woodcutter
+reference	profession-words	0x132cc10	0x132cd6d	0x1782210	cstring	stoneworker
+reference	profession-words	0x132cc10	0x132cd87	0x1782200	cstring	engraver
+reference	profession-words	0x132cc10	0x132cda1	0x1782230	cstring	stonecutter
+reference	profession-words	0x132cc10	0x132cdbb	0x1782220	cstring	stone carver
+reference	profession-words	0x132cc10	0x132cdd5	0x1782244	cstring	mason
+reference	profession-words	0x132cc10	0x132cdef	0x178223c	cstring	ranger
+reference	profession-words	0x132cc10	0x132ce09	0x1782170	cstring	animal caretaker
+reference	profession-words	0x132cc10	0x132ce23	0x1782160	cstring	animal trainer
+reference	profession-words	0x132cc10	0x132ce3d	0x16a642c	cstring	hunter
+reference	profession-words	0x132cc10	0x132ce57	0x17821a0	cstring	trapper
+reference	profession-words	0x132cc10	0x132ce71	0x1782188	cstring	animal dissector
+reference	profession-words	0x132cc10	0x132ce8b	0x17821c0	cstring	metalsmith
+reference	profession-words	0x132cc10	0x132cea5	0x17821a8	cstring	furnace operator
+reference	profession-words	0x132cc10	0x132cebf	0x17821d8	cstring	weaponsmith
+reference	profession-words	0x132cc10	0x132ced9	0x17821d0	cstring	armorer
+reference	profession-words	0x132cc10	0x132cef3	0x17822c8	cstring	blacksmith
+reference	profession-words	0x132cc10	0x132cf0d	0x17822b8	cstring	metalcrafter
+reference	profession-words	0x132cc10	0x132cf27	0x17822e8	cstring	jeweler
+reference	profession-words	0x132cc10	0x132cf41	0x17822d8	cstring	gem cutter
+reference	profession-words	0x132cc10	0x132cf5b	0x1782300	cstring	gem setter
+reference	profession-words	0x132cc10	0x132cf6f	0x162a8a8	cstring	craftsman
+reference	profession-words	0x132cc10	0x132cf76	0x172e188	cstring	craftsmen
+reference	profession-words	0x132cc10	0x132cf95	0x17822f0	cstring	woodcrafter
+reference	profession-words	0x132cc10	0x132cfaf	0x1782320	cstring	papermaker
+reference	profession-words	0x132cc10	0x132cfc9	0x1782310	cstring	bookbinder
+reference	profession-words	0x132cc10	0x132cfe3	0x1782254	cstring	potter
+reference	profession-words	0x132cc10	0x132cffd	0x178224c	cstring	glazer
+reference	profession-words	0x132cc10	0x132d017	0x1782270	cstring	wax worker
+reference	profession-words	0x132cc10	0x132d031	0x1782260	cstring	stonecrafter
+reference	profession-words	0x132cc10	0x132d04b	0x1782290	cstring	leatherworker
+reference	profession-words	0x132cc10	0x132d065	0x1782280	cstring	bone carver
+reference	profession-words	0x132cc10	0x132d07f	0x17822ac	cstring	weaver
+reference	profession-words	0x132cc10	0x132d099	0x17822a0	cstring	clothier
+reference	profession-words	0x132cc10	0x132d0b3	0x1782398	cstring	glassmaker
+reference	profession-words	0x132cc10	0x132d0cd	0x1782380	cstring	strand extractor
+reference	profession-words	0x132cc10	0x132d0e7	0x17823b8	cstring	fishery worker
+reference	profession-words	0x132cc10	0x132d0fb	0x17823d8	cstring	fisherman
+reference	profession-words	0x132cc10	0x132d102	0x17823a8	cstring	fishermen
+reference	profession-words	0x132cc10	0x132d121	0x17823c8	cstring	fish dissector
+reference	profession-words	0x132cc10	0x132d13b	0x17823f0	cstring	fish cleaner
+reference	profession-words	0x132cc10	0x132d155	0x17823e4	cstring	farmer
+reference	profession-words	0x132cc10	0x132d16f	0x1782338	cstring	cheesemaker
+reference	profession-words	0x132cc10	0x132d189	0x178232c	cstring	milker
+reference	profession-words	0x132cc10	0x132d1a3	0x1782350	cstring	gelder
+reference	profession-words	0x132cc10	0x132d1bd	0x1782348	cstring	shearer
+reference	profession-words	0x132cc10	0x132d1d7	0x1782360	cstring	spinner
+reference	profession-words	0x132cc10	0x132d1f1	0x1782358	cstring	cook
+reference	profession-words	0x132cc10	0x132d20b	0x1782370	cstring	thresher
+reference	profession-words	0x132cc10	0x132d225	0x1782368	cstring	miller
+reference	profession-words	0x132cc10	0x132d23f	0x1736468	cstring	butcher
+reference	profession-words	0x132cc10	0x132d259	0x1781d10	cstring	tanner
+reference	profession-words	0x132cc10	0x132d273	0x1781d08	cstring	dyer
+reference	profession-words	0x132cc10	0x132d28d	0x1781d28	cstring	presser
+reference	profession-words	0x132cc10	0x132d2a7	0x1781d18	cstring	beekeeper
+reference	profession-words	0x132cc10	0x132d2c1	0x1781d40	cstring	planter
+reference	profession-words	0x132cc10	0x132d2db	0x1781d30	cstring	herbalist
+reference	profession-words	0x132cc10	0x132d2f5	0x1781d54	cstring	brewer
+reference	profession-words	0x132cc10	0x132d30f	0x1781d48	cstring	soap maker
+reference	profession-words	0x132cc10	0x132d329	0x1781c98	cstring	potash maker
+reference	profession-words	0x132cc10	0x132d343	0x1781c88	cstring	lye maker
+reference	profession-words	0x132cc10	0x132d35d	0x1781cb8	cstring	wood burner
+reference	profession-words	0x132cc10	0x132d377	0x1781ca8	cstring	engineer
+reference	profession-words	0x132cc10	0x132d391	0x1781cd8	cstring	mechanic
+reference	profession-words	0x132cc10	0x132d3ab	0x1781cc8	cstring	siege engineer
+reference	profession-words	0x132cc10	0x132d3c5	0x1781cf8	cstring	siege operator
+reference	profession-words	0x132cc10	0x132d3df	0x1781ce8	cstring	pump operator
+reference	profession-words	0x132cc10	0x132d3f9	0x16c1e74	cstring	clerk
+reference	profession-words	0x132cc10	0x132d413	0x165fbf8	cstring	administrator
+reference	profession-words	0x132cc10	0x132d42d	0x1781df8	cstring	trader
+reference	profession-words	0x132cc10	0x132d447	0x16a65bc	cstring	poet
+reference	profession-words	0x132cc10	0x132d461	0x16a6404	cstring	bard
+reference	profession-words	0x132cc10	0x132d47b	0x16a640c	cstring	dancer
+reference	profession-words	0x132cc10	0x132d495	0x1642440	cstring	performer
+reference	profession-words	0x132cc10	0x132d4af	0x16423b4	cstring	scribe
+reference	profession-words	0x132cc10	0x132d4c9	0x1642430	cstring	tavern keeper
+reference	profession-words	0x132cc10	0x132d4e3	0x1642458	cstring	doctor
+reference	profession-words	0x132cc10	0x132d4fd	0x16423f8	cstring	diagnostician
+reference	profession-words	0x132cc10	0x132d517	0x1642410	cstring	bone doctor
+reference	profession-words	0x132cc10	0x132d531	0x1781df0	cstring	suturer
+reference	profession-words	0x132cc10	0x132d54b	0x1642408	cstring	surgeon
+reference	profession-words	0x132cc10	0x132d565	0x1781e08	cstring	merchant
+reference	profession-words	0x132cc10	0x132d57f	0x1781e00	cstring	drunk
+reference	profession-words	0x132cc10	0x132d593	0x1781e18	cstring	hammerman
+reference	profession-words	0x132cc10	0x132d59a	0x1781e28	cstring	hammermen
+reference	profession-words	0x132cc10	0x132d5b9	0x1781e48	cstring	Hammer Lord
+reference	profession-words	0x132cc10	0x132d5d0	0x1781d70	cstring	spearman
+reference	profession-words	0x132cc10	0x132d5d7	0x1781e38	cstring	spearmen
+reference	profession-words	0x132cc10	0x132d5f3	0x1781d60	cstring	Spearmaster
+reference	profession-words	0x132cc10	0x132d60a	0x1781d80	cstring	crossbowman
+reference	profession-words	0x132cc10	0x132d611	0x1781d90	cstring	crossbowmen
+reference	profession-words	0x132cc10	0x132d62a	0x1781da0	cstring	Elite Crossbowmen
+reference	profession-words	0x132cc10	0x132d631	0x1781db8	cstring	Elite Crossbowman
+reference	profession-words	0x132cc10	0x132d64d	0x1781de0	cstring	wrestler
+reference	profession-words	0x132cc10	0x132d667	0x1781dd0	cstring	Elite Wrestler
+reference	profession-words	0x132cc10	0x132d67b	0x1781eb8	cstring	axeman
+reference	profession-words	0x132cc10	0x132d682	0x1781ec0	cstring	axemen
+reference	profession-words	0x132cc10	0x132d6a1	0x1781ed8	cstring	Axe Lord
+reference	profession-words	0x132cc10	0x132d6b5	0x1781ef8	cstring	swordsman
+reference	profession-words	0x132cc10	0x132d6bc	0x1781ec8	cstring	swordsmen
+reference	profession-words	0x132cc10	0x132d6db	0x1781ee8	cstring	Swordmaster
+reference	profession-words	0x132cc10	0x132d6ef	0x1781f08	cstring	maceman
+reference	profession-words	0x132cc10	0x132d6f6	0x1781f10	cstring	macemen
+reference	profession-words	0x132cc10	0x132d715	0x1781e60	cstring	Mace Lord
+reference	profession-words	0x132cc10	0x132d729	0x1781e80	cstring	pikeman
+reference	profession-words	0x132cc10	0x132d730	0x1781e58	cstring	pikemen
+reference	profession-words	0x132cc10	0x132d74f	0x1781e70	cstring	Pikemaster
+reference	profession-words	0x132cc10	0x132d763	0x1781e88	cstring	bowman
+reference	profession-words	0x132cc10	0x132d76a	0x1781e90	cstring	bowmen
+reference	profession-words	0x132cc10	0x132d786	0x1781e98	cstring	Elite Bowman
+reference	profession-words	0x132cc10	0x132d78d	0x1781ea8	cstring	Elite Bowmen
+reference	profession-words	0x132cc10	0x132d7a9	0x1781fa0	cstring	blowgunner
+reference	profession-words	0x132cc10	0x132d7c3	0x1781f88	cstring	Master Blowgunner
+reference	profession-words	0x132cc10	0x132d7dd	0x1781fc0	cstring	lasher
+reference	profession-words	0x132cc10	0x132d7f7	0x1781fb0	cstring	Master Lasher
+reference	profession-words	0x132cc10	0x132d811	0x1781fd8	cstring	recruit
+reference	profession-words	0x132cc10	0x132d82b	0x16a1210	cstring	hunting
+reference	profession-words	0x132cc10	0x132d840	0x1649be4	cstring	war
+reference	profession-words	0x132cc10	0x132d855	0x1781fc8	cstring	Master Thief
+reference	profession-words	0x132cc10	0x132d86f	0x16a6990	cstring	thief
+reference	profession-words	0x132cc10	0x132d889	0x1642420	cstring	monster slayer
+reference	profession-words	0x132cc10	0x132d8a3	0x1674d10	cstring	scout
+reference	profession-words	0x132cc10	0x132d8bd	0x1781fe8	cstring	beast hunter
+reference	profession-words	0x132cc10	0x132d8d7	0x16e67a8	cstring	snatcher
+reference	profession-words	0x132cc10	0x132d8ee	0x1675290	cstring	mercenaries
+reference	profession-words	0x132cc10	0x132d8fb	0x15ec9f0	cstring	mercenary
+reference	profession-words	0x132cc10	0x132d91d	0x1781fe0	cstring	sage
+reference	profession-words	0x132cc10	0x132d937	0x1642450	cstring	scholar
+reference	profession-words	0x132cc10	0x132d951	0x1781f28	cstring	philosopher
+reference	profession-words	0x132cc10	0x132d96b	0x1781f18	cstring	mathematician
+reference	profession-words	0x132cc10	0x132d985	0x1781f48	cstring	historian
+reference	profession-words	0x132cc10	0x132d99f	0x1781f38	cstring	astronomer
+reference	profession-words	0x132cc10	0x132d9b9	0x1781f60	cstring	naturalist
+reference	profession-words	0x132cc10	0x132d9d3	0x1781f58	cstring	chemist
+reference	profession-words	0x132cc10	0x132d9ed	0x1781f78	cstring	geographer
+reference	profession-words	0x132cc10	0x132da07	0x1673f48	cstring	criminal
+reference	profession-words	0x132cc10	0x132da21	0x1781f70	cstring	peddler
+reference	profession-words	0x132cc10	0x132da3b	0x1782ba0	cstring	prophet
+reference	profession-words	0x132cc10	0x132da55	0x1782b98	cstring	pilgrim
+reference	profession-words	0x132cc10	0x132da6f	0x1782bb4	cstring	monk
+reference	profession-words	0x132cc10	0x132da89	0x1782ba8	cstring	messenger
+reference	profession-words	0x132cc10	0x132db26	0x16a12a8	cstring	children
+reference	profession-words	0x132cc10	0x132dc5b	0x1646ac0	cstring	child
+reference	profession-words	0x132cc10	0x132dcb8	0x1782bc8	cstring	babies
+reference	profession-words	0x132cc10	0x132dcca	0x167ff14	cstring	baby
+reference	profession-words	0x132cc10	0x132de26	0x1782bc8	cstring	babies
+reference	profession-words	0x132cc10	0x132de35	0x167ff14	cstring	baby
+reference	profession-words	0x132cc10	0x132de57	0x15e9298	cstring	s
+reference	base-profession	0x132e0c0	0x132e1e3	0x15e9298	cstring	s
+reference	base-profession	0x132e0c0	0x132e334	0x1782be0	cstring	peasant
+reference	base-profession	0x132e0c0	0x132e33b	0x1782bc0	cstring	Peasant
+reference	base-profession	0x132e0c0	0x132e363	0x15e9298	cstring	s
+reference	article-format	0x132e430	0x132e4af	0x15ec550	cstring	you
+reference	article-format	0x132e430	0x132e4b6	0x15e8ca0	cstring	You
+reference	article-format	0x132e430	0x132e9a0	0x15ec9fc	cstring	 slave
+reference	article-format	0x132e430	0x132e9da	0x15eca28	cstring	slave
+reference	article-format	0x132e430	0x132ea35	0x15eca28	cstring	slave
+reference	article-format	0x132e430	0x132ea3d	0x15eca2c	cstring	e
+reference	article-format	0x132e430	0x132eb1b	0x1782bd0	cstring	 prisoner
+reference	article-format	0x132e430	0x132eb4f		printable-immediate	prisoner
+reference	article-format	0x132e430	0x132ebad		printable-immediate	prisoner
+reference	article-format	0x132e430	0x132ed76	0x15e8e48	cstring	the 
+reference	article-format	0x132e430	0x132ed7d	0x15ed9bc	cstring	The 
+reference	article-format	0x132e430	0x132edc2	0x15e873c	cstring	 
+reference	article-format	0x132e430	0x132ef95	0x15e8e48	cstring	the 
+reference	article-format	0x132e430	0x132efa9	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132efbe	0x16757e4	cstring	force
+reference	article-format	0x132e430	0x132efe3	0x15e8e48	cstring	the 
+reference	article-format	0x132e430	0x132eff7	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132f00c	0x1661fa4	cstring	deity
+reference	article-format	0x132e430	0x132f254	0x15ec9fc	cstring	 slave
+reference	article-format	0x132e430	0x132f28e	0x15eca28	cstring	slave
+reference	article-format	0x132e430	0x132f2ee	0x15eca28	cstring	slave
+reference	article-format	0x132e430	0x132f2f6	0x15eca2c	cstring	e
+reference	article-format	0x132e430	0x132f3cb	0x1782bd0	cstring	 prisoner
+reference	article-format	0x132e430	0x132f3ff		printable-immediate	prisoner
+reference	article-format	0x132e430	0x132f459		printable-immediate	prisoner
+reference	article-format	0x132e430	0x132f513	0x15e8e48	cstring	the 
+reference	article-format	0x132e430	0x132f569	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132f5d3	0x1782b3c	cstring	stray 
+reference	article-format	0x132e430	0x132f5da	0x1782b48	cstring	fierce 
+reference	article-format	0x132e430	0x132f61e	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132f633	0x1782b58	cstring	agitated 
+reference	article-format	0x132e430	0x132f67b	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132f690	0x16a5e5c	cstring	ghost
+reference	article-format	0x132e430	0x132f6bf	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132f6d4	0x15fdbb8	cstring	ghostly 
+reference	article-format	0x132e430	0x132f706	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132f754	0x1686348	cstring	average
+reference	article-format	0x132e430	0x132f783	0x15e873c	cstring	 
+reference	article-format	0x132e430	0x132f7d7	0x15e873c	cstring	 
+reference	article-format	0x132e430	0x132f81e	0x15e873c	cstring	 
+reference	article-format	0x132e430	0x132f843	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132f89c	0x15ed620	cstring	a 
+reference	article-format	0x132e430	0x132f8b1	0x16cf03c	cstring	corpse
+reference	article-format	0x132e430	0x132f8c0	0x173e8e0	cstring	 corpse
+reference	creature-role	0x132f980	0x132fade	0x1661fa4	cstring	deity
+reference	creature-role	0x132f980	0x132faf5	0x16757e4	cstring	force
+reference	creature-role	0x132f980	0x132fd3c	0x1782b50	cstring	 Slave
+reference	creature-role	0x132f980	0x132fd76	0x1600c30	cstring	Slave
+reference	creature-role	0x132f980	0x132fdcc	0x1600c30	cstring	Slave
+reference	creature-role	0x132f980	0x132fdd4	0x1600c34	cstring	e
+reference	creature-role	0x132f980	0x132feb3	0x1782b70	cstring	 Prisoner
+reference	creature-role	0x132f980	0x132fee7		printable-immediate	Prisoner
+reference	creature-role	0x132f980	0x132ff37		printable-immediate	Prisoner
+reference	creature-role	0x132f980	0x1330066	0x1782b8c	cstring	Stray 
+reference	creature-role	0x132f980	0x133006d	0x1782b68	cstring	Fierce 
+reference	creature-role	0x132f980	0x133008e	0x1782b80	cstring	Agitated 
+reference	creature-role	0x132f980	0x13300c4	0x16bec90	cstring	Ghost
+reference	creature-role	0x132f980	0x13300de	0x1629b50	cstring	Ghostly 
+reference	creature-role	0x132f980	0x133012d	0x15e873c	cstring	 
+reference	creature-role	0x132f980	0x1330176	0x15e873c	cstring	 
+reference	creature-role	0x132f980	0x13301bc	0x1782c60	cstring	Corpse
+reference	creature-role	0x132f980	0x13301cb	0x1629b48	cstring	 Corpse
+reference	unit-caption	0x1330c30	0x1330e5d	0x15e90d8	cstring	, 
+reference	unit-caption	0x1330c30	0x1330f58	0x15e9718	cstring	""""
+reference	unit-caption	0x1330c30	0x1330fad	0x15e9718	cstring	""""
+reference	unit-caption	0x1330c30	0x1330fc2	0x15e90d8	cstring	, 
+reference	unit-caption	0x1330c30	0x1331001	0x15e90d8	cstring	, 
+reference	unit-caption	0x1330c30	0x133105d	0x15e90d8	cstring	, 
+reference	unit-caption	0x1330c30	0x13310b8	0x1615540	cstring	 (
+reference	unit-caption	0x1330c30	0x13310f4	0x1782c58	cstring	Trained
+reference	unit-caption	0x1330c30	0x1331100	0x1782c78	cstring	-Trained-
+reference	unit-caption	0x1330c30	0x133110c	0x1782c68	cstring	+Trained+
+reference	unit-caption	0x1330c30	0x1331118	0x1782c90	cstring	*Trained*
+reference	unit-caption	0x1330c30	0x133114c	0x1782c58	cstring	Trained
+reference	unit-caption	0x1330c30	0x133119c	0x1782c58	cstring	Trained
+reference	unit-caption	0x1330c30	0x13311c8	0x1782c84	cstring	Tame
+reference	unit-caption	0x1330c30	0x13311d1	0x1782cb0	cstring	Semi-Wild
+reference	unit-caption	0x1330c30	0x13311e9	0x1615580	cstring	)
+reference	profession	0x1331500	0x1331674	0x1782bf8	cstring	the force
+reference	profession	0x1331500	0x1331873	0x1782ca0	cstring	the deity
+reference	profession	0x1331500	0x1331b08	0x15e8e48	cstring	the 
+reference	profession	0x1331500	0x1331e1a	0x1608940	cstring	Miner
+reference	profession	0x1331500	0x1331e23	0x1608944	cstring	r
+reference	profession	0x1331500	0x1331e3e	0x1782be8	cstring	Woodworker
+reference	profession	0x1331500	0x1331e4b	0x1782bf0	cstring	er
+reference	profession	0x1331500	0x1331e67	0x162c9e0	cstring	Carpenter
+reference	profession	0x1331500	0x1331e74	0x162c9e8	cstring	r
+reference	profession	0x1331500	0x1331e8f	0x162c9c8	cstring	Bowyer
+reference	profession	0x1331500	0x1331e98	0x162c9cc	cstring	er
+reference	profession	0x1331500	0x1331eb4	0x1608960	cstring	Woodcutter
+reference	profession	0x1331500	0x1331ec1	0x1608968	cstring	er
+reference	profession	0x1331500	0x1331edd	0x162c958	cstring	Stoneworker
+reference	profession	0x1331500	0x1331eea	0x162c960	cstring	ker
+reference	profession	0x1331500	0x1331ef5	0x162c962	cstring	r
+reference	profession	0x1331500	0x1331f10		printable-immediate	Engraver
+reference	profession	0x1331500	0x1331f27	0x16a5848	cstring	Stonecutter
+reference	profession	0x1331500	0x1331f3c	0x16a5838	cstring	Stone Carver
+reference	profession	0x1331500	0x1331f51	0x16a5864	cstring	Mason
+reference	profession	0x1331500	0x1331f66	0x1782c10	cstring	Ranger
+reference	profession	0x1331500	0x1331f7b	0x16a5880	cstring	Animal Caretaker
+reference	profession	0x1331500	0x1331f90	0x16a5870	cstring	Animal Trainer
+reference	profession	0x1331500	0x1331fa5	0x1600378	cstring	Hunter
+reference	profession	0x1331500	0x1331fba	0x16a56f8	cstring	Trapper
+reference	profession	0x1331500	0x1331fcf	0x16a56d0	cstring	Animal Dissector
+reference	profession	0x1331500	0x1331fe4	0x162c938	cstring	Metalsmith
+reference	profession	0x1331500	0x1331ff9	0x16a5628	cstring	Furnace Operator
+reference	profession	0x1331500	0x133200e	0x16a5690	cstring	Weaponsmith
+reference	profession	0x1331500	0x1332023	0x1782c08	cstring	Armorer
+reference	profession	0x1331500	0x1332040	0x16a56b0	cstring	Blacksmith
+reference	profession	0x1331500	0x133204d	0x16a56b8	cstring	th
+reference	profession	0x1331500	0x1332069	0x1782c28	cstring	Metalcrafter
+reference	profession	0x1331500	0x1332076	0x1782c30	cstring	fter
+reference	profession	0x1331500	0x1332088	0x162c930	cstring	Jeweler
+reference	profession	0x1331500	0x133209d	0x16a54e0	cstring	Gem Cutter
+reference	profession	0x1331500	0x13320b2	0x16a54f0	cstring	Gem Setter
+reference	profession	0x1331500	0x13320c7	0x1651c38	cstring	Craftsman
+reference	profession	0x1331500	0x13320dc	0x16a5500	cstring	Woodcrafter
+reference	profession	0x1331500	0x13320f1	0x16a5510	cstring	Papermaker
+reference	profession	0x1331500	0x1332106	0x16a5520	cstring	Bookbinder
+reference	profession	0x1331500	0x133211b	0x16a552c	cstring	Potter
+reference	profession	0x1331500	0x1332130	0x16a59c4	cstring	Glazer
+reference	profession	0x1331500	0x1332145	0x16a5538	cstring	Wax Worker
+reference	profession	0x1331500	0x133215a	0x1782c18	cstring	Stonecrafter
+reference	profession	0x1331500	0x133216f	0x16a59a0	cstring	Leatherworker
+reference	profession	0x1331500	0x1332184	0x16a59d0	cstring	Bone Carver
+reference	profession	0x1331500	0x1332199	0x16a59dc	cstring	Weaver
+reference	profession	0x1331500	0x13321ae	0x1651cd0	cstring	Clothier
+reference	profession	0x1331500	0x13321c3	0x16a5568	cstring	Glassmaker
+reference	profession	0x1331500	0x13321d8	0x16a5640	cstring	Strand Extractor
+reference	profession	0x1331500	0x13321ed	0x1782c48	cstring	Fishery Worker
+reference	profession	0x1331500	0x1332202	0x16a5618	cstring	Fisherman
+reference	profession	0x1331500	0x1332217	0x16a56c0	cstring	Fish Dissector
+reference	profession	0x1331500	0x133222c	0x16a56e8	cstring	Fish Cleaner
+reference	profession	0x1331500	0x1332241	0x162cb88	cstring	Farmer
+reference	profession	0x1331500	0x1332256	0x16a58c0	cstring	Cheesemaker
+reference	profession	0x1331500	0x133226b	0x16a58cc	cstring	Milker
+reference	profession	0x1331500	0x1332280	0x16a58d4	cstring	Gelder
+reference	profession	0x1331500	0x1332295	0x16a58e0	cstring	Shearer
+reference	profession	0x1331500	0x13322aa	0x16a58e8	cstring	Spinner
+reference	profession	0x1331500	0x13322bf	0x163cf84	cstring	Cook
+reference	profession	0x1331500	0x13322d4	0x16a59f8	cstring	Thresher
+reference	profession	0x1331500	0x13322e9	0x16a59ec	cstring	Miller
+reference	profession	0x1331500	0x13322fe	0x161be28	cstring	Butcher
+reference	profession	0x1331500	0x1332313	0x162cb80	cstring	Tanner
+reference	profession	0x1331500	0x1332328	0x162c910	cstring	Dyer
+reference	profession	0x1331500	0x133233d	0x16a59b0	cstring	Presser
+reference	profession	0x1331500	0x1332352	0x16a59b8	cstring	Beekeeper
+reference	profession	0x1331500	0x1332367	0x16a5700	cstring	Planter
+reference	profession	0x1331500	0x133237c	0x16a5708	cstring	Herbalist
+reference	profession	0x1331500	0x1332391	0x16a59e4	cstring	Brewer
+reference	profession	0x1331500	0x13323a6	0x1782c38	cstring	Soap Maker
+reference	profession	0x1331500	0x13323bb	0x16a5660	cstring	Potash Maker
+reference	profession	0x1331500	0x13323d0	0x16a5670	cstring	Lye Maker
+reference	profession	0x1331500	0x13323e5	0x16a5680	cstring	Wood Burner
+reference	profession	0x1331500	0x13323fa	0x1782d20	cstring	Engineer
+reference	profession	0x1331500	0x133240f	0x162c948	cstring	Mechanic
+reference	profession	0x1331500	0x1332424	0x16a5970	cstring	Siege Engineer
+reference	profession	0x1331500	0x1332439	0x16a5980	cstring	Siege Operator
+reference	profession	0x1331500	0x133244e	0x16a5990	cstring	Pump Operator
+reference	profession	0x1331500	0x1332463	0x1782d18	cstring	Clerk
+reference	profession	0x1331500	0x1332478	0x1782d38	cstring	Administrator
+reference	profession	0x1331500	0x133248d	0x1782d2c	cstring	Trader
+reference	profession	0x1331500	0x13324a2	0x16a55a4	cstring	Poet
+reference	profession	0x1331500	0x13324b7	0x1782d50	cstring	Bard
+reference	profession	0x1331500	0x13324cc	0x16a5ad8	cstring	Dancer
+reference	profession	0x1331500	0x13324e1	0x15ffd30	cstring	Performer
+reference	profession	0x1331500	0x13324f6	0x15ffd1c	cstring	Scribe
+reference	profession	0x1331500	0x133250b	0x162c890	cstring	Tavern Keeper
+reference	profession	0x1331500	0x1332520	0x1782d48	cstring	Sage
+reference	profession	0x1331500	0x1332535	0x15ffd28	cstring	Scholar
+reference	profession	0x1331500	0x133254a	0x1782d68	cstring	Philosopher
+reference	profession	0x1331500	0x133255f	0x16a5b78	cstring	Mathematician
+reference	profession	0x1331500	0x1332574	0x1782d58	cstring	Historian
+reference	profession	0x1331500	0x1332589	0x16a5b88	cstring	Astronomer
+reference	profession	0x1331500	0x133259e	0x1782cd0	cstring	Naturalist
+reference	profession	0x1331500	0x13325b3	0x16a5b98	cstring	Chemist
+reference	profession	0x1331500	0x13325c8	0x16a5ba0	cstring	Geographer
+reference	profession	0x1331500	0x13325dd	0x15ffcf8	cstring	Doctor
+reference	profession	0x1331500	0x13325f2	0x15ffce8	cstring	Diagnostician
+reference	profession	0x1331500	0x1332607	0x162c8a8	cstring	Bone Doctor
+reference	profession	0x1331500	0x133261c	0x16a5918	cstring	Suturer
+reference	profession	0x1331500	0x1332631	0x15fff10	cstring	Surgeon
+reference	profession	0x1331500	0x1332646	0x1782cc0	cstring	Merchant
+reference	profession	0x1331500	0x133265b	0x1782ce4	cstring	Drunk
+reference	profession	0x1331500	0x1332670	0x162c880	cstring	Monster Slayer
+reference	profession	0x1331500	0x1332685	0x1782cdc	cstring	Scout
+reference	profession	0x1331500	0x133269a	0x1782cf8	cstring	Beast Hunter
+reference	profession	0x1331500	0x13326af	0x169e2f0	cstring	Snatcher
+reference	profession	0x1331500	0x13326c4	0x15ffd10	cstring	Mercenary
+reference	profession	0x1331500	0x13326d9	0x16a5a90	cstring	Hammerman
+reference	profession	0x1331500	0x13326ee	0x1781e48	cstring	Hammer Lord
+reference	profession	0x1331500	0x1332703	0x16a5aa0	cstring	Spearman
+reference	profession	0x1331500	0x1332718	0x1781d60	cstring	Spearmaster
+reference	profession	0x1331500	0x133272d	0x16a5ab0	cstring	Crossbowman
+reference	profession	0x1331500	0x1332742	0x1781db8	cstring	Elite Crossbowman
+reference	profession	0x1331500	0x1332757	0x16a5a40	cstring	Wrestler
+reference	profession	0x1331500	0x133276c	0x1781dd0	cstring	Elite Wrestler
+reference	profession	0x1331500	0x1332781	0x16a5a70	cstring	Axeman
+reference	profession	0x1331500	0x1332796	0x1781ed8	cstring	Axe Lord
+reference	profession	0x1331500	0x13327ab	0x16a5a78	cstring	Swordsman
+reference	profession	0x1331500	0x13327c0	0x1781ee8	cstring	Swordmaster
+reference	profession	0x1331500	0x13327d5	0x16a5a88	cstring	Maceman
+reference	profession	0x1331500	0x13327ea	0x1781e60	cstring	Mace Lord
+reference	profession	0x1331500	0x13327ff	0x16a5ac0	cstring	Pikeman
+reference	profession	0x1331500	0x1332814	0x1781e70	cstring	Pikemaster
+reference	profession	0x1331500	0x1332829	0x16a5948	cstring	Bowman
+reference	profession	0x1331500	0x133283e	0x1781e98	cstring	Elite Bowman
+reference	profession	0x1331500	0x1332853	0x16a5a08	cstring	Blowgunner
+reference	profession	0x1331500	0x1332868	0x1781f88	cstring	Master Blowgunner
+reference	profession	0x1331500	0x133287d	0x16a58b4	cstring	Lasher
+reference	profession	0x1331500	0x1332892	0x1781fb0	cstring	Master Lasher
+reference	profession	0x1331500	0x13328a7	0x1782cf0	cstring	Recruit
+reference	profession	0x1331500	0x13328bc	0x15f7148	cstring	Hunting
+reference	profession	0x1331500	0x13328d1	0x16036fc	cstring	War
+reference	profession	0x1331500	0x13328e6	0x1781fc8	cstring	Master Thief
+reference	profession	0x1331500	0x13328fb	0x160032c	cstring	Thief
+reference	profession	0x1331500	0x1332910	0x15ec960	cstring	Criminal
+reference	profession	0x1331500	0x1332925	0x1782d10	cstring	Peddler
+reference	profession	0x1331500	0x133293a	0x1782d08	cstring	Prophet
+reference	profession	0x1331500	0x133294f	0x1782df8	cstring	Pilgrim
+reference	profession	0x1331500	0x1332964	0x1782dec	cstring	Monk
+reference	profession	0x1331500	0x1332979	0x1782e08	cstring	Messenger
+reference	profession	0x1331500	0x1332a17	0x15ffe64	cstring	Child
+reference	profession	0x1331500	0x1332a80	0x1782e00	cstring	Baby
+reference	profession	0x1331500	0x1332aa8	0x1782bc0	cstring	Peasant
+reference	profession	0x1331500	0x1332ab2	0x1782bc4	cstring	ant
+reference	profession	0x1331500	0x1332abd	0x1782bc6	cstring	t
+reference	profession	0x1331500	0x1332c76	0x1782b50	cstring	 Slave
+reference	profession	0x1331500	0x1332cb0	0x1600c30	cstring	Slave
+reference	profession	0x1331500	0x1332d06	0x1600c30	cstring	Slave
+reference	profession	0x1331500	0x1332d0e	0x1600c34	cstring	e
+reference	profession	0x1331500	0x1332de9	0x1782b70	cstring	 Prisoner
+reference	profession	0x1331500	0x1332e1d		printable-immediate	Prisoner
+reference	profession	0x1331500	0x1332e6c		printable-immediate	Prisoner
+reference	profession	0x1331500	0x1332ef4	0x15e8e48	cstring	the 
+reference	profession	0x1331500	0x1332f25	0x15e873c	cstring	 
+reference	profession	0x1331500	0x1332f8d	0x16bec90	cstring	Ghost
+reference	profession	0x1331500	0x1332f9c	0x1629b50	cstring	Ghostly 
+reference	profession	0x1331500	0x1332fe9	0x15e873c	cstring	 
+reference	profession	0x1331500	0x133300c	0x1782e38	cstring	One
+reference	mandate-create	0x134ac10	0x134ad01	0x1782568	cstring	 has forgotten a demand.
+reference	mandate-create	0x134ac10	0x134b8c6	0x17825d8	cstring	 has a new demand.
+reference	mandate-expire	0x134de20	0x134e751	0x1782428	cstring	 has mandated the construction of certain goods.
+reference	mandate-expire	0x134de20	0x134e760	0x17825b0	cstring	 has imposed a ban on certain exports.
+reference	mandate-expire	0x134de20	0x134e9a0	0x1782400	cstring	 has altered the prices of goods.
+reference	mandate-cancel	0x13b2a30	0x13b2b09	0x1784e90	cstring	's mandate has ended.
+reference	mandate-cancel	0x13b2a30	0x13b2b29	0x1784ed0	cstring	's mandates have ended.
+classic	position-territory	0x9bb7e0	0x9bb86a	0x15e64d0	cstring	 of 
+classic	language-name	0xa910b0	0xa911bd	0x15e3720	cstring	 
+classic	language-name	0xa910b0	0xa91333	0x15e3720	cstring	 
+classic	language-name	0xa910b0	0xa9158f	0x15e3720	cstring	 
+classic	language-name	0xa910b0	0xa916bb	0x15e3720	cstring	 
+classic	land-elevation	0xac2bb0	0xac330c	0x16c8700	cstring	an official land of the realm
+classic	land-elevation	0xac2bb0	0xac3316	0x16c8710	cstring	 of the realm
+classic	land-elevation	0xac2bb0	0xac3323	0x16c8718	cstring	realm
+classic	land-elevation	0xac2bb0	0xac332c	0x16c871c	cstring	m
+classic	land-elevation	0xac2bb0	0xac3ae9	0x16c86d0	cstring	 and the surrounding lands have been made 
+classic	land-elevation	0xac2bb0	0xac3af3	0x16c86e0	cstring	ding lands have been made 
+classic	land-elevation	0xac2bb0	0xac3afe	0x16c86f0	cstring	been made 
+classic	land-elevation	0xac2bb0	0xac3b0b	0x16c86f8	cstring	e 
+classic	land-elevation	0xac2bb0	0xac3b58	0x15e3574	cstring	.
+classic	land-elevation	0xac2bb0	0xac3cb3	0x16c86a8	cstring	an even more official land of the realm
+classic	land-elevation	0xac2bb0	0xac3cbd	0x16c86b8	cstring	icial land of the realm
+classic	land-elevation	0xac2bb0	0xac3cc8	0x16c86c8	cstring	e realm
+classic	land-elevation	0xac2bb0	0xac3cd1	0x16c86cc	cstring	alm
+classic	land-elevation	0xac2bb0	0xac3cdc	0x16c86ce	cstring	m
+classic	land-elevation	0xac2bb0	0xac436a	0x16c86d0	cstring	 and the surrounding lands have been made 
+classic	land-elevation	0xac2bb0	0xac4374	0x16c86e0	cstring	ding lands have been made 
+classic	land-elevation	0xac2bb0	0xac437f	0x16c86f0	cstring	been made 
+classic	land-elevation	0xac2bb0	0xac438c	0x16c86f8	cstring	e 
+classic	land-elevation	0xac2bb0	0xac440a	0x15e3574	cstring	.
+classic	demand-change	0xe34880	0xe34aa8		printable-immediate	gfff
+classic	demand-change	0xe34880	0xe34b1c		printable-immediate	gfff
+classic	demand-change	0xe34880	0xe34f73	0x15e89c4	cstring	The 
+classic	demand-change	0xe34880	0xe34fab	0x17298a8	cstring	 has been missing for a week.
+classic	demand-change	0xe34880	0xe36601	0x17298d0	cstring	Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. 
+classic	demand-change	0xe34880	0xe366a1	0x1729948	cstring	What are a few pesky demons after all?
+classic	demand-change	0xe34880	0xe366ba	0x1729b38	cstring	The gods surely want you to dig deeper still!
+classic	demand-change	0xe34880	0xe366c3	0x1729b68	cstring	And why shouldn't you dig deeper still?!
+classic	demand-change	0xe34880	0xe3679b	0x1729b98	cstring	 is satisfied with their position here. 
+classic	demand-change	0xe34880	0xe367e1	0x1729bc8	cstring	Everything is properly royal, properly furnished.  And yet? 
+classic	demand-change	0xe34880	0xe367f4	0x1729a20	cstring	A true Mountainhome must have a true throne! 
+classic	demand-change	0xe34880	0xe36807	0x1729a50	cstring	And a true ruler requires seven symbols, symbols not of this world. Mere steel will not suffice. 
+classic	demand-change	0xe34880	0xe36891	0x1729ac0	cstring	This legend does not end until we've chipped out the last treasures of the underworld!
+classic	demand-change	0xe34880	0xe3689a	0x1729b18	cstring	Deeper. We must dig deeper.
+classic	demand-change	0xe34880	0xe368a3	0x1729ce0	cstring	Congratulations!  (You should be proud of your accomplishment.  Embark in a world with the deepest cavern layers for further challenges.)
+classic	demand-change	0xe34880	0xe369dc	0x1729d70	cstring	Your fortress is out of food!
+classic	demand-change	0xe34880	0xe36a06	0x1729d90	cstring	  Consider placing a farmplot on some underground soil and planting seeds.
+classic	demand-change	0xe34880	0xe36a0f	0x1729de0	cstring	  Are your farmplots working?  Make sure you are planting edible plants.
+classic	demand-change	0xe34880	0xe36a31	0x1729c10	cstring	  Try building a butcher's shop and slaughtering some livestock.
+classic	demand-change	0xe34880	0xe36a3a	0x1729c58	cstring	  Do you have any livestock to slaughter?
+classic	demand-change	0xe34880	0xe36a46	0x1729c88	cstring	  Perhaps you can gather plants, fruit, or go fishing.
+classic	demand-change	0xe34880	0xe3753d	0x1729cc0	cstring	 has ended a mandate.
+classic	demand-change	0xe34880	0xe37716	0x1729ef0	cstring	A mandate has ended.
+classic	demand-change	0xe34880	0xe39aac		printable-immediate	0u
+classic	demand-change	0xe34880	0xe39c74		printable-immediate	0u
+classic	demand-change	0xe34880	0xe39e7e		printable-immediate	0u
+classic	demand-change	0xe34880	0xe3a111		printable-immediate	0u
+classic	demand-change	0xe34880	0xe3a41c		printable-immediate	0u
+classic	diplomat-arrival	0xe466c0	0xe47226	0x16ca450	cstring	ELVES_STANDARD
+classic	diplomat-arrival	0xe466c0	0xe47233	0x16ca458	cstring	ANDARD
+classic	diplomat-arrival	0xe466c0	0xe4723c	0x16ca45c	cstring	RD
+classic	diplomat-arrival	0xe466c0	0xe472b2	0x16ca318	cstring	HUMAN_STANDARD
+classic	diplomat-arrival	0xe466c0	0xe472bf	0x16ca320	cstring	ANDARD
+classic	diplomat-arrival	0xe466c0	0xe472c8	0x16ca324	cstring	RD
+classic	diplomat-arrival	0xe466c0	0xe47776	0x15e85e4	cstring	A 
+classic	diplomat-arrival	0xe466c0	0xe4780c	0x17295d8	cstring	 diplomat from 
+classic	diplomat-arrival	0xe466c0	0xe4784e	0x15f8160	cstring	 has arrived.
+classic	producer-e479e0	0xe479e0	0xe48399	0x16ca688	cstring	DWARF_LIAISON
+classic	producer-e479e0	0xe479e0	0xe483a6	0x16ca690	cstring	AISON
+classic	producer-e479e0	0xe479e0	0xe483af	0x16ca694	cstring	N
+classic	producer-e479e0	0xe479e0	0xe488b4	0x16ca688	cstring	DWARF_LIAISON
+classic	producer-e479e0	0xe479e0	0xe488c1	0x16ca690	cstring	AISON
+classic	producer-e479e0	0xe479e0	0xe488ca	0x16ca694	cstring	N
+classic	producer-e479e0	0xe479e0	0xe489dd	0x15e8984	cstring	 from 
+classic	producer-e479e0	0xe479e0	0xe48a1b	0x15f8160	cstring	 has arrived.
+classic	producer-e479e0	0xe479e0	0xe48b39	0x17295e8	cstring	No 
+classic	producer-e479e0	0xe479e0	0xe48b43	0x17295ea	cstring	 
+classic	producer-e479e0	0xe479e0	0xe48b75	0x1729768	cstring	?  How curious...
+classic	trade-diplomat-arrival	0xe48c80	0xe496c6	0x16ca380	cstring	HUMAN_TRADE
+classic	trade-diplomat-arrival	0xe48c80	0xe496d3	0x16ca388	cstring	ADE
+classic	trade-diplomat-arrival	0xe48c80	0xe496de	0x16ca38a	cstring	E
+classic	trade-diplomat-arrival	0xe48c80	0xe49c90	0x15e85e4	cstring	A 
+classic	trade-diplomat-arrival	0xe48c80	0xe49d00	0x15e8984	cstring	 from 
+classic	trade-diplomat-arrival	0xe48c80	0xe49d08	0x15e8988	cstring	m 
+classic	trade-diplomat-arrival	0xe48c80	0xe49d70	0x15f8160	cstring	 has arrived.
+classic	trade-diplomat-arrival	0xe48c80	0xe49d7c	0x15f8168	cstring	ived.
+classic	trade-diplomat-arrival	0xe48c80	0xe49d85	0x15f816c	cstring	.
+classic	profession-words	0x1327b80	0x1327c5b	0x177c1f4	cstring	miner
+classic	profession-words	0x1327b80	0x1327c75	0x177c1e8	cstring	woodworker
+classic	profession-words	0x1327b80	0x1327c8f	0x177c208	cstring	carpenter
+classic	profession-words	0x1327b80	0x1327ca9	0x177c1fc	cstring	bowyer
+classic	profession-words	0x1327b80	0x1327cc3	0x177c228	cstring	woodcutter
+classic	profession-words	0x1327b80	0x1327cdd	0x177c218	cstring	stoneworker
+classic	profession-words	0x1327b80	0x1327cf7	0x177c170	cstring	engraver
+classic	profession-words	0x1327b80	0x1327d11	0x177c160	cstring	stonecutter
+classic	profession-words	0x1327b80	0x1327d2b	0x177c188	cstring	stone carver
+classic	profession-words	0x1327b80	0x1327d45	0x177c17c	cstring	mason
+classic	profession-words	0x1327b80	0x1327d5f	0x177c1ac	cstring	ranger
+classic	profession-words	0x1327b80	0x1327d79	0x177c198	cstring	animal caretaker
+classic	profession-words	0x1327b80	0x1327d93	0x177c1c0	cstring	animal trainer
+classic	profession-words	0x1327b80	0x1327dad	0x16a1484	cstring	hunter
+classic	profession-words	0x1327b80	0x1327dc7	0x177c1b8	cstring	trapper
+classic	profession-words	0x1327b80	0x1327de1	0x177c2b8	cstring	animal dissector
+classic	profession-words	0x1327b80	0x1327dfb	0x177c2a8	cstring	metalsmith
+classic	profession-words	0x1327b80	0x1327e15	0x177c2e0	cstring	furnace operator
+classic	profession-words	0x1327b80	0x1327e2f	0x177c2d0	cstring	weaponsmith
+classic	profession-words	0x1327b80	0x1327e49	0x177c308	cstring	armorer
+classic	profession-words	0x1327b80	0x1327e63	0x177c2f8	cstring	blacksmith
+classic	profession-words	0x1327b80	0x1327e7d	0x177c318	cstring	metalcrafter
+classic	profession-words	0x1327b80	0x1327e97	0x177c310	cstring	jeweler
+classic	profession-words	0x1327b80	0x1327eb1	0x177c248	cstring	gem cutter
+classic	profession-words	0x1327b80	0x1327ecb	0x177c238	cstring	gem setter
+classic	profession-words	0x1327b80	0x1327edf	0x1625fe8	cstring	craftsman
+classic	profession-words	0x1327b80	0x1327ee6	0x1729eb8	cstring	craftsmen
+classic	profession-words	0x1327b80	0x1327f05	0x177c268	cstring	woodcrafter
+classic	profession-words	0x1327b80	0x1327f1f	0x177c258	cstring	papermaker
+classic	profession-words	0x1327b80	0x1327f39	0x177c280	cstring	bookbinder
+classic	profession-words	0x1327b80	0x1327f53	0x177c274	cstring	potter
+classic	profession-words	0x1327b80	0x1327f6d	0x177c29c	cstring	glazer
+classic	profession-words	0x1327b80	0x1327f87	0x177c290	cstring	wax worker
+classic	profession-words	0x1327b80	0x1327fa1	0x177c3a0	cstring	stonecrafter
+classic	profession-words	0x1327b80	0x1327fbb	0x177c390	cstring	leatherworker
+classic	profession-words	0x1327b80	0x1327fd5	0x177c3b8	cstring	bone carver
+classic	profession-words	0x1327b80	0x1327fef	0x177c3b0	cstring	weaver
+classic	profession-words	0x1327b80	0x1328009	0x177c3d8	cstring	clothier
+classic	profession-words	0x1327b80	0x1328023	0x177c3c8	cstring	glassmaker
+classic	profession-words	0x1327b80	0x132803d	0x177c3f8	cstring	strand extractor
+classic	profession-words	0x1327b80	0x1328057	0x177c3e8	cstring	fishery worker
+classic	profession-words	0x1327b80	0x132806b	0x177c328	cstring	fisherman
+classic	profession-words	0x1327b80	0x1328072	0x177c338	cstring	fishermen
+classic	profession-words	0x1327b80	0x1328091	0x177c358	cstring	fish dissector
+classic	profession-words	0x1327b80	0x13280ab	0x177c348	cstring	fish cleaner
+classic	profession-words	0x1327b80	0x13280c5	0x177c374	cstring	farmer
+classic	profession-words	0x1327b80	0x13280df	0x177c368	cstring	cheesemaker
+classic	profession-words	0x1327b80	0x13280f9	0x177c384	cstring	milker
+classic	profession-words	0x1327b80	0x1328113	0x177c37c	cstring	gelder
+classic	profession-words	0x1327b80	0x132812d	0x177ccc8	cstring	shearer
+classic	profession-words	0x1327b80	0x1328147	0x177ccc0	cstring	spinner
+classic	profession-words	0x1327b80	0x1328161	0x177ccdc	cstring	cook
+classic	profession-words	0x1327b80	0x132817b	0x177ccd0	cstring	thresher
+classic	profession-words	0x1327b80	0x1328195	0x177ccec	cstring	miller
+classic	profession-words	0x1327b80	0x13281af	0x1730600	cstring	butcher
+classic	profession-words	0x1327b80	0x13281c9	0x177cce4	cstring	tanner
+classic	profession-words	0x1327b80	0x13281e3	0x177cd00	cstring	dyer
+classic	profession-words	0x1327b80	0x13281fd	0x177ccf8	cstring	presser
+classic	profession-words	0x1327b80	0x1328217	0x177cc58	cstring	beekeeper
+classic	profession-words	0x1327b80	0x1328231	0x177cc50	cstring	planter
+classic	profession-words	0x1327b80	0x132824b	0x177cc70	cstring	herbalist
+classic	profession-words	0x1327b80	0x1328265	0x177cc64	cstring	brewer
+classic	profession-words	0x1327b80	0x132827f	0x177cc90	cstring	soap maker
+classic	profession-words	0x1327b80	0x1328299	0x177cc80	cstring	potash maker
+classic	profession-words	0x1327b80	0x13282b3	0x177ccb0	cstring	lye maker
+classic	profession-words	0x1327b80	0x13282cd	0x177cca0	cstring	wood burner
+classic	profession-words	0x1327b80	0x13282e7	0x177cd90	cstring	engineer
+classic	profession-words	0x1327b80	0x1328301	0x177cd80	cstring	mechanic
+classic	profession-words	0x1327b80	0x132831b	0x177cdb0	cstring	siege engineer
+classic	profession-words	0x1327b80	0x1328335	0x177cda0	cstring	siege operator
+classic	profession-words	0x1327b80	0x132834f	0x177cdc8	cstring	pump operator
+classic	profession-words	0x1327b80	0x1328369	0x16bc644	cstring	clerk
+classic	profession-words	0x1327b80	0x1328383	0x165ae68	cstring	administrator
+classic	profession-words	0x1327b80	0x132839d	0x177cdc0	cstring	trader
+classic	profession-words	0x1327b80	0x13283b7	0x16a1454	cstring	poet
+classic	profession-words	0x1327b80	0x13283d1	0x16a145c	cstring	bard
+classic	profession-words	0x1327b80	0x13283eb	0x16a1464	cstring	dancer
+classic	profession-words	0x1327b80	0x1328405	0x163cf38	cstring	performer
+classic	profession-words	0x1327b80	0x132841f	0x163cf30	cstring	scribe
+classic	profession-words	0x1327b80	0x1328439	0x163cfd8	cstring	tavern keeper
+classic	profession-words	0x1327b80	0x1328453	0x163cf50	cstring	doctor
+classic	profession-words	0x1327b80	0x132846d	0x163cf58	cstring	diagnostician
+classic	profession-words	0x1327b80	0x1328487	0x163cf10	cstring	bone doctor
+classic	profession-words	0x1327b80	0x13284a1	0x177cde8	cstring	suturer
+classic	profession-words	0x1327b80	0x13284bb	0x163cf08	cstring	surgeon
+classic	profession-words	0x1327b80	0x13284d5	0x177cdd8	cstring	merchant
+classic	profession-words	0x1327b80	0x13284ef	0x177cd14	cstring	drunk
+classic	profession-words	0x1327b80	0x1328503	0x177cd30	cstring	hammerman
+classic	profession-words	0x1327b80	0x132850a	0x177cd08	cstring	hammermen
+classic	profession-words	0x1327b80	0x1328529	0x177cd20	cstring	Hammer Lord
+classic	profession-words	0x1327b80	0x1328540	0x177cd40	cstring	spearman
+classic	profession-words	0x1327b80	0x1328547	0x177cd50	cstring	spearmen
+classic	profession-words	0x1327b80	0x1328563	0x177cd70	cstring	Spearmaster
+classic	profession-words	0x1327b80	0x132857a	0x177ce68	cstring	crossbowman
+classic	profession-words	0x1327b80	0x1328581	0x177cd60	cstring	crossbowmen
+classic	profession-words	0x1327b80	0x132859a	0x177ce88	cstring	Elite Crossbowmen
+classic	profession-words	0x1327b80	0x13285a1	0x177ce50	cstring	Elite Crossbowman
+classic	profession-words	0x1327b80	0x13285bd	0x177ce78	cstring	wrestler
+classic	profession-words	0x1327b80	0x13285d7	0x177cea8	cstring	Elite Wrestler
+classic	profession-words	0x1327b80	0x13285eb	0x177cec4	cstring	axeman
+classic	profession-words	0x1327b80	0x13285f2	0x177ce9c	cstring	axemen
+classic	profession-words	0x1327b80	0x1328611	0x177ceb8	cstring	Axe Lord
+classic	profession-words	0x1327b80	0x1328625	0x177cdf0	cstring	swordsman
+classic	profession-words	0x1327b80	0x132862c	0x177ce00	cstring	swordsmen
+classic	profession-words	0x1327b80	0x132864b	0x177ce18	cstring	Swordmaster
+classic	profession-words	0x1327b80	0x132865f	0x177ce38	cstring	maceman
+classic	profession-words	0x1327b80	0x1328666	0x177ce10	cstring	macemen
+classic	profession-words	0x1327b80	0x1328685	0x177ce28	cstring	Mace Lord
+classic	profession-words	0x1327b80	0x1328699	0x177ce40	cstring	pikeman
+classic	profession-words	0x1327b80	0x13286a0	0x177ce48	cstring	pikemen
+classic	profession-words	0x1327b80	0x13286bf	0x177cf48	cstring	Pikemaster
+classic	profession-words	0x1327b80	0x13286d3	0x177cf68	cstring	bowman
+classic	profession-words	0x1327b80	0x13286da	0x177cf40	cstring	bowmen
+classic	profession-words	0x1327b80	0x13286f6	0x177cf80	cstring	Elite Bowman
+classic	profession-words	0x1327b80	0x13286fd	0x177cf58	cstring	Elite Bowmen
+classic	profession-words	0x1327b80	0x1328719	0x177cf70	cstring	blowgunner
+classic	profession-words	0x1327b80	0x1328733	0x177cf98	cstring	Master Blowgunner
+classic	profession-words	0x1327b80	0x132874d	0x177cf90	cstring	lasher
+classic	profession-words	0x1327b80	0x1328767	0x177ced8	cstring	Master Lasher
+classic	profession-words	0x1327b80	0x1328781	0x177ced0	cstring	recruit
+classic	profession-words	0x1327b80	0x132879b	0x169c108	cstring	hunting
+classic	profession-words	0x1327b80	0x13287b0	0x1644b7c	cstring	war
+classic	profession-words	0x1327b80	0x13287c5	0x177cef8	cstring	Master Thief
+classic	profession-words	0x1327b80	0x13287df	0x16a13d0	cstring	thief
+classic	profession-words	0x1327b80	0x13287f9	0x163cf20	cstring	monster slayer
+classic	profession-words	0x1327b80	0x1328813	0x166fe1c	cstring	scout
+classic	profession-words	0x1327b80	0x132882d	0x177cee8	cstring	beast hunter
+classic	profession-words	0x1327b80	0x1328847	0x16e1598	cstring	snatcher
+classic	profession-words	0x1327b80	0x132885e	0x1670360	cstring	mercenaries
+classic	profession-words	0x1327b80	0x132886b	0x15e79d0	cstring	mercenary
+classic	profession-words	0x1327b80	0x132888d	0x177cf14	cstring	sage
+classic	profession-words	0x1327b80	0x13288a7	0x163cf48	cstring	scholar
+classic	profession-words	0x1327b80	0x13288c1	0x177cf08	cstring	philosopher
+classic	profession-words	0x1327b80	0x13288db	0x177cf30	cstring	mathematician
+classic	profession-words	0x1327b80	0x13288f5	0x177cf20	cstring	historian
+classic	profession-words	0x1327b80	0x132890f	0x177c988	cstring	astronomer
+classic	profession-words	0x1327b80	0x1328929	0x177c978	cstring	naturalist
+classic	profession-words	0x1327b80	0x1328943	0x177c9a8	cstring	chemist
+classic	profession-words	0x1327b80	0x132895d	0x177c998	cstring	geographer
+classic	profession-words	0x1327b80	0x1328977	0x166ee18	cstring	criminal
+classic	profession-words	0x1327b80	0x1328991	0x177c9b8	cstring	peddler
+classic	profession-words	0x1327b80	0x13289ab	0x177c9b0	cstring	prophet
+classic	profession-words	0x1327b80	0x13289c5	0x177c9c8	cstring	pilgrim
+classic	profession-words	0x1327b80	0x13289df	0x177c9c0	cstring	monk
+classic	profession-words	0x1327b80	0x13289f9	0x177c928	cstring	messenger
+classic	profession-words	0x1327b80	0x1328a96	0x169c248	cstring	children
+classic	profession-words	0x1327b80	0x1328bcb	0x16416fc	cstring	child
+classic	profession-words	0x1327b80	0x1328c28	0x177c920	cstring	babies
+classic	profession-words	0x1327b80	0x1328c3a	0x167b1e4	cstring	baby
+classic	profession-words	0x1327b80	0x1328d96	0x177c920	cstring	babies
+classic	profession-words	0x1327b80	0x1328da5	0x167b1e4	cstring	baby
+classic	profession-words	0x1327b80	0x1328dc7	0x15e4220	cstring	s
+classic	base-profession	0x1329030	0x1329153	0x15e4220	cstring	s
+classic	base-profession	0x1329030	0x13292a4	0x177c938	cstring	peasant
+classic	base-profession	0x1329030	0x13292ab	0x177c940	cstring	Peasant
+classic	base-profession	0x1329030	0x13292d3	0x15e4220	cstring	s
+classic	article-format	0x13293a0	0x132941f	0x15e74b8	cstring	you
+classic	article-format	0x13293a0	0x1329426	0x15e3c40	cstring	You
+classic	article-format	0x13293a0	0x1329910	0x15e7988	cstring	 slave
+classic	article-format	0x13293a0	0x132994a	0x15e79ac	cstring	slave
+classic	article-format	0x13293a0	0x13299a5	0x15e79ac	cstring	slave
+classic	article-format	0x13293a0	0x13299ad	0x15e79b0	cstring	e
+classic	article-format	0x13293a0	0x1329a8b	0x177c950	cstring	 prisoner
+classic	article-format	0x13293a0	0x1329abf		printable-immediate	prisoner
+classic	article-format	0x13293a0	0x1329b1d		printable-immediate	prisoner
+classic	article-format	0x13293a0	0x1329ce6	0x15e3e34	cstring	the 
+classic	article-format	0x13293a0	0x1329ced	0x15e89c4	cstring	The 
+classic	article-format	0x13293a0	0x1329d32	0x15e3720	cstring	 
+classic	article-format	0x13293a0	0x1329f05	0x15e3e34	cstring	the 
+classic	article-format	0x13293a0	0x1329f19	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x1329f2e	0x167095c	cstring	force
+classic	article-format	0x13293a0	0x1329f53	0x15e3e34	cstring	the 
+classic	article-format	0x13293a0	0x1329f67	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x1329f7c	0x165d508	cstring	deity
+classic	article-format	0x13293a0	0x132a1c4	0x15e7988	cstring	 slave
+classic	article-format	0x13293a0	0x132a1fe	0x15e79ac	cstring	slave
+classic	article-format	0x13293a0	0x132a25e	0x15e79ac	cstring	slave
+classic	article-format	0x13293a0	0x132a266	0x15e79b0	cstring	e
+classic	article-format	0x13293a0	0x132a33b	0x177c950	cstring	 prisoner
+classic	article-format	0x13293a0	0x132a36f		printable-immediate	prisoner
+classic	article-format	0x13293a0	0x132a3c9		printable-immediate	prisoner
+classic	article-format	0x13293a0	0x132a483	0x15e3e34	cstring	the 
+classic	article-format	0x13293a0	0x132a4d9	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x132a543	0x177c96c	cstring	stray 
+classic	article-format	0x13293a0	0x132a54a	0x177c948	cstring	fierce 
+classic	article-format	0x13293a0	0x132a58e	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x132a5a3	0x177c960	cstring	agitated 
+classic	article-format	0x13293a0	0x132a5eb	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x132a600	0x16a0d38	cstring	ghost
+classic	article-format	0x13293a0	0x132a62f	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x132a644	0x15f8b70	cstring	ghostly 
+classic	article-format	0x13293a0	0x132a676	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x132a6c4	0x16810f8	cstring	average
+classic	article-format	0x13293a0	0x132a6f3	0x15e3720	cstring	 
+classic	article-format	0x13293a0	0x132a747	0x15e3720	cstring	 
+classic	article-format	0x13293a0	0x132a78e	0x15e3720	cstring	 
+classic	article-format	0x13293a0	0x132a7b3	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x132a80c	0x15e8618	cstring	a 
+classic	article-format	0x13293a0	0x132a821	0x16cac84	cstring	corpse
+classic	article-format	0x13293a0	0x132a830	0x1739ff8	cstring	 corpse
+classic	creature-role	0x132a8f0	0x132aa4e	0x165d508	cstring	deity
+classic	creature-role	0x132a8f0	0x132aa65	0x167095c	cstring	force
+classic	creature-role	0x132a8f0	0x132acac	0x177ca4c	cstring	 Slave
+classic	creature-role	0x132a8f0	0x132ace6	0x15fbcc8	cstring	Slave
+classic	creature-role	0x132a8f0	0x132ad3c	0x15fbcc8	cstring	Slave
+classic	creature-role	0x132a8f0	0x132ad44	0x15fbccc	cstring	e
+classic	creature-role	0x132a8f0	0x132ae23	0x177ca40	cstring	 Prisoner
+classic	creature-role	0x132a8f0	0x132ae57		printable-immediate	Prisoner
+classic	creature-role	0x132a8f0	0x132aea7		printable-immediate	Prisoner
+classic	creature-role	0x132a8f0	0x132afd6	0x177ca54	cstring	Stray 
+classic	creature-role	0x132a8f0	0x132afdd	0x177ca60	cstring	Fierce 
+classic	creature-role	0x132a8f0	0x132affe	0x177ca70	cstring	Agitated 
+classic	creature-role	0x132a8f0	0x132b034	0x16b9d2c	cstring	Ghost
+classic	creature-role	0x132a8f0	0x132b04e	0x1625190	cstring	Ghostly 
+classic	creature-role	0x132a8f0	0x132b09d	0x15e3720	cstring	 
+classic	creature-role	0x132a8f0	0x132b0e6	0x15e3720	cstring	 
+classic	creature-role	0x132a8f0	0x132b12c	0x177ca68	cstring	Corpse
+classic	creature-role	0x132a8f0	0x132b13b	0x16250d0	cstring	 Corpse
+classic	unit-caption	0x132bba0	0x132bdcd	0x15e40c4	cstring	, 
+classic	unit-caption	0x132bba0	0x132bec8	0x15e46fc	cstring	""""
+classic	unit-caption	0x132bba0	0x132bf1d	0x15e46fc	cstring	""""
+classic	unit-caption	0x132bba0	0x132bf32	0x15e40c4	cstring	, 
+classic	unit-caption	0x132bba0	0x132bf71	0x15e40c4	cstring	, 
+classic	unit-caption	0x132bba0	0x132bfcd	0x15e40c4	cstring	, 
+classic	unit-caption	0x132bba0	0x132c028	0x1610298	cstring	 (
+classic	unit-caption	0x132bba0	0x132c064	0x177ca90	cstring	Trained
+classic	unit-caption	0x132bba0	0x132c070	0x177ca80	cstring	-Trained-
+classic	unit-caption	0x132bba0	0x132c07c	0x177c9e0	cstring	+Trained+
+classic	unit-caption	0x132bba0	0x132c088	0x177c9d0	cstring	*Trained*
+classic	unit-caption	0x132bba0	0x132c0bc	0x177ca90	cstring	Trained
+classic	unit-caption	0x132bba0	0x132c10c	0x177ca90	cstring	Trained
+classic	unit-caption	0x132bba0	0x132c138	0x177c9fc	cstring	Tame
+classic	unit-caption	0x132bba0	0x132c141	0x177c9f0	cstring	Semi-Wild
+classic	unit-caption	0x132bba0	0x132c159	0x16102d8	cstring	)
+classic	profession	0x132c470	0x132c5e4	0x177ca08	cstring	the force
+classic	profession	0x132c470	0x132c7e3	0x177ca18	cstring	the deity
+classic	profession	0x132c470	0x132ca78	0x15e3e34	cstring	the 
+classic	profession	0x132c470	0x132cd8a	0x16038f0	cstring	Miner
+classic	profession	0x132c470	0x132cd93	0x16038f4	cstring	r
+classic	profession	0x132c470	0x132cdae	0x177ca30	cstring	Woodworker
+classic	profession	0x132c470	0x132cdbb	0x177ca38	cstring	er
+classic	profession	0x132c470	0x132cdd7	0x1628000	cstring	Carpenter
+classic	profession	0x132c470	0x132cde4	0x1628008	cstring	r
+classic	profession	0x132c470	0x132cdff	0x162800c	cstring	Bowyer
+classic	profession	0x132c470	0x132ce08	0x1628010	cstring	er
+classic	profession	0x132c470	0x132ce24	0x1603910	cstring	Woodcutter
+classic	profession	0x132c470	0x132ce31	0x1603918	cstring	er
+classic	profession	0x132c470	0x132ce4d	0x1627f98	cstring	Stoneworker
+classic	profession	0x132c470	0x132ce5a	0x1627fa0	cstring	ker
+classic	profession	0x132c470	0x132ce65	0x1627fa2	cstring	r
+classic	profession	0x132c470	0x132ce80		printable-immediate	Engraver
+classic	profession	0x132c470	0x132ce97	0x16a0200	cstring	Stonecutter
+classic	profession	0x132c470	0x132ceac	0x16a01f0	cstring	Stone Carver
+classic	profession	0x132c470	0x132cec1	0x16a0754	cstring	Mason
+classic	profession	0x132c470	0x132ced6	0x177ca24	cstring	Ranger
+classic	profession	0x132c470	0x132ceeb	0x16a0770	cstring	Animal Caretaker
+classic	profession	0x132c470	0x132cf00	0x16a0760	cstring	Animal Trainer
+classic	profession	0x132c470	0x132cf15	0x15fb1e8	cstring	Hunter
+classic	profession	0x132c470	0x132cf2a	0x16a07c0	cstring	Trapper
+classic	profession	0x132c470	0x132cf3f	0x16a0798	cstring	Animal Dissector
+classic	profession	0x132c470	0x132cf54	0x1628050	cstring	Metalsmith
+classic	profession	0x132c470	0x132cf69	0x16a06f0	cstring	Furnace Operator
+classic	profession	0x132c470	0x132cf7e	0x16a0568	cstring	Weaponsmith
+classic	profession	0x132c470	0x132cf93	0x177cb08	cstring	Armorer
+classic	profession	0x132c470	0x132cfb0	0x16a0588	cstring	Blacksmith
+classic	profession	0x132c470	0x132cfbd	0x16a0590	cstring	th
+classic	profession	0x132c470	0x132cfd9	0x177caf8	cstring	Metalcrafter
+classic	profession	0x132c470	0x132cfe6	0x177cb00	cstring	fter
+classic	profession	0x132c470	0x132cff8	0x1628018	cstring	Jeweler
+classic	profession	0x132c470	0x132d00d	0x16a0598	cstring	Gem Cutter
+classic	profession	0x132c470	0x132d022	0x16a05a8	cstring	Gem Setter
+classic	profession	0x132c470	0x132d037	0x164cbe8	cstring	Craftsman
+classic	profession	0x132c470	0x132d04c	0x16a05b8	cstring	Woodcrafter
+classic	profession	0x132c470	0x132d061	0x16a05c8	cstring	Papermaker
+classic	profession	0x132c470	0x132d076	0x16a05d8	cstring	Bookbinder
+classic	profession	0x132c470	0x132d08b	0x16a05e4	cstring	Potter
+classic	profession	0x132c470	0x132d0a0	0x16a0a6c	cstring	Glazer
+classic	profession	0x132c470	0x132d0b5	0x16a05f0	cstring	Wax Worker
+classic	profession	0x132c470	0x132d0ca	0x177cb20	cstring	Stonecrafter
+classic	profession	0x132c470	0x132d0df	0x16a0a48	cstring	Leatherworker
+classic	profession	0x132c470	0x132d0f4	0x16a0a78	cstring	Bone Carver
+classic	profession	0x132c470	0x132d109	0x16a0a84	cstring	Weaver
+classic	profession	0x132c470	0x132d11e	0x164cc80	cstring	Clothier
+classic	profession	0x132c470	0x132d133	0x16a0620	cstring	Glassmaker
+classic	profession	0x132c470	0x132d148	0x16a0708	cstring	Strand Extractor
+classic	profession	0x132c470	0x132d15d	0x177cb10	cstring	Fishery Worker
+classic	profession	0x132c470	0x132d172	0x16a06e0	cstring	Fisherman
+classic	profession	0x132c470	0x132d187	0x16a0788	cstring	Fish Dissector
+classic	profession	0x132c470	0x132d19c	0x16a07b0	cstring	Fish Cleaner
+classic	profession	0x132c470	0x132d1b1	0x1627ef0	cstring	Farmer
+classic	profession	0x132c470	0x132d1c6	0x16a0958	cstring	Cheesemaker
+classic	profession	0x132c470	0x132d1db	0x16a0964	cstring	Milker
+classic	profession	0x132c470	0x132d1f0	0x16a096c	cstring	Gelder
+classic	profession	0x132c470	0x132d205	0x16a0978	cstring	Shearer
+classic	profession	0x132c470	0x132d21a	0x16a0980	cstring	Spinner
+classic	profession	0x132c470	0x132d22f	0x1638128	cstring	Cook
+classic	profession	0x132c470	0x132d244	0x16a0910	cstring	Thresher
+classic	profession	0x132c470	0x132d259	0x16a0904	cstring	Miller
+classic	profession	0x132c470	0x132d26e	0x1616fc8	cstring	Butcher
+classic	profession	0x132c470	0x132d283	0x1627f64	cstring	Tanner
+classic	profession	0x132c470	0x132d298	0x1627f5c	cstring	Dyer
+classic	profession	0x132c470	0x132d2ad	0x16a0a58	cstring	Presser
+classic	profession	0x132c470	0x132d2c2	0x16a0a60	cstring	Beekeeper
+classic	profession	0x132c470	0x132d2d7	0x16a07c8	cstring	Planter
+classic	profession	0x132c470	0x132d2ec	0x16a07d0	cstring	Herbalist
+classic	profession	0x132c470	0x132d301	0x16a0a8c	cstring	Brewer
+classic	profession	0x132c470	0x132d316	0x177cb40	cstring	Soap Maker
+classic	profession	0x132c470	0x132d32b	0x16a0728	cstring	Potash Maker
+classic	profession	0x132c470	0x132d340	0x16a0738	cstring	Lye Maker
+classic	profession	0x132c470	0x132d355	0x16a0748	cstring	Wood Burner
+classic	profession	0x132c470	0x132d36a	0x177cb30	cstring	Engineer
+classic	profession	0x132c470	0x132d37f	0x1628028	cstring	Mechanic
+classic	profession	0x132c470	0x132d394	0x16a0a18	cstring	Siege Engineer
+classic	profession	0x132c470	0x132d3a9	0x16a0a28	cstring	Siege Operator
+classic	profession	0x132c470	0x132d3be	0x16a0a38	cstring	Pump Operator
+classic	profession	0x132c470	0x132d3d3	0x177cb60	cstring	Clerk
+classic	profession	0x132c470	0x132d3e8	0x177cb50	cstring	Administrator
+classic	profession	0x132c470	0x132d3fd	0x177caa0	cstring	Trader
+classic	profession	0x132c470	0x132d412	0x16a0484	cstring	Poet
+classic	profession	0x132c470	0x132d427	0x177ca98	cstring	Bard
+classic	profession	0x132c470	0x132d43c	0x16a04a8	cstring	Dancer
+classic	profession	0x132c470	0x132d451	0x15fae10	cstring	Performer
+classic	profession	0x132c470	0x132d466	0x15fadfc	cstring	Scribe
+classic	profession	0x132c470	0x132d47b	0x1627a38	cstring	Tavern Keeper
+classic	profession	0x132c470	0x132d490	0x177cab4	cstring	Sage
+classic	profession	0x132c470	0x132d4a5	0x15fae08	cstring	Scholar
+classic	profession	0x132c470	0x132d4ba	0x177caa8	cstring	Philosopher
+classic	profession	0x132c470	0x132d4cf	0x16a0548	cstring	Mathematician
+classic	profession	0x132c470	0x132d4e4	0x177cad0	cstring	Historian
+classic	profession	0x132c470	0x132d4f9	0x16a0558	cstring	Astronomer
+classic	profession	0x132c470	0x132d50e	0x177cac0	cstring	Naturalist
+classic	profession	0x132c470	0x132d523	0x16a0a98	cstring	Chemist
+classic	profession	0x132c470	0x132d538	0x16a0aa0	cstring	Geographer
+classic	profession	0x132c470	0x132d54d	0x15fadd8	cstring	Doctor
+classic	profession	0x132c470	0x132d562	0x15fadc8	cstring	Diagnostician
+classic	profession	0x132c470	0x132d577	0x1627938	cstring	Bone Doctor
+classic	profession	0x132c470	0x132d58c	0x16a09b0	cstring	Suturer
+classic	profession	0x132c470	0x132d5a1	0x15fadc0	cstring	Surgeon
+classic	profession	0x132c470	0x132d5b6	0x177cae8	cstring	Merchant
+classic	profession	0x132c470	0x132d5cb	0x177cadc	cstring	Drunk
+classic	profession	0x132c470	0x132d5e0	0x1627948	cstring	Monster Slayer
+classic	profession	0x132c470	0x132d5f5	0x177cc10	cstring	Scout
+classic	profession	0x132c470	0x132d60a	0x177cc00	cstring	Beast Hunter
+classic	profession	0x132c470	0x132d61f	0x1699490	cstring	Snatcher
+classic	profession	0x132c470	0x132d634	0x15fadf0	cstring	Mercenary
+classic	profession	0x132c470	0x132d649	0x16a0b30	cstring	Hammerman
+classic	profession	0x132c470	0x132d65e	0x177cd20	cstring	Hammer Lord
+classic	profession	0x132c470	0x132d673	0x16a09c8	cstring	Spearman
+classic	profession	0x132c470	0x132d688	0x177cd70	cstring	Spearmaster
+classic	profession	0x132c470	0x132d69d	0x16a09d8	cstring	Crossbowman
+classic	profession	0x132c470	0x132d6b2	0x177ce50	cstring	Elite Crossbowman
+classic	profession	0x132c470	0x132d6c7	0x16a0ae0	cstring	Wrestler
+classic	profession	0x132c470	0x132d6dc	0x177cea8	cstring	Elite Wrestler
+classic	profession	0x132c470	0x132d6f1	0x16a0b10	cstring	Axeman
+classic	profession	0x132c470	0x132d706	0x177ceb8	cstring	Axe Lord
+classic	profession	0x132c470	0x132d71b	0x16a0b18	cstring	Swordsman
+classic	profession	0x132c470	0x132d730	0x177ce18	cstring	Swordmaster
+classic	profession	0x132c470	0x132d745	0x16a0b28	cstring	Maceman
+classic	profession	0x132c470	0x132d75a	0x177ce28	cstring	Mace Lord
+classic	profession	0x132c470	0x132d76f	0x16a09e8	cstring	Pikeman
+classic	profession	0x132c470	0x132d784	0x177cf48	cstring	Pikemaster
+classic	profession	0x132c470	0x132d799	0x16a09f0	cstring	Bowman
+classic	profession	0x132c470	0x132d7ae	0x177cf80	cstring	Elite Bowman
+classic	profession	0x132c470	0x132d7c3	0x16a0920	cstring	Blowgunner
+classic	profession	0x132c470	0x132d7d8	0x177cf98	cstring	Master Blowgunner
+classic	profession	0x132c470	0x132d7ed	0x16a094c	cstring	Lasher
+classic	profession	0x132c470	0x132d802	0x177ced8	cstring	Master Lasher
+classic	profession	0x132c470	0x132d817	0x177cc20	cstring	Recruit
+classic	profession	0x132c470	0x132d82c	0x15f2160	cstring	Hunting
+classic	profession	0x132c470	0x132d841	0x15fe6cc	cstring	War
+classic	profession	0x132c470	0x132d856	0x177cef8	cstring	Master Thief
+classic	profession	0x132c470	0x132d86b	0x15fb19c	cstring	Thief
+classic	profession	0x132c470	0x132d880	0x15e7948	cstring	Criminal
+classic	profession	0x132c470	0x132d895	0x177cc18	cstring	Peddler
+classic	profession	0x132c470	0x132d8aa	0x177cc30	cstring	Prophet
+classic	profession	0x132c470	0x132d8bf	0x177cc28	cstring	Pilgrim
+classic	profession	0x132c470	0x132d8d4	0x177cc44	cstring	Monk
+classic	profession	0x132c470	0x132d8e9	0x177cc38	cstring	Messenger
+classic	profession	0x132c470	0x132d987	0x15faf04	cstring	Child
+classic	profession	0x132c470	0x132d9f0	0x177cb6c	cstring	Baby
+classic	profession	0x132c470	0x132da18	0x177c940	cstring	Peasant
+classic	profession	0x132c470	0x132da22	0x177c944	cstring	ant
+classic	profession	0x132c470	0x132da2d	0x177c946	cstring	t
+classic	profession	0x132c470	0x132dbe6	0x177ca4c	cstring	 Slave
+classic	profession	0x132c470	0x132dc20	0x15fbcc8	cstring	Slave
+classic	profession	0x132c470	0x132dc76	0x15fbcc8	cstring	Slave
+classic	profession	0x132c470	0x132dc7e	0x15fbccc	cstring	e
+classic	profession	0x132c470	0x132dd59	0x177ca40	cstring	 Prisoner
+classic	profession	0x132c470	0x132dd8d		printable-immediate	Prisoner
+classic	profession	0x132c470	0x132dddc		printable-immediate	Prisoner
+classic	profession	0x132c470	0x132de64	0x15e3e34	cstring	the 
+classic	profession	0x132c470	0x132de95	0x15e3720	cstring	 
+classic	profession	0x132c470	0x132defd	0x16b9d2c	cstring	Ghost
+classic	profession	0x132c470	0x132df0c	0x1625190	cstring	Ghostly 
+classic	profession	0x132c470	0x132df59	0x15e3720	cstring	 
+classic	profession	0x132c470	0x132df7c	0x177cb68	cstring	One
+classic	mandate-create	0x1345b80	0x1345c71	0x177d5f0	cstring	 has forgotten a demand.
+classic	mandate-create	0x1345b80	0x1346836	0x177d5d8	cstring	 has a new demand.
+classic	mandate-expire	0x1348d90	0x13496c1	0x177d610	cstring	 has mandated the construction of certain goods.
+classic	mandate-expire	0x1348d90	0x13496d0	0x177d648	cstring	 has imposed a ban on certain exports.
+classic	mandate-expire	0x1348d90	0x1349910	0x177d688	cstring	 has altered the prices of goods.
+classic	mandate-cancel	0x13ad9a0	0x13ada79	0x177eaf0	cstring	's mandate has ended.
+classic	mandate-cancel	0x13ad9a0	0x13ada99	0x177ead8	cstring	's mandates have ended.

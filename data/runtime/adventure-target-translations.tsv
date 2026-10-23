@@ -13,6 +13,7 @@ Parry	招架
 Who will you attack?	你要攻击谁？
 Who will you wrestle?	你要与谁摔跤？
 What do you want to aim for?	你想瞄准哪个部位？
+Where will you aim?	你要瞄准哪里？
  has yielded.  Attack anyway?	已经投降。仍要攻击吗？
 Really start a conflict with 	确定要与之发生冲突：
 Really attack 	确定要攻击：
@@ -42,6 +43,22 @@ Normal strike	普通攻击
 Easy strike	容易命中的攻击
 Easier strike	更易命中的攻击
 Simple strike	轻易命中的攻击
+# Both PE ranged aiming renderers: data/extracted/adventure-aim.
+# These are complete native fields; never split Impossible into Imp + suffix.
+Impossible shot	无法命中的射击
+Difficult shot	难以命中的射击
+Tricky shot	不易命中的射击
+Normal shot	普通射击
+Easy shot	容易命中的射击
+Easier shot	更易命中的射击
+Simple shot	轻易命中的射击
+Impossible throw	无法命中的投掷
+Difficult throw	难以命中的投掷
+Tricky throw	不易命中的投掷
+Normal throw	普通投掷
+Easy throw	容易命中的投掷
+Easier throw	更易命中的投掷
+Simple throw	轻易命中的投掷
 can only graze	只能擦伤
 can't land squarely	无法正面击中
 can't quite connect	难以有效击中

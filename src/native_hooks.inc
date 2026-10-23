@@ -112,6 +112,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_topbar_layer_render.inc"
 #include "native_petitions_layer_render.inc"
 #include "native_designation_layer_render.inc"
+#include "native_map_hover_layer_render.inc"
 #include "native_embark_civilization_layer_render.inc"
 #include "native_map_layer_render.inc"
 #include "native_dfhack_render_layers.inc"
@@ -190,6 +191,7 @@ static bool install_sdl_hooks() {
         {"Native accepted petition detail layer", install_native_petition_layer_hook},
         {"Native accepted petitions layer", install_native_petitions_layer_hook},
         {"Native designation tools layer", install_native_designation_layer_hook},
+        {"Native map hover list layer", install_native_map_hover_layer_hook},
         {"Native embark civilization layer", install_native_embark_civilization_layer_hook},
     };
     for (const auto &[label, install] : stages) {
@@ -224,6 +226,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_topbar_layer_hook();
     uninstall_native_petitions_layer_hook();
     uninstall_native_designation_layer_hook();
+    uninstall_native_map_hover_layer_hook();
     uninstall_native_map_layer_hook();
     uninstall_native_worldgen_layer_hook();
     uninstall_native_pause_layer_hook();
@@ -308,6 +311,7 @@ static bool native_hooks_detached() {
         !native_stocks_layer_hook_active() &&
         !native_squads_layer_hook_active() &&
         !native_designation_layer_hook_active() &&
+        !native_map_hover_layer_hook_active() &&
         !native_reports_layer_hook_active() &&
         !native_pause_layer_hook_active() &&
         !native_worldgen_layer_hook_active() &&
@@ -399,6 +403,7 @@ static bool stop_reloadable_core() {
         return false;
     }
     native_settings_menu_release();
+    native_mouse_coordinates_release();
     if (g_plugin_active.load()) {
         g_native_squads_overlay.release_native_squads_resources();
         release_native_character_language_resources();

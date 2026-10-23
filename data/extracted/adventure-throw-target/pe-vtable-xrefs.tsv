@@ -1,0 +1,7 @@
+edition	image	class	vtable_rva	instruction_rva	owner_rva
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x16b8018	0x865575	0x864b50
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x16b8018	0x86564d	0x864b50
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_tilest	0x16b5fa8	0x865735	0x864b50
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x16b3030	0x862df5	0x8623d0
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x16b3030	0x862ecd	0x8623d0
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_tilest	0x16b0e98	0x862fb5	0x8623d0

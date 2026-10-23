@@ -1,0 +1,13 @@
+edition	image	class	vtable_rva	slot	target_rva
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x16b8018	0x8	0x8a5e70
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x16b8018	0x10	0x7e1230
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_creaturest	0x16b8018	0x118	0x8a54d0
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_tilest	0x16b5fa8	0x8	0x8a64d0
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_tilest	0x16b5fa8	0x10	0x7e1230
+steam	PE:6a70a6d9:02711000	adventure_movement_throw_item_at_tilest	0x16b5fa8	0x118	0x72250
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x16b3030	0x8	0x8a36f0
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x16b3030	0x10	0x7deab0
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_creaturest	0x16b3030	0x118	0x8a2d50
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_tilest	0x16b0e98	0x8	0x8a3d50
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_tilest	0x16b0e98	0x10	0x7deab0
+classic	PE:6a70b91c:0270a000	adventure_movement_throw_item_at_tilest	0x16b0e98	0x118	0x721e0

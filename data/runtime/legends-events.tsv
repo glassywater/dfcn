@@ -2277,25 +2277,52 @@ administrator	管理员	civic-office
 administrators	管理员	civic-office
 # The judiciary branch emits an unqualified title, without a duty prefix.
 # These are office senses; justice's sphere/procedural-name sense is unchanged.
-judge	法官	term
-judges	法官	term
-justice	大法官	term
-justices	大法官	term
-magistrate	地方法官	term
-magistrates	地方法官	term
+judge	法官	office-title
+judges	法官	office-title
+justice	大法官	office-title
+justices	大法官	office-title
+magistrate	地方法官	office-title
+magistrates	地方法官	office-title
 # Military leadership has its own native branches, not the official ranks.
-law-giver	立法者	term
-law-givers	立法者	term
-war leader	战争领袖	term
-war leaders	战争领袖	term
-general	将军	term
-generals	将军	term
-marshal	元帅	term
-marshals	元帅	term
-field marshal	陆军元帅	term
-field marshals	陆军元帅	term
-constable	统领	term
-constables	统领	term
+law-giver	立法者	office-title
+law-givers	立法者	office-title
+war leader	战争领袖	office-title
+war leaders	战争领袖	office-title
+general	将军	office-title
+generals	将军	office-title
+marshal	元帅	office-title
+marshals	元帅	office-title
+field marshal	陆军元帅	office-title
+field marshals	陆军元帅	office-title
+constable	统领	office-title
+constables	统领	office-title
+# Remaining complete fixed branches from the native position producers.
+# Preserve their shared RAW/office wording and expose their proven role type
+# to stored unit captions; none joins the court-prefix product above.
+lord	领主	office-title
+lords	领主	office-title
+lady	女领主	office-title
+ladies	女领主	office-title
+lord consort	女领主之夫	office-title
+lords consort	女领主之夫	office-title
+lady consort	领主夫人	office-title
+ladies consort	领主夫人	office-title
+hearthperson	亲卫	office-title
+hearthpeople	亲卫	office-title
+chieftess	女酋长	office-title
+chieftesses	女酋长	office-title
+clerk	文员	office-title
+clerks	文员	office-title
+bookkeeper	簿记员	office-title
+bookkeepers	簿记员	office-title
+lieutenant	中尉	office-title
+lieutenants	中尉	office-title
+administrator	管理员	office-title
+administrators	管理员	office-title
+high priest	高阶祭司	office-title
+high priests	高阶祭司	office-title
+most high priest	至高祭司	office-title
+most high priests	至高祭司	office-title
 created the position of {s}	设立了{s}一职	action
 compelled the creation of the position of {s}	强行设立了{s}一职	action
 collaborated to create the position of {s}	共同设立了{s}一职	action
@@ -4103,7 +4130,7 @@ Native Legends once again {s}	{s}，这一情形又一次出现	clause
 Native Legends again {s}	{s}，这一情形再次出现	clause
 Native Legends part of {s}	属于{s}的一部分。	clause
 Native Legends collection ended {s}	{s}结束了。	clause
-Native Legends collection occurred {s}	发生了{s}。	clause
+Native Legends collection occurred {s}	开启了{s}。	clause
 Native Legends collection began {s}	{s}开始了。	clause
 Native Legends animated force {d} {s}	{d}个被赋予生命的{s}	clause
 Native Legends force {d} {s}	{d}个{s}	clause

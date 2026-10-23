@@ -1,0 +1,19 @@
+edition	role	instruction_rva	operand	kind	text
+reference	alert-button-hover-source-region	0x3d751c	0x14162ee98	cstring	 x
+reference	alert-icon-hover-source-region	0x3f643e	0x14162ee98	cstring	 x
+reference	alert-icon-hover-source-region	0x3f65b5	0x1415ed568	cstring	Somebody
+reference	alert-icon-hover-source-region	0x3f65e8	0x1415f71e4	cstring	 is 
+reference	alert-icon-hover-source-region	0x3f6624	0x1415f71d0	cstring	hunting.
+reference	alert-icon-hover-source-region	0x3f6630	0x1415f7198	cstring	sparring.
+reference	alert-icon-hover-source-region	0x3f663c	0x1415f71c0	cstring	fighting!
+reference	alert-hover-two-card-render-region	0x3fab2b	0x1416304d0	cstring	Left click for recenter and expand options.  Right click to dismiss.
+reference	alert-hover-two-card-render-region	0x3fae1b	0x1416304d0	cstring	Left click for recenter and expand options.  Right click to dismiss.
+classic	alert-button-hover-source-region	0x3d50dc	0x141629bf8	cstring	 x
+classic	alert-icon-hover-source-region	0x3f3ffe	0x141629bf8	cstring	 x
+classic	alert-icon-hover-source-region	0x3f4175	0x1415e84b8	cstring	Somebody
+classic	alert-icon-hover-source-region	0x3f41a8	0x1415f2120	cstring	 is 
+classic	alert-icon-hover-source-region	0x3f41e4	0x1415f2198	cstring	hunting.
+classic	alert-icon-hover-source-region	0x3f41f0	0x1415f21a8	cstring	sparring.
+classic	alert-icon-hover-source-region	0x3f41fc	0x1415f2128	cstring	fighting!
+classic	alert-hover-two-card-render-region	0x3f86eb	0x14162ae10	cstring	Left click for recenter and expand options.  Right click to dismiss.
+classic	alert-hover-two-card-render-region	0x3f89db	0x14162ae10	cstring	Left click for recenter and expand options.  Right click to dismiss.

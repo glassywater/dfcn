@@ -1,5 +1,8 @@
 // Direct false-identity fields, shared by assumption and intrigue events.
 const auto identity = [&](int32_t id, std::string_view prefix) -> std::optional<Pieces> {
+    const std::string present_key = std::string(prefix) + "_present";
+    if (event.fields.contains(present_key) && !number(present_key))
+        return term("a secret identity");
     const auto identity_creature = [&](std::string_view raw) -> std::optional<Pieces> {
         const auto name = translate_creature_descriptor(std::string(raw));
         return name ? std::optional<Pieces>{Pieces{piece(*name, neutral)}} : std::nullopt;

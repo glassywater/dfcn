@@ -1,0 +1,897 @@
+edition	role	instruction_rva	literal_rva	text
+reference	renderer	0x86807d	0x15fe724	Cancel
+reference	renderer	0x8680dc	0x16b19d8	Click a creature to start a new conversation
+reference	renderer	0x86873f	0x16aecbc	@:
+reference	renderer	0x868ce7	0x16b19c8	Toward you: 
+reference	renderer	0x868d44	0x16b1a20	Positive attitude
+reference	renderer	0x868df8	0x16b1a08	Negative attitude
+reference	renderer	0x868e33	0x16b1998	Neutral attitude
+reference	renderer	0x868e8e	0x15e90d8	, 
+reference	renderer	0x868ee0	0x15fe8f8	Patient
+reference	renderer	0x868f2b	0x15e90d8	, 
+reference	renderer	0x868f7f	0x15fea20	Impatient
+reference	renderer	0x868fd5	0x15e90d8	, 
+reference	renderer	0x869010	0x16b1988	Animated
+reference	renderer	0x869060	0x16b19b8	Agitated
+reference	renderer	0x8690ab	0x15e90d8	, 
+reference	renderer	0x8690ff	0x15ff588	Sluggish
+reference	renderer	0x869125	0x16015c0	Inactive
+reference	renderer	0x869177	0x15e90d8	, 
+reference	renderer	0x8691cb	0x16b19ac	Bold
+reference	renderer	0x8691f4	0x16b2290	Confident
+reference	renderer	0x86923b	0x15e90d8	, 
+reference	renderer	0x86928f	0x16b2280	Acquiescent
+reference	renderer	0x8692b5	0x16b22b0	Unassuming
+reference	renderer	0x869317	0x16b22a0	Relationship: 
+reference	renderer	0x86936b	0x16b2250	Loves you
+reference	renderer	0x8693ca	0x15e90d8	, 
+reference	renderer	0x869412	0x16b2320	Terrified of you
+reference	renderer	0x869459	0x16b2240	Likes you
+reference	renderer	0x8694a2	0x16b2270	Hates you
+reference	renderer	0x8694f3	0x16b2260	Dislikes you
+reference	renderer	0x86954d	0x15e90d8	, 
+reference	renderer	0x869593	0x16b2310	Scared of you
+reference	renderer	0x8695e2	0x15e90d8	, 
+reference	renderer	0x869628	0x16b2348	No fear of you
+reference	renderer	0x869681	0x15e90d8	, 
+reference	renderer	0x8696c6	0x16b2338	Respects you
+reference	renderer	0x869715	0x15e90d8	, 
+reference	renderer	0x86975b	0x16b2338	Respects you
+reference	renderer	0x8697aa	0x15e90d8	, 
+reference	renderer	0x8697f2	0x16b22d8	No respect for you
+reference	renderer	0x869841	0x15e90d8	, 
+reference	renderer	0x869887	0x16b22c0	Low respect for you
+reference	renderer	0x8698e0	0x15e90d8	, 
+reference	renderer	0x869925	0x16b2300	Trusts you
+reference	renderer	0x869974	0x15e90d8	, 
+reference	renderer	0x8699ba	0x16b2300	Trusts you
+reference	renderer	0x869a09	0x15e90d8	, 
+reference	renderer	0x869a51	0x16b22f0	Distrusts you
+reference	renderer	0x869aa0	0x15e90d8	, 
+reference	renderer	0x869ae6	0x16b22f0	Distrusts you
+reference	renderer	0x869b3f	0x15e90d8	, 
+reference	renderer	0x869b84	0x16b21a8	Highly Loyal
+reference	renderer	0x869bdc	0x15e90d8	, 
+reference	renderer	0x869c22	0x15ec984	Loyal
+reference	renderer	0x869c6e	0x16b21a0	Neutral
+reference	renderer	0x869cd6	0x16b21c0	General Mood: 
+reference	renderer	0x869d2e	0x15e90d8	, 
+reference	renderer	0x869d99	0x16b21b8	Annoyed
+reference	renderer	0x869dc6	0x16b2178	Satisfied
+reference	renderer	0x869df3	0x16b2170	Grouchy
+reference	renderer	0x869e20	0x16b2194	Grumpy
+reference	renderer	0x869e4d	0x16b2188	Fondness
+reference	renderer	0x869e7a	0x16b2218	Suspicious
+reference	renderer	0x869ea7	0x16b2210	Alarmed
+reference	renderer	0x869ed4	0x16b2238	Shocked
+reference	renderer	0x869f01	0x16b2228	Horrified
+reference	renderer	0x869f2e	0x16b21e0	Grimly Satisfied
+reference	renderer	0x869f5b	0x16b21d0	Grieving
+reference	renderer	0x869f88	0x16b2200	Triumphant
+reference	renderer	0x869fb5	0x16b21f8	Enraged
+reference	renderer	0x869fe2	0x16b20e8	Eexcited
+reference	renderer	0x86a00f	0x16b20dc	Gaiety
+reference	renderer	0x86a03c	0x16b20fc	Sad
+reference	renderer	0x86a069	0x16b20f4	Joyous
+reference	renderer	0x86a096	0x16b20b0	Blissful
+reference	renderer	0x86a0c3	0x16b20a4	Loving
+reference	renderer	0x86a0f0	0x15febd0	Vengeful
+reference	renderer	0x86a11d	0x16b20d0	Accepting
+reference	renderer	0x86a14a	0x16b20c0	Admiration
+reference	renderer	0x86a177	0x16b2140	Adoration
+reference	renderer	0x86a1a4	0x16b2130	Affection
+reference	renderer	0x86a1d1	0x16b19b8	Agitated
+reference	renderer	0x86a1fe	0x16b2160	Aggravated
+reference	renderer	0x86a22b	0x16b2150	In Agony
+reference	renderer	0x86a258	0x16b2108	Alienated
+reference	renderer	0x86a285	0x16b2100	Amazed
+reference	renderer	0x86a2b2	0x16b2120	Ambivalent
+reference	renderer	0x86a2df	0x16b2114	Amused
+reference	renderer	0x86a30c	0x16b2024	Angry
+reference	renderer	0x86a339	0x16b2018	In Anguish
+reference	renderer	0x86a366	0x15fe938	Anxious
+reference	renderer	0x86a393	0x16b2038	Apathetic
+reference	renderer	0x86a3c0	0x16b2030	Aroused
+reference	renderer	0x86a3ed	0x16b1ff8	Astonished
+reference	renderer	0x86a41a	0x16b1fec	Averse
+reference	renderer	0x86a447	0x16b200c	In Awe
+reference	renderer	0x86a474	0x16b2004	Bitter
+reference	renderer	0x86a4a1	0x16b207c	Bored
+reference	renderer	0x86a4ce	0x16b2074	Caring
+reference	renderer	0x86a4fb	0x16b2098	Confused
+reference	renderer	0x86a528	0x16b2088	Contemptuous
+reference	renderer	0x86a555	0x16b2058	Content
+reference	renderer	0x86a582	0x16b2048	Dejected
+reference	renderer	0x86a5af	0x16b2068	Delighted
+reference	renderer	0x86a5dc	0x16b2060	Despair
+reference	renderer	0x86a609	0x16b2630	Disappointed
+reference	renderer	0x86a636	0x16b2620	Disgusted
+reference	renderer	0x86a663	0x16b2648	Disillusioned
+reference	renderer	0x86a690	0x16b2640	Dislike
+reference	renderer	0x86a6bd	0x16b25f8	Dismayed
+reference	renderer	0x86a6ea	0x16b25e8	Displeasure
+reference	renderer	0x86a717	0x16b2610	Distressed
+reference	renderer	0x86a744	0x16b2604	Eager
+reference	renderer	0x86a771	0x16b269c	Elated
+reference	renderer	0x86a79e	0x16b2690	Embarrassed
+reference	renderer	0x86a7cb	0x16b26b0	Empathetic
+reference	renderer	0x86a7f8	0x16b26a4	Empty
+reference	renderer	0x86a825	0x16b2668	Enjoyment
+reference	renderer	0x86a852	0x16b2658	Exasperated
+reference	renderer	0x86a87f	0x16b2680	Exhilarated
+reference	renderer	0x86a8ac	0x16b2674	Afraid
+reference	renderer	0x86a8d9	0x16b2548	Ferocious
+reference	renderer	0x86a906	0x16b253c	Free
+reference	renderer	0x86a933	0x16b2568	Frightened
+reference	renderer	0x86a960	0x16b2558	Frustrated
+reference	renderer	0x86a98d	0x16b2520	Gleeful
+reference	renderer	0x86a9ba	0x16b2514	Gloomy
+reference	renderer	0x86a9e7	0x16b2534	Glum
+reference	renderer	0x86aa14	0x16b2528	Grateful
+reference	renderer	0x86aa41	0x16b25bc	Guilty
+reference	renderer	0x86aa6e	0x16b25b4	Happy
+reference	renderer	0x86aa9b	0x15fe980	Hateful
+reference	renderer	0x86aac8	0x15feba8	Hopeful
+reference	renderer	0x86aaf5	0x16b25d8	Hopeless
+reference	renderer	0x86ab22	0x16b25c8	Humiliated
+reference	renderer	0x86ab4f	0x16b2588	Insulted
+reference	renderer	0x86ab7c	0x16b2578	Interested
+reference	renderer	0x86aba9	0x16b25a8	Irritated
+reference	renderer	0x86abd6	0x16b2598	Isolated
+reference	renderer	0x86ac03	0x16b246c	Jolly
+reference	renderer	0x86ac30	0x16b2464	Jovial
+reference	renderer	0x86ac5d	0x16b2488	Jubilant
+reference	renderer	0x86ac8a	0x16b2478	Loathing
+reference	renderer	0x86acb7	0x16b2444	Lonely
+reference	renderer	0x86ace4	0x15fe930	Lustful
+reference	renderer	0x86ad11	0x16b2438	Miserable
+reference	renderer	0x86ad3e	0x16b2458	Mortified
+reference	renderer	0x86ad6b	0x16b2450	Nervous
+reference	renderer	0x86ad98	0x16b24e8	Nostalgic
+reference	renderer	0x86adc5	0x16b24d8	Optimistic
+reference	renderer	0x86adf2	0x16b2508	Outraged
+reference	renderer	0x86ae1f	0x16b24f8	Panicked
+reference	renderer	0x86ae4c	0x15fe8f8	Patient
+reference	renderer	0x86ae79	0x16b24a8	Passionate
+reference	renderer	0x86aea6	0x16b2498	Pleasure
+reference	renderer	0x86aed3	0x15febc8	Proud
+reference	renderer	0x86af00	0x16b24c8	Enraptured
+reference	renderer	0x86af2d	0x16b24b8	Rejected
+reference	renderer	0x86af5a	0x16b23a8	Relieved
+reference	renderer	0x86af87	0x16b2398	Regretful
+reference	renderer	0x86afb4	0x16b23c8	Remorseful
+reference	renderer	0x86afe1	0x16b23b8	Repentant
+reference	renderer	0x86b00e	0x16b2368	Resentful
+reference	renderer	0x86b03b	0x16b2358	Restless
+reference	renderer	0x86b068	0x16b2388	Indignant
+reference	renderer	0x86b095	0x16b2378	Self-pity
+reference	renderer	0x86b0c2	0x16b2418	Servile
+reference	renderer	0x86b0ef	0x16b240c	Shaken
+reference	renderer	0x86b11c	0x16b2430	Ashamed
+reference	renderer	0x86b149	0x16b2420	Sympathy
+reference	renderer	0x86b176	0x16b23e8	Tenderness
+reference	renderer	0x86b1a3	0x16b23d8	Terrified
+reference	renderer	0x86b1d0	0x16b2400	Thrilled
+reference	renderer	0x86b1fd	0x16b23f4	Uneasy
+reference	renderer	0x86b22a	0x16b2e80	Unhappy
+reference	renderer	0x86b257	0x16b2e74	Wonder
+reference	renderer	0x86b284	0x16b2e98	Worried
+reference	renderer	0x86b2b1	0x16b2e88	Wrathful
+reference	renderer	0x86b2de	0x16b2e50	Zealous
+reference	renderer	0x86b30b	0x16b2e38	Existential Crisis
+reference	renderer	0x86b338	0x16b2e68	Defeated
+reference	renderer	0x86b365	0x16b2e58	Expectant
+reference	renderer	0x86b392	0x1660f98	Doubt
+reference	renderer	0x86b3bc	0x16b2ef8	Enthusiastic
+reference	renderer	0x86b3e6	0x16b2ee8	Pessimistic
+reference	renderer	0x86b410	0x16b2f20	Euphoric
+reference	renderer	0x86b6e8	0x15fe724	Cancel
+reference	renderer	0x86b73f	0x16b2f08	Choose your tone/tact
+reference	renderer	0x86b9c6	0x16b2c18	Intimidate: 
+reference	renderer	0x86ba34	0x15e873c	 
+reference	renderer	0x86bbcb	0x16b2ea0	Almost guaranteed
+reference	renderer	0x86bc16	0x16b2ed8	Likely success
+reference	renderer	0x86bc5e	0x16b2ec8	Favorable odds
+reference	renderer	0x86bcaa	0x16b2ca0	Impossible
+reference	renderer	0x86bcf5	0x16b2c88	Nearly impossible
+reference	renderer	0x86bd36	0x16b2cc0	Likely failure
+reference	renderer	0x86bd71	0x16b2cb0	Even odds
+reference	renderer	0x86bda8	0x16b2c28	Unfavorable odds
+reference	renderer	0x86bdfc	0x16b2eb8	Persuade: 
+reference	renderer	0x86be6a	0x15e873c	 
+reference	renderer	0x86c001	0x16b2ea0	Almost guaranteed
+reference	renderer	0x86c04c	0x16b2ed8	Likely success
+reference	renderer	0x86c094	0x16b2ec8	Favorable odds
+reference	renderer	0x86c0e0	0x16b2ca0	Impossible
+reference	renderer	0x86c12b	0x16b2c88	Nearly impossible
+reference	renderer	0x86c16c	0x16b2cc0	Likely failure
+reference	renderer	0x86c1a7	0x16b2cb0	Even odds
+reference	renderer	0x86c1de	0x16b2c28	Unfavorable odds
+reference	renderer	0x86c4fd	0x16b2c70	What will you say?
+reference	renderer	0x86c54a	0x16b2c40	What will you say about the insurrection?
+reference	renderer	0x86c577	0x16b2da8	What will you say about the end of the insurrection?
+reference	renderer	0x86c5a4	0x16b2d78	What will you say about the site reclamation?
+reference	renderer	0x86c5d1	0x16b2e08	What will you say about the site's foundation?
+reference	renderer	0x86c5fe	0x16b2de0	What will you say about the group?
+reference	renderer	0x86c62b	0x16b2d00	What will you say about the army?
+reference	renderer	0x86c658	0x16b2cd0	What will you say about the failed occupation?
+reference	renderer	0x86c685	0x16b2d50	What will you say about the abduction?
+reference	renderer	0x86c6b2	0x16b2d28	What will you say about the incident?
+reference	renderer	0x86c6df	0x16b2a20	What will you say about the occupation?
+reference	renderer	0x86c70c	0x16b29f0	What will you say about the new leadership?
+reference	renderer	0x86c739	0x16b2a70	What will you say about the beast?
+reference	renderer	0x86c766	0x16b2a48	What will you say about the trouble?
+reference	renderer	0x86c793	0x16b2958	What will you say about tribute agreement?
+reference	renderer	0x86c7c0	0x16b2920	What will you say about the refusal to accept tribute?
+reference	renderer	0x86c7ed	0x16b29b8	What will you say about the refusal to give tribute?
+reference	renderer	0x86c81a	0x16b2988	What will you say about the peace agreement?
+reference	renderer	0x86c847	0x16b2b90	What will you say about the failed peace agreement?
+reference	renderer	0x86c874	0x16b2b60	What will you say about the tribute stoppage?
+reference	renderer	0x86c8a1	0x16b2bf0	What will you say about the claim?
+reference	renderer	0x86c8ce	0x16b2bc8	What will you say about the gang?
+reference	renderer	0x86c8fb	0x16b2ad0	What will you say about the refugees?
+reference	renderer	0x86c928	0x16b2a98	What will you say about the artifact's destruction?
+reference	renderer	0x86c955	0x16b2b28	What will you say about the artifact's location?
+reference	renderer	0x86c982	0x16b2c70	What will you say?
+reference	renderer	0x86c9af	0x16b2a48	What will you say about the trouble?
+reference	renderer	0x86c9dc	0x16b2af8	How will you respond to the offer of service?
+reference	renderer	0x86ca09	0x16b2790	What do you want to know?
+reference	renderer	0x86ca36	0x162a5d8	What do you want?
+reference	renderer	0x86ca63	0x16b2770	Which pet will you gift?
+reference	renderer	0x86ca90	0x16b27d0	About whom do you ask?
+reference	renderer	0x86cabd	0x16b2790	What do you want to know?
+reference	renderer	0x86caea	0x16b27b0	Where do you want to go?
+reference	renderer	0x86cb17	0x16b26f0	How will you respond to the position offer?
+reference	renderer	0x86cb44	0x16b26c0	How will you respond to the adoption request?
+reference	renderer	0x86cb71	0x16b2748	What will you say about the journey?
+reference	renderer	0x86cb9e	0x16b2d28	What will you say about the incident?
+reference	renderer	0x86cbcb	0x16b2720	What will you say about the conflict?
+reference	renderer	0x86cbf8	0x16b2c70	What will you say?
+reference	renderer	0x86cc25	0x16b28a0	How will you ask?
+reference	renderer	0x86cc52	0x16b2888	How will you respond?
+reference	renderer	0x86cc7f	0x16b2888	How will you respond?
+reference	renderer	0x86ccac	0x16b28f8	What will you say about the rescue?
+reference	renderer	0x86ccd9	0x16b28b8	What will you say about the conclusion of the agreement?
+reference	renderer	0x86cd06	0x16b2810	What will you say about the agreement?
+reference	renderer	0x86cd33	0x16b27e8	What will you say about services?
+reference	renderer	0x86cd60	0x16b2860	What will you say about the request?
+reference	renderer	0x86cd8d	0x16b2838	What will you say about the trade?
+reference	renderer	0x86cdba	0x16b35b0	What will you say about the surrounding area?
+reference	renderer	0x86cde7	0x16b3588	What will you say about the site?
+reference	renderer	0x86ce14	0x16b2de0	What will you say about the group?
+reference	renderer	0x86ce41	0x16b3608	What will you say about the structure?
+reference	renderer	0x86ce6e	0x16b35e0	How will you respond to the invocation?
+reference	renderer	0x86ce9b	0x16b34f8	How will you respond to the accusation?
+reference	renderer	0x86cec8	0x16b34d0	What will you say about your master?
+reference	renderer	0x86cef5	0x16b3550	What will you say about your plots and scheming?
+reference	renderer	0x86cf22	0x16b3520	How will you respond about your profession?
+reference	renderer	0x86cf4f	0x16b3718	How will you respond to this passive reply?
+reference	renderer	0x86cf7c	0x16b36f0	How will you respond to this flattery?
+reference	renderer	0x86cfa9	0x16b3780	How will you respond to this dismissal?
+reference	renderer	0x86cfd6	0x16b3748	How will you respond to this statement of values?
+reference	renderer	0x86d003	0x16b3658	What will you say about how you are feeling?
+reference	renderer	0x86d030	0x16b3630	What will you say about your family?
+reference	renderer	0x86d05d	0x16b36c0	How will you respond to the offer of tribute?
+reference	renderer	0x86d08a	0x16b3688	How will you respond to the tribute cancellation?
+reference	renderer	0x86d0b7	0x16b33c0	How will you respond to the offer of peace?
+reference	renderer	0x86d0e4	0x16b3390	How will you respond to the demand for tribute?
+reference	renderer	0x86d111	0x16b3420	How will you respond to the request to cease hostilities?
+reference	renderer	0x86d13e	0x16b33f0	How will you respond to the demand to yield?
+reference	renderer	0x86d16b	0x16b32f0	How will you respond to the request for information?
+reference	renderer	0x86d195	0x16b32b8	How will you respond to the request for directions?
+reference	renderer	0x86d1bf	0x16b3358	How will you respond to the request for a guide?
+reference	renderer	0x86d1e9	0x16b3328	What will you say about the missing treasure?
+reference	renderer	0x86d38d	0x15ec860	...
+reference	renderer	0x86d3c1	0x15ec82c	_
+reference	renderer	0x86d77c	0x16b34a0	Keywords: 
+reference	rating	0x7737fa	0x16a50f8	Dabbling
+reference	rating	0x77380f	0x16a5104	Novice
+reference	rating	0x773824	0x16a5110	Adequate
+reference	rating	0x773839	0x16a5120	Competent
+reference	rating	0x77384e	0x16a5130	Skilled
+reference	rating	0x773863	0x16a5138	Proficient
+reference	rating	0x773878	0x16a5148	Talented
+reference	rating	0x77388d	0x16a5154	Adept
+reference	rating	0x7738a2	0x1629e28	Expert
+reference	rating	0x7738b7	0x16a5160	Professional
+reference	rating	0x7738cc	0x16a5170	Accomplished
+reference	rating	0x7738e1	0x1646b6c	Great
+reference	rating	0x7738f6	0x16001ac	Master
+reference	rating	0x77390b	0x16a5180	High Master
+reference	rating	0x773920	0x16a5190	Grand Master
+reference	rating	0x773935	0x16a51a0	Legendary
+reference	title	0x7747e5	0x1608940	Miner
+reference	title	0x7747f7	0x1608960	Woodcutter
+reference	title	0x774809	0x162c9e0	Carpenter
+reference	title	0x77481b	0x162c9c8	Bowyer
+reference	title	0x77482d	0x16a5838	Stone Carver
+reference	title	0x77483f	0x16a5848	Stonecutter
+reference	title	0x77484b	0x16a5858	Engraver
+reference	title	0x77485d	0x16a5864	Mason
+reference	title	0x77486f	0x16a5870	Animal Trainer
+reference	title	0x774881	0x16a5880	Animal Caretaker
+reference	title	0x774893	0x16a56c0	Fish Dissector
+reference	title	0x7748a5	0x16a56d0	Animal Dissector
+reference	title	0x7748b7	0x16a56e8	Fish Cleaner
+reference	title	0x7748c9	0x161be28	Butcher
+reference	title	0x7748db	0x16a56f8	Trapper
+reference	title	0x7748ed	0x16a5700	Planter
+reference	title	0x7748ff	0x16a5708	Herbalist
+reference	title	0x77490b	0x16a5718	Ambusher
+reference	title	0x77491d	0x16a5728	Swimmer
+reference	title	0x77492f	0x16a5730	Rider
+reference	title	0x774941	0x16a5738	Persuader
+reference	title	0x774953	0x16a5748	Negotiator
+reference	title	0x774965	0x16a5758	Judge of Intent
+reference	title	0x774977	0x16a5768	Appraiser
+reference	title	0x774989	0x16a5778	Organizer
+reference	title	0x77499b	0x16a5788	Record Keeper
+reference	title	0x7749ad	0x16a5798	Liar
+reference	title	0x7749bf	0x16a55b8	Intimidator
+reference	title	0x7749d1	0x16a55c8	Conversationalist
+reference	title	0x7749dd	0x16a55e0	Comedian
+reference	title	0x7749ef	0x15feaa0	Flatterer
+reference	title	0x7749fb	0x16a55f0	Consoler
+reference	title	0x774a07	0x16a5600	Pacifier
+reference	title	0x774a19	0x16a5610	Tracker
+reference	title	0x774ac8	0x16a5618	Fisherman
+reference	title	0x774ada	0x16a5628	Furnace Operator
+reference	title	0x774aec	0x16a5640	Strand Extractor
+reference	title	0x774afe	0x16a5654	Soaper
+reference	title	0x774b10	0x16a5660	Potash Maker
+reference	title	0x774b22	0x16a5670	Lye Maker
+reference	title	0x774b34	0x16a5680	Wood Burner
+reference	title	0x774b46	0x16a5690	Weaponsmith
+reference	title	0x774b58	0x16a56a0	Armorsmith
+reference	title	0x774b6a	0x16a56b0	Blacksmith
+reference	title	0x774b7c	0x16a54e0	Gem Cutter
+reference	title	0x774b8e	0x16a54f0	Gem Setter
+reference	title	0x774ba0	0x16a5500	Woodcrafter
+reference	title	0x774bb2	0x16a5510	Papermaker
+reference	title	0x774bc4	0x16a5520	Bookbinder
+reference	title	0x774bd6	0x16a552c	Potter
+reference	title	0x774be8	0x16a5538	Wax Worker
+reference	title	0x774bfa	0x16a5548	Stone Crafter
+reference	title	0x774c0c	0x16a5558	Metal Crafter
+reference	title	0x774c1e	0x16a5568	Glassmaker
+reference	title	0x774c30	0x16a5578	Student
+reference	title	0x774c42	0x16a5400	Concentration
+reference	title	0x774c54	0x16a5410	Discipline
+reference	title	0x774c60	0x16a5580	Observer
+reference	title	0x774c72	0x16a5590	Wordsmith
+reference	title	0x774c84	0x16a559c	Writer
+reference	title	0x774c96	0x16a55a4	Poet
+reference	title	0x774ca8	0x16a55ac	Reader
+reference	title	0x774cba	0x16a5ac8	Speaker
+reference	title	0x774ccc	0x16a5ad0	Knapper
+reference	title	0x774cde	0x16a5ad8	Dancer
+reference	title	0x774cea	0x16a5ae0	Musician
+reference	title	0x774cfc	0x16a5aec	Singer
+reference	title	0x774d0e	0x16a5af8	Keyboardist
+reference	title	0x774d20	0x16a5b08	Stringed Instrumentalist
+reference	title	0x774d32	0x16a5b28	Wind Instrumentalist
+reference	title	0x774d44	0x16a5b40	Percussionist
+reference	title	0x774d56	0x16a5b50	Critical Thinker
+reference	title	0x774d62	0x16a5b68	Logician
+reference	title	0x774d74	0x16a5b78	Mathematician
+reference	title	0x774d86	0x16a5b88	Astronomer
+reference	title	0x774d98	0x16a5b98	Chemist
+reference	title	0x774daa	0x16a5ba0	Geographer
+reference	title	0x774dbc	0x16a5328	Optics Engineer
+reference	title	0x774dce	0x16a5338	Fluid Engineer
+reference	title	0x774de0	0x16a5348	Coordination
+reference	title	0x774df2	0x16a5358	Balance
+reference	title	0x774e04	0x16a5bac	Leader
+reference	title	0x774e16	0x16a5a18	Tactician
+reference	title	0x774e28	0x16a5a28	Teacher
+reference	title	0x774e3a	0x16a5a30	Fighter
+reference	title	0x774e4c	0x16a5a38	Archer
+reference	title	0x774e58	0x16a5a40	Wrestler
+reference	title	0x774e6a	0x16a5a4c	Biter
+reference	title	0x774e7c	0x16a5a58	Striker
+reference	title	0x774e8e	0x16a5a60	Kicker
+reference	title	0x774ea0	0x16a5a68	Dodger
+reference	title	0x774eb2	0x16a5a70	Axeman
+reference	title	0x774ec4	0x16a5a78	Swordsman
+reference	title	0x774ed6	0x16a5a88	Maceman
+reference	title	0x774ee8	0x16a5a90	Hammerman
+reference	title	0x774ef4	0x16a5aa0	Spearman
+reference	title	0x774f06	0x16a5ab0	Crossbowman
+reference	title	0x774f18	0x16a5ac0	Pikeman
+reference	title	0x774f2a	0x16a5948	Bowman
+reference	title	0x774f3c	0x16a5950	Shield User
+reference	title	0x774f4e	0x16a5960	Armor User
+reference	title	0x774f60	0x16a5970	Siege Engineer
+reference	title	0x774f72	0x16a5980	Siege Operator
+reference	title	0x774f84	0x16a5990	Pump Operator
+reference	title	0x774f96	0x16a59a0	Leatherworker
+reference	title	0x774fa8	0x162cb80	Tanner
+reference	title	0x774fba	0x162c910	Dyer
+reference	title	0x774fcc	0x16a59b0	Presser
+reference	title	0x774fde	0x16a59b8	Beekeeper
+reference	title	0x774ff0	0x16a59c4	Glazer
+reference	title	0x775002	0x16a59d0	Bone Carver
+reference	title	0x775014	0x16a59dc	Weaver
+reference	title	0x775026	0x16a59e4	Brewer
+reference	title	0x775032	0x1651cd0	Clothier
+reference	title	0x775044	0x16a59ec	Miller
+reference	title	0x775050	0x16a59f8	Thresher
+reference	title	0x775062	0x16a5a08	Blowgunner
+reference	title	0x775074	0x16a5898	Thrower
+reference	title	0x775080	0x162c948	Mechanic
+reference	title	0x775092	0x16a58a0	Druid
+reference	title	0x7750a4	0x16a58a8	Knife User
+reference	title	0x7750b6	0x16a58b4	Lasher
+reference	title	0x7750c8	0x163cf84	Cook
+reference	title	0x7750da	0x16a58c0	Cheesemaker
+reference	title	0x7750ec	0x16a58cc	Milker
+reference	title	0x7750fe	0x16a58d4	Gelder
+reference	title	0x775110	0x16a58e0	Shearer
+reference	title	0x775122	0x16a58e8	Spinner
+reference	title	0x775134	0x16a58f0	Misc. Object User
+reference	title	0x775146	0x16a5908	Wound Dresser
+reference	title	0x775158	0x15ffce8	Diagnostician
+reference	title	0x77516a	0x15fff10	Surgeon
+reference	title	0x77517c	0x162c8a8	Bone Doctor
+reference	title	0x77518e	0x16a5918	Suturer
+reference	title	0x7751a0	0x16a5920	Crutch-walker
+reference	title	0x7751b2	0x16a5930	Climber
+reference	title	0x7751c4	0x16a5938	Schemer
+reference	title	0x7751d6	0x16a5940	Skill 1
+reference	title	0x7751e8	0x16a5d50	Skill 2
+reference	title	0x7751f7	0x16a5d58	Skill 3
+reference	title	0x775206	0x16a5d60	Skill 4
+reference	title	0x775215	0x16a5d68	Skill 5
+reference	title	0x775224	0x16a5d70	Skill 6
+reference	title	0x775233	0x16a5d78	Skill 7
+reference	title	0x775242	0x16a5d80	Skill 8
+reference	title	0x775251	0x16a5d88	Skill 9
+reference	title	0x77525a	0x16a5d90	Skill 10
+classic	renderer	0x8658fd	0x15f959c	Cancel
+classic	renderer	0x86595c	0x16acaa0	Click a creature to start a new conversation
+classic	renderer	0x865fbf	0x16a9d24	@:
+classic	renderer	0x866567	0x16aca90	Toward you: 
+classic	renderer	0x8665c4	0x16acae8	Positive attitude
+classic	renderer	0x866678	0x16acad0	Negative attitude
+classic	renderer	0x8666b3	0x16ac888	Neutral attitude
+classic	renderer	0x86670e	0x15e40c4	, 
+classic	renderer	0x866760	0x15f9770	Patient
+classic	renderer	0x8667ab	0x15e40c4	, 
+classic	renderer	0x8667ff	0x15f98a0	Impatient
+classic	renderer	0x866855	0x15e40c4	, 
+classic	renderer	0x866890	0x16ac878	Animated
+classic	renderer	0x8668e0	0x16ac8a8	Agitated
+classic	renderer	0x86692b	0x15e40c4	, 
+classic	renderer	0x86697f	0x15fa5f0	Sluggish
+classic	renderer	0x8669a5	0x15fc370	Inactive
+classic	renderer	0x8669f7	0x15e40c4	, 
+classic	renderer	0x866a4b	0x16ac89c	Bold
+classic	renderer	0x866a74	0x16ac848	Confident
+classic	renderer	0x866abb	0x15e40c4	, 
+classic	renderer	0x866b0f	0x16ac838	Acquiescent
+classic	renderer	0x866b35	0x16ac868	Unassuming
+classic	renderer	0x866b97	0x16ac858	Relationship: 
+classic	renderer	0x866beb	0x16ac910	Loves you
+classic	renderer	0x866c4a	0x15e40c4	, 
+classic	renderer	0x866c92	0x16ac8c8	Terrified of you
+classic	renderer	0x866cd9	0x16ac900	Likes you
+classic	renderer	0x866d22	0x16ac930	Hates you
+classic	renderer	0x866d73	0x16ac920	Dislikes you
+classic	renderer	0x866dcd	0x15e40c4	, 
+classic	renderer	0x866e13	0x16ac8b8	Scared of you
+classic	renderer	0x866e62	0x15e40c4	, 
+classic	renderer	0x866ea8	0x16ac8f0	No fear of you
+classic	renderer	0x866f01	0x15e40c4	, 
+classic	renderer	0x866f46	0x16ac8e0	Respects you
+classic	renderer	0x866f95	0x15e40c4	, 
+classic	renderer	0x866fdb	0x16ac8e0	Respects you
+classic	renderer	0x86702a	0x15e40c4	, 
+classic	renderer	0x867072	0x16ad258	No respect for you
+classic	renderer	0x8670c1	0x15e40c4	, 
+classic	renderer	0x867107	0x16ad240	Low respect for you
+classic	renderer	0x867160	0x15e40c4	, 
+classic	renderer	0x8671a5	0x16ad280	Trusts you
+classic	renderer	0x8671f4	0x15e40c4	, 
+classic	renderer	0x86723a	0x16ad280	Trusts you
+classic	renderer	0x867289	0x15e40c4	, 
+classic	renderer	0x8672d1	0x16ad270	Distrusts you
+classic	renderer	0x867320	0x15e40c4	, 
+classic	renderer	0x867366	0x16ad270	Distrusts you
+classic	renderer	0x8673bf	0x15e40c4	, 
+classic	renderer	0x867404	0x16ad218	Highly Loyal
+classic	renderer	0x86745c	0x15e40c4	, 
+classic	renderer	0x8674a2	0x15e7974	Loyal
+classic	renderer	0x8674ee	0x16ad210	Neutral
+classic	renderer	0x867556	0x16ad230	General Mood: 
+classic	renderer	0x8675ae	0x15e40c4	, 
+classic	renderer	0x867619	0x16ad228	Annoyed
+classic	renderer	0x867646	0x16ad2c8	Satisfied
+classic	renderer	0x867673	0x16ad2c0	Grouchy
+classic	renderer	0x8676a0	0x16ad2e4	Grumpy
+classic	renderer	0x8676cd	0x16ad2d8	Fondness
+classic	renderer	0x8676fa	0x16ad298	Suspicious
+classic	renderer	0x867727	0x16ad290	Alarmed
+classic	renderer	0x867754	0x16ad2b8	Shocked
+classic	renderer	0x867781	0x16ad2a8	Horrified
+classic	renderer	0x8677ae	0x16ad168	Grimly Satisfied
+classic	renderer	0x8677db	0x16ad158	Grieving
+classic	renderer	0x867808	0x16ad188	Triumphant
+classic	renderer	0x867835	0x16ad180	Enraged
+classic	renderer	0x867862	0x16ad140	Eexcited
+classic	renderer	0x86788f	0x16ad134	Gaiety
+classic	renderer	0x8678bc	0x16ad154	Sad
+classic	renderer	0x8678e9	0x16ad14c	Joyous
+classic	renderer	0x867916	0x16ad1e0	Blissful
+classic	renderer	0x867943	0x16ad1d4	Loving
+classic	renderer	0x867970	0x15f9a78	Vengeful
+classic	renderer	0x86799d	0x16ad200	Accepting
+classic	renderer	0x8679ca	0x16ad1f0	Admiration
+classic	renderer	0x8679f7	0x16ad1a8	Adoration
+classic	renderer	0x867a24	0x16ad198	Affection
+classic	renderer	0x867a51	0x16ac8a8	Agitated
+classic	renderer	0x867a7e	0x16ad1c8	Aggravated
+classic	renderer	0x867aab	0x16ad1b8	In Agony
+classic	renderer	0x867ad8	0x16ad0b8	Alienated
+classic	renderer	0x867b05	0x16ad0ac	Amazed
+classic	renderer	0x867b32	0x16ad0d0	Ambivalent
+classic	renderer	0x867b5f	0x16ad0c4	Amused
+classic	renderer	0x867b8c	0x16ad08c	Angry
+classic	renderer	0x867bb9	0x16ad080	In Anguish
+classic	renderer	0x867be6	0x15f99c8	Anxious
+classic	renderer	0x867c13	0x16ad0a0	Apathetic
+classic	renderer	0x867c40	0x16ad098	Aroused
+classic	renderer	0x867c6d	0x16ad118	Astonished
+classic	renderer	0x867c9a	0x16ad10c	Averse
+classic	renderer	0x867cc7	0x16ad12c	In Awe
+classic	renderer	0x867cf4	0x16ad124	Bitter
+classic	renderer	0x867d21	0x16ad0e4	Bored
+classic	renderer	0x867d4e	0x16ad0dc	Caring
+classic	renderer	0x867d7b	0x16ad100	Confused
+classic	renderer	0x867da8	0x16ad0f0	Contemptuous
+classic	renderer	0x867dd5	0x16acff8	Content
+classic	renderer	0x867e02	0x16acfe8	Dejected
+classic	renderer	0x867e2f	0x16ad008	Delighted
+classic	renderer	0x867e5c	0x16ad000	Despair
+classic	renderer	0x867e89	0x16acfc0	Disappointed
+classic	renderer	0x867eb6	0x16acfb0	Disgusted
+classic	renderer	0x867ee3	0x16acfd8	Disillusioned
+classic	renderer	0x867f10	0x16acfd0	Dislike
+classic	renderer	0x867f3d	0x16ad058	Dismayed
+classic	renderer	0x867f6a	0x16ad048	Displeasure
+classic	renderer	0x867f97	0x16ad070	Distressed
+classic	renderer	0x867fc4	0x16ad064	Eager
+classic	renderer	0x867ff1	0x16ad024	Elated
+classic	renderer	0x86801e	0x16ad018	Embarrassed
+classic	renderer	0x86804b	0x16ad038	Empathetic
+classic	renderer	0x868078	0x16ad02c	Empty
+classic	renderer	0x8680a5	0x16ad5e8	Enjoyment
+classic	renderer	0x8680d2	0x16ad5d8	Exasperated
+classic	renderer	0x8680ff	0x16ad600	Exhilarated
+classic	renderer	0x86812c	0x16ad5f4	Afraid
+classic	renderer	0x868159	0x16ad5a8	Ferocious
+classic	renderer	0x868186	0x16ad59c	Free
+classic	renderer	0x8681b3	0x16ad5c8	Frightened
+classic	renderer	0x8681e0	0x16ad5b8	Frustrated
+classic	renderer	0x86820d	0x16ad648	Gleeful
+classic	renderer	0x86823a	0x16ad63c	Gloomy
+classic	renderer	0x868267	0x16ad65c	Glum
+classic	renderer	0x868294	0x16ad650	Grateful
+classic	renderer	0x8682c1	0x16ad614	Guilty
+classic	renderer	0x8682ee	0x16ad60c	Happy
+classic	renderer	0x86831b	0x15f9a10	Hateful
+classic	renderer	0x868348	0x15f9a50	Hopeful
+classic	renderer	0x868375	0x16ad630	Hopeless
+classic	renderer	0x8683a2	0x16ad620	Humiliated
+classic	renderer	0x8683cf	0x16ad500	Insulted
+classic	renderer	0x8683fc	0x16ad4f0	Interested
+classic	renderer	0x868429	0x16ad520	Irritated
+classic	renderer	0x868456	0x16ad510	Isolated
+classic	renderer	0x868483	0x16ad4c4	Jolly
+classic	renderer	0x8684b0	0x16ad4bc	Jovial
+classic	renderer	0x8684dd	0x16ad4e0	Jubilant
+classic	renderer	0x86850a	0x16ad4d0	Loathing
+classic	renderer	0x868537	0x16ad57c	Lonely
+classic	renderer	0x868564	0x15f99c0	Lustful
+classic	renderer	0x868591	0x16ad570	Miserable
+classic	renderer	0x8685be	0x16ad590	Mortified
+classic	renderer	0x8685eb	0x16ad588	Nervous
+classic	renderer	0x868618	0x16ad540	Nostalgic
+classic	renderer	0x868645	0x16ad530	Optimistic
+classic	renderer	0x868672	0x16ad560	Outraged
+classic	renderer	0x86869f	0x16ad550	Panicked
+classic	renderer	0x8686cc	0x15f9770	Patient
+classic	renderer	0x8686f9	0x16ad428	Passionate
+classic	renderer	0x868726	0x16ad418	Pleasure
+classic	renderer	0x868753	0x15f9a70	Proud
+classic	renderer	0x868780	0x16ad448	Enraptured
+classic	renderer	0x8687ad	0x16ad438	Rejected
+classic	renderer	0x8687da	0x16ad3e8	Relieved
+classic	renderer	0x868807	0x16ad3d8	Regretful
+classic	renderer	0x868834	0x16ad408	Remorseful
+classic	renderer	0x868861	0x16ad3f8	Repentant
+classic	renderer	0x86888e	0x16ad490	Resentful
+classic	renderer	0x8688bb	0x16ad480	Restless
+classic	renderer	0x8688e8	0x16ad4b0	Indignant
+classic	renderer	0x868915	0x16ad4a0	Self-pity
+classic	renderer	0x868942	0x16ad460	Servile
+classic	renderer	0x86896f	0x16ad454	Shaken
+classic	renderer	0x86899c	0x16ad478	Ashamed
+classic	renderer	0x8689c9	0x16ad468	Sympathy
+classic	renderer	0x8689f6	0x16ad328	Tenderness
+classic	renderer	0x868a23	0x16ad318	Terrified
+classic	renderer	0x868a50	0x16ad340	Thrilled
+classic	renderer	0x868a7d	0x16ad334	Uneasy
+classic	renderer	0x868aaa	0x16ad2f8	Unhappy
+classic	renderer	0x868ad7	0x16ad2ec	Wonder
+classic	renderer	0x868b04	0x16ad310	Worried
+classic	renderer	0x868b31	0x16ad300	Wrathful
+classic	renderer	0x868b5e	0x16ad3b0	Zealous
+classic	renderer	0x868b8b	0x16ad398	Existential Crisis
+classic	renderer	0x868bb8	0x16ad3c8	Defeated
+classic	renderer	0x868be5	0x16ad3b8	Expectant
+classic	renderer	0x868c12	0x165c790	Doubt
+classic	renderer	0x868c3c	0x16ad360	Enthusiastic
+classic	renderer	0x868c66	0x16ad350	Pessimistic
+classic	renderer	0x868c90	0x16ad388	Euphoric
+classic	renderer	0x868f68	0x15f959c	Cancel
+classic	renderer	0x868fbf	0x16ad370	Choose your tone/tact
+classic	renderer	0x869246	0x16adfd0	Intimidate: 
+classic	renderer	0x8692b4	0x15e3720	 
+classic	renderer	0x86944b	0x16adec8	Almost guaranteed
+classic	renderer	0x869496	0x16adf00	Likely success
+classic	renderer	0x8694de	0x16adef0	Favorable odds
+classic	renderer	0x86952a	0x16ade98	Impossible
+classic	renderer	0x869575	0x16ade80	Nearly impossible
+classic	renderer	0x8695b6	0x16adeb8	Likely failure
+classic	renderer	0x8695f1	0x16adea8	Even odds
+classic	renderer	0x869628	0x16adfe0	Unfavorable odds
+classic	renderer	0x86967c	0x16adee0	Persuade: 
+classic	renderer	0x8696ea	0x15e3720	 
+classic	renderer	0x869881	0x16adec8	Almost guaranteed
+classic	renderer	0x8698cc	0x16adf00	Likely success
+classic	renderer	0x869914	0x16adef0	Favorable odds
+classic	renderer	0x869960	0x16ade98	Impossible
+classic	renderer	0x8699ab	0x16ade80	Nearly impossible
+classic	renderer	0x8699ec	0x16adeb8	Likely failure
+classic	renderer	0x869a27	0x16adea8	Even odds
+classic	renderer	0x869a5e	0x16adfe0	Unfavorable odds
+classic	renderer	0x869d7d	0x16ae028	What will you say?
+classic	renderer	0x869dca	0x16adff8	What will you say about the insurrection?
+classic	renderer	0x869df7	0x16adf40	What will you say about the end of the insurrection?
+classic	renderer	0x869e24	0x16adf10	What will you say about the site reclamation?
+classic	renderer	0x869e51	0x16adfa0	What will you say about the site's foundation?
+classic	renderer	0x869e7e	0x16adf78	What will you say about the group?
+classic	renderer	0x869eab	0x16adc80	What will you say about the army?
+classic	renderer	0x869ed8	0x16adc50	What will you say about the failed occupation?
+classic	renderer	0x869f05	0x16adcd0	What will you say about the abduction?
+classic	renderer	0x869f32	0x16adca8	What will you say about the incident?
+classic	renderer	0x869f5f	0x16adbd8	What will you say about the occupation?
+classic	renderer	0x869f8c	0x16adba8	What will you say about the new leadership?
+classic	renderer	0x869fb9	0x16adc28	What will you say about the beast?
+classic	renderer	0x869fe6	0x16adc00	What will you say about the trouble?
+classic	renderer	0x86a013	0x16adde8	What will you say about tribute agreement?
+classic	renderer	0x86a040	0x16addb0	What will you say about the refusal to accept tribute?
+classic	renderer	0x86a06d	0x16ade48	What will you say about the refusal to give tribute?
+classic	renderer	0x86a09a	0x16ade18	What will you say about the peace agreement?
+classic	renderer	0x86a0c7	0x16add28	What will you say about the failed peace agreement?
+classic	renderer	0x86a0f4	0x16adcf8	What will you say about the tribute stoppage?
+classic	renderer	0x86a121	0x16add88	What will you say about the claim?
+classic	renderer	0x86a14e	0x16add60	What will you say about the gang?
+classic	renderer	0x86a17b	0x16ad9d0	What will you say about the refugees?
+classic	renderer	0x86a1a8	0x16ad998	What will you say about the artifact's destruction?
+classic	renderer	0x86a1d5	0x16ada28	What will you say about the artifact's location?
+classic	renderer	0x86a202	0x16ae028	What will you say?
+classic	renderer	0x86a22f	0x16adc00	What will you say about the trouble?
+classic	renderer	0x86a25c	0x16ad9f8	How will you respond to the offer of service?
+classic	renderer	0x86a289	0x16ad940	What do you want to know?
+classic	renderer	0x86a2b6	0x16260b8	What do you want?
+classic	renderer	0x86a2e3	0x16ad920	Which pet will you gift?
+classic	renderer	0x86a310	0x16ad980	About whom do you ask?
+classic	renderer	0x86a33d	0x16ad940	What do you want to know?
+classic	renderer	0x86a36a	0x16ad960	Where do you want to go?
+classic	renderer	0x86a397	0x16adb28	How will you respond to the position offer?
+classic	renderer	0x86a3c4	0x16adaf8	How will you respond to the adoption request?
+classic	renderer	0x86a3f1	0x16adb80	What will you say about the journey?
+classic	renderer	0x86a41e	0x16adca8	What will you say about the incident?
+classic	renderer	0x86a44b	0x16adb58	What will you say about the conflict?
+classic	renderer	0x86a478	0x16ae028	What will you say?
+classic	renderer	0x86a4a5	0x16ada78	How will you ask?
+classic	renderer	0x86a4d2	0x16ada60	How will you respond?
+classic	renderer	0x86a4ff	0x16ada60	How will you respond?
+classic	renderer	0x86a52c	0x16adad0	What will you say about the rescue?
+classic	renderer	0x86a559	0x16ada90	What will you say about the conclusion of the agreement?
+classic	renderer	0x86a586	0x16ad738	What will you say about the agreement?
+classic	renderer	0x86a5b3	0x16ad710	What will you say about services?
+classic	renderer	0x86a5e0	0x16ad788	What will you say about the request?
+classic	renderer	0x86a60d	0x16ad760	What will you say about the trade?
+classic	renderer	0x86a63a	0x16ad690	What will you say about the surrounding area?
+classic	renderer	0x86a667	0x16ad668	What will you say about the site?
+classic	renderer	0x86a694	0x16adf78	What will you say about the group?
+classic	renderer	0x86a6c1	0x16ad6e8	What will you say about the structure?
+classic	renderer	0x86a6ee	0x16ad6c0	How will you respond to the invocation?
+classic	renderer	0x86a71b	0x16ad890	How will you respond to the accusation?
+classic	renderer	0x86a748	0x16ad868	What will you say about your master?
+classic	renderer	0x86a775	0x16ad8e8	What will you say about your plots and scheming?
+classic	renderer	0x86a7a2	0x16ad8b8	How will you respond about your profession?
+classic	renderer	0x86a7cf	0x16ad7d8	How will you respond to this passive reply?
+classic	renderer	0x86a7fc	0x16ad7b0	How will you respond to this flattery?
+classic	renderer	0x86a829	0x16ad840	How will you respond to this dismissal?
+classic	renderer	0x86a856	0x16ad808	How will you respond to this statement of values?
+classic	renderer	0x86a883	0x16ae5e8	What will you say about how you are feeling?
+classic	renderer	0x86a8b0	0x16ae5c0	What will you say about your family?
+classic	renderer	0x86a8dd	0x16ae650	How will you respond to the offer of tribute?
+classic	renderer	0x86a90a	0x16ae618	How will you respond to the tribute cancellation?
+classic	renderer	0x86a937	0x16ae520	How will you respond to the offer of peace?
+classic	renderer	0x86a964	0x16ae4f0	How will you respond to the demand for tribute?
+classic	renderer	0x86a991	0x16ae580	How will you respond to the request to cease hostilities?
+classic	renderer	0x86a9be	0x16ae550	How will you respond to the demand to yield?
+classic	renderer	0x86a9eb	0x16ae6f8	How will you respond to the request for information?
+classic	renderer	0x86aa15	0x16ae6c0	How will you respond to the request for directions?
+classic	renderer	0x86aa3f	0x16ae760	How will you respond to the request for a guide?
+classic	renderer	0x86aa69	0x16ae730	What will you say about the missing treasure?
+classic	renderer	0x86ac0d	0x15e77d0	...
+classic	renderer	0x86ac41	0x15e783c	_
+classic	renderer	0x86affc	0x16ae690	Keywords: 
+classic	rating	0x77121a	0x169f8e0	Dabbling
+classic	rating	0x77122f	0x169f8ec	Novice
+classic	rating	0x771244	0x169f8f8	Adequate
+classic	rating	0x771259	0x169f908	Competent
+classic	rating	0x77126e	0x169f918	Skilled
+classic	rating	0x771283	0x169f920	Proficient
+classic	rating	0x771298	0x169f930	Talented
+classic	rating	0x7712ad	0x169f93c	Adept
+classic	rating	0x7712c2	0x162563c	Expert
+classic	rating	0x7712d7	0x169f948	Professional
+classic	rating	0x7712ec	0x169f958	Accomplished
+classic	rating	0x771301	0x1641bdc	Great
+classic	rating	0x771316	0x15fb264	Master
+classic	rating	0x77132b	0x16a0038	High Master
+classic	rating	0x771340	0x16a0048	Grand Master
+classic	rating	0x771355	0x16a0058	Legendary
+classic	title	0x772205	0x16038f0	Miner
+classic	title	0x772217	0x1603910	Woodcutter
+classic	title	0x772229	0x1628000	Carpenter
+classic	title	0x77223b	0x162800c	Bowyer
+classic	title	0x77224d	0x16a01f0	Stone Carver
+classic	title	0x77225f	0x16a0200	Stonecutter
+classic	title	0x77226b	0x16a0210	Engraver
+classic	title	0x77227d	0x16a0754	Mason
+classic	title	0x77228f	0x16a0760	Animal Trainer
+classic	title	0x7722a1	0x16a0770	Animal Caretaker
+classic	title	0x7722b3	0x16a0788	Fish Dissector
+classic	title	0x7722c5	0x16a0798	Animal Dissector
+classic	title	0x7722d7	0x16a07b0	Fish Cleaner
+classic	title	0x7722e9	0x1616fc8	Butcher
+classic	title	0x7722fb	0x16a07c0	Trapper
+classic	title	0x77230d	0x16a07c8	Planter
+classic	title	0x77231f	0x16a07d0	Herbalist
+classic	title	0x77232b	0x16a07e0	Ambusher
+classic	title	0x77233d	0x16a07f0	Swimmer
+classic	title	0x77234f	0x16a07f8	Rider
+classic	title	0x772361	0x16a0800	Persuader
+classic	title	0x772373	0x16a0810	Negotiator
+classic	title	0x772385	0x16a0820	Judge of Intent
+classic	title	0x772397	0x16a0830	Appraiser
+classic	title	0x7723a9	0x16a0658	Organizer
+classic	title	0x7723bb	0x16a0668	Record Keeper
+classic	title	0x7723cd	0x16a0678	Liar
+classic	title	0x7723df	0x16a0680	Intimidator
+classic	title	0x7723f1	0x16a0690	Conversationalist
+classic	title	0x7723fd	0x16a06a8	Comedian
+classic	title	0x77240f	0x15f9b00	Flatterer
+classic	title	0x77241b	0x16a06b8	Consoler
+classic	title	0x772427	0x16a06c8	Pacifier
+classic	title	0x772439	0x16a06d8	Tracker
+classic	title	0x7724e8	0x16a06e0	Fisherman
+classic	title	0x7724fa	0x16a06f0	Furnace Operator
+classic	title	0x77250c	0x16a0708	Strand Extractor
+classic	title	0x77251e	0x16a071c	Soaper
+classic	title	0x772530	0x16a0728	Potash Maker
+classic	title	0x772542	0x16a0738	Lye Maker
+classic	title	0x772554	0x16a0748	Wood Burner
+classic	title	0x772566	0x16a0568	Weaponsmith
+classic	title	0x772578	0x16a0578	Armorsmith
+classic	title	0x77258a	0x16a0588	Blacksmith
+classic	title	0x77259c	0x16a0598	Gem Cutter
+classic	title	0x7725ae	0x16a05a8	Gem Setter
+classic	title	0x7725c0	0x16a05b8	Woodcrafter
+classic	title	0x7725d2	0x16a05c8	Papermaker
+classic	title	0x7725e4	0x16a05d8	Bookbinder
+classic	title	0x7725f6	0x16a05e4	Potter
+classic	title	0x772608	0x16a05f0	Wax Worker
+classic	title	0x77261a	0x16a0600	Stone Crafter
+classic	title	0x77262c	0x16a0610	Metal Crafter
+classic	title	0x77263e	0x16a0620	Glassmaker
+classic	title	0x772650	0x16a0630	Student
+classic	title	0x772662	0x169fda8	Concentration
+classic	title	0x772674	0x169fdb8	Discipline
+classic	title	0x772680	0x16a0638	Observer
+classic	title	0x772692	0x16a0648	Wordsmith
+classic	title	0x7726a4	0x16a047c	Writer
+classic	title	0x7726b6	0x16a0484	Poet
+classic	title	0x7726c8	0x16a048c	Reader
+classic	title	0x7726da	0x16a0498	Speaker
+classic	title	0x7726ec	0x16a04a0	Knapper
+classic	title	0x7726fe	0x16a04a8	Dancer
+classic	title	0x77270a	0x16a04b0	Musician
+classic	title	0x77271c	0x16a04bc	Singer
+classic	title	0x77272e	0x16a04c8	Keyboardist
+classic	title	0x772740	0x16a04d8	Stringed Instrumentalist
+classic	title	0x772752	0x16a04f8	Wind Instrumentalist
+classic	title	0x772764	0x16a0510	Percussionist
+classic	title	0x772776	0x16a0520	Critical Thinker
+classic	title	0x772782	0x16a0538	Logician
+classic	title	0x772794	0x16a0548	Mathematician
+classic	title	0x7727a6	0x16a0558	Astronomer
+classic	title	0x7727b8	0x16a0a98	Chemist
+classic	title	0x7727ca	0x16a0aa0	Geographer
+classic	title	0x7727dc	0x16a03d0	Optics Engineer
+classic	title	0x7727ee	0x16a03e0	Fluid Engineer
+classic	title	0x772800	0x16a03f0	Coordination
+classic	title	0x772812	0x16a0400	Balance
+classic	title	0x772824	0x16a0aac	Leader
+classic	title	0x772836	0x16a0ab8	Tactician
+classic	title	0x772848	0x16a0ac8	Teacher
+classic	title	0x77285a	0x16a0ad0	Fighter
+classic	title	0x77286c	0x16a0ad8	Archer
+classic	title	0x772878	0x16a0ae0	Wrestler
+classic	title	0x77288a	0x16a0aec	Biter
+classic	title	0x77289c	0x16a0af8	Striker
+classic	title	0x7728ae	0x16a0b00	Kicker
+classic	title	0x7728c0	0x16a0b08	Dodger
+classic	title	0x7728d2	0x16a0b10	Axeman
+classic	title	0x7728e4	0x16a0b18	Swordsman
+classic	title	0x7728f6	0x16a0b28	Maceman
+classic	title	0x772908	0x16a0b30	Hammerman
+classic	title	0x772914	0x16a09c8	Spearman
+classic	title	0x772926	0x16a09d8	Crossbowman
+classic	title	0x772938	0x16a09e8	Pikeman
+classic	title	0x77294a	0x16a09f0	Bowman
+classic	title	0x77295c	0x16a09f8	Shield User
+classic	title	0x77296e	0x16a0a08	Armor User
+classic	title	0x772980	0x16a0a18	Siege Engineer
+classic	title	0x772992	0x16a0a28	Siege Operator
+classic	title	0x7729a4	0x16a0a38	Pump Operator
+classic	title	0x7729b6	0x16a0a48	Leatherworker
+classic	title	0x7729c8	0x1627f64	Tanner
+classic	title	0x7729da	0x1627f5c	Dyer
+classic	title	0x7729ec	0x16a0a58	Presser
+classic	title	0x7729fe	0x16a0a60	Beekeeper
+classic	title	0x772a10	0x16a0a6c	Glazer
+classic	title	0x772a22	0x16a0a78	Bone Carver
+classic	title	0x772a34	0x16a0a84	Weaver
+classic	title	0x772a46	0x16a0a8c	Brewer
+classic	title	0x772a52	0x164cc80	Clothier
+classic	title	0x772a64	0x16a0904	Miller
+classic	title	0x772a70	0x16a0910	Thresher
+classic	title	0x772a82	0x16a0920	Blowgunner
+classic	title	0x772a94	0x16a0930	Thrower
+classic	title	0x772aa0	0x1628028	Mechanic
+classic	title	0x772ab2	0x16a0938	Druid
+classic	title	0x772ac4	0x16a0940	Knife User
+classic	title	0x772ad6	0x16a094c	Lasher
+classic	title	0x772ae8	0x1638128	Cook
+classic	title	0x772afa	0x16a0958	Cheesemaker
+classic	title	0x772b0c	0x16a0964	Milker
+classic	title	0x772b1e	0x16a096c	Gelder
+classic	title	0x772b30	0x16a0978	Shearer
+classic	title	0x772b42	0x16a0980	Spinner
+classic	title	0x772b54	0x16a0988	Misc. Object User
+classic	title	0x772b66	0x16a09a0	Wound Dresser
+classic	title	0x772b78	0x15fadc8	Diagnostician
+classic	title	0x772b8a	0x15fadc0	Surgeon
+classic	title	0x772b9c	0x1627938	Bone Doctor
+classic	title	0x772bae	0x16a09b0	Suturer
+classic	title	0x772bc0	0x16a09b8	Crutch-walker
+classic	title	0x772bd2	0x16a0840	Climber
+classic	title	0x772be4	0x16a0848	Schemer
+classic	title	0x772bf6	0x16a0850	Skill 1
+classic	title	0x772c08	0x16a0858	Skill 2
+classic	title	0x772c17	0x16a0860	Skill 3
+classic	title	0x772c26	0x16a0868	Skill 4
+classic	title	0x772c35	0x16a0870	Skill 5
+classic	title	0x772c44	0x16a0878	Skill 6
+classic	title	0x772c53	0x16a0880	Skill 7
+classic	title	0x772c62	0x16a0888	Skill 8
+classic	title	0x772c71	0x16a0890	Skill 9
+classic	title	0x772c7a	0x16a0898	Skill 10

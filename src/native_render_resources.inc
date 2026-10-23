@@ -4,9 +4,11 @@
 static void native_reset_render_resources() {
     TranslationStateScope translation;
     native_settings_menu_release();
+    native_mouse_coordinates_reset();
     g_overlay.invalidate_render_resources();
     g_native_squads_overlay.release_native_squads_resources();
     release_native_designation_language_resources();
+    release_native_map_hover_language_resources();
     release_native_character_language_resources();
 
     const auto reset_layer = [](NativeUiLayerTarget &target,
@@ -35,6 +37,8 @@ static void native_reset_render_resources() {
     native_petitions_begin_frame();
     native_designation_begin_frame();
     reset_layer(g_native_designation_target, g_native_designation_layer);
+    native_map_hover_begin_frame();
+    reset_layer(g_native_map_hover_target, g_native_map_hover_layer);
     reset_layer(g_native_topbar_target, g_native_topbar_layer);
     reset_layer(g_native_petitions_target, g_native_petitions_layer);
     reset_layer(g_native_resolution_target, g_native_resolution_layer);

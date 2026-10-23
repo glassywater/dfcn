@@ -1,0 +1,104 @@
+生成职位名称的原生来源与翻译范围（2026-10-23）
+
+本文记录名称来源、构造分支及信息保留边界；不是测试或验收报告。
+
+一、来源版本与字段
+
+本目录 reference-*、classic-* 保存当前本机两份 Windows PE 游戏的公告、
+单位身份与职位字符串读取函数。它们最终读取 entity_position 的 NAME、
+NAME_FEMALE、NAME_MALE、SPOUSE、SPOUSE_FEMALE、SPOUSE_MALE 字符串，
+按性别、配偶身份与空字符串回退选择显示形式，不从标题字符串读取 WORD ID。
+
+生成职位的详细既有反汇编保存在
+data/extracted/noble-positions/native-producers.asm。
+该文件明确标注其来源为此前提取的 Linux ELF：
+ELF:bcc6789e6fb477b785a2b02be80b8b1b054ff88c。
+下文生成器地址均为该 ELF 虚拟地址，不能当作当前 Windows RVA 使用。
+原生字面值、内联字符串和现有词形分别见同目录 native-literals.tsv、
+native-inline-fragments.tsv、generated-fixed-titles.tsv、
+court-and-civic-titles.tsv、religious-noun-forms.tsv。
+
+二、职位词表接入范围
+
+data/runtime/rulesets/zh-Hans/positions/index.toml 将生成职位接入既有
+positions::singular / positions::plural 语义入口。原有山地、森林、
+领主和性别／配偶名称译文保留。
+
+generated.toml 纳入既有提取表去重后的 46 组固定生成职位单／复数，
+包括领主、军务／群体领袖、司法、行会、流放群体／商团及固定祭司称号。
+另纳入 112 项宫廷与 80 项市政完整名称：
+宫廷的 royal/chief/head/high 只与宫廷职位名结合；市政职责词只与
+其自身的 master/caretaker/commissioner/official/administrator 结合。
+这 192 项是限定词汇组合的覆盖上界。实际职责、文明与世界生成条件
+决定某个世界选用哪些职位，不表示每项都能在同一世界出现。
+
+religious.toml 处理 high、first、exalted、holy、sacred、most high、
+absolute、most exalted、most holy、most sacred 十种原生祭司前缀，
+只与 language_nouns.toml 中的原生名词词形结合。
+无 WORD 时的 high priest(s) / most high priest(s) 已作为固定职位收录。
+0x97ac49 检查 WORD 名词单数标志；0x9860f4 在没有单数时改用复数词形，
+即单个职位持有者也可能显示复数名词，此回退一并覆盖。
+
+language_nouns.toml 保存提取表中的 3202 种原生名词拼写，保留已确定的
+WORD 名词译义。名词不作为裸职业开放，只供有限的完整职位构造式引用。
+
+mercenary.toml 对应 entity_position 的三种生成分支：
+0x964293：lord + WORD 名词；
+0x960279：WORD 名词 + master(s)；
+0x9642e7：WORD 名词 + commander(s)。
+0x96020e / 0x9641bd 同样有缺少单数时使用复数名词的回退。
+这里的 NAME 位于 position+0x98/+0xb8，0x960616..0x96064c 将职位
+追加到 entity+0x10c0 起始的 position 向量。
+
+同一大函数中的 Rank、Degree、Exalted、Perfect、Ultimate 等等级串
+另写入 name 位于 +0x08 的职阶对象，并在 0x961b18..0x961bbb 追加到
+entity+0x1330 起始的独立向量。它们不是这里读取的 entity_position
+名称，不因词形类似而登记成贵族职位。
+
+三、十一种同形词的来源信息已经丢失
+
+data/upstream/df-structures/df.entity.xml 中 entity_position 的完整定义
+只有普通字符串 name/name_female/name_male/spouse 等，没有 language_name
+或所选 WORD ID 字段。entity_position_assignment 也只保存职位、人物、
+编队等关联，不保存生成头衔使用的 WORD ID。
+
+宗教生成器先在栈上建立临时 language_name（基址 rbp-0x580）；所选
+WORD 槽在 rbp-0x52c。0x97abad/0x97ac37 及 0x97df65/0x97e0dd
+读取该临时 ID，取得 WORD 的单／复数名词字符串，再写入 position.name。
+0x97e2a3..0x97e2dd 注册职位后，0x97e2e5..0x97e323 释放临时名称
+字符串；最高祭司分支也在 0x980544..0x98057f 释放同一临时对象的字符串。
+该路径没有把所选 WORD ID 写入职位或它的关联记录。
+
+雇佣兵分支的临时 language_name 位于 rbp-0x160，WORD 槽位于
+rbp-0x10c。0x960199/0x9601f2 读取 ID 并构造普通职位名称；
+0x9602a4..0x9602fe 清理临时名称字符串，随后登记职位。
+公告字段层因此只能看到生成后的同形英文，不足以反推唯一原生词义。
+实体或宗教的语言／神祇信息可影响生成候选，但不是这次随机选择结果的
+保存字段，不能把候选关系当作确定的 WORD 身份。
+
+以下十一种拼写对应多个原生 WORD 义项：
+
+英文词形       原生 WORD ID                         原生名词译义
+date           DATE_FRUIT / DATE_VERB                枣 / 约会
+dates          DATE_FRUIT / DATE_VERB                枣 / 约会
+depression     DEPRESS SAD / DEPRESSION LOW          沮丧 / 洼地
+distraction    DISTRACT ANNOY / DISTRACTION GAME     打扰 / 消遣
+distractions   DISTRACT ANNOY / DISTRACTION GAME     打扰 / 消遣
+diversion      DIVERSION GAME / DIVERT DETOUR        娱乐 / 改道
+diversions     DIVERSION GAME / DIVERT DETOUR        娱乐 / 改道
+meal           MEAL_DOM / MEAL_GROUND                餐 / 粉
+meals          MEAL_DOM / MEAL_GROUND                餐 / 粉
+meanness       MEAN LOW / MEAN NASTY                 低贱 / 卑鄙
+order          ORDER GROUP / ORDER CONCEPT           教团 / 秩序
+
+上述义项来自 data/runtime/procedural-word-senses.tsv；这些拼写没有现成
+的完整宗教／雇佣兵头衔权威译项。普通文本默认词也不能消除歧义：
+procedural-terms.tsv 的 date→日期、meanness→吝啬、order→次序，
+并不等于这里对应 WORD 的唯一名词义项。既有 tools/legends_grammar.py
+的 religious_name_nouns 已明确要求默认译义属于该 WORD 义项集合，
+否则不任意选择；本次保持同一语义边界。
+
+本次为这十一种词形保留原文词根，仍处理完整职位的限定前／后缀。
+例如 high date 的 high 能确定为“高阶”，date 的“枣／约会”则无法
+从已保存的标题唯一确定。不能将这类结果表述为全部动态词义均已翻译。
+其余已确定的生成职位沿现有译文处理，没有改写用户自定义 squad.alias。

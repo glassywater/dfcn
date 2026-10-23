@@ -1,0 +1,117 @@
+edition	image	role	function_rva	instruction_rva	encoding	literal_rva	operand_role	source
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880314	inline-immediate-fragment		finite-short-string-fragment	Done
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8803b2	rip-relative	0x16b48c0	finite-text-operand-or-substring	Where will you aim?
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8803bc	rip-relative	0x16b48d0	finite-text-operand-or-substring	im?
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8803c7	rip-relative	0x16b48d2	finite-text-operand-or-substring	?
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8808e8	rip-relative	0x1681050	finite-text-operand-or-substring	body part
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880926	rip-relative	0x1681050	finite-text-operand-or-substring	body part
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8809a3	rip-relative	0x16b48b0	finite-text-operand-or-substring	Impossible shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8809b0	rip-relative	0x16b48b8	finite-text-operand-or-substring	le shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8809b9	rip-relative	0x16b48bc	finite-text-operand-or-substring	hot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8809c4	rip-relative	0x16b48be	finite-text-operand-or-substring	t
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880a09	rip-relative	0x16b4860	finite-text-operand-or-substring	Impossible throw
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880a6a	rip-relative	0x16b4850	finite-text-operand-or-substring	Difficult shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880a77	rip-relative	0x16b4858	finite-text-operand-or-substring	t shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880a80	rip-relative	0x16b485c	finite-text-operand-or-substring	ot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880ab0	rip-relative	0x16b4888	finite-text-operand-or-substring	Difficult throw
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880abd	rip-relative	0x16b4890	finite-text-operand-or-substring	t throw
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880ac6	rip-relative	0x16b4894	finite-text-operand-or-substring	row
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880ad1	rip-relative	0x16b4896	finite-text-operand-or-substring	w
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880b29	rip-relative	0x16b4878	finite-text-operand-or-substring	Tricky shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880b36	rip-relative	0x16b4880	finite-text-operand-or-substring	hot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880b41	rip-relative	0x16b4882	finite-text-operand-or-substring	t
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880b70	rip-relative	0x16b4670	finite-text-operand-or-substring	Tricky throw
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880b7d	rip-relative	0x16b4678	finite-text-operand-or-substring	hrow
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880bdc	rip-relative	0x16b4660	finite-text-operand-or-substring	Normal shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880be9	rip-relative	0x16b4668	finite-text-operand-or-substring	hot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880bf4	rip-relative	0x16b466a	finite-text-operand-or-substring	t
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880c2b	rip-relative	0x16b4690	finite-text-operand-or-substring	Normal throw
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880c38	rip-relative	0x16b4698	finite-text-operand-or-substring	hrow
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880c8f	rip-relative	0x16b4680	finite-text-operand-or-substring	Easy shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880c9c	rip-relative	0x16b4688	finite-text-operand-or-substring	t
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880cd4	rip-relative	0x16b4630	finite-text-operand-or-substring	Easy throw
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880ce1	rip-relative	0x16b4638	finite-text-operand-or-substring	ow
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880d3a	rip-relative	0x16b4620	finite-text-operand-or-substring	Easier shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880d47	rip-relative	0x16b4628	finite-text-operand-or-substring	hot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880d52	rip-relative	0x16b462a	finite-text-operand-or-substring	t
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880d8a	rip-relative	0x16b4650	finite-text-operand-or-substring	Easier throw
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880d97	rip-relative	0x16b4658	finite-text-operand-or-substring	hrow
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880df7	rip-relative	0x16b4640	finite-text-operand-or-substring	Simple shot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880e04	rip-relative	0x16b4648	finite-text-operand-or-substring	hot
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880e0f	rip-relative	0x16b464a	finite-text-operand-or-substring	t
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880e3b	rip-relative	0x16b4740	finite-text-operand-or-substring	Simple throw
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x880e48	rip-relative	0x16b4748	finite-text-operand-or-substring	hrow
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881261	rip-relative	0x178b3e0	numeric-string-layout-vector	,
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x88126e	rip-relative	0x16b4710	finite-text-operand-or-substring	Click a target or move the cursor and press 
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881278	rip-relative	0x16b4720	finite-text-operand-or-substring	r move the cursor and press 
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881283	rip-relative	0x16b4730	finite-text-operand-or-substring	r and press 
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881290	rip-relative	0x16b4738	finite-text-operand-or-substring	ess 
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881399	rip-relative	0x178b490	numeric-string-layout-vector	8
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8813a6	rip-relative	0x16b4778	finite-text-operand-or-substring	Delay warning: Ammo will be loaded/nocked before firing.
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8813b0	rip-relative	0x16b4788	finite-text-operand-or-substring	mmo will be loaded/nocked before firing.
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8813bb	rip-relative	0x16b4798	finite-text-operand-or-substring	ed/nocked before firing.
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8813c6	rip-relative	0x16b47a8	finite-text-operand-or-substring	 firing.
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881456	rip-relative	0x178b320	numeric-string-layout-vector	 
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881463	rip-relative	0x16b4750	finite-text-operand-or-substring	You can prepare in advance with 
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x88146d	rip-relative	0x16b4760	finite-text-operand-or-substring	in advance with 
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x8814fa	rip-relative	0x16b46c8	finite-text-operand-or-substring	 or from the inventory menu.
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881504	rip-relative	0x16b46d8	finite-text-operand-or-substring	entory menu.
+reference	PE:6a70a6d9:02711000	ranged-aim-renderer	0x880120	0x881511	rip-relative	0x16b46e0	finite-text-operand-or-substring	enu.
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87db94	inline-immediate-fragment		finite-short-string-fragment	Done
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87dc32	rip-relative	0x16aecb0	finite-text-operand-or-substring	Where will you aim?
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87dc3c	rip-relative	0x16aecc0	finite-text-operand-or-substring	im?
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87dc47	rip-relative	0x16aecc2	finite-text-operand-or-substring	?
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e168	rip-relative	0x167bdf0	finite-text-operand-or-substring	body part
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e1a6	rip-relative	0x167bdf0	finite-text-operand-or-substring	body part
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e223	rip-relative	0x16aeca0	finite-text-operand-or-substring	Impossible shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e230	rip-relative	0x16aeca8	finite-text-operand-or-substring	le shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e239	rip-relative	0x16aecac	finite-text-operand-or-substring	hot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e244	rip-relative	0x16aecae	finite-text-operand-or-substring	t
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e289	rip-relative	0x16af7e8	finite-text-operand-or-substring	Impossible throw
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e2ea	rip-relative	0x16af7d8	finite-text-operand-or-substring	Difficult shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e2f7	rip-relative	0x16af7e0	finite-text-operand-or-substring	t shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e300	rip-relative	0x16af7e4	finite-text-operand-or-substring	ot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e330	rip-relative	0x16af810	finite-text-operand-or-substring	Difficult throw
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e33d	rip-relative	0x16af818	finite-text-operand-or-substring	t throw
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e346	rip-relative	0x16af81c	finite-text-operand-or-substring	row
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e351	rip-relative	0x16af81e	finite-text-operand-or-substring	w
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e3a9	rip-relative	0x16af800	finite-text-operand-or-substring	Tricky shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e3b6	rip-relative	0x16af808	finite-text-operand-or-substring	hot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e3c1	rip-relative	0x16af80a	finite-text-operand-or-substring	t
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e3f0	rip-relative	0x16af7a8	finite-text-operand-or-substring	Tricky throw
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e3fd	rip-relative	0x16af7b0	finite-text-operand-or-substring	hrow
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e45c	rip-relative	0x16af798	finite-text-operand-or-substring	Normal shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e469	rip-relative	0x16af7a0	finite-text-operand-or-substring	hot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e474	rip-relative	0x16af7a2	finite-text-operand-or-substring	t
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e4ab	rip-relative	0x16af7c8	finite-text-operand-or-substring	Normal throw
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e4b8	rip-relative	0x16af7d0	finite-text-operand-or-substring	hrow
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e50f	rip-relative	0x16af7b8	finite-text-operand-or-substring	Easy shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e51c	rip-relative	0x16af7c0	finite-text-operand-or-substring	t
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e554	rip-relative	0x16af8d8	finite-text-operand-or-substring	Easy throw
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e561	rip-relative	0x16af8e0	finite-text-operand-or-substring	ow
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e5ba	rip-relative	0x16af8c8	finite-text-operand-or-substring	Easier shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e5c7	rip-relative	0x16af8d0	finite-text-operand-or-substring	hot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e5d2	rip-relative	0x16af8d2	finite-text-operand-or-substring	t
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e60a	rip-relative	0x16af8f8	finite-text-operand-or-substring	Easier throw
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e617	rip-relative	0x16af900	finite-text-operand-or-substring	hrow
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e677	rip-relative	0x16af8e8	finite-text-operand-or-substring	Simple shot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e684	rip-relative	0x16af8f0	finite-text-operand-or-substring	hot
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e68f	rip-relative	0x16af8f2	finite-text-operand-or-substring	t
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e6bb	rip-relative	0x16af850	finite-text-operand-or-substring	Simple throw
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87e6c8	rip-relative	0x16af858	finite-text-operand-or-substring	hrow
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87eae1	rip-relative	0x1785ce0	numeric-string-layout-vector	,
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87eaee	rip-relative	0x16af820	finite-text-operand-or-substring	Click a target or move the cursor and press 
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87eaf8	rip-relative	0x16af830	finite-text-operand-or-substring	r move the cursor and press 
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87eb03	rip-relative	0x16af840	finite-text-operand-or-substring	r and press 
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87eb10	rip-relative	0x16af848	finite-text-operand-or-substring	ess 
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ec19	rip-relative	0x1785d90	numeric-string-layout-vector	8
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ec26	rip-relative	0x16af888	finite-text-operand-or-substring	Delay warning: Ammo will be loaded/nocked before firing.
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ec30	rip-relative	0x16af898	finite-text-operand-or-substring	mmo will be loaded/nocked before firing.
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ec3b	rip-relative	0x16af8a8	finite-text-operand-or-substring	ed/nocked before firing.
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ec46	rip-relative	0x16af8b8	finite-text-operand-or-substring	 firing.
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ecd6	rip-relative	0x1785c20	numeric-string-layout-vector	 
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ece3	rip-relative	0x16af860	finite-text-operand-or-substring	You can prepare in advance with 
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87eced	rip-relative	0x16af870	finite-text-operand-or-substring	in advance with 
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ed7a	rip-relative	0x16af658	finite-text-operand-or-substring	 or from the inventory menu.
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ed84	rip-relative	0x16af668	finite-text-operand-or-substring	entory menu.
+classic	PE:6a70b91c:0270a000	ranged-aim-renderer	0x87d9a0	0x87ed91	rip-relative	0x16af670	finite-text-operand-or-substring	enu.

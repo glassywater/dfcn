@@ -1,0 +1,233 @@
+Fortress creature-list training/status source grammar
+
+This file records grammar reconstructed from actual Ghidra 12.1.4 C output
+and the original configured PE instruction/jump-table bytes. It is source
+material, not a test, display check, acceptance report, or runtime observation.
+The TSV productions are native output rules; they are not generated runtime
+translations or sample inputs.
+
+SOURCES
+
+reference PE:6a70a6d9:02711000:
+  creature-list-status-renderer: 0x1425c40..0x1427be4; code ends 0x1427acc.
+  creature-identity-training-short: 0x1330880..0x1330c2c.
+  creature-identity-training-full: 0x1330c30..0x13312b8.
+  creature-activity-status: 0x138f620..0x138ffc4.
+  creature-activity-status-color: 0x138ffd0..0x1390cf0.
+classic PE:6a70b91c:0270a000:
+  creature-list-status-renderer: 0x1420bb0..0x1422b54; code ends 0x1422a3c.
+  creature-identity-training-short: 0x132b7f0..0x132bb9c.
+  creature-identity-training-full: 0x132bba0..0x132c228.
+  creature-activity-status: 0x138a590..0x138af34.
+  creature-activity-status-color: 0x138af40..0x138bc60.
+
+Read the corresponding reference-*.c and classic-*.c files for actual C,
+native-switches.tsv for every native selector alias, native-branches.tsv for
+the original branch instructions, and native-images.tsv for paths and hashes.
+The C switch overrides use those original native table targets; they do not
+invent additional text choices. Both editions contain the grammar below.
+Offsets below are byte offsets from the native unit object, not Ghidra's
+inferred pointer-array indexes. Function names describe this source inventory.
+
+TRAINING COLUMN
+
+F = U32(unit + 0x110)
+T = U32(unit + 0x138)
+C = (F & 0x02000000) != 0                 # bit 25: caged
+H = (F & 0x08000000) != 0                 # bit 27: chained
+R = (F & 0x04000000) != 0                 # bit 26: training-state branch
+
+When the renderer selects its training path:
+  label = "Tame"                        if !R
+  label = "Semi-Wild"                   if R and (T == 0 or T > 7)
+  label = "Trained"                     if R and T == 1
+  label = "Well-trained"                if R and T == 2
+  label = "Skillfully trained"          if R and T == 3
+  label = "Expertly trained"            if R and T == 4
+  label = "Exceptionally trained"       if R and T == 5
+  label = "Masterfully trained"          if R and T == 6
+  label = "Domesticated"                if R and T == 7
+
+The comparison is unsigned. Values outside 0..7, including the bit pattern of
+a negative signed value, use Semi-Wild. The register bound is r11d=7, set at
+reference 0x1425dbd / classic 0x1420d2d. Native dispatch is reference
+0x1427564 / classic 0x14224d4; table is 0x1427bc4 / 0x1422b34.
+
+  suffix = " (Caged)"                   if C
+  suffix = " (Chained)"                 if !C and H
+  suffix = ""                           if !C and !H
+  training_status = label + suffix
+
+Caged wins when both flags are set; this writer never emits both suffixes.
+All nine label paths converge before the same suffix selection and the final
+text submission. training-productions.tsv lists the resulting 27 rules once,
+with source RVAs for both editions. The leading ASCII space in either suffix
+and the original capitalization/hyphenation are part of the native text.
+
+The native display colors are separate from the text: Semi-Wild selects 6,
+training levels 1..6 select 7, and Tame/Domesticated select 2; all set the final
+bright flag to 1. Translation does not need to reinterpret these colors.
+
+SELECTION OF ACTIVITY INSTEAD OF TRAINING
+
+The renderer first handles the death/missing branch, then calls the existing
+predicate reference 0x138ed20 / classic 0x1389c90. A true result admits the
+training/activity group. Within this group, the color activity formatter takes
+precedence when all of the following source conditions hold:
+  QWORD(unit + 0xd80) == 0;
+  (U32(unit + 0x82c) & 0x02000000) == 0;
+  and either
+    I32(unit + 0x1280) > 7 and (BYTE(QWORD(unit + 0x1278) + 7) & 4) != 0,
+    or U32(unit + 0x828) has bit 25 set.
+Otherwise this group reaches the nine-label training grammar above.
+
+The color formatter is called at reference 0x14275cb / classic 0x142253b,
+with the current unit and the same text destination/color fields. Existing
+non-text predicates are recorded as call boundaries; no guessed creature
+category name is substituted for their actual source conditions.
+
+OTHER STATUS BRANCHES IN THE SAME RENDERER
+
+The bit-1 branch of F uses historical-figure existence/death flags and the
+native membership/civilization conditions to choose "Missing" or "Deceased".
+These are literal strings assembled with optimized fixed-width loads. The
+substring loads "ing", "g", "ent", "t", and "b" in native-literals.tsv
+are pieces of complete strings, not additional display productions.
+
+If the native training/activity predicate is false and the game-mode global
+is not 4, the relationship helper reference 0x138ef40 / classic 0x1389eb0
+supplies the following unsigned selector. Native relationship dispatch is
+reference 0x142711b / classic 0x142208b. S is the same mutually exclusive
+empty/Caged/Chained suffix grammar defined above.
+
+  0, 11       "Wild Animal" + S
+  1           ("Undead" if QWORD(unit+0xd80) != 0 or
+               (U32(unit+0x118) & 0x1000) != 0; else "Opposed to life") + S
+  2, 3, 4, 7  "Caged Prisoner" if C; else "Chained Prisoner" if H;
+               else "Hostile"
+  5, 14       "Berserk" + S
+  6           "Invader" + S
+  8           diplomat lookup succeeds: "Diplomat / " + activity_plain + S;
+               else merchant lookup succeeds: "Merchant" + S;
+               else I32(unit+0x118) < 0: "Guest / " + activity_plain + S;
+               else "Visitor" if U32(unit+0x114) has 0x800000 set,
+                    otherwise "Friendly"; then append S
+  9           "Underworld" + S
+  10          if reference 0x138ee20 / classic 0x1389d90 is false:
+                 "Caged Prisoner" if C, else "Chained Prisoner" if H,
+                 else "Hostile";
+               otherwise the Guest/Visitor/Friendly branch described for 8
+  12          "Caged Guest" if C; else "Chained Guest" if H;
+               else "Uninvited Guest"
+  13          "Current Resident" + S
+  15          "Undead" + S
+  16          "Agitated Caged Creature" if C;
+               else "Agitated Chained Creature" if H;
+               else "Agitated Wilderness Creature"
+  >16         same Prisoner/Hostile branch as 2, 3, 4, 7
+
+The embedded Caged/Chained Guest/Prisoner/Agitated branches submit their text
+directly; they do not pass through the extra suffix writer. By contrast,
+Diplomat and Guest prefixes wrap the actual plain activity output and then
+append S. Do not flatten a supplier's existing suffix and the renderer's
+outer suffix into one invented grammar step.
+
+When this predicate is false and game mode == 4, I32(unit+0x1270) == 0 gives
+"Independent"; other values give "#" + the native formatted numeric value.
+Its 15-way modulo switch selects colors only and does not add other words.
+"Job" is the column heading in the same renderer, not a status value.
+
+ACTIVITY FORMATTERS
+
+Both complete activity functions are retained as source, including early
+returns and dynamic supplier boundaries. Their text families are:
+  job formatter result (current job object with its 0x10000 flag);
+  active activity/order virtual formatter result;
+  active activity virtual formatter result, optionally followed by "!";
+  "Return Treasure";
+  "Conduct Meeting";
+  "Attend Parley";
+  "Attend Meeting";
+  "Make Request of " + native site-name formatter;
+  native item formatter + " at " + native site-name formatter;
+  "New Arrival";
+  "No activity";
+  "Mercenary", "Monster Slayer", or "Soldier";
+  "Noble";
+  "No job";
+  the child/baby no-occupation branch: empty text, "Caged", or "Chained".
+
+The native job/item/site/activity formatter results remain typed supplier
+nonterminals. They are not a new finite list inferred from spelling, and
+custom names are not normalized by this source grammar.
+
+For the soldier-family branch an existing order object appends one of these
+failure suffixes, selected by its virtual status result:
+  0   " (not following order)"
+  1   " (activity cancelled)"
+  2   " (no barracks)"
+  3   " (improper barracks)"
+  4   " (no activity)"
+  5   " (cannot individually drill)"
+  6   " (does not exist)"
+  7   " (no archery target)"
+  8   " (improper building)"
+  9   " (unreachable location)"
+  10  " (invalid location)"
+  11  " (no reachable valid target)"
+  12  " (no burrow)"
+  13  " (not in squad)"
+  14  " (no patrol route)"
+  15  " (no reachable point on route)"
+  16  " (invalid order)"
+  17  " (no temple)"
+  18  " (no library)"
+  19  " (no item)"
+  20  " (cannot leave site)"
+  21  " (location no longer in zone)"
+  unsigned values >= 22: " (cannot follow order)"
+No order object means no failure suffix.
+
+The profession gate before these choices uses (I16(unit+0xa0) - 75) <= 22,
+with an unsigned comparison. All 23 values 75..97 map to the same body:
+  reference plain table 0x138ff50, remap 0x138ff54;
+  reference color table 0x1390c7c -> 0x139086a, remap 0x1390c80;
+  classic plain table 0x138aec0, remap 0x138aec4;
+  classic color table 0x138bbec -> 0x138b7da, remap 0x138bbf0.
+The 23 original remap bytes are all 00. Consequently Ghidra's "Switch with
+1 destination removed" warning describes collapse of a one-target switch;
+the native-switches.tsv keeps each original selector alias. No source text
+branch is hidden behind that warning.
+
+There is a real distinction at the final fallback restraint writer:
+  activity_plain appends " (Caged)" or " (Chained)" to its fallback result.
+  activity_color assigns " (Caged)" or " (Chained)" to its fallback result
+    (reference call at 0x1390c24; classic at 0x138bb94), replacing that result.
+  The child/baby branch separately assigns bare "Caged" or "Chained".
+Thus a complete display value can be the leading-space suffix itself.
+Early returns from job, active-activity, meeting, request and item/site paths
+precede this final fallback restraint writer; do not automatically append S
+to every activity supplier output.
+
+IDENTITY-ROW TRAINING MARKERS
+
+Both identity formatters append the following only when F bit 26 is set:
+  identity_training_suffix = " (" + marker(T) + ")"
+  T=0     marker = "Semi-Wild"
+  T=1     marker = "Trained"
+  T=2     marker = "-Trained-"
+  T=3     marker = "+Trained+"
+  T=4     marker = "*Trained*"
+  T=5     marker = BYTE(0xf0) + "Trained" + BYTE(0xf0)
+  T=6     marker = BYTE(0x0f) + "Trained" + BYTE(0x0f)
+  T=7     marker = "Tame"
+  unsigned T>7: marker = "Semi-Wild"
+
+0xf0 and 0x0f are original single-byte CP437 game glyph codes, not UTF-8
+sequences or ASCII punctuation. The C signed-char assignment -0x10 is the
+same byte 0xf0. Preserve this distinction from the expanded status-column
+labels "Exceptionally trained", "Masterfully trained", and "Domesticated".
+Without F bit 26 these identity functions append no training parentheses.
+The original gender marker bytes 0x0b/0x0c and optional 0x78 decoration are
+separate identity-format choices preceding training; they are not labels in
+the status column. Existing name/species/profession suppliers remain intact.

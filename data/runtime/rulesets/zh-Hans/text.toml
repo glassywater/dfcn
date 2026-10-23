@@ -8,6 +8,11 @@ base = "text"
 [[rulesets]]
 name = "name"
 
+# Only a producer selecting the complete EnglishName field may use this.
+# Resolve real site identities first, then use the shared English site renderer.
+[[rulesets]]
+name = "english_site"
+
 [[rulesets]]
 name = "person"
 

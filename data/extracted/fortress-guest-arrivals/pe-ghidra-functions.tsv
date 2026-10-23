@@ -1,0 +1,13 @@
+edition	image	role	start_rva	end_rva	assembly_file
+reference	PE:6a70a6d9:02711000	travellers-producer	0x10b150	0x110260	pe-reference-travellers-producer.asm
+reference	PE:6a70a6d9:02711000	announcement-submit	0xe3c20	0xe569d	pe-reference-announcement-submit.asm
+reference	PE:6a70a6d9:02711000	report-category	0xeaa20	0xeab14	pe-reference-report-category.asm
+reference	PE:6a70a6d9:02711000	migrant-producer	0xe46c20	0xe4a254	pe-reference-migrant-producer.asm
+reference	PE:6a70a6d9:02711000	fortress-alert-hover-owner	0x3d6950	0x3fca34	pe-reference-fortress-alert-hover-owner.asm
+reference	PE:6a70a6d9:02711000	alert-popup-renderer	0x40d5f0	0x40f77a	pe-reference-alert-popup-renderer.asm
+classic	PE:6a70b91c:0270a000	travellers-producer	0x10b0e0	0x1101f0	pe-classic-travellers-producer.asm
+classic	PE:6a70b91c:0270a000	announcement-submit	0xe3bb0	0xe562d	pe-classic-announcement-submit.asm
+classic	PE:6a70b91c:0270a000	report-category	0xea9b0	0xeaaa4	pe-classic-report-category.asm
+classic	PE:6a70b91c:0270a000	migrant-producer	0xe41b90	0xe451c4	pe-classic-migrant-producer.asm
+classic	PE:6a70b91c:0270a000	fortress-alert-hover-owner	0x3d4510	0x3fa5f4	pe-classic-fortress-alert-hover-owner.asm
+classic	PE:6a70b91c:0270a000	alert-popup-renderer	0x40b1b0	0x40d33a	pe-classic-alert-popup-renderer.asm

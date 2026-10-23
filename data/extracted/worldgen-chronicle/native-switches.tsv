@@ -1,0 +1,485 @@
+edition	role	dispatch_rva	table_rva	remap_rva	selector	table_index	target_rva
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		0	0	0xdf8e60
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		1	1	0xdf8e9f
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		2	2	0xdf8f45
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		3	3	0xe056a3
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		4	4	0xdf8f84
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		5	5	0xdf8fc3
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		6	6	0xdf9002
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		7	7	0xdf9041
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		8	8	0xdf9080
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		9	9	0xdf90bf
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		10	10	0xdf90fe
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		11	11	0xdf913d
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		12	12	0xdf917c
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		13	13	0xdf91bb
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		14	14	0xdf91fa
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		15	15	0xdf9239
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		16	16	0xdf9278
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		17	17	0xdf92b7
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		18	18	0xdf92f6
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		19	19	0xdf9335
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		20	20	0xdf9374
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		21	21	0xdf93b3
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		22	22	0xdf93f2
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		23	23	0xdf9431
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		24	24	0xdf9470
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		25	25	0xdf94af
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		26	26	0xdf94ee
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		27	27	0xdf952d
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		28	28	0xe056a3
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		29	29	0xe056a3
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		30	30	0xdf956c
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		31	31	0xdf95ab
+reference	worldgen-dialog-renderer	0xdf8e5e	0xe056d4		32	32	0xdf966e
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		0	0	0xdfacda
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		1	1	0xdface7
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		2	2	0xdfacf4
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		3	3	0xdfad03
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		4	4	0xdfad10
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		5	5	0xdfad1d
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		6	6	0xdfad29
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		7	7	0xdfad34
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		8	8	0xdfad41
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		9	9	0xdfad4b
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		10	10	0xdfad56
+reference	worldgen-dialog-renderer	0xdfacd8	0xe05758		11	11	0xdfad60
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	0	0	0xdfb079
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	1	1	0xdfb0b3
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	2	1	0xdfb0b3
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	3	2	0xdfb0ed
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	4	1	0xdfb0b3
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	5	3	0xdfb127
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	6	4	0xdfb161
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	7	5	0xdfb19b
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	8	6	0xdfb1d5
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	9	7	0xdfb20f
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	10	8	0xdfb249
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	11	9	0xdfb2bd
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	12	10	0xdfb2f7
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	13	11	0xdfb331
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	14	12	0xdfb36b
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	15	13	0xdfb3a5
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	16	14	0xdfb3df
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	17	15	0xdfb419
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	18	16	0xdfb453
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	19	17	0xdfb48d
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	20	18	0xdfb283
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	21	9	0xdfb2bd
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	22	10	0xdfb2f7
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	23	11	0xdfb331
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	24	12	0xdfb36b
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	25	13	0xdfb3a5
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	26	14	0xdfb3df
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	27	15	0xdfb419
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	28	16	0xdfb453
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	29	17	0xdfb48d
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	30	19	0xdfb4c7
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	31	20	0xdfb501
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	32	1	0xdfb0b3
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	33	2	0xdfb0ed
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	34	3	0xdfb127
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	35	21	0xdfb53b
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	36	21	0xdfb53b
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	37	22	0xdfb575
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	38	22	0xdfb575
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	39	23	0xdfb5af
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	40	24	0xdfb5e9
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	41	25	0xdfb620
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	42	25	0xdfb620
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	43	9	0xdfb2bd
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	44	10	0xdfb2f7
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	45	11	0xdfb331
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	46	12	0xdfb36b
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	47	13	0xdfb3a5
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	48	14	0xdfb3df
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	49	15	0xdfb419
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	50	16	0xdfb453
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	51	17	0xdfb48d
+reference	worldgen-dialog-renderer	0xdfb077	0xe05788	0xe057f4	52	26	0xdfb657
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		0	0	0xdfc835
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		1	1	0xdfc86f
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		2	2	0xdfc8a9
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		3	3	0xdfc8e3
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		4	4	0xdfc91d
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		5	5	0xdfc957
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		6	6	0xdfc991
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		7	7	0xdfc9cb
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		8	8	0xdfca05
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		9	9	0xdfca3f
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		10	10	0xdfca79
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		11	11	0xdfcab3
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		12	12	0xdfcaed
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		13	13	0xdfcb27
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		14	14	0xdfcb61
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		15	15	0xdfcb9b
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		16	16	0xdfcbd5
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		17	17	0xdfcc0f
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		18	18	0xdfcc49
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		19	19	0xdfcc83
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		20	20	0xdfccbd
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		21	21	0xdfccf7
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		22	22	0xdfcd31
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		23	23	0xdfcd6b
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		24	24	0xdfcda5
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		25	25	0xdfcddf
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		26	26	0xdfce19
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		27	27	0xdfce53
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		28	28	0xdfce8d
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		29	29	0xdfcec7
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		30	30	0xdfcf01
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		31	31	0xdfcf3b
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		32	32	0xdfcf75
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		33	33	0xdfcfaf
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		34	34	0xdfcfe9
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		35	35	0xdfd023
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		36	36	0xdfd05d
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		37	37	0xdfd097
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		38	38	0xdfd0d1
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		39	39	0xdfd10b
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		40	40	0xdfd145
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		41	41	0xdfd17f
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		42	42	0xdfd1b9
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		43	43	0xdfd1f3
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		44	44	0xdfd22d
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		45	45	0xdfd267
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		46	46	0xdfd2a1
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		47	47	0xdfd2db
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		48	48	0xdfd315
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		49	49	0xdfd34c
+reference	worldgen-dialog-renderer	0xdfc833	0xe0582c		50	50	0xdfd383
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		0	0	0xdfddfa
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		1	1	0xdfddfa
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		2	2	0xdfde04
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		3	3	0xdfddfa
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		4	4	0xdfddfa
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		5	5	0xdfddfa
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		6	6	0xdfde04
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		7	7	0xdfde04
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		8	8	0xdfddfa
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		9	9	0xdfde04
+reference	worldgen-dialog-renderer	0xdfddf8	0xe058f8		10	10	0xdfddfa
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		0	0	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		1	1	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		2	2	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		3	3	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		4	4	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		5	5	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		6	6	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		7	7	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		8	8	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		9	9	0xdfde39
+reference	worldgen-dialog-renderer	0xdfde37	0xe05924		10	10	0xdfde39
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		0	0	0xdfecc1
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		1	1	0xdfe92e
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		2	2	0xdfe92e
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		3	3	0xdfe92e
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		4	4	0xdfe92e
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		5	5	0xdfecc1
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		6	6	0xdfecc1
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		7	7	0xdfe92e
+reference	worldgen-dialog-renderer	0xdfe92c	0xe05950		8	8	0xdfe92e
+reference	worldgen-dialog-renderer	0xe015ff	0xe05974		0	0	0xe01601
+reference	worldgen-dialog-renderer	0xe015ff	0xe05974		1	1	0xe01647
+reference	worldgen-dialog-renderer	0xe015ff	0xe05974		2	2	0xe01845
+reference	worldgen-dialog-renderer	0xe015ff	0xe05974		3	3	0xe0188b
+reference	worldgen-dialog-renderer	0xe015ff	0xe05974		4	4	0xe018d1
+reference	worldgen-dialog-renderer	0xe015ff	0xe05974		5	5	0xe01917
+reference	worldgen-dialog-renderer	0xe015ff	0xe05974		6	6	0xe0195d
+reference	worldgen-dialog-renderer	0xe015ff	0xe05974		7	7	0xe01bc6
+reference	worldgen-dialog-renderer	0xe01e1c	0xe059b4		0	0	0xe01e1e
+reference	worldgen-dialog-renderer	0xe01e1c	0xe059b4		1	1	0xe01f6f
+reference	worldgen-dialog-renderer	0xe01e1c	0xe059b4		2	2	0xe020e9
+reference	worldgen-dialog-renderer	0xe01e1c	0xe059b4		3	3	0xe02263
+reference	worldgen-dialog-renderer	0xe01e1c	0xe059b4		4	4	0xe023dd
+reference	worldgen-dialog-renderer	0xe01e1c	0xe059b4		5	5	0xe02557
+reference	worldgen-dialog-renderer	0xe01e1c	0xe059b4		6	6	0xe026d1
+reference	worldgen-dialog-renderer	0xe01e1c	0xe059b4		7	7	0xe0284b
+reference	worldgen-step-and-chronicle-selection	0xf500e0	0xf55818		0	0	0xf500e2
+reference	worldgen-step-and-chronicle-selection	0xf500e0	0xf55818		1	1	0xf500ec
+reference	worldgen-step-and-chronicle-selection	0xf500e0	0xf55818		2	2	0xf50100
+reference	worldgen-step-and-chronicle-selection	0xf500e0	0xf55818		3	3	0xf50112
+reference	worldgen-step-and-chronicle-selection	0xf500e0	0xf55818		4	4	0xf5011c
+reference	worldgen-step-and-chronicle-selection	0xf500e0	0xf55818		5	5	0xf50128
+reference	worldgen-step-and-chronicle-selection	0xf50178	0xf55830		0	0	0xf5017a
+reference	worldgen-step-and-chronicle-selection	0xf50178	0xf55830		1	1	0xf5017a
+reference	worldgen-step-and-chronicle-selection	0xf50178	0xf55830		2	2	0xf50221
+reference	worldgen-step-and-chronicle-selection	0xf50178	0xf55830		3	3	0xf5017a
+reference	worldgen-step-and-chronicle-selection	0xf50178	0xf55830		4	4	0xf50278
+reference	worldgen-step-and-chronicle-selection	0xf50178	0xf55830		5	5	0xf5017a
+reference	worldgen-step-and-chronicle-selection	0xf50178	0xf55830		6	6	0xf5017a
+reference	worldgen-step-and-chronicle-selection	0xf50178	0xf55830		7	7	0xf5017a
+reference	worldgen-step-and-chronicle-selection	0xf503cb	0xf55850		0	0	0xf503cd
+reference	worldgen-step-and-chronicle-selection	0xf503cb	0xf55850		1	1	0xf503dc
+reference	worldgen-step-and-chronicle-selection	0xf503cb	0xf55850		2	2	0xf5043f
+reference	worldgen-step-and-chronicle-selection	0xf503cb	0xf55850		3	3	0xf503eb
+reference	worldgen-step-and-chronicle-selection	0xf503cb	0xf55850		4	4	0xf5043f
+reference	worldgen-step-and-chronicle-selection	0xf503cb	0xf55850		5	5	0xf503fa
+reference	worldgen-step-and-chronicle-selection	0xf503cb	0xf55850		6	6	0xf50409
+reference	worldgen-step-and-chronicle-selection	0xf503cb	0xf55850		7	7	0xf50418
+reference	worldgen-step-and-chronicle-selection	0xf50d2a	0xf55870		0	0	0xf50d2c
+reference	worldgen-step-and-chronicle-selection	0xf50d2a	0xf55870		1	1	0xf50d3d
+reference	worldgen-step-and-chronicle-selection	0xf50d2a	0xf55870		2	2	0xf50d51
+reference	worldgen-step-and-chronicle-selection	0xf50d2a	0xf55870		3	3	0xf50d65
+reference	worldgen-step-and-chronicle-selection	0xf50d2a	0xf55870		4	4	0xf50d6c
+reference	worldgen-step-and-chronicle-selection	0xf50d2a	0xf55870		5	5	0xf50d73
+reference	worldgen-step-and-chronicle-selection	0xf50db1	0xf55888		0	0	0xf50db3
+reference	worldgen-step-and-chronicle-selection	0xf50db1	0xf55888		1	1	0xf50dce
+reference	worldgen-step-and-chronicle-selection	0xf50db1	0xf55888		2	2	0xf50e46
+reference	worldgen-step-and-chronicle-selection	0xf50db1	0xf55888		3	3	0xf50de6
+reference	worldgen-step-and-chronicle-selection	0xf50db1	0xf55888		4	4	0xf50e46
+reference	worldgen-step-and-chronicle-selection	0xf50db1	0xf55888		5	5	0xf50dfe
+reference	worldgen-step-and-chronicle-selection	0xf50db1	0xf55888		6	6	0xf50e16
+reference	worldgen-step-and-chronicle-selection	0xf50db1	0xf55888		7	7	0xf50e2e
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		0	0	0xf5330c
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		1	1	0xf5330c
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		2	2	0xf5330c
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		3	3	0xf532f5
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		4	4	0xf5330c
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		5	5	0xf5333d
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		6	6	0xf5330c
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		7	7	0xf5330c
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		8	8	0xf5330c
+reference	worldgen-step-and-chronicle-selection	0xf532f3	0xf558a8		9	9	0xf5330c
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		0	0	0xdf3dd0
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		1	1	0xdf3e0f
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		2	2	0xdf3eb5
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		3	3	0xe00613
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		4	4	0xdf3ef4
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		5	5	0xdf3f33
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		6	6	0xdf3f72
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		7	7	0xdf3fb1
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		8	8	0xdf3ff0
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		9	9	0xdf402f
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		10	10	0xdf406e
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		11	11	0xdf40ad
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		12	12	0xdf40ec
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		13	13	0xdf412b
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		14	14	0xdf416a
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		15	15	0xdf41a9
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		16	16	0xdf41e8
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		17	17	0xdf4227
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		18	18	0xdf4266
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		19	19	0xdf42a5
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		20	20	0xdf42e4
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		21	21	0xdf4323
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		22	22	0xdf4362
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		23	23	0xdf43a1
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		24	24	0xdf43e0
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		25	25	0xdf441f
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		26	26	0xdf445e
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		27	27	0xdf449d
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		28	28	0xe00613
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		29	29	0xe00613
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		30	30	0xdf44dc
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		31	31	0xdf451b
+classic	worldgen-dialog-renderer	0xdf3dce	0xe00644		32	32	0xdf45de
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		0	0	0xdf5c4a
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		1	1	0xdf5c57
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		2	2	0xdf5c64
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		3	3	0xdf5c73
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		4	4	0xdf5c80
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		5	5	0xdf5c8d
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		6	6	0xdf5c99
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		7	7	0xdf5ca4
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		8	8	0xdf5cb1
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		9	9	0xdf5cbb
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		10	10	0xdf5cc6
+classic	worldgen-dialog-renderer	0xdf5c48	0xe006c8		11	11	0xdf5cd0
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	0	0	0xdf5fe9
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	1	1	0xdf6023
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	2	1	0xdf6023
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	3	2	0xdf605d
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	4	1	0xdf6023
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	5	3	0xdf6097
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	6	4	0xdf60d1
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	7	5	0xdf610b
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	8	6	0xdf6145
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	9	7	0xdf617f
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	10	8	0xdf61b9
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	11	9	0xdf622d
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	12	10	0xdf6267
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	13	11	0xdf62a1
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	14	12	0xdf62db
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	15	13	0xdf6315
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	16	14	0xdf634f
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	17	15	0xdf6389
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	18	16	0xdf63c3
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	19	17	0xdf63fd
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	20	18	0xdf61f3
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	21	9	0xdf622d
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	22	10	0xdf6267
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	23	11	0xdf62a1
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	24	12	0xdf62db
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	25	13	0xdf6315
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	26	14	0xdf634f
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	27	15	0xdf6389
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	28	16	0xdf63c3
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	29	17	0xdf63fd
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	30	19	0xdf6437
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	31	20	0xdf6471
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	32	1	0xdf6023
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	33	2	0xdf605d
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	34	3	0xdf6097
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	35	21	0xdf64ab
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	36	21	0xdf64ab
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	37	22	0xdf64e5
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	38	22	0xdf64e5
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	39	23	0xdf651f
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	40	24	0xdf6559
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	41	25	0xdf6590
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	42	25	0xdf6590
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	43	9	0xdf622d
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	44	10	0xdf6267
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	45	11	0xdf62a1
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	46	12	0xdf62db
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	47	13	0xdf6315
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	48	14	0xdf634f
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	49	15	0xdf6389
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	50	16	0xdf63c3
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	51	17	0xdf63fd
+classic	worldgen-dialog-renderer	0xdf5fe7	0xe006f8	0xe00764	52	26	0xdf65c7
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		0	0	0xdf77a5
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		1	1	0xdf77df
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		2	2	0xdf7819
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		3	3	0xdf7853
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		4	4	0xdf788d
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		5	5	0xdf78c7
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		6	6	0xdf7901
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		7	7	0xdf793b
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		8	8	0xdf7975
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		9	9	0xdf79af
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		10	10	0xdf79e9
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		11	11	0xdf7a23
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		12	12	0xdf7a5d
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		13	13	0xdf7a97
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		14	14	0xdf7ad1
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		15	15	0xdf7b0b
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		16	16	0xdf7b45
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		17	17	0xdf7b7f
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		18	18	0xdf7bb9
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		19	19	0xdf7bf3
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		20	20	0xdf7c2d
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		21	21	0xdf7c67
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		22	22	0xdf7ca1
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		23	23	0xdf7cdb
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		24	24	0xdf7d15
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		25	25	0xdf7d4f
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		26	26	0xdf7d89
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		27	27	0xdf7dc3
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		28	28	0xdf7dfd
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		29	29	0xdf7e37
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		30	30	0xdf7e71
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		31	31	0xdf7eab
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		32	32	0xdf7ee5
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		33	33	0xdf7f1f
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		34	34	0xdf7f59
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		35	35	0xdf7f93
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		36	36	0xdf7fcd
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		37	37	0xdf8007
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		38	38	0xdf8041
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		39	39	0xdf807b
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		40	40	0xdf80b5
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		41	41	0xdf80ef
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		42	42	0xdf8129
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		43	43	0xdf8163
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		44	44	0xdf819d
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		45	45	0xdf81d7
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		46	46	0xdf8211
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		47	47	0xdf824b
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		48	48	0xdf8285
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		49	49	0xdf82bc
+classic	worldgen-dialog-renderer	0xdf77a3	0xe0079c		50	50	0xdf82f3
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		0	0	0xdf8d6a
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		1	1	0xdf8d6a
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		2	2	0xdf8d74
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		3	3	0xdf8d6a
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		4	4	0xdf8d6a
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		5	5	0xdf8d6a
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		6	6	0xdf8d74
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		7	7	0xdf8d74
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		8	8	0xdf8d6a
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		9	9	0xdf8d74
+classic	worldgen-dialog-renderer	0xdf8d68	0xe00868		10	10	0xdf8d6a
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		0	0	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		1	1	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		2	2	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		3	3	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		4	4	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		5	5	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		6	6	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		7	7	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		8	8	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		9	9	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf8da7	0xe00894		10	10	0xdf8da9
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		0	0	0xdf9c31
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		1	1	0xdf989e
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		2	2	0xdf989e
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		3	3	0xdf989e
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		4	4	0xdf989e
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		5	5	0xdf9c31
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		6	6	0xdf9c31
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		7	7	0xdf989e
+classic	worldgen-dialog-renderer	0xdf989c	0xe008c0		8	8	0xdf989e
+classic	worldgen-dialog-renderer	0xdfc56f	0xe008e4		0	0	0xdfc571
+classic	worldgen-dialog-renderer	0xdfc56f	0xe008e4		1	1	0xdfc5b7
+classic	worldgen-dialog-renderer	0xdfc56f	0xe008e4		2	2	0xdfc7b5
+classic	worldgen-dialog-renderer	0xdfc56f	0xe008e4		3	3	0xdfc7fb
+classic	worldgen-dialog-renderer	0xdfc56f	0xe008e4		4	4	0xdfc841
+classic	worldgen-dialog-renderer	0xdfc56f	0xe008e4		5	5	0xdfc887
+classic	worldgen-dialog-renderer	0xdfc56f	0xe008e4		6	6	0xdfc8cd
+classic	worldgen-dialog-renderer	0xdfc56f	0xe008e4		7	7	0xdfcb36
+classic	worldgen-dialog-renderer	0xdfcd8c	0xe00924		0	0	0xdfcd8e
+classic	worldgen-dialog-renderer	0xdfcd8c	0xe00924		1	1	0xdfcedf
+classic	worldgen-dialog-renderer	0xdfcd8c	0xe00924		2	2	0xdfd059
+classic	worldgen-dialog-renderer	0xdfcd8c	0xe00924		3	3	0xdfd1d3
+classic	worldgen-dialog-renderer	0xdfcd8c	0xe00924		4	4	0xdfd34d
+classic	worldgen-dialog-renderer	0xdfcd8c	0xe00924		5	5	0xdfd4c7
+classic	worldgen-dialog-renderer	0xdfcd8c	0xe00924		6	6	0xdfd641
+classic	worldgen-dialog-renderer	0xdfcd8c	0xe00924		7	7	0xdfd7bb
+classic	worldgen-step-and-chronicle-selection	0xf4b050	0xf50788		0	0	0xf4b052
+classic	worldgen-step-and-chronicle-selection	0xf4b050	0xf50788		1	1	0xf4b05c
+classic	worldgen-step-and-chronicle-selection	0xf4b050	0xf50788		2	2	0xf4b070
+classic	worldgen-step-and-chronicle-selection	0xf4b050	0xf50788		3	3	0xf4b082
+classic	worldgen-step-and-chronicle-selection	0xf4b050	0xf50788		4	4	0xf4b08c
+classic	worldgen-step-and-chronicle-selection	0xf4b050	0xf50788		5	5	0xf4b098
+classic	worldgen-step-and-chronicle-selection	0xf4b0e8	0xf507a0		0	0	0xf4b0ea
+classic	worldgen-step-and-chronicle-selection	0xf4b0e8	0xf507a0		1	1	0xf4b0ea
+classic	worldgen-step-and-chronicle-selection	0xf4b0e8	0xf507a0		2	2	0xf4b191
+classic	worldgen-step-and-chronicle-selection	0xf4b0e8	0xf507a0		3	3	0xf4b0ea
+classic	worldgen-step-and-chronicle-selection	0xf4b0e8	0xf507a0		4	4	0xf4b1e8
+classic	worldgen-step-and-chronicle-selection	0xf4b0e8	0xf507a0		5	5	0xf4b0ea
+classic	worldgen-step-and-chronicle-selection	0xf4b0e8	0xf507a0		6	6	0xf4b0ea
+classic	worldgen-step-and-chronicle-selection	0xf4b0e8	0xf507a0		7	7	0xf4b0ea
+classic	worldgen-step-and-chronicle-selection	0xf4b33b	0xf507c0		0	0	0xf4b33d
+classic	worldgen-step-and-chronicle-selection	0xf4b33b	0xf507c0		1	1	0xf4b34c
+classic	worldgen-step-and-chronicle-selection	0xf4b33b	0xf507c0		2	2	0xf4b3af
+classic	worldgen-step-and-chronicle-selection	0xf4b33b	0xf507c0		3	3	0xf4b35b
+classic	worldgen-step-and-chronicle-selection	0xf4b33b	0xf507c0		4	4	0xf4b3af
+classic	worldgen-step-and-chronicle-selection	0xf4b33b	0xf507c0		5	5	0xf4b36a
+classic	worldgen-step-and-chronicle-selection	0xf4b33b	0xf507c0		6	6	0xf4b379
+classic	worldgen-step-and-chronicle-selection	0xf4b33b	0xf507c0		7	7	0xf4b388
+classic	worldgen-step-and-chronicle-selection	0xf4bc9a	0xf507e0		0	0	0xf4bc9c
+classic	worldgen-step-and-chronicle-selection	0xf4bc9a	0xf507e0		1	1	0xf4bcad
+classic	worldgen-step-and-chronicle-selection	0xf4bc9a	0xf507e0		2	2	0xf4bcc1
+classic	worldgen-step-and-chronicle-selection	0xf4bc9a	0xf507e0		3	3	0xf4bcd5
+classic	worldgen-step-and-chronicle-selection	0xf4bc9a	0xf507e0		4	4	0xf4bcdc
+classic	worldgen-step-and-chronicle-selection	0xf4bc9a	0xf507e0		5	5	0xf4bce3
+classic	worldgen-step-and-chronicle-selection	0xf4bd21	0xf507f8		0	0	0xf4bd23
+classic	worldgen-step-and-chronicle-selection	0xf4bd21	0xf507f8		1	1	0xf4bd3e
+classic	worldgen-step-and-chronicle-selection	0xf4bd21	0xf507f8		2	2	0xf4bdb6
+classic	worldgen-step-and-chronicle-selection	0xf4bd21	0xf507f8		3	3	0xf4bd56
+classic	worldgen-step-and-chronicle-selection	0xf4bd21	0xf507f8		4	4	0xf4bdb6
+classic	worldgen-step-and-chronicle-selection	0xf4bd21	0xf507f8		5	5	0xf4bd6e
+classic	worldgen-step-and-chronicle-selection	0xf4bd21	0xf507f8		6	6	0xf4bd86
+classic	worldgen-step-and-chronicle-selection	0xf4bd21	0xf507f8		7	7	0xf4bd9e
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		0	0	0xf4e27c
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		1	1	0xf4e27c
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		2	2	0xf4e27c
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		3	3	0xf4e265
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		4	4	0xf4e27c
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		5	5	0xf4e2ad
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		6	6	0xf4e27c
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		7	7	0xf4e27c
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		8	8	0xf4e27c
+classic	worldgen-step-and-chronicle-selection	0xf4e263	0xf50818		9	9	0xf4e27c

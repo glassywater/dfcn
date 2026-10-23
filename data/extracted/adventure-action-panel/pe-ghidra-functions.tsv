@@ -1,0 +1,11 @@
+edition	image	role	start_rva	code_end_rva	assembly_file
+reference	PE:6a70a6d9:02711000	draw-string	0xad9960	0xad9a33	pe-reference-draw-string.asm
+reference	PE:6a70a6d9:02711000	quantity-string	0x52c130	0x52c1e3	pe-reference-quantity-string.asm
+reference	PE:6a70a6d9:02711000	integer-decimal	0x52c2b0	0x52c388	pe-reference-integer-decimal.asm
+reference	PE:6a70a6d9:02711000	current-key-draw	0xc394b0	0xc395b5	pe-reference-current-key-draw.asm
+reference	PE:6a70a6d9:02711000	current-key-caption	0x8ecb30	0x8ece32	pe-reference-current-key-caption.asm
+classic	PE:6a70b91c:0270a000	draw-string	0xad69a0	0xad6a73	pe-classic-draw-string.asm
+classic	PE:6a70b91c:0270a000	quantity-string	0x529cf0	0x529da3	pe-classic-quantity-string.asm
+classic	PE:6a70b91c:0270a000	integer-decimal	0x529db0	0x529e88	pe-classic-integer-decimal.asm
+classic	PE:6a70b91c:0270a000	current-key-draw	0xc364f0	0xc365f5	pe-classic-current-key-draw.asm
+classic	PE:6a70b91c:0270a000	current-key-caption	0x8ea360	0x8ea662	pe-classic-current-key-caption.asm

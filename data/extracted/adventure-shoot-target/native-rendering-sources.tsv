@@ -1,0 +1,25 @@
+edition	decompiled_source	provider_rva	field	native_branch	state_or_operation	meaning	font_contract
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	conflict prefix	level=0	0x1000007	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	conflict prefix	level=1	0x1010002	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	conflict prefix	level=2	0x1010007	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	conflict prefix	level=3	0x1010003	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	conflict prefix	level=4	0x1010006	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	conflict prefix	level=5	0x1010004	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	conflict prefix	level=6	0x1010005	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+steam	pe-steam-ghidra-decompiled.c	0x7e4860	ally prefix	eligible shared activity	0x1010001	gps+0x8c..0x8f	ordinary addst; independent screentexpos_flag array retained
+steam	pe-steam-ghidra-decompiled.c	0x885528	prefix dispatch	all options	virtual+0x118	starts at frame-left+10; one baseline	no half-font operation
+steam	pe-steam-ghidra-decompiled.c	0x88552e	body color reset	after prefix	0x1010007	same baseline; x continues after prefix; no coordinate reset	no screentexpos_flag normalization
+steam	pe-steam-ghidra-decompiled.c	0x885628	body draw	after caption acquisition and optional native truncation	addst	category4 virtual+8; categories3/6/7 virtual+0x10	one draw, not top/bottom pair
+steam	pe-steam-ghidra-decompiled.c	0xbb190	character writer	all addst bytes	cell[0..6] only	writes character and RGB colors; clears texture plane; increments x	independent screentexpos_flag array (gps+0x218) is never written; stale flags may differ within one native caption
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	conflict prefix	level=0	0x1000007	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	conflict prefix	level=1	0x1010002	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	conflict prefix	level=2	0x1010007	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	conflict prefix	level=3	0x1010003	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	conflict prefix	level=4	0x1010006	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	conflict prefix	level=5	0x1010004	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	conflict prefix	level=6	0x1010005	gps+0x8c..0x8f: indexed foreground, background, bright, indexed-mode	ordinary addst; independent screentexpos_flag array retained
+classic	pe-classic-ghidra-decompiled.c	0x7e20e0	ally prefix	eligible shared activity	0x1010001	gps+0x8c..0x8f	ordinary addst; independent screentexpos_flag array retained
+classic	pe-classic-ghidra-decompiled.c	0x882da8	prefix dispatch	all options	virtual+0x118	starts at frame-left+10; one baseline	no half-font operation
+classic	pe-classic-ghidra-decompiled.c	0x882dae	body color reset	after prefix	0x1010007	same baseline; x continues after prefix; no coordinate reset	no screentexpos_flag normalization
+classic	pe-classic-ghidra-decompiled.c	0x882ea8	body draw	after caption acquisition and optional native truncation	addst	category4 virtual+8; categories3/6/7 virtual+0x10	one draw, not top/bottom pair
+classic	pe-classic-ghidra-decompiled.c	0xbb120	character writer	all addst bytes	cell[0..6] only	writes character and RGB colors; clears texture plane; increments x	independent screentexpos_flag array (gps+0x218) is never written; stale flags may differ within one native caption

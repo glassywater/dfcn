@@ -3,6 +3,9 @@
 std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
         const NativeHistoryDocument &document, bool use_translation_cache) const {
     using Pieces = std::vector<LegendsTextPiece>;
+    // markup_text_link_type::HEC is 11 (native parser d53279). Type 9
+    // belongs to ART_IMAGE; the Legends collection tab's type is separate.
+    constexpr int collection_link_type = 11;
     const auto &name_context = document.page ? document.page->data : document.event;
     // Entity WORD snapshots are owned by the document. Their complete naming
     // context remains live, just as it does for catalog titles and headings.
@@ -265,6 +268,12 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
                 "; id=" + std::to_string(id) + "; subid=" + std::to_string(subid);
             return std::nullopt;
         }
+        if (kind == NativeHistoryObjectKind::Underground &&
+                event.fields.contains("subject.underground." + std::to_string(id) + ".silent")) {
+            // Native b94940 deliberately prints no label for these captured
+            // layer branches. A missing layer still uses its explicit label.
+            return Pieces{};
+        }
         std::optional<std::string> name;
         bool preserved_reference = false;
         const SiteReferenceSource *site_source = nullptr;
@@ -383,7 +392,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
                 kind == NativeHistoryObjectKind::Underground ? 5 :
                 kind == NativeHistoryObjectKind::Entity ? 6 :
                 kind == NativeHistoryObjectKind::Building ? 7 :
-                kind == NativeHistoryObjectKind::Collection ? 9 : -2;
+                kind == NativeHistoryObjectKind::Collection ? collection_link_type : -2;
             for (size_t at = 0; at < document.tokens.size() && !name; ++at) {
                 const auto &first = document.tokens[at];
                 if (first.link_id != id || (first.link_type != expected_link &&
@@ -419,7 +428,7 @@ std::optional<std::vector<LegendsTextPiece>> Overlay::translate_history_event(
             kind == NativeHistoryObjectKind::Underground ? 5 :
             kind == NativeHistoryObjectKind::Building ? 7 :
             kind == NativeHistoryObjectKind::Entity ? 6 :
-            kind == NativeHistoryObjectKind::Collection ? 9 : -2;
+            kind == NativeHistoryObjectKind::Collection ? collection_link_type : -2;
         int color = neutral;
         size_t last = 0;
         int native_link_type = -1, native_link_id = -1, native_link_subid = -1;

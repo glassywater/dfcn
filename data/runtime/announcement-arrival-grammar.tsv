@@ -53,8 +53,40 @@ fortress-arrival	{s} have returned. {s}	{s1}回来了。{s2}	$mission-return-par
 fortress-arrival	{s} and others have returned.	{s1}等人回来了。	$mission-return-party	301 GUEST_ARRIVAL; traveller return branches; party ownership from actual native append
 fortress-arrival	{s} and others have returned. {s}	{s1}等人回来了。{s2}	$mission-return-party,$history-report	301 GUEST_ARRIVAL; nonempty history_event+0xd0 appended after two spaces; complete body
 # Diplomats own a separate originating entity; do not absorb "from" into the unit fallback.
+# The crown alert has three distinct constructors, not one generic person arrival.
+# 79 copies creature_raw.name[2]; 80 calls the complete unit reference; 81 writes
+# literal "A " then creature_role(unit,true), which can be an office alone.
+# Explicit nullable fields reflect unconditional native appends. The same RAW
+# adjective resolver is shared with embark because both read name[2] at +0x60.
+# Sources: data/extracted/fortress-nobles, current reference/classic PE Ghidra C.
+adventure-announcement	A {s} diplomat from {s} has arrived.	来自{s2}的{s1}外交官已抵达。	$embark-race-adjective,$memory-entity	79 DIPLOMAT_ARRIVAL; reference e4b750/classic e466c0; RAW species adjective+60, entity.name+20 via a94030; submit e4c97e
+adventure-announcement	A diplomat from {s} has arrived.	来自{s1}的外交官已抵达。	$memory-entity	79; invalid race or empty RAW adjective; native doubled space normalized
+adventure-announcement	A {s} diplomat from has arrived.	一位{s1}外交官已抵达。	$embark-race-adjective	79; empty entity language_name, unconditional from/has arrived appends
+adventure-announcement	A diplomat from has arrived.	一位外交官已抵达。		79; empty RAW adjective and empty entity language_name
+adventure-announcement	A {s} from {s} has arrived.	来自{s2}的{s1}已抵达。	noble-arrival-role,$memory-entity	81 TRADE_DIPLOMAT_ARRIVAL; reference e4dd10/classic e48c80; e4ed20 literal A; e4ed3c calls132f980(unit,true); e4edb9 entity.name; submit e4eec8
+adventure-announcement	A from {s} has arrived.	来自{s1}的使者已抵达。	$memory-entity	81; complete role supplier empty; literal A and from still appended
+adventure-announcement	A {s} from has arrived.	{s1}已抵达。	noble-arrival-role	81; entity language_name empty; role remains a separate complete field
+adventure-announcement	A from has arrived.	一位使者已抵达。		81; role and entity language_name both empty
+noble-arrival-role	{s}	{s1}	$attack-creature-role	81; 132f980/unit,true: species/caste/profession, generated or RAW gendered/spouse office, territory, slavery/captivity, training, ghost and curse wrappers; unresolved authored custom profession remains its own display field
+noble-arrival-role	{s}	{s1}	$memorial-item	81; 132f980 animation+20 early return contains the complete corpse/body-part item caption
 fortress-arrival	{s} from {s} has arrived.	来自{s2}的{s1}已经到达。	$unit,$memory-entity	80 LIAISON_ARRIVAL; constructor e4ca70; unit reference 1331500 at e4da59; historical_entity.name(+20) via a94030 at e4da85; native appends e4da6d/e4daab
+adventure-announcement	from {s} has arrived.	来自{s1}的联络员已抵达。	$memory-entity	80; reference e4ca70/classic e479e0; empty complete1331500 reference; from/entity/has arrived appended unconditionally
+adventure-announcement	{s} from has arrived.	{s1}已抵达。	$unit	80; empty entity language_name; complete unit reference remains owned
+adventure-announcement	from has arrived.	一位联络员已抵达。		80; empty unit reference and entity language_name
+adventure-announcement	No {s}? How curious...	没有{s1}？真奇怪……	$office	80; reference e4db80..e4dc87/classic e48af0..e48bf7; generic position.name at+98, not a unit or a generated person name
+adventure-announcement	No ? How curious...	没有人担任这一职位？真奇怪……		80; empty generic position.name+98; question suffix appended unconditionally
 fortress-arrival	{s} has arrived.	{s1}已经到达。	$unit	301; unit formatter 1330c30; historical figure information type 1
 fortress-arrival	{s} is visiting.	{s1}来访了。	$unit	301; unit formatter 1330c30; other historical figure information type
 fortress-arrival	{s}, the performance troupe, has arrived.	演出团{s1}已经到达。	$name	301; entity formatter b92900; information type 1
 fortress-arrival	{s}, a performance troupe, is visiting.	演出团{s1}来访了。	$name	301; entity formatter b92900; other information type
+# Current PE 10b150 appends and submits these suffixes even when 1330c30 or
+# b92900 returns an empty field. Keep the exact complete producer forms;
+# neither the shared unit/name grammar nor custom squad aliases become nullable.
+fortress-arrival	has arrived.	已经到达。		301; empty unit formatter; no capitalization in submit; current PE source in extracted/fortress-guest-arrivals
+fortress-arrival	is visiting.	来访了。		301; empty unit formatter; no capitalization in submit
+fortress-arrival	, the performance troupe, has arrived.	演出团已经到达。		301; empty entity name; native leading comma retained
+fortress-arrival	, a performance troupe, is visiting.	演出团来访了。		301; empty entity name; native leading comma retained
+fortress-arrival	has returned.	回来了。		301; empty sole unit caption; fixed complete suffix
+fortress-arrival	has returned. {s}	回来了。{s1}	$history-report	301; empty sole unit caption with complete nonempty history appendix
+fortress-arrival	have returned.	回来了。		301; empty generated squad name; custom nonempty aliases retain their own field
+fortress-arrival	have returned. {s}	回来了。{s1}	$history-report	301; empty generated squad name with complete nonempty history appendix

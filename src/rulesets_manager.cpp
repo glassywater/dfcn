@@ -1210,7 +1210,7 @@ namespace Hooks {
             const auto suffix = identifier.substr(8);
             for (const std::string_view candidate : {"name", "person", "book", "topic", "form", "deity",
                     "skill", "skill_rating", "rated_skill", "sphere", "instrument",
-                    "activity_place", "artifact", "material", "native_item_name"})
+                    "activity_place", "artifact", "material", "native_item_name", "english_site"})
                 if (suffix == candidate) return candidate;
         }
         return {};
@@ -2098,10 +2098,24 @@ namespace Hooks {
                 } else if (is_placeholder(token.value)) {
                     // Placeholder（@ 前缀）：捕获文本并原样穿透输出。
                     // 加载时已保证后面若有 token 则必为 Literal，见 parse_file()。
+                    const auto scope_at = token.value.starts_with("@bt_")
+                        ? token.value.find('|') : std::string::npos;
+                    const std::string_view capture_scope = scope_at == std::string::npos
+                        ? std::string_view{} : std::string_view(token.value).substr(scope_at + 1);
+                    const bool story_identity = capture_scope.starts_with("::subscribed_books::") &&
+                        (capture_scope.ends_with("::person") ||
+                         capture_scope.ends_with("::plain_person") ||
+                         capture_scope.ends_with("::place") ||
+                         capture_scope.ends_with("::site") ||
+                         capture_scope.ends_with("::entity") ||
+                         capture_scope.ends_with("::speaker") ||
+                         capture_scope.ends_with("::race") ||
+                         capture_scope.ends_with("::profession") ||
+                         capture_scope.ends_with("::role") ||
+                         capture_scope.ends_with("::office") ||
+                         capture_scope.ends_with("::deity"));
                     const auto capture_tree = [&](const std::string &captured) {
                         std::string translated = captured;
-                        const auto scope_at = token.value.starts_with("@bt_")
-                            ? token.value.find('|') : std::string::npos;
                         if (scope_at != std::string::npos) {
                             const auto results = resolve_namespace(captured,
                                 token.value.substr(scope_at + 1), level + 1);
@@ -2118,6 +2132,32 @@ namespace Hooks {
                     };
                     for (auto& candidate : candidates) {
                         dfcn::translation_work_step();
+                        // A story identity is a field inside a sentence. A
+                        // later "was a follower of" must not capture a whole
+                        // character introduction as the follower's name.
+                        // Book titles and other prose-valued slots keep their
+                        // own grammar, including embedded punctuation.
+                        size_t capture_end = candidate.remaining.size();
+                        if (story_identity) {
+                            for (size_t at = 0; at < candidate.remaining.size(); ++at) {
+                                const char ch = candidate.remaining[at];
+                                if (ch == '\n' || ch == '\r') {
+                                    capture_end = at;
+                                    break;
+                                }
+                                if (ch != '.' && ch != '!' && ch != '?') continue;
+                                size_t next = at + 1;
+                                while (next < candidate.remaining.size() &&
+                                        (candidate.remaining[next] == '"' ||
+                                         candidate.remaining[next] == '\'' ||
+                                         candidate.remaining[next] == ')')) ++next;
+                                if (next == candidate.remaining.size() || std::isspace(
+                                        static_cast<unsigned char>(candidate.remaining[next]))) {
+                                    capture_end = at;
+                                    break;
+                                }
+                            }
+                        }
                         if (ti + 1 < orig_tokens.size()) {
                             // Existing @ slots retain their first-delimiter
                             // semantics. Authored extension prose can opt into
@@ -2132,6 +2172,7 @@ namespace Hooks {
                                     std::string_view(candidate.remaining).substr(search_at), next_lit.value);
                                 if (!pos) break;
                                 *pos += search_at;
+                                if (*pos > capture_end) break;
                                 dfcn::translation_work_step();
                                 std::string captured = candidate.remaining.substr(0, *pos);
                                 std::string rem = candidate.remaining.substr(
@@ -2145,6 +2186,7 @@ namespace Hooks {
                             }
                         } else {
                             // 情况 B：最后一个 token → 消费全部剩余文本
+                            if (capture_end < candidate.remaining.size()) continue;
                             auto new_results = candidate.results;
                             new_results.emplace_back(token.value, capture_tree(candidate.remaining));
                             next_candidates.emplace_back(

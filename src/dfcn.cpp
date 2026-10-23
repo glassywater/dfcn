@@ -94,6 +94,7 @@ static std::optional<std::string> native_main_ui_cache_context();
 static void request_native_process_exit() noexcept;
 static void release_native_squads_language_resources();
 static void release_native_designation_language_resources();
+static void release_native_map_hover_language_resources();
 static void release_native_character_language_resources();
 static void release_native_dfhack_layer_target() noexcept;
 
@@ -679,6 +680,9 @@ struct Match {
     // page cells can retain half-font flags, but cannot change this native
     // paragraph's baselines or its complete body ownership.
     bool native_announcement_popup = false;
+    // The action chooser's ordinary addst writer leaves old half-font flags
+    // in the grid. Its bound source owns one row through every layout pass.
+    bool native_adventure_choice_row = false;
     // Squad text arrives with explicit producer bounds on its private grid.
     // It must never borrow another component's caption geometry.
     bool native_squads_foreground = false;
@@ -1025,6 +1029,8 @@ static constexpr int kFortressNobleSymbolPositionRule = -166;
 static constexpr int kFortressPressurePlateRule = -167;
 static constexpr int kAdventureCompanionFieldRule = -168;
 static constexpr int kFortressBuildPlacementStatusRule = -169;
+static constexpr int kConversationToneRule = -170;
+static constexpr int kAdventureActionPanelRule = -171;
 
 static bool is_fortress_noble_symbol_field(const Match &match) {
     return match.rule == kFortressNobleSymbolNameRule ||
@@ -2419,6 +2425,9 @@ struct NativeDrawnTextRow {
     // Squad name, order and routine share the producer's text column,
     // which narrows when the list needs its scrollbar.
     int squad_list_right = -1;
+    // The relation name writer owns a complete two-row record and reserves
+    // the columns beyond this edge for its recenter/view controls.
+    int character_relation_right = -1;
 };
 static std::mutex g_native_drawn_text_mutex;
 static std::vector<NativeDrawnTextRow> g_native_drawn_text_rows;
@@ -2498,12 +2507,15 @@ static thread_local const graphicst *g_native_character_write_graphics = nullptr
 static thread_local bool g_native_character_foreground = false;
 static bool native_character_foreground_view(const graphicst *) noexcept;
 static bool native_character_translation_active(const graphicst *) noexcept;
+static std::optional<int32_t> native_character_sub_tab(const graphicst *) noexcept;
 static bool native_character_background_view(const graphicst *) noexcept;
 static bool native_character_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
 static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
 static thread_local const graphicst *g_native_designation_write_graphics = nullptr;
+static thread_local const graphicst *g_native_map_hover_write_graphics = nullptr;
+static bool native_map_hover_cell_outside(const graphicst *, int, int) noexcept;
 static thread_local const graphicst *g_native_reports_write_graphics = nullptr;
 static thread_local const graphicst *g_native_announcement_log_write_graphics = nullptr;
 static thread_local const graphicst *g_native_notification_write_graphics = nullptr;
@@ -2547,6 +2559,7 @@ static bool native_private_ui_write_active(const graphicst *gps) noexcept {
         gps == g_native_petition_write_graphics ||
         gps == g_native_petitions_write_graphics ||
         gps == g_native_designation_write_graphics ||
+        gps == g_native_map_hover_write_graphics ||
         gps == g_native_embark_civilization_write_graphics ||
         gps == g_native_worldgen_write_graphics || native_dfhack_layer_write_active(gps));
 }
@@ -3025,6 +3038,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
 static std::optional<std::string> native_justice_actor_source(
     uintptr_t string_address, std::string_view native_displayed, uintptr_t native_caller,
     std::optional<bool> *sabotage_person = nullptr);
+
+static void prepare_native_map_hover_unit_identity(NativeDrawnTextRow &row);
 
 static void refresh_native_unit_identity_draw(NativeDrawnTextRow &row) {
     if (!row.unit_identity_target || row.unit_identity_semantic_key.empty()) return;
@@ -3711,6 +3726,8 @@ public:
     void release_native_squads_resources();
     void render_native_designation_layer(SDL_Renderer *renderer, const Overlay &source);
     void release_native_designation_resources();
+    void render_native_map_hover_layer(SDL_Renderer *renderer, const Overlay &source);
+    void release_native_map_hover_resources();
     void render_native_fortress_layer(SDL_Renderer *renderer, NativeFortressLayerKind kind);
     void queue_dfhack_layer_translation();
     bool native_frame_submitted() const noexcept { return native_frame_submitted_; }
@@ -4059,7 +4076,9 @@ private:
     std::vector<std::string> site_name_search_aliases(const NativeHistoryName &name) const;
     std::string translate_river_name(const RiverNameIdentity &identity,
         RiverDisplayField field, std::string_view source) const;
-    std::string translate_river_text(std::string_view source) const;
+    std::string translate_river_text(std::string_view source,
+        RiverSize category = RiverSize::Unknown) const;
+    RiverNames::Result localize_river_name(const NativeHistoryName &name) const;
     std::vector<std::string> river_name_search_aliases(const RiverNameIdentity &identity) const;
     void append_river_name_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
@@ -4275,7 +4294,11 @@ private:
     RiverNames river_names_;
     uint64_t river_names_revision_ = 0;
     mutable std::string river_name_cache_world_;
-    mutable std::unordered_map<std::string, std::string> river_name_cache_;
+    struct RiverNameCacheEntry {
+        std::string text;
+        std::optional<RiverNames::Result> translation;
+    };
+    mutable std::unordered_map<std::string, RiverNameCacheEntry> river_name_cache_;
     // Political/cultural name senses are scoped to civilization name slots.
     std::unordered_map<std::string, std::string> civilization_name_terms_;
     std::unordered_map<std::string, std::string> civilization_name_modifiers_;
@@ -5137,6 +5160,10 @@ private:
     void append_adventure_tracking_hud_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y,
         const unsigned char *screen_override) const;
+    void append_adventure_action_panel_matches(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y,
+        const unsigned char *screen_override) const;
+    void layout_adventure_action_panel(SDL_Renderer *renderer);
     void layout_adventure_compass(SDL_Renderer *renderer);
     std::optional<std::string> translate_fortress_activity(
         const std::string &source, bool typed_only = false) const;
@@ -5562,6 +5589,7 @@ private:
     std::optional<std::string> translate_announcement_music_passages(std::string_view source) const;
     std::optional<std::string> translate_announcement_number(std::string_view source) const;
     std::optional<std::string> translate_announcement_date(std::string_view source) const;
+    std::optional<std::string> translate_announcement_speech_actor(std::string_view source) const;
     std::optional<std::string> translate_announcement_dialogue(std::string_view source,
         int native_type = -1) const;
     std::optional<std::string> translate_spoken_dialogue_body(std::string_view source) const;
@@ -6171,15 +6199,19 @@ static std::optional<AdventureConflictPrefix> adventure_conflict_prefix(
     return std::nullopt;
 }
 
+static bool adventure_ranged_action_caption(std::string_view action) {
+    for (const std::string_view verb : {"Quickly shoot", "Aim carefully and shoot",
+            "Quickly throw at", "Aim carefully and throw at"})
+        if (action == verb || (action.starts_with(verb) &&
+                action.size() > verb.size() && action[verb.size()] == ' '))
+            return true;
+    return false;
+}
+
 static size_t adventure_ranged_action_offset(std::string_view source) {
     const auto prefix = adventure_conflict_prefix(source);
-    if (!prefix) return 0;
-    const auto action = source.substr(prefix->identity_offset);
-    if (action.starts_with("Quickly shoot ") ||
-            action.starts_with("Aim carefully and shoot ") ||
-            action.starts_with("Quickly throw at ") ||
-            action.starts_with("Aim carefully and throw at ")) return prefix->identity_offset;
-    return 0;
+    return prefix && adventure_ranged_action_caption(source.substr(prefix->identity_offset))
+        ? prefix->identity_offset : 0;
 }
 
 #include "display_language.inc"
@@ -6854,6 +6886,13 @@ bool Overlay::load_compositional_rules() {
                         !decode_utf8(*target, codepoints)) return std::nullopt;
                 return TranslationResult::translated({}, std::move(*target), "typed").strict_target();
             };
+            // The book narrator selects translateName(site.name, true).
+            // Preserve that English field provenance so real sites use their
+            // WORD/POS, reviewed name and site class. Fictional sites share
+            // the same whole-name localization/phonetic fallback without a
+            // guessed site class; generic name composition is not a fallback.
+            if (kind == "english_site")
+                return complete(translate_legends_place(*native, true));
             // Syndrome memories name the substance itself, not an item made
             // from it. Reuse the material noun, including generated remedies.
             const auto complete_material = [&](std::string_view part)
@@ -7914,6 +7953,7 @@ void Overlay::toggle_display_language() {
     invalidate_render_resources();
     release_native_squads_language_resources();
     release_native_designation_language_resources();
+    release_native_map_hover_language_resources();
     release_native_dfhack_layer_target();
     {
         std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
@@ -8094,6 +8134,15 @@ void Overlay::toggle_native_language() {
 
 #include "dfhack_menu_dispatch.inc"
 
+static bool native_mouse_coordinates_available();
+static bool native_mouse_coordinates_enabled();
+static void native_mouse_coordinates_toggle();
+static void native_mouse_coordinates_load();
+static void native_mouse_coordinates_prepare();
+static void native_mouse_coordinates_present(SDL_Renderer *renderer);
+static void native_mouse_coordinates_reset();
+static void native_mouse_coordinates_release();
+
 void Overlay::run_settings_menu_action(int action) {
     switch (action) {
     case 0: toggle_translation(); break;
@@ -8110,6 +8159,7 @@ void Overlay::run_settings_menu_action(int action) {
                 SDL_HINT_OVERRIDE) != SDL_TRUE)
             log_line("ERROR", "Settings menu: cannot request core reload");
         break;
+    case 6: native_mouse_coordinates_toggle(); break;
     }
 }
 
@@ -8117,6 +8167,7 @@ const unsigned char *Overlay::cell_at(int x, int y, bool *top) const {
     *top = false;
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return nullptr;
     if (native_topbar_cell_outside(gps_, x, y) ||
+            native_map_hover_cell_outside(gps_, x, y) ||
             native_petition_cell_outside(gps_, x, y) ||
             native_petitions_cell_outside(gps_, x, y) ||
             native_embark_civilization_cell_outside(gps_, x, y)) return nullptr;
@@ -8145,6 +8196,7 @@ static bool graphically_occluded(uint8_t state, uint64_t cell_epoch,
 unsigned char Overlay::visible_char_at(int x, int y) const {
     if (!gps_ || x < 0 || y < 0 || x >= gps_->dimx || y >= gps_->dimy) return 0;
     if (native_topbar_cell_outside(gps_, x, y) ||
+            native_map_hover_cell_outside(gps_, x, y) ||
             native_petition_cell_outside(gps_, x, y) ||
             native_petitions_cell_outside(gps_, x, y) ||
             native_embark_civilization_cell_outside(gps_, x, y)) return 0;
@@ -10626,12 +10678,15 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
     // represented by one candidate with the intended Chinese age expression.
     auto translate_character_age = [](std::string_view source)
         -> std::optional<std::string> {
-        size_t cursor = 0;
+        // The age supplier passes a signed value straight to the decimal
+        // formatter; its year/tick calculation does not clamp to zero.
+        size_t cursor = source.starts_with('-') ? 1 : 0;
+        const size_t digits = cursor;
         while (cursor < source.size() && source[cursor] >= '0' &&
                source[cursor] <= '9') {
             ++cursor;
         }
-        if (cursor == 0) return std::nullopt;
+        if (cursor == digits) return std::nullopt;
         const std::string age(source.substr(0, cursor));
 
         auto skip_spaces = [&]() {
@@ -10669,7 +10724,14 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
 
         std::string sex;
         if (cursor < source.size()) {
-            if (cursor + 1 != source.size()) return std::nullopt;
+            // The native overview wraps the sex glyph in x...x when the
+            // unit's gelded flag is set. This is part of the same age draw,
+            // including the female branch; keep both marks with the glyph.
+            const bool gelded = source.size() - cursor == 3 &&
+                source[cursor] == 'x' && source.back() == 'x' &&
+                (source[cursor + 1] == '\x0b' || source[cursor + 1] == '\x0c');
+            if (gelded) ++cursor;
+            else if (cursor + 1 != source.size()) return std::nullopt;
             const unsigned char marker =
                 static_cast<unsigned char>(source[cursor]);
             if (marker == 0x0b) sex = "♂";
@@ -10677,6 +10739,7 @@ std::optional<std::string> Overlay::translate_procedural_fragment(
             else if (marker == 'M' || marker == 'm') sex = "男";
             else if (marker == 'F' || marker == 'f') sex = "女";
             else return std::nullopt;
+            if (gelded) sex = "x" + sex + "x";
         }
 
         std::string translated = age + " 岁";
@@ -17488,6 +17551,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_topbar_layers.inc"
 #include "native_petitions_layers.inc"
 #include "native_designation_layers.inc"
+#include "native_map_hover_layers.inc"
 #include "native_embark_civilization_layers.inc"
 
 #include "native_prepared_ui_frame.inc"
@@ -17625,6 +17689,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_location_list.inc"
 #include "adventure_compass.inc"
 #include "adventure_tracking_hud.inc"
+#include "adventure_action_panel.inc"
 #include "embark_civilizations.inc"
 #include "fortress_livestock.inc"
 #include "native_calendar_date.inc"
@@ -18040,6 +18105,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_squads_layer_translation.inc"
 #include "native_tooltip_layer_translation.inc"
 #include "native_designation_layer_translation.inc"
+#include "native_map_hover_layer_translation.inc"
 #include "native_notification_layer_translation.inc"
 #include "native_pause_layer_translation.inc"
 #include "native_topbar_layer_translation.inc"
@@ -18757,6 +18823,10 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     append_embark_introduction_matches(screen_rows, result, only_y, screen_override != nullptr);
     append_native_message_paragraphs(screen_rows, result, untranslated_help_rows,
         only_y, screen_override, true);
+    // The queue includes addchar directions and labels wider than its frame.
+    // Own its actual writers before the classic map text mask and
+    // before generic captions can interpret a short action as a name.
+    append_adventure_action_panel_matches(screen_rows, result, only_y, screen_override);
     retain_native_text_cells(screen_rows, map_text_cells);
 #include "announcement_panel.inc"
     // A captured document owns complete rows before any generic caption,
@@ -19515,6 +19585,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
         retain_native_text_cells(context, map_text_cells);
         mask_native_knowledge(context);
 #include "adventure_conversation_portrait.inc"
+#include "adventure_conversation_tone.inc"
         enum class ChoiceKind { Action, Conversation, NativeSite };
         struct ChoicePanel {
             SDL_Rect bounds;
@@ -20090,6 +20161,11 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
             }
             const auto action_draws = captured_native_drawn_text_view();
             const auto top_action_draws = captured_native_drawn_text_view(true);
+            uintptr_t chooser_writer = 0;
+#ifdef _WIN32
+            if (const auto base = native_history_profile_base())
+                chooser_writer = native_reference_address(base, 0x88562d);
+#endif
             std::set<std::pair<int, int>> owned_action_captions;
             for (int y = title_y + 1; y < panel->y + panel->h; ++y) {
                 const auto &visible = context[y];
@@ -20197,9 +20273,49 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 // rediscovering it from only the caption can miss its picture
                 // or lower font half and fall back to the enclosing menu.
                 choice.native_picture_caption_box = choice_box;
+                // PE 884460 draws the +118 prelude and +8 caption through
+                // ordinary addst, whose bb190 writer does not clear the grid's
+                // half-font flags. Bind the current +8 source BEFORE reading
+                // those flags: stale flags can differ even within one word.
+                // The prelude is a separate draw at the same native baseline.
+                if (chooser_writer && !native_site) {
+                    const auto ordinary_caption = [&](const NativeDrawnTextRow &draw) {
+                        if (draw.native_caller != chooser_writer || draw.y != y ||
+                                draw.x < first || draw.x >= end || draw.source.empty() ||
+                                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                                (screen_override && screen_override != draw.draw_grid) ||
+                                draw.source.size() < static_cast<size_t>(end - draw.x) ||
+                                source_row.compare(draw.x, end - draw.x,
+                                    draw.source, 0, end - draw.x) != 0) return false;
+                        if (draw.draw_clip && (draw.x < draw.draw_clip->x ||
+                                end > draw.draw_clip->x + draw.draw_clip->w ||
+                                y < draw.draw_clip->y || y >= draw.draw_clip->y + draw.draw_clip->h))
+                            return false;
+                        if (draw.x > first) {
+                            const auto prelude = normalize_utterance(
+                                std::string_view(source_row).substr(first, draw.x - first));
+                            const auto prefix = adventure_conflict_prefix(prelude);
+                            if (!prefix || prefix->identity_offset != prelude.size() ||
+                                    !adventure_ranged_action_caption(normalize_utterance(
+                                        draw.complete_source.empty() ? draw.source : draw.complete_source)))
+                                return false;
+                        }
+                        for (int column = draw.x; column < end; ++column) {
+                            bool top = false;
+                            cell_at(column, y, &top);
+                            if (source_row[column] != ' ' && top != draw.top_layer) return false;
+                        }
+                        return true;
+                    };
+                    choice.native_adventure_choice_row =
+                        std::any_of(action_draws.begin(), action_draws.end(), ordinary_caption) ||
+                        std::any_of(top_action_draws.begin(), top_action_draws.end(), ordinary_caption);
+                }
                 constexpr uint32_t top_half = 1u << 3;
                 constexpr uint32_t bottom_half = 1u << 4;
                 const auto caption_half = [&](int row_y) {
+                    if (choice.native_adventure_choice_row) return uint32_t{0};
                     if (choice_caption_right(row_y) < end) return UINT32_MAX;
                     uint32_t half = UINT32_MAX;
                     for (int x = first; x < end; ++x) {
@@ -20265,6 +20381,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                 std::vector<int> translation_colors = source_colors;
                 std::vector<Match> choice_rows{choice};
                 std::vector<Match> continuation_companions;
+                std::vector<Match> ranged_overflow;
                 bool complete_caption = true;
                 if (visible_right < choice_right) {
                     // The popup's border/text is not part of this action.
@@ -20298,6 +20415,99 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                         translation_colors.resize(translation_source.size(), source_colors.back());
                     }
                 }
+#ifdef _WIN32
+                // The chooser paints option+0x118 before constructing its
+                // caption, but shortens the latter to the original full row
+                // width. A conflict prelude can push even the dots outside
+                // the frame. Bind the original +8 draw before consulting the
+                // panel-local ellipsis; the native resize capture already
+                // retains the complete unit designation for both PE editions.
+                if (chooser_writer) {
+                    std::vector<size_t> origins;
+                    const std::string joined = normalize_utterance(choice.source, &origins);
+                    const size_t ranged_at = adventure_ranged_action_offset(joined);
+                    const int action_x = ranged_at
+                        ? first + static_cast<int>(origins[ranged_at]) : first;
+                    std::optional<std::string> recovered;
+                    bool ambiguous = false;
+                    for (const auto *draws : {&action_draws, &top_action_draws}) {
+                        for (const auto &draw : *draws) {
+                            if (draw.native_caller != chooser_writer || draw.x != action_x ||
+                                    (draw.y != y && (!companion || draw.y != companion_y)) ||
+                                    draw.source.empty() || draw.x >= end) continue;
+                            const std::string complete = normalize_utterance(
+                                draw.complete_source.empty() ? draw.source : draw.complete_source);
+                            if (!adventure_ranged_action_caption(complete) || complete.ends_with("..."))
+                                continue;
+                            const int exposed_end = std::min(end,
+                                draw.x + static_cast<int>(draw.source.size()));
+                            if (exposed_end < end) continue;
+                            const auto agrees = [&](int column, int row_y) {
+                                if (column < 0 || column >= gps_->dimx ||
+                                        (draw.draw_clip && (column < draw.draw_clip->x ||
+                                            column >= draw.draw_clip->x + draw.draw_clip->w ||
+                                            row_y < draw.draw_clip->y ||
+                                            row_y >= draw.draw_clip->y + draw.draw_clip->h)) ||
+                                        (occluding_frame && column >= occluding_frame->x &&
+                                            column < occluding_frame->x + occluding_frame->w &&
+                                            row_y >= occluding_frame->y &&
+                                            row_y < occluding_frame->y + occluding_frame->h))
+                                    return false;
+                                bool top = false;
+                                const auto *cell = cell_at(column, row_y, &top);
+                                if (cell && cell[0] && cell[0] != ' ' &&
+                                        (half == top_half || half == bottom_half)) {
+                                    const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                                    const uint32_t expected = row_y == y ? half :
+                                        half == top_half ? bottom_half : top_half;
+                                    if (!flags || (flags[static_cast<size_t>(column) * gps_->dimy + row_y] &
+                                            (top_half | bottom_half)) != expected) return false;
+                                }
+                                return cell && top == draw.top_layer &&
+                                    (!screen_override || screen_override ==
+                                        (top ? gps_->screen_top : gps_->screen)) &&
+                                    (cell[0] ? cell[0] : ' ') == static_cast<unsigned char>(
+                                        draw.source[static_cast<size_t>(column - draw.x)]);
+                            };
+                            bool intact = true;
+                            for (int column = draw.x; column < exposed_end; ++column)
+                                if (!agrees(column, draw.y)) { intact = false; break; }
+                            if (!intact) continue;
+                            const std::string candidate = joined.substr(0, ranged_at) + complete;
+                            if (recovered && *recovered != candidate) { ambiguous = true; break; }
+                            recovered = candidate;
+                            // Suppress only the same draw's surviving overflow
+                            // glyphs. The translated caption keeps the original
+                            // panel allocation; no border or other text is erased.
+                            const int overflow_end = std::min(gps_->dimx,
+                                draw.x + static_cast<int>(draw.source.size()));
+                            for (const int row_y : {y, companion ? companion_y : -1}) {
+                                if (row_y < 0) continue;
+                                for (int column = visible_right; column < overflow_end;) {
+                                    if (!agrees(column, row_y)) { ++column; continue; }
+                                    const int begin = column++;
+                                    while (column < overflow_end && agrees(column, row_y)) ++column;
+                                    Match overflow{begin, row_y, column - begin, kUiMessageRule, {},
+                                        draw.source.substr(static_cast<size_t>(begin - draw.x), column - begin)};
+                                    overflow.native_split_duplicate = true;
+                                    ranged_overflow.push_back(std::move(overflow));
+                                }
+                            }
+                        }
+                        if (ambiguous) break;
+                    }
+                    if (recovered && !ambiguous) {
+                        translation_source = *recovered;
+                        complete_caption = true;
+                        const int tail_color = source_colors.back();
+                        translation_colors.assign(translation_source.size(), tail_color);
+                        // Collapse native spacing without shifting the conflict
+                        // colour onto the separately drawn action and identity.
+                        for (size_t at = 0; at < std::min(joined.size(), translation_colors.size()); ++at)
+                            translation_colors[at] = source_colors[origins[at]];
+                    } else ranged_overflow.clear();
+                }
+#endif
                 if (translation_source.ends_with("...")) {
                     std::vector<size_t> origins;
                     const std::string joined = normalize_utterance(choice.source, &origins);
@@ -20471,6 +20681,14 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
                             std::fill_n(screen_rows[partner.y].begin() + partner.x, partner.length, ' ');
                             if (only_y < 0 || only_y == partner.y) result.push_back(std::move(partner));
                         }
+                    }
+                    for (auto &overflow : ranged_overflow) {
+                        std::erase_if(result, [&](const Match &prior) {
+                            return prior.y == overflow.y && prior.x < overflow.x + overflow.length &&
+                                overflow.x < prior.x + prior.length;
+                        });
+                        std::fill_n(screen_rows[overflow.y].begin() + overflow.x, overflow.length, ' ');
+                        if (only_y < 0 || only_y == overflow.y) result.push_back(std::move(overflow));
                     }
                     continue;
                 }
@@ -27988,13 +28206,17 @@ void Overlay::normalize_native_split_text() {
     std::vector<Caption> captions;
     for (size_t index = 0; index < prepared_matches_.size(); ++index) {
         Match &match = prepared_matches_[index];
-        if (match.native_announcement_popup) continue;
-        // The decompiled combat, portrait, trade and embark finder renderers
-        // use ordinary addst, retaining old half-font flags without drawing halves.
+        if (match.native_announcement_popup || match.native_adventure_choice_row) continue;
+        // The decompiled combat, portrait, trade, relation and embark finder
+        // renderers use ordinary addst, retaining old half-font flags without
+        // drawing halves. Relation names and labels are separate full rows.
         if (match.rule == kAdventureCombatFieldRule ||
+                match.rule == kAdventureActionPanelRule ||
                 match.rule == kAnnouncementListRule ||
                 match.rule == kFortressTradeFieldRule ||
                 match.rule == kConversationPortraitRule ||
+                match.rule == kConversationToneRule ||
+                match.rule == kCharacterRelationRowRule ||
                 match.rule == kEmbarkFinderFieldRule) continue;
         // Tooltip wrapping owns its physical source rows and output lines.
         // Flags retained from a covered picture caption cannot turn those
@@ -43110,6 +43332,7 @@ std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *r
             match.rule == kAdventureJournalTabRule ||
             match.rule == kUiMessageRule ||
             match.rule == kConversationPortraitRule ||
+            match.rule == kConversationToneRule ||
             match.rule == kWorldgenSummaryRule ||
             match.rule == kWorldgenChronicleRule || match.rule == kWorldgenControlRule;
     };
@@ -43172,6 +43395,7 @@ std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *r
         layout_fortress_farm_plot(renderer);
         layout_fortress_ammunition_choices(renderer);
         layout_adventure_compass(renderer);
+        layout_adventure_action_panel(renderer);
         layout_fortress_sort_captions();
         layout_fortress_justice(renderer);
         layout_fortress_labor(renderer);
@@ -43889,6 +44113,10 @@ static Overlay g_native_designation_overlay;
 static void release_native_designation_language_resources() {
     g_native_designation_overlay.release_native_designation_resources();
 }
+static Overlay g_native_map_hover_overlay;
+static void release_native_map_hover_language_resources() {
+    g_native_map_hover_overlay.release_native_map_hover_resources();
+}
 static void release_native_squads_language_resources() {
     g_native_squads_overlay.release_native_squads_resources();
 }
@@ -44088,6 +44316,8 @@ static void native_petitions_present_layer(SDL_Renderer *renderer,
     void (*draw_petitions)(SDL_Renderer *));
 static void native_designation_present_layer(SDL_Renderer *renderer,
     void (*draw_designations)(SDL_Renderer *));
+static void native_map_hover_present_layer(SDL_Renderer *renderer,
+    void (*draw_hover)(SDL_Renderer *));
 static void native_resolution_present_layer(SDL_Renderer *renderer,
     void (*draw_resolution)(SDL_Renderer *));
 static void native_worldgen_present_layer(SDL_Renderer *renderer,
@@ -44156,6 +44386,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             native_topbar_present_layer(renderer, [](SDL_Renderer *topbar_renderer) {
                 g_overlay.render_native_topbar_layer(topbar_renderer);
             });
+            native_map_hover_present_layer(renderer, [](SDL_Renderer *hover_renderer) {
+                g_native_map_hover_overlay.render_native_map_hover_layer(hover_renderer, g_overlay);
+            });
             native_designation_present_layer(renderer, [](SDL_Renderer *designation_renderer) {
                 g_native_designation_overlay.render_native_designation_layer(designation_renderer, g_overlay);
             });
@@ -44212,6 +44445,8 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         g_overlay.render_ime_popup(renderer);
         boundary.checkpoint("ime_popup");
         g_overlay.render_settings_menu(renderer);
+        // This independent fortress HUD remains visible above modal pages.
+        native_mouse_coordinates_present(renderer);
         // Only a newly drawn native frame consumes the caption generation.
         // Repeated Present calls retain the last actual native writer evidence.
         if (g_overlay.native_frame_submitted()) advance_embark_item_capture_epoch();
@@ -44258,6 +44493,7 @@ static void native_settings_menu_release();
 #include "native_hooks.inc"
 #include "native_blueprint_export.inc"
 #include "native_settings_menu.inc"
+#include "native_mouse_coordinates.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
 #include "adventure_home_translation.inc"
@@ -44298,6 +44534,7 @@ DFCN_EXPORT void dfhooks_init() {
         return;
     }
     dfcn::start_native_identity_translation_jobs();
+    dfcn::native_mouse_coordinates_load();
     if (!dfcn::install_sdl_hooks()) {
         dfcn::stop_reloadable_core();
         return;

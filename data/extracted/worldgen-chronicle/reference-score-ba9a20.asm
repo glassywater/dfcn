@@ -1,0 +1,51 @@
+; reference PE:6a70a6d9:02711000; score-ba9a20; RVA 0xba9a20..0xba9ac1
+0xba9a20: rex push rbx
+0xba9a22: sub    rsp,0x20
+0xba9a26: mov    r11,QWORD PTR [rip+0x19502eb]        # 0x1424f9d18
+0xba9a2d: mov    rbx,rcx
+0xba9a30: mov    r9,QWORD PTR [rip+0x19502e9]        # 0x1424f9d20
+0xba9a37: mov    r10d,DWORD PTR [rcx+0x28]
+0xba9a3b: sub    r9,r11
+0xba9a3e: sar    r9,0x3
+0xba9a42: test   r9,r9
+0xba9a45: je     0x140ba9a8f
+0xba9a47: cmp    r10d,0xffffffff
+0xba9a4b: je     0x140ba9a8f
+0xba9a4d: xor    edx,edx
+0xba9a4f: sub    r9d,0x1
+0xba9a53: js     0x140ba9a8f
+0xba9a55: data16 data16 nop WORD PTR [rax+rax*1+0x0]
+0xba9a60: lea    eax,[r9+rdx*1]
+0xba9a64: sar    eax,1
+0xba9a66: movsxd rcx,eax
+0xba9a69: mov    rcx,QWORD PTR [r11+rcx*8]
+0xba9a6d: mov    r8d,DWORD PTR [rcx+0xe0]
+0xba9a74: cmp    r8d,r10d
+0xba9a77: je     0x140ba9aa1
+0xba9a79: lea    ecx,[rax-0x1]
+0xba9a7c: cmovle ecx,r9d
+0xba9a80: inc    eax
+0xba9a82: cmp    r8d,r10d
+0xba9a85: mov    r9d,ecx
+0xba9a88: cmovle edx,eax
+0xba9a8b: cmp    edx,ecx
+0xba9a8d: jle    0x140ba9a60
+0xba9a8f: mov    eax,DWORD PTR [rbx+0x34]
+0xba9a92: and    al,0x1
+0xba9a94: neg    al
+0xba9a96: sbb    eax,eax
+0xba9a98: and    eax,0x32
+0xba9a9b: add    rsp,0x20
+0xba9a9f: pop    rbx
+0xba9aa0: ret
+0xba9aa1: test   rcx,rcx
+0xba9aa4: je     0x140ba9a8f
+0xba9aa6: call   0x140b99da0
+0xba9aab: test   BYTE PTR [rbx+0x34],0x1
+0xba9aaf: je     0x140ba9a9b
+0xba9ab1: mov    ecx,0x32
+0xba9ab6: cmp    eax,ecx
+0xba9ab8: cmovl  eax,ecx
+0xba9abb: add    rsp,0x20
+0xba9abf: pop    rbx
+0xba9ac0: ret

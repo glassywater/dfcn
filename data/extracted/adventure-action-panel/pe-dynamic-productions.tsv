@@ -1,0 +1,13 @@
+edition	caption	source	placement	production
+reference	Move / Charge	path vector[0] compared with current player coordinates; no vector means no direction	x=12 same action row	[N|S|empty][E|W|empty][+|-|empty]
+reference	Attack	target unit action+0x8 compared with player; unresolved unit means no direction	x=12 same action row	[N|S|empty][E|W|empty][+|-|empty]
+reference	Dodge	action from coordinates +0x8/+0xa/+0xc compared with to +0x14/+0x16/+0x18	x=12 same action row	[N|S|empty][E|W|empty][+|-|empty]
+reference	Nock ammo / Load ammo	integer field action+0x8 rendered through quantity-string and integer-decimal	x=14-decimal.length same action row	signed decimal integer
+reference	 to act	current-key-draw(0x157), current-key-draw(0x158), then literal suffix	x=1 then appended key labels and suffix; y=9 or19	user binding labels; unresolved binding is '?'
+reference	and more	after row index becomes 8, native remaining-action counter >1	x=1 y=8 or18	and more
+classic	Move / Charge	path vector[0] compared with current player coordinates; no vector means no direction	x=12 same action row	[N|S|empty][E|W|empty][+|-|empty]
+classic	Attack	target unit action+0x8 compared with player; unresolved unit means no direction	x=12 same action row	[N|S|empty][E|W|empty][+|-|empty]
+classic	Dodge	action from coordinates +0x8/+0xa/+0xc compared with to +0x14/+0x16/+0x18	x=12 same action row	[N|S|empty][E|W|empty][+|-|empty]
+classic	Nock ammo / Load ammo	integer field action+0x8 rendered through quantity-string and integer-decimal	x=14-decimal.length same action row	signed decimal integer
+classic	 to act	current-key-draw(0x157), current-key-draw(0x158), then literal suffix	x=1 then appended key labels and suffix; y=9 or19	user binding labels; unresolved binding is '?'
+classic	and more	after row index becomes 8, native remaining-action counter >1	x=1 y=8 or18	and more

@@ -38,6 +38,14 @@ static bool native_character_translation_active(const graphicst *graphics) noexc
 #endif
 }
 
+static std::optional<int32_t> native_character_sub_tab(const graphicst *graphics) noexcept {
+    if (!native_character_foreground_view(graphics) ||
+            g_native_character_active_sub_tab < 0) return std::nullopt;
+    // The native producer saves this page with its private text grid. The
+    // reader must not infer Overview from a quote on another character tab.
+    return g_native_character_active_sub_tab;
+}
+
 static SDL_Rect native_character_read_bounds(const graphicst &graphics) noexcept {
     const SDL_Rect canvas{0, 0, graphics.dimx, graphics.dimy};
     if (!native_character_foreground_view(&graphics)) return canvas;

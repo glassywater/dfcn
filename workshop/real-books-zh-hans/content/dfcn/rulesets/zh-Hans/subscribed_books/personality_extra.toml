@@ -1,0 +1,181 @@
+# fiction_personality.lua：作者改写、克制冲突、目击者、关系线、转折与尾声。
+base = "subscribed_books::personality_extra"
+
+[[rulesets]]
+[rulesets.rules]
+# 原有人物反应中的宾格槽与当前作者句式。
+"{@bt_a|::subscribed_books::vocabulary::person} stood so abruptly that the bench toppled behind {obj1}." = "{@bt_a|::subscribed_books::vocabulary::person} 猛然起身，{obj1}身后的长凳随之翻倒。"
+"{@bt_a|::subscribed_books::vocabulary::person} allowed a small smile. High praise, from {obj1}." = "{@bt_a|::subscribed_books::vocabulary::person} 露出一丝微笑。对{obj1}来说，这已是极高的赞许。"
+"\"Amusing,\" {@bt_a|::subscribed_books::vocabulary::person} said. And from {obj1}, that was practically a standing ovation." = "“有趣，”{@bt_a|::subscribed_books::vocabulary::person} 说道。从{obj1}嘴里说出来，这几乎等同于起立喝彩。"
+"\"This ends now,\" {@bt_a|::subscribed_books::vocabulary::person} said. It was a statement of fact." = "“到此为止，”{@bt_a|::subscribed_books::vocabulary::person} 说道。这是在陈述事实。"
+"The argument was about everything, whatever they thought it was about. It always was." = "无论他们以为自己在争什么，这场争论牵扯的都是一切。向来如此。"
+"{@bt_a|::subscribed_books::vocabulary::person} saw through the manipulation instantly; {pro1} expected the worst from everyone." = "{@bt_a|::subscribed_books::vocabulary::person} 立刻看穿了这番操纵；{pro1}对每个人都作最坏的打算。"
+"{@bt_a|::subscribed_books::vocabulary::person} nodded along to the argument against {obj1}, then said, calmly, that {pro1} still disagreed." = "{@bt_a|::subscribed_books::vocabulary::person} 听着针对{obj1}的论点，频频点头，随后平静地表示，{pro1}仍不同意。"
+"{@bt_a|::subscribed_books::vocabulary::person} paused at exactly the right moment, letting the silence do the persuading for {obj1}." = "{@bt_a|::subscribed_books::vocabulary::person} 恰到好处地停顿，让沉默替{obj1}完成说服。"
+"{@bt_a|::subscribed_books::vocabulary::person} chose the gift carefully, for what it would owe {pro1} later." = "{@bt_a|::subscribed_books::vocabulary::person} 精心挑选礼物，盘算着它日后能为{pro1}换来多少人情。"
+"{@bt_a|::subscribed_books::vocabulary::person} timed the gift to land at the exact moment it would do the most good -- for {obj1}." = "{@bt_a|::subscribed_books::vocabulary::person} 算准时机，让礼物在最有利的那一刻送到——最有利于{obj1}的那一刻。"
+"{@bt_a|::subscribed_books::vocabulary::person} met aggression with restraint; {pro1} had a code that mattered more than the fight." = "{@bt_a|::subscribed_books::vocabulary::person} 以克制回应挑衅；{pro1}有一套比眼前的争斗更重要的准则。"
+"{@bt_a|::subscribed_books::vocabulary::person} held to the old rules of engagement even as everyone around {obj1} abandoned them." = "即使{obj1}身边所有人都抛弃了旧日的交战规矩，{@bt_a|::subscribed_books::vocabulary::person} 仍坚守着它们。"
+"{@bt_a|::subscribed_books::vocabulary::person} fought with {pos1} back against something solid, because at least that way nothing could come at {obj1} from behind." = "{@bt_a|::subscribed_books::vocabulary::person} 战斗时让{pos1}后背紧靠着坚实的东西，因为至少这样，便不会有东西从背后袭击{obj1}。"
+"{@bt_a|::subscribed_books::vocabulary::person} struck to wound, again and again, until wounding became its own kind of message." = "{@bt_a|::subscribed_books::vocabulary::person} 一次次出手，只为致伤，直到伤口本身成了一种宣告。"
+"{@bt_a|::subscribed_books::vocabulary::person} could not keep the invented name straight, because some part of {obj1} kept refusing to use it." = "{@bt_a|::subscribed_books::vocabulary::person} 总是记不准那个编造的名字，因为{obj1}内心的某个角落始终不肯使用它。"
+"{@bt_a|::subscribed_books::vocabulary::person} spoke with the calm of someone telling the truth, which was, for {obj1}, simply a matter of practice." = "{@bt_a|::subscribed_books::vocabulary::person} 说话时镇定得像在讲真话，而对{obj1}来说，这不过是熟能生巧。"
+"{@bt_a|::subscribed_books::vocabulary::person} could not have said, afterward, exactly when the impersonation had started feeling easy. It had, for {obj1}, always been easy." = "事后，{@bt_a|::subscribed_books::vocabulary::person} 也说不清冒充别人究竟从何时起变得轻松。对{obj1}而言，这件事向来轻而易举。"
+"{@bt_a|::subscribed_books::vocabulary::person} was gone by the time anyone realized the conflict had been arranged." = "等到有人意识到这场冲突早有安排时，{@bt_a|::subscribed_books::vocabulary::person} 已经不见了。"
+"{@bt_a|::subscribed_books::vocabulary::person} planted the seed of doubt early and let the conflict undo itself without {obj1} lifting a finger." = "{@bt_a|::subscribed_books::vocabulary::person} 早早埋下怀疑的种子，让冲突自行瓦解，连{obj1}的一根手指都不用动。"
+"{@bt_a|::subscribed_books::vocabulary::person} arranged for {@bt_b|::subscribed_books::vocabulary::person} to hand the item over willingly, which felt, to {obj1}, like the more elegant kind of theft." = "{@bt_a|::subscribed_books::vocabulary::person} 设法让 {@bt_b|::subscribed_books::vocabulary::person} 心甘情愿地交出东西。在{obj1}看来，这是一种更优雅的偷窃。"
+"No matter how many times {@bt_a|::subscribed_books::vocabulary::person} was struck, {pro1} would not strike back. It was a line {pro2} would not cross." = "无论挨了多少下，{@bt_a|::subscribed_books::vocabulary::person} 都不肯还击。这是{pro1}坚守的底线，是{pro2}绝不肯越过的界限。"
+"{@bt_a|::subscribed_books::vocabulary::person} threw {ref1} into the middle of it to end it before someone worse got hurt." = "{@bt_a|::subscribed_books::vocabulary::person} 让{ref1}冲进争斗中，只为在有人伤得更重之前结束它。"
+"{@bt_a|::subscribed_books::vocabulary::person} took wound after wound without landing a single one in return. It was refusal." = "{@bt_a|::subscribed_books::vocabulary::person} 身上伤口不断增加，却没有还击造成哪怕一道伤口。这是在拒绝。"
+"Every wound {@bt_a|::subscribed_books::vocabulary::person} inflicted was chosen for how long it would take to matter." = "{@bt_a|::subscribed_books::vocabulary::person} 造成每一道伤口时，都算好了它要过多久才会真正显出厉害。"
+"{@bt_a|::subscribed_books::vocabulary::person} struck to wound, again and again, and enjoyed keeping them alive." = "{@bt_a|::subscribed_books::vocabulary::person} 一次次出手致伤，乐于让对手活着承受。"
+"{@bt_a|::subscribed_books::vocabulary::person}'s face went red, then white, and the words that followed were meant to hurt." = "{@bt_a|::subscribed_books::vocabulary::person} 的脸先涨得通红，随即变得苍白，接下来的每句话都是有意伤人。"
+"What mattered now was what {@bt_a|::subscribed_books::vocabulary::person} did next. The feeling could be dealt with later." = "眼下要紧的是 {@bt_a|::subscribed_books::vocabulary::person} 接下来怎么做。情绪可以留到以后再处理。"
+"{@bt_a|::subscribed_books::vocabulary::person} took it as a challenge, and reacted like it." = "{@bt_a|::subscribed_books::vocabulary::person} 将此视为挑衅，也照受到挑衅的方式作了回应。"
+"{@bt_a|::subscribed_books::vocabulary::person} answered the joke with a shove." = "{@bt_a|::subscribed_books::vocabulary::person} 推了对方一把，算是对笑话的回应。"
+"{@bt_a|::subscribed_books::vocabulary::person} bent every rule and broke the ones that didn't bend. The outcome was what mattered." = "{@bt_a|::subscribed_books::vocabulary::person} 扭曲每一条规矩，扭不动的就干脆打破。要紧的只有结果。"
+"Whatever the terms of the conflict were, {@bt_a|::subscribed_books::vocabulary::person} treated them as a starting point for negotiation." = "无论冲突双方定下了什么条件，{@bt_a|::subscribed_books::vocabulary::person} 都只把它们当作谈判的起点。"
+"{@bt_a|::subscribed_books::vocabulary::person} did not avoid the confrontation. {pro1} walked into it. Some part of {obj1} needed it." = "{@bt_a|::subscribed_books::vocabulary::person} 没有躲开这场冲突。{pro1}主动迎了上去。{obj1}内心的某个角落需要它。"
+"It hurt more than {@bt_a|::subscribed_books::vocabulary::person} expected, and some quiet part of {obj1} was grateful for that." = "这比 {@bt_a|::subscribed_books::vocabulary::person} 预想的更痛，而{obj1}内心某个沉默的角落，竟对此心怀感激。"
+"{@bt_a|::subscribed_books::vocabulary::person} did not defend {ref1}. Some part of {obj1} thought {pro1} deserved every word of it." = "{@bt_a|::subscribed_books::vocabulary::person} 没有替{ref1}辩护。{obj1}内心的某个角落觉得，那些话的每一个字都是{pro1}应得的。"
+
+# 冲突没有升级为战斗时的四种性情反应。
+"{@bt_a|::subscribed_books::vocabulary::person}'s hand went to {pos1} weapon -- and stayed there, white-knuckled." = "{@bt_a|::subscribed_books::vocabulary::person} 的手伸向{pos1}武器——随后停在那里，攥得指节发白。"
+"{@bt_a|::subscribed_books::vocabulary::person} took one step toward {@bt_b|::subscribed_books::vocabulary::person} and stopped, fists clenched, breathing hard." = "{@bt_a|::subscribed_books::vocabulary::person} 朝 {@bt_b|::subscribed_books::vocabulary::person} 迈了一步便停住，双拳紧握，呼吸粗重。"
+"{@bt_a|::subscribed_books::vocabulary::person} kicked the bench aside instead of {@bt_b|::subscribed_books::vocabulary::person}." = "{@bt_a|::subscribed_books::vocabulary::person} 一脚踢开了长凳，没把这一脚踢在 {@bt_b|::subscribed_books::vocabulary::person} 身上。"
+"{@bt_a|::subscribed_books::vocabulary::person} drove a fist into the wall, a hand's width from {@bt_b|::subscribed_books::vocabulary::person}'s head." = "{@bt_a|::subscribed_books::vocabulary::person} 一拳砸在墙上，离 {@bt_b|::subscribed_books::vocabulary::person} 的脑袋只有一掌之隔。"
+"{@bt_a|::subscribed_books::vocabulary::person} turned away so sharply that the people nearest flinched, and stood with {pos1} back to {@bt_b|::subscribed_books::vocabulary::person}, shaking." = "{@bt_a|::subscribed_books::vocabulary::person} 猛地转身，惊得身旁的人向后一缩，随后让{pos1}后背对着 {@bt_b|::subscribed_books::vocabulary::person}，站在那里浑身发抖。"
+"\"Not here,\" {@bt_a|::subscribed_books::vocabulary::person} said through {pos1} teeth. \"Not now.\"" = "“不能在这里，”{@bt_a|::subscribed_books::vocabulary::person} 从{pos1}紧咬的牙缝里挤出话来，“也不能是现在。”"
+"\"Get out of my sight,\" {@bt_a|::subscribed_books::vocabulary::person} said, \"before I forget myself.\"" = "“从我眼前消失，”{@bt_a|::subscribed_books::vocabulary::person} 说，“趁我还没失去理智。”"
+"\"You are lucky,\" {@bt_a|::subscribed_books::vocabulary::person} said, \"that there are witnesses.\"" = "“算你走运，”{@bt_a|::subscribed_books::vocabulary::person} 说，“这里还有人看着。”"
+"\"Say one more word,\" {@bt_a|::subscribed_books::vocabulary::person} said. Nobody said one." = "“你再说一个字试试，”{@bt_a|::subscribed_books::vocabulary::person} 说道。没有人再开口。"
+"{@bt_a|::subscribed_books::vocabulary::person} gripped the edge of the table until {pos1} knuckles went white, and said nothing for a long moment." = "{@bt_a|::subscribed_books::vocabulary::person} 紧攥桌沿，直到{pos1}指节发白，久久一言不发。"
+"{@bt_a|::subscribed_books::vocabulary::person} closed {pos1} eyes and counted, the way {pro1} had been taught as a child." = "{@bt_a|::subscribed_books::vocabulary::person} 闭上{pos1}眼睛，默默数数，就像{pro1}小时候受过的教导那样。"
+"{@bt_a|::subscribed_books::vocabulary::person} walked to the door, stopped there, and did not come back." = "{@bt_a|::subscribed_books::vocabulary::person} 走到门口，停在那里，没有再走回来。"
+"\"I will not give you the satisfaction,\" {@bt_a|::subscribed_books::vocabulary::person} said quietly." = "“我不会让你称心如意，”{@bt_a|::subscribed_books::vocabulary::person} 低声说道。"
+"\"Another day,\" {@bt_a|::subscribed_books::vocabulary::person} said. \"I will remember this.\"" = "“改日再说，”{@bt_a|::subscribed_books::vocabulary::person} 说，“这笔账我会记着。”"
+"\"You are not worth what it would cost me,\" {@bt_a|::subscribed_books::vocabulary::person} said." = "“为你付出那样的代价，不值得，”{@bt_a|::subscribed_books::vocabulary::person} 说道。"
+"{@bt_a|::subscribed_books::vocabulary::person} squared up to {@bt_b|::subscribed_books::vocabulary::person} -- then laughed, a short ugly sound, and let it go." = "{@bt_a|::subscribed_books::vocabulary::person} 朝 {@bt_b|::subscribed_books::vocabulary::person} 摆开架势——随后却发出一声短促而难听的笑，就此作罢。"
+"{@bt_a|::subscribed_books::vocabulary::person} raised a hand, thought better of it, and used it to wave the whole business away." = "{@bt_a|::subscribed_books::vocabulary::person} 抬起一只手，又改变了主意，只挥了挥手，将整件事揭了过去。"
+"{@bt_a|::subscribed_books::vocabulary::person} shoved past {@bt_b|::subscribed_books::vocabulary::person} and out into the air before anything worse could happen." = "趁事情尚未变得更糟，{@bt_a|::subscribed_books::vocabulary::person} 推开 {@bt_b|::subscribed_books::vocabulary::person}，径直走到外面。"
+"\"You are not worth the bruises,\" {@bt_a|::subscribed_books::vocabulary::person} said." = "“为你挨一身淤青，不值得，”{@bt_a|::subscribed_books::vocabulary::person} 说道。"
+"\"Some other time,\" {@bt_a|::subscribed_books::vocabulary::person} said, \"when I care more.\"" = "“改天吧，”{@bt_a|::subscribed_books::vocabulary::person} 说，“等我更把这当回事的时候。”"
+"\"I would win,\" {@bt_a|::subscribed_books::vocabulary::person} said. \"And then I would have to explain it.\"" = "“我会赢，”{@bt_a|::subscribed_books::vocabulary::person} 说，“然后还得费心解释。”"
+"{@bt_a|::subscribed_books::vocabulary::person} looked at {@bt_b|::subscribed_books::vocabulary::person} for a long, cold moment, and then looked away." = "{@bt_a|::subscribed_books::vocabulary::person} 冷冷地看了 {@bt_b|::subscribed_books::vocabulary::person} 许久，随后移开视线。"
+"{@bt_a|::subscribed_books::vocabulary::person} folded {pos1} arms and simply waited until the heat had gone out of the room." = "{@bt_a|::subscribed_books::vocabulary::person} 抱起{pos1}双臂，只管等着屋里的火气渐渐消散。"
+"{@bt_a|::subscribed_books::vocabulary::person} set down what {pro1} was holding, very carefully, and stepped back." = "{@bt_a|::subscribed_books::vocabulary::person} 极其小心地放下{pro1}手中的东西，往后退了一步。"
+"\"No,\" {@bt_a|::subscribed_books::vocabulary::person} said. \"Not like this.\"" = "“不，”{@bt_a|::subscribed_books::vocabulary::person} 说，“不能这样。”"
+"\"We are done here,\" {@bt_a|::subscribed_books::vocabulary::person} said." = "“到此为止，”{@bt_a|::subscribed_books::vocabulary::person} 说道。"
+"\"If it comes to that, it will not be today,\" {@bt_a|::subscribed_books::vocabulary::person} said." = "“就算终究得走到那一步，也不会是今天，”{@bt_a|::subscribed_books::vocabulary::person} 说道。"
+
+# 人物关系背景、争执与背叛的作者改写。
+"{@bt_b|::subscribed_books::vocabulary::person} had murdered someone {@bt_a|::subscribed_books::vocabulary::person} loved. It was done deliberately, coldly, and without remorse. The kind of killing that demands an answer." = "{@bt_b|::subscribed_books::vocabulary::person} 杀害了 {@bt_a|::subscribed_books::vocabulary::person} 所爱之人。这是一场蓄意、冷酷、毫无悔意的谋杀。这样的杀戮，必须有人偿还。"
+"{@bt_b|::subscribed_books::vocabulary::person} had stolen {@bt_a|::subscribed_books::vocabulary::person}'s most prized possession -- to prove that {@bt_a2|::subscribed_books::vocabulary::person}'s life could be violated, that nothing {@bt_a3|::subscribed_books::vocabulary::person} owned was truly safe. The theft was a message, and {@bt_a4|::subscribed_books::vocabulary::person} had received it." = "{@bt_b|::subscribed_books::vocabulary::person} 偷走了 {@bt_a|::subscribed_books::vocabulary::person} 最珍视的财物——为的是证明，{@bt_a2|::subscribed_books::vocabulary::person} 的生活随时可以遭到侵犯，{@bt_a3|::subscribed_books::vocabulary::person} 拥有的一切都算不上真正安全。这场偷窃是在传递警告，而 {@bt_a4|::subscribed_books::vocabulary::person} 已经收到了。"
+"{@bt_a|::subscribed_books::vocabulary::person} believed in the old ways -- the traditions, the rituals, the gods of {pos1} ancestors. {@bt_b|::subscribed_books::vocabulary::person} represented everything that threatened to tear those traditions apart. The enmity between them was civilizational." = "{@bt_a|::subscribed_books::vocabulary::person} 信奉旧道——传统、仪式，以及{pos1}祖先的诸神。{@bt_b|::subscribed_books::vocabulary::person} 则代表着一切足以撕碎这些传统的威胁。两人之间的敌意，是文明之间的冲突。"
+"They had met during a battle. {@bt_a|::subscribed_books::vocabulary::person} had dragged {@bt_b|::subscribed_books::vocabulary::person} out of the fighting, and in the chaos of blood and screaming, something impossible had happened: they had looked at each other and seen a person. The world had narrowed to a single point of recognition." = "他们相识于一场战斗。{@bt_a|::subscribed_books::vocabulary::person} 将 {@bt_b|::subscribed_books::vocabulary::person} 拖出战场，而在鲜血与尖叫的混乱中，不可思议的事发生了：他们彼此凝望，看见了一个活生生的人。整个世界收束成了彼此相认的那一点。"
+"{@bt_b|::subscribed_books::vocabulary::person} had asked {@bt_a|::subscribed_books::vocabulary::person} to retrieve something precious -- a family heirloom lost in dangerous territory. {@bt_a2|::subscribed_books::vocabulary::person} had gone because {@bt_b2|::subscribed_books::vocabulary::person} had asked. When {@bt_a3|::subscribed_books::vocabulary::person} returned, battered and exhausted, carrying the prize, {@bt_b3|::subscribed_books::vocabulary::person} looked at {@bt_a4|::subscribed_books::vocabulary::person} as if seeing {obj1} for the first time." = "{@bt_b|::subscribed_books::vocabulary::person} 曾请 {@bt_a|::subscribed_books::vocabulary::person} 寻回一件珍贵之物——遗落在险地的传家宝。只因 {@bt_b2|::subscribed_books::vocabulary::person} 开了口，{@bt_a2|::subscribed_books::vocabulary::person} 便去了。当 {@bt_a3|::subscribed_books::vocabulary::person} 带着宝物归来，伤痕累累、筋疲力尽时，{@bt_b3|::subscribed_books::vocabulary::person} 注视着 {@bt_a4|::subscribed_books::vocabulary::person}，仿佛第一次真正看见{obj1}。"
+"{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} had fought together, bled together, and buried friends together. The bond between them was forged in survival." = "{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 曾并肩作战，一同流血，一同埋葬朋友。他们之间的纽带，是在生死患难中铸就的。"
+"\"You see conspiracy where there is only compromise,\" {@bt_b|::subscribed_books::vocabulary::person} said. \"Governing means giving no one everything.\"" = "“只是妥协，你却看出了阴谋，”{@bt_b|::subscribed_books::vocabulary::person} 说，“治理意味着，谁也不可能事事如愿。”"
+"{@bt_b|::subscribed_books::vocabulary::person} had poisoned the water supply -- slowly, carefully, over months. Enough to sicken, too little to kill outright. Enough to weaken. When {@bt_a|::subscribed_books::vocabulary::person} traced the illness back to its source, the trail led directly to {@bt_b2|::subscribed_books::vocabulary::person}." = "{@bt_b|::subscribed_books::vocabulary::person} 在水源中下了毒——历时数月，缓慢而谨慎。剂量足以致病，却不足以直接致死。足以让人衰弱。当 {@bt_a|::subscribed_books::vocabulary::person} 追查病因时，线索径直指向了 {@bt_b2|::subscribed_books::vocabulary::person}。"
+"{@bt_b|::subscribed_books::vocabulary::person} confessed directly, out of pride. \"Yes,\" {@bt_b2|::subscribed_books::vocabulary::person} said, smiling. \"I did it. You were so trusting. It was almost too easy.\"" = "出于自负，{@bt_b|::subscribed_books::vocabulary::person} 直接承认了。“没错，”{@bt_b2|::subscribed_books::vocabulary::person} 微笑着说，“是我干的。你太轻信别人了。简直容易得不像话。”"
+"{@bt_a|::subscribed_books::vocabulary::person} had drawn a line. {@bt_b|::subscribed_books::vocabulary::person} had crossed it. The words that followed were the kind that cannot be taken back." = "{@bt_a|::subscribed_books::vocabulary::person} 划下了底线。{@bt_b|::subscribed_books::vocabulary::person} 越过了它。接下来说出的那些话，再也无法收回。"
+"It was a matter of faith. {@bt_b|::subscribed_books::vocabulary::person} had desecrated something sacred to {@bt_a|::subscribed_books::vocabulary::person} -- whether out of ignorance or contempt, the result was the same. {@bt_a2|::subscribed_books::vocabulary::person} could not let it pass." = "这关乎信仰。{@bt_b|::subscribed_books::vocabulary::person} 亵渎了 {@bt_a|::subscribed_books::vocabulary::person} 心中的神圣之物——无论出于无知还是蔑视，结果并无不同。{@bt_a2|::subscribed_books::vocabulary::person} 不能就此放过。"
+"The argument had revealed something that could not be taken back. A truth about {@bt_b|::subscribed_books::vocabulary::person}'s character that {@bt_a|::subscribed_books::vocabulary::person} could not live with." = "这场争论揭露了某种无法再掩回去的东西。那是关于 {@bt_b|::subscribed_books::vocabulary::person} 本性的真相，是 {@bt_a|::subscribed_books::vocabulary::person} 无法容忍的真相。"
+
+# 赠礼的当前完整段落。
+"{@bt_a|::subscribed_books::vocabulary::person} held out {::subscribed_books::world::item}. \"This belonged to my {::subscribed_books::world::relation},\" {@bt_a2|::subscribed_books::vocabulary::person} said quietly. \"{pro1} carried it for years. I want you to have it, because I value it.\"" = "{@bt_a|::subscribed_books::vocabulary::person} 递出{::subscribed_books::world::item}。“这是我的{::subscribed_books::world::relation}留下的，”{@bt_a2|::subscribed_books::vocabulary::person} 轻声说，“{pro1}带了它很多年。正因为我珍惜它，才想把它送给你。”"
+"{@bt_a|::subscribed_books::vocabulary::person} presented a blade, plain and perfectly balanced. \"I had this made by the best smith in {@bt_profession|::subscribed_books::world::profession},\" {@bt_a2|::subscribed_books::vocabulary::person} said. \"For someone who understands what a weapon should be.\"" = "{@bt_a|::subscribed_books::vocabulary::person} 送来一把剑，朴实无华，配重完美。“我请{@bt_profession|::subscribed_books::world::profession}中最好的铁匠打造了它，”{@bt_a2|::subscribed_books::vocabulary::person} 说道，“送给懂得武器该是什么样子的人。”"
+
+# 险些动手后的叙述。
+"It came close to blows. It did not quite come to them." = "他们差一点就动起手来。终究还是没有。"
+"For a moment it looked as though it would come to violence. Then the moment passed." = "有那么一刻，眼看就要诉诸暴力。随后，那一刻过去了。"
+"Someone would have struck someone, in another hour. Instead they stood there breathing hard until it passed." = "若换个时候，定会有人动手打人。这一次，他们只是站在那里粗重地喘息，直到怒气过去。"
+"Nobody moved. Then, slowly, everybody breathed again." = "没有人动。随后，大家缓缓地重新呼吸起来。"
+"The silence that followed was worse than a blow would have been, and it lasted longer." = "随之而来的沉默，比挨上一拳更难受，也持续得更久。"
+"Whatever would have happened next did not happen. It was a near thing." = "接下来本可能发生的一切，终究没有发生。只差那么一点。"
+
+[[rulesets]]
+name = "pro1"
+[rulesets.rules]
+"{::subscribed_books::personality::pro1}" = "{::subscribed_books::personality::pro1}"
+
+[[rulesets]]
+name = "pro2"
+[rulesets.rules]
+"{pro1}" = "{pro1}"
+
+[[rulesets]]
+name = "pos1"
+[rulesets.rules]
+"{::subscribed_books::personality::pos1}" = "{::subscribed_books::personality::pos1}"
+
+[[rulesets]]
+name = "obj1"
+[rulesets.rules]
+"{::subscribed_books::personality::obj1}" = "{::subscribed_books::personality::obj1}"
+
+[[rulesets]]
+name = "ref1"
+[rulesets.rules]
+"{::subscribed_books::personality::ref1}" = "{::subscribed_books::personality::ref1}"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::person}" = "{::subscribed_books::vocabulary::person}"
+"them" = "那个人"
+"the old enemy" = "旧日的敌人"
+
+[[rulesets]]
+[rulesets.rules]
+# 目击者的悲痛、愤怒、恐惧与自豪。
+"{@bt_a|::subscribed_books::vocabulary::person} reached {@bt_c|::subscribed_books::personality_extra::person} too late, and stayed there on {pos1} knees long after there was any point." = "{@bt_a|::subscribed_books::vocabulary::person} 赶到 {@bt_c|::subscribed_books::personality_extra::person} 身旁时已为时太晚，却仍久久地跪在那里，{pos1}双膝始终没有离地，哪怕一切早已毫无意义。"
+"{@bt_a|::subscribed_books::vocabulary::person} made no sound at all. Later, everyone who was there agreed that had been the worst of it." = "{@bt_a|::subscribed_books::vocabulary::person} 一点声音也没有发出。后来，在场的人都说，那才是最让人难受的地方。"
+"{@bt_a|::subscribed_books::vocabulary::person} had seen {@bt_c|::subscribed_books::personality_extra::person} fall. {pro1} would see it again, every night, for a long time." = "{@bt_a|::subscribed_books::vocabulary::person} 亲眼看见 {@bt_c|::subscribed_books::personality_extra::person} 倒下。此后很长一段时间，{pro1}每晚都会再看见那一幕。"
+"{@bt_a|::subscribed_books::vocabulary::person} had seen what {@bt_b|::subscribed_books::vocabulary::person} did to {@bt_c|::subscribed_books::personality_extra::person}. {pro1} would not forget it, and did not mean to." = "{@bt_a|::subscribed_books::vocabulary::person} 亲眼见过 {@bt_b|::subscribed_books::vocabulary::person} 对 {@bt_c|::subscribed_books::personality_extra::person} 做了什么。{pro1}不会忘，也不打算忘。"
+"{@bt_a|::subscribed_books::vocabulary::person} said nothing to {@bt_b|::subscribed_books::vocabulary::person} then. There would be time." = "当时，{@bt_a|::subscribed_books::vocabulary::person} 没有对 {@bt_b|::subscribed_books::vocabulary::person} 说什么。以后有的是时间。"
+"{@bt_a|::subscribed_books::vocabulary::person} helped {@bt_c|::subscribed_books::personality_extra::person} up, and over {@bt_c2|::subscribed_books::personality_extra::person}'s shoulder looked at {@bt_b|::subscribed_books::vocabulary::person} in a way {@bt_b2|::subscribed_books::vocabulary::person} would have done well to notice." = "{@bt_a|::subscribed_books::vocabulary::person} 扶起 {@bt_c|::subscribed_books::personality_extra::person}，越过 {@bt_c2|::subscribed_books::personality_extra::person} 的肩头望向 {@bt_b|::subscribed_books::vocabulary::person}。那样的目光，{@bt_b2|::subscribed_books::vocabulary::person} 最好能看在眼里。"
+"{@bt_a|::subscribed_books::vocabulary::person} looked at {@bt_b|::subscribed_books::vocabulary::person} as if at a stranger." = "{@bt_a|::subscribed_books::vocabulary::person} 看着 {@bt_b|::subscribed_books::vocabulary::person}，仿佛看着一个陌生人。"
+"{@bt_a|::subscribed_books::vocabulary::person} had always been glad of {@bt_b|::subscribed_books::vocabulary::person} at {pos1} side. {pro1} was not sure, now, what {pro2} had been glad of." = "{@bt_a|::subscribed_books::vocabulary::person} 一直庆幸 {@bt_b|::subscribed_books::vocabulary::person} 站在{pos1}身边。可如今，{pro1}已不确定，{pro2}过去究竟在庆幸什么。"
+"{@bt_a|::subscribed_books::vocabulary::person} could not watch the end of it, and did not speak to {@bt_b|::subscribed_books::vocabulary::person} for the rest of the day." = "{@bt_a|::subscribed_books::vocabulary::person} 不忍看完最后一幕，那天余下的时间里，也没有再和 {@bt_b|::subscribed_books::vocabulary::person} 说话。"
+"{@bt_a|::subscribed_books::vocabulary::person} was the first at {@bt_b|::subscribed_books::vocabulary::person}'s side when it was over, grinning like a fool." = "事情一结束，{@bt_a|::subscribed_books::vocabulary::person} 就第一个赶到 {@bt_b|::subscribed_books::vocabulary::person} 身旁，笑得像个傻子。"
+"{@bt_a|::subscribed_books::vocabulary::person} clasped {@bt_b|::subscribed_books::vocabulary::person}'s arm when it was done, and said nothing, and did not need to." = "一切结束后，{@bt_a|::subscribed_books::vocabulary::person} 握住了 {@bt_b|::subscribed_books::vocabulary::person} 的手臂，什么也没有说，也无需再说。"
+"{@bt_a|::subscribed_books::vocabulary::person} had never doubted {@bt_b|::subscribed_books::vocabulary::person}, and said so, loudly, to anyone who would listen." = "{@bt_a|::subscribed_books::vocabulary::person} 从未怀疑过 {@bt_b|::subscribed_books::vocabulary::person}，并向每个愿意听的人大声宣告这一点。"
+
+# 人物关系线的追寻、清算、争执、对峙与求爱。
+"{@bt_a|::subscribed_books::vocabulary::person} had not forgotten {@bt_c|::subscribed_books::personality_extra::person}. Nobody who knew {@bt_a2|::subscribed_books::vocabulary::person} expected otherwise." = "{@bt_a|::subscribed_books::vocabulary::person} 没有忘记 {@bt_c|::subscribed_books::personality_extra::person}。凡是了解 {@bt_a2|::subscribed_books::vocabulary::person} 的人，都不会以为事情会有别的结果。"
+"\"Where would {@bt_c|::subscribed_books::personality_extra::person} go?\" {@bt_a|::subscribed_books::vocabulary::person} asked {@bt_b|::subscribed_books::vocabulary::person}, not for the first time. {@bt_b2|::subscribed_books::vocabulary::person} had stopped pretending not to know why." = "“{@bt_c|::subscribed_books::personality_extra::person} 会去哪儿？”{@bt_a|::subscribed_books::vocabulary::person} 问 {@bt_b|::subscribed_books::vocabulary::person}，这早已不是第一次。{@bt_b2|::subscribed_books::vocabulary::person} 也不再装作不知道为何要问。"
+"{@bt_a|::subscribed_books::vocabulary::person} spent the evening with {@bt_b|::subscribed_books::vocabulary::person}, piecing together where {@bt_c|::subscribed_books::personality_extra::person} had last been seen." = "整个晚上，{@bt_a|::subscribed_books::vocabulary::person} 都与 {@bt_b|::subscribed_books::vocabulary::person} 待在一起，一点点拼凑出 {@bt_c|::subscribed_books::personality_extra::person} 最后一次现身的地点。"
+"{@bt_a|::subscribed_books::vocabulary::person} went looking for {@bt_b|::subscribed_books::vocabulary::person}, and this time {@bt_b2|::subscribed_books::vocabulary::person} could not slip away." = "{@bt_a|::subscribed_books::vocabulary::person} 去找 {@bt_b|::subscribed_books::vocabulary::person}，而这一次，{@bt_b2|::subscribed_books::vocabulary::person} 再也无法溜走。"
+"It had taken {@bt_a|::subscribed_books::vocabulary::person} a long time to come face to face with {@bt_b|::subscribed_books::vocabulary::person}. It did not take long to say what had to be said." = "{@bt_a|::subscribed_books::vocabulary::person} 花了很久才得以与 {@bt_b|::subscribed_books::vocabulary::person} 面对面。把该说的话说完，却没有花多少时间。"
+"{@bt_b|::subscribed_books::vocabulary::person} must have known this day would come. {@bt_a|::subscribed_books::vocabulary::person} had made sure of it." = "{@bt_b|::subscribed_books::vocabulary::person} 必定早就知道这一天会到来。{@bt_a|::subscribed_books::vocabulary::person} 确保了这一点。"
+"Neither {@bt_a|::subscribed_books::vocabulary::person} nor {@bt_b|::subscribed_books::vocabulary::person} had forgotten what had passed between them." = "{@bt_a|::subscribed_books::vocabulary::person} 和 {@bt_b|::subscribed_books::vocabulary::person} 都没有忘记彼此之间发生过的事。"
+"{@bt_a|::subscribed_books::vocabulary::person} had been waiting for a chance to say it to {@bt_b|::subscribed_books::vocabulary::person}'s face." = "{@bt_a|::subscribed_books::vocabulary::person} 一直等着机会，要当着 {@bt_b|::subscribed_books::vocabulary::person} 的面把话说出来。"
+"The thing between {@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} had not gone away. It had only gone quiet." = "横亘在 {@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 之间的事情并未消失。它只是沉寂了下来。"
+"It had been coming for a long time, and everyone knew it." = "这一刻早已酝酿多时，人人都心知肚明。"
+"{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} had run out of ways to avoid each other." = "{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 已经再找不到躲开彼此的办法。"
+"{@bt_a|::subscribed_books::vocabulary::person} found reasons to be wherever {@bt_b|::subscribed_books::vocabulary::person} was." = "无论 {@bt_b|::subscribed_books::vocabulary::person} 在哪里，{@bt_a|::subscribed_books::vocabulary::person} 都能找到理由出现在那里。"
+"What had begun between {@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} had not ended. If anything, it had only begun." = "{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 之间萌生的感情并未结束。真要说来，它才刚刚开始。"
+"Others noticed before either of them would admit it: {@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} were rarely apart now." = "在他们任何一方肯承认之前，旁人就已看出来了：如今，{@bt_a|::subscribed_books::vocabulary::person} 和 {@bt_b|::subscribed_books::vocabulary::person} 几乎形影不离。"
+"{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} talked late into the night, about everything except what mattered, and then about that." = "{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 一直聊到深夜，天南海北，无所不谈，唯独避开了真正要紧的事。最后，他们也谈起了那件事。"
+"There were things {@bt_a|::subscribed_books::vocabulary::person} had never said to anyone. {@bt_a2|::subscribed_books::vocabulary::person} said them to {@bt_b|::subscribed_books::vocabulary::person}." = "有些话，{@bt_a|::subscribed_books::vocabulary::person} 从未对任何人说过。这一次，{@bt_a2|::subscribed_books::vocabulary::person} 把它们说给了 {@bt_b|::subscribed_books::vocabulary::person} 听。"
+
+# 章节重排后出现的新敌人、巨兽与袭击者。
+"With {@bt_c|::subscribed_books::personality_extra::person} gone, it was {@bt_b|::subscribed_books::vocabulary::person} who stood against {@bt_a|::subscribed_books::vocabulary::person} now." = "{@bt_c|::subscribed_books::personality_extra::person} 已经不在，如今站在 {@bt_a|::subscribed_books::vocabulary::person} 对立面的，成了 {@bt_b|::subscribed_books::vocabulary::person}。"
+"{@bt_c|::subscribed_books::personality_extra::person} was gone, but the trouble was not. {@bt_b|::subscribed_books::vocabulary::person} saw to that." = "{@bt_c|::subscribed_books::personality_extra::person} 已经不在，麻烦却并未消失。{@bt_b|::subscribed_books::vocabulary::person} 确保了这一点。"
+"{@bt_b|::subscribed_books::vocabulary::person} came down on the settlements that season - a {@bt_race|::subscribed_books::personality::race} out of the old stories, and real. Whatever {@bt_a|::subscribed_books::vocabulary::person} had meant to do next would have to wait." = "那个季节，{@bt_b|::subscribed_books::vocabulary::person} 袭击了那些聚落——一头古老传说中的{@bt_race|::subscribed_books::personality::race}，竟真实地出现了。无论 {@bt_a|::subscribed_books::vocabulary::person} 原本打算接下来做什么，都只能暂且搁置。"
+"The first farm burned before anyone believed it. By the third, everyone knew the name {@bt_b|::subscribed_books::vocabulary::person}, and that it was a {@bt_race|::subscribed_books::personality::race}." = "第一座农场烧毁时，人们还不敢相信。到了第三座，人人都已知道 {@bt_b|::subscribed_books::vocabulary::person} 这个名字，也知道那是一头{@bt_race|::subscribed_books::personality::race}。"
+"Then the raiders came, with {@bt_b|::subscribed_books::vocabulary::person} at their head, and the old quarrels had to wait for a new one." = "随后，袭击者在 {@bt_b|::subscribed_books::vocabulary::person} 的带领下到来，旧日的争端不得不暂且搁置，先应付这场新的冲突。"
+"Word came of a warband in the hills, led by one {@bt_b|::subscribed_books::vocabulary::person}. Suddenly there were worse things to fear than anything {@bt_a|::subscribed_books::vocabulary::person} had feared before." = "消息传来，山中出现了一支战团，由一个名叫 {@bt_b|::subscribed_books::vocabulary::person} 的人率领。突然间，眼前有了比 {@bt_a|::subscribed_books::vocabulary::person} 过去惧怕的一切都更可怕的威胁。"
+
+# 故事结束时未完的人物关系线。
+"{@bt_a|::subscribed_books::vocabulary::person} never settled the matter with {@bt_c|::subscribed_books::personality_extra::person}. It stayed with {obj1} for the rest of {pos1} days." = "{@bt_a|::subscribed_books::vocabulary::person} 始终没有了结与 {@bt_c|::subscribed_books::personality_extra::person} 之间的事。它一直伴随着{obj1}，直到{pos1}生命尽头。"
+"{@bt_a|::subscribed_books::vocabulary::person} never stopped looking for {@bt_c|::subscribed_books::personality_extra::person}. Whether the two of them met again, no one recorded." = "{@bt_a|::subscribed_books::vocabulary::person} 从未停止寻找 {@bt_c|::subscribed_books::personality_extra::person}。两人后来是否重逢，无人留下记载。"
+"What had passed between {@bt_a|::subscribed_books::vocabulary::person} and {@bt_c|::subscribed_books::personality_extra::person} was never mended. They kept to opposite ends of every room they shared." = "{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_c|::subscribed_books::personality_extra::person} 之间的裂痕始终没有愈合。每当同处一室，他们总各自待在房间的两端。"
+"{@bt_a|::subscribed_books::vocabulary::person} did not forgive {@bt_c|::subscribed_books::personality_extra::person}, and {@bt_c2|::subscribed_books::personality_extra::person} never asked to be forgiven." = "{@bt_a|::subscribed_books::vocabulary::person} 没有原谅 {@bt_c|::subscribed_books::personality_extra::person}，而 {@bt_c2|::subscribed_books::personality_extra::person} 也从未请求原谅。"
+"{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} stayed together after, whatever else the years took from them." = "此后，无论岁月还从他们身边夺走了什么，{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 始终相守。"
+"Whatever became of the rest of it, {@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} faced it side by side." = "无论后来的一切走向何方，{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 都并肩面对。"
+"{@bt_a|::subscribed_books::vocabulary::person} never forgot what {@bt_c|::subscribed_books::personality_extra::person} had done to {@bt_b|::subscribed_books::vocabulary::person}." = "{@bt_a|::subscribed_books::vocabulary::person} 永远没有忘记 {@bt_c|::subscribed_books::personality_extra::person} 对 {@bt_b|::subscribed_books::vocabulary::person} 做过什么。"
+"{@bt_a|::subscribed_books::vocabulary::person} carried {@bt_b|::subscribed_books::vocabulary::person}'s memory for the rest of {pos1} days, and {@bt_c|::subscribed_books::personality_extra::person}'s name with it." = "{@bt_a|::subscribed_books::vocabulary::person} 将对 {@bt_b|::subscribed_books::vocabulary::person} 的记忆带过了{pos1}余生，也将 {@bt_c|::subscribed_books::personality_extra::person} 的名字一并记在心中。"
+"{@bt_a|::subscribed_books::vocabulary::person} rarely spoke of {@bt_b|::subscribed_books::vocabulary::person} afterwards, and never lightly." = "后来，{@bt_a|::subscribed_books::vocabulary::person} 很少谈起 {@bt_b|::subscribed_books::vocabulary::person}，每次提起，也从不轻描淡写。"
+"{@bt_a|::subscribed_books::vocabulary::person} kept the memory of {@bt_b|::subscribed_books::vocabulary::person} close, the way some people keep a stone in a pocket." = "{@bt_a|::subscribed_books::vocabulary::person} 将对 {@bt_b|::subscribed_books::vocabulary::person} 的记忆贴身珍藏，就像有人总在口袋里揣着一颗石头。"

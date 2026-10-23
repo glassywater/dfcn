@@ -669,6 +669,19 @@ base = "subscribed_books::personality"
 "Generosity, for {@bt_a|::subscribed_books::vocabulary::person}, was always transactional. The gesture concealed a purpose." = "对{@bt_a|::subscribed_books::vocabulary::person}而言，慷慨始终是一场交易。示好背后藏着目的。"
 "{@bt_a|::subscribed_books::vocabulary::person} smiled, and the smile contained calculations that {@bt_b|::subscribed_books::vocabulary::person} could not see." = "{@bt_a|::subscribed_books::vocabulary::person}露出微笑，笑容里藏着{@bt_b|::subscribed_books::vocabulary::person}看不见的算计。"
 
+# text_passes.fresh_sentences 可删除重复叙述句；moral_color 的双句模板
+# 因而也会只保留其中一句。短于 40 字节的伴句不会被删除；
+# 完整模板保留，实际可独立存留的句子沿用同一译文。
+"{@bt_a|::subscribed_books::vocabulary::person} believed in rules." = "{@bt_a|::subscribed_books::vocabulary::person}相信规矩。"
+"What had just happened violated every one of them." = "而刚刚发生的事，违背了每一条规矩。"
+"{@bt_a|::subscribed_books::vocabulary::person} had never been one for formality." = "{@bt_a|::subscribed_books::vocabulary::person}从不拘泥于礼节。"
+"The proper way of doing things was, in {pos1} experience, rarely the right way." = "凭{pos1}经验，合乎规矩的做法，往往并非正确的做法。"
+"Rules existed to be tested." = "规矩就是用来挑战的。"
+"{@bt_a|::subscribed_books::vocabulary::person} took no pleasure in what had to be done." = "{@bt_a|::subscribed_books::vocabulary::person}并不以必须做的事为乐。"
+"But doing the right thing and doing the easy thing were rarely the same." = "但正确的事与容易的事，向来很少相同。"
+"It was a habit -- and a burden." = "这是一种习惯，也是一副重担。"
+"The gesture concealed a purpose." = "示好背后藏着目的。"
+
 [[rulesets]]
 [rulesets.rules]
 "{@bt_a|::subscribed_books::vocabulary::person} held out {::subscribed_books::world::item}. \"This belonged to my {::subscribed_books::world::relation},\" {@bt_a2|::subscribed_books::vocabulary::person} said quietly. \"{pro1} carried it for years. I want you to have it -- not because I do not value it, but because I do.\"" = "{@bt_a|::subscribed_books::vocabulary::person}递出{::subscribed_books::world::item}。“这是我的{::subscribed_books::world::relation}留下的，”{@bt_a2|::subscribed_books::vocabulary::person}轻声说，“{pro1}带了它很多年。我想把它送给你，并不是因为不珍惜它，恰恰因为珍惜。”"

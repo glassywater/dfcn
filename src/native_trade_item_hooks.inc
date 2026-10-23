@@ -45,9 +45,15 @@ static void capture_native_trade_item_name(void *item, NativeString *output,
         if (!item || !output ||
                 !native_history_copy_string(pending.string_owner, pending.caption.source) ||
                 pending.caption.source.empty() || pending.caption.source.size() > 4096 ||
-                pending.caption.source.find_first_of("\r\n") != std::string::npos ||
-                !populate_native_trade_item_fields(reinterpret_cast<uintptr_t>(item),
-                    pending.caption)) return;
+                pending.caption.source.find('\0') != std::string::npos ||
+                pending.caption.source.find_first_of("\r\n") != std::string::npos) return;
+        // The formatter's original text is authoritative even when an item
+        // subtype has no typed reconstruction. In particular, adventure
+        // barter must retain complete gem/artwork names before shortening.
+        try {
+            populate_native_trade_item_fields(reinterpret_cast<uintptr_t>(item),
+                pending.caption);
+        } catch (...) { pending.caption.semantic_name = false; }
         native_trade_item_pending() = std::move(pending);
     } catch (...) {
         try { native_trade_item_pending() = {}; } catch (...) {}
@@ -57,6 +63,7 @@ static void capture_native_trade_item_name(void *item, NativeString *output,
 static void capture_native_trade_item_draw(graphicst *graphics, const NativeString *source,
         NativeJustification justification, int width) {
     NativeInputCallbackScope callback;
+    const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
     NativeTradeItemPending pending;
     std::string shortened;
     const unsigned char *grid = nullptr;
@@ -112,7 +119,7 @@ static void capture_native_trade_item_draw(graphicst *graphics, const NativeStri
             false, complete, NativeInfoTitleKind::None, false, -1,
             NativeCivilizationField::None, false, -1, clip, pending.epoch, {},
             NativeLocationPickerField::None, std::nullopt, std::nullopt,
-            NativeTravelBuildingField::None, 0, std::nullopt, std::move(pending.caption));
+            NativeTravelBuildingField::None, caller, std::nullopt, std::move(pending.caption));
     } catch (...) {}
 }
 
@@ -155,6 +162,11 @@ static bool install_native_trade_item_hooks() {
     // the shared reference relocation table for these same native callers.
     std::vector<NativeCall> calls{
 #ifdef _WIN32
+        // Both adventure barter panes share this formatter/draw pair. The
+        // same NativeString at RBP+78 is resized at 270b97 between the calls;
+        // retain its original source and actual item before that mutation.
+        {0x270b5b, 0xc65450, reinterpret_cast<const void *>(&capture_native_trade_item_name)},
+        {0x270bec, 0xad9960, reinterpret_cast<const void *>(&capture_native_trade_item_draw)},
         {0x386bcc, 0xc65450, reinterpret_cast<const void *>(&capture_native_trade_item_name)},
         {0x386c66, 0xad9960, reinterpret_cast<const void *>(&capture_native_trade_item_draw)},
         {0x387b4f, 0xc65450, reinterpret_cast<const void *>(&capture_native_trade_item_name)},

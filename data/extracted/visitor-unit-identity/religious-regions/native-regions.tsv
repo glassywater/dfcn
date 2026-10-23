@@ -1,0 +1,5 @@
+edition	identity	region	start_rva	end_rva	assembly	native_parent_rva	post_title_merge_rva
+reference	PE:6a70a6d9:02711000	ordinary-title-region	0x32ecef	0x32efb5	reference-ordinary-title-region.asm	0x311c10	0x32efb5
+reference	PE:6a70a6d9:02711000	high-title-region	0x32df64	0x32e28a	reference-high-title-region.asm	0x311c10	0x32e28a
+classic	PE:6a70b91c:0270a000	ordinary-title-region	0x32c8af	0x32cb75	classic-ordinary-title-region.asm	0x30f7d0	0x32cb75
+classic	PE:6a70b91c:0270a000	high-title-region	0x32bb24	0x32be4a	classic-high-title-region.asm	0x30f7d0	0x32be4a

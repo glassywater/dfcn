@@ -1,0 +1,21 @@
+edition	owner_rva	instruction_rva	literal_rva	text	source_role
+reference	0x1330880	0x1330b83	0x1782cb0	Semi-Wild	creature-identity-training-short
+reference	0x1330c30	0x13311d1	0x1782cb0	Semi-Wild	creature-identity-training-full
+reference	0x1425c40	0x142769c	0x1782cb0	Semi-Wild	creature-list-status-renderer
+reference	0x138f620	0x138feb0	0x1783ff0	 (Caged)	creature-activity-status
+reference	0x138ffd0	0x1390bf9	0x1783ff0	 (Caged)	creature-activity-status-color
+reference	0x1425c40	0x1427150	0x1783ff0	 (Caged)	creature-list-status-renderer
+reference	0x1425c40	0x14276d4	0x1783ff0	 (Caged)	creature-list-status-renderer
+reference	0xde6b00	0xde84e7	0x1629e18	Domesticated	other native screen
+reference	0xdf8a80	0xe026fd	0x1629e18	Domesticated	other native screen
+reference	0x1425c40	0x1427684	0x1629e18	Domesticated	creature-list-status-renderer
+classic	0x132b7f0	0x132baf3	0x177c9f0	Semi-Wild	creature-identity-training-short
+classic	0x132bba0	0x132c141	0x177c9f0	Semi-Wild	creature-identity-training-full
+classic	0x1420bb0	0x142260c	0x177c9f0	Semi-Wild	creature-list-status-renderer
+classic	0x138a590	0x138ae20	0x177f608	 (Caged)	creature-activity-status
+classic	0x138af40	0x138bb69	0x177f608	 (Caged)	creature-activity-status-color
+classic	0x1420bb0	0x14220c0	0x177f608	 (Caged)	creature-list-status-renderer
+classic	0x1420bb0	0x1422644	0x177f608	 (Caged)	creature-list-status-renderer
+classic	0xde1a70	0xde3457	0x1625660	Domesticated	other native screen
+classic	0xdf39f0	0xdfd66d	0x1625660	Domesticated	other native screen
+classic	0x1420bb0	0x14225f4	0x1625660	Domesticated	creature-list-status-renderer

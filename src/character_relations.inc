@@ -141,6 +141,63 @@ void Overlay::append_character_relation_rows(std::vector<std::string> &rows,
     const auto captures = captured_clipped_captions();
     const std::array<NativeDrawnTextView, 2> identity_draws{
         captured_native_drawn_text_view(true), captured_native_drawn_text_view(false)};
+    // The native relation writer gives every name the same (L+7,T+1)
+    // position, followed by its label at (L+7,T+2). Its live frame owns the
+    // text budget even when portrait artwork prevents a complete skin match.
+    // Keep short/unclipped and quoted identities on this same record path.
+    for (const auto &layer : identity_draws) for (const auto &draw : layer) {
+        if (draw.character_relation_right <= draw.x || draw.source.empty() ||
+                draw.x < 0 || draw.y <= tabs_y || draw.y + 1 >= gps_->dimy ||
+                draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                !draw.draw_clip) continue;
+        const int right = std::min({draw.character_relation_right, gps_->dimx,
+            draw.draw_clip->x + draw.draw_clip->w});
+        if (right <= draw.x || draw.x < draw.draw_clip->x || draw.y < draw.draw_clip->y ||
+                draw.y + 1 >= draw.draw_clip->y + draw.draw_clip->h ||
+                draw.source.size() > static_cast<size_t>(right - draw.x) ||
+                context[draw.y].compare(draw.x, draw.source.size(), draw.source) != 0)
+            continue;
+        std::optional<LogicalTextField> detail;
+        for (const auto &field : split_text_fields(context[draw.y + 1]))
+            if (field.start == draw.x && field.end <= right) { detail = field; break; }
+        if (!detail) continue;
+        const std::string complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+        auto identity = draw.unit_identity_ready ? draw.unit_identity_target : std::nullopt;
+        if (!identity || identity->empty()) identity = translate_unit_identity(complete, true);
+        auto relation = exact_literal_translation(detail->text);
+        for (const auto &caption : kinship)
+            if (caption.x == draw.x && caption.y == draw.y + 1 &&
+                    caption.source == detail->text) { relation = caption.target; break; }
+        if (!relation) relation = translate_ui_message_capture(detail->text, false);
+        const SDL_Rect box{draw.x, draw.y - 1, right - draw.x, 3};
+        const auto append = [&](int y, const std::string &source,
+                const std::string &full, const std::optional<std::string> &target) {
+            if (rows[y].compare(draw.x, source.size(), source) != 0) return;
+            std::fill_n(rows[y].begin() + draw.x, source.size(), ' ');
+            if (only_y >= 0 && only_y != y) return;
+            Match match{draw.x, y, static_cast<int>(source.size()),
+                kCharacterRelationRowRule, target ? *target : native_text_to_utf8(full), source};
+            match.native_hover_untranslated = !target;
+            if (!target) match.native_help_review_source = full;
+            match.native_picture_caption_box = box;
+            match.layout_x = draw.x;
+            match.layout_length = right - draw.x;
+            match.layout_clip_right = right;
+            match.layout_y = y - 1;
+            match.layout_pixel_y = gps_->tile_pixel_y / 2;
+            match.layout_fixed_baseline = true;
+            match.layout_left = true;
+            bool top = false;
+            if (const auto *cell = cell_at(draw.x, y, &top))
+                match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+            match.layout_prepared = true;
+            match.layout_line_height_pixels = gps_->tile_pixel_y;
+            matches.push_back(std::move(match));
+        };
+        append(draw.y, draw.source, complete, identity);
+        append(draw.y + 1, detail->text, detail->text, relation);
+    }
     for (int y = tabs_y + 1; y + 1 < gps_->dimy; ++y) {
         const auto identities = split_text_fields(context[y]);
         for (const auto &detail : split_text_fields(context[y + 1])) {
@@ -244,16 +301,12 @@ void Overlay::layout_character_relation_rows(SDL_Renderer *renderer) {
     for (Match &match : prepared_matches_) {
         if (match.rule != kCharacterRelationRowRule || !match.native_picture_caption_box ||
             match.native_split_duplicate || match.target.empty()) continue;
-        const auto &box = *match.native_picture_caption_box;
-        const bool named = std::any_of(prepared_matches_.begin(), prepared_matches_.end(),
-            [&](const Match &other) {
-                return other.rule == kCharacterRelationRowRule && !other.target.empty() &&
-                    !other.native_split_duplicate && other.y == box.y + 1 && same_box(match, other);
-            });
         // A single relationship uses the middle row. A named relative uses
         // two inset rows as one block. Neither occupies the lower frame rail.
+        // append_character_relation_rows already chose layout_pixel_y from
+        // the actual native name row. A missing translation must not turn a
+        // named relative into an unnamed one and move its label over the name.
         match.layout_y = match.y - 1;
-        match.layout_pixel_y = named ? (box.h - 2) * gps_->tile_pixel_y / 2 : 0;
         match.layout_fixed_baseline = true;
         layout_fortress_text_rows(renderer, {{&match}}, match.layout_x, match.layout_clip_right);
         fields.push_back(&match);

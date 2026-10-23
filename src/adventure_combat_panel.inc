@@ -217,6 +217,121 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
     const bool classic = native_ui_classic().value_or(false);
     const auto draws = captured_native_drawn_text_view();
     const auto top_draws = captured_native_drawn_text_view(true);
+    struct CursorField {
+        SDL_Rect box;
+        int source_right;
+        std::string source;
+        std::vector<int> colors;
+    };
+    std::vector<CursorField> cursor_fields;
+#ifdef _WIN32
+    if (const auto base = native_history_profile_base()) {
+        struct Writer {
+            uintptr_t prefix, suffix;
+            std::string_view before, after;
+        };
+        const Writer writers[]{
+            {native_reference_address(base, 0x8812b0), native_reference_address(base, 0x881323),
+                "Click a target or move the cursor and press ", "."},
+            {native_reference_address(base, 0x8813ea), 0,
+                "Delay warning: Ammo will be loaded/nocked before firing.", {}},
+            {native_reference_address(base, 0x88148f), native_reference_address(base, 0x881531),
+                "You can prepare in advance with ", " or from the inventory menu."},
+        };
+        const auto current_draw = [&](const NativeDrawnTextRow &draw,
+                std::string_view expected, int &right) {
+            if ((draw.source != expected && (draw.complete_source != expected ||
+                        !expected.starts_with(draw.source))) ||
+                    draw.source.empty() || draw.x < 0 || draw.y < 0 || draw.y >= gps_->dimy ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    draw.draw_grid != (draw.top_layer ? gps_->screen_top : gps_->screen) ||
+                    (raw && raw != draw.draw_grid)) return false;
+            right = gps_->dimx;
+            if (draw.draw_clip) {
+                const auto &clip = *draw.draw_clip;
+                if (draw.x < clip.x || draw.y < clip.y || draw.y >= clip.y + clip.h)
+                    return false;
+                right = std::min(right, clip.x + clip.w);
+            }
+            const int length = std::min(static_cast<int>(expected.size()), right - draw.x);
+            if (length <= 0 || (draw.source != expected &&
+                    draw.source.size() != static_cast<size_t>(length))) return false;
+            for (int offset = 0; offset < length; ++offset) {
+                bool top = false;
+                const auto *cell = cell_at(draw.x + offset, draw.y, &top);
+                const auto ch = cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
+                if (!cell || ch != static_cast<unsigned char>(expected[offset]) ||
+                        (ch != ' ' && top != draw.top_layer)) return false;
+            }
+            return true;
+        };
+        for (const auto *layer_draws : {&draws, &top_draws}) {
+            for (const auto &draw : *layer_draws) {
+                const auto writer = std::find_if(std::begin(writers), std::end(writers),
+                    [&](const Writer &entry) { return entry.prefix && draw.native_caller == entry.prefix; });
+                if (writer == std::end(writers)) continue;
+                int right = 0;
+                if (!current_draw(draw, writer->before, right) || draw.x >= right) continue;
+                std::string source(writer->before);
+                int final_color = draw.foreground_rgb;
+                if (writer->suffix) {
+                    // Both literal draws must belong to the same native row
+                    // and render epoch. Their gap is the actual keybinding,
+                    // including a remapped chord, rather than a guessed key.
+                    const int key_x = draw.x + static_cast<int>(writer->before.size());
+                    if (key_x >= right) continue;
+                    const NativeDrawnTextRow *tail = nullptr;
+                    int tail_right = 0;
+                    for (const auto &candidate : *layer_draws) {
+                        int candidate_right = 0;
+                        if (candidate.native_caller != writer->suffix || candidate.y != draw.y ||
+                                candidate.draw_grid != draw.draw_grid ||
+                                candidate.draw_epoch != draw.draw_epoch ||
+                                candidate.sequence <= draw.sequence || candidate.x <= key_x ||
+                                !current_draw(candidate, writer->after, candidate_right) ||
+                                candidate.x > std::min(right, candidate_right)) continue;
+                        if (!tail || candidate.sequence < tail->sequence) {
+                            tail = &candidate;
+                            tail_right = candidate_right;
+                        }
+                    }
+                    if (!tail) continue;
+                    right = std::min(right, tail_right);
+                    bool intact = true;
+                    for (int x = key_x; x < tail->x; ++x) {
+                        bool top = false;
+                        const auto *cell = cell_at(x, draw.y, &top);
+                        const auto ch = cell && cell[0] ? cell[0] : static_cast<unsigned char>(' ');
+                        if (!cell || (ch != ' ' && top != draw.top_layer)) { intact = false; break; }
+                        source += static_cast<char>(ch);
+                    }
+                    if (!intact || trim_view(std::string_view(source).substr(writer->before.size())).empty())
+                        continue;
+                    source += writer->after;
+                    final_color = tail->foreground_rgb;
+                }
+                // The cursor branch uses a 71-column outer panel. Every
+                // sentence starts at C-33; retain its one-cell inner margin.
+                // Source masks follow visible native ink even if a long key
+                // extends past that allocation, while translated ink fits it.
+                const int layout_right = std::min(draw.x + 67, right);
+                const int source_right = std::min(draw.x + static_cast<int>(source.size()), right);
+                if (layout_right <= draw.x || source_right <= draw.x) continue;
+                std::vector<int> colors;
+                colors.reserve(source.size());
+                for (size_t at = 0; at < source.size(); ++at) {
+                    bool top = false;
+                    const auto *cell = draw.x + static_cast<int>(at) < source_right
+                        ? cell_at(draw.x + static_cast<int>(at), draw.y, &top) : nullptr;
+                    colors.push_back(cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3]
+                        : final_color >= 0 ? final_color : 0xffffff);
+                }
+                cursor_fields.push_back({{draw.x, draw.y, layout_right - draw.x, 1},
+                    source_right, std::move(source), std::move(colors)});
+            }
+        }
+    }
+#endif
     struct PictureRow {
         int name_x, y, right;
         char kind;
@@ -267,6 +382,9 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
     }
     std::vector<NativeAdventureCombatPanel> panels;
     std::vector<SDL_Rect> prompt_panels;
+    // Ranged aiming is a separate renderer (PE 880120/87d9a0), not an
+    // AttackCreature stage. Its modal retains the same pictured row geometry.
+    constexpr int ranged_aim_prompt = -1;
     std::map<std::pair<int, int>, int> prompt_stages;
     std::set<std::pair<int, int>> confirmation_panels;
     const auto retain_prompt = [&](const SDL_Rect &bounds) {
@@ -305,11 +423,13 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
                     }
                     const auto text = trim_view(prompt);
                     for (const std::string_view prefix : {"Who will you attack?", "Who will you wrestle?",
-                            "What do you want to aim for?", "Really start a conflict with ",
+                            "What do you want to aim for?", "Where will you aim?",
+                            "Really start a conflict with ",
                             "Really attack ", "Attack ", "Wrestle "})
                         if (text.starts_with(prefix)) {
                             combat_prompt = true;
                             prompt_stages[{bounds->x, bounds->y}] =
+                                prefix == "Where will you aim?" ? ranged_aim_prompt :
                                 prefix == "What do you want to aim for?" ? 3 :
                                 prefix == "Attack " ? 4 : prefix == "Wrestle " ? 8 : 0;
                             break;
@@ -349,14 +469,15 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
             break;
         }
     }
-    if (panels.empty() && prompt_panels.empty() && picture_rows.empty()) return;
+    if (panels.empty() && prompt_panels.empty() && picture_rows.empty() && cursor_fields.empty()) return;
     const int tile_w = gps_->tile_pixel_x, tile_h = gps_->tile_pixel_y;
     const int origin_x = (gps_->screen_pixel_x - gps_->dimx * tile_w) / 2;
     const int origin_y = (gps_->screen_pixel_y - gps_->dimy * tile_h) / 2;
     const auto append = [&](const SDL_Rect &box, int display_left, char kind,
-                            bool centered = false, bool combat_quality = false) {
+                            bool centered = false, bool combat_quality = false,
+                            const CursorField *cursor = nullptr) {
         for (int y = box.y; y < box.y + box.h && y < gps_->dimy; ++y) {
-            int first = box.x, end = box.x + box.w;
+            int first = box.x, end = cursor ? cursor->source_right : box.x + box.w;
             std::string native_row(gps_->dimx, ' ');
             for (int x = 0; x < gps_->dimx; ++x) {
                 const auto ch = visible_char_at(x, y);
@@ -392,7 +513,7 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
             // The renderer first paints CP437 0xFA dots, then overwrites only the
             // name's prefix. Own the whole native field (including its dots)
             // while translating the formatter's complete anatomy/attack.
-            std::string lookup_source = source;
+            std::string lookup_source = cursor ? cursor->source : source;
             if (kind == 't' || kind == 'a') {
                 const auto tail = lookup_source.find_last_not_of("\xfa. ");
                 if (tail == std::string::npos) continue;
@@ -400,6 +521,11 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
             }
             std::optional<std::string> target;
             std::vector<int> target_colors;
+            if (kind == 'k') {
+                if (!cursor) continue;
+                target = translate_help_paragraph(lookup_source, cursor->colors, target_colors, true);
+                if (!target) continue;
+            }
             if (combat_quality) {
                 // Native branches emit difficulty/speed and contact through
                 // separate addst calls. Mode four omits " strike" when both
@@ -639,6 +765,8 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
             matches.push_back(std::move(match));
         }
     };
+    for (const auto &field : cursor_fields)
+        append(field.box, field.box.x, 'k', false, false, &field);
     for (const auto &panel : panels) {
         append(panel.name, panel.name.x, 'n');
         append(panel.status, panel.name.x, 's');
@@ -676,7 +804,7 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
         append({right - 7, panel.y, 6, 3}, right - 7, 's', true);
         const int stage = prompt_stages[{panel.x, panel.y}];
         int picture_end = panel.y + 3;
-        if (stage == 3 || stage == 4) {
+        if (stage == 3 || stage == 4 || stage == ranged_aim_prompt) {
             const int list_end = panel.y + panel.h - (stage == 4 ? 18 : 0);
             for (int top = panel.y + 3; top + 3 <= list_end; top += 3) {
                 const auto box = adventure_combat_action_box_at(*gps_, panel, top, classic, true);
@@ -687,12 +815,16 @@ void Overlay::append_adventure_combat_fields(std::vector<std::string> &screen_ro
                 const int summary_right = box->x + box->w - 2;
                 if (summary_right <= summary_left) break;
                 append({box->x, top + 1, summary_left - box->x, 1},
-                    box->x, stage == 3 ? 't' : 'a');
+                    box->x, stage == 4 ? 'a' : 't');
+                // Ranged +0x48 modal reads the RAW singular/plural body
+                // name and emits one complete shot/throw literal for each
+                // of seven difficulty ranges. Unlike melee, it has no
+                // speed/contact clause. The final two mark cells stay native.
                 append({summary_left, top + 1, summary_right - summary_left, 1},
-                    summary_left, 's', false, true);
+                    summary_left, 's', false, stage != ranged_aim_prompt);
                 picture_end = top + 3;
             }
-            if (stage == 3) continue;
+            if (stage != 4) continue;
             picture_end = list_end;
         }
         for (int y = picture_end; y < panel.y + panel.h; ++y) {

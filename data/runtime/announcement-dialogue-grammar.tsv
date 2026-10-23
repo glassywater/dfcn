@@ -270,3 +270,13 @@ sentence	I'm kicking you out of .	我要把你赶出剧团。		reference 0x14049
 sentence	I'm leaving .	我要离开剧团。		reference 0x14049fc8d/0x14049fccc/0x14049fce6; classic 0x14049d84d/0x14049d88c/0x14049d8a6; LeaveTroupe, empty entity language_name
 sentence	I've decided. Let's call our troupe !	我决定了。我们的剧团就叫这个名字吧！		reference 0x1404b5b33/0x1404b5b73/0x1404b5b8d; classic 0x1404b36f3/0x1404b3733/0x1404b374d; CreateTroupe, empty created language_name
 sentence	This is .	这个场所未注明名称。		reference 0x1404c75e0/0x1404c769e/0x1404c76c7; classic 0x1404c51a0/0x1404c525e/0x1404c5287; MentionServices, empty abstract-building language_name before description supplier 68d170
+# Complete native replies, including multi-sentence emotion alternatives and short refusal branches.
+spoken-sentence	Never.	绝不。		PE reference 0x1404bdf88; classic conversation-dispatch; announcement-conversation/ complete refusal reply
+spoken-sentence	Never!	绝不！		PE reference 0x1404cfd2d; classic conversation-dispatch; announcement-conversation/ complete refusal reply
+spoken-sentence	Fool!	蠢货！		PE reference 0x1404dd661; classic conversation-dispatch; announcement-conversation/ complete interrogation reply
+spoken-sentence	Yes! It is done.	太好了！大功告成。		PE reference 0x140668286; classic dialogue-1025420; announcement-conversation/ complete emotion branch
+spoken-sentence	Wow! That's amazing!	哇！太惊人了！		PE reference 0x140668432; classic dialogue-1025420; announcement-conversation/ complete emotion branch
+spoken-sentence	Ha ha! So amusing!	哈哈！真有趣！		PE reference 0x140668466; classic dialogue-1025420; announcement-conversation/ complete emotion branch
+spoken-sentence	I repent! I repent!	我忏悔！我忏悔！		PE reference 0x140668c96; classic dialogue-1025420; announcement-conversation/ complete emotion branch
+spoken-sentence	Grief? I feel nothing.	悲伤？我毫无感觉。		PE reference 0x14066ad19; classic dialogue-1029bc0; announcement-conversation/ complete emotion-denial branch
+spoken-sentence	Astonished? No.	惊讶？没有。		PE reference 0x14066af80; classic dialogue-1029bc0; announcement-conversation/ complete emotion-denial branch

@@ -1,0 +1,218 @@
+NOBLE alert category, complete native report productions and typed fields
+
+These are source deductions from retained PE/Ghidra output, not game-screen
+observations or translation tests. Addresses below are reference-image RVAs.
+
+Category and rendering boundary
+  announcement-popup-native/native-announcement-alert-routing.tsv records all
+  356 native announcement values from both configured Windows PE images.
+  Reference helper eaa20..eab13 / classic ea9b0..eaaa3 maps exactly these 14
+  values to remap entry 8, alert group 7 NOBLE:
+    68 NOBLE_ARRIVAL
+    79 DIPLOMAT_ARRIVAL
+    80 LIAISON_ARRIVAL
+    81 TRADE_DIPLOMAT_ARRIVAL
+    178 FORT_POSITION_SUCCESSION
+    254 LAND_GAINS_STATUS
+    255 LAND_ELEVATED_STATUS
+    263 MANDATE_ENDS
+    266 ELECTION_RESULTS
+    273 DEMAND_FORGOTTEN
+    274 NEW_DEMAND
+    275 NEW_MANDATE
+    276 PRICES_ALTERED
+    280 GUILD_WAGES_CHANGED
+  341 DIPLOMAT_LEFT_UNHAPPY belongs to GENERAL; 281 NEW_WORK_MANDATE belongs
+  to AGREEMENT. Their subject matter does not admit them into the crown group.
+  344 MONARCH_ARRIVAL, 345 HASTY_MONARCH and 346 SATISFIED_MONARCH also map
+  to GENERAL, despite describing a ruler. Their active reference producers
+  are e4a320/submit e4b674, e46c20/submit e46ef2, and e39910/submit e3b9a5.
+
+  The actual complete Fortress renderer is retained in
+  fortress-rectangle/pe-reference-placement-renderer-owner.c and its classic
+  counterpart. The icon hover selects alert pointer at 3f6351, reads alert+8
+  report IDs, resolves complete stored report.text, and only then wraps it.
+  Missing IDs contribute nothing. repeat_count>0 appends " x" and decimal
+  int32(repeat_count+1); otherwise the text is unchanged. Native colors and
+  brightness are retained per wrapped row. The fixed whole instruction is
+    Left click for recenter and expand options.  Right click to dismiss.
+  The selected-alert popup is announcement-popup-native/renderer/
+  reference-40d5f0.c (classic-40b1b0.c). It uses the same complete stored
+  records and repeat suffix. Its two whole instruction branches are already
+  retained in ui-messages.tsv. There is no separate noble sentence template
+  in either renderer, and a physical wrapped row is not a new production.
+
+NOBLE_ARRIVAL (68)
+  The category mapper admits 68. The paired complete native submission graph
+  contains no active type-68 writer. Modern monarch arrival has the distinct
+  type 344 described above. A new native sentence is not inferred from the
+  legacy enum's name; external/custom producers remain an open input.
+
+DIPLOMAT_ARRIVAL (79)
+  Fresh actual C: reference-diplomat-arrival.c (e4b750..e4ca6c), paired
+  classic-diplomat-arrival.c (e466c0..e479dc); reference submit e4c97e.
+  The complete source is "A " + creature_raw.name[2] + " diplomat from "
+    + a94030(entity.name) + " has arrived."
+  Invalid race/empty adjective leaves an empty RAW adjective; absent name
+  leaves an empty entity field. Both fields are appended independently, so
+  the four empty/nonempty combinations are explicit whole productions.
+  The RAW adjective is not a person or office. The new runtime binding is
+  $embark-race-adjective, shared with the same RAW field in embark captions.
+
+LIAISON_ARRIVAL (80)
+  Fresh actual C: reference-producer-e4ca70.c and classic-producer-e479e0.c;
+  reference submissions e4db33/e4dc87.
+  Normal: complete 1331500 unit reference + " from " + a94030(entity.name)
+    + " has arrived."
+  The unit and entity formatters can both finish empty and the producer has
+  no nonempty guard; the four combinations are separate complete sources.
+  Missing liaison: "No " + position.name(+98) + "? How curious..."
+  The neutral position name can be empty: "No ? How curious..." remains a
+  real completed source. No alternate gendered title is selected here.
+  $unit, $memory-entity and $office preserve these independent native fields.
+
+TRADE_DIPLOMAT_ARRIVAL (81)
+  Fresh actual C: reference-trade-diplomat-arrival.c (e4dd10..e4f038) and
+  classic-trade-diplomat-arrival.c (e48c80..e49fa8); reference submit e4eec8.
+  The complete source is literal "A " + 132f980(unit,true) + " from "
+    + a94030(entity.name) + " has arrived."
+  The role is not a full named actor and need not contain a species prefix:
+  a RAW office such as high treasurer is a complete role by itself. The
+  literal article precedes it unconditionally. Role and entity can each be
+  empty, yielding four complete productions. The typed role supplier also
+  admits animation corpse/body-part names, RAW caste/profession and gendered
+  or spouse offices, territory, custom profession, slavery/prisoner, training,
+  ghost and curse wrappers. Its full branches and 135-case occupation word
+  supplier are retained in this directory's C/ASM and native-switches.tsv.
+  The actor/office/name distinction comes from this producer, not spelling.
+
+FORT_POSITION_SUCCESSION (178)
+  Actual paired C and matching ASM:
+    announcement-profession-succession/{reference,classic}-producer-9ba3c0.c
+      (classic function is 9b7bf0; reference submits 9ba97b/9bc954)
+    announcement-profession-succession/reference-producer-14644c0.c
+      (classic 145f430; reference submit 1464a5a)
+    announcement-profession-succession/reference-producer-1468370.c
+      (classic 14632e0; reference submits 1477308/1477895/1477e50)
+  The names of classic per-function files use the actual classic RVA.
+
+  Complete forms (P is 1330260(unit,true), O is the position field below):
+    P + " has assumed the position of " + O + "."
+    P + " has claimed the position of " + O + "."
+    "After a polite discussion with a local rival, " + P
+      + " has claimed the position of " + O + "."
+    "After a polite discussion with local rivals, " + P
+      + " has claimed the position of " + O + "."
+    P + ", being the rightful heir, has inherited the position of " + O + "."
+    P + " has been appointed to the position of " + O + "."
+    P + " has been elected to the position of " + O + "."
+
+  The claim constructor counts eligible local contenders. Count<=1 omits
+  the entire introduction (1464813..1464847); count==2 selects a local rival;
+  count>2 selects local rivals. The no-introduction branch was missing from
+  the old world-message catalog. The other branches in these large owners
+  change historical state or produce other announcement types; they do not
+  contribute extra NOBLE text merely by sharing a function.
+
+  RAW office selection uses neutral position.name(+98), female(+d8) or
+  male(+118), falling back to neutral when a gendered field is empty.
+  1468370 calls the same gendered selection through 99a3c0. Neutral is
+  appended without a nonempty guard. For land_holder>0, 9bdfb0 looks for a
+  matching land/assignment and appends " of " then a946e0 English site name.
+  Missing land/assignment returns false. These succession producers append
+  " of " plus b92900 entity caption if land_holder<=0 or that lookup fails.
+  The site and entity formatters have no nonempty guard after " of ".
+  Thus a complete O may contain a title and owner, title with empty owner,
+  empty title with owner, or both fields empty leaving the separator.
+  The new noble-position grammar preserves these independently typed fields.
+  It never treats the office, territory, or complete sentence as a person.
+
+  The fresh fortress-nobles/{reference,classic}-personal-name.c extraction
+  proves that P is not always a personal name. A missing, hidden or empty
+  name falls back to 132f980(unit,true), including RAW creature/profession,
+  custom profession and status/animation branches. Therefore the runtime
+  actor uses $unit, not $person. Named actors use a946e0 EnglishName with
+  its nickname/word components. The separate selected office after the
+  predicate remains $office and never inherits the actor's authored label.
+
+ELECTION_RESULTS (266)
+  announcement-profession-succession/reference-producer-e646f0.c,
+  classic-producer-e5f660.c; reference whole submit e65724.
+  The actor is the complete 1330c30(unit,false) identity, which may already
+  contain a profession, office and territory. The actor and new position are
+  independent fields; neither is a bare arbitrary wildcard.
+  Matching previous holder: actor + " has been re-elected."
+  Otherwise: actor + " has been elected " + gendered position.name +
+    optional(9bdfb0 land suffix when land_holder>0) + "."
+  There is no entity fallback for failed territory lookup in this producer.
+  The unchecked neutral title may be empty; an empty title without a suffix
+  leaves the literal " has been elected ." and is handled as a whole source.
+  A failed election or disabled announcement emits no alternative text.
+
+LAND_GAINS_STATUS (254), LAND_ELEVATED_STATUS (255)
+  Actual PE C: adventure-popup-pe/pe-producer-ac5b30.c, complete owner
+  ac5b30..ac7561; reference submits ac6b5c (254) and ac7408 (255).
+  The shared complete production is a94030 NativeName(site) +
+    " and the surrounding lands have been made " + LAND + "."
+  Subtype 3 fallback: "an official land of the realm".
+  Subtype 4 fallback: "an even more official land of the realm".
+  Nonempty position.land_name can replace the fallback; ordinary installed
+  RAW values are a barony/a county/a duchy. Empty LAND_NAME keeps the native
+  fallback. Missing site or disabled announcement returns without a record.
+  NativeName(site) can be empty; no English-name substitution occurs here.
+  The existing announcement-status-grammar.tsv contains all five vanilla
+  whole forms, all five empty-site forms, and typed non-vanilla LAND_NAME
+  forms. The earlier ELF extraction in fortress-land-elevation/ independently
+  retains the equivalent supplier bodies and RAW values. The PE C confirms
+  the same sources for the currently configured Windows images.
+
+Mandate and demand types
+  Actual PE C: adventure-popup-pe/pe-producer-{e39910,134ac10,134de20,
+  13b2a30}.c. Both editions' complete ASM, branches, literals and exact owner
+  extents are in fortress-announcement-mandates/.
+  Every actor below is the whole 1330c30(unit,false) identity:
+    273 actor + " has forgotten a demand."
+        134ac10, submit 134ad96
+    274 actor + " has a new demand."
+        134ac10, submit 134b95b
+    275 actor + " has mandated the construction of certain goods."
+        134de20 mode 1, submit 134e7f8
+    275 actor + " has imposed a ban on certain exports."
+        134de20 mode 0, same submit
+    276 actor + " has altered the prices of goods."
+        134de20, submit 134ea38
+    263 actor + " has ended a mandate."
+        e39910 existing unit, submit e3c79c
+    263 "A mandate has ended."
+        e39910 missing unit, submit e3c811
+    263 actor + "'s mandate has ended."
+        13b2a30 matching count 1, submit 13b2bb7
+    263 actor + "'s mandates have ended."
+        13b2a30 matching count >1, same submit
+  134de20 sets mandate mode from a boolean comparison, so the apparent
+  neither-0-nor-1 suffix fallthrough cannot emit a third construction.
+  13b2a30 count zero returns before submission. Thought labels such as
+  "mandate was obeyed" belong to a different formatter, not this category's
+  announcement constructors. The nine complete productions already use $unit.
+  The fresh unit-caption.c shows that 1330c30 can still produce an empty
+  identity: no visible name, empty neutral RAW role from 132f980, no status/
+  training wrapper. Its third argument at the report sites is false, but the
+  inner role call enables custom profession with true. There is no nonempty
+  guard before appending any of these predicates. The eight actor-bearing
+  empty forms, including the bare possessive "'s mandate(s)", are now explicit
+  whole productions in announcement-mandate-grammar.tsv and translations.tsv.
+
+GUILD_WAGES_CHANGED (280)
+  Both native mapping tables admit this enum into NOBLE. The complete paired
+  direct-submission graph in announcement-popup-native/native-submission-
+  types.tsv contains no active type-280 writer (including alternative reaching
+  descriptor values). No authored wage-change sentence was recovered from
+  these images. This records the dormant admitted enum, not an invented
+  report template. External/custom announcement producers can supply arbitrary
+  text and are not finite native branches inferred from this enum name.
+
+Runtime maintenance
+  The new succession/election entries are in announcement-status-grammar.tsv
+  and are directly mirrored as Announcement combat entries in translations.tsv.
+  No data generator, compilation, game input, module inspection, runtime log,
+  or simulated display check is part of this source work.

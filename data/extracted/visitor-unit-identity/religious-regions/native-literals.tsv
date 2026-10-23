@@ -1,0 +1,29 @@
+edition	label	owner_rva	instruction_rva	literal_rva	kind	text
+reference	high-title-region	0x32df64	0x32e006	0x1629ba4	cstring	high 
+reference	high-title-region	0x32df64	0x32e02e	0x1629ba4	cstring	high 
+reference	high-title-region	0x32df64	0x32e05c	0x15e9088	cstring	first 
+reference	high-title-region	0x32df64	0x32e084	0x15e9088	cstring	first 
+reference	high-title-region	0x32df64	0x32e0af	0x1629b98	cstring	exalted 
+reference	high-title-region	0x32df64	0x32e0d7	0x1629b98	cstring	exalted 
+reference	high-title-region	0x32df64	0x32e252	0x1629bc0	cstring	high priest
+reference	high-title-region	0x32df64	0x32e27a	0x1629bb0	cstring	high priests
+reference	ordinary-title-region	0x32ecef	0x32ed87	0x1629b30	cstring	holy 
+reference	ordinary-title-region	0x32ecef	0x32edaf	0x1629b30	cstring	holy 
+reference	ordinary-title-region	0x32ecef	0x32edda	0x1629b28	cstring	sacred 
+reference	ordinary-title-region	0x32ecef	0x32ee02	0x1629b28	cstring	sacred 
+reference	ordinary-title-region	0x32ecef	0x32ef7d	0x1629b40	cstring	priest
+reference	ordinary-title-region	0x32ecef	0x32efa5	0x1629b38	cstring	priests
+classic	high-title-region	0x32bb24	0x32bbc6	0x1624fe0	cstring	high 
+classic	high-title-region	0x32bb24	0x32bbee	0x1624fe0	cstring	high 
+classic	high-title-region	0x32bb24	0x32bc1c	0x15e4034	cstring	first 
+classic	high-title-region	0x32bb24	0x32bc44	0x15e4034	cstring	first 
+classic	high-title-region	0x32bb24	0x32bc6f	0x1625158	cstring	exalted 
+classic	high-title-region	0x32bb24	0x32bc97	0x1625158	cstring	exalted 
+classic	high-title-region	0x32bb24	0x32be12	0x1625148	cstring	high priest
+classic	high-title-region	0x32bb24	0x32be3a	0x1625170	cstring	high priests
+classic	ordinary-title-region	0x32c8af	0x32c947	0x1625164	cstring	holy 
+classic	ordinary-title-region	0x32c8af	0x32c96f	0x1625164	cstring	holy 
+classic	ordinary-title-region	0x32c8af	0x32c99a	0x1625188	cstring	sacred 
+classic	ordinary-title-region	0x32c8af	0x32c9c2	0x1625188	cstring	sacred 
+classic	ordinary-title-region	0x32c8af	0x32cb3d	0x1625180	cstring	priest
+classic	ordinary-title-region	0x32c8af	0x32cb65	0x16251a0	cstring	priests

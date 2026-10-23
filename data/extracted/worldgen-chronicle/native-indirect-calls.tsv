@@ -1,0 +1,53 @@
+edition	role	instruction_rva	instruction
+reference	historical-figure-importance	0xb99df2	call   QWORD PTR [rax]
+reference	historical-figure-importance	0xb99e33	call   QWORD PTR [r8+0x30]
+reference	score-b9d110	0xb9d147	call   QWORD PTR [rdx]
+reference	age-caption	0xbb8ee3	call   QWORD PTR [rip+0xa2cc3f]        # 0x1415e5b28
+reference	worldgen-dialog-renderer	0xdf9b78	call   QWORD PTR [rip+0x7ebdc2]        # 0x1415e5940
+reference	worldgen-dialog-renderer	0xdf9d82	call   QWORD PTR [rip+0x7ebbb8]        # 0x1415e5940
+reference	worldgen-dialog-renderer	0xdf9f23	call   QWORD PTR [rip+0x7eba17]        # 0x1415e5940
+reference	worldgen-dialog-renderer	0xdfe18f	call   QWORD PTR [rdx]
+reference	worldgen-dialog-renderer	0xdfe19d	call   QWORD PTR [rdx+0x8]
+reference	worldgen-dialog-renderer	0xdfe203	call   QWORD PTR [rax+0x8]
+reference	worldgen-dialog-renderer	0xe02a84	call   QWORD PTR [rip+0x7e275e]        # 0x1415e51e8
+reference	worldgen-dialog-renderer	0xe03128	call   QWORD PTR [rip+0x7e20ba]        # 0x1415e51e8
+reference	worldgen-dialog-renderer	0xe03787	call   QWORD PTR [rip+0x7e1a5b]        # 0x1415e51e8
+reference	worldgen-dialog-renderer	0xe03d29	call   QWORD PTR [rax+0x20]
+reference	worldgen-dialog-renderer	0xe03db6	call   QWORD PTR [rax+0x30]
+reference	worldgen-dialog-renderer	0xe03e2b	call   QWORD PTR [rax+0x38]
+reference	worldgen-dialog-renderer	0xe03f89	call   QWORD PTR [rip+0x7e1259]        # 0x1415e51e8
+reference	worldgen-dialog-renderer	0xe0401a	call   r8
+reference	worldgen-dialog-renderer	0xe04054	call   QWORD PTR [rax+0x28]
+reference	worldgen-dialog-renderer	0xe04171	call   QWORD PTR [rax+0x10]
+reference	worldgen-step-and-chronicle-selection	0xf55126	call   QWORD PTR [rip+0x69032c]        # 0x1415e5458
+reference	worldgen-step-and-chronicle-selection	0xf55137	call   QWORD PTR [rip+0x69031b]        # 0x1415e5458
+reference	worldgen-step-and-chronicle-selection	0xf55628	call   QWORD PTR [rip+0x68fbba]        # 0x1415e51e8
+reference	worldgen-step-and-chronicle-selection	0xf55643	call   QWORD PTR [rip+0x68fb9f]        # 0x1415e51e8
+reference	worldgen-step-and-chronicle-selection	0xf556db	call   QWORD PTR [rax+0xf0]
+reference	worldgen-step-and-chronicle-selection	0xf55731	call   QWORD PTR [rax+0xd0]
+classic	historical-figure-importance	0xb96e32	call   QWORD PTR [rax]
+classic	historical-figure-importance	0xb96e73	call   QWORD PTR [r8+0x30]
+classic	score-b9a150	0xb9a187	call   QWORD PTR [rdx]
+classic	age-caption	0xbb5f23	call   QWORD PTR [rip+0xa2ab77]        # 0x1415e0aa0
+classic	worldgen-dialog-renderer	0xdf4ae8	call   QWORD PTR [rip+0x7ebe2a]        # 0x1415e0918
+classic	worldgen-dialog-renderer	0xdf4cf2	call   QWORD PTR [rip+0x7ebc20]        # 0x1415e0918
+classic	worldgen-dialog-renderer	0xdf4e93	call   QWORD PTR [rip+0x7eba7f]        # 0x1415e0918
+classic	worldgen-dialog-renderer	0xdf90ff	call   QWORD PTR [rdx]
+classic	worldgen-dialog-renderer	0xdf910d	call   QWORD PTR [rdx+0x8]
+classic	worldgen-dialog-renderer	0xdf9173	call   QWORD PTR [rax+0x8]
+classic	worldgen-dialog-renderer	0xdfd9f4	call   QWORD PTR [rip+0x7e27ee]        # 0x1415e01e8
+classic	worldgen-dialog-renderer	0xdfe098	call   QWORD PTR [rip+0x7e214a]        # 0x1415e01e8
+classic	worldgen-dialog-renderer	0xdfe6f7	call   QWORD PTR [rip+0x7e1aeb]        # 0x1415e01e8
+classic	worldgen-dialog-renderer	0xdfec99	call   QWORD PTR [rax+0x20]
+classic	worldgen-dialog-renderer	0xdfed26	call   QWORD PTR [rax+0x30]
+classic	worldgen-dialog-renderer	0xdfed9b	call   QWORD PTR [rax+0x38]
+classic	worldgen-dialog-renderer	0xdfeef9	call   QWORD PTR [rip+0x7e12e9]        # 0x1415e01e8
+classic	worldgen-dialog-renderer	0xdfef8a	call   r8
+classic	worldgen-dialog-renderer	0xdfefc4	call   QWORD PTR [rax+0x28]
+classic	worldgen-dialog-renderer	0xdff0e1	call   QWORD PTR [rax+0x10]
+classic	worldgen-step-and-chronicle-selection	0xf50096	call   QWORD PTR [rip+0x69036c]        # 0x1415e0408
+classic	worldgen-step-and-chronicle-selection	0xf500a7	call   QWORD PTR [rip+0x69035b]        # 0x1415e0408
+classic	worldgen-step-and-chronicle-selection	0xf50598	call   QWORD PTR [rip+0x68fc4a]        # 0x1415e01e8
+classic	worldgen-step-and-chronicle-selection	0xf505b3	call   QWORD PTR [rip+0x68fc2f]        # 0x1415e01e8
+classic	worldgen-step-and-chronicle-selection	0xf5064b	call   QWORD PTR [rax+0xf0]
+classic	worldgen-step-and-chronicle-selection	0xf506a1	call   QWORD PTR [rax+0xd0]

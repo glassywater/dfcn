@@ -1,0 +1,7 @@
+edition	image	text	owner_rva
+reference	PE:6a70a6d9:02711000	Choose your tone/tact	0x867e10
+reference	PE:6a70a6d9:02711000	Persuade: 	0x867e10
+reference	PE:6a70a6d9:02711000	Intimidate: 	0x867e10
+classic	PE:6a70b91c:0270a000	Choose your tone/tact	0x865690
+classic	PE:6a70b91c:0270a000	Persuade: 	0x865690
+classic	PE:6a70b91c:0270a000	Intimidate: 	0x865690

@@ -1,0 +1,180 @@
+Visitor identity source productions (human annotation of the retained native sources)
+==================================================================================
+
+The *.c files are actual Ghidra 12.1.4 output from the configured Steam/reference
+PE:6a70a6d9:02711000 and classic PE:6a70b91c:0270a000 executable files.
+This document is an interpretation of those files and the annotated *.asm,
+not replacement decompiler output. native-functions.tsv retains exact extents;
+native-literals.tsv includes RIP strings and printable inline immediates;
+native-branches.tsv and native-switches.tsv retain branch and table operands.
+The native import is offline and does not attach to or operate the game.
+religious-regions/native-regions.tsv describes code slices separately from real
+native functions: it records each original parent entry, slice entry/end and
+post-title merge. Region C labels named analysis-only external exit stubs. Ghidra
+retains the original parent continuation after the fallback fallthrough despite
+the selected region boundary, so the C is not a hard-cut slice. The entire parent
+assembly retains that continuation; no image bytes are changed.
+The full world-constructor decompiler failure is preserved in
+decompiler-limitations.txt rather than hidden by the successful region C.
+
+Identity formatter: reference 1330c30 / classic 132bba0
+----------------------------------------------------
+The visitor producer supplies the whole result as the identity before its
+arrival suffix. The native call uses the selected unit and passes a separate
+show-gender flag; the arrival call uses false, so the optional sex glyph branch
+is retained as shared-source evidence, not claimed as an arrival production.
+
+* Arena game types 4/5: explicit animation name if animation exists and its
+  +20 string is nonempty; otherwise unit first_name. No ordinary role suffix.
+* Normal modes select unit+8 language_name unless historical figure reputation
+  supplies a valid assumed identity. c3a4f0 / c37530 follows the assumed identity's
+  historical figure name only when that historical figure's name is present;
+  otherwise it uses identity+8. Missing assumed identity uses the unit name.
+* If selected language_name.has_name is false, no name and comma are emitted.
+  There is no universal nonempty fallback: arena first_name can be empty, and a
+  normal unnamed unit with an empty final role and no tame suffix can also
+  produce an empty identity. Arrival suffix ownership remains with its caller.
+* Adventure mode's knowledge/identity records determine whether true or assumed
+  name is visible; an unknown name is omitted, not guessed from spelling.
+* Fortress knowledge can surround the selected assumed name with quotes.
+* Name formatting uses a94030 / a910b0: first name capitalization, configured
+  nickname policy (substitute first name, insert nickname, nickname only),
+  seven stored WORD slots and the selected language's actual native spellings.
+  Nicknames are delimited by ` and '. Language-less/authored fields are not
+  generated from the spelling of another field.
+* When a name is emitted, append ', ', then the complete creature-role result.
+* When show-gender is true and RAW supports two genders, append ', ' and the
+  female/male glyph (0x0c / 0x0b), surrounded by x when gelded. The helper at
+  reference 1385b10 / classic 1380a80 refreshes body/gender state; its provisional
+  extraction label 'name-fallback' does not mean it generates a name.
+* If unit.flags1 has 0x04000000, append ' (' + training text + ')'. Training
+  values: 0 Semi-Wild; 1 Trained; 2 -Trained-; 3 +Trained+; 4 *Trained*;
+  5 byte 0xf0 + Trained + byte 0xf0; 6 byte 0x0f + Trained + byte 0x0f;
+  7 Tame; values outside 0..7 also Semi-Wild.
+
+Role formatter: reference 132f980 / classic 132a8f0
+-------------------------------------------------
+Precedence is native control flow, not the spelling of a profession:
+
+1. Nonempty animation+20 directly supplies the entire role.
+2. Arena types 4/5 directly use unit first_name.
+3. A valid assumed-identity historical figure flagged deity/force supplies the
+   literal 'deity'/'force' immediately. Otherwise assumed profession, when not
+   -1, replaces the unit profession enum and suppresses real offices/statuses.
+4. Compute ordinary base profession, caste/species and prefix. The complete
+   profession enum switch is retained in *-profession-words.c with the exact
+   0..134 table and unsigned default, including RAW overrides and baby/child
+   specialized names. Caste/species fallback is retained in *-caste-words.c.
+5. Unless a non--1 assumed profession suppressed it, replace the base with the
+   selected direct or spouse office (selection below), with optional territory.
+6. Historical slave status: append ' Slave' only for baby/child professions
+   103/104 with a nonempty current role; otherwise replace with 'Slave'.
+7. Historical prisoner status or imprisonment relationship: append ' Prisoner'
+   only for 103/104 with nonempty current role; otherwise replace with 'Prisoner'.
+   This runs after slave processing, so it can replace or follow it.
+8. If use_custom is true and unit.custom_profession at +80 is nonempty, it
+   replaces the entire role accumulated above. It is an authored field.
+9. Tame, ownerless PET/PET_EXOTIC uses 'Fierce ' for the entity's fierce flag,
+   otherwise 'Stray '. Failing that predicate, agitated flag uses 'Agitated '.
+10. Ghostly with no named curse gives 'Ghost' if the base is the empty ordinary
+    peasant role and no preceding prefix; otherwise 'Ghostly ' + base.
+11. Named curse with empty curse.name but nonempty curse.name_prefix puts the
+    prefix before base. Nonempty curse.name goes after base, separated by a
+    space only when the current output is nonempty. These are separate fields.
+12. Animation record with no explicit animation name appends 'Corpse' when the
+    output is empty, or ' Corpse' otherwise.
+
+Base profession: reference 132e0c0 / classic 1329030
+-------------------------------------------------
+The profession supplier first allows native RAW overrides. The enumerated
+career, baby/child and trained-animal paths retain separate prefix/body fields.
+The current reference race -2 is resolved from the fortress/adventurer context;
+-1 means no same-race suppression. Output is prefix, optional caste/species when
+race differs from the reference and the enum did not suppress it, then career.
+The ordinary same-race empty career becomes peasant/Peasant (+s when plural).
+For plural ordinary empty career, the supplier's lone 's' is removed and the
+species noun itself is pluralized. Capitalization is a separate native flag.
+aa3bd0 / aa0c50 chooses caste+20/+40, falling back to race+20/+40 when caste is
+absent/invalid or the selected caste name is empty. Generated RAW names remain
+dynamic source fields and are not limited to the standard creature noun list.
+
+Office selection and sex/spouse choice
+-------------------------------------
+reference beb780 / classic be87c0 enumerates historical figure entity links of
+virtual type 10. It resolves entity, assignment and position. Eligible entity
+matches the requested id, or any entity when requested id is -1. The chosen
+position has the lowest numeric precedence (+2d0), initially below 30001;
+equal precedence preserves the first selected position.
+
+reference beb620 / classic be8660 first selects this direct office. It then
+looks at the first historical-figure spouse link (virtual type 2). The spouse
+office is used only when at least one of its spouse generic/female/male labels
+is nonempty and either no direct office exists or spouse precedence is strictly
+lower. The returned spouse flag is the source of the distinct label family.
+
+For direct office, role formatter uses generic +98; female +d8 when HF.sex=0
+and nonempty; male +118 when HF.sex=1 and nonempty. Other sex and empty sex label
+fall back to generic. For spouse office the offsets are +158/+198/+1d8 with
+the same fallback order. These are singular label fields; the native plural
+fields exist independently at the next 0x20 offset. A generated office can
+therefore legitimately display an English plural noun even for one individual.
+
+position+2c8>0 calls 9bdfb0 / 9bb7e0: locate an entity territory record with flag
+0x200 and this assignment id, resolve its site, then append ' of ' plus the site
+name. If matching record/site is absent, no territory phrase is emitted.
+
+Generated religious office words
+-------------------------------
+Actual current PE producer bodies:
+  reference 311c10..35f274 / classic 30f7d0..35ce34 (world/entity construction)
+  reference 95bf90..96e3d8 / classic 9597c0..96bc08 (site/religious construction)
+The giant world/entity function also contains unrelated office/world branches;
+their literals and machine branches are retained but do not define extra
+visitor message suffixes.
+
+These producers call 9909a0 / 98e1d0 with language-name type 0x24 and use WORD
+slot 5 from the generated record. The selected word is looked up in the runtime
+language word vector. The selector preserves deity spheres, civilization word
+selection and fallback generation rather than inventing a fixed word list.
+
+There are three separate religious levels:
+  ordinary priest: random(2) => holy / sacred
+  high priest: random(3) => high / first / exalted
+  highest priest: random(5) => most high / absolute / most exalted /
+                             most holy / most sacred
+This is not one random(5) ordinary prefix switch. Site construction retains high
+and highest branches; world/entity construction retains ordinary and high.
+
+For a valid slot-5 WORD, both the position generic singular at +98 and generic
+plural at +b8 receive the selected prefix. For singular, WORD.flags at +148
+bit 0x80 selects noun_singular +20; when that bit is absent it selects
+noun_plural +40 even for this singular office. Position plural always appends
+WORD noun_plural +40. Missing slot-5 WORD uses fixed fallback pairs:
+  priest / priests
+  high priest / high priests
+  most high priest / most high priests
+
+Direct PE coordinates illustrating the full high/highest branch:
+  96226a selector; 96227d random(3); 96229b/9622a7 exalted;
+  962321 noun-form bit; 96234f singular append; 962375 plural append;
+  962387/96239e fallback high priest(s).
+  96298f selector; 9629a2 random(5); 9629d2..962a61 all five prefixes;
+  962a9b noun-form bit; 962ac9/962aef noun append;
+  962b01/962b18 fallback most high priest(s).
+  32ed22 ordinary selector; 32ed44 random(2); 32ed87/32edda holy/sacred;
+  32ee49 noun-form bit; 32ef7d/32efa5 fallback priest(s).
+The paired classic addresses and every surrounding predicate are in the native
+function, literal, branch and switch manifests, not inferred by a fixed offset.
+
+The older ../noble-positions/religious-title-candidates.tsv records the finite
+vocabulary product (10 prefixes and collected singular/plural noun forms).
+It is a grammar candidate catalog, not a claim that every product is reachable
+in every civilization. The screenshot's exalted spring is in this office
+grammar; it must be accepted as a generated office, not treated as a creature
+species or translated by guessing whether spring is an animal.
+
+Source extraction uses tools/extract_visitor_unit_identity_sources.py, reading
+data/runtime/native-pe-images.json. tools/DecompileVisitorUnitIdentity.java
+imports the real images with -noanalysis, constructs original native bodies,
+retains source switch tables as Ghidra jump overrides and decompiles to C.
+No translation generator or game build is invoked by these extraction tools.

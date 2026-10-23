@@ -11,6 +11,7 @@ struct SurnameImagery {
     int preference = 0;
 };
 struct SurnameConstruction {
+    std::string id;
     std::string relation, context_relation, left_role, right_role, direction, ending;
     std::uint32_t left_kinds = 0, right_kinds = 0;
     std::vector<std::string> left_traits, right_traits, forms;
@@ -85,12 +86,9 @@ static bool surname_contains(const std::vector<std::string> &values, std::string
 }
 static unsigned surname_form_bit(std::string_view form) {
     if (form == "11") return 1u << 0;
-    if (form == "12") return 1u << 1;
-    if (form == "21") return 1u << 2;
-    if (form == "22") return 1u << 3;
-    if (form == "11z") return 1u << 4;
-    if (form == "12z") return 1u << 5;
-    if (form == "21z") return 1u << 6;
+    if (form == "22") return 1u << 1;
+    if (form == "11z") return 1u << 2;
+    if (form == "22z") return 1u << 3;
     return 0;
 }
 static std::string_view surname_imagery_tag(std::string_view value) {
@@ -180,8 +178,11 @@ bool read_surname_context(const std::filesystem::path &directory,
             branch.double_use = surname_imagery_tag(key(row("double_use")));
             branch.single_interpretation = surname_imagery_tag(key(row("single_interpretation")));
             branch.double_interpretation = surname_imagery_tag(key(row("double_interpretation")));
-            for (const auto &form : labels(row("construction")))
-                branch.forms |= surname_form_bit(form);
+            for (const auto &form : labels(row("construction"))) {
+                const unsigned bit = surname_form_bit(form);
+                if (!bit) return false;
+                branch.forms |= bit;
+            }
             if (!known_traits(branch.required_traits) ||
                 !surname_integer(row("preference"), branch.preference)) return false;
             const auto valid_use = [](std::string_view use) {
@@ -205,11 +206,13 @@ bool read_surname_context(const std::filesystem::path &directory,
             }
             return true;
         })) return false;
+    size_t construction_number = 0;
     if (!read_surname_table(directory / "character-surname-constructions.tsv",
         {"relation", "context_relation", "left_class", "right_class", "left_kind", "right_kind", "left_role", "right_role",
          "left_traits", "right_traits", "direction", "forms", "ending", "naturalness", "preference", "notes"},
         [&](const SurnameDataRow &row) {
             SurnameConstruction rule;
+            rule.id = "character-surname-constructions:" + std::to_string(++construction_number);
             rule.relation = key(row("relation"));
             rule.context_relation = key(row("context_relation"));
             rule.left_role = key(row("left_role"));
@@ -219,6 +222,8 @@ bool read_surname_context(const std::filesystem::path &directory,
             rule.left_traits = labels(row("left_traits"));
             rule.right_traits = labels(row("right_traits"));
             rule.forms = labels(row("forms"));
+            for (const auto &form : rule.forms)
+                if (!surname_form_bit(form)) return false;
             rule.direction = key(row("direction"));
             rule.ending = row("ending");
             if (!rule.left_kinds || !rule.right_kinds || rule.forms.empty() ||
@@ -365,44 +370,44 @@ int surname_compound_naturalness(const SurnameContextWord &first,
     }
     return score;
 }
-Part surname_context_combine(const Part &left, const Part &right, bool entity = false) const {
+Part surname_context_combine(const Part &left, const Part &right, bool entity = false,
+    ComposePolicy policy = ComposePolicy::FullSurname) const {
     // Both source orders visit the same complete set of surface patterns.
-    // AB/BA, A之B/B之A, AA之B/BB之A and AABB/BBAA compete together.
+    // Equal root widths are mandatory before any scoring: AB/BA,
+    // AABB/BBAA, A之B/B之A and AA之BB/BB之AA compete together.
     // 2 denotes an independently authored two-character form for that root.
-    static constexpr std::array<SurnamePattern, 7> patterns{{
-        {"11", {}, 1, 1, 1u << 0}, {"12", {}, 1, 2, 1u << 1},
-        {"21", {}, 2, 1, 1u << 2}, {"22", {}, 2, 2, 1u << 3},
-        {"11z", "之", 1, 1, 1u << 4}, {"12z", "之", 1, 2, 1u << 5},
-        {"21z", "之", 2, 1, 1u << 6}
+    static constexpr std::array<SurnamePattern, 4> patterns{{
+        {"11", {}, 1, 1, 1u << 0}, {"22", {}, 2, 2, 1u << 1},
+        {"11z", "之", 1, 1, 1u << 2}, {"22z", "之", 2, 2, 1u << 3}
     }};
     Part best = original(left.english + right.english);
     int best_preference = 0;
     unsigned best_width = 0;
     const auto *a_entry = surname_entry(left), *b_entry = surname_entry(right);
-    const auto complete_meanings = [&]() {
+    const auto unlicensed = [&]() {
         Part out = original(left.english + right.english);
-        // A place without a licensed construction keeps the caller's whole
-        // English-name phonetic fallback, never two dictionary meanings.
-        if (entity) return out;
-        // Unavailable context forms do not grant access to compact/balanced
-        // forms. Keep both complete meanings directly adjacent in source order.
-        out.text = out.short_text = out.full_text =
-            (a_entry ? a_entry->full_meaning : left.full_text) +
-            (b_entry ? b_entry->full_meaning : right.full_text);
-        out.known = out.complete = left.complete && right.complete;
+        // Complete dictionary meanings are not licensed naming forms. A raw
+        // concatenation could reintroduce unequal widths after enumeration.
+        // Leave rendering to the caller's existing untranslated/phonetic path.
         out.roots = left.roots + right.roots;
         out.english = left.english + right.english;
         out.root_left = left.english;
         out.root_right = right.english;
         out.order = left.order + '\n' + right.order;
         out.score = -100000000;
+        out.composition.origin = a_entry && b_entry ?
+            CandidateOrigin::NoLicensedConstruction : CandidateOrigin::UnresolvedSense;
+        out.composition.left_sense = left.surname_sense;
+        out.composition.right_sense = right.surname_sense;
         return out;
     };
     // A composed entity keeps its head's sense for phrase-level argument
     // licensing, but cannot re-enter root forms and lose earlier constituents.
     if (!a_entry || !b_entry || (entity && (left.roots > 1 || right.roots > 1)))
-        return complete_meanings();
-    const bool actor = !entity &&
+        return unlicensed();
+    const bool fixed_relation = policy == ComposePolicy::Title22z ||
+        policy == ComposePolicy::AdjectiveHeadDouble;
+    const bool actor = !entity && !fixed_relation &&
         (surname_actor_licensed(left) || surname_actor_licensed(right));
     const auto compose = [&](const Part &a, const Part &b, bool reversed) {
         const auto *ae = surname_entry(a), *be = surname_entry(b);
@@ -411,6 +416,12 @@ Part surname_context_combine(const Part &left, const Part &right, bool entity = 
                 const auto rules = surname_constructions_.find(a_class + '\t' + b_class);
                 if (rules == surname_constructions_.end()) continue;
                 for (const auto &rule : rules->second) {
+                    if (policy == ComposePolicy::Title22z &&
+                        (rule.relation != "genitive" || !rule.ending.empty() ||
+                         !surname_contains(rule.forms, "22z"))) continue;
+                    if (policy == ComposePolicy::TitleHead11 && !rule.ending.empty()) continue;
+                    if (policy == ComposePolicy::AdjectiveHeadDouble &&
+                        (rule.relation != "property" && rule.relation != "material")) continue;
                     if ((reversed && rule.direction != "either") ||
                         !has(a, rule.left_kinds) || !has(b, rule.right_kinds) ||
                         !surname_traits_match(rule.left_traits, ae->traits) ||
@@ -439,7 +450,13 @@ Part surname_context_combine(const Part &left, const Part &right, bool entity = 
                     const auto first = surname_words(a, b, rule.context_relation, rule.left_role);
                     const auto second = surname_words(b, a, rule.context_relation, rule.right_role);
                     for (const auto &pattern : patterns) {
+                        const bool title22z = policy == ComposePolicy::Title22z;
+                        if (title22z && pattern.form != "22z") continue;
                         if (!surname_contains(rule.forms, pattern.form)) continue;
+                        // A compound title head contributes one complete
+                        // two-character side: retain H and N as 1+1.
+                        if (policy == ComposePolicy::TitleHead11 && pattern.form != "11") continue;
+                        if (policy == ComposePolicy::AdjectiveHeadDouble && pattern.second_width != 2) continue;
                         // Preserve entity compound shapes, but choose between
                         // them using the same classified forms and bounded
                         // naturalness score instead of a fixed 1+1 priority.
@@ -508,6 +525,19 @@ Part surname_context_combine(const Part &left, const Part &right, bool entity = 
                             best.root_right = right.english;
                             best.order = left.order + '\n' + right.order;
                             best.score = score;
+                            best.composition = {};
+                            auto &evidence = best.composition;
+                            evidence.origin = CandidateOrigin::ClassifiedSurnameConstruction;
+                            evidence.text = text;
+                            evidence.left_word = x.text; evidence.right_word = y.text;
+                            evidence.left_sense = a.surname_sense; evidence.right_sense = b.surname_sense;
+                            evidence.construction = rule.id; evidence.pattern = pattern.form;
+                            evidence.context_relation = rule.context_relation;
+                            evidence.left_role = rule.left_role; evidence.right_role = rule.right_role;
+                            evidence.left_branch = size_t(x.branch - surname_imagery_rows_.data());
+                            evidence.right_branch = size_t(y.branch - surname_imagery_rows_.data());
+                            evidence.score = score; evidence.preference = preference;
+                            evidence.reversed = reversed;
                             best_preference = preference;
                             best_width = width;
                             if (entity) {
@@ -528,10 +558,7 @@ Part surname_context_combine(const Part &left, const Part &right, bool entity = 
             }
     };
     compose(left, right, false);
-    if (!actor) compose(right, left, true);
+    if (!actor && !fixed_relation) compose(right, left, true);
     if (best.known) return best;
-    // This low-scoring fallback retains both known meanings when no
-    // registered one-/two-character construction was licensed. Complete
-    // meanings never participate in the classified candidate competition.
-    return complete_meanings();
+    return unlicensed();
 }

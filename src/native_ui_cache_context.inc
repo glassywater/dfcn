@@ -80,7 +80,6 @@ class NativeUiCacheContextWriter {
     }
     const NativeDrawnTextRow &resolved_row(const NativeDrawnTextRow &input) {
         if (!character_ || !input.unit_identity_pending ||
-                !input.unit_identity_pending->deferred_snapshot ||
                 input.unit_identity_semantic_key.empty()) return input;
         const auto saved = resolved_rows_.find(&input);
         if (saved != resolved_rows_.end()) return saved->second;
@@ -94,9 +93,10 @@ class NativeUiCacheContextWriter {
         if (binding && binding->ready) target = binding->target;
         else {
             // Discovery resolves a copy of the captured row. A retained
-            // native frame may therefore still hold its original deferred
-            // snapshot after SDL has completed it. Read only the exact typed
-            // result here; never run translation while computing a cache key.
+            // native frame may therefore still hold its original pending
+            // identity after either the worker or SDL has completed it.
+            // Read only the exact typed result here; never run translation
+            // while computing a cache key.
             if (pending.source != source || pending.semantic_key != input.unit_identity_semantic_key)
                 return input;
             auto &cache = g_native_unit_identity_completed;
@@ -292,6 +292,7 @@ public:
         value(input.squad_list_right);
         value(input.info_title_kind); value(input.info_title_authored);
         value(input.info_title_right); value(input.civilization_field);
+        value(input.character_relation_right);
         optional(input.caravan_entity_name, [&](const auto &entity) { name(entity); });
         value(input.location_picker_field);
         optional(input.location_picker_box, [&](const auto &box) { rect(box); });
@@ -899,6 +900,10 @@ std::optional<std::string> Overlay::native_embark_civilization_cache_context() c
 
 static std::optional<std::string> native_ui_layer_cache_context(
         const NativeUiLayerStorage &layer) {
+    // This list resolves its own typed unit captions, including pending
+    // identity results, at presentation. Never borrow the whole page's
+    // semantic key or freeze those results in another component's cache.
+    if (&layer == &g_native_map_hover_layer) return std::nullopt;
     if (&layer == &g_native_petition_layer) {
         NativeUiCacheContextWriter key;
         key.tooltip();

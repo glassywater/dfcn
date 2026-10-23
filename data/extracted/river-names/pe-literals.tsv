@@ -1,0 +1,1401 @@
+role	instruction_va	target_va	kind	text
+word-tables	0x140d2cd96	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2cddd	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2ce24	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2ce6b	0x14167cd98	cstring	EVIL
+word-tables	0x140d2ceb3	0x14167cd98	cstring	EVIL
+word-tables	0x140d2cef6	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2cf37	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2cf71	0x141711250	cstring	NAME_SWAMP
+word-tables	0x140d2cfb2	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2cff3	0x14167cd98	cstring	EVIL
+word-tables	0x140d2d034	0x141711244	cstring	HOLY
+word-tables	0x140d2d075	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2d0b6	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2d0f7	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2d13d	0x141711270	cstring	NAME_DESERT
+word-tables	0x140d2d17e	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2d1bf	0x14167cd98	cstring	EVIL
+word-tables	0x140d2d200	0x141711244	cstring	HOLY
+word-tables	0x140d2d241	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2d282	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2d2c3	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2d309	0x1416a0e90	cstring	NAME_FOREST
+word-tables	0x140d2d34a	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2d38b	0x14167cd98	cstring	EVIL
+word-tables	0x140d2d3cc	0x141711244	cstring	HOLY
+word-tables	0x140d2d40d	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2d44e	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2d48f	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2d4d5	0x1416a0e68	cstring	NAME_MOUNTAINS
+word-tables	0x140d2d516	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2d557	0x14167cd98	cstring	EVIL
+word-tables	0x140d2d598	0x141711244	cstring	HOLY
+word-tables	0x140d2d5d9	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2d61a	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2d65b	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2d695	0x1416a0e38	cstring	NAME_LAKE
+word-tables	0x140d2d6d6	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2d717	0x14167cd98	cstring	EVIL
+word-tables	0x140d2d758	0x141711244	cstring	HOLY
+word-tables	0x140d2d799	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2d7da	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2d81b	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2d855	0x1416a0e78	cstring	NAME_OCEAN
+word-tables	0x140d2d896	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2d8d7	0x14167cd98	cstring	EVIL
+word-tables	0x140d2d918	0x141711244	cstring	HOLY
+word-tables	0x140d2d959	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2d99a	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2d9db	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2da15	0x141711260	cstring	NAME_GLACIER
+word-tables	0x140d2da56	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2da97	0x14167cd98	cstring	EVIL
+word-tables	0x140d2dad8	0x141711244	cstring	HOLY
+word-tables	0x140d2db19	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2db5a	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2db9b	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2dbd5	0x141711290	cstring	NAME_TUNDRA
+word-tables	0x140d2dc16	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2dc57	0x14167cd98	cstring	EVIL
+word-tables	0x140d2dc98	0x141711244	cstring	HOLY
+word-tables	0x140d2dcd9	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2dd1a	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2dd5b	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2dd95	0x141711280	cstring	NAME_GRASSLAND
+word-tables	0x140d2ddd6	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2de17	0x14167cd98	cstring	EVIL
+word-tables	0x140d2de58	0x141711244	cstring	HOLY
+word-tables	0x140d2de99	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2deda	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2df1b	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2df5b	0x1417112b0	cstring	NAME_HILLS
+word-tables	0x140d2dfa2	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2dfe9	0x14167cd98	cstring	EVIL
+word-tables	0x140d2e030	0x141711244	cstring	HOLY
+word-tables	0x140d2e077	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2e0be	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2e105	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2e145	0x141711250	cstring	NAME_SWAMP
+word-tables	0x140d2e18c	0x14167cd98	cstring	EVIL
+word-tables	0x140d2e1d3	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2e21a	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2e261	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2e2a8	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2e2ef	0x141711244	cstring	HOLY
+word-tables	0x140d2e336	0x14167cda0	cstring	GOOD
+word-tables	0x140d2e376	0x141711270	cstring	NAME_DESERT
+word-tables	0x140d2e3bd	0x14167cd98	cstring	EVIL
+word-tables	0x140d2e404	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2e44b	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2e492	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2e4d9	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2e520	0x141711244	cstring	HOLY
+word-tables	0x140d2e567	0x14167cda0	cstring	GOOD
+word-tables	0x140d2e5a7	0x1416a0e90	cstring	NAME_FOREST
+word-tables	0x140d2e5ee	0x14167cd98	cstring	EVIL
+word-tables	0x140d2e635	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2e67c	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2e6c3	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2e70a	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2e751	0x141711244	cstring	HOLY
+word-tables	0x140d2e798	0x14167cda0	cstring	GOOD
+word-tables	0x140d2e7d8	0x1416a0e68	cstring	NAME_MOUNTAINS
+word-tables	0x140d2e81f	0x14167cd98	cstring	EVIL
+word-tables	0x140d2e866	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2e8ad	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2e8f4	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2e93b	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2e982	0x141711244	cstring	HOLY
+word-tables	0x140d2e9c9	0x14167cda0	cstring	GOOD
+word-tables	0x140d2ea09	0x1416a0e38	cstring	NAME_LAKE
+word-tables	0x140d2ea50	0x14167cd98	cstring	EVIL
+word-tables	0x140d2ea97	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2eade	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2eb25	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2eb6c	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2ebb3	0x141711244	cstring	HOLY
+word-tables	0x140d2ebfa	0x14167cda0	cstring	GOOD
+word-tables	0x140d2ec3a	0x1416a0e78	cstring	NAME_OCEAN
+word-tables	0x140d2ec81	0x14167cd98	cstring	EVIL
+word-tables	0x140d2ecc8	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2ed0f	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2ed56	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2ed9d	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2ede4	0x141711244	cstring	HOLY
+word-tables	0x140d2ee2b	0x14167cda0	cstring	GOOD
+word-tables	0x140d2ee6b	0x141711260	cstring	NAME_GLACIER
+word-tables	0x140d2eeb2	0x14167cd98	cstring	EVIL
+word-tables	0x140d2eef9	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2ef40	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2ef87	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2efce	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2f015	0x141711244	cstring	HOLY
+word-tables	0x140d2f05c	0x14167cda0	cstring	GOOD
+word-tables	0x140d2f09c	0x141711290	cstring	NAME_TUNDRA
+word-tables	0x140d2f0e3	0x14167cd98	cstring	EVIL
+word-tables	0x140d2f12a	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2f171	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2f1b8	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2f1ff	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2f246	0x141711244	cstring	HOLY
+word-tables	0x140d2f28d	0x14167cda0	cstring	GOOD
+word-tables	0x140d2f2cd	0x141711280	cstring	NAME_GRASSLAND
+word-tables	0x140d2f314	0x14167cd98	cstring	EVIL
+word-tables	0x140d2f35b	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2f3a2	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2f3e9	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2f430	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2f477	0x141711244	cstring	HOLY
+word-tables	0x140d2f4be	0x14167cda0	cstring	GOOD
+word-tables	0x140d2f4fe	0x1417112b0	cstring	NAME_HILLS
+word-tables	0x140d2f545	0x14167cd98	cstring	EVIL
+word-tables	0x140d2f58c	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2f5d3	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2f61a	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2f661	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2f6a8	0x141711244	cstring	HOLY
+word-tables	0x140d2f6ef	0x14167cda0	cstring	GOOD
+word-tables	0x140d2f72f	0x141711250	cstring	NAME_SWAMP
+word-tables	0x140d2f776	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d2f7bd	0x14169bcd4	cstring	PEACE
+word-tables	0x140d2f804	0x14167cda0	cstring	GOOD
+word-tables	0x140d2f84b	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2f892	0x14167cd98	cstring	EVIL
+word-tables	0x140d2f8d9	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d2f920	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2f967	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2f9ae	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2f9f5	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2fa35	0x141711270	cstring	NAME_DESERT
+word-tables	0x140d2fa7c	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d2fac3	0x14169bcd4	cstring	PEACE
+word-tables	0x140d2fb0a	0x14167cda0	cstring	GOOD
+word-tables	0x140d2fb51	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2fb98	0x14167cd98	cstring	EVIL
+word-tables	0x140d2fbdf	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d2fc26	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2fc6d	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2fcb4	0x1416a0f30	cstring	UGLY
+word-tables	0x140d2fcfb	0x14169b8d0	cstring	DEATH
+word-tables	0x140d2fd3b	0x1416a0e90	cstring	NAME_FOREST
+word-tables	0x140d2fd82	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d2fdc9	0x14169bcd4	cstring	PEACE
+word-tables	0x140d2fe10	0x14167cda0	cstring	GOOD
+word-tables	0x140d2fe57	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d2fe9e	0x14167cd98	cstring	EVIL
+word-tables	0x140d2fee5	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d2ff2c	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d2ff73	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d2ffba	0x1416a0f30	cstring	UGLY
+word-tables	0x140d30001	0x14169b8d0	cstring	DEATH
+word-tables	0x140d30041	0x1416a0e68	cstring	NAME_MOUNTAINS
+word-tables	0x140d30088	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d300cf	0x14169bcd4	cstring	PEACE
+word-tables	0x140d30116	0x14167cda0	cstring	GOOD
+word-tables	0x140d3015d	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d301a4	0x14167cd98	cstring	EVIL
+word-tables	0x140d301eb	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d30232	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d30279	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d302c0	0x1416a0f30	cstring	UGLY
+word-tables	0x140d30307	0x14169b8d0	cstring	DEATH
+word-tables	0x140d30347	0x1416a0e38	cstring	NAME_LAKE
+word-tables	0x140d3038e	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d303d5	0x14169bcd4	cstring	PEACE
+word-tables	0x140d3041c	0x14167cda0	cstring	GOOD
+word-tables	0x140d30463	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d304aa	0x14167cd98	cstring	EVIL
+word-tables	0x140d304f1	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d30538	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d3057f	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d305c6	0x1416a0f30	cstring	UGLY
+word-tables	0x140d3060d	0x14169b8d0	cstring	DEATH
+word-tables	0x140d3064d	0x1416a0e78	cstring	NAME_OCEAN
+word-tables	0x140d30694	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d306db	0x14169bcd4	cstring	PEACE
+word-tables	0x140d30722	0x14167cda0	cstring	GOOD
+word-tables	0x140d30769	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d307b0	0x14167cd98	cstring	EVIL
+word-tables	0x140d307f7	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d3083e	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d30885	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d308cc	0x1416a0f30	cstring	UGLY
+word-tables	0x140d30913	0x14169b8d0	cstring	DEATH
+word-tables	0x140d30953	0x141711260	cstring	NAME_GLACIER
+word-tables	0x140d3099a	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d309e1	0x14169bcd4	cstring	PEACE
+word-tables	0x140d30a28	0x14167cda0	cstring	GOOD
+word-tables	0x140d30a6f	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d30ab6	0x14167cd98	cstring	EVIL
+word-tables	0x140d30afd	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d30b44	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d30b8b	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d30bd2	0x1416a0f30	cstring	UGLY
+word-tables	0x140d30c19	0x14169b8d0	cstring	DEATH
+word-tables	0x140d30c59	0x141711290	cstring	NAME_TUNDRA
+word-tables	0x140d30ca0	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d30ce7	0x14169bcd4	cstring	PEACE
+word-tables	0x140d30d2e	0x14167cda0	cstring	GOOD
+word-tables	0x140d30d75	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d30dbc	0x14167cd98	cstring	EVIL
+word-tables	0x140d30e03	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d30e4a	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d30e91	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d30ed8	0x1416a0f30	cstring	UGLY
+word-tables	0x140d30f1f	0x14169b8d0	cstring	DEATH
+word-tables	0x140d30f5f	0x141711280	cstring	NAME_GRASSLAND
+word-tables	0x140d30fa6	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d30fed	0x14169bcd4	cstring	PEACE
+word-tables	0x140d31034	0x14167cda0	cstring	GOOD
+word-tables	0x140d3107b	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d310c2	0x14167cd98	cstring	EVIL
+word-tables	0x140d31109	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d31150	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d31197	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d311de	0x1416a0f30	cstring	UGLY
+word-tables	0x140d31225	0x14169b8d0	cstring	DEATH
+word-tables	0x140d31265	0x1417112b0	cstring	NAME_HILLS
+word-tables	0x140d312ac	0x1416a0f28	cstring	FLOWERY
+word-tables	0x140d312f3	0x14169bcd4	cstring	PEACE
+word-tables	0x140d3133a	0x14167cda0	cstring	GOOD
+word-tables	0x140d31381	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d313c8	0x14167cd98	cstring	EVIL
+word-tables	0x140d3140f	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d31456	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d3149d	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d314e4	0x1416a0f30	cstring	UGLY
+word-tables	0x140d3152b	0x14169b8d0	cstring	DEATH
+word-tables	0x140d3156b	0x1417112a0	cstring	NAME_REGION
+word-tables	0x140d315b2	0x1416a0dfc	cstring	MYTHIC
+word-tables	0x140d315f9	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d31640	0x14167cd98	cstring	EVIL
+word-tables	0x140d31687	0x141711244	cstring	HOLY
+word-tables	0x140d316ce	0x1416a0f30	cstring	UGLY
+word-tables	0x140d31715	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d3175c	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d317a3	0x14169b8d0	cstring	DEATH
+word-tables	0x140d317e3	0x1416a0f48	cstring	NAME_CAVE
+word-tables	0x140d3182a	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d3186a	0x1417112d8	cstring	NAME_PEAK
+word-tables	0x140d318aa	0x1416a0ea0	cstring	NAME_VOLCANO
+word-tables	0x140d318ea	0x1417112c0	cstring	NAME_ISLAND_SMALL
+word-tables	0x140d31931	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d31978	0x14167cd98	cstring	EVIL
+word-tables	0x140d319bf	0x141711244	cstring	HOLY
+word-tables	0x140d31a06	0x1416a0f30	cstring	UGLY
+word-tables	0x140d31a4d	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d31a94	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d31ad4	0x1417112f8	cstring	NAME_ISLAND
+word-tables	0x140d31b1b	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d31b62	0x14167cd98	cstring	EVIL
+word-tables	0x140d31ba9	0x141711244	cstring	HOLY
+word-tables	0x140d31bf0	0x1416a0f30	cstring	UGLY
+word-tables	0x140d31c37	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d31c7e	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d31cbe	0x1417112e8	cstring	NAME_CONTINENT
+word-tables	0x140d31d05	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d31d4c	0x14167cd98	cstring	EVIL
+word-tables	0x140d31d93	0x141711244	cstring	HOLY
+word-tables	0x140d31dda	0x1416a0f30	cstring	UGLY
+word-tables	0x140d31e21	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d31e68	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d31ea8	0x141711318	cstring	NAME_WAR
+word-tables	0x140d31eef	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d31f2f	0x141711308	cstring	NAME_BATTLE
+word-tables	0x140d31f76	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d31fb6	0x141711348	cstring	NAME_SIEGE
+word-tables	0x140d31ffd	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d3203d	0x141711328	cstring	NAME_ENTITY_MERCHANT_COMPANY
+word-tables	0x140d3207d	0x141711328	cstring	NAME_ENTITY_MERCHANT_COMPANY
+word-tables	0x140d320bd	0x141711370	cstring	NAME_COMMON_RELIGION
+word-tables	0x140d320fd	0x141711358	cstring	NAME_BUILDING_TEMPLE
+word-tables	0x140d3213d	0x1417113a0	cstring	NAME_BUILDING_LIBRARY
+word-tables	0x140d3217d	0x141711388	cstring	NAME_BUILDING_HOSPITAL
+word-tables	0x140d321bd	0x1417113c8	cstring	NAME_ROAD
+word-tables	0x140d32204	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d3224b	0x14167cd98	cstring	EVIL
+word-tables	0x140d32292	0x141711244	cstring	HOLY
+word-tables	0x140d322d9	0x1416a0f30	cstring	UGLY
+word-tables	0x140d32320	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d32367	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d323a7	0x1417113b8	cstring	NAME_BRIDGE
+word-tables	0x140d323ee	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d32435	0x14167cd98	cstring	EVIL
+word-tables	0x140d3247c	0x141711244	cstring	HOLY
+word-tables	0x140d324c3	0x1416a0f30	cstring	UGLY
+word-tables	0x140d3250a	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d32551	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d32591	0x1417113e8	cstring	NAME_TUNNEL
+word-tables	0x140d325d8	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d3261f	0x14167cd98	cstring	EVIL
+word-tables	0x140d32666	0x141711244	cstring	HOLY
+word-tables	0x140d326ad	0x1416a0f30	cstring	UGLY
+word-tables	0x140d326f4	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d3273b	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d3277b	0x1417113d8	cstring	NAME_WALL
+word-tables	0x140d327c2	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d32809	0x14167cd98	cstring	EVIL
+word-tables	0x140d32850	0x141711244	cstring	HOLY
+word-tables	0x140d32897	0x1416a0f30	cstring	UGLY
+word-tables	0x140d328de	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d32925	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d32965	0x141711410	cstring	NAME_BUILDING_KEEP
+word-tables	0x140d329ac	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d329f3	0x14167cd98	cstring	EVIL
+word-tables	0x140d32a3a	0x141711244	cstring	HOLY
+word-tables	0x140d32a81	0x1416a0f30	cstring	UGLY
+word-tables	0x140d32ac8	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d32b0f	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d32b4f	0x1417113f8	cstring	NAME_BUILDING_TOMB
+word-tables	0x140d32b96	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d32bdd	0x14167cd98	cstring	EVIL
+word-tables	0x140d32c24	0x141711244	cstring	HOLY
+word-tables	0x140d32c6b	0x1416a0f30	cstring	UGLY
+word-tables	0x140d32cb2	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d32cf9	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d32d39	0x1416a0f78	cstring	ARTIFICE
+word-tables	0x140d32d80	0x14167cd98	cstring	EVIL
+word-tables	0x140d32dc7	0x141711244	cstring	HOLY
+word-tables	0x140d32e0e	0x1416a0f30	cstring	UGLY
+word-tables	0x140d32e55	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d32e9c	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d32edc	0x1416a0f58	cstring	VIOLENT
+word-tables	0x140d32f23	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d32f6a	0x14167cd98	cstring	EVIL
+word-tables	0x140d32fb1	0x141711244	cstring	HOLY
+word-tables	0x140d32ff8	0x1416a0f30	cstring	UGLY
+word-tables	0x140d3303f	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d33086	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d330c6	0x1416a0e30	cstring	PROTECT
+word-tables	0x140d3310d	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d33154	0x14167cd98	cstring	EVIL
+word-tables	0x140d3319b	0x141711244	cstring	HOLY
+word-tables	0x140d331e2	0x1416a0f30	cstring	UGLY
+word-tables	0x140d33229	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d33270	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d332b0	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d332f7	0x14167cd98	cstring	EVIL
+word-tables	0x140d3333e	0x141711244	cstring	HOLY
+word-tables	0x140d33385	0x1416a0f30	cstring	UGLY
+word-tables	0x140d333cc	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d33413	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d33453	0x14169bef0	cstring	FOOD
+word-tables	0x140d3349a	0x14167cd98	cstring	EVIL
+word-tables	0x140d334e1	0x141711244	cstring	HOLY
+word-tables	0x140d33528	0x1416a0f30	cstring	UGLY
+word-tables	0x140d3356f	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d335b6	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d335f6	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d3363d	0x14167cd98	cstring	EVIL
+word-tables	0x140d33684	0x141711244	cstring	HOLY
+word-tables	0x140d336cb	0x1416a0f30	cstring	UGLY
+word-tables	0x140d33712	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d33759	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d33799	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d337e0	0x14167cd98	cstring	EVIL
+word-tables	0x140d33827	0x141711244	cstring	HOLY
+word-tables	0x140d3386e	0x1416a0f30	cstring	UGLY
+word-tables	0x140d338b5	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d338fc	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d3393c	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d33983	0x14167cd98	cstring	EVIL
+word-tables	0x140d339ca	0x141711244	cstring	HOLY
+word-tables	0x140d33a11	0x1416a0f30	cstring	UGLY
+word-tables	0x140d33a58	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d33a9f	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d33aeb	0x1416a0e30	cstring	PROTECT
+word-tables	0x140d33b32	0x1416a0df0	cstring	DOMESTIC
+word-tables	0x140d33b79	0x14167cd98	cstring	EVIL
+word-tables	0x140d33bc0	0x141711244	cstring	HOLY
+word-tables	0x140d33c07	0x1416a0f30	cstring	UGLY
+word-tables	0x140d33c4e	0x1416a0e08	cstring	SUBORDINATE
+word-tables	0x140d33c95	0x1416a0e18	cstring	NEGATIVE
+word-tables	0x140d33cd2	0x141711438	cstring	NAME_FESTIVAL
+select-word	0x140d3600a	0x141710ea0	cstring	Impoverished Word Selector
+river-create-a	0x140f7c613	0x141746178	cstring	Loop Erase River Overflow
+river-create-a	0x140f7cc16	0x141746198	cstring	Loop Erase River Placement Overflow
+river-create-a	0x140f7dcb8	0x141745500	cstring	Loop Erase River Temp River Placement Overflow
+english-format	0x140a948a3	0x1415e873c	cstring	 
+english-format	0x140a9495e	0x1415e873c	cstring	 
+english-format	0x140a94a3b	0x1415e873c	cstring	 
+english-format	0x140a94a5d	0x1415ed9bc	cstring	The 
+english-format	0x140a94a78	0x1415e8e48	cstring	the 
+english-format	0x140a94af2	0x1415e873c	cstring	 
+english-format	0x140a94b11	0x1415ed9bc	cstring	The 
+english-format	0x140a94b1a	0x1415e8e48	cstring	the 
+english-format	0x140a94b9a	0x1415e873c	cstring	 
+english-format	0x140a94bb9	0x1415ed9bc	cstring	The 
+english-format	0x140a94bc2	0x1415e8e48	cstring	the 
+english-format	0x140a94d1f	0x1415e873c	cstring	 
+english-format	0x140a94d4b	0x1415ed9bc	cstring	The 
+english-format	0x140a94d62	0x1415e8e48	cstring	the 
+english-format	0x140a94e09	0x1415e873c	cstring	 
+english-format	0x140a94e18	0x1416ced90	cstring	of 
+english-format	0x140a94e1f	0x1416cee1c	cstring	Of 
+embark-panel	0x14080def5	0x1415eca10	cstring	Mountain
+embark-panel	0x14080df2f	0x1415eca20	cstring	Glacier
+embark-panel	0x14080df69	0x1415eca7c	cstring	Tundra
+embark-panel	0x14080dfa3	0x1415eca88	cstring	Temperate Freshwater Swamp
+embark-panel	0x14080dfdd	0x1415eca40	cstring	Temperate Saltwater Swamp
+embark-panel	0x14080e017	0x1415eca60	cstring	Temperate Freshwater Marsh
+embark-panel	0x14080e051	0x1415ecad8	cstring	Temperate Saltwater Marsh
+embark-panel	0x14080e08b	0x1415ecaf8	cstring	Tropical Freshwater Swamp
+embark-panel	0x14080e0c5	0x1415ecaa8	cstring	Tropical Saltwater Swamp
+embark-panel	0x14080e0ff	0x1415ecac8	cstring	Mangrove Swamp
+embark-panel	0x14080e139	0x1415ecb40	cstring	Tropical Freshwater Marsh
+embark-panel	0x14080e173	0x1415ecb60	cstring	Tropical Saltwater Marsh
+embark-panel	0x14080e1ad	0x1415ecb14	cstring	Taiga
+embark-panel	0x14080e1e7	0x1416aee48	cstring	Temperate Conifer Forest
+embark-panel	0x14080e221	0x1415ecbc0	cstring	Temperate Broadleaf Forest
+embark-panel	0x14080e25b	0x1415ecbe0	cstring	Tropical Coniferous Forest
+embark-panel	0x14080e295	0x1416aee28	cstring	Tropical Dry Brdlf Forest
+embark-panel	0x14080e2cf	0x1416aee78	cstring	Tropical Moist Brdlf Forst
+embark-panel	0x14080e309	0x1415ecc30	cstring	Temperate Grassland
+embark-panel	0x14080e343	0x1415ecc48	cstring	Temperate Savanna
+embark-panel	0x14080e37d	0x1415ecc00	cstring	Temperate Shrubland
+embark-panel	0x14080e3b7	0x1415ecc18	cstring	Tropical Grassland
+embark-panel	0x14080e3f1	0x1415ecc80	cstring	Tropical Savanna
+embark-panel	0x14080e42b	0x1415ecc98	cstring	Tropical Shrubland
+embark-panel	0x14080e465	0x1415ecc60	cstring	Badlands
+embark-panel	0x14080e49f	0x1415ecc70	cstring	Rocky Wasteland
+embark-panel	0x14080e4d9	0x1415eccd0	cstring	Sand Desert
+embark-panel	0x14080e513	0x1415ecce0	cstring	Tropical Ocean
+embark-panel	0x14080e54d	0x1415eccb0	cstring	Temperate Ocean
+embark-panel	0x14080e587	0x1415eccc0	cstring	Arctic Ocean
+embark-panel	0x14080e5c1	0x1415ecd30	cstring	Temperate Freshwater Pool
+embark-panel	0x14080e5fb	0x1415ecd50	cstring	Temperate Brackish Pool
+embark-panel	0x14080e635	0x1415eccf0	cstring	Temperate Saltwater Pool
+embark-panel	0x14080e66f	0x1415ecd10	cstring	Tropical Freshwater Pool
+embark-panel	0x14080e6a9	0x1415ecda0	cstring	Tropical Brackish Pool
+embark-panel	0x14080e6e3	0x1415ecdb8	cstring	Tropical Saltwater Pool
+embark-panel	0x14080e71d	0x1415ecd68	cstring	Temperate Freshwater Lake
+embark-panel	0x14080e757	0x1415ecd88	cstring	Temperate Brackish Lake
+embark-panel	0x14080e791	0x1415ece00	cstring	Temperate Saltwater Lake
+embark-panel	0x14080e7cb	0x1415ece20	cstring	Tropical Freshwater Lake
+embark-panel	0x14080e805	0x1415ecdd0	cstring	Tropical Brackish Lake
+embark-panel	0x14080e83f	0x1415ecde8	cstring	Tropical Saltwater Lake
+embark-panel	0x14080e879	0x1415ece80	cstring	Temperate Freshwater River
+embark-panel	0x14080e8b3	0x1415ecea0	cstring	Temperate Brackish River
+embark-panel	0x14080e8ed	0x1415ece40	cstring	Temperate Saltwater River
+embark-panel	0x14080e927	0x1415ece60	cstring	Tropical Freshwater River
+embark-panel	0x14080e961	0x1415ecef0	cstring	Tropical Brackish River
+embark-panel	0x14080e99b	0x1415ecf08	cstring	Tropical Saltwater River
+embark-panel	0x14080e9d5	0x1415ecec0	cstring	Subterranean Water
+embark-panel	0x14080ea0c	0x1415eced8	cstring	Subterranean Chasm
+embark-panel	0x14080ea43	0x1415ecf60	cstring	Subterranean Magma
+embark-panel	0x14080eabf	0x1416aee68	cstring	Temperature: 
+embark-panel	0x14080eb19	0x1415f7400	cstring	Freezing
+embark-panel	0x14080eb67	0x1415f7420	cstring	Cold
+embark-panel	0x14080ebb4	0x1415fedb0	cstring	Temperate
+embark-panel	0x14080ec01	0x1415f7384	cstring	Warm
+embark-panel	0x14080ec4e	0x1415f738c	cstring	Hot
+embark-panel	0x14080ec8d	0x1415f7390	cstring	Scorching
+embark-panel	0x14080ecf2	0x1416aef28	cstring	Trees: 
+embark-panel	0x14080ed72	0x1416aef1c	cstring	Scarce
+embark-panel	0x14080edbb	0x1416aef3c	cstring	Sparse
+embark-panel	0x14080ee04	0x1416aef30	cstring	Woodland
+embark-panel	0x14080ee42	0x1416aeef0	cstring	Heavily Forested
+embark-panel	0x14080ee8f	0x1415ff764	cstring	None
+embark-panel	0x14080eee7	0x1416aeed8	cstring	Other Vegetation: 
+embark-panel	0x14080ef51	0x1416aef1c	cstring	Scarce
+embark-panel	0x14080ef97	0x1416aef10	cstring	Moderate
+embark-panel	0x14080efde	0x1416aef04	cstring	Thick
+embark-panel	0x14080f029	0x1415ff764	cstring	None
+embark-panel	0x14080f08a	0x1416af600	cstring	Surroundings: 
+embark-panel	0x14080f0ec	0x1416af5f8	cstring	Serene
+embark-panel	0x14080f132	0x1416af61c	cstring	Calm
+embark-panel	0x14080f172	0x1416af610	cstring	Sinister
+embark-panel	0x14080f1c6	0x1416af5d0	cstring	Mirthful
+embark-panel	0x14080f20d	0x1416af5c0	cstring	Wilderness
+embark-panel	0x14080f250	0x1416af5f0	cstring	Haunted
+embark-panel	0x14080f299	0x1416af5e0	cstring	Joyous Wilds
+embark-panel	0x14080f2dc	0x1416af668	cstring	Untamed Wilds
+embark-panel	0x14080f319	0x1416af658	cstring	Terrifying
+embark-panel	0x14080f4db	0x1415e9718	cstring	""""
+embark-panel	0x14080f526	0x1415e9718	cstring	""""
+embark-panel	0x14080f5ac	0x1415e873c	cstring	 
+embark-panel	0x14080f899	0x1416af688	cstring	Multiple Constructions
+embark-panel	0x14080f98c	0x1416af678	cstring	Major River: 
+embark-panel	0x14080f9e7	0x1416af638	cstring	River: 
+embark-panel	0x14080fa36	0x1416af628	cstring	Minor River: 
+embark-panel	0x14080fa96	0x1416af648	cstring	Stream: 
+embark-panel	0x14080fad5	0x1416af640	cstring	Brook: 
+embark-panel	0x14080fc55	0x1416af490	cstring	Volcano: 
+embark-panel	0x14080fc80	0x1416af480	cstring	Mountain: 
+embark-panel	0x14080fefe	0x1416af4b0	cstring	[C:3:0:1]You are a 
+embark-panel	0x14080ff24	0x1416af4a0	cstring	 based in 
+embark-panel	0x14080ff50	0x1416af42c	cstring	.[B]
+embark-panel	0x140810069	0x1416af400	cstring	[C:2:0:1]You have been ordered to drive 
+embark-panel	0x140810096	0x1415ed97c	cstring	 from 
+embark-panel	0x1408100c3	0x1415e85b4	cstring	.
+embark-panel	0x1408103a1	0x1416af450	cstring	  You should report the task as complete.
+embark-panel	0x1408103b4	0x1415fd258	cstring	[B]
+embark-panel	0x140810418	0x1416af400	cstring	[C:2:0:1]You have been ordered to drive 
+embark-panel	0x140810445	0x1415ed97c	cstring	 from 
+embark-panel	0x140810472	0x1415e85b4	cstring	.
+embark-panel	0x1408105b2	0x1416af450	cstring	  You should report the task as complete.
+embark-panel	0x1408105c5	0x1415fd258	cstring	[B]
+embark-panel	0x1408106c4	0x141602568	cstring	[C:4:0:1]
+embark-panel	0x140810737	0x1416af438	cstring	 is rumored to be in 
+embark-panel	0x140810764	0x1415e85b4	cstring	.
+embark-panel	0x14081077d	0x1416af538	cstring	  [C:7:0:0]This is common knowledge where you are from.
+embark-panel	0x1408107bd	0x1416af508	cstring	  [C:5:0:1]This creature is known to be dead.
+embark-panel	0x140810863	0x1416af588	cstring	  [C:2:0:1]You have been ordered to kill this creature.
+embark-panel	0x140810890	0x1416af450	cstring	  You should report the task as complete.
+embark-panel	0x1408108d4	0x1415fd258	cstring	[B]
+embark-panel	0x140810ea7	0x1416af570	cstring	Offloading site...
+embark-panel	0x14081190e	0x1416af4d8	cstring	Sewer Access
+embark-panel	0x140811a3a	0x1416af4c8	cstring	Tree House
+embark-panel	0x140811a70	0x1416af4f8	cstring	The Home Tree
+embark-panel	0x140811aa6	0x1416af4e8	cstring	Shaping Tree
+embark-panel	0x140811adc	0x1416af350	cstring	Market Tree
+embark-panel	0x140811b12	0x1416af340	cstring	Tavern Tree
+embark-panel	0x140811b48	0x1416af370	cstring	Library Tree
+embark-panel	0x140811b7e	0x1416af360	cstring	Counting Tree
+embark-panel	0x140811bb4	0x1416af310	cstring	Guild Tree
+embark-panel	0x140811bea	0x1416af300	cstring	Tower Tree
+embark-panel	0x140811c85	0x1416af3d8	cstring	Drinking Mound
+embark-panel	0x140811cce	0x1416af320	cstring	Castle Mound
+embark-panel	0x140811d17	0x1416af330	cstring	Civic Mound
+embark-panel	0x140811e19	0x1416525b8	cstring	Mead Hall
+embark-panel	0x140811e53	0x1416525b8	cstring	Mead Hall
+embark-panel	0x140811e89	0x1416525b8	cstring	Mead Hall
+embark-panel	0x140811f61	0x14162b7d0	cstring	Temple
+embark-panel	0x140811f9b	0x14162b7d0	cstring	Temple
+embark-panel	0x140811fd1	0x14162b7d0	cstring	Temple
+embark-panel	0x1408120a9	0x1416af3c8	cstring	Counting House
+embark-panel	0x1408120e3	0x1416af3c8	cstring	Counting House
+embark-panel	0x140812119	0x1416af3c8	cstring	Counting House
+embark-panel	0x1408121f1	0x1416af3f0	cstring	Guildhall
+embark-panel	0x14081222b	0x1416af3f0	cstring	Guildhall
+embark-panel	0x140812261	0x1416af3f0	cstring	Guildhall
+embark-panel	0x140812339	0x1416af3e8	cstring	Tower
+embark-panel	0x140812373	0x1416af3e8	cstring	Tower
+embark-panel	0x1408123a9	0x1416af3e8	cstring	Tower
+embark-panel	0x140812484	0x14162b7c0	cstring	Library
+embark-panel	0x1408124be	0x14162b7c0	cstring	Library
+embark-panel	0x1408124f4	0x14162b7c0	cstring	Library
+embark-panel	0x1408125cc	0x14162b7c8	cstring	Tavern
+embark-panel	0x140812606	0x14162b7c8	cstring	Tavern
+embark-panel	0x14081263c	0x14162b7c8	cstring	Tavern
+embark-panel	0x1408128af	0x1416af390	cstring	Abandoned shop
+embark-panel	0x14081290d	0x1416af380	cstring	Food imports
+embark-panel	0x140812943	0x1416af3b0	cstring	Clothing imports
+embark-panel	0x140812979	0x1416af3a0	cstring	General imports
+embark-panel	0x1408129af	0x1416af210	cstring	Cloth shop
+embark-panel	0x1408129e5	0x1416af200	cstring	Leather shop
+embark-panel	0x140812a1b	0x1416af238	cstring	Woven clothing shop
+embark-panel	0x140812a51	0x1416af220	cstring	Leather clothing shop
+embark-panel	0x140812a87	0x1416af1c0	cstring	Bone carver's shop
+embark-panel	0x140812abd	0x1416af1a8	cstring	Gem cutter's shop
+embark-panel	0x140812af3	0x1416af1e8	cstring	Weaponsmith's shop
+embark-panel	0x140812b29	0x1416af1d8	cstring	Bowyer's shop
+embark-panel	0x140812b5f	0x1416af2b8	cstring	Blacksmith's shop
+embark-panel	0x140812b95	0x1416af2a0	cstring	Armorsmith's shop
+embark-panel	0x140812bcb	0x1416af2e8	cstring	Metal craft shop
+embark-panel	0x140812c01	0x1416af2d0	cstring	Leather goods shop
+embark-panel	0x140812c37	0x1416af268	cstring	Carpenter's shop
+embark-panel	0x140812c6d	0x1416af250	cstring	Stone furniture shop
+embark-panel	0x140812ca3	0x1416af288	cstring	Metal furniture shop
+embark-panel	0x140812d01	0x14162b820	cstring	Dormitory
+embark-panel	0x140812d5f	0x1416af27c	cstring	Barrow
+embark-panel	0x140812dbd	0x14162fb40	cstring	Dining Hall
+embark-panel	0x140812e1b	0x1416afb78	cstring	Warehouse
+embark-panel	0x140812e79	0x1416afb60	cstring	Fortress Entrance
+embark-panel	0x140812ed8	0x14162ccdc	cstring	Well
+embark-panel	0x140812f36	0x1416afb98	cstring	Trenches
+embark-panel	0x140812fec	0x141644448	cstring	 shrine
+embark-panel	0x140813001	0x1416afb88	cstring	Shrine to 
+embark-panel	0x14081307f	0x14162b7d8	cstring	Shrine
+embark-panel	0x1408130ef	0x1416afb18	cstring	Empty market
+embark-panel	0x140813151	0x1416afb00	cstring	Imported goods market
+embark-panel	0x140813187	0x1416afb48	cstring	Imported food market
+embark-panel	0x1408131bd	0x1416afb28	cstring	Imported clothing market
+embark-panel	0x1408131f3	0x1416afc20	cstring	Meat market
+embark-panel	0x140813229	0x1416afc00	cstring	Fruit and vegetable market
+embark-panel	0x14081325c	0x1416afc48	cstring	Cheese market
+embark-panel	0x14081328f	0x1416afc30	cstring	Processed goods market
+embark-panel	0x140813407	0x1416afbc0	cstring	Underground Fortress
+embark-panel	0x14081345b	0x1416afba8	cstring	Underground Farms
+embark-panel	0x1408134c1	0x1416afbe8	cstring	Underground Stair
+embark-panel	0x140813575	0x1416afbd8	cstring	Hillocks
+embark-panel	0x1408135ab	0x1416afa40	cstring	Houses
+embark-panel	0x14081361c	0x1416afa38	cstring	Hillock
+embark-panel	0x14081364f	0x1416afa5c	cstring	House
+embark-panel	0x1408136c4	0x1416afa48	cstring	Abandoned hillocks
+embark-panel	0x1408136fa	0x1416afa00	cstring	Abandoned houses
+embark-panel	0x140813768	0x1416af9e8	cstring	Abandoned hillock
+embark-panel	0x14081379b	0x1416afa28	cstring	Abandoned house
+embark-panel	0x140813810	0x1416afa18	cstring	Ruined hillocks
+embark-panel	0x140813846	0x1416afac0	cstring	Ruined houses
+embark-panel	0x1408138b4	0x1416afab0	cstring	Ruined hillock
+embark-panel	0x1408138e7	0x1416afaf0	cstring	Ruined house
+embark-panel	0x140813945	0x1416afad0	cstring	No significant structures
+embark-panel	0x140813d4c	0x1416af4d8	cstring	Sewer Access
+embark-panel	0x140813e75	0x1416af4c8	cstring	Tree House
+embark-panel	0x140813eb6	0x1416af4f8	cstring	The Home Tree
+embark-panel	0x140813ef7	0x1416af4e8	cstring	Shaping Tree
+embark-panel	0x140813f38	0x1416af350	cstring	Market Tree
+embark-panel	0x140813f79	0x1416af340	cstring	Tavern Tree
+embark-panel	0x140813fba	0x1416af370	cstring	Library Tree
+embark-panel	0x140813ffb	0x1416af360	cstring	Counting Tree
+embark-panel	0x14081403c	0x1416af310	cstring	Guild Tree
+embark-panel	0x14081407d	0x1416af300	cstring	Tower Tree
+embark-panel	0x140814123	0x1416af3d8	cstring	Drinking Mound
+embark-panel	0x14081416c	0x1416af320	cstring	Castle Mound
+embark-panel	0x1408141b5	0x1416af330	cstring	Civic Mound
+embark-panel	0x1408142d1	0x1416525b8	cstring	Mead Hall
+embark-panel	0x140814312	0x1416525b8	cstring	Mead Hall
+embark-panel	0x140814353	0x1416525b8	cstring	Mead Hall
+embark-panel	0x14081443e	0x14162b7d0	cstring	Temple
+embark-panel	0x14081447f	0x14162b7d0	cstring	Temple
+embark-panel	0x1408144c0	0x14162b7d0	cstring	Temple
+embark-panel	0x1408145ab	0x1416af3c8	cstring	Counting House
+embark-panel	0x1408145ec	0x1416af3c8	cstring	Counting House
+embark-panel	0x14081462d	0x1416af3c8	cstring	Counting House
+embark-panel	0x140814718	0x1416af3f0	cstring	Guildhall
+embark-panel	0x140814759	0x1416af3f0	cstring	Guildhall
+embark-panel	0x14081479a	0x1416af3f0	cstring	Guildhall
+embark-panel	0x140814885	0x1416af3e8	cstring	Tower
+embark-panel	0x1408148c6	0x1416af3e8	cstring	Tower
+embark-panel	0x140814907	0x1416af3e8	cstring	Tower
+embark-panel	0x1408149f5	0x14162b7c0	cstring	Library
+embark-panel	0x140814a36	0x14162b7c0	cstring	Library
+embark-panel	0x140814a77	0x14162b7c0	cstring	Library
+embark-panel	0x140814b62	0x14162b7c8	cstring	Tavern
+embark-panel	0x140814ba3	0x14162b7c8	cstring	Tavern
+embark-panel	0x140814be4	0x14162b7c8	cstring	Tavern
+embark-panel	0x140814e62	0x1416af390	cstring	Abandoned shop
+embark-panel	0x140814ec0	0x1416af380	cstring	Food imports
+embark-panel	0x140814ef6	0x1416af3b0	cstring	Clothing imports
+embark-panel	0x140814f2c	0x1416af3a0	cstring	General imports
+embark-panel	0x140814f62	0x1416af210	cstring	Cloth shop
+embark-panel	0x140814f98	0x1416af200	cstring	Leather shop
+embark-panel	0x140814fce	0x1416af238	cstring	Woven clothing shop
+embark-panel	0x140815004	0x1416af220	cstring	Leather clothing shop
+embark-panel	0x14081503a	0x1416af1c0	cstring	Bone carver's shop
+embark-panel	0x140815070	0x1416af1a8	cstring	Gem cutter's shop
+embark-panel	0x1408150a6	0x1416af1e8	cstring	Weaponsmith's shop
+embark-panel	0x1408150dc	0x1416af1d8	cstring	Bowyer's shop
+embark-panel	0x140815112	0x1416af2b8	cstring	Blacksmith's shop
+embark-panel	0x140815148	0x1416af2a0	cstring	Armorsmith's shop
+embark-panel	0x14081517e	0x1416af2e8	cstring	Metal craft shop
+embark-panel	0x1408151b4	0x1416af2d0	cstring	Leather goods shop
+embark-panel	0x1408151ea	0x1416af268	cstring	Carpenter's shop
+embark-panel	0x140815220	0x1416af250	cstring	Stone furniture shop
+embark-panel	0x140815256	0x1416af288	cstring	Metal furniture shop
+embark-panel	0x1408152b4	0x14162b820	cstring	Dormitory
+embark-panel	0x140815319	0x1416af27c	cstring	Barrow
+embark-panel	0x14081537e	0x14162b7e8	cstring	Dining hall
+embark-panel	0x1408153e3	0x1416afb78	cstring	Warehouse
+embark-panel	0x140815448	0x1416afb60	cstring	Fortress Entrance
+embark-panel	0x1408154ae	0x14162ccdc	cstring	Well
+embark-panel	0x140815513	0x1416afb98	cstring	Trenches
+embark-panel	0x1408155b7	0x1416afa80	cstring	Shrine of 
+embark-panel	0x1408155e6	0x1416afb88	cstring	Shrine to 
+embark-panel	0x14081565f	0x14162b7d8	cstring	Shrine
+embark-panel	0x1408156d6	0x1416afb18	cstring	Empty market
+embark-panel	0x140815738	0x1416afb00	cstring	Imported goods market
+embark-panel	0x14081576e	0x1416afb48	cstring	Imported food market
+embark-panel	0x1408157a4	0x1416afb28	cstring	Imported clothing market
+embark-panel	0x1408157da	0x1416afc20	cstring	Meat market
+embark-panel	0x140815810	0x1416afc00	cstring	Fruit and vegetable market
+embark-panel	0x140815843	0x1416afc48	cstring	Cheese market
+embark-panel	0x140815876	0x1416afc30	cstring	Processed goods market
+embark-panel	0x14081592d	0x1416afbd8	cstring	Hillocks
+embark-panel	0x140815963	0x1416afa40	cstring	Houses
+embark-panel	0x1408159d4	0x1416afa38	cstring	Hillock
+embark-panel	0x140815a07	0x1416afa5c	cstring	House
+embark-panel	0x140815a7b	0x1416afa48	cstring	Abandoned hillocks
+embark-panel	0x140815ab1	0x1416afa00	cstring	Abandoned houses
+embark-panel	0x140815b1f	0x1416af9e8	cstring	Abandoned hillock
+embark-panel	0x140815b52	0x1416afa28	cstring	Abandoned house
+embark-panel	0x140815bc5	0x1416afa18	cstring	Ruined hillocks
+embark-panel	0x140815bfb	0x1416afac0	cstring	Ruined houses
+embark-panel	0x140815c69	0x1416afab0	cstring	Ruined hillock
+embark-panel	0x140815c9c	0x1416afaf0	cstring	Ruined house
+embark-panel	0x140815d05	0x1416afad0	cstring	No significant structures
+embark-panel	0x140815fa1	0x14169f524	cstring	NW
+embark-panel	0x140815fdb	0x14169f528	cstring	NE
+embark-panel	0x140816012	0x14169f52c	cstring	SW
+embark-panel	0x140816049	0x14169f530	cstring	SE
+embark-panel	0x1408160dd	0x1416afa68	cstring	Strongest Odor: 
+embark-panel	0x140816134	0x1415f70e4	cstring	Death
+embark-panel	0x140816198	0x1415ff764	cstring	None
+embark-panel	0x1408162ee	0x14169f524	cstring	NW
+embark-panel	0x140816328	0x14169f528	cstring	NE
+embark-panel	0x14081635f	0x14169f52c	cstring	SW
+embark-panel	0x140816396	0x14169f530	cstring	SE
+embark-panel	0x140816426	0x1416afa68	cstring	Strongest Odor: 
+embark-panel	0x14081647d	0x1415f70e4	cstring	Death
+embark-panel	0x1408164e1	0x1415ff764	cstring	None
+embark-panel	0x14081702b	0x141602dbc	cstring	", """
+embark-panel	0x14081708b	0x1415e9718	cstring	""""
+embark-panel	0x14081712c	0x141602dbc	cstring	", """
+embark-panel	0x14081718c	0x1415e9718	cstring	""""
+embark-panel	0x1408171fb	0x141602dbc	cstring	", """
+embark-panel	0x140817236	0x1416afaa8	cstring	""", "
+embark-panel	0x140817258	0x141603b98	cstring	Unnamed 
+embark-panel	0x1408172b6	0x1415e873c	cstring	 
+embark-panel	0x14081736e	0x141602dbc	cstring	", """
+embark-panel	0x1408173ce	0x1415e9718	cstring	""""
+embark-panel	0x14081741d	0x141602dbc	cstring	", """
+embark-panel	0x140817469	0x1415e9718	cstring	""""
+embark-panel	0x140818330	0x141604528	cstring	Hotkey: 
+world-panel	0x140df8dec	0x1417209b0	cstring	Loading data needed to create new world
+world-panel	0x140df8e60	0x141604568	cstring	Initializing...
+world-panel	0x140df8ec0	0x1416ac810	cstring	Loading object files...  
+world-panel	0x140df8f06	0x1416ac810	cstring	Loading object files...  
+world-panel	0x140df8f45	0x141720a80	cstring	Initializing music load...
+world-panel	0x140df8f84	0x1416ac340	cstring	Processing languages...
+world-panel	0x140df8fc3	0x1416ac2f0	cstring	Processing inorganics...
+world-panel	0x140df9002	0x1416ac310	cstring	Processing plants...
+world-panel	0x140df9041	0x1416ac388	cstring	Processing items...
+world-panel	0x140df9080	0x1416ac3a0	cstring	Processing creatures...
+world-panel	0x140df90bf	0x1416ac358	cstring	Processing entities...
+world-panel	0x140df90fe	0x1416ac370	cstring	Processing reactions...
+world-panel	0x140df913d	0x1416ac3f0	cstring	Processing interactions...
+world-panel	0x140df917c	0x1416ac410	cstring	Processing music...
+world-panel	0x140df91bb	0x1416ac3b8	cstring	Processing sounds...
+world-panel	0x140df91fa	0x141619380	cstring	Finalizing languages...
+world-panel	0x140df9239	0x141619398	cstring	Finalizing descriptors...
+world-panel	0x140df9278	0x1416193b8	cstring	Finalizing material templates...
+world-panel	0x140df92b7	0x141619300	cstring	Finalizing inorganics...
+world-panel	0x140df92f6	0x141619320	cstring	Finalizing plants...
+world-panel	0x140df9335	0x141619338	cstring	Finalizing tissue templates...
+world-panel	0x140df9374	0x141619358	cstring	Finalizing items...
+world-panel	0x140df93b3	0x141619450	cstring	Finalizing buildings...
+world-panel	0x140df93f2	0x141619468	cstring	Finalizing body detail plans...
+world-panel	0x140df9431	0x141619488	cstring	Finalizing creature variations...
+world-panel	0x140df9470	0x1416194b0	cstring	Finalizing creatures...
+world-panel	0x140df94af	0x1416193e0	cstring	Finalizing entities...
+world-panel	0x140df94ee	0x1416193f8	cstring	Finalizing reactions...
+world-panel	0x140df952d	0x141619410	cstring	Finalizing interactions...
+world-panel	0x140df956c	0x141619430	cstring	Preparing material data...
+world-panel	0x140df95c8	0x1416acff8	cstring	Preparing graphics...  
+world-panel	0x140df962f	0x1416acff8	cstring	Preparing graphics...  
+world-panel	0x140df966e	0x141720a70	cstring	Finalizing...
+world-panel	0x140df9a0c	0x141602dbc	cstring	", """
+world-panel	0x140df9a45	0x1415e9718	cstring	""""
+world-panel	0x140df9abc	0x141720098	cstring	Creating 
+world-panel	0x140df9b26	0x141720148	cstring	Creating the world
+world-panel	0x140df9b7e	0x141615540	cstring	 (
+world-panel	0x140df9bf2	0x141720138	cstring	 rejected)
+world-panel	0x140df9c60	0x141720120	cstring	Preparing elevation...
+world-panel	0x140df9cbb	0x141720108	cstring	Setting temperature...
+world-panel	0x140df9d1a	0x1417201a0	cstring	Running rivers...
+world-panel	0x140df9d88	0x141615540	cstring	 (
+world-panel	0x140df9dfc	0x141615580	cstring	)
+world-panel	0x140df9e7a	0x141720190	cstring	Forming lakes
+world-panel	0x140df9ed3	0x1415ec860	cstring	...
+world-panel	0x140df9f29	0x141615540	cstring	 (
+world-panel	0x140df9f9d	0x141615580	cstring	)
+world-panel	0x140df9ff3	0x141720178	cstring	 and minerals...
+world-panel	0x140dfa041	0x141615540	cstring	 (
+world-panel	0x140dfa063	0x141615580	cstring	)
+world-panel	0x140dfa099	0x1415ec860	cstring	...
+world-panel	0x140dfa12c	0x141720160	cstring	Growing vegetation...
+world-panel	0x140dfa1ad	0x141720200	cstring	Verifying terrain...
+world-panel	0x140dfa208	0x1417201e8	cstring	Importing wildlife...
+world-panel	0x140dfa278	0x1417201d0	cstring	Recounting legends...
+world-panel	0x140dfa2e6	0x1417201b8	cstring	Finished prehistory...
+world-panel	0x140dfa329	0x141720268	cstring	Placing civilizations... (
+world-panel	0x140dfa34f	0x141615580	cstring	)
+world-panel	0x140dfa391	0x141720248	cstring	Making cave civilizations...
+world-panel	0x140dfa3d4	0x141720230	cstring	Making cave pops...
+world-panel	0x140dfa417	0x141720218	cstring	Placing other beasts...
+world-panel	0x140dfa45a	0x1417202d0	cstring	Placing megabeasts...
+world-panel	0x140dfa49d	0x1417202b8	cstring	Placing good/evil...
+world-panel	0x140dfa4e0	0x1417202a0	cstring	Placing caves... (
+world-panel	0x140dfa50c	0x141615580	cstring	)
+world-panel	0x140dfa545	0x141720288	cstring	Prehistory init...
+world-panel	0x140dfa5bf	0x141720338	cstring	Finalizing civ mats... (
+world-panel	0x140dfa669	0x141615580	cstring	)
+world-panel	0x140dfa6bb	0x141720320	cstring	Finalizing art... (
+world-panel	0x140dfa765	0x141615580	cstring	)
+world-panel	0x140dfa7b5	0x141720300	cstring	Finalizing uniforms... (
+world-panel	0x140dfa85f	0x141615580	cstring	)
+world-panel	0x140dfa8b1	0x1417202e8	cstring	Finalizing sites... (
+world-panel	0x140dfa95a	0x141615580	cstring	)
+world-panel	0x140dfaa0d	0x141720398	cstring	, year 
+world-panel	0x140dfaa64	0x141720380	cstring	Historical figures: 
+world-panel	0x140dfab59	0x141720368	cstring	An abridged chronicle (
+world-panel	0x140dfabae	0x141720358	cstring	 events total):
+world-panel	0x140dfae7c	0x1417203e8	cstring	   Events: 
+world-panel	0x140dfb079	0x1417203d8	cstring	LACK OF PEAKS
+world-panel	0x140dfb0b3	0x1417203b8	cstring	MEDIUM ELEVATION REJECTION
+world-panel	0x140dfb0ed	0x1417203a0	cstring	LOW ELEVATION REJECTION
+world-panel	0x140dfb127	0x141720440	cstring	HIGH ELEVATION REJECTION
+world-panel	0x140dfb161	0x141720428	cstring	LACK OF EDGE OCEANS
+world-panel	0x140dfb19b	0x141720410	cstring	RAINFALL REJECTION
+world-panel	0x140dfb1d5	0x1417203f8	cstring	DRAINAGE REJECTION
+world-panel	0x140dfb20f	0x1417204a0	cstring	SAVAGERY REJECTION
+world-panel	0x140dfb249	0x141720488	cstring	VOLCANISM REJECTION
+world-panel	0x140dfb283	0x141720470	cstring	LACK OF VOLCANOS
+world-panel	0x140dfb2bd	0x141720460	cstring	SWAMP REJECTION
+world-panel	0x140dfb2f7	0x1417204f8	cstring	DESERT REJECTION
+world-panel	0x140dfb331	0x1417204e0	cstring	FOREST REJECTION
+world-panel	0x140dfb36b	0x1417204c8	cstring	MOUNTAIN REJECTION
+world-panel	0x140dfb3a5	0x1417204b8	cstring	OCEAN REJECTION
+world-panel	0x140dfb3df	0x141720550	cstring	GLACIER REJECTION
+world-panel	0x140dfb419	0x141720538	cstring	TUNDRA REJECTION
+world-panel	0x140dfb453	0x141720520	cstring	GRASSLAND REJECTION
+world-panel	0x140dfb48d	0x141720510	cstring	HILLS REJECTION
+world-panel	0x140dfb4c7	0x1417205b0	cstring	LACK OF RIVERS
+world-panel	0x140dfb501	0x141720598	cstring	TOO MANY REGIONS
+world-panel	0x140dfb53b	0x141720580	cstring	LACK OF MOUNTAIN CAVES
+world-panel	0x140dfb575	0x141720568	cstring	LACK OF LOW-LYING CAVES
+world-panel	0x140dfb5af	0x141720640	cstring	UNABLE TO PLACE ENOUGH CIVILIZATIONS
+world-panel	0x140dfb5e9	0x141720620	cstring	NO CIVILIZATIONS AVAILABLE
+world-panel	0x140dfb620	0x1417205f0	cstring	UNABLE TO PLACE CONTROLLABLE CIVILIZATION
+world-panel	0x140dfb657	0x1417205c0	cstring	FARMING CIVILIZATION PLACED WITHOUT CROPS
+world-panel	0x140dfb803	0x141720718	cstring	CONTINUE until you give me another warning.
+world-panel	0x140dfb92d	0x1417206e8	cstring	ABORT NOW and I'll look over my parameters.
+world-panel	0x140dfba5d	0x1417206a8	cstring	ALLOW THIS REJECTION TYPE and continue reporting others.
+world-panel	0x140dfbb8d	0x141720668	cstring	ALLOW ALL REJECTS, even if I end up with a legends-only world!
+world-panel	0x140dfbced	0x141721010	cstring	Play now
+world-panel	0x140dfbe1d	0x141720fe8	cstring	Keep world and return to main menu
+world-panel	0x140dfbfba	0x141720fd8	cstring	Use world now
+world-panel	0x140dfc12e	0x141720fc0	cstring	Continue generating
+world-panel	0x140dfc25d	0x141720b20	cstring	Back to main menu
+world-panel	0x140dfc3b9	0x141616324	cstring	Pause
+world-panel	0x140dfc835	0x1415eca10	cstring	Mountain
+world-panel	0x140dfc86f	0x1415eca20	cstring	Glacier
+world-panel	0x140dfc8a9	0x1415eca7c	cstring	Tundra
+world-panel	0x140dfc8e3	0x1415eca88	cstring	Temperate Freshwater Swamp
+world-panel	0x140dfc91d	0x1415eca40	cstring	Temperate Saltwater Swamp
+world-panel	0x140dfc957	0x1415eca60	cstring	Temperate Freshwater Marsh
+world-panel	0x140dfc991	0x1415ecad8	cstring	Temperate Saltwater Marsh
+world-panel	0x140dfc9cb	0x1415ecaf8	cstring	Tropical Freshwater Swamp
+world-panel	0x140dfca05	0x1415ecaa8	cstring	Tropical Saltwater Swamp
+world-panel	0x140dfca3f	0x1415ecac8	cstring	Mangrove Swamp
+world-panel	0x140dfca79	0x1415ecb40	cstring	Tropical Freshwater Marsh
+world-panel	0x140dfcab3	0x1415ecb60	cstring	Tropical Saltwater Marsh
+world-panel	0x140dfcaed	0x1415ecb14	cstring	Taiga
+world-panel	0x140dfcb27	0x1416aee48	cstring	Temperate Conifer Forest
+world-panel	0x140dfcb61	0x1415ecbc0	cstring	Temperate Broadleaf Forest
+world-panel	0x140dfcb9b	0x1415ecbe0	cstring	Tropical Coniferous Forest
+world-panel	0x140dfcbd5	0x1416aee28	cstring	Tropical Dry Brdlf Forest
+world-panel	0x140dfcc0f	0x1416aee78	cstring	Tropical Moist Brdlf Forst
+world-panel	0x140dfcc49	0x1415ecc30	cstring	Temperate Grassland
+world-panel	0x140dfcc83	0x1415ecc48	cstring	Temperate Savanna
+world-panel	0x140dfccbd	0x1415ecc00	cstring	Temperate Shrubland
+world-panel	0x140dfccf7	0x1415ecc18	cstring	Tropical Grassland
+world-panel	0x140dfcd31	0x1415ecc80	cstring	Tropical Savanna
+world-panel	0x140dfcd6b	0x1415ecc98	cstring	Tropical Shrubland
+world-panel	0x140dfcda5	0x1415ecc60	cstring	Badlands
+world-panel	0x140dfcddf	0x1415ecc70	cstring	Rocky Wasteland
+world-panel	0x140dfce19	0x1415eccd0	cstring	Sand Desert
+world-panel	0x140dfce53	0x1415ecce0	cstring	Tropical Ocean
+world-panel	0x140dfce8d	0x1415eccb0	cstring	Temperate Ocean
+world-panel	0x140dfcec7	0x1415eccc0	cstring	Arctic Ocean
+world-panel	0x140dfcf01	0x1415ecd30	cstring	Temperate Freshwater Pool
+world-panel	0x140dfcf3b	0x1415ecd50	cstring	Temperate Brackish Pool
+world-panel	0x140dfcf75	0x1415eccf0	cstring	Temperate Saltwater Pool
+world-panel	0x140dfcfaf	0x1415ecd10	cstring	Tropical Freshwater Pool
+world-panel	0x140dfcfe9	0x1415ecda0	cstring	Tropical Brackish Pool
+world-panel	0x140dfd023	0x1415ecdb8	cstring	Tropical Saltwater Pool
+world-panel	0x140dfd05d	0x1415ecd68	cstring	Temperate Freshwater Lake
+world-panel	0x140dfd097	0x1415ecd88	cstring	Temperate Brackish Lake
+world-panel	0x140dfd0d1	0x1415ece00	cstring	Temperate Saltwater Lake
+world-panel	0x140dfd10b	0x1415ece20	cstring	Tropical Freshwater Lake
+world-panel	0x140dfd145	0x1415ecdd0	cstring	Tropical Brackish Lake
+world-panel	0x140dfd17f	0x1415ecde8	cstring	Tropical Saltwater Lake
+world-panel	0x140dfd1b9	0x1415ece80	cstring	Temperate Freshwater River
+world-panel	0x140dfd1f3	0x1415ecea0	cstring	Temperate Brackish River
+world-panel	0x140dfd22d	0x1415ece40	cstring	Temperate Saltwater River
+world-panel	0x140dfd267	0x1415ece60	cstring	Tropical Freshwater River
+world-panel	0x140dfd2a1	0x1415ecef0	cstring	Tropical Brackish River
+world-panel	0x140dfd2db	0x1415ecf08	cstring	Tropical Saltwater River
+world-panel	0x140dfd315	0x1415ecec0	cstring	Subterranean Water
+world-panel	0x140dfd34c	0x1415eced8	cstring	Subterranean Chasm
+world-panel	0x140dfd383	0x1415ecf60	cstring	Subterranean Magma
+world-panel	0x140dfd400	0x1416aee68	cstring	Temperature: 
+world-panel	0x140dfd45e	0x1415f7400	cstring	Freezing
+world-panel	0x140dfd4ac	0x1415f7420	cstring	Cold
+world-panel	0x140dfd4f9	0x1415fedb0	cstring	Temperate
+world-panel	0x140dfd546	0x1415f7384	cstring	Warm
+world-panel	0x140dfd593	0x1415f738c	cstring	Hot
+world-panel	0x140dfd5d2	0x1415f7390	cstring	Scorching
+world-panel	0x140dfd637	0x1416aef28	cstring	Trees: 
+world-panel	0x140dfd6b4	0x1416aef1c	cstring	Scarce
+world-panel	0x140dfd701	0x1416aef3c	cstring	Sparse
+world-panel	0x140dfd74e	0x1416aef30	cstring	Woodland
+world-panel	0x140dfd790	0x1416aeef0	cstring	Heavily Forested
+world-panel	0x140dfd7de	0x1415ff764	cstring	None
+world-panel	0x140dfd843	0x1416aeed8	cstring	Other Vegetation: 
+world-panel	0x140dfd8ba	0x1416aef1c	cstring	Scarce
+world-panel	0x140dfd907	0x1416aef10	cstring	Moderate
+world-panel	0x140dfd94e	0x1416aef04	cstring	Thick
+world-panel	0x140dfd99c	0x1415ff764	cstring	None
+world-panel	0x140dfda03	0x1416af600	cstring	Surroundings: 
+world-panel	0x140dfda6f	0x1416af5f8	cstring	Serene
+world-panel	0x140dfdab9	0x1416af61c	cstring	Calm
+world-panel	0x140dfdafd	0x1416af610	cstring	Sinister
+world-panel	0x140dfdb5b	0x1416af5d0	cstring	Mirthful
+world-panel	0x140dfdba8	0x1416af5c0	cstring	Wilderness
+world-panel	0x140dfdbef	0x1416af5f0	cstring	Haunted
+world-panel	0x140dfdc3c	0x1416af5e0	cstring	Joyous Wilds
+world-panel	0x140dfdc86	0x1416af668	cstring	Untamed Wilds
+world-panel	0x140dfdcc7	0x1416af658	cstring	Terrifying
+world-panel	0x140dfdea1	0x1415e9718	cstring	""""
+world-panel	0x140dfdef4	0x1415e9718	cstring	""""
+world-panel	0x140dfdf7e	0x1415e873c	cstring	 
+world-panel	0x140dfe283	0x1416af688	cstring	Multiple Constructions
+world-panel	0x140dfe375	0x1416af678	cstring	Major River: 
+world-panel	0x140dfe3d0	0x1416af638	cstring	River: 
+world-panel	0x140dfe41f	0x1416af628	cstring	Minor River: 
+world-panel	0x140dfe482	0x1416af648	cstring	Stream: 
+world-panel	0x140dfe4c5	0x1416af640	cstring	Brook: 
+world-panel	0x140dfe654	0x1416af490	cstring	Volcano: 
+world-panel	0x140dfe67f	0x1416af480	cstring	Mountain: 
+world-panel	0x140dfe7a2	0x141721050	cstring	Ice
+world-panel	0x140dfe97b	0x141629a04	cstring	FLUX
+world-panel	0x140dfed1f	0x141629a60	cstring	FIRED_MAT
+world-panel	0x140dfeddd	0x141721040	cstring	Shallow Clay
+world-panel	0x140dfee19	0x14162a4f4	cstring	Clay
+world-panel	0x140dfeea7	0x141721030	cstring	Shallow Sand
+world-panel	0x140dfeede	0x14162b8a0	cstring	Sand
+world-panel	0x140dfef79	0x141721020	cstring	Little soil
+world-panel	0x140dfefb8	0x141721090	cstring	Some soil
+world-panel	0x140dfeff7	0x141721080	cstring	Deep soil
+world-panel	0x140dff033	0x141721070	cstring	Very deep soil
+world-panel	0x140dff06f	0x141721058	cstring	Extremely deep soil
+world-panel	0x140dff0f4	0x1417210d8	cstring	Varied aquifer
+world-panel	0x140dff133	0x1417210c8	cstring	Heavy aquifer
+world-panel	0x140dff1ae	0x1417210b8	cstring	Light aquifer
+world-panel	0x140dff496	0x1417210a0	cstring	Flux stone layer
+world-panel	0x140dff63a	0x141721128	cstring	To recenter, press 
+world-panel	0x140dff6c4	0x141721100	cstring	 or hold+drag the middle mouse button.
+world-panel	0x140dffcac	0x141619940	cstring	Mods
+world-panel	0x140dffd10	0x141720b68	cstring	Basic options
+world-panel	0x140dffd4a	0x141720b58	cstring	Detailed mode
+world-panel	0x140dffd8a	0x141720b58	cstring	Detailed mode
+world-panel	0x140dffdc1	0x141720b68	cstring	Basic options
+world-panel	0x140e000df	0x141720aa0	cstring	Create world
+world-panel	0x140e0013a	0x141720b20	cstring	Back to main menu
+world-panel	0x140e00440	0x1415e873c	cstring	 
+world-panel	0x140e0054d	0x1416190f8	cstring	Installed
+world-panel	0x140e009e6	0x1415e873c	cstring	 
+world-panel	0x140e00dd0	0x141618cd8	cstring	Unnamed mod
+world-panel	0x140e00e5a	0x141618ce8	cstring	Author: 
+world-panel	0x140e00ea4	0x141618d90	cstring	Unknown author
+world-panel	0x140e00f23	0x141618da0	cstring	Version: 
+world-panel	0x140e01004	0x141618d70	cstring	Earliest compatible version: 
+world-panel	0x140e010fa	0x141619108	cstring	Description:
+world-panel	0x140e012c9	0x141619068	cstring	Must be after 
+world-panel	0x140e01314	0x141619078	cstring	Must be before 
+world-panel	0x140e0134b	0x141619088	cstring	Requires 
+world-panel	0x140e01481	0x141618fe0	cstring	Conflicts with 
+world-panel	0x140e01556	0x141720af8	cstring	Click now to open to this mod folder.
+world-panel	0x140e01601	0x141720b48	cstring	World map size
+world-panel	0x140e01647	0x141720b38	cstring	History length
+world-panel	0x140e016b5	0x141720c10	cstring	In such a young world certain game elements will not be available.
+world-panel	0x140e01723	0x141720bc0	cstring	A shorter history means certain game elements might not be available.
+world-panel	0x140e01791	0x141720b98	cstring	This may take several minutes!
+world-panel	0x140e017ff	0x141720b78	cstring	This may take a long while!
+world-panel	0x140e01845	0x141720ca0	cstring	Number of civilizations
+world-panel	0x140e0188b	0x141720c88	cstring	Maximum number of sites
+world-panel	0x140e018d1	0x141720c70	cstring	Number of beasts
+world-panel	0x140e01917	0x141720c58	cstring	Natural savagery
+world-panel	0x140e0195d	0x141720d50	cstring	Real world extinct creatures
+world-panel	0x140e019cb	0x141720d28	cstring	They are extinct in this world as well.
+world-panel	0x140e01a39	0x141720ce8	cstring	They live only on savage islands and very small savage biomes.
+world-panel	0x140e01aa7	0x141720cb8	cstring	They are only found in the untamed wilds.
+world-panel	0x140e01b15	0x141720dc8	cstring	They can be found in any wilderness.
+world-panel	0x140e01b83	0x141720d90	cstring	Many civilizations keep them as pets and work animals.
+world-panel	0x140e01bc6	0x141720d78	cstring	Mineral occurrence
+world-panel	0x140e01e5b	0x141720e08	cstring	Medium
+world-panel	0x140e01ea0	0x1416aecb4	cstring	Small
+world-panel	0x140e01ee5	0x141720e10	cstring	Smaller
+world-panel	0x140e01f2a	0x141720d70	cstring	Pocket
+world-panel	0x140e01f9b	0x141720e28	cstring	500 years
+world-panel	0x140e01fd5	0x141720e38	cstring	250 years
+world-panel	0x140e0201a	0x141720e48	cstring	100 years
+world-panel	0x140e0205f	0x141720df0	cstring	50 years
+world-panel	0x140e020a4	0x141720e00	cstring	5 years
+world-panel	0x140e02115	0x141720e18	cstring	Very high
+world-panel	0x140e0214f	0x141660db8	cstring	High
+world-panel	0x140e02194	0x141720e08	cstring	Medium
+world-panel	0x140e021d9	0x141660bb4	cstring	Low
+world-panel	0x140e0221e	0x141662020	cstring	Very low
+world-panel	0x140e0228f	0x141720e18	cstring	Very high
+world-panel	0x140e022c9	0x141660db8	cstring	High
+world-panel	0x140e0230e	0x141720e08	cstring	Medium
+world-panel	0x140e02353	0x141660bb4	cstring	Low
+world-panel	0x140e02398	0x141662020	cstring	Very low
+world-panel	0x140e02409	0x141720e18	cstring	Very high
+world-panel	0x140e02443	0x141660db8	cstring	High
+world-panel	0x140e02488	0x141720e08	cstring	Medium
+world-panel	0x140e024cd	0x141660bb4	cstring	Low
+world-panel	0x140e02512	0x141662020	cstring	Very low
+world-panel	0x140e02583	0x141720e18	cstring	Very high
+world-panel	0x140e025bd	0x141660db8	cstring	High
+world-panel	0x140e02602	0x141720e08	cstring	Medium
+world-panel	0x140e02647	0x141660bb4	cstring	Low
+world-panel	0x140e0268c	0x141662020	cstring	Very low
+world-panel	0x140e026fd	0x141629e18	cstring	Domesticated
+world-panel	0x140e02737	0x14171cad0	cstring	Any wilderness
+world-panel	0x140e0277c	0x14171cae0	cstring	Untamed wilds
+world-panel	0x140e027c1	0x1416b2598	cstring	Isolated
+world-panel	0x140e02806	0x14171ca40	cstring	Extinct
+world-panel	0x140e02877	0x141720e58	cstring	Everywhere
+world-panel	0x140e028db	0x141720e68	cstring	Frequent
+world-panel	0x140e02920	0x1416aef3c	cstring	Sparse
+world-panel	0x140e02965	0x141720e74	cstring	Rare
+world-panel	0x140e029aa	0x141720e80	cstring	Very rare
+world-panel	0x140e029ef	0x1416af19c	cstring	Large
+world-panel	0x140e02aa5	0x141720f00	cstring	Parameters saved!
+world-panel	0x140e02af3	0x141720ee8	cstring	Parameters loaded!
+world-panel	0x140e02b2a	0x141720ea8	cstring	Choose or create a parameter set to make a custom world.
+world-panel	0x140e02c5e	0x141720e90	cstring	New parameter set
+world-panel	0x140e02d84	0x1416052e8	cstring	Save
+world-panel	0x140e02ea4	0x1416b10fc	cstring	Load
+world-panel	0x140e0314e	0x1415ec82c	cstring	_
+world-panel	0x140e03326	0x141720f40	cstring	Width
+world-panel	0x140e03513	0x141720f38	cstring	Height
+world-panel	0x140e037ad	0x1415ec82c	cstring	_
+world-panel	0x140e038da	0x141720f18	cstring	Random seed
+world-panel	0x140e03911	0x141720f28	cstring	Various seeds
+world-panel	0x140e03a49	0x1415e8778	cstring	Copy
+world-panel	0x140e03b79	0x141619224	cstring	Delete
+world-panel	0x140e03d5e	0x1416160a8	cstring	Range: 
+world-panel	0x140e03de0	0x1415ed5b4	cstring	 to 
+world-panel	0x140e03faf	0x1415ec82c	cstring	_
+world-panel	0x140e046d2	0x141720f98	cstring	Really delete this parameter set?
+world-panel	0x140e04809	0x141619224	cstring	Delete
+world-panel	0x140e04934	0x1415fe724	cstring	Cancel
+world-panel	0x140e04ae4	0x141720f78	cstring	Really change the dimensions?
+world-panel	0x140e04b31	0x141720f50	cstring	This parameter set will be reset.
+world-panel	0x140e04c69	0x141720f48	cstring	Change
+world-panel	0x140e04d94	0x1415fe724	cstring	Cancel
+world-panel	0x140e04f44	0x1417200e8	cstring	Are you sure you want to abort?
+world-panel	0x140e04f91	0x1417200c8	cstring	You haven't saved your changes.
+world-panel	0x140e050c9	0x14163a808	cstring	Abort
+world-panel	0x140e051f4	0x1415fe724	cstring	Cancel
+world-panel	0x140e053a4	0x1417200a8	cstring	Are you sure you want to go on?
+world-panel	0x140e053f1	0x1417200c8	cstring	You haven't saved your changes.
+world-panel	0x140e05529	0x1415f7234	cstring	Create
+world-panel	0x140e05654	0x1415fe724	cstring	Cancel
+travel-panel	0x141046aa6	0x141748538	cstring	You have selected the largest possible area.
+travel-panel	0x141046af9	0x141747e38	cstring	You have selected a very large area.
+travel-panel	0x141046b30	0x141747e18	cstring	You have selected a large area.
+travel-panel	0x141046b7e	0x141747de8	cstring	Choose a smaller area if you experience lag.
+travel-panel	0x141046c07	0x141747db8	cstring	You have selected the smallest possible area.
+travel-panel	0x141046c3e	0x141747d90	cstring	You have selected a narrow area.
+travel-panel	0x141046c8a	0x141747d60	cstring	It might be difficult to find resources.
+travel-panel	0x141046ce5	0x141747d30	cstring	You have selected an area with salt water.
+travel-panel	0x141046d31	0x141747d00	cstring	It might be very difficult to survive here.
+travel-panel	0x141046d8e	0x141747fb0	cstring	You have selected an area with a heavy aquifer.
+travel-panel	0x141046dda	0x141747f78	cstring	It might be very difficult to obtain stone here.
+travel-panel	0x141046e2d	0x141747f48	cstring	You have selected an area with a light aquifer.
+travel-panel	0x141046e79	0x141747f10	cstring	Water might need to be pumped out or carried away.
+travel-panel	0x141046ed4	0x141747ee0	cstring	Your selected civilization is dead or dying.
+travel-panel	0x141046f20	0x141747eb0	cstring	Your dwarves might assume important positions.
+travel-panel	0x141046f7b	0x141747e90	cstring	You have selected an evil area.
+travel-panel	0x141046fc7	0x141747e60	cstring	You may find very unpleasant environs here.
+travel-panel	0x141047022	0x141748100	cstring	You have selected a savage area.
+travel-panel	0x14104706e	0x1417480d0	cstring	The wildlife might be very dangerous here.
+travel-panel	0x1410470ce	0x141748098	cstring	You have selected an area near a necromancer's tower.
+travel-panel	0x14104711a	0x141748068	cstring	You may be invaded very early by powerful foes.
+travel-panel	0x141047216	0x14162bdb8	cstring	Confirm
+travel-panel	0x141047302	0x14163a808	cstring	Abort
+travel-panel	0x1410474c3	0x141748020	cstring	"Click ""Embark"" to place your fortress.  Right click to zoom out."
+travel-panel	0x141047510	0x141721128	cstring	To recenter, press 
+travel-panel	0x14104759a	0x141721100	cstring	 or hold+drag the middle mouse button.
+travel-panel	0x141047764	0x14163a808	cstring	Abort
+travel-panel	0x14104779b	0x14169f5b8	cstring	Embark
+travel-panel	0x1410479db	0x141748010	cstring	Show elevation
+travel-panel	0x141047c1b	0x141747ff8	cstring	Show cliffs/grade
+travel-panel	0x141048141	0x1415eca10	cstring	Mountain
+travel-panel	0x14104817b	0x1415eca20	cstring	Glacier
+travel-panel	0x1410481b5	0x1415eca7c	cstring	Tundra
+travel-panel	0x1410481ef	0x1415eca88	cstring	Temperate Freshwater Swamp
+travel-panel	0x141048229	0x1415eca40	cstring	Temperate Saltwater Swamp
+travel-panel	0x141048263	0x1415eca60	cstring	Temperate Freshwater Marsh
+travel-panel	0x14104829d	0x1415ecad8	cstring	Temperate Saltwater Marsh
+travel-panel	0x1410482d7	0x1415ecaf8	cstring	Tropical Freshwater Swamp
+travel-panel	0x141048311	0x1415ecaa8	cstring	Tropical Saltwater Swamp
+travel-panel	0x14104834b	0x1415ecac8	cstring	Mangrove Swamp
+travel-panel	0x141048385	0x1415ecb40	cstring	Tropical Freshwater Marsh
+travel-panel	0x1410483bf	0x1415ecb60	cstring	Tropical Saltwater Marsh
+travel-panel	0x1410483f9	0x1415ecb14	cstring	Taiga
+travel-panel	0x141048433	0x1416aee48	cstring	Temperate Conifer Forest
+travel-panel	0x14104846d	0x1415ecbc0	cstring	Temperate Broadleaf Forest
+travel-panel	0x1410484a7	0x1415ecbe0	cstring	Tropical Coniferous Forest
+travel-panel	0x1410484e1	0x1416aee28	cstring	Tropical Dry Brdlf Forest
+travel-panel	0x14104851b	0x1416aee78	cstring	Tropical Moist Brdlf Forst
+travel-panel	0x141048555	0x1415ecc30	cstring	Temperate Grassland
+travel-panel	0x14104858f	0x1415ecc48	cstring	Temperate Savanna
+travel-panel	0x1410485c9	0x1415ecc00	cstring	Temperate Shrubland
+travel-panel	0x141048603	0x1415ecc18	cstring	Tropical Grassland
+travel-panel	0x14104863d	0x1415ecc80	cstring	Tropical Savanna
+travel-panel	0x141048677	0x1415ecc98	cstring	Tropical Shrubland
+travel-panel	0x1410486b1	0x1415ecc60	cstring	Badlands
+travel-panel	0x1410486eb	0x1415ecc70	cstring	Rocky Wasteland
+travel-panel	0x141048725	0x1415eccd0	cstring	Sand Desert
+travel-panel	0x14104875f	0x1415ecce0	cstring	Tropical Ocean
+travel-panel	0x141048799	0x1415eccb0	cstring	Temperate Ocean
+travel-panel	0x1410487d3	0x1415eccc0	cstring	Arctic Ocean
+travel-panel	0x14104880d	0x1415ecd30	cstring	Temperate Freshwater Pool
+travel-panel	0x141048847	0x1415ecd50	cstring	Temperate Brackish Pool
+travel-panel	0x141048881	0x1415eccf0	cstring	Temperate Saltwater Pool
+travel-panel	0x1410488bb	0x1415ecd10	cstring	Tropical Freshwater Pool
+travel-panel	0x1410488f5	0x1415ecda0	cstring	Tropical Brackish Pool
+travel-panel	0x14104892f	0x1415ecdb8	cstring	Tropical Saltwater Pool
+travel-panel	0x141048969	0x1415ecd68	cstring	Temperate Freshwater Lake
+travel-panel	0x1410489a3	0x1415ecd88	cstring	Temperate Brackish Lake
+travel-panel	0x1410489dd	0x1415ece00	cstring	Temperate Saltwater Lake
+travel-panel	0x141048a17	0x1415ece20	cstring	Tropical Freshwater Lake
+travel-panel	0x141048a51	0x1415ecdd0	cstring	Tropical Brackish Lake
+travel-panel	0x141048a8b	0x1415ecde8	cstring	Tropical Saltwater Lake
+travel-panel	0x141048ac5	0x1415ece80	cstring	Temperate Freshwater River
+travel-panel	0x141048aff	0x1415ecea0	cstring	Temperate Brackish River
+travel-panel	0x141048b39	0x1415ece40	cstring	Temperate Saltwater River
+travel-panel	0x141048b73	0x1415ece60	cstring	Tropical Freshwater River
+travel-panel	0x141048bad	0x1415ecef0	cstring	Tropical Brackish River
+travel-panel	0x141048be7	0x1415ecf08	cstring	Tropical Saltwater River
+travel-panel	0x141048c21	0x1415ecec0	cstring	Subterranean Water
+travel-panel	0x141048c58	0x1415eced8	cstring	Subterranean Chasm
+travel-panel	0x141048c8f	0x1415ecf60	cstring	Subterranean Magma
+travel-panel	0x141048d0c	0x1416aee68	cstring	Temperature: 
+travel-panel	0x141048d66	0x1415f7400	cstring	Freezing
+travel-panel	0x141048db8	0x1415f7420	cstring	Cold
+travel-panel	0x141048e0a	0x1415fedb0	cstring	Temperate
+travel-panel	0x141048e57	0x1415f7384	cstring	Warm
+travel-panel	0x141048ea1	0x1415f738c	cstring	Hot
+travel-panel	0x141048ee0	0x1415f7390	cstring	Scorching
+travel-panel	0x141048f4b	0x1416aef28	cstring	Trees: 
+travel-panel	0x141048fc9	0x1416aef1c	cstring	Scarce
+travel-panel	0x141049016	0x1416aef3c	cstring	Sparse
+travel-panel	0x141049063	0x1416aef30	cstring	Woodland
+travel-panel	0x1410490a5	0x1416aeef0	cstring	Heavily Forested
+travel-panel	0x1410490f0	0x1415ff764	cstring	None
+travel-panel	0x141049155	0x1416aeed8	cstring	Other Vegetation: 
+travel-panel	0x1410491c7	0x1416aef1c	cstring	Scarce
+travel-panel	0x141049214	0x1416aef10	cstring	Moderate
+travel-panel	0x14104925b	0x1416aef04	cstring	Thick
+travel-panel	0x1410492a6	0x1415ff764	cstring	None
+travel-panel	0x14104930b	0x1416af600	cstring	Surroundings: 
+travel-panel	0x141049372	0x1416af5f8	cstring	Serene
+travel-panel	0x1410493bf	0x1416af61c	cstring	Calm
+travel-panel	0x141049403	0x1416af610	cstring	Sinister
+travel-panel	0x141049461	0x1416af5d0	cstring	Mirthful
+travel-panel	0x1410494ae	0x1416af5c0	cstring	Wilderness
+travel-panel	0x1410494f5	0x1416af5f0	cstring	Haunted
+travel-panel	0x141049542	0x1416af5e0	cstring	Joyous Wilds
+travel-panel	0x14104958c	0x1416af668	cstring	Untamed Wilds
+travel-panel	0x1410495cd	0x1416af658	cstring	Terrifying
+travel-panel	0x1410497c3	0x1415e9718	cstring	""""
+travel-panel	0x141049816	0x1415e9718	cstring	""""
+travel-panel	0x1410498a0	0x1415e873c	cstring	 
+travel-panel	0x141049bd2	0x1416af688	cstring	Multiple Constructions
+travel-panel	0x141049d32	0x1416af678	cstring	Major River: 
+travel-panel	0x141049d90	0x1416af638	cstring	River: 
+travel-panel	0x141049de3	0x1416af628	cstring	Minor River: 
+travel-panel	0x141049e47	0x1416af648	cstring	Stream: 
+travel-panel	0x141049e89	0x1416af640	cstring	Brook: 
+travel-panel	0x14104a160	0x1416af490	cstring	Volcano: 
+travel-panel	0x14104a240	0x1416af480	cstring	Mountain: 
+travel-panel	0x14104a365	0x141721050	cstring	Ice
+travel-panel	0x14104a53f	0x141629a04	cstring	FLUX
+travel-panel	0x14104a8b4	0x141629a60	cstring	FIRED_MAT
+travel-panel	0x14104a963	0x141721040	cstring	Shallow Clay
+travel-panel	0x14104a99f	0x14162a4f4	cstring	Clay
+travel-panel	0x14104aa20	0x141721030	cstring	Shallow Sand
+travel-panel	0x14104aa57	0x14162b8a0	cstring	Sand
+travel-panel	0x14104aaf3	0x141721020	cstring	Little soil
+travel-panel	0x14104ab3c	0x141721090	cstring	Some soil
+travel-panel	0x14104ab85	0x141721080	cstring	Deep soil
+travel-panel	0x14104abce	0x141721070	cstring	Very deep soil
+travel-panel	0x14104ac18	0x141721058	cstring	Extremely deep soil
+travel-panel	0x14104aca8	0x1417210d8	cstring	Varied aquifer
+travel-panel	0x14104ace2	0x1417210c8	cstring	Heavy aquifer
+travel-panel	0x14104ad50	0x1417210b8	cstring	Light aquifer
+travel-panel	0x14104b037	0x1417210a0	cstring	Flux stone layer
+travel-panel	0x14104b567	0x141747fe0	cstring	 Clear find results 
+travel-panel	0x14104b59e	0x141748240	cstring	Find embark location
+travel-panel	0x14104b780	0x141748228	cstring	Reclaim/unretire
+travel-panel	0x14104b93a	0x141748208	cstring	Choose origin civilization
+travel-panel	0x14104ba85	0x1417481c8	cstring	Click the map to zoom in and choose your embark location.
+travel-panel	0x14104bad3	0x141721128	cstring	To recenter, press 
+travel-panel	0x14104bb5d	0x141721100	cstring	 or hold+drag the middle mouse button.
+travel-panel	0x14104bfcc	0x1415eca10	cstring	Mountain
+travel-panel	0x14104c006	0x1415eca20	cstring	Glacier
+travel-panel	0x14104c040	0x1415eca7c	cstring	Tundra
+travel-panel	0x14104c07a	0x1415eca88	cstring	Temperate Freshwater Swamp
+travel-panel	0x14104c0b4	0x1415eca40	cstring	Temperate Saltwater Swamp
+travel-panel	0x14104c0ee	0x1415eca60	cstring	Temperate Freshwater Marsh
+travel-panel	0x14104c128	0x1415ecad8	cstring	Temperate Saltwater Marsh
+travel-panel	0x14104c162	0x1415ecaf8	cstring	Tropical Freshwater Swamp
+travel-panel	0x14104c19c	0x1415ecaa8	cstring	Tropical Saltwater Swamp
+travel-panel	0x14104c1d6	0x1415ecac8	cstring	Mangrove Swamp
+travel-panel	0x14104c210	0x1415ecb40	cstring	Tropical Freshwater Marsh
+travel-panel	0x14104c24a	0x1415ecb60	cstring	Tropical Saltwater Marsh
+travel-panel	0x14104c284	0x1415ecb14	cstring	Taiga
+travel-panel	0x14104c2be	0x1416aee48	cstring	Temperate Conifer Forest
+travel-panel	0x14104c2f8	0x1415ecbc0	cstring	Temperate Broadleaf Forest
+travel-panel	0x14104c332	0x1415ecbe0	cstring	Tropical Coniferous Forest
+travel-panel	0x14104c36c	0x1416aee28	cstring	Tropical Dry Brdlf Forest
+travel-panel	0x14104c3a6	0x1416aee78	cstring	Tropical Moist Brdlf Forst
+travel-panel	0x14104c3e0	0x1415ecc30	cstring	Temperate Grassland
+travel-panel	0x14104c41a	0x1415ecc48	cstring	Temperate Savanna
+travel-panel	0x14104c454	0x1415ecc00	cstring	Temperate Shrubland
+travel-panel	0x14104c48e	0x1415ecc18	cstring	Tropical Grassland
+travel-panel	0x14104c4c8	0x1415ecc80	cstring	Tropical Savanna
+travel-panel	0x14104c502	0x1415ecc98	cstring	Tropical Shrubland
+travel-panel	0x14104c53c	0x1415ecc60	cstring	Badlands
+travel-panel	0x14104c576	0x1415ecc70	cstring	Rocky Wasteland
+travel-panel	0x14104c5b0	0x1415eccd0	cstring	Sand Desert
+travel-panel	0x14104c5ea	0x1415ecce0	cstring	Tropical Ocean
+travel-panel	0x14104c624	0x1415eccb0	cstring	Temperate Ocean
+travel-panel	0x14104c65e	0x1415eccc0	cstring	Arctic Ocean
+travel-panel	0x14104c698	0x1415ecd30	cstring	Temperate Freshwater Pool
+travel-panel	0x14104c6d2	0x1415ecd50	cstring	Temperate Brackish Pool
+travel-panel	0x14104c70c	0x1415eccf0	cstring	Temperate Saltwater Pool
+travel-panel	0x14104c746	0x1415ecd10	cstring	Tropical Freshwater Pool
+travel-panel	0x14104c780	0x1415ecda0	cstring	Tropical Brackish Pool
+travel-panel	0x14104c7ba	0x1415ecdb8	cstring	Tropical Saltwater Pool
+travel-panel	0x14104c7f4	0x1415ecd68	cstring	Temperate Freshwater Lake
+travel-panel	0x14104c82e	0x1415ecd88	cstring	Temperate Brackish Lake
+travel-panel	0x14104c868	0x1415ece00	cstring	Temperate Saltwater Lake
+travel-panel	0x14104c8a2	0x1415ece20	cstring	Tropical Freshwater Lake
+travel-panel	0x14104c8dc	0x1415ecdd0	cstring	Tropical Brackish Lake
+travel-panel	0x14104c916	0x1415ecde8	cstring	Tropical Saltwater Lake
+travel-panel	0x14104c950	0x1415ece80	cstring	Temperate Freshwater River
+travel-panel	0x14104c98a	0x1415ecea0	cstring	Temperate Brackish River
+travel-panel	0x14104c9c4	0x1415ece40	cstring	Temperate Saltwater River
+travel-panel	0x14104c9fe	0x1415ece60	cstring	Tropical Freshwater River
+travel-panel	0x14104ca38	0x1415ecef0	cstring	Tropical Brackish River
+travel-panel	0x14104ca72	0x1415ecf08	cstring	Tropical Saltwater River
+travel-panel	0x14104caac	0x1415ecec0	cstring	Subterranean Water
+travel-panel	0x14104cae3	0x1415eced8	cstring	Subterranean Chasm
+travel-panel	0x14104cb1a	0x1415ecf60	cstring	Subterranean Magma
+travel-panel	0x14104cb96	0x1416aee68	cstring	Temperature: 
+travel-panel	0x14104cbf0	0x1415f7400	cstring	Freezing
+travel-panel	0x14104cc3e	0x1415f7420	cstring	Cold
+travel-panel	0x14104cc8b	0x1415fedb0	cstring	Temperate
+travel-panel	0x14104ccd8	0x1415f7384	cstring	Warm
+travel-panel	0x14104cd25	0x1415f738c	cstring	Hot
+travel-panel	0x14104cd64	0x1415f7390	cstring	Scorching
+travel-panel	0x14104cdca	0x1416aef28	cstring	Trees: 
+travel-panel	0x14104ce46	0x1416aef1c	cstring	Scarce
+travel-panel	0x14104ce93	0x1416aef3c	cstring	Sparse
+travel-panel	0x14104cee0	0x1416aef30	cstring	Woodland
+travel-panel	0x14104cf22	0x1416aeef0	cstring	Heavily Forested
+travel-panel	0x14104cf70	0x1415ff764	cstring	None
+travel-panel	0x14104cfd6	0x1416aeed8	cstring	Other Vegetation: 
+travel-panel	0x14104d048	0x1416aef1c	cstring	Scarce
+travel-panel	0x14104d095	0x1416aef10	cstring	Moderate
+travel-panel	0x14104d0dc	0x1416aef04	cstring	Thick
+travel-panel	0x14104d12a	0x1415ff764	cstring	None
+travel-panel	0x14104d193	0x1416af600	cstring	Surroundings: 
+travel-panel	0x14104d1fd	0x1416af5f8	cstring	Serene
+travel-panel	0x14104d24a	0x1416af61c	cstring	Calm
+travel-panel	0x14104d28e	0x1416af610	cstring	Sinister
+travel-panel	0x14104d2ec	0x1416af5d0	cstring	Mirthful
+travel-panel	0x14104d339	0x1416af5c0	cstring	Wilderness
+travel-panel	0x14104d380	0x1416af5f0	cstring	Haunted
+travel-panel	0x14104d3cd	0x1416af5e0	cstring	Joyous Wilds
+travel-panel	0x14104d417	0x1416af668	cstring	Untamed Wilds
+travel-panel	0x14104d458	0x1416af658	cstring	Terrifying
+travel-panel	0x14104d637	0x1415e9718	cstring	""""
+travel-panel	0x14104d68a	0x1415e9718	cstring	""""
+travel-panel	0x14104d714	0x1415e873c	cstring	 
+travel-panel	0x14104da08	0x1416af688	cstring	Multiple Constructions
+travel-panel	0x14104dafb	0x1416af678	cstring	Major River: 
+travel-panel	0x14104db59	0x1416af638	cstring	River: 
+travel-panel	0x14104dbac	0x1416af628	cstring	Minor River: 
+travel-panel	0x14104dc0e	0x1416af648	cstring	Stream: 
+travel-panel	0x14104dc50	0x1416af640	cstring	Brook: 
+travel-panel	0x14104ddeb	0x1416af490	cstring	Volcano: 
+travel-panel	0x14104de16	0x1416af480	cstring	Mountain: 
+travel-panel	0x14104df38	0x141721050	cstring	Ice
+travel-panel	0x14104e11f	0x141629a04	cstring	FLUX
+travel-panel	0x14104e494	0x141629a60	cstring	FIRED_MAT
+travel-panel	0x14104e54d	0x141721040	cstring	Shallow Clay
+travel-panel	0x14104e589	0x14162a4f4	cstring	Clay
+travel-panel	0x14104e60d	0x141721030	cstring	Shallow Sand
+travel-panel	0x14104e644	0x14162b8a0	cstring	Sand
+travel-panel	0x14104e6e0	0x141721020	cstring	Little soil
+travel-panel	0x14104e729	0x141721090	cstring	Some soil
+travel-panel	0x14104e772	0x141721080	cstring	Deep soil
+travel-panel	0x14104e7bb	0x141721070	cstring	Very deep soil
+travel-panel	0x14104e805	0x141721058	cstring	Extremely deep soil
+travel-panel	0x14104e895	0x1417210d8	cstring	Varied aquifer
+travel-panel	0x14104e8cf	0x1417210c8	cstring	Heavy aquifer
+travel-panel	0x14104e93d	0x1417210b8	cstring	Light aquifer
+travel-panel	0x14104ec2f	0x1417210a0	cstring	Flux stone layer
+travel-panel	0x14104ee0c	0x141748190	cstring	Click on the map to embark!  Right click to abort.
+travel-panel	0x14104f243	0x141616288	cstring	 x 
+travel-panel	0x14104f4eb	0x141748158	cstring	Cannot embark on another site.
+travel-panel	0x14104f602	0x1417482b8	cstring	Recommended size.
+travel-panel	0x14104f66c	0x141748128	cstring	Cannot embark entirely on water or mountains.
+travel-panel	0x14104f6d0	0x141748178	cstring	Must embark on map.
+travel-panel	0x14104fa57	0x14160451c	cstring	Yes
+travel-panel	0x14104faa5	0x141604520	cstring	No
+travel-panel	0x14104fadc	0x1417482b4	cstring	N/A
+travel-panel	0x14104fbb5	0x1417482a8	cstring	X Dimension
+travel-panel	0x14104fbef	0x141748298	cstring	Y Dimension
+travel-panel	0x14104fc29	0x14171d0f8	cstring	Savagery
+travel-panel	0x14104fc63	0x14174828c	cstring	Spirit
+travel-panel	0x14104fc9d	0x14171d0a0	cstring	Elevation
+travel-panel	0x14104fcd7	0x14171d128	cstring	Temperature
+travel-panel	0x14104fd11	0x14169efb8	cstring	Rain
+travel-panel	0x14104fd4b	0x14171d118	cstring	Drainage
+travel-panel	0x14104fd85	0x141748278	cstring	Flux Stone Layer
+travel-panel	0x14104fdbf	0x141748268	cstring	Aquifer (Light)
+travel-panel	0x14104fdf9	0x141748258	cstring	Aquifer (Heavy)
+travel-panel	0x14104fe33	0x14162a4f4	cstring	Clay
+travel-panel	0x14104fe6d	0x14162b8a0	cstring	Sand
+travel-panel	0x14104fea7	0x141731c3c	cstring	River
+travel-panel	0x14104fee1	0x141748338	cstring	Underground River
+travel-panel	0x14104ff1b	0x141748320	cstring	Underground Pool
+travel-panel	0x14104ff55	0x141748310	cstring	Magma Pool
+travel-panel	0x14104ff8f	0x141748300	cstring	Magma Pipe
+travel-panel	0x14104ffc9	0x141731b74	cstring	Chasm
+travel-panel	0x141050003	0x1417482f0	cstring	Bottomless Pit
+travel-panel	0x14105003a	0x1417482e0	cstring	Other Features
+travel-panel	0x141050071	0x1417482d8	cstring	Soil
+travel-panel	0x141050172	0x14171cae0	cstring	Untamed wilds
+travel-panel	0x1410501ac	0x1416af5c0	cstring	Wilderness
+travel-panel	0x1410501e6	0x1416af61c	cstring	Calm
+travel-panel	0x141050220	0x1417482b4	cstring	N/A
+travel-panel	0x14105028e	0x14173e63c	cstring	Evil
+travel-panel	0x1410502c8	0x1416164b8	cstring	Normal
+travel-panel	0x141050302	0x141646b04	cstring	Good
+travel-panel	0x14105033c	0x1417482b4	cstring	N/A
+travel-panel	0x1410503aa	0x141660db8	cstring	High
+travel-panel	0x1410503e4	0x141720e08	cstring	Medium
+travel-panel	0x14105041e	0x141660bb4	cstring	Low
+travel-panel	0x141050458	0x1417482b4	cstring	N/A
+travel-panel	0x1410504bd	0x14160451c	cstring	Yes
+travel-panel	0x1410504f7	0x141604520	cstring	No
+travel-panel	0x141050531	0x1417482b4	cstring	N/A
+travel-panel	0x1410505b9	0x14174839c	cstring	 Deep
+travel-panel	0x141050604	0x1417483a4	cstring	 Some
+travel-panel	0x14105064f	0x1417482d0	cstring	 Little
+travel-panel	0x141050686	0x1415ff764	cstring	None
+travel-panel	0x1410506bd	0x1417482b4	cstring	N/A
+travel-panel	0x141050ad2	0x141748390	cstring	Searching 
+travel-panel	0x141050af5	0x1415eb518	cstring	 of 
+travel-panel	0x141050b16	0x1415ec860	cstring	...
+travel-panel	0x141050ca1	0x141748384	cstring	Stop
+travel-panel	0x141050d24	0x141748378	cstring	No match.
+travel-panel	0x141050d9c	0x141748368	cstring	Partial match.
+travel-panel	0x141050e0c	0x141748358	cstring	Match found!
+travel-panel	0x141050fa2	0x14174834c	cstring	Begin
+travel-panel	0x141051289	0x141748430	cstring	Unretire 
+travel-panel	0x141051292	0x141748420	cstring	Reclaim 
+travel-panel	0x141051474	0x141748410	cstring	Inhabited
+travel-panel	0x1410514cf	0x14173ea84	cstring	Ruin
+travel-panel	0x141051762	0x1415e873c	cstring	 
+travel-panel	0x1410519ea	0x141748400	cstring	Unretire
+travel-panel	0x141051a21	0x1417483f0	cstring	Reclaim!
+travel-panel	0x141052210	0x1417483e0	cstring	Population: 
+travel-panel	0x141052271	0x1417483c8	cstring	Number of sites: 
+travel-panel	0x1410524a0	0x141618434	cstring	:
+travel-panel	0x141052672	0x141618434	cstring	:
+travel-panel	0x1410526d7	0x1415ff764	cstring	None
+travel-panel	0x141052894	0x1417483b0	cstring	Preparing map...

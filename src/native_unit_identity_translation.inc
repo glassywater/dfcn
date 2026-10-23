@@ -537,6 +537,19 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                     }
                 }
                 value = translate_english_character_name(unit.native_name, given, given_target);
+                if (!translation_complete_with_native_nicknames(value, unit.native_name)) {
+                    // Historical references and their complete English-name
+                    // fields share the same owned WORD/POS fallback. A failed
+                    // surname/title must not discard the translated given
+                    // name, nickname policy or independently captured role.
+                    NativeHistoryName captured = unit.name;
+                    if (captured.first_name.empty() && captured.nickname.empty() &&
+                            captured.native_name.empty() && unit.native_name_words_valid) {
+                        for (size_t slot = 0; slot < 2; ++slot)
+                            captured.native_name += unit.native_name_words[slot];
+                    }
+                    value = translate_history_name(captured, true);
+                }
             }
             // A language-less name without WORD slots is literal authored data.
             else if (unit.name.language < 0 && unit.name.nickname.empty() &&

@@ -1,0 +1,323 @@
+edition	label	owner_rva	instruction_rva	literal_rva	kind	text
+reference	creature-identity-training-short	0x1330880	0x1330991	0x15e90d8	cstring	, 
+reference	creature-identity-training-short	0x1330880	0x13309ed	0x15e90d8	cstring	, 
+reference	creature-identity-training-short	0x1330880	0x1330a48	0x1615540	cstring	 (
+reference	creature-identity-training-short	0x1330880	0x1330a85	0x1782c58	cstring	Trained
+reference	creature-identity-training-short	0x1330880	0x1330a91	0x1782c78	cstring	-Trained-
+reference	creature-identity-training-short	0x1330880	0x1330a9d	0x1782c68	cstring	+Trained+
+reference	creature-identity-training-short	0x1330880	0x1330aa9	0x1782c90	cstring	*Trained*
+reference	creature-identity-training-short	0x1330880	0x1330aed	0x1782c58	cstring	Trained
+reference	creature-identity-training-short	0x1330880	0x1330b4d	0x1782c58	cstring	Trained
+reference	creature-identity-training-short	0x1330880	0x1330b7a	0x1782c84	cstring	Tame
+reference	creature-identity-training-short	0x1330880	0x1330b83	0x1782cb0	cstring	Semi-Wild
+reference	creature-identity-training-short	0x1330880	0x1330b9e	0x1615580	cstring	)
+reference	creature-identity-training-full	0x1330c30	0x1330e5d	0x15e90d8	cstring	, 
+reference	creature-identity-training-full	0x1330c30	0x1330f58	0x15e9718	cstring	""""
+reference	creature-identity-training-full	0x1330c30	0x1330fad	0x15e9718	cstring	""""
+reference	creature-identity-training-full	0x1330c30	0x1330fc2	0x15e90d8	cstring	, 
+reference	creature-identity-training-full	0x1330c30	0x1331001	0x15e90d8	cstring	, 
+reference	creature-identity-training-full	0x1330c30	0x133105d	0x15e90d8	cstring	, 
+reference	creature-identity-training-full	0x1330c30	0x13310b8	0x1615540	cstring	 (
+reference	creature-identity-training-full	0x1330c30	0x13310f4	0x1782c58	cstring	Trained
+reference	creature-identity-training-full	0x1330c30	0x1331100	0x1782c78	cstring	-Trained-
+reference	creature-identity-training-full	0x1330c30	0x133110c	0x1782c68	cstring	+Trained+
+reference	creature-identity-training-full	0x1330c30	0x1331118	0x1782c90	cstring	*Trained*
+reference	creature-identity-training-full	0x1330c30	0x133114c	0x1782c58	cstring	Trained
+reference	creature-identity-training-full	0x1330c30	0x133119c	0x1782c58	cstring	Trained
+reference	creature-identity-training-full	0x1330c30	0x13311c8	0x1782c84	cstring	Tame
+reference	creature-identity-training-full	0x1330c30	0x13311d1	0x1782cb0	cstring	Semi-Wild
+reference	creature-identity-training-full	0x1330c30	0x13311e9	0x1615580	cstring	)
+reference	creature-activity-status	0x138f620	0x138f6dd	0x15ee438	cstring	!
+reference	creature-activity-status	0x138f620	0x138f7b4	0x15ee438	cstring	!
+reference	creature-activity-status	0x138f620	0x138f7f1	0x1783dd8	cstring	Return Treasure
+reference	creature-activity-status	0x138f620	0x138f882	0x1783dc8	cstring	Conduct Meeting
+reference	creature-activity-status	0x138f620	0x138f8dd	0x1783df8	cstring	Attend Parley
+reference	creature-activity-status	0x138f620	0x138f903	0x1783de8	cstring	Attend Meeting
+reference	creature-activity-status	0x138f620	0x138fa8d	0x160205c	cstring	 at 
+reference	creature-activity-status	0x138f620	0x138fab6	0x1783c90	cstring	Make Request of 
+reference	creature-activity-status	0x138f620	0x138fb0a	0x1783c80	cstring	New Arrival
+reference	creature-activity-status	0x138f620	0x138fb25	0x17056f0	cstring	No activity
+reference	creature-activity-status	0x138f620	0x138fb8d	0x162c880	cstring	Monster Slayer
+reference	creature-activity-status	0x138f620	0x138fbab	0x15ffd10	cstring	Mercenary
+reference	creature-activity-status	0x138f620	0x138fbce	0x16c0ed0	cstring	Soldier
+reference	creature-activity-status	0x138f620	0x138fc10	0x1783cb8	cstring	 (activity cancelled)
+reference	creature-activity-status	0x138f620	0x138fc2a	0x1783ca8	cstring	 (no barracks)
+reference	creature-activity-status	0x138f620	0x138fc44	0x1783ce0	cstring	 (improper barracks)
+reference	creature-activity-status	0x138f620	0x138fc5e	0x1783cd0	cstring	 (no activity)
+reference	creature-activity-status	0x138f620	0x138fc78	0x1783d10	cstring	 (cannot individually drill)
+reference	creature-activity-status	0x138f620	0x138fc92	0x1783cf8	cstring	 (does not exist)
+reference	creature-activity-status	0x138f620	0x138fcac	0x1783ed8	cstring	 (no archery target)
+reference	creature-activity-status	0x138f620	0x138fcc6	0x1783ec0	cstring	 (improper building)
+reference	creature-activity-status	0x138f620	0x138fce0	0x1783f08	cstring	 (unreachable location)
+reference	creature-activity-status	0x138f620	0x138fcfa	0x1783ef0	cstring	 (invalid location)
+reference	creature-activity-status	0x138f620	0x138fd14	0x1783f30	cstring	 (no reachable valid target)
+reference	creature-activity-status	0x138f620	0x138fd2e	0x1783f20	cstring	 (no burrow)
+reference	creature-activity-status	0x138f620	0x138fd48	0x1783f68	cstring	 (not in squad)
+reference	creature-activity-status	0x138f620	0x138fd62	0x1783f50	cstring	 (no patrol route)
+reference	creature-activity-status	0x138f620	0x138fd7c	0x1783e20	cstring	 (no reachable point on route)
+reference	creature-activity-status	0x138f620	0x138fd96	0x1783e08	cstring	 (not following order)
+reference	creature-activity-status	0x138f620	0x138fdb0	0x1783e50	cstring	 (invalid order)
+reference	creature-activity-status	0x138f620	0x138fdca	0x1783e40	cstring	 (no temple)
+reference	creature-activity-status	0x138f620	0x138fde4	0x1783e78	cstring	 (no library)
+reference	creature-activity-status	0x138f620	0x138fdfe	0x1783e68	cstring	 (no item)
+reference	creature-activity-status	0x138f620	0x138fe18	0x1783ea8	cstring	 (cannot leave site)
+reference	creature-activity-status	0x138f620	0x138fe2f	0x1783e88	cstring	 (location no longer in zone)
+reference	creature-activity-status	0x138f620	0x138fe46	0x1784000	cstring	 (cannot follow order)
+reference	creature-activity-status	0x138f620	0x138fe6f	0x169e398	cstring	Noble
+reference	creature-activity-status	0x138f620	0x138fe8f	0x17056e8	cstring	No job
+reference	creature-activity-status	0x138f620	0x138feb0	0x1783ff0	cstring	 (Caged)
+reference	creature-activity-status	0x138f620	0x138fecd	0x1784058	cstring	 (Chained)
+reference	creature-activity-status	0x138f620	0x138ff08	0x1781810	cstring	Caged
+reference	creature-activity-status	0x138f620	0x138ff1d	0x1601bf8	cstring	Chained
+reference	creature-activity-status-color	0x138ffd0	0x13902c1	0x15ee438	cstring	!
+reference	creature-activity-status-color	0x138ffd0	0x13902fb	0x1783dd8	cstring	Return Treasure
+reference	creature-activity-status-color	0x138ffd0	0x13903cf	0x1783dc8	cstring	Conduct Meeting
+reference	creature-activity-status-color	0x138ffd0	0x1390477	0x1783df8	cstring	Attend Parley
+reference	creature-activity-status-color	0x138ffd0	0x13904dc	0x1783de8	cstring	Attend Meeting
+reference	creature-activity-status-color	0x138ffd0	0x1390725	0x160205c	cstring	 at 
+reference	creature-activity-status-color	0x138ffd0	0x139074e	0x1783c90	cstring	Make Request of 
+reference	creature-activity-status-color	0x138ffd0	0x1390812	0x1783c80	cstring	New Arrival
+reference	creature-activity-status-color	0x138ffd0	0x139082d	0x17056f0	cstring	No activity
+reference	creature-activity-status-color	0x138ffd0	0x13908b0	0x162c880	cstring	Monster Slayer
+reference	creature-activity-status-color	0x138ffd0	0x13908ce	0x15ffd10	cstring	Mercenary
+reference	creature-activity-status-color	0x138ffd0	0x13908ee	0x16c0ed0	cstring	Soldier
+reference	creature-activity-status-color	0x138ffd0	0x139093b	0x1783cb8	cstring	 (activity cancelled)
+reference	creature-activity-status-color	0x138ffd0	0x1390955	0x1783ca8	cstring	 (no barracks)
+reference	creature-activity-status-color	0x138ffd0	0x139096f	0x1783ce0	cstring	 (improper barracks)
+reference	creature-activity-status-color	0x138ffd0	0x1390989	0x1783cd0	cstring	 (no activity)
+reference	creature-activity-status-color	0x138ffd0	0x13909a3	0x1783d10	cstring	 (cannot individually drill)
+reference	creature-activity-status-color	0x138ffd0	0x13909bd	0x1783cf8	cstring	 (does not exist)
+reference	creature-activity-status-color	0x138ffd0	0x13909d7	0x1783ed8	cstring	 (no archery target)
+reference	creature-activity-status-color	0x138ffd0	0x13909f1	0x1783ec0	cstring	 (improper building)
+reference	creature-activity-status-color	0x138ffd0	0x1390a0b	0x1783f08	cstring	 (unreachable location)
+reference	creature-activity-status-color	0x138ffd0	0x1390a25	0x1783ef0	cstring	 (invalid location)
+reference	creature-activity-status-color	0x138ffd0	0x1390a3f	0x1783f30	cstring	 (no reachable valid target)
+reference	creature-activity-status-color	0x138ffd0	0x1390a59	0x1783f20	cstring	 (no burrow)
+reference	creature-activity-status-color	0x138ffd0	0x1390a73	0x1783f68	cstring	 (not in squad)
+reference	creature-activity-status-color	0x138ffd0	0x1390a8d	0x1783f50	cstring	 (no patrol route)
+reference	creature-activity-status-color	0x138ffd0	0x1390aa7	0x1783e20	cstring	 (no reachable point on route)
+reference	creature-activity-status-color	0x138ffd0	0x1390ac1	0x1783e08	cstring	 (not following order)
+reference	creature-activity-status-color	0x138ffd0	0x1390adb	0x1783e50	cstring	 (invalid order)
+reference	creature-activity-status-color	0x138ffd0	0x1390af5	0x1783e40	cstring	 (no temple)
+reference	creature-activity-status-color	0x138ffd0	0x1390b0f	0x1783e78	cstring	 (no library)
+reference	creature-activity-status-color	0x138ffd0	0x1390b29	0x1783e68	cstring	 (no item)
+reference	creature-activity-status-color	0x138ffd0	0x1390b43	0x1783ea8	cstring	 (cannot leave site)
+reference	creature-activity-status-color	0x138ffd0	0x1390b5d	0x1783e88	cstring	 (location no longer in zone)
+reference	creature-activity-status-color	0x138ffd0	0x1390b74	0x1784000	cstring	 (cannot follow order)
+reference	creature-activity-status-color	0x138ffd0	0x1390bb6	0x169e398	cstring	Noble
+reference	creature-activity-status-color	0x138ffd0	0x1390bd7	0x17056e8	cstring	No job
+reference	creature-activity-status-color	0x138ffd0	0x1390bf9	0x1783ff0	cstring	 (Caged)
+reference	creature-activity-status-color	0x138ffd0	0x1390c0e	0x1784058	cstring	 (Chained)
+reference	creature-activity-status-color	0x138ffd0	0x1390c3c	0x1781810	cstring	Caged
+reference	creature-activity-status-color	0x138ffd0	0x1390c4e	0x1601bf8	cstring	Chained
+reference	creature-list-status-renderer	0x1425c40	0x1425d0c	0x1629d5c	cstring	Job
+reference	creature-list-status-renderer	0x1425c40	0x1425d16	0x1629d5e	cstring	b
+reference	creature-list-status-renderer	0x1425c40	0x1426d3d	0x1601c30	cstring	Deceased
+reference	creature-list-status-renderer	0x1425c40	0x1426e14	0x1787060	cstring	Missing
+reference	creature-list-status-renderer	0x1425c40	0x1426e1e	0x1787064	cstring	ing
+reference	creature-list-status-renderer	0x1425c40	0x1426e29	0x1787066	cstring	g
+reference	creature-list-status-renderer	0x1425c40	0x1426ee4	0x15f7258	cstring	Independent
+reference	creature-list-status-renderer	0x1425c40	0x1426ef1	0x15f7260	cstring	ent
+reference	creature-list-status-renderer	0x1425c40	0x1426efc	0x15f7262	cstring	t
+reference	creature-list-status-renderer	0x1425c40	0x142709f	0x15fe1e0	cstring	#
+reference	creature-list-status-renderer	0x1425c40	0x142712c	0x1787068	cstring	Wild Animal
+reference	creature-list-status-renderer	0x1425c40	0x1427150	0x1783ff0	cstring	 (Caged)
+reference	creature-list-status-renderer	0x1425c40	0x142716f	0x1784058	cstring	 (Chained)
+reference	creature-list-status-renderer	0x1425c40	0x14271ab	0x17870b8	cstring	Opposed to life
+reference	creature-list-status-renderer	0x1425c40	0x14271b4	0x17870ac	cstring	Undead
+reference	creature-list-status-renderer	0x1425c40	0x14271d2	0x17870ac	cstring	Undead
+reference	creature-list-status-renderer	0x1425c40	0x14271f4	0x169e0c8	cstring	Berserk
+reference	creature-list-status-renderer	0x1425c40	0x142720f	0x1787098	cstring	Invader
+reference	creature-list-status-renderer	0x1425c40	0x1427251	0x17870a0	cstring	Diplomat / 
+reference	creature-list-status-renderer	0x1425c40	0x142727d	0x1782cc0	cstring	Merchant
+reference	creature-list-status-renderer	0x1425c40	0x14272b0	0x1786fe0	cstring	Guest / 
+reference	creature-list-status-renderer	0x1425c40	0x14272e9	0x1786ff0	cstring	Visitor
+reference	creature-list-status-renderer	0x1425c40	0x14272f6	0x1786fc0	cstring	Friendly
+reference	creature-list-status-renderer	0x1425c40	0x1427311	0x1786fd0	cstring	Underworld
+reference	creature-list-status-renderer	0x1425c40	0x1427340	0x1787028	cstring	Agitated Caged Creature
+reference	creature-list-status-renderer	0x1425c40	0x1427350	0x1787040	cstring	Agitated Chained Creature
+reference	creature-list-status-renderer	0x1425c40	0x142735d	0x1786ff8	cstring	Agitated Wilderness Creature
+reference	creature-list-status-renderer	0x1425c40	0x142738c	0x1787018	cstring	Caged Guest
+reference	creature-list-status-renderer	0x1425c40	0x142739c	0x17871b0	cstring	Chained Guest
+reference	creature-list-status-renderer	0x1425c40	0x14273a9	0x17871c0	cstring	Uninvited Guest
+reference	creature-list-status-renderer	0x1425c40	0x14273c4	0x1787188	cstring	Current Resident
+reference	creature-list-status-renderer	0x1425c40	0x142740f	0x1786ff0	cstring	Visitor
+reference	creature-list-status-renderer	0x1425c40	0x142741c	0x1786fc0	cstring	Friendly
+reference	creature-list-status-renderer	0x1425c40	0x1427446	0x17871a0	cstring	Caged Prisoner
+reference	creature-list-status-renderer	0x1425c40	0x1427459	0x17871f8	cstring	Chained Prisoner
+reference	creature-list-status-renderer	0x1425c40	0x1427462	0x1787210	cstring	Hostile
+reference	creature-list-status-renderer	0x1425c40	0x142748e	0x17871a0	cstring	Caged Prisoner
+reference	creature-list-status-renderer	0x1425c40	0x142749b	0x17871f8	cstring	Chained Prisoner
+reference	creature-list-status-renderer	0x1425c40	0x14274a4	0x1787210	cstring	Hostile
+reference	creature-list-status-renderer	0x1425c40	0x14275fa	0x1782c58	cstring	Trained
+reference	creature-list-status-renderer	0x1425c40	0x1427612	0x17871d0	cstring	Well-trained
+reference	creature-list-status-renderer	0x1425c40	0x142762a	0x17871e0	cstring	Skillfully trained
+reference	creature-list-status-renderer	0x1425c40	0x1427642	0x17870f8	cstring	Expertly trained
+reference	creature-list-status-renderer	0x1425c40	0x1427657	0x1787110	cstring	Exceptionally trained
+reference	creature-list-status-renderer	0x1425c40	0x142766c	0x17870c8	cstring	Masterfully trained
+reference	creature-list-status-renderer	0x1425c40	0x1427684	0x1629e18	cstring	Domesticated
+reference	creature-list-status-renderer	0x1425c40	0x142769c	0x1782cb0	cstring	Semi-Wild
+reference	creature-list-status-renderer	0x1425c40	0x14276b0	0x1782c84	cstring	Tame
+reference	creature-list-status-renderer	0x1425c40	0x14276d4	0x1783ff0	cstring	 (Caged)
+reference	creature-list-status-renderer	0x1425c40	0x14276e3	0x1784058	cstring	 (Chained)
+classic	creature-identity-training-short	0x132b7f0	0x132b901	0x15e40c4	cstring	, 
+classic	creature-identity-training-short	0x132b7f0	0x132b95d	0x15e40c4	cstring	, 
+classic	creature-identity-training-short	0x132b7f0	0x132b9b8	0x1610298	cstring	 (
+classic	creature-identity-training-short	0x132b7f0	0x132b9f5	0x177ca90	cstring	Trained
+classic	creature-identity-training-short	0x132b7f0	0x132ba01	0x177ca80	cstring	-Trained-
+classic	creature-identity-training-short	0x132b7f0	0x132ba0d	0x177c9e0	cstring	+Trained+
+classic	creature-identity-training-short	0x132b7f0	0x132ba19	0x177c9d0	cstring	*Trained*
+classic	creature-identity-training-short	0x132b7f0	0x132ba5d	0x177ca90	cstring	Trained
+classic	creature-identity-training-short	0x132b7f0	0x132babd	0x177ca90	cstring	Trained
+classic	creature-identity-training-short	0x132b7f0	0x132baea	0x177c9fc	cstring	Tame
+classic	creature-identity-training-short	0x132b7f0	0x132baf3	0x177c9f0	cstring	Semi-Wild
+classic	creature-identity-training-short	0x132b7f0	0x132bb0e	0x16102d8	cstring	)
+classic	creature-identity-training-full	0x132bba0	0x132bdcd	0x15e40c4	cstring	, 
+classic	creature-identity-training-full	0x132bba0	0x132bec8	0x15e46fc	cstring	""""
+classic	creature-identity-training-full	0x132bba0	0x132bf1d	0x15e46fc	cstring	""""
+classic	creature-identity-training-full	0x132bba0	0x132bf32	0x15e40c4	cstring	, 
+classic	creature-identity-training-full	0x132bba0	0x132bf71	0x15e40c4	cstring	, 
+classic	creature-identity-training-full	0x132bba0	0x132bfcd	0x15e40c4	cstring	, 
+classic	creature-identity-training-full	0x132bba0	0x132c028	0x1610298	cstring	 (
+classic	creature-identity-training-full	0x132bba0	0x132c064	0x177ca90	cstring	Trained
+classic	creature-identity-training-full	0x132bba0	0x132c070	0x177ca80	cstring	-Trained-
+classic	creature-identity-training-full	0x132bba0	0x132c07c	0x177c9e0	cstring	+Trained+
+classic	creature-identity-training-full	0x132bba0	0x132c088	0x177c9d0	cstring	*Trained*
+classic	creature-identity-training-full	0x132bba0	0x132c0bc	0x177ca90	cstring	Trained
+classic	creature-identity-training-full	0x132bba0	0x132c10c	0x177ca90	cstring	Trained
+classic	creature-identity-training-full	0x132bba0	0x132c138	0x177c9fc	cstring	Tame
+classic	creature-identity-training-full	0x132bba0	0x132c141	0x177c9f0	cstring	Semi-Wild
+classic	creature-identity-training-full	0x132bba0	0x132c159	0x16102d8	cstring	)
+classic	creature-activity-status	0x138a590	0x138a64d	0x15e942c	cstring	!
+classic	creature-activity-status	0x138a590	0x138a724	0x15e942c	cstring	!
+classic	creature-activity-status	0x138a590	0x138a761	0x177f140	cstring	Return Treasure
+classic	creature-activity-status	0x138a590	0x138a7f2	0x177f180	cstring	Conduct Meeting
+classic	creature-activity-status	0x138a590	0x138a84d	0x177f170	cstring	Attend Parley
+classic	creature-activity-status	0x138a590	0x138a873	0x177f1a8	cstring	Attend Meeting
+classic	creature-activity-status	0x138a590	0x138a9fd	0x15fd12c	cstring	 at 
+classic	creature-activity-status	0x138a590	0x138aa26	0x177f190	cstring	Make Request of 
+classic	creature-activity-status	0x138a590	0x138aa7a	0x177f1d0	cstring	New Arrival
+classic	creature-activity-status	0x138a590	0x138aa95	0x17009c0	cstring	No activity
+classic	creature-activity-status	0x138a590	0x138aafd	0x1627948	cstring	Monster Slayer
+classic	creature-activity-status	0x138a590	0x138ab1b	0x15fadf0	cstring	Mercenary
+classic	creature-activity-status	0x138a590	0x138ab3e	0x16bbf48	cstring	Soldier
+classic	creature-activity-status	0x138a590	0x138ab80	0x177f1b8	cstring	 (activity cancelled)
+classic	creature-activity-status	0x138a590	0x138ab9a	0x177f420	cstring	 (no barracks)
+classic	creature-activity-status	0x138a590	0x138abb4	0x177f408	cstring	 (improper barracks)
+classic	creature-activity-status	0x138a590	0x138abce	0x177f450	cstring	 (no activity)
+classic	creature-activity-status	0x138a590	0x138abe8	0x177f430	cstring	 (cannot individually drill)
+classic	creature-activity-status	0x138a590	0x138ac02	0x177f478	cstring	 (does not exist)
+classic	creature-activity-status	0x138a590	0x138ac1c	0x177f460	cstring	 (no archery target)
+classic	creature-activity-status	0x138a590	0x138ac36	0x177f4a8	cstring	 (improper building)
+classic	creature-activity-status	0x138a590	0x138ac50	0x177f490	cstring	 (unreachable location)
+classic	creature-activity-status	0x138a590	0x138ac6a	0x177f368	cstring	 (invalid location)
+classic	creature-activity-status	0x138a590	0x138ac84	0x177f348	cstring	 (no reachable valid target)
+classic	creature-activity-status	0x138a590	0x138ac9e	0x177f390	cstring	 (no burrow)
+classic	creature-activity-status	0x138a590	0x138acb8	0x177f380	cstring	 (not in squad)
+classic	creature-activity-status	0x138a590	0x138acd2	0x177f3c0	cstring	 (no patrol route)
+classic	creature-activity-status	0x138a590	0x138acec	0x177f3a0	cstring	 (no reachable point on route)
+classic	creature-activity-status	0x138a590	0x138ad06	0x177f3f0	cstring	 (not following order)
+classic	creature-activity-status	0x138a590	0x138ad20	0x177f3d8	cstring	 (invalid order)
+classic	creature-activity-status	0x138a590	0x138ad3a	0x177f588	cstring	 (no temple)
+classic	creature-activity-status	0x138a590	0x138ad54	0x177f578	cstring	 (no library)
+classic	creature-activity-status	0x138a590	0x138ad6e	0x177f5b0	cstring	 (no item)
+classic	creature-activity-status	0x138a590	0x138ad88	0x177f598	cstring	 (cannot leave site)
+classic	creature-activity-status	0x138a590	0x138ad9f	0x177f5d8	cstring	 (location no longer in zone)
+classic	creature-activity-status	0x138a590	0x138adb6	0x177f5c0	cstring	 (cannot follow order)
+classic	creature-activity-status	0x138a590	0x138addf	0x16992b0	cstring	Noble
+classic	creature-activity-status	0x138a590	0x138adff	0x17009b8	cstring	No job
+classic	creature-activity-status	0x138a590	0x138ae20	0x177f608	cstring	 (Caged)
+classic	creature-activity-status	0x138a590	0x138ae3d	0x177f5f8	cstring	 (Chained)
+classic	creature-activity-status	0x138a590	0x138ae78	0x177c804	cstring	Caged
+classic	creature-activity-status	0x138a590	0x138ae8d	0x15fc9e0	cstring	Chained
+classic	creature-activity-status-color	0x138af40	0x138b231	0x15e942c	cstring	!
+classic	creature-activity-status-color	0x138af40	0x138b26b	0x177f140	cstring	Return Treasure
+classic	creature-activity-status-color	0x138af40	0x138b33f	0x177f180	cstring	Conduct Meeting
+classic	creature-activity-status-color	0x138af40	0x138b3e7	0x177f170	cstring	Attend Parley
+classic	creature-activity-status-color	0x138af40	0x138b44c	0x177f1a8	cstring	Attend Meeting
+classic	creature-activity-status-color	0x138af40	0x138b695	0x15fd12c	cstring	 at 
+classic	creature-activity-status-color	0x138af40	0x138b6be	0x177f190	cstring	Make Request of 
+classic	creature-activity-status-color	0x138af40	0x138b782	0x177f1d0	cstring	New Arrival
+classic	creature-activity-status-color	0x138af40	0x138b79d	0x17009c0	cstring	No activity
+classic	creature-activity-status-color	0x138af40	0x138b820	0x1627948	cstring	Monster Slayer
+classic	creature-activity-status-color	0x138af40	0x138b83e	0x15fadf0	cstring	Mercenary
+classic	creature-activity-status-color	0x138af40	0x138b85e	0x16bbf48	cstring	Soldier
+classic	creature-activity-status-color	0x138af40	0x138b8ab	0x177f1b8	cstring	 (activity cancelled)
+classic	creature-activity-status-color	0x138af40	0x138b8c5	0x177f420	cstring	 (no barracks)
+classic	creature-activity-status-color	0x138af40	0x138b8df	0x177f408	cstring	 (improper barracks)
+classic	creature-activity-status-color	0x138af40	0x138b8f9	0x177f450	cstring	 (no activity)
+classic	creature-activity-status-color	0x138af40	0x138b913	0x177f430	cstring	 (cannot individually drill)
+classic	creature-activity-status-color	0x138af40	0x138b92d	0x177f478	cstring	 (does not exist)
+classic	creature-activity-status-color	0x138af40	0x138b947	0x177f460	cstring	 (no archery target)
+classic	creature-activity-status-color	0x138af40	0x138b961	0x177f4a8	cstring	 (improper building)
+classic	creature-activity-status-color	0x138af40	0x138b97b	0x177f490	cstring	 (unreachable location)
+classic	creature-activity-status-color	0x138af40	0x138b995	0x177f368	cstring	 (invalid location)
+classic	creature-activity-status-color	0x138af40	0x138b9af	0x177f348	cstring	 (no reachable valid target)
+classic	creature-activity-status-color	0x138af40	0x138b9c9	0x177f390	cstring	 (no burrow)
+classic	creature-activity-status-color	0x138af40	0x138b9e3	0x177f380	cstring	 (not in squad)
+classic	creature-activity-status-color	0x138af40	0x138b9fd	0x177f3c0	cstring	 (no patrol route)
+classic	creature-activity-status-color	0x138af40	0x138ba17	0x177f3a0	cstring	 (no reachable point on route)
+classic	creature-activity-status-color	0x138af40	0x138ba31	0x177f3f0	cstring	 (not following order)
+classic	creature-activity-status-color	0x138af40	0x138ba4b	0x177f3d8	cstring	 (invalid order)
+classic	creature-activity-status-color	0x138af40	0x138ba65	0x177f588	cstring	 (no temple)
+classic	creature-activity-status-color	0x138af40	0x138ba7f	0x177f578	cstring	 (no library)
+classic	creature-activity-status-color	0x138af40	0x138ba99	0x177f5b0	cstring	 (no item)
+classic	creature-activity-status-color	0x138af40	0x138bab3	0x177f598	cstring	 (cannot leave site)
+classic	creature-activity-status-color	0x138af40	0x138bacd	0x177f5d8	cstring	 (location no longer in zone)
+classic	creature-activity-status-color	0x138af40	0x138bae4	0x177f5c0	cstring	 (cannot follow order)
+classic	creature-activity-status-color	0x138af40	0x138bb26	0x16992b0	cstring	Noble
+classic	creature-activity-status-color	0x138af40	0x138bb47	0x17009b8	cstring	No job
+classic	creature-activity-status-color	0x138af40	0x138bb69	0x177f608	cstring	 (Caged)
+classic	creature-activity-status-color	0x138af40	0x138bb7e	0x177f5f8	cstring	 (Chained)
+classic	creature-activity-status-color	0x138af40	0x138bbac	0x177c804	cstring	Caged
+classic	creature-activity-status-color	0x138af40	0x138bbbe	0x15fc9e0	cstring	Chained
+classic	creature-list-status-renderer	0x1420bb0	0x1420c7c	0x162559c	cstring	Job
+classic	creature-list-status-renderer	0x1420bb0	0x1420c86	0x162559e	cstring	b
+classic	creature-list-status-renderer	0x1420bb0	0x1421cad	0x15fcd18	cstring	Deceased
+classic	creature-list-status-renderer	0x1420bb0	0x1421d84	0x1781848	cstring	Missing
+classic	creature-list-status-renderer	0x1420bb0	0x1421d8e	0x178184c	cstring	ing
+classic	creature-list-status-renderer	0x1420bb0	0x1421d99	0x178184e	cstring	g
+classic	creature-list-status-renderer	0x1420bb0	0x1421e54	0x15f21f8	cstring	Independent
+classic	creature-list-status-renderer	0x1420bb0	0x1421e61	0x15f2200	cstring	ent
+classic	creature-list-status-renderer	0x1420bb0	0x1421e6c	0x15f2202	cstring	t
+classic	creature-list-status-renderer	0x1420bb0	0x142200f	0x15f92c0	cstring	#
+classic	creature-list-status-renderer	0x1420bb0	0x142209c	0x1781850	cstring	Wild Animal
+classic	creature-list-status-renderer	0x1420bb0	0x14220c0	0x177f608	cstring	 (Caged)
+classic	creature-list-status-renderer	0x1420bb0	0x14220df	0x177f5f8	cstring	 (Chained)
+classic	creature-list-status-renderer	0x1420bb0	0x142211b	0x1781838	cstring	Opposed to life
+classic	creature-list-status-renderer	0x1420bb0	0x1422124	0x1781830	cstring	Undead
+classic	creature-list-status-renderer	0x1420bb0	0x1422142	0x1781830	cstring	Undead
+classic	creature-list-status-renderer	0x1420bb0	0x1422164	0x1699268	cstring	Berserk
+classic	creature-list-status-renderer	0x1420bb0	0x142217f	0x1781878	cstring	Invader
+classic	creature-list-status-renderer	0x1420bb0	0x14221c1	0x1781880	cstring	Diplomat / 
+classic	creature-list-status-renderer	0x1420bb0	0x14221ed	0x177cae8	cstring	Merchant
+classic	creature-list-status-renderer	0x1420bb0	0x1422220	0x1781860	cstring	Guest / 
+classic	creature-list-status-renderer	0x1420bb0	0x1422259	0x1781870	cstring	Visitor
+classic	creature-list-status-renderer	0x1420bb0	0x1422266	0x1781a18	cstring	Friendly
+classic	creature-list-status-renderer	0x1420bb0	0x1422281	0x1781a28	cstring	Underworld
+classic	creature-list-status-renderer	0x1420bb0	0x14222b0	0x17819e0	cstring	Agitated Caged Creature
+classic	creature-list-status-renderer	0x1420bb0	0x14222c0	0x17819f8	cstring	Agitated Chained Creature
+classic	creature-list-status-renderer	0x1420bb0	0x14222cd	0x1781a58	cstring	Agitated Wilderness Creature
+classic	creature-list-status-renderer	0x1420bb0	0x14222fc	0x1781a78	cstring	Caged Guest
+classic	creature-list-status-renderer	0x1420bb0	0x142230c	0x1781a38	cstring	Chained Guest
+classic	creature-list-status-renderer	0x1420bb0	0x1422319	0x1781a48	cstring	Uninvited Guest
+classic	creature-list-status-renderer	0x1420bb0	0x1422334	0x1781960	cstring	Current Resident
+classic	creature-list-status-renderer	0x1420bb0	0x142237f	0x1781870	cstring	Visitor
+classic	creature-list-status-renderer	0x1420bb0	0x142238c	0x1781a18	cstring	Friendly
+classic	creature-list-status-renderer	0x1420bb0	0x14223b6	0x1781978	cstring	Caged Prisoner
+classic	creature-list-status-renderer	0x1420bb0	0x14223c9	0x1781940	cstring	Chained Prisoner
+classic	creature-list-status-renderer	0x1420bb0	0x14223d2	0x1781958	cstring	Hostile
+classic	creature-list-status-renderer	0x1420bb0	0x14223fe	0x1781978	cstring	Caged Prisoner
+classic	creature-list-status-renderer	0x1420bb0	0x142240b	0x1781940	cstring	Chained Prisoner
+classic	creature-list-status-renderer	0x1420bb0	0x1422414	0x1781958	cstring	Hostile
+classic	creature-list-status-renderer	0x1420bb0	0x142256a	0x177ca90	cstring	Trained
+classic	creature-list-status-renderer	0x1420bb0	0x1422582	0x17819b8	cstring	Well-trained
+classic	creature-list-status-renderer	0x1420bb0	0x142259a	0x17819c8	cstring	Skillfully trained
+classic	creature-list-status-renderer	0x1420bb0	0x14225b2	0x1781988	cstring	Expertly trained
+classic	creature-list-status-renderer	0x1420bb0	0x14225c7	0x17819a0	cstring	Exceptionally trained
+classic	creature-list-status-renderer	0x1420bb0	0x14225dc	0x1781ac0	cstring	Masterfully trained
+classic	creature-list-status-renderer	0x1420bb0	0x14225f4	0x1625660	cstring	Domesticated
+classic	creature-list-status-renderer	0x1420bb0	0x142260c	0x177c9f0	cstring	Semi-Wild
+classic	creature-list-status-renderer	0x1420bb0	0x1422620	0x177c9fc	cstring	Tame
+classic	creature-list-status-renderer	0x1420bb0	0x1422644	0x177f608	cstring	 (Caged)
+classic	creature-list-status-renderer	0x1420bb0	0x1422653	0x177f5f8	cstring	 (Chained)

@@ -1,0 +1,118 @@
+; classic; PE:6a70b91c:0270a000; C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe; complete native owner 0x1413ad9a0..0x1413adb8f
+0x13ad9a0: mov    QWORD PTR [rsp+0x10],rbx
+0x13ad9a5: mov    QWORD PTR [rsp+0x18],rsi
+0x13ad9aa: push   rbp
+0x13ad9ab: push   rdi
+0x13ad9ac: push   r14
+0x13ad9ae: lea    rbp,[rsp-0x47]
+0x13ad9b3: sub    rsp,0xa0
+0x13ad9ba: mov    rax,QWORD PTR [rip+0x4e867f]        # 0x141896040
+0x13ad9c1: xor    rax,rsp
+0x13ad9c4: mov    QWORD PTR [rbp+0x37],rax
+0x13ad9c8: mov    rsi,rcx
+0x13ad9cb: xorps  xmm0,xmm0
+0x13ad9ce: movups XMMWORD PTR [rbp+0x17],xmm0
+0x13ad9d2: movdqa xmm1,XMMWORD PTR [rip+0x3d8046]        # 0x141785a20
+0x13ad9da: movdqu XMMWORD PTR [rbp+0x27],xmm1
+0x13ad9df: mov    BYTE PTR [rbp+0x17],0x0
+0x13ad9e3: xor    r14d,r14d
+0x13ad9e6: mov    edi,r14d
+0x13ad9e9: mov    rax,QWORD PTR [rip+0x101dce8]        # 0x1423cb6d8
+0x13ad9f0: mov    rdx,QWORD PTR [rip+0x101dcd9]        # 0x1423cb6d0
+0x13ad9f7: sub    rax,rdx
+0x13ad9fa: sar    rax,0x3
+0x13ad9fe: sub    eax,0x1
+0x13ada01: movsxd rbx,eax
+0x13ada04: js     0x1413adb2d
+0x13ada0a: nop    WORD PTR [rax+rax*1+0x0]
+0x13ada10: mov    rcx,QWORD PTR [rdx+rbx*8]
+0x13ada14: cmp    QWORD PTR [rcx],rsi
+0x13ada17: jne    0x1413ada2c
+0x13ada19: inc    edi
+0x13ada1b: test   rcx,rcx
+0x13ada1e: je     0x1413ada2c
+0x13ada20: call   0x140a679b0
+0x13ada25: mov    rdx,QWORD PTR [rip+0x101dca4]        # 0x1423cb6d0
+0x13ada2c: sub    rbx,0x1
+0x13ada30: jns    0x1413ada10
+0x13ada32: cmp    edi,0x1
+0x13ada35: jl     0x1413adb2d
+0x13ada3b: cmp    DWORD PTR [rip+0x4e8826],r14d        # 0x141896268
+0x13ada42: jne    0x1413ada52
+0x13ada44: test   BYTE PTR [rip+0xfdd561],0x70        # 0x14238afac
+0x13ada4b: jne    0x1413ada5f
+0x13ada4d: jmp    0x1413adb2d
+0x13ada52: test   BYTE PTR [rip+0xfdd553],0x8        # 0x14238afac
+0x13ada59: je     0x1413adb2d
+0x13ada5f: cmp    edi,0x1
+0x13ada62: jne    0x1413ada82
+0x13ada64: xor    r8d,r8d
+0x13ada67: lea    rdx,[rbp+0x17]
+0x13ada6b: mov    rcx,rsi
+0x13ada6e: call   0x14132bba0
+0x13ada73: mov    r8d,0x15
+0x13ada79: lea    rdx,[rip+0x3d1070]        # 0x14177eaf0 ; SOURCE "'s mandate has ended."
+0x13ada80: jmp    0x1413adaa0
+0x13ada82: jle    0x1413adaa9
+0x13ada84: xor    r8d,r8d
+0x13ada87: lea    rdx,[rbp+0x17]
+0x13ada8b: mov    rcx,rsi
+0x13ada8e: call   0x14132bba0
+0x13ada93: mov    r8d,0x17
+0x13ada99: lea    rdx,[rip+0x3d1038]        # 0x14177ead8 ; SOURCE "'s mandates have ended."
+0x13adaa0: lea    rcx,[rbp+0x17]
+0x13adaa4: call   0x14006f9a0
+0x13adaa9: mov    DWORD PTR [rbp-0x2d],r14d
+0x13adaad: mov    eax,0xffff8ad0
+0x13adab2: mov    DWORD PTR [rbp-0x29],0x8ad08ad0
+0x13adab9: mov    WORD PTR [rbp-0x25],ax
+0x13adabd: mov    DWORD PTR [rbp-0x21],r14d
+0x13adac1: mov    QWORD PTR [rbp-0x11],r14
+0x13adac5: mov    QWORD PTR [rbp-0x9],0xffffffffffffffff
+0x13adacd: mov    DWORD PTR [rbp-0x1],0xffffffff
+0x13adad4: mov    DWORD PTR [rbp+0x3],r14d
+0x13adad8: mov    DWORD PTR [rbp+0x7],0xffffffff
+0x13adadf: mov    DWORD PTR [rbp-0x39],0x10107
+0x13adae6: mov    BYTE PTR [rbp-0x35],0x1
+0x13adaea: mov    eax,0x7d0
+0x13adaef: mov    WORD PTR [rbp-0x1d],ax
+0x13adaf3: movzx  eax,WORD PTR [rsi+0xa8]
+0x13adafa: mov    WORD PTR [rbp-0x33],ax
+0x13adafe: movzx  eax,WORD PTR [rsi+0xaa]
+0x13adb05: mov    WORD PTR [rbp-0x31],ax
+0x13adb09: movzx  eax,WORD PTR [rsi+0xac]
+0x13adb10: mov    WORD PTR [rbp-0x2f],ax
+0x13adb14: mov    QWORD PTR [rbp-0x19],rsi
+0x13adb18: lea    r8,[rbp-0x39]
+0x13adb1c: lea    rdx,[rbp+0x17]
+0x13adb20: lea    rcx,[rip+0x112fc19]        # 0x1424dd740
+0x13adb27: call   0x1400e3bb0
+0x13adb2c: nop
+0x13adb2d: mov    rdx,QWORD PTR [rbp+0x2f]
+0x13adb31: cmp    rdx,0xf
+0x13adb35: jbe    0x1413adb6b
+0x13adb37: inc    rdx
+0x13adb3a: mov    rcx,QWORD PTR [rbp+0x17]
+0x13adb3e: mov    rax,rcx
+0x13adb41: cmp    rdx,0x1000
+0x13adb48: jb     0x1413adb66
+0x13adb4a: add    rdx,0x27
+0x13adb4e: mov    rcx,QWORD PTR [rcx-0x8]
+0x13adb52: sub    rax,rcx
+0x13adb55: add    rax,0xfffffffffffffff8
+0x13adb59: cmp    rax,0x1f
+0x13adb5d: jbe    0x1413adb66
+0x13adb5f: call   QWORD PTR [rip+0x232f3b]        # 0x1415e0aa0
+0x13adb65: int3
+0x13adb66: call   0x1415345f0
+0x13adb6b: mov    rcx,QWORD PTR [rbp+0x37]
+0x13adb6f: xor    rcx,rsp
+0x13adb72: call   0x1415345d0
+0x13adb77: lea    r11,[rsp+0xa0]
+0x13adb7f: mov    rbx,QWORD PTR [r11+0x28]
+0x13adb83: mov    rsi,QWORD PTR [r11+0x30]
+0x13adb87: mov    rsp,r11
+0x13adb8a: pop    r14
+0x13adb8c: pop    rdi
+0x13adb8d: pop    rbp
+0x13adb8e: ret

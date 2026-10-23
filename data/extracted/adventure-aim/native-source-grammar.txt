@@ -1,0 +1,239 @@
+OFFLINE SOURCE RECONSTRUCTION: adventure ranged aim selection
+
+Source images (the configured local Windows PE files):
+  reference PE:6a70a6d9:02711000, RVA 0x880120..0x881562
+  classic   PE:6a70b91c:0270a000, RVA 0x87d9a0..0x87ede2
+Full native instruction streams and Ghidra 12.1.4 C are retained beside this
+file. This file describes source productions and control flow; it is not a
+test, a simulated screen, or a claim of an observed game display.
+
+Both functions have the same visible-text branches. For addresses inside
+this renderer, the corresponding classic address is reference minus 0x2780.
+native-literals.tsv records instruction operands, including overlapping
+copies of parts of a string. Those substring operands are not separate
+display productions. native-text-productions.tsv records reconstructed
+complete outputs instead. pe-switches.tsv has no entries: the seven-way
+rating dispatch is an ordered conditional chain, not a jump table.
+
+1. STATE, GEOMETRY, AND THE TWO TOP-LEVEL OUTPUTS
+
+Inputs: self = RCX, param_3 = R8D, param_4 = R9D.
+The second register parameter is not used to choose a text production.
+Let center = integer_divide(param_3 + param_4, 2), H = native screen height.
+Important fields read directly by this renderer:
+  self+0x10: pointer, nonzero selects shot; zero selects throw
+  self+0x28: byte, nonzero requests loading/nocking delay help
+  self+0x48: byte, nonzero selects the body-part modal
+  self+0x50: pointer to the target unit
+  self+0x58: int32 scroll offset
+  self+0x5c: byte passed to the native scrollbar renderer
+Each candidate row is reached through a global vector of pointers:
+  row+0x00: int16 target body-part index
+  row+0x04: int32 base aim rating
+  row+0x0c: uint32 flags
+
+if byte(self+0x48) == 0:
+    if byte(reference_global_0x18a8360) != 0:
+        return                         # this renderer emits no text
+    top = H-13 if byte(self+0x28) else H-10
+    draw_native_border(center-35, top, center+35, H-6)
+    set_text_origin(center-33, top+2)
+    emit("Click a target or move the cursor and press ", bright_white)
+    emit_native_key_binding(1)
+    emit(".")
+    if byte(self+0x28) != 0:
+        set_text_origin(center-33, top+4)
+        emit("Delay warning: Ammo will be loaded/nocked before firing.",
+             bright_yellow)
+        set_text_origin(center-33, top+5)
+        emit("You can prepare in advance with ", white)
+        emit_native_key_binding(0x164)
+        emit(" or from the inventory menu.")
+    return
+
+The cursor-mode branch starts at reference 0x881113. The first hint is
+assembled at 0x88126e..0x88131e. Its key supplier call is 0x8812f1; the
+loading preparation key supplier call is 0x8814d3. These key glyphs come
+from native bindings rather than a hard-coded English key string.
+The installed data/init/interface.txt names the relevant bindings SELECT
+(Enter/Numpad Enter), A_NOCK (n), and OPTION1..OPTION20 (a..t). The binary
+call operands 1, 0x164 and 0x52+visible_row_index remain the authoritative
+identifiers here; a user's changed bindings may produce other glyphs.
+
+The native std::string lengths exclude NUL and are significant at fragment
+boundaries: the question is 19 bytes; the click prefix is 44; the complete
+delay warning is 56; the preparation prefix is 32; the inventory suffix is
+28. The click and preparation prefixes each retain their trailing space,
+and the inventory suffix retains its leading space. The separate key draw
+may add further visible spacing. Short inline copies and the terminating
+NUL in decompiler output must not be mistaken for a shortened phrase.
+Existing normalized whole-sentence translation templates can tolerate
+rendered padding while retaining the separately supplied native key.
+data/runtime/ui-messages.tsv already contains the complete delay warning
+(line 1161), the click instruction with {k} (line 1179), and the preparation
+instruction with {k} (line 1180). These are the existing translations for
+the three native instruction productions; no global English substring
+entries are needed for their prefixes or suffixes.
+
+else:                                  # byte(self+0x48) != 0
+    draw_native_border(center-50, 6, center+50, H-5)
+    draw_done_button_background(center+42, 7, width=8, height=3)
+    emit_at(center+44, 8, "Done", bright_white)
+    emit_at(center-48, 8, "Where will you aim?", bright_white)
+    capacity = native_integer_divide(H-15, 3)
+    count = native_candidate_count
+    right = center+47 if capacity < count else center+49
+    start = max(0, min(int32(self+0x58), count-capacity))
+    for index in [start, min(start+capacity, count)):
+        y = 10 + 3*(index-start)
+        render_candidate_row(candidate[index], y, right, index-start)
+    if capacity < count:
+        render_native_scrollbar(offset=self+0x58, last=count-1,
+                                capacity=capacity, x=right+1,
+                                top=11, bottom=capacity*3+8,
+                                state=byte(self+0x5c), native_mouse_position)
+
+Mouse availability determines whether the scrollbar receives the native
+mouse x/y or -1/-1; it does not select alternate words. Border/corner,
+background, graphical-mode overlay and scrollbar branches emit native
+tiles, not extra English descriptions. If no candidate is visible, the
+title and Done button still render without a body row.
+
+2. COMPLETE ROW PRODUCTION AND BODY-PART SUPPLIER
+
+render_candidate_row(row, y, right, visible_index):
+    draw_three_tile_high_native_row_frame(center-49, right, y)
+    icon = native_bodypart_icon(target_unit, int16(row+0))
+    if icon != -1:
+        draw_native_icon_4_by_3(icon, x=center-49, y=y)
+    emit_native_key_binding_at(center-45, y+1, 0x52+visible_index)
+    emit_at(center-43, y+1, byte(0xfa)*43, bright_white)
+    emit_at(center-43, y+1, bodypart_name(target_unit, int16(row+0)),
+            bright_blue)
+    emit_at(center-5, y+1, rating_text(row), rating_color(row))
+    emit_condition_markers_at(right-2, y+1, flags=row.flags)
+
+The 43 byte-0xfa dotted leader is a graphical separator; it is not a
+sentence containing punctuation that should be translated. It is drawn
+before the body-part label at the same x origin. The key binding and the
+rating have separate origins and must not be consumed with the name.
+Reference: key call 0x880753; separator call 0x8807d9; name 0x88081a..0x880943;
+rating 0x88094b..0x880ea4; condition markers 0x880ea4..0x88104e.
+
+bodypart_name(unit, index):
+    if index < 0:
+        return "body part"
+    parts = unit.body_at_0x5f8.bodyparts_at_0x00
+    if index >= parts.size:
+        return "body part"
+    part = parts[index]
+    if part.singular_names_at_0x90.empty:
+        result = "body part"
+        if int32(part+0x84) > 1:
+            result += "s"
+        return result
+    if int32(part+0x84) < 2:
+        return part.singular_names_at_0x90[0]
+    return part.plural_names_at_0xa8[0]
+
+This renderer inlines the body-part supplier instead of calling the general
+bodypart formatter. It uses element zero of the singular or plural vector,
+selected by the native count. It does not request an ordinal, invent an
+ordinal prefix, or concatenate a race/caste/name with the body-part label.
+Invalid indices always produce singular "body part", even if another
+candidate's count is plural. Valid parts with an empty name vector produce
+"body parts" only when count > 1. These two fallback words are genuine
+source outputs and are included separately in the production table.
+
+RAW BODY/BP names and per-creature INDIVIDUAL_NAME overrides supply the
+non-fallback body names. The existing source extraction is in:
+  ../adventure-target-panel/helper-reference-raw-display-fields.tsv
+  ../adventure-target-panel/helper-classic-raw-display-fields.tsv
+  ../adventure-target-panel/helper-raw-display-fields.tsv
+  ../adventure-target-panel/helper-raw-display-productions.tsv
+The bodypart_singular/bodypart_plural fields describe these variable leaves.
+The current source vocabulary includes unusual anatomy as well as the
+humanlike labels in the screenshot. Mods and generated RAW names are
+variable inputs rather than additional fixed renderer strings. This aim
+renderer does not itself format unit names, squad aliases, item names,
+terrain captions, quests, dates, action statuses or sidebar instructions.
+
+3. ALL SEVEN RATINGS FOR EACH OF TWO ACTION TYPES
+
+flags = uint32(row+0x0c)
+rating = int32(row+0x04) - (1 if flags & 0x8000 else 0)
+kind = "shot" if pointer(self+0x10) != 0 else "throw"
+
+effective rating   shot branch       throw branch       native color word
+< -2               Impossible shot   Impossible throw   0x01010005
+== -2              Difficult shot    Difficult throw    0x01010004
+== -1              Tricky shot       Tricky throw       0x01010006
+==  0              Normal shot       Normal throw       0x01010007
+==  1              Easy shot         Easy throw         0x01000002
+==  2              Easier shot       Easier throw       0x01010002
+>   2              Simple shot       Simple throw       0x01010003
+
+The source contains fourteen complete English phrases. A generic-word
+match for "Normal" or an embedded match for "Imp" is not this production.
+The one-point 0x8000 adjustment happens before this complete decision
+chain, and can change the emitted phrase and its color. There are no
+separate "Very", percent, hit-chance number, "Hard", or "Easy shot!"
+productions in this function. Marker punctuation is emitted separately.
+
+4. ALL CONDITION MARKER BRANCHES
+
+emit_condition_markers_at(x, y, flags):
+    if flags & 0x20:
+        emit_at(x, y, "+", color=0x01010002)    # bright green
+    elif flags & 0x40:
+        emit_at(x, y, "+", color=0x01000002)    # green
+    elif flags & 0x80:
+        emit_at(x, y, "-", color=0x01010006)    # bright yellow
+    elif flags & 0x100:
+        emit_at(x, y, "-", color=0x01010004)    # bright red
+    else:
+        pass                                     # no +/- glyph
+    if flags & 0x200:
+        emit_at(x+1, y, "!", color=0x01010003)  # bright cyan
+
+The first four flags have priority, not four independent append operations.
+The exclamation mark is independent and can coexist with any selected
+plus/minus branch or with no plus/minus branch. The 0x8000 difficulty
+adjustment does not itself emit a marker. This renderer establishes these
+bits' display effects; it does not assign prose names to their causes.
+
+5. NATIVE SUPPLIER AND RENDERER ADDRESSES
+
+Role                           reference RVA   classic RVA
+text output                    0x00ad9960      0x00ad69a0
+native key binding output      0x00c394b0      0x00c364f0
+body-part icon lookup          0x0026d860      0x0026b420
+native tile output             0x00adaad0      0x00ad7b10
+tile layer clear               0x000bb190      0x000bb120
+scrollbar preparation          0x000bb3b0      0x000bb340
+scrollbar output               0x0140f4d0      0x0140a440
+string constructor (fallback)  0x0006f8d0      0x0006f860
+string assign (name/fallback)  0x0006fa10      0x0006f9a0
+append character ('s')         0x000b9b80      0x000b9b10
+
+String allocation, destruction, length/capacity decisions, stack cookies,
+and invalid-parameter termination branches affect storage and control
+flow but add no user-facing words. In particular the short-string numeric
+constants in Ghidra are little-endian copies of the complete phrases listed
+above, not hidden alternate strings. All finite visible strings in both
+functions, including cursor help, the modal, both number fallbacks, fourteen
+ratings and native symbols, are accounted for by these productions.
+
+6. EXTRACTION METHOD
+
+tools/extract_adventure_aim_pe.py reads data/runtime/native-pe-images.json
+through the fixed Python runtime and toolchain objdump. It preserves each
+complete PE unwind body, literal operands, branches, calls and fragments.
+The installed ghidra_12.1.4_PUBLIC/support/analyzeHeadless.bat and
+jdk-25.0.4.1+1 then processed each image with -import IMAGE -noanalysis
+-scriptPath D:/workspace/dfcn/tools -postScript
+DecompileAdventureActionMenuPE.java THIS_DIRECTORY reference|classic
+-deleteProject. Projects were under build/analysis-aim-EDITION; separate
+application.settingsdir/application.cachedir were under .cache/aim-EDITION-*
+via GHIDRA_HEADLESS_JAVA_OPTIONS. Both final invocations completed with
+exit code zero and saved the adjacent actual Ghidra C output.

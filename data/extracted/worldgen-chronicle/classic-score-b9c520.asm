@@ -1,0 +1,22 @@
+; classic PE:6a70b91c:0270a000; score-b9c520; RVA 0xb9c520..0xb9c570
+0xb9c520: mov    rax,QWORD PTR [rcx+0x58]
+0xb9c524: mov    rdx,rcx
+0xb9c527: sub    rax,QWORD PTR [rcx+0x50]
+0xb9c52b: sar    rax,0x2
+0xb9c52f: test   rax,rax
+0xb9c532: jne    0x140b9c565
+0xb9c534: mov    rax,QWORD PTR [rcx+0x78]
+0xb9c538: sub    rax,QWORD PTR [rcx+0x70]
+0xb9c53c: sar    rax,0x2
+0xb9c540: test   rax,rax
+0xb9c543: jne    0x140b9c565
+0xb9c545: mov    rcx,QWORD PTR [rcx+0x90]
+0xb9c54c: mov    eax,0x64
+0xb9c551: sub    rcx,QWORD PTR [rdx+0x88]
+0xb9c558: xor    edx,edx
+0xb9c55a: sar    rcx,0x2
+0xb9c55e: test   rcx,rcx
+0xb9c561: cmove  eax,edx
+0xb9c564: ret
+0xb9c565: mov    eax,0x64
+0xb9c56a: ret
