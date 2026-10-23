@@ -1,0 +1,1196 @@
+role	instruction_va	kind	literal_va	source
+health-page	0x14047a0d5	memory	0x1415fd258	[B]
+health-page	0x14047a114	memory	0x1415fd258	[B]
+health-page	0x14047a127	memory	0x1416023a0	[C:5:0:1]
+health-page	0x14047a154	memory	0x1415fd258	[B]
+health-page	0x14047a186	memory	0x1415fd258	[B]
+health-page	0x14047a199	memory	0x141602430	[C:7:0:1]
+health-page	0x14047a4f1	memory	0x1415ec698	st
+health-page	0x14047a4fa	memory	0x1415ec69c	nd
+health-page	0x14047a503	memory	0x1415ec690	rd
+health-page	0x14047a50c	memory	0x1415ec694	th
+health-page	0x14047a52b	memory	0x1415e873c	 
+health-page	0x14047a587	memory	0x1415e90d8	, 
+health-page	0x14047a5a9	memory	0x1416023c0	[C:2:0:1]
+health-page	0x14047a5d3	memory	0x141603460	: 
+health-page	0x14047a649	memory	0x14163fc90	[C:7:0:1]Received 
+health-page	0x14047a6bd	memory	0x14163fc78	[C:7:0:1:]Received 
+health-page	0x14047a71b	memory	0x1415e873c	 
+health-page	0x14047a76c	memory	0x14163fc6c	 cast
+health-page	0x14047a792	memory	0x14163fce0	[C:6:0:1]Received 
+health-page	0x14047a7f0	memory	0x14163fcd0	 splint on 
+health-page	0x14047a85b	memory	0x14163fc90	[C:7:0:1]Received 
+health-page	0x14047a8b9	memory	0x14163fcc0	 dressing on 
+health-page	0x14047a924	memory	0x14163fca8	[C:4:0:1]Received 
+health-page	0x14047a982	memory	0x141640338	 sutures on 
+health-page	0x14047aa0c	memory	0x141602568	[C:4:0:1]
+health-page	0x14047aa64	memory	0x141640380	 amputated
+health-page	0x14047aa7d	memory	0x141640360	Rotten tissue excised from 
+health-page	0x14047aad4	memory	0x1416402f8	[C:4:0:1]Compound fracture of 
+health-page	0x14047ab25	memory	0x1416402e8	 repaired
+health-page	0x14047ab3e	memory	0x141640318	[C:4:0:1]Bleeding stopped
+health-page	0x14047ab56	memory	0x141640350	[C:6:0:1]Had 
+health-page	0x14047aba7	memory	0x141640348	 set
+health-page	0x14047abc0	memory	0x141640228	[C:6:0:1]Placed in traction
+health-page	0x14047abef	memory	0x1415ecfb4	 in 
+health-page	0x14047ac3f	memory	0x141640210	[C:7:0:1]Evaluated
+health-page	0x14047ac57	memory	0x1416401f0	[C:7:0:1]Brought to rest
+health-page	0x14047ac86	memory	0x1415ecfb4	 in 
+health-page	0x14047acd3	memory	0x1416401d8	[C:3:0:1]Cleaned
+health-page	0x14047aced	memory	0x1415ee5e0	 with 
+health-page	0x14047ad6c	memory	0x14163fca4	[R]
+health-page	0x14047adf5	memory	0x14163fd60	[C:7:0:0:]Diagnosed with 
+health-page	0x14047ae1d	memory	0x14163fca4	[R]
+health-page	0x14047ae94	memory	0x1416402c0	[C:0:0:1]-                       
+health-page	0x14047afdd	memory	0x1416402a0	[C:7:0:0]No medical history
+health-page	0x14047b040	memory	0x14163feb0	[C:7:0:1]Diagnosis required
+health-page	0x14047b08f	memory	0x14163fe90	[C:7:0:1]Crutch required
+health-page	0x14047b13a	memory	0x141602430	[C:7:0:1]
+health-page	0x14047b1af	memory	0x14163fe70	.[C:5:0:1]Rotten -- inoperable
+health-page	0x14047b204	memory	0x141602430	[C:7:0:1]
+health-page	0x14047b27f	memory	0x14163fe50	.[C:3:0:1]Needs cleaning
+health-page	0x14047b2c5	memory	0x141602430	[C:7:0:1]
+health-page	0x14047b340	memory	0x14163fd48	.[C:4:0:1]Needs surgery
+health-page	0x14047b386	memory	0x141602430	[C:7:0:1]
+health-page	0x14047b401	memory	0x14163fd30	.[C:2:0:1]Needs sutures
+health-page	0x14047b447	memory	0x141602430	[C:7:0:1]
+health-page	0x14047b4c2	memory	0x14163fd18	.[C:6:0:1]Needs setting
+health-page	0x14047b50b	memory	0x141602430	[C:7:0:1]
+health-page	0x14047b589	memory	0x14163fcf8	.[C:7:0:0]Needs dressing
+health-page	0x14047b5cf	memory	0x141602430	[C:7:0:1]
+health-page	0x14047b64d	memory	0x14163fdc0	.[C:6:0:1]Needs traction
+health-page	0x14047b693	memory	0x141602430	[C:7:0:1]
+health-page	0x14047b70c	memory	0x14163fda0	.[C:6:0:1]Needs immobilization
+health-page	0x14047b78c	memory	0x14163fd80	[C:7:0:0]No treatment scheduled
+health-page	0x14047b850	memory	0x14163f298	[C:7:0:0]---
+health-page	0x14047b937	memory	0x1415e90d8	, 
+health-page	0x14047b98d	memory	0x141602430	[C:7:0:1]
+health-page	0x14047ba07	memory	0x14163f850	[C:5:0:1].Gelded
+health-page	0x14047ba52	memory	0x14163f838	[C:2:0:1].Spilled
+health-page	0x14047ba9d	memory	0x14163f820	[C:5:0:1].Butchered
+health-page	0x14047baf5	memory	0x14163f800	[C:4:0:1].Major artery torn
+health-page	0x14047bb38	memory	0x14163f8c0	[C:4:0:1].Artery torn
+health-page	0x14047bb82	memory	0x14163f8a0	[C:4:0:1].Heavy bleeding
+health-page	0x14047bbc9	memory	0x14163f888	[C:4:0:1].Bleeding
+health-page	0x14047bc20	memory	0x14163f868	[C:7:0:1].Motor nerve severed
+health-page	0x14047bc77	memory	0x14163f768	[C:7:0:1].Sensory nerve severed
+health-page	0x14047bccc	memory	0x14163f750	[C:6:0:1].Torn tendon
+health-page	0x14047bd16	memory	0x14163f730	[C:6:0:1].Strained tendon
+health-page	0x14047bd5d	memory	0x14163f710	[C:6:0:1].Bruised tendon
+health-page	0x14047bdb4	memory	0x14163f7e8	[C:6:0:1].Torn ligament
+health-page	0x14047be00	memory	0x14163f7c8	[C:6:0:1].Sprained ligament
+health-page	0x14047be47	memory	0x14163f7a8	[C:6:0:1].Bruised ligament
+health-page	0x14047befc	memory	0x14163f680	[C:6:0:0].Overlapping fracture (in traction)
+health-page	0x14047bf3c	memory	0x14163f660	[C:4:0:1].Overlapping fracture
+health-page	0x14047bf87	memory	0x14163f648	[C:6:0:1].Needs setting
+health-page	0x14047bfc4	memory	0x14163f788	[C:4:0:1].Compound fracture
+health-page	0x14047c02e	memory	0x14163f630	[C:4:0:1].Cut apart
+health-page	0x14047c072	memory	0x14163f6f8	[C:4:0:1].Smashed apart
+health-page	0x14047c0ba	memory	0x14163f6e0	[C:4:0:1].Broken apart
+health-page	0x14047c0f6	memory	0x14163f6c8	[C:4:0:1].Torn apart
+health-page	0x14047c136	memory	0x14163f6b0	[C:4:0:1].Cut open
+health-page	0x14047c17a	memory	0x14163f5a0	[C:4:0:1].Smashed open
+health-page	0x14047c1c2	memory	0x14163f588	[C:4:0:1].Broken open
+health-page	0x14047c1fe	memory	0x14163f570	[C:4:0:1].Torn open
+health-page	0x14047c250	memory	0x14163f558	[C:6:0:0].Dented
+health-page	0x14047c311	memory	0x14163f610	[C:6:0:0].Heavy bruising
+health-page	0x14047c329	memory	0x14163f5f0	[C:6:0:0].Moderate bruising
+health-page	0x14047c332	memory	0x14163f5d0	[C:6:0:0].Light bruising
+health-page	0x14047c37f	memory	0x14163f5b8	[C:6:0:0].Serious burn
+health-page	0x14047c397	memory	0x14163fbe0	[C:6:0:0].Moderate burn
+health-page	0x14047c3a0	memory	0x14163fbc8	[C:6:0:0].Minor burn
+health-page	0x14047c3ed	memory	0x14163fba8	[C:6:0:0].Serious frost-bite
+health-page	0x14047c405	memory	0x14163fb88	[C:6:0:0].Moderate frost-bite
+health-page	0x14047c40e	memory	0x14163fc50	[C:6:0:0].Minor frost-bite
+health-page	0x14047c45b	memory	0x14163fc30	[C:6:0:0].Serious melting
+health-page	0x14047c473	memory	0x14163fc10	[C:6:0:0].Moderate melting
+health-page	0x14047c47c	memory	0x14163fbf8	[C:6:0:0].Minor melting
+health-page	0x14047c4c9	memory	0x14163fae8	[C:6:0:0].Serious boiling
+health-page	0x14047c4e1	memory	0x14163fac8	[C:6:0:0].Moderate boiling
+health-page	0x14047c4ea	memory	0x14163fab0	[C:6:0:0].Minor boiling
+health-page	0x14047c537	memory	0x14163fa90	[C:6:0:0].Serious freezing
+health-page	0x14047c54f	memory	0x14163fb68	[C:6:0:0].Moderate freezing
+health-page	0x14047c558	memory	0x14163fb48	[C:6:0:0].Minor freezing
+health-page	0x14047c5a5	memory	0x14163fb28	[C:6:0:0].Serious condensation
+health-page	0x14047c5bd	memory	0x14163fb08	[C:6:0:0].Moderate condensation
+health-page	0x14047c5c6	memory	0x14163f9f8	[C:6:0:0].Minor condensation
+health-page	0x14047c613	memory	0x14163f9e0	[C:5:0:1].Advanced rot
+health-page	0x14047c62b	memory	0x14163f9c8	[C:5:0:1].Moderate rot
+health-page	0x14047c634	memory	0x14163f9b0	[C:5:0:1].Minor rot
+health-page	0x14047c67e	memory	0x14163fa70	[C:6:0:0].Serious blistering
+health-page	0x14047c696	memory	0x14163fa50	[C:6:0:0].Moderate blistering
+health-page	0x14047c69f	memory	0x14163fa30	[C:6:0:0].Minor blistering
+health-page	0x14047c726	memory	0x14163fa18	[C:7:0:1].Extreme pain
+health-page	0x14047c77d	memory	0x14163f8f0	[C:2:0:1].Nausea
+health-page	0x14047c7d1	memory	0x14163f8d8	[C:3:0:1].Dizziness
+health-page	0x14047c825	memory	0x14163f998	[C:3:0:1].Paralysis
+health-page	0x14047c86a	memory	0x14163f920	[C:7:0:1].Moderate pain
+health-page	0x14047c8cb	memory	0x14163f908	[C:7:0:1].Minor pain
+health-page	0x14047c921	memory	0x14163f978	[C:3:0:1].Partial paralysis
+health-page	0x14047c961	memory	0x14163f958	[C:3:0:1].Some sluggishness
+health-page	0x14047c9b9	memory	0x14163f938	[C:3:0:1].Complete numbness
+health-page	0x14047ca03	memory	0x14163ff30	[C:3:0:1].Partial numbness
+health-page	0x14047ca4f	memory	0x14163ff10	[C:3:0:1].Slight numbness
+health-page	0x14047caa2	memory	0x14163fef0	[C:6:0:1].Extreme swelling
+health-page	0x14047caf3	memory	0x14163fed0	[C:6:0:1].Moderate swelling
+health-page	0x14047cb45	memory	0x14163ffc8	[C:6:0:1].Minor swelling
+health-page	0x14047cb92	memory	0x14163ffa0	[C:7:0:1].Function totally impaired
+health-page	0x14047cbdc	memory	0x14163ff78	[C:7:0:1].Partially impaired function
+health-page	0x14047cc1c	memory	0x14163ff50	[C:7:0:1].Slightly impaired function
+health-page	0x14047ccc2	memory	0x14163fe30	[C:7:0:1]Has been sutured
+health-page	0x14047cd2f	memory	0x14163fe18	[C:5:0:1]Infection
+health-page	0x14047cdd6	memory	0x14163fdf8	[C:7:0:0]No evaluated wounds
+health-page	0x14047cddf	memory	0x14163fde0	[C:7:0:0]No wounds
+health-page	0x14047ce49	memory	0x14163f198	[C:6:0:0]In traction
+health-page	0x14047ce9a	memory	0x14163f080	[C:4:0:1]Heavy bleeding
+health-page	0x14047cebf	memory	0x14163f068	[C:4:0:1]Bleeding
+health-page	0x14047cf0f	memory	0x14163f038	[C:5:0:1]Severe blood loss
+health-page	0x14047cf16	memory	0x14163f058	[C:5:0:1]Pale
+health-page	0x14047cf4f	memory	0x14163f0d0	[C:5:0:1]Moderate blood loss
+health-page	0x14047cf56	memory	0x14163f0f0	[C:5:0:1]Faint
+health-page	0x14047cfb1	memory	0x14163f0b8	[C:3:0:1]Paralyzed
+health-page	0x14047cfe8	memory	0x14163f098	[C:3:0:1]Partially paralyzed
+health-page	0x14047d01e	memory	0x14163efc0	[C:3:0:1]Sluggish
+health-page	0x14047d070	memory	0x14163efa0	[C:3:0:1]Completely numb
+health-page	0x14047d0a7	memory	0x14163ef88	[C:3:0:1]Partially numb
+health-page	0x14047d0dd	memory	0x14163ef70	[C:3:0:1]Slightly numb
+health-page	0x14047d129	memory	0x14163f020	[C:4:0:1]Serious fever
+health-page	0x14047d160	memory	0x14163f008	[C:4:0:1]Moderate fever
+health-page	0x14047d196	memory	0x14163eff0	[C:4:0:1]Slight fever
+health-page	0x14047d1e2	memory	0x14163efd8	[C:6:0:1]Extreme pain
+health-page	0x14047d219	memory	0x14163ef08	[C:6:0:1]Moderate pain
+health-page	0x14047d24f	memory	0x14163eef0	[C:6:0:1]Slight pain
+health-page	0x14047d29d	memory	0x14163eed8	[C:6:0:1]Exhausted
+health-page	0x14047d2d0	memory	0x14163eec0	[C:6:0:1]Over-exerted
+health-page	0x14047d309	memory	0x14163ef60	[C:6:0:1]Tired
+health-page	0x14047d35a	memory	0x14163ef48	[C:3:0:1]Stunned
+health-page	0x14047d3aa	memory	0x14163ef38	[C:3:0:1]Dizzy
+health-page	0x14047d3ff	memory	0x14163ef20	[C:1:0:1]Drowning
+health-page	0x14047d424	memory	0x14163f4f0	[C:7:0:0]Winded
+health-page	0x14047d474	memory	0x14163f4d8	[C:2:0:1]Nauseous
+health-page	0x14047d4cf	memory	0x14163f4c0	[C:4:0:1]Very drowsy
+health-page	0x14047d508	memory	0x14163f4b0	[C:1:0:1]Drowsy
+health-page	0x14047d556	memory	0x14163f540	[C:5:0:1]Dehydrated
+health-page	0x14047d58f	memory	0x14163f528	[C:1:0:1]Thirsty
+health-page	0x14047d5dd	memory	0x14163f510	[C:4:0:1]Starving
+health-page	0x14047d621	memory	0x14163f500	[C:6:0:0]Hungry
+health-page	0x14047d657	memory	0x14163f438	[C:4:0:1]Slumberous
+health-page	0x14047d68d	memory	0x14163f4c0	[C:4:0:1]Very drowsy
+health-page	0x14047d6c3	memory	0x14163f428	[C:6:0:1]Drowsy
+health-page	0x14047d6fc	memory	0x14163f4b0	[C:1:0:1]Drowsy
+health-page	0x14047d735	memory	0x14163f418	[C:1:0:0]Drowsy
+health-page	0x14047d7a9	memory	0x14163f400	[C:4:0:1]Thirsty!
+health-page	0x14047d7dc	memory	0x14163f400	[C:4:0:1]Thirsty!
+health-page	0x14047d80f	memory	0x14163f498	[C:4:0:0]Thirsty
+health-page	0x14047d85d	memory	0x14163f540	[C:5:0:1]Dehydrated
+health-page	0x14047d893	memory	0x14163f480	[C:5:0:1]Thirsty
+health-page	0x14047d8cc	memory	0x14163f468	[C:6:0:1]Thirsty
+health-page	0x14047d905	memory	0x14163f528	[C:1:0:1]Thirsty
+health-page	0x14047d953	memory	0x14163f510	[C:4:0:1]Starving
+health-page	0x14047d989	memory	0x14163f450	[C:4:0:1]Very hungry
+health-page	0x14047d9c2	memory	0x14163f358	[C:6:0:1]Hungry
+health-page	0x14047d9fb	memory	0x14163f500	[C:6:0:0]Hungry
+health-page	0x14047da54	memory	0x14163f340	[C:4:0:1]Cannot breathe
+health-page	0x14047da8a	memory	0x14163f320	[C:7:0:0]Trouble breathing
+health-page	0x14047dad8	memory	0x14163f308	[C:4:0:1]Vision lost
+health-page	0x14047db10	memory	0x14163f3e0	[C:6:0:1]Vision impaired
+health-page	0x14047db48	memory	0x14163f3b8	[C:7:0:0]Vision somewhat impaired
+health-page	0x14047dbac	memory	0x14163f398	[C:6:0:1]Ability to stand lost
+health-page	0x14047dbdd	memory	0x14163f368	[C:6:0:1]Ability to stand somewhat impaired
+health-page	0x14047dc3b	memory	0x14163f278	[C:6:0:1]Ability to grasp lost
+health-page	0x14047dc6c	memory	0x14163f248	[C:6:0:1]Ability to grasp somewhat impaired
+health-page	0x14047dd05	memory	0x14163f228	[C:6:0:1]Ability to fly lost
+health-page	0x14047dd36	memory	0x14163f1f8	[C:6:0:1]Ability to fly somewhat impaired
+health-page	0x14047ddff	memory	0x14163f2e8	[C:7:0:1]Motor nerve damage
+health-page	0x14047de44	memory	0x14163f2c8	[C:7:0:1]Sensory nerve damage
+health-page	0x14047de93	memory	0x14163f2a8	[C:7:0:0]No health problems
+physical-attributes	0x1413805e3	printable-immediate		gfff
+physical-attributes	0x141380603	printable-immediate		gfff
+physical-attributes	0x1413808a7	memory	0x1416ceccc	he
+physical-attributes	0x1413808b4	memory	0x1416cecc8	she
+physical-attributes	0x1413808c3	memory	0x1415ee4d4	it
+physical-attributes	0x14138091b	printable-immediate		he
+physical-attributes	0x14138092c	memory	0x1416cecc8	she
+physical-attributes	0x141380936	memory	0x1416cecca	e
+physical-attributes	0x141380946	printable-immediate		it
+physical-attributes	0x141380a43	memory	0x141783900	unbelievably strong
+physical-attributes	0x141380a4d	memory	0x141783910	ong
+physical-attributes	0x141380a58	memory	0x141783912	g
+physical-attributes	0x141380a7c	memory	0x1417838f4	mighty
+physical-attributes	0x141380a85	memory	0x1417838f8	ty
+physical-attributes	0x141380a9e	memory	0x141783930	very strong
+physical-attributes	0x141380aaf	memory	0x141649d94	strong
+physical-attributes	0x141380ac0	memory	0x141783918	unfathomably weak
+physical-attributes	0x141380ad1	memory	0x141783950	unquestionably weak
+physical-attributes	0x141380ae2	memory	0x141783940	very weak
+physical-attributes	0x141380af7	memory	0x141782f18	weak
+physical-attributes	0x141380b10	memory	0x141782f08	amazingly agile
+physical-attributes	0x141380b1d	memory	0x141782f10	y agile
+physical-attributes	0x141380b27	memory	0x141782f14	ile
+physical-attributes	0x141380b32	memory	0x141782f16	e
+physical-attributes	0x141380b52	memory	0x141782f30	extremely agile
+physical-attributes	0x141380b5f	memory	0x141782f38	y agile
+physical-attributes	0x141380b69	memory	0x141782f3c	ile
+physical-attributes	0x141380b74	memory	0x141782f3e	e
+physical-attributes	0x141380b8c	memory	0x141782f20	very agile
+physical-attributes	0x141380b9d	memory	0x141782f54	agile
+physical-attributes	0x141380bae	memory	0x141782f40	abysmally clumsy
+physical-attributes	0x141380bbf	memory	0x141782f70	totally clumsy
+physical-attributes	0x141380bd0	memory	0x141782f60	quite clumsy
+physical-attributes	0x141380be5	memory	0x141782e90	clumsy
+physical-attributes	0x141380c10	memory	0x141782e78	basically unbreakable
+physical-attributes	0x141380c1a	memory	0x141782e88	kable
+physical-attributes	0x141380c23	memory	0x141782e8c	e
+physical-attributes	0x141380c59	memory	0x141782ea8	incredibly tough
+physical-attributes	0x141380c75	memory	0x141782e98	quite durable
+physical-attributes	0x141380c86	memory	0x141782ed4	tough
+physical-attributes	0x141380c97	memory	0x141782ec0	shockingly fragile
+physical-attributes	0x141380ca8	memory	0x141782ef0	remarkably flimsy
+physical-attributes	0x141380cb9	memory	0x141782ee0	very flimsy
+physical-attributes	0x141380cce	memory	0x14178306c	flimsy
+physical-attributes	0x141380cf9	memory	0x141783050	absolutely inexhaustible
+physical-attributes	0x141380d03	memory	0x141783060	austible
+physical-attributes	0x141380d2a	memory	0x141783090	indefatigable
+physical-attributes	0x141380d37	memory	0x141783098	gable
+physical-attributes	0x141380d40	memory	0x14178309c	e
+physical-attributes	0x141380d58	memory	0x141783078	very slow to tire
+physical-attributes	0x141380d69	memory	0x1417830b8	slow to tire
+physical-attributes	0x141380d7a	memory	0x1417830a0	truly quick to tire
+physical-attributes	0x141380d8b	memory	0x1417830e0	extremely quick to tire
+physical-attributes	0x141380d9c	memory	0x1417830c8	very quick to tire
+physical-attributes	0x141380db1	memory	0x141782fb0	quick to tire
+physical-attributes	0x141380ddc	memory	0x141782f80	possessed of amazing recuperative powers
+physical-attributes	0x141380de6	memory	0x141782f90	zing recuperative powers
+physical-attributes	0x141380df1	memory	0x141782fa0	e powers
+physical-attributes	0x141380e2a	memory	0x141782fd8	incredibly quick to heal
+physical-attributes	0x141380e34	memory	0x141782fe8	 to heal
+physical-attributes	0x141380e53	memory	0x141782fc0	quite quick to heal
+physical-attributes	0x141380e64	memory	0x141783010	quick to heal
+physical-attributes	0x141380e75	memory	0x141782ff8	shockingly slow to heal
+physical-attributes	0x141380e86	memory	0x141783038	really slow to heal
+physical-attributes	0x141380e97	memory	0x141783020	very slow to heal
+physical-attributes	0x141380eac	memory	0x1417831e0	slow to heal
+physical-attributes	0x141380ed7	memory	0x1417831c8	virtually never sick
+physical-attributes	0x141380ee1	memory	0x1417831d8	sick
+physical-attributes	0x141380f2a	memory	0x141783208	almost never sick
+physical-attributes	0x141380f4e	memory	0x1417831f0	very rarely sick
+physical-attributes	0x141380f5c	memory	0x141783248	rarely sick
+physical-attributes	0x141380f6a	memory	0x141783220	stunningly susceptible to disease
+physical-attributes	0x141380f78	memory	0x141783278	really susceptible to disease
+physical-attributes	0x141380f86	memory	0x141783258	quite susceptible to disease
+physical-attributes	0x141380f98	memory	0x141783100	susceptible to disease
+physical-attributes	0x141380fc3	memory	0x141640590	[C:2:0:0]
+physical-attributes	0x141380fcc	memory	0x141721af8	[C:4:0:0]
+physical-attributes	0x141380ffd	memory	0x1415eebd8	 is
+physical-attributes	0x141381020	memory	0x1415e90d8	, 
+physical-attributes	0x141381039	memory	0x141721af8	[C:4:0:0]
+physical-attributes	0x14138104e	memory	0x1417830f8	but 
+physical-attributes	0x141381075	memory	0x1415eebd8	 is
+physical-attributes	0x141381093	memory	0x1415fd504	,
+physical-attributes	0x1413810a2	memory	0x1415ee880	 and
+physical-attributes	0x1413810c1	memory	0x1415e873c	 
+physical-attributes	0x1413810f6	memory	0x1415fd968	.  
+appearance-wrapper	0x1413caf81	printable-immediate		gfff
+appearance-wrapper	0x1413cafab	printable-immediate		gfff
+appearance-preparation	0x140711b04	printable-immediate		gfff
+body-build	0x14070c3a9	memory	0x141681018	is gigantic with huge muscles and hanging rolls of lard
+body-build	0x14070c3c2	memory	0x141680ff8	is huge, muscular and fat
+body-build	0x14070c3da	memory	0x141680fb0	is gigantic but incredibly skinny with virtually no muscles to speak of
+body-build	0x14070c3f2	memory	0x141680f90	is gigantic yet weak and skinny
+body-build	0x14070c40b	memory	0x141680f68	is gigantic with incredible muscles
+body-build	0x14070c424	memory	0x141680f38	is very muscular and just gigantic overall
+body-build	0x14070c43c	memory	0x141680f18	is gigantic and muscular
+body-build	0x14070c454	memory	0x141680ef8	is gigantic yet incredibly weak
+body-build	0x14070c46d	memory	0x141680ed8	is enormous yet very weak
+body-build	0x14070c486	memory	0x141680ea8	isn't very muscular but has a gigantic build
+body-build	0x14070c49f	memory	0x141680e70	bears untold amounts of fat over a gigantic frame
+body-build	0x14070c4b8	memory	0x141680e48	is very fat and enormous overall
+body-build	0x14070c4d0	memory	0x141680e28	is gigantic and quite fat
+body-build	0x14070c4e8	memory	0x141680df8	is incredibly skinny yet gigantic overall
+body-build	0x14070c500	memory	0x1416809f8	has an enormous build but is very skinny
+body-build	0x14070c518	memory	0x1416809e0	is enormous yet skinny
+body-build	0x14070c532	memory	0x1416809d0	is gigantic
+body-build	0x14070c54a	memory	0x141680990	is very large and bears great lard rolls and impressive muscles
+body-build	0x14070c563	memory	0x141680968	is very large, fat and muscular
+body-build	0x14070c57b	memory	0x141680930	is very large yet also very weak and incredibly skinny
+body-build	0x14070c593	memory	0x1416808f8	is weak and skinny yet has a large build overall
+body-build	0x14070c5ac	memory	0x1416808d0	is incredibly muscular and very large
+body-build	0x14070c5c5	memory	0x1416808b0	is very large and very muscular
+body-build	0x14070c5dd	memory	0x141680888	is very large with strong muscles
+body-build	0x14070c5f5	memory	0x141680858	is very weak despite being very large overall
+body-build	0x14070c60e	memory	0x141680840	is very large yet weak
+body-build	0x14070c627	memory	0x141680820	isn't strong but is very large
+body-build	0x14070c640	memory	0x1416807f8	is very large and just incredibly fat
+body-build	0x14070c659	memory	0x1416807c0	has a very large body with quite a bit of fat on it
+body-build	0x14070c671	memory	0x141680790	is fat and has a very large body overall
+body-build	0x14070c689	memory	0x141680ca0	has a very large frame but is incredibly skinny
+body-build	0x14070c6a1	memory	0x141680c78	is very large yet quite skinny as well
+body-build	0x14070c6b9	memory	0x141680c48	is skinny but with a very large body overall
+body-build	0x14070c6d3	memory	0x141680c38	is very large
+body-build	0x14070c6eb	memory	0x141680bf8	is incredibly muscular and fat, with a large build overall
+body-build	0x14070c704	memory	0x141680bd8	is large, muscular and fat
+body-build	0x14070c71c	memory	0x141680ba0	has a large body but it is very skinny and frail
+body-build	0x14070c734	memory	0x141680b60	is weak and skinny yet has a reasonably large body overall
+body-build	0x14070c74d	memory	0x141680b38	has bulky muscles on a large body
+body-build	0x14070c766	memory	0x141680b10	is very muscular with a large body
+body-build	0x14070c77e	memory	0x141680af8	is large and muscular
+body-build	0x14070c796	memory	0x141680ae0	is large yet frail
+body-build	0x14070c7af	memory	0x141680ab8	has a large body but is quite weak
+body-build	0x14070c7c8	memory	0x141680a88	has ill-defined muscles but is large overall
+body-build	0x14070c7e1	memory	0x141680a50	has a large body made larger still by mounds of fat
+body-build	0x14070c7fa	memory	0x141680a28	has a large body and is very fat
+body-build	0x14070c812	memory	0x141681960	is large and fat
+body-build	0x14070c82a	memory	0x141681930	has a large body but is incredibly skinny
+body-build	0x14070c842	memory	0x141681910	is large yet very skinny
+body-build	0x14070c85a	memory	0x1416818f8	is large yet skinny
+body-build	0x14070c874	memory	0x1416818e8	is large
+body-build	0x14070c88c	memory	0x1416818a0	would be lanky were it not for the massive muscles and slabs of lard
+body-build	0x14070c8a5	memory	0x141681870	is lanky, with strong muscles and some fat
+body-build	0x14070c8bd	memory	0x141681840	has a tall, skinny body that is very frail
+body-build	0x14070c8d5	memory	0x141681810	is tall and thin, weak with few traces of fat
+body-build	0x14070c8ee	memory	0x1416817e0	is tall and thin with incredible muscles
+body-build	0x14070c907	memory	0x1416817c0	is tall, thin and very muscular
+body-build	0x14070c91f	memory	0x1416817a0	is muscular, tall and thin
+body-build	0x14070c937	memory	0x141681788	is lanky and frail
+body-build	0x14070c950	memory	0x141681770	is lanky and weak
+body-build	0x14070c969	memory	0x141681748	is lanky with ill-defined muscles
+body-build	0x14070c982	memory	0x141681700	packs extraordinary obesity on to what was once a tall and thin body
+body-build	0x14070c99b	memory	0x141681c50	has a tall, thin frame but manages to be very fat
+body-build	0x14070c9b3	memory	0x141681c20	has a tall, thin body layered with some fat
+body-build	0x14070c9cb	memory	0x141681be8	has a tall, narrow body that is just incredibly skinny
+body-build	0x14070c9e3	memory	0x141681bb0	has a tall, thin frame with very little fat on it
+body-build	0x14070c9fb	memory	0x141681b88	has a tall, thin body with little fat
+body-build	0x14070ca15	memory	0x141681b78	is lanky
+body-build	0x14070ca2d	memory	0x141681b38	has a short, broad body stacked thick with muscles and lard
+body-build	0x14070ca46	memory	0x141681b18	is stout, muscular and fat
+body-build	0x14070ca5e	memory	0x141681ad0	has a short body that is broad yet with few traces of muscle or fat
+body-build	0x14070ca76	memory	0x141681a80	has a short broad body but is kind of weak and skinny at the same time
+body-build	0x14070ca8f	memory	0x141681a58	is stout and incredibly muscular
+body-build	0x14070caa8	memory	0x141681a38	is stout and very muscular
+body-build	0x14070cac0	memory	0x141681a18	has a stout muscular body
+body-build	0x14070cad8	memory	0x1416819e8	has a short broad body but is very frail
+body-build	0x14070caf1	memory	0x1416819a8	has a short broad body with little in the way of muscles
+body-build	0x14070cb0a	memory	0x141681978	has a short broad body with ill-defined muscles
+body-build	0x14070cb23	memory	0x141681380	is short, broad and morbidly obese
+body-build	0x14070cb3c	memory	0x141681350	has a short broad body with a lot of fat on it
+body-build	0x14070cb54	memory	0x141681338	is short, broad and fat
+body-build	0x14070cb6c	memory	0x141681300	has a short, broad frame with almost no fat on it
+body-build	0x14070cb84	memory	0x1416812d0	has a short, broad body with very little fat
+body-build	0x14070cb9c	memory	0x141681298	has a short, broad build overall but is somewhat skinny
+body-build	0x14070cbb6	memory	0x141681288	is stout
+body-build	0x14070cbce	memory	0x141681230	has a massive broad body, highly muscular, with thick rolls of lard hanging from it
+body-build	0x14070cbe7	memory	0x1416811e8	has an incredibly broad body with some muscle and fat on it
+body-build	0x14070cbff	memory	0x1416811a0	has an extremely broad frame with few traces of either muscle or fat
+body-build	0x14070cc17	memory	0x141681150	has an incredibly broad body that is somewhat weak with only a little fat on it
+body-build	0x14070cc30	memory	0x141681128	is incredibly muscular and broad-bodied
+body-build	0x14070cc49	memory	0x1416810f8	is has large muscles on a incredibly broad body
+body-build	0x14070cc61	memory	0x1416810c8	is muscular with an extremely broad body
+body-build	0x14070cc79	memory	0x141681098	has an incredibly broad body but is very frail
+body-build	0x14070cc92	memory	0x141681070	has an extremely broad body but is weak
+body-build	0x14070ccab	memory	0x1416816c0	is somewhat weak and has a body that is incredibly broad
+body-build	0x14070ccc4	memory	0x141681688	has an incredibly broad body hung with curtains of lard
+body-build	0x14070ccdd	memory	0x141681650	has an extremely broad body with lots of fat on it
+body-build	0x14070ccf5	memory	0x141681628	is fat with an extremely broad body
+body-build	0x14070cd0d	memory	0x1416815f0	has an incredibly broad body with almost no fat on it
+body-build	0x14070cd25	memory	0x1416815b8	has an extremely broad body with very little fat
+body-build	0x14070cd3d	memory	0x141681588	has an extremely broad body with little fat
+body-build	0x14070cd5a	memory	0x141681568	is incredibly broad-bodied
+body-build	0x14070cd72	memory	0x141681510	has a very broad body, with enormous lard pockets packed in with the giant muscles
+body-build	0x14070cd8b	memory	0x1416814e8	has a very broad, muscular, fat body
+body-build	0x14070cda3	memory	0x1416814a0	has a very broad body but it is frail with very little fat on it
+body-build	0x14070cdbb	memory	0x141681450	has a very broad body overall but it is weak with little fat on it
+body-build	0x14070cdd4	memory	0x141681410	is incredibly muscular and has a very broad body
+body-build	0x14070cded	memory	0x1416813f0	is very muscular and broad
+body-build	0x14070ce05	memory	0x1416813d0	is muscular and very broad
+body-build	0x14070ce1d	memory	0x1416813a8	has a very broad body but it is frail
+body-build	0x14070ce36	memory	0x141682510	has ill-defined muscles on an otherwise broad body
+body-build	0x14070ce4f	memory	0x1416824e8	has a broad body that is somewhat weak
+body-build	0x14070ce68	memory	0x1416824b8	has a very broad body and is incredibly fat
+body-build	0x14070ce81	memory	0x1416824a0	is very broad and fat
+body-build	0x14070ce99	memory	0x141682488	is fat and very broad
+body-build	0x14070ceb1	memory	0x141682460	has a very broad body but almost no fat
+body-build	0x14070cec9	memory	0x141682428	has a very broad frame with very little fat on it
+body-build	0x14070cee1	memory	0x141682400	has a very broad body with little fat
+body-build	0x14070cefe	memory	0x1416823e8	is very broad-bodied
+body-build	0x14070cf16	memory	0x1416823a0	has a broad body bearing impressive muscles and a great load of fat
+body-build	0x14070cf2f	memory	0x141682378	is broad-bodied, muscular and fat
+body-build	0x14070cf47	memory	0x141682340	is frail and very skinny yet with an overall broad body
+body-build	0x14070cf5f	memory	0x141682318	is broad-bodied, though weak and skinny
+body-build	0x14070cf78	memory	0x1416822e0	has incredible muscles stretched over a broad body
+body-build	0x14070cf91	memory	0x1416822b8	is very muscular with a broad body
+body-build	0x14070cfa9	memory	0x1416822a0	is broad and muscular
+body-build	0x14070cfc1	memory	0x141682820	has a broad body but it is very frail
+body-build	0x14070cfda	memory	0x141682808	is broad yet weak
+body-build	0x14070cff3	memory	0x1416827e8	is broad with little muscle
+body-build	0x14070d00c	memory	0x1416827a0	has a broad body made broader still by no shortage of surrounding lard
+body-build	0x14070d025	memory	0x141682780	is broad-bodied and very fat
+body-build	0x14070d03d	memory	0x141682768	is broad and fat
+body-build	0x14070d055	memory	0x141682738	has a broad body with almost no fat on it
+body-build	0x14070d06d	memory	0x141682710	has a broad body with very little fat
+body-build	0x14070d085	memory	0x1416826e8	has a broad body with little fat
+body-build	0x14070d0a2	memory	0x1416826d0	has a broad body
+body-build	0x14070d0ba	memory	0x141682660	has a long body and would be slim were it not for the massive layers of lard over equally gigantic muscles
+body-build	0x14070d0d3	memory	0x141682620	has a long, thin body, thickened by muscle and fat
+body-build	0x14070d0eb	memory	0x1416825e8	has a long, thin frame, frail with very little fat
+body-build	0x14070d103	memory	0x1416825a8	has a long, thin body that is somewhat weak with little fat
+body-build	0x14070d11c	memory	0x141682570	has a long, thin frame strapped with incredible muscles
+body-build	0x14070d135	memory	0x141682548	is long and thin with strong muscles
+body-build	0x14070d14d	memory	0x141681f68	is long, thin and muscular
+body-build	0x14070d165	memory	0x141681f48	is long and thin but very weak
+body-build	0x14070d17e	memory	0x141681f30	is long, weak and thin
+body-build	0x14070d197	memory	0x141681f10	is long, thin and somewhat weak
+body-build	0x14070d1b0	memory	0x141681ed0	has a long, thin frame hidden beneath copious rolls of lard
+body-build	0x14070d1c9	memory	0x141681ea0	has a long, thin body with a lot of fat on it
+body-build	0x14070d1e1	memory	0x141681e70	has a long, thin body with some fat on it
+body-build	0x14070d1f9	memory	0x141681e40	has a long, thin body with almost no fat on it
+body-build	0x14070d211	memory	0x141681e10	has a long, thin body with very little fat
+body-build	0x14070d229	memory	0x141681de8	has a long, thin frame with little fat
+body-build	0x14070d246	memory	0x141681dd0	is long and slim
+body-build	0x14070d25e	memory	0x141681d80	could be incredibly thin but has massive lardy rolls and enormous muscles
+body-build	0x14070d277	memory	0x141681d30	has managed to put some muscle and fat on an extremely thin frame
+body-build	0x14070d28f	memory	0x141681d00	is a frail, extremely skinny thing
+body-build	0x14070d2a7	memory	0x141681cc0	is weak with little fat and just incredibly thin overall
+body-build	0x14070d2c0	memory	0x141681c88	has an extremely thin body packed with huge muscles
+body-build	0x14070d2d9	memory	0x141682278	is very muscular and incredibly thin
+body-build	0x14070d2f1	memory	0x141682258	is muscular and extremely thin
+body-build	0x14070d309	memory	0x141682238	is extremely thin and frail
+body-build	0x14070d322	memory	0x141682218	is very weak and extremely thin
+body-build	0x14070d33b	memory	0x1416821e8	is extremely thin with ill-defined muscles
+body-build	0x14070d354	memory	0x1416821a8	has an extremely thin frame underlying a massive lardy edifice
+body-build	0x14070d36d	memory	0x141682170	has an extremely thin frame with a lot of fat on it
+body-build	0x14070d385	memory	0x141682138	has an incredibly thin frame with some fat on it
+body-build	0x14070d39d	memory	0x141682100	has an extremely thin body with almost no fat on it
+body-build	0x14070d3b5	memory	0x1416820c8	has an extremely thin body with very litte fat on it
+body-build	0x14070d3cd	memory	0x141682098	has an incredibly thin body with little fat
+body-build	0x14070d3ea	memory	0x141682080	is incredibly thin
+body-build	0x14070d402	memory	0x141682040	has a very thin build buried underneath endless muscles and fat
+body-build	0x14070d41b	memory	0x141682000	would be very thin but has opted for some muscle and fat
+body-build	0x14070d433	memory	0x141681fc0	has a very thin, frail body without visible traces of fat
+body-build	0x14070d44b	memory	0x141681f88	is weak and has a very thin body with very little fat
+body-build	0x14070d464	memory	0x141682f28	is incredibly muscular and very thin
+body-build	0x14070d47d	memory	0x141682f08	is very muscular and thin
+body-build	0x14070d495	memory	0x141682ee8	is muscular and very thin
+body-build	0x14070d4ad	memory	0x141682ed0	is very thin and weak
+body-build	0x14070d4c6	memory	0x141682eb8	is weak and very thin
+body-build	0x14070d4df	memory	0x141682e90	is somewhat scrawny and very thin
+body-build	0x14070d4f8	memory	0x141682e58	would be very thin but bears an enormous lardy burden
+body-build	0x14070d511	memory	0x141682e30	has much fat on a very thin frame
+body-build	0x14070d529	memory	0x141682e00	has a very thin frame with a bit of fat on it
+body-build	0x14070d541	memory	0x141682dd0	has a very thin body with almost no fat on it
+body-build	0x14070d559	memory	0x141682da0	has a very thin frame with very little fat
+body-build	0x14070d571	memory	0x141682d78	has a very thin body with little fat
+body-build	0x14070d58b	memory	0x141682d68	is very thin
+body-build	0x14070d5a3	memory	0x141682d20	has a thin frame but it is loaded with muscles and great layers of fat
+body-build	0x14070d5bc	memory	0x141682cd8	has a generally thin build with some muscle and fat on it
+body-build	0x14070d5d4	memory	0x141682cb0	is thin, frail and incredibly skinny
+body-build	0x14070d5ec	memory	0x141683198	is thin, skinny and weak
+body-build	0x14070d605	memory	0x141683170	is thin but has incredible muscles
+body-build	0x14070d61e	memory	0x141683150	is thin and very muscular
+body-build	0x14070d630	memory	0x141683148	is wiry
+body-build	0x14070d648	memory	0x141683130	is thin and frail
+body-build	0x14070d661	memory	0x141683118	is thin and weak
+body-build	0x14070d67a	memory	0x141683100	is thin and scrawny
+body-build	0x14070d693	memory	0x1416830b0	has what was once a thin frame, now bearing enormous, thick layers of fat
+body-build	0x14070d6ac	memory	0x141683088	has a once-thin frame, now belarded
+body-build	0x14070d6c4	memory	0x141683060	has a thin frame with some fat on it
+body-build	0x14070d6dc	memory	0x141683030	has a thin body with almost no fat on it
+body-build	0x14070d6f4	memory	0x141683008	has a thin body with very little fat
+body-build	0x14070d70c	memory	0x141682fe8	has a thin body with little fat
+body-build	0x14070d723	memory	0x141682fe0	is thin
+body-build	0x14070d73b	memory	0x141682f90	is incredibly tall, layered with massive muscles and hanging sacks of lard
+body-build	0x14070d754	memory	0x141682f50	is incredibly tall with strong muscles and some fat
+body-build	0x14070d76c	memory	0x141682a70	is very frail with an extremely tall and skinny body
+body-build	0x14070d784	memory	0x141682a30	is incredibly tall and a bit skinny, with ill-defined muscles
+body-build	0x14070d79d	memory	0x141682a10	is incredibly tall and muscular
+body-build	0x14070d7b6	memory	0x1416829e8	is very muscular and extremely tall
+body-build	0x14070d7ce	memory	0x1416829c8	is muscular and incredibly tall
+body-build	0x14070d7e6	memory	0x1416829a0	is incredibly tall but has a frail body
+body-build	0x14070d7ff	memory	0x141682980	is incredibly tall yet weak
+body-build	0x14070d818	memory	0x141682960	is scrawny yet extremely tall
+body-build	0x14070d831	memory	0x141682940	is incredibly tall and fat
+body-build	0x14070d84a	memory	0x141682920	is very fat and extremely tall
+body-build	0x14070d862	memory	0x141682900	is fat and extremely tall
+body-build	0x14070d87a	memory	0x1416828e0	is incredibly tall and skinny
+body-build	0x14070d892	memory	0x1416828b8	is very skinny and even more tall
+body-build	0x14070d8aa	memory	0x141682898	is skinny and extremely tall
+body-build	0x14070d8c7	memory	0x141682880	is incredibly tall
+body-build	0x14070d8df	memory	0x141682848	is very tall with huge muscles and great lardy rolls
+body-build	0x14070d8f8	memory	0x141682c80	is very tall with plenty of muscle and fat
+body-build	0x14070d910	memory	0x141682c50	is very tall and skinny but also very weak
+body-build	0x14070d928	memory	0x141682c20	is weak and skinny but very tall overall
+body-build	0x14070d941	memory	0x141682c00	is very tall with huge muscles
+body-build	0x14070d95a	memory	0x141682be0	is very tall and muscular
+body-build	0x14070d972	memory	0x141682bc0	is muscular and very tall
+body-build	0x14070d98a	memory	0x141682ba8	is very tall yet frail
+body-build	0x14070d9a3	memory	0x141682b90	is very tall yet weak
+body-build	0x14070d9bc	memory	0x141682b70	is very tall yet somewhat weak
+body-build	0x14070d9d5	memory	0x141682b40	is very tall with a hanging apron of lard
+body-build	0x14070d9ee	memory	0x141682b28	is very tall and fat
+body-build	0x14070da06	memory	0x141682b10	is fat and very tall
+body-build	0x14070da1e	memory	0x141682ae8	is very tall and incredibly skinny
+body-build	0x14070da36	memory	0x141682ad0	is very tall and skinny
+body-build	0x14070da4e	memory	0x141682ab8	is skinny and very tall
+body-build	0x14070da68	memory	0x141682aa8	is very tall
+body-build	0x14070da80	memory	0x1416837c0	is very muscular, tall and obese
+body-build	0x14070da99	memory	0x1416837a0	is tall, muscular and fat
+body-build	0x14070dab1	memory	0x141683778	is tall, extremely skinny and frail
+body-build	0x14070dac9	memory	0x141683758	is tall, weak and skinny
+body-build	0x14070dae2	memory	0x141683728	has loaded a tall body with incredible muscles
+body-build	0x14070dafb	memory	0x141683708	is tall and very muscular
+body-build	0x14070db13	memory	0x1416836f0	is tall and muscular
+body-build	0x14070db2b	memory	0x1416836c8	is pretty tall but also very frail
+body-build	0x14070db44	memory	0x141683698	is tall but has quite ill-defined muscles
+body-build	0x14070db5d	memory	0x141683680	is tall and scrawny
+body-build	0x14070db76	memory	0x141683648	is tall and belarded by great hanging sacks of fat
+body-build	0x14070db8f	memory	0x141683630	is tall and very fat
+body-build	0x14070dba4	memory	0x141683620	is tall and fat
+body-build	0x14070dbbc	memory	0x141683600	is tall and incredibly skinny
+body-build	0x14070dbd4	memory	0x1416835e8	is tall and very skinny
+body-build	0x14070dbec	memory	0x1416835d0	is tall and skinny
+body-build	0x14070dc03	memory	0x141683a78	is tall
+body-build	0x14070dc1b	memory	0x141683a30	is incredibly long with impressive muscles and great sacks of lard
+body-build	0x14070dc34	memory	0x1416839f0	is extremely long with muscle and fat in equal measure
+body-build	0x14070dc4c	memory	0x1416839b8	is frail and really skinny but also extremely long
+body-build	0x14070dc64	memory	0x141683988	is incredibly long yet is also weak and skinny
+body-build	0x14070dc7d	memory	0x141683968	is incredibly long and muscular
+body-build	0x14070dc96	memory	0x141683940	is very muscular and incredibly long
+body-build	0x14070dcae	memory	0x141683920	is muscular and extremely long
+body-build	0x14070dcc6	memory	0x1416838f8	is very frail and incredibly long
+body-build	0x14070dcdf	memory	0x1416838d8	is weak and extremely long
+body-build	0x14070dcf8	memory	0x1416838b0	is somewhat weak and extremely long
+body-build	0x14070dd11	memory	0x141683870	is incredibly long, encapsulated in massive layers of lard
+body-build	0x14070dd2a	memory	0x141683850	is extremely long and very fat
+body-build	0x14070dd42	memory	0x141683830	is fat and incredibly long
+body-build	0x14070dd5a	memory	0x141683810	is incredibly long and skinny
+body-build	0x14070dd72	memory	0x1416837e8	is very skinny and extremely long
+body-build	0x14070dd8a	memory	0x1416833d8	is skinny and incredibly long
+body-build	0x14070dda7	memory	0x1416833c0	is incredibly long
+body-build	0x14070ddbf	memory	0x141683388	is extremely muscular and lardy and also very long
+body-build	0x14070ddd8	memory	0x141683368	is very long, muscular and fat
+body-build	0x14070ddf0	memory	0x141683340	has a very long body, frail and skinny
+body-build	0x14070de08	memory	0x141683308	is weak and skinny with a very long body overall
+body-build	0x14070de21	memory	0x1416832e0	is very long and incredibly muscular
+body-build	0x14070de3a	memory	0x1416832c0	is very long and muscular
+body-build	0x14070de52	memory	0x1416832a0	is muscular and very long
+body-build	0x14070de6a	memory	0x141683288	is very long and frail
+body-build	0x14070de83	memory	0x141683270	is weak and very long
+body-build	0x14070de9c	memory	0x141683250	is somewhat weak and very long
+body-build	0x14070deb5	memory	0x141683210	has a very long body that is beset by a morbid corpulence
+body-build	0x14070dece	memory	0x1416831f8	is very long and fat
+body-build	0x14070dee6	memory	0x1416831e0	is fat and very long
+body-build	0x14070defe	memory	0x1416831b8	is very long and incredibly skinny
+body-build	0x14070df16	memory	0x1416835b8	is very long and skinny
+body-build	0x14070df2e	memory	0x1416835a0	is skinny and very long
+body-build	0x14070df48	memory	0x141683590	is very long
+body-build	0x14070df60	memory	0x141683568	is extremely muscular, obese and long
+body-build	0x14070df79	memory	0x141683548	is long, muscular and fat
+body-build	0x14070df91	memory	0x141683518	has a frail body, long and incredibly skinny
+body-build	0x14070dfa9	memory	0x1416834f8	is long, weak and skinny
+body-build	0x14070dfc2	memory	0x1416834d0	has an incredibly muscular, long body
+body-build	0x14070dfdb	memory	0x1416834a8	is very muscular with a long body
+body-build	0x14070dff3	memory	0x141683490	is long and muscular
+body-build	0x14070e00b	memory	0x141683470	is long with a frail body
+body-build	0x14070e024	memory	0x141683458	is long but weak
+body-build	0x14070e03d	memory	0x141683440	is long and scrawny
+body-build	0x14070e056	memory	0x141683420	is long and incredibly fat
+body-build	0x14070e06f	memory	0x141683408	is long and very fat
+body-build	0x14070e084	memory	0x1416833f8	is fat and long
+body-build	0x14070e09c	memory	0x1416841b0	is long and incredibly skinny
+body-build	0x14070e0b4	memory	0x141684198	is long and very skinny
+body-build	0x14070e0cc	memory	0x141684180	is long and skinny
+body-build	0x14070e0e3	memory	0x141684178	is long
+body-build	0x14070e0fb	memory	0x141684120	is incredibly short yet has extremely strong muscles hidden under massive lardy rolls
+body-build	0x14070e114	memory	0x1416840d8	is muscular and fat yet at the same time incredibly short
+body-build	0x14070e12c	memory	0x1416840b0	is extremely short, weak and thin
+body-build	0x14070e144	memory	0x141684088	is weak, skinny and incredibly short
+body-build	0x14070e15d	memory	0x141684040	has put on an extreme amount of muscle, especially for one so short
+body-build	0x14070e176	memory	0x141684010	is very muscular and incredibly short
+body-build	0x14070e18e	memory	0x141683ff0	is muscular and extremely short
+body-build	0x14070e1a6	memory	0x141683fd0	is incredibly short and frail
+body-build	0x14070e1bf	memory	0x141683fb0	is weak and extremely short
+body-build	0x14070e1d8	memory	0x141683f88	is extremely short with little muscle
+body-build	0x14070e1f1	memory	0x141683f40	is incredibly short but somehow packs in an enormous amount of fat
+body-build	0x14070e20a	memory	0x141683f18	is very fat and extremely short
+body-build	0x14070e222	memory	0x141684440	is fat and incredibly short
+body-build	0x14070e23a	memory	0x141684420	is incredibly short and skinny
+body-build	0x14070e252	memory	0x1416843f8	is very skinny and extremely short
+body-build	0x14070e26a	memory	0x1416843d8	is skinny and incredibly short
+body-build	0x14070e287	memory	0x1416843c0	is incredibly short
+body-build	0x14070e29f	memory	0x141684370	is very short but covered with great amounts of lard and with huge muscles
+body-build	0x14070e2b8	memory	0x141684340	is very short yet muscular and fat
+body-build	0x14070e2d0	memory	0x141684310	is very short, very weak and very skinny
+body-build	0x14070e2e8	memory	0x1416842f0	is weak, skinny and very short
+body-build	0x14070e301	memory	0x1416842c0	packs enormous muscles on to a very short body
+body-build	0x14070e31a	memory	0x1416842a0	is very muscular and very short
+body-build	0x14070e332	memory	0x141684270	is very short with well-defined muscular
+body-build	0x14070e34a	memory	0x141684250	is very weak and very short
+body-build	0x14070e363	memory	0x141684230	is weak and really short
+body-build	0x14070e37c	memory	0x141684210	is somewhat weak and very short
+body-build	0x14070e395	memory	0x1416841d0	carries massive amounts of fat, especially for one so short
+body-build	0x14070e3ae	memory	0x141683c98	is very short and fat
+body-build	0x14070e3c6	memory	0x141683c80	is fat and very short
+body-build	0x14070e3de	memory	0x141683c58	is very short and incredibly skinny
+body-build	0x14070e3f6	memory	0x141683c38	is very short and skinny
+body-build	0x14070e40e	memory	0x141683c18	is skinny and very short
+body-build	0x14070e428	memory	0x141683c08	is very short
+body-build	0x14070e440	memory	0x141683bc0	is short yet layered with equal parts of giant muscles and lardy slabs
+body-build	0x14070e459	memory	0x141683b88	isn't very tall but makes up for it with muscle and fat
+body-build	0x14070e471	memory	0x141683b58	is short, very weak and incredibly skinny
+body-build	0x14070e489	memory	0x141683b38	is weak, short and skinny
+body-build	0x14070e4a2	memory	0x141683b10	isn't tall but has incredible muscles
+body-build	0x14070e4bb	memory	0x141683ae8	is short with well-defined muscles
+body-build	0x14070e4d3	memory	0x141683ad0	is short and muscular
+body-build	0x14070e4eb	memory	0x141683ab8	is short and very weak
+body-build	0x14070e504	memory	0x141683aa0	is weak and short
+body-build	0x14070e51d	memory	0x141683a80	is short and not very strong
+body-build	0x14070e536	memory	0x141683ef0	is short and just incredibly fat
+body-build	0x14070e54f	memory	0x141683ed8	is short and obese
+body-build	0x14070e567	memory	0x141683ec0	is short and fat
+body-build	0x14070e57f	memory	0x141683ea0	is short and incredibly skinny
+body-build	0x14070e597	memory	0x141683e80	is short and very skinny
+body-build	0x14070e5af	memory	0x141683e68	is short and skinny
+body-build	0x14070e5c9	memory	0x141683e58	is short
+body-build	0x14070e5e1	memory	0x141683e18	is as short as can be yet has great muscles and rolls of lard
+body-build	0x14070e5fa	memory	0x141683de8	is incredibly short, if muscular and fat
+body-build	0x14070e612	memory	0x141683dc0	is incredibly short, skinny and frail
+body-build	0x14070e62a	memory	0x141683d90	is weak and skinny as well as incredibly short
+body-build	0x14070e643	memory	0x141683d58	has an extremely short body that is incredibly muscular
+body-build	0x14070e65c	memory	0x141683d30	is very muscular if incredibly short
+body-build	0x14070e67e	memory	0x141683cf8	is as short as they come and very frail on top of that
+body-build	0x14070e697	memory	0x141683cd0	is weak as well as incredibly short
+body-build	0x14070e6b0	memory	0x141683cb0	is scrawny and extremely short
+body-build	0x14070e6c9	memory	0x141684b10	is incredibly short and bears massive lardy rolls
+body-build	0x14070e6e2	memory	0x141684ad0	has an incredibly short body but still manages to be very fat
+body-build	0x14070e70e	memory	0x141684aa8	is very skinny and even more short
+body-build	0x14070e72a	memory	0x141684a88	is skinny and extremely short
+body-build	0x14070e742	memory	0x141684a48	is very short yet impressively muscular and enormously fat
+body-build	0x14070e75b	memory	0x141684a10	is very short in length but muscular and fat as well
+body-build	0x14070e773	memory	0x1416849f0	is very short, weak and skinny
+body-build	0x14070e78b	memory	0x1416849c8	is weak and skinny and also very short
+body-build	0x14070e7a4	memory	0x141684998	carries great muscles on a very short body
+body-build	0x14070e7bd	memory	0x141684978	is very short and muscular
+body-build	0x14070e7d5	memory	0x141684958	is muscular and very short
+body-build	0x14070e7ed	memory	0x141684940	is very short and frail
+body-build	0x14070e806	memory	0x141684920	is very short and quite weak
+body-build	0x14070e81f	memory	0x1416848f8	is very short with ill-defined muscles
+body-build	0x14070e838	memory	0x1416848c0	has a very short body buttressed by rolls of lard
+body-build	0x14070e87e	memory	0x141684888	is short with great muscles and copious amounts of lard
+body-build	0x14070e897	memory	0x141684d08	is short in length but muscular and fat
+body-build	0x14070e8b9	memory	0x141684ce8	is weak, skinny and short
+body-build	0x14070e8d2	memory	0x141684cb8	is incredibly muscular if a little short
+body-build	0x14070e8eb	memory	0x141684c90	is very muscular with a short body
+body-build	0x14070e918	memory	0x141684c78	is short and weak
+body-build	0x14070e931	memory	0x141684c60	is short and scrawny
+body-build	0x14070e94a	memory	0x141684c40	is short and incredibly fat
+body-build	0x14070e963	memory	0x141684c28	is short and very fat
+body-build	0x14070e99e	memory	0x141684bf0	is strapped with massive amounts of muscle and lard
+body-build	0x14070e9b7	memory	0x141684bd8	is muscular and fat
+body-build	0x14070e9cf	memory	0x141684bb0	is very weak and incredibly skinny
+body-build	0x14070e9e7	memory	0x141684b98	is weak and skinny
+body-build	0x14070ea00	memory	0x141684b80	is incredibly muscular
+body-build	0x14070ea19	memory	0x141684b68	is very muscular
+body-build	0x14070ea2e	memory	0x141684b58	is muscular
+body-build	0x14070ea43	memory	0x141684b48	is very weak
+body-build	0x14070ea56	memory	0x141684648	is weak
+body-build	0x14070ea6c	memory	0x141684638	is scrawny
+body-build	0x14070ea82	memory	0x141684628	is corpulent
+body-build	0x14070ea98	memory	0x141684618	is very fat
+body-build	0x14070eaad	memory	0x141684610	is fat
+body-build	0x14070eac5	memory	0x1416845f8	is incredibly skinny
+body-build	0x14070eadd	memory	0x1416845e8	is very skinny
+body-build	0x14070eaf5	memory	0x1416845d8	is skinny
+body-build	0x14070eb12	memory	0x1416845c0	is average in size
+body-build	0x14070eb2a	memory	0x141684570	has a small build yet is strapped with massive amounts of muscle and lard
+body-build	0x14070eb43	memory	0x141684540	has a small build but is muscular and fat
+body-build	0x14070eb5b	memory	0x141684500	has a small build and is very weak and incredibly skinny
+body-build	0x14070eb73	memory	0x1416844d0	has a small build and is weak and skinny
+body-build	0x14070eb8c	memory	0x1416844a0	has incredible muscles over a small build
+body-build	0x14070eba5	memory	0x141684478	is very muscular yet has a small build
+body-build	0x14070ebbd	memory	0x141684460	is small yet muscular
+body-build	0x14070ebd5	memory	0x141684870	is very weak and small
+body-build	0x14070ebee	memory	0x141684858	is weak and small
+body-build	0x14070ec07	memory	0x141684840	is small and scrawny
+body-build	0x14070ec20	memory	0x141684808	packs massive amounts of fat on to a small build
+body-build	0x14070ec39	memory	0x1416847e0	has a small build but is very fat
+body-build	0x14070ec51	memory	0x1416847c8	is small and fat
+body-build	0x14070ec69	memory	0x1416847a0	is incredibly skinny with a small build
+body-build	0x14070ec81	memory	0x141684778	is very skinny with a small build
+body-build	0x14070ec99	memory	0x141684758	is skinny with a small build
+body-build	0x14070ecb3	memory	0x141684748	is small
+body-build	0x14070eccb	memory	0x141684710	is very small yet with huge slabs of lard and muscle
+body-build	0x14070ece4	memory	0x1416846d8	is muscular and fat yet has a very small overall build
+body-build	0x14070ecfc	memory	0x1416846b8	is very weak, skinny and small
+body-build	0x14070ed14	memory	0x141684698	is weak, skinny and very small
+body-build	0x14070ed2d	memory	0x141684670	is incredibly muscular for one so small
+body-build	0x14070ed46	memory	0x141684650	is very small yet very muscular
+body-build	0x14070ed5e	memory	0x141685140	is muscular and very small
+body-build	0x14070ed81	memory	0x141685128	is weak and very small
+body-build	0x14070ed9a	memory	0x141685100	is very small with ill-defined muscles
+body-build	0x14070edb3	memory	0x1416850d0	has a very small body bedecked with lardy rolls
+body-build	0x14070edcc	memory	0x1416850b8	is very small and fat
+body-build	0x14070ede4	memory	0x1416850a0	is fat and very small
+body-build	0x14070edfc	memory	0x141685078	is incredibly skinny and very small
+body-build	0x14070ee14	memory	0x141685058	is very small and skinny
+body-build	0x14070ee2c	memory	0x141685038	is skinny and very small
+body-build	0x14070ee46	memory	0x141685028	is very small
+body-build	0x14070ee5e	memory	0x141684ff8	is tiny yet incredibly muscular and lardy
+body-build	0x14070ee77	memory	0x141684fc8	is muscular and fat and very, very small
+body-build	0x14070ee8f	memory	0x141684f80	is incredibly small, weak and skinny, so as to be almost nothing
+body-build	0x14070eea7	memory	0x141684f58	is tiny, skinny and weak
+body-build	0x14070eec0	memory	0x141684f30	is a minuscule bundle of muscles
+body-build	0x14070eed9	memory	0x141684ef8	has an extremely small body but it is very muscular
+body-build	0x14070eef1	memory	0x141685328	is muscular yet with a incredibly small body overall
+body-build	0x14070ef09	memory	0x141685308	is tiny and utterly weak
+body-build	0x14070ef22	memory	0x1416852f0	is tiny and weak
+body-build	0x14070ef3b	memory	0x1416852c8	is tiny with ill-defined muscles
+body-build	0x14070ef54	memory	0x141685298	bears an enormous amount of fat for one so tiny
+body-build	0x14070ef6a	memory	0x141685280	is tiny yet very fat
+body-build	0x14070ef7c	memory	0x141685270	is fat yet tiny
+body-build	0x14070ef91	memory	0x141685238	is tiny overall and in particular incredibly skinny
+body-build	0x14070efa6	memory	0x141685208	is very skinny with an overall minuscule build
+body-build	0x14070efbb	memory	0x1416851e8	is incredibly small and skinny
+body-build	0x14070efcb	memory	0x1416851e0	is tiny
+appearance	0x14071247c	memory	0x141602568	[C:4:0:1]
+appearance	0x1407124ec	memory	0x1415eebd0	 are
+appearance	0x1407124f3	memory	0x141684e60	slightly swollen
+appearance	0x140712550	memory	0x1415e873c	 
+appearance	0x14071256b	memory	0x1416851b8	 is mangled beyond recognition.  
+appearance	0x14071258c	memory	0x1415e873c	 
+appearance	0x1407125a7	memory	0x1416851a8	 are spilled.  
+appearance	0x1407125c8	memory	0x141685198	 is gelded.  
+appearance	0x1407125e9	memory	0x1415e873c	 
+appearance	0x140712604	memory	0x141685170	 has been partially butchered.  
+appearance	0x14071262f	memory	0x1415e873c	 
+appearance	0x14071264a	memory	0x1415eebd8	 is
+appearance	0x140712660	memory	0x141685160	 broken.  
+appearance	0x14071267b	memory	0x1415e873c	 
+appearance	0x140712696	memory	0x1415eebd8	 is
+appearance	0x1407126ac	memory	0x141684e20	 fractured.  
+appearance	0x1407126cd	memory	0x1415e873c	 
+appearance	0x1407126e8	memory	0x141684e00	 has a compound fracture
+appearance	0x1407126f2	memory	0x141684de0	 have compound fractures
+appearance	0x140712705	memory	0x1415fd968	.  
+appearance	0x14071272a	memory	0x1415e873c	 
+appearance	0x140712745	memory	0x1415eebd8	 is
+appearance	0x14071275b	memory	0x1415e873c	 
+appearance	0x140712771	memory	0x141684dd0	cut open
+appearance	0x14071277e	memory	0x141684dc0	smashed open
+appearance	0x14071278b	memory	0x141684db0	broken open
+appearance	0x140712792	memory	0x141684da0	torn open
+appearance	0x1407127a5	memory	0x1415fd968	.  
+appearance	0x1407127ca	memory	0x1415e873c	 
+appearance	0x1407127e5	memory	0x1415eebd8	 is
+appearance	0x1407127fb	memory	0x1415e873c	 
+appearance	0x140712812	memory	0x141684d98	gouting
+appearance	0x140712820	memory	0x141684d90	gushing
+appearance	0x14071282e	memory	0x141684d80	spraying
+appearance	0x14071283c	memory	0x141684d70	running with
+appearance	0x140712845	memory	0x141684d60	dripping
+appearance	0x14071284f	memory	0x141684d54	oozing
+appearance	0x140712862	memory	0x1415e873c	 
+appearance	0x14071287d	memory	0x1415fd968	.  
+appearance	0x1407128a8	memory	0x1415e873c	 
+appearance	0x1407128c3	memory	0x1415eebd8	 is
+appearance	0x1407128d9	memory	0x141684d48	 dented.  
+appearance	0x140712908	memory	0x1415e873c	 
+appearance	0x140712923	memory	0x1415eebd8	 is
+appearance	0x140712939	memory	0x1415e873c	 
+appearance	0x140712965	memory	0x1415eeae8	bruised
+appearance	0x14071296e	memory	0x141684d38	frost-bitten
+appearance	0x140712977	memory	0x141662f88	burned
+appearance	0x140712980	memory	0x141684d30	melted
+appearance	0x140712989	memory	0x141684eec	boiled
+appearance	0x140712992	memory	0x141684ee4	frozen
+appearance	0x14071299b	memory	0x141684ed8	condensed
+appearance	0x1407129a4	memory	0x1415ee970	rotten
+appearance	0x1407129ad	memory	0x141684ec8	blistered
+appearance	0x1407129bc	memory	0x1415fd968	.  
+appearance	0x1407129eb	memory	0x1415e873c	 
+appearance	0x140712a06	memory	0x1415eebd8	 is
+appearance	0x140712a1c	memory	0x1415e873c	 
+appearance	0x140712a33	memory	0x141684eb0	completely swollen
+appearance	0x140712a41	memory	0x141684ea0	heavily swollen
+appearance	0x140712a4f	memory	0x141684e90	very swollen
+appearance	0x140712a5d	memory	0x141684e80	quite swollen
+appearance	0x140712a66	memory	0x141684e78	swollen
+appearance	0x140712a7c	memory	0x1415ee5e0	 with 
+appearance	0x140712a97	memory	0x1415fd968	.  
+appearance	0x140712ac3	memory	0x141684e58	[P]
+appearance	0x140712ad2	memory	0x141602430	[C:7:0:1]
+appearance	0x140712d14	memory	0x1415e873c	 
+appearance	0x140712d2f	memory	0x1415fd968	.  
+appearance	0x140713041	memory	0x1415e873c	 
+appearance	0x14071305c	memory	0x1415fd968	.  
+appearance	0x1407132cc	memory	0x1415e873c	 
+appearance	0x1407132e7	memory	0x1415fd968	.  
+appearance	0x1407133c5	memory	0x1415e873c	 
+appearance	0x1407133e0	memory	0x1415fd968	.  
+appearance	0x14071348f	memory	0x1415e873c	 
+appearance	0x1407134aa	memory	0x1415fd968	.  
+appearance	0x14071355d	memory	0x1415e873c	 
+appearance	0x140713578	memory	0x1415fd968	.  
+appearance	0x14071362e	memory	0x1415e873c	 
+appearance	0x140713649	memory	0x1415fd968	.  
+appearance	0x140713711	memory	0x141684e50	tall
+appearance	0x14071371b	memory	0x141684e48	short
+appearance	0x14071372b	memory	0x141684e40	broad
+appearance	0x140713735	memory	0x141684e38	narrow
+appearance	0x140713745	memory	0x141684e30	long
+appearance	0x14071374f	memory	0x141684e48	short
+appearance	0x14071375f	memory	0x141649e00	high
+appearance	0x140713769	memory	0x141649e08	low
+appearance	0x140713779	memory	0x141685608	close-set
+appearance	0x140713783	memory	0x1416855f8	wide-set
+appearance	0x140713793	memory	0x1416855e8	large-irised
+appearance	0x14071379d	memory	0x1416855d8	small-irised
+appearance	0x1407137ad	memory	0x1416855cc	sunken
+appearance	0x1407137b7	memory	0x1416855c0	protruding
+appearance	0x1407137c7	memory	0x1416855b0	wrinkled
+appearance	0x1407137d1	memory	0x1416855a8	smooth
+appearance	0x1407137e1	memory	0x1416855a0	convex
+appearance	0x1407137eb	memory	0x141685598	concave
+appearance	0x1407137fb	memory	0x14168558c	curly
+appearance	0x140713805	memory	0x141685580	straight
+appearance	0x140713815	memory	0x141685578	dense
+appearance	0x14071381f	memory	0x141685570	sparse
+appearance	0x14071382f	memory	0x141685568	thick
+appearance	0x140713839	memory	0x141685560	thin
+appearance	0x140713849	memory	0x1416856f0	upturned
+appearance	0x140713853	memory	0x1416856e4	hooked
+appearance	0x140713863	memory	0x1416856d8	splayed out
+appearance	0x14071386d	memory	0x1416856c8	flattened
+appearance	0x14071387d	memory	0x1416856b8	great-lobed
+appearance	0x140713887	memory	0x1416856a8	fuse-lobed
+appearance	0x140713897	memory	0x1416856a0	gapped
+appearance	0x1407138a1	memory	0x141685698	crowded
+appearance	0x1407138b1	memory	0x141685688	high-cheekboned
+appearance	0x1407138bb	memory	0x141685678	low-cheekboned
+appearance	0x1407138cb	memory	0x141685668	broad-chinned
+appearance	0x1407138d5	memory	0x141685658	narrow-chinned
+appearance	0x1407138fc	memory	0x141685648	jutting-chinned
+appearance	0x140713908	memory	0x141685638	recess-chinned
+appearance	0x14071392b	memory	0x141685628	square-chinned
+appearance	0x140713937	memory	0x141685618	round-chinned
+appearance	0x14071395a	memory	0x141685448	round
+appearance	0x140713966	memory	0x141684e38	narrow
+appearance	0x140713986	memory	0x141685440	greasy
+appearance	0x14071398f	memory	0x14168543c	dry
+appearance	0x1407139af	memory	0x141685430	deep-voiced
+appearance	0x1407139b8	memory	0x141685420	high-voiced
+appearance	0x1407139c4	memory	0x141685410	raspy-voiced
+appearance	0x1407139cd	memory	0x141685400	clear-voiced
+appearance	0x140713a48	memory	0x1415e873c	 
+appearance	0x140713a76	memory	0x1415e873c	 
+appearance	0x140713aa4	memory	0x1415e873c	 
+appearance	0x140713ab9	memory	0x1416853f0	body is 
+appearance	0x140713add	memory	0x1415fd968	.  
+appearance	0x140713b6a	memory	0x1416023a0	[C:5:0:1]
+appearance	0x140713bf3	memory	0x1415e873c	 
+appearance	0x140713c53	memory	0x1415edb24	's 
+appearance	0x140713c8c	memory	0x1416853e0	 is gone.  
+appearance	0x140713d0d	memory	0x141602430	[C:7:0:1]
+appearance	0x140713f9a	memory	0x1416860f8	has very high cheekbones
+appearance	0x14071415b	memory	0x1416860e0	has high cheekbones
+appearance	0x140714169	memory	0x1416860c8	has low cheekbones
+appearance	0x140714177	memory	0x1416860b0	has very low cheekbones
+appearance	0x1407141b4	memory	0x1416860a0	square chin
+appearance	0x1407141ce	memory	0x141686090	round chin
+appearance	0x1407141dc	memory	0x141686088	chin
+appearance	0x140714205	memory	0x141685c98	has a jutting
+appearance	0x14071421f	memory	0x141686078	has a massive
+appearance	0x140714234	memory	0x141686058	has a deeply recessed, broad
+appearance	0x140714240	memory	0x141685ce0	has a very broad
+appearance	0x14071425a	memory	0x141686040	has a narrow, jutting
+appearance	0x14071426f	memory	0x141686020	has a deeply recessed, narrow
+appearance	0x14071427b	memory	0x141685cb8	has a very narrow
+appearance	0x140714295	memory	0x141686008	has a broad, prominent
+appearance	0x1407142a7	memory	0x141685ff0	has a broad, recessed
+appearance	0x1407142b0	memory	0x141685cd0	has a broad
+appearance	0x1407142cb	memory	0x141685fd8	has a narrow, prominent
+appearance	0x1407142dd	memory	0x141685cf8	has a narrow, recessed
+appearance	0x1407142e6	memory	0x141685ca8	has a narrow
+appearance	0x1407142f4	memory	0x141685c88	has a prominent
+appearance	0x140714302	memory	0x141685c78	has a recessed
+appearance	0x140714310	memory	0x141685c60	has a deeply recessed
+appearance	0x14071432d	memory	0x1415e873c	 
+appearance	0x14071435c	memory	0x141685c48	has a square chin
+appearance	0x14071436b	memory	0x141685c30	has an angular chin
+appearance	0x14071437a	memory	0x141685c18	has a very round chin
+appearance	0x140714389	memory	0x141685c00	has a round chin
+appearance	0x1407143bf	memory	0x1415e873c	 
+appearance	0x1407143da	memory	0x14162853c	, and 
+appearance	0x1407143fe	memory	0x1415e873c	 
+appearance	0x14071441a	memory	0x1415e873c	 
+appearance	0x14071443b	memory	0x1415fd968	.  
+appearance	0x140714464	memory	0x1415e873c	 
+appearance	0x14071447f	memory	0x1415fd968	.  
+appearance	0x1407146ae	memory	0x141685f98	has a deep, guttural voice
+appearance	0x140714784	memory	0x141685f50	has a high-pitched, grating voice
+appearance	0x14071479a	memory	0x141685f78	has a high-pitched, clear voice
+appearance	0x1407147ac	memory	0x141685f38	has a clear, deep voice
+appearance	0x1407147c3	memory	0x141685f10	has a fairly deep and raspy voice
+appearance	0x1407147d5	memory	0x141685ef0	has a high squeaky voice
+appearance	0x1407147ec	memory	0x141685ed8	has a low, clear voice
+appearance	0x1407147fe	memory	0x141685ec0	has a high, clear voice
+appearance	0x14071480c	memory	0x141685ea8	has a very clear voice
+appearance	0x14071481a	memory	0x141685e90	has a clear voice
+appearance	0x140714828	memory	0x141685e70	has a grating, raspy voice
+appearance	0x140714836	memory	0x141685e58	has a scratchy voice
+appearance	0x140714845	memory	0x141685e38	has a very high-pitched voice
+appearance	0x140714854	memory	0x141685e20	has a high voice
+appearance	0x140714863	memory	0x141686128	has a very deep voice
+appearance	0x140714872	memory	0x141686118	has a low voice
+appearance	0x1407148a0	memory	0x1415e873c	 
+appearance	0x1407148c1	memory	0x1415fd968	.  
+appearance	0x140714add	memory	0x1415edb24	's 
+appearance	0x140714cb5	memory	0x1416853d0	extremely tall
+appearance	0x140714cc6	memory	0x141684e50	tall
+appearance	0x140714cd7	memory	0x1416853c0	somewhat tall
+appearance	0x140714ce8	memory	0x1416853b0	very short
+appearance	0x140714cf9	memory	0x141684e48	short
+appearance	0x140714d0e	memory	0x1416853a0	somewhat short
+appearance	0x140714d1e	memory	0x141684e50	tall
+appearance	0x140714d30	memory	0x141684e48	short
+appearance	0x140714d47	memory	0x141685388	extraordinarily broad
+appearance	0x140714d58	memory	0x141684e40	broad
+appearance	0x140714d69	memory	0x141685378	somewhat broad
+appearance	0x140714d7a	memory	0x141685360	extremely narrow
+appearance	0x140714d8b	memory	0x141684e38	narrow
+appearance	0x140714da0	memory	0x141685550	somewhat narrow
+appearance	0x140714db4	memory	0x141684e40	broad
+appearance	0x140714dcb	memory	0x141685540	extremely long
+appearance	0x140714ddc	memory	0x141685530	quite long
+appearance	0x140714ded	memory	0x141685520	somewhat long
+appearance	0x140714e02	memory	0x141685510	extremely short
+appearance	0x140714e16	memory	0x141684e30	long
+appearance	0x140714e2d	memory	0x141685500	incredibly high
+appearance	0x140714e3e	memory	0x141649e00	high
+appearance	0x140714e4f	memory	0x1416854f0	somewhat high
+appearance	0x140714e60	memory	0x1416854e0	extremely low
+appearance	0x140714e71	memory	0x141649e08	low
+appearance	0x140714e86	memory	0x1416854d0	slightly low
+appearance	0x140714e96	memory	0x141649e00	high
+appearance	0x140714ea8	memory	0x141649e08	low
+appearance	0x140714ebf	memory	0x1416854b8	incredibly close-set
+appearance	0x140714ed0	memory	0x141685608	close-set
+appearance	0x140714ee1	memory	0x1416854a0	slightly close-set
+appearance	0x140714ef2	memory	0x141685490	very wide-set
+appearance	0x140714f03	memory	0x1416855f8	wide-set
+appearance	0x140714f18	memory	0x141685478	slightly wide-set
+appearance	0x140714f28	memory	0x141685608	close-set
+appearance	0x140714f3a	memory	0x1416855f8	wide-set
+appearance	0x140714f51	memory	0x141685468	deeply sunken
+appearance	0x140714f62	memory	0x1416855cc	sunken
+appearance	0x140714f73	memory	0x141685458	slightly sunken
+appearance	0x140714f84	memory	0x141685450	bulging
+appearance	0x140714f95	memory	0x1416855c0	protruding
+appearance	0x140714faa	memory	0x141685aa8	slightly protruding
+appearance	0x140714fba	memory	0x1416855cc	sunken
+appearance	0x140714fcb	memory	0x141685450	bulging
+appearance	0x140714fdf	memory	0x1416855c0	protruding
+appearance	0x140714ff9	memory	0x141685a90	have very large irises
+appearance	0x14071501b	memory	0x141685a78	have large irises
+appearance	0x14071503d	memory	0x141685a58	have slightly large irises
+appearance	0x14071505f	memory	0x141685a40	have very thin irises
+appearance	0x140715081	memory	0x141685a28	have thin irises
+appearance	0x1407150a3	memory	0x141685a08	have slightly thin irises
+appearance	0x1407150cf	memory	0x1416859f0	very large-irised
+appearance	0x1407150e7	memory	0x1416855e8	large-irised
+appearance	0x1407150ff	memory	0x1416859d8	slightly large-irised
+appearance	0x140715117	memory	0x1416859c0	very thin-irised
+appearance	0x14071512f	memory	0x1416859b0	thin-irised
+appearance	0x14071514b	memory	0x141685998	slightly thin-irised
+appearance	0x140715163	memory	0x1416855e8	large-irised
+appearance	0x140715178	memory	0x1416859b0	thin-irised
+appearance	0x14071518f	memory	0x141685980	extremely wrinkled
+appearance	0x1407151a0	memory	0x1416855b0	wrinkled
+appearance	0x1407151b1	memory	0x141685968	slightly wrinkled
+appearance	0x1407151c2	memory	0x141685958	very smooth
+appearance	0x1407151d3	memory	0x1416855a8	smooth
+appearance	0x1407151e8	memory	0x141685948	slightly smooth
+appearance	0x1407151f8	memory	0x1416855b0	wrinkled
+appearance	0x14071520a	memory	0x1416855a8	smooth
+appearance	0x140715221	memory	0x141685bc4	coiled
+appearance	0x140715232	memory	0x14168558c	curly
+appearance	0x140715243	memory	0x141685bbc	wavy
+appearance	0x140715254	memory	0x141685ba8	incredibly straight
+appearance	0x140715268	memory	0x141685580	straight
+appearance	0x140715279	memory	0x141685bc4	coiled
+appearance	0x14071528a	memory	0x14168558c	curly
+appearance	0x14071529b	memory	0x141685bbc	wavy
+appearance	0x1407152b2	memory	0x141685b98	very convex
+appearance	0x1407152c3	memory	0x1416855a0	convex
+appearance	0x1407152d4	memory	0x141685b88	slightly convex
+appearance	0x1407152e5	memory	0x141685b70	incredibly concave
+appearance	0x1407152f6	memory	0x141685598	concave
+appearance	0x14071530b	memory	0x141685b58	somewhat concave
+appearance	0x14071531b	memory	0x1416855a0	convex
+appearance	0x14071532d	memory	0x141685598	concave
+appearance	0x140715344	memory	0x141685b48	extremely dense
+appearance	0x140715355	memory	0x141685b38	quite dense
+appearance	0x140715366	memory	0x141685b28	slightly dense
+appearance	0x140715377	memory	0x141685b10	extremely sparse
+appearance	0x140715388	memory	0x141685b00	quite sparse
+appearance	0x14071539d	memory	0x141685af0	slightly sparse
+appearance	0x1407153ad	memory	0x141685578	dense
+appearance	0x1407153bf	memory	0x141685570	sparse
+appearance	0x1407153d6	memory	0x141685ae0	very thick
+appearance	0x1407153e7	memory	0x141685568	thick
+appearance	0x1407153f8	memory	0x141685ad0	slightly thick
+appearance	0x140715409	memory	0x141685ac0	very thin
+appearance	0x14071541a	memory	0x141685560	thin
+appearance	0x14071542f	memory	0x141685848	somewhat thin
+appearance	0x14071543f	memory	0x141685568	thick
+appearance	0x140715451	memory	0x141685560	thin
+appearance	0x140715468	memory	0x141685830	incredibly upturned
+appearance	0x140715479	memory	0x1416856f0	upturned
+appearance	0x14071548a	memory	0x141685818	slightly upturned
+appearance	0x14071549b	memory	0x141685808	sharply hooked
+appearance	0x1407154ac	memory	0x1416856e4	hooked
+appearance	0x1407154c1	memory	0x1416857f8	slightly hooked
+appearance	0x1407154d1	memory	0x1416856f0	upturned
+appearance	0x1407154e3	memory	0x1416856e4	hooked
+appearance	0x1407154fa	memory	0x1416857e0	very splayed out
+appearance	0x14071550b	memory	0x1416856d8	splayed out
+appearance	0x14071551c	memory	0x1416857c8	somewhat splayed out
+appearance	0x14071552d	memory	0x1416857b8	very flattened
+appearance	0x14071553e	memory	0x1416856c8	flattened
+appearance	0x140715553	memory	0x1416857a0	slightly flattened
+appearance	0x140715563	memory	0x1416856d8	splayed out
+appearance	0x140715575	memory	0x1416856c8	flattened
+appearance	0x14071558f	memory	0x141685780	have great swinging lobes
+appearance	0x1407155b1	memory	0x141685760	have large hanging lobes
+appearance	0x1407155d3	memory	0x141685750	are free-lobed
+appearance	0x1407155f5	memory	0x141685740	are fuse-lobed
+appearance	0x140715617	memory	0x141685728	have nearly fused lobes
+appearance	0x14071563d	memory	0x141685710	have small lobes
+appearance	0x140715669	memory	0x1416856b8	great-lobed
+appearance	0x140715681	memory	0x141685700	hanging-lobed
+appearance	0x140715699	memory	0x141685938	free-lobed
+appearance	0x1407156b1	memory	0x1416856a8	fuse-lobed
+appearance	0x1407156c9	memory	0x141685920	nearly fuse-lobed
+appearance	0x1407156e5	memory	0x141685910	small-lobed
+appearance	0x1407156fd	memory	0x1416856b8	great-lobed
+appearance	0x14071570d	memory	0x141685938	free-lobed
+appearance	0x14071571e	memory	0x1416856a8	fuse-lobed
+appearance	0x140715733	memory	0x141685910	small-lobed
+appearance	0x140715744	memory	0x141685900	widely-spaced
+appearance	0x140715755	memory	0x1416856a0	gapped
+appearance	0x140715766	memory	0x1416858f8	tangled
+appearance	0x14071577b	memory	0x141685698	crowded
+appearance	0x140715792	memory	0x1416858e8	very round
+appearance	0x1407157a3	memory	0x141685448	round
+appearance	0x1407157b4	memory	0x1416858d0	slightly rounded
+appearance	0x1407157c9	memory	0x1416858c8	slit
+appearance	0x1407157d6	memory	0x141685448	round
+appearance	0x1407157e4	memory	0x1416858c8	slit
+appearance	0x1407157f1	memory	0x141684e38	narrow
+appearance	0x140715805	memory	0x141685440	greasy
+appearance	0x140715813	memory	0x1416858b8	somewhat greasy
+appearance	0x140715821	memory	0x1416858b0	crinkly
+appearance	0x14071582f	memory	0x141685440	greasy
+appearance	0x14071583d	memory	0x14168543c	dry
+appearance	0x140715a3e	memory	0x1416858a0	striped 
+appearance	0x140715aab	memory	0x1415e9110	 and 
+appearance	0x140715ac2	memory	0x1415e90d8	, 
+appearance	0x140715af4	memory	0x141685890	mottled 
+appearance	0x140715b6a	memory	0x1415e9110	 and 
+appearance	0x140715b81	memory	0x1415e90d8	, 
+appearance	0x140715be6	memory	0x1415ee5e0	 with 
+appearance	0x140715c5b	memory	0x1415e9110	 and 
+appearance	0x140715c73	memory	0x1415e90d8	, 
+appearance	0x140715ca2	memory	0x141685888	 spots
+appearance	0x140715d30	memory	0x1415e873c	 
+appearance	0x140715d49	memory	0x141685878	with a touch of
+appearance	0x140715d57	memory	0x141685868	with flecks of
+appearance	0x140715d63	memory	0x141685858	with some
+appearance	0x140715d6c	memory	0x141685fc8	mixed with
+appearance	0x140715d7c	memory	0x1415e873c	 
+appearance	0x140715e1b	memory	0x1415e9110	 and 
+appearance	0x140715e33	memory	0x1415e90d8	, 
+appearance	0x140715e5c	memory	0x141685fb8	 stripes
+appearance	0x140715e71	memory	0x141685890	mottled 
+appearance	0x140715ee0	memory	0x1415e9110	 and 
+appearance	0x140715ef8	memory	0x1415e90d8	, 
+appearance	0x140715f5c	memory	0x1415ee5e0	 with 
+appearance	0x140715fdb	memory	0x1415e9110	 and 
+appearance	0x140715ff3	memory	0x1415e90d8	, 
+appearance	0x140716026	memory	0x141685888	 spots
+appearance	0x1407160b3	memory	0x1415e873c	 
+appearance	0x1407160e1	memory	0x1415e873c	 
+appearance	0x14071610f	memory	0x1415e873c	 
+appearance	0x140716141	memory	0x1415e873c	 
+appearance	0x140716162	memory	0x1415e873c	 
+appearance	0x140716189	memory	0x141602420	is 
+appearance	0x140716198	memory	0x141662ebc	are 
+appearance	0x1407161c7	memory	0x1415fd968	.  
+appearance	0x1407163a2	memory	0x1415edb24	's 
+appearance	0x1407163fe	memory	0x1415e873c	 
+appearance	0x140716446	memory	0x141685540	extremely long
+appearance	0x140716465	memory	0x141685bf0	very long
+appearance	0x140716481	memory	0x141684e30	long
+appearance	0x140716497	memory	0x141685be0	medium-length
+appearance	0x1407164a3	memory	0x141684e48	short
+appearance	0x1407164ac	memory	0x1416853b0	very short
+appearance	0x1407164c1	memory	0x1415e873c	 
+appearance	0x1407164ec	memory	0x1415e873c	 
+appearance	0x14071650c	memory	0x141602420	is 
+appearance	0x14071651b	memory	0x141662ebc	are 
+appearance	0x140716549	memory	0x141685bd0	clean-shaven
+appearance	0x14071655b	memory	0x141685e18	stubble
+appearance	0x14071658f	memory	0x141685dc0	unkempt
+appearance	0x14071659e	memory	0x141685dc8	tied in a pony tail
+appearance	0x1407165ad	memory	0x141685de0	arranged in double braids
+appearance	0x1407165bc	memory	0x141685e00	braided
+appearance	0x1407165cb	memory	0x141685e08	neatly combed
+appearance	0x1407165e0	memory	0x1415fd968	.  
+appearance	0x14071665f	memory	0x141602440	[C:7:0:0]
+appearance	0x1407166e6	memory	0x1415e873c	 
+appearance	0x140716741	memory	0x141685db8	 bears
+appearance	0x140716750	memory	0x141685db0	 bear
+appearance	0x140716770	memory	0x141685d78	 the marks of numerous old wounds, the chief among them
+appearance	0x140716784	memory	0x141685d50	 the marks of old wounds, including
+appearance	0x140716799	memory	0x141685d4c	 a 
+appearance	0x1407167d1	memory	0x141685d30	very long 
+appearance	0x1407167e6	memory	0x141685d24	long 
+appearance	0x140716801	memory	0x141685d1c	short 
+appearance	0x140716819	memory	0x141685d10	very short 
+appearance	0x140716828	memory	0x1416862f8	tiny 
+appearance	0x140716837	memory	0x141685d40	massive 
+appearance	0x140716856	memory	0x1416862e8	curving scar.  
+appearance	0x140716868	memory	0x1416862d0	straight scar.  
+appearance	0x140716897	memory	0x1416862b8	very large 
+appearance	0x1407168ac	memory	0x14164a2c8	large 
+appearance	0x1407168c7	memory	0x1416862ac	small 
+appearance	0x1407168df	memory	0x1416862a0	very small 
+appearance	0x1407168ee	memory	0x1416862f8	tiny 
+appearance	0x1407168fd	memory	0x1416862c4	huge 
+appearance	0x140716912	memory	0x141686298	dent.  
+appearance	0x140716935	memory	0x141685d30	very long 
+appearance	0x14071694a	memory	0x141685d24	long 
+appearance	0x140716965	memory	0x141685d1c	short 
+appearance	0x14071697d	memory	0x141685d10	very short 
+appearance	0x14071698c	memory	0x1416862f8	tiny 
+appearance	0x14071699b	memory	0x141685d40	massive 
+appearance	0x1407169b0	memory	0x141686288	jagged scar.  
+appearance	0x140716a30	memory	0x141602430	[C:7:0:1]
+ghost	0x1413daa8f	memory	0x1417853d8	A murderous ghost.
+ghost	0x1413daaa1	memory	0x1417853c0	A sadistic ghost.
+ghost	0x1413daab3	memory	0x141785400	A violent ghost.
+ghost	0x1413daac2	memory	0x1417853f0	An angry ghost.
+ghost	0x1413daad1	memory	0x141785470	A moaning spirit returned from the dead.  It will generally trouble one unfortunate at a time.
+ghost	0x1413daae0	memory	0x141785420	A howling spirit.  The ceaseless noise is making sleep difficult.
+ghost	0x1413daaef	memory	0x1417851f8	A secretive poltergeist.
+ghost	0x1413daafe	memory	0x1417851d8	An energetic poltergeist.
+ghost	0x1413dab0d	memory	0x141785268	A troublesome poltergeist.
+ghost	0x1413dab1c	memory	0x141785220	A restless haunt, generally troubling past acquaintances and relatives.
+ghost	0x1413dab2b	memory	0x1417852d0	A forlorn haunt, seeking out known locations or drifting around the place of death.
+ghost	0x1413dab40	memory	0x141785288	  This spirit has not been properly memorialized or buried.
+anatomical-noun	0x14070c1b0	memory	0x141681050	body part
+anatomical-noun	0x14070c1f2	memory	0x141681050	body part
+subject-pronoun	0x140aa4746	memory	0x1416ceccc	he
+subject-pronoun	0x140aa4753	memory	0x1416cecc8	she
+subject-pronoun	0x140aa4762	memory	0x1415ee4d4	it
+possessive-pronoun	0x140aa4866	memory	0x1416ced18	his
+possessive-pronoun	0x140aa4871	memory	0x1416cecc0	her
+possessive-pronoun	0x140aa4878	memory	0x1415ee528	its

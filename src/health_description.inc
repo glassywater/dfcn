@@ -851,8 +851,13 @@ std::optional<std::string> Overlay::translate_health_description_block(
         if (subject_end == std::string_view::npos) return std::nullopt;
         const auto subject = sentence.substr(0, subject_end);
         if (subject != "She" && subject != "He" && subject != "It") return std::nullopt;
-        auto chinese_subject = translate_complete_mapping(subject);
-        if (!chinese_subject) return std::nullopt;
+        // PE 0x138089b..0x1380959 selects these three pronouns from sex,
+        // independently of the 48 attribute and 476 body-build branches.
+        // `It` is a Legends-scoped dictionary leaf, so the general literal
+        // index cannot supply it here. Resolve the native grammar directly,
+        // as the wound and feature clauses do, for every species and tier.
+        const std::string_view chinese_subject =
+            subject == "She" ? "她" : subject == "He" ? "他" : "它";
         sentence.remove_prefix(subject_end + 1);
         std::string translated;
         std::vector<size_t> positions;
@@ -860,7 +865,7 @@ std::optional<std::string> Overlay::translate_health_description_block(
             translated += text;
             positions.insert(positions.end(), text.size(), offset);
         };
-        append(*chinese_subject, 0);
+        append(chinese_subject, 0);
         if (!sentence.starts_with("is ") && !sentence.starts_with("isn't ") &&
             !sentence.starts_with("has ") && !sentence.starts_with("bears ") &&
             !sentence.starts_with("would ") && !sentence.starts_with("packs ") &&
