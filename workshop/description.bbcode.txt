@@ -50,6 +50,10 @@ GitHub Windows 运行包 [b]DFCN-Windows-x64-minimal.zip[/b] 整包解压到游�
 Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译各自名称和文明配置简介，生物与物品译文由 Dwarvemon 汉化数据提供。其余 18 个扩展的创意工坊项目维持私密。
 没有完整译文的模组名称及内容保留原文，用户自定义小队名称始终原样显示。扩展不修改原始模组 RAW 或世界规则。
 
+
+[h1]鼠标地图坐标[/h1]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3825218095]鼠标坐标模组[/url]在要塞模式显示 X、Y 坐标，支持图形与 ASCII 模式，可在 Shift+F1 菜单中开关。
+
 [h1]搜索与可选语义模型[/h1]
 
 已支持汉化搜索的界面可使用中文、英文、拼音全拼与首字母，并提供输入容错和物品类别匹配。

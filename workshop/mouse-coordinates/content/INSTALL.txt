@@ -6,7 +6,7 @@ DFCN：https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379
 
 Steam 创意工坊
 订阅并下载本模组后，由 DFCN 自动识别，无需在创建世界时启用。
-本模组：https://steamcommunity.com/sharedfiles/filedetails/?id=__WORKSHOP_ID__
+本模组：https://steamcommunity.com/sharedfiles/filedetails/?id=3825218095
 
 本地安装
 将包含 info.txt、dfcn-mouse-coordinates.toml 和 dfcn 文件夹的完整模组目录，
