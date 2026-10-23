@@ -97,9 +97,10 @@ static void native_mouse_coordinates_prepare() try {
     std::unique_lock<std::recursive_mutex> writer(g_native_dfhack_layer_mutex, std::try_to_lock);
     if (!writer.owns_lock()) return;
     const auto *gps = native_graphics_owner();
-    if (!gps || !gps->screen || !gps->main_viewport ||
+    const auto classic = native_ui_classic();
+    if (!classic || !gps || !gps->screen ||
             gps->dimx < 20 || gps->dimx > 1000 || gps->dimy < 5 || gps->dimy > 1000 ||
-            gps->viewport_zoom_factor < 4 || gps->viewport_zoom_factor > 4096 ||
+            gps->precise_mouse_x < 0 || gps->precise_mouse_y < 0 ||
             !g_native_help_layer.native_renderer || !g_native_help_layer.renderer ||
             native_dfhack_layer_write_active(gps) ||
             native_mouse_coordinates_occupied(*gps, gps->mouse_x, gps->mouse_y)) return;
@@ -119,19 +120,31 @@ static void native_mouse_coordinates_prepare() try {
             !native_history_copy(native_reference_address(base, 0x18a938c), bottom_mode) ||
             bottom_mode != -1) return;
     DfcnMouseCoordinatesFrame frame{};
-    // The native fortress painter (3e507e..3e512c) divides precise mouse
-    // pixels by (viewport_zoom_factor * 32 / 128), then adds window_x/y.
-    // This uses the game's already normalized pixels, including DPI/zoom.
-    frame.mouse_x = gps->precise_mouse_x;
-    frame.mouse_y = gps->precise_mouse_y;
-    frame.tile_width = frame.tile_height = gps->viewport_zoom_factor / 4;
-    const auto viewport = reinterpret_cast<uintptr_t>(gps->main_viewport);
     if (!native_history_copy(native_reference_address(base, 0x2374728), frame.camera_x) ||
             !native_history_copy(native_reference_address(base, 0x237472c), frame.camera_y) ||
-            !native_history_copy(viewport + 4, frame.viewport_width) ||
-            !native_history_copy(viewport + 8, frame.viewport_height) ||
             !native_history_copy(native_history_global(0x24e80dc), frame.map_width) ||
             !native_history_copy(native_history_global(0x24e80e0), frame.map_height)) return;
+    if (*classic) {
+        // Native 3e50b9..3e50f1 uses the mouse's character-cell offsets and
+        // the UI grid dimensions in ASCII mode. The game already accounts
+        // for the font's separate width/height, scaling and window offsets.
+        frame.mouse_x = gps->mouse_x;
+        frame.mouse_y = gps->mouse_y;
+        frame.tile_width = frame.tile_height = 1;
+        frame.viewport_width = gps->dimx;
+        frame.viewport_height = gps->dimy;
+    } else {
+        // Native 3e507e..3e50a5 divides precise pixels by the graphical map
+        // tile size; 3e50f3..3e5120 bounds them against main_viewport.
+        if (!gps->main_viewport || gps->viewport_zoom_factor < 4 ||
+                gps->viewport_zoom_factor > 4096) return;
+        frame.mouse_x = gps->precise_mouse_x;
+        frame.mouse_y = gps->precise_mouse_y;
+        frame.tile_width = frame.tile_height = gps->viewport_zoom_factor / 4;
+        const auto viewport = reinterpret_cast<uintptr_t>(gps->main_viewport);
+        if (!native_history_copy(viewport + 4, frame.viewport_width) ||
+                !native_history_copy(viewport + 8, frame.viewport_height)) return;
+    }
     DfcnMouseCoordinatesLabel label{};
     if (!g_mouse_coordinates_api->describe(&frame, &label) || !label.length ||
             label.length >= sizeof(label.text)) return;
