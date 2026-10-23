@@ -4620,3 +4620,4 @@ static bool uninstall_native_caption_hooks() {
     reset_native_caption_capture();
     return true;
 }
+
