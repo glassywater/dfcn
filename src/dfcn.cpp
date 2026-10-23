@@ -30322,9 +30322,9 @@ std::optional<std::string> Overlay::translate_creature_material_qualifier(
 }
 
 // Ammunition uses the same material qualifier as other manufactured items.
-// Type recognition comes from the existing TOML namespace; data/runtime/translations.tsv
-// may override that type, but no code-local noun/material glossary competes
-// with either table. Match a COMPLETE suffix, including future multiword types.
+// Type recognition and translation share the ammunition TOML namespace.
+// Generic literals also contain procedural-name senses, so they cannot
+// override a proved ammo type. Match a COMPLETE suffix, including multiword types.
 static std::optional<AmmunitionNameParts> split_ammunition_item_name(
         std::string_view source) {
     source = trim_view(source);
@@ -30357,8 +30357,7 @@ static std::optional<std::string> translate_ammunition_item_name(
         std::string_view source) {
     const auto parts = split_ammunition_item_name(source);
     if (!parts) return std::nullopt;
-    std::string target = overlay_exact_literal_translation(parts->noun)
-        .value_or(parts->translated_noun);
+    std::string target = parts->translated_noun;
     if (!parts->marker.empty()) {
         const auto marker = overlay_exact_literal_translation(parts->marker);
         if (!marker) return std::nullopt;
