@@ -90,11 +90,12 @@ Windows 工坊包和四个公开扩展 ZIP，不编译或生成数据。
 ## Linux 交叉编译 Windows x64
 
 显式构建 Windows DLL 时使用根目录 `build-windows-cross.sh`。它使用 Linux 上运行的
-MinGW-w64 编译器，输出 `build/windows-x64/dfcn_core.dll` 和
-`build/windows-x64/dfhooks_dfcn.dll`，不向游戏目录部署。日常本机构建继续使用
+MinGW-w64 编译器，输出 `build/windows-x64/dfcn_core.dll`、
+`build/windows-x64/dfhooks_dfcn.dll` 和独立鼠标坐标模块
+`build/windows-x64/dfcn_mouse_coordinates.dll`，默认不向游戏目录部署。日常本机构建继续使用
 `build-deploy.sh` / `build-deploy.ps1`。
 
-需要同时把两个 Windows DLL 部署到当前项目根目录时，执行
+需要同时把这些 Windows DLL 部署到当前项目根目录时，执行
 `build-windows-cross.sh --deploy-project`。构建目录仍保留同一次编译的产物，
 已有词表、规则和其他运行数据原地使用；此选项不会写入 Linux `.so` 或游戏引导文件。
 

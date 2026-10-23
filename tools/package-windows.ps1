@@ -25,7 +25,7 @@ $archiveStream = $null
 $entryCount = 0
 
 function Add-RuntimeFile([string] $source, [string] $entryName) {
-    if ($entryName -in @('dfcn/dfcn_core.dll', 'dfcn/dfhooks_dfcn.dll')) {
+    if ($entryName -in @('dfcn/dfcn_core.dll', 'dfcn/dfhooks_dfcn.dll', 'dfcn/dfcn_mouse_coordinates.dll')) {
         $strippedPath = Join-Path $script:binaryStagingRoot ([IO.Path]::GetFileName($source))
         Write-StrippedWindowsLibrary $source $strippedPath
         $source = $strippedPath
@@ -64,7 +64,7 @@ try {
     Add-RuntimeFile (Join-Path $projectRoot 'workshop/content/CHANGELOG.txt') 'CHANGELOG.txt'
     Add-RuntimeFile (Join-Path $projectRoot 'docs/translation-extensions.zh-CN.md') 'dfcn/docs/translation-extensions.zh-CN.md'
     foreach ($name in @(
-        'dfcn_core.dll', 'dfhooks_dfcn.dll', 'data/runtime/config.ini',
+        'dfcn_core.dll', 'dfhooks_dfcn.dll', 'dfcn_mouse_coordinates.dll', 'data/runtime/config.ini',
         'data/runtime/native-addresses/pe-seed.bin',
         'data/runtime/translations.tsv', 'data/runtime/name-editor.tsv',
         'data/runtime/instrument-translations.tsv', 'data/runtime/procedural-terms.tsv',

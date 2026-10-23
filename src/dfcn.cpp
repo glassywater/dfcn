@@ -8134,6 +8134,15 @@ void Overlay::toggle_native_language() {
 
 #include "dfhack_menu_dispatch.inc"
 
+static bool native_mouse_coordinates_available();
+static bool native_mouse_coordinates_enabled();
+static void native_mouse_coordinates_toggle();
+static void native_mouse_coordinates_load();
+static void native_mouse_coordinates_prepare();
+static void native_mouse_coordinates_present(SDL_Renderer *renderer);
+static void native_mouse_coordinates_reset();
+static void native_mouse_coordinates_release();
+
 void Overlay::run_settings_menu_action(int action) {
     switch (action) {
     case 0: toggle_translation(); break;
@@ -8150,6 +8159,7 @@ void Overlay::run_settings_menu_action(int action) {
                 SDL_HINT_OVERRIDE) != SDL_TRUE)
             log_line("ERROR", "Settings menu: cannot request core reload");
         break;
+    case 6: native_mouse_coordinates_toggle(); break;
     }
 }
 
@@ -44362,6 +44372,7 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         apply_pending_arena_translated_search();
         boundary.checkpoint("arena_search");
         g_overlay.render(renderer);
+        native_mouse_coordinates_present(renderer);
         if (native_worldgen_main_view(native_graphics())) {
             native_worldgen_present_layer(renderer, [](SDL_Renderer *worldgen_renderer) {
                 g_overlay.render_native_worldgen_layer(worldgen_renderer);
@@ -44481,6 +44492,7 @@ static void native_settings_menu_release();
 #include "native_hooks.inc"
 #include "native_blueprint_export.inc"
 #include "native_settings_menu.inc"
+#include "native_mouse_coordinates.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
 #include "adventure_home_translation.inc"
@@ -44521,6 +44533,7 @@ DFCN_EXPORT void dfhooks_init() {
         return;
     }
     dfcn::start_native_identity_translation_jobs();
+    dfcn::native_mouse_coordinates_load();
     if (!dfcn::install_sdl_hooks()) {
         dfcn::stop_reloadable_core();
         return;
