@@ -66,9 +66,50 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
     for (size_t index = 0; index < g_native_tooltip_frames.size(); ++index) {
         const auto &frame = g_native_tooltip_frames[index];
         const auto &box = frame.bounds;
-        if (box.x < 0 || box.y < 0 || box.w <= 0 || box.h <= 0 ||
-                box.x > gps_->dimx - box.w || box.y > gps_->dimy - box.h ||
+        if (!native_tooltip_valid_bounds(*gps_, box) ||
                 frame.rows.size() != static_cast<size_t>(box.h)) continue;
+        auto visible = frame;
+        visible.rows = frame.glyph_rows;
+        if (visible.rows.size() != static_cast<size_t>(box.h)) continue;
+        bool visible_text = false;
+        for (size_t y = 0; y < visible.rows.size(); ++y) {
+            auto &row = visible.rows[y];
+            if (row.size() != static_cast<size_t>(box.w)) { row.assign(box.w, ' '); continue; }
+            for (size_t x = 0; x < row.size(); ++x) {
+                if (row[x] == ' ') continue;
+                const int column = box.x + static_cast<int>(x);
+                const int line = box.y + static_cast<int>(y);
+                bool covered = std::any_of(frame.occlusions.begin(), frame.occlusions.end(),
+                    [&](const SDL_Rect &clip) {
+                        return column >= clip.x && column < clip.x + clip.w &&
+                            line >= clip.y && line < clip.y + clip.h;
+                    });
+                for (size_t higher = index + 1; !covered && higher < layer.frames.size(); ++higher) {
+                    const auto &front = layer.frames[higher];
+                    if (column >= front.x && column < front.x + front.w &&
+                            line >= front.y && line < front.y + front.h) { covered = true; break; }
+                }
+                const auto ch = static_cast<unsigned char>(row[x]);
+                if (covered || !native_tooltip_source_cell(*gps_, column, line, ch))
+                    row[x] = ' ';
+                else visible_text = true;
+            }
+        }
+        if (!visible_text) continue;
+        const auto mask_source = [&](const Match &match) {
+            Match mask = match;
+            mask.native_source = std::string(native_match_source(match));
+            for (size_t offset = 0; offset < mask.native_source->size(); ++offset) {
+                const int x = match.x + static_cast<int>(offset) - box.x;
+                const int y = match.y - box.y;
+                if (x < 0 || x >= box.w || y < 0 || y >= box.h)
+                    (*mask.native_source)[offset] = ' ';
+                else
+                    (*mask.native_source)[offset] =
+                        visible.rows[static_cast<size_t>(y)][static_cast<size_t>(x)];
+            }
+            source_matches.push_back(std::move(mask));
+        };
         if (frame.adventure_background) {
             // The retained native document and its private writer own this
             // card. No border discovery, page glyph proof or generic tooltip
@@ -118,9 +159,13 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
                 Match match{x, y, static_cast<int>(source.size()),
                     kToolbarTooltipBodyRule, owner ? target : std::string{}, std::string(source)};
                 owner = false;
-                const auto *cell = gps_->screen +
-                    (static_cast<size_t>(x) * gps_->dimy + y) * 8;
-                match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                for (size_t offset = 0; offset < source.size(); ++offset)
+                    if (const auto *cell = native_tooltip_source_cell(*gps_,
+                            x + static_cast<int>(offset), y,
+                            static_cast<unsigned char>(source[offset]))) {
+                        match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                        break;
+                    }
                 match.layout_left = true;
                 prepared_matches_.push_back(std::move(match));
             }
@@ -130,73 +175,51 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
             for (auto &match : prepared_matches_) {
                 match.graphical_clear_width = match.graphical_clear_height = 0;
                 match.graphical_auto_foreground = false;
-                source_matches.push_back(match);
+                mask_source(match);
             }
             text.push_back({index, std::move(g_native_toolbar_tooltip),
                 std::move(prepared_matches_)});
             continue;
         }
-        auto visible = frame;
-        bool visible_text = false;
-        for (size_t y = 0; y < visible.rows.size(); ++y) {
-            auto &row = visible.rows[y];
-            if (row.size() != static_cast<size_t>(box.w)) { row.assign(box.w, ' '); continue; }
-            for (size_t x = 0; x < row.size(); ++x) {
-                if (row[x] == ' ') continue;
-                const int column = box.x + static_cast<int>(x);
-                const int line = box.y + static_cast<int>(y);
-                bool covered = std::any_of(frame.occlusions.begin(), frame.occlusions.end(),
-                    [&](const SDL_Rect &clip) {
-                        return column >= clip.x && column < clip.x + clip.w &&
-                            line >= clip.y && line < clip.y + clip.h;
-                    });
-                for (size_t higher = index + 1; !covered && higher < layer.frames.size(); ++higher) {
-                    const auto &front = layer.frames[higher];
-                    if (column >= front.x && column < front.x + front.w &&
-                            line >= front.y && line < front.y + front.h) { covered = true; break; }
-                }
-                const auto ch = static_cast<unsigned char>(row[x]);
-                if (covered || !native_tooltip_source_cell(*gps_, column, line, ch))
-                    row[x] = ' ';
-                else visible_text = true;
-            }
-        }
-        // Translation is entered only here, for text this producer actually
-        // submitted and which remains visible. No screen-sized text grid,
-        // background snapshot or catalogue discovery participates in this pass.
-        if (!visible_text) continue;
-        const auto visible_draw = [&](const NativeDrawnTextRow &draw, bool top_layer) {
+        // Translation uses the complete producer-owned document. Visibility
+        // selects source glyphs to mask, never the bytes used for lookup.
+        const auto submitted_draw = [&](const NativeDrawnTextRow &draw, bool top_layer) {
             if (draw.source.empty() || draw.draw_grid !=
                     (top_layer ? gps_->screen_top : gps_->screen) ||
                     draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
                     draw.x < box.x || draw.x >= box.x + box.w ||
                     draw.y < box.y || draw.y >= box.y + box.h ||
                     draw.source.size() > static_cast<size_t>(box.x + box.w - draw.x)) return false;
-            return visible.rows[static_cast<size_t>(draw.y - box.y)].compare(
+            return frame.rows[static_cast<size_t>(draw.y - box.y)].compare(
                 static_cast<size_t>(draw.x - box.x), draw.source.size(), draw.source) == 0;
         };
         bool authored = false;
         for (bool top_layer : {false, true})
             for (const auto &draw : captured_native_drawn_text_view(top_layer))
-                if (draw.squad_alias_target && visible_draw(draw, top_layer)) authored = true;
+                if (draw.squad_alias_target && submitted_draw(draw, top_layer)) authored = true;
         prepared_matches_.clear();
         // A proven authored field cannot become catalogue prose. Its actual
         // visible bytes retain their original spelling and UTF-8 display.
-        append_toolbar_tooltip_matches(visible, prepared_matches_, authored);
+        append_toolbar_tooltip_matches(frame, prepared_matches_, authored);
         layout_toolbar_tooltip(renderer);
         for (bool top_layer : {false, true})
             for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
                 if ((!draw.squad_alias_target &&
                         (!draw.unit_identity_target || draw.unit_identity_ready)) ||
-                        draw.editable_text || !visible_draw(draw, top_layer)) continue;
+                        draw.editable_text || !submitted_draw(draw, top_layer)) continue;
                 const auto *screen = top_layer ? gps_->screen_top : gps_->screen;
                 if (!screen) continue;
-                bool same_source = true;
-                for (size_t offset = 0; same_source && offset < draw.source.size(); ++offset)
-                    same_source = native_tooltip_glyph_at(*gps_,
-                        draw.x + static_cast<int>(offset), draw.y,
-                        static_cast<unsigned char>(draw.source[offset]), top_layer);
-                if (!same_source) continue;
+                const auto &visible_row = visible.rows[static_cast<size_t>(draw.y - box.y)];
+                bool visible_identity = false;
+                for (size_t offset = 0; offset < draw.source.size(); ++offset)
+                    if (draw.source[offset] != ' ' &&
+                            visible_row[static_cast<size_t>(draw.x - box.x) + offset] == draw.source[offset] &&
+                            native_tooltip_glyph_at(*gps_, draw.x + static_cast<int>(offset), draw.y,
+                                static_cast<unsigned char>(draw.source[offset]), top_layer)) {
+                        visible_identity = true;
+                        break;
+                    }
+                if (!visible_identity) continue;
                 const int right = draw.x + static_cast<int>(draw.source.size());
                 std::erase_if(prepared_matches_, [&](const Match &match) {
                     return match.y == draw.y && match.x < right &&
@@ -210,8 +233,10 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
                 if (draw.squad_alias_target) {
                     identity.layout_left = true;
                     identity.layout_x = draw.x;
+                    identity.layout_y = draw.y;
                     identity.layout_length = identity.length;
                     identity.layout_clip_right = draw.x + identity.length;
+                    identity.layout_prepared = true;
                     auto result = TranslationResult::translated(draw.source,
                         *draw.squad_alias_target, "squad.alias");
                     result.status = TranslationStatus::PreservedAuthored;
@@ -223,7 +248,7 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
         for (auto &match : prepared_matches_) {
             match.graphical_clear_width = match.graphical_clear_height = 0;
             match.graphical_auto_foreground = false;
-            source_matches.push_back(match);
+            mask_source(match);
         }
         text.push_back({index, std::move(g_native_toolbar_tooltip),
             std::move(prepared_matches_)});
@@ -231,6 +256,7 @@ void Overlay::render_native_tooltip_layer(SDL_Renderer *renderer) {
 
     // All source masking happens inside the private arrays before any native
     // background, border or anchored artwork is painted. No readback is needed.
+    g_native_toolbar_tooltip.reset();
     prepared_matches_ = std::move(source_matches);
     native_ui_paint_grid(layer, renderer, prepared_matches_);
     for (auto &document : text) {

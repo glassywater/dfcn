@@ -52,10 +52,8 @@ static bool native_tooltip_begin_draw(NativeTooltipWidgetFrame &frame) {
                 !g_native_help_layer.native_renderer ||
                 !g_native_help_layer.renderer || gps->dimx <= 0 || gps->dimx > 1000 ||
                 gps->dimy <= 0 || gps->dimy > 1000 || frame.dimx != gps->dimx ||
-                frame.dimy != gps->dimy || frame.bounds.x < 0 || frame.bounds.y < 0 ||
-                frame.bounds.w <= 0 || frame.bounds.h <= 0 ||
-                frame.bounds.x > gps->dimx - frame.bounds.w ||
-                frame.bounds.y > gps->dimy - frame.bounds.h) return false;
+                frame.dimy != gps->dimy ||
+                !native_tooltip_valid_bounds(*gps, frame.bounds)) return false;
         if (layer.ready && (layer.foreground.dimx != gps->dimx ||
                 layer.foreground.dimy != gps->dimy)) return false;
         // Refresh the current cursor, clipping and palette even when another
@@ -68,15 +66,7 @@ static bool native_tooltip_begin_draw(NativeTooltipWidgetFrame &frame) {
         g_native_tooltip_frames.reserve(g_native_tooltip_frames.size() + 1);
         g_native_tooltip_write_bounds.reserve(g_native_tooltip_write_bounds.size() + 1);
         const auto &box = frame.bounds;
-        const int left = std::max<long>(box.x, gps->clipx[0]);
-        const int right = static_cast<int>(std::min<int64_t>(
-            int64_t(box.x) + box.w, int64_t(gps->clipx[1]) + 1));
-        const int top = std::max<long>(box.y, gps->clipy[0]);
-        const int bottom = static_cast<int>(std::min<int64_t>(
-            int64_t(box.y) + box.h, int64_t(gps->clipy[1]) + 1));
-        const SDL_Rect visible = right > left && bottom > top
-            ? SDL_Rect{left, top, right - left, bottom - top}
-            : SDL_Rect{box.x, box.y, 0, 0};
+        const SDL_Rect visible = native_tooltip_visible_bounds(*gps, box);
         frame.occlusions.reserve(frame.occlusions.size() + 4);
         if (visible.w <= 0 || visible.h <= 0) frame.occlusions.push_back(box);
         else {
@@ -97,17 +87,17 @@ static bool native_tooltip_begin_draw(NativeTooltipWidgetFrame &frame) {
             gps, *layer.foreground.graphics());
         // Restrict only this temporary native output. The binding preserves
         // the parent's complete cursor and clip state for its continuation.
-        gps->clipx[0] = left;
-        gps->clipx[1] = static_cast<long>(right) - 1;
-        gps->clipy[0] = top;
-        gps->clipy[1] = static_cast<long>(bottom) - 1;
+        gps->clipx[0] = visible.x;
+        gps->clipx[1] = static_cast<long>(visible.x) + visible.w - 1;
+        gps->clipy[0] = visible.y;
+        gps->clipy[1] = static_cast<long>(visible.y) + visible.h - 1;
         layer.native_renderer = g_native_help_layer.native_renderer;
         layer.renderer = g_native_help_layer.renderer;
         frame.isolated = true;
         frame.grid_identity = gps->screen;
         frame.page.reset();
         frame.document.reset();
-        g_native_tooltip_write_bounds.push_back(box);
+        g_native_tooltip_write_bounds.push_back(visible);
         g_native_tooltip_draw_bounds = visible;
         g_native_tooltip_captions = std::move(captions);
         g_native_tooltip_output = std::move(output);

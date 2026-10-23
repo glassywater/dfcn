@@ -2769,6 +2769,7 @@ struct NativeTooltipWidgetFrame {
     int dimx = 0, dimy = 0;
     uint64_t epoch = 0;
     std::vector<std::string> rows;
+    std::vector<std::string> glyph_rows;
     std::string body_source;
     bool top_layer = false;
     bool isolated = false;
@@ -2780,6 +2781,30 @@ struct NativeTooltipWidgetFrame {
     std::shared_ptr<NativeTooltipPage> document;
     std::vector<SDL_Rect> occlusions;
 };
+// A tooltip owns its complete document even when only part of its native
+// rectangle reaches the screen. Keep allocation limits separate from the
+// physical output intersection; neither clipping edge changes its identity.
+static bool native_tooltip_valid_bounds(const graphicst &gps, const SDL_Rect &box) {
+    return gps.dimx > 0 && gps.dimx <= 1000 && gps.dimy > 0 && gps.dimy <= 1000 &&
+        box.w > 0 && box.w <= 1004 && box.h > 0 && box.h <= 1004 &&
+        box.x > -box.w && box.x < gps.dimx &&
+        box.y > -box.h && box.y < gps.dimy;
+}
+static SDL_Rect native_tooltip_visible_bounds(const graphicst &gps, const SDL_Rect &box) {
+    const auto horizontal = [&](int64_t value) {
+        return static_cast<int>(std::clamp<int64_t>(value, 0, gps.dimx));
+    };
+    const auto vertical = [&](int64_t value) {
+        return static_cast<int>(std::clamp<int64_t>(value, 0, gps.dimy));
+    };
+    const int left = horizontal(std::max<int64_t>(box.x, gps.clipx[0]));
+    const int right = horizontal(std::min<int64_t>(
+        int64_t(box.x) + box.w, int64_t(gps.clipx[1]) + 1));
+    const int top = vertical(std::max<int64_t>(box.y, gps.clipy[0]));
+    const int bottom = vertical(std::min<int64_t>(
+        int64_t(box.y) + box.h, int64_t(gps.clipy[1]) + 1));
+    return {left, top, std::max(0, right - left), std::max(0, bottom - top)};
+}
 static bool native_tooltip_begin_draw(NativeTooltipWidgetFrame &frame);
 static void native_tooltip_end_draw(NativeTooltipWidgetFrame &frame);
 static void native_tooltip_restore_output();
@@ -42441,14 +42466,20 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         }
     }
 
-    const int text_x = match.layout_x >= 0 ? match.layout_x : match.x;
+    // A tooltip can retain a measured text origin beyond the viewport. Its
+    // negative coordinates are real positions, not the generic unset marker.
+    const bool tooltip_layout = match.layout_prepared &&
+        (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
+            (g_native_tooltip_widget_frame && g_native_tooltip_widget_frame->isolated &&
+                g_native_tooltip_widget_frame->grid_identity == gps_->screen));
+    const int text_x = tooltip_layout || match.layout_x >= 0 ? match.layout_x : match.x;
     const bool native_baseline = match.native_split_text && !match.layout_fixed_baseline;
     const int text_y = native_baseline ? match.native_split_top_y
-        : (match.layout_y >= 0 ? match.layout_y : match.y);
+        : (tooltip_layout || match.layout_y >= 0 ? match.layout_y : match.y);
     const int pixel_y = native_baseline ? tile_h / 2 : match.layout_pixel_y;
     const int text_length = match.layout_length > 0 ? match.layout_length : match.length;
     const bool exact_pixel_box =
-        match.layout_box_pixel_x >= 0 && match.layout_box_pixel_width > 0;
+        (tooltip_layout || match.layout_box_pixel_x >= 0) && match.layout_box_pixel_width > 0;
     const int span_x = (exact_pixel_box
         ? match.layout_box_pixel_x
         : origin_x + text_x * tile_w) + config_.horizontal_padding;
@@ -42543,7 +42574,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         renderer, *display_text, span_width, foregrounds);
     texture_timing.checkpoint(RenderTimingStage::DrawCopy);
     if (glyph && glyph->texture) {
-        const bool left_align = match.layout_x >= 0 ? match.layout_left :
+        const bool left_align = tooltip_layout || match.layout_x >= 0 ? match.layout_left :
             (match.rule >= 0 && rules_[static_cast<size_t>(match.rule)].left_align);
         // Keep the native anchor and line allocation. Paragraph owners wrap
         // within their own controls; a long single-line field cannot wrap at

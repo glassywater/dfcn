@@ -205,6 +205,7 @@ public:
         value(input.epoch == epoch); value(input.top_layer); value(input.isolated);
         grid(input.grid_identity); text(input.body_source);
         range(input.rows, [&](const auto &row) { text(row); });
+        range(input.glyph_rows, [&](const auto &row) { text(row); });
         range(input.occlusions, [&](const auto &box) { rect(box); });
         value(input.adventure_background);
         optional(input.adventure_belief, [&](const auto &cache) { adventure_belief(cache); });

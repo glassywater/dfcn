@@ -302,7 +302,7 @@ dfcn::TranslationResult Overlay::translate_toolbar_tooltip_result(
 bool Overlay::translate_deity_tooltip_fields(NativeToolbarTooltip &card) const {
     std::vector<NativeToolbarTooltip::DeityField> fields(card.rows.size());
     constexpr uint32_t top_half = 1u << 3, bottom_half = 1u << 4;
-    const int body_x = card.body_x >= 0 ? card.body_x : card.text_x;
+    const int body_x = card.widget_frame || card.body_x >= 0 ? card.body_x : card.text_x;
     const auto text_half = [&](size_t line) {
         const int y = card.text_y + static_cast<int>(line);
         uint32_t half = UINT32_MAX;
@@ -377,8 +377,7 @@ void Overlay::capture_toolbar_tooltip() const {
     const auto widget = captured_native_tooltip_widget(*gps_);
     if (!widget || !widget->isolated) return;
     const auto &box = widget->bounds;
-    if (box.x < 0 || box.y < 0 || box.w < 3 || box.h < 3 ||
-            box.x > gps_->dimx - box.w || box.y > gps_->dimy - box.h ||
+    if (!native_tooltip_valid_bounds(*gps_, box) || box.w < 3 || box.h < 3 ||
             widget->rows.size() != static_cast<size_t>(box.h) ||
             std::any_of(widget->rows.begin(), widget->rows.end(), [&](const auto &row) {
                 return row.size() != static_cast<size_t>(box.w);
@@ -406,9 +405,9 @@ void Overlay::capture_toolbar_tooltip() const {
         card.text_right = std::max(card.text_right, end);
         const auto line = trim_view(std::string_view(row).substr(first));
         if (line.starts_with("Hotkey:")) {
-            if (card.keys_y < 0) card.keys_y = y;
+            if (card.key_rows.empty()) card.keys_y = y;
             card.key_rows.push_back(y);
-        } else if (card.keys_y < 0) {
+        } else if (card.key_rows.empty()) {
             body_begin = std::min(body_begin, y);
             body_end = y + 1;
             body_left = std::min(body_left, left);
@@ -427,9 +426,10 @@ void Overlay::capture_toolbar_tooltip() const {
         card.source += line;
         card.rows.push_back(std::move(line));
     }
-    // Geometry capture does no translation. Only the tooltip's Present pass
-    // below resolves the visible rows, including a card with just a key field.
-    if (!trim_view(card.source).empty() || card.keys_y >= 0)
+    if (!widget->body_source.empty()) card.source = widget->body_source;
+    // Geometry capture retains the whole source, including clipped rows.
+    // Only the tooltip's Present pass resolves its text and visible output.
+    if (!trim_view(card.source).empty() || !card.key_rows.empty())
         g_native_toolbar_tooltip = std::move(card);
 }
 
@@ -475,11 +475,14 @@ void Overlay::append_toolbar_tooltip_matches(const NativeTooltipWidgetFrame &fra
             match.layout_x = card.text_x;
             match.layout_length = card.text_right - card.text_x;
             match.layout_left = true;
-            const size_t first = source.find_first_not_of(' ');
-            if (first != std::string::npos)
-                if (const auto *cell = source_cell(card.body_x + static_cast<int>(first),
-                        y, static_cast<unsigned char>(source[first])))
+            for (size_t at = 0; at < source.size(); ++at) {
+                if (source[at] == ' ') continue;
+                if (const auto *cell = source_cell(card.body_x + static_cast<int>(at),
+                        y, static_cast<unsigned char>(source[at]))) {
                     match.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                    break;
+                }
+            }
             if (deity_card) {
                 match.layout_y = y;
                 match.layout_pixel_y = card.deity_fields[line].pixel_y;
@@ -575,9 +578,9 @@ void Overlay::layout_toolbar_tooltip(SDL_Renderer *renderer) {
     // The game owns the component's position, background and border. Translate
     // within its text area; source cell colors do not describe the native skin.
     const int width = (card.text_right - card.text_x) * tile_w - 2 * padding;
-    const bool native_gap = card.keys_y >= 0 &&
+    const bool native_gap = !card.key_rows.empty() &&
         card.text_y + static_cast<int>(card.rows.size()) < card.keys_y;
-    const int bottom = card.keys_y >= 0 ? card.keys_y - (native_gap ? 1 : 0) : card.bottom;
+    const int bottom = !card.key_rows.empty() ? card.keys_y - (native_gap ? 1 : 0) : card.bottom;
     const int available_rows = bottom - card.text_y;
     if (width <= 0 || available_rows <= 0) return;
     const int nominal_pixels = unified_font_pixels();
@@ -780,6 +783,12 @@ void Overlay::layout_toolbar_tooltip(SDL_Renderer *renderer) {
     if (cell && output.layout_foreground_rgb < 0) {
         output.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
     }
+    if (output.layout_foreground_rgb < 0)
+        for (size_t index : body)
+            if (prepared_matches_[index].layout_foreground_rgb >= 0) {
+                output.layout_foreground_rgb = prepared_matches_[index].layout_foreground_rgb;
+                break;
+            }
     for (size_t index : body) {
         prepared_matches_[index].target.clear();
         apply_font(prepared_matches_[index]);

@@ -50,21 +50,24 @@ static size_t capture_native_adventure_hover(const void *document,
         auto *gps = native_graphics();
         if (!gps || !gps->screen || !document || !count ||
                 gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 ||
-                gps->dimy > 1000 || count > static_cast<size_t>(gps->dimy) ||
-                left < 0 || right >= gps->dimx || right <= left + 1 ||
-                top < 0 || top >= gps->dimy) return count;
+                gps->dimy > 1000 || count > 1000) return count;
+        const int64_t width = int64_t(right) - left + 1;
+        if (width <= 2 || width > 1004) return count;
         // Match the native renderer's bottom adjustment and its fixed top
         // limit. A clipped document owns only the rows that this pass draws.
-        int bottom = top + 1 + static_cast<int>(count);
+        int64_t native_top = top;
+        int64_t bottom = native_top + 1 + static_cast<int>(count);
         if (bottom >= gps->dimy - 6) {
-            const int shift = bottom - gps->dimy + 6;
-            top -= shift;
+            const int64_t shift = bottom - gps->dimy + 6;
+            native_top -= shift;
             bottom -= shift;
         }
-        top = std::max(16, top);
-        if (bottom <= top + 1 || bottom >= gps->dimy) return count;
+        native_top = std::max<int64_t>(16, native_top);
+        if (bottom <= native_top + 1) return count;
         NativeTooltipWidgetFrame frame;
-        frame.bounds = {left, top, right - left + 1, bottom - top + 1};
+        frame.bounds = {left, static_cast<int>(native_top), static_cast<int>(width),
+            static_cast<int>(bottom - native_top + 1)};
+        if (!native_tooltip_valid_bounds(*gps, frame.bounds)) return count;
         frame.dimx = gps->dimx;
         frame.dimy = gps->dimy;
         frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);

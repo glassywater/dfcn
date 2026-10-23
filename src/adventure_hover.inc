@@ -105,13 +105,17 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
                 (match.rule < 0 || static_cast<size_t>(match.rule) < rules_.size())) {
             // Ink can extend past the English span or its line box. Use
             // the measured destination, exactly as draw_match does.
-            const int text_x = match.layout_x >= 0 ? match.layout_x : match.x;
+            const bool tooltip_layout = match.layout_prepared &&
+                (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
+                    (g_native_tooltip_widget_frame && g_native_tooltip_widget_frame->isolated &&
+                        g_native_tooltip_widget_frame->grid_identity == gps_->screen));
+            const int text_x = tooltip_layout || match.layout_x >= 0 ? match.layout_x : match.x;
             const bool native_baseline = match.native_split_text && !match.layout_fixed_baseline;
             const int text_y = native_baseline ? match.native_split_top_y
-                : (match.layout_y >= 0 ? match.layout_y : match.y);
+                : (tooltip_layout || match.layout_y >= 0 ? match.layout_y : match.y);
             const int pixel_y = native_baseline ? tile_h / 2 : match.layout_pixel_y;
             const int text_length = match.layout_length > 0 ? match.layout_length : match.length;
-            const bool exact_box = match.layout_box_pixel_x >= 0 &&
+            const bool exact_box = (tooltip_layout || match.layout_box_pixel_x >= 0) &&
                 match.layout_box_pixel_width > 0;
             const SDL_Rect text{
                 (exact_box ? match.layout_box_pixel_x : origin_x + text_x * tile_w) +
@@ -152,7 +156,7 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
             const auto *glyph = get_glyph_texture(
                 renderer, *display_text, text.w, foregrounds);
             if (glyph && glyph->texture) {
-                const bool left = match.layout_x >= 0 ? match.layout_left
+                const bool left = tooltip_layout || match.layout_x >= 0 ? match.layout_left
                     : match.rule >= 0 && rules_[static_cast<size_t>(match.rule)].left_align;
                 SDL_Rect drawn = glyph->destination(text, left);
                 if (match.layout_right) drawn.x = text.x + text.w - drawn.w;
@@ -194,10 +198,20 @@ void Overlay::draw_help_clipped_match(SDL_Renderer *renderer, const Match &match
     const auto *bounds = paint_bounds ? &*paint_bounds : nullptr;
     draw_with_help_clips(renderer, *gps_, occluders, &match,
         [&] {
-            if (g_native_toolbar_tooltip && g_native_toolbar_tooltip->widget_frame &&
-                (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule)) {
-                draw_with_help_clips(renderer, *gps_, g_native_toolbar_tooltip->occlusions, nullptr,
-                    [&] { draw_hover_clipped_match(renderer, match); }, bounds);
+            const std::vector<SDL_Rect> *tooltip_occlusions = nullptr;
+            if (g_native_tooltip_widget_frame && g_native_tooltip_widget_frame->isolated &&
+                    g_native_tooltip_widget_frame->grid_identity == gps_->screen)
+                tooltip_occlusions = &g_native_tooltip_widget_frame->occlusions;
+            else if (g_native_toolbar_tooltip && g_native_toolbar_tooltip->widget_frame &&
+                    (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule))
+                tooltip_occlusions = &g_native_toolbar_tooltip->occlusions;
+            if (tooltip_occlusions) {
+                // This is the foreground card's own translated output. Its
+                // measured text clip already preserves the native content
+                // area; background-popup classification would discard it
+                // merely because an edge clip uses background-frame metadata.
+                draw_with_help_clips(renderer, *gps_, *tooltip_occlusions, nullptr,
+                    [&] { draw_match(renderer, match); }, bounds);
             } else draw_hover_clipped_match(renderer, match);
         }, bounds);
 }
@@ -258,13 +272,17 @@ void Overlay::draw_hover_clipped_match(SDL_Renderer *renderer, const Match &matc
             if (match.rule == -8 || (config_.clear_background && !g_copy_hook_active))
                 include({origin_x + match.x * tile_w,
                     origin_y + match.y * tile_h, match.length * tile_w, tile_h});
-            const int text_x = match.layout_x >= 0 ? match.layout_x : match.x;
+            const bool tooltip_layout = match.layout_prepared &&
+                (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
+                    (g_native_tooltip_widget_frame && g_native_tooltip_widget_frame->isolated &&
+                        g_native_tooltip_widget_frame->grid_identity == gps_->screen));
+            const int text_x = tooltip_layout || match.layout_x >= 0 ? match.layout_x : match.x;
             const bool native_baseline = match.native_split_text && !match.layout_fixed_baseline;
             const int text_y = native_baseline ? match.native_split_top_y
-                : (match.layout_y >= 0 ? match.layout_y : match.y);
+                : (tooltip_layout || match.layout_y >= 0 ? match.layout_y : match.y);
             const int pixel_y = native_baseline ? tile_h / 2 : match.layout_pixel_y;
             const int text_length = match.layout_length > 0 ? match.layout_length : match.length;
-            const bool exact_box = match.layout_box_pixel_x >= 0 &&
+            const bool exact_box = (tooltip_layout || match.layout_box_pixel_x >= 0) &&
                 match.layout_box_pixel_width > 0;
             SDL_Rect text{
                 (exact_box ? match.layout_box_pixel_x : origin_x + text_x * tile_w) +
@@ -291,7 +309,7 @@ void Overlay::draw_hover_clipped_match(SDL_Renderer *renderer, const Match &matc
             const auto *glyph = get_glyph_texture(
                 renderer, *display_text, std::max(1, text.w));
             if (glyph && glyph->texture) {
-                const bool left_align = match.layout_x >= 0 ? match.layout_left
+                const bool left_align = tooltip_layout || match.layout_x >= 0 ? match.layout_left
                     : match.rule >= 0 && static_cast<size_t>(match.rule) < rules_.size() &&
                         rules_[static_cast<size_t>(match.rule)].left_align;
                 SDL_Rect drawn = glyph->destination(text, left_align);
@@ -337,7 +355,7 @@ void Overlay::draw_hover_clipped_match(SDL_Renderer *renderer, const Match &matc
         SDL_Rect native_inner{display_frame.x + tile_w, display_frame.y + tile_h,
             std::max(0, display_frame.w - 2 * tile_w),
             std::max(0, display_frame.h - 2 * tile_h)};
-        if (match.rule == kToolbarTooltipBodyRule && g_native_toolbar_tooltip->keys_y >= 0)
+        if (match.rule == kToolbarTooltipBodyRule && !g_native_toolbar_tooltip->key_rows.empty())
             native_inner.h = std::min(native_inner.h, std::max(0,
                 origin_y + g_native_toolbar_tooltip->keys_y * tile_h - native_inner.y));
         draw_in(native_inner);

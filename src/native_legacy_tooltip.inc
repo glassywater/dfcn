@@ -16,6 +16,26 @@ static NativeLegacyTooltipState &native_legacy_tooltip_state() {
     return reloadable_thread_state<NativeLegacyTooltipState, struct LegacyTooltipTag>();
 }
 
+static std::string native_legacy_tooltip_body_source(const void *paragraph, size_t count) {
+    constexpr size_t maximum = 262144;
+    if (!paragraph || count > 1000 || native_paragraph_row_count(paragraph) != count)
+        return {};
+    // The selected paragraph remains complete even when native addst skips
+    // clipped rows. Preserve its exact row contents and blank-row boundaries.
+    std::string source;
+    for (size_t index = 0; index < count; ++index) {
+        std::string_view row;
+        if (!native_string_view(native_paragraph_row(paragraph, index), &row, maximum))
+            return {};
+        const size_t separator = index ? 1 : 0;
+        if (source.size() + separator > maximum ||
+                row.size() > maximum - source.size() - separator) return {};
+        if (index) source.push_back('\n');
+        source.append(row);
+    }
+    return source;
+}
+
 #ifdef _WIN32
 // Fortress's compact toolbar skips the floating card's row-count call.
 // Its selected paragraph is already resolved here, before clearing the
@@ -41,17 +61,20 @@ static bool capture_native_fortress_compact_tooltip_start(const void *paragraph,
             native_pe_address(base, 0x18a93a8)) != 0;
         if (!paragraph || !gps || !gps->screen || gps->dimx <= 0 || gps->dimx > 1000 ||
                 gps->dimy <= 0 || gps->dimy > 1000 ||
-                count > static_cast<size_t>(gps->dimy) || (!count && !keys)) return compact;
-        const int left = viewport_right - 24;
-        const int height = std::min(gps->dimy,
-            std::max(18, static_cast<int>(count) + (keys ? 2 : 0)));
-        if (left < 0 || left > gps->dimx - 25) return compact;
+                count > 1000 || (!count && !keys)) return compact;
+        // Keep the submitted document size when its card crosses the screen;
+        // only the shared output layer clips the drawable cells.
+        const int64_t left = int64_t(viewport_right) - 24;
+        const int height = std::max(18, static_cast<int>(count) + (keys ? 2 : 0));
+        if (left < std::numeric_limits<int>::min()) return compact;
         NativeTooltipWidgetFrame frame;
-        frame.bounds = {left, 0, 25, height};
+        frame.bounds = {static_cast<int>(left), 0, 25, height};
+        if (!native_tooltip_valid_bounds(*gps, frame.bounds)) return compact;
         frame.dimx = gps->dimx;
         frame.dimy = gps->dimy;
         frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
         frame.rows.assign(height, std::string(25, ' '));
+        frame.body_source = native_legacy_tooltip_body_source(paragraph, count);
         state.epoch = frame.epoch;
         state.remaining_body_rows = count;
         state.has_keys = keys;
@@ -82,17 +105,18 @@ static size_t capture_native_legacy_tooltip_rows(const void *paragraph) {
         const int bottom = *reinterpret_cast<const int32_t *>(native_pe_address(base, 0x18a93c0));
         if (paragraph && gps && gps->screen && gps->dimx > 0 && gps->dimx <= 1000 &&
                 gps->dimy > 0 && gps->dimy <= 1000 &&
-                count <= static_cast<size_t>(gps->dimy) && (count > 0 || keys)) {
+                count <= 1000 && (count > 0 || keys)) {
             const int height = static_cast<int>(count) + (keys ? 4 : 2);
-            const int top = bottom - height + 1;
-            if (height >= 3 && left >= 0 && left <= gps->dimx - 28 &&
-                    top >= 0 && bottom < gps->dimy) {
+            const int64_t top = int64_t(bottom) - height + 1;
+            if (height >= 3 && top >= std::numeric_limits<int>::min()) {
                 NativeTooltipWidgetFrame frame;
-                frame.bounds = {left, top, 28, height};
+                frame.bounds = {left, static_cast<int>(top), 28, height};
+                if (!native_tooltip_valid_bounds(*gps, frame.bounds)) return count;
                 frame.dimx = gps->dimx;
                 frame.dimy = gps->dimy;
                 frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
                 frame.rows.assign(height, std::string(28, ' '));
+                frame.body_source = native_legacy_tooltip_body_source(paragraph, count);
                 state.epoch = frame.epoch;
                 state.remaining_body_rows = count;
                 state.has_keys = keys;
@@ -126,26 +150,28 @@ static bool capture_native_adventure_toolbar_start(const void *paragraph,
             native_pe_address(base, 0x18a93a8)) != 0;
         if (!paragraph || !gps || !gps->screen || gps->dimx <= 0 || gps->dimx > 1000 ||
                 gps->dimy <= 0 || gps->dimy > 1000 ||
-                count > static_cast<size_t>(gps->dimy) || (!count && !keys)) return compact;
+                count > 1000 || (!count && !keys)) return compact;
         const int rows = static_cast<int>(count);
-        const int left = compact ? viewport_right - 30 :
+        const int64_t left = compact ? int64_t(viewport_right) - 30 :
             *reinterpret_cast<const int32_t *>(native_pe_address(base, 0x18a93bc));
         const int bottom = *reinterpret_cast<const int32_t *>(native_pe_address(base, 0x18a93c0));
         // Compact cards draw from row 0, with text from row 1. Include any
         // submitted key rows below their capped border, without clipping a
         // native text store that would otherwise remain on-screen.
-        const int height = compact ? std::min(gps->dimy,
-            std::max(std::min(rows + 1, 17) + 1, rows + (keys ? 3 : 1))) :
+        const int height = compact ?
+            std::max(std::min(rows + 1, 17) + 1, rows + (keys ? 3 : 1)) :
             rows + (keys ? 4 : 2);
-        const int top = compact ? 0 : bottom - height + 1;
-        if (height < 3 || height > gps->dimy || left < 0 || left > gps->dimx - 28 ||
-                top < 0 || top > gps->dimy - height) return compact;
+        const int64_t top = compact ? 0 : int64_t(bottom) - height + 1;
+        if (height < 3 || left < std::numeric_limits<int>::min() ||
+                top < std::numeric_limits<int>::min()) return compact;
         NativeTooltipWidgetFrame frame;
-        frame.bounds = {left, top, 28, height};
+        frame.bounds = {static_cast<int>(left), static_cast<int>(top), 28, height};
+        if (!native_tooltip_valid_bounds(*gps, frame.bounds)) return compact;
         frame.dimx = gps->dimx;
         frame.dimy = gps->dimy;
         frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
         frame.rows.assign(height, std::string(28, ' '));
+        frame.body_source = native_legacy_tooltip_body_source(paragraph, count);
         state.epoch = frame.epoch;
         state.remaining_body_rows = count;
         state.has_keys = keys;
@@ -174,17 +200,18 @@ static int32_t capture_native_legacy_tooltip_start(const void *paragraph) {
         const int bottom = *reinterpret_cast<const int32_t *>(base + 0x26fe368);
         if (paragraph && gps && gps->screen && gps->dimx > 0 && gps->dimx <= 1000 &&
                 gps->dimy > 0 && gps->dimy <= 1000 &&
-                count <= static_cast<size_t>(gps->dimy) && (count > 0 || keys)) {
+                count <= 1000 && (count > 0 || keys)) {
             const int height = static_cast<int>(count) + (keys ? 4 : 2);
-            const int top = bottom - height + 1;
-            if (height < 3 || left < 0 || left > gps->dimx - 28 ||
-                    top < 0 || bottom >= gps->dimy) return left;
+            const int64_t top = int64_t(bottom) - height + 1;
+            if (height < 3 || top < std::numeric_limits<int>::min()) return left;
             NativeTooltipWidgetFrame frame;
-            frame.bounds = {left, top, 28, height};
+            frame.bounds = {left, static_cast<int>(top), 28, height};
+            if (!native_tooltip_valid_bounds(*gps, frame.bounds)) return left;
             frame.dimx = gps->dimx;
             frame.dimy = gps->dimy;
             frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
             frame.rows.assign(height, std::string(28, ' '));
+            frame.body_source = native_legacy_tooltip_body_source(paragraph, count);
             state.epoch = frame.epoch;
             state.remaining_body_rows = count;
             state.has_keys = keys;
