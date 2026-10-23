@@ -1,0 +1,27 @@
+DFCN · 鼠标地图坐标 / Mouse Coordinates
+
+适用：Dwarf Fortress 53.16，Windows x64，Steam 版与官网免费版。
+依赖：DFCN v53.16-20261023 或更新版本的汉化核心。
+DFCN：https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379
+
+Steam 创意工坊
+订阅并下载本模组后，由 DFCN 自动识别，无需在创建世界时启用。
+本模组：https://steamcommunity.com/sharedfiles/filedetails/?id=__WORKSHOP_ID__
+
+本地安装
+将包含 info.txt、dfcn-mouse-coordinates.toml 和 dfcn 文件夹的完整模组目录，
+放入游戏的 mods 目录。保持原有文件结构。
+
+功能
+在要塞模式底部工具栏右侧显示鼠标所在地图格的 X、Y 坐标。
+地图左上角为 (1, 1)，支持图形和 ASCII 模式。
+鼠标离开地图、被界面遮挡或进入子页面时保留最近一次有效坐标。
+尚未取得坐标时显示 X: -- Y: --；离开要塞模式后隐藏。
+通过 DFCN 设置菜单中的“鼠标坐标显示”开关控制显示，选择会保存。
+
+Requires DFCN v53.16-20261023 or later for Windows x64. Subscribe on Steam Workshop,
+or place the complete mod folder in the game's mods directory.
+DFCN discovers the module automatically. No world mod activation or DFHack required.
+
+原创内容采用 CC BY-NC-SA 4.0；详见 LICENSE。
+项目：https://github.com/pokemonchw/dfcn

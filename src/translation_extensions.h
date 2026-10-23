@@ -69,6 +69,9 @@ struct Snapshot {
     // The semantic-search model is an optional, independent data mod. It is
     // discovered from the same installed mod roots as translation extensions.
     fs::path semantic_model;
+    // Optional native modules use the same subscription-aware installation
+    // roots. Workshop candidates precede local packages and the core fallback.
+    std::vector<fs::path> mouse_coordinates_modules;
     // An available empty Steam list is authoritative, including after the
     // final extension is unsubscribed while its download remains on disk.
     bool steam_subscriptions_available = false;
@@ -398,27 +401,34 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
     std::set<fs::path> visited;
     std::map<std::string, std::pair<Package, int>> selected;
     std::optional<std::tuple<int64_t, int, fs::path>> selected_semantic_model;
+    std::vector<std::tuple<int, int64_t, fs::path>> mouse_coordinates_modules;
     for (const auto& entry : candidates) {
         const auto root = detail::canonical_path(entry.root);
         if (root.empty() || visited.contains(root)) continue;
         const auto manifest = root / "dfcn-extension.toml";
         const auto semantic_manifest = root / "dfcn-semantic-search.toml";
+        const auto mouse_manifest = root / "dfcn-mouse-coordinates.toml";
         std::error_code error;
         const bool has_extension = fs::is_regular_file(manifest, error) &&
             detail::within(root, manifest);
         error.clear();
         const bool has_semantic_model = fs::is_regular_file(semantic_manifest, error) &&
             detail::within(root, semantic_manifest);
-        if (!has_extension && !has_semantic_model) continue;
+        error.clear();
+        const bool has_mouse_module = fs::is_regular_file(mouse_manifest, error) &&
+            detail::within(root, mouse_manifest);
+        if (!has_extension && !has_semantic_model && !has_mouse_module) continue;
         if (has_extension) watch(manifest);
         if (has_semantic_model) watch(semantic_manifest);
+        if (has_mouse_module) watch(mouse_manifest);
         const auto info_path = root / "info.txt";
         if (!detail::within(root, info_path)) continue;
         watch(info_path);
         const auto info = detail::text(info_path);
         const auto info_id = info ? detail::info_value(*info, "ID") : std::nullopt;
         if (!info_id || !detail::identifier(*info_id)) {
-            const auto& declared_manifest = has_extension ? manifest : semantic_manifest;
+            const auto& declared_manifest = has_extension ? manifest :
+                has_semantic_model ? semantic_manifest : mouse_manifest;
             snapshot.diagnostics.push_back(runtime::utf8(declared_manifest) +
                 ": missing valid info.txt mod ID");
             continue;
@@ -437,6 +447,33 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
         int64_t mod_version = 0;
         if (const auto version = detail::info_value(*info, "NUMERIC_VERSION"))
             mod_version = detail::number<int64_t>(*version).value_or(-1);
+        if (has_mouse_module && mod_version >= 0) {
+            const auto data = detail::text(mouse_manifest);
+            if (!data) {
+                snapshot.diagnostics.push_back(runtime::utf8(mouse_manifest) +
+                    ": cannot read mouse-coordinates manifest");
+            } else if (const auto parsed = toml::parse(*data, runtime::utf8(mouse_manifest)); !parsed) {
+                snapshot.diagnostics.push_back(runtime::utf8(mouse_manifest) + ": " +
+                    std::string(parsed.error().description()));
+            } else {
+                const auto schema = parsed["schema"].value<int64_t>();
+                const auto id = parsed["id"].value<std::string>();
+                const auto module = parsed["module"].value<std::string>();
+                const auto module_path = module
+                    ? detail::resource_path(root, *module) : fs::path{};
+                std::error_code module_error;
+                if (schema && *schema == 1 && id && *id == "dfcn-mouse-coordinates" &&
+                        *info_id == "dfcn-mouse-coordinates" && !module_path.empty() &&
+                        module_path.filename() == "dfcn_mouse_coordinates.dll" &&
+                        fs::is_regular_file(module_path, module_error) && !module_error) {
+                    watch(module_path);
+                    mouse_coordinates_modules.emplace_back(entry.priority, mod_version, module_path);
+                } else {
+                    snapshot.diagnostics.push_back(runtime::utf8(mouse_manifest) +
+                        ": missing valid mouse-coordinates module");
+                }
+            }
+        }
         if (has_semantic_model && mod_version >= 0) {
             const auto data = detail::text(semantic_manifest);
             if (!data) {
@@ -551,6 +588,19 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
     // Later IDs override matching semantic entries from earlier packages.
     for (auto& [id, selected_package] : selected)
         snapshot.packages.push_back(std::move(selected_package.first));
+    std::sort(mouse_coordinates_modules.begin(), mouse_coordinates_modules.end(),
+        [](const auto& left, const auto& right) {
+            const bool left_workshop = std::get<0>(left) == 2;
+            const bool right_workshop = std::get<0>(right) == 2;
+            if (left_workshop != right_workshop) return left_workshop;
+            if (std::get<1>(left) != std::get<1>(right))
+                return std::get<1>(left) > std::get<1>(right);
+            if (std::get<0>(left) != std::get<0>(right))
+                return std::get<0>(left) < std::get<0>(right);
+            return std::get<2>(left) < std::get<2>(right);
+        });
+    for (const auto& candidate : mouse_coordinates_modules)
+        snapshot.mouse_coordinates_modules.push_back(std::get<2>(candidate));
     std::sort(snapshot.resources.begin(), snapshot.resources.end(), [](const auto& left, const auto& right) {
         return left.path < right.path;
     });
@@ -562,6 +612,7 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
 inline bool same_resources(const Snapshot& left, const Snapshot& right) {
     return left.packages == right.packages && left.resources == right.resources &&
         left.semantic_model == right.semantic_model &&
+        left.mouse_coordinates_modules == right.mouse_coordinates_modules &&
         left.steam_subscriptions_available == right.steam_subscriptions_available &&
         left.subscribed_items == right.subscribed_items;
 }

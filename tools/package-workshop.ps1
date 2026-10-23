@@ -1,12 +1,15 @@
 #requires -Version 5.1
 [CmdletBinding()]
 param(
+    # Skip translation data extensions and the semantic model, while retaining
+    # the native mouse-coordinate mod shipped alongside this core release.
     [switch] $BaseOnly
 )
 
 # Package native Windows binaries and public data extensions.
 # This entry never builds code, deploys to a game, or controls Steam/the game.
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'package-windows-library.ps1')
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $workshopRoot = Join-Path $projectRoot 'workshop'
 $contentRoot = Join-Path $workshopRoot 'content'
@@ -160,6 +163,30 @@ function Write-SemanticSearchArchive {
     Write-Host ('Independent semantic-search mod package: ' + $archive) -ForegroundColor Green
 }
 
+function Write-MouseCoordinatesArchive {
+    $directory = Resolve-PackageDirectory (Join-Path $workshopRoot 'mouse-coordinates')
+    $mouseContent = Resolve-PackageDirectory (Join-Path $directory 'content')
+    $manifestPath = Join-Path $mouseContent 'dfcn-mouse-coordinates.toml'
+    if (-not [IO.File]::Exists($manifestPath)) {
+        throw ('Mouse coordinates mod manifest is missing: ' + $manifestPath)
+    }
+    $infoPath = Join-Path $mouseContent 'info.txt'
+    $identities = [regex]::Matches([IO.File]::ReadAllText($infoPath),
+        '(?m)^\s*\[ID:([A-Za-z0-9_-]+)\]\s*$')
+    if ($identities.Count -ne 1) {
+        throw ('Mouse coordinates mod must have one valid mod ID: ' + $infoPath)
+    }
+    $identity = $identities[0].Groups[1].Value
+    $libraryDirectory = Resolve-PackageDirectory (Join-Path $mouseContent 'dfcn')
+    [void][IO.Directory]::CreateDirectory($libraryDirectory)
+    $source = Join-Path $projectRoot 'dfcn_mouse_coordinates.dll'
+    $destination = Join-Path $libraryDirectory 'dfcn_mouse_coordinates.dll'
+    Write-StrippedWindowsLibrary $source $destination
+    $archive = Join-Path $directory 'dfcn-mouse-coordinates.zip'
+    Write-PackageArchive $mouseContent $archive ($identity + '/')
+    Write-Host ('Independent mouse-coordinates mod package: ' + $archive) -ForegroundColor Green
+}
+
 try {
     & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'package-windows.ps1')
     if ($LASTEXITCODE -ne 0) { throw ('Windows packaging failed with exit code ' + $LASTEXITCODE) }
@@ -184,6 +211,7 @@ try {
     # creation leaves the previous upload folder available; replace it as a whole.
     Write-PackageArchive $payloadRoot $outputPath
     Install-PackageDirectory 'content'
+    Write-MouseCoordinatesArchive
     # Extensions remain separate from the base Workshop payload. Private data
     # packages are never selected for these public release archives.
     if (-not $BaseOnly) {

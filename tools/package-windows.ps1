@@ -63,8 +63,11 @@ try {
     Add-RuntimeFile (Join-Path $projectRoot 'docs/install-windows.zh-CN.txt') 'INSTALL.txt'
     Add-RuntimeFile (Join-Path $projectRoot 'workshop/content/CHANGELOG.txt') 'CHANGELOG.txt'
     Add-RuntimeFile (Join-Path $projectRoot 'docs/translation-extensions.zh-CN.md') 'dfcn/docs/translation-extensions.zh-CN.md'
+    # The shipped configuration explicitly selects font.otf. Keep that font and
+    # its license mandatory instead of selecting an unrelated local font first.
     foreach ($name in @(
         'dfcn_core.dll', 'dfhooks_dfcn.dll', 'dfcn_mouse_coordinates.dll', 'data/runtime/config.ini',
+        'data/runtime/font.otf', 'data/runtime/font.LICENSE.txt',
         'data/runtime/native-addresses/pe-seed.bin',
         'data/runtime/translations.tsv', 'data/runtime/name-editor.tsv',
         'data/runtime/instrument-translations.tsv', 'data/runtime/procedural-terms.tsv',
@@ -122,19 +125,6 @@ try {
         $relative = $file.Substring($projectRoot.Length + 1).Replace('\', '/')
         Add-RuntimeFile $file ('dfcn/' + $relative)
     }
-    # Use the same first bundled-font preference as the runtime, if present.
-    foreach ($name in @('font.ttf', 'font.otf', 'font.ttc')) {
-        $fontPath = Join-Path $projectRoot ('data\runtime\' + $name)
-        if ([IO.File]::Exists($fontPath)) {
-            Add-RuntimeFile $fontPath ('dfcn/data/runtime/' + $name)
-            $fontLicense = Join-Path $projectRoot 'data/runtime/font.LICENSE.txt'
-            if ([IO.File]::Exists($fontLicense)) {
-                Add-RuntimeFile $fontLicense 'dfcn/data/runtime/font.LICENSE.txt'
-            }
-            break
-        }
-    }
-
     # Collect local attribution and license texts into one runtime notice.
     # No old ZIP, separate game installation, network, or development tool is
     # needed to obtain these texts when the script is run again.

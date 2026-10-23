@@ -35,24 +35,41 @@ static void native_mouse_coordinates_load() {
     TranslationStateScope translation;
 #ifdef _WIN32
     if (g_mouse_coordinates_module) return;
-    const auto path = runtime::utf8(runtime::path("dfcn_mouse_coordinates.dll"));
-    void *module = SDL_LoadObject(path.c_str());
-    if (!module) {
-        log_line("WARN", std::string("Mouse coordinates mod: ") + SDL_GetError());
+    std::vector<fs::path> candidates;
+    try {
+        candidates = extensions::discover().mouse_coordinates_modules;
+    } catch (const std::exception &error) {
+        log_line("WARN", std::string("Mouse coordinates mod discovery: ") + error.what());
+    }
+    candidates.push_back(runtime::path("dfcn_mouse_coordinates.dll"));
+    // Keep the saved choice with the active core, independent of which package
+    // supplied the module, so Workshop updates preserve the existing setting.
+    const auto config = runtime::utf8(runtime::path("mouse-coordinates.ini"));
+    std::set<fs::path> attempted;
+    for (const auto &candidate : candidates) {
+        const auto canonical = extensions::detail::canonical_path(candidate);
+        if (canonical.empty() || !attempted.insert(canonical).second) continue;
+        const auto path = runtime::utf8(canonical);
+        void *module = SDL_LoadObject(path.c_str());
+        if (!module) {
+            log_line("WARN", "Mouse coordinates mod " + path + ": " + SDL_GetError());
+            continue;
+        }
+        const auto get_api = reinterpret_cast<DfcnGetMouseCoordinatesApi>(
+            SDL_LoadFunction(module, "dfcn_mouse_coordinates_api"));
+        const auto *api = get_api ? get_api(DFCN_MOUSE_COORDINATES_ABI) : nullptr;
+        if (!api || api->abi != DFCN_MOUSE_COORDINATES_ABI || api->size != sizeof(*api) ||
+                !api->initialize || !api->enabled || !api->toggle || !api->describe ||
+                !api->initialize(config.c_str())) {
+            SDL_UnloadObject(module);
+            log_line("WARN", "Mouse coordinates mod " + path +
+                ": incompatible API or unreadable configuration");
+            continue;
+        }
+        g_mouse_coordinates_module = module;
+        g_mouse_coordinates_api = api;
         return;
     }
-    const auto get_api = reinterpret_cast<DfcnGetMouseCoordinatesApi>(
-        SDL_LoadFunction(module, "dfcn_mouse_coordinates_api"));
-    const auto *api = get_api ? get_api(DFCN_MOUSE_COORDINATES_ABI) : nullptr;
-    if (!api || api->abi != DFCN_MOUSE_COORDINATES_ABI || api->size != sizeof(*api) ||
-            !api->initialize || !api->enabled || !api->toggle || !api->describe ||
-            !api->initialize(runtime::utf8(runtime::path("mouse-coordinates.ini")).c_str())) {
-        SDL_UnloadObject(module);
-        log_line("ERROR", "Mouse coordinates mod: incompatible API or unreadable configuration");
-        return;
-    }
-    g_mouse_coordinates_module = module;
-    g_mouse_coordinates_api = api;
 #endif
 }
 static void native_mouse_coordinates_toggle() {
