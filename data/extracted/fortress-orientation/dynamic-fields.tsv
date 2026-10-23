@@ -1,0 +1,7 @@
+branch	field	native_production	source
+pressure-plate	cart lower weight	decimal(value) + native character 0xe2	pe-reference-orientation-ghidra.c; native RVA 0x3e2a56..0x3e2afb
+pressure-plate	cart upper weight	value==2000 ? Any : decimal(value) + native character 0xe2	pe-reference-orientation-ghidra.c; native RVA 0x3e2c31..0x3e2ce6
+pressure-plate	creature lower/upper range endpoint	entry creature index==-1 ? (decimal(value)) : native creature-word helper(race,plural=false,caste=-1), reading raw singular name at creature+0x20; upper endpoint retries value-999	data/extracted/accepted-petition-list/pe-reference-caste-words.c; native helper RVA 0xaa3bd0 (classic 0xaa0c50)
+pressure-plate	creature range line	Range: + lower endpoint + ' to ' + upper endpoint; native clipping overwrites final three visible bytes with ...	pe-reference-orientation-ghidra.c; native RVA 0x3e2ff1..0x3e3286
+pressure-plate	scrollable creature threshold rows	same endpoint formatter for every raw entry; values and raw creature names remain data-driven	pe-reference-orientation-ghidra.c; native RVA 0x3e3286..0x3e33dc
+pressure-plate	liquid depth selectors	native tile images; low/high interval stored as bytes; no English labels beyond Water/Magma/Depth	pe-reference-orientation-ghidra.c; native RVA 0x3e22da..0x3e2839

@@ -1,0 +1,1015 @@
+edition	branch	instruction_rva	condition
+reference	shared-icons-or-frame	0x3df933	cmp    ecx,0x32
+reference	shared-icons-or-frame	0x3df942	bt     rdx,rcx
+reference	shared-icons-or-frame	0x3df948	cmp    ecx,0x17
+reference	shared-icons-or-frame	0x3df960	test   dx,ax
+reference	shared-icons-or-frame	0x3df989	cmp    ecx,0x17
+reference	shared-icons-or-frame	0x3df98e	cmp    WORD PTR [rip+0x14c0ad6],0x1        # 0x1418a046c
+reference	shared-icons-or-frame	0x3df9ac	cmp    ecx,0x17
+reference	shared-icons-or-frame	0x3df9b1	cmp    WORD PTR [rip+0x14c0ab3],0x5        # 0x1418a046c
+reference	shared-icons-or-frame	0x3df9d6	cmp    r14d,r12d
+reference	shared-icons-or-frame	0x3df9e3	cmp    r15d,esi
+reference	shared-icons-or-frame	0x3dfa0d	cmp    edi,0x4
+reference	shared-icons-or-frame	0x3dfa12	cmp    ebx,r15d
+reference	shared-icons-or-frame	0x3dfa22	cmp    ebx,esi
+reference	shared-icons-or-frame	0x3dfa36	cmp    edi,r14d
+reference	shared-icons-or-frame	0x3dfa3b	cmp    ebx,r15d
+reference	shared-icons-or-frame	0x3dfa4b	cmp    ebx,esi
+reference	shared-icons-or-frame	0x3dfa5f	cmp    ebx,r15d
+reference	shared-icons-or-frame	0x3dfa6c	cmp    ebx,esi
+reference	shared-icons-or-frame	0x3dfa86	cmp    ebx,esi
+reference	shared-icons-or-frame	0x3dfa90	cmp    edi,r14d
+reference	shared-icons-or-frame	0x3dfaa5	cmp    ecx,0x16
+reference	catapult	0x3dfab5	cmp    WORD PTR [rip+0x14c09af],0x0        # 0x1418a046c
+reference	ballista	0x3dfb6d	cmp    WORD PTR [rip+0x14c08f7],0x1        # 0x1418a046c
+reference	bolt-thrower	0x3dfc19	cmp    WORD PTR [rip+0x14c084b],0x2        # 0x1418a046c
+reference	shared-icons-or-frame	0x3dfd25	cmp    DWORD PTR [rip+0x14c1741],esi        # 0x1418a146c
+reference	shared-icons-or-frame	0x3dfd47	test   al,al
+reference	shared-icons-or-frame	0x3dfd73	cmp    esi,0x7
+reference	shared-icons-or-frame	0x3dfdde	test   edx,edx
+reference	shared-icons-or-frame	0x3dfe30	cmp    esi,0x8
+reference	horizontal-axle	0x3dfe4b	cmp    ecx,0x29
+reference	horizontal-axle	0x3dff29	cmp    DWORD PTR [rip+0x14c153c],0x1        # 0x1418a146c
+reference	horizontal-axle	0x3dff4d	test   al,al
+reference	horizontal-axle	0x3dff7a	test   edx,edx
+reference	horizontal-axle	0x3dffa6	cmp    DWORD PTR [rip+0x14c14bf],0x1        # 0x1418a146c
+reference	horizontal-axle	0x3dffc9	test   al,al
+reference	horizontal-axle	0x3dfff6	test   edx,edx
+reference	horizontal-axle	0x3e0022	cmp    DWORD PTR [rip+0x14c1443],0x1        # 0x1418a146c
+reference	horizontal-axle	0x3e0046	test   al,al
+reference	horizontal-axle	0x3e0073	test   edx,edx
+reference	horizontal-axle	0x3e009f	cmp    DWORD PTR [rip+0x14c13c6],0x1        # 0x1418a146c
+reference	horizontal-axle	0x3e00c3	test   al,al
+reference	horizontal-axle	0x3e00f0	test   edx,edx
+reference	horizontal-axle	0x3e0149	cmp    DWORD PTR [rip+0x14c131c],0x0        # 0x1418a146c
+reference	horizontal-axle	0x3e016d	test   al,al
+reference	horizontal-axle	0x3e019a	test   edx,edx
+reference	horizontal-axle	0x3e01c6	cmp    DWORD PTR [rip+0x14c129f],0x0        # 0x1418a146c
+reference	horizontal-axle	0x3e01e9	test   al,al
+reference	horizontal-axle	0x3e0216	test   edx,edx
+reference	horizontal-axle	0x3e0242	cmp    DWORD PTR [rip+0x14c1223],0x0        # 0x1418a146c
+reference	horizontal-axle	0x3e0266	test   al,al
+reference	horizontal-axle	0x3e0293	test   edx,edx
+reference	horizontal-axle	0x3e02bf	cmp    DWORD PTR [rip+0x14c11a6],0x0        # 0x1418a146c
+reference	horizontal-axle	0x3e02e3	test   al,al
+reference	horizontal-axle	0x3e0310	test   edx,edx
+reference	water-wheel	0x3e0340	cmp    ecx,0x2b
+reference	water-wheel	0x3e0468	cmp    DWORD PTR [rip+0x14c0ffd],0x1        # 0x1418a146c
+reference	water-wheel	0x3e048c	test   al,al
+reference	water-wheel	0x3e04b8	test   edx,edx
+reference	water-wheel	0x3e04e4	cmp    DWORD PTR [rip+0x14c0f81],0x1        # 0x1418a146c
+reference	water-wheel	0x3e0507	test   al,al
+reference	water-wheel	0x3e0534	test   edx,edx
+reference	water-wheel	0x3e0560	cmp    DWORD PTR [rip+0x14c0f05],0x1        # 0x1418a146c
+reference	water-wheel	0x3e0584	test   al,al
+reference	water-wheel	0x3e05b1	test   edx,edx
+reference	water-wheel	0x3e05dd	cmp    DWORD PTR [rip+0x14c0e88],0x1        # 0x1418a146c
+reference	water-wheel	0x3e0601	test   al,al
+reference	water-wheel	0x3e062e	test   edx,edx
+reference	water-wheel	0x3e0689	cmp    DWORD PTR [rip+0x14c0ddc],0x0        # 0x1418a146c
+reference	water-wheel	0x3e06ad	test   al,al
+reference	water-wheel	0x3e06da	test   edx,edx
+reference	water-wheel	0x3e0706	cmp    DWORD PTR [rip+0x14c0d5f],0x0        # 0x1418a146c
+reference	water-wheel	0x3e0729	test   al,al
+reference	water-wheel	0x3e0756	test   edx,edx
+reference	water-wheel	0x3e0782	cmp    DWORD PTR [rip+0x14c0ce3],0x0        # 0x1418a146c
+reference	water-wheel	0x3e07a6	test   al,al
+reference	water-wheel	0x3e07d3	test   edx,edx
+reference	water-wheel	0x3e07ff	cmp    DWORD PTR [rip+0x14c0c66],0x0        # 0x1418a146c
+reference	water-wheel	0x3e0823	test   al,al
+reference	water-wheel	0x3e0850	test   edx,edx
+reference	screw-pump	0x3e0879	cmp    ecx,0x21
+reference	screw-pump	0x3e09a8	cmp    DWORD PTR [rip+0x14c0abd],0x2        # 0x1418a146c
+reference	screw-pump	0x3e09cc	test   al,al
+reference	screw-pump	0x3e09f8	test   edx,edx
+reference	screw-pump	0x3e0a24	cmp    DWORD PTR [rip+0x14c0a41],0x2        # 0x1418a146c
+reference	screw-pump	0x3e0a47	test   al,al
+reference	screw-pump	0x3e0a74	test   edx,edx
+reference	screw-pump	0x3e0aa0	cmp    DWORD PTR [rip+0x14c09c5],0x2        # 0x1418a146c
+reference	screw-pump	0x3e0ac4	test   al,al
+reference	screw-pump	0x3e0af1	test   edx,edx
+reference	screw-pump	0x3e0b1d	cmp    DWORD PTR [rip+0x14c0948],0x2        # 0x1418a146c
+reference	screw-pump	0x3e0b41	test   al,al
+reference	screw-pump	0x3e0b6e	test   edx,edx
+reference	screw-pump	0x3e0bc9	cmp    DWORD PTR [rip+0x14c089c],0x0        # 0x1418a146c
+reference	screw-pump	0x3e0bed	test   al,al
+reference	screw-pump	0x3e0c1a	test   edx,edx
+reference	screw-pump	0x3e0c46	cmp    DWORD PTR [rip+0x14c081f],0x0        # 0x1418a146c
+reference	screw-pump	0x3e0c69	test   al,al
+reference	screw-pump	0x3e0c96	test   edx,edx
+reference	screw-pump	0x3e0cc2	cmp    DWORD PTR [rip+0x14c07a3],0x0        # 0x1418a146c
+reference	screw-pump	0x3e0ce6	test   al,al
+reference	screw-pump	0x3e0d13	test   edx,edx
+reference	screw-pump	0x3e0d3f	cmp    DWORD PTR [rip+0x14c0726],0x0        # 0x1418a146c
+reference	screw-pump	0x3e0d63	test   al,al
+reference	screw-pump	0x3e0d90	test   edx,edx
+reference	screw-pump	0x3e0de9	cmp    DWORD PTR [rip+0x14c067c],0x1        # 0x1418a146c
+reference	screw-pump	0x3e0e0d	test   al,al
+reference	screw-pump	0x3e0e3a	test   edx,edx
+reference	screw-pump	0x3e0e66	cmp    DWORD PTR [rip+0x14c05ff],0x1        # 0x1418a146c
+reference	screw-pump	0x3e0e89	test   al,al
+reference	screw-pump	0x3e0eb6	test   edx,edx
+reference	screw-pump	0x3e0ee2	cmp    DWORD PTR [rip+0x14c0583],0x1        # 0x1418a146c
+reference	screw-pump	0x3e0f06	test   al,al
+reference	screw-pump	0x3e0f33	test   edx,edx
+reference	screw-pump	0x3e0f5f	cmp    DWORD PTR [rip+0x14c0506],0x1        # 0x1418a146c
+reference	screw-pump	0x3e0f83	test   al,al
+reference	screw-pump	0x3e0fb0	test   edx,edx
+reference	screw-pump	0x3e1009	cmp    DWORD PTR [rip+0x14c045c],0x3        # 0x1418a146c
+reference	screw-pump	0x3e102d	test   al,al
+reference	screw-pump	0x3e105a	test   edx,edx
+reference	screw-pump	0x3e1086	cmp    DWORD PTR [rip+0x14c03df],0x3        # 0x1418a146c
+reference	screw-pump	0x3e10a9	test   al,al
+reference	screw-pump	0x3e10d6	test   edx,edx
+reference	screw-pump	0x3e1102	cmp    DWORD PTR [rip+0x14c0363],0x3        # 0x1418a146c
+reference	screw-pump	0x3e1126	test   al,al
+reference	screw-pump	0x3e1153	test   edx,edx
+reference	screw-pump	0x3e117f	cmp    DWORD PTR [rip+0x14c02e6],0x3        # 0x1418a146c
+reference	screw-pump	0x3e11a3	test   al,al
+reference	screw-pump	0x3e11d0	test   edx,edx
+reference	rollers	0x3e11f9	cmp    ecx,0x32
+reference	rollers	0x3e1309	cmp    DWORD PTR [rip+0x14c015c],0x2        # 0x1418a146c
+reference	rollers	0x3e132d	test   al,al
+reference	rollers	0x3e1359	test   edx,edx
+reference	rollers	0x3e1385	cmp    DWORD PTR [rip+0x14c00e0],0x2        # 0x1418a146c
+reference	rollers	0x3e13a8	test   al,al
+reference	rollers	0x3e13d5	test   edx,edx
+reference	rollers	0x3e1401	cmp    DWORD PTR [rip+0x14c0064],0x2        # 0x1418a146c
+reference	rollers	0x3e1425	test   al,al
+reference	rollers	0x3e1452	test   edx,edx
+reference	rollers	0x3e147e	cmp    DWORD PTR [rip+0x14bffe7],0x2        # 0x1418a146c
+reference	rollers	0x3e14a2	test   al,al
+reference	rollers	0x3e14cf	test   edx,edx
+reference	rollers	0x3e1528	cmp    DWORD PTR [rip+0x14bff3d],0x0        # 0x1418a146c
+reference	rollers	0x3e154c	test   al,al
+reference	rollers	0x3e1578	test   edx,edx
+reference	rollers	0x3e15a4	cmp    DWORD PTR [rip+0x14bfec1],0x0        # 0x1418a146c
+reference	rollers	0x3e15c7	test   al,al
+reference	rollers	0x3e15f4	test   edx,edx
+reference	rollers	0x3e1620	cmp    DWORD PTR [rip+0x14bfe45],0x0        # 0x1418a146c
+reference	rollers	0x3e1644	test   al,al
+reference	rollers	0x3e1671	test   edx,edx
+reference	rollers	0x3e169d	cmp    DWORD PTR [rip+0x14bfdc8],0x0        # 0x1418a146c
+reference	rollers	0x3e16c1	test   al,al
+reference	rollers	0x3e16ee	test   edx,edx
+reference	rollers	0x3e1749	cmp    DWORD PTR [rip+0x14bfd1c],0x1        # 0x1418a146c
+reference	rollers	0x3e176d	test   al,al
+reference	rollers	0x3e179a	test   edx,edx
+reference	rollers	0x3e17c6	cmp    DWORD PTR [rip+0x14bfc9f],0x1        # 0x1418a146c
+reference	rollers	0x3e17e9	test   al,al
+reference	rollers	0x3e1816	test   edx,edx
+reference	rollers	0x3e1842	cmp    DWORD PTR [rip+0x14bfc23],0x1        # 0x1418a146c
+reference	rollers	0x3e1866	test   al,al
+reference	rollers	0x3e1893	test   edx,edx
+reference	rollers	0x3e18bf	cmp    DWORD PTR [rip+0x14bfba6],0x1        # 0x1418a146c
+reference	rollers	0x3e18e3	test   al,al
+reference	rollers	0x3e1910	test   edx,edx
+reference	rollers	0x3e1969	cmp    DWORD PTR [rip+0x14bfafc],0x3        # 0x1418a146c
+reference	rollers	0x3e1990	test   al,al
+reference	rollers	0x3e19bd	test   edx,edx
+reference	rollers	0x3e19e9	cmp    DWORD PTR [rip+0x14bfa7c],0x3        # 0x1418a146c
+reference	rollers	0x3e1a0f	test   al,al
+reference	rollers	0x3e1a3c	test   edx,edx
+reference	rollers	0x3e1a68	cmp    DWORD PTR [rip+0x14bf9fd],0x3        # 0x1418a146c
+reference	rollers	0x3e1a8f	test   al,al
+reference	rollers	0x3e1abc	test   edx,edx
+reference	rollers	0x3e1ae8	cmp    DWORD PTR [rip+0x14bf97d],0x3        # 0x1418a146c
+reference	rollers	0x3e1b0f	test   al,al
+reference	rollers	0x3e1b3c	test   edx,edx
+reference	rollers	0x3e1bb4	test   rbx,rbx
+reference	rollers	0x3e1bb9	cmp    DWORD PTR [rip+0x14bf89d],0x2710        # 0x1418a1460
+reference	rollers	0x3e1bc5	cmp    rbx,0x1
+reference	rollers	0x3e1bcb	cmp    DWORD PTR [rip+0x14bf88b],0x4e20        # 0x1418a1460
+reference	rollers	0x3e1bd7	cmp    rbx,0x2
+reference	rollers	0x3e1bdd	cmp    DWORD PTR [rip+0x14bf879],0x7530        # 0x1418a1460
+reference	rollers	0x3e1be9	cmp    rbx,0x3
+reference	rollers	0x3e1bef	cmp    DWORD PTR [rip+0x14bf867],0x9c40        # 0x1418a1460
+reference	rollers	0x3e1bfb	cmp    rbx,0x4
+reference	rollers	0x3e1c01	cmp    DWORD PTR [rip+0x14bf855],0xc350        # 0x1418a1460
+reference	rollers	0x3e1c32	test   al,al
+reference	rollers	0x3e1c63	test   edx,edx
+reference	rollers	0x3e1c88	test   rbx,rbx
+reference	rollers	0x3e1c8d	cmp    DWORD PTR [rip+0x14bf7c9],0x2710        # 0x1418a1460
+reference	rollers	0x3e1c99	cmp    rbx,0x1
+reference	rollers	0x3e1c9f	cmp    DWORD PTR [rip+0x14bf7b7],0x4e20        # 0x1418a1460
+reference	rollers	0x3e1cab	cmp    rbx,0x2
+reference	rollers	0x3e1cb1	cmp    DWORD PTR [rip+0x14bf7a5],0x7530        # 0x1418a1460
+reference	rollers	0x3e1cbd	cmp    rbx,0x3
+reference	rollers	0x3e1cc3	cmp    DWORD PTR [rip+0x14bf793],0x9c40        # 0x1418a1460
+reference	rollers	0x3e1ccf	cmp    rbx,0x4
+reference	rollers	0x3e1cd5	cmp    DWORD PTR [rip+0x14bf781],0xc350        # 0x1418a1460
+reference	rollers	0x3e1d09	test   al,al
+reference	rollers	0x3e1d37	test   edx,edx
+reference	rollers	0x3e1d5c	test   rbx,rbx
+reference	rollers	0x3e1d61	cmp    DWORD PTR [rip+0x14bf6f5],0x2710        # 0x1418a1460
+reference	rollers	0x3e1d6d	cmp    rbx,0x1
+reference	rollers	0x3e1d73	cmp    DWORD PTR [rip+0x14bf6e3],0x4e20        # 0x1418a1460
+reference	rollers	0x3e1d7f	cmp    rbx,0x2
+reference	rollers	0x3e1d85	cmp    DWORD PTR [rip+0x14bf6d1],0x7530        # 0x1418a1460
+reference	rollers	0x3e1d91	cmp    rbx,0x3
+reference	rollers	0x3e1d97	cmp    DWORD PTR [rip+0x14bf6bf],0x9c40        # 0x1418a1460
+reference	rollers	0x3e1da3	cmp    rbx,0x4
+reference	rollers	0x3e1da9	cmp    DWORD PTR [rip+0x14bf6ad],0xc350        # 0x1418a1460
+reference	rollers	0x3e1dda	test   al,al
+reference	rollers	0x3e1e09	test   edx,edx
+reference	rollers	0x3e1e2e	test   rbx,rbx
+reference	rollers	0x3e1e33	cmp    DWORD PTR [rip+0x14bf623],0x2710        # 0x1418a1460
+reference	rollers	0x3e1e3f	cmp    rbx,0x1
+reference	rollers	0x3e1e45	cmp    DWORD PTR [rip+0x14bf611],0x4e20        # 0x1418a1460
+reference	rollers	0x3e1e51	cmp    rbx,0x2
+reference	rollers	0x3e1e57	cmp    DWORD PTR [rip+0x14bf5ff],0x7530        # 0x1418a1460
+reference	rollers	0x3e1e63	cmp    rbx,0x3
+reference	rollers	0x3e1e69	cmp    DWORD PTR [rip+0x14bf5ed],0x9c40        # 0x1418a1460
+reference	rollers	0x3e1e75	cmp    rbx,0x4
+reference	rollers	0x3e1e7b	cmp    DWORD PTR [rip+0x14bf5db],0xc350        # 0x1418a1460
+reference	rollers	0x3e1eac	test   al,al
+reference	rollers	0x3e1edb	test   edx,edx
+reference	rollers	0x3e1f07	cmp    rbx,0x5
+reference	shared-icons-or-frame	0x3e1f17	cmp    ecx,0x17
+reference	pressure-plate	0x3e1f20	cmp    WORD PTR [rip+0x14be544],0x1        # 0x1418a046c
+reference	pressure-plate	0x3e1f7c	cmp    eax,esi
+reference	pressure-plate	0x3e1f86	cmp    ebx,r14d
+reference	pressure-plate	0x3e1fbd	test   BYTE PTR [rip+0x14bf408],0x10        # 0x1418a13cc
+reference	pressure-plate	0x3e1fc6	cmp    edi,r12d
+reference	pressure-plate	0x3e1fd3	cmp    edi,r14d
+reference	pressure-plate	0x3e1fe5	cmp    edi,r12d
+reference	pressure-plate	0x3e1fef	cmp    edi,r14d
+reference	pressure-plate	0x3e2014	cmp    rbx,rax
+reference	pressure-plate	0x3e201b	cmp    edi,r14d
+reference	pressure-plate	0x3e2095	cmp    r13d,r15d
+reference	pressure-plate	0x3e20d1	test   BYTE PTR [rip+0x14bf2f4],0x10        # 0x1418a13cc
+reference	pressure-plate	0x3e20da	cmp    edi,r13d
+reference	pressure-plate	0x3e20eb	cmp    edi,r15d
+reference	pressure-plate	0x3e20f9	cmp    edi,r13d
+reference	pressure-plate	0x3e2103	cmp    edi,r15d
+reference	pressure-plate	0x3e2129	cmp    rbx,rax
+reference	pressure-plate	0x3e2130	cmp    edi,r15d
+reference	pressure-plate	0x3e21d1	test   BYTE PTR [rip+0x14bf1f4],0x2        # 0x1418a13cc
+reference	pressure-plate	0x3e21f4	test   al,al
+reference	pressure-plate	0x3e221f	cmp    r15,rax
+reference	pressure-plate	0x3e2224	test   BYTE PTR [rip+0x14bf1a1],0x2        # 0x1418a13cc
+reference	pressure-plate	0x3e231a	cmp    r13d,eax
+reference	pressure-plate	0x3e232a	cmp    r13d,eax
+reference	pressure-plate	0x3e233b	cmp    r13d,0x7
+reference	pressure-plate	0x3e23df	test   r8b,r8b
+reference	pressure-plate	0x3e2456	test   al,al
+reference	pressure-plate	0x3e2491	cmp    r13d,0x7
+reference	pressure-plate	0x3e2541	test   BYTE PTR [rip+0x14bee84],0x4        # 0x1418a13cc
+reference	pressure-plate	0x3e2564	test   al,al
+reference	pressure-plate	0x3e258f	cmp    r15,rax
+reference	pressure-plate	0x3e2594	test   BYTE PTR [rip+0x14bee31],0x4        # 0x1418a13cc
+reference	pressure-plate	0x3e268a	cmp    r13d,eax
+reference	pressure-plate	0x3e269a	cmp    r13d,eax
+reference	pressure-plate	0x3e26ab	cmp    r13d,0x7
+reference	pressure-plate	0x3e274f	test   r8b,r8b
+reference	pressure-plate	0x3e27c6	test   al,al
+reference	pressure-plate	0x3e2801	cmp    r13d,0x7
+reference	pressure-plate	0x3e28b1	test   BYTE PTR [rip+0x14beb14],0x20        # 0x1418a13cc
+reference	pressure-plate	0x3e28d4	test   al,al
+reference	pressure-plate	0x3e28fe	cmp    r15,rax
+reference	pressure-plate	0x3e2908	test   BYTE PTR [rip+0x14beabd],0x20        # 0x1418a13cc
+reference	pressure-plate	0x3e2a40	cmp    rbx,rax
+reference	pressure-plate	0x3e2a9d	cmp    rax,0x3
+reference	pressure-plate	0x3e2ab8	cmp    rax,0x4
+reference	pressure-plate	0x3e2b62	cmp    rbx,rax
+reference	pressure-plate	0x3e2c20	cmp    rsi,rax
+reference	pressure-plate	0x3e2c52	cmp    ecx,0x7d0
+reference	pressure-plate	0x3e2c95	cmp    rax,0x3
+reference	pressure-plate	0x3e2cb0	cmp    rax,0x4
+reference	pressure-plate	0x3e2d49	cmp    rdi,r15
+reference	pressure-plate	0x3e2de1	test   BYTE PTR [rip+0x14be5e4],0x1        # 0x1418a13cc
+reference	pressure-plate	0x3e2e04	test   al,al
+reference	pressure-plate	0x3e2e2f	cmp    r15,rax
+reference	pressure-plate	0x3e2e34	test   BYTE PTR [rip+0x14be591],0x1        # 0x1418a13cc
+reference	pressure-plate	0x3e2ee1	test   BYTE PTR [rip+0x14be4e4],0x8        # 0x1418a13cc
+reference	pressure-plate	0x3e2f04	test   al,al
+reference	pressure-plate	0x3e2f2f	cmp    r15,rax
+reference	pressure-plate	0x3e2f60	test   BYTE PTR [rip+0x14be465],0x8        # 0x1418a13cc
+reference	pressure-plate	0x3e301a	cmp    ebx,0xffffffff
+reference	pressure-plate	0x3e303f	cmp    WORD PTR [rax],0xffff
+reference	pressure-plate	0x3e30f8	cmp    eax,0xffffffff
+reference	pressure-plate	0x3e3117	cmp    eax,0xffffffff
+reference	pressure-plate	0x3e313f	cmp    WORD PTR [rax],0xffff
+reference	pressure-plate	0x3e3209	cmp    rax,rdx
+reference	pressure-plate	0x3e3214	test   edi,edi
+reference	pressure-plate	0x3e322b	cmp    edi,0x3
+reference	pressure-plate	0x3e3299	cmp    DWORD PTR [rip+0x14be1a9],ecx        # 0x1418a1448
+reference	pressure-plate	0x3e32a8	test   ecx,ecx
+reference	pressure-plate	0x3e32b1	cmp    edi,esi
+reference	pressure-plate	0x3e32c6	cmp    edi,r14d
+reference	pressure-plate	0x3e32e7	cmp    DWORD PTR [rax],ecx
+reference	pressure-plate	0x3e3300	cmp    DWORD PTR [rax],ecx
+reference	pressure-plate	0x3e3346	cmp    WORD PTR [rax],0xffff
+reference	pressure-plate	0x3e33de	cmp    edi,esi
+reference	pressure-plate	0x3e33ea	cmp    r14d,r13d
+reference	pressure-plate	0x3e34c2	cmp    ecx,0x17
+reference	track-stop	0x3e34cb	cmp    WORD PTR [rip+0x14bcf99],0x5        # 0x1418a046c
+reference	track-stop	0x3e35f1	test   BYTE PTR [rip+0x14bde5c],0x1        # 0x1418a1454
+reference	track-stop	0x3e35fa	cmp    DWORD PTR [rip+0x14bde57],0x0        # 0x1418a1458
+reference	track-stop	0x3e3603	cmp    DWORD PTR [rip+0x14bde52],0xffffffff        # 0x1418a145c
+reference	track-stop	0x3e362e	test   al,al
+reference	track-stop	0x3e365a	test   edx,edx
+reference	track-stop	0x3e367f	test   BYTE PTR [rip+0x14bddce],0x1        # 0x1418a1454
+reference	track-stop	0x3e3688	cmp    DWORD PTR [rip+0x14bddc9],0x0        # 0x1418a1458
+reference	track-stop	0x3e3691	cmp    DWORD PTR [rip+0x14bddc4],0xffffffff        # 0x1418a145c
+reference	track-stop	0x3e36bb	test   al,al
+reference	track-stop	0x3e36e8	test   edx,edx
+reference	track-stop	0x3e370d	test   BYTE PTR [rip+0x14bdd40],0x1        # 0x1418a1454
+reference	track-stop	0x3e3716	cmp    DWORD PTR [rip+0x14bdd3b],0x0        # 0x1418a1458
+reference	track-stop	0x3e371f	cmp    DWORD PTR [rip+0x14bdd36],0xffffffff        # 0x1418a145c
+reference	track-stop	0x3e374a	test   al,al
+reference	track-stop	0x3e3777	test   edx,edx
+reference	track-stop	0x3e379c	test   BYTE PTR [rip+0x14bdcb1],0x1        # 0x1418a1454
+reference	track-stop	0x3e37a5	cmp    DWORD PTR [rip+0x14bdcac],0x0        # 0x1418a1458
+reference	track-stop	0x3e37ae	cmp    DWORD PTR [rip+0x14bdca7],0xffffffff        # 0x1418a145c
+reference	track-stop	0x3e37d9	test   al,al
+reference	track-stop	0x3e3806	test   edx,edx
+reference	track-stop	0x3e3867	test   BYTE PTR [rip+0x14bdbe6],0x1        # 0x1418a1454
+reference	track-stop	0x3e3870	cmp    DWORD PTR [rip+0x14bdbe1],0x0        # 0x1418a1458
+reference	track-stop	0x3e3879	cmp    DWORD PTR [rip+0x14bdbdc],0x1        # 0x1418a145c
+reference	track-stop	0x3e38a4	test   al,al
+reference	track-stop	0x3e38d6	test   edx,edx
+reference	track-stop	0x3e38fa	test   BYTE PTR [rip+0x14bdb53],0x1        # 0x1418a1454
+reference	track-stop	0x3e3903	cmp    DWORD PTR [rip+0x14bdb4e],0x0        # 0x1418a1458
+reference	track-stop	0x3e390c	cmp    DWORD PTR [rip+0x14bdb49],0x1        # 0x1418a145c
+reference	track-stop	0x3e3936	test   al,al
+reference	track-stop	0x3e3962	test   edx,edx
+reference	track-stop	0x3e3986	test   BYTE PTR [rip+0x14bdac7],0x1        # 0x1418a1454
+reference	track-stop	0x3e398f	cmp    DWORD PTR [rip+0x14bdac2],0x0        # 0x1418a1458
+reference	track-stop	0x3e3998	cmp    DWORD PTR [rip+0x14bdabd],0x1        # 0x1418a145c
+reference	track-stop	0x3e39c3	test   al,al
+reference	track-stop	0x3e39ef	test   edx,edx
+reference	track-stop	0x3e3a13	test   BYTE PTR [rip+0x14bda3a],0x1        # 0x1418a1454
+reference	track-stop	0x3e3a1c	cmp    DWORD PTR [rip+0x14bda35],0x0        # 0x1418a1458
+reference	track-stop	0x3e3a25	cmp    DWORD PTR [rip+0x14bda30],0x1        # 0x1418a145c
+reference	track-stop	0x3e3a50	test   al,al
+reference	track-stop	0x3e3a7c	test   edx,edx
+reference	track-stop	0x3e3ac2	test   BYTE PTR [rip+0x14bd98b],0x1        # 0x1418a1454
+reference	track-stop	0x3e3acb	cmp    DWORD PTR [rip+0x14bd986],0xffffffff        # 0x1418a1458
+reference	track-stop	0x3e3ad4	cmp    DWORD PTR [rip+0x14bd981],0x0        # 0x1418a145c
+reference	track-stop	0x3e3aff	test   al,al
+reference	track-stop	0x3e3b2b	test   edx,edx
+reference	track-stop	0x3e3b50	test   BYTE PTR [rip+0x14bd8fd],0x1        # 0x1418a1454
+reference	track-stop	0x3e3b59	cmp    DWORD PTR [rip+0x14bd8f8],0xffffffff        # 0x1418a1458
+reference	track-stop	0x3e3b62	cmp    DWORD PTR [rip+0x14bd8f3],0x0        # 0x1418a145c
+reference	track-stop	0x3e3b8c	test   al,al
+reference	track-stop	0x3e3bb9	test   edx,edx
+reference	track-stop	0x3e3bde	test   BYTE PTR [rip+0x14bd86f],0x1        # 0x1418a1454
+reference	track-stop	0x3e3be7	cmp    DWORD PTR [rip+0x14bd86a],0xffffffff        # 0x1418a1458
+reference	track-stop	0x3e3bf0	cmp    DWORD PTR [rip+0x14bd865],0x0        # 0x1418a145c
+reference	track-stop	0x3e3c1b	test   al,al
+reference	track-stop	0x3e3c48	test   edx,edx
+reference	track-stop	0x3e3c6d	test   BYTE PTR [rip+0x14bd7e0],0x1        # 0x1418a1454
+reference	track-stop	0x3e3c76	cmp    DWORD PTR [rip+0x14bd7db],0xffffffff        # 0x1418a1458
+reference	track-stop	0x3e3c7f	cmp    DWORD PTR [rip+0x14bd7d6],0x0        # 0x1418a145c
+reference	track-stop	0x3e3caa	test   al,al
+reference	track-stop	0x3e3cd7	test   edx,edx
+reference	track-stop	0x3e3d23	test   BYTE PTR [rip+0x14bd72a],0x1        # 0x1418a1454
+reference	track-stop	0x3e3d2c	cmp    DWORD PTR [rip+0x14bd725],0x1        # 0x1418a1458
+reference	track-stop	0x3e3d35	cmp    DWORD PTR [rip+0x14bd720],0x0        # 0x1418a145c
+reference	track-stop	0x3e3d60	test   al,al
+reference	track-stop	0x3e3d8d	test   edx,edx
+reference	track-stop	0x3e3db2	test   BYTE PTR [rip+0x14bd69b],0x1        # 0x1418a1454
+reference	track-stop	0x3e3dbb	cmp    DWORD PTR [rip+0x14bd696],0x1        # 0x1418a1458
+reference	track-stop	0x3e3dc4	cmp    DWORD PTR [rip+0x14bd691],0x0        # 0x1418a145c
+reference	track-stop	0x3e3dee	test   al,al
+reference	track-stop	0x3e3e1b	test   edx,edx
+reference	track-stop	0x3e3e40	test   BYTE PTR [rip+0x14bd60d],0x1        # 0x1418a1454
+reference	track-stop	0x3e3e49	cmp    DWORD PTR [rip+0x14bd608],0x1        # 0x1418a1458
+reference	track-stop	0x3e3e52	cmp    DWORD PTR [rip+0x14bd603],0x0        # 0x1418a145c
+reference	track-stop	0x3e3e7d	test   al,al
+reference	track-stop	0x3e3eaa	test   edx,edx
+reference	track-stop	0x3e3ecf	test   BYTE PTR [rip+0x14bd57e],0x1        # 0x1418a1454
+reference	track-stop	0x3e3ed8	cmp    DWORD PTR [rip+0x14bd579],0x1        # 0x1418a1458
+reference	track-stop	0x3e3ee1	cmp    DWORD PTR [rip+0x14bd574],0x0        # 0x1418a145c
+reference	track-stop	0x3e3f0c	test   al,al
+reference	track-stop	0x3e3f39	test   edx,edx
+reference	track-stop	0x3e3f98	test   BYTE PTR [rip+0x14bd4b5],0x1        # 0x1418a1454
+reference	track-stop	0x3e3fbc	test   al,al
+reference	track-stop	0x3e3fe8	test   edx,edx
+reference	track-stop	0x3e4014	test   BYTE PTR [rip+0x14bd439],0x1        # 0x1418a1454
+reference	track-stop	0x3e4037	test   al,al
+reference	track-stop	0x3e4064	test   edx,edx
+reference	track-stop	0x3e408f	test   BYTE PTR [rip+0x14bd3be],0x1        # 0x1418a1454
+reference	track-stop	0x3e40b3	test   al,al
+reference	track-stop	0x3e40df	test   edx,edx
+reference	track-stop	0x3e410b	test   BYTE PTR [rip+0x14bd342],0x1        # 0x1418a1454
+reference	track-stop	0x3e412f	test   al,al
+reference	track-stop	0x3e415c	test   edx,edx
+reference	track-stop	0x3e41d4	test   rbx,rbx
+reference	track-stop	0x3e41d9	cmp    DWORD PTR [rip+0x14bd270],0xa        # 0x1418a1450
+reference	track-stop	0x3e41e2	cmp    rbx,0x1
+reference	track-stop	0x3e41e8	cmp    DWORD PTR [rip+0x14bd261],0x32        # 0x1418a1450
+reference	track-stop	0x3e41f1	cmp    rbx,0x2
+reference	track-stop	0x3e41f7	cmp    DWORD PTR [rip+0x14bd24f],0x1f4        # 0x1418a1450
+reference	track-stop	0x3e4203	cmp    rbx,0x3
+reference	track-stop	0x3e4209	cmp    DWORD PTR [rip+0x14bd23d],0x2710        # 0x1418a1450
+reference	track-stop	0x3e4215	cmp    rbx,0x4
+reference	track-stop	0x3e421b	cmp    DWORD PTR [rip+0x14bd22b],0xc350        # 0x1418a1450
+reference	track-stop	0x3e4249	test   al,al
+reference	track-stop	0x3e427a	test   edx,edx
+reference	track-stop	0x3e429f	test   rbx,rbx
+reference	track-stop	0x3e42a4	cmp    DWORD PTR [rip+0x14bd1a5],0xa        # 0x1418a1450
+reference	track-stop	0x3e42ad	cmp    rbx,0x1
+reference	track-stop	0x3e42b3	cmp    DWORD PTR [rip+0x14bd196],0x32        # 0x1418a1450
+reference	track-stop	0x3e42bc	cmp    rbx,0x2
+reference	track-stop	0x3e42c2	cmp    DWORD PTR [rip+0x14bd184],0x1f4        # 0x1418a1450
+reference	track-stop	0x3e42ce	cmp    rbx,0x3
+reference	track-stop	0x3e42d4	cmp    DWORD PTR [rip+0x14bd172],0x2710        # 0x1418a1450
+reference	track-stop	0x3e42e0	cmp    rbx,0x4
+reference	track-stop	0x3e42e6	cmp    DWORD PTR [rip+0x14bd160],0xc350        # 0x1418a1450
+reference	track-stop	0x3e4313	test   al,al
+reference	track-stop	0x3e4341	test   edx,edx
+reference	track-stop	0x3e4366	test   rbx,rbx
+reference	track-stop	0x3e436b	cmp    DWORD PTR [rip+0x14bd0de],0xa        # 0x1418a1450
+reference	track-stop	0x3e4374	cmp    rbx,0x1
+reference	track-stop	0x3e437a	cmp    DWORD PTR [rip+0x14bd0cf],0x32        # 0x1418a1450
+reference	track-stop	0x3e4383	cmp    rbx,0x2
+reference	track-stop	0x3e4389	cmp    DWORD PTR [rip+0x14bd0bd],0x1f4        # 0x1418a1450
+reference	track-stop	0x3e4395	cmp    rbx,0x3
+reference	track-stop	0x3e439b	cmp    DWORD PTR [rip+0x14bd0ab],0x2710        # 0x1418a1450
+reference	track-stop	0x3e43a7	cmp    rbx,0x4
+reference	track-stop	0x3e43ad	cmp    DWORD PTR [rip+0x14bd099],0xc350        # 0x1418a1450
+reference	track-stop	0x3e43db	test   al,al
+reference	track-stop	0x3e440a	test   edx,edx
+reference	track-stop	0x3e442f	test   rbx,rbx
+reference	track-stop	0x3e4434	cmp    DWORD PTR [rip+0x14bd015],0xa        # 0x1418a1450
+reference	track-stop	0x3e443d	cmp    rbx,0x1
+reference	track-stop	0x3e4443	cmp    DWORD PTR [rip+0x14bd006],0x32        # 0x1418a1450
+reference	track-stop	0x3e444c	cmp    rbx,0x2
+reference	track-stop	0x3e4452	cmp    DWORD PTR [rip+0x14bcff4],0x1f4        # 0x1418a1450
+reference	track-stop	0x3e445e	cmp    rbx,0x3
+reference	track-stop	0x3e4464	cmp    DWORD PTR [rip+0x14bcfe2],0x2710        # 0x1418a1450
+reference	track-stop	0x3e4470	cmp    rbx,0x4
+reference	track-stop	0x3e4476	cmp    DWORD PTR [rip+0x14bcfd0],0xc350        # 0x1418a1450
+reference	track-stop	0x3e44a4	test   al,al
+reference	track-stop	0x3e44d3	test   edx,edx
+reference	track-stop	0x3e44ff	cmp    rbx,0x5
+reference	bridge	0x3e450f	cmp    ecx,0x13
+reference	bridge	0x3e4608	cmp    DWORD PTR [rip+0x14bce5d],0x2        # 0x1418a146c
+reference	bridge	0x3e462c	test   al,al
+reference	bridge	0x3e4655	test   edx,edx
+reference	bridge	0x3e4681	cmp    DWORD PTR [rip+0x14bcde4],0x2        # 0x1418a146c
+reference	bridge	0x3e46a4	test   al,al
+reference	bridge	0x3e46ce	test   edx,edx
+reference	bridge	0x3e46fa	cmp    DWORD PTR [rip+0x14bcd6b],0x2        # 0x1418a146c
+reference	bridge	0x3e471e	test   al,al
+reference	bridge	0x3e4748	test   edx,edx
+reference	bridge	0x3e4774	cmp    DWORD PTR [rip+0x14bccf1],0x2        # 0x1418a146c
+reference	bridge	0x3e4798	test   al,al
+reference	bridge	0x3e47c2	test   edx,edx
+reference	bridge	0x3e4819	cmp    DWORD PTR [rip+0x14bcc4c],0x3        # 0x1418a146c
+reference	bridge	0x3e483d	test   al,al
+reference	bridge	0x3e486a	test   edx,edx
+reference	bridge	0x3e4896	cmp    DWORD PTR [rip+0x14bcbcf],0x3        # 0x1418a146c
+reference	bridge	0x3e48b9	test   al,al
+reference	bridge	0x3e48e6	test   edx,edx
+reference	bridge	0x3e4912	cmp    DWORD PTR [rip+0x14bcb53],0x3        # 0x1418a146c
+reference	bridge	0x3e4936	test   al,al
+reference	bridge	0x3e4963	test   edx,edx
+reference	bridge	0x3e498f	cmp    DWORD PTR [rip+0x14bcad6],0x3        # 0x1418a146c
+reference	bridge	0x3e49b3	test   al,al
+reference	bridge	0x3e49e0	test   edx,edx
+reference	bridge	0x3e4a39	cmp    DWORD PTR [rip+0x14bca2c],0x0        # 0x1418a146c
+reference	bridge	0x3e4a5d	test   al,al
+reference	bridge	0x3e4a8a	test   edx,edx
+reference	bridge	0x3e4ab6	cmp    DWORD PTR [rip+0x14bc9af],0x0        # 0x1418a146c
+reference	bridge	0x3e4ad9	test   al,al
+reference	bridge	0x3e4b06	test   edx,edx
+reference	bridge	0x3e4b32	cmp    DWORD PTR [rip+0x14bc933],0x0        # 0x1418a146c
+reference	bridge	0x3e4b56	test   al,al
+reference	bridge	0x3e4b83	test   edx,edx
+reference	bridge	0x3e4baf	cmp    DWORD PTR [rip+0x14bc8b6],0x0        # 0x1418a146c
+reference	bridge	0x3e4bd3	test   al,al
+reference	bridge	0x3e4c00	test   edx,edx
+reference	bridge	0x3e4c59	cmp    DWORD PTR [rip+0x14bc80c],0x1        # 0x1418a146c
+reference	bridge	0x3e4c7d	test   al,al
+reference	bridge	0x3e4caa	test   edx,edx
+reference	bridge	0x3e4cd6	cmp    DWORD PTR [rip+0x14bc78f],0x1        # 0x1418a146c
+reference	bridge	0x3e4cf9	test   al,al
+reference	bridge	0x3e4d26	test   edx,edx
+reference	bridge	0x3e4d52	cmp    DWORD PTR [rip+0x14bc713],0x1        # 0x1418a146c
+reference	bridge	0x3e4d76	test   al,al
+reference	bridge	0x3e4da3	test   edx,edx
+reference	bridge	0x3e4dcf	cmp    DWORD PTR [rip+0x14bc696],0x1        # 0x1418a146c
+reference	bridge	0x3e4df3	test   al,al
+reference	bridge	0x3e4e20	test   edx,edx
+reference	bridge	0x3e4e79	cmp    DWORD PTR [rip+0x14bc5ec],0xffffffff        # 0x1418a146c
+reference	bridge	0x3e4e9f	test   al,al
+reference	bridge	0x3e4ecd	test   edx,edx
+reference	bridge	0x3e4ef9	cmp    DWORD PTR [rip+0x14bc56c],0xffffffff        # 0x1418a146c
+reference	bridge	0x3e4f1f	test   al,al
+reference	bridge	0x3e4f4d	test   edx,edx
+reference	bridge	0x3e4f79	cmp    DWORD PTR [rip+0x14bc4ec],0xffffffff        # 0x1418a146c
+reference	bridge	0x3e4f9f	test   al,al
+reference	bridge	0x3e4fcd	test   edx,edx
+reference	bridge	0x3e4ff9	cmp    DWORD PTR [rip+0x14bc46c],0xffffffff        # 0x1418a146c
+reference	bridge	0x3e501f	test   al,al
+reference	bridge	0x3e504d	test   edx,edx
+classic	shared-icons-or-frame	0x3dd4f3	cmp    ecx,0x32
+classic	shared-icons-or-frame	0x3dd502	bt     rdx,rcx
+classic	shared-icons-or-frame	0x3dd508	cmp    ecx,0x17
+classic	shared-icons-or-frame	0x3dd520	test   dx,ax
+classic	shared-icons-or-frame	0x3dd549	cmp    ecx,0x17
+classic	shared-icons-or-frame	0x3dd54e	cmp    WORD PTR [rip+0x14bcee6],0x1        # 0x14189a43c
+classic	shared-icons-or-frame	0x3dd56c	cmp    ecx,0x17
+classic	shared-icons-or-frame	0x3dd571	cmp    WORD PTR [rip+0x14bcec3],0x5        # 0x14189a43c
+classic	shared-icons-or-frame	0x3dd596	cmp    r14d,r12d
+classic	shared-icons-or-frame	0x3dd5a3	cmp    r15d,esi
+classic	shared-icons-or-frame	0x3dd5cd	cmp    edi,0x4
+classic	shared-icons-or-frame	0x3dd5d2	cmp    ebx,r15d
+classic	shared-icons-or-frame	0x3dd5e2	cmp    ebx,esi
+classic	shared-icons-or-frame	0x3dd5f6	cmp    edi,r14d
+classic	shared-icons-or-frame	0x3dd5fb	cmp    ebx,r15d
+classic	shared-icons-or-frame	0x3dd60b	cmp    ebx,esi
+classic	shared-icons-or-frame	0x3dd61f	cmp    ebx,r15d
+classic	shared-icons-or-frame	0x3dd62c	cmp    ebx,esi
+classic	shared-icons-or-frame	0x3dd646	cmp    ebx,esi
+classic	shared-icons-or-frame	0x3dd650	cmp    edi,r14d
+classic	shared-icons-or-frame	0x3dd665	cmp    ecx,0x16
+classic	catapult	0x3dd675	cmp    WORD PTR [rip+0x14bcdbf],0x0        # 0x14189a43c
+classic	ballista	0x3dd72d	cmp    WORD PTR [rip+0x14bcd07],0x1        # 0x14189a43c
+classic	bolt-thrower	0x3dd7d9	cmp    WORD PTR [rip+0x14bcc5b],0x2        # 0x14189a43c
+classic	shared-icons-or-frame	0x3dd8e5	cmp    DWORD PTR [rip+0x14bdb51],esi        # 0x14189b43c
+classic	shared-icons-or-frame	0x3dd907	test   al,al
+classic	shared-icons-or-frame	0x3dd933	cmp    esi,0x7
+classic	shared-icons-or-frame	0x3dd99e	test   edx,edx
+classic	shared-icons-or-frame	0x3dd9f0	cmp    esi,0x8
+classic	horizontal-axle	0x3dda0b	cmp    ecx,0x29
+classic	horizontal-axle	0x3ddae9	cmp    DWORD PTR [rip+0x14bd94c],0x1        # 0x14189b43c
+classic	horizontal-axle	0x3ddb0d	test   al,al
+classic	horizontal-axle	0x3ddb3a	test   edx,edx
+classic	horizontal-axle	0x3ddb66	cmp    DWORD PTR [rip+0x14bd8cf],0x1        # 0x14189b43c
+classic	horizontal-axle	0x3ddb89	test   al,al
+classic	horizontal-axle	0x3ddbb6	test   edx,edx
+classic	horizontal-axle	0x3ddbe2	cmp    DWORD PTR [rip+0x14bd853],0x1        # 0x14189b43c
+classic	horizontal-axle	0x3ddc06	test   al,al
+classic	horizontal-axle	0x3ddc33	test   edx,edx
+classic	horizontal-axle	0x3ddc5f	cmp    DWORD PTR [rip+0x14bd7d6],0x1        # 0x14189b43c
+classic	horizontal-axle	0x3ddc83	test   al,al
+classic	horizontal-axle	0x3ddcb0	test   edx,edx
+classic	horizontal-axle	0x3ddd09	cmp    DWORD PTR [rip+0x14bd72c],0x0        # 0x14189b43c
+classic	horizontal-axle	0x3ddd2d	test   al,al
+classic	horizontal-axle	0x3ddd5a	test   edx,edx
+classic	horizontal-axle	0x3ddd86	cmp    DWORD PTR [rip+0x14bd6af],0x0        # 0x14189b43c
+classic	horizontal-axle	0x3ddda9	test   al,al
+classic	horizontal-axle	0x3dddd6	test   edx,edx
+classic	horizontal-axle	0x3dde02	cmp    DWORD PTR [rip+0x14bd633],0x0        # 0x14189b43c
+classic	horizontal-axle	0x3dde26	test   al,al
+classic	horizontal-axle	0x3dde53	test   edx,edx
+classic	horizontal-axle	0x3dde7f	cmp    DWORD PTR [rip+0x14bd5b6],0x0        # 0x14189b43c
+classic	horizontal-axle	0x3ddea3	test   al,al
+classic	horizontal-axle	0x3dded0	test   edx,edx
+classic	water-wheel	0x3ddf00	cmp    ecx,0x2b
+classic	water-wheel	0x3de028	cmp    DWORD PTR [rip+0x14bd40d],0x1        # 0x14189b43c
+classic	water-wheel	0x3de04c	test   al,al
+classic	water-wheel	0x3de078	test   edx,edx
+classic	water-wheel	0x3de0a4	cmp    DWORD PTR [rip+0x14bd391],0x1        # 0x14189b43c
+classic	water-wheel	0x3de0c7	test   al,al
+classic	water-wheel	0x3de0f4	test   edx,edx
+classic	water-wheel	0x3de120	cmp    DWORD PTR [rip+0x14bd315],0x1        # 0x14189b43c
+classic	water-wheel	0x3de144	test   al,al
+classic	water-wheel	0x3de171	test   edx,edx
+classic	water-wheel	0x3de19d	cmp    DWORD PTR [rip+0x14bd298],0x1        # 0x14189b43c
+classic	water-wheel	0x3de1c1	test   al,al
+classic	water-wheel	0x3de1ee	test   edx,edx
+classic	water-wheel	0x3de249	cmp    DWORD PTR [rip+0x14bd1ec],0x0        # 0x14189b43c
+classic	water-wheel	0x3de26d	test   al,al
+classic	water-wheel	0x3de29a	test   edx,edx
+classic	water-wheel	0x3de2c6	cmp    DWORD PTR [rip+0x14bd16f],0x0        # 0x14189b43c
+classic	water-wheel	0x3de2e9	test   al,al
+classic	water-wheel	0x3de316	test   edx,edx
+classic	water-wheel	0x3de342	cmp    DWORD PTR [rip+0x14bd0f3],0x0        # 0x14189b43c
+classic	water-wheel	0x3de366	test   al,al
+classic	water-wheel	0x3de393	test   edx,edx
+classic	water-wheel	0x3de3bf	cmp    DWORD PTR [rip+0x14bd076],0x0        # 0x14189b43c
+classic	water-wheel	0x3de3e3	test   al,al
+classic	water-wheel	0x3de410	test   edx,edx
+classic	screw-pump	0x3de439	cmp    ecx,0x21
+classic	screw-pump	0x3de568	cmp    DWORD PTR [rip+0x14bcecd],0x2        # 0x14189b43c
+classic	screw-pump	0x3de58c	test   al,al
+classic	screw-pump	0x3de5b8	test   edx,edx
+classic	screw-pump	0x3de5e4	cmp    DWORD PTR [rip+0x14bce51],0x2        # 0x14189b43c
+classic	screw-pump	0x3de607	test   al,al
+classic	screw-pump	0x3de634	test   edx,edx
+classic	screw-pump	0x3de660	cmp    DWORD PTR [rip+0x14bcdd5],0x2        # 0x14189b43c
+classic	screw-pump	0x3de684	test   al,al
+classic	screw-pump	0x3de6b1	test   edx,edx
+classic	screw-pump	0x3de6dd	cmp    DWORD PTR [rip+0x14bcd58],0x2        # 0x14189b43c
+classic	screw-pump	0x3de701	test   al,al
+classic	screw-pump	0x3de72e	test   edx,edx
+classic	screw-pump	0x3de789	cmp    DWORD PTR [rip+0x14bccac],0x0        # 0x14189b43c
+classic	screw-pump	0x3de7ad	test   al,al
+classic	screw-pump	0x3de7da	test   edx,edx
+classic	screw-pump	0x3de806	cmp    DWORD PTR [rip+0x14bcc2f],0x0        # 0x14189b43c
+classic	screw-pump	0x3de829	test   al,al
+classic	screw-pump	0x3de856	test   edx,edx
+classic	screw-pump	0x3de882	cmp    DWORD PTR [rip+0x14bcbb3],0x0        # 0x14189b43c
+classic	screw-pump	0x3de8a6	test   al,al
+classic	screw-pump	0x3de8d3	test   edx,edx
+classic	screw-pump	0x3de8ff	cmp    DWORD PTR [rip+0x14bcb36],0x0        # 0x14189b43c
+classic	screw-pump	0x3de923	test   al,al
+classic	screw-pump	0x3de950	test   edx,edx
+classic	screw-pump	0x3de9a9	cmp    DWORD PTR [rip+0x14bca8c],0x1        # 0x14189b43c
+classic	screw-pump	0x3de9cd	test   al,al
+classic	screw-pump	0x3de9fa	test   edx,edx
+classic	screw-pump	0x3dea26	cmp    DWORD PTR [rip+0x14bca0f],0x1        # 0x14189b43c
+classic	screw-pump	0x3dea49	test   al,al
+classic	screw-pump	0x3dea76	test   edx,edx
+classic	screw-pump	0x3deaa2	cmp    DWORD PTR [rip+0x14bc993],0x1        # 0x14189b43c
+classic	screw-pump	0x3deac6	test   al,al
+classic	screw-pump	0x3deaf3	test   edx,edx
+classic	screw-pump	0x3deb1f	cmp    DWORD PTR [rip+0x14bc916],0x1        # 0x14189b43c
+classic	screw-pump	0x3deb43	test   al,al
+classic	screw-pump	0x3deb70	test   edx,edx
+classic	screw-pump	0x3debc9	cmp    DWORD PTR [rip+0x14bc86c],0x3        # 0x14189b43c
+classic	screw-pump	0x3debed	test   al,al
+classic	screw-pump	0x3dec1a	test   edx,edx
+classic	screw-pump	0x3dec46	cmp    DWORD PTR [rip+0x14bc7ef],0x3        # 0x14189b43c
+classic	screw-pump	0x3dec69	test   al,al
+classic	screw-pump	0x3dec96	test   edx,edx
+classic	screw-pump	0x3decc2	cmp    DWORD PTR [rip+0x14bc773],0x3        # 0x14189b43c
+classic	screw-pump	0x3dece6	test   al,al
+classic	screw-pump	0x3ded13	test   edx,edx
+classic	screw-pump	0x3ded3f	cmp    DWORD PTR [rip+0x14bc6f6],0x3        # 0x14189b43c
+classic	screw-pump	0x3ded63	test   al,al
+classic	screw-pump	0x3ded90	test   edx,edx
+classic	rollers	0x3dedb9	cmp    ecx,0x32
+classic	rollers	0x3deec9	cmp    DWORD PTR [rip+0x14bc56c],0x2        # 0x14189b43c
+classic	rollers	0x3deeed	test   al,al
+classic	rollers	0x3def19	test   edx,edx
+classic	rollers	0x3def45	cmp    DWORD PTR [rip+0x14bc4f0],0x2        # 0x14189b43c
+classic	rollers	0x3def68	test   al,al
+classic	rollers	0x3def95	test   edx,edx
+classic	rollers	0x3defc1	cmp    DWORD PTR [rip+0x14bc474],0x2        # 0x14189b43c
+classic	rollers	0x3defe5	test   al,al
+classic	rollers	0x3df012	test   edx,edx
+classic	rollers	0x3df03e	cmp    DWORD PTR [rip+0x14bc3f7],0x2        # 0x14189b43c
+classic	rollers	0x3df062	test   al,al
+classic	rollers	0x3df08f	test   edx,edx
+classic	rollers	0x3df0e8	cmp    DWORD PTR [rip+0x14bc34d],0x0        # 0x14189b43c
+classic	rollers	0x3df10c	test   al,al
+classic	rollers	0x3df138	test   edx,edx
+classic	rollers	0x3df164	cmp    DWORD PTR [rip+0x14bc2d1],0x0        # 0x14189b43c
+classic	rollers	0x3df187	test   al,al
+classic	rollers	0x3df1b4	test   edx,edx
+classic	rollers	0x3df1e0	cmp    DWORD PTR [rip+0x14bc255],0x0        # 0x14189b43c
+classic	rollers	0x3df204	test   al,al
+classic	rollers	0x3df231	test   edx,edx
+classic	rollers	0x3df25d	cmp    DWORD PTR [rip+0x14bc1d8],0x0        # 0x14189b43c
+classic	rollers	0x3df281	test   al,al
+classic	rollers	0x3df2ae	test   edx,edx
+classic	rollers	0x3df309	cmp    DWORD PTR [rip+0x14bc12c],0x1        # 0x14189b43c
+classic	rollers	0x3df32d	test   al,al
+classic	rollers	0x3df35a	test   edx,edx
+classic	rollers	0x3df386	cmp    DWORD PTR [rip+0x14bc0af],0x1        # 0x14189b43c
+classic	rollers	0x3df3a9	test   al,al
+classic	rollers	0x3df3d6	test   edx,edx
+classic	rollers	0x3df402	cmp    DWORD PTR [rip+0x14bc033],0x1        # 0x14189b43c
+classic	rollers	0x3df426	test   al,al
+classic	rollers	0x3df453	test   edx,edx
+classic	rollers	0x3df47f	cmp    DWORD PTR [rip+0x14bbfb6],0x1        # 0x14189b43c
+classic	rollers	0x3df4a3	test   al,al
+classic	rollers	0x3df4d0	test   edx,edx
+classic	rollers	0x3df529	cmp    DWORD PTR [rip+0x14bbf0c],0x3        # 0x14189b43c
+classic	rollers	0x3df550	test   al,al
+classic	rollers	0x3df57d	test   edx,edx
+classic	rollers	0x3df5a9	cmp    DWORD PTR [rip+0x14bbe8c],0x3        # 0x14189b43c
+classic	rollers	0x3df5cf	test   al,al
+classic	rollers	0x3df5fc	test   edx,edx
+classic	rollers	0x3df628	cmp    DWORD PTR [rip+0x14bbe0d],0x3        # 0x14189b43c
+classic	rollers	0x3df64f	test   al,al
+classic	rollers	0x3df67c	test   edx,edx
+classic	rollers	0x3df6a8	cmp    DWORD PTR [rip+0x14bbd8d],0x3        # 0x14189b43c
+classic	rollers	0x3df6cf	test   al,al
+classic	rollers	0x3df6fc	test   edx,edx
+classic	rollers	0x3df774	test   rbx,rbx
+classic	rollers	0x3df779	cmp    DWORD PTR [rip+0x14bbcad],0x2710        # 0x14189b430
+classic	rollers	0x3df785	cmp    rbx,0x1
+classic	rollers	0x3df78b	cmp    DWORD PTR [rip+0x14bbc9b],0x4e20        # 0x14189b430
+classic	rollers	0x3df797	cmp    rbx,0x2
+classic	rollers	0x3df79d	cmp    DWORD PTR [rip+0x14bbc89],0x7530        # 0x14189b430
+classic	rollers	0x3df7a9	cmp    rbx,0x3
+classic	rollers	0x3df7af	cmp    DWORD PTR [rip+0x14bbc77],0x9c40        # 0x14189b430
+classic	rollers	0x3df7bb	cmp    rbx,0x4
+classic	rollers	0x3df7c1	cmp    DWORD PTR [rip+0x14bbc65],0xc350        # 0x14189b430
+classic	rollers	0x3df7f2	test   al,al
+classic	rollers	0x3df823	test   edx,edx
+classic	rollers	0x3df848	test   rbx,rbx
+classic	rollers	0x3df84d	cmp    DWORD PTR [rip+0x14bbbd9],0x2710        # 0x14189b430
+classic	rollers	0x3df859	cmp    rbx,0x1
+classic	rollers	0x3df85f	cmp    DWORD PTR [rip+0x14bbbc7],0x4e20        # 0x14189b430
+classic	rollers	0x3df86b	cmp    rbx,0x2
+classic	rollers	0x3df871	cmp    DWORD PTR [rip+0x14bbbb5],0x7530        # 0x14189b430
+classic	rollers	0x3df87d	cmp    rbx,0x3
+classic	rollers	0x3df883	cmp    DWORD PTR [rip+0x14bbba3],0x9c40        # 0x14189b430
+classic	rollers	0x3df88f	cmp    rbx,0x4
+classic	rollers	0x3df895	cmp    DWORD PTR [rip+0x14bbb91],0xc350        # 0x14189b430
+classic	rollers	0x3df8c9	test   al,al
+classic	rollers	0x3df8f7	test   edx,edx
+classic	rollers	0x3df91c	test   rbx,rbx
+classic	rollers	0x3df921	cmp    DWORD PTR [rip+0x14bbb05],0x2710        # 0x14189b430
+classic	rollers	0x3df92d	cmp    rbx,0x1
+classic	rollers	0x3df933	cmp    DWORD PTR [rip+0x14bbaf3],0x4e20        # 0x14189b430
+classic	rollers	0x3df93f	cmp    rbx,0x2
+classic	rollers	0x3df945	cmp    DWORD PTR [rip+0x14bbae1],0x7530        # 0x14189b430
+classic	rollers	0x3df951	cmp    rbx,0x3
+classic	rollers	0x3df957	cmp    DWORD PTR [rip+0x14bbacf],0x9c40        # 0x14189b430
+classic	rollers	0x3df963	cmp    rbx,0x4
+classic	rollers	0x3df969	cmp    DWORD PTR [rip+0x14bbabd],0xc350        # 0x14189b430
+classic	rollers	0x3df99a	test   al,al
+classic	rollers	0x3df9c9	test   edx,edx
+classic	rollers	0x3df9ee	test   rbx,rbx
+classic	rollers	0x3df9f3	cmp    DWORD PTR [rip+0x14bba33],0x2710        # 0x14189b430
+classic	rollers	0x3df9ff	cmp    rbx,0x1
+classic	rollers	0x3dfa05	cmp    DWORD PTR [rip+0x14bba21],0x4e20        # 0x14189b430
+classic	rollers	0x3dfa11	cmp    rbx,0x2
+classic	rollers	0x3dfa17	cmp    DWORD PTR [rip+0x14bba0f],0x7530        # 0x14189b430
+classic	rollers	0x3dfa23	cmp    rbx,0x3
+classic	rollers	0x3dfa29	cmp    DWORD PTR [rip+0x14bb9fd],0x9c40        # 0x14189b430
+classic	rollers	0x3dfa35	cmp    rbx,0x4
+classic	rollers	0x3dfa3b	cmp    DWORD PTR [rip+0x14bb9eb],0xc350        # 0x14189b430
+classic	rollers	0x3dfa6c	test   al,al
+classic	rollers	0x3dfa9b	test   edx,edx
+classic	rollers	0x3dfac7	cmp    rbx,0x5
+classic	shared-icons-or-frame	0x3dfad7	cmp    ecx,0x17
+classic	pressure-plate	0x3dfae0	cmp    WORD PTR [rip+0x14ba954],0x1        # 0x14189a43c
+classic	pressure-plate	0x3dfb3c	cmp    eax,esi
+classic	pressure-plate	0x3dfb46	cmp    ebx,r14d
+classic	pressure-plate	0x3dfb7d	test   BYTE PTR [rip+0x14bb818],0x10        # 0x14189b39c
+classic	pressure-plate	0x3dfb86	cmp    edi,r12d
+classic	pressure-plate	0x3dfb93	cmp    edi,r14d
+classic	pressure-plate	0x3dfba5	cmp    edi,r12d
+classic	pressure-plate	0x3dfbaf	cmp    edi,r14d
+classic	pressure-plate	0x3dfbd4	cmp    rbx,rax
+classic	pressure-plate	0x3dfbdb	cmp    edi,r14d
+classic	pressure-plate	0x3dfc55	cmp    r13d,r15d
+classic	pressure-plate	0x3dfc91	test   BYTE PTR [rip+0x14bb704],0x10        # 0x14189b39c
+classic	pressure-plate	0x3dfc9a	cmp    edi,r13d
+classic	pressure-plate	0x3dfcab	cmp    edi,r15d
+classic	pressure-plate	0x3dfcb9	cmp    edi,r13d
+classic	pressure-plate	0x3dfcc3	cmp    edi,r15d
+classic	pressure-plate	0x3dfce9	cmp    rbx,rax
+classic	pressure-plate	0x3dfcf0	cmp    edi,r15d
+classic	pressure-plate	0x3dfd91	test   BYTE PTR [rip+0x14bb604],0x2        # 0x14189b39c
+classic	pressure-plate	0x3dfdb4	test   al,al
+classic	pressure-plate	0x3dfddf	cmp    r15,rax
+classic	pressure-plate	0x3dfde4	test   BYTE PTR [rip+0x14bb5b1],0x2        # 0x14189b39c
+classic	pressure-plate	0x3dfeda	cmp    r13d,eax
+classic	pressure-plate	0x3dfeea	cmp    r13d,eax
+classic	pressure-plate	0x3dfefb	cmp    r13d,0x7
+classic	pressure-plate	0x3dff9f	test   r8b,r8b
+classic	pressure-plate	0x3e0016	test   al,al
+classic	pressure-plate	0x3e0051	cmp    r13d,0x7
+classic	pressure-plate	0x3e0101	test   BYTE PTR [rip+0x14bb294],0x4        # 0x14189b39c
+classic	pressure-plate	0x3e0124	test   al,al
+classic	pressure-plate	0x3e014f	cmp    r15,rax
+classic	pressure-plate	0x3e0154	test   BYTE PTR [rip+0x14bb241],0x4        # 0x14189b39c
+classic	pressure-plate	0x3e024a	cmp    r13d,eax
+classic	pressure-plate	0x3e025a	cmp    r13d,eax
+classic	pressure-plate	0x3e026b	cmp    r13d,0x7
+classic	pressure-plate	0x3e030f	test   r8b,r8b
+classic	pressure-plate	0x3e0386	test   al,al
+classic	pressure-plate	0x3e03c1	cmp    r13d,0x7
+classic	pressure-plate	0x3e0471	test   BYTE PTR [rip+0x14baf24],0x20        # 0x14189b39c
+classic	pressure-plate	0x3e0494	test   al,al
+classic	pressure-plate	0x3e04be	cmp    r15,rax
+classic	pressure-plate	0x3e04c8	test   BYTE PTR [rip+0x14baecd],0x20        # 0x14189b39c
+classic	pressure-plate	0x3e0600	cmp    rbx,rax
+classic	pressure-plate	0x3e065d	cmp    rax,0x3
+classic	pressure-plate	0x3e0678	cmp    rax,0x4
+classic	pressure-plate	0x3e0722	cmp    rbx,rax
+classic	pressure-plate	0x3e07e0	cmp    rsi,rax
+classic	pressure-plate	0x3e0812	cmp    ecx,0x7d0
+classic	pressure-plate	0x3e0855	cmp    rax,0x3
+classic	pressure-plate	0x3e0870	cmp    rax,0x4
+classic	pressure-plate	0x3e0909	cmp    rdi,r15
+classic	pressure-plate	0x3e09a1	test   BYTE PTR [rip+0x14ba9f4],0x1        # 0x14189b39c
+classic	pressure-plate	0x3e09c4	test   al,al
+classic	pressure-plate	0x3e09ef	cmp    r15,rax
+classic	pressure-plate	0x3e09f4	test   BYTE PTR [rip+0x14ba9a1],0x1        # 0x14189b39c
+classic	pressure-plate	0x3e0aa1	test   BYTE PTR [rip+0x14ba8f4],0x8        # 0x14189b39c
+classic	pressure-plate	0x3e0ac4	test   al,al
+classic	pressure-plate	0x3e0aef	cmp    r15,rax
+classic	pressure-plate	0x3e0b20	test   BYTE PTR [rip+0x14ba875],0x8        # 0x14189b39c
+classic	pressure-plate	0x3e0bda	cmp    ebx,0xffffffff
+classic	pressure-plate	0x3e0bff	cmp    WORD PTR [rax],0xffff
+classic	pressure-plate	0x3e0cb8	cmp    eax,0xffffffff
+classic	pressure-plate	0x3e0cd7	cmp    eax,0xffffffff
+classic	pressure-plate	0x3e0cff	cmp    WORD PTR [rax],0xffff
+classic	pressure-plate	0x3e0dc9	cmp    rax,rdx
+classic	pressure-plate	0x3e0dd4	test   edi,edi
+classic	pressure-plate	0x3e0deb	cmp    edi,0x3
+classic	pressure-plate	0x3e0e59	cmp    DWORD PTR [rip+0x14ba5b9],ecx        # 0x14189b418
+classic	pressure-plate	0x3e0e68	test   ecx,ecx
+classic	pressure-plate	0x3e0e71	cmp    edi,esi
+classic	pressure-plate	0x3e0e86	cmp    edi,r14d
+classic	pressure-plate	0x3e0ea7	cmp    DWORD PTR [rax],ecx
+classic	pressure-plate	0x3e0ec0	cmp    DWORD PTR [rax],ecx
+classic	pressure-plate	0x3e0f06	cmp    WORD PTR [rax],0xffff
+classic	pressure-plate	0x3e0f9e	cmp    edi,esi
+classic	pressure-plate	0x3e0faa	cmp    r14d,r13d
+classic	pressure-plate	0x3e1082	cmp    ecx,0x17
+classic	track-stop	0x3e108b	cmp    WORD PTR [rip+0x14b93a9],0x5        # 0x14189a43c
+classic	track-stop	0x3e11b1	test   BYTE PTR [rip+0x14ba26c],0x1        # 0x14189b424
+classic	track-stop	0x3e11ba	cmp    DWORD PTR [rip+0x14ba267],0x0        # 0x14189b428
+classic	track-stop	0x3e11c3	cmp    DWORD PTR [rip+0x14ba262],0xffffffff        # 0x14189b42c
+classic	track-stop	0x3e11ee	test   al,al
+classic	track-stop	0x3e121a	test   edx,edx
+classic	track-stop	0x3e123f	test   BYTE PTR [rip+0x14ba1de],0x1        # 0x14189b424
+classic	track-stop	0x3e1248	cmp    DWORD PTR [rip+0x14ba1d9],0x0        # 0x14189b428
+classic	track-stop	0x3e1251	cmp    DWORD PTR [rip+0x14ba1d4],0xffffffff        # 0x14189b42c
+classic	track-stop	0x3e127b	test   al,al
+classic	track-stop	0x3e12a8	test   edx,edx
+classic	track-stop	0x3e12cd	test   BYTE PTR [rip+0x14ba150],0x1        # 0x14189b424
+classic	track-stop	0x3e12d6	cmp    DWORD PTR [rip+0x14ba14b],0x0        # 0x14189b428
+classic	track-stop	0x3e12df	cmp    DWORD PTR [rip+0x14ba146],0xffffffff        # 0x14189b42c
+classic	track-stop	0x3e130a	test   al,al
+classic	track-stop	0x3e1337	test   edx,edx
+classic	track-stop	0x3e135c	test   BYTE PTR [rip+0x14ba0c1],0x1        # 0x14189b424
+classic	track-stop	0x3e1365	cmp    DWORD PTR [rip+0x14ba0bc],0x0        # 0x14189b428
+classic	track-stop	0x3e136e	cmp    DWORD PTR [rip+0x14ba0b7],0xffffffff        # 0x14189b42c
+classic	track-stop	0x3e1399	test   al,al
+classic	track-stop	0x3e13c6	test   edx,edx
+classic	track-stop	0x3e1427	test   BYTE PTR [rip+0x14b9ff6],0x1        # 0x14189b424
+classic	track-stop	0x3e1430	cmp    DWORD PTR [rip+0x14b9ff1],0x0        # 0x14189b428
+classic	track-stop	0x3e1439	cmp    DWORD PTR [rip+0x14b9fec],0x1        # 0x14189b42c
+classic	track-stop	0x3e1464	test   al,al
+classic	track-stop	0x3e1496	test   edx,edx
+classic	track-stop	0x3e14ba	test   BYTE PTR [rip+0x14b9f63],0x1        # 0x14189b424
+classic	track-stop	0x3e14c3	cmp    DWORD PTR [rip+0x14b9f5e],0x0        # 0x14189b428
+classic	track-stop	0x3e14cc	cmp    DWORD PTR [rip+0x14b9f59],0x1        # 0x14189b42c
+classic	track-stop	0x3e14f6	test   al,al
+classic	track-stop	0x3e1522	test   edx,edx
+classic	track-stop	0x3e1546	test   BYTE PTR [rip+0x14b9ed7],0x1        # 0x14189b424
+classic	track-stop	0x3e154f	cmp    DWORD PTR [rip+0x14b9ed2],0x0        # 0x14189b428
+classic	track-stop	0x3e1558	cmp    DWORD PTR [rip+0x14b9ecd],0x1        # 0x14189b42c
+classic	track-stop	0x3e1583	test   al,al
+classic	track-stop	0x3e15af	test   edx,edx
+classic	track-stop	0x3e15d3	test   BYTE PTR [rip+0x14b9e4a],0x1        # 0x14189b424
+classic	track-stop	0x3e15dc	cmp    DWORD PTR [rip+0x14b9e45],0x0        # 0x14189b428
+classic	track-stop	0x3e15e5	cmp    DWORD PTR [rip+0x14b9e40],0x1        # 0x14189b42c
+classic	track-stop	0x3e1610	test   al,al
+classic	track-stop	0x3e163c	test   edx,edx
+classic	track-stop	0x3e1682	test   BYTE PTR [rip+0x14b9d9b],0x1        # 0x14189b424
+classic	track-stop	0x3e168b	cmp    DWORD PTR [rip+0x14b9d96],0xffffffff        # 0x14189b428
+classic	track-stop	0x3e1694	cmp    DWORD PTR [rip+0x14b9d91],0x0        # 0x14189b42c
+classic	track-stop	0x3e16bf	test   al,al
+classic	track-stop	0x3e16eb	test   edx,edx
+classic	track-stop	0x3e1710	test   BYTE PTR [rip+0x14b9d0d],0x1        # 0x14189b424
+classic	track-stop	0x3e1719	cmp    DWORD PTR [rip+0x14b9d08],0xffffffff        # 0x14189b428
+classic	track-stop	0x3e1722	cmp    DWORD PTR [rip+0x14b9d03],0x0        # 0x14189b42c
+classic	track-stop	0x3e174c	test   al,al
+classic	track-stop	0x3e1779	test   edx,edx
+classic	track-stop	0x3e179e	test   BYTE PTR [rip+0x14b9c7f],0x1        # 0x14189b424
+classic	track-stop	0x3e17a7	cmp    DWORD PTR [rip+0x14b9c7a],0xffffffff        # 0x14189b428
+classic	track-stop	0x3e17b0	cmp    DWORD PTR [rip+0x14b9c75],0x0        # 0x14189b42c
+classic	track-stop	0x3e17db	test   al,al
+classic	track-stop	0x3e1808	test   edx,edx
+classic	track-stop	0x3e182d	test   BYTE PTR [rip+0x14b9bf0],0x1        # 0x14189b424
+classic	track-stop	0x3e1836	cmp    DWORD PTR [rip+0x14b9beb],0xffffffff        # 0x14189b428
+classic	track-stop	0x3e183f	cmp    DWORD PTR [rip+0x14b9be6],0x0        # 0x14189b42c
+classic	track-stop	0x3e186a	test   al,al
+classic	track-stop	0x3e1897	test   edx,edx
+classic	track-stop	0x3e18e3	test   BYTE PTR [rip+0x14b9b3a],0x1        # 0x14189b424
+classic	track-stop	0x3e18ec	cmp    DWORD PTR [rip+0x14b9b35],0x1        # 0x14189b428
+classic	track-stop	0x3e18f5	cmp    DWORD PTR [rip+0x14b9b30],0x0        # 0x14189b42c
+classic	track-stop	0x3e1920	test   al,al
+classic	track-stop	0x3e194d	test   edx,edx
+classic	track-stop	0x3e1972	test   BYTE PTR [rip+0x14b9aab],0x1        # 0x14189b424
+classic	track-stop	0x3e197b	cmp    DWORD PTR [rip+0x14b9aa6],0x1        # 0x14189b428
+classic	track-stop	0x3e1984	cmp    DWORD PTR [rip+0x14b9aa1],0x0        # 0x14189b42c
+classic	track-stop	0x3e19ae	test   al,al
+classic	track-stop	0x3e19db	test   edx,edx
+classic	track-stop	0x3e1a00	test   BYTE PTR [rip+0x14b9a1d],0x1        # 0x14189b424
+classic	track-stop	0x3e1a09	cmp    DWORD PTR [rip+0x14b9a18],0x1        # 0x14189b428
+classic	track-stop	0x3e1a12	cmp    DWORD PTR [rip+0x14b9a13],0x0        # 0x14189b42c
+classic	track-stop	0x3e1a3d	test   al,al
+classic	track-stop	0x3e1a6a	test   edx,edx
+classic	track-stop	0x3e1a8f	test   BYTE PTR [rip+0x14b998e],0x1        # 0x14189b424
+classic	track-stop	0x3e1a98	cmp    DWORD PTR [rip+0x14b9989],0x1        # 0x14189b428
+classic	track-stop	0x3e1aa1	cmp    DWORD PTR [rip+0x14b9984],0x0        # 0x14189b42c
+classic	track-stop	0x3e1acc	test   al,al
+classic	track-stop	0x3e1af9	test   edx,edx
+classic	track-stop	0x3e1b58	test   BYTE PTR [rip+0x14b98c5],0x1        # 0x14189b424
+classic	track-stop	0x3e1b7c	test   al,al
+classic	track-stop	0x3e1ba8	test   edx,edx
+classic	track-stop	0x3e1bd4	test   BYTE PTR [rip+0x14b9849],0x1        # 0x14189b424
+classic	track-stop	0x3e1bf7	test   al,al
+classic	track-stop	0x3e1c24	test   edx,edx
+classic	track-stop	0x3e1c4f	test   BYTE PTR [rip+0x14b97ce],0x1        # 0x14189b424
+classic	track-stop	0x3e1c73	test   al,al
+classic	track-stop	0x3e1c9f	test   edx,edx
+classic	track-stop	0x3e1ccb	test   BYTE PTR [rip+0x14b9752],0x1        # 0x14189b424
+classic	track-stop	0x3e1cef	test   al,al
+classic	track-stop	0x3e1d1c	test   edx,edx
+classic	track-stop	0x3e1d94	test   rbx,rbx
+classic	track-stop	0x3e1d99	cmp    DWORD PTR [rip+0x14b9680],0xa        # 0x14189b420
+classic	track-stop	0x3e1da2	cmp    rbx,0x1
+classic	track-stop	0x3e1da8	cmp    DWORD PTR [rip+0x14b9671],0x32        # 0x14189b420
+classic	track-stop	0x3e1db1	cmp    rbx,0x2
+classic	track-stop	0x3e1db7	cmp    DWORD PTR [rip+0x14b965f],0x1f4        # 0x14189b420
+classic	track-stop	0x3e1dc3	cmp    rbx,0x3
+classic	track-stop	0x3e1dc9	cmp    DWORD PTR [rip+0x14b964d],0x2710        # 0x14189b420
+classic	track-stop	0x3e1dd5	cmp    rbx,0x4
+classic	track-stop	0x3e1ddb	cmp    DWORD PTR [rip+0x14b963b],0xc350        # 0x14189b420
+classic	track-stop	0x3e1e09	test   al,al
+classic	track-stop	0x3e1e3a	test   edx,edx
+classic	track-stop	0x3e1e5f	test   rbx,rbx
+classic	track-stop	0x3e1e64	cmp    DWORD PTR [rip+0x14b95b5],0xa        # 0x14189b420
+classic	track-stop	0x3e1e6d	cmp    rbx,0x1
+classic	track-stop	0x3e1e73	cmp    DWORD PTR [rip+0x14b95a6],0x32        # 0x14189b420
+classic	track-stop	0x3e1e7c	cmp    rbx,0x2
+classic	track-stop	0x3e1e82	cmp    DWORD PTR [rip+0x14b9594],0x1f4        # 0x14189b420
+classic	track-stop	0x3e1e8e	cmp    rbx,0x3
+classic	track-stop	0x3e1e94	cmp    DWORD PTR [rip+0x14b9582],0x2710        # 0x14189b420
+classic	track-stop	0x3e1ea0	cmp    rbx,0x4
+classic	track-stop	0x3e1ea6	cmp    DWORD PTR [rip+0x14b9570],0xc350        # 0x14189b420
+classic	track-stop	0x3e1ed3	test   al,al
+classic	track-stop	0x3e1f01	test   edx,edx
+classic	track-stop	0x3e1f26	test   rbx,rbx
+classic	track-stop	0x3e1f2b	cmp    DWORD PTR [rip+0x14b94ee],0xa        # 0x14189b420
+classic	track-stop	0x3e1f34	cmp    rbx,0x1
+classic	track-stop	0x3e1f3a	cmp    DWORD PTR [rip+0x14b94df],0x32        # 0x14189b420
+classic	track-stop	0x3e1f43	cmp    rbx,0x2
+classic	track-stop	0x3e1f49	cmp    DWORD PTR [rip+0x14b94cd],0x1f4        # 0x14189b420
+classic	track-stop	0x3e1f55	cmp    rbx,0x3
+classic	track-stop	0x3e1f5b	cmp    DWORD PTR [rip+0x14b94bb],0x2710        # 0x14189b420
+classic	track-stop	0x3e1f67	cmp    rbx,0x4
+classic	track-stop	0x3e1f6d	cmp    DWORD PTR [rip+0x14b94a9],0xc350        # 0x14189b420
+classic	track-stop	0x3e1f9b	test   al,al
+classic	track-stop	0x3e1fca	test   edx,edx
+classic	track-stop	0x3e1fef	test   rbx,rbx
+classic	track-stop	0x3e1ff4	cmp    DWORD PTR [rip+0x14b9425],0xa        # 0x14189b420
+classic	track-stop	0x3e1ffd	cmp    rbx,0x1
+classic	track-stop	0x3e2003	cmp    DWORD PTR [rip+0x14b9416],0x32        # 0x14189b420
+classic	track-stop	0x3e200c	cmp    rbx,0x2
+classic	track-stop	0x3e2012	cmp    DWORD PTR [rip+0x14b9404],0x1f4        # 0x14189b420
+classic	track-stop	0x3e201e	cmp    rbx,0x3
+classic	track-stop	0x3e2024	cmp    DWORD PTR [rip+0x14b93f2],0x2710        # 0x14189b420
+classic	track-stop	0x3e2030	cmp    rbx,0x4
+classic	track-stop	0x3e2036	cmp    DWORD PTR [rip+0x14b93e0],0xc350        # 0x14189b420
+classic	track-stop	0x3e2064	test   al,al
+classic	track-stop	0x3e2093	test   edx,edx
+classic	track-stop	0x3e20bf	cmp    rbx,0x5
+classic	bridge	0x3e20cf	cmp    ecx,0x13
+classic	bridge	0x3e21c8	cmp    DWORD PTR [rip+0x14b926d],0x2        # 0x14189b43c
+classic	bridge	0x3e21ec	test   al,al
+classic	bridge	0x3e2215	test   edx,edx
+classic	bridge	0x3e2241	cmp    DWORD PTR [rip+0x14b91f4],0x2        # 0x14189b43c
+classic	bridge	0x3e2264	test   al,al
+classic	bridge	0x3e228e	test   edx,edx
+classic	bridge	0x3e22ba	cmp    DWORD PTR [rip+0x14b917b],0x2        # 0x14189b43c
+classic	bridge	0x3e22de	test   al,al
+classic	bridge	0x3e2308	test   edx,edx
+classic	bridge	0x3e2334	cmp    DWORD PTR [rip+0x14b9101],0x2        # 0x14189b43c
+classic	bridge	0x3e2358	test   al,al
+classic	bridge	0x3e2382	test   edx,edx
+classic	bridge	0x3e23d9	cmp    DWORD PTR [rip+0x14b905c],0x3        # 0x14189b43c
+classic	bridge	0x3e23fd	test   al,al
+classic	bridge	0x3e242a	test   edx,edx
+classic	bridge	0x3e2456	cmp    DWORD PTR [rip+0x14b8fdf],0x3        # 0x14189b43c
+classic	bridge	0x3e2479	test   al,al
+classic	bridge	0x3e24a6	test   edx,edx
+classic	bridge	0x3e24d2	cmp    DWORD PTR [rip+0x14b8f63],0x3        # 0x14189b43c
+classic	bridge	0x3e24f6	test   al,al
+classic	bridge	0x3e2523	test   edx,edx
+classic	bridge	0x3e254f	cmp    DWORD PTR [rip+0x14b8ee6],0x3        # 0x14189b43c
+classic	bridge	0x3e2573	test   al,al
+classic	bridge	0x3e25a0	test   edx,edx
+classic	bridge	0x3e25f9	cmp    DWORD PTR [rip+0x14b8e3c],0x0        # 0x14189b43c
+classic	bridge	0x3e261d	test   al,al
+classic	bridge	0x3e264a	test   edx,edx
+classic	bridge	0x3e2676	cmp    DWORD PTR [rip+0x14b8dbf],0x0        # 0x14189b43c
+classic	bridge	0x3e2699	test   al,al
+classic	bridge	0x3e26c6	test   edx,edx
+classic	bridge	0x3e26f2	cmp    DWORD PTR [rip+0x14b8d43],0x0        # 0x14189b43c
+classic	bridge	0x3e2716	test   al,al
+classic	bridge	0x3e2743	test   edx,edx
+classic	bridge	0x3e276f	cmp    DWORD PTR [rip+0x14b8cc6],0x0        # 0x14189b43c
+classic	bridge	0x3e2793	test   al,al
+classic	bridge	0x3e27c0	test   edx,edx
+classic	bridge	0x3e2819	cmp    DWORD PTR [rip+0x14b8c1c],0x1        # 0x14189b43c
+classic	bridge	0x3e283d	test   al,al
+classic	bridge	0x3e286a	test   edx,edx
+classic	bridge	0x3e2896	cmp    DWORD PTR [rip+0x14b8b9f],0x1        # 0x14189b43c
+classic	bridge	0x3e28b9	test   al,al
+classic	bridge	0x3e28e6	test   edx,edx
+classic	bridge	0x3e2912	cmp    DWORD PTR [rip+0x14b8b23],0x1        # 0x14189b43c
+classic	bridge	0x3e2936	test   al,al
+classic	bridge	0x3e2963	test   edx,edx
+classic	bridge	0x3e298f	cmp    DWORD PTR [rip+0x14b8aa6],0x1        # 0x14189b43c
+classic	bridge	0x3e29b3	test   al,al
+classic	bridge	0x3e29e0	test   edx,edx
+classic	bridge	0x3e2a39	cmp    DWORD PTR [rip+0x14b89fc],0xffffffff        # 0x14189b43c
+classic	bridge	0x3e2a5f	test   al,al
+classic	bridge	0x3e2a8d	test   edx,edx
+classic	bridge	0x3e2ab9	cmp    DWORD PTR [rip+0x14b897c],0xffffffff        # 0x14189b43c
+classic	bridge	0x3e2adf	test   al,al
+classic	bridge	0x3e2b0d	test   edx,edx
+classic	bridge	0x3e2b39	cmp    DWORD PTR [rip+0x14b88fc],0xffffffff        # 0x14189b43c
+classic	bridge	0x3e2b5f	test   al,al
+classic	bridge	0x3e2b8d	test   edx,edx
+classic	bridge	0x3e2bb9	cmp    DWORD PTR [rip+0x14b887c],0xffffffff        # 0x14189b43c
+classic	bridge	0x3e2bdf	test   al,al
+classic	bridge	0x3e2c0d	test   edx,edx

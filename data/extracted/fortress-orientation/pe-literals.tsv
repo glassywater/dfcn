@@ -1,0 +1,91 @@
+edition	branch	instruction_rva	operand	kind	text
+reference	catapult	0x3dfae9	0x14162f5c0	cstring	A catapult's orientation cannot be changed
+reference	catapult	0x3dfb30	0x14162f698	cstring	once it is placed.
+reference	ballista	0x3dfb9c	0x14162f6b0	cstring	A ballista's orientation cannot be changed
+reference	ballista	0x3dfbe3	0x14162f698	cstring	once it is placed.
+reference	bolt-thrower	0x3dfc48	0x14162f638	cstring	A bolt thrower can be freely turned by the
+reference	bolt-thrower	0x3dfc8f	0x14162f668	cstring	operator.  Choose a resting orientation.
+reference	horizontal-axle	0x3dfe7f	0x14162f4a8	cstring	Horizontal axles can vary in length.
+reference	horizontal-axle	0x3dfec6	0x14162f4d0	cstring	Set the orientation below.
+reference	water-wheel	0x3e037a	0x14162f468	cstring	Water wheels are 1x3 or 3x1.
+reference	water-wheel	0x3e03c0	0x14162f488	cstring	The long side should align
+reference	water-wheel	0x3e0406	0x14162f548	cstring	with the water's flow.
+reference	screw-pump	0x3e08b1	0x14162f560	cstring	Set the liquid flow direction below.
+reference	screw-pump	0x3e08f8	0x14162f4f0	cstring	Water flows from the adjacent input tile
+reference	screw-pump	0x3e093f	0x14162f520	cstring	and from the tile below the input tile.
+reference	rollers	0x3e1231	0x14162f3d8	cstring	Minecart rollers can vary in length.
+reference	rollers	0x3e1278	0x14162f400	cstring	Set the orientation and speed below.
+reference	pressure-plate	0x3e2058	0x14162f3bc	cstring	Resets
+reference	pressure-plate	0x3e2164	0x14162f3c8	cstring	One use only
+reference	pressure-plate	0x3e2261	0x14162f458	cstring	Water
+reference	pressure-plate	0x3e22c7	0x14162f460	cstring	Depth
+reference	pressure-plate	0x3e24c9	0x14162f428	cstring	Water does not trigger
+reference	pressure-plate	0x3e25d1	0x1415f73a4	cstring	Magma
+reference	pressure-plate	0x3e2637	0x14162f460	cstring	Depth
+reference	pressure-plate	0x3e2839	0x14162f440	cstring	Magma does not trigger
+reference	pressure-plate	0x3e2946	0x14162f354	cstring	Cart
+reference	pressure-plate	0x3e29ab	0x14162f35c	cstring	Weight
+reference	pressure-plate	0x3e2b99	0x1415ec5a8	cstring	to
+reference	pressure-plate	0x3e2c5a	0x14162f330	cstring	Any
+reference	pressure-plate	0x3e2d71	0x14162f338	cstring	Minecarts do not trigger
+reference	pressure-plate	0x3e2e73	0x14162f388	cstring	Creature trigger settings
+reference	pressure-plate	0x3e2f69	0x14162f3a8	cstring	Citizens trigger
+reference	pressure-plate	0x3e2fa0	0x14162f368	cstring	Citizens do not trigger
+reference	pressure-plate	0x3e2ff1	0x1416160a8	cstring	Range: 
+reference	pressure-plate	0x3e3045	0x14162f380	cstring	(
+reference	pressure-plate	0x3e3075	0x141615580	cstring	)
+reference	pressure-plate	0x3e30d1	0x1415ed5b4	cstring	 to 
+reference	pressure-plate	0x3e3145	0x14162f380	cstring	(
+reference	pressure-plate	0x3e3175	0x141615580	cstring	)
+reference	pressure-plate	0x3e334c	0x14162f380	cstring	(
+reference	pressure-plate	0x3e337c	0x141615580	cstring	)
+reference	pressure-plate	0x3e3482	0x14162f8f8	cstring	Creatures do not trigger
+reference	track-stop	0x3e3510	0x14162f918	cstring	Set the friction and auto-dump direction.
+reference	track-stop	0x3e355e	0x14162f8b8	cstring	Auto-dumping is not required.
+reference	bridge	0x3e4548	0x14162f8d8	cstring	Set the draw direction below.
+reference	bridge	0x3e4597	0x14162f998	cstring	Then select the corners of the bridge.
+classic	catapult	0x3dd6a9	0x14162a148	cstring	A catapult's orientation cannot be changed
+classic	catapult	0x3dd6f0	0x14162a178	cstring	once it is placed.
+classic	ballista	0x3dd75c	0x141629ff8	cstring	A ballista's orientation cannot be changed
+classic	ballista	0x3dd7a3	0x14162a178	cstring	once it is placed.
+classic	bolt-thrower	0x3dd808	0x14162a028	cstring	A bolt thrower can be freely turned by the
+classic	bolt-thrower	0x3dd84f	0x141629fa0	cstring	operator.  Choose a resting orientation.
+classic	horizontal-axle	0x3dda3f	0x141629fd0	cstring	Horizontal axles can vary in length.
+classic	horizontal-axle	0x3dda86	0x14162a090	cstring	Set the orientation below.
+classic	water-wheel	0x3ddf3a	0x14162a0b0	cstring	Water wheels are 1x3 or 3x1.
+classic	water-wheel	0x3ddf80	0x14162a058	cstring	The long side should align
+classic	water-wheel	0x3ddfc6	0x14162a078	cstring	with the water's flow.
+classic	screw-pump	0x3de471	0x14162a6a8	cstring	Set the liquid flow direction below.
+classic	screw-pump	0x3de4b8	0x14162a6d0	cstring	Water flows from the adjacent input tile
+classic	screw-pump	0x3de4ff	0x14162a658	cstring	and from the tile below the input tile.
+classic	rollers	0x3dedf1	0x14162a680	cstring	Minecart rollers can vary in length.
+classic	rollers	0x3dee38	0x14162a718	cstring	Set the orientation and speed below.
+classic	pressure-plate	0x3dfc18	0x14162a740	cstring	Resets
+classic	pressure-plate	0x3dfd24	0x14162a700	cstring	One use only
+classic	pressure-plate	0x3dfe21	0x14162a710	cstring	Water
+classic	pressure-plate	0x3dfe87	0x14162a5f0	cstring	Depth
+classic	pressure-plate	0x3e0089	0x14162a5f8	cstring	Water does not trigger
+classic	pressure-plate	0x3e0191	0x1415f234c	cstring	Magma
+classic	pressure-plate	0x3e01f7	0x14162a5f0	cstring	Depth
+classic	pressure-plate	0x3e03f9	0x14162a5d0	cstring	Magma does not trigger
+classic	pressure-plate	0x3e0506	0x14162a5e8	cstring	Cart
+classic	pressure-plate	0x3e056b	0x14162a64c	cstring	Weight
+classic	pressure-plate	0x3e0759	0x1415e74f8	cstring	to
+classic	pressure-plate	0x3e081a	0x14162a654	cstring	Any
+classic	pressure-plate	0x3e0931	0x14162a610	cstring	Minecarts do not trigger
+classic	pressure-plate	0x3e0a33	0x14162a630	cstring	Creature trigger settings
+classic	pressure-plate	0x3e0b29	0x14162a508	cstring	Citizens trigger
+classic	pressure-plate	0x3e0b60	0x14162a520	cstring	Citizens do not trigger
+classic	pressure-plate	0x3e0bb1	0x141611108	cstring	Range: 
+classic	pressure-plate	0x3e0c05	0x14162a4e0	cstring	(
+classic	pressure-plate	0x3e0c35	0x1416102d8	cstring	)
+classic	pressure-plate	0x3e0c91	0x1415e8524	cstring	 to 
+classic	pressure-plate	0x3e0d05	0x14162a4e0	cstring	(
+classic	pressure-plate	0x3e0d35	0x1416102d8	cstring	)
+classic	pressure-plate	0x3e0f0c	0x14162a4e0	cstring	(
+classic	pressure-plate	0x3e0f3c	0x1416102d8	cstring	)
+classic	pressure-plate	0x3e1042	0x14162a4e8	cstring	Creatures do not trigger
+classic	track-stop	0x3e10d0	0x14162a580	cstring	Set the friction and auto-dump direction.
+classic	track-stop	0x3e111e	0x14162a5b0	cstring	Auto-dumping is not required.
+classic	bridge	0x3e2108	0x14162a538	cstring	Set the draw direction below.
+classic	bridge	0x3e2157	0x14162a558	cstring	Then select the corners of the bridge.

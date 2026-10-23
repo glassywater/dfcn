@@ -1,0 +1,25 @@
+edition	branch	native_condition	display_variants	rendering	start_rva	end_rva
+reference	catapult	type=0x16; subtype=0	orientation=0..7	eight direction icons; two independently drawn text lines	0x3dfab5	0x3dfb6d
+reference	ballista	type=0x16; subtype=1	orientation=0..7	eight direction icons; two independently drawn text lines	0x3dfb6d	0x3dfc19
+reference	bolt-thrower	type=0x16; subtype=2	orientation=0..7	eight direction icons; two independently drawn text lines; double space after operator.	0x3dfc19	0x3dfcc5
+reference	horizontal-axle	type=0x29	orientation=0,1	two axis icons; two independently drawn text lines	0x3dfe4b	0x3e0340
+reference	water-wheel	type=0x2b	orientation=0,1	two axis icons; three independently drawn text lines	0x3e0340	0x3e0879
+reference	screw-pump	type=0x21	orientation=0,1,2,3	four flow icons; three independently drawn text lines	0x3e0879	0x3e11f9
+reference	rollers	type=0x32	orientation=0,1,2,3; speed=10000,20000,30000,40000,50000	four direction and five speed icons; two independently drawn text lines; no speed text labels	0x3e11f9	0x3e1f17
+reference	pressure-plate	type=0x17; subtype=1	flags bits 0x01 creature,0x02 water,0x04 magma,0x08 citizen,0x10 reset/single-use selector,0x20 cart	reset/single-use; liquid depths; cart weight endpoints; raw creature singular or numeric range endpoints and scrolling list	0x3e1f20	0x3e34cb
+reference	track-stop	type=0x17; subtype=5	dump disabled or four directions; friction=10,50,500,10000,50000	five dump and five friction icons; two independently drawn text lines; no friction text labels	0x3e34cb	0x3e450f
+reference	bridge	type=0x13	orientation=-1,0,1,2,3	retract/four raising-direction icons; two independently drawn text lines	0x3e450f	0x3e5070
+reference	siege-unknown-subtype	type=0x16; subtype outside 0,1,2	orientation=0..7	shared eight icon loop remains, without descriptive text	0x3dfcc5	0x3dfe44
+reference	outside-popup-gate	type outside {0x13,0x16,0x21,0x29,0x2b,0x32} and not (type=0x17 and subtype in {1,5})	none	no parameter popup; continues into placement preview	0x3df92c	0x3e5070
+classic	catapult	type=0x16; subtype=0	orientation=0..7	eight direction icons; two independently drawn text lines	0x3dd675	0x3dd72d
+classic	ballista	type=0x16; subtype=1	orientation=0..7	eight direction icons; two independently drawn text lines	0x3dd72d	0x3dd7d9
+classic	bolt-thrower	type=0x16; subtype=2	orientation=0..7	eight direction icons; two independently drawn text lines; double space after operator.	0x3dd7d9	0x3dd885
+classic	horizontal-axle	type=0x29	orientation=0,1	two axis icons; two independently drawn text lines	0x3dda0b	0x3ddf00
+classic	water-wheel	type=0x2b	orientation=0,1	two axis icons; three independently drawn text lines	0x3ddf00	0x3de439
+classic	screw-pump	type=0x21	orientation=0,1,2,3	four flow icons; three independently drawn text lines	0x3de439	0x3dedb9
+classic	rollers	type=0x32	orientation=0,1,2,3; speed=10000,20000,30000,40000,50000	four direction and five speed icons; two independently drawn text lines; no speed text labels	0x3dedb9	0x3dfad7
+classic	pressure-plate	type=0x17; subtype=1	flags bits 0x01 creature,0x02 water,0x04 magma,0x08 citizen,0x10 reset/single-use selector,0x20 cart	reset/single-use; liquid depths; cart weight endpoints; raw creature singular or numeric range endpoints and scrolling list	0x3dfae0	0x3e108b
+classic	track-stop	type=0x17; subtype=5	dump disabled or four directions; friction=10,50,500,10000,50000	five dump and five friction icons; two independently drawn text lines; no friction text labels	0x3e108b	0x3e20cf
+classic	bridge	type=0x13	orientation=-1,0,1,2,3	retract/four raising-direction icons; two independently drawn text lines	0x3e20cf	0x3e2c30
+classic	siege-unknown-subtype	type=0x16; subtype outside 0,1,2	orientation=0..7	shared eight icon loop remains, without descriptive text	0x3dd885	0x3dda04
+classic	outside-popup-gate	type outside {0x13,0x16,0x21,0x29,0x2b,0x32} and not (type=0x17 and subtype in {1,5})	none	no parameter popup; continues into placement preview	0x3dd4ec	0x3e2c30

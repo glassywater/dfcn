@@ -204,10 +204,19 @@ Not in use	暂不使用
 (Vehicle moved to next stop if any condition triggered.)	（任一条件触发时，车辆便会前往下一站。）
 Building track stops is recommended!	建议建造轨道停靠点！
 
-# Shared placement instructions: use complete native sentences across wraps.
+# Shared placement instructions: retain whole sentences and the independent
+# native addst rows from extracted/fortress-orientation/pe-text-lines.tsv.
 A catapult's orientation cannot be changed once it is placed.	投石机放置后无法改变朝向。
 A ballista's orientation cannot be changed once it is placed.	弩炮放置后无法改变朝向。
 A bolt thrower can be freely turned by the operator. Choose a resting orientation.	弩箭投射器可由操作员自由转向。请选择待命时的朝向。
+A catapult's orientation cannot be changed	投石机一经放置，
+A ballista's orientation cannot be changed	弩炮一经放置，
+once it is placed.	便无法改变朝向。
+A bolt thrower can be freely turned by the	弩箭投射器可由操作员自由转向。
+operator.  Choose a resting orientation.	请选择待命时的朝向。
+Water wheels are 1x3 or 3x1.	水车占地为 1×3 或 3×1 格。
+The long side should align	长边应与
+with the water's flow.	水流方向保持一致。
 Horizontal axles can vary in length.	水平轴可设置不同长度。
 Set the liquid flow direction below.	在下方设置液体流动方向。
 Water flows from the adjacent input tile and from the tile below the input tile.	水会从相邻的输入格及输入格下方的格子流入。

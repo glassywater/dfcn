@@ -1,0 +1,91 @@
+edition	branch	instruction_rva	text	ghidra_source	source_lines
+reference	catapult	0x3dfae9	A catapult's orientation cannot be changed	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	6707
+reference	catapult	0x3dfb30	once it is placed.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	6715;6735
+reference	ballista	0x3dfb9c	A ballista's orientation cannot be changed	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	6727
+reference	ballista	0x3dfbe3	once it is placed.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	6715;6735
+reference	bolt-thrower	0x3dfc48	A bolt thrower can be freely turned by the	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	6747
+reference	bolt-thrower	0x3dfc8f	operator.  Choose a resting orientation.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	6755
+reference	horizontal-axle	0x3dfe7f	Horizontal axles can vary in length.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	6845
+reference	horizontal-axle	0x3dfec6	Set the orientation below.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	6853
+reference	water-wheel	0x3e037a	Water wheels are 1x3 or 3x1.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	7068
+reference	water-wheel	0x3e03c0	The long side should align	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	7076
+reference	water-wheel	0x3e0406	with the water's flow.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	7084
+reference	screw-pump	0x3e08b1	Set the liquid flow direction below.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	7297
+reference	screw-pump	0x3e08f8	Water flows from the adjacent input tile	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	7305
+reference	screw-pump	0x3e093f	and from the tile below the input tile.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	7313
+reference	rollers	0x3e1231	Minecart rollers can vary in length.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	7727
+reference	rollers	0x3e1278	Set the orientation and speed below.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	7735
+reference	pressure-plate	0x3e2058	Resets	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8394
+reference	pressure-plate	0x3e2164	One use only	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8436
+reference	pressure-plate	0x3e2261	Water	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8490
+reference	pressure-plate	0x3e22c7	Depth	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8500;8635
+reference	pressure-plate	0x3e24c9	Water does not trigger	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8478
+reference	pressure-plate	0x3e25d1	Magma	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8625
+reference	pressure-plate	0x3e2637	Depth	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8500;8635
+reference	pressure-plate	0x3e2839	Magma does not trigger	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8613
+reference	pressure-plate	0x3e2946	Cart	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8760
+reference	pressure-plate	0x3e29ab	Weight	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8770
+reference	pressure-plate	0x3e2b99	to	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8845
+reference	pressure-plate	0x3e2c5a	Any	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8872
+reference	pressure-plate	0x3e2d71	Minecarts do not trigger	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8748
+reference	pressure-plate	0x3e2e73	Creature trigger settings	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8964
+reference	pressure-plate	0x3e2f69	Citizens trigger	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9012
+reference	pressure-plate	0x3e2fa0	Citizens do not trigger	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9005
+reference	pressure-plate	0x3e2ff1	Range: 	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9022
+reference	pressure-plate	0x3e3045	(	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9033;9072;9158
+reference	pressure-plate	0x3e3075	)	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9040;9079;9165
+reference	pressure-plate	0x3e30d1	 to 	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9055
+reference	pressure-plate	0x3e3145	(	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9033;9072;9158
+reference	pressure-plate	0x3e3175	)	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9040;9079;9165
+reference	pressure-plate	0x3e334c	(	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9033;9072;9158
+reference	pressure-plate	0x3e337c	)	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9040;9079;9165
+reference	pressure-plate	0x3e3482	Creatures do not trigger	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	8953
+reference	track-stop	0x3e3510	Set the friction and auto-dump direction.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9211
+reference	track-stop	0x3e355e	Auto-dumping is not required.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9219
+reference	bridge	0x3e4548	Set the draw direction below.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9924
+reference	bridge	0x3e4597	Then select the corners of the bridge.	data/extracted/fortress-rectangle/pe-reference-placement-renderer-owner.c	9932
+classic	catapult	0x3dd6a9	A catapult's orientation cannot be changed	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	6707
+classic	catapult	0x3dd6f0	once it is placed.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	6715;6735
+classic	ballista	0x3dd75c	A ballista's orientation cannot be changed	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	6727
+classic	ballista	0x3dd7a3	once it is placed.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	6715;6735
+classic	bolt-thrower	0x3dd808	A bolt thrower can be freely turned by the	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	6747
+classic	bolt-thrower	0x3dd84f	operator.  Choose a resting orientation.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	6755
+classic	horizontal-axle	0x3dda3f	Horizontal axles can vary in length.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	6845
+classic	horizontal-axle	0x3dda86	Set the orientation below.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	6853
+classic	water-wheel	0x3ddf3a	Water wheels are 1x3 or 3x1.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	7068
+classic	water-wheel	0x3ddf80	The long side should align	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	7076
+classic	water-wheel	0x3ddfc6	with the water's flow.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	7084
+classic	screw-pump	0x3de471	Set the liquid flow direction below.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	7297
+classic	screw-pump	0x3de4b8	Water flows from the adjacent input tile	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	7305
+classic	screw-pump	0x3de4ff	and from the tile below the input tile.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	7313
+classic	rollers	0x3dedf1	Minecart rollers can vary in length.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	7727
+classic	rollers	0x3dee38	Set the orientation and speed below.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	7735
+classic	pressure-plate	0x3dfc18	Resets	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8394
+classic	pressure-plate	0x3dfd24	One use only	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8436
+classic	pressure-plate	0x3dfe21	Water	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8490
+classic	pressure-plate	0x3dfe87	Depth	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8500;8635
+classic	pressure-plate	0x3e0089	Water does not trigger	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8478
+classic	pressure-plate	0x3e0191	Magma	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8625
+classic	pressure-plate	0x3e01f7	Depth	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8500;8635
+classic	pressure-plate	0x3e03f9	Magma does not trigger	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8613
+classic	pressure-plate	0x3e0506	Cart	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8760
+classic	pressure-plate	0x3e056b	Weight	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8770
+classic	pressure-plate	0x3e0759	to	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8845
+classic	pressure-plate	0x3e081a	Any	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8872
+classic	pressure-plate	0x3e0931	Minecarts do not trigger	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8748
+classic	pressure-plate	0x3e0a33	Creature trigger settings	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8964
+classic	pressure-plate	0x3e0b29	Citizens trigger	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9012
+classic	pressure-plate	0x3e0b60	Citizens do not trigger	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9005
+classic	pressure-plate	0x3e0bb1	Range: 	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9022
+classic	pressure-plate	0x3e0c05	(	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9033;9072;9158
+classic	pressure-plate	0x3e0c35	)	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9040;9079;9165
+classic	pressure-plate	0x3e0c91	 to 	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9055
+classic	pressure-plate	0x3e0d05	(	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9033;9072;9158
+classic	pressure-plate	0x3e0d35	)	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9040;9079;9165
+classic	pressure-plate	0x3e0f0c	(	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9033;9072;9158
+classic	pressure-plate	0x3e0f3c	)	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9040;9079;9165
+classic	pressure-plate	0x3e1042	Creatures do not trigger	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	8953
+classic	track-stop	0x3e10d0	Set the friction and auto-dump direction.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9211
+classic	track-stop	0x3e111e	Auto-dumping is not required.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9219
+classic	bridge	0x3e2108	Set the draw direction below.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9924
+classic	bridge	0x3e2157	Then select the corners of the bridge.	data/extracted/fortress-rectangle/pe-classic-placement-renderer-owner.c	9932
