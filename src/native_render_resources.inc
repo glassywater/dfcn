@@ -25,6 +25,7 @@ static void native_reset_render_resources() {
     reset_layer(g_native_character_target, g_native_character_layer);
     native_character_begin_frame();
     reset_layer(g_native_stocks_target, g_native_stocks_layer);
+    reset_layer(g_native_display_target, g_native_display_layer);
     reset_layer(g_native_squads_target, g_native_squads_layer);
     reset_layer(g_native_reports_target, g_native_reports_layer);
     native_announcement_log_release_layer();

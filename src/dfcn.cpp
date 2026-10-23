@@ -2512,6 +2512,7 @@ static bool native_character_background_view(const graphicst *) noexcept;
 static bool native_character_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
+static thread_local const graphicst *g_native_display_write_graphics = nullptr;
 static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
 static thread_local const graphicst *g_native_designation_write_graphics = nullptr;
 static thread_local const graphicst *g_native_map_hover_write_graphics = nullptr;
@@ -2545,10 +2546,15 @@ static bool native_info_background_cell_hidden(const graphicst *, int, int) noex
 static bool native_stocks_background_view(const graphicst *) noexcept;
 static bool native_stocks_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_stocks_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
+static bool native_display_background_view(const graphicst *) noexcept;
+static bool native_display_background_cell_hidden(const graphicst *, int, int) noexcept;
+static bool native_display_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
+static std::optional<NativeTradeItemCaption> capture_native_display_item_caption(
+    uintptr_t string_owner, std::string_view shortened);
 static bool native_squads_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_squads_layer_hook_active();
 static void native_squads_prepare_text();
-enum class NativeFortressLayerKind { Info, Stocks };
+enum class NativeFortressLayerKind { Info, Stocks, Display };
 static bool native_reports_background_view(const graphicst *) noexcept;
 static bool native_reports_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_reports_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
@@ -2823,6 +2829,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         std::optional<NativeTradeItemCaption> trade_item_caption = std::nullopt) {
     if (native_private_ui_write_active(graphics)) return;
     const bool character = graphics && graphics == g_native_character_write_graphics;
+    const bool display = graphics && graphics == g_native_display_write_graphics;
+    if (display && !trade_item_caption)
+        trade_item_caption = capture_native_display_item_caption(address, source);
     // Copy the producer's frame and unshortened building name while the
     // actual addst caller is live, before acquiring the draw registry lock.
     auto work_order_shop_caption = character ? std::nullopt :
@@ -2977,6 +2986,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         if (row.fortress_labor_caption) row.caption_source = true;
         row.trade_item_caption = std::move(trade_item_caption);
         if (row.trade_item_caption) row.caption_source = true;
+        if (display && row.trade_item_caption)
+            complete_source = row.trade_item_caption->source;
         row.mission_title = mission_title;
         row.mission_title_right = mission_title_right;
         row.map_hover = map_hover;
@@ -3721,6 +3732,7 @@ public:
     void layout_character_panels(SDL_Renderer *renderer);
     std::vector<Match> find_native_character_matches() const;
     void render_native_stocks_layer(SDL_Renderer *renderer);
+    void render_native_display_layer(SDL_Renderer *renderer);
     void prepare_native_squads_text();
     void render_native_squads_layer(SDL_Renderer *renderer, const Overlay &source);
     void release_native_squads_resources();
@@ -3847,6 +3859,7 @@ private:
     std::vector<Match> find_native_petitions_matches(int only_y = -1,
         const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_stocks_matches() const;
+    std::vector<Match> find_native_display_matches() const;
     std::vector<Match> find_native_squads_matches() const;
     std::vector<Match> find_native_info_background_matches(int only_y,
         const unsigned char *screen_override) const;
@@ -17540,6 +17553,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_info_layers.inc"
 #include "native_character_layers.inc"
 #include "native_stocks_layers.inc"
+#include "native_display_layers.inc"
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
 #include "native_petition_layers.inc"
@@ -18099,6 +18113,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_petitions_layer_matching.inc"
 #include "native_embark_civilization_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
+#include "native_display_layer_translation.inc"
 #include "native_squads_layer_matching.inc"
 #include "native_info_layer_translation.inc"
 #include "native_character_layer_translation.inc"
@@ -44293,6 +44308,8 @@ static void native_character_present_layer(SDL_Renderer *renderer,
     void (*draw_character)(SDL_Renderer *));
 static void native_stocks_present_layer(SDL_Renderer *renderer,
     void (*draw_stocks)(SDL_Renderer *));
+static void native_display_present_layer(SDL_Renderer *renderer,
+        void (*draw_display)(SDL_Renderer *));
 static void native_squads_present_layer(SDL_Renderer *renderer,
     void (*draw_squads)(SDL_Renderer *));
 static void native_reports_present_layer(SDL_Renderer *renderer,
@@ -44396,6 +44413,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             });
             native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
                 g_overlay.render_native_stocks_layer(stocks_renderer);
+            });
+            native_display_present_layer(renderer, [](SDL_Renderer *display_renderer) {
+                g_overlay.render_native_display_layer(display_renderer);
             });
             native_squads_present_layer(renderer, [](SDL_Renderer *squads_renderer) {
                 g_native_squads_overlay.render_native_squads_layer(squads_renderer, g_overlay);

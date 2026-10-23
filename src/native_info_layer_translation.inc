@@ -6,10 +6,15 @@ void Overlay::render_native_stocks_layer(SDL_Renderer *renderer) {
     render_native_fortress_layer(renderer, NativeFortressLayerKind::Stocks);
 }
 
+void Overlay::render_native_display_layer(SDL_Renderer *renderer) {
+    render_native_fortress_layer(renderer, NativeFortressLayerKind::Display);
+}
+
 void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, NativeFortressLayerKind kind) {
     TranslationStateScope translation;
     const bool stocks = kind == NativeFortressLayerKind::Stocks;
-    auto &layer = stocks ? g_native_stocks_layer : g_native_info_layer;
+    const bool display = kind == NativeFortressLayerKind::Display;
+    auto &layer = display ? g_native_display_layer : stocks ? g_native_stocks_layer : g_native_info_layer;
     if (!renderer || !layer.ready || layer.renderer != renderer) return;
     if (!config_.enabled || !face_ || rules_.empty()) {
         native_ui_paint_grid(layer, renderer, {});
@@ -58,19 +63,21 @@ void Overlay::render_native_fortress_layer(SDL_Renderer *renderer, NativeFortres
             overlay.suppressed_glyphs_ = std::move(suppressed);
         }
     } view(*this, layer.foreground.graphics());
-    NativeInfoCapturedTextScope captions(stocks ? g_native_stocks_text : g_native_info_text);
+    NativeInfoCapturedTextScope captions(display ? g_native_display_text :
+        stocks ? g_native_stocks_text : g_native_info_text);
     NativeInfoForegroundScope foreground;
     NativeUiReadScope component(gps_, nullptr);
     NativePanelReadScope panels(gps_);
     CellReadCacheScope cells(*this);
     // One matching/layout pass for this submitted component. No glyph-copy
     // callback enters its translation and no translated frame is cached.
-    prepared_matches_ = stocks ? find_native_stocks_matches() : find_native_info_matches();
+    prepared_matches_ = display ? find_native_display_matches() :
+        stocks ? find_native_stocks_matches() : find_native_info_matches();
     normalize_native_split_text();
 
-    if (stocks) {
-        // The Stocks producer supplies each field and its bounds. Its private
-        // layer never enters page discovery, generic prose layout or per-glyph
+    if (stocks || display) {
+        // These item-list producers supply each field and its bounds. Their
+        // private layers never enter page discovery, generic prose layout or per-glyph
         // suppression. Only the submitted caption spans need translation.
         for (auto &match : prepared_matches_) {
             if (match.target.empty() || match.native_split_duplicate) continue;

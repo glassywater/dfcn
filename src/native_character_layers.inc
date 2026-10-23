@@ -66,6 +66,7 @@ static bool native_character_background_cell_hidden(const graphicst *graphics,
     if (!native_character_background_view(graphics) ||
             native_private_ui_write_active(graphics) ||
             g_native_info_write_graphics || g_native_stocks_write_graphics ||
+            g_native_display_write_graphics ||
             g_native_squads_write_graphics || g_native_reports_write_graphics ||
             native_notification_write_active(graphics) || g_native_pause_write_graphics)
         return false;

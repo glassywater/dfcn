@@ -88,6 +88,7 @@ static void native_worldgen_draw(void *screen, uint32_t tick) {
     bool isolate = gps && g_native_help_layer.native_renderer &&
         g_native_help_layer.renderer && !native_private_ui_write_active(gps) &&
         !g_native_info_write_graphics && !g_native_stocks_write_graphics &&
+        !g_native_display_write_graphics &&
         !g_native_reports_write_graphics && !g_native_pause_write_graphics &&
         !native_notification_write_active(gps) && !g_native_tooltip_output &&
         gps->screen && gps->screen_top && gps->dimx > 0 && gps->dimx <= 1000 &&

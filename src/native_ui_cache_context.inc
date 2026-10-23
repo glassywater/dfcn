@@ -632,7 +632,10 @@ public:
         value(native_dfhack_layer_page_revision());
         value(g_native_info_page); value(g_native_info_labor_page);
         value(g_native_stocks_current_type); value(g_native_stocks_category_right);
+        value(g_native_display_current_type); value(g_native_display_category_right);
+        value(g_native_display_content_right);
         rect(g_native_info_panel); rect(g_native_stocks_panel); rect(g_native_reports_panel);
+        rect(g_native_display_panel);
         rect(g_native_squads_panel); rect(g_native_notification_bounds);
         rect(g_native_worldgen_panel);
         value(g_native_worldgen_owner); value(g_native_worldgen_parameter_name_editing);
@@ -1009,6 +1012,7 @@ static std::optional<std::string> native_ui_layer_cache_context(
     if (character) captured = &g_native_character_text;
     else if (&layer == &g_native_info_layer) captured = &g_native_info_text;
     else if (&layer == &g_native_stocks_layer) captured = &g_native_stocks_text;
+    else if (&layer == &g_native_display_layer) captured = &g_native_display_text;
     else if (&layer == &g_native_squads_layer) captured = &g_native_squads_text;
     else if (&layer == &g_native_reports_layer) captured = &g_native_reports_text;
     else if (&layer == &g_native_notification_layer) captured = &g_native_notification_text;
@@ -1055,6 +1059,7 @@ static std::optional<std::string> native_main_ui_cache_context() {
     // The base layer's character reader changes when another component
     // covers its cells, even if every byte in the base arrays is identical.
     key.layer(g_native_info_layer); key.layer(g_native_stocks_layer);
+    key.layer(g_native_display_layer);
     key.layer(g_native_squads_layer); key.layer(g_native_reports_layer);
     key.layer(g_native_notification_layer); key.layer(g_native_pause_layer);
     key.layer(g_native_tooltip_layer); key.layer(g_native_help_layer);

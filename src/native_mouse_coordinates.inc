@@ -131,6 +131,7 @@ static bool native_mouse_coordinates_occupied(const graphicst &gps, int x, int y
             &g_native_map_hover_layer, &g_native_tooltip_layer,
             &g_native_notification_layer, &g_native_designation_layer,
             &g_native_info_layer, &g_native_character_layer, &g_native_stocks_layer,
+            &g_native_display_layer,
             &g_native_squads_layer, &g_native_reports_layer, &g_native_petition_layer,
             &g_native_petitions_layer, &g_native_announcement_log_layer,
             &g_native_pause_layer, &g_native_resolution_layer})

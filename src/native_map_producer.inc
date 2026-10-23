@@ -49,6 +49,7 @@ static void bind_native_map_display_frame(const graphicst *graphics) noexcept {
     const NativeUiLayerStorage *private_layers[]{
         &g_native_map_layer, &g_native_help_layer, &g_native_resolution_layer,
         &g_native_info_layer, &g_native_character_layer, &g_native_stocks_layer,
+        &g_native_display_layer,
         &g_native_tooltip_layer, &g_native_notification_layer,
         &g_native_petition_layer,
         &g_native_announcement_log_layer, &g_native_reports_layer,

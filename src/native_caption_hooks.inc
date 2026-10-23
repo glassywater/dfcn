@@ -304,6 +304,7 @@ static void capture_native_help_cell(graphicst *gps) {
         if (!gps || gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||
                 native_private_ui_write_active(gps) || gps == g_native_info_write_graphics ||
                 gps == g_native_stocks_write_graphics || native_notification_write_active(gps) ||
+                gps == g_native_display_write_graphics ||
                 gps == g_native_squads_write_graphics ||
                 gps == g_native_pause_write_graphics ||
             !gps->screen ||

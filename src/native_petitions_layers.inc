@@ -32,6 +32,7 @@ static bool native_petitions_background_cell_hidden(const graphicst *graphics,
         graphics != g_native_info_write_graphics &&
         graphics != g_native_character_write_graphics &&
         graphics != g_native_stocks_write_graphics &&
+        graphics != g_native_display_write_graphics &&
         graphics != g_native_squads_write_graphics &&
         !native_notification_write_active(graphics) &&
         graphics != g_native_pause_write_graphics &&
@@ -55,6 +56,7 @@ static bool native_petitions_begin_draw() {
                 native_private_ui_write_active(gps) || g_native_tooltip_output ||
                 g_native_info_write_graphics || g_native_character_write_graphics ||
                 g_native_stocks_write_graphics || g_native_squads_write_graphics ||
+                g_native_display_write_graphics ||
                 native_notification_write_active(gps) || g_native_pause_write_graphics ||
                 gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000)
             return false;
