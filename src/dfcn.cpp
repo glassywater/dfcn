@@ -1119,6 +1119,7 @@ struct NativeTextCard {
 struct WorkshopTaskCard : NativeTextCard {
     bool category = false;
     bool condition_choice = false;
+    bool native_choice_title = false;
     WorkshopTaskCard(NativeTextCard card, bool is_category = false)
         : NativeTextCard(std::move(card)), category(is_category) {}
 };
@@ -2336,6 +2337,10 @@ struct NativeWorkshopTaskCaption {
 };
 static std::optional<NativeWorkshopTaskCaption> capture_native_workshop_task_caption(
     uintptr_t caller, uintptr_t source);
+enum class NativeWorkshopChoiceField : uint8_t {
+    None, Title, Requirement, Additional,
+};
+static NativeWorkshopChoiceField native_workshop_choice_field(uintptr_t caller);
 
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
@@ -2907,7 +2912,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.fortress_zone_caption = std::move(fortress_zone_caption);
         row.workshop_task_caption = std::move(workshop_task_caption);
         row.uniform_member_right = capture_native_uniform_member_right(native_caller, address, x);
-        if (row.workshop_task_caption) row.caption_source = true;
+        if (row.workshop_task_caption ||
+                native_workshop_choice_field(native_caller) != NativeWorkshopChoiceField::None)
+            row.caption_source = true;
         row.sequence = ++g_native_drawn_text_sequence;
         row.editable_text = NativeEditableTextScope::active;
         row.top_layer = top_layer;
@@ -5193,6 +5200,7 @@ private:
         const std::vector<std::string> &rows) const;
     void append_workshop_task_translations(const WorkshopTaskCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
+    TranslationResult translate_workshop_choice_title(std::string_view source) const;
     void layout_workshop_task_rows(SDL_Renderer *renderer);
     std::vector<NativeTextCard> capture_workshop_material_fields(
         const std::vector<std::string> &rows, bool task_detail_only = false) const;

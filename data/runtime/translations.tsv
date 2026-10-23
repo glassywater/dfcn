@@ -42954,6 +42954,7 @@ This singer. How can I even describe the skill?	这位歌手的技艺，我简�
 Victory was spread among {c} winners during {e}	在{e1}期间，共有{c1}名参赛者共同获得了胜利	ht
 Victory was spread among {c} winners within {p}	在{p1}，共有{c1}名参赛者共同获得了胜利	ht
 Workshop mood material: blocks... bricks......"	砖块……砌块……	l
+Workshop task choice: suffix (engrave memorial)	（雕刻纪念铭文）	l
 World site action: Belongs to your civilization	属于你的政权	hi
 You are hereby charged to retrieve {b} for {e}.	现命你为{e1}取回{b1}。	hPtD
 You are in the middle of improvised music, {e}.	你正在以{e1}的形式即兴演奏。	hPt
@@ -60078,6 +60079,7 @@ Workshop recipe: body capability tannable	生皮	l
 Workshop recipe: format state -containing	装有{s}	l
 Workshop recipe: state offering placement	用于摆放供品	l
 Workshop recipe: state plaster-containing	装有石膏	l
+Workshop task choice: suffix (opens menu)	（打开菜单）	l
 World site action: Not under your control	不受你控制	hi
 You are a {s} in {s}, a human hamlet, and	你是一名{s}，居住在{s}的人类村庄，而且	wtl
 You are in the middle of a sermon on {n}.	你正在围绕{n1}布道。	hPt

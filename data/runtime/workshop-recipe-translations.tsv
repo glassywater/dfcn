@@ -2,6 +2,8 @@
 # Native source: Windows x64 job-item describer 0x140a2adb0–0x140a2c60c.
 # Linux 53.16 chooser, reagent, noun and render branches are preserved in
 # data/extracted/workshop-task-choice/elf-decompiled-parts/ and elf-*.tsv.
+# The current Steam/Classic PE chooser producers and all title suppliers are
+# retained alongside them as pe-reference-*.c, pe-classic-*.c and pe-*.tsv.
 # It appends independent flag prefixes, material-reaction aliases, tool-use
 # labels and the shared item formatter at 0x140a82c10. Keep every constraint.
 # Chinese item/material terminology follows data/runtime/local-overrides.tsv and the
@@ -10,6 +12,8 @@
 # its own typed captures retain every number and resolve complete item names.
 
 # Grammar wrappers; displayed quantities have already been dimension-scaled.
+Workshop task choice: suffix (engrave memorial)	（雕刻纪念铭文）	l
+Workshop task choice: suffix (opens menu)	（打开菜单）	l
 Workshop recipe: [requires fuel]	[需要燃料]	l
 Workshop recipe: [requires ore]	[需要矿石]	l
 Workshop recipe: [requires ore, fuel]	[需要矿石和燃料]	l

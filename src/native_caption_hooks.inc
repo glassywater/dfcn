@@ -2222,13 +2222,14 @@ static void capture_native_clipped_resize(NativeString *source, size_t width, ch
     }
     if (width > 0 && width <= 3) {
         const auto base = native_history_profile_base();
-        // The Places zone/location column only adds dots when its retained
-        // width exceeds three bytes. Narrower nonempty captions are plain
-        // prefixes of the same complete native name or description.
+        // The Places zone/location column and workshop chooser title only
+        // add dots when the retained width exceeds three bytes. Narrower
+        // captions are plain prefixes of the same complete native field.
         zone_plain_prefix = zone_plain_prefix || (base &&
             (caller == native_reference_address(base, 0x39c8e9) ||
              caller == native_reference_address(base, 0x39d28e) ||
-             caller == native_reference_address(base, 0x39d489)));
+             caller == native_reference_address(base, 0x39d489) ||
+             caller == native_reference_address(base, 0x1853c2)));
     }
 #endif
     remember_native_clipped_resize(source, width, fill, false, zone_plain_prefix);
@@ -2940,6 +2941,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     const auto inventory_role = native_adventure_inventory_role(
         native_caller, reinterpret_cast<uintptr_t>(source));
     const auto barter_field = native_adventure_barter_field(native_caller);
+    const auto workshop_choice_field = native_workshop_choice_field(native_caller);
     const std::array<long, 4> draw_clip = capture_clip.value_or(graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
@@ -3036,6 +3038,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
              int64_t(graphics->screenx) + static_cast<int64_t>(text.size()) >
                  int64_t(graphics->clipx[1]) + 1 ||
              native_build_material_field(native_caller) != NativeBuildMaterialField::None ||
+             workshop_choice_field != NativeWorkshopChoiceField::None ||
              native_adventure_crafting_role(native_caller) != NativeAdventureCraftingRole::None ||
              inventory_role != NativeAdventureInventoryRole::None ||
              barter_field != NativeAdventureBarterField::None)) {
@@ -3077,6 +3080,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             (graphics->screenx > dimx && info_title_kind == NativeInfoTitleKind::None &&
                 !mission_title && !fortress_labor_caption &&
                 travel_building_field == NativeTravelBuildingField::None &&
+                workshop_choice_field == NativeWorkshopChoiceField::None &&
                 inventory_role == NativeAdventureInventoryRole::None &&
                 barter_field == NativeAdventureBarterField::None) ||
             (width > 0 && graphics->screenx - x > width) ||
@@ -3114,12 +3118,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         // proves the visible prefix to the map text filter.
         if (width > 0 || first != x || info_title_kind != NativeInfoTitleKind::None ||
                 native_build_material_field(native_caller) != NativeBuildMaterialField::None ||
-#ifndef _WIN32
-                (native_caller &&
-                 (native_caller == native_reference_address(native_history_profile_base(), 0xfd11ed) ||
-                  native_caller == native_reference_address(native_history_profile_base(), 0xfd1288) ||
-                  native_caller == native_reference_address(native_history_profile_base(), 0xfd138e))) ||
-#endif
+                workshop_choice_field != NativeWorkshopChoiceField::None ||
                 civilization_field != NativeCivilizationField::None || mission_title ||
                 location_picker_field != NativeLocationPickerField::None || fortress_labor_caption ||
                 travel_building_field != NativeTravelBuildingField::None ||

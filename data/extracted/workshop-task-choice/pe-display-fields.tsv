@@ -1,0 +1,7 @@
+edition	native_return_rva	field	source
+reference	0x185443	Title	rsp+0x3d00; candidate rsp+0x1fa8; virtual +0x08; clipped before addst
+reference	0x185597	Requirement	pointer at rsp+0x1c80; candidate virtual +0x58; complete string; red; takes priority
+reference	0x185690	Additional	pointer at rsp+0x1c88; candidate virtual +0x60; complete string; virtual +0x68 color
+classic	0x1853d3	Title	rsp+0x3d00; candidate rsp+0x1fa8; virtual +0x08; clipped before addst
+classic	0x185527	Requirement	pointer at rsp+0x1c80; candidate virtual +0x58; complete string; red; takes priority
+classic	0x185620	Additional	pointer at rsp+0x1c88; candidate virtual +0x60; complete string; virtual +0x68 color

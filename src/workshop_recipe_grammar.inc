@@ -76,7 +76,7 @@ std::optional<std::string> Overlay::translate_workshop_recipe_source(
         const auto resolve = [&]() -> std::optional<std::string> {
             if (auto target = scoped("", folded); complete(target)) return target;
             // The chooser's additional field is independent of its red
-            // requirement. Native 13841c0 writes an integer availability,
+            // requirement. PE 8c5680 (ELF 13841c0) writes an integer availability,
             // optionally prefixed by "At least" and a paired dye resource.
             constexpr std::string_view available_suffix = " available";
             if (folded.ends_with(available_suffix)) {
