@@ -44372,7 +44372,6 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         apply_pending_arena_translated_search();
         boundary.checkpoint("arena_search");
         g_overlay.render(renderer);
-        native_mouse_coordinates_present(renderer);
         if (native_worldgen_main_view(native_graphics())) {
             native_worldgen_present_layer(renderer, [](SDL_Renderer *worldgen_renderer) {
                 g_overlay.render_native_worldgen_layer(worldgen_renderer);
@@ -44446,6 +44445,8 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         g_overlay.render_ime_popup(renderer);
         boundary.checkpoint("ime_popup");
         g_overlay.render_settings_menu(renderer);
+        // This independent fortress HUD remains visible above modal pages.
+        native_mouse_coordinates_present(renderer);
         // Only a newly drawn native frame consumes the caption generation.
         // Repeated Present calls retain the last actual native writer evidence.
         if (g_overlay.native_frame_submitted()) advance_embark_item_capture_epoch();
