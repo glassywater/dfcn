@@ -86,6 +86,7 @@
                 }
                 if (right <= draw->x) continue;
                 std::optional<std::string> target;
+                std::optional<std::string> relation_name;
                 std::shared_ptr<const TranslationResult> metadata;
                 if (role == HeaderField::Status) {
                     std::vector<int> colors;
@@ -125,8 +126,10 @@
                             name_target = exact_literal_translation(name_source);
                         if (!name_target && role == HeaderField::Pet)
                             name_target = translate_unit_identity(name_source, true);
-                        if (name_target && !pending)
+                        if (name_target && !pending) {
+                            relation_name = *name_target;
                             target = *name_target + (role == HeaderField::Pet ? "的宠物" : "的创造者");
+                        }
                     } else {
                         // An unnamed artifact is a valid native branch: the
                         // game emits only the prefix. A narrow clip can also
@@ -154,6 +157,7 @@
                 // paragraph, and never consumes the following job/activity.
                 for (int y = std::max(0, draw->y - 1); y <= std::min(gps_->dimy - 1, draw->y + 1); ++y) {
                     std::optional<LogicalTextField> combined;
+                    std::vector<int> part_colors;
                     for (const auto *part : parts) {
                         std::string complete;
                         const auto physical = header_field(*part, layer != 0, y, complete, true);
@@ -161,11 +165,28 @@
                             combined.reset();
                             break;
                         }
+                        part_colors.push_back(header_foreground(*part, *physical, y));
                         if (!combined) combined = *physical;
                         else { combined->end = physical->end; combined->text += physical->text; }
                     }
-                    if (combined) claim_field(*combined, y, target.value_or(std::string{}),
-                        right, metadata, pending, draw->foreground_rgb);
+                    if (!combined) continue;
+                    std::vector<int> colors;
+                    if (relation_name && target && part_colors.size() == 2) {
+                        // Chinese moves the name before the relation label.
+                        // Move its native color with it, counting UTF-8 glyphs.
+                        std::vector<uint32_t> name_codepoints, target_codepoints;
+                        if (decode_utf8(*relation_name, name_codepoints) &&
+                                decode_utf8(*target, target_codepoints) &&
+                                name_codepoints.size() <= target_codepoints.size()) {
+                            colors.assign(target_codepoints.size(), part_colors.front());
+                            std::fill_n(colors.begin(), name_codepoints.size(), part_colors[1]);
+                        }
+                    }
+                    claim_field(*combined, y, target.value_or(std::string{}),
+                        right, metadata, pending, part_colors.front(), false, colors);
+                    // Fallback readers still see the immutable English rows;
+                    // they must not replace this bound field with a flat color.
+                    native_header_spans.push_back({y, combined->start, combined->end});
                 }
                 consumed.insert(consumed.end(), parts.begin(), parts.end());
             }

@@ -54,7 +54,7 @@
                         right, part ? nullptr : metadata, part != 0, draw.foreground_rgb, true);
                 // Reserve the complete physical footprint so the later name /
                 // profession fallbacks cannot translate an exposed Pray prefix.
-                memory_activity_spans.push_back({y, draw.x, end});
+                native_header_spans.push_back({y, draw.x, end});
             }
         }
     }

@@ -33,9 +33,9 @@ void Overlay::append_character_header(
         return y == mate && half_at(y) ==
             (half == (1u << 3) ? (1u << 4) : (1u << 3));
     };
-    std::vector<std::array<int, 3>> memory_activity_spans;
-    const auto memory_activity_owned = [&](int first, int last, int y) {
-        return std::any_of(memory_activity_spans.begin(), memory_activity_spans.end(),
+    std::vector<std::array<int, 3>> native_header_spans;
+    const auto native_header_owned = [&](int first, int last, int y) {
+        return std::any_of(native_header_spans.begin(), native_header_spans.end(),
             [&](const auto &span) {
                 return span[0] == y && first < span[2] && span[1] < last;
             });
@@ -44,11 +44,12 @@ void Overlay::append_character_header(
                                  const std::string &target, int clip_right,
                                  std::shared_ptr<const TranslationResult> translation = {},
                                  bool suppress_pending = false, int foreground = -1,
-                                 bool memory_activity = false) {
+                                 bool memory_activity = false,
+                                 const std::vector<int> &foregrounds = {}) {
         if ((target.empty() && !suppress_pending) || y < 0 || y >= static_cast<int>(screen_rows.size()) ||
                 field.start < 0 || field.end <= field.start ||
                 field.end > static_cast<int>(screen_rows[y].size())) return;
-        if (!memory_activity && memory_activity_owned(field.start, field.end, y)) return;
+        if (!memory_activity && native_header_owned(field.start, field.end, y)) return;
         // The complete owner replaces earlier fragments on every source row;
         // only emission is restricted during an individual-row scan.
         std::erase_if(result, [&](const Match &match) {
@@ -71,6 +72,7 @@ void Overlay::append_character_header(
         match.layout_clip_is_occlusion = memory_activity;
         match.layout_left = true;
         match.layout_foreground_rgb = foreground;
+        match.layout_glyph_foreground_rgb = foregrounds;
         result.push_back(std::move(match));
     };
     const auto header_field = [&](const NativeDrawnTextRow &draw,
@@ -78,7 +80,7 @@ void Overlay::append_character_header(
             -> std::optional<LogicalTextField> {
         if (!draw.caption_source || (!allow_identity && draw.unit_identity_target) ||
                 draw.source.empty() ||
-                memory_activity_owned(draw.x, draw.x + static_cast<int>(draw.source.size()), y) ||
+                native_header_owned(draw.x, draw.x + static_cast<int>(draw.source.size()), y) ||
                 !source_row_matches(draw.x, draw.y, top_layer, y)) return std::nullopt;
         std::string_view visible = draw.source;
         complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
@@ -97,6 +99,18 @@ void Overlay::append_character_header(
                         static_cast<unsigned char>(visible[x - draw.x])) return std::nullopt;
         }
         return LogicalTextField{draw.x, end, std::string(visible)};
+    };
+    // Call only after header_field binds this draw's current physical row.
+    // A mod can recolor that row after addst captured foreground_rgb.
+    const auto header_foreground = [&](const NativeDrawnTextRow &draw,
+            const LogicalTextField &field, int y) {
+        const auto *grid = draw.top_layer ? gps_->screen_top : gps_->screen;
+        if (grid) for (int x = field.start; x < field.end; ++x) {
+            if (field.text[x - field.start] == ' ') continue;
+            const auto *cell = grid + (static_cast<size_t>(x) * gps_->dimy + y) * 8;
+            return (cell[1] << 16) | (cell[2] << 8) | cell[3];
+        }
+        return draw.foreground_rgb >= 0 ? draw.foreground_rgb : 0xffffff;
     };
 #include "character_header_activity.inc"
 #include "character_header_native.inc"
@@ -247,7 +261,7 @@ void Overlay::append_character_header(
     const auto eligible = [&](const LogicalTextField &field, int y,
                               bool header_overflow = false) {
         if (tab_rows[y] || field.start <= frame->left || field.start >= frame->right ||
-            memory_activity_owned(field.start, field.end, y) ||
+            native_header_owned(field.start, field.end, y) ||
             (!header_overflow && field.end > frame->right) ||
             native_button_text_rect(*gps_, field.start, field.end, y)) return false;
         // A partially obscured social band is still a set of controls, not a
