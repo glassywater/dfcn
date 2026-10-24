@@ -9,6 +9,17 @@ milk of lime	石灰乳
 ivory	象牙
 wool	羊毛
 unknown material	未知材料
+# Native stone-name suppliers return the complete nugget name; keep it in
+# the preference namespace alongside the corresponding material states.
+copper nuggets	铜块
+gold nuggets	金块
+platinum nuggets	铂块
+silver nuggets	银块
+# These installed SEED fields have a malformed trailing field in the upstream
+# gettext tag, so their existing plural translations need singular partners.
+eggplant seed	茄子种子
+garden cress seed	水芹种子
+garlic seed	大蒜种子
 # The installed extinct-creature RAW contains these dairy states, while
 # its gettext entries are empty. Reuse the existing miohippus species name.
 frozen miohippus's milk	结冻的中新马奶

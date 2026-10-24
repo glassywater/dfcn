@@ -727,16 +727,39 @@ def write_preference_vocabulary(args: argparse.Namespace) -> None:
     # complete translated RAW fields into the preference namespace instead.
     # Keep names containing commas/conjunctions whole, just like PREFSTRING.
     field_targets: dict[str, set[str]] = collections.defaultdict(set)
+    material_field_targets: dict[str, set[str]] = collections.defaultdict(set)
+    material_state_sources: set[str] = set()
+    item_field_targets: dict[tuple[str, str, str], set[str]] = collections.defaultdict(set)
     for block in re.split(r"\n\s*\n", args.creature_objects.read_text(encoding="utf-8-sig")):
         context = parse_po_field(block, "msgctxt")
         source_tag = re.fullmatch(r"\[([A-Z_]+):(.*)\]", parse_po_field(block, "msgid"))
-        target_tag = re.fullmatch(r"\[([A-Z_]+):(.*)\]", parse_po_field(block, "msgstr"))
-        if source_tag is None or target_tag is None or source_tag[1] != target_tag[1]:
+        if source_tag is None:
             continue
         tag = source_tag[1]
-        sources, targets = source_tag[2].split(":"), target_tag[2].split(":")
+        sources = source_tag[2].split(":")
+        # A reviewed override can supply a missing or ambiguous gettext
+        # translation, but only a real STATE_NAME field licenses that key in
+        # the material-state vocabulary used after a creature/owner prefix.
+        if tag in {"STATE_NAME", "STATE_NAME_ADJ"} and len(sources) == 2:
+            material_state_sources.add(normalize_source(sources[1]).strip())
+        target_tag = re.fullmatch(r"\[([A-Z_]+):(.*)\]", parse_po_field(block, "msgstr"))
+        if target_tag is None or tag != target_tag[1]:
+            continue
+        targets = target_tag[2].split(":")
+        # SEED permits an empty trailing color field. Some gettext entries
+        # omit its final colon; the two name fields still have the same roles.
+        if tag == "SEED":
+            while sources and not sources[-1]:
+                sources.pop()
+            while targets and not targets[-1]:
+                targets.pop()
         if len(sources) != len(targets):
             continue
+        if context.startswith("ITEM_") and tag in {"NAME", "ADJECTIVE"}:
+            for source, target in zip(sources, targets):
+                source, target = normalize_source(source).strip(), target.strip()
+                if source and target and re.search(r"[\u3400-\u9fff]", target):
+                    item_field_targets[context, tag, source].add(target)
         if tag in {"STATE_NAME", "STATE_NAME_ADJ"}:
             if len(sources) != 2 or sources[0] != targets[0]:
                 continue
@@ -753,9 +776,65 @@ def write_preference_vocabulary(args: argparse.Namespace) -> None:
             source, target = normalize_source(source).strip(), target.strip()
             if source and target and re.search(r"[\u3400-\u9fff]", target):
                 field_targets[source].add(target)
+                if tag in {"STATE_NAME", "STATE_NAME_ADJ"}:
+                    material_field_targets[source].add(target)
+
+    # The plural item supplier joins a subtype's ADJECTIVE and NAME fields.
+    # A comma inside an adjective (large, serrated discs) belongs to this one
+    # item, not to the outer preference list. Build only combinations present
+    # in the installed RAW object, with translations from that object's PO
+    # context and its established item-type dictionary.
+    item_literal_targets: dict[str, dict[str, str]] = {}
+    item_raw_root = GAME / "data/vanilla/vanilla_items/objects"
+    for raw in sorted(item_raw_root.glob("*.txt")):
+        for item in re.finditer(
+                r"\[(ITEM_[A-Z_]+):([^\]:]+)\](.*?)(?=\[ITEM_[A-Z_]+:|\Z)",
+                raw.read_text(encoding="cp437"), re.S):
+            item_type, item_id, body = item.groups()
+            raw_names = re.search(r"\[NAME:([^\]]+)\]", body)
+            raw_adjective = re.search(r"\[ADJECTIVE:([^\]]+)\]", body)
+            if raw_names is None or raw_adjective is None:
+                continue
+            if item_type not in item_literal_targets:
+                candidates: dict[str, set[str]] = collections.defaultdict(set)
+                item_rules = args.rulesets / "items" / (item_type[5:].lower() + ".toml")
+                if item_rules.is_file():
+                    document = tomllib.loads(item_rules.read_text(encoding="utf-8"))
+                    for ruleset in document.get("rulesets", []):
+                        for source, target in ruleset.get("rules", {}).items():
+                            if "{" not in source + target and re.search(r"[\u3400-\u9fff]", target):
+                                candidates[normalize_source(source).strip()].add(target)
+                item_literal_targets[item_type] = {
+                    source: next(iter(targets)) for source, targets in candidates.items()
+                    if len(targets) == 1
+                }
+            literals = item_literal_targets[item_type]
+            context = item_type + ":" + item_id
+
+            def item_field_target(tag: str, source: str) -> str | None:
+                # In particular, the trap-component dictionary repairs the
+                # malformed PO adjective [ADJECTIVE:巨大:锯齿状] and preserves
+                # its existing 大型锯盘 spelling without inventing RAW fields.
+                if source in literals:
+                    return literals[source]
+                targets = item_field_targets.get((context, tag, source), set())
+                return next(iter(targets)) if len(targets) == 1 else None
+
+            adjective = normalize_source(raw_adjective[1]).strip()
+            translated_adjective = item_field_target("ADJECTIVE", adjective)
+            if not adjective or translated_adjective is None:
+                continue
+            for raw_name in raw_names[1].split(":")[:2]:
+                name = normalize_source(raw_name).strip()
+                translated_name = item_field_target("NAME", name)
+                if name and translated_name is not None:
+                    field_targets[adjective + " " + name].add(
+                        translated_adjective + translated_name)
 
     terms = {source: next(iter(targets))
              for source, targets in field_targets.items() if len(targets) == 1}
+    material_states = {source: next(iter(targets))
+                       for source, targets in material_field_targets.items() if len(targets) == 1}
     # Preserve the established material, plant/seed/growth and item nouns.
     # Adjective, prefix and suffix leaves are grammatical components; they
     # must not override a whole source field with a different word sense.
@@ -772,7 +851,11 @@ def write_preference_vocabulary(args: argparse.Namespace) -> None:
                 continue
             for source, target in ruleset.get("rules", {}).items():
                 if "{" not in source + target and re.search(r"[\u3400-\u9fff]", target):
-                    terms[normalize_source(source).strip()] = target
+                    source = normalize_source(source).strip()
+                    terms[source] = target
+                    if relative == "materials/state.toml":
+                        material_state_sources.add(source)
+                        material_states[source] = target
 
     # Color words overlap materials/creatures (amber, bronze, cardinal, ...).
     # Their prefixed form must use the color namespace, never a generic noun
@@ -796,14 +879,17 @@ def write_preference_vocabulary(args: argparse.Namespace) -> None:
     })
     for entry in parse_local(ROOT / "data/runtime/preference-term-overrides.tsv"):
         terms[entry.source] = entry.target
+        if entry.source in material_state_sources:
+            material_states[entry.source] = entry.target
 
     output = args.preference_output
     output.parent.mkdir(parents=True, exist_ok=True)
     with atomic_dictionary_output(output) as stream:
         stream.write("// GENERATED by tools/build_translations.py.\n")
-        stream.write("// Sources: data/upstream/objects.zh-Hans.po, data/runtime/rulesets/zh-Hans/{materials/state,plants/name,plants/seed,plants/growth,color}.toml, data/runtime/preference-{reason,term}-overrides.tsv.\n")
+        stream.write("// Sources: installed item RAWs, data/upstream/objects.zh-Hans.po, data/runtime/rulesets/zh-Hans/{items/*,materials/state,plants/name,plants/seed,plants/growth,color}.toml, data/runtime/preference-{reason,term}-overrides.tsv.\n")
         stream.write("// Scoped preferences and shared description colors; see THIRD_PARTY_NOTICES.md.\n")
-        for name, values in (("preference_reasons", reasons), ("preference_terms", terms)):
+        for name, values in (("preference_reasons", reasons), ("preference_terms", terms),
+                             ("preference_material_states", material_states)):
             stream.write("static const std::unordered_map<std::string_view, std::string_view> " + name + " = {\n")
             for source, target in sorted(values.items()):
                 if not target or not re.search(r"[\u3400-\u9fff]", target):
@@ -812,7 +898,8 @@ def write_preference_vocabulary(args: argparse.Namespace) -> None:
                              json.dumps(target, ensure_ascii=False) + "},\n")
             stream.write("};\n")
     print(f"Generated {output}: {len(reasons)} reasons, {color_count} color phrases, "
-          f"{len(terms) - color_count} RAW field/material/food/shape terms")
+          f"{len(terms) - color_count} RAW field/material/food/shape terms, "
+          f"{len(material_states)} material states")
 
 
 def parse_shape_names(path: Path) -> list[Entry]:

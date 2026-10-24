@@ -15777,12 +15777,48 @@ static std::optional<std::string_view> character_preference_likes_body(
 
 std::optional<std::string> Overlay::translate_character_preference_term(
         std::string_view raw_term, bool form_title) const {
-    auto direct_term = [this](std::string_view raw)
+    // The native material writer emits an optional historical owner, a RAW
+    // prefix and one complete STATE_NAME. Its state is not limited to the
+    // handful of tissue suffixes used by ordinary item captions.
+    std::function<std::optional<std::string>(std::string_view)> material_field;
+    material_field = [&](std::string_view source) -> std::optional<std::string> {
+        source = trim_view(source);
+        if (const auto found = preference_material_states.find(source);
+                found != preference_material_states.end())
+            return std::string(found->second);
+        // Try the longest complete state first. Prefixes retain their typed
+        // plant/species meaning; arbitrary words cannot become a material.
+        for (size_t at = source.find(' '); at != std::string_view::npos;
+             at = source.find(' ', at + 1)) {
+            const auto state = preference_material_states.find(source.substr(at + 1));
+            if (state == preference_material_states.end()) continue;
+            if (const auto prefix = RULESETS.translate_material_prefix(
+                    native_text_to_utf8(source.substr(0, at))))
+                return *prefix + std::string(state->second);
+        }
+        // The owner formatter can emit an empty name followed by "'s ".
+        // Preserve authored nicknames in valid owners, including punctuation.
+        for (size_t at = character_preference_boundary(source, "'s ");
+             at != std::string_view::npos;
+             at = character_preference_boundary(source, "'s ", at + 1)) {
+            const auto state = material_field(source.substr(at + 3));
+            if (!state) continue;
+            if (at == 0) return "未命名人物的" + *state;
+            const auto owner_source = source.substr(0, at);
+            const auto owner = translate_legends_actor(owner_source);
+            if (translation_complete_with_native_nicknames(owner, owner_source))
+                return *owner + "的" + *state;
+        }
+        return std::nullopt;
+    };
+
+    auto direct_term = [this, &material_field](std::string_view raw)
             -> std::optional<std::string> {
         const std::string source = trim(std::string(raw));
         if (source.empty()) return std::nullopt;
         if (const auto found = preference_terms.find(source);
             found != preference_terms.end()) return std::string(found->second);
+        if (const auto material = material_field(source)) return material;
         if (const auto exact = exact_literal_translation(source)) return exact;
         // The producer copies whole RAW names, not ordinary UI words. Meat
         // and fish use a creature NAME, while the other food selectors use
@@ -16020,23 +16056,32 @@ std::optional<std::string> Overlay::translate_character_preference_term(
             return std::nullopt;
         }
 
+        // Solid plant materials append a native category after the complete
+        // STATE_NAME. Strip that one category before generic word/name rules
+        // can reinterpret "rambutan wood wood" as two timber nouns.
+        if (source.ends_with(" wood")) {
+            const auto stem = std::string_view(source).substr(0, source.size() - 5);
+            if (const auto material = material_field(stem)) {
+                if (stem.ends_with("wood")) return material;
+                return *material + "木材";
+            }
+        }
+
         // Preferences name the finished textile as `<material> fabric`,
         // while the item rules call it `<material> cloth`. The fabric noun
         // is not a language-word/name token, so the generic resolvers cannot
         // translate it. Resolve these productive material forms explicitly,
         // keeping exact entries (including divine fabrics) authoritative.
         if (const auto exact = exact_literal_translation(source)) return exact;
-        // A separator can belong to a complete item name, for example the
-        // RAW adjective in "large, serrated discs". Let the existing item
-        // grammar consume the entire candidate before treating it as a list.
-        // Keep this lookup scoped: the generic name/procedural fallback must
-        // not glue several preferences into one invented name.
-        if (source.find(", ") != std::string::npos ||
-            source.find(" and ") != std::string::npos) {
-            std::vector<size_t> origins;
-            return RULESETS.translate_with_origins(
-                native_text_to_utf8(source), "::items::main", origins);
-        }
+        if (const auto material = material_field(source)) return material;
+        // Punctuated RAW fields, including item ADJECTIVE + NAME, have exact
+        // entries above. Cultural titles have their own parser. A remaining
+        // comma/conjunction is a candidate list boundary, not permission for
+        // a generic item/material-list rule to consume several preferences
+        // before their individual scoped terms (such as moonstone) are read.
+        if (character_preference_boundary(source, ", ") != std::string::npos ||
+            character_preference_boundary(source, " and ") != std::string::npos)
+            return std::nullopt;
         static constexpr auto product_suffixes =
             std::to_array<std::pair<std::string_view, std::string_view>>({
                 {" fabric", "布"}, {" cloth", "布"},
@@ -16067,39 +16112,7 @@ std::optional<std::string> Overlay::translate_character_preference_term(
                 return *translated_material + std::string(product);
         }
 
-        // The preference generator can append the wood category to a RAW
-        // material name already ending in "wood" ("peach wood wood").
-        // Resolve the complete material stem instead of duplicating its noun.
-        if (source.ends_with(" wood wood")) {
-            const std::string_view material(source.data(),
-                source.size() - std::string_view(" wood").size());
-            if (const auto wood = translate_material_name(material)) return wood;
-        }
-
         if (const auto direct = direct_term(source)) return direct;
-
-        // Material preferences join a creature name to a tissue/material
-        // state (`torvosaurus bone`, modded-creature leather, and so on).
-        // The two halves have complete dictionaries even when the combined
-        // phrase is not a root ruleset production.
-        static constexpr std::array<std::string_view, 24> material_suffixes = {{
-            " parchment", " leather", " feathers", " feather",
-            " cartilage", " chitin", " shells", " shell", " scales",
-            " scale", " horns", " horn", " hooves", " hoof", " teeth",
-            " tooth", " bones", " bone", " silk", " wool", " hair",
-            " blood", " meat", " fat",
-        }};
-        for (std::string_view suffix : material_suffixes) {
-            if (!source.ends_with(suffix) || source.size() <= suffix.size())
-                continue;
-            const std::string_view owner(source.data(),
-                source.size() - suffix.size());
-            const auto translated_owner = direct_term(owner);
-            const auto translated_material = direct_term(suffix.substr(1));
-            if (translated_owner && translated_material) {
-                return *translated_owner + *translated_material;
-            }
-        }
 
         static constexpr std::array<std::pair<std::string_view,
                                                std::string_view>, 2>
