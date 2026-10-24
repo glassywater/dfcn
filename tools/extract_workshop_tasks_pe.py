@@ -9,6 +9,7 @@ import csv
 import hashlib
 import json
 import re
+import struct
 
 from native_caption_image import CaptionImage
 from extract_fortress_weapon_picker_pe import complete_unwind_owners, OBJDUMP
@@ -29,8 +30,11 @@ LOCAL_OWNERS = {
     0x8c2860: "color-menu-input",
     0x8c28f0: "material-menu-title",
     0x8c2940: "material-menu-input",
+    0x8c29d0: "reaction-category-menu-title",
     0x8c2ab0: "category-menu-title",
+    0x8c2bf0: "reaction-category-tooltip",
     0x8c2ca0: "task-choice-tooltip",
+    0x8c3e20: "reaction-category-menu-input",
     0x8c3eb0: "category-menu-input",
     0x8c3fe0: "task-availability-and-requirement",
     0x8c4fc0: "task-choice-filter",
@@ -59,6 +63,10 @@ def main():
         owners[0xa82c10 if edition == "reference" else 0xa7fc90] = "requirement-item-noun"
         owners[0x724a30 if edition == "reference" else 0x722450] = "requirement-tool-use"
         owners[0x14add70 if edition == "reference" else 0x14a8ce0] = "requirement-material-category"
+        owners[0x8e7310 if edition == "reference" else 0x8e4b80] = "tooltip-paragraph-splitter"
+        owners[0x8e7440 if edition == "reference" else 0x8e4cb0] = "tooltip-paragraph-list-splitter"
+        owners[0xd160c0 if edition == "reference" else 0xd13100] = "tooltip-job-products"
+        owners[0xd09ca0 if edition == "reference" else 0xd06ce0] = "tooltip-job-reagents"
         # The native sheet is kept in full, not cropped to the screenshot.
         owners[0x14ef90 if edition == "reference" else 0x14ef20] = "task-choice-render-owner"
         digest = hashlib.sha256(image.raw).hexdigest()
@@ -114,6 +122,12 @@ def main():
                     rows["virtuals"].append((edition, role, hex(pc-image.base), instruction))
             rows["switches"].extend(switches)
             (OUT / filename).write_text("\n".join(lines)+"\n", encoding="utf-8")
+        # Reaction categories are constructed inline by the availability
+        # producer, separately from the fixed category-menu constructor.
+        category_tooltip = image.base + 0x8c2bf0 + delta
+        table = image.address(image.raw.index(struct.pack("<Q", category_tooltip))) - 0x38
+        for slot in range(0, 0x70, 8):
+            rows["vtables"].append((edition, "reaction-category-inline-constructor", hex(table-image.base), hex(slot), hex(image.uint64(table+slot)-image.base)))
         shift = 0 if edition == "reference" else -0x70
         for pc, kind, source in ((0x185443, "Title", "rsp+0x3d00; candidate rsp+0x1fa8; virtual +0x08; clipped before addst"),
                                  (0x185597, "Requirement", "pointer at rsp+0x1c80; candidate virtual +0x58; complete string; red; takes priority"),

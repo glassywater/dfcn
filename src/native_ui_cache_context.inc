@@ -204,6 +204,11 @@ public:
         rect(input.bounds); value(input.dimx); value(input.dimy);
         value(input.epoch == epoch); value(input.top_layer); value(input.isolated);
         grid(input.grid_identity); text(input.body_source);
+        value(input.workshop_recipe);
+        range(input.workshop_fields, [&](const auto &field) {
+            value(field.first_line); text(field.source);
+            range(field.wrapped_lines, [&](const auto &row) { text(row); });
+        });
         range(input.rows, [&](const auto &row) { text(row); });
         range(input.glyph_rows, [&](const auto &row) { text(row); });
         range(input.occlusions, [&](const auto &box) { rect(box); });

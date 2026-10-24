@@ -85,7 +85,7 @@ private:
 using NativeParagraphFn = void (*)(void *, const NativeString *, int);
 static NativeParagraphFn g_real_native_paragraph = nullptr;
 static void capture_appended_native_paragraph(void *box, int width,
-        std::string complete, size_t before) {
+        std::string complete, size_t before, bool structured_source = false) {
     if (before > 262144 || complete.empty()) return;
     const size_t after = native_paragraph_row_count(box);
     if (after <= before || after > 262144 || after - before > 16384) return;
@@ -101,7 +101,7 @@ static void capture_appended_native_paragraph(void *box, int width,
         row_addresses.push_back(reinterpret_cast<uintptr_t>(native_row));
     }
     remember_native_paragraph(reinterpret_cast<uintptr_t>(box), width,
-        std::move(complete), std::move(rows), before, std::move(row_addresses));
+        std::move(complete), std::move(rows), before, std::move(row_addresses), structured_source);
 }
 static void dfcn_capture_native_paragraph(void *box, const NativeString *source, int width) {
     NativeWrapTiming timing("paragraph", box, source);

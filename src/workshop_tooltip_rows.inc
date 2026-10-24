@@ -186,3 +186,184 @@ void Overlay::append_workshop_recipe_card(const NativeTextCard &card,
         begin = end;
     }
 }
+
+// The tooltip widget owns every logical row, including rows outside the
+// screen. Resolve its complete fields before the shared tooltip compositor
+// wraps the translated document into the widget's rectangle.
+dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
+        const NativeTooltipWidgetFrame &frame) const {
+    const std::string_view body = frame.body_source;
+    if (body.empty()) return {};
+    struct Line { size_t begin, end; std::string_view text; };
+    std::vector<Line> lines;
+    for (size_t begin = 0;;) {
+        const size_t newline = body.find('\n', begin);
+        const size_t end = newline == std::string_view::npos ? body.size() : newline;
+        lines.push_back({begin, end, trim_view(body.substr(begin, end - begin))});
+        if (newline == std::string_view::npos) break;
+        begin = newline + 1;
+    }
+    const auto heading = [](std::string_view source) {
+        return source == "Produces:" || source == "Requires:";
+    };
+    const auto counted = [](std::string_view source) {
+        return !source.empty() && source.front() >= '0' && source.front() <= '9';
+    };
+    // A category or description-only widget needs no recipe segmentation.
+    // In particular, a wrapped number inside instrument prose is not an
+    // independently emitted quantity field.
+    if (frame.workshop_fields.empty() && std::none_of(lines.begin(), lines.end(),
+            [&](const Line &line) { return heading(line.text); })) {
+        auto prose = translate_toolbar_tooltip_result(body, true);
+        if (prose.strict_target()) {
+            prose.kind = "workshop-tooltip";
+            prose.owner = "native-workshop-tooltip";
+            return prose;
+        }
+    }
+    const auto whitespace = [](unsigned char ch) {
+        return ch == ' ' || ch == '\t' || ch == '\r' || ch == '\n';
+    };
+    const auto identity = [&](std::string_view source) {
+        std::string key;
+        for (unsigned char ch : source)
+            if (!whitespace(ch)) key += static_cast<char>(ch);
+        return key;
+    };
+    std::vector<const NativeParagraphCapture *> bound(lines.size(), nullptr);
+    for (const auto &capture : frame.workshop_fields) {
+        const size_t begin = capture.first_line, count = capture.wrapped_lines.size();
+        if (capture.source.empty() || !count || begin >= lines.size() ||
+                count > lines.size() - begin) continue;
+        bool matches = true;
+        std::string wrapped;
+        for (size_t at = 0; at < count; ++at) {
+            const auto &line = lines[begin + at];
+            if (line.text != trim_view(capture.wrapped_lines[at])) {
+                matches = false;
+                break;
+            }
+            wrapped += line.text;
+        }
+        // A matching first row is insufficient: the owner, row index and
+        // entire native wrap must all describe this same complete field.
+        if (!matches || identity(wrapped) != identity(capture.source)) continue;
+        const auto *previous = bound[begin];
+        if (!previous || count > previous->wrapped_lines.size() ||
+                (count == previous->wrapped_lines.size() && capture.sequence > previous->sequence))
+            bound[begin] = &capture;
+    }
+    struct Field { size_t begin, end; std::string source; };
+    std::vector<Field> fields;
+    for (size_t begin = 0; begin < lines.size();) {
+        if (lines[begin].text.empty()) { ++begin; continue; }
+        size_t end = begin + 1;
+        std::string source;
+        if (heading(lines[begin].text)) source = lines[begin].text;
+        else if (const auto *capture = bound[begin]) {
+            source = capture->source;
+            end = begin + capture->wrapped_lines.size();
+        } else {
+            // Cached native widgets can precede paragraph capture. Counts,
+            // section headings, empty rows and bound fields delimit fallback
+            // units; a translatable opening alone never ends a field.
+            end = begin;
+            while (end < lines.size() && !lines[end].text.empty()) {
+                if (end > begin && (heading(lines[end].text) ||
+                        (counted(lines[begin].text) && counted(lines[end].text)) || bound[end])) break;
+                if (!source.empty()) source += ' ';
+                source += lines[end].text;
+                ++end;
+            }
+        }
+        fields.push_back({lines[begin].begin, lines[end - 1].end, std::move(source)});
+        begin = end;
+    }
+    const auto translate = [&](std::string_view source) -> TranslationResult {
+        if (heading(source)) {
+            const auto target = exact_literal_translation(source);
+            return target ? TranslationResult::translated(source, *target, "recipe-heading")
+                : preserved_item_field(source, "recipe-heading");
+        }
+        if (const auto target = translate_workshop_recipe_source(source))
+            return TranslationResult::translated(source, *target, "recipe");
+        auto prose = translate_toolbar_tooltip_result(source, true);
+        if (prose.strict_target()) return prose;
+        // A numeric recipe field permits typed partial translation of its
+        // constraints and item. Unknown prose remains one complete field.
+        if (counted(trim_view(source))) {
+            auto recipe = translate_workshop_recipe_source_display(source);
+            if (recipe.usable()) return recipe;
+        }
+        return preserved_item_field(source, "workshop-description");
+    };
+    const auto wrapped_result = [&](TranslationResult result, const Field &field) {
+        const auto native = body.substr(field.begin, field.end - field.begin);
+        if (!result.usable()) result = preserved_item_field(field.source, "workshop-field");
+        // Translation fragments describe the unwrapped native source. Map
+        // them back to the widget's exact rows so retained terms and their
+        // source offsets remain correct after native wrapping adds spaces.
+        std::vector<size_t> origins(result.source.size());
+        size_t next = 0;
+        for (size_t at = 0; at < result.source.size(); ++at) {
+            if (!whitespace(static_cast<unsigned char>(result.source[at]))) {
+                while (next < native.size() && whitespace(static_cast<unsigned char>(native[next]))) ++next;
+                if (next >= native.size() || native[next] != result.source[at])
+                    return preserved_item_field(native, "workshop-field");
+                origins[at] = next++;
+            } else origins[at] = next;
+        }
+        const auto boundary = [&](size_t at, bool end) {
+            if (!at) return size_t{0};
+            if (at >= origins.size()) return native.size();
+            return end ? std::min(native.size(), origins[at - 1] + 1) : origins[at];
+        };
+        for (auto &origin : result.origins)
+            if (origin != std::string::npos)
+                origin = origin < origins.size() ? origins[origin] : std::string::npos;
+        for (auto &fragment : result.fragments) {
+            fragment.source_begin = boundary(fragment.source_begin, false);
+            fragment.source_end = boundary(fragment.source_end, true);
+        }
+        result.source.assign(native);
+        result.consumed = native.size();
+        return result;
+    };
+    TranslationResult document;
+    size_t consumed = 0;
+    dfcn::TranslationWorkScope work;
+    try {
+        // A generated instrument name can first become known in a trailing
+        // DESCRIPTION, after products and reagents that already use it.
+        for (const auto &field : fields)
+            (void)translate_instrument_description(field.source, true);
+        for (const auto &field : fields) {
+            if (field.begin > consumed) {
+                const auto gap = body.substr(consumed, field.begin - consumed);
+                const auto breaks = std::count(gap.begin(), gap.end(), '\n');
+                document.append(TranslationResult::translated(gap,
+                    std::string(static_cast<size_t>(breaks), '\n'), "card-separator"), consumed);
+                consumed = field.begin;
+            }
+            document.append(wrapped_result(translate(field.source), field), field.begin);
+            consumed = field.end;
+        }
+    } catch (const dfcn::TranslationWorkLimit &) {
+        document.append(preserved_item_field(body.substr(consumed), "workshop-field",
+            TranslationStatus::WorkLimited), consumed);
+        consumed = body.size();
+    }
+    if (consumed < body.size()) {
+        const auto gap = body.substr(consumed);
+        document.append(TranslationResult::translated(gap,
+            std::string(static_cast<size_t>(std::count(gap.begin(), gap.end(), '\n')), '\n'),
+            "card-separator"), consumed);
+    }
+    document.source.assign(body);
+    document.consumed = body.size();
+    document.kind = "workshop-tooltip";
+    document.owner = "native-workshop-tooltip";
+    document.policy = TranslationPolicy::Display;
+    document.resource_revision = RULESETS.resource_revision();
+    return document;
+}

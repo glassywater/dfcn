@@ -46,6 +46,14 @@ static bool resolve_native_workshop_recipe_profile(NativeWorkshopRecipeProfile &
     if (!profile.begin_site || !profile.begin_target ||
         !profile.end_site || !profile.end_target) return false;
     profile.paragraph_width = 29;
+    // Each product is one native paragraph, including single-word singular
+    // items. The shared prose capture intentionally filters those short
+    // strings, so retain this producer's exact boundaries without that filter.
+    profile.paragraph_calls = {
+        {0x8c3327, 0x8e7310,
+            reinterpret_cast<const void *>(&capture_native_workshop_recipe_paragraph)},
+    };
+    if (!native_reference_calls(profile.paragraph_calls, 0)) return false;
     profile.normalize = reinterpret_cast<NativeWorkshopRecipeStringFn>(base + profile.begin_target);
     profile.destroy = reinterpret_cast<NativeWorkshopRecipeStringFn>(base + profile.end_target);
     // Both original calls take only RCX, leave their return value unused, and

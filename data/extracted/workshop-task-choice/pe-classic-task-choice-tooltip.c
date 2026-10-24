@@ -136,8 +136,9 @@ void workshop_task_choice_tooltip(longlong param_1,longlong *param_2)
   uStack_390 = *(undefined4 *)(param_1 + 0x84);
   uStack_3a0 = *(undefined4 *)(param_1 + 0x78);
   uStack_3a8 = *(undefined2 *)(param_1 + 0x74);
-  FUN_140d13100(&ppppppuStack_340,*(undefined2 *)(param_1 + 0x48),*(undefined2 *)(param_1 + 0x70),
-                *(undefined2 *)(param_1 + 0x72));
+  workshop_tooltip_job_products
+            (&ppppppuStack_340,*(undefined2 *)(param_1 + 0x48),*(undefined2 *)(param_1 + 0x70),
+             *(undefined2 *)(param_1 + 0x72));
   ppppppuVar10 = ppppppuStack_340;
   ppppppuVar22 = ppppppuStack_340;
   ppppppuVar6 = ppppppuStack_338;
@@ -396,9 +397,9 @@ LAB_1408c0774:
     uStack_300 = 0;
     uStack_2f8 = 0xf;
     plStack_310 = (longlong *)0x0;
-    workshop_job_item_requirement(&uStack_268,&plStack_310,*(undefined2 *)(ppppuVar1 + 2));
+    FUN_140a285e0(&uStack_268,&plStack_310,*(undefined2 *)(ppppuVar1 + 2));
     FUN_14052b070(&plStack_310);
-    FUN_1408e4b80(param_2,&plStack_310,0x1d);
+    workshop_tooltip_paragraph_splitter(param_2,&plStack_310,0x1d);
     FUN_14006f7e0(&plStack_310);
     FUN_14006f6e0(auStack_180);
     FUN_14006f6e0(apppuStack_1d8);
@@ -468,7 +469,7 @@ LAB_1408c0774:
     uStack_2f8 = 0xf;
     plStack_310 = (longlong *)0x7365726975716552;
     lStack_308 = 0x3a;
-    FUN_1408e4b80(param_2,&plStack_310,0x1d);
+    workshop_tooltip_paragraph_splitter(param_2,&plStack_310,0x1d);
     FUN_14006f7e0(&plStack_310);
   }
   pppppppuVar9 = (undefined8 *******)ppppppuStack_338;
@@ -519,7 +520,7 @@ LAB_1408c0774:
       uStack_2a0 = 0;
       uStack_298 = 0xf;
       pppppppuStack_2b0 = (undefined8 *******)0x0;
-      workshop_job_item_requirement(&uStack_158,&pppppppuStack_2b0,*(undefined2 *)(pppppuVar2 + 2));
+      FUN_140a285e0(&uStack_158,&pppppppuStack_2b0,*(undefined2 *)(pppppuVar2 + 2));
       FUN_14052b070(&pppppppuStack_2b0);
       plStack_310 = (longlong *)0x0;
       lStack_308 = 0;
@@ -757,7 +758,7 @@ LAB_1408c1041:
                     param_2[1] = param_2[1] + 8;
                   }
                 }
-                FUN_1408e4b80(param_2,*plVar27);
+                workshop_tooltip_paragraph_splitter(param_2,*plVar27);
               }
               plVar7 = _DAT_1424e6a68;
               lVar21 = *plVar27;
@@ -793,7 +794,7 @@ LAB_1408c1041:
                         param_2[1] = param_2[1] + 8;
                       }
                     }
-                    FUN_1408e4b80(param_2,*plVar24 + 0x188);
+                    workshop_tooltip_paragraph_splitter(param_2,*plVar24 + 0x188);
                     break;
                   }
                 }
@@ -832,7 +833,7 @@ LAB_1408c1041:
                         param_2[1] = param_2[1] + 8;
                       }
                     }
-                    FUN_1408e4b80(param_2,*plVar24 + 0x278);
+                    workshop_tooltip_paragraph_splitter(param_2,*plVar24 + 0x278);
                     break;
                   }
                 }

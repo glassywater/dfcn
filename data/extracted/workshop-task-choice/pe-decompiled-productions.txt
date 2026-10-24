@@ -91,3 +91,61 @@ fields from each configured Windows game, including color descriptors,
 reaction names/reagents/products, item, material and creature/caste names.
 Generated names and player-authored identities are runtime inputs to their
 established identity grammars; they cannot be exhaustively listed as literals.
+
+Upper-left task tooltip, complete native producer and painter grammar:
+  The actual reaction category is not the fixed category-menu family. Its
+  vtable is 0x16be6e0 in the reference PE and its +0x38 supplier is 0x8c2bf0.
+  Construction is inline in task-availability-and-requirement, at the native
+  vtable installation 0x8c470a. pe-vtables.tsv retains all slots for this family.
+  A category token at candidate+0x48 is matched against the native category
+  vector. No match produces no tooltip. A match reads CATEGORY_DESCRIPTION
+  at category+0x68 and sends the complete stored paragraph to the 29-column
+  splitter. Generated INSTRUMENT_PIECE and INSTRUMENT categories
+  use the same path as RAW categories; the spelling is not a special case.
+
+  job-choice +0x38, task-choice-tooltip (0x8c2ca0 / 0x8c0520), emits these
+  independent sections in native order:
+    nonempty product selector -> Produces: -> one full item caption per product;
+    nonempty reagent selector -> Requires: -> one full item caption per reagent;
+    job type 0xd1 -> matching reaction token -> its DESCRIPTION vector.
+  Each DESCRIPTION entry can supply its own nonempty prose, a USE_TOOL entry
+  (type 0x56, matching tool token, tool definition+0x188), or a USE_INSTRUMENT
+  entry (type 0xd, matching instrument token, instrument definition+0x278).
+  The native producer inserts blank separators between these description
+  paragraphs and preceding content. Generated instrument and part descriptions
+  are stored values on the same definitions; their full writers are retained
+  under data/extracted/instrument-descriptions and share instrument grammar.
+  No description branch requires the Produces: or Requires: heading to exist.
+
+  tooltip-job-products (0xd160c0 / 0xd13100) and tooltip-job-reagents
+  (0xd09ca0 / 0xd06ce0) retain complete native job selectors, including all
+  switch aliases. Their constructed item descriptors go through the existing
+  job-item-requirement owner, including dynamic RAW type/subtype/material,
+  counts, contained objects, reaction product/classes and tool-use constraints.
+  The item formatter emits a number only for count > 1; singular products
+  can be one short word. Every product still owns a separate splitter call
+  at 0x8c3327 / 0x8c0ba7, without blank separators between adjacent products.
+  Field boundaries therefore come from native paragraph calls, not a leading
+  number, sentence punctuation or the shared prose capture's minimum length.
+  The supplier switches construct item descriptors, not additional fixed prose.
+  tooltip-paragraph-splitter (0x8e7310 / 0x8e4b80) delegates to the complete
+  tooltip-paragraph-list-splitter (0x8e7440 / 0x8e4cb0). Both paragraph calls
+  and the job producer's inlined reagent wrapping use 29 native byte columns.
+  This splits the stored source before addst; individual rows are not complete
+  translation keys. The native long-word branch inserts a separating space.
+
+  Painter: candidate hover invokes +0x38 into vector 0x18a1768 (reference),
+  or the corresponding classic global retained in the native assembly. Hover
+  identity changes clear/repopulate it; the painter reads the current vector
+  every frame. Nonhovered candidates, empty vectors and insufficient horizontal
+  room draw no description. Otherwise the frame has 31 columns, the body has
+  29 columns, and height is the native row count plus two border rows. All
+  corner/edge/interior tile branches remain in task-choice-render-branch.c.
+  Reference / classic native calls:
+    row count before height calculation       0x185913 / 0x1858a3
+    background/frame tile cursor              0x185a10 / 0x1859a0
+    description row addst                     0x185d67 / 0x185cf7
+    final temporary string cleanup            0x185d9b / 0x185d2b
+  Every category, product, reagent, authored and generated description reaches
+  this same complete-vector painter. The bottom border follows the native
+  vector length; it is not independently clipped to the screenshot's height.

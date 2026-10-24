@@ -373,7 +373,23 @@ reference	color-menu-input	0x8c2878	cmp    BYTE PTR [rcx+0x50],0x0
 reference	color-menu-input	0x8c28b0	cmp    rbx,rdi
 reference	material-menu-input	0x8c2961	cmp    BYTE PTR [rcx+0x54],0x0
 reference	material-menu-input	0x8c2996	cmp    rbx,rdi
+reference	reaction-category-menu-title	0x8c2a00	cmp    rbx,rdi
+reference	reaction-category-menu-title	0x8c2a05	cmp    QWORD PTR [r14+0x18],0xf
+reference	reaction-category-menu-title	0x8c2a15	cmp    QWORD PTR [rsi+0x18],0xf
+reference	reaction-category-menu-title	0x8c2a26	cmp    r8,QWORD PTR [r14+0x10]
+reference	reaction-category-menu-title	0x8c2a31	test   eax,eax
+reference	reaction-category-menu-title	0x8c2a35	cmp    QWORD PTR [rsi+0x50],0x0
+reference	reaction-category-menu-title	0x8c2a46	cmp    rbp,rdx
+reference	reaction-category-menu-title	0x8c2a4b	cmp    QWORD PTR [rdx+0x18],0xf
+reference	reaction-category-menu-title	0x8c2a5b	cmp    rbp,r14
+reference	reaction-category-menu-title	0x8c2a60	cmp    QWORD PTR [r14+0x18],0xf
 reference	category-menu-title	0x8c2abd	cmp    eax,0xb
+reference	reaction-category-tooltip	0x8c2c26	cmp    rbx,rdi
+reference	reaction-category-tooltip	0x8c2c2b	cmp    QWORD PTR [rbp+0x60],0xf
+reference	reaction-category-tooltip	0x8c2c40	cmp    QWORD PTR [rsi+0x18],0xf
+reference	reaction-category-tooltip	0x8c2c51	cmp    r8,rax
+reference	reaction-category-tooltip	0x8c2c5b	test   eax,eax
+reference	reaction-category-tooltip	0x8c2c65	test   rsi,rsi
 reference	task-choice-tooltip	0x8c2d76	test   rax,rax
 reference	task-choice-tooltip	0x8c2d8b	test   rax,rax
 reference	task-choice-tooltip	0x8c2dcd	cmp    rdx,QWORD PTR [r13+0x10]
@@ -490,6 +506,9 @@ reference	task-choice-tooltip	0x8c3d76	cmp    r8,rax
 reference	task-choice-tooltip	0x8c3d80	test   eax,eax
 reference	task-choice-tooltip	0x8c3d96	test   rax,rax
 reference	task-choice-tooltip	0x8c3ddb	cmp    rdx,QWORD PTR [r13+0x10]
+reference	reaction-category-menu-input	0x8c3e38	cmp    rcx,rdx
+reference	reaction-category-menu-input	0x8c3e3d	cmp    QWORD PTR [rdx+0x18],0xf
+reference	reaction-category-menu-input	0x8c3e75	cmp    rbx,rdi
 reference	category-menu-input	0x8c3ebd	cmp    BYTE PTR [rcx+0x4c],0x0
 reference	category-menu-input	0x8c3ef2	cmp    rbx,rdi
 reference	task-availability-and-requirement	0x8c409f	test   r15d,r15d
@@ -2391,6 +2410,276 @@ reference	requirement-material-category	0x14ade36	cmp    rdx,rax
 reference	requirement-material-category	0x14ade3f	test   rax,rax
 reference	requirement-material-category	0x14ade62	cmp    dx,ax
 reference	requirement-material-category	0x14ade8d	test   rax,rax
+reference	tooltip-paragraph-splitter	0x8e7310	test   r8d,r8d
+reference	tooltip-paragraph-splitter	0x8e7368	cmp    rax,rbx
+reference	tooltip-paragraph-splitter	0x8e7371	cmp    QWORD PTR [rbx+0x18],0xf
+reference	tooltip-paragraph-splitter	0x8e73bc	test   rax,rax
+reference	tooltip-paragraph-splitter	0x8e73d3	test   rbx,rbx
+reference	tooltip-paragraph-splitter	0x8e740a	test   rax,rax
+reference	tooltip-paragraph-list-splitter	0x8e7440	test   r8d,r8d
+reference	tooltip-paragraph-list-splitter	0x8e74a7	test   rax,rax
+reference	tooltip-paragraph-list-splitter	0x8e74bc	cmp    QWORD PTR [rax+0x10],rdi
+reference	tooltip-paragraph-list-splitter	0x8e74c6	test   bl,bl
+reference	tooltip-paragraph-list-splitter	0x8e74ce	cmp    QWORD PTR [rax+0x18],0xf
+reference	tooltip-paragraph-list-splitter	0x8e74d8	cmp    BYTE PTR [rdi+rax*1],0x20
+reference	tooltip-paragraph-list-splitter	0x8e74e8	cmp    QWORD PTR [rdx+0x18],0xf
+reference	tooltip-paragraph-list-splitter	0x8e7507	cmp    rsi,rax
+reference	tooltip-paragraph-list-splitter	0x8e753e	cmp    r9,0xf
+reference	tooltip-paragraph-list-splitter	0x8e7547	cmp    BYTE PTR [rdi+rax*1],0x20
+reference	tooltip-paragraph-list-splitter	0x8e754d	test   rdi,rdi
+reference	tooltip-paragraph-list-splitter	0x8e7555	cmp    rax,rsi
+reference	tooltip-paragraph-list-splitter	0x8e757e	cmp    rdx,rsi
+reference	tooltip-paragraph-list-splitter	0x8e758b	cmp    QWORD PTR [rbp-0x18],0xf
+reference	tooltip-paragraph-list-splitter	0x8e75d8	cmp    rbx,rax
+reference	tooltip-paragraph-list-splitter	0x8e75e1	cmp    QWORD PTR [rbp-0x18],0xf
+reference	tooltip-paragraph-list-splitter	0x8e75fb	cmp    rdx,QWORD PTR [r15+0x10]
+reference	tooltip-paragraph-list-splitter	0x8e7625	cmp    QWORD PTR [rbp-0x18],0xf
+reference	tooltip-paragraph-list-splitter	0x8e7647	cmp    rax,QWORD PTR [rcx+0x10]
+reference	tooltip-paragraph-list-splitter	0x8e766e	cmp    rax,rcx
+reference	tooltip-paragraph-list-splitter	0x8e7677	test   rsi,rsi
+reference	tooltip-paragraph-list-splitter	0x8e76aa	cmp    rbx,rax
+reference	tooltip-paragraph-list-splitter	0x8e76b3	cmp    QWORD PTR [rbp-0x18],0xf
+reference	tooltip-paragraph-list-splitter	0x8e76cc	cmp    rdx,QWORD PTR [r15+0x10]
+reference	tooltip-job-products	0xd160df	cmp    eax,0xe7
+reference	tooltip-job-products	0xd1613e	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd161a5	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16204	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16263	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd162c3	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16322	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd1636f	test   BYTE PTR [rbp+0x60],0x2
+reference	tooltip-job-products	0xd16380	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd163b2	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16415	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16438	cmp    eax,0xb2
+reference	tooltip-job-products	0xd166f9	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16757	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd167aa	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16808	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16855	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd168c5	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16912	test   eax,eax
+reference	tooltip-job-products	0xd16932	cmp    r14,rax
+reference	tooltip-job-products	0xd1693f	test   r14,r14
+reference	tooltip-job-products	0xd169a1	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16a02	cmp    rax,rcx
+reference	tooltip-job-products	0xd16a31	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16a98	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16ae5	cmp    QWORD PTR [rax+0x18],0xf
+reference	tooltip-job-products	0xd16b0c	test   r15,r15
+reference	tooltip-job-products	0xd16b26	cmp    QWORD PTR [rax+0x18],0xf
+reference	tooltip-job-products	0xd16b30	cmp    r12,QWORD PTR [rax+0x10]
+reference	tooltip-job-products	0xd16b41	test   eax,eax
+reference	tooltip-job-products	0xd16b4e	cmp    rax,r15
+reference	tooltip-job-products	0xd16b66	test   r15,r15
+reference	tooltip-job-products	0xd16b7e	test   rax,rax
+reference	tooltip-job-products	0xd16b99	test   eax,eax
+reference	tooltip-job-products	0xd16ba9	cmp    DWORD PTR [rsi+0x68],0x0
+reference	tooltip-job-products	0xd16bb3	test   BYTE PTR [rax],0x20
+reference	tooltip-job-products	0xd16bd9	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16c48	cmp    rax,rcx
+reference	tooltip-job-products	0xd16c5a	test   eax,eax
+reference	tooltip-job-products	0xd16c7a	cmp    rsi,rax
+reference	tooltip-job-products	0xd16c87	test   rsi,rsi
+reference	tooltip-job-products	0xd16cd5	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16d2d	cmp    rax,rcx
+reference	tooltip-job-products	0xd16d58	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-products	0xd16db7	cmp    rdx,QWORD PTR [rbx+0x10]
+reference	tooltip-job-reagents	0xd09cd8	cmp    rbx,rdi
+reference	tooltip-job-reagents	0xd09ce3	test   r15,r15
+reference	tooltip-job-reagents	0xd09d14	cmp    rbx,rdi
+reference	tooltip-job-reagents	0xd09d24	cmp    rax,QWORD PTR [rsi+0x8]
+reference	tooltip-job-reagents	0xd09d34	cmp    eax,0xe7
+reference	tooltip-job-reagents	0xd09d7d	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd09df2	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd09e56	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd09ead	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd09eed	test   eax,eax
+reference	tooltip-job-reagents	0xd09f1e	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd09f75	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd09fcf	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a048	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a0bd	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a122	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a186	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a1eb	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a253	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a2c8	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a31b	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a370	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a3c8	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a41b	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a46e	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a4c9	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a534	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a5af	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a60e	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a668	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a6c1	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a71f	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a758	test   BYTE PTR [rbp+0x78],0x2
+reference	tooltip-job-reagents	0xd0a788	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a7f5	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a866	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a8be	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a931	test   r13w,r13w
+reference	tooltip-job-reagents	0xd0a937	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0a950	test   rax,rax
+reference	tooltip-job-reagents	0xd0a959	cmp    DWORD PTR [rax+0x298],0x7
+reference	tooltip-job-reagents	0xd0a969	test   BYTE PTR [rax+0x7],0x10
+reference	tooltip-job-reagents	0xd0a976	test   al,al
+reference	tooltip-job-reagents	0xd0a99f	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0a9d1	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0a9d7	cmp    r8w,0x60
+reference	tooltip-job-reagents	0xd0aa09	cmp    r8w,0x60
+reference	tooltip-job-reagents	0xd0aa31	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0aa55	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0aa82	test   r13b,0x2
+reference	tooltip-job-reagents	0xd0aaad	cmp    rdx,QWORD PTR [r12]
+reference	tooltip-job-reagents	0xd0aaf7	test   r13b,0x8
+reference	tooltip-job-reagents	0xd0ab22	cmp    rdx,QWORD PTR [r12]
+reference	tooltip-job-reagents	0xd0ab7e	cmp    BYTE PTR [rip+0xbcc40f],0x0        # 0x1418d6f94
+reference	tooltip-job-reagents	0xd0ab9b	bt     r13d,0xc
+reference	tooltip-job-reagents	0xd0abc7	cmp    rdx,QWORD PTR [r12]
+reference	tooltip-job-reagents	0xd0ac1d	cmp    BYTE PTR [rip+0xbcc370],0x0        # 0x1418d6f94
+reference	tooltip-job-reagents	0xd0ac35	bt     r13d,0x8
+reference	tooltip-job-reagents	0xd0ac61	cmp    rdx,QWORD PTR [rdi]
+reference	tooltip-job-reagents	0xd0ac94	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0acb1	test   r13b,0x4
+reference	tooltip-job-reagents	0xd0acdc	cmp    rdx,QWORD PTR [rdi]
+reference	tooltip-job-reagents	0xd0ad14	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0ad39	cmp    BYTE PTR [rip+0xbcc254],r12b        # 0x1418d6f94
+reference	tooltip-job-reagents	0xd0ad47	test   r13b,0x10
+reference	tooltip-job-reagents	0xd0ad72	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0adb7	test   r13b,0x40
+reference	tooltip-job-reagents	0xd0addb	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0adfe	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0ae22	bt     r13d,0x9
+reference	tooltip-job-reagents	0xd0ae47	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0ae6a	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0ae8e	bt     r13d,0xa
+reference	tooltip-job-reagents	0xd0aeb3	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0aed6	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0aefa	bt     r13d,0xb
+reference	tooltip-job-reagents	0xd0af1f	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0af42	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0af66	test   BYTE PTR [rbp+0x78],0x20
+reference	tooltip-job-reagents	0xd0af97	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0afba	cmp    r15d,0xffffffff
+reference	tooltip-job-reagents	0xd0afda	cmp    ax,0x31
+reference	tooltip-job-reagents	0xd0afea	bt     r8,rax
+reference	tooltip-job-reagents	0xd0affd	cmp    ax,0x7
+reference	tooltip-job-reagents	0xd0b02d	test   rax,rax
+reference	tooltip-job-reagents	0xd0b036	cmp    DWORD PTR [rax+0x298],0x6
+reference	tooltip-job-reagents	0xd0b046	test   BYTE PTR [rax+0x6],0x2
+reference	tooltip-job-reagents	0xd0b053	test   al,al
+reference	tooltip-job-reagents	0xd0b05b	cmp    r14w,0x5
+reference	tooltip-job-reagents	0xd0b088	cmp    rdx,QWORD PTR [rdi]
+reference	tooltip-job-reagents	0xd0b0be	cmp    ax,r13w
+reference	tooltip-job-reagents	0xd0b0ef	cmp    rdx,QWORD PTR [rdi]
+reference	tooltip-job-reagents	0xd0b134	cmp    ax,0x5
+reference	tooltip-job-reagents	0xd0b15f	cmp    rdx,QWORD PTR [rax]
+reference	tooltip-job-reagents	0xd0b1a6	test   rcx,rcx
+reference	tooltip-job-reagents	0xd0b1b4	test   al,al
+reference	tooltip-job-reagents	0xd0b1d5	test   rax,rax
+reference	tooltip-job-reagents	0xd0b1de	cmp    DWORD PTR [rax+0x298],0x5
+reference	tooltip-job-reagents	0xd0b1ee	cmp    BYTE PTR [rax+0x5],r12b
+reference	tooltip-job-reagents	0xd0b21d	cmp    rdx,QWORD PTR [rdi]
+reference	tooltip-job-reagents	0xd0b261	test   al,al
+reference	tooltip-job-reagents	0xd0b269	test   r15d,r15d
+reference	tooltip-job-reagents	0xd0b287	cmp    r15,rax
+reference	tooltip-job-reagents	0xd0b294	cmp    DWORD PTR [rax+0x40],r13d
+reference	tooltip-job-reagents	0xd0b29e	test   BYTE PTR [rax+0x3],0x2
+reference	tooltip-job-reagents	0xd0b2ab	test   al,al
+reference	tooltip-job-reagents	0xd0b2d4	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0b304	cmp    eax,0x20
+reference	tooltip-job-reagents	0xd0b335	cmp    DWORD PTR [rax+0xf0],r12d
+reference	tooltip-job-reagents	0xd0b345	test   BYTE PTR [rax],bl
+reference	tooltip-job-reagents	0xd0b373	cmp    DWORD PTR [rax+0x130],r12d
+reference	tooltip-job-reagents	0xd0b395	cmp    DWORD PTR [rax+0x120],r12d
+reference	tooltip-job-reagents	0xd0b3c8	cmp    eax,0x95
+reference	tooltip-job-reagents	0xd0b52f	test   eax,eax
+reference	tooltip-job-reagents	0xd0b53d	cmp    dx,0x3a
+reference	tooltip-job-reagents	0xd0b556	test   dx,dx
+reference	tooltip-job-reagents	0xd0b585	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0b5b9	cmp    eax,0x9d
+reference	tooltip-job-reagents	0xd0b769	test   eax,eax
+reference	tooltip-job-reagents	0xd0b798	test   rcx,rcx
+reference	tooltip-job-reagents	0xd0b7a6	test   al,al
+reference	tooltip-job-reagents	0xd0b7cf	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0b844	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0b8a0	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0b8f4	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0b945	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0b981	bt     eax,0xc
+reference	tooltip-job-reagents	0xd0b991	test   al,0x1
+reference	tooltip-job-reagents	0xd0b99f	test   al,0x8
+reference	tooltip-job-reagents	0xd0b9ab	cmp    DWORD PTR [rbp+0x80],0x0
+reference	tooltip-job-reagents	0xd0b9f8	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0ba61	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bae1	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bb07	cmp    r14d,0xffffffff
+reference	tooltip-job-reagents	0xd0bb4f	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bbab	test   dil,0x10
+reference	tooltip-job-reagents	0xd0bbb1	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bbf4	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bc2d	test   dil,0x4
+reference	tooltip-job-reagents	0xd0bc3b	test   dil,0x8
+reference	tooltip-job-reagents	0xd0bc49	bt     edi,0xc
+reference	tooltip-job-reagents	0xd0bc57	cmp    BYTE PTR [rip+0xbcb336],0x0        # 0x1418d6f94
+reference	tooltip-job-reagents	0xd0bca6	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bd20	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bd57	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bdc8	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bdee	cmp    r14d,0xffffffff
+reference	tooltip-job-reagents	0xd0be34	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0be9d	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bef9	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bf55	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0bf90	test   rcx,rcx
+reference	tooltip-job-reagents	0xd0bf9e	test   al,al
+reference	tooltip-job-reagents	0xd0bfc7	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c02a	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c06d	cmp    QWORD PTR [r14+0x18],0xf
+reference	tooltip-job-reagents	0xd0c096	test   rax,rax
+reference	tooltip-job-reagents	0xd0c0a8	cmp    QWORD PTR [rax+0x18],0xf
+reference	tooltip-job-reagents	0xd0c0b2	cmp    r14,QWORD PTR [rax+0x10]
+reference	tooltip-job-reagents	0xd0c0c3	test   eax,eax
+reference	tooltip-job-reagents	0xd0c0de	cmp    rax,rcx
+reference	tooltip-job-reagents	0xd0c0ef	test   r14,r14
+reference	tooltip-job-reagents	0xd0c10a	test   rax,rax
+reference	tooltip-job-reagents	0xd0c116	test   BYTE PTR [rcx+0x2c],0x2
+reference	tooltip-job-reagents	0xd0c147	cmp    rax,rcx
+reference	tooltip-job-reagents	0xd0c153	test   rcx,rcx
+reference	tooltip-job-reagents	0xd0c161	test   al,al
+reference	tooltip-job-reagents	0xd0c169	cmp    DWORD PTR [r14+0x48],r12d
+reference	tooltip-job-reagents	0xd0c177	test   BYTE PTR [rax],0x1
+reference	tooltip-job-reagents	0xd0c1a1	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c202	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c274	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c2dd	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c33f	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c3a6	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c3f4	test   r12b,0x20
+reference	tooltip-job-reagents	0xd0c41b	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0c455	test   r12b,0x40
+reference	tooltip-job-reagents	0xd0c478	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0c4a8	bt     r12d,0x9
+reference	tooltip-job-reagents	0xd0c4cc	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0c50b	bt     r12d,0xa
+reference	tooltip-job-reagents	0xd0c52f	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0c56b	bt     r12d,0xb
+reference	tooltip-job-reagents	0xd0c58f	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0c5e3	cmp    rdx,QWORD PTR [r14]
+reference	tooltip-job-reagents	0xd0c63d	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c6a5	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c6e6	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c73b	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c78b	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c7fb	cmp    rdx,QWORD PTR [rsi+0x10]
+reference	tooltip-job-reagents	0xd0c826	bt     edx,0xa
+reference	tooltip-job-reagents	0xd0c834	test   dl,0x4
+reference	tooltip-job-reagents	0xd0c844	test   dl,0x40
 reference	task-choice-render-owner	0x14efca	test   eax,eax
 reference	task-choice-render-owner	0x14efd5	test   eax,eax
 reference	task-choice-render-owner	0x14f011	test   eax,eax
@@ -5854,7 +6143,23 @@ classic	color-menu-input	0x8c00f8	cmp    BYTE PTR [rcx+0x50],0x0
 classic	color-menu-input	0x8c0130	cmp    rbx,rdi
 classic	material-menu-input	0x8c01e1	cmp    BYTE PTR [rcx+0x54],0x0
 classic	material-menu-input	0x8c0216	cmp    rbx,rdi
+classic	reaction-category-menu-title	0x8c0280	cmp    rbx,rdi
+classic	reaction-category-menu-title	0x8c0285	cmp    QWORD PTR [r14+0x18],0xf
+classic	reaction-category-menu-title	0x8c0295	cmp    QWORD PTR [rsi+0x18],0xf
+classic	reaction-category-menu-title	0x8c02a6	cmp    r8,QWORD PTR [r14+0x10]
+classic	reaction-category-menu-title	0x8c02b1	test   eax,eax
+classic	reaction-category-menu-title	0x8c02b5	cmp    QWORD PTR [rsi+0x50],0x0
+classic	reaction-category-menu-title	0x8c02c6	cmp    rbp,rdx
+classic	reaction-category-menu-title	0x8c02cb	cmp    QWORD PTR [rdx+0x18],0xf
+classic	reaction-category-menu-title	0x8c02db	cmp    rbp,r14
+classic	reaction-category-menu-title	0x8c02e0	cmp    QWORD PTR [r14+0x18],0xf
 classic	category-menu-title	0x8c033d	cmp    eax,0xb
+classic	reaction-category-tooltip	0x8c04a6	cmp    rbx,rdi
+classic	reaction-category-tooltip	0x8c04ab	cmp    QWORD PTR [rbp+0x60],0xf
+classic	reaction-category-tooltip	0x8c04c0	cmp    QWORD PTR [rsi+0x18],0xf
+classic	reaction-category-tooltip	0x8c04d1	cmp    r8,rax
+classic	reaction-category-tooltip	0x8c04db	test   eax,eax
+classic	reaction-category-tooltip	0x8c04e5	test   rsi,rsi
 classic	task-choice-tooltip	0x8c05f6	test   rax,rax
 classic	task-choice-tooltip	0x8c060b	test   rax,rax
 classic	task-choice-tooltip	0x8c064d	cmp    rdx,QWORD PTR [r13+0x10]
@@ -5971,6 +6276,9 @@ classic	task-choice-tooltip	0x8c15f6	cmp    r8,rax
 classic	task-choice-tooltip	0x8c1600	test   eax,eax
 classic	task-choice-tooltip	0x8c1616	test   rax,rax
 classic	task-choice-tooltip	0x8c165b	cmp    rdx,QWORD PTR [r13+0x10]
+classic	reaction-category-menu-input	0x8c16b8	cmp    rcx,rdx
+classic	reaction-category-menu-input	0x8c16bd	cmp    QWORD PTR [rdx+0x18],0xf
+classic	reaction-category-menu-input	0x8c16f5	cmp    rbx,rdi
 classic	category-menu-input	0x8c173d	cmp    BYTE PTR [rcx+0x4c],0x0
 classic	category-menu-input	0x8c1772	cmp    rbx,rdi
 classic	task-availability-and-requirement	0x8c191f	test   r15d,r15d
@@ -7872,6 +8180,276 @@ classic	requirement-material-category	0x14a8da6	cmp    rdx,rax
 classic	requirement-material-category	0x14a8daf	test   rax,rax
 classic	requirement-material-category	0x14a8dd2	cmp    dx,ax
 classic	requirement-material-category	0x14a8dfd	test   rax,rax
+classic	tooltip-paragraph-splitter	0x8e4b80	test   r8d,r8d
+classic	tooltip-paragraph-splitter	0x8e4bd8	cmp    rax,rbx
+classic	tooltip-paragraph-splitter	0x8e4be1	cmp    QWORD PTR [rbx+0x18],0xf
+classic	tooltip-paragraph-splitter	0x8e4c2c	test   rax,rax
+classic	tooltip-paragraph-splitter	0x8e4c43	test   rbx,rbx
+classic	tooltip-paragraph-splitter	0x8e4c7a	test   rax,rax
+classic	tooltip-paragraph-list-splitter	0x8e4cb0	test   r8d,r8d
+classic	tooltip-paragraph-list-splitter	0x8e4d17	test   rax,rax
+classic	tooltip-paragraph-list-splitter	0x8e4d2c	cmp    QWORD PTR [rax+0x10],rdi
+classic	tooltip-paragraph-list-splitter	0x8e4d36	test   bl,bl
+classic	tooltip-paragraph-list-splitter	0x8e4d3e	cmp    QWORD PTR [rax+0x18],0xf
+classic	tooltip-paragraph-list-splitter	0x8e4d48	cmp    BYTE PTR [rdi+rax*1],0x20
+classic	tooltip-paragraph-list-splitter	0x8e4d58	cmp    QWORD PTR [rdx+0x18],0xf
+classic	tooltip-paragraph-list-splitter	0x8e4d77	cmp    rsi,rax
+classic	tooltip-paragraph-list-splitter	0x8e4dae	cmp    r9,0xf
+classic	tooltip-paragraph-list-splitter	0x8e4db7	cmp    BYTE PTR [rdi+rax*1],0x20
+classic	tooltip-paragraph-list-splitter	0x8e4dbd	test   rdi,rdi
+classic	tooltip-paragraph-list-splitter	0x8e4dc5	cmp    rax,rsi
+classic	tooltip-paragraph-list-splitter	0x8e4dee	cmp    rdx,rsi
+classic	tooltip-paragraph-list-splitter	0x8e4dfb	cmp    QWORD PTR [rbp-0x18],0xf
+classic	tooltip-paragraph-list-splitter	0x8e4e48	cmp    rbx,rax
+classic	tooltip-paragraph-list-splitter	0x8e4e51	cmp    QWORD PTR [rbp-0x18],0xf
+classic	tooltip-paragraph-list-splitter	0x8e4e6b	cmp    rdx,QWORD PTR [r15+0x10]
+classic	tooltip-paragraph-list-splitter	0x8e4e95	cmp    QWORD PTR [rbp-0x18],0xf
+classic	tooltip-paragraph-list-splitter	0x8e4eb7	cmp    rax,QWORD PTR [rcx+0x10]
+classic	tooltip-paragraph-list-splitter	0x8e4ede	cmp    rax,rcx
+classic	tooltip-paragraph-list-splitter	0x8e4ee7	test   rsi,rsi
+classic	tooltip-paragraph-list-splitter	0x8e4f1a	cmp    rbx,rax
+classic	tooltip-paragraph-list-splitter	0x8e4f23	cmp    QWORD PTR [rbp-0x18],0xf
+classic	tooltip-paragraph-list-splitter	0x8e4f3c	cmp    rdx,QWORD PTR [r15+0x10]
+classic	tooltip-job-products	0xd1311f	cmp    eax,0xe7
+classic	tooltip-job-products	0xd1317e	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd131e5	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13244	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd132a3	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13303	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13362	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd133af	test   BYTE PTR [rbp+0x60],0x2
+classic	tooltip-job-products	0xd133c0	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd133f2	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13455	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13478	cmp    eax,0xb2
+classic	tooltip-job-products	0xd13739	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13797	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd137ea	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13848	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13895	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13905	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13952	test   eax,eax
+classic	tooltip-job-products	0xd13972	cmp    r14,rax
+classic	tooltip-job-products	0xd1397f	test   r14,r14
+classic	tooltip-job-products	0xd139e1	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13a42	cmp    rax,rcx
+classic	tooltip-job-products	0xd13a71	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13ad8	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13b25	cmp    QWORD PTR [rax+0x18],0xf
+classic	tooltip-job-products	0xd13b4c	test   r15,r15
+classic	tooltip-job-products	0xd13b66	cmp    QWORD PTR [rax+0x18],0xf
+classic	tooltip-job-products	0xd13b70	cmp    r12,QWORD PTR [rax+0x10]
+classic	tooltip-job-products	0xd13b81	test   eax,eax
+classic	tooltip-job-products	0xd13b8e	cmp    rax,r15
+classic	tooltip-job-products	0xd13ba6	test   r15,r15
+classic	tooltip-job-products	0xd13bbe	test   rax,rax
+classic	tooltip-job-products	0xd13bd9	test   eax,eax
+classic	tooltip-job-products	0xd13be9	cmp    DWORD PTR [rsi+0x68],0x0
+classic	tooltip-job-products	0xd13bf3	test   BYTE PTR [rax],0x20
+classic	tooltip-job-products	0xd13c19	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13c88	cmp    rax,rcx
+classic	tooltip-job-products	0xd13c9a	test   eax,eax
+classic	tooltip-job-products	0xd13cba	cmp    rsi,rax
+classic	tooltip-job-products	0xd13cc7	test   rsi,rsi
+classic	tooltip-job-products	0xd13d15	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13d6d	cmp    rax,rcx
+classic	tooltip-job-products	0xd13d98	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-products	0xd13df7	cmp    rdx,QWORD PTR [rbx+0x10]
+classic	tooltip-job-reagents	0xd06d18	cmp    rbx,rdi
+classic	tooltip-job-reagents	0xd06d23	test   r15,r15
+classic	tooltip-job-reagents	0xd06d54	cmp    rbx,rdi
+classic	tooltip-job-reagents	0xd06d64	cmp    rax,QWORD PTR [rsi+0x8]
+classic	tooltip-job-reagents	0xd06d74	cmp    eax,0xe7
+classic	tooltip-job-reagents	0xd06dbd	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd06e32	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd06e96	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd06eed	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd06f2d	test   eax,eax
+classic	tooltip-job-reagents	0xd06f5e	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd06fb5	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0700f	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07088	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd070fd	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07162	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd071c6	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0722b	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07293	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07308	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0735b	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd073b0	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07408	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0745b	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd074ae	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07509	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07574	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd075ef	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0764e	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd076a8	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07701	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0775f	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07798	test   BYTE PTR [rbp+0x78],0x2
+classic	tooltip-job-reagents	0xd077c8	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07835	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd078a6	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd078fe	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07971	test   r13w,r13w
+classic	tooltip-job-reagents	0xd07977	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07990	test   rax,rax
+classic	tooltip-job-reagents	0xd07999	cmp    DWORD PTR [rax+0x298],0x7
+classic	tooltip-job-reagents	0xd079a9	test   BYTE PTR [rax+0x7],0x10
+classic	tooltip-job-reagents	0xd079b6	test   al,al
+classic	tooltip-job-reagents	0xd079df	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07a11	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07a17	cmp    r8w,0x60
+classic	tooltip-job-reagents	0xd07a49	cmp    r8w,0x60
+classic	tooltip-job-reagents	0xd07a71	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd07a95	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07ac2	test   r13b,0x2
+classic	tooltip-job-reagents	0xd07aed	cmp    rdx,QWORD PTR [r12]
+classic	tooltip-job-reagents	0xd07b37	test   r13b,0x8
+classic	tooltip-job-reagents	0xd07b62	cmp    rdx,QWORD PTR [r12]
+classic	tooltip-job-reagents	0xd07bbe	cmp    BYTE PTR [rip+0xbc92ba],0x0        # 0x1418d0e7f
+classic	tooltip-job-reagents	0xd07bdb	bt     r13d,0xc
+classic	tooltip-job-reagents	0xd07c07	cmp    rdx,QWORD PTR [r12]
+classic	tooltip-job-reagents	0xd07c5d	cmp    BYTE PTR [rip+0xbc921b],0x0        # 0x1418d0e7f
+classic	tooltip-job-reagents	0xd07c75	bt     r13d,0x8
+classic	tooltip-job-reagents	0xd07ca1	cmp    rdx,QWORD PTR [rdi]
+classic	tooltip-job-reagents	0xd07cd4	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07cf1	test   r13b,0x4
+classic	tooltip-job-reagents	0xd07d1c	cmp    rdx,QWORD PTR [rdi]
+classic	tooltip-job-reagents	0xd07d54	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07d79	cmp    BYTE PTR [rip+0xbc90ff],r12b        # 0x1418d0e7f
+classic	tooltip-job-reagents	0xd07d87	test   r13b,0x10
+classic	tooltip-job-reagents	0xd07db2	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd07df7	test   r13b,0x40
+classic	tooltip-job-reagents	0xd07e1b	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd07e3e	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07e62	bt     r13d,0x9
+classic	tooltip-job-reagents	0xd07e87	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd07eaa	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07ece	bt     r13d,0xa
+classic	tooltip-job-reagents	0xd07ef3	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd07f16	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07f3a	bt     r13d,0xb
+classic	tooltip-job-reagents	0xd07f5f	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd07f82	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd07fa6	test   BYTE PTR [rbp+0x78],0x20
+classic	tooltip-job-reagents	0xd07fd7	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd07ffa	cmp    r15d,0xffffffff
+classic	tooltip-job-reagents	0xd0801a	cmp    ax,0x31
+classic	tooltip-job-reagents	0xd0802a	bt     r8,rax
+classic	tooltip-job-reagents	0xd0803d	cmp    ax,0x7
+classic	tooltip-job-reagents	0xd0806d	test   rax,rax
+classic	tooltip-job-reagents	0xd08076	cmp    DWORD PTR [rax+0x298],0x6
+classic	tooltip-job-reagents	0xd08086	test   BYTE PTR [rax+0x6],0x2
+classic	tooltip-job-reagents	0xd08093	test   al,al
+classic	tooltip-job-reagents	0xd0809b	cmp    r14w,0x5
+classic	tooltip-job-reagents	0xd080c8	cmp    rdx,QWORD PTR [rdi]
+classic	tooltip-job-reagents	0xd080fe	cmp    ax,r13w
+classic	tooltip-job-reagents	0xd0812f	cmp    rdx,QWORD PTR [rdi]
+classic	tooltip-job-reagents	0xd08174	cmp    ax,0x5
+classic	tooltip-job-reagents	0xd0819f	cmp    rdx,QWORD PTR [rax]
+classic	tooltip-job-reagents	0xd081e6	test   rcx,rcx
+classic	tooltip-job-reagents	0xd081f4	test   al,al
+classic	tooltip-job-reagents	0xd08215	test   rax,rax
+classic	tooltip-job-reagents	0xd0821e	cmp    DWORD PTR [rax+0x298],0x5
+classic	tooltip-job-reagents	0xd0822e	cmp    BYTE PTR [rax+0x5],r12b
+classic	tooltip-job-reagents	0xd0825d	cmp    rdx,QWORD PTR [rdi]
+classic	tooltip-job-reagents	0xd082a1	test   al,al
+classic	tooltip-job-reagents	0xd082a9	test   r15d,r15d
+classic	tooltip-job-reagents	0xd082c7	cmp    r15,rax
+classic	tooltip-job-reagents	0xd082d4	cmp    DWORD PTR [rax+0x40],r13d
+classic	tooltip-job-reagents	0xd082de	test   BYTE PTR [rax+0x3],0x2
+classic	tooltip-job-reagents	0xd082eb	test   al,al
+classic	tooltip-job-reagents	0xd08314	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08344	cmp    eax,0x20
+classic	tooltip-job-reagents	0xd08375	cmp    DWORD PTR [rax+0xf0],r12d
+classic	tooltip-job-reagents	0xd08385	test   BYTE PTR [rax],bl
+classic	tooltip-job-reagents	0xd083b3	cmp    DWORD PTR [rax+0x130],r12d
+classic	tooltip-job-reagents	0xd083d5	cmp    DWORD PTR [rax+0x120],r12d
+classic	tooltip-job-reagents	0xd08408	cmp    eax,0x95
+classic	tooltip-job-reagents	0xd0856f	test   eax,eax
+classic	tooltip-job-reagents	0xd0857d	cmp    dx,0x3a
+classic	tooltip-job-reagents	0xd08596	test   dx,dx
+classic	tooltip-job-reagents	0xd085c5	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd085f9	cmp    eax,0x9d
+classic	tooltip-job-reagents	0xd087a9	test   eax,eax
+classic	tooltip-job-reagents	0xd087d8	test   rcx,rcx
+classic	tooltip-job-reagents	0xd087e6	test   al,al
+classic	tooltip-job-reagents	0xd0880f	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08884	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd088e0	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08934	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08985	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd089c1	bt     eax,0xc
+classic	tooltip-job-reagents	0xd089d1	test   al,0x1
+classic	tooltip-job-reagents	0xd089df	test   al,0x8
+classic	tooltip-job-reagents	0xd089eb	cmp    DWORD PTR [rbp+0x80],0x0
+classic	tooltip-job-reagents	0xd08a38	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08aa1	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08b21	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08b47	cmp    r14d,0xffffffff
+classic	tooltip-job-reagents	0xd08b8f	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08beb	test   dil,0x10
+classic	tooltip-job-reagents	0xd08bf1	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08c34	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08c6d	test   dil,0x4
+classic	tooltip-job-reagents	0xd08c7b	test   dil,0x8
+classic	tooltip-job-reagents	0xd08c89	bt     edi,0xc
+classic	tooltip-job-reagents	0xd08c97	cmp    BYTE PTR [rip+0xbc81e1],0x0        # 0x1418d0e7f
+classic	tooltip-job-reagents	0xd08ce6	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08d60	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08d97	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08e08	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08e2e	cmp    r14d,0xffffffff
+classic	tooltip-job-reagents	0xd08e74	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08edd	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08f39	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08f95	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd08fd0	test   rcx,rcx
+classic	tooltip-job-reagents	0xd08fde	test   al,al
+classic	tooltip-job-reagents	0xd09007	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0906a	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd090ad	cmp    QWORD PTR [r14+0x18],0xf
+classic	tooltip-job-reagents	0xd090d6	test   rax,rax
+classic	tooltip-job-reagents	0xd090e8	cmp    QWORD PTR [rax+0x18],0xf
+classic	tooltip-job-reagents	0xd090f2	cmp    r14,QWORD PTR [rax+0x10]
+classic	tooltip-job-reagents	0xd09103	test   eax,eax
+classic	tooltip-job-reagents	0xd0911e	cmp    rax,rcx
+classic	tooltip-job-reagents	0xd0912f	test   r14,r14
+classic	tooltip-job-reagents	0xd0914a	test   rax,rax
+classic	tooltip-job-reagents	0xd09156	test   BYTE PTR [rcx+0x2c],0x2
+classic	tooltip-job-reagents	0xd09187	cmp    rax,rcx
+classic	tooltip-job-reagents	0xd09193	test   rcx,rcx
+classic	tooltip-job-reagents	0xd091a1	test   al,al
+classic	tooltip-job-reagents	0xd091a9	cmp    DWORD PTR [r14+0x48],r12d
+classic	tooltip-job-reagents	0xd091b7	test   BYTE PTR [rax],0x1
+classic	tooltip-job-reagents	0xd091e1	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd09242	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd092b4	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0931d	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0937f	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd093e6	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd09434	test   r12b,0x20
+classic	tooltip-job-reagents	0xd0945b	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd09495	test   r12b,0x40
+classic	tooltip-job-reagents	0xd094b8	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd094e8	bt     r12d,0x9
+classic	tooltip-job-reagents	0xd0950c	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd0954b	bt     r12d,0xa
+classic	tooltip-job-reagents	0xd0956f	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd095ab	bt     r12d,0xb
+classic	tooltip-job-reagents	0xd095cf	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd09623	cmp    rdx,QWORD PTR [r14]
+classic	tooltip-job-reagents	0xd0967d	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd096e5	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd09726	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0977b	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd097cb	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd0983b	cmp    rdx,QWORD PTR [rsi+0x10]
+classic	tooltip-job-reagents	0xd09866	bt     edx,0xa
+classic	tooltip-job-reagents	0xd09874	test   dl,0x4
+classic	tooltip-job-reagents	0xd09884	test   dl,0x40
 classic	task-choice-render-owner	0x14ef5a	test   eax,eax
 classic	task-choice-render-owner	0x14ef65	test   eax,eax
 classic	task-choice-render-owner	0x14efa1	test   eax,eax

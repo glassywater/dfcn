@@ -248,7 +248,8 @@ static void capture_native_legacy_tooltip_row(graphicst *gps, const NativeString
 #ifdef _WIN32
     const bool body_row = caller == native_pe_address(g_native_legacy_tooltip_base, 0x3fb318) + 5 ||
         caller == native_pe_address(g_native_legacy_tooltip_base, 0x7f5cde) + 5 ||
-        caller == native_pe_address(g_native_legacy_tooltip_base, 0x8182e0) + 5;
+        caller == native_pe_address(g_native_legacy_tooltip_base, 0x8182e0) + 5 ||
+        caller == native_pe_address(g_native_legacy_tooltip_base, 0x185d67) + 5;
 #else
     const bool body_row = caller == g_native_legacy_tooltip_base + 0x16919e9 + 5;
 #endif
@@ -301,10 +302,18 @@ static void capture_native_legacy_tooltip_key(void *view, long token, NativeJust
     } catch (...) {}
 }
 
+#include "native_workshop_tooltip.inc"
+
 static bool install_native_legacy_tooltip(uintptr_t base) {
     g_native_legacy_tooltip_base = base;
     std::vector<NativeCall> calls{
 #ifdef _WIN32
+        // The relay is entered by CALL: rsp+8 is the native caller's stack.
+        // RDX is unused by the original row-count helper, and every live
+        // value at this site resides in stack locals/nonvolatile registers.
+        {0x185913, 0x6ee50, reinterpret_cast<const void *>(&capture_native_workshop_tooltip_rows),
+            {0x48,0x8d,0x54,0x24,0x08}},
+        {0x185d67, 0xad9960, reinterpret_cast<const void *>(&capture_native_legacy_tooltip_row)},
         // R13 is the selected paragraph; [RBP-0x58] is the viewport's
         // right limit. The next compact instructions redefine EAX, while
         // floating mode calls the row-count helper before using it. Both

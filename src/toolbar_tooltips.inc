@@ -404,7 +404,7 @@ void Overlay::capture_toolbar_tooltip() const {
         text_left = std::min(text_left, left);
         card.text_right = std::max(card.text_right, end);
         const auto line = trim_view(std::string_view(row).substr(first));
-        if (line.starts_with("Hotkey:")) {
+        if (!widget->workshop_recipe && line.starts_with("Hotkey:")) {
             if (card.key_rows.empty()) card.keys_y = y;
             card.key_rows.push_back(y);
         } else if (card.key_rows.empty()) {
@@ -449,13 +449,14 @@ void Overlay::append_toolbar_tooltip_matches(const NativeTooltipWidgetFrame &fra
     capture_toolbar_tooltip();
     if (!g_native_toolbar_tooltip) return;
     auto &card = *g_native_toolbar_tooltip;
-    if (!preserve_body) translate_deity_tooltip_fields(card);
+    if (!preserve_body && !frame.workshop_recipe) translate_deity_tooltip_fields(card);
     const bool deity_card = card.deity_fields.size() == card.rows.size() &&
         !card.deity_fields.empty();
     const auto translated = preserve_body || deity_card || trim_view(card.source).empty()
-        ? dfcn::TranslationResult{} : translate_toolbar_tooltip_result(card.source);
+        ? dfcn::TranslationResult{} : frame.workshop_recipe
+            ? translate_workshop_tooltip_document(frame) : translate_toolbar_tooltip_result(card.source);
     const std::string target = preserve_body || deity_card || trim_view(card.source).empty()
-        ? std::string{} : tooltip_translation_cache_target_;
+        ? std::string{} : frame.workshop_recipe ? translated.target : tooltip_translation_cache_target_;
     const auto result = deity_card ? std::shared_ptr<const dfcn::TranslationResult>{} :
         std::make_shared<const dfcn::TranslationResult>(translated);
     const auto source_cell = [&](int x, int y, unsigned char expected) {

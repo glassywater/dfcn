@@ -2774,6 +2774,8 @@ struct NativeTooltipWidgetFrame {
     std::vector<std::string> rows;
     std::vector<std::string> glyph_rows;
     std::string body_source;
+    bool workshop_recipe = false;
+    std::vector<NativeParagraphCapture> workshop_fields;
     bool top_layer = false;
     bool isolated = false;
     bool adventure_background = false;
@@ -5241,6 +5243,7 @@ private:
         const std::vector<std::string> &rows) const;
     std::optional<std::string> translate_workshop_recipe_source(std::string_view source) const;
     TranslationResult translate_workshop_recipe_source_display(std::string_view source) const;
+    TranslationResult translate_workshop_tooltip_document(const NativeTooltipWidgetFrame &frame) const;
     void append_workshop_recipe_card(const NativeTextCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
     void layout_workshop_recipe_card(SDL_Renderer *renderer);

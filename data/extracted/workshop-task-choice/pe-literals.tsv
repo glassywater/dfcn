@@ -47,6 +47,7 @@ reference	color-menu-title	0x8c27d6	0x141615870	cstring	 (opens menu)
 reference	color-menu-title	0x8c2804	0x1416bec48	cstring	Tint leather 
 reference	color-menu-title	0x8c2841	0x141615870	cstring	 (opens menu)
 reference	material-menu-title	0x8c2926	0x141615870	cstring	 (opens menu)
+reference	reaction-category-menu-title	0x8c2a7f	0x141615870	cstring	 (opens menu)
 reference	category-menu-title	0x8c2adf	0x1416bec58	cstring	Weapons and ammunition
 reference	category-menu-title	0x8c2af1	0x14162a038	cstring	Armor
 reference	category-menu-title	0x8c2b03	0x14162ca20	cstring	Furniture
@@ -922,6 +923,7 @@ reference	requirement-item-noun	0xa87f2c	0x1415e873c	cstring
 reference	requirement-item-noun	0xa88046	0x1415fcfe0	cstring	item
 reference	requirement-item-noun	0xa88077	0x14161bdcc	cstring	 [
 reference	requirement-item-noun	0xa88097	0x1415fd690	cstring	]
+reference	tooltip-paragraph-list-splitter	0x8e7567	0x1415e873c	cstring	 
 reference	task-choice-render-owner	0x14f43b	0x1415fe0f8	cstring	Click a building to link to 
 reference	task-choice-render-owner	0x14f4a6	0x1415e85b4	cstring	.
 reference	task-choice-render-owner	0x150621	0x1415fe0e8	cstring	Link to 
@@ -1978,6 +1980,7 @@ classic	color-menu-title	0x8c0056	0x1416107f0	cstring	 (opens menu)
 classic	color-menu-title	0x8c0084	0x1416b9e10	cstring	Tint leather 
 classic	color-menu-title	0x8c00c1	0x1416107f0	cstring	 (opens menu)
 classic	material-menu-title	0x8c01a6	0x1416107f0	cstring	 (opens menu)
+classic	reaction-category-menu-title	0x8c02ff	0x1416107f0	cstring	 (opens menu)
 classic	category-menu-title	0x8c035f	0x1416b9e20	cstring	Weapons and ammunition
 classic	category-menu-title	0x8c0371	0x1416257b4	cstring	Armor
 classic	category-menu-title	0x8c0383	0x141627d10	cstring	Furniture
@@ -2853,6 +2856,7 @@ classic	requirement-item-noun	0xa84fac	0x1415e3720	cstring
 classic	requirement-item-noun	0xa850c6	0x1415f7fb0	cstring	item
 classic	requirement-item-noun	0xa850f7	0x141616f6c	cstring	 [
 classic	requirement-item-noun	0xa85117	0x1415f8664	cstring	]
+classic	tooltip-paragraph-list-splitter	0x8e4dd7	0x1415e3720	cstring	 
 classic	task-choice-render-owner	0x14f3cb	0x1415f9040	cstring	Click a building to link to 
 classic	task-choice-render-owner	0x14f436	0x1415e3574	cstring	.
 classic	task-choice-render-owner	0x1505b1	0x1415f9130	cstring	Link to 
