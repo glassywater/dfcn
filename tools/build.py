@@ -117,6 +117,50 @@ def package_translation_extensions() -> None:
         print(f"Independent translation data mod packaged: {archive}", flush=True)
 
 
+def package_map_preview(module: Path) -> None:
+    """Prepare the independent Workshop mod without installing it in a game."""
+    package = ROOT / "workshop/map-preview"
+    content = package / "content"
+    manifest = content / "dfcn-map-preview.toml"
+    metadata = tomllib.loads(manifest.read_text(encoding="utf-8-sig"))
+    if (metadata.get("schema") != 1 or metadata.get("id") != "dfcn-map-preview"
+            or metadata.get("module") != "dfcn/dfcn_map_preview.dll"):
+        raise RuntimeError(f"Unsupported map preview mod manifest: {manifest}")
+    identity = metadata["id"]
+    info = (content / "info.txt").read_text(encoding="utf-8-sig")
+    if re.findall(r"(?m)^\s*\[ID:([A-Za-z0-9_-]+)\]\s*$", info) != [identity]:
+        raise RuntimeError(f"Map preview mod identity does not match: {content / 'info.txt'}")
+    destination = content / metadata["module"]
+    license_destination = content / "LICENSE"
+    archive = package / f"{identity}.zip"
+    candidate = destination.with_name(destination.name + ".publish")
+    license_candidate = license_destination.with_name(license_destination.name + ".publish")
+    staged_archive = archive.with_name(archive.name + ".publish")
+    for path in (package.parent, package, content, destination.parent,
+                 destination, candidate, license_destination, license_candidate, archive, staged_archive):
+        if path.is_symlink() or path.resolve() != path.absolute():
+            raise RuntimeError(f"Refusing map preview packaging through a symlink: {path}")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        shutil.copyfile(module, candidate)
+        os.replace(candidate, destination)
+        shutil.copyfile(ROOT / "LICENSE", license_candidate)
+        os.replace(license_candidate, license_destination)
+        with zipfile.ZipFile(staged_archive, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
+            for source in sorted(content.rglob("*")):
+                if source.is_symlink():
+                    raise RuntimeError(f"Refusing map preview packaging through a symlink: {source}")
+                if source.is_file():
+                    bundle.write(source, Path(identity) / source.relative_to(content))
+        os.replace(staged_archive, archive)
+    finally:
+        candidate.unlink(missing_ok=True)
+        license_candidate.unlink(missing_ok=True)
+        staged_archive.unlink(missing_ok=True)
+    print(f"Independent map preview mod prepared: {content}\n"
+          f"Independent map preview mod packaged: {archive}", flush=True)
+
+
 def add_missing_language_settings(content: bytes) -> bytes:
     """Append language defaults while preserving existing user preferences."""
     config = content.decode("utf-8-sig")
@@ -253,6 +297,7 @@ NATIVE_ABIS = {
         "core": "dfcn_core.dll",
         "loader": "dfhooks_dfcn.dll",
         "mouse_coordinates": "dfcn_mouse_coordinates.dll",
+        "map_preview": "dfcn_map_preview.dll",
         "compiler": "g++.exe",
         "compiler_hint": TEMP / "codex-world-compute-w64devkit/extracted/w64devkit/bin",
         "target": r"(?:mingw|windows)",
@@ -764,6 +809,7 @@ def build_windows_cross(args: argparse.Namespace) -> int:
             core_candidate = staging / abi["core"]
             loader_candidate = staging / abi["loader"]
             mouse_candidate = staging / abi["mouse_coordinates"]
+            preview_candidate = staging / abi["map_preview"]
             build_hour = datetime.now().strftime("%Y.%m.%d.%H")
             print("Cross-compiling the Windows core...", flush=True)
             run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
@@ -778,8 +824,11 @@ def build_windows_cross(args: argparse.Namespace) -> int:
             print("Cross-compiling the independent mouse coordinates mod...", flush=True)
             run([*compiler, *compile_flags, "-o", str(mouse_candidate),
                  "src/mods/mouse_coordinates.cpp", *link_flags], env, cwd=snapshot)
+            print("Cross-compiling the independent map preview mod...", flush=True)
+            run([*compiler, *compile_flags, "-o", str(preview_candidate),
+                 "src/mods/map_preview.cpp", *link_flags], env, cwd=snapshot)
             # Leave the previous outputs untouched if any compiler fails.
-            for candidate in (core_candidate, loader_candidate, mouse_candidate):
+            for candidate in (core_candidate, loader_candidate, mouse_candidate, preview_candidate):
                 os.replace(candidate, output / candidate.name)
         if args.deploy_project:
             # Native publish() only accepts inputs in native destination
@@ -794,8 +843,9 @@ def build_windows_cross(args: argparse.Namespace) -> int:
                     atomic_replace(staged, destination)
                 finally:
                     remove_file(staged)
+        package_map_preview(output / abi["map_preview"])
     print(f"Windows cross-build completed:\n{output / abi['core']}\n{output / abi['loader']}\n"
-          f"{output / abi['mouse_coordinates']}",
+          f"{output / abi['mouse_coordinates']}\n{output / abi['map_preview']}",
           flush=True)
     if args.deploy_project:
         print(f"Windows DLLs deployed:\n{ROOT / abi['core']}\n{ROOT / abi['loader']}\n"
@@ -834,10 +884,14 @@ def main() -> int:
     loader_candidate = loader.with_name(loader.stem + ".candidate" + loader.suffix)
     mouse_mod = ROOT / abi["mouse_coordinates"] if "mouse_coordinates" in abi else None
     mouse_candidate = mouse_mod.with_name(mouse_mod.stem + ".candidate" + mouse_mod.suffix) if mouse_mod else None
+    preview_mod = ROOT / abi["map_preview"] if "map_preview" in abi else None
+    preview_candidate = preview_mod.with_name(preview_mod.stem + ".candidate" + preview_mod.suffix) if preview_mod else None
     staging = [core_candidate, loader_candidate,
                *(path.with_name(path.name + ".publish") for path in (core, loader, *game_loaders))]
     if mouse_candidate:
         staging.append(mouse_candidate)
+    if preview_candidate:
+        staging.extend([preview_candidate, preview_mod.with_name(preview_mod.name + ".publish")])
     bootstrap_candidate = ROOT / "dfhooks.candidate.dll"
     bootstrap_config_candidate = ROOT / "dfhooks_dfcn.candidate.ini"
     if sys.platform == "win32":
@@ -847,7 +901,7 @@ def main() -> int:
                        for name in ("dfhooks.dll", "dfhooks_dfcn.ini"))
     pending_replacements: set[Path] = set()
     if args.clean:
-        for path in [*staging, core, loader, *game_loaders]:
+        for path in [*staging, core, loader, *game_loaders, *([preview_mod] if preview_mod else [])]:
             remove_file(path)
         print("Build outputs removed.")
         return 0
@@ -948,7 +1002,9 @@ def main() -> int:
         rebuild_loader = args.rebuild_loader or configured_build or needs_update([loader, *game_loaders], loader_inputs())
         rebuild_mouse = mouse_mod and (configured_build or needs_update([mouse_mod],
             [SCRIPT, ROOT / "src/mods/mouse_coordinates.cpp", ROOT / "src/mouse_coordinates_api.h"]))
-        if rebuild_core or rebuild_loader or rebuild_mouse:
+        rebuild_preview = preview_mod and (configured_build or needs_update([preview_mod],
+            [SCRIPT, ROOT / "src/mods/map_preview.cpp", ROOT / "src/map_preview_api.h"]))
+        if rebuild_core or rebuild_loader or rebuild_mouse or rebuild_preview:
             # Both core translation units and the loader must see the same
             # shared headers even when this checkout is edited during a long
             # compile. Copy once; relative includes and the Linux export map
@@ -978,6 +1034,10 @@ def main() -> int:
                     print("Building the independent mouse coordinates mod...", flush=True)
                     run([*compiler, *compile_flags, "-o", str(mouse_candidate),
                          "src/mods/mouse_coordinates.cpp", *link_flags], env, cwd=snapshot)
+                if rebuild_preview:
+                    print("Building the independent map preview mod...", flush=True)
+                    run([*compiler, *compile_flags, "-o", str(preview_candidate),
+                         "src/mods/map_preview.cpp", *link_flags], env, cwd=snapshot)
         for directory in edition_destinations():
             deploy_runtime_data(directory)
         for directory in native_game_directories():
@@ -992,6 +1052,13 @@ def main() -> int:
                               destination, keep_candidate=True)
             if rebuild_mouse:
                 publish_ready(mouse_candidate, mouse_mod)
+        if preview_mod:
+            # Retain the local build artifact, but distribute the feature only
+            # in its own Workshop payload. A translation deployment must not
+            # install this optional mod or expose its menu switch by itself.
+            if rebuild_preview:
+                publish_ready(preview_candidate, preview_mod)
+            package_map_preview(preview_mod)
         if rebuild_core:
             for directory in edition_destinations():
                 directory.mkdir(parents=True, exist_ok=True)

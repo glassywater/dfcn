@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="#102426"/>
+  <rect x="60" y="60" width="904" height="904" fill="none" stroke="#355355" stroke-width="2"/>
+  <rect x="60" y="60" width="20" height="904" fill="#e8b75d"/>
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif">
+    <text x="128" y="126" font-size="28" font-weight="700" fill="#adc1bd">BYAYOI COMMUNITY</text>
+    <path d="M124 178 H904" stroke="#355355" stroke-width="2"/>
+    <text x="128" y="390" font-size="152" font-weight="700" fill="#f5f1e4">DFCN</text>
+    <text x="128" y="511" font-size="53" font-weight="700" fill="#e8b75d">MOUSE COORDINATES</text>
+    <text x="128" y="594" font-size="45" font-weight="700" fill="#f5f1e4">鼠标地图坐标</text>
+    <text x="128" y="668" font-size="30" fill="#adc1bd">要塞地图 · X / Y · 独立开关</text>
+    <rect x="124" y="754" width="534" height="88" fill="#55cccc"/>
+    <text x="148" y="816" font-family="Consolas, monospace" font-size="49" font-weight="700" fill="#102426">X: 123  Y: 456</text>
+    <text x="128" y="898" font-size="23" font-weight="600" fill="#adc1bd">WINDOWS x64 · REQUIRES DFCN</text>
+  </g>
+</svg>

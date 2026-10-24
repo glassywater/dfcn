@@ -1,0 +1,24 @@
+; reference PE:6a70a6d9:02711000; color-menu-constructor; complete unwind owner RVA 0x8b14a0..0x8b14fe
+0x8b14a0: rex push rbx
+0x8b14a2: sub    rsp,0x20
+0x8b14a6: mov    ecx,0x78
+0x8b14ab: call   0x141539690
+0x8b14b0: mov    rbx,rax
+0x8b14b3: mov    QWORD PTR [rsp+0x30],rax
+0x8b14b8: mov    rcx,rax
+0x8b14bb: call   0x1407c5880
+0x8b14c0: lea    rax,[rip+0xe0cfa9]        # 0x1416be470
+0x8b14c7: mov    QWORD PTR [rbx],rax
+0x8b14ca: xorps  xmm0,xmm0
+0x8b14cd: movups XMMWORD PTR [rbx+0x58],xmm0
+0x8b14d1: mov    QWORD PTR [rbx+0x68],0x0
+0x8b14d9: mov    QWORD PTR [rbx+0x70],0xf
+0x8b14e1: mov    BYTE PTR [rbx+0x58],0x0
+0x8b14e5: mov    eax,0xffffffff
+0x8b14ea: mov    WORD PTR [rbx+0x48],ax
+0x8b14ee: mov    DWORD PTR [rbx+0x4c],eax
+0x8b14f1: mov    BYTE PTR [rbx+0x50],0x0
+0x8b14f5: mov    rax,rbx
+0x8b14f8: add    rsp,0x20
+0x8b14fc: pop    rbx
+0x8b14fd: ret

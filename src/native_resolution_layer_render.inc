@@ -23,6 +23,7 @@ public:
         if (settings && !previous_context_ && gps && gps->screen && gps->screen_top &&
                 !native_private_ui_write_active(gps) &&
                 !g_native_info_write_graphics && !g_native_stocks_write_graphics &&
+                !g_native_display_write_graphics &&
                 !g_native_squads_write_graphics && !g_native_reports_write_graphics &&
                 !g_native_pause_write_graphics && !native_notification_write_active(gps) &&
                 !g_native_tooltip_output && g_native_help_layer.native_renderer &&

@@ -1,0 +1,22 @@
+[h1]鼠标地图坐标[/h1]
+
+在要塞模式底部工具栏右侧显示鼠标所在地图格的 X、Y 坐标。地图左上角为 (1, 1)，支持图形与 ASCII 模式。
+
+[list]
+[*]采用原生位图字体，黑字青底，位置保持稳定。
+[*]打开菜单、切换面板或使用工具时持续显示。
+[*]鼠标离开地图、被界面遮挡或进入子页面时保留最近一次有效坐标；离开要塞模式后隐藏。
+[*]在 DFCN 设置菜单中开关显示，并保存选择；切换中英文不影响此开关。
+[/list]
+
+[h2]安装与依赖[/h2]
+适用于 Windows x64 版 Dwarf Fortress 53.16。需要已安装并启用 v53.16-20261023 或更新版本的 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]。
+
+订阅并下载后，由 DFCN 自动识别。无需在创建世界时启用，也不需要 DFHack。
+
+[h2]Mouse Coordinates[/h2]
+Displays the map tile under the mouse as X and Y coordinates beside the fortress toolbar. Coordinates start at (1, 1) in the upper-left corner. Supports graphical and ASCII modes, retains the last valid coordinates while the map is covered, and includes a saved on/off setting in the DFCN menu.
+
+Requires DFCN v53.16-20261023 or later for Windows x64. Discovered automatically after download; no world mod activation or DFHack required.
+
+Byayoi 同人社区 · [url=https://byayoi.org/]byayoi.org[/url]

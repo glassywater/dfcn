@@ -1,0 +1,39 @@
+; reference PE:6a70a6d9:02711000; job-choice-constructor; complete unwind owner RVA 0x8b1600..0x8b16cb
+0x8b1600: rex push rbx
+0x8b1602: sub    rsp,0x20
+0x8b1606: mov    ecx,0xe0
+0x8b160b: call   0x141539690
+0x8b1610: mov    rbx,rax
+0x8b1613: mov    QWORD PTR [rsp+0x30],rax
+0x8b1618: mov    rcx,rax
+0x8b161b: call   0x1407c5880
+0x8b1620: lea    rax,[rip+0xe0d149]        # 0x1416be770
+0x8b1627: mov    QWORD PTR [rbx],rax
+0x8b162a: xorps  xmm0,xmm0
+0x8b162d: movups XMMWORD PTR [rbx+0x50],xmm0
+0x8b1631: xor    ecx,ecx
+0x8b1633: mov    QWORD PTR [rbx+0x60],rcx
+0x8b1637: mov    QWORD PTR [rbx+0x68],0xf
+0x8b163f: mov    BYTE PTR [rbx+0x50],cl
+0x8b1642: movups XMMWORD PTR [rbx+0x98],xmm0
+0x8b1649: mov    QWORD PTR [rbx+0xa8],rcx
+0x8b1650: mov    QWORD PTR [rbx+0xb0],0xf
+0x8b165b: mov    BYTE PTR [rbx+0x98],cl
+0x8b1661: movups XMMWORD PTR [rbx+0xb8],xmm0
+0x8b1668: mov    QWORD PTR [rbx+0xc8],rcx
+0x8b166f: mov    QWORD PTR [rbx+0xd0],0xf
+0x8b167a: mov    BYTE PTR [rbx+0xb8],cl
+0x8b1680: mov    eax,0xffffffff
+0x8b1685: mov    DWORD PTR [rbx+0x72],0xffffffff
+0x8b168c: mov    DWORD PTR [rbx+0x78],eax
+0x8b168f: mov    DWORD PTR [rbx+0x7c],ecx
+0x8b1692: mov    DWORD PTR [rbx+0x80],eax
+0x8b1698: mov    DWORD PTR [rbx+0x84],ecx
+0x8b169e: mov    WORD PTR [rbx+0x88],0x1
+0x8b16a7: mov    QWORD PTR [rbx+0x8c],0xffffffffffffffff
+0x8b16b2: mov    DWORD PTR [rbx+0x94],eax
+0x8b16b8: mov    DWORD PTR [rbx+0xd8],0x3e8
+0x8b16c2: mov    rax,rbx
+0x8b16c5: add    rsp,0x20
+0x8b16c9: pop    rbx
+0x8b16ca: ret

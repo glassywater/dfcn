@@ -55,11 +55,11 @@ static size_t capture_native_adventure_background_tooltip(const void *document,
         const int64_t left = int64_t(viewport_left) + 0x35;
         const int bottom = grid_y - 6;
         const int top = bottom - visible_rows - 1;
-        if (left < 0 || left > gps->dimx - 32 || top < 0 ||
-                bottom >= gps->dimy || visible_rows <= 0) return count;
+        if (left > std::numeric_limits<int>::max() || visible_rows <= 0) return count;
 
         NativeTooltipWidgetFrame frame;
         frame.bounds = {static_cast<int>(left), top, 32, visible_rows + 2};
+        if (!native_tooltip_valid_bounds(*gps, frame.bounds)) return count;
         frame.dimx = gps->dimx;
         frame.dimy = gps->dimy;
         frame.epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);

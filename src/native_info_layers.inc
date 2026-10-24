@@ -19,6 +19,7 @@ static bool native_info_background_view(const graphicst *graphics) noexcept {
     // matcher/layout for the uncovered HUD and other independent panels.
     if (native_reports_background_view(graphics)) return true;
     if (native_stocks_background_view(graphics)) return true;
+    if (native_display_background_view(graphics)) return true;
     return graphics && g_native_info_layer.ready && !g_native_info_foreground &&
         graphics != g_native_info_write_graphics &&
         graphics->screen == g_native_info_background_grid;
@@ -31,12 +32,14 @@ static bool native_info_background_cell_hidden(const graphicst *graphics,
     if (native_petitions_background_cell_hidden(graphics, x, y)) return true;
     if (native_reports_background_cell_hidden(graphics, x, y)) return true;
     if (native_stocks_background_cell_hidden(graphics, x, y)) return true;
+    if (native_display_background_cell_hidden(graphics, x, y)) return true;
     return graphics && g_native_info_layer.ready &&
         (graphics == g_native_info_background_graphics ||
             graphics->screen == g_native_info_background_grid) &&
         graphics != g_native_info_write_graphics &&
         graphics != g_native_help_write_graphics &&
         graphics != g_native_stocks_write_graphics &&
+        graphics != g_native_display_write_graphics &&
         graphics != g_native_squads_write_graphics &&
         graphics != g_native_reports_write_graphics &&
         !native_notification_write_active(graphics) &&
@@ -51,6 +54,7 @@ static bool native_info_background_copy_hidden(SDL_Renderer *renderer,
     if (native_character_background_copy_hidden(renderer, destination)) return true;
     if (native_reports_background_copy_hidden(renderer, destination)) return true;
     if (native_stocks_background_copy_hidden(renderer, destination)) return true;
+    if (native_display_background_copy_hidden(renderer, destination)) return true;
     if (!destination || destination->w <= 0 || destination->h <= 0 ||
             !g_native_info_layer.ready || renderer != g_native_info_layer.renderer) return false;
     // Atlas/offscreen copies have a different coordinate space and owners.

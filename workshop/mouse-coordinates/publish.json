@@ -1,0 +1,14 @@
+{
+  "appid": 975370,
+  "title": "DFCN · 鼠标地图坐标 / Mouse Coordinates",
+  "description_file": "workshop/mouse-coordinates/description.bbcode.txt",
+  "content_folder": "workshop/mouse-coordinates/content",
+  "preview_file": "workshop/mouse-coordinates/preview.png",
+  "tags": [
+    "mod",
+    "UI"
+  ],
+  "visibility": 0,
+  "required_items": [3811193379],
+  "changelog": "首次发布。显示要塞地图中鼠标所在格的 X、Y 坐标，支持图形与 ASCII 模式，可在 DFCN 设置菜单中开关并保存选择。"
+}

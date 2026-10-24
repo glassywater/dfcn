@@ -1912,7 +1912,17 @@ std::optional<std::string> Overlay::translate_legends_text(
                     case 'q': translated[i] = translate_legends_color(captures[i]); break;
                     case 't': translated[i] = translate_legends_anatomy(captures[i]); break;
                     case 'i': translated[i] = translate_legends_item(captures[i]); break;
-                    case 'e': translated[i] = translate_legends_event(captures[i]); break;
+                    case 'e':
+                        translated[i] = translate_legends_event(captures[i]);
+                        // The event-name fallback can preserve unknown groups
+                        // around a native nickname. That does not make an
+                        // announcement body a complete event title: otherwise
+                        // "{e} to {i}" can move an artifact's recipient ahead
+                        // of its still-English creation report. Share the
+                        // nested event parser's exact nickname exemption.
+                        if (!translation_complete_with_native_nicknames(
+                                translated[i], captures[i])) translated[i].reset();
+                        break;
                     case 'b': translated[i] = translate_legends_book(captures[i]); break;
                     case 'r': translated[i] = translate_deity_spheres(captures[i]); break;
                     case 'd': translated[i] = captures[i]; break;

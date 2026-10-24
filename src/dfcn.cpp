@@ -1119,6 +1119,7 @@ struct NativeTextCard {
 struct WorkshopTaskCard : NativeTextCard {
     bool category = false;
     bool condition_choice = false;
+    bool native_choice_title = false;
     WorkshopTaskCard(NativeTextCard card, bool is_category = false)
         : NativeTextCard(std::move(card)), category(is_category) {}
 };
@@ -2336,6 +2337,10 @@ struct NativeWorkshopTaskCaption {
 };
 static std::optional<NativeWorkshopTaskCaption> capture_native_workshop_task_caption(
     uintptr_t caller, uintptr_t source);
+enum class NativeWorkshopChoiceField : uint8_t {
+    None, Title, Requirement, Additional,
+};
+static NativeWorkshopChoiceField native_workshop_choice_field(uintptr_t caller);
 
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
@@ -2512,6 +2517,7 @@ static bool native_character_background_view(const graphicst *) noexcept;
 static bool native_character_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_character_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
 static thread_local const graphicst *g_native_stocks_write_graphics = nullptr;
+static thread_local const graphicst *g_native_display_write_graphics = nullptr;
 static thread_local const graphicst *g_native_squads_write_graphics = nullptr;
 static thread_local const graphicst *g_native_designation_write_graphics = nullptr;
 static thread_local const graphicst *g_native_map_hover_write_graphics = nullptr;
@@ -2545,10 +2551,15 @@ static bool native_info_background_cell_hidden(const graphicst *, int, int) noex
 static bool native_stocks_background_view(const graphicst *) noexcept;
 static bool native_stocks_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_stocks_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
+static bool native_display_background_view(const graphicst *) noexcept;
+static bool native_display_background_cell_hidden(const graphicst *, int, int) noexcept;
+static bool native_display_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
+static std::optional<NativeTradeItemCaption> capture_native_display_item_caption(
+    uintptr_t string_owner, std::string_view shortened);
 static bool native_squads_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_squads_layer_hook_active();
 static void native_squads_prepare_text();
-enum class NativeFortressLayerKind { Info, Stocks };
+enum class NativeFortressLayerKind { Info, Stocks, Display };
 static bool native_reports_background_view(const graphicst *) noexcept;
 static bool native_reports_background_cell_hidden(const graphicst *, int, int) noexcept;
 static bool native_reports_background_copy_hidden(SDL_Renderer *, const SDL_Rect *) noexcept;
@@ -2758,6 +2769,7 @@ struct NativeTooltipWidgetFrame {
     int dimx = 0, dimy = 0;
     uint64_t epoch = 0;
     std::vector<std::string> rows;
+    std::vector<std::string> glyph_rows;
     std::string body_source;
     bool top_layer = false;
     bool isolated = false;
@@ -2769,6 +2781,30 @@ struct NativeTooltipWidgetFrame {
     std::shared_ptr<NativeTooltipPage> document;
     std::vector<SDL_Rect> occlusions;
 };
+// A tooltip owns its complete document even when only part of its native
+// rectangle reaches the screen. Keep allocation limits separate from the
+// physical output intersection; neither clipping edge changes its identity.
+static bool native_tooltip_valid_bounds(const graphicst &gps, const SDL_Rect &box) {
+    return gps.dimx > 0 && gps.dimx <= 1000 && gps.dimy > 0 && gps.dimy <= 1000 &&
+        box.w > 0 && box.w <= 1004 && box.h > 0 && box.h <= 1004 &&
+        box.x > -box.w && box.x < gps.dimx &&
+        box.y > -box.h && box.y < gps.dimy;
+}
+static SDL_Rect native_tooltip_visible_bounds(const graphicst &gps, const SDL_Rect &box) {
+    const auto horizontal = [&](int64_t value) {
+        return static_cast<int>(std::clamp<int64_t>(value, 0, gps.dimx));
+    };
+    const auto vertical = [&](int64_t value) {
+        return static_cast<int>(std::clamp<int64_t>(value, 0, gps.dimy));
+    };
+    const int left = horizontal(std::max<int64_t>(box.x, gps.clipx[0]));
+    const int right = horizontal(std::min<int64_t>(
+        int64_t(box.x) + box.w, int64_t(gps.clipx[1]) + 1));
+    const int top = vertical(std::max<int64_t>(box.y, gps.clipy[0]));
+    const int bottom = vertical(std::min<int64_t>(
+        int64_t(box.y) + box.h, int64_t(gps.clipy[1]) + 1));
+    return {left, top, std::max(0, right - left), std::max(0, bottom - top)};
+}
 static bool native_tooltip_begin_draw(NativeTooltipWidgetFrame &frame);
 static void native_tooltip_end_draw(NativeTooltipWidgetFrame &frame);
 static void native_tooltip_restore_output();
@@ -2823,6 +2859,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         std::optional<NativeTradeItemCaption> trade_item_caption = std::nullopt) {
     if (native_private_ui_write_active(graphics)) return;
     const bool character = graphics && graphics == g_native_character_write_graphics;
+    const bool display = graphics && graphics == g_native_display_write_graphics;
+    if (display && !trade_item_caption)
+        trade_item_caption = capture_native_display_item_caption(address, source);
     // Copy the producer's frame and unshortened building name while the
     // actual addst caller is live, before acquiring the draw registry lock.
     auto work_order_shop_caption = character ? std::nullopt :
@@ -2898,7 +2937,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.fortress_zone_caption = std::move(fortress_zone_caption);
         row.workshop_task_caption = std::move(workshop_task_caption);
         row.uniform_member_right = capture_native_uniform_member_right(native_caller, address, x);
-        if (row.workshop_task_caption) row.caption_source = true;
+        if (row.workshop_task_caption ||
+                native_workshop_choice_field(native_caller) != NativeWorkshopChoiceField::None)
+            row.caption_source = true;
         row.sequence = ++g_native_drawn_text_sequence;
         row.editable_text = NativeEditableTextScope::active;
         row.top_layer = top_layer;
@@ -2977,6 +3018,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         if (row.fortress_labor_caption) row.caption_source = true;
         row.trade_item_caption = std::move(trade_item_caption);
         if (row.trade_item_caption) row.caption_source = true;
+        if (display && row.trade_item_caption)
+            complete_source = row.trade_item_caption->source;
         row.mission_title = mission_title;
         row.mission_title_right = mission_title_right;
         row.map_hover = map_hover;
@@ -3721,6 +3764,7 @@ public:
     void layout_character_panels(SDL_Renderer *renderer);
     std::vector<Match> find_native_character_matches() const;
     void render_native_stocks_layer(SDL_Renderer *renderer);
+    void render_native_display_layer(SDL_Renderer *renderer);
     void prepare_native_squads_text();
     void render_native_squads_layer(SDL_Renderer *renderer, const Overlay &source);
     void release_native_squads_resources();
@@ -3758,6 +3802,7 @@ public:
     void toggle_native_language();
     void render_settings_menu(SDL_Renderer *renderer);
     bool settings_menu_event(const SDL_Event &event);
+    void render_map_preview(SDL_Renderer *renderer);
     void run_settings_menu_action(int action);
     void toggle_translation_extensions();
     void remap_legends_mouse(int *x, int *y) const;
@@ -3847,6 +3892,7 @@ private:
     std::vector<Match> find_native_petitions_matches(int only_y = -1,
         const unsigned char *screen_override = nullptr) const;
     std::vector<Match> find_native_stocks_matches() const;
+    std::vector<Match> find_native_display_matches() const;
     std::vector<Match> find_native_squads_matches() const;
     std::vector<Match> find_native_info_background_matches(int only_y,
         const unsigned char *screen_override) const;
@@ -5180,6 +5226,7 @@ private:
         const std::vector<std::string> &rows) const;
     void append_workshop_task_translations(const WorkshopTaskCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const;
+    TranslationResult translate_workshop_choice_title(std::string_view source) const;
     void layout_workshop_task_rows(SDL_Renderer *renderer);
     std::vector<NativeTextCard> capture_workshop_material_fields(
         const std::vector<std::string> &rows, bool task_detail_only = false) const;
@@ -8142,6 +8189,15 @@ static void native_mouse_coordinates_prepare();
 static void native_mouse_coordinates_present(SDL_Renderer *renderer);
 static void native_mouse_coordinates_reset();
 static void native_mouse_coordinates_release();
+static bool native_map_preview_available();
+static bool native_map_preview_enabled();
+static void native_map_preview_toggle();
+static void native_map_preview_load();
+static void native_map_preview_refresh(bool force = false);
+static void native_map_preview_prepare();
+static void native_map_preview_reset();
+static void native_map_preview_release();
+static bool native_map_preview_event(const SDL_Event &event);
 
 void Overlay::run_settings_menu_action(int action) {
     switch (action) {
@@ -8160,6 +8216,7 @@ void Overlay::run_settings_menu_action(int action) {
             log_line("ERROR", "Settings menu: cannot request core reload");
         break;
     case 6: native_mouse_coordinates_toggle(); break;
+    case 7: native_map_preview_toggle(); break;
     }
 }
 
@@ -17540,6 +17597,7 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_info_layers.inc"
 #include "native_character_layers.inc"
 #include "native_stocks_layers.inc"
+#include "native_display_layers.inc"
 #include "native_tooltip_layers.inc"
 #include "native_notification_layers.inc"
 #include "native_petition_layers.inc"
@@ -18099,6 +18157,7 @@ static void native_ui_paint_grid(NativeUiLayerStorage &layer, SDL_Renderer *rend
 #include "native_petitions_layer_matching.inc"
 #include "native_embark_civilization_layer_matching.inc"
 #include "native_stocks_layer_translation.inc"
+#include "native_display_layer_translation.inc"
 #include "native_squads_layer_matching.inc"
 #include "native_info_layer_translation.inc"
 #include "native_character_layer_translation.inc"
@@ -30322,9 +30381,9 @@ std::optional<std::string> Overlay::translate_creature_material_qualifier(
 }
 
 // Ammunition uses the same material qualifier as other manufactured items.
-// Type recognition comes from the existing TOML namespace; data/runtime/translations.tsv
-// may override that type, but no code-local noun/material glossary competes
-// with either table. Match a COMPLETE suffix, including future multiword types.
+// Type recognition and translation share the ammunition TOML namespace.
+// Generic literals also contain procedural-name senses, so they cannot
+// override a proved ammo type. Match a COMPLETE suffix, including multiword types.
 static std::optional<AmmunitionNameParts> split_ammunition_item_name(
         std::string_view source) {
     source = trim_view(source);
@@ -30357,8 +30416,7 @@ static std::optional<std::string> translate_ammunition_item_name(
         std::string_view source) {
     const auto parts = split_ammunition_item_name(source);
     if (!parts) return std::nullopt;
-    std::string target = overlay_exact_literal_translation(parts->noun)
-        .value_or(parts->translated_noun);
+    std::string target = parts->translated_noun;
     if (!parts->marker.empty()) {
         const auto marker = overlay_exact_literal_translation(parts->marker);
         if (!marker) return std::nullopt;
@@ -42419,14 +42477,20 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         }
     }
 
-    const int text_x = match.layout_x >= 0 ? match.layout_x : match.x;
+    // A tooltip can retain a measured text origin beyond the viewport. Its
+    // negative coordinates are real positions, not the generic unset marker.
+    const bool tooltip_layout = match.layout_prepared &&
+        (match.rule == kToolbarTooltipBodyRule || match.rule == kToolbarTooltipKeyRule ||
+            (g_native_tooltip_widget_frame && g_native_tooltip_widget_frame->isolated &&
+                g_native_tooltip_widget_frame->grid_identity == gps_->screen));
+    const int text_x = tooltip_layout || match.layout_x >= 0 ? match.layout_x : match.x;
     const bool native_baseline = match.native_split_text && !match.layout_fixed_baseline;
     const int text_y = native_baseline ? match.native_split_top_y
-        : (match.layout_y >= 0 ? match.layout_y : match.y);
+        : (tooltip_layout || match.layout_y >= 0 ? match.layout_y : match.y);
     const int pixel_y = native_baseline ? tile_h / 2 : match.layout_pixel_y;
     const int text_length = match.layout_length > 0 ? match.layout_length : match.length;
     const bool exact_pixel_box =
-        match.layout_box_pixel_x >= 0 && match.layout_box_pixel_width > 0;
+        (tooltip_layout || match.layout_box_pixel_x >= 0) && match.layout_box_pixel_width > 0;
     const int span_x = (exact_pixel_box
         ? match.layout_box_pixel_x
         : origin_x + text_x * tile_w) + config_.horizontal_padding;
@@ -42521,7 +42585,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
         renderer, *display_text, span_width, foregrounds);
     texture_timing.checkpoint(RenderTimingStage::DrawCopy);
     if (glyph && glyph->texture) {
-        const bool left_align = match.layout_x >= 0 ? match.layout_left :
+        const bool left_align = tooltip_layout || match.layout_x >= 0 ? match.layout_left :
             (match.rule >= 0 && rules_[static_cast<size_t>(match.rule)].left_align);
         // Keep the native anchor and line allocation. Paragraph owners wrap
         // within their own controls; a long single-line field cannot wrap at
@@ -44294,6 +44358,8 @@ static void native_character_present_layer(SDL_Renderer *renderer,
     void (*draw_character)(SDL_Renderer *));
 static void native_stocks_present_layer(SDL_Renderer *renderer,
     void (*draw_stocks)(SDL_Renderer *));
+static void native_display_present_layer(SDL_Renderer *renderer,
+        void (*draw_display)(SDL_Renderer *));
 static void native_squads_present_layer(SDL_Renderer *renderer,
     void (*draw_squads)(SDL_Renderer *));
 static void native_reports_present_layer(SDL_Renderer *renderer,
@@ -44398,6 +44464,9 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
             native_stocks_present_layer(renderer, [](SDL_Renderer *stocks_renderer) {
                 g_overlay.render_native_stocks_layer(stocks_renderer);
             });
+            native_display_present_layer(renderer, [](SDL_Renderer *display_renderer) {
+                g_overlay.render_native_display_layer(display_renderer);
+            });
             native_squads_present_layer(renderer, [](SDL_Renderer *squads_renderer) {
                 g_native_squads_overlay.render_native_squads_layer(squads_renderer, g_overlay);
             });
@@ -44444,6 +44513,7 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         boundary.checkpoint("name_search");
         g_overlay.render_ime_popup(renderer);
         boundary.checkpoint("ime_popup");
+        g_overlay.render_map_preview(renderer);
         g_overlay.render_settings_menu(renderer);
         // This independent fortress HUD remains visible above modal pages.
         native_mouse_coordinates_present(renderer);
@@ -44494,6 +44564,7 @@ static void native_settings_menu_release();
 #include "native_blueprint_export.inc"
 #include "native_settings_menu.inc"
 #include "native_mouse_coordinates.inc"
+#include "native_map_preview.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
 #include "adventure_home_translation.inc"
@@ -44535,6 +44606,7 @@ DFCN_EXPORT void dfhooks_init() {
     }
     dfcn::start_native_identity_translation_jobs();
     dfcn::native_mouse_coordinates_load();
+    dfcn::native_map_preview_load();
     if (!dfcn::install_sdl_hooks()) {
         dfcn::stop_reloadable_core();
         return;
@@ -44564,6 +44636,7 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
         return false;
     }
     if (dfcn::g_overlay.settings_menu_event(*event)) return true;
+    if (dfcn::native_map_preview_event(*event)) return true;
     static bool f6_consumed = false;
     if (event->type == SDL_WINDOWEVENT &&
         event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f6_consumed = false;

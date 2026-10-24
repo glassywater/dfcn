@@ -161,8 +161,8 @@ void Overlay::append_fortress_ammunition_choices(std::vector<std::string> &rows,
                         complete = capture.complete;
                         break;
                     }
-                auto target = exact_literal_translation(complete);
-                if (!target) target = translate_ammunition_item_name(complete);
+                auto target = translate_ammunition_item_name(complete);
+                if (!target) target = exact_literal_translation(complete);
                 if (target && (target->empty() || target->find("[C:") != std::string::npos ||
                     target->find_first_of("\r\n") != std::string::npos)) target.reset();
                 const auto claim = [&](int first, int last, const std::string &source,
@@ -197,7 +197,7 @@ void Overlay::append_fortress_ammunition_choices(std::vector<std::string> &rows,
         if (!caption.ammunition_type || (only_y >= 0 && caption.y != only_y)) continue;
         auto target = translate_ammunition_item_name(caption.source);
         if (!target && !caption.picker_column) continue;
-        if (const auto literal = exact_literal_translation(caption.source)) target = literal;
+        if (!target) target = exact_literal_translation(caption.source);
         // An unknown material still owns one field inside a proven picker.
         // Preserve its complete original name instead of splitting known
         // species/tissue/type words into independently centred fragments.

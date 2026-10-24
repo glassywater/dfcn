@@ -69,6 +69,12 @@ struct Snapshot {
     // The semantic-search model is an optional, independent data mod. It is
     // discovered from the same installed mod roots as translation extensions.
     fs::path semantic_model;
+    // Optional native modules use the same subscription-aware installation
+    // roots. Workshop candidates precede local packages and the core fallback.
+    std::vector<fs::path> mouse_coordinates_modules;
+    // Map preview is supplied only by a currently subscribed Workshop mod.
+    // Local copies and cached subscription metadata cannot enable it.
+    std::vector<fs::path> map_preview_modules;
     // An available empty Steam list is authoritative, including after the
     // final extension is unsubscribed while its download remains on disk.
     bool steam_subscriptions_available = false;
@@ -248,6 +254,9 @@ inline void add_library(std::set<fs::path>& libraries, const fs::path& location)
 
 struct SteamSubscriptions {
     bool available = false;
+    // Unlike available, current is never retained when the live API fails.
+    // Subscription-only modules must not use a previously cached membership.
+    bool current = false;
     std::set<uint64_t> ids;
     std::map<uint64_t, fs::path> directories;
 };
@@ -295,6 +304,7 @@ inline SteamSubscriptions subscriptions() {
     if (copied > count || (count && !copied)) return last;
     SteamSubscriptions result;
     result.available = true;
+    result.current = true;
     for (size_t i = 0; i < copied; ++i) {
         result.ids.insert(items[i]);
         uint64_t size = 0;
@@ -305,6 +315,7 @@ inline SteamSubscriptions subscriptions() {
             result.directories.emplace(items[i], fs::u8path(folder.data()));
     }
     last = result;
+    last.current = false;
     return result;
 }
 
@@ -318,7 +329,98 @@ inline fs::path resource_path(const fs::path& root, std::string_view value) {
     return within(root, resolved) ? resolved : fs::path{};
 }
 
+inline std::vector<fs::path> map_preview_modules(const SteamSubscriptions& steam,
+                                                Snapshot* snapshot = nullptr) {
+    std::vector<fs::path> modules;
+    if (!steam.available || !steam.current) return modules;
+    const auto watch = [&](const fs::path& path) {
+        if (snapshot) snapshot->resources.push_back(stamp(path));
+    };
+    const auto diagnose = [&](const fs::path& manifest, std::string_view reason) {
+        if (snapshot) snapshot->diagnostics.push_back(runtime::utf8(manifest) +
+            ": " + std::string(reason));
+    };
+    std::vector<std::pair<int64_t, fs::path>> candidates;
+    std::set<fs::path> visited;
+    // GetItemInstallInfo ties each actual installed directory to a subscribed
+    // item. A copied info.txt cannot substitute an unrelated subscribed ID,
+    // and neither game/mods nor an appworkshop cache grants this feature.
+    for (const auto& [item, directory] : steam.directories) {
+        if (!item || !steam.ids.contains(item)) continue;
+        const auto root = canonical_path(directory);
+        if (root.empty() || !visited.insert(root).second) continue;
+        const auto manifest = root / "dfcn-map-preview.toml";
+        watch(root);
+        watch(manifest);
+        std::error_code error;
+        if (!within(root, manifest) || !fs::is_regular_file(manifest, error) || error)
+            continue;
+        const auto info_path = root / "info.txt";
+        watch(info_path);
+        if (!within(root, info_path)) continue;
+        const auto info = text(info_path);
+        const auto info_id = info ? info_value(*info, "ID") : std::nullopt;
+        const auto declared_version = info ? info_value(*info, "NUMERIC_VERSION") : std::nullopt;
+        const auto version = declared_version ? number<int64_t>(*declared_version) : std::nullopt;
+        const auto declared_item = info ? info_value(*info, "STEAM_FILE_ID") : std::nullopt;
+        const auto linked_item = declared_item ? number<uint64_t>(*declared_item) : std::nullopt;
+        if (!info_id || *info_id != "dfcn-map-preview" || !version || *version < 0 ||
+                (declared_item && (!linked_item || (*linked_item && *linked_item != item)))) {
+            diagnose(manifest, "invalid map-preview mod identity, version or Workshop item");
+            continue;
+        }
+        const auto data = text(manifest);
+        if (!data) {
+            diagnose(manifest, "cannot read map-preview manifest");
+            continue;
+        }
+        const auto parsed = toml::parse(*data, runtime::utf8(manifest));
+        if (!parsed) {
+            diagnose(manifest, parsed.error().description());
+            continue;
+        }
+        const auto schema = parsed["schema"].value<int64_t>();
+        const auto id = parsed["id"].value<std::string>();
+        const auto module = parsed["module"].value<std::string>();
+        if (!schema || *schema != 1 || !id || *id != "dfcn-map-preview" ||
+                !module || *module != "dfcn/dfcn_map_preview.dll") {
+            diagnose(manifest, "invalid map-preview manifest");
+            continue;
+        }
+        const auto module_path = resource_path(root, *module);
+        if (module_path.empty()) {
+            diagnose(manifest, "map-preview module path is outside its package");
+            continue;
+        }
+        watch(module_path);
+        error.clear();
+        if (!fs::is_regular_file(module_path, error) || error) {
+            diagnose(manifest, "missing map-preview module");
+            continue;
+        }
+        candidates.emplace_back(*version, module_path);
+    }
+    std::sort(candidates.begin(), candidates.end(), [](const auto& left, const auto& right) {
+        if (left.first != right.first) return left.first > right.first;
+        return left.second < right.second;
+    });
+    for (const auto& candidate : candidates) modules.push_back(candidate.second);
+    return modules;
+}
+
 } // namespace detail
+
+// This path only reads the small mod manifests; it does not fingerprint DLLs
+// or translation resources. The render producer can poll it for subscriptions
+// and completed downloads without repeatedly rebuilding the full snapshot.
+inline std::vector<fs::path> discover_map_preview_modules(
+        const detail::SteamSubscriptions& steam) {
+    return detail::map_preview_modules(steam);
+}
+
+inline std::vector<fs::path> discover_map_preview_modules() {
+    return discover_map_preview_modules(detail::subscriptions());
+}
 
 inline Snapshot discover(std::string_view language = "zh-Hans") {
     Snapshot snapshot;
@@ -326,6 +428,7 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
     const auto steam = detail::subscriptions();
     snapshot.steam_subscriptions_available = steam.available;
     snapshot.subscribed_items.assign(steam.ids.begin(), steam.ids.end());
+    snapshot.map_preview_modules = detail::map_preview_modules(steam, &snapshot);
     const auto game = detail::game_directory();
     std::set<fs::path> libraries;
     detail::add_library(libraries, game);
@@ -398,27 +501,34 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
     std::set<fs::path> visited;
     std::map<std::string, std::pair<Package, int>> selected;
     std::optional<std::tuple<int64_t, int, fs::path>> selected_semantic_model;
+    std::vector<std::tuple<int, int64_t, fs::path>> mouse_coordinates_modules;
     for (const auto& entry : candidates) {
         const auto root = detail::canonical_path(entry.root);
         if (root.empty() || visited.contains(root)) continue;
         const auto manifest = root / "dfcn-extension.toml";
         const auto semantic_manifest = root / "dfcn-semantic-search.toml";
+        const auto mouse_manifest = root / "dfcn-mouse-coordinates.toml";
         std::error_code error;
         const bool has_extension = fs::is_regular_file(manifest, error) &&
             detail::within(root, manifest);
         error.clear();
         const bool has_semantic_model = fs::is_regular_file(semantic_manifest, error) &&
             detail::within(root, semantic_manifest);
-        if (!has_extension && !has_semantic_model) continue;
+        error.clear();
+        const bool has_mouse_module = fs::is_regular_file(mouse_manifest, error) &&
+            detail::within(root, mouse_manifest);
+        if (!has_extension && !has_semantic_model && !has_mouse_module) continue;
         if (has_extension) watch(manifest);
         if (has_semantic_model) watch(semantic_manifest);
+        if (has_mouse_module) watch(mouse_manifest);
         const auto info_path = root / "info.txt";
         if (!detail::within(root, info_path)) continue;
         watch(info_path);
         const auto info = detail::text(info_path);
         const auto info_id = info ? detail::info_value(*info, "ID") : std::nullopt;
         if (!info_id || !detail::identifier(*info_id)) {
-            const auto& declared_manifest = has_extension ? manifest : semantic_manifest;
+            const auto& declared_manifest = has_extension ? manifest :
+                has_semantic_model ? semantic_manifest : mouse_manifest;
             snapshot.diagnostics.push_back(runtime::utf8(declared_manifest) +
                 ": missing valid info.txt mod ID");
             continue;
@@ -437,6 +547,33 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
         int64_t mod_version = 0;
         if (const auto version = detail::info_value(*info, "NUMERIC_VERSION"))
             mod_version = detail::number<int64_t>(*version).value_or(-1);
+        if (has_mouse_module && mod_version >= 0) {
+            const auto data = detail::text(mouse_manifest);
+            if (!data) {
+                snapshot.diagnostics.push_back(runtime::utf8(mouse_manifest) +
+                    ": cannot read mouse-coordinates manifest");
+            } else if (const auto parsed = toml::parse(*data, runtime::utf8(mouse_manifest)); !parsed) {
+                snapshot.diagnostics.push_back(runtime::utf8(mouse_manifest) + ": " +
+                    std::string(parsed.error().description()));
+            } else {
+                const auto schema = parsed["schema"].value<int64_t>();
+                const auto id = parsed["id"].value<std::string>();
+                const auto module = parsed["module"].value<std::string>();
+                const auto module_path = module
+                    ? detail::resource_path(root, *module) : fs::path{};
+                std::error_code module_error;
+                if (schema && *schema == 1 && id && *id == "dfcn-mouse-coordinates" &&
+                        *info_id == "dfcn-mouse-coordinates" && !module_path.empty() &&
+                        module_path.filename() == "dfcn_mouse_coordinates.dll" &&
+                        fs::is_regular_file(module_path, module_error) && !module_error) {
+                    watch(module_path);
+                    mouse_coordinates_modules.emplace_back(entry.priority, mod_version, module_path);
+                } else {
+                    snapshot.diagnostics.push_back(runtime::utf8(mouse_manifest) +
+                        ": missing valid mouse-coordinates module");
+                }
+            }
+        }
         if (has_semantic_model && mod_version >= 0) {
             const auto data = detail::text(semantic_manifest);
             if (!data) {
@@ -551,6 +688,19 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
     // Later IDs override matching semantic entries from earlier packages.
     for (auto& [id, selected_package] : selected)
         snapshot.packages.push_back(std::move(selected_package.first));
+    std::sort(mouse_coordinates_modules.begin(), mouse_coordinates_modules.end(),
+        [](const auto& left, const auto& right) {
+            const bool left_workshop = std::get<0>(left) == 2;
+            const bool right_workshop = std::get<0>(right) == 2;
+            if (left_workshop != right_workshop) return left_workshop;
+            if (std::get<1>(left) != std::get<1>(right))
+                return std::get<1>(left) > std::get<1>(right);
+            if (std::get<0>(left) != std::get<0>(right))
+                return std::get<0>(left) < std::get<0>(right);
+            return std::get<2>(left) < std::get<2>(right);
+        });
+    for (const auto& candidate : mouse_coordinates_modules)
+        snapshot.mouse_coordinates_modules.push_back(std::get<2>(candidate));
     std::sort(snapshot.resources.begin(), snapshot.resources.end(), [](const auto& left, const auto& right) {
         return left.path < right.path;
     });
@@ -562,6 +712,8 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
 inline bool same_resources(const Snapshot& left, const Snapshot& right) {
     return left.packages == right.packages && left.resources == right.resources &&
         left.semantic_model == right.semantic_model &&
+        left.mouse_coordinates_modules == right.mouse_coordinates_modules &&
+        left.map_preview_modules == right.map_preview_modules &&
         left.steam_subscriptions_available == right.steam_subscriptions_available &&
         left.subscribed_items == right.subscribed_items;
 }

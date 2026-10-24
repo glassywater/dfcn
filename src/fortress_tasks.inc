@@ -972,20 +972,12 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
         return card;
     };
     const auto clipped = captured_clipped_captions();
-    const uintptr_t native_base = native_history_profile_base();
     const auto task_choice_draw = [&](const NativeDrawnTextRow &draw) {
-#ifndef _WIN32
-        // Decompiled mainview owner 13c7f90: virtual+8 supplies the title;
-        // virtual+58/+60 supply the two independent annotation strings.
-        // The colored material swatch interrupts the left rectangle edge,
-        // so these text submissions do not require a closed button skin.
-        return native_base && draw.caption_source && !draw.editable_text &&
-            (draw.native_caller == native_reference_address(native_base, 0xfd11ed) ||
-             draw.native_caller == native_reference_address(native_base, 0xfd1288) ||
-             draw.native_caller == native_reference_address(native_base, 0xfd138e));
-#else
-        return false;
-#endif
+        // Both PE and ELF submit a title and one independent annotation.
+        // A material swatch interrupts the button edge, so ownership comes
+        // from the native writer rather than a closed rectangle skin.
+        return draw.caption_source && !draw.editable_text &&
+            native_workshop_choice_field(draw.native_caller) != NativeWorkshopChoiceField::None;
     };
     const auto append_candidates = [&](const SDL_Rect &search, int right, int bottom,
                                         int minimum_right, bool condition = false) {
@@ -993,27 +985,73 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
         const int left = search.x + 2;
         for (int y = content_y; y < bottom; ++y) {
             if (!condition) {
-                bool owned = false;
+                bool owned = std::any_of(choices.begin(), choices.end(), [&](const WorkshopTaskCard &card) {
+                    return std::any_of(card.rows.begin(), card.rows.end(), [&](const NativeTextCardRow &row) {
+                        return row.y == y && row.x >= search.x && row.x < right;
+                    });
+                });
+                if (owned) continue;
                 for (const auto &draw : drawn) {
                     if (draw.y != y || !task_choice_draw(draw) || draw.x < search.x ||
                         draw.x >= right || draw.source.empty() ||
-                        draw.source.size() > static_cast<size_t>(right - draw.x) ||
-                        !current(draw.x, y, draw.source) ||
-                        std::string_view(rows[y]).substr(draw.x, draw.source.size()) != draw.source)
+                        draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                        !draw.draw_grid)
                         continue;
-                    auto card = capture_panel_text_card(
-                        {draw.x, y, static_cast<int>(draw.source.size()), 1}, true);
-                    if (!card || !current_card(*card) || card->rows.size() != 1 ||
-                        card->rows.front().source != draw.source) continue;
-                    // Keep the complete pre-clipping text and the native text
-                    // inset. Only this draw's bytes belong to suppression;
-                    // the swatch, scrollbar and adjoining fields stay live.
-                    card->rows.front().complete_source = draw.complete_source;
-                    card->interior = {draw.x, y, right - draw.x - 1, 1};
-                    if (card->interior.w <= 0) continue;
-                    WorkshopTaskCard choice(std::move(*card));
-                    choice.condition_choice = draw.native_caller !=
-                        native_reference_address(native_base, 0xfd11ed);
+                    int text_right = std::min(right - 1, gps_->dimx);
+                    int text_bottom = std::min(bottom, gps_->dimy);
+                    if (draw.draw_clip) {
+                        if (draw.x < draw.draw_clip->x || y < draw.draw_clip->y) continue;
+                        text_right = std::min(text_right, draw.draw_clip->x + draw.draw_clip->w);
+                        text_bottom = std::min(text_bottom, draw.draw_clip->y + draw.draw_clip->h);
+                    }
+                    if (text_right <= draw.x || y >= text_bottom) continue;
+                    const size_t length = std::min(draw.source.size(),
+                        static_cast<size_t>(text_right - draw.x));
+                    const auto visible = std::string_view(draw.source).substr(0, length);
+                    NativeTextCard card;
+                    card.interior = {draw.x, y, text_right - draw.x, 1};
+                    constexpr uint32_t upper = 1u << 3, lower = 1u << 4;
+                    bool split = false;
+                    for (int row_y = y; row_y <= y + (split ? 1 : 0) && row_y < text_bottom; ++row_y) {
+                        if (row_y >= static_cast<int>(rows.size())) break;
+                        NativeTextCardRow row{draw.x, row_y, std::string(visible), {}};
+                        bool intact = true, half = true, ink = false;
+                        for (size_t i = 0; i < length; ++i) {
+                            const int x = draw.x + static_cast<int>(i);
+                            bool top = false;
+                            const auto *cell = cell_at(x, row_y, &top);
+                            const size_t at = static_cast<size_t>(x) * gps_->dimy + row_y;
+                            const auto origin = native_text_grid_origin(*gps_, at, top);
+                            const unsigned char expected = static_cast<unsigned char>(visible[i]);
+                            if (!cell || x >= static_cast<int>(rows[row_y].size()) ||
+                                    rows[row_y][x] != static_cast<char>(expected) ||
+                                    (cell[0] ? cell[0] : ' ') != expected ||
+                                    (expected != ' ' && (origin.grid != draw.draw_grid ||
+                                        origin.top_layer != draw.top_layer))) {
+                                intact = false;
+                                break;
+                            }
+                            row.foregrounds.push_back((cell[1] << 16) | (cell[2] << 8) | cell[3]);
+                            if (expected == ' ') continue;
+                            const auto *flags = top ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+                            half = half && flags && (flags[at] & (upper | lower)) ==
+                                (row_y == y ? upper : lower);
+                            ink = true;
+                        }
+                        if (!intact || !ink || (row_y != y && !half)) break;
+                        // Both physical halves retain one complete native
+                        // source. The compositor suppresses the duplicate;
+                        // the neighboring title/status never joins this row.
+                        row.complete_source = draw.complete_source.empty() ? draw.source : draw.complete_source;
+                        card.rows.push_back(std::move(row));
+                        if (row_y == y) split = half;
+                    }
+                    if (card.rows.empty()) continue;
+                    card.interior.h = static_cast<int>(card.rows.size());
+                    WorkshopTaskCard choice(std::move(card));
+                    choice.condition_choice = native_workshop_choice_field(draw.native_caller) !=
+                        NativeWorkshopChoiceField::Title;
+                    choice.native_choice_title = !choice.condition_choice;
                     choices.push_back(std::move(choice));
                     owned = true;
                 }
@@ -1359,6 +1397,8 @@ std::vector<WorkshopTaskCard> Overlay::capture_workshop_task_rows(
 // Own complete task captions and missing-material reasons before generic
 // words can split a generated instrument name from its scoped piece noun.
 // The captured control still supplies geometry, colors and final row layout.
+#include "workshop_choice_translation.inc"
+
 void Overlay::append_workshop_task_translations(const WorkshopTaskCard &card,
         std::vector<std::string> &rows, std::vector<Match> &matches, int only_y) const {
     for (const auto &row : card.rows) {
@@ -1372,6 +1412,7 @@ void Overlay::append_workshop_task_translations(const WorkshopTaskCard &card,
         // flags are semantic constraints, not independent dictionary words.
         TranslationResult result;
         if (card.condition_choice || requirement) result = translate_workshop_recipe_source_display(source);
+        else if (card.native_choice_title) result = translate_workshop_choice_title(source);
         else if (card.category) {
             const auto target = exact_literal_translation(source);
             result = target ? TranslationResult::translated(source, *target, "workshop-category")

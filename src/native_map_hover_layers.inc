@@ -35,6 +35,7 @@ static bool native_map_hover_begin_draw(const SDL_Rect &bounds) {
                 native_private_ui_write_active(gps) || g_native_tooltip_output ||
                 g_native_info_write_graphics || g_native_character_write_graphics ||
                 g_native_stocks_write_graphics || g_native_squads_write_graphics ||
+                g_native_display_write_graphics ||
                 native_notification_write_active(gps) || g_native_pause_write_graphics ||
                 gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||
                 bounds.x < 0 || bounds.y < 0 || bounds.w <= 0 || bounds.h <= 0 ||

@@ -1,0 +1,13 @@
+{
+  "appid": 975370,
+  "title": "DFCN · 地图预览 / Map Preview",
+  "description_file": "workshop/map-preview/description.bbcode.txt",
+  "content_folder": "workshop/map-preview/content",
+  "tags": [
+    "mod",
+    "UI"
+  ],
+  "visibility": 0,
+  "required_items": [3811193379],
+  "changelog": "独立地图预览模组。订阅并下载后，汉化设置中才显示地图预览开关；开启后，在要塞选址界面以原生窗口显示鼠标位置的高程、水系和地貌概览，并标明选址格精度。"
+}

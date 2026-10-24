@@ -3408,6 +3408,7 @@ Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} protec
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but those acts bring no forgiveness.	{s1}也是{s2}，可这些事迹无法让你得到宽恕。	l
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't argue your way out of this.	{s1}是{s2}，可你靠争辩摆脱不了这件事。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} between {s} and {s} concluded, cementing bonds of mutual trust	{s2}与{s3}之间的{s1}结束了，并巩固了相互信任的纽带	l
+Announcement combat fortress-announcement [$unit,noble-position]: After a polite discussion with a local rival, {s} has claimed the position of {s}.	与当地的一位竞争者客气地商谈后，{s1}取得了{s2}之位。	l
 Announcement combat quest-sentence [conversation-conflict-entity]: {s} believes that primordial remnants such as belong back in their rightful home.	{s1}认为，这件神器这样的远古遗存应当回到它们原本的归属之地。	l
 Announcement combat rumor-event [conversation-conflict-entity,$travel-site]: A bandit gang calling itself {s} has been harassing people over in {s}.	有伙土匪自称{s1}，一直在{s2}那边骚扰百姓。	l
 DFHack help: "--duration <ticks>" Set how long the transformation should last, or "forever". If not specified, then the transformation is permanent.	"--duration <ticks>" 设置变换应持续多长时间，或 "forever"。如果未指定，则转换是永久性的。	l
@@ -3490,6 +3491,7 @@ Announcement combat agreement-core [agreement-party-list,$office,$name]: {s} beg
 Announcement combat conversation-choice [conversation-choice-entity,conversation-choice-entity]: Give an order based on {s}'s relationship with {s}	根据{s1}与{s2}的关系下令	l
 Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} also sought out and returned our treasures, though it doesn't much matter	{s1}还曾寻获并归还我们的宝物，可如今这已经没有多少意义了。	l
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but you can't talk your way out of this.	{s1}是{s2}，可你靠花言巧语逃不过这件事。	l
+Announcement combat fortress-announcement [$unit,noble-position]: After a polite discussion with local rivals, {s} has claimed the position of {s}.	与当地的几位竞争者客气地商谈后，{s1}取得了{s2}之位。	l
 Announcement combat rumor-event [$travel-site]: A bandit gang calling itself , led by , has been harassing people right here on the streets of {s}!	有伙土匪自称未具名势力，头目是未具名者，就在{s1}这里的街上骚扰百姓！	l
 Announcement combat rumor-event [rumor-person]: A bandit gang calling itself , led by {s}, has been harassing people right here on the streets of !	有伙土匪自称未具名势力，头目是{s1}，就在未具名地点这里的街上骚扰百姓！	l
 Announcement combat site-rumor-event [$name,$travel-site,$name]: a group calling itself {s} founded {s} after a long journey from the lands of {s}.	自称{s1}的势力从{s3}的领地长途跋涉而来，建立了{s2}。	l
@@ -4350,6 +4352,7 @@ Announcement combat conversation-choice-receive-homage [conversation-choice-enti
 Announcement combat dialogue-judgement [dialogue-judgement-person]: I loathe {s} with every fiber of my being, and now we can all see why.	我从骨子里厌恶{s1}，现在大家都知道原因了。	l
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} {s}, but now this stands between us.	{s1}是{s2}，可如今这件事横在我们之间。	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} between {s} and {s} concluded with miserable outcome	{s2}与{s3}之间的{s1}结束了，结果惨淡	l
+Announcement combat fortress-announcement [noble-position]: After a polite discussion with a local rival, has claimed the position of {s}.	与当地的一位竞争者客气地商谈后，已取得{s1}之位。	l
 Announcement combat sentence [$kinship]: It pains me all the more, for the foul villain was once my own {s}, now twisted into monstrosity.	更让我痛心的是，这个恶徒曾是我的{s1}，如今却已扭曲成怪物。	l
 DFHack help: ""SHAPE": {"-1": "NONE", "0": "EMPTY", "1": "FLOOR", "2": "BOULDERS", "3": "PEBBLES", "4": "WALL", ..., "18": "ENDLESS_PIT"}"	""SHAPE": {"-1": "NONE", "0": "EMPTY", "1": "FLOOR", "2": "BOULDERS", "3": "PEBBLES", "4": "WALL", ..., "18": "ENDLESS_PIT"}"	l
 DFHack help: "--years <num>", "--months <num>", "--days <num>", "--hours <num>" Adds the appropriate number ticks to the timeskip duration	"--years <num>"、"--months <num>"、"--days <num>"、"--hours <num>" 在时间跳跃持续时间中添加适当的刻度数	l
@@ -4442,6 +4445,7 @@ Announcement combat agreement-core [agreement-party-list,agreement-party-list]: 
 Announcement combat conversation-choice [conversation-choice-entity,conversation-choice-entity]: Agree to have {s} accept homage from {s}	同意让{s1}接受{s2}进贡	l
 Announcement combat conversation-choice [conversation-choice-entity,conversation-choice-entity]: Refuse to make peace between {s} and {s}	拒绝让{s1}与{s2}议和	l
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but it means nothing now.	{s1}也是{s2}，可如今这已经没有意义了。	l
+Announcement combat fortress-announcement [noble-position]: After a polite discussion with local rivals, has claimed the position of {s}.	与当地的几位竞争者客气地商谈后，已取得{s1}之位。	l
 Announcement combat fortress-arrival []: Some migrants have decided to brave this terrifying unhappy place, knowing it may be their tomb.	一些移民决定勇闯这片恐怖而不幸的地方，明知这里可能成为他们的坟墓。	l
 Announcement combat historical-event-title [$memorial-actor,$travel-site]: the general suspicion of {s} in {s} after appearing not to age	因看起来不会衰老，{s1}在{s2}受到普遍怀疑	l
 Announcement combat journal-event-title [journal-event-object,journal-event-place,journal-event-place]: The absence of {s} from {s}'s {s}	{s1}从{s2}的{s3}消失	l
@@ -5335,6 +5339,7 @@ Announcement combat conversation-choice [conversation-choice-entity,conversation
 Announcement combat dialogue-battle-death [dialogue-battle-person,conversation-conflict-entity]: {s} was slainby the forces of {s}	{s1}被{s2}的部队杀死了	l
 Announcement combat dialogue-judgement [dialogue-judgement-subject,dialogue-judgement-predicate]: {s} also {s}, but at what price?	{s1}也是{s2}，可代价是什么呢？	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need bag containing powder suitable for cast application.	{s1}取消了{s2}：需要装有适合制作石膏绷带的粉末的袋子。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s}, being the rightful heir, has inherited the position of {s}.	{s1}作为合法继承人，继承了{s2}。	l
 Announcement combat historical-event-paragraph [$date,agreement-record,agreement-followup]: Subject revealed that in {s}, {s}. {s}	受审者交代，{s1}，{s2}。{s3}	l
 Announcement combat negotiation-response []: attempted to read their opposite's underlying motivations as well but was swept along	也试图看透对方的深层动机，却被对方牵着走	l
 Announcement combat negotiation-sentence [negotiation-speaker,negotiation-recipient,negotiation-purpose]: {s} met with {s} to {s}.	{s1}与{s2}会面，目的是{s3}。	l
@@ -6556,6 +6561,7 @@ Announcement combat conversation-choice-person-event [conversation-choice-transf
 Announcement combat conversation-conflict-target [conversation-conflict-caste,conversation-conflict-entity]: a {s} of {s}	{s2}的一只{s1}	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} proposed by {s} was accepted by {s}	{s3}接受了{s2}提出的{s1}	l
 Announcement combat diplomatic-event-core [diplomatic-meeting-topic,$name,$name]: {s} proposed by {s} was rejected by {s}	{s3}拒绝了{s2}提出的{s1}	l
+Announcement combat fortress-announcement [noble-position]: , being the rightful heir, has inherited the position of {s}.	合法继承人已继承{s1}。	l
 Announcement combat justice-interrogation-sentence [$person]: Subject revealed that "{s}" is in fact an assumed identity.	受审者交代，“{s1}”实际上是假身份。	l
 Announcement combat merchant-hawk-origin [merchant-genuine-item,merchant-advert-origin]: your very own {s} clear from {s}	专属于你的远从{s2}运来的{s1}	l
 Announcement combat negotiation-response []: attempted to put their opposite at ease as well but did not ultimately agree	也试着让对方放松下来，但最终仍未同意	l
@@ -6684,6 +6690,7 @@ A gigantic version of the feline predator. Its giant prides can be found in the 
 A small, round humanoid found wandering the caves deep underground. Most of its body is taken up by a huge tusked mouth.	一个小而圆的类人生物，在地底深处的洞穴中游荡。它身体的大部分都被长牙着獠牙的大嘴占据了。	lP
 A tiny aquatic worm-like creature with ten pairs slender legs and seven pairs of protruding rigid spines along its body.	一种微小的水生蠕虫状生物，长有十对纤细的足，身体两侧伸出七对坚硬的棘刺。	lP
 After you embark, help is available by pressing the help button in the top right corner, including all of the tutorials.	启程后，可点击右上角的帮助按钮，查阅包括全部教程在内的帮助内容。	hq
+Announcement combat adventure-announcement [$embark-race-adjective,$memory-entity]: A {s} diplomat from {s} has arrived.	来自{s2}的{s1}外交官已抵达。	l
 Announcement combat adventure-announcement []: Indoors, outdoors. It's all the same to me as long as the weather's fine.	室内也好，室外也好。只要天气不错，对我来说都一样。	l
 Announcement combat adventure-announcement []: No one else even considered making the journey to this cursed death-trap.	其他人连前往这个受诅咒的死亡陷阱的念头都没有。	l
 Announcement combat adventure-announcement []: You'll have the room for another day. I'm glad you're enjoying your stay.	这间房会再为你留一天。很高兴你在这里住得愉快。	l
@@ -7935,6 +7942,7 @@ Announcement combat conversation-choice [conversation-choice-place]: Suggest tra
 Announcement combat dialogue-judgement [dialogue-judgement-achiever]: {s} sought out and returned our treasures.	{s1}曾寻获并归还我们的宝物。	l
 Announcement combat dialogue-judgement-predicate []: one of the most loyal soldiers to serve anybody at any time	古往今来最忠诚的士兵之一	l
 Announcement combat embark-revisit-heading [$embark-race-adjective]: A {s} Outpost Revisited: You have returned.	重访{s1}前哨：你回来了。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has been appointed to the position of {s}.	{s1}被任命为{s2}。	l
 Announcement combat fortress-arrival []: Others were too nervous to make the journey to this miserable fortress.	其他人因太过害怕，未敢踏上前往这座悲惨要塞的旅途。	l
 Announcement combat fortress-arrival []: Some migrants have arrived at this miserable place, despite the danger.	一些移民不顾危险，来到了这个悲惨的地方。	l
 Announcement combat journal-event-title [journal-event-place,journal-event-entity]: The occupation of {s} by {s}	{s2}占领{s1}	l
@@ -8284,6 +8292,7 @@ Announcement combat attack-notice []: Forms twisted from their nature, legion of
 Announcement combat conversation-choice [conversation-choice-role]: Give report pertaining to service as a {s}	汇报担任{s1}期间的事务	l
 Announcement combat dialogue-judgement [dialogue-judgement-person,dialogue-judgement-person]: {s} bullied {s}.	{s1}曾欺凌{s2}。	l
 Announcement combat dialogue-judgement [dialogue-judgement-person]: I loathe {s} with every fiber of my being.	我从骨子里厌恶{s1}。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has been elected to the position of {s}.	{s1}被选举为{s2}。	l
 Announcement combat fortress-arrival []: Migrants refused to journey to such a dangerous fortress this season.	本季移民拒绝前往这样一座危险的要塞。	l
 Announcement combat fortress-arrival []: Others were too nervous to make the journey to this unhappy fortress.	其他人因太过害怕，未敢踏上前往这座不幸要塞的旅途。	l
 Announcement combat fortress-arrival []: Some migrants have arrived at this unhappy place, despite the danger.	一些移民不顾危险，来到了这个不幸的地方。	l
@@ -8780,6 +8789,7 @@ Announcement combat adventure-announcement [$announcement-item]: You have finish
 Announcement combat adventure-announcement [$unit,$announcement-item]: {s} maintains possession of the {s}.	{s1}仍控制着{s2}。	l
 Announcement combat adventure-announcement []: A towering gray cloud descends from the white sky above you.	一团高耸的灰云从你头顶的白色天空中向下延伸。	l
 Announcement combat adventure-announcement []: You've assumed tactical control as nobody else is available.	由于没有其他人可用，你已接管战术控制。	l
+Announcement combat adventure-announcement [noble-arrival-role,$memory-entity]: A {s} from {s} has arrived.	来自{s2}的{s1}已抵达。	l
 Announcement combat agreement-conclusion-title [agreement-item,$name]: an agreement to retrieve {s} for {s}	一项为{s2}取回{s1}的协议	l
 Announcement combat agreement-core [agreement-party-list,$historical-actor]: {s} plotted to assassinate {s}	{s1}密谋刺杀{s2}	l
 Announcement combat agreement-core [agreement-party-list,$name,$name]: joined with {s} to oust {s} from {s}	与{s1}同行，将{s2}逐出{s3}	l
@@ -9714,7 +9724,10 @@ Announcement combat conversation-conflict-context [rumor-time,conversation-confl
 Announcement combat dialogue-battle-death [dialogue-battle-person,$creature]: {s} was slainby a {s} of	{s1}被未具名势力的一只{s2}杀死了	l
 Announcement combat dialogue-judgement [dialogue-judgement-person]: {s} brought back an untitled work.	{s1}曾带回一部无题作品。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Experiencing emotional shock.	{s1}取消了{s2}：受到情感冲击。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has assumed the position of {s}.	{s1}就任了{s2}。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has claimed the position of {s}.	{s1}取得了{s2}之位。	l
 Announcement combat fortress-announcement [$unit]: {s} has mandated the construction of certain goods.	{s1}下令制作某些物品。	l
+Announcement combat fortress-announcement [noble-position]: has been appointed to the position of {s}.	已被任命为{s1}。	l
 Announcement combat fortress-arrival []: A migrant has decided to brave this terrifying unhappy place.	一名移民决定勇闯这个恐怖而不幸的地方。	l
 Announcement combat journal-event [journal-calendar-date,$person]: You heard this on the {s} from {s}.	你在{s1}从{s2}那里听说了这件事。	l
 Announcement combat journal-event-title [journal-event-entity]: The failed insurrection against {s} in	反抗{s1}的起义失败	l
@@ -9904,6 +9917,7 @@ A relatively large lizard. It can be found in most climates, foraging for bugs d
 A small arthropod person with pronounced eyes and two grasping appendages protruding from their face.	一种小型节肢类人形生物，眼睛突出，面部长有两条用于抓取的附肢。	lP
 Announcement combat adventure-announcement [$announcement-item,$body]: The {s} is torn from your {s}.	{s1}被从你的{s2}中扯了出来。	l
 Announcement combat adventure-announcement [$announcement-item,$unit]: You begin to throw {s} at {s}.	你开始向{s2}投掷{s1}。	l
+Announcement combat adventure-announcement [$embark-race-adjective]: A {s} diplomat from has arrived.	一位{s1}外交官已抵达。	l
 Announcement combat adventure-announcement [$unit,$unit]: {s} and {s} have married.  Congratulations!	{s1}和{s2}结婚了。恭喜！	l
 Announcement combat adventure-announcement [$unit]: The citizenship petition of {s} has been ignored.	{s1}的公民资格申请未获理会。	l
 Announcement combat adventure-announcement [$unit]: {s} can be heard howling throughout the fortress!	整个要塞都能听到{s1}的嚎叫！	l
@@ -10146,6 +10160,7 @@ Announcement combat dialogue-judgement [dialogue-judgement-unpunctuated,dialogue
 Announcement combat diplomacy-cause []: a dispute over the devouring of the bodies of sapient beings	对吞食智慧生物的尸体存在争议	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Getting something to drink.	{s1}取消了{s2}：正在找东西喝。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Job item lost or destroyed.	{s1}取消了{s2}：工作物品丢失或损毁。	l
+Announcement combat fortress-announcement [noble-position]: has been elected to the position of {s}.	已被选举为{s1}。	l
 Announcement combat fortress-arrival [$mission-return-party,$history-report]: {s} have returned. {s}	{s1}回来了。{s2}	l
 Announcement combat journal-entity-event [journal-event-entity]: refusal of {s}'s demand for tribute	拒绝{s1}的进贡要求	l
 Announcement combat journal-person [$memory-entity]: This person is one of the of {s} alongside you.	此人与你同为{s1}的成员。	l
@@ -11900,6 +11915,7 @@ Announcement combat activity-detail-sentence [work-reference]: The topic being t
 Announcement combat adventure-announcement [$announcement-item]: {s} is already loaded with .	{s1}已经装好了。	l
 Announcement combat adventure-announcement [$announcement-item]: {s} is already nocked with .	{s1}已经搭好了。	l
 Announcement combat adventure-announcement [$announcement-terrain]: You fail to grab the {s}!	你没能抓住{s1}！	l
+Announcement combat adventure-announcement [$memory-entity]: A diplomat from {s} has arrived.	来自{s1}的外交官已抵达。	l
 Announcement combat adventure-announcement []: A migrant has arrived at this miserable place.	一名移民来到了这个悲惨的地方。	l
 Announcement combat adventure-announcement []: It has always been my dream to start a family.	组建家庭一直是我的梦想。	l
 Announcement combat adventure-announcement []: Thank you for preserving our legacy of wisdom.	感谢你保护我们传承的智慧。	l
@@ -11943,6 +11959,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Nothing
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Patient not resting.	{s1}取消了{s2}：病患没有休息。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Target inaccessible.	{s1}取消了{s2}：无法接近目标。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Wrong justice state.	{s1}取消了{s2}：司法状态不对。	l
+Announcement combat fortress-announcement []: has mandated the construction of certain goods.	已下令制作某些物品。	l
 Announcement combat journal-artifact [journal-artifact-state]: It was last rumored to be {s}.	最近传闻：{s1}。	l
 Announcement combat journal-event-title [journal-event-place]: The failed insurrection in {s}	{s1}的起义失败	l
 Announcement combat journal-incident-event [journal-event-entity]: refusal to identify to {s}	拒绝向{s1}透露身份	l
@@ -12226,6 +12243,8 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No targ
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Removed from guard.	{s1}取消了{s2}：已被调离警卫队。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Target too injured.	{s1}取消了{s2}：目标伤势过重。	l
 Announcement combat fortress-announcement [$unit]: {s} has imposed a ban on certain exports.	{s1}禁止出口某些物品。	l
+Announcement combat fortress-announcement [noble-position]: has assumed the position of {s}.	已就任{s1}。	l
+Announcement combat fortress-announcement [noble-position]: has claimed the position of {s}.	已取得{s1}之位。	l
 Announcement combat fortress-arrival []: Others refused to journey to this unhappy fortress.	其他人拒绝前往这座不幸的要塞。	l
 Announcement combat fortress-arrival []: Some migrants have arrived at this miserable place.	一些移民来到了这个悲惨的地方。	l
 Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Limestone in the year {s}	第{s2}年石灰岩月{s1}日	l
@@ -12574,6 +12593,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Item in
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Need empty bucket.	{s1}取消了{s2}：需要空桶。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No bucket at well.	{s1}取消了{s2}：水井没有水桶。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No food available.	{s1}取消了{s2}：没有可用的食物。	l
+Announcement combat fortress-announcement [$unit,noble-position]: {s} has been elected {s}.	{s1}已当选为{s2}。	l
 Announcement combat fortress-arrival [$mission-return-party]: {s} and others have returned.	{s1}等人回来了。	l
 Announcement combat historical-event-paragraph [$date,historical-squad-clash]: In {s}, {s}.	{s1}，{s2}。	l
 Announcement combat journal-calendar-date [$digits,$digits]: {s}nd Hematite in the year {s}	第{s2}年赤铁矿月{s1}日	l
@@ -13497,6 +13517,7 @@ Announcement combat adventure-announcement []: Why are they so fixated on these 
 Announcement combat adventure-announcement []: You are surrounded by incessant cackling.	你被持续不断的怪笑声包围了。	l
 Announcement combat adventure-announcement []: You have disturbed the sleep of the dead!	你惊扰了死者的长眠！	l
 Announcement combat adventure-announcement []: You shouldn't waste your life on revenge.	不该把一生浪费在复仇上。	l
+Announcement combat adventure-announcement [noble-arrival-role]: A {s} from has arrived.	{s1}已抵达。	l
 Announcement combat adventure-announcement [profession-change-result]: has become a {s}.	已成为{s1}。	l
 Announcement combat agreement-conclusion-title []: an agreement to establish a guildhall	一项建立行会大厅的协议	l
 Announcement combat agreement-core []: made an agreement with to entertain the citizenry	与达成协议，以便为居民表演	l
@@ -14838,6 +14859,7 @@ A very large dinosaur person with a mighty jaw and very short arms with two fing
 Alcohol is also sufficient but may not be as easy to come by as it is in a fortress.	酒也能解渴，但可能不像在要塞里那样容易获得。	hq
 Although my own insignificant beliefs lie elsewhere, I admire how brilliant you are!	虽说我有点不值一提的不同看法，但我佩服你的聪明才智！	hPD
 Announcement combat adventure-announcement [$announcement-item]: The {s} is too hot.	{s1}太烫了。	l
+Announcement combat adventure-announcement [$memory-entity]: A from {s} has arrived.	来自{s1}的使者已抵达。	l
 Announcement combat adventure-announcement [$unit]: {s} begins to stalk and brood...	{s1}开始阴森地踱步、沉思……	l
 Announcement combat adventure-announcement [$unit]: {s} has been blessed with a pet!	{s1}受到祝福，获赐了一只宠物！	l
 Announcement combat adventure-announcement [$unit]: {s} has been found dead, frozen.	{s1}被发现时，已经冻死了。	l
@@ -15272,6 +15294,7 @@ Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Oblivio
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Paralyzed.	{s1}取消了{s2}：麻痹。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Terrified.	{s1}取消了{s2}：极度恐惧。	l
 Announcement combat fortress-announcement [$unit]: {s} has been missing for a week.	{s1}已经失踪一周。	l
+Announcement combat fortress-announcement []: has imposed a ban on certain exports.	已禁止出口某些物品。	l
 Announcement combat fortress-arrival []: A migrant has arrived, despite the danger.	一名移民不顾危险，抵达了这里。	l
 Announcement combat head [unit,owned-object,owned-object]: {s} pinches {s} with {s}	{s1}用{s3}掐{s2}	l
 Announcement combat historical-clash-outcome [$number]: slaying them and losing {s}	全歼对方，己方阵亡{s1}	l
@@ -15567,6 +15590,7 @@ A very large dinosaur person with a tail club, an armored carapace and four horn
 Announcement combat adventure-announcement [$announcement-item]: You lick the {s}.	你舔了舔{s1}。	l
 Announcement combat adventure-announcement [$announcement-item]: You pull out {s}.	你拔出了{s1}。	l
 Announcement combat adventure-announcement [$announcement-item]: You take off {s}.	你脱下了{s1}。	l
+Announcement combat adventure-announcement [$memory-entity]: from {s} has arrived.	来自{s1}的联络员已抵达。	l
 Announcement combat adventure-announcement [$unit]: You fail to mount {s} in time.	你没能及时骑上{s1}。	l
 Announcement combat adventure-announcement [$unit]: {s} has been drained of blood!	{s1}被吸干了血！	l
 Announcement combat adventure-announcement [$unit]: {s} has been found solidified.	{s1}被发现时，已经凝固而死。	l
@@ -16044,6 +16068,7 @@ Announcement combat dialogue-stock [dialogue-stock-item,dialogue-stock]: {s}, {s
 Announcement combat embark-outpost-label [$embark-race-adjective]: A {s} Outpost:	一座{s1}前哨：	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: No item.	{s1}取消了{s2}：没有物品。	l
 Announcement combat fortress-announcement [$unit,$job]: {s} cancels {s}: Too sad.	{s1}取消了{s2}：过于悲伤。	l
+Announcement combat fortress-announcement [noble-position]: has been elected {s}.	已当选为{s1}。	l
 Announcement combat head [unit,owned-object,owned-object]: {s} bends {s} with {s}	{s1}用{s3}弯折{s2}	l
 Announcement combat head [unit,owned-object,owned-object]: {s} gouge {s} with {s}	{s1}用{s3}挖{s2}	l
 Announcement combat head [unit,owned-object,owned-object]: {s} pinch {s} with {s}	{s1}用{s3}掐{s2}	l
@@ -17206,6 +17231,7 @@ Announcement combat dialogue-judgement-subject [dialogue-query-person]: {s} is	{
 Announcement combat diplomacy-cause []: a dispute over the treatment of plants	对待植物的方式存在争议	l
 Announcement combat diplomatic-meeting-topic []: a strengthening of trade ties	加强贸易关系	l
 Announcement combat fortress-announcement [$unit]: {s} has forgotten a demand.	{s1}忘记了一项要求。	l
+Announcement combat fortress-announcement []: has altered the prices of goods.	已调整物品价格。	l
 Announcement combat historical-event-title [agreement-title,$date]: {s} in {s}	{s2}的{s1}	l
 Announcement combat injury [injury-subject,injury-condition]: {s} has been {s}	{s1}遭到{s2}	l
 Announcement combat injury [injury-subject]: {s} has been opened by the attack	{s1}被攻击撕开了	l
@@ -18014,6 +18040,7 @@ Affects charging, your combat opportunities, and enemy combat opportunities.	影
 Announcement combat activity-detail-section [activity-detail-section]: a {s}	{s1}	l
 Announcement combat activity-detail-sentence [$book]: {s} is an example of .	《{s1}》的艺术形式未注明。	l
 Announcement combat activity-detail-sentence []: The topic being taught is .	正在讲授的主题未注明。	l
+Announcement combat adventure-announcement [$office]: No {s}? How curious...	没有{s1}？真奇怪……	l
 Announcement combat adventure-announcement [$unit,$unit]: {s} paralyzes {s}!	{s1}使{s2}瘫痪！	l
 Announcement combat adventure-announcement [$unit]: {s} appears unconvinced.	{s1}似乎还不信服。	l
 Announcement combat adventure-announcement [$unit]: {s} appears unperturbed.	{s1}看上去毫不在意。	l
@@ -18451,6 +18478,7 @@ Announcement combat adventure-announcement [$unit]: {s} raises a heavy fog!	{s1}
 Announcement combat adventure-announcement [$unit]: {s} raises a heavy fog.	{s1}唤来一片浓雾。	l
 Announcement combat adventure-announcement [$unit]: {s} waves dismissively!	{s1}不屑地挥了挥手！	l
 Announcement combat adventure-announcement [$unit]: {s} waves dismissively.	{s1}不屑地挥了挥手。	l
+Announcement combat adventure-announcement []: A diplomat from has arrived.	一位外交官已抵达。	l
 Announcement combat adventure-announcement []: Accept the loss and move on.	接受损失，继续前行。	l
 Announcement combat adventure-announcement []: Do not hold on for too long.	不要执着太久。	l
 Announcement combat adventure-announcement []: Do you have a story to tell?	你有什么故事要讲吗？	l
@@ -19360,6 +19388,7 @@ A small myriapod, though very large for a myriapod. It feeds on detritus.	一种
 A tiny diving bird found living on seaside cliffs in the colder climates.	一种在气候寒冷的海边悬崖上发现的小型潜鸟。	lP
 Adventure item action: Path to here (no climbing/jumping) ({d} levels up)	前往此处（不攀爬或跳跃，上方{d}层）	h
 Announcement combat adventure-announcement [$unit,$unit]: {s} mounts {s}.	{s1}骑上了{s2}。	l
+Announcement combat adventure-announcement [$unit]: {s} from has arrived.	{s1}已抵达。	l
 Announcement combat adventure-announcement [$unit]: {s} has gone berserk!	{s1}发狂了！	l
 Announcement combat adventure-announcement [$unit]: {s} is following you!	{s1}正在跟随你！	l
 Announcement combat adventure-announcement []: A great sadness is coming.	巨大的悲伤即将降临。	l
@@ -19406,6 +19435,7 @@ Announcement combat dialogue-judgement-predicate []: my former apprentice	我以
 Announcement combat dialogue-judgement-predicate []: somewhat quarrelsome	有些好争吵的人	l
 Announcement combat dialogue-judgement-predicate []: such a loyal soldier	如此忠诚的士兵	l
 Announcement combat diplomacy-cause []: prior aggression by the adversary	对方此前的侵略	l
+Announcement combat fortress-announcement [$unit]: {s} has been elected .	{s1}已当选。	l
 Announcement combat fortress-arrival [$history-report]: has returned. {s}	回来了。{s1}	l
 Announcement combat injury-subject [injury-subject,$body]: {s} in the {s}	{s2}内的{s1}	l
 Announcement combat journal-artifact-location [travel-actor]: held by {s}	由{s1}持有	l
@@ -20327,6 +20357,7 @@ Announcement combat merchant-origin []: the settlements out to the west	西方�
 Announcement combat negotiation-purpose []: make contact and open trade	建立联系并开展贸易	l
 Announcement combat negotiation-response []: intimidated their opposite	威吓了对方	l
 Announcement combat negotiation-response []: made a persuasive argument	提出了有说服力的论点	l
+Announcement combat noble-position [$office,$memory-entity]: {s} of {s}	{s2}的{s1}	l
 Announcement combat quest-holder [conversation-conflict-entity]: of {s}	{s1}的一员	l
 Announcement combat quest-report [quest-sentence,quest-report]: {s} {s}	{s1}{s2}	l
 Announcement combat quest-sentence []: I desire that be returned to me.	我希望能把这件神器归还给我。	l
@@ -21388,6 +21419,8 @@ Announcement combat diplomacy-cause []: a dispute over fishing rights	捕鱼权�
 Announcement combat diplomacy-cause []: a dispute over grazing rights	放牧权争议	l
 Announcement combat diplomatic-meeting-topic []: a declaration of war	宣战	l
 Announcement combat equipment [weapon-part,equipment]: the {s} of {s}	{s2}的{s1}	l
+Announcement combat fortress-announcement []: 's mandates have ended.	多项法令已结束。	l
+Announcement combat fortress-announcement []: has forgotten a demand.	已忘记一项要求。	l
 Announcement combat guard-building []: the fruit and vegetable market	果蔬市场	l
 Announcement combat journal-entity-event []: march to found a site in	的建城远征	l
 Announcement combat journal-incident-event []: refusal to identify to	拒绝透露身份	l
@@ -22428,6 +22461,7 @@ Announcement combat dialogue-object []: the object I can't remember	我记不起
 Announcement combat diplomacy-cause []: a dispute over truthfulness	对是否诚实存在争议	l
 Announcement combat diplomacy-cause []: a dispute over water rights	用水权争议	l
 Announcement combat diplomatic-meeting-topic []: a lumber agreement	伐木协议	l
+Announcement combat fortress-announcement []: 's mandate has ended.	一项法令已结束。	l
 Announcement combat guard-building []: the imported clothing market	进口服装市场	l
 Announcement combat historical-clash-outcome [$number]: slaying {s}	击杀对方{s1}	l
 Announcement combat journal-crime []: crime of attempted kidnapping	绑架未遂	l
@@ -22453,6 +22487,7 @@ Announcement combat memory-sermon-topic [memory-value-insight]: {s}	{s1}	l
 Announcement combat merchant-hawk-item [merchant-genuine-item]: {s}	{s1}	l
 Announcement combat negotiation-purpose []: improve trade relations	改善贸易关系	l
 Announcement combat negotiation-sentence [$historical-actor]: {s} .	{s1}……。	l
+Announcement combat noble-arrival-role [$attack-creature-role]: {s}	{s1}	l
 Announcement combat quest-sentence []: Last I saw, it was held by .	我最后见到它时，它由身份未记载的人保管。	l
 Announcement combat quest-sentence []: requires it to be a proper .	有人需要它，才能名副其实地担任这一职位。	l
 Announcement combat rumor-event []: I hear that has been conquered.	听说未具名地点已经被征服了。	l
@@ -22965,6 +23000,7 @@ Announcement combat adventure-announcement [$unit]: {s} licks you.	{s1}舔了舔
 Announcement combat adventure-announcement [$unit]: {s} stands up.	{s1}起身了。	l
 Announcement combat adventure-announcement [$unit]: {s} stuns you!	{s1}使你眩晕！	l
 Announcement combat adventure-announcement [$unit]: {s} tusks you.	{s1}用獠牙轻碰你。	l
+Announcement combat adventure-announcement []: A from has arrived.	一位使者已抵达。	l
 Announcement combat adventure-announcement []: A reckoning awaits.	清算终将到来。	l
 Announcement combat adventure-announcement []: Are in a foul mood?	心情不好吗？	l
 Announcement combat adventure-announcement []: Begin an adventure.	开始一场冒险。	l
@@ -22974,6 +23010,7 @@ Announcement combat adventure-announcement []: Huh? What was that?	嗯？刚才�
 Announcement combat adventure-announcement []: I am very confused.	我非常困惑。	l
 Announcement combat adventure-announcement []: I'll show you calm!	我让你见识一下什么叫冷静！	l
 Announcement combat adventure-announcement []: Maybe you're right.	也许你是对的。	l
+Announcement combat adventure-announcement []: No ? How curious...	没有人担任这一职位？真奇怪……	l
 Announcement combat adventure-announcement []: Peace is cherished.	和平受到珍视。	l
 Announcement combat adventure-announcement []: See to your legacy.	考虑自己留给后世的东西。	l
 Announcement combat adventure-announcement []: The poem continues.	诗歌朗诵还在继续。	l
@@ -23015,6 +23052,8 @@ Announcement combat diplomatic-meeting-topic []: a peace agreement	和平协议	
 Announcement combat diplomatic-meeting-topic []: a trade agreement	贸易协议	l
 Announcement combat diplomatic-meeting-topic []: a vague agreement	一项未明确内容的协议	l
 Announcement combat fortress-announcement []: A mandate has ended.	一项法令已结束。	l
+Announcement combat fortress-announcement []: has been re-elected.	已再次当选。	l
+Announcement combat fortress-announcement []: has ended a mandate.	已结束一项法令。	l
 Announcement combat historical-clash-outcome [$number]: losing {s}	己方阵亡{s1}	l
 Announcement combat injury [injury-subject]: {s} have been severed	{s1}被切断了	l
 Announcement combat journal-crime []: export prohibition violation	违反出口禁令	l
@@ -24093,6 +24132,7 @@ Announcement combat adventure-announcement []: Uhh... nevermind.	呃……算了
 Announcement combat adventure-announcement []: What an odd glow!	多么奇怪的光芒！	l
 Announcement combat adventure-announcement []: You are forgiven.	你得到了原谅。	l
 Announcement combat adventure-announcement []: You make nothing.	你什么也没做出来。	l
+Announcement combat adventure-announcement []: from has arrived.	一位联络员已抵达。	l
 Announcement combat agreement-conclusion-title []: bound service	被迫效力的关系	l
 Announcement combat agreement-party []: an unidentified creature	身份不明的生物	l
 Announcement combat agreement-party-list [agreement-party]: {s},	{s1}、	l
@@ -24119,6 +24159,7 @@ Announcement combat dialogue-judgement-predicate []: my neighbor	我的邻居	l
 Announcement combat dialogue-judgement-predicate []: my prisoner	我的囚犯	l
 Announcement combat diplomacy-cause []: a dispute over territory	领土争议	l
 Announcement combat evasion [subject-pronoun]: {s} scramble away	{s1}连滚带爬地躲开了	l
+Announcement combat fortress-announcement []: has been elected .	已当选。	l
 Announcement combat guard-building []: the imported goods market	进口商品市场	l
 Announcement combat historical-battle-location []: unknown lands	未知之地	l
 Announcement combat historical-clash-outcome []: losing everyone	己方全军覆没	l
@@ -24742,6 +24783,7 @@ Announcement combat dialogue-query-person []: a secret identity	秘密身份	l
 Announcement combat dialogue-recognition [dialogue-family]: {s}	{s1}	l
 Announcement combat diplomacy-cause []: a previous insurrection	此前的一场起义	l
 Announcement combat diplomacy-groups [$name,$name]: {s} and {s}	{s1}和{s2}	l
+Announcement combat fortress-announcement []: has a new demand.	提出了一项新要求。	l
 Announcement combat fortress-arrival []: A migrant has arrived.	一名移民抵达了。	l
 Announcement combat guard-building []: a clothing imports store	进口服装店	l
 Announcement combat guard-building []: the imported food market	进口食品市场	l
@@ -25477,6 +25519,7 @@ Announcement combat memory-sentence [memory-made]: I made {s}.	交到了{s1}。	
 Announcement combat memory-sentence [memory-performance]: {s}.	{s1}。	l
 Announcement combat memory-sentence [memory-work]: I read {s}.	读了{s1}。	l
 Announcement combat negotiation-opening []: argue persuasively	据理说服对方	l
+Announcement combat noble-position [$office,$name]: {s} of {s}	{s2}的{s1}	l
 Announcement combat owned-object [owner,$combat-item]: {s} {s}	{s1}{s2}	l
 Announcement combat quest-destination [quest-building]: {s} in	{s1}（地点未记载）	l
 Announcement combat quest-sentence []: Last I heard, I had it.	我最后听说，它由我保管。	l
@@ -26932,6 +26975,7 @@ Announcement combat merchant-advert-origin [$name]: fair {s}	美丽的{s1}	l
 Announcement combat merchant-origin []: the surrounding area	周边地区	l
 Announcement combat negotiation-opening []: negotiate calmly	冷静地谈判	l
 Announcement combat negotiation-purpose []: seek an alliance	寻求结盟	l
+Announcement combat noble-arrival-role [$memorial-item]: {s}	{s1}	l
 Announcement combat quest-holder [$historical-actor]: {s} of	{s1}	l
 Announcement combat read-announcement []: It has no writing.	上面没有文字。	l
 Announcement combat rumor-event []: This insidious evil is .	这个阴险的恶徒身份不明。	l
@@ -27741,6 +27785,7 @@ Announcement combat memory-sentence []: and I are divorced.	我跟未具名者�
 Announcement combat memory-work []: an untitled composition	一部没起名的作品	l
 Announcement combat merchant-genuine-item [$item]: real {s}	货真价实的{s1}	l
 Announcement combat negotiation-sentence []: The proposal .	这项提案……。	l
+Announcement combat noble-position [$memory-entity]: of {s}	{s1}的职务	l
 Announcement combat read-announcement [$inscription]: "{s}"	“{s1}”	l
 Announcement combat reference-kind [$creature]: ghostly {s}	幽灵形态的{s1}	l
 Announcement combat rumor-event [$book]: I do not have {s}.	{s1}不在我手里。	l
@@ -35182,6 +35227,7 @@ Announcement combat memory-sentence []: I murdered .	我杀害了未具名者。
 Announcement combat memory-value []: martial prowess	武艺	l
 Announcement combat merchant-address []: my good man	好先生	l
 Announcement combat merchant-people [$creature]: {s}	{s1}	l
+Announcement combat noble-position [$office]: {s} of	{s1}	l
 Announcement combat quest-building []: the catacombs	地下墓穴	l
 Announcement combat quest-position [$office]: {s} of	{s1}	l
 Announcement combat read-announcement []: You read .	你进行了阅读。	l
@@ -37781,6 +37827,7 @@ Announcement combat memory-sentence []: attacked .	未具名者袭击了未具�
 Announcement combat memory-value []: craftsmanship	工艺	l
 Announcement combat memory-value []: introspection	自省	l
 Announcement combat merchant-address []: my friend	朋友	l
+Announcement combat noble-position [$name]: of {s}	{s1}的职务	l
 Announcement combat quest-building []: a guildhall	行会大厅	l
 Announcement combat quest-building []: a mead hall	蜜酒大厅	l
 Announcement combat reference-value []: friendship	友情	l
@@ -39180,6 +39227,7 @@ Announcement combat memory-value []: independence	独立	l
 Announcement combat memory-value []: leisure time	闲暇	l
 Announcement combat memory-value []: perseverance	坚韧	l
 Announcement combat memory-value []: self-control	自律	l
+Announcement combat noble-position [$office]: {s}	{s1}	l
 Announcement combat quest-building []: a hospital	医院	l
 Announcement combat quest-building []: the sewers	下水道	l
 Announcement combat quest-position [$office]: {s}	{s1}	l
@@ -42897,6 +42945,7 @@ This singer. How can I even describe the skill?	这位歌手的技艺，我简�
 Victory was spread among {c} winners during {e}	在{e1}期间，共有{c1}名参赛者共同获得了胜利	ht
 Victory was spread among {c} winners within {p}	在{p1}，共有{c1}名参赛者共同获得了胜利	ht
 Workshop mood material: blocks... bricks......"	砖块……砌块……	l
+Workshop task choice: suffix (engrave memorial)	（雕刻纪念铭文）	l
 World site action: Belongs to your civilization	属于你的政权	hi
 You are hereby charged to retrieve {b} for {e}.	现命你为{e1}取回{b1}。	hPtD
 You are in the middle of improvised music, {e}.	你正在以{e1}的形式即兴演奏。	hPt
@@ -53128,6 +53177,9 @@ wrongfully convicted {n} of {s} within {p}.	在{p1}错误地判定{n1}犯有{s1}
 "Let there be peace throughout the world."	“愿世界处处安宁。”	l
 "There's no room for mercy in this world."	“这世界容不下仁慈。”	l
 "They are so full of all those big words."	“他们满口都是装腔作势的大词。”	l
+A ballista's orientation cannot be changed	弩炮一经放置，	hP
+A bolt thrower can be freely turned by the	弩箭投射器可由操作员自由转向。	hP
+A catapult's orientation cannot be changed	投石机一经放置，	hP
 A horned person with the head of a muskox.	一种长着麝牛角和头的人形生物。	lP
 A huge hairless mammal with a forked horn.	一种巨大而无毛的哺乳动物，长有一根分叉的角。	lP
 A huge monster in the form of an aardvark.	一只巨大的食蚁兽怪。	lP
@@ -56991,6 +57043,7 @@ Announcement combat decay []: decomposing	正在腐烂的	l
 Announcement combat material [$term]: {s}	{s1}	l
 Announcement combat memory-death []: died	死了	l
 Announcement combat memory-person []: you	你	l
+Announcement combat noble-position []: of	职务	l
 Announcement combat quest-holder []: I of	我	l
 Announcement combat quest-position []: of	职位	l
 Announcement combat rumor-army []: led by	（由未具名者率领）	l
@@ -60006,9 +60059,6 @@ Toggle whether the squad will train here.	切换此小队是否在这里训练�
 Travel building: Imported clothing market	进口服装市场	wi
 UNABLE TO PLACE CONTROLLABLE CIVILIZATION	无法放置可操控政权	hP
 Unit profession: dwarf elite marksdwarves	精英矮人弩手	wi
-Unit profession: dwarf elite bowdwarves	精英矮人弓手	wi
-Unit profession: dwarf elite marksdwarf	精英矮人弩手	wi
-Unit profession: dwarf elite bowdwarf	精英矮人弓手	wi
 Use Ctrl+p to play back a recorded macro.	使用 Ctrl+P 回放已录制的宏。	l
 Verbally struggle against great pessimism	说出你与强烈悲观的抗争	hP
 Visitor overview purpose separator: comma	、	hl
@@ -60023,6 +60073,7 @@ Workshop recipe: body capability tannable	生皮	l
 Workshop recipe: format state -containing	装有{s}	l
 Workshop recipe: state offering placement	用于摆放供品	l
 Workshop recipe: state plaster-containing	装有石膏	l
+Workshop task choice: suffix (opens menu)	（打开菜单）	l
 World site action: Not under your control	不受你控制	hi
 You are a {s} in {s}, a human hamlet, and	你是一名{s}，居住在{s}的人类村庄，而且	wtl
 You are in the middle of a sermon on {n}.	你正在围绕{n1}布道。	hPt
@@ -69867,6 +69918,8 @@ This recitation couldn't be much worse.	这场朗诵几乎糟到极点。	hPD
 This {s} player couldn't be much worse.	这位{s1}演奏者几乎糟到极点。	hPtD
 To change the camera's elevation, press	要改变视角所在的高度层，请按	hq
 Travel building: Processed goods market	加工商品市场	wi
+Unit profession: dwarf elite bowdwarves	精英矮人弓手	wi
+Unit profession: dwarf elite marksdwarf	精英矮人弩手	wi
 Vampire migrant fraction (more = safer)	吸血鬼移民比例分母（越高越安全）
 Verbally struggle against great anguish	说出你与强烈痛苦万分的抗争	hP
 Verbally struggle against great despair	说出你与强烈绝望的抗争	hP
@@ -70377,6 +70430,7 @@ masterful gambling of {a} in the wilds.	在荒野中，{a1}精湛的赌博。	ht
 masterfully wrote to a {i} in the wilds	在荒野中以精湛笔法在{i1}上写下了文字	ht
 neither side had a positional advantage	双方均无阵位优势	h
 not have a great aesthetic sensitivity.	没有很强的审美敏感度。	l
+operator. Choose a resting orientation.	请选择待命时的朝向。	hP
 or the whole squad from the Squad menu.	[C:7:0:0]也可以在“[C:5:0:1]小队[C:7:0:0]”菜单中选中整个小队。	hq
 over the latter's romantic relationship	因为后者的恋情	h
 profitable tribute delivery during {e}.	在{e1}期间，获利丰厚的贡品运送。	htEi
@@ -71828,7 +71882,7 @@ Mouse initial scroll repeat delay (ms)	鼠标初始滚动重复延迟（毫秒�
 Move keyboard cursor up and left, fast	键盘光标向上和向左移动,快速	w
 Multiple copies of the timeline found.	发现此时间线的多个副本。	w
 Native Legends age was a time {s}: {s}	{s1}是这样一个时代：{s2}。	ht
-Native Legends collection occurred {s}	发生了{s1}。	ht
+Native Legends collection occurred {s}	开启了{s1}。	ht
 Native Legends final battles of powers	最后的权能强者展开了最后的战斗	h
 Native Legends war livestock ownership	牲畜归属	h
 Native Legends war treaty disagreement	对先前条约的分歧	h
@@ -81046,6 +81100,7 @@ Travel building: Imported food market	进口食品市场	wi
 Travel building: Metal furniture shop	金属家具店	wi
 Travel building: Stone furniture shop	石制家具店	wi
 Travel building: Underground Fortress	地下要塞	wi
+Unit profession: dwarf elite bowdwarf	精英矮人弓手	wi
 Use Ctrl+s to save a macro to a file.	使用 Ctrl+S 将宏保存到文件。	l
 Use these to make scrolls and quires.	用这些材料制作卷轴和稿纸。	hP
 Vanilla Interactions Graphics {d}.{d}	原版互动图像 {d}.{d}	wt
@@ -88387,6 +88442,7 @@ Fortress activity: Make wooden door	制作木制门	li
 Fortress activity: Pickup equipment	拾取装备	li
 Fortress activity: Store owned item	存放私人物品	li
 Fortress activity: Training Session	训练课程	li
+Fortress activity: suffix (Chained)	（被拴住）	li
 Fortress activity: suffix (no item)	（没有物品）	li
 Fortress schedule editor: new order	士兵人数	l
 Go into {e}'s relationship with {e}	详谈{e1}与{e2}的关系	hPt
@@ -98619,6 +98675,7 @@ Fortress activity: Process plants	加工植物	li
 Fortress activity: Pull the lever	拉动控制杆	li
 Fortress activity: Serve Customer	接待顾客	li
 Fortress activity: Trade at depot	在贸易站交易	li
+Fortress activity: suffix (Caged)	（关在笼中）	li
 Fortress guild detail: No workers	没有工人	l
 Fortress guild detail: {d} member	{d}名成员	wtli
 Fortress guild detail: {d} worker	{d}名工人	wtli
@@ -106232,6 +106289,7 @@ Fortress activity: Collect clay	收集黏土	li
 Fortress activity: Collect sand	收集沙	li
 Fortress activity: Collect webs	收集网	li
 Fortress activity: Detail floor	雕刻地板	li
+Fortress activity: Domesticated	已驯化	li
 Fortress activity: Kill various	杀死多个目标	li
 Fortress activity: Make contact	建立联系	li
 Fortress activity: Operate pump	操作泵机	li
@@ -113966,6 +114024,7 @@ Fortress activity: Make mead	酿造蜜酒	li
 Fortress activity: Mercenary	佣兵	li
 Fortress activity: Play with	玩	li
 Fortress activity: Preach on	就{s}布道	li
+Fortress activity: Semi-Wild	半野生	li
 Fortress activity: Socialize	社交	li
 Fortress activity: Take Over	接管	li
 Gladiatory Games during {e}.	在{e1}期间，角斗比赛。	htEi
@@ -114286,6 +114345,7 @@ Very Large Non-Prone Profile	身形很大（未卧倒）	hP
 Very high analytical ability	分析能力很高	wil
 Very high disease resistance	抗病能力很高	wil
 Very high linguistic ability	语言能力很高	wil
+Water wheels are 1x3 or 3x1.	水车占地为 1×3 或 3×1 格。	hP
 We should all work together.	大家应当齐心协力。	hPD
 What do you want to aim for?	你想瞄准哪个部位？	hP
 What do you want to butcher?	你想屠宰什么？	hP
@@ -118912,6 +118972,7 @@ The Thirteenth {e} in {p}.	在{p1}，第十三次{e1}。	htEi
 The Twelfth {e} during {e}	在{e2}期间，第十二次{e1}	htEi
 The Twelfth {e} within {p}	在{p1}，第十二次{e1}	htEi
 The fort will be saved but	要塞将会保存，但	w
+The long side should align	长边应与	hP
 The miner requires a pick.	矿工需要一把鹤嘴锄。	w
 The most important buttons	最重要的按钮	hq
 The sky above you is gray.	你头顶的天空灰蒙蒙的。	hP
@@ -121369,6 +121430,7 @@ ceased to be a {s} in {p}	在{p1}不再担任{s1}	ht
 changed into a {s} at {p}	在{p1}变成了{s1}	ht
 changed into a {s} in {p}	在{p1}变成了{s1}	ht
 chief keepers of the seal	首席掌玺官	hi
+chief keepers of the seal	首席掌玺官	wi
 coconut palm frond blades	椰子树刃叶	wi
 colepiocephale hatchlings	结头龙幼崽	wi
 concluded {e} during {e}.	在{e2}期间结束了{e1}。	ht
@@ -121633,6 +121695,7 @@ respected {a} during {e}.	在{e1}期间尊重{a1}。	ht
 respected {a} within {p}.	在{p1}尊重{a1}。	ht
 rhamphorhynchus hatchling	喙嘴龙幼崽	wi
 royal keepers of the seal	皇家掌玺官	hi
+royal keepers of the seal	皇家掌玺官	wi
 ruled from {p} during {e}	在{e1}期间以{p1}为统治中心	ht
 ruled from {p} within {p}	在{p2}以{p1}为统治中心	ht
 saltwater crocodile woman	咸水鳄人	wi
@@ -123381,6 +123444,7 @@ cave crocodile hatchling	洞穴鳄鱼幼崽	wi
 ceased to be {s} of {p}.	不再担任{p1}的{s1}。	ht
 changed {a} into an {s}.	将{a1}变成了{s1}。	ht
 chief keeper of the seal	首席掌玺官	hi
+chief keeper of the seal	首席掌玺官	wi
 civilizations will need 	供马车通行。	w
 clashed with {a} at {p}.	在{p1}与{a1}发生了冲突。	ht
 clashed with {a} in {p}.	在{p1}与{a1}发生了冲突。	ht
@@ -123503,6 +123567,7 @@ happened upon {a} in {p}	在{p1}偶遇了{a1}	ht
 having a mandate ignored	强令被忽视	wi
 having a request ignored	请求被忽视	wi
 head keepers of the seal	首席掌玺官	hi
+head keepers of the seal	首席掌玺官	wi
 held a dance competition	举行了舞蹈比赛	h
 held a dance during {e}.	在{e1}期间举行了舞会。	ht
 held a dance within {p}.	在{p1}举行了舞会。	ht
@@ -123514,6 +123579,7 @@ held a procession in {p}	在{p1}举行了游行	ht
 here in order to obtain 	骨头和其他动物产品。	w
 here, as well as blocks 	筑的砖块。	w
 high keepers of the seal	高阶掌玺官	hi
+high keepers of the seal	高阶掌玺官	wi
 hypsilophodon hatchlings	棱齿龙幼崽	wi
 impalement on {i} of {a}	将{a1}刺穿在{i1}上	htEi
 impalement on {s} of {a}	将{a1}刺穿在{s1}上	htEi
@@ -123768,6 +123834,7 @@ respected {a} during {e}	在{e1}期间尊重{a1}	ht
 respected {a} within {p}	在{p1}尊重{a1}	ht
 routed {a} in the wilds.	在荒野中击溃了{a1}。	ht
 royal keeper of the seal	皇家掌玺官	hi
+royal keeper of the seal	皇家掌玺官	wi
 searched {p} during {e}.	在{e1}期间搜寻了{p1}。	ht
 searched {p} within {p}.	在{p2}搜寻了{p1}。	ht
 second lower right molar	右下第二臼齿	h
@@ -125423,6 +125490,7 @@ breached {p} during {e}	在{e1}期间突破了{p1}	ht
 breached {p} within {p}	在{p2}突破了{p1}	ht
 brontosaurus hatchlings	雷龙幼崽	wi
 building administrators	建筑管理员	hi
+building administrators	建筑管理员	wi
 buitreraptor hatchlings	鹫龙幼崽	wi
 buried {a} alive at {p}	在{p1}活埋了{a1}	ht
 buried {a} alive in {p}	在{p1}活埋了{a1}	ht
@@ -125441,6 +125509,7 @@ changed {a} into a {s}.	将{a1}变成了{s1}。	ht
 changed {a} into an {s}	将{a1}变成了{s1}	ht
 chestnut pollen catkins	板栗树花粉葇荑花序	wi
 chief masters of beasts	首席兽群总管	hi
+chief masters of beasts	首席兽群总管	wi
 clashed with {a} at {p}	在{p1}与{a1}发生了冲突	ht
 clashed with {a} in {p}	在{p1}与{a1}发生了冲突	ht
 clothesmaking process, 	序。	w
@@ -125598,6 +125667,7 @@ has a very serious tone	基调十分严肃	hv
 has many worshippers in	在以下地点拥有众多信徒：	hP
 hated {a} in the wilds.	在荒野中憎恨{a1}。	ht
 head keeper of the seal	首席掌玺官	hi
+head keeper of the seal	首席掌玺官	wi
 held a ceremony at {p}.	在{p1}举行了仪式。	ht
 held a ceremony in {p}.	在{p1}举行了仪式。	ht
 held a dance during {e}	在{e1}期间举行了舞会	ht
@@ -125611,6 +125681,7 @@ held a {s} race in {p}.	在{p1}举行了{s1}竞速比赛。	ht
 hibbertopterus scouleri	斯氏希伯特鲎	wi
 hide-tutorials (global)	隐藏教程(全局)	w
 high keeper of the seal	高阶掌玺官	hi
+high keeper of the seal	高阶掌玺官	wi
 hunting gigantic pandas	受过狩猎训练的巨型熊猫	wi
 hypothetical syllogisms	假言三段论	h
 hypsilophodon hatchling	棱齿龙幼崽	wi
@@ -125960,6 +126031,7 @@ returned to {p} in {p}.	在{p2}返回了{p1}。	ht
 right frontal appendage	右前附肢	wi
 routed {a} in the wilds	在荒野中击溃了{a1}	ht
 royal masters of beasts	皇家兽群总管	hi
+royal masters of beasts	皇家兽群总管	wi
 rumored treasure hunter	传闻中的宝物猎人	h
 sacred responsibilities	神圣责任	hi
 saltwater crocodile man	咸水鳄人	wi
@@ -127447,7 +127519,9 @@ brawl with {a} in {p}.	在{p1}，与{a1}的斗殴。	htEi
 brilliantly led by {a}	由{a1}出色地率领	ht
 brontosaurus hatchling	雷龙幼崽	wi
 building administrator	建筑管理员	hi
+building administrator	建筑管理员	wi
 building commissioners	建筑专员	hi
+building commissioners	建筑专员	wi
 buitreraptor hatchling	鹫龙幼崽	wi
 burned to death at {p}	在{p1}被烧死了	ht
 burned to death in {p}	在{p1}被烧死了	ht
@@ -127462,6 +127536,7 @@ chaining up a creature	用链条拴住生物	wi
 changed {a} into a {s}	将{a1}变成了{s1}	ht
 chestnut pollen catkin	板栗树花粉葇荑花序	wi
 chief master of beasts	首席兽群总管	hi
+chief master of beasts	首席兽群总管	wi
 claim forbidden items 	物品的可见性。	w
 clothing imports signs	衣服进口招牌	wi
 coffee flower clusters	咖啡花簇	wi
@@ -127658,10 +127733,12 @@ great horned owl women	大角鸮人	wi
 great white shark pups	大白鲨幼崽	wi
 had no respect for {a}	不尊重{a1}	ht
 harvest administrators	收获管理员	hi
+harvest administrators	收获管理员	wi
 hated {a} and refused.	憎恨{a1}，拒绝了对方。	ht
 hated {a} in the wilds	在荒野中憎恨{a1}	ht
 having pleased a noble	让一位贵族满意	wi
 head masters of beasts	首席兽群总管	hi
+head masters of beasts	首席兽群总管	wi
 held a ceremony at {p}	在{p1}举行了仪式	ht
 held a ceremony in {p}	在{p1}举行了仪式	ht
 held a concert at {p}.	在{p1}举行了音乐会。	ht
@@ -127676,6 +127753,7 @@ held the story of {e}.	讲述了{e1}的故事。	ht
 helicoprion hatchlings	旋齿鲨幼崽	wi
 here, as well as most 	数其他金属制品（从家具到陷阱	w
 high masters of beasts	高阶兽群总管	hi
+high masters of beasts	高阶兽群总管	wi
 hunting gigantic panda	受过狩猎训练的巨型熊猫	wi
 hunting kelenken cocks	受过狩猎训练的窃鹤	wi
 implicated {a} at {p}.	在{p1}供出了{a1}。	ht
@@ -128204,6 +128282,7 @@ rhubarb inflorescences	大黄花序	wi
 routed {a} during {e}.	在{e1}期间击溃了{a1}。	ht
 routed {a} within {p}.	在{p1}击溃了{a1}。	ht
 royal master of beasts	皇家兽群总管	hi
+royal master of beasts	皇家兽群总管	wi
 ruled from {p} at {p}.	在{p2}以{p1}为统治中心。	ht
 ruled from {p} in {p}.	在{p2}以{p1}为统治中心。	ht
 ruled from {p} of {p}.	以{p2}的{p1}为统治中心。	ht
@@ -128392,6 +128471,7 @@ white mountain heather	白山石楠	wi
 white stork hatchlings	白鹳幼崽	wi
 with livestock here.  	剪毛、制作奶酪以及将毛团纺成	w
 with miserable outcome	结果惨不忍睹	h
+with the water's flow.	水流方向保持一致。	hP
 with walls to enclose 	这在同时放置多个功能区时尤为	w
 withdrew from society.	退出了社会交往。	h
 withered in the wilds.	在荒野中衰亡了。	h
@@ -129578,8 +129658,10 @@ brawl with {a} at {p}	在{p1}，与{a1}的斗殴	htEi
 brawl with {a} in {d}	{d1}年的与{a1}的斗殴	htEi
 brawl with {a} in {p}	在{p1}，与{a1}的斗殴	htEi
 bridge administrators	桥梁管理员	hi
+bridge administrators	桥梁管理员	wi
 brown recluse spiders	棕色遁蛛	wi
 building commissioner	建筑专员	hi
+building commissioner	建筑专员	wi
 bumblebee royal jelly	大黄蜂蜂王浆	wi
 burned {a} during {e}	在{e1}期间烧死了{a1}	ht
 burned {a} within {p}	在{p1}烧死了{a1}	ht
@@ -129806,13 +129888,16 @@ green tree frog women	绿树蛙人	wi
 hacked {a} to pieces.	将{a1}砍成了碎块。	ht
 hammerhead shark pups	锤头鲨幼崽	wi
 harvest administrator	收获管理员	hi
+harvest administrator	收获管理员	wi
 harvest commissioners	收获专员	hi
+harvest commissioners	收获专员	wi
 has many members here	在这里拥有众多成员	hP
 hated {a} and agreed.	憎恨{a1}，答应了。	ht
 hated {a} and refused	憎恨{a1}，拒绝了对方	ht
 hated {a} during {e}.	在{e1}期间憎恨{a1}。	ht
 hated {a} within {p}.	在{p1}憎恨{a1}。	ht
 head master of beasts	首席兽群总管	hi
+head master of beasts	首席兽群总管	wi
 held a concert at {p}	在{p1}举行了音乐会	ht
 held a concert in {p}	在{p1}举行了音乐会	ht
 held a poetry recital	举行了诗歌朗诵会	h
@@ -129822,6 +129907,7 @@ held the story of {e}	讲述了{e1}的故事	ht
 helicoprion hatchling	旋齿鲨幼崽	wi
 hibbertopterus peachi	皮氏希伯特鲎	wi
 high master of beasts	高阶兽群总管	hi
+high master of beasts	高阶兽群总管	wi
 high responsibilities	高阶责任	hi
 high-medium priority.	所选区域将被设为中高优先级。	w
 holy responsibilities	神圣责任	hi
@@ -130756,6 +130842,7 @@ trading of {s} in {p}	在{p1}，{s1}的交易	htEi
 training short swords	训练短剑	wi
 triceratops hatchling	三角龙幼崽	wi
 tunnel administrators	隧道管理员	hi
+tunnel administrators	隧道管理员	wi
 two-grain wheat flour	双粒小麦面粉	wi
 two-grain wheat seeds	双粒小麦种子	wi
 two-humped camel calf	双峰骆驼幼崽	wi
@@ -131912,7 +131999,9 @@ boiling weird liquor	沸腾的怪异烈酒	wim
 breached {p} at {p}.	在{p2}突破了{p1}。	ht
 breached {p} in {p}.	在{p2}突破了{p1}。	ht
 bridge administrator	桥梁管理员	hi
+bridge administrator	桥梁管理员	wi
 bridge commissioners	桥梁专员	hi
+bridge commissioners	桥梁专员	wi
 broke even gambling.	赌博不输不赢。	h
 brown recluse spider	棕色遁蛛	wi
 building destruction	毁坏建筑	h
@@ -132187,6 +132276,7 @@ giant wren hatchling	巨型鹪鹩幼崽	wi
 ginkgo pollen catkin	银杏花粉葇荑花序	wi
 giving somebody food	给某人食物	wi
 grain administrators	粮食管理员	hi
+grain administrators	粮食管理员	wi
 grape inflorescences	葡萄花序	wi
 great horned owl man	大角鸮人	wi
 great horned owl men	大角鸮人	wi
@@ -132194,6 +132284,7 @@ hacked {a} to pieces	将{a1}砍成了碎块	ht
 hair around the eyes	眼周毛发	wi
 hammerhead shark pup	锤头鲨幼崽	wi
 harvest commissioner	收获专员	hi
+harvest commissioner	收获专员	wi
 has a calm demeanor.	举止沉着。	l
 has a touch of humor	略带幽默	hv
 hated {a} and agreed	憎恨{a1}，答应了	ht
@@ -133453,6 +133544,7 @@ searched {p} in {p}.	在{p2}搜寻了{p1}。	ht
 second left rear toe	左后脚食趾	h
 seventh eldest child	第七个孩子	h
 sewer administrators	下水道管理员	hi
+sewer administrators	下水道管理员	wi
 shortfin mako sharks	短鳍鲭鲨	wi
 shot and killed {a}.	射杀了{a1}。	ht
 similarity with food	与食物相似	wi
@@ -133567,7 +133659,9 @@ took over {p} at {p}	在{p2}接管了{p1}	ht
 took over {p} in {p}	在{p2}接管了{p1}	ht
 training short sword	训练短剑	wi
 tunnel administrator	隧道管理员	hi
+tunnel administrator	隧道管理员	wi
 tunnel commissioners	隧道专员	hi
+tunnel commissioners	隧道专员	wi
 two-grain wheat beer	双粒小麦啤酒	wi
 two-grain wheat leaf	双粒小麦叶	wi
 two-humped camel man	双峰骆驼人	wi
@@ -134829,10 +134923,12 @@ brachiosaurus women	腕龙人	wi
 breached {p} at {p}	在{p2}突破了{p1}	ht
 breached {p} in {p}	在{p2}突破了{p1}	ht
 bridge commissioner	桥梁专员	hi
+bridge commissioner	桥梁专员	wi
 bright orange color	亮橙色	wi
 broke even gambling	赌博不输不赢	h
 broke even trading.	经商不盈不亏。	h
 building caretakers	建筑管护员	hi
+building caretakers	建筑管护员	wi
 building from your 	筑。居民仍会使用它。	w
 burned up in magma.	在岩浆中烧死了。	h
 burned {a} to death	烧死了{a1}	ht
@@ -134989,6 +135085,7 @@ finger lime flowers	指橘花	wi
 finger millet flour	爪粟面粉	wi
 finger millet plant	爪粟植株	wi
 fire administrators	消防管理员	hi
+fire administrators	消防管理员	wi
 first circumstances	第一境遇	hi
 first confederacies	第一联盟	hi
 first confederation	第一同盟	hi
@@ -135134,7 +135231,9 @@ giant spider monkey	巨型蜘蛛猴	wi
 giant wolverine kit	巨型狼獾幼崽	wi
 gigantic panda cubs	巨型熊猫幼崽	wi
 grain administrator	粮食管理员	hi
+grain administrator	粮食管理员	wi
 grain commissioners	粮食专员	hi
+grain commissioners	粮食专员	wi
 grape inflorescence	葡萄花序	wi
 gray squirrel woman	灰松鼠人	wi
 gray squirrel women	灰松鼠人	wi
@@ -136849,6 +136948,7 @@ right tentacle club	右触角棒	h
 right upper foreleg	右前大腿	h
 right upper incisor	右上门牙	h
 road administrators	道路管理员	hi
+road administrators	道路管理员	wi
 round brilliant cut	圆形明亮式切工	wi
 round lime wood log	圆橘树原木	wi
 rumored storyteller	传闻中的说书人	h
@@ -136903,7 +137003,9 @@ second right finger	右手食指	h
 seeing 's dead body	看到某人的尸体	wi
 seeing somebody die	看到某人死亡	wi
 sewer administrator	下水道管理员	hi
+sewer administrator	下水道管理员	wi
 sewer commissioners	下水道专员	hi
+sewer commissioners	下水道专员	wi
 sharovipteryx woman	沙洛维龙人	wi
 sharovipteryx women	沙洛维龙人	wi
 shortfin mako shark	短鳍鲭鲨	wi
@@ -137017,6 +137119,7 @@ tsintaosaurus women	独角冠龙人	wi
 tullimonstrum woman	塔利怪物人	wi
 tullimonstrum women	塔利怪物人	wi
 tunnel commissioner	隧道专员	hi
+tunnel commissioner	隧道专员	wi
 tyrannosaurus woman	霸王龙人	wi
 tyrannosaurus women	霸王龙人	wi
 vanished during {e}	在{e1}期间消失了	ht
@@ -138185,7 +138288,9 @@ broke even trading	经商不盈不亏	h
 brontosaurus woman	雷龙人	wi
 brontosaurus women	雷龙人	wi
 building caretaker	建筑管护员	hi
+building caretaker	建筑管护员	wi
 building officials	建筑官员	hi
+building officials	建筑官员	wi
 buitreraptor woman	鹫龙人	wi
 buitreraptor women	鹫龙人	wi
 bumblebee wax cake	大黄蜂蜡饼	wi
@@ -138209,8 +138314,11 @@ ceratosaurus woman	角鼻龙人	wi
 ceratosaurus women	角鼻龙人	wi
 changed into a {s}	变成了{s1}	ht
 chief chamberlains	首席宫廷总管	hi
+chief chamberlains	首席宫廷总管	wi
 chief executioners	首席刽子手	hi
+chief executioners	首席刽子手	wi
 chief housekeepers	首席内务管家	hi
+chief housekeepers	首席内务管家	wi
 cinnamon grossular	褐榴石	wi
 cloudberry flowers	云莓花	wi
 colepiocephale man	结头龙人	wi
@@ -138423,7 +138531,9 @@ finger lime leaves	指橘叶	wi
 finger millet beer	爪粟啤酒	wi
 finger millet leaf	爪粟叶	wi
 fire administrator	消防管理员	hi
+fire administrator	消防管理员	wi
 fire commissioners	消防专员	hi
+fire commissioners	消防专员	wi
 first bewilderment	第一困惑	hi
 first bloodinesses	第一残忍	hi
 first brightnesses	第一光亮	hi
@@ -138594,6 +138704,7 @@ gila monster women	毒蜥人	wi
 goblin's dead body	哥布林尸体	wi
 grackle hatchlings	黑羽椋鸟幼崽	wi
 grain commissioner	粮食专员	hi
+grain commissioner	粮食专员	wi
 great white sharks	大白鲨	wi
 grey parrot chicks	灰鹦鹉幼崽	wi
 grizzly bear woman	灰熊人	wi
@@ -138603,6 +138714,7 @@ hallucigenia women	怪诞虫人	wi
 happened upon {a}.	偶遇了{a1}。	ht
 happening upon {a}	偶遇{a1}	htEi
 harvest caretakers	收获管护员	hi
+harvest caretakers	收获管护员	wi
 head and neck down	头颈绒毛	wi
 held a competition	举行了比赛	h
 held a flying race	举行了飞行比赛	h
@@ -140748,6 +140860,7 @@ of {a} {p} in {d}.	{d1}年的涉及{a1}与{p1}的历史事件。	htEi
 of {a} {p} in {p}.	在{p2}，涉及{a1}与{p1}的历史事件。	htEi
 older half-brother	同父异母或同母异父的哥哥	wi
 older half-sibling	同父异母或同母异父的兄姐	wi
+once it is placed.	便无法改变朝向。	hP
 organize work and 	织工作和生活空间。	w
 outmanuevered {a}.	以战术机动压倒了{a1}。	ht
 overlapping scales	重叠角质鳞皮	wi
@@ -140812,14 +140925,19 @@ right floating rib	右浮肋	h
 right front hooves	右前蹄	h
 right rear flipper	右后脚蹼	h
 road administrator	道路管理员	hi
+road administrator	道路管理员	wi
 road commissioners	道路专员	hi
+road commissioners	道路专员	wi
 rotten eye sockets	腐烂的眼窝	wi
 round lime flowers	圆橘花	wi
 routed {a} at {p}.	在{p1}击溃了{a1}。	ht
 routed {a} in {p}.	在{p1}击溃了{a1}。	ht
 royal chamberlains	皇家宫廷总管	hi
+royal chamberlains	皇家宫廷总管	wi
 royal executioners	皇家刽子手	hi
+royal executioners	皇家刽子手	wi
 royal housekeepers	皇家内务管家	hi
+royal housekeepers	皇家内务管家	wi
 sacred afflictions	神圣苦恼	hi
 sacred allegiances	神圣效忠	hi
 sacred appearances	神圣出现	hi
@@ -140900,6 +141018,7 @@ second left finger	左手中指	wi
 settlement of {p}.	在{p1}的定居。	htEi
 seventh eldest son	第七个儿子	h
 sewer commissioner	下水道专员	hi
+sewer commissioner	下水道专员	wi
 single-grain wheat	单粒小麦	wi
 sixth eldest child	第六个孩子	h
 skips around a lot	频繁跳跃	hv
@@ -142194,6 +142313,7 @@ boiling weird wax	沸腾的怪异蜡	wim
 brachiosaurus man	腕龙人	wi
 brachiosaurus men	腕龙人	wi
 bridge caretakers	桥梁管护员	hi
+bridge caretakers	桥梁管护员	wi
 bright coloration	鲜艳的花纹	wi
 broad bean flower	蚕豆花	wi
 broad bean leaves	蚕豆叶	wi
@@ -142202,6 +142322,7 @@ broken vegetation	折断的植被	h
 bronze colossuses	青铜巨像	wi
 buckwheat flowers	荞麦花	wi
 building official	建筑官员	hi
+building official	建筑官员	wi
 bumblebee workers	工熊蜂	wi
 buried {a} alive.	活埋了{a1}。	ht
 burned {a} alive.	活活烧死了{a1}。	ht
@@ -142224,11 +142345,15 @@ catapults.  This 	的地方。	w
 cave spider venom	洞穴蜘蛛毒素	wi
 cedar pollen cone	雪松花粉球果	wi
 chief chamberlain	首席宫廷总管	hi
+chief chamberlain	首席宫廷总管	wi
 chief chancellors	首席大臣	hi
+chief chancellors	首席大臣	wi
 chief cup-bearers	首席斟酒官	hi
 chief cup-bearers	首席斟酒官	wi
 chief executioner	首席刽子手	hi
+chief executioner	首席刽子手	wi
 chief housekeeper	首席内务管家	hi
+chief housekeeper	首席内务管家	wi
 clashed with {a}.	与{a1}发生了冲突。	ht
 clear tourmalines	透明碧玺	wi
 cloudberry flower	云莓花	wi
@@ -142493,6 +142618,7 @@ finely minced {l}	精细搅匀的{l1}	hIit
 finger lime seeds	指橘种子	wi
 finger lime trees	指橘树	wi
 fire commissioner	消防专员	hi
+fire commissioner	消防专员	wi
 first afflictions	第一苦恼	hi
 first allegiances	第一效忠	hi
 first appearances	第一出现	hi
@@ -142690,14 +142816,18 @@ hammerhead sharks	锤头鲨	wi
 happened upon {a}	偶遇了{a1}	ht
 hard wheat leaves	硬质小麦叶	wi
 harvest caretaker	收获管护员	hi
+harvest caretaker	收获管护员	wi
 harvest officials	收获官员	hi
+harvest officials	收获官员	wi
 has become a {s}.	已成为{s1}。	hPt
 hated {a} at {p}.	在{p1}憎恨{a1}。	ht
 hated {a} in {p}.	在{p1}憎恨{a1}。	ht
 head chamberlains	首席宫廷总管	hi
 head chamberlains	首席宫廷总管	wi
 head executioners	首席刽子手	hi
+head executioners	首席刽子手	wi
 head housekeepers	首席内务管家	hi
+head housekeepers	首席内务管家	wi
 held a foot race.	举行了赛跑。	h
 held a procession	举行了游行	h
 helicoprion woman	旋齿鲨人	wi
@@ -142709,6 +142839,7 @@ high bloodinesses	高阶残忍	hi
 high brightnesses	高阶光亮	hi
 high celebrations	高阶庆典	hi
 high chamberlains	高阶宫廷总管	hi
+high chamberlains	高阶宫廷总管	wi
 high circumstance	高阶境遇	hi
 high coincidences	高阶巧合	hi
 high combinations	高阶组合	hi
@@ -142728,9 +142859,11 @@ high entanglement	高阶纠缠	hi
 high evisceration	高阶开膛	hi
 high eviscerators	高阶开膛者	hi
 high executioners	高阶刽子手	hi
+high executioners	高阶刽子手	wi
 high fiercenesses	高阶凶猛	hi
 high greennessses	高阶绿色	hi
 high housekeepers	高阶内务管家	hi
+high housekeepers	高阶内务管家	wi
 high imprisonment	高阶监禁	hi
 high incineration	高阶烧成灰	hi
 high mightinesses	高阶强大	hi
@@ -143661,6 +143794,7 @@ most high prairie	至高大草原	hi
 most high praises	至高赞美	hi
 most high present	至高现在	hi
 most high priests	至高祭司	hi
+most high priests	至高祭司	wi
 most high princes	至高王子	hi
 most high prisons	至高监狱	hi
 most high problem	至高问题	hi
@@ -145137,17 +145271,22 @@ right second feet	右第二足	wi
 right second foot	右第二足	h
 right second foot	右第二足	wi
 road commissioner	道路专员	hi
+road commissioner	道路专员	wi
 rough and cracked	粗糙龟裂	hv
 round lime flower	圆橘花	wi
 round lime leaves	圆橘叶	wi
 routed {a} at {p}	在{p1}击溃了{a1}	ht
 routed {a} in {p}	在{p1}击溃了{a1}	ht
 royal chamberlain	皇家宫廷总管	hi
+royal chamberlain	皇家宫廷总管	wi
 royal chancellors	皇家大臣	hi
+royal chancellors	皇家大臣	wi
 royal cup-bearers	皇家斟酒官	hi
 royal cup-bearers	皇家斟酒官	wi
 royal executioner	皇家刽子手	hi
+royal executioner	皇家刽子手	wi
 royal housekeeper	皇家内务管家	hi
+royal housekeeper	皇家内务管家	wi
 rumored flatterer	据说爱说好话	h
 rumored quarreler	据说爱争吵	h
 sacred admiration	神圣赞赏	hi
@@ -145393,6 +145532,7 @@ tsintaosaurus men	独角冠龙人	wi
 tullimonstrum man	塔利怪物人	wi
 tullimonstrum men	塔利怪物人	wi
 tunnel caretakers	隧道管护员	hi
+tunnel caretakers	隧道管护员	wi
 twisting, jointed	扭曲分节的	hv
 twittering groups	叽叽喳喳的一群	wi
 two-handed swords	双手剑	wi
@@ -146701,13 +146841,16 @@ boiling odd pulp	沸腾的古怪果肉	wim
 boiling vile goo	沸腾的卑劣的黏稠物制	hMi
 boiling vile goo	沸腾的卑劣的黏稠物	wim
 bridge caretaker	桥梁管护员	hi
+bridge caretaker	桥梁管护员	wi
 bridge officials	桥梁官员	hi
+bridge officials	桥梁官员	wi
 broad bean plant	蚕豆植株	wi
 brontosaurus man	雷龙人	wi
 brontosaurus men	雷龙人	wi
 buckwheat flower	荞麦花	wi
 buckwheat leaves	荞麦叶	wi
 building masters	建筑主管	hi
+building masters	建筑主管	wi
 buitreraptor man	鹫龙人	wi
 buitreraptor men	鹫龙人	wi
 bumblebee drones	熊蜂	wi
@@ -146741,11 +146884,15 @@ ceratosaurus men	角鼻龙人	wi
 cherry wood logs	樱桃树原木	wi
 chickpea flowers	鹰嘴豆花	wi
 chief chancellor	首席大臣	hi
+chief chancellor	首席大臣	wi
 chief counselors	首席顾问	hi
+chief counselors	首席顾问	wi
 chief cup-bearer	首席斟酒官	hi
 chief cup-bearer	首席斟酒官	wi
 chief justiciars	首席司法官	hi
+chief justiciars	首席司法官	wi
 chief treasurers	首席司库	hi
+chief treasurers	首席司库	wi
 chinchilla woman	毛丝鼠人	wi
 chinchilla women	毛丝鼠人	wi
 citron wood logs	香橼树原木	wi
@@ -147383,6 +147530,7 @@ gila monster men	毒蜥人	wi
 ginkgo wood logs	银杏树原木	wi
 glowing red eyes	发光的红眼	wi
 grain caretakers	粮食管护员	hi
+grain caretakers	粮食管护员	wi
 great barracudas	大梭鱼	wi
 great horned owl	大角鸮	wi
 green tourmaline	绿碧玺	wi
@@ -147396,15 +147544,19 @@ hammerhead shark	锤头鲨	wi
 hard wheat flour	硬质小麦面粉	wi
 hard wheat seeds	硬质小麦种子	wi
 harvest official	收获官员	hi
+harvest official	收获官员	wi
 hated {a} at {p}	在{p1}憎恨{a1}	ht
 hated {a} in {p}	在{p1}憎恨{a1}	ht
 head chamberlain	首席宫廷总管	hi
 head chamberlain	首席宫廷总管	wi
 head chancellors	首席大臣	hi
+head chancellors	首席大臣	wi
 head cup-bearers	首席斟酒官	hi
 head cup-bearers	首席斟酒官	wi
 head executioner	首席刽子手	hi
+head executioner	首席刽子手	wi
 head housekeeper	首席内务管家	hi
+head housekeeper	首席内务管家	wi
 held a ceremony.	举行了仪式。	h
 held a foot race	举行了赛跑	h
 held a {i} race.	举行了{i1}竞速比赛。	ht
@@ -147420,7 +147572,9 @@ high brilliances	高阶光辉	hi
 high butterflies	高阶蝴蝶	hi
 high celebration	高阶庆典	hi
 high chamberlain	高阶宫廷总管	hi
+high chamberlain	高阶宫廷总管	wi
 high chancellors	高阶大臣	hi
+high chancellors	高阶大臣	wi
 high coincidence	高阶巧合	hi
 high combination	高阶组合	hi
 high competition	高阶竞争	hi
@@ -147451,11 +147605,13 @@ high evaporation	高阶蒸发	hi
 high eviscerator	高阶开膛者	hi
 high excavations	高阶挖掘	hi
 high executioner	高阶刽子手	hi
+high executioner	高阶刽子手	wi
 high extrication	高阶救出	hi
 high fancinesses	高阶幻想	hi
 high fellowships	高阶伙伴	hi
 high greatnesses	高阶大	hi
 high housekeeper	高阶内务管家	hi
+high housekeeper	高阶内务管家	wi
 high immortality	高阶不朽	hi
 high indignation	高阶愤怒	hi
 high intricacies	高阶纷乱	hi
@@ -147579,7 +147735,7 @@ hunting elephant	受过狩猎训练的大象	wi
 hunting gorillas	受过狩猎训练的大猩猩	wi
 hunting jabberer	受过狩猎训练的宽喙巨兽	wi
 hunting kelenken	受过狩猎训练的窃鹤	wi
-hunting leopards	受过狩猎训练的花豹	wi
+hunting leopards	受过狩猎训练的豹子	wi
 hunting mandrill	受过狩猎训练的山魈	wi
 hunting peasants	受过狩猎训练的平民	wi
 hunting smilodon	受过狩猎训练的剑齿虎	wi
@@ -148198,6 +148354,7 @@ most high pranks	至高恶作剧	hi
 most high prices	至高价格	hi
 most high prides	至高骄傲	hi
 most high priest	至高祭司	hi
+most high priest	至高祭司	wi
 most high prince	至高王子	hi
 most high prison	至高监狱	hi
 most high pulley	至高滑轮	hi
@@ -149660,6 +149817,7 @@ repulsive sludge	令人厌恶的软泥制	hMi
 repulsive sludge	令人厌恶的软泥	wim
 resonant barking	回响的叫声	wi
 resounding hoots	响亮的叫声	wi
+responsibilities	责任	wi
 returned to {p}.	返回了{p1}。	ht
 revolting sludge	恶心的软泥制	hMi
 revolting sludge	恶心的软泥	wim
@@ -149692,11 +149850,15 @@ rooms, which is 	重要。门也可被禁用或连接到杠	w
 round lime seeds	圆橘种子	wi
 round lime trees	圆橘树	wi
 royal chancellor	皇家大臣	hi
+royal chancellor	皇家大臣	wi
 royal counselors	皇家顾问	hi
+royal counselors	皇家顾问	wi
 royal cup-bearer	皇家斟酒官	hi
 royal cup-bearer	皇家斟酒官	wi
 royal justiciars	皇家司法官	hi
+royal justiciars	皇家司法官	wi
 royal treasurers	皇家司库	hi
+royal treasurers	皇家司库	wi
 rubber wood logs	橡胶树原木	wi
 rumored intruder	传闻中的入侵者	h
 rumored murderer	传闻中的谋杀犯	h
@@ -149903,6 +150065,7 @@ second right toe	右脚食趾	h
 serpent man bite	地底蛇人咬伤	wi
 seventy thousand	七万	wi
 sewer caretakers	下水道管护员	hi
+sewer caretakers	下水道管护员	wi
 shadowy military	隐秘的军事	h
 shields/bucklers	盾牌/小盾	wi
 shimmering cloth	微光的丝	hMi
@@ -149987,7 +150150,9 @@ training partner	训练伙伴	h
 translucent skin	半透明皮肤	wi
 tribute delivery	运送贡品	hEi
 tunnel caretaker	隧道管护员	hi
+tunnel caretaker	隧道管护员	wi
 tunnel officials	隧道官员	hi
+tunnel officials	隧道官员	wi
 tunnel tube logs	隧管菌原木	wi
 two-handed sword	双手剑	wi
 two-humped camel	双峰骆驼	wi
@@ -151353,6 +151518,7 @@ boiling odd wax	沸腾的古怪蜡制	hMi
 boiling odd wax	沸腾的古怪蜡	wim
 brawl with {a}.	与{a1}的斗殴。	htEi
 bridge official	桥梁官员	hi
+bridge official	桥梁官员	wi
 broad bean leaf	蚕豆叶	wi
 broad bean pods	蚕豆荚	wi
 bronze colossus	青铜巨像	wi
@@ -151360,6 +151526,7 @@ brown bullheads	棕鲶鱼	wi
 buckwheat flour	荞麦面粉	wi
 buckwheat seeds	荞麦种子	wi
 building master	建筑主管	hi
+building master	建筑主管	wi
 bull shark pups	牛鲨幼崽	wi
 bumblebee drone	大黄蜂	wi
 bumblebee honey	大黄蜂蜜	wi
@@ -151395,8 +151562,11 @@ chickpea leaves	鹰嘴豆叶	wi
 chickpea plants	鹰嘴豆植株	wi
 chicory flowers	菊苣花	wi
 chief counselor	首席顾问	hi
+chief counselor	首席顾问	wi
 chief justiciar	首席司法官	hi
+chief justiciar	首席司法官	wi
 chief treasurer	首席司库	hi
+chief treasurer	首席司库	wi
 chinchilla kits	毛丝鼠幼崽	wi
 citron wood log	香橼树原木	wi
 cloth shop sign	布料商店招牌	wi
@@ -151989,6 +152159,7 @@ figurine of {a}	{a1}小塑像	hIit
 finely dyed {v}	精心染成{v1}	hIit
 finely-designed	设计精巧	hIi
 fire caretakers	消防管护员	hi
+fire caretakers	消防管护员	wi
 first abatement	第一减少	hi
 first accidents	第一意外	hi
 first adoration	第一崇拜	hi
@@ -152276,7 +152447,9 @@ glyptodon women	雕齿兽人	wi
 goblin-cap logs	哥布林菇原木	wi
 goblins leather	哥布林皮革	wi
 grain caretaker	粮食管护员	hi
+grain caretaker	粮食管护员	wi
 grain officials	粮食官员	hi
+grain officials	粮食官员	wi
 grasshopper man	蚱蜢人	wi
 grasshopper men	蚱蜢人	wi
 gray chalcedony	灰玉髓	wi
@@ -152298,15 +152471,20 @@ harlequin opals	斑斓欧泊	wi
 harp seal woman	竖琴海豹人	wi
 harp seal women	竖琴海豹人	wi
 harvest masters	收获主管	hi
+harvest masters	收获主管	wi
 having no shirt	没有上衣可穿	wi
 having no shoes	没有鞋可穿	wi
 hazel wood logs	榛树原木	wi
 head chancellor	首席大臣	hi
+head chancellor	首席大臣	wi
 head counselors	首席顾问	hi
+head counselors	首席顾问	wi
 head cup-bearer	首席斟酒官	hi
 head cup-bearer	首席斟酒官	wi
 head justiciars	首席司法官	hi
+head justiciars	首席司法官	wi
 head treasurers	首席司库	hi
+head treasurers	首席司库	wi
 hearing a rumor	听到传闻	wi
 held a ceremony	举行了仪式	h
 held a concert.	举行了音乐会。	h
@@ -152340,6 +152518,7 @@ high businesses	高阶生意	hi
 high calamities	高阶灾难	hi
 high cathedrals	高阶大教堂	hi
 high chancellor	高阶大臣	hi
+high chancellor	高阶大臣	wi
 high chocolates	高阶巧克力	hi
 high coalitions	高阶联盟	hi
 high coldnesses	高阶寒冷	hi
@@ -152357,6 +152536,7 @@ high controller	高阶控制者	hi
 high corruption	高阶腐败	hi
 high counsellor	高阶顾问	hi
 high counselors	高阶顾问	hi
+high counselors	高阶顾问	wi
 high courtesies	高阶礼貌	hi
 high creepiness	高阶诡异	hi
 high cremations	高阶烧	hi
@@ -152390,6 +152570,7 @@ high impurities	高阶杂质	hi
 high influences	高阶影响力	hi
 high insanities	高阶疯狂	hi
 high justiciars	高阶司法官	hi
+high justiciars	高阶司法官	wi
 high kindnesses	高阶仁慈	hi
 high labyrinths	高阶迷宫	hi
 high lazinesses	高阶怠惰	hi
@@ -152437,6 +152618,7 @@ high temptation	高阶诱惑	hi
 high tenderness	高阶温柔	hi
 high tournament	高阶比赛	hi
 high treasurers	高阶司库	hi
+high treasurers	高阶司库	wi
 high treasuries	高阶国库	hi
 high trickeries	高阶欺骗	hi
 high turquoises	高阶绿松石	hi
@@ -152605,7 +152787,7 @@ hunting cheetah	受过狩猎训练的猎豹	wi
 hunting dragons	受过狩猎训练的巨龙	wi
 hunting gorilla	受过狩猎训练的大猩猩	wi
 hunting jaguars	受过狩猎训练的美洲豹	wi
-hunting leopard	受过狩猎训练的花豹	wi
+hunting leopard	受过狩猎训练的豹子	wi
 hunting ocelots	受过狩猎训练的豹猫	wi
 hunting peasant	受过狩猎训练的平民	h
 hunting peasant	受过狩猎训练的平民	wi
@@ -154374,6 +154556,7 @@ repellent slime	令人厌恶的粘液制	hMi
 repellent slime	令人厌恶的粘液	wim
 repellent slush	令人厌恶的泥浆制	hMi
 repellent slush	令人厌恶的泥浆	wim
+representatives	代表	wi
 repulsive filth	令人厌恶的污垢制	hMi
 repulsive filth	令人厌恶的污垢	wim
 repulsive mucus	令人厌恶的粘液制	hMi
@@ -154418,13 +154601,17 @@ right upper leg	右大腿	h
 right upper leg	右大腿	w
 river otter pup	河獭幼崽	wi
 road caretakers	道路管护员	hi
+road caretakers	道路管护员	wi
 rope reed seeds	绳索苇种子	wi
 round lime leaf	圆橘叶	wi
 round lime tree	圆橘树	wi
 round lime wood	圆橘木	wi
 royal counselor	皇家顾问	hi
+royal counselor	皇家顾问	wi
 royal justiciar	皇家司法官	hi
+royal justiciar	皇家司法官	wi
 royal treasurer	皇家司库	hi
+royal treasurer	皇家司库	wi
 rubber wood log	橡胶树原木	wi
 ruled from {p}.	以{p1}为统治中心。	ht
 rumored brawler	传闻中的斗士	h
@@ -154757,7 +154944,9 @@ scratchy-voiced	嗓音粗哑	wi
 second left toe	左脚食趾	h
 settled in {p}.	在{p1}安顿下来。	ht
 sewer caretaker	下水道管护员	hi
+sewer caretaker	下水道管护员	wi
 sewer officials	下水道官员	hi
+sewer officials	下水道官员	wi
 shifting colors	变换的颜色	wi
 silk body parts	丝绸身体部位	wi
 silty clay loam	粉质黏壤土	wi
@@ -154849,6 +155038,7 @@ triceratops men	三角龙人	wi
 trilobite woman	三叶虫人	wi
 trilobite women	三叶虫人	wi
 tunnel official	隧道官员	hi
+tunnel official	隧道官员	wi
 tunnel tube log	隧管菌原木	wi
 turkey gobblers	火鸡	wi
 twenty thousand	两万	wi
@@ -156264,6 +156454,7 @@ boiled at {p}.	在{p1}沸腾而死。	ht
 boiled in {p}.	在{p1}沸腾而死。	ht
 brawl with {a}	与{a1}的斗殴	htEi
 bridge masters	桥梁主管	hi
+bridge masters	桥梁主管	wi
 broad bean pod	蚕豆荚	wi
 brook lampreys	河七鳃鳗	wi
 brown bullhead	棕鲶鱼	wi
@@ -156303,6 +156494,7 @@ chickpea plant	鹰嘴豆植株	wi
 chicory flower	菊苣花	wi
 chicory leaves	菊苣叶	wi
 chief advisors	首席顾问	hi
+chief advisors	首席顾问	wi
 chinchilla kit	毛丝鼠幼崽	wi
 chinchilla man	毛丝鼠人	wi
 chinchilla men	毛丝鼠人	wi
@@ -156318,6 +156510,8 @@ colorful faces	彩色面孔	wi
 communing with	与神祇交流	wi
 concluded {e}.	结束了{e1}。	ht
 concluded {s}.	结束了{s1}。	ht
+confederations	同盟	wi
+conflagrations	大火灾	wi
 confrontation.	冲突，即使最必要的战斗他也会逃离。	l
 confronted {a}	与{a1}对峙	ht
 conger eel fry	康吉鳗幼崽	wi
@@ -156370,6 +156564,8 @@ dimetrodon man	异齿龙人	wi
 dimetrodon men	异齿龙人	wi
 diplodocus man	梁龙人	wi
 diplodocus men	梁龙人	wi
+disappearances	看不见	wi
+disembowelment	剖腹	wi
 distinct snout	明显的鼻子	wi
 distrusted {a}	不信任{a1}	ht
 disturbed {p}.	惊扰了{p1}。	ht
@@ -157068,6 +157264,7 @@ feathery wings	羽翼	wi
 feeding habits	取食习性	wi
 felling a tree	砍倒一棵树	wi
 field marshals	陆军元帅	hi
+field marshals	陆军元帅	wi
 fiendish gloom	凶恶的阴霾制	hMi
 fiendish gloom	凶恶的阴霾	wim
 fiendish smoke	凶恶的烟制	hMi
@@ -157079,7 +157276,9 @@ fifty thousand	五万	wi
 finely colored	染色工艺精细	hIi
 finely-crafted	精制的	h
 fire caretaker	消防管护员	hi
+fire caretaker	消防管护员	wi
 fire officials	消防官员	hi
+fire officials	消防官员	wi
 first accident	第一意外	hi
 first admirers	第一仰慕者	hi
 first alliance	第一联盟	hi
@@ -157407,6 +157606,7 @@ food shop sign	食物商店招牌	wi
 for {a} at {p}	，为{a1}制作，地点在{p1}	ht
 formed at {p}.	在{p1}成立了。	ht
 formed in {p}.	在{p1}成立了。	ht
+fortifications	筑城	wi
 fortress guard	要塞守卫	wi
 forty thousand	四万	wi
 fought in {e}.	参加了{e1}。	ht
@@ -157484,6 +157684,7 @@ goblin leather	哥布林皮革	wi
 goblin-cap log	哥布林菇原木	wi
 graceful leaps	优美的跳跃	wi
 grain official	粮食官员	hi
+grain official	粮食官员	wi
 grating-voiced	嗓音刺耳	wi
 gray squirrels	灰松鼠	wi
 grazing rights	放牧权	h
@@ -157496,6 +157697,7 @@ gypsum plaster	石膏灰泥	wi
 harlequin opal	斑斓欧泊	wi
 harp seal pups	竖琴海豹幼崽	wi
 harvest master	收获主管	hi
+harvest master	收获主管	wi
 haunting cries	萦绕不去的哭声	wi
 haunting gloom	萦绕的阴霾制	hMi
 haunting gloom	萦绕的阴霾	wim
@@ -157506,8 +157708,11 @@ haunting vapor	萦绕的蒸气	wim
 having a drink	饮酒	wi
 hazel wood log	榛树原木	wi
 head counselor	首席顾问	hi
+head counselor	首席顾问	wi
 head justiciar	首席司法官	hi
+head justiciar	首席司法官	wi
 head treasurer	首席司库	hi
+head treasurer	首席司库	wi
 hedgehog woman	刺猬人	wi
 hedgehog women	刺猬人	wi
 heinous sludge	邪恶的软泥制	hMi
@@ -157563,6 +157768,7 @@ high container	高阶容器	hi
 high continent	高阶大陆	hi
 high corridors	高阶走廊	hi
 high counselor	高阶顾问	hi
+high counselor	高阶顾问	wi
 high craziness	高阶发狂	hi
 high creations	高阶创造	hi
 high creatures	高阶生物	hi
@@ -157625,6 +157831,7 @@ high intensity	高阶强烈	hi
 high intricacy	高阶纷乱	hi
 high jaundices	高阶黄疸	hi
 high justiciar	高阶司法官	hi
+high justiciar	高阶司法官	wi
 high knowledge	高阶知识	hi
 high labyrinth	高阶迷宫	hi
 high languages	高阶语言	hi
@@ -157692,6 +157899,7 @@ high tightness	高阶紧束	hi
 high tiredness	高阶疲劳	hi
 high tragedies	高阶悲剧	hi
 high treasurer	高阶司库	hi
+high treasurer	高阶司库	wi
 high treasures	高阶宝物	hi
 high triangles	高阶三角形	hi
 high turquoise	高阶绿松石	hi
@@ -157914,6 +158122,7 @@ hunting tigers	受过狩猎训练的虎	wi
 implicated {a}	供出了{a1}	ht
 implicated {n}	供出了{n1}	ht
 imprisoned {a}	囚禁了{a1}	ht
+inconveniences	不便	wi
 infamous bully	臭名昭著的恶霸	h
 infamous enemy	臭名昭著的敌人	h
 infamous thief	臭名昭著的盗贼	h
@@ -159021,6 +159230,7 @@ nefarious soot	邪恶的煤烟	wim
 nervous energy	紧张情绪	wi
 nervous tissue	神经组织	wi
 nether-cap log	下界菇原木	wi
+neutralization	中立化	wi
 night sickness	夜行生物疫病	wi
 nodosaurus man	结节龙人	wi
 nodosaurus men	结节龙人	wi
@@ -159106,6 +159316,7 @@ primeval stone	太古石头	wim
 primordial ice	原初冰	hMi
 primordial ice	原初冰	wim
 profaning {p}.	亵渎{p1}。	htEi
+proliferations	增殖	wi
 prominent-chin	下巴突出	wi
 pungent sludge	刺鼻的软泥制	hMi
 pungent sludge	刺鼻的软泥	wim
@@ -159143,12 +159354,14 @@ repellent muck	令人厌恶的污泥制	hMi
 repellent muck	令人厌恶的污泥	wim
 repellent ooze	令人厌恶的污泥制	hMi
 repellent ooze	令人厌恶的污泥	wim
+representative	代表	wi
 repulsive muck	令人厌恶的污泥制	hMi
 repulsive muck	令人厌恶的污泥	wim
 repulsive ooze	令人厌恶的污泥制	hMi
 repulsive ooze	令人厌恶的污泥	wim
 respect of {a}	尊重{a1}	ht
 respected {a}.	尊重{a1}。	ht
+responsibility	责任	wi
 restless haunt	不得安息的幽魂	wi
 revolting muck	恶心的污泥制	hMi
 revolting muck	恶心的污泥	wim
@@ -159170,9 +159383,12 @@ right tentacle	右触手	h
 right tentacle	右触手	wi
 right true rib	右真肋	h
 road caretaker	道路管护员	hi
+road caretaker	道路管护员	wi
 road officials	道路官员	hi
+road officials	道路官员	wi
 roc hatchlings	大鹏鸟幼崽	wi
 royal advisors	皇家顾问	hi
+royal advisors	皇家顾问	wi
 ruled from {p}	以{p1}为统治中心	ht
 rumored dancer	传闻中的舞蹈家	h
 rumored hunter	传闻中的猎人	h
@@ -159679,6 +159895,7 @@ seven thousand	七千	wi
 seventh eldest	第七大的	wi
 several groups	数个势力	h
 sewer official	下水道官员	hi
+sewer official	下水道官员	wi
 shield/buckler	盾牌/小盾	wi
 short and even	短而整齐	hv
 siliceous ooze	硅藻软泥	wi
@@ -159720,6 +159937,7 @@ soybean plants	黄豆植株	wi
 specific armor	指定躯干装备	wli
 specific pants	指定腿部装备	wli
 specific shoes	指定足部装备	wli
+speechlessness	失语	wi
 spider monkeys	蜘蛛猴	wi
 spinach flower	菠菜花	wi
 spinach leaves	菠菜叶	wi
@@ -159783,6 +160001,7 @@ troupemate {n}	同一表演团的{n1}	htu
 truly decadent	真正的奢华的	wi
 truly splendid	极其精美的	wi
 tunnel masters	隧道主管	hi
+tunnel masters	隧道主管	wi
 turkey gobbler	火鸡	wi
 turnip flowers	芜菁花	wi
 twisted fabric	扭曲的丝	hMi
@@ -159822,6 +160041,7 @@ was convicted.	被定罪了。	h
 was crucified.	被钉死在十字架上。	h
 was given away	造物被赠出	wi
 was possessed.	被附身了。	h
+watchfulnesses	警觉	wi
 water buffalos	水牛	wi
 weird solution	怪异溶液制	hMi
 weird solution	怪异溶液	wim
@@ -160947,6 +161167,7 @@ brachiosaurus	腕龙	wi
 breached {p}.	突破了{p1}。	ht
 breaking away	折断	h
 bridge master	桥梁主管	hi
+bridge master	桥梁主管	wi
 briolette cut	水滴形切工	wi
 broad antlers	宽鹿角	wi
 brook lamprey	河七鳃鳗	wi
@@ -161002,8 +161223,12 @@ chickpea leaf	鹰嘴豆叶	wi
 chickpea pods	鹰嘴豆荚	wi
 chicory seeds	菊苣种子	wi
 chief advisor	首席顾问	hi
+chief advisor	首席顾问	wi
 chief butlers	首席管家	hi
+chief butlers	首席管家	wi
 chief doctors	首席医生	hi
+chief doctors	首席医生	wi
+circumstances	境遇	wi
 citron flower	香橼花	wi
 citron leaves	香橼叶	wi
 clean-shaven.	剃得干净。	wil
@@ -161022,8 +161247,13 @@ common skates	鳐鱼	wi
 companion {n}	同伴{n1}	htu
 concluded {e}	结束了{e1}	ht
 concluded {s}	结束了{s1}	ht
+confederacies	联盟	wi
+confederation	同盟	wi
 confessed and	认了罪，并	h
+conflagration	大火灾	wi
 conquered {p}	征服了{p1}	ht
+consideration	体谅	wi
+contingencies	偶然性	wi
 conversation.	交谈中坚持自己的主张。	l
 cornered {a}.	将{a1}逼入绝境。	ht
 corrupted {a}	拉拢了{a1}	ht
@@ -161070,7 +161300,9 @@ dark chestnut	深栗色	wi
 deep sea blue	深海蓝	wi
 defeated {a}.	击败了{a1}。	ht
 deinotheriums	恐象	wi
+denominations	教派	wi
 destroyed {p}	摧毁了{p1}	ht
+deterioration	恶化	wi
 devilish dust	恶魔般的灰尘制	hMi
 devilish dust	恶魔般的灰尘	wim
 devilish mist	恶魔般的薄雾制	hMi
@@ -161083,6 +161315,8 @@ devoured {a}.	吞噬了{a1}。	ht
 diadectes man	阔齿龙人	wi
 diadectes men	阔齿龙人	wi
 dilophosaurus	双嵴龙	wi
+disappearance	看不见	wi
+disembowelers	剖腹者	wi
 disillusioned	幻灭	w
 display cases	展示柜	wi
 disturbed {p}	惊扰了{p1}	ht
@@ -161843,6 +162077,7 @@ famous dancer	名声显赫的舞蹈家	h
 feather trees	羽毛树	wi
 feathered {s}	覆有羽毛的{s1}	htv
 field marshal	陆军元帅	hi
+field marshal	陆军元帅	wi
 fiendish dust	凶恶的灰尘制	hMi
 fiendish dust	凶恶的灰尘	wim
 fiendish mist	凶恶的薄雾制	hMi
@@ -161856,6 +162091,7 @@ filthy sludge	污秽的软泥制	hMi
 filthy sludge	污秽的软泥	wim
 finger millet	爪粟	wi
 fire official	消防官员	hi
+fire official	消防官员	wi
 firefly woman	萤火虫人	wi
 firefly women	萤火虫人	wi
 first abysses	第一深渊	hi
@@ -162450,6 +162686,7 @@ goose leather	鹅皮革	wi
 grackle woman	黑羽椋鸟人	wi
 grackle women	黑羽椋鸟人	wi
 grain masters	粮食主管	hi
+grain masters	粮食主管	wi
 grasping legs	捕捉足	wi
 gray squirrel	灰松鼠	wi
 green diamond	绿钻石	wi
@@ -162480,6 +162717,7 @@ haunting murk	萦绕的暗雾	wim
 haunting soot	萦绕的煤烟制	hMi
 haunting soot	萦绕的煤烟	wim
 head advisors	首席顾问	hi
+head advisors	首席顾问	wi
 head and tail	头尾	wi
 head sclerite	头部硬片	wi
 heinous filth	邪恶的污垢制	hMi
@@ -162501,6 +162739,7 @@ helmet snakes	头盔蛇	wi
 high accident	高阶意外	hi
 high admirers	高阶仰慕者	hi
 high advisors	高阶顾问	hi
+high advisors	高阶顾问	wi
 high alliance	高阶联盟	hi
 high amethyst	高阶紫水晶	hi
 high ancients	高阶古人	hi
@@ -163143,6 +163382,7 @@ images of {n}	{n1}的影像	ht
 in a ponytail	扎成马尾	wi
 in the arena.	并将其放入竞技场。	l
 including {a}	其中包括{a1}	ht
+inconvenience	不便	wi
 infernal dust	地狱般的灰尘制	hMi
 infernal dust	地狱般的灰尘	wim
 infernal mist	地狱般的薄雾制	hMi
@@ -163525,6 +163765,7 @@ nefarious fog	邪恶的雾制	hMi
 nefarious fog	邪恶的雾	wim
 nickel silver	镍银	wi
 nine thousand	九千	wi
+noiselessness	无噪音	wi
 noted brawler	著名的斗士	h
 noted brigand	著名的强盗	h
 noted comrade	著名的同志	h
@@ -163544,6 +163785,7 @@ opossum woman	负鼠人	wi
 opossum women	负鼠人	wi
 orange flower	橘子花	wi
 orange leaves	橘子叶	wi
+organizations	组织	wi
 osprey chicks	鱼鹰幼崽	wi
 ostrich chick	鸵鸟幼崽	wi
 ostrich cocks	鸵鸟	wi
@@ -163610,6 +163852,7 @@ profane vapor	亵渎的蒸气制	hMi
 profane vapor	亵渎的蒸气	wim
 profaned {p}.	亵渎了{p1}。	ht
 profaning {p}	亵渎{p1}	htEi
+proliferation	增殖	wi
 pterodactylus	翼手龙	wi
 puffin chicks	海鹦幼崽	wi
 pungent filth	刺鼻的污垢制	hMi
@@ -163644,6 +163887,7 @@ rambutan wood	红毛丹木	wi
 ransomed {n}.	赎回了{n1}。	ht
 raucous calls	沙哑的叫声	wi
 recessed-chin	下巴后缩	wi
+recordkeepers	档案员	wi
 recruited {a}	招募了{a1}	ht
 red bean leaf	红豆叶	wi
 red bean pods	红豆荚	wi
@@ -163669,9 +163913,11 @@ revolting goo	恶心的黏稠物	wim
 rhubarb seeds	大黄种子	wi
 right antenna	右触角	h
 right flipper	右脚蹼	h
+righteousness	正义	wi
 rights-of-way	通行权	h
 river spirits	河川烈酒	wi
 road official	道路官员	hi
+road official	道路官员	wi
 roc hatchling	大鹏鸟幼崽	wi
 rock crystals	岩石水晶	wi
 rock nut soap	石头坚果皂	wi
@@ -163682,8 +163928,11 @@ rotten sludge	腐烂的软泥制	hMi
 rotten sludge	腐烂的软泥	wim
 round tummies	圆肚子	wi
 royal advisor	皇家顾问	hi
+royal advisor	皇家顾问	wi
 royal butlers	皇家管家	hi
+royal butlers	皇家管家	wi
 royal doctors	皇家医生	hi
+royal doctors	皇家医生	wi
 rubber leaves	橡胶叶	wi
 rumored bully	传闻中的恶霸	h
 rumored enemy	传闻中的敌人	h
@@ -164346,6 +164595,7 @@ serpent woman	地底蛇人	wi
 serpent women	地底蛇人	wi
 set far apart	间距很大	hv
 sewer masters	下水道主管	hi
+sewer masters	下水道主管	wi
 sharovipteryx	沙洛维龙	wi
 shining cloth	闪耀的丝	hMi
 shining cloth	闪耀的丝绸	wim
@@ -164399,6 +164649,8 @@ strange jelly	奇怪凝胶制	hMi
 strange jelly	奇怪凝胶	wim
 strange juice	奇怪汁液制	hMi
 strange juice	奇怪汁液	wim
+strangenesses	奇异	wi
+strangulation	勒杀	wi
 striped faces	带条纹的脸	wi
 surprised {a}	突袭了{a1}	ht
 swamp whiskey	沼泽威士忌	wi
@@ -164441,6 +164693,7 @@ trilobite men	三叶虫人	wi
 tsintaosaurus	独角冠龙	wi
 tullimonstrum	塔利怪物	wi
 tunnel master	隧道主管	hi
+tunnel master	隧道主管	wi
 turnip flower	芜菁花	wi
 turnip leaves	芜菁叶	wi
 turnip plants	芜菁植株	wi
@@ -164767,7 +165020,6 @@ On your own!	自己来！
 On your own!	自己来！	hq
 One use only	仅触发一次	w
 Operate pump	操作泵机	wi
-Organization	组织能力	wi
 Other skills	其他技能	w
 Over-exerted	力竭	w
 Overcautious	过度慎重	w
@@ -165112,6 +165364,7 @@ beetle women	甲虫人	wi
 beheaded {a}	将{a1}斩首了	ht
 being afraid	心有畏惧	h
 being beaten	被鞭打	wi
+bewilderment	困惑	wi
 birch leaves	桦树叶	wi
 birchen logs	白桦木原木	wi
 bismuthinite	辉铋矿	wi
@@ -165136,6 +165389,7 @@ blighted fog	枯萎的雾制	hMi
 blighted fog	枯萎的雾	wim
 blizzard man	暴雪魔人	wi
 blizzard men	暴雪魔人	wi
+bloodinesses	残忍	wi
 blue diamond	蓝钻石	wi
 blue garnets	蓝榴石	wi
 blue peacock	蓝孔雀	wi
@@ -165154,6 +165408,7 @@ bright cloth	明亮的丝绸	wim
 bright green	亮绿色	wi
 bright metal	明亮金属	hMi
 bright metal	明亮金属	wim
+brightnesses	光亮	wi
 brontosaurus	雷龙	wi
 brown jasper	棕碧玉	wi
 brown zircon	棕锆石	wi
@@ -165187,6 +165442,7 @@ cave floater	洞穴飘浮者	wi
 cave lobster	洞穴龙虾	wi
 cave spiders	洞穴蜘蛛	wi
 cave swallow	洞穴燕	wi
+celebrations	庆典	wi
 celery seeds	芹菜种子	wi
 celery umbel	芹菜伞形花序	wi
 centauresses	女半人马	wi
@@ -165199,7 +165455,9 @@ chestnut log	栗木原木	wi
 chickpea pod	鹰嘴豆荚	wi
 chicory leaf	菊苣叶	wi
 chief butler	首席管家	hi
+chief butler	首席管家	wi
 chief doctor	首席医生	hi
+chief doctor	首席医生	wi
 chin whisker	下颌须	wi
 chipmunk man	花栗鼠人	wi
 chipmunk men	花栗鼠人	wi
@@ -165207,6 +165465,7 @@ choreography	编舞	hv
 chrysoberyls	金绿玉	wi
 chrysocollas	硅孔雀石	wi
 chrysoprases	绿玉髓	wi
+circumstance	境遇	wi
 citron seeds	香橼种子	wi
 citron trees	香橼树	wi
 civilization	政权	hIi
@@ -165219,11 +165478,16 @@ cliffs/grade	峭壁/坡度	wi
 cloudberries	云莓	wi
 coffee beans	咖啡豆	wi
 coffee trees	咖啡树	wi
+coincidences	巧合	wi
+combinations	组合	wi
 common reeds	芦苇	wi
 common skate	鳐鱼	wi
+competitions	竞争	wi
 confused {s}	困惑的{s1}	hIit
 conglomerate	砾岩	wi
+conjunctions	结合	wi
 contemptuous	轻蔑	w
+conveniences	便利	wi
 cornered {a}	将{a1}逼入绝境	ht
 cosmic chaos	宇宙混沌	hMi
 cosmic chaos	宇宙混沌	wim
@@ -165241,11 +165505,13 @@ cowpea plant	豇豆植株	wi
 coyote woman	郊狼人	wi
 coyote women	郊狼人	wi
 created {p}.	创造了{p1}。	ht
+creepinesses	诡异	wi
 creeping ash	蔓延的灰烬制	hMi
 creeping ash	蔓延的灰烬	wim
 creeping eye	爬壁魔眼	wi
 creeping fog	蔓延的雾制	hMi
 creeping fog	蔓延的雾	wim
+crucifixions	钉刑	wi
 crystal opal	水晶欧泊	wi
 curious pulp	奇异果肉制	hMi
 curious pulp	奇异果肉	wim
@@ -165258,7 +165524,9 @@ cursed vapor	受诅咒的蒸气	wim
 dark scarlet	深猩红	wi
 defeated {a}	击败了{a1}	ht
 deinotherium	恐象	wi
+denomination	教派	wi
 desert limes	漠橘	wi
+destructions	毁灭	wi
 devilish ash	恶魔般的灰烬制	hMi
 devilish ash	恶魔般的灰烬	wim
 devilish fog	恶魔般的雾制	hMi
@@ -165266,11 +165534,14 @@ devilish fog	恶魔般的雾	wim
 devoured {a}	吞噬了{a1}	ht
 dictionaries	词典	h
 died in {d}.	卒于第{d}年。	ht
+diminishment	缩减	wi
 dirty fabric	污秽的丝	hMi
 dirty fabric	污秽的丝绸	wim
 disappointed	失望	w
 discussions.	讨论中较为被动。	l
+disemboweler	剖腹者	wi
 display case	展示柜	wi
+distinctions	区别	wi
 divorced {n}	与{n}离婚了	ht
 dodecahedral	十二面的	wi
 dodecahedron	十二面体	wi
@@ -165292,9 +165563,12 @@ early winter	初冬	wi
 eldest child	最年长的孩子	h
 elephant man	大象人	wi
 elephant men	大象人	wi
+emancipation	释放	wi
 embezzlement	挪用资金	h
+enchantments	魔法	wi
 encyclopedia	百科全书	hv
 enormous {s}	庞大的{s1}	htv
+entanglement	纠缠	wi
 enthusiastic	热情	wi
 eoraptor man	始盗龙人	wi
 eoraptor men	始盗龙人	wi
@@ -165303,6 +165577,8 @@ eryops women	引螈人	wi
 escaped from	逃出了	h
 europasaurus	侏儒蜥脚龙	wi
 every season	每季一次	wli
+evisceration	开膛	wi
+eviscerators	开膛者	wi
 exalted aces	高尚王牌	hi
 exalted ache	高尚疼痛	hi
 exalted acts	高尚行动	hi
@@ -165771,6 +166047,7 @@ exalted yore	高尚从前	hi
 exalted zeal	高尚热忱	hi
 executed {a}	处决了{a1}	ht
 executioners	刽子手	hi
+executioners	刽子手	wi
 expelled {a}	驱逐了{a1}	ht
 faceted eyes	复眼	wi
 fat, bulging	肥厚鼓胀的	hv
@@ -165784,6 +166061,7 @@ fiendish ash	凶恶的灰烬制	hMi
 fiendish ash	凶恶的灰烬	wim
 fiendish fog	凶恶的雾制	hMi
 fiendish fog	凶恶的雾	wim
+fiercenesses	凶猛	wi
 fifth eldest	第五大的	wi
 fifth finger	小指	h
 filthy filth	污秽的污垢制	hMi
@@ -165796,6 +166074,7 @@ filthy slush	污秽的泥浆制	hMi
 filthy slush	污秽的泥浆	wim
 finger limes	指橘	wi
 fire masters	消防主管	hi
+fire masters	消防主管	wi
 first abbeys	第一修道院	hi
 first action	第一行动	hi
 first allies	第一同盟者	hi
@@ -166518,6 +166797,7 @@ gold nuggets	金块	wi
 golden beryl	金柱石	wi
 golden salve	金色药膏	wi
 grain master	粮食主管	hi
+grain master	粮食主管	wi
 grape leaves	葡萄叶	wi
 grasshoppers	蚱蜢	wi
 gray gibbons	灰长臂猿	wi
@@ -166526,6 +166806,7 @@ great hunter	伟大的猎人	h
 great weight	巨大的体重	wi
 green zircon	绿锆石	wi
 green-yellow	黄绿色	wi
+greennessses	绿色	wi
 grey parrots	灰鹦鹉	wi
 grizzly bear	灰熊	wi
 gruesomeness	恐怖	wi
@@ -166541,8 +166822,11 @@ haunting fog	萦绕的雾制	hMi
 haunting fog	萦绕的雾	wim
 hazel leaves	榛叶	wi
 head advisor	首席顾问	hi
+head advisor	首席顾问	wi
 head butlers	首席管家	hi
+head butlers	首席管家	wi
 head doctors	首席医生	hi
+head doctors	首席医生	wi
 heart tissue	心脏组织	wi
 hearthpeople	亲卫	hi
 hearthpeople	亲卫	wi
@@ -166570,6 +166854,7 @@ high abysses	高阶深渊	hi
 high actions	高阶行动	hi
 high admirer	高阶仰慕者	hi
 high advisor	高阶顾问	hi
+high advisor	高阶顾问	wi
 high alchemy	高阶炼金术	hi
 high ancient	高阶古人	hi
 high anguish	高阶剧痛	hi
@@ -166619,6 +166904,7 @@ high bushels	高阶斗	hi
 high busters	高阶破坏者	hi
 high butcher	高阶屠夫	hi
 high butlers	高阶管家	hi
+high butlers	高阶管家	wi
 high butters	高阶奶油	hi
 high buttons	高阶钮扣	hi
 high buzzard	高阶秃鹫	hi
@@ -166690,6 +166976,7 @@ high dinners	高阶晚餐	hi
 high disgust	高阶厌恶	hi
 high ditches	高阶沟渠	hi
 high doctors	高阶医生	hi
+high doctors	高阶医生	wi
 high domains	高阶领域	hi
 high donkeys	高阶驴子	hi
 high dragons	高阶龙	hi
@@ -166881,6 +167168,7 @@ high prairie	高阶大草原	hi
 high praises	高阶赞美	hi
 high present	高阶现在	hi
 high priests	高阶祭司	hi
+high priests	高阶祭司	wi
 high princes	高阶王子	hi
 high prisons	高阶监狱	hi
 high problem	高阶问题	hi
@@ -167577,8 +167865,10 @@ image of {a}	描绘{a1}的图像	hIit
 impala fawns	高角羚幼崽	wi
 impala woman	高角羚人	wi
 impala women	高角羚人	wi
+imprisonment	监禁	wi
 in the wilds	在荒野中	h
 in {n}'s {i}	，使用{n1}的{i1}制作	ht
+incineration	烧成灰	wi
 independence	独立	wi
 infernal ash	地狱般的灰烬制	hMi
 infernal ash	地狱般的灰烬	wim
@@ -167642,7 +167932,7 @@ left antenna	左触角	h
 left flipper	左脚蹼	h
 leisure time	闲暇	wi
 lentil plant	扁豆植株	wi
-leopard cubs	花豹幼崽	wi
+leopard cubs	豹子幼崽	wi
 leopard seal	豹形海豹	wi
 less anxious	不那么焦虑	wi
 less curious	不那么好奇	wi
@@ -167700,6 +167990,7 @@ met with {a}	与{a1}会面	ht
 microceratus	微角龙	wi
 middle spine	背部脊柱	h
 middle spine	背部脊柱	wi
+mightinesses	强大	wi
 mighty leaps	强大的跳跃能力	wi
 milk of lime	石灰乳	wi
 milkfish fry	遮目鱼幼崽	wi
@@ -167725,6 +168016,7 @@ more private	更加内敛	wi
 morningstars	晨星锤	wi
 mosquito man	蚊子人	wi
 mosquito men	蚊子人	wi
+most exalted	至尊	wi
 most high ox	至高牛	hi
 most holy ox	至圣牛	hi
 moved at {p}	在{p1}迁移了	ht
@@ -167800,6 +168092,7 @@ peculiar wax	奇特蜡	wim
 pelagic clay	深海黏土	wi
 pepper plant	胡椒植株	wi
 pepper seeds	胡椒种子	wi
+permanencies	永恒	wi
 perseverance	毅力	wi
 pillaged {p}	劫掠了{p1}	ht
 pine needles	松针	wi
@@ -167851,6 +168144,7 @@ pungent muck	刺鼻的污泥	wim
 pungent ooze	刺鼻的污泥制	hMi
 pungent ooze	刺鼻的污泥	wim
 purple taupe	紫褐色	wi
+putrescences	腐败	wi
 putrid filth	腐败的污垢制	hMi
 putrid filth	腐败的污垢	wim
 putrid mucus	腐败的粘液制	hMi
@@ -167873,12 +168167,14 @@ ransomed {n}	赎回了{n1}	ht
 raspy-voiced	嗓音沙哑	wi
 rattlesnakes	响尾蛇	wi
 rebuilt {p}.	重建了{p1}。	ht
+recordkeeper	档案员	wi
 red bean pod	红豆荚	wi
 red diamonds	红钻石	wi
 red squirrel	红松鼠	wi
 refined coal	精炼煤	wi
 reindeer cow	驯鹿	wi
 rendered fat	炼制脂肪	wi
+requirements	需求	wi
 rhinoceroses	犀牛	wi
 rhubarb leaf	大黄叶	wi
 right antler	右角	h
@@ -167890,6 +168186,7 @@ right pincer	右钳	h
 rippling fin	波纹鳍	wi
 river otters	河獭	wi
 road masters	道路主管	hi
+road masters	道路主管	wi
 rock crystal	岩石水晶	wi
 rock nut oil	石头坚果油	wi
 rodent woman	地底刺毛鼠人	wi
@@ -167903,7 +168200,9 @@ rotten slime	腐烂的粘液	wim
 rotten slush	腐烂的泥浆制	hMi
 rotten slush	腐烂的泥浆	wim
 royal butler	皇家管家	hi
+royal butler	皇家管家	wi
 royal doctor	皇家医生	hi
+royal doctor	皇家医生	wi
 rubber trees	橡胶树	wi
 rumored ally	传闻中的同盟者	h
 rumored bard	传闻中的吟游诗人	h
@@ -167911,6 +168210,7 @@ rumored poet	传闻中的诗人	h
 rush flowers	灯心草花	wi
 rusted metal	生锈金属	hMi
 rusted metal	生锈金属	wim
+ruthlessness	无情	wi
 sacred abbey	神圣修道院	hi
 sacred abyss	神圣深渊	hi
 sacred aches	神圣疼痛	hi
@@ -168626,11 +168926,13 @@ self-control	自制	wi
 seventh head	第七头	h
 seventh neck	第七颈	h
 sewer master	下水道主管	hi
+sewer master	下水道主管	wi
 shadow stuff	暗影的丝	hMi
 shadow stuff	暗影物质	wim
 sheep cheese	绵羊奶酪	wi
 sheep's milk	绵羊奶	wi
 short swords	短剑	wi
+simplicities	单纯	wi
 six thousand	六千	wi
 sixth eldest	第六大的	wi
 skeletal {s}	骷髅形态的{s1}	htv
@@ -168646,6 +168948,7 @@ smilodon cub	剑齿虎幼崽	wi
 smilodon man	剑齿虎人	wi
 smilodon men	剑齿虎人	wi
 smoky quartz	烟石英	wi
+smoothnesses	柔滑	wi
 soldier ants	大工蚁	wi
 sorghum beer	高粱啤酒	wi
 sorghum leaf	高粱叶	wi
@@ -168671,6 +168974,7 @@ strawberries	草莓	wi
 string beans	青豆	wi
 sturgeon fry	鲟鱼幼崽	wi
 subdued {a}.	制服了{a1}。	ht
+subordinates	属下	wi
 superior {s}	优质的{s1}	hIit
 suzhousaurus	巨爪羽龙	wi
 sweet potato	甘薯	wi
@@ -168709,6 +169013,7 @@ turnip plant	芜菁植株	wi
 turnip seeds	芜菁种子	wi
 two thousand	两千	wi
 unglazed {s}	未上釉的{s1}	hIit
+unholinesses	不神圣	wi
 unholy gloom	不洁的阴霾制	hMi
 unholy gloom	不洁的阴霾	wim
 unholy smoke	不洁的烟制	hMi
@@ -168734,7 +169039,7 @@ war elephant	受过战斗训练的大象	wi
 war gorillas	受过战斗训练的大猩猩	wi
 war jabberer	受过战斗训练的宽喙巨兽	wi
 war kelenken	受过战斗训练的窃鹤	wi
-war leopards	受过战斗训练的花豹	wi
+war leopards	受过战斗训练的豹子	wi
 war mandrill	受过战斗训练的山魈	wi
 war peasants	受过战斗训练的平民	wi
 war smilodon	受过战斗训练的剑齿虎	wi
@@ -168747,6 +169052,7 @@ was expelled	被驱逐了	h
 was murdered	被谋杀了	h
 was released	被释放了	h
 was scuttled	被凿沉了	h
+watchfulness	警觉	wi
 water rights	用水权	h
 weapon racks	兵器架	wi
 weasel woman	黄鼬人	wi
@@ -168769,6 +169075,7 @@ wicked smoke	邪恶的烟制	hMi
 wicked smoke	邪恶的烟	wim
 wicked vapor	邪恶的蒸气制	hMi
 wicked vapor	邪恶的蒸气	wim
+wickednesses	邪恶	wi
 willow fruit	柳树果实	wi
 winter melon	冬瓜	wi
 with others.	给他人。	l
@@ -168778,6 +169085,7 @@ wombat women	袋熊人	wi
 wounded {a}.	击伤了{a1}。	ht
 wrinkly skin	皱纹皮肤	wi
 yellow-green	黄绿	wi
+yellownesses	黄色	wi
 youngest son	最小的儿子	h
 {a} caroused	{a1}纵情狂欢了	ht
 {a} drowned.	{a1}溺水而死。	ht
@@ -169225,12 +169533,15 @@ acrid slush	辛辣的泥浆	wim
 adder venom	蝰蛇毒素	wi
 adder woman	蝰蛇人	wi
 adder women	蝰蛇人	wi
+afflictions	苦恼	wi
 afrovenator	强颈猎龙	wi
 against {a}	，针对{a1}	ht
 agriculture	农业	r
 albatrosses	信天翁	wi
 alder cones	桤树球果	wi
+alderperson	行会理事	wi
 alexandrite	紫翠玉	wi
+allegiances	效忠	wi
 almond leaf	扁桃叶	wi
 almond tree	扁桃树	wi
 almond wood	扁桃木	wi
@@ -169250,6 +169561,7 @@ animal trap	动物陷阱	wi
 anole woman	安乐蜥人	wi
 anole women	安乐蜥人	wi
 anteosaurus	安蒂欧兽	wi
+appearances	出现	wi
 apple cider	苹果西打酒	wi
 apple green	苹果绿	wi
 apple seeds	苹果种子	wi
@@ -169293,6 +169605,8 @@ black mamba	黑曼巴蛇	wi
 black metal	乌黑金属	hMi
 black metal	乌黑金属	wim
 black opals	黑欧泊	wi
+blacknesses	黑	wi
+blindnesses	盲目	wi
 blood gnats	血飞虫	wi
 bloodstones	血石	wi
 blue garnet	蓝榴石	wi
@@ -169306,6 +169620,7 @@ bony scutes	骨质鳞甲	wi
 bookkeepers	簿记员	hi
 bookkeepers	簿记员	wi
 breastplate	板甲	wi
+brilliances	光辉	wi
 broad beans	蚕豆	wi
 broken away	折断了	h
 bubble bulb	泡泡球茎	wi
@@ -169322,6 +169637,7 @@ bushmasters	巨蝮	wi
 bushtit man	丛山雀人	wi
 bushtit men	丛山雀人	wi
 busy nature	忙碌的天性	wi
+butterflies	蝴蝶	wi
 buzzard man	秃鹰人	wi
 buzzard men	秃鹰人	wi
 cacao beans	可可豆	wi
@@ -169340,6 +169656,7 @@ cassiterite	锡石	wi
 cassowaries	鹤鸵	wi
 cave dragon	洞穴龙	wi
 cave spider	洞穴蜘蛛	wi
+celebration	庆典	wi
 celery leaf	芹菜叶	wi
 center tail	中央尾巴	h
 center tail	中央尾巴	wi
@@ -169355,7 +169672,9 @@ cherry tree	樱桃树	wi
 cherry wine	樱桃果酒	wi
 cherry wood	樱桃木	wi
 chief chefs	首席厨师	hi
+chief chefs	首席厨师	wi
 chieftesses	女酋长	hi
+chieftesses	女酋长	wi
 child slave	童奴	h
 chimpanzees	黑猩猩	wi
 chinchillas	毛丝鼠	wi
@@ -169375,12 +169694,22 @@ coffee bean	咖啡豆	wi
 coffee leaf	咖啡叶	wi
 coffee tree	咖啡树	wi
 coffee wood	咖啡木	wi
+coincidence	巧合	wi
 colored {v}	染成{v1}	hIit
+combination	组合	wi
 common reed	芦苇	wi
 competition	竞争	wi
+confederacy	联盟	wi
+confinement	限制	wi
 conger eels	康吉鳗	wi
+conjunction	结合	wi
+connections	连接	wi
 consolation	慰藉	r
 constructed	建造了	h
+contingency	偶然性	wi
+contingents	偶发	wi
+controllers	控制者	wi
+convenience	便利	wi
 cooperation	合作	wi
 cosmic fire	宇宙火	hMi
 cosmic fire	宇宙火焰	wim
@@ -169394,6 +169723,7 @@ cotton leaf	棉花叶	wi
 cotton seed	棉花种子	wi
 cottongrass	棉草	wi
 cougar cubs	美洲狮幼崽	wi
+counsellors	顾问	wi
 cow leather	牛皮革	wi
 cowpea leaf	豇豆叶	wi
 cowpea pods	豇豆荚	wi
@@ -169401,7 +169731,10 @@ coyote pups	郊狼幼崽	wi
 craft guild	工艺行会	hIi
 craftsdwarf	矮人工匠	wi
 cranberries	蔓越莓	wi
+crazinesses	发狂	wi
 created {p}	创造了{p1}	ht
+crucifixion	钉刑	wi
+culmination	顶点	wi
 cup-bearers	斟酒官	hi
 cup-bearers	斟酒官	wi
 curious goo	奇异黏稠物制	hMi
@@ -169426,13 +169759,18 @@ dark indigo	深靛蓝	wi
 dark violet	深紫罗兰色	wi
 deadly bite	致命的咬伤	wi
 deep-voiced	嗓音低沉	wi
+deification	奉为神	wi
 deinonychus	恐爪龙	wi
+depressions	洼地	wi
 desert lime	漠橘	wi
+destruction	毁灭	wi
 dimple cups	窝杯菇	wi
 dingo woman	野狗人	wi
 dingo women	野狗人	wi
 diplocaulus	笠头螈	wi
+discoveries	发现	wi
 displeasure	不满	wi
+distinction	区别	wi
 dodecahedra	十二面体	wi
 doe rabbits	兔	wi
 donkey foal	驴幼崽	wi
@@ -169456,6 +169794,7 @@ eerie smoke	诡异的烟制	hMi
 eerie smoke	诡异的烟	wim
 eerie vapor	诡异的蒸气制	hMi
 eerie vapor	诡异的蒸气	wim
+eerienesses	诡异	wi
 elder chaos	上古混沌	hMi
 elder chaos	上古混沌	wim
 elder light	上古光	hMi
@@ -169467,7 +169806,11 @@ elder stone	上古石头	wim
 embarrassed	尴尬	w
 emerald cut	祖母绿切工	wi
 emerald dye	宝石绿染料	wi
+enchantment	魔法	wi
 engineering	工程学	h
+equivalence	同等	wi
+evaporation	蒸发	wi
+eviscerator	开膛者	wi
 exalted ace	高尚王牌	hi
 exalted act	高尚行动	hi
 exalted age	高尚年龄	hi
@@ -169578,15 +169921,20 @@ exalted wax	高尚蜡	hi
 exalted way	高尚路	hi
 exalted web	高尚网	hi
 exasperated	恼怒	w
+excavations	挖掘	wi
 exceptional	卓越品质的	h
 executioner	刽子手	hi
+executioner	刽子手	wi
 exhilarated	振奋	w
+extrication	救出	wi
 eyeless {s}	无眼的{s1}	htv
 famous ally	名声显赫的同盟者	h
 famous bard	名声显赫的吟游诗人	h
 famous hero	名声显赫的英雄	h
 famous poet	名声显赫的诗人	h
+fancinesses	幻想	wi
 fear of {a}	惧怕{a1}	ht
+fellowships	伙伴	wi
 fetid filth	恶臭的污垢制	hMi
 fetid filth	恶臭的污垢	wim
 fetid mucus	恶臭的粘液制	hMi
@@ -169605,6 +169953,7 @@ fine pewter	精白锡	wi
 finger lime	指橘	wi
 fire agates	火玛瑙	wi
 fire master	消防主管	hi
+fire master	消防主管	wi
 fire snakes	火蛇	wi
 firefly man	萤火虫人	wi
 firefly men	萤火虫人	wi
@@ -170407,6 +170756,7 @@ great jumps	跳跃能力很强	wi
 great leaps	跳跃能力很强	wi
 great picks	大鹤嘴锄	wi
 great-lobed	垂部硕大	wi
+greatnesses	大	wi
 green glass	绿玻璃	wi
 green jades	绿翡翠	wi
 grey parrot	灰鹦鹉	wi
@@ -170422,7 +170772,9 @@ hamster men	仓鼠人	wi
 hatch cover	活动盖板	wi
 hazel trees	榛树	wi
 head butler	首席管家	hi
+head butler	首席管家	wi
 head doctor	首席医生	hi
+head doctor	首席医生	wi
 headscarves	丝巾	wi
 heavy cloth	厚重的丝	hMi
 heavy cloth	厚重的丝绸	wim
@@ -170504,6 +170856,7 @@ high bushel	高阶斗	hi
 high bushes	高阶矮树丛	hi
 high buster	高阶破坏者	hi
 high butler	高阶管家	hi
+high butler	高阶管家	wi
 high butter	高阶奶油	hi
 high button	高阶钮扣	hi
 high cactus	高阶仙人掌	hi
@@ -170585,6 +170938,7 @@ high dinner	高阶晚餐	hi
 high dirges	高阶挽歌	hi
 high dishes	高阶盘子	hi
 high doctor	高阶医生	hi
+high doctor	高阶医生	wi
 high domain	高阶领域	hi
 high donkey	高阶驴子	hi
 high dragon	高阶龙	hi
@@ -171741,9 +172095,12 @@ hyena woman	鬣狗人	wi
 hyena women	鬣狗人	wi
 icosahedral	二十面的	wi
 icosahedron	二十面体	wi
+immortality	不朽	wi
 impala fawn	高角羚幼崽	wi
+indignation	愤怒	wi
 inebriation	醉酒	wi
 inspiration	灵感	r
+intricacies	纷乱	wi
 is forceful	有力	hv
 is gigantic	体格庞大	wi
 is muscular	肌肉发达	wi
@@ -171775,6 +172132,7 @@ koala woman	树袋熊人	wi
 koala women	树袋熊人	wi
 kobold bulb	狗头人球根	wi
 lace agates	蕾丝玛瑙	wi
+lamentation	悲叹	wi
 large beaks	大喙	wi
 large bills	大鸟喙	wi
 large herds	大群	wi
@@ -171796,7 +172154,7 @@ left kidney	左肾	h
 left pincer	左钳	h
 lentil leaf	扁豆叶	wi
 lentil pods	扁豆荚	wi
-leopard cub	花豹幼崽	wi
+leopard cub	豹子幼崽	wi
 leopard man	花豹人	wi
 leopard men	花豹人	wi
 less greedy	不那么贪婪	wi
@@ -171824,6 +172182,7 @@ lychee wine	荔枝果酒	wi
 lychee wood	荔枝木	wi
 macedwarves	矮人页锤手	wi
 magistrates	地方法官	hi
+magistrates	地方法官	wi
 magma crabs	熔岩螃蟹	wi
 mail shirts	链甲	wi
 maize flour	玉米面粉	wi
@@ -171834,18 +172193,21 @@ many spines	许多尖刺	wi
 married {n}	与{n}结婚了	ht
 mauve taupe	灰紫褐色	wi
 meadowsweet	绣线菊	wi
+meditations	沉思	wi
 megatherium	大地懒	wi
 milk quartz	乳石英	wi
 mini-forges	迷你锻砧	wi
 misty cloth	雾霭的丝	hMi
 misty cloth	雾霭的丝绸	wim
 molemarians	半身鼹鼠兽	wi
+monasteries	修道院	wi
 moon snails	月亮蜗牛	wi
 moose woman	驼鹿人	wi
 moose women	驼鹿人	wi
 more polite	更加彬彬有礼	wi
 morningstar	晨星锤	wi
 moss agates	苔藓玛瑙	wi
+most sacred	至圣	wi
 mounted {s}	骑乘{s1}	ht
 muskox calf	麝牛幼崽	wi
 nanny goats	山羊	wi
@@ -171853,11 +172215,13 @@ narrow-chin	下巴窄小	wi
 narwhal man	独角鲸人	wi
 narwhal men	独角鲸人	wi
 native gold	天然金矿	wi
+naughtiness	顽皮	wi
 nomadic {s}	游牧的{s1}	hIit
 nose bridge	鼻梁	wi
 noted bully	著名的恶霸	h
 noted enemy	著名的敌人	h
 noted thief	著名的盗贼	h
+nourishment	滋养品	wi
 nurse shark	铰口鲨	wi
 octagon cut	八角形切工	wi
 octopus ink	章鱼墨汁	wi
@@ -171905,6 +172269,8 @@ pecan trees	碧根果树	wi
 penguin man	企鹅人	wi
 penguin men	企鹅人	wi
 pepper leaf	胡椒叶	wi
+periwinkles	长春花蓝	wi
+persuasions	说服	wi
 pessimistic	悲观	wi
 pikedwarves	矮人长枪手	wi
 pine needle	松针	wi
@@ -171926,6 +172292,7 @@ potato leaf	马铃薯叶	wi
 potato wine	马铃薯果酒	wi
 prase opals	苍绿欧泊	wi
 praying {s}	正在祈祷的{s1}	hIit
+pregnancies	怀孕	wi
 primal fire	原始火	hMi
 primal fire	原始火焰	wim
 primal leaf	原始叶	hMi
@@ -171939,10 +172306,12 @@ profane ash	亵渎的灰烬制	hMi
 profane ash	亵渎的灰烬	wim
 profane fog	亵渎的雾制	hMi
 profane fog	亵渎的雾	wim
+profanities	亵渎	wi
 psephoderma	楯齿龙	wi
 pulled rank	摆出上级的架子施压	h
 pungent goo	刺鼻的黏稠物制	hMi
 pungent goo	刺鼻的黏稠物	wim
+putrescence	腐败	wi
 putrid muck	腐败的污泥制	hMi
 putrid muck	腐败的污泥	wim
 putrid ooze	腐败的污泥制	hMi
@@ -171950,6 +172319,7 @@ putrid ooze	腐败的污泥	wim
 puzzleboxes	解谜盒	wi
 quadruplets	四胞胎	wi
 quarry bush	矿场灌木	wi
+quicknesses	急速	wi
 quinoa beer	藜麦啤酒	wi
 quinoa leaf	藜麦叶	wi
 quintuplets	五胞胎	wi
@@ -171967,6 +172337,7 @@ rattlesnake	响尾蛇	wi
 raven woman	渡鸦人	wi
 raven women	渡鸦人	wi
 rebuilt {p}	重建了{p1}	ht
+recreations	娱乐	wi
 rectangular	矩形	wi
 red diamond	红钻石	wi
 red pyropes	赤榴石	wi
@@ -171977,6 +172348,8 @@ redroot dye	赤根染料	wi
 remembering	回忆起	w
 reptile man	地底蜥蜴人	wi
 reptile men	地底蜥蜴人	wi
+reputations	名誉	wi
+requirement	需求	wi
 resin opals	脂光欧泊	wi
 returned to	返回了	h
 rice leaves	稻米叶	wi
@@ -171988,20 +172361,24 @@ right elbow	右肘	h
 right fangs	右尖牙	h
 right tooth	右牙	wi
 right wrist	右手腕	h
+ringleaders	首领	wi
 ripping off	扯断	h
 river otter	河獭	wi
 roach woman	蟑螂人	wi
 roach women	蟑螂人	wi
 road master	道路主管	hi
+road master	道路主管	wi
 rose quartz	蔷薇石英	wi
 rotten muck	腐烂的污泥制	hMi
 rotten muck	腐烂的污泥	wim
 rotten ooze	腐烂的污泥制	hMi
 rotten ooze	腐烂的污泥	wim
 rotting {s}	腐烂的{s1}	htv
+roughnesses	粗糙	wi
 round limes	圆橘	wi
 routed {a}.	击溃了{a1}。	ht
 royal chefs	皇家厨师	hi
+royal chefs	皇家厨师	wi
 rubber leaf	橡胶叶	wi
 rubber tree	橡胶树	wi
 rubber wood	橡胶树	wi
@@ -172475,8 +172852,10 @@ sacred yell	神圣叫声	hi
 sacred yore	神圣从前	hi
 sacred zeal	神圣热忱	hi
 saguaro rib	巨刺柱肋木	wi
+sanctuaries	圣所	wi
 sandy taupe	沙褐色	wi
 sasquatches	野人	wi
+saturninity	忧郁	wi
 scholarship	学问	r
 sea lamprey	海七鳃鳗	wi
 sea monster	海怪	wi
@@ -172499,6 +172878,7 @@ short bolts	短弩矢	wi
 short story	短篇小说	hv
 short sword	短剑	wi
 short tails	短尾巴	wi
+silkinesses	丝般	wi
 skink woman	彩舌蜥人	wi
 skink women	彩舌蜥人	wi
 skunk woman	臭鼬人	wi
@@ -172532,6 +172912,7 @@ squid woman	鱿鱼人	wi
 squid women	鱿鱼人	wi
 stabbed out	刺掉了	h
 star rubies	星彩红宝石	wi
+starvations	饥饿	wi
 stegosaurus	剑龙	wi
 stepladders	折梯	wi
 stoat jacks	白鼬	wi
@@ -172545,12 +172926,15 @@ strange jam	奇怪果酱制	hMi
 strange jam	奇怪果酱	wim
 strange wax	奇怪蜡制	hMi
 strange wax	奇怪蜡	wim
+strangeness	奇异	wi
 struck down	击杀了	h
 structures.	结束放置结构。	w
 stubborness	固执	wi
 subdued {a}	制服了{a1}	ht
+subordinate	属下	wi
 suffocated.	窒息而死。	h
 sun berries	太阳浆果	wi
+sweetnesses	甜蜜	wi
 swordsdwarf	矮人剑士	wi
 tail spines	尾刺	wi
 tanned hide	皮革	wi
@@ -172575,11 +172959,13 @@ tiger irons	虎铁石	wi
 tiger shark	虎鲨	wi
 tiger woman	虎人	wi
 tiger women	虎人	wi
+tightnesses	紧束	wi
 tomato leaf	番茄叶	wi
 tomato wine	番茄果酒	wi
 tooth whorl	旋齿	wi
 topazolites	黄榴石	wi
 torvosaurus	蛮龙	wi
+tournaments	比赛	wi
 toy hammers	玩具锤	wi
 tranquility	宁静	wi
 triceratops	三角龙	wi
@@ -172590,6 +172976,7 @@ turkey hens	火鸡	wi
 turnip leaf	芜菁叶	wi
 turnip wine	芜菁果酒	wi
 ultramarine	群青色	wi
+uncertainty	不确定	wi
 undecaplets	十一胞胎	wi
 underlichen	洞窟地衣	wi
 unholy dust	不洁的灰尘制	hMi
@@ -172610,10 +172997,13 @@ unusual wax	异常蜡	wim
 upper spine	上背部脊柱	h
 upper spine	上背部脊柱	wi
 valley herb	山谷香草	wi
+vegetations	植被	wi
 viewed {p}.	观赏了{p1}。	ht
 vile sludge	卑劣的软泥制	hMi
 vile sludge	卑劣的软泥	wim
+visionaries	先知	wi
 visited {p}	造访了{p1}	ht
+vulgarities	粗俗	wi
 vulture man	秃鹫人	wi
 vulture men	秃鹫人	wi
 walnut leaf	核桃叶	wi
@@ -172626,8 +173016,9 @@ war dragons	受过战斗训练的巨龙	wi
 war gorilla	受过战斗训练的大猩猩	wi
 war hammers	战锤	wi
 war jaguars	受过战斗训练的美洲豹	wi
-war leopard	受过战斗训练的花豹	wi
 war leaders	战争领袖	hi
+war leaders	战争领袖	wi
+war leopard	受过战斗训练的豹子	wi
 war ocelots	受过战斗训练的豹猫	wi
 war peasant	受过战斗训练的平民	h
 war peasant	受过战斗训练的平民	wi
@@ -172657,6 +173048,7 @@ white cloth	洁白的丝绸	wim
 white jades	白翡翠	wi
 white opals	白欧泊	wi
 white stork	白鹳	wi
+whitenesses	白	wi
 wicked dust	邪恶的灰尘制	hMi
 wicked dust	邪恶的灰尘	wim
 wicked mist	邪恶的薄雾制	hMi
@@ -172675,6 +173067,7 @@ wiwaxia men	鳞刺软体虫人	wi
 wombat joey	袋熊幼崽	wi
 woolly legs	带有羊毛的腿	wi
 worker ants	小工蚁	wi
+worshippers	信徒	wi
 wounded {a}	击伤了{a1}	ht
 yellow eyes	黄色眼眸	wi
 yellow sand	黄沙	wi
@@ -172967,7 +173360,6 @@ Paved road	铺装道路	w
 Percussion	打击乐演奏	wi
 Performers	表演者	wi
 Persecutor	虐待者	w
-Persuasion	说服	wi
 Philosophy	哲学	w
 Pikemaster	长枪主宰	wi
 Plant logs	原木	wi
@@ -173079,14 +173471,18 @@ acrid ooze	辛辣的污泥制	hMi
 acrid ooze	辛辣的污泥	wim
 adamantine	精金	wi
 admiration	钦佩	w
+adventures	冒险	wi
+affliction	苦恼	wi
 aggravated	恼火	w
 aggression	好斗的	wi
 alder cone	桤树球果	wi
 alder leaf	桤树叶	wi
 alder logs	桤树原木	wi
+allegiance	效忠	wi
 alligators	短吻鳄	wi
 allosaurus	异特龙	wi
 almandines	殷榴石	wi
+amazements	惊愕	wi
 amber opal	琥珀欧泊	wi
 ambivalent	没什么特别的感觉	wi
 ammunition	弹药	w
@@ -173100,6 +173496,7 @@ and melted	并熔化而死	h
 and moved.	并迁移了。	h
 anesthesia	麻醉	h
 angelshark	扁鲨	wi
+appearance	出现	wi
 apple leaf	苹果叶	wi
 apple tree	苹果树	wi
 apple wood	苹果木	wi
@@ -173112,7 +173509,9 @@ ash flower	白蜡树花	wi
 ash leaves	白蜡树叶	wi
 ash samara	白蜡树翼果	wi
 ashen logs	白蜡木原木	wi
+assemblies	集会	wi
 astonished	惊讶	w
+avalanches	雪崩	wi
 aventurine	砂金石	wi
 axe blades	斧刃	wi
 axedwarves	矮人斧手	wi
@@ -173122,6 +173521,9 @@ badger cub	鼬獾幼崽	wi
 badger man	鼬獾人	wi
 badger men	鼬獾人	wi
 badger sow	鼬獾	wi
+baldnesses	光秃	wi
+barbarians	野蛮人	wi
+barricades	路障	wi
 battle axe	战斧	wi
 bayberries	杨梅	wi
 beaver kit	海狸幼崽	wi
@@ -173131,6 +173533,7 @@ beet plant	甜菜植株	wi
 beet seeds	甜菜种子	wi
 beetle man	甲虫人	wi
 beetle men	甲虫人	wi
+beginnings	开始	wi
 being near	身处附近	wi
 bilberries	越橘	wi
 billy goat	山羊	wi
@@ -173144,18 +173547,24 @@ black sand	黑沙	wi
 blackberry	黑莓	wi
 blade weed	刀刃草	wi
 blood gnat	血飞虫	wi
+bloodiness	残忍	wi
 bloodstone	血石	wi
 blue jades	蓝翡翠	wi
 blue sedge	蓝苔莎	wi
 blue shark	大青鲨	wi
+bluenesses	蓝	wi
 bobcat man	短尾猫人	wi
 bobcat men	短尾猫人	wi
 body parts	身体部位	wi
+boldnesses	勇猛	wi
 bone opals	骨欧泊	wi
 bookkeeper	簿记员	hi
 bookkeeper	簿记员	wi
 boundaries	边界	r
 bowdwarves	矮人弓手	wi
+breakfasts	早餐	wi
+brightness	光亮	wi
+brilliance	光辉	wi
 broad-chin	下巴宽阔	wi
 buck hares	野兔	wi
 bugbat pup	虫蝠幼崽	wi
@@ -173165,17 +173574,20 @@ bumblebees	大黄蜂	wi
 burned out	烧毁了	h
 burned {a}	烧死了{a1}	ht
 bushmaster	巨蝮	wi
+businesses	生意	wi
 by melting	因被熔化	h
 cacao leaf	可可叶	wi
 cacao pods	可可豆荚	wi
 cacao tree	可可树	wi
 cacao wood	可可树	wi
+calamities	灾难	wi
 cap hopper	菌盖跳螈	wi
 caper bush	刺山柑灌木	wi
 caper leaf	刺山柑叶	wi
 carambolas	杨桃	wi
 carnelians	红玉髓	wi
 cat's eyes	猫眼石	wi
+cathedrals	大教堂	wi
 cave blobs	洞穴滴团	wi
 cave wheat	洞穴小麦	wi
 cavy boars	豚鼠	wi
@@ -173187,31 +173599,52 @@ chameleons	变色蜥	wi
 chancellor	大臣	hi
 chartreuse	查特酒绿	wi
 chief chef	首席厨师	hi
+chief chef	首席厨师	wi
+chieftains	酋长	wi
 chimpanzee	黑猩猩	wi
 chinchilla	毛丝鼠	wi
 chittering	悉悉索索的	wi
+chocolates	巧克力	wi
 claro opal	烟欧泊	wi
 cloudberry	云莓	wi
 coal slush	煤炭渣	wi
+coalitions	联盟	wi
 cockatiels	玄凤鹦鹉	wi
 coelacanth	腔棘鱼	wi
+coldnesses	寒冷	wi
 collapsed.	倒下了。	h
 coloration	自然花纹	wi
 commanders	指挥官	hi
+commanders	指挥官	wi
+communions	共融	wi
+compassion	同情	wi
+complexity	复杂	wi
 concluded.	结束了。	h
 condensed.	凝结而死。	h
+confidence	信心	wi
 conger eel	康吉鳗	wi
+connection	连接	wi
+conquerors	征服者	wi
 conspiracy	共谋	h
 constables	统领	hi
+constables	统领	wi
+constructs	构成物	wi
+containers	容器	wi
+continents	大陆	wi
+contingent	偶发	wi
+controller	控制者	wi
 cooked {s}	烹熟的{s1}	hIit
 corkscrews	螺杆	wi
 cornflower	矢车菊蓝	wi
+corruption	腐败	wi
 cosmic ice	宇宙冰	hMi
 cosmic ice	宇宙冰	wim
 cougar cub	美洲狮幼崽	wi
 cougar man	美洲狮人	wi
 cougar men	美洲狮人	wi
+counsellor	顾问	wi
 counselors	顾问	hi
+courtesies	礼貌	wi
 cow calves	奶牛幼崽	wi
 cow cheese	牛奶酪	wi
 cow's milk	牛奶	wi
@@ -173222,7 +173655,8 @@ coyote pup	郊狼幼崽	wi
 crab woman	螃蟹人	wi
 crab women	螃蟹人	wi
 creatures.	生物。	wl
-creepiness	令人毛骨悚然	wi
+creepiness	诡异	wi
+cremations	烧	wi
 crow woman	乌鸦人	wi
 crow women	乌鸦人	wi
 cup-bearer	斟酒官	hi
@@ -173232,6 +173666,7 @@ cursed ash	受诅咒的灰烬	wim
 cursed fog	受诅咒的雾制	hMi
 cursed fog	受诅咒的雾	wim
 cuttlefish	墨鱼	wi
+danknesses	阴湿	wi
 dark azure	深天青色	wi
 dark brown	深棕色	wi
 dark gnome	黑暗地精	wi
@@ -173241,28 +173676,35 @@ dark metal	黑暗金属	wim
 dark olive	深橄榄色	wi
 dark peach	深桃色	wi
 dark taupe	深灰褐色	wi
+darknesses	黑暗	wi
 deer fawns	鹿幼崽	wi
 deer woman	鹿人	wi
 deer women	鹿人	wi
 dehydrated	脱水	wi
 demantoids	翠榴石	wi
 demon rats	恶魔老鼠	wi
+destroyers	破坏者	wi
 dictionary	词典	hv
+dimensions	维度	wi
 dimetrodon	异齿龙	wi
 dimple cup	窝杯菇	wi
 dimple dye	窝杯染料	wi
 dingo pups	野狗幼崽	wi
 diplodocus	梁龙	wi
+directions	方向	wi
 discipline	自律	r
 discussing	讨论	wi
+disloyalty	不忠实	wi
 dissolved.	解散了。	h
 distressed	痛苦	w
 dodo cocks	渡渡鸟	wi
 dodo woman	渡渡鸟人	wi
 dodo women	渡渡鸟人	wi
 doe rabbit	兔	wi
+domination	支配	wi
 dorsal fin	背鳍	h
 drone ants	蚁	wi
+droopiness	萎靡	wi
 during {e}	在{e1}期间	ht
 dust baths	沙浴	wi
 eerie dust	诡异的灰尘制	hMi
@@ -173286,6 +173728,7 @@ elder wood	上古木	hMi
 elder wood	上古木头	wim
 eldest son	长子	h
 emu chicks	鸸鹋幼崽	wi
+enchanters	附魔师	wi
 enraptured	陶醉	w
 entelodons	完齿兽	wi
 eryops man	引螈人	wi
@@ -173297,15 +173740,21 @@ evil smoke	邪恶的烟制	hMi
 evil smoke	邪恶的烟	wim
 evil vapor	邪恶的蒸气制	hMi
 evil vapor	邪恶的蒸气	wim
+exaltation	提升	wi
 exalted ox	高尚牛	hi
+excavation	挖掘	wi
+executions	实行	wi
 eye tissue	眼部组织	wi
 face veils	面纱	wi
+falsehoods	谎言	wi
 father {n}	父亲{n1}	htu
+fellowship	伙伴	wi
 fern green	蕨类绿	wi
 fetid muck	恶臭的污泥制	hMi
 fetid muck	恶臭的污泥	wim
 fetid ooze	恶臭的污泥制	hMi
 fetid ooze	恶臭的污泥	wim
+fierceness	凶猛	wi
 fifth head	第五头	h
 fifth neck	第五颈	h
 filthy goo	污秽的黏稠物制	hMi
@@ -173787,6 +174236,7 @@ flax plant	亚麻植株	wi
 flax seeds	亚麻种子	wi
 flesh ball	血肉之球	wi
 fleshy {s}	肉质的{s1}	htv
+flimsiness	脆弱	wi
 floodgates	水闸	wi
 fonio beer	非尼奥啤酒	wi
 fonio leaf	非尼奥米叶	wi
@@ -173794,6 +174244,7 @@ fooled {a}	欺骗了{a1}	ht
 foot armor	足部盔甲	h
 formed {p}	成立了{p1}	ht
 fortresses	堡垒	r
+fortresses	要塞	wi
 fought {n}	与{n}交战	ht
 foul gloom	污秽的阴霾制	hMi
 foul gloom	污秽的阴霾	wim
@@ -173807,6 +174258,7 @@ fourth arm	第四手臂	h
 fourth eye	第四只眼	h
 fourth toe	第四脚趾	h
 fourth toe	第四趾	w
+fragrances	芬芳	wi
 free-lobed	耳垂分离	wi
 freed {a}.	解救了{a1}。	ht
 friend {n}	朋友{n1}	htu
@@ -173858,6 +174310,7 @@ government	政府	hIi
 grandchild	孙辈	wi
 grape leaf	葡萄叶	wi
 grape vine	葡萄藤	wi
+graynesses	灰色	wi
 great axes	巨斧	wi
 great pick	大鹤嘴锄	wi
 great size	巨大体型	wi
@@ -173877,12 +174330,14 @@ hard wheat	硬质小麦	wi
 hare woman	野兔人	wi
 hare women	野兔人	wi
 harp seals	竖琴海豹	wi
+harvesters	收获者	wi
 hated {a}.	憎恨{a1}。	ht
 hazel leaf	榛叶	wi
 hazel nuts	榛子	wi
 hazel tree	榛树	wi
 hazel wood	榛木	wi
 head chefs	首席厨师	hi
+head chefs	首席厨师	wi
 head veils	头纱	wi
 heliotrope	缬草紫	wi
 hemp flour	大麻面粉	wi
@@ -173984,6 +174439,7 @@ high chaos	高阶大混乱	hi
 high charm	高阶吸引力	hi
 high chasm	高阶陷窟	hi
 high chefs	高阶厨师	hi
+high chefs	高阶厨师	wi
 high child	高阶孩子	hi
 high chill	高阶寒意	hi
 high chips	高阶碎片	hi
@@ -174596,6 +175052,7 @@ high yells	高阶叫声	hi
 high youth	高阶青春	hi
 high zeals	高阶热忱	hi
 hippo calf	河马幼崽	wi
+holinesses	神圣	wi
 holy abbey	神圣修道院	hi
 holy abyss	神圣深渊	hi
 holy aches	神圣疼痛	hi
@@ -175308,19 +175765,25 @@ horrid goo	可怕的黏稠物制	hMi
 horrid goo	可怕的黏稠物	wim
 horse foal	马幼崽	wi
 humiliated	屈辱	w
+hurricanes	飓风	wi
 hyena cubs	鬣狗幼崽	wi
 ibex woman	羱羊人	wi
 ibex women	羱羊人	wi
 ice wolves	冰原狼	wi
 icosahedra	二十面体	wi
+idlenesses	懒惰	wi
 iguana man	鬣蜥人	wi
 iguana men	鬣蜥人	wi
+immorality	不道德	wi
 impala man	高角羚人	wi
 impala men	高角羚人	wi
 imprisoned	囚禁了	h
 imprisoner	囚禁者	h
+impurities	杂质	wi
 in failure	以失败告终	h
 incredibly	异常	wi
+influences	影响力	wi
+insanities	疯狂	wi
 interested	有趣	w
 intestines	肠	wi
 is an {s}.	是{s}。	ht
@@ -175346,6 +175809,7 @@ kenaf seed	洋麻种子	wi
 kidnapping	绑架	h
 killed {a}	杀死了{a1}	ht
 kimberlite	金伯利岩	wi
+kindnesses	仁慈	wi
 king cobra	眼镜王蛇	wi
 kingsnakes	王蛇	wi
 kiwi chick	鹬鸵幼崽	wi
@@ -175356,6 +175820,7 @@ known ally	众所周知的同盟者	h
 known bard	众所周知的吟游诗人	h
 known poet	众所周知的诗人	h
 koala joey	树袋熊幼崽	wi
+labyrinths	迷宫	wi
 lace agate	蕾丝玛瑙	wi
 lacy wings	蕾丝般的翅膀	hv
 lacy wings	花边翅膀	wi
@@ -175364,7 +175829,9 @@ large eyes	大眼睛	wi
 large rats	硕鼠	wi
 large size	大体型	wi
 law-givers	立法者	hi
+law-givers	立法者	wi
 lay pewter	劣白锡	wi
+lazinesses	怠惰	wi
 leaf green	叶绿色	wi
 led by {a}	由{a1}率领	ht
 leek seeds	韭葱种子	wi
@@ -175379,9 +175846,11 @@ lentil pod	扁豆荚	wi
 less angry	不那么易怒	wi
 less proud	不那么骄傲	wi
 levin opal	雷电欧泊	wi
+liberation	释放	wi
 lieutenant	中尉	hi
 lieutenant	中尉	wi
 light blue	浅蓝色	wi
+lightnings	闪电	wi
 lime seeds	酸橙种子	wi
 lime trees	酸橙树	wi
 linhenykus	微型单爪龙	wi
@@ -175408,9 +175877,11 @@ loud calls	响亮的叫声	wi
 low-voiced	嗓音低缓	wi
 lower body	下半身	h
 lower body	下半身	w
+lucidities	明朗	wi
 lynx woman	猞猁人	wi
 lynx women	猞猁人	wi
 magistrate	地方法官	hi
+magistrate	地方法官	wi
 magma crab	熔岩螃蟹	wi
 magpie man	喜鹊人	wi
 magpie men	喜鹊人	wi
@@ -175432,7 +175903,7 @@ marksdwarf	矮人弩手	wi
 marlin fry	枪鱼幼崽	wi
 master {n}	师傅{n1}	htu
 masterwork	杰作级的	h
-mechanisms	机件	wi
+meditation	沉思	wi
 megacerops	巨角犀	wi
 megalodons	巨齿鲨	wi
 metal bars	金属锭	wi
@@ -175441,6 +175912,7 @@ mid-autumn	仲秋	wi
 mid-spring	仲春	wi
 mid-summer	仲夏	wi
 mid-winter	仲冬	wi
+mightiness	强大	wi
 milk opals	乳欧泊	wi
 millstones	机械石磨	wi
 mimetaster	拟星虫	wi
@@ -175477,7 +175949,9 @@ mutilated 	残缺不全的	wi
 nanny goat	山羊	wi
 nautiluses	鹦鹉螺	wi
 nest boxes	巢箱	wi
+neutrality	中立	wi
 nightmares	噩梦	r
+nightmares	梦魇	wi
 nightwings	夜翼	wi
 nineteenth	第十九	wi
 nodosaurus	结节龙	wi
@@ -175503,6 +175977,7 @@ olive tree	橄榄树	wi
 olive wood	橄榄木	wi
 onion leaf	洋葱叶	wi
 only child	唯一的孩子	h
+onslaughts	突击	wi
 onyx opals	缟纹欧泊	wi
 optimistic	乐观	w
 orangutans	红毛猩猩	wi
@@ -175519,8 +175994,10 @@ pale brown	淡棕色	wi
 pale metal	苍白金属	hMi
 pale metal	苍白金属	wim
 pale taupe	浅褐色	wi
+palenesses	苍白	wi
 pancreases	胰腺	h
 panda cubs	熊猫幼崽	wi
+pantomimes	手势	wi
 passionate	热情	w
 pea flower	豌豆花	wi
 pea leaves	豌豆叶	wi
@@ -175535,10 +176012,15 @@ pear trees	白梨树	wi
 pecan leaf	碧根果叶	wi
 pecan tree	碧根果树	wi
 pecan wood	碧根果木	wi
+perfection	完美	wi
 performing	表演	wi
+perishment	消亡	wi
 periwinkle	长春花蓝	wi
+permanency	永恒	wi
 persimmons	柿	wi
+persuaders	说服者	wi
 persuasion	说服	r
+persuasion	说服	wi
 philosophy	哲学	h
 pig cheese	猪奶酪	wi
 pig's milk	猪奶	wi
@@ -175556,6 +176038,8 @@ preserved 	保存的	wi
 primal ice	原始冰	hMi
 primal ice	原始冰	wim
 princesses	公主	wi
+principles	原则	wi
+prophecies	预言	wi
 protruding	突出	wi
 puffin man	海鹦人	wi
 puffin men	海鹦人	wi
@@ -175564,10 +176048,13 @@ putrid goo	腐败的黏稠物	wim
 pyrolusite	软锰矿	wi
 python man	巨蟒人	wi
 python men	巨蟒人	wi
+quandaries	困惑	wi
 queen ants	蚁	wi
+quiescence	静止	wi
 raided {p}	袭击了{p1}	ht
 ramie leaf	苎麻叶	wi
 razed {p}.	夷平了{p1}。	ht
+recreation	娱乐	wi
 red beryls	红柱石	wi
 red pandas	红熊猫	wi
 red pyrope	赤榴石	wi
@@ -175575,7 +176062,9 @@ red spinel	红尖晶石	wi
 red zircon	红锆石	wi
 red-purple	红紫色	wi
 remorseful	懊悔	wi
+reputation	名誉	wi
 resin opal	脂光欧泊	wi
+reverences	尊敬	wi
 rhinoceros	犀牛	wi
 rhodolites	朱榴石	wi
 rice flour	稻米面粉	wi
@@ -175596,8 +176085,11 @@ right neck	右颈	h
 right tail	右尾巴	h
 right tusk	右长牙	h
 right wing	右翅	h
+ringleader	首领	wi
+ripenesses	成熟	wi
 ripped off	扯断了	h
 river blue	河畔蓝	wi
+robustness	强健	wi
 rodent man	地底刺毛鼠人	wi
 rodent men	地底刺毛鼠人	wi
 rope reeds	绳索苇	wi
@@ -175609,6 +176101,7 @@ round lime	圆橘	wi
 round-chin	圆下巴	wi
 routed {a}	击溃了{a1}	ht
 royal chef	皇家厨师	hi
+royal chef	皇家厨师	wi
 rubicelles	橙尖晶石	wi
 rye leaves	黑麦叶	wi
 sacred ace	神圣王牌	hi
@@ -175720,18 +176213,22 @@ sacred war	神圣战争	hi
 sacred wax	神圣蜡	hi
 sacred way	神圣路	hi
 sacred web	神圣网	hi
+sacrifices	牺牲	wi
 sanctuary.	寻求庇护。	hP
 sand pears	沙梨	wi
 sandy clay	砂质黏土	wi
 sandy loam	砂质壤土	wi
 sarcophagi	华棺	wi
 sardonyxes	缠丝玛瑙	wi
+savageries	兽性	wi
 scratching	挠	wi
+sculptures	雕刻	wi
 sea otters	海獭	wi
 second arm	第二手臂	h
 second eye	第二只眼	h
 second toe	第二脚趾	h
 second toe	第二趾	w
+seductions	诱惑	wi
 seeing die	看到某人死亡	wi
 septuplets	七胞胎	wi
 serpentine	蛇纹石	wi
@@ -175741,8 +176238,10 @@ sextuplets	六胞胎	wi
 shell opal	贝壳欧泊	wi
 short bolt	短弩矢	wi
 short legs	短腿	wi
+sicknesses	疾病	wi
 siege ammo	攻城弹药	wi
 silty clay	粉质粘土	wi
+simplicity	单纯	wi
 single cut	单多面形切工	wi
 single eye	独眼	wi
 sinopterus	小型冠翼龙	wi
@@ -175751,10 +176250,12 @@ sixth head	第六头	h
 sixth neck	第六颈	h
 skunk kits	臭鼬幼崽	wi
 slate gray	板岩灰	wi
+slaughters	残杀	wi
 sliver dye	裂钩染料	wi
 sloth bear	懒熊	wi
 sloth cubs	树懒幼崽	wi
 small size	小体型	wi
+smoothness	柔滑	wi
 snowy owls	雪鸮	wi
 soft wheat	软质小麦	wi
 solid salt	固态盐	hv
@@ -175769,18 +176270,23 @@ spore tree	孢子树	wi
 spouse {n}	配偶{n1}	htu
 square cut	方形切工	wi
 star chart	星图	hv
+starvation	饥饿	wi
 stepladder	折梯	wi
 stoat jack	鼬鼠	wi
 stoat jill	鼬鼠	wi
 stoat kits	白鼬幼崽	wi
 stranglers	绞杀者	wi
+strategies	战略	wi
 strawberry	草莓	wi
+subtleties	微妙	wi
+sufferings	苦难	wi
 suffocated	窒息而死	h
 suspicious	怀疑	w
 swan woman	天鹅人	wi
 swan women	天鹅人	wi
 sweet pods	甜豆荚	wi
 sweetbread	胸腺	wi
+symmetries	对称	wi
 tanzanites	坦桑石	wi
 tapir calf	貘幼崽	wi
 taro seeds	芋头种子	wi
@@ -175789,6 +176295,7 @@ tea flower	茶花	wi
 tea leaves	茶叶	wi
 teff flour	苔麸面粉	wi
 teff plant	苔麸植株	wi
+temptation	诱惑	wi
 tenderness	温柔	w
 terrariums	玻璃缸	wi
 tetrahedra	四面体	wi
@@ -175818,9 +176325,13 @@ toad women	蟾蜍人	wi
 tomatillos	灯笼番茄	wi
 toothy maw	有牙齿的胃	wi
 topazolite	黄榴石	wi
+tournament	比赛	wi
 toy hammer	玩具锤	wi
 travellers	旅人	r
 treasurers	司库	hi
+treasurers	司库	wi
+treasuries	国库	wi
+trickeries	欺骗	wi
 trilobites	三叶虫	wi
 troglodyte	穴居人	wi
 trumpeting	吼叫	wi
@@ -175829,6 +176340,8 @@ tube agate	管脉玛瑙	wi
 tuber beer	地根啤酒	wi
 turkey hen	火鸡	wi
 turquoises	绿松石	wi
+uglinesses	丑陋	wi
+unholiness	不神圣	wi
 unholy ash	不洁的灰烬制	hMi
 unholy ash	不洁的灰烬	wim
 unholy fog	不洁的雾制	hMi
@@ -175837,11 +176350,17 @@ upper body	上半身	h
 upper body	上半身	w
 urad beans	尤拉德黑豆	wi
 utahraptor	巨型盗龙	wi
+utterances	发声	wi
+vanishment	消失	wi
 variscites	磷铝石	wi
+vegetables	蔬菜	wi
+vegetation	植被	wi
+veneration	尊敬	wi
 very curly	非常卷曲	hv
 very deep.	非常深陷。	wil
 very large	体型庞大	wi
 very short	非常矮小	wi
+vestibules	前庭	wi
 viewed {p}	观赏了{p1}	ht
 vile filth	卑劣的污垢制	hMi
 vile filth	卑劣的污垢	wim
@@ -175857,6 +176376,7 @@ vile smoke	卑劣的烟制	hMi
 vile smoke	卑劣的烟	wim
 vile vapor	卑劣的蒸气制	hMi
 vile vapor	卑劣的蒸气	wim
+vilenesses	卑劣	wi
 wagon wood	货车木	wi
 wall grate	墙壁格栅	wi
 walrus man	海象人	wi
@@ -175867,15 +176387,19 @@ war dragon	受过战斗训练的巨龙	wi
 war hammer	战锤	wi
 war jaguar	受过战斗训练的美洲豹	wi
 war leader	战争领袖	hi
+war leader	战争领袖	wi
 war ocelot	受过战斗训练的豹猫	wi
 war tigers	受过战斗训练的虎	wi
 warm heart	热心肠	wi
 was a {s}.	是{s}。	ht
 watermelon	西瓜	wi
 waterskins	水袋	wi
+wavinesses	波状	wi
+weaknesses	虚弱	wi
 weasel kit	黄鼬幼崽	wi
 weasel man	黄鼬人	wi
 weasel men	黄鼬人	wi
+weathering	风化	wi
 weird pulp	怪异果肉制	hMi
 weird pulp	怪异果肉	wim
 whip vines	鞭藤	wi
@@ -175886,9 +176410,11 @@ wicked ash	邪恶的灰烬制	hMi
 wicked ash	邪恶的灰烬	wim
 wicked fog	邪恶的雾制	hMi
 wicked fog	邪恶的雾	wim
+wickedness	邪恶	wi
 wild boars	野猪	wi
 wild geese	大雁	wi
 wild goose	大雁	wi
+wildnesses	野生	wi
 willow log	柳树原木	wi
 within {p}	于{p1}	htC
 wolf woman	狼人	wi
@@ -175905,6 +176431,7 @@ wren women	鹪鹩人	wi
 yak calves	牦牛幼崽	wi
 yak cheese	牦牛奶酪	wi
 yak's milk	牦牛奶	wi
+yellowness	黄色	wi
 zombie {s}	僵尸{s1}	htv
 {a} at {p}	{a1}（于{p1}）	htC
 {a} boiled	{a1}沸腾而死	ht
@@ -176011,7 +176538,6 @@ Confusion	困惑	w
 Conquered	被征服	hq
 Conquered	已被征服	w
 Consoling	安慰	wi
-Container	容器	wi
 Craftsman	工匠	wi
 Craftsmen	工匠	wi
 Creatures	生物	w
@@ -176164,7 +176690,6 @@ Organizer	组织者	wi
 Overwrite	覆盖	w
 Paralyzed	麻痹	w
 Performer	表演者	wi
-Persuader	说服者	wi
 Pessimism	悲观	w
 Pet death	宠物死亡	w
 Pet owner	宠物主人	w
@@ -176269,7 +176794,9 @@ a library	图书馆	h
 a pasture	牧场	h
 a {s} {s}	{s1}{s2}	htN
 aardvarks	土豚	wi
+abatement	减少	wi
 accepting	接纳	w
+accidents	意外	wi
 acorn fly	橡子蝇	wi
 acquiring	获得造物	wi
 acrid goo	辛辣的黏稠物制	hMi
@@ -176277,15 +176804,20 @@ acrid goo	辛辣的黏稠物	wim
 adder man	蝰蛇人	wi
 adder men	蝰蛇人	wi
 adoration	崇拜	w
+adulation	谄媚	wi
+adventure	冒险	wi
 affection	喜爱	w
 agitated 	躁动的	wi
 alabaster	雪花石膏	wi
 albatross	信天翁	wi
+alchemies	炼金术	wi
 alder log	桤树原木	wi
 alienated	疏离	wi
+alliances	联盟	wi
 alligator	短吻鳄	wi
 almandine	殷榴石	wi
 aloofness	冷漠	wi
+ambiguity	不明确	wi
 amethysts	紫水晶	wi
 anacondas	水蟒	wi
 anchovies	凤尾鱼	wi
@@ -176298,21 +176830,35 @@ apathetic	冷漠	wi
 aquariums	水族缸	wi
 armadillo	犰狳	wi
 artichoke	洋蓟	wi
+artifices	技艺	wi
 ash glaze	灰釉	wi
 ashen log	白蜡木原木	wi
 asparagus	芦笋	wi
+authority	权力	wi
+avalanche	雪崩	wi
 axe blade	斧刃	wi
 backpacks	背包	wi
 bar/block	锭块	wi
+barbarian	野蛮人	wi
+barbarity	野蛮	wi
 barn owls	仓鸮	wi
+barricade	路障	wi
+basements	地下室	wi
 bat wings	蝙蝠翅膀	wi
 bat woman	蝙蝠人	wi
 bat women	蝙蝠人	wi
 beak dogs	喙狗	wi
 beet leaf	甜菜叶	wi
+beginning	开始	wi
+beguilers	欺骗者	wi
 bentgrass	糠穗草	wi
+betrayals	背叛	wi
 biography	传记	hv
 birch log	桦树原木	wi
+blackness	黑	wi
+blindness	盲目	wi
+blizzards	大风雪	wi
+blockades	阻塞	wi
 blood man	血人	wi
 blood men	血人	wi
 blowdarts	吹箭箭矢	wi
@@ -176327,22 +176873,26 @@ bookcases	书架	wi
 bracelets	手镯	wi
 branching	分枝状的	hv
 branching	分叉	wi
+breakfast	早餐	wi
 brimstone	硫磺	wi
 buck hare	野兔	wi
 buckwheat	荞麦	wi
 bull calf	奶牛幼崽	wi
 bumblebee	大黄蜂	wi
+butterfly	蝴蝶	wi
 cabochons	弧面切工	wi
 cacao pod	可可豆荚	wi
 capuchins	卷尾猴	wi
 capybaras	水豚	wi
 carambola	杨桃	wi
 cardinals	红衣凤头鸟	wi
+carnality	肉欲	wi
 carnelian	红玉髓	wi
 caroused.	纵情狂欢了。	h
 cartilage	软骨	wi
 cassowary	鹤鸵	wi
 cat's eye	猫眼石	wi
+cathedral	大教堂	wi
 cauldrons	大锅	wi
 cave blob	洞穴滴团	wi
 cave fish	洞穴鱼	wi
@@ -176351,20 +176901,23 @@ cavy boar	豚鼠	wi
 cavy pups	豚鼠幼崽	wi
 cavy sows	豚鼠	wi
 cedar log	雪松原木	wi
+certainty	确定	wi
 chameleon	变色蜥	wi
-champions	冠军	wi
-chestnuts	板栗树	wi
 chickpeas	鹰嘴豆	wi
+chieftain	酋长	wi
 chieftess	女酋长	hi
+chieftess	女酋长	wi
 chipmunks	花栗鼠	wi
-chocolate	巧克力色	wi
 chronicle	编年史	hv
 cinnamon.	肉桂色。	wil
 clay loam	黏质壤土	wi
 claystone	黏土岩	wi
+clearings	林间空地	wi
+cloisters	修道院	wi
 close-set	排列紧密	hv
 close-set	间距很窄	wi
 clownfish	小丑鱼	wi
+coalition	联盟	wi
 coati man	长鼻浣熊人	wi
 coati men	长鼻浣熊人	wi
 cob swans	天鹅	wi
@@ -176372,16 +176925,32 @@ cobaltite	辉钴矿	wi
 cockatiel	玄凤鹦鹉	wi
 collapsed	倒下了	h
 commander	指挥官	hi
+commander	指挥官	wi
+communion	共融	wi
+companies	团体	wi
 concluded	结束了	h
 condensed	凝结而死	h
+conflicts	战斗	wi
+conjurers	召唤师	wi
 conquered	征服了	h
+conqueror	征服者	wi
 constable	统领	hi
+constable	统领	wi
+construct	构成物	wi
+container	容器	wi
+continent	大陆	wi
 corkscrew	螺杆	wi
+corridors	走廊	wi
 counselor	顾问	hi
 cow moose	驼鹿	wi
 cranberry	蔓越莓	wi
-crescents	新月形	wi
+craziness	发狂	wi
+creations	创造	wi
+creatures	生物	wi
+cremation	烧	wi
+crescents	新月	wi
 crossbows	十字弩	wi
+cruelties	残酷	wi
 cucumbers	黄瓜	wi
 curiosity	好奇心	wi
 cut gems.	切割宝石。	w
@@ -176390,28 +176959,45 @@ dark blue	深蓝色	wi
 dark pink	深粉色	wi
 date wine	椰枣果酒	wi
 decaplets	十胞胎	wi
+deceivers	欺人者	wi
+decisions	决定	wi
 deer fawn	鹿幼崽	wi
+defenders	防卫者	wi
+deference	敬意	wi
 deformity	畸形	r
 delighted	欣喜	w
 demantoid	翠榴石	wi
 demeanor.	举止沉着。	l
 demon rat	恶魔老鼠	wi
 depravity	堕落	r
+destinies	命运	wi
 destroyed	摧毁了	h
+destroyer	破坏者	wi
+devourers	吞噬者	wi
 diadectes	阔齿龙	wi
+dimension	维度	wi
 dingo man	野狗人	wi
 dingo men	野狗人	wi
 dingo pup	野狗幼崽	wi
 dining in	就餐	wi
 diplomats	外交官	wi
+direction	方向	wi
+discovery	发现	wi
 disgusted	厌恶	w
+dispersal	散布	wi
 dissolved	解散了	h
+distances	距离	wi
+doctrines	教条	wi
 dodo cock	渡渡鸟	wi
 dodo hens	渡渡鸟	wi
 doe hares	野兔	wi
+domiciles	家园	wi
+dominions	支配	wi
 dragonfly	蜻蜓	wi
 drone ant	蚂蚁蚁王	wi
 ducklings	鸭幼崽	wi
+dumplings	饺子	wi
+dwellings	住处	wi
 eagle man	鹰人	wi
 eagle men	鹰人	wi
 ear tufts	耳羽	wi
@@ -176419,6 +177005,7 @@ eerie ash	诡异的灰烬制	hMi
 eerie ash	诡异的灰烬	wim
 eerie fog	诡异的雾制	hMi
 eerie fog	诡异的雾	wim
+eerieness	诡异	wi
 egg white	蛋白	wi
 eggplants	茄子	wi
 elder ice	上古冰	hMi
@@ -176430,12 +177017,16 @@ elk woman	麋鹿人	wi
 elk women	麋鹿人	wi
 eloquence	口才	wi
 emotions.	情绪。	l
+emptiness	空虚	wi
 emu chick	鸸鹋幼崽	wi
 emu woman	鸸鹋人	wi
 emu women	鸸鹋人	wi
+enchanter	附魔师	wi
 enjoyment	愉快	w
 enormous 	大号	wi
 entelodon	完齿兽	wi
+entrances	入口	wi
+epidemics	传染病	wi
 espionage	间谍活动	h
 etymology	词源学	h
 evil dust	邪恶的灰尘制	hMi
@@ -176446,13 +177037,17 @@ evil murk	邪恶的暗雾制	hMi
 evil murk	邪恶的暗雾	wim
 evil soot	邪恶的煤烟制	hMi
 evil soot	邪恶的煤烟	wim
+execution	实行	wi
 expectant	期待	w
 extremely	极为	wi
 eyelashes	睫毛	wi
 face veil	面纱	wi
+falsehood	谎言	wi
+fanciness	幻想	wi
 fantastic	奇妙的	wi
 fertility	生育	r
 festivals	节庆	r
+festivals	节	wi
 fetid goo	恶臭的黏稠物制	hMi
 fetid goo	恶臭的黏稠物	wim
 few dozen	几十	wi
@@ -176594,11 +177189,17 @@ foul murk	污秽的暗雾制	hMi
 foul murk	污秽的暗雾	wim
 foul soot	污秽的煤烟制	hMi
 foul soot	污秽的煤烟	wim
+fountains	喷泉	wi
 fox woman	狐狸人	wi
 fox women	狐狸人	wi
+fragments	碎片	wi
+fragrance	芬芳	wi
 freed {a}	解救了{a1}	ht
+frigidity	寒冷	wi
 from afar	从远方	h
 from afar	身处远方	wi
+galleries	走廊	wi
+garnishes	装饰	wi
 gauntlets	护手	wi
 genealogy	家谱	hv
 giant bat	蝙蝠	wi
@@ -176619,25 +177220,33 @@ goldenrod	金麒麟黄	wi
 goose man	鹅人	wi
 goose men	鹅人	wi
 goshenite	白柱石	wi
+governors	总督	wi
 grappling	扭打	h
 gratitude	感激	w
 great axe	巨斧	wi
 great {s}	巨大的{s1}	htv
+greatness	大	wi
+greenness	绿色	wi
 grimeling	沼泽草怪	wi
 groundhog	土拨鼠	wi
 grown {s}	长出的{s1}	hIit
 guineahen	珍珠鸡	wi
 hairy {s}	多毛的{s1}	htv
-hammerers	锤刑官	wi
 happiness	幸福	r
 hard work	勤奋	wi
+hardiness	强壮	wi
+harmonies	协调	wi
 harp seal	竖琴海豹	wi
+harshness	严酷	wi
+harvester	收获者	wi
 hated {a}	憎恨{a1}	ht
 hazel nut	榛子	wi
 head bobs	癞子头	wi
 head chef	首席厨师	hi
+head chef	首席厨师	wi
 head veil	头纱	wi
 headscarf	丝巾	wi
+heaviness	重	wi
 hedgehogs	刺猬	wi
 heliodors	绿柱石	wi
 hemp leaf	大麻叶	wi
@@ -176712,6 +177321,7 @@ high cats	高阶猫	hi
 high cave	高阶洞	hi
 high cell	高阶小室	hi
 high chef	高阶厨师	hi
+high chef	高阶厨师	wi
 high chip	高阶碎片	hi
 high city	高阶城市	hi
 high clam	高阶蛤	hi
@@ -177580,18 +178190,29 @@ holy year	神圣年	hi
 holy yell	神圣叫声	hi
 holy yore	神圣从前	hi
 holy zeal	神圣热忱	hi
+honesties	诚实	wi
 honey bee	蜜蜂	wi
 honeycomb	蜜脾	wi
 hornbills	犀鸟	wi
 horrified	惊骇	w
+hurricane	飓风	wi
 hyena cub	鬣狗幼崽	wi
 hyena man	鬣狗人	wi
 hyena men	鬣狗人	wi
 ibex kids	羱羊幼崽	wi
 ichorous 	脓液状的	wi
+ignorance	无知	wi
 iguanodon	禽龙	wi
+illnesses	疾病	wi
+immortals	不朽者	wi
 improving	有所进步	wi
+incidents	事件	wi
 indignant	愤慨	w
+infection	传染	wi
+influence	影响力	wi
+innocence	无罪	wi
+intensity	强烈	wi
+intricacy	纷乱	wi
 intricate	精巧	wi
 irritated	恼火	w
 is a {s}.	是{s}。	ht
@@ -177602,6 +178223,7 @@ is sickly	体弱多病	wi
 is skinny	很消瘦	wi
 is strong	很强壮	wi
 jabberers	宽喙巨兽	wi
+jaundices	黄疸	wi
 justiciar	司法官	h
 jute leaf	黄麻叶	wi
 kangaroos	袋鼠	wi
@@ -177620,10 +178242,13 @@ known for	以……闻名	h
 koala man	树袋熊人	wi
 koala men	树袋熊人	wi
 labyrinth	迷宫	hv
+labyrinth	迷宫	wi
+languages	语言	wi
 larch log	落叶松原木	wi
 large rat	硕鼠	wi
 large {s}	大型{s1}	htv
 law-giver	立法者	h
+law-giver	立法者	wi
 leech man	水蛭人	wi
 leech men	水蛭人	wi
 leek leaf	韭葱叶	wi
@@ -177645,8 +178270,12 @@ left tusk	左长牙	h
 left wing	左翅	h
 leg armor	腿部盔甲	h
 legendary	传奇的	wi
+leprosies	麻疯病	wi
 less vain	不那么虚荣	wi
+liberties	自由	wi
+libraries	图书馆	wi
 lightning	闪电	r
+lightning	闪电	wi
 lime leaf	酸橙叶	wi
 lime tree	酸橙树	wi
 lime wood	酸橙木	wi
@@ -177667,9 +178296,11 @@ low boots	短筒靴	wi
 low howls	低沉的咆哮声	wi
 lower lip	下唇	h
 lower lip	下唇	w
+lownesses	低下	wi
 lye slush	碱液泥	wi
 lynx cubs	猞猁幼崽	wi
 macedwarf	矮人页锤手	wi
+magicians	法师	wi
 magma man	岩浆人	wi
 magma men	岩浆人	wi
 magnetite	磁铁矿	wi
@@ -177680,7 +178311,6 @@ many arms	许多触手	wi
 maple log	枫树原木	wi
 marcasite	白铁矿	wi
 mastering	达到精通水平	wi
-mechanism	机件	wi
 megalania	古巨蜥	wi
 megalodon	巨齿鲨	wi
 meganeura	巨脉蜻蜓	wi
@@ -177691,6 +178321,7 @@ merpeople	人鱼	wi
 merperson	人鱼	wi
 merriment	欢乐	wi
 midautumn	仲秋	wi
+midnights	午夜	wi
 midspring	仲春	wi
 midsummer	仲夏	wi
 midwinter	仲冬	wi
@@ -177706,7 +178337,9 @@ moa woman	恐鸟人	wi
 moa women	恐鸟人	wi
 mog juice	跳虫肉汁	wi
 moghopper	泥跳虫	wi
+moistness	湿	wi
 monastery	修道院	hv
+monastery	修道院	wi
 mongooses	獴	wi
 mononykus	单爪龙	wi
 moose man	驼鹿人	wi
@@ -177715,14 +178348,20 @@ more rude	更加粗鲁	wi
 more vain	更加虚荣	wi
 more zany	更加诙谐	wi
 morganite	摩根石	wi
+mortality	必死	wi
 mortified	羞愧难当	w
 mosquitos	蚊子	wi
 moss opal	苔藓欧泊	wi
+most high	至高	wi
+most holy	至圣	wi
 mountains	山峦	r
-mountains	山岭	wi
+mountains	山	wi
 muck root	淤曲根	wi
 mule foal	骡子幼崽	wi
+mushrooms	蘑菇	wi
 muskmelon	甜瓜	wi
+mysteries	秘密	wi
+nightmare	梦魇	wi
 nightwing	夜翼	wi
 no sphere	无神域	r
 nonuplets	九胞胎	wi
@@ -177731,6 +178370,11 @@ oak twigs	橡树枝条	wi
 oaken log	橡木原木	wi
 oat flour	燕麦面粉	wi
 oat seeds	燕麦种子	wi
+obeisance	敬礼	wi
+oblivions	遗忘	wi
+obscenity	淫秽	wi
+obscurity	阴暗	wi
+obstacles	障碍	wi
 octahedra	八面体	wi
 octopuses	章鱼	wi
 octuplets	八胞胎	wi
@@ -177749,6 +178393,7 @@ olm woman	洞螈人	wi
 olm women	洞螈人	wi
 on a whim	出于一时兴起	h
 once more	再次	h
+onslaught	突击	wi
 onyx opal	缟纹欧泊	wi
 orangutan	红毛猩猩	wi
 orca calf	逆戟鲸幼崽	wi
@@ -177756,13 +178401,17 @@ ore, fuel	矿石,燃料	wi
 ostriches	鸵鸟	wi
 otter man	海獭人	wi
 otter men	海獭人	wi
+overlords	霸主	wi
 oviraptor	窃蛋龙	wi
+ownership	所有权	wi
 pale blue	淡蓝色	wi
 pale pink	淡粉色	wi
+palisades	木栅	wi
 panda cub	熊猫幼崽	wi
 panda man	熊猫人	wi
 panda men	熊猫人	wi
 pangolins	穿山甲	wi
+pantomime	手势	wi
 parakeets	长尾鹦鹉	wi
 parchment	兽皮纸	wi
 pea plant	豌豆植株	wi
@@ -177773,11 +178422,13 @@ pedestals	基座	wi
 pen swans	天鹅	wi
 periclase	方镁石	wi
 persimmon	柿	wi
+persuader	说服者	wi
 pig tails	猪尾草	wi
 pikedwarf	矮人长枪手	wi
 pine logs	针松原木	wi
 pineapple	菠萝	wi
 pink jade	粉红翡翠	wi
+pinnacles	顶峰	wi
 pipe opal	管纹欧泊	wi
 plum leaf	李叶	wi
 plum pits	李核	wi
@@ -177790,8 +178441,11 @@ porcelain	瓷器	wi
 porcupine	豪猪	wi
 possessed	附身	wi
 pregnancy	怀孕	r
+pregnancy	怀孕	wi
 prepared 	预备的	wi
+principle	原则	wi
 proboscis	长鼻	h
+profanity	亵渎	wi
 projects.	资源。	l
 prominent	凸出	wi
 purulent 	化脓的	wi
@@ -177799,6 +178453,9 @@ puzzlebox	解谜盒	wi
 quartzite	石英岩	wi
 queen ant	蚂蚁蚁后	wi
 quicklime	生石灰	wi
+quickness	急速	wi
+quietness	平静	wi
+radiances	光辉	wi
 rambutans	红毛果	wi
 raspberry	树莓	wi
 rat woman	老鼠人	wi
@@ -177806,16 +178463,20 @@ rat women	老鼠人	wi
 raven man	渡鸦人	wi
 raven men	渡鸦人	wi
 raw umber	生赭色	wi
+rawnesses	生	wi
 razed {p}	夷平了{p1}	ht
 rear hump	后驼峰	h
 rear paws	后爪	wi
 red beans	红豆	wi
 red beryl	红柱石	wi
 red panda	红熊猫	wi
+rednesses	红	wi
 reedgrass	茅草	wi
 regretful	后悔	w
 repentant	忏悔	w
 resentful	怨恨	w
+reticence	无言	wi
+reverence	尊敬	wi
 rhodolite	朱榴石	wi
 rice beer	稻米啤酒	wi
 rice husk	稻壳	wi
@@ -177835,6 +178496,7 @@ rock salt	岩盐	wi
 rockiness	坚固	wi
 rope reed	绳索苇	wi
 rose gold	玫瑰金	wi
+roughness	粗糙	wi
 rubicelle	橙尖晶石	wi
 rulership	统治	r
 rush buds	灯心草花苞	wi
@@ -177843,8 +178505,9 @@ rye flour	黑麦面粉	wi
 rye seeds	黑麦种子	wi
 sacred ox	神圣牛	hi
 sacrifice	牺牲	r
-sacrifice	奉献	wi
+sadnesses	悲哀	wi
 saltpeter	硝石	wi
+sanctuary	圣所	wi
 sand bags	沙袋	wi
 sand pear	沙梨	wi
 sapphires	蓝玉	wi
@@ -177853,12 +178516,19 @@ satinspar	纤维石膏	wi
 satintail	缎尾草	wi
 satisfied	满意	w
 scaly {s}	覆有鳞片的{s1}	htv
+scenarios	场景	wi
 scimitars	短弯刀	wi
+scorpions	蝎子	wi
+scratches	抓痕	wi
+sculpture	雕刻	wi
 sea green	海绿色	wi
 sea otter	海獭	wi
 seahorses	海马	wi
+seduction	诱惑	wi
 segmented	分节式	wi
 self-pity	自怜	w
+sergeants	中士	wi
+silkiness	丝般	wi
 silt loam	粉质壤土	wi
 siltstone	粉砂岩	wi
 sired {n}	成为了{n1}的生父	ht
@@ -177869,6 +178539,7 @@ skink men	彩舌蜥人	wi
 skunk kit	臭鼬幼崽	wi
 skunk man	臭鼬人	wi
 skunk men	臭鼬人	wi
+slaughter	残杀	wi
 sloth cub	树懒幼崽	wi
 sloth man	树懒人	wi
 sloth men	树懒人	wi
@@ -177877,22 +178548,32 @@ smilodons	剑齿虎	wi
 snail man	蜗牛人	wi
 snail men	蜗牛人	wi
 snowy owl	雪鸮	wi
+societies	社群	wi
+sorcerers	男巫士	wi
 squid ink	鱿鱼墨汁	wi
 squid man	鱿鱼人	wi
 squid men	鱿鱼人	wi
+stability	安定	wi
 stagnant 	停滞的	wi
+standards	军旗	wi
 star ruby	星彩红宝石	wi
 stingrays	刺魟	wi
 stoat kit	白鼬幼崽	wi
 stoat man	白鼬人	wi
 stoat men	白鼬人	wi
+stockades	栅栏	wi
 stoneware	炻瓷	wi
 straight.	笔直。	wil
+strangers	陌生人	wi
 strangler	绞杀者	wi
+strengths	力量	wi
 sturgeons	鲟鱼	wi
+suffering	苦难	wi
 sun berry	太阳浆果	wi
 sunstones	日长石	wi
+surprises	惊奇	wi
 sweet pod	甜豆荚	wi
+sweetness	甜蜜	wi
 swordfish	剑鱼	wi
 table cut	桌形切工	wi
 tail club	尾锤	wi
@@ -177904,6 +178585,7 @@ tea seeds	茶种子	wi
 tea trees	茶树	wi
 teff beer	苔麸啤酒	wi
 teff leaf	苔麸叶	wi
+tentacles	触须	wi
 terrarium	玻璃缸	wi
 terrified	极度恐惧	w
 territory	领土	h
@@ -177926,32 +178608,43 @@ tiger man	虎人	wi
 tiger men	虎人	wi
 tigereyes	虎眼石	wi
 tigerfish	虎鱼	wi
+tightness	紧束	wi
 tiktaalik	提塔利克鱼	wi
 tin glaze	锡釉	wi
+tiredness	疲劳	wi
 titanoboa	泰坦蚺	wi
 tomatillo	灯笼番茄	wi
 tormented	折磨	wi
 toy boats	玩具船	wi
 tradition	传统	wi
+tragedies	悲剧	wi
 travelers	旅人	r
 treachery	背叛	r
 treachery	背叛	wi
 treasurer	司库	hi
+treasurer	司库	wi
+treasures	宝物	wi
+triangles	三角形	wi
 trilobite	三叶虫	wi
 tsavorite	沙弗莱石	wi
+twilights	暮光	wi
 uncovered	衣不蔽体	wi
+universes	宇宙	wi
 until {d}	截至第{d1}年	ht
 upper lip	上唇	h
 upper lip	上唇	w
+utterance	发声	wi
 vandalism	破坏公物	h
 vanished.	消失了。	h
 variscite	磷铝石	wi
+vegetable	蔬菜	wi
 vermilion	朱红色	wi
 very deep	非常深陷	wi
 very good	非常好的	wi
 very long	很长	wi
 very poor	非常差的	wi
 very tall	非常高挑	wi
+vestibule	前庭	wi
 vile dust	卑劣的灰尘制	hMi
 vile dust	卑劣的灰尘	wim
 vile mist	卑劣的薄雾制	hMi
@@ -177964,8 +178657,14 @@ vile ooze	卑劣的污泥制	hMi
 vile ooze	卑劣的污泥	wim
 vile soot	卑劣的煤烟制	hMi
 vile soot	卑劣的煤烟	wim
+violators	违反者	wi
+violences	暴力	wi
+virginity	贞洁	wi
+visionary	先知	wi
 volcanoes	火山	r
 vomitous 	令人作呕的	wi
+vulgarity	粗俗	wi
+wanderers	漫游者	wi
 war lions	受过战斗训练的狮子	wi
 war tiger	受过战斗训练的虎	wi
 waterskin	水袋	wi
@@ -177979,7 +178678,9 @@ weird wax	怪异蜡	wim
 whip vine	鞭藤	wi
 whip wine	长鞭果酒	wi
 white fur	白色毛皮	wi
+whiteness	白	wi
 wild boar	野猪	wi
+winnowers	扬场者	wi
 withered 	枯萎的	wi
 withered.	衰亡了。	h
 wolf pups	狼幼崽	wi
@@ -177989,6 +178690,7 @@ wood opal	木欧泊	wi
 wrestling	摔跤	h
 wriggling	蠕动的	wi
 yak bulls	牦牛	wi
+yearlings	一岁幼兽	wi
 {a} moved	{a1}迁移了	ht
 {b}'s {b}	{b1}的{b2}	hbti
 {c} Kills	击杀数：{c}	hti
@@ -178372,74 +179074,115 @@ a temple	神殿	h
 a tunnel	隧道	h
 aardvark	土豚	wi
 abducted	绑架了	h
+absolute	绝对	wi
+accident	意外	wi
 acolytes	侍僧	wi
 acrobats	杂技演员	h
+admirers	仰慕者	wi
 advisors	顾问	hi
 agitated	焦躁	w
+alliance	联盟	wi
 aluminum	铝	wi
 ammonite	菊石	wi
 anaconda	水蟒	wi
+ancients	古人	wi
 andesite	安山岩	wi
 animated	复活了	h
 anything	没什么感觉	wi
 apricots	杏	wi
 aquarium	水族缸	wi
 archelon	古巨龟	wi
+armories	武库	wi
 artifact	造物	h
+artifice	技艺	wi
 as a {s}	作为{s1}	ht
 ash gray	灰白色	wi
 ash leaf	白蜡树叶	wi
 ash logs	白蜡木原木	wi
 ash wood	白蜡木	wi
+assaults	攻击	wi
+assembly	集会	wi
 attacked	攻击了	h
+autonomy	自治	wi
 aversion	厌恶	wi
 avocados	鳄梨	wi
 axedwarf	矮人斧手	wi
 axolotls	蝾螈	wi
 aye-ayes	指猴	wi
 backpack	背包	wi
+balances	平衡	wi
+baldness	光秃	wi
 barn owl	仓鸮	wi
 baroness	女男爵	h
+basement	地下室	wi
+bastions	堡垒	wi
 bat rays	蝠鲼	wi
 bayberry	杨梅	wi
 beak dog	喙狗	wi
+beguiler	欺骗者	wi
+betrayal	背叛	wi
 bilberry	越橘	wi
 biscuits	饼干	wi
+blankets	毛毯	wi
 blissful	极度幸福	w
+blisters	水疱	wi
+blizzard	大风雪	wi
+blockade	阻塞	wi
+blossoms	花	wi
+blotches	大斑点	wi
 blowdart	吹箭箭矢	wi
 blowguns	吹管	wi
 blue jay	冠蓝鸦	wi
 bluefish	扁鲹	wi
+blueness	蓝	wi
 bogeyman	夜魔	wi
 bogeymen	夜魔	wi
 boiling 	沸腾	wi
+boldness	勇猛	wi
 bookcase	书架	wi
+boulders	大圆石	wi
 bowdwarf	矮人弓手	wi
 bracelet	手镯	wi
 branches	树枝	wi
+breaches	裂口	wi
+breakers	破坏者	wi
+breeches	马裤	wi
+brigands	土匪	wi
+bristles	刚毛	wi
+brothers	兄弟	wi
+brunches	早午餐	wi
 bucklers	小盾	wi
 bulging.	凸出。	wil
+bulwarks	壁垒	wi
 bushtits	丛山雀	wi
+business	生意	wi
 buzzards	秃鹰	wi
 by magma	因岩浆而毁	h
 cabbages	卷心菜	wi
 cabinets	橱柜	wi
 cabochon	弧面切工	wi
+calamity	灾难	wi
+calluses	老茧	wi
 captains	队长	wi
 capuchin	卷尾猴	wi
 capybara	水豚	wi
 cardinal	红衣凤头鸟	wi
+carnages	屠戮	wi
 caroused	纵情狂欢了	h
 carp fry	鲤鱼幼崽	wi
 cassavas	木薯	wi
 cattails	猫尾草	wi
 cauldron	大锅	wi
+cavities	洞	wi
 cavy pup	豚鼠幼崽	wi
 cavy sow	豚鼠	wi
+ceilings	天花板	wi
 centaurs	半人马	wi
 cerulean	蔚蓝色	wi
-champion	冠军	wi
+chambers	房间	wi
+channels	渠道	wi
 charcoal	木炭	wi
+chastity	纯洁	wi
 chausses	马裤	wi
 cheetahs	猎豹	wi
 cherries	樱桃	wi
@@ -178452,58 +179195,108 @@ chipmunk	花栗鼠	wi
 chirping	‘虫类’鸣叫	wi
 chopped 	切碎的	wi
 chromite	铬铁矿	wi
+churches	教堂	wi
 cinnabar	辰砂	wi
 cinnamon	肉桂色	wi
+citadels	堡垒	wi
 citrines	黄水晶	wi
+clearing	林间空地	wi
+climates	气候	wi
+climaxes	顶峰	wi
+clinches	紧扣	wi
+cloister	修道院	wi
 clucking	咯	wi
+clusters	簇	wi
+clutches	抓紧	wi
 cob swan	天鹅	wi
 coconuts	椰子	wi
+coldness	寒冷	wi
 commerce	商业	wi
-conflict	身处冲突	wi
 confused	困惑	w
+conjurer	召唤师	wi
+contests	竞赛	wi
+controls	控制	wi
+convents	修道院	wi
+corridor	走廊	wi
 costumes	服装	h
+cottages	小屋	wi
+councils	议会	wi
+courtesy	礼貌	wi
 cow calf	奶牛幼崽	wi
 crab man	螃蟹人	wi
 crab men	螃蟹人	wi
 creation	创造	r
+creation	创造	wi
+creature	生物	wi
 crescent	新月形	wi
+crevices	裂缝	wi
 criminal	罪犯	h
+critters	小兽	wi
 crossbow	十字弩	wi
 crow man	乌鸦人	wi
 crow men	乌鸦人	wi
 crundles	爪角怪	wi
+crushers	粉碎者	wi
 crutches	拐杖	wi
 cryolite	冰晶石	wi
+crystals	水晶	wi
 cucumber	黄瓜	wi
 cut gems	切割宝石	wi
+cyclones	旋风	wi
 cyclopes	独眼巨人	wi
+dabblers	戏水者	wi
+dankness	阴湿	wi
 dark tan	深棕褐色	wi
 darkness	黑暗	r
+darkness	黑暗	wi
 daughter	女儿	h
 daughter	女儿	wi
 dead {s}	已死亡的{s1}	hIit
 decades.	每一位朋友。	wl
+deceiver	欺人者	wi
+decision	决定	wi
+declines	衰退	wi
 deep-set	深陷	wi
 deer man	鹿人	wi
 deer men	鹿人	wi
 defeated	击败了	h
 defeated	失败感	wi
+defender	防卫者	wi
+defenses	防卫	wi
 dejected	沮丧	w
+delights	高兴	wi
+despairs	绝望	wi
+desserts	餐后甜点	wi
+deviance	反常	wi
 devoured	吞噬了	h
+devourer	吞噬者	wi
 diamonds	钻石	wi
 diplomat	外交官	wi
 dismayed	沮丧	wi
+distance	距离	wi
+distrust	不信任	wi
+doctrine	教条	wi
 dodo hen	渡渡鸟	wi
 dodo man	渡渡鸟人	wi
 dodo men	渡渡鸟人	wi
 doe hare	野兔	wi
 dolomite	白云石	wi
+domicile	家园	wi
+dominion	支配	wi
+dourness	严峻	wi
+doyennes	女行会元老	wi
 draconic	巨龙	wi
 dralthas	食菇兽	wi
 dressing	布料包扎-	wi
+drinkers	饮者	wi
+droplets	小滴	wi
 drowned.	溺水而死。	h
 drunians	鬃面窃兽	wi
 duckling	鸭幼崽	wi
+dumpling	饺子	wi
+dungeons	地牢	wi
+dwellers	居民	wi
+dwelling	住处	wi
 dyed {v}	染成{v1}	hIit
 earrings	耳环	wi
 echidnas	针鼹	wi
@@ -178514,65 +179307,99 @@ elephant	大象	wi
 eleventh	第十一	wi
 elk bird	麋鹿鸟	wi
 elk fawn	麋鹿幼崽	wi
-emeralds	祖母绿宝石	wi
+embraces	拥抱	wi
 enormous	庞大的	hv
+entrails	内脏	wi
+entrance	入口	wi
 eoraptor	始盗龙	wi
+epidemic	传染病	wi
+equality	平等	wi
 etc. and	等，以及	hq
 euphoric	欣快	w
+evenness	平均	wi
 evil ash	邪恶的灰烬制	hMi
 evil ash	邪恶的灰烬	wim
 evil fog	邪恶的雾制	hMi
 evil fog	邪恶的雾	wim
 exterior	体表	wi
 eyebrows	眉毛	wi
+factions	小派系	wi
+failures	失败	wi
 fairness	公平	wi
+families	家庭	wi
 fan-like	扇状的	hv
+fealties	忠诚	wi
 feathers	羽毛	wi
 ferocity	凶狠	w
+festival	节	wi
 figurine	小塑像	wi
 fine {s}	精美的{s1}	hIit
 fire imp	火焰小鬼	wi
 fire man	火人	wi
 fire men	火人	wi
 first ox	第一牛	hi
+fissures	裂缝	wi
 fled {p}	逃离了{p1}	ht
+flickers	闪烁	wi
 flounder	鲽鱼	wi
 fondness	喜欢	w
 footwear	足部装备	wi
+fortress	要塞	wi
+fortunes	财富	wi
 foul ash	污秽的灰烬制	hMi
 foul ash	污秽的灰烬	wim
 foul fog	污秽的雾制	hMi
 foul fog	污秽的雾	wim
+fountain	喷泉	wi
 fox pups	狐狸幼崽	wi
 foxglove	毛地黄紫	wi
+fragment	碎片	wi
+freckles	雀斑	wi
+freedoms	自由	wi
+frenzies	疯狂	wi
 from {p}	，来自{p1}	ht
+funerals	葬礼	wi
 gambling	赌博	r
 gauntlet	护手	wi
 gazelles	瞪羚	wi
 generals	将军	hi
 generals	将军	wi
+geniuses	天才	wi
 ghostly 	幽灵形态的	wi
 giantess	巨人	wi
 gigantic	体型巨大	wi
 giraffes	长颈鹿	wi
+glaciers	冰川	wi
+gladness	欢乐	wi
 glasseye	斑鳍大眼鲷	wi
+glimmers	微光	wi
+glumness	忧郁	wi
+gluttons	暴食者	wi
 goat kid	山羊幼崽	wi
 gorillas	大猩猩	wi
 goslings	鹅幼崽	wi
+governor	总督	wi
 grackles	黑羽椋鸟	wi
 graphite	石墨	wi
+grayness	灰色	wi
 greedier	更加贪婪	wi
 gremlins	小精怪	wi
 griffons	狮鹫	wi
+gristles	软骨	wi
+grizzles	灰白	wi
+grottoes	洞穴	wi
 guttural	喉音浓重	wi
 halberds	斧枪	wi
-hammerer	锤刑官	wi
 hamsters	仓鼠	wi
 handwear	手部装备	wi
 hare man	野兔人	wi
 hare men	野兔人	wi
+harvests	收获	wi
+hatchets	斧头	wi
 headwear	头部装备	wi
+heathers	石南花	wi
 hedgehog	刺猬	wi
+hegemons	霸主	wi
 heliodor	绿柱石	wi
 herrings	鲱鱼	wi
 high ace	高阶王牌	hi
@@ -178686,6 +179513,7 @@ high way	高阶路	hi
 high web	高阶网	hi
 highwood	极树	wi
 hillocks	丘堡	hv
+holiness	神圣	wi
 holy ace	神圣王牌	hi
 holy act	神圣行动	hi
 holy age	神圣年龄	hi
@@ -178799,13 +179627,25 @@ hopeless	毫无希望	w
 hornbill	犀鸟	wi
 horrible	可怕的	wi
 huge {s}	巨型{s1}	htv
+humidity	湿气	wi
+humility	谦逊	wi
 ibex kid	羱羊幼崽	wi
 ibex man	羱羊人	wi
 ibex men	羱羊人	wi
 ice wolf	冰原狼	wi
+idleness	懒惰	wi
+ignition	点火	wi
 ilmenite	钛铁矿	wi
 image of	图像	hIi
+immortal	不朽者	wi
+impunity	免罚	wi
+impurity	杂质	wi
 in hours	（小时）	hP
+incenses	香	wi
+incident	事件	wi
+infernos	烈焰	wi
+insanity	疯狂	wi
+insights	洞察	wi
 insulted	受辱	w
 iron man	铁人	wi
 iron men	铁人	wi
@@ -178820,19 +179660,26 @@ is small	体格较小	wi
 is tough	体魄强健	wi
 isolated	被孤立	w
 jabberer	宽喙巨兽	wi
+jaundice	黄疸	wi
 jealousy	嫉妒	r
 jubilant	欢腾	wi
+jugglers	杂耍者	wi
 justices	大法官	hi
 kangaroo	袋鼠	wi
 kelenken	窃鹤	wi
 kestrels	红隼	wi
+kindling	点火	wi
+kindness	仁慈	wi
+kingdoms	王国	wi
 kiwi hen	鹬鸵	wi
 kiwi man	鹬鸵人	wi
 kiwi men	鹬鸵人	wi
 kumquats	金橘	wi
 kunzites	紫锂辉石	wi
+language	语言	wi
+lanterns	灯笼	wi
 lavender	薰衣草色	wi
-learning	学习	wi
+laziness	怠惰	wi
 leathery	坚韧如皮革	hv
 left arm	左手臂	h
 left ear	左耳	h
@@ -178843,7 +179690,7 @@ left fin	左鳍	h
 left hip	左臀	h
 left leg	左腿	h
 leggings	护腿	wi
-leopards	花豹	wi
+leopards	豹子	wi
 lettuces	生菜	wi
 leverets	野兔幼崽	wi
 limonite	褐铁矿	wi
@@ -178851,28 +179698,41 @@ lion cub	狮子幼崽	wi
 lion man	狮子人	wi
 lion men	狮子人	wi
 loathing	憎恶	w
+lobsters	龙虾	wi
 loon man	潜鸟人	wi
 loon men	潜鸟人	wi
 lorikeet	吸蜜鹦鹉	wi
 low boot	短筒靴	wi
+lucidity	明朗	wi
 lungfish	肺鱼	wi
+luxuries	奢侈	wi
 lynx cub	猞猁幼崽	wi
 lynx man	猞猁人	wi
 lynx men	猞猁人	wi
+machines	机器	wi
 mackerel	鲭鱼	wi
+magician	法师	wi
 mahogany	桃花心木	wi
+malodors	恶臭	wi
 managers	经理人	wi
 mandrill	山魈	wi
 mangled 	破碎的	wi
 mangrove	红树	wi
+mansions	豪宅	wi
 mantises	螳螂	wi
 marriage	婚姻	r
 marshals	元帅	hi
+marshals	元帅	wi
 material	物质	wi
 medicine	医学	h
+medicine	药	wi
+meetings	会面	wi
 melanite	墨榴石	wi
 memorial	纪念碑	wi
+memories	记忆	wi
 mermaids	人鱼	wi
+messiahs	救世主	wi
+midnight	午夜	wi
 milkfish	遮目鱼	wi
 millions	数百万	wi
 minecart	矿车	wi
@@ -178881,16 +179741,22 @@ mink kit	水貂幼崽	wi
 mink man	水貂人	wi
 mink men	水貂人	wi
 minotaur	牛头人	wi
-mischief	顽皮	wi
+mischief	恶作剧	wi
+miseries	痛苦	wi
 moa cock	恐鸟	wi
 moa hens	恐鸟	wi
 monarchs	君主	wi
 mongoose	獴	wi
+mongrels	杂种	wi
+monsters	怪物	wi
 monument	纪念碑	hv
+morality	道德	wi
+morasses	沼泽	wi
+mornings	早晨	wi
 mosquito	蚊子	wi
 moth man	飞蛾人	wi
 moth men	飞蛾人	wi
-mountain	山岭	wi
+mountain	山	wi
 moved to	迁往	h
 mudstone	泥岩	wi
 muscular	肌肉发达	wi
@@ -178898,11 +179764,14 @@ mushroom	蘑菇	wi
 muskoxen	麝牛	wi
 narwhals	独角鲸	wi
 nautilus	鹦鹉螺	wi
+negators	否定者	wi
 nest box	巢箱	wi
 oak leaf	橡树叶	wi
 oak logs	橡树原木	wi
 oak twig	橡树枝条	wi
 oat leaf	燕麦叶	wi
+oblivion	遗忘	wi
+obstacle	障碍	wi
 odd pulp	古怪果肉制	hMi
 odd pulp	古怪果肉	wim
 ogresses	食人魔	wi
@@ -178916,13 +179785,22 @@ orpiment	雌黄	wi
 outraged	暴怒不已	w
 oval cut	椭圆切工	wi
 over {s}	，涉及{s1}	ht
+overlord	霸主	wi
 painting	绘画	r
+paleness	苍白	wi
+palisade	木栅	wi
 pancreas	胰腺	h
 pancreas	胰腺	wi
 pangolin	穿山甲	wi
 panicked	惊慌失措	w
+panthers	豹	wi
 parakeet	长尾鹦鹉	wi
 partial 	部分	wi
+partners	合伙人	wi
+passages	通道	wi
+passions	激情	wi
+pastimes	消遣	wi
+patterns	图案	wi
 pea leaf	豌豆叶	wi
 pea pods	豌豆荚	wi
 pear cut	梨形切工	wi
@@ -178932,22 +179810,41 @@ pen swan	天鹅	wi
 penguins	企鹅	wi
 perfect 	完美	wi
 peridots	橄榄石	wi
+phantoms	幻影	wi
 phyllite	千枚岩	wi
 pig iron	生铁	wi
 pig tail	猪尾草	wi
 pike fry	狗鱼幼崽	wi
 pine log	针松原木	wi
+pinnacle	顶峰	wi
 platypus	鸭嘴兽	wi
 pleasure	愉悦	w
+portents	前兆	wi
+practice	练习	wi
+prairies	大草原	wi
 pressed 	压制	wi
+prestige	声望	wi
 princess	公主	wi
 prisoner	囚犯	wi
+problems	问题	wi
+prophecy	预言	wi
+prowlers	徘徊者	wi
+pumpkins	南瓜橙	wi
+pungency	辛辣	wi
+quandary	困惑	wi
 raccoons	浣熊	wi
+radiance	光辉	wi
 rainbows	彩虹	r
 rambutan	红毛果	wi
+rampages	乱闹	wi
+ramparts	垒	wi
+rapidity	迅速	wi
 rat weed	杂鼠草	wi
+raunches	粗俗	wi
+ravagers	破坏者	wi
 reachers	诱抵者	wi
 recessed	后缩	wi
+recluses	隐遁者	wi
 red sand	红沙	wi
 reindeer	驯鹿	wi
 rejected	被拒绝感	wi
@@ -178957,7 +179854,9 @@ reliving	重温	wi
 restless	坐立不安	w
 rhubarbs	大黄	wi
 rhyolite	流纹岩	wi
+ripeness	成熟	wi
 rock nut	石头坚果	wi
+romances	浪漫	wi
 roosters	鸡	wi
 rose cut	玫瑰花切工	wi
 rush bud	灯心草花苞	wi
@@ -178965,17 +179864,32 @@ rutherer	厚毛巨尾兽	wi
 rye beer	黑麦啤酒	wi
 rye leaf	黑麦叶	wi
 ryegrass	绿麦草	wi
+sanctums	圣所	wi
 sardonyx	缠丝玛瑙	wi
 sawgrass	锯齿草	wi
+scandals	丑闻	wi
+scenario	场景	wi
 scepters	节杖	wi
 scimitar	短弯刀	wi
-scourges	散鞭	wi
+scorpion	蝎子	wi
 scratchy	嘶哑	wi
+scuffles	扭打	wi
 sea foam	海沫绿	wi
 seahorse	海马	wi
+searches	搜寻	wi
+seducers	诱惑者	wi
+seizures	捕获	wi
 selenite	透明石膏	wi
+sergeant	中士	wi
+serpents	巨蛇	wi
+servants	仆人	wi
+severity	严格	wi
+shelters	庇护所	wi
 sheriffs	治安官	wi
+shingles	木瓦	wi
 siamangs	合趾猿	wi
+sickness	疾病	wi
+silences	沉默	wi
 site occ	地点占据者	h
 sky blue	天蓝色	wi
 slashing	砍伤	h
@@ -178987,36 +179901,63 @@ smilodon	剑齿虎	wi
 somebody	某人	h
 somebody	某人	wi
 somewhat	略微	wi
+sorcerer	男巫士	wi
+sourness	酸味	wi
 soybeans	黄豆	wi
+sparkles	闪耀	wi
 sparrows	麻雀	wi
+speakers	说话人	wi
+speeches	言语	wi
+spittles	唾沫	wi
+splashes	飞溅	wi
 squashes	西葫芦	wi
 stabbing	刺伤	h
+stalkers	潜猎者	wi
 standard	标准	h
+standard	军旗	wi
+stenches	恶臭	wi
+stewards	行会管事	wi
 stibnite	辉锑矿	wi
+stigmata	耻辱	wi
 stingray	刺魟	wi
+stockade	栅栏	wi
 stoicism	克己隐忍	wi
 straight	笔直	wi
+stranger	陌生人	wi
+strategy	战略	wi
 strength	力量	r
 striking	搏击	h
 sturgeon	鲟鱼	wi
+subtlety	微妙	wi
+suicides	自杀	wi
 sunshine	日光酒	wi
 sunstone	日长石	wi
+surprise	惊奇	wi
+swallows	燕子	wi
 swan man	天鹅人	wi
 swan men	天鹅人	wi
+symmetry	对称	wi
 sympathy	同情	w
 tea leaf	茶叶	wi
 tea tree	茶树	wi
 tea wood	茶木	wi
+teachers	教师	wi
 teaching	教学	wi
+tempests	暴风雨	wi
 tenacity	坚韧	wi
+tentacle	触须	wi
 termites	白蚁	wi
 the mace	钉头锤	h
 the pike	长枪	h
 the rain	淋雨	wi
 the whip	长鞭	h
 the {e}.	{e1}。	htEi
+theaters	戏院	wi
+thimbles	顶针	wi
 thoraxes	胸廓	h
 thrilled	兴奋	wi
+throwers	投掷者	wi
+thunders	雷	wi
 tick man	蜱虫人	wi
 tick men	蜱虫人	wi
 tigereye	虎眼石	wi
@@ -179025,17 +179966,37 @@ toad man	蟾蜍人	wi
 toad men	蟾蜍人	wi
 tomatoes	番茄	wi
 tool use	会用工具	wi
+torments	折磨	wi
 torn off	撕断了	h
 torn out	撕掉了	h
+tornados	旋风	wi
 tortured	摧残	wi
+tortures	拷问	wi
 towering	身材极高	wi
 toy axes	玩具斧	wi
 toy boat	玩具船	wi
+trammels	鱼网	wi
+treasure	宝物	wi
+treasury	国库	wi
+treaties	条约	wi
+trenches	渠	wi
+triangle	三角形	wi
+tributes	贡物	wi
 trickery	诡计	r
+trickery	欺骗	wi
 triplets	三胞胎	wi
+troopers	士兵	wi
+troubles	烦恼	wi
 trousers	长裤	wi
+trumpets	喇叭	wi
+turmoils	动荡	wi
 twilight	暮光	r
+twilight	暮光	wi
+twinkles	闪烁	wi
+typhoons	台风	wi
+ugliness	丑陋	wi
 unicorns	独角兽	wi
+universe	宇宙	wi
 upturned	上翘	wi
 vanished	消失了	h
 vengeful	复仇心切	w
@@ -179045,18 +180006,33 @@ vile fog	卑劣的雾制	hMi
 vile fog	卑劣的雾	wim
 vile goo	卑劣的黏稠物制	hMi
 vile goo	卑劣的黏稠物	wim
+vileness	卑劣	wi
+villages	村庄	wi
+violator	违反者	wi
+violence	暴力	wi
 volcanos	火山	r
+volcanos	火山	wi
 vultures	秃鹫	wi
 walruses	海象	wi
+wanderer	漫游者	wi
 war dogs	受过战斗训练的狗	wi
 war lion	受过战斗训练的狮子	wi
 war lynx	受过战斗训练的猞猁	wi
 war rocs	受过战斗训练的大鹏鸟	wi
+warlords	军阀	wi
+warnings	警告	wi
+warriors	战士	wi
 warthogs	疣猪	wi
+waviness	波状	wi
 wax opal	蜡质欧泊	wi
-whiskers	胡须	wi
+weakness	虚弱	wi
+whiskers	腮须	wi
+whiskies	威士忌酒	wi
+whispers	耳语	wi
 whistles	口哨	wi
 wide-set	间距很宽	wi
+wildness	野生	wi
+winnower	扬场者	wi
 with {i}	使用{i1}	ht
 withered	衰亡了	h
 wolf man	狼人	wi
@@ -179067,11 +180043,13 @@ worm men	蠕虫人	wi
 wrathful	暴怒	wi
 wren man	鹪鹩人	wi
 wren men	鹪鹩人	wi
+wretches	可怜虫	wi
 wrinkled	布满褶皱	hv
 wrinkled	多皱	wi
 yak bull	牦牛	wi
 yak calf	牦牛幼崽	wi
 yak cows	牦牛	wi
+yearling	一岁幼兽	wi
 youngest	最小的	wi
 your own	你自己的	wi
 yourself	你自己	wi
@@ -179133,7 +180111,6 @@ Ashamed	羞愧	w
 Attacks	袭击	w
 Austere	生活简朴	w
 Badland	荒地
-Balance	平衡	wi
 Bashful	容易害羞	w
 Beakers	烧杯	hi
 Bedroom	卧室	wi
@@ -179420,7 +180397,6 @@ Sombith	索比斯	wi
 Sorting	正在排序	hP
 Soshosh	索肖石	wi
 Sparse 	稀疏	wi
-Speaker	讲述者	wi
 Spinner	纺纱工	wi
 Stalk\x95b	斯塔科	wi
 Stektob	斯克托	wi
@@ -179442,7 +180418,6 @@ Suthmam	苏塞姆	wi
 Suturer	缝合师	wi
 Swimmer	游泳者	wi
 Symbols	符号	w
-Tactics	战术	wi
 Tangath	坦加斯	wi
 Tanners	制革工	wi
 Tanning	制革	wi
@@ -179451,7 +180426,6 @@ Tathtak	塔斯塔	wi
 Tathtat	塔塔特	wi
 Tatlosh	塔洛石	wi
 Taverns	酒馆	hq
-Teacher	教师	wi
 Tellist	特利斯特	wi
 Temples	神殿	hq
 Tenshed	滕谢德	wi
@@ -179468,7 +180442,6 @@ Thisrid	锡斯利德	wi
 Thistun	锡斯顿	wi
 Thistus	锡斯图	wi
 Tholest	索莱斯	wi
-Thrower	投掷者	wi
 Thukkan	索坎	wi
 Tracker	追踪者	wi
 Traders	交易者	wi
@@ -179519,9 +180492,13 @@ a tower	高塔	h
 a vault	秘库	h
 a waste	荒地	h
 abdomen	腹部	h
+abysses	深渊	wi
 acolyte	侍僧	wi
+actions	行动	wi
+admirer	仰慕者	wi
 advisor	顾问	hi
 alarmed	惊慌	w
+alchemy	炼金术	wi
 alcohol	酒精	wi
 alfalfa	苜蓿	wi
 almonds	扁桃	wi
@@ -179529,12 +180506,15 @@ alpacas	羊驼	wi
 alunite	明矾石	wi
 amulets	护身符	wi
 anchovy	凤尾鱼	wi
+ancient	古人	wi
 anguish	痛苦万分	w
 angular	棱角分明	wi
 animals	动物	h
 animals	动物	r
+animals	动物	wi
 annoyed	烦恼	w
 anxious	焦虑	w
+apogees	顶点	wi
 apricot	杏	wi
 are {s}	是{s1}	hJt
 aroused	兴奋	w
@@ -179542,155 +180522,303 @@ artwork	艺术	wi
 ash log	白蜡木原木	wi
 ashamed	羞愧	w
 asinine	驴	wi
+assault	攻击	wi
+attacks	攻击	wi
+authors	作家	wi
+autumns	秋天	wi
 avocado	鳄梨	wi
 axolotl	蝾螈	wi
 aye-aye	指猴	wi
 badgers	鼬獾	wi
 balance	平衡	r
+balance	平衡	wi
 bananas	香蕉	wi
+bandits	强盗	wi
 banners	旗帜	h
+banners	旗帜	wi
 barrels	圆桶	wi
+bastion	堡垒	wi
 bat man	蝙蝠人	wi
 bat men	蝙蝠人	wi
 bat ray	蝠鲼	wi
+battles	战斗	wi
 bauxite	铝土矿	wi
+beaches	海滩	wi
 beavers	海狸	wi
 beetles	甲虫	wi
+belches	打嗝	wi
+bellies	腹部	wi
+berries	浆果	wi
 birchen	桦木	wi
 birches	桦树	wi
 biscuit	饼干	wi
 bismuth	铋	wi
+blanket	毛毯	wi
 blazing	熊熊燃烧的	wi
+blights	枯萎	wi
+blister	水疱	wi
 bloody 	血腥的	wi
+blossom	花	wi
 blowgun	吹管	wi
+blushes	红晕	wi
 bobcats	短尾猫	wi
+bodices	紧身衣	wi
 boiled.	沸腾而死。	h
 bonobos	倭黑猩猩	wi
+bottles	瓶子	wi
+bottoms	底部	wi
+boulder	大圆石	wi
 braided	编成辫子	wi
+bravery	勇敢	wi
+breaker	破坏者	wi
+breaths	呼吸	wi
 bribery	贿赂	h
+bridges	桥	wi
+bridles	马勒	wi
+brigand	土匪	wi
+bristle	刚毛	wi
 brokers	交易员	wi
+brother	兄弟	wi
+brushes	刷子	wi
 buckets	提桶	wi
 buckler	小盾	wi
+buckles	皮带扣	wi
 bugbats	虫蝠	wi
 bulging	凸出	wi
+bulwark	壁垒	wi
+bunches	串	wi
+bunions	拇囊炎	wi
 bunnies	兔幼崽	wi
+burdens	负担	wi
+burials	埋葬	wi
+bushels	斗	wi
 bushtit	丛山雀	wi
+busters	破坏者	wi
 butlers	管家	hi
+butters	奶油	wi
+buttons	钮扣	wi
 buzzard	秃鹰	wi
 buzzing	嗡嗡作响	wi
 by {p}.	由{p1}实施的历史事件。	htEi
 cabbage	卷心菜	wi
 cabinet	橱柜	wi
 calcite	方解石	wi
+cancers	癌	wi
+candies	糖果	wi
 candles	蜡烛	h
+candles	蜡烛	wi
+cankers	溃烂	wi
+canyons	峡谷	wi
 captain	队长	wi
 carmine	胭脂红	wi
+carnage	屠戮	wi
 cashews	腰果	wi
-caskets	棺	wi
 casques	角质盔	wi
 cassava	木薯	wi
+castles	城堡	wi
+catches	捕捉	wi
 cattail	猫尾草	wi
 caverns	洞窟	r
+caverns	巨穴	wi
+ceiling	天花板	wi
 centaur	半人马	wi
+chamber	房间	wi
+chances	机会	wi
+channel	渠道	wi
+chaoses	大混乱	wi
+chapels	小教堂	wi
 charity	慈善	r
+charity	慈悲	wi
 chausse	马裤	wi
+cheeses	乳酪	wi
 cheetah	猎豹	wi
 chicken	鸡	wi
 chicory	菊苣	wi
 chimera	奇美拉	wi
-circles	圆圈	wi
+cinders	灰烬	wi
+circles	圆周	wi
+citadel	堡垒	wi
 citrine	黄水晶	wi
 citrons	香橼	wi
+clarity	清楚	wi
+clashes	冲突	wi
+climate	气候	wi
+closets	壁橱	wi
+clutter	杂乱	wi
 coconut	椰子	wi
 cod fry	鳕鱼幼崽	wi
 codices	抄本	wi
 coffers	保险箱	wi
 coffins	灵柩	wi
 coiled.	盘卷。	wil
+columns	柱	wi
+combats	争斗	wi
 combed.	整齐。	wil
+company	团体	wi
 comrade	同志	h
 concave	凹陷	wi
 conical	锥形	wi
 content	满足	w
+contest	竞赛	wi
+control	控制	wi
+convent	修道院	wi
+cottage	小屋	wi
+cottons	棉花	wi
 cougars	美洲狮	wi
+council	议会	wi
+couples	一对	wi
 courage	勇气	r
+courage	勇气	wi
 cowpeas	豇豆	wi
 coyotes	郊狼	wi
+cradles	摇篮	wi
+craters	火山口	wi
+crevice	裂缝	wi
 crimson	绯红色	wi
 crinkly	细密卷曲	wi
+critter	小兽	wi
 crosses	十字架	wi
 crowded	排列拥挤	wi
+cruelty	残酷	wi
 crundle	爪角怪	wi
+crusher	粉碎者	wi
+crystal	水晶	wi
+cudgels	棍棒	wi
 cunning	谋略	wi
 curling	卷曲的	hv
 cushion	垫形	wi
+cyclone	旋风	wi
 cyclops	独眼巨人	wi
 cygnets	天鹅幼崽	wi
+dabbler	戏水者	wi
 daggers	匕首	wi
+dangers	危险	wi
+decency	得体	wi
+decline	衰退	wi
 decorum	礼仪	wi
+defects	缺点	wi
+defense	防卫	wi
+deities	神	wi
+deserts	沙漠	wi
 despair	绝望	w
+dessert	餐后甜点	wi
+destiny	命运	wi
 dewlaps	喉垂	wi
 diamond	钻石	wi
+dignity	尊严	wi
+dimples	酒窝	wi
 dingoes	野狗	wi
+dinners	晚餐	wi
 diorite	闪长岩	wi
 disdain	鄙视	wi
 disease	疾病	r
+disgust	厌恶	wi
 dislike	不喜欢	w
+ditches	沟渠	wi
 doctors	医生	hi
 dodging	闪避	h
+domains	领域	wi
 donkeys	驴	wi
+doyenne	女行会元老	wi
 dragons	巨龙	wi
 draltha	食菇兽	wi
-dresses	裙装	wi
+drinker	饮者	wi
+droplet	小滴	wi
 drowned	溺水而死	h
 drunian	鬃面窃兽	wi
 due to 	所致	wi
 dungeon	地牢	hv
+dungeon	地牢	wi
 durians	榴梿	wi
 during 	期间	wi
 dwarven	矮人	wi
 dwarves	矮人	wi
+dweller	居民	wi
 eaglets	鹰幼崽	wi
 earring	耳环	wi
 echidna	针鼹	wi
 elk man	麋鹿人	wi
 elk men	麋鹿人	wi
+embrace	拥抱	wi
 emerald	翠绿色	wi
 empathy	同理心	w
+empires	帝国	wi
 emu man	鸸鹋人	wi
 emu men	鸸鹋人	wi
+entries	入口	wi
+erasure	擦除	wi
+escorts	护送者	wi
+exalted	高尚	wi
 excited	兴奋	w
 extract	提取物	wi
 eyebrow	眉毛	wi
+faction	小派系	wi
+factors	贸易代理	wi
+failure	失败	wi
 fairies	小仙子	wi
+famines	饥荒	wi
+fathers	父亲	wi
 feather	羽毛	wi
+ferries	渡船	wi
 fierce 	凶猛的	wi
+figures	人像	wi
 filthy 	骯髒的	wi
+finders	发现者	wi
+fingers	手指	wi
 finlets	小鳍	wi
 firefly	萤火虫	wi
+fishers	渔夫	wi
 fishing	捕鱼	r
+fissure	裂缝	wi
+flashes	闪光	wi
+flayers	剥皮者	wi
 fled to	逃往	h
+fleshes	血肉	wi
+flicker	闪烁	wi
+flights	飞行	wi
 flowers	花	h
+flowers	花	wi
 fly man	苍蝇人	wi
 fly men	苍蝇人	wi
+focuses	焦点	wi
 for {a}	，为{a1}制作	ht
+forests	森林	wi
+forever	永远	wi
 formed.	成立了。	h
+fortune	财富	wi
 founded	建立了	h
 fox man	狐狸人	wi
 fox men	狐狸人	wi
 fox pup	狐狸幼崽	wi
+freckle	雀斑	wi
 freedom	自由	r
+friends	朋友	wi
 frozen 	结冻	wi
 fuchsia	紫红色	wi
+funeral	葬礼	wi
+gallery	走廊	wi
+galleys	桨帆船	wi
+gallows	绞架	wi
 ganders	鹅	wi
+garlics	大蒜	wi
+garnish	装饰	wi
 gazelle	瞪羚	wi
 general	将军	hi
 general	将军	wi
+gerbils	沙鼠	wi
 giraffe	长颈鹿	wi
+girders	大梁	wi
+girdles	腰带	wi
 gizzard	砂囊	h
 gizzard	砂囊	wi
+glacier	冰川	wi
 gleeful	欢喜	wi
 gliding	滑行	wi
+glimmer	微光	wi
+glitter	闪光	wi
+glories	光荣	wi
+glosses	光泽	wi
+glutton	暴食者	wi
 goblets	高脚杯	wi
 goblins	哥布林	wi
 gorilla	大猩猩	wi
@@ -179698,93 +180826,186 @@ gorlaks	獠牙怪	wi
 gosling	鹅幼崽	wi
 grackle	黑羽椋鸟	wi
 grammar	语法	h
+grasses	草	wi
 grating	刺耳	wi
+greases	油脂	wi
 greaves	胫甲	wi
 gremlin	小精怪	wi
 grieved	悲痛	w
 grieves	悲痛	wi
 griffon	狮鹫	wi
+gristle	软骨	wi
+grizzle	灰白	wi
+grooves	凹槽	wi
 grouchy	脾气暴躁	w
 ground 	磨碎的	wi
+growers	种植者	wi
+growths	生长	wi
+gullies	小峡谷	wi
 gulping	狼吞虎咽	wi
 guppies	虹鳉	wi
+gutters	排水沟	wi
 hagfish	盲鳗	wi
 halberd	斧枪	wi
 halibut	大比目鱼	wi
+hammers	锤	wi
 hamster	仓鼠	wi
+handles	柄	wi
 hangout	聚会地点	h
-harmony	和谐	wi
 harpies	鹰身女妖	wi
+harvest	收获	wi
+hatchet	斧头	wi
 hateful	仇恨	wi
 haunted	纠缠	wi
+healers	医者	wi
 healing	医治	r
+healing	疗愈	wi
+hearths	炉床	wi
+heather	石南花	wi
+heavens	天堂	wi
+hegemon	霸主	wi
 her own	她自己的	wi
+hermits	隐士	wi
 herring	鲱鱼	wi
 high ox	高阶牛	hi
 hircine	山羊	wi
 his own	他自己的	wi
+hollows	洞	wi
 holy ox	神圣牛	hi
+homages	尊崇	wi
+honesty	诚实	wi
+hoppers	跃者	wi
+horrors	惊骇	wi
 howling	嚎叫	wi
+hungers	饥饿	wi
 hunting	狩猎	r
 iguanas	鬣蜥	wi
+illness	疾病	wi
 impalas	高角羚	wi
+incense	香	wi
+inferno	烈焰	wi
+insects	昆虫	wi
+insight	洞察	wi
 irises.	纤细。	wil
 is huge	体格巨大	wi
 is tall	身材高挑	wi
 is tiny	体格微小	wi
 is weak	很虚弱	wi
+islands	岛	wi
 its own	它自己的	wi
 jackals	豺	wi
 jaguars	美洲豹	wi
+jailers	狱卒	wi
+jesters	弄臣	wi
+juggler	杂耍者	wi
+jungles	丛林	wi
 justice	大法官	hi
 justice	正义	r
 jutting	前突	wi
 kea man	啄羊鹦鹉人	wi
 kea men	啄羊鹦鹉人	wi
+keepers	守护者	wi
 kestrel	红隼	wi
 kicking	踢击	h
+killers	杀手	wi
+kingdom	王国	wi
 kittens	猫幼崽	wi
+knights	骑士	wi
+knowers	智者	wi
 kobolds	狗头人	wi
 kumquat	金橘	wi
 kunzite	紫锂辉石	wi
+lancers	枪骑兵	wi
+lantern	灯笼	wi
+leaders	领导者	wi
+leagues	同盟	wi
 leather	皮革	wi
 leeches	水蛭	wi
+legends	传说	wi
 legwear	腿部装备	wi
+lengths	长度	wi
 lentils	扁豆	wi
-leopard	花豹	wi
+leopard	豹子	wi
+leprosy	麻疯病	wi
+lesions	病灶	wi
+lessons	课	wi
+letters	字母	wi
 lettuce	生菜	wi
 leveret	野兔幼崽	wi
+liberty	自由	wi
 lignite	褐煤	wi
 lizards	蜥蜴	wi
+lobster	龙虾	wi
+lowness	低下	wi
 loyalty	忠诚	r
 loyalty	忠诚	wi
+lunches	午餐	wi
+lusters	光彩	wi
 lustful	难以自持	w
 lychees	荔枝	wi
+machine	机器	wi
+maggots	蛆	wi
 magpies	喜鹊	wi
 majesty	雄伟	wi
+malodor	恶臭	wi
 manager	经理人	wi
 maneras	倒吊鲨齿怪	wi
+mansion	豪宅	wi
+marbles	弹珠	wi
+markets	市场	wi
 marlins	枪鱼	wi
 marshal	元帅	hi
+marshal	元帅	wi
+marshes	沼泽	wi
+martyrs	烈士	wi
 massive	硕大	wi
+mastery	精通	wi
+matches	比赛	wi
+meadows	草地	wi
+meeting	会面	wi
 melted 	熔融	wi
 melted.	熔化而死。	h
+menaces	威胁	wi
 mermaid	人鱼	wi
+messiah	救世主	wi
+meteors	流星	wi
+minions	爪牙	wi
+mirrors	镜子	wi
 mittens	连指手套	wi
 moa hen	恐鸟	wi
 moa man	恐鸟人	wi
 moa men	恐鸟人	wi
+modesty	谦逊	wi
 molten 	融化的	wi
+moments	片刻	wi
 monarch	君主	wi
+mongers	商人	wi
+mongrel	杂种	wi
+monkeys	猴子	wi
+monster	怪物	wi
 morions	黑水晶	wi
+morning	早晨	wi
+morsels	食物	wi
+mortals	凡人	wi
 mortars	研钵	wi
+mothers	母亲	wi
+mucuses	粘液	wi
 mud man	泥人	wi
 mud men	泥人	wi
+muffins	松饼	wi
+murders	谋杀	wi
+muscles	肌肉	wi
 mussels	贻贝	wi
-mystery	神秘	wi
+mystery	秘密	wi
 narwhal	独角鲸	wi
+nations	国家	wi
+natures	自然	wi
+negator	否定者	wi
 nervous	紧张	wi
+nettles	荨麻	wi
+notches	刻痕	wi
 numbers	数字	hIi
+numbers	数	wi
 oak log	橡树原木	wi
 ocelots	豹猫	wi
 octopus	章鱼	wi
@@ -179798,152 +181019,320 @@ olivine	橄榄岩	wi
 olm man	洞螈人	wi
 olm men	洞螈人	wi
 opossum	负鼠	wi
-oranges	橘子	wi
+oracles	神谕	wi
 orioles	黄鹂	wi
 ospreys	鱼鹰	wi
 ostrich	鸵鸟	wi
 others.	他人。
 oysters	牡蛎	wi
+paddles	桨	wi
+palaces	宫	wi
+panther	豹	wi
 papayas	番木瓜	wi
 papyrus	纸莎草	wi
+partner	合伙人	wi
+passage	通道	wi
+pastime	消遣	wi
 patient	冷静	wi
+pattern	图案	wi
 pea pod	豌豆荚	wi
-peaches	桃	wi
 peanuts	花生	wi
-pebbles	卵石形	wi
+pebbles	卵石	wi
 penguin	企鹅	wi
 peppers	胡椒	wi
 peridot	橄榄石	wi
 pestles	研杵	wi
+phantom	幻影	wi
+phlegms	痰	wi
+phrases	惯用语	wi
 piglets	猪幼崽	wi
+pillars	柱子	wi
+pimples	丘疹	wi
 pincers	钳子	wi
+pitches	沥青	wi
+plagues	瘟疫	wi
+planets	行星	wi
+plunges	猛冲	wi
+pockets	口袋	wi
 pointed	尖头	wi
+poisons	毒药	wi
 pomelos	蜜柚	wi
 pommel/	圆头/	wi
 porcine	猪	wi
-portals	晶门	wi
+portent	前兆	wi
 pouches	小袋	wi
+prairie	大草原	wi
+praises	赞美	wi
+present	现在	wi
+priests	祭司	wi
+princes	王子	wi
+prisons	监狱	wi
+problem	问题	wi
+prowler	徘徊者	wi
 puffins	海鹦	wi
 puggles	针鼹幼崽	wi
-pumpkin	南瓜色	wi
+pulleys	滑轮	wi
+punches	重拳	wi
+puppets	傀儡	wi
 puppies	狗幼崽	wi
+puzzles	难题	wi
 pyrites	黄铁矿	wi
 pythons	巨蟒	wi
 quivers	箭筒	wi
 rabbits	兔	wi
+rabbles	乌合之众	wi
 raccoon	浣熊	wi
+rampage	乱闹	wi
+rampart	垒	wi
+raptors	猛禽	wi
 rat man	老鼠人	wi
 rat men	老鼠人	wi
+ravager	破坏者	wi
+rawness	生	wi
 reacher	诱抵者	wi
 realgar	雄黄	wi
 reason.	矛盾感。
+reasons	理由	wi
 rebirth	重生	r
 rebirth	重生	wi
+recluse	隐遁者	wi
+redness	红	wi
 regard.	重视。
+release	释放	wi
 remains	残骸	wi
+respect	尊敬	wi
 revelry	狂欢	r
 revenge	复仇	r
+rewards	报酬	wi
 rhubarb	大黄	wi
+rhythms	节奏	wi
+riddles	谜	wi
+rippers	撕裂者	wi
 ripping	撕伤	h
 robbery	抢劫	h
-romance	爱情	wi
 rooster	鸡	wi
+rooters	拔根者	wi
 rounded	圆弧形	wi
 rumours	传闻	r
-saffron	藏红花色	wi
+salutes	敬礼	wi
+sanctum	圣所	wi
 sandals	凉鞋	wi
+savages	野人	wi
+savants	学者	wi
+saviors	救世主	wi
+scandal	丑闻	wi
 scarlet	猩红色	wi
 scepter	节杖	wi
 schorls	黑碧玺	wi
-scourge	散鞭	wi
 scrapes	擦伤	w
-scratch	抓	wi
 scrawny	骨瘦如柴	wi
+screams	尖叫声	wi
 scrolls	卷轴	wi
+scuffle	扭打	wi
 seasons	四季	r
+seasons	季节	wi
+secrets	秘密	wi
+seducer	诱惑者	wi
+seizure	捕获	wi
+serpent	巨蛇	wi
+servant	仆人	wi
 servile	卑躬屈膝	wi
 seventh	第七	wi
+shadows	阴影	wi
 sharply	明显	wi
+shelter	庇护所	wi
 sheriff	治安官	wi
-shields	盾牌	wi
+shingle	木瓦	wi
 shining	闪亮的	wi
 shocked	震惊	w
+shovels	铲	wi
+showers	阵雨	wi
+shrieks	尖啸	wi
+shrines	神龛	wi
 siamang	合趾猿	wi
 sibling	兄弟姐妹	wi
 silence	寂静	r
+silence	沉默	wi
+silvers	银	wi
+sisters	姐妹	wi
+skewers	串肉棒	wi
 slashed	砍伤了	h
+slayers	杀人者	wi
+sleeves	袖子	wi
+slivers	碎片	wi
+sludges	软泥	wi
 smashed	砸伤了	h
+society	社群	wi
+sockets	凹窝	wi
+sorcery	巫术	wi
 sorghum	高粱	wi
+sorrows	悲伤	wi
+sparkle	闪耀	wi
 sparrow	麻雀	wi
+spiders	蜘蛛	wi
 spiked 	尖刺	wi
 spinach	菠菜	wi
 spindly	细长的	hv
+spirals	螺旋	wi
+spirits	精神	wi
+spittle	唾沫	wi
 splayed	外张	wi
 splints	夹板	wi
 sponges	海绵	wi
+springs	春天	wi
 squares	正方形	wi
 squeaky	尖细	wi
 stabbed	刺伤了	h
+stalker	潜猎者	wi
+stances	姿态	wi
 statues	雕像	wi
 stature	身材	wi
+steppes	大草原	wi
+steward	行会管事	wi
 sticky 	黏稠的	wi
 stinger	毒刺	h
+stokers	司炉	wi
 stomach	胃	h
 stomach	胃	wi
 strands	缕	wi
+streams	水流	wi
 stress.	压力。
 strikes	打击	h
+strikes	打击	wi
+strings	线	wi
 stripes	条纹	wi
+strokes	抚触	wi
 stubble	短茬	wi
 subject	对象	wi
-suckers	吸盘	wi
+suckers	乳儿	wi
 suicide	自杀	r
+suicide	自杀	wi
+suitors	追求者	wi
+summers	夏季	wi
+summits	顶峰	wi
 sunken.	深陷。	wil
+suppers	晚餐	wi
 sutures	线缝合-	wi
+swallow	燕子	wi
 sylvite	钾岩	wi
 symbols	符号	hIi
+systems	系统	wi
+tactics	战术	wi
 tangled	纠缠	wi
+tangles	缠结	wi
+targets	目标	wi
+tarnish	失泽	wi
+tattoos	纹身	wi
+teacher	教师	wi
+tempest	暴风雨	wi
+temples	圣堂	wi
 termite	白蚁	wi
+terrors	恐怖	wi
 the axe	战斧	h
 the bow	弓	h
 the {e}	{e1}	htEi
 the {s}	{s1}	hIit
+theater	戏院	wi
+thimble	顶针	wi
+thirsts	口渴	wi
 thirsty	口渴	wi
+thralls	奴隶	wi
 threads	线	wi
+threats	威胁	wi
+throats	咽喉	wi
 thrones	椅子	wi
+thrower	投掷者	wi
 thunder	雷鸣	r
+thunder	雷	wi
+tongues	舌	wi
 topazes	黄玉	wi
+torches	火把	wi
+torment	折磨	wi
+tornado	旋风	wi
 torture	折磨	r
+torture	拷问	wi
+touches	触碰	wi
 toy axe	玩具斧	wi
+tragedy	悲剧	wi
+trammel	鱼网	wi
+trances	恍惚	wi
+trashes	垃圾	wi
 treason	叛国	h
+treason	叛国	wi
+tresses	发绺	wi
+tribute	贡物	wi
+trifles	琐事	wi
 triumph	得意	w
+trooper	士兵	wi
+trouble	烦恼	wi
+troughs	槽	wi
+trumpet	喇叭	wi
+trusses	捆	wi
+tummies	肚子	wi
+tundras	苔原	wi
+tunnels	隧道	wi
 turbans	头巾	wi
 turkeys	火鸡	wi
+turmoil	动荡	wi
 twelfth	第十二	wi
+twinkle	闪烁	wi
 twisted	扭曲	wi
+typhoon	台风	wi
 unhappy	不快乐	wi
 unicorn	独角兽	wi
 unkempt	凌乱不整	hv
 unkempt	蓬乱	wi
+valleys	山谷	wi
+vandals	破坏者	wi
+velvets	天鹅绒	wi
+vermins	害虫	wi
+vessels	船	wi
+victims	受害人	wi
 victory	胜利	r
+village	村庄	wi
+virgins	处女	wi
+virtues	德行	wi
+visions	异象	wi
+volcano	火山	wi
 vulture	秃鹫	wi
 walnuts	核桃	wi
 war dog	受过战斗训练的狗	wi
 war roc	受过战斗训练的大鹏鸟	wi
+warlord	军阀	wi
+warning	警告	wi
+warrior	战士	wi
 warthog	疣猪	wi
 was in 	陷入	wi
+watches	守望	wi
+wealths	财富	wi
 weapons	武器	wi
 weasels	黄鼬	wi
 weather	天气	r
+weather	天气	wi
+weevils	象甲	wi
+weights	重量	wi
+whisker	腮须	wi
+whisper	耳语	wi
 willows	柳树	wi
 windows	窗	wi
+winters	冬季	wi
+witches	巫婆	wi
 wiwaxia	鳞刺软体虫	wi
 wombats	袋熊	wi
+wonders	奇迹	wi
+workers	工人	wi
 worried	担心	w
+worries	担心	wi
+worship	崇拜	wi
 wounded	击伤了	h
+wraiths	幽灵	wi
+wreaths	花圈	wi
 writing	写作	r
 yak cow	牦牛	wi
+zealots	狂信徒	wi
 zealous	热忱	wi
+zeniths	顶点	wi
+zephyrs	西风	wi
 {c} {s}	{c1} × {s1}	hIit
 {c} {s}	{c1}{s1}	htu
 {d} day	{d}天	wt
@@ -180047,7 +181436,6 @@ Clerks	文员	wi
 Clumsy	笨拙	w
 Combat	战斗	hq
 Combat	战斗	w
-Comedy	喜剧表演	wi
 Copper	铜	wi
 Crafts	工艺品	w
 Create	创建
@@ -180143,7 +181531,6 @@ Guilty	内疚	w
 Gulgun	古尔贡	wi
 Gulnas	古纳斯	wi
 Hamlet	村庄
-Hammer	战锤术	wi
 Hatred	仇恨	w
 Hauled	拖动	w
 He has	他有
@@ -180219,7 +181606,6 @@ Lashid	拉希德	wi
 Lash\x89d	拉谢德	wi
 Lathon	拉松	wi
 Lavath	拉瓦斯	wi
-Leader	领导者	wi
 Lelgas	莱尔盖斯	wi
 Lesast	雷萨斯特	wi
 Leshal	莱夏尔	wi
@@ -180354,7 +181740,6 @@ Pet of	宠物主人：	wli
 Pillar	支柱	w
 Places	地点	w
 Pocket	小型	w
-Poetry	作诗	wi
 Polite	彬彬有礼	w
 Potter	陶艺师	wi
 Priest	祭司	wi
@@ -180628,165 +182013,339 @@ a well	井	h
 a work	一部作品	h
 a yard	院落	h
 abbess	修道院长	h
+abbeys	修道院	wi
 about 	这件事	wi
 acorns	橡子	wi
+action	行动	wi
 adders	蝰蛇	wi
 afraid	害怕	w
 after 	后	wi
+agents	代理人	wi
 alders	桤树	wi
+allies	同盟者	wi
 almond	扁桃	wi
 alpaca	羊驼	wi
 altars	圣坛	wi
 amazed	惊奇	wi
+ambers	琥珀	wi
 amulet	护身符	w
 amused	好笑	w
 an {s}	{s1}	hIit
 an {s}	{s1}	htN
+angels	天使	wi
+angers	愤怒	wi
 animal	动物	wi
+ankles	踝	wi
 anoles	安乐蜥	wi
 antics	滑稽动作	wi
 antler	鹿角	wi
 antman	蚂蚁人	wi
 antmen	蚂蚁人	wi
-anvils	锻砧	wi
+apexes	顶	wi
+apogee	顶点	wi
 apples	苹果	wi
+arches	拱门	wi
+arenas	角斗场	wi
 armors	盔甲	wi
+armory	武库	wi
 arrows	箭矢	wi
 as {s}	作为{s1}	ht
 at {p}	于{p1}	htC
+attics	阁楼	wi
 auburn	赤褐色	wi
-autumn	秋	wi
+author	作家	wi
 b. {d}	生于第{d}年	wt
 badger	鼬獾	wi
+bakers	面包师	wi
 banana	香蕉	wi
+bandit	强盗	wi
+banner	旗帜	wi
 barley	大麦	wi
 barons	男爵	wi
 barrel	圆桶	wi
 basalt	玄武岩	wi
+basins	盆	wi
+battle	战斗	wi
 beards	胡须	wi
+beasts	野兽	wi
 beaten	遭到了殴打	h
 beauty	美	r
-beauty	貌美	wi
+beauty	美	wi
 beaver	海狸	wi
 beetle	甲虫	wi
 billon	毕朗合金	wi
 bilous	矮长臂猿	wi
+births	诞生	wi
 biting	撕咬	h
 bitter	苦涩	w
 blades	刀刃	wi
+blames	过失	wi
+blazes	火焰	wi
 blight	枯萎	r
+blight	枯萎	wi
+bloats	肿胀	wi
 blocks	锭块	wi
 blocky	呈块状	hv
 blocky	块状	wi
+bloods	血	wi
+blotch	大斑点	wi
+boards	木板	wi
 bobcat	短尾猫	wi
+bodice	紧身衣	wi
 bodies	身体	h
+bodies	身体	wi
 boiled	沸腾而死	h
 bonobo	倭黑猩猩	wi
+bosses	首领	wi
+bottle	瓶子	wi
+bottom	底部	wi
 bovine	牛	wi
+bowels	肠	wi
+braids	辫子	wi
 braies	短裤	wi
+brains	脑	wi
 branch	树枝	wi
+brands	烙印	wi
+breach	裂口	wi
+breads	面包	wi
+breath	呼吸	wi
+breeds	种类	wi
 bricks	砖块	wi
+brides	新娘	wi
+bridge	桥	wi
+bridle	马勒	wi
 broker	交易员	wi
 bronze	青铜	wi
+brunch	早午餐	wi
+brutes	野兽	wi
 bucket	提桶	wi
+buckle	皮带扣	wi
 bugbat	虫蝠	wi
+bunion	拇囊炎	wi
+burden	负担	wi
 burned	烧伤了	h
+bushel	斗	wi
+bushes	矮树丛	wi
+buster	破坏者	wi
 butler	管家	hi
+butter	奶油	wi
+button	钮扣	wi
 by {a}	，由{a1}实施	ht
 by {p}	由{p1}实施的历史事件	htEi
+cactus	仙人掌	wi
+callus	老茧	wi
+cancer	癌	wi
+candle	蜡烛	wi
 canine	狗	wi
+canker	溃烂	wi
+canyon	峡谷	wi
 capers	刺山柑	wi
 caring	关心	w
 carrot	胡萝卜	wi
 casque	头盔	h
 castle	城堡	hv
+castle	城堡	wi
+cavern	巨穴	wi
 cavies	豚鼠	wi
+cavity	洞	wi
 celery	芹菜	wi
 chain 	锁链	wi
-chains	链条	wi
 chairs	椅子	wi
-cheese	奶酪	wi
+chance	机会	wi
+chants	圣歌	wi
+chapel	小教堂	wi
+charms	吸引力	wi
+chasms	陷窟	wi
 cheesy	奶酪	wi
 cherry	樱桃	wi
 chests	箱子	wi
 chicks	鸡幼崽	wi
+chiefs	酋长	wi
+chills	寒意	wi
 chubby	微胖	wi
-chunks	残块	wi
-circle	圆圈	wi
+church	教堂	wi
+cinder	灰烬	wi
+circle	圆周	wi
+cities	城市	wi
 citron	香橼	wi
+clasps	扣子	wi
+clefts	裂缝	wi
 clerks	文员	hi
+climax	顶峰	wi
+clinch	紧扣	wi
 cloaks	斗篷	wi
+clocks	时钟	wi
+closet	壁橱	wi
 clouds	云	wi
+clouts	敲击	wi
+clutch	抓紧	wi
 coasts	海岸	r
+coasts	海岸	wi
 coatis	长鼻浣熊	wi
-cobalt	钴蓝色	wi
+cobras	眼镜蛇	wi
 coiled	盘卷	wi
+colors	颜色	wi
+column	柱	wi
+combat	争斗	wi
+comets	彗星	wi
 convex	凸起	wi
 corpse	尸体	wi
+cosmos	宇宙	wi
 cotton	棉花	wi
 cougar	美洲狮	wi
 counts	伯爵	wi
+couple	一对	wi
 cousin	堂表兄弟姐妹	wi
+covens	女巫会	wi
+covers	盖子	wi
 coyote	郊狼	wi
+cracks	裂缝	wi
+cradle	摇篮	wi
 crafts	工艺	r
-crests	头冠	wi
+crater	火山口	wi
+crazes	狂热	wi
+creams	奶油	wi
+creeds	信条	wi
+creeks	小溪	wi
+creeps	爬行	wi
+crests	冠	wi
+crowds	群众	wi
 crowns	头冠	wi
 crutch	拐杖	wi
+cruxes	关键	wi
+crypts	地穴	wi
+cudgel	棍棒	wi
 curly.	卷曲。	wil
+curses	诅咒	wi
 curved	弯曲	wi
 cygnet	天鹅幼崽	wi
 d. {d}	卒于第{d}年	wt
 dacite	英安岩	wi
 dagger	匕首	wi
+dances	跳舞	wi
+danger	危险	wi
+dearth	缺乏	wi
+deaths	死亡	wi
+decays	衰败	wi
 deeply	深深	wi
+defect	缺点	wi
+demons	恶魔	wi
+depths	深度	wi
+desert	沙漠	wi
+devils	魔鬼	wi
 dialog	对话录	hv
+dimple	酒窝	wi
+dinner	晚餐	wi
+dirges	挽歌	wi
 dirty 	肮脏的	wi
+dishes	盘子	wi
 doctor	医生	hi
+domain	领域	wi
 donkey	驴	wi
+doyens	行会元老	wi
 dozens	数十	wi
 dragon	巨龙	wi
+drains	排水沟	wi
 drakes	鸭	wi
+drawls	拖腔	wi
 dreams	梦境	r
+dreams	梦	wi
+drills	训练	wi
 drinks	饮料	wi
+drools	口水	wi
 drowsy	昏昏欲睡	wi
 druids	德鲁伊	wi
 durian	榴梿	wi
 during	在活动期间	h
+duties	责任	wi
 eagles	鹰	wi
 eaglet	鹰幼崽	wi
+earths	大地	wi
+eaters	吞食者	wi
 eating	进食	wi
+echoes	回声	wi
 eighth	第八	wi
 elated	兴高采烈	w
+elbows	手肘	wi
+elders	年长者	wi
 eldest	最大的	wi
+empire	帝国	wi
 equine	马	wi
+equity	公平	wi
 eryops	引螈	wi
+escort	护送者	wi
+esteem	尊敬	wi
 ettins	双头巨人	wi
 eyelid	眼睑	h
+factor	贸易代理	wi
 fairly	结果尚可	h
+faiths	信心	wi
 family	家庭	r
 family	家庭	wi
+famine	饥荒	wi
 father	父亲	h
 father	父亲	wi
+fealty	忠诚	wi
+feasts	宴会	wi
 feels 	感到	wi
 feline	猫	wi
+fences	围墙	wi
+fevers	发烧	wi
+fields	田野	wi
+fiends	恶魔	wi
 fifth 	第五	wi
+fights	打架	wi
+figure	人像	wi
+filths	污秽	wi
+finder	发现者	wi
 finger	手指	wi
+fisher	渔夫	wi
+fishes	鱼	wi
 flails	连枷	wi
 flames	火焰	wi
+flanks	侧翼	wi
+flares	火光	wi
 flasks	携带瓶	wi
+flayer	剥皮者	wi
+flecks	斑点	wi
+fliers	飞行者	wi
 flight	逃离	h
+flight	飞行	wi
+floods	洪水	wi
+floors	地板	wi
 flower	花	wi
+flukes	偶然	wi
+flutes	笛	wi
 formed	成立了	h
 fourth	第四	wi
+frames	框	wi
+frenzy	疯狂	wi
 friend	朋友	wi
+frills	皱边	wi
 frilly	饰边	wi
 front 	前	wi
+froths	泡沫	wi
+fruits	水果	wi
+fungus	真菌	wi
+future	未来	wi
 gabbro	辉长岩	wi
 gaiety	欢快	w
+galley	桨帆船	wi
 gander	鹅	wi
 gapped	有间隙	wi
+garlic	大蒜	wi
+genius	天才	wi
+gerbil	沙鼠	wi
+ghosts	鬼	wi
+ghouls	食尸鬼	wi
 giant 	巨型	wi
 giants	巨人	wi
+girder	大梁	wi
+girdle	腰带	wi
+glades	林间空地	wi
+glands	腺	wi
+glazes	釉	wi
+gleams	光束	wi
 gloomy	阴郁	w
 gloves	手套	wi
 gneiss	片麻岩	wi
@@ -180794,26 +182353,62 @@ gobble	咯咯	wi
 goblet	高脚杯	wi
 goblin	哥布林	wi
 gooey 	黏糊糊的	wi
+gorges	峡谷	wi
 gorlak	獠牙怪	wi
+grains	谷粒	wi
 grapes	葡萄	wi
+grasps	抓握	wi
 grates	格栅	wi
+gravel	砂砾	wi
+graves	墓	wi
 grease	油脂	wi
 greasy	油腻的	wi
+greeds	贪欲	wi
+groove	凹槽	wi
+grotto	洞穴	wi
+groves	小树林	wi
+grower	种植者	wi
+growls	吠声	wi
 grown 	长出的	wi
+growth	生长	wi
 grumpy	暴躁	wi
 grunts	咕哝	wi
+guards	守卫者	wi
 guavas	番石榴	wi
+guilds	行会	wi
+guiles	狡猾	wi
 guilty	内疚	w
+guises	外表	wi
+gutter	排水沟	wi
 gypsum	软石膏	wi
+habits	习惯	wi
 hamlet	村庄	hv
+handle	柄	wi
+haunts	幽所	wi
 having	享用饮品	wi
+healer	医者	wi
+hearth	炉床	wi
+hearts	心	wi
+heaven	天堂	wi
+hedges	树篱	wi
 height	身高	wi
 helves	斧柄	wi
+hermit	隐士	wi
+heroes	英雄	wi
 hidden	隐藏的	wi
 hippos	河马	wi
+hollow	洞	wi
+homage	尊崇	wi
+honeys	蜂蜜	wi
 hooked	带弯钩	wi
+hooves	蹄	wi
+hopper	跃者	wi
 horses	马	wi
+hounds	猎犬	wi
+houses	房子	wi
+hovels	陋屋	wi
 humans	人类	wi
+hunger	饥饿	wi
 hungry	饥饿	wi
 hydras	九头蛇	wi
 hyenas	鬣狗	wi
@@ -180822,241 +182417,554 @@ icicle	冰锥	wi
 iguana	鬣蜥	wi
 images	影像	h
 images	图像	hIi
+images	影像	wi
 impala	高角羚	wi
 in {i}	，使用{i1}制作	ht
 in {p}	于{p1}	htC
+inches	英寸	wi
 indigo	靛青色	wi
+infamy	恶名	wi
+insect	昆虫	wi
 irises	虹膜	wi
 is fat	体态肥胖	wi
 is in 	陷入	wi
 is {s}	是{s1}	hJt
+island	岛	wi
+itches	痒	wi
 jackal	豺	wi
 jagged	参差不齐	hv
 jagged	锯齿状	wi
 jaguar	美洲豹	wi
+jailer	狱卒	wi
+jester	弄臣	wi
 jewels	宝石	r
+jewels	珠宝	wi
 joined	加入了	h
 jovial	开朗	w
 judges	法官	hi
+juices	汁	wi
+jungle	丛林	wi
 kakapo	鸮鹦鹉	wi
 kaniwa	彩藜	wi
 kapoks	木棉树	wi
+keeper	守护者	wi
 kidney	肾	wi
 killed	杀死了	h
+killer	杀手	wi
+kisses	吻	wi
 kitten	猫幼崽	wi
+knight	骑士	wi
 knives	短刀	wi
 knobby	多瘤节的	hv
+knower	智者	wi
 koalas	树袋熊	wi
 kobold	狗头人	wi
+labors	劳动	wi
 ladies	女领主	hi
 ladies	女领主	wi
 ladles	汤勺	wi
+lancer	枪骑兵	wi
+lances	长矛	wi
+larvae	幼虫	wi
 lashes	皮鞭	wi
+leader	领导者	wi
+league	同盟	wi
+leaves	叶	wi
+legend	传说	wi
+lemons	柠檬黄	wi
+length	长度	wi
+lenses	透镜	wi
+lepers	麻风病人	wi
+lesion	病灶	wi
+lesson	课	wi
 letter	信	hv
+letter	字母	wi
+lights	光	wi
+lilacs	淡紫	wi
 liquid	液体	wi
 lizard	蜥蜴	wi
 llamas	无峰驼	wi
+loaves	面包	wi
 lonely	孤独	w
+lovers	爱人	wi
 lower 	下	wi
+luster	光彩	wi
+luxury	奢侈	wi
 lychee	荔枝	wi
+lyrics	抒情诗	wi
+maggot	蛆	wi
+magics	魔法	wi
 magpie	喜鹊	wi
+malice	恶意	wi
 manera	倒吊鲨齿怪	wi
+manges	兽疥癣	wi
 mangos	芒果	wi
+manors	庄园	wi
 mantis	螳螂	wi
 manual	手册	hv
 maples	枫树	wi
-marble	大理石	wi
+market	市场	wi
 marlin	枪鱼	wi
 maroon	栗红色	wi
+martyr	烈士	wi
 mayors	市长	wi
+meadow	草地	wi
 melted	熔化而死	h
+menace	威胁	wi
 merman	人鱼	wi
 mermen	人鱼	wi
+meshes	网孔	wi
+messes	混乱	wi
 metals	金属	r
+metals	金属	wi
+meteor	流星	wi
+mights	力量	wi
+minion	爪牙	wi
+mirror	镜子	wi
 misery	苦难	r
 mitten	连指手套	wi
+moment	片刻	wi
+monger	商人	wi
+monkey	猴子	wi
+morals	道德	wi
+morass	沼泽	wi
 morion	黑水晶	wi
+morsel	食物	wi
+mortal	凡人	wi
 mortar	研钵	wi
+mosses	苔藓	wi
 mother	母亲	h
 mother	母亲	wi
+mouths	嘴	wi
 moved.	迁移了。	h
+muffin	松饼	wi
 murder	谋杀	h
 murder	谋杀	r
+murder	谋杀	wi
 muscle	肌肉	wi
+mushes	糊	wi
+musics	音乐	wi
 muskox	麝牛	wi
 mussel	贻贝	wi
+nadirs	天底	wi
 narrow	狭窄的	hv
 narrow	狭窄	wi
+nation	国家	wi
 nature	自然	r
 nature	自然	wi
 nearly	近乎	wi
 nephew	侄子或外甥	wi
+nettle	荨麻	wi
+nights	夜	wi
+nobles	贵族	wi
+nooses	套索	wi
+number	数	wi
 oceans	海洋	r
+oceans	海洋	wi
 ocelot	豹猫	wi
 ogress	食人魔	wi
 olives	橄榄	wi
 onions	洋葱	wi
 onyxes	缟玛瑙	wi
+oracle	神谕	wi
+orders	教团	wi
+organs	器官	wi
 oriole	黄鹂	wi
 osprey	鱼鹰	wi
+owners	拥有者	wi
 oyster	牡蛎	wi
+paddle	桨	wi
+paints	油漆	wi
 palace	宫殿	hv
+palace	宫	wi
 pandas	熊猫	wi
 panics	惊慌失措	wi
 papaya	番木瓜	wi
+papers	纸	wi
 parent	父母	wi
+parity	同等	wi
+passes	山口	wi
 patchy	斑驳稀疏	hv
+peaces	和平	wi
 peanut	花生	wi
 pearls	珍珠	wi
-pebble	卵石形	wi
+pebble	卵石	wi
 pecans	碧根果	wi
 pepper	胡椒	wi
 pestle	研杵	wi
+petals	花瓣	wi
 pewter	白镴	wi
+phlegm	痰	wi
+phrase	惯用语	wi
 piglet	猪幼崽	wi
+pillar	柱子	wi
+pimple	丘疹	wi
 pixies	小精灵	wi
+plague	瘟疫	wi
+plains	平原	wi
+plaits	发辫	wi
+planes	平面	wi
+planet	行星	wi
+planks	厚木板	wi
 plants	植物	h
 plants	植物	r
 plants	植物	wi
+plates	盘	wi
+pleats	褶	wi
+plunge	猛冲	wi
+pocket	口袋	wi
 poetry	诗歌	r
+points	尖端	wi
+poison	毒药	wi
+pokers	戳刺者	wi
+polish	光泽	wi
 polite	彬彬有礼	h
 pomelo	蜜柚	wi
-portal	晶门	wi
 potash	草碱	wi
 potato	马铃薯	wi
 poults	火鸡幼崽	wi
 powder	粉末	wi
+powers	力	wi
+praise	赞美	wi
+pranks	恶作剧	wi
 prases	苍绿石英	wi
+prices	价格	wi
+prides	骄傲	wi
+prince	王子	wi
+prison	监狱	wi
 prongs	尖叉	wi
 puffin	海鹦	wi
 puggle	针鼹幼崽	wi
+pulley	滑轮	wi
+puppet	傀儡	wi
+purges	净化	wi
+purity	纯净	wi
 purple	紫色	wi
+pusses	脓	wi
+puzzle	难题	wi
 pyrite	黄铁矿	wi
 python	巨蟒	wi
 quacks	嘎	wi
+quakes	震颤	wi
 queens	女王	wi
 querns	手推磨	wi
-quills	刺	wi
+quests	探索	wi
+quills	羽毛笔	wi
 quinoa	藜麦	wi
 quires	稿纸	wi
 quiver	箭筒	wi
 rabbit	兔	wi
+rabble	乌合之众	wi
 radish	小萝卜	wi
 raided	袭击了	h
+rancor	敌意	wi
+raptor	猛禽	wi
+raunch	粗俗	wi
 ravens	渡鸦	wi
+razors	剃刀	wi
+realms	领域	wi
+reason	理由	wi
+reigns	统治	wi
+relics	遗物	wi
+renown	名声	wi
+reward	报酬	wi
+rhymes	韵	wi
+rhythm	节奏	wi
+riddle	谜	wi
+riders	骑手	wi
+rights	正义	wi
 ripped	撕伤了	h
+ripper	撕裂者	wi
 rivers	河流	r
+rivers	河	wi
 roasts	烤菜	wi
+rogues	恶棍	wi
+rooter	拔根者	wi
 rough 	粗糙	wi
 routed	击溃了	h
 rubies	红宝石	wi
+rulers	统治者	wi
 rumors	传闻	r
+rumors	谣言	wi
 rushes	灯心草	wi
 russet	赤褐色	wi
 rutile	金红石	wi
+sabres	军刀	wi
+sacred	神圣	wi
+safety	安全	wi
+saints	圣徒	wi
 salmon	鲑鱼	wi
+salute	敬礼	wi
+salves	油膏	wi
 sandal	凉鞋	wi
+satins	缎子	wi
 satyrs	半羊人	wi
+savage	野人	wi
+savant	学者	wi
+savior	救世主	wi
 scales	鳞片	wi
 schist	片岩	wi
 schorl	黑碧玺	wi
+scoops	铲子	wi
+scorns	轻蔑	wi
+scrape	刮	wi
+scraps	碎片	wi
+scream	尖叫声	wi
 scroll	卷轴	wi
+search	搜寻	wi
+season	季节	wi
 second	第二	wi
+secret	秘密	wi
+senses	感觉	wi
+severs	切断	wi
+sewers	下水道	wi
+shacks	陋屋	wi
+shades	阴影	wi
+shadow	阴影	wi
 shaft/	杆/	wi
+shafts	轴	wi
 shaken	震惊不已	w
+shames	羞耻	wi
+shanks	胫	wi
+sharks	鲨鱼	wi
+sheens	光辉	wi
 sheets	纸张	wi
 shells	壳	wi
 shirts	衬衫	wi
+shocks	震撼	wi
+shores	海岸	wi
 short 	短	wi
+shovel	铲	wi
+shoves	推	wi
+shower	阵雨	wi
+shreds	碎布条	wi
+shriek	尖啸	wi
 shrine	圣地	hv
+shrine	神龛	wi
+sieges	围城	wi
+sinews	筋腱	wi
+sister	姐妹	wi
+skewer	串肉棒	wi
 skinks	彩舌蜥	wi
 skinny	干瘦	wi
-skirts	裙	wi
+skulls	头盖骨	wi
 skunks	臭鼬	wi
+slaves	奴隶	wi
+slayer	杀人者	wi
+sleeve	袖子	wi
+slimes	烂泥	wi
 slimy 	黏糊糊的	wi
+slings	投石索	wi
+sliver	碎片	wi
 sloths	树懒	wi
+sludge	软泥	wi
 small 	小	wi
+smears	污点	wi
+smiles	微笑	wi
+smiths	铁匠	wi
+smokes	烟	wi
 smooth	光滑的	wi
+snacks	小吃	wi
 snails	蜗牛	wi
+snakes	蛇	wi
+snarls	咆哮	wi
+sneers	冷笑	wi
 snorts	哼	wi
+socket	凹窝	wi
+sorrow	悲伤	wi
+sounds	声音	wi
+sparks	火花	wi
 sparse	稀疏	wi
+spasms	痉挛	wi
+spawns	卵	wi
 spears	矛	wi
+specks	斑点	wi
 speech	言语	r
+speech	言语	wi
+spells	咒语	wi
 spices	香料	wi
-spikes	尖刺	wi
-spines	刺毛	wi
+spider	蜘蛛	wi
+spines	脊柱	wi
 spiral	螺旋状的	hv
+spiral	螺旋	wi
+spires	尖塔	wi
+splash	飞溅	wi
 spleen	脾	h
 splint	夹板	wi
+spoils	赃物	wi
 sponge	海绵	wi
 spongy	海绵	wi
+spoons	匙	wi
+sports	运动	wi
 spouse	配偶	wi
-spring	春	wi
+sprays	水沫	wi
+spurns	踢开	wi
+spurts	喷射	wi
 square	方形的	hv
 square	方形	wi
 squash	西葫芦	wi
 squids	鱿鱼	wi
+stakes	桩	wi
+stance	姿态	wi
+starts	开端	wi
+stasis	停滞	wi
 statue	雕像	wi
+staves	杖	wi
+steeds	战马	wi
+steels	钢	wi
+stench	恶臭	wi
+steppe	大草原	wi
+sticks	棍	wi
+stigma	耻辱	wi
 stoats	白鼬	wi
+stoker	司炉	wi
 stones	石头	wi
 storms	风暴	r
+storms	暴风雨	wi
 strand	缕	wi
+straps	带	wi
+straws	稻草	wi
 stray 	无主的	wip
 strays	无主	wi
+stream	水流	wi
+strife	争斗	wi
 strike	打击	wi
+string	线	wi
+stroke	抚触	wi
 stubby	粗短的	hv
 study.	从事学术研究。	hP
-summer	夏	wi
+stumps	残株	wi
+stunts	绝技	wi
+styles	风格	wi
+sucker	乳儿	wi
+sugars	糖	wi
+suitor	追求者	wi
+summit	顶峰	wi
 sunken	深陷	wi
+supper	晚餐	wi
+swamps	沼泽	wi
+sweats	汗	wi
+swines	猪	wi
 swords	剑	wi
+syrups	糖浆	wi
+system	系统	wi
 tables	桌子	wi
+tactic	战术	wi
+takers	夺取者	wi
 tallow	脂油	wi
+talons	爪	wi
+tangle	缠结	wi
 tapirs	貘	wi
+target	目标	wi
+tattoo	纹身	wi
 their 	他们的	wi
 thick.	厚实。	wil
+thirst	口渴	wi
 thongs	内裤	wi
 thorax	胸廓	h
+thorns	刺	wi
+thrall	奴隶	wi
 thread	线	wi
+threat	威胁	wi
+thrift	节约	wi
 thrips	蓟马	wi
 throat	喉咙	h
 throat	喉咙	w
 throne	椅子	wi
 tigers	虎	wi
 to {p}	，前往{p1}	ht
+toasts	吐司	wi
 tomato	番茄	wi
 tongue	舌头	h
 tongue	舌头	w
 totems	图腾	wi
+towers	塔	wi
+trades	贸易	wi
+trails	踪迹	wi
+trance	恍惚	wi
+treats	款待	wi
+treaty	条约	wi
+trench	渠	wi
+trials	审判	wi
+tribes	宗族	wi
+tricks	诡计	wi
+trifle	琐事	wi
 trolls	巨魔	wi
+trough	槽	wi
+truths	真理	wi
+tulips	郁金香	wi
+tumors	肿大	wi
+tundra	苔原	wi
 tunics	短袍	wi
+tunnel	隧道	wi
 turban	头巾	wi
 turkey	火鸡	wi
 turnip	芜菁	wi
+twines	绞线	wi
+twists	扭曲	wi
+ulcers	溃疡	wi
+umbras	阴影	wi
+uncles	叔父	wi
 uneasy	不安	w
+unions	联盟	wi
 upper 	上	wi
+valley	山谷	wi
+vandal	破坏者	wi
+vaults	秘库	wi
 vellum	皮纸	wi
+velvet	天鹅绒	wi
+venoms	毒液	wi
+vermin	害虫	wi
+verses	诗	wi
 vessel	船	hIi
+vessel	船	wi
+victim	受害人	wi
 violet	紫罗兰色	wi
+vipers	蝰蛇	wi
+virgin	处女	wi
+virtue	德行	wi
+vision	异象	wi
+voices	声音	wi
+vomits	呕吐	wi
 waddle	摇摇摆摆地走	wi
 wagons	货车	wi
 walnut	核桃	wi
 walrus	海象	wi
 warmth	温暖	wi
+wastes	荒地	wi
+waters	水	wi
 wattle	红色肉垂	wi
 wealth	财富	r
 wealth	财富	wi
 weapon	武器	wi
 weasel	黄鼬	wi
+weevil	象甲	wi
+weight	重量	wi
+weirds	命运	wi
+wheats	小麦	wi
+wheels	轮	wi
 while 	时	wi
+whisky	威士忌酒	wi
 willow	柳树	wi
 window	窗	wi
-winter	冬	wi
 wisdom	智慧	r
+wisdom	智慧	wi
+wishes	希望	wi
 wolves	狼	wi
 wombat	袋熊	wi
 wonder	惊叹	w
 wooden	木制	wi
+worker	工人	wi
+worlds	世界	wi
+wraith	幽灵	wi
+wraths	愤怒	wi
+wreath	花圈	wi
+wretch	可怜虫	wi
 yellow	黄色	wi
+youths	年轻	wi
+zealot	狂信徒	wi
+zenith	顶点	wi
+zephyr	西风	wi
 zoysia	结缕草	wi
 {d} pt	{d} 点	wt
 {s}, \x0B	{s}，♂	wt
@@ -181194,7 +183102,6 @@ Cegol	塞高尔	wi
 Cerol	塞罗尔	wi
 Chair	椅子	w
 Chant	吟唱	hP
-Chasm	裂口	wi
 Chest	箱子	w
 Child	小孩	wi
 Clean	清洁	wi
@@ -181358,7 +183265,6 @@ Ginok	吉诺克	wi
 Gis\x89k	吉塞克	wi
 Givel	吉维尔	wi
 Glass	玻璃
-Glaze	上釉	wi
 Gloom	阴郁	w
 Goals	目标	hq
 Goals	目标	w
@@ -181460,7 +183366,6 @@ Kisat	基萨特	wi
 Kisul	基苏尔	wi
 Kit\x8Bg	基蒂格	wi
 Kizab	基扎布	wi
-Knife	小刀使用	wi
 Kobel	科贝尔	wi
 Kobem	科贝姆	wi
 Kodor	科多尔	wi
@@ -181587,7 +183492,6 @@ Mubun	穆本	wi
 Mukar	穆卡尔	wi
 Murak	穆拉克	wi
 Musar	穆萨尔	wi
-Music	音乐演奏	wi
 Mus\x94d	穆索德	wi
 Muved	穆维德	wi
 M\x89tin	梅廷	wi
@@ -181713,7 +183617,6 @@ Reked	雷克德	wi
 Relon	雷隆	wi
 Rerik	雷利克	wi
 Reset	重置
-Rider	骑手	wi
 Rifot	里福特	wi
 Rilem	利莱姆	wi
 Rimad	利玛德	wi
@@ -181821,7 +183724,6 @@ Sulus	索卢斯	wi
 Sumun	苏蒙	wi
 Suton	苏顿	wi
 Suvas	索瓦斯	wi
-Sword	剑术	wi
 S\xA0rek	萨雷克	wi
 S\x88gam	塞加姆	wi
 S\x8Bsal	锡萨尔	wi
@@ -181987,303 +183889,693 @@ Z\x8Aler	泽勒尔	wi
 a boy	一个男孩	wi
 a {s}	{s1}	hIit
 a {s}	{s1}	htN
+abbey	修道院	wi
 abbot	修道院长	h
 abbot	修道院长	wi
+abyss	深渊	wi
+aches	疼痛	wi
 acorn	橡子	wi
 adder	蝰蛇	wi
+agent	代理人	wi
 agony	极度痛苦	wi
 alder	桤树	wi
 altar	圣坛	wi
+angel	天使	wi
+anger	愤怒	wi
 angry	愤怒	w
+ankle	踝	wi
 anole	安乐蜥	wi
-anvil	锻砧	wi
 apple	苹果	wi
+arena	角斗场	wi
 armor	盔甲	wi
 arrow	箭矢	wi
 ashen	白蜡木	wi
 atlas	地图集	hv
+attic	阁楼	wi
+aunts	阿姨	wi
+auras	气场	wi
 awful	糟糕的	wi
 azure	天青色	wi
-balls	圆球	wi
+backs	背部	wi
+baits	饵	wi
+baker	面包师	wi
+bands	带子	wi
+banes	祸根	wi
+banks	河岸	wi
+barbs	倒钩	wi
 baron	男爵	wi
+bases	基础	wi
+basin	盆	wi
+basis	基础	wi
+baths	沐浴	wi
+beach	海滩	wi
+beaks	鸟嘴	wi
+beans	豆子	wi
 beard	胡须	wi
+bears	熊	wi
+beast	野兽	wi
+beers	啤酒	wi
 beige	米色	wi
+belch	打嗝	wi
+bells	铃	wi
 belly	腹部	wi
+belts	带子	wi
+bends	弯曲	wi
+berry	浆果	wi
+biles	胆汁	wi
 bilou	矮长臂猿	wi
 birch	桦树	wi
+birds	鸟	wi
 birth	诞生	r
+birth	诞生	wi
+bites	咬	wi
 black	黑色	wi
-blood	血液	wi
+blade	刀刃	wi
+blame	过失	wi
+blaze	火焰	wi
+bloat	肿胀	wi
+blots	污迹	wi
+blush	红晕	wi
+board	木板	wi
 boars	猪	wi
-bolts	弩矢	wi
+boats	船	wi
+boils	疖	wi
 bones	骨头	wi
+books	书	wi
+boots	长靴	wi
 borax	硼砂	wi
 bored	无聊	w
+bowel	肠	wi
 bowls	碗	wi
 boxes	盒子	wi
+braid	辫子	wi
 brain	脑子	h
+brand	烙印	wi
 brass	黄铜	wi
+bread	面包	wi
+breed	种类	wi
+brews	酿造酒	wi
+bride	新娘	wi
+brims	边缘	wi
 broad	宽阔的	hv
 broad	宽阔	wi
 brown	棕色	wi
+brush	刷子	wi
+brute	野兽	wi
+bucks	公鹿	wi
 buff.	浅黄褐色。	wil
+bulbs	球茎	wi
 bulky	厚重	wi
 bulls	奶牛	wi
+bunch	串	wi
 bunny	兔幼崽	wi
-cages	笼子	wi
+burns	烧伤	wi
+busts	半身像	wi
+cacti	仙人掌	wi
+cakes	蛋糕	wi
+calls	呼叫	wi
+camps	营地	wi
+candy	糖果	wi
 caper	刺山柑	wi
 capes	披风	wi
 casts	固定套	wi
-chain	链条	wi
+catch	捕捉	wi
+caves	洞	wi
+cells	小室	wi
 chair	椅子	wi
 chalk	白垩岩	wi
+chant	圣歌	wi
 chaos	混沌	r
+chaos	大混乱	wi
+charm	吸引力	wi
 chefs	厨师	hi
 chert	角岩	wi
 chest	箱子	wi
 chick	鸡幼崽	wi
+chief	酋长	wi
 child	孩子	h
-chunk	残块	wi
+chill	寒意	wi
+chips	碎片	wi
+clams	蛤	wi
+clans	氏族	wi
+clash	冲突	wi
+clasp	扣子	wi
+claws	爪	wi
 clear	透明色	wi
+cleft	裂缝	wi
 clerk	文员	hi
 cloak	斗篷	wi
+clock	时钟	wi
+clods	土块	wi
 cloud	云	wi
+clout	敲击	wi
+clubs	棍棒	wi
+coast	海岸	wi
 coati	长鼻浣熊	wi
 coats	大衣	wi
+cobra	眼镜蛇	wi
 codex	抄本	wi
+coils	线圈	wi
 coins	硬币	wi
+color	颜色	wi
+comet	彗星	wi
 coral	珊瑚	wi
 count	伯爵	wi
+coven	女巫会	wi
+cover	盖子	wi
 crabs	螃蟹	wi
-cream	奶油色	wi
-crest	头冠	wi
+crack	裂缝	wi
+craft	技艺	wi
+craze	狂热	wi
+creed	信条	wi
+creek	小溪	wi
+creep	爬行	wi
+crews	船员	wi
 cross	十字架	wi
+crowd	群众	wi
 crown	头冠	wi
 crows	乌鸦	wi
+crypt	地穴	wi
 cubes	立方体	wi
 cubic	立方体的	wi
+cults	膜拜	wi
+curls	拳曲	wi
 curly	卷曲	wi
+curse	诅咒	wi
+cusps	尖端	wi
+cysts	包囊	wi
+dales	小谷	wi
 dance	舞蹈	r
 dates	椰枣	wi
+daubs	污迹	wi
+dawns	破晓	wi
+deans	行会长	wi
 death	死亡	r
-deity	神祇	wi
+death	死亡	wi
+decay	衰败	wi
+deeps	深处	wi
+dells	小谷	wi
+demon	恶魔	wi
 dense	浓密	wi
+dents	凹痕	wi
+depth	深度	wi
+desks	书桌	wi
+devil	魔鬼	wi
+dikes	堤防	wi
 dingo	野狗	wi
+dirge	挽歌	wi
+dirts	泥土	wi
 discs	锯盘	wi
+ditch	沟渠	wi
+dives	潜水	wi
 dodos	渡渡鸟	wi
+dooms	厄运	wi
 doors	门	wi
 doubt	怀疑	wi
 downy	柔软蓬松	hv
+doyen	行会元老	wi
+drain	排水沟	wi
 drake	鸭	wi
-dress	裙装	wi
+drawl	拖腔	wi
+dread	恐惧	wi
+dream	梦	wi
+dregs	残渣	wi
+drill	训练	wi
 drink	饮料	wi
+drips	水滴	wi
+drool	口水	wi
 druid	德鲁伊	wi
+drums	鼓	wi
 ducks	鸭	wi
 dukes	公爵	wi
+dumps	垃圾堆	wi
+dunes	沙丘	wi
+dungs	粪	wi
+dusks	薄暮	wi
+dusts	灰尘	wi
 dwarf	矮人	wi
 dying	死去	h
 eager	渴望	w
 eagle	鹰	wi
 earth	大地	r
+earth	大地	wi
+eater	吞食者	wi
+elbow	手肘	wi
+elder	年长者	wi
 elven	精灵	wi
 elves	精灵	wi
 empty	空虚	w
+entry	入口	wi
 essay	论文	hv
 ettin	双头巨人	wi
+evils	邪恶	wi
+exits	出口	wi
+faces	脸	wi
 fairy	小仙子	wi
-fangs	獠牙	wi
+faith	信心	wi
+falls	坠落	wi
+fangs	尖牙	wi
+farms	农场	wi
+fates	命运	wi
 fatty	脂肪	wi
+fears	恐惧	wi
+feast	宴会	wi
+fells	兽皮	wi
 felt 	感到	wi
+fence	围墙	wi
+ferns	蕨	wi
+ferry	渡船	wi
+fever	发烧	wi
 fiber	纤维	wi
+field	田野	wi
+fiend	恶魔	wi
 fifth	第五	wi
-filth	污垢	wi
+fight	打架	wi
+fires	火	wi
 first	第一	wi
+fists	拳头	wi
+flags	旗	wi
 flail	连枷	wi
+flame	火焰	wi
+flank	侧翼	wi
+flare	火光	wi
+flash	闪光	wi
 flask	携带瓶	wi
 flat/	平面/	wi
+fleas	跳蚤	wi
+fleck	斑点	wi
 flesh	血肉	wi
+flier	飞行者	wi
 flies	苍蝇	wi
+flood	洪水	wi
 fluff	绒毛	wi
+fluke	偶然	wi
+flute	笛	wi
+folds	折层	wi
 fonio	非尼奥米	wi
+fools	愚人	wi
 force	神力	wi
+fords	浅滩	wi
+forks	叉子	wi
 foxes	狐狸	wi
 frail	瘦弱	wi
+frame	框	wi
+frill	皱边	wi
+frogs	青蛙	wi
 front	前	h
-fruit	果实	wi
+frost	霜	wi
+froth	泡沫	wi
+fungi	真菌	wi
+gales	狂风	wi
+galls	胆汁	wi
 games	游戏	r
+games	游戏	wi
+gangs	队	wi
+gates	大门	wi
+gazes	凝视	wi
+gears	齿轮	wi
 geese	鹅	wi
+ghoul	食尸鬼	wi
 giant	巨人	wi
+gifts	礼物	wi
 gills	鳃	wi
+girls	女孩	wi
+glade	林间空地	wi
+gland	腺	wi
+gleam	光束	wi
+glens	峡谷	wi
+glory	光荣	wi
+gloss	光泽	wi
 glove	手套	wi
+glows	赤热	wi
+goads	赶牛棒	wi
+goals	目标	wi
 goats	山羊	wi
+golds	黄金	wi
 goods	货物	h
 goose	鹅	wi
+gorge	峡谷	wi
 grace	优雅	wi
+grain	谷粒	wi
 grama	格兰马草	wi
 grape	葡萄	wi
+grasp	抓握	wi
 grass	草	wi
 grate	格栅	wi
+grave	墓	wi
 great	绝妙的	wi
+greed	贪欲	wi
 green	绿色	wi
 grime	尘垢	wi
+grips	紧握	wi
 group	势力	hIi
+group	团体	wi
+grove	小树林	wi
+growl	吠声	wi
+grubs	幼虫	wi
+guard	守卫者	wi
 guava	番石榴	wi
 guide	指南	hv
 guild	行会	hIi
+guile	狡猾	wi
+guise	外表	wi
+gulfs	海湾	wi
+gully	小峡谷	wi
 guppy	虹鳉	wi
+habit	习惯	wi
+hairs	头发	wi
+halls	门厅	wi
+hames	颈轭	wi
+hands	手	wi
 happy	开心	w
 hares	野兔	wi
 harpy	鹰身女妖	wi
+hates	憎恨	wi
+haunt	幽所	wi
+hawks	鹰	wi
 hazel	榛	wi
 heart	心脏	h
-heart	心脏	wi
+hedge	树篱	wi
+hells	地狱	wi
 helms	头盔	wi
 helve	斧柄	wi
+hexes	诅咒	wi
+hides	兽皮	wi
+hills	丘陵	wi
 hippo	河马	wi
 hives	蜂箱	wi
-hoods	兜帽	wi
+holds	握持	wi
+holes	孔	wi
+homes	家	wi
+honey	蜂蜜	wi
+honor	荣誉	wi
+hopes	希望	wi
 horns	角	wi
 horse	马	wi
+hound	猎犬	wi
+hours	小时	wi
+house	房子	wi
+hovel	陋屋	wi
+howls	嗥叫	wi
 human	人类	wi
+humor	幽默	wi
 humps	驼峰	wi
 hydra	九头蛇	wi
 hyena	鬣狗	wi
 ichor	体液	wi
+idols	偶像	wi
 image	图像	hIi
+image	影像	wi
+irons	铁	wi
+jacks	千斤顶	wi
+jades	玉	wi
+jails	监牢	wi
+jewel	珠宝	wi
+jokes	笑话	wi
 jolly	开心	wi
 judge	法官	hi
+juice	汁	wi
+jumps	跳跃	wi
 kapok	木棉树	wi
 keets	珍珠鸡幼崽	wi
 kenaf	洋麻	wi
 kicks	踢击	h
 kings	国王	wi
 kiwis	鹬鸵	wi
+knots	结	wi
 koala	树袋熊	wi
 labor	劳动	r
+labor	劳动	wi
+laces	花边	wi
 ladle	汤勺	wi
 lakes	湖泊	r
+lakes	湖	wi
 lambs	绵羊幼崽	wi
+lance	长矛	wi
+lands	陆地	wi
 lanky	瘦高	wi
+lards	猪油	wi
 large	大	wi
+larks	云雀	wi
+larva	幼虫	wi
+leaks	漏洞	wi
+leaps	跳跃	wi
 leech	水蛭	wi
 leeks	韭葱	wi
 lemon	柠檬黄	wi
+leper	麻风病人	wi
 light	光明	r
-lilac	丁香紫	wi
-limes	酸橙	wi
+light	光	wi
+limbs	四肢	wi
 linen	亚麻纤维	wi
+lines	列	wi
 lions	狮子	wi
 liver	肝脏	h
 liver	肝脏	wi
+lives	生命	wi
 llama	无峰驼	wi
+locks	锁	wi
 long 	长	wi
 loons	潜鸟	wi
+loots	赃物	wi
 lords	领主	hi
 lords	领主	wi
 louse	虱子	wi
 lover	爱人	wi
+loves	爱	wi
+lulls	暂停	wi
+lunch	午餐	wi
+lungs	肺	wi
+lures	饵	wi
+lusts	贪欲	wi
+lutes	鲁特琴	wi
+lyric	抒情诗	wi
 maces	钉头锤	wi
+magic	魔法	wi
 magma	岩浆	wi
 maize	玉米	wi
 manes	鬃毛	wi
+mange	兽疥癣	wi
 mango	芒果	wi
+manor	庄园	wi
 maple	枫树	wi
+marks	标志	wi
+marsh	沼泽	wi
 masks	面罩	wi
+match	比赛	wi
 mauls	大锤	wi
 mauve	淡紫色	wi
 mayor	市长	wi
+mazes	迷宫	wi
+meads	蜂蜜酒	wi
+meats	肉	wi
 mercy	仁慈	r
 metal	金属	wi
+might	力量	wi
+miles	英里	wi
 milky	奶	wi
+minds	思想	wi
+mines	矿	wi
 minks	水貂	wi
+mires	泥沼	wi
+mirth	欢笑	wi
+mists	雾	wi
+mites	螨虫	wi
 mixed	混合物	wi
+molds	霉菌	wi
+moles	鼹鼠	wi
 moons	月亮	wi
 moose	驼鹿	wi
-moths	飞蛾	wi
+moral	道德	wi
+moths	蛾	wi
+mouse	老鼠	wi
 mouth	嘴巴	h
 mouth	嘴巴	w
 moved	迁移了	h
+mucks	垃圾	wi
+mucus	粘液	wi
 mules	骡子	wi
 music	音乐	r
+myths	神话	wi
+nadir	天底	wi
 nails	钉刺	wi
+names	名字	wi
+nests	巢	wi
+newts	水螈	wi
 niece	侄女或外甥女	wi
 night	夜晚	r
+night	夜	wi
 ninth	第九	wi
+noble	贵族	wi
+noose	套索	wi
 north	北	w
 noses	鼻子	wi
+notch	刻痕	wi
 novel	小说	hv
 oaken	橡木	wi
 oaths	誓言	r
 obese	肥胖	wi
+ocean	海洋	wi
 ochre	赭色	wi
+odors	气味	wi
 ogres	食人魔	wi
+omens	预兆	wi
 onion	洋葱	wi
+oozes	污泥	wi
 orcas	逆戟鲸	wi
 order	秩序	r
+organ	器官	wi
 ovine	绵羊	wi
+owner	拥有者	wi
+packs	兽群	wi
+pages	页	wi
+pains	痛苦	wi
+paint	油漆	wi
+palms	手掌	wi
 panda	熊猫	wi
+pants	裤子	wi
+paper	纸	wi
 paste	糊状物	wi
+paths	路径	wi
 peace	和平	r
 peace	和平	wi
+peaks	山峰	wi
 pears	白梨	wi
 pecan	碧根果	wi
+peeks	偷看	wi
+pelts	毛皮	wi
 perch	鲈鱼	wi
 perry	梨酒	wi
+petal	花瓣	wi
 picks	鹤嘴锄	wi
 pikes	长枪	wi
+pitch	沥青	wi
 pixie	小精灵	wi
+plain	平原	wi
+plait	发辫	wi
+plane	平面	wi
+plank	厚木板	wi
+plans	计划	wi
 plant	植物	wi
-plums	李	wi
+plate	盘	wi
+plays	戏剧	wi
+pleat	褶	wi
+plots	阴谋	wi
+poems	诗	wi
+point	尖端	wi
+poker	戳刺者	wi
+pools	池	wi
+posts	柱	wi
 pouch	小袋	wi
 poult	火鸡幼崽	wi
-power	权力	wi
+prank	恶作剧	wi
 prase	苍绿石英	wi
+price	价格	wi
 proud	自豪	w
 pudge	球脂	wi
-punch	拳击	wi
+pukes	呕吐	wi
+pulps	果肉	wi
 puppy	狗幼崽	wi
+purge	净化	wi
+quake	震颤	wi
 queen	女王	wi
 quern	手推磨	wi
+quest	探索	wi
+quill	羽毛笔	wi
 quire	稿纸	wi
 quite	颇为	wi
+races	种族	wi
+racks	架	wi
 raged	狂怒	wi
-rages	狂怒	wi
+rains	雨	wi
 ramie	苎麻	wi
+rasps	粗锉刀	wi
 raspy	沙哑	wi
 raven	渡鸦	wi
+razor	剃刀	wi
+realm	领域	wi
 rear 	后	wi
-rings	戒指	wi
-roars	咆哮	wi
+reign	统治	wi
+reins	缰绳	wi
+relic	遗物	wi
+rhyme	韵	wi
+rider	骑手	wi
+rifts	裂口	wi
+risks	冒险	wi
+rites	仪式	wi
+roads	路	wi
+roars	吼	wi
 roast	烤菜	wi
 robes	长袍	wi
 rocks	岩石	wi
-ropes	绳索	wi
+rogue	恶棍	wi
+roofs	屋顶	wi
+rooms	房间	wi
+roots	根	wi
+roses	玫瑰	wi
 round	圆形的	hv
 round	圆润	wi
+routs	溃败	wi
+ruins	毁灭	wi
+ruler	统治者	wi
+rumor	谣言	wi
+rusts	锈	wi
+sabre	军刀	wi
+sacks	麻布袋	wi
+saint	圣徒	wi
+salts	盐	wi
+salve	油膏	wi
+sands	沙	wi
 sards	褐玉髓	wi
+satin	缎子	wi
 satyr	半羊人	wi
+scabs	痂	wi
 scale	鳞片	wi
+scars	疤痕	wi
+scoop	铲子	wi
+scorn	轻蔑	wi
+scrap	碎片	wi
+seals	印章	wi
+seams	接缝	wi
+sects	宗派	wi
 seeds	种子	wi
+seers	预言者	wi
+sense	感觉	wi
 sepia	乌贼墨色	wi
+sever	切断	wi
+sewer	下水道	wi
+shack	陋屋	wi
+shade	阴影	wi
 shads	河鲱	wi
+shaft	轴	wi
 shale	页岩	wi
+shank	胫	wi
 shape	形状	wi
+shark	鲨鱼	wi
 sharp	锋利的	wi
+sheen	光辉	wi
 sheep	绵羊	wi
 sheer	薄纱	wi
 sheet	纸张	wi
 shell	壳	h
+shins	胫骨	wi
+ships	船	wi
 shirt	衬衫	wi
 shoes	鞋	wi
+shore	海岸	wi
 short	短小的	hv
 short	矮小	wi
-sinew	肌腱	wi
+shove	推	wi
+shows	展示	wi
+shred	碎布条	wi
+sides	旁边	wi
+silks	丝	wi
 sixth	第六	wi
+skies	天空	wi
 skill	技艺	wi
 skink	彩舌蜥	wi
-skirt	裙	wi
-skull	颅骨	h
-skull	颅骨	wi
+skins	皮肤	wi
+skull	头骨	h
 skunk	臭鼬	wi
 slabs	石板	wi
 slade	基岩	wi
@@ -182291,101 +184583,227 @@ slash	劈	wi
 slave	奴隶	wi
 sleek	流线型	wi
 slime	粘液	wi
+sling	投石索	wi
+slits	裂缝	wi
 sloth	树懒	wi
 slugs	蛞蝓	wi
 slush	泥地	wi
 small	小	wi
+smear	污点	wi
+smile	微笑	wi
+smith	铁匠	wi
+smoke	烟	wi
+snack	小吃	wi
 snail	蜗牛	wi
+snake	蛇	wi
+snarl	咆哮	wi
+sneer	冷笑	wi
 snood	皮瘤	wi
+snots	鼻水	wi
 snout	长鼻子	h
 snout	长鼻子	wi
+soaps	肥皂	wi
 socks	袜	wi
+soils	土壤	wi
+songs	歌	wi
+soots	煤烟	wi
+souls	灵魂	wi
+sound	声音	wi
 south	南	w
+spark	火花	wi
+spasm	痉挛	wi
+spawn	卵	wi
 spear	矛	wi
+speck	斑点	wi
 speed	速度	wi
+spell	咒语	wi
 spelt	斯佩尔特麦	wi
 spice	香料	wi
-spike	尖刺	wi
-spine	脊椎	wi
+spies	间谍	wi
+spire	尖塔	wi
+spite	恶意	wi
+spits	唾液	wi
 split	开叉	wi
+spoon	匙	wi
+sport	运动	wi
+spots	污点	wi
+spray	水沫	wi
+spurn	踢开	wi
+spurt	喷射	wi
 squat	粗矮的	hv
 squat	矮壮	wi
 squid	鱿鱼	wi
+staff	杖	wi
+stake	桩	wi
 stars	星辰	r
 stars	星	wi
+start	开端	wi
 steam	蒸汽	wi
+steed	战马	wi
 steel	钢	wi
 stews	炖菜	wi
+stick	棍	wi
 stoat	白鼬	wi
-stone	石材	wi
+stops	停止	wi
+storm	暴风雨	wi
 stout	敦实	wi
+strap	带	wi
+straw	稻草	wi
 stray	无主	wi
+stump	残株	wi
+stunt	绝技	wi
+style	风格	wi
+sugar	糖	wi
+swamp	沼泽	wi
 swans	天鹅	wi
-sweat	汗液	wi
+swine	猪	wi
+syrup	糖浆	wi
 table	桌子	wi
-tails	尾巴	wi
+tails	尾部	wi
+taker	夺取者	wi
+talon	爪	wi
 tame 	驯服的	wip
 tapir	貘	wi
 taupe	褐色	wi
-tears	眼泪	wi
+taxes	税	wi
 teeth	牙齿	h
 teeth	牙齿	wi
 tenth	第十	wi
+tests	考验	wi
 that 	这件事	wi
 theft	盗窃	h
 theft	盗窃	r
 thick	厚实	wi
 third	第三	wi
 thong	内裤	wi
+thorn	刺	wi
 thumb	拇指	h
 thumb	拇指	w
 ticks	蜱虫	wi
 tiger	虎	wi
+tiles	砖瓦	wi
+times	时间	wi
 titan	泰坦	wi
 toads	蟾蜍	wi
+toast	吐司	wi
 togas	宽袍	wi
+tombs	坟墓	wi
+tomes	典籍	wi
+tones	色调	wi
+tongs	钳子	wi
 tools	工具	wi
 tooth	牙齿	h
 tooth	牙齿	wi
 topaz	黄玉	wi
+torch	火把	wi
 totem	图腾	wi
+touch	触碰	wi
+tours	巡游	wi
 tower	高塔	hv
+tower	塔	wi
+towns	城镇	wi
 trade	贸易	r
 trade	贸易	wi
+trail	踪迹	wi
+trash	垃圾	wi
+treat	款待	wi
 trees	树木	r
+trees	树	wi
+tress	发绺	wi
+trial	审判	wi
+tribe	宗族	wi
+trick	诡计	wi
+trims	整齐	wi
 tripe	肚	wi
 troll	巨魔	wi
 trunk	象鼻	h
+truss	捆	wi
+trust	信任	wi
 truth	真理	r
-truth	诚实	wi
+tubes	管	wi
+tufts	一簇	wi
+tulip	郁金香	wi
+tummy	肚子	wi
+tumor	肿大	wi
 tunic	短袍	wi
-tusks	獠牙	wi
+tusks	长牙	wi
+twigs	小枝	wi
+twine	绞线	wi
 twins	双胞胎	wi
-uncle	叔伯舅姑父姨父	wi
+twist	扭曲	wi
+ulcer	溃疡	wi
+umbra	阴影	wi
+union	联盟	wi
 upon 	后	wi
+urges	冲动	wi
+vales	谷	wi
 valor	英勇	r
 value	重视	wi
 vault	秘库	hv
+vault	秘库	wi
+veils	面纱	wi
+venom	毒液	wi
+verse	诗	wi
 vests	背心	wi
 vials	小瓶	wi
-vomit	呕吐物	wi
+vigor	精力	wi
+vines	藤	wi
+viper	蝰蛇	wi
+vises	虎钳	wi
+voice	声音	wi
+voids	虚空	wi
 wagon	货车	wi
+wails	哀号	wi
+walks	步行	wi
+walls	墙	wi
+wanes	减少	wi
+wards	守护	wi
+warts	疣	wi
 warty	布满疣粒	hv
+wasps	黄蜂	wi
+waste	荒地	wi
+watch	守望	wi
 water	水	r
 water	水	wi
-waves	波浪	wi
+waves	波	wi
 wavy.	呈波浪状。	wil
+waxes	蜡	wi
+weeds	杂草	wi
+weird	命运	wi
+wheat	小麦	wi
+wheel	轮	wi
 when 	时	wi
-whips	长鞭	wi
+whims	奇想	wi
 white	白色	wi
+wills	意志	wi
+wilts	枯萎	wi
+winds	风	wi
+wines	果酒	wi
 wings	翅膀	hv
+wings	翅膀	wi
+wires	丝	wi
+wisps	缕	wi
+witch	巫婆	wi
+woman	女人	wi
+women	女人	wi
+woods	木材	wi
 words	文字	hIi
+words	词	wi
+works	工作	wi
+world	世界	wi
 worms	蠕虫	wi
+worry	担心	wi
+worth	价值	wi
+wrack	毁坏	wi
 wrens	鹪鹩	wi
-yarns	纱线	wi
+yawns	哈欠	wi
+years	年	wi
+yells	叫声	wi
 yetis	雪怪	wi
 your 	你的	wi
 youth	青春	r
+youth	年轻	wi
+zeals	热忱	wi
 {n}'s	{n1}的	ht
 {p} /	{p1} /	hHt
 \x8Egash	阿盖石	wi
@@ -182641,7 +185059,6 @@ Monk	僧侣	wi
 More	更多	w
 Name	名称	w
 Neck	脖子	w
-Nest	巢穴	wi
 Neth	奈斯	wi
 Next	下一页	hq
 Next	下	w
@@ -182719,7 +185136,6 @@ Rare	稀有	w
 Rath	拉斯	wi
 Rest	休息	wi
 Rith	里斯	wi
-Road	道路	wi
 Rude	粗鲁无礼	w
 R\xA2th	罗索	wi
 Sage	智者	wi
@@ -182734,7 +185150,6 @@ Shar	夏尔	wi
 She 	她	wi
 Shed	谢德	wi
 Shem	舍姆	wi
-Shin	辛	wi
 Shis	希斯	wi
 Shop	商店	wi
 Shos	肖斯	wi
@@ -182768,7 +185183,6 @@ Thur	撒尔	wi
 Tomb	陵墓
 Tost	托斯特	wi
 Town	城镇
-Trap	陷阱	wi
 Type	类型	wi
 Ubal	乌巴尔	wi
 Ubas	乌巴斯	wi
@@ -182838,287 +185252,611 @@ Zeal	热忱	w
 Zinc	锌	wi
 Zone	活动区	wi
 Zust	祖斯特	wi
+aces	王牌	wi
+ache	疼痛	wi
+acts	行动	wi
+ages	年龄	wi
+ales	艾尔啤酒	wi
+ally	同盟者	wi
 ants	蚂蚁	wi
+apes	无尾猿	wi
+apex	顶	wi
 aqua	水色	wi
-aunt	姑姨婶舅母	wi
-axes	斧头	wi
+arch	拱门	wi
+arms	手臂	wi
+aura	气场	wi
 back	后	h
+back	背部	wi
 bags	袋子	wi
-ball	圆球	wi
+bait	饵	wi
+band	带子	wi
+bane	祸根	wi
+bank	河岸	wi
+barb	倒钩	wi
 bark	树皮	wi
-bars	锭	wi
 bash	猛击	wi
+bath	沐浴	wi
 bats	蝙蝠	wi
-beak	尖喙	h
+beak	鸟嘴	h
+beak	鸟嘴	wi
+bean	豆子	wi
+bear	熊	wi
 beds	床	wi
+beer	啤酒	wi
+bees	蜜蜂	wi
+bell	铃	wi
+belt	带子	wi
+bend	弯曲	wi
 bent	弯曲	wi
+bile	胆汁	wi
 bill	扁喙	h
-bins	储物箱	wi
+bird	鸟	wi
 bite	咬	wi
+blot	污迹	wi
 blue	蓝色	wi
 boar	猪	wi
+boat	船	wi
 body	身体	h
 body	身体	wi
-bolt	弩矢	wi
+bogs	沼泽	wi
+boil	疖	wi
 bone	骨	wi
+book	书	wi
+boot	长靴	wi
+boss	首领	wi
 bowl	碗	wi
 bows	弓	wi
+boys	男孩	wi
+brew	酿造酒	wi
+brim	边缘	wi
+buck	公鹿	wi
+buds	芽	wi
 buff	浅黄褐色	wi
+bugs	虫	wi
+bulb	球茎	wi
 bull	奶牛	wi
-cage	笼子	wi
+burn	烧伤	wi
+bush	矮树丛	wi
+bust	半身像	wi
+cads	恶棍	wi
+cake	蛋糕	wi
+call	呼叫	wi
 camp	营地	hv
+camp	营地	wi
 cape	披风	wi
 caps	帽子	wi
 carp	鲤鱼	wi
 cast	固定套	wi
 cats	猫	wi
+cave	洞	wi
 cavy	豚鼠	wi
+cell	小室	wi
 char	红点鲑	wi
 chef	厨师	hi
+chip	碎片	wi
+city	城市	wi
+clam	蛤	wi
+clan	氏族	wi
+claw	爪	wi
 clay	黏土	wi
-coal	煤炭	wi
+clod	土块	wi
+club	棍棒	wi
 coat	大衣	wi
+coil	线圈	wi
 coin	硬币	wi
 coke	焦炭	wi
 cone	球果	wi
 cows	奶牛	wi
 crab	螃蟹	wi
+crew	船员	wi
 crow	乌鸦	wi
+crux	关键	wi
 cube	立方体	wi
-cups	茶杯	wi
+cult	膜拜	wi
+curl	拳曲	wi
+cusp	尖端	wi
+cuts	切口	wi
+cyst	包囊	wi
+dale	小谷	wi
 dams	水坝	wi
 date	椰枣	wi
+daub	污迹	wi
 dawn	黎明	r
+dawn	破晓	wi
+days	天	wi
+dead	死者	wi
+dean	行会长	wi
 deep	低沉	wi
 deer	鹿	wi
+dell	小谷	wi
+dens	兽穴	wi
+dent	凹痕	wi
+desk	书桌	wi
 dice	骰子	wi
+dike	堤防	wi
+dips	凹陷	wi
 disc	锯盘	wi
+dish	盘子	wi
+dive	潜水	wi
 dodo	渡渡鸟	wi
 dogs	狗	wi
+doom	厄运	wi
 door	门	wi
 dots	圆点	hIi
+dots	点	wi
+dreg	残渣	wi
+drip	水滴	wi
+drum	鼓	wi
 duck	鸭	wi
 duke	公爵	wi
+dump	垃圾堆	wi
+dune	沙丘	wi
+dung	粪	wi
 dusk	黄昏	r
+dusk	薄暮	wi
+dust	灰尘	wi
 duty	责任	r
+duty	责任	wi
+dyes	颜料	wi
 ears	耳朵	wi
 east	东	w
+echo	回声	wi
 ecru	米白色	wi
+eels	鳗鱼	wi
+eggs	蛋	wi
 emus	鸸鹋	wi
+ends	结束	wi
 etc.	等。	hq
 ewes	绵羊	wi
+exit	出口	wi
 eyes	眼睛	wi
+face	脸	wi
+fall	坠落	wi
 fame	名望	r
+fame	名望	wi
+fang	尖牙	wi
+farm	农场	wi
 fate	命运	r
+fate	命运	wi
+fats	脂肪	wi
+fear	恐惧	wi
+feed	饲料	wi
+feet	脚	wi
+fell	兽皮	wi
+fern	蕨	wi
 fine	精美的	wi
 fins	鳍	wi
 fire	火	r
+fire	火	wi
 fish	鱼	r
 fish	鱼	wi
-flax	亚麻色	wi
+fist	拳头	wi
+flag	旗	wi
+flea	跳蚤	wi
+fogs	雾	wi
+fold	折层	wi
 food	食物	r
 food	食物	wi
+fool	愚人	wi
+foot	脚	wi
+ford	浅滩	wi
+fork	叉子	wi
 fort	堡垒	hv
 free	自由	w
+frog	青蛙	wi
 fuel	燃料	wi
 full	充满的	wi
+furs	毛皮	wi
+fury	愤怒	wi
+gale	狂风	wi
+gall	胆汁	wi
+game	游戏	wi
+gang	队	wi
+gate	大门	wi
+gaze	凝视	wi
+gear	齿轮	wi
 gems	宝石	wi
+gift	礼物	wi
+gill	鳃	wi
+girl	女孩	wi
+glen	峡谷	wi
 glob	软团	wi
+glow	赤热	wi
 glum	郁闷	w
+goad	赶牛棒	wi
+goal	目标	wi
 goat	山羊	wi
+gods	神	wi
+goos	粘性物	wi
+gore	鲜血	wi
 gray	灰色	wi
-guts	肠子	h
-guts	肠子	wi
+grip	紧握	wi
+grub	幼虫	wi
+gulf	海湾	wi
+guts	内脏	h
 hack	砍	wi
-hair	毛发	wi
+hags	女巫	wi
+hail	冰雹	wi
 hake	无须鳕	wi
 half	一半的	wi
+hall	门厅	wi
+hame	颈轭	wi
+hand	手	wi
 hare	野兔	wi
+hate	憎恨	wi
+hawk	鹰	wi
+hays	干草	wi
+haze	薄雾	wi
 head	头部	h
 head	头部	w
+heat	热	wi
+hell	地狱	wi
 helm	头盔	wi
+help	帮忙	wi
 hemp	大麻	wi
 hens	鸡	wi
 her 	她的	wi
 hero	英雄	h
+hero	英雄	wi
+hide	兽皮	wi
+hill	丘陵	wi
+hips	臀部	wi
 his 	他的	wi
-hood	兜帽	wi
+hogs	猪	wi
+hold	握持	wi
+hole	孔	wi
+holy	神圣	wi
+home	家	wi
 hoof	蹄	wi
 hope	有希望	w
+hops	单脚跳	wi
 horn	角	h
 horn	角	wi
+hour	小时	wi
+howl	嗥叫	wi
+hugs	紧抱	wi
 hull	壳	wi
 hump	驼峰	h
 hump	驼峰	wi
 husk	壳	wi
+huts	小屋	wi
 ibex	羱羊	wi
+ices	冰	wi
+idol	偶像	wi
+inch	英寸	wi
+inks	墨水	wi
+inns	旅馆	wi
+itch	痒	wi
 item	物品	wi
 its 	它的	wi
-jade	翡翠色	wi
+jack	千斤顶	wi
+jail	监牢	wi
+jaws	颚	wi
+joke	笑话	wi
+joys	欢喜	wi
 jugs	壶	wi
+jump	跳跃	wi
 jute	黄麻纤维	wi
 keet	珍珠鸡幼崽	wi
+kegs	小桶	wi
+keys	钥匙	wi
 kick	踢踹	wi
 king	国王	h
 king	国王	wi
+kiss	吻	wi
 kiwi	鹬鸵	wi
+knot	结	wi
+lace	花边	wi
 lady	女领主	h
 lady	女领主	wi
 lair	巢穴	hv
+lake	湖	wi
 lamb	绵羊幼崽	wi
+land	陆地	wi
+lard	猪油	wi
+lark	云雀	wi
 laws	法律	r
+laws	法律	wi
 leaf	叶	wi
+leak	漏洞	wi
+leap	跳跃	wi
 leek	韭葱	wi
 left	离开了	h
 legs	腿	wi
+lens	透镜	wi
 lice	虱子	wi
 lies	谎言	r
+lies	谎言	wi
+life	生命	wi
+limb	四肢	wi
+line	列	wi
 lion	狮子	wi
-lips	嘴唇	wi
+lips	唇	wi
+loaf	面包	wi
 loam	壤土	wi
+lock	锁	wi
 logs	原木	wi
 long	修长的	hv
 long	修长	wi
 loon	潜鸟	wi
+loot	赃物	wi
 lord	领主	h
 lord	领主	wi
 love	爱情	r
 love	爱意	w
 luck	运气	r
+luck	运气	wi
+lull	暂停	wi
 lung	肺	wi
+lure	饵	wi
 lust	情欲	r
+lute	鲁特琴	wi
 lynx	猞猁	wi
 mace	钉头锤	wi
 many	许多	wi
+mark	标志	wi
 mask	面罩	wi
 maul	大锤	wi
-mead	蜜酒	wi
+maws	巨口	wi
+maze	迷宫	wi
 meat	肉	wi
+mesh	网孔	wi
+mess	混乱	wi
 mica	云母	wi
+mice	老鼠	wi
+mile	英里	wi
 milk	奶	wi
 mill	研磨产物	wi
+mind	思想	wi
+mine	矿	wi
 mink	水貂	wi
+mire	泥沼	wi
 mist	薄雾	r
+mist	雾	wi
+mite	螨虫	wi
 moas	恐鸟	wi
+mobs	暴民	wi
+mold	霉菌	wi
+mole	鼹鼠	wi
 moon	月亮	r
 moon	月亮	wi
-moth	飞蛾	wi
+mops	拖把	wi
+moss	苔藓	wi
+moth	蛾	wi
 muck	污泥	r
+muck	垃圾	wi
+muds	泥	wi
 mugs	柄杯	wi
 mule	骡子	wi
-nail	指甲	wi
+murk	阴霾	wi
+mush	糊	wi
+myth	神话	wi
+name	名字	wi
 neck	脖子	h
 neck	脖子	w
+nets	网	wi
+newt	水螈	wi
 nose	鼻子	h
 nose	鼻子	w
+nuts	坚果	wi
 oaks	橡树	wi
+oars	桨	wi
 oats	燕麦	wi
+odor	气味	wi
 ogre	食人魔	wi
+oils	油	wi
 olms	洞螈	wi
+omen	预兆	wi
+ones	一	wi
 only	唯一的	wi
 onyx	缟玛瑙	wi
+ooze	污泥	wi
 opah	圆月鱼	wi
+orbs	球体	wi
 orca	逆戟鲸	wi
 oval	椭圆形	wi
+owls	猫头鹰	wi
+oxen	牛	wi
+pack	兽群	wi
+pads	垫	wi
+page	页	wi
+pain	痛苦	wi
+palm	手掌	wi
+pass	山口	wi
+past	过去	wi
+path	路径	wi
+peak	山峰	wi
 pear	白梨	wi
 peas	豌豆	wi
 peat	泥炭	wi
+peek	偷看	wi
 peel	皮	wi
+pelt	毛皮	wi
+pets	宠物	wi
 pick	鹤嘴锄	wi
 pigs	猪	wi
 pike	狗鱼	wi
 pink	粉色	wi
 pits	深坑	hv
+pits	深坑	wi
+plan	计划	wi
 play	戏剧	hv
+play	游戏	wi
+plot	阴谋	wi
 poem	诗	hv
+poem	诗	wi
+pool	池	wi
 poor	差的	wi
+post	柱	wi
 pots	罐	wi
 puce	暗紫褐色	wi
+puke	呕吐	wi
+pulp	果肉	wi
+race	种族	wi
+rack	架	wi
+rags	碎布	wi
 rain	雨	r
 rams	绵羊	wi
-rats	老鼠	wi
+rasp	粗锉刀	wi
+rats	鼠	wi
 raw 	未处理的	wi
+rays	光线	wi
 rear	后	wi
+rein	缰绳	wi
 rice	稻米	wi
+rift	裂口	wi
+rims	边	wi
 rind	皮	wi
-ring	戒指	wi
+rips	裂痕	wi
+risk	冒险	wi
+rite	仪式	wi
+roar	吼	wi
 robe	长袍	wi
 rocs	大鹏鸟	wi
-rope	绳索	wi
-rose	玫瑰色	wi
+roof	屋顶	wi
+room	房间	wi
+root	根	wi
+rots	腐烂	wi
+rout	溃败	wi
 ruby	红宝石	wi
+ruin	毁灭	wi
 rush	灯心草	wi
-rust	铁锈色	wi
+sack	麻布袋	wi
 sail	背帆	wi
 salt	盐	r
 salt	盐	wi
+saps	树液	wi
 sard	褐玉髓	wi
+scab	痂	wi
+scar	疤痕	wi
+scum	浮渣	wi
+seal	印章	wi
+seam	接缝	wi
+seas	海	wi
 seat	座位	wi
+sect	宗派	wi
 seed	种子	wi
+seer	预言者	wi
 shad	河鲱	wi
+ship	船	wi
 shoe	鞋	wi
+show	展示	wi
+sick	病患	wi
+side	旁边	wi
 silk	丝布	wi
 silt	淤泥	wi
+sins	罪	wi
 site	地点	hv
 size	尺寸	wi
 skin	皮肤	wi
 slap	拍打	wi
 slim	纤瘦	wi
 slit	细缝状	wi
+slop	污水	wi
 slug	蛞蝓	wi
+snot	鼻水	wi
 snow	雪	wi
 soap	肥皂	wi
 sock	袜	wi
 sole	鳎鱼	wi
 song	歌唱	r
 song	歌谣	wi
+soot	煤烟	wi
+soul	灵魂	wi
 sows	猪	wi
 spit	唾液	wi
+spot	污点	wi
 stab	戳刺	wi
 star	星	wi
 stew	炖菜	wi
+stop	停止	wi
 suns	太阳	wi
 swan	天鹅	wi
 tail	尾巴	h
-tail	尾巴	wi
 talc	滑石	wi
 tall	高挑	wi
 taro	芋头	wi
+tars	焦油	wi
 teal	水鸭色	wi
+tear	泪滴	wi
 teff	苔麸	wi
+test	考验	wi
 they	他们	h
 thin	纤细	wi
 tick	蜱虫	wi
+tile	砖瓦	wi
+time	时间	wi
 tiny	体型极小	wi
+tips	顶	wi
 toad	蟾蜍	wi
+toes	足趾	wi
 toga	宽袍	wi
 tomb	陵墓	hv
+tomb	坟墓	wi
+tome	典籍	wi
+tone	色调	wi
 tool	工具	wi
+tops	顶部	wi
+tour	巡游	wi
 town	城镇	hv
+town	城镇	wi
 toys	玩具	wi
-tube	晶管	wi
-tusk	獠牙	h
+tree	树	wi
+trim	整齐	wi
+tubs	桶	wi
+tuft	一簇	wi
+tusk	长牙	h
+tusk	长牙	wi
+twig	小枝	wi
+urge	冲动	wi
+urns	瓮	wi
+vale	谷	wi
+veil	面纱	wi
 very	非常	wi
 vest	背心	wi
 vial	小瓶	wi
+vice	恶德	wi
+vine	藤	wi
+vise	虎钳	wi
+void	虚空	wi
+wads	小软团	wi
+wail	哀号	wi
+walk	步行	wi
+wane	减少	wi
+ward	守护	wi
+wars	战争	wi
+wart	疣	wi
 was 	感到	wi
-wave	波浪	wi
+wasp	黄蜂	wi
+wave	波	wi
 wavy	呈波浪状	wi
 waxy	如蜡般光滑	hv
+ways	路	wi
 webs	网	wi
+weed	杂草	wi
 west	西	w
-whip	长鞭	wi
+whim	奇想	wi
+will	意志	wi
+wilt	枯萎	wi
 wind	风	r
-wine	葡萄酒	wi
+wind	风	wi
+wing	翅膀	wi
+wire	丝	wi
+wish	希望	wi
+wisp	缕	wi
 wolf	狼	wi
-wood	木头	wi
 wool	羊毛	wi
+word	词	wi
 work	工作	wi
 worm	蠕虫	wi
 wren	鹪鹩	wi
 yaks	牦牛	wi
-yarn	纱线	wi
+yawn	哈欠	wi
+year	年	wi
+yell	叫声	wi
 yeti	雪怪	wi
+yore	从前	wi
+zeal	热忱	wi
 {n}'	{n1}的	ht
 \x8Ebor	埃博尔	wi
 \x8Ekig	埃基格	wi
@@ -183200,7 +185938,6 @@ Kez	凯兹	wi
 Kib	基布	wi
 Kik	基克	wi
 Kil	基尔	wi
-Kin	金	wi
 Kir	基尔	wi
 Kob	科布	wi
 Kod	科德	wi
@@ -183259,7 +185996,6 @@ Oth	欧索	wi
 Pet	宠物	w
 Pop	人口	w
 Rab	拉布	wi
-Rag	拉格	wi
 Raz	拉兹	wi
 Reg	雷格	wi
 Rem	雷姆	wi
@@ -183298,7 +186034,6 @@ Vim	维姆	wi
 Vod	沃德	wi
 V\x89s	维斯	wi
 V\x8Cr	维尔	wi
-War	战争	wi
 Yes	是	wi
 Zag	扎格	wi
 Zan	赞	wi
@@ -183310,80 +186045,145 @@ Zes	泽斯	wi
 Zim	基姆	wi
 Zin	津	wi
 Zoz	佐兹	wi
+ace	王牌	wi
+act	行动	wi
+age	年龄	wi
+air	空气	wi
+ale	艾尔啤酒	wi
 and	和	h
 and	和	hq
 ant	蚂蚁	wi
+ape	无尾猿	wi
+arm	手臂	wi
 art	艺术	r
 awe	敬畏	w
 bag	袋子	wi
+bar	条	wi
 bat	蝙蝠	wi
 bed	床	wi
+bee	蜜蜂	wi
 big	高大	wi
-bin	储物箱	wi
+bog	沼泽	wi
 bow	弓	wi
 box	盒子	wi
-bud	花蕾	wi
+boy	男孩	wi
+bug	虫	wi
 but	但	h
+cad	恶棍	wi
 cap	帽子	wi
 cat	猫	wi
 cod	鳕鱼	wi
 cow	奶牛	wi
-cup	茶杯	wi
+cut	切口	wi
 day	白昼	r
+day	天	wi
+den	兽穴	wi
 die	骰子	wi
+dip	凹陷	wi
 dog	狗	wi
+dot	点	wi
 dry	干燥	wi
-dye	染料	wi
+ear	耳朵	wi
+eel	鳗鱼	wi
 egg	蛋	wi
 elf	精灵	wi
 elk	麋鹿	wi
 emu	鸸鹋	wi
+end	结束	wi
 ewe	绵羊	wi
 eye	眼睛	h
+fin	鳍	wi
 fly	苍蝇	wi
+fog	雾	wi
 fox	狐狸	wi
 fur	毛茸茸	wi
 gem	宝石	wi
-goo	稠血	wi
+god	神	wi
+hag	女巫	wi
+hay	干草	wi
 hen	鸡	wi
+hex	诅咒	wi
+hip	臀部	wi
+hog	猪	wi
+hop	单脚跳	wi
+hug	紧抱	wi
+hut	小屋	wi
 ice	冰	wi
-ink	墨汁	wi
+inn	旅馆	wi
+ivy	常春藤	wi
+jaw	颚	wi
 jet	煤玉	wi
 joy	喜悦	w
 jug	壶	wi
 kea	啄羊鹦鹉	wi
+keg	小桶	wi
+key	钥匙	wi
 law	法律	wi
+lie	谎言	wi
+lip	唇	wi
 log	原木	wi
 lye	碱液	wi
+man	男人	wi
+maw	巨口	wi
+men	男人	wi
 moa	恐鸟	wi
-mud	淤泥	wi
+mob	暴民	wi
+mop	拖把	wi
 mug	柄杯	wi
 n/a	不适用	wi
+net	网	wi
+nut	坚果	wi
 oak	橡树	wi
+oar	桨	wi
 oat	燕麦	wi
+oil	油	wi
 olm	洞螈	wi
+one	一	wi
+orb	球体	wi
 ore	矿石	wi
+owl	猫头鹰	wi
+pad	垫	wi
 pet	宠物	wi
 pig	猪	wi
+pit	深坑	wi
 pot	罐	wi
 pus	脓	wi
 ram	绵羊	wi
-rat	老鼠	wi
+rat	鼠	wi
+ray	光线	wi
 red	红色	wi
+rim	边	wi
+rip	裂痕	wi
 roc	大鹏鸟	wi
+rot	腐烂	wi
 rye	黑麦	wi
 sad	悲伤	w
+sap	树液	wi
+sea	海	wi
 she	她	h
 she	她	wi
+sin	罪	wi
 sky	天空	r
+sky	天空	wi
 son	儿子	h
 son	儿子	wi
 sow	猪	wi
+spy	间谍	wi
 sun	太阳	r
 sun	太阳	wi
+tar	焦油	wi
+tax	税	wi
+tip	顶	wi
+toe	足趾	wi
+top	顶部	wi
 toy	玩具	wi
+tub	桶	wi
+urn	瓮	wi
+wad	小软团	wi
 war	战争	r
+war	战争	wi
 wax	蜡	wi
+way	路	wi
 web	网	wi
 yak	牦牛	wi
 you	你	wi
@@ -183417,58 +186217,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-Announcement combat adventure-announcement [$embark-race-adjective,$memory-entity]: A {s} diplomat from {s} has arrived.	来自{s2}的{s1}外交官已抵达。	l
-Announcement combat adventure-announcement [$memory-entity]: A diplomat from {s} has arrived.	来自{s1}的外交官已抵达。	l
-Announcement combat adventure-announcement [$embark-race-adjective]: A {s} diplomat from has arrived.	一位{s1}外交官已抵达。	l
-Announcement combat adventure-announcement []: A diplomat from has arrived.	一位外交官已抵达。	l
-Announcement combat adventure-announcement [noble-arrival-role,$memory-entity]: A {s} from {s} has arrived.	来自{s2}的{s1}已抵达。	l
-Announcement combat adventure-announcement [$memory-entity]: A from {s} has arrived.	来自{s1}的使者已抵达。	l
-Announcement combat adventure-announcement [noble-arrival-role]: A {s} from has arrived.	{s1}已抵达。	l
-Announcement combat adventure-announcement []: A from has arrived.	一位使者已抵达。	l
-Announcement combat noble-arrival-role [$attack-creature-role]: {s}	{s1}	l
-Announcement combat noble-arrival-role [$memorial-item]: {s}	{s1}	l
-Announcement combat adventure-announcement [$memory-entity]: from {s} has arrived.	来自{s1}的联络员已抵达。	l
-Announcement combat adventure-announcement [$unit]: {s} from has arrived.	{s1}已抵达。	l
-Announcement combat adventure-announcement []: from has arrived.	一位联络员已抵达。	l
-Announcement combat adventure-announcement [$office]: No {s}? How curious...	没有{s1}？真奇怪……	l
-Announcement combat adventure-announcement []: No ? How curious...	没有人担任这一职位？真奇怪……	l
-Announcement combat fortress-announcement []: has mandated the construction of certain goods.	已下令制作某些物品。	l
-Announcement combat fortress-announcement []: has imposed a ban on certain exports.	已禁止出口某些物品。	l
-Announcement combat fortress-announcement []: has altered the prices of goods.	已调整物品价格。	l
-Announcement combat fortress-announcement []: 's mandate has ended.	一项法令已结束。	l
-Announcement combat fortress-announcement []: 's mandates have ended.	多项法令已结束。	l
-Announcement combat fortress-announcement []: has ended a mandate.	已结束一项法令。	l
-Announcement combat fortress-announcement []: has forgotten a demand.	已忘记一项要求。	l
-Announcement combat fortress-announcement []: has a new demand.	提出了一项新要求。	l
-Announcement combat fortress-announcement [$unit,noble-position]: {s} has assumed the position of {s}.	{s1}就任了{s2}。	l
-Announcement combat fortress-announcement [$unit,noble-position]: {s} has claimed the position of {s}.	{s1}取得了{s2}之位。	l
-Announcement combat fortress-announcement [$unit,noble-position]: After a polite discussion with a local rival, {s} has claimed the position of {s}.	与当地的一位竞争者客气地商谈后，{s1}取得了{s2}之位。	l
-Announcement combat fortress-announcement [$unit,noble-position]: After a polite discussion with local rivals, {s} has claimed the position of {s}.	与当地的几位竞争者客气地商谈后，{s1}取得了{s2}之位。	l
-Announcement combat fortress-announcement [$unit,noble-position]: {s}, being the rightful heir, has inherited the position of {s}.	{s1}作为合法继承人，继承了{s2}。	l
-Announcement combat fortress-announcement [$unit,noble-position]: {s} has been appointed to the position of {s}.	{s1}被任命为{s2}。	l
-Announcement combat fortress-announcement [$unit,noble-position]: {s} has been elected to the position of {s}.	{s1}被选举为{s2}。	l
-Announcement combat fortress-announcement [$unit,noble-position]: {s} has been elected {s}.	{s1}已当选为{s2}。	l
-Announcement combat fortress-announcement [$unit]: {s} has been elected .	{s1}已当选。	l
-Announcement combat noble-position [$office,$memory-entity]: {s} of {s}	{s2}的{s1}	l
-Announcement combat noble-position [$office,$name]: {s} of {s}	{s2}的{s1}	l
-Announcement combat noble-position [$office]: {s}	{s1}	l
-Announcement combat noble-position [$office]: {s} of	{s1}	l
-Announcement combat noble-position [$memory-entity]: of {s}	{s1}的职务	l
-Announcement combat noble-position [$name]: of {s}	{s1}的职务	l
-Announcement combat noble-position []: of	职务	l
-Announcement combat fortress-announcement [noble-position]: has assumed the position of {s}.	已就任{s1}。	l
-Announcement combat fortress-announcement [noble-position]: has claimed the position of {s}.	已取得{s1}之位。	l
-Announcement combat fortress-announcement [noble-position]: After a polite discussion with a local rival, has claimed the position of {s}.	与当地的一位竞争者客气地商谈后，已取得{s1}之位。	l
-Announcement combat fortress-announcement [noble-position]: After a polite discussion with local rivals, has claimed the position of {s}.	与当地的几位竞争者客气地商谈后，已取得{s1}之位。	l
-Announcement combat fortress-announcement [noble-position]: , being the rightful heir, has inherited the position of {s}.	合法继承人已继承{s1}。	l
-Announcement combat fortress-announcement [noble-position]: has been appointed to the position of {s}.	已被任命为{s1}。	l
-Announcement combat fortress-announcement [noble-position]: has been elected to the position of {s}.	已被选举为{s1}。	l
-Announcement combat fortress-announcement []: has been re-elected.	已再次当选。	l
-Announcement combat fortress-announcement [noble-position]: has been elected {s}.	已当选为{s1}。	l
-Announcement combat fortress-announcement []: has been elected .	已当选。	l
-
-# Pets/Livestock training: native PE sources in data/extracted/fortress-livestock-training.
-Fortress activity: Semi-Wild	半野生	li
-Fortress activity: Domesticated	已驯化	li
-Fortress activity: suffix (Caged)	（关在笼中）	li
-Fortress activity: suffix (Chained)	（被拴住）	li

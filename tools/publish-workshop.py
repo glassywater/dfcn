@@ -63,6 +63,11 @@ class SubmitItemResult(C.Structure):
     _fields_ = [("result", I32), ("needs_legal", BOOL), ("item_id", U64)]
 
 
+class AddDependencyResult(C.Structure):
+    _pack_ = CALLBACK_PACK
+    _fields_ = [("result", I32), ("item_id", U64), ("child_id", U64)]
+
+
 class UGCDetails(C.Structure):
     # Valve SDK callback packing is 4 on Linux and 8 on Windows.
     # The trailing size field is present in UGC021; older interfaces leave it.
@@ -305,6 +310,11 @@ class Steam:
 
     def publish(self, metadata, explicit_item_id=None):
         title = metadata["title"]
+        required_items = list(dict.fromkeys(int(value) for value in metadata.get("required_items", [])))
+        if any(value <= 0 or value >= INVALID_HANDLE for value in required_items):
+            raise ValueError("Required Workshop item IDs must be positive published file IDs")
+        if required_items:
+            self.bind("SteamAPI_ISteamUGC_AddDependency", U64, [PTR, U64, U64])
         description_path = resolve_path(metadata["description_file"])
         content = resolve_path(metadata["content_folder"])
         preview = resolve_path(metadata["preview_file"])
@@ -348,6 +358,17 @@ class Steam:
                 emit({"operation": "created", "publishedfileid": str(item_id),
                       "needs_workshop_legal_agreement": bool(created.needs_legal)})
         save_state(item_id, metadata, "preparing")
+
+        for child_id in required_items:
+            if child_id == item_id:
+                raise ValueError("A Workshop item cannot require itself")
+            call = self.dll.SteamAPI_ISteamUGC_AddDependency(self.ugc, item_id, child_id)
+            added = self.wait_result(call, 3412, AddDependencyResult, "Add required Workshop item")
+            result_ok(added.result, "Add required Workshop item")
+            if added.item_id != item_id or added.child_id != child_id:
+                raise RuntimeError("Steam returned a different Workshop dependency")
+            emit({"operation": "dependency_added", "publishedfileid": str(item_id),
+                  "required_item": str(child_id)})
 
         description = description_template.replace("__WORKSHOP_ID__", str(item_id))
         if len(description.encode("utf-8")) >= 8000:

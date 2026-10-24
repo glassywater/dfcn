@@ -304,6 +304,7 @@ static void capture_native_help_cell(graphicst *gps) {
         if (!gps || gps->dimx <= 0 || gps->dimx > 1000 || gps->dimy <= 0 || gps->dimy > 1000 ||
                 native_private_ui_write_active(gps) || gps == g_native_info_write_graphics ||
                 gps == g_native_stocks_write_graphics || native_notification_write_active(gps) ||
+                gps == g_native_display_write_graphics ||
                 gps == g_native_squads_write_graphics ||
                 gps == g_native_pause_write_graphics ||
             !gps->screen ||
@@ -366,8 +367,8 @@ static bool capture_native_tooltip_caption_draw(graphicst *graphics,
     const std::array<long, 4> clip{graphics->clipx[0], graphics->clipx[1],
         graphics->clipy[0], graphics->clipy[1]};
     // addst copies its const source before applying its own width limit.
-    // Retain only this submitted view until that draw returns; a glyph may
-    // be represented by a font texture with no surviving screen byte.
+    // Keep the submitted view across the draw. The complete logical row is
+    // still the same document when its native clip hides part of its text.
     std::string_view submitted;
     try { native_string_view(source, &submitted, 65536); }
     catch (...) { submitted = {}; }
@@ -378,22 +379,40 @@ static bool capture_native_tooltip_caption_draw(graphicst *graphics,
         const auto &box = frame->bounds;
         if (!screen || graphics->dimx != dimx || graphics->dimy != dimy ||
                 (top_layer ? graphics->screen_top : graphics->screen) != screen ||
-                graphics->screeny != y || graphics->screenx <= x ||
                 y < box.y || y >= box.y + box.h ||
-                y < clip[2] || y > clip[3] || y < 0 || y >= dimy) return true;
-        const int first = static_cast<int>(std::max<int64_t>({0, x, clip[0],
-            int64_t(box.x)}));
-        const int last = static_cast<int>(std::min<int64_t>({dimx, graphics->screenx,
-            int64_t(clip[1]) + 1, int64_t(box.x) + box.w}));
-        if (first >= last || frame->rows.size() != static_cast<size_t>(box.h)) return true;
+                frame->rows.size() != static_cast<size_t>(box.h)) return true;
         auto &row = frame->rows[static_cast<size_t>(y - box.y)];
         if (row.size() != static_cast<size_t>(box.w)) return true;
+        if (frame->glyph_rows.size() != static_cast<size_t>(box.h))
+            frame->glyph_rows.assign(static_cast<size_t>(box.h),
+                std::string(static_cast<size_t>(box.w), ' '));
+        auto &glyph_row = frame->glyph_rows[static_cast<size_t>(y - box.y)];
+        if (glyph_row.size() != static_cast<size_t>(box.w))
+            glyph_row.assign(static_cast<size_t>(box.w), ' ');
+        const int submitted_first = std::max(x, box.x);
+        const int submitted_last = static_cast<int>(std::min<int64_t>(
+            int64_t(x) + static_cast<int64_t>(submitted.size()), int64_t(box.x) + box.w));
+        const bool visible_row = y >= 0 && y < dimy && y >= clip[2] && y <= clip[3];
+        const bool drawn_row = visible_row && graphics->screeny == y && graphics->screenx > x;
+        const int first = static_cast<int>(std::max<int64_t>({0, x, clip[0],
+            int64_t(box.x)}));
+        const int last = drawn_row ? static_cast<int>(std::min<int64_t>({dimx,
+            graphics->screenx, int64_t(clip[1]) + 1, int64_t(box.x) + box.w})) : first;
+        if (submitted_first >= submitted_last && first >= last) return true;
         // The first real text draw supplies the preferred native color plane.
         // Base and top submissions still contribute their actual bytes to
         // the same small document, including independently colored keys.
         if (top_layer && std::all_of(frame->rows.begin(), frame->rows.end(),
                 [](const std::string &line) { return trim_view(line).empty(); }))
             frame->top_layer = true;
+        // The producer's complete source owns translation identity. Native
+        // addst can stop at its global grid width before reaching gps.dimx,
+        // or return without advancing a fully clipped row. Neither native
+        // cursor progress nor visible glyph bytes may shorten this document.
+        for (int column = submitted_first; column < submitted_last; ++column) {
+            row[static_cast<size_t>(column - box.x)] =
+                submitted[static_cast<size_t>(int64_t(column) - x)];
+        }
         for (int column = first; column < last; ++column) {
             unsigned char ch = screen[(static_cast<size_t>(column) * dimy + y) * 8];
             const size_t offset = static_cast<size_t>(int64_t(column) - x);
@@ -402,10 +421,10 @@ static bool capture_native_tooltip_caption_draw(graphicst *graphics,
                 if (native_tooltip_glyph_at(*graphics, column, y, expected, top_layer))
                     ch = expected;
             }
-            // Native clipping may replace a suffix with dots. Keep those
-            // actual bytes, while absent bytes need an exact font-texture
+            // Visible native output separately owns source suppression.
+            // Keep actual dots here; absent bytes need an exact font-texture
             // match before any submitted source character can be restored.
-            row[static_cast<size_t>(column - box.x)] = ch ? static_cast<char>(ch) : ' ';
+            glyph_row[static_cast<size_t>(column - box.x)] = ch ? static_cast<char>(ch) : ' ';
         }
         // Preserve an authored alias only when this exact live string owner
         // already has a native squad.alias binding. No spelling lookup or
@@ -415,9 +434,10 @@ static bool capture_native_tooltip_caption_draw(graphicst *graphics,
             native_squad_alias_source_target(complete,
                 reinterpret_cast<uintptr_t>(source)).has_value();
         std::optional<NativeDrawnTextRow> alias;
-        if (authored) {
-            alias.emplace(NativeDrawnTextRow{first, y,
-                row.substr(static_cast<size_t>(first - box.x), static_cast<size_t>(last - first)),
+        if (authored && submitted_first < submitted_last) {
+            alias.emplace(NativeDrawnTextRow{submitted_first, y,
+                row.substr(static_cast<size_t>(submitted_first - box.x),
+                    static_cast<size_t>(submitted_last - submitted_first)),
                 reinterpret_cast<uintptr_t>(source), true});
             alias->squad_alias_target = native_text_to_utf8(alias->source);
             alias->top_layer = top_layer;
@@ -425,14 +445,14 @@ static bool capture_native_tooltip_caption_draw(graphicst *graphics,
             alias->draw_dimx = dimx;
             alias->draw_dimy = dimy;
             alias->draw_epoch = frame->epoch;
-            alias->draw_clip = SDL_Rect{first, y, last - first, 1};
+            alias->draw_clip = SDL_Rect{first, y, std::max(0, last - first), drawn_row ? 1 : 0};
         }
         std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
         auto &draws = top_layer ? g_native_drawn_top_text_rows : g_native_drawn_text_rows;
         // Reused coordinates cannot inherit a prior alias when this native
         // draw supplies an ordinary caption with coincident source bytes.
         std::erase_if(draws, [&](const NativeDrawnTextRow &previous) {
-            return previous.x == first && previous.y == y;
+            return (previous.x == submitted_first || previous.x == first) && previous.y == y;
         });
         ++g_native_drawn_text_revision;
         if (alias && draws.size() < 4096) {
@@ -469,10 +489,13 @@ static void capture_native_tooltip_container(void *widget, uint32_t tick) {
             name == "Tooltip") {
             std::array<int32_t, 4> rect{};
             std::memcpy(rect.data(), bytes + 0x10, sizeof(rect));
-            if (rect[0] >= 0 && rect[1] >= 0 && rect[2] < gps->dimx && rect[3] < gps->dimy &&
-                rect[2] > rect[0] + 1 && rect[3] > rect[1] + 1) {
+            const int64_t width = int64_t(rect[2]) - rect[0] + 1;
+            const int64_t height = int64_t(rect[3]) - rect[1] + 1;
+            if (width >= 3 && width <= 1004 && height >= 3 && height <= 1004 &&
+                    native_tooltip_valid_bounds(*gps,
+                        SDL_Rect{rect[0], rect[1], static_cast<int>(width), static_cast<int>(height)})) {
                 captured.emplace();
-                captured->bounds = {rect[0], rect[1], rect[2] - rect[0] + 1, rect[3] - rect[1] + 1};
+                captured->bounds = {rect[0], rect[1], static_cast<int>(width), static_cast<int>(height)};
                 captured->dimx = gps->dimx;
                 captured->dimy = gps->dimy;
                 captured->epoch = g_embark_item_capture_epoch.load(std::memory_order_acquire);
@@ -2221,13 +2244,14 @@ static void capture_native_clipped_resize(NativeString *source, size_t width, ch
     }
     if (width > 0 && width <= 3) {
         const auto base = native_history_profile_base();
-        // The Places zone/location column only adds dots when its retained
-        // width exceeds three bytes. Narrower nonempty captions are plain
-        // prefixes of the same complete native name or description.
+        // The Places zone/location column and workshop chooser title only
+        // add dots when the retained width exceeds three bytes. Narrower
+        // captions are plain prefixes of the same complete native field.
         zone_plain_prefix = zone_plain_prefix || (base &&
             (caller == native_reference_address(base, 0x39c8e9) ||
              caller == native_reference_address(base, 0x39d28e) ||
-             caller == native_reference_address(base, 0x39d489)));
+             caller == native_reference_address(base, 0x39d489) ||
+             caller == native_reference_address(base, 0x1853c2)));
     }
 #endif
     remember_native_clipped_resize(source, width, fill, false, zone_plain_prefix);
@@ -2939,6 +2963,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
     const auto inventory_role = native_adventure_inventory_role(
         native_caller, reinterpret_cast<uintptr_t>(source));
     const auto barter_field = native_adventure_barter_field(native_caller);
+    const auto workshop_choice_field = native_workshop_choice_field(native_caller);
     const std::array<long, 4> draw_clip = capture_clip.value_or(graphics
         ? std::array<long, 4>{graphics->clipx[0], graphics->clipx[1],
                               graphics->clipy[0], graphics->clipy[1]}
@@ -3035,6 +3060,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
              int64_t(graphics->screenx) + static_cast<int64_t>(text.size()) >
                  int64_t(graphics->clipx[1]) + 1 ||
              native_build_material_field(native_caller) != NativeBuildMaterialField::None ||
+             workshop_choice_field != NativeWorkshopChoiceField::None ||
              native_adventure_crafting_role(native_caller) != NativeAdventureCraftingRole::None ||
              inventory_role != NativeAdventureInventoryRole::None ||
              barter_field != NativeAdventureBarterField::None)) {
@@ -3076,6 +3102,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
             (graphics->screenx > dimx && info_title_kind == NativeInfoTitleKind::None &&
                 !mission_title && !fortress_labor_caption &&
                 travel_building_field == NativeTravelBuildingField::None &&
+                workshop_choice_field == NativeWorkshopChoiceField::None &&
                 inventory_role == NativeAdventureInventoryRole::None &&
                 barter_field == NativeAdventureBarterField::None) ||
             (width > 0 && graphics->screenx - x > width) ||
@@ -3113,12 +3140,7 @@ static void capture_native_limited_caption_draw(graphicst *graphics, const Nativ
         // proves the visible prefix to the map text filter.
         if (width > 0 || first != x || info_title_kind != NativeInfoTitleKind::None ||
                 native_build_material_field(native_caller) != NativeBuildMaterialField::None ||
-#ifndef _WIN32
-                (native_caller &&
-                 (native_caller == native_reference_address(native_history_profile_base(), 0xfd11ed) ||
-                  native_caller == native_reference_address(native_history_profile_base(), 0xfd1288) ||
-                  native_caller == native_reference_address(native_history_profile_base(), 0xfd138e))) ||
-#endif
+                workshop_choice_field != NativeWorkshopChoiceField::None ||
                 civilization_field != NativeCivilizationField::None || mission_title ||
                 location_picker_field != NativeLocationPickerField::None || fortress_labor_caption ||
                 travel_building_field != NativeTravelBuildingField::None ||
@@ -4620,3 +4642,4 @@ static bool uninstall_native_caption_hooks() {
     reset_native_caption_capture();
     return true;
 }
+

@@ -47,7 +47,8 @@ Python，也不会触发编译。包内保留加载入口、核心、配置、�
 成功后替换同名压缩包，失败则保留旧包，窗口会停留显示结果。
 解压目标为包含 `Dwarf Fortress.exe` 的游戏根目录。
 
-Windows 汉化核心自动加载同目录的独立功能模块 `dfcn_mouse_coordinates.dll`，
+Windows 汉化核心自动识别鼠标坐标模组，优先加载已订阅的工坊版本，
+也支持游戏 `mods` 目录中的完整模组包；未找到可用模块时加载核心同目录的 `dfcn_mouse_coordinates.dll`，
 无需 DFHack，也无需在创建世界时启用。模块默认开启，在要塞模式底部工具栏
 右侧显示鼠标所在地图格的 `X`、`Y`（左上角为 1, 1）；
 图形模式按地图缩放换算，ASCII 模式使用游戏原生字符网格坐标。
@@ -56,7 +57,7 @@ Windows 汉化核心自动加载同目录的独立功能模块 `dfcn_mouse_coord
 文字沿用原生位图字体和 FPS 的黑字青底样式，使用独立字符缓冲区和透明纹理，
 在其他界面图层之后合成，工具栏隐藏时保留显示位置。
 汉化设置菜单在模块加载成功后增加“鼠标坐标显示：开／关”，切换结果保存到
-模块旁的 `mouse-coordinates.ini`，汉化的中英文切换不影响此开关。
+核心目录的 `mouse-coordinates.ini`，汉化的中英文切换不影响此开关。
 
 Mod 汉化数据扩展目前公开提供
 **Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta**

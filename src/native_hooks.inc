@@ -41,6 +41,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_stockpile_settings.inc"
 #include "native_work_order_shops.inc"
 #include "native_workshop_task_capture.inc"
+#include "native_workshop_choice_capture.inc"
 #include "native_caravan_picker.inc"
 #include "native_adventure_belief_source.inc"
 #include "native_adventure_belief_choices.inc"
@@ -105,6 +106,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_info_layer_render.inc"
 #include "native_character_layer_render.inc"
 #include "native_stocks_layer_render.inc"
+#include "native_display_layer_render.inc"
 #include "native_squads_layer_render.inc"
 #include "native_reports_layer_render.inc"
 #include "native_pause_layer_render.inc"
@@ -182,6 +184,7 @@ static bool install_sdl_hooks() {
         {"Native fortress management layer", install_native_info_layer_hook},
         {"Native character sheet layer", install_native_character_layer_hook},
         {"Native Stocks layer", install_native_stocks_layer_hook},
+        {"Native display item assignment layer", install_native_display_layer_hook},
         {"Native fortress Squads layer", install_native_squads_layer_hook},
         {"Native announcements and report tabs layer", install_native_reports_layer_hook},
         {"Native Escape menu layer", install_native_pause_layer_hook},
@@ -233,6 +236,7 @@ static void uninstall_sdl_hooks() {
     uninstall_native_reports_layer_hook();
     uninstall_native_squads_layer_hook();
     uninstall_native_stocks_layer_hook();
+    uninstall_native_display_layer_hook();
     uninstall_native_info_layer_hook();
     uninstall_native_character_layer_hook();
     uninstall_native_resolution_layer_hook();
@@ -309,6 +313,7 @@ static bool native_hooks_detached() {
         !native_info_layer_hook_active() &&
         !native_character_layer_hook_active() &&
         !native_stocks_layer_hook_active() &&
+        !native_display_layer_hook_active() &&
         !native_squads_layer_hook_active() &&
         !native_designation_layer_hook_active() &&
         !native_map_hover_layer_hook_active() &&
@@ -404,6 +409,7 @@ static bool stop_reloadable_core() {
     }
     native_settings_menu_release();
     native_mouse_coordinates_release();
+    native_map_preview_release();
     if (g_plugin_active.load()) {
         g_native_squads_overlay.release_native_squads_resources();
         release_native_character_language_resources();

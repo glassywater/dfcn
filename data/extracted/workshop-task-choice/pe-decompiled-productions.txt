@@ -1,0 +1,93 @@
+Windows PE DF 53.16 workshop task chooser source grammar
+
+Configured source images: native-pe-images.json reference and classic.
+pe-functions.tsv retains image identity, SHA-256, original complete unwind
+owners and all chained ranges. pe-*.asm, pe-branches.tsv, pe-conditions.tsv,
+pe-switches.tsv and pe-virtuals.tsv retain original machine text and control
+flow. pe-ghidra-functions.tsv names actual decompiled bodies. The full native
+building-sheet renderer remains in assembly; its complete chooser arm is
+exported separately as task-choice-render-branch. Other building panels are
+outside this chooser arm. This is offline source extraction, not an observed
+in-game rendering result.
+pe-vtables.tsv binds the four actual candidate constructors to every virtual
+slot through +0x68, including all title, requirement, additional and color
+suppliers. The chooser's exits into other building panels are call-shaped in
+Ghidra C; pe-branches.tsv retains the unmodified conditional/target edges.
+
+Native fields, reference / classic return RVAs:
+  Title        0x185443 / 0x1853d3
+  Requirement  0x185597 / 0x185527
+  Additional   0x185690 / 0x185620
+Each field has one native addst call, width 0. No separate upper/lower font
+call occurs in this branch. Candidate vtable +0x08 formats Title; +0x58 gives
+Requirement; +0x60 gives Additional; +0x68 selects Additional color. A nonempty
+Requirement has priority and is red. Empty fields produce no annotation.
+Title is locally clipped and gets an ellipsis before addst. The original
+candidate and formatter remain in this frame, allowing the existing native
+caption path to recover its complete source. Requirement/Additional are not
+locally resized. Search text is player input, not a generated caption.
+
+All four candidate title families:
+  job-choice-title forwards native job type, material, subtype, reaction,
+    historical-figure and generated-identity fields to the complete job-caption
+    switch. RAW reactions copy NAME; generated instrument names/components
+    remain open runtime identity inputs.
+  color-menu-title:
+    Mix {descriptor color} dye (opens menu)
+    Tint cloth {descriptor color} (opens menu)
+    Tint thread {descriptor color} (opens menu)
+    Tint leather {descriptor color} (opens menu)
+  material-menu-title:
+    {complete material noun} (opens menu)
+    The supplier takes native material type/index/category flags. Category
+    arms are plant, yarn, cloth, silk, bone, leather, shell, soap, ivory/tooth,
+    horn, pearl and wood. Concrete RAW material names and historical-owner
+    possessives are dynamic. The call requests noun form, so wood is selected
+    instead of the supplier's optional wooden adjective. Missing material is
+    unknown material.
+  category-menu-title, each followed by ' (opens menu)':
+    Weapons and ammunition; Armor; Furniture; Siege equipment;
+    Trap components; Other objects; Metal clothing; Engrave memorial slab;
+    Mix dye; Dye cloth a specific color; Dye thread a specific color;
+    Dye leather a specific color.
+
+Memorial title, native job-caption arm:
+  If the figure ID cannot be resolved: Engrave memorial slab.
+  Otherwise: {figure identity} (engrave memorial).
+  A named figure uses language-name at figure+0x38. An unnamed figure uses
+  its unit's native display identity when available, otherwise its creature
+  and caste. This is not limited to dwarven personal-name morphology.
+
+Requirement, complete task-availability-and-requirement owner:
+  [Requires fuel]
+  [Requires ore]
+  [Requires ore, fuel]
+  [Requires {first unavailable non-preserved reaction reagent}]
+The reaction-reagent-description virtual converts raw reagent type/subtype,
+material, constraints, reaction classes/products, contained-item and tool-use
+fields to the native job-item grammar and capitalizes its first letter.
+job-item-requirement, requirement-item-noun, requirement-tool-use and
+requirement-material-category retain the complete suppliers and switches.
+Independent flags concatenate in native order; their combinations and RAW
+identities are open, not a finite screenshot-derived string list.
+
+Additional, complete task-choice-construction and memorial-refresh owners:
+  {integer} available
+  At least {integer} available
+  At least {integer} dye available
+  At least {integer} thread/dye available
+  At least {integer} cloth/dye available
+  At least {integer} leather/dye available
+Native displayed counts are retained without division or recomputation.
+Memorial status is composed from native state and comma-space separators:
+  Ghost; Not memorialized; Entombed; Entombed and memorialized; Memorialized
+and one slab state:
+  slab engraved; no slabs engraved; {integer} slabs engraved
+The refresh producer also stores capitalized Slab engraved / No slabs
+engraved. Missing native components are not invented.
+
+pe-raw-name-and-reagent-sources.tsv retains the actual installed RAW source
+fields from each configured Windows game, including color descriptors,
+reaction names/reagents/products, item, material and creature/caste names.
+Generated names and player-authored identities are runtime inputs to their
+established identity grammars; they cannot be exhaustively listed as literals.

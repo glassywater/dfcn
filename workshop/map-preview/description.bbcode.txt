@@ -1,0 +1,23 @@
+[h1]地图预览[/h1]
+
+在要塞选址界面，用游戏原生窗口显示鼠标位置的真实高程、水系和地貌概览。
+
+[list]
+[*]这是独立模组，不随 DFCN 汉化核心捆绑安装。
+[*]订阅并下载此模组后，汉化设置中才会显示“地图预览”开关。
+[*]开关默认关闭，保存玩家的选择。
+[*]窗口随选址地图中的鼠标位置更新。
+[*]显示选址格级别的数据并标明精度，不等同于进入要塞后生成的逐格地图。
+[/list]
+
+[h2]依赖[/h2]
+适用于 Windows x64 版 Dwarf Fortress 53.16。需要带独立地图预览模组支持的 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]。
+
+无需在创建世界时启用，也不需要 DFHack。未订阅并下载此模组时，汉化设置不显示地图预览开关。
+
+[h2]Map Preview[/h2]
+An independent DFCN add-on for the fortress embark screen. Displays real elevation, waterways and terrain at the mouse position in a native game window. The Map Preview switch is available in DFCN settings only after this Workshop mod is subscribed to and downloaded; the setting is saved and defaults to off.
+
+The preview shows embark-scale data, not the generated fortress tile map. Requires the Windows x64 DFCN core with independent map preview support. No world mod activation or DFHack required.
+
+Byayoi 同人社区 · [url=https://byayoi.org/]byayoi.org[/url]
