@@ -27,6 +27,8 @@ base = "professions"
 "Hammer Lord" = "战锤之主"
 "Spearmaster" = "持矛主宰"
 "Elite Crossbowman" = "精英弩手"
+# Native profession 80 also emits this plural spelling for a single unit.
+"Elite Crossbowmen" = "精英弩手"
 "Elite Wrestler" = "精英摔跤手"
 "Axe Lord" = "战斧之主"
 "Swordmaster" = "利剑主宰"
