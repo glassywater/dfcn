@@ -397,7 +397,7 @@ LAB_1408c0774:
     uStack_300 = 0;
     uStack_2f8 = 0xf;
     plStack_310 = (longlong *)0x0;
-    FUN_140a285e0(&uStack_268,&plStack_310,*(undefined2 *)(ppppuVar1 + 2));
+    workshop_job_item_requirement(&uStack_268,&plStack_310,*(undefined2 *)(ppppuVar1 + 2));
     FUN_14052b070(&plStack_310);
     workshop_tooltip_paragraph_splitter(param_2,&plStack_310,0x1d);
     FUN_14006f7e0(&plStack_310);
@@ -442,8 +442,9 @@ LAB_1408c0774:
   uStack_390 = *(undefined4 *)(param_1 + 0x84);
   uStack_3a0 = *(undefined4 *)(param_1 + 0x78);
   uStack_3a8 = *(undefined2 *)(param_1 + 0x74);
-  FUN_140d06ce0(&ppppppuStack_340,*(undefined2 *)(param_1 + 0x48),*(undefined2 *)(param_1 + 0x70),
-                *(undefined2 *)(param_1 + 0x72));
+  workshop_tooltip_job_reagents
+            (&ppppppuStack_340,*(undefined2 *)(param_1 + 0x48),*(undefined2 *)(param_1 + 0x70),
+             *(undefined2 *)(param_1 + 0x72));
   pppppppuStack_358 = (undefined8 *******)ppppppuStack_338;
   ppppppuStack_320 = ppppppuStack_340;
   if ((longlong)ppppppuStack_338 - (longlong)ppppppuStack_340 >> 3 != 0) {
@@ -520,7 +521,7 @@ LAB_1408c0774:
       uStack_2a0 = 0;
       uStack_298 = 0xf;
       pppppppuStack_2b0 = (undefined8 *******)0x0;
-      FUN_140a285e0(&uStack_158,&pppppppuStack_2b0,*(undefined2 *)(pppppuVar2 + 2));
+      workshop_job_item_requirement(&uStack_158,&pppppppuStack_2b0,*(undefined2 *)(pppppuVar2 + 2));
       FUN_14052b070(&pppppppuStack_2b0);
       plStack_310 = (longlong *)0x0;
       lStack_308 = 0;

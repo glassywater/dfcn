@@ -134,7 +134,7 @@ LAB_140d0a97e:
       }
     }
     else {
-      lVar7 = FUN_1414add70(0x1423d14f0,param_5,param_6);
+      lVar7 = workshop_requirement_material_category(0x1423d14f0,param_5,param_6);
       if (lVar7 != 0) {
         if ((*(int *)(lVar7 + 0x298) < 8) ||
            ((*(byte *)(*(longlong *)(lVar7 + 0x290) + 7) & 0x10) == 0)) {
@@ -413,7 +413,7 @@ LAB_140d0a97e:
       }
       psStackX_8[10] = 0x15;
     }
-    lVar7 = FUN_1414add70(0x1423d14f0,param_5,param_6);
+    lVar7 = workshop_requirement_material_category(0x1423d14f0,param_5,param_6);
     if (lVar7 != 0) {
       if ((*(int *)(lVar7 + 0x298) < 7) || ((*(byte *)(*(longlong *)(lVar7 + 0x290) + 6) & 2) == 0))
       {
@@ -504,7 +504,7 @@ LAB_140d0b0ce:
         }
       }
     }
-    lVar7 = FUN_1414add70(0x1423d14f0,param_5,param_6);
+    lVar7 = workshop_requirement_material_category(0x1423d14f0,param_5,param_6);
     if (lVar7 == 0) {
       return;
     }

@@ -11,6 +11,8 @@ name = "^0"
 [rulesets.rules]
 "{::materials}" = "{::materials}"
 "{::materials::adjective}" = "{::materials::adjective}"
+# Mint uses the same native material adjective supplier as other craft jobs.
+"{::materials::item_qualifier}" = "{::materials::item_qualifier}"
 
 [[rulesets]]
 name = "main"

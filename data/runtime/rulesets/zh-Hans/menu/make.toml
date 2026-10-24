@@ -34,6 +34,9 @@ name = "main"
 [rulesets.rules]
 " {::items::main}" = "{::items::main}"
 " {::materials::adjective} crafts" = "{::materials::adjective}工艺品"
+# Job 0x52 uses the same complete material adjective as the individual
+# figurine/jewellery jobs, including generated materials outside the RAW list.
+" {::materials::item_qualifier} crafts" = "{::materials::item_qualifier}工艺品"
 " ash" = "灰烬"
 " instrument piece" = "乐器部件"
 " instrument" = "乐器"

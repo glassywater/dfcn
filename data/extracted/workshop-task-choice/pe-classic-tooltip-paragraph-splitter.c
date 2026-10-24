@@ -31,7 +31,7 @@ void workshop_tooltip_paragraph_splitter(undefined8 param_1,undefined8 *param_2,
       FUN_14006f860(puStackX_20,param_2,*puVar1);
     }
     FUN_1400bacc0(&plStack_38,0,&puStackX_20);
-    FUN_1408e4cb0(param_1,&plStack_38,param_3);
+    workshop_tooltip_paragraph_list_splitter(param_1,&plStack_38,param_3);
     plVar4 = plStack_38;
     lVar5 = lStack_30;
     if (lStack_30 - (longlong)plStack_38 >> 3 != 0) {

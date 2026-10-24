@@ -7,22 +7,23 @@ void workshop_reaction_category_menu_input(longlong param_1)
 {
   longlong *plVar1;
   longlong *plVar2;
-  longlong *plVar3;
+  undefined8 *puVar3;
+  longlong *plVar4;
   
-  plVar2 = (longlong *)(param_1 + 0x48);
-  if (plVar2 != (longlong *)0x1418a1748) {
+  puVar3 = (undefined8 *)(param_1 + 0x48);
+  if (puVar3 != (undefined8 *)&DAT_1418a1748) {
     if (0xf < *(ulonglong *)(param_1 + 0x60)) {
-      plVar2 = (longlong *)*plVar2;
+      puVar3 = (undefined8 *)*puVar3;
     }
-    FUN_14006f8d0(0x1418a1748,plVar2,*(undefined8 *)(param_1 + 0x58));
+    FUN_14006f8d0(&DAT_1418a1748,puVar3,*(undefined8 *)(param_1 + 0x58));
   }
   _DAT_1418a1728 = 0;
   (**(code **)(**(longlong **)(param_1 + 0x40) + 0x250))();
   plVar2 = _DAT_1418a16e8;
-  for (plVar3 = _DAT_1418a16e0; plVar3 < plVar2; plVar3 = plVar3 + 1) {
-    plVar1 = (longlong *)*plVar3;
+  for (plVar4 = _DAT_1418a16e0; plVar4 < plVar2; plVar4 = plVar4 + 1) {
+    plVar1 = (longlong *)*plVar4;
     (**(code **)(*plVar1 + 8))(plVar1,plVar1 + 3);
-    workshop_supplier_0x52cee0(*plVar3 + 0x18);
+    workshop_supplier_0x52cee0(*plVar4 + 0x18);
   }
   return;
 }

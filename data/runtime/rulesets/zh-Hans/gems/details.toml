@@ -151,6 +151,9 @@ name = "materials"
 "{materials::glasses}" = "{materials::glasses}"
 "{::gems::materials::singular}" = "{::gems::materials::singular}"
 "{::materials}" = "{::materials}"
+# Job 0xed supplies STATE_ADJ for any craft material, not only gem minerals.
+# Share this complete qualifier with large/perfect gems and every cut shape.
+"{::materials::item_qualifier}" = "{::materials::item_qualifier}"
 
 [[rulesets]]
 name = "materials::glasses"

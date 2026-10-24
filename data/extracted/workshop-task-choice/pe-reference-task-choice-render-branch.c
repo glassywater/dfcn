@@ -260,7 +260,7 @@ LAB_1401844cf:
         }
       }
       workshop_supplier_0xbb120(0x14264a3f0,iStack0000000000000164,iVar4);
-      puVar13 = (undefined8 *)workshop_supplier_0x6f220(0x1424f70b8,(longlong)iVar7);
+      puVar13 = (undefined8 *)workshop_supplier_0x6f220(&DAT_1424f70b8,(longlong)iVar7);
       iVar8 = FUN_1407dcad0(*puVar13);
       if (iVar8 != 0) {
         FUN_140adad70(0x14264a3f0,iVar8,2,2,5);
