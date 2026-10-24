@@ -177,7 +177,8 @@ void Overlay::layout_character_header(SDL_Renderer *renderer) {
         field->layout_box_pixel_x = -1;
         field->layout_box_pixel_width = 0;
         field->layout_right = false;
-        field->layout_clip_right = right;
+        field->layout_clip_right = field->layout_clip_is_occlusion && field->layout_clip_right >= 0
+            ? std::min(right, field->layout_clip_right) : right;
     }
     std::sort(fields.begin(), fields.end(), [&](const Match *a, const Match *b) {
         return row_y(a) != row_y(b) ? row_y(a) < row_y(b) : a->x < b->x;

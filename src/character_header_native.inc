@@ -36,7 +36,8 @@
         for (size_t layer = 0; layer < header_draws.size(); ++layer) {
             std::vector<const NativeDrawnTextRow *> fields;
             for (const auto &draw : *header_draws[layer]) {
-                if (kind(draw) == HeaderField::None || draw.source.empty() ||
+                if (draw.character_header_activity ||
+                        kind(draw) == HeaderField::None || draw.source.empty() ||
                         draw.editable_text || draw.squad_alias_target || !draw.draw_clip ||
                         draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
                         draw.draw_grid != (layer ? gps_->screen_top : gps_->screen) ||

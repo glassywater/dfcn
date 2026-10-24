@@ -33,13 +33,22 @@ void Overlay::append_character_header(
         return y == mate && half_at(y) ==
             (half == (1u << 3) ? (1u << 4) : (1u << 3));
     };
+    std::vector<std::array<int, 3>> memory_activity_spans;
+    const auto memory_activity_owned = [&](int first, int last, int y) {
+        return std::any_of(memory_activity_spans.begin(), memory_activity_spans.end(),
+            [&](const auto &span) {
+                return span[0] == y && first < span[2] && span[1] < last;
+            });
+    };
     const auto claim_field = [&](const LogicalTextField &field, int y,
                                  const std::string &target, int clip_right,
                                  std::shared_ptr<const TranslationResult> translation = {},
-                                 bool suppress_pending = false, int foreground = -1) {
+                                 bool suppress_pending = false, int foreground = -1,
+                                 bool memory_activity = false) {
         if ((target.empty() && !suppress_pending) || y < 0 || y >= static_cast<int>(screen_rows.size()) ||
                 field.start < 0 || field.end <= field.start ||
                 field.end > static_cast<int>(screen_rows[y].size())) return;
+        if (!memory_activity && memory_activity_owned(field.start, field.end, y)) return;
         // The complete owner replaces earlier fragments on every source row;
         // only emission is restricted during an individual-row scan.
         std::erase_if(result, [&](const Match &match) {
@@ -59,6 +68,7 @@ void Overlay::append_character_header(
         match.layout_x = field.start;
         match.layout_length = field.end - field.start;
         match.layout_clip_right = clip_right;
+        match.layout_clip_is_occlusion = memory_activity;
         match.layout_left = true;
         match.layout_foreground_rgb = foreground;
         result.push_back(std::move(match));
@@ -68,6 +78,7 @@ void Overlay::append_character_header(
             -> std::optional<LogicalTextField> {
         if (!draw.caption_source || (!allow_identity && draw.unit_identity_target) ||
                 draw.source.empty() ||
+                memory_activity_owned(draw.x, draw.x + static_cast<int>(draw.source.size()), y) ||
                 !source_row_matches(draw.x, draw.y, top_layer, y)) return std::nullopt;
         std::string_view visible = draw.source;
         complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
@@ -87,6 +98,7 @@ void Overlay::append_character_header(
         }
         return LogicalTextField{draw.x, end, std::string(visible)};
     };
+#include "character_header_activity.inc"
 #include "character_header_native.inc"
     // The sheet formatter already proves the quoted name's role. Its current
     // source column and a complete activity production establish the activity
@@ -235,6 +247,7 @@ void Overlay::append_character_header(
     const auto eligible = [&](const LogicalTextField &field, int y,
                               bool header_overflow = false) {
         if (tab_rows[y] || field.start <= frame->left || field.start >= frame->right ||
+            memory_activity_owned(field.start, field.end, y) ||
             (!header_overflow && field.end > frame->right) ||
             native_button_text_rect(*gps_, field.start, field.end, y)) return false;
         // A partially obscured social band is still a set of controls, not a

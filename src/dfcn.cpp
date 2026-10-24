@@ -2360,6 +2360,9 @@ struct NativeDrawnTextRow {
     uintptr_t unit_identity_owner = 0;
     bool unit_identity_english = false;
     bool unit_identity_header = false;
+    // Frozen while the header's job/activity NativeString and caller frame
+    // are live; the shared activity wrapper also serves other interfaces.
+    bool character_header_activity = false;
     bool unit_identity_ready = true;
     std::string unit_identity_semantic_key;
     // List renderers reuse their NativeString for later rows. A pending draw
