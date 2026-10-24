@@ -229,6 +229,8 @@ DFHack GUI Overlay control: Max skill:|Legendary|B|4|-1|1	最高技能：|传奇
 DFHack GUI Overlay control: Autoassign to holder of role:|None|B|3|-1|1	自动分配给职位持有者：|无	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/preserve-rooms.lua:149-161 [preserve-rooms.reserved]
 DFHack GUI Overlay control: Autoassign to holder of role:|*|B|3|-1|1	自动分配给职位持有者：|*	l
+# Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/deathcause_button.lua:61-74 [sort.deathcause_button]
+DFHack GUI Overlay control: Show death cause||I|0|-1|1	显示死因|	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:195-222 [sort.info] ; D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:638-654 [sort.conviction;sort.interrogation]
 DFHack GUI Overlay control: Show:|All|I|1|-1|1	显示：|全部	l
 # Source: D:/program/steam/steamapps/common/DFHack/hack/lua/plugins/sort/info.lua:195-222 [sort.info]

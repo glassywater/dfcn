@@ -4,13 +4,19 @@
 // global word or value rules.
 static std::optional<std::string> translate_dfhack_death_message(
         const DfhackOutputSnapshot &catalog, std::string_view visible,
-        bool console_utf8) {
+        bool console_utf8,
+        const std::function<std::optional<std::string>(std::string_view)> &unit_name = {}) {
     const auto source = trim_view(visible);
     if (catalog.death_causes.empty() || source.size() < 3 || !source.ends_with('.') ||
             source.find_first_of("\r\n") != std::string_view::npos) return std::nullopt;
     const auto body = source.substr(0, source.size() - 1);
     const auto utf8 = [&](std::string_view text) {
         return console_utf8 ? std::string(text) : native_text_to_utf8(text);
+    };
+    const auto named_unit = [&](std::string_view name) {
+        if (unit_name)
+            if (auto target = unit_name(name)) return *target;
+        return utf8(name);
     };
     const auto named_creature = [&](std::string_view native) {
         const std::string text = utf8(native);
@@ -20,15 +26,16 @@ static std::optional<std::string> translate_dfhack_death_message(
         size_t matched = 0;
         // In the historical-figure and slayer clauses the species comes
         // first. Resolve a complete creature prefix and keep its named tail.
-        for (size_t at = text.find(' '); at != std::string::npos;
-                at = text.find(' ', at + 1)) {
+        for (size_t at = native.find(' '); at != std::string_view::npos;
+                at = native.find(' ', at + 1)) {
             if (auto target = translate_dfhack_caption_utf8(catalog, "creature",
-                    std::string_view(text).substr(0, at))) {
+                    utf8(native.substr(0, at)))) {
                 translated = std::move(target);
                 matched = at;
             }
         }
-        return translated ? *translated + text.substr(matched) : text;
+        return translated ? *translated + " " + named_unit(trim_view(native.substr(matched)))
+                          : text;
     };
     const auto format = [&](std::string_view key, const std::string &value)
             -> std::optional<std::string> {
@@ -61,7 +68,7 @@ static std::optional<std::string> translate_dfhack_death_message(
             std::string_view slayer, std::string_view weapon,
             std::string_view weapon_form) -> std::optional<std::string> {
         std::string target = entry.subject.starts_with("The ")
-            ? "该" + named_creature(entry.subject.substr(4)) : utf8(entry.subject);
+            ? "该" + named_creature(entry.subject.substr(4)) : named_unit(entry.subject);
         if (!year.empty()) {
             const auto phrase = format("in year {d}", std::string(year));
             if (!phrase) return std::nullopt;

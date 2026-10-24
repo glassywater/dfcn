@@ -50525,6 +50525,7 @@ DFHack GUI Rename caption: Second Adjective	第二形容词	l
 DFHack GUI Squad assignment: ambusher skill	伏击技能	l
 DFHack GUI Squad assignment: crossbow skill	弩术技能	l
 DFHack GUI Teleport: Include friendly units	包含友好单位	l
+DFHack GUI Viewer status: No unit selected.	未选中单位。	l
 DFHack help: "--applyjobs <job>[,<job>...]"	"--applyjobs <job>[,<job>...]"	l
 DFHack help: "-e [NAME]", "--entity [NAME]"	"-e [NAME]", "--entity [NAME]"	l
 DFHack help: "-s", "--spheres <sphereList>"	"-s", "--spheres <sphereList>"	l
@@ -111328,6 +111329,7 @@ DFHack GUI Rename type: Vault	秘库	l
 DFHack GUI Rename type: World	世界	l
 DFHack GUI Title: Add command	添加命令	l
 DFHack GUI Title: CP437 table	CP437 字符表	l
+DFHack GUI Title: Death Cause	死亡原因	l
 DFHack GUI Title: Mass Remove	批量移除	l
 DFHack help: "--emotion <id>"	"--emotion <id>"	l
 DFHack help: "--race <value>"	"--race <value>"	l
