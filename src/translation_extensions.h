@@ -72,6 +72,9 @@ struct Snapshot {
     // Optional native modules use the same subscription-aware installation
     // roots. Workshop candidates precede local packages and the core fallback.
     std::vector<fs::path> mouse_coordinates_modules;
+    // Map preview is supplied only by a currently subscribed Workshop mod.
+    // Local copies and cached subscription metadata cannot enable it.
+    std::vector<fs::path> map_preview_modules;
     // An available empty Steam list is authoritative, including after the
     // final extension is unsubscribed while its download remains on disk.
     bool steam_subscriptions_available = false;
@@ -251,6 +254,9 @@ inline void add_library(std::set<fs::path>& libraries, const fs::path& location)
 
 struct SteamSubscriptions {
     bool available = false;
+    // Unlike available, current is never retained when the live API fails.
+    // Subscription-only modules must not use a previously cached membership.
+    bool current = false;
     std::set<uint64_t> ids;
     std::map<uint64_t, fs::path> directories;
 };
@@ -298,6 +304,7 @@ inline SteamSubscriptions subscriptions() {
     if (copied > count || (count && !copied)) return last;
     SteamSubscriptions result;
     result.available = true;
+    result.current = true;
     for (size_t i = 0; i < copied; ++i) {
         result.ids.insert(items[i]);
         uint64_t size = 0;
@@ -308,6 +315,7 @@ inline SteamSubscriptions subscriptions() {
             result.directories.emplace(items[i], fs::u8path(folder.data()));
     }
     last = result;
+    last.current = false;
     return result;
 }
 
@@ -321,7 +329,98 @@ inline fs::path resource_path(const fs::path& root, std::string_view value) {
     return within(root, resolved) ? resolved : fs::path{};
 }
 
+inline std::vector<fs::path> map_preview_modules(const SteamSubscriptions& steam,
+                                                Snapshot* snapshot = nullptr) {
+    std::vector<fs::path> modules;
+    if (!steam.available || !steam.current) return modules;
+    const auto watch = [&](const fs::path& path) {
+        if (snapshot) snapshot->resources.push_back(stamp(path));
+    };
+    const auto diagnose = [&](const fs::path& manifest, std::string_view reason) {
+        if (snapshot) snapshot->diagnostics.push_back(runtime::utf8(manifest) +
+            ": " + std::string(reason));
+    };
+    std::vector<std::pair<int64_t, fs::path>> candidates;
+    std::set<fs::path> visited;
+    // GetItemInstallInfo ties each actual installed directory to a subscribed
+    // item. A copied info.txt cannot substitute an unrelated subscribed ID,
+    // and neither game/mods nor an appworkshop cache grants this feature.
+    for (const auto& [item, directory] : steam.directories) {
+        if (!item || !steam.ids.contains(item)) continue;
+        const auto root = canonical_path(directory);
+        if (root.empty() || !visited.insert(root).second) continue;
+        const auto manifest = root / "dfcn-map-preview.toml";
+        watch(root);
+        watch(manifest);
+        std::error_code error;
+        if (!within(root, manifest) || !fs::is_regular_file(manifest, error) || error)
+            continue;
+        const auto info_path = root / "info.txt";
+        watch(info_path);
+        if (!within(root, info_path)) continue;
+        const auto info = text(info_path);
+        const auto info_id = info ? info_value(*info, "ID") : std::nullopt;
+        const auto declared_version = info ? info_value(*info, "NUMERIC_VERSION") : std::nullopt;
+        const auto version = declared_version ? number<int64_t>(*declared_version) : std::nullopt;
+        const auto declared_item = info ? info_value(*info, "STEAM_FILE_ID") : std::nullopt;
+        const auto linked_item = declared_item ? number<uint64_t>(*declared_item) : std::nullopt;
+        if (!info_id || *info_id != "dfcn-map-preview" || !version || *version < 0 ||
+                (declared_item && (!linked_item || (*linked_item && *linked_item != item)))) {
+            diagnose(manifest, "invalid map-preview mod identity, version or Workshop item");
+            continue;
+        }
+        const auto data = text(manifest);
+        if (!data) {
+            diagnose(manifest, "cannot read map-preview manifest");
+            continue;
+        }
+        const auto parsed = toml::parse(*data, runtime::utf8(manifest));
+        if (!parsed) {
+            diagnose(manifest, parsed.error().description());
+            continue;
+        }
+        const auto schema = parsed["schema"].value<int64_t>();
+        const auto id = parsed["id"].value<std::string>();
+        const auto module = parsed["module"].value<std::string>();
+        if (!schema || *schema != 1 || !id || *id != "dfcn-map-preview" ||
+                !module || *module != "dfcn/dfcn_map_preview.dll") {
+            diagnose(manifest, "invalid map-preview manifest");
+            continue;
+        }
+        const auto module_path = resource_path(root, *module);
+        if (module_path.empty()) {
+            diagnose(manifest, "map-preview module path is outside its package");
+            continue;
+        }
+        watch(module_path);
+        error.clear();
+        if (!fs::is_regular_file(module_path, error) || error) {
+            diagnose(manifest, "missing map-preview module");
+            continue;
+        }
+        candidates.emplace_back(*version, module_path);
+    }
+    std::sort(candidates.begin(), candidates.end(), [](const auto& left, const auto& right) {
+        if (left.first != right.first) return left.first > right.first;
+        return left.second < right.second;
+    });
+    for (const auto& candidate : candidates) modules.push_back(candidate.second);
+    return modules;
+}
+
 } // namespace detail
+
+// This path only reads the small mod manifests; it does not fingerprint DLLs
+// or translation resources. The render producer can poll it for subscriptions
+// and completed downloads without repeatedly rebuilding the full snapshot.
+inline std::vector<fs::path> discover_map_preview_modules(
+        const detail::SteamSubscriptions& steam) {
+    return detail::map_preview_modules(steam);
+}
+
+inline std::vector<fs::path> discover_map_preview_modules() {
+    return discover_map_preview_modules(detail::subscriptions());
+}
 
 inline Snapshot discover(std::string_view language = "zh-Hans") {
     Snapshot snapshot;
@@ -329,6 +428,7 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
     const auto steam = detail::subscriptions();
     snapshot.steam_subscriptions_available = steam.available;
     snapshot.subscribed_items.assign(steam.ids.begin(), steam.ids.end());
+    snapshot.map_preview_modules = detail::map_preview_modules(steam, &snapshot);
     const auto game = detail::game_directory();
     std::set<fs::path> libraries;
     detail::add_library(libraries, game);
@@ -613,6 +713,7 @@ inline bool same_resources(const Snapshot& left, const Snapshot& right) {
     return left.packages == right.packages && left.resources == right.resources &&
         left.semantic_model == right.semantic_model &&
         left.mouse_coordinates_modules == right.mouse_coordinates_modules &&
+        left.map_preview_modules == right.map_preview_modules &&
         left.steam_subscriptions_available == right.steam_subscriptions_available &&
         left.subscribed_items == right.subscribed_items;
 }

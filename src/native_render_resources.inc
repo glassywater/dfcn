@@ -5,6 +5,7 @@ static void native_reset_render_resources() {
     TranslationStateScope translation;
     native_settings_menu_release();
     native_mouse_coordinates_reset();
+    native_map_preview_reset();
     g_overlay.invalidate_render_resources();
     g_native_squads_overlay.release_native_squads_resources();
     release_native_designation_language_resources();

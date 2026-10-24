@@ -3802,6 +3802,7 @@ public:
     void toggle_native_language();
     void render_settings_menu(SDL_Renderer *renderer);
     bool settings_menu_event(const SDL_Event &event);
+    void render_map_preview(SDL_Renderer *renderer);
     void run_settings_menu_action(int action);
     void toggle_translation_extensions();
     void remap_legends_mouse(int *x, int *y) const;
@@ -8188,6 +8189,15 @@ static void native_mouse_coordinates_prepare();
 static void native_mouse_coordinates_present(SDL_Renderer *renderer);
 static void native_mouse_coordinates_reset();
 static void native_mouse_coordinates_release();
+static bool native_map_preview_available();
+static bool native_map_preview_enabled();
+static void native_map_preview_toggle();
+static void native_map_preview_load();
+static void native_map_preview_refresh(bool force = false);
+static void native_map_preview_prepare();
+static void native_map_preview_reset();
+static void native_map_preview_release();
+static bool native_map_preview_event(const SDL_Event &event);
 
 void Overlay::run_settings_menu_action(int action) {
     switch (action) {
@@ -8206,6 +8216,7 @@ void Overlay::run_settings_menu_action(int action) {
             log_line("ERROR", "Settings menu: cannot request core reload");
         break;
     case 6: native_mouse_coordinates_toggle(); break;
+    case 7: native_map_preview_toggle(); break;
     }
 }
 
@@ -44502,6 +44513,7 @@ extern "C" void dfcn_render_present(SDL_Renderer *renderer) {
         boundary.checkpoint("name_search");
         g_overlay.render_ime_popup(renderer);
         boundary.checkpoint("ime_popup");
+        g_overlay.render_map_preview(renderer);
         g_overlay.render_settings_menu(renderer);
         // This independent fortress HUD remains visible above modal pages.
         native_mouse_coordinates_present(renderer);
@@ -44552,6 +44564,7 @@ static void native_settings_menu_release();
 #include "native_blueprint_export.inc"
 #include "native_settings_menu.inc"
 #include "native_mouse_coordinates.inc"
+#include "native_map_preview.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
 #include "adventure_home_translation.inc"
@@ -44593,6 +44606,7 @@ DFCN_EXPORT void dfhooks_init() {
     }
     dfcn::start_native_identity_translation_jobs();
     dfcn::native_mouse_coordinates_load();
+    dfcn::native_map_preview_load();
     if (!dfcn::install_sdl_hooks()) {
         dfcn::stop_reloadable_core();
         return;
@@ -44622,6 +44636,7 @@ DFCN_EXPORT bool dfhooks_sdl_event(void *raw_event) {
         return false;
     }
     if (dfcn::g_overlay.settings_menu_event(*event)) return true;
+    if (dfcn::native_map_preview_event(*event)) return true;
     static bool f6_consumed = false;
     if (event->type == SDL_WINDOWEVENT &&
         event->window.event == SDL_WINDOWEVENT_FOCUS_LOST) f6_consumed = false;

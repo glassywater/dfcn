@@ -155,8 +155,10 @@ static void native_help_begin_frame(void *renderer) {
     native_help_reset_frame(renderer);
     try { native_announcement_log_preheat(4, false); }
     catch (...) {}
+    native_map_preview_refresh();
     native_settings_menu_prepare();
     native_mouse_coordinates_prepare();
+    native_map_preview_prepare();
 #endif
 }
 
@@ -192,8 +194,10 @@ static void native_help_produce_frame() {
     catch (...) {}
     // Dependency completion publishes replacements directly into the exact
     // retained paragraphs. Their native draw was already bound at end_draw.
+    native_map_preview_refresh();
     native_settings_menu_prepare();
     native_mouse_coordinates_prepare();
+    native_map_preview_prepare();
 }
 #endif
 

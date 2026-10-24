@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     # Skip translation data extensions and the semantic model, while retaining
-    # the native mouse-coordinate mod shipped alongside this core release.
+    # the independent native mods packaged alongside this core release.
     [switch] $BaseOnly
 )
 
@@ -187,6 +187,31 @@ function Write-MouseCoordinatesArchive {
     Write-Host ('Independent mouse-coordinates mod package: ' + $archive) -ForegroundColor Green
 }
 
+function Write-MapPreviewArchive {
+    $directory = Resolve-PackageDirectory (Join-Path $workshopRoot 'map-preview')
+    $previewContent = Resolve-PackageDirectory (Join-Path $directory 'content')
+    $manifestPath = Join-Path $previewContent 'dfcn-map-preview.toml'
+    if (-not [IO.File]::Exists($manifestPath)) {
+        throw ('Map preview mod manifest is missing: ' + $manifestPath)
+    }
+    $infoPath = Join-Path $previewContent 'info.txt'
+    $identities = [regex]::Matches([IO.File]::ReadAllText($infoPath),
+        '(?m)^\s*\[ID:([A-Za-z0-9_-]+)\]\s*$')
+    if ($identities.Count -ne 1 -or $identities[0].Groups[1].Value -ne 'dfcn-map-preview') {
+        throw ('Map preview mod must have the independent mod ID: ' + $infoPath)
+    }
+    $identity = $identities[0].Groups[1].Value
+    $libraryDirectory = Resolve-PackageDirectory (Join-Path $previewContent 'dfcn')
+    [void][IO.Directory]::CreateDirectory($libraryDirectory)
+    $source = Join-Path $projectRoot 'dfcn_map_preview.dll'
+    $destination = Join-Path $libraryDirectory 'dfcn_map_preview.dll'
+    Write-StrippedWindowsLibrary $source $destination
+    Copy-Item -LiteralPath (Join-Path $projectRoot 'LICENSE') -Destination (Join-Path $previewContent 'LICENSE') -Force
+    $archive = Join-Path $directory 'dfcn-map-preview.zip'
+    Write-PackageArchive $previewContent $archive ($identity + '/')
+    Write-Host ('Independent map-preview mod package: ' + $archive) -ForegroundColor Green
+}
+
 try {
     & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'package-windows.ps1')
     if ($LASTEXITCODE -ne 0) { throw ('Windows packaging failed with exit code ' + $LASTEXITCODE) }
@@ -212,6 +237,7 @@ try {
     Write-PackageArchive $payloadRoot $outputPath
     Install-PackageDirectory 'content'
     Write-MouseCoordinatesArchive
+    Write-MapPreviewArchive
     # Extensions remain separate from the base Workshop payload. Private data
     # packages are never selected for these public release archives.
     if (-not $BaseOnly) {

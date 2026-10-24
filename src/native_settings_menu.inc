@@ -115,7 +115,7 @@ public:
     }
 };
 
-static constexpr size_t kNativeSettingsMenuOptionCount = 7;
+static constexpr size_t kNativeSettingsMenuOptionCount = 8;
 static constexpr int kNativeSettingsMenuHeight =
     4 + 3 * static_cast<int>(kNativeSettingsMenuOptionCount);
 
@@ -137,7 +137,14 @@ struct NativeSettingsMenuState {
     double input_scale_x = 1, input_scale_y = 1;
     double input_offset_x = 0, input_offset_y = 0;
     size_t row_count() const {
-        return export_result ? 1 : rows.size() - (native_mouse_coordinates_available() ? 0 : 1);
+        return export_result ? 1 : 6 + (native_mouse_coordinates_available() ? 1 : 0) +
+            (native_map_preview_available() ? 1 : 0);
+    }
+    int row_action(size_t row) const {
+        if (export_result || row >= row_count()) return -1;
+        if (row < 6) return static_cast<int>(row);
+        if (native_mouse_coordinates_available() && row == 6) return 6;
+        return 7;
     }
 };
 static NativeSettingsMenuState g_native_settings_menu;
@@ -146,11 +153,11 @@ static NativeInfoCapturedText g_native_settings_menu_text;
 static constexpr std::array<std::string_view, kNativeSettingsMenuOptionCount + 1> kNativeSettingsMenuSources{
     "Chinese translation", "Toggle Chinese / English", "Toggle simplified / traditional",
     "Toggle language transliteration", "Toggle DFHack (installed only)", "Reload Chinese translation",
-    "Export whole map (all known levels)", "Toggle mouse coordinates"};
+    "Export whole map (all known levels)", "Toggle mouse coordinates", "Toggle map preview"};
 static constexpr std::array<std::string_view, kNativeSettingsMenuOptionCount + 1> kNativeSettingsMenuLabels{
     "汉化设置", "切换中英文", "切换繁简体", "切换四族语言音译",
     "开关 DFHack（需已安装 DFHack）", "重载汉化", "导出整张地图（全部已知层）",
-    "开关鼠标坐标显示"};
+    "开关鼠标坐标显示", "开关地图预览"};
 
 static void native_settings_menu_close() {
     auto &menu = g_native_settings_menu;
@@ -268,14 +275,20 @@ static void native_settings_menu_prepare() try {
         const auto &button = menu.hovered == static_cast<int>(i)
             ? ui->texpos_selected_intro_button : ui->texpos_unselected_intro_button;
         skin.nineslice(row, button.data());
-        const bool coordinates = !menu.export_result && i == 6;
+        const int action = menu.row_action(i);
+        const bool coordinates = action == 6;
+        const bool preview = action == 7;
         caption({row.x + 1, row.y + 1, row.w - 2, 1},
             coordinates ? (native_mouse_coordinates_enabled()
                 ? "Mouse coordinates: ON" : "Mouse coordinates: OFF") :
-            menu.export_result ? "Close" : kNativeSettingsMenuSources[i + 1],
+            preview ? (native_map_preview_enabled()
+                ? "Map preview: ON" : "Map preview: OFF") :
+            menu.export_result ? "Close" : kNativeSettingsMenuSources[action + 1],
             coordinates ? (native_mouse_coordinates_enabled()
                 ? "鼠标坐标显示：开" : "鼠标坐标显示：关") :
-            menu.export_result ? "关闭" : kNativeSettingsMenuLabels[i + 1]);
+            preview ? (native_map_preview_enabled()
+                ? "地图预览：开" : "地图预览：关") :
+            menu.export_result ? "关闭" : kNativeSettingsMenuLabels[action + 1]);
     }
     grid->top_in_use = owner->top_in_use;
     layer.ready = true;
@@ -350,7 +363,8 @@ bool Overlay::settings_menu_event(const SDL_Event &event) {
             menu.consumed_buttons |= uint32_t{1} << (event.button.button - 1);
         if (event.button.button == SDL_BUTTON_RIGHT) native_settings_menu_close();
         else if (event.button.button == SDL_BUTTON_LEFT) {
-            const int action = hovered(event.button.x, event.button.y);
+            const int row = hovered(event.button.x, event.button.y);
+            const int action = row >= 0 ? menu.row_action(static_cast<size_t>(row)) : -1;
             if (!menu.export_result && action == 5) {
                 menu.export_pending = true;
                 menu.hits_ready = false;
