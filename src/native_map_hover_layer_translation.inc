@@ -100,8 +100,10 @@ void Overlay::render_native_map_hover_layer(SDL_Renderer *renderer,
                 right = std::min(right, next.x);
         if (right <= first) continue;
 
-        const std::string complete = trim(draw.complete_source.empty()
-            ? draw.source : draw.complete_source);
+        // Native CP437 0x0b/0x0c are visible sex glyphs, although isspace
+        // treats them as padding. Keep them after the comma in fish captions.
+        const std::string complete(trim_view(draw.complete_source.empty()
+            ? draw.source : draw.complete_source));
         if (complete.empty()) continue;
         const bool direct_utf8 = contains_cjk_utf8(complete);
         std::string key = std::to_string(static_cast<int>(draw.map_hover.kind)) + ':' +
