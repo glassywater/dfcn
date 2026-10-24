@@ -89,6 +89,7 @@ static void native_resolution_draw_settings(void *settings) {
     TranslationStateScope translation;
     NativeResolutionDrawContext selector(settings);
     callback.call_native([&] { original(settings); });
+    native_settings_capture(settings);
 }
 
 static bool install_native_resolution_layer_hook() {

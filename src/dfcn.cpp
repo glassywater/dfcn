@@ -1009,7 +1009,7 @@ static constexpr int kAnnouncementListRule = -143;
 static constexpr int kFortressLaborCaptionRule = -144;
 static constexpr int kFortressTradeFieldRule = -145;
 static constexpr int kMainMenuCreditsRule = -146;
-static constexpr int kSettingsAnnouncementNameRule = -147;
+static constexpr int kNativeSettingsAnnouncementRule = -147;
 static constexpr int kSettingsKeybindingActionRule = -148;
 static constexpr int kSettingsKeybindingCodeRule = -149;
 static constexpr int kWorldgenParameterLabelRule = -150;
@@ -4769,11 +4769,6 @@ private:
     int settings_keybinding_action_x_ = -1;
     int settings_keybinding_key_x_ = -1;
     int settings_keybinding_add_x_ = -1;
-    bool settings_announcement_geometry_valid_ = false;
-    int settings_announcement_name_x_ = -1;
-    int settings_announcement_toggle_x_ = -1;
-    bool settings_announcement_columns_valid_ = false;
-    std::array<int, 8> settings_announcement_column_centres_twice_{};
     int settings_logged_page_ = -2;
     int settings_logged_control_x_ = -2;
     int settings_logged_value_x_ = -2;
@@ -4940,8 +4935,6 @@ private:
         std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
     void append_fortress_caravan_picker_fields(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer = false) const;
-    void append_settings_announcement_names(std::vector<std::string> &rows,
-        std::vector<Match> &matches, int only_y) const;
     void append_settings_toggle_labels(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     std::vector<NativeTextCard> capture_fortress_trade_request_rows() const;
@@ -5507,6 +5500,8 @@ private:
         std::vector<Match> &matches) const;
     bool find_settings_video_matches(int only_y, const unsigned char *screen_override,
         std::vector<Match> &matches) const;
+    bool find_settings_announcement_matches(int only_y,
+        const unsigned char *screen_override, std::vector<Match> &matches) const;
     void note_main_menu_developer_copy(SDL_Renderer *renderer, SDL_Texture *texture,
         const SDL_Rect &dest);
     void draw_main_menu_branding(SDL_Renderer *renderer);
@@ -6857,11 +6852,6 @@ bool Overlay::load_compositional_rules() {
     settings_keybinding_action_x_ = -1;
     settings_keybinding_key_x_ = -1;
     settings_keybinding_add_x_ = -1;
-    settings_announcement_geometry_valid_ = false;
-    settings_announcement_name_x_ = -1;
-    settings_announcement_toggle_x_ = -1;
-    settings_announcement_columns_valid_ = false;
-    settings_announcement_column_centres_twice_.fill(0);
     RULESETS.set_native_language_original(config_.native_language_original);
     const bool loaded = translation_cpu_only_ || RULESETS.init();
     if (loaded) {
@@ -7960,10 +7950,6 @@ void Overlay::reset_render_state() {
     settings_keybinding_geometry_valid_ = false;
     settings_keybinding_action_x_ = settings_keybinding_key_x_ = -1;
     settings_keybinding_add_x_ = -1;
-    settings_announcement_geometry_valid_ = false;
-    settings_announcement_name_x_ = settings_announcement_toggle_x_ = -1;
-    settings_announcement_columns_valid_ = false;
-    settings_announcement_column_centres_twice_.fill(0);
     custom_difficulty_geometry_valid_ = false;
     embark_pre_pause_matches_.clear();
     embark_knowledge_list_matches_.clear();
@@ -17611,6 +17597,13 @@ std::vector<Match> Overlay::resolve_native_knowledge_matches(
 #include "native_panel_layout.inc"
 #include "adventure_crafting.inc"
 #include "native_help_layers.inc"
+#include "native_settings_announcements_source.inc"
+static bool native_settings_announcements_active(const graphicst &gps) {
+    return !NativeUiReadScope::active && !NativeTooltipPageScope::active &&
+        g_native_settings_frame.active && g_native_settings_frame.page == 4 &&
+        gps.dimx == g_native_settings_frame.dimx &&
+        gps.dimy == g_native_settings_frame.dimy;
+}
 #include "native_resolution_layers.inc"
 #include "native_map_layers.inc"
 #include "native_info_layers.inc"
@@ -18278,6 +18271,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // Title captions have no item, character or history semantics. Establish
     // the complete current menu before entering the shared page pipeline.
     if (!primary_pages_probed) {
+        if (find_settings_announcement_matches(only_y, screen_override, result)) return result;
         if (find_main_menu_matches(only_y, screen_override, result)) return result;
         if (find_settings_video_matches(only_y, screen_override, result)) return result;
     }
@@ -18729,7 +18723,6 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     };
 #include "adventure_quest_sidebar.inc"
 
-    append_settings_announcement_names(screen_rows, result, only_y);
     append_worldgen_parameter_labels(screen_rows, result, only_y);
     // The trade controls and totals are independent native fields. Claim
     // them before paragraph/item readers or generic word translations.
@@ -27971,7 +27964,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                 const unsigned char ch = raw[tile * 8];
                 if ((match.native_fortress_creature_field || is_credits_row(match) ||
                      is_help_text(match) || match.rule == kCharacterRoomStatusRule ||
-                     match.rule == kSettingsAnnouncementNameRule ||
+                     match.rule == kNativeSettingsAnnouncementRule ||
                      match.rule == kFortressLaborCaptionRule ||
                      match.rule == kFortressSiteNameRule ||
                      match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
@@ -28036,7 +28029,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                 if ((match.native_fortress_creature_field || is_credits_row(match) ||
                      is_help_text(match) || match.rule == kCharacterRoomStatusRule ||
                      match.rule == kEmbarkFinderFieldRule ||
-                     match.rule == kSettingsAnnouncementNameRule ||
+                     match.rule == kNativeSettingsAnnouncementRule ||
                      match.rule == kFortressLaborCaptionRule ||
                      match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
                      match.rule == kCharacterHeaderRule ||
@@ -28286,6 +28279,9 @@ void Overlay::normalize_native_split_text() {
     for (size_t index = 0; index < prepared_matches_.size(); ++index) {
         Match &match = prepared_matches_[index];
         if (match.native_announcement_popup || match.native_adventure_choice_row) continue;
+        // The modal's widget snapshot already owns its full/half glyph
+        // writers and baseline; grid text cannot reinterpret them.
+        if (match.rule == kNativeSettingsAnnouncementRule) continue;
         // The decompiled combat, portrait, trade, relation and embark finder
         // renderers use ordinary addst, retaining old half-font flags without
         // drawing halves. Relation names and labels are separate full rows.
@@ -28381,7 +28377,7 @@ void Overlay::normalize_native_split_text() {
             match.rule == kAdventurePersonalityFieldRule ||
             match.rule == kRatedSkillRule ||
             machine_power || is_credits_row(match) || match.rule == kSaveListCaptionRule ||
-            match.rule == kSettingsAnnouncementNameRule ||
+            match.rule == kNativeSettingsAnnouncementRule ||
             match.rule == kColorPickerChoiceRule ||
             match.rule == kCharacterHeaderRule ||
             match.rule == kCharacterRoomStatusRule ||
@@ -34694,131 +34690,6 @@ static int game_mode_description_fit_font_pixels(int nominal_pixels,
     return minimum_pixels;
 }
 
-static std::string_view announcement_filter_text(std::string_view source) {
-    while (!source.empty() &&
-           (source.front() == ' ' || source.front() == '\t' || source.front() == '\0')) {
-        source.remove_prefix(1);
-    }
-    while (!source.empty() &&
-           (source.back() == ' ' || source.back() == '\t' || source.back() == '\0')) {
-        source.remove_suffix(1);
-    }
-    return source;
-}
-
-static bool is_announcement_filter_source(std::string_view source) {
-    source = announcement_filter_text(source);
-    return source == "All" || source == "Combat" || source == "Adventure" ||
-        source == "Fortress" || source == "Other" || source == "Popup" ||
-        source == "Pause" || source == "Recenter" || source == "Report" ||
-        source == "Report (Active)" || source == "Alert";
-}
-
-static void normalize_announcement_filter(Match &match) {
-    // Announcement filters and column headers are a closed UI vocabulary.
-    // Keep it contextual: a global `Pause -> 暂停` dictionary entry would also
-    // translate the Pause key identifier on the key-binding page. It also
-    // prevents these short labels from falling through to the proper-name
-    // transliterator (which previously rendered Pause as “帕塞”).
-    const std::string_view source = announcement_filter_text(match.source);
-    static constexpr std::array<std::pair<std::string_view, std::string_view>, 11>
-        labels = {{
-            {"All", "全部"},
-            {"Combat", "战斗"},
-            {"Adventure", "冒险"},
-            {"Fortress", "要塞"},
-            {"Other", "其他"},
-            {"Popup", "弹出窗口"},
-            {"Pause", "暂停"},
-            {"Recenter", "重新居中"},
-            {"Report", "报告"},
-            {"Report (Active)", "报告（启用时）"},
-            {"Alert", "警报"},
-        }};
-    for (const auto &[english, chinese] : labels) {
-        if (source == english) {
-            match.target = chinese;
-            return;
-        }
-    }
-
-    // Older generated tables used these two translations. Normalize them
-    // while a stale table is hot-reloaded so the UI does not jump wording.
-    if (announcement_filter_text(match.target) == "堡垒") {
-        match.target = "要塞";
-    } else if (announcement_filter_text(match.target) == "报告（激活）") {
-        match.target = "报告（启用时）";
-    }
-}
-
-static void normalize_announcement_active_suffix(Match &match) {
-    if (announcement_filter_text(match.source) == "(Active)" ||
-        announcement_filter_text(match.target) == "（激活）" ||
-        announcement_filter_text(match.target) == "(激活)") {
-        match.target = "（启用时）";
-    }
-}
-
-static std::pair<int, int> centered_toggle_span(int centre_twice) {
-    // Match the parity of the half-cell centre exactly. Four cells cover an
-    // integer centre; five cover a half-cell centre. Both fit inside DF's
-    // six-cell announcement buttons.
-    const int length = (centre_twice & 1) ? 5 : 4;
-    return {(centre_twice - length) / 2, length};
-}
-
-static int announcement_toggle_centre_twice(const Match &match) {
-    // DF places the odd-length `Yes` and even-length `No` on opposite sides
-    // of the same half-cell button centre.  Chinese replaces either with one
-    // glyph, so move only No by half a logical cell; no cross-column mapping
-    // or cached nearest-neighbour assignment is involved.
-    return match.x * 2 + match.length + (match.source == "No" ? 1 : 0);
-}
-
-static std::pair<int, int> centered_announcement_header_span(
-        int centre_twice, std::string_view target) {
-    std::vector<uint32_t> codepoints;
-    const int visible_length = decode_utf8(target, codepoints)
-        ? static_cast<int>(codepoints.size())
-        : static_cast<int>(target.size());
-    int length = std::max(5, visible_length);
-    // The span length and doubled centre must have the same parity. Grow by
-    // one cell when needed so the box centre is represented exactly.
-    if ((length & 1) != (centre_twice & 1)) ++length;
-    return {(centre_twice - length) / 2, length};
-}
-
-static bool find_announcement_column_centres(
-        const std::vector<Match> &matches, std::array<int, 8> &centres) {
-    std::unordered_map<int, int> frequencies;
-    for (const Match &match : matches) {
-        if (match.source == "Yes" || match.source == "No") {
-            ++frequencies[announcement_toggle_centre_twice(match)];
-        }
-    }
-    if (frequencies.size() < centres.size()) return false;
-
-    std::vector<std::pair<int, int>> ranked;
-    ranked.reserve(frequencies.size());
-    for (const auto &[centre, count] : frequencies) {
-        ranked.emplace_back(centre, count);
-    }
-    std::sort(ranked.begin(), ranked.end(), [](const auto &left, const auto &right) {
-        return left.second != right.second
-            ? left.second > right.second
-            : left.first < right.first;
-    });
-    ranked.resize(centres.size());
-    std::sort(ranked.begin(), ranked.end(), [](const auto &left, const auto &right) {
-        return left.first < right.first;
-    });
-    for (size_t i = 0; i < centres.size(); ++i) {
-        if (i > 0 && ranked[i].first - ranked[i - 1].first < 4) return false;
-        centres[i] = ranked[i].first;
-    }
-    return true;
-}
-
 static std::optional<std::pair<int, int>> find_resolution_span(
         std::string_view row) {
     auto blank = [row](size_t index) {
@@ -35187,8 +35058,12 @@ void Overlay::prepare_frame() {
     }
     if (config_.enabled && face_ && !rules_.empty() && gps_ && gps_->screen &&
         gps_->dimx > 0 && gps_->dimx <= 1000 && gps_->dimy > 0 && gps_->dimy <= 1000) {
-        main_menu_frame_ = find_main_menu_matches(-1, nullptr, prepared_matches_);
-        if (!main_menu_frame_) {
+        // Settings are a native modal over the title/game viewscreen. Claim
+        // the typed modal before looking at any underlying page captions.
+        settings_video_frame_ = find_settings_announcement_matches(-1, nullptr, prepared_matches_);
+        if (!settings_video_frame_)
+            main_menu_frame_ = find_main_menu_matches(-1, nullptr, prepared_matches_);
+        if (!main_menu_frame_ && !settings_video_frame_) {
             settings_video_frame_ = find_settings_video_matches(-1, nullptr, prepared_matches_);
             if (!settings_video_frame_) {
                 fortress_map_frame_ = find_fortress_map_matches(-1, nullptr, prepared_matches_);
@@ -35785,7 +35660,7 @@ void Overlay::prepare_frame() {
                 if (cell && cell[0] != 0 && cell[0] != ' ') {
                     if ((match.native_fortress_creature_field ||
                          match.native_hover_background || is_help_text(match) ||
-                         match.rule == kSettingsAnnouncementNameRule ||
+                         match.rule == kNativeSettingsAnnouncementRule ||
                          match.rule == kFortressLaborCaptionRule ||
                          match.rule == kFortressSiteNameRule ||
                          match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
@@ -40464,7 +40339,7 @@ void Overlay::layout_multiline_matches() {
             match.rule == kWorkshopTaskRowRule ||
             match.rule == kWorkshopMaterialFieldRule ||
             match.rule == kAdventurePersonalityFieldRule ||
-            match.rule == kSettingsAnnouncementNameRule ||
+            match.rule == kNativeSettingsAnnouncementRule ||
             match.rule == kDfhackStocksHintRule || match.rule == kDfhackHotkeysHintRule ||
             match.rule == kCharacterHeaderRule || match.rule == kCharacterRoomStatusRule ||
             match.rule == kFortressStandingOrderRule ||
@@ -41860,6 +41735,7 @@ std::vector<ColoredText> Overlay::colored_match_text(const Match &match, int for
 }
 
 std::vector<int> Overlay::colored_match_foregrounds(const Match &match, int foreground) const {
+    if (match.rule == kNativeSettingsAnnouncementRule) return {};
     if (!match.layout_glyph_foreground_rgb.empty()) return match.layout_glyph_foreground_rgb;
     const auto colored = colored_match_text(match, foreground);
     if (colored.size() <= 1) return {};
@@ -42084,7 +41960,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
     if (tile_w <= 0 || tile_h <= 0) return;
 
     const unsigned char *color_cell = nullptr;
-    for (int x = match.x; x < match.x + match.length; ++x) {
+    for (int x = match.x; match.layout_foreground_rgb < 0 && x < match.x + match.length; ++x) {
         bool top = false;
         const unsigned char *cell = cell_at(x, match.y, &top);
         (void)top;
@@ -42093,7 +41969,7 @@ void Overlay::draw_match(SDL_Renderer *renderer, const Match &match) {
             break;
         }
     }
-    if (!color_cell) {
+    if (!color_cell && match.layout_foreground_rgb < 0) {
         bool top = false;
         color_cell = cell_at(match.x, match.y, &top);
     }
@@ -43126,6 +43002,7 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
     // shared viewport. Complete multiline controls also move their captions
     // off the source rows, while retaining the writer's horizontal limits.
     if (!match.native_dfhack_foreground && !match.native_squads_foreground &&
+            match.rule != kNativeSettingsAnnouncementRule &&
             !native_announcement_log_foreground_view(gps_) &&
             !native_character_foreground_view(gps_) &&
             !native_petitions_foreground_view(gps_) &&
@@ -43674,7 +43551,10 @@ bool Overlay::prepare_native_ui_input(NativeUiLayerGrid &input, SDL_Renderer *re
     // either semantic cache keys or any page/layout reader sees the records.
     // Private components install their own captured-text registries separately.
     bind_native_drawn_text_frame(*gps_);
-    const auto read_cache_context = []() -> std::optional<std::string> {
+    const auto read_cache_context = [this]() -> std::optional<std::string> {
+        // Widget visibility and flag values can change without changing the
+        // glyph grid. This modal always consumes its current native snapshot.
+        if (native_settings_announcements_active(*gps_)) return std::nullopt;
         try { return native_main_ui_cache_context(); }
         catch (...) { return std::nullopt; }
     };
@@ -45594,86 +45474,6 @@ DFCN_EXPORT int dfcn_template_self_test() {
             if ((units + larger_capacity - 1) / larger_capacity <= lines) {
                 return 78;
             }
-        }
-    }
-
-    if (!dfcn::is_announcement_filter_source("Pause") ||
-        !dfcn::is_announcement_filter_source("  Fortress ") ||
-        !dfcn::is_announcement_filter_source("Report (Active)") ||
-        dfcn::is_announcement_filter_source("Name") ||
-        dfcn::is_announcement_filter_source("Yes")) {
-        return 21;
-    }
-    dfcn::Match selected_fortress_filter;
-    selected_fortress_filter.source = "  Fortress ";
-    selected_fortress_filter.target = "堡垒";
-    dfcn::normalize_announcement_filter(selected_fortress_filter);
-    if (selected_fortress_filter.target != "要塞") return 22;
-    dfcn::Match pause_filter;
-    pause_filter.source = "Pause";
-    pause_filter.target = "帕塞";
-    dfcn::normalize_announcement_filter(pause_filter);
-    if (pause_filter.target != "暂停") return 220;
-    selected_fortress_filter.source = "selected filter fragment";
-    selected_fortress_filter.target = "堡垒";
-    dfcn::normalize_announcement_filter(selected_fortress_filter);
-    if (selected_fortress_filter.target != "要塞") return 23;
-    selected_fortress_filter.source = "selected report fragment";
-    selected_fortress_filter.target = "报告（激活）";
-    dfcn::normalize_announcement_filter(selected_fortress_filter);
-    if (selected_fortress_filter.target != "报告（启用时）") return 24;
-    dfcn::Match active_suffix;
-    active_suffix.source = "(Active)";
-    active_suffix.target = "(激活)";
-    dfcn::normalize_announcement_active_suffix(active_suffix);
-    if (active_suffix.target != "（启用时）") return 25;
-    for (int centre_twice : {140, 141}) {
-        const auto [span_x, span_length] =
-            dfcn::centered_toggle_span(centre_twice);
-        if (span_x * 2 + span_length != centre_twice) return 26;
-    }
-    dfcn::Match yes_toggle;
-    yes_toggle.x = 10;
-    yes_toggle.length = 3;
-    yes_toggle.source = "Yes";
-    dfcn::Match no_toggle;
-    no_toggle.x = 10;
-    no_toggle.length = 2;
-    no_toggle.source = "No";
-    if (dfcn::announcement_toggle_centre_twice(yes_toggle) != 23 ||
-        dfcn::announcement_toggle_centre_twice(no_toggle) != 23) {
-        return 27;
-    }
-    for (int centre_twice : {140, 141}) {
-        const auto [header_x, header_length] =
-            dfcn::centered_announcement_header_span(
-                centre_twice, "报告（启用时）");
-        if (header_x * 2 + header_length != centre_twice) return 28;
-    }
-    std::vector<dfcn::Match> synthetic_announcement_toggles;
-    for (int row = 0; row < 3; ++row) {
-        for (int column = 0; column < 8; ++column) {
-            dfcn::Match toggle;
-            toggle.x = 10 + column * 12;
-            toggle.y = row;
-            toggle.source = row == 1 ? "No" : "Yes";
-            toggle.length = row == 1 ? 2 : 3;
-            synthetic_announcement_toggles.push_back(std::move(toggle));
-        }
-    }
-    dfcn::Match announcement_noise;
-    announcement_noise.x = 3;
-    announcement_noise.source = "Yes";
-    announcement_noise.length = 3;
-    synthetic_announcement_toggles.push_back(std::move(announcement_noise));
-    std::array<int, 8> announcement_centres{};
-    if (!dfcn::find_announcement_column_centres(
-            synthetic_announcement_toggles, announcement_centres)) {
-        return 29;
-    }
-    for (size_t column = 0; column < announcement_centres.size(); ++column) {
-        if (announcement_centres[column] != 23 + static_cast<int>(column) * 24) {
-            return 30;
         }
     }
 
