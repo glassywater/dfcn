@@ -6879,8 +6879,17 @@ bool Overlay::load_compositional_rules() {
             // including an authored UTF-8 name inside native CP437 text.
             if (kind == "creature_label") {
                 const auto native = utf8_to_cp437(source, true);
-                return native ? translate_creature_label(*native, nullptr, true)
-                              : std::nullopt;
+                if (!native) return std::nullopt;
+                if (auto label = translate_creature_label(*native, nullptr, true))
+                    return label;
+                // Named pets use the complete `name, caste (state)` identity.
+                // Require its animal field before the typed identity parser
+                // can preserve an authored name or translate a generated one.
+                const size_t comma = native->find(',');
+                if (comma == std::string::npos || !translate_creature_label(
+                        trim_view(std::string_view(*native).substr(comma + 1))))
+                    return std::nullopt;
+                return translate_unit_identity(*native, true);
             }
             if (kind == "activity_place") {
                 const auto native = utf8_to_cp437(source, true);
