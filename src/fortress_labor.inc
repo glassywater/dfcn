@@ -247,6 +247,118 @@ static std::optional<std::pair<int, int>> character_work_detail_text_span(
     return std::nullopt;
 }
 
+void Overlay::append_character_work_detail_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const {
+    if (!gps_ || !native_character_translation_active(gps_) ||
+            gps_->dimx <= 0 || gps_->dimy <= 0 ||
+            rows.size() != static_cast<size_t>(gps_->dimy)) return;
+#ifdef _WIN32
+    const uintptr_t base = reinterpret_cast<uintptr_t>(GetModuleHandleW(nullptr));
+    if (!base || !native_pe_supported()) return;
+    const uintptr_t details_address = native_pe_address(base, 0x2399980);
+#else
+    const uintptr_t base = native_history_profile_base();
+    if (!base) return;
+    const uintptr_t details_address = native_history_object_member(
+        native_reference_address(base, native_history_layout::plotinfo_rva),
+        "plotinfost", "labor_info.work_details", 24);
+#endif
+    std::array<uintptr_t, 3> details{};
+    if (!details_address || !native_history_copy_bytes(details_address,
+            details.data(), sizeof(details)) || !details[0] ||
+            details[0] > details[1] || details[1] > details[2] ||
+            (details[1] - details[0]) % sizeof(uintptr_t) ||
+            details[1] - details[0] > 8192 * sizeof(uintptr_t)) return;
+    std::vector<uintptr_t> members((details[1] - details[0]) / sizeof(uintptr_t));
+    if (members.empty() || !native_history_copy_bytes(details[0], members.data(),
+            details[1] - details[0])) return;
+    std::unordered_map<uintptr_t, uintptr_t> names;
+    for (const uintptr_t detail : members) {
+        if (!detail) continue;
+        const uintptr_t name = native_history_object_member(detail, "work_detail", "name", 32);
+        if (name) names.emplace(name, detail);
+    }
+    // PE 53.16 0x17276c reads this vector's actual work_detail, and 0x172a2b
+    // passes its name member directly to addst. Keep that complete field
+    // ahead of identity/word matching; spelling alone never identifies a
+    // default detail or authorizes translating a player-authored name.
+    for (bool top_layer : {false, true}) {
+        const auto *grid = top_layer ? gps_->screen_top : gps_->screen;
+        const auto *flags = top_layer ? gps_->screentexpos_top_flag : gps_->screentexpos_flag;
+        for (const auto &draw : captured_native_drawn_text_view(top_layer)) {
+            if (!draw.caption_source || draw.draw_grid != grid ||
+                    draw.draw_dimx != gps_->dimx || draw.draw_dimy != gps_->dimy ||
+                    draw.source.empty() || draw.x < 0 || draw.x >= gps_->dimx ||
+                    draw.y < 0 || draw.y >= gps_->dimy ||
+                    draw.source.size() > static_cast<size_t>(gps_->dimx - draw.x)) continue;
+            const auto found = names.find(draw.address);
+            if (found == names.end()) continue;
+            uint32_t detail_flags = 0;
+            const uintptr_t flags_address = native_history_object_member(
+                found->second, "work_detail", "flags", 4);
+            std::string source;
+            if (!flags_address || !native_history_copy_bytes(flags_address,
+                    &detail_flags, sizeof(detail_flags)) ||
+                    !native_history_copy_string(draw.address, source) || source.empty() ||
+                    source.size() > 4096 || source.find('\0') != std::string::npos ||
+                    source != (draw.complete_source.empty() ? draw.source : draw.complete_source)) continue;
+            const bool authored = (detail_flags & 1) == 0;
+            const auto translated = authored ? std::optional<std::string>{}
+                : exact_literal_translation(source);
+            const std::string target = translated ? *translated : native_text_to_utf8(source);
+            if (target.empty()) continue;
+            constexpr uint32_t upper = 1u << 3, lower_half = 1u << 4;
+            const uint32_t half = flags
+                ? flags[static_cast<size_t>(draw.x) * gps_->dimy + draw.y] & (upper | lower_half)
+                : 0;
+            const int mate = half == upper ? draw.y + 1 : half == lower_half ? draw.y - 1 : -1;
+            int middle = draw.y;
+            const int end = draw.x + static_cast<int>(draw.source.size());
+            auto span = character_work_detail_text_span(*gps_, draw.x, end, middle);
+            if (!span && mate >= 0 && mate < gps_->dimy) {
+                middle = mate;
+                span = character_work_detail_text_span(*gps_, draw.x, end, middle);
+            }
+            if (!span || draw.x < span->first || end > span->second) continue;
+            for (const int y : {draw.y, mate}) {
+                if (y < 0 || y >= gps_->dimy || (only_y >= 0 && only_y != y) ||
+                        rows[y].compare(draw.x, draw.source.size(), draw.source) != 0) continue;
+                if (y == mate && (!flags ||
+                        (flags[static_cast<size_t>(draw.x) * gps_->dimy + y] & (upper | lower_half)) !=
+                            (half == upper ? lower_half : upper))) continue;
+                bool current = true;
+                for (int x = draw.x; x < end; ++x) {
+                    bool top = false;
+                    const auto *cell = cell_at(x, y, &top);
+                    if (!cell || top != top_layer ||
+                            (cell[0] ? cell[0] : ' ') !=
+                                static_cast<unsigned char>(draw.source[x - draw.x])) {
+                        current = false;
+                        break;
+                    }
+                }
+                if (!current) continue;
+                std::erase_if(matches, [&](const Match &match) {
+                    return match.y == y && match.x < end && draw.x < match.x + match.length;
+                });
+                Match match{draw.x, y, end - draw.x, kFortressLaborCaptionRule, target, draw.source};
+                match.native_picture_caption_box = SDL_Rect{
+                    span->first, middle - 1, span->second - span->first, 3};
+                match.native_hover_untranslated = !authored && !translated;
+                match.layout_x = span->first;
+                match.layout_length = span->second - span->first;
+                match.layout_clip_right = span->second;
+                match.layout_left = true;
+                match.layout_ellipsize = true;
+                match.layout_prepared = true;
+                match.layout_line_height_pixels = gps_->tile_pixel_y;
+                matches.push_back(std::move(match));
+                std::fill(rows[y].begin() + draw.x, rows[y].begin() + end, ' ');
+            }
+        }
+    }
+}
+
 // Classic labor records join the picture directly to rectangle fill and
 // finish at a unit control. A wrapped title can replace the lower edge, so
 // neither a closed rectangle nor its raw three rows describe the caption.

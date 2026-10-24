@@ -111,6 +111,8 @@ static bool native_history_copy_bytes(uintptr_t address, void *destination, size
 template<typename T>
 static bool native_history_copy(uintptr_t address, T &value);
 static bool native_history_copy_string(uintptr_t address, std::string &value);
+static uintptr_t native_history_object_member(uintptr_t object, std::string_view type,
+    std::string_view member, size_t width);
 static uintptr_t native_reference_va(uintptr_t address);
 static uintptr_t native_reference_address(uintptr_t base, uintptr_t offset);
 static std::optional<NativeJusticeOrganizationCaption>
@@ -5251,6 +5253,8 @@ private:
     void layout_work_order_fields(SDL_Renderer *renderer);
     void draw_work_order_buttons(SDL_Renderer *renderer);
     void append_fortress_labor_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
+    void append_character_work_detail_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void layout_fortress_labor(SDL_Renderer *renderer);
     void append_fortress_unit_chooser_rows(std::vector<std::string> &rows,
@@ -18977,6 +18981,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     // consume only the name of a living relative. Keep the same record
     // layout for shortened portrait captions and plain historical names.
     if (character_page) append_character_relation_rows(screen_rows, result, only_y);
+    if (character_page) append_character_work_detail_rows(screen_rows, result, only_y);
     if (character_page) append_character_work_animal_rows(screen_rows, result, only_y);
     append_color_picker_rows(screen_rows, result, only_y, screen_override != nullptr);
     }
