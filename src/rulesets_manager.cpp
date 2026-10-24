@@ -1328,6 +1328,29 @@ namespace Hooks {
                 }
                 return best ? std::optional<std::string>(best->translated) : std::nullopt;
             };
+            const auto complete_tagged = [&](const std::string& source, const std::string& ns)
+                    -> std::optional<std::string> {
+                if (auto target = complete(source, ns)) return target;
+                // Native RAW names retain item-tagger annotations. The tile
+                // extension can consume them, but the comma-separated growth
+                // reader deliberately uses the plural leaf namespace directly.
+                // Resolve each field's known suffix tags without widening its
+                // noun grammar or accepting a partially translated caption.
+                std::string name = source, tags;
+                while (name.ends_with(']')) {
+                    const size_t at = name.rfind(" [");
+                    if (at == std::string::npos) break;
+                    const auto tag = complete(name.substr(at + 1),
+                        "::item_tagger::tags::tag");
+                    if (!tag) return std::nullopt;
+                    tags.insert(0, " " + *tag);
+                    name.resize(at);
+                    while (!name.empty() && name.back() == ' ') name.pop_back();
+                }
+                if (tags.empty() || name.empty()) return std::nullopt;
+                if (auto target = complete(name, ns)) return *target + tags;
+                return std::nullopt;
+            };
             const auto part_at = [&](size_t start, size_t end) {
                 std::string part = text.substr(start, end - start);
                 const size_t first = part.find_first_not_of(' ');
@@ -1345,7 +1368,7 @@ namespace Hooks {
                     end = comma == std::string::npos ? text.size() : comma;
                     // After the complete tile, every entry must be a growth.
                     // Do not reinterpret another terrain or a person as foliage.
-                    auto target = complete(part_at(start, end), "::plants::growth::plural");
+                    auto target = complete_tagged(part_at(start, end), "::plants::growth::plural");
                     if (!target) return std::nullopt;
                     translated += *separator + *target;
                     if (end == text.size()) return translated;
@@ -1365,10 +1388,10 @@ namespace Hooks {
             while (comma != std::string::npos) {
                 comma = text.find(',', comma + 1);
                 const size_t end = comma == std::string::npos ? text.size() : comma;
-                if (auto target = complete(part_at(0, end), "::tiles::named_plant"))
+                if (auto target = complete_tagged(part_at(0, end), "::tiles::named_plant"))
                     if (auto caption = growths(*target, end)) return caption;
             }
-            if (auto target = complete(part_at(0, first_end), "::tiles")) {
+            if (auto target = complete_tagged(part_at(0, first_end), "::tiles")) {
                 if (auto caption = growths(*target, first_end)) return caption;
             }
             return std::nullopt;
