@@ -1,0 +1,44 @@
+priority	branch	selector	condition	production	draw_shape
+1	soldier_mood	0	unit+0x814 != -1	In a martial trance!	one complete draw
+1	soldier_mood	1	unit+0x814 != -1	Enraged at all enemies!	one complete draw
+1	soldier_mood	2	unit+0x814 != -1	Throwing a tantrum!	one complete draw
+1	soldier_mood	3	unit+0x814 != -1	Sunk into depression...	one complete draw
+1	soldier_mood	4	unit+0x814 != -1	Stumbling obliviously!	one complete draw
+1	soldier_mood	other except -1	unit+0x814 != -1	Corrupt Soldier Mood: {signed decimal enum}	one assembled draw
+2	strange_mood	0	unit+0x814 == -1; unit+0x360 != -1 and != 8	Has the aspect of one fey!	one complete draw
+2	strange_mood	1	unit+0x814 == -1; unit+0x360 != -1 and != 8	Peculiarly secretive...	one complete draw
+2	strange_mood	2	unit+0x814 == -1; unit+0x360 != -1 and != 8	Possessed by unknown forces!	one complete draw
+2	strange_mood	3	unit+0x814 == -1; unit+0x360 != -1 and != 8	Brooding darkly...	one complete draw
+2	strange_mood	4	unit+0x814 == -1; unit+0x360 != -1 and != 8	Has a horrible fell look!	one complete draw
+2	strange_mood	5	unit+0x814 == -1; unit+0x360 != -1 and != 8	Stricken by melancholy...	one complete draw
+2	strange_mood	6	A or B; unit+0x110 & 0x8000 == 0	Running around babbling!	one complete draw
+2	strange_mood	6	A or B; unit+0x110 & 0x8000 != 0	Crawling around babbling!	one complete draw
+2	strange_mood	6	not A and not B; unit+0x110 & 0x8000 == 0	Running around crazed!	one complete draw
+2	strange_mood	6	not A and not B; unit+0x110 & 0x8000 != 0	Crawling around crazed!	one complete draw
+2	strange_mood	7	unit+0x814 == -1; unit+0x360 != -1 and != 8	In a berserk rage!	one complete draw
+2	strange_mood	9	unit+0x814 == -1; unit+0x360 != -1 and != 8	Staring off into space...	one complete draw
+2	strange_mood	other except -1 and 8	unit+0x814 == -1	Corrupt Strange Mood: {signed decimal enum}	one assembled draw
+3	emotion	5	unit+0x118 & 0x2000000; first recognized emotion with emotion+0x18 & 1	Writhing in agony!	one complete draw
+3	emotion	12	same priority and emotion flag condition	In existential crisis!	one complete draw
+3	emotion	13	same priority and emotion flag condition	Anguished!	one complete draw
+3	emotion	39	same priority and emotion flag condition	Lost in despair!	one complete draw
+3	emotion	44	same priority and emotion flag condition	Completely dismayed!	one complete draw
+3	emotion	46	same priority and emotion flag condition	Distressed!	one complete draw
+3	emotion	64	same priority and emotion flag condition	Experiencing mortal fear!	one complete draw
+3	emotion	68	same priority and emotion flag condition	Taken by a fright!	one complete draw
+3	emotion	78	same priority and emotion flag condition; unit+0x12e == 0	Beside herself with grief!	three draws: Beside |herself| with grief!
+3	emotion	78	same priority and emotion flag condition; unit+0x12e == 1	Beside himself with grief!	three draws: Beside |himself| with grief!
+3	emotion	78	same priority and emotion flag condition; unit+0x12e neither 0 nor 1	Beside itself with grief!	three draws: Beside |itself| with grief!
+3	emotion	88	same priority and emotion flag condition	Overwhelmed by horror!	one complete draw
+3	emotion	111	same priority and emotion flag condition	Wallowing in misery!	one complete draw
+3	emotion	112	same priority and emotion flag condition	Truly mortified!	one complete draw
+3	emotion	135	same priority and emotion flag condition	Drowning in sadness!	one complete draw
+3	emotion	141	same priority and emotion flag condition	Shaken to the core!	one complete draw
+3	emotion	143	same priority and emotion flag condition	In emotional shock!	one complete draw
+3	emotion	152	same priority and emotion flag condition	Overcome by terror!	one complete draw
+3	emotion	fallback	flag present; no soul or no recognized flagged emotion	Emotionally overloaded!	one complete draw
+4	pet_owner	owner present	unit+0x3bc != -1; owner eligibility succeeds	Pet of {owner native language_name}	prefix and name are separate adjacent draws
+4	pet_owner	owner absent	unit+0x3bc != -1; owner eligibility succeeds; owner lookup is null	Pet of Somebody	prefix and fallback are separate adjacent draws
+5	artifact_creator	creator flag	unit+0x11c & 0x800	Creator of {artifact native language_name}	prefix and name are separate adjacent draws; name may be empty
+6	office	eligible office exists	histfig absent or histfig+0xac == -1	{gendered singular office or spouse title}{optional territory suffix}	one assembled draw; RAW title and generated site name
+6	office	no eligible office	all previous branches ineligible	{empty}	no status text

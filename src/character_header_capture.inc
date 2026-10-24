@@ -36,7 +36,7 @@ void Overlay::append_character_header(
     const auto claim_field = [&](const LogicalTextField &field, int y,
                                  const std::string &target, int clip_right,
                                  std::shared_ptr<const TranslationResult> translation = {},
-                                 bool suppress_pending = false) {
+                                 bool suppress_pending = false, int foreground = -1) {
         if ((target.empty() && !suppress_pending) || y < 0 || y >= static_cast<int>(screen_rows.size()) ||
                 field.start < 0 || field.end <= field.start ||
                 field.end > static_cast<int>(screen_rows[y].size())) return;
@@ -60,6 +60,7 @@ void Overlay::append_character_header(
         match.layout_length = field.end - field.start;
         match.layout_clip_right = clip_right;
         match.layout_left = true;
+        match.layout_foreground_rgb = foreground;
         result.push_back(std::move(match));
     };
     const auto header_field = [&](const NativeDrawnTextRow &draw,
@@ -86,6 +87,7 @@ void Overlay::append_character_header(
         }
         return LogicalTextField{draw.x, end, std::string(visible)};
     };
+#include "character_header_native.inc"
     // The sheet formatter already proves the quoted name's role. Its current
     // source column and a complete activity production establish the activity
     // slot even when an identity title leaves no blank before it. A blank still
