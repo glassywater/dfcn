@@ -1033,6 +1033,7 @@ static constexpr int kAdventureCompanionFieldRule = -168;
 static constexpr int kFortressBuildPlacementStatusRule = -169;
 static constexpr int kConversationToneRule = -170;
 static constexpr int kAdventureActionPanelRule = -171;
+static constexpr int kArenaTreePlantRule = -172;
 
 static bool is_fortress_noble_symbol_field(const Match &match) {
     return match.rule == kFortressNobleSymbolNameRule ||
@@ -2344,6 +2345,14 @@ enum class NativeWorkshopChoiceField : uint8_t {
 };
 static NativeWorkshopChoiceField native_workshop_choice_field(uintptr_t caller);
 
+struct NativeArenaTreeCaption {
+    uintptr_t picker = 0, plant = 0;
+    std::string name;
+    int right = 0; // exclusive native text allocation
+};
+static std::optional<NativeArenaTreeCaption> capture_native_arena_tree_caption(
+    uintptr_t caller, uintptr_t source);
+
 struct NativeDrawnTextRow {
     int x = 0, y = 0;
     std::string source;
@@ -2429,6 +2438,7 @@ struct NativeDrawnTextRow {
     std::optional<NativeWorkOrderShopCaption> work_order_shop_caption{};
     std::optional<NativeFortressZoneCaption> fortress_zone_caption{};
     std::optional<NativeWorkshopTaskCaption> workshop_task_caption{};
+    std::optional<NativeArenaTreeCaption> arena_tree_caption{};
     // The equipment roster reserves the columns after this edge for icons.
     // Capture it while the name writer's native frame is still alive.
     int uniform_member_right = -1;
@@ -2877,6 +2887,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         capture_native_fortress_zone_caption(native_caller, address);
     auto workshop_task_caption = character ? std::nullopt :
         capture_native_workshop_task_caption(native_caller, address);
+    auto arena_tree_caption = character ? std::nullopt :
+        capture_native_arena_tree_caption(native_caller, address);
     auto caravan_entity_name = character ? std::shared_ptr<const NativeHistoryName>{} :
         capture_native_caravan_entity_name(native_caller, address);
     // Identity translation acquires TranslationStateScope before any native
@@ -2943,8 +2955,9 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         row.work_order_shop_caption = std::move(work_order_shop_caption);
         row.fortress_zone_caption = std::move(fortress_zone_caption);
         row.workshop_task_caption = std::move(workshop_task_caption);
+        row.arena_tree_caption = std::move(arena_tree_caption);
         row.uniform_member_right = capture_native_uniform_member_right(native_caller, address, x);
-        if (row.workshop_task_caption ||
+        if (row.workshop_task_caption || row.arena_tree_caption ||
                 native_workshop_choice_field(native_caller) != NativeWorkshopChoiceField::None)
             row.caption_source = true;
         row.sequence = ++g_native_drawn_text_sequence;
@@ -3073,7 +3086,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
             complete_source.find_first_of("\r\n") == std::string_view::npos)
             row.complete_source.assign(complete_source);
         if (row.caption_source && graphics && !top_layer && !character &&
-                !row.workshop_task_caption)
+                !row.workshop_task_caption && !row.arena_tree_caption)
             row.picture_frame = capture_native_picture_caption_frame(*graphics, x, y);
         positions.insert(position);
         try {
@@ -5202,6 +5215,9 @@ private:
     bool layout_fortress_schedule_editor(SDL_Renderer *renderer);
     void append_color_picker_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y, bool raw_layer) const;
+    void append_native_arena_tree_rows(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y,
+        const unsigned char *screen_override) const;
     void append_adventure_compass_matches(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void append_adventure_tracking_hud_matches(std::vector<std::string> &rows,
@@ -17850,6 +17866,7 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_ammunition.inc"
 #include "fortress_schedule_editor.inc"
 #include "color_picker.inc"
+#include "arena_tree_rows.inc"
 #include "fortress_tasks.inc"
 #include "fortress_workshop_activities.inc"
 #include "work_order_shop_fields.inc"
@@ -18616,6 +18633,7 @@ std::vector<Match> Overlay::find_native_matches(int only_y,
     screen_rows.reserve(static_cast<size_t>(gps_->dimy));
     for (int row_y = 0; row_y < gps_->dimy; ++row_y)
         screen_rows.push_back(read_row(row_y));
+    append_native_arena_tree_rows(screen_rows, result, only_y, screen_override);
     // Windows sends the retained hover document directly to its private
     // tooltip layer. The parent page owns the list choices and biography;
     // changing the hovered practice must not retranslate that parent page.
@@ -28443,7 +28461,7 @@ void Overlay::normalize_native_split_text() {
             match.rule == kRatedSkillRule ||
             machine_power || is_credits_row(match) || match.rule == kSaveListCaptionRule ||
             match.rule == kNativeSettingsAnnouncementRule ||
-            match.rule == kColorPickerChoiceRule ||
+            match.rule == kColorPickerChoiceRule || match.rule == kArenaTreePlantRule ||
             match.rule == kCharacterHeaderRule ||
             match.rule == kCharacterRoomStatusRule ||
             match.rule == kCharacterOverviewRowRule ||
@@ -34285,87 +34303,6 @@ static bool layout_arena_creature_list(std::vector<Match> &matches,
     return true;
 }
 
-static bool layout_arena_tree_list(std::vector<Match> &matches,
-                                   int screen_columns,
-                                   int tile_pixel_y,
-                                   int font_pixels) {
-    // The Arena tree picker left-aligns every raw plant name in its graphical
-    // list, but the ordinary overlay centres each Chinese replacement inside
-    // the width of that particular English name. Long names consequently
-    // appear farther right than short names. Identify this modal from its
-    // Arena-only background controls and Create button while excluding the
-    // tabbed creature editor. The age field is deliberately not an anchor:
-    // it temporarily becomes empty while the user is editing it. Preserve
-    // each plant row's native left edge in one fixed-size text box.
-    const bool arena_hint = std::any_of(matches.begin(), matches.end(),
-        [](const Match &match) {
-            return !match.target.empty() &&
-                match.source == "Create a creature to begin.";
-        });
-    const bool conflict_level = std::any_of(matches.begin(), matches.end(),
-        [](const Match &match) {
-            return !match.target.empty() && match.source == "Conflict Level";
-        });
-    const bool morale_control = std::any_of(matches.begin(), matches.end(),
-        [](const Match &match) {
-            return !match.target.empty() &&
-                (match.source == "Morale/Fear Off" ||
-                 match.source == "Morale/Fear On");
-        });
-    const bool arena_context = arena_hint ||
-        (conflict_level && morale_control);
-    const bool create_button = std::any_of(matches.begin(), matches.end(),
-        [](const Match &match) {
-            return !match.target.empty() && match.source == "Create";
-        });
-    static constexpr std::array<std::string_view, 4> creature_tabs = {{
-        "Creature", "Skills", "Equipment", "Conditions",
-    }};
-    const int creature_tab_count = static_cast<int>(std::count_if(
-        creature_tabs.begin(), creature_tabs.end(),
-        [&matches](std::string_view tab) {
-            return std::any_of(matches.begin(), matches.end(),
-                [tab](const Match &match) {
-                    return !match.target.empty() && match.source == tab;
-                });
-        }));
-    if (!arena_context || !create_button || creature_tab_count >= 3)
-        return false;
-
-    auto is_plant_name = [](std::string_view source) {
-        if (source.empty()) return false;
-        bool has_letter = false;
-        for (const unsigned char ch : source) {
-            if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
-                has_letter = true;
-            } else if (ch == ' ' || ch == '-' || ch == '\'') {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return has_letter;
-    };
-
-    const int visual_height = std::min(tile_pixel_y, font_pixels + 1);
-    bool positioned = false;
-    for (Match &match : matches) {
-        if (!is_plant_name(match.source)) continue;
-        // These rows are typed plants, not generic material nouns. Keep
-        // homonyms such as ash in the existing plant-name namespace.
-        auto plant = translate_plant_name(match.source);
-        if (!plant || plant->empty()) continue;
-        match.target = std::move(*plant);
-        match.layout_x = std::clamp(
-            match.x, 0, std::max(0, screen_columns - 1));
-        match.layout_length = std::max(1, screen_columns - match.layout_x - 4);
-        match.layout_left = true;
-        match.layout_prepared = true;
-        positioned = true;
-    }
-    return positioned;
-}
-
 static bool layout_arena_environment_panel(std::vector<Match> &matches,
                                            int screen_columns,
                                            int tile_pixel_y,
@@ -39748,9 +39685,6 @@ void Overlay::layout_structured_panels(SDL_Renderer *renderer) {
     layout_arena_equipment_list(
         prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
         arena_font_pixels);
-    layout_arena_tree_list(
-        prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
-        arena_font_pixels);
     const bool arena_environment_panel = layout_arena_environment_panel(
         prepared_matches_, gps_->dimx, gps_->tile_pixel_y,
         arena_font_pixels);
@@ -43287,7 +43221,7 @@ std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *r
                 match.rule == kFortressLocationListRule ||
                 match.rule == kFortressScheduleRule ||
                 match.rule == kFortressSquadCreationRule ||
-                match.rule == kColorPickerChoiceRule ||
+                match.rule == kColorPickerChoiceRule || match.rule == kArenaTreePlantRule ||
                 match.rule == kFortressStockpileSettingRule ||
                 match.rule == kWorkshopTaskRowRule ||
                 match.rule == kWorkshopMaterialFieldRule ||
@@ -43341,7 +43275,7 @@ std::shared_ptr<NativeTooltipPage> Overlay::prepare_frame_layout(SDL_Renderer *r
             match.rule == kFortressLocationListRule ||
             match.rule == kFortressScheduleRule ||
             match.rule == kFortressSquadCreationRule ||
-            match.rule == kColorPickerChoiceRule ||
+            match.rule == kColorPickerChoiceRule || match.rule == kArenaTreePlantRule ||
             match.rule == kFortressStockpileSettingRule ||
             match.rule == kWorkshopTaskRowRule ||
             match.rule == kWorkshopMaterialFieldRule ||

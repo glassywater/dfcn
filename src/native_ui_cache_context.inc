@@ -332,6 +332,10 @@ public:
             address(caption.building); address(caption.job);
             rect(caption.box); text(caption.complete_source);
         });
+        optional(input.arena_tree_caption, [&](const auto &caption) {
+            address(caption.picker); address(caption.plant);
+            text(caption.name); value(caption.right);
+        });
         // Vector traversal preserves relative native draw order. Absolute
         // sequence/epoch numbers are scheduling, not semantic content.
     }
