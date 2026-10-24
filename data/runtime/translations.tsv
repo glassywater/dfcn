@@ -3191,6 +3191,7 @@ Announcement combat agreement-title-core [agreement-party-list,$name]: the agree
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the request by {s} that {s} make an offer of service to {s}	{s1}要求{s2}向{s3}表示愿意效力的请求	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive,threat-family-list]: has even killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，甚至杀害了{s1}，其中包括{s3}	l
 Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. What are a few pesky demons after all?	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。区区几个恼人的恶魔又算得了什么？	hP
+DFHack GUI Confirmation prompt: This closes MultiDwarf sessions before installing the update. Your fortress stays loaded. Install now, then restart DF?	安装更新前将关闭 MultiDwarf 会话，要塞仍保持载入。是否立即安装，随后重启《矮人要塞》？	l
 DFHack help: "--modify <amount>" Modify current base trait strength by given amount. Negative values need a "\\\\" before the negative symbol e.g. "\\\\-1"	"--modify <amount>" 将当前基础特质强度修改给定量。负值需要在负号前加一个"\\\\\\\\"，例如"\\\\\\\\-1"	l
 DFHack help: "cleanowned scattered X" Confiscate and dump rotten and dropped food, garbage on the floors, and any worn items with 'X' damage and above.	"cleanowned scattered X" 没收并倾倒腐烂和掉落的食物、地板上的垃圾以及任何损坏程度为"X"及以上的磨损物品。	l
 DFHack help: "devel/clear-script-env gui/quickfort" Clear the gui/quickfort global environment, resetting state that normally persists from run to run.	"devel/clear-script-env gui/quickfort" 清除 gui/quickfort 全局环境，重置通常在运行之间持续存在的状态。	l
@@ -6427,6 +6428,7 @@ Announcement combat spoken-sentence [speech-service-person]: I have no master, b
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be appearing {s}.	{s1}当时将正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be rewarding {s}.	{s1}当时将正在奖赏{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be flooding {s}.	{s1}当时将正在淹没{s2}。	l
+DFHack GUI Confirmation prompt: Close MultiDwarf sessions and remove it? Saves, settings and other mods will be preserved.	是否关闭 MultiDwarf 会话并将其卸载？存档、设置和其他模组将予以保留。	l
 DFHack GUI Quantum: {d} minecart available: an additional one will be ordered for you to assign to the quantum route later	可用矿车：{d} 辆。将额外订购一辆，完工后需手动分配到量子运输路线。	l
 DFHack help: "--group-by-date" Create a folder with name "year-month" inside the world folder. Implies "--group-by-world".	"--group-by-date" 在world文件夹中创建一个名为"year-month"的文件夹。意味着 "--group-by-world"。	l
 DFHack help: "burrow units clear Farmhouse Workshops" Remove all units from the burrows named "Farmhouse" and "Workshops".	"burrow units clear Farmhouse Workshops" 移除活动区中名为"农舍"和"车间"的所有单位。	l
@@ -71560,6 +71562,7 @@ DFHack GUI Squad assignment: axe skill	战斧技能	l
 DFHack GUI Teleport: Click name or hit	点击名称或按	l
 DFHack GUI Teleport: No selected units	未选择单位	l
 DFHack GUI Title: DFHack Control Panel	DFHack 控制面板	l
+DFHack GUI Title: Uninstall MultiDwarf	卸载 MultiDwarf	l
 DFHack help: "--command [ <command> ]"	"--command [ <command> ]"	l
 DFHack help: "--eraseClass <class id>"	"--eraseClass <class id>"	l
 DFHack help: "--excludekinds [a|bces]"	"--excludekinds [a|bces]"	l
@@ -88203,6 +88206,8 @@ DFHack GUI Rename type: WeaponStore	武器店	l
 DFHack GUI Sitemap: merchant animal	商队动物	l
 DFHack GUI Spectate activity: Guard	警戒	l
 DFHack GUI Spectate job: Store item	存放物品	l
+DFHack GUI Title: Multiplayer Setup	多人游戏设置	l
+DFHack GUI Title: Update MultiDwarf	更新 MultiDwarf	l
 DFHack GUI Viewer status: No output	无输出	l
 DFHack help: "--markedfor <action>"	"--markedfor <action>"	l
 DFHack help: "--no-stringification"	"--no-stringification"	l
@@ -112335,6 +112340,7 @@ began worshipping {n} in {p}.	在{p1}开始崇拜{n1}。	ht
 being unable to find a hammer	找不到锤子	wi
 being unoccupied for too long	太久无事可做	wi
 being willing to accept death	愿意接受死亡	h
+black-crested gibbon children	黑冠长臂猿幼崽	wi
 blood amaranth inflorescences	血苋花序	wi
 blundered terribly during {e}	在{e1}期间犯下了严重失误	ht
 blundered terribly within {p}	在{p1}犯下了严重失误	ht
@@ -114726,6 +114732,7 @@ began worshipping {n} at {p}	在{p1}开始崇拜{n1}	ht
 began worshipping {n} in {p}	在{p1}开始崇拜{n1}	ht
 being unafraid in the moment	当时毫无畏惧	h
 big fluffy heads and bellies	很大的毛茸茸的头和肚子	wi
+black-handed gibbon children	黑掌长臂猿幼崽	wi
 blood amaranth inflorescence	血苋花序	wi
 brawl with {a} in the wilds.	在荒野中，与{a1}的斗殴。	htEi
 buried {a} alive during {e}.	在{e1}期间活埋了{a1}。	ht
@@ -119357,6 +119364,7 @@ being attacked by the dead	被死者攻击	wi
 being beaten with a hammer	被锤子鞭打	wi
 being nauseated by the sun	被阳光弄得反胃	wi
 beyond enormous rodentness	超巨大型啮齿动物	wi
+black-crested gibbon child	黑冠长臂猿幼崽	wi
 bled to death in the wilds	在荒野中失血而死	h
 blundered terribly at {p}.	在{p1}犯下了严重失误。	ht
 blundered terribly in {p}.	在{p1}犯下了严重失误。	ht
@@ -121404,6 +121412,7 @@ being near to a in a cage	靠近笼中的生物	wi
 being near to a waterfall	靠近瀑布	wi
 being unnaturally ageless	由于以超自然方式长生不老	h
 being unnaturally ageless	以超自然方式永葆青春	wi
+black-handed gibbon child	黑掌长臂猿幼崽	wi
 bled to death during {e}.	在{e1}期间失血而死。	ht
 bled to death within {p}.	在{p1}失血而死。	ht
 blundered terribly at {p}	在{p1}犯下了严重失误	ht
@@ -186219,9 +186228,3 @@ of	所属	h
 .	。	hq
 :	：	h
 ;	；	h
-
-# Complete animal juvenile labels: retain child/children as human terms elsewhere.
-black-crested gibbon child	黑冠长臂猿幼崽	wi
-black-crested gibbon children	黑冠长臂猿幼崽	wi
-black-handed gibbon child	黑掌长臂猿幼崽	wi
-black-handed gibbon children	黑掌长臂猿幼崽	wi
