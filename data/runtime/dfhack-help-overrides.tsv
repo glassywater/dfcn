@@ -172,6 +172,13 @@ DFHack GUI Viewer action: Close	关闭	l
 DFHack GUI Viewer status: No output	无输出	l
 DFHack GUI Viewer status: Command finished successfully	命令执行成功	l
 
+# MultiDwarf Workshop scripts_modinstalled/multidwarf-setup.lua and internal/multidwarf/setup.lua.
+DFHack GUI Title: Multiplayer Setup	多人游戏设置	l
+DFHack GUI Title: Update MultiDwarf	更新 MultiDwarf	l
+DFHack GUI Title: Uninstall MultiDwarf	卸载 MultiDwarf	l
+DFHack GUI Confirmation prompt: This closes MultiDwarf sessions before installing the update. Your fortress stays loaded. Install now, then restart DF?	安装更新前将关闭 MultiDwarf 会话，要塞仍保持载入。是否立即安装，随后重启《矮人要塞》？	l
+DFHack GUI Confirmation prompt: Close MultiDwarf sessions and remove it? Saves, settings and other mods will be preserved.	是否关闭 MultiDwarf 会话并将其卸载？存档、设置和其他模组将予以保留。	l
+
 # DFHack control-panel: complete tab descriptions, controls and dialogs.
 DFHack help: DFHack Control Panel	DFHack 控制面板	l
 DFHack help: Automation	自动化	l

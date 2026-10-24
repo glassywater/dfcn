@@ -297,3 +297,12 @@ DFHack GUI Overlay control: Exporting |written contents|I|0|-1|0	正在导出 |�
 DFHack GUI Overlay control: Exporting |poetic forms|I|0|-1|0	正在导出 |诗歌形式	l
 DFHack GUI Overlay control: Exporting |musical forms|I|0|-1|0	正在导出 |音乐形式	l
 DFHack GUI Overlay control: Exporting |dance forms|I|0|-1|0	正在导出 |舞蹈形式	l
+
+# MultiDwarf Workshop scripts_modinstalled/multidwarf-setup.lua and internal/multidwarf/setup.lua.
+# TextButton has a red BannerPanel bracket followed by its HotkeyLabel. Anchor to the bracket,
+# translate only the label, and retain the native brackets, padding and enabled/disabled pen.
+DFHack GUI Overlay control: [|Multiplayer Setup|I|0|-1|0	[|多人游戏设置	l
+DFHack GUI Overlay control: [|Multiplayer Update|I|0|-1|0	[|多人游戏更新	l
+DFHack GUI Overlay control: [|Setup|I|0|-1|0	[|安装	l
+DFHack GUI Overlay control: [|Install update|I|0|-1|0	[|安装更新	l
+DFHack GUI Overlay control: [|Uninstall|I|0|-1|0	[|卸载	l
