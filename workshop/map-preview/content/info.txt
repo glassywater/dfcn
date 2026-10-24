@@ -5,4 +5,5 @@
 [EARLIEST_COMPATIBLE_DISPLAYED_VERSION:1.0]
 [AUTHOR:Byayoi Community]
 [NAME:DFCN Map Preview]
-[DESCRIPTION:Shows real elevation, waterways and terrain at the mouse position on the fortress embark map, in a native game window. Requires the DFCN translation core with map preview support for Windows x64. The saved Map Preview toggle appears in DFCN settings only while this independent Workshop mod is subscribed to and installed. Uses embark-scale data, not the generated fortress tile map. No world mod activation or DFHack required.]
+[DESCRIPTION:Shows real elevation, waterways and terrain at the mouse position on the fortress embark map, in a native game window. Requires DFCN v53.16-20261024.2 or later for Windows x64. The saved Map Preview toggle appears in DFCN settings only while this independent Workshop mod is subscribed to and installed. Uses embark-scale data, not the generated fortress tile map. No world mod activation or DFHack required.]
+[STEAM_FILE_ID:3825995422]
