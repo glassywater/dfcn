@@ -113335,6 +113335,7 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {t} was {s} by {a} during {e}	在{e1}期间，{t1}被{a1}{s1}	ht
 {t} was {s} by {a} within {p}	在{p1}，{t1}被{a1}{s1}	ht
    * Requires wild colony or	   *需要野生蜂巢或	w
+ finished goodsfurnitureammo	成品、家具、弹药	wi
 "How can people be so glum?"	“人为什么会这么不快乐？”	l
 "I do admire a clever trap."	“我欣赏巧妙的圈套。”	l
 "I feel angry all the time."	“我心里总有一股怒气。”	l
@@ -122317,6 +122318,7 @@ writing of a masterpiece.	书写杰作。	hEi
 {t} was {s} by {a} at {p}	在{p1}，{t1}被{a1}{s1}	ht
 {t} was {s} by {a} in {p}	在{p1}，{t1}被{a1}{s1}	ht
 {v} with a mixture of {j}	用{j1}混合染成{v1}	hIit
+ finished goodsfurniture	成品、家具	wi
 "Friendship is forever."	“友谊长存。”	l
 "I look splendid today."	“我今天真是光彩照人。”	l
 "I treasure my freedom."	“我珍视自由。”	l
@@ -133949,6 +133951,7 @@ yours or companion's	你或同伴留下的	h
 {v}-colored with {j}	用{j1}染成{v1}	hIit
    * Requires a jug	   *需要一个壶	w
  completely sublime	完全卓越的	wi
+ finished goodsammo	成品、弹药	wi
 "Strive for power."	“权力要靠争取。”	l
 "That isn't funny."	“这并不好笑。”	l
 "What do you want?"	“你想要什么？”	hP
@@ -155211,6 +155214,7 @@ younger sibling	弟妹	wi
 {s} paper quire	{s}纸稿纸	hvt
 {s}-bound codex	{s}书壳装订抄本	hvt
  Fortification	垛墙	wi
+ furnitureammo	家具、弹药	wi
  leather image	皮质图案	wi
 "Art is life."	“艺术就是生活。”	l
 ({s}, {d}-{d})	（{s}，{d}—{d}年）	ht
