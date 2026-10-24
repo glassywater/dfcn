@@ -1282,7 +1282,7 @@ Missing	失踪	wi
 # Keep both attached and separately drawn suffixes in the established glossary.
  (Tm)	(驯服)	wi
 (Tm)	(驯服)	wi
-cardinal	红衣凤头鸟	wi
+cardinal	红雀	wi
 centaur	半人马	wi
 wild boar	野猪	wi
 amphibian man	地底蛙人	wi
@@ -4381,7 +4381,7 @@ bell-shaped	钟形	wi
 asymmetrical	不对称	wi
 armor	盔甲	wi
 armors	盔甲	wi
-cardinal leather	红衣凤头鸟皮革	wi
+cardinal leather	红雀皮革	wi
 curved	弯曲	wi
 branching	分叉	wi
 pointed	尖头	wi
@@ -12896,3 +12896,9 @@ DFHack GUI Spectate activity: Play	游玩	l
 DFHack GUI Spectate activity: Encounter	遭遇	l
 DFHack GUI Spectate activity: StoreObject	存放物品	l
 DFHack GUI Spectate activity: Store Object	存放物品	l
+
+# Complete animal juvenile labels: retain child/children as human terms elsewhere.
+black-crested gibbon child	黑冠长臂猿幼崽	wi
+black-crested gibbon children	黑冠长臂猿幼崽	wi
+black-handed gibbon child	黑掌长臂猿幼崽	wi
+black-handed gibbon children	黑掌长臂猿幼崽	wi
