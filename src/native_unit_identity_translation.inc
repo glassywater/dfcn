@@ -303,18 +303,25 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                 case NativeUnitReferencePartKind::Authored:
                     // Animation labels can be generated corpse/body-part names.
                     // Only the captured animation field uses that grammar;
-                    // modes 4/5's direct first-name field remains authored text.
+                    // The other native branch is modes 4/5's direct first_name:
+                    // resolve generated numbered species, preserving all other
+                    // authored spellings through the existing fallback.
                     if (!unit.animated_name.empty() &&
                             lower(trim(part.source)) == lower(trim(unit.animated_name))) {
                         const auto target = translate_native_animation_label(part.source);
                         value = target ? *target : native_text_to_utf8(part.source);
-                    } else value = native_text_to_utf8(part.source);
+                    } else {
+                        const auto numbered = translate_numbered_creature_name(part.source);
+                        value = numbered ? *numbered : native_text_to_utf8(part.source);
+                    }
                     break;
                 case NativeUnitReferencePartKind::GivenName:
                     // The known companion branch deliberately renders only the
                     // selected identity's first_name. Never add surname WORDs or
                     // a nickname which DF did not reveal on this branch.
-                    if (part.name.language < 0 || contains_cjk_utf8(part.source))
+                    if (const auto numbered = translate_numbered_creature_name(part.source))
+                        value = *numbered;
+                    else if (part.name.language < 0 || contains_cjk_utf8(part.source))
                         value = native_text_to_utf8(part.source);
                     else {
                         value = config_.native_language_original
@@ -397,7 +404,11 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                     return *target;
                 return native_text_to_utf8(unit.animated_name);
             }
-            if (unit.native_role_authored) return native_text_to_utf8(unit.native_role);
+            if (unit.native_role_authored) {
+                // In arena modes the role formatter returns first_name itself.
+                const auto numbered = translate_numbered_creature_name(unit.native_role);
+                return numbered ? *numbered : native_text_to_utf8(unit.native_role);
+            }
             if (!unit.use_custom || unit.custom_profession.empty()) {
                 // This is the game's actual RAW/occupation formatter result. Its
                 // source type is known even if it happens to equal a custom name.
@@ -494,7 +505,8 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
             if (nickname && (unit.name.nickname_mode == 0 || unit.name.nickname_mode == 2))
                 result = "“" + nickname_text + "”";
             else {
-                result = phonetic_word(unit.name.first_name);
+                const auto numbered = translate_numbered_creature_name(unit.name.first_name);
+                result = numbered ? *numbered : phonetic_word(unit.name.first_name);
                 if (nickname) result += "“" + nickname_text + "”";
             }
             if (nickname && unit.name.nickname_mode == 2) return result;
@@ -551,14 +563,19 @@ std::optional<std::string> Overlay::translate_native_unit_identity(
                     value = translate_history_name(captured, true);
                 }
             }
-            // A language-less name without WORD slots is literal authored data.
+            // Numbered creature first names are generated labels even without
+            // a language or WORD slots; other literal names keep their spelling.
             else if (unit.name.language < 0 && unit.name.nickname.empty() &&
                     std::all_of(unit.name.words.begin(), unit.name.words.end(),
-                        [](const auto &word) { return word.id.empty(); }))
-                value = native_text_to_utf8(unit.name.first_name);
-            else if (unit.name.language < 0)
+                        [](const auto &word) { return word.id.empty(); })) {
+                value = translate_numbered_creature_name(unit.name.first_name);
+                if (!value) value = native_text_to_utf8(unit.name.first_name);
+            } else if (unit.name.language < 0) {
                 value = translate_english_character_name(unit.native_name);
-            else value = phonetic_name();
+                if (!translation_complete_with_native_nicknames(value, unit.native_name) &&
+                        translate_numbered_creature_name(unit.name.first_name))
+                    value = translate_history_name(unit.name, true);
+            } else value = phonetic_name();
             std::string result = value && !value->empty() ? *value : native_text_to_utf8(unit.native_name);
             if (unit.name_quoted) result = "“" + result + "”";
             return result;

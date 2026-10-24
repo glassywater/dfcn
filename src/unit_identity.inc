@@ -265,6 +265,7 @@ std::optional<std::string> Overlay::translate_unit_identity(
     }
     const auto personal_name = [&](std::string_view value)
             -> std::optional<std::string> {
+        if (auto numbered = translate_numbered_creature_name(value)) return numbered;
         if (typed && contains_cjk_utf8(value) && value.find('`') == std::string_view::npos)
             return native_text_to_utf8(value);
         if (value.find('`') != std::string_view::npos)

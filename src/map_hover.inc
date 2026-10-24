@@ -797,24 +797,13 @@ std::optional<std::string> Overlay::translate_arena_numbered_creature(
         std::string_view source) const {
     if (!config_.compositional_rules) return std::nullopt;
     source = trim_view(source);
-    // Arena assigns a species/caste followed by its decimal instance number.
-    // Its name formatter can preserve that whole string as a language-less
-    // name. Share this grammar with the earlier formatter-owned draw pass.
-    // A dead unit's caption keeps the same numbered identity as an owner.
-    // Parse that identity before handing the complete body noun to the typed
-    // grammar; a personal-name parser cannot own "Alligator 8" and a generic
-    // word matcher would scatter "fifth left front toe" across the grid.
+    // Dead-unit captions share the numbered name grammar with headers and
+    // memories. Keep the complete body noun in its typed anatomy grammar.
     const size_t owner_at = source.find("'s ");
     const auto identity = source.substr(0, owner_at);
-    const size_t number_at = identity.rfind(' ');
-    if (number_at == std::string_view::npos || number_at == 0 ||
-            number_at + 1 == identity.size() ||
-            !std::all_of(identity.begin() + number_at + 1, identity.end(),
-                [](unsigned char ch) { return ch >= '0' && ch <= '9'; }) ||
-            !native_arena_map_screen()) return std::nullopt;
-    const auto species = translate_creature_descriptor(identity.substr(0, number_at), true);
-    if (!species) return std::nullopt;
-    const std::string unit = *species + std::string(identity.substr(number_at));
+    const auto name = translate_numbered_creature_name(identity);
+    if (!name) return std::nullopt;
+    const std::string &unit = *name;
     if (owner_at == std::string_view::npos) return unit;
 
     auto body_source = trim_view(source.substr(owner_at + 3));

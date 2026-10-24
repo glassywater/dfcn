@@ -4147,6 +4147,7 @@ private:
     std::optional<std::string> translate_english_character_name(
         std::string_view source, std::string_view native_given = {},
         std::string_view native_given_target = {}) const;
+    std::optional<std::string> translate_numbered_creature_name(std::string_view source) const;
     std::optional<std::vector<LegendsTextPiece>> translate_history_event(
         const NativeHistoryDocument &document, bool use_translation_cache = true) const;
     const WorldgenHistoryEventMemory *worldgen_cached_history_event(
@@ -10248,11 +10249,62 @@ std::string Overlay::transliterate_native_language_word(std::string_view origina
     return transliterate_native_history_name(original);
 }
 
+// A formatter may use this cheap boundary check to defer a possible numbered
+// first_name instead of publishing it as authored text. Species recognition
+// remains dictionary work on the identity worker, never on the game thread.
+static std::optional<size_t> numbered_creature_given_name_end(std::string_view source) {
+    const size_t number_at = source.find_first_of("0123456789");
+    if (number_at == std::string_view::npos || number_at == 0 ||
+            source[number_at - 1] != ' ') return std::nullopt;
+    const size_t number_end = source.find_first_not_of("0123456789", number_at);
+    if (number_end != std::string_view::npos && source[number_end] != ' ')
+        return std::nullopt;
+    return number_end == std::string_view::npos ? source.size() : number_end;
+}
+
+std::optional<std::string> Overlay::translate_numbered_creature_name(
+        std::string_view raw) const {
+    if (!config_.compositional_rules) return std::nullopt;
+    const auto source = trim_view(raw);
+    // Arena first_name is a complete species/caste plus a decimal instance
+    // number. It remains that same given name in headers, memories and
+    // material owners, and can acquire ordinary generated surname/title slots.
+    const auto boundary = numbered_creature_given_name_end(source);
+    if (!boundary) return std::nullopt;
+    const size_t number_at = source.find_first_of("0123456789");
+    const auto species = translate_creature_descriptor(
+        trim_view(source.substr(0, number_at)), true);
+    if (!species) return std::nullopt;
+    const size_t given_end = *boundary;
+    const std::string target = *species + " " +
+        std::string(source.substr(number_at, given_end - number_at));
+    if (given_end == source.size()) return target;
+    const std::string given = native_text_to_utf8(source.substr(0, given_end));
+    const std::string display = native_text_to_utf8(source);
+    // Supply only the complete numbered given field as evidence. In
+    // particular, the species alone must not consume the first-name slot
+    // and leave the number to be mistaken for a surname.
+    auto translated = english_character_names_.translate(display,
+        [&](std::string_view value) -> std::optional<std::string> {
+            return value == given ? std::optional<std::string>(target) : std::nullopt;
+        },
+        [&](std::string_view nickname) {
+            auto value = exact_literal_translation("Unit nickname: " + std::string(nickname));
+            if (!value)
+                if (const auto native = utf8_to_cp437(nickname))
+                    value = exact_literal_translation("Unit nickname: " + *native);
+            return value ? *value : native_text_to_utf8(nickname);
+        }, given);
+    return translation_complete_with_native_nicknames(translated, source)
+        ? translated : std::nullopt;
+}
+
 std::optional<std::string> Overlay::translate_english_character_name(
         std::string_view raw, std::string_view native_given,
         std::string_view native_given_target) const {
     const std::string source(trim_view(raw));
     if (source.empty()) return std::nullopt;
+    if (auto numbered = translate_numbered_creature_name(source)) return numbered;
     // A native language_name first_name or a RAW-backed actor field proves
     // a given name even when UTTERANCES generated it without T_WORD roots.
     // Keep that proof out of the ordinary English/name-spelling cache.
