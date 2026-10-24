@@ -103,6 +103,7 @@ void Overlay::render_native_map_hover_layer(SDL_Renderer *renderer,
         const std::string complete = trim(draw.complete_source.empty()
             ? draw.source : draw.complete_source);
         if (complete.empty()) continue;
+        const bool direct_utf8 = contains_cjk_utf8(complete);
         std::string key = std::to_string(static_cast<int>(draw.map_hover.kind)) + ':' +
             std::to_string(static_cast<int>(draw.map_hover.fragment));
         for (const auto value : draw.map_hover.data) key += ':' + std::to_string(value);
@@ -133,12 +134,16 @@ void Overlay::render_native_map_hover_layer(SDL_Renderer *renderer,
                 target = source.translate_map_hover_phrase(complete,
                     draw.map_hover, draw.unit_identity_target);
             }
+            // Authored CJK names may have no dictionary translation. Their
+            // UTF-8 bytes still need font rendering on this private grid.
+            if (!target && direct_utf8) target = native_text_to_utf8(complete);
             cached = translations.emplace(std::move(key), std::move(target)).first;
         }
         const auto &target = cached->second;
         const bool pending = draw.map_hover.kind == NativeMapHoverKind::Unit &&
             draw.unit_identity_target && draw.unit_identity_target->empty();
-        if (!pending && (!target || target->empty() || *target == native_text_to_utf8(complete) ||
+        if (!pending && (!target || target->empty() ||
+                (!direct_utf8 && *target == native_text_to_utf8(complete)) ||
                 target->find("[C:") != std::string::npos ||
                 target->find_first_of("\r\n") != std::string::npos)) continue;
 
