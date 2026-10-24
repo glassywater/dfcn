@@ -3508,9 +3508,9 @@ Show cliffs/grade	显示峭壁/坡度
 # Native map buttons draw the verb and terrain label as separate fields.
 cliffs/grade	峭壁/坡度	wi
 {d} x {d}	{d} × {d}	wt
-Cannot embark entirely on water or mountains.	出发区域不能完全位于水域或山脉之中。
-Cannot embark on another site.	不能在已有地点上出发。	l
-Must embark on map.	必须在地图上选择出发区域。	l
+Cannot embark entirely on water or mountains.	启程区域不能完全位于水域或山脉之中。
+Cannot embark on another site.	不能在已有地点上启程。	l
+Must embark on map.	必须在地图上选择启程区域。	l
 Abort	中止
 You have selected an area with salt water.	你选择的区域含有咸水。	l
 It might be very difficult to survive here.	在这里生存可能会非常困难。	l
@@ -3660,7 +3660,7 @@ Leave editor and discard data	退出编辑器并放弃修改	w
 Keep working	继续编辑	w
 Problems	问题
 Save Profile	保存配置
-Embark!	出发！
+Embark!	启程！
 Points Left: {d}	剩余点数：{d}	wt
 # Fortress embark confirmation: counts vary with the current preparation.
 {d} points remain!	还有 {d} 点未使用！	wt

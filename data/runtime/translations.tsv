@@ -24885,7 +24885,7 @@ Book title phrase: Suddenly The Wise Will Tell In The Beginning	起初，突然�
 Book title phrase: Surely The Future Foretells In The Beginning	起初，未来必定预言	hi
 Book title phrase: Surely The Future Will Tell In The Beginning	起初，未来必定会揭晓	hi
 Character group role: Greatly respected for protecting the weak	因保护弱者而备受尊敬	h
-Click "Embark" to place your fortress. Right click to zoom out.	点击“出发”确定要塞位置。右键点击缩小地图。	hP
+Click "Embark" to place your fortress. Right click to zoom out.	点击“启程”确定要塞位置。右键点击缩小地图。	hP
 Conversation prompt: Choose a musical form for the composition.	为这次创作选择一种音乐形式。	l
 Conversation prompt: What will you say about tribute agreement?	关于进贡协议，你想说些什么？	l
 DFHack GUI Control tool: gui/settings-manager load-work-details	载入工作分工（gui/settings-manager load-work-details）	l
@@ -39468,7 +39468,7 @@ Book title phrase: Then Time Will Tell In The End	最终，随后，时间会揭
 Bring up {e}'s acceptance of {e}'s offer of peace	谈起{e1}接受{e2}的和平提议这件事	hPt
 Character group role: Greatly feared as a villain	令人十分畏惧的恶棍	h
 Character group role: Noted protector of the weak	著名的庇护者	h
-Click on the map to embark! Right click to abort.	点击地图出发！右键点击取消。	hP
+Click on the map to embark! Right click to abort.	点击地图启程！右键点击取消。	hP
 Copyright (C) {d}-{d} by Tarn Adams, Bay 12 Games	版权所有 (C) {d}-{d} Tarn Adams，Bay 12 Games	wtl
 Creating Elathu Inala, \\"The Domain of Portents\\"	创建埃拉苏·伊纳拉,"预兆之域\\"	w
 DFHack GUI Control tool: hotkeys.newadventuremenu	新建冒险快捷菜单（hotkeys.newadventuremenu）	l
@@ -46035,7 +46035,7 @@ Book title phrase: Then Time Mourns Afterward	此后，随后，时间哀悼	hi
 Book title phrase: Then Time Weeps In The End	最终，随后，时间哭泣	hi
 Book title subject: the Straight-Beam Balance	直梁天平	hi
 Bring up {p}'s placement of {e} to {p} in {e}	谈起{p1}在{e2}将作品{e1}交由{p2}保管这件事	hPt
-Cannot embark entirely on water or mountains.	出发区域不能完全位于水域或山脉之中。
+Cannot embark entirely on water or mountains.	启程区域不能完全位于水域或山脉之中。
 Character group role: Legendary enemy fighter	传奇敌对斗士	h
 Character group role: Legendary loyal soldier	传奇的忠诚军人	h
 Conversation keyword: crime of blood-drinking	吸血罪	l
@@ -108633,7 +108633,7 @@ Bring up {p}'s crime of murder	谈起{p1}犯下谋杀罪这件事	hPt
 Bring up {p}'s presence in {e}	谈起{p1}出现在{e1}这件事	hPt
 Brook: Dullstops the Rosy Evil	溪流:沉闷停止玫瑰邪恶	w
 Can I help you with something?	有什么可以帮你的吗？	hPD
-Cannot embark on another site.	不能在已有地点上出发。	l
+Cannot embark on another site.	不能在已有地点上启程。	l
 Carve wooden helve from branch	用树枝雕刻木制斧柄	hP
 Certainly considered a brawler	被肯定地看做是一名斗士	w
 Chair rejected (not enclosed.)	椅子未被选用（房间未封闭）	hP
@@ -134304,7 +134304,7 @@ Move selector right	向右移动选择器	w
 Move view/cursor up	向上移动视野/光标	w
 Musical Competition	音乐比赛	hEi
 Musical Performance	音乐表演	hEi
-Must embark on map.	必须在地图上选择出发区域。	l
+Must embark on map.	必须在地图上选择启程区域。	l
 Name pet (new menu)	为宠物命名（新菜单）	hP
 Name this building.	为此建筑命名。	hj
 Native Legends coup	一次政变	h
@@ -180179,7 +180179,7 @@ Dwarves	矮人	w
 D\x8Cshmab	底斯玛	wi
 Eat {s}	吃{s1}	hPt
 Elation	狂喜	w
-Embark!	出发！
+Embark!	启程！
 Embrace	拥抱	w
 Empathy	同理心	wi
 Enabled	已启用	w
