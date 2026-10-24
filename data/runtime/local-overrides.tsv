@@ -1275,6 +1275,8 @@ a swarm of {s}	一大群{s}	wtix
 Wild Animal	野生动物	wi
 Wild Animal (Small)	小型野生动物	wi
 Tame (Small)	已驯服（小型）	wi
+# Creature-list tab paired with Dead/Missing.
+Living	存活	w
 # Dead/Missing row states must not fall through to native-name transliteration.
 Deceased	已故	wi
 Missing	失踪	wi
