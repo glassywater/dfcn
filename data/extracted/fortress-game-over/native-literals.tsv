@@ -1,0 +1,745 @@
+edition	function	instruction_rva	literal_rva	source
+steam	menu-render	0x1de050	0x1604558	Saving game
+steam	menu-render	0x1de0d2	0x1604568	Initializing...
+steam	menu-render	0x1de103	0x1604578	Checking directory structure...
+steam	menu-render	0x1de134	0x1604598	Preliminary cleaning...
+steam	menu-render	0x1de165	0x16045b0	Offloading units... 
+steam	menu-render	0x1de217	0x16045c8	Offloading art...
+steam	menu-render	0x1de248	0x16045e0	Opening file...
+steam	menu-render	0x1de279	0x16045f0	Characterizing raw data...
+steam	menu-render	0x1de2aa	0x1604610	Allocating space...
+steam	menu-render	0x1de2db	0x1604978	Saving items...
+steam	menu-render	0x1de30c	0x1604988	Saving units...
+steam	menu-render	0x1de33d	0x1604998	Saving jobs...
+steam	menu-render	0x1de36e	0x16049a8	Saving schedules...
+steam	menu-render	0x1de39f	0x16049c0	Saving projectiles...
+steam	menu-render	0x1de3d0	0x16049d8	Saving buildings...
+steam	menu-render	0x1de401	0x16049f0	Saving machines...
+steam	menu-render	0x1de432	0x1604a08	Saving flow guides...
+steam	menu-render	0x1de463	0x1604a20	Saving effects...
+steam	menu-render	0x1de494	0x1604a38	Saving entities...
+steam	menu-render	0x1de4c5	0x1604a50	Saving local animal populations...
+steam	menu-render	0x1de4f6	0x1604a78	Saving events...
+steam	menu-render	0x1de527	0x1604a90	Saving mandates...
+steam	menu-render	0x1de558	0x1604aa8	Saving work quotas...
+steam	menu-render	0x1de589	0x1604ac0	Saving world events...
+steam	menu-render	0x1de5ba	0x1604ad8	Saving coin information...
+steam	menu-render	0x1de5eb	0x16047d8	Saving squads...
+steam	menu-render	0x1de61c	0x16047f0	Saving formations...
+steam	menu-render	0x1de64d	0x1604808	Saving activities...
+steam	menu-render	0x1de67e	0x1604820	Saving interactions...
+steam	menu-render	0x1de6af	0x1604838	Saving written content...
+steam	menu-render	0x1de6e0	0x1604858	Saving identities...
+steam	menu-render	0x1de711	0x1604870	Saving incidents...
+steam	menu-render	0x1de742	0x1604888	Saving crimes...
+steam	menu-render	0x1de773	0x16048a0	Saving vehicles...
+steam	menu-render	0x1de7a4	0x16048b8	Saving armies...
+steam	menu-render	0x1de7d5	0x16048d0	Saving army controllers...
+steam	menu-render	0x1de806	0x16048f0	Saving tracking information...
+steam	menu-render	0x1de837	0x1604910	Saving cultural identities...
+steam	menu-render	0x1de868	0x1604930	Saving agreement...
+steam	menu-render	0x1de899	0x1604948	Saving art forms...
+steam	menu-render	0x1de8ca	0x1604960	Saving occupations...
+steam	menu-render	0x1de8fb	0x1604c38	Saving belief systems...
+steam	menu-render	0x1de92c	0x1604c58	Saving image sets...
+steam	menu-render	0x1de95d	0x1604c70	Saving divination sets...
+steam	menu-render	0x1de98e	0x1604c90	Saving announcements...
+steam	menu-render	0x1de9bf	0x1604ca8	Saving fortress information...
+steam	menu-render	0x1de9f0	0x1604cc8	Saving world information...
+steam	menu-render	0x1dea21	0x1604ce8	Saving artifacts...
+steam	menu-render	0x1dea52	0x1604d00	Saving active historical figures...
+steam	menu-render	0x1dea83	0x1604d28	Saving adventure data...
+steam	menu-render	0x1deab4	0x1604d48	Saving general information...
+steam	menu-render	0x1deae5	0x1604d68	Closing file...
+steam	menu-render	0x1deb16	0x1604d78	Finishing...
+steam	menu-render	0x1df113	0x1604d88	Interactive tutorial
+steam	menu-render	0x1df326	0x1604db0	Mining
+steam	menu-render	0x1df32f	0x1604db8	Stockpiles
+steam	menu-render	0x1df338	0x1604af8	Woodcutting
+steam	menu-render	0x1df341	0x1602c20	Building
+steam	menu-render	0x1df34a	0x1604b08	Information sheets
+steam	menu-render	0x1df353	0x1604b1c	Alerts
+steam	menu-render	0x1df35c	0x1604b28	Preparing for the caravan
+steam	menu-render	0x1df365	0x1604da0	Camera controls
+steam	menu-render	0x1df36e	0x1604b48	Movement
+steam	menu-render	0x1df377	0x1604b58	Menu overview
+steam	menu-render	0x1df3d6	0x1604b68	[Completed]
+steam	menu-render	0x1df4c8	0x1604b78	Information and guides
+steam	menu-render	0x1df6d8	0x1604b90	Survival
+steam	menu-render	0x1df6ed	0x1604ba0	Planting
+steam	menu-render	0x1df6ff	0x1604bb0	Other food sources
+steam	menu-render	0x1df714	0x1604bc8	Bins, bags, and barrels
+steam	menu-render	0x1df726	0x15f70a8	Trade
+steam	menu-render	0x1df741	0x1604be0	Offices and administrative work
+steam	menu-render	0x1df75c	0x1604c00	Ore and smelting
+steam	menu-render	0x1df777	0x1604c18	Traps and levers
+steam	menu-render	0x1df792	0x1604c2c	Wells
+steam	menu-render	0x1df7ad	0x1604f28	Handling light aquifers
+steam	menu-render	0x1df7c8	0x1604f40	Clothing
+steam	menu-render	0x1df7e3	0x1604f50	Meeting areas and locations
+steam	menu-render	0x1df7fe	0x15f7118	Military
+steam	menu-render	0x1df819	0x1604f70	Ramps and channels
+steam	menu-render	0x1df834	0x1604f88	Refuse and dumping
+steam	menu-render	0x1df84f	0x1604fa0	Dig deeper
+steam	menu-render	0x1df86a	0x1604fb0	Happiness and stress
+steam	menu-render	0x1df885	0x1604fc8	Goals
+steam	menu-render	0x1df8a0	0x1604fd0	Popup: Zones
+steam	menu-render	0x1df8bb	0x1604fe0	Popup: Burrows
+steam	menu-render	0x1df8d6	0x1604ff0	Popup: Hauling
+steam	menu-render	0x1df8f1	0x1605000	Popup: Stocks
+steam	menu-render	0x1df90c	0x1605010	Popup: Work details
+steam	menu-render	0x1df927	0x1605028	Popup: Nobles
+steam	menu-render	0x1df942	0x1605038	Popup: Justice
+steam	menu-render	0x1df95d	0x1605048	Popup: Squads
+steam	menu-render	0x1df978	0x1604dc8	Popup: The world
+steam	menu-render	0x1df993	0x1604de0	Popup: Work orders
+steam	menu-render	0x1df9ae	0x1604df8	Popup: Companions
+steam	menu-render	0x1df9c9	0x1604e10	Popup: Adventurer's log
+steam	menu-render	0x1df9e4	0x1604e28	Popup: Inventory
+steam	menu-render	0x1df9f9	0x1604e40	Popup: Movement options
+steam	menu-render	0x1dfa0e	0x1604e58	Popup: Hold and climb
+steam	menu-render	0x1dfa1a	0x1604e70	Popup: Talk
+steam	menu-render	0x1dfa26	0x1604e80	Popup: Perform
+steam	menu-render	0x1dfa32	0x1604e90	Popup: Butcher and craft
+steam	menu-render	0x1dfa3b	0x1604eb0	Popup: Abilities
+steam	menu-render	0x1dfa44	0x1604ec8	Popup: Strike
+steam	menu-render	0x1dfa4d	0x1604ed8	Popup: Wrestle
+steam	menu-render	0x1dfa56	0x1604ee8	Popup: Shoot and throw
+steam	menu-render	0x1dfa5f	0x1604f00	Popup: Travel
+steam	menu-render	0x1dfa68	0x1604f10	Popup: Sleep and rest
+steam	menu-render	0x1dfa71	0x1604b90	Survival
+steam	menu-render	0x1dfa7a	0x15f7154	Combat
+steam	menu-render	0x1dfa83	0x1605220	The party and followers
+steam	menu-render	0x1dfa8c	0x1605238	Conversations
+steam	menu-render	0x1dfa95	0x1605248	Trading
+steam	menu-render	0x1dfa9e	0x1605250	Quests and reputation
+steam	menu-render	0x1dfaa7	0x1605268	Fortress mode
+steam	menu-render	0x1dfab0	0x1605278	Retirement
+steam	menu-render	0x1dfb0f	0x1605288	[Viewed]
+steam	menu-render	0x1dfd34	0x1605298	There is a folder with this name already.
+steam	menu-render	0x1dfd90	0x16052c8	Would you like to overwrite it?
+steam	menu-render	0x1dfe69	0x16052e8	Save
+steam	menu-render	0x1dffbd	0x15fe724	Cancel
+steam	menu-render	0x1e0134	0x16052f0	What would you like to name this timeline?
+steam	menu-render	0x1e0190	0x1605320	Saves starting here will be grouped on the
+steam	menu-render	0x1e01ec	0x1605350	title screen, with their own active save.
+steam	menu-render	0x1e0284	0x15ec82c	_
+steam	menu-render	0x1e0355	0x15fe724	Cancel
+steam	menu-render	0x1e04d4	0x1605380	What would you like to name this manual
+steam	menu-render	0x1e0530	0x16053a8	save?  It will never be overwritten,
+steam	menu-render	0x1e058c	0x16053d0	but you can delete it while loading.
+steam	menu-render	0x1e05da	0x1605058	current
+steam	menu-render	0x1e05ed	0x1605060	autosave 1
+steam	menu-render	0x1e0600	0x1605070	autosave 2
+steam	menu-render	0x1e0613	0x1605080	autosave 3
+steam	menu-render	0x1e0675	0x15ec82c	_
+steam	menu-render	0x1e0745	0x15fe724	Cancel
+steam	menu-render	0x1e08c4	0x1605090	Really retire?  The world will be saved but
+steam	menu-render	0x1e0920	0x16050c0	you will need to unretire the fort to play
+steam	menu-render	0x1e097c	0x16050f0	here again.
+steam	menu-render	0x1e0a55	0x16050fc	Retire
+steam	menu-render	0x1e0b25	0x15fe724	Cancel
+steam	menu-render	0x1e0ca4	0x1605090	Really retire?  The world will be saved but
+steam	menu-render	0x1e0d00	0x1605108	you will need to unretire or recruit
+steam	menu-render	0x1e0d5c	0x1605130	this character to play them again.
+steam	menu-render	0x1e0e35	0x16050fc	Retire
+steam	menu-render	0x1e0f05	0x15fe724	Cancel
+steam	menu-render	0x1e1094	0x16051c0	Really quit?  The fort will be saved but
+steam	menu-render	0x1e10f0	0x16051f0	you will need to reclaim the fort to play
+steam	menu-render	0x1e114c	0x16050f0	here again.
+steam	menu-render	0x1e1225	0x16055b0	Abandon
+steam	menu-render	0x1e12f5	0x15fe724	Cancel
+steam	menu-render	0x1e1474	0x16055b8	Really quit?  The character will live on
+steam	menu-render	0x1e14d0	0x16055e8	through their legend but will not be
+steam	menu-render	0x1e152c	0x1605610	available to play.
+steam	menu-render	0x1e1605	0x16055b0	Abandon
+steam	menu-render	0x1e16d5	0x15fe724	Cancel
+steam	menu-render	0x1e1bab	0x1605628	Save and return to title menu
+steam	menu-render	0x1e1bb7	0x1605648	Save and continue playing
+steam	menu-render	0x1e1bc3	0x1605668	Retire the fortress (for the time being)
+steam	menu-render	0x1e1bcf	0x1605698	Abandon the fortress to ruin
+steam	menu-render	0x1e1bdb	0x16056b8	Quit without saving
+steam	menu-render	0x1e1be7	0x16056d0	Succumb to the invasion
+steam	menu-render	0x1e1bf3	0x16056e8	Retire at this location (or rest a while)
+steam	menu-render	0x1e1d77	0x1605718	Give in to the Night
+steam	menu-render	0x1e1d83	0x1605730	Finish Game
+steam	menu-render	0x1e1db3	0x1605730	Finish Game
+steam	menu-render	0x1e1dcb	0x1605730	Finish Game
+steam	menu-render	0x1e1dd4	0x1605740	Give in to Starvation
+steam	menu-render	0x1e1e02	0x1605758	 (holding another's goods)
+steam	menu-render	0x1e1e17	0x1605778	Settings
+steam	menu-render	0x1e1e23	0x16053f8	Return to game
+steam	menu-render	0x1e1e2f	0x1605408	Save world and return to title menu
+steam	menu-render	0x1e1e38	0x1605430	Return to title menu
+steam	menu-render	0x1e1e41	0x1605448	Continue
+steam	menu-render	0x1e1e65	0x1605458	Save to this timeline
+steam	menu-render	0x1e1e73	0x1605470	Save to timeline folder: 
+steam	menu-render	0x1e1ea5	0x1605490	Save to new timeline
+steam	menu-render	0x1e1eae	0x16054a8	Save to new folder (same timeline)
+steam	menu-render	0x1e1f50	0x1605538	May interfere with existing saves.
+steam	menu-render	0x1e1fcd	0x1605508	Do this if you want to keep the old save.
+steam	menu-render	0x1e2047	0x16054d0	Recommended!
+steam	menu-render	0x1e20bd	0x16054e0	Multiple copies of the timeline found.
+steam	menu-render	0x1e22b6	0x1605560	Dwarf Fortress
+steam	menu-render	0x1e22c6	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e22db	0x1605588	Koganusan
+steam	menu-render	0x1e22eb	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2300	0x1605598	Expansive Cavern
+steam	menu-render	0x1e2310	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2325	0x16058a8	Death Spiral
+steam	menu-render	0x1e2335	0x16058b8	Dabu
+steam	menu-render	0x1e234a	0x16058c0	Hill Dwarf
+steam	menu-render	0x1e235a	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e236f	0x16058d0	Forgotten Beast
+steam	menu-render	0x1e237f	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2394	0x16058e0	Drink & Industry
+steam	menu-render	0x1e23a4	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e23b9	0x16058f8	Vile Force of Darkness
+steam	menu-render	0x1e23c9	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e23de	0x1605910	First Year
+steam	menu-render	0x1e23ee	0x16058b8	Dabu
+steam	menu-render	0x1e2403	0x1605920	Another Year
+steam	menu-render	0x1e2413	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2428	0x1605930	Strike the Earth!
+steam	menu-render	0x1e2438	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e244d	0x1605948	Strange Moods
+steam	menu-render	0x1e245d	0x16058b8	Dabu
+steam	menu-render	0x1e2472	0x1605958	Winter Entombs You
+steam	menu-render	0x1e2482	0x16058b8	Dabu
+steam	menu-render	0x1e2497	0x1605970	Craftsdwarfship
+steam	menu-render	0x1e24a7	0x1605980	Dabu & Agueda Macias
+steam	menu-render	0x1e24bc	0x1605998	Mountainhome
+steam	menu-render	0x1e24cc	0x1605980	Dabu & Agueda Macias
+steam	menu-render	0x1e24e1	0x16059a8	Classic DF Title Theme
+steam	menu-render	0x1e24f1	0x16059c0	Tarn Adams
+steam	menu-render	0x1e2506	0x1605788	Classic DF Main Theme
+steam	menu-render	0x1e2516	0x16059c0	Tarn Adams
+steam	menu-render	0x1e252b	0x16057a0	Strike It Again
+steam	menu-render	0x1e253b	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2550	0x16057b0	The Capital
+steam	menu-render	0x1e2560	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2575	0x16057c0	Bruising The Fat
+steam	menu-render	0x1e2585	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e259a	0x16057d8	Life of Adventure
+steam	menu-render	0x1e25aa	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e25bf	0x16057f0	Beyond The Gates
+steam	menu-render	0x1e25cf	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e25e4	0x1605808	Hamlet Memoirs
+steam	menu-render	0x1e25f4	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2609	0x1605818	Night Creature
+steam	menu-render	0x1e2619	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e262e	0x1605828	Into The Pits
+steam	menu-render	0x1e263e	0x1605838	Dabu & rcab
+steam	menu-render	0x1e2653	0x1605848	Sisters of War
+steam	menu-render	0x1e2663	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2678	0x1605858	Cannibal
+steam	menu-render	0x1e2688	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e269d	0x1605868	Pony Rider
+steam	menu-render	0x1e26ad	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e26c2	0x1605878	Two Coins
+steam	menu-render	0x1e26d2	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e26e7	0x1605888	Losing is Fun
+steam	menu-render	0x1e26f7	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e270c	0x1605898	Danger Room
+steam	menu-render	0x1e271c	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2731	0x1605a70	Nabidas
+steam	menu-render	0x1e2741	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2811	0x1605a78	Track playing: 
+steam	menu-render	0x1e283b	0x1605a88	Last track: 
+steam	menu-render	0x1e28b0	0x1605a98	 - 
+steam	menu-render	0x1e296c	0x1605aa0	The Tavern Part I
+steam	menu-render	0x1e297c	0x1605980	Dabu & Agueda Macias
+steam	menu-render	0x1e2988	0x1605ab8	The Tavern Part II
+steam	menu-render	0x1e2991	0x1605ad0	Toady One
+steam	menu-render	0x1e299a	0x1605ae0	Toady Two
+steam	menu-render	0x1e29a3	0x1605af0	Toady Three
+steam	menu-render	0x1e29ac	0x1605b00	Roldeth
+steam	menu-render	0x1e29b5	0x1605b08	Dolomite
+steam	menu-render	0x1e29be	0x1605b18	Suite Espagnole Part I
+steam	menu-render	0x1e29c7	0x1605b30	Suite Espagnole Part II
+steam	menu-render	0x1e29d0	0x1605b48	Suite Espagnole Part III
+steam	menu-render	0x1e29d9	0x1605b68	Toady Four
+steam	menu-render	0x1e29e2	0x1605b78	Obsidian
+steam	menu-render	0x1e29eb	0x16059d0	Toady Five
+steam	menu-render	0x1e29f4	0x16059e0	Toady Six
+steam	menu-render	0x1e29fd	0x16059f0	Haunted Lands
+steam	menu-render	0x1e2a06	0x1605a00	Cages & Chains
+steam	menu-render	0x1e2a16	0x16058b8	Dabu
+steam	menu-render	0x1e2a7c	0x1605a10	Interlude playing: 
+steam	menu-render	0x1e2aa6	0x1605a28	Last interlude: 
+steam	menu-render	0x1e2b1b	0x1605a98	 - 
+steam	menu-render	0x1e2c58	0x1605a3c	or
+steam	menu-render	0x1e2c77	0x1605a40	en
+steam	menu-render	0x1e2c91	0x1605a44	df9
+steam	menu-render	0x1e2cab	0x1605a48	df3
+steam	menu-render	0x1e2cc5	0x1605a4c	df15
+steam	menu-render	0x1e2cdf	0x1605a54	ww
+steam	menu-render	0x1e2cf9	0x1605a58	cg
+steam	menu-render	0x1e2d13	0x1605a5c	ff
+steam	menu-render	0x1e2d2d	0x1605a60	stia
+steam	menu-render	0x1e2d47	0x1605a68	rcab
+steam	menu-render	0x1e2d61	0x1605d68	ts
+steam	menu-render	0x1e2d7b	0x1605d6c	pr
+steam	menu-render	0x1e2d95	0x1605d70	SoW
+steam	menu-render	0x1e2daf	0x1605d74	dr
+steam	menu-render	0x1e2dc9	0x1605d78	nabidas
+steam	menu-render	0x1e2dfb	0x16057a0	Strike It Again
+steam	menu-render	0x1e2e07	0x16057b0	The Capital
+steam	menu-render	0x1e2e13	0x16057c0	Bruising The Fat
+steam	menu-render	0x1e2e1c	0x16057d8	Life of Adventure
+steam	menu-render	0x1e2e25	0x16057f0	Beyond The Gates
+steam	menu-render	0x1e2e2e	0x1605808	Hamlet Memoirs
+steam	menu-render	0x1e2e37	0x1605818	Night Creature
+steam	menu-render	0x1e2e40	0x1605828	Into The Pits
+steam	menu-render	0x1e2e50	0x1605838	Dabu & rcab
+steam	menu-render	0x1e2e59	0x1605848	Sisters of War
+steam	menu-render	0x1e2e62	0x1605858	Cannibal
+steam	menu-render	0x1e2e6b	0x1605868	Pony Rider
+steam	menu-render	0x1e2e74	0x1605878	Two Coins
+steam	menu-render	0x1e2e7d	0x1605888	Losing is Fun
+steam	menu-render	0x1e2e86	0x1605898	Danger Room
+steam	menu-render	0x1e2e8f	0x1605a70	Nabidas
+steam	menu-render	0x1e2e9f	0x1605570	Dabu & Simon Swerwer
+steam	menu-render	0x1e2fe5	0x1605d80	Combat music: 
+steam	menu-render	0x1e300b	0x1605a78	Track playing: 
+steam	menu-render	0x1e307c	0x1605a98	 - 
+steam	menu-render	0x1e3234	0x1605158	Really quit without saving?
+steam	menu-render	0x1e3290	0x1605178	All of your progress since the last
+steam	menu-render	0x1e32ec	0x16051a0	save will be lost.
+steam	menu-render	0x1e33c5	0x16051b4	Quit
+steam	menu-render	0x1e3495	0x15fe724	Cancel
+steam	menu-constructor	0x1e686c	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e6876	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e6881	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e688c	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e6897	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e68a2	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e68ad	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e68b8	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e68c3	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e68d3	0x1605eb0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+steam	menu-constructor	0x1e68ec	0x15fd258	[B]
+steam	menu-constructor	0x1e6902	0x1605f40	The guides here will suggest other possible avenues of play. 
+steam	menu-constructor	0x1e6918	0x15fd258	[B]
+steam	menu-constructor	0x1e692e	0x1605f80	And remember: [C:2:0:1]Losing is fun, and now it's personal![C:7:0:0]
+steam	menu-constructor	0x1e6ebb	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6ec5	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6ed0	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6edb	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6ee6	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6ef1	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6efc	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6f07	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6f14	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6f1d	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6f28	0x1605fd0	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+steam	menu-constructor	0x1e6f3c	0x15fd258	[B]
+steam	menu-constructor	0x1e6f52	0x1606050	More likely, your dwarves will starve, unless you read the first few guides here! 
+steam	menu-constructor	0x1e6f68	0x15fd258	[B]
+steam	menu-constructor	0x1e6f7e	0x1605b88	And remember: [C:2:0:1]Losing is fun![C:7:0:0]
+steam	menu-constructor	0x1e7655	0x1605bb8	Dwarf Fortress Adventure
+steam	menu-constructor	0x1e7a2d	0x1605560	Dwarf Fortress
+steam	menu-constructor	0x1e7dd2	0x1605c40	Abandoned
+steam	menu-constructor	0x1e7dde	0x1605c50	Your settlement has been abandoned.
+steam	menu-constructor	0x1e7e12	0x1605bd8	Retired
+steam	menu-constructor	0x1e7e46	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7e50	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7e5b	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7e66	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7e71	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7e7c	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7e89	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7e92	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7e9d	0x1605be0	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+steam	menu-constructor	0x1e7ed1	0x1605c78	Conquered
+steam	menu-constructor	0x1e7f05	0x1605c88	Your strength has been broken.
+steam	menu-constructor	0x1e7f0f	0x1605c88	Your strength has been broken.
+steam	menu-constructor	0x1e7f1c	0x1605c88	Your strength has been broken.
+steam	menu-constructor	0x1e7f25	0x1605c88	Your strength has been broken.
+steam	menu-constructor	0x1e7fc3	0x1605ca8	Withered
+steam	menu-constructor	0x1e7ff5	0x1605cb8	Your settlement has crumbled to its end.
+steam	menu-constructor	0x1e7fff	0x1605cb8	Your settlement has crumbled to its end.
+steam	menu-constructor	0x1e800a	0x1605cb8	Your settlement has crumbled to its end.
+steam	menu-constructor	0x1e80cc	0x1605d08	Dead
+steam	menu-constructor	0x1e810a	0x1605d10	Your adventure has come to an end.
+steam	menu-constructor	0x1e8114	0x1605d10	Your adventure has come to an end.
+steam	menu-constructor	0x1e811f	0x1605d10	Your adventure has come to an end.
+steam	menu-constructor	0x1e8286	0x15e873c	 
+steam	menu-constructor	0x1e84c5	0x1605bd8	Retired
+steam	menu-constructor	0x1e84f9	0x1605ce8	You settle in this location...
+steam	menu-constructor	0x1e8503	0x1605ce8	You settle in this location...
+steam	menu-constructor	0x1e8510	0x1605ce8	You settle in this location...
+steam	menu-constructor	0x1e8519	0x1605ce8	You settle in this location...
+steam	paragraph-lines-wrap	0x8e7567	0x15e873c	 
+classic	menu-render	0x1ddfe0	0x15ff528	Saving game
+classic	menu-render	0x1de062	0x15ff538	Initializing...
+classic	menu-render	0x1de093	0x15ff548	Checking directory structure...
+classic	menu-render	0x1de0c4	0x15ff568	Preliminary cleaning...
+classic	menu-render	0x1de0f5	0x15ff580	Offloading units... 
+classic	menu-render	0x1de1a7	0x15ff598	Offloading art...
+classic	menu-render	0x1de1d8	0x15ff5b0	Opening file...
+classic	menu-render	0x1de209	0x15ff5c0	Characterizing raw data...
+classic	menu-render	0x1de23a	0x15ff5e0	Allocating space...
+classic	menu-render	0x1de26b	0x15ff5f8	Saving items...
+classic	menu-render	0x1de29c	0x15ff960	Saving units...
+classic	menu-render	0x1de2cd	0x15ff970	Saving jobs...
+classic	menu-render	0x1de2fe	0x15ff980	Saving schedules...
+classic	menu-render	0x1de32f	0x15ff998	Saving projectiles...
+classic	menu-render	0x1de360	0x15ff9b0	Saving buildings...
+classic	menu-render	0x1de391	0x15ff9c8	Saving machines...
+classic	menu-render	0x1de3c2	0x15ff9e0	Saving flow guides...
+classic	menu-render	0x1de3f3	0x15ff9f8	Saving effects...
+classic	menu-render	0x1de424	0x15ffa10	Saving entities...
+classic	menu-render	0x1de455	0x15ffa28	Saving local animal populations...
+classic	menu-render	0x1de486	0x15ffa50	Saving events...
+classic	menu-render	0x1de4b7	0x15ffa68	Saving mandates...
+classic	menu-render	0x1de4e8	0x15ffa80	Saving work quotas...
+classic	menu-render	0x1de519	0x15ffa98	Saving world events...
+classic	menu-render	0x1de54a	0x15ffab0	Saving coin information...
+classic	menu-render	0x1de57b	0x15ffad0	Saving squads...
+classic	menu-render	0x1de5ac	0x15ff7b8	Saving formations...
+classic	menu-render	0x1de5dd	0x15ff7d0	Saving activities...
+classic	menu-render	0x1de60e	0x15ff7e8	Saving interactions...
+classic	menu-render	0x1de63f	0x15ff800	Saving written content...
+classic	menu-render	0x1de670	0x15ff820	Saving identities...
+classic	menu-render	0x1de6a1	0x15ff838	Saving incidents...
+classic	menu-render	0x1de6d2	0x15ff850	Saving crimes...
+classic	menu-render	0x1de703	0x15ff868	Saving vehicles...
+classic	menu-render	0x1de734	0x15ff880	Saving armies...
+classic	menu-render	0x1de765	0x15ff898	Saving army controllers...
+classic	menu-render	0x1de796	0x15ff8b8	Saving tracking information...
+classic	menu-render	0x1de7c7	0x15ff8d8	Saving cultural identities...
+classic	menu-render	0x1de7f8	0x15ff8f8	Saving agreement...
+classic	menu-render	0x1de829	0x15ff910	Saving art forms...
+classic	menu-render	0x1de85a	0x15ff928	Saving occupations...
+classic	menu-render	0x1de88b	0x15ff940	Saving belief systems...
+classic	menu-render	0x1de8bc	0x15ffc30	Saving image sets...
+classic	menu-render	0x1de8ed	0x15ffc48	Saving divination sets...
+classic	menu-render	0x1de91e	0x15ffc68	Saving announcements...
+classic	menu-render	0x1de94f	0x15ffc80	Saving fortress information...
+classic	menu-render	0x1de980	0x15ffca0	Saving world information...
+classic	menu-render	0x1de9b1	0x15ffcc0	Saving artifacts...
+classic	menu-render	0x1de9e2	0x15ffcd8	Saving active historical figures...
+classic	menu-render	0x1dea13	0x15ffd00	Saving adventure data...
+classic	menu-render	0x1dea44	0x15ffd20	Saving general information...
+classic	menu-render	0x1dea75	0x15ffd40	Closing file...
+classic	menu-render	0x1deaa6	0x15ffd50	Finishing...
+classic	menu-render	0x1df0a3	0x15ffd60	Interactive tutorial
+classic	menu-render	0x1df2b6	0x15ffd88	Mining
+classic	menu-render	0x1df2bf	0x15ffd90	Stockpiles
+classic	menu-render	0x1df2c8	0x15ffda0	Woodcutting
+classic	menu-render	0x1df2d1	0x15fdcb8	Building
+classic	menu-render	0x1df2da	0x15ffae8	Information sheets
+classic	menu-render	0x1df2e3	0x15ffafc	Alerts
+classic	menu-render	0x1df2ec	0x15ffb08	Preparing for the caravan
+classic	menu-render	0x1df2f5	0x15ffd78	Camera controls
+classic	menu-render	0x1df2fe	0x15ffb28	Movement
+classic	menu-render	0x1df307	0x15ffb38	Menu overview
+classic	menu-render	0x1df366	0x15ffb48	[Completed]
+classic	menu-render	0x1df458	0x15ffb58	Information and guides
+classic	menu-render	0x1df668	0x15ffb70	Survival
+classic	menu-render	0x1df67d	0x15ffb80	Planting
+classic	menu-render	0x1df68f	0x15ffb90	Other food sources
+classic	menu-render	0x1df6a4	0x15ffba8	Bins, bags, and barrels
+classic	menu-render	0x1df6b6	0x15f2020	Trade
+classic	menu-render	0x1df6d1	0x15ffbc0	Offices and administrative work
+classic	menu-render	0x1df6ec	0x15ffbe0	Ore and smelting
+classic	menu-render	0x1df707	0x15ffbf8	Traps and levers
+classic	menu-render	0x1df722	0x15ffc0c	Wells
+classic	menu-render	0x1df73d	0x15ffc18	Handling light aquifers
+classic	menu-render	0x1df758	0x15fff10	Clothing
+classic	menu-render	0x1df773	0x15fff20	Meeting areas and locations
+classic	menu-render	0x1df78e	0x15f2090	Military
+classic	menu-render	0x1df7a9	0x15fff40	Ramps and channels
+classic	menu-render	0x1df7c4	0x15fff58	Refuse and dumping
+classic	menu-render	0x1df7df	0x15fff70	Dig deeper
+classic	menu-render	0x1df7fa	0x15fff80	Happiness and stress
+classic	menu-render	0x1df815	0x15fff98	Goals
+classic	menu-render	0x1df830	0x15fffa0	Popup: Zones
+classic	menu-render	0x1df84b	0x15fffb0	Popup: Burrows
+classic	menu-render	0x1df866	0x15fffc0	Popup: Hauling
+classic	menu-render	0x1df881	0x15fffd0	Popup: Stocks
+classic	menu-render	0x1df89c	0x15fffe0	Popup: Work details
+classic	menu-render	0x1df8b7	0x15ffff8	Popup: Nobles
+classic	menu-render	0x1df8d2	0x1600008	Popup: Justice
+classic	menu-render	0x1df8ed	0x1600018	Popup: Squads
+classic	menu-render	0x1df908	0x1600028	Popup: The world
+classic	menu-render	0x1df923	0x15ffdb0	Popup: Work orders
+classic	menu-render	0x1df93e	0x15ffdc8	Popup: Companions
+classic	menu-render	0x1df959	0x15ffde0	Popup: Adventurer's log
+classic	menu-render	0x1df974	0x15ffdf8	Popup: Inventory
+classic	menu-render	0x1df989	0x15ffe10	Popup: Movement options
+classic	menu-render	0x1df99e	0x15ffe28	Popup: Hold and climb
+classic	menu-render	0x1df9aa	0x15ffe40	Popup: Talk
+classic	menu-render	0x1df9b6	0x15ffe50	Popup: Perform
+classic	menu-render	0x1df9c2	0x15ffe60	Popup: Butcher and craft
+classic	menu-render	0x1df9cb	0x15ffe80	Popup: Abilities
+classic	menu-render	0x1df9d4	0x15ffe98	Popup: Strike
+classic	menu-render	0x1df9dd	0x15ffea8	Popup: Wrestle
+classic	menu-render	0x1df9e6	0x15ffeb8	Popup: Shoot and throw
+classic	menu-render	0x1df9ef	0x15ffed0	Popup: Travel
+classic	menu-render	0x1df9f8	0x15ffee0	Popup: Sleep and rest
+classic	menu-render	0x1dfa01	0x15ffb70	Survival
+classic	menu-render	0x1dfa0a	0x15f20d8	Combat
+classic	menu-render	0x1dfa13	0x15ffef8	The party and followers
+classic	menu-render	0x1dfa1c	0x1600208	Conversations
+classic	menu-render	0x1dfa25	0x1600218	Trading
+classic	menu-render	0x1dfa2e	0x1600220	Quests and reputation
+classic	menu-render	0x1dfa37	0x1600238	Fortress mode
+classic	menu-render	0x1dfa40	0x1600248	Retirement
+classic	menu-render	0x1dfa9f	0x1600258	[Viewed]
+classic	menu-render	0x1dfcc4	0x1600268	There is a folder with this name already.
+classic	menu-render	0x1dfd20	0x1600298	Would you like to overwrite it?
+classic	menu-render	0x1dfdf9	0x16002b8	Save
+classic	menu-render	0x1dff4d	0x15f959c	Cancel
+classic	menu-render	0x1e00c4	0x16002c0	What would you like to name this timeline?
+classic	menu-render	0x1e0120	0x16002f0	Saves starting here will be grouped on the
+classic	menu-render	0x1e017c	0x1600320	title screen, with their own active save.
+classic	menu-render	0x1e0214	0x15e783c	_
+classic	menu-render	0x1e02e5	0x15f959c	Cancel
+classic	menu-render	0x1e0464	0x1600350	What would you like to name this manual
+classic	menu-render	0x1e04c0	0x1600378	save?  It will never be overwritten,
+classic	menu-render	0x1e051c	0x16003a0	but you can delete it while loading.
+classic	menu-render	0x1e056a	0x16003c8	current
+classic	menu-render	0x1e057d	0x1600040	autosave 1
+classic	menu-render	0x1e0590	0x1600050	autosave 2
+classic	menu-render	0x1e05a3	0x1600060	autosave 3
+classic	menu-render	0x1e0605	0x15e783c	_
+classic	menu-render	0x1e06d5	0x15f959c	Cancel
+classic	menu-render	0x1e0854	0x1600070	Really retire?  The world will be saved but
+classic	menu-render	0x1e08b0	0x16000a0	you will need to unretire the fort to play
+classic	menu-render	0x1e090c	0x16000d0	here again.
+classic	menu-render	0x1e09e5	0x16000dc	Retire
+classic	menu-render	0x1e0ab5	0x15f959c	Cancel
+classic	menu-render	0x1e0c34	0x1600070	Really retire?  The world will be saved but
+classic	menu-render	0x1e0c90	0x16000e8	you will need to unretire or recruit
+classic	menu-render	0x1e0cec	0x1600110	this character to play them again.
+classic	menu-render	0x1e0dc5	0x16000dc	Retire
+classic	menu-render	0x1e0e95	0x15f959c	Cancel
+classic	menu-render	0x1e1024	0x16001a0	Really quit?  The fort will be saved but
+classic	menu-render	0x1e1080	0x16001d0	you will need to reclaim the fort to play
+classic	menu-render	0x1e10dc	0x16000d0	here again.
+classic	menu-render	0x1e11b5	0x1600200	Abandon
+classic	menu-render	0x1e1285	0x15f959c	Cancel
+classic	menu-render	0x1e1404	0x1600588	Really quit?  The character will live on
+classic	menu-render	0x1e1460	0x16005b8	through their legend but will not be
+classic	menu-render	0x1e14bc	0x16005e0	available to play.
+classic	menu-render	0x1e1595	0x1600200	Abandon
+classic	menu-render	0x1e1665	0x15f959c	Cancel
+classic	menu-render	0x1e1b3b	0x16005f8	Save and return to title menu
+classic	menu-render	0x1e1b47	0x1600618	Save and continue playing
+classic	menu-render	0x1e1b53	0x1600638	Retire the fortress (for the time being)
+classic	menu-render	0x1e1b5f	0x1600668	Abandon the fortress to ruin
+classic	menu-render	0x1e1b6b	0x1600688	Quit without saving
+classic	menu-render	0x1e1b77	0x16006a0	Succumb to the invasion
+classic	menu-render	0x1e1b83	0x16006b8	Retire at this location (or rest a while)
+classic	menu-render	0x1e1d07	0x16006e8	Give in to the Night
+classic	menu-render	0x1e1d13	0x1600700	Finish Game
+classic	menu-render	0x1e1d43	0x1600700	Finish Game
+classic	menu-render	0x1e1d5b	0x1600700	Finish Game
+classic	menu-render	0x1e1d64	0x1600710	Give in to Starvation
+classic	menu-render	0x1e1d92	0x1600728	 (holding another's goods)
+classic	menu-render	0x1e1da7	0x1600748	Settings
+classic	menu-render	0x1e1db3	0x1600758	Return to game
+classic	menu-render	0x1e1dbf	0x16003d0	Save world and return to title menu
+classic	menu-render	0x1e1dc8	0x16003f8	Return to title menu
+classic	menu-render	0x1e1dd1	0x1600410	Continue
+classic	menu-render	0x1e1df5	0x1600420	Save to this timeline
+classic	menu-render	0x1e1e03	0x1600438	Save to timeline folder: 
+classic	menu-render	0x1e1e35	0x1600458	Save to new timeline
+classic	menu-render	0x1e1e3e	0x1600470	Save to new folder (same timeline)
+classic	menu-render	0x1e1ee0	0x1600500	May interfere with existing saves.
+classic	menu-render	0x1e1f5d	0x16004d0	Do this if you want to keep the old save.
+classic	menu-render	0x1e1fd7	0x1600498	Recommended!
+classic	menu-render	0x1e204d	0x16004a8	Multiple copies of the timeline found.
+classic	menu-render	0x1e2246	0x1600528	Dwarf Fortress
+classic	menu-render	0x1e2256	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e226b	0x1600550	Koganusan
+classic	menu-render	0x1e227b	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2290	0x1600560	Expansive Cavern
+classic	menu-render	0x1e22a0	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e22b5	0x1600578	Death Spiral
+classic	menu-render	0x1e22c5	0x1600878	Dabu
+classic	menu-render	0x1e22da	0x1600880	Hill Dwarf
+classic	menu-render	0x1e22ea	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e22ff	0x1600890	Forgotten Beast
+classic	menu-render	0x1e230f	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2324	0x16008a0	Drink & Industry
+classic	menu-render	0x1e2334	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2349	0x16008b8	Vile Force of Darkness
+classic	menu-render	0x1e2359	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e236e	0x16008d0	First Year
+classic	menu-render	0x1e237e	0x1600878	Dabu
+classic	menu-render	0x1e2393	0x16008e0	Another Year
+classic	menu-render	0x1e23a3	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e23b8	0x16008f0	Strike the Earth!
+classic	menu-render	0x1e23c8	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e23dd	0x1600908	Strange Moods
+classic	menu-render	0x1e23ed	0x1600878	Dabu
+classic	menu-render	0x1e2402	0x1600918	Winter Entombs You
+classic	menu-render	0x1e2412	0x1600878	Dabu
+classic	menu-render	0x1e2427	0x1600930	Craftsdwarfship
+classic	menu-render	0x1e2437	0x1600940	Dabu & Agueda Macias
+classic	menu-render	0x1e244c	0x1600958	Mountainhome
+classic	menu-render	0x1e245c	0x1600940	Dabu & Agueda Macias
+classic	menu-render	0x1e2471	0x1600968	Classic DF Title Theme
+classic	menu-render	0x1e2481	0x1600980	Tarn Adams
+classic	menu-render	0x1e2496	0x1600990	Classic DF Main Theme
+classic	menu-render	0x1e24a6	0x1600980	Tarn Adams
+classic	menu-render	0x1e24bb	0x1600768	Strike It Again
+classic	menu-render	0x1e24cb	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e24e0	0x1600778	The Capital
+classic	menu-render	0x1e24f0	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2505	0x1600788	Bruising The Fat
+classic	menu-render	0x1e2515	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e252a	0x16007a0	Life of Adventure
+classic	menu-render	0x1e253a	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e254f	0x16007b8	Beyond The Gates
+classic	menu-render	0x1e255f	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2574	0x16007d0	Hamlet Memoirs
+classic	menu-render	0x1e2584	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2599	0x16007e0	Night Creature
+classic	menu-render	0x1e25a9	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e25be	0x16007f0	Into The Pits
+classic	menu-render	0x1e25ce	0x1600800	Dabu & rcab
+classic	menu-render	0x1e25e3	0x1600810	Sisters of War
+classic	menu-render	0x1e25f3	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2608	0x1600820	Cannibal
+classic	menu-render	0x1e2618	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e262d	0x1600830	Pony Rider
+classic	menu-render	0x1e263d	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2652	0x1600840	Two Coins
+classic	menu-render	0x1e2662	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2677	0x1600850	Losing is Fun
+classic	menu-render	0x1e2687	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e269c	0x1600860	Danger Room
+classic	menu-render	0x1e26ac	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e26c1	0x1600870	Nabidas
+classic	menu-render	0x1e26d1	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e27a1	0x1600a40	Track playing: 
+classic	menu-render	0x1e27cb	0x1600a50	Last track: 
+classic	menu-render	0x1e2840	0x1600a60	 - 
+classic	menu-render	0x1e28fc	0x1600a68	The Tavern Part I
+classic	menu-render	0x1e290c	0x1600940	Dabu & Agueda Macias
+classic	menu-render	0x1e2918	0x1600a80	The Tavern Part II
+classic	menu-render	0x1e2921	0x1600a98	Toady One
+classic	menu-render	0x1e292a	0x1600aa8	Toady Two
+classic	menu-render	0x1e2933	0x1600ab8	Toady Three
+classic	menu-render	0x1e293c	0x1600ac8	Roldeth
+classic	menu-render	0x1e2945	0x1600ad0	Dolomite
+classic	menu-render	0x1e294e	0x1600ae0	Suite Espagnole Part I
+classic	menu-render	0x1e2957	0x1600af8	Suite Espagnole Part II
+classic	menu-render	0x1e2960	0x1600b10	Suite Espagnole Part III
+classic	menu-render	0x1e2969	0x1600b30	Toady Four
+classic	menu-render	0x1e2972	0x1600b40	Obsidian
+classic	menu-render	0x1e297b	0x1600b50	Toady Five
+classic	menu-render	0x1e2984	0x16009a8	Toady Six
+classic	menu-render	0x1e298d	0x16009b8	Haunted Lands
+classic	menu-render	0x1e2996	0x16009c8	Cages & Chains
+classic	menu-render	0x1e29a6	0x1600878	Dabu
+classic	menu-render	0x1e2a0c	0x16009d8	Interlude playing: 
+classic	menu-render	0x1e2a36	0x16009f0	Last interlude: 
+classic	menu-render	0x1e2aab	0x1600a60	 - 
+classic	menu-render	0x1e2be8	0x1600a04	or
+classic	menu-render	0x1e2c07	0x1600a08	en
+classic	menu-render	0x1e2c21	0x1600a0c	df9
+classic	menu-render	0x1e2c3b	0x1600a10	df3
+classic	menu-render	0x1e2c55	0x1600a14	df15
+classic	menu-render	0x1e2c6f	0x1600a1c	ww
+classic	menu-render	0x1e2c89	0x1600a20	cg
+classic	menu-render	0x1e2ca3	0x1600a24	ff
+classic	menu-render	0x1e2cbd	0x1600a28	stia
+classic	menu-render	0x1e2cd7	0x1600a30	rcab
+classic	menu-render	0x1e2cf1	0x1600a38	ts
+classic	menu-render	0x1e2d0b	0x1600d2c	pr
+classic	menu-render	0x1e2d25	0x1600d30	SoW
+classic	menu-render	0x1e2d3f	0x1600d34	dr
+classic	menu-render	0x1e2d59	0x1600d38	nabidas
+classic	menu-render	0x1e2d8b	0x1600768	Strike It Again
+classic	menu-render	0x1e2d97	0x1600778	The Capital
+classic	menu-render	0x1e2da3	0x1600788	Bruising The Fat
+classic	menu-render	0x1e2dac	0x16007a0	Life of Adventure
+classic	menu-render	0x1e2db5	0x16007b8	Beyond The Gates
+classic	menu-render	0x1e2dbe	0x16007d0	Hamlet Memoirs
+classic	menu-render	0x1e2dc7	0x16007e0	Night Creature
+classic	menu-render	0x1e2dd0	0x16007f0	Into The Pits
+classic	menu-render	0x1e2de0	0x1600800	Dabu & rcab
+classic	menu-render	0x1e2de9	0x1600810	Sisters of War
+classic	menu-render	0x1e2df2	0x1600820	Cannibal
+classic	menu-render	0x1e2dfb	0x1600830	Pony Rider
+classic	menu-render	0x1e2e04	0x1600840	Two Coins
+classic	menu-render	0x1e2e0d	0x1600850	Losing is Fun
+classic	menu-render	0x1e2e16	0x1600860	Danger Room
+classic	menu-render	0x1e2e1f	0x1600870	Nabidas
+classic	menu-render	0x1e2e2f	0x1600538	Dabu & Simon Swerwer
+classic	menu-render	0x1e2f75	0x1600d40	Combat music: 
+classic	menu-render	0x1e2f9b	0x1600a40	Track playing: 
+classic	menu-render	0x1e300c	0x1600a60	 - 
+classic	menu-render	0x1e31c4	0x1600138	Really quit without saving?
+classic	menu-render	0x1e3220	0x1600158	All of your progress since the last
+classic	menu-render	0x1e327c	0x1600180	save will be lost.
+classic	menu-render	0x1e3355	0x1600194	Quit
+classic	menu-render	0x1e3425	0x15f959c	Cancel
+classic	menu-constructor	0x1e67fc	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e6806	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e6811	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e681c	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e6827	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e6832	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e683d	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e6848	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e6853	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e6863	0x1600e70	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to join a village hearth and improve your reputation. 
+classic	menu-constructor	0x1e687c	0x15f8388	[B]
+classic	menu-constructor	0x1e6892	0x1600f00	The guides here will suggest other possible avenues of play. 
+classic	menu-constructor	0x1e68a8	0x15f8388	[B]
+classic	menu-constructor	0x1e68be	0x1600f40	And remember: [C:2:0:1]Losing is fun, and now it's personal![C:7:0:0]
+classic	menu-constructor	0x1e6e4b	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6e55	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6e60	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6e6b	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6e76	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6e81	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6e8c	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6e97	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6ea4	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6ead	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6eb8	0x1600f90	The game is open-ended and you can do whatever you choose.  If you'd like a goal, try to become a barony, then a Mountainhome. 
+classic	menu-constructor	0x1e6ecc	0x15f8388	[B]
+classic	menu-constructor	0x1e6ee2	0x1601010	More likely, your dwarves will starve, unless you read the first few guides here! 
+classic	menu-constructor	0x1e6ef8	0x15f8388	[B]
+classic	menu-constructor	0x1e6f0e	0x1601068	And remember: [C:2:0:1]Losing is fun![C:7:0:0]
+classic	menu-constructor	0x1e75e5	0x1600b60	Dwarf Fortress Adventure
+classic	menu-constructor	0x1e79bd	0x1600528	Dwarf Fortress
+classic	menu-constructor	0x1e7d62	0x1600bf0	Abandoned
+classic	menu-constructor	0x1e7d6e	0x1600c00	Your settlement has been abandoned.
+classic	menu-constructor	0x1e7da2	0x1600b80	Retired
+classic	menu-constructor	0x1e7dd6	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7de0	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7deb	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7df6	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7e01	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7e0c	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7e19	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7e22	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7e2d	0x1600b90	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.
+classic	menu-constructor	0x1e7e61	0x1600c28	Conquered
+classic	menu-constructor	0x1e7e95	0x1600c38	Your strength has been broken.
+classic	menu-constructor	0x1e7e9f	0x1600c38	Your strength has been broken.
+classic	menu-constructor	0x1e7eac	0x1600c38	Your strength has been broken.
+classic	menu-constructor	0x1e7eb5	0x1600c38	Your strength has been broken.
+classic	menu-constructor	0x1e7f53	0x1600c58	Withered
+classic	menu-constructor	0x1e7f85	0x1600c68	Your settlement has crumbled to its end.
+classic	menu-constructor	0x1e7f8f	0x1600c68	Your settlement has crumbled to its end.
+classic	menu-constructor	0x1e7f9a	0x1600c68	Your settlement has crumbled to its end.
+classic	menu-constructor	0x1e805c	0x1600cb8	Dead
+classic	menu-constructor	0x1e809a	0x1600cc0	Your adventure has come to an end.
+classic	menu-constructor	0x1e80a4	0x1600cc0	Your adventure has come to an end.
+classic	menu-constructor	0x1e80af	0x1600cc0	Your adventure has come to an end.
+classic	menu-constructor	0x1e8216	0x15e3720	 
+classic	menu-constructor	0x1e8455	0x1600b80	Retired
+classic	menu-constructor	0x1e8489	0x1600c98	You settle in this location...
+classic	menu-constructor	0x1e8493	0x1600c98	You settle in this location...
+classic	menu-constructor	0x1e84a0	0x1600c98	You settle in this location...
+classic	menu-constructor	0x1e84a9	0x1600c98	You settle in this location...
+classic	paragraph-lines-wrap	0x8e4dd7	0x15e3720	 

@@ -1,0 +1,76 @@
+Native source ownership: fortress/adventure ended-game panel
+
+Actual images are resolved from data/runtime/native-pe-images.json.
+Steam: D:/program/steam/steamapps/common/Dwarf Fortress/Dwarf Fortress.exe
+Classic: C:/Users/WIN11/Downloads/df_53_16_win/Dwarf Fortress.exe
+Both are Windows x64 PE images. native-functions.tsv retains their PE identity.
+The *-ghidra.c files are actual Ghidra 12.1.4 decompiler output. The matching
+*.asm files retain the input instructions. end-state-branches.tsv joins native
+title/body literal references with the real mode/state branch destinations.
+Ghidra recovers switches from the actual comparison bounds and table data;
+no manual BasicOverride is installed. native-switches.tsv additionally retains
+the actual ordered jump-table entries, including shared destinations. Modes 9
+and 10 remain separate case labels leading into their shared native branch.
+
+State ownership (offsets from the Escape-menu state):
+  +0x04: constructor mode
+  +0x08: std::string title
+  +0x28: std::vector<std::string *> paragraph lines
+  +0x48: action IDs
+  +0x60: action parameters
+
+Ended-state constructor:
+  Steam RVA 0x1e65a0; classic RVA 0x1e6530.
+  Mode 1 dispatches on the fortress ending WORD at Steam RVA 0x2391230.
+    3: Abandoned / Your settlement has been abandoned.
+    2: Retired / Your fortress has settled into the rhythm of day-to-day
+       living, beyond your meticulous concern.
+    1: Conquered / Your strength has been broken.
+    0 and all other values: Withered / Your settlement has crumbled to its end.
+  Mode 9: Retired / You settle in this location...
+  Mode 10: Dead / Your adventure has come to an end.
+  Modes 9 and 10 share the mode-switch destination, then compare mode against 9.
+  All six choices append action ID 10 and its -1 parameter.
+  That action is Save world and return to title menu.
+
+Paragraph production:
+  Native width is 0x3a (58 columns).
+  Single-string wrapper Steam RVA 0x8e7310 / classic RVA 0x8e4b80 creates
+  a one-element vector and calls the line wrapper Steam RVA 0x8e7440 /
+  classic RVA 0x8e4cb0. The Conquered branch calls the line wrapper directly;
+  the Dead branch inlines the equivalent line-building operation.
+  These strings are the complete authored sentences, not individual words.
+  Inline SIMD/QWORD copies in Ghidra are rejoined by native-literals.tsv using
+  their actual .rdata roots, including all 95 characters of the retired text.
+
+Paragraph drawing:
+  Full renderer Steam RVA 0x1ddd50 / classic RVA 0x1ddce0.
+  Title: addst call 0x1e1934 / 0x1e18c4; return 0x1e1939 / 0x1e18c9.
+  One paragraph line: addst call 0x1e19b1 / 0x1e1941;
+    return 0x1e19b6 / 0x1e1946; horizontally centered.
+  Multiple lines: addst call 0x1e1a53 / 0x1e19e3;
+    return 0x1e1a58 / 0x1e19e8; common x = panel left + 2, y increments by 1.
+  Native addst Steam RVA 0xad9960 / classic RVA 0xad69a0 draws the stored line.
+  This panel does not draw its paragraph through curses_textbox. The complete
+  paragraph must be matched before ordinary short literal substitutions.
+
+Shared actions/save path/music:
+  native-pause-sources.tsv retains the full renderer, mode constructor,
+  input dispatch, save update, save action, metadata readers and native tables.
+  All sixteen action choices and every native save-stage string are retained.
+  The ended-game path uses ID 10 and subsequently mode 4 (fortress) or mode 8
+  (adventure); save destination choices and progress belong to those shared
+  renderer branches, not additional ended-game body variants.
+  The lower music panel belongs to the same renderer. Its five status prefixes
+  are Track playing:, Last track:, Interlude playing:, Last interlude:, and
+  Combat music:. Full native music selector tables and finite TITLE/AUTHOR
+  values are retained in native-pause-sources.tsv; arbitrary MUSIC_FILE TITLE
+  and AUTHOR metadata are read through the map fallback (+0x10 and +0x30).
+  TITLE/AUTHOR values are authored soundtrack metadata, not missing UI prose.
+
+Reproduction tools:
+  tools/extract_fortress_game_over_sources.py reads the configured images with
+  the fixed native objdump and retains branch literals/addresses/instructions.
+  tools/DecompileFortressGameOver.java consumes those files with headless
+  Ghidra to decompile the same PE images. Neither tool executes the game,
+  generates translation runtime data, compiles the mod, or controls a window.
