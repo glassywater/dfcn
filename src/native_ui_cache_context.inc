@@ -204,6 +204,11 @@ public:
         rect(input.bounds); value(input.dimx); value(input.dimy);
         value(input.epoch == epoch); value(input.top_layer); value(input.isolated);
         grid(input.grid_identity); text(input.body_source);
+        value(input.workshop_recipe);
+        range(input.workshop_fields, [&](const auto &field) {
+            value(field.first_line); text(field.source);
+            range(field.wrapped_lines, [&](const auto &row) { text(row); });
+        });
         range(input.rows, [&](const auto &row) { text(row); });
         range(input.glyph_rows, [&](const auto &row) { text(row); });
         range(input.occlusions, [&](const auto &box) { rect(box); });
@@ -326,6 +331,10 @@ public:
         optional(input.workshop_task_caption, [&](const auto &caption) {
             address(caption.building); address(caption.job);
             rect(caption.box); text(caption.complete_source);
+        });
+        optional(input.arena_tree_caption, [&](const auto &caption) {
+            address(caption.picker); address(caption.plant);
+            text(caption.name); value(caption.right);
         });
         // Vector traversal preserves relative native draw order. Absolute
         // sequence/epoch numbers are scheduling, not semantic content.

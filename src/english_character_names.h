@@ -278,7 +278,8 @@ public:
 
     std::optional<std::string> translate(std::string_view source,
         const GivenCallback &given_callback = {},
-        const NicknameCallback &nickname_callback = {}) const {
+        const NicknameCallback &nickname_callback = {},
+        std::string_view complete_given = {}) const {
         if (!loaded_) return std::nullopt;
         source = trim(source);
         if (source.empty()) return std::nullopt;
@@ -290,7 +291,8 @@ public:
         bool recognized = false;
         std::size_t cursor = 0;
         while (auto q = next_quote(source, cursor)) {
-            Part before = unquoted(source.substr(cursor, q->begin - cursor), given_callback);
+            Part before = unquoted(source.substr(cursor, q->begin - cursor), given_callback,
+                complete_given);
             append_group(translated, before.text);
             recognized = recognized || before.known;
             std::string_view nick = source.substr(q->content, q->end - q->content);
@@ -316,7 +318,8 @@ public:
         }
         // A suffix after an authored nickname is a surname or title. The
         // given-name slot has already been consumed before the quote.
-        Part after = unquoted(source.substr(cursor), cursor ? GivenCallback{} : given_callback);
+        Part after = unquoted(source.substr(cursor), cursor ? GivenCallback{} : given_callback,
+            cursor ? std::string_view{} : complete_given);
         append_group(translated, after.text);
         recognized = recognized || after.known;
         if (!recognized || (!remainder.empty() && !after.complete)) return std::nullopt;
@@ -1419,7 +1422,8 @@ private:
         return out.known ? out : original(source);
     }
 
-    Part first_group(std::string_view source, const GivenCallback &given) const {
+    Part first_group(std::string_view source, const GivenCallback &given,
+            std::string_view complete_given) const {
         source = trim(source);
         if (source.empty()) return original(source);
         if (auto p = name_override_part(source); p.known) return p;
@@ -1444,7 +1448,11 @@ private:
         // Proven given-name evidence wins even when its spelling is an
         // ordinary English word or can be split into two surname roots.
         if (given) {
-            if (source.find_first_of(" \t\r\n") == std::string_view::npos) {
+            // A typed given field can itself contain spaces, e.g. Worm Man 3.
+            // Only its exact supplied boundary admits a whole spaced group;
+            // ordinary callbacks keep the existing one-word behavior.
+            if (source == complete_given ||
+                    source.find_first_of(" \t\r\n") == std::string_view::npos) {
                 auto value = given(source);
                 if (value && !value->empty()) {
                     Part out = original(source);
@@ -1502,7 +1510,8 @@ private:
         return p;
     }
 
-    Part unquoted(std::string_view source, const GivenCallback &given) const {
+    Part unquoted(std::string_view source, const GivenCallback &given,
+            std::string_view complete_given) const {
         source = trim(source);
         if (source.empty()) return original(source);
         if (auto p = name_override_part(source); p.known) return p;
@@ -1510,7 +1519,7 @@ private:
             // A standalone generated title has no personal-name prefix.
             // Its absent first group must not make a complete title fail.
             if (*the == 0) return title_part(source);
-            Part first = first_group(source.substr(0, *the), given);
+            Part first = first_group(source.substr(0, *the), given, complete_given);
             Part tail = title_part(source.substr(*the));
             if (!first.known && !tail.known) return original(source);
             Part out = first;
@@ -1521,7 +1530,7 @@ private:
             return out;
         }
         if (auto of = marker(source, "of")) {
-            Part head = first_group(source.substr(0, *of), given);
+            Part head = first_group(source.substr(0, *of), given, complete_given);
             Part tail = phrase(source.substr(*of + 2));
             if (!head.known && !tail.known) return original(source);
             Part out = head;
@@ -1531,7 +1540,7 @@ private:
             else finish(out, tail.text + "之" + head.text, 0);
             return out;
         }
-        return first_group(source, given);
+        return first_group(source, given, complete_given);
     }
 
     static std::optional<Quote> next_quote(std::string_view source, std::size_t from) {

@@ -1,95 +1,110 @@
-// Announcement settings names own one table cell before ordinary words or
-// names can consume fragments. Read the logical ink, since graphical copies
-// can hide part of an otherwise complete caption from visible_char_at().
-void Overlay::append_settings_announcement_names(std::vector<std::string> &rows,
-        std::vector<Match> &matches, int only_y) const {
-    if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy)) return;
-    std::vector<std::string> logical(rows.size(), std::string(gps_->dimx, ' '));
-    for (int y = 0; y < gps_->dimy; ++y) {
-        for (int x = 0; x < gps_->dimx; ++x) {
-            bool top = false;
-            const auto *cell = cell_at(x, y, &top);
-            if (cell && cell[0]) logical[y][x] = static_cast<char>(cell[0]);
+// The settings modal owns its page, rows and controls before any glyph reader.
+// Translation keys come from known widgets; their spelling never identifies a
+// page, a column, an event or a button value.
+bool Overlay::find_settings_announcement_matches(int only_y,
+        const unsigned char *screen_override, std::vector<Match> &matches) const {
+    if (!gps_ || !native_settings_announcements_active(*gps_)) return false;
+    matches.clear();
+    // Claim even a partially unavailable snapshot. Falling through would
+    // reintroduce screen-word discovery for a modal whose identity is known.
+    if (screen_override && screen_override != gps_->screen &&
+            screen_override != gps_->screen_top) return true;
+    const auto &frame = g_native_settings_frame;
+    const int origin_x = (gps_->screen_pixel_x - gps_->dimx * gps_->tile_pixel_x) / 2;
+    const int origin_y = (gps_->screen_pixel_y - gps_->dimy * gps_->tile_pixel_y) / 2;
+    const auto translate_caption = [&](const NativeSettingsText &field) -> std::optional<std::string> {
+        static constexpr std::array<std::string_view, 6> tabs{
+            "画面设置", "音频", "游戏", "按键绑定", "公告", "难度"};
+        static constexpr std::array<std::string_view, 4> categories{
+            "战斗", "冒险", "要塞", "其他"};
+        static constexpr std::array<std::string_view, 8> flags{
+            "弹出窗口", "暂停", "重新居中", "冒险", "要塞", "报告", "报告（启用时）", "警报"};
+        switch (field.kind) {
+        case NativeSettingsTextKind::Tab:
+            if (field.column >= 0 && field.column < static_cast<int>(tabs.size()))
+                return std::string(tabs[field.column]);
+            return std::nullopt;
+        case NativeSettingsTextKind::Done: return "完成";
+        case NativeSettingsTextKind::AnnouncementToggle: return field.enabled ? "是" : "否";
+        case NativeSettingsTextKind::FilterCategory:
+            if (field.column == -1) return "全部";
+            if (field.column >= 0 && field.column < static_cast<int>(categories.size()))
+                return std::string(categories[field.column]);
+            return std::nullopt;
+        case NativeSettingsTextKind::FilterFlag:
+            if (field.column == -1) return "全部";
+            if (field.column >= 0 && field.column < static_cast<int>(flags.size()))
+                return std::string(flags[field.column]);
+            return std::nullopt;
+        case NativeSettingsTextKind::ColumnHeader:
+            if (field.column == -1) return "名称";
+            if (field.column == 6 && field.rect.h > 1)
+                return field.glyph.y == field.rect.y ? "报告" : "（启用时）";
+            if (field.column >= 0 && field.column < static_cast<int>(flags.size()))
+                return std::string(flags[field.column]);
+            return std::nullopt;
+        case NativeSettingsTextKind::AnnouncementName: break;
         }
-    }
-    const auto standalone_positions = [](const std::string &row,
-            std::string_view text, int left) {
-        std::vector<int> positions;
-        for (size_t at = row.find(text, static_cast<size_t>(std::max(0, left)));
-                at != std::string::npos; at = row.find(text, at + text.size())) {
-            const size_t end = at + text.size();
-            if ((at == 0 || row[at - 1] == ' ') &&
-                    (end == row.size() || row[end] == ' '))
-                positions.push_back(static_cast<int>(at));
-        }
-        return positions;
+        return exact_literal_translation(field.source);
     };
-    int name_left = -1, matrix_left = -1, header_y = -1;
-    for (int y = 0; y < gps_->dimy && header_y < 0; ++y) {
-        for (int name_x : standalone_positions(logical[y], "Name", 0)) {
-            int control_count = 0, first_control = INT32_MAX;
-            for (std::string_view heading : {"Popup", "Pause", "Recenter",
-                    "Adventure", "Fortress", "Report", "Alert"}) {
-                const auto positions = standalone_positions(logical[y], heading, name_x + 4);
-                control_count += static_cast<int>(positions.size());
-                if (!positions.empty() && (heading == "Popup" || heading == "Pause" ||
-                        heading == "Recenter"))
-                    first_control = std::min(first_control, positions.front());
-            }
-            if (control_count >= 5 && first_control != INT32_MAX) {
-                name_left = name_x;
-                matrix_left = first_control;
-                header_y = y;
-                break;
-            }
+    for (const auto &field : frame.texts) {
+        auto target = translate_caption(field);
+        if (!target || target->empty() || field.drawn_source.empty() ||
+                field.glyph.w <= 0 || field.rect.w <= 0) continue;
+        const int left = std::max({0, field.glyph.x, field.clip.x});
+        const int right = std::min({gps_->dimx, field.glyph.x + field.glyph.w,
+            field.clip.x + field.clip.w,
+            field.glyph.x + static_cast<int>(field.drawn_source.size())});
+        if (left >= right) continue;
+        const int half_height = std::clamp(field.split_height, 1, 2);
+        const bool centered = field.kind == NativeSettingsTextKind::Tab ||
+            field.kind == NativeSettingsTextKind::Done ||
+            field.kind == NativeSettingsTextKind::AnnouncementToggle ||
+            (field.kind == NativeSettingsTextKind::ColumnHeader && field.column >= 0);
+        SDL_Rect box = field.rect;
+        if (field.kind == NativeSettingsTextKind::ColumnHeader && field.column >= 0) {
+            // The snapshot supplies the five-tile native button column even
+            // when filtering leaves no rows. Its surrounding gutter extends
+            // the text budget symmetrically without moving that centre.
+            box.x -= 1;
+            box.w += 2;
+        }
+        const int clip_left = std::clamp(field.clip.x, 0, gps_->dimx);
+        const int clip_right = std::clamp(field.clip.x + field.clip.w, clip_left, gps_->dimx);
+        const int clip_top = std::clamp(field.clip.y, 0, gps_->dimy);
+        const int clip_bottom = std::clamp(field.clip.y + field.clip.h, clip_top, gps_->dimy);
+        if (clip_left >= clip_right || clip_top >= clip_bottom) continue;
+        const int palette = std::clamp((field.fg & 7) + (field.bright ? 8 : 0), 0, 15);
+        for (int half = 0; half < half_height; ++half) {
+            const int y = field.glyph.y + half;
+            if (y < clip_top || y >= clip_bottom || (only_y >= 0 && only_y != y)) continue;
+            Match match{left, y, right - left, kNativeSettingsAnnouncementRule,
+                half == 0 ? *target : std::string{},
+                field.drawn_source.substr(static_cast<size_t>(left - field.glyph.x), right - left)};
+            match.layout_x = box.x;
+            match.layout_y = field.glyph.y;
+            match.layout_length = box.w;
+            match.layout_left = !centered;
+            match.layout_prepared = true;
+            match.layout_fixed_baseline = true;
+            match.layout_ellipsize = true;
+            match.layout_clip_right = clip_right;
+            match.layout_box_pixel_x = origin_x + box.x * gps_->tile_pixel_x;
+            match.layout_box_pixel_width = box.w * gps_->tile_pixel_x;
+            match.layout_pixel_y = half_height == 2 ? gps_->tile_pixel_y / 2 : 0;
+            match.layout_line_height_pixels = native_text_row_height(gps_);
+            match.layout_native_clip = SDL_Rect{
+                origin_x + clip_left * gps_->tile_pixel_x,
+                origin_y + clip_top * gps_->tile_pixel_y,
+                (clip_right - clip_left) * gps_->tile_pixel_x,
+                (clip_bottom - clip_top) * gps_->tile_pixel_y};
+            match.layout_foreground_rgb = (gps_->uccolor[palette][0] << 16) |
+                (gps_->uccolor[palette][1] << 8) | gps_->uccolor[palette][2];
+            match.native_split_text = half_height == 2;
+            match.native_split_top_y = field.glyph.y;
+            match.native_split_duplicate = half != 0;
+            matches.push_back(std::move(match));
         }
     }
-    if (header_y < 0 && settings_active_page_ == 4 &&
-            settings_announcement_geometry_valid_) {
-        name_left = settings_announcement_name_x_;
-        matrix_left = settings_announcement_toggle_x_;
-    }
-    if (name_left < 0 || matrix_left <= name_left || matrix_left >= gps_->dimx) return;
-    if (header_y < 0) {
-        // With the header scrolled away, prove the current table from a
-        // visible toggle band. Its captions do not share the event name's
-        // logical y: DF puts names at the row top and values in button centres.
-        const bool matrix_visible = std::any_of(logical.begin(), logical.end(),
-            [&](const std::string &row) {
-                return standalone_positions(row, "Yes", matrix_left).size() +
-                    standalone_positions(row, "No", matrix_left).size() >= 4;
-            });
-        if (!matrix_visible) return;
-    }
-    for (int y = header_y + 1; y < gps_->dimy; ++y) {
-        if (only_y >= 0 && y != only_y) continue;
-        // The header owns the horizontal cell boundaries for every name
-        // row, including both halves of native text. Requiring Yes/No on this
-        // same row skipped the name and later found only an empty button row.
-        int first = name_left, end = matrix_left;
-        while (first < end && logical[y][first] == ' ') ++first;
-        while (end > first && logical[y][end - 1] == ' ') --end;
-        if (first == end) continue;
-        const std::string source = logical[y].substr(first, end - first);
-        std::string key;
-        bool pending_space = false;
-        for (unsigned char ch : source) {
-            if (std::isspace(ch)) {
-                pending_space = !key.empty();
-            } else {
-                if (pending_space) key.push_back(' ');
-                key.push_back(static_cast<char>(ch));
-                pending_space = false;
-            }
-        }
-        const auto target = exact_literal_translation(key);
-        if (!target || target->empty()) continue;
-        Match match{first, y, end - first, kSettingsAnnouncementNameRule, *target, source};
-        match.layout_x = name_left;
-        match.layout_length = std::max(1, matrix_left - name_left - 3);
-        match.layout_left = true;
-        match.layout_clip_right = matrix_left - 3;
-        std::fill(rows[y].begin() + first, rows[y].begin() + end, ' ');
-        matches.push_back(std::move(match));
-    }
+    return true;
 }

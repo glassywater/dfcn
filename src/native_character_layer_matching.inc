@@ -69,6 +69,7 @@ std::vector<Match> Overlay::find_native_character_matches() const {
     append_character_kill_rows(screen_rows, result, only_y);
     append_health_history_rows(screen_rows, result, only_y);
     append_character_relation_rows(screen_rows, result, only_y);
+    append_character_work_detail_rows(screen_rows, result, only_y);
     append_character_work_animal_rows(screen_rows, result, only_y);
 
     const auto finish_matches = [&]() {

@@ -2535,6 +2535,61 @@ static void capture_native_worldgen_caption(graphicst *graphics,
     } catch (...) {}
 }
 
+static bool native_character_header_activity_source(const NativeString *source,
+        uintptr_t caller) {
+#ifdef _WIN32
+    const uintptr_t base = native_history_profile_base();
+    if (!base || !source || !caller) return false;
+    if (caller == native_reference_address(base, 0x15d6b6)) return true;
+    struct Binding {
+        uintptr_t base = 0, parent_return = 0, draw_return = 0;
+    };
+    static const Binding binding = [base] {
+        Binding result{base};
+        const uintptr_t call = native_reference_address(base, 0x15d6c9);
+        std::array<unsigned char, 5> instruction{};
+        if (!call || !native_history_copy(call, instruction) || instruction[0] != 0xe8)
+            return result;
+        int32_t displacement = 0;
+        std::memcpy(&displacement, instruction.data() + 1, sizeof(displacement));
+        const int64_t target = static_cast<int64_t>(call + 5) + displacement;
+        if (target <= 0 || static_cast<uint64_t>(target) > UINTPTR_MAX - 0xa6)
+            return result;
+        const uintptr_t wrapper = static_cast<uintptr_t>(target);
+        // The Classic address catalog omits this wrapper. Resolve its exact
+        // target from the mapped header call, then retain the shared verified
+        // frame and source instructions from both native PE disassemblies.
+        constexpr std::array<unsigned char, 10> frame{
+            0x4c,0x8b,0xdc,0x48,0x81,0xec,0x88,0x00,0x00,0x00};
+        constexpr std::array<unsigned char, 5> text{
+            0x48,0x8d,0x54,0x24,0x50};
+        std::array<unsigned char, 10> actual_frame{};
+        std::array<unsigned char, 5> actual_text{};
+        unsigned char draw_call = 0;
+        if (!native_history_copy(wrapper, actual_frame) || actual_frame != frame ||
+                !native_history_copy(wrapper + 0x95, actual_text) || actual_text != text ||
+                !native_history_copy(wrapper + 0xa1, draw_call) || draw_call != 0xe8)
+            return result;
+        result.parent_return = call + 5;
+        result.draw_return = wrapper + 0xa6;
+        return result;
+    }();
+    if (binding.base != base || !binding.draw_return || caller != binding.draw_return)
+        return false;
+    const uintptr_t owner = reinterpret_cast<uintptr_t>(source);
+    uintptr_t parent_return = 0;
+    // wrapper rsp is entry rsp-0x88 and its NativeString is rsp+0x50.
+    // Thus source+0x38 is the wrapper's saved return, while this frame lives.
+    // Match the header's actual call before freezing ownership with the text.
+    return owner <= UINTPTR_MAX - 0x38 &&
+        native_history_copy(owner + 0x38, parent_return) &&
+        parent_return == binding.parent_return;
+#else
+    (void)source; (void)caller;
+    return false;
+#endif
+}
+
 // The component's native producer already establishes ownership. Retain only
 // its submitted text and the exact interval written by this addst; no map,
 // widget-tree, button-skin or other page discovery belongs in this path.
@@ -2587,6 +2642,8 @@ static void capture_native_owned_caption(graphicst *graphics,
                     (g_native_textbox_widget_binding.text_return_address &&
                         native_caller == g_native_textbox_widget_binding.text_return_address);
             if constexpr (Character) {
+                row.character_header_activity =
+                    native_character_header_activity_source(source, native_caller);
                 row.editable_text = row.editable_text || NativeEditableTextScope::active;
                 row.info_title_kind = native_info_title_kind(native_caller);
                 row.info_title_authored = native_info_title_authored(

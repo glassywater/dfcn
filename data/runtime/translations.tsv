@@ -3191,6 +3191,7 @@ Announcement combat agreement-title-core [agreement-party-list,$name]: the agree
 Announcement combat agreement-title-core [agreement-party-list,agreement-party-list,$name]: the request by {s} that {s} make an offer of service to {s}	{s1}要求{s2}向{s3}表示愿意效力的请求	l
 Announcement combat threat-killing [threat-kill-count,threat-possessive,threat-family-list]: has even killed {s} in {s} lust for murder, among them {s}	{s2}嗜杀成性，甚至杀害了{s1}，其中包括{s3}	l
 Congratulations! This fortress is now a Mountainhome, proof that any suggestion of hubris was childish nonsense. What are a few pesky demons after all?	祝贺你！这座要塞如今已成为山国都城，证明那些狂妄自大的指责不过是幼稚的胡言乱语。区区几个恼人的恶魔又算得了什么？	hP
+DFHack GUI Confirmation prompt: This closes MultiDwarf sessions before installing the update. Your fortress stays loaded. Install now, then restart DF?	安装更新前将关闭 MultiDwarf 会话，要塞仍保持载入。是否立即安装，随后重启《矮人要塞》？	l
 DFHack help: "--modify <amount>" Modify current base trait strength by given amount. Negative values need a "\\\\" before the negative symbol e.g. "\\\\-1"	"--modify <amount>" 将当前基础特质强度修改给定量。负值需要在负号前加一个"\\\\\\\\"，例如"\\\\\\\\-1"	l
 DFHack help: "cleanowned scattered X" Confiscate and dump rotten and dropped food, garbage on the floors, and any worn items with 'X' damage and above.	"cleanowned scattered X" 没收并倾倒腐烂和掉落的食物、地板上的垃圾以及任何损坏程度为"X"及以上的磨损物品。	l
 DFHack help: "devel/clear-script-env gui/quickfort" Clear the gui/quickfort global environment, resetting state that normally persists from run to run.	"devel/clear-script-env gui/quickfort" 清除 gui/quickfort 全局环境，重置通常在运行之间持续存在的状态。	l
@@ -6427,6 +6428,7 @@ Announcement combat spoken-sentence [speech-service-person]: I have no master, b
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be appearing {s}.	{s1}当时将正在出现在{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} was will be rewarding {s}.	{s1}当时将正在奖赏{s2}。	l
 Announcement combat visitor-statement [visitor-statement-subject,visitor-statement-object]: {s} were will be flooding {s}.	{s1}当时将正在淹没{s2}。	l
+DFHack GUI Confirmation prompt: Close MultiDwarf sessions and remove it? Saves, settings and other mods will be preserved.	是否关闭 MultiDwarf 会话并将其卸载？存档、设置和其他模组将予以保留。	l
 DFHack GUI Quantum: {d} minecart available: an additional one will be ordered for you to assign to the quantum route later	可用矿车：{d} 辆。将额外订购一辆，完工后需手动分配到量子运输路线。	l
 DFHack help: "--group-by-date" Create a folder with name "year-month" inside the world folder. Implies "--group-by-world".	"--group-by-date" 在world文件夹中创建一个名为"year-month"的文件夹。意味着 "--group-by-world"。	l
 DFHack help: "burrow units clear Farmhouse Workshops" Remove all units from the burrows named "Farmhouse" and "Workshops".	"burrow units clear Farmhouse Workshops" 移除活动区中名为"农舍"和"车间"的所有单位。	l
@@ -24885,7 +24887,7 @@ Book title phrase: Suddenly The Wise Will Tell In The Beginning	起初，突然�
 Book title phrase: Surely The Future Foretells In The Beginning	起初，未来必定预言	hi
 Book title phrase: Surely The Future Will Tell In The Beginning	起初，未来必定会揭晓	hi
 Character group role: Greatly respected for protecting the weak	因保护弱者而备受尊敬	h
-Click "Embark" to place your fortress. Right click to zoom out.	点击“出发”确定要塞位置。右键点击缩小地图。	hP
+Click "Embark" to place your fortress. Right click to zoom out.	点击“启程”确定要塞位置。右键点击缩小地图。	hP
 Conversation prompt: Choose a musical form for the composition.	为这次创作选择一种音乐形式。	l
 Conversation prompt: What will you say about tribute agreement?	关于进贡协议，你想说些什么？	l
 DFHack GUI Control tool: gui/settings-manager load-work-details	载入工作分工（gui/settings-manager load-work-details）	l
@@ -39468,7 +39470,7 @@ Book title phrase: Then Time Will Tell In The End	最终，随后，时间会揭
 Bring up {e}'s acceptance of {e}'s offer of peace	谈起{e1}接受{e2}的和平提议这件事	hPt
 Character group role: Greatly feared as a villain	令人十分畏惧的恶棍	h
 Character group role: Noted protector of the weak	著名的庇护者	h
-Click on the map to embark! Right click to abort.	点击地图出发！右键点击取消。	hP
+Click on the map to embark! Right click to abort.	点击地图启程！右键点击取消。	hP
 Copyright (C) {d}-{d} by Tarn Adams, Bay 12 Games	版权所有 (C) {d}-{d} Tarn Adams，Bay 12 Games	wtl
 Creating Elathu Inala, \\"The Domain of Portents\\"	创建埃拉苏·伊纳拉,"预兆之域\\"	w
 DFHack GUI Control tool: hotkeys.newadventuremenu	新建冒险快捷菜单（hotkeys.newadventuremenu）	l
@@ -46035,7 +46037,7 @@ Book title phrase: Then Time Mourns Afterward	此后，随后，时间哀悼	hi
 Book title phrase: Then Time Weeps In The End	最终，随后，时间哭泣	hi
 Book title subject: the Straight-Beam Balance	直梁天平	hi
 Bring up {p}'s placement of {e} to {p} in {e}	谈起{p1}在{e2}将作品{e1}交由{p2}保管这件事	hPt
-Cannot embark entirely on water or mountains.	出发区域不能完全位于水域或山脉之中。
+Cannot embark entirely on water or mountains.	启程区域不能完全位于水域或山脉之中。
 Character group role: Legendary enemy fighter	传奇敌对斗士	h
 Character group role: Legendary loyal soldier	传奇的忠诚军人	h
 Conversation keyword: crime of blood-drinking	吸血罪	l
@@ -50525,6 +50527,7 @@ DFHack GUI Rename caption: Second Adjective	第二形容词	l
 DFHack GUI Squad assignment: ambusher skill	伏击技能	l
 DFHack GUI Squad assignment: crossbow skill	弩术技能	l
 DFHack GUI Teleport: Include friendly units	包含友好单位	l
+DFHack GUI Viewer status: No unit selected.	未选中单位。	l
 DFHack help: "--applyjobs <job>[,<job>...]"	"--applyjobs <job>[,<job>...]"	l
 DFHack help: "-e [NAME]", "--entity [NAME]"	"-e [NAME]", "--entity [NAME]"	l
 DFHack help: "-s", "--spheres <sphereList>"	"-s", "--spheres <sphereList>"	l
@@ -71501,6 +71504,8 @@ Bring up {p}'s ascension to {s} of {e}	谈起{p1}就任{e1}的{s1}这件事	hPt
 Bring up {p}'s crime of blood-drinking	谈起{p1}犯下吸血罪这件事	hPt
 Bring up {p}'s escalated attack on {p}	谈起{p1}对{p2}加剧攻击这件事	hPt
 Bring up {p}'s placement of {i} to {p}	谈起{p1}将{i1}交由{p2}保管这件事	hPt
+Build placement: Soap Maker's Workshop	皂匠工坊	wi
+Build placement: Vermin Catcher's Shop	害虫捕坊	wi
 Character group role: Former mercenary	前佣兵	h
 Character group role: Infamous brigand	臭名昭著的强盗	h
 Character group role: Infamous monster	臭名昭著的怪物	h
@@ -71559,6 +71564,7 @@ DFHack GUI Squad assignment: axe skill	战斧技能	l
 DFHack GUI Teleport: Click name or hit	点击名称或按	l
 DFHack GUI Teleport: No selected units	未选择单位	l
 DFHack GUI Title: DFHack Control Panel	DFHack 控制面板	l
+DFHack GUI Title: Uninstall MultiDwarf	卸载 MultiDwarf	l
 DFHack help: "--command [ <command> ]"	"--command [ <command> ]"	l
 DFHack help: "--eraseClass <class id>"	"--eraseClass <class id>"	l
 DFHack help: "--excludekinds [a|bces]"	"--excludekinds [a|bces]"	l
@@ -77121,6 +77127,7 @@ Book title subject: the Interrogation	审讯	hi
 Book title subject: the Straight Road	直道	hi
 Book title subject: the World's Shape	世界的形状	hi
 Bring up the occupation of {e} by {e}	谈起{e1}被{e2}占领这件事	hPt
+Build placement: Carpenter's Workshop	木匠工坊	wi
 Can you tell me where I can find you?	能告诉我到哪里能找到你吗？	hPD
 Character group role: Former prisoner	前囚犯	h
 Character group role: Infamous killer	臭名昭著的杀手	h
@@ -82759,6 +82766,8 @@ Brook: Saintgold the Insect of Ja...	溪流:圣金甲虫...	w
 Brook: Salvedoctrines the Surpris...	溪流:治疗教义惊人的...	w
 Brook: Tacticrazors the Chip of S...	溪流:战术剃刀芯片...	w
 Brook: Wretchedmartyred the Delig...	溪流:悲惨殉道的神圣...	w
+Build placement: Magma Glass Furnace	岩浆玻璃窑	wi
+Build placement: Upright Spear/Spike	直立长矛或尖刺	wi
 Building track stops is recommended!	建议建造轨道停靠点！	hP
 Carving fortifications through walls	在墙壁上开凿城防垛口	wo
 Character group role: Famous brawler	名声显赫的斗殴者	h
@@ -88202,6 +88211,8 @@ DFHack GUI Rename type: WeaponStore	武器店	l
 DFHack GUI Sitemap: merchant animal	商队动物	l
 DFHack GUI Spectate activity: Guard	警戒	l
 DFHack GUI Spectate job: Store item	存放物品	l
+DFHack GUI Title: Multiplayer Setup	多人游戏设置	l
+DFHack GUI Title: Update MultiDwarf	更新 MultiDwarf	l
 DFHack GUI Viewer status: No output	无输出	l
 DFHack help: "--markedfor <action>"	"--markedfor <action>"	l
 DFHack help: "--no-stringification"	"--no-stringification"	l
@@ -93387,6 +93398,9 @@ Book title subject: the Underworld	地狱	hi
 Bring up {p}'s crime of kidnapping	谈起{p1}犯下绑架罪这件事	hPt
 Bring up {p}'s job order violation	谈起{p1}违反工作命令这件事	hPt
 Bring up {p}'s refusal to give {i}	谈起{p1}拒绝交出{i1}这件事	hPt
+Build placement: Burial Receptacle	棺椁	wi
+Build placement: Display Furniture	展示家具	wi
+Build placement: Farmer's Workshop	农夫工坊	wi
 Build placement: Track/Ramp (NSEW)	坡道轨道（北南东西）	wi
 Cannot make request without leader	没有领袖，无法提出请求。	hP
 Character group role: Former slave	前奴隶	h
@@ -102573,6 +102587,9 @@ Book title subject: the Wounding	负伤	hi
 Bring up {e}'s foundation of {e}	谈起{e1}建立{e2}这件事	hPt
 Bring up {e}'s harassment of {e}	谈起{e1}侵扰{e2}这件事	hPt
 Bring up {p}'s possession of {i}	谈起{p1}持有{i1}这件事	hPt
+Build placement: Horizontal Axle	传动横轴	wi
+Build placement: Reinforced Wall	加固墙体	wi
+Build placement: Stone-Fall Trap	落石陷阱	wi
 Build placement: Track/Ramp (EW)	坡道轨道（东西）	wi
 Build placement: Track/Ramp (NE)	坡道轨道（北东）	wi
 Build placement: Track/Ramp (NS)	坡道轨道（北南）	wi
@@ -105903,10 +105920,15 @@ Bring up {i}'s absence from {e}	谈起{i1}已不在{e1}这件事	hPt
 Bring up {p}'s crime of robbery	谈起{p1}犯下抢劫罪这件事	hPt
 Bring up {p}'s crime of treason	谈起{p1}犯下叛国罪这件事	hPt
 Bring up {p}'s placement of {i}	谈起{p1}安置{i1}这件事	hPt
+Build placement: Archery Target	标靶	wi
+Build placement: Offering Place	供奉处	wi
+Build placement: Pressure Plate	压力板	wi
+Build placement: Siege Workshop	攻城器械工坊	wi
 Build placement: Track/Ramp (E)	坡道轨道（东）	wi
 Build placement: Track/Ramp (N)	坡道轨道（北）	wi
 Build placement: Track/Ramp (S)	坡道轨道（南）	wi
 Build placement: Track/Ramp (W)	坡道轨道（西）	wi
+Build placement: Traction Bench	牵引台	wi
 Build placement: {s}'s Workshop	{s}工坊	wtlx
 Building link installation: {s}	将安装在{s}处	l
 Can you tell me the way to {e}?	你能告诉我去{e1}的路吗？	hPtD
@@ -108632,8 +108654,16 @@ Bring up {i}'s presence in {e}	谈起{i1}位于{e1}这件事	hPt
 Bring up {p}'s crime of murder	谈起{p1}犯下谋杀罪这件事	hPt
 Bring up {p}'s presence in {e}	谈起{p1}出现在{e1}这件事	hPt
 Brook: Dullstops the Rosy Evil	溪流:沉闷停止玫瑰邪恶	w
+Build placement: Fortification	城防垛口	wi
+Build placement: Gear Assembly	齿轮组	wi
+Build placement: Glass Furnace	玻璃窑	wi
+Build placement: Leather Works	皮革工坊	wi
+Build placement: Magma Smelter	岩浆熔炉	wi
+Build placement: Up/Down Stair	上下行楼梯	wi
+Build placement: Vertical Axle	传动竖轴	wi
+Build placement: Vertical Bars	墙壁栅条	wi
 Can I help you with something?	有什么可以帮你的吗？	hPD
-Cannot embark on another site.	不能在已有地点上出发。	l
+Cannot embark on another site.	不能在已有地点上启程。	l
 Carve wooden helve from branch	用树枝雕刻木制斧柄	hP
 Certainly considered a brawler	被肯定地看做是一名斗士	w
 Chair rejected (not enclosed.)	椅子未被选用（房间未封闭）	hP
@@ -111181,7 +111211,12 @@ Bring up the abduction of {p}	谈起{p1}被绑架这件事	hPt
 Bring up the journey together	谈起共同的旅程	hP
 Bring up {p}'s crime of theft	谈起{p1}犯下盗窃罪这件事	hPt
 Bring up {p}'s gaining of {i}	谈起{p1}获得{i1}这件事	hPt
+Build placement: Bolt Thrower	弩箭投射器	wi
+Build placement: Construction	构筑物	wi
+Build placement: Glass Window	玻璃窗	wi
+Build placement: Siege Engine	攻城器械	wi
 Build placement: Track (NSEW)	轨道（北南东西）	wi
+Build placement: Wood Furnace	烧木窑	wi
 Cannot build at highest level	不能在最高层建造	wli
 Cannot raid your civilization	无法突袭自己的政权。	hP
 Certainly feared as a brigand	害怕被当作盗贼	w
@@ -111328,6 +111363,7 @@ DFHack GUI Rename type: Vault	秘库	l
 DFHack GUI Rename type: World	世界	l
 DFHack GUI Title: Add command	添加命令	l
 DFHack GUI Title: CP437 table	CP437 字符表	l
+DFHack GUI Title: Death Cause	死亡原因	l
 DFHack GUI Title: Mass Remove	批量移除	l
 DFHack help: "--emotion <id>"	"--emotion <id>"	l
 DFHack help: "--race <value>"	"--race <value>"	l
@@ -112333,6 +112369,7 @@ began worshipping {n} in {p}.	在{p1}开始崇拜{n1}。	ht
 being unable to find a hammer	找不到锤子	wi
 being unoccupied for too long	太久无事可做	wi
 being willing to accept death	愿意接受死亡	h
+black-crested gibbon children	黑冠长臂猿幼崽	wi
 blood amaranth inflorescences	血苋花序	wi
 blundered terribly during {e}	在{e1}期间犯下了严重失误	ht
 blundered terribly within {p}	在{p1}犯下了严重失误	ht
@@ -113327,6 +113364,7 @@ you can succumb to invasions.	入侵就可能让你覆灭。	hq
 {t} was {s} by {a} during {e}	在{e1}期间，{t1}被{a1}{s1}	ht
 {t} was {s} by {a} within {p}	在{p1}，{t1}被{a1}{s1}	ht
    * Requires wild colony or	   *需要野生蜂巢或	w
+ finished goodsfurnitureammo	成品、家具、弹药	wi
 "How can people be so glum?"	“人为什么会这么不快乐？”	l
 "I do admire a clever trap."	“我欣赏巧妙的圈套。”	l
 "I feel angry all the time."	“我心里总有一股怒气。”	l
@@ -113553,11 +113591,20 @@ Bring up {p}'s attack on {p}	谈起{p1}袭击{p2}这件事	hPt
 Bring up {p}'s giving of {i}	谈起{p1}交出{i1}这件事	hPt
 Brook: The Ocean of Dressing	溪流:调味海洋	w
 Brook: The Problematic Hedge	溪流:有问题的树篱	w
+Build placement: Animal Trap	动物陷阱	wi
+Build placement: Armor Stand	盔甲架	wi
+Build placement: Floor Grate	地板格栅	wi
 Build placement: Floor Hatch	地板活板门	wi
+Build placement: Magma Forge	岩浆锻造坊	wi
+Build placement: Screw Press	螺旋压榨机	wi
 Build placement: Track (NEW)	轨道（北东西）	wi
 Build placement: Track (NSE)	轨道（北南东）	wi
 Build placement: Track (NSW)	轨道（北南西）	wi
 Build placement: Track (SEW)	轨道（南东西）	wi
+Build placement: Trade Depot	贸易站	wi
+Build placement: Water Wheel	水车	wi
+Build placement: Weapon Rack	兵器架	wi
+Build placement: Weapon Trap	武器陷阱	wi
 Build placement: {s}'s Forge	{s}锻造工坊	wtlx
 Building link candidate: {s}	连接到{s}	l
 Camera controls ({d} of {d})	镜头控制 ({d} of {d})	wt
@@ -114724,6 +114771,7 @@ began worshipping {n} at {p}	在{p1}开始崇拜{n1}	ht
 began worshipping {n} in {p}	在{p1}开始崇拜{n1}	ht
 being unafraid in the moment	当时毫无畏惧	h
 big fluffy heads and bellies	很大的毛茸茸的头和肚子	wi
+black-handed gibbon children	黑掌长臂猿幼崽	wi
 blood amaranth inflorescence	血苋花序	wi
 brawl with {a} in the wilds.	在荒野中，与{a1}的斗殴。	htEi
 buried {a} alive during {e}.	在{e1}期间活埋了{a1}。	ht
@@ -115915,12 +115963,21 @@ Bring up {e}'s claim on {e}	谈起{e1}宣称拥有{e2}这件事	hPt
 Bring up {p}'s embezzlement	谈起{p1}挪用资金这件事	hPt
 Brook: The Packs of Tugging	小溪：拉扯之兽群	l
 Brook: The Primitive Defect	溪流:原始缺陷	w
+Build placement: Down Stair	下行楼梯	wi
+Build placement: Floor Bars	地板栅条	wi
+Build placement: Gem Window	宝石窗	wi
+Build placement: Instrument	乐器	wi
+Build placement: Magma Kiln	岩浆黏土窑	wi
+Build placement: Paved Road	铺装道路	wi
+Build placement: Screw Pump	螺杆泵	wi
 Build placement: Track (EW)	轨道（东西）	wi
 Build placement: Track (NE)	轨道（北东）	wi
 Build placement: Track (NS)	轨道（北南）	wi
 Build placement: Track (NW)	轨道（北西）	wi
 Build placement: Track (SE)	轨道（南东）	wi
 Build placement: Track (SW)	轨道（南西）	wi
+Build placement: Track Stop	轨道站点	wi
+Build placement: Wall Grate	墙壁格栅	wi
 Build placement: {s}'s Shop	{s}工坊	wtlx
 Building link rejected: {s}	无法连接到{s}	l
 Character group role: Enemy	敌人	h
@@ -118271,6 +118328,14 @@ Book title subject: Wedges	楔子	hi
 Bring up {e}'s destruction	谈起{e1}被毁这件事	hPt
 Broker cannot access depot	交易员无法到达贸易站	wi
 Brook: The Rift of Beetles	溪流:甲虫裂缝	w
+Build placement: Cage Trap	笼式陷阱	wi
+Build placement: Container	容器	wi
+Build placement: Dirt Road	泥土道路	wi
+Build placement: Farm Plot	耕地	wi
+Build placement: Floodgate	水闸	wi
+Build placement: Millstone	机械石磨	wi
+Build placement: Restraint	束缚器具	wi
+Build placement: Stockpile	堆料区	wi
 Build placement: Track (E)	轨道（东）	wi
 Build placement: Track (N)	轨道（北）	wi
 Build placement: Track (S)	轨道（南）	wi
@@ -119355,6 +119420,7 @@ being attacked by the dead	被死者攻击	wi
 being beaten with a hammer	被锤子鞭打	wi
 being nauseated by the sun	被阳光弄得反胃	wi
 beyond enormous rodentness	超巨大型啮齿动物	wi
+black-crested gibbon child	黑冠长臂猿幼崽	wi
 bled to death in the wilds	在荒野中失血而死	h
 blundered terribly at {p}.	在{p1}犯下了严重失误。	ht
 blundered terribly in {p}.	在{p1}犯下了严重失误。	ht
@@ -120484,6 +120550,13 @@ Book title subject: Wound	伤口	hi
 Bring up the death of {p}	谈起{p1}的死亡	hPt
 Broker requested at depot	请求交易员前往贸易站	wi
 Brook: The Vale of Dances	小溪: 舞蹈之谷	w
+Build placement: Ballista	弩炮	wi
+Build placement: Bookcase	书架	wi
+Build placement: Catapult	投石机	wi
+Build placement: Nest Box	巢箱	wi
+Build placement: Up Stair	上行楼梯	wi
+Build placement: Windmill	风车	wi
+Build placement: Workshop	工坊	wi
 Building link prompt: {s}	点击一个建筑，将其连接到{s}。	l
 Building toppled by ghost	建筑被幽灵推倒	w
 Cavern Layer Openness Max	洞穴层开阔度上限
@@ -121402,6 +121475,7 @@ being near to a in a cage	靠近笼中的生物	wi
 being near to a waterfall	靠近瀑布	wi
 being unnaturally ageless	由于以超自然方式长生不老	h
 being unnaturally ageless	以超自然方式永葆青春	wi
+black-handed gibbon child	黑掌长臂猿幼崽	wi
 bled to death during {e}.	在{e1}期间失血而死。	ht
 bled to death within {p}.	在{p1}失血而死。	ht
 blundered terribly at {p}	在{p1}犯下了严重失误	ht
@@ -121513,7 +121587,7 @@ gave in to fear of death.	因惧怕死亡而屈服了。	h
 giant albatross hatchling	巨型信天翁幼崽	wi
 giant alligator hatchling	巨型短吻鳄幼崽	wi
 giant bark scorpion venom	巨型树皮蝎毒素	wi
-giant cardinal hatchlings	巨型红衣凤头鸟幼崽	wi
+giant cardinal hatchlings	巨型红雀幼崽	wi
 giant cockatiel hatchling	巨型玄凤鹦鹉幼崽	wi
 giant lorikeet hatchlings	巨型吸蜜鹦鹉幼崽	wi
 giant monarch butterflies	巨型帝王蝶	wi
@@ -122306,6 +122380,7 @@ writing of a masterpiece.	书写杰作。	hEi
 {t} was {s} by {a} at {p}	在{p1}，{t1}被{a1}{s1}	ht
 {t} was {s} by {a} in {p}	在{p1}，{t1}被{a1}{s1}	ht
 {v} with a mixture of {j}	用{j1}混合染成{v1}	hIit
+ finished goodsfurniture	成品、家具	wi
 "Friendship is forever."	“友谊长存。”	l
 "I look splendid today."	“我今天真是光彩照人。”	l
 "I treasure my freedom."	“我珍视自由。”	l
@@ -122447,7 +122522,13 @@ Book title subject: Wind	风	hi
 Book title subject: Word	词	hi
 Book title subject: Year	年	hi
 Bring up {p}'s vandalism	谈起{p1}蓄意破坏这件事	hPt
+Build placement: Cabinet	橱柜	wi
+Build placement: Fishery	渔业工坊	wi
 Build placement: Furnace	熔炉	wi
+Build placement: Kitchen	厨房	wi
+Build placement: Rollers	滚动辊	wi
+Build placement: Smelter	熔炉	wi
+Build placement: Support	支柱	wi
 Capture and train small 	在此捕获和训练小动物。需要动	w
 Carve a gap in a smooth 	在光滑的墙面上凿一个缺口，让	w
 Carve downward staircase	挖掘下行楼梯	wi
@@ -123547,7 +123628,7 @@ getting into an argument	发生争吵	wi
 giant bluejay hatchlings	巨型冠蓝鸦幼崽	wi
 giant bushtit hatchlings	巨型丛山雀幼崽	wi
 giant buzzard hatchlings	巨型秃鹰幼崽	wi
-giant cardinal hatchling	巨型红衣凤头鸟幼崽	wi
+giant cardinal hatchling	巨型红雀幼崽	wi
 giant elephant seal pups	巨型象海豹幼崽	wi
 giant gila monster venom	巨型毒蜥毒素	wi
 giant grackle hatchlings	巨型黑羽椋鸟幼崽	wi
@@ -124538,7 +124619,10 @@ Broker can access depot	交易员可以到达贸易站	wi
 Brook: The Yellow Style	溪流:黄色风格	w
 Build a grand guildhall	建造大行会大厅	P
 Build menu: Stoneworker	石匠工坊	wi
+Build placement: Ashery	灰坊	wi
+Build placement: Bridge	桥	wi
 Build placement: Stairs	楼梯	wi
+Build placement: Statue	雕像	wi
 Can {b} Save The World?	{b}能拯救世界吗？	hbti
 Cancel tribute from {e}	取消{e1}的贡赋	hPt
 Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
@@ -126635,7 +126719,13 @@ Book title noun: ticks	滴答声	hi
 Bring up {p}'s bribery	谈起{p1}贿赂这件事	hPt
 Build a temple complex	建造神殿建筑群	P
 Build menu: Metalsmith	金属锻造坊	wi
+Build placement: Floor	地板	wi
+Build placement: Lever	控制杆	wi
+Build placement: Quern	手推磨	wi
+Build placement: Still	蒸馏工坊	wi
+Build placement: Table	桌子	wi
 Build placement: Track	轨道	wi
+Build placement: Wagon	货车	wi
 Carve upward staircase	挖掘上行楼梯	wi
 Catch live land animal	捕获活的陆地动物	wi
 Cavern Layer Water Max	洞穴层含水量上限
@@ -128774,6 +128864,21 @@ Brew drink from plant	用植物酿酒	wi
 Brook: The Fiery Cake	溪流:火热蛋糕	w
 Build grand guildhall	建造大行会大厅	P
 Build menu: Carpenter	木匠工坊	wi
+Build placement: Cage	笼子	wi
+Build placement: Door	门	wi
+Build placement: Hive	蜂箱	wi
+Build placement: Kiln	黏土窑	wi
+Build placement: Loom	织布机	wi
+Build placement: Nest	巢穴	wi
+Build placement: Ramp	斜坡	wi
+Build placement: Seat	座位	wi
+Build placement: Shop	商店	wi
+Build placement: Slab	石板	wi
+Build placement: Tool	工具	wi
+Build placement: Trap	陷阱	wi
+Build placement: Wall	墙	wi
+Build placement: Well	井	wi
+Build placement: Zone	活动区	wi
 Building ({d} of {d})	建造 ({d} of {d})	wt
 Cabinets are used in 	柜子用于个人卧室存放服饰物品。	w
 Cannot trade currency	无法交易货币。	hP
@@ -131138,6 +131243,7 @@ Brook: Tribegladness	小溪：欢欣部落
 Build material: Null	物品不存在	h
 Build menu: Clothier	裁缝工坊	wi
 Build menu: Mechanic	机械师工坊	wi
+Build placement: Bed	床	wi
 Build temple complex	建造神殿建筑群	P
 Build. (coming soon)	建造。（即将推出）	hj
 Cancel the agreement	取消约定	hP
@@ -133938,6 +134044,7 @@ yours or companion's	你或同伴留下的	h
 {v}-colored with {j}	用{j1}染成{v1}	hIit
    * Requires a jug	   *需要一个壶	w
  completely sublime	完全卓越的	wi
+ finished goodsammo	成品、弹药	wi
 "Strive for power."	“权力要靠争取。”	l
 "That isn't funny."	“这并不好笑。”	l
 "What do you want?"	“你想要什么？”	hP
@@ -134304,7 +134411,7 @@ Move selector right	向右移动选择器	w
 Move view/cursor up	向上移动视野/光标	w
 Musical Competition	音乐比赛	hEi
 Musical Performance	音乐表演	hEi
-Must embark on map.	必须在地图上选择出发区域。	l
+Must embark on map.	必须在地图上选择启程区域。	l
 Name pet (new menu)	为宠物命名（新菜单）	hP
 Name this building.	为此建筑命名。	hj
 Native Legends coup	一次政变	h
@@ -134934,7 +135041,7 @@ burned up in magma.	在岩浆中烧死了。	h
 burned {a} to death	烧死了{a1}	ht
 by {p} in the wilds	在荒野中，由{p1}实施的历史事件	htEi
 carambola wood logs	杨桃树原木	wi
-cardinal hatchlings	红衣凤头鸟幼崽	wi
+cardinal hatchlings	红雀幼崽	wi
 caroused during {e}	在{e1}期间纵情狂欢了	ht
 caroused within {p}	在{p1}纵情狂欢了	ht
 ceased to be a {s}.	不再担任{s1}。	ht
@@ -138302,7 +138409,7 @@ buzzard hatchlings	秃鹰幼崽	wi
 by {p} during {e}.	在{e1}期间，由{p1}实施的历史事件。	htEi
 by {p} within {p}.	在{p2}，由{p1}实施的历史事件。	htEi
 carambola wood log	杨桃树原木	wi
-cardinal hatchling	红衣凤头鸟幼崽	wi
+cardinal hatchling	红雀幼崽	wi
 category to place 	工坊构造好的家具。	w
 cave floater juice	洞穴飘浮者汁液	wi
 cave swallow woman	洞穴燕人	wi
@@ -146867,7 +146974,7 @@ candlenut flower	石栗花	wi
 candlenut leaves	石栗叶	wi
 carambola flower	杨桃花	wi
 carambola leaves	杨桃叶	wi
-cardinal leather	红衣凤头鸟皮革	wi
+cardinal leather	红雀皮革	wi
 caroused at {p}.	在{p1}纵情狂欢了。	ht
 caroused in {p}.	在{p1}纵情狂欢了。	ht
 cashew wood logs	腰果树原木	wi
@@ -152384,7 +152491,7 @@ giant armadillo	巨型犰狳	wi
 giant barn owls	巨型仓鸮	wi
 giant capuchins	巨型卷尾猴	wi
 giant capybaras	巨型水豚	wi
-giant cardinals	巨型红衣凤头鸟	wi
+giant cardinals	巨型红雀	wi
 giant cassowary	巨型鹤鸵	wi
 giant cave toad	巨型洞穴蟾蜍	wi
 giant chameleon	巨型变色蜥	wi
@@ -155200,6 +155307,7 @@ younger sibling	弟妹	wi
 {s} paper quire	{s}纸稿纸	hvt
 {s}-bound codex	{s}书壳装订抄本	hvt
  Fortification	垛墙	wi
+ furnitureammo	家具、弹药	wi
  leather image	皮质图案	wi
 "Art is life."	“艺术就是生活。”	l
 ({s}, {d}-{d})	（{s}，{d}—{d}年）	ht
@@ -156480,8 +156588,8 @@ carambola leaf	杨桃叶	wi
 carambola tree	杨桃树	wi
 carambola wine	杨桃果酒	wi
 carambola wood	杨桃木	wi
-cardinal woman	红衣凤头鸟人	wi
-cardinal women	红衣凤头鸟人	wi
+cardinal woman	红雀人	wi
+cardinal women	红雀人	wi
 carving knives	切肉刀	wi
 cashew flowers	腰果花	wi
 cassava flower	木薯花	wi
@@ -157627,7 +157735,7 @@ giant bushtits	巨型丛山雀	wi
 giant buzzards	巨型秃鹰	wi
 giant capuchin	巨型卷尾猴	wi
 giant capybara	巨型水豚	wi
-giant cardinal	巨型红衣凤头鸟	wi
+giant cardinal	巨型红雀	wi
 giant cheetahs	巨型猎豹	wi
 giant chipmunk	巨型花栗鼠	wi
 giant echidnas	巨型针鼹	wi
@@ -165428,8 +165536,8 @@ capuchin men	卷尾猴人	wi
 capybara man	水豚人	wi
 capybara men	水豚人	wi
 capybara pup	水豚幼崽	wi
-cardinal man	红衣凤头鸟人	wi
-cardinal men	红衣凤头鸟人	wi
+cardinal man	红雀人	wi
+cardinal men	红雀人	wi
 carrot seeds	胡萝卜种子	wi
 carrot umbel	胡罗卜伞形花序	wi
 carving fork	切肉叉	wi
@@ -176885,7 +176993,7 @@ cacao pod	可可豆荚	wi
 capuchins	卷尾猴	wi
 capybaras	水豚	wi
 carambola	杨桃	wi
-cardinals	红衣凤头鸟	wi
+cardinals	红雀	wi
 carnality	肉欲	wi
 carnelian	红玉髓	wi
 caroused.	纵情狂欢了。	h
@@ -179166,7 +179274,7 @@ calluses	老茧	wi
 captains	队长	wi
 capuchin	卷尾猴	wi
 capybara	水豚	wi
-cardinal	红衣凤头鸟	wi
+cardinal	红雀	wi
 carnages	屠戮	wi
 caroused	纵情狂欢了	h
 carp fry	鲤鱼幼崽	wi
@@ -180179,7 +180287,7 @@ Dwarves	矮人	w
 D\x8Cshmab	底斯玛	wi
 Eat {s}	吃{s1}	hPt
 Elation	狂喜	w
-Embark!	出发！
+Embark!	启程！
 Embrace	拥抱	w
 Empathy	同理心	wi
 Enabled	已启用	w
@@ -181614,6 +181722,7 @@ Lethal	致命	wl
 Libash	利巴石	wi
 Lirlez	利尔莱兹	wi
 Little	少量	wi
+Living	存活	w
 Loaded	已装填	wi
 Lokast	洛凯斯	wi
 Lonely	孤独	w

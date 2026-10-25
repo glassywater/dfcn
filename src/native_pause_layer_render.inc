@@ -11,6 +11,38 @@ struct NativeHelpIndexLayout {
     std::optional<SDL_Rect> intro;
 };
 
+static void capture_native_pause_ending_body(void *menu) {
+    g_native_pause_ending_body.reset();
+    try {
+        // PE 53.16 options_interfacest: mode +0x4, title +0x8 and the
+        // paragraph's vector<string *> +0x28. Modes 1/9/10 are fortress
+        // ended/adventurer retired/adventurer dead. The render's row-count
+        // and row loops read exactly this vector (0x1e1939..0x1e1a84).
+        const uintptr_t owner = reinterpret_cast<uintptr_t>(menu);
+        std::array<unsigned char, 0x40> state{};
+        if (!native_history_copy_bytes(owner, state.data(), state.size())) return;
+        NativePauseEndingBody body;
+        std::memcpy(&body.mode, state.data() + 0x4, sizeof(body.mode));
+        if (body.mode != 1 && body.mode != 9 && body.mode != 10) return;
+        NativeBorrowedVector<uintptr_t> rows;
+        std::memcpy(&rows, state.data() + 0x28, sizeof(rows));
+        if (!rows.valid(65536) || !rows.size() ||
+                !native_history_copy_string(owner + 0x8, body.title)) return;
+        body.rows.reserve(rows.size());
+        body.row_addresses.reserve(rows.size());
+        for (size_t row = 0; row < rows.size(); ++row) {
+            uintptr_t address = 0;
+            std::string source;
+            if (!native_history_copy_bytes(reinterpret_cast<uintptr_t>(rows.begin + row),
+                    &address, sizeof(address)) || !address ||
+                    !native_history_copy_string(address, source)) return;
+            body.rows.push_back(std::move(source));
+            body.row_addresses.push_back(address);
+        }
+        g_native_pause_ending_body = std::move(body);
+    } catch (...) {}
+}
+
 static std::optional<NativeHelpIndexLayout> native_help_index_layout(void *menu,
         const graphicst &gps, int32_t screen_left, int32_t screen_right) {
     // options_interfacest renders manual-save progress before doing_help.
@@ -77,6 +109,7 @@ static void native_pause_draw(void *menu, uint32_t tick, int32_t screen_left,
         return;
     }
     TranslationStateScope translation;
+    g_native_pause_ending_body.reset();
     auto *gps = native_graphics();
     const auto help_index = gps
         ? native_help_index_layout(menu, *gps, screen_left, screen_right) : std::nullopt;
@@ -132,6 +165,7 @@ static void native_pause_draw(void *menu, uint32_t tick, int32_t screen_left,
     NativeInfoCapturedTextScope captions(g_native_pause_text);
     NativePauseWriteScope writing(gps);
     callback.call_native([&] { original(menu, tick, screen_left, screen_right); });
+    capture_native_pause_ending_body(menu);
     layer.foreground.graphics()->top_in_use = gps->top_in_use;
     layer.ready = true;
     NativeUiReadScope::invalidate_reads();

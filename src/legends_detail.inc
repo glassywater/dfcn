@@ -194,9 +194,16 @@ std::optional<std::string> Overlay::translate_legends_name(
         (person ? "person:" : "place:") +
         (entity_reference ? "entity:" : "unbound:") + name;
     return translation_work_memo(memo_key, [&]() -> std::optional<std::string> {
-    if (person)
+    if (person) {
         if (const auto identity = native_unit_identity_source_target(trim_view(raw)))
             return identity;
+        // Arena-generated given names retain their species and decimal
+        // instance number in historical references, including after a caste
+        // prefix. Resolve that complete name before the ordinary generated
+        // name grammar rejects digits; any surname/title stays name-owned.
+        if (const auto numbered = translate_numbered_creature_name(name))
+            return numbered;
+    }
     // A typed actor/title can follow a lower-case article in prose. Preserve
     // its native name-group boundary while normalizing only that article;
     // the complete title-word validation below still rejects ordinary prose.

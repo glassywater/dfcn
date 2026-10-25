@@ -1,0 +1,15 @@
+DFCN 地图预览 1.0
+
+适用于 Dwarf Fortress 53.16，Windows x64。
+需要 DFCN v53.16-20261024.2 或更新版本。
+
+安装 DFCN 汉化核心：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379
+
+订阅并下载地图预览：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3825995422
+
+本模组通过 Steam 订阅状态及下载目录识别。仅将 ZIP 解压到游戏目录不会启用；无需在创建世界时启用模组，也无需 DFHack。
+下载完成后，汉化设置中显示“地图预览”开关；默认关闭，保存玩家的选择。
+开启后，在要塞选址界面显示鼠标位置的高程、水系及地貌概览。
+预览使用选址格尺度的数据，河道为示意显示，不等同于进入要塞后生成的逐格地图。

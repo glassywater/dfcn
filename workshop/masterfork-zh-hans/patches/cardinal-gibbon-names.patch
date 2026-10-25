@@ -1,0 +1,308 @@
+# Masterfork zh-Hans Workshop item 3822762805, data version 2.
+# Correct cardinal terminology and complete native gibbon juvenile labels.
+# Paths are relative to the existing translation package root.
+
+diff --git a/dfcn/translations.tsv b/dfcn/translations.tsv
+--- a/dfcn/translations.tsv
++++ b/dfcn/translations.tsv
+@@ -17177,8 +17177,12 @@
+ black-cap men	黑菇男子	l
+ black-caps	黑菇木	l
+ black-crested gibbon	黑冠长臂猿	l
++black-crested gibbon child	黑冠长臂猿幼崽	wi
++black-crested gibbon children	黑冠长臂猿幼崽	wi
+ black-crested gibbons	黑冠长臂猿	l
+ black-handed gibbon	黑掌长臂猿	l
++black-handed gibbon child	黑掌长臂猿幼崽	wi
++black-handed gibbon children	黑掌长臂猿幼崽	wi
+ black-handed gibbons	黑掌长臂猿	l
+ blackberries	黑莓	l
+ blackberry	黑莓	l
+@@ -18729,21 +18733,21 @@
+ carbuncle kitten	宝石兽幼崽	l
+ carbuncle kittens	宝石兽猫幼崽	l
+ carbuncles	宝石兽	l
+-cardinal	主红雀	l
+-cardinal baby boy	主红雀婴儿男孩	l
+-cardinal baby boys	主红雀婴儿男孩	l
+-cardinal baby girl	主红雀婴儿女孩	l
+-cardinal baby girls	主红雀婴儿女孩	l
+-cardinal boy	主红雀男孩	l
+-cardinal boys	主红雀男孩	l
+-cardinal girl	主红雀女孩	l
+-cardinal hatchling	主红雀幼崽	l
+-cardinal hatchlings	主红雀幼崽	l
+-cardinal man	主红雀人	l
+-cardinal men	主红雀人	l
+-cardinal woman	主红雀人	l
+-cardinal women	主红雀人	l
+-cardinals	主红雀	l
++cardinal	红雀	l
++cardinal baby boy	红雀婴儿男孩	l
++cardinal baby boys	红雀婴儿男孩	l
++cardinal baby girl	红雀婴儿女孩	l
++cardinal baby girls	红雀婴儿女孩	l
++cardinal boy	红雀男孩	l
++cardinal boys	红雀男孩	l
++cardinal girl	红雀女孩	l
++cardinal hatchling	红雀幼崽	l
++cardinal hatchlings	红雀幼崽	l
++cardinal man	红雀人	l
++cardinal men	红雀人	l
++cardinal woman	红雀人	l
++cardinal women	红雀人	l
++cardinals	红雀	l
+ carnotaurus	食肉牛龙	l
+ carnotaurus hatchling	食肉牛龙幼崽	l
+ carnotaurus hatchlings	食肉牛龙幼崽	l
+@@ -21953,10 +21957,10 @@
+ giant capybara pup	巨型水豚幼崽	l
+ giant capybara pups	巨型水豚幼崽	l
+ giant capybaras	巨型水豚	l
+-giant cardinal	巨型主红雀	l
+-giant cardinal hatchling	巨型主红雀幼崽	l
+-giant cardinal hatchlings	巨型主红雀幼崽	l
+-giant cardinals	巨型主红雀	l
++giant cardinal	巨型红雀	l
++giant cardinal hatchling	巨型红雀幼崽	l
++giant cardinal hatchlings	巨型红雀幼崽	l
++giant cardinals	巨型红雀	l
+ giant cassowaries	巨型鹤鸵	l
+ giant cassowary	巨型鹤鸵	l
+ giant cassowary chick	巨型鹤鸵幼崽	l
+@@ -44261,8 +44265,8 @@
+ A crested bird-like monster with harsh, echoing chirps and broad wings decorated with black patterns. His attractive blue feathers contrast with the patterned white feathers on his front.	一种长有羽冠的鸟形巨怪，尖厉的叫声回荡四周，宽阔的双翼上饰有黑色花纹。它漂亮的蓝羽与胸腹带花纹的白羽相互映衬。	lP
+ A small crested bird with attractive red feathers and song-like chirps. She hops about temperate forest foraging for her meal.	一种长有羽冠的小鸟，红羽漂亮，鸣声如歌。它在温带森林中四处蹦跳觅食。	lP
+ A small crested bird with attractive red feathers and song-like chirps. He hops about temperate forest foraging for his meal.	一种长有羽冠的小鸟，红羽漂亮，鸣声如歌。它在温带森林中四处蹦跳觅食。	lP
+-A small, red-feathered harpy with enveloping winged arms and the head of a cardinal. His attractive plumage contrasts with the black feathers that form a mask on his face, and his tall crest looks like windblown hair. His body is unusually light. He doesn't care that he's naked.	一个身形矮小的红羽翼人，长着主红雀的头，翼臂宽大，能将身体包拢。他脸上的黑羽宛如面罩，衬托着漂亮的羽色，高高的羽冠像被风吹起的头发。他的身体异常轻盈，对自己的赤身裸体毫不在意。	lP
+-A small, red-feathered harpy with enveloping winged arms and the head of a cardinal. Her attractive plumage contrasts with the black feathers that form a mask on her face, and her tall crest looks like windblown hair. Her body is unusually light. She doesn't care that she's naked.	一个身形矮小的红羽翼人，长着主红雀的头，翼臂宽大，能将身体包拢。她脸上的黑羽宛如面罩，衬托着漂亮的羽色，高高的羽冠像被风吹起的头发。她的身体异常轻盈，对自己的赤身裸体毫不在意。	lP
++A small, red-feathered harpy with enveloping winged arms and the head of a cardinal. His attractive plumage contrasts with the black feathers that form a mask on his face, and his tall crest looks like windblown hair. His body is unusually light. He doesn't care that he's naked.	一个身形矮小的红羽翼人，长着红雀的头，翼臂宽大，能将身体包拢。他脸上的黑羽宛如面罩，衬托着漂亮的羽色，高高的羽冠像被风吹起的头发。他的身体异常轻盈，对自己的赤身裸体毫不在意。	lP
++A small, red-feathered harpy with enveloping winged arms and the head of a cardinal. Her attractive plumage contrasts with the black feathers that form a mask on her face, and her tall crest looks like windblown hair. Her body is unusually light. She doesn't care that she's naked.	一个身形矮小的红羽翼人，长着红雀的头，翼臂宽大，能将身体包拢。她脸上的黑羽宛如面罩，衬托着漂亮的羽色，高高的羽冠像被风吹起的头发。她的身体异常轻盈，对自己的赤身裸体毫不在意。	lP
+ A crested bird-like monster with an echoing, song-like call. She hops about her domain, searching for her next meal. A black mask accents her attractive red feathers.	一种长有羽冠的鸟形巨怪，歌唱般的叫声回荡四周。它在领地内四处蹦跳，寻找下一顿食物。黑色面罩状斑纹衬托着漂亮的红羽。	lP
+ A crested bird-like monster with an echoing, song-like call. He hops about his domain, searching for his next meal. A black mask accents his attractive red feathers.	一种长有羽冠的鸟形巨怪，歌唱般的叫声回荡四周。它在领地内四处蹦跳，寻找下一顿食物。黑色面罩状斑纹衬托着漂亮的红羽。	lP
+ A small bird with bright eyes and harsh calls; she flocks with her kind, amplifying the din. She forages and sings in temperate pasture.	一种眼睛明亮、叫声尖厉的小鸟，与同类成群聚集时格外喧闹。它在温带牧草地上觅食鸣唱。	lP
+@@ -46878,8 +46882,8 @@
+ A crested bird-like monster with harsh, echoing chirps and broad wings decorated with black patterns.  His attractive blue feathers contrast with the patterned white feathers on his front.	一种长有羽冠的鸟形巨怪，尖厉的叫声回荡四周，宽阔的双翼上饰有黑色花纹。它漂亮的蓝羽与胸腹带花纹的白羽相互映衬。	lP
+ A small crested bird with attractive red feathers and song-like chirps.  She hops about temperate forest foraging for her meal.	一种长有羽冠的小鸟，红羽漂亮，鸣声如歌。它在温带森林中四处蹦跳觅食。	lP
+ A small crested bird with attractive red feathers and song-like chirps.  He hops about temperate forest foraging for his meal.	一种长有羽冠的小鸟，红羽漂亮，鸣声如歌。它在温带森林中四处蹦跳觅食。	lP
+-A small, red-feathered harpy with enveloping winged arms and the head of a cardinal.  His attractive plumage contrasts with the black feathers that form a mask on his face, and his tall crest looks like windblown hair.  His body is unusually light.  He doesn't care that he's naked.	一个身形矮小的红羽翼人，长着主红雀的头，翼臂宽大，能将身体包拢。他脸上的黑羽宛如面罩，衬托着漂亮的羽色，高高的羽冠像被风吹起的头发。他的身体异常轻盈，对自己的赤身裸体毫不在意。	lP
+-A small, red-feathered harpy with enveloping winged arms and the head of a cardinal.  Her attractive plumage contrasts with the black feathers that form a mask on her face, and her tall crest looks like windblown hair.  Her body is unusually light.  She doesn't care that she's naked.	一个身形矮小的红羽翼人，长着主红雀的头，翼臂宽大，能将身体包拢。她脸上的黑羽宛如面罩，衬托着漂亮的羽色，高高的羽冠像被风吹起的头发。她的身体异常轻盈，对自己的赤身裸体毫不在意。	lP
++A small, red-feathered harpy with enveloping winged arms and the head of a cardinal.  His attractive plumage contrasts with the black feathers that form a mask on his face, and his tall crest looks like windblown hair.  His body is unusually light.  He doesn't care that he's naked.	一个身形矮小的红羽翼人，长着红雀的头，翼臂宽大，能将身体包拢。他脸上的黑羽宛如面罩，衬托着漂亮的羽色，高高的羽冠像被风吹起的头发。他的身体异常轻盈，对自己的赤身裸体毫不在意。	lP
++A small, red-feathered harpy with enveloping winged arms and the head of a cardinal.  Her attractive plumage contrasts with the black feathers that form a mask on her face, and her tall crest looks like windblown hair.  Her body is unusually light.  She doesn't care that she's naked.	一个身形矮小的红羽翼人，长着红雀的头，翼臂宽大，能将身体包拢。她脸上的黑羽宛如面罩，衬托着漂亮的羽色，高高的羽冠像被风吹起的头发。她的身体异常轻盈，对自己的赤身裸体毫不在意。	lP
+ A crested bird-like monster with an echoing, song-like call.  She hops about her domain, searching for her next meal.  A black mask accents her attractive red feathers.	一种长有羽冠的鸟形巨怪，歌唱般的叫声回荡四周。它在领地内四处蹦跳，寻找下一顿食物。黑色面罩状斑纹衬托着漂亮的红羽。	lP
+ A crested bird-like monster with an echoing, song-like call.  He hops about his domain, searching for his next meal.  A black mask accents his attractive red feathers.	一种长有羽冠的鸟形巨怪，歌唱般的叫声回荡四周。它在领地内四处蹦跳，寻找下一顿食物。黑色面罩状斑纹衬托着漂亮的红羽。	lP
+ A small bird with bright eyes and harsh calls; she flocks with her kind, amplifying the din.  She forages and sings in temperate pasture.	一种眼睛明亮、叫声尖厉的小鸟，与同类成群聚集时格外喧闹。它在温带牧草地上觅食鸣唱。	lP
+@@ -48477,42 +48481,42 @@
+ Giant bluejay hatchling	巨型冠蓝鸦幼崽	l
+ Giant Bluejay Hatchlings	巨型冠蓝鸦幼崽	l
+ Giant bluejay hatchlings	巨型冠蓝鸦幼崽	l
+-Cardinal	主红雀	l
+-Cardinals	主红雀	l
+-Cardinal hatchling	主红雀幼崽	l
+-Cardinal Hatchling	主红雀幼崽	l
+-Cardinal Hatchlings	主红雀幼崽	l
+-Cardinal hatchlings	主红雀幼崽	l
+-Cardinal Man	主红雀人	l
+-Cardinal man	主红雀人	l
+-Cardinal men	主红雀人	l
+-Cardinal Men	主红雀人	l
+-Cardinal baby boy	主红雀婴儿男孩	l
+-Cardinal Baby Boy	主红雀婴儿男孩	l
+-Cardinal baby boys	主红雀婴儿男孩	l
+-Cardinal Baby Boys	主红雀婴儿男孩	l
+-Cardinal boy	主红雀男孩	l
+-Cardinal Boy	主红雀男孩	l
+-Cardinal boys	主红雀男孩	l
+-Cardinal Boys	主红雀男孩	l
+-Cardinal Woman	主红雀人	l
+-Cardinal woman	主红雀人	l
+-Cardinal women	主红雀人	l
+-Cardinal Women	主红雀人	l
+-Cardinal baby girl	主红雀婴儿女孩	l
+-Cardinal Baby Girl	主红雀婴儿女孩	l
+-Cardinal baby girls	主红雀婴儿女孩	l
+-Cardinal Baby Girls	主红雀婴儿女孩	l
+-Cardinal girl	主红雀女孩	l
+-Cardinal Girl	主红雀女孩	l
+-Giant Cardinal	巨型主红雀	l
+-Giant cardinal	巨型主红雀	l
+-Giant cardinals	巨型主红雀	l
+-Giant Cardinals	巨型主红雀	l
+-Giant Cardinal Hatchling	巨型主红雀幼崽	l
+-Giant cardinal hatchling	巨型主红雀幼崽	l
+-Giant Cardinal Hatchlings	巨型主红雀幼崽	l
+-Giant cardinal hatchlings	巨型主红雀幼崽	l
++Cardinal	红雀	l
++Cardinals	红雀	l
++Cardinal hatchling	红雀幼崽	l
++Cardinal Hatchling	红雀幼崽	l
++Cardinal Hatchlings	红雀幼崽	l
++Cardinal hatchlings	红雀幼崽	l
++Cardinal Man	红雀人	l
++Cardinal man	红雀人	l
++Cardinal men	红雀人	l
++Cardinal Men	红雀人	l
++Cardinal baby boy	红雀婴儿男孩	l
++Cardinal Baby Boy	红雀婴儿男孩	l
++Cardinal baby boys	红雀婴儿男孩	l
++Cardinal Baby Boys	红雀婴儿男孩	l
++Cardinal boy	红雀男孩	l
++Cardinal Boy	红雀男孩	l
++Cardinal boys	红雀男孩	l
++Cardinal Boys	红雀男孩	l
++Cardinal Woman	红雀人	l
++Cardinal woman	红雀人	l
++Cardinal women	红雀人	l
++Cardinal Women	红雀人	l
++Cardinal baby girl	红雀婴儿女孩	l
++Cardinal Baby Girl	红雀婴儿女孩	l
++Cardinal baby girls	红雀婴儿女孩	l
++Cardinal Baby Girls	红雀婴儿女孩	l
++Cardinal girl	红雀女孩	l
++Cardinal Girl	红雀女孩	l
++Giant Cardinal	巨型红雀	l
++Giant cardinal	巨型红雀	l
++Giant cardinals	巨型红雀	l
++Giant Cardinals	巨型红雀	l
++Giant Cardinal Hatchling	巨型红雀幼崽	l
++Giant cardinal hatchling	巨型红雀幼崽	l
++Giant Cardinal Hatchlings	巨型红雀幼崽	l
++Giant cardinal hatchlings	巨型红雀幼崽	l
+ Grackle	普通拟八哥	l
+ Grackles	普通拟八哥	l
+ Grackle Hatchling	拟八哥幼崽	l
+diff --git a/dfcn/rulesets/zh-Hans/creatures/name/masterfork.toml b/dfcn/rulesets/zh-Hans/creatures/name/masterfork.toml
+--- a/dfcn/rulesets/zh-Hans/creatures/name/masterfork.toml
++++ b/dfcn/rulesets/zh-Hans/creatures/name/masterfork.toml
+@@ -474,9 +474,13 @@
+ "black-cap man" = "黑菇男子"
+ "black-cap men" = "黑菇男子"
+ "black-crested gibbon" = "黑冠长臂猿"
++"black-crested gibbon child" = "黑冠长臂猿幼崽"
+ "black-crested gibbons" = "黑冠长臂猿"
++"black-crested gibbon children" = "黑冠长臂猿幼崽"
+ "black-handed gibbon" = "黑掌长臂猿"
++"black-handed gibbon child" = "黑掌长臂猿幼崽"
+ "black-handed gibbons" = "黑掌长臂猿"
++"black-handed gibbon children" = "黑掌长臂猿幼崽"
+ "blacktip reef shark" = "黑鳍礁鲨"
+ "blacktip reef shark pup" = "黑鳍礁鲨幼崽"
+ "blacktip reef shark pups" = "黑鳍礁鲨幼崽"
+@@ -716,21 +720,21 @@
+ "carbuncle kitten" = "宝石兽幼崽"
+ "carbuncle kittens" = "宝石兽猫幼崽"
+ "carbuncles" = "宝石兽"
+-"cardinal" = "主红雀"
+-"cardinal baby boy" = "主红雀婴儿男孩"
+-"cardinal baby boys" = "主红雀婴儿男孩"
+-"cardinal baby girl" = "主红雀婴儿女孩"
+-"cardinal baby girls" = "主红雀婴儿女孩"
+-"cardinal boy" = "主红雀男孩"
+-"cardinal boys" = "主红雀男孩"
+-"cardinal girl" = "主红雀女孩"
+-"cardinal hatchling" = "主红雀幼崽"
+-"cardinal hatchlings" = "主红雀幼崽"
+-"cardinal man" = "主红雀人"
+-"cardinal men" = "主红雀人"
+-"cardinal woman" = "主红雀人"
+-"cardinal women" = "主红雀人"
+-"cardinals" = "主红雀"
++"cardinal" = "红雀"
++"cardinal baby boy" = "红雀婴儿男孩"
++"cardinal baby boys" = "红雀婴儿男孩"
++"cardinal baby girl" = "红雀婴儿女孩"
++"cardinal baby girls" = "红雀婴儿女孩"
++"cardinal boy" = "红雀男孩"
++"cardinal boys" = "红雀男孩"
++"cardinal girl" = "红雀女孩"
++"cardinal hatchling" = "红雀幼崽"
++"cardinal hatchlings" = "红雀幼崽"
++"cardinal man" = "红雀人"
++"cardinal men" = "红雀人"
++"cardinal woman" = "红雀人"
++"cardinal women" = "红雀人"
++"cardinals" = "红雀"
+ "carnotaurus" = "食肉牛龙"
+ "carnotaurus hatchling" = "食肉牛龙幼崽"
+ "carnotaurus hatchlings" = "食肉牛龙幼崽"
+@@ -1816,10 +1820,10 @@
+ "giant capybara pup" = "巨型水豚幼崽"
+ "giant capybara pups" = "巨型水豚幼崽"
+ "giant capybaras" = "巨型水豚"
+-"giant cardinal" = "巨型主红雀"
+-"giant cardinal hatchling" = "巨型主红雀幼崽"
+-"giant cardinal hatchlings" = "巨型主红雀幼崽"
+-"giant cardinals" = "巨型主红雀"
++"giant cardinal" = "巨型红雀"
++"giant cardinal hatchling" = "巨型红雀幼崽"
++"giant cardinal hatchlings" = "巨型红雀幼崽"
++"giant cardinals" = "巨型红雀"
+ "giant cassowaries" = "巨型鹤鸵"
+ "giant cassowary" = "巨型鹤鸵"
+ "giant cassowary chick" = "巨型鹤鸵幼崽"
+@@ -6331,9 +6335,13 @@
+ "black-cap man" = "黑菇男子"
+ "black-cap men" = "黑菇男子"
+ "black-crested gibbon" = "黑冠长臂猿"
++"black-crested gibbon child" = "黑冠长臂猿幼崽"
+ "black-crested gibbons" = "黑冠长臂猿"
++"black-crested gibbon children" = "黑冠长臂猿幼崽"
+ "black-handed gibbon" = "黑掌长臂猿"
++"black-handed gibbon child" = "黑掌长臂猿幼崽"
+ "black-handed gibbons" = "黑掌长臂猿"
++"black-handed gibbon children" = "黑掌长臂猿幼崽"
+ "blacktip reef shark" = "黑鳍礁鲨"
+ "blacktip reef shark pup" = "黑鳍礁鲨幼崽"
+ "blacktip reef shark pups" = "黑鳍礁鲨幼崽"
+@@ -6573,21 +6581,21 @@
+ "carbuncle kitten" = "宝石兽幼崽"
+ "carbuncle kittens" = "宝石兽猫幼崽"
+ "carbuncles" = "宝石兽"
+-"cardinal" = "主红雀"
+-"cardinal baby boy" = "主红雀婴儿男孩"
+-"cardinal baby boys" = "主红雀婴儿男孩"
+-"cardinal baby girl" = "主红雀婴儿女孩"
+-"cardinal baby girls" = "主红雀婴儿女孩"
+-"cardinal boy" = "主红雀男孩"
+-"cardinal boys" = "主红雀男孩"
+-"cardinal girl" = "主红雀女孩"
+-"cardinal hatchling" = "主红雀幼崽"
+-"cardinal hatchlings" = "主红雀幼崽"
+-"cardinal man" = "主红雀人"
+-"cardinal men" = "主红雀人"
+-"cardinal woman" = "主红雀人"
+-"cardinal women" = "主红雀人"
+-"cardinals" = "主红雀"
++"cardinal" = "红雀"
++"cardinal baby boy" = "红雀婴儿男孩"
++"cardinal baby boys" = "红雀婴儿男孩"
++"cardinal baby girl" = "红雀婴儿女孩"
++"cardinal baby girls" = "红雀婴儿女孩"
++"cardinal boy" = "红雀男孩"
++"cardinal boys" = "红雀男孩"
++"cardinal girl" = "红雀女孩"
++"cardinal hatchling" = "红雀幼崽"
++"cardinal hatchlings" = "红雀幼崽"
++"cardinal man" = "红雀人"
++"cardinal men" = "红雀人"
++"cardinal woman" = "红雀人"
++"cardinal women" = "红雀人"
++"cardinals" = "红雀"
+ "carnotaurus" = "食肉牛龙"
+ "carnotaurus hatchling" = "食肉牛龙幼崽"
+ "carnotaurus hatchlings" = "食肉牛龙幼崽"
+@@ -7673,10 +7681,10 @@
+ "giant capybara pup" = "巨型水豚幼崽"
+ "giant capybara pups" = "巨型水豚幼崽"
+ "giant capybaras" = "巨型水豚"
+-"giant cardinal" = "巨型主红雀"
+-"giant cardinal hatchling" = "巨型主红雀幼崽"
+-"giant cardinal hatchlings" = "巨型主红雀幼崽"
+-"giant cardinals" = "巨型主红雀"
++"giant cardinal" = "巨型红雀"
++"giant cardinal hatchling" = "巨型红雀幼崽"
++"giant cardinal hatchlings" = "巨型红雀幼崽"
++"giant cardinals" = "巨型红雀"
+ "giant cassowaries" = "巨型鹤鸵"
+ "giant cassowary" = "巨型鹤鸵"
+ "giant cassowary chick" = "巨型鹤鸵幼崽"

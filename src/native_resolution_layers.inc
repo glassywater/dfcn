@@ -4,6 +4,7 @@
 static NativeUiLayerStorage g_native_resolution_layer;
 
 static void native_resolution_begin_frame() {
+    g_native_settings_frame = {};
     auto &layer = g_native_resolution_layer;
     layer.ready = false;
     layer.frames.clear();

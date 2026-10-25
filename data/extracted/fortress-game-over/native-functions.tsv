@@ -1,0 +1,9 @@
+edition	image	function	start_rva	end_rva	assembly
+steam	PE:6a70a6d9:02711000	menu-render	0x1ddd50	0x1e34ed	steam-menu-render.asm
+steam	PE:6a70a6d9:02711000	menu-constructor	0x1e65a0	0x1e89f8	steam-menu-constructor.asm
+steam	PE:6a70a6d9:02711000	paragraph-wrap	0x8e7310	0x8e7431	steam-paragraph-wrap.asm
+steam	PE:6a70a6d9:02711000	paragraph-lines-wrap	0x8e7440	0x8e7716	steam-paragraph-lines-wrap.asm
+classic	PE:6a70b91c:0270a000	menu-render	0x1ddce0	0x1e347d	classic-menu-render.asm
+classic	PE:6a70b91c:0270a000	menu-constructor	0x1e6530	0x1e8988	classic-menu-constructor.asm
+classic	PE:6a70b91c:0270a000	paragraph-wrap	0x8e4b80	0x8e4ca1	classic-paragraph-wrap.asm
+classic	PE:6a70b91c:0270a000	paragraph-lines-wrap	0x8e4cb0	0x8e4f86	classic-paragraph-lines-wrap.asm

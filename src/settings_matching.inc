@@ -6,6 +6,7 @@ void Overlay::append_settings_toggle_labels(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const {
     if (!gps_ || rows.size() != static_cast<size_t>(gps_->dimy) ||
             NativeTooltipPageScope::active) return;
+    if (native_settings_announcements_active(*gps_)) return;
     std::vector<std::string> logical(rows.size(), std::string(gps_->dimx, ' '));
     const auto read_row = [&](int y) {
         for (int x = 0; x < gps_->dimx; ++x) {
@@ -111,6 +112,7 @@ void Overlay::append_settings_toggle_labels(std::vector<std::string> &rows,
 // this complete current page before entering character, item and prose readers.
 bool Overlay::find_settings_video_matches(int only_y,
         const unsigned char *screen_override, std::vector<Match> &matches) const {
+    if (find_settings_announcement_matches(only_y, screen_override, matches)) return true;
     if (!gps_ || !gps_->screen || gps_->dimx <= 0 || gps_->dimx > 1000 ||
             gps_->dimy <= 0 || gps_->dimy > 1000 || only_y >= gps_->dimy ||
             trie_.empty() || NativeUiReadScope::active ||

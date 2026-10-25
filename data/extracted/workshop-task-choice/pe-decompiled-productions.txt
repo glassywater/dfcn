@@ -27,7 +27,7 @@ candidate and formatter remain in this frame, allowing the existing native
 caption path to recover its complete source. Requirement/Additional are not
 locally resized. Search text is player input, not a generated caption.
 
-All four candidate title families:
+All five candidate title families (including the inline reaction category):
   job-choice-title forwards native job type, material, subtype, reaction,
     historical-figure and generated-identity fields to the complete job-caption
     switch. RAW reactions copy NAME; generated instrument names/components
@@ -50,6 +50,113 @@ All four candidate title families:
     Trap components; Other objects; Metal clothing; Engrave memorial slab;
     Mix dye; Dye cloth a specific color; Dye thread a specific color;
     Dye leather a specific color.
+  reaction-category-menu-title:
+    {CATEGORY_NAME} (opens menu), or {category token} (opens menu) when no
+    matching category with a nonempty name exists. This is a separate native
+    virtual from the fixed category switch and can contain generated names.
+
+Material-bearing title grammar, re-decompiled from both configured PE images
+on 2026-10-25 using DecompileWorkshopTasksPE.java. Complete functions, switches,
+conditions and literals are retained in the adjacent pe-* sources. The full
+job-caption selector domain is 0x00..0xf7; aliases/default/empty cases remain
+in pe-switches.tsv and the complete C rather than being inferred from a list
+of observed titles. The following is the material-bearing subset, not a claim
+that every shared job-caption selector can be offered by every workshop.
+
+  M_adj = complete material prefix plus STATE_ADJ for solid state 0.
+  M_noun = complete material prefix plus STATE_NAME for solid state 0.
+  Both include the historical-figure possessive when its native branch is
+  active; neither is necessarily a single word or a fixed RAW-only name.
+  material-menu-title explicitly requests M_noun, while ordinary Make/Forge
+  object titles request M_adj. The supplier chooses the corresponding record
+  field, not a word-level English suffix transformation. The native field
+  addresses are material+0x520 (prefix), material+0xb8+state*0x20 (name), and
+  material+0x178+state*0x20 (adjective). Material category flags select plant,
+  yarn, wood/wooden, cloth, silk, bone, leather, shell, soap, ivory/tooth, horn
+  or pearl in the order retained in material-menu-caption.c. A missing record
+  yields unknown material. Selection does not infer a material from spelling.
+
+  Make M_adj {object}, with all native object alternatives:
+    0x43 door / Portal; 0x44 floodgate; 0x46 throne / chair;
+    0x47 coffin / sarcophagus / casket; 0x48 table;
+    0x49 box / coffer / chest; 0x4a bag; 0x4b bin;
+    0x4c armor stand; 0x4d weapon rack; 0x4e cabinet; 0x4f statue;
+    0x52 crafts; 0x7f window; 0x83 backpack; 0x84 quiver;
+    0xc6 hatch cover; 0xc7 grate; 0xc9 quern; 0xca millstone;
+    0xcb splint; 0xcc crutch; 0xd2 slab;
+    0xe6 figurine; 0xe7 amulet; 0xe8 scepter; 0xe9 crown;
+    0xea ring; 0xeb earring; 0xec bracelet.
+  0xed: Make large M_adj gem. The word large precedes the complete material,
+    whereas gem follows it; the material must not consume either word.
+  0x50: Make [four ]M_adj blocks. Four is selected by wood category bit 0x2
+    or the native material flag at byte 7, mask 0x10. Both forms are real.
+  0x45, 0x62, 0x63, 0x8b, 0xf5: Make[ M_adj] followed respectively by bed,
+    catapult parts, ballista parts, mechanisms, bolt thrower parts. Wood
+    category bit 0x2 suppresses the material in these titles.
+
+  Make/Forge is chosen from the native material flag at byte 5, mask 0x80,
+  with Make also used for a missing material record. All following branches
+  use that decision and the same complete M_adj:
+    0x60 {weapon subtype singular};
+    0x64, 0x65, 0x66 [small |large ]{armor/helm/pants subtype singular};
+    0x74, 0x75 pair of [small |large ]{shoe/glove subtype plural};
+    0x76 {shield subtype singular};
+    0x77 terrarium / cage; 0x78 chain / rope;
+    0x79 three M_adj {vials / flasks / waterskins};
+    0x7a three M_adj {mugs / goblets / cups};
+    0x7b toy; 0x7c animal trap; 0x7d barrel; 0x7e bucket;
+    0x81 {five / twenty-five} M_adj {ammunition subtype plural};
+    0x85 ballista arrow head; 0xc1 tube / pipe section;
+    0xd8 {tool subtype name}, with the literal tool when no subtype matches.
+  Size comes from native race/item sizing, not the material name. Ammo uses
+  five for bone-category bit 0x20, otherwise twenty-five. The noun alternatives
+  above are selected by material/category properties retained in the C.
+  0x8c: {Make / Forge} [trap component adjective ]M_adj {component singular}.
+    Both the optional component adjective and final name come from RAW fields.
+  0x61: Forge M_adj anvil.
+  0x86: Assemble M_adj {siege-ammunition subtype singular}.
+
+  Other material-bearing verbs and every material/fallback arm:
+    0x51 Make raw M_noun
+    0x53 Mint M_adj coins
+    0x54 Cut M_noun / Cut gems
+    0x55 Cut M_noun / Cut raw glass into gems
+    0x56 Encrust {targets} with {M_noun / cut gems}
+    0x57 Encrust {targets} with {M_noun / cut glass}
+    0x59 Smelt M_adj ore
+    0x67 Stud with M_noun
+    0x6f Polish M_noun / Polish stones
+    0x82 Decorate with M_noun
+    0x91 Encrust {targets} with {M_noun / polished stones}
+    0xc0 Sew M_adj image
+  Encrust targets are independent native flag branches appended in order:
+    finished goods (0x400), furniture (0x4), ammo (0x40).
+  The native selector normally supplies one target, but the producer itself
+  concatenates every active flag. A translation must not invent a different
+  target based on the material. The fallback arms use material type -1.
+
+  0xd1 is the RAW/generated reaction-name branch. It finds the reaction token,
+  copies reaction+0x20 (NAME), and capitalizes the stored name; missing lookup
+  yields Reaction. Therefore '(use bars)' and '(use ore)' are complete authored
+  NAME suffixes, not optional branches invented by the material formatter.
+  The installed reaction_smelter.txt supplies both suffixes for brass, bronze,
+  electrum, billon, fine pewter and trifle pewter, plus lay pewter (use bars).
+  Their original NAME fields and installed-mod names are retained in
+  pe-raw-name-and-reagent-sources.tsv. Other reaction names and generated
+  instrument/component names are open runtime inputs to this same branch.
+
+Generated mythical material source:
+  The installed data/vanilla/vanilla_procedural/scripts/generators/materials.lua
+  sets STATE_NAME_ADJ:ALL_SOLID to a chosen adjective plus a sphere noun.
+  Its adjectives are primordial, elder, cosmic, primal, elemental, primeval.
+  Its distinct configured nouns are stone, crystal, chaos, darkness, dreamstuff,
+  fire, light, lightning, metal, moonstone, mudstone, ice, leaf, salt, cloudstuff,
+  stardust, sunstone, wood and obsidian; unmatched spheres use glitchstuff.
+  Thus the screenshot's primeval dreamstuff reaches both M_noun and M_adj
+  without a special native menu branch. The six adjective branches and all
+  sphere names must share the complete material grammar at every title use.
+  This finite current generator vocabulary does not make arbitrary installed
+  mods, generated identities, or future RAW material values finite literals.
 
 Memorial title, native job-caption arm:
   If the figure ID cannot be resolved: Engrave memorial slab.
@@ -91,3 +198,61 @@ fields from each configured Windows game, including color descriptors,
 reaction names/reagents/products, item, material and creature/caste names.
 Generated names and player-authored identities are runtime inputs to their
 established identity grammars; they cannot be exhaustively listed as literals.
+
+Upper-left task tooltip, complete native producer and painter grammar:
+  The actual reaction category is not the fixed category-menu family. Its
+  vtable is 0x16be6e0 in the reference PE and its +0x38 supplier is 0x8c2bf0.
+  Construction is inline in task-availability-and-requirement, at the native
+  vtable installation 0x8c470a. pe-vtables.tsv retains all slots for this family.
+  A category token at candidate+0x48 is matched against the native category
+  vector. No match produces no tooltip. A match reads CATEGORY_DESCRIPTION
+  at category+0x68 and sends the complete stored paragraph to the 29-column
+  splitter. Generated INSTRUMENT_PIECE and INSTRUMENT categories
+  use the same path as RAW categories; the spelling is not a special case.
+
+  job-choice +0x38, task-choice-tooltip (0x8c2ca0 / 0x8c0520), emits these
+  independent sections in native order:
+    nonempty product selector -> Produces: -> one full item caption per product;
+    nonempty reagent selector -> Requires: -> one full item caption per reagent;
+    job type 0xd1 -> matching reaction token -> its DESCRIPTION vector.
+  Each DESCRIPTION entry can supply its own nonempty prose, a USE_TOOL entry
+  (type 0x56, matching tool token, tool definition+0x188), or a USE_INSTRUMENT
+  entry (type 0xd, matching instrument token, instrument definition+0x278).
+  The native producer inserts blank separators between these description
+  paragraphs and preceding content. Generated instrument and part descriptions
+  are stored values on the same definitions; their full writers are retained
+  under data/extracted/instrument-descriptions and share instrument grammar.
+  No description branch requires the Produces: or Requires: heading to exist.
+
+  tooltip-job-products (0xd160c0 / 0xd13100) and tooltip-job-reagents
+  (0xd09ca0 / 0xd06ce0) retain complete native job selectors, including all
+  switch aliases. Their constructed item descriptors go through the existing
+  job-item-requirement owner, including dynamic RAW type/subtype/material,
+  counts, contained objects, reaction product/classes and tool-use constraints.
+  The item formatter emits a number only for count > 1; singular products
+  can be one short word. Every product still owns a separate splitter call
+  at 0x8c3327 / 0x8c0ba7, without blank separators between adjacent products.
+  Field boundaries therefore come from native paragraph calls, not a leading
+  number, sentence punctuation or the shared prose capture's minimum length.
+  The supplier switches construct item descriptors, not additional fixed prose.
+  tooltip-paragraph-splitter (0x8e7310 / 0x8e4b80) delegates to the complete
+  tooltip-paragraph-list-splitter (0x8e7440 / 0x8e4cb0). Both paragraph calls
+  and the job producer's inlined reagent wrapping use 29 native byte columns.
+  This splits the stored source before addst; individual rows are not complete
+  translation keys. The native long-word branch inserts a separating space.
+
+  Painter: candidate hover invokes +0x38 into vector 0x18a1768 (reference),
+  or the corresponding classic global retained in the native assembly. Hover
+  identity changes clear/repopulate it; the painter reads the current vector
+  every frame. Nonhovered candidates, empty vectors and insufficient horizontal
+  room draw no description. Otherwise the frame has 31 columns, the body has
+  29 columns, and height is the native row count plus two border rows. All
+  corner/edge/interior tile branches remain in task-choice-render-branch.c.
+  Reference / classic native calls:
+    row count before height calculation       0x185913 / 0x1858a3
+    background/frame tile cursor              0x185a10 / 0x1859a0
+    description row addst                     0x185d67 / 0x185cf7
+    final temporary string cleanup            0x185d9b / 0x185d2b
+  Every category, product, reagent, authored and generated description reaches
+  this same complete-vector painter. The bottom border follows the native
+  vector length; it is not independently clipped to the screenshot's height.

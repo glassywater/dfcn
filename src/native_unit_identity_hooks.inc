@@ -130,7 +130,15 @@ static std::optional<std::string> publish_native_unit_identity_snapshot(
         !snapshot.english_name && snapshot.name.language < 0 && snapshot.name.nickname.empty() &&
         std::all_of(snapshot.name.words.begin(), snapshot.name.words.end(),
             [](const auto &word) { return word.id.empty(); });
-    if (authored) {
+    // These unquoted NameOnly publications belong to a captured unit. The
+    // Creator-of artifact header and entity/site names keep their own policy.
+    // A numbered candidate needs the worker's strict creature dictionary;
+    // the native formatter only recognizes the structural boundary here.
+    const bool numbered_character = authored && unit_owner && !character_header &&
+        snapshot.name.entity_id < 0 && snapshot.name.entity_type < 0 &&
+        !snapshot.name.entity_name_current && snapshot.name.site_id < 0 &&
+        numbered_creature_given_name_end(trim_view(snapshot.name.first_name)).has_value();
+    if (authored && !numbered_character) {
         // An explicit authored field has a complete legal native result; it
         // does not await a name dictionary or generated-name worker.
         translated = native_text_to_utf8(original);
@@ -851,13 +859,48 @@ static void capture_native_unit_movement_direct_name(const void *name, NativeStr
     }
 }
 
+static bool capture_native_unit_identity_direct_field(uintptr_t unit,
+        std::string_view source, NativeUnitIdentity &out) {
+    const uintptr_t base = g_native_unit_identity_hooks.base;
+    int32_t game_type = -1;
+    if (!base || !unit || !native_history_copy(native_reference_address(base,
+            native_history_layout::gametype_rva), game_type) ||
+            (game_type != 4 && game_type != 5)) return false;
+    // PE 1330c30:1331239 (Classic 132bba0:132c1a9) returns this exact
+    // field before calling any nested name/role formatter. A nonempty
+    // animation+0x20 takes priority over unit.name.first_name.
+    uintptr_t animation = 0;
+    std::string animation_name, first_name;
+    if (!native_history_copy(native_history_object_field(unit, "unit", 0xd80), animation) ||
+            (animation && !native_history_copy_string(animation + 0x20, animation_name)))
+        return false;
+    if (animation_name.empty() && !native_history_copy_string(
+            native_history_object_member(unit, "unit", "name.first_name"), first_name))
+        return false;
+    const std::string &selected = animation_name.empty() ? first_name : animation_name;
+    if (selected.empty() || source != selected) return false;
+    NativeUnitIdentity snapshot;
+    snapshot.form = NativeUnitIdentityForm::Reference;
+    snapshot.use_custom = false;
+    snapshot.animated_name = std::move(animation_name);
+    snapshot.undead = animation != 0;
+    NativeUnitReferencePart part;
+    part.kind = NativeUnitReferencePartKind::Authored;
+    part.source.assign(source);
+    snapshot.reference_parts.push_back(std::move(part));
+    // Only the field copied by the native branch is displayed. Do not add
+    // hidden surname/nickname fields, a role, or gender/status modifiers.
+    out = std::move(snapshot);
+    return true;
+}
+
 template<size_t Index>
 static std::optional<std::string> finish_native_unit_identity_call(NativeUnitIdentityCall &call,
         NativeString *output, bool option) noexcept {
-    const bool english_name = Index == 1 && option;
+    bool english_name = Index == 1 && option;
     // A separately drawn profession belongs to the unit but is not its name.
     // Only captured names participate in native/English header pairing.
-    const uintptr_t name_unit = call.name_seen && !call.native_name.empty() ? call.unit : 0;
+    uintptr_t name_unit = call.name_seen && !call.native_name.empty() ? call.unit : 0;
     try {
         std::string_view source;
         if (!native_string_view(output, &source, 262144)) return std::nullopt;
@@ -880,8 +923,12 @@ static std::optional<std::string> finish_native_unit_identity_call(NativeUnitIde
         const std::string original(source);
         std::optional<std::string> translated;
         NativeUnitIdentity snapshot;
-        bool typed = false;
-        if (!call.name_failed) {
+        bool typed = !call.name_seen && !call.role_seen &&
+            capture_native_unit_identity_direct_field(call.unit, source, snapshot);
+        if (typed) {
+            name_unit = call.unit;
+            english_name = false;
+        } else if (!call.name_failed) {
             // Native visibility/identity selection takes priority over the
             // unit's stored name, which may be deliberately hidden or replaced.
             snapshot.name = call.name_seen ? std::move(call.name) : NativeHistoryName{};
@@ -904,14 +951,14 @@ static std::optional<std::string> finish_native_unit_identity_call(NativeUnitIde
                 (Index == 1 && snapshot.native_name.empty());
             typed = (!needs_role || call.role_seen) &&
                 capture_native_unit_identity(call.unit, snapshot);
-            if (typed) {
-                if (call.publish && !call.parent)
-                    remember_native_announcement_log_speech_identity(call.unit, snapshot, original);
-                if (call.publish)
-                    translated = publish_native_unit_identity_snapshot(std::move(snapshot),
-                        reinterpret_cast<uintptr_t>(output), original, name_unit, english_name);
-                else translated = g_overlay.translate_native_unit_identity(snapshot);
-            }
+        }
+        if (typed) {
+            if (call.publish && !call.parent)
+                remember_native_announcement_log_speech_identity(call.unit, snapshot, original);
+            if (call.publish)
+                translated = publish_native_unit_identity_snapshot(std::move(snapshot),
+                    reinterpret_cast<uintptr_t>(output), original, name_unit, english_name);
+            else translated = g_overlay.translate_native_unit_identity(snapshot);
         }
         // Unsupported native branches can leave the semantic name/role
         // fields empty even though the formatter produced a visible string.

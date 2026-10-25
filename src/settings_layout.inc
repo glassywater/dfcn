@@ -1,5 +1,6 @@
 void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
     if (!gps_) return;
+    if (native_settings_announcements_active(*gps_)) return;
     if (prepared_matches_.empty()) return;
 
     // Settings tabs are mirrored on two adjacent logical rows by the vanilla
@@ -112,8 +113,6 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
     bool keybinding_text_entry_anchor = false;
     bool keybinding_macros_anchor = false;
     int settings_add_count = 0;
-    int announcement_header_count = 0;
-    bool announcement_name_anchor = false;
     bool game_page_anchor = false;
     bool difficulty_enemies_anchor = false;
     bool difficulty_economy_anchor = false;
@@ -150,16 +149,9 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
         }
         if (match.source == "Text entry") keybinding_text_entry_anchor = true;
         if (match.source == "Macros") keybinding_macros_anchor = true;
-        if (match.source == "Name") announcement_name_anchor = true;
-        if (match.source == "Popup" || match.source == "Pause" ||
-            match.source == "Recenter" || match.source == "Report" ||
-            match.source == "Report (Active)" || match.source == "Alert") {
-            ++announcement_header_count;
-        }
     }
     std::sort(settings_toggle_rows.begin(), settings_toggle_rows.end());
     int single_toggle_rows = 0;
-    int multi_toggle_rows = 0;
     for (size_t begin = 0; begin < settings_toggle_rows.size();) {
         size_t end = begin + 1;
         while (end < settings_toggle_rows.size() &&
@@ -167,7 +159,6 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
             ++end;
         }
         if (end - begin == 1) ++single_toggle_rows;
-        if (end - begin >= 4) ++multi_toggle_rows;
         begin = end;
     }
 
@@ -186,13 +177,11 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
         int base_audio = 0;
         int base_ranges = 0;
         int base_add = 0;
-        int base_announcement_headers = 0;
         int base_yes_no = 0;
         bool base_game = false;
         bool base_repeat = false;
         bool base_text_entry = false;
         bool base_macros = false;
-        bool base_announcement_name = false;
         bool base_difficulty_enemies = false;
         bool base_difficulty_economy = false;
         bool base_difficulty_custom = false;
@@ -218,12 +207,6 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
             }
             if (match.source == "Text entry") base_text_entry = true;
             if (match.source == "Macros") base_macros = true;
-            if (match.source == "Name") base_announcement_name = true;
-            if (match.source == "Popup" || match.source == "Pause" ||
-                match.source == "Recenter" || match.source == "Report" ||
-                match.source == "Report (Active)" || match.source == "Alert") {
-                ++base_announcement_headers;
-            }
         }
         if (base_difficulty_enemies && base_difficulty_economy &&
             base_difficulty_custom) {
@@ -235,8 +218,6 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
         } else if ((base_add >= 4 && base_repeat) ||
                    (base_text_entry && base_macros)) {
             base_settings_page_hint = 3;
-        } else if (base_announcement_name && base_announcement_headers >= 5) {
-            base_settings_page_hint = 4;
         } else if (base_game || base_ranges >= 1 || base_yes_no >= 2) {
             base_settings_page_hint = 2;
         }
@@ -245,8 +226,7 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
         difficulty_page_anchor ||
         (settings_add_count >= 4 && keybinding_repeat_anchor) ||
         (keybinding_text_entry_anchor && keybinding_macros_anchor) ||
-        (announcement_name_anchor && announcement_header_count >= 5) ||
-        single_toggle_rows >= 5 || multi_toggle_rows >= 3;
+        single_toggle_rows >= 5;
     const bool cached_game_viewport = settings_tab_geometry_valid_ &&
         settings_active_page_ == 2 &&
         (settings_range_count >= 1 || single_toggle_rows >= 1);
@@ -270,11 +250,6 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
             settings_keybinding_action_x_ = -1;
             settings_keybinding_key_x_ = -1;
             settings_keybinding_add_x_ = -1;
-            settings_announcement_geometry_valid_ = false;
-            settings_announcement_name_x_ = -1;
-            settings_announcement_toggle_x_ = -1;
-            settings_announcement_columns_valid_ = false;
-            settings_announcement_column_centres_twice_.fill(0);
             settings_logged_control_x_ = -2;
             settings_logged_value_x_ = -2;
             settings_geometry_dimx_ = gps_->dimx;
@@ -306,9 +281,8 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
         // they are visible, then retain it through scroll intervals that show
         // only one or two otherwise ambiguous rows.  Layout must not toggle
         // off merely because an arbitrary anchor crossed the viewport edge.
-        // Difficulty presets have no toggle matrix or scrolling fields. Their
-        // own controls must end any cached Announcements page identity before
-        // that page can move the new button captions into its filter column.
+        // Difficulty presets retain their own page identity independently of
+        // scrolling value rows on other settings pages.
         if (difficulty_page_anchor) {
             settings_active_page_ = 5;
         } else if (base_settings_page_hint >= 0) {
@@ -320,9 +294,6 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
         } else if ((settings_add_count >= 4 && keybinding_repeat_anchor) ||
                    (keybinding_text_entry_anchor && keybinding_macros_anchor)) {
             settings_active_page_ = 3;
-        } else if (multi_toggle_rows >= 3 ||
-                   (announcement_name_anchor && announcement_header_count >= 5)) {
-            settings_active_page_ = 4;
         } else if (game_page_anchor || single_toggle_rows >= 2 ||
                    settings_range_count >= 1) {
             settings_active_page_ = 2;
@@ -338,7 +309,6 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
             log_line("INFO", "Settings layout page=" + name +
                 " tabs=" + std::to_string(settings_tab_groups.size()) +
                 " single=" + std::to_string(single_toggle_rows) +
-                " multi=" + std::to_string(multi_toggle_rows) +
                 " ranges=" + std::to_string(settings_range_count));
             settings_logged_page_ = settings_active_page_;
         }
@@ -898,305 +868,6 @@ void Overlay::layout_settings_panels(SDL_Renderer *renderer) {
                         gps_->tile_pixel_y, gps_->dimx);
                 }
             }
-        }
-
-        // Announcements: the header itself gives us the name column and the
-        // first toggle column. This remains available even when the list is
-        // scrolled or some toggle captions are clipped, unlike counting Yes/No
-        // matches on individual rows. Align the whole band between those two
-        // columns and preserve the source indentation of both filter trees.
-        int announcement_name_header = -1;
-        std::vector<size_t> announcement_control_headers;
-        auto announcement_header = [](const Match &match) {
-            const std::string_view source = announcement_filter_text(match.source);
-            const std::string_view target = announcement_filter_text(match.target);
-            return source == "Popup" || source == "Pause" || source == "Recenter" ||
-                source == "Adventure" || source == "Fortress" || source == "Report" ||
-                source == "Report (Active)" || source == "Alert" ||
-                target == "冒险" || target == "堡垒" || target == "要塞";
-        };
-        if (settings_active_page_ == 4) {
-            for (Match &match : prepared_matches_) {
-                normalize_announcement_active_suffix(match);
-            }
-        }
-        for (size_t i = 0; i < prepared_matches_.size(); ++i) {
-            if (prepared_matches_[i].source == "Name") {
-                announcement_name_header = static_cast<int>(i);
-            }
-            if (announcement_header(prepared_matches_[i])) {
-                normalize_announcement_filter(prepared_matches_[i]);
-                announcement_control_headers.push_back(i);
-            }
-        }
-        if (settings_active_page_ == 4 &&
-            !settings_announcement_columns_valid_) {
-            settings_announcement_columns_valid_ =
-                find_announcement_column_centres(
-                    prepared_matches_,
-                    settings_announcement_column_centres_twice_);
-            if (settings_announcement_columns_valid_) {
-                std::string message = "Announcement button centres:";
-                for (int centre : settings_announcement_column_centres_twice_) {
-                    message += " " + std::to_string(centre);
-                }
-                log_line("INFO", message);
-            }
-        }
-        auto align_announcement_filters = [&](int name_x) {
-            auto is_filter_region_match = [&](const Match &match) {
-                // A previous page's cached column is not evidence that an
-                // unrelated caption belongs to the announcement sidebar.
-                return match.y > 2 && match.x < name_x - 2 &&
-                    is_announcement_filter_source(match.source);
-            };
-            int filter_x = INT32_MAX;
-            for (const Match &match : prepared_matches_) {
-                if (is_filter_region_match(match)) {
-                    filter_x = std::min(filter_x, match.x);
-                }
-            }
-            if (filter_x == INT32_MAX) return;
-            for (Match &match : prepared_matches_) {
-                if (is_filter_region_match(match)) {
-                    normalize_announcement_filter(match);
-                    place_left(match, filter_x,
-                               std::max(1, name_x - filter_x - 3));
-                }
-            }
-        };
-        if (announcement_name_header >= 0 && announcement_control_headers.size() >= 5) {
-            const Match &name_header = prepared_matches_[
-                static_cast<size_t>(announcement_name_header)];
-            int first_control_x = INT32_MAX;
-            for (size_t index : announcement_control_headers) {
-                const Match &header = prepared_matches_[index];
-                if (std::abs(header.y - name_header.y) <= 2 && header.x > name_header.x) {
-                    first_control_x = std::min(first_control_x, header.x);
-                }
-            }
-            const int matrix_left = settings_announcement_geometry_valid_
-                ? settings_announcement_toggle_x_ : first_control_x;
-            std::vector<size_t> event_names;
-            std::vector<int> event_columns;
-            if (matrix_left != INT32_MAX) {
-                for (size_t i = 0; i < prepared_matches_.size(); ++i) {
-                    const Match &match = prepared_matches_[i];
-                    if (match.y <= name_header.y || match.x < name_header.x - 2 ||
-                        match.x >= matrix_left - 1 || match.source == "Done") {
-                        continue;
-                    }
-                    event_names.push_back(i);
-                    event_columns.push_back(match.x);
-                }
-            }
-            if (first_control_x != INT32_MAX) {
-                if (!settings_announcement_geometry_valid_) {
-                    // A restrictive filter can legitimately leave zero, one,
-                    // or two event rows.  The headers still fully determine
-                    // both table columns, so retain a usable geometry instead
-                    // of dropping the whole announcement layout.
-                    settings_announcement_name_x_ =
-                        event_names.size() >= 3
-                            ? median_column(event_columns, name_header.x)
-                            : name_header.x;
-                    settings_announcement_toggle_x_ = first_control_x;
-                    settings_announcement_geometry_valid_ = true;
-                }
-                const int name_x = settings_announcement_name_x_;
-                first_control_x = settings_announcement_toggle_x_;
-                const int name_width = std::max(1, first_control_x - name_x - 3);
-                place_left(prepared_matches_[static_cast<size_t>(announcement_name_header)],
-                           name_x, name_width);
-                std::unordered_map<int, int> row_origins;
-                for (size_t index : event_names) {
-                    const Match &match = prepared_matches_[index];
-                    auto [position, inserted] = row_origins.emplace(match.y, match.x);
-                    if (!inserted) position->second = std::min(position->second, match.x);
-                }
-                for (size_t index : event_names) {
-                    Match &match = prepared_matches_[index];
-                    const int placed_x = name_x +
-                        std::max(0, match.x - row_origins[match.y]);
-                    place_left(match, placed_x,
-                               std::max(1, first_control_x - placed_x - 3));
-                }
-            }
-        }
-
-        // The announcement header can scroll out of view. Reconstruct the
-        // same layout directly from any visible toggle-matrix rows: the first
-        // Yes/No control marks the matrix edge and the rightmost translated
-        // field before it is the event name. Sidebar filters are farther left
-        // and therefore cannot become the row-name anchor.
-        if (multi_toggle_rows >= 3) {
-            std::vector<int> announcement_rows;
-            for (int y : settings_toggle_rows) {
-                if (announcement_rows.empty() || announcement_rows.back() != y) {
-                    const int count = static_cast<int>(std::count(
-                        settings_toggle_rows.begin(), settings_toggle_rows.end(), y));
-                    if (count >= 4) announcement_rows.push_back(y);
-                }
-            }
-            std::vector<std::vector<size_t>> scrolled_event_groups;
-            std::vector<int> scrolled_event_columns;
-            std::vector<int> first_toggle_columns;
-            for (int row_y : announcement_rows) {
-                int first_toggle_x = INT32_MAX;
-                for (const Match &match : prepared_matches_) {
-                    if (match.y == row_y &&
-                        (match.source == "Yes" || match.source == "No")) {
-                        first_toggle_x = std::min(first_toggle_x, match.x);
-                    }
-                }
-                if (first_toggle_x == INT32_MAX) continue;
-                first_toggle_columns.push_back(first_toggle_x);
-                std::vector<size_t> event_group;
-                int event_left = INT32_MAX;
-                for (size_t i = 0; i < prepared_matches_.size(); ++i) {
-                    const Match &candidate = prepared_matches_[i];
-                    if (candidate.y != row_y || candidate.x >= first_toggle_x - 2 ||
-                        candidate.x < std::max(2, first_toggle_x / 6) ||
-                        candidate.source == "Yes" || candidate.source == "No") {
-                        continue;
-                    }
-                    event_group.push_back(i);
-                    event_left = std::min(event_left, candidate.x);
-                }
-                if (!event_group.empty()) {
-                    scrolled_event_groups.push_back(std::move(event_group));
-                    scrolled_event_columns.push_back(event_left);
-                }
-            }
-            if (scrolled_event_groups.size() >= 3) {
-                const int observed_name_x = median_column(scrolled_event_columns, 20);
-                const int observed_toggle_x = median_column(
-                    first_toggle_columns, observed_name_x + 30);
-                if (!settings_announcement_geometry_valid_) {
-                    settings_announcement_name_x_ = observed_name_x;
-                    settings_announcement_toggle_x_ = observed_toggle_x;
-                    settings_announcement_geometry_valid_ = true;
-                }
-                const int name_x = settings_announcement_name_x_;
-                const int first_toggle_x = settings_announcement_toggle_x_;
-                for (const std::vector<size_t> &group : scrolled_event_groups) {
-                    int row_origin = INT32_MAX;
-                    for (size_t index : group)
-                        row_origin = std::min(row_origin, prepared_matches_[index].x);
-                    for (size_t index : group) {
-                        Match &match = prepared_matches_[index];
-                        const int placed_x = name_x +
-                            std::max(0, match.x - row_origin);
-                        place_left(match, placed_x,
-                                   std::max(1, first_toggle_x - placed_x - 3));
-                    }
-                }
-                if (announcement_name_header >= 0) {
-                    place_left(prepared_matches_[static_cast<size_t>(announcement_name_header)],
-                               name_x, std::max(1, first_toggle_x - name_x - 3));
-                }
-            }
-        }
-
-        if (settings_active_page_ == 4) {
-            // Keep every announcement toggle in its native column. DF anchors
-            // the odd-length "Yes" and even-length "No" strings half a cell
-            // apart even though their buttons share one centre. Correct only
-            // that parity difference; never infer columns from headers or
-            // neighbouring rows, because the two-line Report (Active) header
-            // and filtered/empty result sets do not have a stable shape.
-            for (Match &match : prepared_matches_) {
-                if (match.source != "Yes" && match.source != "No") continue;
-                const int centre_twice = announcement_toggle_centre_twice(match);
-                const auto [span_x, span_length] =
-                    centered_toggle_span(centre_twice);
-                match.layout_x = std::clamp(
-                    span_x, 0, std::max(0, gps_->dimx - 1));
-                match.layout_length = std::max(
-                    1, std::min(span_length, gps_->dimx - match.layout_x));
-                match.layout_left = false;
-                match.layout_prepared = true;
-            }
-        }
-
-        if (settings_active_page_ == 4 &&
-            settings_announcement_columns_valid_ &&
-            announcement_name_header >= 0) {
-            const Match &name_header = prepared_matches_[
-                static_cast<size_t>(announcement_name_header)];
-            std::vector<size_t> plain_report_headers;
-            auto centre_header = [&](Match &header, size_t column) {
-                const auto [span_x, span_length] =
-                    centered_announcement_header_span(
-                        settings_announcement_column_centres_twice_[column],
-                        header.target);
-                header.layout_x = std::clamp(
-                    span_x, 0, std::max(0, gps_->dimx - 1));
-                header.layout_length = std::max(
-                    1, std::min(span_length, gps_->dimx - header.layout_x));
-                header.layout_left = false;
-                header.layout_prepared = true;
-            };
-            for (size_t index : announcement_control_headers) {
-                Match &header = prepared_matches_[index];
-                if (header.x > name_header.x &&
-                    std::abs(header.y - name_header.y) <= 2) {
-                    const std::string_view source =
-                        announcement_filter_text(header.source);
-                    const std::string_view target =
-                        announcement_filter_text(header.target);
-                    if (source == "Popup") {
-                        centre_header(header, 0);
-                    } else if (source == "Pause") {
-                        centre_header(header, 1);
-                    } else if (source == "Recenter") {
-                        centre_header(header, 2);
-                    } else if (source == "Adventure" || target == "冒险") {
-                        centre_header(header, 3);
-                    } else if (source == "Fortress" || target == "堡垒" ||
-                               target == "要塞") {
-                        header.target = "要塞";
-                        centre_header(header, 4);
-                    } else if (source == "Report") {
-                        plain_report_headers.push_back(index);
-                    } else if (source == "Report (Active)") {
-                        centre_header(header, 6);
-                    } else if (source == "Alert") {
-                        centre_header(header, 7);
-                    }
-                }
-            }
-            std::sort(plain_report_headers.begin(), plain_report_headers.end(),
-                [this](size_t left, size_t right) {
-                    const Match &a = prepared_matches_[left];
-                    const Match &b = prepared_matches_[right];
-                    return a.x != b.x ? a.x < b.x : a.y < b.y;
-                });
-            if (!plain_report_headers.empty()) {
-                centre_header(prepared_matches_[plain_report_headers[0]], 5);
-            }
-            if (plain_report_headers.size() >= 2) {
-                centre_header(prepared_matches_[plain_report_headers[1]], 6);
-            }
-
-            // DF draws the seventh heading as `Report` plus a separate
-            // `(Active)` line. It belongs to the same ordinal column as the
-            // second Report heading, regardless of either text width.
-            for (Match &match : prepared_matches_) {
-                if (announcement_filter_text(match.source) == "(Active)" &&
-                    match.x > name_header.x &&
-                    std::abs(match.y - name_header.y) <= 2) {
-                    centre_header(match, 6);
-                }
-            }
-        }
-
-        // Filter selection changes the source label centring and can reduce
-        // the event matrix to fewer than three rows (including none).  Apply
-        // the cached page geometry independently of the result count so both
-        // filter groups keep one stable left edge in every state.
-        if (settings_active_page_ == 4 && settings_announcement_geometry_valid_) {
-            align_announcement_filters(settings_announcement_name_x_);
         }
 
         // Video options form one two-column record. All English setting names

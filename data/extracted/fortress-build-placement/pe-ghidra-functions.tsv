@@ -1,0 +1,5 @@
+edition	image	role	start_rva	end_rva	assembly_file
+reference	PE:6a70a6d9:02711000	building-name	0x54d320	0x54e7c4	pe-reference-building-name.asm
+reference	PE:6a70a6d9:02711000	placement-status-producer	0x3c0c30	0x3c1ddc	pe-reference-placement-status-producer.asm
+classic	PE:6a70b91c:0270a000	building-name	0x54ad40	0x54c1e4	pe-classic-building-name.asm
+classic	PE:6a70b91c:0270a000	placement-status-producer	0x3be7f0	0x3bf99c	pe-classic-placement-status-producer.asm

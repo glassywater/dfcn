@@ -2582,3 +2582,36 @@ DFHack output: Tile Browser	纹理浏览器	l
 DFHack output: Start index:	起始索引：	l
 DFHack output: Prev	上一页	l
 DFHack output: Next	下一页	l
+
+# MultiDwarf internal/multidwarf/setup.lua and update_policy.lua: setup status and dialogs.
+# Keep each hard-line status separate; version strings are native values, not a fixed release.
+DFHack output: Currently installed: Not installed	当前版本：未安装	l
+DFHack output: Currently installed: {s}	当前版本：{s1}	l
+DFHack output: To install: Workshop download unavailable	待安装版本：创意工坊下载不可用	l
+DFHack output: To install: {s}	待安装版本：{s1}	l
+DFHack output: The Workshop download could not be found. Your installed copy is still available.	未找到创意工坊下载，已安装的版本仍可使用。	l
+DFHack output: Setup was interrupted. Run Setup again to finish, or uninstall.	安装中断。请再次运行安装以完成操作，或选择卸载。	l
+DFHack output: Restart DF to finish.	重启《矮人要塞》以完成操作。	l
+DFHack output: The downloaded version could not be verified.	无法验证下载的版本。	l
+DFHack output: The installed version could not be verified. Setup has stopped.	无法验证已安装的版本，安装已停止。	l
+DFHack output: The Workshop download ({s}) is older than your installed version ({s}). Wait for the Workshop download to update.	创意工坊下载的版本（{s1}）早于已安装版本（{s2}）。请等待创意工坊下载更新。	l
+DFHack output: Closing multiplayer and waiting for it to finish...	正在关闭多人游戏并等待结束……	l
+DFHack output: Starting file checks...	正在开始检查文件……	l
+DFHack output: Setup complete. Restart Dwarf Fortress.	安装完成，请重启《矮人要塞》。	l
+DFHack output: Setup stopped. See the message for details.	安装已停止，详情请查看提示消息。	l
+DFHack output: Setup is complete. Restart Dwarf Fortress to start the installed version.	安装完成。重启《矮人要塞》以使用已安装的版本。	l
+DFHack output: MultiDwarf has been removed. Restart DF before installing it again. Saves and preferences were preserved.	MultiDwarf 已卸载，存档和偏好设置已保留。再次安装前请重启《矮人要塞》。	l
+DFHack output: MultiDwarf could not finish closing. Close its menu, wait a moment and retry Setup.	MultiDwarf 未能完成关闭。请关闭其菜单，稍等片刻后重试安装。	l
+DFHack output: Setup did not finish. Retry Setup to complete the installation, or uninstall.	安装未完成。请重试安装以完成操作，或选择卸载。	l
+# internal/multidwarf/lua_installer.lua: progress phase labels; progress bar and percentage stay native.
+DFHack output: Preparing setup	正在准备安装	l
+DFHack output: Checking update files	正在检查更新文件	l
+DFHack output: Checking staged update	正在检查暂存的更新	l
+DFHack output: Checking previous installation	正在检查先前的安装	l
+DFHack output: Checking installed files	正在检查已安装文件	l
+DFHack output: Removing MultiDwarf files	正在移除 MultiDwarf 文件	l
+DFHack output: Installing update	正在安装更新	l
+DFHack output: Finishing setup	正在完成安装	l
+DFHack output: Checking package	正在检查安装包	l
+DFHack output: Copying update files	正在复制更新文件	l
+DFHack output: Verifying copied files	正在验证复制的文件	l

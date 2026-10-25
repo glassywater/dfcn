@@ -9,6 +9,26 @@ static NativeMapHoverCountFn g_native_map_hover_count_original = nullptr;
 static NativeMapHoverConditionFn g_native_map_hover_condition_original = nullptr;
 static void uninstall_native_map_hover_layer_hook();
 
+static bool native_map_hover_arena_modal_open() {
+    if (!native_arena_map_screen()) return false;
+    const uintptr_t base = native_history_profile_base();
+    if (!base) return false;
+    // The same native producer draws these three panels after the look-list
+    // (0x3fa574..0x3fa5ea). Read its actual open flags, independently of the
+    // creature search hook's picker/raws/filter bindings.
+    constexpr uintptr_t panels[]{
+        0x18a8358, // arena_weather_interfacest
+        0x18a82c0, // create_tree_interfacest
+        0x18a8110, // create_creature_interfacest, including every tab
+    };
+    for (const uintptr_t panel : panels) {
+        uint8_t open = 0;
+        if (native_history_copy(native_reference_address(base, panel), open) && open)
+            return true;
+    }
+    return false;
+}
+
 template<bool Attached>
 static size_t native_map_hover_count(const void *list, int left, int right) {
     NativeInputCallbackScope callback;
@@ -16,6 +36,11 @@ static size_t native_map_hover_count(const void *list, int left, int right) {
     if (!original) return 0;
     const size_t count = callback.call_native([&] { return original(list); });
     try {
+        // Arena modals still belong to the main native grid. Keep their
+        // lower look-list in that grid too, so subsequent native writes
+        // decide which pixels survive before any translation is drawn.
+        // The original count and draw still run, including exposed rows.
+        if (native_map_hover_arena_modal_open()) return count;
         auto *gps = native_graphics();
         if (!gps || !list || !count || count > 4096 ||
                 gps->dimx <= 0 || gps->dimx > 1000 ||

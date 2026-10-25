@@ -1,0 +1,60 @@
+; classic PE:6a70b91c:0270a000; reaction-category-menu-title; complete unwind owner RVA 0x8c0250..0x8c0328
+0x8c0250: mov    QWORD PTR [rsp+0x10],rbx
+0x8c0255: mov    QWORD PTR [rsp+0x18],rbp
+0x8c025a: mov    QWORD PTR [rsp+0x20],rdi
+0x8c025f: push   r14
+0x8c0261: sub    rsp,0x20
+0x8c0265: mov    rbx,QWORD PTR [rip+0x1c30f04]        # 0x1424f1170
+0x8c026c: lea    r14,[rcx+0x48]
+0x8c0270: mov    rdi,QWORD PTR [rip+0x1c30f01]        # 0x1424f1178
+0x8c0277: mov    rbp,rdx
+0x8c027a: mov    QWORD PTR [rsp+0x30],rsi
+0x8c027f: nop
+0x8c0280: cmp    rbx,rdi
+0x8c0283: jae    0x1408c02db
+0x8c0285: cmp    QWORD PTR [r14+0x18],0xf
+0x8c028a: mov    rdx,r14
+0x8c028d: mov    rsi,QWORD PTR [rbx]
+0x8c0290: jbe    0x1408c0295
+0x8c0292: mov    rdx,QWORD PTR [r14]
+0x8c0295: cmp    QWORD PTR [rsi+0x18],0xf
+0x8c029a: mov    rcx,rsi
+0x8c029d: mov    r8,QWORD PTR [rsi+0x10]
+0x8c02a1: jbe    0x1408c02a6
+0x8c02a3: mov    rcx,QWORD PTR [rsi]
+0x8c02a6: cmp    r8,QWORD PTR [r14+0x10]
+0x8c02aa: jne    0x1408c02bc
+0x8c02ac: call   0x141535d84
+0x8c02b1: test   eax,eax
+0x8c02b3: jne    0x1408c02bc
+0x8c02b5: cmp    QWORD PTR [rsi+0x50],0x0
+0x8c02ba: jne    0x1408c02c2
+0x8c02bc: add    rbx,0x8
+0x8c02c0: jmp    0x1408c0280
+0x8c02c2: lea    rdx,[rsi+0x40]
+0x8c02c6: cmp    rbp,rdx
+0x8c02c9: je     0x1408c02f9
+0x8c02cb: cmp    QWORD PTR [rdx+0x18],0xf
+0x8c02d0: mov    r8,QWORD PTR [rdx+0x10]
+0x8c02d4: jbe    0x1408c02f1
+0x8c02d6: mov    rdx,QWORD PTR [rdx]
+0x8c02d9: jmp    0x1408c02f1
+0x8c02db: cmp    rbp,r14
+0x8c02de: je     0x1408c02f9
+0x8c02e0: cmp    QWORD PTR [r14+0x18],0xf
+0x8c02e5: mov    r8,QWORD PTR [r14+0x10]
+0x8c02e9: jbe    0x1408c02ee
+0x8c02eb: mov    r14,QWORD PTR [r14]
+0x8c02ee: mov    rdx,r14
+0x8c02f1: mov    rcx,rbp
+0x8c02f4: call   0x14006f860
+0x8c02f9: mov    r8d,0xd
+0x8c02ff: lea    rdx,[rip+0xd504ea]        # 0x1416107f0 ; cstring=' (opens menu)'
+0x8c0306: mov    rcx,rbp
+0x8c0309: mov    rsi,QWORD PTR [rsp+0x30]
+0x8c030e: mov    rbx,QWORD PTR [rsp+0x38]
+0x8c0313: mov    rbp,QWORD PTR [rsp+0x40]
+0x8c0318: mov    rdi,QWORD PTR [rsp+0x48]
+0x8c031d: add    rsp,0x20
+0x8c0321: pop    r14
+0x8c0323: jmp    0x14006f9a0

@@ -1,0 +1,40 @@
+人物头像旁状态行的 Windows 原生反编译来源
+
+本目录对应截图人物头像右侧、姓名和引号内译名下方的状态行，并保留同一标题区的姓名、职业、编辑字段、竞技场队号、职位及下一行任务入口。这里是用户要求的原生来源资料，不是测试、检查结果或游戏内效果记录。
+
+实际映像与真实反编译输出
+2026-10-24 依据 data/runtime/native-pe-images.json 读取两份当前磁盘映像。两份均为 Machine 0x8664 的 Windows PE；路径、PE 时间戳/映像大小标识、完整 SHA256 在 native-images.tsv。
+Steam/reference: PE:6a70a6d9:02711000，SHA256 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7。
+Classic: PE:6a70b91c:0270a000，SHA256 f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4。
+这些字节与 ../character-factions/pe-functions.tsv 记载的实际 Ghidra decompileFunction 输入完全相同，因此本次直接复用该真实原生反编译结果，未把手写伪代码冒充反编译器输出，亦未重新运行反编译器。2026-10-18 的完整 Ghidra renderer 及其原始警告、签名和局部变量仍保留在 ../character-factions/pe-{reference,classic}-character-renderer-owner.c。原工具为 Ghidra 12.1.4，过程和结果说明在该目录 native-source-notes.txt。
+本目录 *-header-ghidra-slice.c 是上述实际 C 输出的逐字切片，文件头保留原文件和行号；不是新造的独立函数。*-header-native.asm 是完整 renderer 中 RVA 0x15aa0e..0x15d706（Classic 各减 0x70）的逐条原始指令切片。原生完整 owner 为 Steam 0x14ef90..0x1a01c4、Classic 0x14ef20..0x1a0154；执行区后还含原生跳转表。
+
+互斥状态优先链
+1. unit+0x814 soldier_mood 不等于 -1，先显示战斗/发作状态；0..4 有五种固定句，其他值拼 Corrupt Soldier Mood: 与有符号十进制 enum。进入此分支后不再显示后续状态。
+2. 仅在 soldier_mood == -1 时读 unit+0x360 strange_mood。-1 或 8 直接跳过这一层；0..7 与 9 产生十二种固定句，其他值拼 Corrupt Strange Mood: 与有符号十进制 enum。切换表里的 case 8 指向异常默认块，但该值在到表之前已被外层条件排除，不应把它当作正常可达的异常显示。
+   strange_mood == 6 的四种句来自两重选择：A=Steam 0x73760(unit) 非零；B=Steam 0x72850(world_raws, race, caste, 0x3b) 非零。A 或 B 为真时用 babbling，否则 crazed；unit+0x110 的 0x8000 位决定 Crawling/Running。生产式表的 A/B 指这两个原生谓词，未仅凭文字倒推存档状态。
+3. unit+0x118 的 0x2000000 位存在时，从 unit+0xa98 的 soul 读 soul+0x278 的情绪向量，顺序寻找 emotion+0x18 的 bit0 置位且能产文案的第一项。识别十六个情绪 enum。其他 enum 跳过并继续搜索；遍历完未找到，或没有 soul，才显示 Emotionally overloaded!。情绪 enum 78 按 unit+0x12e 的 0、1、其他值分别使用 herself/himself/itself；所以这一层一共有十九种完整固定显示形态。
+4. unit+0x3bc owner_id != -1 且 Steam 0x138ed20(unit) 成功时显示 Pet of，再用 Steam 0x134f250 找主人；找到则读主人+8 的原生 language_name，找不到使用 Somebody。
+5. unit+0x11c 的 0x800 位存在时显示 Creator of，再从 unit+0xa08 取得原生 language_name。原生 name.has_name == 0 可返回空串，因此原生允许只有前缀；这里没有 Somebody 回退。
+6. historical figure 不存在或 histfig+0xac == -1 时调用 office resolver 0x13cbbd0。找到职位后由 0x99a3c0 选择性别、普通/配偶、单数及缺失性别字段的回退称谓，再首字母处理；position+0x2c8 > 0 时由 0x9bdfb0 追加 of 与任职领地 site 的英文 language_name。否则可留空。后缀来源是 site，不是根据词义猜出的组织或神祇名称。
+
+全部状态句、空分支及动态生产式逐项保留在 native-status-productions.tsv。两张原生跳转表的逐 selector 别名、空目标在 native-status-switches.tsv：strange 表十项；emotion 原始 selector 为 emotion_enum-5，包含 0..147 的全部表项。文件未把大量同目标项删成少数反编译 case。对应原始字符串操作数在 native-header-literals.tsv（保留首尾空格）。
+
+文本拼接与裁剪
+In a berserk rage! 来自 Steam 0x15c941 的 literal 装载，draw call/return 为 0x15c96b/0x15c970；Classic 为 0x15c8d1、0x15c8fb/0x15c900。与其同级的 mood/emotion 固定句直接交给字符串 draw，没有先 resize 或截断。
+Beside herself/himself/itself with grief! 是三次相邻 draw：Beside、代词、with grief。前两次 R8D=3，最后一次 R8D=0；它们不是三行，必须保留同一行的组合语义。Pet of 与主人、Creator of 与作品名也是同一行分次 draw；中间没有移动光标的位置调用。
+字段级裁剪发生在上面的姓名/职业分拆行：先请求合并 name+profession；不足可用宽度时拆为 name-only 与 profession-only，两者分别在原长度 >= 可用宽-2 时 resize 到可用宽-3，结果长度>3 再把末三字节改为 ...。这是完整名字/职位的裁剪，不能把被裁断的英文片段当成新源词条。
+普通标题下方的译名来自解析可见身份后的 language_name，英文 name supplier 为 Steam 0xa946e0（Classic 0xa91760），外包双引号。竞技场模式4改画 Independent 或 # 加队号；队号取 unit+0x1270，不是 squad.alias。昵称/自定义职业编辑分支只显示动态字段和闪烁下划线。自定义文本不是有限内置词库，不能凭英文拼写翻译自定义小队别名。
+
+同标题区动态供应来源
+姓名/职业组合、全部内置职业 enum、RAW 覆盖、职务、curse/training/slave/prisoner 状态等已有完整来源目录：../character-header-profession-sources.tsv 与 ../character-header-profession-decompiled.txt。其中旧说明把 0x9bdfb0 的领地后缀称作 entity，准确对象与完整实际 helper C 以 ../character-factions/pe-*-territory-office-suffix.c 为准：它通过 entity.site_links 找到 world_site，再生成 site 名。
+下一行 job/activity 从 Steam 0x15d588 进入（Classic 0x15d518）。unit creature flag 0x3a 且 owner eligibility 或 unit+0x118 的 0x80000000 位允许时才画这一行。存在 current_job 且 job+0x2c 的 0x10000 位未置位，则经 Steam 0xd03170 -> 0xd032b0 取得任务；否则 Steam 0x1390cf0 -> 0x138ffd0 取得活动。这些供应链、活动 virtual +0xb0、squad order virtual +0x68、技能/主题/领域、RAW reaction NAME 和动态对象已有 ../character-header-activity-bindings.tsv、../character-header-activity-sources.tsv，以及 ../unit-activity-native/ 的原始分支资料。
+个人名字、作品名、生成职位、领地、任务的 item/material/creature/reaction 字段及玩家输入不能穷举成有限完整句；处理边界由原生字段来源与既有对应语法决定。这里没有把动态名称或未命名空串误记为固定缺失词条。
+
+本次仅从磁盘资料读取和整理来源，没有操作桌面、窗口或游戏，也没有读取加载日志。上述原生反编译不表示已观察到游戏内最终显示。
+
+可用于原生 draw 来源识别的地址
+native-header-draw-sites.tsv 保留两版每一处状态、关系、职位、竞技场和任务 draw 的 call/return RVA。状态的四十处 addst 返回地址全部位于 Steam 闭区间 0x15c2f2..0x15d246，Classic 为 0x15c282..0x15d1d6；这段执行区没有其他页面的文字 draw。它包括三十六种完整固定显示形态、两种异常枚举拼句，以及 grief 的五处字面片段调用。异常枚举用 movsx 读有符号 short，在同一个 string 内经 0x52c130 追加十进制，再一次 addst：Steam 返回 0x15c4d3 / 0x15ca43，Classic 各减 0x70。
+Pet prefix/name 的 Steam 返回地址为 0x15d2db / 0x15d368；Creator prefix/name 为 0x15d3df / 0x15d434；职位为 0x15d579；current job 为 0x15d6b6。Classic 均减 0x70。
+竞技场 Independent 返回 0x15bc81，# 与 decimal team 也是先在同一个 string 内组合后仅一次 draw，返回 0x15bebb；Classic 均减 0x70。没有独立的 # draw 或数字 draw，也不涉及自定义 squad.alias。
+活动 wrapper 在两份当前磁盘 PE 中另行用固定 objdump 直接反汇编，原始输出为 *-activity-wrapper-native.asm。Steam addst call/return 0x1390d91 / 0x1390d96；Classic 0x138bd01 / 0x138bd06。wrapper 本身被其它界面复用，单凭这一层返回地址不能判定属于人物 header，应同时保留已确定的 header 上下文。其调用范围与来源字段已在既有 character-header-activity-bindings.tsv 中记录。

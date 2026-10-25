@@ -143,7 +143,7 @@ static void capture_native_workshop_recipe_paragraph(void *paragraph,
         }
     } catch (...) {}
     callback.call_native([&] { if (g_real_native_paragraph) g_real_native_paragraph(paragraph,source,width); });
-    try { capture_appended_native_paragraph(paragraph,width,std::move(complete),first); } catch (...) {}
+    try { capture_appended_native_paragraph(paragraph,width,std::move(complete),first,true); } catch (...) {}
 }
 
 static bool uninstall_native_workshop_recipe_hooks() {
@@ -191,17 +191,20 @@ static bool install_native_workshop_recipe_hooks() {
         return true;
     }
     if (!profile.normalize || !profile.destroy || profile.paragraph_width <= 0) return false;
+    if (!profile.paragraph_calls.empty() && !g_real_native_paragraph) return false;
     hook.normalize = profile.normalize;
     hook.destroy = profile.destroy;
     hook.paragraph_width = profile.paragraph_width;
-    if (!hook.code.install(profile.base, {
+    auto calls = profile.paragraph_calls;
+    calls.insert(calls.end(), {
             {profile.begin_site, profile.begin_target,
                 reinterpret_cast<const void *>(&capture_native_workshop_requirement_begin),
                 profile.begin_arguments},
             {profile.end_site, profile.end_target,
                 reinterpret_cast<const void *>(&capture_native_workshop_requirement_end),
                 profile.end_arguments},
-        }, "Workshop requirement capture")) return false;
+        });
+    if (!hook.code.install(profile.base, calls, "Workshop recipe field capture")) return false;
     guard.committed = true;
     log_line("INFO", "Enabled complete native workshop requirement and wrapped-row capture");
     return true;

@@ -1,0 +1,99 @@
+edition	role	draw_call_rva	draw_return_rva	production	scope
+reference	arena	0x15bc7c	0x15bc81	Independent	character header direct draw
+reference	arena	0x15beb6	0x15bebb	#{team decimal}	character header direct draw
+reference	status	0x15c2ed	0x15c2f2	Enraged at all enemies!	character header direct draw
+reference	status	0x15c347	0x15c34c	In a martial trance!	character header direct draw
+reference	status	0x15c3a1	0x15c3a6	Throwing a tantrum!	character header direct draw
+reference	status	0x15c3fb	0x15c400	Sunk into depression...	character header direct draw
+reference	status	0x15c455	0x15c45a	Stumbling obliviously!	character header direct draw
+reference	status	0x15c4ce	0x15c4d3	Corrupt Soldier Mood: {signed decimal enum}	character header direct draw
+reference	status	0x15c5ad	0x15c5b2	Has a horrible fell look!	character header direct draw
+reference	status	0x15c605	0x15c60a	Brooding darkly...	character header direct draw
+reference	status	0x15c65f	0x15c664	Has the aspect of one fey!	character header direct draw
+reference	status	0x15c6b9	0x15c6be	Peculiarly secretive...	character header direct draw
+reference	status	0x15c713	0x15c718	Possessed by unknown forces!	character header direct draw
+reference	status	0x15c76d	0x15c772	Stricken by melancholy...	character header direct draw
+reference	status	0x15c835	0x15c83a	Crawling around babbling!	character header direct draw
+reference	status	0x15c875	0x15c87a	Running around babbling!	character header direct draw
+reference	status	0x15c8d1	0x15c8d6	Crawling around crazed!	character header direct draw
+reference	status	0x15c911	0x15c916	Running around crazed!	character header direct draw
+reference	status	0x15c96b	0x15c970	In a berserk rage!	character header direct draw
+reference	status	0x15c9c5	0x15c9ca	Staring off into space...	character header direct draw
+reference	status	0x15ca3e	0x15ca43	Corrupt Strange Mood: {signed decimal enum}	character header direct draw
+reference	status	0x15cc50	0x15cc55	Overcome by terror!	character header direct draw
+reference	status	0x15cc9b	0x15cca0	In emotional shock!	character header direct draw
+reference	status	0x15cce6	0x15cceb	Overwhelmed by horror!	character header direct draw
+reference	status	0x15cd31	0x15cd36	Experiencing mortal fear!	character header direct draw
+reference	status	0x15cd7c	0x15cd81	Beside 	character header direct draw
+reference	status	0x15cdcf	0x15cdd4	herself	character header direct draw
+reference	status	0x15ce28	0x15ce2d	himself	character header direct draw
+reference	status	0x15ce68	0x15ce6d	itself	character header direct draw
+reference	status	0x15cea6	0x15ceab	 with grief!	character header direct draw
+reference	status	0x15cef1	0x15cef6	Drowning in sadness!	character header direct draw
+reference	status	0x15cf3c	0x15cf41	Writhing in agony!	character header direct draw
+reference	status	0x15cf87	0x15cf8c	Anguished!	character header direct draw
+reference	status	0x15cfd2	0x15cfd7	Lost in despair!	character header direct draw
+reference	status	0x15d01d	0x15d022	Completely dismayed!	character header direct draw
+reference	status	0x15d068	0x15d06d	Distressed!	character header direct draw
+reference	status	0x15d0b3	0x15d0b8	Taken by a fright!	character header direct draw
+reference	status	0x15d0fe	0x15d103	Wallowing in misery!	character header direct draw
+reference	status	0x15d149	0x15d14e	Truly mortified!	character header direct draw
+reference	status	0x15d194	0x15d199	Shaken to the core!	character header direct draw
+reference	status	0x15d1dc	0x15d1e1	In existential crisis!	character header direct draw
+reference	status	0x15d241	0x15d246	Emotionally overloaded!	character header direct draw
+reference	pet-prefix	0x15d2d6	0x15d2db	Pet of 	character header direct draw
+reference	pet-name	0x15d363	0x15d368	{owner native language_name|Somebody}	character header direct draw
+reference	creator-prefix	0x15d3da	0x15d3df	Creator of 	character header direct draw
+reference	creator-name	0x15d42f	0x15d434	{artifact native language_name; may be empty}	character header direct draw
+reference	office	0x15d574	0x15d579	{office or spouse title}{optional of site}	character header direct draw
+reference	job	0x15d6b1	0x15d6b6	{current job}	character header direct draw
+classic	arena	0x15bc0c	0x15bc11	Independent	character header direct draw
+classic	arena	0x15be46	0x15be4b	#{team decimal}	character header direct draw
+classic	status	0x15c27d	0x15c282	Enraged at all enemies!	character header direct draw
+classic	status	0x15c2d7	0x15c2dc	In a martial trance!	character header direct draw
+classic	status	0x15c331	0x15c336	Throwing a tantrum!	character header direct draw
+classic	status	0x15c38b	0x15c390	Sunk into depression...	character header direct draw
+classic	status	0x15c3e5	0x15c3ea	Stumbling obliviously!	character header direct draw
+classic	status	0x15c45e	0x15c463	Corrupt Soldier Mood: {signed decimal enum}	character header direct draw
+classic	status	0x15c53d	0x15c542	Has a horrible fell look!	character header direct draw
+classic	status	0x15c595	0x15c59a	Brooding darkly...	character header direct draw
+classic	status	0x15c5ef	0x15c5f4	Has the aspect of one fey!	character header direct draw
+classic	status	0x15c649	0x15c64e	Peculiarly secretive...	character header direct draw
+classic	status	0x15c6a3	0x15c6a8	Possessed by unknown forces!	character header direct draw
+classic	status	0x15c6fd	0x15c702	Stricken by melancholy...	character header direct draw
+classic	status	0x15c7c5	0x15c7ca	Crawling around babbling!	character header direct draw
+classic	status	0x15c805	0x15c80a	Running around babbling!	character header direct draw
+classic	status	0x15c861	0x15c866	Crawling around crazed!	character header direct draw
+classic	status	0x15c8a1	0x15c8a6	Running around crazed!	character header direct draw
+classic	status	0x15c8fb	0x15c900	In a berserk rage!	character header direct draw
+classic	status	0x15c955	0x15c95a	Staring off into space...	character header direct draw
+classic	status	0x15c9ce	0x15c9d3	Corrupt Strange Mood: {signed decimal enum}	character header direct draw
+classic	status	0x15cbe0	0x15cbe5	Overcome by terror!	character header direct draw
+classic	status	0x15cc2b	0x15cc30	In emotional shock!	character header direct draw
+classic	status	0x15cc76	0x15cc7b	Overwhelmed by horror!	character header direct draw
+classic	status	0x15ccc1	0x15ccc6	Experiencing mortal fear!	character header direct draw
+classic	status	0x15cd0c	0x15cd11	Beside 	character header direct draw
+classic	status	0x15cd5f	0x15cd64	herself	character header direct draw
+classic	status	0x15cdb8	0x15cdbd	himself	character header direct draw
+classic	status	0x15cdf8	0x15cdfd	itself	character header direct draw
+classic	status	0x15ce36	0x15ce3b	 with grief!	character header direct draw
+classic	status	0x15ce81	0x15ce86	Drowning in sadness!	character header direct draw
+classic	status	0x15cecc	0x15ced1	Writhing in agony!	character header direct draw
+classic	status	0x15cf17	0x15cf1c	Anguished!	character header direct draw
+classic	status	0x15cf62	0x15cf67	Lost in despair!	character header direct draw
+classic	status	0x15cfad	0x15cfb2	Completely dismayed!	character header direct draw
+classic	status	0x15cff8	0x15cffd	Distressed!	character header direct draw
+classic	status	0x15d043	0x15d048	Taken by a fright!	character header direct draw
+classic	status	0x15d08e	0x15d093	Wallowing in misery!	character header direct draw
+classic	status	0x15d0d9	0x15d0de	Truly mortified!	character header direct draw
+classic	status	0x15d124	0x15d129	Shaken to the core!	character header direct draw
+classic	status	0x15d16c	0x15d171	In existential crisis!	character header direct draw
+classic	status	0x15d1d1	0x15d1d6	Emotionally overloaded!	character header direct draw
+classic	pet-prefix	0x15d266	0x15d26b	Pet of 	character header direct draw
+classic	pet-name	0x15d2f3	0x15d2f8	{owner native language_name|Somebody}	character header direct draw
+classic	creator-prefix	0x15d36a	0x15d36f	Creator of 	character header direct draw
+classic	creator-name	0x15d3bf	0x15d3c4	{artifact native language_name; may be empty}	character header direct draw
+classic	office	0x15d504	0x15d509	{office or spouse title}{optional of site}	character header direct draw
+classic	job	0x15d641	0x15d646	{current job}	character header direct draw
+reference	activity-wrapper	0x1390d91	0x1390d96	{current activity}	shared wrapper; caller alone is not header identity
+classic	activity-wrapper	0x138bd01	0x138bd06	{current activity}	shared wrapper; caller alone is not header identity

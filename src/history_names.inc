@@ -287,9 +287,12 @@ std::optional<std::string> Overlay::translate_history_name(
             // A missing literary compound must not reject the complete
             // identity (and hence all of those independently known labels).
             std::string result;
-            if ((!nickname || name.nickname_mode == 1) && !name.first_name.empty())
-                result = name.language < 0 ? native_text_to_utf8(name.first_name) :
-                    transliterate_native_language_word(name.first_name);
+            if ((!nickname || name.nickname_mode == 1) && !name.first_name.empty()) {
+                const auto numbered = translate_numbered_creature_name(name.first_name);
+                result = numbered ? *numbered : name.language < 0
+                    ? native_text_to_utf8(name.first_name)
+                    : transliterate_native_language_word(name.first_name);
+            }
             if (nickname) {
                 auto translated = exact_literal_translation("Unit nickname: " + name.nickname);
                 if (!translated) translated = exact_literal_translation(

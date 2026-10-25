@@ -49,8 +49,8 @@ void workshop_task_choice_render_branch(void)
     workshop_supplier_0xbb340(0x14264a3f0,&stack0x000010f8,&stack0x000010fc);
   }
   bVar2 = false;
-  workshop_supplier_0x6f240(0x1418a16e0,&stack0x00001c78);
-  workshop_supplier_0x6f230(0x1418a16e0,&stack0x00002ed8);
+  workshop_supplier_0x6f240(&DAT_1418a16e0,&stack0x00001c78);
+  workshop_supplier_0x6f230(&DAT_1418a16e0,&stack0x00002ed8);
   while( true ) {
     puVar10 = &stack0x00000747;
     for (lVar9 = 1; lVar9 != 0; lVar9 = lVar9 + -1) {
@@ -260,7 +260,7 @@ LAB_1401844cf:
         }
       }
       workshop_supplier_0xbb120(0x14264a3f0,iStack0000000000000164,iVar4);
-      puVar13 = (undefined8 *)workshop_supplier_0x6f220(0x1424f70b8,(longlong)iVar7);
+      puVar13 = (undefined8 *)workshop_supplier_0x6f220(&DAT_1424f70b8,(longlong)iVar7);
       iVar8 = FUN_1407dcad0(*puVar13);
       if (iVar8 != 0) {
         FUN_140adad70(0x14264a3f0,iVar8,2,2,5);

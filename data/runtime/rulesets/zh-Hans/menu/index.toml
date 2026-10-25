@@ -39,6 +39,9 @@ name = "menu_main::tail"
 name = "menu_main"
 [rulesets.rules]
 "{::materials::state::shared::main}" = "{::materials::state::shared::main}"
+# The native material-menu title uses the complete material noun, including
+# procedural materials and historical-owner prefixes (PE 0x8c28f0/0x14d1920).
+"{::text::material}" = "{::text::material}"
 "Make instrument piece" = "乐器部件"
 "Make instrument" = "乐器"
 "Weapons and Ammunition" = "武器与弹药"

@@ -1439,7 +1439,15 @@ std::optional<std::string> Overlay::translate_dfhack_output_rows(
     }
     if (template_block && depth == 0)
         if (const auto catalog = g_dfhack_output_snapshot.load(std::memory_order_acquire))
-            if (auto target = translate_dfhack_death_message(*catalog, visible, false)) {
+            // deathcause and its roster dialog both call df2console before
+            // printing. Restore native bytes only for the identity resolver;
+            // the complete message already owns UTF-8 accents and symbols.
+            if (auto target = translate_dfhack_death_message(*catalog, visible, true,
+                    [this](std::string_view name) -> std::optional<std::string> {
+                        const auto native = utf8_to_cp437(name, true);
+                        return native ? translate_dfhack_readable_unit_name(*native)
+                                      : std::nullopt;
+                    })) {
                 if (complete_source) *complete_source = visible;
                 return target;
             }

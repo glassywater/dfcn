@@ -1,0 +1,13 @@
+edition	constructor_mode	fortress_state	branch_rva	title	body	title_ref_rva	body_ref_rva	action_id
+steam	1	3	0x1e7dce	Abandoned	Your settlement has been abandoned.	0x1605c40	0x1605c50	10
+steam	1	2	0x1e7e08	Retired	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.	0x1605bd8	0x1605be0	10
+steam	1	1	0x1e7ecd	Conquered	Your strength has been broken.	0x1605c78	0x1605c88	10
+steam	1	0/default	0x1e7fb9	Withered	Your settlement has crumbled to its end.	0x1605ca8	0x1605cb8	10
+steam	9	n/a	0x1e84bf	Retired	You settle in this location...	0x1605bd8	0x1605ce8	10
+steam	10	n/a	0x1e80c6	Dead	Your adventure has come to an end.	0x1605d08	0x1605d10	10
+classic	1	3	0x1e7d5e	Abandoned	Your settlement has been abandoned.	0x1600bf0	0x1600c00	10
+classic	1	2	0x1e7d98	Retired	Your fortress has settled into the rhythm of day-to-day living, beyond your meticulous concern.	0x1600b80	0x1600b90	10
+classic	1	1	0x1e7e5d	Conquered	Your strength has been broken.	0x1600c28	0x1600c38	10
+classic	1	0/default	0x1e7f49	Withered	Your settlement has crumbled to its end.	0x1600c58	0x1600c68	10
+classic	9	n/a	0x1e844f	Retired	You settle in this location...	0x1600b80	0x1600c98	10
+classic	10	n/a	0x1e8056	Dead	Your adventure has come to an end.	0x1600cb8	0x1600cc0	10

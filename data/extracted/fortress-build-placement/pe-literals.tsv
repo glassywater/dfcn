@@ -1,0 +1,319 @@
+edition	role	instruction_rva	operand	kind	text
+reference	building-name	0x54d36b	0x141651c2c	cstring	Shop
+reference	building-name	0x54d387	0x141651c20	cstring	Trade Depot
+reference	building-name	0x54d3a3	0x141651cac	cstring	Nest
+reference	building-name	0x54d3bf	0x141651ca0	cstring	Nest Box
+reference	building-name	0x54d3db	0x14162cad0	cstring	Bookcase
+reference	building-name	0x54d3f7	0x141651c90	cstring	Offering Place
+reference	building-name	0x54d413	0x14162cb1c	cstring	Hive
+reference	building-name	0x54d42f	0x141651c88	cstring	Wagon
+reference	building-name	0x54d464	0x141651c70	cstring	Carpenter's Workshop
+reference	building-name	0x54d47d	0x141651c58	cstring	Farmer's Workshop
+reference	building-name	0x54d492	0x14162c9d0	cstring	Ashery
+reference	building-name	0x54d4ee	0x14162c958	cstring	Stoneworker
+reference	building-name	0x54d53d	0x141651c38	cstring	Craftsman
+reference	building-name	0x54d58c	0x14162c930	cstring	Jeweler
+reference	building-name	0x54d633	0x14162c938	cstring	Metalsmith
+reference	building-name	0x54d648	0x141651d18	cstring	's Forge
+reference	building-name	0x54d667	0x141651d08	cstring	Magma Forge
+reference	building-name	0x54d6c0	0x14162c9c8	cstring	Bowyer
+reference	building-name	0x54d767	0x14162c948	cstring	Mechanic
+reference	building-name	0x54d77c	0x141651c48	cstring	's Workshop
+reference	building-name	0x54d79b	0x141651cf8	cstring	Siege Workshop
+reference	building-name	0x54d7f7	0x14161be28	cstring	Butcher
+reference	building-name	0x54d809	0x141651ce0	cstring	Leather Works
+reference	building-name	0x54d865	0x14162cb80	cstring	Tanner
+reference	building-name	0x54d8b1	0x14162c910	cstring	Dyer
+reference	building-name	0x54d958	0x141651cd0	cstring	Clothier
+reference	building-name	0x54d96d	0x141651cf0	cstring	's Shop
+reference	building-name	0x54d98c	0x14162cb78	cstring	Fishery
+reference	building-name	0x54d9ab	0x14162cb60	cstring	Still
+reference	building-name	0x54d9ca	0x14162c8f8	cstring	Loom
+reference	building-name	0x54d9e9	0x14162cbb0	cstring	Quern
+reference	building-name	0x54da08	0x14162cc80	cstring	Millstone
+reference	building-name	0x54da27	0x14162cb98	cstring	Vermin Catcher's Shop
+reference	building-name	0x54da46	0x14162cb90	cstring	Kitchen
+reference	building-name	0x54da65	0x141651cc4	cstring	Tool
+reference	building-name	0x54dafa	0x141651cb8	cstring	Workshop
+reference	building-name	0x54db52	0x141651f94	cstring	Zone
+reference	building-name	0x54db6e	0x141651f88	cstring	Farm Plot
+reference	building-name	0x54dba3	0x14162c8e0	cstring	Smelter
+reference	building-name	0x54dbc2	0x141651f78	cstring	Glass Furnace
+reference	building-name	0x54dbe1	0x141651f68	cstring	Wood Furnace
+reference	building-name	0x54dc00	0x14162c96c	cstring	Kiln
+reference	building-name	0x54dc1f	0x141651f58	cstring	Magma Smelter
+reference	building-name	0x54dc3e	0x141651f40	cstring	Magma Glass Furnace
+reference	building-name	0x54dc5d	0x141651f30	cstring	Magma Kiln
+reference	building-name	0x54dd0c	0x141651f28	cstring	Furnace
+reference	building-name	0x54dd3e	0x14162ccb8	cstring	Lever
+reference	building-name	0x54dd5d	0x141652008	cstring	Pressure Plate
+reference	building-name	0x54dd7c	0x141651ff8	cstring	Cage Trap
+reference	building-name	0x54dd9b	0x141651fe8	cstring	Stone-Fall Trap
+reference	building-name	0x54ddba	0x141651fd8	cstring	Weapon Trap
+reference	building-name	0x54ddd9	0x141651fc8	cstring	Track Stop
+reference	building-name	0x54ddf8	0x141651fc0	cstring	Trap
+reference	building-name	0x54de2f	0x141651fa0	cstring	Siege Engine
+reference	building-name	0x54de48	0x141651fb0	cstring	Bolt Thrower
+reference	building-name	0x54de61	0x14162cf80	cstring	Ballista
+reference	building-name	0x54de80	0x14162cf70	cstring	Catapult
+reference	building-name	0x54dea5	0x14162cb08	cstring	Door
+reference	building-name	0x54dec1	0x141652088	cstring	Floor Hatch
+reference	building-name	0x54dedd	0x141652078	cstring	Wall Grate
+reference	building-name	0x54def9	0x141652068	cstring	Floor Grate
+reference	building-name	0x54df15	0x141652058	cstring	Vertical Bars
+reference	building-name	0x54df31	0x141652048	cstring	Floor Bars
+reference	building-name	0x54df4d	0x14162ccd0	cstring	Floodgate
+reference	building-name	0x54df69	0x141652038	cstring	Restraint
+reference	building-name	0x54df85	0x14162cc8c	cstring	Cage
+reference	building-name	0x54dfa1	0x14162ccb0	cstring	Support
+reference	building-name	0x54dfbd	0x141652028	cstring	Gear Assembly
+reference	building-name	0x54dfd9	0x14162cc78	cstring	Rollers
+reference	building-name	0x54dff5	0x141652018	cstring	Horizontal Axle
+reference	building-name	0x54e011	0x141652110	cstring	Vertical Axle
+reference	building-name	0x54e02d	0x1416520f8	cstring	Upright Spear/Spike
+reference	building-name	0x54e049	0x14162cb10	cstring	Instrument
+reference	building-name	0x54e065	0x1416520e8	cstring	Archery Target
+reference	building-name	0x54e081	0x1416520d8	cstring	Screw Pump
+reference	building-name	0x54e09d	0x1416520c8	cstring	Water Wheel
+reference	building-name	0x54e0b9	0x14162cc48	cstring	Windmill
+reference	building-name	0x54e0cf	0x1416520b0	cstring	Burial Receptacle
+reference	building-name	0x54e0e1	0x1416520a4	cstring	Seat
+reference	building-name	0x54e0fd	0x141652098	cstring	Animal Trap
+reference	building-name	0x54e119	0x14162cb48	cstring	Table
+reference	building-name	0x54e135	0x14162cb58	cstring	Cabinet
+reference	building-name	0x54e151	0x141651d98	cstring	Weapon Rack
+reference	building-name	0x54e16d	0x141651d88	cstring	Armor Stand
+reference	building-name	0x54e189	0x141651d78	cstring	Container
+reference	building-name	0x54e1a5	0x14162cb3c	cstring	Bed
+reference	building-name	0x54e1c1	0x141651d68	cstring	Traction Bench
+reference	building-name	0x54e1dd	0x141651d58	cstring	Dirt Road
+reference	building-name	0x54e1f9	0x141651d48	cstring	Paved Road
+reference	building-name	0x54e215	0x14162cab4	cstring	Bridge
+reference	building-name	0x54e231	0x14162ccdc	cstring	Well
+reference	building-name	0x54e24d	0x14162cabc	cstring	Statue
+reference	building-name	0x54e269	0x14162cac4	cstring	Slab
+reference	building-name	0x54e285	0x141651d38	cstring	Glass Window
+reference	building-name	0x54e2a1	0x141651d28	cstring	Gem Window
+reference	building-name	0x54e2bd	0x141651e18	cstring	Stockpile
+reference	building-name	0x54e2ec	0x14162ca6c	cstring	Wall
+reference	building-name	0x54e30b	0x14162ca88	cstring	Reinforced Wall
+reference	building-name	0x54e32a	0x14162ca7c	cstring	Floor
+reference	building-name	0x54e349	0x141651e08	cstring	Up Stair
+reference	building-name	0x54e368	0x141651df8	cstring	Down Stair
+reference	building-name	0x54e387	0x141651de8	cstring	Up/Down Stair
+reference	building-name	0x54e3a6	0x14162caa0	cstring	Ramp
+reference	building-name	0x54e3c5	0x14162cd08	cstring	Fortification
+reference	building-name	0x54e3e4	0x141651dd8	cstring	Track (N)
+reference	building-name	0x54e403	0x141651dc8	cstring	Track (S)
+reference	building-name	0x54e422	0x141651db8	cstring	Track (E)
+reference	building-name	0x54e441	0x141651da8	cstring	Track (W)
+reference	building-name	0x54e460	0x141651e98	cstring	Track (NS)
+reference	building-name	0x54e47f	0x141651e88	cstring	Track (NE)
+reference	building-name	0x54e49e	0x141651e78	cstring	Track (NW)
+reference	building-name	0x54e4bd	0x141651e68	cstring	Track (SE)
+reference	building-name	0x54e4dc	0x141651e58	cstring	Track (SW)
+reference	building-name	0x54e4fb	0x141651e48	cstring	Track (EW)
+reference	building-name	0x54e51a	0x141651e38	cstring	Track (NSE)
+reference	building-name	0x54e539	0x141651e28	cstring	Track (NSW)
+reference	building-name	0x54e558	0x141651f18	cstring	Track (NEW)
+reference	building-name	0x54e577	0x141651f08	cstring	Track (SEW)
+reference	building-name	0x54e596	0x141651ef8	cstring	Track (NSEW)
+reference	building-name	0x54e5b5	0x141651ee8	cstring	Track/Ramp (N)
+reference	building-name	0x54e5d4	0x141651ed8	cstring	Track/Ramp (S)
+reference	building-name	0x54e5f3	0x141651ec8	cstring	Track/Ramp (E)
+reference	building-name	0x54e612	0x141651eb8	cstring	Track/Ramp (W)
+reference	building-name	0x54e631	0x141651ea8	cstring	Track/Ramp (NS)
+reference	building-name	0x54e650	0x141652310	cstring	Track/Ramp (NE)
+reference	building-name	0x54e66f	0x141652300	cstring	Track/Ramp (NW)
+reference	building-name	0x54e68e	0x1416522f0	cstring	Track/Ramp (SE)
+reference	building-name	0x54e6ad	0x1416522e0	cstring	Track/Ramp (SW)
+reference	building-name	0x54e6cc	0x1416522d0	cstring	Track/Ramp (EW)
+reference	building-name	0x54e6eb	0x1416522b8	cstring	Track/Ramp (NSE)
+reference	building-name	0x54e70a	0x1416522a0	cstring	Track/Ramp (NSW)
+reference	building-name	0x54e729	0x141652288	cstring	Track/Ramp (NEW)
+reference	building-name	0x54e748	0x1416523a0	cstring	Track/Ramp (SEW)
+reference	building-name	0x54e767	0x141652388	cstring	Track/Ramp (NSEW)
+reference	building-name	0x54e786	0x141652378	cstring	Construction
+reference	building-name	0x54e7a5	0x141652360	cstring	Display Furniture
+reference	placement-status-producer	0x3c0e57	0x14162cf90	cstring	Disconnected
+reference	placement-status-producer	0x3c0edd	0x14162cfd0	cstring	Need trigger type
+reference	placement-status-producer	0x3c1685	0x14162cfb0	cstring	Needs walkable perimeter
+reference	placement-status-producer	0x3c19fb	0x14162d008	cstring	Hidden, cannot build at this location
+reference	placement-status-producer	0x3c1a53	0x14162cfe8	cstring	Needs to be anchored on edge
+reference	placement-status-producer	0x3c1a6c	0x14162cec8	cstring	Blocked at this location
+reference	placement-status-producer	0x3c1a85	0x14162cea8	cstring	Surrounded by empty space
+reference	placement-status-producer	0x3c1aa1	0x14162cf00	cstring	Needs adjacent wall
+reference	placement-status-producer	0x3c1abd	0x14162cee8	cstring	Needs open space
+reference	placement-status-producer	0x3c1ad9	0x14162cf30	cstring	Off map
+reference	placement-status-producer	0x3c1af5	0x14162cf18	cstring	Water at this location
+reference	placement-status-producer	0x3c1b11	0x14162cf50	cstring	Lava/Magma at this location
+reference	placement-status-producer	0x3c1b2d	0x14162cf38	cstring	Building present
+reference	placement-status-producer	0x3c1b49	0x14162cde8	cstring	Must remove construction
+reference	placement-status-producer	0x3c1b65	0x14162cdd8	cstring	Must be inside
+reference	placement-status-producer	0x3c1b81	0x14162ce18	cstring	Too close to edge
+reference	placement-status-producer	0x3c1b9d	0x14162ce08	cstring	Must be outside
+reference	placement-status-producer	0x3c1bb9	0x14162ce50	cstring	Cannot build at highest level
+reference	placement-status-producer	0x3c1bd5	0x14162ce30	cstring	Need soil or mud at location
+reference	placement-status-producer	0x3c1bf1	0x14162ce90	cstring	Need soil at location
+reference	placement-status-producer	0x3c1c96	0x14162ce70	cstring	Needs ground or near machine
+reference	placement-status-producer	0x3c1d06	0x14162cda0	cstring	No mud/soil for farm
+reference	placement-status-producer	0x3c1d62	0x14162cd88	cstring	Mud is left by water
+classic	building-name	0x54ad8b	0x14164cb94	cstring	Shop
+classic	building-name	0x54ada7	0x14164cb88	cstring	Trade Depot
+classic	building-name	0x54adc3	0x14164cb7c	cstring	Nest
+classic	building-name	0x54addf	0x14164cb70	cstring	Nest Box
+classic	building-name	0x54adfb	0x1416281c8	cstring	Bookcase
+classic	building-name	0x54ae17	0x14164cb60	cstring	Offering Place
+classic	building-name	0x54ae33	0x141627f24	cstring	Hive
+classic	building-name	0x54ae4f	0x14164cb58	cstring	Wagon
+classic	building-name	0x54ae84	0x14164cb40	cstring	Carpenter's Workshop
+classic	building-name	0x54ae9d	0x14164cc08	cstring	Farmer's Workshop
+classic	building-name	0x54aeb2	0x141627cb8	cstring	Ashery
+classic	building-name	0x54af0e	0x141627f98	cstring	Stoneworker
+classic	building-name	0x54af5d	0x14164cbe8	cstring	Craftsman
+classic	building-name	0x54afac	0x141628018	cstring	Jeweler
+classic	building-name	0x54b053	0x141628050	cstring	Metalsmith
+classic	building-name	0x54b068	0x14164cbd8	cstring	's Forge
+classic	building-name	0x54b087	0x14164cbc8	cstring	Magma Forge
+classic	building-name	0x54b0e0	0x14162800c	cstring	Bowyer
+classic	building-name	0x54b187	0x141628028	cstring	Mechanic
+classic	building-name	0x54b19c	0x14164cbf8	cstring	's Workshop
+classic	building-name	0x54b1bb	0x14164cbb8	cstring	Siege Workshop
+classic	building-name	0x54b217	0x141616fc8	cstring	Butcher
+classic	building-name	0x54b229	0x14164cba0	cstring	Leather Works
+classic	building-name	0x54b285	0x141627f64	cstring	Tanner
+classic	building-name	0x54b2d1	0x141627f5c	cstring	Dyer
+classic	building-name	0x54b378	0x14164cc80	cstring	Clothier
+classic	building-name	0x54b38d	0x14164cbb0	cstring	's Shop
+classic	building-name	0x54b3ac	0x141627f80	cstring	Fishery
+classic	building-name	0x54b3cb	0x141627f6c	cstring	Still
+classic	building-name	0x54b3ea	0x141627f48	cstring	Loom
+classic	building-name	0x54b409	0x141627ee8	cstring	Quern
+classic	building-name	0x54b428	0x141628410	cstring	Millstone
+classic	building-name	0x54b447	0x141627f08	cstring	Vermin Catcher's Shop
+classic	building-name	0x54b466	0x141627f78	cstring	Kitchen
+classic	building-name	0x54b485	0x14164cc74	cstring	Tool
+classic	building-name	0x54b51a	0x14164cc68	cstring	Workshop
+classic	building-name	0x54b572	0x14164cc5c	cstring	Zone
+classic	building-name	0x54b58e	0x14164cc50	cstring	Farm Plot
+classic	building-name	0x54b5c3	0x141627ff8	cstring	Smelter
+classic	building-name	0x54b5e2	0x14164cc40	cstring	Glass Furnace
+classic	building-name	0x54b601	0x14164cc30	cstring	Wood Furnace
+classic	building-name	0x54b620	0x141627fbc	cstring	Kiln
+classic	building-name	0x54b63f	0x14164cc20	cstring	Magma Smelter
+classic	building-name	0x54b65e	0x14164ccf8	cstring	Magma Glass Furnace
+classic	building-name	0x54b67d	0x14164cce8	cstring	Magma Kiln
+classic	building-name	0x54b72c	0x14164cce0	cstring	Furnace
+classic	building-name	0x54b75e	0x1416280b4	cstring	Lever
+classic	building-name	0x54b77d	0x14164ccd0	cstring	Pressure Plate
+classic	building-name	0x54b79c	0x14164ccc0	cstring	Cage Trap
+classic	building-name	0x54b7bb	0x14164ccb0	cstring	Stone-Fall Trap
+classic	building-name	0x54b7da	0x14164cca0	cstring	Weapon Trap
+classic	building-name	0x54b7f9	0x14164cc90	cstring	Track Stop
+classic	building-name	0x54b818	0x14164cfb0	cstring	Trap
+classic	building-name	0x54b84f	0x14164cf90	cstring	Siege Engine
+classic	building-name	0x54b868	0x14164cfa0	cstring	Bolt Thrower
+classic	building-name	0x54b881	0x1416282d8	cstring	Ballista
+classic	building-name	0x54b8a0	0x141628308	cstring	Catapult
+classic	building-name	0x54b8c5	0x141628158	cstring	Door
+classic	building-name	0x54b8e1	0x14164cf80	cstring	Floor Hatch
+classic	building-name	0x54b8fd	0x14164cf70	cstring	Wall Grate
+classic	building-name	0x54b919	0x14164cf60	cstring	Floor Grate
+classic	building-name	0x54b935	0x14164cf50	cstring	Vertical Bars
+classic	building-name	0x54b951	0x14164cf40	cstring	Floor Bars
+classic	building-name	0x54b96d	0x1416283c0	cstring	Floodgate
+classic	building-name	0x54b989	0x14164d030	cstring	Restraint
+classic	building-name	0x54b9a5	0x141628364	cstring	Cage
+classic	building-name	0x54b9c1	0x141628080	cstring	Support
+classic	building-name	0x54b9dd	0x14164d020	cstring	Gear Assembly
+classic	building-name	0x54b9f9	0x141628350	cstring	Rollers
+classic	building-name	0x54ba15	0x14164d010	cstring	Horizontal Axle
+classic	building-name	0x54ba31	0x14164d000	cstring	Vertical Axle
+classic	building-name	0x54ba4d	0x14164cfe8	cstring	Upright Spear/Spike
+classic	building-name	0x54ba69	0x141628130	cstring	Instrument
+classic	building-name	0x54ba85	0x14164cfd8	cstring	Archery Target
+classic	building-name	0x54baa1	0x14164cfc8	cstring	Screw Pump
+classic	building-name	0x54babd	0x14164cfb8	cstring	Water Wheel
+classic	building-name	0x54bad9	0x1416283d0	cstring	Windmill
+classic	building-name	0x54baef	0x14164d0a8	cstring	Burial Receptacle
+classic	building-name	0x54bb01	0x14164d09c	cstring	Seat
+classic	building-name	0x54bb1d	0x14164d090	cstring	Animal Trap
+classic	building-name	0x54bb39	0x141627f2c	cstring	Table
+classic	building-name	0x54bb55	0x141628188	cstring	Cabinet
+classic	building-name	0x54bb71	0x14164d080	cstring	Weapon Rack
+classic	building-name	0x54bb8d	0x14164d070	cstring	Armor Stand
+classic	building-name	0x54bba9	0x14164d060	cstring	Container
+classic	building-name	0x54bbc5	0x141627f20	cstring	Bed
+classic	building-name	0x54bbe1	0x14164d050	cstring	Traction Bench
+classic	building-name	0x54bbfd	0x14164d040	cstring	Dirt Road
+classic	building-name	0x54bc19	0x14164d130	cstring	Paved Road
+classic	building-name	0x54bc35	0x1416280bc	cstring	Bridge
+classic	building-name	0x54bc51	0x1416280ac	cstring	Well
+classic	building-name	0x54bc6d	0x1416281b8	cstring	Statue
+classic	building-name	0x54bc89	0x141628198	cstring	Slab
+classic	building-name	0x54bca5	0x14164d120	cstring	Glass Window
+classic	building-name	0x54bcc1	0x14164d110	cstring	Gem Window
+classic	building-name	0x54bcdd	0x14164d100	cstring	Stockpile
+classic	building-name	0x54bd0c	0x141628170	cstring	Wall
+classic	building-name	0x54bd2b	0x141628160	cstring	Reinforced Wall
+classic	building-name	0x54bd4a	0x141628180	cstring	Floor
+classic	building-name	0x54bd69	0x14164d0f0	cstring	Up Stair
+classic	building-name	0x54bd88	0x14164d0e0	cstring	Down Stair
+classic	building-name	0x54bda7	0x14164d0d0	cstring	Up/Down Stair
+classic	building-name	0x54bdc6	0x141628178	cstring	Ramp
+classic	building-name	0x54bde5	0x141628100	cstring	Fortification
+classic	building-name	0x54be04	0x14164d0c0	cstring	Track (N)
+classic	building-name	0x54be23	0x14164cd80	cstring	Track (S)
+classic	building-name	0x54be42	0x14164cd70	cstring	Track (E)
+classic	building-name	0x54be61	0x14164cd60	cstring	Track (W)
+classic	building-name	0x54be80	0x14164cd50	cstring	Track (NS)
+classic	building-name	0x54be9f	0x14164cd40	cstring	Track (NE)
+classic	building-name	0x54bebe	0x14164cd30	cstring	Track (NW)
+classic	building-name	0x54bedd	0x14164cd20	cstring	Track (SE)
+classic	building-name	0x54befc	0x14164cd10	cstring	Track (SW)
+classic	building-name	0x54bf1b	0x14164ce00	cstring	Track (EW)
+classic	building-name	0x54bf3a	0x14164cdf0	cstring	Track (NSE)
+classic	building-name	0x54bf59	0x14164cde0	cstring	Track (NSW)
+classic	building-name	0x54bf78	0x14164cdd0	cstring	Track (NEW)
+classic	building-name	0x54bf97	0x14164cdc0	cstring	Track (SEW)
+classic	building-name	0x54bfb6	0x14164cdb0	cstring	Track (NSEW)
+classic	building-name	0x54bfd5	0x14164cda0	cstring	Track/Ramp (N)
+classic	building-name	0x54bff4	0x14164cd90	cstring	Track/Ramp (S)
+classic	building-name	0x54c013	0x14164ce80	cstring	Track/Ramp (E)
+classic	building-name	0x54c032	0x14164ce70	cstring	Track/Ramp (W)
+classic	building-name	0x54c051	0x14164ce60	cstring	Track/Ramp (NS)
+classic	building-name	0x54c070	0x14164ce50	cstring	Track/Ramp (NE)
+classic	building-name	0x54c08f	0x14164ce40	cstring	Track/Ramp (NW)
+classic	building-name	0x54c0ae	0x14164ce30	cstring	Track/Ramp (SE)
+classic	building-name	0x54c0cd	0x14164ce20	cstring	Track/Ramp (SW)
+classic	building-name	0x54c0ec	0x14164ce10	cstring	Track/Ramp (EW)
+classic	building-name	0x54c10b	0x14164cf28	cstring	Track/Ramp (NSE)
+classic	building-name	0x54c12a	0x14164cf10	cstring	Track/Ramp (NSW)
+classic	building-name	0x54c149	0x14164cef8	cstring	Track/Ramp (NEW)
+classic	building-name	0x54c168	0x14164cee0	cstring	Track/Ramp (SEW)
+classic	building-name	0x54c187	0x14164cec8	cstring	Track/Ramp (NSEW)
+classic	building-name	0x54c1a6	0x14164ceb8	cstring	Construction
+classic	building-name	0x54c1c5	0x14164cea0	cstring	Display Furniture
+classic	placement-status-producer	0x3bea17	0x141628330	cstring	Disconnected
+classic	placement-status-producer	0x3bea9d	0x141628318	cstring	Need trigger type
+classic	placement-status-producer	0x3bf245	0x141628200	cstring	Needs walkable perimeter
+classic	placement-status-producer	0x3bf5bb	0x1416281d8	cstring	Hidden, cannot build at this location
+classic	placement-status-producer	0x3bf613	0x141628240	cstring	Needs to be anchored on edge
+classic	placement-status-producer	0x3bf62c	0x141628220	cstring	Blocked at this location
+classic	placement-status-producer	0x3bf645	0x141628278	cstring	Surrounded by empty space
+classic	placement-status-producer	0x3bf661	0x141628260	cstring	Needs adjacent wall
+classic	placement-status-producer	0x3bf67d	0x1416282a0	cstring	Needs open space
+classic	placement-status-producer	0x3bf699	0x141628298	cstring	Off map
+classic	placement-status-producer	0x3bf6b5	0x1416284f8	cstring	Water at this location
+classic	placement-status-producer	0x3bf6d1	0x1416284d8	cstring	Lava/Magma at this location
+classic	placement-status-producer	0x3bf6ed	0x141628530	cstring	Building present
+classic	placement-status-producer	0x3bf709	0x141628510	cstring	Must remove construction
+classic	placement-status-producer	0x3bf725	0x141628560	cstring	Must be inside
+classic	placement-status-producer	0x3bf741	0x141628548	cstring	Too close to edge
+classic	placement-status-producer	0x3bf75d	0x141628590	cstring	Must be outside
+classic	placement-status-producer	0x3bf779	0x141628570	cstring	Cannot build at highest level
+classic	placement-status-producer	0x3bf795	0x141628448	cstring	Need soil or mud at location
+classic	placement-status-producer	0x3bf7b1	0x141628430	cstring	Need soil at location
+classic	placement-status-producer	0x3bf856	0x141628480	cstring	Needs ground or near machine
+classic	placement-status-producer	0x3bf8c6	0x141628468	cstring	No mud/soil for farm
+classic	placement-status-producer	0x3bf922	0x1416284c0	cstring	Mud is left by water

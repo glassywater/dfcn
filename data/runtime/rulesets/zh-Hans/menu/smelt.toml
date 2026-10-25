@@ -16,3 +16,4 @@ name = "kind"
 name = "main"
 [rulesets.rules]
 " {::materials::state::shared::main} ore" = "{::materials::state::shared::main}矿石"
+" {::materials::item_qualifier} ore" = "{::materials::item_qualifier}矿石"

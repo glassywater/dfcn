@@ -11,8 +11,11 @@ reference	PE:6a70a6d9:02711000	color-menu-title	0x8c2670	0x8c285d	pe-reference-c
 reference	PE:6a70a6d9:02711000	color-menu-input	0x8c2860	0x8c28e3	pe-reference-color-menu-input.asm
 reference	PE:6a70a6d9:02711000	material-menu-title	0x8c28f0	0x8c293a	pe-reference-material-menu-title.asm
 reference	PE:6a70a6d9:02711000	material-menu-input	0x8c2940	0x8c29c9	pe-reference-material-menu-input.asm
+reference	PE:6a70a6d9:02711000	reaction-category-menu-title	0x8c29d0	0x8c2aa8	pe-reference-reaction-category-menu-title.asm
 reference	PE:6a70a6d9:02711000	category-menu-title	0x8c2ab0	0x8c2bb8	pe-reference-category-menu-title.asm
+reference	PE:6a70a6d9:02711000	reaction-category-tooltip	0x8c2bf0	0x8c2c97	pe-reference-reaction-category-tooltip.asm
 reference	PE:6a70a6d9:02711000	task-choice-tooltip	0x8c2ca0	0x8c3e18	pe-reference-task-choice-tooltip.asm
+reference	PE:6a70a6d9:02711000	reaction-category-menu-input	0x8c3e20	0x8c3ea4	pe-reference-reaction-category-menu-input.asm
 reference	PE:6a70a6d9:02711000	category-menu-input	0x8c3eb0	0x8c3f25	pe-reference-category-menu-input.asm
 reference	PE:6a70a6d9:02711000	task-availability-and-requirement	0x8c3fe0	0x8c4fbf	pe-reference-task-availability-and-requirement.asm
 reference	PE:6a70a6d9:02711000	task-choice-filter	0x8c4fc0	0x8c565c	pe-reference-task-choice-filter.asm
@@ -24,6 +27,10 @@ reference	PE:6a70a6d9:02711000	reaction-reagent-description	0xedc660	0xedc7fe	pe
 reference	PE:6a70a6d9:02711000	requirement-item-noun	0xa82c10	0xa880e0	pe-reference-requirement-item-noun.asm
 reference	PE:6a70a6d9:02711000	requirement-tool-use	0x724a30	0x724b09	pe-reference-requirement-tool-use.asm
 reference	PE:6a70a6d9:02711000	requirement-material-category	0x14add70	0x14ade9f	pe-reference-requirement-material-category.asm
+reference	PE:6a70a6d9:02711000	tooltip-paragraph-splitter	0x8e7310	0x8e7431	pe-reference-tooltip-paragraph-splitter.asm
+reference	PE:6a70a6d9:02711000	tooltip-paragraph-list-splitter	0x8e7440	0x8e7716	pe-reference-tooltip-paragraph-list-splitter.asm
+reference	PE:6a70a6d9:02711000	tooltip-job-products	0xd160c0	0xd16e20	pe-reference-tooltip-job-products.asm
+reference	PE:6a70a6d9:02711000	tooltip-job-reagents	0xd09ca0	0xd0c870	pe-reference-tooltip-job-reagents.asm
 reference	PE:6a70a6d9:02711000	task-choice-render-branch	0x1843ab	0x185da6	pe-reference-task-choice-render-owner.asm
 classic	PE:6a70b91c:0270a000	material-menu-constructor	0x8aec80	0x8aecca	pe-classic-material-menu-constructor.asm
 classic	PE:6a70b91c:0270a000	color-menu-constructor	0x8aed20	0x8aed7e	pe-classic-color-menu-constructor.asm
@@ -37,8 +44,11 @@ classic	PE:6a70b91c:0270a000	color-menu-title	0x8bfef0	0x8c00dd	pe-classic-color
 classic	PE:6a70b91c:0270a000	color-menu-input	0x8c00e0	0x8c0163	pe-classic-color-menu-input.asm
 classic	PE:6a70b91c:0270a000	material-menu-title	0x8c0170	0x8c01ba	pe-classic-material-menu-title.asm
 classic	PE:6a70b91c:0270a000	material-menu-input	0x8c01c0	0x8c0249	pe-classic-material-menu-input.asm
+classic	PE:6a70b91c:0270a000	reaction-category-menu-title	0x8c0250	0x8c0328	pe-classic-reaction-category-menu-title.asm
 classic	PE:6a70b91c:0270a000	category-menu-title	0x8c0330	0x8c0438	pe-classic-category-menu-title.asm
+classic	PE:6a70b91c:0270a000	reaction-category-tooltip	0x8c0470	0x8c0517	pe-classic-reaction-category-tooltip.asm
 classic	PE:6a70b91c:0270a000	task-choice-tooltip	0x8c0520	0x8c1698	pe-classic-task-choice-tooltip.asm
+classic	PE:6a70b91c:0270a000	reaction-category-menu-input	0x8c16a0	0x8c1724	pe-classic-reaction-category-menu-input.asm
 classic	PE:6a70b91c:0270a000	category-menu-input	0x8c1730	0x8c17a5	pe-classic-category-menu-input.asm
 classic	PE:6a70b91c:0270a000	task-availability-and-requirement	0x8c1860	0x8c283f	pe-classic-task-availability-and-requirement.asm
 classic	PE:6a70b91c:0270a000	task-choice-filter	0x8c2840	0x8c2edc	pe-classic-task-choice-filter.asm
@@ -50,4 +60,8 @@ classic	PE:6a70b91c:0270a000	reaction-reagent-description	0xed75d0	0xed776e	pe-c
 classic	PE:6a70b91c:0270a000	requirement-item-noun	0xa7fc90	0xa85160	pe-classic-requirement-item-noun.asm
 classic	PE:6a70b91c:0270a000	requirement-tool-use	0x722450	0x722529	pe-classic-requirement-tool-use.asm
 classic	PE:6a70b91c:0270a000	requirement-material-category	0x14a8ce0	0x14a8e0f	pe-classic-requirement-material-category.asm
+classic	PE:6a70b91c:0270a000	tooltip-paragraph-splitter	0x8e4b80	0x8e4ca1	pe-classic-tooltip-paragraph-splitter.asm
+classic	PE:6a70b91c:0270a000	tooltip-paragraph-list-splitter	0x8e4cb0	0x8e4f86	pe-classic-tooltip-paragraph-list-splitter.asm
+classic	PE:6a70b91c:0270a000	tooltip-job-products	0xd13100	0xd13e60	pe-classic-tooltip-job-products.asm
+classic	PE:6a70b91c:0270a000	tooltip-job-reagents	0xd06ce0	0xd098b0	pe-classic-tooltip-job-reagents.asm
 classic	PE:6a70b91c:0270a000	task-choice-render-branch	0x18433b	0x185d36	pe-classic-task-choice-render-owner.asm

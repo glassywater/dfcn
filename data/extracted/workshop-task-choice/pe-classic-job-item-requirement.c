@@ -349,7 +349,7 @@ LAB_140a28715:
       uStack_48 = 0xf;
       lStack_50 = 0;
       pppuStack_60 = (undefined8 ****)0x0;
-      lVar7 = FUN_1414a8ce0(0x1423cb3e0,0);
+      lVar7 = workshop_requirement_material_category(0x1423cb3e0,0);
       if (lVar7 == 0) {
         pcVar15 = "unknown material";
         uVar20 = 0x10;
@@ -529,7 +529,8 @@ LAB_140a28715:
                         FUN_14006f9a0(param_2,"wax ",4);
                       }
                       else {
-                        puVar9 = (undefined8 *)FUN_140722450(&pppuStack_80,param_1 + 0x20,0x20);
+                        puVar9 = (undefined8 *)
+                                 workshop_requirement_tool_use(&pppuStack_80,param_1 + 0x20,0x20);
                         puVar13 = puVar9 + 2;
                         if (0xf < (ulonglong)puVar9[3]) {
                           puVar9 = (undefined8 *)*puVar9;
@@ -889,7 +890,7 @@ LAB_140a29bd3:
     uStack_c0 = 0;
     uStack_c8 = 0;
     uStack_d8 = *(undefined4 *)(param_1 + 4);
-    FUN_140a7fc90(&pppuStack_80,*param_1,param_1[1],param_1[2]);
+    workshop_requirement_item_noun(&pppuStack_80,*param_1,param_1[1],param_1[2]);
     ppppuVar10 = &pppuStack_80;
     if (0xf < uStack_68) {
       ppppuVar10 = (undefined8 ****)pppuStack_80;
