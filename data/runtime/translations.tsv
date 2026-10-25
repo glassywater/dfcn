@@ -2,6 +2,9 @@
 # Item nouns must take precedence over the procedural-name fallback gloss.
 anvil	锻砧	wi
 anvils	锻砧	wi
+# Noble office labels must take precedence over the procedural-name gloss.
+Hammerer	锤刑官	wi
+Hammerers	锤刑官	wi
 # Complete native combat messages must precede the open merchant-hawk {s}!
 # item template, which can otherwise reinterpret this injury as a book title.
 It is a gelding blow!	这一击造成了阉割！	lP
