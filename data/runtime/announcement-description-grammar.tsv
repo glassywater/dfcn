@@ -731,7 +731,7 @@ memory-relation	animal training partner	一起训练的动物伙伴		ELF 53.16 0
 memory-person	my {s}	我的{s1}	memory-relation	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-person	my own	我自己		ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-person	the forces of {s}	{s1}的部队	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
-memory-sentence	Our time in {s} is so brief...	我们在{s1}能活的日子真短啊……	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
+memory-sentence	Our time in {s} is so brief...	我们在{s1}的一生太短暂了……	$name	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	{s} {s}.	{s1}{s2}。	memory-person,memory-death	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	{s} attacked {s}.	{s1}袭击了{s2}。	memory-person,memory-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor
 memory-sentence	{s} demanded submission from {s}.	{s1}要{s2}服从。	memory-person,memory-person	ELF 53.16 0x101b7f0..0x1020794 event-memory constructor

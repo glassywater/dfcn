@@ -2,6 +2,10 @@
 # Item nouns must take precedence over the procedural-name fallback gloss.
 anvil	锻砧	wi
 anvils	锻砧	wi
+# Complete native combat messages must precede the open merchant-hawk {s}!
+# item template, which can otherwise reinterpret this injury as a book title.
+It is a gelding blow!	这一击造成了阉割！	lP
+It is a gelding strike!	这一击造成了阉割！	lP
 # Item description scopes: H=complete item sentences, I=item noun grammar, J=item predicates (all with h); I {k}=quoted printed language word, {f}/{l}=solid/liquid food ingredient; {v}=native color, {j}=dye material list, H {o}=RAW craft profession; captures are resolved only by the shared item description parser.
 # Historical identity scope (N with h): quoted or unnamed identities, with {n}=person, {p}=organization and {s}=species/profession; excluded from prose and participant matching.
 # Numeric targets: {d1}/{d2} reference numbered numeric captures without exchanging day/year values; digits remain unchanged.
@@ -18538,7 +18542,7 @@ Announcement combat memorial-inscription [memorial-name]: In memory of {s}.	谨�
 Announcement combat memory-performance-core [memory-poem]: I saw recite {s}	我听未具名者朗诵了{s1}	l
 Announcement combat memory-sentence [$creature]: I was near to a caged {s}.	靠近过关在笼子里的{s1}。	l
 Announcement combat memory-sentence [$name]: I was denied residency in {s}.	没获准住在{s1}。	l
-Announcement combat memory-sentence [$name]: Our time in {s} is so brief...	我们在{s1}能活的日子真短啊……	l
+Announcement combat memory-sentence [$name]: Our time in {s} is so brief...	我们在{s1}的一生太短暂了……	l
 Announcement combat memory-sentence []: The body of decayed without burial.	未具名者的尸体没人埋，都烂了。	l
 Announcement combat memory-sentence [agreement-item]: I saw {s} on display.	看到了展出的{s1}。	l
 Announcement combat memory-sentence [memory-person]: I have fallen for {s}.	我喜欢上{s1}了。	l
@@ -106657,7 +106661,7 @@ Opening Ceremony of within {p}.	在{p1}，开幕仪式。	htEi
 Overall, the prose is passable.	总体而言，行文尚可。	h
 Overall, the prose is splendid.	总体而言，行文十分出色。	h
 Overview sentence: Astonishing!	真没想到！	l
-Overview sentence: Begone fear!	别怕！	l
+Overview sentence: Begone fear!	我不能怕！	l
 Overview sentence: I feel fond.	真喜欢啊。	l
 Overview sentence: I feel hate.	真可恨。	l
 Overview sentence: I have hope.	还有盼头。	l
