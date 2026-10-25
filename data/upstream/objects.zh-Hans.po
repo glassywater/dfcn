@@ -18646,11 +18646,11 @@ msgstr "[DESCRIPTION:一种由很多人类手指一样的附肢组成的极小�
 
 msgctxt "CREATURE:CREEPY_CRAWLER"
 msgid "[NAME:creepy crawler:creepy crawlers:creepy crawler]"
-msgstr "[NAME:恐怖爬行者:恐怖爬行者:恐怖爬行者]"
+msgstr "[NAME:怪异指虫:怪异指虫:怪异指虫]"
 
 msgctxt "CREATURE:CREEPY_CRAWLER"
 msgid "[CASTE_NAME:creepy crawler:creepy crawlers:creepy crawler]"
-msgstr "[CASTE_NAME:恐怖爬行者:恐怖爬行者:恐怖爬行者]"
+msgstr "[CASTE_NAME:怪异指虫:怪异指虫:怪异指虫]"
 
 msgctxt "CREATURE:CREEPY_CRAWLER"
 msgid "[PREFSTRING:freakish wriggling]"
