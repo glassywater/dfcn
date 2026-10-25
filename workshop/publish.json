@@ -10,8 +10,8 @@
     "Chinese"
   ],
   "visibility": 0,
-  "changelog": "[h2]DFCN v53.16-20261025.2[/h2]\n[list]\n[*]修复建造放置面板较窄、标题被截断，或 DFHack 建造规划面板遮挡部分控件时，建筑名称与放置提示汉化不完整的问题。\n[*]补全家具、工坊、熔炉、陷阱、机械设施及构筑物等建造放置提示中的建筑名称译文。\n[*]将“恐怖爬行者”统一改译为“怪异指虫”。\n[/list]\n",
-  "release_tag": "v53.16-20261025.2",
-  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261025.2",
+  "changelog": "[h2]DFCN v53.16-20261026[/h2]\n[list]\n[*]修正锻砧物品名称被通用词条覆盖的问题，统一显示为“锻砧”。\n[*]修正锤刑官职务被误译为“锻工”的问题。\n[*]修正阉割攻击的战斗报告误译，准确显示“这一击造成了阉割！”。\n[*]优化关于生命短暂和克服恐惧的情绪对白，使中文表达更自然、贴合语境。\n[/list]\n",
+  "release_tag": "v53.16-20261026",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261026",
   "github_url": "https://github.com/pokemonchw/dfcn"
 }
