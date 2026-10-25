@@ -1,0 +1,5 @@
+edition	image	source_path	sha256	role	start_rva	code_end_rva	unwind_end_rva	assembly_file
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	building-name	0x54d320	0x54e7c4	0x54e9d4	pe-reference-building-name.asm
+reference	PE:6a70a6d9:02711000	D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe	205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7	placement-status-producer	0x3c0c30	0x3c1ddc	0x3c1e20	pe-reference-placement-status-producer.asm
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	building-name	0x54ad40	0x54c1e4	0x54c3f4	pe-classic-building-name.asm
+classic	PE:6a70b91c:0270a000	C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe	f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4	placement-status-producer	0x3be7f0	0x3bf99c	0x3bf9e0	pe-classic-placement-status-producer.asm

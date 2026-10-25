@@ -1,0 +1,174 @@
+Windows PE 建造放置提示：反编译来源与全部文本分支
+
+来源范围
+本材料说明截图中的建造放置提示，不是测试、验收或运行结果。原始映像读取自 data/runtime/native-pe-images.json 当前 reference/classic 路径；磁盘文件 SHA256、PE 标识与各函数范围保存在 pe-functions.tsv。
+当前两版为 PE:6a70a6d9:02711000 / PE:6a70b91c:0270a000。tools/extract_fortress_build_placement_pe.py 从两份实际文件提取完整 native unwind owner、原始指令、字面量、条件、调用及跳转表；tools/DecompileFortressBuildPlacementPE.java 在 Ghidra 12.1.4 中实际完成两版 building-name 与 placement-status-producer 的反编译，未改动原始函数字节。pe-*-building-name.c 和 pe-*-placement-status-producer.c 是真实 decompile 输出，不是按 ELF 手写的伪 C。
+名称函数 reference RVA 0x54d320、classic 0x54ad40；状态函数 reference RVA 0x3c0c30、classic 0x3be7f0。表尾内嵌 jump-table 字节不当作指令；原始展开结束地址另列 unwind_end_rva。Switch is manually overridden 表示按原 PE 表项及 selector 恢复目标，全部映射保留于 pe-switches.tsv；这四个 C 文件没有未恢复跳转表或未定义指令警告。
+完整 renderer 真实 C/ASM 已保留于 ../fortress-rectangle/pe-{edition}-placement-renderer-owner.{c,asm}；其 reference owner RVA 0x3d6950、classic 0x3d4510。这里不复制巨大的完整 owner，pe-{edition}-placement-panel-slice.c 是原 C 的精确片段，保留父函数局部变量而非独立函数。
+
+截图面板的实际边界
+renderer 的 mode 全局 reference 0x1418a938c（完整 C 第 5711 行）为 1 时进入建造分支。该提示面板起于 reference 0x3e5070、止于 0x3e5d3e；classic 对应原生指令范围 0x3e2c30–0x3e38fe，实际指令并非仅靠地址差推测。graphics/map 对象存在且指针坐标处在绘制区内时进入该面板，先在 reference call RVA 0x3e5152 调用 0x3c0c30 更新状态，再画提示和错误列表。graphics 与 classic 坐标路径在 0x3e5120 合流。
+参考参数：type = reference 0x1418a0468；subtype = 0x1418a046c；custom raw id = 0x1418a0470；first_x = word 0x1418a1472；first_z = word 0x1418a1476；current_z = 0x142374724；race = word 0x14239367c。以下十六进制类型值均是游戏原始 selector。
+
+三种完整标题产生式
+1. Click a tile to place the {building_name}.
+   默认文案。type 不在 {0x04,0x13,0x14,0x15,0x22,0x29,0x32}，或 first_x != -30000（已选首点），使用本分支。
+2. Click a tile to be a corner of the {building_name}.
+   type 在上述七种可拉伸建筑中，first_x == -30000，且不满足下一条线性分支。具体为 Farm Plot/Bridge/Dirt Road/Paved Road，或 Construction subtype 不在 {5,0x15,0x24}。
+3. Click a tile to be one end of the {building_name}.
+   first_x == -30000，且 type 为 Horizontal Axle(0x29)、Rollers(0x32)，或 type=Construction(0x22) 且 subtype 为 5、0x15、0x24。
+area 标志的原始 switch 在 reference 0x3e53a1，selector=type-4，置真表项为 0,15,16,17,30,37,46；原始表保留在 ../fortress-rectangle/pe-switches.tsv。标题来源原生加载点分别为 reference 0x3e53ba/0x3e5470/0x3e53fe；classic 为 0x3e2f7a/0x3e3030/0x3e2fbe。
+building_name 在 renderer 有两个优先覆盖：type=0x22 且 subtype=0x15 或 0x24，显示 Track；subtype=5，显示 Stairs。其他情况调用完整名称供应器（reference call RVA 0x3e54a7；classic 0x3e3067）。所以此处正常不会显示这三个 subtype 对应的 Track (NSEW)、Track/Ramp (NSEW)、Up/Down Stair。
+prefix、building_name、句号先拼成同一个 std::string，再一次直接调用原生文字绘制（reference return RVA 0x3e54eb、classic 0x3e30ab）。此路径没有段落包装或单词换行调用。屏幕宽度裁掉尾部不会产生另一种英文产式。
+
+名称供应器：55 个顶层 selector
+00 Seat
+01 Bed
+02 Table
+03 Burial Receptacle
+04 Farm Plot
+05 由 Furnace subtype 分派（见下）
+06 Trade Depot
+07 Shop
+08 Door
+09 Floodgate
+0a Container
+0b Weapon Rack
+0c Armor Stand
+0d 由 Workshop subtype 分派（见下）
+0e Cabinet
+0f Statue
+10 Glass Window
+11 Gem Window
+12 Well
+13 Bridge
+14 Dirt Road
+15 Paved Road
+16 Siege Engine：subtype 0 Catapult，1 Ballista，2 Bolt Thrower；其他值为 Siege Engine
+17 Trap：subtype 0 Lever，1 Pressure Plate，2 Cage Trap，3 Stone-Fall Trap，4 Weapon Trap，5 Track Stop；其他值为 Trap
+18 Animal Trap
+19 Support
+1a Archery Target
+1b Restraint
+1c Cage
+1d Stockpile
+1e Zone
+1f Upright Spear/Spike
+20 Wagon
+21 Screw Pump
+22 由 Construction subtype 分派（见下）
+23 Floor Hatch
+24 Wall Grate
+25 Floor Grate
+26 Vertical Bars
+27 Floor Bars
+28 Gear Assembly
+29 Horizontal Axle
+2a Vertical Axle
+2b Water Wheel
+2c Windmill
+2d Traction Bench
+2e Slab
+2f Nest
+30 Nest Box
+31 Hive
+32 Rollers
+33 Instrument
+34 Bookcase
+35 Display Furniture
+36 Offering Place
+入口先清空输出。type 按 16 位值超出 0..0x36（包括 -1 的无符号表示）时直接返回空名称，没有 Unknown/None 专用文本。上面是供应器完整分支域，不表示每一 selector 都能从普通建造按钮进入截图面板；不把初始化无效参数凭空枚举成一个新 UI 类别。
+
+Furnace(type=05) 的 8 个 subtype
+0 Wood Furnace；1 Smelter；2 Glass Furnace；3 Kiln；4 Magma Smelter；5 Magma Glass Furnace；6 Magma Kiln。
+7 按 custom raw id 查 furnace raws（reference vector 0x1424f72c8..0x1424f72d0），条目 +0x28 是 ID，+0x30 是 std::string name；找到有效条目就直接复制 name。ID 缺失、条目为空，或 subtype 超过 7，回退 Furnace。有效条目的 name 为空时照样复制为空；原生没有另设“空名称”后备文案。
+
+Workshop(type=0d) 的 25 个 subtype
+00 Carpenter's Workshop
+01 Farmer's Workshop
+02 {Stoneworker profession}'s Workshop
+03 {Craftsman profession}'s Workshop
+04 {Jeweler profession}'s Workshop
+05 {Metalsmith profession}'s Forge
+06 Magma Forge
+07 {Bowyer profession}'s Workshop
+08 {Mechanic profession}'s Workshop
+09 Siege Workshop
+0a {Butcher profession}'s Shop
+0b Leather Works
+0c {Tanner profession}'s Shop
+0d {Clothier profession}'s Shop
+0e Fishery
+0f Still
+10 Loom
+11 Quern
+12 Vermin Catcher's Shop
+13 Kitchen
+14 Ashery
+15 {Dyer profession}'s Shop
+16 Millstone
+17 custom workshop raw name
+18 Tool
+subtype 超过 0x18 时回退 Workshop。subtype=0x17 按 custom raw id 查询 workshop raws（reference vector 0x1424f72b0..0x1424f72b8），同样以条目 +0x28 匹配 ID 并复制 +0x30 name；查不到或空条目回退 Workshop，已找到条目的空 name 原样保留。
+
+十条 profession 来源
+上述十条动态职业支路全部在 PE 名称供应器内联，没有未追踪的职业命名调用。race>=0 且小于 creature raw vector 长度，并且该职业 std::string 的 length 非零，才采用该 raw 字段；否则使用下表英文固定后备。复制职业词后仅把开头 ASCII a..z 转成 A..Z，再加完整后缀。没有替换其余词、音译或重写用户 squad.alias 的路径。
+workshop subtype | raw string offset | fallback | suffix
+02 | +0x2c0 | Stoneworker | 's Workshop
+03 | +0x540 | Craftsman | 's Workshop
+04 | +0x4e0 | Jeweler | 's Workshop
+05 | +0x420 | Metalsmith | 's Forge
+07 | +0x280 | Bowyer | 's Workshop
+08 | +0x9e0 | Mechanic | 's Workshop
+0a | +0x800 | Butcher | 's Shop
+0c | +0x820 | Tanner | 's Shop
+0d | +0x600 | Clothier | 's Shop
+15 | +0x840 | Dyer | 's Shop
+reference creature vector 为 0x1424eca68..0x1424eca70，classic 实际地址见对应 C。固定后备职业与 raw 职业名是同一个语义槽；仅补十种完整默认名称不能覆盖 raw 职业变体。custom workshop/furnace raw name 是完整建筑名称槽，也不能用枚举两个当前安装 raw 名称代替该动态来源。
+
+Construction(type=22) 的 38 个 subtype
+00 Fortification；01 Wall；02 Floor；03 Up Stair；04 Down Stair；05 Up/Down Stair；06 Ramp。
+07 Track (N)；08 Track (S)；09 Track (E)；0a Track (W)；0b Track (NS)；0c Track (NE)；0d Track (NW)；0e Track (SE)；0f Track (SW)；10 Track (EW)；11 Track (NSE)；12 Track (NSW)；13 Track (NEW)；14 Track (SEW)；15 Track (NSEW)。
+16 Track/Ramp (N)；17 Track/Ramp (S)；18 Track/Ramp (E)；19 Track/Ramp (W)；1a Track/Ramp (NS)；1b Track/Ramp (NE)；1c Track/Ramp (NW)；1d Track/Ramp (SE)；1e Track/Ramp (SW)；1f Track/Ramp (EW)；20 Track/Ramp (NSE)；21 Track/Ramp (NSW)；22 Track/Ramp (NEW)；23 Track/Ramp (SEW)；24 Track/Ramp (NSEW)；25 Reinforced Wall。
+subtype>0x25 回退 Construction；截图标题中的 05/15/24 另由 renderer 改为 Stairs/Track，见三标题段。
+
+21 条错误、2 条耕地提示以及 1 条层数限制
+status producer 收集本次 footprint 的 build_square 值，去掉重复类别后分派。错误存入对象 +0x50 vector（reference 全局 0x1418a0480），两条耕地提示存入 +0x68 vector（reference 0x1418a0498）；renderer 按实际 vector 顺序分别绘制，可同时出现多条，没有固定只显示一条的分支。
+build_square=0..4 不产生错误文字。build_square=5..21 对应如下 17 条完整原文：
+05 Needs to be anchored on edge
+06 Blocked at this location
+07 Hidden, cannot build at this location
+08 Needs adjacent wall
+09 Off map
+10 Water at this location
+11 Lava/Magma at this location
+12 Building present
+13 Must be inside
+14 Too close to edge
+15 Must be outside
+16 Needs open space
+17 Surrounded by empty space
+18 Cannot build at highest level
+19 Must remove construction
+20 Need soil or mud at location
+21 Need soil at location
+此处编号是十进制 build_square 枚举；实际 switch 先减 5，case 0..0x10。超出该域的未定义值也不在这个 switch 产生专属文字。
+另外四条错误：
+- Disconnected：footprint 的地面/可连通条件失败，且 building connection helper reference 0x3c2640 返回真。前置 type 分支为 0x04/0x14/0x15/0x1e（见 C 第 104 行 mask 0x40200010 与单独 0x14）。
+- Need trigger type：type=0x17、subtype=1，pressure plate flags（reference 0x1418a13cc）&0x27 为 0。
+- Needs walkable perimeter：对应建筑的 footprint/perimeter 分支到达 reference 0x3c1618，perimeter helper 0xaa93e0 返回假（完整判断保留在 status C 第 426–450 行）。
+- Needs ground or near machine：errors vector 非空，且机械连接需求集合非空（helper 0x5ab260 产生集合、cStack_e0 为真）。
+两条耕地提示同条件并按以下顺序产生：type=4，farm soil/mud 标记为假时输出 No mud/soil for farm，随后 Mud is left by water。
+renderer 自己另加 Must span multiple elevations：type=0x22、subtype=5，first_z==current_z；reference 原文加载 0x3e5b4b，绘制返回 0x3e5b78。与21错误和2提示合计24条状态文字。无错误/提示时不补 None/Ready/OK。
+
+同面板的跨度、选材及持续建造
+(spans {d} levels)：type=0x22、first_z!=-30000、first_z!=current_z；d=abs(current_z-first_z)+1。原文始终 levels，条件保证 d>=2。prefix/reference 0x3e5544，number formatter call 0x3e5578，suffix 0x3e557d，整句绘制返回 0x3e55a9。
+Select material after placement（reference literal 0x3e5689）与 Use closest material（0x3e5787）：两种可用状态仅影响皮肤/属性，不改变文本。
+Use last material（0x3e5892）：有可复用材料且当前建筑支持时出现。其下一行是完整材料/物品名；不是建筑名称，也不是三种标题的一部分。
+Keep building after placement（0x3e5a54）：复选框两状态同文案，不应把该控制是否仍在画面内作为识别顶部标题的前提。
+上次材料行调用 reference 0xa82c10 / classic 0xa7fc90，随后首字母处理 reference 0x52d650 / classic 0x52b070，再直接整串 draw（reference return 0x3e5989）。真实完整材料/物品生产器已保存在 ../unit-preferences/reference-item-name.decompiled.c / classic-item-name.decompiled.c；它的语法含类型、材质、子类型、身体/种族字段及单复数，本面板调用传入完整 tuple（reference 全局 0x1418a15b0、0x1418a15b4、0x1418a15b8、0x1418a15bc）而非只显示一个固定材料词，复用该已提取语义来源。
+
+边界与未声称的效果
+同一个巨型 renderer 后面的 Click a tile to position the stop.（reference 0x3f0c5f）紧邻 Add new route / Building track stops is recommended!，属于运输路线站点界面，不是此建造面板第四种标题；未将其混入本面板类型判断。
+同字面量 Needs to be anchored on edge 的另一 owner 0xab10b0 不在此面板调用链，未作为这里的状态生产器。原有 ELF 资料仍保留作旁证；本次每版 PE 的原始指令和实际 C 已独立提取。
+此材料覆盖上述原生 panel、名称全 selector/子类型、两类动态 raw 来源及状态文字链；不会把有限静态词表宣称为任意模组 raw 文本的穷尽枚举。没有读取加载日志、没有操作游戏或桌面、没有增加或运行测试，也没有据离线来源声称观察到游戏内最终显示效果。

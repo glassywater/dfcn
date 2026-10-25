@@ -1,0 +1,27 @@
+edition	role	instruction_rva	operand	kind	text
+reference	placement-renderer-owner	0x3e53ba	0x14162f9c0	cstring	Click a tile to place the 
+reference	placement-renderer-owner	0x3e53fe	0x14162f948	cstring	Click a tile to be one end of the 
+reference	placement-renderer-owner	0x3e5446	0x14162ca98	cstring	Stairs
+reference	placement-renderer-owner	0x3e5470	0x14162f970	cstring	Click a tile to be a corner of the 
+reference	placement-renderer-owner	0x3e5479	0x14162cca4	cstring	Track
+reference	placement-renderer-owner	0x3e54bf	0x1415e85b4	cstring	.
+reference	placement-renderer-owner	0x3e5544	0x14162f850	cstring	(spans 
+reference	placement-renderer-owner	0x3e557d	0x14162f858	cstring	 levels)
+reference	placement-renderer-owner	0x3e5689	0x14162f818	cstring	Select material after placement
+reference	placement-renderer-owner	0x3e5787	0x14162f838	cstring	Use closest material
+reference	placement-renderer-owner	0x3e5892	0x14162f880	cstring	Use last material
+reference	placement-renderer-owner	0x3e5a54	0x14162f898	cstring	Keep building after placement
+reference	placement-renderer-owner	0x3e5b4b	0x14162f250	cstring	Must span multiple elevations
+classic	placement-renderer-owner	0x3e2f7a	0x14162a438	cstring	Click a tile to place the 
+classic	placement-renderer-owner	0x3e2fbe	0x14162a458	cstring	Click a tile to be one end of the 
+classic	placement-renderer-owner	0x3e3006	0x1416280c4	cstring	Stairs
+classic	placement-renderer-owner	0x3e3030	0x14162a408	cstring	Click a tile to be a corner of the 
+classic	placement-renderer-owner	0x3e3039	0x1416280a4	cstring	Track
+classic	placement-renderer-owner	0x3e307f	0x1415e3574	cstring	.
+classic	placement-renderer-owner	0x3e3104	0x14162a430	cstring	(spans 
+classic	placement-renderer-owner	0x3e313d	0x14162a4b0	cstring	 levels)
+classic	placement-renderer-owner	0x3e3249	0x14162a4c0	cstring	Select material after placement
+classic	placement-renderer-owner	0x3e3347	0x14162a480	cstring	Use closest material
+classic	placement-renderer-owner	0x3e3452	0x14162a498	cstring	Use last material
+classic	placement-renderer-owner	0x3e3614	0x14162a948	cstring	Keep building after placement
+classic	placement-renderer-owner	0x3e370b	0x141629d90	cstring	Must span multiple elevations

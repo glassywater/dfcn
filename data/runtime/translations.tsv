@@ -71504,6 +71504,8 @@ Bring up {p}'s ascension to {s} of {e}	谈起{p1}就任{e1}的{s1}这件事	hPt
 Bring up {p}'s crime of blood-drinking	谈起{p1}犯下吸血罪这件事	hPt
 Bring up {p}'s escalated attack on {p}	谈起{p1}对{p2}加剧攻击这件事	hPt
 Bring up {p}'s placement of {i} to {p}	谈起{p1}将{i1}交由{p2}保管这件事	hPt
+Build placement: Soap Maker's Workshop	皂匠工坊	wi
+Build placement: Vermin Catcher's Shop	害虫捕坊	wi
 Character group role: Former mercenary	前佣兵	h
 Character group role: Infamous brigand	臭名昭著的强盗	h
 Character group role: Infamous monster	臭名昭著的怪物	h
@@ -77125,6 +77127,7 @@ Book title subject: the Interrogation	审讯	hi
 Book title subject: the Straight Road	直道	hi
 Book title subject: the World's Shape	世界的形状	hi
 Bring up the occupation of {e} by {e}	谈起{e1}被{e2}占领这件事	hPt
+Build placement: Carpenter's Workshop	木匠工坊	wi
 Can you tell me where I can find you?	能告诉我到哪里能找到你吗？	hPD
 Character group role: Former prisoner	前囚犯	h
 Character group role: Infamous killer	臭名昭著的杀手	h
@@ -82763,6 +82766,8 @@ Brook: Saintgold the Insect of Ja...	溪流:圣金甲虫...	w
 Brook: Salvedoctrines the Surpris...	溪流:治疗教义惊人的...	w
 Brook: Tacticrazors the Chip of S...	溪流:战术剃刀芯片...	w
 Brook: Wretchedmartyred the Delig...	溪流:悲惨殉道的神圣...	w
+Build placement: Magma Glass Furnace	岩浆玻璃窑	wi
+Build placement: Upright Spear/Spike	直立长矛或尖刺	wi
 Building track stops is recommended!	建议建造轨道停靠点！	hP
 Carving fortifications through walls	在墙壁上开凿城防垛口	wo
 Character group role: Famous brawler	名声显赫的斗殴者	h
@@ -93393,6 +93398,9 @@ Book title subject: the Underworld	地狱	hi
 Bring up {p}'s crime of kidnapping	谈起{p1}犯下绑架罪这件事	hPt
 Bring up {p}'s job order violation	谈起{p1}违反工作命令这件事	hPt
 Bring up {p}'s refusal to give {i}	谈起{p1}拒绝交出{i1}这件事	hPt
+Build placement: Burial Receptacle	棺椁	wi
+Build placement: Display Furniture	展示家具	wi
+Build placement: Farmer's Workshop	农夫工坊	wi
 Build placement: Track/Ramp (NSEW)	坡道轨道（北南东西）	wi
 Cannot make request without leader	没有领袖，无法提出请求。	hP
 Character group role: Former slave	前奴隶	h
@@ -102579,6 +102587,9 @@ Book title subject: the Wounding	负伤	hi
 Bring up {e}'s foundation of {e}	谈起{e1}建立{e2}这件事	hPt
 Bring up {e}'s harassment of {e}	谈起{e1}侵扰{e2}这件事	hPt
 Bring up {p}'s possession of {i}	谈起{p1}持有{i1}这件事	hPt
+Build placement: Horizontal Axle	传动横轴	wi
+Build placement: Reinforced Wall	加固墙体	wi
+Build placement: Stone-Fall Trap	落石陷阱	wi
 Build placement: Track/Ramp (EW)	坡道轨道（东西）	wi
 Build placement: Track/Ramp (NE)	坡道轨道（北东）	wi
 Build placement: Track/Ramp (NS)	坡道轨道（北南）	wi
@@ -105909,10 +105920,15 @@ Bring up {i}'s absence from {e}	谈起{i1}已不在{e1}这件事	hPt
 Bring up {p}'s crime of robbery	谈起{p1}犯下抢劫罪这件事	hPt
 Bring up {p}'s crime of treason	谈起{p1}犯下叛国罪这件事	hPt
 Bring up {p}'s placement of {i}	谈起{p1}安置{i1}这件事	hPt
+Build placement: Archery Target	标靶	wi
+Build placement: Offering Place	供奉处	wi
+Build placement: Pressure Plate	压力板	wi
+Build placement: Siege Workshop	攻城器械工坊	wi
 Build placement: Track/Ramp (E)	坡道轨道（东）	wi
 Build placement: Track/Ramp (N)	坡道轨道（北）	wi
 Build placement: Track/Ramp (S)	坡道轨道（南）	wi
 Build placement: Track/Ramp (W)	坡道轨道（西）	wi
+Build placement: Traction Bench	牵引台	wi
 Build placement: {s}'s Workshop	{s}工坊	wtlx
 Building link installation: {s}	将安装在{s}处	l
 Can you tell me the way to {e}?	你能告诉我去{e1}的路吗？	hPtD
@@ -108638,6 +108654,14 @@ Bring up {i}'s presence in {e}	谈起{i1}位于{e1}这件事	hPt
 Bring up {p}'s crime of murder	谈起{p1}犯下谋杀罪这件事	hPt
 Bring up {p}'s presence in {e}	谈起{p1}出现在{e1}这件事	hPt
 Brook: Dullstops the Rosy Evil	溪流:沉闷停止玫瑰邪恶	w
+Build placement: Fortification	城防垛口	wi
+Build placement: Gear Assembly	齿轮组	wi
+Build placement: Glass Furnace	玻璃窑	wi
+Build placement: Leather Works	皮革工坊	wi
+Build placement: Magma Smelter	岩浆熔炉	wi
+Build placement: Up/Down Stair	上下行楼梯	wi
+Build placement: Vertical Axle	传动竖轴	wi
+Build placement: Vertical Bars	墙壁栅条	wi
 Can I help you with something?	有什么可以帮你的吗？	hPD
 Cannot embark on another site.	不能在已有地点上启程。	l
 Carve wooden helve from branch	用树枝雕刻木制斧柄	hP
@@ -111187,7 +111211,12 @@ Bring up the abduction of {p}	谈起{p1}被绑架这件事	hPt
 Bring up the journey together	谈起共同的旅程	hP
 Bring up {p}'s crime of theft	谈起{p1}犯下盗窃罪这件事	hPt
 Bring up {p}'s gaining of {i}	谈起{p1}获得{i1}这件事	hPt
+Build placement: Bolt Thrower	弩箭投射器	wi
+Build placement: Construction	构筑物	wi
+Build placement: Glass Window	玻璃窗	wi
+Build placement: Siege Engine	攻城器械	wi
 Build placement: Track (NSEW)	轨道（北南东西）	wi
+Build placement: Wood Furnace	烧木窑	wi
 Cannot build at highest level	不能在最高层建造	wli
 Cannot raid your civilization	无法突袭自己的政权。	hP
 Certainly feared as a brigand	害怕被当作盗贼	w
@@ -113562,11 +113591,20 @@ Bring up {p}'s attack on {p}	谈起{p1}袭击{p2}这件事	hPt
 Bring up {p}'s giving of {i}	谈起{p1}交出{i1}这件事	hPt
 Brook: The Ocean of Dressing	溪流:调味海洋	w
 Brook: The Problematic Hedge	溪流:有问题的树篱	w
+Build placement: Animal Trap	动物陷阱	wi
+Build placement: Armor Stand	盔甲架	wi
+Build placement: Floor Grate	地板格栅	wi
 Build placement: Floor Hatch	地板活板门	wi
+Build placement: Magma Forge	岩浆锻造坊	wi
+Build placement: Screw Press	螺旋压榨机	wi
 Build placement: Track (NEW)	轨道（北东西）	wi
 Build placement: Track (NSE)	轨道（北南东）	wi
 Build placement: Track (NSW)	轨道（北南西）	wi
 Build placement: Track (SEW)	轨道（南东西）	wi
+Build placement: Trade Depot	贸易站	wi
+Build placement: Water Wheel	水车	wi
+Build placement: Weapon Rack	兵器架	wi
+Build placement: Weapon Trap	武器陷阱	wi
 Build placement: {s}'s Forge	{s}锻造工坊	wtlx
 Building link candidate: {s}	连接到{s}	l
 Camera controls ({d} of {d})	镜头控制 ({d} of {d})	wt
@@ -115925,12 +115963,21 @@ Bring up {e}'s claim on {e}	谈起{e1}宣称拥有{e2}这件事	hPt
 Bring up {p}'s embezzlement	谈起{p1}挪用资金这件事	hPt
 Brook: The Packs of Tugging	小溪：拉扯之兽群	l
 Brook: The Primitive Defect	溪流:原始缺陷	w
+Build placement: Down Stair	下行楼梯	wi
+Build placement: Floor Bars	地板栅条	wi
+Build placement: Gem Window	宝石窗	wi
+Build placement: Instrument	乐器	wi
+Build placement: Magma Kiln	岩浆黏土窑	wi
+Build placement: Paved Road	铺装道路	wi
+Build placement: Screw Pump	螺杆泵	wi
 Build placement: Track (EW)	轨道（东西）	wi
 Build placement: Track (NE)	轨道（北东）	wi
 Build placement: Track (NS)	轨道（北南）	wi
 Build placement: Track (NW)	轨道（北西）	wi
 Build placement: Track (SE)	轨道（南东）	wi
 Build placement: Track (SW)	轨道（南西）	wi
+Build placement: Track Stop	轨道站点	wi
+Build placement: Wall Grate	墙壁格栅	wi
 Build placement: {s}'s Shop	{s}工坊	wtlx
 Building link rejected: {s}	无法连接到{s}	l
 Character group role: Enemy	敌人	h
@@ -118281,6 +118328,14 @@ Book title subject: Wedges	楔子	hi
 Bring up {e}'s destruction	谈起{e1}被毁这件事	hPt
 Broker cannot access depot	交易员无法到达贸易站	wi
 Brook: The Rift of Beetles	溪流:甲虫裂缝	w
+Build placement: Cage Trap	笼式陷阱	wi
+Build placement: Container	容器	wi
+Build placement: Dirt Road	泥土道路	wi
+Build placement: Farm Plot	耕地	wi
+Build placement: Floodgate	水闸	wi
+Build placement: Millstone	机械石磨	wi
+Build placement: Restraint	束缚器具	wi
+Build placement: Stockpile	堆料区	wi
 Build placement: Track (E)	轨道（东）	wi
 Build placement: Track (N)	轨道（北）	wi
 Build placement: Track (S)	轨道（南）	wi
@@ -120495,6 +120550,13 @@ Book title subject: Wound	伤口	hi
 Bring up the death of {p}	谈起{p1}的死亡	hPt
 Broker requested at depot	请求交易员前往贸易站	wi
 Brook: The Vale of Dances	小溪: 舞蹈之谷	w
+Build placement: Ballista	弩炮	wi
+Build placement: Bookcase	书架	wi
+Build placement: Catapult	投石机	wi
+Build placement: Nest Box	巢箱	wi
+Build placement: Up Stair	上行楼梯	wi
+Build placement: Windmill	风车	wi
+Build placement: Workshop	工坊	wi
 Building link prompt: {s}	点击一个建筑，将其连接到{s}。	l
 Building toppled by ghost	建筑被幽灵推倒	w
 Cavern Layer Openness Max	洞穴层开阔度上限
@@ -122460,7 +122522,13 @@ Book title subject: Wind	风	hi
 Book title subject: Word	词	hi
 Book title subject: Year	年	hi
 Bring up {p}'s vandalism	谈起{p1}蓄意破坏这件事	hPt
+Build placement: Cabinet	橱柜	wi
+Build placement: Fishery	渔业工坊	wi
 Build placement: Furnace	熔炉	wi
+Build placement: Kitchen	厨房	wi
+Build placement: Rollers	滚动辊	wi
+Build placement: Smelter	熔炉	wi
+Build placement: Support	支柱	wi
 Capture and train small 	在此捕获和训练小动物。需要动	w
 Carve a gap in a smooth 	在光滑的墙面上凿一个缺口，让	w
 Carve downward staircase	挖掘下行楼梯	wi
@@ -124551,7 +124619,10 @@ Broker can access depot	交易员可以到达贸易站	wi
 Brook: The Yellow Style	溪流:黄色风格	w
 Build a grand guildhall	建造大行会大厅	P
 Build menu: Stoneworker	石匠工坊	wi
+Build placement: Ashery	灰坊	wi
+Build placement: Bridge	桥	wi
 Build placement: Stairs	楼梯	wi
+Build placement: Statue	雕像	wi
 Can {b} Save The World?	{b}能拯救世界吗？	hbti
 Cancel tribute from {e}	取消{e1}的贡赋	hPt
 Cannot afford {s} ({d})	买不起{s}（{d}）	wtl
@@ -126648,7 +126719,13 @@ Book title noun: ticks	滴答声	hi
 Bring up {p}'s bribery	谈起{p1}贿赂这件事	hPt
 Build a temple complex	建造神殿建筑群	P
 Build menu: Metalsmith	金属锻造坊	wi
+Build placement: Floor	地板	wi
+Build placement: Lever	控制杆	wi
+Build placement: Quern	手推磨	wi
+Build placement: Still	蒸馏工坊	wi
+Build placement: Table	桌子	wi
 Build placement: Track	轨道	wi
+Build placement: Wagon	货车	wi
 Carve upward staircase	挖掘上行楼梯	wi
 Catch live land animal	捕获活的陆地动物	wi
 Cavern Layer Water Max	洞穴层含水量上限
@@ -128787,6 +128864,21 @@ Brew drink from plant	用植物酿酒	wi
 Brook: The Fiery Cake	溪流:火热蛋糕	w
 Build grand guildhall	建造大行会大厅	P
 Build menu: Carpenter	木匠工坊	wi
+Build placement: Cage	笼子	wi
+Build placement: Door	门	wi
+Build placement: Hive	蜂箱	wi
+Build placement: Kiln	黏土窑	wi
+Build placement: Loom	织布机	wi
+Build placement: Nest	巢穴	wi
+Build placement: Ramp	斜坡	wi
+Build placement: Seat	座位	wi
+Build placement: Shop	商店	wi
+Build placement: Slab	石板	wi
+Build placement: Tool	工具	wi
+Build placement: Trap	陷阱	wi
+Build placement: Wall	墙	wi
+Build placement: Well	井	wi
+Build placement: Zone	活动区	wi
 Building ({d} of {d})	建造 ({d} of {d})	wt
 Cabinets are used in 	柜子用于个人卧室存放服饰物品。	w
 Cannot trade currency	无法交易货币。	hP
@@ -131151,6 +131243,7 @@ Brook: Tribegladness	小溪：欢欣部落
 Build material: Null	物品不存在	h
 Build menu: Clothier	裁缝工坊	wi
 Build menu: Mechanic	机械师工坊	wi
+Build placement: Bed	床	wi
 Build temple complex	建造神殿建筑群	P
 Build. (coming soon)	建造。（即将推出）	hj
 Cancel the agreement	取消约定	hP
