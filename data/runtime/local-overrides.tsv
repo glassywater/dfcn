@@ -1,4 +1,8 @@
 # Local high-priority fixes; data-only edits do not require a rebuild.
+# Item nouns must take precedence over the procedural-name fallback gloss.
+anvil	锻砧	wi
+anvils	锻砧	wi
+
 # Complete native construction labels: the accepted-petition list omits the
 # article, while its detail tooltip includes it. Keep both native forms in
 # the exact whole-message index (P); hP is excluded from that index.
