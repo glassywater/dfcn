@@ -1,0 +1,163 @@
+# forms/essay/subjects/settling.lua：study 角度及它使用的迁居章节。
+# 原生 CHANGE_HF_STATE 主题由 game_words.phrase 保留地点、动机和日期。
+base = "subscribed_books::essay_study"
+
+[[rulesets]]
+[rulesets.rules]
+"I write about {subject}. I went to learn, and to be near the one who could teach me, and I mean to say what that cost and what it gave." = "我写下{subject}。我为求学而去，为了靠近能教导我的人；我想说清这付出了什么，又得到了什么。"
+"I write about {subject}." = "我写下{subject}。"
+"I went to learn, and to be near the one who could teach me, and I mean to say what that cost and what it gave." = "我为求学而去，为了靠近能教导我的人；我想说清这付出了什么，又得到了什么。"
+"I will argue that {subject} was the bravest kind of move: going somewhere strange to learn what could not be learned at home." = "我要论证，{subject}是最勇敢的迁徙：去一个陌生的地方，学习故乡无法传授的知识。"
+"I left what I knew to sit at someone else's feet." = "我离开熟悉的一切，到他人门下受教。"
+"A master is worth a journey; a good one is worth a life." = "拜访一位师父，值得跋涉一程；追随一位良师，值得付出一生。"
+"Learning begins with leaving." = "求学始于离乡。"
+"One does not follow a master; one follows what the master knows." = "人追随的并非师父本人，而是师父掌握的学问。"
+"Every student is first a traveller." = "每个学生，首先都是旅人。"
+"A teacher worth the journey makes the road short in memory." = "若求访的是良师，漫长的路途在回忆中也会变短。"
+"It will be said that knowledge can be had anywhere." = "有人会说，知识在哪里都能学到。"
+"Some of it. The rest lives in particular people, in particular places." = "一部分确实如此。其余的知识，却只存在于特定的人、特定的地方。"
+"Some of it." = "一部分确实如此。"
+"The rest lives in particular people, in particular places." = "其余的知识，却只存在于特定的人、特定的地方。"
+"I have said why I went, and what I found when I got there." = "我已说过为何前往，又在抵达后找到了什么。"
+"I return to {subject}. I went to learn. I would go again." = "回到{subject}。我为求学而去。若能重来，我仍会前往。"
+# 单独的 I return to {subject}. 已由 essay_writing 的共享主题规则处理。
+"I went to learn." = "我为求学而去。"
+"I would go again." = "若能重来，我仍会前往。"
+"I return to {subject}: a journey made for the sake of a teacher, which is the best reason to make one." = "回到{subject}：为求访师父而踏上的旅程，这正是出行最好的理由。"
+
+# study 使用 WHY、PLACE、COMPANY、FAITH、AFTER 五组章节。
+"I did not leave on a whim." = "我的离去并非一时兴起。"
+"There were reasons to go, and the record keeps some of them." = "离去自有缘由，其中一些已载入史册。"
+"No one leaves a place for nothing." = "没有人会无缘无故地离开一个地方。"
+"The record keeps what came before the move, and it explains a good deal." = "史册记下了迁居前发生的事，这足以解释许多缘由。"
+"{place} is where I came, and where I stayed." = "我来到{place}，也留在了这里。"
+"Of {place} itself, a word." = "关于{place}本身，也说上几句。"
+"The place mattered as much as the leaving." = "去往何处，与为何离开同样重要。"
+# What I made of it, the record keeps. 已在 essay_career 中提供。
+"I did not come to {place} to sit still." = "我来{place}，并非为了无所事事。"
+"What came after is the measure of the move." = "迁居的价值，要看此后发生了什么。"
+"I did not come alone." = "我并非独自前来。"
+"Of those who came with me, a word." = "关于与我同行的人，也说上几句。"
+"They did not come alone." = "他们并非独自前来。"
+"Of those who came with them, a word." = "关于与他们同行的人，也说上几句。"
+"The order is why any of us were there." = "我们之所以来到那里，都是为了教团。"
+"Of my order, a word." = "关于我所属的教团，也说上几句。"
+"The order is why any of them were there." = "他们之所以来到那里，都是为了教团。"
+"Of the order, a word." = "关于这个教团，也说上几句。"
+
+# home_facts：抵达时聚落已存在多久，包括刚建立时的建造者和所属组织。
+"{place} had stood since time immemorial when {actor} came." = "{actor}到来时，{place}已自远古屹立至今。"
+"{place} had long stood when {actor} came - since {year}." = "{actor}到来时，{place}早已存在——它始建于{year}年。"
+"{place} had stood {standing_years} years when {actor} came." = "{actor}到来时，{place}已建立了{standing_years}年。"
+"{place} was just founded when {actor} came: {foundation}." = "{actor}到来时，{place}刚刚建立：{foundation}。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "location"
+[rulesets.rules]
+"{place}" = "{place}"
+"the wilds" = "荒野"
+
+[[rulesets]]
+name = "study_location"
+[rulesets.rules]
+"in {location}" = "在{location}"
+"around {location}" = "在{location}一带"
+
+[[rulesets]]
+name = "study_reason"
+[rulesets.rules]
+# 原生动机 46/47；动机 44 的 in order to study 不产生 studies 主题。
+"in order to pursue scholarship" = "为钻研学问"
+"in order to be with the master" = "为追随师父"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"my studies {study_location} {study_reason} in {date}" = "我于{date}{study_reason}而{study_location}求学的经历"
+"the studies of {actor} {study_location} {study_reason} in {date}" = "{actor}于{date}{study_reason}而{study_location}求学的经历"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{#digits}" = "{#digits}"
+
+[[rulesets]]
+name = "standing_years"
+[rulesets.rules]
+"five" = "五"
+"six" = "六"
+"seven" = "七"
+"eight" = "八"
+"nine" = "九"
+"ten" = "十"
+"eleven" = "十一"
+"twelve" = "十二"
+"thirteen" = "十三"
+"fourteen" = "十四"
+"fifteen" = "十五"
+"sixteen" = "十六"
+"seventeen" = "十七"
+"eighteen" = "十八"
+"nineteen" = "十九"
+"twenty" = "二十"
+
+[[rulesets]]
+name = "recent_years"
+[rulesets.rules]
+"one" = "一"
+"two" = "两"
+"three" = "三"
+"four" = "四"
+
+[[rulesets]]
+name = "office"
+[rulesets.rules]
+"{::positions::singular}" = "{::positions::singular}"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "builder"
+[rulesets.rules]
+"{actor}" = "{actor}"
+"{actor}, the {office} of {entity}," = "{entity}的{office}{actor}"
+
+[[rulesets]]
+name = "construction"
+[rulesets.rules]
+"{builder} built it that year" = "{builder}在那一年建造了它"
+"{builder} had built it a year before" = "{builder}在一年前建造了它"
+"{builder} had built it {recent_years} years before" = "{builder}在{recent_years}年前建造了它"
+"it was built that year" = "它建于那一年"
+"it had been built {recent_years} years before" = "它建于{recent_years}年前"
+
+[[rulesets]]
+name = "foundation_core"
+[rulesets.rules]
+"{construction}" = "{construction}"
+"{construction} for {entity}" = "{construction}，供{entity}使用"
+"{construction} for {entity}, to which {actor} belonged" = "{construction}，供{actor}所属的{entity}使用"
+
+[[rulesets]]
+name = "foundation"
+[rulesets.rules]
+"{foundation_core}" = "{foundation_core}"
+"{foundation_core}, and {actor} was among the first to settle there" = "{foundation_core}，而{actor}是最早在此定居的人之一"

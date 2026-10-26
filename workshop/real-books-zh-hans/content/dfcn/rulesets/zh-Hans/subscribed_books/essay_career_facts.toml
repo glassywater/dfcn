@@ -1,0 +1,129 @@
+# forms/essay/subjects/career.lua 的职业、所在地、所属组织和师承事实。
+# evidence.career_line 与 life.lead 的有限时间格式组合；不接入任意历史事件正文。
+base = "subscribed_books::essay_career_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{sentence}" = "{sentence}"
+"In {date}, {sentence}" = "{date}，{sentence}"
+"In {date} {sentence}" = "{date}，{sentence}"
+"{lead} {sentence}" = "{lead}{sentence}"
+# life.deeds 的定居、囚禁等经历沿用完整事实，时间锚仍是本次从业。
+"{lead} {::subscribed_books::essay_fight_aftermath::record}" = "{lead}{::subscribed_books::essay_fight_aftermath::record}"
+"{lead} {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::record}"
+"{lead} {::subscribed_books::essay_writing_facts::circumstance}, {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::circumstance}，{::subscribed_books::essay_writing_facts::record}"
+
+[[rulesets]]
+name = "sentence"
+[rulesets.rules]
+# 去掉 In <year> 后的完整职业事实也用于 life.deeds 的相对年份前缀。
+"{actor} took up the work of {::subscribed_books::essay_career_vocabulary::profession_article}." = "{actor}开始担任{::subscribed_books::essay_career_vocabulary::profession_article}。"
+"{actor} gave up the life of {::subscribed_books::essay_career_vocabulary::profession_article} and became {::subscribed_books::essay_career_vocabulary::profession_article_to}." = "{actor}放弃了{::subscribed_books::essay_career_vocabulary::profession_article}的生活，转而成为{::subscribed_books::essay_career_vocabulary::profession_article_to}。"
+"{actor} had been {::subscribed_books::essay_career_vocabulary::profession_article} since {year}, and in {year_to} became {::subscribed_books::essay_career_vocabulary::profession_article_to}." = "{actor}自{year}年起便担任{::subscribed_books::essay_career_vocabulary::profession_article}，并在{year_to}年转而成为{::subscribed_books::essay_career_vocabulary::profession_article_to}。"
+
+"{@bt_place|::subscribed_books::vocabulary::place} is {::subscribed_books::guide_vocabulary::kind}, held by {@bt_entity|::subscribed_books::vocabulary::entity}." = "{@bt_place|::subscribed_books::vocabulary::place}是{::subscribed_books::guide_vocabulary::kind}，由{@bt_entity|::subscribed_books::vocabulary::entity}掌控。"
+"{@bt_place|::subscribed_books::vocabulary::place} is {::subscribed_books::guide_vocabulary::kind}." = "{@bt_place|::subscribed_books::vocabulary::place}是{::subscribed_books::guide_vocabulary::kind}。"
+# career.facts 最多列出两个组织；组织名称自身仍交由明确的 entity 类型解析。
+"{actor} was of {@bt_entity|::subscribed_books::vocabulary::entity} and {@bt_entity2|::subscribed_books::vocabulary::entity} then." = "{actor}当时隶属于{@bt_entity|::subscribed_books::vocabulary::entity}和{@bt_entity2|::subscribed_books::vocabulary::entity}。"
+"{actor} was of {@bt_entity|::subscribed_books::vocabulary::entity} then." = "{actor}当时隶属于{@bt_entity|::subscribed_books::vocabulary::entity}。"
+"{actor} learned it under {@bt_master|::subscribed_books::vocabulary::person}, bound as apprentice in {year}." = "{actor}师从{@bt_master|::subscribed_books::vocabulary::person}学习这门技艺，于{year}年拜入门下。"
+
+# game_words 保留原生师承句与迁居目的，人物可以带种族身份词。
+"{actor} began an apprenticeship under {master}." = "{actor}拜{master}为师。"
+"{actor} was denied an apprenticeship under {master}." = "{actor}拜{master}为师的请求遭到拒绝。"
+"{actor} ceased being the apprentice of {master}." = "{actor}不再是{master}的学徒。"
+"{actor} stopped being the apprentice of {master}." = "{actor}不再是{master}的学徒。"
+# evidence.event_line 区分求学者、拒绝收徒者及第三人称；地点是可选的完整地名。
+"I asked {master} to take me as an apprentice at {place}, and was refused." = "我在{place}请求{master}收我为徒，却遭到拒绝。"
+"I asked {master} to take me as an apprentice, and was refused." = "我请求{master}收我为徒，却遭到拒绝。"
+"{actor} asked to be my apprentice at {place}, and I refused." = "{actor}在{place}请求拜我为师，而我拒绝了。"
+"{actor} asked to be my apprentice, and I refused." = "{actor}请求拜我为师，而我拒绝了。"
+"{actor} asked to become the apprentice of {master} at {place}, and was refused." = "{actor}在{place}请求拜{master}为师，却遭到拒绝。"
+"{actor} asked to become the apprentice of {master}, and was refused." = "{actor}请求拜{master}为师，却遭到拒绝。"
+# 同一拒绝事件也可能是求爱，不能按师承关系改写。
+"{actor} sought the love of {beloved} at {place}, and was refused." = "{actor}在{place}向{beloved}求爱，却遭到拒绝。"
+"{actor} sought the love of {beloved}, and was refused." = "{actor}向{beloved}求爱，却遭到拒绝。"
+"{actor} moved to study in {@bt_place|::subscribed_books::vocabulary::place} in order to be with the master." = "为了跟随师父，{actor}迁居到{@bt_place|::subscribed_books::vocabulary::place}求学。"
+"{actor} moved to study in {@bt_place|::subscribed_books::vocabulary::place}." = "{actor}迁居到{@bt_place|::subscribed_books::vocabulary::place}求学。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+# 主语必须被人物类型完整识别，不能把日期或前文原样作为人名透传。
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "master"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "beloved"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::guide::place}" = "{::subscribed_books::guide::place}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{#digits}" = "{#digits}"
+"-{#digits}" = "-{#digits}"
+
+[[rulesets]]
+name = "year_to"
+[rulesets.rules]
+"{year}" = "{year}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::essay_career_vocabulary::date}" = "{::subscribed_books::essay_career_vocabulary::date}"
+
+[[rulesets]]
+name = "lead"
+[rulesets.rules]
+# career.lua 给 life.lead 的动词固定为 began；首次与后续事件使用不同的年距范围。
+"That same year," = "就在那一年，"
+"That year, too," = "同年，"
+"A year after {actor} began," = "在{actor}开始从业的一年后，"
+"Not long after {actor} began - {short_years} years, in fact -" = "在{actor}开始从业不久后，确切地说是{short_years}年后，"
+"{first_years} years after {actor} began," = "在{actor}开始从业的{first_years}年后，"
+"Many years later, in {year}," = "许多年后的{year}年，"
+"The next year," = "次年，"
+"{later_years} years later," = "{later_years}年后，"
+"Long after, in {year}," = "很久以后的{year}年，"
+
+[[rulesets]]
+name = "short_years"
+[rulesets.rules]
+"two" = "两"
+"three" = "三"
+"four" = "四"
+"five" = "五"
+"six" = "六"
+
+[[rulesets]]
+name = "first_years"
+[rulesets.rules]
+"seven" = "七"
+"eight" = "八"
+"nine" = "九"
+"ten" = "十"
+"eleven" = "十一"
+"twelve" = "十二"
+"thirteen" = "十三"
+"fourteen" = "十四"
+"fifteen" = "十五"
+
+[[rulesets]]
+name = "later_years"
+[rulesets.rules]
+"{short_years}" = "{short_years}"
+"seven" = "七"
+"eight" = "八"
+"nine" = "九"
+"ten" = "十"

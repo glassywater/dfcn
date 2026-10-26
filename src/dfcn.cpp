@@ -111,6 +111,7 @@ static bool native_history_copy_bytes(uintptr_t address, void *destination, size
 template<typename T>
 static bool native_history_copy(uintptr_t address, T &value);
 static bool native_history_copy_string(uintptr_t address, std::string &value);
+static std::optional<std::string> native_book_title_ascii_original(std::string_view source);
 static uintptr_t native_history_object_member(uintptr_t object, std::string_view type,
     std::string_view member, size_t width);
 static uintptr_t native_reference_va(uintptr_t address);
@@ -7042,8 +7043,16 @@ bool Overlay::load_compositional_rules() {
                         "::activities::topic", lower(normalize_utterance(*native)))))
                     return target;
             }
-            if (kind == "book" || kind == "form")
-                return complete(translate_legends_book(*native));
+            if (kind == "book") {
+                if (auto title = complete(translate_legends_book(*native))) return title;
+                // The book narrator folds DF's accented title to ASCII in its
+                // body. Recover only an unambiguous actual work's full title;
+                // ordinary names keep their native spelling requirements.
+                if (const auto original = native_book_title_ascii_original(source))
+                    return complete(translate_legends_book(*original));
+                return std::nullopt;
+            }
+            if (kind == "form") return complete(translate_legends_book(*native));
             if (auto target = complete(exact_literal_translation(*native))) return target;
             if (kind == "topic") {
                 if (auto target = complete(translate_legends_term(*native))) return target;

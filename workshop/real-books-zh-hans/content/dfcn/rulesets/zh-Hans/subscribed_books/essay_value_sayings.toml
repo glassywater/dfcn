@@ -1,0 +1,172 @@
+# forms/essay/subjects/value.lua 的 SAYINGS：全部 high/low 固定引语。
+# digressions.lua::value_rant 仅使用这两组；middle 不在此词池范围内。
+# 译文沿用 data/runtime/announcement-dialogue-translations.tsv 的价值观对白。
+# 原文遵循 Lua 的单空格形式；不沿用原生对白句间的双空格。
+base = "subscribed_books::essay_value_sayings"
+
+[[rulesets]]
+[rulesets.rules]
+
+# LAW
+"One should always respect the law." = "人应当始终尊重法律。"
+"Society flourishes when law breakers are punished." = "违法者受到惩罚，社会才能兴盛。"
+"Nothing gives them the right to establish these laws." = "他们根本无权制定这些法律。"
+"No law can do justice to the complexity of life." = "生活如此复杂，没有哪条法律能面面俱到。"
+"I consider laws to be more of a suggestion than anything." = "在我看来，法律更像是一种建议。"
+
+# LOYALTY
+"You must never forget true loyalty. Repay it in full." = "真正的忠诚不可辜负，应当全心回报。"
+"How can society function without loyalty? We must be able to have faith in each other." = "没有忠诚，社会如何维系？我们必须彼此信任。"
+"One must always be loyal to their cause and the ones they serve." = "忠于自己的事业，也忠于自己追随的人。"
+"Don't serve anyone blindly. You'll only get into trouble." = "不要盲目效忠任何人，那只会惹祸上身。"
+"The whole idea of loyalty is pointless. Acting purely out of loyalty implies acting against one's own best interest." = "忠诚这个念头毫无意义。只凭忠诚行事，就意味着违背自己的最大利益。"
+"Never lose yourself in loyalty. You know what is best for yourself." = "不要因忠诚迷失自己。你自己知道什么对你最好。"
+
+# FAMILY
+"How great it is to be surrounded by family!" = "家人在身边，真是幸福！"
+"You can always rely on your family when everything else falls away." = "纵然失去一切，你仍然可以依靠家人。"
+"Family is the true bond that keeps society thriving." = "家庭才是维系社会兴盛的纽带。"
+"I was always irritated by family." = "家人总让我心烦。"
+"We cannot choose our families, but we can choose to avoid them." = "我们无法选择家人，却可以选择远离他们。"
+"I hold the relationships I've forged myself over family ties I had no part in creating." = "比起生来就有的亲缘，我更看重自己建立的关系。"
+
+# FRIENDSHIP
+"There's nothing like a good friend." = "没有什么比得上一个好朋友。"
+"Surround yourself with friends you can trust and you will be unstoppable." = "有值得信赖的朋友相伴，就没有什么能阻挡你。"
+"When all other bonds wither, friendship will remain." = "纵使其他情分都淡去，友谊仍会长存。"
+"Be careful of your so-called friends." = "要提防那些所谓的朋友。"
+"Friends are future enemies. I don't see the difference. People do as they must." = "朋友终会成为敌人，两者并无区别。人各有不得已。"
+"Building friendships is a waste. There is no bond that can withstand distance or a change of circumstance." = "结交朋友是白费心力。没有哪份情谊经得起相隔遥远或境遇变迁。"
+
+# POWER
+"Power over others is the only true measure of worth." = "能支配多少人，才是衡量价值的唯一标准。"
+"You can be powerful or powerless. The choice is yours, until somebody makes it for you." = "你可以掌握权力，也可以任人摆布。在别人替你决定之前，选择权在你手中。"
+"There's nothing admirable about bullying others." = "欺凌他人，没有什么值得称道的。"
+"It is abhorrent to seek power over other people." = "谋求支配他人的权力，令人不齿。"
+
+# TRUTH
+"You should always tell the truth." = "无论何时，都应当说实话。"
+"There is nothing so important that it is worth telling a lie." = "没有什么事重要到值得为它说谎。"
+"Everything is so much easier when you just tell the truth." = "坦诚相待，事情就简单多了。"
+"There is no value in telling the truth thoughtlessly. Consider the circumstances and say what is best." = "不假思索地说实话没有意义。要看清情形，说最合适的话。"
+"Is there ever a time when honesty by itself overrides other considerations? Say what is right, not what is true." = "难道诚实就能凌驾于一切考量之上？要说合适的话，而不只是真话。"
+"Don't think about the truth, whatever that is. Just say what needs to be said." = "不必琢磨什么才是真相，说该说的话就好。"
+
+# CUNNING
+"I do admire a clever trap." = "我欣赏巧妙的圈套。"
+"There's no value in all of this scheming I see these days." = "眼下这些勾心斗角，在我看来毫无价值。"
+
+# ELOQUENCE
+"I do admire a clever turn of phrase." = "我欣赏巧妙的措辞。"
+"I can appreciate the right turn of phrase." = "恰到好处的措辞，我是懂得欣赏的。"
+"Who are these mealy-mouthed cowards trying to impress?" = "这些说话拐弯抹角的懦夫，究竟想讨好谁？"
+"They are so full of all those big words." = "他们满口都是装腔作势的大词。"
+
+# FAIRNESS
+"Always deal fairly." = "待人处事，要讲公道。"
+"Don't be afraid to do anything to get ahead in this world." = "要在这世上出人头地，就别怕不择手段。"
+
+# DECORUM
+"Please maintain your dignity." = "做人要守住尊严。"
+"What do you care how I speak or how I live?" = "我怎么说话、怎么生活，关你什么事？"
+
+# TRADITION
+"Some things should never change." = "有些东西永远不该改变。"
+"It's admirable when the traditions are upheld." = "坚守传统，值得敬重。"
+"We need to find a better way than those of before." = "我们需要找到比前人更好的办法。"
+"We need to move beyond traditions." = "我们需要走出传统的束缚。"
+
+# ARTWORK
+"The creative impulse is so valuable." = "创作的冲动如此珍贵。"
+"Art? More like wasted opportunity." = "艺术？倒不如说是在浪费大好机会。"
+
+# COOPERATION
+"We should all work together." = "大家应当齐心协力。"
+"It's better to work alone when possible, I think. Cooperation breeds weakness." = "我觉得能独自做事就独自做，合作只会让人软弱。"
+
+# INDEPENDENCE
+"I treasure my freedom." = "我珍视自由。"
+"Nobody is free, and it is pointless to act as if you are." = "没有人是自由的，装作自由也毫无意义。"
+
+# STOICISM
+"One should not complain or betray any feeling." = "人不应抱怨，也不应流露任何情绪。"
+"Do not hide yourself behind an unfeeling mask." = "不要把自己藏在冷漠的面具后面。"
+
+# KNOWLEDGE
+"The quest for knowledge never ends." = "求知永无止境。"
+"All of that so-called knowledge doesn't mean a thing." = "那些所谓的知识，全都毫无意义。"
+
+# INTROSPECTION
+"It is important to discover yourself." = "认识自己，是件重要的事。"
+"Why would I waste time thinking about myself?" = "我为什么要浪费时间琢磨自己？"
+
+# SELF_CONTROL
+"I think self-control is key. Master yourself." = "我认为自制最为关键，要能掌控自己。"
+"Why deny yourself your heart's desire?" = "何必压抑自己心中的渴望？"
+
+# TRANQUILITY
+"The mind thinks best when the world is at rest." = "周遭安静时，头脑最清明。"
+"Give me the bustle and noise over all that quiet!" = "比起一片寂静，我更喜欢喧闹与忙碌！"
+
+# HARMONY
+"We should all be as one. Why all the struggling?" = "我们本应同心同德，何必争斗不休？"
+"We grow through debate and struggle, even chaos and discord." = "我们在辩论与抗争中成长，甚至混乱与不和也能促人成长。"
+
+# MERRIMENT
+"It's great when we all get a chance to be merry together." = "大家能聚在一起欢乐，真是美好！"
+"Bah! I hope you aren't celebrating something." = "哼！但愿你不是在庆祝什么。"
+
+# CRAFTSMANSHIP
+"An artisan, their materials and the tools to shape them!" = "工匠、材料，还有将材料塑造成形的工具，多么美妙！"
+"Masterwork? Why should I care?" = "杰作？我为什么要在意？"
+
+# MARTIAL_PROWESS
+"A skilled warrior is a beautiful sight to behold." = "武艺高强的战士，令人赏心悦目。"
+"Why this obsession with weapons and battle? I don't understand some people." = "为什么如此痴迷武器与战斗？有些人真让我不理解。"
+
+# SKILL
+"We should all be so lucky as to truly master a skill." = "但愿我们都能有幸真正精通一门技艺。"
+"The amount of practice that goes into mastering a skill is so impressive." = "精通一门技艺所付出的磨炼，实在令人敬佩。"
+"Everyone should broaden their horizons. Any work beyond learning the basics is just a waste." = "人人都应拓宽眼界。掌握基础之后再花功夫，只是浪费。"
+"All of that practice is misspent effort." = "那些练习全是白费力气。"
+
+# HARD_WORK
+"In life, you should work hard. Then work harder." = "人生在世，应当努力，再更加努力。"
+"Hard work is the true sign of character." = "勤勉才是真正品格的体现。"
+"The best way to get what you want out of life is to work for it." = "想过上自己要的生活，最好的办法就是为之努力。"
+"It's foolish to work hard for anything." = "为任何事辛苦劳作，都是愚蠢的。"
+"You shouldn't whittle your life away on working." = "不该把一生都消磨在劳作上。"
+"Hard work is bested by luck, connections and wealth every time." = "苦干从来比不上运气、人脉与财富。"
+
+# SACRIFICE
+"We must be ready to sacrifice when the time comes." = "到了需要的时候，我们必须甘愿牺牲。"
+"Why harm yourself for anybody else's benefit?" = "何必为了别人的好处损害自己？"
+
+# COMPETITION
+"It's a competitive world, and you'd be a fool to think otherwise." = "这世界处处都是竞争，不承认这一点才是愚蠢。"
+"All of this striving against one another is so foolish." = "这些相互争胜的举动，实在愚蠢。"
+
+# PERSEVERANCE
+"Keep going and never quit." = "坚持下去，永不放弃。"
+"Anybody that sticks to something a moment longer than they have to is an idiot." = "没必要再坚持，却还多耗一刻的人，都是傻子。"
+
+# LEISURE_TIME
+"Wouldn't it be grand to just take my life off and do nothing for the rest of my days?" = "若能从此歇下，余生什么也不做，岂不美好？"
+"It's best to slow down and just relax." = "最好放慢脚步，好好放松。"
+"Time spent in leisure is such a waste." = "闲暇实在是浪费光阴。"
+
+# COMMERCE
+"Trade is the life-blood of a thriving society." = "贸易是繁荣社会的命脉。"
+"All of this buying and selling isn't honest work." = "这些买进卖出的营生，算不上踏实劳动。"
+
+# ROMANCE
+"There's nothing like a great romance!" = "没有什么比得上一场美好的爱情！"
+"These people carrying on about romance should be more practical." = "这些满口爱情的人，该实际一点。"
+
+# NATURE
+"It's wonderful to be out exploring the wilds!" = "到野外探索，真是美妙！"
+"I could do without all of those creatures and that tangled greenery." = "那些生物和纠缠的草木，我宁可都不要。"
+
+# PEACE
+"Let there be peace throughout the world." = "愿世界处处安宁。"
+"How I long for the beautiful spectacle of war!" = "我多么向往战争那壮美的景象！"

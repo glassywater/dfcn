@@ -1,0 +1,97 @@
+# forms/essay/evidence.lua 的职务、所属组织、年龄和关系事实。
+# 名称使用普通类型引用；双人句的独立字段不共享同一 Reference。
+base = "subscribed_books::essay_life_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{actor} held the office of {office}." = "{actor}曾担任{office}。"
+"{actor} was of {entity}." = "{actor}当时隶属于{entity}。"
+"{actor} and {other} were both of {entity}." = "{actor}与{other}当时都隶属于{entity}。"
+"{actor} was of {entity}, {other} of {other_entity}." = "{actor}当时隶属于{entity}，{other}则隶属于{other_entity}。"
+
+"{actor} had seen {age} years then." = "{actor}当时已{age}岁。"
+"{actor} had seen {age} years then, {other} {other_age}." = "{actor}当时已{age}岁，{other}则为{other_age}岁。"
+"{actor} had seen {age} years then, and I {other_age}." = "{actor}当时已{age}岁，而我为{other_age}岁。"
+
+"The record names {actor} as {genitive} {relation}." = "记载称{actor}是{genitive}{relation}。"
+"The record names {actor}, a {race} as {genitive} {relation}." = "记载称{actor}是一名{race}，也是{genitive}{relation}。"
+"The record names {actor}, an {race} as {genitive} {relation}." = "记载称{actor}是一名{race}，也是{genitive}{relation}。"
+"The record no longer calls them married: it names {actor} as {genitive} {relation}." = "记载已不再称两人为夫妻，而是称{actor}为{genitive}{relation}。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "other"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "owner"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::plain_person}" = "{::subscribed_books::vocabulary::plain_person}"
+
+[[rulesets]]
+name = "genitive"
+[rulesets.rules]
+# evidence.G 仅产生 my，或完整人物名后加 's。
+"my" = "我的"
+"{owner}'s" = "{owner}的"
+
+[[rulesets]]
+name = "office"
+[rulesets.rules]
+# characters.build_profile 直接使用实体职务的 pos.name[0]。
+"{::positions::singular}" = "{::positions::singular}"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "other_entity"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "age"
+[rulesets.rules]
+"{#digits}" = "{#digits}"
+
+[[rulesets]]
+name = "other_age"
+[rulesets.rules]
+"{#digits}" = "{#digits}"
+
+[[rulesets]]
+name = "race"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+
+[[rulesets]]
+name = "relation"
+[rulesets.rules]
+# author_position.word_of 使用人物关系的实际枚举词；evidence 将
+# deceased spouse 在外部伴侣事实中改写为 late spouse。
+"mother" = "母亲"
+"father" = "父亲"
+"parent" = "父母"
+"child" = "子女"
+"sibling" = "兄弟姐妹"
+"spouse" = "配偶"
+"lover" = "恋人"
+"former spouse" = "前配偶"
+"deceased spouse" = "已故配偶"
+"late spouse" = "已故配偶"
+"master" = "师父"
+"apprentice" = "学徒"
+"former master" = "昔日的师父"
+"former apprentice" = "昔日的学徒"
+"companion" = "伙伴"
+"prisoner" = "囚徒"
+"imprisoner" = "囚禁者"
+"pet owner" = "饲主"
+"associate" = "同僚"

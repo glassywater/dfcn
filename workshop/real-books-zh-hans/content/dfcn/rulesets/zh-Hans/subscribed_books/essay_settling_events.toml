@@ -1,0 +1,23 @@
+# settling.facts 调用 life.deeds，以抵达新居的年份为首条后续经历的时间锚。
+# 时间词后只接已知的完整事实句，人物、作品及地点沿用各自类型。
+base = "subscribed_books::essay_settling_events"
+
+[[rulesets]]
+[rulesets.rules]
+"{lead} {::subscribed_books::essay_career_facts::sentence}" = "{lead}{::subscribed_books::essay_career_facts::sentence}"
+"{lead} {::subscribed_books::essay_fight_aftermath::record}" = "{lead}{::subscribed_books::essay_fight_aftermath::record}"
+"{lead} {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::record}"
+"{lead} {::subscribed_books::essay_writing_facts::circumstance}, {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::circumstance}，{::subscribed_books::essay_writing_facts::record}"
+
+[[rulesets]]
+name = "lead"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_facts::relative_lead}" = "{::subscribed_books::essay_writing_facts::relative_lead}"
+"A year after {actor} came," = "在{actor}到来的一年后，"
+"Not long after {actor} came - {::subscribed_books::essay_career_facts::short_years} years, in fact -" = "在{actor}到来不久后，确切地说是{::subscribed_books::essay_career_facts::short_years}年后，"
+"{::subscribed_books::essay_career_facts::first_years} years after {actor} came," = "在{actor}到来的{::subscribed_books::essay_career_facts::first_years}年后，"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"

@@ -357,6 +357,9 @@ name = "place"
 [[rulesets]]
 name = "entity"
 [rulesets.rules]
+# book_vars.entity_name supplies a historical_entity name, including site owners.
+# Reuse the native entity resolver already exposed by the shared name namespace.
+"{::text::name}" = "{::text::name}"
 "{::subscribed_books::narrative_vocabulary::entity}" = "{::subscribed_books::narrative_vocabulary::entity}"
 "a people" = "一个民族"
 "the people of {@bt_site|::subscribed_books::vocabulary::place}" = "{@bt_site|::subscribed_books::vocabulary::place} 的人民"
@@ -392,6 +395,11 @@ name = "speaker"
 [[rulesets]]
 name = "perspective"
 [rulesets.rules]
+"guide" = "旅行指南"
+"resident's guide" = "居民指南"
+"traveller's guide" = "旅人指南"
+"manual" = "手册"
+"discoverer's manual" = "发现者手册"
 "heroic" = "英雄赞歌"
 "decline" = "衰落"
 "annalistic" = "编年记述"

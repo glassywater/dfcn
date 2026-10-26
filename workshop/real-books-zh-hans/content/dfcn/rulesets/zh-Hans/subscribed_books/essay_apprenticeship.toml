@@ -1,0 +1,112 @@
+# forms/essay/subjects/apprenticeship.lua 的全部论述角度与共享章节。
+# 按单句承接 fresh_sentences 的去重结果及合句规范化后的正文。
+base = "subscribed_books::essay_apprenticeship"
+
+[[rulesets]]
+[rulesets.rules]
+# _sections：师承中的另一人、起点、成果、结束与艰辛。
+"Of {partner}, a word." = "关于{partner}，也说上几句。"
+"I should say who {partner} was." = "我该说说{partner}是怎样的人。"
+"Of where it began, a word." = "关于这一切开始的地方，也说上几句。"
+"It began somewhere, and the place matters." = "这一切总有个起点，而那个地方很重要。"
+# What came of it, the record keeps. 复用 essay_career 的共享句。
+"The work that followed is the proof of it." = "此后的成果，便是这段师承的证明。"
+"Every apprenticeship ends." = "每一段学徒生涯都会结束。"
+"And then it ended, as they do." = "后来，这段学徒生涯结束了，正如所有学徒生涯一样。"
+"It was not easy." = "那并不容易。"
+"There were hard years in it." = "其中也有艰难的岁月。"
+
+# lineage：技艺的传承。
+"I will argue that {subject} matters for what passed through it: a craft handed from one pair of hands to the next, as such things always have been." = "我要论证，{subject}的重要之处在于它传下了什么：一门技艺从一双手传到另一双手，历来都是如此。"
+"I write about {subject}." = "我写下{subject}。"
+"What passed between {partner} and me was older than either of us, and that is my subject." = "在{partner}与我之间传承的东西，比我们任何一人都更古老，这正是我要论述的事。"
+"A craft lives only as long as someone is willing to teach it." = "只要还有人愿意传授，一门技艺就能延续。"
+"The record calls it a bond; it was also an inheritance." = "史册称它为一种纽带；它也是一份传承。"
+"What a master gives is the habit of knowing." = "师父传授的，是求知的习惯。"
+"Every skill is a chain of teachers, most of them forgotten." = "每一种技艺都由一代代师父传下，其中大多数人已被遗忘。"
+"We honour makers." = "我们敬重创造者。"
+"We should honour teachers more." = "我们更应该敬重传授技艺的人。"
+"Some will say that an apprenticeship is only labour, cheaply bought." = "有人会说，收学徒不过是廉价雇用劳力。"
+"It may be objected that nothing in the record shows what was taught." = "也许有人会反驳，史册根本没有说明传授了什么。"
+"Labour is what it looks like from outside." = "从外面看，那只是劳作。"
+"From inside, it is how anything is ever learned." = "身在其中，便会明白，一切本领都是这样学来的。"
+"The record never shows what was taught." = "史册从来不会写明传授了什么。"
+"It shows who taught, and that is enough to begin." = "它记下了传授者是谁，而这已足以作为起点。"
+"I return to {subject}: a link in a chain, and the chain is the point." = "回到{subject}：它是传承中的一环，而这份传承才是关键。"
+"I have written of the bond that made me." = "我已写下这段塑造了我的师承。"
+"I hope I have done it justice." = "但愿我的文字没有辜负它。"
+
+# servitude：被称为教导的役使。
+"I will argue that {subject} was less a teaching than a servitude, and that we are too quick to call the one by the other's name." = "我要论证，{subject}与其说是教导，不如说是役使，而我们太轻易地把役使称作教导。"
+"An apprentice's years belong to someone else." = "学徒的那些岁月，属于别人。"
+"What is called training is often only obedience, extended." = "所谓训练，往往不过是长年累月的服从。"
+"Gratitude is demanded most loudly by those who are owed it least." = "最不值得感激的人，往往最响亮地要求别人感恩。"
+"It will be said that every apprentice serves, and every master once served." = "有人会说，每个学徒都要服侍师父，而每个师父也都曾服侍过别人。"
+"That is how a wrong becomes a custom: everyone suffers it in turn." = "错误就这样变成了习俗：每个人轮流承受它。"
+"I return to {subject}, and I call it what it was." = "回到{subject}，我要直言它本来的面目。"
+
+# surpassing：学徒终将超越师父。
+# 上游 own 模板明确由学徒叙述，却可能嵌入“the apprenticeship of X under me”。
+# 只在完整的学习／超越开头及该角度结尾中，按叙事视角校正主题；
+# 普通 subject、独立的 under me 和其他角度仍按原文解析。
+"I write about {surpassing_subject}. I learned from {partner}, and in time I had to leave {partner_again} behind; that is my subject." = "我写下{surpassing_subject}。我曾向{partner}学习，后来终须超越{partner_again}；这便是我要论述的事。"
+"I write about {surpassing_subject}. And then I learned from {partner}, and in time I had to leave {partner_again} behind; that is my subject." = "我写下{surpassing_subject}。然后，我曾向{partner}学习，后来终须超越{partner_again}；这便是我要论述的事。"
+"I write about {surpassing_subject}. Then I learned from {partner}, and in time I had to leave {partner_again} behind; that is my subject." = "我写下{surpassing_subject}。然后，我曾向{partner}学习，后来终须超越{partner_again}；这便是我要论述的事。"
+"I write about {surpassing_subject}, and also I learned from {partner}, and in time I had to leave {partner_again} behind; that is my subject." = "我写下{surpassing_subject}；我曾向{partner}学习，后来终须超越{partner_again}；这便是我要论述的事。"
+"I will argue that the truest thing in {subject} is that the student would outgrow the teacher - as students must, and as teachers dread." = "我要论证，{subject}最真实的一点，是学徒终将超越师父——这是学徒必须做到、却令师父畏惧的事。"
+"I learned from {partner}, and in time I had to leave {partner_again} behind; that is my subject." = "我曾向{partner}学习，后来终须超越{partner_again}；这便是我要论述的事。"
+"A good teacher is measured by the day they are no longer needed." = "衡量一位好师父，要看学徒何时不再需要其指点。"
+"Every apprenticeship carries the seed of a rivalry." = "每一段师承，都埋着竞争的种子。"
+"To surpass a teacher is the only repayment that matters, and the only one that wounds." = "超越师父，是唯一有意义的回报，也是唯一会带来伤痛的回报。"
+"Some will call that ingratitude." = "有人会称之为不知感恩。"
+"It is the opposite." = "事实恰恰相反。"
+"It is what the teaching was for." = "这正是教导原本的目的。"
+"I return to {surpassing_subject}: a teaching that succeeded, which is to say, one that ended." = "回到{surpassing_subject}：这是一段成功的师承，也就是说，一段走到了终点的师承。"
+
+# gratitude：对师承与相识之人的感激。
+"This essay concerns {subject}, and it is, above all, an expression of gratitude." = "这篇论文谈的是{subject}，而它首先是一份感激的表达。"
+"I write about {subject}, because I owe {partner} more than I have ever said." = "我写下{subject}，因为我欠{partner}的，远比我曾说出口的更多。"
+"{to} is my {word}, and this essay is my thanks." = "{to}是我的{word}，这篇论文便是我的谢意。"
+"Some debts can only be paid forward." = "有些恩情，只能通过帮助后来者来偿还。"
+"Whatever came after began here." = "此后的一切，都始于这里。"
+"Gratitude is a kind of memory that will not let a gift go unrecorded." = "感激是一种记忆，不肯让所得的馈赠被遗忘。"
+"A skeptic will say gratitude is easy when one has done well." = "怀疑者会说，一个人有所成就时，感恩自然容易。"
+"It is easiest then, and most necessary." = "那时感恩最容易，也最有必要。"
+"I return to {subject}, and I say thank you, which is all an essay of this kind can do." = "回到{subject}，我只想说一声谢谢；这样的论文所能做的，也就只有这些。"
+
+[[rulesets]]
+name = "surpassing_subject"
+[rulesets.rules]
+# 直接识别自相矛盾的主题，保留日期、地点和对方姓名；不改历史事件数据。
+"the apprenticeship of {::subscribed_books::essay_vocabulary::actor} under me in {::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}我拜{::subscribed_books::essay_vocabulary::actor}为师的经历"
+"the apprenticeship of {::subscribed_books::essay_vocabulary::actor} under me {::subscribed_books::essay_apprenticeship_vocabulary::location} in {::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}{::subscribed_books::essay_apprenticeship_vocabulary::location}我拜{::subscribed_books::essay_vocabulary::actor}为师的经历"
+"the apprenticeship of {::subscribed_books::essay_vocabulary::actor} under me {::subscribed_books::essay_apprenticeship_vocabulary::location}" = "{::subscribed_books::essay_apprenticeship_vocabulary::location}我拜{::subscribed_books::essay_vocabulary::actor}为师的经历"
+"the apprenticeship of {::subscribed_books::essay_vocabulary::actor} under me" = "我拜{::subscribed_books::essay_vocabulary::actor}为师的经历"
+"{subject}" = "{subject}"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{::subscribed_books::essay_apprenticeship_vocabulary::subject}" = "{::subscribed_books::essay_apprenticeship_vocabulary::subject}"
+
+[[rulesets]]
+name = "partner"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::plain_person}" = "{::subscribed_books::vocabulary::plain_person}"
+
+[[rulesets]]
+name = "partner_again"
+[rulesets.rules]
+"{partner}" = "{partner}"
+
+[[rulesets]]
+name = "to"
+[rulesets.rules]
+# essay.vars_for 取 author_position.to 对应人物的显示名。
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "word"
+[rulesets.rules]
+# author_position.word_of / REVERSE 产生的实际关系，包括师父、学徒及昔日关系。
+"{::subscribed_books::essay_life_facts::relation}" = "{::subscribed_books::essay_life_facts::relation}"

@@ -1,0 +1,56 @@
+# forms/essay/subjects/apprenticeship.lua 的原生事件主题及 subject.lua 后备主题。
+# 通用主题按原文分别解析两侧人物；surpassing 的叙事矛盾在对应正文规则中处理。
+base = "subscribed_books::essay_apprenticeship_vocabulary"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{bond} in {date}" = "{date}{bond}的经历"
+"{bond} {location} in {date}" = "{date}{location}{bond}的经历"
+"{bond} {location}" = "{location}{bond}的经历"
+"{bond}" = "{bond}的经历"
+"the apprenticeship that bound {pupil} and {master}" = "{pupil}与{master}之间的师徒关系"
+"the apprenticeships of {people}" = "{people}的师徒经历"
+
+[[rulesets]]
+name = "bond"
+[rulesets.rules]
+"the apprenticeship of {pupil} under {master}" = "{pupil}拜{master}为师"
+"my apprenticeship under {master}" = "我拜{master}为师"
+"the former apprenticeship of {pupil} under {master}" = "{pupil}昔日师从{master}"
+"my former apprenticeship under {master}" = "我昔日师从{master}"
+"the end of the apprenticeship of {pupil} under {master}" = "{pupil}结束在{master}门下的学徒生活"
+
+[[rulesets]]
+name = "pupil"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "master"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "location"
+[rulesets.rules]
+"in {place}" = "在{place}"
+"at {place}" = "在{place}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "people"
+[rulesets.rules]
+"{pupil}" = "{pupil}"
+"{pupil} and {people}" = "{pupil}与{people}"
+"{pupil}, {people}" = "{pupil}、{people}"
+"{::subscribed_books::guide::count} others" = "另外{::subscribed_books::guide::count}人"

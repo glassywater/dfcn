@@ -1,0 +1,143 @@
+# forms/essay/subjects/settling.lua：安家、离别、漂泊与历经艰难的论文正文。
+# study 角度及 WHY、PLACE、AFTER、COMPANY、FAITH 导语复用 essay_study。
+base = "subscribed_books::essay_settling"
+
+[[rulesets]]
+[rulesets.rules]
+# 独立的 I return to / This essay concerns 使用已有共享主题规则。
+
+# _sections：HARDS、LOSSES、LEFT。
+"It was not all good, and I will not pretend it was." = "那并非事事顺遂，我也不会假装如此。"
+"There were hard years, too." = "也有过艰难的岁月。"
+"It was not all good, and the record does not pretend otherwise." = "那并非事事顺遂，史册也没有掩饰这一点。"
+"And then the losses came." = "而后，失去接踵而来。"
+"And there were losses." = "也有失去。"
+"I did not come with nothing behind me." = "我来到这里时，身后并非空无一物。"
+"What I left is part of this, too." = "我留下的一切，也是这段经历的一部分。"
+"Every arrival is a leaving." = "每一次抵达，也意味着一次离别。"
+"What was left behind is part of this." = "被留在身后的，也是这段经历的一部分。"
+
+# home
+"I write about {subject}, because a place became mine, and I want to set down why I came and what I found." = "我写下{subject}，因为有个地方成了我的家，而我想记下为何来到这里，又在这里找到了什么。"
+"I will argue that {subject} was the turning of a life: a homecoming to a place never seen before." = "我要论证，{subject}是人生的转折：来到一个从未见过的地方，却仿佛回到了家。"
+"A home is not where one is born; it is where one decides to be buried." = "家不在出生之地，而在决定长眠之处。"
+"To settle is to make a promise to a place." = "定居，就是向一个地方许下承诺。"
+"A home is a place that remembers you." = "家，是一个记得你的地方。"
+"We do not find our homes; we wear them in, like boots." = "家不是找到的；它像靴子一样，是在日复一日的磨合中变得合脚的。"
+"Every place is strange until it has seen you at your worst and kept you anyway." = "每个地方起初都是陌生的，直到它见过你最糟糕的模样，却仍然留下了你。"
+"The stone does not care who works it." = "石头不在乎由谁来雕琢。"
+"That is why it is worth working." = "正因如此，它才值得人下工夫。"
+"The first winter in a place decides whether there will be a second." = "在一个地方度过的第一个冬天，决定了你是否会留下过第二个。"
+"A hall is only stone until someone has wept in it." = "只有曾有人在其中落泪，厅堂才不再只是一堆石头。"
+"It will be said that one place is much like another." = "有人会说，地方与地方大同小异。"
+"Only to those who have never had one." = "只有从未拥有过一个归处的人，才会这样想。"
+"I have said why I came, what I found, and what it cost me." = "我已说过为何来到这里、找到了什么，又为此付出了什么。"
+"That is why they came, what they found, and what it cost." = "这就是他们前来的缘由、所得，以及为此付出的代价。"
+"I came, I stayed, and I am glad of it." = "我来了，留下了，也为此感到欣慰。"
+"I return to {subject}: a life that found its ground." = "回到{subject}：一段终于找到了立足之地的人生。"
+
+# leaving
+"I write about {subject}, but my true subject is what I left behind to make it, and why." = "我写的是{subject}，但我真正想谈的，是为了走到这一步，我把什么留在了身后，又为何如此。"
+"Every arrival is also a leaving, and I mean to write about the leaving." = "每一次抵达，也意味着一次离别，而我想写的是离别。"
+"I came to {place} with less than I left with." = "我来到{place}时，带来的已比启程时更少。"
+"The record notes where one arrives." = "史册记下了人抵达何处。"
+"It never notes what one leaves." = "它却从不记下人留下了什么。"
+"We are all, in the end, made of the places we left." = "到头来，塑造我们的，都是那些被我们留在身后的地方。"
+"Leaving is the one journey that never quite ends." = "离别，是唯一一段始终无法真正结束的旅程。"
+"What we carry from a place weighs more than what we leave in it." = "从一个地方带走的，比留在那里的更沉重。"
+"It will be said that one must look forward." = "有人会说，人必须向前看。"
+"One can do both." = "向前看与回首，并不冲突。"
+"Most of us have no choice." = "我们大多数人都别无选择。"
+"I have named what I left, and what I came to." = "我已说过留下了什么，又来到了怎样的地方。"
+"That is what was left, and what was found." = "这就是留在身后的，以及后来找到的。"
+"I return to {subject}, and to everything it left behind." = "回到{subject}，也回到由此留在身后的一切。"
+"I do not regret the going; I regret what it cost." = "我不后悔离去；我遗憾的是为此付出的代价。"
+
+# restless
+"I write about {subject}, though I did not stay." = "我写下{subject}，尽管我最终没有留下。"
+"I mean to ask why I could not." = "我想追问，自己为何无法留下。"
+"I will argue that {subject} was a pause: the record shows the road was taken up again." = "我要论证，{subject}不过是一次停歇：史册表明，此后旅途又重新开始了。"
+"I have settled more than once." = "我曾不止一次定居。"
+"I am not sure I have ever stayed." = "可我不确定，自己是否曾真正留下过。"
+"Some lives are lived on the road, with places only as rests." = "有些人的一生都在路上，所到之处不过是歇脚的地方。"
+"Restlessness is a hunger for something no place serves." = "漂泊不定，是渴求一种无论何处都无法满足的东西。"
+"Some of us are only ever passing through, even when we stay." = "我们之中，有些人即使留下，也始终只是过客。"
+"It will be said that one who will not stay has not found the right place." = "有人会说，不肯留下的人，只是尚未找到合适的地方。"
+"Or that the right place is the road itself." = "又或许，合适的地方就是路途本身。"
+"I have said why I came, and why I could not stay." = "我已说过为何前来，又为何无法留下。"
+"I settled, and then I moved on." = "我定居下来，随后又继续前行。"
+"Perhaps that is the shape of me." = "或许，我就是这样的人。"
+
+# triumph
+"I write about {subject}, and about what it took: I came to {place}, and I endured it, and I mean to say how." = "我写下{subject}，也写下为此付出的一切：我来到{place}，熬过了这里的艰难，而我想说说自己是如何做到的。"
+"I will argue that {subject} was a trial, and that it was passed." = "我要论证，{subject}是一场考验，而且这场考验已被经受住了。"
+"I came to {place} with little, and it gave me less." = "我来到{place}时所带无几，而这里给予我的更少。"
+"Here is what I came through." = "以下便是我熬过的艰难。"
+"Nothing in {place} was given; all of it was held." = "在{place}，没有什么是白白得到的；一切都得牢牢守住。"
+"A place is earned twice: once by arriving, and once by staying." = "要在一个地方立足，须争取两次：一次是抵达，一次是留下。"
+"Arriving is easy." = "抵达并不难。"
+"Staying is the trial." = "留下才是考验。"
+"Endurance is what remains when everything glamorous has given out." = "当一切光鲜之物都已耗尽，剩下的便是忍耐。"
+"What does not break you does not make you stronger." = "没能击垮你的，并不会让你更强大。"
+"It only leaves you standing, which is enough." = "它只是让你仍然站着，而这就够了。"
+"No one remembers the easy years." = "没有人记得安逸的年月。"
+"They are not worth remembering." = "那些年月不值得铭记。"
+"The dead do not ask to be carried." = "逝者并未要求我们背负他们。"
+"We carry them anyway." = "可我们依然背负着他们。"
+"Grief is only love with nowhere left to go." = "悲伤，不过是再无处安放的爱。"
+"Every wall that stands was once only a hope and a pile of stones." = "每一道屹立的墙，起初都不过是一个希望与一堆石头。"
+"It will be said that I make too much of ordinary hardship." = "有人会说，我把寻常的苦难说得太重了。"
+"Ordinary hardship is the only kind there is." = "世上所有的苦难，本来都是寻常的苦难。"
+"That is what makes enduring it worth a word." = "正因如此，熬过它才值得一提。"
+"I have said what I came through, and what I made of it." = "我已说过熬过了什么，又如何看待这段经历。"
+"That is what was endured, and what came of it." = "这就是曾经承受的一切，以及由此而来的结果。"
+"I came, it was hard, and I am still here." = "我来了，日子很艰难，而我至今仍在这里。"
+"I return to {subject}: a trial, passed." = "回到{subject}：一场已被经受住的考验。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::guide::place}" = "{::subscribed_books::guide::place}"
+
+[[rulesets]]
+name = "location"
+[rulesets.rules]
+"{place}" = "{place}"
+"the wilds" = "荒野"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::year}" = "{::subscribed_books::essay_vocabulary::year}"
+
+[[rulesets]]
+name = "year_to"
+[rulesets.rules]
+"{year}" = "{year}"
+
+[[rulesets]]
+name = "people"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::people}" = "{::subscribed_books::essay_vocabulary::people}"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+# 原生 CHANGE_HF_STATE.getPhrase；game_words.in_own_words 将作者改为 my。
+"my settling in {location} in {date}" = "我于{date}在{location}定居的经历"
+"the settling of {actor} in {location} in {date}" = "{actor}于{date}在{location}定居的经历"
+# subject.lua 在原生主题不可用时提供不含地点的短语。
+"the settling of {actor} in {date}" = "{actor}于{date}定居的经历"
+# 多次迁居的主题不经 in_own_words，保留明确列出的人物与起止年份。
+"the wanderings of {people} in {date}" = "{people}于{date}辗转迁居的经历"
+"the wanderings of {people}, {year} to {year_to}" = "{people}于{year}年至{year_to}年间辗转迁居的经历"

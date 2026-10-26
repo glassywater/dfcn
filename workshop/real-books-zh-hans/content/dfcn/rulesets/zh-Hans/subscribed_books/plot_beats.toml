@@ -1,6 +1,16 @@
 base = "subscribed_books::plot_beats"
 
 [[rulesets]]
+name = "recap_actor"
+[rulesets.rules]
+"{::subscribed_books::guide::person}" = "{::subscribed_books::guide::person}"
+
+[[rulesets]]
+name = "recap_partner"
+[rulesets.rules]
+"{::subscribed_books::guide::person}" = "{::subscribed_books::guide::person}"
+
+[[rulesets]]
 [rulesets.rules]
 # 英雄之旅
 "The news reached {@bt_hero|::subscribed_books::vocabulary::person} at {@bt_place|::subscribed_books::vocabulary::place} before nightfall, and with it a question nobody else wanted to answer: who was going to {::subscribed_books::plot_vocabulary::goal}?" = "消息在夜幕降临前传到了身在 {@bt_place|::subscribed_books::vocabulary::place} 的 {@bt_hero|::subscribed_books::vocabulary::person} 耳中，随之而来的还有一个谁都不愿回答的问题：谁来{::subscribed_books::plot_vocabulary::goal}？"
@@ -107,6 +117,9 @@ base = "subscribed_books::plot_beats"
 "{@bt_a|::subscribed_books::vocabulary::person} spent the day in {@bt_place|::subscribed_books::vocabulary::place} asking questions about {@bt_foe|::subscribed_books::vocabulary::person}. Most people had nothing to say. One old woman had a great deal." = "{@bt_a|::subscribed_books::vocabulary::person} 花了一整天，在 {@bt_place|::subscribed_books::vocabulary::place} 打听 {@bt_foe|::subscribed_books::vocabulary::person} 的消息。大多数人无话可说，一位老妇人却说了许多。"
 "A letter came to {@bt_a|::subscribed_books::vocabulary::person} from {@bt_far_place|::subscribed_books::vocabulary::place}, unsigned, with a single line in it about {@bt_foe|::subscribed_books::vocabulary::person}." = "{@bt_a|::subscribed_books::vocabulary::person} 收到了一封来自 {@bt_far_place|::subscribed_books::vocabulary::place} 的信，没有署名，信里只有一行关于 {@bt_foe|::subscribed_books::vocabulary::person} 的话。"
 "{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} went over everything they knew about {::subscribed_books::plot_vocabulary::cause}. It was less than either of them had hoped." = "{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 梳理了他们对{::subscribed_books::plot_vocabulary::cause}所知的一切。知道的比两人原先希望的都要少。"
+# fresh_sentences 会删除重复的完整句；保留独立句入口，不依赖相邻句仍然存在。
+"{recap_actor} and {recap_partner} went over everything they knew about {::subscribed_books::plot_vocabulary::cause}." = "{recap_actor} 与 {recap_partner} 梳理了他们对{::subscribed_books::plot_vocabulary::cause}所知的一切。"
+"It was less than either of them had hoped." = "知道的比两人原先希望的都要少。"
 "{@bt_a|::subscribed_books::vocabulary::person} found someone in {@bt_place|::subscribed_books::vocabulary::place} who remembered {@bt_foe|::subscribed_books::vocabulary::person} -- and did not want to talk about it, which said a great deal." = "{@bt_a|::subscribed_books::vocabulary::person} 在 {@bt_place|::subscribed_books::vocabulary::place} 找到了一个还记得 {@bt_foe|::subscribed_books::vocabulary::person} 的人。那人却不愿谈起，这份沉默已说明了许多。"
 "Word came that {@bt_foe|::subscribed_books::vocabulary::person} had been seen on the road to {@bt_far_place|::subscribed_books::vocabulary::place}. By the time {@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} got there, {@bt_foe2|::subscribed_books::vocabulary::person} was gone." = "有消息传来，说有人在通往 {@bt_far_place|::subscribed_books::vocabulary::place} 的路上看到了 {@bt_foe|::subscribed_books::vocabulary::person}。等 {@bt_a|::subscribed_books::vocabulary::person} 和 {@bt_b|::subscribed_books::vocabulary::person} 赶到时，{@bt_foe2|::subscribed_books::vocabulary::person} 已经离开了。"
 "Someone had been asking about {@bt_a|::subscribed_books::vocabulary::person} at every inn along the road. {@bt_foe|::subscribed_books::vocabulary::person}, it seemed, was keeping watch too." = "有人沿途在每一家旅店打听 {@bt_a|::subscribed_books::vocabulary::person}。看来，{@bt_foe|::subscribed_books::vocabulary::person} 也在暗中留意。"
@@ -132,6 +145,30 @@ base = "subscribed_books::plot_beats"
 "The truth about {::subscribed_books::plot_vocabulary::cause} was known, and it changed nothing. {@bt_foe|::subscribed_books::vocabulary::person} saw to that." = "{::subscribed_books::plot_vocabulary::cause}的真相已为人所知，却什么也没有改变。{@bt_foe|::subscribed_books::vocabulary::person} 确保了这一点。"
 "{@bt_hero|::subscribed_books::vocabulary::person} came back, and {@bt_ally|::subscribed_books::vocabulary::person} was not waiting. {::subscribed_books::plot_vocabulary::cause} had seen to that." = "{@bt_hero|::subscribed_books::vocabulary::person} 回来了，{@bt_ally|::subscribed_books::vocabulary::person} 却没有等在那里。这一切都是{::subscribed_books::plot_vocabulary::cause}造成的。"
 "In the end the matter of {::subscribed_books::plot_vocabulary::cause} came apart in {@bt_foe|::subscribed_books::vocabulary::person}'s favor, as these things sometimes do." = "最后，{::subscribed_books::plot_vocabulary::cause}这件事以有利于 {@bt_foe|::subscribed_books::vocabulary::person} 的方式收场。世事有时就是如此。"
+# 收尾段落会经原模组逐句去重；保留完整段落规则，并匹配删句后留下的完整句。
+"The matter of {::subscribed_books::plot_vocabulary::cause} was finished." = "{::subscribed_books::plot_vocabulary::cause}这件事已经结束。"
+"{@bt_a|::subscribed_books::vocabulary::person} kept turning it over anyway, the way a tongue finds a missing tooth." = "{@bt_a|::subscribed_books::vocabulary::person} 却仍反复回想，仿佛舌头总会不由自主地探向缺牙的空处。"
+"{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} took the long way back to {@bt_place|::subscribed_books::vocabulary::place}." = "{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 绕着远路返回 {@bt_place|::subscribed_books::vocabulary::place}。"
+"Neither of them was in a hurry to arrive." = "两人都不急于抵达。"
+"{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} did not speak of {@bt_foe|::subscribed_books::vocabulary::person} on the way back." = "回程中，{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 没有提起 {@bt_foe|::subscribed_books::vocabulary::person}。"
+"There was nothing to say that would not have been an accusation." = "无论说什么，听起来都会是一种责备。"
+"{@bt_b|::subscribed_books::vocabulary::person} tried, once, to say that they had done all they could." = "有一次，{@bt_b|::subscribed_books::vocabulary::person} 试着说，他们已经尽力了。"
+"{@bt_a|::subscribed_books::vocabulary::person} did not answer." = "{@bt_a|::subscribed_books::vocabulary::person} 没有回答。"
+"Somewhere behind them {@bt_foe|::subscribed_books::vocabulary::person} still had {::subscribed_books::plot_vocabulary::stake}." = "在他们身后的某处，{@bt_foe|::subscribed_books::vocabulary::person} 仍然掌握着{::subscribed_books::plot_vocabulary::stake}。"
+"{@bt_a|::subscribed_books::vocabulary::person} felt it the whole way back, like a stone in a boot." = "整个回程中，{@bt_a|::subscribed_books::vocabulary::person} 始终摆脱不了这个念头，仿佛靴子里硌着一颗石子。"
+"{@bt_hero|::subscribed_books::vocabulary::person} came away from {@bt_far_place|::subscribed_books::vocabulary::place} without {::subscribed_books::plot_vocabulary::stake}." = "{@bt_hero|::subscribed_books::vocabulary::person} 离开 {@bt_far_place|::subscribed_books::vocabulary::place} 时，没能带走{::subscribed_books::plot_vocabulary::stake}。"
+"What {@bt_hero|::subscribed_books::vocabulary::person} carried instead was harder to name, and heavier." = "{@bt_hero|::subscribed_books::vocabulary::person} 背负的东西更难以名状，也更为沉重。"
+"{::subscribed_books::plot_vocabulary::stake} stayed with {@bt_foe|::subscribed_books::vocabulary::person}." = "{::subscribed_books::plot_vocabulary::stake}仍在 {@bt_foe|::subscribed_books::vocabulary::person} 手中。"
+"{@bt_hero|::subscribed_books::vocabulary::person} turned away from {@bt_far_place|::subscribed_books::vocabulary::place} with empty hands." = "{@bt_hero|::subscribed_books::vocabulary::person} 两手空空地转身离开了 {@bt_far_place|::subscribed_books::vocabulary::place}。"
+"{@bt_hero|::subscribed_books::vocabulary::person} came home to {@bt_place|::subscribed_books::vocabulary::place} with nothing to show for the road but scars." = "{@bt_hero|::subscribed_books::vocabulary::person} 回到了 {@bt_place|::subscribed_books::vocabulary::place} 的家，这一路留下的只有伤疤。"
+"Nobody asked about {::subscribed_books::plot_vocabulary::stake}." = "没有人问起{::subscribed_books::plot_vocabulary::stake}。"
+"Everybody wanted to." = "每个人却都想问。"
+"Vengeance had been the whole of {@bt_hero|::subscribed_books::vocabulary::person}'s life for so long." = "长久以来，复仇就是 {@bt_hero|::subscribed_books::vocabulary::person} 生活的全部。"
+"Now it was a door that had closed with {@bt_hero|::subscribed_books::vocabulary::person} on the wrong side." = "如今，它却像一扇已然关闭的门，将 {@bt_hero|::subscribed_books::vocabulary::person} 留在了错误的一边。"
+"The truth about {::subscribed_books::plot_vocabulary::cause} was known, and it changed nothing." = "{::subscribed_books::plot_vocabulary::cause}的真相已为人所知，却什么也没有改变。"
+"{@bt_foe|::subscribed_books::vocabulary::person} saw to that." = "{@bt_foe|::subscribed_books::vocabulary::person} 确保了这一点。"
+"{@bt_hero|::subscribed_books::vocabulary::person} came back, and {@bt_ally|::subscribed_books::vocabulary::person} was not waiting." = "{@bt_hero|::subscribed_books::vocabulary::person} 回来了，{@bt_ally|::subscribed_books::vocabulary::person} 却没有等在那里。"
+"{::subscribed_books::plot_vocabulary::cause} had seen to that." = "这一切都是{::subscribed_books::plot_vocabulary::cause}造成的。"
 # 人物自行作出的选择
 "{@bt_actor|::subscribed_books::vocabulary::person} had been weighing it for a long time. That night {@bt_actor2|::subscribed_books::vocabulary::person} went to {@bt_foe|::subscribed_books::vocabulary::person} with everything {@bt_hero|::subscribed_books::vocabulary::person} knew -- the road, the plan, the names -- and came back with {@bt_foe2|::subscribed_books::vocabulary::person}'s silver instead of {@bt_foe3|::subscribed_books::vocabulary::person}'s head." = "{@bt_actor|::subscribed_books::vocabulary::person} 已经权衡了很久。那天夜里，{@bt_actor2|::subscribed_books::vocabulary::person} 带着 {@bt_hero|::subscribed_books::vocabulary::person} 所知的一切——路线、计划和姓名——去见了 {@bt_foe|::subscribed_books::vocabulary::person}，回来时带着的是 {@bt_foe2|::subscribed_books::vocabulary::person} 的银子，而非 {@bt_foe3|::subscribed_books::vocabulary::person} 的头颅。"
 "It was {@bt_actor|::subscribed_books::vocabulary::person} who told {@bt_foe|::subscribed_books::vocabulary::person} where to find them. {@bt_hero|::subscribed_books::vocabulary::person} learned it the way such things are always learned: too late, and from someone who thought {@bt_hero2|::subscribed_books::vocabulary::person} already knew." = "是 {@bt_actor|::subscribed_books::vocabulary::person} 将他们的所在告诉了 {@bt_foe|::subscribed_books::vocabulary::person}。{@bt_hero|::subscribed_books::vocabulary::person} 得知此事的方式与这类事情总是一模一样：太迟了，而且告知的人还以为 {@bt_hero2|::subscribed_books::vocabulary::person} 早就知道。"

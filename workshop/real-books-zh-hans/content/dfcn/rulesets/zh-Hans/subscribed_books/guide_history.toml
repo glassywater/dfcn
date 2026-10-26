@@ -1,0 +1,137 @@
+# forms/guide/guide.lua 的原生历史事件名称、起始年份和作者亲历。
+# 人物字段包含物种、姓名及原生称号，整体交由严格人物类型解析。
+base = "subscribed_books::guide_history"
+
+[[rulesets]]
+[rulesets.rules]
+"{event}, in the year {year}." = "{year}年，{event}。"
+"{event}, in the year {year} - {participation}." = "{year}年，{event}；{participation}。"
+# 战役使用生成专名；只在带年份的历史条目中解析，不作为正文兜底。
+"{named_battle}, in the year {year}." = "{year}年，{named_battle}。"
+"{named_battle}, in the year {year} - {participation}." = "{year}年，{named_battle}；{participation}。"
+"{event}." = "{event}。"
+"{event} - {participation}." = "{event}；{participation}。"
+
+[[rulesets]]
+name = "event"
+[rulesets.rules]
+"The Duel of {person} and {opponent}" = "{person}与{opponent}的决斗"
+"The {ordinal} Duel of {person} and {opponent}" = "{person}与{opponent}的第{ordinal}次决斗"
+"The Theft at {place}" = "{place}发生了盗窃事件"
+"The {ordinal} Theft at {place}" = "{place}发生了第{ordinal}次盗窃事件"
+# of 后的人物来自被绑架者（未遂时为预定受害者），不是施害者。
+"The Abduction {abduction_location}" = "{abduction_location}发生了绑架事件"
+"The {ordinal} Abduction {abduction_location}" = "{abduction_location}发生了第{ordinal}次绑架事件"
+"The Abduction of {person} {abduction_location}" = "{person}在{abduction_location}遭到绑架"
+"The {ordinal} Abduction of {person} {abduction_location}" = "{person}第{ordinal}次在{abduction_location}遭到绑架"
+"The Attempted Abduction {abduction_location}" = "{abduction_location}发生了绑架未遂事件"
+"The {ordinal} Attempted Abduction {abduction_location}" = "{abduction_location}发生了第{ordinal}次绑架未遂事件"
+"The Attempted Abduction of {person} {abduction_location}" = "{abduction_location}发生了绑架{person}未遂的事件"
+"The {ordinal} Attempted Abduction of {person} {abduction_location}" = "{abduction_location}发生了第{ordinal}次绑架{person}未遂的事件"
+"The Rampage of {person} in {place}" = "{person}在{place}肆虐"
+"The {ordinal} Rampage of {person} in {place}" = "{person}第{ordinal}次在{place}肆虐"
+"The Rampage in {place}" = "{place}发生了肆虐事件"
+"The {ordinal} Rampage in {place}" = "{place}发生了第{ordinal}次肆虐事件"
+"The Monster Rampage in {place}" = "怪物在{place}肆虐"
+"The {ordinal} Monster Rampage in {place}" = "怪物第{ordinal}次在{place}肆虐"
+"The {species} Rampage in {place}" = "{species}在{place}肆虐"
+"The {ordinal} {species} Rampage in {place}" = "{species}第{ordinal}次在{place}肆虐"
+# purge 的对象来自原生独立名称或生物名称；无对象时保留事件本身。
+"The Purge in {place}" = "{place}发生了清洗事件"
+"The {ordinal} Purge in {place}" = "{place}发生了第{ordinal}次清洗事件"
+"The {purge_target} Purge in {place}" = "{place}发生了针对{purge_target}的清洗"
+"The {ordinal} {purge_target} Purge in {place}" = "{place}发生了第{ordinal}次针对{purge_target}的清洗"
+"The Persecution of {entity} in {place}" = "{entity}在{place}遭到迫害"
+"The {ordinal} Persecution of {entity} in {place}" = "{entity}在{place}第{ordinal}次遭到迫害"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"{::text::person}" = "{::text::person}"
+
+[[rulesets]]
+name = "opponent"
+[rulesets.rules]
+"{::text::person}" = "{::text::person}"
+
+[[rulesets]]
+name = "named_battle"
+[rulesets.rules]
+"{::text::name}" = "{::text::name}"
+
+[[rulesets]]
+name = "species"
+[rulesets.rules]
+"{::creatures::name}" = "{::creatures::name}"
+
+[[rulesets]]
+name = "purge_target"
+[rulesets.rules]
+"Vampire" = "吸血鬼"
+"Monster" = "怪物"
+"{species}" = "{species}"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+# 原生 persecution 的对象是历史组织，沿用已有组织名称入口。
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+"the wilds" = "荒野"
+
+[[rulesets]]
+name = "abduction_location"
+[rulesets.rules]
+# 聚落用 at，地表区域、地下区域和荒野用 in。
+"at {place}" = "{place}"
+"in {place}" = "{place}"
+"in the Wilds" = "荒野"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{#digits}" = "{#digits}"
+"-{#digits}" = "-{#digits}"
+
+[[rulesets]]
+name = "ordinal"
+[rulesets.rules]
+# 原生次数大于一时才添加序数，2–19 用单词，20 起用数字加后缀。
+"Second" = "二"
+"Third" = "三"
+"Fourth" = "四"
+"Fifth" = "五"
+"Sixth" = "六"
+"Seventh" = "七"
+"Eighth" = "八"
+"Ninth" = "九"
+"Tenth" = "十"
+"Eleventh" = "十一"
+"Twelfth" = "十二"
+"Thirteenth" = "十三"
+"Fourteenth" = "十四"
+"Fifteenth" = "十五"
+"Sixteenth" = "十六"
+"Seventeenth" = "十七"
+"Eighteenth" = "十八"
+"Nineteenth" = "十九"
+"{#digits}st" = "{#digits}"
+"{#digits}nd" = "{#digits}"
+"{#digits}rd" = "{#digits}"
+"{#digits}th" = "{#digits}"
+
+[[rulesets]]
+name = "participation"
+[rulesets.rules]
+"I was among those who attacked it" = "我也参与了那次袭击"
+"I stood among its defenders" = "我也是守卫此地的一员"
+"I killed there that day" = "那天我曾在那里杀戮"
+"I drew blood there that day" = "那天我曾在那里击伤对手"
+"I was wounded there" = "我曾在那里受伤"
+"I was there, and sheltered within its walls" = "当时我也在那里，躲在城墙内避难"
+"I was there, and did not fight" = "当时我也在那里，但没有参战"
+"I was there" = "当时我也在那里"

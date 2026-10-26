@@ -1,0 +1,201 @@
+# forms/guide/guide.lua：旅行指南的完整句式；身份字段必须完整解析。
+base = "subscribed_books::guide"
+
+[[rulesets]]
+[rulesets.rules]
+"{::subscribed_books::guide_history}" = "{::subscribed_books::guide_history}"
+"A Guide" = "旅行指南"
+"Its founding." = "建城沿革。"
+"Its land." = "当地风土。"
+"Its halls." = "当地建筑。"
+"What has happened there." = "当地往事。"
+"Where to stay, and whom to ask." = "住宿与求助。"
+"What to see." = "值得一看的地方。"
+"Their ways." = "当地习俗。"
+"Advice to the traveller." = "给旅人的建议。"
+
+"{::subscribed_books::guide_vocabulary::land_image}" = "{::subscribed_books::guide_vocabulary::land_image}"
+"{::subscribed_books::guide_vocabulary::custom}" = "{::subscribed_books::guide_vocabulary::custom}"
+
+# apply_bad_writing 可用逗号合句；只消费当前子句与连接词，后句由阅读正文继续解析。
+"{clause}." = "{clause}。"
+"{clause}, and also" = "{clause}。还有，"
+
+[[rulesets]]
+name = "clause"
+[rulesets.rules]
+"This is a guide to {site}, {::subscribed_books::guide_vocabulary::kind} held by {owner}, {::subscribed_books::guide_vocabulary::land}" = "本指南介绍 {site}。这里是{::subscribed_books::guide_vocabulary::kind}，由 {owner} 掌控，{::subscribed_books::guide_vocabulary::land}"
+"This is a guide to {site}, {::subscribed_books::guide_vocabulary::kind} held by {owner}" = "本指南介绍 {site}。这里是{::subscribed_books::guide_vocabulary::kind}，由 {owner} 掌控"
+"This is a guide to {site}, {::subscribed_books::guide_vocabulary::kind}, {::subscribed_books::guide_vocabulary::land}" = "本指南介绍 {site}。这里是{::subscribed_books::guide_vocabulary::kind}，{::subscribed_books::guide_vocabulary::land}"
+"This is a guide to {site}, {::subscribed_books::guide_vocabulary::kind}" = "本指南介绍 {site}。这里是{::subscribed_books::guide_vocabulary::kind}"
+"I have lived there since the year {year}, and I know it as one who lives there knows it" = "我自 {year} 年起便住在那里，对此地有着居民才有的了解"
+"I lived there from the year {year} to {year_to}, and I know it still" = "我从 {year} 年到 {year_to} 年住在那里，至今仍熟悉此地"
+"I come from there, and lived there until the year {year}" = "我来自那里，一直住到 {year} 年"
+"I was raised there, and live there still" = "我在那里长大，至今仍住在那里"
+"I passed through it in the year {year}, and set down what I saw" = "我于 {year} 年途经此地，写下了所见所闻"
+"I have not lived there" = "我未曾在那里居住"
+"I set down what is known of it, for those who go" = "我把有关此地的见闻记下来，供前往的旅人参考"
+
+"It was built in the year {year} by {builder} for {owner}" = "此地于 {year} 年由 {builder} 为 {owner} 建造"
+"It was built in the year {year} by {builder}" = "此地于 {year} 年由 {builder} 建造"
+"It was built in the year {year} for {owner}" = "此地于 {year} 年为 {owner} 而建"
+"It was built in the year {year}" = "此地建于 {year} 年"
+# 首批居民最多三人；分别解析姓名，不把整个名单当作一个身份。
+"Among the first to settle there were {first}, {second} and {third}" = "最早在此定居的人包括 {first}、{second} 和 {third}"
+"Among the first to settle there were {first} and {second}" = "最早在此定居的人包括 {first} 和 {second}"
+"Among the first to settle there was {first}" = "最早在此定居的人包括 {first}"
+"The record knows of {count} who have settled there" = "据记载，共有 {count} 人在此定居"
+"The record knows of one who has settled there" = "据记载，有一人在此定居"
+
+"In the country around it live {wildlife}" = "周边地区栖息着{wildlife}"
+"{hall}, {::subscribed_books::guide_vocabulary::building}, raised in the year {year}" = "{hall}，{::subscribed_books::guide_vocabulary::building}，建于 {year} 年"
+"{hall}, {::subscribed_books::guide_vocabulary::building}" = "{hall}，{::subscribed_books::guide_vocabulary::building}"
+
+"{inn} keeps beds for travellers; {host} keeps the house and the ale" = "{inn} 为旅人提供床位，由 {host} 打理店务、供应麦酒"
+"{host} keeps {inn}, and will find a traveller a bed" = "{host} 经营着 {inn}，会为旅人安排床位"
+"For a wound or a fever, ask for {healer}" = "若是受伤或发烧，可以找 {healer} 求医"
+"For the roads around, {road_guide} knows them better than anyone, and will walk them for a fair price" = "说到周边的道路，没有人比 {road_guide} 更熟悉；只需付出合理的价钱，就能请其带路"
+"{::subscribed_books::guide_vocabulary::landmark} near {site}, which the folk call {landmark_name}" = "{site} 附近有{::subscribed_books::guide_vocabulary::landmark}，当地人称之为 {landmark_name}"
+
+"Beasts have come against it before" = "此地曾遭野兽袭击"
+"Keep within its walls after dark" = "入夜后应留在城墙之内"
+"Children have been taken from it" = "此地曾有儿童遭到掳掠"
+"Keep yours close" = "请看好自己的孩子"
+"It has been fought over" = "此地曾是争夺的战场"
+"Travel with care" = "出行须谨慎"
+"It has changed hands by force, and those who hold it now did not build it" = "此地曾被武力夺取，如今的掌权者并非建造它的人"
+"Mind what you say of them" = "谈论他们时须谨言慎语"
+"It has been raided" = "此地曾遭劫掠"
+"Travel in company" = "请结伴出行"
+"Things have been stolen there" = "此地发生过盗窃"
+"Watch your pack" = "请看好自己的行囊"
+"Its people have risen against their masters before" = "此地的居民曾起身反抗统治者"
+"Mind what you say of those who rule it" = "谈论此地统治者时须谨言慎语"
+"Some there have been persecuted" = "此地有人曾受到迫害"
+"Keep your faith to yourself" = "请勿随意透露自己的信仰"
+"Ask for a bed at {inn}" = "可到 {inn} 投宿"
+"The land about it is foul" = "周边的土地邪恶污秽"
+"Do not stray from the road" = "请勿偏离道路"
+"The wild is close" = "荒野中的危险就在近旁"
+"Go armed" = "出行时请携带武器"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
+
+[[rulesets]]
+name = "year_to"
+[rulesets.rules]
+"{year}" = "{year}"
+
+[[rulesets]]
+name = "count"
+[rulesets.rules]
+"{#digits}" = "{#digits}"
+"one" = "一"
+"two" = "两"
+"three" = "三"
+"four" = "四"
+"five" = "五"
+"six" = "六"
+"seven" = "七"
+"eight" = "八"
+"nine" = "九"
+"ten" = "十"
+"eleven" = "十一"
+"twelve" = "十二"
+
+[[rulesets]]
+name = "wildlife"
+[rulesets.rules]
+"{beast}, {wildlife}" = "{beast}、{wildlife}"
+"{beast} and {last_beast}" = "{beast}和{last_beast}"
+"{beast}" = "{beast}"
+
+[[rulesets]]
+name = "beast"
+[rulesets.rules]
+"{::creatures::name}" = "{::creatures::name}"
+
+[[rulesets]]
+name = "last_beast"
+[rulesets.rules]
+"{beast}" = "{beast}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::guide_vocabulary::inn}" = "{::subscribed_books::guide_vocabulary::inn}"
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "site"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "landmark_name"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "hall"
+[rulesets.rules]
+"{place}" = "{place}"
+
+[[rulesets]]
+name = "inn"
+[rulesets.rules]
+"{place}" = "{place}"
+
+[[rulesets]]
+name = "owner"
+[rulesets.rules]
+# 所有者来自历史组织字段；不通过允许原样透传的身份捕获。
+"{::text::name}" = "{::text::name}"
+"{::subscribed_books::narrative_vocabulary::entity}" = "{::subscribed_books::narrative_vocabulary::entity}"
+"a people" = "一个民族"
+"the people of {site}" = "{site}的人民"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+# 姓名和称号分别完整匹配，避免 vocabulary::person 内的原样捕获分支。
+"{::subscribed_books::vocabulary::plain_person}" = "{::subscribed_books::vocabulary::plain_person}"
+"{::subscribed_books::vocabulary::plain_person} {::subscribed_books::vocabulary::epithet}" = "{::subscribed_books::vocabulary::plain_person}（{::subscribed_books::vocabulary::epithet}）"
+
+[[rulesets]]
+name = "builder"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "first"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "second"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "third"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "host"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "healer"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "road_guide"
+[rulesets.rules]
+"{person}" = "{person}"

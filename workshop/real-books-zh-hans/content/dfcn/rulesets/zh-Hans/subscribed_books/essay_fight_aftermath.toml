@@ -1,0 +1,78 @@
+# fight.facts 调用 life.deeds / life.loss_facts：战斗后的经历和旧敌结局。
+# 时间锚只接完整的已知事实，不吞入任意后续正文。
+base = "subscribed_books::essay_fight_aftermath"
+
+[[rulesets]]
+[rulesets.rules]
+"{record}" = "{record}"
+"In {date}, {record}" = "{date}，{record}"
+"In {date} {record}" = "{date}，{record}"
+"{lead} {record}" = "{lead}{record}"
+"{lead} {::subscribed_books::essay_career_facts::sentence}" = "{lead}{::subscribed_books::essay_career_facts::sentence}"
+"{lead} {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::record}"
+"{lead} {::subscribed_books::essay_writing_facts::circumstance}, {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::circumstance}，{::subscribed_books::essay_writing_facts::record}"
+
+[[rulesets]]
+name = "record"
+[rulesets.rules]
+"{actor} was imprisoned by {captor}." = "{actor}被{captor}囚禁。"
+"{actor} was imprisoned by {captor} {location}." = "{actor}{location}被{captor}囚禁。"
+"{actor} was no longer imprisoned by {captor}." = "{actor}不再被{captor}囚禁。"
+"{actor} was no longer imprisoned by {captor} {location}." = "{actor}{location}不再被{captor}囚禁。"
+"{actor} settled in {place}." = "{actor}在{place}安顿下来。"
+"{slayer} came to {place}, and killed {victim}." = "{slayer}来到{place}，杀死了{victim}。"
+"{arrival} came to {place}, and {slayer} killed {victim}." = "{arrival}来到{place}，{slayer}杀死了{victim}。"
+"{arrival} came to {place}, and {victim} died there." = "{arrival}来到{place}，{victim}死在了那里。"
+
+[[rulesets]]
+name = "lead"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_facts::relative_lead}" = "{::subscribed_books::essay_writing_facts::relative_lead}"
+"A year after we fought," = "在那场战斗的一年后，"
+"Not long after we fought - {::subscribed_books::essay_career_facts::short_years} years, in fact -" = "在那场战斗不久后，确切地说是{::subscribed_books::essay_career_facts::short_years}年后，"
+"{::subscribed_books::essay_career_facts::first_years} years after we fought," = "在那场战斗的{::subscribed_books::essay_career_facts::first_years}年后，"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "captor"
+[rulesets.rules]
+"{actor}" = "{actor}"
+"{::subscribed_books::guide::owner}" = "{::subscribed_books::guide::owner}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+"the wilds" = "荒野"
+
+[[rulesets]]
+name = "location"
+[rulesets.rules]
+"in {place}" = "在{place}"
+"at {place}" = "在{place}"
+"within {place}" = "在{place}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "slayer"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "arrival"
+[rulesets.rules]
+"{::subscribed_books::essay_bond_facts::arrival}" = "{::subscribed_books::essay_bond_facts::arrival}"
+
+[[rulesets]]
+name = "victim"
+[rulesets.rules]
+# fight.losses_of 只额外传入一个 old foe。
+"{::subscribed_books::essay_life_facts::genitive} old foe {::subscribed_books::guide::person}" = "{::subscribed_books::essay_life_facts::genitive}旧敌{::subscribed_books::guide::person}"

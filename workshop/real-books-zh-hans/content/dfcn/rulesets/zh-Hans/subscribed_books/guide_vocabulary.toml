@@ -1,0 +1,221 @@
+# forms/guide/guide.lua 使用的地点、旅店、景物、民俗及地貌天气词池。
+base = "subscribed_books::guide_vocabulary"
+
+[[rulesets]]
+name = "kind"
+[rulesets.rules]
+"a fortress" = "一座要塞"
+"mountain halls" = "一片山中殿堂"
+"a town" = "一座城镇"
+"a dark fortress" = "一座黑暗要塞"
+"a forest retreat" = "一处林间隐居地"
+"a cave" = "一处洞穴"
+"a camp" = "一处营地"
+"a place of note" = "一处名胜"
+"a shrine" = "一座神龛"
+"a monument" = "一座纪念建筑"
+"a settlement" = "一处聚落"
+
+[[rulesets]]
+name = "land"
+[rulesets.rules]
+"among the mountains" = "位于群山之中"
+"in the hills" = "位于丘陵之间"
+"in the forest" = "位于森林之中"
+"in the marshes" = "位于沼泽之中"
+"in the desert" = "位于沙漠之中"
+"on the open grassland" = "位于开阔的草原上"
+"on the frozen plain" = "位于冰封的平原上"
+"in the ice" = "位于冰原之中"
+"by a lake" = "位于湖畔"
+"by the sea" = "位于海边"
+
+[[rulesets]]
+name = "building"
+[rulesets.rules]
+"a tavern" = "一间酒馆"
+"a temple" = "一座神殿"
+"a library" = "一座图书馆"
+"a mead hall" = "一座蜜酒大厅"
+"a keep" = "一座城堡"
+"a market" = "一处集市"
+"a tomb" = "一座陵墓"
+"a dungeon" = "一座地牢"
+"a tower" = "一座塔楼"
+"a dark tower" = "一座黑暗高塔"
+"a spire reaching down to the underworld" = "一座深入冥界的尖塔"
+"a counting house" = "一间账房"
+"a guildhall" = "一座公会大厅"
+"a hospital" = "一所医院"
+"a hall" = "一座厅堂"
+
+[[rulesets]]
+name = "inn"
+[rulesets.rules]
+"The Red Boar" = "红野猪旅店"
+"The Sleeping Dog" = "睡犬旅店"
+"The Golden Cup" = "金杯旅店"
+"The Old Anvil" = "老铁砧旅店"
+"The Three Lamps" = "三盏灯旅店"
+"The Broken Wheel" = "断轮旅店"
+"The Green Door" = "绿门旅店"
+"The Crooked Chimney" = "歪烟囱旅店"
+"The Weary Ox" = "倦牛旅店"
+"The Silver Fish" = "银鱼旅店"
+
+# 指南将景物描述的首字母大写，再接地点和景物的专名。
+[[rulesets]]
+name = "landmark"
+[rulesets.rules]
+"A high pass" = "一处高山隘口"
+"A waterfall that never freezes" = "一条从不结冰的瀑布"
+"A cave the herders will not enter" = "一处牧民不敢进入的洞穴"
+"A cairn on a peak" = "一座山巅石冢"
+"An old barrow" = "一座古老的坟冢"
+"A watchtower long empty" = "一座久已废弃的瞭望塔"
+"A spring with healing water" = "一眼有疗愈之效的泉水"
+"A ring of standing stones" = "一圈竖立的巨石"
+"A woodcutters' camp" = "一处伐木工营地"
+"An oak older than any people" = "一棵比任何族群都古老的橡树"
+"A shrine in a clearing" = "一座林间空地上的神龛"
+"A herders' camp" = "一处牧民营地"
+"A lone tree where travellers meet" = "一棵旅人相聚的孤树"
+"A ford with stepping stones" = "一处设有踏脚石的浅滩渡口"
+"An old battlefield" = "一处古战场"
+"A causeway of logs" = "一条原木铺成的堤道"
+"A drowned village" = "一座被水淹没的村庄"
+"An island of dry ground" = "一片高出水面的干地"
+"A fishers' hut on stilts" = "一间架在高桩上的渔舍"
+"An oasis" = "一处绿洲"
+"A ruined well" = "一口废井"
+"A rock that sings in the wind" = "一块在风中鸣唱的岩石"
+"A salt flat" = "一片盐滩"
+"A cairn of the old hunters" = "一座古时猎人留下的石冢"
+"A frozen lake" = "一座冰封的湖泊"
+"A hut for travellers caught by storms" = "一间供旅人躲避风暴的小屋"
+"A crevasse no one has crossed" = "一道无人跨越过的冰隙"
+"A cave of blue ice" = "一处蓝冰洞穴"
+"An island with a ruined tower" = "一座留有残塔的岛屿"
+"A fishers' landing" = "一处渔船停靠的码头"
+"A reed bed full of birds" = "一片群鸟栖息的芦苇荡"
+"A reef that has wrecked ships" = "一处曾令船只失事的暗礁"
+"A lighthouse fire on a headland" = "一处海岬上的灯塔烽火"
+"An island of seabirds" = "一座海鸟栖息的岛屿"
+
+[[rulesets]]
+name = "custom"
+[rulesets.rules]
+"When a child is born among them, {birth}." = "他们的孩子出生时，{birth}。"
+"They bury their dead {burial}." = "他们将死者{burial}。"
+"At the turning of the year they hold the Feast of {@bt_place|::subscribed_books::vocabulary::place}, with {food} and {music}." = "每逢岁末年初，他们都会举办{@bt_place|::subscribed_books::vocabulary::place}盛宴，备下{food}，并以{music}庆祝。"
+"A guest among them is given {gift} and may not be turned away before the third day." = "他们会给来客{gift}，并且至少留宿两晚，第三天才能送客。"
+"Oaths among them are sworn {oath}, and one who breaks such an oath is not spoken to again." = "他们{oath}，违背这种誓言的人将无人再与之交谈。"
+# invent.customs 从所属文明的 relations.deities 读取真实神祇，由 pm.name 输出完整名称。
+"They honour {::text::deity} with {offering}." = "他们以{offering}敬奉{::text::deity}。"
+"Among them it is {manners}." = "在他们看来，{manners}。"
+"Their young prove themselves {proof}." = "他们的年轻人{proof}来证明自己。"
+"A marriage among them is made {marriage}." = "他们的婚姻{marriage}。"
+
+[[rulesets]]
+name = "birth"
+[rulesets.rules]
+"its name is chosen by the eldest of the family" = "由家中最年长者为其取名"
+"it is shown to the sky at dawn" = "人们会在黎明时将婴儿举向天空"
+"a stone is set by the door for it" = "人们会为其在门旁放置一块石头"
+"every neighbour brings it a gift of food" = "每位邻居都会送来食物作为贺礼"
+
+[[rulesets]]
+name = "burial"
+[rulesets.rules]
+"in stone vaults cut beneath their halls" = "安葬在厅堂下方凿出的石墓中"
+"beneath the roots of living trees" = "安葬在活树的根下"
+"in the earth, with a stone to mark each grave" = "埋入土中，并在每座坟前立石为记"
+"in pits outside their walls, without a word said" = "默默埋入城墙外的土坑，不发一言"
+"in the earth, with the tools they used in life" = "埋入土中，以其生前使用的工具陪葬"
+
+[[rulesets]]
+name = "food"
+[rulesets.rules]
+"roast meat and bread" = "烤肉和面包"
+"honeyed cakes" = "蜂蜜糕饼"
+"smoked fish" = "熏鱼"
+"stewed roots and mushrooms" = "炖根菜和蘑菇"
+"fresh fruit" = "新鲜水果"
+
+[[rulesets]]
+name = "music"
+[rulesets.rules]
+"drums" = "鼓乐"
+"pipes and singing" = "笛声和歌唱"
+"the long songs of their elders" = "长者传唱的长歌"
+"dancing until dawn" = "彻夜至天明的舞蹈"
+
+[[rulesets]]
+name = "gift"
+[rulesets.rules]
+"bread and salt" = "面包和盐"
+"a cup of their strongest drink" = "一杯当地最烈的酒"
+"a place by the fire" = "一个炉火旁的座位"
+"a small carved token" = "一件雕刻的小信物"
+
+[[rulesets]]
+name = "oath"
+[rulesets.rules]
+"on a blade" = "以刀剑起誓"
+"on the bones of their forebears" = "以先祖的遗骨起誓"
+"before the hearth" = "在炉火前起誓"
+"with a hand on the earth" = "以手按地起誓"
+
+[[rulesets]]
+name = "offering"
+[rulesets.rules]
+"the first of every harvest" = "每次收获的首批作物"
+"a lamp kept burning" = "一盏长明灯"
+"songs at dusk" = "黄昏时的歌唱"
+"a cut of every hunt" = "每次狩猎所得的一份猎物"
+
+[[rulesets]]
+name = "manners"
+[rulesets.rules]
+"rude to speak before one's elders have spoken" = "长辈尚未开口便抢先发言是无礼之举"
+"a shame to refuse a gift" = "拒绝礼物是可耻之举"
+"thought lucky to meet a stranger on the road" = "在路上遇见陌生人是好运的征兆"
+"bad luck to whistle indoors" = "在室内吹口哨会招来厄运"
+"proper to eat in silence" = "进食时保持安静才合乎礼仪"
+
+[[rulesets]]
+name = "proof"
+[rulesets.rules]
+"by a night alone in the wilds" = "通过独自在荒野度过一夜"
+"by making a thing of their own hands" = "通过亲手制作一件物品"
+"in a contest of strength at the midsummer feast" = "通过参加仲夏宴会上的角力比赛"
+"by a journey to the edge of their lands and back" = "通过往返领地边境的旅程"
+
+[[rulesets]]
+name = "marriage"
+[rulesets.rules]
+"by the exchange of rings before the whole household" = "以在全家面前交换戒指为礼"
+"by sharing a cup before their kin" = "以在亲族面前共饮一杯为礼"
+"when the two families have feasted together" = "在双方家庭共进宴席后缔结"
+"with a year and a day of betrothal first" = "须先订婚一年零一天，再行缔结"
+
+# guide.lua 对已知地貌只采用 land_images 的第一幅意象，随后加入天气等句子。
+[[rulesets]]
+name = "land_image"
+[rulesets.rules]
+"The peaks stand white above us." = "皑皑群峰高耸在我们头顶。"
+"The hills roll down to the water." = "丘陵起伏绵延，直抵水畔。"
+"The trees stand close and dark." = "林木密立，幽暗深沉。"
+"The marsh lies thick and still." = "沼泽浓密而寂静。"
+"The sand runs on forever." = "黄沙无边无际。"
+"The grass runs out to meet the sky." = "草原一直延伸到天际。"
+"The ground is frozen hard." = "大地冻结得坚硬如石。"
+"The ice is all there is." = "目之所及，唯有冰雪。"
+"The lake lies cold and wide." = "湖泊寒冷而辽阔。"
+"The sea comes in and goes." = "海水潮涨潮落。"
+"The snow lies long." = "积雪经久不化。"
+"The heat lies on the land." = "热浪笼罩大地。"
+"The rain comes down for days." = "雨水一连数日下个不停。"
+"The wild things are many there." = "这里遍布野生生灵。"
+"A shadow lies upon the land." = "阴影笼罩着这片土地。"
+"A gentle light is on the land." = "柔和的光芒照耀着这片土地。"

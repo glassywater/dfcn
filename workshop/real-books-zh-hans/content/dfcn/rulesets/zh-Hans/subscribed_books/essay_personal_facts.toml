@@ -1,0 +1,18 @@
+# evidence.lua 的个人信仰与杀戮记录；不把次数当成人名。
+base = "subscribed_books::essay_personal_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{actor} worshipped {deity}." = "{actor}信奉{deity}。"
+"By the record, {actor} had killed once." = "据记载，{actor}曾杀戮一次。"
+"By the record, {actor} had killed {#digits} times." = "据记载，{actor}曾杀戮{#digits}次。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "deity"
+[rulesets.rules]
+"{::text::deity}" = "{::text::deity}"

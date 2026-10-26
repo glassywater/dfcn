@@ -1,0 +1,52 @@
+# forms/manual/topic.lua 从游戏的发现事件取得完整学术主题；
+# game_words.sentence 保留原生日期与发现谓语，只将作者替换为 I。
+base = "subscribed_books::manual_vocabulary"
+
+[[rulesets]]
+name = "topic"
+[rulesets.rules]
+# 类型入口显式连接 activities 的短主题与 Legends 的完整知识描述。
+"{::text::topic}" = "{::text::topic}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::year}" = "{::subscribed_books::essay_vocabulary::year}"
+
+[[rulesets]]
+name = "middle_season"
+[rulesets.rules]
+"midspring" = "仲春"
+"midsummer" = "仲夏"
+"midautumn" = "仲秋"
+"midwinter" = "仲冬"
+
+[[rulesets]]
+name = "unknown_season_phase"
+[rulesets.rules]
+# 原生日期在时间值未选中季节时仍输出阶段与年份。
+"early" = "某季之初"
+"mid" = "某季之中"
+"late" = "某季之末"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::date}" = "{::subscribed_books::essay_vocabulary::date}"
+"the {middle_season} of {year}" = "{year}年{middle_season}"
+"the {unknown_season_phase} of {year}" = "{year}年{unknown_season_phase}"
+"a time before time" = "时间开始之前"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+# 复用作者代词及带种族、死灵法师身份的人名规则，不接受任意正文。
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+[rulesets.rules]
+"In {date}, {actor} was the very first to discover {topic}." = "{date}，{actor}最早发现了{topic}。"
+"In {date}, {actor} independently discovered {topic}." = "{date}，{actor}独立发现了{topic}。"
+"In {date}, {actor} discovered {topic}." = "{date}，{actor}发现了{topic}。"
+# 原生事件未能提供句子时，manual.lua 使用这一作者自述。
+"I discovered {topic}." = "我发现了{topic}。"

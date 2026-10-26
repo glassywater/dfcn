@@ -28,7 +28,7 @@ base = "subscribed_books::comparison"
 "This comparison is not flattering to the others." = "这份比较，不会让其他文明好看。"
 "It is not meant to be." = "也无意如此。"
 "Further evidence of our superiority, from {@year}:" = "{@year} 年，我们优越地位的进一步证据："
-"{@bt_i|::subscribed_books::vocabulary::artifact}, created by {@bt_a|::subscribed_books::vocabulary::person} in {@year}." = "{@bt_i|::subscribed_books::vocabulary::artifact}，由 {@bt_a|::subscribed_books::vocabulary::person} 于 {@year} 年创造。"
+"{artifact}, created by {creator} in {creation_year}." = "{artifact}，由{creator}于{creation_year}年创造。"
 "Our neighbors have produced nothing comparable." = "我们的邻国，没有创造任何可与之相比的东西。"
 "Nothing." = "什么也没有。"
 "The founding of {@bt_s|::subscribed_books::vocabulary::place} in {@year} demonstrates {@bt_e|::subscribed_books::vocabulary::entity}'s {adj} ambition." = "{@year} 年 {@bt_s|::subscribed_books::vocabulary::place} 的建立，彰显了 {@bt_e|::subscribed_books::vocabulary::entity} 的{adj}雄心。"
@@ -92,7 +92,7 @@ base = "subscribed_books::comparison"
 "{@bt_a|::subscribed_books::vocabulary::person} died in {@year} at {@bt_s|::subscribed_books::vocabulary::place}." = "{@bt_a|::subscribed_books::vocabulary::person} 于 {@year} 年在 {@bt_s|::subscribed_books::vocabulary::place} 死亡。"
 "The cause was {cause}." = "原因是 {cause}。"
 "{@bt_s|::subscribed_books::vocabulary::place} was founded in {@year} by {@bt_e|::subscribed_books::vocabulary::entity}." = "{@bt_s|::subscribed_books::vocabulary::place} 由 {@bt_e|::subscribed_books::vocabulary::entity} 于 {@year} 年建立。"
-"{@bt_i|::subscribed_books::vocabulary::artifact} was created by {@bt_a|::subscribed_books::vocabulary::person} in {@year}." = "{@bt_i|::subscribed_books::vocabulary::artifact} 由 {@bt_a|::subscribed_books::vocabulary::person} 于 {@year} 年创造。"
+"{artifact} was created by {creator} in {creation_year}." = "{artifact}由{creator}于{creation_year}年创造。"
 "{@bt_a|::subscribed_books::vocabulary::person} became {role} of {@bt_e|::subscribed_books::vocabulary::entity} in {@year}." = "{@bt_a|::subscribed_books::vocabulary::person} 于 {@year} 年成为 {@bt_e|::subscribed_books::vocabulary::entity} 的{role}。"
 "Events of note occurred in {@year}." = "{@year} 年发生了一些重要事件。"
 "The account of this period concludes." = "这个时期的记述到此结束。"
@@ -123,3 +123,22 @@ name = "role"
 name = "cause"
 [rulesets.rules]
 "{::subscribed_books::vocabulary::cause}" = "{::subscribed_books::vocabulary::cause}"
+
+[[rulesets]]
+name = "artifact"
+[rulesets.rules]
+# 只接纳神器名；不能把前面的随笔正文一起捕获为作品名。
+"{::text::artifact}" = "{::text::artifact}"
+"{::subscribed_books::vocabulary::artifact}" = "{::subscribed_books::vocabulary::artifact}"
+
+[[rulesets]]
+name = "creator"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "creation_year"
+[rulesets.rules]
+# 旧模板最后一项是年份，而非艺术形式创作记录中的地点。
+"{#digits}" = "{#digits}"
+"-{#digits}" = "-{#digits}"

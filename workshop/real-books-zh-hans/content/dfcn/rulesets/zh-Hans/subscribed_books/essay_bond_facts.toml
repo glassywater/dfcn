@@ -1,0 +1,222 @@
+# apprenticeship.lua 调用 life.bond_facts；portrait 仅取 trade/god/works/made。
+# 人物、组织、作品和日期均为普通类型引用，不把未识别正文作为名称保留。
+base = "subscribed_books::essay_bond_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{actor} was {profession_article} of {entity}." = "{actor}当时是隶属于{entity}的一名{profession_article}。"
+"{actor} was {profession_article}." = "{actor}当时是一名{profession_article}。"
+"{actor} lived in {place} then, {site_kind} held by {entity}." = "{actor}当时住在{place}，那是由{entity}掌控的{site_kind}。"
+"{actor} lived in {place} then, {site_kind}." = "{actor}当时住在{place}，那是{site_kind}。"
+
+# 不带神职说明的信仰句沿用 essay_personal_facts；不带余数的著作句沿用 writing_facts。
+"{actor} worshipped {deity}, god of {spheres}." = "{actor}信奉掌管{spheres}的神祇{deity}。"
+"{actor} worshipped {deity}, goddess of {spheres}." = "{actor}信奉掌管{spheres}的女神{deity}。"
+"{actor} wrote {book}, {about}, and {count} more." = "{actor}写过{book}，这是{about}；此外还写过{count}部作品。"
+"{actor} wrote {book}, and {count} more." = "{actor}写过{book}，此外还写过{count}部作品。"
+"{actor} made {artifact}, {item_kind}, in {year}." = "{actor}于{year}年制作了{artifact}，这是{item_kind}。"
+"{actor} made {artifact}, in {year}." = "{actor}于{year}年制作了{artifact}。"
+
+# 原生师徒事件的无地点句已在 career_facts；这里补地点和 life.lead 的师徒时间锚。
+"{bond} {location}." = "{location}，{bond}。"
+"In {date}, {bond} {location}." = "{date}{location}，{bond}。"
+"In {date} {bond} {location}." = "{date}{location}，{bond}。"
+"{lead} {bond} {location}." = "{lead}{location}，{bond}。"
+"{lead} {::subscribed_books::essay_career_facts::sentence}" = "{lead}{::subscribed_books::essay_career_facts::sentence}"
+"{actor} and {other} were bound as master and apprentice in {year}." = "{actor}与{other}于{year}年结为师徒。"
+# 师徒关系之后的写作仍复用已有完整创作事实，不连接任意书籍后文。
+"{lead} {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::record}"
+"{lead} {circumstance}, {::subscribed_books::essay_writing_facts::record}" = "{lead}{circumstance}，{::subscribed_books::essay_writing_facts::record}"
+
+# bond_facts 的 other_fate 只传入另一位师父或学徒，故此处只接受这两种单人身份。
+"{lead} {slayer} came to {place}, and killed {victim}." = "{lead}{slayer}来到{place}，杀死了{victim}。"
+"{lead} {arrival} came to {place}, and {slayer} killed {victim}." = "{lead}{arrival}来到{place}，{slayer}杀死了{victim}。"
+"{lead} {arrival} came to {place}, and {victim} died there." = "{lead}{arrival}来到{place}，{victim}死在了那里。"
+"I have not forgiven {arrival}, and I will not." = "我至今没有原谅{arrival}，以后也不会。"
+"I think of him still." = "我至今仍会想起他。"
+"I think of her still." = "我至今仍会想起她。"
+"I think of them still." = "我至今仍会想起他们。"
+"Something of me went into the ground with him." = "我的一部分也随他一同入土了。"
+"Something of me went into the ground with her." = "我的一部分也随她一同入土了。"
+"Something of me went into the ground with them." = "我的一部分也随他们一同入土了。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "other"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"{::subscribed_books::guide::person}" = "{::subscribed_books::guide::person}"
+
+[[rulesets]]
+name = "profession_article"
+[rulesets.rules]
+"{::subscribed_books::essay_career_vocabulary::profession_article}" = "{::subscribed_books::essay_career_vocabulary::profession_article}"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+"{::subscribed_books::guide::owner}" = "{::subscribed_books::guide::owner}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "site_kind"
+[rulesets.rules]
+"{::subscribed_books::guide_vocabulary::kind}" = "{::subscribed_books::guide_vocabulary::kind}"
+
+[[rulesets]]
+name = "deity"
+[rulesets.rules]
+"{::subscribed_books::essay_personal_facts::deity}" = "{::subscribed_books::essay_personal_facts::deity}"
+
+[[rulesets]]
+name = "spheres"
+[rulesets.rules]
+"{::text::sphere}" = "{::text::sphere}"
+
+[[rulesets]]
+name = "book"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_vocabulary::book}" = "{::subscribed_books::essay_writing_vocabulary::book}"
+
+[[rulesets]]
+name = "about"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_facts::about}" = "{::subscribed_books::essay_writing_facts::about}"
+
+[[rulesets]]
+name = "circumstance"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_facts::circumstance}" = "{::subscribed_books::essay_writing_facts::circumstance}"
+
+[[rulesets]]
+name = "artifact"
+[rulesets.rules]
+"{::text::artifact}" = "{::text::artifact}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "count"
+[rulesets.rules]
+"one" = "一"
+"{::subscribed_books::essay_writing_facts::count}" = "{::subscribed_books::essay_writing_facts::count}"
+
+[[rulesets]]
+name = "bond"
+[rulesets.rules]
+"{actor} began an apprenticeship under {other}" = "{actor}拜{other}为师"
+"{actor} ceased being the apprentice of {other}" = "{actor}不再是{other}的学徒"
+"{actor} stopped being the apprentice of {other}" = "{actor}不再是{other}的学徒"
+
+[[rulesets]]
+name = "location"
+[rulesets.rules]
+"in {place}" = "在{place}"
+"at {place}" = "在{place}"
+"within {place}" = "在{place}"
+"in the wilds" = "在荒野中"
+
+[[rulesets]]
+name = "lead"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_facts::relative_lead}" = "{::subscribed_books::essay_writing_facts::relative_lead}"
+"A year after {anchor}," = "在{anchor}的一年后，"
+"Not long after {anchor} - {::subscribed_books::essay_career_facts::short_years} years, in fact -" = "在{anchor}不久后，确切地说是{::subscribed_books::essay_career_facts::short_years}年后，"
+"{::subscribed_books::essay_career_facts::first_years} years after {anchor}," = "在{anchor}的{::subscribed_books::essay_career_facts::first_years}年后，"
+
+[[rulesets]]
+name = "anchor"
+[rulesets.rules]
+# apprenticeship.facts 仅传入 was taken on / took them on。
+"{actor} was taken on" = "{actor}拜师"
+"{actor} took them on" = "{actor}收徒"
+
+[[rulesets]]
+name = "slayer"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "arrival"
+[rulesets.rules]
+"{slayer}" = "{slayer}"
+"the {::creatures::name::plural}" = "{::creatures::name::plural}"
+"death" = "死亡"
+
+[[rulesets]]
+name = "victim"
+[rulesets.rules]
+"{genitive} {bond_role} {person}" = "{genitive}{bond_role}{person}"
+
+[[rulesets]]
+name = "genitive"
+[rulesets.rules]
+"my" = "我的"
+"{person}'s" = "{person}的"
+
+[[rulesets]]
+name = "bond_role"
+[rulesets.rules]
+"master" = "师父"
+"apprentice" = "学徒"
+
+[[rulesets]]
+name = "item_kind"
+[rulesets.rules]
+# portrait.KIND_WORDS 的封闭物品类别。
+"a weapon" = "一件武器"
+"a suit of armour" = "一套盔甲"
+"a helm" = "一顶头盔"
+"a shield" = "一面盾牌"
+"a book" = "一本书"
+"an instrument" = "一件乐器"
+"a toy" = "一件玩具"
+"a figurine" = "一件小雕像"
+"an amulet" = "一枚护身符"
+"a ring" = "一枚戒指"
+"a crown" = "一顶王冠"
+"a sceptre" = "一柄权杖"
+"a bracelet" = "一只手镯"
+"an earring" = "一只耳环"
+"a goblet" = "一只高脚杯"
+"a statue" = "一座雕像"
+"a slab" = "一块石板"
+"a tool" = "一件工具"
+"a pair of gloves" = "一双手套"
+"a pair of shoes" = "一双鞋"
+"a pair of trousers" = "一条裤子"
+"a box" = "一个箱子"
+"a cabinet" = "一个柜子"
+"a chair" = "一把椅子"
+"a table" = "一张桌子"
+"a door" = "一扇门"
+"a bed" = "一张床"
+"a coffin" = "一口棺材"
+"a flask" = "一只水壶"
+"a totem" = "一个图腾"
+"a gem" = "一颗宝石"
+"a codex" = "一册书籍"
+"a scroll" = "一卷卷轴"
+"a quiver" = "一个箭袋"
+"a backpack" = "一个背包"
+"an anvil" = "一座铁砧"

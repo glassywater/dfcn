@@ -1664,10 +1664,10 @@ std::optional<std::string> Overlay::translate_legends_book(
             found != legends_terms_ci_.end()) return found->second;
     if (const auto topic = RULESETS.compose_bound_rule("::activities::topic", subject))
         return topic;
-    if (const auto found = legends_terms_ci_.find(lower(std::string(value)));
-            found != legends_terms_ci_.end()) return found->second;
     // Resolve complete native book productions before testing their whole
-    // text as an office, material or item. Newly exposed rows on scrolling
+    // text as an ordinary history term, office, material or item. Their
+    // dedicated subjects above likewise take priority over general senses.
+    // Newly exposed rows on scrolling
     // have no complete-title cache entry yet; only the production's actual
     // subject should enter those noun namespaces.
     // A subject can contain the wrapper's own conjunction or colon. The
@@ -1675,6 +1675,8 @@ std::optional<std::string> Overlay::translate_legends_book(
     for (int index : legends_book_rules_)
         if (auto title = translate_legends_nested(
                 rules_[static_cast<size_t>(index)], value, depth)) return title;
+    if (const auto found = legends_terms_ci_.find(lower(std::string(value)));
+            found != legends_terms_ci_.end()) return found->second;
     // Historical-figure subject references can supply a caste descriptor
     // instead of a personal name; sphere references supply one exact sphere.
     // Both native branches retain their existing semantic dictionaries.

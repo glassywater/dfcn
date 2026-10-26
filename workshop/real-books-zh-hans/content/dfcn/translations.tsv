@@ -14,6 +14,13 @@ Read Story [Ctrl+N]	阅读故事 [Ctrl+N]	l
 Copy text	复制文本	wl
 Copied!	已复制！	wl
 No content.	没有内容。	l
+A Guide	旅行指南	l
+A Manual	一本手册	l
+Perspective: manual	叙述视角：手册	l
+Perspective: discoverer's manual	叙述视角：发现者手册	l
+Perspective: guide	叙述视角：旅行指南	l
+Perspective: resident's guide	叙述视角：居民指南	l
+Perspective: traveller's guide	叙述视角：旅人指南	l
 Adds a Read Story button when viewing books in item sheets.	查看物品中的书籍时，添加“阅读故事”按钮。	l
 Reading: Untitled	阅读：未命名	l
 Reading: {s}	阅读：{s}	tl

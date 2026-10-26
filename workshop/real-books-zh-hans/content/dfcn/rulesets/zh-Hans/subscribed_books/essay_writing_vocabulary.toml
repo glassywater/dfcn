@@ -1,0 +1,135 @@
+# forms/essay/subjects/writing.lua 与 game_words 的作品类型和创作主题。
+# 书名使用严格的类型引用；无法解析的正文不能作为书名原样通过。
+base = "subscribed_books::essay_writing_vocabulary"
+
+[[rulesets]]
+name = "book"
+[rulesets.rules]
+"{::text::book}" = "《{::text::book}》"
+
+[[rulesets]]
+name = "work"
+[rulesets.rules]
+"{book}" = "{book}"
+"a work" = "一部作品"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "form"
+[rulesets.rules]
+# writing.vars 将 written_content_type 的名称拆词并转为小写。
+"essay" = "论文"
+"guide" = "指南"
+"manual" = "手册"
+"chronicle" = "编年史"
+"short story" = "短篇小说"
+"novel" = "长篇小说"
+"biography" = "传记"
+"autobiography" = "自传"
+"poem" = "诗歌"
+"play" = "剧本"
+"letter" = "书信"
+"dialog" = "对话录"
+"musical composition" = "乐曲"
+"choreography" = "舞蹈编排"
+"comparative biography" = "比较传记"
+"biographical dictionary" = "人物传记辞典"
+"genealogy" = "家谱"
+"encyclopedia" = "百科全书"
+"cultural history" = "文化史"
+"cultural comparison" = "文化比较论著"
+"alternate history" = "架空历史"
+"treatise on technological evolution" = "技术演变论著"
+"dictionary" = "辞典"
+"star chart" = "星图"
+"star catalogue" = "星表"
+"atlas" = "地图集"
+
+[[rulesets]]
+name = "form_article"
+[rulesets.rules]
+# game_words.FORM_WORDS 的文体字段，与上述枚举名称分开。
+"an essay" = "一篇论文"
+"a guide" = "一部指南"
+"a manual" = "一部手册"
+"a chronicle" = "一部编年史"
+"a short story" = "一篇短篇小说"
+"a novel" = "一部长篇小说"
+"a biography" = "一部传记"
+"an account of a life" = "一部自传"
+"a poem" = "一首诗"
+"a play" = "一部剧本"
+"a letter" = "一封书信"
+"a dialog" = "一篇对话录"
+"a composition" = "一首乐曲"
+"a dance" = "一支舞蹈"
+"a comparative biography" = "一部比较传记"
+"a biographical dictionary" = "一部人物传记辞典"
+"a genealogy" = "一部家谱"
+"an encyclopedia" = "一部百科全书"
+"a history" = "一部文化史"
+"a comparison" = "一部文化比较论著"
+"an alternate history" = "一部架空历史"
+"a treatise" = "一部技术演变论著"
+"a dictionary" = "一部辞典"
+"a star chart" = "一张星图"
+"a star catalogue" = "一部星表"
+"an atlas" = "一部地图集"
+# 没有主题引用的诗歌改用 game_words.POEM_KINDS 的有限文体字段。
+"an elegy" = "一首挽歌"
+"a poem for one retired" = "一首赠予隐退者的诗"
+"a devotional poem" = "一首颂神诗"
+"a poem of a place" = "一首咏景诗"
+"a poem of the wild" = "一首荒野诗"
+"a nature poem" = "一首自然诗"
+"a love poem" = "一首情诗"
+"a poem of family" = "一首亲情诗"
+"a drinking poem" = "一首饮酒诗"
+"a poem of the road" = "一首行旅诗"
+"a war poem" = "一首战争诗"
+"a hunting poem" = "一首狩猎诗"
+"a poem of the mines" = "一首矿井诗"
+"a poem on death" = "一首论死亡的诗"
+"a poem on what does not die" = "一首论永恒的诗"
+"a poem of the past" = "一首咏怀往昔的诗"
+"a poem of the times" = "一首时事诗"
+"a poem of the future" = "一首咏叹未来的诗"
+"a poem on a character" = "一首咏人的诗"
+
+[[rulesets]]
+name = "circumstance"
+[rulesets.rules]
+# 这些缘由来自 getSentence 的句尾，不属于 getPhrase 的创作主题。
+"after a dream" = "在做了一场梦后"
+"after a nightmare" = "在做了一场噩梦后"
+"after dreaming of {actor}" = "在梦见{actor}后"
+"after praying to {actor}" = "在向{actor}祈祷后"
+"after praying to {actor} in a dedicated temple" = "在专门的神殿中向{actor}祈祷后"
+
+[[rulesets]]
+name = "motive"
+[rulesets.rules]
+"in order to glorify {actor}" = "为了颂扬{actor}"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+# 原生 written_content_composed 的 getPhrase 必有日期，地点可缺省。
+"my authoring of {work} in {place} in {date}" = "我于{date}在{place}创作{work}的经历"
+"my authoring of {work} in {date}" = "我于{date}创作{work}的经历"
+"the authoring of {work} by {actor} in {place} in {date}" = "{actor}于{date}在{place}创作{work}的经历"
+"the authoring of {work} by {actor} in {date}" = "{actor}于{date}创作{work}的经历"
