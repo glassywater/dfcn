@@ -1,4 +1,17 @@
 # Local high-priority fixes; data-only edits do not require a rebuild.
+# Item nouns must take precedence over the procedural-name fallback gloss.
+anvil	锻砧	wi
+anvils	锻砧	wi
+
+# Noble office labels must take precedence over the procedural-name gloss.
+Hammerer	锤刑官	wi
+Hammerers	锤刑官	wi
+
+# Complete native combat messages must precede the open merchant-hawk {s}!
+# item template, which can otherwise reinterpret this injury as a book title.
+It is a gelding blow!	这一击造成了阉割！	lP
+It is a gelding strike!	这一击造成了阉割！	lP
+
 # Complete native construction labels: the accepted-petition list omits the
 # article, while its detail tooltip includes it. Keep both native forms in
 # the exact whole-message index (P); hP is excluded from that index.
@@ -7840,7 +7853,7 @@ Overview sentence: Most shocking!	怎么会这样！	l
 Overview sentence: This is truly horrifying.	这实在太可怕了。	l
 Overview sentence: This is great!	这太棒了！	l
 Overview sentence: I am about to lose it!	我快要失控了！	l
-Overview sentence: Begone fear!	别怕！	l
+Overview sentence: Begone fear!	我不能怕！	l
 Overview sentence: I cannot give in to sadness.	我不能向悲伤屈服。	l
 Overview sentence: I am very satisfied.	这下可满意了。	l
 Overview sentence: This is a joyous time.	这段日子真开心。	l
