@@ -5,6 +5,7 @@
 // uses the pinned-active journal skin, but has exactly six rows and no log
 // counter. Its last semantic field can overwrite the lower horizontal edge.
     {
+#ifndef _WIN32
         const auto settings = native_ui_settings();
         const bool classic = settings && settings->classic;
         const auto &skin = native_texture_adventure_log_pinned_active(*gps_);
@@ -15,6 +16,7 @@
                 if (const auto *cell = cell_at(x, y, &top); cell && cell[0])
                     task_context[y][x] = static_cast<char>(cell[0]);
             }
+#endif
         static constexpr std::pair<std::string_view, std::string_view> fixed_fields[] = {
             {"Bring", "将以下神器带回："},
             {"to", "交给："},
@@ -57,6 +59,9 @@
         title_draws.insert(title_draws.end(), std::make_move_iterator(upper_draws.begin()),
             std::make_move_iterator(upper_draws.end()));
         const auto title_epoch = captured_native_drawn_text_epoch();
+#ifdef _WIN32
+#include "adventure_quest_native_fields.inc"
+#else
         const auto native_title_at = [&](int x, int y, int right)
                 -> std::optional<NativeAdventureQuestTitle> {
             for (auto it = title_draws.rbegin(); it != title_draws.rend(); ++it) {
@@ -277,4 +282,5 @@
                 frame_left = frame_right;
             }
         }
+#endif
     }
