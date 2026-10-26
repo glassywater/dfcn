@@ -3866,6 +3866,8 @@ public:
         std::string_view query, SymbolCaptionKind kind) const;
     bool translated_unit_search_matches(std::string_view source,
                                         std::string_view query, bool activity) const;
+    SearchMatchRank translated_workshop_search_rank(std::string_view source,
+                                                    std::string_view query) const;
     std::optional<std::string> translate_native_unit_identity(
         const NativeUnitIdentity &identity) const;
     std::optional<std::string> translate_native_animation_label(
@@ -4474,6 +4476,8 @@ private:
     mutable size_t legends_search_translation_bytes_ = 0;
     mutable std::unordered_map<std::string, std::optional<std::string>> search_translation_cache_;
     mutable size_t search_translation_bytes_ = 0;
+    std::optional<std::string> translated_unit_search_target(
+        std::string_view source, bool activity) const;
     template <typename Translate>
     std::optional<std::string> memoize_search_translation(char mode,
             std::string_view source, Translate &&translate, bool contextual = false) const {
@@ -9000,7 +9004,13 @@ bool Overlay::translated_unit_search_matches(std::string_view source,
         if (const auto identity = native_unit_identity_source_target(source))
             return matches(*identity);
 
-    const auto translated = memoize_search_translation(activity ? 'j' : 'u', source, [&] {
+    const auto translated = translated_unit_search_target(source, activity);
+    return translated && matches(*translated);
+}
+
+std::optional<std::string> Overlay::translated_unit_search_target(
+        std::string_view source, bool activity) const {
+    return memoize_search_translation(activity ? 'j' : 'u', source, [&] {
         const std::string original(source);
         // Keep original case/accents: the native name grammar needs both to
         // distinguish personal names from ordinary words. This is the same
@@ -9040,7 +9050,21 @@ bool Overlay::translated_unit_search_matches(std::string_view source,
         }
         return translated;
     }, true);
-    return translated && matches(*translated);
+}
+
+SearchMatchRank Overlay::translated_workshop_search_rank(
+        std::string_view source, std::string_view query) const {
+    TranslationStateScope translation_scope;
+    if (!config_.enabled || source.empty() || source.size() > 65536)
+        return SearchMatchRank::Related;
+    const auto &prepared = translated_search_query(query);
+    auto rank = PreparedSearchText(native_text_to_utf8(source)).rank(prepared);
+    // Evaluate both captions even when an approximate English hit already
+    // admitted this row. The displayed Chinese phrase may be an exact hit.
+    if (rank != SearchMatchRank::Exact)
+        if (const auto translated = translated_unit_search_target(source, true))
+            rank = std::min(rank, PreparedSearchText(*translated).rank(prepared));
+    return rank;
 }
 
 static bool translation_complete_with_native_nicknames(

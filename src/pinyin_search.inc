@@ -352,6 +352,8 @@ static bool fuzzy_search_pinyin_readings(const PinyinSearchIndex &index,
 
 // Catalog records own their normalized text and lazily built pronunciation
 // index. A second whole-world cache must not evict these during every scan.
+enum class SearchMatchRank { Exact, Substring, Spelling, Related };
+
 struct PreparedSearchText {
     std::string literal, normalized, semantic_source;
     std::unique_ptr<PinyinSearchIndex> pinyin;
@@ -423,6 +425,22 @@ struct PreparedSearchText {
             if (query.letter_pairs[at] & ~pinyin->letter_pairs[at]) return false;
         return match_search_pinyin_readings(*pinyin, query, false) ||
             match_search_pinyin_readings(*pinyin, query, true);
+    }
+    SearchMatchRank rank(const PinyinSearchQuery &query) {
+        if (query.literal.empty() || literal.empty()) return SearchMatchRank::Related;
+        if (literal == query.literal ||
+                (!query.phonetic.empty() && normalized == query.phonetic))
+            return SearchMatchRank::Exact;
+        if (literal.find(query.literal) != std::string::npos ||
+                (!query.phonetic.empty() &&
+                 normalized.find(query.phonetic) != std::string::npos))
+            return SearchMatchRank::Substring;
+        if (compute_match(query) ||
+                search_ordered_compound_matches(search_codepoints(normalized), query.similarity))
+            return SearchMatchRank::Spelling;
+        // This is applied only to admitted results. Fuzzy and semantic
+        // retrieval must not tie with a complete literal or pinyin match.
+        return SearchMatchRank::Related;
     }
     bool compute_similarity_match(const PinyinSearchQuery &query) {
         if (literal.empty() || query.phonetic.empty()) return false;
