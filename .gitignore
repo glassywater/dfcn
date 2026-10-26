@@ -12,7 +12,9 @@
 *.log
 
 # Build and Python caches
-/build/windows-x64/
+/.cache/
+/build/
+/.dfcn-build-sources-*/
 /data/extracted/cache/
 /data/extracted/workshop-task-choice/elf-decompiled.c
 __pycache__/
