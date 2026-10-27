@@ -567,6 +567,26 @@
             const auto decoration = [](unsigned char ch) {
                 return ch < 0x20 || (ch >= 0x7f && !is_cp437_latin_letter_byte(ch));
             };
+            // The dismiss option uses UNIT_SELECTOR_ASSIGNED/UNASSIGNED
+            // beside its caption. In classic mode the frame and >< artwork
+            // are characters, so leaving them in the document makes text_row
+            // reject the whole caption. Exclude only a complete native skin
+            // from this text copy; the original grid still paints the control.
+            std::vector<bool> control_rows(static_cast<size_t>(gps_->dimy), false);
+            const auto &buttons = native_texture_button_main(*gps_);
+            for (int middle = top + 2; middle + 1 < bottom; ++middle) {
+                for (int x = left + 1; x + 4 <= right; ++x) {
+                    if (!native_main_button_skin_at(*gps_, x, middle,
+                            buttons[450], settings && settings->classic) &&
+                        !native_main_button_skin_at(*gps_, x, middle,
+                            buttons[451], settings && settings->classic)) continue;
+                    for (int y = middle - 1; y <= middle + 1; ++y) {
+                        std::fill_n(help_rows[y].begin() + x, 4, ' ');
+                        control_rows[static_cast<size_t>(y)] = true;
+                    }
+                    x += 3;
+                }
+            }
             // Native tutorial goals share this frame but are individual
             // columns with large checkmark graphics, not paragraph rows.
             // The build catalog marks exactly these complete fields O.
@@ -710,6 +730,7 @@
                         // paragraph/control, and never borrow its rows.
                         int blank_end = y;
                         while (blank_end < bottom && !objective_rows[blank_end] &&
+                            !control_rows[blank_end] &&
                             std::all_of(help_rows[blank_end].begin() + text_left(blank_end),
                                 help_rows[blank_end].begin() + right,
                                 [](char ch) { return ch == ' '; })) ++blank_end;
