@@ -1,4 +1,4 @@
-# forms/essay 的主题与 game_words 返回的渗透阴谋短语。
+# forms/essay 的主题与 game_words 返回的渗透阴谋、冒用身份短语。
 # 种族、人物、文明、目标和时间各自解析，不把事件正文当作一个姓名。
 base = "subscribed_books::essay_vocabulary"
 
@@ -84,6 +84,27 @@ name = "infiltration"
 "{infiltration_plot}" = "{infiltration_plot}"
 
 [[rulesets]]
+name = "impersonated"
+[rulesets.rules]
+# ASSUME_IDENTITY 的身份字段可以是化名，也可以是实际人物的完整身份。
+"{::text::name}" = "{::text::name}"
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "impersonation_audience"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "impersonation"
+[rulesets.rules]
+# getPhrase: the impersonation of <身份> by <人物> before <文明> in <日期>。
+# in_own_words 分别将实施者或被冒充的作者改写为 my，不能交换双方。
+"my impersonation of {impersonated} before {impersonation_audience}" = "我在{impersonation_audience}面前冒充{impersonated}的经历"
+"the impersonation of {impersonated} by {actor} before {impersonation_audience}" = "{actor}在{impersonation_audience}面前冒充{impersonated}的经历"
+"my impersonation by {actor} before {impersonation_audience}" = "{actor}在{impersonation_audience}面前冒充我的经历"
+
+[[rulesets]]
 name = "subject"
 [rulesets.rules]
 "{::subscribed_books::essay_value::subject}" = "{::subscribed_books::essay_value::subject}"
@@ -98,6 +119,7 @@ name = "subject"
 "{::subscribed_books::essay_creation_vocabulary::subject}" = "{::subscribed_books::essay_creation_vocabulary::subject}"
 "{::subscribed_books::essay_writing_vocabulary::subject}" = "{::subscribed_books::essay_writing_vocabulary::subject}"
 "{::subscribed_books::essay_career_vocabulary::subject}" = "{::subscribed_books::essay_career_vocabulary::subject}"
+"{impersonation} in {::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}{impersonation}"
 "{infiltration} in {date}" = "{date}的{infiltration}"
 "{infiltration}" = "{infiltration}"
 "the events of {year}" = "{year}年的事件"

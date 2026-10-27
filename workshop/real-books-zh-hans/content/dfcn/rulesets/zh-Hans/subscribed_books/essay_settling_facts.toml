@@ -1,9 +1,15 @@
-# forms/essay/subjects/settling.lua 的同行者、携子亲属和定居困境。
+# forms/essay/subjects/settling.lua 的旧居、离别亲友、同行者和定居困境。
 # 名单逐项解析人物；招募插入语和幼儿名单保留上游的逗号边界。
 base = "subscribed_books::essay_settling_facts"
 
 [[rulesets]]
 [rulesets.rules]
+# left_facts：旧居及仍在世但没有同行的亲友；子女按人数合并，其余逐人列出。
+"Before {place}, {actor} lived in {origin_place}." = "来到{place}之前，{actor}住在{origin_place}。"
+"Before {place}, {actor} lived in {origin_place}, where {entity} was formed." = "来到{place}之前，{actor}住在{origin_place}，{entity}便是在那里成立的。"
+# 两处人物均由同一个 N 生成；用独立引用解析，中文只需提及一次。
+"When {actor} went, {actor_again} left behind {left_kin}." = "{actor}离开时，将{left_kin}留在了身后。"
+
 "{cohort} came with {recipient}, of {entity}." = "{cohort}与{recipient}一同前来，隶属于{entity}。"
 "{cohort} came with {recipient}; with {recipient_again}, they were the whole of {entity}." = "{cohort}与{recipient}一同前来；加上{recipient_again}，这便是{entity}的全体成员。"
 "{cohort}, also of {entity}, settled there the same year." = "{cohort}也隶属于{entity}，在同一年于此定居。"
@@ -64,6 +70,11 @@ name = "actor"
 "{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
 
 [[rulesets]]
+name = "actor_again"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
 name = "recipient"
 [rulesets.rules]
 "{actor}" = "{actor}"
@@ -82,6 +93,11 @@ name = "entity"
 name = "place"
 [rulesets.rules]
 "{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "origin_place"
+[rulesets.rules]
+"{place}" = "{place}"
 
 [[rulesets]]
 name = "count"
@@ -160,6 +176,21 @@ name = "child_genitive"
 [rulesets.rules]
 "{possessive}" = "{possessive}"
 "{genitive}" = "{genitive}"
+
+[[rulesets]]
+name = "left_kin"
+[rulesets.rules]
+# life.list_words 的名单分隔符；称谓后的逗号由 left_relative 单独消费。
+"{left_relative}" = "{left_relative}"
+"{left_relative} and {left_kin}" = "{left_relative}和{left_kin}"
+"{left_relative}, {left_kin}" = "{left_relative}、{left_kin}"
+
+[[rulesets]]
+name = "left_relative"
+[rulesets.rules]
+"{genitive} child" = "{genitive}孩子"
+"{genitive} {count} children" = "{genitive}{count}个孩子"
+"{genitive} {kin_relation}, {kin_person}" = "{genitive}{kin_relation}{kin_person}"
 
 [[rulesets]]
 name = "kin_list"

@@ -22,6 +22,13 @@ name = "record"
 "{actor} settled in {place}." = "{actor}在{place}安顿下来。"
 # CHANGE_HF_STATE 的到访记录；life.deeds 会把原生日期替换为本次经历的相对时间。
 "{actor} visited {place}." = "{actor}造访了{place}。"
+# HIST_FIGURE_TRAVEL / HIST_FIGURE_NEW_PET 的完整记录，同样由 life.deeds 接相对年份。
+"{travellers} made a journey to {travel_destination}." = "{travellers}前往了{travel_destination}。"
+"{travellers} returned to {travel_destination}." = "{travellers}返回了{travel_destination}。"
+"{travellers} escaped from {travel_destination}." = "{travellers}从{travel_destination}逃了出来。"
+"{travellers} tamed the {tamed_creatures} of {travel_destination}." = "{travellers}驯服了{travel_destination}的{tamed_creatures}。"
+# life.placed 将离婚记录的日期替换为 That same year 等相对时间。
+"{actor} divorced {former_partner}." = "{actor}与{former_partner}离婚了。"
 # life.placed 同样重写 simple_battle/wounded 的日期；保留既有事件双方和伤势语义。
 "{::subscribed_books::essay_fight_vocabulary::event}." = "{::subscribed_books::essay_fight_vocabulary::event}。"
 # life.deeds 也会讲述作者的身份变化；引号内为化名，无引号时为冒用他人身份。
@@ -45,6 +52,11 @@ name = "actor"
 "{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
 
 [[rulesets]]
+name = "former_partner"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
 name = "captor"
 [rulesets.rules]
 "{actor}" = "{actor}"
@@ -65,6 +77,39 @@ name = "place"
 [rulesets.rules]
 "{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
 "the wilds" = "荒野"
+
+[[rulesets]]
+name = "travellers"
+[rulesets.rules]
+# 原生事件的 group 可以有多人；game_words 将其中的作者改为 I 或 me。
+"{::subscribed_books::essay_vocabulary::people}" = "{::subscribed_books::essay_vocabulary::people}"
+
+[[rulesets]]
+name = "travel_destination"
+[rulesets.rules]
+# 原生目的地依次取聚落、地表区域或地下层；地下层的固定名称不作为聚落名处理。
+"the depths of the world" = "世界深处"
+"the magma sea" = "岩浆海"
+"the Underworld" = "地下世界"
+"unknown lands" = "未知地域"
+"an unknown site" = "未知地点"
+"an unknown region" = "未知区域"
+"an unknown underground region" = "未知地下区域"
+"{place}" = "{place}"
+"{::text::name}" = "{::text::name}"
+
+[[rulesets]]
+name = "tamed_creatures"
+[rulesets.rules]
+# 原生 pets 只列一至两种生物，更多种类写为 wild beasts；复用现有生物词表。
+"wild beasts" = "野兽"
+"{::creatures::name}" = "{::creatures::name}"
+"{::creatures::name} and {other_tamed_creature}" = "{::creatures::name}和{other_tamed_creature}"
+
+[[rulesets]]
+name = "other_tamed_creature"
+[rulesets.rules]
+"{::creatures::name}" = "{::creatures::name}"
 
 [[rulesets]]
 name = "location"

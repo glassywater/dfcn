@@ -1,9 +1,52 @@
-# forms/essay/subjects/value.lua：价值观论文的 rejection 与 quandary 立场。
+# forms/essay/subjects/value.lua：价值观论文的 creed、counsel、rejection 与 quandary 立场。
 # 主题和价值词使用有限词池；整段与独立句兼容正文按句去重。
 base = "subscribed_books::essay_value"
 
 [[rulesets]]
 [rulesets.rules]
+# creed：信念、亲身付出的代价，以及对反方引语的回应。
+"This essay concerns {subject}, and I will say plainly where I stand: as the saying goes, \"{saying}\" I have lived as if it were true." = "这篇论文讨论{subject}，我要直言自己的立场，正如那句话所说：“{saying}”我始终以此为真，并照此生活。"
+"This essay concerns {subject}, and I will say plainly where I stand: as the saying goes, \"{saying}\"" = "这篇论文讨论{subject}，我要直言自己的立场，正如那句话所说：“{saying}”"
+"I have lived as if it were true." = "我始终以此为真，并照此生活。"
+"I write about {subject}. \"{saying}\" People say it lightly. I mean it, and I mean to show why." = "我探讨{subject}。“{saying}”人们常把这话挂在嘴边，而我是真心相信，也要说明缘由。"
+"I write about {subject}." = "我探讨{subject}。"
+"People say it lightly. I mean it, and I mean to show why." = "人们常把这话挂在嘴边，而我是真心相信，也要说明缘由。"
+"People say it lightly." = "人们常把这话挂在嘴边。"
+"I mean it, and I mean to show why." = "而我是真心相信，也要说明缘由。"
+
+"My own life is my evidence." = "我自己的人生便是证据。"
+"I did not come to this belief by argument; I came to it by living." = "这一信念并非论辩所得，而是我亲身生活得来的。"
+"What I value, I have paid for." = "我所珍视的一切，都曾让我付出代价。"
+"A value is only as real as what it costs the one who holds it." = "一种价值观是否真切，要看信奉它的人为此付出了多少。"
+"We are what we will not give up." = "我们不肯放弃的东西，决定了我们是谁。"
+
+"There are those who say, \"{saying}\"" = "有人这样说：“{saying}”"
+"I have heard it, and I have lived the other way, and I do not regret it." = "这话我听过，却选择了另一种活法，而且从不后悔。"
+"I return to {subject}. I have said what I believe, and shown what it has cost me. I would pay it again." = "回到{subject}。我已说出自己的信念，也展示了为此付出的代价。若能重来，我仍愿付出。"
+"I have said what I believe, and shown what it has cost me. I would pay it again." = "我已说出自己的信念，也展示了为此付出的代价。若能重来，我仍愿付出。"
+"I have said what I believe, and shown what it has cost me." = "我已说出自己的信念，也展示了为此付出的代价。"
+"I would pay it again." = "若能重来，我仍愿付出。"
+
+# counsel：同样肯定这项价值，将亲身经历作为留给后人的劝告。
+"I write about {subject} for those who come after me. \"{saying}\" Learn it sooner than I did." = "我为后来者写下对{subject}的思考。“{saying}”愿你们比我更早明白这个道理。"
+"I write about {subject} for those who come after me." = "我为后来者写下对{subject}的思考。"
+"Learn it sooner than I did." = "愿你们比我更早明白这个道理。"
+"This essay concerns {subject}, and it is advice, plainly given: \"{saying}\"" = "这篇论文讨论{subject}，其中的劝告直白不过：“{saying}”"
+"I give this advice because it was once given to me." = "我给出这番劝告，因为也曾有人这样劝过我。"
+"The young think {value_word} can wait. It cannot." = "年轻人以为{value_word}可以留待以后，其实等不得。"
+"The young think {value_word} can wait." = "年轻人以为{value_word}可以留待以后。"
+"It cannot." = "其实等不得。"
+"Everything I have done well, I did by holding to this." = "我做成的每一件事，都靠着对它的坚守。"
+"Advice is the one inheritance everyone can afford to leave." = "劝告，是人人都留得起的一份遗产。"
+"The young will say, \"{saying}\"" = "年轻人会说：“{saying}”"
+"So did I, once. Ask me again when you are my age." = "我也曾这样说过。等你到了我这个年纪，再来问我吧。"
+"So did I, once." = "我也曾这样说过。"
+"Ask me again when you are my age." = "等你到了我这个年纪，再来问我吧。"
+"I return to {subject}, and I leave it with you. Do better with it than I did." = "回到{subject}，我将它留给你们。愿你们比我做得更好。"
+"I return to {subject}, and I leave it with you." = "回到{subject}，我将它留给你们。"
+"Do better with it than I did." = "愿你们比我做得更好。"
+
+# rejection：反对这一价值及人们对它的赞誉。
 "This essay concerns {subject}, and I mean to argue against it. \"{saying}\" I have come to believe it, and I will say why." = "这篇论文讨论{subject}，而我要提出反对意见。“{saying}”我已相信这句话，也会说明缘由。"
 "This essay concerns {subject}, and I mean to argue against it." = "这篇论文讨论{subject}，而我要提出反对意见。"
 "I have come to believe it, and I will say why." = "我已相信这句话，也会说明缘由。"

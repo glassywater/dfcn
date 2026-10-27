@@ -357,6 +357,8 @@ name = "place"
 [[rulesets]]
 name = "entity"
 [rulesets.rules]
+# 原生历史事件在文明引用无效时使用这一固定短语。
+"an unknown civilization" = "一个未知文明"
 # book_vars.entity_name supplies a historical_entity name, including site owners.
 # Reuse the native entity resolver already exposed by the shared name namespace.
 "{::text::name}" = "{::text::name}"

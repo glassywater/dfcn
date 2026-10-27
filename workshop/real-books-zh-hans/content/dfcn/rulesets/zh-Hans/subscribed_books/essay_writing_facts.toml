@@ -22,6 +22,8 @@ base = "subscribed_books::essay_writing_facts"
 "It was their first work." = "这是其第一部作品。"
 "After it came {books}, and more." = "在它之后，又有了{books}等作品。"
 "After it came {books}." = "在它之后，又有了{books}。"
+# life.deeds 在作者引以为傲的作品或造物之后追加这一独立评价。
+"I am proud of it still." = "我至今仍为它自豪。"
 
 [[rulesets]]
 name = "record"
