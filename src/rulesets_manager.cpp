@@ -1240,17 +1240,19 @@ namespace Hooks {
             return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
                 (ch >= '0' && ch <= '9') || ch >= 0x80 || ch == '-' || ch == '\'';
         };
-        size_t site_quote_end = 0;
+        size_t identity_quote_end = 0;
         for (size_t end = 1; end <= text.size(); ++end) {
             if ((end & 255) == 0) dfcn::translation_work_step();
             const auto previous = static_cast<unsigned char>(text[end - 1]);
-            if (kind == "english_site") {
-                // The place owner can transliterate an unknown full name.
-                // That is not evidence that following prose belongs to the
-                // name: never offer a later sentence as part of this field.
-                // Keep book/title punctuation and paired-name commas intact.
+            if (kind == "english_site" || kind == "person") {
+                // Both fields are identities inside prose. A later sentence
+                // cannot extend the identity. In particular, offering every
+                // remaining sentence to the person callback repeatedly enters
+                // unit/world lookup and the recursive actor grammar. Quoted
+                // nicknames still own their punctuation; book/title callbacks
+                // retain their separate punctuation rules.
                 if (previous == '\r' || previous == '\n') break;
-                if (end - 1 > site_quote_end || site_quote_end == 0) {
+                if (end - 1 > identity_quote_end || identity_quote_end == 0) {
                     if (previous == '"' || previous == '`') {
                         const char closing = previous == '"' ? '"' : '\'';
                         size_t quote = text.find(closing, end);
@@ -1258,14 +1260,14 @@ namespace Hooks {
                                 quote + 1 < text.size() && name_byte(
                                     static_cast<unsigned char>(text[quote + 1])))
                             quote = text.find(closing, quote + 1);
-                        if (quote != std::string::npos) site_quote_end = quote;
+                        if (quote != std::string::npos) identity_quote_end = quote;
                     }
                 }
                 // Only a closed quoted name protects its internal punctuation;
                 // do not offer incomplete quoted prefixes to the fallback.
-                if (end - 1 < site_quote_end) continue;
+                if (end - 1 < identity_quote_end) continue;
                 constexpr std::string_view joined_sentence = ", and also";
-                if (previous == ',' && matches_literal(
+                if (kind == "english_site" && previous == ',' && matches_literal(
                         std::string_view(text).substr(end - 1), joined_sentence)) {
                     const size_t after = end - 1 + joined_sentence.size();
                     if (after == text.size() || std::isspace(

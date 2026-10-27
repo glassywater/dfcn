@@ -253,13 +253,14 @@
                 const auto revision = RULESETS.resource_revision();
                 const auto identity_context = native_identity_translation_context();
                 const auto &cached = dfhack_extension_prose_cache_;
-                if (cached && cached->parent_id == field.parent_id &&
+                const bool same_document = cached && cached->parent_id == field.parent_id &&
                         cached->widget_id == field.widget_id &&
                         cached->context == context->second &&
                         cached->ruleset_revision == revision &&
                         cached->context_revision == identity_context &&
                         cached->catalog.get() == prose_catalog.get() &&
-                        cached->result.source == field.document) {
+                        cached->document == field.document;
+                if (same_document && cached->result.consumed == field.document.size()) {
                     translation = cached->result;
                 } else {
                     // Resolve one authored production at a time. A book's suffix
@@ -323,14 +324,28 @@
                         }
                         return std::nullopt;
                     };
-                    // Preserve paragraph boundaries and unmapped sentences.
-                    // Every pass consumes a nonempty production or source run.
-                    TranslationResult fragments;
-                    for (size_t begin = 0; begin < field.document.size();) {
+                    // The DFHack worker shares the renderer's translation
+                    // domain. Yield between complete productions instead of
+                    // retaining that lock for an entire book. This is a slice,
+                    // not a parse deadline: no production or translation is
+                    // abandoned, and the next frame resumes the saved prefix.
+                    TranslationResult fragments = same_document
+                        ? cached->result : TranslationResult{};
+                    const size_t slice_begin = fragments.consumed;
+                    const auto slice_end = std::chrono::steady_clock::now() +
+                        std::chrono::milliseconds(4);
+                    bool deferred = false;
+                    for (size_t begin = slice_begin;
+                            begin < field.document.size() && !deferred;) {
                         const auto paragraph_break = field.document.find("\n\n", begin);
                         const size_t paragraph_end = paragraph_break == std::string::npos
                             ? field.document.size() : paragraph_break + 2;
                         while (begin < paragraph_end) {
+                            translation_work_step(0);
+                            if (begin > slice_begin && std::chrono::steady_clock::now() >= slice_end) {
+                                deferred = true;
+                                break;
+                            }
                             size_t spacing_end = begin;
                             while (spacing_end < paragraph_end && std::isspace(
                                     static_cast<unsigned char>(field.document[spacing_end]))) ++spacing_end;
@@ -390,8 +405,17 @@
                     }
                     translation = std::move(fragments);
                     dfhack_extension_prose_cache_ = DfhackExtensionProseCache{
-                        field.parent_id, field.widget_id, context->second,
+                        field.parent_id, field.widget_id, context->second, field.document,
                         revision, identity_context, prose_catalog, translation};
+                }
+                if (translation.consumed < field.document.size()) {
+                    dfhack_extension_prose_pending_.store(true, std::memory_order_release);
+                    const size_t begin = translation.consumed;
+                    // Keep the pending suffix visible. It belongs only to this
+                    // displayed frame, never to the saved completed prefix.
+                    translation.append(TranslationResult::preserved(
+                        std::string_view(field.document).substr(begin),
+                        "dfhack-extension-pending"), begin);
                 }
             }
         }

@@ -5436,12 +5436,15 @@ private:
     // a cache of complete documents. Holding the catalog proves its identity.
     struct DfhackExtensionProseCache {
         uintptr_t parent_id = 0, widget_id = 0;
-        std::string context;
+        std::string context, document;
         uint64_t ruleset_revision = 0, context_revision = 0;
         std::shared_ptr<const void> catalog;
         TranslationResult result;
     };
     mutable std::optional<DfhackExtensionProseCache> dfhack_extension_prose_cache_;
+    // A partial document resumes on the next submitted frame. Only complete
+    // documents may enter the ordinary finished-frame cache.
+    mutable std::atomic_bool dfhack_extension_prose_pending_{false};
     void index_dfhack_output(const Rule &rule);
     void index_dfhack_help_paragraph(const Rule &rule);
     void load_dfhack_help_catalog(std::function<void()> *catalog_publication = nullptr);
@@ -5601,7 +5604,7 @@ private:
     void block_dfhack_layer_frame(uint64_t key);
     std::thread dfhack_translation_worker_;
     std::mutex dfhack_translation_mutex_;
-    bool dfhack_translation_stop_ = true;
+    std::atomic_bool dfhack_translation_stop_{true};
     std::atomic_bool dfhack_translation_running_{false};
     std::atomic_bool dfhack_translation_pending_{false};
     mutable std::atomic_uint64_t dfhack_translation_catalog_revision_{0};
@@ -18157,6 +18160,7 @@ void Overlay::append_dfhack_notification_banners(
 }
 
 std::vector<Match> Overlay::find_dfhack_matches(int only_y) const {
+    dfhack_extension_prose_pending_.store(false, std::memory_order_release);
     std::vector<Match> result;
     if (!NativeDfhackForegroundScope::active || !gps_ || !gps_->screen ||
             gps_->dimx <= 0 || gps_->dimx > 1000 ||
