@@ -21,7 +21,9 @@
                 return (text.overlay_name == "spectate.tooltip" ||
                         text.option_name || text.role == NativeDfhackOverlayTextRole::Material ||
                         text.role == NativeDfhackOverlayTextRole::Category ||
-                        text.role == NativeDfhackOverlayTextRole::Item) && text.y == y &&
+                        text.role == NativeDfhackOverlayTextRole::Item ||
+                        text.role == NativeDfhackOverlayTextRole::ArtifactName ||
+                        text.role == NativeDfhackOverlayTextRole::WrittenWorkHeading) && text.y == y &&
                     x < text.x + static_cast<int>(text.visible.size()) &&
                     x + length > text.x;
             });
@@ -31,7 +33,9 @@
                     text.option_name || text.role == NativeDfhackOverlayTextRole::Key ||
                     text.role == NativeDfhackOverlayTextRole::Material ||
                     text.role == NativeDfhackOverlayTextRole::Category ||
-                    text.role == NativeDfhackOverlayTextRole::Item || text.quick_filter_label)
+                    text.role == NativeDfhackOverlayTextRole::Item ||
+                    text.role == NativeDfhackOverlayTextRole::ArtifactName ||
+                    text.role == NativeDfhackOverlayTextRole::WrittenWorkHeading || text.quick_filter_label)
                 dfhack_auxiliary_regions.push_back({text.x, text.y, static_cast<int>(text.visible.size()), 1});
         struct OptionText { int length = 0; std::string target; };
         const auto option_text = [&](std::string_view pattern, std::string_view target,
@@ -163,7 +167,7 @@
                 });
         };
         const auto emit = [&](int x, int y, int length, const std::string &target, int right,
-                bool preserved_name = false) {
+                bool preserved_name = false, const std::vector<int> &colors = std::vector<int>{}) {
             if (length <= 0 || target.empty() || !contains_cjk_utf8(target) ||
                     (only_y >= 0 && only_y != y) || existing_field(x, y, length) ||
                     (!preserved_name && named_source(x, y, length))) return;
@@ -175,6 +179,7 @@
             match.layout_left = true;
             match.layout_clip_right = right;
             match.layout_prepared = true;
+            match.layout_glyph_foreground_rgb = colors;
             dfhack_auxiliary_matches.push_back(std::move(match));
         };
         const int first_y = only_y < 0 ? 0 : std::max(0, only_y - 1);
@@ -199,6 +204,67 @@
                 if (!target && contains_cjk_utf8(text.full)) target = text.full;
                 const int length = static_cast<int>(text.visible.size());
                 if (target) emit(text.x, text.y, length, *target, text.x + length, true);
+            } else if (text.role == NativeDfhackOverlayTextRole::WrittenWorkHeading) {
+                if (!catalog->extension_prose.contains("Real Book||body")) continue;
+                constexpr std::string_view separator = "  --  ";
+                const std::string_view heading = text.full;
+                std::optional<std::string> target;
+                std::vector<int> colors;
+                const auto append_color = [&](std::string_view translated,
+                        size_t source_at, size_t source_end) {
+                    std::unordered_map<int, size_t> counts;
+                    int color = -1;
+                    size_t most = 0;
+                    for (size_t at = source_at; at < source_end; ++at) {
+                        const int x = text.full_x + static_cast<int>(at);
+                        if (x < text.x || x >= text.x + static_cast<int>(text.visible.size()) ||
+                                std::isspace(static_cast<unsigned char>(text.full[at]))) continue;
+                        const size_t visible_at = static_cast<size_t>(x - text.x);
+                        if (visible_at >= text.visible_foregrounds.size()) continue;
+                        const int rgb = text.visible_foregrounds[visible_at];
+                        if (++counts[rgb] > most) { most = counts[rgb]; color = rgb; }
+                    }
+                    // A clipped author must not discard a visible title's color.
+                    for (unsigned char ch : translated)
+                        if ((ch & 0xc0) != 0x80) colors.push_back(color);
+                };
+                // codex-legends combines the work's title and DFHack's
+                // readable author name. Require both complete fields before
+                // accepting a separator also allowed inside a book title.
+                for (size_t at = heading.rfind(separator); at != std::string_view::npos;
+                        at = at ? heading.rfind(separator, at - 1) : std::string_view::npos) {
+                    const auto title = translate_legends_book(heading.substr(0, at));
+                    const auto author = translate_dfhack_readable_unit_name(
+                        heading.substr(at + separator.size()));
+                    if (title && author) {
+                        target = *title + "  ——  " + *author;
+                        append_color(*title, 0, at);
+                        append_color("  ——  ", at, at + separator.size());
+                        append_color(*author, at + separator.size(), heading.size());
+                        break;
+                    }
+                }
+                if (!target && heading.find(separator) == std::string_view::npos) {
+                    target = translate_legends_book(heading);
+                    if (target) append_color(*target, 0, heading.size());
+                }
+                if (!colors.empty()) {
+                    int fallback = text.visible_foregrounds.empty()
+                        ? 0xffffff : text.visible_foregrounds.front();
+                    for (int &color : colors) {
+                        if (color >= 0) fallback = color;
+                        else color = fallback;
+                    }
+                }
+                if (target) emit(text.x, text.y, static_cast<int>(text.visible.size()),
+                    *target, text.x + static_cast<int>(text.visible.size()), true, colors);
+            } else if (text.role == NativeDfhackOverlayTextRole::ArtifactName) {
+                if (!catalog->extension_prose.contains("Real Book||body")) continue;
+                auto target = exact_literal_translation(
+                    "DFHack GUI Real Book artifact: " + text.full);
+                if (!target) target = translate_legends_artifact_identity(text.full);
+                if (target) emit(text.x, text.y, static_cast<int>(text.visible.size()),
+                    *target, text.x + static_cast<int>(text.visible.size()), true);
             } else if (text.role == NativeDfhackOverlayTextRole::Item) {
                 // The two mechanism HotkeyLabels and ItemSelection's final
                 // list token retain the complete native item designation.
@@ -242,7 +308,9 @@
                         text.role == NativeDfhackOverlayTextRole::Key ||
                         text.role == NativeDfhackOverlayTextRole::Material ||
                         text.role == NativeDfhackOverlayTextRole::Category ||
-                        text.role == NativeDfhackOverlayTextRole::Item || text.quick_filter_label ||
+                        text.role == NativeDfhackOverlayTextRole::Item ||
+                        text.role == NativeDfhackOverlayTextRole::ArtifactName ||
+                        text.role == NativeDfhackOverlayTextRole::WrittenWorkHeading || text.quick_filter_label ||
                         (text.option_name && (!control.caption.empty() || control.option != "*"))) continue;
                 if (!control.caption.empty() && !control.option.empty() && !control.below &&
                         control.gap >= 0 && control.label_width < 0 &&

@@ -11,8 +11,10 @@ struct NativeWorkshopSearchProfile {
     NativeWorkshopSearchFoldFn fold = nullptr;
     NativeWorkshopSearchDestroyFn destroy = nullptr;
     std::vector<NativeCall> calls;
+    const void *results = nullptr;
 };
 static void capture_native_workshop_search_query_fold(NativeString *);
+static void capture_native_workshop_search_finish(NativeString *);
 static size_t capture_native_workshop_search_find(const char *, size_t,
         const void *, const char *, size_t);
 static size_t capture_native_task_picker_search_find(const char *, size_t,
@@ -23,6 +25,7 @@ static NativeCallHook g_native_workshop_search_hook;
 static NativeWorkshopSearchFindFn g_real_native_workshop_search_find = nullptr;
 static NativeWorkshopSearchFoldFn g_real_native_workshop_search_fold = nullptr;
 static NativeWorkshopSearchDestroyFn g_real_native_workshop_search_destroy = nullptr;
+static const void *g_native_workshop_search_results = nullptr;
 
 static bool native_workshop_search_caption(const void *candidate,
         NativeWorkshopSearchDestroyFn destroy, std::string &source) {
@@ -43,6 +46,45 @@ static bool native_workshop_search_caption(const void *candidate,
 
 static void capture_native_workshop_search_query_fold(NativeString *text) {
     fold_native_search_query(text, g_real_native_workshop_search_fold);
+}
+
+static void capture_native_workshop_search_finish(NativeString *query_string) {
+    NativeInputCallbackScope callback;
+    try {
+        std::string_view query;
+        if (g_overlay.translation_enabled() && g_native_workshop_search_results &&
+                native_string_view(query_string, &query, 4096) && !query.empty()) {
+            const auto rows = NativeBorrowedVector<const void *>::read(
+                g_native_workshop_search_results);
+            if (rows.valid() && rows.size() > 1) {
+                struct RankedRow { const void *candidate; SearchMatchRank rank; };
+                std::vector<RankedRow> ranked;
+                ranked.reserve(rows.size());
+                for (size_t i = 0; i < rows.size(); ++i) {
+                    std::string source;
+                    // Leave the native list intact if any caption cannot be
+                    // read. No partial sort or newly admitted rows are published.
+                    if (!native_workshop_search_caption(rows.begin[i],
+                            g_real_native_workshop_search_destroy, source)) break;
+                    ranked.push_back({rows.begin[i],
+                        g_overlay.translated_workshop_search_rank(source, query)});
+                }
+                if (ranked.size() == rows.size()) {
+                    std::stable_sort(ranked.begin(), ranked.end(),
+                        [](const RankedRow &a, const RankedRow &b) { return a.rank < b.rank; });
+                    for (size_t i = 0; i < ranked.size(); ++i)
+                        rows.begin[i] = ranked[i].candidate;
+                }
+            }
+        }
+    } catch (...) {
+        // Ranking failures leave the completed native result order intact.
+    }
+    // This boundary owns the temporary query's original native destructor.
+    // The master candidate list is untouched, so clearing or changing the
+    // query rebuilds the original order before applying relevance again.
+    if (g_real_native_workshop_search_destroy)
+        callback.call_native([&] { g_real_native_workshop_search_destroy(query_string); });
 }
 
 template<typename ReadCaption>
@@ -75,8 +117,8 @@ static size_t match_native_workshop_search(const char *native_text,
     } catch (...) {
         // Translation/allocation failures must not unwind through the game.
     }
-    // The game still owns candidate identity, availability, category sorting,
-    // scroll adjustment and restoring all rows when the query is cleared.
+    // The game owns candidate identity, availability and initial ordering.
+    // The completed result list is ranked separately after this filter.
     return result;
 }
 
@@ -113,6 +155,7 @@ static void uninstall_native_workshop_search_hook() {
         g_real_native_workshop_search_find = nullptr;
         g_real_native_workshop_search_fold = nullptr;
         g_real_native_workshop_search_destroy = nullptr;
+        g_native_workshop_search_results = nullptr;
     }
 }
 
@@ -128,6 +171,7 @@ static bool install_native_workshop_search_hook() {
     g_real_native_workshop_search_find = profile.find;
     g_real_native_workshop_search_fold = profile.fold;
     g_real_native_workshop_search_destroy = profile.destroy;
+    g_native_workshop_search_results = profile.results;
     if (!g_native_workshop_search_hook.install(profile.base, profile.calls,
                                                "Native workshop translated search")) {
         uninstall_native_workshop_search_hook();

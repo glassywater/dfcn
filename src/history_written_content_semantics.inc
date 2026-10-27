@@ -184,8 +184,20 @@ const auto written_content = [&](const std::string &prefix, int carrier) -> std:
         }
         if (authored) {
             const auto &raw = text(prefix + ".author_name");
-            std::optional<std::string> author = std::string{};
-            if (!raw.empty()) {
+            std::optional<std::string> author;
+            const auto author_subject = event.fields.find(prefix + ".author_name_subject");
+            if (author_subject != event.fields.end() && author_subject->second.size() == 1) {
+                const int32_t index = author_subject->second.front();
+                if (index >= 0 && static_cast<size_t>(index) < event.subjects.size()) {
+                    const auto &selected = event.subjects[static_cast<size_t>(index)];
+                    if (selected.kind == NativeHistoryObjectKind::Identity && selected.id == -1 &&
+                            selected.subid == -2 - index && selected.name.has_name)
+                        author = translate_history_name(selected.name, true);
+                }
+            }
+            // Historical captures may contain only the original spelling.
+            // Prefer the complete selected identity whenever it is available.
+            if (!author && !raw.empty()) {
                 author = translate_procedural_fragment(raw, true, false, {}, ProceduralFragmentContext::generated_name);
                 if (!author) {
                     std::istringstream words(raw); std::string word, value;
@@ -198,6 +210,7 @@ const auto written_content = [&](const std::string &prefix, int carrier) -> std:
                     author = std::move(value);
                 }
             }
+            if (!author && raw.empty()) author = std::string{};
             if (!author) return std::nullopt;
             auto part = piece(*author, neutral);
             for (size_t i = 0; i < document.tokens.size(); ++i) {

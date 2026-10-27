@@ -6,14 +6,86 @@ translation runtime, build or test is invoked.
 """
 from pathlib import Path
 import csv
+import hashlib
 import json
 import re
 import struct
 from native_caption_image import CaptionImage
+from extract_adventure_journal_agreements_pe import literal_operands
+from extract_adventure_movement_hud_sources import native_switches
 
 ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / "data/extracted/adventure-quest-sidebar"
 OBJDUMP = "C:/Users/WIN11/AppData/Local/Programs/dfcn-toolchains/w64devkit-2.9.1/w64devkit/bin/objdump.exe"
+
+
+def ghidra_sources(config):
+    """Save complete owners, including optimized inline/SIMD text operands.
+
+    The sidebar is an interior region of the global adventure renderer. Its
+    stack and selectors therefore require the full owner for actual Ghidra
+    decompilation, rather than treating the selected region as a new function.
+    """
+    rows = {key: [] for key in ("functions", "ghidra-functions", "literals", "calls",
+                               "branches", "conditions", "switches")}
+    for edition, key, owners in (
+            ("steam", "reference", ((0xaf1190, 0xb0390e, "adventure-global-renderer"),
+                                     (0xdf540, 0xe0f67, "task-title-constructor"),
+                                     (0xcdf30, 0xcdfb3, "task-retained-title-clipping"))),
+            ("classic", "classic", ((0xaee1d0, 0xb0094e, "adventure-global-renderer"),
+                                     (0xdf4d0, 0xe0ef7, "task-title-constructor"),
+                                     (0xcdec0, 0xcdf43, "task-retained-title-clipping")))):
+        image = CaptionImage(Path(config[key]), OBJDUMP)
+        digest = hashlib.sha256(image.raw).hexdigest()
+        for start, end, role in owners:
+            body = list(image.instructions(image.base + start, image.base + end))
+            table_begin = (0xe0ed4 if edition == "steam" else 0xe0e64) \
+                if role == "task-title-constructor" else end
+            switches = native_switches(image, body, edition, role, table_begin)
+            rows["switches"].extend(switches)
+            # Title constructor unwind ownership includes its jump tables.
+            code_end = min([end] + [int(row[3], 16) for row in switches
+                                   if start <= int(row[3], 16) < end])
+            filename = f"pe-{edition}-{role}.asm"
+            rows["functions"].append((edition, image.identity, str(image.path), digest,
+                                      role, hex(start), hex(end), hex(code_end), hex(image.base)))
+            rows["ghidra-functions"].append((edition, image.identity, role, hex(start),
+                                             hex(code_end), filename))
+            lines = [f"; {edition} {image.identity}; {role}; RVA {start:#x}..{end:#x}"]
+            for index, (address, instruction) in enumerate(body):
+                pc = address - image.base
+                values = literal_operands(image, instruction)
+                lines.append(f"{pc:#x}: {instruction}" + "".join(
+                    f" ; {kind}={value!r}" for _, kind, value in values))
+                rows["literals"].extend((edition, role, hex(pc), operand, kind, value)
+                                        for operand, kind, value in values)
+                if found := re.fullmatch(r"(call|jmp)\s+0x([0-9a-f]+)", instruction):
+                    target = int(found[2], 16) - image.base
+                    if found[1] == "call" or not start <= target < code_end:
+                        rows["calls"].append((edition, role, hex(pc), hex(target), found[1]))
+                if found := re.fullmatch(r"(j\w+)\s+0x([0-9a-f]+)", instruction):
+                    rows["branches"].append((edition, role, hex(pc), found[1],
+                                             hex(int(found[2], 16) - image.base),
+                                             hex(body[index + 1][0] - image.base)
+                                             if index + 1 < len(body) else hex(end)))
+                if re.match(r"(?:cmp|test|bt)\s", instruction):
+                    rows["conditions"].append((edition, role, hex(pc), instruction))
+            (DEST / filename).write_text("\n".join(lines) + "\n", encoding="utf-8")
+    columns = {
+        "functions": ("edition", "image", "source_path", "sha256", "role", "start_rva",
+                      "owner_end_rva", "code_end_rva", "image_base"),
+        "ghidra-functions": ("edition", "image", "role", "start_rva", "code_end_rva", "assembly_file"),
+        "literals": ("edition", "role", "instruction_rva", "operand_va", "storage", "source"),
+        "calls": ("edition", "role", "instruction_rva", "callee_rva", "opcode"),
+        "branches": ("edition", "role", "instruction_rva", "branch", "target_rva", "fallthrough_rva"),
+        "conditions": ("edition", "role", "instruction_rva", "instruction"),
+        "switches": ("edition", "role", "dispatch_rva", "table_rva", "remap_rva", "selector", "slot", "target_rva"),
+    }
+    for name, header in columns.items():
+        with (DEST / f"pe-{name}.tsv").open("w", encoding="utf-8", newline="") as output:
+            writer = csv.writer(output, delimiter="\t", lineterminator="\n")
+            writer.writerow(header)
+            writer.writerows(rows[name])
 
 
 def dump(image, edition, label, start, end, literal_rows, call_rows):
@@ -107,6 +179,7 @@ def main():
             writer = csv.writer(output, delimiter="\t", lineterminator="\n")
             writer.writerow(header)
             writer.writerows(rows)
+    ghidra_sources(config)
 
 
 if __name__ == "__main__":

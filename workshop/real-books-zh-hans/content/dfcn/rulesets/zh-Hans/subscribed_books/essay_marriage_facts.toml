@@ -1,0 +1,79 @@
+# essay/evidence.lua 的婚恋与相伴时间，common/life.lua 的子女名单。
+# 名单逐人解析；双方、逝者与年数使用独立字段。
+base = "subscribed_books::essay_marriage_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{actor} married {partner} in {year}." = "{actor}与{partner}于{year}年结婚。"
+"{pair} became lovers in {year}." = "{pair}于{year}年成为恋人。"
+"{pair} were bound to each other in {year}." = "{pair}于{year}年结下羁绊。"
+"{writing_time} {pair} had been together {duration}." = "{writing_time}，{pair}已相伴{duration}。"
+"{pair} had {duration} together before we parted." = "{pair}相伴了{duration}，随后我们分开了。"
+"{pair} had {duration} together before they parted." = "{pair}相伴了{duration}，随后分开了。"
+"{pair} had {duration} together before {deceased} died." = "{pair}相伴了{duration}，直到{deceased}去世。"
+"We had {children_kind}: {children}." = "我们有{children_kind}：{children}。"
+"They had {children_kind}: {children}." = "他们有{children_kind}：{children}。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "partner"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "deceased"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "pair"
+[rulesets.rules]
+"{actor} and {partner}" = "{actor}与{partner}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
+
+[[rulesets]]
+name = "duration"
+[rulesets.rules]
+"{#digits} year" = "{#digits}年"
+"{#digits} years" = "{#digits}年"
+
+[[rulesets]]
+name = "writing_time"
+[rulesets.rules]
+"By the time I wrote this," = "写下这些时"
+"By the time this was written," = "写下这篇文章时"
+
+[[rulesets]]
+name = "children_kind"
+[rulesets.rules]
+"a son" = "一个儿子"
+"a daughter" = "一个女儿"
+"a child" = "一个孩子"
+"{count} sons" = "{count}个儿子"
+"{count} daughters" = "{count}个女儿"
+"{count} children" = "{count}个孩子"
+
+[[rulesets]]
+name = "count"
+[rulesets.rules]
+"{::subscribed_books::essay_bond_facts::count}" = "{::subscribed_books::essay_bond_facts::count}"
+
+[[rulesets]]
+name = "children"
+[rulesets.rules]
+"{child}" = "{child}"
+"{child} and {children}" = "{child}和{children}"
+"{child}, {children}" = "{child}、{children}"
+
+[[rulesets]]
+name = "child"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::plain_person}" = "{::subscribed_books::vocabulary::plain_person}"

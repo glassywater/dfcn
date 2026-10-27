@@ -82,6 +82,8 @@ base = "subscribed_books::personality_late"
 "\"Counterpoint,\" {@bt_a|::subscribed_books::vocabulary::person} said, before the point had even fully finished being made." = "观点还没说完，{@bt_a|::subscribed_books::vocabulary::person}就插话：“反过来说——”"
 "\"I just don't think that holds up,\" {@bt_a|::subscribed_books::vocabulary::person} said, already gathering {::subscribed_books::personality::pos1} rebuttal." = "“我就是觉得这站不住脚。”{@bt_a|::subscribed_books::vocabulary::person}说着，已经开始组织反驳。"
 "\"Sure, but what about—\" {@bt_a|::subscribed_books::vocabulary::person} started, and the discussion tilted sideways for another twenty minutes." = "“当然，但要是——”{@bt_a|::subscribed_books::vocabulary::person}一开口，讨论又偏离了方向二十分钟。"
+# ascii.fold 在阅读界面把长破折号转换成两个连字符；保留作者原句和显示形式。
+"\"Sure, but what about--\" {@bt_a|::subscribed_books::vocabulary::person} started, and the discussion tilted sideways for another twenty minutes." = "“当然，但要是——”{@bt_a|::subscribed_books::vocabulary::person}一开口，讨论又偏离了方向二十分钟。"
 "\"I'm going to disagree with everyone here,\" {@bt_a|::subscribed_books::vocabulary::person} said, sounding almost pleased about it." = "“我得反对在座的所有人。”{@bt_a|::subscribed_books::vocabulary::person}说，听起来几乎很高兴。"
 "\"That's a nice theory,\" {@bt_a|::subscribed_books::vocabulary::person} said, \"but let's stress-test it a little.\"" = "“这个理论不错，”{@bt_a|::subscribed_books::vocabulary::person}说，“不过我们来稍微考验一下它。”"
 "\"I could accept that,\" {@bt_a|::subscribed_books::vocabulary::person} said, \"if it weren't for about six problems with it.\"" = "“我本来可以接受，”{@bt_a|::subscribed_books::vocabulary::person}说，“要不是它还有大约六个问题。”"

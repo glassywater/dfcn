@@ -57,6 +57,7 @@ void Overlay::start_dfhack_translation_worker() {
     dfhack_translation_consumed_catalog_.store(0, std::memory_order_release);
     dfhack_translation_completed_frame_.store({}, std::memory_order_release);
     dfhack_translation_world_frame_.store({}, std::memory_order_release);
+    dfhack_extension_prose_pending_.store(false, std::memory_order_release);
     dfhack_translation_cache_.clear();
     dfhack_translation_blocked_keys_.clear();
     try {
@@ -129,7 +130,8 @@ void Overlay::queue_dfhack_layer_frame(
         if (dfhack_translation_consumed_frame_.load(std::memory_order_acquire) == source &&
                 dfhack_translation_consumed_catalog_revision_.load(std::memory_order_acquire) == revision &&
                 dfhack_translation_consumed_identity_context_.load(std::memory_order_acquire) == context &&
-                dfhack_translation_consumed_catalog_.load(std::memory_order_acquire) == catalog_identity) return;
+                dfhack_translation_consumed_catalog_.load(std::memory_order_acquire) == catalog_identity &&
+                !dfhack_extension_prose_pending_.load(std::memory_order_acquire)) return;
         // Producers do not wait for the result-cache mutex or the translator.
         dfhack_translation_pending_.store(true, std::memory_order_release);
         dfhack_translation_pending_.notify_one();
@@ -182,7 +184,8 @@ std::shared_ptr<const NativeDfhackTranslatedFrame> Overlay::completed_dfhack_lay
                 if (current()) {
                     std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
                     if (!dfhack_translation_stop_) {
-                        remember_dfhack_layer_frame(completed);
+                        if (!dfhack_extension_prose_pending_.load(std::memory_order_acquire))
+                            remember_dfhack_layer_frame(completed);
                         dfhack_translation_completed_frame_.store(std::move(completed), std::memory_order_release);
                     }
                 } else queue_dfhack_layer_translation();
@@ -228,6 +231,7 @@ void Overlay::dfhack_translation_worker_loop() {
             dfhack_translation_consumed_frame_.store(source, std::memory_order_release);
         }
         try {
+            TranslationWorkCancellationScope cancellation(&dfhack_translation_stop_);
             NativeDfhackLayerFrameReadScope frame_scope(source);
             const auto *input = frame_scope.storage();
             if (!source || !input || !input->ready || !input->graphics ||
@@ -287,7 +291,8 @@ void Overlay::dfhack_translation_worker_loop() {
                     continue;
                 const auto cached = std::find_if(dfhack_translation_cache_.begin(),
                     dfhack_translation_cache_.end(), [key](const auto &entry) { return entry->key == key; });
-                if (cached != dfhack_translation_cache_.end()) {
+                if (cached != dfhack_translation_cache_.end() &&
+                        !dfhack_extension_prose_pending_.load(std::memory_order_acquire)) {
                     auto completed = *cached;
                     remember_dfhack_layer_frame(completed);
                     dfhack_translation_completed_frame_.store(std::move(completed), std::memory_order_release);
@@ -312,9 +317,15 @@ void Overlay::dfhack_translation_worker_loop() {
             {
                 std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
                 if (dfhack_translation_stop_) break;
-                remember_dfhack_layer_frame(completed);
+                if (!dfhack_extension_prose_pending_.load(std::memory_order_acquire))
+                    remember_dfhack_layer_frame(completed);
                 dfhack_translation_completed_frame_.store(std::move(completed), std::memory_order_release);
             }
+        } catch (const TranslationWorkCancelled &) {
+            // Stop is requested before join and does not need the renderer's
+            // translation lock. Unwind an active parse instead of finishing a
+            // retired book while shutdown waits for this worker.
+            if (dfhack_translation_stop_.load(std::memory_order_acquire)) break;
         } catch (const DfhackTranslationNeedsWorld &) {
             std::lock_guard<std::mutex> lock(dfhack_translation_mutex_);
             // World-dependent names are deferred work, not failed keys. The

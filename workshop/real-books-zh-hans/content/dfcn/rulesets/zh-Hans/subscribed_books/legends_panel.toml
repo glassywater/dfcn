@@ -1,0 +1,16 @@
+# gui/codex-legends.lua: LegendsReaderOverlay.body; also accepts existing stories.
+base = "subscribed_books::legends_panel"
+
+[[rulesets]]
+[rulesets.rules]
+"{::subscribed_books}" = "{::subscribed_books}"
+"No written work is kept in this artifact." = "这件神器中没有收录著作。"
+"Codices, scrolls and quires carry stories." = "典籍、卷轴和稿纸可以承载故事。"
+"A slab like this carries only its inscription, which is the text on the page above." = "这样的石板只刻有铭文，也就是上方页面中的文字。"
+"Writing the story..." = "正在撰写故事……"
+# show() 将这两句话拼成一条加载提示；完整匹配，让同一次翻译覆盖全部提示。
+"The first reading of a work takes a moment. After that it is kept with the save and opens at once." = "首次阅读一部作品需要稍等片刻。此后内容会随存档保存，再次打开即可立即阅读。"
+"The first reading of a work takes a moment." = "首次阅读一部作品需要稍等片刻。"
+"After that it is kept with the save and opens at once." = "此后内容会随存档保存，再次打开即可立即阅读。"
+"The story could not be written." = "无法生成故事。"
+"no reason given" = "未提供原因"

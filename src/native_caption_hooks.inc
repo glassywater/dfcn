@@ -4195,9 +4195,10 @@ static void capture_native_caption_draw(graphicst *graphics, const NativeString 
             graphics == g_native_embark_civilization_write_graphics)) {
         const auto caller = reinterpret_cast<uintptr_t>(__builtin_return_address(0));
         capture_native_bounded_panel_caption(graphics, text, width, false, caller, [&] {
-            // The private look-list capture already owns this call. Avoid
+            // The private look-list/top-bar capture already owns this call. Avoid
             // reentering the shared addst entry with our helper as its caller.
-            const auto original = graphics == g_native_map_hover_write_graphics &&
+            const auto original = (graphics == g_native_map_hover_write_graphics ||
+                graphics == g_native_topbar_write_graphics) &&
                 g_native_clipped_caption_hooks.draw
                 ? g_native_clipped_caption_hooks.draw : g_native_caption_hooks.draw;
             if (original)

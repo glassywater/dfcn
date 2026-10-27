@@ -37,6 +37,43 @@ static std::optional<NativeAdventureQuestTitle> native_adventure_quest_original_
             result.companion_completed = end_year != -1;
         }
     }
+    // df540's order types 5 and 8 append entity + " from " + site from
+    // so+0x20/+0x24. Names can themselves contain that separator. Retain the
+    // two typed identities instead of guessing their boundary from spelling.
+    // The PE and ELF constructors both call the type getter at vtable+0x18;
+    // the existing guarded decoder reads its leaf result without executing it.
+    uintptr_t squad = 0, order = 0;
+    int32_t order_type = -1, entity_id = -1, site_id = -1;
+    const uintptr_t entry = address - 0x60;
+    if (native_history_copy(native_history_object_member(entry, "agreement_entryst", "sq", 8), squad) && squad &&
+            native_history_copy(native_history_object_member(entry, "agreement_entryst", "so", 8), order) && order &&
+            native_history_page_getter(order, 0x18, order_type) &&
+            (order_type == 5 || order_type == 8) &&
+            native_history_copy(order + 0x20, entity_id) &&
+            native_history_copy(order + 0x24, site_id)) {
+        const auto capture = [&](NativeHistoryObjectKind kind, int32_t id,
+                std::optional<NativeHistoryName> &name) {
+            bool complete = id < 0;
+            const auto object = id < 0 ? 0 : native_history_find_subject(base, kind, id, &complete);
+            if (!complete) return false;
+            // Missing objects produce the native unknown label; an existing
+            // unnamed object's formatter emits an empty field instead.
+            if (!object) return true;
+            const bool entity = kind == NativeHistoryObjectKind::Entity;
+            NativeHistoryName captured;
+            if (!capture_native_history_name(base, native_history_object_member(object,
+                    entity ? "historical_entity" : "world_site", "name.first_name", 32), captured) ||
+                    (entity ? !capture_native_history_entity_name_context(base, object, captured,
+                        true, nullptr, true) :
+                        !capture_native_history_site_name_context(base, object, captured, true)))
+                return false;
+            name = std::move(captured);
+            return true;
+        };
+        result.order_entity_id = entity_id;
+        result.drive_off_details = capture(NativeHistoryObjectKind::Entity, entity_id, result.order_entity) &&
+            capture(NativeHistoryObjectKind::Site, site_id, result.order_site);
+    }
     return result;
 }
 

@@ -1,0 +1,284 @@
+# forms/music/composition.lua 与 musical.lua：按完整句解析乐曲编制和乐段。
+# 乐器、曲式、音阶及作品名称沿用已有语义入口，不捕获任意英文正文。
+base = "subscribed_books::composition"
+
+[[rulesets]]
+[rulesets.rules]
+"A Composition" = "一首乐曲"
+"Perspective: {perspective}" = "风格：{perspective}"
+"For any who will listen." = "献给所有愿意聆听的人。"
+"For the gods, in devotion." = "虔诚地献给诸神。"
+"For {::text::person}, in devotion." = "虔诚地献给{::text::person}。"
+"In memory of those who are gone." = "纪念那些已经逝去的人。"
+"In memory of {::subscribed_books::essay_fight_aftermath::lost_person}, who died in the year {year}." = "纪念于{year}年逝世的{::subscribed_books::essay_fight_aftermath::lost_person}。"
+"For the soldiers." = "献给战士们。"
+"For the soldiers of {::subscribed_books::vocabulary::entity}." = "献给{::subscribed_books::vocabulary::entity}的战士们。"
+"In the musical form of {form}." = "采用{form}的曲式。"
+"In the musical form of {form}, for {players}." = "采用{form}的曲式，由{players}演出。"
+"In the musical form of {form}, in the {scale} scale." = "采用{form}的曲式，使用{scale}音阶。"
+"In the musical form of {form}, for {players}, in the {scale} scale." = "采用{form}的曲式，由{players}演出，使用{scale}音阶。"
+"It is played {manner_list}." = "演奏方式：{manner_list}。"
+"{section}: {players} {performance}." = "{section}：{players}{performance}。"
+"{section}, played {play_detail}." = "{section}：演奏{play_detail}。"
+"The words:" = "歌词："
+"The words are my own {work_kind}, {book}." = "歌词取自我自己的{work_kind}{book}。"
+"The words are {::text::person}'s {work_kind}, {book}." = "歌词取自{::text::person}的{work_kind}{book}。"
+"The words are {work_kind}, {book}." = "歌词取自{work_kind}{book}。"
+
+[[rulesets]]
+name = "perspective"
+[rulesets.rules]
+"hymn" = "赞美诗"
+"lament" = "哀歌"
+"march" = "进行曲"
+"song" = "歌曲"
+"air" = "器乐曲"
+
+[[rulesets]]
+name = "form"
+[rulesets.rules]
+"{::text::form}" = "《{::text::form}》"
+"its people" = "其民族"
+
+[[rulesets]]
+name = "scale"
+[rulesets.rules]
+# musical.scale_name 读取世界音阶的原生语言名称。
+"{::text::native_item_name}" = "{::text::native_item_name}"
+
+[[rulesets]]
+name = "players"
+[rulesets.rules]
+"{player}" = "{player}"
+"{player} and {players}" = "{player}和{players}"
+"{player}, {players}" = "{player}、{players}"
+
+[[rulesets]]
+name = "player"
+[rulesets.rules]
+"the {::text::instrument}" = "{::text::instrument}"
+"a singer" = "一位歌者"
+"a speaker" = "一位朗诵者"
+"a chanter" = "一位吟唱者"
+"the singer" = "歌者"
+"the speaker" = "朗诵者"
+"the chanter" = "吟唱者"
+
+[[rulesets]]
+name = "section"
+[rulesets.rules]
+"an interlude" = "间奏"
+"the introduction" = "引子"
+"the exposition" = "呈示部"
+"the recapitulation" = "再现部"
+"the synthesis" = "综合部"
+"a verse" = "主歌"
+"the chorus" = "副歌"
+"the finale" = "终曲"
+"the coda" = "尾声"
+"a bridge" = "过渡段"
+"the theme" = "主题"
+"a variation" = "变奏"
+"a passage" = "乐段"
+
+[[rulesets]]
+name = "performance"
+[rulesets.rules]
+"play it {play_detail}" = "演奏{play_detail}"
+"plays it {play_detail}" = "演奏{play_detail}"
+"sings it {play_detail}" = "演唱{play_detail}"
+"speaks it {play_detail}" = "朗诵{play_detail}"
+"chants it {play_detail}" = "吟唱{play_detail}"
+
+[[rulesets]]
+name = "play_detail"
+[rulesets.rules]
+# passage_line 依次输出次数、逗号分隔的演奏方式、声部和长度；后三项可缺省。
+"{times}" = "{times}"
+"{times}, {manner_commas}" = "{times}，{manner_commas}"
+"{times} - {components}" = "{times}；声部为{components}"
+"{times}, {length}" = "{times}，篇幅{length}"
+"{times}, {manner_commas} - {components}" = "{times}，{manner_commas}；声部为{components}"
+"{times}, {manner_commas}, {length}" = "{times}，{manner_commas}，篇幅{length}"
+"{times} - {components}, {length}" = "{times}；声部为{components}，篇幅{length}"
+"{times}, {manner_commas} - {components}, {length}" = "{times}，{manner_commas}；声部为{components}，篇幅{length}"
+
+[[rulesets]]
+name = "times"
+[rulesets.rules]
+"once" = "一次"
+"twice" = "两次"
+"{count} times" = "{count}次"
+"{count} or {count_to} times" = "{count}次或{count_to}次"
+
+[[rulesets]]
+name = "count"
+[rulesets.rules]
+"one" = "一"
+"two" = "两"
+"three" = "三"
+"four" = "四"
+"five" = "五"
+"six" = "六"
+"seven" = "七"
+"eight" = "八"
+"{#digits}" = "{#digits}"
+
+[[rulesets]]
+name = "count_to"
+[rulesets.rules]
+"{count}" = "{count}"
+
+[[rulesets]]
+name = "components"
+[rulesets.rules]
+"{component}" = "{component}"
+"{component} and {components}" = "{component}和{components}"
+"{component}, {components}" = "{component}、{components}"
+
+[[rulesets]]
+name = "component"
+[rulesets.rules]
+"the melody" = "主旋律"
+"counterpoint" = "对位旋律"
+"harmony" = "和声"
+"the rhythm" = "节奏"
+
+[[rulesets]]
+name = "length"
+[rulesets.rules]
+"short" = "较短"
+"of middle length" = "适中"
+"long" = "较长"
+"of varied length" = "长短不一"
+
+[[rulesets]]
+name = "manner_list"
+[rulesets.rules]
+"{manner}" = "{manner}"
+"{manner} and {manner_list}" = "{manner}，{manner_list}"
+"{manner}, {manner_list}" = "{manner}，{manner_list}"
+
+[[rulesets]]
+name = "manner_commas"
+[rulesets.rules]
+"{manner}" = "{manner}"
+"{manner}, {manner_commas}" = "{manner}，{manner_commas}"
+
+[[rulesets]]
+name = "manner"
+[rulesets.rules]
+# musical.STYLE：速度、力度、表情；不使用通用形容词猜测音乐术语。
+"in free time" = "节奏自由"
+"very slowly" = "极慢"
+"slowly" = "缓慢"
+"at a walking pace" = "行板"
+"at a moderate pace" = "中速"
+"moderately fast" = "稍快"
+"fast" = "快速"
+"very fast" = "甚快"
+"extremely fast" = "极快"
+"at double time" = "速度加倍"
+"at half time" = "速度减半"
+"faster" = "加快"
+"slower" = "放慢"
+"at the first pace again" = "恢复原速"
+"at the first pace" = "保持原速"
+"quickening" = "渐快"
+"slowing and broadening" = "渐慢并渐宽广"
+"slowing all the while" = "持续渐慢"
+"at a hurried pace" = "急促"
+"slowing at the end" = "结尾渐慢"
+"in whispered undertones" = "轻如低语"
+"very softly" = "极弱"
+"softly" = "弱奏"
+"quite softly" = "中弱"
+"quite loudly" = "中强"
+"loudly" = "强奏"
+"very loudly" = "极强"
+"louder and louder" = "渐强"
+"softer and softer" = "渐弱"
+"fading into silence" = "渐弱至无声"
+"loud, and at once soft" = "先强后立即转弱"
+"dying away at the end" = "结尾渐慢渐弱至消逝"
+"calmer at the end" = "结尾渐趋平静"
+"growing frenzied" = "渐趋狂热"
+"stressing the rhythm" = "强调节奏"
+"stately" = "庄严"
+"bright" = "明亮"
+"lively" = "活泼"
+"with skill" = "娴熟"
+"vigorous" = "有力"
+"spirited" = "精神饱满"
+"delicate" = "细腻"
+"fiery" = "热烈"
+"with a sense of motion" = "富有动感"
+"decisive" = "果断"
+"with feeling" = "富有感情"
+"agitated" = "激动不安"
+"passionate" = "充满激情"
+"sparkling" = "明快闪耀"
+"broad" = "宽广"
+"sweet" = "甜美"
+"strong" = "强劲"
+"energetic" = "精力充沛"
+"forceful" = "强有力"
+"heroic" = "英勇豪迈"
+"expressive" = "富有表现力"
+"furious" = "狂怒"
+"joyful" = "欢乐"
+"grand" = "宏伟"
+"merry" = "欢快"
+"graceful" = "优雅"
+"building as it goes" = "逐渐增强"
+"to bring tears" = "催人泪下"
+"melancholy" = "忧郁"
+"mournful" = "哀伤"
+"with a light touch" = "轻巧"
+"heavy" = "沉重"
+"mysterious" = "神秘"
+"jumpy" = "跳跃不定"
+"playful" = "诙谐"
+"tender" = "温柔"
+"calm" = "平静"
+"triumphant" = "充满胜利感"
+# musical.FEATURE 与 PITCH。
+"gliding from note to note" = "使用滑音"
+"with grace notes" = "加入倚音"
+"with mordents" = "加入波音"
+"with trills" = "加入颤音"
+"with rapid runs" = "加入快速音阶跑动"
+"with room to improvise" = "留有即兴发挥的余地"
+"each syllable drawn over many notes" = "一字多音"
+"a note to each syllable" = "一字一音"
+"syncopated" = "使用切分节奏"
+"with fills" = "加入加花"
+"in tension and repose by turns" = "紧张与舒缓交替"
+"changing key often" = "频繁转调"
+"in arpeggios" = "使用琶音"
+"staccato" = "断奏"
+"legato" = "连奏"
+"with the beat let free" = "自由调整节拍"
+"in single notes" = "使用单音"
+"in intervals" = "使用音程"
+"in sparse chords" = "使用稀疏和弦"
+"in clusters of notes" = "使用音簇"
+"in layered chords" = "使用叠置和弦"
+
+[[rulesets]]
+name = "work_kind"
+[rulesets.rules]
+# words_of 去掉 game_words.work 的 a/an；作品类别来自同一封闭词表。
+"{::subscribed_books::essay_writing_vocabulary::form}" = "{::subscribed_books::essay_writing_vocabulary::form}"
+"composition" = "乐曲"
+"work" = "作品"
+
+[[rulesets]]
+name = "book"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_vocabulary::book}" = "{::subscribed_books::essay_writing_vocabulary::book}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"

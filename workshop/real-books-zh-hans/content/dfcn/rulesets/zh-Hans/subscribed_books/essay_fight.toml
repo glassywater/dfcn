@@ -1,0 +1,94 @@
+# forms/essay/subjects/fight.lua：战斗主题论文的固定正文。
+# 按独立句编写；人物、地点、战斗经过等 facts 由各自的数据规则处理。
+base = "subscribed_books::essay_fight"
+
+[[rulesets]]
+[rulesets.rules]
+# 各个 own thesis 共用；其他文件的同形短句仅接纳各自的主题。
+"I write about {subject}." = "我写下{subject}。"
+# I return to {subject}. / This essay concerns {subject}. 复用已有共享规则。
+
+# _sections
+"I was not the only one it came for." = "它袭击的不止我一个。"
+"They were not the only ones." = "受袭的不止他们。"
+"Of the one I fought, a word." = "关于与我交手的那位对手，也说上几句。"
+"I should say who I faced." = "我该说说，我面对的是谁。"
+"Of those who fought, a word." = "关于交战的双方，也说上几句。"
+"It was not my only fight." = "那并非我唯一的一场争斗。"
+"I have fought before, and since." = "此前我曾经历争斗，此后也是如此。"
+"It was not their only fight." = "那并非他们唯一的一场争斗。"
+"And after it, I went on." = "而在那之后，我继续活了下去。"
+"What came after, the record keeps." = "此后发生了什么，史册自有记载。"
+
+# pride
+"I won it, and I am not ashamed to say so." = "我赢了，也不觉得承认这一点有什么可羞愧的。"
+"I will argue that {subject} was won fairly, and that the winning deserves its record." = "我要论证，{subject}中的胜利赢得公正，值得载入史册。"
+"I did not go looking for it." = "我并未主动寻衅。"
+"When it came, I did not run." = "争斗找上门时，我没有逃走。"
+"A fight is the plainest test there is." = "争斗是最直接的考验。"
+"Courage is only fear that has decided to stay." = "勇气不过是决定不退却的恐惧。"
+"Strength is a debt to those who could not defend themselves." = "拥有力量，就对无力自卫的人负有责任。"
+"It will be said that there is no glory in a brawl." = "有人会说，斗殴没有什么荣耀可言。"
+"Perhaps not glory." = "或许算不上荣耀。"
+"But there is the truth of who stood up." = "但谁站了出来，却是实实在在的。"
+"I won it, and I would again." = "我赢了，再来一次也会赢。"
+"I return to {subject}: won, and fairly." = "回到{subject}：胜利已经取得，而且赢得公正。"
+
+# regret
+"I won it, and I have wished since that I had not had to." = "我赢了，但从那以后，我一直希望当时不必如此。"
+"I will argue that {subject} was a victory no one should envy." = "我要论证，{subject}是一场谁也不该羡慕的胜利。"
+"I hurt someone." = "我伤害了一个人。"
+"The record calls it a fight; I call it what it was." = "史册称之为争斗；我则直言它本来的面目。"
+"Every fight has a cost, and the winner pays some of it." = "每场争斗都有代价，胜者也要承担一部分。"
+"A wound given is carried by two people." = "伤了一个人，两个人都要背负这份伤痛。"
+"It will be said that I had no choice." = "有人会说，我别无选择。"
+"Perhaps." = "或许吧。"
+"I still had the hands that did it." = "可动手的，终究是我的双手。"
+"I won." = "我赢了。"
+"I am sorry." = "我很抱歉。"
+"I return to {subject}, and to its cost." = "回到{subject}，也回到为它付出的代价。"
+
+# survival：own_wounded 的疼痛句与其他存活者的叙述分别保留。
+"I lived, and that is what I mean to write about." = "我活了下来，这才是我想写的。"
+"I will argue that {subject} matters for who lived through it." = "我要论证，{subject}之所以重要，在于谁从中活了下来。"
+"I was beaten." = "我被打败了。"
+"I was not finished." = "我却没有就此倒下。"
+"To be beaten and to live is its own kind of victory." = "战败后仍能活下来，也是一种胜利。"
+"The living write the record." = "活下来的人书写历史。"
+"That is the only advantage the beaten have." = "这是败者仅有的优势。"
+"Pain passes." = "疼痛会消退。"
+"The record of it does not." = "关于疼痛的记载却不会消失。"
+"I walked away from it." = "我活着离开了那场争斗。"
+"That is more than a fight owes anyone." = "这已比任何人在争斗中所能指望的更多。"
+"It will be said that I should not write of my defeats." = "有人会说，我不该写自己的败绩。"
+"Whose, then?" = "那该写谁的败绩？"
+"The victors have no need of the lesson." = "胜者用不着这份教训。"
+"I am still here, and I have said what I saw." = "我仍活在世上，也已说出自己的所见。"
+"I return to {subject}: lost, and lived through." = "回到{subject}：虽败，却活了下来。"
+
+# grievance
+"I write about {subject}, because what was done to me there has not been answered." = "我写下{subject}，因为我在那里遭受的伤害，至今无人负责。"
+"I will argue that {subject} was a wrong, and that it has not been answered." = "我要论证，{subject}是一桩不义之事，至今无人负责。"
+"I did not ask for it." = "那并非我自找的。"
+"I have not forgotten it." = "我没有忘记。"
+"A wrong unanswered is a wrong repeated." = "不予追究的伤害，只会再次发生。"
+"Some wounds close." = "有些伤口会愈合。"
+"The memory of who gave them does not." = "可人不会忘记，是谁留下了这些伤口。"
+"It will be said that I should let it go." = "有人会说，我该放下此事。"
+"When it lets me go." = "等它不再纠缠我时再说。"
+"I have not forgotten, and I will not." = "我没有忘记，以后也不会。"
+"I return to {subject}, and to what is still owed for it." = "回到{subject}，也回到那尚未偿清的债。"
+
+# lesson：thesis、conclusion 及其独立句复用 essay_times 的同文规则。
+"Every fight in the record is also an instruction, if one reads it so." = "只要用心去读，史册中的每场争斗也都是一堂课。"
+"Violence is a poor teacher with a long memory." = "暴力是个糟糕的老师，却让人长久难忘。"
+"It will be said that fights teach nothing but who is stronger." = "有人会说，争斗除了谁更强之外，什么也教不了我们。"
+"They teach that, and they teach what strength costs." = "它们让人明白谁更强，也让人明白力量的代价。"
+
+# complaint：thesis、claims、reflect、counter、answer、conclusion
+# 全部与 essay_times 的 complaint 相同，复用已有规则，不再重复定义。
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{::subscribed_books::essay_fight_vocabulary::subject}" = "{::subscribed_books::essay_fight_vocabulary::subject}"

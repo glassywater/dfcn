@@ -1,0 +1,38 @@
+# 原生 poetic/musical/dance_form_created 的 getPhrase 与 game_words.phrase。
+# 这些事件在随笔中使用 times/event 论述；共享 creation 句式也可能匹配成书。
+# 形式名称、创作者、地点和日期分别解析，不把整段创作经历当成名称。
+base = "subscribed_books::essay_creation_vocabulary"
+
+[[rulesets]]
+name = "form"
+[rulesets.rules]
+"{::text::form}" = "{::text::form}"
+# 原生找不到对应艺术形式记录时使用的三种有限称呼。
+"a poetic form" = "一种诗歌形式"
+"a musical form" = "一种音乐形式"
+"a dance form" = "一种舞蹈形式"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+# getPhrase 必有日期；地点字段全部缺失时，不输出地点短语。
+# game_words.in_own_words 将创作者为作者本人的 by ACTOR 改写为 my creation。
+"my creation of {form} in {place} in {date}" = "我于{date}在{place}创作{form}的经历"
+"my creation of {form} in {date}" = "我于{date}创作{form}的经历"
+"the creation of {form} by {actor} in {place} in {date}" = "{actor}于{date}在{place}创作{form}的经历"
+"the creation of {form} by {actor} in {date}" = "{actor}于{date}创作{form}的经历"

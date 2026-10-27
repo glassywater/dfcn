@@ -111,6 +111,7 @@ static bool native_history_copy_bytes(uintptr_t address, void *destination, size
 template<typename T>
 static bool native_history_copy(uintptr_t address, T &value);
 static bool native_history_copy_string(uintptr_t address, std::string &value);
+static std::optional<std::string> native_book_title_ascii_original(std::string_view source);
 static uintptr_t native_history_object_member(uintptr_t object, std::string_view type,
     std::string_view member, size_t width);
 static uintptr_t native_reference_va(uintptr_t address);
@@ -3865,6 +3866,8 @@ public:
         std::string_view query, SymbolCaptionKind kind) const;
     bool translated_unit_search_matches(std::string_view source,
                                         std::string_view query, bool activity) const;
+    SearchMatchRank translated_workshop_search_rank(std::string_view source,
+                                                    std::string_view query) const;
     std::optional<std::string> translate_native_unit_identity(
         const NativeUnitIdentity &identity) const;
     std::optional<std::string> translate_native_animation_label(
@@ -4473,6 +4476,8 @@ private:
     mutable size_t legends_search_translation_bytes_ = 0;
     mutable std::unordered_map<std::string, std::optional<std::string>> search_translation_cache_;
     mutable size_t search_translation_bytes_ = 0;
+    std::optional<std::string> translated_unit_search_target(
+        std::string_view source, bool activity) const;
     template <typename Translate>
     std::optional<std::string> memoize_search_translation(char mode,
             std::string_view source, Translate &&translate, bool contextual = false) const {
@@ -5431,12 +5436,15 @@ private:
     // a cache of complete documents. Holding the catalog proves its identity.
     struct DfhackExtensionProseCache {
         uintptr_t parent_id = 0, widget_id = 0;
-        std::string context;
+        std::string context, document;
         uint64_t ruleset_revision = 0, context_revision = 0;
         std::shared_ptr<const void> catalog;
         TranslationResult result;
     };
     mutable std::optional<DfhackExtensionProseCache> dfhack_extension_prose_cache_;
+    // A partial document resumes on the next submitted frame. Only complete
+    // documents may enter the ordinary finished-frame cache.
+    mutable std::atomic_bool dfhack_extension_prose_pending_{false};
     void index_dfhack_output(const Rule &rule);
     void index_dfhack_help_paragraph(const Rule &rule);
     void load_dfhack_help_catalog(std::function<void()> *catalog_publication = nullptr);
@@ -5596,7 +5604,7 @@ private:
     void block_dfhack_layer_frame(uint64_t key);
     std::thread dfhack_translation_worker_;
     std::mutex dfhack_translation_mutex_;
-    bool dfhack_translation_stop_ = true;
+    std::atomic_bool dfhack_translation_stop_{true};
     std::atomic_bool dfhack_translation_running_{false};
     std::atomic_bool dfhack_translation_pending_{false};
     mutable std::atomic_uint64_t dfhack_translation_catalog_revision_{0};
@@ -7042,8 +7050,16 @@ bool Overlay::load_compositional_rules() {
                         "::activities::topic", lower(normalize_utterance(*native)))))
                     return target;
             }
-            if (kind == "book" || kind == "form")
-                return complete(translate_legends_book(*native));
+            if (kind == "book") {
+                if (auto title = complete(translate_legends_book(*native))) return title;
+                // The book narrator folds DF's accented title to ASCII in its
+                // body. Recover only an unambiguous actual work's full title;
+                // ordinary names keep their native spelling requirements.
+                if (const auto original = native_book_title_ascii_original(source))
+                    return complete(translate_legends_book(*original));
+                return std::nullopt;
+            }
+            if (kind == "form") return complete(translate_legends_book(*native));
             if (auto target = complete(exact_literal_translation(*native))) return target;
             if (kind == "topic") {
                 if (auto target = complete(translate_legends_term(*native))) return target;
@@ -8991,7 +9007,13 @@ bool Overlay::translated_unit_search_matches(std::string_view source,
         if (const auto identity = native_unit_identity_source_target(source))
             return matches(*identity);
 
-    const auto translated = memoize_search_translation(activity ? 'j' : 'u', source, [&] {
+    const auto translated = translated_unit_search_target(source, activity);
+    return translated && matches(*translated);
+}
+
+std::optional<std::string> Overlay::translated_unit_search_target(
+        std::string_view source, bool activity) const {
+    return memoize_search_translation(activity ? 'j' : 'u', source, [&] {
         const std::string original(source);
         // Keep original case/accents: the native name grammar needs both to
         // distinguish personal names from ordinary words. This is the same
@@ -9031,7 +9053,21 @@ bool Overlay::translated_unit_search_matches(std::string_view source,
         }
         return translated;
     }, true);
-    return translated && matches(*translated);
+}
+
+SearchMatchRank Overlay::translated_workshop_search_rank(
+        std::string_view source, std::string_view query) const {
+    TranslationStateScope translation_scope;
+    if (!config_.enabled || source.empty() || source.size() > 65536)
+        return SearchMatchRank::Related;
+    const auto &prepared = translated_search_query(query);
+    auto rank = PreparedSearchText(native_text_to_utf8(source)).rank(prepared);
+    // Evaluate both captions even when an approximate English hit already
+    // admitted this row. The displayed Chinese phrase may be an exact hit.
+    if (rank != SearchMatchRank::Exact)
+        if (const auto translated = translated_unit_search_target(source, true))
+            rank = std::min(rank, PreparedSearchText(*translated).rank(prepared));
+    return rank;
 }
 
 static bool translation_complete_with_native_nicknames(
@@ -18124,6 +18160,7 @@ void Overlay::append_dfhack_notification_banners(
 }
 
 std::vector<Match> Overlay::find_dfhack_matches(int only_y) const {
+    dfhack_extension_prose_pending_.store(false, std::memory_order_release);
     std::vector<Match> result;
     if (!NativeDfhackForegroundScope::active || !gps_ || !gps_->screen ||
             gps_->dimx <= 0 || gps_->dimx > 1000 ||
@@ -43005,6 +43042,7 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
             !native_announcement_log_foreground_view(gps_) &&
             !native_character_foreground_view(gps_) &&
             !native_petitions_foreground_view(gps_) &&
+            !native_topbar_foreground_view(gps_) &&
             !match.layout_reflowed_paragraph) {
         if (const auto draw_clip = native_captured_text_clip(*gps_, match)) {
             SDL_Rect writer_clip = pixels(*draw_clip);

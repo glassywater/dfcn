@@ -1,0 +1,176 @@
+# forms/manual/manual.lua：知识手册的开篇、学科说明、操作步骤与告诫。
+# 编号只能连接有限 instruction 句式；不接受未翻译的任意正文。
+base = "subscribed_books::manual"
+
+[[rulesets]]
+[rulesets.rules]
+"This is a manual of {::subscribed_books::manual_vocabulary::topic}." = "这是一本关于{::subscribed_books::manual_vocabulary::topic}的手册。"
+"What I found I set down here, so that it is not lost with me." = "我将自己的发现记在这里，以免它随我一同消逝。"
+"I set down here what is known of it, so that others may learn it." = "我将有关它的现有知识记在这里，供他人学习。"
+"It is part of {study}. {about}" = "它属于{study}。{about}"
+"It is part of {study}." = "它属于{study}。"
+"{about}" = "{about}"
+"{numbered}. {instruction}" = "{numbered}、{instruction}"
+"{instruction}" = "{instruction}"
+"{warning}" = "{warning}"
+"Learn it, and when you know it better than I did, write it down again." = "学会它；等你比我理解得更深时，再将它写下来。"
+
+[[rulesets]]
+name = "numbered"
+[rulesets.rules]
+"I" = "一"
+"II" = "二"
+"III" = "三"
+"IV" = "四"
+"V" = "五"
+"VI" = "六"
+"VII" = "七"
+"VIII" = "八"
+
+[[rulesets]]
+name = "study"
+[rulesets.rules]
+"the study of the heavens" = "天象研究"
+"the study of substances and their changes" = "物质及其变化的研究"
+"the study of the lands and the airs over them" = "大地及其上空大气的研究"
+"the study of what has happened" = "过往事件的研究"
+"the study of number and shape" = "数与形的研究"
+"the study of the body and its healing" = "身体及其医治方法的研究"
+"the study of living things" = "生物研究"
+"the study of thought itself" = "思想本身的研究"
+"the arts of learning" = "求知之道"
+
+[[rulesets]]
+name = "about"
+[rulesets.rules]
+"Those who study the heavens watch what returns, and learn to say when it {::subscribed_books::manual::will} return again." = "研究天象的人观察反复出现的现象，并学会预测它何时{::subscribed_books::manual::will}再次出现。"
+"Those who study substances heat them, mix them and part them, and note what each becomes." = "研究物质的人将它们加热、混合、分离，并记录它们各自变成了什么。"
+"Those who study the lands walk them, measure them and draw them, and learn what moves across them." = "研究大地的人行走其上，测量并描绘它，了解哪些事物在其间运动。"
+"Those who study what has happened gather the accounts of it, and weigh one against another." = "研究往事的人搜集相关记述，并将它们相互比较、权衡。"
+"Those who study number and shape begin from what is certain and go only where it leads." = "研究数与形的人从确知之事出发，只沿着推理所指的方向前进。"
+"Those who study healing watch the sick and the wounded, and learn what helps and what harms." = "研究医治方法的人观察病患与伤者，了解什么有益、什么有害。"
+"Those who study living things watch them in their own places, and learn how they live." = "研究生物的人在其栖息之处观察它们，了解它们如何生活。"
+"Those who study thought ask what can be known, and what ought to be done, and why." = "研究思想的人追问：什么能够被认识，什么是应当做的，以及其中的缘由。"
+"Those who study it go carefully, and write down what they find." = "研究它的人谨慎前行，并记下自己的发现。"
+
+# 独立语义词保留来源位置，句中着色不再并入整句的正文颜色。
+[[rulesets]]
+name = "will"
+[rulesets.rules]
+"will" = "将"
+
+[[rulesets]]
+name = "instruction"
+[rulesets.rules]
+# 天文学。
+"Choose a place with a clear view of the sky, and a fixed mark on the horizon to measure against." = "选择一处天空视野开阔的地方，再在地平线上找一个固定标志，作为测量的参照。"
+"Watch at the same hour each night, and set down what you see of {::subscribed_books::manual_vocabulary::topic}." = "每晚在同一时刻观察，记下你对{::subscribed_books::manual_vocabulary::topic}的所见。"
+"Keep a count of the days. What the sky does, it does by number." = "记清经过的天数。天象的运行自有数理。"
+"Keep a count of the days." = "记清经过的天数。"
+"What the sky does, it does by number." = "天象的运行自有数理。"
+"Compare one season with the next, and one year with the year before." = "将一个季节与下一个季节比较，再将每一年与前一年比较。"
+"When your count foretells what the sky will do, and the sky does it, you have learned {::subscribed_books::manual_vocabulary::topic}." = "当你的计算能够预言天象，而天象也如期出现时，你就掌握了{::subscribed_books::manual_vocabulary::topic}。"
+"Teach the count along with the conclusion, so that others may check it." = "将计算方法与结论一同传授，让别人能够核实。"
+
+# 化学。
+"Clean every vessel before you begin; what clings to it will lie to you." = "开始前清洗每一只容器；附着在上面的东西会误导你。"
+"Take the substance in small measure, and weigh it." = "取少量物质，称出它的重量。"
+"Apply heat slowly, and watch for {::subscribed_books::manual_vocabulary::topic}." = "缓慢加热，留意{::subscribed_books::manual_vocabulary::topic}。"
+"Set down the colour, the smell and the weight of what remains." = "记下残留物的颜色、气味与重量。"
+"Do it again, the same way. What happens once may be chance; what happens twice is {::subscribed_books::manual_vocabulary::topic}." = "用同样的方法再做一次。发生一次或许只是偶然；再次发生，才是{::subscribed_books::manual_vocabulary::topic}。"
+"Do it again, the same way." = "用同样的方法再做一次。"
+"What happens once may be chance; what happens twice is {::subscribed_books::manual_vocabulary::topic}." = "发生一次或许只是偶然；再次发生，才是{::subscribed_books::manual_vocabulary::topic}。"
+"Keep each product apart and named, so that no one mistakes it later." = "将每种产物分开存放，标明名称，以免日后有人认错。"
+
+# 地理学。
+"Choose a high, open place to watch from, and return to it often." = "选择一处高而开阔的地方作为观察点，并经常回来观察。"
+"Mark what you see of {::subscribed_books::manual_vocabulary::topic}: when, from where, and for how long." = "记录你观察到的{::subscribed_books::manual_vocabulary::topic}：何时出现，来自何处，持续多久。"
+"Keep a record. Memory flatters; a written mark does not." = "留下记录。记忆会美化事实，写下的记录却不会。"
+"Keep a record." = "留下记录。"
+"Memory flatters; a written mark does not." = "记忆会美化事实，写下的记录却不会。"
+"Walk the land between your marks, and measure it in paces." = "走过各个标记之间的土地，用步数测量距离。"
+"Compare the seasons. What holds in winter may not hold in summer." = "比较各个季节。冬季成立的规律，到夏季未必成立。"
+"Compare the seasons." = "比较各个季节。"
+"What holds in winter may not hold in summer." = "冬季成立的规律，到夏季未必成立。"
+"Draw what you have found, so that one who has never walked there may know {::subscribed_books::manual_vocabulary::topic}." = "将你的发现画下来，让从未到过那里的人也能了解{::subscribed_books::manual_vocabulary::topic}。"
+
+# 历史学。
+"Gather every account you can find, the written and the spoken." = "搜集所有能找到的记述，无论书面还是口述。"
+"Ask of each who told it, and when, and what they stood to gain." = "逐一追问是谁讲述的，何时讲述，以及讲述者能从中获得什么好处。"
+"Set the accounts side by side, and mark where they agree." = "将各种记述并列比较，标出相符之处。"
+"Where they disagree, prefer the one closest to the event, and say why." = "遇到分歧时，优先采信最接近事件的记述，并说明理由。"
+"Write what you have found as {::subscribed_books::manual_vocabulary::topic} teaches, and name your sources." = "依照{::subscribed_books::manual_vocabulary::topic}所教的方法写下发现，并注明资料来源。"
+"Leave room for the account you have not yet found." = "为尚未找到的记述留有余地。"
+
+# 数学。
+"Begin with what is certain, and write it down plainly." = "从确知之事开始，将它清楚地写下来。"
+"Take one step at a time, and show each one." = "一步一步推导，并写明每一步。"
+"Try {::subscribed_books::manual_vocabulary::topic} on small cases first, where you can count by hand." = "先用{::subscribed_books::manual_vocabulary::topic}处理简单例子，要简单到能够亲手算清。"
+"When the small cases agree, look for the reason they agree." = "当这些简单例子的结果相符时，寻找它们相符的原因。"
+"Set down the rule, and the reason with it." = "写下规律，也写下它成立的理由。"
+"Test the rule on a case you have not tried. If it holds, you have learned {::subscribed_books::manual_vocabulary::topic}." = "用一个尚未尝试的例子检验这条规律。如果它仍然成立，你就掌握了{::subscribed_books::manual_vocabulary::topic}。"
+"Test the rule on a case you have not tried." = "用一个尚未尝试的例子检验这条规律。"
+"If it holds, you have learned {::subscribed_books::manual_vocabulary::topic}." = "如果它仍然成立，你就掌握了{::subscribed_books::manual_vocabulary::topic}。"
+
+# 医学。
+"Wash your hands, and the wound, with clean water before anything else." = "在做其他事之前，先用清水洗净双手与伤口。"
+"Look before you touch. Note the colour, the heat and the swelling." = "触碰之前先观察。留意颜色、温度与肿胀情况。"
+"Look before you touch." = "触碰之前先观察。"
+"Note the colour, the heat and the swelling." = "留意颜色、温度与肿胀情况。"
+"Ask where it hurts, and when it began." = "询问哪里疼痛，以及何时开始。"
+"Apply what {::subscribed_books::manual_vocabulary::topic} teaches, gently, and no more than is needed." = "运用{::subscribed_books::manual_vocabulary::topic}所教的方法，动作轻柔，处置适度。"
+"Watch the patient through the night. Healing is slow; harm is quick." = "整夜观察病人。痊愈缓慢，损伤却来得很快。"
+"Watch the patient through the night." = "整夜观察病人。"
+"Healing is slow; harm is quick." = "痊愈缓慢，损伤却来得很快。"
+"Set down what you did and what came of it, for the next healer." = "记下你的处置及其结果，留给下一位医者。"
+
+# 博物学。
+"Go where the creatures are, and keep still." = "到生物栖息的地方去，保持安静不动。"
+"Watch without being seen. A frightened beast shows you only its fear." = "观察时不要被发现。受惊的野兽只会向你展现恐惧。"
+"Watch without being seen." = "观察时不要被发现。"
+"A frightened beast shows you only its fear." = "受惊的野兽只会向你展现恐惧。"
+"Note what it eats, where it sleeps, and with whom it goes." = "记下它吃什么，睡在哪里，与谁同行。"
+"Return in another season, and note what has changed." = "换个季节再来，记录发生了哪些变化。"
+"Set down {::subscribed_books::manual_vocabulary::topic} as you have seen it yourself." = "依据亲眼所见，写下{::subscribed_books::manual_vocabulary::topic}。"
+"Compare what you have seen with what others have seen." = "将自己的观察与他人的观察相比较。"
+
+# 哲学。
+"State the question plainly, in words that cannot be mistaken." = "用不会引起误解的言辞，将问题清楚地表述出来。"
+"Set down what you believe, and then why you believe it." = "写下你相信什么，再写下相信它的理由。"
+"Find the strongest objection, and answer it honestly." = "找到最有力的反对意见，诚实地作出回应。"
+"Follow {::subscribed_books::manual_vocabulary::topic} where it leads, even where you would rather not go." = "沿着{::subscribed_books::manual_vocabulary::topic}所指的方向追究下去，即使它通向你不愿面对的地方。"
+"Test what you have found against what wise people have said before you." = "将自己的发现与前人的智慧之言对照检验。"
+"Teach it as a question." = "把它作为一个问题来传授。"
+
+# 其他学科。
+"Begin with what is known." = "从已知之事开始。"
+"Go slowly, and set down each step of {::subscribed_books::manual_vocabulary::topic}." = "缓缓推进，记下{::subscribed_books::manual_vocabulary::topic}的每一步。"
+"Test what you have found." = "检验自己的发现。"
+"Teach it to another, and learn from their questions." = "将它教给别人，再从对方的问题中学习。"
+
+[[rulesets]]
+name = "warning"
+[rulesets.rules]
+"Beware of cloud and of haste: one night unseen is a gap in the count, and a guess fills it badly." = "提防云层，也提防急躁：漏看一夜，记录就缺了一环，猜测无法妥善补上。"
+"Beware of fumes and of the fire. Many have learned this art and not lived to teach it." = "小心烟气与火焰。许多人学会了这门技艺，却没能活着将它传授出去。"
+"Beware of fumes and of the fire." = "小心烟气与火焰。"
+"Many have learned this art and not lived to teach it." = "许多人学会了这门技艺，却没能活着将它传授出去。"
+"Beware of trusting one year's watching. Wait for the pattern to return." = "不要轻信仅仅一年的观察。等着看规律是否重现。"
+"Beware of trusting one year's watching." = "不要轻信仅仅一年的观察。"
+"Wait for the pattern to return." = "等着看规律是否重现。"
+"Beware of the story that pleases you. It is the one you will check least." = "当心那些合你心意的说法。你最不愿仔细核实的，往往正是它们。"
+"Beware of the story that pleases you." = "当心那些合你心意的说法。"
+"It is the one you will check least." = "你最不愿仔细核实的，往往正是它们。"
+"Beware of the step you did not write down. It is always the one that was wrong." = "留意你没有写下的那一步。出错的总是它。"
+"Beware of the step you did not write down." = "留意你没有写下的那一步。"
+"It is always the one that was wrong." = "出错的总是它。"
+"Beware of doing too much. A healer who cannot wait does as much harm as the wound." = "当心处置过度。没有耐心等待的医者，造成的伤害不亚于伤口本身。"
+"Beware of doing too much." = "当心处置过度。"
+"A healer who cannot wait does as much harm as the wound." = "没有耐心等待的医者，造成的伤害不亚于伤口本身。"
+"Beware of the beast that is watching you. Not every creature you study is harmless." = "留意那只正盯着你的野兽。你研究的生物，并不个个无害。"
+"Beware of the beast that is watching you." = "留意那只正盯着你的野兽。"
+"Not every creature you study is harmless." = "你研究的生物，并不个个无害。"
+"Beware of the argument that ends where it began. It has proved only your patience." = "当心绕回起点的论证。它所能证明的，只有你的耐心。"
+"Beware of the argument that ends where it began." = "当心绕回起点的论证。"
+"It has proved only your patience." = "它所能证明的，只有你的耐心。"
+"Beware of haste." = "切忌急躁。"

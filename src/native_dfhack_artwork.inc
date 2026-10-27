@@ -30,11 +30,13 @@ static std::vector<NativeDfhackNotificationText> native_dfhack_notification_text
     const graphicst *gps);
 enum class NativeDfhackOverlayTextRole : unsigned char {
     Text, Option, Key, Material, Category, Item,
-    SpectateName, SpectateJob, SpectateActivity, SpectateLiteral
+    SpectateName, SpectateJob, SpectateActivity, SpectateLiteral, ArtifactName, WrittenWorkHeading
 };
 struct NativeDfhackOverlayText {
     int x = 0, y = 0, full_x = 0, visible_offset = 0;
     std::string full, visible;
+    // Final colors from the same native layer that proves each visible byte.
+    std::vector<int> visible_foregrounds;
     NativeDfhackOverlayTextRole role = NativeDfhackOverlayTextRole::Text;
     // These describe the actual selected options entry, never its spelling.
     bool option_dynamic = false, option_name = false;
@@ -57,6 +59,7 @@ enum class NativeDfhackControlPanelTextRole : unsigned char { Text, Wrapped, Too
 struct NativeDfhackControlPanelText {
     int x = 0, y = 0, full_x = 0, visible_offset = 0;
     std::string full, visible, document, extension_prose_key;
+    std::vector<int> visible_foregrounds;
     uintptr_t widget_id = 0;
     SDL_Rect bounds{};
     // Absolute zero-based document line for Wrapped; zero for a Label token.
@@ -65,6 +68,9 @@ struct NativeDfhackControlPanelText {
     SDL_Rect clip_bounds{}, parent_bounds{};
     uintptr_t parent_id = 0;
     int native_width = 0, total_lines = 0;
+    // Byte position in the unwrapped document, independent of screen rows.
+    size_t document_offset = std::string::npos;
+    int line_offset = 0;
 };
 static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_texts(
     const graphicst *gps);

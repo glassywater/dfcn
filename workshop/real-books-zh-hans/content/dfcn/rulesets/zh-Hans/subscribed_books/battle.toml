@@ -19,6 +19,16 @@ name = "person"
 "{::subscribed_books::vocabulary::person}" = "{::subscribed_books::vocabulary::person}"
 
 [[rulesets]]
+name = "history_first"
+[rulesets.rules]
+"{::subscribed_books::guide::person}" = "{::subscribed_books::guide::person}"
+
+[[rulesets]]
+name = "history_second"
+[rulesets.rules]
+"{::subscribed_books::guide::person}" = "{::subscribed_books::guide::person}"
+
+[[rulesets]]
 name = "wnoun"
 [rulesets.rules]
 "{weapon}" = "{weapon}"
@@ -76,7 +86,8 @@ name = "body"
 "limb" = "肢体"
 "arm" = "手臂"
 "guard" = "防守"
-"{::health::bodypart::raw_names}" = "{::health::bodypart::raw_names}"
+# BODY 名称可带所属肢体（third toe, right foot）；沿用完整部位组合及中文词序。
+"{::health::bodypart}" = "{::health::bodypart}"
 
 [[rulesets]]
 name = "pro1"
@@ -302,7 +313,7 @@ name = "result_base"
 [[rulesets]]
 name = "internal_body"
 [rulesets.rules]
-"{::health::bodypart::raw_names}" = "{::health::bodypart::raw_names}"
+"{::health::bodypart}" = "{::health::bodypart}"
 
 [[rulesets]]
 name = "result"
@@ -685,6 +696,10 @@ name = "result"
 [[rulesets]]
 [rulesets.rules]
 "The history between {@bt_a|::subscribed_books::battle::person} and {@bt_b|::subscribed_books::battle::person} was long and complicated. They had been {relation}, once. Now they were enemies, and the {wnoun} would settle what words could not." = "{@bt_a|::subscribed_books::battle::person}与{@bt_b|::subscribed_books::battle::person}之间有着漫长而复杂的过往。他们曾是{relation}。如今两人已成仇敌，言语无法解决的事，将交由{wnoun}裁决。"
+# fresh_sentences 可分别删去重复的首句或末句；余下句子仍按各自完整句式解析。
+"The history between {history_first} and {history_second} was long and complicated." = "{history_first}与{history_second}之间有着漫长而复杂的过往。"
+"They had been {relation}, once." = "他们曾是{relation}。"
+"Now they were enemies, and the {wnoun} would settle what words could not." = "如今两人已成仇敌，言语无法解决的事，将交由{wnoun}裁决。"
 
 [[rulesets]]
 [rulesets.rules]
@@ -1021,4 +1036,33 @@ name = "result"
 "{@bt_name|::subscribed_books::battle::person} fought only to survive. Every instinct screamed to flee." = "{@bt_name|::subscribed_books::battle::person} 战斗只为活下来。每一种本能都在尖叫着要逃。"
 "Both stood, and neither fell.\nBoth bled, and neither died.\nThe draw made no tale to tell;\nboth walked on, unsatisfied." = "两人站立，无人倒下，\n两人流血，无人死去。\n平局没有留下可传的传奇，\n两人继续前行，却都心有不甘。"
 "The fight was vicious. Neither gave ground willingly. But when the {wnoun} found {@bt_loser|::subscribed_books::battle::person}'s {body}, the outcome was decided by something almost worse than death." = "战斗异常凶狠，双方都不肯轻易退让。但当{wnoun}击中 {@bt_loser|::subscribed_books::battle::person} 的{body}时，结局便由一种几乎比死亡更糟的命运决定了。"
+
+# text_passes.fresh_sentences 会删掉重复的叙述单句，原来的成段规则仍优先。
+# 为战斗开场、当前攻防回合与环境描写保留独立句入口，不要求被删的前后句仍在场。
+[[rulesets]]
+[rulesets.rules]
+"{::subscribed_books::battle_sentences}" = "{::subscribed_books::battle_sentences}"
+# approaches 中的人物继续通过 battle::person 翻译姓名及已有称号。
+"They faced each other." = "两人相对而立。"
+"{@bt_a|::subscribed_books::battle::person} stood ready, {pos1} eyes locked on {@bt_b|::subscribed_books::battle::person}." = "{@bt_a|::subscribed_books::battle::person}已做好准备，{pos1}双眼紧盯着{@bt_b|::subscribed_books::battle::person}。"
+"Neither spoke." = "谁也没有开口。"
+"Words had been exhausted long before this moment." = "早在此刻之前，所有的话就已说尽。"
+"{@bt_b|::subscribed_books::battle::person} advanced with the certainty of one who has killed before." = "{@bt_b|::subscribed_books::battle::person}步步逼近，带着杀过人的那种笃定。"
+"{@bt_a|::subscribed_books::battle::person} held {pos1} ground." = "{@bt_a|::subscribed_books::battle::person}守住{pos1}阵地。"
+"The {wnoun} caught what little light remained." = "{wnoun}映着所剩无几的光。"
+"The distance between them closed." = "两人之间的距离不断缩短。"
+"{@bt_a|::subscribed_books::battle::person} could read the intent in {@bt_b|::subscribed_books::battle::person}'s bearing -- cold, absolute, beyond reason." = "{@bt_a|::subscribed_books::battle::person}从{@bt_b|::subscribed_books::battle::person}的姿态中读出了意图——冰冷、决绝，已无道理可讲。"
+"{pro1} raised {pos1} guard and braced for what was coming." = "{pro1}摆出{pos1}防御姿势，准备迎接袭来的攻势。"
+"It began with silence." = "一切始于沉默。"
+"{@bt_b|::subscribed_books::battle::person} moved first, the {wnoun} already a blur before {@bt_a|::subscribed_books::battle::person} could draw breath." = "{@bt_b|::subscribed_books::battle::person}率先行动，{@bt_a|::subscribed_books::battle::person}还来不及吸一口气，{wnoun}便已化作一道虚影。"
+"{@bt_atk|::subscribed_books::battle::person} {attack} {@bt_def|::subscribed_books::battle::person}'s {body}." = "{@bt_atk|::subscribed_books::battle::person}{attack}{@bt_def|::subscribed_books::battle::person}的{body}。"
+"{@bt_def|::subscribed_books::battle::person} {defense}." = "{@bt_def|::subscribed_books::battle::person}{defense}。"
+"Somewhere, a raven called." = "不知何处传来一声鸦啼。"
+"Neither fighter heard it." = "两位战士谁也没有听见。"
+"The ground beneath them was churned to mud." = "脚下的土地被踩成了烂泥。"
+"Footing was treacherous for both." = "两人都难以稳住脚步。"
+"How long had they been fighting?" = "他们究竟打了多久？"
+"Minutes?" = "几分钟？"
+"Hours?" = "几个小时？"
+"Time had lost all meaning." = "时间已失去一切意义。"
 

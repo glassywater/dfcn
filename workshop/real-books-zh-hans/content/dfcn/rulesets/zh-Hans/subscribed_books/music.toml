@@ -2,6 +2,9 @@ base = "subscribed_books::music"
 
 [[rulesets]]
 [rulesets.rules]
+# forms/music/composition.lua 的新版乐曲正文；旧模板继续保留。
+"{::subscribed_books::composition}" = "{::subscribed_books::composition}"
+"{::subscribed_books::composition_instruments}" = "{::subscribed_books::composition_instruments}"
 # templates.lua MusicalComposition: all five perspectives.
 "AN ANTHEM OF {@bt_e|::subscribed_books::vocabulary::entity}." = "{@bt_e|::subscribed_books::vocabulary::entity} 的颂歌。"
 "To be performed with full chorus and {adj} accompaniment." = "由完整合唱团与{adj}伴奏演出。"

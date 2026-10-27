@@ -357,6 +357,11 @@ name = "place"
 [[rulesets]]
 name = "entity"
 [rulesets.rules]
+# 原生历史事件在文明引用无效时使用这一固定短语。
+"an unknown civilization" = "一个未知文明"
+# book_vars.entity_name supplies a historical_entity name, including site owners.
+# Reuse the native entity resolver already exposed by the shared name namespace.
+"{::text::name}" = "{::text::name}"
 "{::subscribed_books::narrative_vocabulary::entity}" = "{::subscribed_books::narrative_vocabulary::entity}"
 "a people" = "一个民族"
 "the people of {@bt_site|::subscribed_books::vocabulary::place}" = "{@bt_site|::subscribed_books::vocabulary::place} 的人民"
@@ -392,6 +397,11 @@ name = "speaker"
 [[rulesets]]
 name = "perspective"
 [rulesets.rules]
+"guide" = "旅行指南"
+"resident's guide" = "居民指南"
+"traveller's guide" = "旅人指南"
+"manual" = "手册"
+"discoverer's manual" = "发现者手册"
 "heroic" = "英雄赞歌"
 "decline" = "衰落"
 "annalistic" = "编年记述"
@@ -551,6 +561,9 @@ name = "perspective"
 [[rulesets]]
 name = "artifact"
 [rulesets.rules]
+# book_vars.artifact_name 返回真实神器的英文名称；共享入口也识别成书标题。
+# @bt_artifact 仅在完整名称无法解析时保留原文，不把实际名称当作通用占位词。
+"{::text::artifact}" = "{::text::artifact}"
 "a wondrous artifact" = "一件神奇的神器"
 "a creation of note" = "一件杰出的造物"
 

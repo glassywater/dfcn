@@ -32,8 +32,10 @@ static int native_topbar_date_field(std::string_view source) {
     return -1;
 }
 
-// The native top-bar producer owns this entire source. Read only its submitted
-// rectangle; a missing field never promotes this component to page discovery.
+// The producer's private capture owns the panel and every original string.
+// Screen cells are paint output, never evidence for admitting a field or for
+// obtaining its translation source. In particular, Pop/Stocks are independent
+// labels, not anchors on which the rest of the header depends.
 std::vector<Match> Overlay::find_native_topbar_matches(int only_y,
         const unsigned char *screen_override) const {
     std::vector<Match> result;
@@ -45,145 +47,129 @@ std::vector<Match> Overlay::find_native_topbar_matches(int only_y,
             (only_y >= 0 && (only_y < panel.y || only_y >= panel.y + panel.h)) ||
             (screen_override && screen_override != gps_->screen &&
                 screen_override != gps_->screen_top)) return result;
-    CellReadCacheScope cells(*this);
-    const int right = panel.x + panel.w, bottom = panel.y + panel.h;
-    // Existing typed status readers retain absolute native coordinates.
-    // Unowned rows are empty strings, not copies of the surrounding screen.
-    std::vector<std::string> rows(static_cast<size_t>(gps_->dimy));
-    std::vector<std::string> context(static_cast<size_t>(bottom));
-    for (int y = panel.y; y < bottom; ++y) {
-        rows[y].assign(static_cast<size_t>(gps_->dimx), ' ');
-        context[y].assign(static_cast<size_t>(gps_->dimx), ' ');
-        for (int x = panel.x; x < right; ++x) {
-            const auto composed = visible_char_at(x, y);
-            context[y][x] = composed ? static_cast<char>(composed) : ' ';
-            const auto source = screen_override
-                ? screen_override[(static_cast<size_t>(x) * gps_->dimy + y) * 8]
-                : composed;
-            if (source) rows[y][x] = static_cast<char>(source);
-        }
-    }
 
-    int header_y = -1, population_x = -1, stocks_x = -1;
-    for (int y = panel.y; y < std::min(bottom - 2, 3) && header_y < 0; ++y) {
-        for (const std::string_view label : {"Population", "Pop"}) {
-            for (size_t at = context[y].find(label); at != std::string::npos;
-                    at = context[y].find(label, at + label.size())) {
-                if (!has_word_boundaries(context[y], at, at + label.size())) continue;
-                for (int stock_y = y; stock_y <= std::min(y + 1, bottom - 1); ++stock_y) {
-                    for (size_t stock = context[stock_y].find("Stocks", at + label.size());
-                            stock != std::string::npos;
-                            stock = context[stock_y].find("Stocks", stock + 6)) {
-                        if (!has_word_boundaries(context[stock_y], stock, stock + 6)) continue;
-                        header_y = y;
-                        population_x = static_cast<int>(at);
-                        stocks_x = static_cast<int>(stock);
-                        break;
-                    }
-                    if (header_y >= 0) break;
-                }
-                if (header_y >= 0) break;
-            }
-            if (header_y >= 0) break;
-        }
+    uint64_t epoch = 0;
+    std::vector<NativeDrawnTextRow> draws;
+    {
+        std::lock_guard<std::mutex> lock(g_native_drawn_text_mutex);
+        epoch = g_native_drawn_text_epoch;
+        for (const auto *plane : {&g_native_drawn_text_rows, &g_native_drawn_top_text_rows})
+            draws.insert(draws.end(), plane->begin(), plane->end());
     }
-
-    // The site identity remains the existing native-name/English-gloss pair.
-    // Reproduce its three-row proof locally so the shared helper cannot read
-    // its usual extra context rows outside this component's rectangle.
-    if (header_y >= 0) {
-        for (const auto &rank : split_text_fields(context[header_y + 2])) {
-            if (rank.start < panel.x || rank.end >= population_x ||
-                    !translate_fortress_status(rank.text)) continue;
-            const int left = rank.start, field_right = population_x - 1;
-            NativeHistoryName name;
-            std::string english;
-            if (!capture_current_fortress_site_name(name, english)) break;
-            const std::string full_english = english;
-            if (english.size() >= 19) {
-                english.resize(18);
-                english.replace(15, 3, "...");
-            }
-            const std::array<std::string, 2> sources{name.native_name, english};
-            auto place = translate_english_site_name(full_english, &name);
-            if (place) *place += site_name_attribute_suffix(name.site_label, name.site_type);
-            const std::array<std::string, 2> targets{
-                site_name_full_transliteration(name), place.value_or(std::string{})};
-            for (size_t field = 0; field < sources.size(); ++field) {
-                const int y = header_y + static_cast<int>(field);
-                const int length = std::min<int>(sources[field].size(), field_right - left);
-                if (length <= 0 || targets[field].empty() ||
-                        lower_native_name(context[y].substr(left, length)) !=
-                        lower_native_name(sources[field].substr(0, length))) continue;
-                const std::string source = context[y].substr(left, length);
-                if (rows[y].compare(left, length, source) != 0) continue;
-                Match match{left, y, length, kFortressSiteNameRule, targets[field], source};
-                match.layout_x = left;
-                match.layout_y = y;
-                match.layout_length = field_right - left;
-                match.layout_clip_right = field_right;
-                match.layout_left = true;
-                match.layout_prepared = true;
-                result.push_back(std::move(match));
-                std::fill_n(rows[y].begin() + left, length, ' ');
-            }
-            break;
-        }
+    NativeHistoryName site;
+    std::string english;
+    const bool have_site = capture_current_fortress_site_name(site, english);
+    std::array<std::string, 2> names{};
+    if (have_site) {
+        names[0] = site_name_full_transliteration(site);
+        if (auto place = translate_english_site_name(english, &site))
+            names[1] = *place + site_name_attribute_suffix(site.site_label, site.site_type);
     }
-    append_native_fortress_status_rows(rows, result, -1, screen_override != nullptr);
-
-    const auto translate_field = [&](int x, int y, std::string_view source) {
-        std::optional<std::string> target = exact_literal_translation(source);
+    std::array<size_t, 3> date_fields{};
+    date_fields.fill(SIZE_MAX);
+    for (const auto &draw : draws) {
+        const auto *grid = draw.top_layer ? gps_->screen_top : gps_->screen;
+        if (!draw.caption_source || draw.editable_text || draw.draw_epoch != epoch ||
+                draw.draw_grid != grid || draw.draw_dimx != gps_->dimx ||
+                draw.draw_dimy != gps_->dimy || draw.source.empty() ||
+                draw.x < panel.x || draw.x >= panel.x + panel.w ||
+                draw.y < panel.y || draw.y >= panel.y + panel.h ||
+                (only_y >= 0 && draw.y != only_y) ||
+                (screen_override && screen_override != grid)) continue;
+        const std::string &complete = draw.complete_source.empty()
+            ? draw.source : draw.complete_source;
+        const int site_row = native_topbar_site_row(draw.native_caller);
+        std::optional<std::string> target;
         int rule_index = -2;
         std::shared_ptr<const TranslationResult> metadata;
-        if (!target) {
-            // Only a complete typed date/year field can enter templates.
-            // No item, generated-name, prose or whole-screen matcher runs.
-            const std::string field(source);
-            for (const int index : candidate_template_rules(field)) {
-                const auto &rule = rules_[index];
-                std::vector<std::string> captures;
-                size_t end = 0;
-                if (!match_template(rule, field, 0, &end, &captures) || end != field.size())
-                    continue;
-                auto translated = translate_template_captures_display(rule, captures, field);
-                if (!translated.usable() || !translated.changed()) continue;
-                target = translated.target;
-                rule_index = index;
-                metadata = std::make_shared<TranslationResult>(std::move(translated));
-                break;
-            }
-        }
-        if (!target || *target == source) return;
-        Match match{x, y, static_cast<int>(source.size()), rule_index, *target, std::string(source)};
-        match.translation_result = std::move(metadata);
-        result.push_back(std::move(match));
-        std::fill_n(rows[y].begin() + x, source.size(), ' ');
-    };
-    if (header_y >= 0) {
-        // Left-hand names have a separate typed owner. Counter labels, zero
-        // values and dates are admitted only in this native header's columns.
-        for (int y = header_y; y <= header_y + 2; ++y) {
+        if (site_row >= 0 && site_row < 2) {
+            // Resolve the actual fortress_site object, including its full
+            // English gloss before the game replaces the suffix with dots.
+            // A site called Food or Outpost still belongs to this name writer.
+            if (have_site && !names[site_row].empty()) target = names[site_row];
+            rule_index = kFortressSiteNameRule;
+        } else if (site_row == 2) {
+            target = translate_fortress_status(complete);
+            rule_index = kUiMessageRule;
+        } else {
+            const bool date = native_topbar_date_field(complete) >= 0;
+            bool literal = false;
             for (const std::string_view label : {"Population", "Pop", "Stocks", "Food",
-                    "Drink", "Seeds", "Meat", "Fish", "Plant", "Other", "None", "ALERT"}) {
-                for (size_t at = rows[y].find(label, population_x); at != std::string::npos;
-                        at = rows[y].find(label, at + label.size())) {
-                    if (at + label.size() <= static_cast<size_t>(right) &&
-                            has_word_boundaries(rows[y], at, at + label.size()))
-                        translate_field(static_cast<int>(at), y, label);
+                    "Drink", "Seeds", "Meat", "Fish", "Plant", "Other", "None", "ALERT"})
+                literal |= complete == label;
+            if (!literal && !date) continue;
+            target = exact_literal_translation(complete);
+            if (!target && date) {
+                for (const int index : candidate_template_rules(complete)) {
+                    const auto &rule = rules_[index];
+                    std::vector<std::string> captures;
+                    size_t end = 0;
+                    if (!match_template(rule, complete, 0, &end, &captures) || end != complete.size())
+                        continue;
+                    auto translated = translate_template_captures_display(rule, captures, complete);
+                    if (!translated.usable() || !translated.changed()) continue;
+                    target = translated.target;
+                    rule_index = index;
+                    metadata = std::make_shared<TranslationResult>(std::move(translated));
+                    break;
                 }
             }
-            for (const auto &field : split_text_fields(rows[y])) {
-                if (field.start <= stocks_x || field.end > right) continue;
-                if (native_topbar_date_field(field.text) >= 0)
-                    translate_field(field.start, y, field.text);
+        }
+        if (!target || target->empty() || *target == complete) continue;
+        int left = draw.x;
+        int right = draw.x + std::min<int>(draw.source.size(), panel.x + panel.w - draw.x);
+        if (draw.draw_clip) {
+            const auto &clip = *draw.draw_clip;
+            if (draw.y < clip.y || draw.y >= clip.y + clip.h) continue;
+            left = std::max(left, clip.x);
+            right = std::min(right, clip.x + clip.w);
+        }
+        if (site_row >= 0) right = std::min(right, native_topbar_site_right());
+        if (left >= right) continue;
+        Match match{left, draw.y, right - left, rule_index, *target,
+            draw.source.substr(left - draw.x, right - left)};
+        match.translation_result = std::move(metadata);
+        match.layout_foreground_rgb = draw.foreground_rgb;
+        // These native writers draw one full row each. Retained font-half
+        // flags and neighbouring glyphs cannot change their text baseline.
+        match.layout_fixed_baseline = true;
+        match.layout_y = draw.y;
+        match.layout_line_height_pixels = gps_->tile_pixel_y;
+        if (site_row >= 0) {
+            match.layout_x = left;
+            match.layout_length = native_topbar_site_right() - left;
+            match.layout_clip_right = native_topbar_site_right();
+            match.layout_left = true;
+            match.layout_prepared = true;
+        }
+        if (site_row < 0) {
+            const int date_row = native_topbar_date_field(complete);
+            if (date_row >= 0) date_fields[date_row] = result.size();
+        }
+        result.push_back(std::move(match));
+    }
+    if (std::all_of(date_fields.begin(), date_fields.end(),
+            [](size_t index) { return index != SIZE_MAX; })) {
+        const Match &date = result[date_fields[0]];
+        const int left = date.x, top = date.y;
+        int right = left;
+        bool same_card = true;
+        for (size_t row = 0; row < date_fields.size(); ++row) {
+            const auto &field = result[date_fields[row]];
+            same_card &= field.x == left && field.y == top + static_cast<int>(row);
+            right = std::max(right, field.x + field.length);
+        }
+        if (same_card) {
+            for (size_t row = 0; row < date_fields.size(); ++row) {
+                auto &field = result[date_fields[row]];
+                field.layout_x = left;
+                field.layout_y = top + 2 - static_cast<int>(row);
+                field.layout_length = right - left;
+                field.layout_clip_right = right;
+                field.layout_left = true;
+                field.layout_prepared = true;
             }
         }
     }
-    std::erase_if(result, [&](const Match &match) {
-        return match.x < panel.x || match.y < panel.y ||
-            match.length <= 0 || match.length > right - match.x || match.y >= bottom ||
-            (only_y >= 0 && match.y != only_y);
-    });
     return result;
 }

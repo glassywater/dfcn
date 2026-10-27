@@ -36,6 +36,44 @@ static std::optional<SDL_Rect> native_dfhack_control_panel_rect(
     return result.w > 0 && result.h > 0 ? std::optional<SDL_Rect>(result) : std::nullopt;
 }
 
+static std::optional<std::string> native_dfhack_codex_document(
+        NativeDfhackLuaState *state, int widget, uintptr_t parent_id, size_t limit) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (!native_dfhack_sitemap_raw_field(state, widget, "text_to_wrap") ||
+            stack.type(state, -1) != 6 || stack.tocfunction(state, -1)) return std::nullopt;
+    const int callback = stack.gettop(state);
+    const char *upvalue = api.getupvalue(state, callback, 1);
+    if (!upvalue || std::strcmp(upvalue, "self") || stack.type(state, -1) != 5 ||
+            reinterpret_cast<uintptr_t>(api.topointer(state, -1)) != parent_id)
+        return std::nullopt;
+    if (!native_dfhack_sitemap_raw_field(state, -1, "body")) return std::nullopt;
+    auto document = native_dfhack_overlay_lua_string(state, -1, limit);
+    if (!document && stack.type(state, -1) == 5) {
+        const int lines = stack.gettop(state);
+        const size_t count = api.rawlen(state, lines);
+        if (!count || count > 8192) return std::nullopt;
+        document.emplace();
+        for (size_t line = 1; line <= count; ++line) {
+            api.rawgeti(state, lines, static_cast<int64_t>(line));
+            const auto text = native_dfhack_overlay_lua_string(state, -1, limit);
+            if (!text || document->size() + text->size() + 1 > limit) return std::nullopt;
+            if (line > 1) *document += '\n';
+            *document += *text;
+            stack.settop(state, lines);
+        }
+    }
+    stack.settop(state, callback);
+    NativeDfhackLuaDebug producer{};
+    if (!document || !stack.getinfo(state, ">Su", &producer) || producer.nparams != 0 ||
+            producer.isvararg || producer.nups != 1) return std::nullopt;
+    const auto source = native_dfhack_lua_text(producer.source, 32768);
+    if (!source || !native_dfhack_lua_source_key(*source).ends_with("/gui/codex-legends.lua"))
+        return std::nullopt;
+    return document;
+}
+
 static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_label_text(
         NativeDfhackLuaState *state, std::string_view painted_full, int clipped_offset) {
     const auto &api = g_native_dfhack_sitemap_lua_api;
@@ -140,6 +178,7 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
     if (!native_dfhack_overlay_local(state, render, "token") || stack.type(state, -1) != 5)
         return std::nullopt;
     const int token = stack.gettop(state);
+    const auto token_id = api.topointer(state, token);
     bool text_draw = render.currentline == 190 || render.currentline == 197 ||
         render.currentline == 203;
     if (text_draw) {
@@ -219,6 +258,12 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
         if (native_dfhack_sitemap_raw_field(state, widget, "text_to_wrap"))
             if (auto document = native_dfhack_overlay_lua_string(state, -1, document_limit))
                 result.document = std::move(*document);
+        // This callback returns its owner's body. Keep original paragraphs
+        // and verse breaks, instead of reparsing the display's wrapped lines.
+        if (result.extension_prose_key == "Real Book||body")
+            if (auto document = native_dfhack_codex_document(
+                    state, widget, result.parent_id, document_limit))
+                result.document = std::move(*document);
         // Function-valued blurbs have already been evaluated by the native
         // layout. Read its complete cached lines without invoking callbacks.
         if (result.document == result.full && count > 1) {
@@ -246,6 +291,52 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
                 stack.settop(state, all_lines);
             }
             result.document = std::move(document);
+        }
+        // Walk the widget's actual wrap, including preceding offscreen lines.
+        // A visible sentence can occur many times in a book; searching for it
+        // independently would attach the current pen to the wrong occurrence.
+        stack.settop(state, row);
+        if (native_dfhack_sitemap_raw_field(state, widget, "text_lines") &&
+                stack.type(state, -1) == 5) {
+            const int all_lines = stack.gettop(state);
+            size_t cursor = 0;
+            bool aligned = true;
+            for (size_t line = 1; aligned && line <= static_cast<size_t>(*iline); ++line) {
+                api.rawgeti(state, all_lines, static_cast<int64_t>(line));
+                if (stack.type(state, -1) != 5) break;
+                const int parts = stack.gettop(state);
+                const size_t part_count = api.rawlen(state, parts);
+                if (part_count > 1024) break;
+                int column = 0;
+                for (size_t part = 1; aligned && part <= part_count; ++part) {
+                    api.rawgeti(state, parts, static_cast<int64_t>(part));
+                    if (stack.type(state, -1) != 5) { aligned = false; break; }
+                    const int item = stack.gettop(state);
+                    column += native_dfhack_control_panel_integer(state, item, "gap").value_or(0);
+                    const bool current = api.topointer(state, item) == token_id;
+                    if (!native_dfhack_sitemap_raw_field(state, item, "text")) {
+                        aligned = false;
+                        break;
+                    }
+                    const auto text = native_dfhack_overlay_lua_string(state, -1, document_limit);
+                    if (!text) { aligned = false; break; }
+                    const size_t at = result.document.find(*text, cursor);
+                    if (at == std::string::npos || !std::all_of(
+                            result.document.begin() + cursor, result.document.begin() + at,
+                            [](unsigned char ch) { return std::isspace(ch); })) {
+                        aligned = false;
+                        break;
+                    }
+                    if (current && *text == result.full) {
+                        result.document_offset = at;
+                        result.line_offset = column - indent.value_or(0);
+                    }
+                    cursor = at + text->size();
+                    column += static_cast<int>(text->size());
+                    stack.settop(state, parts);
+                }
+                stack.settop(state, all_lines);
+            }
         }
     }
     return result;

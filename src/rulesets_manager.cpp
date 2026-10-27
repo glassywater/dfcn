@@ -1240,9 +1240,47 @@ namespace Hooks {
             return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
                 (ch >= '0' && ch <= '9') || ch >= 0x80 || ch == '-' || ch == '\'';
         };
+        size_t identity_quote_end = 0;
         for (size_t end = 1; end <= text.size(); ++end) {
             if ((end & 255) == 0) dfcn::translation_work_step();
             const auto previous = static_cast<unsigned char>(text[end - 1]);
+            if (kind == "english_site" || kind == "person") {
+                // Both fields are identities inside prose. A later sentence
+                // cannot extend the identity. In particular, offering every
+                // remaining sentence to the person callback repeatedly enters
+                // unit/world lookup and the recursive actor grammar. Quoted
+                // nicknames still own their punctuation; book/title callbacks
+                // retain their separate punctuation rules.
+                if (previous == '\r' || previous == '\n') break;
+                if (end - 1 > identity_quote_end || identity_quote_end == 0) {
+                    if (previous == '"' || previous == '`') {
+                        const char closing = previous == '"' ? '"' : '\'';
+                        size_t quote = text.find(closing, end);
+                        while (quote != std::string::npos && closing == '\'' &&
+                                quote + 1 < text.size() && name_byte(
+                                    static_cast<unsigned char>(text[quote + 1])))
+                            quote = text.find(closing, quote + 1);
+                        if (quote != std::string::npos) identity_quote_end = quote;
+                    }
+                }
+                // Only a closed quoted name protects its internal punctuation;
+                // do not offer incomplete quoted prefixes to the fallback.
+                if (end - 1 < identity_quote_end) continue;
+                constexpr std::string_view joined_sentence = ", and also";
+                if (kind == "english_site" && previous == ',' && matches_literal(
+                        std::string_view(text).substr(end - 1), joined_sentence)) {
+                    const size_t after = end - 1 + joined_sentence.size();
+                    if (after == text.size() || std::isspace(
+                            static_cast<unsigned char>(text[after]))) break;
+                }
+                if (previous == '.' || previous == '!' || previous == '?') {
+                    size_t after = end;
+                    while (after < text.size() && (text[after] == '"' ||
+                            text[after] == '\'' || text[after] == ')')) ++after;
+                    if (after == text.size() || std::isspace(
+                            static_cast<unsigned char>(text[after]))) break;
+                }
+            }
             // Never offer the owner a prefix cut inside a UTF-8 codepoint.
             if (end < text.size() &&
                 (static_cast<unsigned char>(text[end]) & 0xc0) == 0x80) continue;
@@ -2659,9 +2697,17 @@ namespace Hooks {
         struct ChildSource { const ResultTree* tree; size_t start; };
         std::unordered_map<std::string, ChildSource> bindings;
         size_t cursor = 0;
+        size_t prose_origin = 0, prose_literal_size = 0;
         for (const auto& token : *tree.source_tokens) {
             dfcn::translation_work_step();
             if (token.type == Type::Literal) {
+                // Book prose can begin with a colored subject. Connectives
+                // belong to the authored prose, not that first capture.
+                if (tree.identifier.starts_with("::subscribed_books") &&
+                        token.value.size() > prose_literal_size) {
+                    prose_origin = cursor;
+                    prose_literal_size = token.value.size();
+                }
                 cursor += token.value.size();
             } else {
                 const auto child = std::find_if(tree.children.begin(), tree.children.end(),
@@ -2679,7 +2725,7 @@ namespace Hooks {
                 // color; a final stop belongs to the original final stop.
                 const bool final_stop = token.value == "。" || token.value == "！" ||
                     token.value == "？";
-                const size_t origin = final_stop ? tree.matched.size() - 1 : 0;
+                const size_t origin = final_stop ? tree.matched.size() - 1 : prose_origin;
                 origins.insert(origins.end(), token.value.size(), origin);
             } else {
                 const auto found = bindings.find(token.value);

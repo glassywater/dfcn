@@ -1,0 +1,133 @@
+# forms/essay/subjects/fight.lua 的交手背景、同场生还者与杀戮记录。
+# evidence.lua 的种族对比，以及 forms/common/proofs.lua 的按物种计数名单。
+base = "subscribed_books::essay_fight_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"It happened in {event}." = "那次交手发生在{event}期间。"
+"{place}, {site_kind}, was where I was born." = "{place}是{site_kind}，也是我的出生地。"
+"{place} was where I was born." = "{place}是我的出生地。"
+"{place}, {site_kind}, was my home then." = "{place}是{site_kind}，当时是我的家。"
+"{place} was my home then." = "{place}当时是我的家。"
+"I was {count} years old." = "我当时{count}岁。"
+
+"{actor} came at {count} of us that day." = "那天，{actor}袭击了我们中的{count}人。"
+"{actor} came at {count} that day." = "那天，{actor}袭击了{count}个对手。"
+"{people} fought as I did, and lived." = "{people}也像我一样奋战，并活了下来。"
+"{people} fought and lived." = "{people}参与了战斗，并活了下来。"
+"{people} did not live." = "{people}未能幸存。"
+"By the year {year}, {actor} had killed {count}, and lived still." = "到{year}年，{actor}已杀死{count}个生灵，而其自身仍然活着。"
+"By the year {year}, {actor} had killed {count}." = "到{year}年，{actor}已杀死{count}个生灵。"
+"It never grew back." = "失去的部分再也没有长回来。"
+"It was lost for good." = "那一部分永远失去了。"
+
+# evidence.facts 的两人对比：作者可能在任意一侧，两侧使用独立 Reference。
+"{actor} was {species_article}, {other} {other_species_article}." = "{actor}是{species_article}，而{other}是{other_species_article}。"
+"{actor} and {other} were both {species}." = "{actor}与{other}都是{species}。"
+
+# P.martial 每类合计后最多列出四类，超过四类才附加余数说明。
+"By the record, {actor} killed {kill_list}, and more besides." = "据记载，{actor}杀死过{kill_list}，此外还有更多。"
+"By the record, {actor} killed {kill_list}." = "据记载，{actor}杀死过{kill_list}。"
+"By the record, {actor} never killed anyone." = "据记载，{actor}从未杀过谁。"
+
+[[rulesets]]
+name = "event"
+[rulesets.rules]
+"{::subscribed_books::guide_history::event}" = "{::subscribed_books::guide_history::event}"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "other"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "people"
+[rulesets.rules]
+# life.list_words 使用单人、A and B 或 A, B and C；现有名单逐一解析人物。
+"{::subscribed_books::essay_vocabulary::people}" = "{::subscribed_books::essay_vocabulary::people}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "site_kind"
+[rulesets.rules]
+"{::subscribed_books::guide_vocabulary::kind}" = "{::subscribed_books::guide_vocabulary::kind}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::guide_history::year}" = "{::subscribed_books::guide_history::year}"
+
+[[rulesets]]
+name = "count"
+[rulesets.rules]
+# life.number 对一至二十使用英文数词，零和更大的数量使用数字。
+"{::subscribed_books::essay_bond_facts::count}" = "{::subscribed_books::essay_bond_facts::count}"
+
+[[rulesets]]
+name = "species"
+[rulesets.rules]
+"{::subscribed_books::guide_history::species}" = "{::subscribed_books::guide_history::species}"
+
+[[rulesets]]
+name = "species_article"
+[rulesets.rules]
+"a {species}" = "{species}"
+"an {species}" = "{species}"
+
+[[rulesets]]
+name = "other_species_article"
+[rulesets.rules]
+"{species_article}" = "{species_article}"
+
+[[rulesets]]
+name = "kill_list"
+[rulesets.rules]
+"{kill_group}" = "{kill_group}"
+"{kill_group} and {second_group}" = "{kill_group}和{second_group}"
+"{kill_group}, {second_group} and {third_group}" = "{kill_group}、{second_group}和{third_group}"
+"{kill_group}, {second_group}, {third_group} and {fourth_group}" = "{kill_group}、{second_group}、{third_group}和{fourth_group}"
+
+[[rulesets]]
+name = "kill_group"
+[rulesets.rules]
+"{count} {people_species}" = "{count}名{people_species}"
+"{count} {species}" = "{count}只{species}"
+
+[[rulesets]]
+name = "second_group"
+[rulesets.rules]
+"{kill_group}" = "{kill_group}"
+
+[[rulesets]]
+name = "third_group"
+[rulesets.rules]
+"{kill_group}" = "{kill_group}"
+
+[[rulesets]]
+name = "fourth_group"
+[rulesets.rules]
+"{kill_group}" = "{kill_group}"
+
+[[rulesets]]
+name = "people_species"
+[rulesets.rules]
+# 文明种族使用人数单位，其余生物名仍由共享单复数物种词池解析。
+"dwarf" = "矮人"
+"dwarves" = "矮人"
+"elf" = "精灵"
+"elves" = "精灵"
+"human" = "人类"
+"humans" = "人类"
+"goblin" = "哥布林"
+"goblins" = "哥布林"
+"kobold" = "狗头人"
+"kobolds" = "狗头人"

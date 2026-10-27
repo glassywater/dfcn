@@ -1,0 +1,125 @@
+# forms/essay/subjects/value.lua：价值观论文的 creed、counsel、rejection 与 quandary 立场。
+# 主题和价值词使用有限词池；整段与独立句兼容正文按句去重。
+base = "subscribed_books::essay_value"
+
+[[rulesets]]
+[rulesets.rules]
+# creed：信念、亲身付出的代价，以及对反方引语的回应。
+"This essay concerns {subject}, and I will say plainly where I stand: as the saying goes, \"{saying}\" I have lived as if it were true." = "这篇论文讨论{subject}，我要直言自己的立场，正如那句话所说：“{saying}”我始终以此为真，并照此生活。"
+"This essay concerns {subject}, and I will say plainly where I stand: as the saying goes, \"{saying}\"" = "这篇论文讨论{subject}，我要直言自己的立场，正如那句话所说：“{saying}”"
+"I have lived as if it were true." = "我始终以此为真，并照此生活。"
+"I write about {subject}. \"{saying}\" People say it lightly. I mean it, and I mean to show why." = "我探讨{subject}。“{saying}”人们常把这话挂在嘴边，而我是真心相信，也要说明缘由。"
+"I write about {subject}." = "我探讨{subject}。"
+"People say it lightly. I mean it, and I mean to show why." = "人们常把这话挂在嘴边，而我是真心相信，也要说明缘由。"
+"People say it lightly." = "人们常把这话挂在嘴边。"
+"I mean it, and I mean to show why." = "而我是真心相信，也要说明缘由。"
+
+"My own life is my evidence." = "我自己的人生便是证据。"
+"I did not come to this belief by argument; I came to it by living." = "这一信念并非论辩所得，而是我亲身生活得来的。"
+"What I value, I have paid for." = "我所珍视的一切，都曾让我付出代价。"
+"A value is only as real as what it costs the one who holds it." = "一种价值观是否真切，要看信奉它的人为此付出了多少。"
+"We are what we will not give up." = "我们不肯放弃的东西，决定了我们是谁。"
+
+"There are those who say, \"{saying}\"" = "有人这样说：“{saying}”"
+"I have heard it, and I have lived the other way, and I do not regret it." = "这话我听过，却选择了另一种活法，而且从不后悔。"
+"I return to {subject}. I have said what I believe, and shown what it has cost me. I would pay it again." = "回到{subject}。我已说出自己的信念，也展示了为此付出的代价。若能重来，我仍愿付出。"
+"I have said what I believe, and shown what it has cost me. I would pay it again." = "我已说出自己的信念，也展示了为此付出的代价。若能重来，我仍愿付出。"
+"I have said what I believe, and shown what it has cost me." = "我已说出自己的信念，也展示了为此付出的代价。"
+"I would pay it again." = "若能重来，我仍愿付出。"
+
+# counsel：同样肯定这项价值，将亲身经历作为留给后人的劝告。
+"I write about {subject} for those who come after me. \"{saying}\" Learn it sooner than I did." = "我为后来者写下对{subject}的思考。“{saying}”愿你们比我更早明白这个道理。"
+"I write about {subject} for those who come after me." = "我为后来者写下对{subject}的思考。"
+"Learn it sooner than I did." = "愿你们比我更早明白这个道理。"
+"This essay concerns {subject}, and it is advice, plainly given: \"{saying}\"" = "这篇论文讨论{subject}，其中的劝告直白不过：“{saying}”"
+"I give this advice because it was once given to me." = "我给出这番劝告，因为也曾有人这样劝过我。"
+"The young think {value_word} can wait. It cannot." = "年轻人以为{value_word}可以留待以后，其实等不得。"
+"The young think {value_word} can wait." = "年轻人以为{value_word}可以留待以后。"
+"It cannot." = "其实等不得。"
+"Everything I have done well, I did by holding to this." = "我做成的每一件事，都靠着对它的坚守。"
+"Advice is the one inheritance everyone can afford to leave." = "劝告，是人人都留得起的一份遗产。"
+"The young will say, \"{saying}\"" = "年轻人会说：“{saying}”"
+"So did I, once. Ask me again when you are my age." = "我也曾这样说过。等你到了我这个年纪，再来问我吧。"
+"So did I, once." = "我也曾这样说过。"
+"Ask me again when you are my age." = "等你到了我这个年纪，再来问我吧。"
+"I return to {subject}, and I leave it with you. Do better with it than I did." = "回到{subject}，我将它留给你们。愿你们比我做得更好。"
+"I return to {subject}, and I leave it with you." = "回到{subject}，我将它留给你们。"
+"Do better with it than I did." = "愿你们比我做得更好。"
+
+# rejection：反对这一价值及人们对它的赞誉。
+"This essay concerns {subject}, and I mean to argue against it. \"{saying}\" I have come to believe it, and I will say why." = "这篇论文讨论{subject}，而我要提出反对意见。“{saying}”我已相信这句话，也会说明缘由。"
+"This essay concerns {subject}, and I mean to argue against it." = "这篇论文讨论{subject}，而我要提出反对意见。"
+"I have come to believe it, and I will say why." = "我已相信这句话，也会说明缘由。"
+"I write about {subject} because too many treat {value_word} as a virtue. It is not, or not the one they think." = "我探讨{subject}，是因为太多人把{value_word}视为美德。它并非美德，至少并非他们以为的那种美德。"
+"I write about {subject} because too many treat {value_word} as a virtue." = "我探讨{subject}，是因为太多人把{value_word}视为美德。"
+"It is not, or not the one they think." = "它并非美德，至少并非他们以为的那种美德。"
+
+"Look at what {value_word} costs the people who hold to it." = "看看那些坚守{value_word}的人为此付出了什么代价。"
+"My own life taught me this; no one argued me into it." = "这是我亲身经历得来的教训，并非别人说服了我。"
+"What is praised is not always what is good." = "受人赞颂的，未必就是好的。"
+"Some virtues are only habits that have never been questioned." = "有些美德，不过是从未受到质疑的习惯。"
+
+"I know the saying: \"{saying}\"" = "我知道这句话：“{saying}”"
+"I know the saying:" = "我知道这句话："
+"It is said often. That is not the same as being true." = "这话常有人说，但常有人说，并不代表它就是真的。"
+"It is said often." = "这话常有人说。"
+"That is not the same as being true." = "但这并不代表它就是真的。"
+
+"I return to {subject}, and I have not changed my mind. Let others praise {value_word}; I have seen what it does." = "回到{subject}，我的看法并未改变。任别人赞美{value_word}吧；我见过它带来的后果。"
+"I return to {subject}, and I have not changed my mind." = "回到{subject}，我的看法并未改变。"
+"Let others praise {value_word}; I have seen what it does." = "任别人赞美{value_word}吧；我见过它带来的后果。"
+
+# quandary：两方引语使用独立词位，兼容 fresh_sentences 去重后保留的单句。
+"This essay concerns {subject}, and I confess I do not know what to think of it. Some say, \"{saying_high}\" Others say, \"{saying_low}\" I mean to weigh them." = "这篇论文讨论{subject}，而我承认，自己尚不知该如何看待它。有人说：“{saying_high}”也有人说：“{saying_low}”我想权衡这两种看法。"
+"This essay concerns {subject}, and I confess I do not know what to think of it." = "这篇论文讨论{subject}，而我承认，自己尚不知该如何看待它。"
+"Some say, \"{saying_high}\" Others say, \"{saying_low}\" I mean to weigh them." = "有人说：“{saying_high}”也有人说：“{saying_low}”我想权衡这两种看法。"
+"Some say, \"{saying_high}\"" = "有人说：“{saying_high}”"
+"Others say, \"{saying_low}\"" = "也有人说：“{saying_low}”"
+"I mean to weigh them." = "我想权衡这两种看法。"
+"I write about {subject} because I cannot settle it. \"{saying_high}\" - or, as others have it, \"{saying_low}\"" = "我探讨{subject}，是因为自己始终无法定论。“{saying_high}”——又或者，用另一些人的话说：“{saying_low}”"
+"I write about {subject} because I cannot settle it." = "我探讨{subject}，是因为自己始终无法定论。"
+"\"{saying_high}\" - or, as others have it, \"{saying_low}\"" = "“{saying_high}”——又或者，用另一些人的话说：“{saying_low}”"
+"- or, as others have it, \"{saying_low}\"" = "——又或者，用另一些人的话说：“{saying_low}”"
+"\"{saying}\"" = "“{saying}”"
+
+"There is something in each side, and that is the trouble." = "两边都有些道理，而难处也正在这里。"
+"My own life argues both ways." = "我自己的人生经历，也为两种看法各自提供了佐证。"
+"Every time I decide, the record of my own years undoes it." = "每当我作出定论，自己过往的经历又会将它推翻。"
+"A question that will not settle is usually a question worth keeping." = "一个始终无法定论的问题，往往值得继续追问。"
+"It will be said that a writer should take a side." = "有人会说，作者应该选定一种立场。"
+"I have: the side of the question, which is the one most often abandoned." = "我已经选了：站在追问这一边，而这一边最常被人抛弃。"
+
+"I return to {subject}. If I lean anywhere, it is here: \"{saying_middle}\"" = "回到{subject}。若说我有所倾向，那便是：“{saying_middle}”"
+"I return to {subject}." = "回到{subject}。"
+"If I lean anywhere, it is here: \"{saying_middle}\"" = "若说我有所倾向，那便是：“{saying_middle}”"
+"I return to {subject}, and I leave it unsettled, as I found it." = "回到{subject}，我仍让它悬而未决，正如最初面对它时一样。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"the worth of {value_word}" = "{value_word}的价值"
+
+[[rulesets]]
+name = "value_word"
+[rulesets.rules]
+"{::subscribed_books::essay::value}" = "{::subscribed_books::essay::value}"
+
+[[rulesets]]
+name = "saying"
+[rulesets.rules]
+"{::subscribed_books::essay_value_sayings}" = "{::subscribed_books::essay_value_sayings}"
+
+[[rulesets]]
+name = "saying_high"
+[rulesets.rules]
+"{saying}" = "{saying}"
+
+[[rulesets]]
+name = "saying_low"
+[rulesets.rules]
+"{saying}" = "{saying}"
+
+[[rulesets]]
+name = "saying_middle"
+[rulesets.rules]
+"{saying}" = "{saying}"

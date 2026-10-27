@@ -10,6 +10,41 @@ static std::unique_ptr<NativeInfoCapturedTextScope> g_native_topbar_captions;
 static std::unique_ptr<TranslationStateScope> g_native_topbar_translation;
 static bool g_native_topbar_capture_attempted = false;
 
+// These are the three independent addst writers following the native site
+// formatters and rank formatter. Their identity does not depend on spelling,
+// truncation, or on any neighbouring caption surviving in the tile grid.
+static int native_topbar_site_row(uintptr_t caller) {
+#ifdef _WIN32
+    const auto base = native_history_profile_base();
+    constexpr uintptr_t writers[]{0x3f3051, 0x3f3139, 0x3f3202};
+    for (int row = 0; row < 3; ++row)
+        if (base && caller == native_reference_address(base, writers[row])) return row;
+#endif
+    return -1;
+}
+
+static int native_topbar_site_right() {
+    // Native renderer: name at frame-left + 2 (3f3006), population at
+    // frame-left + 22 (3f3554). Reserve its one-column gutter as well.
+    return std::min(g_native_topbar_panel.x + g_native_topbar_panel.w,
+        g_native_topbar_panel.x + 21);
+}
+
+struct NativeTopbarSiteClip {
+    graphicst *graphics = nullptr;
+    long right = 0;
+    NativeTopbarSiteClip(graphicst *value, uintptr_t caller, bool enabled) {
+        if (!value || value != g_native_topbar_write_graphics ||
+                !enabled || native_topbar_site_row(caller) < 0) return;
+        graphics = value;
+        right = graphics->clipx[1];
+        // Constrain the original writer too: its unbounded native name must
+        // not leave glyphs underneath the population and mood artwork.
+        graphics->clipx[1] = std::min(right, long(native_topbar_site_right() - 1));
+    }
+    ~NativeTopbarSiteClip() { if (graphics) graphics->clipx[1] = right; }
+};
+
 static bool native_topbar_foreground_view(const graphicst *graphics) noexcept {
     return graphics && (g_native_topbar_layer.ready || g_native_topbar_output) &&
         graphics->screen == g_native_topbar_layer.foreground.planes[0].screen.data() &&

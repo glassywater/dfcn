@@ -719,6 +719,7 @@ name = "race"
 [[rulesets]]
 [rulesets.rules]
 "A FIELD MANUAL. Terse by design -- this is meant to be consulted quickly, under pressure, not read at leisure." = "《实地手册》。文字刻意简短，供人在压力之下迅速查阅，而非闲暇时细读。"
+"A FIELD MANUAL. Terse by design -- this is meant to be consulted quickly, under pressure." = "《实地手册》。文字刻意简短，供人在压力之下迅速查阅。"
 
 [[rulesets]]
 [rulesets.rules]

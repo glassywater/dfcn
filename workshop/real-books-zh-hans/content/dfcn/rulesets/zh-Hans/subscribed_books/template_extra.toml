@@ -3,11 +3,12 @@ base = "subscribed_books::template_extra"
 [[rulesets]]
 [rulesets.rules]
 # templates.lua: all remaining variable-rich and higher-skill clauses in the first five types.
-"In {@year}, {@bt_a|::subscribed_books::vocabulary::person} {state} in {@bt_s|::subscribed_books::vocabulary::place}." = "{@year} 年，{@bt_a|::subscribed_books::vocabulary::person} 在 {@bt_s|::subscribed_books::vocabulary::place} {state}。"
-"The year {@year} found {@bt_a|::subscribed_books::vocabulary::person} {state}." = "{@year} 年，{@bt_a|::subscribed_books::vocabulary::person} {state}。"
-"{@bt_a|::subscribed_books::vocabulary::person} {state} in {@bt_s|::subscribed_books::vocabulary::place} in {@year}." = "{@bt_a|::subscribed_books::vocabulary::person} 于 {@year} 年在 {@bt_s|::subscribed_books::vocabulary::place} {state}。"
+# 定居年份不能跨句捕获，第一人称也不能作为人物名音译。
+"In {::subscribed_books::vocabulary::year}, {::subscribed_books::essay_vocabulary::actor} {state} in {::subscribed_books::guide::place}." = "{::subscribed_books::vocabulary::year}年，{::subscribed_books::essay_vocabulary::actor}在{::subscribed_books::guide::place}{state}。"
+"The year {::subscribed_books::vocabulary::year} found {::subscribed_books::essay_vocabulary::actor} {state}." = "{::subscribed_books::vocabulary::year}年，{::subscribed_books::essay_vocabulary::actor}{state}。"
+"{::subscribed_books::essay_vocabulary::actor} {state} in {::subscribed_books::guide::place} in {::subscribed_books::vocabulary::year}." = "{::subscribed_books::essay_vocabulary::actor}于{::subscribed_books::vocabulary::year}年在{::subscribed_books::guide::place}{state}。"
 "Running from fate, or toward it -- even {pro} could not tell." = "是逃离命运，还是奔向命运——连{pro}自己也说不清。"
-"The year {@year} found {@bt_a|::subscribed_books::vocabulary::person} {state}, adrift and searching for something {pro} would never find." = "{@year} 年，{@bt_a|::subscribed_books::vocabulary::person} {state}，漂泊无依，寻找{pro}永远找不到的东西。"
+"The year {::subscribed_books::vocabulary::year} found {::subscribed_books::essay_vocabulary::actor} {state}, adrift and searching for something {pro} would never find." = "{::subscribed_books::vocabulary::year}年，{::subscribed_books::essay_vocabulary::actor}{state}，漂泊无依，寻找{pro}永远找不到的东西。"
 "A pause in the long {adj} march." = "漫长的{adj}行进中，一次暂停。"
 "The year {@year} dawned upon {@bt_s|::subscribed_books::vocabulary::place} {metaphor}, and what unfolded would etch itself into the living memory of {@bt_e|::subscribed_books::vocabulary::entity}." = "{@year} 年的曙光照向 {@bt_s|::subscribed_books::vocabulary::place}，{metaphor}，随后发生的一切，都将刻入 {@bt_e|::subscribed_books::vocabulary::entity} 鲜活的记忆。"
 "The year {@year} dawned upon {@bt_s|::subscribed_books::vocabulary::place} , and what unfolded would etch itself into the living memory of {@bt_e|::subscribed_books::vocabulary::entity}." = "{@year} 年的曙光照向 {@bt_s|::subscribed_books::vocabulary::place}，随后发生的一切，都将刻入 {@bt_e|::subscribed_books::vocabulary::entity} 鲜活的记忆。"

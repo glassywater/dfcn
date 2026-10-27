@@ -95,6 +95,33 @@ std::optional<std::string> Overlay::translate_journal_agreement_title(
         target = "命令：给" + group(entity).value_or(native_text_to_utf8(entity)) + "制造麻烦";
     }
     constexpr std::string_view drive = "Order: Drive off ";
+    if (!target && native && native->drive_off_details && source.starts_with(drive)) {
+        const auto original = [](const std::optional<NativeHistoryName> &name,
+                NativeHistoryObjectKind kind) {
+            return name ? reconstruct_site_english_name(*name).value_or(std::string{})
+                : std::string(native_history_unknown_subject(kind));
+        };
+        const auto entity_source = original(native->order_entity, NativeHistoryObjectKind::Entity);
+        const auto site_source = original(native->order_site, NativeHistoryObjectKind::Site);
+        // The retained complete title must still belong to these exact native
+        // targets. Internal " from " bytes remain part of their owned names.
+        if (source == std::string(drive) + entity_source + " from " + site_source) {
+            auto entity_target = native->order_entity
+                ? entity_source.empty() ? std::optional<std::string>(std::string{})
+                    : translate_history_entity_name(*native->order_entity, native->order_entity_id)
+                : translate_legends_term("an unknown civilization", false);
+            auto site_target = native->order_site
+                ? site_source.empty() ? std::optional<std::string>(std::string{})
+                    : translate_site_name(*native->order_site)
+                : translate_legends_term("an unknown site", false);
+            if (!entity_target) entity_target = group(entity_source);
+            if (!site_target) site_target = site(site_source);
+            const auto entity = entity_target.value_or(native_text_to_utf8(entity_source));
+            const auto place = site_target.value_or(native_text_to_utf8(site_source));
+            if (entity.empty()) target = place.empty() ? "命令：驱逐" : "命令：从" + place + "驱逐";
+            else target = place.empty() ? "命令：驱逐" + entity : "命令：将" + entity + "逐出" + place;
+        }
+    }
     if (!target && source.starts_with(drive)) {
         const auto tail = source.substr(drive.size());
         std::vector<size_t> boundaries;

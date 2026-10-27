@@ -1,0 +1,104 @@
+# forms/essay/subjects/membership.lua：归属、职责、抱负与疑虑四种立场。
+# 主题单独解析；整段和独立句兼容 fresh_sentences 删除重复叙述后的正文。
+base = "subscribed_books::essay_membership"
+
+[[rulesets]]
+[rulesets.rules]
+"Of {body}, a word." = "关于{body}，也说上几句。"
+"I should say what {body} is." = "我应该说说{body}是怎样的组织。"
+"What I did in it, the record keeps." = "我在其中做过什么，史册自有记载。"
+"The years after are the measure of it." = "此后的岁月，才是衡量它的尺度。"
+"What came of it, the record keeps." = "由此带来了什么，史册自有记载。"
+"It was not all easy years." = "那些年也并非总是一帆风顺。"
+
+# belonging
+"I write about {subject}. I joined {body}, and I mean to say what it is to belong to something larger than oneself." = "我写下{subject}。我加入了{body}，想谈谈归属于一个比自身更大的集体，究竟意味着什么。"
+"I write about {subject}." = "我写下{subject}。"
+"I joined {body}, and I mean to say what it is to belong to something larger than oneself." = "我加入了{body}，想谈谈归属于一个比自身更大的集体，究竟意味着什么。"
+"I will argue that {subject} was the most important thing in that life: the day it stopped being lived alone." = "我要论证，{subject}是其一生中最重要的事情：从那天起，这个人不再独自生活。"
+"Before {body}, I was one person. After, I was one of many, and the better for it." = "加入{body}之前，我只是孤身一人。此后，我成为众多成员中的一员，也因此变得更好。"
+"Before {body}, I was one person." = "加入{body}之前，我只是孤身一人。"
+"After, I was one of many, and the better for it." = "此后，我成为众多成员中的一员，也因此变得更好。"
+"To belong is to be answerable, and I wanted to be." = "有所归属，就意味着有所担当，而这正是我所求的。"
+"No one is made alone; we are made by what we join." = "没有人能独自成为现在的自己；我们加入的集体塑造了我们。"
+"A body like {body} is only the people who choose it." = "像{body}这样的组织，说到底就是那些选择加入它的人。"
+"Belonging is a promise made to strangers who become something else." = "归属是一份向陌生人作出的承诺，而此后，他们便不再只是陌生人。"
+"It will be said that to join is to give up a part of oneself." = "有人会说，加入一个集体，就是放弃自身的一部分。"
+"A part, yes. In exchange for a larger whole." = "是的，放弃一部分，换来一个更大的整体。"
+"A part, yes." = "是的，放弃一部分。"
+"In exchange for a larger whole." = "以此换来一个更大的整体。"
+"I return to {subject}. I joined, and I belong. I have not regretted it." = "回到{subject}。我加入了，也找到了归属。我从未后悔。"
+"I return to {subject}." = "回到{subject}。"
+"I joined, and I belong." = "我加入了，也找到了归属。"
+"I have not regretted it." = "我从未后悔。"
+"I return to {subject}: a life that found its people." = "回到{subject}：这是一个人找到自己归属的经历。"
+
+# duty
+"I write about {subject}. I became the {office} of {body}, and I mean to say what that office asks." = "我写下{subject}。我成为{body}的{office}，想谈谈这个职位要求人付出什么。"
+"I became the {office} of {body}, and I mean to say what that office asks." = "我成为{body}的{office}，想谈谈这个职位要求人付出什么。"
+"I will argue that {subject} was a duty, and should be judged as one." = "我要论证，{subject}是一份责任，也应当按责任来评判。"
+"An office is a debt owed to everyone it serves." = "一份职务，就是对所有服务对象欠下的一笔债。"
+"I did not take the office; the office took me." = "与其说我担任了这个职位，不如说这个职位占据了我。"
+"Those who hold office belong to those they serve." = "身居公职者，应当将自己交给所服务的人。"
+"A title is only as good as the work done under it." = "头衔的价值，取决于担着它做了什么。"
+"Authority is borrowed, and the lenders are many." = "权力是借来的，而借出它的人有很多。"
+"It will be said that every office is sought for its own sake." = "有人会说，求取官职的人都是为了官职本身。"
+"Some are. The ones that are kept well are not." = "有些人确实如此，但真正恪尽职守的人并不是。"
+"Some are." = "有些人确实如此。"
+"The ones that are kept well are not." = "但真正恪尽职守的人并不是。"
+"I return to {subject}. I have tried to serve. Let those I served judge how well." = "回到{subject}。我已尽力履职。做得如何，就让那些我服务过的人来评判。"
+"I have tried to serve." = "我已尽力履职。"
+"Let those I served judge how well." = "做得如何，就让那些我服务过的人来评判。"
+"I return to {subject}: a duty taken up. It deserves to be judged as one." = "回到{subject}：这是一份承担起来的责任，理应按责任来评判。"
+"I return to {subject}: a duty taken up." = "回到{subject}：这是一份承担起来的责任。"
+"It deserves to be judged as one." = "理应按责任来评判。"
+
+# ambition
+"I write about {subject}, and I will not pretend I did not want it. I became the {office} of {body} because I meant to." = "我写下{subject}，不会假装自己未曾渴望它。我成为{body}的{office}，正是因为我有此志向。"
+"I write about {subject}, and I will not pretend I did not want it." = "我写下{subject}，不会假装自己未曾渴望它。"
+"I became the {office} of {body} because I meant to." = "我成为{body}的{office}，正是因为我有此志向。"
+"I will argue that {subject} was ambition, plainly - a climb, and a successful one." = "我要论证，{subject}明明就是抱负使然——一场向上攀登，而且成功了。"
+"I wanted more than I was given, and I took it." = "我想要的比别人给我的更多，于是我自己争取到了。"
+"Ambition is only a plan that has not yet worked." = "抱负不过是尚未实现的计划。"
+"Offices do not fall into hands that are not reaching." = "不伸手争取，官职就不会落到手里。"
+"We distrust ambition in others and call it purpose in ourselves." = "我们怀疑别人的野心，却把自己的野心称作志向。"
+"It will be said that ambition is a vice." = "有人会说，野心是一种恶德。"
+"Only in those who fail at it." = "只有失败者的野心才会被这样看待。"
+"I return to {subject}. I reached, and I held on. I am not ashamed of it." = "回到{subject}。我伸手争取，也牢牢守住了。我并不以此为耻。"
+"I reached, and I held on." = "我伸手争取，也牢牢守住了。"
+"I am not ashamed of it." = "我并不以此为耻。"
+
+# doubt
+"I write about {subject}, and I am no longer sure I should have. I joined {body}; I have been asking myself why ever since." = "我写下{subject}，如今已不确定当初是否应该如此。我加入了{body}，此后一直在问自己为何要加入。"
+"I write about {subject}, and I am no longer sure I should have." = "我写下{subject}，如今已不确定当初是否应该如此。"
+"I joined {body}; I have been asking myself why ever since." = "我加入了{body}，此后一直在问自己为何要加入。"
+"This essay concerns {subject}. I mean to ask what {body} asks of those who join it, and whether it is too much." = "这篇论文讨论{subject}。我想追问，{body}要求加入者付出什么，这些要求是否太多。"
+"This essay concerns {subject}." = "这篇论文讨论{subject}。"
+"I mean to ask what {body} asks of those who join it, and whether it is too much." = "我想追问，{body}要求加入者付出什么，这些要求是否太多。"
+"What I joined is not what I find myself part of." = "如今身处的组织，已不是我当初以为自己加入的那个。"
+"Every body that is joined asks something in return. Not every price is named at the door." = "每个组织都向加入者索取某种回报，却并非所有代价都在入门时明说。"
+"Every body that is joined asks something in return." = "每个组织都向加入者索取某种回报。"
+"Not every price is named at the door." = "并非所有代价都在入门时明说。"
+"Loyalty without doubt is only habit." = "没有疑问的忠诚，不过是习惯。"
+"It will be said that a member who doubts should leave." = "有人会说，心存疑虑的成员就该离开。"
+"Or stay, and doubt aloud. Someone must." = "也可以留下来，大声提出疑问。总得有人这样做。"
+"Or stay, and doubt aloud." = "也可以留下来，大声提出疑问。"
+"Someone must." = "总得有人这样做。"
+"I return to {subject}, and to my doubt. I have not settled it." = "回到{subject}，也回到我的疑虑。我仍未想清楚。"
+"I return to {subject}, and to my doubt." = "回到{subject}，也回到我的疑虑。"
+"I have not settled it." = "我仍未想清楚。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{::subscribed_books::essay_membership_facts::subject}" = "{::subscribed_books::essay_membership_facts::subject}"
+
+[[rulesets]]
+name = "body"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "office"
+[rulesets.rules]
+"{::positions::singular}" = "{::positions::singular}"

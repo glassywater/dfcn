@@ -1,0 +1,43 @@
+# 原生诗歌、音乐、舞蹈形式的创作记录，经 game_words 替换作者及地点。
+base = "subscribed_books::essay_creation"
+
+[[rulesets]]
+[rulesets.rules]
+"In {date}, {creation}." = "{date}，{creation}。"
+"In {date} {creation}." = "{date}，{creation}。"
+"{creation}." = "{creation}。"
+"In {date}, {creation} {cause}." = "{date}，{cause}，{creation}。"
+"In {date} {creation} {cause}." = "{date}，{cause}，{creation}。"
+"{creation} {cause}." = "{cause}，{creation}。"
+
+[[rulesets]]
+name = "creation"
+[rulesets.rules]
+"{form} was created by {actor} in {place}" = "{actor}在{place}创作了{form}"
+"{form} was created by {actor}" = "{actor}创作了{form}"
+
+[[rulesets]]
+name = "form"
+[rulesets.rules]
+"{::subscribed_books::essay_creation_vocabulary::form}" = "{::subscribed_books::essay_creation_vocabulary::form}"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_creation_vocabulary::actor}" = "{::subscribed_books::essay_creation_vocabulary::actor}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::essay_creation_vocabulary::date}" = "{::subscribed_books::essay_creation_vocabulary::date}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::essay_creation_vocabulary::place}" = "{::subscribed_books::essay_creation_vocabulary::place}"
+
+[[rulesets]]
+name = "cause"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_vocabulary::circumstance}" = "{::subscribed_books::essay_writing_vocabulary::circumstance}"
+"{::subscribed_books::essay_writing_vocabulary::motive}" = "{::subscribed_books::essay_writing_vocabulary::motive}"

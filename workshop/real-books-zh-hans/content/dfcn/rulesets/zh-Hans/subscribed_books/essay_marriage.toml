@@ -1,0 +1,282 @@
+# forms/essay/subjects/marriage.lua 的各论述角度与共享章节。
+# 按完整句承接正文去重；主题、双方姓名和日期各自解析。
+base = "subscribed_books::essay_marriage"
+
+[[rulesets]]
+[rulesets.rules]
+# Of ... / What came of it ... 沿用已有师承与职业章节的共享句。
+"The years after are the measure of it." = "此后的岁月，才是衡量它的尺度。"
+"And then it ended, as everything does." = "后来，它结束了，正如世间万物终有尽头。"
+"Every {bond} ends." = "每一段{bond}都会结束。"
+"There were others, and the record keeps them." = "还有其他人，史册也记下了他们。"
+"Consider who we were." = "想想我们当时的身份。"
+"Consider who they were." = "想想他们当时的身份。"
+
+# love：当事人与旁观者的开篇、论点、反思、反驳与结论。
+# This essay concerns ... 通过 essay_vocabulary::subject 复用共享开篇。
+"I mean to argue that {subject} was what it appeared to be: a love story, and a true one." = "我想论证，{subject}正如它看上去的那样：一个爱情故事，而且是真实的故事。"
+"The record does not usually allow for that." = "史册通常容不下这样的解释。"
+"I think it must here." = "但我认为，这一次它必须容下。"
+"Of all the ways to read {subject}, I hold to the simplest: {actor} and {partner} loved each other, and everything the record keeps of them follows from that." = "对于{subject}的种种解释，我坚持最简单的一种：{actor}与{partner}彼此相爱，而史册所记载的关于他们的一切，都由此而来。"
+"I will argue that it was a love story, because it was, and because no one else is placed to say so." = "我要论证，这是一个爱情故事，因为事实如此，也因为没有别人比我更有资格这样说。"
+"I write about {subject}." = "我写下{subject}。"
+"I mean to say plainly what the record cannot: that I loved {partner}, and that this was the whole of the reason." = "我要直言史册无法说出的事：我爱着{partner}，这就是全部的理由。"
+"Nothing in what followed suggests calculation; everything suggests choice." = "此后发生的一切，看不出算计的痕迹，处处却都表明这是出于自愿。"
+"Love leaves a mark in the record if one knows where to look, and here the marks are plain." = "若知道该往何处寻找，便能在史册中找到爱情留下的痕迹，而这里的痕迹清晰可见。"
+"Whatever else drew {actor} and {partner} together, it was not convenience." = "无论还有什么促使{actor}与{partner}走到一起，都不是为了图个方便。"
+"I did not choose {partner} for any reason a clerk could write down." = "我选择{partner}的理由，不是文书所能记下的。"
+"What the record keeps of us is thin, but it is not false." = "史册中关于我们的记载虽少，却并不虚假。"
+"Whatever was said of us, it was not convenience that held us." = "无论旁人怎样议论我们，维系我们的都不是便利。"
+"A record of names and years cannot hold affection, but it can hold its shape, and the shape here is unmistakable." = "姓名与年份的记录容不下情意，却能留下它的轮廓，而这里的轮廓再清楚不过。"
+"We are taught to distrust the simple explanation." = "我们被教导，不要轻信简单的解释。"
+"Sometimes the simple explanation is simply true." = "可有时，简单的解释恰恰就是真相。"
+"It will be said that {actor} and {partner} were matched for the usual reasons - kin, standing, the wishes of others - and that love, if it came, came later." = "有人会说，{actor}与{partner}的结合无非出于那些寻常缘由——亲族、地位、旁人的意愿——至于爱情，即便有，也是后来的事。"
+"It will be said that {partner} and I were matched for the usual reasons - kin, standing, the wishes of others - and that love, if it came, came later." = "有人会说，{partner}与我的结合无非出于那些寻常缘由——亲族、地位、旁人的意愿——至于爱情，即便有，也是后来的事。"
+"A skeptic would answer that every {bond} looks like a love story from a distance, and that I am reading my own wishes into a line of record." = "怀疑者会反驳，远远望去，每一段{bond}都像爱情故事，而我不过是把自己的愿望读进了史册的一行字里。"
+"Perhaps." = "或许如此。"
+"But the usual reasons leave their own marks, and I find none of them here." = "但那些寻常缘由也会留下各自的痕迹，而我在这里一处也找不到。"
+"I grant the danger." = "我承认，确有这样的风险。"
+"Yet every other explanation needs more than the record gives, and love needs only what it has." = "然而，其他每一种解释都需要史册之外的佐证，唯有爱情，凭已有的记载便已足够。"
+"So I return to where I began: {subject} was a love story." = "于是，我回到最初的论点：{subject}是一个爱情故事。"
+"The record does not say so in as many words." = "史册并未如此直白地写明。"
+"It did not need to." = "它也无须写明。"
+"Let the clerks keep their years and names." = "就让文书们去记录他们的年份和姓名吧。"
+"What they recorded, in {subject}, is two people who chose each other." = "在{subject}中，他们记下的，是两个选择了彼此的人。"
+"I have tried to write of {subject} as a stranger would, and I have failed, and I am not sorry." = "我曾试着像陌生人一样写下{subject}，但我失败了，也并不为此遗憾。"
+"It was a love story." = "这是一个爱情故事。"
+
+# institution：对婚姻制度的支持与反对。
+"This essay concerns {subject}, but my true subject is the {bond} itself." = "这篇论文谈的是{subject}，但我真正要讨论的，是{bond}本身。"
+"I mean to defend it, and this {bond} is my best evidence." = "我打算为它辩护，而这段{bond}就是我最有力的证据。"
+"This essay concerns {subject}, but my quarrel is with the {bond} itself." = "这篇论文谈的是{subject}，但我所质疑的，是{bond}本身。"
+"I will argue that it asks more of people than it should, and this {bond} shows how." = "我要论证，它对人的要求过于苛刻，而这段{bond}正说明了这一点。"
+"A {bond} gives a life a shape it would not find alone." = "一段{bond}能赋予人生独自生活时无法拥有的模样。"
+"What the record shows is two people holding to a promise across the years." = "史册展现的，是两个人历经岁月，始终信守一个承诺。"
+"A promise kept is the plainest proof a custom works." = "得到信守的承诺，是一种习俗行之有效的最明白的证明。"
+"Every {bond} begins as a choice and becomes an obligation." = "每一段{bond}都始于选择，最终却成了义务。"
+"The record shows what the {bond} made; it never shows what it prevented." = "史册记下了{bond}成就的事，却从不记下它阻止的事。"
+"A custom that must be kept by promises is a custom that does not trust the people in it." = "一种必须靠承诺维系的习俗，并不信任身处其中的人。"
+"We judge a custom by its best examples and endure it through its worst." = "我们以最好的例子评判一种习俗，却要在最坏的境遇中忍受它。"
+"No custom is natural." = "没有哪种习俗是天生如此的。"
+"Every one of them was decided, and can be decided again." = "每一种习俗都由人定下，也都可以重新决定。"
+"Some will point to every {bond} that failed, and ask what the custom is worth." = "有人会指着一段段失败的{bond}，追问这种习俗究竟有何价值。"
+"It will be said that I mistake the lives of two people for the failure of a custom." = "有人会说，我把两个人的人生误当成了一种习俗的失败。"
+"Every promise fails somewhere." = "无论怎样的承诺，总有人无法信守。"
+"That is not an argument against promising." = "这不能成为反对许诺的理由。"
+"But a custom is only ever the people who keep it, and this one asks them too much." = "但一种习俗终究由遵守它的人构成，而这种习俗对他们索求太多。"
+"So I return to {subject}, and I defend what it was: a {bond}, kept." = "于是，我回到{subject}，并为它的本质辩护：一段得到坚守的{bond}。"
+"There are worse things to build a life on, and few better." = "以此作为人生的根基，并不算差；比它更好的选择，也寥寥无几。"
+"I return to {subject}, and I ask again whether a {bond} is a thing we should go on asking of people." = "我回到{subject}，再次追问：我们是否还应继续要求人们维系一段{bond}。"
+"I do not think the record says yes." = "我不认为史册给出了肯定的答案。"
+
+# scandal：关系之外的人与受到的伤害。
+"I will argue that {subject} cannot be read honestly without the people the record keeps beside it - and that, read honestly, it is a scandal." = "我要论证，若不顾史册记下的相关人物，就无法诚实地理解{subject}；而诚实地看，它就是一桩丑闻。"
+"I mean to show that it was not the simple thing it is usually taken for, and that someone was wronged by it." = "我要说明，这件事并非人们通常以为的那样简单，而且有人因此受到了伤害。"
+"I know what was said about it." = "我知道人们如何议论这件事。"
+"I mean to answer it, and to admit what in it is true." = "我打算回应这些议论，也承认其中属实的部分。"
+"I write about {subject} as one it wronged." = "我以受害者的身份写下{subject}。"
+"{partner} is my {relation}; I will not pretend to be impartial, and I will not keep silent." = "{partner}是我的{relation}；我不会假装公正无偏，也不会保持沉默。"
+"The record keeps more names around this {bond} than the two it is about." = "史册在这段{bond}周围记下的姓名，不止当事的两人。"
+"A {bond} that leaves another partner standing outside it is not a private matter." = "一段将另一位伴侣拒之门外的{bond}，并不只是私事。"
+"What was done here was done in plain sight, and the record saw it." = "这里发生的事都在众目睽睽之下，史册也看得清楚。"
+"I will not hide behind the record." = "我不会躲在史册背后。"
+"It says what it says about me." = "它如何记我，我就如何认下。"
+"There were others in my life before this, and the record keeps them too." = "在此之前，我生命中还有过别人，史册也记下了他们。"
+"Every scandal is first a set of facts that someone wished were arranged differently." = "每桩丑闻，首先都是一些有人希望能换个样子的事实。"
+"We forgive the powerful their secrets and the weak their lies." = "我们原谅强者的秘密，也原谅弱者的谎言。"
+"Here neither excuse is available." = "可在这里，两种借口都站不住脚。"
+"Some will say that what came before is no one's business, and that {actor} and {partner} owed nothing to anyone outside their {bond}." = "有人会说，过去的事与旁人无关，{actor}与{partner}也不欠这段{bond}之外的任何人。"
+"Some will say that what came before is no one's business, and that {partner} and I owed nothing to anyone outside our {bond}." = "有人会说，过去的事与旁人无关，{partner}与我也不欠这段{bond}之外的任何人。"
+"It may be objected that the record is a poor witness to the heart, and that a name beside another name proves nothing." = "也许有人会反驳，史册并不能可靠地见证人心，两个并列的姓名也证明不了什么。"
+"But a {bond} is a promise made in public, and promises made in public may be judged in public." = "但一段{bond}是公开作出的承诺，而公开的承诺，也可以由众人评判。"
+"True, a name proves nothing alone." = "确实，单凭一个姓名证明不了什么。"
+"Here there are several, and they point the same way." = "可这里有好几个姓名，都指向同一个结论。"
+"I return, then, to {subject}, and to the people it left outside." = "那么，我回到{subject}，也回到那些被它拒之门外的人。"
+"A {bond} that cost others so much was never only a love story." = "一段让旁人付出如此代价的{bond}，从来都不只是爱情故事。"
+"Let {subject} be remembered as it was: a {bond} with more people in it than the two who made it." = "愿人们如实记住{subject}：这段{bond}牵涉的人，远不止缔结它的两人。"
+"I have told what I can of {subject}." = "关于{subject}，我已说出自己能够说的一切。"
+"Let whoever judges it judge all of it." = "无论谁来评判，都请看清它的全貌。"
+
+# alliance：联姻、权势与利益。
+"I will argue that {subject} was an alliance before it was anything else - that the {bond} served purposes larger than the two who made it." = "我要论证，{subject}首先是一场结盟；这段{bond}服务的目的，超出了缔结它的两人。"
+"Its real business, I believe, was power, and I mean to show where the power lay." = "我认为，这件事真正关乎权力，而我要指出权力究竟握在何处。"
+"I will not pretend it was made without thought of what it would bring; few such things are." = "我不会假装当初未曾考虑这会带来什么；这样的事很少全无盘算。"
+"Look at who held what when they were joined." = "看看他们结合时，各自掌握着什么。"
+"Look at what each of us held when we were joined." = "看看我们结合时，各自掌握着什么。"
+"A {bond} between peoples is a treaty written in the only ink some treaties allow." = "族群之间的一段{bond}，就是一纸盟约；有些盟约，只能用这样的方式写成。"
+"Those who hold office do not choose as others do; every choice they make is also a statement." = "身居公职者无法像旁人那样选择；他们的每个选择，也都是一种表态。"
+"Those who hold office do not choose as others do; every choice I made was also a statement." = "身居公职者无法像旁人那样选择；我的每个选择，也都是一种表态。"
+"Power rarely announces itself." = "权力鲜少主动表明身份。"
+"It prefers to be mistaken for something gentler." = "它更愿意被误认成某种温和的东西。"
+"I do not say there was no affection in it." = "我并不是说，其中毫无情意。"
+"I say affection was not what moved it." = "我只是说，促成它的并不是情意。"
+"It may be said that I see conspiracy where there was only coincidence: two people who happened to hold rank, and happened to care for each other." = "有人可能说，我把巧合看成了阴谋：不过是两个人恰好都有地位，也恰好彼此在意。"
+"Others will say that every {bond} among the great is called an alliance by those who were not invited to it." = "也有人会说，权贵之间的每段{bond}，都会被那些未获邀请的人称为结盟。"
+"Coincidence explains one thing." = "巧合可以解释一件事。"
+"It does not explain everything that came after." = "却无法解释此后发生的一切。"
+"But I was not seeking an invitation, only an explanation, and this is the one the record supports." = "但我所求的不是一份请柬，只是一个解释，而史册支持的正是这个解释。"
+"So I return to {subject}." = "于是，我回到{subject}。"
+"Whatever it was to the two of them, to everyone else it was a move on a board, and it was played well." = "无论这对他们两人意味着什么，在旁人看来，这都是棋盘上的一步，而且走得高明。"
+"Read {subject} as an alliance and the record makes sense." = "将{subject}理解为结盟，史册便说得通了。"
+"Read it any other way and it does not." = "换作其他解释，便说不通。"
+"I have written of my own {bond} as the alliance it also was." = "我把自己的{bond}写成了一场结盟，因为它也确实如此。"
+"I do not think that makes it smaller." = "我不认为这会减损它的意义。"
+
+# prejudice：作者对不同族群婚恋的偏见。
+"I will say what many of my people think and few will write: that {their_kind} is a mistake, and that {subject} shows why." = "我要说出许多同族心里想着、却少有人愿意写下的话：{their_kind}是个错误，而{subject}说明了原因。"
+"I hold that {their_kind} should not be, and the record of this one proves the point." = "我认为{their_kind}不应存在，而这次的记载正好证明了这一点。"
+"Consider who they were, and what they were bound by." = "想想他们是谁，又受着怎样的约束。"
+"Custom exists because someone, long ago, paid for its absence." = "习俗之所以存在，是因为很久以前，有人为缺少它付出过代价。"
+"Among {race_plural} such a thing would not be permitted, and we are not the poorer for it." = "在{race_plural}之中，这种事不会被允许，而我们也并未因此失去什么。"
+"I take no pleasure in saying this." = "说这些话并不让我高兴。"
+"I take less in pretending it is not so." = "假装事实并非如此，更不会让我高兴。"
+"It is fashionable to call every old judgment a prejudice." = "如今流行把一切古老的判断都称为偏见。"
+"Some of them are simply memory." = "其中有些，其实只是记忆。"
+"I will be called narrow for this, and told that what {race_plural} do among themselves is none of my concern." = "我会因此被斥为狭隘，有人会说，{race_plural}彼此之间做什么，与我无关。"
+"Some will say that two people choosing each other is never the business of anyone else's people." = "有人会说，两个人选择彼此，从来都不是其他族群该管的事。"
+"But what one people allows, its neighbours must live beside." = "但一个族群容许的事，它的邻人也必须与之共处。"
+"That makes it my concern." = "这样一来，就与我有关了。"
+"Every people's customs are someone else's business the moment they cross a border, and this one did." = "任何族群的习俗，一旦越过边界，就与别人有关，而这次它确实越界了。"
+"I return to {subject}, then, and to what it shows: that {their_kind} is no small thing, whatever its defenders say." = "那么，我回到{subject}及其揭示的事：无论辩护者怎样说，{their_kind}都绝非小事。"
+"Let others praise {subject}." = "就让别人去赞美{subject}吧。"
+"I record it as a warning, and I expect to be proved right." = "我将它记下，作为警示，并相信事实终将证明我是对的。"
+
+# mourning：对逝去伴侣与关系的悼念。
+"This essay concerns {subject}, and it is an essay of mourning." = "这篇论文谈的是{subject}，也是一篇悼文。"
+"What the record keeps of the two of them now ends in a death, and I cannot write of one without the other." = "如今，史册中关于他们两人的记载止于一场死亡，而我无法只写其中一人，不提另一人。"
+"I write about {subject}, after it ended in the only way that cannot be argued with." = "我写下{subject}，此时它已以唯一无可争辩的方式结束。"
+"{partner} is my {relation}, and I write about {subject} in mourning." = "{partner}是我的{relation}，我怀着哀思写下{subject}。"
+"Every {bond} is shadowed by its end; this one reached it." = "每一段{bond}都笼罩在终结的阴影下；这一段已走到了尽头。"
+"The record gives the years." = "史册记下了那些岁月。"
+"It does not give the absence that followed them." = "却未曾记下此后失去那个人的空缺。"
+"What was begun in {year} was finished by death." = "始于{year}年的一切，终于死亡。"
+"Grief is the last form love takes, and the longest." = "悲伤是爱情最后的模样，也是最漫长的模样。"
+"We write about the dead to keep them company a little longer." = "我们写下逝者，是想再多陪伴他们一会儿。"
+"It may be said that every {bond} ends this way, and that there is nothing in this one to mourn more than any other." = "有人也许会说，每一段{bond}都这样结束，这一段并没有什么比其他的更值得哀悼。"
+"Some will say I should write of the {bond} and not of its end." = "有人会说，我应该写这段{bond}，而不是它的终结。"
+"Every {bond} ends; this one was theirs." = "每一段{bond}都会结束；可这一段，属于他们。"
+"That is reason enough." = "这就已经足够。"
+"I would, if the end had not reached back and changed everything before it." = "如果这个结局没有反过来改变此前的一切，我本来也会那样写。"
+"I return to {subject}, and to the death that closed it." = "我回到{subject}，也回到终结它的那场死亡。"
+"I have nothing to add to that, except that it should be remembered." = "对此，我无话可补，只愿人们记住它。"
+"I have written what I can of my own {bond}." = "关于自己的{bond}，我已写下能够写出的一切。"
+"The rest I keep." = "其余的，我留在心里。"
+
+# celebration：对婚恋的祝颂。
+"This essay is a celebration, and its subject is {subject}." = "这篇论文是一篇颂文，所颂的是{subject}。"
+"I see no reason to be ashamed of praising something good." = "赞美美好的事物，我看不出有什么可羞愧的。"
+"I write about {subject} to praise it." = "我写下{subject}，是为了赞颂它。"
+"Not every essay must find fault; this one will not." = "并非每篇论文都非得挑剔；这一篇就不会。"
+"I write about {subject}, and I mean to celebrate it while I can." = "我写下{subject}，想趁自己还能写时，好好赞颂它。"
+"{partner} is my {relation}, and I write about {subject} with nothing but joy." = "{partner}是我的{relation}，我满怀喜悦地写下{subject}。"
+"It joined more than two lives; it joined everyone who cared for them." = "它联结的不止两个人的人生，也联结了所有关心他们的人。"
+"It joined more than two lives; it joined everyone who cared for us." = "它联结的不止两个人的人生，也联结了所有关心我们的人。"
+"Some events diminish the world." = "有些事让世界有所缺失。"
+"This one enlarged it." = "这件事却让世界更加丰盛。"
+"This one enlarged mine." = "这件事却让我的世界更加丰盛。"
+"The record has few happy lines." = "史册中幸福的字句并不多。"
+"This is one of them." = "这是其中一句。"
+"This is one of mine." = "这是属于我的一句。"
+"Joy is harder to write than grief, and rarer in the record, which is a reason to write it down." = "喜悦比悲伤更难写，也更少见于史册；正因如此，更应把它写下来。"
+"We spend so many pages on what went wrong." = "我们用那么多篇幅，记述出了差错的事。"
+"Let a few go to what went right." = "也留几页给那些圆满的事吧。"
+"It will be said that a celebration is no essay, and that praise without reservation is only flattery." = "有人会说，颂文算不上论文，毫无保留的赞美只是奉承。"
+"A colder reader will ask what there is to say about a happy thing." = "冷淡些的读者会问，一件幸福的事，有什么可说的。"
+"But a thing can deserve praise without needing defence, and this one does." = "但一件事可以无须辩护，便值得赞美，这件事正是如此。"
+"There is everything to say about it." = "关于它，有说不尽的话。"
+"That is what makes it happy." = "这恰恰就是它幸福之处。"
+"I return to {subject}, then, and I praise it once more." = "那么，我回到{subject}，再一次赞颂它。"
+"Let the record keep its sorrows; this was not one of them." = "就让史册保留那些悲伤吧；这件事并不在其中。"
+"This was my {bond}." = "这就是我的{bond}。"
+"I have praised it, and I would again." = "我已赞美过它，也愿再次赞美。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{event} in {date}" = "{date}{event}的经历"
+"{event}" = "{event}的经历"
+"{series}, {year} to {year_to}" = "{year}年至{year_to}年间{series}"
+"{series}" = "{series}"
+
+[[rulesets]]
+name = "event"
+[rulesets.rules]
+# game_words.in_own_words 把原生双方事件改成 my marriage to / my romance with。
+"my marriage to {partner}" = "我与{partner}结婚"
+"the marriage of {actor} and {partner}" = "{actor}与{partner}结婚"
+"my romance with {partner}" = "我与{partner}相恋"
+"the romance of {actor} and {partner}" = "{actor}与{partner}相恋"
+# subject.describe 在原生短语不可用时使用 love between。
+"the love between {actor} and {partner}" = "{actor}与{partner}相爱"
+
+[[rulesets]]
+name = "series"
+[rulesets.rules]
+"the marriages of {people}" = "{people}的婚姻经历"
+"the loves of {people}" = "{people}的爱情经历"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "partner"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "people"
+[rulesets.rules]
+"{actor}" = "{actor}"
+"{actor} and {people}" = "{actor}与{people}"
+"{actor}, {people}" = "{actor}、{people}"
+"{::subscribed_books::essay_bond_facts::count} others" = "另外{::subscribed_books::essay_bond_facts::count}人"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
+
+[[rulesets]]
+name = "year_to"
+[rulesets.rules]
+"{year}" = "{year}"
+
+[[rulesets]]
+name = "bond"
+[rulesets.rules]
+"marriage" = "婚姻"
+"love affair" = "恋情"
+
+[[rulesets]]
+name = "relation"
+[rulesets.rules]
+"{::subscribed_books::essay::relation}" = "{::subscribed_books::essay::relation}"
+
+[[rulesets]]
+name = "race_plural"
+[rulesets.rules]
+"{::creatures::name::plural}" = "{::creatures::name::plural}"
+
+[[rulesets]]
+name = "first_race"
+[rulesets.rules]
+"{::subscribed_books::essay::race_article}" = "{::subscribed_books::essay::race_article}"
+
+[[rulesets]]
+name = "second_race"
+[rulesets.rules]
+"{::subscribed_books::essay::race_article}" = "{::subscribed_books::essay::race_article}"
+
+[[rulesets]]
+name = "their_kind"
+[rulesets.rules]
+# essay.vars_for 使用双方种族及 noun 组装；混合族群的两个字段分别解析。
+"a {bond} between {first_race} and {second_race}" = "{first_race}与{second_race}之间的{bond}"
+"a {bond} among {race_plural}" = "{race_plural}之间的{bond}"

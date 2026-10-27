@@ -1,0 +1,164 @@
+# forms/essay 的主题与 game_words 返回的渗透阴谋、冒用身份短语。
+# 种族、人物、文明、目标和时间各自解析，不把事件正文当作一个姓名。
+base = "subscribed_books::essay_vocabulary"
+
+[[rulesets]]
+name = "matter"
+[rulesets.rules]
+"{::subscribed_books::essay::matter}" = "{::subscribed_books::essay::matter}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
+
+[[rulesets]]
+name = "year_to"
+[rulesets.rules]
+"{year}" = "{year}"
+
+[[rulesets]]
+name = "season"
+[rulesets.rules]
+"spring" = "春季"
+"summer" = "夏季"
+"autumn" = "秋季"
+"winter" = "冬季"
+
+[[rulesets]]
+name = "season_date"
+[rulesets.rules]
+"{season}" = "{season}"
+"early {season}" = "{season}初"
+"mid {season}" = "{season}中旬"
+"late {season}" = "{season}末"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"the {season_date} of {year}" = "{year}年{season_date}"
+"{season_date} of {year}" = "{year}年{season_date}"
+"the year {year}" = "{year}年"
+"{year}" = "{year}年"
+
+[[rulesets]]
+name = "race"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
+
+[[rulesets]]
+name = "race2"
+[rulesets.rules]
+"{race}" = "{race}"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"I" = "我"
+"me" = "我"
+"{::subscribed_books::vocabulary::plain_person}" = "{::subscribed_books::vocabulary::plain_person}"
+"the {race} {::subscribed_books::vocabulary::plain_person}" = "{race}{::subscribed_books::vocabulary::plain_person}"
+"the {race} necromancer {::subscribed_books::vocabulary::plain_person}" = "{race}死灵法师{::subscribed_books::vocabulary::plain_person}"
+# apply_bad_writing 在低文笔作品里可能重复 the 后的种族；这只是已知身份描述的词位。
+"the {race} {race2} necromancer {::subscribed_books::vocabulary::plain_person}" = "{race}死灵法师{::subscribed_books::vocabulary::plain_person}"
+
+[[rulesets]]
+name = "people"
+[rulesets.rules]
+"{actor}" = "{actor}"
+"{actor} and {people}" = "{actor}与{people}"
+"{actor}, {people}" = "{actor}、{people}"
+
+[[rulesets]]
+name = "infiltration_plot"
+[rulesets.rules]
+"my plot to infiltrate {@bt_entity|::subscribed_books::vocabulary::entity}" = "我渗透{@bt_entity|::subscribed_books::vocabulary::entity}的阴谋"
+"my plot to infiltrate" = "我的渗透阴谋"
+"the plot of {actor} to infiltrate {@bt_entity|::subscribed_books::vocabulary::entity}" = "{actor}渗透{@bt_entity|::subscribed_books::vocabulary::entity}的阴谋"
+"the plot of {actor} to infiltrate" = "{actor}的渗透阴谋"
+
+[[rulesets]]
+name = "infiltration"
+[rulesets.rules]
+"{infiltration_plot} under the influence of {actor}" = "在{actor}影响下发生的{infiltration_plot}"
+"{infiltration_plot}" = "{infiltration_plot}"
+
+[[rulesets]]
+name = "impersonated"
+[rulesets.rules]
+# ASSUME_IDENTITY 的身份字段可以是化名，也可以是实际人物的完整身份。
+"{::text::name}" = "{::text::name}"
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "impersonation_audience"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "impersonation"
+[rulesets.rules]
+# getPhrase: the impersonation of <身份> by <人物> before <文明> in <日期>。
+# in_own_words 分别将实施者或被冒充的作者改写为 my，不能交换双方。
+"my impersonation of {impersonated} before {impersonation_audience}" = "我在{impersonation_audience}面前冒充{impersonated}的经历"
+"the impersonation of {impersonated} by {actor} before {impersonation_audience}" = "{actor}在{impersonation_audience}面前冒充{impersonated}的经历"
+"my impersonation by {actor} before {impersonation_audience}" = "{actor}在{impersonation_audience}面前冒充我的经历"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{::subscribed_books::essay_value::subject}" = "{::subscribed_books::essay_value::subject}"
+"{::subscribed_books::essay_membership_facts::subject}" = "{::subscribed_books::essay_membership_facts::subject}"
+"{::subscribed_books::essay_making_facts::subject}" = "{::subscribed_books::essay_making_facts::subject}"
+"{::subscribed_books::essay_site_links::subject}" = "{::subscribed_books::essay_site_links::subject}"
+"{::subscribed_books::essay_marriage::subject}" = "{::subscribed_books::essay_marriage::subject}"
+"{::subscribed_books::essay_fight_vocabulary::subject}" = "{::subscribed_books::essay_fight_vocabulary::subject}"
+"{::subscribed_books::essay_apprenticeship_vocabulary::subject}" = "{::subscribed_books::essay_apprenticeship_vocabulary::subject}"
+"{::subscribed_books::essay_study::subject}" = "{::subscribed_books::essay_study::subject}"
+"{::subscribed_books::essay_settling::subject}" = "{::subscribed_books::essay_settling::subject}"
+"{::subscribed_books::essay_creation_vocabulary::subject}" = "{::subscribed_books::essay_creation_vocabulary::subject}"
+"{::subscribed_books::essay_writing_vocabulary::subject}" = "{::subscribed_books::essay_writing_vocabulary::subject}"
+"{::subscribed_books::essay_career_vocabulary::subject}" = "{::subscribed_books::essay_career_vocabulary::subject}"
+"{impersonation} in {::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}{impersonation}"
+"{infiltration} in {date}" = "{date}的{infiltration}"
+"{infiltration}" = "{infiltration}"
+"the events of {year}" = "{year}年的事件"
+"the years from {year} to {year_to}" = "从{year}年到{year_to}年的岁月"
+"the life of {actor}" = "{actor}的一生"
+"the lives of {people}" = "{people}的一生"
+"my subject" = "我所论述的事情"
+
+[[rulesets]]
+name = "goal"
+[rulesets.rules]
+"steal treasures" = "盗取宝物"
+"initiate sabotage" = "发动破坏活动"
+"instill terror" = "制造恐慌"
+"prepare a coup" = "筹备政变"
+
+[[rulesets]]
+name = "goals"
+[rulesets.rules]
+"{goal}" = "{goal}"
+"{goal} and {goals}" = "{goal}并{goals}"
+"{goal}, {goals}" = "{goal}、{goals}"
+
+[[rulesets]]
+name = "infiltration_action"
+[rulesets.rules]
+"{actor} plotted to infiltrate {@bt_entity|::subscribed_books::vocabulary::entity}" = "{actor}密谋渗透{@bt_entity|::subscribed_books::vocabulary::entity}"
+"{actor} plotted to infiltrate" = "{actor}策划了渗透阴谋"
+
+[[rulesets]]
+name = "infiltration_record"
+[rulesets.rules]
+"{infiltration_action} in order to {goals} under the influence of {actor}" = "在{actor}的影响下，{infiltration_action}，以便{goals}"
+"{infiltration_action} under the influence of {actor}" = "在{actor}的影响下，{infiltration_action}"
+"{infiltration_action} in order to {goals}" = "{infiltration_action}，以便{goals}"
+"{infiltration_action}" = "{infiltration_action}"
+
+[[rulesets]]
+[rulesets.rules]
+"In {date}, {infiltration_record}." = "{date}，{infiltration_record}。"
+"In {date} {infiltration_record}." = "{date}，{infiltration_record}。"
+"{infiltration_record}." = "{infiltration_record}。"

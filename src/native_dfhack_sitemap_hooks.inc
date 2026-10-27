@@ -202,6 +202,7 @@ static uint64_t native_dfhack_text_capture_key(const graphicst *gps) {
         rect(text.bounds); rect(text.clip_bounds); rect(text.parent_bounds);
         scalar(text.first_line); scalar(static_cast<unsigned char>(text.role));
         scalar(text.native_width); scalar(text.total_lines);
+        scalar(text.document_offset); scalar(text.line_offset);
     }
     scalar(count);
     return key;
@@ -320,6 +321,7 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
                 text.x > gps->dimx - static_cast<int>(text.visible.size())) continue;
         bool current = true;
         size_t current_length = 0;
+        std::vector<int> foregrounds;
         for (size_t at = 0; at < text.visible.size(); ++at) {
             const size_t tile = static_cast<size_t>(text.x + static_cast<int>(at)) *
                 gps->dimy + text.y;
@@ -331,6 +333,8 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
                 current = false;
                 break;
             }
+            const auto *cell = origin.grid + tile * 8;
+            foregrounds.push_back((cell[1] << 16) | (cell[2] << 8) | cell[3]);
             ++current_length;
         }
         const bool scrollbar_clipped = (text.overlay.role == NativeDfhackOverlayTextRole::Material ||
@@ -338,6 +342,7 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
             current_length > 0 && text.visible.size() - current_length <= 2;
         if (current || scrollbar_clipped) {
             auto overlay = text.overlay;
+            overlay.visible_foregrounds = std::move(foregrounds);
             // A List scrollbar is painted after its text and can cover the
             // rightmost cells. The still-visible prefix retains the complete
             // choice name; it is not a shorter material vocabulary entry.
@@ -425,6 +430,7 @@ static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_tex
             if (!alive) continue;
             auto preserved = text;
             preserved.visible.clear();
+            preserved.visible_foregrounds.clear();
             result.push_back(std::move(preserved));
             continue;
         }
@@ -433,6 +439,14 @@ static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_tex
             visible.x += static_cast<int>(begin);
             visible.visible_offset += static_cast<int>(begin);
             visible.visible = text.visible.substr(begin, end - begin);
+            visible.visible_foregrounds.clear();
+            for (size_t at = begin; at < end; ++at) {
+                const size_t tile = static_cast<size_t>(text.x + static_cast<int>(at)) *
+                    gps->dimy + text.y;
+                const auto *cell = capture.grid + tile * 8;
+                visible.visible_foregrounds.push_back(
+                    (cell[1] << 16) | (cell[2] << 8) | cell[3]);
+            }
             result.push_back(std::move(visible));
         }
     }
@@ -754,6 +768,52 @@ static void native_dfhack_overlay_quick_filter(NativeDfhackLuaState *state,
 
 #include "native_dfhack_spectate_capture.inc"
 
+static bool native_dfhack_codex_heading(NativeDfhackLuaState *state,
+        int token, int widget, NativeDfhackOverlayText &result) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (result.overlay_name != "gui/codex-legends.legendsreader" ||
+            !native_dfhack_sitemap_raw_field(state, token, "text") ||
+            stack.type(state, -1) != 6 || stack.tocfunction(state, -1)) return false;
+    const int callback = stack.gettop(state);
+    // The heading closure owns this overlay's self. Recover its complete
+    // field before clipping, without invoking Lua or classifying its spelling.
+    const char *upvalue = api.getupvalue(state, callback, 1);
+    if (!upvalue || std::strcmp(upvalue, "self") || stack.type(state, -1) != 5)
+        return false;
+    const int owner = stack.gettop(state);
+    if (!native_dfhack_sitemap_raw_field(state, widget, "parent_view") ||
+            stack.type(state, -1) != 5 || !api.rawequal(state, -1, owner)) return false;
+    stack.settop(state, owner);
+    if (!native_dfhack_sitemap_raw_field(state, owner, "heading")) return false;
+    const auto heading = native_dfhack_overlay_lua_string(state, -1);
+    if (!heading || heading->empty() || !heading->starts_with(result.full)) return false;
+    stack.settop(state, owner);
+    if (!native_dfhack_sitemap_raw_field(state, owner, "found") ||
+            stack.type(state, -1) != 5) return false;
+    const int found = stack.gettop(state);
+    if (!native_dfhack_sitemap_raw_field(state, found, "wc")) return false;
+    const bool written_work = stack.type(state, -1) == 7;
+    if (!written_work) {
+        if (stack.type(state, -1) != 0) return false;
+        stack.settop(state, found);
+        if (!native_dfhack_sitemap_raw_field(state, found, "artifact") ||
+                stack.type(state, -1) != 7) return false;
+    }
+    stack.settop(state, callback);
+    NativeDfhackLuaDebug producer{};
+    if (!stack.getinfo(state, ">Su", &producer) || producer.nparams != 0 ||
+            producer.isvararg || producer.nups != 1) return false;
+    const auto source = native_dfhack_lua_text(producer.source, 32768);
+    if (!source || !native_dfhack_lua_source_key(*source).ends_with("/gui/codex-legends.lua"))
+        return false;
+    result.full = *heading;
+    result.role = written_work ? NativeDfhackOverlayTextRole::WrittenWorkHeading
+                               : NativeDfhackOverlayTextRole::ArtifactName;
+    return true;
+}
+
 static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
         NativeDfhackLuaState *state, std::string_view painted_full) {
     const auto &api = g_native_dfhack_sitemap_lua_api;
@@ -840,6 +900,7 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
         return result;
     }
     if (result.option_dynamic) {
+        if (native_dfhack_codex_heading(state, token, widget, result)) return result;
         if (auto complete = native_dfhack_overlay_dynamic_text(state, token,
                 result.overlay_name, painted_full)) result.full = std::move(*complete);
         result.option_name = native_dfhack_overlay_builder_name(state, token, widget,

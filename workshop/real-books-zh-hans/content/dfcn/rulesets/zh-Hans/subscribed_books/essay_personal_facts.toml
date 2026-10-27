@@ -1,0 +1,61 @@
+# evidence.lua 的个人信仰、杀戮与作品创作记录；不把次数当成人名。
+base = "subscribed_books::essay_personal_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{actor} worshipped {deity}." = "{actor}信奉{deity}。"
+"By the record, {actor} had killed once." = "据记载，{actor}曾杀戮一次。"
+"By the record, {actor} had killed {#digits} times." = "据记载，{actor}曾杀戮{#digits}次。"
+
+# evidence.event_line 的 ARTIFACT_CREATED；成书也可能作为实物作品记载。
+"{actor} made {creation} at {place} in {year}." = "{year}年，{actor}在{place}创作了{creation}。"
+"{actor} made {creation} in {year}." = "{year}年，{actor}创作了{creation}。"
+
+# evidence.death_line：死者始终使用姓名，凶手可能由作者自称 me。
+"{victim} was killed by {slayer} at {place} in {year}." = "{year}年，{victim}在{place}被{slayer}杀死。"
+"{victim} was killed by {slayer} in {year}." = "{year}年，{victim}被{slayer}杀死。"
+"{victim} died of {cause} at {place} in {year}." = "{year}年，{victim}在{place}因{cause}而死。"
+"{victim} died of {cause} in {year}." = "{year}年，{victim}因{cause}而死。"
+"{victim} died at {place} in {year}." = "{year}年，{victim}在{place}去世。"
+"{victim} died in {year}." = "{year}年，{victim}去世。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "deity"
+[rulesets.rules]
+"{::text::deity}" = "{::text::deity}"
+
+[[rulesets]]
+name = "creation"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_vocabulary::book}" = "{::subscribed_books::essay_writing_vocabulary::book}"
+"{::subscribed_books::recorded_artifact}" = "{::subscribed_books::recorded_artifact}"
+
+[[rulesets]]
+name = "victim"
+[rulesets.rules]
+"{::subscribed_books::guide::person}" = "{::subscribed_books::guide::person}"
+
+[[rulesets]]
+name = "slayer"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::year}" = "{::subscribed_books::essay_vocabulary::year}"
+
+[[rulesets]]
+name = "cause"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::cause}" = "{::subscribed_books::vocabulary::cause}"

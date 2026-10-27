@@ -1,0 +1,72 @@
+# forms/essay/subjects/writing.lua 的论述模板及去重后留下的独立句。
+# 作品与文体均使用受限的语义词池，不接受任意正文作为书名。
+base = "subscribed_books::essay_writing"
+
+[[rulesets]]
+[rulesets.rules]
+# 各节通用论点。
+"It did not go unanswered." = "它并非无人回应。"
+"Others have written of it." = "别人也曾撰文谈论它。"
+"It was not the only thing I wrote." = "它并非我唯一的作品。"
+"It has its place among my works." = "它在我的作品中自有一席之地。"
+"It has its place among its author's works." = "它在作者的作品中自有一席之地。"
+
+# 创作缘起。
+"I write about {::subscribed_books::essay_vocabulary::subject}, because I owe its readers an account of how it came to be." = "我写下{::subscribed_books::essay_vocabulary::subject}，因为我应该向读者交代它是如何诞生的。"
+"This essay concerns {::subscribed_books::essay_vocabulary::subject}. I mean to ask how such a work comes into the world." = "本文讨论{::subscribed_books::essay_vocabulary::subject}。我想探问，这样一部作品是如何来到世上的。"
+"This essay concerns {::subscribed_books::essay_vocabulary::subject}." = "本文讨论{::subscribed_books::essay_vocabulary::subject}。"
+"I mean to ask how such a work comes into the world." = "我想探问，这样一部作品是如何来到世上的。"
+"A work is not chosen; it arrives, and the writer only makes room for it." = "作品并非由人选定；它自行到来，作者只是为它腾出地方。"
+"The record says when. I can say how." = "史册记下了何时发生。我能讲述如何发生。"
+"The record says when." = "史册记下了何时发生。"
+"I can say how." = "我能讲述如何发生。"
+"Every {::subscribed_books::essay_writing_vocabulary::form} begins before its first word." = "任何{::subscribed_books::essay_writing_vocabulary::form}，都在落下第一个字之前便已开始。"
+"We see the finished work, never the nights that made it." = "我们看见完成的作品，却看不见造就它的那些夜晚。"
+"It will be said that a work should speak for itself." = "有人会说，作品应当自己说话。"
+"It does. This is only the story of its voice." = "它确实如此。这只是在讲述，它的声音从何而来。"
+"It does." = "它确实如此。"
+"This is only the story of its voice." = "这只是在讲述，它的声音从何而来。"
+"I return to {::subscribed_books::essay_vocabulary::subject}. That is how it began. What it became is for its readers." = "回到{::subscribed_books::essay_vocabulary::subject}。它便是这样开始的。至于它后来成了什么，就交由读者评说。"
+"I return to {::subscribed_books::essay_vocabulary::subject}." = "回到{::subscribed_books::essay_vocabulary::subject}。"
+"That is how it began." = "它便是这样开始的。"
+"What it became is for its readers." = "至于它后来成了什么，就交由读者评说。"
+
+# 为作品自豪。
+"I write about {::subscribed_books::essay_vocabulary::subject}, and I will say it without false modesty: {::subscribed_books::essay_writing_vocabulary::book} is the best thing I have made." = "我写下{::subscribed_books::essay_vocabulary::subject}，也不打算故作谦虚：{::subscribed_books::essay_writing_vocabulary::book}是我最好的作品。"
+"I will argue that {::subscribed_books::essay_vocabulary::subject} deserves more notice than it has had." = "我要论证，{::subscribed_books::essay_vocabulary::subject}值得受到比现在更多的关注。"
+"Everything I knew went into {::subscribed_books::essay_writing_vocabulary::book}." = "我将自己所知的一切，都倾注在{::subscribed_books::essay_writing_vocabulary::book}之中。"
+"I have read it since, and I would change very little." = "后来我也重读过它，想改动的地方寥寥无几。"
+"Good work is often quiet in its own time." = "好的作品，在问世的年代往往默默无闻。"
+"Pride in work well done is the only pride that harms no one." = "为出色完成的作品感到自豪，是唯一不会伤害他人的自豪。"
+"It will be said that a writer is the worst judge of their own work." = "有人会说，作者最不适合评判自己的作品。"
+"The worst judge, perhaps. Not the least informed." = "或许最不适合评判，却并非最不了解它。"
+"The worst judge, perhaps." = "或许最不适合评判。"
+"Not the least informed." = "却并非最不了解它。"
+"I return to {::subscribed_books::essay_vocabulary::subject}. I am proud of it, and I see no reason to hide that." = "回到{::subscribed_books::essay_vocabulary::subject}。我为它自豪，也找不到掩饰这份自豪的理由。"
+"I am proud of it, and I see no reason to hide that." = "我为它自豪，也找不到掩饰这份自豪的理由。"
+
+# 对作品的遗憾。
+"I write about {::subscribed_books::essay_vocabulary::subject}, because I would write {::subscribed_books::essay_writing_vocabulary::book} differently now, and I owe it an honest account." = "我写下{::subscribed_books::essay_vocabulary::subject}，因为若是如今再写{::subscribed_books::essay_writing_vocabulary::book}，我会写得不同，而我应该对此作出诚实的交代。"
+"This essay concerns {::subscribed_books::essay_vocabulary::subject}, and what its writer might have done better." = "本文讨论{::subscribed_books::essay_vocabulary::subject}，以及作者本可以做得更好的地方。"
+"I was younger then, and it shows." = "那时我还年轻，作品中也看得出来。"
+"There are pages of {::subscribed_books::essay_writing_vocabulary::book} I cannot read without wincing." = "{::subscribed_books::essay_writing_vocabulary::book}中有些篇页，每次读来都让我不禁皱眉。"
+"A work fixes its author at one moment, and the author moves on without it." = "作品将作者定格在某个时刻，而作者会将它留在身后，继续前行。"
+"Every finished work is an argument with the person who finished it." = "每一部完成的作品，都在与完成它的那个人争论。"
+"It will be said that a work belongs to its readers." = "有人会说，作品属于它的读者。"
+"Then let this be one reader's honest notes." = "那么，就把这当作一位读者的诚实札记。"
+"I return to {::subscribed_books::essay_vocabulary::subject}. I would not write it again. I am glad I wrote it once." = "回到{::subscribed_books::essay_vocabulary::subject}。我不会再写一遍，却庆幸自己曾经写过它。"
+"I would not write it again." = "我不会再写一遍。"
+"I am glad I wrote it once." = "我庆幸自己曾经写过它。"
+
+# 为作品辩护。
+"I write about {::subscribed_books::essay_vocabulary::subject}, because {::subscribed_books::essay_writing_vocabulary::book} has been misread, and I mean to answer its critics." = "我写下{::subscribed_books::essay_vocabulary::subject}，因为{::subscribed_books::essay_writing_vocabulary::book}遭到了误读，而我要回应批评它的人。"
+"I will argue that {::subscribed_books::essay_vocabulary::subject} has been judged unfairly." = "我要论证，{::subscribed_books::essay_vocabulary::subject}受到了不公正的评判。"
+"Those who dismissed {::subscribed_books::essay_writing_vocabulary::book} did not read it." = "那些否定{::subscribed_books::essay_writing_vocabulary::book}的人，并没有读过它。"
+"I meant every word, and I mean them still." = "每一个字，我写下时都出于真心，如今依然如此。"
+"A work is not answerable for the readers it finds." = "作品不必为自己遇上怎样的读者负责。"
+"Criticism is easy; it asks only that one has read the first page." = "批评很容易；只要读过第一页，就能开口。"
+"It will be said that a writer who defends a work has already lost the argument." = "有人会说，作者一旦为作品辩护，就已经输了这场争论。"
+"Only if silence is a better answer, and it rarely is." = "除非沉默是更好的回答，可事实很少如此。"
+"I return to {::subscribed_books::essay_vocabulary::subject}. I have answered for it. It can answer for itself from here." = "回到{::subscribed_books::essay_vocabulary::subject}。我已为它作出回应。从此，就让它自己回答吧。"
+"I have answered for it." = "我已为它作出回应。"
+"It can answer for itself from here." = "从此，就让它自己回答吧。"

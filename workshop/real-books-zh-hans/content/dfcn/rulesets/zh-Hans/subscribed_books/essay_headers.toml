@@ -1,0 +1,8 @@
+# forms/essay/essay.lua 按实际写出的节数输出 part/parts，区别于旧版的 chapter/chapters 标头。
+# 正文书名继续复用 narrative.toml 的 ::text::book，不另造书名词表。
+base = "subscribed_books::essay_headers"
+
+[[rulesets]]
+[rulesets.rules]
+"An Essay in {#digits} part" = "一篇论文，共{#digits}部分"
+"An Essay in {#digits} parts" = "一篇论文，共{#digits}部分"

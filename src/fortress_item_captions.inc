@@ -41,17 +41,26 @@ std::optional<std::string> Overlay::translate_written_item_caption(
             const std::string subject = lower(std::string(value));
             for (std::string_view prefix : {"book title subject: ", "book title phrase: "}) {
                 const auto found = legends_terms_ci_.find(std::string(prefix) + subject);
-                if (found != legends_terms_ci_.end())
-                    return title_marks ? "《" + found->second + "》" : found->second;
+                if (found != legends_terms_ci_.end()) {
+                    book_context = true;
+                    break;
+                }
             }
-            for (int index : legends_book_rules_) {
-                const auto title = translate_legends_nested(
-                    rules_[static_cast<size_t>(index)], value, depth);
-                if (translation_complete_with_native_nicknames(title, value))
-                    return title_marks ? "《" + *title + "》" : *title;
+            if (!book_context) {
+                for (int index : legends_book_rules_) {
+                    const auto title = translate_legends_nested(
+                        rules_[static_cast<size_t>(index)], value, depth);
+                    if (translation_complete_with_native_nicknames(title, value)) {
+                        book_context = true;
+                        break;
+                    }
+                }
             }
-            return std::nullopt;
+            if (!book_context) return std::nullopt;
         }
+        // The production above only establishes that this is a written work.
+        // Resolve its wording through the same subject and title priorities
+        // as reading windows and authored-work descriptions.
         const auto title = translate_legends_book(value);
         if (!translation_complete_with_native_nicknames(title, value)) return std::nullopt;
         return title_marks ? "《" + *title + "》" : *title;

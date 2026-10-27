@@ -1,0 +1,69 @@
+# forms/essay/subjects/making.lua：作品的才华、虚荣、奉献与被盗经历。
+# 创作主题使用独立物件词位；完整句组与去重后剩余的单句并存。
+base = "subscribed_books::essay_making"
+
+[[rulesets]]
+[rulesets.rules]
+"Of what it is, a word." = "关于这件作品本身，也说上几句。"
+"Of its maker, and of what it is, a word." = "关于创作者与作品本身，也说上几句。"
+"A thing made has a life of its own after." = "一件东西被创造出来之后，便有了自己的命运。"
+"What became of it, the record keeps." = "它后来遭遇了什么，史册自有记载。"
+
+# genius
+"I will argue that {subject} was an act of genius, and that the record, which notes it in a line, understates it badly." = "我要论证，{subject}是天才之举，史册却只用一行字记下此事，实在太过轻描淡写。"
+"I write about {subject}. I will try to speak of it without false modesty, or the other kind." = "我写下{subject}。谈到它时，我会尽量不故作谦虚，也不作任何别的谦让。"
+"I write about {subject}." = "我写下{subject}。"
+"I will try to speak of it without false modesty, or the other kind." = "谈到它时，我会尽量不故作谦虚，也不作任何别的谦让。"
+"Great work is never an accident, even when it looks like one." = "伟大的作品从非偶然，即使看起来像是如此。"
+"What was made outlasted the making, as great work does." = "创作早已结束，作品却长存于世，伟大的作品总是如此。"
+"Genius is only a name for work we cannot imagine doing ourselves." = "所谓天才，不过是我们给那些无法想象自己能完成的作品起的名字。"
+"It will be said that I praise a thing too much because it is old, or rare." = "有人会说，我只是因为它古老或稀有，才如此过誉。"
+"Old things and rare things are many. Few of them are this." = "古老之物与稀罕之物并不少，能与它相比的却寥寥无几。"
+"Old things and rare things are many." = "古老之物与稀罕之物并不少。"
+"Few of them are this." = "能与它相比的却寥寥无几。"
+"I return to {subject}: genius, plainly. I have no smaller word for it." = "回到{subject}：这显然是天才之作。我找不到分量更轻的词来形容它。"
+"I return to {subject}: genius, plainly." = "回到{subject}：这显然是天才之作。"
+"I have no smaller word for it." = "我找不到分量更轻的词来形容它。"
+"I return to {subject}. Let others find the smaller word for it; I could not." = "回到{subject}。若要用更轻的字眼来形容它，就让别人去找吧，我找不到。"
+"I return to {subject}." = "回到{subject}。"
+"Let others find the smaller word for it; I could not." = "若要用更轻的字眼来形容它，就让别人去找吧，我找不到。"
+
+# vanity
+"I will argue that {subject} says more of its maker's vanity than of any skill." = "我要论证，{subject}所体现的，与其说是技艺，不如说是创作者的虚荣。"
+"Some things are made to be useful; others, to be admired." = "有些东西造出来是为了实用，有些则只是为了博得赞叹。"
+"A work that bears its maker's mark so loudly is a work about its maker." = "一件如此张扬创作者印记的作品，表现的其实就是创作者自己。"
+"Vanity is the craftsman's oldest temptation, and the most forgiven." = "虚荣是工匠最古老的诱惑，也是最常被宽容的一种。"
+"It will be said that every maker wants to be remembered." = "有人会说，每个创作者都希望被人铭记。"
+"Wanting it is only natural. Building one's own monument is something else." = "有这种愿望，人之常情。但为自己树碑立传，就另当别论了。"
+"Wanting it is only natural." = "有这种愿望，人之常情。"
+"Building one's own monument is something else." = "但为自己树碑立传，就另当别论了。"
+"I return to {subject} and I name it vanity. Let the work prove me wrong if it can." = "回到{subject}，我仍称之为虚荣。若这件作品有本事，就让它证明我错了。"
+"I return to {subject} and I name it vanity." = "回到{subject}，我仍称之为虚荣。"
+"Let the work prove me wrong if it can." = "若这件作品有本事，就让它证明我错了。"
+
+# devotion
+"I will argue that {subject} was an act of devotion, and should be read as one." = "我要论证，{subject}是一种虔诚的奉献，也应当如此理解。"
+"Some work is made for the gods before it is made for anyone else." = "有些作品首先是献给诸神的，其次才是给其他人看的。"
+"What was made was also offered." = "创作出来的，也是献上的供奉。"
+"Devotion turns labour into prayer, or tries to." = "虔诚使劳作成为祈祷，至少是在努力这样做。"
+"It will be said that I see faith where there was only skill." = "有人会说，那里本来只有技艺，我却看出了信仰。"
+"Skill is how faith works with its hands." = "技艺，正是信仰借双手付诸实践的方式。"
+"I return to {subject}: an offering. The gods may judge it; I only record it." = "回到{subject}：这是一份供奉。诸神自可评判，我只负责记述。"
+"I return to {subject}: an offering." = "回到{subject}：这是一份供奉。"
+"The gods may judge it; I only record it." = "诸神自可评判，我只负责记述。"
+
+# theft
+"I will argue that the true story of {subject} is its taking." = "我要论证，{subject}真正值得讲述的，是作品被夺走的经过。"
+"What is made can be unmade, or carried off." = "造得出来的东西，也可能被毁掉或夺走。"
+"The record keeps the making and the loss side by side." = "史册将创作与失落并列记载。"
+"A thing stolen keeps the memory of its maker longer than its thief would like." = "被盗之物对创作者的记忆，总比盗贼希望的更长久。"
+"It will be said that what happened to the work later is no part of its making." = "有人会说，作品后来的遭遇，与它的创作无关。"
+"A work's whole story is its making, and this one did not end when it was made." = "一件作品的整个故事都属于它的创作，而这件作品的故事，并未随创作完成而结束。"
+"I return to {subject}, and to what was done to it. Some wrongs the record keeps whether anyone wants it to or not." = "回到{subject}，也回到它遭受的一切。有些不公，无论是否有人愿意，史册都会记下。"
+"I return to {subject}, and to what was done to it." = "回到{subject}，也回到它遭受的一切。"
+"Some wrongs the record keeps whether anyone wants it to or not." = "有些不公，无论是否有人愿意，史册都会记下。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{::subscribed_books::essay_making_facts::subject}" = "{::subscribed_books::essay_making_facts::subject}"

@@ -1,0 +1,125 @@
+# 原生 add_hf_site_link / remove_hf_site_link 的主题及正文。
+# 建筑、所属组织、聚落分别匹配；不将完整地点组合当作单个名称。
+base = "subscribed_books::essay_site_links"
+
+[[rulesets]]
+[rulesets.rules]
+"In {date}, {record}." = "{date}，{record}。"
+"In {date} {record}." = "{date}，{record}。"
+"{record}." = "{record}。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{event} in {date}" = "{date}{event}的经历"
+"{event}" = "{event}的经历"
+
+[[rulesets]]
+name = "event"
+[rulesets.rules]
+"the seat of power of {actor} {at_place}" = "{actor}以{at_place}为统治中心"
+"my seat of power {at_place}" = "我以{at_place}为统治中心"
+# game_words.in_own_words 遇到 of the 不改写为 my，故这里的 actor 也接受 me。
+"the removal of the seat of power of {actor} {from_place}" = "{actor}不再以{from_place}为统治中心"
+"the working of {actor} {at_place}" = "{actor}在{at_place}工作"
+"my working {at_place}" = "我在{at_place}工作"
+"the cease of occupation of {actor} {at_place}" = "{actor}不再在{at_place}工作"
+"my cease of occupation {at_place}" = "我不再在{at_place}工作"
+"the hanging-out of {actor} {at_place}" = "{actor}在{at_place}闲逛"
+"my hanging-out {at_place}" = "我在{at_place}闲逛"
+"the stoppage of hanging-out of {actor} {at_place}" = "{actor}不再在{at_place}闲逛"
+"my stoppage of hanging-out {at_place}" = "我不再在{at_place}闲逛"
+"the residence of {actor} {in_place}" = "{actor}在{in_place}居住"
+"my residence {in_place}" = "我在{in_place}居住"
+"the lair of {actor} {in_place}" = "{actor}在{in_place}筑巢"
+"my lair {in_place}" = "我在{in_place}筑巢"
+"the imprisonment of {actor} {in_place}" = "{actor}被囚禁在{in_place}"
+"my imprisonment {in_place}" = "我被囚禁在{in_place}"
+"the moving out of {actor} {from_place}" = "{actor}从{from_place}迁出"
+"my moving out {from_place}" = "我从{from_place}迁出"
+"the escape of {actor} {from_place}" = "{actor}从{from_place}逃脱"
+"my escape {from_place}" = "我从{from_place}逃脱"
+
+[[rulesets]]
+name = "record"
+[rulesets.rules]
+"{actor} ruled {from_place}" = "{actor}以{from_place}为统治中心"
+"{actor} stopped ruling {from_place}" = "{actor}不再以{from_place}为统治中心"
+"{actor} started working {at_place}" = "{actor}开始在{at_place}工作"
+"{actor} stopped working {at_place}" = "{actor}不再在{at_place}工作"
+"{actor} started hanging out {at_place}" = "{actor}开始在{at_place}闲逛"
+"{actor} stopped hanging out {at_place}" = "{actor}不再在{at_place}闲逛"
+"{actor} took up residence {in_place}" = "{actor}在{in_place}定居"
+"{actor} laired {within_place}" = "{actor}在{within_place}筑巢"
+"{actor} was imprisoned {in_place}" = "{actor}被囚禁在{in_place}"
+"{actor} moved out {of_place}" = "{actor}从{of_place}迁出"
+"{actor} escaped {from_place}" = "{actor}从{from_place}逃脱"
+
+[[rulesets]]
+name = "at_place"
+[rulesets.rules]
+"at {destination}" = "{destination}"
+# 原生 getPhrase 和 remove.getSentence 在没有建筑时直接拼接介词与聚落名。
+"at{site}" = "{site}"
+# add.getSentence 在没有建筑时仍追加 in SITE。
+"at in {site}" = "{site}"
+
+[[rulesets]]
+name = "from_place"
+[rulesets.rules]
+"from {destination}" = "{destination}"
+"from{site}" = "{site}"
+"from in {site}" = "{site}"
+
+[[rulesets]]
+name = "in_place"
+[rulesets.rules]
+"in {destination}" = "{destination}"
+"in{site}" = "{site}"
+"in in {site}" = "{site}"
+
+[[rulesets]]
+name = "within_place"
+[rulesets.rules]
+"within {destination}" = "{destination}"
+"within in {site}" = "{site}"
+
+[[rulesets]]
+name = "of_place"
+[rulesets.rules]
+"of {destination}" = "{destination}"
+"of{site}" = "{site}"
+
+[[rulesets]]
+name = "destination"
+[rulesets.rules]
+# building + optional entity + site 来自三个不同的原生字段。
+"{building} of {entity} in {site}" = "{site}境内{entity}所属的{building}"
+"{building} in {site}" = "{site}境内的{building}"
+"{site}" = "{site}"
+
+[[rulesets]]
+name = "building"
+[rulesets.rules]
+# getPhrase/getSentence 这里选择的是完整原生建筑名。
+"{::text::name}" = "{::text::name}"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+"{::subscribed_books::guide::owner}" = "{::subscribed_books::guide::owner}"
+
+[[rulesets]]
+name = "site"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"

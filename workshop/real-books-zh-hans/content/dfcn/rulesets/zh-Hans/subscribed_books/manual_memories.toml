@@ -1,0 +1,82 @@
+# forms/manual/manual.lua：六种学习回忆及作者求学、职业、著述经历。
+# 原句组与去重后保留的独立完整句并存；发现记录交由 manual_vocabulary 处理。
+base = "subscribed_books::manual_memories"
+
+[[rulesets]]
+[rulesets.rules]
+"From my own learning." = "我的求学回忆。"
+"Of how I came to know it." = "我是如何掌握这门知识的。"
+
+"I remember the first time I tried this, in {@bt_home|::subscribed_books::manual_memories::place}. {@bt_other|::subscribed_books::vocabulary::person} laughed at me, and then showed me where I had gone wrong." = "我记得自己第一次在 {@bt_home|::subscribed_books::manual_memories::place} 尝试时，{@bt_other|::subscribed_books::vocabulary::person} 先笑了我，随后又指出我错在何处。"
+"I remember the first time I tried this, in {@bt_home|::subscribed_books::manual_memories::place}." = "我记得自己第一次在 {@bt_home|::subscribed_books::manual_memories::place} 尝试时的情景。"
+"{@bt_other|::subscribed_books::vocabulary::person} laughed at me, and then showed me where I had gone wrong." = "{@bt_other|::subscribed_books::vocabulary::person} 先笑了我，随后又指出我错在何处。"
+"My first teacher in this, {@bt_other|::subscribed_books::vocabulary::person}, made me do it a hundred {times} before letting me go on. I hated it then; I am grateful now." = "教我这门知识的第一位老师，{@bt_other|::subscribed_books::vocabulary::person}，让我练上一百{times}才准我继续。当时我深恶痛绝，如今却心怀感激。"
+"My first teacher in this, {@bt_other|::subscribed_books::vocabulary::person}, made me do it a hundred {times} before letting me go on." = "教我这门知识的第一位老师，{@bt_other|::subscribed_books::vocabulary::person}，让我练上一百{times}才准我继续。"
+"I hated it then; I am grateful now." = "当时我深恶痛绝，如今却心怀感激。"
+"I once spent a whole season on {::subscribed_books::manual_vocabulary::topic} alone, in {@bt_home|::subscribed_books::manual_memories::place}, and do not regret a day of it." = "我曾在 {@bt_home|::subscribed_books::manual_memories::place} 花了一整个季节，只研究{::subscribed_books::manual_vocabulary::topic}，其中的每一天，我都不后悔。"
+"{@bt_other|::subscribed_books::vocabulary::person}, who learned it from me, does it better than I do now. That is how it should be." = "向我学习的 {@bt_other|::subscribed_books::vocabulary::person}，如今已做得比我更好。这正是应有的结果。"
+"{@bt_other|::subscribed_books::vocabulary::person}, who learned it from me, does it better than I do now." = "向我学习的 {@bt_other|::subscribed_books::vocabulary::person}，如今已做得比我更好。"
+"That is how it should be." = "这正是应有的结果。"
+"The year I came closest to giving it up, {@bt_other|::subscribed_books::vocabulary::person} sat with me through a long night and talked me out of it." = "在我最接近放弃的那一年，{@bt_other|::subscribed_books::vocabulary::person} 陪我坐过漫漫长夜，终于劝我打消了这个念头。"
+"In {@bt_home|::subscribed_books::manual_memories::place} they {thought} me mad for it. They do not think so now." = "在 {@bt_home|::subscribed_books::manual_memories::place}，人们曾因此{thought}我疯了。如今他们不再这样想。"
+"In {@bt_home|::subscribed_books::manual_memories::place} they {thought} me mad for it." = "在 {@bt_home|::subscribed_books::manual_memories::place}，人们曾因此{thought}我疯了。"
+"They do not think so now." = "如今他们不再这样想。"
+
+"I am {trade_a}." = "我是一名{trade_a}。"
+"I learned my art from my {teacher}, {@bt_master|::subscribed_books::vocabulary::person}." = "我的技艺师承我的{teacher}，{@bt_master|::subscribed_books::vocabulary::person}。"
+"I learned it from my {teacher}, {@bt_master|::subscribed_books::vocabulary::person}, who discovered it." = "我从我的{teacher} {@bt_master|::subscribed_books::vocabulary::person} 那里学会了它，而这门知识正是其发现的。"
+"I have written of it before, in {books}." = "我以前已在{books}中写过这个主题。"
+"I have also written {book}, on {::subscribed_books::manual_vocabulary::topic}." = "我还写过{book}，探讨{::subscribed_books::manual_vocabulary::topic}。"
+
+[[rulesets]]
+name = "times"
+[rulesets.rules]
+"times" = "遍"
+
+[[rulesets]]
+name = "thought"
+[rulesets.rules]
+"thought" = "以为"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"my home" = "我的家乡"
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "trade"
+[rulesets.rules]
+# portrait.trade_of 使用游戏职业 caption；复用既有职业词表，只补缺少的确切职业。
+"{::professions}" = "{::professions}"
+"geographer" = "地理学家"
+
+[[rulesets]]
+name = "trade_a"
+[rulesets.rules]
+"a {trade}" = "{trade}"
+"an {trade}" = "{trade}"
+
+[[rulesets]]
+name = "teacher"
+[rulesets.rules]
+# engine/contexts.lua 的 MASTER / FORMER_MASTER 关系用词。
+"master" = "师父"
+"old master" = "昔日师父"
+
+[[rulesets]]
+name = "book"
+[rulesets.rules]
+"{::text::book}" = "《{::text::book}》"
+
+[[rulesets]]
+name = "books"
+[rulesets.rules]
+"{book}, {books}" = "{book}、{books}"
+"{book} and {last_book}" = "{book}和{last_book}"
+"{book}" = "{book}"
+
+[[rulesets]]
+name = "last_book"
+[rulesets.rules]
+"{book}" = "{book}"

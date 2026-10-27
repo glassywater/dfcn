@@ -1,0 +1,77 @@
+# battle.lua motivation / trait_combat_flavor: complete narration sentences retained after
+# text_passes.fresh_sentences removes repeated narration from a longer passage.
+# Keep the original passage rules in battle.toml; do not split quoted dialogue.
+base = "subscribed_books::battle_sentences"
+
+[[rulesets]]
+[rulesets.rules]
+# 当前 cruel / violent 动机已改为 had come for suffering；旧版整段仍在 battle.toml。
+# 去重可单独移除段落中的某句，故同时收录完整段落和各独立句。
+"{@bt_b|::subscribed_books::battle::person} had come for suffering. There was a hunger in {::subscribed_books::battle::pos1} eyes that had nothing to do with survival and everything to do with the dark pleasure of destruction. {@bt_a|::subscribed_books::battle::person} could see it -- and knew that this fight would offer no mercy." = "{@bt_b|::subscribed_books::battle::person}为折磨他人而来。{::subscribed_books::battle::pos1}眼中的渴望与生存毫无关系，只关乎毁灭带来的黑暗快意。{@bt_a|::subscribed_books::battle::person}看得明白——也知道这场战斗不会有任何怜悯。"
+"{@bt_b|::subscribed_books::battle::person} had come for suffering." = "{@bt_b|::subscribed_books::battle::person}为折磨他人而来。"
+"{@bt_b|::subscribed_books::battle::person} had come not for victory but for suffering." = "{@bt_b|::subscribed_books::battle::person}来到这里，要的不是胜利，而是他人的痛苦。"
+"There was a hunger in {::subscribed_books::battle::pos1} eyes that had nothing to do with survival and everything to do with the dark pleasure of destruction." = "{::subscribed_books::battle::pos1}眼中的渴望与生存毫无关系，只关乎毁灭带来的黑暗快意。"
+"{@bt_a|::subscribed_books::battle::person} could see it -- and knew that this fight would offer no mercy." = "{@bt_a|::subscribed_books::battle::person}看得明白——也知道这场战斗不会有任何怜悯。"
+
+# Cruel: attacks and narration. Retain the older wording beside the current form.
+"{@bt_actor|::subscribed_books::battle::person} went for the knee, to cripple." = "{@bt_actor|::subscribed_books::battle::person}直取膝盖，要让对手残废。"
+"{@bt_actor|::subscribed_books::battle::person} went for the knee -- not to kill, but to cripple." = "{@bt_actor|::subscribed_books::battle::person}直取膝盖——为的不是杀死敌人，而是使其残废。"
+"A dead enemy is forgotten." = "死去的敌人终会被遗忘。"
+"A maimed one is a walking reminder." = "残废的敌人却会成为行走的警示。"
+"{@bt_actor|::subscribed_books::battle::person} slashed across {@bt_def|::subscribed_books::battle::person}'s sword hand, aiming to sever the tendons." = "{@bt_actor|::subscribed_books::battle::person}划向{@bt_def|::subscribed_books::battle::person}握剑的手，企图割断肌腱。"
+"The kill could wait." = "杀戮可以稍后再说。"
+"First, the helplessness." = "先让对手尝尽无力反抗的滋味。"
+"{@bt_name|::subscribed_books::battle::person} was in no hurry to win." = "{@bt_name|::subscribed_books::battle::person}无意速战速决。"
+"{@bt_name|::subscribed_books::battle::person} was not trying to win quickly." = "{@bt_name|::subscribed_books::battle::person}无意速战速决。"
+"{::subscribed_books::battle::pro1} was making sure {@bt_def|::subscribed_books::battle::person} remembered this." = "{::subscribed_books::battle::pro1}要确保{@bt_def|::subscribed_books::battle::person}永远记住这一刻。"
+"Every blow was a message." = "每一击都在传递一句话。"
+"The message was: I enjoy this." = "那句话是：我享受这一切。"
+"{@bt_name|::subscribed_books::battle::person} could have ended {@bt_def|::subscribed_books::battle::person} with the last stroke." = "{@bt_name|::subscribed_books::battle::person}本可以用上一击了结{@bt_def|::subscribed_books::battle::person}。"
+"Instead, {::subscribed_books::battle::pro1} stepped back and waited for {@bt_def|::subscribed_books::battle::person} to stand again." = "{::subscribed_books::battle::pro1}却退后一步，等着{@bt_def|::subscribed_books::battle::person}再度站起来。"
+"Not out of mercy." = "这并非出于怜悯。"
+"Out of cruelty -- because watching {@bt_def|::subscribed_books::battle::person} struggle to rise was more satisfying than the kill." = "而是出于残忍——看着{@bt_def|::subscribed_books::battle::person}挣扎起身，比杀死对手更加令人满足。"
+
+# Sadistic: leave speech-containing passages with their original dialogue rules.
+"{@bt_actor|::subscribed_books::battle::person} carved a thin line across {@bt_def|::subscribed_books::battle::person}'s forearm -- a wound designed to scar." = "{@bt_actor|::subscribed_books::battle::person}在{@bt_def|::subscribed_books::battle::person}前臂上刻下一道细伤——为的是留下伤疤。"
+"{@bt_actor|::subscribed_books::battle::person} carved a thin line across {@bt_def|::subscribed_books::battle::person}'s forearm -- a wound designed to scar, not to kill." = "{@bt_actor|::subscribed_books::battle::person}在{@bt_def|::subscribed_books::battle::person}前臂上刻下一道细伤——为的是留下伤疤，而非夺走性命。"
+"{@bt_name|::subscribed_books::battle::person} wanted {@bt_def|::subscribed_books::battle::person} to carry this memory in {@bt_def2|::subscribed_books::battle::person}'s flesh." = "{@bt_name|::subscribed_books::battle::person}要让{@bt_def|::subscribed_books::battle::person}把这段记忆留在{@bt_def2|::subscribed_books::battle::person}的皮肉上。"
+"The fight could have ended three strokes ago." = "这场战斗三招之前就可以结束了。"
+"{@bt_name|::subscribed_books::battle::person} was not ready for it to end." = "可{@bt_name|::subscribed_books::battle::person}还没玩够。"
+"A gasp from the crowd only seemed to encourage {@bt_name|::subscribed_books::battle::person}." = "人群中的一声惊呼，似乎只让{@bt_name|::subscribed_books::battle::person}更加兴奋。"
+"An audience made the cruelty sweeter." = "有观众在场，残忍便愈发甜美。"
+"{@bt_name|::subscribed_books::battle::person} looked past {@bt_def|::subscribed_books::battle::person} to the people watching -- and smiled." = "{@bt_name|::subscribed_books::battle::person}越过{@bt_def|::subscribed_books::battle::person}望向围观的人，露出微笑。"
+"The smile promised that this was just the beginning." = "那笑容仿佛在承诺：这一切才刚刚开始。"
+
+# Pacifist and coward narration.
+"{@bt_name|::subscribed_books::battle::person} did not want to fight." = "{@bt_name|::subscribed_books::battle::person}并不想战斗。"
+"The refusal to strike back was its own kind of weapon -- one that made the attacker feel like the villain." = "拒绝还击，本身也是一种武器——它让攻击者觉得自己才是恶人。"
+"Every blow that landed went unanswered." = "每一次命中的攻击都没有得到回击。"
+"The crowd began to shift uncomfortably." = "围观的人开始不安地挪动脚步。"
+"Fear drove {@bt_name|::subscribed_books::battle::person} harder than courage ever could." = "恐惧驱使{@bt_name|::subscribed_books::battle::person}奋战，比勇气更强烈。"
+"A cornered animal fights with a desperation that skill cannot match." = "陷入绝境的野兽，会带着技巧也无法比拟的绝望搏命。"
+"{@bt_name|::subscribed_books::battle::person} fought only to survive." = "{@bt_name|::subscribed_books::battle::person}战斗只为活下来。"
+"{@bt_name|::subscribed_books::battle::person} fought not to win, but to survive." = "{@bt_name|::subscribed_books::battle::person}战斗是为了活下来，而非取胜。"
+"Every instinct screamed to flee." = "每一种本能都在尖叫着要逃。"
+
+# Noble and aggressive: defence may be retained after its following sentence goes.
+"{@bt_actor|::subscribed_books::battle::person} blocked and stepped back, giving {@bt_atk|::subscribed_books::battle::person} space to recover." = "{@bt_actor|::subscribed_books::battle::person}格挡后退，让{@bt_atk|::subscribed_books::battle::person}有时间恢复姿势。"
+"Even now, {::subscribed_books::battle::pro1} would not press an advantage against a staggering opponent." = "即使此刻，{::subscribed_books::battle::pro1}也不愿乘对手踉跄时占尽优势。"
+"Even now, {::subscribed_books::battle::pro1} would not press a advantage against a staggering opponent." = "即使此刻，{::subscribed_books::battle::pro1}也不愿乘对手踉跄时占尽优势。"
+"{@bt_name|::subscribed_books::battle::person} fought with honor." = "{@bt_name|::subscribed_books::battle::person}为荣誉而战。"
+"In a world of dirty blows and cheap shots, that was either admirable or suicidal." = "在一个暗算与下作招数横行的世界里，这种做法不是值得敬佩，就是自寻死路。"
+"Defense was an afterthought." = "防守早已被抛到脑后。"
+"Defense was a afterthought." = "防守早已被抛到脑后。"
+"{@bt_name|::subscribed_books::battle::person} attacked, and attacked, and attacked." = "{@bt_name|::subscribed_books::battle::person}只管进攻、进攻、再进攻。"
+
+# Stubborn: the long final sentence is deduplicated independently of the two short ones.
+"{@bt_actor|::subscribed_books::battle::person} took the blow, absorbed it, and did not move." = "{@bt_actor|::subscribed_books::battle::person}硬生生受下这一击，岿然不动。"
+"Not one step backward." = "一步也没有后退。"
+"{@bt_actor|::subscribed_books::battle::person} refused to fall." = "{@bt_actor|::subscribed_books::battle::person}不肯倒下。"
+"The body had its limits, but {@bt_name|::subscribed_books::battle::person}'s will did not recognize them." = "肉体自有极限，但{@bt_name|::subscribed_books::battle::person}的意志拒绝承认它。"
+"{@bt_name|::subscribed_books::battle::person} should have gone down." = "{@bt_name|::subscribed_books::battle::person}本该倒下。"
+"The wound should have been enough." = "这道伤本该足以将其击败。"
+"But {::subscribed_books::battle::pro1} stayed upright through sheer, pig-headed refusal to accept reality." = "可{::subscribed_books::battle::pro1}凭着一股顽固得近乎愚蠢的执念，不肯接受现实，仍旧站立着。"
+
+# Manipulative narration.
+"{@bt_name|::subscribed_books::battle::person} did not fight with muscle." = "{@bt_name|::subscribed_books::battle::person}作战靠的不是蛮力。"
+"{::subscribed_books::battle::pro1} fought with information -- reading the opponent, predicting, exploiting." = "{::subscribed_books::battle::pro1}靠的是信息——观察对手、预判行动、利用破绽。"

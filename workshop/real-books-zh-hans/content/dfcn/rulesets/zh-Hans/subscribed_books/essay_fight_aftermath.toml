@@ -1,0 +1,176 @@
+# life.deeds / life.loss_facts：后续经历，以及亲友和旧敌的结局；职业、定居随笔复用 record。
+# 时间锚只接完整的已知事实，不吞入任意后续正文。
+base = "subscribed_books::essay_fight_aftermath"
+
+[[rulesets]]
+[rulesets.rules]
+"{record}" = "{record}"
+"In {date}, {record}" = "{date}，{record}"
+"In {date} {record}" = "{date}，{record}"
+"{lead} {record}" = "{lead}{record}"
+"{lead} {::subscribed_books::essay_career_facts::sentence}" = "{lead}{::subscribed_books::essay_career_facts::sentence}"
+"{lead} {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::record}"
+"{lead} {::subscribed_books::essay_writing_facts::circumstance}, {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::circumstance}，{::subscribed_books::essay_writing_facts::record}"
+
+[[rulesets]]
+name = "record"
+[rulesets.rules]
+"{actor} was imprisoned by {captor}." = "{actor}被{captor}囚禁。"
+"{actor} was imprisoned by {captor} {location}." = "{actor}{location}被{captor}囚禁。"
+"{actor} was no longer imprisoned by {captor}." = "{actor}不再被{captor}囚禁。"
+"{actor} was no longer imprisoned by {captor} {location}." = "{actor}{location}不再被{captor}囚禁。"
+"{actor} settled in {place}." = "{actor}在{place}安顿下来。"
+# CHANGE_HF_STATE 的到访记录；life.deeds 会把原生日期替换为本次经历的相对时间。
+"{actor} visited {place}." = "{actor}造访了{place}。"
+# HIST_FIGURE_TRAVEL / HIST_FIGURE_NEW_PET 的完整记录，同样由 life.deeds 接相对年份。
+"{travellers} made a journey to {travel_destination}." = "{travellers}前往了{travel_destination}。"
+"{travellers} returned to {travel_destination}." = "{travellers}返回了{travel_destination}。"
+"{travellers} escaped from {travel_destination}." = "{travellers}从{travel_destination}逃了出来。"
+"{travellers} tamed the {tamed_creatures} of {travel_destination}." = "{travellers}驯服了{travel_destination}的{tamed_creatures}。"
+# life.placed 将离婚记录的日期替换为 That same year 等相对时间。
+"{actor} divorced {former_partner}." = "{actor}与{former_partner}离婚了。"
+# life.placed 同样重写 simple_battle/wounded 的日期；保留既有事件双方和伤势语义。
+"{::subscribed_books::essay_fight_vocabulary::event}." = "{::subscribed_books::essay_fight_vocabulary::event}。"
+# life.deeds 也会讲述作者的身份变化；引号内为化名，无引号时为冒用他人身份。
+"{actor} assumed the identity \"{alias}\"." = "{actor}化名为“{alias}”。"
+"{actor} assumed the identity {impersonated}." = "{actor}冒用了{impersonated}的身份。"
+"{slayer} came to {place}, and killed {victim}." = "{slayer}来到{place}，杀死了{victim}。"
+"{arrival} came to {place}, and {slayer} killed {victim}." = "{arrival}来到{place}，{slayer}杀死了{victim}。"
+"{arrival} came to {place}, and {victim} died there." = "{arrival}来到{place}，{victim}死在了那里。"
+
+[[rulesets]]
+name = "lead"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_facts::relative_lead}" = "{::subscribed_books::essay_writing_facts::relative_lead}"
+"A year after we fought," = "在那场战斗的一年后，"
+"Not long after we fought - {::subscribed_books::essay_career_facts::short_years} years, in fact -" = "在那场战斗不久后，确切地说是{::subscribed_books::essay_career_facts::short_years}年后，"
+"{::subscribed_books::essay_career_facts::first_years} years after we fought," = "在那场战斗的{::subscribed_books::essay_career_facts::first_years}年后，"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "former_partner"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "captor"
+[rulesets.rules]
+"{actor}" = "{actor}"
+"{::subscribed_books::guide::owner}" = "{::subscribed_books::guide::owner}"
+
+[[rulesets]]
+name = "alias"
+[rulesets.rules]
+"{::text::name}" = "{::text::name}"
+
+[[rulesets]]
+name = "impersonated"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+"the wilds" = "荒野"
+
+[[rulesets]]
+name = "travellers"
+[rulesets.rules]
+# 原生事件的 group 可以有多人；game_words 将其中的作者改为 I 或 me。
+"{::subscribed_books::essay_vocabulary::people}" = "{::subscribed_books::essay_vocabulary::people}"
+
+[[rulesets]]
+name = "travel_destination"
+[rulesets.rules]
+# 原生目的地依次取聚落、地表区域或地下层；地下层的固定名称不作为聚落名处理。
+"the depths of the world" = "世界深处"
+"the magma sea" = "岩浆海"
+"the Underworld" = "地下世界"
+"unknown lands" = "未知地域"
+"an unknown site" = "未知地点"
+"an unknown region" = "未知区域"
+"an unknown underground region" = "未知地下区域"
+"{place}" = "{place}"
+"{::text::name}" = "{::text::name}"
+
+[[rulesets]]
+name = "tamed_creatures"
+[rulesets.rules]
+# 原生 pets 只列一至两种生物，更多种类写为 wild beasts；复用现有生物词表。
+"wild beasts" = "野兽"
+"{::creatures::name}" = "{::creatures::name}"
+"{::creatures::name} and {other_tamed_creature}" = "{::creatures::name}和{other_tamed_creature}"
+
+[[rulesets]]
+name = "other_tamed_creature"
+[rulesets.rules]
+"{::creatures::name}" = "{::creatures::name}"
+
+[[rulesets]]
+name = "location"
+[rulesets.rules]
+"in {place}" = "在{place}"
+"at {place}" = "在{place}"
+"within {place}" = "在{place}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "slayer"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "arrival"
+[rulesets.rules]
+"{::subscribed_books::essay_bond_facts::arrival}" = "{::subscribed_books::essay_bond_facts::arrival}"
+
+[[rulesets]]
+name = "victim"
+[rulesets.rules]
+# life.losses_of 先收集 contexts.relations，再加入战斗主题额外提供的 old foe。
+# 同一事件的遇难者由 life.list_words 并列，每一项都必须有完整关系称谓和姓名。
+"{lost_person}" = "{lost_person}"
+"{lost_person} and {victim}" = "{lost_person}和{victim}"
+"{lost_person}, {victim}" = "{lost_person}、{victim}"
+
+[[rulesets]]
+name = "lost_person"
+[rulesets.rules]
+"{::subscribed_books::essay_life_facts::genitive} {loss_relation} {::subscribed_books::guide::person}" = "{::subscribed_books::essay_life_facts::genitive}{loss_relation}{::subscribed_books::guide::person}"
+
+[[rulesets]]
+name = "loss_relation"
+[rulesets.rules]
+# engine/contexts.lua 的 WORDS；不把未识别的正文当作称谓或姓名透传。
+"daughter" = "女儿"
+"son" = "儿子"
+"child" = "子女"
+"wife" = "妻子"
+"husband" = "丈夫"
+"spouse" = "配偶"
+"late wife" = "已故妻子"
+"late husband" = "已故丈夫"
+"late spouse" = "已故配偶"
+"former wife" = "前妻"
+"former husband" = "前夫"
+"former spouse" = "前配偶"
+"mother" = "母亲"
+"father" = "父亲"
+"lover" = "恋人"
+"former lover" = "昔日的恋人"
+"master" = "师父"
+"apprentice" = "学徒"
+"old master" = "昔日的师父"
+"old apprentice" = "昔日的学徒"
+"companion" = "伙伴"
+# fight.losses_of 额外提供的关系。
+"old foe" = "旧敌"

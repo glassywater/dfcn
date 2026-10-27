@@ -1,0 +1,268 @@
+# forms/essay/subjects/settling.lua 的旧居、离别亲友、同行者和定居困境。
+# 名单逐项解析人物；招募插入语和幼儿名单保留上游的逗号边界。
+base = "subscribed_books::essay_settling_facts"
+
+[[rulesets]]
+[rulesets.rules]
+# left_facts：旧居及仍在世但没有同行的亲友；子女按人数合并，其余逐人列出。
+"Before {place}, {actor} lived in {origin_place}." = "来到{place}之前，{actor}住在{origin_place}。"
+"Before {place}, {actor} lived in {origin_place}, where {entity} was formed." = "来到{place}之前，{actor}住在{origin_place}，{entity}便是在那里成立的。"
+# 两处人物均由同一个 N 生成；用独立引用解析，中文只需提及一次。
+"When {actor} went, {actor_again} left behind {left_kin}." = "{actor}离开时，将{left_kin}留在了身后。"
+
+"{cohort} came with {recipient}, of {entity}." = "{cohort}与{recipient}一同前来，隶属于{entity}。"
+"{cohort} came with {recipient}; with {recipient_again}, they were the whole of {entity}." = "{cohort}与{recipient}一同前来；加上{recipient_again}，这便是{entity}的全体成员。"
+"{cohort}, also of {entity}, settled there the same year." = "{cohort}也隶属于{entity}，在同一年于此定居。"
+"{kin_list} came too." = "{kin_list}也来了。"
+"{parent} brought {possessive} small child, {children}." = "{parent}带来了{possessive}年幼的孩子——{children}。"
+"{parent} brought {possessive} {count} small children, {children}." = "{parent}带来了{possessive}{count}名年幼的孩子——{children}。"
+"One other came besides." = "此外还有一人前来。"
+"{count} others came besides." = "此外还有{count}人前来。"
+
+"We quarrelled often - more my fault than theirs - but they stayed." = "我们常常争吵，过错更多在我，而非他们，但他们留了下来。"
+"I have never had better company." = "我从未有过比他们更好的伙伴。"
+"They looked to me, and I let them." = "他们仰赖着我，而我也任他们如此。"
+"I would as soon have come alone, but I was glad of them later." = "我本宁愿独自前来，后来却庆幸有他们相伴。"
+"We were few, and we needed each other." = "我们人数不多，彼此都需要对方。"
+"{builder} {builder_disposition}." = "{builder}{builder_disposition}。"
+
+# trial_facts 的记录事实；诅咒名称沿既有生物名称解析器完整匹配。
+"Fights broke out often: the record keeps {count} of them." = "争斗时常爆发：史册记载了其中的{count}次。"
+"There were plots within the walls." = "城墙之内有人密谋。"
+"And one among us, {person}, was not what they seemed." = "而我们之中的{person}，并非表面看来那样。"
+"And one among them, {person}, was not what they seemed." = "而他们之中的{person}，并非表面看来那样。"
+"And one among us, {person}, was not what they seemed: by {year}, {curse_article} walked among us." = "而我们之中的{person}，并非表面看来那样：到{year}年，一个{curse_article}已混迹于我们之中。"
+"And one among them, {person}, was not what they seemed: by {year}, {curse_article} walked among them." = "而他们之中的{person}，并非表面看来那样：到{year}年，一个{curse_article}已混迹于他们之中。"
+
+# TRIAL_WORDS 的各个句子分别匹配，兼容上游按句去重。
+"There were no halls when we came." = "我们来时还没有厅堂。"
+"We slept in the dirt that first season, under whatever we could raise." = "最初那一季，我们睡在泥地上，头顶只有尽力搭起的遮蔽物。"
+"There were no halls when they came; they slept in the dirt that first season." = "他们来时还没有厅堂；最初那一季，他们睡在泥地上。"
+"The water was foul until we had dug a well." = "直到我们挖出一口井之前，水一直污浊不堪。"
+"The water was foul until a well was dug." = "直到一口井挖成之前，水一直污浊不堪。"
+"There was never enough to eat that first year." = "第一年始终食不果腹。"
+"The snow came early and stayed late, and we had nowhere warm to wait it out." = "雪来得早，化得迟，我们没有温暖的地方熬过雪季。"
+"The snow came early and stayed late, and they had nowhere warm to wait it out." = "雪来得早，化得迟，他们没有温暖的地方熬过雪季。"
+"It rained, and we had no roof to keep it off." = "下雨了，而我们连挡雨的屋顶都没有。"
+"It rained, and they had no roof to keep it off." = "下雨了，而他们连挡雨的屋顶都没有。"
+"The heat lay on us like a weight, and there was no shade we had not made ourselves." = "酷热如重物压在我们身上，所有能遮阴的地方都得靠我们亲手搭建。"
+"The heat lay on them like a weight, and there was no shade they had not made themselves." = "酷热如重物压在他们身上，所有能遮阴的地方都得靠他们亲手搭建。"
+"Water was scarce, and every drop of it was carried." = "水源稀缺，每一滴水都得搬运过来。"
+"The {beasts} came down on us more than once, and we had little but our hands to meet them." = "{beasts}不止一次袭击我们，而我们几乎只能赤手抵挡。"
+"The {beasts} came down on them more than once, and they had little but their hands to meet them." = "{beasts}不止一次袭击他们，而他们几乎只能赤手抵挡。"
+"The land itself was savage; nothing in it wished us well." = "这片土地本就野蛮险恶，其中没有什么对我们心怀善意。"
+"The land itself was savage; nothing in it wished them well." = "这片土地本就野蛮险恶，其中没有什么对他们心怀善意。"
+"There was something wrong with that country, and I will not write what." = "那片土地有些不对劲，具体是什么，我不愿写下。"
+"There was something wrong with that country." = "那片土地有些不对劲。"
+"We were too many for the halls, and tempers wore thin." = "厅堂容不下我们这么多人，大家的脾气也渐渐暴躁起来。"
+"They were too many for the halls, and tempers wore thin." = "厅堂容不下他们这么多人，大家的脾气也渐渐暴躁起来。"
+"{actor} had no friends there to speak of." = "{actor}在那里谈不上有什么朋友。"
+"I have never loved the wild places, and that first year taught me why." = "我从未喜欢过荒野，而第一年的经历让我明白了缘由。"
+
+[[rulesets]]
+name = "person"
+[rulesets.rules]
+"{::subscribed_books::guide::person}" = "{::subscribed_books::guide::person}"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "actor_again"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "recipient"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "recipient_again"
+[rulesets.rules]
+"{actor}" = "{actor}"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+"{::subscribed_books::guide::owner}" = "{::subscribed_books::guide::owner}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "origin_place"
+[rulesets.rules]
+"{place}" = "{place}"
+
+[[rulesets]]
+name = "count"
+[rulesets.rules]
+"{::subscribed_books::essay_bond_facts::count}" = "{::subscribed_books::essay_bond_facts::count}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::guide_history::year}" = "{::subscribed_books::guide_history::year}"
+
+[[rulesets]]
+name = "beasts"
+[rulesets.rules]
+"{::subscribed_books::guide::wildlife}" = "{::subscribed_books::guide::wildlife}"
+
+[[rulesets]]
+name = "curse_article"
+[rulesets.rules]
+"a {::creatures::name::singular}" = "{::creatures::name::singular}"
+"an {::creatures::name::singular}" = "{::creatures::name::singular}"
+
+[[rulesets]]
+name = "cohort"
+[rulesets.rules]
+# list_words 不限人数；最后一人和前面各人的插入语标点不同。
+"{cohort_last}" = "{cohort_last}"
+"{cohort_head} and {cohort_last}" = "{cohort_head}和{cohort_last}"
+"{cohort_head}, {cohort}" = "{cohort_head}、{cohort}"
+
+[[rulesets]]
+name = "cohort_last"
+[rulesets.rules]
+"{person}" = "{person}"
+"{recruited_person}" = "{recruited_person}"
+
+[[rulesets]]
+name = "cohort_head"
+[rulesets.rules]
+"{person}" = "{person}"
+"{recruited_person}," = "{recruited_person}"
+
+[[rulesets]]
+name = "recruited_person"
+[rulesets.rules]
+"{person}, whom I had found at {place} when I went recruiting" = "{person}（我去招募人手时，在{place}遇到了此人）"
+"{person}, whom {actor} had found at {place} when recruiting" = "{person}（{actor}招募人手时，在{place}遇到了此人）"
+
+[[rulesets]]
+name = "parent"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "children"
+[rulesets.rules]
+"{person}" = "{person}"
+"{person} and {children}" = "{person}和{children}"
+"{person}, {children}" = "{person}、{children}"
+
+[[rulesets]]
+name = "possessive"
+[rulesets.rules]
+"his" = "他的"
+"her" = "她的"
+"their" = "其"
+
+[[rulesets]]
+name = "genitive"
+[rulesets.rules]
+"my" = "我的"
+"{person}'s" = "{person}的"
+
+[[rulesets]]
+name = "child_genitive"
+[rulesets.rules]
+"{possessive}" = "{possessive}"
+"{genitive}" = "{genitive}"
+
+[[rulesets]]
+name = "left_kin"
+[rulesets.rules]
+# life.list_words 的名单分隔符；称谓后的逗号由 left_relative 单独消费。
+"{left_relative}" = "{left_relative}"
+"{left_relative} and {left_kin}" = "{left_relative}和{left_kin}"
+"{left_relative}, {left_kin}" = "{left_relative}、{left_kin}"
+
+[[rulesets]]
+name = "left_relative"
+[rulesets.rules]
+"{genitive} child" = "{genitive}孩子"
+"{genitive} {count} children" = "{genitive}{count}个孩子"
+"{genitive} {kin_relation}, {kin_person}" = "{genitive}{kin_relation}{kin_person}"
+
+[[rulesets]]
+name = "kin_list"
+[rulesets.rules]
+"{kin_member}" = "{kin_member}"
+"{kin_member} and {kin_list}" = "{kin_member}和{kin_list}"
+"{kin_member}, {kin_list}" = "{kin_member}、{kin_list}"
+
+[[rulesets]]
+name = "kin_member"
+[rulesets.rules]
+"{genitive} {kin_relation} {kin_person}" = "{genitive}{kin_relation}{kin_person}"
+"{genitive} {kin_relation} {kin_person}, who brought {child_genitive} {child_description}, {children}," = "{genitive}{kin_relation}{kin_person}（还带着{child_genitive}{child_description}：{children}）"
+
+[[rulesets]]
+name = "kin_person"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "kin_relation"
+[rulesets.rules]
+# engine/contexts.lua WORDS 的性别细分及 generated.REL_WORDS。
+"{::subscribed_books::essay_life_facts::relation}" = "{::subscribed_books::essay_life_facts::relation}"
+"daughter" = "女儿"
+"son" = "儿子"
+"wife" = "妻子"
+"husband" = "丈夫"
+"late wife" = "亡妻"
+"late husband" = "亡夫"
+"former wife" = "前妻"
+"former husband" = "前夫"
+"former lover" = "昔日的恋人"
+"old master" = "昔日的师父"
+"old apprentice" = "昔日的学徒"
+"enemy" = "敌人"
+"rival" = "对手"
+
+[[rulesets]]
+name = "child_description"
+[rulesets.rules]
+"small child" = "年幼的孩子"
+"small brother" = "年幼的弟弟"
+"small sister" = "年幼的妹妹"
+"{count} small children" = "{count}名年幼的孩子"
+"{count} small brothers" = "{count}名年幼的弟弟"
+"{count} small sisters" = "{count}名年幼的妹妹"
+"{count} small brothers and sisters" = "{count}名年幼的弟弟妹妹"
+
+[[rulesets]]
+name = "builder"
+[rulesets.rules]
+"{person}" = "{person}"
+
+[[rulesets]]
+name = "builder_disposition"
+[rulesets.rules]
+# builder_view 至多组合尽责和另一项性情，不接受任意正文。
+"{builder_duty}" = "{builder_duty}"
+"{builder_temper}" = "{builder_temper}"
+"{builder_duty} and {builder_temper}" = "{builder_duty}，而且{builder_temper}"
+
+[[rulesets]]
+name = "builder_duty"
+[rulesets.rules]
+"did {possessive} duty by us to the last" = "直到最后都对我们尽职尽责"
+
+[[rulesets]]
+name = "builder_temper"
+[rulesets.rules]
+"was kinder to me than my temper deserved" = "对我的宽厚，远超过我的坏脾气所配得到的"
+"quarrelled with me over every stone of it" = "为了修建它的每一块石头都要与我争吵"
+"could make anyone laugh, even in the dirt" = "即使身处泥地，也能逗得人人发笑"
+"was never less than courteous to me" = "对我始终彬彬有礼"
+"ruled us harder than we liked" = "对我们的管束严厉得令人不快"

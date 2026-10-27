@@ -380,6 +380,10 @@ struct NativeAdventureQuestTitle {
     int32_t companion_reason = -1;
     bool companion_details = false;
     bool companion_completed = false;
+    bool drive_off_details = false;
+    int32_t order_entity_id = -1;
+    std::optional<NativeHistoryName> order_entity;
+    std::optional<NativeHistoryName> order_site;
 };
 static std::optional<NativeAdventureQuestTitle> native_adventure_quest_original_title(
     uintptr_t address, std::string_view displayed, uintptr_t caller);

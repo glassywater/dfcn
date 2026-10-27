@@ -1,0 +1,7 @@
+edition	image	role	start_rva	code_end_rva	assembly_file
+steam	PE:6a70a6d9:02711000	adventure-global-renderer	0xaf1190	0xb0390e	pe-steam-adventure-global-renderer.asm
+steam	PE:6a70a6d9:02711000	task-title-constructor	0xdf540	0xe0ed4	pe-steam-task-title-constructor.asm
+steam	PE:6a70a6d9:02711000	task-retained-title-clipping	0xcdf30	0xcdfb3	pe-steam-task-retained-title-clipping.asm
+classic	PE:6a70b91c:0270a000	adventure-global-renderer	0xaee1d0	0xb0094e	pe-classic-adventure-global-renderer.asm
+classic	PE:6a70b91c:0270a000	task-title-constructor	0xdf4d0	0xe0e64	pe-classic-task-title-constructor.asm
+classic	PE:6a70b91c:0270a000	task-retained-title-clipping	0xcdec0	0xcdf43	pe-classic-task-retained-title-clipping.asm

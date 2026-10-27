@@ -1,0 +1,211 @@
+edition	image	instruction_rva	return_rva	kind	row_offset	x_anchor	native_branch	source	supplier_rva
+steam	PE:6a70a6d9:02711000	0xaf628a	0xaf628f	Title	1	frame_left+2	agreement/order	agreement_entryst.p_list_name (+0x60); retained list_name (+0x20)	0xcdf30
+steam	PE:6a70a6d9:02711000	0xaf645a	0xaf645f	Literal	2	frame_left+2	retrieve-delivery	Bring	-
+steam	PE:6a70a6d9:02711000	0xaf64d6	0xaf64db	Artifact	3	frame_left+2	retrieve-delivery	artifact name; missing/untitled/item-description fallback	0xb94400
+steam	PE:6a70a6d9:02711000	0xaf652e	0xaf6533	Literal	4	frame_left+2	retrieve-delivery	to	-
+steam	PE:6a70a6d9:02711000	0xaf65b0	0xaf65b5	Group	5	frame_left+2	retrieve-delivery	recipient historical_entity name	0xb92900
+steam	PE:6a70a6d9:02711000	0xaf68df	0xaf68e4	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	***	-
+steam	PE:6a70a6d9:02711000	0xaf6949	0xaf694e	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	WSW	-
+steam	PE:6a70a6d9:02711000	0xaf6985	0xaf698a	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	SW	-
+steam	PE:6a70a6d9:02711000	0xaf69c2	0xaf69c7	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	SSW	-
+steam	PE:6a70a6d9:02711000	0xaf69ff	0xaf6a04	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	S	-
+steam	PE:6a70a6d9:02711000	0xaf6a3c	0xaf6a41	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	SSE	-
+steam	PE:6a70a6d9:02711000	0xaf6a79	0xaf6a7e	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	SE	-
+steam	PE:6a70a6d9:02711000	0xaf6ab6	0xaf6abb	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	ESE	-
+steam	PE:6a70a6d9:02711000	0xaf6af3	0xaf6af8	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	E	-
+steam	PE:6a70a6d9:02711000	0xaf6b30	0xaf6b35	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	ENE	-
+steam	PE:6a70a6d9:02711000	0xaf6b6d	0xaf6b72	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	NE	-
+steam	PE:6a70a6d9:02711000	0xaf6bb1	0xaf6bb6	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	NNE	-
+steam	PE:6a70a6d9:02711000	0xaf6bf5	0xaf6bfa	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	N	-
+steam	PE:6a70a6d9:02711000	0xaf6c39	0xaf6c3e	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	NNW	-
+steam	PE:6a70a6d9:02711000	0xaf6c7d	0xaf6c82	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	NW	-
+steam	PE:6a70a6d9:02711000	0xaf6cbe	0xaf6cc3	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	WNW	-
+steam	PE:6a70a6d9:02711000	0xaf6cf1	0xaf6cf6	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	W	-
+steam	PE:6a70a6d9:02711000	0xaf6dbd	0xaf6dc2	Literal	2	frame_left+2	order-issuer	An order from	-
+steam	PE:6a70a6d9:02711000	0xaf6e45	0xaf6e4a	Actor	3	frame_left+2	order-issuer	issuer historical figure (order+0x08)	0xb92f10
+steam	PE:6a70a6d9:02711000	0xaf6ea6	0xaf6eab	Literal	4	frame_left+2	order-flags-bit0	Finish reporting in	-
+steam	PE:6a70a6d9:02711000	0xaf73fe	0xaf7403	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	N	-
+steam	PE:6a70a6d9:02711000	0xaf7439	0xaf743e	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	NNE	-
+steam	PE:6a70a6d9:02711000	0xaf7474	0xaf7479	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	NE	-
+steam	PE:6a70a6d9:02711000	0xaf74af	0xaf74b4	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	ENE	-
+steam	PE:6a70a6d9:02711000	0xaf74ea	0xaf74ef	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	E	-
+steam	PE:6a70a6d9:02711000	0xaf7525	0xaf752a	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	ESE	-
+steam	PE:6a70a6d9:02711000	0xaf7560	0xaf7565	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	SE	-
+steam	PE:6a70a6d9:02711000	0xaf759b	0xaf75a0	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	SSE	-
+steam	PE:6a70a6d9:02711000	0xaf75d6	0xaf75db	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	S	-
+steam	PE:6a70a6d9:02711000	0xaf7611	0xaf7616	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	SSW	-
+steam	PE:6a70a6d9:02711000	0xaf764c	0xaf7651	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	SW	-
+steam	PE:6a70a6d9:02711000	0xaf7687	0xaf768c	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	WSW	-
+steam	PE:6a70a6d9:02711000	0xaf76c2	0xaf76c7	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	W	-
+steam	PE:6a70a6d9:02711000	0xaf76fd	0xaf7702	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	WNW	-
+steam	PE:6a70a6d9:02711000	0xaf7738	0xaf773d	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	NW	-
+steam	PE:6a70a6d9:02711000	0xaf7773	0xaf7778	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	NNW	-
+steam	PE:6a70a6d9:02711000	0xaf77ae	0xaf77b3	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	***	-
+steam	PE:6a70a6d9:02711000	0xaf781d	0xaf7822	Literal	2	frame_left+2	retrieve-search-player-requester	You	-
+steam	PE:6a70a6d9:02711000	0xaf786d	0xaf7872	Person	2	frame_left+2	retrieve-search-other-requester	requester language_name (unit+0x38)	0xa946e0
+steam	PE:6a70a6d9:02711000	0xaf78c5	0xaf78ca	Literal	3	frame_left+2	retrieve-search	asked that you	-
+steam	PE:6a70a6d9:02711000	0xaf791d	0xaf7922	Literal	4	frame_left+2	retrieve-search	retrieve	-
+steam	PE:6a70a6d9:02711000	0xaf799f	0xaf79a4	Artifact	5	frame_left+2	retrieve-search	artifact name; missing/untitled/item-description fallback	0xb94400
+steam	PE:6a70a6d9:02711000	0xaf7d51	0xaf7d56	Bearing	1	frame_right-4	retrieve-search-location-bearing	***	-
+steam	PE:6a70a6d9:02711000	0xaf7dc2	0xaf7dc7	Bearing	1	frame_right-4	retrieve-search-location-bearing	WSW	-
+steam	PE:6a70a6d9:02711000	0xaf7e05	0xaf7e0a	Bearing	1	frame_right-4	retrieve-search-location-bearing	SW	-
+steam	PE:6a70a6d9:02711000	0xaf7e49	0xaf7e4e	Bearing	1	frame_right-4	retrieve-search-location-bearing	SSW	-
+steam	PE:6a70a6d9:02711000	0xaf7e8d	0xaf7e92	Bearing	1	frame_right-4	retrieve-search-location-bearing	S	-
+steam	PE:6a70a6d9:02711000	0xaf7ed1	0xaf7ed6	Bearing	1	frame_right-4	retrieve-search-location-bearing	SSE	-
+steam	PE:6a70a6d9:02711000	0xaf7f15	0xaf7f1a	Bearing	1	frame_right-4	retrieve-search-location-bearing	SE	-
+steam	PE:6a70a6d9:02711000	0xaf7f59	0xaf7f5e	Bearing	1	frame_right-4	retrieve-search-location-bearing	ESE	-
+steam	PE:6a70a6d9:02711000	0xaf7f9d	0xaf7fa2	Bearing	1	frame_right-4	retrieve-search-location-bearing	E	-
+steam	PE:6a70a6d9:02711000	0xaf7fe1	0xaf7fe6	Bearing	1	frame_right-4	retrieve-search-location-bearing	ENE	-
+steam	PE:6a70a6d9:02711000	0xaf8025	0xaf802a	Bearing	1	frame_right-4	retrieve-search-location-bearing	NE	-
+steam	PE:6a70a6d9:02711000	0xaf8070	0xaf8075	Bearing	1	frame_right-4	retrieve-search-location-bearing	NNE	-
+steam	PE:6a70a6d9:02711000	0xaf80bb	0xaf80c0	Bearing	1	frame_right-4	retrieve-search-location-bearing	N	-
+steam	PE:6a70a6d9:02711000	0xaf8106	0xaf810b	Bearing	1	frame_right-4	retrieve-search-location-bearing	NNW	-
+steam	PE:6a70a6d9:02711000	0xaf8151	0xaf8156	Bearing	1	frame_right-4	retrieve-search-location-bearing	NW	-
+steam	PE:6a70a6d9:02711000	0xaf819c	0xaf81a1	Bearing	1	frame_right-4	retrieve-search-location-bearing	WNW	-
+steam	PE:6a70a6d9:02711000	0xaf81d6	0xaf81db	Bearing	1	frame_right-4	retrieve-search-location-bearing	W	-
+steam	PE:6a70a6d9:02711000	0xaf8333	0xaf8338	Person	2	frame_left+2	offer-service	requester language_name (unit+0x38)	0xa946e0
+steam	PE:6a70a6d9:02711000	0xaf837e	0xaf8383	Literal	3	frame_left+2	offer-service	requested that you	-
+steam	PE:6a70a6d9:02711000	0xaf83d6	0xaf83db	Literal	4	frame_left+2	offer-service	offer your services to	-
+steam	PE:6a70a6d9:02711000	0xaf8458	0xaf845d	Group	5	frame_left+2	offer-service	target historical_entity name	0xb92900
+steam	PE:6a70a6d9:02711000	0xaf87a1	0xaf87a6	Bearing	1	frame_right-4	offer-service-local-bearing	***	-
+steam	PE:6a70a6d9:02711000	0xaf880b	0xaf8810	Bearing	1	frame_right-4	offer-service-local-bearing	WSW	-
+steam	PE:6a70a6d9:02711000	0xaf8847	0xaf884c	Bearing	1	frame_right-4	offer-service-local-bearing	SW	-
+steam	PE:6a70a6d9:02711000	0xaf8884	0xaf8889	Bearing	1	frame_right-4	offer-service-local-bearing	SSW	-
+steam	PE:6a70a6d9:02711000	0xaf88c1	0xaf88c6	Bearing	1	frame_right-4	offer-service-local-bearing	S	-
+steam	PE:6a70a6d9:02711000	0xaf88fe	0xaf8903	Bearing	1	frame_right-4	offer-service-local-bearing	SSE	-
+steam	PE:6a70a6d9:02711000	0xaf893b	0xaf8940	Bearing	1	frame_right-4	offer-service-local-bearing	SE	-
+steam	PE:6a70a6d9:02711000	0xaf8978	0xaf897d	Bearing	1	frame_right-4	offer-service-local-bearing	ESE	-
+steam	PE:6a70a6d9:02711000	0xaf89b5	0xaf89ba	Bearing	1	frame_right-4	offer-service-local-bearing	E	-
+steam	PE:6a70a6d9:02711000	0xaf89f2	0xaf89f7	Bearing	1	frame_right-4	offer-service-local-bearing	ENE	-
+steam	PE:6a70a6d9:02711000	0xaf8a2f	0xaf8a34	Bearing	1	frame_right-4	offer-service-local-bearing	NE	-
+steam	PE:6a70a6d9:02711000	0xaf8a73	0xaf8a78	Bearing	1	frame_right-4	offer-service-local-bearing	NNE	-
+steam	PE:6a70a6d9:02711000	0xaf8ab7	0xaf8abc	Bearing	1	frame_right-4	offer-service-local-bearing	N	-
+steam	PE:6a70a6d9:02711000	0xaf8afb	0xaf8b00	Bearing	1	frame_right-4	offer-service-local-bearing	NNW	-
+steam	PE:6a70a6d9:02711000	0xaf8b3f	0xaf8b44	Bearing	1	frame_right-4	offer-service-local-bearing	NW	-
+steam	PE:6a70a6d9:02711000	0xaf8b80	0xaf8b85	Bearing	1	frame_right-4	offer-service-local-bearing	WNW	-
+steam	PE:6a70a6d9:02711000	0xaf8bb3	0xaf8bb8	Bearing	1	frame_right-4	offer-service-local-bearing	W	-
+steam	PE:6a70a6d9:02711000	0xaf914e	0xaf9153	Bearing	1	frame_right-4	offer-service-route-bearing	N	-
+steam	PE:6a70a6d9:02711000	0xaf9189	0xaf918e	Bearing	1	frame_right-4	offer-service-route-bearing	NNE	-
+steam	PE:6a70a6d9:02711000	0xaf91c4	0xaf91c9	Bearing	1	frame_right-4	offer-service-route-bearing	NE	-
+steam	PE:6a70a6d9:02711000	0xaf91ff	0xaf9204	Bearing	1	frame_right-4	offer-service-route-bearing	ENE	-
+steam	PE:6a70a6d9:02711000	0xaf923a	0xaf923f	Bearing	1	frame_right-4	offer-service-route-bearing	E	-
+steam	PE:6a70a6d9:02711000	0xaf9275	0xaf927a	Bearing	1	frame_right-4	offer-service-route-bearing	ESE	-
+steam	PE:6a70a6d9:02711000	0xaf92b0	0xaf92b5	Bearing	1	frame_right-4	offer-service-route-bearing	SE	-
+steam	PE:6a70a6d9:02711000	0xaf92eb	0xaf92f0	Bearing	1	frame_right-4	offer-service-route-bearing	SSE	-
+steam	PE:6a70a6d9:02711000	0xaf9326	0xaf932b	Bearing	1	frame_right-4	offer-service-route-bearing	S	-
+steam	PE:6a70a6d9:02711000	0xaf9361	0xaf9366	Bearing	1	frame_right-4	offer-service-route-bearing	SSW	-
+steam	PE:6a70a6d9:02711000	0xaf939c	0xaf93a1	Bearing	1	frame_right-4	offer-service-route-bearing	SW	-
+steam	PE:6a70a6d9:02711000	0xaf93d7	0xaf93dc	Bearing	1	frame_right-4	offer-service-route-bearing	WSW	-
+steam	PE:6a70a6d9:02711000	0xaf9412	0xaf9417	Bearing	1	frame_right-4	offer-service-route-bearing	W	-
+steam	PE:6a70a6d9:02711000	0xaf944d	0xaf9452	Bearing	1	frame_right-4	offer-service-route-bearing	WNW	-
+steam	PE:6a70a6d9:02711000	0xaf9488	0xaf948d	Bearing	1	frame_right-4	offer-service-route-bearing	NW	-
+steam	PE:6a70a6d9:02711000	0xaf94c0	0xaf94c5	Bearing	1	frame_right-4	offer-service-route-bearing	NNW	-
+steam	PE:6a70a6d9:02711000	0xaf94f8	0xaf94fd	Bearing	1	frame_right-4	offer-service-route-bearing	***	-
+steam	PE:6a70a6d9:02711000	0xaf958c	0xaf9591	Literal	3	frame_left+2	join-party-ended	Agreement concluded	-
+steam	PE:6a70a6d9:02711000	0xaf95fb	0xaf9600	Literal	4	frame_left+2	order-flags-clear-completed	Complete: report back	-
+steam	PE:6a70a6d9:02711000	0xaf964f	0xaf9654	Literal	4	frame_left+2	order-flags-clear-incomplete	Not yet completed	-
+classic	PE:6a70b91c:0270a000	0xaf32ca	0xaf32cf	Title	1	frame_left+2	agreement/order	agreement_entryst.p_list_name (+0x60); retained list_name (+0x20)	0xcdec0
+classic	PE:6a70b91c:0270a000	0xaf349a	0xaf349f	Literal	2	frame_left+2	retrieve-delivery	Bring	-
+classic	PE:6a70b91c:0270a000	0xaf3516	0xaf351b	Artifact	3	frame_left+2	retrieve-delivery	artifact name; missing/untitled/item-description fallback	0xb91440
+classic	PE:6a70b91c:0270a000	0xaf356e	0xaf3573	Literal	4	frame_left+2	retrieve-delivery	to	-
+classic	PE:6a70b91c:0270a000	0xaf35f0	0xaf35f5	Group	5	frame_left+2	retrieve-delivery	recipient historical_entity name	0xb8f940
+classic	PE:6a70b91c:0270a000	0xaf391f	0xaf3924	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	***	-
+classic	PE:6a70b91c:0270a000	0xaf3989	0xaf398e	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	WSW	-
+classic	PE:6a70b91c:0270a000	0xaf39c5	0xaf39ca	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	SW	-
+classic	PE:6a70b91c:0270a000	0xaf3a02	0xaf3a07	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	SSW	-
+classic	PE:6a70b91c:0270a000	0xaf3a3f	0xaf3a44	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	S	-
+classic	PE:6a70b91c:0270a000	0xaf3a7c	0xaf3a81	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	SSE	-
+classic	PE:6a70b91c:0270a000	0xaf3ab9	0xaf3abe	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	SE	-
+classic	PE:6a70b91c:0270a000	0xaf3af6	0xaf3afb	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	ESE	-
+classic	PE:6a70b91c:0270a000	0xaf3b33	0xaf3b38	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	E	-
+classic	PE:6a70b91c:0270a000	0xaf3b70	0xaf3b75	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	ENE	-
+classic	PE:6a70b91c:0270a000	0xaf3bad	0xaf3bb2	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	NE	-
+classic	PE:6a70b91c:0270a000	0xaf3bf1	0xaf3bf6	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	NNE	-
+classic	PE:6a70b91c:0270a000	0xaf3c35	0xaf3c3a	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	N	-
+classic	PE:6a70b91c:0270a000	0xaf3c79	0xaf3c7e	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	NNW	-
+classic	PE:6a70b91c:0270a000	0xaf3cbd	0xaf3cc2	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	NW	-
+classic	PE:6a70b91c:0270a000	0xaf3cfe	0xaf3d03	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	WNW	-
+classic	PE:6a70b91c:0270a000	0xaf3d31	0xaf3d36	Bearing	1	frame_right-4	retrieve-delivery-local-bearing	W	-
+classic	PE:6a70b91c:0270a000	0xaf3dfd	0xaf3e02	Literal	2	frame_left+2	order-issuer	An order from	-
+classic	PE:6a70b91c:0270a000	0xaf3e85	0xaf3e8a	Actor	3	frame_left+2	order-issuer	issuer historical figure (order+0x08)	0xb8ff50
+classic	PE:6a70b91c:0270a000	0xaf3ee6	0xaf3eeb	Literal	4	frame_left+2	order-flags-bit0	Finish reporting in	-
+classic	PE:6a70b91c:0270a000	0xaf443e	0xaf4443	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	N	-
+classic	PE:6a70b91c:0270a000	0xaf4479	0xaf447e	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	NNE	-
+classic	PE:6a70b91c:0270a000	0xaf44b4	0xaf44b9	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	NE	-
+classic	PE:6a70b91c:0270a000	0xaf44ef	0xaf44f4	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	ENE	-
+classic	PE:6a70b91c:0270a000	0xaf452a	0xaf452f	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	E	-
+classic	PE:6a70b91c:0270a000	0xaf4565	0xaf456a	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	ESE	-
+classic	PE:6a70b91c:0270a000	0xaf45a0	0xaf45a5	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	SE	-
+classic	PE:6a70b91c:0270a000	0xaf45db	0xaf45e0	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	SSE	-
+classic	PE:6a70b91c:0270a000	0xaf4616	0xaf461b	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	S	-
+classic	PE:6a70b91c:0270a000	0xaf4651	0xaf4656	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	SSW	-
+classic	PE:6a70b91c:0270a000	0xaf468c	0xaf4691	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	SW	-
+classic	PE:6a70b91c:0270a000	0xaf46c7	0xaf46cc	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	WSW	-
+classic	PE:6a70b91c:0270a000	0xaf4702	0xaf4707	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	W	-
+classic	PE:6a70b91c:0270a000	0xaf473d	0xaf4742	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	WNW	-
+classic	PE:6a70b91c:0270a000	0xaf4778	0xaf477d	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	NW	-
+classic	PE:6a70b91c:0270a000	0xaf47b3	0xaf47b8	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	NNW	-
+classic	PE:6a70b91c:0270a000	0xaf47ee	0xaf47f3	Bearing	1	frame_right-4	retrieve-delivery-route-bearing	***	-
+classic	PE:6a70b91c:0270a000	0xaf485d	0xaf4862	Literal	2	frame_left+2	retrieve-search-player-requester	You	-
+classic	PE:6a70b91c:0270a000	0xaf48ad	0xaf48b2	Person	2	frame_left+2	retrieve-search-other-requester	requester language_name (unit+0x38)	0xa91760
+classic	PE:6a70b91c:0270a000	0xaf4905	0xaf490a	Literal	3	frame_left+2	retrieve-search	asked that you	-
+classic	PE:6a70b91c:0270a000	0xaf495d	0xaf4962	Literal	4	frame_left+2	retrieve-search	retrieve	-
+classic	PE:6a70b91c:0270a000	0xaf49df	0xaf49e4	Artifact	5	frame_left+2	retrieve-search	artifact name; missing/untitled/item-description fallback	0xb91440
+classic	PE:6a70b91c:0270a000	0xaf4d91	0xaf4d96	Bearing	1	frame_right-4	retrieve-search-location-bearing	***	-
+classic	PE:6a70b91c:0270a000	0xaf4e02	0xaf4e07	Bearing	1	frame_right-4	retrieve-search-location-bearing	WSW	-
+classic	PE:6a70b91c:0270a000	0xaf4e45	0xaf4e4a	Bearing	1	frame_right-4	retrieve-search-location-bearing	SW	-
+classic	PE:6a70b91c:0270a000	0xaf4e89	0xaf4e8e	Bearing	1	frame_right-4	retrieve-search-location-bearing	SSW	-
+classic	PE:6a70b91c:0270a000	0xaf4ecd	0xaf4ed2	Bearing	1	frame_right-4	retrieve-search-location-bearing	S	-
+classic	PE:6a70b91c:0270a000	0xaf4f11	0xaf4f16	Bearing	1	frame_right-4	retrieve-search-location-bearing	SSE	-
+classic	PE:6a70b91c:0270a000	0xaf4f55	0xaf4f5a	Bearing	1	frame_right-4	retrieve-search-location-bearing	SE	-
+classic	PE:6a70b91c:0270a000	0xaf4f99	0xaf4f9e	Bearing	1	frame_right-4	retrieve-search-location-bearing	ESE	-
+classic	PE:6a70b91c:0270a000	0xaf4fdd	0xaf4fe2	Bearing	1	frame_right-4	retrieve-search-location-bearing	E	-
+classic	PE:6a70b91c:0270a000	0xaf5021	0xaf5026	Bearing	1	frame_right-4	retrieve-search-location-bearing	ENE	-
+classic	PE:6a70b91c:0270a000	0xaf5065	0xaf506a	Bearing	1	frame_right-4	retrieve-search-location-bearing	NE	-
+classic	PE:6a70b91c:0270a000	0xaf50b0	0xaf50b5	Bearing	1	frame_right-4	retrieve-search-location-bearing	NNE	-
+classic	PE:6a70b91c:0270a000	0xaf50fb	0xaf5100	Bearing	1	frame_right-4	retrieve-search-location-bearing	N	-
+classic	PE:6a70b91c:0270a000	0xaf5146	0xaf514b	Bearing	1	frame_right-4	retrieve-search-location-bearing	NNW	-
+classic	PE:6a70b91c:0270a000	0xaf5191	0xaf5196	Bearing	1	frame_right-4	retrieve-search-location-bearing	NW	-
+classic	PE:6a70b91c:0270a000	0xaf51dc	0xaf51e1	Bearing	1	frame_right-4	retrieve-search-location-bearing	WNW	-
+classic	PE:6a70b91c:0270a000	0xaf5216	0xaf521b	Bearing	1	frame_right-4	retrieve-search-location-bearing	W	-
+classic	PE:6a70b91c:0270a000	0xaf5373	0xaf5378	Person	2	frame_left+2	offer-service	requester language_name (unit+0x38)	0xa91760
+classic	PE:6a70b91c:0270a000	0xaf53be	0xaf53c3	Literal	3	frame_left+2	offer-service	requested that you	-
+classic	PE:6a70b91c:0270a000	0xaf5416	0xaf541b	Literal	4	frame_left+2	offer-service	offer your services to	-
+classic	PE:6a70b91c:0270a000	0xaf5498	0xaf549d	Group	5	frame_left+2	offer-service	target historical_entity name	0xb8f940
+classic	PE:6a70b91c:0270a000	0xaf57e1	0xaf57e6	Bearing	1	frame_right-4	offer-service-local-bearing	***	-
+classic	PE:6a70b91c:0270a000	0xaf584b	0xaf5850	Bearing	1	frame_right-4	offer-service-local-bearing	WSW	-
+classic	PE:6a70b91c:0270a000	0xaf5887	0xaf588c	Bearing	1	frame_right-4	offer-service-local-bearing	SW	-
+classic	PE:6a70b91c:0270a000	0xaf58c4	0xaf58c9	Bearing	1	frame_right-4	offer-service-local-bearing	SSW	-
+classic	PE:6a70b91c:0270a000	0xaf5901	0xaf5906	Bearing	1	frame_right-4	offer-service-local-bearing	S	-
+classic	PE:6a70b91c:0270a000	0xaf593e	0xaf5943	Bearing	1	frame_right-4	offer-service-local-bearing	SSE	-
+classic	PE:6a70b91c:0270a000	0xaf597b	0xaf5980	Bearing	1	frame_right-4	offer-service-local-bearing	SE	-
+classic	PE:6a70b91c:0270a000	0xaf59b8	0xaf59bd	Bearing	1	frame_right-4	offer-service-local-bearing	ESE	-
+classic	PE:6a70b91c:0270a000	0xaf59f5	0xaf59fa	Bearing	1	frame_right-4	offer-service-local-bearing	E	-
+classic	PE:6a70b91c:0270a000	0xaf5a32	0xaf5a37	Bearing	1	frame_right-4	offer-service-local-bearing	ENE	-
+classic	PE:6a70b91c:0270a000	0xaf5a6f	0xaf5a74	Bearing	1	frame_right-4	offer-service-local-bearing	NE	-
+classic	PE:6a70b91c:0270a000	0xaf5ab3	0xaf5ab8	Bearing	1	frame_right-4	offer-service-local-bearing	NNE	-
+classic	PE:6a70b91c:0270a000	0xaf5af7	0xaf5afc	Bearing	1	frame_right-4	offer-service-local-bearing	N	-
+classic	PE:6a70b91c:0270a000	0xaf5b3b	0xaf5b40	Bearing	1	frame_right-4	offer-service-local-bearing	NNW	-
+classic	PE:6a70b91c:0270a000	0xaf5b7f	0xaf5b84	Bearing	1	frame_right-4	offer-service-local-bearing	NW	-
+classic	PE:6a70b91c:0270a000	0xaf5bc0	0xaf5bc5	Bearing	1	frame_right-4	offer-service-local-bearing	WNW	-
+classic	PE:6a70b91c:0270a000	0xaf5bf3	0xaf5bf8	Bearing	1	frame_right-4	offer-service-local-bearing	W	-
+classic	PE:6a70b91c:0270a000	0xaf618e	0xaf6193	Bearing	1	frame_right-4	offer-service-route-bearing	N	-
+classic	PE:6a70b91c:0270a000	0xaf61c9	0xaf61ce	Bearing	1	frame_right-4	offer-service-route-bearing	NNE	-
+classic	PE:6a70b91c:0270a000	0xaf6204	0xaf6209	Bearing	1	frame_right-4	offer-service-route-bearing	NE	-
+classic	PE:6a70b91c:0270a000	0xaf623f	0xaf6244	Bearing	1	frame_right-4	offer-service-route-bearing	ENE	-
+classic	PE:6a70b91c:0270a000	0xaf627a	0xaf627f	Bearing	1	frame_right-4	offer-service-route-bearing	E	-
+classic	PE:6a70b91c:0270a000	0xaf62b5	0xaf62ba	Bearing	1	frame_right-4	offer-service-route-bearing	ESE	-
+classic	PE:6a70b91c:0270a000	0xaf62f0	0xaf62f5	Bearing	1	frame_right-4	offer-service-route-bearing	SE	-
+classic	PE:6a70b91c:0270a000	0xaf632b	0xaf6330	Bearing	1	frame_right-4	offer-service-route-bearing	SSE	-
+classic	PE:6a70b91c:0270a000	0xaf6366	0xaf636b	Bearing	1	frame_right-4	offer-service-route-bearing	S	-
+classic	PE:6a70b91c:0270a000	0xaf63a1	0xaf63a6	Bearing	1	frame_right-4	offer-service-route-bearing	SSW	-
+classic	PE:6a70b91c:0270a000	0xaf63dc	0xaf63e1	Bearing	1	frame_right-4	offer-service-route-bearing	SW	-
+classic	PE:6a70b91c:0270a000	0xaf6417	0xaf641c	Bearing	1	frame_right-4	offer-service-route-bearing	WSW	-
+classic	PE:6a70b91c:0270a000	0xaf6452	0xaf6457	Bearing	1	frame_right-4	offer-service-route-bearing	W	-
+classic	PE:6a70b91c:0270a000	0xaf648d	0xaf6492	Bearing	1	frame_right-4	offer-service-route-bearing	WNW	-
+classic	PE:6a70b91c:0270a000	0xaf64c8	0xaf64cd	Bearing	1	frame_right-4	offer-service-route-bearing	NW	-
+classic	PE:6a70b91c:0270a000	0xaf6500	0xaf6505	Bearing	1	frame_right-4	offer-service-route-bearing	NNW	-
+classic	PE:6a70b91c:0270a000	0xaf6538	0xaf653d	Bearing	1	frame_right-4	offer-service-route-bearing	***	-
+classic	PE:6a70b91c:0270a000	0xaf65cc	0xaf65d1	Literal	3	frame_left+2	join-party-ended	Agreement concluded	-
+classic	PE:6a70b91c:0270a000	0xaf663b	0xaf6640	Literal	4	frame_left+2	order-flags-clear-completed	Complete: report back	-
+classic	PE:6a70b91c:0270a000	0xaf668f	0xaf6694	Literal	4	frame_left+2	order-flags-clear-incomplete	Not yet completed	-

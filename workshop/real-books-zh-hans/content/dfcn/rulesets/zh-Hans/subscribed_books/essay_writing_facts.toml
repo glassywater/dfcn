@@ -1,0 +1,194 @@
+# forms/essay/subjects/writing.lua：写作风格、读者回应与作者前后的作品。
+# 人物和书名必须经过类型解析；作品列表最多三部，不把标题中的标点视为句界。
+base = "subscribed_books::essay_writing_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{record}" = "{record}"
+"In {date}, {record}" = "{date}，{record}"
+"In {date} {record}" = "{date}，{record}"
+"In {date}, {circumstance}, {record}" = "{date}，{circumstance}，{record}"
+"{circumstance}, {record}" = "{circumstance}，{record}"
+"{relative_lead} {record}" = "{relative_lead}{record}"
+"{relative_lead} {circumstance}, {record}" = "{relative_lead}{circumstance}，{record}"
+
+"It is {styles}." = "这部作品{styles}。"
+"Before it, {actor} had written one work: {books}." = "在此之前，{actor}已写过一部作品：{books}。"
+"Before it, {actor} had written {count} works: {books}." = "在此之前，{actor}已写过{count}部作品：{books}。"
+"Before it, {actor} had written one work." = "在此之前，{actor}已写过一部作品。"
+"Before it, {actor} had written {count} works." = "在此之前，{actor}已写过{count}部作品。"
+"It was my first work." = "这是我的第一部作品。"
+"It was {actor}'s first work." = "这是{actor}的第一部作品。"
+"It was their first work." = "这是其第一部作品。"
+"After it came {books}, and more." = "在它之后，又有了{books}等作品。"
+"After it came {books}." = "在它之后，又有了{books}。"
+# life.deeds 在作者引以为傲的作品或造物之后追加这一独立评价。
+"I am proud of it still." = "我至今仍为它自豪。"
+
+[[rulesets]]
+name = "record"
+[rulesets.rules]
+# evidence.event_line 改写原生创作记录；writing.facts 的读者回应只带作品文体。
+"{actor} wrote {book}, {about}." = "{actor}写下了{book}，这是{about}。"
+"{actor} wrote {book}." = "{actor}写下了{book}。"
+"{actor} wrote of it in {book}, {form_article}." = "{actor}在{form_article}{book}中写到了它。"
+"{actor} wrote of it in {book}." = "{actor}在{book}中写到了它。"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_vocabulary::actor}" = "{::subscribed_books::essay_writing_vocabulary::actor}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_vocabulary::date}" = "{::subscribed_books::essay_writing_vocabulary::date}"
+
+[[rulesets]]
+name = "circumstance"
+[rulesets.rules]
+# 原生创作记录可同时带目的和起因，二者分别解析，不能只接受其中一项。
+"{::subscribed_books::essay_writing_vocabulary::motive} {::subscribed_books::essay_writing_vocabulary::circumstance}" = "{::subscribed_books::essay_writing_vocabulary::circumstance}，{::subscribed_books::essay_writing_vocabulary::motive}"
+"{::subscribed_books::essay_writing_vocabulary::circumstance}" = "{::subscribed_books::essay_writing_vocabulary::circumstance}"
+"{::subscribed_books::essay_writing_vocabulary::motive}" = "{::subscribed_books::essay_writing_vocabulary::motive}"
+
+[[rulesets]]
+name = "relative_lead"
+[rulesets.rules]
+# life.deeds 将原有日期替换成 life.lead 的有限时间连接，缘由仍紧接在人物前。
+"That same year," = "就在那一年，"
+"That year, too," = "同年，"
+"The next year," = "次年，"
+"{elapsed_years} years later," = "{elapsed_years}年后，"
+"Many years later, in {date}," = "许多年后的{date}，"
+"Long after, in {date}," = "很久以后的{date}，"
+
+[[rulesets]]
+name = "elapsed_years"
+[rulesets.rules]
+# life.lead 后续事件只将二至十年的间隔写成英文数词。
+"two" = "两"
+"three" = "三"
+"four" = "四"
+"five" = "五"
+"six" = "六"
+"seven" = "七"
+"eight" = "八"
+"nine" = "九"
+"ten" = "十"
+
+[[rulesets]]
+name = "book"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_vocabulary::book}" = "{::subscribed_books::essay_writing_vocabulary::book}"
+
+[[rulesets]]
+name = "book2"
+[rulesets.rules]
+"{book}" = "{book}"
+
+[[rulesets]]
+name = "book3"
+[rulesets.rules]
+"{book}" = "{book}"
+
+[[rulesets]]
+name = "books"
+[rulesets.rules]
+# 每个标题都须完整匹配 ::text::book；and、逗号和引号可以是书名本身的一部分。
+"{book}" = "{book}"
+"{book} and {book2}" = "{book}和{book2}"
+"{book}, {book2} and {book3}" = "{book}、{book2}和{book3}"
+
+[[rulesets]]
+name = "form_article"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_vocabulary::form_article}" = "{::subscribed_books::essay_writing_vocabulary::form_article}"
+
+[[rulesets]]
+name = "about"
+[rulesets.rules]
+# game_words.FORM_WORDS 的四种主题介词，以及为另一部作品配乐或编舞的 setting。
+"{form_article}" = "{form_article}"
+"{form_article} on {matter}" = "关于{matter}的{form_article}"
+"{form_article} to {matter}" = "介绍{matter}的{form_article}"
+"{form_article} of {matter}" = "记述{matter}的{form_article}"
+"{form_article} about {matter}" = "关于{matter}的{form_article}"
+"a composition setting {book}" = "为{book}谱写的一首乐曲"
+"a dance setting {book}" = "根据{book}编排的一支舞蹈"
+"on {matter}" = "关于{matter}的作品"
+
+[[rulesets]]
+name = "matter"
+[rulesets.rules]
+# game_words.work 的已知 ref 类型：价值、事件、知识、作品、人物、聚落和组织。
+"myself" = "我自己"
+"{::subscribed_books::essay::value}" = "{::subscribed_books::essay::value}"
+"{::subscribed_books::essay_vocabulary::subject}" = "{::subscribed_books::essay_vocabulary::subject}"
+"{::subscribed_books::manual_vocabulary::topic}" = "{::subscribed_books::manual_vocabulary::topic}"
+"{book}" = "{book}"
+"{actor}" = "{actor}"
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "style"
+[rulesets.rules]
+# writing.lua 的完整十八项 STYLE 词池。
+"meandering" = "行文散漫"
+"cheerful" = "欢快"
+"gloomy" = "阴郁"
+"rigid" = "刻板"
+"serious" = "严肃"
+"disjointed" = "缺乏连贯"
+"ornate" = "辞藻华丽"
+"forceful" = "强劲有力"
+"humorous" = "幽默"
+"immature" = "稚嫩"
+"self-indulgent" = "自我沉醉"
+"touching" = "感人"
+"compassionate" = "富于同情"
+"vicious" = "恶毒"
+"concise" = "简洁"
+"scornful" = "充满嘲讽"
+"witty" = "机智诙谐"
+"ranting" = "言辞激愤"
+
+[[rulesets]]
+name = "styled"
+[rulesets.rules]
+"thoroughly {style}" = "通篇{style}"
+"somewhat {style}" = "略显{style}"
+"{style} in places" = "有些地方{style}"
+
+[[rulesets]]
+name = "styles"
+[rulesets.rules]
+"{styled}" = "{styled}"
+"{styled} and {styles}" = "{styled}，也{styles}"
+"{styled}, {styles}" = "{styled}，{styles}"
+
+[[rulesets]]
+name = "count"
+[rulesets.rules]
+# life.number 对一至二十使用英文数词，更大数量直接使用数字。
+"{#digits}" = "{#digits}"
+"two" = "两"
+"three" = "三"
+"four" = "四"
+"five" = "五"
+"six" = "六"
+"seven" = "七"
+"eight" = "八"
+"nine" = "九"
+"ten" = "十"
+"eleven" = "十一"
+"twelve" = "十二"
+"thirteen" = "十三"
+"fourteen" = "十四"
+"fifteen" = "十五"
+"sixteen" = "十六"
+"seventeen" = "十七"
+"eighteen" = "十八"
+"nineteen" = "十九"
+"twenty" = "二十"

@@ -304,6 +304,7 @@ static bool capture_native_history_written_content(uintptr_t content, NativeHist
     out.fields[prefix + ".pages"] = {static_cast<int32_t>(static_cast<uint32_t>(last_page) -
         static_cast<uint32_t>(first_page) + 1u)};
     out.fields[prefix + ".author_present"] = {0};
+    out.fields[prefix + ".author_name_subject"] = {-1};
     out.texts[prefix + ".author_name"] = "";
     uintptr_t figure = native_history_find_subject(base, NativeHistoryObjectKind::Figure, author);
     if (figure) {
@@ -328,10 +329,21 @@ static bool capture_native_history_written_content(uintptr_t content, NativeHist
             uint8_t named = 0;
             if (!native_history_copy(name + 0x72, named)) return false;
             if (named) {
-                // Isolated language-name orthography; titles, author choice
-                // and all body clauses are still regenerated from fields.
+                // Keep the formatter's selected author identity, including
+                // its real-figure/assumed-identity choice, as complete WORD/POS
+                // data. An isolated Identity follows the item-name convention
+                // and cannot suppress a normal Figure with the same author ID.
                 std::string spelling;
                 if (!capture_native_history_original_name(base, name, spelling)) return false;
+                NativeHistorySubject author_name;
+                author_name.kind = NativeHistoryObjectKind::Identity;
+                author_name.id = -1;
+                author_name.subid = -2 - static_cast<int32_t>(out.subjects.size());
+                if (!capture_native_history_name(base, name, author_name.name)) return false;
+                author_name.name.native_name = spelling;
+                out.fields[prefix + ".author_name_subject"] = {static_cast<int32_t>(out.subjects.size())};
+                out.subjects.push_back(std::move(author_name));
+                // Retain the original spelling for older/fallback renderers.
                 out.texts[prefix + ".author_name"] = std::move(spelling);
             }
         }

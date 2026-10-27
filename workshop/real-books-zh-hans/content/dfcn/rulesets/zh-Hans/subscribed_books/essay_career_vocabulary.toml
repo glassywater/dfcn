@@ -1,0 +1,81 @@
+# game_words.phrase 的 CHANGE_HF_JOB 主题：保留原生职业、地点和日期字段。
+# in_own_words 将作者的 “the ... of <人物>” 改写为 “my ...”。
+base = "subscribed_books::essay_career_vocabulary"
+
+[[rulesets]]
+name = "profession"
+[rulesets.rules]
+"{::professions}" = "{::professions}"
+
+[[rulesets]]
+name = "profession_to"
+[rulesets.rules]
+"{profession}" = "{profession}"
+
+[[rulesets]]
+name = "profession_article"
+[rulesets.rules]
+"a {profession}" = "{profession}"
+"an {profession}" = "{profession}"
+
+[[rulesets]]
+name = "profession_article_to"
+[rulesets.rules]
+"a {profession_to}" = "{profession_to}"
+"an {profession_to}" = "{profession_to}"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "region"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "location"
+[rulesets.rules]
+"the wilds" = "荒野"
+"{place}" = "{place}"
+# 原生字段可同时提供聚落和其所在的地表或地下区域。
+"{place} {region}" = "{region}的{place}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "career_action"
+[rulesets.rules]
+"career change from {profession} to {profession_to}" = "从{profession}转为{profession_to}"
+"giving up on being {profession_article}" = "放弃{profession_article}的身份"
+"start as {profession_article}" = "开始担任{profession_article}"
+"thievery" = "从事盗窃"
+"wandering" = "游荡"
+"scouting" = "进行侦察"
+"hunting of great beasts" = "猎杀巨兽"
+"baby-snatching" = "从事劫婴"
+"mercenary operation" = "从事佣兵活动"
+
+[[rulesets]]
+name = "career_location"
+[rulesets.rules]
+"in {location}" = "在{location}"
+"around {location}" = "在{location}一带"
+"throughout {location}" = "在{location}各处"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"my {career_action} {career_location} in {date}" = "我于{date}{career_location}{career_action}的经历"
+"the {career_action} of {actor} {career_location} in {date}" = "{actor}于{date}{career_location}{career_action}的经历"
+"my {career_action}, based in {location} in {date}" = "我于{date}以{location}为据点{career_action}的经历"
+"the {career_action} of {actor}, based in {location} in {date}" = "{actor}于{date}以{location}为据点{career_action}的经历"

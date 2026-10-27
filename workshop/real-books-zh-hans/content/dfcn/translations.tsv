@@ -14,6 +14,13 @@ Read Story [Ctrl+N]	阅读故事 [Ctrl+N]	l
 Copy text	复制文本	wl
 Copied!	已复制！	wl
 No content.	没有内容。	l
+A Guide	旅行指南	l
+A Manual	一本手册	l
+Perspective: manual	叙述视角：手册	l
+Perspective: discoverer's manual	叙述视角：发现者手册	l
+Perspective: guide	叙述视角：旅行指南	l
+Perspective: resident's guide	叙述视角：居民指南	l
+Perspective: traveller's guide	叙述视角：旅人指南	l
 Adds a Read Story button when viewing books in item sheets.	查看物品中的书籍时，添加“阅读故事”按钮。	l
 Reading: Untitled	阅读：未命名	l
 Reading: {s}	阅读：{s}	tl
@@ -135,3 +142,13 @@ DFHack output: Captured {s} ({d} chars)	已捕获 {s1}（{d1} 个字符）	l
 DFHack output: Captured {s} (ERROR, see file)	已捕获 {s1}（出错，详情见文件）	l
 DFHack output: Done. {d} narratives captured to: {s}	完成。已将 {d1} 篇叙述捕获至：{s1}	l
 DFHack output: Manifest written to: {s}	清单已写入：{s1}	l
+
+# gui/codex-legends.lua 与 gui/codex-library.lua：传说模式书籍面板。
+DFHack GUI Overlay control: Real Book||I|0|-1|0	真实书籍|	l
+DFHack GUI Overlay control: Written Works||I|0|-1|1	著作列表|	l
+DFHack GUI Overlay control: mouse wheel scrolls||I|0|-1|0	鼠标滚轮滚动|	l
+DFHack GUI Overlay control: Adds a Written Works button to legends mode.||I|0|-1|0	在传说模式中添加“著作列表”按钮。|	l
+DFHack GUI Overlay control: Shows the story inside the codex or scroll legends is displaying, under its page.||I|0|-1|0	在传说页面下方显示当前典籍或卷轴中的故事。|	l
+DFHack GUI Real Book artifact: this artifact	这件神器	l
+DFHack GUI Extension prose: Real Book||body	::subscribed_books::legends_panel	l
+DFHack GUI Extension prose normalize: Real Book||body|01	\\s+\t 	l

@@ -5,6 +5,9 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
         const NativeString *source, int width, bool top_layer,
         uintptr_t native_caller, Draw &&draw) {
     NativeInputCallbackScope callback;
+    const bool topbar = graphics && graphics == g_native_topbar_write_graphics;
+    NativeTopbarSiteClip site_clip(graphics, native_caller,
+        topbar && g_overlay.translation_enabled());
     NativeDrawnTextRow row;
     const unsigned char *grid = nullptr;
     int x = 0, y = 0, dimx = 0, dimy = 0;
@@ -53,6 +56,10 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
                 submitted.find_first_of("\r\n") == std::string_view::npos &&
                 submitted.find('\0') == std::string_view::npos) {
             row.complete_source.assign(submitted);
+            // The top bar consumes the actual NativeString while it is live.
+            // Keep its submitted bytes separately from the full pre-shortening
+            // source; never reconstruct either from the rendered characters.
+            if (topbar) row.source.assign(submitted);
             if (shortened.owner == source && shortened.epoch == epoch &&
                     shortened.visible == submitted && !shortened.complete.empty())
                 row.complete_source = std::move(shortened.complete);
@@ -114,11 +121,20 @@ static void capture_native_bounded_panel_caption(graphicst *graphics,
             native_designation_submit_span(first, y, last - first);
         row.x = first;
         row.y = y;
-        row.source.reserve(static_cast<size_t>(last - first));
-        for (int column = first; column < last; ++column) {
-            const auto ch = grid[(static_cast<size_t>(column) * dimy + y) * 8];
-            if (!ch) return;
-            row.source.push_back(static_cast<char>(ch));
+        if (topbar) {
+            // All top-bar writers use left-justified addst. The native cursor
+            // and clip supply geometry only; even an overwritten label keeps
+            // its complete source and its own translation.
+            const size_t offset = static_cast<size_t>(first - x);
+            if (offset >= row.source.size()) return;
+            row.source = row.source.substr(offset, static_cast<size_t>(last - first));
+        } else {
+            row.source.reserve(static_cast<size_t>(last - first));
+            for (int column = first; column < last; ++column) {
+                const auto ch = grid[(static_cast<size_t>(column) * dimy + y) * 8];
+                if (!ch) return;
+                row.source.push_back(static_cast<char>(ch));
+            }
         }
         row.draw_grid = grid;
         row.draw_dimx = dimx;

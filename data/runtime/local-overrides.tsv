@@ -3136,9 +3136,9 @@ Equipment and pet points remaining: {d}	剩余装备与宠物点数：{d}	wt
 {d} {s}, \x0B	{d}只{s}，♂	wt
 {s}, \x0C	{s}，♀	wt
 {s}, \x0B	{s}，♂	wt
-baby alpaca	幼年羊驼
+baby alpaca	羊驼幼崽
 andrewsarchus	安氏兽
-andrewsarchus pup	幼年安氏兽
+andrewsarchus pup	安氏兽幼崽
 hunting andrewsarchus	受过狩猎训练的安氏兽
 war andrewsarchus	受过战斗训练的安氏兽
 arthropleura	节胸虫
@@ -4264,9 +4264,9 @@ fair-dealing and fair-play, values cooperation, finds merrymaking and	公平交�
 partying worthwhile activities, values martial prowess, values leisure time,	聚会是值得参与的活动；她崇尚武艺，也重视休闲时间，	l
 respects commerce, values knowledge and finds nature somewhat disturbing.	尊重商业，重视知识，并觉得自然有些令人不安。	l
 aegirocassis	海神盔虾	wi
-juvenile aegirocassis	幼年海神盔虾	wi
+juvenile aegirocassis	海神盔虾幼崽	wi
 ammonite	菊石	wi
-ammonite hatchling	幼年菊石	wi
+ammonite hatchling	菊石幼崽	wi
 Walk	行走	w
 
 # Adventure character creation: male-pronoun variants

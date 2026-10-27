@@ -1,0 +1,213 @@
+# 原生 simple_battle/wounded 的 getPhrase、getSentence 与 subject.lua 后备主题。
+# 攻击者、受袭者及受伤部位分别解析；不捕获任意正文，不交换事件双方。
+base = "subscribed_books::essay_fight_vocabulary"
+
+[[rulesets]]
+[rulesets.rules]
+"In {date}, {event}." = "{date}，{event}。"
+"{event}." = "{event}。"
+# simple_battle 的争斗分支在同一原生记录中另起一句；也兼容正文去重后独立显示。
+"While defeated, the latter escaped unscathed." = "后者虽然战败，仍毫发无损地逃脱了。"
+"While defeated, I escaped unscathed." = "我虽然战败，仍毫发无损地逃脱了。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{attack}" = "{attack}"
+"{escape}" = "{escape}"
+"{subduing} in {date}" = "{date}{subduing}"
+"{subduing}" = "{subduing}"
+"{scuffle} in {date} in which the former emerged victorious" = "{date}{scuffle}，前者获胜"
+"{scuffle} in {date} in which the latter emerged victorious" = "{date}{scuffle}，后者获胜"
+"{scuffle} in {date}, which I won" = "{date}{scuffle}，我取得了胜利"
+"{scuffle} in {date}, which I lost" = "{date}{scuffle}，我落败了"
+"{scuffle} in {date}" = "{date}{scuffle}"
+"{wounding} in {date}" = "{date}{wounding}"
+"{wounding}" = "{wounding}"
+# 原生短语不可用时，subject.of_work/of_many 使用自己的有限后备句式。
+"{fallback} in {date}" = "{date}{fallback}"
+"{fallback}, {year} to {year_to}" = "{year}年至{year_to}年间{fallback}"
+"{fallback}" = "{fallback}"
+
+[[rulesets]]
+name = "attack"
+[rulesets.rules]
+# 原生所有格属于 group1，后面的宾语属于 group2。
+"{initiator} attack on {target}" = "{initiator}对{target}的袭击"
+"{initiator} surprising of {target}" = "{initiator}对{target}的突然袭击"
+"{initiator} ambush of {target}" = "{initiator}对{target}的伏击"
+"{initiator} happening upon {target}" = "{initiator}与{target}的偶遇"
+"{initiator} cornering of {target}" = "{initiator}将{target}逼入绝境的经历"
+"{initiator} confrontation of {target}" = "{initiator}与{target}的对峙"
+"{initiator} brawl with {target}" = "{initiator}与{target}的斗殴"
+
+[[rulesets]]
+name = "initiator"
+[rulesets.rules]
+"{actor}'s" = "{actor}"
+"my" = "我"
+
+[[rulesets]]
+name = "scuffle"
+[rulesets.rules]
+"a scuffle between {actor} and {target}" = "{actor}与{target}之间的一场争斗"
+
+[[rulesets]]
+name = "escape"
+[rulesets.rules]
+"{escape_core} after a punishing fight" = "在一场惨烈战斗后{escape_core}"
+"{escape_core} despite the latter's wounds" = "尽管后者已受伤，{escape_core}"
+"{escape_core} after a horrific combat" = "在一场可怕的厮杀后{escape_core}"
+
+[[rulesets]]
+name = "escape_core"
+[rulesets.rules]
+# 此处分支先输出 group2 的逃脱者，再输出 group1 的追击者。
+"the escape of {target} from {actor}" = "{target}从{actor}手中逃脱的经历"
+"my escape from {actor}" = "我从{actor}手中逃脱的经历"
+
+[[rulesets]]
+name = "subduing"
+[rulesets.rules]
+"the subduing of {target} by {actor}" = "{actor}制服{target}的经历"
+"my subduing by {actor}" = "我被{actor}制服的经历"
+"my subduing of {target}" = "我制服{target}的经历"
+
+[[rulesets]]
+name = "wounding"
+[rulesets.rules]
+"the {wound_noun} of {body_owner} {bodypart} by {actor} as a means of torture" = "{actor}为施以酷刑而将{body_owner}{bodypart}{wound_noun}的经历"
+"the {wound_noun} of {body_owner} {bodypart} by {actor}" = "{actor}将{body_owner}{bodypart}{wound_noun}的经历"
+"the {wound_noun} of {body_owner} {bodypart}" = "{body_owner}{bodypart}被{wound_noun}的经历"
+# in_own_words 将 by 作者改成 my 前缀；部位所有者仍是受伤者。
+"my {wound_noun} of {body_owner} {bodypart} as a means of torture" = "我为施以酷刑而将{body_owner}{bodypart}{wound_noun}的经历"
+"my {wound_noun} of {body_owner} {bodypart}" = "我将{body_owner}{bodypart}{wound_noun}的经历"
+# 作者自身为受伤者时，上游替换保留原姓名所有格的 's。
+"my {wound_noun}'s {bodypart} by {actor} as a means of torture" = "{actor}为施以酷刑而将我的{bodypart}{wound_noun}的经历"
+"my {wound_noun}'s {bodypart} by {actor}" = "{actor}将我的{bodypart}{wound_noun}的经历"
+"my {wound_noun}'s {bodypart}" = "我的{bodypart}被{wound_noun}的经历"
+
+[[rulesets]]
+name = "fallback"
+[rulesets.rules]
+"the fight of {actor} and {target}" = "{actor}与{target}之间的战斗"
+"the fight of {actor}" = "{actor}参与的战斗"
+"the fights of {people}" = "{people}参与的战斗"
+"the wounding of {target} by {actor}" = "{actor}使{target}受伤的经历"
+"the wounding of {target}" = "{target}受伤的经历"
+
+[[rulesets]]
+name = "event"
+[rulesets.rules]
+"{actor} {attack_verb} {target}" = "{actor}{attack_verb}{target}"
+"{actor} cornered {target}" = "{actor}将{target}逼入绝境"
+"{actor} confronted {target}" = "{actor}与{target}对峙"
+"{actor} fought with {target}" = "{actor}与{target}交战"
+"{actor} got into a brawl with {target}" = "{actor}与{target}发生斗殴"
+"{actor} fought with and subdued {target}" = "{actor}与{target}交战，并将其制服"
+"{target} managed to escape from {actor}'s onslaught" = "{target}设法逃过了{actor}的猛攻"
+"{target} was forced to retreat from {actor} despite {wounds_owner} wounds" = "尽管{wounds_owner}已经受伤，{target}仍被迫从{actor}面前撤退"
+"{actor} eventually prevailed and {target} was forced to make a hasty escape" = "{actor}最终占据上风，{target}被迫仓皇逃走"
+"{body_owner} {bodypart} was {wound_verb} by {actor} as a means of torture" = "{actor}为施以酷刑而将{body_owner}{bodypart}{wound_verb}"
+"{body_owner} {bodypart} was {wound_verb} by {actor}" = "{actor}将{body_owner}{bodypart}{wound_verb}"
+"{body_owner} {bodypart} was {wound_verb}" = "{body_owner}{bodypart}被{wound_verb}"
+
+[[rulesets]]
+name = "attack_verb"
+[rulesets.rules]
+"attacked" = "袭击了"
+"surprised" = "突然袭击了"
+"ambushed" = "伏击了"
+"happened upon" = "偶遇了"
+
+[[rulesets]]
+name = "wound_noun"
+[rulesets.rules]
+"smashing" = "砸伤"
+"slashing" = "砍伤"
+"stabbing" = "刺伤"
+"ripping" = "撕伤"
+"burning" = "烧伤"
+"breaking away" = "砸断"
+"slashing out" = "剜除"
+"slashing off" = "砍断"
+"stabbing out" = "刺掉"
+"ripping off" = "扯断"
+"tearing out" = "撕扯出来"
+"tearing off" = "撕断"
+"burning away" = "烧掉"
+"burning out" = "烧毁"
+
+[[rulesets]]
+name = "wound_verb"
+[rulesets.rules]
+"smashed" = "砸伤"
+"slashed" = "砍伤"
+"stabbed" = "刺伤"
+"ripped" = "撕伤"
+"burned" = "烧伤"
+"broken away" = "砸断"
+"slashed out" = "剜除"
+"slashed off" = "砍断"
+"stabbed out" = "刺掉"
+"ripped off" = "扯断"
+"torn out" = "撕扯出来"
+"torn off" = "撕断"
+"burned away" = "烧掉"
+"burned out" = "烧毁"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "target"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "body_owner"
+[rulesets.rules]
+"{target}'s" = "{target}的"
+"my" = "我的"
+"his" = "他的"
+"her" = "她的"
+"its" = "它的"
+"their" = "其"
+
+[[rulesets]]
+name = "wounds_owner"
+[rulesets.rules]
+"the latter's" = "后者"
+"I's" = "我"
+"me's" = "我"
+"my" = "我"
+
+[[rulesets]]
+name = "bodypart"
+[rulesets.rules]
+"{::health::bodypart}" = "{::health::bodypart}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
+
+[[rulesets]]
+name = "year_to"
+[rulesets.rules]
+"{year}" = "{year}"
+
+[[rulesets]]
+name = "people"
+[rulesets.rules]
+"{actor}" = "{actor}"
+"{actor} and {people}" = "{actor}与{people}"
+"{actor}, {people}" = "{actor}、{people}"
+"{::subscribed_books::essay_writing_facts::count} others" = "另外{::subscribed_books::essay_writing_facts::count}人"
