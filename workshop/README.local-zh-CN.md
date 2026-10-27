@@ -1,6 +1,6 @@
 # Mod 简体中文汉化扩展
 
-目前公开提供 Dwarvemon 系列的 4 个独立汉化数据包，需安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)及对应原模组。数据由核心自动读取，无需在创建世界的模组列表中启用汉化包。
+目前公开提供 Dwarvemon 系列及 Real Book/Scroll Content! 的 5 个独立汉化数据包，需安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)及对应原模组。数据由核心自动读取，无需在创建世界的模组列表中启用汉化包。
 
 | 原模组 | 汉化数据 |
 | --- | --- |
@@ -8,10 +8,13 @@
 | [Dwarvemon Beta](https://steamcommunity.com/sharedfiles/filedetails/?id=2902397057) | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791420) |
 | [Dwarvemon Entity All](https://steamcommunity.com/sharedfiles/filedetails/?id=2898648216) | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319) |
 | [Dwarvemon Entity Type](https://steamcommunity.com/sharedfiles/filedetails/?id=2898648197) | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235) |
+| [Real Book/Scroll Content!](https://steamcommunity.com/sharedfiles/filedetails/?id=3752219300) | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789657) |
 
 Dwarvemon 与 Dwarvemon Beta 各有完整的汉化数据。Entity Type、Entity All 提供各自模组名称与文明配置简介的翻译，生物和物品译文由 Dwarvemon 汉化数据提供。
 
-其余 18 个汉化数据包已下架（设为私密），本地资源与源码目录保留。[mod汉化扩展数据合集](https://steamcommunity.com/sharedfiles/filedetails/?id=3815793930)也已设为私密。以下链接仅保留发布记录。
+Real Book 汉化包翻译阅读界面、书名、文体和生成的书籍正文，需同时安装原模组、DFHack 与 DFCN 汉化核心。随包提供的性能兼容脚本由 DFHack 自动加载，减少生成手册时重复遍历世界历史和查询脚本的等待；本地安装需保留包含 `scripts_modinstalled` 的整个 mod 文件夹。
+
+其余 17 个汉化数据包已下架（设为私密），本地资源与源码目录保留。[mod汉化扩展数据合集](https://steamcommunity.com/sharedfiles/filedetails/?id=3815793930)也已设为私密。以下链接仅保留发布记录。
 
 | 原模组 | 汉化数据状态 |
 | --- | --- |
@@ -25,7 +28,6 @@ Dwarvemon 与 Dwarvemon Beta 各有完整的汉化数据。Entity Type、Entity 
 | [Dwarven Tea Party](https://steamcommunity.com/sharedfiles/filedetails/?id=2919329511) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789318) |
 | [Fumo item](https://steamcommunity.com/sharedfiles/filedetails/?id=3033128365) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789405) |
 | [Item Tagger](https://steamcommunity.com/sharedfiles/filedetails/?id=3745671482) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789487) |
-| [Real Book/Scroll Content!](https://steamcommunity.com/sharedfiles/filedetails/?id=3752219300) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789657) |
 | [SoundSense Originals](https://steamcommunity.com/sharedfiles/filedetails/?id=2997006603) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789747) |
 | [Squad & Burrow Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=2898973979) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789827) |
 | [Stone Tint](https://steamcommunity.com/sharedfiles/filedetails/?id=3782099990) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789902) |
