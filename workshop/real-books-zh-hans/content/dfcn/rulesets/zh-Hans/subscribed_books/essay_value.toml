@@ -1,4 +1,4 @@
-# forms/essay/subjects/value.lua：价值观论文的 rejection 立场。
+# forms/essay/subjects/value.lua：价值观论文的 rejection 与 quandary 立场。
 # 主题和价值词使用有限词池；整段与独立句兼容正文按句去重。
 base = "subscribed_books::essay_value"
 
@@ -26,6 +26,31 @@ base = "subscribed_books::essay_value"
 "I return to {subject}, and I have not changed my mind." = "回到{subject}，我的看法并未改变。"
 "Let others praise {value_word}; I have seen what it does." = "任别人赞美{value_word}吧；我见过它带来的后果。"
 
+# quandary：两方引语使用独立词位，兼容 fresh_sentences 去重后保留的单句。
+"This essay concerns {subject}, and I confess I do not know what to think of it. Some say, \"{saying_high}\" Others say, \"{saying_low}\" I mean to weigh them." = "这篇论文讨论{subject}，而我承认，自己尚不知该如何看待它。有人说：“{saying_high}”也有人说：“{saying_low}”我想权衡这两种看法。"
+"This essay concerns {subject}, and I confess I do not know what to think of it." = "这篇论文讨论{subject}，而我承认，自己尚不知该如何看待它。"
+"Some say, \"{saying_high}\" Others say, \"{saying_low}\" I mean to weigh them." = "有人说：“{saying_high}”也有人说：“{saying_low}”我想权衡这两种看法。"
+"Some say, \"{saying_high}\"" = "有人说：“{saying_high}”"
+"Others say, \"{saying_low}\"" = "也有人说：“{saying_low}”"
+"I mean to weigh them." = "我想权衡这两种看法。"
+"I write about {subject} because I cannot settle it. \"{saying_high}\" - or, as others have it, \"{saying_low}\"" = "我探讨{subject}，是因为自己始终无法定论。“{saying_high}”——又或者，用另一些人的话说：“{saying_low}”"
+"I write about {subject} because I cannot settle it." = "我探讨{subject}，是因为自己始终无法定论。"
+"\"{saying_high}\" - or, as others have it, \"{saying_low}\"" = "“{saying_high}”——又或者，用另一些人的话说：“{saying_low}”"
+"- or, as others have it, \"{saying_low}\"" = "——又或者，用另一些人的话说：“{saying_low}”"
+"\"{saying}\"" = "“{saying}”"
+
+"There is something in each side, and that is the trouble." = "两边都有些道理，而难处也正在这里。"
+"My own life argues both ways." = "我自己的人生经历，也为两种看法各自提供了佐证。"
+"Every time I decide, the record of my own years undoes it." = "每当我作出定论，自己过往的经历又会将它推翻。"
+"A question that will not settle is usually a question worth keeping." = "一个始终无法定论的问题，往往值得继续追问。"
+"It will be said that a writer should take a side." = "有人会说，作者应该选定一种立场。"
+"I have: the side of the question, which is the one most often abandoned." = "我已经选了：站在追问这一边，而这一边最常被人抛弃。"
+
+"I return to {subject}. If I lean anywhere, it is here: \"{saying_middle}\"" = "回到{subject}。若说我有所倾向，那便是：“{saying_middle}”"
+"I return to {subject}." = "回到{subject}。"
+"If I lean anywhere, it is here: \"{saying_middle}\"" = "若说我有所倾向，那便是：“{saying_middle}”"
+"I return to {subject}, and I leave it unsettled, as I found it." = "回到{subject}，我仍让它悬而未决，正如最初面对它时一样。"
+
 [[rulesets]]
 name = "subject"
 [rulesets.rules]
@@ -40,3 +65,18 @@ name = "value_word"
 name = "saying"
 [rulesets.rules]
 "{::subscribed_books::essay_value_sayings}" = "{::subscribed_books::essay_value_sayings}"
+
+[[rulesets]]
+name = "saying_high"
+[rulesets.rules]
+"{saying}" = "{saying}"
+
+[[rulesets]]
+name = "saying_low"
+[rulesets.rules]
+"{saying}" = "{saying}"
+
+[[rulesets]]
+name = "saying_middle"
+[rulesets.rules]
+"{saying}" = "{saying}"

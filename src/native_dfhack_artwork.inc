@@ -35,6 +35,8 @@ enum class NativeDfhackOverlayTextRole : unsigned char {
 struct NativeDfhackOverlayText {
     int x = 0, y = 0, full_x = 0, visible_offset = 0;
     std::string full, visible;
+    // Final colors from the same native layer that proves each visible byte.
+    std::vector<int> visible_foregrounds;
     NativeDfhackOverlayTextRole role = NativeDfhackOverlayTextRole::Text;
     // These describe the actual selected options entry, never its spelling.
     bool option_dynamic = false, option_name = false;
@@ -57,6 +59,7 @@ enum class NativeDfhackControlPanelTextRole : unsigned char { Text, Wrapped, Too
 struct NativeDfhackControlPanelText {
     int x = 0, y = 0, full_x = 0, visible_offset = 0;
     std::string full, visible, document, extension_prose_key;
+    std::vector<int> visible_foregrounds;
     uintptr_t widget_id = 0;
     SDL_Rect bounds{};
     // Absolute zero-based document line for Wrapped; zero for a Label token.

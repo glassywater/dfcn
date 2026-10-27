@@ -1,0 +1,116 @@
+# making.lua 与原生 ARTIFACT_CREATED：实物作品的创作主题、类别和后续流转。
+# 与艺术形式创立区分；作品可以是成书，也可以是其他神器。
+base = "subscribed_books::essay_making_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{::text::book} is a book." = "《{::text::book}》是一本书。"
+"{work} is {item_kind}." = "{work}是{item_kind}。"
+"{work} was lost in {year}." = "{work}于{year}年遗失。"
+"{lead} {story}." = "{lead}{story}。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+# 原生先列地点、后列创作者；game_words 将 by 作者转换为 my 前缀。
+"my {act} of {work} in {place} in {date}" = "我于{date}在{place}{act}{work}的经历"
+"my {act} of {work} in {date}" = "我于{date}{act}{work}的经历"
+"the {act} of {work} in {place} by {makers} in {date}" = "{makers}于{date}在{place}{act}{work}的经历"
+"the {act} of {work} by {makers} in {date}" = "{makers}于{date}{act}{work}的经历"
+"the {act} of {work} in {place} in {date}" = "{date}在{place}{act}{work}的经历"
+"the {act} of {work} in {date}" = "{date}{act}{work}的经历"
+# subject.lua 在原生短语不可用时保留 making 后备主题。
+"the making of {work} by {actor} in {date}" = "{actor}于{date}创作{work}的经历"
+"the making of {work} in {date}" = "{date}创作{work}的经历"
+"the making of {work} by {actor}" = "{actor}创作{work}的经历"
+"the making of {work}" = "创作{work}的经历"
+
+[[rulesets]]
+name = "act"
+[rulesets.rules]
+"creation" = "创作"
+"naming" = "命名"
+
+[[rulesets]]
+name = "work"
+[rulesets.rules]
+# 严格解析完整作品名；现有神器入口也识别 BOOK_ART/BOOK_INSTRUCTION 书名。
+"{::subscribed_books::recorded_artifact}" = "{::subscribed_books::recorded_artifact}"
+
+[[rulesets]]
+name = "makers"
+[rulesets.rules]
+"{actor}" = "{actor}"
+"{entity}" = "{entity}"
+"{actor} and {entity}" = "{actor}与{entity}"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "entity"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::manual_vocabulary::date}" = "{::subscribed_books::manual_vocabulary::date}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
+
+[[rulesets]]
+name = "item_kind"
+[rulesets.rules]
+"{::subscribed_books::essay_bond_facts::item_kind}" = "{::subscribed_books::essay_bond_facts::item_kind}"
+# life.KIND_WORDS 比 portrait.KIND_WORDS 多出的物品类别。
+"a quiver of ammunition" = "一箭袋弹药"
+"a quern" = "一台手磨"
+"a millstone" = "一块磨石"
+"a bucket" = "一只水桶"
+"a splint" = "一副夹板"
+"a crutch" = "一根拐杖"
+"a sheet" = "一张薄片"
+"a bolt of cloth" = "一匹布"
+
+[[rulesets]]
+name = "lead"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_facts::relative_lead}" = "{::subscribed_books::essay_writing_facts::relative_lead}"
+"A year after it was made," = "在作品完成的一年后，"
+"Not long after it was made - {::subscribed_books::essay_career_facts::short_years} years, in fact -" = "在作品完成不久后，确切地说是{::subscribed_books::essay_career_facts::short_years}年后，"
+"{::subscribed_books::essay_career_facts::first_years} years after it was made," = "在作品完成的{::subscribed_books::essay_career_facts::first_years}年后，"
+
+[[rulesets]]
+name = "story"
+[rulesets.rules]
+"it was lost" = "它遗失了"
+"it was lost in {place}" = "它在{place}遗失了"
+"it was found again" = "它被重新找到"
+"it was found again by {actor}" = "{actor}重新找到了它"
+"it was found again in {place}" = "它在{place}被重新找到"
+"it was found again by {actor} in {place}" = "{actor}在{place}重新找到了它"
+"it was recovered" = "它被寻回"
+"it was recovered by {actor}" = "{actor}寻回了它"
+"it was given away" = "它被赠送了出去"
+"it was laid away" = "它被收存起来"
+"it was laid away in {place}" = "它被收存在{place}"
+"it was destroyed" = "它被毁掉了"
+"it was hidden" = "它被藏了起来"
+"it was hidden in {place}" = "它被藏在{place}"
+"it was dropped" = "它被丢弃了"
+"it was claimed" = "有人宣称拥有它"
+"it was claimed by {actor}" = "{actor}宣称拥有它"
+"it was taken up" = "它被人取得"
+"it was taken up by {actor}" = "{actor}取得了它"
+"it was copied" = "它被复制了"

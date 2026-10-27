@@ -43,7 +43,7 @@ name = "study"
 [[rulesets]]
 name = "about"
 [rulesets.rules]
-"Those who study the heavens watch what returns, and learn to say when it will return again." = "研究天象的人观察反复出现的现象，并学会预测它何时再次出现。"
+"Those who study the heavens watch what returns, and learn to say when it {::subscribed_books::manual::will} return again." = "研究天象的人观察反复出现的现象，并学会预测它何时{::subscribed_books::manual::will}再次出现。"
 "Those who study substances heat them, mix them and part them, and note what each becomes." = "研究物质的人将它们加热、混合、分离，并记录它们各自变成了什么。"
 "Those who study the lands walk them, measure them and draw them, and learn what moves across them." = "研究大地的人行走其上，测量并描绘它，了解哪些事物在其间运动。"
 "Those who study what has happened gather the accounts of it, and weigh one against another." = "研究往事的人搜集相关记述，并将它们相互比较、权衡。"
@@ -52,6 +52,12 @@ name = "about"
 "Those who study living things watch them in their own places, and learn how they live." = "研究生物的人在其栖息之处观察它们，了解它们如何生活。"
 "Those who study thought ask what can be known, and what ought to be done, and why." = "研究思想的人追问：什么能够被认识，什么是应当做的，以及其中的缘由。"
 "Those who study it go carefully, and write down what they find." = "研究它的人谨慎前行，并记下自己的发现。"
+
+# 独立语义词保留来源位置，句中着色不再并入整句的正文颜色。
+[[rulesets]]
+name = "will"
+[rulesets.rules]
+"will" = "将"
 
 [[rulesets]]
 name = "instruction"

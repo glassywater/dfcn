@@ -5,8 +5,16 @@ base = "subscribed_books::manual_vocabulary"
 [[rulesets]]
 name = "topic"
 [rulesets.rules]
+# 日月在英文主题内部可以单独着色；中文语序调整后仍指向原来的天体词。
+"the rise {::subscribed_books::manual_vocabulary::celestial_body} according to the season" = "{::subscribed_books::manual_vocabulary::celestial_body}出随季节的变化"
 # 类型入口显式连接 activities 的短主题与 Legends 的完整知识描述。
 "{::text::topic}" = "{::text::topic}"
+
+[[rulesets]]
+name = "celestial_body"
+[rulesets.rules]
+"of the sun" = "日"
+"of the moon" = "月"
 
 [[rulesets]]
 name = "year"

@@ -18,6 +18,11 @@ base = "subscribed_books::essay_life_facts"
 "The record names {actor}, an {race} as {genitive} {relation}." = "记载称{actor}是一名{race}，也是{genitive}{relation}。"
 "The record no longer calls them married: it names {actor} as {genitive} {relation}." = "记载已不再称两人为夫妻，而是称{actor}为{genitive}{relation}。"
 
+# evidence.facts 的 kin 分支：was 仅介绍亲属身份，死亡由独立句式明确记载。
+# G 使用 my 或姓名所有格；亲属姓名仍交给已有的完整人物类型解析。
+"{genitive} {relation} was {actor}." = "{genitive}{relation}是{actor}。"
+"{genitive} {relation}, {actor}, died in {#digits}." = "{genitive}{relation}{actor}于{#digits}年去世。"
+
 [[rulesets]]
 name = "actor"
 [rulesets.rules]

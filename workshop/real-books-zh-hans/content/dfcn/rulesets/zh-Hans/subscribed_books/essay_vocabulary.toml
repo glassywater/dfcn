@@ -87,6 +87,8 @@ name = "infiltration"
 name = "subject"
 [rulesets.rules]
 "{::subscribed_books::essay_value::subject}" = "{::subscribed_books::essay_value::subject}"
+"{::subscribed_books::essay_membership_facts::subject}" = "{::subscribed_books::essay_membership_facts::subject}"
+"{::subscribed_books::essay_making_facts::subject}" = "{::subscribed_books::essay_making_facts::subject}"
 "{::subscribed_books::essay_site_links::subject}" = "{::subscribed_books::essay_site_links::subject}"
 "{::subscribed_books::essay_marriage::subject}" = "{::subscribed_books::essay_marriage::subject}"
 "{::subscribed_books::essay_fight_vocabulary::subject}" = "{::subscribed_books::essay_fight_vocabulary::subject}"

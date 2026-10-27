@@ -219,10 +219,9 @@
                         const int x = text.full_x + static_cast<int>(at);
                         if (x < text.x || x >= text.x + static_cast<int>(text.visible.size()) ||
                                 std::isspace(static_cast<unsigned char>(text.full[at]))) continue;
-                        bool top = false;
-                        const auto *cell = cell_at(x, text.y, &top);
-                        if (!cell || cell[0] != static_cast<unsigned char>(text.full[at])) continue;
-                        const int rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                        const size_t visible_at = static_cast<size_t>(x - text.x);
+                        if (visible_at >= text.visible_foregrounds.size()) continue;
+                        const int rgb = text.visible_foregrounds[visible_at];
                         if (++counts[rgb] > most) { most = counts[rgb]; color = rgb; }
                     }
                     // A clipped author must not discard a visible title's color.
@@ -250,9 +249,8 @@
                     if (target) append_color(*target, 0, heading.size());
                 }
                 if (!colors.empty()) {
-                    bool top = false;
-                    const auto *cell = cell_at(text.x, text.y, &top);
-                    int fallback = cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : 0xffffff;
+                    int fallback = text.visible_foregrounds.empty()
+                        ? 0xffffff : text.visible_foregrounds.front();
                     for (int &color : colors) {
                         if (color >= 0) fallback = color;
                         else color = fallback;

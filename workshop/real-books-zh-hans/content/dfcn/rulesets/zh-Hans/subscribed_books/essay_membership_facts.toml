@@ -1,0 +1,180 @@
+# membership.lua、evidence.event_line 与 life.faith_facts：入会、任职及组织背景。
+# 相对时间仅接已知事件句；姓名、组织、职位和日期分别经过类型解析。
+base = "subscribed_books::essay_membership_facts"
+
+[[rulesets]]
+[rulesets.rules]
+"{actor} joined {body} in {year}." = "{year}年，{actor}加入了{body}。"
+"{record}" = "{record}"
+"In {date}, {record}" = "{date}，{record}"
+"In {date} {record}" = "{date}，{record}"
+"{lead} {event_record}" = "{lead}{event_record}"
+
+"{body} is {kind}." = "{body}是{kind}。"
+"{body} is an order of {deity}, goddess of {spheres}." = "{body}是崇奉掌管{spheres}的女神{deity}的教团。"
+"{body} is an order of {deity}, god of {spheres}." = "{body}是崇奉掌管{spheres}的神祇{deity}的教团。"
+"{body} is an order of {deity}." = "{body}是崇奉{deity}的教团。"
+"Our purpose was {purposes}." = "我们的宗旨是{purposes}。"
+"Its purpose was {purposes}." = "该组织的宗旨是{purposes}。"
+"{formation}." = "{formation}。"
+"{formation}, and {actor} was of it from the first." = "{formation}，{actor}自创立之初便是其中的一员。"
+"{formation}, and {actor} joined it in {year_joined}." = "{formation}，{actor}于{year_joined}年加入。"
+"We were {count}, no more." = "我们总共只有{count}人。"
+"They were {count}, no more." = "他们总共只有{count}人。"
+"There were only ever {count} of us." = "我们始终只有{count}人。"
+"It never numbered more than {count}." = "其成员从未超过{count}人。"
+
+"{actor} served as its {office} from {year} to {year_to}." = "{actor}从{year}年到{year_to}年担任该组织的{office}。"
+"{actor} served as its {office} from {year}." = "{actor}自{year}年起担任该组织的{office}。"
+"{actor} served as its {office}." = "{actor}曾担任该组织的{office}。"
+
+# engine/spheres.lua 的性情回应，由 life.faith_facts 接入教团介绍。
+"I will own that I loved the stones for themselves, more than I should have." = "我承认，我对那些宝石本身的喜爱，超出了应有的限度。"
+"I never wanted the stones for myself; it was the keeping of them I loved." = "我从未想将那些宝石据为己有；我所热爱的是守护它们。"
+"That work came easily to my hands." = "那份差事，我做起来得心应手。"
+"I was never made for that harder work, and I knew it." = "我从来就不适合那份残酷的差事，这一点我很清楚。"
+"I would have served for the learning alone." = "单是为了求知，我也愿意效力。"
+"I came to the learning late, and slowly." = "我开始求学很晚，进展也很慢。"
+"It was the work I was made for." = "那正是我生来适合的工作。"
+"I am not a gentle soul, and the work did not come easily." = "我并非温柔之人，做这份工作并不容易。"
+"I loved the wild places before I loved the god." = "在敬爱这位神祇之前，我便已热爱荒野。"
+"I have never loved the wild places; I served in spite of them." = "我从未喜爱荒野，却仍克服这份不喜而效力。"
+"I had the hands for it, and the heart." = "我有做这件事的巧手，也有这份心。"
+"I had little gift for it, and served as I could." = "我在这方面天赋不多，只能尽力效劳。"
+"A rule suits me; I have always kept one." = "规矩适合我；我向来有所遵循。"
+"I have never kept a rule easily, the order's least of all." = "遵守规矩对我而言从非易事，尤其是教团的规矩。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"{joining} in {date}" = "{date}{joining}"
+"{joining}" = "{joining}"
+
+[[rulesets]]
+name = "joining"
+[rulesets.rules]
+# 原生 getPhrase 的接纳、入伍和任职；game_words 将作者本人的 of NAME 改为 my。
+"my acceptance as a member of {body}" = "我获准加入{body}的经历"
+"the acceptance of {actor} as a member of {body}" = "{actor}获准加入{body}的经历"
+"my acceptance into the mercenary service of {body}" = "我获准为{body}担任佣兵的经历"
+"the acceptance of {actor} into the mercenary service of {body}" = "{actor}获准为{body}担任佣兵的经历"
+"my entry into the mercenary service of {body}" = "我开始为{body}担任佣兵的经历"
+"the entry of {actor} into the mercenary service of {body}" = "{actor}开始为{body}担任佣兵的经历"
+"my {appointment} to the position of {office} of {body}" = "我{appointment}{body}的{office}的经历"
+"the {appointment} of {actor} to the position of {office} of {body}" = "{actor}{appointment}{body}的{office}的经历"
+
+[[rulesets]]
+name = "appointment"
+[rulesets.rules]
+"appointment" = "被任命为"
+"selection" = "获选担任"
+"election" = "当选"
+"rise" = "升任"
+"claim" = "宣称担任"
+
+[[rulesets]]
+name = "record"
+[rulesets.rules]
+"{actor} joined {body}." = "{actor}加入了{body}。"
+"{actor} became a member of {body}." = "{actor}成为{body}的成员。"
+"{actor} became the {office} of {body}." = "{actor}成为{body}的{office}。"
+
+[[rulesets]]
+name = "event_record"
+[rulesets.rules]
+"{record}" = "{record}"
+"{::subscribed_books::essay_fight_aftermath::record}" = "{::subscribed_books::essay_fight_aftermath::record}"
+"{::subscribed_books::essay_career_facts::sentence}" = "{::subscribed_books::essay_career_facts::sentence}"
+"{::subscribed_books::essay_writing_facts::record}" = "{::subscribed_books::essay_writing_facts::record}"
+"{::subscribed_books::essay_writing_facts::circumstance}, {::subscribed_books::essay_writing_facts::record}" = "{::subscribed_books::essay_writing_facts::circumstance}，{::subscribed_books::essay_writing_facts::record}"
+
+[[rulesets]]
+name = "lead"
+[rulesets.rules]
+# life.lead 的 joined 时间锚，首次经历与后续经历复用既有有限年距。
+"{::subscribed_books::essay_writing_facts::relative_lead}" = "{::subscribed_books::essay_writing_facts::relative_lead}"
+"A year after {actor} joined," = "在{actor}加入的一年后，"
+"Not long after {actor} joined - {::subscribed_books::essay_career_facts::short_years} years, in fact -" = "在{actor}加入不久后，确切地说是{::subscribed_books::essay_career_facts::short_years}年后，"
+"{::subscribed_books::essay_career_facts::first_years} years after {actor} joined," = "在{actor}加入的{::subscribed_books::essay_career_facts::first_years}年后，"
+
+[[rulesets]]
+name = "formation"
+[rulesets.rules]
+"It was formed in {place} in {year}" = "该组织于{year}年在{place}成立"
+"It was formed in {year}" = "该组织于{year}年成立"
+
+[[rulesets]]
+name = "kind"
+[rulesets.rules]
+"a people" = "一个民族"
+"the government of a place" = "一处地方的政府"
+"the government of {place}" = "{place}的政府"
+"a ship's crew" = "一支船员队伍"
+"a band of migrants" = "一群迁徙者"
+"a nomadic band" = "一个游牧群体"
+"a faith" = "一个教派"
+"a company of soldiers" = "一支军队"
+"a band of outcasts" = "一群流亡者"
+"a troupe of performers" = "一个表演团体"
+"a merchant company" = "一家商行"
+"a guild" = "一个行会"
+
+[[rulesets]]
+name = "actor"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::actor}" = "{::subscribed_books::essay_vocabulary::actor}"
+
+[[rulesets]]
+name = "body"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::entity}" = "{::subscribed_books::vocabulary::entity}"
+
+[[rulesets]]
+name = "place"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
+
+[[rulesets]]
+name = "deity"
+[rulesets.rules]
+"{::text::deity}" = "{::text::deity}"
+
+[[rulesets]]
+name = "spheres"
+[rulesets.rules]
+"{::subscribed_books::essay_faith_vocabulary::spheres}" = "{::subscribed_books::essay_faith_vocabulary::spheres}"
+
+[[rulesets]]
+name = "purposes"
+[rulesets.rules]
+"{::subscribed_books::essay_faith_vocabulary::purposes}" = "{::subscribed_books::essay_faith_vocabulary::purposes}"
+
+[[rulesets]]
+name = "office"
+[rulesets.rules]
+"{::positions::singular}" = "{::positions::singular}"
+
+[[rulesets]]
+name = "year"
+[rulesets.rules]
+"{::subscribed_books::vocabulary::year}" = "{::subscribed_books::vocabulary::year}"
+
+[[rulesets]]
+name = "year_to"
+[rulesets.rules]
+"{year}" = "{year}"
+
+[[rulesets]]
+name = "year_joined"
+[rulesets.rules]
+"{year}" = "{year}"
+
+[[rulesets]]
+name = "date"
+[rulesets.rules]
+"{::subscribed_books::essay_vocabulary::date}" = "{::subscribed_books::essay_vocabulary::date}"
+
+[[rulesets]]
+name = "count"
+[rulesets.rules]
+"{::subscribed_books::essay_writing_facts::count}" = "{::subscribed_books::essay_writing_facts::count}"

@@ -321,6 +321,7 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
                 text.x > gps->dimx - static_cast<int>(text.visible.size())) continue;
         bool current = true;
         size_t current_length = 0;
+        std::vector<int> foregrounds;
         for (size_t at = 0; at < text.visible.size(); ++at) {
             const size_t tile = static_cast<size_t>(text.x + static_cast<int>(at)) *
                 gps->dimy + text.y;
@@ -332,6 +333,8 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
                 current = false;
                 break;
             }
+            const auto *cell = origin.grid + tile * 8;
+            foregrounds.push_back((cell[1] << 16) | (cell[2] << 8) | cell[3]);
             ++current_length;
         }
         const bool scrollbar_clipped = (text.overlay.role == NativeDfhackOverlayTextRole::Material ||
@@ -339,6 +342,7 @@ static std::vector<NativeDfhackOverlayText> native_dfhack_overlay_texts(
             current_length > 0 && text.visible.size() - current_length <= 2;
         if (current || scrollbar_clipped) {
             auto overlay = text.overlay;
+            overlay.visible_foregrounds = std::move(foregrounds);
             // A List scrollbar is painted after its text and can cover the
             // rightmost cells. The still-visible prefix retains the complete
             // choice name; it is not a shorter material vocabulary entry.
@@ -426,6 +430,7 @@ static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_tex
             if (!alive) continue;
             auto preserved = text;
             preserved.visible.clear();
+            preserved.visible_foregrounds.clear();
             result.push_back(std::move(preserved));
             continue;
         }
@@ -434,6 +439,14 @@ static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_tex
             visible.x += static_cast<int>(begin);
             visible.visible_offset += static_cast<int>(begin);
             visible.visible = text.visible.substr(begin, end - begin);
+            visible.visible_foregrounds.clear();
+            for (size_t at = begin; at < end; ++at) {
+                const size_t tile = static_cast<size_t>(text.x + static_cast<int>(at)) *
+                    gps->dimy + text.y;
+                const auto *cell = capture.grid + tile * 8;
+                visible.visible_foregrounds.push_back(
+                    (cell[1] << 16) | (cell[2] << 8) | cell[3]);
+            }
             result.push_back(std::move(visible));
         }
     }

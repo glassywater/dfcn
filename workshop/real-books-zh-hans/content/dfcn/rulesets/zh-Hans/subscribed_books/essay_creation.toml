@@ -1,4 +1,4 @@
-# 原生诗歌、音乐、舞蹈形式的创立记录，经 game_words 替换作者及地点。
+# 原生诗歌、音乐、舞蹈形式的创作记录，经 game_words 替换作者及地点。
 base = "subscribed_books::essay_creation"
 
 [[rulesets]]
@@ -13,8 +13,8 @@ base = "subscribed_books::essay_creation"
 [[rulesets]]
 name = "creation"
 [rulesets.rules]
-"{form} was created by {actor} in {place}" = "{actor}在{place}创立了{form}"
-"{form} was created by {actor}" = "{actor}创立了{form}"
+"{form} was created by {actor} in {place}" = "{actor}在{place}创作了{form}"
+"{form} was created by {actor}" = "{actor}创作了{form}"
 
 [[rulesets]]
 name = "form"

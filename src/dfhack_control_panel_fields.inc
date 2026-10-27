@@ -56,11 +56,8 @@
         row.layout_native_clip = auxiliary_pixels(field.bounds);
         row.layout_x = field.full_x;
         row.layout_left = true;
-        if (!field.visible.empty()) {
-            bool top = false;
-            if (const auto *cell = cell_at(field.x, field.y, &top))
-                row.layout_foreground_rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
-        }
+        if (!field.visible_foregrounds.empty())
+            row.layout_foreground_rgb = field.visible_foregrounds.front();
         return row;
     };
     const auto reserve_row = [&](const Match &row) {
@@ -286,10 +283,8 @@
             for (size_t at = 0; at < line.visible.size(); ++at) {
                 const size_t origin = line.document_offset + line.visible_offset + at;
                 if (origin >= source_colors.size()) break;
-                bool top = false;
-                const auto *cell = cell_at(line.x + static_cast<int>(at), line.y, &top);
-                if (!cell || cell[0] != static_cast<unsigned char>(line.visible[at])) continue;
-                const int color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                if (at >= line.visible_foregrounds.size()) continue;
+                const int color = line.visible_foregrounds[at];
                 source_colors[origin] = color;
                 if (!std::isspace(static_cast<unsigned char>(line.visible[at]))) ++color_counts[color];
             }

@@ -559,6 +559,9 @@ name = "perspective"
 [[rulesets]]
 name = "artifact"
 [rulesets.rules]
+# book_vars.artifact_name 返回真实神器的英文名称；共享入口也识别成书标题。
+# @bt_artifact 仅在完整名称无法解析时保留原文，不把实际名称当作通用占位词。
+"{::text::artifact}" = "{::text::artifact}"
 "a wondrous artifact" = "一件神奇的神器"
 "a creation of note" = "一件杰出的造物"
 
