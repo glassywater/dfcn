@@ -178,6 +178,7 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
     if (!native_dfhack_overlay_local(state, render, "token") || stack.type(state, -1) != 5)
         return std::nullopt;
     const int token = stack.gettop(state);
+    const auto token_id = api.topointer(state, token);
     bool text_draw = render.currentline == 190 || render.currentline == 197 ||
         render.currentline == 203;
     if (text_draw) {
@@ -290,6 +291,52 @@ static std::optional<NativeDfhackControlPanelText> native_dfhack_control_panel_l
                 stack.settop(state, all_lines);
             }
             result.document = std::move(document);
+        }
+        // Walk the widget's actual wrap, including preceding offscreen lines.
+        // A visible sentence can occur many times in a book; searching for it
+        // independently would attach the current pen to the wrong occurrence.
+        stack.settop(state, row);
+        if (native_dfhack_sitemap_raw_field(state, widget, "text_lines") &&
+                stack.type(state, -1) == 5) {
+            const int all_lines = stack.gettop(state);
+            size_t cursor = 0;
+            bool aligned = true;
+            for (size_t line = 1; aligned && line <= static_cast<size_t>(*iline); ++line) {
+                api.rawgeti(state, all_lines, static_cast<int64_t>(line));
+                if (stack.type(state, -1) != 5) break;
+                const int parts = stack.gettop(state);
+                const size_t part_count = api.rawlen(state, parts);
+                if (part_count > 1024) break;
+                int column = 0;
+                for (size_t part = 1; aligned && part <= part_count; ++part) {
+                    api.rawgeti(state, parts, static_cast<int64_t>(part));
+                    if (stack.type(state, -1) != 5) { aligned = false; break; }
+                    const int item = stack.gettop(state);
+                    column += native_dfhack_control_panel_integer(state, item, "gap").value_or(0);
+                    const bool current = api.topointer(state, item) == token_id;
+                    if (!native_dfhack_sitemap_raw_field(state, item, "text")) {
+                        aligned = false;
+                        break;
+                    }
+                    const auto text = native_dfhack_overlay_lua_string(state, -1, document_limit);
+                    if (!text) { aligned = false; break; }
+                    const size_t at = result.document.find(*text, cursor);
+                    if (at == std::string::npos || !std::all_of(
+                            result.document.begin() + cursor, result.document.begin() + at,
+                            [](unsigned char ch) { return std::isspace(ch); })) {
+                        aligned = false;
+                        break;
+                    }
+                    if (current && *text == result.full) {
+                        result.document_offset = at;
+                        result.line_offset = column - indent.value_or(0);
+                    }
+                    cursor = at + text->size();
+                    column += static_cast<int>(text->size());
+                    stack.settop(state, parts);
+                }
+                stack.settop(state, all_lines);
+            }
         }
     }
     return result;

@@ -1,0 +1,42 @@
+# 保留书籍正文中独立着色词的来源位置；只在明确的整句规则中引用。
+base = "subscribed_books::word_origins"
+
+[[rulesets]]
+name = "law"
+[rulesets.rules]
+"law" = "律法"
+
+[[rulesets]]
+name = "wind"
+[rulesets.rules]
+"The wind" = "风"
+
+[[rulesets]]
+name = "thought"
+[rulesets.rules]
+"thought" = "看"
+
+[[rulesets]]
+name = "everything"
+[rulesets.rules]
+"everything" = "一切"
+
+[[rulesets]]
+name = "wisdom"
+[rulesets.rules]
+"wisdom" = "智慧"
+
+[[rulesets]]
+name = "times"
+[rulesets.rules]
+"times" = "次"
+
+[[rulesets]]
+name = "will"
+[rulesets.rules]
+"will" = "会"
+
+[[rulesets]]
+name = "will_there"
+[rulesets.rules]
+"will" = "就"

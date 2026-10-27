@@ -2697,9 +2697,17 @@ namespace Hooks {
         struct ChildSource { const ResultTree* tree; size_t start; };
         std::unordered_map<std::string, ChildSource> bindings;
         size_t cursor = 0;
+        size_t prose_origin = 0, prose_literal_size = 0;
         for (const auto& token : *tree.source_tokens) {
             dfcn::translation_work_step();
             if (token.type == Type::Literal) {
+                // Book prose can begin with a colored subject. Connectives
+                // belong to the authored prose, not that first capture.
+                if (tree.identifier.starts_with("::subscribed_books") &&
+                        token.value.size() > prose_literal_size) {
+                    prose_origin = cursor;
+                    prose_literal_size = token.value.size();
+                }
                 cursor += token.value.size();
             } else {
                 const auto child = std::find_if(tree.children.begin(), tree.children.end(),
@@ -2717,7 +2725,7 @@ namespace Hooks {
                 // color; a final stop belongs to the original final stop.
                 const bool final_stop = token.value == "。" || token.value == "！" ||
                     token.value == "？";
-                const size_t origin = final_stop ? tree.matched.size() - 1 : 0;
+                const size_t origin = final_stop ? tree.matched.size() - 1 : prose_origin;
                 origins.insert(origins.end(), token.value.size(), origin);
             } else {
                 const auto found = bindings.find(token.value);

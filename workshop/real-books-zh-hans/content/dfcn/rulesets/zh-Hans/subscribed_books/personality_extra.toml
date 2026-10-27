@@ -153,8 +153,8 @@ base = "subscribed_books::personality_extra"
 "The letters continued, growing longer and more intimate, until the day they finally met in person and discovered that the connection was even stronger face to face." = "书信往来延续下去，越写越长，也越来越亲密，直到他们终于见面，才发现面对面时的联系更为深厚。"
 
 # 师徒、同行者与竞争者。
-"{@bt_b|::subscribed_books::vocabulary::person} had sought out {@bt_a|::subscribed_books::vocabulary::person} after hearing stories of the elder's wisdom." = "{@bt_b|::subscribed_books::vocabulary::person} 听闻长者的智慧后，前去寻找 {@bt_a|::subscribed_books::vocabulary::person}。"
-"The apprenticeship was not offered easily -- {@bt_a|::subscribed_books::vocabulary::person} had refused three times before finally agreeing." = "拜师并不容易，{@bt_a|::subscribed_books::vocabulary::person} 拒绝三次之后才终于答应。"
+"{@bt_b|::subscribed_books::vocabulary::person} had sought out {@bt_a|::subscribed_books::vocabulary::person} after hearing stories of the elder's {::subscribed_books::word_origins::wisdom}." = "{@bt_b|::subscribed_books::vocabulary::person} 听闻长者的{::subscribed_books::word_origins::wisdom}后，前去寻找 {@bt_a|::subscribed_books::vocabulary::person}。"
+"The apprenticeship was not offered easily -- {@bt_a|::subscribed_books::vocabulary::person} had refused three {::subscribed_books::word_origins::times} before finally agreeing." = "拜师并不容易，{@bt_a|::subscribed_books::vocabulary::person} 拒绝三{::subscribed_books::word_origins::times}之后才终于答应。"
 "They had traveled together out of necessity at first -- the roads were dangerous, and two were safer than one." = "起初他们一同旅行只是出于必要：道路危险，两个人比一个人更安全。"
 "The friendship came later, slowly, built on shared hardship." = "后来，在共同的艰难中，友谊慢慢生长。"
 "{@bt_a|::subscribed_books::vocabulary::person} and {@bt_b|::subscribed_books::vocabulary::person} had fought together, bled together, and buried friends together." = "{@bt_a|::subscribed_books::vocabulary::person} 与 {@bt_b|::subscribed_books::vocabulary::person} 曾并肩作战，一同流血，一同埋葬朋友。"

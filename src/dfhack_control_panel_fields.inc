@@ -94,23 +94,35 @@
     };
     const auto submit = [&](std::vector<Match> rows, TranslationResult translation,
             const NativeDfhackControlPanelText &field,
-            std::optional<NativeParagraphViewport> viewport) {
+            std::optional<NativeParagraphViewport> viewport,
+            const std::vector<int> &source_colors = std::vector<int>{}) {
         if (rows.empty()) return;
         translation.policy = TranslationPolicy::Display;
         translation.resource_revision = RULESETS.resource_revision();
         translation.owner = "dfhack-control:" + std::to_string(field.parent_id) + ":" +
             std::to_string(field.widget_id);
         const auto shared = std::make_shared<const TranslationResult>(std::move(translation));
-        const int text_left = std::max(field.bounds.x, field.full_x);
+        const int line_x = field.full_x - field.line_offset;
+        const int text_left = std::max(field.bounds.x, line_x);
         const int text_right = field.role == NativeDfhackControlPanelTextRole::Wrapped &&
                 field.native_width > 0
-            ? std::min(field.bounds.x + field.bounds.w, field.full_x + field.native_width)
+            ? std::min(field.bounds.x + field.bounds.w, line_x + field.native_width)
             : field.bounds.x + field.bounds.w;
         const SDL_Rect allocation{text_left, field.bounds.y,
             std::max(0, text_right - text_left), field.bounds.h};
         int color = -1;
         for (const auto &row : rows)
             if (row.layout_foreground_rgb >= 0) { color = row.layout_foreground_rgb; break; }
+        std::vector<int> target_colors;
+        if (source_colors.size() == shared->source.size() && !source_colors.empty()) {
+            for (size_t at = 0; at < shared->target.size(); ++at) {
+                if ((static_cast<unsigned char>(shared->target[at]) & 0xc0) == 0x80) continue;
+                const size_t origin = at < shared->origins.size()
+                    ? shared->origins[at] : std::string::npos;
+                target_colors.push_back(origin < source_colors.size() && source_colors[origin] >= 0
+                    ? source_colors[origin] : color);
+            }
+        }
         for (auto &row : rows) {
             row.translation_result = shared;
             row.layout_foreground_rgb = color;
@@ -127,7 +139,7 @@
                  (!field.extension_prose_key.empty() && shared->status == TranslationStatus::Partial)) &&
                 append_bounded_paragraph(rows, shared->target, screen_rows,
                     dfhack_auxiliary_matches, only_y, text_right,
-                    text_right, {}, false, text_left, viewport)) {
+                    text_right, target_colors, false, text_left, viewport)) {
             for (size_t at = begin; at < dfhack_auxiliary_matches.size(); ++at) {
                 auto &row = dfhack_auxiliary_matches[at];
                 row.translation_result = shared;
@@ -135,7 +147,7 @@
                 row.native_help_current_page = true;
                 row.native_help_background_frames = field_occluders(field);
                 row.layout_native_clip = auxiliary_pixels(clip);
-                row.layout_foreground_rgb = color;
+                if (row.layout_glyph_foreground_rgb.empty()) row.layout_foreground_rgb = color;
             }
             return;
         }
@@ -215,7 +227,10 @@
             const auto &current = group[line];
             if (current.first_line < 0 || current.first_line >= field.total_lines ||
                     current.y - current.first_line != document_origin ||
-                    (line && current.y <= group[line - 1].y)) {
+                    (line && (current.y < group[line - 1].y ||
+                     (current.y == group[line - 1].y &&
+                      current.full_x < group[line - 1].full_x +
+                          static_cast<int>(group[line - 1].full.size()))))) {
                 ordered = false;
                 break;
             }
@@ -228,7 +243,17 @@
             for (int y = first_y; y < last_y; ++y) {
                 const auto found = std::find_if(rows.begin(), rows.end(),
                     [&](const auto &row) { return row.y == y; });
-                if (found != rows.end()) allocation_rows.push_back(*found);
+                if (found != rows.end()) {
+                    auto combined = *found;
+                    for (const auto &part : rows) {
+                        if (part.y != y || part.x < combined.x) continue;
+                        const size_t offset = static_cast<size_t>(part.x - combined.x);
+                        if (combined.source.size() < offset) combined.source.resize(offset, ' ');
+                        combined.source.replace(offset, part.source.size(), part.source);
+                        combined.length = static_cast<int>(combined.source.size());
+                    }
+                    allocation_rows.push_back(std::move(combined));
+                }
                 else {
                     // Empty or wholly clipped native rows still allocate a
                     // baseline. Claim no source glyphs for missing captures.
@@ -246,6 +271,32 @@
             ? std::optional<NativeParagraphViewport>(
                 NativeParagraphViewport{rows.front().y - document_origin, field.total_lines})
             : std::nullopt;
+        // Preserve each source byte's pen before reflow changes both line
+        // lengths and word order. Only this widget's surviving native runs
+        // supply colors, never text painted by an overlapping window.
+        std::vector<int> source_colors(field.document.size(), -1);
+        std::unordered_map<int, size_t> color_counts;
+        for (const auto &line : group) {
+            if (line.document_offset == std::string::npos || line.visible_offset < 0) continue;
+            for (size_t at = 0; at < line.visible.size(); ++at) {
+                const size_t origin = line.document_offset + line.visible_offset + at;
+                if (origin >= source_colors.size()) break;
+                bool top = false;
+                const auto *cell = cell_at(line.x + static_cast<int>(at), line.y, &top);
+                if (!cell || cell[0] != static_cast<unsigned char>(line.visible[at])) continue;
+                const int color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                source_colors[origin] = color;
+                if (!std::isspace(static_cast<unsigned char>(line.visible[at]))) ++color_counts[color];
+            }
+        }
+        int base_color = rows.front().layout_foreground_rgb >= 0
+            ? rows.front().layout_foreground_rgb : 0xffffff;
+        size_t most = 0;
+        for (const auto &[color, count] : color_counts)
+            if (count > most) { most = count; base_color = color; }
+        // Unpainted whitespace and offscreen bytes use the document's base
+        // pen; a colored first word must not tint the entire unread suffix.
+        std::replace(source_colors.begin(), source_colors.end(), -1, base_color);
         auto translation = resolve_field(field.document, NativeDfhackControlPanelTextRole::Text);
         if (!field.extension_prose_key.empty() && prose_catalog) {
             const auto context = prose_catalog->extension_prose.find(field.extension_prose_key);
@@ -422,6 +473,6 @@
         if (!ordered && translation.changed())
             translation = preserve_native_translation(field.document, "dfhack-control-document");
         translation.kind = "dfhack-control-document";
-        submit(std::move(rows), std::move(translation), field, viewport);
+        submit(std::move(rows), std::move(translation), field, viewport, source_colors);
     }
 }

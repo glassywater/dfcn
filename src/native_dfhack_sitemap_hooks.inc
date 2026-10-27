@@ -202,6 +202,7 @@ static uint64_t native_dfhack_text_capture_key(const graphicst *gps) {
         rect(text.bounds); rect(text.clip_bounds); rect(text.parent_bounds);
         scalar(text.first_line); scalar(static_cast<unsigned char>(text.role));
         scalar(text.native_width); scalar(text.total_lines);
+        scalar(text.document_offset); scalar(text.line_offset);
     }
     scalar(count);
     return key;

@@ -167,7 +167,7 @@
                 });
         };
         const auto emit = [&](int x, int y, int length, const std::string &target, int right,
-                bool preserved_name = false) {
+                bool preserved_name = false, const std::vector<int> &colors = std::vector<int>{}) {
             if (length <= 0 || target.empty() || !contains_cjk_utf8(target) ||
                     (only_y >= 0 && only_y != y) || existing_field(x, y, length) ||
                     (!preserved_name && named_source(x, y, length))) return;
@@ -179,6 +179,7 @@
             match.layout_left = true;
             match.layout_clip_right = right;
             match.layout_prepared = true;
+            match.layout_glyph_foreground_rgb = colors;
             dfhack_auxiliary_matches.push_back(std::move(match));
         };
         const int first_y = only_y < 0 ? 0 : std::max(0, only_y - 1);
@@ -208,6 +209,19 @@
                 constexpr std::string_view separator = "  --  ";
                 const std::string_view heading = text.full;
                 std::optional<std::string> target;
+                std::vector<int> colors;
+                const auto append_color = [&](std::string_view translated, size_t source_at) {
+                    const int x = text.full_x + static_cast<int>(source_at);
+                    bool top = false;
+                    const auto *cell = cell_at(x, text.y, &top);
+                    if (x < text.x || x >= text.x + static_cast<int>(text.visible.size()) ||
+                            !cell || source_at >= text.full.size() ||
+                            cell[0] != static_cast<unsigned char>(text.full[source_at])) return false;
+                    const int color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                    for (unsigned char ch : translated)
+                        if ((ch & 0xc0) != 0x80) colors.push_back(color);
+                    return true;
+                };
                 // codex-legends combines the work's title and DFHack's
                 // readable author name. Require both complete fields before
                 // accepting a separator also allowed inside a book title.
@@ -218,13 +232,16 @@
                         heading.substr(at + separator.size()));
                     if (title && author) {
                         target = *title + "  ——  " + *author;
+                        if (!append_color(*title, 0) ||
+                                !append_color("  ——  ", at + 2) ||
+                                !append_color(*author, at + separator.size())) colors.clear();
                         break;
                     }
                 }
                 if (!target && heading.find(separator) == std::string_view::npos)
                     target = translate_legends_book(heading);
                 if (target) emit(text.x, text.y, static_cast<int>(text.visible.size()),
-                    *target, text.x + static_cast<int>(text.visible.size()), true);
+                    *target, text.x + static_cast<int>(text.visible.size()), true, colors);
             } else if (text.role == NativeDfhackOverlayTextRole::ArtifactName) {
                 if (!catalog->extension_prose.contains("Real Book||body")) continue;
                 auto target = exact_literal_translation(

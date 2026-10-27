@@ -65,6 +65,9 @@ struct NativeDfhackControlPanelText {
     SDL_Rect clip_bounds{}, parent_bounds{};
     uintptr_t parent_id = 0;
     int native_width = 0, total_lines = 0;
+    // Byte position in the unwrapped document, independent of screen rows.
+    size_t document_offset = std::string::npos;
+    int line_offset = 0;
 };
 static std::vector<NativeDfhackControlPanelText> native_dfhack_control_panel_texts(
     const graphicst *gps);
