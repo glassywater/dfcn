@@ -5,6 +5,8 @@
 -- A manual asks for the composition date of every written work. Index those
 -- events once per narrative.generate() call instead of scanning all history
 -- once per work. A new generation always sees the current world's history.
+-- That same loop also reqscripts context for every work. Keep the environment
+-- for this generation so each lookup does not search and stat script paths.
 
 local CONTEXT_MODULE = 'internal/codex-narrator/context'
 local NARRATIVE_MODULE = 'internal/codex-narrator/narrative'
@@ -118,14 +120,25 @@ function decorate_module(name, env)
     end
 end
 
+function environment_in_scope(original, name, ...)
+    local scope = state.active_scope
+    if scope and name == CONTEXT_MODULE and scope.context_env then
+        return scope.context_env
+    end
+    local env = original(name, ...)
+    if name == CONTEXT_MODULE or name == NARRATIVE_MODULE then
+        decorate_module(name, env)
+    end
+    if scope and name == CONTEXT_MODULE and type(env) == 'table' then
+        scope.context_env = env
+    end
+    return env
+end
+
 if not state.environment_wrapper then
     local original_environment = dfhack.script_environment
     state.environment_wrapper = function(name, ...)
-        local env = original_environment(name, ...)
-        if name == CONTEXT_MODULE or name == NARRATIVE_MODULE then
-            decorate_module(name, env)
-        end
-        return env
+        return environment_in_scope(original_environment, name, ...)
     end
     -- reqscript resolves this function dynamically. Hooking the returned
     -- environment also covers Real Books clearing and reloading its modules.

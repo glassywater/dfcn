@@ -1,6 +1,6 @@
 翻译阅读界面、书名、文体和生成的书籍正文。
 
-附带本汉化包维护的 DFHack 性能兼容脚本，避免生成手册时对每本作品重复扫描完整世界历史，保留完整正文。不修改原模组文件。
+附带本汉化包维护的 DFHack 性能兼容脚本，避免生成手册时对每本作品重复扫描完整世界历史、搜索脚本文件，保留完整正文。不修改原模组文件。
 
 需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]和[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3752219300]Real Book/Scroll Content![/url]。原模组需 DFHack。
 订阅后由 DFCN 自动读取，无需在创建世界时启用本汉化包。
