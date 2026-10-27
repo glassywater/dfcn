@@ -84,8 +84,8 @@ Linux 宿主打包已有的 Windows 交叉编译产物时，使用固定 Python 
 Windows 工坊包和五个公开扩展 ZIP，不编译或生成数据。
 工坊发布工具 `tools/publish-workshop.py` 支持 Linux 已安装的 Steamworks 库及现有登录会话。
 
-当前 Windows 发布版本为 **v53.16-20261024**，变化见
-[更新日志](docs/releases/v53.16-20261024.md)。
+当前 Windows 发布版本为 **v53.16-20261028**，变化见
+[更新日志](docs/releases/v53.16-20261028.md)。
 
 ## Linux 交叉编译 Windows x64
 
