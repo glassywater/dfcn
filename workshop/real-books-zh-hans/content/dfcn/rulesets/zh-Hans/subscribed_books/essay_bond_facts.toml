@@ -1,4 +1,4 @@
-# apprenticeship.lua 调用 life.bond_facts；portrait 仅取 trade/god/works/made。
+# 师徒与婚恋主题调用 life.bond_facts；portrait 仅取 trade/god/works/made。
 # 人物、组织、作品和日期均为普通类型引用，不把未识别正文作为名称保留。
 base = "subscribed_books::essay_bond_facts"
 
@@ -24,7 +24,7 @@ base = "subscribed_books::essay_bond_facts"
 "{lead} {bond} {location}." = "{lead}{location}，{bond}。"
 "{lead} {::subscribed_books::essay_career_facts::sentence}" = "{lead}{::subscribed_books::essay_career_facts::sentence}"
 "{actor} and {other} were bound as master and apprentice in {year}." = "{actor}与{other}于{year}年结为师徒。"
-# 师徒关系之后的写作仍复用已有完整创作事实，不连接任意书籍后文。
+# 关系建立之后的写作仍复用已有完整创作事实，不连接任意书籍后文。
 "{lead} {::subscribed_books::essay_writing_facts::record}" = "{lead}{::subscribed_books::essay_writing_facts::record}"
 "{lead} {circumstance}, {::subscribed_books::essay_writing_facts::record}" = "{lead}{circumstance}，{::subscribed_books::essay_writing_facts::record}"
 
@@ -147,9 +147,11 @@ name = "lead"
 [[rulesets]]
 name = "anchor"
 [rulesets.rules]
-# apprenticeship.facts 仅传入 was taken on / took them on。
+# life.lead 的时间锚：师徒传入 was taken on / took them on，婚恋传入 married / fell in love。
 "{actor} was taken on" = "{actor}拜师"
 "{actor} took them on" = "{actor}收徒"
+"{actor} married" = "{actor}结婚"
+"{actor} fell in love" = "{actor}相恋"
 
 [[rulesets]]
 name = "slayer"

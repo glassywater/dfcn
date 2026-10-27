@@ -754,6 +754,52 @@ static void native_dfhack_overlay_quick_filter(NativeDfhackLuaState *state,
 
 #include "native_dfhack_spectate_capture.inc"
 
+static bool native_dfhack_codex_heading(NativeDfhackLuaState *state,
+        int token, int widget, NativeDfhackOverlayText &result) {
+    const auto &api = g_native_dfhack_sitemap_lua_api;
+    const auto &stack = api.stack;
+    NativeDfhackOverlayLuaStackRestore restore{state, stack.gettop(state)};
+    if (result.overlay_name != "gui/codex-legends.legendsreader" ||
+            !native_dfhack_sitemap_raw_field(state, token, "text") ||
+            stack.type(state, -1) != 6 || stack.tocfunction(state, -1)) return false;
+    const int callback = stack.gettop(state);
+    // The heading closure owns this overlay's self. Recover its complete
+    // field before clipping, without invoking Lua or classifying its spelling.
+    const char *upvalue = api.getupvalue(state, callback, 1);
+    if (!upvalue || std::strcmp(upvalue, "self") || stack.type(state, -1) != 5)
+        return false;
+    const int owner = stack.gettop(state);
+    if (!native_dfhack_sitemap_raw_field(state, widget, "parent_view") ||
+            stack.type(state, -1) != 5 || !api.rawequal(state, -1, owner)) return false;
+    stack.settop(state, owner);
+    if (!native_dfhack_sitemap_raw_field(state, owner, "heading")) return false;
+    const auto heading = native_dfhack_overlay_lua_string(state, -1);
+    if (!heading || heading->empty() || !heading->starts_with(result.full)) return false;
+    stack.settop(state, owner);
+    if (!native_dfhack_sitemap_raw_field(state, owner, "found") ||
+            stack.type(state, -1) != 5) return false;
+    const int found = stack.gettop(state);
+    if (!native_dfhack_sitemap_raw_field(state, found, "wc")) return false;
+    const bool written_work = stack.type(state, -1) == 7;
+    if (!written_work) {
+        if (stack.type(state, -1) != 0) return false;
+        stack.settop(state, found);
+        if (!native_dfhack_sitemap_raw_field(state, found, "artifact") ||
+                stack.type(state, -1) != 7) return false;
+    }
+    stack.settop(state, callback);
+    NativeDfhackLuaDebug producer{};
+    if (!stack.getinfo(state, ">Su", &producer) || producer.nparams != 0 ||
+            producer.isvararg || producer.nups != 1) return false;
+    const auto source = native_dfhack_lua_text(producer.source, 32768);
+    if (!source || !native_dfhack_lua_source_key(*source).ends_with("/gui/codex-legends.lua"))
+        return false;
+    result.full = *heading;
+    result.role = written_work ? NativeDfhackOverlayTextRole::WrittenWorkHeading
+                               : NativeDfhackOverlayTextRole::ArtifactName;
+    return true;
+}
+
 static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
         NativeDfhackLuaState *state, std::string_view painted_full) {
     const auto &api = g_native_dfhack_sitemap_lua_api;
@@ -840,6 +886,7 @@ static std::optional<NativeDfhackOverlayText> native_dfhack_overlay_label_text(
         return result;
     }
     if (result.option_dynamic) {
+        if (native_dfhack_codex_heading(state, token, widget, result)) return result;
         if (auto complete = native_dfhack_overlay_dynamic_text(state, token,
                 result.overlay_name, painted_full)) result.full = std::move(*complete);
         result.option_name = native_dfhack_overlay_builder_name(state, token, widget,

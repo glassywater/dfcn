@@ -21,7 +21,9 @@
                 return (text.overlay_name == "spectate.tooltip" ||
                         text.option_name || text.role == NativeDfhackOverlayTextRole::Material ||
                         text.role == NativeDfhackOverlayTextRole::Category ||
-                        text.role == NativeDfhackOverlayTextRole::Item) && text.y == y &&
+                        text.role == NativeDfhackOverlayTextRole::Item ||
+                        text.role == NativeDfhackOverlayTextRole::ArtifactName ||
+                        text.role == NativeDfhackOverlayTextRole::WrittenWorkHeading) && text.y == y &&
                     x < text.x + static_cast<int>(text.visible.size()) &&
                     x + length > text.x;
             });
@@ -31,7 +33,9 @@
                     text.option_name || text.role == NativeDfhackOverlayTextRole::Key ||
                     text.role == NativeDfhackOverlayTextRole::Material ||
                     text.role == NativeDfhackOverlayTextRole::Category ||
-                    text.role == NativeDfhackOverlayTextRole::Item || text.quick_filter_label)
+                    text.role == NativeDfhackOverlayTextRole::Item ||
+                    text.role == NativeDfhackOverlayTextRole::ArtifactName ||
+                    text.role == NativeDfhackOverlayTextRole::WrittenWorkHeading || text.quick_filter_label)
                 dfhack_auxiliary_regions.push_back({text.x, text.y, static_cast<int>(text.visible.size()), 1});
         struct OptionText { int length = 0; std::string target; };
         const auto option_text = [&](std::string_view pattern, std::string_view target,
@@ -199,6 +203,35 @@
                 if (!target && contains_cjk_utf8(text.full)) target = text.full;
                 const int length = static_cast<int>(text.visible.size());
                 if (target) emit(text.x, text.y, length, *target, text.x + length, true);
+            } else if (text.role == NativeDfhackOverlayTextRole::WrittenWorkHeading) {
+                if (!catalog->extension_prose.contains("Real Book||body")) continue;
+                constexpr std::string_view separator = "  --  ";
+                const std::string_view heading = text.full;
+                std::optional<std::string> target;
+                // codex-legends combines the work's title and DFHack's
+                // readable author name. Require both complete fields before
+                // accepting a separator also allowed inside a book title.
+                for (size_t at = heading.rfind(separator); at != std::string_view::npos;
+                        at = at ? heading.rfind(separator, at - 1) : std::string_view::npos) {
+                    const auto title = translate_legends_book(heading.substr(0, at));
+                    const auto author = translate_dfhack_readable_unit_name(
+                        heading.substr(at + separator.size()));
+                    if (title && author) {
+                        target = *title + "  ——  " + *author;
+                        break;
+                    }
+                }
+                if (!target && heading.find(separator) == std::string_view::npos)
+                    target = translate_legends_book(heading);
+                if (target) emit(text.x, text.y, static_cast<int>(text.visible.size()),
+                    *target, text.x + static_cast<int>(text.visible.size()), true);
+            } else if (text.role == NativeDfhackOverlayTextRole::ArtifactName) {
+                if (!catalog->extension_prose.contains("Real Book||body")) continue;
+                auto target = exact_literal_translation(
+                    "DFHack GUI Real Book artifact: " + text.full);
+                if (!target) target = translate_legends_artifact_identity(text.full);
+                if (target) emit(text.x, text.y, static_cast<int>(text.visible.size()),
+                    *target, text.x + static_cast<int>(text.visible.size()), true);
             } else if (text.role == NativeDfhackOverlayTextRole::Item) {
                 // The two mechanism HotkeyLabels and ItemSelection's final
                 // list token retain the complete native item designation.
@@ -242,7 +275,9 @@
                         text.role == NativeDfhackOverlayTextRole::Key ||
                         text.role == NativeDfhackOverlayTextRole::Material ||
                         text.role == NativeDfhackOverlayTextRole::Category ||
-                        text.role == NativeDfhackOverlayTextRole::Item || text.quick_filter_label ||
+                        text.role == NativeDfhackOverlayTextRole::Item ||
+                        text.role == NativeDfhackOverlayTextRole::ArtifactName ||
+                        text.role == NativeDfhackOverlayTextRole::WrittenWorkHeading || text.quick_filter_label ||
                         (text.option_name && (!control.caption.empty() || control.option != "*"))) continue;
                 if (!control.caption.empty() && !control.option.empty() && !control.below &&
                         control.gap >= 0 && control.label_width < 0 &&

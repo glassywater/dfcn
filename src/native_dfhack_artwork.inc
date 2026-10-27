@@ -30,7 +30,7 @@ static std::vector<NativeDfhackNotificationText> native_dfhack_notification_text
     const graphicst *gps);
 enum class NativeDfhackOverlayTextRole : unsigned char {
     Text, Option, Key, Material, Category, Item,
-    SpectateName, SpectateJob, SpectateActivity, SpectateLiteral
+    SpectateName, SpectateJob, SpectateActivity, SpectateLiteral, ArtifactName, WrittenWorkHeading
 };
 struct NativeDfhackOverlayText {
     int x = 0, y = 0, full_x = 0, visible_offset = 0;
