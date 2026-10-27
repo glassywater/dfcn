@@ -146,6 +146,9 @@ namespace Hooks {
         // Complete material nouns, isolated from homonymous calendar/name rules.
         std::optional<std::string> translate_material_state(
             const std::string& text, bool adjective = false) const;
+        // Native built-in material IDs, independent of plant/material spelling.
+        std::optional<std::string> translate_builtin_material_solid(
+            const std::string& material_id) const;
         // A complete native material prefix, using the shared plant/species rule.
         std::optional<std::string> translate_material_prefix(const std::string& text) const;
         // Plant-fiber qualifiers only for finished equipment and tools.

@@ -117,7 +117,8 @@ void Overlay::append_work_order_condition_fields(std::vector<std::string> &rows,
             }
 
             const auto emit = [&](const NativeDrawnTextRow &owner, std::string_view text,
-                                  const TranslationResult &result, int y, int clip_right) {
+                                  const TranslationResult &result, int y, int clip_right,
+                                  std::vector<int> colors = {}) {
                 Match match{owner.x, y, static_cast<int>(text.size()),
                     kWorkOrderShopFieldRule, result.target, std::string(text)};
                 match.translation_result = std::make_shared<const TranslationResult>(result);
@@ -128,6 +129,7 @@ void Overlay::append_work_order_condition_fields(std::vector<std::string> &rows,
                 match.layout_clip_right = clip_right;
                 match.layout_left = true;
                 match.layout_foreground_rgb = owner.foreground_rgb;
+                match.layout_glyph_foreground_rgb = std::move(colors);
                 match.layout_fixed_baseline = !split;
                 if (split) {
                     match.native_split_text = true;
@@ -146,12 +148,38 @@ void Overlay::append_work_order_condition_fields(std::vector<std::string> &rows,
                 // overwritten, only the captured noun belongs to this field.
                 const bool label_owned = prefix && !claimed.contains({prefix->x, y}) &&
                     owns(*prefix, prefix->source, y, expected_half, split);
-                emit(draw, source, translated, y, right);
                 if (label_owned) {
                     const auto label = TranslationResult::translated(prefix->source,
                         *prefix_target, "work-order-condition-label");
+                    std::vector<uint32_t> label_codepoints, noun_codepoints;
+                    if (decode_utf8(label.target, label_codepoints) &&
+                            decode_utf8(translated.target, noun_codepoints)) {
+                        TranslationResult field = label;
+                        field.append(translated, prefix->source.size());
+                        field.kind = "work-order-condition-field";
+                        field.owner = translated.owner;
+                        // The existing rich-text rasterizer advances one
+                        // glyph run across this color boundary. The noun
+                        // follows the translated prefix's actual width, not
+                        // the original ten-column "Amount of " allocation.
+                        const auto color = [&](const NativeDrawnTextRow &owner) {
+                            if (owner.foreground_rgb >= 0) return owner.foreground_rgb;
+                            const size_t at = static_cast<size_t>(owner.x) * gps_->dimy + y;
+                            const auto *grid = native_ui_top_layer_at(*gps_, at)
+                                ? gps_->screen_top : gps_->screen;
+                            const auto *cell = grid + at * 8;
+                            return (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                        };
+                        std::vector<int> colors(label_codepoints.size(), color(*prefix));
+                        colors.insert(colors.end(), noun_codepoints.size(), color(draw));
+                        const std::string physical = prefix->source + std::string(source);
+                        emit(*prefix, physical, field, y, right, std::move(colors));
+                        claimed.emplace(draw.x, y);
+                        return;
+                    }
+                    emit(draw, source, translated, y, right);
                     emit(*prefix, prefix->source, label, y, draw.x);
-                }
+                } else emit(draw, source, translated, y, right);
             };
             claim(draw.y, false);
             if (split) claim(mate, true);

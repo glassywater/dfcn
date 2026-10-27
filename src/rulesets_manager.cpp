@@ -132,7 +132,10 @@ namespace Hooks {
     RulesetsManager::search_word_equivalents() const {
         dfcn::TranslationStateScope translation_scope;
         std::set<std::pair<std::string, std::string>> words;
-        for (const auto& [identifier, rules] : rulesets_)
+        for (const auto& [identifier, rules] : rulesets_) {
+            // Native material IDs are not natural-language search aliases.
+            if (identifier == "::materials::builtin" ||
+                    identifier.starts_with("::materials::builtin::")) continue;
             for (const auto& [source, target] : rules) {
                 if (source.size() != 1 || target.size() != 1 ||
                         source.front().type != Type::Literal || target.front().type != Type::Literal)
@@ -145,6 +148,7 @@ namespace Hooks {
                         })) continue;
                 words.emplace(a, b);
             }
+        }
         return {words.begin(), words.end()};
     }
 
@@ -1006,6 +1010,20 @@ namespace Hooks {
         return scoped_rule_translation([&]() -> std::optional<std::string> {
             const auto results = resolve_namespace(text, adjective ?
                 "::materials::state::adjective" : "::materials::state", 0);
+            for (const auto& result : results)
+                if (result->remaining.empty() && !result->translated.empty())
+                    return result->translated;
+            return std::nullopt;
+        });
+    }
+
+    std::optional<std::string> RulesetsManager::translate_builtin_material_solid(
+            const std::string& material_id) const {
+        dfcn::TranslationStateScope translation_scope;
+        return scoped_rule_translation([&]() -> std::optional<std::string> {
+            if (material_id.empty()) return std::nullopt;
+            const auto results = resolve_namespace(material_id,
+                "::materials::builtin::solid", 0);
             for (const auto& result : results)
                 if (result->remaining.empty() && !result->translated.empty())
                     return result->translated;

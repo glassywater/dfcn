@@ -1296,6 +1296,10 @@ def parse_literal_rulesets(root: Path) -> list[Entry]:
         }:
             continue
         document = tomllib.loads(path.read_text(encoding="utf-8"))
+        # Built-in material keys are native IDs, not display words. Exporting
+        # them would let e.g. WATER's solid-state name alter ordinary water.
+        if document.get("base") == "materials::builtin":
+            continue
         for ruleset in document.get("rulesets", []):
             # Finished-material qualifiers belong to typed item slots only.
             # Keep their 毛质/丝质/etc. out of raw-material and general words.
