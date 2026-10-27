@@ -59,37 +59,10 @@ void Overlay::render_native_topbar_layer(SDL_Renderer *renderer) {
     } view(*this, layer.foreground.graphics());
     NativeInfoCapturedTextScope captions(g_native_topbar_text);
     NativeUiReadScope component(gps_, nullptr);
-    NativePanelReadScope panels(gps_);
-    CellReadCacheScope cells(*this);
     prepared_matches_ = find_native_topbar_matches();
-    normalize_native_split_text();
-    // The name layout consumes only submitted matches. General page/prose
-    // layout and the shared date helper's screen-wide row reads have no owner
-    // here: the date card is already three complete typed fields.
-    layout_fortress_header(renderer);
-    for (Match &date : prepared_matches_) {
-        if (date.target.empty() || date.native_split_duplicate ||
-                native_topbar_date_field(date.source) != 0) continue;
-        std::array<Match *, 3> card{&date, nullptr, nullptr};
-        for (Match &field : prepared_matches_) {
-            if (field.target.empty() || field.native_split_duplicate || field.x != date.x)
-                continue;
-            const int row = native_topbar_date_field(field.source);
-            if (row > 0 && field.y == date.y + row) card[static_cast<size_t>(row)] = &field;
-        }
-        if (!card[1] || !card[2]) continue;
-        int right = date.x + date.length;
-        std::vector<std::vector<Match *>> rows;
-        for (size_t row = 0; row < card.size(); ++row) {
-            right = std::max(right, card[row]->x + card[row]->length);
-            card[row]->layout_y = date.y + 2 - static_cast<int>(row);
-            card[row]->layout_pixel_y = 0;
-            rows.push_back({card[row]});
-        }
-        layout_fortress_text_rows(renderer, rows, date.x,
-            std::min(right, panel.x + panel.w));
-        break;
-    }
+    // The native addst writers already supply full-row baselines and the
+    // site column's allocation. Neither font-half normalization nor the
+    // shared Pop/rank header recognizer owns this component's layout.
 
     const int origin_x = (gps_->screen_pixel_x - gps_->tile_pixel_x * gps_->dimx) / 2;
     const int origin_y = (gps_->screen_pixel_y - gps_->tile_pixel_y * gps_->dimy) / 2;

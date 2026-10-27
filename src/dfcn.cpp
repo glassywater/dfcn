@@ -43038,6 +43038,7 @@ SDL_Rect Overlay::native_text_draw_region(const Match &match, bool *owner_bounds
             !native_announcement_log_foreground_view(gps_) &&
             !native_character_foreground_view(gps_) &&
             !native_petitions_foreground_view(gps_) &&
+            !native_topbar_foreground_view(gps_) &&
             !match.layout_reflowed_paragraph) {
         if (const auto draw_clip = native_captured_text_clip(*gps_, match)) {
             SDL_Rect writer_clip = pixels(*draw_clip);
