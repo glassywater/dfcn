@@ -628,6 +628,7 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
                 is_cp437_box_separator(visible, static_cast<size_t>(x - left))) return;
         }
         std::string complete = visible;
+        const NativeTradeItemCaption *native_item = nullptr;
         // Retained frames keep the original name with its native draw even
         // after the per-frame clipping registry advances. Position, layer
         // and the complete visible bytes must all agree before restoring it.
@@ -636,6 +637,23 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
                 (draw.source == visible ||
                     (uniform_assignment && draw.source.starts_with(visible)))) {
                 complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
+                if (draw.trade_item_caption && draw.source == visible &&
+                        draw.draw_grid && draw.draw_epoch == captured_native_drawn_text_epoch() &&
+                        draw.draw_dimx == gps_->dimx && draw.draw_dimy == gps_->dimy) {
+                    bool owned = true;
+                    for (int x = left; owned && x < end; ++x) {
+                        if (visible[static_cast<size_t>(x - left)] == ' ') continue;
+                        bool top = false;
+                        const auto *cell = cell_at(x, y, &top);
+                        const auto origin = native_text_grid_origin(*gps_,
+                            static_cast<size_t>(x) * gps_->dimy + y, top);
+                        owned = cell && origin.grid == draw.draw_grid &&
+                            origin.top_layer == draw.top_layer &&
+                            (draw.foreground_rgb < 0 ||
+                             ((cell[1] << 16) | (cell[2] << 8) | cell[3]) == draw.foreground_rgb);
+                    }
+                    if (owned) native_item = &*draw.trade_item_caption;
+                }
                 break;
             }
         if (complete == visible)
@@ -670,6 +688,8 @@ void Overlay::append_fortress_item_captions(std::vector<std::string> &rows,
                 std::vector<int>(complete.size(), foreground), target_colors, true);
             result = target ? TranslationResult::translated(complete, *target, "item-display-status")
                 : preserved_item_field(complete, "item-display-status");
+        } else if (native_item && !native_item->material_id.empty()) {
+            result = translate_native_trade_item_caption_display(*native_item);
         } else result = translate_fortress_item_caption_display(complete, bounded_button, building_material);
         const bool translated = result.usable() && !result.has_untranslated();
         std::optional<std::string> target = result.usable()

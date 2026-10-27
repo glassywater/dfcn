@@ -4,6 +4,7 @@ static bool populate_native_trade_item_fields(uintptr_t object,
         NativeTradeItemCaption &caption) {
     caption.owner = object;
     caption.semantic_name = false;
+    caption.material_id.clear();
     if (!object || !native_history_item_scalar(object, 0, caption.type, 2) ||
             caption.type < 0 || caption.type > 92 ||
             !native_history_item_scalar(object, 8, caption.subtype, 2) ||
@@ -16,6 +17,29 @@ static bool populate_native_trade_item_fields(uintptr_t object,
             !native_history_copy(native_history_object_field(object, {}, 0x10, 4), caption.flags) ||
             !native_history_copy(native_history_object_field(object, {}, 0x14, 4), caption.flags2))
         return false;
+
+    // Built-in BAR commodities use the material's solid noun, rather than
+    // the adjective used by furniture and equipment below. Keep the native
+    // ID so a plant material with the same displayed name cannot select it.
+    if (caption.type == 0 && caption.subtype == -1 && caption.material >= 1 &&
+            caption.material <= 18 && caption.material != 7 &&
+            caption.material_index == -1) {
+        uintptr_t material = 0;
+        std::string id, prefix, state;
+        if (!native_history_material_object(native_history_profile_base(),
+                static_cast<int16_t>(caption.material), caption.material_index, material) ||
+                !material || material > UINTPTR_MAX - 0x540 ||
+                !native_history_copy_string(native_history_object_field(
+                    material, "material", 0, sizeof(NativeString)), id) ||
+                !native_history_copy_string(native_history_object_field(
+                    material, "material", 0x520, sizeof(NativeString)), prefix) ||
+                !native_history_copy_string(native_history_object_field(
+                    material, "material", 0xb8, sizeof(NativeString)), state)) return true;
+        caption.material_id = std::move(id);
+        caption.material_prefix = std::move(prefix);
+        caption.material_state = std::move(state);
+        return true;
+    }
 
     // These itemdef prefixes are identical in the supported native PE images.
     // The item subtype getter supplies the independent RAW ID. A definition

@@ -1,5 +1,28 @@
 // Item identity and field boundaries come from the trade formatter's item
 // pointer. Its source contributes only wrappers and the complete fallback.
+static std::optional<NativeJobItemCaption> native_trade_builtin_material_caption(
+        const NativeTradeItemCaption &caption) {
+    // Named/artifact and container records can carry independent content;
+    // their complete descriptions remain with the existing item parser.
+    if (caption.type != 0 || caption.subtype != -1 || caption.material < 1 ||
+            caption.material > 18 || caption.material == 7 ||
+            caption.material_index != -1 || caption.count < 1 ||
+            caption.material_id.empty() ||
+            (caption.flags & (0x40000u | 0x08000000u | 0x40u))) return std::nullopt;
+    NativeJobItemCaption material;
+    material.owner = caption.owner;
+    material.item_type = static_cast<int16_t>(caption.type);
+    material.item_subtype = static_cast<int16_t>(caption.subtype);
+    material.material_type = static_cast<int16_t>(caption.material);
+    material.material_index = caption.material_index;
+    material.quantity = caption.count;
+    material.source = caption.source;
+    material.material_id = caption.material_id;
+    material.material_prefix = caption.material_prefix;
+    material.material_state = caption.material_state;
+    return material;
+}
+
 std::optional<std::string> Overlay::translate_native_trade_item_caption(
         const NativeTradeItemCaption &caption) const {
     TranslationStateScope state;
@@ -7,10 +30,14 @@ std::optional<std::string> Overlay::translate_native_trade_item_caption(
         return caption.source.empty() ? std::optional<std::string>{} :
             translate_fortress_item_caption(caption.source);
     };
-    if (!caption.semantic_name || !config_.compositional_rules) return fallback();
     TranslationWorkScope work;
     try {
         TranslationWorkFrame frame("native trade item fields", caption.source);
+        if (const auto material = native_trade_builtin_material_caption(caption)) {
+            const auto result = translate_native_job_item_material(*material);
+            if (result.usable()) return result.target;
+        }
+        if (!caption.semantic_name || !config_.compositional_rules) return fallback();
         const char *family = nullptr;
         bool equipment = false;
         switch (caption.type) {
@@ -160,8 +187,20 @@ TranslationResult Overlay::translate_native_trade_item_caption_display(
     result.owner = std::to_string(caption.owner) + ":" + std::to_string(caption.id);
     try {
         TranslationWorkFrame frame("native trade display fields", caption.source);
-        // Full existing parsing (including named artifacts and instrument
-        // productions) gets the first opportunity to consume the caption.
+        // The shared material resolver accepts only this complete source:
+        // its solid noun and, when present, the actual native stack count.
+        // Quality, authored names and extra descriptions keep the old path.
+        if (const auto material = native_trade_builtin_material_caption(caption)) {
+            auto translated = translate_native_job_item_material(*material);
+            if (translated.usable()) {
+                translated.owner = result.owner;
+                translated.resource_revision = RULESETS.resource_revision();
+                translated.policy = TranslationPolicy::Display;
+                return translated;
+            }
+        }
+        // Full existing parsing continues to own the remaining captions,
+        // including named artifacts and instrument productions.
         if (auto target = translate_native_trade_item_caption(caption)) {
             result = TranslationResult::translated(caption.source, *target, "native-trade-item");
             result.owner = std::to_string(caption.owner) + ":" + std::to_string(caption.id);

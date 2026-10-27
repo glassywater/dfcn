@@ -28046,7 +28046,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                         hash *= 1099511628211ULL;
                     }
                     for (const auto *part : {&item.source, &item.raw_name,
-                            &item.raw_adjective, &item.size_adjective, &item.material_prefix,
+                            &item.raw_adjective, &item.size_adjective, &item.material_id, &item.material_prefix,
                             &item.material_state}) {
                         for (const unsigned char ch : *part) {
                             hash ^= ch;
