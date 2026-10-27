@@ -3,76 +3,6 @@
 // the toolbar or widgets::Tooltip painters. Own the selected paragraph before
 // its background and border can enter the management component's word matcher.
 #ifdef _WIN32
-static std::string capture_native_workshop_recipe_scope(
-        const void *paragraph, uintptr_t native_stack) {
-    const uintptr_t base = g_native_legacy_tooltip_base;
-    if (!base || !native_stack || native_stack > UINTPTR_MAX - 0xb268 ||
-            reinterpret_cast<uintptr_t>(paragraph) != native_pe_address(base, 0x18a1768))
-        return {};
-
-    // The chooser and queued-job rows share the building-sheet stack:
-    // sheet=rsp+b260, building=rsp+d0. Resolve active_id through the world's
-    // building vector, so neither a visible title nor a custom name decides
-    // which workshop owns a short material word.
-    uintptr_t sheet = 0, building = 0, current_building = 0, building_vtable = 0;
-    uint8_t open = 0;
-    int32_t selected_id = -1, building_id = -1, sub_tab = -1;
-    if (!native_history_copy(native_stack + 0xb260, sheet) || !sheet ||
-            sheet > UINTPTR_MAX - 0xc4 ||
-            !native_history_copy(native_stack + 0xd0, building) || !building ||
-            building > UINTPTR_MAX - 0x164 ||
-            !native_history_copy(sheet, open) || open != 1 ||
-            !native_history_copy(sheet + 0xc, selected_id) ||
-            !native_history_copy(sheet + 0xc0, sub_tab) || sub_tab != 0 ||
-            !native_history_copy(building + 0x50, building_id) || building_id < 0 ||
-            selected_id != building_id ||
-            !native_history_find_structure_id(native_pe_address(base, 0x23edf10),
-                0x50, building_id, current_building) || current_building != building ||
-            !native_history_copy(building, building_vtable))
-        return {};
-
-    // Native getName reads furnacest.type at +162 and workshopst.type at
-    // +148. Keep the native family and subtype in the key: Ashery (20),
-    // Dyers (21) and WoodFurnace (0) must never share a short-word override.
-    const char *family = nullptr;
-    size_t subtype_offset = 0;
-    if (building_vtable == native_pe_address(base, 0x16534c8)) {
-        family = "Furnace";
-        subtype_offset = 0x162;
-    } else if (building_vtable == native_pe_address(base, 0x165b070)) {
-        family = "Workshop";
-        subtype_offset = 0x148;
-    } else return {};
-    int16_t subtype = -1;
-    if (!native_history_copy(building + subtype_offset, subtype) || subtype < 0)
-        return {};
-
-    // Bind the preview to its current choice too: 185706 saves the hovered
-    // candidate at rsp+1fd0; 185785 installs it as the cached paragraph owner.
-    // This relation remains available when no formatter runs on later frames.
-    uintptr_t choice = 0, owner = 0, choice_vtable = 0, choice_building = 0;
-    int32_t job_type = -1;
-    if (!native_history_copy(native_stack + 0x1fd0, choice) || !choice ||
-            choice > UINTPTR_MAX - 0x4c ||
-            !native_history_copy(native_pe_address(base, 0x18a1780), owner) || owner != choice ||
-            !native_history_copy(choice, choice_vtable) ||
-            choice_vtable != native_pe_address(base, 0x16be770) ||
-            !native_history_copy(choice + 0x40, choice_building) || choice_building != building ||
-            !native_history_copy(choice + 0x48, job_type) || job_type < 0 || job_type > INT16_MAX)
-        return {};
-
-    // Only a live ordinary job choice supplies this job-type namespace.
-    // Reactions and category descriptions have different native identities.
-    NativeBorrowedVector<uintptr_t> choices;
-    if (!native_history_read_vector(native_pe_address(base, 0x18a1710), choices) ||
-            choices.size() > 65536) return {};
-    for (size_t index = 0; index < choices.size(); ++index)
-        if (native_history_vector_at(choices, index) == choice)
-            return std::string(family) + "/" + std::to_string(subtype) +
-                "/Job/" + std::to_string(job_type);
-    return {};
-}
-
 static size_t capture_native_workshop_tooltip_rows(const void *paragraph,
         uintptr_t native_stack) {
     NativeInputCallbackScope callback;
@@ -113,7 +43,6 @@ static size_t capture_native_workshop_tooltip_rows(const void *paragraph,
         frame.body_source = native_legacy_tooltip_body_source(paragraph, count);
         if (frame.body_source.empty()) return count;
         frame.workshop_recipe = true;
-        frame.workshop_recipe_scope = capture_native_workshop_recipe_scope(paragraph, native_stack);
         // Snapshot field boundaries before begin_draw swaps out the parent
         // component's paragraph captures. Cached native previews do not run
         // their source formatter again on every frame.

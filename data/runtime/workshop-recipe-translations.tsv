@@ -231,12 +231,6 @@ Workshop recipe: games of chance	博戏用具	l
 
 # Native a82c10 noun aliases and shared material/item compounds that otherwise
 # meet UI homonyms or missing bare forms. Existing names remain authoritative.
-# Native building family/subtype, job_type and field role own each ambiguity.
-# Furnace 0=WoodFurnace; Workshop 20=Ashery, 21=Dyers (separate tree meaning).
-# Jobs: 185=MakeAsh, 186=MakeLye, 189=MakePotashFromAsh.
-Workshop recipe: Furnace/0/Job/185/Produces: ash	灰烬	l
-Workshop recipe: Workshop/20/Job/186/Requires: ash	灰烬	l
-Workshop recipe: Workshop/20/Job/189/Requires: ash	灰烬	l
 Workshop recipe: item	物品	l
 Workshop recipe: items	物品	l
 # The native MILK flag with a generic item head denotes milk itself.

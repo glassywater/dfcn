@@ -250,22 +250,25 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
         if (!matches || identity(wrapped) != identity(capture.source)) continue;
         const auto *previous = bound[begin];
         if (!previous || count > previous->wrapped_lines.size() ||
-                (count == previous->wrapped_lines.size() && capture.sequence > previous->sequence))
+                (count == previous->wrapped_lines.size() &&
+                    ((capture.job_item_caption && !previous->job_item_caption) ||
+                     (bool(capture.job_item_caption) == bool(previous->job_item_caption) &&
+                        capture.sequence > previous->sequence))))
             bound[begin] = &capture;
     }
-    struct Field { size_t begin, end; std::string source; std::string_view role; };
+    struct Field { size_t begin, end; std::string source; const NativeJobItemCaption *item; };
     std::vector<Field> fields;
-    std::string_view role;
     for (size_t begin = 0; begin < lines.size();) {
         if (lines[begin].text.empty()) { ++begin; continue; }
         size_t end = begin + 1;
         std::string source;
+        const NativeJobItemCaption *item = nullptr;
         if (heading(lines[begin].text)) {
             source = lines[begin].text;
-            role = lines[begin].text;
         } else if (const auto *capture = bound[begin]) {
             source = capture->source;
             end = begin + capture->wrapped_lines.size();
+            if (capture->job_item_caption) item = &*capture->job_item_caption;
         } else {
             // Cached native widgets can precede paragraph capture. Counts,
             // section headings, empty rows and bound fields delimit fallback
@@ -279,7 +282,7 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
                 ++end;
             }
         }
-        fields.push_back({lines[begin].begin, lines[end - 1].end, std::move(source), role});
+        fields.push_back({lines[begin].begin, lines[end - 1].end, std::move(source), item});
         begin = end;
     }
     const auto translate = [&](const Field &field) -> TranslationResult {
@@ -289,13 +292,9 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
             return target ? TranslationResult::translated(source, *target, "recipe-heading")
                 : preserved_item_field(source, "recipe-heading");
         }
-        // This lookup belongs to the native building, job and field role.
-        // Never put its result into the shared source-only recipe cache.
-        if (!field.role.empty() && !frame.workshop_recipe_scope.empty()) {
-            const auto target = exact_literal_translation(
-                "Workshop recipe: " + frame.workshop_recipe_scope + "/" +
-                std::string(field.role) + " " + lower(std::string(trim_view(source))));
-            if (target) return TranslationResult::translated(source, *target, "recipe-context");
+        if (field.item) {
+            auto translated = translate_native_job_item_material(*field.item);
+            if (translated.usable()) return translated;
         }
         if (const auto target = translate_workshop_recipe_source(source))
             return TranslationResult::translated(source, *target, "recipe");

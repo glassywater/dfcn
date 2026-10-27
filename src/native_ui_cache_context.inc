@@ -196,6 +196,13 @@ public:
         range(cache.rows, [&](const auto &input) { address(input.address); text(input.source); });
         range(cache.paragraphs, [&](const auto &paragraph) { text(paragraph); });
     }
+    void job_item(const NativeJobItemCaption &input) {
+        address(input.owner); value(input.item_type); value(input.item_subtype);
+        value(input.material_type); value(input.material_index); value(input.quantity);
+        for (auto flag : input.flags) value(flag);
+        text(input.source); text(input.reaction_class); text(input.reaction_product);
+        text(input.material_id); text(input.material_prefix); text(input.material_state);
+    }
     void widget(const NativeTooltipWidgetFrame &input, uint64_t epoch) {
         // Snapshot composition reads another full grid with its own origins.
         // It is intentionally left on the ordinary path until that dependency
@@ -208,6 +215,7 @@ public:
         range(input.workshop_fields, [&](const auto &field) {
             value(field.first_line); text(field.source);
             range(field.wrapped_lines, [&](const auto &row) { text(row); });
+            optional(field.job_item_caption, [&](const auto &item) { job_item(item); });
         });
         range(input.rows, [&](const auto &row) { text(row); });
         range(input.glyph_rows, [&](const auto &row) { text(row); });
@@ -328,6 +336,7 @@ public:
             value(caption.kind); value(caption.right); value(caption.authored);
             text(caption.complete_source);
         });
+        optional(input.work_order_condition_caption, [&](const auto &caption) { job_item(caption); });
         optional(input.workshop_task_caption, [&](const auto &caption) {
             address(caption.building); address(caption.job);
             rect(caption.box); text(caption.complete_source);
@@ -360,6 +369,7 @@ public:
         value(rank(paragraph_order_ranks_, input.registry_order));
         range(input.row_addresses, [&](auto input_address) { address(input_address); });
         optional(input.display_source, [&](const auto &source) { text(source); });
+        optional(input.job_item_caption, [&](const auto &item) { job_item(item); });
     }
     template<typename Paragraphs> void paragraph_range(const Paragraphs &input) {
         paragraph_sequence_ranks_.clear(); paragraph_order_ranks_.clear();

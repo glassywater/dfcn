@@ -3,6 +3,10 @@
 // and matching remain in the shared workshop tooltip compositor.
 using NativeWorkshopRecipeStringFn = void (*)(NativeString *);
 static void capture_native_workshop_recipe_paragraph(void *,const NativeString *,int);
+#ifdef _WIN32
+static void capture_native_workshop_product_paragraph(
+    void *, const NativeString *, int, const void *);
+#endif
 struct NativeWorkshopRecipeProfile {
     uintptr_t base = 0;
     uintptr_t begin_site = 0, begin_target = 0;
@@ -31,6 +35,7 @@ struct NativeWorkshopRequirementPending {
     const void *paragraph_owner = nullptr;
     size_t first_line = 0;
     std::string source;
+    std::optional<NativeJobItemCaption> job_item_caption;
 };
 struct NativeWorkshopRecipeThreadState {
     std::vector<NativeWorkshopRequirementPending> pending;
@@ -56,8 +61,81 @@ static void clear_native_workshop_requirements() {
     native_workshop_recipe_thread_state().pending.clear();
 }
 
+#ifdef _WIN32
+static std::optional<NativeJobItemCaption> capture_native_workshop_job_item(
+        const void *job_item, std::string_view source) {
+    const uintptr_t object = reinterpret_cast<uintptr_t>(job_item);
+    if (!object || object > UINTPTR_MAX - 0xb0) return std::nullopt;
+    NativeJobItemCaption caption;
+    caption.owner = object;
+    caption.source.assign(source);
+    // Both product and reagent loops retain the exact job_req_elementst in
+    // RSI while formatting its description. This is the object copied at
+    // 8c31c1..8c32e2 / 8c3573..8c36a6, not a reconstructed job-type recipe.
+    if (!native_history_copy(object, caption.item_type) ||
+            !native_history_copy(object + 2, caption.item_subtype) ||
+            !native_history_copy(object + 4, caption.material_type) ||
+            !native_history_copy(object + 8, caption.material_index) ||
+            !native_history_copy(object + 0x10, caption.quantity) ||
+            !native_history_copy(object + 0xc, caption.flags[0]) ||
+            !native_history_copy(object + 0x18, caption.flags[1]) ||
+            !native_history_copy(object + 0x1c, caption.flags[2]) ||
+            !native_history_copy(object + 0x20, caption.flags[3]) ||
+            !native_history_copy(object + 0x24, caption.flags[4]) ||
+            !native_history_copy_string(object + 0x30, caption.reaction_class) ||
+            !native_history_copy_string(object + 0x50, caption.reaction_product))
+        return std::nullopt;
+    if (caption.material_type >= 0) {
+        uintptr_t material = 0;
+        if (!native_history_material_object(native_history_profile_base(),
+                caption.material_type, caption.material_index, material) ||
+                !material || material > UINTPTR_MAX - 0x540 ||
+                !native_history_copy_string(material, caption.material_id) ||
+                !native_history_copy_string(material + 0x520, caption.material_prefix) ||
+                !native_history_copy_string(material + 0xb8, caption.material_state))
+            return std::nullopt;
+    }
+    return caption;
+}
+#endif
+
+static void remember_native_workshop_recipe_field(const void *paragraph,
+        int width, std::string source, size_t first_line,
+        std::optional<NativeJobItemCaption> job_item_caption) {
+    if (!paragraph || width != 29 || first_line > 4096 || source.empty()) return;
+    const size_t count = native_paragraph_row_count(paragraph);
+    if (count <= first_line || count > 4096) return;
+    NativeParagraphCapture captured;
+    captured.owner = reinterpret_cast<uintptr_t>(paragraph);
+    captured.paragraph_width = width;
+    captured.source = std::move(source);
+    captured.first_line = first_line;
+    captured.job_item_caption = std::move(job_item_caption);
+    captured.wrapped_lines.reserve(count - first_line);
+    captured.row_addresses.reserve(count - first_line);
+    for (size_t index = first_line; index < count; ++index) {
+        std::string_view line;
+        const auto *row = native_paragraph_row(paragraph, index);
+        if (!native_string_view(row, &line, 65536) ||
+                line.find('\0') != std::string_view::npos) return;
+        captured.wrapped_lines.emplace_back(line);
+        captured.row_addresses.push_back(reinterpret_cast<uintptr_t>(row));
+    }
+    std::lock_guard<std::mutex> lock(g_native_workshop_requirement_mutex);
+    std::erase_if(g_native_workshop_requirements,
+        [&](const NativeParagraphCapture &previous) {
+            return previous.owner == captured.owner && previous.first_line >= first_line;
+        });
+    captured.sequence = ++g_native_workshop_requirement_sequence;
+    g_native_workshop_requirements.push_back(std::move(captured));
+    // Cached previews retain owned identity and the exact native wrap. The
+    // consumer still requires matching owner, row boundaries and source.
+    while (g_native_workshop_requirements.size() > 512)
+        g_native_workshop_requirements.pop_front();
+}
+
 static void capture_native_workshop_requirement_begin(NativeString *source,
-        const void *paragraph) {
+        const void *paragraph, const void *job_item) {
     // Keep the native operation and its string ownership entirely intact.
     g_native_workshop_recipe_hooks.normalize(source);
     try {
@@ -80,7 +158,14 @@ static void capture_native_workshop_requirement_begin(NativeString *source,
         std::string_view text;
         if (pending.size() >= 32 || !native_string_view(source, &text, 65536) ||
             text.empty() || text.find('\0') != std::string_view::npos) return;
-        pending.push_back({source, paragraph, first_line, std::string(text)});
+        std::optional<NativeJobItemCaption> caption;
+#ifdef _WIN32
+        caption = capture_native_workshop_job_item(job_item, text);
+#else
+        (void)job_item;
+#endif
+        pending.push_back({source, paragraph, first_line, std::string(text),
+            std::move(caption)});
     } catch (...) {
         // Native rendering must continue even if the owned copy cannot be made.
     }
@@ -101,27 +186,9 @@ static void capture_native_workshop_requirement_end(NativeString *last_line,
         if (found == pending.rend()) return;
         auto captured = std::move(*found);
         pending.erase(std::next(found).base());
-        const size_t count = native_paragraph_row_count(paragraph);
-        if (count <= captured.first_line || count > 4096) return;
-        std::vector<std::string> lines;
-        lines.reserve(count - captured.first_line);
-        for (size_t index = captured.first_line; index < count; ++index) {
-            std::string_view line;
-            if (!native_string_view(native_paragraph_row(paragraph, index), &line, 65536) ||
-                line.find('\0') != std::string_view::npos) return;
-            lines.emplace_back(line);
-        }
-        std::lock_guard<std::mutex> lock(g_native_workshop_requirement_mutex);
-        g_native_workshop_requirements.push_back({
-            reinterpret_cast<uintptr_t>(paragraph),
-            g_native_workshop_recipe_hooks.paragraph_width,
-            std::move(captured.source), std::move(lines),
-            ++g_native_workshop_requirement_sequence, captured.first_line,
-        });
-        // Retain actual wrap results across native redraws of a cached card.
-        // Consumers must match every visible source row before using them.
-        while (g_native_workshop_requirements.size() > 512)
-            g_native_workshop_requirements.pop_front();
+        remember_native_workshop_recipe_field(paragraph,
+            g_native_workshop_recipe_hooks.paragraph_width, std::move(captured.source),
+            captured.first_line, std::move(captured.job_item_caption));
     } catch (...) {}
 }
 
@@ -145,6 +212,42 @@ static void capture_native_workshop_recipe_paragraph(void *paragraph,
     callback.call_native([&] { if (g_real_native_paragraph) g_real_native_paragraph(paragraph,source,width); });
     try { capture_appended_native_paragraph(paragraph,width,std::move(complete),first,true); } catch (...) {}
 }
+
+#ifdef _WIN32
+static void capture_native_workshop_product_paragraph(void *paragraph,
+        const NativeString *source, int width, const void *job_item) {
+    NativeInputCallbackScope callback;
+    std::string complete;
+    size_t first = SIZE_MAX;
+    std::optional<NativeJobItemCaption> caption;
+    try {
+        if (paragraph && width == 29) {
+            first = native_paragraph_row_count(paragraph);
+            if (first <= 4096) {
+                std::lock_guard<std::mutex> lock(g_native_workshop_requirement_mutex);
+                std::erase_if(g_native_workshop_requirements,
+                    [&](const NativeParagraphCapture &previous) {
+                        return previous.owner == reinterpret_cast<uintptr_t>(paragraph) &&
+                            previous.first_line >= first;
+                    });
+            }
+        }
+        std::string_view value;
+        if (first <= 4096 && native_string_view(source, &value, 65536) &&
+                !value.empty() && value.find('\0') == std::string_view::npos) {
+            complete.assign(value);
+            caption = capture_native_workshop_job_item(job_item, value);
+        }
+    } catch (...) {}
+    callback.call_native([&] {
+        if (g_real_native_paragraph) g_real_native_paragraph(paragraph, source, width);
+    });
+    try {
+        remember_native_workshop_recipe_field(paragraph, width,
+            std::move(complete), first, std::move(caption));
+    } catch (...) {}
+}
+#endif
 
 static bool uninstall_native_workshop_recipe_hooks() {
     auto &hook = g_native_workshop_recipe_hooks;
