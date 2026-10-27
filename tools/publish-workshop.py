@@ -95,7 +95,7 @@ class StringArray(C.Structure):
 RESULT_NAMES = {
     1: "OK", 2: "Fail", 3: "NoConnection", 8: "InvalidParam",
     9: "FileNotFound", 15: "AccessDenied", 16: "Timeout", 25: "LimitExceeded",
-    33: "LockingFailed", 37: "IOFailure", 48: "Cancelled",
+    29: "DuplicateRequest", 33: "LockingFailed", 37: "IOFailure", 48: "Cancelled",
     50: "AlreadyLoggedInElsewhere", 62: "AccountLogonDenied",
     63: "CannotUseOldPassword", 65: "InvalidLoginAuthCode", 84: "RateLimitExceeded",
     86: "AccountLoginDeniedNeedTwoFactor", 24: "InsufficientPrivilege",
@@ -364,10 +364,13 @@ class Steam:
                 raise ValueError("A Workshop item cannot require itself")
             call = self.dll.SteamAPI_ISteamUGC_AddDependency(self.ugc, item_id, child_id)
             added = self.wait_result(call, 3412, AddDependencyResult, "Add required Workshop item")
-            result_ok(added.result, "Add required Workshop item")
+            # Re-publishing an item keeps dependencies already added to it.
+            if added.result != 29:
+                result_ok(added.result, "Add required Workshop item")
             if added.item_id != item_id or added.child_id != child_id:
                 raise RuntimeError("Steam returned a different Workshop dependency")
-            emit({"operation": "dependency_added", "publishedfileid": str(item_id),
+            emit({"operation": "dependency_present" if added.result == 29 else "dependency_added",
+                  "publishedfileid": str(item_id),
                   "required_item": str(child_id)})
 
         description = description_template.replace("__WORKSHOP_ID__", str(item_id))
