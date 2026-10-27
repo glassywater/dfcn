@@ -1,4 +1,4 @@
-# fight.facts 调用 life.deeds / life.loss_facts：战斗后的经历和旧敌结局。
+# life.deeds / life.loss_facts：后续经历，以及亲友和旧敌的结局；职业、定居随笔复用 record。
 # 时间锚只接完整的已知事实，不吞入任意后续正文。
 base = "subscribed_books::essay_fight_aftermath"
 
@@ -20,6 +20,10 @@ name = "record"
 "{actor} was no longer imprisoned by {captor}." = "{actor}不再被{captor}囚禁。"
 "{actor} was no longer imprisoned by {captor} {location}." = "{actor}{location}不再被{captor}囚禁。"
 "{actor} settled in {place}." = "{actor}在{place}安顿下来。"
+# CHANGE_HF_STATE 的到访记录；life.deeds 会把原生日期替换为本次经历的相对时间。
+"{actor} visited {place}." = "{actor}造访了{place}。"
+# life.placed 同样重写 simple_battle/wounded 的日期；保留既有事件双方和伤势语义。
+"{::subscribed_books::essay_fight_vocabulary::event}." = "{::subscribed_books::essay_fight_vocabulary::event}。"
 # life.deeds 也会讲述作者的身份变化；引号内为化名，无引号时为冒用他人身份。
 "{actor} assumed the identity \"{alias}\"." = "{actor}化名为“{alias}”。"
 "{actor} assumed the identity {impersonated}." = "{actor}冒用了{impersonated}的身份。"
@@ -87,5 +91,41 @@ name = "arrival"
 [[rulesets]]
 name = "victim"
 [rulesets.rules]
-# fight.losses_of 只额外传入一个 old foe。
-"{::subscribed_books::essay_life_facts::genitive} old foe {::subscribed_books::guide::person}" = "{::subscribed_books::essay_life_facts::genitive}旧敌{::subscribed_books::guide::person}"
+# life.losses_of 先收集 contexts.relations，再加入战斗主题额外提供的 old foe。
+# 同一事件的遇难者由 life.list_words 并列，每一项都必须有完整关系称谓和姓名。
+"{lost_person}" = "{lost_person}"
+"{lost_person} and {victim}" = "{lost_person}和{victim}"
+"{lost_person}, {victim}" = "{lost_person}、{victim}"
+
+[[rulesets]]
+name = "lost_person"
+[rulesets.rules]
+"{::subscribed_books::essay_life_facts::genitive} {loss_relation} {::subscribed_books::guide::person}" = "{::subscribed_books::essay_life_facts::genitive}{loss_relation}{::subscribed_books::guide::person}"
+
+[[rulesets]]
+name = "loss_relation"
+[rulesets.rules]
+# engine/contexts.lua 的 WORDS；不把未识别的正文当作称谓或姓名透传。
+"daughter" = "女儿"
+"son" = "儿子"
+"child" = "子女"
+"wife" = "妻子"
+"husband" = "丈夫"
+"spouse" = "配偶"
+"late wife" = "已故妻子"
+"late husband" = "已故丈夫"
+"late spouse" = "已故配偶"
+"former wife" = "前妻"
+"former husband" = "前夫"
+"former spouse" = "前配偶"
+"mother" = "母亲"
+"father" = "父亲"
+"lover" = "恋人"
+"former lover" = "昔日的恋人"
+"master" = "师父"
+"apprentice" = "学徒"
+"old master" = "昔日的师父"
+"old apprentice" = "昔日的学徒"
+"companion" = "伙伴"
+# fight.losses_of 额外提供的关系。
+"old foe" = "旧敌"

@@ -230,8 +230,11 @@ name = "topic"
 "{matter}" = "{matter}"
 "{::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
 "the {::subscribed_books::vocabulary::race}" = "{::subscribed_books::vocabulary::race}"
-"{@bt_author|::subscribed_books::vocabulary::person}" = "{@bt_author|::subscribed_books::vocabulary::person}"
-"{@bt_place|::subscribed_books::vocabulary::place}" = "{@bt_place|::subscribed_books::vocabulary::place}"
+# essay.lua 会把未与当前作者/地点相等的标题论题转为小写。
+# 人物分支必须完整识别，不能由 @ 捕获透传后抢在地点分支之前返回。
+# 地点仍交给已有的不区分大小写的真实地点解析，保留其统一译名与类别。
+"{::subscribed_books::guide::person}" = "{::subscribed_books::guide::person}"
+"{::subscribed_books::vocabulary::place}" = "{::subscribed_books::vocabulary::place}"
 "law" = "法律"
 "truth" = "真理"
 "ignorance" = "无知"

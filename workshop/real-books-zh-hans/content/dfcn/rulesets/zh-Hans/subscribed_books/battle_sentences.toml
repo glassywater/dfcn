@@ -1,10 +1,18 @@
-# battle.lua trait_combat_flavor: complete narration sentences retained after
+# battle.lua motivation / trait_combat_flavor: complete narration sentences retained after
 # text_passes.fresh_sentences removes repeated narration from a longer passage.
 # Keep the original passage rules in battle.toml; do not split quoted dialogue.
 base = "subscribed_books::battle_sentences"
 
 [[rulesets]]
 [rulesets.rules]
+# 当前 cruel / violent 动机已改为 had come for suffering；旧版整段仍在 battle.toml。
+# 去重可单独移除段落中的某句，故同时收录完整段落和各独立句。
+"{@bt_b|::subscribed_books::battle::person} had come for suffering. There was a hunger in {::subscribed_books::battle::pos1} eyes that had nothing to do with survival and everything to do with the dark pleasure of destruction. {@bt_a|::subscribed_books::battle::person} could see it -- and knew that this fight would offer no mercy." = "{@bt_b|::subscribed_books::battle::person}为折磨他人而来。{::subscribed_books::battle::pos1}眼中的渴望与生存毫无关系，只关乎毁灭带来的黑暗快意。{@bt_a|::subscribed_books::battle::person}看得明白——也知道这场战斗不会有任何怜悯。"
+"{@bt_b|::subscribed_books::battle::person} had come for suffering." = "{@bt_b|::subscribed_books::battle::person}为折磨他人而来。"
+"{@bt_b|::subscribed_books::battle::person} had come not for victory but for suffering." = "{@bt_b|::subscribed_books::battle::person}来到这里，要的不是胜利，而是他人的痛苦。"
+"There was a hunger in {::subscribed_books::battle::pos1} eyes that had nothing to do with survival and everything to do with the dark pleasure of destruction." = "{::subscribed_books::battle::pos1}眼中的渴望与生存毫无关系，只关乎毁灭带来的黑暗快意。"
+"{@bt_a|::subscribed_books::battle::person} could see it -- and knew that this fight would offer no mercy." = "{@bt_a|::subscribed_books::battle::person}看得明白——也知道这场战斗不会有任何怜悯。"
+
 # Cruel: attacks and narration. Retain the older wording beside the current form.
 "{@bt_actor|::subscribed_books::battle::person} went for the knee, to cripple." = "{@bt_actor|::subscribed_books::battle::person}直取膝盖，要让对手残废。"
 "{@bt_actor|::subscribed_books::battle::person} went for the knee -- not to kill, but to cripple." = "{@bt_actor|::subscribed_books::battle::person}直取膝盖——为的不是杀死敌人，而是使其残废。"

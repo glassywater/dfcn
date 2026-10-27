@@ -1,0 +1,88 @@
+# musical.instrument 使用原生乐器 description 的首句；仅在书籍正文接入。
+# 结构词对应 instrument-translations.tsv；随机乐器名仍走原生乐器音译。
+base = "subscribed_books::composition_instruments"
+
+[[rulesets]]
+[rulesets.rules]
+"The {::text::instrument} is a {size} {construction}." = "{::text::instrument}是一种{size}{construction}。"
+
+[[rulesets]]
+name = "size"
+[rulesets.rules]
+"huge stationary" = "巨型固定式"
+"large stationary" = "大型固定式"
+"mid-size stationary" = "中型固定式"
+"small stationary" = "小型固定式"
+"tiny stationary" = "微型固定式"
+"large hand-held" = "大型手持式"
+"mid-size hand-held" = "中型手持式"
+"small hand-held" = "小型手持式"
+"tiny hand-held" = "微型手持式"
+
+[[rulesets]]
+name = "construction"
+[rulesets.rules]
+"{shape} {material} horn" = "{shape}{material}号角"
+"{material} horn" = "{material}号角"
+"{string_material}-stringed instrument with a {frame_material} frame and a {body_material} body" = "{string_material}弦乐器，配有{frame_material}框架和{body_material}琴身"
+"wind instrument through which constant air flow is maintained by use of a {bag_material} bag, itself supplied by a {supply_material} {air_supply}" = "管乐器，通过{bag_material}气囊维持持续气流，气囊由{supply_material}{air_supply}供气"
+
+[[rulesets]]
+name = "shape"
+[rulesets.rules]
+"looping" = "盘绕形"
+"conical" = "圆锥形"
+"cylindrical" = "圆柱形"
+"closed cylindrical" = "封闭圆柱形"
+"globular" = "球形"
+"double-tube" = "双管"
+
+[[rulesets]]
+name = "material"
+[rulesets.rules]
+"wooden" = "木制"
+"wood" = "木制"
+"cloth" = "布质"
+"silk" = "丝质"
+"leather" = "皮革"
+"bone" = "骨制"
+"shell" = "壳制"
+"metal" = "金属"
+"stone" = "石制"
+"glass" = "玻璃"
+"ceramic" = "陶瓷"
+"{::materials::item_qualifier}" = "{::materials::item_qualifier}"
+
+[[rulesets]]
+name = "frame_material"
+[rulesets.rules]
+"{material}" = "{material}"
+
+[[rulesets]]
+name = "body_material"
+[rulesets.rules]
+"{material}" = "{material}"
+
+[[rulesets]]
+name = "bag_material"
+[rulesets.rules]
+"{material}" = "{material}"
+
+[[rulesets]]
+name = "supply_material"
+[rulesets.rules]
+"{material}" = "{material}"
+
+[[rulesets]]
+name = "string_material"
+[rulesets.rules]
+"cloth" = "线"
+"silk" = "丝"
+"gut" = "肠"
+"{::materials::item_qualifier}" = "{::materials::item_qualifier}"
+
+[[rulesets]]
+name = "air_supply"
+[rulesets.rules]
+"bellows" = "风箱"
+"blowpipe" = "吹管"

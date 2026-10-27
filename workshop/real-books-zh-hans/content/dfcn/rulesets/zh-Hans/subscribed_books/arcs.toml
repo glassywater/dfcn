@@ -1045,6 +1045,9 @@ base = "subscribed_books::arcs"
 "They had been here before, and neither of them had forgotten it." = "他们此前就曾陷入同样局面，双方都未忘记。"
 "Still on the matter that would not die." = "仍纠缠在那个怎么也不会结束的话题上。"
 "{@bt_name|::subscribed_books::vocabulary::person} was {article} {race} -- {article2} {profession} by trade, {quality_tags} by temperament. {Pro} had lived long enough to know that the world did not owe {obj} anything, and short enough to still be surprised when it gave something anyway." = "{@bt_name|::subscribed_books::vocabulary::person}是{race}，以{profession}为业，性情{quality_tags}。{Pro}活得足够久，知道世界并不欠{obj}什么，却还不够久，每当世界仍然给出什么时，仍会吃惊。"
+# introduce_character 的两句可被 fresh_sentences 分别去重，留下的介绍可直接接信仰句。
+"{::subscribed_books::vocabulary::person} was {article} {race} -- {article2} {profession} by trade, {quality_tags} by temperament." = "{::subscribed_books::vocabulary::person}是{race}，以{profession}为业，性情{quality_tags}。"
+"{Pro} had lived long enough to know that the world did not owe {obj} anything, and short enough to still be surprised when it gave something anyway." = "{Pro}活得足够久，知道世界并不欠{obj}什么，却还不够久，每当世界仍然给出什么时，仍会吃惊。"
 "The {race} known as {@bt_name|::subscribed_books::vocabulary::person} was, by all accounts, {quality_tags}. {article2} {profession} who had earned {pos} reputation through years of stubborn persistence rather than any single act of brilliance." = "名叫{@bt_name|::subscribed_books::vocabulary::person}的{race}，据众人说，性情{quality_tags}。这位{profession}的声望来自多年顽强坚持，并非某一次出色的壮举。"
 # 人物引介可能只保留性格句并接上信仰描述，不依赖后续职业句。
 "The {race} known as {::subscribed_books::vocabulary::person} was, by all accounts, {quality_tags}." = "名叫{::subscribed_books::vocabulary::person}的{race}，据众人说，性情{quality_tags}。"
