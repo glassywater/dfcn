@@ -2788,6 +2788,7 @@ struct NativeTooltipWidgetFrame {
     std::vector<std::string> glyph_rows;
     std::string body_source;
     bool workshop_recipe = false;
+    std::string workshop_recipe_scope;
     std::vector<NativeParagraphCapture> workshop_fields;
     bool top_layer = false;
     bool isolated = false;

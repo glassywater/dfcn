@@ -253,14 +253,17 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
                 (count == previous->wrapped_lines.size() && capture.sequence > previous->sequence))
             bound[begin] = &capture;
     }
-    struct Field { size_t begin, end; std::string source; };
+    struct Field { size_t begin, end; std::string source; std::string_view role; };
     std::vector<Field> fields;
+    std::string_view role;
     for (size_t begin = 0; begin < lines.size();) {
         if (lines[begin].text.empty()) { ++begin; continue; }
         size_t end = begin + 1;
         std::string source;
-        if (heading(lines[begin].text)) source = lines[begin].text;
-        else if (const auto *capture = bound[begin]) {
+        if (heading(lines[begin].text)) {
+            source = lines[begin].text;
+            role = lines[begin].text;
+        } else if (const auto *capture = bound[begin]) {
             source = capture->source;
             end = begin + capture->wrapped_lines.size();
         } else {
@@ -276,14 +279,23 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
                 ++end;
             }
         }
-        fields.push_back({lines[begin].begin, lines[end - 1].end, std::move(source)});
+        fields.push_back({lines[begin].begin, lines[end - 1].end, std::move(source), role});
         begin = end;
     }
-    const auto translate = [&](std::string_view source) -> TranslationResult {
+    const auto translate = [&](const Field &field) -> TranslationResult {
+        const std::string_view source = field.source;
         if (heading(source)) {
             const auto target = exact_literal_translation(source);
             return target ? TranslationResult::translated(source, *target, "recipe-heading")
                 : preserved_item_field(source, "recipe-heading");
+        }
+        // This lookup belongs to the native building, job and field role.
+        // Never put its result into the shared source-only recipe cache.
+        if (!field.role.empty() && !frame.workshop_recipe_scope.empty()) {
+            const auto target = exact_literal_translation(
+                "Workshop recipe: " + frame.workshop_recipe_scope + "/" +
+                std::string(field.role) + " " + lower(std::string(trim_view(source))));
+            if (target) return TranslationResult::translated(source, *target, "recipe-context");
         }
         if (const auto target = translate_workshop_recipe_source(source))
             return TranslationResult::translated(source, *target, "recipe");
@@ -345,7 +357,7 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
                     std::string(static_cast<size_t>(breaks), '\n'), "card-separator"), consumed);
                 consumed = field.begin;
             }
-            document.append(wrapped_result(translate(field.source), field), field.begin);
+            document.append(wrapped_result(translate(field), field), field.begin);
             consumed = field.end;
         }
     } catch (const dfcn::TranslationWorkLimit &) {
