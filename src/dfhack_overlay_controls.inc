@@ -210,17 +210,24 @@
                 const std::string_view heading = text.full;
                 std::optional<std::string> target;
                 std::vector<int> colors;
-                const auto append_color = [&](std::string_view translated, size_t source_at) {
-                    const int x = text.full_x + static_cast<int>(source_at);
-                    bool top = false;
-                    const auto *cell = cell_at(x, text.y, &top);
-                    if (x < text.x || x >= text.x + static_cast<int>(text.visible.size()) ||
-                            !cell || source_at >= text.full.size() ||
-                            cell[0] != static_cast<unsigned char>(text.full[source_at])) return false;
-                    const int color = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                const auto append_color = [&](std::string_view translated,
+                        size_t source_at, size_t source_end) {
+                    std::unordered_map<int, size_t> counts;
+                    int color = -1;
+                    size_t most = 0;
+                    for (size_t at = source_at; at < source_end; ++at) {
+                        const int x = text.full_x + static_cast<int>(at);
+                        if (x < text.x || x >= text.x + static_cast<int>(text.visible.size()) ||
+                                std::isspace(static_cast<unsigned char>(text.full[at]))) continue;
+                        bool top = false;
+                        const auto *cell = cell_at(x, text.y, &top);
+                        if (!cell || cell[0] != static_cast<unsigned char>(text.full[at])) continue;
+                        const int rgb = (cell[1] << 16) | (cell[2] << 8) | cell[3];
+                        if (++counts[rgb] > most) { most = counts[rgb]; color = rgb; }
+                    }
+                    // A clipped author must not discard a visible title's color.
                     for (unsigned char ch : translated)
                         if ((ch & 0xc0) != 0x80) colors.push_back(color);
-                    return true;
                 };
                 // codex-legends combines the work's title and DFHack's
                 // readable author name. Require both complete fields before
@@ -232,14 +239,25 @@
                         heading.substr(at + separator.size()));
                     if (title && author) {
                         target = *title + "  ——  " + *author;
-                        if (!append_color(*title, 0) ||
-                                !append_color("  ——  ", at + 2) ||
-                                !append_color(*author, at + separator.size())) colors.clear();
+                        append_color(*title, 0, at);
+                        append_color("  ——  ", at, at + separator.size());
+                        append_color(*author, at + separator.size(), heading.size());
                         break;
                     }
                 }
-                if (!target && heading.find(separator) == std::string_view::npos)
+                if (!target && heading.find(separator) == std::string_view::npos) {
                     target = translate_legends_book(heading);
+                    if (target) append_color(*target, 0, heading.size());
+                }
+                if (!colors.empty()) {
+                    bool top = false;
+                    const auto *cell = cell_at(text.x, text.y, &top);
+                    int fallback = cell ? (cell[1] << 16) | (cell[2] << 8) | cell[3] : 0xffffff;
+                    for (int &color : colors) {
+                        if (color >= 0) fallback = color;
+                        else color = fallback;
+                    }
+                }
                 if (target) emit(text.x, text.y, static_cast<int>(text.visible.size()),
                     *target, text.x + static_cast<int>(text.visible.size()), true, colors);
             } else if (text.role == NativeDfhackOverlayTextRole::ArtifactName) {

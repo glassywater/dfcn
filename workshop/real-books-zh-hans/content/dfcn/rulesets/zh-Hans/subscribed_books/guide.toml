@@ -6,7 +6,7 @@ base = "subscribed_books::guide"
 "{::subscribed_books::guide_history}" = "{::subscribed_books::guide_history}"
 "A Guide" = "旅行指南"
 "Its founding." = "建城沿革。"
-"Its land." = "当地风土。"
+"Its {land_heading}." = "当地{land_heading}。"
 "Its halls." = "当地建筑。"
 "What has happened there." = "当地往事。"
 "Where to stay, and whom to ask." = "住宿与求助。"
@@ -54,7 +54,7 @@ name = "clause"
 "{inn} keeps beds for travellers; {host} keeps the house and the ale" = "{inn} 为旅人提供床位，由 {host} 打理店务、供应麦酒"
 "{host} keeps {inn}, and will find a traveller a bed" = "{host} 经营着 {inn}，会为旅人安排床位"
 "For a wound or a fever, ask for {healer}" = "若是受伤或发烧，可以找 {healer} 求医"
-"For the roads around, {road_guide} knows them better than anyone, and will walk them for a fair price" = "说到周边的道路，没有人比 {road_guide} 更熟悉；只需付出合理的价钱，就能请其带路"
+"For the roads around, {road_guide} knows them better than anyone, and {guide_future} walk them for a fair price" = "说到周边的道路，没有人比 {road_guide} 更熟悉；只需付出合理的价钱，就{guide_future}请其带路"
 "{::subscribed_books::guide_vocabulary::landmark} near {site}, which the folk call {landmark_name}" = "{site} 附近有{::subscribed_books::guide_vocabulary::landmark}，当地人称之为 {landmark_name}"
 
 "Beasts have come against it before" = "此地曾遭野兽袭击"
@@ -78,6 +78,16 @@ name = "clause"
 "Do not stray from the road" = "请勿偏离道路"
 "The wild is close" = "荒野中的危险就在近旁"
 "Go armed" = "出行时请携带武器"
+
+[[rulesets]]
+name = "land_heading"
+[rulesets.rules]
+"land" = "风土"
+
+[[rulesets]]
+name = "guide_future"
+[rulesets.rules]
+"will" = "能"
 
 [[rulesets]]
 name = "year"

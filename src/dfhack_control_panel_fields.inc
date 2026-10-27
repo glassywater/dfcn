@@ -172,6 +172,7 @@
                 field.y < field.bounds.y || field.y >= field.bounds.y + field.bounds.h ||
                 field.full.empty()) continue;
         std::vector<NativeDfhackControlPanelText> group;
+        std::vector<const NativeDfhackControlPanelText *> painted_runs;
         for (size_t next = index; next < captured.size(); ++next) {
             const auto &other = captured[next];
             if (used[next] || other.parent_id != field.parent_id ||
@@ -184,6 +185,9 @@
                 : other.full_x != field.full_x || other.y != field.y || other.full != field.full)
                 continue;
             used[next] = true;
+            // One native token can survive as several disjoint visible runs.
+            // Coalesce its layout only; every surviving run still owns colors.
+            painted_runs.push_back(&other);
             const auto duplicate = std::find_if(group.begin(), group.end(), [&](const auto &line) {
                 return line.y == other.y && line.full_x == other.full_x &&
                     line.first_line == other.first_line && line.full == other.full;
@@ -276,7 +280,8 @@
         // supply colors, never text painted by an overlapping window.
         std::vector<int> source_colors(field.document.size(), -1);
         std::unordered_map<int, size_t> color_counts;
-        for (const auto &line : group) {
+        for (const auto *painted : painted_runs) {
+            const auto &line = *painted;
             if (line.document_offset == std::string::npos || line.visible_offset < 0) continue;
             for (size_t at = 0; at < line.visible.size(); ++at) {
                 const size_t origin = line.document_offset + line.visible_offset + at;
@@ -472,6 +477,54 @@
         }
         if (!ordered && translation.changed())
             translation = preserve_native_translation(field.document, "dfhack-control-document");
+        if (!field.extension_prose_key.empty() && color_counts.size() > 1 && translation.changed() &&
+                translation.origins.size() == translation.target.size()) {
+            // External name/title resolvers return one origin for a complete
+            // field. Recover a separately colored word only when its existing
+            // translation occurs uniquely inside that same semantic field.
+            // This also follows reordered names ("Union of ..." -> "...联盟").
+            std::vector<size_t> boundaries;
+            for (size_t origin : translation.origins)
+                if (origin < field.document.size() &&
+                        (boundaries.empty() || boundaries.back() != origin)) boundaries.push_back(origin);
+            boundaries.push_back(field.document.size());
+            std::sort(boundaries.begin(), boundaries.end());
+            boundaries.erase(std::unique(boundaries.begin(), boundaries.end()), boundaries.end());
+            for (size_t begin = 0; begin < source_colors.size();) {
+                const int color = source_colors[begin];
+                size_t end = begin + 1;
+                while (end < source_colors.size() && source_colors[end] == color) ++end;
+                const auto source = trim_view(std::string_view(field.document).substr(begin, end - begin));
+                begin = end;
+                if (color == base_color || source.empty() || source.size() > 1024) continue;
+                const size_t source_begin = static_cast<size_t>(source.data() - field.document.data());
+                const size_t source_end = source_begin + source.size();
+                // Do not reinterpret a color boundary through the middle of a word.
+                if ((source_begin && ascii_word_byte(static_cast<unsigned char>(source.front())) &&
+                        ascii_word_byte(static_cast<unsigned char>(field.document[source_begin - 1]))) ||
+                        (source_end < field.document.size() &&
+                         ascii_word_byte(static_cast<unsigned char>(source.back())) &&
+                         ascii_word_byte(static_cast<unsigned char>(field.document[source_end])))) continue;
+                const auto next = std::upper_bound(boundaries.begin(), boundaries.end(), source_begin);
+                if (next == boundaries.begin() || next == boundaries.end() || source_end > *next) continue;
+                const size_t origin = *std::prev(next);
+                if (origin == source_begin) continue; // Already represented by the grammar.
+                const auto target = translate_legends_book(source);
+                if (!target || target->empty()) continue;
+                size_t match = std::string::npos;
+                bool ambiguous = false;
+                for (size_t at = translation.target.find(*target); at != std::string::npos;
+                        at = translation.target.find(*target, at + target->size())) {
+                    if (!std::all_of(translation.origins.begin() + at,
+                            translation.origins.begin() + at + target->size(),
+                            [&](size_t value) { return value == origin; })) continue;
+                    if (match != std::string::npos) { ambiguous = true; break; }
+                    match = at;
+                }
+                if (match != std::string::npos && !ambiguous)
+                    std::fill_n(translation.origins.begin() + match, target->size(), source_begin);
+            }
+        }
         translation.kind = "dfhack-control-document";
         submit(std::move(rows), std::move(translation), field, viewport, source_colors);
     }
