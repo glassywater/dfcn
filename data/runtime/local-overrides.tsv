@@ -13013,3 +13013,84 @@ black-crested gibbon child	黑冠长臂猿幼崽	wi
 black-crested gibbon children	黑冠长臂猿幼崽	wi
 black-handed gibbon child	黑掌长臂猿幼崽	wi
 black-handed gibbon children	黑掌长臂猿幼崽	wi
+
+# gui/spectate.lua: settings captions are scoped to the Spectate window.
+DFHack GUI Title: Spectate	观战	l
+DFHack GUI Spectate settings: See help for option details:	选项详情见帮助：	l
+DFHack GUI Spectate settings: Spectate mode	观战模式	l
+DFHack GUI Spectate settings: Switch target (sec):	切换间隔（秒）：	l
+DFHack GUI Spectate settings: Auto unpause	自动解除暂停	l
+DFHack GUI Spectate settings: Cinematic action	冲突时快切	l
+DFHack GUI Spectate settings: Include animals	包含动物	l
+DFHack GUI Spectate settings: Include hostiles	包含敌对生物	l
+DFHack GUI Spectate settings: Include visitors	包含访客	l
+DFHack GUI Spectate settings: Include wildlife	包含野生动物	l
+DFHack GUI Spectate settings: Prefer conflict	优先冲突	l
+DFHack GUI Spectate settings: Prefer new arrivals	优先新来者	l
+DFHack GUI Spectate settings: Prefer nicknamed	优先有昵称者	l
+DFHack GUI Spectate settings: Tooltips:	信息提示：	l
+DFHack GUI Spectate settings: Overlay	浮层	l
+DFHack GUI Spectate settings: Follow	跟随	l
+DFHack GUI Spectate settings: Hover	悬停	l
+DFHack GUI Spectate settings: Enabled	启用	l
+DFHack GUI Spectate settings: Blink period (ms):	闪烁间隔（毫秒）：	l
+DFHack GUI Spectate settings: Hold to show:	按住显示：	l
+DFHack GUI Spectate settings: None	无	l
+DFHack GUI Spectate settings: Job	工作	l
+DFHack GUI Spectate settings: Activity	活动	l
+DFHack GUI Spectate settings: Name	名称	l
+DFHack GUI Spectate settings: Stress	压力	l
+DFHack GUI Spectate settings: Miserable	痛苦不堪	l
+DFHack GUI Spectate settings: Unhappy	不快乐	l
+DFHack GUI Spectate settings: Displeased	不满	l
+DFHack GUI Spectate settings: Content	满足	l
+DFHack GUI Spectate settings: Pleased	愉悦	l
+DFHack GUI Spectate settings: Happy	快乐	l
+DFHack GUI Spectate settings: Ecstatic	欣喜若狂	l
+
+# gui/autochop.lua: normal/minimal windows and burrow settings captions.
+DFHack GUI Title: Autochop	自动伐木	l
+DFHack GUI Autochop settings: Autochop is	自动伐木	l
+DFHack GUI Autochop settings: Enabled	已启用	l
+DFHack GUI Autochop settings: Disabled	已停用	l
+DFHack GUI Autochop settings: Target number of logs:	原木目标数量：	l
+DFHack GUI Autochop settings: Burrow	活动区	l
+DFHack GUI Autochop settings: Chop	采伐	l
+DFHack GUI Autochop settings: Clear	清空	l
+DFHack GUI Autochop settings: Trees	树木	l
+DFHack GUI Autochop settings: Marked	已标记	l
+DFHack GUI Autochop settings: Prot	保护	l
+DFHack GUI Autochop settings: Will chop in burrows tagged with "Chop"	将在标有“采伐”的活动区中伐木	l
+DFHack GUI Autochop settings: Will chop any accessible trees on the map	可采伐地图上任何可到达的树木	l
+DFHack GUI Autochop settings: Hide burrows with no trees:	隐藏无树木的活动区：	l
+DFHack GUI Autochop settings: Hide burrows with no chop/clear order set:	隐藏未设置采伐或清空的活动区：	l
+DFHack GUI Autochop settings: Designate trees for chopping now	立即标记待伐树木	l
+DFHack GUI Autochop settings: Undesignate all trees now	立即取消所有伐木标记	l
+DFHack GUI Autochop settings: Usable logs in stock:	库存可用原木：	l
+DFHack GUI Autochop settings: Approx. logs left in accessible trees:	可到达树木的预计原木量：	l
+DFHack GUI Autochop settings: Total trees designated:	已标记树木总数：	l
+DFHack GUI Autochop settings: Approx. logs from designated trees:	已标记树木的预计原木量：	l
+DFHack GUI Autochop settings: Total trees harvested:	累计采伐树木：	l
+DFHack GUI Autochop settings: Burrow:	活动区：	l
+DFHack GUI Autochop settings: Allow autochop to chop trees in this burrow	允许自动采伐此活动区的树木	l
+DFHack GUI Autochop settings: Cut down all trees in this burrow	砍光此活动区的全部树木	l
+DFHack GUI Autochop settings: Protect trees that produce brewable items	保护出产酿酒原料的树木	l
+DFHack GUI Autochop settings: Protect trees that produce edible items	保护出产可食用物品的树木	l
+DFHack GUI Autochop settings: Protect trees that produce cookable items	保护出产烹饪原料的树木	l
+DFHack GUI Autochop settings: Apply	应用	l
+DFHack GUI Autochop settings: On	开启	l
+DFHack GUI Autochop settings: Off	关闭	l
+
+# gui/autofish.lua: fixed settings window and its count/status producers.
+DFHack GUI Title: Autofish	自动捕鱼	l
+DFHack GUI Autofish settings: Autofish is	自动捕鱼	l
+DFHack GUI Autofish settings: Enabled	已启用	l
+DFHack GUI Autofish settings: Disabled	已停用	l
+DFHack GUI Autofish settings: Maximum fish target:	鱼数上限：	l
+DFHack GUI Autofish settings: Counting raw fish:	计入生鱼：	l
+DFHack GUI Autofish settings: Yes	是	l
+DFHack GUI Autofish settings: No	否	l
+DFHack GUI Autofish settings: Fish: {d} ({d} prepared, {d} raw)	鱼数：{d1}（已处理{d2}，生鱼{d3}）	l
+DFHack GUI Autofish settings: Currently fishing.	当前捕鱼。	l
+DFHack GUI Autofish settings: Currently not fishing.	当前暂停捕鱼。	l
+DFHack GUI Autofish settings: not	暂停	l

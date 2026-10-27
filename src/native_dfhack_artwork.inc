@@ -80,6 +80,15 @@ static std::optional<std::string> lookup_native_dfhack_animal_assignment_text(
     const graphicst *gps, int x, int y, std::string_view visible);
 static std::optional<std::string> lookup_native_dfhack_trade_goods_text(
     const graphicst *gps, int x, int y, std::string_view visible);
+static std::optional<std::string> lookup_native_dfhack_autotraining_unit_text(
+    const graphicst *gps, int x, int y, std::string_view visible);
+struct NativeDfhackAutotrainingSquadText {
+    int32_t squad_id = -1;
+    NativeHistoryName generated_name;
+    std::string generated_source;
+};
+static std::optional<NativeDfhackAutotrainingSquadText> lookup_native_dfhack_autotraining_squad_text(
+    const graphicst *gps, int x, int y, std::string_view visible);
 static bool install_native_dfhack_messagebox_hook();
 static bool install_native_dfhack_prompt_hook();
 static bool install_native_dfhack_stonesense_hook();

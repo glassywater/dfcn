@@ -1,6 +1,6 @@
 // gui/autotraining.lua uses fixed widget offsets within an inset Window.
-// The List icons, names/aliases, numeric EditField and filter stay native;
-// the noble List alone contains human captions derived from position codes.
+// Keep authored squad aliases, List icons, numeric EditField and filter native.
+// Noble captions use position codes; unit choices use complete readable names.
 {
     constexpr std::string_view title = "Training Setup";
     constexpr std::string_view squads = "Select squads for automatic training:";
@@ -77,6 +77,37 @@
         // Scope exact entries to this field, then use the complete profession
         // grammar. Never apply either path to the neighboring named Lists.
         const int caption_left = left + 2, caption_right = right - 2;
+        // getSquads() draws its generated name followed by an optional raw
+        // " (alias)" suffix. The captured choice ID and actual squad record
+        // prove the split; English spelling never selects this path.
+        for (int y = top + 1; y < top + 6 && y < bottom - 1; ++y) {
+            const auto band = std::string_view(dfhack_context_rows[y]).substr(
+                caption_left, caption_right - caption_left);
+            const auto visible = trim_view(band);
+            if (visible.empty() || visible.data() != band.data()) continue;
+            const auto squad = lookup_native_dfhack_autotraining_squad_text(
+                gps_, caption_left, y, visible);
+            if (!squad || squad->generated_source.empty()) continue;
+            const auto target = translate_history_name(squad->generated_name);
+            if (!target || !contains_cjk_utf8(*target)) continue;
+            const size_t length = std::min(squad->generated_source.size(), visible.size());
+            const auto source = visible.substr(0, length);
+            if (!std::string_view(squad->generated_source).starts_with(source) ||
+                    read_row(y).compare(caption_left, length, source) != 0 ||
+                    (only_y >= 0 && only_y != y)) continue;
+            const int end = caption_left + static_cast<int>(length);
+            Match match{caption_left, y, static_cast<int>(length), kDfhackHotkeysHintRule,
+                *target, std::string(source)};
+            match.layout_x = caption_left;
+            match.layout_length = static_cast<int>(length);
+            match.layout_left = true;
+            match.layout_clip_right = end;
+            match.layout_native_clip = auxiliary_pixels({caption_left, y, static_cast<int>(length), 1});
+            match.layout_prepared = true;
+            // The alias and its parentheses remain native cells outside the
+            // match and clip, so display-language conversion never sees them.
+            dfhack_auxiliary_matches.push_back(std::move(match));
+        }
         for (int y = top + 12; y < top + 23 && y < bottom - 1; ++y) {
             if (dfhack_context_rows[y][caption_right - 1] != ' ') continue;
             const auto caption = trim_view(std::string_view(dfhack_context_rows[y]).substr(
@@ -88,9 +119,34 @@
             if (target) training_field(caption_left, y, caption, *target, caption_right);
         }
         // FilteredList begins at top+25 with its untouched edit row, and the
-        // empty-list Label at offset two. No person choice is translated.
+        // list at offset two. Capture its full readable name before the right
+        // edge/scrollbar clips a surname gloss or profession.
         if (top + 27 < bottom - 1 && dfhack_context_rows[top + 27].compare(
                 caption_left, 10, "No matches") == 0)
             gui_literal(caption_left, top + 27, "No matches", caption_right, "List status");
+        if (!same(top + 24, units) || !divider(top + 23)) continue;
+        for (int y = top + 27; y < bottom - 1; ++y) {
+            const auto band = std::string_view(dfhack_context_rows[y]).substr(
+                caption_left, caption_right - caption_left);
+            const auto visible = trim_view(band);
+            if (visible.empty() || visible == "No matches") continue;
+            const int x = caption_left + static_cast<int>(visible.data() - band.data());
+            const auto captured = lookup_native_dfhack_autotraining_unit_text(gps_, x, y, visible);
+            if (!captured && band.back() != ' ') continue;
+            const auto target = translate_dfhack_readable_unit_name(
+                captured.value_or(std::string(visible)));
+            if (!target || !contains_cjk_utf8(*target) ||
+                    read_row(y).compare(x, visible.size(), visible) != 0 ||
+                    (only_y >= 0 && only_y != y)) continue;
+            Match match{x, y, static_cast<int>(visible.size()), kDfhackHotkeysHintRule,
+                *target, std::string(visible)};
+            match.layout_x = x;
+            match.layout_length = caption_right - x;
+            match.layout_left = true;
+            match.layout_clip_right = caption_right;
+            match.layout_native_clip = auxiliary_pixels({x, y, caption_right - x, 1});
+            match.layout_prepared = true;
+            dfhack_auxiliary_matches.push_back(std::move(match));
+        }
     }
 }

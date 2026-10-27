@@ -19,12 +19,14 @@ struct NativeDfhackSitemapLuaApi {
     std::string label_source, cycle_source, overlay_source, asyncexport_source, prioritize_source;
     std::string filterselection_source, planner_source, mechanisms_source, itemselection_source;
     std::string wrapped_source, control_panel_source, movegoods_source, spectate_source;
+    std::string autotraining_source;
 };
 static NativeDfhackSitemapLuaApi g_native_dfhack_sitemap_lua_api;
 static std::atomic_bool g_native_dfhack_sitemap_lua_bound{false};
 
 enum class NativeDfhackChoiceTextOwner : unsigned char {
-    Sitemap, Notification, AnimalAssignment, OverlayLabel, TradeGoods
+    Sitemap, Notification, AnimalAssignment, OverlayLabel, TradeGoods, AutotrainingUnit,
+    AutotrainingSquad
 };
 
 struct NativeDfhackSitemapText {
@@ -36,6 +38,7 @@ struct NativeDfhackSitemapText {
     std::string notification_name;
     std::string full, visible;
     NativeDfhackOverlayText overlay;
+    std::optional<NativeDfhackAutotrainingSquadText> squad;
 };
 static std::mutex g_native_dfhack_sitemap_text_mutex;
 static std::vector<NativeDfhackSitemapText> g_native_dfhack_sitemap_text;
@@ -177,6 +180,19 @@ static uint64_t native_dfhack_text_capture_key(const graphicst *gps) {
         scalar(capture.x); scalar(capture.y); scalar(capture.top_layer);
         scalar(static_cast<unsigned char>(capture.owner));
         string(capture.notification_name); string(capture.full); string(capture.visible);
+        scalar(capture.squad.has_value());
+        if (capture.squad) {
+            const auto &squad = *capture.squad;
+            const auto &name = squad.generated_name;
+            scalar(squad.squad_id); string(squad.generated_source);
+            string(name.first_name); string(name.nickname);
+            scalar(name.language); scalar(name.nickname_mode);
+            scalar(name.type); scalar(name.has_name);
+            for (const auto &word : name.words) {
+                string(word.id); string(word.english_form);
+                scalar(word.part_of_speech); scalar(word.has_form);
+            }
+        }
         const auto &text = capture.overlay;
         scalar(text.x); scalar(text.y); scalar(text.full_x); scalar(text.visible_offset);
         string(text.full); string(text.visible);
@@ -210,7 +226,8 @@ static uint64_t native_dfhack_text_capture_key(const graphicst *gps) {
 
 static std::optional<std::string> lookup_native_dfhack_choice_text(
         const graphicst *gps, int x, int y, std::string_view visible,
-        NativeDfhackChoiceTextOwner owner) {
+        NativeDfhackChoiceTextOwner owner,
+        NativeDfhackAutotrainingSquadText *squad_result = nullptr) {
     if (!native_dfhack_logo_grid_valid(gps) || x < 0 || y < 0 ||
             y >= gps->dimy || visible.empty() ||
             visible.size() > static_cast<size_t>(gps->dimx) ||
@@ -224,7 +241,9 @@ static std::optional<std::string> lookup_native_dfhack_choice_text(
     if (page_revision != access.revision()) return std::nullopt;
     const bool scrollbar_clipped = owner == NativeDfhackChoiceTextOwner::Notification ||
         owner == NativeDfhackChoiceTextOwner::AnimalAssignment ||
-        owner == NativeDfhackChoiceTextOwner::TradeGoods;
+        owner == NativeDfhackChoiceTextOwner::TradeGoods ||
+        owner == NativeDfhackChoiceTextOwner::AutotrainingUnit ||
+        owner == NativeDfhackChoiceTextOwner::AutotrainingSquad;
     for (auto it = access.sitemap().rbegin();
             it != access.sitemap().rend(); ++it) {
         const auto &text = *it;
@@ -254,7 +273,13 @@ static std::optional<std::string> lookup_native_dfhack_choice_text(
                 break;
             }
         }
-        if (current) return text.full;
+        if (current) {
+            if (squad_result) {
+                if (!text.squad) continue;
+                *squad_result = *text.squad;
+            }
+            return text.full;
+        }
     }
     return std::nullopt;
 }
@@ -463,6 +488,20 @@ static std::optional<std::string> lookup_native_dfhack_trade_goods_text(
         const graphicst *gps, int x, int y, std::string_view visible) {
     return lookup_native_dfhack_choice_text(gps, x, y, visible,
         NativeDfhackChoiceTextOwner::TradeGoods);
+}
+
+static std::optional<std::string> lookup_native_dfhack_autotraining_unit_text(
+        const graphicst *gps, int x, int y, std::string_view visible) {
+    return lookup_native_dfhack_choice_text(gps, x, y, visible,
+        NativeDfhackChoiceTextOwner::AutotrainingUnit);
+}
+
+static std::optional<NativeDfhackAutotrainingSquadText> lookup_native_dfhack_autotraining_squad_text(
+        const graphicst *gps, int x, int y, std::string_view visible) {
+    NativeDfhackAutotrainingSquadText result;
+    if (!lookup_native_dfhack_choice_text(gps, x, y, visible,
+            NativeDfhackChoiceTextOwner::AutotrainingSquad, &result)) return std::nullopt;
+    return result;
 }
 
 struct alignas(8) NativeDfhackSitemapContext {
@@ -1180,6 +1219,11 @@ static std::optional<NativeDfhackChoiceTextOwner> native_dfhack_filtered_list_ow
             owner = NativeDfhackChoiceTextOwner::TradeGoods;
             window_title = "Move goods to/from depot";
             focus_path = "caravan/movegoods";
+        } else if (key == api.autotraining_source && producer.linedefined == 83 &&
+                producer.lastlinedefined == 87) {
+            owner = NativeDfhackChoiceTextOwner::AutotrainingUnit;
+            window_title = "Training Setup";
+            focus_path = "autotrain";
         } else return std::nullopt;
         stack.settop(state, curried);
         if (!api.getupvalue(state, curried, 3) || stack.type(state, -1) != 5)
@@ -1206,6 +1250,19 @@ static std::optional<NativeDfhackChoiceTextOwner> native_dfhack_filtered_list_ow
     if (!native_dfhack_sitemap_raw_field(state, list, "parent_view") ||
             stack.type(state, -1) != 5) return std::nullopt;
     const int filtered = stack.gettop(state);
+    if (owner == NativeDfhackChoiceTextOwner::AutotrainingUnit) {
+        // Only getUnits() supplies this list. Squad aliases and the separate
+        // noble-position list never acquire a readable-unit text source.
+        if (!native_dfhack_sitemap_raw_field(state, filtered, "view_id") ||
+                native_dfhack_overlay_lua_string(state, -1) !=
+                    std::optional<std::string>("unit_list") ||
+                !native_dfhack_overlay_local(state, frame, "obj") ||
+                stack.type(state, -1) != 5 ||
+                !native_dfhack_sitemap_raw_field(state, -1, "text") ||
+                native_dfhack_overlay_lua_string(state, -1) !=
+                    std::optional<std::string>(std::string(painted_full))) return std::nullopt;
+        stack.settop(state, filtered);
+    }
     bool window = false, screen = false;
     int parent = filtered;
     for (int depth = 0; depth < 8; ++depth) {
@@ -1231,6 +1288,8 @@ static std::optional<NativeDfhackChoiceTextOwner> native_dfhack_filtered_list_ow
     }
     return std::nullopt;
 }
+
+#include "native_dfhack_autotraining_squad_capture.inc"
 
 static bool native_dfhack_notification_list_owner(NativeDfhackLuaState *state,
         const NativeDfhackLuaDebug &frame, std::string &notification_name) {
@@ -1370,6 +1429,7 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
         NativeDfhackChoiceTextOwner owner = NativeDfhackChoiceTextOwner::Sitemap;
         if (owned) owner = NativeDfhackChoiceTextOwner::OverlayLabel;
         std::string notification_name;
+        std::optional<NativeDfhackAutotrainingSquadText> squad;
         // List rows still require their original authored submit provenance.
         // Actual Labels use their own onRenderBody/render_text source above;
         // helper windows need no inferred caption or copied callback owner.
@@ -1387,6 +1447,15 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
                 owner = *filtered_owner;
             }
             stack.settop(state, top);
+            if (!owned && profiled_list) {
+                squad = native_dfhack_autotraining_squad_text(state, list,
+                    std::string_view(full, full_length));
+                if (squad) {
+                    owned = true;
+                    owner = NativeDfhackChoiceTextOwner::AutotrainingSquad;
+                }
+                stack.settop(state, top);
+            }
             if (!owned) {
                 owned = native_dfhack_notification_list_owner(state, list, notification_name);
                 if (owned) owner = NativeDfhackChoiceTextOwner::Notification;
@@ -1416,6 +1485,7 @@ static void capture_native_dfhack_sitemap_text(NativeDfhackLuaState *state) noex
         text.notification_name = std::move(notification_name);
         text.full.assign(full, full_length);
         text.visible.assign(visible, visible_length);
+        text.squad = std::move(squad);
         if (overlay) {
             overlay->x = text.x;
             overlay->y = text.y;
@@ -1571,6 +1641,7 @@ static bool bind_native_dfhack_sitemap_lua(HMODULE module) {
     api.mechanisms_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"mechanisms.lua");
     api.itemselection_source = key(hack / L"lua" / L"plugins" / L"buildingplan" / L"itemselection.lua");
     api.spectate_source = key(hack / L"lua" / L"plugins" / L"spectate.lua");
+    api.autotraining_source = key(hack / L"scripts" / L"gui" / L"autotraining.lua");
     g_native_dfhack_sitemap_lua_api = std::move(api);
     g_native_dfhack_sitemap_lua_bound.store(true, std::memory_order_release);
     return true;
