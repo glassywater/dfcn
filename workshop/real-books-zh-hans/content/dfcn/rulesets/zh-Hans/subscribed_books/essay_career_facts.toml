@@ -20,6 +20,8 @@ name = "sentence"
 "{actor} took up the work of {::subscribed_books::essay_career_vocabulary::profession_article}." = "{actor}开始担任{::subscribed_books::essay_career_vocabulary::profession_article}。"
 "{actor} gave up the life of {::subscribed_books::essay_career_vocabulary::profession_article} and became {::subscribed_books::essay_career_vocabulary::profession_article_to}." = "{actor}放弃了{::subscribed_books::essay_career_vocabulary::profession_article}的生活，转而成为{::subscribed_books::essay_career_vocabulary::profession_article_to}。"
 "{actor} had been {::subscribed_books::essay_career_vocabulary::profession_article} since {year}, and in {year_to} became {::subscribed_books::essay_career_vocabulary::profession_article_to}." = "{actor}自{year}年起便担任{::subscribed_books::essay_career_vocabulary::profession_article}，并在{year_to}年转而成为{::subscribed_books::essay_career_vocabulary::profession_article_to}。"
+# 原生任职记录由 life.deeds 去掉日期后，复用职业事实的相对年份入口。
+"{actor} became the {::positions::singular} of {::subscribed_books::vocabulary::entity}." = "{actor}成为{::subscribed_books::vocabulary::entity}的{::positions::singular}。"
 
 "{@bt_place|::subscribed_books::vocabulary::place} is {::subscribed_books::guide_vocabulary::kind}, held by {@bt_entity|::subscribed_books::vocabulary::entity}." = "{@bt_place|::subscribed_books::vocabulary::place}是{::subscribed_books::guide_vocabulary::kind}，由{@bt_entity|::subscribed_books::vocabulary::entity}掌控。"
 "{@bt_place|::subscribed_books::vocabulary::place} is {::subscribed_books::guide_vocabulary::kind}." = "{@bt_place|::subscribed_books::vocabulary::place}是{::subscribed_books::guide_vocabulary::kind}。"

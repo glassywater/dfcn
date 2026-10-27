@@ -20,6 +20,9 @@ name = "record"
 "{actor} was no longer imprisoned by {captor}." = "{actor}不再被{captor}囚禁。"
 "{actor} was no longer imprisoned by {captor} {location}." = "{actor}{location}不再被{captor}囚禁。"
 "{actor} settled in {place}." = "{actor}在{place}安顿下来。"
+# life.deeds 也会讲述作者的身份变化；引号内为化名，无引号时为冒用他人身份。
+"{actor} assumed the identity \"{alias}\"." = "{actor}化名为“{alias}”。"
+"{actor} assumed the identity {impersonated}." = "{actor}冒用了{impersonated}的身份。"
 "{slayer} came to {place}, and killed {victim}." = "{slayer}来到{place}，杀死了{victim}。"
 "{arrival} came to {place}, and {slayer} killed {victim}." = "{arrival}来到{place}，{slayer}杀死了{victim}。"
 "{arrival} came to {place}, and {victim} died there." = "{arrival}来到{place}，{victim}死在了那里。"
@@ -42,6 +45,16 @@ name = "captor"
 [rulesets.rules]
 "{actor}" = "{actor}"
 "{::subscribed_books::guide::owner}" = "{::subscribed_books::guide::owner}"
+
+[[rulesets]]
+name = "alias"
+[rulesets.rules]
+"{::text::name}" = "{::text::name}"
+
+[[rulesets]]
+name = "impersonated"
+[rulesets.rules]
+"{actor}" = "{actor}"
 
 [[rulesets]]
 name = "place"

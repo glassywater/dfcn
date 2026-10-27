@@ -1,0 +1,42 @@
+# forms/essay/subjects/value.lua：价值观论文的 rejection 立场。
+# 主题和价值词使用有限词池；整段与独立句兼容正文按句去重。
+base = "subscribed_books::essay_value"
+
+[[rulesets]]
+[rulesets.rules]
+"This essay concerns {subject}, and I mean to argue against it. \"{saying}\" I have come to believe it, and I will say why." = "这篇论文讨论{subject}，而我要提出反对意见。“{saying}”我已相信这句话，也会说明缘由。"
+"This essay concerns {subject}, and I mean to argue against it." = "这篇论文讨论{subject}，而我要提出反对意见。"
+"I have come to believe it, and I will say why." = "我已相信这句话，也会说明缘由。"
+"I write about {subject} because too many treat {value_word} as a virtue. It is not, or not the one they think." = "我探讨{subject}，是因为太多人把{value_word}视为美德。它并非美德，至少并非他们以为的那种美德。"
+"I write about {subject} because too many treat {value_word} as a virtue." = "我探讨{subject}，是因为太多人把{value_word}视为美德。"
+"It is not, or not the one they think." = "它并非美德，至少并非他们以为的那种美德。"
+
+"Look at what {value_word} costs the people who hold to it." = "看看那些坚守{value_word}的人为此付出了什么代价。"
+"My own life taught me this; no one argued me into it." = "这是我亲身经历得来的教训，并非别人说服了我。"
+"What is praised is not always what is good." = "受人赞颂的，未必就是好的。"
+"Some virtues are only habits that have never been questioned." = "有些美德，不过是从未受到质疑的习惯。"
+
+"I know the saying: \"{saying}\"" = "我知道这句话：“{saying}”"
+"I know the saying:" = "我知道这句话："
+"It is said often. That is not the same as being true." = "这话常有人说，但常有人说，并不代表它就是真的。"
+"It is said often." = "这话常有人说。"
+"That is not the same as being true." = "但这并不代表它就是真的。"
+
+"I return to {subject}, and I have not changed my mind. Let others praise {value_word}; I have seen what it does." = "回到{subject}，我的看法并未改变。任别人赞美{value_word}吧；我见过它带来的后果。"
+"I return to {subject}, and I have not changed my mind." = "回到{subject}，我的看法并未改变。"
+"Let others praise {value_word}; I have seen what it does." = "任别人赞美{value_word}吧；我见过它带来的后果。"
+
+[[rulesets]]
+name = "subject"
+[rulesets.rules]
+"the worth of {value_word}" = "{value_word}的价值"
+
+[[rulesets]]
+name = "value_word"
+[rulesets.rules]
+"{::subscribed_books::essay::value}" = "{::subscribed_books::essay::value}"
+
+[[rulesets]]
+name = "saying"
+[rulesets.rules]
+"{::subscribed_books::essay_value_sayings}" = "{::subscribed_books::essay_value_sayings}"
