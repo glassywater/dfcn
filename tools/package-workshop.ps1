@@ -212,6 +212,31 @@ function Write-MapPreviewArchive {
     Write-Host ('Independent map-preview mod package: ' + $archive) -ForegroundColor Green
 }
 
+function Write-RidingArchive {
+    $directory = Resolve-PackageDirectory (Join-Path $workshopRoot 'riding')
+    $ridingContent = Resolve-PackageDirectory (Join-Path $directory 'content')
+    $manifestPath = Join-Path $ridingContent 'dfcn-riding.toml'
+    if (-not [IO.File]::Exists($manifestPath)) {
+        throw ('Riding mod manifest is missing: ' + $manifestPath)
+    }
+    $infoPath = Join-Path $ridingContent 'info.txt'
+    $identities = [regex]::Matches([IO.File]::ReadAllText($infoPath),
+        '(?m)^\s*\[ID:([A-Za-z0-9_-]+)\]\s*$')
+    if ($identities.Count -ne 1 -or $identities[0].Groups[1].Value -ne 'dfcn-riding') {
+        throw ('Riding mod must have the independent mod ID: ' + $infoPath)
+    }
+    $identity = $identities[0].Groups[1].Value
+    $libraryDirectory = Resolve-PackageDirectory (Join-Path $ridingContent 'dfcn')
+    [void][IO.Directory]::CreateDirectory($libraryDirectory)
+    $source = Join-Path $projectRoot 'dfcn_riding.dll'
+    $destination = Join-Path $libraryDirectory 'dfcn_riding.dll'
+    Write-StrippedWindowsLibrary $source $destination
+    Copy-Item -LiteralPath (Join-Path $projectRoot 'LICENSE') -Destination (Join-Path $ridingContent 'LICENSE') -Force
+    $archive = Join-Path $directory 'dfcn-riding.zip'
+    Write-PackageArchive $ridingContent $archive ($identity + '/')
+    Write-Host ('Independent riding mod package: ' + $archive) -ForegroundColor Green
+}
+
 try {
     & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'package-windows.ps1')
     if ($LASTEXITCODE -ne 0) { throw ('Windows packaging failed with exit code ' + $LASTEXITCODE) }
@@ -238,6 +263,7 @@ try {
     Install-PackageDirectory 'content'
     Write-MouseCoordinatesArchive
     Write-MapPreviewArchive
+    Write-RidingArchive
     # Extensions remain separate from the base Workshop payload. Private data
     # packages are never selected for these public release archives.
     if (-not $BaseOnly) {

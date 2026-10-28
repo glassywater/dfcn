@@ -1070,12 +1070,8 @@ def main() -> int:
             if rebuild_mouse:
                 publish_ready(mouse_candidate, mouse_mod)
         if riding_mod:
-            for directory in edition_destinations():
-                directory.mkdir(parents=True, exist_ok=True)
-                destination = directory / riding_mod.name
-                staging.append(destination.with_name(destination.name + ".publish"))
-                publish_ready(riding_candidate if rebuild_riding else riding_mod,
-                              destination, keep_candidate=True)
+            # Keep the build artifact for its independent Workshop package.
+            # Translation deployment must not install the optional riding mod.
             if rebuild_riding:
                 publish_ready(riding_candidate, riding_mod)
         if preview_mod:

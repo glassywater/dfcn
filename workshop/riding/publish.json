@@ -1,0 +1,17 @@
+{
+  "appid": 975370,
+  "title": "DFCN · 骑兵 / Fortress Cavalry",
+  "description_file": "workshop/riding/description.bbcode.txt",
+  "content_folder": "workshop/riding/content",
+  "preview_file": "workshop/riding/preview.jpg",
+  "tags": [
+    "mod"
+  ],
+  "visibility": 0,
+  "required_items": [
+    3811193379
+  ],
+  "release_tag": "v53.16-20261028.2",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028.2",
+  "changelog": "DFCN 骑兵 1.0\n\n首次发布。为要塞矮人分配坐骑，支持日常工作、搬运和本地图军务骑乘；提供坐骑跟随、骑术成长、共同负重及飞行坐骑寻路。骑手与坐骑同时显示，保留原生装备和大型动物贴图，并消除仅有骑乘组合时的轮换空白。"
+}

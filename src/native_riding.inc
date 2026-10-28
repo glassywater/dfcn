@@ -2,6 +2,9 @@
 // Riding decisions, assignments and persistence belong to the separate DLL.
 static void *g_riding_module = nullptr;
 static const DfcnRidingApi *g_riding_api = nullptr;
+static fs::path g_riding_module_path;
+static uint64_t g_riding_subscription_poll = 0;
+static bool g_riding_subscribed = false;
 static NativeEntryHook g_riding_action_hook;
 static NativeEntryHook g_riding_draw_hook;
 static NativeEntryHook g_riding_reach_hook;
@@ -18,7 +21,7 @@ struct NativeRidingCommand {
 };
 static std::optional<NativeRidingCommand> g_riding_command;
 
-static bool native_riding_available() { return g_riding_api != nullptr; }
+static bool native_riding_available() { return g_riding_api && g_riding_subscribed; }
 static const DfcnRidingMenu &native_riding_menu_snapshot() { return g_riding_menu; }
 static bool native_riding_read(uintptr_t address, void *output, uint32_t size) {
     return output && size && native_history_copy_bytes(address, output, size);
@@ -44,11 +47,16 @@ static void native_riding_load() {
 #ifdef _WIN32
     TranslationStateScope translation;
     if (g_riding_module) return;
-    const auto filename = runtime::utf8(runtime::path("dfcn_riding.dll"));
-    void *module = SDL_LoadObject(filename.c_str());
-    if (!module) { native_riding_log(SDL_GetError()); return; }
-    const auto get_api = reinterpret_cast<DfcnGetRidingApi>(SDL_LoadFunction(module,"dfcn_riding_api"));
-    const auto *api = get_api ? get_api(DFCN_RIDING_ABI) : nullptr;
+    std::vector<fs::path> candidates;
+    try {
+        candidates = extensions::discover_riding_modules();
+    } catch (const std::exception &error) {
+        native_riding_log(error.what());
+        return;
+    } catch (...) {
+        native_riding_log("Workshop discovery failed");
+        return;
+    }
     const auto base = native_history_profile_base();
     const DfcnRidingHost host{DFCN_RIDING_ABI,sizeof(DfcnRidingHost),base,
         native_reference_address(base,native_history_layout::world_rva),
@@ -57,17 +65,52 @@ static void native_riding_load() {
         native_reference_address(base,native_history_layout::gametype_rva),
         native_riding_read,native_riding_name,native_riding_log};
     const auto storage = runtime::utf8(runtime::path("riding"));
-    if (!api || api->abi != DFCN_RIDING_ABI || api->size != sizeof(*api) ||
-            !api->initialize || !api->action_entry || !api->draw_entry || !api->draw || !api->prepare_tile ||
-            !api->hook_state || !api->frame ||
-            !api->filter || !api->finish || !api->open_menu || !api->menu || !api->command ||
-            !api->shutdown || !api->load_penalty || !api->reach_entry || !api->flight_reachable ||
-            !api->initialize(&host,storage.c_str())) {
-        SDL_UnloadObject(module);
-        native_riding_log("incompatible module API or initialization failed");
+    for (const auto &candidate : candidates) {
+        const auto filename = runtime::utf8(candidate);
+        void *module = SDL_LoadObject(filename.c_str());
+        if (!module) { native_riding_log(SDL_GetError()); continue; }
+        const auto get_api = reinterpret_cast<DfcnGetRidingApi>(SDL_LoadFunction(module,"dfcn_riding_api"));
+        const auto *api = get_api ? get_api(DFCN_RIDING_ABI) : nullptr;
+        if (!api || api->abi != DFCN_RIDING_ABI || api->size != sizeof(*api) ||
+                !api->initialize || !api->action_entry || !api->draw_entry || !api->draw || !api->prepare_tile ||
+                !api->hook_state || !api->frame ||
+                !api->filter || !api->finish || !api->open_menu || !api->menu || !api->command ||
+                !api->shutdown || !api->load_penalty || !api->reach_entry || !api->flight_reachable ||
+                !api->initialize(&host,storage.c_str())) {
+            SDL_UnloadObject(module);
+            native_riding_log("incompatible module API or initialization failed");
+            continue;
+        }
+        g_riding_module = module; g_riding_api = api;
+        g_riding_module_path = candidate;
+        g_riding_subscribed = true;
+        g_riding_subscription_poll = SDL_GetTicks64();
         return;
     }
-    g_riding_module = module; g_riding_api = api;
+#endif
+}
+static void native_riding_refresh_subscription() {
+#ifdef _WIN32
+    if (!g_riding_api) return;
+    const auto now = SDL_GetTicks64();
+    if (now - g_riding_subscription_poll < 1000) return;
+    g_riding_subscription_poll = now;
+    std::vector<fs::path> candidates;
+    try { candidates = extensions::discover_riding_modules(); }
+    catch (...) {}
+    const bool subscribed = std::find(candidates.begin(), candidates.end(),
+        g_riding_module_path) != candidates.end();
+    if (subscribed == g_riding_subscribed) return;
+    g_riding_subscribed = subscribed;
+    // Leave installed trampolines and their DLL alive until the normal core
+    // shutdown boundary. Unsubscribed callbacks immediately use native behavior.
+    if (!subscribed) {
+        g_riding_menu = {}; g_riding_command.reset(); g_riding_open_pending = false;
+        g_native_settings_menu.riding = false;
+    }
+    g_native_settings_menu.hovered = -1;
+    g_native_settings_menu.hits_ready = false;
+    g_native_settings_menu_layer.ready = false;
 #endif
 }
 static void capture_native_riding_action(void *unit, void *action, void *context) {
@@ -79,7 +122,7 @@ static void capture_native_riding_action(void *unit, void *action, void *context
     {
         TranslationStateScope translation;
         std::array<int32_t,2> fields{};
-        if (g_riding_api && native_history_copy(reinterpret_cast<uintptr_t>(action),fields))
+        if (native_riding_available() && native_history_copy(reinterpret_cast<uintptr_t>(action),fields))
             g_riding_api->filter(reinterpret_cast<uintptr_t>(unit),fields[0],fields[1],&decision);
     }
     if (decision.disposition == 2) return;
@@ -97,7 +140,7 @@ static void capture_native_riding_action(void *unit, void *action, void *context
     callback.call_native([&] { original(unit,action,context); });
     {
         TranslationStateScope translation;
-        if (g_riding_api) g_riding_api->finish(reinterpret_cast<uintptr_t>(unit),&decision);
+        if (native_riding_available()) g_riding_api->finish(reinterpret_cast<uintptr_t>(unit),&decision);
     }
 }
 static void capture_native_riding_draw(void *unit, void *viewport) {
@@ -106,7 +149,7 @@ static void capture_native_riding_draw(void *unit, void *viewport) {
     if (!original) return;
     callback.call_native([&] { original(unit,viewport); });
     TranslationStateScope translation;
-    if (g_riding_api) g_riding_api->draw(reinterpret_cast<uintptr_t>(unit),
+    if (native_riding_available()) g_riding_api->draw(reinterpret_cast<uintptr_t>(unit),
         reinterpret_cast<uintptr_t>(viewport),original);
 }
 static void capture_native_riding_tile(void *unit, void *viewport,
@@ -118,13 +161,13 @@ static void capture_native_riding_tile(void *unit, void *viewport,
         original(reinterpret_cast<void *>(g_riding_projection_context),viewport,local_y,local_x,map_view);
     });
     TranslationStateScope translation;
-    if (g_riding_api) g_riding_api->prepare_tile(reinterpret_cast<uintptr_t>(unit),
+    if (native_riding_available()) g_riding_api->prepare_tile(reinterpret_cast<uintptr_t>(unit),
         reinterpret_cast<uintptr_t>(viewport));
 }
 static int32_t capture_native_riding_load(void *unit, int32_t capacity, int32_t weight) {
     NativeInputCallbackScope callback;
     TranslationStateScope translation;
-    if (g_riding_api)
+    if (native_riding_available())
         return g_riding_api->load_penalty(reinterpret_cast<uintptr_t>(unit),capacity,weight);
     // Hooks are removed before module release; retain native behavior if a
     // callback nevertheless reaches this boundary without the optional DLL.
@@ -141,7 +184,7 @@ static bool capture_native_riding_reach(void *unit, int16_t x, int16_t y, int16_
     callback.call_native([&] { reachable=original(unit,x,y,z,burrows); });
     if (reachable) return true;
     TranslationStateScope translation;
-    return g_riding_api && g_riding_api->flight_reachable(
+    return native_riding_available() && g_riding_api->flight_reachable(
         reinterpret_cast<uintptr_t>(unit),x,y,z,burrows);
 }
 static bool native_riding_hooks_active() {
@@ -223,7 +266,7 @@ static bool install_native_riding_hook() {
 }
 static void native_riding_open() {
     TranslationStateScope translation;
-    if (!g_riding_api) return;
+    if (!native_riding_available()) return;
     g_riding_open_pending = true;
     auto &menu = g_native_settings_menu;
     menu.open = true; menu.riding = true; menu.hovered = -1; menu.hits_ready = false;
@@ -245,7 +288,8 @@ static void native_riding_select(size_t index) {
 static void native_riding_frame() {
     TranslationStateScope translation;
 #ifdef _WIN32
-    if (!g_riding_api) return;
+    native_riding_refresh_subscription();
+    if (!native_riding_available()) return;
     const bool visible = g_native_settings_menu.open && g_native_settings_menu.riding;
     g_riding_api->frame(native_mouse_coordinates_fortress()!=0,visible);
     if (g_riding_open_pending) {
@@ -265,6 +309,8 @@ static void native_riding_release() {
     g_riding_api = nullptr;
     if (g_riding_module) SDL_UnloadObject(g_riding_module);
     g_riding_module = nullptr; g_riding_menu = {}; g_riding_command.reset();
+    g_riding_module_path.clear(); g_riding_subscribed = false;
+    g_riding_subscription_poll = 0;
     g_riding_project = nullptr; g_riding_projection_context = 0;
     g_riding_open_pending = false;
 }

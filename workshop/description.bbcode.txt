@@ -3,12 +3,12 @@
 DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作品，结合社区译文与本地修订，翻译游戏界面、人物信息、物品描述和传说故事，支持简体中文与台湾正体中文。
 
 [b]适配 Dwarf Fortress 53.16，Windows x64，支持 Steam 版与官网免费版。[/b]
-当前版本：[b]53.16-20261028[/b]（2026-10-28）。
+当前版本：[b]53.16-20261028.2[/b]（2026-10-28）。
 游戏内按 [b]Shift+F1[/b] 打开汉化设置菜单，可切换中英文、繁简体、四族语言原文／音译，开关已安装的 DFHack，或重新载入汉化。
 更新内容见改动说明与订阅目录中的 CHANGELOG.txt。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028]Windows 汉化下载[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028.2]Windows 汉化下载[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
 [h1]Windows 工坊安装[/h1]
@@ -47,6 +47,7 @@ GitHub Windows 运行包 [b]DFCN-Windows-x64-minimal.zip[/b] 整包解压到游�
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235]Dwarvemon Entity Type 汉化数据[/url]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319]Dwarvemon Entity All 汉化数据[/url]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815789657]Real Book/Scroll Content! 汉化扩展[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3828679581]Mcnuggy's Mythical Beasts 汉化扩展[/url]
 [/list]
 Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译各自名称和文明配置简介，生物与物品译文由 Dwarvemon 汉化数据提供。
 Real Book 汉化扩展翻译阅读界面、书名和生成的书籍正文，并附带性能兼容脚本；需要安装 Real Book/Scroll Content! 原模组及 DFHack。

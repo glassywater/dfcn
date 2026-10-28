@@ -75,6 +75,8 @@ struct Snapshot {
     // Map preview is supplied only by a currently subscribed Workshop mod.
     // Local copies and cached subscription metadata cannot enable it.
     std::vector<fs::path> map_preview_modules;
+    // Riding is also supplied only by a currently subscribed, installed item.
+    std::vector<fs::path> riding_modules;
     // An available empty Steam list is authoritative, including after the
     // final extension is unsubscribed while its download remains on disk.
     bool steam_subscriptions_available = false;
@@ -329,8 +331,9 @@ inline fs::path resource_path(const fs::path& root, std::string_view value) {
     return within(root, resolved) ? resolved : fs::path{};
 }
 
-inline std::vector<fs::path> map_preview_modules(const SteamSubscriptions& steam,
-                                                Snapshot* snapshot = nullptr) {
+inline std::vector<fs::path> subscribed_native_modules(const SteamSubscriptions& steam,
+        std::string_view package_id, std::string_view library,
+        Snapshot* snapshot = nullptr) {
     std::vector<fs::path> modules;
     if (!steam.available || !steam.current) return modules;
     const auto watch = [&](const fs::path& path) {
@@ -349,7 +352,7 @@ inline std::vector<fs::path> map_preview_modules(const SteamSubscriptions& steam
         if (!item || !steam.ids.contains(item)) continue;
         const auto root = canonical_path(directory);
         if (root.empty() || !visited.insert(root).second) continue;
-        const auto manifest = root / "dfcn-map-preview.toml";
+        const auto manifest = root / (std::string(package_id) + ".toml");
         watch(root);
         watch(manifest);
         std::error_code error;
@@ -364,14 +367,14 @@ inline std::vector<fs::path> map_preview_modules(const SteamSubscriptions& steam
         const auto version = declared_version ? number<int64_t>(*declared_version) : std::nullopt;
         const auto declared_item = info ? info_value(*info, "STEAM_FILE_ID") : std::nullopt;
         const auto linked_item = declared_item ? number<uint64_t>(*declared_item) : std::nullopt;
-        if (!info_id || *info_id != "dfcn-map-preview" || !version || *version < 0 ||
+        if (!info_id || *info_id != package_id || !version || *version < 0 ||
                 (declared_item && (!linked_item || (*linked_item && *linked_item != item)))) {
-            diagnose(manifest, "invalid map-preview mod identity, version or Workshop item");
+            diagnose(manifest, "invalid native mod identity, version or Workshop item");
             continue;
         }
         const auto data = text(manifest);
         if (!data) {
-            diagnose(manifest, "cannot read map-preview manifest");
+            diagnose(manifest, "cannot read native mod manifest");
             continue;
         }
         const auto parsed = toml::parse(*data, runtime::utf8(manifest));
@@ -382,20 +385,20 @@ inline std::vector<fs::path> map_preview_modules(const SteamSubscriptions& steam
         const auto schema = parsed["schema"].value<int64_t>();
         const auto id = parsed["id"].value<std::string>();
         const auto module = parsed["module"].value<std::string>();
-        if (!schema || *schema != 1 || !id || *id != "dfcn-map-preview" ||
-                !module || *module != "dfcn/dfcn_map_preview.dll") {
-            diagnose(manifest, "invalid map-preview manifest");
+        if (!schema || *schema != 1 || !id || *id != package_id ||
+                !module || *module != library) {
+            diagnose(manifest, "invalid native mod manifest");
             continue;
         }
         const auto module_path = resource_path(root, *module);
         if (module_path.empty()) {
-            diagnose(manifest, "map-preview module path is outside its package");
+            diagnose(manifest, "native module path is outside its package");
             continue;
         }
         watch(module_path);
         error.clear();
         if (!fs::is_regular_file(module_path, error) || error) {
-            diagnose(manifest, "missing map-preview module");
+            diagnose(manifest, "missing native module");
             continue;
         }
         candidates.emplace_back(*version, module_path);
@@ -406,6 +409,18 @@ inline std::vector<fs::path> map_preview_modules(const SteamSubscriptions& steam
     });
     for (const auto& candidate : candidates) modules.push_back(candidate.second);
     return modules;
+}
+
+inline std::vector<fs::path> map_preview_modules(const SteamSubscriptions& steam,
+                                                Snapshot* snapshot = nullptr) {
+    return subscribed_native_modules(steam, "dfcn-map-preview",
+        "dfcn/dfcn_map_preview.dll", snapshot);
+}
+
+inline std::vector<fs::path> riding_modules(const SteamSubscriptions& steam,
+                                          Snapshot* snapshot = nullptr) {
+    return subscribed_native_modules(steam, "dfcn-riding",
+        "dfcn/dfcn_riding.dll", snapshot);
 }
 
 } // namespace detail
@@ -422,6 +437,10 @@ inline std::vector<fs::path> discover_map_preview_modules() {
     return discover_map_preview_modules(detail::subscriptions());
 }
 
+inline std::vector<fs::path> discover_riding_modules() {
+    return detail::riding_modules(detail::subscriptions());
+}
+
 inline Snapshot discover(std::string_view language = "zh-Hans") {
     Snapshot snapshot;
     const auto watch = [&](const fs::path& path) { snapshot.resources.push_back(detail::stamp(path)); };
@@ -429,6 +448,7 @@ inline Snapshot discover(std::string_view language = "zh-Hans") {
     snapshot.steam_subscriptions_available = steam.available;
     snapshot.subscribed_items.assign(steam.ids.begin(), steam.ids.end());
     snapshot.map_preview_modules = detail::map_preview_modules(steam, &snapshot);
+    snapshot.riding_modules = detail::riding_modules(steam, &snapshot);
     const auto game = detail::game_directory();
     std::set<fs::path> libraries;
     detail::add_library(libraries, game);
@@ -714,6 +734,7 @@ inline bool same_resources(const Snapshot& left, const Snapshot& right) {
         left.semantic_model == right.semantic_model &&
         left.mouse_coordinates_modules == right.mouse_coordinates_modules &&
         left.map_preview_modules == right.map_preview_modules &&
+        left.riding_modules == right.riding_modules &&
         left.steam_subscriptions_available == right.steam_subscriptions_available &&
         left.subscribed_items == right.subscribed_items;
 }
