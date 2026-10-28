@@ -30825,6 +30825,15 @@ static std::optional<std::string> translate_embark_craft_item_name(
     const auto qualifier =
         translate_embark_item_material_qualifier(std::move(material_source), require_material);
     if (!qualifier || qualifier->empty()) return std::nullopt;
+    // This noun already denotes jewelry. Generic captures also contain the
+    // procedural-name and extension body-part sense of ring (环), which must
+    // not override the scoped item noun (戒指).
+    if (item.noun->source == "ring" || item.noun->source == "rings") {
+        std::vector<size_t> origins;
+        const auto noun = RULESETS.translate_with_origins(
+            std::string(item.noun->source), "::items::ring::main", origins);
+        return *qualifier + noun.value_or(std::string(item.noun->target));
+    }
     if (const auto noun = overlay_exact_literal_translation(item.noun->source))
         return *qualifier + *noun;
     return *qualifier + std::string(item.noun->target);
