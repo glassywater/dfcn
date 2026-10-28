@@ -1,0 +1,11 @@
+base = "plants::seed"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"mandrake root seed" = "曼德拉草种子"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+"mandrake root seeds" = "曼德拉草种子"

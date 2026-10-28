@@ -1,0 +1,18 @@
+{
+  "appid": 975370,
+  "title": "Mcnuggy's Mythical Beasts 简体中文汉化",
+  "description_file": "workshop/mcnuggys-mythical-beasts-zh-hans/description.bbcode.txt",
+  "content_folder": "workshop/mcnuggys-mythical-beasts-zh-hans/content",
+  "preview_file": "workshop/mcnuggys-mythical-beasts-zh-hans/preview.png",
+  "tags": [
+    "mod",
+    "translation",
+    "Chinese"
+  ],
+  "visibility": 0,
+  "changelog": "首次发布，适配 Mcnuggy's Mythical Beasts 3.2。汉化生物、描述、偏好、职业、材料、植物、能力与战斗文本。",
+  "required_items": [
+    3811193379,
+    3010868752
+  ]
+}

@@ -157,7 +157,7 @@ class Steam:
         self.bind("SteamAPI_ManualDispatch_FreeLastCallback", None, [I32])
         self.bind("SteamAPI_ManualDispatch_GetAPICallResult", BOOL,
                   [I32, U64, PTR, I32, I32, C.POINTER(BOOL)])
-        ugc = self.bind_interface("SteamUGC", ("021", "016"))
+        ugc = self.bind_interface("SteamUGC", ("021", "020", "016"))
         user = self.bind_interface("SteamUser", ("023", "021"))
         utils = self.bind_interface("SteamUtils", ("011", "010"))
         self.bind("SteamAPI_ISteamUser_GetSteamID", U64, [PTR])

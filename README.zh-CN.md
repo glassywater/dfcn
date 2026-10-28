@@ -60,8 +60,8 @@ Windows 汉化核心自动识别鼠标坐标模组，优先加载已订阅的工
 核心目录的 `mouse-coordinates.ini`，汉化的中英文切换不影响此开关。
 
 Mod 汉化数据扩展目前公开提供
-**Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta、Real Book/Scroll Content!**
-五个独立创意工坊数据包。其余 17 个 Mod 汉化数据包已下架（设为私密），
+**Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta、Real Book/Scroll Content!、Mcnuggy's Mythical Beasts**
+六个独立创意工坊数据包。其余 17 个 Mod 汉化数据包已下架（设为私密），
 本地资源与源码目录保留。公开数据包订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
 需要安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)，
 并订阅对应原模组和汉化数据包；DFCN 自动读取数据，无需在创建世界的模组列表中启用汉化包。

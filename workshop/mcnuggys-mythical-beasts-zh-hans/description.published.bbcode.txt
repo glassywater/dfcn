@@ -1,0 +1,8 @@
+Mcnuggy's Mythical Beasts 3.2 简体中文汉化扩展。
+
+翻译生物及巨型变种、幼体与树人成长阶段、生物介绍、偏好、半人马职业、身体部位、特殊材料、乳制品、曼德拉草、能力和战斗文本。
+
+需要 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3010868752]Mcnuggy's Mythical Beasts 原模组[/url]和 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN 汉化核心[/url]。
+本包由 DFCN 自动读取，无需在创建世界时启用，不包含原模组 RAW、图像或玩法修改。
+
+原模组作者：mcnuggy。汉化：DFCN Community。

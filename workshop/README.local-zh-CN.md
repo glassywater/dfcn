@@ -1,6 +1,6 @@
 # Mod 简体中文汉化扩展
 
-目前公开提供 Dwarvemon 系列及 Real Book/Scroll Content! 的 5 个独立汉化数据包，需安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)及对应原模组。数据由核心自动读取，无需在创建世界的模组列表中启用汉化包。
+目前公开提供 Dwarvemon 系列、Real Book/Scroll Content! 及 Mcnuggy's Mythical Beasts 的 6 个独立汉化数据包，需安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)及对应原模组。数据由核心自动读取，无需在创建世界的模组列表中启用汉化包。
 
 | 原模组 | 汉化数据 |
 | --- | --- |
@@ -9,6 +9,7 @@
 | [Dwarvemon Entity All](https://steamcommunity.com/sharedfiles/filedetails/?id=2898648216) | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319) |
 | [Dwarvemon Entity Type](https://steamcommunity.com/sharedfiles/filedetails/?id=2898648197) | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235) |
 | [Real Book/Scroll Content!](https://steamcommunity.com/sharedfiles/filedetails/?id=3752219300) | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789657) |
+| [Mcnuggy's Mythical Beasts](https://steamcommunity.com/sharedfiles/filedetails/?id=3010868752) | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3828679581) |
 
 Dwarvemon 与 Dwarvemon Beta 各有完整的汉化数据。Entity Type、Entity All 提供各自模组名称与文明配置简介的翻译，生物和物品译文由 Dwarvemon 汉化数据提供。
 
@@ -35,3 +36,9 @@ Real Book 汉化包翻译阅读界面、书名、文体和生成的书籍正文�
 | [Topples' Smoking](https://steamcommunity.com/sharedfiles/filedetails/?id=3479452579) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815790069) |
 | [Topples' Workshop Icons](https://steamcommunity.com/sharedfiles/filedetails/?id=3468962984) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815790161) |
 | [Whaleys Dogs](https://steamcommunity.com/sharedfiles/filedetails/?id=2902810759) | [已下架（私密）](https://steamcommunity.com/sharedfiles/filedetails/?id=3815790492) |
+
+## Mcnuggy's Mythical Beasts 3.2
+
+[Mcnuggy's Mythical Beasts](https://steamcommunity.com/sharedfiles/filedetails/?id=3010868752) 的 3.2 版汉化位于 `workshop/mcnuggys-mythical-beasts-zh-hans/content`，独立安装包为 `workshop/mcnuggys-mythical-beasts-zh-hans/dfcn_mcnuggys_mythical_beasts_zh_hans.zip`。包含生物与巨型变种、幼体、树人成长阶段、描述与偏好、半人马职业、身体部位、材料、曼德拉草制品、能力、状态及战斗声音的翻译。可从[创意工坊订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3828679581)，原模组与 DFCN 核心已列为必需项目。
+
+本地安装目录为游戏 `mods/dfcn_mcnuggys_mythical_beasts_zh_hans`，由 DFCN 自动读取，无需在创建世界时启用汉化包。详见[包内说明](mcnuggys-mythical-beasts-zh-hans/content/README.zh-CN.md)。

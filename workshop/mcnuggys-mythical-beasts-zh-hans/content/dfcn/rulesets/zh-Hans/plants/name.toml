@@ -1,0 +1,17 @@
+base = "plants::name"
+
+[[rulesets]]
+name = "singular"
+[rulesets.rules]
+"mandrake root" = "曼德拉草根"
+
+[[rulesets]]
+name = "plural"
+[rulesets.rules]
+# ALL_NAMES uses this exact spelling for both singular and plural.
+"mandrake root" = "曼德拉草根"
+
+[[rulesets]]
+name = "adjective"
+[rulesets.rules]
+"mandrake root" = "曼德拉草根"

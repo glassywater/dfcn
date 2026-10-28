@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="576" viewBox="0 0 1024 576">
+  <rect width="1024" height="576" fill="#151e29"/>
+  <rect width="1024" height="13" fill="#91bba1"/>
+  <rect x="68" y="65" width="8" height="48" fill="#91bba1"/>
+  <g font-family="Noto Sans, DejaVu Sans, sans-serif">
+    <text x="96" y="111" fill="#f1f3f4" font-size="42" font-weight="700">DFCN</text>
+    <text x="68" y="236" fill="#f1f3f4" font-size="56" font-weight="700">Mcnuggy's</text>
+    <text x="68" y="310" fill="#f1f3f4" font-size="56" font-weight="700">Mythical Beasts</text>
+    <text x="68" y="440" fill="#91bba1" font-size="42" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif">简体中文汉化</text>
+    <path d="M68 474H957" stroke="#374655" stroke-width="2"/>
+    <text x="68" y="519" fill="#9caebe" font-size="22">Dwarf Fortress / Translation Data / 3.2</text>
+  </g>
+</svg>
