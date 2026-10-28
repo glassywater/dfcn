@@ -3,12 +3,12 @@
 DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作品，结合社区译文与本地修订，翻译游戏界面、人物信息、物品描述和传说故事，支持简体中文与台湾正体中文。
 
 [b]适配 Dwarf Fortress 53.16，Windows x64，支持 Steam 版与官网免费版。[/b]
-当前版本：[b]53.16-20261026[/b]（2026-10-26）。
+当前版本：[b]53.16-20261028[/b]（2026-10-28）。
 游戏内按 [b]Shift+F1[/b] 打开汉化设置菜单，可切换中英文、繁简体、四族语言原文／音译，开关已安装的 DFHack，或重新载入汉化。
 更新内容见改动说明与订阅目录中的 CHANGELOG.txt。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261026]Windows 汉化下载[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028]Windows 汉化下载[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
 [h1]Windows 工坊安装[/h1]
@@ -46,8 +46,10 @@ GitHub Windows 运行包 [b]DFCN-Windows-x64-minimal.zip[/b] 整包解压到游�
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815791420]Dwarvemon Beta 汉化数据[/url]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235]Dwarvemon Entity Type 汉化数据[/url]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319]Dwarvemon Entity All 汉化数据[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815789657]Real Book/Scroll Content! 汉化扩展[/url]
 [/list]
 Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译各自名称和文明配置简介，生物与物品译文由 Dwarvemon 汉化数据提供。
+Real Book 汉化扩展翻译阅读界面、书名和生成的书籍正文，并附带性能兼容脚本；需要安装 Real Book/Scroll Content! 原模组及 DFHack。
 没有完整译文的模组名称及内容保留原文，用户自定义小队名称始终原样显示。扩展不修改原始模组 RAW 或世界规则。
 
 
@@ -70,8 +72,7 @@ Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译�
 
 [h1]开关与刷新[/h1]
 
-[b]Shift+F1[/b]：打开或关闭汉化设置菜单，可切换中英文、繁简体、四族语言音译，开关已安装的 DFHack，或重新载入核心与数据并开启汉化。英文模式下仍可打开。
-切换与重载选项执行后自动关闭，也可按 Esc、右键或点击菜单外空白处关闭。四族语言默认采用中文音译，可切换为原文拼写，选择在本次运行及核心重载后保留；DFHack 选项需已安装 DFHack 且接口可用。
+[b]Shift+F1[/b]：打开汉化设置菜单；Esc、右键或点击菜单外关闭。四族语言默认中文音译，选择在本次运行及核心重载后保留。
 
 [b]Shift+F10[/b]：开启或关闭汉化，保留当前核心与数据。
 [b]Shift+F5[/b]：关闭汉化，再次开启时重新读取核心与数据。

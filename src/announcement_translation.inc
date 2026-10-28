@@ -203,6 +203,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     // IDs are announcement_type in df.g_src.basics.xml.
     const bool combat_record = (native_type >= 6 && native_type <= 48) ||
         native_type == 166 || native_type == 167;
+    const bool completed_job_record = native_type == 270;
     std::string_view native_scope;
     if (combat_record) native_scope = "sentence";
     else if (native_type == 86 || native_type == 104)
@@ -231,6 +232,25 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         auto translated = translate_help_paragraph(block, colors, translated_colors,
             true, -1, true);
         if (translated) return translated;
+        if (completed_job_record) {
+            // JOB_COMPLETED (1325080 / classic 131fff0) owns a complete job
+            // caption followed by its numeric order count. Bind that outer
+            // production before generic rumor/item grammar can interpret the
+            // count as a book description and request unrelated world data.
+            // An unresolved job stays in this native production, including
+            // when the catalogue still uses the older string-count slot.
+            for (const std::string_view pattern : {
+                    "{s} ({d}) has been completed.",
+                    "{s} ({s}) has been completed."}) {
+                const auto found = ui_message_template_sources_.find(pattern);
+                if (found == ui_message_template_sources_.end() || found->second < 0 ||
+                        static_cast<size_t>(found->second) >= rules_.size()) continue;
+                translated = translate_help_paragraph(block, colors,
+                    translated_colors, true, found->second);
+                if (translated) return translated;
+            }
+            return std::nullopt;
+        }
         if (!colors.empty() && std::all_of(colors.begin(), colors.end(),
                 [&](int color) { return color == colors.front(); })) {
             if (const auto siren = translate_dfhack_siren_announcement(block)) {
@@ -405,7 +425,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
         if (!budget.owns_budget()) throw;
         work_limited = true;
     }
-    if (!target && !work_limited) {
+    if (!target && !work_limited && !completed_job_record) {
         // One submitted record may combine an attack, a status change, and a
         // spoken reaction. Candidate sentence boundaries do not imply a valid
         // split: both sides must resolve completely. Full-paragraph rules get
@@ -478,7 +498,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             colors.push_back(source_colors[source_offset + (origin < result.source.size() ? origin : 0)]);
         }
     };
-    if (!target && !work_limited) {
+    if (!target && !work_limited && !completed_job_record) {
         // Complete native, catalogue, memory and Legends translations, plus
         // complete sentence combinations, have all had first choice. Only
         // now may a display production preserve unresolved typed fields.
@@ -536,7 +556,7 @@ std::optional<std::string> Overlay::translate_complete_announcement(
             target_colors.clear();
         }
     }
-    if (!combat_record && !target && !work_limited) {
+    if (!combat_record && !completed_job_record && !target && !work_limited) {
         // A following native thought constructor proves an independent
         // reaction. Never split unknown prose merely at a period, comma,
         // quote, or a displayed wrap, and retain an unknown prefix intact.

@@ -10,12 +10,12 @@
     "Chinese"
   ],
   "visibility": 0,
-  "changelog": "- 补全植物覆盖斜坡与楼梯时的名称汉化。\n",
+  "changelog": "[list]\n[*]将 Cheese 的译名由“芝士片”修正为“奶酪”。\n[/list]\n",
   "github_url": "https://github.com/pokemonchw/dfcn",
   "required_items": [
     3811193379,
     2898307461
   ],
-  "release_tag": "v53.16-20261018.2",
-  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261018.2"
+  "release_tag": "v53.16-20261028",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028"
 }

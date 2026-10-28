@@ -40,6 +40,7 @@ static bool native_history_war_selection(uintptr_t collection, int32_t &category
 #include "native_fortress_map_hud.inc"
 #include "native_stockpile_settings.inc"
 #include "native_work_order_shops.inc"
+#include "native_work_order_conditions.inc"
 #include "native_workshop_task_capture.inc"
 #include "native_arena_tree_capture.inc"
 #include "native_workshop_choice_capture.inc"
@@ -197,6 +198,7 @@ static bool install_sdl_hooks() {
         {"Native designation tools layer", install_native_designation_layer_hook},
         {"Native map hover list layer", install_native_map_hover_layer_hook},
         {"Native embark civilization layer", install_native_embark_civilization_layer_hook},
+        {"Optional fortress riding module", install_native_riding_hook},
     };
     for (const auto &[label, install] : stages) {
         if (!install()) {
@@ -224,6 +226,7 @@ static bool install_sdl_hooks() {
 }
 
 static void uninstall_sdl_hooks() {
+    uninstall_native_riding_hook();
     [[maybe_unused]] NativePatchMappingScope mapping_scope;
     uninstall_native_petition_layer_hook();
     uninstall_native_embark_civilization_layer_hook();
@@ -299,7 +302,7 @@ static void uninstall_sdl_hooks() {
 }
 
 static bool native_hooks_detached() {
-    return std::none_of(g_render_hooks.begin(), g_render_hooks.end(),
+    return !native_riding_hooks_active() && std::none_of(g_render_hooks.begin(), g_render_hooks.end(),
                        [](const auto &hook) { return hook.active(); }) &&
         !native_dfhack_capture_hook_active() &&
         !native_dfhack_render_layers_active() &&
@@ -411,6 +414,7 @@ static bool stop_reloadable_core() {
     native_settings_menu_release();
     native_mouse_coordinates_release();
     native_map_preview_release();
+    native_riding_release();
     if (g_plugin_active.load()) {
         g_native_squads_overlay.release_native_squads_resources();
         release_native_character_language_resources();

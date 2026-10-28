@@ -10,18 +10,21 @@ Windows [v53.16-20261009](https://github.com/pokemonchw/dfcn/releases/tag/v53.16
 
 ## 已发布的数据包
 
-公开提供 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type 四个独立汉化数据包。[DFCN 本体工坊项目](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)提供通用扩展自动加载能力。订阅对应原模组和汉化数据包后自动识别，无需手工复制数据，也无需在创建世界时启用汉化数据包。
+公开提供 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type、Real Book/Scroll Content! 和 Mcnuggy's Mythical Beasts 六个独立汉化数据包。[DFCN 本体工坊项目](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)提供通用扩展自动加载能力。订阅对应原模组和汉化数据包后自动识别，无需手工复制数据，也无需在创建世界时启用汉化数据包。
 
-[GitHub Release v53.16-20261020](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261020)提供 Windows 核心运行包 `DFCN-Windows-x64-minimal.zip` 及以下四个独立数据 ZIP：
+[GitHub Release v53.16-20261027](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261027)提供 Windows 核心运行包 `DFCN-Windows-x64-minimal.zip` 及以下五个独立数据 ZIP：
 
 | 原模组与支持范围 | 工坊汉化数据 | 独立 ZIP |
 | --- | --- | --- |
-| Dwarvemon 2.22：基础宝可梦、生物、道具、材料、工坊、招式及战斗与历史文本 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177) | [dfcn_dwarvemon_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020/dfcn_dwarvemon_zh_hans.zip) |
-| Dwarvemon Beta 2.22：Beta 与随包的 PMD、TCG、MissingNo 等可选模块 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791420) | [dfcn_dwarvemon_beta_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020/dfcn_dwarvemon_beta_zh_hans.zip) |
-| Dwarvemon Entity All 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319) | [dfcn_dwarvemon_entity_all_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020/dfcn_dwarvemon_entity_all_zh_hans.zip) |
-| Dwarvemon Entity Type 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235) | [dfcn_dwarvemon_entity_type_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261020/dfcn_dwarvemon_entity_type_zh_hans.zip) |
+| Dwarvemon 2.22：基础宝可梦、生物、道具、材料、工坊、招式及战斗与历史文本 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177) | [dfcn_dwarvemon_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261027/dfcn_dwarvemon_zh_hans.zip) |
+| Dwarvemon Beta 2.22：Beta 与随包的 PMD、TCG、MissingNo 等可选模块 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791420) | [dfcn_dwarvemon_beta_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261027/dfcn_dwarvemon_beta_zh_hans.zip) |
+| Dwarvemon Entity All 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319) | [dfcn_dwarvemon_entity_all_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261027/dfcn_dwarvemon_entity_all_zh_hans.zip) |
+| Dwarvemon Entity Type 2.22：模组名称与文明配置简介；生物和物品译文需配合 Dwarvemon 汉化数据 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235) | [dfcn_dwarvemon_entity_type_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261027/dfcn_dwarvemon_entity_type_zh_hans.zip) |
+| Real Book/Scroll Content!：阅读界面、书名、文体与生成正文，附带 DFHack 性能兼容脚本 | [订阅](https://steamcommunity.com/sharedfiles/filedetails/?id=3815789657) | [dfcn_real_books_zh_hans.zip](https://github.com/pokemonchw/dfcn/releases/download/v53.16-20261027/dfcn_real_books_zh_hans.zip) |
 
-独立 ZIP 中的整个 mod 文件夹解压至游戏 `mods` 目录即可，各包分别安装。基础 Dwarvemon 与 Beta 使用各自的专用汉化数据，Entity All、Entity Type 也分别提供独立包。其余 18 个汉化数据包保持私密，不在本次 Release 中提供。更新或移除数据后，核心在下次启动或显式重新加载数据时识别相应变化；没有完整译文的 mod 名称、简介和工坊名称保留原文，用户自定义小队名称保持原样。
+新增的 [Mcnuggy's Mythical Beasts 3.2 汉化](https://steamcommunity.com/sharedfiles/filedetails/?id=3828679581)已在创意工坊公开发布，需要[原模组](https://steamcommunity.com/sharedfiles/filedetails/?id=3010868752)和 DFCN 核心。覆盖生物、巨型变种、幼体和成长阶段、介绍与偏好、半人马职业、身体部位、材料、曼德拉草制品、能力与战斗文本。维护目录为 `workshop/mcnuggys-mythical-beasts-zh-hans/content`；本包不在上述历史 Release 的五个 ZIP 中。
+
+独立 ZIP 中的整个 mod 文件夹解压至游戏 `mods` 目录即可，各包分别安装。基础 Dwarvemon 与 Beta 使用各自的专用汉化数据，Entity All、Entity Type 也分别提供独立包。Real Book 汉化包需要 [Real Book/Scroll Content! 原模组](https://steamcommunity.com/sharedfiles/filedetails/?id=3752219300)、DFHack 和 DFCN 汉化核心；随包的 `scripts_modinstalled` 兼容脚本由 DFHack 自动加载，安装时应保留整个 mod 文件夹。其余 17 个汉化数据包保持私密，不在本次 Release 中提供。更新或移除数据后，核心在下次启动或显式重新加载数据时识别相应变化；没有完整译文的 mod 名称、简介和工坊名称保留原文，用户自定义小队名称保持原样。
 
 ## 数据声明与规则
 

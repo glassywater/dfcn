@@ -250,19 +250,25 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
         if (!matches || identity(wrapped) != identity(capture.source)) continue;
         const auto *previous = bound[begin];
         if (!previous || count > previous->wrapped_lines.size() ||
-                (count == previous->wrapped_lines.size() && capture.sequence > previous->sequence))
+                (count == previous->wrapped_lines.size() &&
+                    ((capture.job_item_caption && !previous->job_item_caption) ||
+                     (bool(capture.job_item_caption) == bool(previous->job_item_caption) &&
+                        capture.sequence > previous->sequence))))
             bound[begin] = &capture;
     }
-    struct Field { size_t begin, end; std::string source; };
+    struct Field { size_t begin, end; std::string source; const NativeJobItemCaption *item; };
     std::vector<Field> fields;
     for (size_t begin = 0; begin < lines.size();) {
         if (lines[begin].text.empty()) { ++begin; continue; }
         size_t end = begin + 1;
         std::string source;
-        if (heading(lines[begin].text)) source = lines[begin].text;
-        else if (const auto *capture = bound[begin]) {
+        const NativeJobItemCaption *item = nullptr;
+        if (heading(lines[begin].text)) {
+            source = lines[begin].text;
+        } else if (const auto *capture = bound[begin]) {
             source = capture->source;
             end = begin + capture->wrapped_lines.size();
+            if (capture->job_item_caption) item = &*capture->job_item_caption;
         } else {
             // Cached native widgets can precede paragraph capture. Counts,
             // section headings, empty rows and bound fields delimit fallback
@@ -276,14 +282,19 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
                 ++end;
             }
         }
-        fields.push_back({lines[begin].begin, lines[end - 1].end, std::move(source)});
+        fields.push_back({lines[begin].begin, lines[end - 1].end, std::move(source), item});
         begin = end;
     }
-    const auto translate = [&](std::string_view source) -> TranslationResult {
+    const auto translate = [&](const Field &field) -> TranslationResult {
+        const std::string_view source = field.source;
         if (heading(source)) {
             const auto target = exact_literal_translation(source);
             return target ? TranslationResult::translated(source, *target, "recipe-heading")
                 : preserved_item_field(source, "recipe-heading");
+        }
+        if (field.item) {
+            auto translated = translate_native_job_item_material(*field.item);
+            if (translated.usable()) return translated;
         }
         if (const auto target = translate_workshop_recipe_source(source))
             return TranslationResult::translated(source, *target, "recipe");
@@ -345,7 +356,7 @@ dfcn::TranslationResult Overlay::translate_workshop_tooltip_document(
                     std::string(static_cast<size_t>(breaks), '\n'), "card-separator"), consumed);
                 consumed = field.begin;
             }
-            document.append(wrapped_result(translate(field.source), field), field.begin);
+            document.append(wrapped_result(translate(field), field), field.begin);
             consumed = field.end;
         }
     } catch (const dfcn::TranslationWorkLimit &) {

@@ -19516,6 +19516,7 @@ Conversation prompt: How will you respond to the request for information?	你将
 Conversation prompt: What will you say about the end of the insurrection?	关于起义结束，你想说些什么？	l
 Conversation prompt: What will you say about the refusal to give tribute?	关于拒绝进贡，你想说些什么？	l
 DFHack GUI Animal assignment: Click to assign/unassign to cage/restraint.	点击分配到笼子／锁链，或取消分配。	l
+DFHack GUI Autochop settings: Allow autochop to chop trees in this burrow	允许自动采伐此活动区的树木	l
 DFHack GUI Mod manager: Here are the vanilla mods that have been updated:	以下原版模组已更新：	l
 DFHack GUI Quantum: Please select the location of the new quantum dumper.	请选择新量子倾倒器的位置。	l
 DFHack GUI Viewer status: Autostart defaults restored for gameplay tools.	玩法扩展工具的自动启动状态已恢复为默认设置。	l
@@ -19966,6 +19967,7 @@ Announcement combat visitor-statement [visitor-statement-subject]: {s} .	{s1}…
 Conversation prompt: How will you respond to the request for directions?	你将如何回应问路的请求？	l
 Conversation prompt: What will you say about the artifact's destruction?	关于造物被毁，你想说些什么？	l
 Conversation prompt: What will you say about the failed peace agreement?	关于和平协议破裂，你想说些什么？	l
+DFHack GUI Autochop settings: Hide burrows with no chop/clear order set:	隐藏未设置采伐或清空的活动区：	l
 DFHack GUI Control tool: autobutcher target 10 10 14 2 BIRD_PEAFOWL_BLUE	饲养孔雀（autobutcher target 10 10 14 2 BIRD_PEAFOWL_BLUE）	l
 DFHack GUI Mod manager: New vanilla mods are not included in the preset.	此预设尚未包含新增的原版模组。	l
 DFHack help: "--location [ <x> <y> <z> ]" The location to spawn the flow	"--location [ <x> <y> <z> ]" 产生流的位置	l
@@ -20424,6 +20426,9 @@ Announcement combat visitor-statement-emotion []: in existential crisis	陷入�
 Announcement combat visitor-statement-reference []: an unknown creature	未知生物	l
 Choose a stockpile from which the track stop's vehicle will take items.	选择轨道站点的车辆要从其取货的储物堆。	hj
 Claim a forbidden item or building so it will be used by your citizens.	解除物品或建筑的禁用状态，使居民能够使用。	hj
+DFHack GUI Autochop settings: Protect trees that produce brewable items	保护出产酿酒原料的树木	l
+DFHack GUI Autochop settings: Protect trees that produce cookable items	保护出产烹饪原料的树木	l
+DFHack GUI Autochop settings: Will chop any accessible trees on the map	可采伐地图上任何可到达的树木	l
 DFHack GUI Viewer status: Autostart defaults restored for bugfix tools.	漏洞修复工具的自动启动状态已恢复为默认设置。	l
 DFHack GUI Viewer status: Enabled defaults restored for gameplay tools.	玩法扩展工具的当前启用状态已恢复为默认设置。	l
 DFHack help: "--straightOnly" Only creatures who are strictly straight.	"--straightOnly" 只有严格意义上的直的生物。	l
@@ -21520,6 +21525,8 @@ Choose a stockpile to which the track stop's vehicle will give items.	选择轨�
 Conversation prompt: How will you respond to the request for a guide?	你将如何回应寻找向导的请求？	l
 Conversation prompt: What will you say about the artifact's location?	关于造物的下落，你想说些什么？	l
 Conversation prompt: What will you say about your plots and scheming?	关于你的阴谋与谋划，你想说些什么？	l
+DFHack GUI Autochop settings: Protect trees that produce edible items	保护出产可食用物品的树木	l
+DFHack GUI Autochop settings: Will chop in burrows tagged with "Chop"	将在标有“采伐”的活动区中伐木	l
 DFHack GUI Viewer status: Enabled defaults restored for bugfix tools.	漏洞修复工具的当前启用状态已恢复为默认设置。	l
 DFHack help: "--asexualOnly" Only creatures who are strictly asexual.	"--asexualOnly" 仅限严格无性繁殖的生物。	l
 DFHack help: "--atReclaim" Enable deep embarks when reclaiming sites.	"--atReclaim" 回收场地时启用深度登陆。	l
@@ -22027,6 +22034,7 @@ Announcement combat work-reference-list [work-reference-list]: , {s}	未注明�
 Announcement music passage: a recapitulation of the previous passage	前一乐段再现部	w
 Character group role: Greatly respected for preserving the knowledge	因保存知识而备受尊敬	h
 Conversation prompt: How will you respond to the demand for tribute?	你将如何回应索要贡品的要求？	l
+DFHack GUI Autochop settings: Approx. logs left in accessible trees:	可到达树木的预计原木量：	l
 DFHack help: "(un)protect <type>[,<type>...] <burrow>[,<burrow>...]"	"（取消）保护<类型>[，<类型>...] <活动区>[，<活动区>...]"	l
 DFHack help: "--beliefs [ <belief> <level> [<belief> <level> ...] ]"	"--beliefs [ <belief> <level> [<belief> <level> ...] ]"	l
 DFHack help: "--debugdata" Prints type information under each field.	"--debugdata" 打印每个字段下的类型信息。	l
@@ -23742,6 +23750,7 @@ Conversation prompt: How will you respond to the demand to yield?	你将如何�
 Conversation prompt: Select memorized content or a form of prose.	选择已记住的内容或一种散文形式。	l
 Conversation prompt: What will you say about how you are feeling?	关于你的感受，你想说些什么？	l
 Conversation prompt: What will you say about the peace agreement?	关于和平协议，你想说些什么？	l
+DFHack GUI Autochop settings: Approx. logs from designated trees:	已标记树木的预计原木量：	l
 DFHack GUI Control tool: autobutcher target 10 10 14 2 BIRD_GOOSE	饲养鹅（autobutcher target 10 10 14 2 BIRD_GOOSE）	l
 DFHack GUI Control tool: gui/settings-manager.embark_notification	定居难度应用提示（gui/settings-manager.embark_notification）	l
 DFHack GUI Control tool: gui/settings-manager.settings_difficulty	保存要塞难度设置（gui/settings-manager.settings_difficulty）	l
@@ -24890,6 +24899,8 @@ Character group role: Greatly respected for protecting the weak	因保护弱者�
 Click "Embark" to place your fortress. Right click to zoom out.	点击“启程”确定要塞位置。右键点击缩小地图。	hP
 Conversation prompt: Choose a musical form for the composition.	为这次创作选择一种音乐形式。	l
 Conversation prompt: What will you say about tribute agreement?	关于进贡协议，你想说些什么？	l
+DFHack GUI Autochop settings: Cut down all trees in this burrow	砍光此活动区的全部树木	l
+DFHack GUI Autofish settings: Fish: {d} ({d} prepared, {d} raw)	鱼数：{d1}（已处理{d2}，生鱼{d3}）	l
 DFHack GUI Control tool: gui/settings-manager load-work-details	载入工作分工（gui/settings-manager load-work-details）	l
 DFHack GUI Control tool: gui/settings-manager.embark_difficulty	保存定居难度设置（gui/settings-manager.embark_difficulty）	l
 DFHack GUI Mass remove: Select the first corner with the mouse.	用鼠标选择第一个角点。	l
@@ -25602,6 +25613,7 @@ Conversation prompt: Choose a dance form for the choreography.	为这次编舞�
 Conversation prompt: Choose a poetic form for the composition.	为这次创作选择一种诗歌形式。	l
 Conversation prompt: What will you say about the insurrection?	关于这场起义，你想说些什么？	l
 Couldn't the lyrics of the accompaniment be a bit more somber?	伴奏的歌词就不能更庄重些吗？	hPD
+DFHack GUI Autochop settings: Designate trees for chopping now	立即标记待伐树木	l
 DFHack GUI Control tool: autofarm threshold 150 grass_tail_pig	猪尾草目标库存 150（autofarm threshold 150 grass_tail_pig）	l
 DFHack GUI Control tool: gui/settings-manager.reserved_barrels	预留空桶设置（gui/settings-manager.reserved_barrels）	l
 DFHack GUI Mod manager: Here are the mods that failed to load:	以下模组载入失败：	l
@@ -28882,6 +28894,7 @@ Credits: and everybody who has helped out on the forum and	也感谢所有在论
 DFHack GUI Control tool: gui/settings-manager.work_details	工作分工与劳动自动化（gui/settings-manager.work_details）	l
 DFHack GUI Elevate barony preferences: no item preferences	无物品偏好	l
 DFHack GUI Item type selector: Type or select an item type	输入或选择物品类型	l
+DFHack GUI Spectate settings: See help for option details:	选项详情见帮助：	l
 DFHack help: "--applytypes <profession>[,<profession>...]"	"--applytypes <profession>[,<profession>...]"	l
 DFHack help: "--goals [ <goal> false [<goal> false ...] ]"	"--goals [ <goal> false [<goal> false ...] ]"	l
 DFHack help: "--named" Selects all named units on the map.	"--named" 选择地图上所有命名单位。	l
@@ -29855,6 +29868,7 @@ Conversation prompt: What will you say about the request?	关于这个请求，�
 Conversation prompt: What will you say about the trouble?	关于这个麻烦，你想说些什么？	l
 Conversation prompt: What will you say about your family?	关于你的家人，你想说些什么？	l
 Conversation prompt: What will you say about your master?	关于你的师父，你想说些什么？	l
+DFHack GUI Autochop settings: Hide burrows with no trees:	隐藏无树木的活动区：	l
 DFHack GUI Control tool: aquifer drain --all --skip-top 2	含水层最多两层（aquifer drain --all --skip-top 2）	l
 DFHack GUI Sitemap: Please enter a site to see locations.	请进入据点以查看地点。	l
 DFHack help: "--set <0-100>" Set trait to given strength.	"--set <0-100>" 将特质设置为给定强度。	l
@@ -31965,6 +31979,7 @@ Conversation prompt: What will you say about the claim?	关于这项领地宣称
 Conversation prompt: What will you say about the group?	关于这个势力，你想说些什么？	l
 Conversation prompt: What will you say about the trade?	关于这笔交易，你想说些什么？	l
 Credits: elsewhere to keep the project afloat these two	让这个项目在过去二十年间得以延续的	wl
+DFHack GUI Autochop settings: Undesignate all trees now	立即取消所有伐木标记	l
 DFHack GUI Control tool: deteriorate frequency 0.15 all	腐朽速度：不到一个月（deteriorate frequency 0.15 all）	l
 DFHack GUI Elevate barony preferences: {d} preferences:	{d1}项物品偏好：	l
 DFHack GUI Sitemap: the selected target. Shift-click or	选中的目标。按住 Shift 点击，或按下	l
@@ -34212,6 +34227,7 @@ Character group role: Legendary protector of the weak	传奇庇护者	h
 Check for culled historical figures {d}/{d} completed	检查已清理的历史人物：已完成 {d1}/{d2}	wt
 Click to contact/raid this site (creates new mission)	点击联系或突袭此地点（创建新任务）。	hP
 Cook meals here. You can also render fat into tallow.	在这里烹饪饭菜，也可将脂肪熬制成脂油。	hj
+DFHack GUI Autochop settings: Total trees designated:	已标记树木总数：	l
 DFHack GUI Autodump: Include items dropped by traders	包含商人丢弃的物品	l
 DFHack GUI Autodump: Select all items on this z-level	选择本层全部物品	l
 DFHack GUI Control tool: gui/civ-alert.big_red_button	平民警报按钮（gui/civ-alert.big_red_button）	l
@@ -35456,7 +35472,10 @@ Book title phrase: Then Time Mourns In The Beginning	起初，随后，时间哀
 Character group role: Certainly considered a brawler	被明确视为斗殴者	h
 Character group role: Respected for hunting treasure	因寻宝而受人尊敬	h
 Copyright(C){d}-{d} Firelight Technologies Pty, Ltd.	版权所有（C）{d}-{d} Firelight Technologies Pty, Ltd.	wtl
+DFHack GUI Autochop settings: Target number of logs:	原木目标数量：	l
+DFHack GUI Autochop settings: Total trees harvested:	累计采伐树木：	l
 DFHack GUI Autodump: Dump to tile under mouse cursor	倾倒至鼠标所在格	l
+DFHack GUI Autofish settings: Currently not fishing.	当前暂停捕鱼。	l
 DFHack GUI Control tool: agitation-rebalance.monitor	自然躁动监控（agitation-rebalance.monitor）	l
 DFHack GUI Control tool: buildingplan set logs false	建造不用原木（buildingplan set logs false）	l
 DFHack GUI Control tool: buildingplan.mechanism_free	取出未连接机关（buildingplan.mechanism_free）	l
@@ -36750,6 +36769,7 @@ Character group role: Feared for violent opposition	因暴力对抗而令人畏�
 Character group role: Greatly respected for fighter	因战斗本领而备受尊敬	h
 Character group role: Greatly respected for loyalty	因忠诚而备受尊敬	h
 Conversation keyword: crime of attempted kidnapping	绑架未遂罪	l
+DFHack GUI Autochop settings: Usable logs in stock:	库存可用原木：	l
 DFHack GUI Control tool: idle-crafting.idlecrafting	休闲制作开关（idle-crafting.idlecrafting）	l
 DFHack GUI Notification settings: mandates_expiring	生产命令即将到期	l
 DFHack GUI Teleport: Teleport units to mouse cursor	将单位传送至鼠标位置	l
@@ -38071,6 +38091,7 @@ Character group role: Greatly feared as a murderer	令人十分畏惧的杀人�
 Click it now, and this tutorial will be concluded.	现在点击它，本教程便告结束。	hq
 Conversation keyword: export prohibition violation	违反出口禁令	l
 DFHack GUI Autodump: Include items claimed by jobs	包含任务占用的物品	l
+DFHack GUI Autofish settings: Maximum fish target:	鱼数上限：	l
 DFHack GUI Control tool: gui/unit-info-viewer.mood	单位当前与长期心情（gui/unit-info-viewer.mood）	l
 DFHack GUI Control tool: orders.quantityrightclick	订单数量右键取消（orders.quantityrightclick）	l
 DFHack GUI Design: First Mark ({d}): {d}, {d}, {d}	起点（{d}）：{d}, {d}, {d}	l
@@ -38078,6 +38099,7 @@ DFHack GUI Legends race filter: Choose race filter	选择种族筛选条件	l
 DFHack GUI Notification settings: labor_starvation	无人接手的任务	l
 DFHack GUI Notification settings: petitions_agreed	未兑现的建造承诺	l
 DFHack GUI Spectate activity: IndividualSkillDrill	个人技能训练	l
+DFHack GUI Spectate settings: Switch target (sec):	切换间隔（秒）：	l
 DFHack help: "(no)clearcut <burrow>[,<burrow>...]"	"（无）明确 <活动区>[,<活动区>...]"	l
 DFHack help: "-g", "--gender (male|female|neuter)"	"-g", "--gender (male|female|neuter)"	l
 DFHack help: "catsplosion" Make all cats pregnant.	"catsplosion" 让所有的猫怀孕。	l
@@ -39481,6 +39503,7 @@ DFHack GUI Journal tutorial: # My section heading	# 章节标题	l
 DFHack GUI Notification settings: missing_nemesis	人物记录缺失	l
 DFHack GUI Notification settings: suffocation_adv	呼吸余量（冒险）	l
 DFHack GUI Sitemap: to zoom and follow unit/item.	以定位并跟随生物或物品。	l
+DFHack GUI Spectate settings: Prefer new arrivals	优先新来者	l
 DFHack GUI Squad assignment: ranged effectiveness	远程效能	l
 DFHack help: "--include-pets", "--include-vermin"	"--include-pets", "--include-vermin"	l
 DFHack help: "--job" Selects the highlighted job.	"--job" 选择突出显示的作业。	l
@@ -40953,6 +40976,8 @@ Conversation keyword: favor request demand order	帮忙 请求 要求 命令	l
 Conversation keyword: looming existential crisis	迫近的存在危机	l
 Conversation keyword: production order violation	违反生产命令	l
 DFHack GUI Animal assignment: In stockpiled cage	在库存笼中	l
+DFHack GUI Autofish settings: Counting raw fish:	计入生鱼：	l
+DFHack GUI Autofish settings: Currently fishing.	当前捕鱼。	l
 DFHack GUI Control tool: buildingplan.mechanisms	连接机关选择（buildingplan.mechanisms）	l
 DFHack GUI Control tool: caravan.movegoods_hider	隐藏原版货物按钮（caravan.movegoods_hider）	l
 DFHack GUI Control tool: gui/mass-remove.toolbar	批量移除工具入口（gui/mass-remove.toolbar）	l
@@ -40966,6 +40991,7 @@ DFHack GUI Notification settings: agitated_count	躁动动物	l
 DFHack GUI Quickfort: Blueprint shows help text.	此蓝图显示帮助说明。	l
 DFHack GUI Quickfort: Reposition with the mouse.	用鼠标调整蓝图位置。	l
 DFHack GUI Spectate activity: Fill Service Order	接待顾客	l
+DFHack GUI Spectate settings: Blink period (ms):	闪烁间隔（毫秒）：	l
 DFHack GUI Squad assignment: melee effectiveness	近战效能	l
 DFHack GUI Squad assignment: pick (mining) skill	采掘技能	l
 DFHack help: "-i", "--item <itemdef>" (required)	"-i"、"--item <itemdef>"（必填）	l
@@ -44219,6 +44245,11 @@ DFHack GUI Notification settings: wildlife_adv	野生动物（冒险）	l
 DFHack GUI Rename caption: Randomize component	随机生成组成部分	l
 DFHack GUI Spectate activity: FillServiceOrder	接待顾客	l
 DFHack GUI Spectate activity: Training Session	训练课程	l
+DFHack GUI Spectate settings: Cinematic action	冲突时快切	l
+DFHack GUI Spectate settings: Include hostiles	包含敌对生物	l
+DFHack GUI Spectate settings: Include visitors	包含访客	l
+DFHack GUI Spectate settings: Include wildlife	包含野生动物	l
+DFHack GUI Spectate settings: Prefer nicknamed	优先有昵称者	l
 DFHack GUI Squad assignment: need for training	训练需求	l
 DFHack GUI Workshop workers: (or double click)	（或双击）	l
 DFHack help: "(no)chop <burrow>[,<burrow>...]"	"（不）砍<活动区>[，<活动区>...]"	l
@@ -46062,6 +46093,8 @@ DFHack GUI Quickfort: Lock blueprint position	锁定蓝图位置	l
 DFHack GUI Quickfort: Zoom to locked position	定位到锁定位置	l
 DFHack GUI Sitemap: No artifacts around here.	附近没有造物。	l
 DFHack GUI Spectate activity: TrainingSession	训练课程	l
+DFHack GUI Spectate settings: Include animals	包含动物	l
+DFHack GUI Spectate settings: Prefer conflict	优先冲突	l
 DFHack GUI Squad assignment: ranged potential	远程潜力	l
 DFHack help: "--female" Selects female units.	"--female" 选择女性单位。	l
 DFHack help: "--not-marked=<flag>,<flag>,..."	"--not-marked=<flag>,<flag>,..."	l
@@ -50524,6 +50557,8 @@ DFHack GUI Control tool: stockpiles.overlay	储物区自动化（stockpiles.over
 DFHack GUI Input prompt: Enter new command:	输入新命令：	l
 DFHack GUI Rename caption: Name components:	名称组成：	l
 DFHack GUI Rename caption: Second Adjective	第二形容词	l
+DFHack GUI Spectate settings: Hold to show:	按住显示：	l
+DFHack GUI Spectate settings: Spectate mode	观战模式	l
 DFHack GUI Squad assignment: ambusher skill	伏击技能	l
 DFHack GUI Squad assignment: crossbow skill	弩术技能	l
 DFHack GUI Teleport: Include friendly units	包含友好单位	l
@@ -53493,6 +53528,7 @@ DFHack GUI Sitemap: Click on a name or hit	点击名称或按下	l
 DFHack GUI Sitemap: Nobody around. Spooky!	附近没有生物，令人毛骨悚然！	l
 DFHack GUI Spectate activity: Conversation	交谈	l
 DFHack GUI Spectate activity: Store Object	存放物品	l
+DFHack GUI Spectate settings: Auto unpause	自动解除暂停	l
 DFHack GUI Squad assignment: Hates combat:	厌恶战斗：	l
 DFHack GUI Squad assignment: Other squads:	其他小队：	l
 DFHack GUI Squad assignment: With infants:	带婴儿：	l
@@ -57206,7 +57242,9 @@ DFHack GUI Animal assignment: Max status:	最高状态：	l
 DFHack GUI Animal assignment: Min status:	最低状态：	l
 DFHack GUI Animal assignment: Untrainable	不可驯化	l
 DFHack GUI Animal assignment: disposition	驯化程度	l
+DFHack GUI Autochop settings: Autochop is	自动伐木	l
 DFHack GUI Autodump: Clear selected items	清除已选物品	l
+DFHack GUI Autofish settings: Autofish is	自动捕鱼	l
 DFHack GUI Control tool: gui/notify.panel	要塞通知列表（gui/notify.panel）	l
 DFHack GUI Control tool: gui/rename.world	新世界改名（gui/rename.world）	l
 DFHack GUI Control tool: sort.workanimals	工作动物数量标注（sort.workanimals）	l
@@ -61543,6 +61581,7 @@ DFHack GUI Rename caption: Singular Noun	单数名词	l
 DFHack GUI Rename type: NecromancerTower	死灵法师塔	l
 DFHack GUI Sitemap: the selected target.	选中的目标。	l
 DFHack GUI Spectate activity: Harassment	骚扰	l
+DFHack GUI Spectate settings: Displeased	不满	l
 DFHack GUI Squad assignment: spear skill	长矛技能	l
 DFHack GUI Squad assignment: sword skill	剑术技能	l
 DFHack help: "--checkInventoryEvery <n>"	"--checkInventoryEvery <n>"	l
@@ -66394,6 +66433,8 @@ DFHack GUI Rename type: MerchantCompany	商贸公司	l
 DFHack GUI Sitemap: Unknown affiliation	所属势力不明	l
 DFHack GUI Spectate activity: Encounter	遭遇	l
 DFHack GUI Spectate activity: Socialize	社交	l
+DFHack GUI Spectate settings: Miserable	痛苦不堪	l
+DFHack GUI Spectate settings: Tooltips:	信息提示：	l
 DFHack GUI Squad assignment: Officials:	官员：	l
 DFHack GUI Squad assignment: Toggle all	切换全部	l
 DFHack GUI Squad assignment: Uniformed:	穿制服：	l
@@ -71536,6 +71577,8 @@ Converting mining blueprint to regular	将挖掘蓝图转为普通指定区域	w
 Current top temple location: {e}, {d}\x0F	当前价值最高的神殿地点：{e1}，{d1}☼	hPt
 DFHack GUI Animal assignment: Grazers:	食草动物：	l
 DFHack GUI Animal assignment: Sort by:	排序依据：	l
+DFHack GUI Autochop settings: Disabled	已停用	l
+DFHack GUI Autofish settings: Disabled	已停用	l
 DFHack GUI Control tool: caravan.trade	交易箱内物品管理（caravan.trade）	l
 DFHack GUI Control tool: fix/blood-del	移除商队无用液体（fix/blood-del）	l
 DFHack GUI Control tool: fix/ownership	修复物品所有权（fix/ownership）	l
@@ -71559,6 +71602,8 @@ DFHack GUI Rename caption: Plural Noun	复数名词	l
 DFHack GUI Rename type: MigratingGroup	迁徙团体	l
 DFHack GUI Spectate activity: Conflict	冲突	l
 DFHack GUI Spectate activity: Research	研究	l
+DFHack GUI Spectate settings: Activity	活动	l
+DFHack GUI Spectate settings: Ecstatic	欣喜若狂	l
 DFHack GUI Squad assignment: Nobility:	贵族：	l
 DFHack GUI Squad assignment: axe skill	战斧技能	l
 DFHack GUI Teleport: Click name or hit	点击名称或按	l
@@ -77164,6 +77209,9 @@ DFHack GUI Animal assignment: Include	包含	l
 DFHack GUI Animal assignment: Roaming	游荡	l
 DFHack GUI Animal assignment: Search:	搜索：	l
 DFHack GUI Animal assignment: Unknown	未知	l
+DFHack GUI Autochop settings: Burrow:	活动区：	l
+DFHack GUI Autochop settings: Enabled	已启用	l
+DFHack GUI Autofish settings: Enabled	已启用	l
 DFHack GUI Control tool: autoclothing	自动衣物订单（autoclothing）	l
 DFHack GUI Control tool: autotraining	自动安排训练（autotraining）	l
 DFHack GUI Control tool: dig.warmdamp	温暖与潮湿地块提示（dig.warmdamp）	l
@@ -77189,6 +77237,11 @@ DFHack GUI Rename type: FigureNoFirst	仅姓氏人物	l
 DFHack GUI Sitemap: caged fort animal	被囚禁的要塞动物	l
 DFHack GUI Sitemap: caged fort member	被囚禁的要塞居民	l
 DFHack GUI Spectate activity: Reunion	重聚	l
+DFHack GUI Spectate settings: Content	满足	l
+DFHack GUI Spectate settings: Enabled	启用	l
+DFHack GUI Spectate settings: Overlay	浮层	l
+DFHack GUI Spectate settings: Pleased	愉悦	l
+DFHack GUI Spectate settings: Unhappy	不快乐	l
 DFHack help: " and loaded on startup.	"并在启动时加载。	l
 DFHack help: "--checkAttackEvery <n>"	"--checkAttackEvery <n>"	l
 DFHack help: "--position <x>,<y>,<z>"	"--position <x>,<y>,<z>"	l
@@ -82809,6 +82862,8 @@ Create a tree to place in the arena.	创建一棵树并将其放入竞技场。	
 Create a tree to place in the arena.	创建一棵树并将其放入竞技场。	l
 DFHack GUI Animal assignment: gender	性别	l
 DFHack GUI Animal assignment: status	状态	l
+DFHack GUI Autochop settings: Burrow	活动区	l
+DFHack GUI Autochop settings: Marked	已标记	l
 DFHack GUI Control tool: autobutcher	自动屠宰（autobutcher）	l
 DFHack GUI Control tool: autonestbox	自动分配巢箱（autonestbox）	l
 DFHack GUI Control tool: deteriorate	物品自然腐朽（deteriorate）	l
@@ -82835,6 +82890,8 @@ DFHack GUI Rename type: MountainPeak	山峰	l
 DFHack GUI Rename type: NomadicGroup	游牧团体	l
 DFHack GUI Rename type: OutcastGroup	被逐团体	l
 DFHack GUI Spectate activity: Prayer	祈祷	l
+DFHack GUI Spectate settings: Follow	跟随	l
+DFHack GUI Spectate settings: Stress	压力	l
 DFHack GUI Squad assignment: Exclude	排除	l
 DFHack GUI Squad assignment: Include	包含	l
 DFHack GUI Squad assignment: Maimed:	残疾：	l
@@ -88188,6 +88245,9 @@ Conversation mood: Grimly Satisfied	冷酷的满足	l
 Conversation tone: Unfavorable odds	胜算较低	l
 Create a sharp rock with two rocks.	用两块石头制作一块尖石。	w
 Cull Unimportant Historical Figures	清理不重要的历史人物
+DFHack GUI Autochop settings: Apply	应用	l
+DFHack GUI Autochop settings: Clear	清空	l
+DFHack GUI Autochop settings: Trees	树木	l
 DFHack GUI Control tool: autocheese	自动制作奶酪（autocheese）	l
 DFHack GUI Control tool: cleanowned	丢弃破衣（cleanowned）	l
 DFHack GUI Control tool: emigration	允许居民迁离（emigration）	l
@@ -88211,6 +88271,8 @@ DFHack GUI Rename type: WeaponStore	武器店	l
 DFHack GUI Sitemap: merchant animal	商队动物	l
 DFHack GUI Spectate activity: Guard	警戒	l
 DFHack GUI Spectate job: Store item	存放物品	l
+DFHack GUI Spectate settings: Happy	快乐	l
+DFHack GUI Spectate settings: Hover	悬停	l
 DFHack GUI Title: Multiplayer Setup	多人游戏设置	l
 DFHack GUI Title: Update MultiDwarf	更新 MultiDwarf	l
 DFHack GUI Viewer status: No output	无输出	l
@@ -93440,6 +93502,8 @@ DFHack GUI Animal assignment: Only	仅限	l
 DFHack GUI Animal assignment: dist	距离	l
 DFHack GUI Animal assignment: name	名字	l
 DFHack GUI Animal assignment: race	种族	l
+DFHack GUI Autochop settings: Chop	采伐	l
+DFHack GUI Autochop settings: Prot	保护	l
 DFHack GUI Autodump: Destroy items	销毁物品	l
 DFHack GUI Caption: Capture output	显示输出	l
 DFHack GUI Caption: Delete command	删除命令	l
@@ -93476,6 +93540,8 @@ DFHack GUI Sitemap: caged merchant	被囚禁的商人	l
 DFHack GUI Sitemap: caged wildlife	被囚禁的野生动物	l
 DFHack GUI Spectate activity: Play	游玩	l
 DFHack GUI Spectate activity: Read	阅读	l
+DFHack GUI Spectate settings: Name	名称	l
+DFHack GUI Spectate settings: None	无	l
 DFHack GUI Squad assignment: Show:	显示：	l
 DFHack GUI Teleport: Deselect unit	取消选择该单位	l
 DFHack help: "--cmd [ <command> ]"	"--cmd [ <command> ]"	l
@@ -98416,6 +98482,9 @@ Converting to smoothing blueprint	将打磨指定区域转为蓝图	wo
 Convict a suspect for this crime.	将嫌疑人判定为此案的罪犯。	hj
 Corrupt {s} of {e}, agreed in {d}	拉拢{e1}的{s1}（第{d1}年商定）	hPt
 DFHack GUI Animal assignment: Pet	宠物	l
+DFHack GUI Autochop settings: Off	关闭	l
+DFHack GUI Autofish settings: Yes	是	l
+DFHack GUI Autofish settings: not	暂停	l
 DFHack GUI Control tool: autochop	自动伐木（autochop）	l
 DFHack GUI Control tool: autofarm	自动种植（autofarm）	l
 DFHack GUI Control tool: autofish	自动捕鱼（autofish）	l
@@ -98438,6 +98507,7 @@ DFHack GUI Rename type: Guildhall	行会大厅	l
 DFHack GUI Sitemap: caged hostile	被囚禁的敌对生物	l
 DFHack GUI Sitemap: caged invader	被囚禁的入侵者	l
 DFHack GUI Sitemap: caged visitor	被囚禁的访客	l
+DFHack GUI Spectate settings: Job	工作	l
 DFHack GUI Squad assignment: Only	仅限	l
 DFHack help: "--duration <ticks>"	"--duration <ticks>"	l
 DFHack help: "--getfield <field>"	"--getfield <field>"	l
@@ -102663,6 +102733,8 @@ Conversation keyword: withdrawal	撤军	l
 Conversation mood: Disillusioned	幻灭	l
 Conversation relationship: Loyal	忠诚	l
 Converting to chopping blueprint	将砍伐指定区域转为蓝图	wo
+DFHack GUI Autochop settings: On	开启	l
+DFHack GUI Autofish settings: No	否	l
 DFHack GUI Caption: Edit command	编辑命令	l
 DFHack GUI Caption: Name/Command	名称／命令	l
 DFHack GUI Control tool: combine	合并物品堆（combine）	l
@@ -118499,8 +118571,11 @@ DFHack GUI Quantum: Manual	手动	l
 DFHack GUI Quantum: Single	单选	l
 DFHack GUI Quickfort: Hide	隐藏	l
 DFHack GUI Quickfort: Show	显示	l
+DFHack GUI Title: Autochop	自动伐木	l
 DFHack GUI Title: Autodump	自动倾倒	l
+DFHack GUI Title: Autofish	自动捕鱼	l
 DFHack GUI Title: Set name	设置名称	l
+DFHack GUI Title: Spectate	观战	l
 DFHack GUI Title: Teleport	单位传送	l
 DFHack help: "--age <num>"	"--age <num>"	l
 DFHack help: "--atReclaim"	"--atReclaim"	l
@@ -182126,6 +182201,7 @@ a well	井	h
 a work	一部作品	h
 a yard	院落	h
 abbess	修道院长	h
+abbess	修道院长	wi
 abbeys	修道院	wi
 about 	这件事	wi
 acorns	橡子	wi

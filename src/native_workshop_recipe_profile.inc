@@ -51,16 +51,17 @@ static bool resolve_native_workshop_recipe_profile(NativeWorkshopRecipeProfile &
     // strings, so retain this producer's exact boundaries without that filter.
     profile.paragraph_calls = {
         {0x8c3327, 0x8e7310,
-            reinterpret_cast<const void *>(&capture_native_workshop_recipe_paragraph)},
+            reinterpret_cast<const void *>(&capture_native_workshop_product_paragraph),
+            {0x49,0x89,0xf1}}, // mov r9,rsi: the current product job_item
     };
     if (!native_reference_calls(profile.paragraph_calls, 0)) return false;
     profile.normalize = reinterpret_cast<NativeWorkshopRecipeStringFn>(base + profile.begin_target);
     profile.destroy = reinterpret_cast<NativeWorkshopRecipeStringFn>(base + profile.end_target);
     // Both original calls take only RCX, leave their return value unused, and
     // already reserve native shadow space. RDX/R8 are volatile at the calls.
-    // Pass the live, nonvolatile R13 destination and the source's stack local
-    // to the shared callbacks without changing native strings or stack state.
-    profile.begin_arguments = {0x4c,0x89,0xea}; // mov rdx,r13
+    // Pass the live, nonvolatile R13 destination and RSI job_item to the
+    // capture; neither native strings nor the job requirement are modified.
+    profile.begin_arguments = {0x4c,0x89,0xea,0x49,0x89,0xf0}; // mov rdx,r13; mov r8,rsi
     profile.end_arguments = {0x4c,0x89,0xea,0x4c,0x8d,0x45,0x18}; // + lea r8,[rbp+18]
 #else
     // ELF job tooltip 1377940 submits products at 1377ddc and requirements

@@ -10,8 +10,8 @@
     "Chinese"
   ],
   "visibility": 0,
-  "changelog": "[h2]DFCN v53.16-20261026[/h2]\n[list]\n[*]修正锻砧物品名称被通用词条覆盖的问题，统一显示为“锻砧”。\n[*]修正锤刑官职务被误译为“锻工”的问题。\n[*]修正阉割攻击的战斗报告误译，准确显示“这一击造成了阉割！”。\n[*]优化关于生命短暂和克服恐惧的情绪对白，使中文表达更自然、贴合语境。\n[/list]\n",
-  "release_tag": "v53.16-20261026",
-  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261026",
+  "changelog": "[h2]DFCN v53.16-20261028[/h2]\n[list]\n[*]修复带有任务数量的任务完成公告漏译问题。\n[*]补全 DFHack 观战、自动伐木和自动捕鱼设置界面的汉化，覆盖选项、统计信息及状态提示。\n[*]补全 DFHack 自动训练界面的人员名称与自动生成小队名称翻译，自定义小队名称保持原样。\n[*]修正工坊配方、工单条件和建筑内物品列表中的灰烬译名，避免与白蜡树及同名木材混淆。\n[*]调整工单条件中“物品：”与材料名称的衔接和间距，保留各自文字颜色。\n[*]修复帮助弹窗中“不再显示”选项因复选框字符而漏译的问题。\n[/list]\n",
+  "release_tag": "v53.16-20261028",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028",
   "github_url": "https://github.com/pokemonchw/dfcn"
 }

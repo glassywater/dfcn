@@ -1,0 +1,288 @@
+# Source: locally subscribed Mcnuggy's Mythical Beasts, Workshop 3010868752, version 3.2 (302).
+# UTF-8 runtime dictionary: source, translation, flags. Preserve authored spelling in source keys.
+Mcnuggy's Mythical Beasts	Mcnuggy 神话异兽	l
+Adds 36 different mythical beast that are common in fantasy media, as well as some less common ones that I thought would fit the setting.	加入36种不同的神话异兽，既有奇幻作品中的常见生物，也有一些较少见、但我认为适合本作设定的生物。	lP
+Fixed typo in Qilin's biome tag.	修正了麒麟生物群系标签中的拼写错误。	lP
+
+# Creature and caste descriptions.
+A massive two-headed bird with reptile features. Born when a chicken egg is incubated in infernal fires. Beware it's lower head's paralyzing venom!	一种具有爬行动物特征的巨型双头鸟，由鸡蛋在炼狱之火中孵化而成。小心它下方头颅所含的麻痹毒液！	lP
+A massive bird that's skin is made of the volcanic stone and gems it subsist on. It's flame's color is said to change with it's diet. Beware it's molten blood!	一种巨鸟，以火山岩和宝石为食，皮肤也由这些物质构成。据说它身上火焰的颜色会随食物而改变。小心它熔融的血液！	lP
+A large dragon covered in white feathers and massive claws. It is magical and can shoot breath colder than death!	一种披着白羽、长有巨爪的大型龙。它具有魔力，能喷出比死亡还要冰冷的吐息！	lP
+A giant, fat dragon that drags itself around hunting for food. It melts it's prey before swallowing whatever remains. It's breath is a death knell for all before it.	一种庞大肥硕的龙，拖着身躯四处觅食。它先将猎物溶解，再吞下剩余的一切。它的吐息是面前所有生灵的丧钟。	lP
+A large serpentine dragon that stalks the deepest reaches of the ocean. It's said to swallow ships that tresspass in it's waters whole. Beware it's volleys of lightning!	一种游弋于大洋最深处的巨型蛇龙。据说它会将闯入其领海的船只整个吞下。小心它接连释放的闪电！	lP
+A giant serpentine beast with thousands of teeth it uses to mercilessly devour anything in it's wake. Beware the sharp rocks it can expell!	一种巨大的蛇形异兽，长有数千颗牙齿，会无情地吞噬沿途的一切。小心它喷出的尖锐岩石！	lP
+An ancient dragon that has been dead for centuries. Some otherworldly force has raised it from it's slumber for the goal of rendering all life to ash. Beware it's fetid breath and legions of undead!	一条已死去数百年的古龙。某种异界力量将它从长眠中唤醒，意图将一切生命化为灰烬。小心它腐臭的吐息和麾下的亡灵大军！	lP
+A creature of great strength and speed possessing the upper body of a man and the lower body of a horse. They are free-spirited people who scour the plains.	一种拥有人的上半身和马的下半身的生物，力量强大，行动迅捷。它们天性自由，漫游于辽阔的平原。	lP
+A miserable creature that is born from dark magic conjoining the mutilated parts of various animals.	一种可悲的生物，由黑魔法将各种动物的残缺肢体拼合而成。	lP
+An agile and proud beast that is the hybrid of a lion and an eagle.	一种兼具狮子与鹰特征的异兽，敏捷而高傲。	lP
+A hardy beast that is a hybrid of an eagle and a horse. Bred for moving small amounts of goods over long distances in the air.	一种兼具鹰与马特征的强健异兽，被培育用于在空中长途运送少量货物。	lP
+A sinister aquatic equpine that preys on anything foolish enough to wander close to the water's edge.	一种阴险的水生马形生物，会捕食任何愚蠢到靠近水边的猎物。	lP
+A disgusting mass of eyeballs that's been animated by dark magic. Arch mogals are capable of creating mindless, weaker clones of itself.	一团被黑魔法赋予生命的恶心眼球。高等魔眼能够制造没有心智、较为弱小的自身复制体。	lP
+Large mogalls with wings capable of creating mindless clones of themselves. Can shoot globs of their blood out of their eyes.	一种长有翅膀的大型魔眼，能够制造没有心智的自身复制体，还能从眼中射出血团。	lP
+Smaller, weaker mogalls spawned from an arch mogall. Can lash at their foes with their tentacles and shoot small globs of their blood out of their eye.	由高等魔眼生成的较小、较弱的魔眼。它能用触手抽打敌人，并从眼中射出小血团。	lP
+An extremely timid, horse-like creature sporting a pair of wings.	一种极为胆小的马形生物，长着一对翅膀。	lP
+A skittish, lengthy creature that resembles a deer with the wings of a pheasant.	一种容易受惊、身形修长的生物，形似长着雉鸡翅膀的鹿。	lP
+A tiny winged humanoid with shifting colors which performs intricate aerial dances in large groups.	一种带翅膀的微小人形生物，体色变幻不定，常成群结队地在空中跳着复杂的舞蹈。	lP
+A long feathered serpent that stalks the marshes that make up it's territory.	一种身披羽毛的长蛇，游荡于作为其领地的沼泽中。	lP
+Creatures formed by water spirits using magic to give themselves a body composed of water for protection. Capable of shooting hardened parts of their body at enemies.	水之精灵用魔法为自己塑造水体以作保护，由此形成的生物。它们能够将身体的一部分凝固后射向敌人。	lP
+A large canine that inhabits the underground caverns. It is highly territorial, and will attack anything that wanders into it's home. But they are smart creatures, and can be trained into companions as equally loyal as their domestic canine relatives.	一种栖息在地下洞穴中的大型犬科动物。它领地意识极强，会攻击任何闯入家园的生物。不过它颇为聪明，经过训练，可以成为与家犬同样忠诚的伙伴。	lP
+A bizarre creature resembling a rabbit, but with multiple other creature's body parts grafted onto it. Despite being chimeric in body, it is rather good natured. Don't let that fool you however, it can be extremely aggressive when threatened, but it can be calmed with alcohol.	一种外形似兔的奇异生物，身上却拼接着多种其他生物的肢体。虽然身体形如嵌合怪，它的性情却相当温和。但别因此大意，它受到威胁时会变得极为凶暴，不过酒能使它平静下来。	lP
+A medium-sized reptile that is the distant relative of the terrible dragon. Rather docile, but capable of defending themselves with a weak burst of fire breath. They are very protective of their young.	一种中等体型的爬行动物，是可怕巨龙的远亲。性情较为温顺，但能喷出一小股火焰自卫。它们非常护崽。	lP
+A small animated statue often used for protection by necromancers.	一种被赋予生命的小型雕像，常被死灵法师用作护卫。	lP
+Animated sets of armor born from foolish adventurers venturing out too recklessly.	愚蠢的冒险者贸然出行后留下的盔甲，如今获得了生命。	lP
+Animated sets of armor born from foolish adventurers too reckless for their own good.	愚蠢的冒险者因莽撞而自取灭亡，留下的盔甲如今获得了生命。	lP
+Animated sets of armor born from foolish adventurers too confident in their abilities.	愚蠢的冒险者过于自信，留下的盔甲如今获得了生命。	lP
+Animated sets of armor born from adventurers foolishly thinking they were invicible.	冒险者愚蠢地以为自己天下无敌，留下的盔甲如今获得了生命。	lP
+An elusive creature that stalks swamplands seeking privacy and safety. Beware, if enraged, it can turn it's aggressors into stone.	一种行踪隐秘的生物，为求清静与安全而隐居沼泽。小心，它被激怒时能将攻击者化为石头。	lP
+The remains of a victim turned to stone.	一位受害者被石化后留下的遗骸。	lP
+A large black horse featuring a pair of blood red horns. They are almost completely apathetic, avoiding confrontation at all cost.	一种长着一对血红色角的大型黑马。它们几乎对一切都漠不关心，竭力避免任何冲突。	lP
+An extremely rare, large hoofed beast covered in shimmering scales and posessing a flowing mane resembling fire. It gallops through pure forest and wetlands. It is said spotting one causes one extreme good luck.	一种极为罕见的大型有蹄异兽，遍体鳞光闪烁，飘逸的鬃毛宛如火焰。它奔行于纯净的森林与湿地之间。据说见到它的人会交上鸿运。	lP
+Long-lived humanoid creatures resembling trees. They live in deep forest and ruthlessly defend the place of their birth for their entire centuries long life.	一种形似树木的长寿人形生物。它们生活在密林深处，在长达数百年的一生中，始终毫不留情地保卫自己的出生之地。	lP
+A newly sprouted Ent. Has yet to reach an impressive size, so it is rather harmless.	一株刚刚萌发的树人。它还没有长成庞大的身躯，因此基本无害。	lP
+The adult form of an Ent. They've grown much larger than most creatures at this size, and are the most likely to venture from their home groves to see the outside world in their youth. As such, they are the most commonly seen by other races.	树人的成年形态，此时已比大多数生物高大得多。年轻的它们最有可能离开故乡的树林，外出探索世界，因此也是其他种族最常见到的树人。	lP
+The fully mature form of an Ent. Having satisfied their curiosity exploring in their youth, these gigantic ents return home to their birthplace to defend it from any would-be intruders or foresters.	树人完全成熟后的形态。年轻时的探索满足了好奇心，这些巨大的树人便回到出生之地，抵御一切企图闯入者或伐木者。	lP
+An old, rotted Ent that has lived for centuries. They are too old to defend their groves, so they instead spend their time nurturing the new seedlings. Do not be fooled into thinking they are defenseless, however.	一种活了数百年、身躯已开始腐朽的年迈树人。它们年事已高，无力继续守卫树林，转而照料新生的幼苗。不过，可别因此以为它们毫无自卫之力。	lP
+A large beast with the body of a lion and the face of a man. They are tricksters, and love preying on other unfortunate races.	一种狮身人面的大型异兽。它们诡计多端，喜欢捕食其他不幸的种族。	lP
+A mighty wolf composed of ice. Their bites are cold as the grave.	一种由冰构成的强大巨狼。它的撕咬如坟墓般冰冷。	lP
+A gargantuan beast with a rock shell. Despite it's size, it is a gentle giant supposing it is left alone.	一种披着岩石甲壳的庞然巨兽。虽然体型惊人，只要不去招惹，它便是温和的巨人。	lP
+A small, magical creature that is a distant cousin to the mighty dragon. They are peaceful creatures, preferring to stick to themselves. Though even when angered, they are not particularly threatening. Doesn't stop them from trying, however.	一种具有魔力的小型生物，是强大巨龙的远亲。它们性情平和，喜欢独处。即使被激怒也没什么威胁，不过它们还是会努力摆出凶狠的架势。	lP
+A medium sized bird covered in bronze feathers. They flock together for protection—raining a volley of metal feathers on their attackers.	一种披着青铜羽毛的中型鸟类。它们聚群自保，向来犯者倾泻金属羽毛之雨。	lP
+A large creature resembling a hybrid of a owl and a bear. Sporting a pair of talons that can slash through metal, they rightfully challenge anything that bothers them.	一种兼具猫头鹰与熊特征的大型生物。它的一对利爪能够撕开金属，因此有底气向任何胆敢招惹它的生物发起挑战。	lP
+A small serpent resembling a rooster. While physically quite weak, they posses a deadly magic gaze capable of rendering it's victim encased in stone. While terrifying, this allifiction wears off after a few days, supposing it's victim survives long enough.	一种形似公鸡的小蛇。它身体虽弱，却拥有致命的魔法凝视，能将受害者封入石头。虽然可怕，只要受害者能活到那时，这种效果便会在几天后消退。	lP
+A small plant monster that lives in underground caverns. They shuffle around aimlessly, seemingly without a thought in the world. They're delicious if brewed, though they're technically poisonous. Moderation is required when consuming them.	一种生活在地下洞穴中的小型植物怪物。它们漫无目的地拖着步子四处游荡，仿佛脑中空无一物。用它们酿出的酒十分美味，不过严格来说它们有毒，食用时必须适量。	lP
+A small, magical carnivore resembling a cat. They posses keen eyes capable of spotting both prey and predators from far away. They can make fantastic pets, should you win one's trust.	一种形似猫、具有魔力的小型食肉动物。它目光敏锐，能从远处发现猎物和天敌。如果赢得它的信任，它会成为极好的宠物。	lP
+A huge monster in the shape of a griffon.	一种形如狮鹫的巨型怪物。	lP
+A huge monsterous form of the fae dragon. Unlike it's smaller relatives, these ones never forgot they were mighty dragons.	精灵龙的巨大怪兽形态。与娇小的亲族不同，它们从未忘记自己是强大的龙。	lP
+A huge monster in the shape of a bicorn.	一种形如双角兽的巨型怪物。	lP
+A huge monster in the shape of a warg.	一种形如座狼的巨型怪物。	lP
+A huge chimera composed of countless animal parts. This monster is made for war.	一种由无数动物肢体拼成的巨型奇美拉。这头怪物是为战争而造的。	lP
+A huge monster in the shape of a stymphalian bird.	一种形如斯廷法利斯怪鸟的巨型怪物。	lP
+
+# Preference reasons are scoped fields, not global substring replacements.
+Preference reason: colorful feathers	色彩斑斓的羽毛	l
+Preference reason: serrated beak	锯齿状的喙	l
+Preference reason: fluffy down	蓬松的绒羽	l
+Preference reason: ice horns	冰角	l
+Preference reason: disgusting breath	令人作呕的吐息	l
+Preference reason: flabby body	肥硕松软的身躯	l
+Preference reason: glimmering body	闪光的身躯	l
+Preference reason: rain of death	死亡之雨	l
+Preference reason: trembling movement	震动大地的步伐	l
+Preference reason: rows of teeth	层层排列的牙齿	l
+Preference reason: rotting body	腐烂的身躯	l
+Preference reason: fetid breath	腐臭的吐息	l
+Preference reason: strength	力量	l
+Preference reason: agility	敏捷的身手	l
+Preference reason: terrifying features	可怕的外貌	l
+Preference reason: bushy mane	浓密的鬃毛	l
+Preference reason: bravery	勇气	l
+Preference reason: speed	速度	l
+Preference reason: hardy nature	强健的体魄	l
+Preference reason: endurance	耐力	l
+Preference reason: evil nature	邪恶的天性	l
+Preference reason: mossy mane	苔藓般的鬃毛	l
+Preference reason: horrid screams	骇人的尖叫	l
+Preference reason: mass of eyes	成团的眼球	l
+Preference reason: wings	翅膀	l
+Preference reason: long legs	修长的腿	l
+Preference reason: strong antlers	强壮的鹿角	l
+Preference reason: shifting colors	变幻的体色	l
+Preference reason: intricate aerial dances	复杂的空中舞蹈	l
+Preference reason: long bodies	修长的身躯	l
+Preference reason: menacing beak	吓人的喙	l
+Preference reason: magical properties	神奇的魔力	l
+Preference reason: loyalty	忠诚	l
+Preference reason: toothy grin	龇牙咧嘴的笑容	l
+Preference reason: bizare features	古怪的外貌	l
+Preference reason: ability to hold liquor	好酒量	l
+Preference reason: shimmering scales	闪耀的鳞片	l
+Preference reason: dedication to their young	对幼崽的呵护	l
+Preference reason: stoney skin	石质皮肤	l
+Preference reason: haunting clangs	令人毛骨悚然的铿锵声	l
+Preference reason: stunning glare	令人石化的凝视	l
+Preference reason: reclusive nature	隐居的天性	l
+Preference reason: blood red horns	血红色的角	l
+Preference reason: fiery mane	火焰般的鬃毛	l
+Preference reason: majesty	威仪	l
+Preference reason: long lifespan	悠长的寿命	l
+Preference reason: sheer height	惊人的身高	l
+Preference reason: toothy smile	露齿的笑容	l
+Preference reason: riddles	谜语	l
+Preference reason: ice fangs	冰制獠牙	l
+Preference reason: impressive size	惊人的体型	l
+Preference reason: docile nature	温顺的性情	l
+Preference reason: tenacity	顽强的性格	l
+Preference reason: colorful wings	色彩斑斓的翅膀	l
+Preference reason: cute features	可爱的外貌	l
+Preference reason: squishy bodies	软绵绵的身体	l
+Preference reason: metalic feathers	金属羽毛	l
+Preference reason: ferocity	凶猛的性情	l
+Preference reason: massive claws	巨大的利爪	l
+Preference reason: blood red crest	血红色的冠	l
+Preference reason: funny walk	滑稽的步态	l
+Preference reason: drink strength	酿成酒后的烈劲	l
+Preference reason: alertness	警觉	l
+Preference reason: cunning	机敏	l
+Preference reason: extreme kick	强烈的劲道	l
+
+# Adventure ability captions (CDI:ADV_NAME) and learned-power announcements.
+Adventure action: Basilisk Gaze	蛇怪凝视	l
+Adventure action: Clean	清洁	l
+Adventure action: Create mogalls	创造魔眼	l
+Adventure action: Cry Blood	泣血	l
+Adventure action: Dragon's Decree	龙之敕令	l
+Adventure action: Gorgon stare	戈耳工凝视	l
+Adventure action: Head bump	用头蹭蹭	l
+Adventure action: Hurl rock shard	投射岩石碎片	l
+Adventure action: Pet animal	抚摸动物	l
+Adventure action: Qilin's Blessing	麒麟赐福	l
+Adventure action: Shoot Icebolt	发射冰箭	l
+Adventure action: Spit	吐唾沫	l
+Adventure action: Use fetid breath	喷吐腐臭气息	l
+Adventure action: Use frost breath	喷吐寒霜	l
+Adventure action: Use ice breath	喷吐寒冰	l
+Adventure action: Use poison breath	喷吐剧毒	l
+Adventure action: cough fireball	咳出火球	l
+Adventure action: released eletricity	释放闪电	l
+Adventure action: released powder	释放催眠粉	l
+Adventure action: shoots feathers	发射羽毛	l
+Announcement combat ability []: Basilisk Gaze	蛇怪凝视	l
+Announcement combat ability []: Clean	清洁	l
+Announcement combat ability []: Create mogalls	创造魔眼	l
+Announcement combat ability []: Cry Blood	泣血	l
+Announcement combat ability []: Dragon's Decree	龙之敕令	l
+Announcement combat ability []: Gorgon stare	戈耳工凝视	l
+Announcement combat ability []: Head bump	用头蹭蹭	l
+Announcement combat ability []: Hurl rock shard	投射岩石碎片	l
+Announcement combat ability []: Pet animal	抚摸动物	l
+Announcement combat ability []: Qilin's Blessing	麒麟赐福	l
+Announcement combat ability []: Shoot Icebolt	发射冰箭	l
+Announcement combat ability []: Spit	吐唾沫	l
+Announcement combat ability []: Use fetid breath	喷吐腐臭气息	l
+Announcement combat ability []: Use frost breath	喷吐寒霜	l
+Announcement combat ability []: Use ice breath	喷吐寒冰	l
+Announcement combat ability []: Use poison breath	喷吐剧毒	l
+Announcement combat ability []: cough fireball	咳出火球	l
+Announcement combat ability []: released eletricity	释放闪电	l
+Announcement combat ability []: released powder	释放催眠粉	l
+Announcement combat ability []: shoots feathers	发射羽毛	l
+
+# Authored interaction predicates. Units remain typed identity fields.
+Announcement combat mythical-beasts-effect []: breathes fetid breath	喷出腐臭吐息	l
+Announcement combat mythical-beasts-effect []: breathed fetid breath	喷出了腐臭吐息	l
+Announcement combat mythical-beasts-effect []: breathes frostbreath	喷出寒霜吐息	l
+Announcement combat mythical-beasts-effect []: breathed frostbreath	喷出了寒霜吐息	l
+Announcement combat mythical-beasts-effect []: breathes poison	喷出剧毒吐息	l
+Announcement combat mythical-beasts-effect []: breathed poison	喷出了剧毒吐息	l
+Announcement combat mythical-beasts-effect []: coughed a fireball	咳出了一个火球	l
+Announcement combat mythical-beasts-effect []: coughs fireballs	咳出火球	l
+Announcement combat mythical-beasts-effect []: create mogalls	创造魔眼	l
+Announcement combat mythical-beasts-effect []: creates mogalls	创造魔眼	l
+Announcement combat mythical-beasts-effect []: cries blood	流出血泪	l
+Announcement combat mythical-beasts-effect []: cried blood	流出了血泪	l
+Announcement combat mythical-beasts-effect []: does a petrifying glare	施展石化凝视	l
+Announcement combat mythical-beasts-effect []: is petrified	被石化了	l
+Announcement combat mythical-beasts-effect []: hurls a rock shard	投射出一块岩石碎片	l
+Announcement combat mythical-beasts-effect []: raises dead	唤起亡者	l
+Announcement combat mythical-beasts-effect []: raised dead	唤起了亡者	l
+Announcement combat mythical-beasts-effect []: release electricity	释放闪电	l
+Announcement combat mythical-beasts-effect []: releases electricity	释放闪电	l
+Announcement combat mythical-beasts-effect []: release powder	释放催眠粉	l
+Announcement combat mythical-beasts-effect []: releases powder	释放催眠粉	l
+Announcement combat mythical-beasts-effect []: shot an icebolt	射出了一支冰箭	l
+Announcement combat mythical-beasts-effect []: shoots an icebolt	射出一支冰箭	l
+Announcement combat mythical-beasts-effect []: shot feathers	射出了羽毛	l
+Announcement combat mythical-beasts-effect []: shoots feathers	射出羽毛	l
+Announcement combat mythical-beasts-effect []: spit slush	喷出冰浆	l
+Announcement combat mythical-beasts-effect []: spits slush	喷出冰浆	l
+Announcement combat mythical-beasts-effect []: spat slush	喷出了冰浆	l
+Announcement combat sentence [unit,mythical-beasts-effect]: {s} {s}!	{s1}{s2}！	l
+Announcement combat sentence [unit,mythical-beasts-effect]: {s} {s}.	{s1}{s2}。	l
+Announcement combat sentence [mythical-beasts-effect]: You {s}!	你{s1}！	l
+Announcement combat sentence [mythical-beasts-effect]: You {s}.	你{s1}。	l
+
+# Custom melee verbs join the existing attack/damage grammar.
+Announcement combat attack-verb []: claw at	挥爪攻击	l
+Announcement combat attack-verb []: claws at	挥爪攻击	l
+Announcement combat attack-verb []: claw	爪击	l
+Announcement combat attack-verb []: claws	爪击	l
+Announcement combat attack-verb []: gnaw	啃咬	l
+Announcement combat attack-verb []: gnaws	啃咬	l
+Announcement combat attack-verb []: lash	抽打	l
+Announcement combat attack-verb []: lashes	抽打	l
+Announcement combat attack-verb []: lunge at	猛扑向	l
+Announcement combat attack-verb []: lunges at	猛扑向	l
+Announcement combat attack-verb []: slash	劈砍	l
+Announcement combat attack-verb []: slashes	劈砍	l
+Announcement combat attack-verb []: snatch at	猛抓	l
+Announcement combat attack-verb []: snatches at	猛抓	l
+
+# SOUND labels include the author's unusual peaceful verbs, not only roars.
+Announcement combat mythical-beasts-sound []: a booming roar	震耳欲聋的咆哮声	l
+Announcement combat mythical-beasts-sound []: a loud roar	响亮的咆哮声	l
+Announcement combat mythical-beasts-sound []: a ferocious roar	凶猛的咆哮声	l
+Announcement combat mythical-beasts-sound []: an electrifying roar	雷霆般的咆哮声	l
+Announcement combat mythical-beasts-sound []: a loud distorted screech	响亮而扭曲的尖啸声	l
+Announcement combat mythical-beasts-sound []: a loud screech	响亮的尖啸声	l
+Announcement combat mythical-beasts-sound []: the wriggling of something slimey	黏滑之物的蠕动声	l
+Announcement combat mythical-beasts-sound []: the crackle of lightning	闪电的噼啪声	l
+Announcement combat mythical-beasts-sound []: the whistle of the wind	风的呼啸声	l
+Announcement combat mythical-beasts-sound []: the disgusting shuffle of meat	令人作呕的血肉蠕动声	l
+Announcement combat mythical-beasts-sound []: distant flickering flames	远处火焰跃动的声音	l
+Announcement combat mythical-beasts-sound []: a distant cluck	远处传来的咯咯声	l
+Announcement combat mythical-beasts-sound []: the shift of the earth	大地移动的声音	l
+Announcement combat sentence [mythical-beasts-sound]: You hear {s}.	你听到了{s1}。	l
+Announcement combat mythical-beasts-effect []: roar	咆哮	l
+Announcement combat mythical-beasts-effect []: roars	咆哮	l
+Announcement combat mythical-beasts-effect []: screech	发出尖啸	l
+Announcement combat mythical-beasts-effect []: screechs	发出尖啸	l
+Announcement combat mythical-beasts-effect []: make a distorted screech	发出扭曲的尖啸声	l
+Announcement combat mythical-beasts-effect []: makes a distorted screech	发出扭曲的尖啸声	l
+Announcement combat mythical-beasts-effect []: hear something slimey	听到黏滑之物发出的声音	l
+Announcement combat mythical-beasts-effect []: hears something slimey	听到黏滑之物发出的声音	l
+Announcement combat mythical-beasts-effect []: hear crackling of lightning	听到闪电的噼啪声	l
+Announcement combat mythical-beasts-effect []: hears the crackling of lightning	听到闪电的噼啪声	l
+Announcement combat mythical-beasts-effect []: hear distant whistling wind	听到远处呼啸的风声	l
+Announcement combat mythical-beasts-effect []: hears the distant whistle of wind	听到远处呼啸的风声	l
+Announcement combat mythical-beasts-effect []: hear shuffling of meat	听到血肉蠕动的声音	l
+Announcement combat mythical-beasts-effect []: hears the shuffling of meat	听到血肉蠕动的声音	l
+Announcement combat mythical-beasts-effect []: hear the flicker of flames	听到火焰跃动的声音	l
+Announcement combat mythical-beasts-effect []: hears the flicker of flames	听到火焰跃动的声音	l
+Announcement combat mythical-beasts-effect []: hear a distant cluck	听到远处传来的咯咯声	l
+Announcement combat mythical-beasts-effect []: hears a distant cluck	听到远处传来的咯咯声	l
+Announcement combat mythical-beasts-effect []: hear the shifting of earth	听到大地移动的声音	l
+Announcement combat mythical-beasts-effect []: hears shifting of earth	听到大地移动的声音	l
+
+# Explicit RAW gaits use the existing movement field dictionary.
+Adventure movement: Crawl	爬行	l
+Adventure movement: Creep	缓缓爬行	l
+Adventure movement: Fast Crawl	快速爬行	l
+Adventure movement: Faster Crawl	高速爬行	l
+Adventure movement: Scramble	全速爬行	l
+Adventure movement: Slow Crawl	缓慢爬行	l
+Adventure movement: Creeping Swim	缓缓游泳	l
+Adventure movement: Fast Swim	快速游泳	l
+Adventure movement: Faster Swim	高速游泳	l
+Adventure movement: Maximum Swim Speed	全速游泳	l
+Adventure movement: Slow Swim	缓慢游泳	l
+Adventure movement: Swim	游泳	l
+
+# Complete syndrome/arena captions; contextual syndrome prose also has TOML rules.
+gorgon stare	戈耳工凝视	l
+basilisk gaze	蛇怪凝视	l
+qilin's blessing	麒麟赐福	l
+Dragon Raise	亡龙唤尸	l
+ENT_SAP	树人树液中毒	l
+MOGALL_BLOOD	魔眼血液中毒	l
+UNDEAD_DRAGON_BLOOD	亡灵龙血中毒	l
+chimera bite	奇美拉咬伤	l
+giant chimera bite	巨型奇美拉咬伤	l
+cockatrice bite	鸡蛇咬伤	l
+fenrir bite	芬里尔咬伤	l
+eepy_disease	嗜睡症	l
+eepier disease	重度嗜睡症	l
+fetidbreath	腐臭吐息中毒	l
+poisonbreath	剧毒吐息中毒	l
+mandrake toxin	曼德拉草毒素	l
+mandrake poison	曼德拉草中毒	l
+Animated corpse	活化尸体	l

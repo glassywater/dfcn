@@ -60,7 +60,7 @@ Linux 源码已实现 **Shift+F6**、**Shift+F8** 和游戏根目录 `dfcn_confi
 
 Windows 本版可用 **Shift+F6** 临时停用或恢复全部扩展数据，并立即重新载入汉化；扩展停用时继续使用本体词表和规则。当前 Linux 发布包尚未包含此快捷键。
 
-目前公开提供 **Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta** 四个独立创意工坊汉化数据包；其余 18 个 Mod 汉化数据包已下架（设为私密），本地资源与源码目录保留。四个公开数据包的订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
+目前公开提供 **Dwarvemon、Dwarvemon Entity Type、Dwarvemon Entity All、Dwarvemon Beta、Real Book/Scroll Content!、Mcnuggy's Mythical Beasts** 六个独立创意工坊汉化数据包；其余 17 个 Mod 汉化数据包已下架（设为私密），本地资源与源码目录保留。六个公开数据包的订阅链接见 [Mod 汉化数据扩展索引](workshop/README.local-zh-CN.md)。
 
 使用扩展需要安装 [DFCN 汉化核心](https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379)，并订阅对应的原模组和汉化数据包。DFCN 自动读取已下载的数据，无需手工复制，也无需在创建世界的模组列表中启用汉化数据包；原模组按其作者说明使用。
 
@@ -76,16 +76,16 @@ Windows 本版可用 **Shift+F6** 临时停用或恢复全部扩展数据，并�
 
 工坊入口从 `info.txt`、`INSTALL.txt`、`CHANGELOG.txt`、`install.bat` 和 Windows 运行 ZIP 重建整个 `workshop/content`，不沿用内容目录中的旧 ZIP、缓存或其他遗留文件。`DFCN/` 保持完整 Windows 运行目录，入口配置改为工坊订阅路径，并提供对应的工坊安装说明。
 
-入口生成 `DFCN-Windows-workshop.zip`，并将 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type 四个公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。另在 `workshop/semantic-search` 生成独立模型包 `dfcn_semantic_search.zip`。独立汉化扩展、语义模型与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。Linux 独立运行包仍从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 获取。
+入口生成 `DFCN-Windows-workshop.zip`，并将 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type、Real Book/Scroll Content!、Mcnuggy's Mythical Beasts 六个公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。另在 `workshop/semantic-search` 生成独立模型包 `dfcn_semantic_search.zip`。独立汉化扩展、语义模型与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。Linux 独立运行包仍从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 获取。
 
 Linux 宿主打包已有的 Windows 交叉编译产物时，使用固定 Python 执行
 `tools/package-windows-cross.py`。该脚本读取同一 Windows 运行文件清单，
 使用已安装的 MinGW-w64 `strip` 处理临时 DLL 副本，生成完整 Windows 包、
-Windows 工坊包和四个公开扩展 ZIP，不编译或生成数据。
+Windows 工坊包和六个公开扩展 ZIP，不编译或生成数据。
 工坊发布工具 `tools/publish-workshop.py` 支持 Linux 已安装的 Steamworks 库及现有登录会话。
 
-当前 Windows 发布版本为 **v53.16-20261024**，变化见
-[更新日志](docs/releases/v53.16-20261024.md)。
+当前 Windows 发布版本为 **v53.16-20261028**，变化见
+[更新日志](docs/releases/v53.16-20261028.md)。
 
 ## Linux 交叉编译 Windows x64
 

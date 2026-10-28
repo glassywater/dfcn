@@ -1,0 +1,6 @@
+base = "psychology::event"
+
+[[rulesets]]
+name = "things::syndrome"
+[rulesets.rules]
+"{::materials::mcnuggys_mythical_beasts::syndrome}" = "{::materials::mcnuggys_mythical_beasts::syndrome}"

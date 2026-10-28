@@ -9,10 +9,12 @@
     "translation",
     "Chinese"
   ],
-  "visibility": 2,
-  "changelog": "完善汉化包性能兼容脚本：生成手册时复用写作事件索引及查询模块，避免逐本扫描世界历史和反复搜索脚本文件；保留完整正文，不修改原模组文件。",
+  "visibility": 0,
+  "changelog": "",
   "required_items": [
     3811193379,
     3752219300
-  ]
+  ],
+  "release_tag": "v53.16-20261028",
+  "release_url": "https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028"
 }

@@ -1,0 +1,16 @@
+base = "health::appearance"
+
+[[rulesets]]
+name = "noun"
+[rulesets.rules]
+# Mod-specific APP_MOD_NOUN and TLCM_NOUN fields.
+"ore" = "矿石"
+"flames" = "火焰"
+"lower scales" = "下部鳞片"
+"root" = "根部"
+"moss" = "苔藓"
+"mane" = "鬃毛"
+"leaves" = "叶片"
+"tail feathers" = "尾羽"
+"water" = "水体"
+"stone" = "岩石"

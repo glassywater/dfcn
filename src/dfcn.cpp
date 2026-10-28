@@ -61,6 +61,7 @@
 #include "translation_state.h"
 #include "translation_result.h"
 #include "native_history_data.h"
+#include "native_job_item_caption.h"
 #include "native_performance_choice.h"
 #include "native_adventure_crafting.h"
 #include "native_adventure_belief_source.h"
@@ -72,6 +73,7 @@
 #include "native_adventure_charge.h"
 #include "native_trade_item_caption.h"
 #include "core_api.h"
+#include "riding_api.h"
 #include "runtime_paths.h"
 #include "search_semantic_model.h"
 #include "translation_extensions.h"
@@ -1929,6 +1931,7 @@ struct NativeParagraphCapture {
     // Insertion order is independent of sequence updates on duplicate rows.
     // Candidate indices must retain the original reverse-list traversal.
     uint64_t registry_order = 0;
+    std::optional<NativeJobItemCaption> job_item_caption{};
 };
 // Overview has its own addst row loop, separate from multiline widgets.
 // Its draw call binds the cached wrap output to the sheet's complete quote;
@@ -2313,6 +2316,9 @@ struct NativeWorkOrderShopCaption {
 };
 static std::optional<NativeWorkOrderShopCaption> capture_native_work_order_shop_caption(
     uintptr_t caller, uintptr_t source);
+using NativeWorkOrderConditionCaption = NativeJobItemCaption;
+static std::optional<NativeWorkOrderConditionCaption> capture_native_work_order_condition_caption(
+    uintptr_t caller, uintptr_t source);
 struct NativeFortressZoneCaption {
     enum class Kind { Type, Location, LocationName, LocationDescription, Unit,
         Squad, SquadCount, Assigned, Present, Imprisoned, Patients, Occupancy, Fixed };
@@ -2437,6 +2443,7 @@ struct NativeDrawnTextRow {
     NativeAdventureBarterField adventure_barter_field = NativeAdventureBarterField::None;
     // The work-order producer owns this complete workshop restriction/name.
     std::optional<NativeWorkOrderShopCaption> work_order_shop_caption{};
+    std::optional<NativeJobItemCaption> work_order_condition_caption{};
     std::optional<NativeFortressZoneCaption> fortress_zone_caption{};
     std::optional<NativeWorkshopTaskCaption> workshop_task_caption{};
     std::optional<NativeArenaTreeCaption> arena_tree_caption{};
@@ -2884,6 +2891,8 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
     // actual addst caller is live, before acquiring the draw registry lock.
     auto work_order_shop_caption = character ? std::nullopt :
         capture_native_work_order_shop_caption(native_caller, address);
+    auto work_order_condition_caption = character ? std::nullopt :
+        capture_native_work_order_condition_caption(native_caller, address);
     auto fortress_zone_caption = character ? std::nullopt :
         capture_native_fortress_zone_caption(native_caller, address);
     auto workshop_task_caption = character ? std::nullopt :
@@ -2954,6 +2963,7 @@ static void remember_native_drawn_text_row(int x, int y, std::string_view source
         NativeDrawnTextRow row{x, y, std::string(source), address,
             is_native_prose_source(source) || short_caption};
         row.work_order_shop_caption = std::move(work_order_shop_caption);
+        row.work_order_condition_caption = std::move(work_order_condition_caption);
         row.fortress_zone_caption = std::move(fortress_zone_caption);
         row.workshop_task_caption = std::move(workshop_task_caption);
         row.arena_tree_caption = std::move(arena_tree_caption);
@@ -5240,6 +5250,9 @@ private:
     std::optional<std::string> translate_fortress_material_use(const std::string &source) const;
     void append_work_order_shop_fields(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
+    void append_work_order_condition_fields(std::vector<std::string> &rows,
+        std::vector<Match> &matches, int only_y) const;
+    TranslationResult translate_native_job_item_material(const NativeJobItemCaption &caption) const;
     void append_fortress_task_rows(std::vector<std::string> &rows,
         std::vector<Match> &matches, int only_y) const;
     void append_fortress_creature_activities(std::vector<std::string> &rows,
@@ -8236,6 +8249,16 @@ static void native_map_preview_prepare();
 static void native_map_preview_reset();
 static void native_map_preview_release();
 static bool native_map_preview_event(const SDL_Event &event);
+static bool native_riding_available();
+static const DfcnRidingMenu &native_riding_menu_snapshot();
+static void native_riding_load();
+static void native_riding_release();
+static void native_riding_frame();
+static void native_riding_open();
+static void native_riding_select(size_t row);
+static bool install_native_riding_hook();
+static void uninstall_native_riding_hook();
+static bool native_riding_hooks_active();
 
 void Overlay::run_settings_menu_action(int action) {
     switch (action) {
@@ -8255,6 +8278,7 @@ void Overlay::run_settings_menu_action(int action) {
         break;
     case 6: native_mouse_coordinates_toggle(); break;
     case 7: native_map_preview_toggle(); break;
+    case 8: native_riding_open(); break;
     }
 }
 
@@ -17906,6 +17930,8 @@ static NativeKeybindingScope capture_native_keybinding_scope(const graphicst &gp
 #include "fortress_tasks.inc"
 #include "fortress_workshop_activities.inc"
 #include "work_order_shop_fields.inc"
+#include "native_job_item_translation.inc"
+#include "work_order_condition_fields.inc"
 #include "fortress_depot.inc"
 #include "fortress_caravan_picker.inc"
 #include "work_order_buttons.inc"
@@ -28032,7 +28058,7 @@ bool Overlay::prepare_immediate_row(bool top_layer, int y) {
                         hash *= 1099511628211ULL;
                     }
                     for (const auto *part : {&item.source, &item.raw_name,
-                            &item.raw_adjective, &item.size_adjective, &item.material_prefix,
+                            &item.raw_adjective, &item.size_adjective, &item.material_id, &item.material_prefix,
                             &item.material_state}) {
                         for (const unsigned char ch : *part) {
                             hash ^= ch;
@@ -44502,6 +44528,7 @@ static void native_settings_menu_release();
 #include "native_settings_menu.inc"
 #include "native_mouse_coordinates.inc"
 #include "native_map_preview.inc"
+#include "native_riding.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
 #include "adventure_home_translation.inc"
@@ -44544,6 +44571,7 @@ DFCN_EXPORT void dfhooks_init() {
     dfcn::start_native_identity_translation_jobs();
     dfcn::native_mouse_coordinates_load();
     dfcn::native_map_preview_load();
+    dfcn::native_riding_load();
     if (!dfcn::install_sdl_hooks()) {
         dfcn::stop_reloadable_core();
         return;

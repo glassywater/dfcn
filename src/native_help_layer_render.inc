@@ -194,6 +194,7 @@ static void native_help_produce_frame() {
     catch (...) {}
     // Dependency completion publishes replacements directly into the exact
     // retained paragraphs. Their native draw was already bound at end_draw.
+    native_riding_frame();
     native_map_preview_refresh();
     native_settings_menu_prepare();
     native_mouse_coordinates_prepare();

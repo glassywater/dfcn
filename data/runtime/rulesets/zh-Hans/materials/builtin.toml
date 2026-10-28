@@ -1,0 +1,26 @@
+base = "materials::builtin"
+
+# Keys are IDs read from native built-in material objects, never displayed
+# state names. Plant materials use their own identities and translation paths.
+# Only confirmed built-in identities with solid descriptions enter this
+# namespace; identically named plant material IDs are not accepted here.
+[[rulesets]]
+name = "solid"
+[rulesets.rules]
+"AMBER" = "琥珀"
+"CORAL" = "珊瑚"
+"GLASS_GREEN" = "绿玻璃"
+"GLASS_CLEAR" = "透明玻璃"
+"GLASS_CRYSTAL" = "水晶玻璃"
+"WATER" = "冰"
+"POTASH" = "草碱"
+"ASH" = "灰烬"
+"PEARLASH" = "珍珠灰"
+"LYE" = "结冻碱液"
+"MUD" = "淤泥"
+"VOMIT" = "呕吐物"
+"SALT" = "盐"
+"FILTH_B" = "污垢"
+"FILTH_Y" = "结冻污垢"
+"UNKNOWN_SUBSTANCE" = "未知冻结物质"
+"GRIME" = "尘垢"

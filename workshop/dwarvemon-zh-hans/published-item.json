@@ -2,12 +2,8 @@
   "publishedfileid": "3815355177",
   "appid": 975370,
   "title": "矮人宝可梦汉化数据",
-  "release_tag": "v53.16-20261018.2",
+  "release_tag": "v53.16-20261028",
   "workshop_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3815355177",
   "phase": "published",
-  "needs_workshop_legal_agreement": false,
-  "required_items": [
-    "3811193379",
-    "2898307461"
-  ]
+  "needs_workshop_legal_agreement": false
 }

@@ -31,6 +31,7 @@ std::vector<Match> Overlay::find_native_info_matches() const {
     // The workquota producer owns the complete workshop assignment/limit
     // column, including an editor whose native bytes remain untouched.
     append_work_order_shop_fields(screen_rows, result, only_y);
+    append_work_order_condition_fields(screen_rows, result, only_y);
 
     // Editable text, authored squad aliases and formatter-owned identities
     // reserve their exact spans before dictionary/template matching.

@@ -162,6 +162,12 @@ static bool install_native_trade_item_hooks() {
     // the shared reference relocation table for these same native callers.
     std::vector<NativeCall> calls{
 #ifdef _WIN32
+        // The building sheet iterates building_actual::contained_items and
+        // passes each actual item to the formatter, then draws that same
+        // NativeString at rsp+3b80 after shortening it for the action strip.
+        // Both incorporated materials and loose products share this path.
+        {0x19d4ae, 0xc65450, reinterpret_cast<const void *>(&capture_native_trade_item_name)},
+        {0x19d5ad, 0xad9960, reinterpret_cast<const void *>(&capture_native_trade_item_draw)},
         // Both adventure barter panes share this formatter/draw pair. The
         // same NativeString at RBP+78 is resized at 270b97 between the calls;
         // retain its original source and actual item before that mutation.
