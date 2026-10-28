@@ -118,7 +118,7 @@ bool Overlay::load_rules() {
                 rule.target = std::move(plain);
             }
             for (char flag : flags) {
-                if (flag != 'w' && flag != 'p' && flag != 't' && flag != 'i' && flag != 'l' && flag != 'o' && flag != 'x' && flag != 'a' && flag != 'h' && flag != 'b' && flag != 'E' && flag != 'u' && flag != 'N' && flag != 'v' && flag != 'C' && flag != 'r' && flag != 'm' && flag != 'M' && flag != 'q' && flag != 'O' && flag != 'j' && flag != 'H' && flag != 'I' && flag != 'J' && flag != 'P' && flag != ',' &&
+                if (flag != 'w' && flag != 'p' && flag != 't' && flag != 'i' && flag != 'l' && flag != 'o' && flag != 'x' && flag != 'a' && flag != 'h' && flag != 'b' && flag != 'E' && flag != 'u' && flag != 'N' && flag != 'v' && flag != 'C' && flag != 'r' && flag != 'm' && flag != 'M' && flag != 'q' && flag != 'O' && flag != 'j' && flag != 'H' && flag != 'I' && flag != 'J' && flag != 'P' && flag != 'D' && flag != ',' &&
                     !std::isspace(static_cast<unsigned char>(flag))) {
                     log_line("WARN", mapping_name + ":" + std::to_string(line_no) +
                                          " has unknown rule flag '" + std::string(1, flag) + "'");

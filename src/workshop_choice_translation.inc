@@ -18,6 +18,14 @@ TranslationResult Overlay::translate_workshop_choice_title(
                 "Workshop task choice: suffix " + std::string(trim_view(suffix)));
             if (!label || !item_display_target_valid(*label))
                 return preserved_item_field(source, "workshop-choice");
+            // A typed activity lookup can return NoMatch with a source but
+            // no target. Appending a translated suffix to that result would
+            // make it usable while silently deleting the category name.
+            // This native title owns the complete subject, so preserve it
+            // here when no translator accepted it.
+            if (!subject.usable() || !item_display_target_valid(subject.target))
+                subject = preserved_item_field(std::string_view(source).substr(
+                    0, source.size() - suffix.size()), "workshop-choice-subject");
             subject.append(TranslationResult::translated(
                 std::string_view(source).substr(source.size() - suffix.size()),
                 *label, "workshop-choice-action"), source.size() - suffix.size());
@@ -48,6 +56,10 @@ TranslationResult Overlay::translate_workshop_choice_title(
                 return TranslationResult::translated(source, *complete, "workshop-choice");
             const auto subject = std::string_view(source).substr(0, source.size() - menu.size());
             if (trim_view(subject).empty()) return preserved_item_field(source, "workshop-choice");
+            // Extensions can supply complete CATEGORY_NAME translations in
+            // their ordinary glossary without defining an activity grammar.
+            if (const auto category = exact_literal_translation(std::string(subject)))
+                return wrap(menu, TranslationResult::translated(subject, *category, "workshop-category"));
             if (const auto material = translate_material_name(subject))
                 return wrap(menu, TranslationResult::translated(subject, *material, "material"));
             return wrap(menu, translate_fortress_activity_display(subject, true));
