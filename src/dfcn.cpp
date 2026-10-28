@@ -73,6 +73,7 @@
 #include "native_adventure_charge.h"
 #include "native_trade_item_caption.h"
 #include "core_api.h"
+#include "riding_api.h"
 #include "runtime_paths.h"
 #include "search_semantic_model.h"
 #include "translation_extensions.h"
@@ -8248,6 +8249,16 @@ static void native_map_preview_prepare();
 static void native_map_preview_reset();
 static void native_map_preview_release();
 static bool native_map_preview_event(const SDL_Event &event);
+static bool native_riding_available();
+static const DfcnRidingMenu &native_riding_menu_snapshot();
+static void native_riding_load();
+static void native_riding_release();
+static void native_riding_frame();
+static void native_riding_open();
+static void native_riding_select(size_t row);
+static bool install_native_riding_hook();
+static void uninstall_native_riding_hook();
+static bool native_riding_hooks_active();
 
 void Overlay::run_settings_menu_action(int action) {
     switch (action) {
@@ -8267,6 +8278,7 @@ void Overlay::run_settings_menu_action(int action) {
         break;
     case 6: native_mouse_coordinates_toggle(); break;
     case 7: native_map_preview_toggle(); break;
+    case 8: native_riding_open(); break;
     }
 }
 
@@ -44516,6 +44528,7 @@ static void native_settings_menu_release();
 #include "native_settings_menu.inc"
 #include "native_mouse_coordinates.inc"
 #include "native_map_preview.inc"
+#include "native_riding.inc"
 #include "civilization_names.inc"
 #include "site_references.inc"
 #include "adventure_home_translation.inc"
@@ -44558,6 +44571,7 @@ DFCN_EXPORT void dfhooks_init() {
     dfcn::start_native_identity_translation_jobs();
     dfcn::native_mouse_coordinates_load();
     dfcn::native_map_preview_load();
+    dfcn::native_riding_load();
     if (!dfcn::install_sdl_hooks()) {
         dfcn::stop_reloadable_core();
         return;

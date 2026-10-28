@@ -115,7 +115,7 @@ public:
     }
 };
 
-static constexpr size_t kNativeSettingsMenuOptionCount = 8;
+static constexpr size_t kNativeSettingsMenuOptionCount = 9;
 static constexpr int kNativeSettingsMenuHeight =
     4 + 3 * static_cast<int>(kNativeSettingsMenuOptionCount);
 
@@ -126,6 +126,7 @@ struct NativeSettingsMenuCaption {
 
 struct NativeSettingsMenuState {
     bool open = false, f1_consumed = false, hits_ready = false;
+    bool riding = false;
     bool export_pending = false, export_result = false, export_success = false;
     std::string export_message, export_filename;
     std::vector<NativeSettingsMenuCaption> captions;
@@ -137,14 +138,17 @@ struct NativeSettingsMenuState {
     double input_scale_x = 1, input_scale_y = 1;
     double input_offset_x = 0, input_offset_y = 0;
     size_t row_count() const {
+        if (riding) return std::min<size_t>(native_riding_menu_snapshot().count,kNativeSettingsMenuOptionCount);
         return export_result ? 1 : 6 + (native_mouse_coordinates_available() ? 1 : 0) +
-            (native_map_preview_available() ? 1 : 0);
+            (native_map_preview_available() ? 1 : 0) + (native_riding_available() ? 1 : 0);
     }
     int row_action(size_t row) const {
         if (export_result || row >= row_count()) return -1;
         if (row < 6) return static_cast<int>(row);
-        if (native_mouse_coordinates_available() && row == 6) return 6;
-        return 7;
+        size_t next = 6;
+        if (native_mouse_coordinates_available() && row == next++) return 6;
+        if (native_map_preview_available() && row == next++) return 7;
+        return 8;
     }
 };
 static NativeSettingsMenuState g_native_settings_menu;
@@ -153,15 +157,16 @@ static NativeInfoCapturedText g_native_settings_menu_text;
 static constexpr std::array<std::string_view, kNativeSettingsMenuOptionCount + 1> kNativeSettingsMenuSources{
     "Chinese translation", "Toggle Chinese / English", "Toggle simplified / traditional",
     "Toggle language transliteration", "Toggle DFHack (installed only)", "Reload Chinese translation",
-    "Export whole map (all known levels)", "Toggle mouse coordinates", "Toggle map preview"};
+    "Export whole map (all known levels)", "Toggle mouse coordinates", "Toggle map preview", "Fortress riding"};
 static constexpr std::array<std::string_view, kNativeSettingsMenuOptionCount + 1> kNativeSettingsMenuLabels{
     "汉化设置", "切换中英文", "切换繁简体", "切换四族语言音译",
     "开关 DFHack（需已安装 DFHack）", "重载汉化", "导出整张地图（全部已知层）",
-    "开关鼠标坐标显示", "开关地图预览"};
+    "开关鼠标坐标显示", "开关地图预览", "要塞骑乘：管理坐骑"};
 
 static void native_settings_menu_close() {
     auto &menu = g_native_settings_menu;
     menu.open = false;
+    menu.riding = false;
     menu.hovered = -1;
     menu.hits_ready = false;
     menu.export_pending = false;
@@ -219,7 +224,7 @@ static void native_settings_menu_prepare() try {
     grid->clipx[1] = grid->dimx - 1; grid->clipy[1] = grid->dimy - 1;
     grid->screenf = 7; grid->screenb = 0; grid->screenbright = false;
     grid->use_old_16_colors = true;
-    const int width = std::min(44, owner->dimx - 2);
+    const int width = std::min(menu.riding ? 76 : 44, owner->dimx - 2);
     menu.panel = {(owner->dimx - width) / 2, (owner->dimy - height) / 2, width, height};
     for (size_t i = 0; i < menu.row_count(); ++i)
         menu.rows[i] = {menu.panel.x + 2,
@@ -255,8 +260,10 @@ static void native_settings_menu_prepare() try {
         menu.captions.push_back({box, std::string(source), std::string(target)});
     };
     caption({menu.panel.x + 1, menu.panel.y + 1, menu.panel.w - 2, 1},
-        menu.export_result ? "Terrain blueprint export" : kNativeSettingsMenuSources[0],
-        menu.export_result ? "地形蓝图导出" : kNativeSettingsMenuLabels[0]);
+        menu.riding ? native_riding_menu_snapshot().english :
+            menu.export_result ? "Terrain blueprint export" : kNativeSettingsMenuSources[0],
+        menu.riding ? native_riding_menu_snapshot().chinese :
+            menu.export_result ? "地形蓝图导出" : kNativeSettingsMenuLabels[0]);
     if (menu.export_result) {
         caption({menu.panel.x + 2, menu.panel.y + 3, menu.panel.w - 4, 1},
             menu.export_success ? "Blueprint exported" : "Blueprint export failed", menu.export_message);
@@ -275,6 +282,11 @@ static void native_settings_menu_prepare() try {
         const auto &button = menu.hovered == static_cast<int>(i)
             ? ui->texpos_selected_intro_button : ui->texpos_unselected_intro_button;
         skin.nineslice(row, button.data());
+        if (menu.riding) {
+            const auto &entry = native_riding_menu_snapshot().rows[i];
+            caption({row.x + 1,row.y + 1,row.w - 2,1},entry.english,entry.chinese);
+            continue;
+        }
         const int action = menu.row_action(i);
         const bool coordinates = action == 6;
         const bool preview = action == 7;
@@ -364,6 +376,10 @@ bool Overlay::settings_menu_event(const SDL_Event &event) {
         if (event.button.button == SDL_BUTTON_RIGHT) native_settings_menu_close();
         else if (event.button.button == SDL_BUTTON_LEFT) {
             const int row = hovered(event.button.x, event.button.y);
+            if (menu.riding) {
+                if (row >= 0) native_riding_select(static_cast<size_t>(row));
+                return true;
+            }
             const int action = row >= 0 ? menu.row_action(static_cast<size_t>(row)) : -1;
             if (!menu.export_result && action == 5) {
                 menu.export_pending = true;

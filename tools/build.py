@@ -298,6 +298,7 @@ NATIVE_ABIS = {
         "loader": "dfhooks_dfcn.dll",
         "mouse_coordinates": "dfcn_mouse_coordinates.dll",
         "map_preview": "dfcn_map_preview.dll",
+        "riding": "dfcn_riding.dll",
         "compiler": "g++.exe",
         "compiler_hint": TEMP / "codex-world-compute-w64devkit/extracted/w64devkit/bin",
         "target": r"(?:mingw|windows)",
@@ -810,6 +811,7 @@ def build_windows_cross(args: argparse.Namespace) -> int:
             loader_candidate = staging / abi["loader"]
             mouse_candidate = staging / abi["mouse_coordinates"]
             preview_candidate = staging / abi["map_preview"]
+            riding_candidate = staging / abi["riding"]
             build_hour = datetime.now().strftime("%Y.%m.%d.%H")
             print("Cross-compiling the Windows core...", flush=True)
             run([*compiler, *compile_flags, "-o", str(core_candidate), "src/dfcn.cpp",
@@ -827,14 +829,17 @@ def build_windows_cross(args: argparse.Namespace) -> int:
             print("Cross-compiling the independent map preview mod...", flush=True)
             run([*compiler, *compile_flags, "-o", str(preview_candidate),
                  "src/mods/map_preview.cpp", *link_flags], env, cwd=snapshot)
+            print("Cross-compiling the independent fortress riding mod...", flush=True)
+            run([*compiler, *compile_flags, "-o", str(riding_candidate),
+                 "src/mods/riding.cpp", *link_flags], env, cwd=snapshot)
             # Leave the previous outputs untouched if any compiler fails.
-            for candidate in (core_candidate, loader_candidate, mouse_candidate, preview_candidate):
+            for candidate in (core_candidate, loader_candidate, mouse_candidate, preview_candidate, riding_candidate):
                 os.replace(candidate, output / candidate.name)
         if args.deploy_project:
             # Native publish() only accepts inputs in native destination
             # directories. Keep the cross-build outputs, then stage the copy
             # in ROOT so the normal atomic replacement can own publication.
-            for name in (abi["mouse_coordinates"], abi["core"], abi["loader"]):
+            for name in (abi["mouse_coordinates"], abi["riding"], abi["core"], abi["loader"]):
                 destination = ROOT / name
                 staged = destination.with_name(name + ".publish")
                 print(f"Publishing {destination}", flush=True)
@@ -845,11 +850,11 @@ def build_windows_cross(args: argparse.Namespace) -> int:
                     remove_file(staged)
         package_map_preview(output / abi["map_preview"])
     print(f"Windows cross-build completed:\n{output / abi['core']}\n{output / abi['loader']}\n"
-          f"{output / abi['mouse_coordinates']}\n{output / abi['map_preview']}",
+          f"{output / abi['mouse_coordinates']}\n{output / abi['map_preview']}\n{output / abi['riding']}",
           flush=True)
     if args.deploy_project:
         print(f"Windows DLLs deployed:\n{ROOT / abi['core']}\n{ROOT / abi['loader']}\n"
-              f"{ROOT / abi['mouse_coordinates']}",
+              f"{ROOT / abi['mouse_coordinates']}\n{ROOT / abi['riding']}",
               flush=True)
     return 0
 
@@ -886,12 +891,16 @@ def main() -> int:
     mouse_candidate = mouse_mod.with_name(mouse_mod.stem + ".candidate" + mouse_mod.suffix) if mouse_mod else None
     preview_mod = ROOT / abi["map_preview"] if "map_preview" in abi else None
     preview_candidate = preview_mod.with_name(preview_mod.stem + ".candidate" + preview_mod.suffix) if preview_mod else None
+    riding_mod = ROOT / abi["riding"] if "riding" in abi else None
+    riding_candidate = riding_mod.with_name(riding_mod.stem + ".candidate" + riding_mod.suffix) if riding_mod else None
     staging = [core_candidate, loader_candidate,
                *(path.with_name(path.name + ".publish") for path in (core, loader, *game_loaders))]
     if mouse_candidate:
         staging.append(mouse_candidate)
     if preview_candidate:
         staging.extend([preview_candidate, preview_mod.with_name(preview_mod.name + ".publish")])
+    if riding_candidate:
+        staging.extend([riding_candidate, riding_mod.with_name(riding_mod.name + ".publish")])
     bootstrap_candidate = ROOT / "dfhooks.candidate.dll"
     bootstrap_config_candidate = ROOT / "dfhooks_dfcn.candidate.ini"
     if sys.platform == "win32":
@@ -1004,7 +1013,10 @@ def main() -> int:
             [SCRIPT, ROOT / "src/mods/mouse_coordinates.cpp", ROOT / "src/mouse_coordinates_api.h"]))
         rebuild_preview = preview_mod and (configured_build or needs_update([preview_mod],
             [SCRIPT, ROOT / "src/mods/map_preview.cpp", ROOT / "src/map_preview_api.h"]))
-        if rebuild_core or rebuild_loader or rebuild_mouse or rebuild_preview:
+        rebuild_riding = riding_mod and (configured_build or needs_update([riding_mod],
+            [SCRIPT, ROOT / "src/mods/riding.cpp", ROOT / "src/mods/riding_render.inc",
+             ROOT / "src/riding_api.h"]))
+        if rebuild_core or rebuild_loader or rebuild_mouse or rebuild_preview or rebuild_riding:
             # Both core translation units and the loader must see the same
             # shared headers even when this checkout is edited during a long
             # compile. Copy once; relative includes and the Linux export map
@@ -1038,6 +1050,10 @@ def main() -> int:
                     print("Building the independent map preview mod...", flush=True)
                     run([*compiler, *compile_flags, "-o", str(preview_candidate),
                          "src/mods/map_preview.cpp", *link_flags], env, cwd=snapshot)
+                if rebuild_riding:
+                    print("Building the independent fortress riding mod...", flush=True)
+                    run([*compiler, *compile_flags, "-o", str(riding_candidate),
+                         "src/mods/riding.cpp", *link_flags], env, cwd=snapshot)
         for directory in edition_destinations():
             deploy_runtime_data(directory)
         for directory in native_game_directories():
@@ -1052,6 +1068,15 @@ def main() -> int:
                               destination, keep_candidate=True)
             if rebuild_mouse:
                 publish_ready(mouse_candidate, mouse_mod)
+        if riding_mod:
+            for directory in edition_destinations():
+                directory.mkdir(parents=True, exist_ok=True)
+                destination = directory / riding_mod.name
+                staging.append(destination.with_name(destination.name + ".publish"))
+                publish_ready(riding_candidate if rebuild_riding else riding_mod,
+                              destination, keep_candidate=True)
+            if rebuild_riding:
+                publish_ready(riding_candidate, riding_mod)
         if preview_mod:
             # Retain the local build artifact, but distribute the feature only
             # in its own Workshop payload. A translation deployment must not

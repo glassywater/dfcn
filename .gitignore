@@ -1,6 +1,7 @@
 # Local game state and collected text
 /run/
 /blueprints/
+/riding/
 /mouse-coordinates.ini
 /map-preview.ini
 /data/runtime/untranslated.tsv
