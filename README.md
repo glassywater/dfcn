@@ -42,6 +42,12 @@ Windows 同时安装 **DFHack 53.16-r2 / r3** 时，可按 **Shift+F11** 关闭 
 
 已支持汉化搜索的界面可使用中文、英文、拼音全拼与首字母，并提供输入容错和物品类别匹配。需要近义匹配时，可订阅[独立离线语义搜索模型](https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988)。核心在启动时自动识别模型，无需联网或在世界模组列表中启用；未安装模型时，普通文字、拼音与容错搜索仍可使用。
 
+## 骑兵模组
+
+[骑兵 / Fortress Cavalry](https://steamcommunity.com/sharedfiles/filedetails/?id=3828843073) 是独立的创意工坊模组，适用于 Windows x64 Steam 版 Dwarf Fortress 53.16，需要 DFCN v53.16-20261028.2 或更新版本。支持坐骑分配、日常与军务骑乘、坐骑跟随、骑术成长、共同负重及飞行坐骑寻路。
+
+订阅并下载后由 DFCN 在加载时识别，无需 DFHack 或在创建世界时启用。骑兵 DLL 仅随独立模组提供，汉化主包不包含该文件。详情见[模组说明](workshop/riding/content/INSTALL.txt)。
+
 ## Linux 安装与使用
 
 当前本体 Steam 创意工坊项目提供 Windows x64 运行文件。Linux 使用独立的 GitHub 运行包，不使用 Windows 的 `dfhooks_dfcn.ini`。

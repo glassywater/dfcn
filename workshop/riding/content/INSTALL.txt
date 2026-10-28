@@ -7,7 +7,7 @@ DFCN 汉化核心：
 https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379
 
 骑兵模组：
-https://steamcommunity.com/sharedfiles/filedetails/?id=__WORKSHOP_ID__
+https://steamcommunity.com/sharedfiles/filedetails/?id=3828843073
 
 安装
 订阅并下载本模组，由 DFCN 在加载时读取 Steam 当前订阅状态与安装目录。

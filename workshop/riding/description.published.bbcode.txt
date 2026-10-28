@@ -1,0 +1,31 @@
+[h1]骑兵 / Fortress Cavalry[/h1]
+
+为要塞中的矮人分配坐骑，支持日常工作、搬运和本地图军务骑乘。支持原版及其他模组中符合原生骑乘条件的成年驯服动物。
+
+[h2]功能[/h2]
+[list]
+[*]通过 DFCN 设置菜单中的“要塞骑乘：管理坐骑”分配坐骑，选择“日常与军务骑乘”“随军令骑乘”或“停止骑乘”。
+[*]普通工作保持骑乘，吃喝、睡觉、治疗及坐骑进食和恢复体力优先。
+[*]实际骑行增长骑术，矮人详情显示骑术等级与经验。
+[*]骑手与坐骑共同承担携带物品的重量，沿用原生超重减速规则；下马后各自计算。
+[*]支持飞行坐骑的三维寻路，保留原生禁区、锁链和牧场限制。
+[*]已分配而未骑乘的坐骑跟随矮人，保留原有宠物归属。
+[*]骑手与坐骑同时显示，保留装备贴图与大型动物的多格拼接，消除仅有骑乘组合时的轮换空白。
+[*]坐骑分配按存档、世界和要塞分别保存，关闭汉化显示不关闭骑乘功能。
+[/list]
+
+[h2]安装与使用[/h2]
+适用于 Windows x64 Steam 版 Dwarf Fortress 53.16。需要已安装的 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379]DFCN v53.16-20261028.2 或更新版本[/url]。
+
+订阅并下载本模组后，由 DFCN 在加载时识别。无需在创建世界时启用，也无需 DFHack。本模组依照 Steam 的当前订阅与安装信息加载，仅复制 DLL 或解压 ZIP 不会启用。
+
+可分配动物须已成年、驯服且具备原生骑乘标记。已经载人、受约束、正在执行动物任务、标记屠宰或交易、属于其他主人的宠物及已分配给其他矮人的坐骑不会列入候选。
+
+分配记录保存在 DFCN 核心目录的 riding 文件夹；迁移安装时请保留该目录。当前版本用于要塞本地图，跨地图远征中的骑乘不在支持范围内。
+
+[h2]Fortress Cavalry[/h2]
+Assign mounts to fortress dwarves for everyday work, hauling and local military orders. Includes mount following, riding skill practice, shared carried loads, flying-mount pathfinding and combined rider/mount sprites. Supports eligible tame adult animals from the base game and other mods.
+
+Requires DFCN v53.16-20261028.2 or later and Dwarf Fortress 53.16 for Windows x64 on Steam. The subscribed, installed Workshop package is discovered when DFCN loads. No world mod activation or DFHack required. Off-map expeditions are not supported.
+
+Byayoi 同人社区 · [url=https://byayoi.org/]byayoi.org[/url]
