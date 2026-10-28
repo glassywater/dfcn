@@ -5,7 +5,7 @@
 // No STL objects, ownership or game allocations cross this DLL boundary.
 // All callbacks are serialized by the host; frame/filter/finish/draw run on DF's
 // producer/simulation thread, never from SDL event handling or Present.
-constexpr uint32_t DFCN_RIDING_ABI = 3;
+constexpr uint32_t DFCN_RIDING_ABI = 5;
 constexpr uint32_t DFCN_RIDING_MENU_ROWS = 9;
 
 struct DfcnRidingHost {
@@ -40,6 +40,7 @@ struct DfcnRidingMenu {
     DfcnRidingRow rows[DFCN_RIDING_MENU_ROWS];
 };
 using DfcnRidingDraw = void (*)(void *unit, void *viewport);
+using DfcnRidingReach = bool (*)(void *unit, int16_t x, int16_t y, int16_t z, bool burrows);
 struct DfcnRidingApi {
     uint32_t abi, size;
     bool (*initialize)(const DfcnRidingHost *, const char *storage_utf8);
@@ -61,5 +62,23 @@ struct DfcnRidingApi {
     void (*menu)(DfcnRidingMenu *);
     void (*command)(uint64_t revision, int32_t command, int32_t argument);
     void (*shutdown)();
+    // Native inventory weights and effective carrying capacity, after armor
+    // skill/attribute modifiers. Returns only the overload movement delay.
+    int32_t (*load_penalty)(uintptr_t unit, int32_t capacity, int32_t weight);
+    uintptr_t (*reach_entry)();
+    // Called only when native unit reachability failed. The optional module
+    // must retain native destination restrictions before considering flight.
+    bool (*flight_reachable)(uintptr_t unit, int16_t x, int16_t y, int16_t z, bool burrows);
 };
 using DfcnGetRidingApi = const DfcnRidingApi *(*)(uint32_t);
+
+inline int32_t dfcn_riding_native_load_penalty(int32_t capacity, int32_t weight, bool fortress) {
+    if (weight <= capacity || capacity < 1) return 0;
+    const int32_t excess = weight - capacity;
+    // Preserve DF's integer rounding, including its large-weight branch.
+    int32_t delay = excess < 1000000 ? excess * 2000 / capacity :
+        static_cast<int32_t>(static_cast<uint32_t>(excess / capacity) * 2000u);
+    if (delay < 1) delay = 1;
+    if (fortress && delay > 5000) delay = 5000;
+    return delay;
+}

@@ -1015,6 +1015,7 @@ def main() -> int:
             [SCRIPT, ROOT / "src/mods/map_preview.cpp", ROOT / "src/map_preview_api.h"]))
         rebuild_riding = riding_mod and (configured_build or needs_update([riding_mod],
             [SCRIPT, ROOT / "src/mods/riding.cpp", ROOT / "src/mods/riding_render.inc",
+             ROOT / "src/mods/riding_mechanics.inc", ROOT / "src/mods/riding_flight.inc",
              ROOT / "src/riding_api.h"]))
         if rebuild_core or rebuild_loader or rebuild_mouse or rebuild_preview or rebuild_riding:
             # Both core translation units and the loader must see the same

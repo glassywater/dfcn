@@ -161,10 +161,13 @@ bool session_live() {
 struct Pair {
     int rider = -1, mount = -1, rider_hf = -1, mount_hf = -1;
     int rider_birth = 0, rider_birth_tick = 0, mount_birth = 0, mount_birth_tick = 0;
-    int mode = 1; // 0 dismounted; 1 military orders; 2 idle and military
+    int mode = 2; // 0 dismounted; 1 military orders; 2 everyday work and military
     bool releasing = false;
     int32_t rest_until = 0, last_attempt = -10000, military_until = 0, follow_retry = 0;
     bool recovering = false;
+    bool practice_mounted = false;
+    int32_t practice_tick = -1;
+    int16_t practice_x = -1, practice_y = -1, practice_z = -1;
     std::string status = "待命";
 };
 std::map<int32_t, Pair> pairs;
@@ -181,6 +184,9 @@ bool reserved(int mount_id, int rider_id) {
         return entry.second.mount == mount_id && entry.first != rider_id;
     });
 }
+uint32_t pending(const Unit &u);
+#include "riding_mechanics.inc"
+#include "riding_flight.inc"
 #include "riding_render.inc"
 bool save() {
     if (!writable || session_file.empty()) return false;
@@ -253,11 +259,11 @@ void scan_units() {
     });
     std::sort(mounts.begin(),mounts.end());
 }
-uint32_t pending(const Unit &u);
 void frame(bool fortress, bool visible) noexcept {
     ++render_frame;
     try {
         if (!supported || !hooked || !fortress) {
+            clear_flight_cache();
             active = false; units.clear(); riders.clear(); mounts.clear(); return;
         }
         const auto wd = field<uintptr_t>(host.world,0x11a668);
@@ -275,6 +281,7 @@ void frame(bool fortress, bool visible) noexcept {
             std::to_string(field<uint32_t>(host.world,0x26d48c)) + "-" + std::to_string(current_site);
         const bool changed = !active || key != session || wd != world_data || current_tick < tick;
         if (changed) {
+            clear_flight_cache();
             session = key; session_file = storage / (key + ".tsv");
             world_data = wd; site = current_site;
             civ = field<int32_t>(host.plotinfo,0x2440,-1);
@@ -287,6 +294,7 @@ void frame(bool fortress, bool visible) noexcept {
         // No save/unload pointers are kept outside this session boundary.
         if (changed || advanced || visible) scan_units();
         for (auto it = pairs.begin(); it != pairs.end();) {
+            if (advanced) practice_riding(it->second);
             Unit u;
             if (it->second.releasing && find_unit(it->first,u) && same_rider(it->second,u) &&
                     !(u.f1 & rider_bit) && !(pending(u) & 1)) {
@@ -310,7 +318,23 @@ uint32_t pending(const Unit &u) {
     }
     return result;
 }
-bool urgent(int a) {
+bool personal_job(const Unit &u) {
+    // jobst.type is +14, not the following surgery-stage field at +16.
+    switch (field<int16_t>(u.job,0x14,-1)) {
+        case 17: case 19: case 20: case 23: case 50: case 221:
+            return true; // eat, drink, drink item, sleep, rest, drink blood
+        default: return false;
+    }
+}
+bool work_action(int a) {
+    return a == 12 || (a >= 35 && a <= 45) || (a >= 69 && a <= 72) ||
+        a == 96 || a == 114;
+}
+bool urgent(const Unit &u, int a) {
+    if (personal_job(u)) return true;
+    // PERFORM_JOB also includes hauling, mining and workshop production.
+    // Keep the native job and its inventory; mounting never cancels the job.
+    if (work_action(a)) return false;
     return (a >= 8 && a <= 30) || (a >= 35 && a <= 46) ||
         (a >= 69 && a <= 81) || a == 85 || a == 89 || (a >= 90 && a <= 114) || a >= 119;
 }
@@ -366,6 +390,7 @@ void filter(uintptr_t unit, int32_t action, int32_t, DfcnRidingDecision *out) no
         auto &p = it->second;
         Unit u,m;
         if (!unit_at(unit,u) || !same_rider(p,u)) return;
+        practice_riding(p);
         const bool mounted = (u.f1 & rider_bit) && u.mount == p.mount &&
             field<int16_t>(unit,0x3e0,-1) == 0;
         const bool mount_exists = find_unit(p.mount,m) && same_mount(p,m);
@@ -373,14 +398,17 @@ void filter(uintptr_t unit, int32_t action, int32_t, DfcnRidingDecision *out) no
         if (action >= 31 && action <= 34) p.military_until = now + 120;
         const bool duty = u.squad >= 0 && ((u.station >= 30 && u.station <= 34) ||
             (action >= 31 && action <= 34) || now < p.military_until);
-        if (urgent(action)) p.rest_until = now + 120;
+        const bool needs_rest = urgent(u,action);
+        const bool working = work_action(action) && !personal_job(u);
+        const bool fighting = action >= 0 && action <= 5;
+        if (needs_rest) p.rest_until = now + 120;
         const bool grazes = mount_exists && caste_traits(m).grazes;
         if (mount_exists && (impaired(m) || (grazes && m.hunger >= 40000))) p.recovering = true;
         if (mount_exists && p.recovering && !impaired(m) && (!grazes || m.hunger < 20000) &&
                 m.exhaustion < 1000) p.recovering = false;
-        const bool rest = urgent(action) || impaired(u) || p.recovering || now < p.rest_until;
+        const bool rest = needs_rest || impaired(u) || p.recovering || now < p.rest_until;
         const bool wants = writable && !p.releasing && p.mode && citizen(u) &&
-            !rest && (p.mode == 2 || duty);
+            !rest && (p.mode == 2 || duty || (mounted && (working || fighting)));
         const bool usable = mount_exists && mount_candidate(m) && !impaired(m) &&
             (m.owner < 0 || m.owner == u.id);
         const auto decide = [&](int a, uintptr_t target = 0) {
@@ -397,7 +425,7 @@ void filter(uintptr_t unit, int32_t action, int32_t, DfcnRidingDecision *out) no
             if (!wants || !usable) {
                 p.status = "停止骑乘中"; decide(118); return;
             }
-            p.status = "骑乘中";
+            p.status = working ? "骑乘工作中" : "骑乘中";
             // Native set_goal propagates movement to STANDARD mounts. Combat
             // remains entirely native, including attacks, falls and injuries.
             return;
@@ -459,6 +487,9 @@ void menu(DfcnRidingMenu *out) noexcept {
             Unit u;
             if (!find_unit(selected,u)) { view=View::Riders; ++revision; menu(out); return; }
             text(out->chinese,display(u));
+            const auto skill = riding_skill(u);
+            row(0,0,"Riding skill","骑术：等级 "+std::to_string(skill.level)+
+                "，本级经验 "+std::to_string(skill.experience)+"（骑行可提升）");
             const auto it=pairs.find(selected);
             if (it == pairs.end()) row(Choose,0,"Assign mount","分配坐骑");
             else {
@@ -466,7 +497,7 @@ void menu(DfcnRidingMenu *out) noexcept {
                 row(0,0,"Assigned mount",find_unit(p.mount,m) ? "坐骑："+display(m) : "坐骑暂不在地图上");
                 row(0,0,"Riding state","状态："+p.status);
                 row(Mode,0,"Change riding policy",p.mode==1 ? "模式：随军令骑乘（点击切换）" :
-                    p.mode==2 ? "模式：空闲时也骑乘（点击切换）" : "模式：停止骑乘（点击切换）");
+                    p.mode==2 ? "模式：日常与军务骑乘（点击切换）" : "模式：停止骑乘（点击切换）");
                 row(Release,0,"Unassign and dismount",p.releasing ? "正在停止骑乘并解除分配" : "停止骑乘并解除分配");
             }
             row(Back,0,"Back to dwarves","返回矮人列表"); return;
@@ -548,6 +579,19 @@ bool initialize(const DfcnRidingHost *h,const char *path) noexcept {
         const std::array<unsigned char,16> draw_prefix{
             0x48,0x89,0x5c,0x24,0x18,0x55,0x56,0x57,0x41,0x54,0x41,0x55,0x41,0x56,0x41,0x57};
         if (!read(host.image+draw_rva,actual) || actual!=draw_prefix) return true;
+        const std::array<std::pair<uintptr_t,std::array<unsigned char,16>>,9> services{{
+            {0x1334c10,{0x4c,0x89,0x4c,0x24,0x20,0x88,0x54,0x24,0x10,0x53,0x56,0x41,0x56,0x48,0x83,0xec}},
+            {0x133baf0,{0x48,0x89,0x5c,0x24,0x08,0x57,0x48,0x83,0xec,0x50,0x48,0x8b,0xd9,0x0f,0xbf,0xfa}},
+            {0x13d5020,{0x4c,0x8b,0xdc,0x49,0x89,0x5b,0x08,0x57,0x48,0x83,0xec,0x60,0x48,0x8b,0xf9,0x4d}},
+            {reach_rva,{0x40,0x53,0x56,0x41,0x54,0x41,0x56,0x41,0x57,0x48,0x83,0xec,0x40,0xf7,0x81,0x18}},
+            {0x7e0610,{0x40,0x57,0x48,0x83,0xec,0x20,0x83,0xb9,0x80,0x12,0x00,0x00,0x02,0x48,0x8b,0xf9}},
+            {0x1348060,{0x88,0x54,0x24,0x10,0x56,0x41,0x55,0x48,0x81,0xec,0x88,0x00,0x00,0x00,0xf7,0x81}},
+            {0x13a4710,{0x48,0x89,0x74,0x24,0x20,0x41,0x54,0x41,0x56,0x41,0x57,0x48,0x83,0xec,0x40,0x80}},
+            {0xdaa660,{0x66,0x44,0x89,0x4c,0x24,0x20,0x66,0x44,0x89,0x44,0x24,0x18,0x66,0x89,0x54,0x24}},
+            {0x6f7b0,{0x40,0x53,0x48,0x83,0xec,0x20,0x48,0x8b,0xd9,0x48,0x8b,0x09,0x48,0x85,0xc9,0x74}}
+        }};
+        for (const auto &[rva,bytes] : services)
+            if (!read(host.image+rva,actual) || actual!=bytes) return true;
         // The projection call, its saved current-unit argument, and the
         // downstream two-unit cycle branch must match before host attachment.
         const std::array<unsigned char,16> tile_prefix{
@@ -558,19 +602,29 @@ bool initialize(const DfcnRidingHost *h,const char *path) noexcept {
         can_reach=reinterpret_cast<Reach>(host.image+0x13a4910);
         adjacent=reinterpret_cast<Adjacent>(host.image+0x144ca60);
         set_following=reinterpret_cast<SetFollowing>(host.image+0x138c120);
+        effective_speed=reinterpret_cast<EffectiveSpeed>(host.image+0x1334c10);
+        practice_skill=reinterpret_cast<PracticeSkill>(host.image+0x133baf0);
+        practice_attributes=reinterpret_cast<PracticeSkill>(host.image+0x13d5020);
+        flight_capability=reinterpret_cast<FlightCapability>(host.image+0x7e0610);
+        path_permissions=reinterpret_cast<PathPermissions>(host.image+0x1348060);
+        destination_allowed=reinterpret_cast<DfcnRidingReach>(host.image+0x13a4710);
+        native_find_path=reinterpret_cast<NativeFindPath>(host.image+0xdaa660);
+        destroy_path_vector=reinterpret_cast<DestroyPathVector>(host.image+0x6f7b0);
         supported=true; return true;
     } catch (...) { return false; }
 }
 uintptr_t action_entry() noexcept { return supported ? host.image+action_rva : 0; }
 uintptr_t draw_entry() noexcept { return supported ? host.image+draw_rva : 0; }
+uintptr_t reach_entry() noexcept { return supported ? host.image+reach_rva : 0; }
 void hook_state(bool value) noexcept { hooked=value; }
 void shutdown() noexcept {
     render_shutdown();
+    clear_flight_cache();
     active=false; hooked=false; units.clear(); pairs.clear(); races.clear();
     riders.clear(); mounts.clear(); host={}; supported=false;
 }
 const DfcnRidingApi api{DFCN_RIDING_ABI,sizeof(DfcnRidingApi),initialize,action_entry,draw_entry,draw,prepare_tile,
-    hook_state,frame,filter,finish,open_menu,menu,command,shutdown};
+    hook_state,frame,filter,finish,open_menu,menu,command,shutdown,load_penalty,reach_entry,flight_reachable};
 }
 extern "C" __declspec(dllexport) const DfcnRidingApi *dfcn_riding_api(uint32_t abi) {
     return abi==DFCN_RIDING_ABI ? &api : nullptr;

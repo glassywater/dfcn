@@ -4,7 +4,9 @@ static void *g_riding_module = nullptr;
 static const DfcnRidingApi *g_riding_api = nullptr;
 static NativeEntryHook g_riding_action_hook;
 static NativeEntryHook g_riding_draw_hook;
+static NativeEntryHook g_riding_reach_hook;
 static NativeCallHook g_riding_tile_hook;
+static NativeCallHook g_riding_load_hook;
 using NativeRidingProject = void (*)(void *,void *,int16_t,int16_t,void *);
 static NativeRidingProject g_riding_project = nullptr;
 static uintptr_t g_riding_projection_context = 0;
@@ -59,7 +61,8 @@ static void native_riding_load() {
             !api->initialize || !api->action_entry || !api->draw_entry || !api->draw || !api->prepare_tile ||
             !api->hook_state || !api->frame ||
             !api->filter || !api->finish || !api->open_menu || !api->menu || !api->command ||
-            !api->shutdown || !api->initialize(&host,storage.c_str())) {
+            !api->shutdown || !api->load_penalty || !api->reach_entry || !api->flight_reachable ||
+            !api->initialize(&host,storage.c_str())) {
         SDL_UnloadObject(module);
         native_riding_log("incompatible module API or initialization failed");
         return;
@@ -118,11 +121,37 @@ static void capture_native_riding_tile(void *unit, void *viewport,
     if (g_riding_api) g_riding_api->prepare_tile(reinterpret_cast<uintptr_t>(unit),
         reinterpret_cast<uintptr_t>(viewport));
 }
+static int32_t capture_native_riding_load(void *unit, int32_t capacity, int32_t weight) {
+    NativeInputCallbackScope callback;
+    TranslationStateScope translation;
+    if (g_riding_api)
+        return g_riding_api->load_penalty(reinterpret_cast<uintptr_t>(unit),capacity,weight);
+    // Hooks are removed before module release; retain native behavior if a
+    // callback nevertheless reaches this boundary without the optional DLL.
+    int32_t mode = -1;
+    native_history_copy(native_reference_address(native_history_profile_base(),
+        native_history_layout::gamemode_rva),mode);
+    return dfcn_riding_native_load_penalty(capacity,weight,mode==0);
+}
+static bool capture_native_riding_reach(void *unit, int16_t x, int16_t y, int16_t z, bool burrows) {
+    NativeInputCallbackScope callback;
+    const auto original = reinterpret_cast<DfcnRidingReach>(g_riding_reach_hook.original);
+    if (!original) return false;
+    bool reachable = false;
+    callback.call_native([&] { reachable=original(unit,x,y,z,burrows); });
+    if (reachable) return true;
+    TranslationStateScope translation;
+    return g_riding_api && g_riding_api->flight_reachable(
+        reinterpret_cast<uintptr_t>(unit),x,y,z,burrows);
+}
 static bool native_riding_hooks_active() {
-    return g_riding_action_hook.active() || g_riding_draw_hook.active() || g_riding_tile_hook.active();
+    return g_riding_action_hook.active() || g_riding_draw_hook.active() ||
+        g_riding_tile_hook.active() || g_riding_load_hook.active() || g_riding_reach_hook.active();
 }
 static void uninstall_native_riding_hook() {
     if (!native_callbacks_idle()) return;
+    g_riding_reach_hook.uninstall("Fortress riding flight reachability");
+    g_riding_load_hook.uninstall("Fortress riding shared load");
     g_riding_tile_hook.uninstall("Fortress riding tile cycling");
     g_riding_draw_hook.uninstall("Fortress riding sprites");
     g_riding_action_hook.uninstall("Fortress riding decisions");
@@ -133,7 +162,8 @@ static bool install_native_riding_hook() {
     if (!g_riding_api) return true;
     const auto address = g_riding_api->action_entry();
     const auto draw_address = g_riding_api->draw_entry();
-    if (!address || !draw_address) return true; // Optional mod reports unsupported versions in its menu.
+    const auto reach_address = g_riding_api->reach_entry();
+    if (!address || !draw_address || !reach_address) return true; // Unsupported versions stay disabled.
     // These coordinates are used only after the module accepts the exact
     // Steam 53.16 image. This one projection call immediately precedes unit
     // stack selection; calls that count units or draw terrain stay native.
@@ -145,17 +175,43 @@ static bool install_native_riding_hook() {
         // it for the current unit at [RBP-68]; retain RDX/R8/R9 and stack arg 5.
         {0xea2ecd,0xaf10e0,reinterpret_cast<const void *>(&capture_native_riding_tile),
             {0x48,0x8b,0x4d,0x98}}};
+    // Effective movement speed, 1334c10: replace only the overload arithmetic
+    // at 133556d..13355b1. RSI=unit, R8D=capacity, EAX=inventory weight.
+    // The surrounding native code retains gait, injuries, attribute practice
+    // and the final speed clamp. No inventory or unit flags are rewritten.
+    const std::vector<NativeCall> load_calls{{
+        0x133556d,0,reinterpret_cast<const void *>(&capture_native_riding_load),
+        {0x48,0x89,0xf1,0x44,0x89,0xc2,0x41,0x89,0xc0},
+        {0x41,0x3b,0xc0,0x0f,0x8e,0xbc,0x00,0x00,0x00,0x41,0x2b,0xc0,
+         0x3d,0x40,0x42,0x0f,0x00,0x7c,0x0c,0x99,0x41,0xf7,0xf8,0x69,
+         0xc0,0xd0,0x07,0x00,0x00,0xeb,0x0a,0x69,0xc0,0xd0,0x07,0x00,
+         0x00,0x99,0x41,0xf7,0xf8,0x3b,0xc7,0x7d,0x04,0x8b,0xc7,0xeb,
+         0x13,0xb9,0x88,0x13,0x00,0x00,0x3b,0xc1,0x7e,0x0a,0x83,0x3d,
+         0xea,0x6c,0x56,0x00,0x00,0x0f,0x44,0xc1},
+        // Zero overload follows the original no-overload branch to 1335632,
+        // including skipping its physical-attribute practice lottery.
+        {0x85,0xc0,0x0f,0x84,0xb8,0x00,0x00,0x00}}};
     const std::vector<unsigned char> prefix{
         0x48,0x89,0x5c,0x24,0x20,0x55,0x56,0x57,0x41,0x54,0x41,0x55,0x41,0x56,0x41,0x57};
     const std::vector<unsigned char> draw_prefix{
         0x48,0x89,0x5c,0x24,0x18,0x55,0x56,0x57,0x41,0x54,0x41,0x55,0x41,0x56,0x41,0x57};
+    // unit::can_reach (13a4910). Complete instructions, no relative operands.
+    // The original prologue's flag test is replayed in the trampoline before
+    // continuing at 13a4927; the original success path is never overridden.
+    const std::vector<unsigned char> reach_prefix{
+        0x40,0x53,0x56,0x41,0x54,0x41,0x56,0x41,0x57,0x48,0x83,0xec,0x40,
+        0xf7,0x81,0x18,0x01,0x00,0x00,0x00,0x10,0x00,0x00};
     if (g_riding_action_hook.prepare(reinterpret_cast<unsigned char *>(address),prefix,
             reinterpret_cast<const void *>(&capture_native_riding_action),{},"Fortress riding decisions") &&
             g_riding_draw_hook.prepare(reinterpret_cast<unsigned char *>(draw_address),draw_prefix,
             reinterpret_cast<const void *>(&capture_native_riding_draw),{},"Fortress riding sprites") &&
+            g_riding_reach_hook.prepare(reinterpret_cast<unsigned char *>(reach_address),reach_prefix,
+            reinterpret_cast<const void *>(&capture_native_riding_reach),{},"Fortress riding flight reachability") &&
             g_riding_action_hook.install("Fortress riding decisions") &&
             g_riding_draw_hook.install("Fortress riding sprites") &&
-            g_riding_tile_hook.install(base,tile_calls,"Fortress riding tile cycling")) {
+            g_riding_tile_hook.install(base,tile_calls,"Fortress riding tile cycling") &&
+            g_riding_load_hook.install(base,load_calls,"Fortress riding shared load") &&
+            g_riding_reach_hook.install("Fortress riding flight reachability")) {
         g_riding_api->hook_state(true);
         log_line("INFO","Independent fortress riding module attached");
     } else {
