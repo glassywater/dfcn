@@ -1,0 +1,11 @@
+name	start	end
+diplomacy-text	0x14041b5a0	0x14041d022
+diplomacy-input	0x140411730	0x140414528
+random-int	0x140071f30	0x140071f83
+meeting-score	0x140e5d3b0	0x140e5d5a6
+social-roll	0x1413687b0	0x14136898f
+social-skill-weights	0x141367d10	0x1413687b0
+personality-filter	0x140e17fd0	0x140e184f8
+effective-skill	0x14133e7a0	0x14133eacd
+region-parameter	0x1403d6700	0x1403d6723
+difficulty-defaults	0x141070c50	0x1410710b6
