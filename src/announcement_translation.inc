@@ -206,6 +206,8 @@ std::optional<std::string> Overlay::translate_complete_announcement(
     const bool completed_job_record = native_type == 270;
     std::string_view native_scope;
     if (combat_record) native_scope = "sentence";
+    else if (native_type == 301)
+        native_scope = "fortress-arrival";
     else if (native_type == 86 || native_type == 104)
         native_scope = "fortress-announcement";
     else if (native_type == 233 || native_type == 234 || native_type == 258)
