@@ -126762,6 +126762,7 @@ Allow Mythical Healing	允许神话治疗
 Allow artist to choose	让艺术家自行选择	w
 Allow non-plant/animal	允许非动植物制品	wi
 Ambush (thief, nature)	伏击：荒野盗贼	w
+Ammunition and quivers	弹药与箭袋	wi
 An Introduction to {b}	{b}入门	hbti
 Any unassigned trainer	任意未分配的训练员	l
 Are you being serious?	你是认真的吗？	hPD
@@ -134409,6 +134410,7 @@ Fourth eldest child	第四个孩子	w
 GRASSLAND REJECTION	草原不符合要求	hP
 Gained site control	取得地点控制权	w
 Gather any products	收集任意产品	w
+Gemstones and glass	宝石与玻璃	wi
 General familiarity	大致掌握	w
 Generating items...	生成项目......	w
 Gladiatory Games of	角斗比赛	hEi
@@ -137974,6 +137976,7 @@ Scale interface to	缩放界面以适应网格高度/宽度	w
 Sculpted Ice Floor	浮刻装饰的冰地板	wi
 Set tree chopping 	设置树木砍伐任务。	w
 Seventh eldest son	第七个儿子	w
+Siege engine parts	攻城器械部件	wi
 Sixth eldest child	第六个孩子	w
 Skill name: Ambush	伏击	li
 Skill name: Comedy	逗趣	li
@@ -141539,6 +141542,7 @@ Animal Caretakers	动物护理员	wi
 Animal Caretaking	动物护理	wi
 Animal Dissection	动物解剖	wi
 Animal Dissectors	动物解剖员	wi
+Armor and weapons	护甲与武器	wi
 Art image male: X	雄性X	wl
 Ask to be rescued	请求营救	hP
 Ask what happened	询问发生了什么	hP
@@ -141557,6 +141561,7 @@ Be compassionate.	心怀怜悯。	hP
 Be playful today.	今天不妨玩乐一番。	hP
 Better Combat Log	优化战斗日志	w
 Beware their {s}!	小心他们的{s1}！	hPt
+Blocks and stones	锭块与石料	wi
 Bowyer's Workshop	制弓工坊	wi
 Brook: Bandedglum	小溪: 条纹忧郁	w
 Brook: Giftwinnow	溪流:礼物筛选	w
@@ -141579,6 +141584,7 @@ Civilization: {p}	政权：{p}	ht
 Climb ({s}/Magma)	攀爬（{s1}／岩浆）	hPt
 Climb ({s}/Water)	攀爬（{s1}／水）	hPt
 Closing Ceremony.	闭幕仪式。	hEi
+Cloth and leather	布匹与皮革	wi
 Colony to Install	用于安装的蜂巢	w
 Commentary on {b}	{b}评注	hbti
 Comply with order	服从命令	hP
@@ -141782,6 +141788,7 @@ Maximum Elevation	最高海拔
 Maximum Volcanism	最高火山活动度
 Maximum interface	最大界面百分比	w
 Merchant from {s}	来自{s1}的商人	hPt
+Metals and alloys	金属与合金	wi
 Migrants (danger)	危险中的移民	w
 Minimum Elevation	最低海拔	w
 Minimum Volcanism	最低火山活动度
@@ -146003,6 +146010,7 @@ Claim {n} as pet	认领{n1}为宠物	hPt
 Climb ({s}/Lava)	攀爬（{s1}／熔岩）	hPt
 Closing Ceremony	闭幕仪式	hEi
 Cloth (Desired):	布（期望数量）：	wl
+Cloth and thread	布匹与线	wi
 Collected thread	已收集的线	wi
 Combat {n} ({s})	战斗：{n1}（{s1}）	hPt
 Common Sense {b}	{b}常识	hbti
@@ -146082,6 +146090,7 @@ FOREST REJECTION	森林不符合要求	hP
 Farming (Fields)	耕种	wi
 Fifth eldest son	第五个儿子	w
 Fine Dining Room	精致餐厅	w
+Flasks and vials	水壶与小瓶	wi
 Flights of fancy	爱幻想	w
 Flux Stone Layer	助熔剂石层	w
 Flux stone layer	助熔石层	w
@@ -146221,6 +146230,7 @@ Pickup equipment	拾取装备	w
 Pillaging of {p}	{p1}劫掠事件	htEi
 Plant Processing	植物加工	wi
 Plant growth (?)	植物生长物（？）	wi
+Plants and seeds	植物与种子	wi
 Points Left: {d}	剩余点数：{d}	wt
 Population: <{d}	人口：少于{d}	ht
 Population: <{d}	人口：少于{d}	wt
@@ -146339,6 +146349,7 @@ Topple {s} ({s})	推倒{s1}（{s2}）	hPt
 Total Power: {d}	总动力：{d}	wtl
 Track/Spoor: {s}	踪迹：{s}	h
 Training Weapons	训练武器
+Training weapons	训练武器	wi
 Traps and levers	陷阱和控制杆	hq
 Traps and levers	陷阱和控制杆	w
 Travel complaint	旅行抱怨	w
@@ -150677,6 +150688,7 @@ Fish Dissection	剖鱼	wi
 Fish Dissectors	剖鱼工	wi
 Fishery Workers	渔业工人	wi
 Fishing/Related	捕鱼及相关劳动	wi
+Food and drinks	食物与饮品	wi
 Former prisoner	前囚徒	w
 Found a feature	发现地质特征	w
 Glowing Barrier	发光的屏障	wi
@@ -150831,6 +150843,7 @@ Right upper arm	右上臂	w
 Right upper leg	右大腿	w
 Rocky Wasteland	岩石荒漠
 Rotten raw hide	腐烂生皮	wi
+Rough gemstones	粗糙宝石	wi
 Royal Mausoleum	皇家陵寝	w
 Ruined hillocks	丘堡废墟	wi
 Ruled the World	已经统治世界	w
@@ -150884,6 +150897,7 @@ The {s} is {s}.	{s1}：{s2}。	hPt
 Thief (villain)	盗贼（反派）	w
 This is an {i}.	这是{i1}。	ht
 Thoughts on {b}	{b}感想	hbti
+Tools and traps	工具与陷阱	wi
 Tracks Visible:	可见踪迹：	wl
 Traditional {b}	传统{b}	hbti
 Trap components	陷阱组件	wi
@@ -155517,6 +155531,7 @@ Friendly terms	友善的条款	w
 Front Compound	前置复合词	w
 Fruit and Nuts	果实与坚果	wi
 Full reversion	完全野化	w
+Furniture sets	家具套装	wi
 Get provisions	获取补给	wi
 Give into pain	因疼痛倒下	w
 Go below hatch	前往活动盖板下方	hP
@@ -160402,6 +160417,7 @@ Cloth (Plant)	植物布	wi
 Cloth (metal)	布匹（金属）	wi
 Clothesmaking	制衣	wi
 Clothing Shop	服装店	wi
+Clothing sets	衣物套装	wi
 Collect taxes	征税	wi
 Compose music	创作音乐	hP
 Concentration	专注	wi
@@ -160418,6 +160434,7 @@ Credits: rcab	rcab	wl
 Crow woman, \x0C	乌鸦人，♀
 Crutch-walker	拄拐行者	wi
 Current month	当前月份	wl
+Cut gemstones	切割宝石	wi
 DFHack tools.	DFHack工具.	w
 Dark fortress	黑暗要塞	wi
 Detailed mode	详细模式	w
@@ -160618,6 +160635,7 @@ Ropes (Plant)	绳索（植物纤维）
 Routine:Ready	日程：待命	wl
 Royal Bedroom	皇家卧室	w
 Ruined houses	房屋废墟
+Sand and Clay	沙与黏土	wi
 Sandstone {d}	第{d}年 砂岩月	wt
 Second finger	中指	w
 Seek alliance	寻求结盟	wliP
@@ -165306,6 +165324,7 @@ Unnamed tomb	未命名墓地	wi
 Unnamed zone	未命名区域	wi
 Usable armor	可用盔甲	wi
 Use ability.	使用能力。	hj
+Valuable ore	贵重矿石	wi
 Values peace	崇尚和平	w
 Values power	看重权势	w
 Values skill	崇尚技艺	w
@@ -173354,6 +173373,7 @@ Apply cast	打石膏	wi
 Apprentice	学徒	w
 Archetypes	角色原型
 Armor User	盔甲使用者	wi
+Armor sets	护甲套装	wi
 Armorsmith	盔甲匠	hH
 Armorsmith	盔甲匠	wi
 Astonished	惊讶	w
@@ -180659,7 +180679,6 @@ Workers	工作人员	w
 World: 	世界: 	w
 Worried	担心	w
 Wrestle	摔跤	hq
-Writing	写作	wi
 Zagstok	扎托克	wi
 Zalstom	扎斯托	wi
 Zansong	赞松	wi
@@ -181546,6 +181565,7 @@ Afraid	害怕	w
 Akmesh	埃克梅	wi
 Alerts	警报	hq
 Alerts	警报	w
+Alloys	合金	wi
 Always	总是	w
 Ambush	遭到伏击	w
 Amluth	埃姆鲁斯	wi
@@ -182441,7 +182461,6 @@ drawls	拖腔	wi
 dreams	梦境	r
 dreams	梦	wi
 drills	训练	wi
-drinks	饮料	wi
 drools	口水	wi
 drowsy	昏昏欲睡	wi
 druids	德鲁伊	wi
@@ -183008,7 +183027,6 @@ sticks	棍	wi
 stigma	耻辱	wi
 stoats	白鼬	wi
 stoker	司炉	wi
-stones	石头	wi
 storms	风暴	r
 storms	暴风雨	wi
 strand	缕	wi

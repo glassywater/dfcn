@@ -1015,6 +1015,7 @@ def main() -> int:
             [SCRIPT, ROOT / "src/mods/map_preview.cpp", ROOT / "src/map_preview_api.h"]))
         rebuild_riding = riding_mod and (configured_build or needs_update([riding_mod],
             [SCRIPT, ROOT / "src/mods/riding.cpp", ROOT / "src/mods/riding_render.inc",
+             ROOT / "src/mods/riding_mechanics.inc", ROOT / "src/mods/riding_flight.inc",
              ROOT / "src/riding_api.h"]))
         if rebuild_core or rebuild_loader or rebuild_mouse or rebuild_preview or rebuild_riding:
             # Both core translation units and the loader must see the same
@@ -1069,12 +1070,8 @@ def main() -> int:
             if rebuild_mouse:
                 publish_ready(mouse_candidate, mouse_mod)
         if riding_mod:
-            for directory in edition_destinations():
-                directory.mkdir(parents=True, exist_ok=True)
-                destination = directory / riding_mod.name
-                staging.append(destination.with_name(destination.name + ".publish"))
-                publish_ready(riding_candidate if rebuild_riding else riding_mod,
-                              destination, keep_candidate=True)
+            # Keep the build artifact for its independent Workshop package.
+            # Translation deployment must not install the optional riding mod.
             if rebuild_riding:
                 publish_ready(riding_candidate, riding_mod)
         if preview_mod:

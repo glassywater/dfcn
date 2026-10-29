@@ -526,7 +526,11 @@ std::optional<std::string> Overlay::translate_announcement_combat(
             value(leaf_key, original.size()); leaf_key.append(original);
             const bool report_binding = scope == "$unit" || scope == "$person" ||
                 scope == "$speech-person" || scope == "$speech-first-name";
+            // A return report's history body is bound to its complete parent
+            // just like the party; identical prose alone cannot reuse that
+            // parent's native history snapshot (or a previous binding miss).
             if (scope == "$announcement" || scope == "$mission-return-party" ||
+                    scope == "$history-report" ||
                     (report_binding && !g_native_announcement_log_translation_report)) {
                 value(leaf_key, raw_source.size()); leaf_key.append(raw_source);
             }

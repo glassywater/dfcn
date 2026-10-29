@@ -92,6 +92,16 @@ std::optional<std::string> Overlay::compose_native_announcement_log_record(
         }
     }
 
+    if (document.report.type == 301) {
+        // GUEST_ARRIVAL owns the complete returning party and appended
+        // history report. Resolve that constructor before unrelated rumor
+        // productions can read "has returned. ..." as "has {book}" and
+        // suspend this worker on speculative book/site dependencies.
+        auto target = translate_announcement_combat(source, "fortress-arrival");
+        if (target) append_colors(target_colors, *target, foreground);
+        return target;
+    }
+
     if (document.report.type == 351 && source.starts_with("\"Greetings. I am ")) {
         // 7f079c submits this complete deity pronouncement. Its optional
         // sphere and material/followers clauses are four reviewed productions,

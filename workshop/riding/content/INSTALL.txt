@@ -1,0 +1,40 @@
+DFCN · 骑兵 / Fortress Cavalry 1.0
+
+适用：Dwarf Fortress 53.16，Windows x64 Steam 版。
+依赖：DFCN v53.16-20261028.2 或更新版本。
+
+DFCN 汉化核心：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3811193379
+
+骑兵模组：
+https://steamcommunity.com/sharedfiles/filedetails/?id=3828843073
+
+安装
+订阅并下载本模组，由 DFCN 在加载时读取 Steam 当前订阅状态与安装目录。
+无需在创建世界时启用模组，也无需 DFHack；仅复制 DLL 或解压 ZIP 不会启用。
+
+坐骑管理
+在 DFCN 设置菜单中打开“要塞骑乘：管理坐骑”，选择矮人并分配坐骑。
+支持原版和其他模组中具备原生骑乘标记的成年驯服动物。
+新分配默认使用“日常与军务骑乘”，也可改为“随军令骑乘”或“停止骑乘”。
+解除分配使用“停止骑乘并解除分配”。
+
+功能
+普通工作、搬运和本地图军务均可骑乘，吃喝、睡觉、治疗及坐骑恢复优先。
+实际骑行增长骑术；骑手与坐骑合计携带重量和承载能力，沿用原生超重规则。
+支持飞行坐骑的三维寻路，并保留原生禁区、锁链和牧场限制。
+未骑乘的已分配坐骑跟随矮人，保留原有宠物归属。
+骑手与坐骑同时显示，保留装备和大型动物贴图。
+当前版本用于要塞本地图，不支持跨地图远征中的骑乘。
+
+分配记录
+记录保存在 DFCN 核心目录的 riding/*.tsv，按存档、世界和要塞分别保存。
+迁移安装时保留 riding 文件夹。读入较早的游戏存档时，分配设置仍以该存档
+对应的模组记录为准。关闭汉化显示不关闭骑乘功能。
+
+Requires DFCN v53.16-20261028.2 or later and Dwarf Fortress 53.16 for Windows x64 on Steam.
+Subscribe and download the Workshop item; DFCN discovers it when loading.
+No world mod activation or DFHack required. Preserve the core's riding folder when migrating.
+
+原创内容采用 CC BY-NC-SA 4.0；详见 LICENSE。
+项目：https://github.com/pokemonchw/dfcn

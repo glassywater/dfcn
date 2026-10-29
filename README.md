@@ -28,7 +28,7 @@ Windows 与 Linux 共用汉化数据载入优化：TOML 规则图按节点及引
 
 汉化启动时优先读取游戏根目录的 `dfcn_config.ini`；文件不存在时，从订阅目录的 `DFCN/dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖。订阅目录中的 `config.ini` 保留为默认模板，复制失败时作为回退配置。手动安装、路径示例与卸载方法见 [安装说明](workshop/content/INSTALL.txt)。
 
-**GitHub Release：**从 [v53.16-20261024](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261024) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。汉化设置同样使用游戏根目录的 `dfcn_config.ini`，首次启动时由 `dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖；复制失败时读取默认模板。完整变化见 Release 更新日志。
+**GitHub Release：**从 [v53.16-20261028.2](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028.2) 下载 `DFCN-Windows-x64-minimal.zip`，解压后将全部内容按原有目录结构复制到游戏根目录，包括 `dfhooks.dll`、`dfhooks_dfcn.ini` 和整个 `dfcn` 文件夹。汉化设置同样使用游戏根目录的 `dfcn_config.ini`，首次启动时由 `dfcn/data/runtime/config.ini` 复制生成，已有文件不会覆盖；复制失败时读取默认模板。完整变化见 Release 更新日志。
 
 Windows 汉化核心与翻译数据按汉化模块所在目录定位，支持将运行文件保留在工坊目录；用户配置统一使用游戏根目录的 `dfcn_config.ini`。游戏中按 **Shift+F10** 开启或关闭汉化，保留当前核心与数据；按 **Shift+F5** 关闭再开启汉化时，重新加载核心与数据。数据仅在启动、**Shift+F5** 重新开启或 **Ctrl+Shift+F10** 显式刷新时加载，不自动检查文件变化。安装仅添加汉化自身文件，不改写磁盘上的游戏本体、RAW 或存档；取消订阅不会删除已复制的入口文件和 `dfcn_config.ini`，卸载时需手动移除自己安装的汉化文件。
 
@@ -41,6 +41,12 @@ Windows 本版提供 **Shift+F6**：扩展默认启用，首次按下停用全�
 Windows 同时安装 **DFHack 53.16-r2 / r3** 时，可按 **Shift+F11** 关闭 DFHack，再按一次恢复。开关独立于汉化：关闭时暂停插件更新、界面 hook、热键、命令与 Lua 定时回调，保留驻留核心、插件配置、存档数据和世界卸载清理。已打开的 DFHack 界面会关闭；已执行的游戏或存档修改不会回滚。
 
 已支持汉化搜索的界面可使用中文、英文、拼音全拼与首字母，并提供输入容错和物品类别匹配。需要近义匹配时，可订阅[独立离线语义搜索模型](https://steamcommunity.com/sharedfiles/filedetails/?id=3823451988)。核心在启动时自动识别模型，无需联网或在世界模组列表中启用；未安装模型时，普通文字、拼音与容错搜索仍可使用。
+
+## 骑兵模组
+
+[骑兵 / Fortress Cavalry](https://steamcommunity.com/sharedfiles/filedetails/?id=3828843073) 是独立的创意工坊模组，适用于 Windows x64 Steam 版 Dwarf Fortress 53.16，需要 DFCN v53.16-20261028.2 或更新版本。支持坐骑分配、日常与军务骑乘、坐骑跟随、骑术成长、共同负重及飞行坐骑寻路。
+
+订阅并下载后由 DFCN 在加载时识别，无需 DFHack 或在创建世界时启用。骑兵 DLL 仅随独立模组提供，汉化主包不包含该文件。详情见[模组说明](workshop/riding/content/INSTALL.txt)。
 
 ## Linux 安装与使用
 
@@ -70,13 +76,13 @@ Windows 本版可用 **Shift+F6** 临时停用或恢复全部扩展数据，并�
 
 ## 维护者打包
 
-打包使用已有 Windows 编译产物和运行数据。执行根目录的 `package-workshop.cmd`，或使用 Windows PowerShell 执行 `-File tools/package-workshop.ps1`。发布汉化本体时使用 `-File tools/package-workshop.ps1 -BaseOnly`，仅生成本体的 Windows 整包和工坊包。打包不编译代码，也不需要下载 Linux 运行包。
+打包使用已有 Windows 编译产物和运行数据。执行根目录的 `package-workshop.cmd`，或使用 Windows PowerShell 执行 `-File tools/package-workshop.ps1`。发布汉化本体时使用 `-File tools/package-workshop.ps1 -BaseOnly`，生成本体的 Windows 整包、工坊包与独立原生模组包，跳过汉化数据扩展和语义模型。打包不编译代码，也不需要下载 Linux 运行包。
 
 该入口先生成 `DFCN-Windows-x64-minimal.zip`，包含完整 Windows 运行文件、汉化数据与许可说明。在临时副本上使用固定 Windows 工具链的 `strip.exe --strip-unneeded` 移除核心与加载器的静态符号和调试数据，保留动态导出；本机部署 DLL 不变。
 
 工坊入口从 `info.txt`、`INSTALL.txt`、`CHANGELOG.txt`、`install.bat` 和 Windows 运行 ZIP 重建整个 `workshop/content`，不沿用内容目录中的旧 ZIP、缓存或其他遗留文件。`DFCN/` 保持完整 Windows 运行目录，入口配置改为工坊订阅路径，并提供对应的工坊安装说明。
 
-入口生成 `DFCN-Windows-workshop.zip`，并将 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type、Real Book/Scroll Content!、Mcnuggy's Mythical Beasts 六个公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。另在 `workshop/semantic-search` 生成独立模型包 `dfcn_semantic_search.zip`。独立汉化扩展、语义模型与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。Linux 独立运行包仍从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 获取。
+入口生成 `DFCN-Windows-workshop.zip`，并将 Dwarvemon、Dwarvemon Beta、Dwarvemon Entity All、Dwarvemon Entity Type、Real Book/Scroll Content!、Mcnuggy's Mythical Beasts 六个公开汉化数据扩展分别打包为各自目录中的 `<mod ID>.zip`，跳过私密包。另在 `workshop/semantic-search` 生成独立模型包 `dfcn_semantic_search.zip`。骑兵模组单独生成 `workshop/riding/dfcn-riding.zip`，不包含在汉化主包中。独立汉化扩展、语义模型与原始玩法模组不并入本体；工坊上传使用 `workshop/content`。Linux 独立运行包仍从 [v53.16-20261008-linux](https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261008-linux) 获取。
 
 Linux 宿主打包已有的 Windows 交叉编译产物时，使用固定 Python 执行
 `tools/package-windows-cross.py`。该脚本读取同一 Windows 运行文件清单，
@@ -84,8 +90,8 @@ Linux 宿主打包已有的 Windows 交叉编译产物时，使用固定 Python 
 Windows 工坊包和六个公开扩展 ZIP，不编译或生成数据。
 工坊发布工具 `tools/publish-workshop.py` 支持 Linux 已安装的 Steamworks 库及现有登录会话。
 
-当前 Windows 发布版本为 **v53.16-20261028**，变化见
-[更新日志](docs/releases/v53.16-20261028.md)。
+当前 Windows 发布版本为 **v53.16-20261028.2**，变化见
+[更新日志](docs/releases/v53.16-20261028.2.md)。
 
 ## Linux 交叉编译 Windows x64
 

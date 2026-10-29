@@ -480,7 +480,9 @@ void Overlay::append_native_info_panel_titles(std::vector<std::string> &rows,
             const auto &complete = draw.complete_source.empty() ? draw.source : draw.complete_source;
             auto target = draw.info_title_authored ?
                 std::optional<std::string>(native_text_to_utf8(complete)) :
-                translate_info_panel_title(draw.info_title_kind, complete);
+                draw.trade_item_caption && draw.trade_item_caption->source == complete ?
+                    translate_native_trade_item_caption(*draw.trade_item_caption) :
+                    translate_info_panel_title(draw.info_title_kind, complete);
             const bool translated = target.has_value();
             if (!target) target = native_text_to_utf8(complete);
             if (target->empty() || target->find_first_of("\r\n") != std::string::npos) continue;

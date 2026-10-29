@@ -37,6 +37,26 @@ std::optional<std::string> Overlay::translate_native_trade_item_caption(
             const auto result = translate_native_job_item_material(*material);
             if (result.usable()) return result.target;
         }
+        if (config_.compositional_rules &&
+                !(caption.flags & (0x40000u | 0x08000000u | 0x40u))) {
+            // WOOD establishes the tree sense even when the native caption
+            // omits "logs"; BAR/ASH above owns the burnt product instead.
+            if (caption.type == 5)
+                if (auto wood = translate_wood_item_caption(caption.source, false, true, true))
+                    return wood;
+            // COAL has its own material indices and is deliberately excluded
+            // from the built-in solid-material path. Its complete fuel noun
+            // must not inherit CHARCOAL's procedural color/adjective sense.
+            if (caption.type == 0 && caption.subtype == -1 && caption.material == 7) {
+                const auto source = trim_view(caption.source);
+                const auto quantity = item_number_suffix(source);
+                std::vector<size_t> origins;
+                if (auto fuel = RULESETS.translate_with_origins(
+                        lower(trim(std::string(source.substr(0, source.size() - quantity.size())))),
+                        "::items::bar::coal", origins))
+                    return *fuel + std::string(quantity);
+            }
+        }
         if (!caption.semantic_name || !config_.compositional_rules) return fallback();
         const char *family = nullptr;
         bool equipment = false;

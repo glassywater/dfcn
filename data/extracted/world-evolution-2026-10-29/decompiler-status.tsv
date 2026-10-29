@@ -1,0 +1,24 @@
+role	completed	message
+adventure_bulk_time_update	true	
+fortress_ten_tick_update	true	
+economy_96e3e0	true	
+economy_96ece0	true	
+economy_973780	true	
+economy_99c410	true	
+economy_9a19d0	true	
+economy_9a5310	true	
+legends_logic	true	
+world_data_update_a	true	
+world_data_update_b	true	
+daily_phase_50_world	true	
+world_schedule_14653b0	true	
+adventure_schedule_extra	true	
+adventure_dispatch_extra	true	
+daily_phase_20	true	
+weekly_phase_30	true	
+weekly_phase_50	true	
+daily_phase_60	true	
+daily_phase_110	true	
+daily_phase_70	true	
+daily_phase_80	true	
+annual_schedule_rebuild	true	

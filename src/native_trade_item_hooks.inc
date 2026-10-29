@@ -69,6 +69,8 @@ static void capture_native_trade_item_draw(graphicst *graphics, const NativeStri
     const unsigned char *grid = nullptr;
     std::array<long, 4> clip{};
     int x = -1, y = -1, dimx = 0, dimy = 0;
+    NativeInfoTitleKind title_kind = NativeInfoTitleKind::None;
+    int caption_right = -1;
     try {
         // Consume the binding at this exact item-name draw, even if it is
         // clipped away. A later string at the same stack address starts with
@@ -92,6 +94,26 @@ static void capture_native_trade_item_draw(graphicst *graphics, const NativeStri
             grid = graphics->screen;
             clip = {graphics->clipx[0], graphics->clipx[1],
                 graphics->clipy[0], graphics->clipy[1]};
+#ifdef _WIN32
+            // Building contents have their own native item-name field. Keep
+            // that ownership when this wrapper replaces addst's capture;
+            // otherwise only the later picture-skin reader can recover it.
+            const auto building_draw = native_pe_address(native_history_profile_base(), 0x19d5ad);
+            if (building_draw && caller == building_draw + 5) {
+                title_kind = NativeInfoTitleKind::Item;
+                caption_right = x + static_cast<int>(shortened.size());
+                // Both PE editions use source=rsp+3b80, right=rsp+298 and
+                // role width=rsp+e38. The formatter reserves 16 action cells
+                // and another three when a building/task role is present.
+                int32_t right = 0, role_width = 0;
+                if (pending.string_owner >= 0x38e8 &&
+                        native_history_copy(pending.string_owner - 0x38e8, right) &&
+                        native_history_copy(pending.string_owner - 0x2d48, role_width) &&
+                        (role_width == 0 || role_width == 3) &&
+                        right > 0 && right <= dimx && right - 16 - role_width >= caption_right)
+                    caption_right = std::min<int>(right - 16 - role_width, clip[1] + 1);
+            }
+#endif
         }
     } catch (...) { pending = {}; }
     // Use the original addst entry. Its existing caption entry hook still
@@ -116,7 +138,7 @@ static void capture_native_trade_item_draw(graphicst *graphics, const NativeStri
         // Its typed snapshot supplies the complete identity independently.
         const std::string complete = pending.caption.source;
         remember_native_drawn_text_row(x, y, shortened, pending.string_owner, graphics,
-            false, complete, NativeInfoTitleKind::None, false, -1,
+            false, complete, title_kind, false, caption_right,
             NativeCivilizationField::None, false, -1, clip, pending.epoch, {},
             NativeLocationPickerField::None, std::nullopt, std::nullopt,
             NativeTravelBuildingField::None, caller, std::nullopt, std::move(pending.caption));

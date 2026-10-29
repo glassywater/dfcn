@@ -3,12 +3,12 @@
 DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作品，结合社区译文与本地修订，翻译游戏界面、人物信息、物品描述和传说故事，支持简体中文与台湾正体中文。
 
 [b]适配 Dwarf Fortress 53.16，Windows x64，支持 Steam 版与官网免费版。[/b]
-当前版本：[b]53.16-20261028[/b]（2026-10-28）。
+当前版本：[b]53.16-20261028.2[/b]（2026-10-28）。
 游戏内按 [b]Shift+F1[/b] 打开汉化设置菜单，可切换中英文、繁简体、四族语言原文／音译，开关已安装的 DFHack，或重新载入汉化。
 更新内容见改动说明与订阅目录中的 CHANGELOG.txt。
 
 [url=https://github.com/pokemonchw/dfcn]GitHub 项目主页[/url]
-[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028]Windows 汉化下载[/url]
+[url=https://github.com/pokemonchw/dfcn/releases/tag/v53.16-20261028.2]Windows 汉化下载[/url]
 [url=https://byayoi.org/]Byayoi 同人社区[/url]
 
 [h1]Windows 工坊安装[/h1]
@@ -19,11 +19,11 @@ DFCN 是 Byayoi 同人社区的《Dwarf Fortress（矮人要塞）》汉化作�
 [*]双击 [b]install.bat[/b]，自动寻找游戏目录、安装引导文件并填写汉化路径。
 [*]显示安装完成后正常启动游戏。完整 [b]DFCN[/b] 文件夹保留在订阅目录，核心与词表继续由 Steam 更新。
 [/olist]
-脚本使用 Windows 自带 PowerShell，不依赖 DFHack，支持中文路径和多个 Steam 库。官网版或其他安装可将游戏文件夹或 Dwarf Fortress.exe 拖到 BAT 上指定位置。移动游戏或汉化目录后重新运行脚本即可。手动安装方法见订阅目录中的 INSTALL.txt。
+脚本使用 Windows 自带 PowerShell，支持中文路径和多个 Steam 库。官网版可将游戏文件夹或 Dwarf Fortress.exe 拖到 BAT 上。移动安装目录后重新运行脚本；手动安装见 INSTALL.txt。
 
 保留完整订阅目录结构。汉化设置优先使用游戏根目录的 [b]dfcn_config.ini[/b]；首次启动时若该文件不存在，从订阅目录的 [code]DFCN/dfcn/data/runtime/config.ini[/code] 复制生成，已有文件不会覆盖。订阅目录中的 config.ini 保留为默认模板和复制失败时的回退配置。
 后续工坊更新由 Steam 下载到订阅目录；目录不变时，入口配置继续使用，个人设置保存在游戏根目录。
-脚本会备份被替换的引导文件，并将旧版根目录 [b]dfhooks_dfcn.dll[/b] 改名备份以避免重复加载。已有 dfcn_config.ini 和旧 dfcn 文件夹保留。
+脚本备份被替换的引导文件及旧版根目录 [b]dfhooks_dfcn.dll[/b]，保留已有 dfcn_config.ini 与旧 dfcn 文件夹。
 
 [h1]简体与正体切换[/h1]
 
@@ -47,6 +47,7 @@ GitHub Windows 运行包 [b]DFCN-Windows-x64-minimal.zip[/b] 整包解压到游�
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815791235]Dwarvemon Entity Type 汉化数据[/url]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815791319]Dwarvemon Entity All 汉化数据[/url]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815789657]Real Book/Scroll Content! 汉化扩展[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3828679581]Mcnuggy's Mythical Beasts 汉化扩展[/url]
 [/list]
 Dwarvemon 与 Beta 各有独立完整数据；Entity Type 与 Entity All 翻译各自名称和文明配置简介，生物与物品译文由 Dwarvemon 汉化数据提供。
 Real Book 汉化扩展翻译阅读界面、书名和生成的书籍正文，并附带性能兼容脚本；需要安装 Real Book/Scroll Content! 原模组及 DFHack。

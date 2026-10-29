@@ -1,0 +1,144 @@
+精灵年度伐木配额：Windows 53.16 离线反编译研究
+日期：2026-10-27
+
+对象：D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+PE 标识：PE:6a70a6d9:02711000
+方法：读取磁盘 PE、固定 objdump 反汇编、Ghidra 12.1.4 反编译、对照 DFHack 结构及公开资料。
+所有函数名是研究时赋予的说明名，不是游戏公开源代码的符号。
+本次没有运行游戏、操作桌面、读取进程或运行日志、修改游戏逻辑或构建部署。
+
+结论
+
+最终允许砍树数 Q = 难度设置的地区基数 B + 非负的随机协商加成。
+主要决定因素为：敌人难度/自定义配额、要塞所在地世界区域的野性值、
+本方接待贵族与精灵代表的有效社交技能和人格、实际会谈区的房间价值、随机数。
+人口、要塞总财富、贸易额、上一年度实际砍树数，没有直接进入所定位的额度公式。
+未在协商分数和通用有效技能读取中发现独立 stress/happiness 项。
+
+一、基础值和地区选择
+
+全局 difficultyst 起点 0x14239a020：
+  +0x90 / 0x14239a0b0：tree_fell_count_savage，原名 diplomacy_tree_cap_high_savagery。
+  +0x94 / 0x14239a0b4：tree_fell_count，原名 diplomacy_tree_cap。
+结构依据：data/upstream/df-structures/df.plotinfo.xml:744、769、770。
+
+difficulty-defaults.c / .asm，0x141070c50..0x1410710b6：
+  difficulty_enemies=0（Off）  ：普通25，高野性5。
+  difficulty_enemies=1（Normal）：普通25，高野性5。
+  difficulty_enemies=2（Hard） ：普通10，高野性1。
+  difficulty_enemies=3（Custom）：直接返回，不覆盖自定义值。
+赋值地址：Off 0x141070ffd/0x141071007；Normal 0x141070ed1/0x141070edb；
+Hard 0x141070d6b/0x141070d71。
+
+地区读取：fortress_site 指针在 0x14239a1f0，+0x82/+0x84 是世界区域坐标。
+region-parameter.c / .asm，0x1403d6700..0x1403d6723，参数7读取：
+  world_data.region_map[x][y] 的 +0x3e int16 savagery。
+region_map 在 world_data+0x2b0，每个 cell 步长0x70。
+当 savagery >=66 时使用高野性基数，否则使用普通基数。
+结构依据：df.region.xml 的 region_map_entry，savagery 标注66..100为Savage。
+本函数没有扫描整个出发区域的所有生物群系；不能把混合地形简单解释为
+“只要有一块低野性就必然采用普通额度”。它读取 fortress_site 对应的世界区域。
+
+二、配额的生成和缓存
+
+diplomacy-text.c 的 case 2（TreeQuota）：
+  0x14041ce9c..0x14041cf87：初始说辞读取并显示 B。
+  0x14041cc08：activity_info.tree_quota（+0x18）若不是-1则使用已缓存额度。
+  0x14041cc12..0x14041ce3e：首次进入协商后的阶段时计算 Q 并缓存。
+diplomacy-input.c 中 0x140413cd4..0x140414080 有同一算法的内联副本，
+用于输入处理时尚未缓存的情况。
+接受协议时，0x14041411b..0x14041412c 将 Q 写入 meeting_event 的
+quota_total（+0x38）和 quota_remaining（+0x3c）。
+结构依据：df.activity_meeting.xml、df.civagreement.xml。
+因此这里计算的是新的协议总额度，不是根据旧的剩余额度继续加减。
+游戏对话说明此额度持续到下次会面；“每年”是通常的来访周期表述。
+
+三、把协商分数变为树木加成的精确算法
+
+令 S = meeting_score(当前会面)，RND(N) 返回整数0..N-1。
+本机 random-int.c / .asm（0x140071f30..0x140071f83）实现该区间取值。
+设 H 表示 savagery>=66；定义 t(C)=min(S,C)，若 H 则再取 floor(t(C)/5)。
+
+Q 从 B 开始，依次执行以下五项，每一项各取自己的随机数：
+  S > 0     ：Q += RND(t(10) + 1)
+  S > 10    ：Q += floor(RND(t(100) + 6) / 5)
+  S > 100   ：Q += floor(RND(t(1000) + 51) / 50)
+  S > 1000  ：Q += floor(RND(t(10000) + 501) / 500)
+  S > 10000 ：Q += floor(RND(t(20000) + 1001) / 1000)
+若 S<=0，全部跳过，Q=B。
+
+注意：在高野性地区，是每档的 t 先除5，并非将最终 Q 或全部加成统一除5。
+较好的协商分数提高随机加成范围；每次结果仍然可以波动。
+
+由代码区间直接推导的理论加成上界：
+  普通地区：10+21+21+21+21 = 94。
+  高野性地区：2+5+5+5+5 = 22。
+所以默认Normal的理论总额范围是普通25..119、高野性5..27；
+默认Hard为普通10..104、高野性1..23。
+这是本段算法的数学上界，并不代表普通人物/办公室能经常达到。
+自定义基数时替换 B，不应仍把119或27当固定总上限。
+
+四、协商分数由什么构成
+
+meeting-score.c / .asm，0x140e5d3b0..0x140e5d5a6：
+  A = social_roll(本方接待贵族, 2)
+  E = social_roll(精灵代表, 2)
+  R = 实际会谈房间的计分价值
+  若 R>A：R = A + trunc((R-A)/10)
+  S = A + R - E
+任一会谈单位找不到时返回0。
+
+房间取值：
+  Office（93）：room_value(会谈区, 本方贵族) 全额。
+  DiningHall（80）或Bedroom（92）：room_value 的1/4，向下取整。
+  其他类型或无有效会谈区：初始R为0。
+房间价值超出本方当次社交掷骰A的部分，只计十分之一。
+房间估值接受贵族参数，包含部分材料偏好；它不是要塞总财富。
+房间估值相关ASM及说明见 ../elf-tree-quota-score/room-value.asm 和 source-notes.txt。
+
+social-roll.c / .asm，0x1413687b0..0x14136898f：
+  M = trunc(sum(有效技能等级_i * 权重_i) / (10 * 实际入选技能数))
+  social_roll = RND(201)-100 + RND(M+1)+RND(M+1)+RND(M+1)
+双方分别掷骰。
+
+social-skill-weights.c 的 mode 2，0x1413680c0：
+  Negotiation / 谈判：300
+  Judging intent / 察言观色：200
+  Persuasion / 说服：100
+  Lying / 说谎：100
+  Intimidation / 恐吓：50
+  Flattery / 奉承：50
+部分技能受人格/价值观筛选，只有入选技能才计入分子与技能数。
+personality-filter.c 保存具体条件；详细中文对应见相邻score研究记录。
+effective-skill.c 使用技能等级减生锈，再应用通用身体、饥渴、疲劳等折减。
+这里没有独立读取智力、社交感知、压力或幸福值加入协商公式。
+不能据此否认所有间接影响，但也不能把旧版“贵族等级/幸福度”公式套入本版。
+
+五、公开资料对照
+
+现代难度设置的默认值与本机代码一致：
+https://dwarffortresswiki.org/index.php/Difficulty#Tree_quota
+  普通Off/Normal/Hard为25/25/10；高野性为5/5/1。
+  文档还明确提到谈判者仍会尝试提高限额。
+
+公开结构：
+https://github.com/DFHack/df-structures/blob/master/df.plotinfo.xml
+https://github.com/DFHack/df-structures/blob/master/df.activity_meeting.xml
+https://github.com/DFHack/df-structures/blob/master/df.civagreement.xml
+
+Bay12开发日志，2022-05-27 Threetoe，说明Steam版降低精灵伐木容忍量，
+允许调整相关难度，并特别提醒高野性地区：
+https://bay12games.com/dwarves/index.html
+
+旧23a页面的固定100基数、旧幸福度和贵族等级公式不是当前53.16结论：
+https://dwarffortresswiki.org/index.php/23a:Diplomat#Elf
+现代Elf/Diplomat页面对office、stress/happiness、social skills部分使用推测措辞；
+本记录对具体因素的判断以当前磁盘映像的调用与字段读取为依据。
+
+六、反编译保留说明
+
+functions.tsv列出本次各函数的地址范围；.asm保留原指令，.c为Ghidra输出。
+DecompileTreeQuota.java设置已由汇编确认的返回类型、技能列表函数参数，
+并使用Ghidra内置security_check_cookie callfixup，保留跨栈cookie检查的EAX返回值。
+部分函数在PE展开表中分成连续片段；本次采用完整逻辑函数范围。
+这不是运行测试或实机显示观察，结论限定于上述53.16磁盘映像。

@@ -1,0 +1,416 @@
+《矮人要塞》游玩期间持续世界演化：反编译与 hook 可行性研究
+日期：2026-10-29
+工作区：D:\workspace\dfcn
+
+研究结论
+
+可以做增强世界演化的 mod，但不应把它实现成“每隔几帧重新执行一次世界生成”。
+本机 Steam 53.16 的世界没有在进入要塞后整体停摆。普通要塞、冒险逐步行动、冒险大步时间推进以及开局区域时间推进，都能抵达世界人物、站点和文明活动代码。
+可见变化较少，至少有四种不同原因：原生时间尺度；人口/站点上限与退避计时；个别游戏模式门控；生成期系统确实没有等价的完整运行期路径。
+这四类需要分别处理。已经运行的出生、死亡、军队和文明 AI 再调用一遍，会重复结算；生成期经济直接搬入，则会遇到不会存档的临时账本、人物位置表达和饥饿死亡副作用。
+
+最具体的几个入口已经定位：
+1. 要塞模式“发起新叛乱”的局部门控，Steam RVA 0x1467c2c（比较）/0x1467c33（条件跳转）。
+2. 原生运行期文明 AI 0x1468370，已经规划新建/收复站点、难民与入侵；其站点上限和四类节流字段有明确结构名称。
+3. independent_actor 中一类 HUNTING 目标生产只在冒险模式运行，比较点 RVA 0x1465957；不能把它扩大解释为所有独立人物行为都停止。
+
+本报告是静态逆向分析和实现设计，不是已完成的 mod。没有修改游戏、存档、汉化运行逻辑，没有编译部署、注入进程、操作窗口或新增测试。未观察当前存档的实机演化，不能把已发现的上限条件当作该存档的已确诊原因。
+
+一、证据来源与范围
+
+当前磁盘目标：
+Steam: D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+格式: Windows x64 PE，首选 ImageBase 0x140000000
+映像标识: PE:6a70a6d9:02711000
+SHA256: 205770918fd54c96cbbcf89223ebd449e2e113c7c873ed81177c4511a3450db7
+文件大小: 26,507,264 字节
+
+另识别到配置中的官网版：
+C:\Users\WIN11\Downloads\df_53_16_win\Dwarf Fortress.exe
+PE:6a70b91c:0270a000
+SHA256: f35bbaf37aa96f93f95f8a35a9341e6649da46bc29a8650316bfdc2dfc57f3e4
+本次功能地址分析以 Steam 映像为准，没有把 Steam 地址冒充官网版地址。
+
+新增材料目录：D:\workspace\dfcn\data\extracted\world-evolution-2026-10-29
+旧材料目录：D:\workspace\dfcn\data\extracted\world-activation-research
+以下以“新/”“旧/”分别简称这两个目录，结构源码以工作区为根。
+新目录中的 C 文件实际位于 decompiled/ 子目录；正文省略该层的 C 文件引用也指向此子目录。
+
+本次从当前 PE 提取 37 个关键函数范围的汇编，保留调用、调用者、展开信息和映像身份；实际新增/补全 23 份 Ghidra C，包括 21 个新增函数和两个旧边界修正。其余 14 个函数沿用旧 C，提供了当前磁盘汇编供对照。
+incoming-direct-calls.tsv 包含 83 个目标入口的直接 CALL 引用。该数字只是源码索引规模，不代表完整程序调用图，不包括间接调用、虚调用、tail call 或没有 .pdata 覆盖的调用者。
+direct-calls.tsv 是 objdump 线性解码范围内的调用索引，涉及跳转表附近时须以实际控制流理解，不能当成所有分支都可达的证明。
+
+Ghidra 12.1.4 以 -readOnly 打开已有分析项目，程序 SHA256 与当前磁盘映像一致，见新/ghidra-program.txt。对项目的命名和函数范围修改没有保存回原分析数据库。
+函数英文名多为研究者命名，并非从游戏调试符号恢复；C 的形参/返回类型是推断。实参寄存器、字段访问和分支汇编的证据等级高于看似合理的函数名。
+尤其 0x14099c410 的 Ghidra 返回类型显示 ulonglong，但调用者取 AL/char；不能把不确定的高 56 位用于布尔判断。
+
+旧头注的两个问题已查清并补全：
+world_data_update_a 的旧头注只到 0x140f7a395，实际有 5 个 chained unwind 区域，包络结束于 0x140f7b3a5。
+legends_logic 的旧头注只到 0x140d3e512，实际有 7 个区域，结束于 0x140d3e8d0。
+0x140f7bdd0 没有 .pdata，是有两个 RET 出口的叶函数，真正结束于 0x140f7be7e；不能一直切到下一个有 unwind 元数据的函数。
+
+官方背景也与当前代码一致：Bay 12 在 2014-07-07 的 world activation 发布说明中已介绍游玩期间的出生、死亡、婚姻、继承、入侵与建站。该旧文只用作历史背景，现版本结论以本机代码为准。
+来源：https://www.bay12games.com/dwarves/dev_2014.html
+
+二、真实调度路径：不能只挂一个“总更新”函数
+
+地址均为 Steam 首选 VA；运行时地址必须用模块实际基址 + RVA。
+
+普通要塞：
+  fortress_logic 0x1408b3170
+    未暂停的正常模拟 tick：推进游戏时间
+    每 tick：world_activity_dispatch 0x141510a30 调用 16 次
+    每 10 tick：fortress_ten_tick_update 0x1408be1d0
+                 -> shared_world_schedule 0x141449dc0(world, 0)
+
+普通冒险：
+  adventure_logic 0x1407eed80
+    每 9 个细分 tick：world_activity_dispatch
+    每 144 个细分 tick：adventure_time_step 0x14082f060
+      -> 年 tick +1
+      -> 每 10 年 tick：shared_world_schedule(world, 1)
+
+冒险大步推进：
+  adventure_bulk_time_update 0x140806230
+    内联执行日/周任务、site_activity_update、world_update 等
+    自己推进季节与年份、年度续排
+    还调用 world_activity_dispatch
+    不经过 shared_world_schedule
+
+开局/区域时间推进：
+  update_region_logic 0x140a7bf90
+    同样直接调用世界活动、生命事件、站点、文明 AI 等
+    不是简单地调用 shared_world_schedule
+
+因此只 hook 0x141449dc0 会遗漏两条路径。若功能绑定站点活动，可研究所有这些路径共同调用的 0x141467290；若是通用新调度器，则需要明确接入各条时间路径并按游戏日期去重。
+
+普通要塞的直接 CALL 证据：
+0x1408b62c3 -> 0x1408be1d0
+0x1408be2e9 -> 0x141449dc0
+注意 fortress_logic 中直接调用 shared 的另一条分支属于 DWARF_ARENA，不能用它代替正常要塞的证据。
+证据：旧/fortress_logic.c:2361、2384、2395；新/decompiled/fortress_ten_tick_update.c；新/incoming-direct-calls.tsv。
+
+时间单位：
+一年 403200 年 tick = 336 天；一天 1200 年 tick。
+一个共享调度周期相当于 10 年 tick；120 周期为一天，840 为一周。
+cur_season_tick 达 10080 换季；春季轮转时年份增加。
+冒险细分相位每 144 步对应一个年 tick，16 次 dispatcher 与要塞比例一致。
+cur_year_tick_advmode 虽然有 year 字样，本段代码模数 14515200=144*100800，对应一个季节的细分相位，不能据字段名误判。
+证据：旧/adventure_logic.c:888、adventure_time_step.c:100、shared_world_schedule.c:314、409。
+
+shared_world_schedule 不是纯世界 worker。它还处理天气、地图和季节/年份，并消耗随机数。不能在额外线程或额外帧中重复调用它来“给世界加速”。
+
+三、世界原本已经在做什么
+
+共享调度主要相位（模数单位为共享 season tick）：
+
+每次            0x140f7a340  区域天气更新
+每次            0x140f7bdd0  月角/月相更新，world_data+0xa8/+0xac
+%120 == 10      0x14150a760  历史人物寿终排程
+%120 == 20      0x14150a950  受孕排程
+%840 == 30      0x14150b030  有限动物种群繁殖/恢复
+%120 == 40      0x14150c330  到期出生
+%840 == 50      0x14150bf80  清理数量归零的军队/站点人口记录
+%120 == 60      0x14150d1f0  成年处理
+%120 == 70      0x14150dc70  家族神器寻回告示
+%120 == 80      0x14150e670  婚姻处理
+%120 == 110     0x14150d960  实体军力汇总
+每次            0x141467290  站点活动、叛乱与征服结算
+每次            0x141468370  文明/站点世界 AI
+%120 == 50      0x1414644c0  职位候选、civilized actors 与职业活动
+每次            0x1414653b0  阴谋行动者、独立行动者和军队目标调度
+冒险额外        0x141478180  已实例化站点的行人生成/目标安排
+年度            0x14150ef20  重建生命事件年度排程
+
+“天气”函数并不负责文明政治。新/world_data_update_a 受 WEATHER 特性和 arena 门控，更新区域气温、气流、云和降雪。月相函数同样不是世界政治开关。
+
+人物不是只消耗世界生成留下的固定计划：
+world.daily_events 六类日桶，每类 336 个 vector，存 nemesis ID；婚姻两组桶配对。
+寿终从当天桶取得 nemesis/historical figure，判断死亡年份并调用原生死亡处理。
+出生创建 unit、登记 next ID、连接历史人物，清理到期妊娠状态；不能用简单增加一个总人口数字替代。
+0x14150a950 建立妊娠状态，写 due year/tick，并加入出生桶。
+0x14150ef20 每年重新产生受孕、成年、婚姻等安排；它清理五类桶，但特意保留 births，避免抹去跨年预产安排。
+
+年度排程还有一个解释“世界安静”的实际限制：
+  budget = max(0, worldgen_parms.total_civ_population - 活着的 nemesis 数)
+  每站候选额度 = max(0, min(infrastructure_pop_level/50 + 1, 30) - 该站已有 nemesis 数)
+  总额度不足时再削减各站额度。
+这不是“全世界所有人口都被硬封顶为该数字”的证明；此处算的是具体历史人物/nemesis 的年度生育预算，抽象人口另有系统。
+证据：新/annual_schedule_rebuild.c:43-69、108-159、218-247、433-452、582-600；src/native_history_layouts.inc 的 daily_events 与 total_civ_population 映射。
+
+文化也不能笼统称为停摆：
+0x1414644c0 遍历 civilized_actor；对若干学者类职业，在当前站点 LIBRARY(type 9) 中可按随机条件进入专业行为 helper。
+目前证明了运行期职业/图书馆调度的存在，尚未逐个恢复最终写书、知识发现与作品传播子函数，不能据此声称所有世界生成文化行为均在运行。
+
+四、扩张、战争与叛乱：已有引擎和明确缺口
+
+4.1 扩张和收复并没有整体关闭
+
+0x141468370 已经：
+  遍历实体，区分玩家政体与普通世界 AI；
+  排除当前玩家站点的若干抽象处理；
+  推进难民、建站/收复、寻找位置、入侵规划等；
+  创建 army_controller 并设置 CREATE_NEW_SITE(goal 14)。
+
+historical_entity 四类运行期节流字段：
+  +0x126c  pwg_ai_throttle_refugee_check
+  +0x1270  pwg_ai_throttle_create_or_reclaim_site
+  +0x1274  pwg_ai_throttle_attempt_create_site
+  +0x1278  pwg_ai_throttle_invasion_planning
+准确字段来源：src/native_history_layouts.inc:14087-14090；df.entity.xml:1648-1651。
+
+world+0x128660 = worldgen.worldgen_parms.site_cap。
+文明 AI 在新建站点分支比较它。旧/world_update_1468370.c:7066 以后可见该流程：检查候选/现有控制器，比较上限，寻找位置，创建目标为 0xe 的控制器，写年份和目的地。
+典型节流写入有 3360 周期（正常节奏为 28 天）和失败后的 40320 周期（约一年）。其他分支还叠加概率和候选条件。
+证据：新/assembly/world_update_1468370.asm 的 0x1414712ef、0x141472008、0x14147203c；src/native_history_layouts.inc:11431。
+
+所以“很久没有新城市”并不能单独证明调度停止。上限已满、无合适位置、现有任务、人口/资源门槛和失败退避都可能产生相同表象。
+本次未读取当前存档并逐项恢复其状态，所以这里只列代码中的机制，不宣称该存档触发了哪一项。
+
+军队执行链：
+world_activity_dispatch -> army_activity_116dd0 -> 各目标处理 -> 到达/战斗/终结。
+world_activity_dispatch 逆序扫描 world.armies.all；重复调用会加快现有军队活动，不会自动补出遗漏的外交决策生产者。
+其中 world.flags bit7 是 might_have_realized_site，只门控已实例化站点的局部活动，不是全世界启用/停用开关。
+
+旧文件 found_site_12bdf0 的名字容易误导：实际会在 PACIFY_CONNECTED_HAMLET(goal 9) 对既有站点调用，也区分 RECLAIM_SITE(13)/CREATE_NEW_SITE(14)，写所属实体、历史和征服信息。应理解为多种目标到站后的处理，不能作为一个任意可调用的“造城市 API”。
+
+入侵规划、战争行动、外交宣战和缔结和平是不同层。现阶段不能仅凭找到军队/侵略分支，就断言已完整恢复 NPC 的自主宣战、议和、条约变动算法。
+
+4.2 一个确实受要塞模式限制的生产者：新叛乱
+
+site_activity_update 中：
+  先在要塞模式取得玩家站点并排除它；
+  若某非玩家站点没有 active_insurrection，才考虑创建新叛乱；
+  随机条件之后有 gamemode != DWARF 条件；
+  再检查拥有者、文化身份候选等；
+  通过原生构造/登记路径创建叛乱集合、开始历史事件与消息。
+
+精确原始指令：
+  VA 0x141467c2c / RVA 0x1467c2c:
+    cmp dword ptr [rip+0x434665], 0  ; gamemode @ 0x14189c298
+  VA 0x141467c33 / RVA 0x1467c33:
+    je 0x141467e96
+  原始字节：83 3d 65 46 43 00 00 0f 84 5d 02 00 00
+
+这提供了一个范围较小的 mod 切入点：在满足原有站点/拥有者/文化条件时，允许要塞期间的非玩家站点产生叛乱。当前只给定位，没有改写这条指令。
+不能通过把全局 gamemode 临时改成冒险实现：同一函数早先的玩家站点排除就依赖 gamemode，其他调用链亦然。
+已有叛乱的计时、战斗阶段、历史结算仍在要塞期间推进；不能把“新叛乱被限制”夸大为“所有叛乱都被冻结”。
+相关字段：site+0x370 active_site_conquest，+0x388 active_insurrection，+0x428 entity_links，+0x440 cultural_identities。
+证据：旧/site_activity_update.c:76、109、144-224、252-260、395-479；新/assembly/site_activity_update.asm:623；src/native_history_layouts.inc:23998-24011。
+
+4.3 另一处明确门控：独立行动者的 HUNTING 目标生产
+
+0x1414653b0 在处理 plotter_actor 后，于 RVA 0x1465957 比较 gamemode==1，RVA 0x146595e 的 JNE 跳到 0x1414664cc，绕过 independent_actor 的一整段生产逻辑。
+该段遍历存活且当前无 army_id 的独立行动者，按生物特性、位置、昼夜/月相等条件，创建 controller、分配 next ID、设置 goal=6（HUNTING），给出附近目的地，并创建/登记 army 与成员。
+该段还明确按 caste flags 排除 MEGABEAST/TITAN 等候选，并对 NIGHT_CREATURE_HUNTER 等特性另作判断；因此不能把它命名为“恢复全部巨兽袭击”。
+证据：新/world_schedule_14653b0.c:233-240、627-672；新/assembly/world_schedule_14653b0.asm:339-340；df.army_controller.xml 的 army_controller_goal_type。
+这是一个可继续拆分的功能候选，但风险和作用范围不同于叛乱：它涉及独立生物活动、现场/世界位置转换与生物特性，不是让所有文明重新开拓的总开关。现阶段不能保证只改一个跳转就适合要塞模式，也不能声称原版所有巨兽活动均不存在。
+
+五、生成期经济：真正值得重构，但不能直接调用
+
+生成期大循环 0x140f706f0 中可见以下调用序列：
+  0x140973780  实体周度行为前序：战争疲劳、军事/迁移等，非纯经济
+  0x14096ece0  职位/政体/历史行为前序，非纯经济
+  0x14096e3e0  神器宣称/人物交互前序，非纯经济
+  0x1409a19d0  建立人口、劳动力、库存、需求账
+  0x14099c410  跨市场传播需求/价格，最多 50 轮，变化停止时结束
+  0x14099c660  贸易清算、库存转移、账项变化
+  0x1409a5310  劳动分配、生产消费与后续站点效果
+
+新文件名 economy_973780/96ece0/96e3e0 是导出时的中性分组名，不代表已确定它们是经济函数。最终语义应按本节和正文理解。
+本次目标的直接 CALL 索引中，该链的调用者均在 worldgen_history_step。此结论不排除未覆盖的间接调用/尾调用，不能推成“整个可执行文件绝无其他入口”。
+
+贸易数据是 38 个类别：
+  entity+0x1dac  trade_current_amount[38]
+  entity+0x1e44  trade_needed_amount[38]
+  entity+0x1edc  trade_wanted_amount[38]
+  entity+0x1f74  trade_maximum_buy_price[38]
+0x14099c660 比较买方 wanted-current、卖方 current-needed 和价格，然后对双方库存加减。
+0x14099c410 在市场关联之间传播 wanted 和最大买价；其返回值只能按调用者使用的低字节解释。
+
+关键障碍：df.entity.xml:1764 明确把后续这组字段放在“worldgen only, unsaved”区域。它还包含人口/劳动力汇总、临时债务、settlement 坐标、war_fatigue、world_gen_wandering_group 等。
+新/9a19d0 还按 historical_figure.worldgen_site(+0x140) 与当前 site 比较来统计人物。运行期人物的位置涉及 nemesis、army、unit chunk 和本地单位，不能假设旧指针都可用。
+
+0x1409a5310 的副作用远超过数值贸易：食物不足可直接减少站点/世界人口，创建 HUNGER 死亡历史并处理人物死亡；还涉及城市建设等。因此账本未正确重建时，直接挂入可能让有正常生活的 NPC 被抽象饥荒杀死。
+证据：新/decompiled/economy_9a5310.c:4959、5242、5427、5471-5485；df.d_basics.xml 的 death_type HUNGER。
+
+推荐的经济实现方向（设计推论）：
+  为非玩家、未实例化站点建立 mod 自有、可存档的抽象账本；
+  明确消费/生产的时间单位，按同一游戏日期推进；
+  先用持久人口、站点资源和文明关系建账，勿照搬临时 worldgen 指针；
+  需要迁移、建站、物品、商队、死亡等真实效果时，通过已恢复的原生登记流程落地；
+  不把前三个政治/神器前序混入每次贸易结算；
+  原生商队供货、贸易协议与离图 38 类市场是否相互影响，仍需单独恢复转换点。
+这是一项完整子系统改造，不能描述成给 0x99c660 加一个定时器就完成。
+
+六、为什么不能重新进入世界生成
+
+worldgen_history_step 是生成状态机的一部分：存在重置年份/年 tick、设置 -1、按 8400 tick（七天）批量推进、临时 actor 列表处理、生成终结化等逻辑。
+它假定世界处于生成生命周期，不能以保存再恢复全局时间的方式消除副作用：历史事件日期、随机序列、ID、人物位置、临时向量和已创建对象都已经被改变。
+
+结构层面也有明确区别：
+  historical_entity：worldgen only、unsaved，部分 region 指针标 has-bad-pointers；
+  world_site：hist_fig 列表和 wg_occupation 仅生成期；
+  historical_figure：worldgen_site、生成期关系/遗传临时状态；
+  world_gen_wandering_group：仅生成期；
+  world_generatorst：同时包含地形、河流、洞穴、生物导入与终结化状态。
+“可以补 NPC 历史”不意味着运行中的局部地图可重做地形生成。
+
+七、mod 必须维护的真实数据关系
+
+主要结构锚点（当前 Steam 布局，world 内偏移）：
+  entities.all                   0x308
+  units.all / active             0x13bc0 / 0x13bd8
+  nemesis.all                    0x13c88
+  nemesis.civilized_actor         0x13cb8
+  nemesis.plotter_actor           0x13cd0
+  nemesis.scholar_actor           0x13ec8
+  armies.all                     0x1168e8
+  army_controllers.all           0x116918
+  world_data                     0x11a668
+  history_rng                    0x1287b0
+  history.events                 0x1287c8
+  history.figures                0x128828
+  history.event_collections.all   0x128840
+  history.hf_civ_actors           0x128b28
+  history.active_event_collections 0x128e00
+  entity_populations             0x128e30
+  daily_events.deaths            0x128e48
+  daily_events.pregnancies        0x12adc8
+  daily_events.births             0x12cd48
+  daily_events.grown_up           0x12ecc8
+  daily_events.marriage_1/2       0x130c48 / 0x132bc8
+  frame_counter                  0x134c10
+来源：src/native_history_layouts.inc:10881-11652。
+
+运行期演员表在 world.nemesis.*，不同于生成期 world.history.hf_*。nemesis_record 连接 unit_id、figure、unit、unit_chunk_id/member_idx 和活动日期；单位可能驻留在 unit-*.dat 中，不一定在已加载 unit 列表。
+
+人口不是一个独立计数器：entity_population 的 races/counts/population_cap/gene_pool 要对应；site inhabitants、nemesis、army population section、unit entity_pop_specifier、文化与文明归属互相关联。
+野生动物/植物 world_population 的 count_min/count_max 又是另一套模型。
+站点 civ_id 是初始创建文明，cur_owner_id 才是当前拥有者；征服还涉及 entity_links、文化、驻军、历史集合和 realization。
+某些 army.controller 可达对象不在 army_controllers.all 中，不能假设 all 向量绝对完整。
+历史事件还维护死亡索引、集合分类、活跃集合、人物关系和全局 next ID。追加一条传说文字或单独改一个所有者字段，都不足以构成一致的世界演化。
+来源：df.nemesis.xml、df.region.xml:449、df.site.xml:67/306、df.army_controller.xml:431、df.history.xml:233、df.game_v.xml:290。
+
+八、与当前汉化 hook 架构的边界
+
+现有 DFCN_CORE_ABI=4，src/core_api.h:13-15 约定所有 API callback 都在模拟暂停时的 SDL/render 线程执行。当前 API 没有模拟更新入口。
+src/loader.cpp:302-305 明确说明 dfhooks_update 可能运行于模拟线程，未建立静止/卸载协议不得在这里分发 core 指针；当前该回调刻意为空。
+因此给 loader.update 加一行调用 core 的做法会改变线程和热卸载契约。新的常驻模拟模块，或正式扩展现有 ABI 与回调退场协议，才是可论证的架构路径。
+汉化启用/停用不应同时启停世界模拟，否则一次翻译开关就可能中断世界任务。
+
+Windows ABI 也是实质问题：本项目 MinGW，游戏容器/对象是 MSVC 布局。NativeBorrowedVector 的说明明确是借读，不能分配或析构游戏元素。
+不能直接对游戏 vector 调 MinGW std::vector::push_back，也不能用本模块的 new/delete 随意创建/销毁历史人物、军队和事件。
+必须使用游戏自身构造、分配、登记/注销函数，或经过 ABI 兼容的接口。Ghidra 推断出的 void/longlong 原型不能直接复制为 C++ 调用约定。
+来源：src/native_text_abi.h:42、88；src/native_hooks.inc 的退出协议。
+
+DFHack 提供模拟更新与世界加载/卸载、持久化生命周期，可作为集成参考；但当前 MinGW DLL 能否直接作为其 C++ 插件不能预设。
+本地参考：D:\program\steam\steamapps\common\DFHack\hack\docs\docs\dev\CoreSuspender.txt
+官方：https://docs.dfhack.org/en/stable/docs/dev/CoreSuspender.html
+官方实现：https://github.com/DFHack/dfhack/blob/develop/library/Core.cpp
+官方 Lua API：https://docs.dfhack.org/en/stable/docs/dev/Lua%20API.html
+上述官方在线源码可能前进于本机发行版，具体 ABI 仍以本机对应版本为准。
+
+设计应满足：
+  只在游戏模拟线程/明确允许的上下文里提交世界变更；
+  不从 SDL_RenderPresent、真实时间定时器或后台线程直接改世界；
+  原生函数保持原有调用次数；新增任务按游戏日期和功能范围去重；
+  不在容器正在被原生循环遍历时任意追加/删除其中对象；
+  保存、加载、卸载、切换世界期间停止提交，失效的是所有 native 指针；
+  持久化存 ID、版本、最后结算时间、任务游标和自有随机状态；
+  世界指针没变不等于仍是同一个已加载世界；
+  只在一次完整状态变更结束后允许保存，不保存半完成的迁移/占领。
+这些是实现约束，不是本次新增的测试或验收清单。
+
+九、建议的实现顺序与 hook 范围
+
+第一层：局部功能恢复。
+先研究新叛乱模式条件；它已有原生生产、事件、执行和结束路径，改动范围最明确。保留玩家站点/realization 保护和全部候选条件。解除门控仍不是实机效果保证，具体文化/拥有者条件可能继续不满足。
+
+第二层：原生世界 AI 的活动度参数。
+站点总量预算、各文明节流、出生预算是已有明确字段的候选。应设计上限和每游戏时间的额度，不是每帧清零全部计时。允许增加站点也不等于保证有可用位置或兵源。
+不能全局把 gamemode 伪装成冒险，也不能在每帧重新跑军队分发器。
+
+第三层：缺失的经济/社会生产者。
+离图经济适合用可存档的自有账本重建，逐步接原生迁移/建站/贸易效果。自主外交/新战争、知识/作品传播需要继续追到具体原生生产者和登记路径，不能用随机造历史事件冒充因果链。
+
+共同的时间接入：
+选择能覆盖普通要塞、普通冒险、大步冒险、区域推进的功能调用点；或者各模式接入同一自有调度器。
+一种概念流程（非已实现代码）：
+  原生更新照常执行
+  -> 确认世界生命周期允许提交
+  -> 读取当前游戏日期及本功能的最后结算日期
+  -> 取得有限数量的非玩家、未实例化目标
+  -> 先计算一次小范围变更，再通过原生路径提交
+  -> 记录 ID/进度，在一致边界保存
+实际挂点要考虑函数内会不会推进日期；从“函数入口”到“返回后”不能无条件视作同一日期。
+
+hook-candidates.tsv 仅记录本机原始字节和候选边界，不是补丁文件。前 16 个字节也不保证恰好覆盖完整指令，不能直接当 trampoline 的覆盖长度。
+未来 hook 需匹配准确映像并按完整指令处理 RIP-relative 寻址、相对分支和 ABI；官网版需独立定位。
+
+十、尚未闭合的逆向范围
+
+目前已恢复关键调度、模式门控、生成期经济依赖与主要对象关系；没有恢复整个游戏的原始 C++ 源码。
+仍未穷尽：
+  NPC 主动宣战/和平提议的全部生产和外交关系转换；
+  学者行为到知识发现、成书、传播的最终 helper；
+  38 类离图经济到真实商队/库存的双向转换；
+  未加载单位块与抽象人口的全部现实化/去现实化路径；
+  所有存档写入、异常展开、间接调用和内联重复路径；
+  官网版对应函数位置与实现差异。
+上述未知不能用“Ghidra 已成功导出”消除。完整 C 导出也可能含未知形参、类型、间接函数和未命名字段。
+
+本次最有价值的结论是：世界已有运行期引擎，mod 应围绕可证实的缺口和限制扩展，而不是重启生成器。当前最明确的缺口是新叛乱模式门控；最值得较大投入的是持久化离图经济及尚未闭合的外交/社会事件生产者。
+
+附一：补充函数辨识
+
+0x14150b030：有限动物种群恢复。
+源码遍历地表区域、站点、地下区域和已载入 feature 数据。对 MATES_TO_BREED 生物、数量大于1且未达上限的有限种群，小于100时以约 count/100 概率增加1，较大种群增加 count/100，再截断至上限；10000001 是特殊/无穷数量哨兵。
+它还借 world.temp_pop_breeding_start 处理实际实例化个体的影响。不要将此当作人类/矮人等文明全部抽象人口的普遍增长公式。
+来源：新/weekly_phase_30.c:137-174、177-220、223以后；df.regionpop.xml:14-33；df.creature.xml 的 MATES_TO_BREED。
+
+0x14150bf80：数量归零的人口记录清理。
+源码整理军队人口、站点动物/居民和 realization 关联，尾调 0x1410d3c00 继续站点整理。尾部 helper 尚未完全恢复，不能泛称一个“增长函数”。
+来源：新/weekly_phase_50.c:25-46、47-140。
+
+0x14150dc70：家族神器寻回任务。
+遍历 family_info.family、神器主张、持有/传闻及站点条件，创建/刷新 site_message_board 中 type=0 的告示。枚举 type0 是 quest_retrieve_artifact，载荷有 giver_hf、artifact_id、return_site。
+来源：新/daily_phase_70.c:47-64、317-365；df.d_basics.xml:264-279。
+
+0x14150e670：婚姻不仅写关系。
+同步读取当天两列婚姻桶，建立双方关系；部分分支还创建旅行 controller 和 army，接入实际迁居。
+来源：新/daily_phase_80.c:43-84、191-224。
+
+0x14150d960：军力汇总。
+先清空实体 last_checked_army_strength(+0x1268)，再根据现存军队人口/nemesis等重新汇总，供后续世界决策使用。
+来源：新/daily_phase_110.c:14-37。
+
+0x1414653b0：运行期阴谋和行动者调度。
+函数开头遍历 world.nemesis.plotter_actor(+0x13cd0)，依据当前年份/tick 处理到期行动，调用 0x14060f740，重新安排下一时间；对到期的 plotter 进入 0x1405d2000。
+随后将 new_plotter_actor 合入 plotter_actor 并清空待加入向量，再在冒险模式条件下处理 independent_actor 的一类 HUNTING 目标生产；之后军队/controller 循环位于该模式条件之外。
+这证明“阴谋行动者在运行中仍调度”，没有穷尽证明各类阴谋均能在要塞中产生、完成或影响玩家。最终 plot/helper 的详细语义仍有待恢复。
+来源：新/world_schedule_14653b0.c:52-216、225-236、627-683、697以后；df.nemesis.xml:56以后。
+
+0x141478180：现场城镇行人。
+要求 site.realization 非空，根据时刻、建筑和人口分配 sr_walkerst 目标，维持最多500名 walker。不是通用离图经济函数。
+来源：新/adventure_schedule_extra.c:78-124、304-408；df.site_realization.xml:808-834；df.unit.xml:2415-2436。
+
+0x14150a490：追踪缓存维护。
+army_tracking_info 超过200条时保留仍被军队引用的记录并回收多余项；闲置踪迹对象也压回200条。将它的冒险门控解除，不会凭空增加世界文明演化。
+来源：新/adventure_dispatch_extra.c:30以后、123以后；src/native_history_layouts.inc:11031、11082。
+
+年度排程还有家族/职位职责。
+0x14150ef20 在703-714行按存活历史人物选择家族首领，并对实体职位准备评估、加入 possible_evaluate。直接多跑它不仅增加生育尝试，还会重排社会角色和清空当年已有部分排程。
+某些寿终/成长桶写入的 callee 形参被反编译器省略，其精确目标参数尚未逐个恢复；已识别调度结构不能替代函数原型恢复。
+
+附二：未来实现应区分的功能范围
+
+人物生命史：原版已运行；先看年度预算和站点候选，不再重复造一次出生/死亡。
+战争执行：原版已有军队与控制器；新增外交决策要另追生产者，不能以多跑军队代替。
+建站/收复：原版已运行；可研究站点上限、位置候选、节流和人口条件。
+叛乱：既有叛乱能推进；新叛乱的要塞模式门控是最明确的局部缺口。
+独立行动者：一类 HUNTING 目标生产只在冒险模式执行；需分析生物/位置转换后再决定是否扩展至要塞，不能笼统取消所有模式保护。
+文化/阴谋：已有行动者调度；各最终知识/作品/阴谋 helper 的完整能力尚未恢复。
+离图经济：本次发现了完整度较高的生成期链，但运行期数据与存档适配是主要工作。
+地形/河流/洞穴重生成：属于不同生命周期，不应混入当前要塞世界更新。
+世界消息可见性：世界发生变化与玩家何时获知变化不同；史实、传闻和界面传播不能混为一层，现阶段也不能凭界面没有新消息反推事件从未发生。

@@ -1,0 +1,96 @@
+精灵伐木配额：协商分数的离线反汇编记录
+
+映像：D:\program\steam\steamapps\common\Dwarf Fortress\Dwarf Fortress.exe
+PE 标识：PE:6a70a6d9:02711000
+所有分析均针对磁盘映像；没有运行游戏、读取运行日志、注入进程或执行游戏内验证。
+ASM 使用本机固定 objdump 保存。下列函数名是根据调用和结构给出的说明名，不是原始符号名。
+
+1. 协商分数：0x140e5d3b0..0x140e5d5a6
+
+输入是 dipscript_popup / meetingmomentst 指针，不是 unit 指针。
+  +0x00 meeting_holder_actor / actor_unid：来访者 unit id。
+  +0x04 meeting_holder_noble / noble_unid：本方会谈贵族 unit id。
+  +0x08 activity_info 指针；其中 +0x0c 为 place / civzone_id。
+通过世界 unit 向量、unit+0x130 的 id 找双方单位。任一单位找不到时返回 0。
+结构依据：data/upstream/df-structures/df.meetingmoment.xml、df.activity_meeting.xml。
+
+令 A = social_roll(本方贵族, 2)，B = social_roll(来访者, 2)。
+先根据实际会谈地点得到 R：
+  Office（civzone_type=93）：room_value(地点, 本方贵族)。
+  DiningHall（80）、Bedroom（92）：上述值除以 4，向下取整。
+  其他类型或不存在有效 civzone：0。
+然后：
+  若 R > A：R = A + trunc((R-A)/10)。
+  返回 score = A + R - B。
+分支地址：房间类型 0x140e5d527；房间估值 0x140e5d53c/549；
+递减折算 0x140e5d559..575；相减 0x140e5d57d..58d。
+
+2. 社交掷骰：0x1413687b0..0x14136898f
+
+先在 0x141367d10 构造技能编号、权重及技能数 N。
+mode=2 在 0x141368794 跳表的第 2 项，目标 0x1413680c0。
+候选技能及权重：
+  72 JUDGING_INTENT / 察言观色：200。
+  77 INTIMIDATION / 恐吓：50。
+  70 PERSUASION / 说服：100。
+  71 NEGOTIATION / 谈判：300。
+  76 LYING / 说谎：100。
+  80 FLATTERY / 奉承：50。
+编号依据：data/upstream/df-structures/df.skill_enum.xml。
+人格筛选通过的技能才计入分子与 N；不是无条件将六项相加。
+令 K_i 为 0x14133e7a0 返回的有效技能等级，
+  M = trunc(sum(K_i * weight_i) / (10 * N))。
+返回：随机整数[-100,100] + 三次分别取自[0,M]的随机整数之和。
+实现使用 0x140eb68b0 取随机数，再经 0x7fffffff 归约和整数区间缩放。
+没有技能可选时回退为谈判、权重 100、N=1；无 soul 时有效技能为 0。
+
+3. 人格决定能否使用部分社交技巧：0x140e17fd0..0x140e184f8
+
+传入 unit.current_soul + 0x248（unit_personality）。
+下述性格取值包含 temporary_trait_changes，并限制在 0..100 范围。
+  谈判、察言观色：不受此函数的额外限制。
+  说服：ASSERTIVENESS >=25；若 <=75，还须 ELOQUENCE >=-25。
+  说谎：TRUTH <=10。
+  恐吓：DISCORD >=25 且 ASSERTIVENESS >=25；若两项均 <=75，
+        还须 POWER >=-25、TRANQUILITY <=25、HARMONY <=25。
+  奉承：FRIENDLINESS >=40；若 <=75，还须 TRUTH <=25。
+价值观由 0x140e185a0 读取：先查个人值，没有时取文化身份/文明默认值。
+相关枚举：data/upstream/df-structures/df.d_basics.xml 中
+personality_facet_type 与 value_type。
+
+4. 有效技能：0x14133e7a0..0x14133eacd
+
+unit+0xa98 为 current_soul；其 +0x218 为技能向量。
+读取 skill+0x04 的 level，减去 +0x10 的 rust，最低为 0。
+然后应用通用身体状态、饥饿、口渴、困倦/疲劳等折减。
+该函数及上述社交/协商主函数没有直接读取 mental_attrs，
+也没有直接读取 personality.stress 或独立 happiness 数值。
+因此不能把“智力”“社交感知”“当前快乐值/压力值”写成本分数的直接公式项。
+情绪或压力若使人物技能、行为或人格发生后续变化，属于更远的间接机制；
+本记录不据此宣称已经定位到一个直接 stress 惩罚。
+
+5. 房间估值：0x140559610..0x14055a563
+
+此函数得到实际 civzone 的计算价值，包含区域/地块、雕刻及 contained_buildings 等。
+它接收本方贵族 unit，部分材料偏好会参与估值：例如 0x14055a106..1ee
+读取该 unit 的 soul.preferences，并对匹配材料的雕刻价值重复加算。
+所以 R 不是要塞总财富，也不是仅取“普通/豪华”等房间等级标签。
+
+6. PE 异常展开表将几个逻辑函数拆成连续区段
+
+meeting-score：
+  0x140e5d3b0..0x140e5d494
+  0x140e5d494..0x140e5d591
+  0x140e5d591..0x140e5d5a6
+social-roll：
+  0x1413687b0..0x14136882c
+  0x14136882c..0x1413688ab
+  0x1413688ab..0x141368972
+  0x141368972..0x14136898f
+effective-skill：
+  0x14133e7a0..0x14133e7c6
+  0x14133e7c6..0x14133e7d4
+  0x14133e7d4..0x14133e879
+  0x14133e879..0x14133e9a8
+  0x14133e9a8..0x14133eacd
+保存的对应 ASM 覆盖完整连续函数，而非只取首个 pdata 区段。
