@@ -423,6 +423,12 @@ term	vessel	船
 term	religion	宗教
 term	military organization	军事组织
 term	group	势力
+# Image material and creator are sibling native fields. Keep the creator
+# outside the material noun and render their combined phrase once.
+term	an image of {a} in {i} by {n}	由{n1}以{i1}制作、描绘{a1}的图像
+term	image of {a} in {i} by {n}	由{n1}以{i1}制作、描绘{a1}的图像
+term	an image in {i} by {n}	由{n1}以{i1}制作的图像
+term	image in {i} by {n}	由{n1}以{i1}制作的图像
 term	an image of {a} in {i}	以{i1}制作、描绘{a1}的图像
 term	an image of {a}	描绘{a1}的图像
 term	image of {a} in {i}	以{i1}制作、描绘{a1}的图像

@@ -198,6 +198,8 @@ const auto item_art_image = [&](const std::string &prefix, int placement,
     }
     const auto depicted = item_improvement_list(elements);
     if (!depicted) return std::nullopt;
+    const int32_t quality = number(prefix + ".quality"), maker = number(prefix + ".creator");
+    bool material_creator = false;
     auto image = elements.empty() ? item_extra_label("image") :
         item_improvement_apply("term", "image of {a}", {*depicted});
     if (number(prefix + ".material_present")) {
@@ -205,19 +207,28 @@ const auto item_art_image = [&](const std::string &prefix, int placement,
         if (!material) return std::nullopt;
         // 14526e9 skips " of " and the element list when it is empty;
         // 14527d7 still emits the independently present material.
-        image = elements.empty()
-            ? item_improvement_apply("term", "image in {i}", {*material})
-            : item_improvement_apply("term", "image of {a} in {i}", {*depicted, *material});
+        if (!suppress && maker >= 0) {
+            const auto creator = subject(NativeHistoryObjectKind::Figure, maker, false);
+            if (!creator) return std::nullopt;
+            image = elements.empty()
+                ? item_improvement_apply("term", "image in {i} by {n}", {*material, *creator})
+                : item_improvement_apply("term", "image of {a} in {i} by {n}",
+                    {*depicted, *material, *creator});
+            material_creator = true;
+        } else {
+            image = elements.empty()
+                ? item_improvement_apply("term", "image in {i}", {*material})
+                : item_improvement_apply("term", "image of {a} in {i}", {*depicted, *material});
+        }
     }
     if (!image) return std::nullopt;
     static constexpr const char *qualities[] = {"", "well-designed {s}", "finely-designed {s}",
         "superiorly designed {s}", "exceptionally designed {s}", "masterfully designed {s}"};
-    const int32_t quality = number(prefix + ".quality"), maker = number(prefix + ".creator");
     if (!suppress && quality >= 1 && quality <= 5) {
         image = item_improvement_apply("term", qualities[quality], {*image});
         if (!image) return std::nullopt;
     }
-    if (!suppress && maker >= 0) {
+    if (!suppress && maker >= 0 && !material_creator) {
         const auto creator = subject(NativeHistoryObjectKind::Figure, maker, false);
         if (!creator) return std::nullopt;
         image = item_improvement_apply("term", "{s} by {n}", {*image, *creator});

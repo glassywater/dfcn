@@ -66,6 +66,18 @@ static bool item_caption_has_art_subject(std::string_view source) {
     return false;
 }
 
+static bool item_description_art_material_rule(const Rule &rule) {
+    std::string_view source = rule.source;
+    constexpr std::string_view creator = " by {n}";
+    if (source.ends_with(creator)) source.remove_suffix(creator.size());
+    // The native image writer appends its material and creator independently.
+    // These material slots cannot own a recursive item with a maker suffix.
+    return source == "an image of {a} in {i}" ||
+        source == "image of {a} in {i}" || source == "image of in {i}" ||
+        source == "an image in {i}" || source == "image in {i}" ||
+        source == "rendition of {a} in {i}";
+}
+
 static bool item_description_translation_complete(
         const std::optional<std::string> &target) {
     if (!target || target->empty()) return false;
@@ -531,7 +543,11 @@ std::optional<std::string> Overlay::translate_item_description_term(
                         // Only recursive captures must be shorter. An atomic
                         // number can occupy the complete noun (a die's upward
                         // face), and still uses the shared native count parser.
-                        case 's': case 'i':
+                        case 'i':
+                            if (item_description_art_material_rule(rule))
+                                return translate_material_name(part);
+                            [[fallthrough]];
+                        case 's':
                             return part.size() < value.size()
                                 ? self(self, part, false, depth + 1) : std::nullopt;
                         case 'v': return translate_item_color_pattern(part);
@@ -585,6 +601,10 @@ std::optional<std::string> Overlay::translate_item_description_term(
                     if (auto target = self(self, value.substr(article.size()), false, depth + 1))
                         return target;
             }
+            // An artwork noun must resolve through the typed rules above.
+            // A generated-creature fallback cannot prove an item identity
+            // when the written-title gate distinguishes it from a book.
+            if (artwork_subject) return std::nullopt;
             if (auto target = translate_symbol_shape(value);
                 item_description_translation_complete(target)) return target;
             if (auto target = translate_legends_color(value);
@@ -1023,7 +1043,13 @@ TranslationResult Overlay::translate_item_description_term_display(
                     [&](char kind, std::string_view part) -> TranslationResult {
                         std::optional<std::string> target;
                         switch (kind) {
-                        case 's': case 'i':
+                        case 'i':
+                            if (item_description_art_material_rule(rule)) {
+                                target = translate_material_name(part);
+                                break;
+                            }
+                            [[fallthrough]];
+                        case 's':
                             return part.size() < source.size()
                                 ? translate_item_description_term_display(part) : TranslationResult{};
                         case 'e':
