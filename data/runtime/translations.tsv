@@ -112180,6 +112180,7 @@ after hearing eloquent speech	聆听妙语后	wi
 agreed for love of {a} at {p}	在{p1}爱着{a1}，因此答应了	ht
 agreed for love of {a} in {p}	在{p1}爱着{a1}，因此答应了	ht
 an agreement to retrieve {p}.	找回{p1}的协议。	htEi
+an image of {a} in {i} by {n}	由{n1}以{i1}制作、描绘{a1}的图像	hIit
 an insurrection began in {p}.	{p1}爆发了起义。	ht
 an unknown underground region	未知地下区域	h
 and abducted {a} in the wilds	并在荒野中绑架了{a1}	ht
@@ -119628,6 +119629,7 @@ held a {s} race within {p}	在{p1}举行了{s1}竞速比赛	ht
 horrible mutilation of {a}	对{a1}的残忍肢解	htEi
 hunting giant cave swallow	受过狩猎训练的巨型洞穴燕	wi
 ill-fated tribute delivery	遭遇不幸的贡品运送	hEi
+image of {a} in {i} by {n}	由{n1}以{i1}制作、描绘{a1}的图像	hIit
 implicated {a} during {e}.	在{e1}期间供出了{a1}。	ht
 implicated {a} within {p}.	在{p1}供出了{a1}。	ht
 implicated {n} during {e}.	在{e1}期间供出了{n1}。	ht
@@ -127500,6 +127502,7 @@ after the death of {n}	在{n1}死后	ht
 agreed for love of {a}	爱着{a1}，因此答应了	ht
 alfalfa flower cluster	苜蓿花簇	wi
 amargasaurus hatchling	颈帆龙幼崽	wi
+an image in {i} by {n}	由{n1}以{i1}制作的图像	hIit
 an image of {a} in {i}	以{i1}制作、描绘{a1}的图像	hIit
 an order of precedence	礼仪位次	h
 and a chair next to a 	椅子/王座物品必须先制作才能放	w
@@ -135476,6 +135479,7 @@ hypsilophodon women	棱齿龙人	wi
 ichthyosaurus woman	鱼龙人	wi
 ichthyosaurus women	鱼龙人	wi
 iguanodon hatchling	禽龙幼崽	wi
+image in {i} by {n}	由{n1}以{i1}制作的图像	hIit
 image of {a} in {i}	以{i1}制作、描绘{a1}的图像	hIit
 in unknown material	，使用未知物质制作	h
 indiv choice, melee	自行选择近战武器	wli

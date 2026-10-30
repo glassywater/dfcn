@@ -35,6 +35,17 @@ std::optional<std::string> Overlay::translate_written_item_caption(
         // Read/copy supplies the book type. An ordinary item field instead
         // needs a complete book-title production before accepting a name.
         if (!book_context) {
+            // Extensions can supply broad book patterns such as {b} of {b}.
+            // Their captures also accept ordinary item nouns and creatures,
+            // so matching one does not turn a complete figurine/statue into
+            // a written work. Let its existing item grammar own that noun in
+            // headings, inventory and actions; explicit book fields keep the
+            // full title grammar, including titles that mention artwork.
+            if (item_caption_has_art_subject(value)) {
+                const auto item = translate_item_description_term(value);
+                if (translation_complete_with_native_nicknames(item, value))
+                    return std::nullopt;
+            }
             // Both native BOOK_ART and BOOK_INSTRUCTION can select [NAME]
             // alone. Their complete subject/phrase aliases carry the source
             // meaning even without a title wrapper or copy annotation.
